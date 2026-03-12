@@ -1,0 +1,19 @@
+---
+description: When a new Prisma migration is added, run migrations via the terminal by default.
+globs: backend/prisma/migrations/**/*.sql,backend/prisma/schema.prisma
+alwaysApply: false
+---
+
+# RailChart – Run migrations after adding new ones
+
+When you add or modify a Prisma migration in this project:
+
+1. **After creating or editing a migration** (e.g. new file under `backend/prisma/migrations/` or changes to `backend/prisma/schema.prisma`), **run the migration via the terminal** so the database stays in sync.
+
+2. **Command to run** (from the project root):
+   ```bash
+   npm run db:migrate
+   ```
+   This runs `prisma migrate dev` in the backend and applies any pending migrations to the database.
+
+3. **Default behavior**: Prefer running this command after introducing a new migration, unless the user explicitly asks not to run it (e.g. they will run it themselves or use a different environment).

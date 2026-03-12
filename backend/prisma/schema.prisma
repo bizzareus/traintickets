@@ -1,0 +1,168 @@
+// RailChart Phase 1 - Database Schema
+// PostgreSQL with Prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  phone        String?
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  monitoringRequests MonitoringRequest[]
+}
+
+model Train {
+  id                 String   @id @default(cuid())
+  trainNumber        String   @unique @map("train_number")
+  trainName          String   @map("train_name")
+  originStation      String   @map("origin_station")
+  destinationStation String   @map("destination_station")
+  departureTime      String?  @map("departure_time")
+  arrivalTime        String?  @map("arrival_time")
+  active             Boolean  @default(true)
+
+  chartRules            ChartRule[]
+  chartEventInstances   ChartEventInstance[]
+  monitoringRequests    MonitoringRequest[]
+}
+
+model ChartRule {
+  id             String  @id @default(cuid())
+  trainId        String  @map("train_id")
+  stationCode    String  @map("station_code")
+  chartTimeLocal String  @map("chart_time_local") // HH:MM
+  sequenceNumber Int     @map("sequence_number")
+  active         Boolean @default(true)
+
+  train Train @relation(fields: [trainId], references: [id], onDelete: Cascade)
+}
+
+model ChartEventInstance {
+  id             String    @id @default(cuid())
+  trainId        String    @map("train_id")
+  stationCode    String    @map("station_code")
+  journeyDate    DateTime  @map("journey_date") @db.Date
+  chartTimestamp DateTime @map("chart_timestamp")
+  sequenceNumber Int       @map("sequence_number")
+  executed       Boolean   @default(false)
+  executedAt     DateTime? @map("executed_at")
+
+  train              Train              @relation(fields: [trainId], references: [id], onDelete: Cascade)
+  browserExecutions  BrowserExecution[]
+
+  @@index([chartTimestamp, executed])
+  @@index([trainId, stationCode, journeyDate])
+}
+
+enum MonitoringRequestStatus {
+  scheduled
+  completed
+  expired
+}
+
+model MonitoringRequest {
+  id          String                 @id @default(cuid())
+  userId      String                 @map("user_id")
+  trainId     String                 @map("train_id")
+  stationCode String                 @map("station_code")
+  journeyDate DateTime               @map("journey_date") @db.Date
+  classCode   String                 @map("class_code")
+  status      MonitoringRequestStatus @default(scheduled)
+  createdAt   DateTime               @default(now()) @map("created_at")
+
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  train             Train              @relation(fields: [trainId], references: [id], onDelete: Cascade)
+  browserExecutions BrowserExecution[]
+  alertLogs          AlertLog[]
+
+  @@index([trainId, stationCode, journeyDate, status])
+}
+
+enum BrowserExecutionType {
+  availability
+}
+
+enum BrowserExecutionStatus {
+  pending
+  running
+  success
+  failed
+}
+
+model BrowserExecution {
+  id                    String                 @id @default(cuid())
+  monitoringRequestId   String                 @map("monitoring_request_id")
+  chartEventInstanceId  String                 @map("chart_event_instance_id")
+  jobId                 String?                @map("job_id")
+  type                  BrowserExecutionType   @default(availability)
+  status                BrowserExecutionStatus @default(pending)
+  resultPayload         Json?                  @map("result_payload")
+  createdAt             DateTime               @default(now()) @map("created_at")
+  completedAt           DateTime?              @map("completed_at")
+
+  monitoringRequest    MonitoringRequest   @relation(fields: [monitoringRequestId], references: [id], onDelete: Cascade)
+  chartEventInstance   ChartEventInstance  @relation(fields: [chartEventInstanceId], references: [id], onDelete: Cascade)
+
+  @@index([jobId])
+}
+
+// Cached IRCTC train schedule (station list for from/to)
+model TrainScheduleCache {
+  id           String   @id @default(cuid())
+  trainNumber  String   @unique @map("train_number")
+  trainName    String   @map("train_name")
+  stationFrom  String   @map("station_from")
+  stationTo    String   @map("station_to")
+  stationList  Json     @map("station_list") // array of { stationCode, stationName, ... }
+  fetchedAt    DateTime @default(now()) @map("fetched_at")
+
+  @@index([trainNumber])
+}
+
+// Ad-hoc availability check (no user, triggered from search)
+model AvailabilityCheck {
+  id           String    @id @default(cuid())
+  jobId        String?   @unique @map("job_id")
+  trainNumber  String    @map("train_number")
+  stationCode  String    @map("station_code")
+  classCode    String    @map("class_code")
+  journeyDate  DateTime  @map("journey_date") @db.Date
+  status       String    @default("pending") // pending | running | success | failed
+  resultPayload Json?    @map("result_payload")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  completedAt  DateTime? @map("completed_at")
+
+  @@index([jobId])
+}
+
+enum AlertChannel {
+  whatsapp
+  call
+  push
+}
+
+enum AlertLogStatus {
+  sent
+  failed
+}
+
+model AlertLog {
+  id                   String        @id @default(cuid())
+  monitoringRequestId  String        @map("monitoring_request_id")
+  channel              AlertChannel
+  status               AlertLogStatus
+  createdAt            DateTime      @default(now()) @map("created_at")
+
+  monitoringRequest MonitoringRequest @relation(fields: [monitoringRequestId], references: [id], onDelete: Cascade)
+
+  @@index([monitoringRequestId])
+}
