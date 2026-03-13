@@ -1,11 +1,15 @@
-import { Module } from "@nestjs/common";
-import { AvailabilityController } from "./availability.controller";
-import { AvailabilityService } from "./availability.service";
-import { BrowserUseModule } from "../browser-use/browser-use.module";
+import { Module } from '@nestjs/common';
+import { AvailabilityController } from './availability.controller';
+import { AvailabilityService } from './availability.service';
+import { JourneyTaskService } from './journey-task.service';
+import { BrowserUseModule } from '../browser-use/browser-use.module';
+import { ChartTimeModule } from '../chart-time/chart-time.module';
+import { IrctcModule } from '../irctc/irctc.module';
 
 @Module({
-  imports: [BrowserUseModule],
+  imports: [BrowserUseModule, ChartTimeModule, IrctcModule],
   controllers: [AvailabilityController],
-  providers: [AvailabilityService],
+  providers: [AvailabilityService, JourneyTaskService],
+  exports: [AvailabilityService, JourneyTaskService],
 })
 export class AvailabilityModule {}

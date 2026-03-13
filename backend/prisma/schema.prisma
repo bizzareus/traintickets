@@ -115,6 +115,16 @@ model BrowserExecution {
   @@index([jobId])
 }
 
+// Train list (seeded from trainlist.txt, used for dropdown)
+model TrainList {
+  id          String   @id @default(cuid())
+  trainNumber String   @unique @map("train_number")
+  label       String   // e.g. "22637 - WEST COAST EXP"
+
+  @@index([trainNumber])
+  @@index([label])
+}
+
 // Cached IRCTC train schedule (station list for from/to)
 model TrainScheduleCache {
   id           String   @id @default(cuid())
@@ -126,6 +136,43 @@ model TrainScheduleCache {
   fetchedAt    DateTime @default(now()) @map("fetched_at")
 
   @@index([trainNumber])
+}
+
+// Chart preparation time per train/station (meta, e.g. train 29251 NDLS at 19:54)
+// chartOne = same day + chartTimeLocal; chartTwo = (chartTwoDayOffset days later) + chartTwoTimeLocal
+model TrainStationChartTime {
+  id                 String   @id @default(cuid())
+  trainNumber        String   @map("train_number")
+  stationCode        String   @map("station_code")
+  chartTimeLocal     String   @map("chart_time_local") // first chart: HH:MM 24h, e.g. "19:54"
+  chartTwoTimeLocal  String?  @map("chart_two_time_local") // second chart: HH:MM, can be next day
+  chartTwoDayOffset  Int      @default(0) @map("chart_two_day_offset") // 0 = same day, 1 = next day
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  @@unique([trainNumber, stationCode])
+  @@index([trainNumber])
+  @@index([stationCode])
+}
+
+// One task per station: run availability check at that station's chart time
+model ChartTimeAvailabilityTask {
+  id                String    @id @default(cuid())
+  journeyRequestId  String    @map("journey_request_id") // groups tasks for one journey
+  trainNumber       String    @map("train_number")
+  trainName         String?   @map("train_name")
+  fromStationCode   String    @map("from_station_code")   // journey origin
+  toStationCode     String    @map("to_station_code")    // journey destination
+  stationCode       String    @map("station_code")       // station at which chart runs (check from this station to destination)
+  journeyDate       DateTime  @map("journey_date") @db.Date
+  classCode         String    @map("class_code")
+  chartAt           DateTime  @map("chart_at")           // when to run: journeyDate + chart time
+  status            String    @default("pending")        // pending | running | completed | failed
+  resultPayload     Json?     @map("result_payload")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  completedAt       DateTime? @map("completed_at")
+
+  @@index([chartAt, status])
+  @@index([journeyRequestId])
 }
 
 // Ad-hoc availability check (no user, triggered from search)

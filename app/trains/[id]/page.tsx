@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
+import { apiClient } from "@/lib/api";
 
 const CLASSES = ["1A", "2A", "3A", "SL", "CC", "EC"];
 
@@ -26,45 +27,33 @@ function TrainDetailContent() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
-
   useEffect(() => {
-    fetch(`${apiUrl}/api/trains/${params.id}`)
-      .then((r) => r.json())
-      .then((data) => {
+    apiClient
+      .get<Train>(`/api/trains/${params.id}`)
+      .then((r) => {
+        const data = r.data;
         setTrain(data);
         if (data?.chartRules?.[0]) setStationCode(data.chartRules[0].stationCode);
       })
       .catch(() => setTrain(null));
-  }, [params.id, apiUrl]);
+  }, [params.id]);
 
   async function handleGetAlert(e: React.FormEvent) {
     e.preventDefault();
     if (!train || !journeyDate || !stationCode) return;
     setLoading(true);
     setError("");
-    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
-    const headers: Record<string, string> = { "Content-Type": "application/json" };
-    if (token) headers["Authorization"] = `Bearer ${token}`;
     try {
-      const res = await fetch(`${apiUrl}/api/monitoring-requests`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify({
-          trainId: train.id,
-          stationCode,
-          journeyDate,
-          classCode,
-        }),
+      await apiClient.post("/api/monitoring-requests", {
+        trainId: train.id,
+        stationCode,
+        journeyDate,
+        classCode,
       });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.message ?? data.error ?? "Request failed");
-        return;
-      }
       setSuccess(true);
-    } catch {
-      setError("Request failed");
+    } catch (err: unknown) {
+      const ax = err as { response?: { data?: { message?: string; error?: string } } };
+      setError(ax.response?.data?.message ?? ax.response?.data?.error ?? "Request failed");
     } finally {
       setLoading(false);
     }

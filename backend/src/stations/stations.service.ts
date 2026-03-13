@@ -1,15 +1,15 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 
 const STATIONS: { code: string; name: string }[] = [
-  { code: "NDLS", name: "New Delhi" },
-  { code: "MMCT", name: "Mumbai Central" },
-  { code: "KOTA", name: "Kota Junction" },
-  { code: "BRC", name: "Vadodara Junction" },
-  { code: "HWH", name: "Howrah Junction" },
-  { code: "PNBE", name: "Patna Junction" },
-  { code: "MAS", name: "Chennai Central" },
-  { code: "SBC", name: "Bangalore City" },
+  { code: 'NDLS', name: 'New Delhi' },
+  { code: 'MMCT', name: 'Mumbai Central' },
+  { code: 'KOTA', name: 'Kota Junction' },
+  { code: 'BRC', name: 'Vadodara Junction' },
+  { code: 'HWH', name: 'Howrah Junction' },
+  { code: 'PNBE', name: 'Patna Junction' },
+  { code: 'MAS', name: 'Chennai Central' },
+  { code: 'SBC', name: 'Bangalore City' },
 ];
 
 @Injectable()

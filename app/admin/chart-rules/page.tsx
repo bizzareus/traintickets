@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { apiClient } from "@/lib/api";
 
 type ChartRule = {
   id: string;
@@ -17,13 +18,9 @@ export default function AdminChartRulesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
-    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
-    const headers: Record<string, string> = { "Content-Type": "application/json" };
-    if (token) headers["Authorization"] = `Bearer ${token}`;
-    fetch(`${apiUrl}/api/admin/chart-rules`, { headers })
-      .then((r) => r.json())
-      .then((data) => setRules(Array.isArray(data) ? data : []))
+    apiClient
+      .get<ChartRule[]>("/api/admin/chart-rules")
+      .then((r) => setRules(Array.isArray(r.data) ? r.data : []))
       .catch(() => setRules([]))
       .finally(() => setLoading(false));
   }, []);

@@ -1,6 +1,6 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
-import { ChartEventService } from "../chart-event/chart-event.service";
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { ChartEventService } from '../chart-event/chart-event.service';
 
 @Injectable()
 export class MonitoringRequestsService {
@@ -13,7 +13,7 @@ export class MonitoringRequestsService {
     const list = await this.prisma.monitoringRequest.findMany({
       where: { userId },
       include: { train: true },
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: 'desc' },
     });
     const withChartTime = await Promise.all(
       list.map(async (req) => {
@@ -38,11 +38,11 @@ export class MonitoringRequestsService {
       where: { id, userId },
       include: {
         train: true,
-        browserExecutions: { orderBy: { createdAt: "desc" } },
-        alertLogs: { orderBy: { createdAt: "desc" } },
+        browserExecutions: { orderBy: { createdAt: 'desc' } },
+        alertLogs: { orderBy: { createdAt: 'desc' } },
       },
     });
-    if (!request) throw new NotFoundException("Not found");
+    if (!request) throw new NotFoundException('Not found');
     const chartInstance = await this.prisma.chartEventInstance.findFirst({
       where: {
         trainId: request.trainId,
@@ -60,9 +60,14 @@ export class MonitoringRequestsService {
 
   async create(
     userId: string,
-    body: { trainId: string; stationCode: string; journeyDate: string; classCode: string },
+    body: {
+      trainId: string;
+      stationCode: string;
+      journeyDate: string;
+      classCode: string;
+    },
   ) {
-    const journeyDateObj = new Date(body.journeyDate + "T00:00:00.000Z");
+    const journeyDateObj = new Date(body.journeyDate + 'T00:00:00.000Z');
     await this.chartEvent.ensureChartEventInstances(
       body.trainId,
       body.stationCode,
@@ -75,7 +80,7 @@ export class MonitoringRequestsService {
         stationCode: body.stationCode,
         journeyDate: journeyDateObj,
         classCode: body.classCode,
-        status: "scheduled",
+        status: 'scheduled',
       },
       include: { train: true },
     });

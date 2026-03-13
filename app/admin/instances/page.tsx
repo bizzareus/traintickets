@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { apiClient } from "@/lib/api";
 
 type Instance = {
   id: string;
@@ -19,13 +20,9 @@ export default function AdminInstancesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
-    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
-    const headers: Record<string, string> = { "Content-Type": "application/json" };
-    if (token) headers["Authorization"] = `Bearer ${token}`;
-    fetch(`${apiUrl}/api/admin/chart-event-instances?limit=100`, { headers })
-      .then((r) => r.json())
-      .then((data) => setInstances(Array.isArray(data) ? data : []))
+    apiClient
+      .get<Instance[]>("/api/admin/chart-event-instances", { params: { limit: 100 } })
+      .then((r) => setInstances(Array.isArray(r.data) ? r.data : []))
       .catch(() => setInstances([]))
       .finally(() => setLoading(false));
   }, []);

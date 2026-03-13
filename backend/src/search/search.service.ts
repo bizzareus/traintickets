@@ -1,5 +1,5 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class SearchService {
@@ -13,7 +13,10 @@ export class SearchService {
         destinationStation: to.toUpperCase(),
       },
       include: {
-        chartRules: { where: { active: true }, orderBy: { sequenceNumber: "asc" } },
+        chartRules: {
+          where: { active: true },
+          orderBy: { sequenceNumber: 'asc' },
+        },
       },
     });
   }

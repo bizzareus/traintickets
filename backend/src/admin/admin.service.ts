@@ -1,5 +1,5 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class AdminService {
@@ -7,8 +7,8 @@ export class AdminService {
 
   getTrains() {
     return this.prisma.train.findMany({
-      include: { chartRules: { orderBy: { sequenceNumber: "asc" } } },
-      orderBy: { trainNumber: "asc" },
+      include: { chartRules: { orderBy: { sequenceNumber: 'asc' } } },
+      orderBy: { trainNumber: 'asc' },
     });
   }
 
@@ -37,7 +37,7 @@ export class AdminService {
   getChartRules() {
     return this.prisma.chartRule.findMany({
       include: { train: true },
-      orderBy: [{ trainId: "asc" }, { sequenceNumber: "asc" }],
+      orderBy: [{ trainId: 'asc' }, { sequenceNumber: 'asc' }],
     });
   }
 
@@ -63,7 +63,7 @@ export class AdminService {
   getChartEventInstances(limit: number) {
     return this.prisma.chartEventInstance.findMany({
       include: { train: true },
-      orderBy: { chartTimestamp: "desc" },
+      orderBy: { chartTimestamp: 'desc' },
       take: Math.min(limit, 500),
     });
   }
@@ -76,7 +76,7 @@ export class AdminService {
         },
         chartEventInstance: true,
       },
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: 'desc' },
       take: Math.min(limit, 500),
     });
   }

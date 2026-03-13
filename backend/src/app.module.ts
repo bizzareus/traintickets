@@ -1,18 +1,20 @@
-import { Module } from "@nestjs/common";
-import { ConfigModule } from "@nestjs/config";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { PrismaModule } from "./prisma/prisma.module";
-import { AuthModule } from "./auth/auth.module";
-import { TrainsModule } from "./trains/trains.module";
-import { StationsModule } from "./stations/stations.module";
-import { SearchModule } from "./search/search.module";
-import { MonitoringRequestsModule } from "./monitoring-requests/monitoring-requests.module";
-import { WebhookModule } from "./webhook/webhook.module";
-import { AdminModule } from "./admin/admin.module";
-import { ChartCronModule } from "./chart-cron/chart-cron.module";
-import { AvailabilityModule } from "./availability/availability.module";
-import { IrctcModule } from "./irctc/irctc.module";
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
+import { TrainsModule } from './trains/trains.module';
+import { StationsModule } from './stations/stations.module';
+import { SearchModule } from './search/search.module';
+import { MonitoringRequestsModule } from './monitoring-requests/monitoring-requests.module';
+import { WebhookModule } from './webhook/webhook.module';
+import { AdminModule } from './admin/admin.module';
+import { ChartCronModule } from './chart-cron/chart-cron.module';
+import { AvailabilityModule } from './availability/availability.module';
+import { IrctcModule } from './irctc/irctc.module';
+import { ChartTimeModule } from './chart-time/chart-time.module';
+import { Service2Module } from './service2/service2.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { IrctcModule } from "./irctc/irctc.module";
     ChartCronModule,
     AvailabilityModule,
     IrctcModule,
+    ChartTimeModule,
+    Service2Module,
   ],
   controllers: [AppController],
   providers: [AppService],

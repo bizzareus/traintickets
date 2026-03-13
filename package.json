@@ -7,8 +7,10 @@
     "dev:web": "next dev -p 3010",
     "dev:api": "cd backend && npm run start:dev",
     "build": "npm run build:api && next build",
+    "build:web": "next build",
     "build:api": "cd backend && npm run build",
-    "start": "concurrently -n api,web -c cyan,magenta \"npm run start:api\" \"next start -p 3010\"",
+    "start": "concurrently -n api,web -c cyan,magenta \"npm run start:api\" \"npm run start:web\"",
+    "start:web": "next start -p 3010",
     "start:api": "cd backend && npm run start:prod",
     "lint": "next lint",
     "db:migrate": "cd backend && npm run db:migrate",
@@ -16,17 +18,20 @@
     "db:studio": "cd backend && npm run db:studio"
   },
   "dependencies": {
+    "axios": "^1.7.0",
+    "browser-use-sdk": "^3.3.0",
     "clsx": "^2.1.1",
     "next": "14.2.35",
+    "openai": "^6.27.0",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "concurrently": "^9.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "concurrently": "^9.1.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
     "postcss": "^8",

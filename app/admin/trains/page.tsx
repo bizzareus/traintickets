@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { apiClient } from "@/lib/api";
 
 type Train = {
   id: string;
@@ -19,13 +20,9 @@ export default function AdminTrainsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
-    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
-    const headers: Record<string, string> = { "Content-Type": "application/json" };
-    if (token) headers["Authorization"] = `Bearer ${token}`;
-    fetch(`${apiUrl}/api/admin/trains`, { headers })
-      .then((r) => r.json())
-      .then((data) => setTrains(Array.isArray(data) ? data : []))
+    apiClient
+      .get<Train[]>("/api/admin/trains")
+      .then((r) => setTrains(Array.isArray(r.data) ? r.data : []))
       .catch(() => setTrains([]))
       .finally(() => setLoading(false));
   }, []);

@@ -1,18 +1,18 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from "@nestjs/common";
-import { JwtAuthGuard } from "../auth/jwt-auth.guard";
-import { AdminService } from "./admin.service";
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { AdminService } from './admin.service';
 
-@Controller("api/admin")
+@Controller('api/admin')
 @UseGuards(JwtAuthGuard)
 export class AdminController {
   constructor(private admin: AdminService) {}
 
-  @Get("trains")
+  @Get('trains')
   getTrains() {
     return this.admin.getTrains();
   }
 
-  @Post("trains")
+  @Post('trains')
   createTrain(
     @Body()
     body: {
@@ -28,12 +28,12 @@ export class AdminController {
     return this.admin.createTrain(body);
   }
 
-  @Get("chart-rules")
+  @Get('chart-rules')
   getChartRules() {
     return this.admin.getChartRules();
   }
 
-  @Post("chart-rules")
+  @Post('chart-rules')
   createChartRule(
     @Body()
     body: {
@@ -47,13 +47,13 @@ export class AdminController {
     return this.admin.createChartRule(body);
   }
 
-  @Get("chart-event-instances")
-  getChartEventInstances(@Query("limit") limit?: string) {
+  @Get('chart-event-instances')
+  getChartEventInstances(@Query('limit') limit?: string) {
     return this.admin.getChartEventInstances(limit ? Number(limit) : 100);
   }
 
-  @Get("executions")
-  getExecutions(@Query("limit") limit?: string) {
+  @Get('executions')
+  getExecutions(@Query('limit') limit?: string) {
     return this.admin.getExecutions(limit ? Number(limit) : 100);
   }
 }

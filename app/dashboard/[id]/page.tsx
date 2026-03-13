@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { apiClient } from "@/lib/api";
 
 type Request = {
   id: string;
@@ -38,20 +39,10 @@ export default function MonitoringDetailPage() {
 
   useEffect(() => {
     const id = params.id as string;
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
-    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
-    const headers: Record<string, string> = { "Content-Type": "application/json" };
-    if (token) headers["Authorization"] = `Bearer ${token}`;
-    fetch(`${apiUrl}/api/monitoring-requests/${id}`, { headers })
+    apiClient
+      .get<Request>(`/api/monitoring-requests/${id}`)
       .then((r) => {
-        if (!r.ok) return null;
-        return r.json();
-      })
-      .then((data) => {
-        if (!data) {
-          setRequest(null);
-          return;
-        }
+        const data = r.data;
         setRequest(data);
         setExecutions(data.executions ?? []);
         setAlertLogs(data.alertLogs ?? []);

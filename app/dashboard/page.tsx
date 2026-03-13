@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { apiClient } from "@/lib/api";
 
 type Request = {
   id: string;
@@ -29,16 +30,13 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
-    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
-    const headers: Record<string, string> = { "Content-Type": "application/json" };
-    if (token) headers["Authorization"] = `Bearer ${token}`;
-    fetch(`${apiUrl}/api/auth/me`, { headers })
-      .then((r) => r.json())
-      .then((data) => {
+    apiClient
+      .get<{ user?: { id: string; name: string; email: string } }>("/api/auth/me")
+      .then((r) => {
+        const data = r.data;
         setUser(data.user ?? null);
-        if (!data.user) return [];
-        return fetch(`${apiUrl}/api/monitoring-requests`, { headers }).then((r) => r.json());
+        if (!data.user) return [] as Request[];
+        return apiClient.get<Request[]>("/api/monitoring-requests").then((res) => res.data);
       })
       .then((data) => setRequests(Array.isArray(data) ? data : []))
       .catch(() => setRequests([]))

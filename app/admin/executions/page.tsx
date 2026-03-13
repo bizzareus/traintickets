@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { apiClient } from "@/lib/api";
 
 type Execution = {
   id: string;
@@ -21,13 +22,9 @@ export default function AdminExecutionsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
-    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
-    const headers: Record<string, string> = { "Content-Type": "application/json" };
-    if (token) headers["Authorization"] = `Bearer ${token}`;
-    fetch(`${apiUrl}/api/admin/executions?limit=100`, { headers })
-      .then((r) => r.json())
-      .then((data) => setExecutions(Array.isArray(data) ? data : []))
+    apiClient
+      .get<Execution[]>("/api/admin/executions", { params: { limit: 100 } })
+      .then((r) => setExecutions(Array.isArray(r.data) ? r.data : []))
       .catch(() => setExecutions([]))
       .finally(() => setLoading(false));
   }, []);

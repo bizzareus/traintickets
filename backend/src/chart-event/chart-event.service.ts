@@ -1,8 +1,8 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 
 function toChartTimestamp(journeyDate: Date, chartTimeLocal: string): Date {
-  const [hours, minutes] = chartTimeLocal.split(":").map(Number);
+  const [hours, minutes] = chartTimeLocal.split(':').map(Number);
   const local = new Date(journeyDate);
   local.setHours(hours, minutes, 0, 0);
   const offset = 5.5 * 60 * 60 * 1000;
@@ -20,7 +20,7 @@ export class ChartEventService {
   ): Promise<void> {
     const rules = await this.prisma.chartRule.findMany({
       where: { trainId, stationCode, active: true },
-      orderBy: { sequenceNumber: "asc" },
+      orderBy: { sequenceNumber: 'asc' },
     });
 
     for (const rule of rules) {

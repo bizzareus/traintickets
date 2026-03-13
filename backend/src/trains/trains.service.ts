@@ -1,5 +1,5 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class TrainsService {
@@ -9,7 +9,10 @@ export class TrainsService {
     return this.prisma.train.findMany({
       where: { active: true },
       include: {
-        chartRules: { where: { active: true }, orderBy: { sequenceNumber: "asc" } },
+        chartRules: {
+          where: { active: true },
+          orderBy: { sequenceNumber: 'asc' },
+        },
       },
     });
   }
@@ -18,10 +21,13 @@ export class TrainsService {
     const train = await this.prisma.train.findUnique({
       where: { id },
       include: {
-        chartRules: { where: { active: true }, orderBy: { sequenceNumber: "asc" } },
+        chartRules: {
+          where: { active: true },
+          orderBy: { sequenceNumber: 'asc' },
+        },
       },
     });
-    if (!train) throw new NotFoundException("Train not found");
+    if (!train) throw new NotFoundException('Train not found');
     return train;
   }
 }

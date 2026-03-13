@@ -1,6 +1,6 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
-import { AlertChannel, AlertLogStatus } from "@prisma/client";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { AlertChannel, AlertLogStatus } from '@prisma/client';
 
 @Injectable()
 export class AlertService {
@@ -16,21 +16,21 @@ export class AlertService {
       deepLink?: string;
     },
   ): Promise<void> {
-    const message = `Seats available on ${payload.trainName} (${payload.trainNumber}) from ${payload.stationCode} on ${payload.journeyDate}. Book immediately.${payload.deepLink ? ` ${payload.deepLink}` : ""}`;
+    const message = `Seats available on ${payload.trainName} (${payload.trainNumber}) from ${payload.stationCode} on ${payload.journeyDate}. Book immediately.${payload.deepLink ? ` ${payload.deepLink}` : ''}`;
 
-    const channels: AlertChannel[] = ["whatsapp", "call", "push"];
+    const channels: AlertChannel[] = ['whatsapp', 'call', 'push'];
 
     for (const channel of channels) {
-      let status: AlertLogStatus = "sent";
+      let status: AlertLogStatus = 'sent';
       try {
-        if (process.env.NODE_ENV === "development") {
-          console.log("[AlertLog]", channel, status, message.slice(0, 80));
+        if (process.env.NODE_ENV === 'development') {
+          console.log('[AlertLog]', channel, status, message.slice(0, 80));
         }
         await this.prisma.alertLog.create({
           data: { monitoringRequestId, channel, status },
         });
       } catch {
-        status = "failed";
+        status = 'failed';
         await this.prisma.alertLog.create({
           data: { monitoringRequestId, channel, status },
         });

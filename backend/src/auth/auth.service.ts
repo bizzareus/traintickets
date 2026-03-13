@@ -1,7 +1,11 @@
-import { Injectable, UnauthorizedException, ConflictException } from "@nestjs/common";
-import { JwtService } from "@nestjs/jwt";
-import * as bcrypt from "bcrypt";
-import { PrismaService } from "../prisma/prisma.service";
+import {
+  Injectable,
+  UnauthorizedException,
+  ConflictException,
+} from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class AuthService {
@@ -10,9 +14,16 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async register(data: { name: string; email: string; password: string; phone?: string }) {
-    const existing = await this.prisma.user.findUnique({ where: { email: data.email } });
-    if (existing) throw new ConflictException("Email already registered");
+  async register(data: {
+    name: string;
+    email: string;
+    password: string;
+    phone?: string;
+  }) {
+    const existing = await this.prisma.user.findUnique({
+      where: { email: data.email },
+    });
+    if (existing) throw new ConflictException('Email already registered');
     const passwordHash = await bcrypt.hash(data.password, 10);
     const user = await this.prisma.user.create({
       data: {
@@ -23,15 +34,21 @@ export class AuthService {
       },
     });
     const token = this.jwtService.sign({ sub: user.id });
-    return { user: { id: user.id, name: user.name, email: user.email }, accessToken: token };
+    return {
+      user: { id: user.id, name: user.name, email: user.email },
+      accessToken: token,
+    };
   }
 
   async login(email: string, password: string) {
     const user = await this.prisma.user.findUnique({ where: { email } });
     if (!user || !(await bcrypt.compare(password, user.passwordHash)))
-      throw new UnauthorizedException("Invalid email or password");
+      throw new UnauthorizedException('Invalid email or password');
     const token = this.jwtService.sign({ sub: user.id });
-    return { user: { id: user.id, name: user.name, email: user.email }, accessToken: token };
+    return {
+      user: { id: user.id, name: user.name, email: user.email },
+      accessToken: token,
+    };
   }
 
   async me(userId: string) {

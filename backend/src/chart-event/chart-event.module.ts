@@ -1,5 +1,5 @@
-import { Module } from "@nestjs/common";
-import { ChartEventService } from "./chart-event.service";
+import { Module } from '@nestjs/common';
+import { ChartEventService } from './chart-event.service';
 
 @Module({
   providers: [ChartEventService],

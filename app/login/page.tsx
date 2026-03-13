@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { apiClient } from "@/lib/api";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,20 +14,15 @@ export default function LoginPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
-    const res = await fetch(`${apiUrl}/api/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setError(data.message ?? data.error ?? "Login failed");
-      return;
+    try {
+      const { data } = await apiClient.post<{ accessToken?: string; message?: string; error?: string }>("/api/auth/login", { email, password });
+      if (data.accessToken) localStorage.setItem("accessToken", data.accessToken);
+      router.push("/dashboard");
+      router.refresh();
+    } catch (err: unknown) {
+      const ax = err as { response?: { data?: { message?: string; error?: string } } };
+      setError(ax.response?.data?.message ?? ax.response?.data?.error ?? "Login failed");
     }
-    if (data.accessToken) localStorage.setItem("accessToken", data.accessToken);
-    router.push("/dashboard");
-    router.refresh();
   }
 
   return (

@@ -1,39 +1,73 @@
-import { Body, Controller, Get, Param, Post, ServiceUnavailableException } from "@nestjs/common";
-import { AvailabilityService } from "./availability.service";
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  ServiceUnavailableException,
+} from '@nestjs/common';
+import { AvailabilityService } from './availability.service';
+import { JourneyTaskService } from './journey-task.service';
 
-@Controller("api/availability")
+@Controller('api/availability')
 export class AvailabilityController {
-  constructor(private availability: AvailabilityService) {}
+  constructor(
+    private availability: AvailabilityService,
+    private journeyTask: JourneyTaskService,
+  ) {}
 
-  @Post("check")
+  @Post('check')
   async startCheck(
-    @Body("trainNumber") trainNumber: string,
-    @Body("stationCode") stationCode: string,
-    @Body("classCode") classCode: string,
-    @Body("journeyDate") journeyDate: string,
+    @Body('trainNumber') trainNumber: string,
+    @Body('trainName') trainName: string,
+    @Body('stationCode') stationCode: string,
+    @Body('fromStationName') fromStationName: string,
+    @Body('toStationCode') toStationCode: string,
+    @Body('toStationName') toStationName: string,
+    @Body('classCode') classCode: string,
+    @Body('journeyDate') journeyDate: string,
+    @Body('passengerDetails') passengerDetails: string,
   ) {
     const normalized = {
-      trainNumber: String(trainNumber ?? "").trim(),
-      stationCode: String(stationCode ?? "").trim().toUpperCase(),
-      classCode: String(classCode ?? "3A").trim().toUpperCase(),
-      journeyDate: String(journeyDate ?? "").trim(),
+      trainNumber: String(trainNumber ?? '').trim(),
+      trainName: String(trainName ?? '').trim(),
+      stationCode: String(stationCode ?? '')
+        .trim()
+        .toUpperCase(),
+      fromStationName: String(fromStationName ?? '').trim(),
+      toStationCode:
+        String(toStationCode ?? '')
+          .trim()
+          .toUpperCase() || undefined,
+      toStationName: String(toStationName ?? '').trim(),
+      classCode: String(classCode ?? '3A')
+        .trim()
+        .toUpperCase(),
+      journeyDate: String(journeyDate ?? '').trim(),
+      passengerDetails: passengerDetails
+        ? String(passengerDetails).trim()
+        : undefined,
     };
-    if (!normalized.trainNumber || !normalized.stationCode || !normalized.journeyDate) {
-      return { error: "trainNumber, stationCode and journeyDate are required" };
+    if (
+      !normalized.trainNumber ||
+      !normalized.stationCode ||
+      !normalized.journeyDate
+    ) {
+      return { error: 'trainNumber, stationCode and journeyDate are required' };
     }
     try {
       return await this.availability.startCheck(normalized);
     } catch {
       throw new ServiceUnavailableException(
-        "Availability check service is temporarily unavailable. Please try again later."
+        'Availability check service is temporarily unavailable. Please try again later.',
       );
     }
   }
 
-  @Get("check/:jobId")
-  async getCheck(@Param("jobId") jobId: string) {
+  @Get('check/:jobId')
+  async getCheck(@Param('jobId') jobId: string) {
     const check = await this.availability.getByJobId(jobId);
-    if (!check) return { error: "Not found", status: null };
+    if (!check) return { error: 'Not found', status: null };
     return {
       id: check.id,
       jobId: check.jobId,
@@ -44,6 +78,89 @@ export class AvailabilityController {
       journeyDate: check.journeyDate?.toISOString?.()?.slice(0, 10),
       resultPayload: check.resultPayload,
       completedAt: check.completedAt?.toISOString?.() ?? null,
+    };
+  }
+
+  /**
+   * Poll this endpoint with the jobId returned from POST /check to get status and output.
+   * When status is 'success' or 'failed', polling can stop.
+   */
+  @Get('job/:jobId/status')
+  async getJobStatus(@Param('jobId') jobId: string) {
+    try {
+      return await this.availability.getJobStatus(jobId);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      return {
+        status: 'failed',
+        output: null,
+        resultPayload: { error: message },
+      };
+    }
+  }
+
+  /**
+   * Create journey tasks: one per station in route, each scheduled at that station's chart time.
+   * If chart time for that date is already past, runs Browser Use immediately.
+   * Requires chart times to be set (e.g. POST /api/chart-time for train 29251, NDLS, 19:54).
+   */
+  @Post('journey')
+  async createJourney(
+    @Body('trainNumber') trainNumber: string,
+    @Body('trainName') trainName: string,
+    @Body('fromStationCode') fromStationCode: string,
+    @Body('toStationCode') toStationCode: string,
+    @Body('journeyDate') journeyDate: string,
+    @Body('classCode') classCode: string,
+  ) {
+    const normalized = {
+      trainNumber: String(trainNumber ?? '').trim(),
+      trainName: trainName ? String(trainName).trim() : undefined,
+      fromStationCode: String(fromStationCode ?? '')
+        .trim()
+        .toUpperCase(),
+      toStationCode: String(toStationCode ?? '')
+        .trim()
+        .toUpperCase(),
+      journeyDate: String(journeyDate ?? '').trim(),
+      classCode: String(classCode ?? '3A')
+        .trim()
+        .toUpperCase(),
+    };
+    if (
+      !normalized.trainNumber ||
+      !normalized.fromStationCode ||
+      !normalized.toStationCode ||
+      !normalized.journeyDate
+    ) {
+      return {
+        error:
+          'trainNumber, fromStationCode, toStationCode and journeyDate are required',
+      };
+    }
+    try {
+      return await this.journeyTask.createJourneyTasks(normalized);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      throw new ServiceUnavailableException(message);
+    }
+  }
+
+  @Get('journey/:journeyRequestId')
+  async getJourneyTasks(@Param('journeyRequestId') journeyRequestId: string) {
+    const tasks =
+      await this.journeyTask.getTasksByJourneyRequestId(journeyRequestId);
+    if (!tasks.length) return { error: 'Not found', tasks: [] };
+    return {
+      journeyRequestId,
+      tasks: tasks.map((t) => ({
+        id: t.id,
+        stationCode: t.stationCode,
+        chartAt: t.chartAt.toISOString(),
+        status: t.status,
+        resultPayload: t.resultPayload,
+        completedAt: t.completedAt?.toISOString?.() ?? null,
+      })),
     };
   }
 }

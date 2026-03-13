@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
 
 export function getApiUrl(): string {
@@ -12,10 +14,12 @@ export function getAuthHeaders(): Record<string, string> {
   return headers;
 }
 
-export async function apiFetch(path: string, options: RequestInit = {}) {
-  const url = path.startsWith("http") ? path : `${getApiUrl()}${path}`;
-  return fetch(url, {
-    ...options,
-    headers: { ...getAuthHeaders(), ...(options.headers as Record<string, string>) },
-  });
-}
+export const apiClient = axios.create({
+  baseURL: API_URL,
+  headers: { "Content-Type": "application/json" },
+});
+
+apiClient.interceptors.request.use((config) => {
+  config.headers = { ...getAuthHeaders(), ...config.headers } as typeof config.headers;
+  return config;
+});
