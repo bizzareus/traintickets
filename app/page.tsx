@@ -158,6 +158,17 @@ type CheckResult = {
   };
 };
 
+/** IRCTC class options: code and display label (matches IRCTC train-chart class selector). */
+const TRAIN_CLASSES = [
+  { code: "1A", label: "AC First Class (1A)" },
+  { code: "2A", label: "AC 2 Tier (2A)" },
+  { code: "3A", label: "AC 3 Tier (3A)" },
+  { code: "3E", label: "AC 3 Economy (3E)" },
+  { code: "CC", label: "AC Chair car (CC)" },
+  { code: "EC", label: "Exec. Chair Car (EC)" },
+  { code: "SL", label: "Sleeper (SL)" },
+] as const;
+
 function getDateOptions() {
   const today = new Date();
   const yesterday = new Date(today);
@@ -181,6 +192,7 @@ export default function HomePage() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [journeyDate, setJourneyDate] = useState(defaultDate);
+  const [selectedClassCode, setSelectedClassCode] = useState("3A");
   const [stations, setStations] = useState<Station[]>([]);
   const [trainOptions, setTrainOptions] = useState<TrainOption[]>([]);
   const [trainsLoading, setTrainsLoading] = useState(true);
@@ -203,9 +215,7 @@ export default function HomePage() {
   useEffect(() => {
     apiClient
       .get<TrainOption[]>("/api/irctc/trains")
-      .then((r) =>
-        setTrainOptions(Array.isArray(r.data) ? r.data : []),
-      )
+      .then((r) => setTrainOptions(Array.isArray(r.data) ? r.data : []))
       .catch(() => setTrainOptions([]))
       .finally(() => setTrainsLoading(false));
   }, []);
@@ -252,13 +262,19 @@ export default function HomePage() {
           setScheduleStations([]);
         }
       })
-      .catch((err: { response?: { data?: { message?: string; error?: string } } }) => {
-        const data = err.response?.data;
-        const msg =
-          data?.message ?? data?.error ?? "Failed to load schedule. Please try again.";
-        setScheduleError(msg);
-        setScheduleStations(null);
-      })
+      .catch(
+        (err: {
+          response?: { data?: { message?: string; error?: string } };
+        }) => {
+          const data = err.response?.data;
+          const msg =
+            data?.message ??
+            data?.error ??
+            "Failed to load schedule. Please try again.";
+          setScheduleError(msg);
+          setScheduleStations(null);
+        },
+      )
       .finally(() => setScheduleLoading(false));
   }, [trainNumber, trainSelected]);
   const fromCode = from.includes(" - ")
@@ -281,7 +297,7 @@ export default function HomePage() {
         trainNumber: trainNumber.trim(),
         stationCode: fromCode,
         journeyDate: journeyDate.trim(),
-        classCode: "3A",
+        classCode: selectedClassCode,
         destinationStation: toCode || undefined,
       });
       setCheckResult({
@@ -301,8 +317,14 @@ export default function HomePage() {
       });
       if (data.vacantBerth?.error) setError(String(data.vacantBerth.error));
     } catch (err: unknown) {
-      const ax = err as { response?: { data?: { message?: string; error?: string } } };
-      setError(ax.response?.data?.message ?? ax.response?.data?.error ?? "Request failed. Is the API running?");
+      const ax = err as {
+        response?: { data?: { message?: string; error?: string } };
+      };
+      setError(
+        ax.response?.data?.message ??
+          ax.response?.data?.error ??
+          "Request failed. Is the API running?",
+      );
     } finally {
       setLoading(false);
     }
@@ -495,6 +517,32 @@ export default function HomePage() {
                   </select>
                 </div>
               </div>
+
+              <div className="min-w-0">
+                <label className="block text-sm font-semibold text-slate-500 mb-2">
+                  Class
+                </label>
+                <div className="flex flex-wrap gap-x-4 gap-y-3">
+                  {TRAIN_CLASSES.map(({ code, label }) => (
+                    <label
+                      key={code}
+                      className="flex items-center gap-2 min-h-[44px] cursor-pointer"
+                    >
+                      <input
+                        type="radio"
+                        name="trainClass"
+                        value={code}
+                        checked={selectedClassCode === code}
+                        onChange={() => setSelectedClassCode(code)}
+                        className="h-4 w-4 border-slate-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="text-sm text-slate-700 select-none">
+                        {label}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="p-4 pt-0">
@@ -511,22 +559,43 @@ export default function HomePage() {
 
         {!loading && !checkResult && (
           <section className="mt-8 mb-4">
-            <h2 className="text-center text-base font-semibold text-slate-800 mb-6">How it works</h2>
+            <h2 className="text-center text-base font-semibold text-slate-800 mb-6">
+              How it works
+            </h2>
             <div className="grid grid-cols-1 gap-6">
               <div className="flex flex-col items-center text-center">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-3">1</div>
-                <h3 className="font-medium text-slate-800 text-sm mb-1">Search</h3>
-                <p className="text-slate-500 text-sm">Enter your train, from, to and date above.</p>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-3">
+                  1
+                </div>
+                <h3 className="font-medium text-slate-800 text-sm mb-1">
+                  Search
+                </h3>
+                <p className="text-slate-500 text-sm">
+                  Enter your train, from, to and date above.
+                </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-3">2</div>
-                <h3 className="font-medium text-slate-800 text-sm mb-1">We find options</h3>
-                <p className="text-slate-500 text-sm">We check availability and suggest the best seat options for you.</p>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-3">
+                  2
+                </div>
+                <h3 className="font-medium text-slate-800 text-sm mb-1">
+                  We find options
+                </h3>
+                <p className="text-slate-500 text-sm">
+                  We check availability and suggest the best seat options for
+                  you.
+                </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-3">3</div>
-                <h3 className="font-medium text-slate-800 text-sm mb-1">Book</h3>
-                <p className="text-slate-500 text-sm">Click Book on a journey to complete your booking on IRCTC.</p>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-3">
+                  3
+                </div>
+                <h3 className="font-medium text-slate-800 text-sm mb-1">
+                  Book
+                </h3>
+                <p className="text-slate-500 text-sm">
+                  Click Book on a journey to complete your booking on IRCTC.
+                </p>
               </div>
             </div>
           </section>
@@ -573,23 +642,10 @@ export default function HomePage() {
                         <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-600">
                           <span>{payload.composition?.from ?? fromCode}</span>
                           <ChevronRightIcon className="h-4 w-4 shrink-0 text-slate-400" />
-                          <span>{(payload.composition?.to ?? toCode) || "—"}</span>
+                          <span>
+                            {(payload.composition?.to ?? toCode) || "—"}
+                          </span>
                         </p>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span className="flex items-center gap-1 rounded-lg bg-amber-50 px-2.5 py-1.5 text-sm font-medium text-amber-700">
-                          <StarIcon className="h-4 w-4" />
-                          3.9
-                        </span>
-                        <a
-                          href={`https://www.irctc.co.in/eticketing/trainBetweenStations.html?trainNo=${encodeURIComponent(trainNumber)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 text-sm font-medium text-slate-600 active:text-blue-600 transition min-h-[44px] items-center"
-                        >
-                          <ScheduleIcon className="h-4 w-4" />
-                          Schedule
-                        </a>
                       </div>
                     </div>
                   </div>
@@ -609,6 +665,8 @@ export default function HomePage() {
                         const origin = parts[0]?.trim() ?? "";
                         const destination = parts[1]?.trim() ?? "";
                         const classCode = parts[2]?.trim() ?? "3A";
+                        // IRCTC URL expects 2A, 3A, 1A (not 2AC, 3AC, 1AC)
+                        const irctcClass = classCode.replace(/AC$/i, "A");
                         const stationLabel = (code: string) => {
                           const s = stationsForRoute.find(
                             (x) =>
@@ -628,36 +686,43 @@ export default function HomePage() {
                             : null;
                         const bookUrl =
                           origin && destination && trainNumber
-                            ? `https://www.irctc.co.in/nget/redirect?${new URLSearchParams({
-                                origin,
-                                destination,
-                                trainNo: trainNumber,
-                                class: classCode,
-                                quota: "GN",
-                              }).toString()}`
+                            ? `https://www.irctc.co.in/nget/redirect?${new URLSearchParams(
+                                {
+                                  from: origin,
+                                  to: destination,
+                                  trainNo: trainNumber,
+                                  class: irctcClass,
+                                  page: "train-chart",
+                                },
+                              ).toString()}`
                             : "https://www.irctc.co.in/eticketing/login";
                         return (
                           <div
                             key={i}
                             className="flex flex-col rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 py-4 w-full shadow-sm"
                           >
-                            <p className="text-xs text-slate-500 mb-1.5">
-                              Segment {i + 1}
+                            <p className="text-2m font-semibold text-slate-500 mb-1.5">
+                              Ticket {i + 1}
+                              <span className="ml-5 inline-flex w-fit rounded-md bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-800">
+                                {classCode}
+                              </span>
                             </p>
-                            <span className="inline-flex w-fit rounded-md bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-800">
-                              {classCode}
-                            </span>
+
                             <p className="mt-2 text-sm font-medium text-slate-800 line-clamp-2">
-                              {routeLabel}
+                              {" "}
+                              <span className="font-semibold">
+                                {routeLabel}
+                              </span>
                             </p>
                             {price != null && (
                               <p className="mt-2 text-base font-semibold text-slate-900">
+                                <span className="text-xs text-slate-500">
+                                  approx
+                                </span>{" "}
                                 ₹{price.toLocaleString("en-IN")}
                               </p>
                             )}
-                            <p className="mt-1 text-xs text-emerald-700 font-medium">
-                              Confirm or 3X Refund*
-                            </p>
+
                             <a
                               href={bookUrl}
                               target="_blank"
@@ -675,17 +740,9 @@ export default function HomePage() {
                   {typeof payload.openAiTotalPrice === "number" && (
                     <div className="border-t border-slate-100 px-4 py-3 flex justify-end">
                       <span className="text-slate-800 font-semibold text-sm">
-                        Total approx. fare: ₹
+                        Total approx. fare: ~ ₹
                         {payload.openAiTotalPrice.toLocaleString("en-IN")}
                       </span>
-                    </div>
-                  )}
-
-                  {payload.openAiSummary != null && String(payload.openAiSummary).trim() !== "" && (
-                    <div className="border-t border-slate-100 px-4 py-3">
-                      <p className="text-sm text-slate-600 whitespace-pre-wrap">
-                        {String(payload.openAiSummary)}
-                      </p>
                     </div>
                   )}
                 </div>
@@ -695,15 +752,6 @@ export default function HomePage() {
                     <h2 className="text-base font-bold text-slate-900">
                       {trainNumber} {payload.composition?.trainName ?? ""}
                     </h2>
-                    <a
-                      href={`https://www.irctc.co.in/eticketing/trainBetweenStations.html?trainNo=${encodeURIComponent(trainNumber)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-slate-600 active:text-blue-600 flex items-center gap-1.5 min-h-[44px]"
-                    >
-                      <ScheduleIcon className="h-4 w-4" />
-                      Schedule
-                    </a>
                   </div>
                   <div className="p-4">
                     <div className="rounded-xl border border-red-200/80 bg-red-50/60 px-4 py-6 text-center">
