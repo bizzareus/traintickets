@@ -60,32 +60,6 @@ function SwapIcon({ className }: { className?: string }) {
   );
 }
 
-function StarIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-    </svg>
-  );
-}
-
-function ScheduleIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={1.5}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75c.621 0 1.125.504 1.125 1.125v18.75c0 .621-.504 1.125-1.125 1.125h-3.75m-6-3.75H7.5m-9 0h-.375c-.621 0-1.125.504-1.125 1.125v18.75c0 .621.504 1.125 1.125 1.125h.375M7.5 6v.75H3M7.5 6h.375M7.5 6v-.375M7.5 6h.375M7.5 6v.75H3m0 3h.375M3 9.75h.375M3 9.75v.375M3 9.75V12m0 0h.375M3 12v.375M3 12h.375M3 12v.75"
-      />
-    </svg>
-  );
-}
-
 function ChevronRightIcon({ className }: { className?: string }) {
   return (
     <svg
