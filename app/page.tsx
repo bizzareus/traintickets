@@ -158,17 +158,6 @@ type CheckResult = {
   };
 };
 
-/** IRCTC class options: code and display label (matches IRCTC train-chart class selector). */
-const TRAIN_CLASSES = [
-  { code: "1A", label: "AC First Class (1A)" },
-  { code: "2A", label: "AC 2 Tier (2A)" },
-  { code: "3A", label: "AC 3 Tier (3A)" },
-  { code: "3E", label: "AC 3 Economy (3E)" },
-  { code: "CC", label: "AC Chair car (CC)" },
-  { code: "EC", label: "Exec. Chair Car (EC)" },
-  { code: "SL", label: "Sleeper (SL)" },
-] as const;
-
 function getDateOptions() {
   const today = new Date();
   const yesterday = new Date(today);
@@ -192,7 +181,6 @@ export default function HomePage() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [journeyDate, setJourneyDate] = useState(defaultDate);
-  const [selectedClassCode, setSelectedClassCode] = useState("3A");
   const [stations, setStations] = useState<Station[]>([]);
   const [trainOptions, setTrainOptions] = useState<TrainOption[]>([]);
   const [trainsLoading, setTrainsLoading] = useState(true);
@@ -297,7 +285,7 @@ export default function HomePage() {
         trainNumber: trainNumber.trim(),
         stationCode: fromCode,
         journeyDate: journeyDate.trim(),
-        classCode: selectedClassCode,
+        classCode: "3A",
         destinationStation: toCode || undefined,
       });
       setCheckResult({
@@ -515,32 +503,6 @@ export default function HomePage() {
                       </option>
                     ))}
                   </select>
-                </div>
-              </div>
-
-              <div className="min-w-0">
-                <label className="block text-sm font-semibold text-slate-500 mb-2">
-                  Class
-                </label>
-                <div className="flex flex-wrap gap-x-4 gap-y-3">
-                  {TRAIN_CLASSES.map(({ code, label }) => (
-                    <label
-                      key={code}
-                      className="flex items-center gap-2 min-h-[44px] cursor-pointer"
-                    >
-                      <input
-                        type="radio"
-                        name="trainClass"
-                        value={code}
-                        checked={selectedClassCode === code}
-                        onChange={() => setSelectedClassCode(code)}
-                        className="h-4 w-4 border-slate-300 text-blue-600 focus:ring-blue-500"
-                      />
-                      <span className="text-sm text-slate-700 select-none">
-                        {label}
-                      </span>
-                    </label>
-                  ))}
                 </div>
               </div>
             </div>
