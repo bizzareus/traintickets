@@ -205,6 +205,8 @@ export type Service2CheckResult = {
   openAiBookingPlan?: { instruction: string; approx_price: number }[];
   /** Total approximate fare for the journey in INR. */
   openAiTotalPrice?: number;
+  /** Train schedule (station list with times) for UI to show dep/arr times. */
+  trainSchedule?: TrainScheduleResponse | null;
 };
 
 export type OpenAIStructuredSeat = {
@@ -412,6 +414,7 @@ export class Service2Service {
       openAiStructuredSeats: resultOpenAiStructuredSeats,
       openAiBookingPlan: resultOpenAiBookingPlan,
       openAiTotalPrice: resultOpenAiTotalPrice,
+      trainSchedule: trainSchedule ?? undefined,
     };
   }
 }

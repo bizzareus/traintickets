@@ -118,6 +118,9 @@ type CheckResult = {
     openAiSummary?: string | null;
     openAiBookingPlan?: { instruction?: string; approx_price?: number }[];
     openAiTotalPrice?: number;
+    trainSchedule?: {
+      stationList?: { stationCode?: string; stationName?: string; arrivalTime?: string; departureTime?: string }[];
+    } | null;
     attempts?: { time?: string; action?: string; result?: string }[];
     bookings?: { from?: string; to?: string; status?: string }[];
     fullJourneyConfirmed?: boolean;
@@ -273,6 +276,7 @@ export default function HomePage() {
           openAiStructuredSeats: data.openAiStructuredSeats ?? [],
           openAiBookingPlan: data.openAiBookingPlan ?? [],
           openAiTotalPrice: data.openAiTotalPrice,
+          trainSchedule: data.trainSchedule ?? undefined,
           vbd: data.vacantBerth?.vbd ?? [],
           error: data.vacantBerth?.error ?? null,
         },
@@ -582,6 +586,15 @@ export default function HomePage() {
                             {(payload.composition?.to ?? toCode) || "—"}
                           </span>
                         </p>
+                        {payload.chartPreparationDetails?.firstChartCreationTime && (
+                          <p className="mt-1.5 text-xs text-slate-500">
+                            Chart preparation:{" "}
+                            {payload.chartPreparationDetails.firstChartCreationTime}
+                            {payload.chartPreparationDetails.chartingStationCode
+                              ? ` at ${payload.chartPreparationDetails.chartingStationCode}`
+                              : ""}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -611,10 +624,28 @@ export default function HomePage() {
                           );
                           return s ? `${s.code} - ${s.name}` : code;
                         };
-                        const routeLabel =
-                          origin && destination
-                            ? `${stationLabel(origin)} → ${stationLabel(destination)}`
-                            : instruction;
+                        const scheduleList = payload.trainSchedule?.stationList ?? [];
+                        const originStation = scheduleList.find(
+                          (st) =>
+                            String(st.stationCode ?? "").toUpperCase() ===
+                            origin.toUpperCase(),
+                        );
+                        const destStation = scheduleList.find(
+                          (st) =>
+                            String(st.stationCode ?? "").toUpperCase() ===
+                            destination.toUpperCase(),
+                        );
+                        const dateLabel =
+                          journeyDate &&
+                          (() => {
+                            const d = new Date(journeyDate + "T12:00:00");
+                            return isNaN(d.getTime())
+                              ? ""
+                              : d.toLocaleDateString("en-IN", {
+                                  day: "numeric",
+                                  month: "short",
+                                });
+                          })();
                         const price =
                           typeof item === "object" &&
                           typeof item?.approx_price === "number"
@@ -644,12 +675,42 @@ export default function HomePage() {
                               </span>
                             </p>
 
-                            <p className="mt-2 text-sm font-medium text-slate-800 line-clamp-2">
-                              {" "}
-                              <span className="font-semibold">
-                                {routeLabel}
-                              </span>
-                            </p>
+                            <div className="mt-2 text-sm font-medium text-slate-800">
+                              <div className="flex flex-wrap items-baseline gap-x-1 gap-y-0.5">
+                                <span className="font-semibold">
+                                  {stationLabel(origin)}
+                                </span>
+                                {(originStation?.departureTime || dateLabel) && (
+                                  <span className="text-xs text-slate-500 font-normal">
+                                    {originStation?.departureTime
+                                      ? `Dep ${originStation.departureTime}${dateLabel ? `, ${dateLabel}` : ""}`
+                                      : dateLabel
+                                        ? dateLabel
+                                        : ""}
+                                  </span>
+                                )}
+                              </div>
+                              <div className="mt-0.5 flex items-center gap-1.5 text-slate-500">
+                                <ChevronRightIcon className="h-3.5 w-3.5 shrink-0" />
+                              </div>
+                              <div className="flex flex-wrap items-baseline gap-x-1 gap-y-0.5">
+                                <span className="font-semibold">
+                                  {stationLabel(destination)}
+                                </span>
+                                {(destStation?.arrivalTime ||
+                                  destStation?.departureTime ||
+                                  dateLabel) && (
+                                  <span className="text-xs text-slate-500 font-normal">
+                                    {(destStation?.arrivalTime ??
+                                      destStation?.departureTime)
+                                      ? `Arr ${destStation?.arrivalTime ?? destStation?.departureTime}${dateLabel ? `, ${dateLabel}` : ""}`
+                                      : dateLabel
+                                        ? dateLabel
+                                        : ""}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
                             {price != null && (
                               <p className="mt-2 text-base font-semibold text-slate-900">
                                 <span className="text-xs text-slate-500">
