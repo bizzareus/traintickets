@@ -179,9 +179,24 @@ const OPENAI_RESPONSE_JSON_SCHEMA = {
   additionalProperties: false,
 };
 
+/** True if chart time (jDate at chartTimeLocal in IST) is still in the future. */
+function isChartTimeInFuture(jDate: string, chartTimeLocal: string): boolean {
+  const match = String(chartTimeLocal)
+    .trim()
+    .match(/^(\d{1,2}):?(\d{2})/);
+  if (!match) return false;
+  const hour = parseInt(match[1], 10);
+  const minute = parseInt(match[2], 10);
+  const chartIst = new Date(
+    `${jDate}T${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}:00+05:30`,
+  );
+  const now = new Date();
+  return chartIst.getTime() > now.getTime();
+}
+
 export type Service2CheckResult = {
   status: 'success' | 'failed';
-  composition: {
+  composition?: {
     trainNo: string;
     trainName: string;
     from: string;
@@ -207,6 +222,10 @@ export type Service2CheckResult = {
   openAiTotalPrice?: number;
   /** Train schedule (station list with times) for UI to show dep/arr times. */
   trainSchedule?: TrainScheduleResponse | null;
+  /** When chart is not yet prepared or composition returned "Chart not prepared". */
+  chartStatus?:
+    | { kind: 'not_prepared_yet'; message: string }
+    | { kind: 'chart_error'; error: string };
 };
 
 export type OpenAIStructuredSeat = {
@@ -250,11 +269,61 @@ export class Service2Service {
 
     const trainSchedule = await this.irctc.getTrainSchedule(trainNo);
 
-    const composition = await this.irctc.getTrainComposition({
+    const chartTimeFromDb = await this.chartTime.getChartTime(
       trainNo,
-      jDate,
       boardingStation,
-    });
+    );
+
+    if (chartTimeFromDb && isChartTimeInFuture(jDate, chartTimeFromDb)) {
+      return {
+        status: 'failed',
+        chartStatus: {
+          kind: 'not_prepared_yet',
+          message:
+            'Chart is not prepared for this journey date yet. Please wait until chart preparation time or check IRCTC for ticket availability.',
+        },
+        vacantBerth: { vbd: [], error: null },
+      };
+    }
+
+    let composition: Awaited<ReturnType<IrctcService['getTrainComposition']>>;
+    try {
+      composition = await this.irctc.getTrainComposition({
+        trainNo,
+        jDate,
+        boardingStation,
+      });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      if (/chart\s+not\s+prepared/i.test(msg)) {
+        return {
+          status: 'failed',
+          chartStatus: { kind: 'chart_error', error: 'Chart not prepared' },
+          vacantBerth: { vbd: [], error: null },
+        };
+      }
+      throw err;
+    }
+
+    if (!chartTimeFromDb && composition.chartOneDate) {
+      const match = composition.chartOneDate.match(
+        /\d{4}-\d{2}-\d{2}\s+(\d{1,2}):(\d{2})/,
+      );
+      const timeLocal = match
+        ? `${match[1].padStart(2, '0')}:${match[2].padStart(2, '0')}`
+        : null;
+      if (timeLocal && isChartTimeInFuture(jDate, timeLocal)) {
+        return {
+          status: 'failed',
+          chartStatus: {
+            kind: 'not_prepared_yet',
+            message:
+              'Chart is not prepared for this journey date yet. Please wait until chart preparation time or check IRCTC for ticket availability.',
+          },
+          vacantBerth: { vbd: [], error: null },
+        };
+      }
+    }
 
     const classes = [
       ...new Set(
@@ -484,7 +553,7 @@ function buildOpenAIUserMessage(ctx: {
   journeyDate: string;
   classCode: string;
   passengerDetails?: string;
-  composition: Service2CheckResult['composition'];
+  composition: NonNullable<Service2CheckResult['composition']>;
   chartPreparationDetails:
     | Service2CheckResult['chartPreparationDetails']
     | null;

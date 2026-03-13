@@ -121,6 +121,9 @@ type CheckResult = {
     trainSchedule?: {
       stationList?: { stationCode?: string; stationName?: string; arrivalTime?: string; departureTime?: string }[];
     } | null;
+    chartStatus?:
+      | { kind: "not_prepared_yet"; message: string }
+      | { kind: "chart_error"; error: string };
     attempts?: { time?: string; action?: string; result?: string }[];
     bookings?: { from?: string; to?: string; status?: string }[];
     fullJourneyConfirmed?: boolean;
@@ -135,19 +138,26 @@ type CheckResult = {
   };
 };
 
+/** Format date as YYYY-MM-DD in local timezone (toISOString is UTC and can shift the date). */
+function toYmdLocal(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
 function getDateOptions() {
   const today = new Date();
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
-  const toYmd = (d: Date) => d.toISOString().slice(0, 10);
   const toLabel = (d: Date) =>
     d.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
   return [
-    { value: toYmd(yesterday), label: `Yesterday (${toLabel(yesterday)})` },
-    { value: toYmd(today), label: `Today (${toLabel(today)})` },
-    { value: toYmd(tomorrow), label: `Tomorrow (${toLabel(tomorrow)})` },
+    { value: toYmdLocal(yesterday), label: `Yesterday (${toLabel(yesterday)})` },
+    { value: toYmdLocal(today), label: `Today (${toLabel(today)})` },
+    { value: toYmdLocal(tomorrow), label: `Tomorrow (${toLabel(tomorrow)})` },
   ];
 }
 
@@ -277,6 +287,7 @@ export default function HomePage() {
           openAiBookingPlan: data.openAiBookingPlan ?? [],
           openAiTotalPrice: data.openAiTotalPrice,
           trainSchedule: data.trainSchedule ?? undefined,
+          chartStatus: data.chartStatus ?? undefined,
           vbd: data.vacantBerth?.vbd ?? [],
           error: data.vacantBerth?.error ?? null,
         },
@@ -561,7 +572,25 @@ export default function HomePage() {
         {checkResult && !loading && (
           <section className="mt-6 rounded-2xl bg-slate-100/60 py-4 px-0">
             {payload?.serviceSource === "service2" ? (
-              checkResult.status === "failed" || apiError ? (
+              payload.chartStatus ? (
+                <div className="rounded-2xl border border-amber-200/90 bg-white p-4 shadow-md">
+                  <div className="rounded-xl border border-amber-100 bg-amber-50/80 px-4 py-4">
+                    <p className="font-medium text-amber-900 text-sm">
+                      {payload.chartStatus.kind === "not_prepared_yet"
+                        ? payload.chartStatus.message
+                        : payload.chartStatus.error}
+                    </p>
+                    <a
+                      href="https://www.irctc.co.in/eticketing/login"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-block text-sm font-medium text-blue-600 active:text-blue-700"
+                    >
+                      Open IRCTC →
+                    </a>
+                  </div>
+                </div>
+              ) : checkResult.status === "failed" || apiError ? (
                 <div className="rounded-2xl border border-red-200/80 bg-white p-4 shadow-md">
                   <div className="rounded-xl border border-red-100 bg-red-50/80 px-4 py-4 min-h-[44px] flex items-center">
                     <p className="font-medium text-red-800 text-sm">
