@@ -3,7 +3,8 @@ import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import { IrctcService } from '../irctc/irctc.service';
 import { Service2Service } from '../service2/service2.service';
-import moment from 'moment-timezone';
+import { NotificationService } from '../notification/notification.service';
+import { DateTime } from 'luxon';
 
 /**
  * Builds chartAt (Date) from journey date and HH:MM chart time (local).
@@ -40,6 +41,7 @@ export class JourneyTaskService {
     private chartTime: ChartTimeService,
     private irctc: IrctcService,
     private service2: Service2Service,
+    private notificationService: NotificationService,
   ) {}
 
   /**
@@ -111,7 +113,6 @@ export class JourneyTaskService {
       chartOne: string;
       chartTwo?: { time: string; dayOffset: number };
     };
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call -- ChartTimeService method; cross-file inference can fail
     const chartTimesWithSecond =
       (await this.chartTime.getChartTimesWithSecondChartForTrain(
         trainNumber,
@@ -257,6 +258,14 @@ export class JourneyTaskService {
     const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
 
     try {
+      console.log('running task', task.id);
+      console.log('task', {
+        trainNumber: task.trainNumber,
+        stationCode: task.stationCode,
+        journeyDate: journeyDateStr,
+        classCode: task.classCode,
+        destinationStation: task.toStationCode,
+      });
       const result = await this.service2.check({
         trainNumber: task.trainNumber,
         stationCode: task.stationCode,
@@ -276,6 +285,44 @@ export class JourneyTaskService {
           completedAt: new Date(),
         },
       });
+
+      if (status === 'completed') {
+        const contact = await this.prisma.journeyMonitorContact.findUnique({
+          where: { journeyRequestId: task.journeyRequestId },
+        });
+        console.log('contact', contact);
+        if (contact && (contact.email || contact.mobile)) {
+          void this.notificationService
+            .notifyUser({
+              email: contact.email,
+              mobile: contact.mobile,
+              task: {
+                trainNumber: task.trainNumber,
+                trainName: task.trainName,
+                fromStationCode: task.fromStationCode,
+                toStationCode: task.toStationCode,
+                journeyDate: task.journeyDate,
+                classCode: task.classCode,
+              },
+              result,
+            })
+            .then((status) => {
+              const data: {
+                emailNotifiedAt?: Date;
+                whatsappNotifiedAt?: Date;
+              } = {};
+              if (status.emailSent) data.emailNotifiedAt = new Date();
+              if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
+              if (Object.keys(data).length > 0) {
+                return this.prisma.chartTimeAvailabilityTask.update({
+                  where: { id: taskId },
+                  data,
+                });
+              }
+            })
+            .catch((e) => console.error('Notification failed', e));
+        }
+      }
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       await this.prisma.chartTimeAvailabilityTask.update({
@@ -295,19 +342,23 @@ export class JourneyTaskService {
    * Called by cron every minute.
    */
   async runDueTasks(): Promise<number> {
-    // Current datetime in IST (Asia/Kolkata) for chartAt comparison
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access -- moment-timezone types
-    const now: Date = moment().tz('Asia/Kolkata').toDate();
-    console.log('running due tasks', now.toISOString());
-    const due = await this.prisma.chartTimeAvailabilityTask.findMany({
-      where: {
-        chartAt: { lte: now },
-        status: 'pending',
-      },
-      orderBy: { chartAt: 'asc' },
-      take: 20,
-    });
+    // chartAt is stored as IST wall-clock time.
+    // Use raw SQL so Postgres converts NOW() to IST for an accurate comparison.
+    const istNow = DateTime.now().setZone('Asia/Kolkata');
+    console.log(
+      'running due tasks',
+      istNow.toFormat('yyyy-MM-dd HH:mm:ss'),
+      'IST',
+    );
 
+    const due = await this.prisma.$queryRaw<
+      Array<{ id: string }>
+    >`SELECT id FROM "ChartTimeAvailabilityTask"
+      WHERE chart_at <= (NOW() AT TIME ZONE 'Asia/Kolkata')
+        AND status = 'pending'
+      ORDER BY chart_at ASC
+      LIMIT 20`;
+    console.log('due', due);
     for (const task of due) {
       await this.runTask(task.id);
     }
@@ -365,7 +416,6 @@ export class JourneyTaskService {
       chartOne: string;
       chartTwo?: { time: string; dayOffset: number };
     };
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call -- ChartTimeService method; cross-file inference can fail
     const chartTimesWithSecond =
       (await this.chartTime.getChartTimesWithSecondChartForTrain(
         trainNumber,

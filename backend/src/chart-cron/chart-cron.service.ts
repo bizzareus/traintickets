@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { JourneyTaskService } from '../availability/journey-task.service';
 
 @Injectable()
 export class ChartCronService {
   constructor(private journeyTask: JourneyTaskService) {}
 
-  @Cron('* * * * *') // every minute
+  @Cron(CronExpression.EVERY_10_SECONDS) // every minute
   async handleChartCron() {
     const now = new Date();
     console.log('starting cron every minute', now.toISOString());

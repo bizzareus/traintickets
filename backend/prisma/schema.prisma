@@ -206,11 +206,13 @@ model ChartTimeAvailabilityTask {
   stationCode       String    @map("station_code")       // station at which chart runs (check from this station to destination)
   journeyDate       DateTime  @map("journey_date") @db.Date
   classCode         String    @map("class_code")
-  chartAt           DateTime  @map("chart_at")           // when to run: journeyDate + chart time
-  status            String    @default("pending")        // pending | running | completed | failed
-  resultPayload     Json?     @map("result_payload")
-  createdAt         DateTime  @default(now()) @map("created_at")
-  completedAt       DateTime? @map("completed_at")
+  chartAt              DateTime  @map("chart_at")           // when to run: journeyDate + chart time
+  status               String    @default("pending")        // pending | running | completed | failed
+  resultPayload        Json?     @map("result_payload")
+  emailNotifiedAt      DateTime? @map("email_notified_at")  // when email notification was sent
+  whatsappNotifiedAt   DateTime? @map("whatsapp_notified_at") // when WhatsApp notification was sent
+  createdAt            DateTime  @default(now()) @map("created_at")
+  completedAt          DateTime? @map("completed_at")
 
   @@index([chartAt, status])
   @@index([journeyRequestId])
