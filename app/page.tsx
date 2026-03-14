@@ -4,6 +4,8 @@ import { useState, useEffect, Fragment } from "react";
 import Lottie from "lottie-react";
 import { apiClient } from "@/lib/api";
 
+const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
+
 type Station = { code: string; name: string };
 type TrainOption = { number: string; label: string };
 
@@ -255,18 +257,6 @@ export default function HomePage() {
     fromCode: string;
     toCode: string;
   } | null>(null);
-  const [monitorStations, setMonitorStations] = useState<
-    Array<{
-      stationCode: string;
-      stationName: string;
-      chartOneTime: string;
-      chartTwoTime: string | null;
-      chartTwoDayOffset: number;
-    }>
-  >([]);
-  const [monitorSelected, setMonitorSelected] = useState<Set<string>>(
-    new Set(),
-  );
   const [monitorSubmitting, setMonitorSubmitting] = useState(false);
   const [monitorSuccess, setMonitorSuccess] = useState<string | null>(null);
   const [monitorJourneyResponse, setMonitorJourneyResponse] = useState<{
@@ -356,41 +346,27 @@ export default function HomePage() {
       .finally(() => setScheduleLoading(false));
   }, [trainNumber, trainSelected]);
 
-  // When user opens Monitor for a gap leg, fetch stations for that leg
+  // Reset monitor form when modal opens
   useEffect(() => {
-    if (!monitoringLeg || !trainNumber) return;
-    setMonitorStations([]);
-    setMonitorSelected(new Set());
+    if (!monitoringLeg) return;
     setMonitorSuccess(null);
     setMonitorError(null);
-    setMonitorEmail("");
-    setMonitorMobile("");
-    apiClient
-      .get<{
-        stations: Array<{
-          stationCode: string;
-          stationName: string;
-          chartOneTime: string;
-          chartTwoTime: string | null;
-          chartTwoDayOffset: number;
-        }>;
-      }>("/api/availability/journey/stations", {
-        params: {
-          trainNumber,
-          fromStationCode: monitoringLeg.fromCode,
-          toStationCode: monitoringLeg.toCode,
-        },
-      })
-      .then((r) => {
-        const list = r.data?.stations ?? [];
-        setMonitorStations(list);
-        setMonitorSelected(new Set(list.map((s) => s.stationCode)));
-      })
-      .catch(() => {
-        setMonitorStations([]);
-        setMonitorError("Failed to load stations.");
-      });
-  }, [monitoringLeg, trainNumber]);
+    setMonitorJourneyResponse(null);
+    try {
+      const raw = typeof window !== "undefined" && window.localStorage.getItem(MONITOR_CONTACT_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as { email?: string; mobile?: string };
+        setMonitorEmail(parsed.email != null ? String(parsed.email) : "");
+        setMonitorMobile(parsed.mobile != null ? String(parsed.mobile) : "");
+      } else {
+        setMonitorEmail("");
+        setMonitorMobile("");
+      }
+    } catch {
+      setMonitorEmail("");
+      setMonitorMobile("");
+    }
+  }, [monitoringLeg]);
 
   // Load Metro Rail Lottie when check is loading (dynamic import, cached after first load)
   useEffect(() => {
@@ -989,46 +965,56 @@ export default function HomePage() {
               payload.chartStatus ? (
                 <div className="rounded-2xl border border-amber-200/90 bg-white p-4 shadow-md">
                   <div className="rounded-xl border border-amber-100 bg-amber-50/80 px-4 py-4">
-                    <p className="font-medium text-amber-900 text-sm">
-                      {payload.chartStatus.kind === "not_prepared_yet"
-                        ? payload.chartStatus.message
-                        : payload.chartStatus.error}
-                    </p>
-                    {payload.chartStatus.kind === "not_prepared_yet" &&
-                      fromCode &&
-                      toCode && (
-                        <p className="mt-2 text-sm text-amber-800">
-                          We can check at chart preparation time and notify you
-                          when seats are available. Choose which stations to
-                          monitor below.
-                        </p>
-                      )}
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      {payload.chartStatus.kind === "not_prepared_yet" &&
+                    {(() => {
+                      const showMonitor =
+                        (payload.chartStatus.kind === "not_prepared_yet" ||
+                          (payload.chartStatus.kind === "chart_error" &&
+                            /chart\s+not\s+prepared/i.test(
+                              payload.chartStatus.error ?? "",
+                            ))) &&
                         fromCode &&
-                        toCode && (
-                          <button
-                            type="button"
-                            onClick={() =>
-                              setMonitoringLeg({
-                                fromCode,
-                                toCode,
-                              })
-                            }
-                            className="rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white active:bg-amber-700 transition"
-                          >
-                            Monitor at chart time
-                          </button>
-                        )}
-                      <a
-                        href="https://www.irctc.co.in/eticketing/login"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center rounded-xl border border-amber-300 bg-white px-4 py-3 text-sm font-medium text-amber-900 no-underline active:bg-amber-50 transition"
-                      >
-                        Open IRCTC →
-                      </a>
-                    </div>
+                        toCode;
+                      return (
+                        <>
+                          <p className="font-medium text-amber-900 text-sm">
+                            {payload.chartStatus.kind === "not_prepared_yet"
+                              ? payload.chartStatus.message
+                              : payload.chartStatus.error}
+                          </p>
+                          {showMonitor && (
+                            <p className="mt-2 text-sm text-amber-800">
+                              We can check at chart preparation time and notify
+                              you when seats are available. Choose which
+                              stations to monitor below.
+                            </p>
+                          )}
+                          <div className="mt-4 flex flex-wrap gap-3">
+                            {showMonitor && (
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  setMonitoringLeg({
+                                    fromCode,
+                                    toCode,
+                                  })
+                                }
+                                className="rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white active:bg-amber-700 transition"
+                              >
+                                Monitor at chart time
+                              </button>
+                            )}
+                            <a
+                              href="https://www.irctc.co.in/eticketing/login"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center rounded-xl border border-amber-300 bg-white px-4 py-3 text-sm font-medium text-amber-900 no-underline active:bg-amber-50 transition"
+                            >
+                              Open IRCTC →
+                            </a>
+                          </div>
+                        </>
+                      );
+                    })()}
                   </div>
                 </div>
               ) : checkResult.status === "failed" || apiError ? (
@@ -1552,8 +1538,8 @@ export default function HomePage() {
                   Monitor {monitoringLeg.fromCode} → {monitoringLeg.toCode}
                 </h2>
                 <p className="mt-1 text-sm text-slate-500">
-                  We’ll check at each selected station’s chart time for new
-                  tickets.
+                  We&apos;ll check at chart time for this leg and notify you when
+                  seats are available. Enter email or mobile to get notified.
                 </p>
               </div>
               <div className="p-4 overflow-y-auto flex-1 space-y-4">
@@ -1614,55 +1600,6 @@ export default function HomePage() {
                         className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
                       />
                     </div>
-                    {monitorStations.length === 0 && !monitorError && (
-                      <p className="text-sm text-slate-500">
-                        Loading stations…
-                      </p>
-                    )}
-                    {monitorStations.length > 0 && (
-                      <>
-                        <p className="text-sm font-medium text-slate-700">
-                          Stations to monitor (we’ll check at each chart time)
-                        </p>
-                        <ul className="space-y-2">
-                          {monitorStations.map((s) => (
-                            <li
-                              key={s.stationCode}
-                              className="flex items-center gap-3"
-                            >
-                              <input
-                                type="checkbox"
-                                id={`monitor-${s.stationCode}`}
-                                checked={monitorSelected.has(s.stationCode)}
-                                onChange={(e) => {
-                                  setMonitorSelected((prev) => {
-                                    const next = new Set(prev);
-                                    if (e.target.checked)
-                                      next.add(s.stationCode);
-                                    else next.delete(s.stationCode);
-                                    return next;
-                                  });
-                                }}
-                                className="rounded border-slate-300"
-                              />
-                              <label
-                                htmlFor={`monitor-${s.stationCode}`}
-                                className="text-sm font-medium text-slate-800 cursor-pointer"
-                              >
-                                {s.stationCode} – {s.stationName}
-                                <span className="ml-1 text-slate-500 font-normal">
-                                  ({s.chartOneTime}
-                                  {s.chartTwoTime
-                                    ? `, ${s.chartTwoTime}${s.chartTwoDayOffset ? " +1d" : ""}`
-                                    : ""}
-                                  )
-                                </span>
-                              </label>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
                   </>
                 )}
               </div>
@@ -1672,8 +1609,6 @@ export default function HomePage() {
                     type="button"
                     onClick={() => {
                       setMonitoringLeg(null);
-                      setMonitorStations([]);
-                      setMonitorSelected(new Set());
                       setMonitorSuccess(null);
                       setMonitorJourneyResponse(null);
                       setMonitorError(null);
@@ -1690,8 +1625,6 @@ export default function HomePage() {
                       type="button"
                       onClick={() => {
                         setMonitoringLeg(null);
-                        setMonitorStations([]);
-                        setMonitorSelected(new Set());
                         setMonitorSuccess(null);
                         setMonitorJourneyResponse(null);
                         setMonitorError(null);
@@ -1704,10 +1637,15 @@ export default function HomePage() {
                     </button>
                     <button
                       type="button"
-                      disabled={monitorSubmitting || monitorSelected.size === 0}
+                      disabled={
+                        monitorSubmitting ||
+                        (!monitorEmail.trim() && !monitorMobile.trim())
+                      }
                       onClick={async () => {
-                        if (!monitoringLeg || monitorSelected.size === 0)
-                          return;
+                        if (!monitoringLeg) return;
+                        const email = monitorEmail.trim() || undefined;
+                        const mobile = monitorMobile.trim() || undefined;
+                        if (!email && !mobile) return;
                         setMonitorSubmitting(true);
                         setMonitorError(null);
                         setMonitorSuccess(null);
@@ -1726,14 +1664,23 @@ export default function HomePage() {
                             toStationCode: monitoringLeg.toCode,
                             journeyDate: journeyDate.trim(),
                             classCode: "3A",
-                            stationCodesToMonitor: Array.from(monitorSelected),
-                            email: monitorEmail.trim() || undefined,
-                            mobile: monitorMobile.trim() || undefined,
+                            email,
+                            mobile,
                           });
                           setMonitorJourneyResponse({
                             journeyRequestId: data.journeyRequestId,
                             tasks: data.tasks ?? [],
                           });
+                          if (typeof window !== "undefined" && window.localStorage) {
+                            try {
+                              window.localStorage.setItem(
+                                MONITOR_CONTACT_STORAGE_KEY,
+                                JSON.stringify({ email: email ?? "", mobile: mobile ?? "" }),
+                              );
+                            } catch {
+                              // ignore storage errors
+                            }
+                          }
                         } catch (err: unknown) {
                           const ax = err as {
                             response?: { data?: { message?: string } };

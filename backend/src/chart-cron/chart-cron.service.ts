@@ -11,7 +11,8 @@ export class ChartCronService {
     const now = new Date();
     console.log('starting cron every minute', now.toISOString());
 
-    // ChartTimeAvailabilityTask: fetch by chart time (chartAt <= now), run each due task
+    // Find pending ChartTimeAvailabilityTask where chart time has arrived (chartAt <= now)
+    // and trigger the check API internally to find any available seats for each task
     const chartTimeTasksRun = await this.journeyTask.runDueTasks();
     if (chartTimeTasksRun > 0) {
       console.log('chart_time_tasks_run=' + chartTimeTasksRun);

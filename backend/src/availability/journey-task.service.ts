@@ -2,12 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import { IrctcService } from '../irctc/irctc.service';
-import { BrowserUseService } from '../browser-use/browser-use.service';
-
-const API_URL =
-  process.env.API_URL ??
-  process.env.NEXT_PUBLIC_APP_URL ??
-  'http://localhost:3009';
+import { Service2Service } from '../service2/service2.service';
+import moment from 'moment-timezone';
 
 /**
  * Builds chartAt (Date) from journey date and HH:MM chart time (local).
@@ -43,7 +39,7 @@ export class JourneyTaskService {
     private prisma: PrismaService,
     private chartTime: ChartTimeService,
     private irctc: IrctcService,
-    private browserUse: BrowserUseService,
+    private service2: Service2Service,
   ) {}
 
   /**
@@ -244,7 +240,8 @@ export class JourneyTaskService {
   }
 
   /**
-   * Run a single ChartTimeAvailabilityTask (Browser Use availability check).
+   * Run a single ChartTimeAvailabilityTask by calling the Service2 check API
+   * internally to find available seats at chart time.
    */
   async runTask(taskId: string): Promise<void> {
     const task = await this.prisma.chartTimeAvailabilityTask.findUnique({
@@ -257,40 +254,25 @@ export class JourneyTaskService {
       data: { status: 'running' },
     });
 
+    const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
+
     try {
-      const result = await this.browserUse.executeAvailabilityCheck({
+      const result = await this.service2.check({
         trainNumber: task.trainNumber,
-        trainName: task.trainName ?? undefined,
-        fromStationCode: task.stationCode,
-        toStationCode: task.toStationCode,
+        stationCode: task.stationCode,
+        journeyDate: journeyDateStr,
         classCode: task.classCode,
-        journeyDate: task.journeyDate.toISOString().slice(0, 10),
-        callbackUrl: `${API_URL}/api/browser/webhook`,
+        destinationStation: task.toStationCode,
       });
 
-      const resultPayload: Record<string, unknown> =
-        result.resultPayload != null
-          ? (result.resultPayload as Record<string, unknown>)
-          : {
-              output: result.output,
-              ...(result.steps && { steps: result.steps }),
-            };
-      if (result.resultPayload == null) {
-        try {
-          if (typeof result.output === 'string' && result.output.trim()) {
-            const parsed = JSON.parse(result.output) as Record<string, unknown>;
-            Object.assign(resultPayload, parsed);
-          }
-        } catch {
-          // keep raw
-        }
-      }
+      console.log('result', result);
 
+      const status = result.status === 'success' ? 'completed' : 'failed';
       await this.prisma.chartTimeAvailabilityTask.update({
         where: { id: taskId },
         data: {
-          status: result.status === 'success' ? 'completed' : 'failed',
-          resultPayload: resultPayload as object,
+          status,
+          resultPayload: result as object,
           completedAt: new Date(),
         },
       });
@@ -308,11 +290,15 @@ export class JourneyTaskService {
   }
 
   /**
-   * Find tasks due (chartAt <= now) with status pending and run each.
+   * Find pending tasks whose chart time has arrived (chartAt <= now) and run each
+   * by calling the Service2 check API internally to find available seats.
    * Called by cron every minute.
    */
   async runDueTasks(): Promise<number> {
-    const now = new Date();
+    // Current datetime in IST (Asia/Kolkata) for chartAt comparison
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access -- moment-timezone types
+    const now: Date = moment().tz('Asia/Kolkata').toDate();
+    console.log('running due tasks', now.toISOString());
     const due = await this.prisma.chartTimeAvailabilityTask.findMany({
       where: {
         chartAt: { lte: now },
