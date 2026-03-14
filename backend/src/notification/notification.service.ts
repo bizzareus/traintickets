@@ -6,7 +6,7 @@ import type { Service2CheckResult } from '../service2/service2.service';
 import type { ChartTimeAvailabilityTask } from '@prisma/client';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
-const RESEND_FROM = 'LastBerth <onboarding@resend.dev>';
+const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
 
 /** Normalize mobile to E.164 for WaSender (e.g. 919876543210). */
 function toE164(mobile: string): string {

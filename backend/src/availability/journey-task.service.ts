@@ -113,11 +113,38 @@ export class JourneyTaskService {
       chartOne: string;
       chartTwo?: { time: string; dayOffset: number };
     };
-    const chartTimesWithSecond =
+    let chartTimesWithSecond =
       (await this.chartTime.getChartTimesWithSecondChartForTrain(
         trainNumber,
         stationsToProcess,
       )) as Map<string, ChartEntry>;
+
+    // If DB has no chart times for some stations, fetch from train composition API and persist
+    const missingStations = stationsToProcess.filter(
+      (s) => !chartTimesWithSecond.get(s),
+    );
+    if (missingStations.length > 0) {
+      const jDateStr = journeyDate.toISOString().slice(0, 10);
+      for (const stCode of missingStations) {
+        try {
+          await this.irctc.getTrainComposition({
+            trainNo: trainNumber,
+            jDate: jDateStr,
+            boardingStation: stCode,
+          });
+        } catch (err) {
+          console.warn(
+            `Chart time fetch failed for ${trainNumber} @ ${stCode}:`,
+            err instanceof Error ? err.message : err,
+          );
+        }
+      }
+      chartTimesWithSecond =
+        (await this.chartTime.getChartTimesWithSecondChartForTrain(
+          trainNumber,
+          stationsToProcess,
+        )) as Map<string, ChartEntry>;
+    }
 
     let monitoringContactId: string | undefined;
     if (email || mobile) {
