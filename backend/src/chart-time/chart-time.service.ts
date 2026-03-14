@@ -84,4 +84,45 @@ export class ChartTimeService {
     }
     return map;
   }
+
+  /**
+   * Get chart one and chart two (with day offset) per station for a train.
+   * Used to create one task per chart event (chart one and optionally chart two).
+   */
+  async getChartTimesWithSecondChartForTrain(
+    trainNumber: string,
+    stationCodes: string[],
+  ): Promise<
+    Map<string, { chartOne: string; chartTwo?: { time: string; dayOffset: number } }>
+  > {
+    const num = String(trainNumber).trim();
+    const where: { trainNumber: string; stationCode?: { in: string[] } } = {
+      trainNumber: num,
+    };
+    if (stationCodes.length > 0) {
+      where.stationCode = {
+        in: stationCodes.map((c) => String(c).trim().toUpperCase()),
+      };
+    }
+    const rows = await this.prisma.trainStationChartTime.findMany({
+      where,
+    });
+    const map = new Map<
+      string,
+      { chartOne: string; chartTwo?: { time: string; dayOffset: number } }
+    >();
+    for (const r of rows) {
+      const entry: { chartOne: string; chartTwo?: { time: string; dayOffset: number } } = {
+        chartOne: r.chartTimeLocal,
+      };
+      if (r.chartTwoTimeLocal?.trim()) {
+        entry.chartTwo = {
+          time: r.chartTwoTimeLocal.trim(),
+          dayOffset: r.chartTwoDayOffset ?? 0,
+        };
+      }
+      map.set(r.stationCode, entry);
+    }
+    return map;
+  }
 }

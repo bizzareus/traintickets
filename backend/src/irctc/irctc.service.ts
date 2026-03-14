@@ -305,19 +305,32 @@ export class IrctcService {
     });
     const text = await res.text();
     if (!res.ok) {
-      throw new Error(`IRCTC trainComposition failed: ${res.status} ${text}`);
-    }
-    try {
-      const data = JSON.parse(text) as TrainCompositionResponse;
-      if (data?.error) throw new Error(String(data.error));
-      await this.persistChartTimesFromComposition(data);
-      return data;
-    } catch (err) {
-      if (err instanceof Error && err.message.startsWith('IRCTC')) throw err;
       throw new Error(
-        `IRCTC trainComposition returned invalid response: ${text.slice(0, 200)}`,
+        'Train composition is temporarily unavailable. Please try again later.',
       );
     }
+    let data: TrainCompositionResponse;
+    try {
+      data = JSON.parse(text) as TrainCompositionResponse;
+    } catch {
+      throw new Error(
+        'Train composition is temporarily unavailable. Please try again later.',
+      );
+    }
+    if (data?.error) throw new Error(String(data.error));
+    const invalid =
+      data.cdd == null || data.trainNo == null || data.remote == null;
+    if (invalid) {
+      throw new Error(
+        'Train composition is temporarily unavailable. Please try again later.',
+      );
+    }
+    try {
+      await this.persistChartTimesFromComposition(data);
+    } catch {
+      // persist is best-effort; still return composition
+    }
+    return data;
   }
 
   /**

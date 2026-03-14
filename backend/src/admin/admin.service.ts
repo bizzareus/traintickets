@@ -67,17 +67,4 @@ export class AdminService {
       take: Math.min(limit, 500),
     });
   }
-
-  getExecutions(limit: number) {
-    return this.prisma.browserExecution.findMany({
-      include: {
-        monitoringRequest: {
-          include: { train: true, user: { select: { email: true } } },
-        },
-        chartEventInstance: true,
-      },
-      orderBy: { createdAt: 'desc' },
-      take: Math.min(limit, 500),
-    });
-  }
 }

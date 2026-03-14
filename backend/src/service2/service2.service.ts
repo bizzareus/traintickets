@@ -118,7 +118,11 @@ If a gap exists between two booked segments, assume the passenger remains on the
 
 ---
 
-Given the provided train route, source, destination, and raw seat segment data (vacant berths across classes), apply this algorithm. Consider all classes on the train when building the best plan. Return your summary, the list of seat segments used (as the "seats" array with coach, berth, class, seat, from, to), and the best booking plan with approximate price per segment and total price (in INR), as specified in the JSON schema.`;
+Given the provided train route, source, destination, and raw seat segment data (vacant berths across classes), apply this algorithm. Consider all classes on the train when building the best plan.
+
+Summary: One-line, easy-reading summary of what the user needs to do (e.g. book 1 ticket from A-B, 1 ticket from B-C). Short, friendly, action-oriented. And if there is no ticket between 2 stations then tell the user about it as well.
+
+Return your summary, the list of seat segments used (as the "seats" array with coach, berth, class, seat, from, to), and the best booking plan with approximate price per segment and total price (in INR), as specified in the JSON schema.`;
 
 /** JSON schema: summary, seats, booking_plan (instruction + approx_price per segment), total_price (INR). */
 const OPENAI_RESPONSE_JSON_SCHEMA = {
@@ -127,7 +131,7 @@ const OPENAI_RESPONSE_JSON_SCHEMA = {
     summary: {
       type: 'string',
       description:
-        'Concise situation summary and recommended next steps per the algorithm',
+        'One-line, easy-reading summary of what the user needs to do (e.g. book 1 ticket from A-B, 1 ticket from B-C). Short, friendly, action-oriented. And if there is no ticket between 2 stations then tell the user about it as well.',
     },
     seats: {
       type: 'array',
@@ -302,7 +306,11 @@ export class Service2Service {
           vacantBerth: { vbd: [], error: null },
         };
       }
-      throw err;
+      return {
+        status: 'failed',
+        chartStatus: { kind: 'chart_error', error: msg },
+        vacantBerth: { vbd: [], error: null },
+      };
     }
 
     if (!chartTimeFromDb && composition.chartOneDate) {
@@ -439,10 +447,10 @@ export class Service2Service {
         console.log('userMessage', userMessage);
         const client = new OpenAI({ apiKey: apiKey.trim() });
         const response = await client.responses.create({
-          model: process.env.OPENAI_MODEL ?? 'gpt-4o-mini',
+          model: process.env.OPENAI_MODEL,
           instructions: OPENAI_AGENT_PROMPT,
           input: [{ role: 'user', content: userMessage }],
-          // reasoning: { effort: 'high' },
+          reasoning: { effort: 'high' },
           text: {
             format: {
               type: 'json_schema',
@@ -478,7 +486,7 @@ export class Service2Service {
       status: vacantBerth.error ? 'failed' : 'success',
       composition: compositionPayload,
       chartPreparationDetails,
-      vacantBerth,
+      vacantBerth: { vbd: [], error: null },
       openAiSummary,
       openAiStructuredSeats: resultOpenAiStructuredSeats,
       openAiBookingPlan: resultOpenAiBookingPlan,

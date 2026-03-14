@@ -42,7 +42,11 @@ export class AuthService {
 
   async login(email: string, password: string) {
     const user = await this.prisma.user.findUnique({ where: { email } });
-    if (!user || !(await bcrypt.compare(password, user.passwordHash)))
+    if (
+      !user ||
+      !user.passwordHash ||
+      !(await bcrypt.compare(password, user.passwordHash))
+    )
       throw new UnauthorizedException('Invalid email or password');
     const token = this.jwtService.sign({ sub: user.id });
     return {

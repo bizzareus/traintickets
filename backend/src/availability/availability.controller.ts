@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Post,
+  Query,
   ServiceUnavailableException,
 } from '@nestjs/common';
 import { AvailabilityService } from './availability.service';
@@ -100,9 +101,48 @@ export class AvailabilityController {
   }
 
   /**
-   * Create journey tasks: one per station in route, each scheduled at that station's chart time.
+   * Get stations between from and to that have chart times (for monitor station selection).
+   * Query: trainNumber, fromStationCode, toStationCode. Optional: journeyDate.
+   */
+  @Get('journey/stations')
+  async getJourneyStations(
+    @Query('trainNumber') trainNumber: string,
+    @Query('fromStationCode') fromStationCode: string,
+    @Query('toStationCode') toStationCode: string,
+  ) {
+    const normalized = {
+      trainNumber: String(trainNumber ?? '').trim(),
+      fromStationCode: String(fromStationCode ?? '')
+        .trim()
+        .toUpperCase(),
+      toStationCode: String(toStationCode ?? '')
+        .trim()
+        .toUpperCase(),
+    };
+    if (
+      !normalized.trainNumber ||
+      !normalized.fromStationCode ||
+      !normalized.toStationCode
+    ) {
+      return {
+        error: 'trainNumber, fromStationCode and toStationCode are required',
+        stations: [],
+      };
+    }
+    try {
+      const stations =
+        await this.journeyTask.getStationsWithChartTimesForRoute(normalized);
+      return { stations };
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      throw new ServiceUnavailableException(message);
+    }
+  }
+
+  /**
+   * Create journey tasks: one per (user-confirmed) station and per chart one/chart two, scheduled at each chart time.
+   * If stationCodesToMonitor is provided, only those stations are used; otherwise all stations in route with chart times.
    * If chart time for that date is already past, runs Browser Use immediately.
-   * Requires chart times to be set (e.g. POST /api/chart-time for train 29251, NDLS, 19:54).
    */
   @Post('journey')
   async createJourney(
@@ -112,6 +152,9 @@ export class AvailabilityController {
     @Body('toStationCode') toStationCode: string,
     @Body('journeyDate') journeyDate: string,
     @Body('classCode') classCode: string,
+    @Body('stationCodesToMonitor') stationCodesToMonitor?: string[],
+    @Body('email') email?: string,
+    @Body('mobile') mobile?: string,
   ) {
     const normalized = {
       trainNumber: String(trainNumber ?? '').trim(),
@@ -126,6 +169,12 @@ export class AvailabilityController {
       classCode: String(classCode ?? '3A')
         .trim()
         .toUpperCase(),
+      stationCodesToMonitor:
+        Array.isArray(stationCodesToMonitor) && stationCodesToMonitor.length > 0
+          ? stationCodesToMonitor.map((c) => String(c).trim().toUpperCase())
+          : undefined,
+      email: email ? String(email).trim() : undefined,
+      mobile: mobile ? String(mobile).trim() : undefined,
     };
     if (
       !normalized.trainNumber ||

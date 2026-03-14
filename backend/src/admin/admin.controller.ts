@@ -51,9 +51,4 @@ export class AdminController {
   getChartEventInstances(@Query('limit') limit?: string) {
     return this.admin.getChartEventInstances(limit ? Number(limit) : 100);
   }
-
-  @Get('executions')
-  getExecutions(@Query('limit') limit?: string) {
-    return this.admin.getExecutions(limit ? Number(limit) : 100);
-  }
 }

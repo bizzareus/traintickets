@@ -154,6 +154,47 @@ model TrainStationChartTime {
   @@index([stationCode])
 }
 
+// User/contact info for monitoring (no auth; used for WhatsApp/email notifications)
+model MonitoringContact {
+  id        String   @id @default(cuid())
+  email     String?  @unique @db.VarChar(255)
+  mobile    String?  @db.VarChar(20)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  journeyMonitoringRequests JourneyMonitoringRequest[]
+
+  @@index([email])
+  @@index([mobile])
+}
+
+// One row per monitoring request (from POST /api/availability/journey)
+model JourneyMonitoringRequest {
+  id                String   @id @default(cuid())
+  monitoringContactId String?  @map("monitoring_contact_id")
+  trainNumber       String   @map("train_number")
+  fromStationCode   String   @map("from_station_code")
+  toStationCode     String   @map("to_station_code")
+  journeyDate       DateTime @map("journey_date") @db.Date
+  classCode         String   @map("class_code")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  monitoringContact MonitoringContact? @relation(fields: [monitoringContactId], references: [id], onDelete: SetNull)
+
+  @@index([monitoringContactId])
+  @@index([trainNumber, journeyDate])
+}
+
+// Contact info for chart-time journey monitoring (notify user when we check at chart time)
+model JourneyMonitorContact {
+  id               String   @id @default(cuid())
+  journeyRequestId String   @unique @map("journey_request_id")
+  email            String?  @db.VarChar(255)
+  mobile           String?  @db.VarChar(20)
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  @@index([journeyRequestId])
+}
+
 // One task per station: run availability check at that station's chart time
 model ChartTimeAvailabilityTask {
   id                String    @id @default(cuid())

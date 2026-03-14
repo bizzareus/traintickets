@@ -7,7 +7,6 @@ import { AuthModule } from './auth/auth.module';
 import { TrainsModule } from './trains/trains.module';
 import { StationsModule } from './stations/stations.module';
 import { SearchModule } from './search/search.module';
-import { MonitoringRequestsModule } from './monitoring-requests/monitoring-requests.module';
 import { WebhookModule } from './webhook/webhook.module';
 import { AdminModule } from './admin/admin.module';
 import { ChartCronModule } from './chart-cron/chart-cron.module';
@@ -24,7 +23,6 @@ import { Service2Module } from './service2/service2.module';
     TrainsModule,
     StationsModule,
     SearchModule,
-    MonitoringRequestsModule,
     WebhookModule,
     AdminModule,
     ChartCronModule,
