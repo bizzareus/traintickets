@@ -98,6 +98,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
   category: "travel",
   classification: "Train ticket booking and seat availability",
 };
