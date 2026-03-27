@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 const CLASSES = ["1A", "2A", "3A", "SL", "CC", "EC"];
 
@@ -51,9 +52,17 @@ function TrainDetailContent() {
         classCode,
       });
       setSuccess(true);
+      trackAnalyticsEvent({
+        name: "monitoring_alert_requested",
+        properties: { success: true, train_id_present: true },
+      });
     } catch (err: unknown) {
       const ax = err as { response?: { data?: { message?: string; error?: string } } };
       setError(ax.response?.data?.message ?? ax.response?.data?.error ?? "Request failed");
+      trackAnalyticsEvent({
+        name: "monitoring_alert_requested",
+        properties: { success: false, train_id_present: Boolean(train) },
+      });
     } finally {
       setLoading(false);
     }

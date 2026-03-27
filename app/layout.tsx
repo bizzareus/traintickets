@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { FlowbiteInit } from "./FlowbiteInit";
+import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -144,7 +145,7 @@ export default function RootLayout({
             __html: JSON.stringify(websiteJsonLd),
           }}
         />
-        {children}
+        <AnalyticsProvider>{children}</AnalyticsProvider>
       </body>
     </html>
   );

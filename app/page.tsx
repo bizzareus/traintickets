@@ -3,6 +3,7 @@
 import { useState, useEffect, Fragment } from "react";
 import Lottie from "lottie-react";
 import { apiClient } from "@/lib/api";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 
@@ -400,6 +401,15 @@ export default function HomePage() {
     setError(null);
     setCheckResult(null);
     setLoading(true);
+    trackAnalyticsEvent({
+      name: "search_submitted",
+      properties: {
+        train_number: trainNumber.trim(),
+        from_code: fromCode,
+        to_code: toCode || "",
+        journey_date: journeyDate.trim(),
+      },
+    });
     try {
       const { data } = await apiClient.post("/api/service2/check", {
         trainNumber: trainNumber.trim(),
@@ -426,6 +436,13 @@ export default function HomePage() {
         },
       });
       if (data.vacantBerth?.error) setError(String(data.vacantBerth.error));
+      trackAnalyticsEvent({
+        name: "search_completed",
+        properties: {
+          success: true,
+          has_chart_status: Boolean(data.chartStatus),
+        },
+      });
     } catch (err: unknown) {
       const ax = err as {
         response?: { data?: { message?: string; error?: string } };
@@ -435,12 +452,20 @@ export default function HomePage() {
           ax.response?.data?.error ??
           "Request failed. Is the API running?",
       );
+      trackAnalyticsEvent({
+        name: "search_completed",
+        properties: { success: false, error: "request_failed" },
+      });
     } finally {
       setLoading(false);
     }
   }
 
   function swapFromTo() {
+    trackAnalyticsEvent({
+      name: "swap_stations_clicked",
+      properties: {},
+    });
     setFrom(to);
     setTo(from);
   }
@@ -653,6 +678,10 @@ export default function HomePage() {
                               type="button"
                               className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
                               onClick={() => {
+                                trackAnalyticsEvent({
+                                  name: "train_selected_from_dropdown",
+                                  properties: { train_number: t.number },
+                                });
                                 setTrainInput(t.label);
                                 document
                                   .getElementById("train-dropdown")
@@ -992,12 +1021,16 @@ export default function HomePage() {
                             {showMonitor && (
                               <button
                                 type="button"
-                                onClick={() =>
+                                onClick={() => {
+                                  trackAnalyticsEvent({
+                                    name: "monitor_modal_opened",
+                                    properties: { source: "chart_pending" },
+                                  });
                                   setMonitoringLeg({
                                     fromCode,
                                     toCode,
-                                  })
-                                }
+                                  });
+                                }}
                                 className="rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white active:bg-amber-700 transition"
                               >
                                 Monitor at chart time
@@ -1007,6 +1040,12 @@ export default function HomePage() {
                               href="https://www.irctc.co.in/eticketing/login"
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={() =>
+                                trackAnalyticsEvent({
+                                  name: "irctc_open_login_clicked",
+                                  properties: {},
+                                })
+                              }
                               className="inline-flex items-center rounded-xl border border-amber-300 bg-white px-4 py-3 text-sm font-medium text-amber-900 no-underline active:bg-amber-50 transition"
                             >
                               Open IRCTC →
@@ -1192,6 +1231,12 @@ export default function HomePage() {
                                   href={bookUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
+                                  onClick={() =>
+                                    trackAnalyticsEvent({
+                                      name: "irctc_book_clicked",
+                                      properties: { source: "booking_plan" },
+                                    })
+                                  }
                                   className="mt-4 rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white no-underline active:bg-emerald-700 transition"
                                 >
                                   Book
@@ -1223,12 +1268,16 @@ export default function HomePage() {
                               </p>
                               <button
                                 type="button"
-                                onClick={() =>
+                                onClick={() => {
+                                  trackAnalyticsEvent({
+                                    name: "monitor_modal_opened",
+                                    properties: { source: "gap_leg" },
+                                  });
                                   setMonitoringLeg({
                                     fromCode: leg.fromCode,
                                     toCode: leg.toCode,
-                                  })
-                                }
+                                  });
+                                }}
                                 className="mt-4 rounded-xl bg-amber-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-amber-700 transition"
                               >
                                 Monitor
@@ -1307,6 +1356,12 @@ export default function HomePage() {
                                 href={bookUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() =>
+                                  trackAnalyticsEvent({
+                                    name: "irctc_book_clicked",
+                                    properties: { source: "openai_plan" },
+                                  })
+                                }
                                 className="mt-4 rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white no-underline active:bg-emerald-700 transition"
                               >
                                 Book
@@ -1608,6 +1663,10 @@ export default function HomePage() {
                   <button
                     type="button"
                     onClick={() => {
+                      trackAnalyticsEvent({
+                        name: "monitor_modal_closed",
+                        properties: { outcome: "success_dismiss" },
+                      });
                       setMonitoringLeg(null);
                       setMonitorSuccess(null);
                       setMonitorJourneyResponse(null);
@@ -1624,6 +1683,10 @@ export default function HomePage() {
                     <button
                       type="button"
                       onClick={() => {
+                        trackAnalyticsEvent({
+                          name: "monitor_modal_closed",
+                          properties: { outcome: "cancel" },
+                        });
                         setMonitoringLeg(null);
                         setMonitorSuccess(null);
                         setMonitorJourneyResponse(null);
@@ -1671,6 +1734,10 @@ export default function HomePage() {
                             journeyRequestId: data.journeyRequestId,
                             tasks: data.tasks ?? [],
                           });
+                          trackAnalyticsEvent({
+                            name: "monitor_journey_submitted",
+                            properties: { success: true },
+                          });
                           if (typeof window !== "undefined" && window.localStorage) {
                             try {
                               window.localStorage.setItem(
@@ -1688,6 +1755,14 @@ export default function HomePage() {
                           setMonitorError(
                             ax.response?.data?.message ?? "Request failed.",
                           );
+                          trackAnalyticsEvent({
+                            name: "monitor_journey_submitted",
+                            properties: {
+                              success: false,
+                              error:
+                                ax.response?.data?.message ?? "request_failed",
+                            },
+                          });
                         } finally {
                           setMonitorSubmitting(false);
                         }

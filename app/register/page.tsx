@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { apiClient } from "@/lib/api";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -18,11 +19,13 @@ export default function RegisterPage() {
     try {
       const { data } = await apiClient.post<{ accessToken?: string; message?: string; error?: string }>("/api/auth/register", { name, email, password });
       if (data.accessToken) localStorage.setItem("accessToken", data.accessToken);
+      trackAnalyticsEvent({ name: "auth_register_submitted", properties: { success: true } });
       router.push("/dashboard");
       router.refresh();
     } catch (err: unknown) {
       const ax = err as { response?: { data?: { message?: string; error?: string } } };
       setError(ax.response?.data?.message ?? ax.response?.data?.error ?? "Registration failed");
+      trackAnalyticsEvent({ name: "auth_register_submitted", properties: { success: false } });
     }
   }
 

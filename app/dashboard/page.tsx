@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { apiClient } from "@/lib/api";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 type Request = {
   id: string;
@@ -42,6 +43,14 @@ export default function DashboardPage() {
       .catch(() => setRequests([]))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (loading || !user) return;
+    trackAnalyticsEvent({
+      name: "dashboard_viewed",
+      properties: { request_count: requests.length },
+    });
+  }, [loading, user, requests.length]);
 
   if (loading) {
     return (
