@@ -119,13 +119,27 @@ export class JourneyTaskService {
         stationsToProcess,
       )) as Map<string, ChartEntry>;
 
-    // If DB has no chart times for some stations, fetch from train composition API and persist
-    const missingStations = stationsToProcess.filter(
-      (s) => !chartTimesWithSecond.get(s),
-    );
-    if (missingStations.length > 0) {
-      const jDateStr = journeyDate.toISOString().slice(0, 10);
-      for (const stCode of missingStations) {
+    const refreshChartTimesMap = async () => {
+      chartTimesWithSecond =
+        (await this.chartTime.getChartTimesWithSecondChartForTrain(
+          trainNumber,
+          stationsToProcess,
+        )) as Map<string, ChartEntry>;
+    };
+
+    const routeHasAnyChartTime = () =>
+      stationsToProcess.some((s) => chartTimesWithSecond.get(s));
+
+    const fetchCompositionForStations = async (
+      stationCodes: string[],
+      dateForComposition: Date,
+      logLabel: string,
+    ) => {
+      const jDateStr = dateForComposition.toISOString().slice(0, 10);
+      console.log(
+        `[createJourneyTasks] trainComposition jDate=${jDateStr} label=${logLabel} stationCount=${stationCodes.length}`,
+      );
+      for (const stCode of stationCodes) {
         try {
           await this.irctc.getTrainComposition({
             trainNo: trainNumber,
@@ -134,17 +148,66 @@ export class JourneyTaskService {
           });
         } catch (err) {
           console.warn(
-            `Chart time fetch failed for ${trainNumber} @ ${stCode}:`,
+            `Chart time fetch failed for ${trainNumber} @ ${stCode} (${jDateStr}):`,
             err instanceof Error ? err.message : err,
           );
         }
       }
-      chartTimesWithSecond =
-        (await this.chartTime.getChartTimesWithSecondChartForTrain(
-          trainNumber,
-          stationsToProcess,
-        )) as Map<string, ChartEntry>;
+      await refreshChartTimesMap();
+      const covered = stationsToProcess.filter((s) =>
+        chartTimesWithSecond.get(s),
+      ).length;
+      console.log(
+        `[createJourneyTasks] after ${logLabel} (jDate=${jDateStr}): stationsWithChartTimes=${covered}/${stationsToProcess.length}`,
+      );
+    };
+
+    // If DB has no chart times for some stations, fetch from train composition API and persist
+    const missingStations = stationsToProcess.filter(
+      (s) => !chartTimesWithSecond.get(s),
+    );
+    if (missingStations.length > 0) {
+      await fetchCompositionForStations(
+        missingStations,
+        journeyDate,
+        'journey_date_missing_stations',
+      );
     }
+
+    // IRCTC composition is often keyed to the train's run date; if nothing was stored for this journey date, try previous calendar day
+    const hadChartTimesBeforePrevDay = routeHasAnyChartTime();
+    let attemptedPreviousDayFallback = false;
+    let pickedUpChartTimesFromPreviousDate = false;
+
+    if (!hadChartTimesBeforePrevDay) {
+      const prevRunDate = new Date(journeyDate);
+      prevRunDate.setDate(prevRunDate.getDate() - 1);
+      const prevStr = prevRunDate.toISOString().slice(0, 10);
+      attemptedPreviousDayFallback = true;
+      console.log(
+        `[createJourneyTasks] no chart times for journey date ${params.journeyDate}; trying previous calendar day jDate=${prevStr}`,
+      );
+      await fetchCompositionForStations(
+        stationsToProcess,
+        prevRunDate,
+        'previous_day_fallback',
+      );
+      pickedUpChartTimesFromPreviousDate = routeHasAnyChartTime();
+      console.log(
+        `[createJourneyTasks] previous_day_fallback result: pickedUpFromPreviousDate=${pickedUpChartTimesFromPreviousDate}`,
+      );
+    } else {
+      console.log(
+        `[createJourneyTasks] skipped previous_day_fallback (route already had chart times for journey context; journeyDate=${params.journeyDate})`,
+      );
+    }
+
+    console.log('[createJourneyTasks] chart resolution summary', {
+      trainNumber,
+      journeyDate: params.journeyDate,
+      attemptedPreviousDayFallback,
+      pickedUpChartTimesFromPreviousDate,
+    });
 
     let monitoringContactId: string | undefined;
     if (email || mobile) {
@@ -178,90 +241,107 @@ export class JourneyTaskService {
       }
     }
 
-    const journeyMonitoringRequest =
-      await this.prisma.journeyMonitoringRequest.create({
-        data: {
-          monitoringContactId: monitoringContactId ?? null,
-          trainNumber,
-          fromStationCode: fromCode,
-          toStationCode: toCode,
-          journeyDate,
-          classCode,
-        },
-      });
-    const journeyRequestId = journeyMonitoringRequest.id;
-
-    const tasks: Array<{
-      id: string;
-      stationCode: string;
-      chartAt: string;
-      status: string;
-    }> = [];
-
-    const createAndMaybeRun = async (stCode: string, chartAt: Date) => {
-      const task = await this.prisma.chartTimeAvailabilityTask.create({
-        data: {
-          journeyRequestId,
-          trainNumber,
-          trainName: params.trainName ?? schedule.trainName,
-          fromStationCode: fromCode,
-          toStationCode: toCode,
-          stationCode: stCode,
-          journeyDate,
-          classCode,
-          chartAt,
-          status: 'pending',
-        },
-      });
-      tasks.push({
-        id: task.id,
-        stationCode: task.stationCode,
-        chartAt: task.chartAt.toISOString(),
-        status: task.status,
-      });
-      if (chartAt <= now) {
-        await this.runTask(task.id);
-        const updated = await this.prisma.chartTimeAvailabilityTask.findUnique({
-          where: { id: task.id },
-        });
-        if (updated) {
-          const i = tasks.findIndex((t) => t.id === task.id);
-          if (i >= 0) tasks[i].status = updated.status;
-        }
-      }
-    };
+    const taskSpecs: Array<{ stationCode: string; chartAt: Date }> = [];
+    const trainName = params.trainName ?? schedule.trainName;
 
     for (const stationCode of stationsToProcess) {
       const entry = chartTimesWithSecond.get(stationCode);
       if (!entry) continue;
 
-      const chartAt1 = buildChartAt(journeyDate, entry.chartOne);
-      await createAndMaybeRun(stationCode, chartAt1);
+      taskSpecs.push({
+        stationCode,
+        chartAt: buildChartAt(journeyDate, entry.chartOne),
+      });
 
       if (entry.chartTwo) {
-        const chartAt2 = buildChartAtWithDayOffset(
-          journeyDate,
-          entry.chartTwo.time,
-          entry.chartTwo.dayOffset,
-        );
-        await createAndMaybeRun(stationCode, chartAt2);
+        taskSpecs.push({
+          stationCode,
+          chartAt: buildChartAtWithDayOffset(
+            journeyDate,
+            entry.chartTwo.time,
+            entry.chartTwo.dayOffset,
+          ),
+        });
       }
     }
 
-    if (tasks.length === 0) {
+    if (taskSpecs.length === 0) {
       throw new Error(
         'No chart times found for stations in this route. Add chart times (e.g. train 29251, NDLS, 19:54) first.',
       );
     }
 
-    if (email || mobile) {
-      await this.prisma.journeyMonitorContact.create({
-        data: {
-          journeyRequestId,
-          email: email || null,
-          mobile: mobile || null,
-        },
-      });
+    const { journeyRequestId, tasks } = await this.prisma.$transaction(
+      async (tx) => {
+        const jmr = await tx.journeyMonitoringRequest.create({
+          data: {
+            monitoringContactId: monitoringContactId ?? null,
+            trainNumber,
+            fromStationCode: fromCode,
+            toStationCode: toCode,
+            journeyDate,
+            classCode,
+          },
+        });
+        const jid = jmr.id;
+
+        const createdTasks: Array<{
+          id: string;
+          stationCode: string;
+          chartAt: string;
+          status: string;
+        }> = [];
+
+        for (const spec of taskSpecs) {
+          const task = await tx.chartTimeAvailabilityTask.create({
+            data: {
+              journeyRequestId: jid,
+              trainNumber,
+              trainName,
+              fromStationCode: fromCode,
+              toStationCode: toCode,
+              stationCode: spec.stationCode,
+              journeyDate,
+              classCode,
+              chartAt: spec.chartAt,
+              status: 'pending',
+            },
+          });
+          createdTasks.push({
+            id: task.id,
+            stationCode: task.stationCode,
+            chartAt: task.chartAt.toISOString(),
+            status: task.status,
+          });
+        }
+
+        if (email || mobile) {
+          await tx.journeyMonitorContact.create({
+            data: {
+              journeyRequestId: jid,
+              email: email || null,
+              mobile: mobile || null,
+            },
+          });
+        }
+
+        return { journeyRequestId: jid, tasks: createdTasks };
+      },
+      { timeout: 30_000 },
+    );
+
+    for (const t of tasks) {
+      const chartAt = new Date(t.chartAt);
+      if (chartAt <= now) {
+        await this.runTask(t.id);
+        const updated = await this.prisma.chartTimeAvailabilityTask.findUnique({
+          where: { id: t.id },
+        });
+        if (updated) {
+          const i = tasks.findIndex((x) => x.id === t.id);
+          if (i >= 0) tasks[i].status = updated.status;
+        }
+      }
     }
 
     return { journeyRequestId, tasks };

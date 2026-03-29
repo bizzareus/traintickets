@@ -31,7 +31,10 @@ export type AnalyticsEvent =
     }
   | {
       name: "monitor_modal_closed";
-      properties: { outcome: "cancel" | "success_dismiss" };
+      properties: {
+        outcome: "cancel" | "success_dismiss" | "backdrop";
+        source?: "chart_pending" | "gap_leg" | "monitoring_started";
+      };
     }
   | {
       name: "monitor_journey_submitted";

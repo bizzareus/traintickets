@@ -183,16 +183,85 @@ const OPENAI_RESPONSE_JSON_SCHEMA = {
   additionalProperties: false,
 };
 
-/** True if chart time (jDate at chartTimeLocal in IST) is still in the future. */
-function isChartTimeInFuture(jDate: string, chartTimeLocal: string): boolean {
+/** IRCTC schedule times are typically "HH:MM" or "HH:MM:SS". */
+function parseIrctcClockToMinutes(t: string | undefined | null): number | null {
+  if (!t || typeof t !== 'string') return null;
+  const m = t.trim().match(/^(\d{1,2}):(\d{2})/);
+  if (!m) return null;
+  const h = parseInt(m[1], 10);
+  const min = parseInt(m[2], 10);
+  if (h > 23 || min > 59) return null;
+  return h * 60 + min;
+}
+
+/** Previous calendar day as YYYY-MM-DD (UTC date math on the given day). */
+function ymdMinusOneDay(ymd: string): string {
+  const [y, mo, d] = ymd.split('-').map(Number);
+  if (!y || !mo || !d) return ymd;
+  const t = Date.UTC(y, mo - 1, d);
+  return new Date(t - 86400000).toISOString().slice(0, 10);
+}
+
+/**
+ * For trains that leave soon after midnight (or any time before the day's chart
+ * clock), IRCTC prepares the first chart on the *previous* calendar day at the
+ * stored time (e.g. chart 16:08 on 29 Mar for a 30 Mar 00:07 departure).
+ * If departure is after the chart clock on jDate, the chart is on jDate itself.
+ */
+function chartCalendarDateForJourney(
+  journeyDateYmd: string,
+  chartTimeLocal: string,
+  boardingDepartureClock: string | null,
+): string {
+  const chartM = parseIrctcClockToMinutes(chartTimeLocal);
+  const depM = parseIrctcClockToMinutes(boardingDepartureClock);
+  if (
+    chartM != null &&
+    depM != null &&
+    depM < chartM
+  ) {
+    return ymdMinusOneDay(journeyDateYmd);
+  }
+  return journeyDateYmd;
+}
+
+function boardingDepartureOrArrivalClock(
+  schedule: TrainScheduleResponse | null,
+  boardingStation: string,
+): string | null {
+  if (!schedule?.stationList?.length) return null;
+  const st = schedule.stationList.find(
+    (s) => String(s.stationCode ?? '').trim().toUpperCase() === boardingStation,
+  );
+  if (!st) return null;
+  const dep = st.departureTime?.trim();
+  if (dep) return dep;
+  const arr = st.arrivalTime?.trim();
+  return arr || null;
+}
+
+/**
+ * True if the first chart instant (IST) is still in the future vs now.
+ * Uses previous calendar day when the train departs before the chart clock on jDate.
+ */
+function isChartTimeInFuture(
+  jDate: string,
+  chartTimeLocal: string,
+  boardingDepartureClock: string | null,
+): boolean {
   const match = String(chartTimeLocal)
     .trim()
     .match(/^(\d{1,2}):?(\d{2})/);
   if (!match) return false;
   const hour = parseInt(match[1], 10);
   const minute = parseInt(match[2], 10);
+  const chartYmd = chartCalendarDateForJourney(
+    jDate,
+    chartTimeLocal,
+    boardingDepartureClock,
+  );
   const chartIst = new Date(
-    `${jDate}T${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}:00+05:30`,
+    `${chartYmd}T${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}:00+05:30`,
   );
   const now = new Date();
   return chartIst.getTime() > now.getTime();
@@ -273,18 +342,25 @@ export class Service2Service {
 
     const trainSchedule = await this.irctc.getTrainSchedule(trainNo);
 
+    const boardingDepartureClock = boardingDepartureOrArrivalClock(
+      trainSchedule,
+      boardingStation,
+    );
+
     const chartTimeFromDb = await this.chartTime.getChartTime(
       trainNo,
       boardingStation,
     );
 
-    if (chartTimeFromDb && isChartTimeInFuture(jDate, chartTimeFromDb)) {
+    if (
+      chartTimeFromDb &&
+      isChartTimeInFuture(jDate, chartTimeFromDb, boardingDepartureClock)
+    ) {
       return {
         status: 'failed',
         chartStatus: {
           kind: 'not_prepared_yet',
-          message:
-            'Chart is not prepared for this journey date yet. Please wait until chart preparation time or check IRCTC for ticket availability.',
+          message: 'Chart is not prepared for this journey date yet.',
         },
         vacantBerth: { vbd: [], error: null },
       };
@@ -320,13 +396,15 @@ export class Service2Service {
       const timeLocal = match
         ? `${match[1].padStart(2, '0')}:${match[2].padStart(2, '0')}`
         : null;
-      if (timeLocal && isChartTimeInFuture(jDate, timeLocal)) {
+      if (
+        timeLocal &&
+        isChartTimeInFuture(jDate, timeLocal, boardingDepartureClock)
+      ) {
         return {
           status: 'failed',
           chartStatus: {
             kind: 'not_prepared_yet',
-            message:
-              'Chart is not prepared for this journey date yet. Please wait until chart preparation time or check IRCTC for ticket availability.',
+            message: 'Chart is not prepared for this journey date yet.',
           },
           vacantBerth: { vbd: [], error: null },
         };

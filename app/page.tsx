@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, useRef, Fragment } from "react";
 import Lottie from "lottie-react";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics";
@@ -9,42 +9,6 @@ const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 
 type Station = { code: string; name: string };
 type TrainOption = { number: string; label: string };
-
-function TrainIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={1.5}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-1.607-1.274-2.905-2.846-2.905A2.846 2.846 0 008.25 4.77v.958m0 0v.041a2.25 2.25 0 01-.659 1.591L5 10.25m14 0l2.659-2.591A2.25 2.25 0 0021.75 5.77v-.041m-13.5 0v.041a2.25 2.25 0 01-.659 1.591L5 10.25"
-      />
-    </svg>
-  );
-}
-
-function CalendarIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={1.5}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-      />
-    </svg>
-  );
-}
 
 function SwapIcon({ className }: { className?: string }) {
   return (
@@ -218,6 +182,39 @@ function toYmdLocal(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
+/** Human-friendly date for monitoring confirmation copy (e.g. "Sunday, 30 March 2026"). */
+function formatJourneyDateFriendly(ymd: string): string {
+  const parts = ymd.trim().split("-").map(Number);
+  if (parts.length !== 3 || parts.some((n) => !Number.isFinite(n))) return ymd;
+  const [y, mo, d] = parts;
+  const date = new Date(y, (mo ?? 1) - 1, d ?? 1);
+  if (Number.isNaN(date.getTime())) return ymd;
+  return date.toLocaleDateString("en-IN", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+/** Short phrase for “as of when” in IRCTC disclaimer (chart / availability snapshot). */
+function buildChartFreshnessPhrase(
+  d: ChartPreparationDetails | undefined,
+): string {
+  if (!d) return "the last time we checked for you";
+  const time = d.firstChartCreationTime?.trim();
+  const name = d.chartingStationName?.trim();
+  const code = d.chartingStationCode?.trim();
+  let station = "";
+  if (name && code) station = `${name} (${code})`;
+  else if (name) station = name;
+  else if (code) station = code;
+  if (time && station) return `${time} at ${station}`;
+  if (time) return time;
+  if (station) return `the last check at ${station}`;
+  return "the last time we checked for you";
+}
+
 function getDateOptions() {
   const today = new Date();
   const yesterday = new Date(today);
@@ -269,6 +266,15 @@ export default function HomePage() {
   const [monitorMobile, setMonitorMobile] = useState("");
   const [metroAnimData, setMetroAnimData] = useState<object | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [chartPendingModalDismissed, setChartPendingModalDismissed] =
+    useState(false);
+  const chartPendingOpenedTracked = useRef(false);
+  const [monitoringStartedPopupOpen, setMonitoringStartedPopupOpen] =
+    useState(false);
+  const [irctcBookConfirm, setIrctcBookConfirm] = useState<{
+    url: string;
+    source: "booking_plan" | "openai_plan";
+  } | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -350,11 +356,14 @@ export default function HomePage() {
   // Reset monitor form when modal opens
   useEffect(() => {
     if (!monitoringLeg) return;
+    setMonitoringStartedPopupOpen(false);
     setMonitorSuccess(null);
     setMonitorError(null);
     setMonitorJourneyResponse(null);
     try {
-      const raw = typeof window !== "undefined" && window.localStorage.getItem(MONITOR_CONTACT_STORAGE_KEY);
+      const raw =
+        typeof window !== "undefined" &&
+        window.localStorage.getItem(MONITOR_CONTACT_STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as { email?: string; mobile?: string };
         setMonitorEmail(parsed.email != null ? String(parsed.email) : "");
@@ -386,6 +395,13 @@ export default function HomePage() {
     });
   }, [mounted, scheduleError, scheduleStations]);
 
+  useEffect(() => {
+    if (loading || !checkResult) {
+      setChartPendingModalDismissed(false);
+      chartPendingOpenedTracked.current = false;
+    }
+  }, [loading, checkResult]);
+
   const fromCode = from.includes(" - ")
     ? from.split(" - ")[0].trim()
     : from.trim();
@@ -400,6 +416,11 @@ export default function HomePage() {
     }
     setError(null);
     setCheckResult(null);
+    setMonitorJourneyResponse(null);
+    setMonitorError(null);
+    setMonitorSuccess(null);
+    setMonitoringStartedPopupOpen(false);
+    setIrctcBookConfirm(null);
     setLoading(true);
     trackAnalyticsEvent({
       name: "search_submitted",
@@ -461,6 +482,72 @@ export default function HomePage() {
     }
   }
 
+  async function submitJourneyMonitor(fromC: string, toC: string) {
+    const email = monitorEmail.trim() || undefined;
+    const mobile = monitorMobile.trim() || undefined;
+    if (!email && !mobile) return;
+    setMonitorSubmitting(true);
+    setMonitorError(null);
+    setMonitorSuccess(null);
+    try {
+      const { data } = await apiClient.post<{
+        journeyRequestId: string;
+        tasks: {
+          id: string;
+          stationCode: string;
+          chartAt: string;
+          status: string;
+        }[];
+      }>("/api/availability/journey", {
+        trainNumber: trainNumber.trim(),
+        fromStationCode: fromC,
+        toStationCode: toC,
+        journeyDate: journeyDate.trim(),
+        classCode: "3A",
+        email,
+        mobile,
+      });
+      setMonitorJourneyResponse({
+        journeyRequestId: data.journeyRequestId,
+        tasks: data.tasks ?? [],
+      });
+      setMonitoringStartedPopupOpen(true);
+      setChartPendingModalDismissed(true);
+      setMonitoringLeg(null);
+      trackAnalyticsEvent({
+        name: "monitor_journey_submitted",
+        properties: { success: true },
+      });
+      if (typeof window !== "undefined" && window.localStorage) {
+        try {
+          window.localStorage.setItem(
+            MONITOR_CONTACT_STORAGE_KEY,
+            JSON.stringify({
+              email: email ?? "",
+              mobile: mobile ?? "",
+            }),
+          );
+        } catch {
+          // ignore storage errors
+        }
+      }
+    } catch (err: unknown) {
+      const ax = err as {
+        response?: { data?: { message?: string } };
+      };
+      setMonitorError(ax.response?.data?.message ?? "Request failed.");
+      trackAnalyticsEvent({
+        name: "monitor_journey_submitted",
+        properties: {
+          success: false,
+          error: ax.response?.data?.message ?? "request_failed",
+        },
+      });
+    } finally {
+      setMonitorSubmitting(false);
+    }
+  }
+
   function swapFromTo() {
     trackAnalyticsEvent({
       name: "swap_stations_clicked",
@@ -505,10 +592,35 @@ export default function HomePage() {
   const bookings = payload?.bookings;
   const fullJourneyConfirmed = payload?.fullJourneyConfirmed;
   const chartDetails = payload?.chartPreparationDetails;
+  const chartFreshnessPhrase = buildChartFreshnessPhrase(chartDetails);
   const fullRouteStations = payload?.fullRouteStations ?? [];
   const longestPath = payload?.longestPathAvailable;
   const hasChartResult =
     chartDetails || fullRouteStations.length > 0 || longestPath;
+
+  const chartStatusPayload = payload?.chartStatus;
+  const showChartPendingMonitor =
+    Boolean(checkResult && !loading) &&
+    payload?.serviceSource === "service2" &&
+    chartStatusPayload &&
+    (chartStatusPayload.kind === "not_prepared_yet" ||
+      (chartStatusPayload.kind === "chart_error" &&
+        /chart\s+not\s+prepared/i.test(chartStatusPayload.error ?? ""))) &&
+    Boolean(fromCode && toCode);
+
+  useEffect(() => {
+    if (
+      !showChartPendingMonitor ||
+      chartPendingModalDismissed ||
+      chartPendingOpenedTracked.current
+    )
+      return;
+    chartPendingOpenedTracked.current = true;
+    trackAnalyticsEvent({
+      name: "monitor_modal_opened",
+      properties: { source: "chart_pending" },
+    });
+  }, [showChartPendingMonitor, chartPendingModalDismissed]);
 
   // Build full journey legs (ticket + gap) from route and booking plan
   const scheduleList =
@@ -661,11 +773,11 @@ export default function HomePage() {
                     <ChevronUpDownIcon className="size-5 text-gray-500" />
                   </span>
                 </div>
-                {mounted && (
-                  <div
-                    id="train-dropdown"
-                    className="z-10 hidden absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5"
-                  >
+                <div
+                  id="train-dropdown"
+                  className="z-10 hidden absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5"
+                >
+                  {mounted && (
                     <ul
                       className="text-base sm:text-sm"
                       aria-labelledby="train-dropdown-button"
@@ -701,8 +813,8 @@ export default function HomePage() {
                         );
                       })}
                     </ul>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
 
               <div
@@ -745,43 +857,45 @@ export default function HomePage() {
                     <ChevronUpDownIcon className="size-5 text-gray-500" />
                   </span>
                 </div>
-                {mounted && !scheduleError && (
+                {!scheduleError && (
                   <div
                     id="from-dropdown"
                     className="z-10 hidden absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5"
                   >
-                    <ul
-                      className="text-base sm:text-sm"
-                      aria-labelledby="from-dropdown-button"
-                    >
-                      {stationOptions.map((s) => {
-                        const optionLabel = `${s.code} - ${s.name}`;
-                        const selected = from === optionLabel;
-                        return (
-                          <li key={s.code}>
-                            <button
-                              type="button"
-                              className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
-                              onClick={() => {
-                                setFrom(optionLabel);
-                                document
-                                  .getElementById("from-dropdown")
-                                  ?.classList.add("hidden");
-                              }}
-                            >
-                              <span className="block truncate font-normal">
-                                {s.code} – {s.name}
-                              </span>
-                              {selected && (
-                                <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-indigo-600">
-                                  <CheckIcon className="size-5" />
+                    {mounted && (
+                      <ul
+                        className="text-base sm:text-sm"
+                        aria-labelledby="from-dropdown-button"
+                      >
+                        {stationOptions.map((s) => {
+                          const optionLabel = `${s.code} - ${s.name}`;
+                          const selected = from === optionLabel;
+                          return (
+                            <li key={s.code}>
+                              <button
+                                type="button"
+                                className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
+                                onClick={() => {
+                                  setFrom(optionLabel);
+                                  document
+                                    .getElementById("from-dropdown")
+                                    ?.classList.add("hidden");
+                                }}
+                              >
+                                <span className="block truncate font-normal">
+                                  {s.code} – {s.name}
                                 </span>
-                              )}
-                            </button>
-                          </li>
-                        );
-                      })}
-                    </ul>
+                                {selected && (
+                                  <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-indigo-600">
+                                    <CheckIcon className="size-5" />
+                                  </span>
+                                )}
+                              </button>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
                   </div>
                 )}
               </div>
@@ -838,43 +952,45 @@ export default function HomePage() {
                     <ChevronUpDownIcon className="size-5 text-gray-500" />
                   </span>
                 </div>
-                {mounted && !scheduleError && (
+                {!scheduleError && (
                   <div
                     id="to-dropdown"
                     className="z-10 hidden absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5"
                   >
-                    <ul
-                      className="text-base sm:text-sm"
-                      aria-labelledby="to-dropdown-button"
-                    >
-                      {toOptions.map((s) => {
-                        const optionLabel = `${s.code} - ${s.name}`;
-                        const selected = to === optionLabel;
-                        return (
-                          <li key={s.code}>
-                            <button
-                              type="button"
-                              className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
-                              onClick={() => {
-                                setTo(optionLabel);
-                                document
-                                  .getElementById("to-dropdown")
-                                  ?.classList.add("hidden");
-                              }}
-                            >
-                              <span className="block truncate font-normal">
-                                {s.code} – {s.name}
-                              </span>
-                              {selected && (
-                                <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-indigo-600">
-                                  <CheckIcon className="size-5" />
+                    {mounted && (
+                      <ul
+                        className="text-base sm:text-sm"
+                        aria-labelledby="to-dropdown-button"
+                      >
+                        {toOptions.map((s) => {
+                          const optionLabel = `${s.code} - ${s.name}`;
+                          const selected = to === optionLabel;
+                          return (
+                            <li key={s.code}>
+                              <button
+                                type="button"
+                                className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
+                                onClick={() => {
+                                  setTo(optionLabel);
+                                  document
+                                    .getElementById("to-dropdown")
+                                    ?.classList.add("hidden");
+                                }}
+                              >
+                                <span className="block truncate font-normal">
+                                  {s.code} – {s.name}
                                 </span>
-                              )}
-                            </button>
-                          </li>
-                        );
-                      })}
-                    </ul>
+                                {selected && (
+                                  <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-indigo-600">
+                                    <CheckIcon className="size-5" />
+                                  </span>
+                                )}
+                              </button>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
                   </div>
                 )}
               </div>
@@ -988,72 +1104,38 @@ export default function HomePage() {
           </div>
         )}
 
-        {checkResult && !loading && (
+        {checkResult &&
+          !loading &&
+          (!showChartPendingMonitor || chartPendingModalDismissed) && (
           <section className="mt-6 rounded-2xl bg-slate-100/60 py-4 px-0">
             {payload?.serviceSource === "service2" ? (
               payload.chartStatus ? (
                 <div className="rounded-2xl border border-amber-200/90 bg-white p-4 shadow-md">
                   <div className="rounded-xl border border-amber-100 bg-amber-50/80 px-4 py-4">
-                    {(() => {
-                      const showMonitor =
-                        (payload.chartStatus.kind === "not_prepared_yet" ||
-                          (payload.chartStatus.kind === "chart_error" &&
-                            /chart\s+not\s+prepared/i.test(
-                              payload.chartStatus.error ?? "",
-                            ))) &&
-                        fromCode &&
-                        toCode;
-                      return (
-                        <>
-                          <p className="font-medium text-amber-900 text-sm">
-                            {payload.chartStatus.kind === "not_prepared_yet"
-                              ? payload.chartStatus.message
-                              : payload.chartStatus.error}
-                          </p>
-                          {showMonitor && (
-                            <p className="mt-2 text-sm text-amber-800">
-                              We can check at chart preparation time and notify
-                              you when seats are available. Choose which
-                              stations to monitor below.
-                            </p>
-                          )}
-                          <div className="mt-4 flex flex-wrap gap-3">
-                            {showMonitor && (
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  trackAnalyticsEvent({
-                                    name: "monitor_modal_opened",
-                                    properties: { source: "chart_pending" },
-                                  });
-                                  setMonitoringLeg({
-                                    fromCode,
-                                    toCode,
-                                  });
-                                }}
-                                className="rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white active:bg-amber-700 transition"
-                              >
-                                Monitor at chart time
-                              </button>
-                            )}
-                            <a
-                              href="https://www.irctc.co.in/eticketing/login"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() =>
-                                trackAnalyticsEvent({
-                                  name: "irctc_open_login_clicked",
-                                  properties: {},
-                                })
-                              }
-                              className="inline-flex items-center rounded-xl border border-amber-300 bg-white px-4 py-3 text-sm font-medium text-amber-900 no-underline active:bg-amber-50 transition"
-                            >
-                              Open IRCTC →
-                            </a>
-                          </div>
-                        </>
-                      );
-                    })()}
+                    <p className="font-bold text-amber-900 text-xl">
+                      {payload.chartStatus.kind === "not_prepared_yet"
+                        ? payload.chartStatus.message
+                        : payload.chartStatus.error}
+                    </p>
+                    {showChartPendingMonitor && (
+                      <p className="mt-2 text-sm text-amber-800 font-medium">
+                        We can check at chart preparation time and notify you
+                        when seats are available. We only find you confirmed
+                        tickets once the chart is prepared. You will receive
+                        alerts by WhatsApp and email.
+                      </p>
+                    )}
+                    {showChartPendingMonitor && chartPendingModalDismissed && (
+                      <div className="mt-4">
+                        <button
+                          type="button"
+                          onClick={() => setChartPendingModalDismissed(false)}
+                          className="rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white active:bg-amber-700 transition"
+                        >
+                          Monitor tickets
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               ) : checkResult.status === "failed" || apiError ? (
@@ -1227,20 +1309,18 @@ export default function HomePage() {
                                     ₹{seg.approx_price.toLocaleString("en-IN")}
                                   </p>
                                 )}
-                                <a
-                                  href={bookUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
+                                <button
+                                  type="button"
                                   onClick={() =>
-                                    trackAnalyticsEvent({
-                                      name: "irctc_book_clicked",
-                                      properties: { source: "booking_plan" },
+                                    setIrctcBookConfirm({
+                                      url: bookUrl,
+                                      source: "booking_plan",
                                     })
                                   }
-                                  className="mt-4 rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white no-underline active:bg-emerald-700 transition"
+                                  className="mt-4 w-full rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-emerald-700 transition"
                                 >
                                   Book
-                                </a>
+                                </button>
                               </div>
                             </Fragment>
                           );
@@ -1352,20 +1432,18 @@ export default function HomePage() {
                                   ₹{price.toLocaleString("en-IN")}
                                 </p>
                               )}
-                              <a
-                                href={bookUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                              <button
+                                type="button"
                                 onClick={() =>
-                                  trackAnalyticsEvent({
-                                    name: "irctc_book_clicked",
-                                    properties: { source: "openai_plan" },
+                                  setIrctcBookConfirm({
+                                    url: bookUrl,
+                                    source: "openai_plan",
                                   })
                                 }
-                                className="mt-4 rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white no-underline active:bg-emerald-700 transition"
+                                className="mt-4 w-full rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-emerald-700 transition"
                               >
                                 Book
-                              </a>
+                              </button>
                             </div>
                           );
                         },
@@ -1576,6 +1654,341 @@ export default function HomePage() {
           </section>
         )}
 
+        {irctcBookConfirm && (
+          <div
+            className="fixed inset-0 z-[105] flex items-center justify-center bg-black/45 p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="irctc-disclaimer-title"
+            onClick={() => setIrctcBookConfirm(null)}
+          >
+            <div
+              className="w-full max-w-md rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="border-b border-slate-100 px-4 py-4">
+                <h2
+                  id="irctc-disclaimer-title"
+                  className="text-lg font-semibold text-slate-900 leading-snug"
+                >
+                  Before you open IRCTC
+                </h2>
+                <p className="mt-3 text-sm text-slate-700 leading-relaxed">
+                  The seats and fares shown in this ticket box are based on what
+                  we found as of{" "}
+                  <span className="font-semibold text-slate-900">
+                    {chartFreshnessPhrase}
+                  </span>
+                  . Trains fill up quickly — someone else may have booked those
+                  seats since then, or availability may have changed.
+                </p>
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                  Please double-check on the official IRCTC site before you pay.
+                </p>
+              </div>
+              <div className="flex flex-col-reverse gap-2 p-4 sm:flex-row sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() => setIrctcBookConfirm(null)}
+                  className="w-full sm:w-auto rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                >
+                  Go back
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!irctcBookConfirm) return;
+                    trackAnalyticsEvent({
+                      name: "irctc_book_clicked",
+                      properties: { source: irctcBookConfirm.source },
+                    });
+                    window.open(
+                      irctcBookConfirm.url,
+                      "_blank",
+                      "noopener,noreferrer",
+                    );
+                    setIrctcBookConfirm(null);
+                  }}
+                  className="w-full sm:w-auto rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white active:bg-emerald-700"
+                >
+                  Continue to IRCTC
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showChartPendingMonitor &&
+          !chartPendingModalDismissed &&
+          chartStatusPayload && (
+            <div
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/45 p-0"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="chart-pending-modal-title"
+              onClick={() => {
+                trackAnalyticsEvent({
+                  name: "monitor_modal_closed",
+                  properties: { source: "chart_pending", outcome: "backdrop" },
+                });
+                setChartPendingModalDismissed(true);
+              }}
+            >
+              <div
+                className="relative w-full max-w-full max-h-[min(92dvh,100dvh)] flex flex-col rounded-none border-y border-amber-200/90 bg-white shadow-2xl overflow-hidden sm:rounded-2xl sm:border sm:max-h-[min(90dvh,40rem)]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="shrink-0 border-b border-amber-100 bg-amber-50/95 px-4 py-3 flex items-start justify-between gap-3">
+                  <h2
+                    id="chart-pending-modal-title"
+                    className="font-bold text-amber-900 text-lg leading-snug"
+                  >
+                    {chartStatusPayload.kind === "not_prepared_yet"
+                      ? chartStatusPayload.message
+                      : chartStatusPayload.error}
+                  </h2>
+                  <button
+                    type="button"
+                    aria-label="Close"
+                    onClick={() => {
+                      trackAnalyticsEvent({
+                        name: "monitor_modal_closed",
+                        properties: { source: "chart_pending", outcome: "cancel" },
+                      });
+                      setChartPendingModalDismissed(true);
+                    }}
+                    className="shrink-0 rounded-lg p-1.5 text-amber-800 hover:bg-amber-100/80 transition"
+                  >
+                    <span className="sr-only">Close</span>
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      aria-hidden
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-4">
+                  <p className="text-sm text-amber-900/90 font-medium">
+                    We can check at chart preparation time and notify you when
+                    seats are available. We only find you confirmed tickets once
+                    the chart is prepared. You will receive alerts by WhatsApp
+                    and email.
+                  </p>
+                  {monitorError && (
+                    <p className="text-sm text-red-600">{monitorError}</p>
+                  )}
+                  {monitorSuccess && (
+                    <p className="text-sm text-emerald-600">{monitorSuccess}</p>
+                  )}
+                  <div className="space-y-3">
+                    <label className="block text-sm font-medium text-slate-700">
+                      Mobile
+                    </label>
+                    <input
+                      type="tel"
+                      value={monitorMobile}
+                      onChange={(e) => setMonitorMobile(e.target.value)}
+                      placeholder="10-digit mobile number"
+                      className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none"
+                    />
+                    <label className="block text-sm font-medium text-slate-700">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      value={monitorEmail}
+                      onChange={(e) => setMonitorEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none"
+                    />
+                  </div>
+                </div>
+                <div className="shrink-0 border-t border-slate-100 p-4">
+                  <button
+                    type="button"
+                    disabled={
+                      monitorSubmitting ||
+                      (!monitorEmail.trim() && !monitorMobile.trim())
+                    }
+                    onClick={() => {
+                      void submitJourneyMonitor(fromCode, toCode);
+                    }}
+                    className="w-full rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed active:bg-amber-700 transition"
+                  >
+                    {monitorSubmitting ? "Starting…" : "Monitor tickets"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+        {monitoringStartedPopupOpen && monitorJourneyResponse && (
+          <div
+            className="fixed inset-0 z-[110] flex items-center justify-center bg-black/50 p-0"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="monitoring-started-title"
+            onClick={() => {
+              trackAnalyticsEvent({
+                name: "monitor_modal_closed",
+                properties: {
+                  outcome: "success_dismiss",
+                  source: "monitoring_started",
+                },
+              });
+              setMonitoringStartedPopupOpen(false);
+              setMonitorJourneyResponse(null);
+              setMonitorSuccess(null);
+              setMonitorError(null);
+            }}
+          >
+            <div
+              className="relative w-full max-w-full max-h-[min(92dvh,100dvh)] flex flex-col rounded-none border-y border-emerald-200/90 bg-white shadow-2xl overflow-hidden sm:rounded-2xl sm:border sm:max-h-[min(90dvh,36rem)]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="shrink-0 border-b border-emerald-100 bg-emerald-50/95 px-4 py-4 flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-emerald-800 uppercase tracking-wide">
+                    All set
+                  </p>
+                  <h2
+                    id="monitoring-started-title"
+                    className="mt-1 font-bold text-emerald-950 text-xl leading-snug"
+                  >
+                    We&apos;ll watch this train for you
+                  </h2>
+                </div>
+                <button
+                  type="button"
+                  aria-label="Close"
+                  onClick={() => {
+                    trackAnalyticsEvent({
+                      name: "monitor_modal_closed",
+                      properties: {
+                        outcome: "success_dismiss",
+                        source: "monitoring_started",
+                      },
+                    });
+                    setMonitoringStartedPopupOpen(false);
+                    setMonitorJourneyResponse(null);
+                    setMonitorSuccess(null);
+                    setMonitorError(null);
+                  }}
+                  className="shrink-0 rounded-lg p-1.5 text-emerald-800 hover:bg-emerald-100/80 transition"
+                >
+                  <span className="sr-only">Close</span>
+                  <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    aria-hidden
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="flex-1 min-h-0 overflow-y-auto px-4 py-5 space-y-4 text-slate-700 text-base leading-relaxed">
+                <p>
+                  You&apos;re signed up. For your journey on{" "}
+                  <span className="font-semibold text-slate-900">
+                    {formatJourneyDateFriendly(journeyDate)}
+                  </span>
+                  , we&apos;ll quietly check whether any{" "}
+                  <span className="font-semibold text-slate-900">
+                    confirmed seats
+                  </span>{" "}
+                  open up on{" "}
+                  <span className="font-semibold text-slate-900">
+                    {trainInput.trim() || trainNumber}
+                  </span>
+                  {from.trim() && to.trim() ? (
+                    <>
+                      {" "}
+                      from{" "}
+                      <span className="font-semibold text-slate-900">
+                        {from.trim()}
+                      </span>{" "}
+                      to{" "}
+                      <span className="font-semibold text-slate-900">
+                        {to.trim()}
+                      </span>
+                    </>
+                  ) : (
+                    " for the route you searched"
+                  )}{" "}
+                  — you don&apos;t need to keep refreshing the app.
+                </p>
+                <p className="font-semibold text-slate-900">
+                  What happens next
+                </p>
+                <ul className="space-y-2 list-disc list-inside text-slate-700">
+                  <li>
+                    We run several automatic checks for you before the train
+                    leaves.
+                  </li>
+                  <li>
+                    If a seat becomes free that matches your trip, we&apos;ll
+                    message you on{" "}
+                    <span className="font-semibold text-slate-900">
+                      WhatsApp
+                    </span>{" "}
+                    and{" "}
+                    <span className="font-semibold text-slate-900">email</span>{" "}
+                    (whichever you gave us).
+                  </li>
+                  <li>
+                    Please open{" "}
+                    <span className="font-semibold text-slate-900">IRCTC</span>{" "}
+                    and book as soon as you see our message — good seats go
+                    quickly.
+                  </li>
+                </ul>
+                <p className="text-sm text-slate-500 pt-1 border-t border-slate-100">
+                  This doesn&apos;t hold or reserve a ticket for you; it only
+                  tells you when something might be available so you can book
+                  yourself on IRCTC.
+                </p>
+              </div>
+              <div className="shrink-0 border-t border-slate-100 p-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    trackAnalyticsEvent({
+                      name: "monitor_modal_closed",
+                      properties: {
+                        outcome: "success_dismiss",
+                        source: "monitoring_started",
+                      },
+                    });
+                    setMonitoringStartedPopupOpen(false);
+                    setMonitorJourneyResponse(null);
+                    setMonitorSuccess(null);
+                    setMonitorError(null);
+                  }}
+                  className="w-full rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white active:bg-emerald-700"
+                >
+                  Got it
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Monitor modal: select stations to watch for a gap leg */}
         {monitoringLeg && (
           <div
@@ -1593,8 +2006,9 @@ export default function HomePage() {
                   Monitor {monitoringLeg.fromCode} → {monitoringLeg.toCode}
                 </h2>
                 <p className="mt-1 text-sm text-slate-500">
-                  We&apos;ll check at chart time for this leg and notify you when
-                  seats are available. Enter email or mobile to get notified.
+                  We&apos;ll check at chart time for this leg and notify you
+                  when seats are available. Enter email or mobile to get
+                  notified.
                 </p>
               </div>
               <div className="p-4 overflow-y-auto flex-1 space-y-4">
@@ -1604,175 +2018,65 @@ export default function HomePage() {
                 {monitorSuccess && (
                   <p className="text-sm text-emerald-600">{monitorSuccess}</p>
                 )}
-                {monitorJourneyResponse && (
-                  <div className="rounded-xl bg-emerald-50 border border-emerald-200/80 p-4 space-y-3">
-                    <p className="text-sm font-medium text-emerald-900">
-                      Monitoring started
-                    </p>
-                    <p className="text-sm text-emerald-800">
-                      We will check when the chart prepares at the selected
-                      station(s). Chart times we’ll monitor:
-                    </p>
-                    <ul className="text-sm text-emerald-800 list-disc list-inside space-y-1">
-                      {monitorJourneyResponse.tasks.map((t, i) => (
-                        <li key={`${t.stationCode}-${t.chartAt}-${i}`}>
-                          {t.stationCode} –{" "}
-                          {new Date(t.chartAt).toLocaleString(undefined, {
-                            dateStyle: "medium",
-                            timeStyle: "short",
-                          })}
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="text-sm text-emerald-800 pt-2 border-t border-emerald-200/60">
-                      If tickets become available, we’ll notify you by WhatsApp
-                      and email. Please book immediately on IRCTC to avoid them
-                      selling out.
-                    </p>
-                  </div>
-                )}
-                {!monitorJourneyResponse && (
-                  <>
-                    <div className="space-y-3">
-                      <label className="block text-sm font-medium text-slate-700">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        value={monitorEmail}
-                        onChange={(e) => setMonitorEmail(e.target.value)}
-                        placeholder="you@example.com"
-                        className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
-                      />
-                      <label className="block text-sm font-medium text-slate-700">
-                        Mobile
-                      </label>
-                      <input
-                        type="tel"
-                        value={monitorMobile}
-                        onChange={(e) => setMonitorMobile(e.target.value)}
-                        placeholder="10-digit mobile number"
-                        className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
-                      />
-                    </div>
-                  </>
-                )}
+                <div className="space-y-3">
+                  <label className="block text-sm font-medium text-slate-700">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    value={monitorEmail}
+                    onChange={(e) => setMonitorEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
+                  />
+                  <label className="block text-sm font-medium text-slate-700">
+                    Mobile
+                  </label>
+                  <input
+                    type="tel"
+                    value={monitorMobile}
+                    onChange={(e) => setMonitorMobile(e.target.value)}
+                    placeholder="10-digit mobile number"
+                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
+                  />
+                </div>
               </div>
               <div className="p-4 border-t border-slate-100 flex gap-3">
-                {monitorJourneyResponse ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      trackAnalyticsEvent({
-                        name: "monitor_modal_closed",
-                        properties: { outcome: "success_dismiss" },
-                      });
-                      setMonitoringLeg(null);
-                      setMonitorSuccess(null);
-                      setMonitorJourneyResponse(null);
-                      setMonitorError(null);
-                      setMonitorEmail("");
-                      setMonitorMobile("");
-                    }}
-                    className="w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white hover:bg-blue-700"
-                  >
-                    Close
-                  </button>
-                ) : (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        trackAnalyticsEvent({
-                          name: "monitor_modal_closed",
-                          properties: { outcome: "cancel" },
-                        });
-                        setMonitoringLeg(null);
-                        setMonitorSuccess(null);
-                        setMonitorJourneyResponse(null);
-                        setMonitorError(null);
-                        setMonitorEmail("");
-                        setMonitorMobile("");
-                      }}
-                      className="flex-1 rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="button"
-                      disabled={
-                        monitorSubmitting ||
-                        (!monitorEmail.trim() && !monitorMobile.trim())
-                      }
-                      onClick={async () => {
-                        if (!monitoringLeg) return;
-                        const email = monitorEmail.trim() || undefined;
-                        const mobile = monitorMobile.trim() || undefined;
-                        if (!email && !mobile) return;
-                        setMonitorSubmitting(true);
-                        setMonitorError(null);
-                        setMonitorSuccess(null);
-                        try {
-                          const { data } = await apiClient.post<{
-                            journeyRequestId: string;
-                            tasks: {
-                              id: string;
-                              stationCode: string;
-                              chartAt: string;
-                              status: string;
-                            }[];
-                          }>("/api/availability/journey", {
-                            trainNumber: trainNumber.trim(),
-                            fromStationCode: monitoringLeg.fromCode,
-                            toStationCode: monitoringLeg.toCode,
-                            journeyDate: journeyDate.trim(),
-                            classCode: "3A",
-                            email,
-                            mobile,
-                          });
-                          setMonitorJourneyResponse({
-                            journeyRequestId: data.journeyRequestId,
-                            tasks: data.tasks ?? [],
-                          });
-                          trackAnalyticsEvent({
-                            name: "monitor_journey_submitted",
-                            properties: { success: true },
-                          });
-                          if (typeof window !== "undefined" && window.localStorage) {
-                            try {
-                              window.localStorage.setItem(
-                                MONITOR_CONTACT_STORAGE_KEY,
-                                JSON.stringify({ email: email ?? "", mobile: mobile ?? "" }),
-                              );
-                            } catch {
-                              // ignore storage errors
-                            }
-                          }
-                        } catch (err: unknown) {
-                          const ax = err as {
-                            response?: { data?: { message?: string } };
-                          };
-                          setMonitorError(
-                            ax.response?.data?.message ?? "Request failed.",
-                          );
-                          trackAnalyticsEvent({
-                            name: "monitor_journey_submitted",
-                            properties: {
-                              success: false,
-                              error:
-                                ax.response?.data?.message ?? "request_failed",
-                            },
-                          });
-                        } finally {
-                          setMonitorSubmitting(false);
-                        }
-                      }}
-                      className="flex-1 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed active:bg-blue-700"
-                    >
-                      {monitorSubmitting ? "Starting…" : "Start monitoring"}
-                    </button>
-                  </>
-                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    trackAnalyticsEvent({
+                      name: "monitor_modal_closed",
+                      properties: { outcome: "cancel", source: "gap_leg" },
+                    });
+                    setMonitoringLeg(null);
+                    setMonitorSuccess(null);
+                    setMonitorJourneyResponse(null);
+                    setMonitorError(null);
+                    setMonitorEmail("");
+                    setMonitorMobile("");
+                  }}
+                  className="flex-1 rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  disabled={
+                    monitorSubmitting ||
+                    (!monitorEmail.trim() && !monitorMobile.trim())
+                  }
+                  onClick={() => {
+                    if (!monitoringLeg) return;
+                    void submitJourneyMonitor(
+                      monitoringLeg.fromCode,
+                      monitoringLeg.toCode,
+                    );
+                  }}
+                  className="flex-1 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed active:bg-blue-700"
+                >
+                  {monitorSubmitting ? "Starting…" : "Start monitoring"}
+                </button>
               </div>
             </div>
           </div>

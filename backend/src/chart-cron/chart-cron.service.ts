@@ -6,7 +6,7 @@ import { JourneyTaskService } from '../availability/journey-task.service';
 export class ChartCronService {
   constructor(private journeyTask: JourneyTaskService) {}
 
-  @Cron(CronExpression.EVERY_10_SECONDS) // every minute
+  @Cron(CronExpression.EVERY_MINUTE) // every minute
   async handleChartCron() {
     const now = new Date();
     console.log('starting cron every minute', now.toISOString());
