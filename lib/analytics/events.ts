@@ -1,7 +1,36 @@
 /**
  * Central catalogue of product analytics events. Add new actions here so names
  * stay consistent and properties stay typed.
+ *
+ * popup_* + button_clicked are optimized for PostHog funnels alongside legacy
+ * semantic events (monitor_modal_*, irctc_book_clicked, etc.).
  */
+export type PopupId =
+  | "chart_pending"
+  | "monitoring_success"
+  | "irctc_disclaimer"
+  | "gap_leg_monitor";
+
+export type PopupCloseMethod =
+  | "backdrop"
+  | "x_button"
+  | "go_back"
+  | "continue_irctc"
+  | "got_it"
+  | "cancel";
+
+export type HomeButtonId =
+  | "search_submit"
+  | "swap_stations"
+  | "book_ticket_card"
+  | "chart_pending_reopen"
+  | "chart_pending_monitor_tickets"
+  | "gap_leg_monitor_open"
+  | "gap_monitor_cancel"
+  | "gap_monitor_start"
+  | "irctc_disclaimer_go_back"
+  | "monitoring_success_got_it";
+
 export type AnalyticsEvent =
   | {
       name: "search_submitted";
@@ -54,6 +83,32 @@ export type AnalyticsEvent =
   | {
       name: "monitoring_alert_requested";
       properties: { success: boolean; train_id_present: boolean };
+    }
+  | {
+      name: "popup_opened";
+      properties: {
+        popup: PopupId;
+        plan_source?: "booking_plan" | "openai_plan";
+        from_code?: string;
+        to_code?: string;
+      };
+    }
+  | {
+      name: "popup_closed";
+      properties: {
+        popup: PopupId;
+        method: PopupCloseMethod;
+      };
+    }
+  | {
+      name: "button_clicked";
+      properties: {
+        button_id: HomeButtonId;
+        plan_source?: "booking_plan" | "openai_plan";
+        train_number?: string;
+        from_code?: string;
+        to_code?: string;
+      };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];

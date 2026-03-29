@@ -269,6 +269,9 @@ export default function HomePage() {
   const [chartPendingModalDismissed, setChartPendingModalDismissed] =
     useState(false);
   const chartPendingOpenedTracked = useRef(false);
+  const irctcDisclaimerOpenTracked = useRef(false);
+  const monitoringSuccessOpenTracked = useRef(false);
+  const gapMonitorOpenKey = useRef<string | null>(null);
   const [monitoringStartedPopupOpen, setMonitoringStartedPopupOpen] =
     useState(false);
   const [irctcBookConfirm, setIrctcBookConfirm] = useState<{
@@ -423,6 +426,15 @@ export default function HomePage() {
     setIrctcBookConfirm(null);
     setLoading(true);
     trackAnalyticsEvent({
+      name: "button_clicked",
+      properties: {
+        button_id: "search_submit",
+        train_number: trainNumber.trim(),
+        from_code: fromCode,
+        to_code: toCode || "",
+      },
+    });
+    trackAnalyticsEvent({
       name: "search_submitted",
       properties: {
         train_number: trainNumber.trim(),
@@ -550,6 +562,10 @@ export default function HomePage() {
 
   function swapFromTo() {
     trackAnalyticsEvent({
+      name: "button_clicked",
+      properties: { button_id: "swap_stations" },
+    });
+    trackAnalyticsEvent({
       name: "swap_stations_clicked",
       properties: {},
     });
@@ -617,10 +633,61 @@ export default function HomePage() {
       return;
     chartPendingOpenedTracked.current = true;
     trackAnalyticsEvent({
+      name: "popup_opened",
+      properties: { popup: "chart_pending" },
+    });
+    trackAnalyticsEvent({
       name: "monitor_modal_opened",
       properties: { source: "chart_pending" },
     });
   }, [showChartPendingMonitor, chartPendingModalDismissed]);
+
+  useEffect(() => {
+    if (!irctcBookConfirm) {
+      irctcDisclaimerOpenTracked.current = false;
+      return;
+    }
+    if (irctcDisclaimerOpenTracked.current) return;
+    irctcDisclaimerOpenTracked.current = true;
+    trackAnalyticsEvent({
+      name: "popup_opened",
+      properties: {
+        popup: "irctc_disclaimer",
+        plan_source: irctcBookConfirm.source,
+      },
+    });
+  }, [irctcBookConfirm]);
+
+  useEffect(() => {
+    if (!monitoringStartedPopupOpen || !monitorJourneyResponse) {
+      monitoringSuccessOpenTracked.current = false;
+      return;
+    }
+    if (monitoringSuccessOpenTracked.current) return;
+    monitoringSuccessOpenTracked.current = true;
+    trackAnalyticsEvent({
+      name: "popup_opened",
+      properties: { popup: "monitoring_success" },
+    });
+  }, [monitoringStartedPopupOpen, monitorJourneyResponse]);
+
+  useEffect(() => {
+    if (!monitoringLeg) {
+      gapMonitorOpenKey.current = null;
+      return;
+    }
+    const key = `${monitoringLeg.fromCode}:${monitoringLeg.toCode}`;
+    if (gapMonitorOpenKey.current === key) return;
+    gapMonitorOpenKey.current = key;
+    trackAnalyticsEvent({
+      name: "popup_opened",
+      properties: {
+        popup: "gap_leg_monitor",
+        from_code: monitoringLeg.fromCode,
+        to_code: monitoringLeg.toCode,
+      },
+    });
+  }, [monitoringLeg]);
 
   // Build full journey legs (ticket + gap) from route and booking plan
   const scheduleList =
@@ -1129,7 +1196,23 @@ export default function HomePage() {
                       <div className="mt-4">
                         <button
                           type="button"
-                          onClick={() => setChartPendingModalDismissed(false)}
+                          onClick={() => {
+                            trackAnalyticsEvent({
+                              name: "button_clicked",
+                              properties: {
+                                button_id: "chart_pending_reopen",
+                              },
+                            });
+                            trackAnalyticsEvent({
+                              name: "popup_opened",
+                              properties: { popup: "chart_pending" },
+                            });
+                            trackAnalyticsEvent({
+                              name: "monitor_modal_opened",
+                              properties: { source: "chart_pending" },
+                            });
+                            setChartPendingModalDismissed(false);
+                          }}
                           className="rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white active:bg-amber-700 transition"
                         >
                           Monitor tickets
@@ -1311,12 +1394,20 @@ export default function HomePage() {
                                 )}
                                 <button
                                   type="button"
-                                  onClick={() =>
+                                  onClick={() => {
+                                    trackAnalyticsEvent({
+                                      name: "button_clicked",
+                                      properties: {
+                                        button_id: "book_ticket_card",
+                                        plan_source: "booking_plan",
+                                        train_number: trainNumber.trim(),
+                                      },
+                                    });
                                     setIrctcBookConfirm({
                                       url: bookUrl,
                                       source: "booking_plan",
-                                    })
-                                  }
+                                    });
+                                  }}
                                   className="mt-4 w-full rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-emerald-700 transition"
                                 >
                                   Book
@@ -1349,6 +1440,14 @@ export default function HomePage() {
                               <button
                                 type="button"
                                 onClick={() => {
+                                  trackAnalyticsEvent({
+                                    name: "button_clicked",
+                                    properties: {
+                                      button_id: "gap_leg_monitor_open",
+                                      from_code: leg.fromCode,
+                                      to_code: leg.toCode,
+                                    },
+                                  });
                                   trackAnalyticsEvent({
                                     name: "monitor_modal_opened",
                                     properties: { source: "gap_leg" },
@@ -1434,12 +1533,20 @@ export default function HomePage() {
                               )}
                               <button
                                 type="button"
-                                onClick={() =>
+                                onClick={() => {
+                                  trackAnalyticsEvent({
+                                    name: "button_clicked",
+                                    properties: {
+                                      button_id: "book_ticket_card",
+                                      plan_source: "openai_plan",
+                                      train_number: trainNumber.trim(),
+                                    },
+                                  });
                                   setIrctcBookConfirm({
                                     url: bookUrl,
                                     source: "openai_plan",
-                                  })
-                                }
+                                  });
+                                }}
                                 className="mt-4 w-full rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-emerald-700 transition"
                               >
                                 Book
@@ -1660,7 +1767,16 @@ export default function HomePage() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="irctc-disclaimer-title"
-            onClick={() => setIrctcBookConfirm(null)}
+            onClick={() => {
+              trackAnalyticsEvent({
+                name: "popup_closed",
+                properties: {
+                  popup: "irctc_disclaimer",
+                  method: "backdrop",
+                },
+              });
+              setIrctcBookConfirm(null);
+            }}
           >
             <div
               className="w-full max-w-md rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden"
@@ -1689,7 +1805,23 @@ export default function HomePage() {
               <div className="flex flex-col-reverse gap-2 p-4 sm:flex-row sm:justify-end">
                 <button
                   type="button"
-                  onClick={() => setIrctcBookConfirm(null)}
+                  onClick={() => {
+                    trackAnalyticsEvent({
+                      name: "button_clicked",
+                      properties: {
+                        button_id: "irctc_disclaimer_go_back",
+                        plan_source: irctcBookConfirm?.source,
+                      },
+                    });
+                    trackAnalyticsEvent({
+                      name: "popup_closed",
+                      properties: {
+                        popup: "irctc_disclaimer",
+                        method: "go_back",
+                      },
+                    });
+                    setIrctcBookConfirm(null);
+                  }}
                   className="w-full sm:w-auto rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
                 >
                   Go back
@@ -1698,6 +1830,13 @@ export default function HomePage() {
                   type="button"
                   onClick={() => {
                     if (!irctcBookConfirm) return;
+                    trackAnalyticsEvent({
+                      name: "popup_closed",
+                      properties: {
+                        popup: "irctc_disclaimer",
+                        method: "continue_irctc",
+                      },
+                    });
                     trackAnalyticsEvent({
                       name: "irctc_book_clicked",
                       properties: { source: irctcBookConfirm.source },
@@ -1728,6 +1867,13 @@ export default function HomePage() {
               aria-labelledby="chart-pending-modal-title"
               onClick={() => {
                 trackAnalyticsEvent({
+                  name: "popup_closed",
+                  properties: {
+                    popup: "chart_pending",
+                    method: "backdrop",
+                  },
+                });
+                trackAnalyticsEvent({
                   name: "monitor_modal_closed",
                   properties: { source: "chart_pending", outcome: "backdrop" },
                 });
@@ -1751,6 +1897,13 @@ export default function HomePage() {
                     type="button"
                     aria-label="Close"
                     onClick={() => {
+                      trackAnalyticsEvent({
+                        name: "popup_closed",
+                        properties: {
+                          popup: "chart_pending",
+                          method: "x_button",
+                        },
+                      });
                       trackAnalyticsEvent({
                         name: "monitor_modal_closed",
                         properties: { source: "chart_pending", outcome: "cancel" },
@@ -1820,6 +1973,15 @@ export default function HomePage() {
                       (!monitorEmail.trim() && !monitorMobile.trim())
                     }
                     onClick={() => {
+                      trackAnalyticsEvent({
+                        name: "button_clicked",
+                        properties: {
+                          button_id: "chart_pending_monitor_tickets",
+                          train_number: trainNumber.trim(),
+                          from_code: fromCode,
+                          to_code: toCode,
+                        },
+                      });
                       void submitJourneyMonitor(fromCode, toCode);
                     }}
                     className="w-full rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed active:bg-amber-700 transition"
@@ -1838,6 +2000,13 @@ export default function HomePage() {
             aria-modal="true"
             aria-labelledby="monitoring-started-title"
             onClick={() => {
+              trackAnalyticsEvent({
+                name: "popup_closed",
+                properties: {
+                  popup: "monitoring_success",
+                  method: "backdrop",
+                },
+              });
               trackAnalyticsEvent({
                 name: "monitor_modal_closed",
                 properties: {
@@ -1871,6 +2040,13 @@ export default function HomePage() {
                   type="button"
                   aria-label="Close"
                   onClick={() => {
+                    trackAnalyticsEvent({
+                      name: "popup_closed",
+                      properties: {
+                        popup: "monitoring_success",
+                        method: "x_button",
+                      },
+                    });
                     trackAnalyticsEvent({
                       name: "monitor_modal_closed",
                       properties: {
@@ -1969,6 +2145,17 @@ export default function HomePage() {
                   type="button"
                   onClick={() => {
                     trackAnalyticsEvent({
+                      name: "button_clicked",
+                      properties: { button_id: "monitoring_success_got_it" },
+                    });
+                    trackAnalyticsEvent({
+                      name: "popup_closed",
+                      properties: {
+                        popup: "monitoring_success",
+                        method: "got_it",
+                      },
+                    });
+                    trackAnalyticsEvent({
                       name: "monitor_modal_closed",
                       properties: {
                         outcome: "success_dismiss",
@@ -1996,8 +2183,30 @@ export default function HomePage() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="monitor-title"
+            onClick={() => {
+              trackAnalyticsEvent({
+                name: "popup_closed",
+                properties: {
+                  popup: "gap_leg_monitor",
+                  method: "backdrop",
+                },
+              });
+              trackAnalyticsEvent({
+                name: "monitor_modal_closed",
+                properties: { outcome: "cancel", source: "gap_leg" },
+              });
+              setMonitoringLeg(null);
+              setMonitorSuccess(null);
+              setMonitorJourneyResponse(null);
+              setMonitorError(null);
+              setMonitorEmail("");
+              setMonitorMobile("");
+            }}
           >
-            <div className="bg-white rounded-2xl shadow-xl max-w-md w-full max-h-[85vh] flex flex-col">
+            <div
+              className="bg-white rounded-2xl shadow-xl max-w-md w-full max-h-[85vh] flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="p-4 border-b border-slate-100">
                 <h2
                   id="monitor-title"
@@ -2046,6 +2255,17 @@ export default function HomePage() {
                   type="button"
                   onClick={() => {
                     trackAnalyticsEvent({
+                      name: "button_clicked",
+                      properties: { button_id: "gap_monitor_cancel" },
+                    });
+                    trackAnalyticsEvent({
+                      name: "popup_closed",
+                      properties: {
+                        popup: "gap_leg_monitor",
+                        method: "cancel",
+                      },
+                    });
+                    trackAnalyticsEvent({
                       name: "monitor_modal_closed",
                       properties: { outcome: "cancel", source: "gap_leg" },
                     });
@@ -2068,6 +2288,15 @@ export default function HomePage() {
                   }
                   onClick={() => {
                     if (!monitoringLeg) return;
+                    trackAnalyticsEvent({
+                      name: "button_clicked",
+                      properties: {
+                        button_id: "gap_monitor_start",
+                        from_code: monitoringLeg.fromCode,
+                        to_code: monitoringLeg.toCode,
+                        train_number: trainNumber.trim(),
+                      },
+                    });
                     void submitJourneyMonitor(
                       monitoringLeg.fromCode,
                       monitoringLeg.toCode,
