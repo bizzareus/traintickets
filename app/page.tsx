@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, Fragment } from "react";
-import { apiClient } from "@/lib/api";
+import { apiClient, irctcScheduleClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { fetchService2CheckStream } from "@/lib/service2CheckStream";
 
@@ -416,7 +416,7 @@ export default function HomePage() {
     setScheduleLoading(true);
     setScheduleStations(null);
     setScheduleError(null);
-    apiClient
+    irctcScheduleClient
       .get<{ stationList?: { stationCode?: string; stationName?: string }[] }>(
         `/api/irctc/schedule/${encodeURIComponent(trainNumber)}`,
       )
@@ -500,6 +500,20 @@ export default function HomePage() {
     ? from.split(" - ")[0].trim()
     : from.trim();
   const toCode = to.includes(" - ") ? to.split(" - ")[0].trim() : to.trim();
+
+  /** When route order is known, clear To if it matches From or is not after From. */
+  useEffect(() => {
+    if (!scheduleStations?.length || !to.includes(" - ")) return;
+    const fromI = scheduleStations.findIndex(
+      (s) => s.code.toUpperCase() === fromCode.toUpperCase(),
+    );
+    const toI = scheduleStations.findIndex(
+      (s) => s.code.toUpperCase() === toCode.toUpperCase(),
+    );
+    if (fromI < 0 || toI < 0 || toI <= fromI) {
+      setTo("");
+    }
+  }, [from, to, scheduleStations, fromCode, toCode]);
 
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -708,7 +722,25 @@ export default function HomePage() {
         s.name.toLowerCase().includes(from.toLowerCase()),
     )
     .slice(0, 50);
-  const toOptions = stationsForRoute
+
+  const fromIndexOnSchedule =
+    scheduleStations?.length && fromCode
+      ? scheduleStations.findIndex(
+          (s) => s.code.toUpperCase() === fromCode.toUpperCase(),
+        )
+      : -1;
+  /** Stations strictly after From on the train route (excludes From); fallback list excludes same code only. */
+  const stationsEligibleForTo =
+    scheduleStations != null && scheduleStations.length > 0
+      ? fromIndexOnSchedule >= 0
+        ? scheduleStations.slice(fromIndexOnSchedule + 1)
+        : []
+      : stationsForRoute.filter(
+          (s) =>
+            !fromCode ||
+            s.code.toUpperCase() !== fromCode.toUpperCase(),
+        );
+  const toOptions = stationsEligibleForTo
     .filter(
       (s) =>
         s.code.toLowerCase().includes(to.toLowerCase()) ||
@@ -1206,7 +1238,14 @@ export default function HomePage() {
                     }
                     swapFromTo();
                   }}
-                  disabled={!!scheduleError}
+                  disabled={
+                    !!scheduleError || Boolean(scheduleStations?.length)
+                  }
+                  title={
+                    scheduleStations?.length
+                      ? "Swap disabled: destination must be after boarding station on this route"
+                      : undefined
+                  }
                   className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-slate-100 text-slate-500 active:bg-slate-200 active:text-slate-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Swap from and to"
                 >

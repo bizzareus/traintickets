@@ -20,6 +20,7 @@
   "dependencies": {
     "@posthog/react": "^1.8.2",
     "axios": "^1.7.0",
+    "axios-retry": "^4.5.0",
     "browser-use-sdk": "^3.3.0",
     "clsx": "^2.1.1",
     "flowbite": "^4.0.1",
