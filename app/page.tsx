@@ -324,12 +324,24 @@ export default function HomePage() {
   } | null>(null);
   const helpfulFeedbackShownForSearch = useRef(false);
   const trainInputRef = useRef<HTMLInputElement>(null);
+  const trainDropdownBlurCloseTimer = useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null);
+  const [trainDropdownOpen, setTrainDropdownOpen] = useState(false);
   const [stationGateMessage, setStationGateMessage] = useState<string | null>(
     null,
   );
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (trainDropdownBlurCloseTimer.current) {
+        clearTimeout(trainDropdownBlurCloseTimer.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -921,28 +933,50 @@ export default function HomePage() {
                 <div className="p-4 space-y-4">
                   <div className="min-w-0 relative">
                     <label
-                      htmlFor="train-dropdown-button"
+                      htmlFor="train-search-input"
                       className="block text-m font-semibold text-gray-900 mb-1.5"
                     >
                       Train Number or Name
                     </label>
                 <div
-                  id="train-dropdown-button"
-                  role="button"
-                  tabIndex={0}
-                  data-dropdown-toggle="train-dropdown"
-                  data-dropdown-trigger="click"
-                  className="grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px]"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") e.preventDefault();
-                  }}
+                  className="grid w-full grid-cols-1 cursor-text rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px]"
                 >
                   <input
                     ref={trainInputRef}
                     id="train-search-input"
                     type="text"
+                    role="combobox"
+                    aria-expanded={trainDropdownOpen}
+                    aria-controls="train-dropdown"
+                    aria-autocomplete="list"
                     value={trainInput}
-                    onChange={(e) => setTrainInput(e.target.value)}
+                    onChange={(e) => {
+                      setTrainInput(e.target.value);
+                      setTrainDropdownOpen(true);
+                    }}
+                    onFocus={() => {
+                      if (trainDropdownBlurCloseTimer.current) {
+                        clearTimeout(trainDropdownBlurCloseTimer.current);
+                        trainDropdownBlurCloseTimer.current = null;
+                      }
+                      setTrainDropdownOpen(true);
+                    }}
+                    onBlur={() => {
+                      if (trainDropdownBlurCloseTimer.current) {
+                        clearTimeout(trainDropdownBlurCloseTimer.current);
+                      }
+                      trainDropdownBlurCloseTimer.current = setTimeout(() => {
+                        setTrainDropdownOpen(false);
+                        trainDropdownBlurCloseTimer.current = null;
+                      }, 180);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Escape") {
+                        e.preventDefault();
+                        setTrainDropdownOpen(false);
+                        (e.target as HTMLInputElement).blur();
+                      }
+                    }}
                     placeholder="Search train number or name"
                     className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400"
                     autoComplete="off"
@@ -953,12 +987,13 @@ export default function HomePage() {
                 </div>
                 <div
                   id="train-dropdown"
-                  className="z-10 hidden absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5"
+                  role="listbox"
+                  className={`z-10 absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5 ${trainDropdownOpen ? "" : "hidden"}`}
                 >
                   {mounted && (
                     <ul
                       className="text-base sm:text-sm"
-                      aria-labelledby="train-dropdown-button"
+                      aria-labelledby="train-search-input"
                     >
                       {trainDropdownOptions.slice(0, 100).map((t) => {
                         const selected = trainInput === t.label;
@@ -966,16 +1001,19 @@ export default function HomePage() {
                           <li key={`${t.number}-${t.label}`}>
                             <button
                               type="button"
+                              role="option"
+                              aria-selected={selected}
                               className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
+                              onMouseDown={(e) => {
+                                e.preventDefault();
+                              }}
                               onClick={() => {
                                 trackAnalyticsEvent({
                                   name: "train_selected_from_dropdown",
                                   properties: { train_number: t.number },
                                 });
                                 setTrainInput(t.label);
-                                document
-                                  .getElementById("train-dropdown")
-                                  ?.classList.add("hidden");
+                                setTrainDropdownOpen(false);
                               }}
                             >
                               <span className="block truncate font-normal">
