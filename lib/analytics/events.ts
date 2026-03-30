@@ -24,6 +24,7 @@ export type PopupCloseMethod =
 
 export type HomeButtonId =
   | "search_submit"
+  | "search_again"
   | "swap_stations"
   | "book_ticket_card"
   | "chart_pending_reopen"
@@ -77,7 +78,9 @@ export type AnalyticsEvent =
     }
   | {
       name: "irctc_book_clicked";
-      properties: { source: "booking_plan" | "openai_plan" };
+      properties: {
+        source: "booking_plan" | "openai_plan" | "helpful_feedback";
+      };
     }
   | { name: "irctc_open_login_clicked"; properties: Record<string, never> }
   | { name: "auth_login_submitted"; properties: { success: boolean } }
@@ -94,7 +97,10 @@ export type AnalyticsEvent =
       name: "popup_opened";
       properties: {
         popup: PopupId;
-        plan_source?: "booking_plan" | "openai_plan";
+        plan_source?:
+          | "booking_plan"
+          | "openai_plan"
+          | "helpful_feedback";
         from_code?: string;
         to_code?: string;
       };
@@ -110,7 +116,10 @@ export type AnalyticsEvent =
       name: "button_clicked";
       properties: {
         button_id: HomeButtonId;
-        plan_source?: "booking_plan" | "openai_plan";
+        plan_source?:
+          | "booking_plan"
+          | "openai_plan"
+          | "helpful_feedback";
         train_number?: string;
         from_code?: string;
         to_code?: string;

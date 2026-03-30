@@ -23,7 +23,6 @@
     "browser-use-sdk": "^3.3.0",
     "clsx": "^2.1.1",
     "flowbite": "^4.0.1",
-    "lottie-react": "^2.4.1",
     "next": "^16.1.6",
     "openai": "^6.27.0",
     "posthog-js": "^1.364.1",

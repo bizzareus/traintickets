@@ -310,6 +310,17 @@ export type OpenAIStructuredSeat = {
   to: string;
 };
 
+/** Optional progress callbacks when running a check (e.g. SSE streaming). */
+export type Service2CheckHooks = {
+  /** Fired after IRCTC vacant-berth data has been collected, before any OpenAI call. */
+  onIrctcDataReady?: (info: {
+    vacantSegmentCount: number;
+    vacantBerthApiError: string | null;
+  }) => void;
+  /** Fired immediately before the OpenAI request (only when an API key is configured). */
+  onAiStarted?: () => void;
+};
+
 /**
  * Service 2: IRCTC APIs only.
  * 1. Call trainComposition to get classes and chart time.
@@ -324,14 +335,17 @@ export class Service2Service {
     private chartTime: ChartTimeService,
   ) {}
 
-  async check(params: {
-    trainNumber: string;
-    stationCode: string;
-    journeyDate: string;
-    classCode: string;
-    destinationStation?: string;
-    passengerDetails?: string;
-  }): Promise<Service2CheckResult> {
+  async check(
+    params: {
+      trainNumber: string;
+      stationCode: string;
+      journeyDate: string;
+      classCode: string;
+      destinationStation?: string;
+      passengerDetails?: string;
+    },
+    hooks?: Service2CheckHooks,
+  ): Promise<Service2CheckResult> {
     const trainNo = String(params.trainNumber).trim();
     const boardingStation = String(params.stationCode).trim().toUpperCase();
     const jDate = String(params.journeyDate).trim().slice(0, 10);
@@ -483,6 +497,11 @@ export class Service2Service {
     };
     console.log('vacantBerth (all classes)', vacantBerth);
 
+    hooks?.onIrctcDataReady?.({
+      vacantSegmentCount: allVbd.length,
+      vacantBerthApiError: vacantBerth.error,
+    });
+
     const compositionPayload = {
       trainNo: composition.trainNo,
       trainName: composition.trainName ?? '',
@@ -510,6 +529,7 @@ export class Service2Service {
     const apiKey = process.env.OPENAI_API_KEY;
     if (apiKey?.trim()) {
       try {
+        hooks?.onAiStarted?.();
         const userMessage = buildOpenAIUserMessage({
           trainNumber: trainNo,
           originStation: boardingStation,

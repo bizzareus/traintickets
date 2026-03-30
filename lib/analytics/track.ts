@@ -1,15 +1,20 @@
-import posthog from "posthog-js";
 import { isAnalyticsEnabled } from "./config";
 import type { AnalyticsEvent } from "./events";
+import { posthog } from "./posthog-client";
 
 /**
- * Send a typed product event to PostHog. Safe to call before init (queued) or
- * when analytics is disabled (no-op).
+ * Send a typed product event to PostHog. Uses the shared client; events queue
+ * until `initPosthogBrowser` runs. Never throws — uncaught errors here would
+ * break the page.
  */
 export function trackAnalyticsEvent(event: AnalyticsEvent): void {
   if (typeof window === "undefined" || !isAnalyticsEnabled()) return;
-  posthog.capture(
-    event.name,
-    event.properties as Record<string, unknown>,
-  );
+  try {
+    posthog.capture(
+      event.name,
+      event.properties as Record<string, unknown>,
+    );
+  } catch {
+    /* ignore */
+  }
 }

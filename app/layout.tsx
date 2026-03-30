@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { FlowbiteInit } from "./FlowbiteInit";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import "./globals.css";
@@ -127,15 +126,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Analytics first so PostHog client chunk + eager init run before other interactive scripts */}
+        <AnalyticsProvider>{children}</AnalyticsProvider>
         <GoogleAnalytics />
-        <FlowbiteInit />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteJsonLd),
           }}
         />
-        <AnalyticsProvider>{children}</AnalyticsProvider>
       </body>
     </html>
   );

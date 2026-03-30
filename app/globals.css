@@ -27,3 +27,63 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Search loader: train crossing + AI “typing” dots (see app/page.tsx) */
+@keyframes search-loader-train-run {
+  0% {
+    left: -6.5rem;
+  }
+  100% {
+    left: calc(100% + 0.25rem);
+  }
+}
+
+.search-loader-train-motion {
+  position: absolute;
+  bottom: 0.4rem; /* wheels over lower rail (~6px bed) */
+  left: -6.5rem;
+  animation: search-loader-train-run 3.6s linear infinite;
+  will-change: left;
+}
+
+@keyframes search-loader-dot-wave {
+  0%,
+  60%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.search-loader-dots span {
+  display: inline-block;
+  animation: search-loader-dot-wave 1.35s ease-in-out infinite;
+}
+
+.search-loader-dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.search-loader-dots span:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.search-loader-dots span:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-loader-train-motion {
+    animation: none;
+    left: 10%;
+  }
+
+  .search-loader-dots span {
+    animation: none;
+    opacity: 0.9;
+  }
+}

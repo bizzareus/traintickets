@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef, Fragment } from "react";
-import Lottie from "lottie-react";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 
@@ -87,6 +86,56 @@ function CheckIcon({ className }: { className?: string }) {
         d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
       />
     </svg>
+  );
+}
+
+function SearchLoaderTrainSvg({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 112 28"
+      width={112}
+      height={28}
+      aria-hidden
+    >
+      <rect x="4" y="6" width="34" height="16" rx="3" fill="#2563eb" />
+      <rect x="28" y="4" width="10" height="9" rx="2" fill="#1d4ed8" />
+      <rect x="10" y="9" width="12" height="7" rx="1" fill="#bfdbfe" />
+      <path d="M4 18 L0 21 L4 21 Z" fill="#1e3a8a" />
+      <rect x="40" y="8" width="28" height="14" rx="2" fill="#3b82f6" />
+      <rect x="70" y="8" width="28" height="14" rx="2" fill="#60a5fa" />
+      <circle cx="14" cy="22" r="4" fill="#0f172a" />
+      <circle cx="26" cy="22" r="4" fill="#0f172a" />
+      <circle cx="52" cy="22" r="3.5" fill="#0f172a" />
+      <circle cx="66" cy="22" r="3.5" fill="#0f172a" />
+      <circle cx="84" cy="22" r="3.5" fill="#0f172a" />
+      <circle cx="98" cy="22" r="3.5" fill="#0f172a" />
+    </svg>
+  );
+}
+
+/** Train + track strip for search loading (no border on track — sits inside outer loader card). */
+function SearchLoaderTrainTrack() {
+  return (
+    <div
+      className="relative mb-5 h-16 overflow-hidden rounded-xl bg-white"
+      aria-hidden
+    >
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[15px]">
+        <div
+          className="absolute bottom-[3px] left-3 right-3 top-[3px] rounded-[1px]"
+          style={{
+            background:
+              "repeating-linear-gradient(90deg, #78716c 0px, #78716c 3px, #ffffff 3px, #ffffff 11px)",
+          }}
+        />
+        <div className="absolute left-3 right-2 top-[2px] h-[2.5px] rounded-[1px] bg-gradient-to-b from-slate-500 to-slate-700 shadow-[0_1px_0_rgba(255,255,255,0.35)_inset]" />
+        <div className="absolute bottom-[2px] left-3 right-2 h-[2.5px] rounded-[1px] bg-gradient-to-b from-slate-500 to-slate-700 shadow-[0_1px_0_rgba(255,255,255,0.35)_inset]" />
+      </div>
+      <div className="search-loader-train-motion flex items-end">
+        <SearchLoaderTrainSvg className="shrink-0 drop-shadow-sm" />
+      </div>
+    </div>
   );
 }
 
@@ -258,7 +307,6 @@ export default function HomePage() {
   const [monitorError, setMonitorError] = useState<string | null>(null);
   const [monitorEmail, setMonitorEmail] = useState("");
   const [monitorMobile, setMonitorMobile] = useState("");
-  const [metroAnimData, setMetroAnimData] = useState<object | null>(null);
   const [mounted, setMounted] = useState(false);
   const [chartPendingModalDismissed, setChartPendingModalDismissed] =
     useState(false);
@@ -285,9 +333,9 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || trainsLoading) return;
     trainInputRef.current?.focus({ preventScroll: true });
-  }, [mounted]);
+  }, [mounted, trainsLoading]);
 
   useEffect(() => {
     apiClient
@@ -398,22 +446,14 @@ export default function HomePage() {
     }
   }, [monitoringLeg]);
 
-  // Load Metro Rail Lottie when check is loading (dynamic import, cached after first load)
+  // Re-init Flowbite after mount and when dropdowns exist in the DOM (avoids hydration mismatch from Popper.js).
+  // Must wait for !trainsLoading so the train search row is mounted before init; otherwise toggle has no handler.
   useEffect(() => {
-    if (loading && !metroAnimData) {
-      import("./Metro Rail.json")
-        .then((m: { default: object }) => setMetroAnimData(m.default))
-        .catch(() => setMetroAnimData(null));
-    }
-  }, [loading, metroAnimData]);
-
-  // Re-init Flowbite after mount and when dropdowns appear (avoids hydration mismatch from Popper.js)
-  useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || trainsLoading) return;
     import("flowbite").then((fb) => {
       if (typeof fb.initFlowbite === "function") fb.initFlowbite();
     });
-  }, [mounted, scheduleError, scheduleStations]);
+  }, [mounted, trainsLoading, scheduleError, scheduleStations]);
 
   useEffect(() => {
     if (loading || !checkResult) {
@@ -858,14 +898,34 @@ export default function HomePage() {
           aria-label="Search train and find seat availability"
         >
           <div className="rounded-2xl border border-slate-200/80 bg-white shadow-sm overflow-hidden">
-            <div className="p-4 space-y-4">
-              <div className="min-w-0 relative">
-                <label
-                  htmlFor="train-dropdown-button"
-                  className="block text-m font-semibold text-gray-900 mb-1.5"
-                >
-                  Train Number or Name
-                </label>
+            {trainsLoading ? (
+              <div
+                className="flex min-h-[220px] flex-col items-center justify-center gap-3 px-6 py-14"
+                role="status"
+                aria-live="polite"
+                aria-busy="true"
+              >
+                <div
+                  className="h-10 w-10 rounded-full border-2 border-blue-500 border-t-transparent animate-spin"
+                  aria-hidden
+                />
+                <p className="text-base font-semibold text-slate-800">
+                  Loading…
+                </p>
+                <p className="text-center text-sm text-slate-500">
+                  Fetching the train list. This only takes a moment.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="p-4 space-y-4">
+                  <div className="min-w-0 relative">
+                    <label
+                      htmlFor="train-dropdown-button"
+                      className="block text-m font-semibold text-gray-900 mb-1.5"
+                    >
+                      Train Number or Name
+                    </label>
                 <div
                   id="train-dropdown-button"
                   role="button"
@@ -883,11 +943,7 @@ export default function HomePage() {
                     type="text"
                     value={trainInput}
                     onChange={(e) => setTrainInput(e.target.value)}
-                    placeholder={
-                      trainsLoading
-                        ? "Loading trains…"
-                        : "Search train number or name"
-                    }
+                    placeholder="Search train number or name"
                     className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400"
                     autoComplete="off"
                   />
@@ -1212,15 +1268,17 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="p-4 pt-0">
-              <button
-                type="submit"
-                disabled={loading || !!scheduleError}
-                className="w-full rounded-xl bg-blue-600 py-4 min-h-[48px] font-semibold text-white text-base active:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading ? "Searching…" : "Search"}
-              </button>
-            </div>
+                <div className="p-4 pt-0">
+                  <button
+                    type="submit"
+                    disabled={loading || !!scheduleError}
+                    className="w-full rounded-xl bg-blue-600 py-4 min-h-[48px] font-semibold text-white text-base active:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {loading ? "Searching…" : "Search"}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </form>
 
@@ -1275,19 +1333,9 @@ export default function HomePage() {
         )}
 
         {loading && !checkResult && (
-          <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
-            <div className="flex justify-center mb-4 min-h-[200px] items-center">
-              {metroAnimData ? (
-                <Lottie
-                  animationData={metroAnimData}
-                  loop
-                  className="w-120 h-56 max-w-full"
-                />
-              ) : (
-                <div className="h-10 w-10 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />
-              )}
-            </div>
-            <p className="text-slate-600 text-sm font-medium">
+          <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+            <SearchLoaderTrainTrack />
+            <p className="text-slate-900 text-left text-lg font-bold leading-snug sm:text-xl">
               Finding you the best possible seats…
             </p>
           </div>

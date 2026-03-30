@@ -11,9 +11,13 @@ function PostHogPageViewInner() {
 
   useEffect(() => {
     if (!pathname || !posthog || typeof window === "undefined") return;
-    posthog.capture("$pageview", {
-      $current_url: window.location.href,
-    });
+    try {
+      posthog.capture("$pageview", {
+        $current_url: window.location.href,
+      });
+    } catch {
+      /* avoid breaking the tree if capture fails mid-init */
+    }
   }, [pathname, searchParams, posthog]);
 
   return null;
