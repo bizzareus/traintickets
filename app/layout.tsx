@@ -70,21 +70,12 @@ export const metadata: Metadata = {
     title: "LastBerth – Find Confirmed Train Tickets & Best Seat Options",
     description:
       "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC. Monitor chart time for last-minute availability.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "LastBerth – Find confirmed train tickets and best seat options",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "LastBerth – Find Confirmed Train Tickets & Best Seat Options",
     description:
       "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC.",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -99,9 +90,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/",
-  },
-  icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
   category: "travel",
   classification: "Train ticket booking and seat availability",
