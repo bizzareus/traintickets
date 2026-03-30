@@ -231,7 +231,7 @@ type Service2CheckOkBody = {
   chartPreparationDetails?: NonNullable<
     CheckResult["resultPayload"]
   >["chartPreparationDetails"];
-  vacantBerth?: { vbd?: unknown[]; error?: string | null };
+  vacantBerth?: { vbd?: VacantBerthItem[]; error?: string | null };
   openAiSummary?: string | null;
   openAiStructuredSeats?: NonNullable<
     CheckResult["resultPayload"]
