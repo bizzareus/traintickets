@@ -9,12 +9,14 @@ import {
 } from '@nestjs/common';
 import { AvailabilityService } from './availability.service';
 import { JourneyTaskService } from './journey-task.service';
+import { NotificationService } from '../notification/notification.service';
 
 @Controller('api/availability')
 export class AvailabilityController {
   constructor(
     private availability: AvailabilityService,
     private journeyTask: JourneyTaskService,
+    private notification: NotificationService,
   ) {}
 
   @Post('check')
@@ -188,7 +190,25 @@ export class AvailabilityController {
       };
     }
     try {
-      return await this.journeyTask.createJourneyTasks(normalized);
+      const result = await this.journeyTask.createJourneyTasks(normalized);
+      void this.notification
+        .sendAdminMonitoringRequestEmail({
+          journeyRequestId: result.journeyRequestId,
+          taskCount: result.tasks.length,
+          trainNumber: normalized.trainNumber,
+          trainName: normalized.trainName,
+          fromStationCode: normalized.fromStationCode,
+          toStationCode: normalized.toStationCode,
+          journeyDate: normalized.journeyDate,
+          classCode: normalized.classCode,
+          stationCodesToMonitor: normalized.stationCodesToMonitor,
+          userEmail: normalized.email,
+          userMobile: normalized.mobile,
+        })
+        .catch((err) =>
+          console.error('Admin monitoring request notification failed', err),
+        );
+      return result;
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       throw new ServiceUnavailableException(message);

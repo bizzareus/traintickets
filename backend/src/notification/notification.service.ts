@@ -7,6 +7,15 @@ import type { ChartTimeAvailabilityTask } from '@prisma/client';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
+const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 
 /** Normalize mobile to E.164 for WaSender (e.g. 919876543210). */
 function toE164(mobile: string): string {
@@ -25,11 +34,16 @@ export class NotificationService {
   private readonly wasenderKey: string | undefined;
   private readonly resendKey: string | undefined;
   private readonly resend: Resend | null;
+  /** Receives a one-off email when POST /api/availability/journey creates monitoring tasks. */
+  private readonly monitoringAdminEmail: string;
 
   constructor(private config: ConfigService) {
     this.wasenderKey = this.config.get<string>('WASENDER_API_KEY');
     this.resendKey = this.config.get<string>('RESEND_API_KEY');
     this.resend = this.resendKey ? new Resend(this.resendKey) : null;
+    this.monitoringAdminEmail =
+      this.config.get<string>('MONITORING_ADMIN_EMAIL')?.trim() ||
+      DEFAULT_MONITORING_ADMIN_EMAIL;
   }
 
   async sendWhatsApp(mobile: string, message: string): Promise<boolean> {
@@ -72,6 +86,72 @@ export class NotificationService {
       console.error('Resend email send failed', err);
       return false;
     }
+  }
+
+  /**
+   * Notify the product owner that someone started chart monitoring (journey tasks).
+   * Intended to be called without awaiting so the API response is not delayed.
+   */
+  async sendAdminMonitoringRequestEmail(params: {
+    journeyRequestId: string;
+    taskCount: number;
+    trainNumber: string;
+    trainName?: string;
+    fromStationCode: string;
+    toStationCode: string;
+    journeyDate: string;
+    classCode: string;
+    stationCodesToMonitor?: string[];
+    userEmail?: string;
+    userMobile?: string;
+  }): Promise<boolean> {
+    if (!this.resend) {
+      return false;
+    }
+    const to = this.monitoringAdminEmail;
+    if (!to) {
+      return false;
+    }
+    const trainLabel = [params.trainNumber, params.trainName]
+      .filter(Boolean)
+      .join(' ');
+    const stationsLine =
+      params.stationCodesToMonitor?.length &&
+      params.stationCodesToMonitor.length > 0
+        ? escapeHtml(params.stationCodesToMonitor.join(', '))
+        : 'All stations with chart times on route';
+    const contactLines: string[] = [];
+    if (params.userEmail?.trim()) {
+      contactLines.push(`Email: ${escapeHtml(params.userEmail.trim())}`);
+    }
+    if (params.userMobile?.trim()) {
+      contactLines.push(`Mobile: ${escapeHtml(params.userMobile.trim())}`);
+    }
+    const contactBlock =
+      contactLines.length > 0
+        ? `<p style="margin:12px 0 0 0;"><strong>Contact</strong><br/>${contactLines.join('<br/>')}</p>`
+        : '<p style="margin:12px 0 0 0;color:#64748b;">No email or mobile on the request.</p>';
+
+    const subject = `[LastBerth] Monitoring requested — ${params.trainNumber} (${params.journeyDate})`;
+    const html = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body style="font-family:system-ui,sans-serif;line-height:1.5;color:#0f172a;">
+  <p><strong>Someone requested journey monitoring</strong> via <code>POST /api/availability/journey</code>.</p>
+  <table style="border-collapse:collapse;margin-top:8px;font-size:14px;">
+    <tr><td style="padding:4px 12px 4px 0;color:#64748b;">Journey request ID</td><td><code>${escapeHtml(params.journeyRequestId)}</code></td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#64748b;">Tasks created</td><td>${params.taskCount}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#64748b;">Train</td><td>${escapeHtml(trainLabel)}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#64748b;">Route</td><td>${escapeHtml(params.fromStationCode)} → ${escapeHtml(params.toStationCode)}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#64748b;">Journey date</td><td>${escapeHtml(params.journeyDate)}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#64748b;">Class</td><td>${escapeHtml(params.classCode)}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;vertical-align:top;color:#64748b;">Stations</td><td>${stationsLine}</td></tr>
+  </table>
+  ${contactBlock}
+</body>
+</html>`;
+    return this.sendEmail(to, subject, html);
   }
 
   /** Build a short booking summary from the result for notifications. */

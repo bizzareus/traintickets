@@ -217,17 +217,11 @@ function buildChartFreshnessPhrase(
 
 function getDateOptions() {
   const today = new Date();
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
   const toLabel = (d: Date) =>
     d.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
   return [
-    {
-      value: toYmdLocal(yesterday),
-      label: `Yesterday (${toLabel(yesterday)})`,
-    },
     { value: toYmdLocal(today), label: `Today (${toLabel(today)})` },
     { value: toYmdLocal(tomorrow), label: `Tomorrow (${toLabel(tomorrow)})` },
   ];
@@ -235,7 +229,7 @@ function getDateOptions() {
 
 export default function HomePage() {
   const dateOptions = getDateOptions();
-  const defaultDate = dateOptions[1].value; // today
+  const defaultDate = dateOptions[0].value; // today
   const [trainInput, setTrainInput] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -281,10 +275,19 @@ export default function HomePage() {
     source: "booking_plan" | "openai_plan";
   } | null>(null);
   const helpfulFeedbackShownForSearch = useRef(false);
+  const trainInputRef = useRef<HTMLInputElement>(null);
+  const [stationGateMessage, setStationGateMessage] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    trainInputRef.current?.focus({ preventScroll: true });
+  }, [mounted]);
 
   useEffect(() => {
     apiClient
@@ -305,6 +308,17 @@ export default function HomePage() {
     ? trainInput.split(" - ")[0].trim()
     : trainInput.trim();
   const trainSelected = trainInput.includes(" - ");
+
+  useEffect(() => {
+    if (trainSelected) setStationGateMessage(null);
+  }, [trainSelected]);
+
+  function promptSelectTrainFirst() {
+    setStationGateMessage(
+      "Search above and pick a train from the list. From and To unlock once your train is selected.",
+    );
+    trainInputRef.current?.focus({ preventScroll: true });
+  }
 
   useEffect(() => {
     setFrom("");
@@ -810,17 +824,32 @@ export default function HomePage() {
         role="main"
         id="main-content"
       >
-        <section aria-labelledby="hero-heading" className="text-center mb-6">
-          <h1
-            id="hero-heading"
-            className="text-xl font-semibold text-slate-800 leading-tight tracking-tight"
-          >
-            LastBerth – Get confirmed ticket for immediate journeys in your
-            preferred train
-          </h1>
-          <p className="mt-2 text-slate-500 text-sm">
-            Search once. We find the best seat options for you.
-          </p>
+        <section
+          aria-labelledby="hero-heading"
+          className="mb-7 text-center sm:mb-8"
+        >
+          <div className="mx-auto max-w-[22rem] rounded-2xl border border-slate-200/90 bg-white px-4 py-5 shadow-sm sm:max-w-md sm:px-5">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-blue-600/90">
+              How LastBerth helps
+            </p>
+            <h1
+              id="hero-heading"
+              className="mt-2 text-balance text-xl font-semibold leading-snug tracking-tight text-slate-900 sm:text-[1.35rem]"
+            >
+              Confirmed seats after charting — with split-journey options
+            </h1>
+            <div className="mt-4 space-y-3 text-left">
+              <p className="text-pretty text-sm leading-relaxed text-slate-600">
+                After the chart is prepared, availability shifts along your
+                train&apos;s route.
+              </p>
+              <p className="text-pretty text-sm leading-relaxed text-slate-600">
+                We search your train and show practical ways to book: a single
+                ticket or a few connected legs — you pay on{" "}
+                <span className="font-medium text-slate-700">IRCTC</span>.
+              </p>
+            </div>
+          </div>
         </section>
 
         <form
@@ -849,6 +878,8 @@ export default function HomePage() {
                   }}
                 >
                   <input
+                    ref={trainInputRef}
+                    id="train-search-input"
                     type="text"
                     value={trainInput}
                     onChange={(e) => setTrainInput(e.target.value)}
@@ -908,8 +939,37 @@ export default function HomePage() {
                 </div>
               </div>
 
+              {stationGateMessage && (
+                <div
+                  className="flex gap-3 rounded-xl border border-amber-200/90 bg-amber-50/95 px-3.5 py-3 text-left shadow-sm"
+                  role="status"
+                >
+                  <span
+                    className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-800"
+                    aria-hidden
+                  >
+                    <svg
+                      className="h-4 w-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </span>
+                  <p className="min-w-0 text-sm leading-relaxed text-amber-950">
+                    {stationGateMessage}
+                  </p>
+                </div>
+              )}
+
               <div
-                className={`min-w-0 relative ${scheduleError ? "opacity-60" : ""}`}
+                className={`min-w-0 relative ${scheduleError ? "opacity-60" : !trainSelected ? "opacity-75" : ""}`}
               >
                 <label
                   htmlFor="from-dropdown-button"
@@ -917,38 +977,54 @@ export default function HomePage() {
                 >
                   From
                 </label>
-                <div
-                  id="from-dropdown-button"
-                  role="button"
-                  tabIndex={scheduleError ? -1 : 0}
-                  {...(!scheduleError && {
-                    "data-dropdown-toggle": "from-dropdown",
-                    "data-dropdown-trigger": "click",
-                  })}
-                  className="grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") e.preventDefault();
-                  }}
-                >
-                  <input
-                    type="text"
-                    value={from}
-                    onChange={(e) => setFrom(e.target.value)}
-                    placeholder={
-                      scheduleLoading
-                        ? "Loading route…"
-                        : scheduleStations
-                          ? "Boarding station"
-                          : "Station code"
-                    }
-                    disabled={!!scheduleError}
-                    className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-90"
-                  />
-                  <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
-                    <ChevronUpDownIcon className="size-5 text-gray-500" />
-                  </span>
+                <div className="relative">
+                  {!trainSelected && (
+                    <button
+                      type="button"
+                      className="absolute inset-0 z-[5] rounded-md bg-transparent cursor-pointer"
+                      aria-label="Select a train before choosing From station"
+                      onClick={promptSelectTrainFirst}
+                    />
+                  )}
+                  <div
+                    id="from-dropdown-button"
+                    role="button"
+                    tabIndex={scheduleError || !trainSelected ? -1 : 0}
+                    {...(!scheduleError &&
+                      trainSelected && {
+                        "data-dropdown-toggle": "from-dropdown",
+                        "data-dropdown-trigger": "click",
+                      })}
+                    className="grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") e.preventDefault();
+                    }}
+                  >
+                    <input
+                      type="text"
+                      value={from}
+                      onChange={(e) => setFrom(e.target.value)}
+                      onFocus={() => {
+                        if (!trainSelected) promptSelectTrainFirst();
+                      }}
+                      placeholder={
+                        !trainSelected
+                          ? "Select a train first"
+                          : scheduleLoading
+                            ? "Loading route…"
+                            : scheduleStations
+                              ? "Boarding station"
+                              : "Station code"
+                      }
+                      disabled={!trainSelected || !!scheduleError}
+                      className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-90"
+                    />
+                    <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
+                      <ChevronUpDownIcon className="size-5 text-gray-500" />
+                    </span>
+                  </div>
                 </div>
-                {!scheduleError && (
+                {!scheduleError && trainSelected && (
                   <div
                     id="from-dropdown"
                     className="z-10 hidden absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5"
@@ -994,7 +1070,13 @@ export default function HomePage() {
               <div className="flex justify-center -my-1">
                 <button
                   type="button"
-                  onClick={swapFromTo}
+                  onClick={() => {
+                    if (!trainSelected) {
+                      promptSelectTrainFirst();
+                      return;
+                    }
+                    swapFromTo();
+                  }}
                   disabled={!!scheduleError}
                   className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-slate-100 text-slate-500 active:bg-slate-200 active:text-slate-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Swap from and to"
@@ -1004,7 +1086,7 @@ export default function HomePage() {
               </div>
 
               <div
-                className={`min-w-0 relative ${scheduleError ? "opacity-60" : ""}`}
+                className={`min-w-0 relative ${scheduleError ? "opacity-60" : !trainSelected ? "opacity-75" : ""}`}
               >
                 <label
                   htmlFor="to-dropdown-button"
@@ -1012,38 +1094,54 @@ export default function HomePage() {
                 >
                   To
                 </label>
-                <div
-                  id="to-dropdown-button"
-                  role="button"
-                  tabIndex={scheduleError ? -1 : 0}
-                  {...(!scheduleError && {
-                    "data-dropdown-toggle": "to-dropdown",
-                    "data-dropdown-trigger": "click",
-                  })}
-                  className="grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") e.preventDefault();
-                  }}
-                >
-                  <input
-                    type="text"
-                    value={to}
-                    onChange={(e) => setTo(e.target.value)}
-                    placeholder={
-                      scheduleLoading
-                        ? "Loading route…"
-                        : scheduleStations
-                          ? "Destination station"
-                          : "Station code"
-                    }
-                    disabled={!!scheduleError}
-                    className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-90"
-                  />
-                  <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
-                    <ChevronUpDownIcon className="size-5 text-gray-500" />
-                  </span>
+                <div className="relative">
+                  {!trainSelected && (
+                    <button
+                      type="button"
+                      className="absolute inset-0 z-[5] rounded-md bg-transparent cursor-pointer"
+                      aria-label="Select a train before choosing To station"
+                      onClick={promptSelectTrainFirst}
+                    />
+                  )}
+                  <div
+                    id="to-dropdown-button"
+                    role="button"
+                    tabIndex={scheduleError || !trainSelected ? -1 : 0}
+                    {...(!scheduleError &&
+                      trainSelected && {
+                        "data-dropdown-toggle": "to-dropdown",
+                        "data-dropdown-trigger": "click",
+                      })}
+                    className="grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") e.preventDefault();
+                    }}
+                  >
+                    <input
+                      type="text"
+                      value={to}
+                      onChange={(e) => setTo(e.target.value)}
+                      onFocus={() => {
+                        if (!trainSelected) promptSelectTrainFirst();
+                      }}
+                      placeholder={
+                        !trainSelected
+                          ? "Select a train first"
+                          : scheduleLoading
+                            ? "Loading route…"
+                            : scheduleStations
+                              ? "Destination station"
+                              : "Station code"
+                      }
+                      disabled={!trainSelected || !!scheduleError}
+                      className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-90"
+                    />
+                    <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
+                      <ChevronUpDownIcon className="size-5 text-gray-500" />
+                    </span>
+                  </div>
                 </div>
-                {!scheduleError && (
+                {!scheduleError && trainSelected && (
                   <div
                     id="to-dropdown"
                     className="z-10 hidden absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5"
