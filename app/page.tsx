@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, Fragment } from "react";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics";
+import { fetchService2CheckStream } from "@/lib/service2CheckStream";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 
@@ -223,6 +224,26 @@ type CheckResult = {
   };
 };
 
+/** Body from `POST /api/service2/check` and the stream `result` event. */
+type Service2CheckOkBody = {
+  status?: string;
+  composition?: NonNullable<CheckResult["resultPayload"]>["composition"];
+  chartPreparationDetails?: NonNullable<
+    CheckResult["resultPayload"]
+  >["chartPreparationDetails"];
+  vacantBerth?: { vbd?: unknown[]; error?: string | null };
+  openAiSummary?: string | null;
+  openAiStructuredSeats?: NonNullable<
+    CheckResult["resultPayload"]
+  >["openAiStructuredSeats"];
+  openAiBookingPlan?: NonNullable<
+    CheckResult["resultPayload"]
+  >["openAiBookingPlan"];
+  openAiTotalPrice?: number;
+  trainSchedule?: NonNullable<CheckResult["resultPayload"]>["trainSchedule"];
+  chartStatus?: NonNullable<CheckResult["resultPayload"]>["chartStatus"];
+};
+
 /** Format date as YYYY-MM-DD in local timezone (toISOString is UTC and can shift the date). */
 function toYmdLocal(d: Date): string {
   const y = d.getFullYear();
@@ -292,6 +313,8 @@ export default function HomePage() {
   const [scheduleLoading, setScheduleLoading] = useState(false);
   const [scheduleError, setScheduleError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  /** Live status line while service2 SSE check is in progress. */
+  const [service2StreamLine, setService2StreamLine] = useState("");
   const [checkResult, setCheckResult] = useState<CheckResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [monitoringLeg, setMonitoringLeg] = useState<{
@@ -322,7 +345,6 @@ export default function HomePage() {
     url: string;
     source: "booking_plan" | "openai_plan";
   } | null>(null);
-  const helpfulFeedbackShownForSearch = useRef(false);
   const trainInputRef = useRef<HTMLInputElement>(null);
   const trainDropdownBlurCloseTimer = useRef<ReturnType<
     typeof setTimeout
@@ -493,8 +515,10 @@ export default function HomePage() {
     setMonitorSuccess(null);
     setMonitoringStartedPopupOpen(false);
     setHelpfulFeedbackPopupOpen(false);
-    helpfulFeedbackShownForSearch.current = false;
     setIrctcBookConfirm(null);
+    setService2StreamLine(
+      "Fetching chart and vacant berths from IRCTC…",
+    );
     setLoading(true);
     trackAnalyticsEvent({
       name: "button_clicked",
@@ -515,13 +539,42 @@ export default function HomePage() {
       },
     });
     try {
-      const { data } = await apiClient.post("/api/service2/check", {
-        trainNumber: trainNumber.trim(),
-        stationCode: fromCode,
-        journeyDate: journeyDate.trim(),
-        classCode: "3A",
-        destinationStation: toCode || undefined,
-      });
+      const data = (await fetchService2CheckStream(
+        {
+          trainNumber: trainNumber.trim(),
+          stationCode: fromCode,
+          journeyDate: journeyDate.trim(),
+          classCode: "3A",
+          destinationStation: toCode || undefined,
+        },
+        (ev) => {
+          if (ev.phase === "started") {
+            setService2StreamLine(
+              ev.trainNumber
+                ? `Checking train ${ev.trainNumber}…`
+                : "Checking IRCTC…",
+            );
+            return;
+          }
+          if (ev.phase === "irctc_complete") {
+            const n = ev.vacantSegmentCount;
+            const segWord = n === 1 ? "segment" : "segments";
+            setService2StreamLine(
+              `Found overall ${n} vacant berth ${segWord} from IRCTC across classes.${
+                ev.vacantBerthApiError
+                  ? " Some class calls returned errors; still analysing what's available."
+                  : ""
+              }`,
+            );
+            return;
+          }
+          if (ev.phase === "ai_started") {
+            setService2StreamLine(
+              `Finding the best ticket plan to get you to ${ev.destinationStation} using AI. This can take a little while - please wait...`,
+            );
+          }
+        },
+      )) as Service2CheckOkBody;
       setCheckResult({
         status: data.status ?? "success",
         resultPayload: {
@@ -562,6 +615,7 @@ export default function HomePage() {
       });
     } finally {
       setLoading(false);
+      setService2StreamLine("");
     }
   }
 
@@ -838,25 +892,6 @@ export default function HomePage() {
       : typeof payload?.openAiTotalPrice === "number"
         ? payload.openAiTotalPrice
         : null;
-  const hasTicketResults =
-    Boolean(checkResult && !loading) &&
-    payload?.serviceSource === "service2" &&
-    !payload?.chartStatus &&
-    Array.isArray(payload?.openAiBookingPlan) &&
-    payload.openAiBookingPlan.length > 0;
-
-  useEffect(() => {
-    if (!hasTicketResults || helpfulFeedbackShownForSearch.current) return;
-    const timeout = window.setTimeout(() => {
-      helpfulFeedbackShownForSearch.current = true;
-      setHelpfulFeedbackPopupOpen(true);
-      trackAnalyticsEvent({
-        name: "popup_opened",
-        properties: { popup: "helpful_feedback" },
-      });
-    }, 5000);
-    return () => window.clearTimeout(timeout);
-  }, [hasTicketResults]);
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50">
@@ -1374,7 +1409,8 @@ export default function HomePage() {
           <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
             <SearchLoaderTrainTrack />
             <p className="text-slate-900 text-left text-lg font-bold leading-snug sm:text-xl">
-              Finding you the best possible seats…
+              {service2StreamLine ||
+                "Finding you the best possible seats…"}
             </p>
           </div>
         )}
@@ -1565,7 +1601,7 @@ export default function HomePage() {
                                       {stationLabel(seg.fromCode)}
                                     </p>
                                     {depTime && (
-                                      <p className="text-xs text-slate-500 font-normal mt-0.5">
+                                      <p className="text-s text-slate-500 font-bold mt-0.5">
                                         Dep {depTime}
                                       </p>
                                     )}
@@ -1576,7 +1612,7 @@ export default function HomePage() {
                                       {stationLabel(seg.toCode)}
                                     </p>
                                     {arrTime && (
-                                      <p className="text-xs text-slate-500 font-normal mt-0.5">
+                                      <p className="text-s text-slate-500 font-bold mt-0.5">
                                         Arr {arrTime}
                                       </p>
                                     )}
@@ -2055,6 +2091,11 @@ export default function HomePage() {
                       "noopener,noreferrer",
                     );
                     setIrctcBookConfirm(null);
+                    setHelpfulFeedbackPopupOpen(true);
+                    trackAnalyticsEvent({
+                      name: "popup_opened",
+                      properties: { popup: "helpful_feedback" },
+                    });
                   }}
                   className="w-full sm:w-auto rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white active:bg-emerald-700"
                 >

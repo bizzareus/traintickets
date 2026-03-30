@@ -1,5 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import OpenAI from 'openai';
+import type { ResponseCreateParamsNonStreaming } from 'openai/resources/responses/responses';
+import type { ReasoningEffort } from 'openai/resources/shared';
 import { IrctcService } from '../irctc/irctc.service';
 import type { TrainScheduleResponse } from '../irctc/irctc.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
@@ -183,6 +185,83 @@ const OPENAI_RESPONSE_JSON_SCHEMA = {
   additionalProperties: false,
 };
 
+const OPENAI_TEXT_VERBOSITIES = new Set(['low', 'medium', 'high']);
+
+const OPENAI_REASONING_EFFORTS = new Set([
+  'none',
+  'minimal',
+  'low',
+  'medium',
+  'high',
+  'xhigh',
+]);
+
+/** `text.verbosity` for Responses API — lower usually means fewer tokens / faster. */
+function openAiTextVerbosity():
+  | NonNullable<ResponseCreateParamsNonStreaming['text']>['verbosity']
+  | undefined {
+  const raw = process.env.OPENAI_TEXT_VERBOSITY?.trim().toLowerCase();
+  if (raw === 'off' || raw === 'default') return undefined;
+  if (raw && OPENAI_TEXT_VERBOSITIES.has(raw)) {
+    return raw as NonNullable<
+      ResponseCreateParamsNonStreaming['text']
+    >['verbosity'];
+  }
+  return 'low';
+}
+
+type OpenAiResponsesTuning = Pick<
+  ResponseCreateParamsNonStreaming,
+  'max_output_tokens' | 'service_tier' | 'prompt_cache_key'
+> & { reasoning?: ResponseCreateParamsNonStreaming['reasoning'] };
+
+/**
+ * Responses API knobs for latency vs quality (after picking the smallest model
+ * that passes evals): cap output tokens, optional reasoning effort, service tier,
+ * prompt cache key. Pair with `openAiTextVerbosity` and a smaller `OPENAI_MODEL`.
+ * @see https://developers.openai.com/api/reference/resources/responses/methods/create
+ */
+function openAiResponsesTuning(): OpenAiResponsesTuning {
+  const effortRaw = process.env.OPENAI_REASONING_EFFORT?.trim().toLowerCase();
+  const skipReasoning =
+    effortRaw === 'off' ||
+    effortRaw === 'skip' ||
+    effortRaw === 'disabled' ||
+    effortRaw === '';
+
+  const parsedMax = parseInt(
+    process.env.OPENAI_MAX_OUTPUT_TOKENS ?? '4096',
+    10,
+  );
+  const max_output_tokens = Number.isFinite(parsedMax)
+    ? Math.min(16000, Math.max(512, parsedMax))
+    : 4096;
+
+  const serviceTier = process.env.OPENAI_SERVICE_TIER?.trim();
+  const promptCacheKey = process.env.OPENAI_PROMPT_CACHE_KEY?.trim();
+
+  const out: OpenAiResponsesTuning = {
+    max_output_tokens,
+    ...(serviceTier
+      ? {
+          service_tier:
+            serviceTier as ResponseCreateParamsNonStreaming['service_tier'],
+        }
+      : {}),
+    ...(promptCacheKey ? { prompt_cache_key: promptCacheKey } : {}),
+  };
+
+  if (!skipReasoning) {
+    const effort: ReasoningEffort =
+      effortRaw && OPENAI_REASONING_EFFORTS.has(effortRaw)
+        ? (effortRaw as ReasoningEffort)
+        : 'medium';
+    out.reasoning = { effort };
+  }
+
+  return out;
+}
+
 /** IRCTC schedule times are typically "HH:MM" or "HH:MM:SS". */
 function parseIrctcClockToMinutes(t: string | undefined | null): number | null {
   if (!t || typeof t !== 'string') return null;
@@ -316,9 +395,10 @@ export type Service2CheckHooks = {
   onIrctcDataReady?: (info: {
     vacantSegmentCount: number;
     vacantBerthApiError: string | null;
+    destinationStation: string;
   }) => void;
   /** Fired immediately before the OpenAI request (only when an API key is configured). */
-  onAiStarted?: () => void;
+  onAiStarted?: (info: { destinationStation: string }) => void;
 };
 
 /**
@@ -330,6 +410,8 @@ export type Service2CheckHooks = {
  */
 @Injectable()
 export class Service2Service {
+  private readonly logger = new Logger(Service2Service.name);
+
   constructor(
     private irctc: IrctcService,
     private chartTime: ChartTimeService,
@@ -354,22 +436,38 @@ export class Service2Service {
       ? String(params.destinationStation).trim().toUpperCase()
       : undefined;
 
+    const baseCtx = `train=${trainNo} station=${boardingStation} date=${jDate} class=${cls}`;
+    this.logger.log(
+      `[service2/check] step=start ${baseCtx} dest=${destinationStation ?? 'default-from-composition'} hasPassengerDetails=${Boolean(params.passengerDetails)}`,
+    );
+
+    this.logger.log(`[service2/check] step=fetch_train_schedule ${baseCtx}`);
     const trainSchedule = await this.irctc.getTrainSchedule(trainNo);
+    this.logger.log(
+      `[service2/check] step=train_schedule_done ${baseCtx} stations=${trainSchedule?.stationList?.length ?? 0}`,
+    );
 
     const boardingDepartureClock = boardingDepartureOrArrivalClock(
       trainSchedule,
       boardingStation,
     );
 
+    this.logger.log(`[service2/check] step=chart_time_db_lookup ${baseCtx}`);
     const chartTimeFromDb = await this.chartTime.getChartTime(
       trainNo,
       boardingStation,
+    );
+    this.logger.log(
+      `[service2/check] step=chart_time_db_result ${baseCtx} fromDb=${chartTimeFromDb ?? 'none'} boardingDepClock=${boardingDepartureClock ?? 'none'}`,
     );
 
     if (
       chartTimeFromDb &&
       isChartTimeInFuture(jDate, chartTimeFromDb, boardingDepartureClock)
     ) {
+      this.logger.warn(
+        `[service2/check] step=exit_early_chart_not_ready_db ${baseCtx} chartTimeFromDb=${chartTimeFromDb}`,
+      );
       return {
         status: 'failed',
         chartStatus: {
@@ -382,13 +480,23 @@ export class Service2Service {
 
     let composition: Awaited<ReturnType<IrctcService['getTrainComposition']>>;
     try {
+      this.logger.log(
+        `[service2/check] step=fetch_composition ${baseCtx} jDate=${jDate}`,
+      );
       composition = await this.irctc.getTrainComposition({
         trainNo,
         jDate,
         boardingStation,
       });
+      this.logger.log(
+        `[service2/check] step=composition_ok ${baseCtx} remote=${composition.remote ?? '?'} chartOneDate=${composition.chartOneDate ?? 'none'} trainName=${composition.trainName ?? '?'}`,
+      );
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
+      this.logger.error(
+        `[service2/check] step=composition_error ${baseCtx} ${msg}`,
+        err instanceof Error ? err.stack : undefined,
+      );
       if (/chart\s+not\s+prepared/i.test(msg)) {
         return {
           status: 'failed',
@@ -414,6 +522,9 @@ export class Service2Service {
         timeLocal &&
         isChartTimeInFuture(jDate, timeLocal, boardingDepartureClock)
       ) {
+        this.logger.warn(
+          `[service2/check] step=exit_early_chart_not_ready_composition ${baseCtx} chartOneDate=${composition.chartOneDate} parsedLocal=${timeLocal}`,
+        );
         return {
           status: 'failed',
           chartStatus: {
@@ -432,6 +543,9 @@ export class Service2Service {
           .filter(Boolean),
       ),
     ].sort();
+    this.logger.log(
+      `[service2/check] step=classes_from_composition ${baseCtx} count=${classes.length} codes=${classes.join(',')}`,
+    );
 
     let chartPreparationDetails:
       | Service2CheckResult['chartPreparationDetails']
@@ -448,6 +562,9 @@ export class Service2Service {
         boardingStation;
       let storedInDb = false;
       if (timeLocal) {
+        this.logger.log(
+          `[service2/check] step=persist_chart_time ${baseCtx} stationCode=${stationCode} timeLocal=${timeLocal}`,
+        );
         await this.chartTime.setChartTime(trainNo, stationCode, timeLocal);
         storedInDb = true;
       }
@@ -456,6 +573,9 @@ export class Service2Service {
         firstChartCreationTime: timeLocal ?? chartOneDate,
         storedInDb,
       };
+      this.logger.log(
+        `[service2/check] step=chart_prep_details ${baseCtx} ${JSON.stringify(chartPreparationDetails)}`,
+      );
     }
 
     let vacantBerth: Service2CheckResult['vacantBerth'] = {
@@ -464,10 +584,16 @@ export class Service2Service {
     };
     const remoteStation = composition.remote ?? boardingStation;
     const trainSourceStation = composition.from ?? boardingStation;
+    this.logger.log(
+      `[service2/check] step=vacant_berth_loop_start ${baseCtx} classes=${classes.length} remote=${remoteStation} trainSource=${trainSourceStation} classList=${classes.join(',')}`,
+    );
     const allVbd: unknown[] = [];
     const errors: string[] = [];
     for (const classCode of classes) {
       try {
+        this.logger.log(
+          `[service2/check] step=vacant_berth_class ${baseCtx} cls=${classCode}`,
+        );
         const vbdRes = await this.irctc.getVacantBerth({
           trainNo,
           boardingStation,
@@ -485,9 +611,15 @@ export class Service2Service {
         if (vbdPayload?.error) {
           errors.push(`${classCode}: ${vbdPayload.error}`);
         }
+        this.logger.log(
+          `[service2/check] step=vacant_berth_class_done ${baseCtx} cls=${classCode} segments=${vbdList.length} apiError=${vbdPayload?.error ?? 'none'}`,
+        );
       } catch (err) {
-        errors.push(
-          `${classCode}: ${err instanceof Error ? err.message : String(err)}`,
+        const emsg = err instanceof Error ? err.message : String(err);
+        errors.push(`${classCode}: ${emsg}`);
+        this.logger.error(
+          `[service2/check] step=vacant_berth_class_error ${baseCtx} cls=${classCode} ${emsg}`,
+          err instanceof Error ? err.stack : undefined,
         );
       }
     }
@@ -495,11 +627,17 @@ export class Service2Service {
       vbd: allVbd,
       error: errors.length > 0 ? errors.join('; ') : null,
     };
-    console.log('vacantBerth (all classes)', vacantBerth);
+    this.logger.log(
+      `[service2/check] step=vacant_berth_all_done ${baseCtx} totalSegments=${allVbd.length} aggregatedError=${vacantBerth.error ?? 'none'}`,
+    );
+
+    const destForUi =
+      destinationStation ?? composition.to ?? boardingStation;
 
     hooks?.onIrctcDataReady?.({
       vacantSegmentCount: allVbd.length,
       vacantBerthApiError: vacantBerth.error,
+      destinationStation: destForUi,
     });
 
     const compositionPayload = {
@@ -518,7 +656,9 @@ export class Service2Service {
       })),
     };
 
-    console.log('compositionPayload', compositionPayload);
+    this.logger.log(
+      `[service2/check] step=composition_payload_summary ${baseCtx} coaches=${compositionPayload.cdd.length} classesOnTrain=${compositionPayload.classes.join(',')}`,
+    );
 
     let openAiSummary: string | null = null;
     let resultOpenAiStructuredSeats: OpenAIStructuredSeat[] | undefined;
@@ -529,7 +669,10 @@ export class Service2Service {
     const apiKey = process.env.OPENAI_API_KEY;
     if (apiKey?.trim()) {
       try {
-        hooks?.onAiStarted?.();
+        this.logger.log(
+          `[service2/check] step=openai_request_start ${baseCtx} model=${process.env.OPENAI_MODEL ?? 'default'}`,
+        );
+        hooks?.onAiStarted?.({ destinationStation: destForUi });
         const userMessage = buildOpenAIUserMessage({
           trainNumber: trainNo,
           originStation: boardingStation,
@@ -542,14 +685,18 @@ export class Service2Service {
           vacantBerth,
           trainSchedule,
         });
-        console.log('userMessage', userMessage);
+        this.logger.log(
+          `[service2/check] step=openai_user_message_built ${baseCtx} chars=${userMessage.length}`,
+        );
         const client = new OpenAI({ apiKey: apiKey.trim() });
+        const textVerbosity = openAiTextVerbosity();
         const response = await client.responses.create({
           model: process.env.OPENAI_MODEL,
           instructions: OPENAI_AGENT_PROMPT,
           input: [{ role: 'user', content: userMessage }],
-          reasoning: { effort: 'high' },
+          ...openAiResponsesTuning(),
           text: {
+            ...(textVerbosity ? { verbosity: textVerbosity } : {}),
             format: {
               type: 'json_schema',
               name: 'railchart_response',
@@ -559,9 +706,11 @@ export class Service2Service {
               strict: true,
             },
           },
-          max_output_tokens: 10000,
         });
         const rawContent = response.output_text?.trim();
+        this.logger.log(
+          `[service2/check] step=openai_response ${baseCtx} outputChars=${rawContent?.length ?? 0} responseId=${(response as { id?: string }).id ?? 'n/a'}`,
+        );
         if (rawContent) {
           const parsed = parseOpenAIStructuredResponse(rawContent);
           openAiSummary = parsed.summary ?? rawContent;
@@ -574,14 +723,31 @@ export class Service2Service {
           if (parsed.total_price != null) {
             resultOpenAiTotalPrice = parsed.total_price;
           }
+          this.logger.log(
+            `[service2/check] step=openai_parsed ${baseCtx} seats=${parsed.seats?.length ?? 0} bookingPlan=${parsed.booking_plan?.length ?? 0} totalPrice=${parsed.total_price ?? 'n/a'}`,
+          );
         }
       } catch (err) {
-        openAiSummary = `OpenAI summary unavailable: ${err instanceof Error ? err.message : String(err)}`;
+        const emsg = err instanceof Error ? err.message : String(err);
+        this.logger.error(
+          `[service2/check] step=openai_error ${baseCtx} ${emsg}`,
+          err instanceof Error ? err.stack : undefined,
+        );
+        openAiSummary = `OpenAI summary unavailable: ${emsg}`;
       }
+    } else {
+      this.logger.warn(
+        `[service2/check] step=openai_skipped_no_api_key ${baseCtx}`,
+      );
     }
 
+    const finalStatus = vacantBerth.error ? 'failed' : 'success';
+    this.logger.log(
+      `[service2/check] step=return ${baseCtx} status=${finalStatus} vacantBerthError=${vacantBerth.error ?? 'none'} hasOpenAiSummary=${Boolean(openAiSummary)}`,
+    );
+
     return {
-      status: vacantBerth.error ? 'failed' : 'success',
+      status: finalStatus,
       composition: compositionPayload,
       chartPreparationDetails,
       vacantBerth: { vbd: [], error: null },

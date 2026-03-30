@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Logger,
   Post,
   Res,
   ServiceUnavailableException,
@@ -30,6 +31,8 @@ function normalizeCheckBody(body: Record<string, unknown>) {
 
 @Controller('api/service2')
 export class Service2Controller {
+  private readonly logger = new Logger(Service2Controller.name);
+
   constructor(private service2: Service2Service) {}
 
   @Post('check/stream')
@@ -38,11 +41,24 @@ export class Service2Controller {
     @Res({ passthrough: false }) res: Response,
   ) {
     const normalized = normalizeCheckBody(body ?? {});
+    this.logger.log(
+      `[service2/check/stream] step=request body=${JSON.stringify({
+        trainNumber: normalized.trainNumber,
+        stationCode: normalized.stationCode,
+        journeyDate: normalized.journeyDate,
+        classCode: normalized.classCode,
+        hasDestination: Boolean(normalized.destinationStation),
+        hasPassengerDetails: Boolean(normalized.passengerDetails),
+      })}`,
+    );
     if (
       !normalized.trainNumber ||
       !normalized.stationCode ||
       !normalized.journeyDate
     ) {
+      this.logger.warn(
+        `[service2/check/stream] step=validation_failed missing required fields`,
+      );
       throw new BadRequestException(
         'trainNumber, stationCode and journeyDate are required',
       );
@@ -55,9 +71,18 @@ export class Service2Controller {
 
     const writeSse = (event: string, data: unknown) => {
       res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+      (res as { flush?: () => void }).flush?.();
     };
 
     try {
+      this.logger.log(
+        `[service2/check/stream] step=sse_pipeline_start train=${normalized.trainNumber} station=${normalized.stationCode} date=${normalized.journeyDate}`,
+      );
+      writeSse('progress', {
+        phase: 'started',
+        trainNumber: normalized.trainNumber,
+        stationCode: normalized.stationCode,
+      });
       const result = await this.service2.check(
         {
           trainNumber: normalized.trainNumber,
@@ -68,15 +93,31 @@ export class Service2Controller {
           passengerDetails: normalized.passengerDetails,
         },
         {
-          onIrctcDataReady: (info) =>
-            writeSse('progress', { phase: 'irctc_complete', ...info }),
-          onAiStarted: () => writeSse('progress', { phase: 'ai_started' }),
+          onIrctcDataReady: (info) => {
+            this.logger.log(
+              `[service2/check/stream] step=irctc_data_ready vacantSegmentCount=${info.vacantSegmentCount} dest=${info.destinationStation} vacantBerthApiError=${info.vacantBerthApiError ?? 'null'}`,
+            );
+            writeSse('progress', { phase: 'irctc_complete', ...info });
+          },
+          onAiStarted: (info) => {
+            this.logger.log(
+              `[service2/check/stream] step=openai_started dest=${info.destinationStation}`,
+            );
+            writeSse('progress', { phase: 'ai_started', ...info });
+          },
         },
+      );
+      this.logger.log(
+        `[service2/check/stream] step=finished status=${result.status} chartStatus=${result.chartStatus ? JSON.stringify(result.chartStatus) : 'none'} hasOpenAiSummary=${Boolean(result.openAiSummary)}`,
       );
       writeSse('result', result);
       res.end();
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
+      this.logger.error(
+        `[service2/check/stream] step=error ${message}`,
+        err instanceof Error ? err.stack : undefined,
+      );
       writeSse('error', { message });
       res.end();
     }
@@ -99,18 +140,29 @@ export class Service2Controller {
       destinationStation,
       passengerDetails,
     });
+    this.logger.log(
+      `[service2/check] step=request body=${JSON.stringify({
+        trainNumber: normalized.trainNumber,
+        stationCode: normalized.stationCode,
+        journeyDate: normalized.journeyDate,
+        classCode: normalized.classCode,
+        hasDestination: Boolean(normalized.destinationStation),
+        hasPassengerDetails: Boolean(normalized.passengerDetails),
+      })}`,
+    );
     if (
       !normalized.trainNumber ||
       !normalized.stationCode ||
       !normalized.journeyDate
     ) {
+      this.logger.warn(`[service2/check] step=validation_failed`);
       return {
         status: 'failed',
         error: 'trainNumber, stationCode and journeyDate are required',
       };
     }
     try {
-      return await this.service2.check({
+      const out = await this.service2.check({
         trainNumber: normalized.trainNumber,
         stationCode: normalized.stationCode,
         journeyDate: normalized.journeyDate,
@@ -118,8 +170,16 @@ export class Service2Controller {
         destinationStation: normalized.destinationStation,
         passengerDetails: normalized.passengerDetails,
       });
+      this.logger.log(
+        `[service2/check] step=finished status=${out.status} chartStatus=${out.chartStatus ? JSON.stringify(out.chartStatus) : 'none'} hasOpenAiSummary=${Boolean(out.openAiSummary)}`,
+      );
+      return out;
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
+      this.logger.error(
+        `[service2/check] step=error ${message}`,
+        err instanceof Error ? err.stack : undefined,
+      );
       throw new ServiceUnavailableException(
         `Service 2 (IRCTC) check failed: ${message}`,
       );

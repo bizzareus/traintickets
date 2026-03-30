@@ -5,11 +5,21 @@ export type Service2CheckStreamResult = Record<string, unknown>;
 
 export type Service2CheckStreamProgress =
   | {
+      phase: "started";
+      trainNumber?: string;
+      stationCode?: string;
+    }
+  | {
       phase: "irctc_complete";
       vacantSegmentCount: number;
       vacantBerthApiError: string | null;
+      /** Resolved destination code (user "to" or train route end). */
+      destinationStation: string;
     }
-  | { phase: "ai_started" };
+  | {
+      phase: "ai_started";
+      destinationStation: string;
+    };
 
 export async function fetchService2CheckStream(
   body: Record<string, unknown>,
