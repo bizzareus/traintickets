@@ -16,6 +16,7 @@ export function AnalyticsProvider({ children }: { children: ReactNode }) {
       api_host: posthogApiHost(),
       capture_pageview: false,
       capture_pageleave: true,
+      enable_recording_console_log: true,
       persistence: "localStorage+cookie" as const,
     }),
     [],

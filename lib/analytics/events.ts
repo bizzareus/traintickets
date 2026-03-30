@@ -9,7 +9,8 @@ export type PopupId =
   | "chart_pending"
   | "monitoring_success"
   | "irctc_disclaimer"
-  | "gap_leg_monitor";
+  | "gap_leg_monitor"
+  | "helpful_feedback";
 
 export type PopupCloseMethod =
   | "backdrop"
@@ -17,7 +18,9 @@ export type PopupCloseMethod =
   | "go_back"
   | "continue_irctc"
   | "got_it"
-  | "cancel";
+  | "cancel"
+  | "helpful_yes"
+  | "helpful_no";
 
 export type HomeButtonId =
   | "search_submit"
@@ -29,7 +32,10 @@ export type HomeButtonId =
   | "gap_monitor_cancel"
   | "gap_monitor_start"
   | "irctc_disclaimer_go_back"
-  | "monitoring_success_got_it";
+  | "monitoring_success_got_it"
+  | "helpful_feedback_yes"
+  | "helpful_feedback_no"
+  | "helpful_feedback_irctc";
 
 export type AnalyticsEvent =
   | {
@@ -108,6 +114,12 @@ export type AnalyticsEvent =
         train_number?: string;
         from_code?: string;
         to_code?: string;
+      };
+    }
+  | {
+      name: "result_helpfulness_submitted";
+      properties: {
+        helpful: boolean;
       };
     };
 

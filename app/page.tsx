@@ -274,10 +274,13 @@ export default function HomePage() {
   const gapMonitorOpenKey = useRef<string | null>(null);
   const [monitoringStartedPopupOpen, setMonitoringStartedPopupOpen] =
     useState(false);
+  const [helpfulFeedbackPopupOpen, setHelpfulFeedbackPopupOpen] =
+    useState(false);
   const [irctcBookConfirm, setIrctcBookConfirm] = useState<{
     url: string;
     source: "booking_plan" | "openai_plan";
   } | null>(null);
+  const helpfulFeedbackShownForSearch = useRef(false);
 
   useEffect(() => {
     setMounted(true);
@@ -423,6 +426,8 @@ export default function HomePage() {
     setMonitorError(null);
     setMonitorSuccess(null);
     setMonitoringStartedPopupOpen(false);
+    setHelpfulFeedbackPopupOpen(false);
+    helpfulFeedbackShownForSearch.current = false;
     setIrctcBookConfirm(null);
     setLoading(true);
     trackAnalyticsEvent({
@@ -767,6 +772,25 @@ export default function HomePage() {
       : typeof payload?.openAiTotalPrice === "number"
         ? payload.openAiTotalPrice
         : null;
+  const hasTicketResults =
+    Boolean(checkResult && !loading) &&
+    payload?.serviceSource === "service2" &&
+    !payload?.chartStatus &&
+    Array.isArray(payload?.openAiBookingPlan) &&
+    payload.openAiBookingPlan.length > 0;
+
+  useEffect(() => {
+    if (!hasTicketResults || helpfulFeedbackShownForSearch.current) return;
+    const timeout = window.setTimeout(() => {
+      helpfulFeedbackShownForSearch.current = true;
+      setHelpfulFeedbackPopupOpen(true);
+      trackAnalyticsEvent({
+        name: "popup_opened",
+        properties: { popup: "helpful_feedback" },
+      });
+    }, 5000);
+    return () => window.clearTimeout(timeout);
+  }, [hasTicketResults]);
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50">
@@ -1851,6 +1875,119 @@ export default function HomePage() {
                   className="w-full sm:w-auto rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white active:bg-emerald-700"
                 >
                   Continue to IRCTC
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {helpfulFeedbackPopupOpen && (
+          <div
+            className="fixed inset-0 z-[115] flex items-center justify-center bg-black/45 p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="helpful-feedback-title"
+            onClick={() => {
+              trackAnalyticsEvent({
+                name: "popup_closed",
+                properties: {
+                  popup: "helpful_feedback",
+                  method: "backdrop",
+                },
+              });
+              setHelpfulFeedbackPopupOpen(false);
+            }}
+          >
+            <div
+              className="w-full max-w-md rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="border-b border-slate-100 px-4 py-4">
+                <h2
+                  id="helpful-feedback-title"
+                  className="text-lg font-semibold text-slate-900"
+                >
+                  Was this result helpful?
+                </h2>
+                <p className="mt-2 text-sm text-slate-600">
+                  Your feedback helps us improve recommendations. You can also
+                  continue to IRCTC now.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 gap-2 p-4 sm:grid-cols-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    trackAnalyticsEvent({
+                      name: "button_clicked",
+                      properties: { button_id: "helpful_feedback_yes" },
+                    });
+                    trackAnalyticsEvent({
+                      name: "result_helpfulness_submitted",
+                      properties: { helpful: true },
+                    });
+                    trackAnalyticsEvent({
+                      name: "popup_closed",
+                      properties: {
+                        popup: "helpful_feedback",
+                        method: "helpful_yes",
+                      },
+                    });
+                    setHelpfulFeedbackPopupOpen(false);
+                  }}
+                  className="rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white active:bg-emerald-700"
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    trackAnalyticsEvent({
+                      name: "button_clicked",
+                      properties: { button_id: "helpful_feedback_no" },
+                    });
+                    trackAnalyticsEvent({
+                      name: "result_helpfulness_submitted",
+                      properties: { helpful: false },
+                    });
+                    trackAnalyticsEvent({
+                      name: "popup_closed",
+                      properties: {
+                        popup: "helpful_feedback",
+                        method: "helpful_no",
+                      },
+                    });
+                    setHelpfulFeedbackPopupOpen(false);
+                  }}
+                  className="rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                >
+                  No
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const irctcUrl = "https://www.irctc.co.in/eticketing/login";
+                    trackAnalyticsEvent({
+                      name: "button_clicked",
+                      properties: { button_id: "helpful_feedback_irctc" },
+                    });
+                    trackAnalyticsEvent({
+                      name: "irctc_open_login_clicked",
+                      properties: {},
+                    });
+                    window.open(irctcUrl, "_blank", "noopener,noreferrer");
+                    trackAnalyticsEvent({
+                      name: "popup_closed",
+                      properties: {
+                        popup: "helpful_feedback",
+                        method: "continue_irctc",
+                      },
+                    });
+                    setHelpfulFeedbackPopupOpen(false);
+                  }}
+                  className="rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white active:bg-blue-700"
+                >
+                  Open IRCTC
                 </button>
               </div>
             </div>
