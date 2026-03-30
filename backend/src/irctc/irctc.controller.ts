@@ -23,12 +23,17 @@ export class IrctcController {
 
   @Get('schedule/:trainNumber')
   async getSchedule(@Param('trainNumber') trainNumber: string) {
-    const schedule = await this.irctc.getTrainSchedule(trainNumber);
-    if (!schedule) {
+    const result = await this.irctc.getTrainSchedule(trainNumber);
+    if (!result.ok) {
+      if (result.reason === 'maintenance') {
+        throw new ServiceUnavailableException(
+          'IRCTC is temporarily unavailable (maintenance or downtime). Please try again later.',
+        );
+      }
       throw new ServiceUnavailableException(
         'Schedule for this train is not available.',
       );
     }
-    return schedule;
+    return result.schedule;
   }
 }

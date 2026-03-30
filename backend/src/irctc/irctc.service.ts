@@ -67,6 +67,20 @@ export type TrainScheduleResponse = {
   stationList: ScheduleStation[];
 };
 
+/** IRCTC schedule API returned `errorMessage` (maintenance / downtime). */
+export class IrctcScheduleMaintenanceError extends Error {
+  readonly code = 'IRCTC_MAINTENANCE' as const;
+  constructor(public readonly irctcMessage: string) {
+    super(irctcMessage);
+    this.name = 'IrctcScheduleMaintenanceError';
+  }
+}
+
+export type GetTrainScheduleResult =
+  | { ok: true; schedule: TrainScheduleResponse }
+  | { ok: false; reason: 'unavailable' }
+  | { ok: false; reason: 'maintenance'; message: string };
+
 export type TrainCompositionCddItem = {
   coachName: string;
   classCode: string;
@@ -105,26 +119,31 @@ export class IrctcService {
 
   async getTrainSchedule(
     trainNumber: string,
-  ): Promise<TrainScheduleResponse | null> {
+  ): Promise<GetTrainScheduleResult> {
     const num = String(trainNumber).trim();
-    if (!num) return null;
+    if (!num) return { ok: false, reason: 'unavailable' };
 
     const cached = await this.prisma.trainScheduleCache.findUnique({
       where: { trainNumber: num },
     });
     if (cached) {
       return {
-        trainNumber: cached.trainNumber,
-        trainName: cached.trainName,
-        stationFrom: cached.stationFrom,
-        stationTo: cached.stationTo,
-        stationList: (cached.stationList as ScheduleStation[]) ?? [],
+        ok: true,
+        schedule: {
+          trainNumber: cached.trainNumber,
+          trainName: cached.trainName,
+          stationFrom: cached.stationFrom,
+          stationTo: cached.stationTo,
+          stationList: (cached.stationList as ScheduleStation[]) ?? [],
+        },
       };
     }
 
     try {
       const data = await this.fetchScheduleFromIrctc(num);
-      if (!data?.stationList?.length) return null;
+      if (!data?.stationList?.length) {
+        return { ok: false, reason: 'unavailable' };
+      }
 
       await this.prisma.trainScheduleCache.upsert({
         where: { trainNumber: num },
@@ -144,9 +163,16 @@ export class IrctcService {
         },
       });
 
-      return data;
-    } catch {
-      return null;
+      return { ok: true, schedule: data };
+    } catch (err) {
+      if (err instanceof IrctcScheduleMaintenanceError) {
+        return {
+          ok: false,
+          reason: 'maintenance',
+          message: err.irctcMessage,
+        };
+      }
+      return { ok: false, reason: 'unavailable' };
     }
   }
 
@@ -172,12 +198,19 @@ export class IrctcService {
     if (!text?.trim()) {
       throw new Error('Schedule for this train is not available.');
     }
-    let data: TrainScheduleResponse;
+    let parsed: unknown;
     try {
-      data = JSON.parse(text) as TrainScheduleResponse;
+      parsed = JSON.parse(text);
     } catch {
       throw new Error('Schedule for this train is not available.');
     }
+    if (parsed && typeof parsed === 'object') {
+      const em = (parsed as { errorMessage?: unknown }).errorMessage;
+      if (typeof em === 'string' && em.trim()) {
+        throw new IrctcScheduleMaintenanceError(em.trim());
+      }
+    }
+    const data = parsed as TrainScheduleResponse;
     if (!data || !Array.isArray(data.stationList)) {
       throw new Error('Schedule for this train is not available.');
     }

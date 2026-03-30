@@ -81,8 +81,19 @@ export class JourneyTaskService {
     const email = params.email?.trim() || undefined;
     const mobile = params.mobile?.trim() || undefined;
 
-    const schedule = await this.irctc.getTrainSchedule(trainNumber);
-    if (!schedule?.stationList?.length) {
+    const scheduleResult = await this.irctc.getTrainSchedule(trainNumber);
+    if (!scheduleResult.ok) {
+      if (scheduleResult.reason === 'maintenance') {
+        throw new Error(
+          'IRCTC is temporarily unavailable (maintenance or downtime). Please try again later.',
+        );
+      }
+      throw new Error(
+        'Train schedule not found. Please try again after the route is loaded.',
+      );
+    }
+    const schedule = scheduleResult.schedule;
+    if (!schedule.stationList?.length) {
       throw new Error(
         'Train schedule not found. Please try again after the route is loaded.',
       );
@@ -500,10 +511,11 @@ export class JourneyTaskService {
     const toCode = params.toStationCode.trim().toUpperCase();
     const trainNumber = params.trainNumber.trim();
 
-    const schedule = await this.irctc.getTrainSchedule(trainNumber);
-    if (!schedule?.stationList?.length) {
+    const scheduleResult = await this.irctc.getTrainSchedule(trainNumber);
+    if (!scheduleResult.ok || !scheduleResult.schedule.stationList?.length) {
       return [];
     }
+    const schedule = scheduleResult.schedule;
 
     const list = schedule.stationList as Array<{
       stationCode?: string;

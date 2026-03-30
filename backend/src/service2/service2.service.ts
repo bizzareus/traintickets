@@ -6,6 +6,353 @@ import { IrctcService } from '../irctc/irctc.service';
 import type { TrainScheduleResponse } from '../irctc/irctc.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 
+function toStr(v: unknown): string {
+  if (v == null) return '';
+  if (typeof v === 'string' || typeof v === 'number') return String(v);
+  return '';
+}
+
+export type OpenAIStructuredSeat = {
+  coach: string;
+  berth: string | number;
+  class: string;
+  seat: string;
+  from: string;
+  to: string;
+};
+
+/** One route leg slot: either a bookable segment or an empty object when no ticket. */
+export type OpenAiBookingPlanItem =
+  | { instruction: string; approx_price: number }
+  | Record<string, never>;
+
+export function isFilledOpenAiPlanItem(
+  item: OpenAiBookingPlanItem | undefined | null,
+): item is { instruction: string; approx_price: number } {
+  if (item == null || typeof item !== 'object') return false;
+  if (Object.keys(item).length === 0) return false;
+  const instruction = String(
+    (item as { instruction?: unknown }).instruction ?? '',
+  ).trim();
+  return instruction.length > 0;
+}
+
+/** Consecutive station pairs along the schedule between boarding and destination. */
+export function routeConsecutiveLegsForJourney(
+  schedule: TrainScheduleResponse | null | undefined,
+  boardingStation: string,
+  destinationStation: string,
+): { from: string; to: string }[] {
+  const list = schedule?.stationList;
+  if (!Array.isArray(list) || list.length < 2) return [];
+  const codes = list
+    .map((s) => String(s.stationCode ?? '').trim().toUpperCase())
+    .filter(Boolean);
+  const fromIdx = codes.indexOf(boardingStation.trim().toUpperCase());
+  const toIdx = codes.indexOf(destinationStation.trim().toUpperCase());
+  if (fromIdx < 0 || toIdx < 0 || fromIdx >= toIdx) return [];
+  const slice = codes.slice(fromIdx, toIdx + 1);
+  const legs: { from: string; to: string }[] = [];
+  for (let i = 0; i < slice.length - 1; i++) {
+    legs.push({ from: slice[i], to: slice[i + 1] });
+  }
+  return legs;
+}
+
+function isRawBookingPlanSlotEmpty(raw: unknown): boolean {
+  if (raw == null) return true;
+  if (typeof raw !== 'object') return true;
+  if (Object.keys(raw as object).length === 0) return true;
+  const rec = raw as Record<string, unknown>;
+  const instruction = toStr(rec.instruction).trim();
+  if (instruction.length > 0) return false;
+  return true;
+}
+
+function normalizeCompactBookingPlan(
+  plan: unknown[] | undefined,
+): OpenAiBookingPlanItem[] {
+  if (!Array.isArray(plan) || plan.length === 0) return [];
+  const out: OpenAiBookingPlanItem[] = [];
+  for (const raw of plan) {
+    if (isRawBookingPlanSlotEmpty(raw)) continue;
+    const rec = raw as Record<string, unknown>;
+    const instruction = toStr(rec.instruction).trim();
+    const approx_price =
+      typeof rec.approx_price === 'number' && rec.approx_price >= 0
+        ? rec.approx_price
+        : 0;
+    if (instruction) out.push({ instruction, approx_price });
+  }
+  return out;
+}
+
+function routeStationsFromLegs(
+  routeLegs: { from: string; to: string }[],
+): string[] {
+  if (routeLegs.length === 0) return [];
+  return [routeLegs[0].from, ...routeLegs.map((leg) => leg.to)];
+}
+
+function compactPlanFullyCoversRoute(
+  plan: OpenAiBookingPlanItem[],
+  routeLegs: { from: string; to: string }[],
+): boolean {
+  if (plan.length === 0 || routeLegs.length === 0) return false;
+  const routeStations = routeStationsFromLegs(routeLegs);
+  const routeIndex = new Map(routeStations.map((code, i) => [code, i]));
+  let current = routeStations[0];
+  const destination = routeStations[routeStations.length - 1];
+
+  for (const item of plan) {
+    if (!isFilledOpenAiPlanItem(item)) return false;
+    const ends = parseInstructionEndpoints(item.instruction);
+    if (!ends) return false;
+    const fromIdx = routeIndex.get(ends.from);
+    const toIdx = routeIndex.get(ends.to);
+    const currentIdx = routeIndex.get(current);
+    if (
+      fromIdx == null ||
+      toIdx == null ||
+      currentIdx == null ||
+      fromIdx !== currentIdx ||
+      toIdx <= fromIdx
+    ) {
+      return false;
+    }
+    current = ends.to;
+  }
+
+  return current === destination;
+}
+
+/**
+ * Furthest station code toward `finalDestination` reached by any filled ticket
+ * in `plan` (by route order). Returns null if nothing booked or already at destination.
+ */
+function furthestTicketDestinationTowardGoal(
+  plan: OpenAiBookingPlanItem[] | undefined,
+  routeLegs: { from: string; to: string }[],
+  finalDestination: string,
+): string | null {
+  if (!plan?.length || !routeLegs.length) return null;
+  const routeStations = routeStationsFromLegs(routeLegs);
+  const idx = new Map(routeStations.map((c, i) => [c.toUpperCase(), i]));
+  const destU = finalDestination.trim().toUpperCase();
+  const destI = idx.get(destU);
+  if (destI == null) return null;
+
+  let bestIdx = -1;
+  for (const item of plan) {
+    if (!isFilledOpenAiPlanItem(item)) continue;
+    const ends = parseInstructionEndpoints(item.instruction);
+    if (!ends) continue;
+    const t = idx.get(ends.to);
+    if (t != null && t > bestIdx && t <= destI) bestIdx = t;
+  }
+  if (bestIdx < 0) return null;
+  if (bestIdx >= destI) return null;
+  return routeStations[bestIdx];
+}
+
+/**
+ * Next boarding station for a vacant-berth fetch: prefer `furthest` (end of last
+ * booked ticket). If we already fetched from there, walk forward along the route
+ * (e.g. RTM → NAD) so we can discover onward availability without getting stuck
+ * when the model still ends at the same station.
+ */
+function resolveNextVacantBerthBoarding(
+  furthest: string,
+  routeLegs: { from: string; to: string }[],
+  planDestinationStation: string,
+  fetchedBoardings: Set<string>,
+): string | null {
+  const routeStations = routeStationsFromLegs(routeLegs);
+  if (routeStations.length < 2) return null;
+  const idxMap = new Map(
+    routeStations.map((c, i) => [c.trim().toUpperCase(), i]),
+  );
+  const destU = planDestinationStation.trim().toUpperCase();
+  const destI = idxMap.get(destU);
+  if (destI == null) return null;
+
+  let candidateU = furthest.trim().toUpperCase();
+  const maxSteps = routeStations.length + 2;
+  for (let step = 0; step < maxSteps; step++) {
+    const ci = idxMap.get(candidateU);
+    if (ci == null) return null;
+    if (ci >= destI) return null;
+    if (!fetchedBoardings.has(candidateU)) {
+      return routeStations[ci];
+    }
+    const nextI = ci + 1;
+    if (nextI >= routeStations.length || nextI > destI) return null;
+    candidateU = routeStations[nextI].trim().toUpperCase();
+  }
+  return null;
+}
+
+/**
+ * Align model output to route legs: correct length, {} for empty slots.
+ * When schedule legs are unknown, returns only filled segments (legacy shape).
+ */
+function normalizeBookingPlanToRouteLegs(
+  plan: unknown[] | undefined,
+  routeLegs: { from: string; to: string }[],
+): OpenAiBookingPlanItem[] {
+  const compactPlan = normalizeCompactBookingPlan(plan);
+  if (routeLegs.length === 0) return compactPlan;
+  if (compactPlanFullyCoversRoute(compactPlan, routeLegs)) return compactPlan;
+
+  const n = routeLegs.length;
+  const out: OpenAiBookingPlanItem[] = [];
+  for (let i = 0; i < n; i++) {
+    const raw = Array.isArray(plan) ? plan[i] : undefined;
+    if (isRawBookingPlanSlotEmpty(raw)) {
+      out.push({});
+      continue;
+    }
+    const rec = raw as Record<string, unknown>;
+    const instruction = toStr(rec.instruction).trim();
+    const approx_price =
+      typeof rec.approx_price === 'number' && rec.approx_price >= 0
+        ? rec.approx_price
+        : 0;
+    if (!instruction) {
+      out.push({});
+      continue;
+    }
+    out.push({ instruction, approx_price });
+  }
+  return out;
+}
+
+function sumFilledPlanPrices(plan: OpenAiBookingPlanItem[]): number {
+  let s = 0;
+  for (const item of plan) {
+    if (isFilledOpenAiPlanItem(item)) s += item.approx_price ?? 0;
+  }
+  return s;
+}
+
+/** Parse "FROM - TO - CLASS" → endpoints (station codes uppercased). */
+function parseInstructionEndpoints(
+  instruction: string,
+): { from: string; to: string } | null {
+  const parts = instruction.split(' - ').map((p) => p.trim());
+  if (parts.length < 3) return null;
+  const from = parts[0].toUpperCase();
+  const to = parts[1].toUpperCase();
+  if (!from || !to) return null;
+  return { from, to };
+}
+
+/**
+ * When the model repeats the same boarding→destination ticket on every route leg
+ * (with bogus zeros / bad totals), collapse to one bookable segment for the UI.
+ */
+function collapseFullJourneySingleTicketLegs(
+  plan: OpenAiBookingPlanItem[],
+  routeLegs: { from: string; to: string }[],
+  boardingStation: string,
+  destinationStation: string,
+  modelTotalPrice: number | undefined,
+): { plan: OpenAiBookingPlanItem[]; collapsed: boolean } {
+  if (routeLegs.length === 0 || plan.length !== routeLegs.length) {
+    return { plan, collapsed: false };
+  }
+
+  const board = boardingStation.trim().toUpperCase();
+  const dest = destinationStation.trim().toUpperCase();
+  if (
+    routeLegs[0].from !== board ||
+    routeLegs[routeLegs.length - 1].to !== dest
+  ) {
+    return { plan, collapsed: false };
+  }
+
+  let commonInstruction: string | null = null;
+  for (const item of plan) {
+    if (!isFilledOpenAiPlanItem(item)) {
+      return { plan, collapsed: false };
+    }
+    const instr = item.instruction.trim();
+    if (commonInstruction === null) commonInstruction = instr;
+    else if (commonInstruction !== instr) {
+      return { plan, collapsed: false };
+    }
+  }
+  if (!commonInstruction) return { plan, collapsed: false };
+
+  const ends = parseInstructionEndpoints(commonInstruction);
+  if (!ends || ends.from !== board || ends.to !== dest) {
+    return { plan, collapsed: false };
+  }
+
+  const summed = sumFilledPlanPrices(plan);
+  const modelP =
+    typeof modelTotalPrice === 'number' && modelTotalPrice > 0
+      ? modelTotalPrice
+      : 0;
+  const price = Math.max(summed, modelP);
+
+  return {
+    plan: [{ instruction: commonInstruction, approx_price: price }],
+    collapsed: true,
+  };
+}
+
+/** Remove unnecessary TTE line when we know the journey is fully covered. */
+function scrubErroneousTteFromFullJourneySummary(summary: string): string {
+  const stripped = summary
+    .replace(/\s*\.?\s*Speak to the TTE to figure out a space\.?/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return stripped.length > 0 ? stripped : summary;
+}
+
+export type Service2CheckResult = {
+  status: 'success' | 'failed';
+  composition?: {
+    trainNo: string;
+    trainName: string;
+    from: string;
+    to: string;
+    chartOneDate: string | null;
+    remote: string;
+    nextRemote: string | null;
+    classes: string[];
+    cdd: { coachName: string; classCode: string; vacantBerths: number }[];
+  };
+  chartPreparationDetails?: {
+    chartingStationCode: string;
+    firstChartCreationTime: string;
+    storedInDb: boolean;
+  };
+  vacantBerth: { vbd: unknown[]; error: string | null };
+  openAiSummary?: string | null;
+  /** Structured vacant berths from OpenAI: coach, berth, class, seat, from, to (order preserved). */
+  openAiStructuredSeats?: OpenAIStructuredSeat[];
+  /**
+   * One entry per consecutive schedule leg from boarding to destination (aligned with route).
+   * Booked leg: { instruction, approx_price }. No ticket for that leg: {}.
+   */
+  openAiBookingPlan?: OpenAiBookingPlanItem[];
+  /** Total approximate fare for the journey in INR. */
+  openAiTotalPrice?: number;
+  /** Train schedule (station list with times) for UI to show dep/arr times. */
+  trainSchedule?: TrainScheduleResponse | null;
+  /** When chart is not yet prepared or composition returned "Chart not prepared". */
+  chartStatus?:
+    | { kind: 'not_prepared_yet'; message: string }
+    | { kind: 'chart_error'; error: string }
+    | { kind: 'irctc_unavailable'; message: string; detail?: string };
+};
+
+/** User-facing copy when IRCTC schedule API returns maintenance / downtime. */
+const IRCTC_RESERVATIONS_BLOCKED_MESSAGE =
+  'IRCTC is temporarily blocking reservations (for example during daily maintenance), so we cannot look up tickets for you right now. Please come back a little later.';
+
 const OPENAI_AGENT_PROMPT = `You are an expert at finding the best train booking combination from seat segment data. Apply the following algorithm exactly.
 
 ---
@@ -50,28 +397,31 @@ Keep only segments that:
 - End at or before the destination station
 - Move forward in the route (toIndex > fromIndex)
 
-Step 4: Generate Possible Journey Paths
-Start from the source station index.
+Step 4: Generate Possible Journey Paths (including partial journeys)
+Start from the source (boarding) station index.
 
-At each step:
-- Find all segments whose starting station is at or before the current position.
-- From those segments select ones that extend the journey forward.
-- Each segment becomes a possible continuation of the journey.
+Partial journeys are required when no combination of vacant segments covers the full route from source to destination. You must still return the **best forward chain** that starts at the boarding station: only segments whose **from** station equals the current position in the chain (the end of the previous segment, or the boarding station for the first ticket). Do not skip ahead to book only from an intermediate station—the first booked segment must originate at the user's boarding station.
+
+At each step after the first segment:
+- The next segment's **from** station must match the previous segment's **to** station (same station code as on the train route).
+- Find vacant segments that extend the journey forward along the route (toIndex > fromIndex, within source..destination bounds).
 
 Repeat until:
 - The destination station is reached, or
-- No segment extends the journey further.
+- No vacant segment continues the chain from the current station.
 
-Each chain of segments forms a possible journey plan.
+Each chain of segments forms a possible journey plan. A plan that stops before the destination is valid and must be returned if it is the best such chain.
+
+Example (order for train 12951; use the actual schedule from the user message when provided): SURAT (ST) → VADODARA JN (BRC) → RATLAM JN (RTM) → NAGDA JN (NAD) → KOTA JN (KOTA) with typical halts (e.g. ST 19:43–19:48, BRC 21:06–21:16, RTM 00:25–00:28, NAD 01:08–01:10, KOTA 03:15–03:20). If there is no vacant segment ST→KOTA but there is ST→BRC and BRC→RTM, the plan must include those two tickets and then explain the remainder (see Step 8).
 
 Step 5: Scoring and Prioritization
 Score each journey plan using the following priorities (from highest to lowest importance).
 
-Priority 1 — Longest Journey Segment
-Prefer segments that cover the largest distance toward the destination. The algorithm should always try to extend the journey as far as possible before adding another ticket.
+Priority 1 — Reach furthest toward destination
+Among valid chains starting at the boarding station, prefer the one whose last segment's **to** station has the **highest route index** (gets closest to the destination). If one plan reaches the destination and another does not, the full journey wins.
 
-Priority 2 — Reach Destination
-Plans that reach the final destination are preferred over plans that stop earlier.
+Priority 2 — Longest individual segments
+Prefer segments that cover the largest distance toward the destination when breaking ties.
 
 Priority 3 — Minimum Number of Tickets
 Plans with fewer segments are better.
@@ -92,39 +442,74 @@ A2 → A3 is better than A2 → B5.
 Step 6: Select the Best Plan
 Sort all journey plans using the priority rules above. Choose the plan that:
 
-- Covers the longest possible journey
-- Reaches the destination if possible
-- Uses the fewest tickets
+- Reaches the furthest point toward the destination (or the destination itself if possible)
+- Uses the fewest tickets when tied on coverage
 - Maintains seat continuity when possible
 - Maintains coach continuity when possible
 - Keeps the class type consistent when possible
 - Minimizes coach movement if a change is required
 
-Step 7: Output Format
-Return the final booking plan as a list of booking instructions in the format:
+Step 7: No usable vacant segments (strict output)
+If **no** vacant segment in the data can form even the first leg from the boarding station toward the destination (after Step 3 filtering), you must **not** invent tickets. Set:
+- summary (exact string): Sorry, we couldn't find any tickets, try some other train
+- seats: []
+- booking_plan: an array with **exactly one entry per consecutive route leg** listed under "Route legs for this journey" in the user message — use **only empty JSON objects** (open brace + close brace, no keys) for every leg
+- total_price: 0
+
+Step 8: Gaps and unreserved portions
+If **every** part of the route from boarding station to requested destination is **fully covered** by your chosen vacant segment(s) (e.g. one ticket from boarding to destination), you must **not** mention the TTE or any unreserved gap — there is no gap.
+
+Only for route portions that are **actually not** covered by your plan, tell the user they should: **Speak to the TTE to figure out a space** (exact sentence for those gaps only). Between two booked segments there is no gap if the first segment's **to** equals the second's **from**.
+
+If there is no full journey ticket but partial tickets exist, explain the partial bookings and include the TTE sentence **only** for uncovered legs along the route to destination.
+
+Step 9: Output Format (booking instructions)
+Return the booking plan as a list of instructions:
 
 Source - Destination - Class
 
-Example output:
+Example (full journey):
 
 NDLS - SBIB - 1AC
 
-Or if multiple tickets are required:
+Example (multiple tickets):
 
-NDLS - JP - 2AC  
-FA - ABR - 3AC  
-ABR - SBIB - 2AC  
-
-Step 8: Handling Gaps
-If a gap exists between two booked segments, assume the passenger remains on the train without reservation until the next booked segment begins.
+NDLS - JP - 2AC
+FA - ABR - 3AC
+ABR - SBIB - 2AC
 
 ---
 
 Given the provided train route, source, destination, and raw seat segment data (vacant berths across classes), apply this algorithm. Consider all classes on the train when building the best plan.
 
-Summary: One-line, easy-reading summary of what the user needs to do (e.g. book 1 ticket from A-B, 1 ticket from B-C). Short, friendly, action-oriented. And if there is no ticket between 2 stations then tell the user about it as well.
+Summary rules:
+- If Step 7 applies, use only the exact summary string given there.
+- Otherwise: short, friendly, action-oriented—just say what tickets to book. Include **Speak to the TTE to figure out a space** **only** if Step 8 says there is an uncovered gap. Do not add any extra sentence explaining that there is no gap.
 
-Return your summary, the list of seat segments used (as the "seats" array with coach, berth, class, seat, from, to), and the best booking plan with approximate price per segment and total price (in INR), as specified in the JSON schema.`;
+**Step 10: Build booking_plan from the chosen plan**
+
+Do **not** re-run or change scoring from Steps 4–6. After the best plan is fixed:
+
+- If your chosen plan **fully covers** the journey from boarding station to destination, return **only the actual booked tickets** in order: one object per real ticket, no duplicates, no per-leg repetition, no empty objects.
+- Only if your chosen plan does **not** fully cover the journey, use the route-leg mapping rules below for partial coverage / gaps.
+
+For each consecutive route leg (local stations **A→B** along the route):
+
+1. **Coverage:** A chosen vacant segment **covers** leg A→B if, on the route index line, that segment’s from ≤ A and segment’s to ≥ B (the segment’s interval fully contains the leg).
+
+2. **If covered:** emit \`{ "instruction": "FROM - TO - CLASS", "approx_price": <number> }\`.
+   - **instruction** is the **actual ticket** you book for that vacant segment — usually the segment’s own endpoints and class (e.g. **ST - KOTA - 3AC**), **not** rewritten as A - B unless the ticket is only for that short leg.
+   - **approx_price:** A single ticket has **one** total fare **P** in INR. If that ticket spans **k** consecutive route legs, you must **not** put the full **P** on every leg (that would make **total_price** wrong when summed). Use one of:
+     - **Preferred:** Split **P** across the **k** legs: allocate a share per leg (e.g. **P/k** evenly, or proportional to distance along the route if you estimate it).
+     - **Simpler fallback:** Put **P** on the **first** covered leg only and **0** on the other **k−1** legs for that same ticket (you may repeat the same **instruction** on each covered leg, but only one leg carries the non-zero fare for that ticket).
+
+3. **If not covered** by any chosen segment: emit **{}** (empty object). This rule is for partial journeys only; do not use \`{}\` when the journey is fully covered.
+
+4. **total_price** must equal the sum of **distinct ticket fares** in your chosen plan (one **P** per physical ticket), and must also equal the **sum of all approx_price values** in **booking_plan** (every rupee allocated exactly once across legs).
+
+5. **Never** return **all zeros** for **approx_price** and **total_price** when at least one route leg is covered by a real ticket — estimate a realistic total in INR for that ticket (or class/distance), put **total_price** to that estimate, and allocate per Step 10 (e.g. first covered leg = full estimate, others 0 for that ticket).
+
+Return your summary, the list of seat segments used (as the "seats" array with coach, berth, class, seat, from, to), booking_plan as above, and total price (in INR), as specified in the JSON schema.`;
 
 /** JSON schema: summary, seats, booking_plan (instruction + approx_price per segment), total_price (INR). */
 const OPENAI_RESPONSE_JSON_SCHEMA = {
@@ -133,12 +518,12 @@ const OPENAI_RESPONSE_JSON_SCHEMA = {
     summary: {
       type: 'string',
       description:
-        'One-line, easy-reading summary of what the user needs to do (e.g. book 1 ticket from A-B, 1 ticket from B-C). Short, friendly, action-oriented. And if there is no ticket between 2 stations then tell the user about it as well.',
+        'If no vacant segment can start from the boarding station, set exactly: Sorry, we couldn\'t find any tickets, try some other train. Otherwise: concise booking guidance. Mention Speak to the TTE to figure out a space only for genuinely uncovered gaps. Do not add extra no-gap commentary.',
     },
     seats: {
       type: 'array',
       description:
-        'Seat segments with coach, berth, class, seat, from, to in order',
+        'Seat segments with coach, berth, class, seat, from, to in order for the chosen plan. Empty array if summary is the no-tickets message.',
       items: {
         type: 'object',
         properties: {
@@ -156,29 +541,39 @@ const OPENAI_RESPONSE_JSON_SCHEMA = {
     booking_plan: {
       type: 'array',
       description:
-        'Best booking plan: each item has instruction (FROM_STATION - TO_STATION - CLASS) and approx_price (INR)',
+        'If the journey is fully covered, return only actual booked tickets in order (one object per real ticket, no duplicates, no {}). If the journey is partial, use one element per route leg in order with {} for uncovered legs. For covered partial legs, instruction is the covering ticket and approx_price is the allocated share for that leg.',
       items: {
-        type: 'object',
-        properties: {
-          instruction: {
-            type: 'string',
-            description:
-              'Segment in format "FROM_STATION - TO_STATION - CLASS"',
+        anyOf: [
+          {
+            type: 'object',
+            properties: {
+              instruction: {
+                type: 'string',
+                description:
+                  'IRCTC ticket line for the covering segment: "FROM_STATION - TO_STATION - CLASS" (ticket endpoints, not necessarily this leg’s A-B)',
+              },
+              approx_price: {
+                type: 'number',
+                description:
+                  'INR share of that ticket’s fare for this route leg; sum across all legs equals sum of distinct ticket fares',
+              },
+            },
+            required: ['instruction', 'approx_price'],
+            additionalProperties: false,
           },
-          approx_price: {
-            type: 'number',
-            description:
-              'Approximate fare for this segment in Indian Rupees (INR)',
+          {
+            type: 'object',
+            description: 'No ticket for this leg',
+            properties: {},
+            additionalProperties: false,
           },
-        },
-        required: ['instruction', 'approx_price'],
-        additionalProperties: false,
+        ],
       },
     },
     total_price: {
       type: 'number',
       description:
-        'Total approximate fare for the entire journey in Indian Rupees (INR)',
+        'Total INR for all distinct tickets in the plan; must equal sum of booking_plan approx_price (each ticket counted once via proration)',
     },
   },
   required: ['summary', 'seats', 'booking_plan', 'total_price'],
@@ -346,48 +741,29 @@ function isChartTimeInFuture(
   return chartIst.getTime() > now.getTime();
 }
 
-export type Service2CheckResult = {
-  status: 'success' | 'failed';
-  composition?: {
-    trainNo: string;
-    trainName: string;
-    from: string;
-    to: string;
-    chartOneDate: string | null;
-    remote: string;
-    nextRemote: string | null;
-    classes: string[];
-    cdd: { coachName: string; classCode: string; vacantBerths: number }[];
-  };
-  chartPreparationDetails?: {
-    chartingStationCode: string;
-    firstChartCreationTime: string;
-    storedInDb: boolean;
-  };
-  vacantBerth: { vbd: unknown[]; error: string | null };
-  openAiSummary?: string | null;
-  /** Structured vacant berths from OpenAI: coach, berth, class, seat, from, to (order preserved). */
-  openAiStructuredSeats?: OpenAIStructuredSeat[];
-  /** Best booking plan: each segment with instruction and approximate price (INR). */
-  openAiBookingPlan?: { instruction: string; approx_price: number }[];
-  /** Total approximate fare for the journey in INR. */
-  openAiTotalPrice?: number;
-  /** Train schedule (station list with times) for UI to show dep/arr times. */
-  trainSchedule?: TrainScheduleResponse | null;
-  /** When chart is not yet prepared or composition returned "Chart not prepared". */
-  chartStatus?:
-    | { kind: 'not_prepared_yet'; message: string }
-    | { kind: 'chart_error'; error: string };
-};
+/** Parse IRCTC "YYYY-MM-DD HH:MM[:SS]" as an IST instant. */
+function parseIrctcDateTimeIst(
+  value: string | null | undefined,
+): Date | null {
+  if (!value || typeof value !== 'string') return null;
+  const m = value
+    .trim()
+    .match(/^(\d{4}-\d{2}-\d{2})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?$/);
+  if (!m) return null;
+  const [, ymd, hh, mm, ss] = m;
+  return new Date(
+    `${ymd}T${hh.padStart(2, '0')}:${mm}:${(ss ?? '00').padStart(2, '0')}+05:30`,
+  );
+}
 
-export type OpenAIStructuredSeat = {
-  coach: string;
-  berth: string | number;
-  class: string;
-  seat: string;
-  from: string;
-  to: string;
-};
+/** After chartTwoDate passes, IRCTC vacant-berth API should be called with chartType=2. */
+function chartTypeFromComposition(
+  composition: Awaited<ReturnType<IrctcService['getTrainComposition']>>,
+): 1 | 2 {
+  const chartTwoAt = parseIrctcDateTimeIst(composition.chartTwoDate);
+  if (!chartTwoAt) return 1;
+  return chartTwoAt.getTime() <= Date.now() ? 2 : 1;
+}
 
 /** Optional progress callbacks when running a check (e.g. SSE streaming). */
 export type Service2CheckHooks = {
@@ -399,6 +775,21 @@ export type Service2CheckHooks = {
   }) => void;
   /** Fired immediately before the OpenAI request (only when an API key is configured). */
   onAiStarted?: (info: { destinationStation: string }) => void;
+  /**
+   * First-pass OpenAI result when the plan does not yet reach the user's destination
+   * and a chained vacant-berth fetch will run from the next station.
+   */
+  onPartialOpenAiResult?: (info: {
+    chainRound: number;
+    nextBoardingStation: string;
+    openAiSummary: string | null;
+    openAiStructuredSeats?: OpenAIStructuredSeat[];
+    openAiBookingPlan?: OpenAiBookingPlanItem[];
+    openAiTotalPrice?: number;
+    composition: NonNullable<Service2CheckResult['composition']>;
+    chartPreparationDetails?: Service2CheckResult['chartPreparationDetails'];
+    trainSchedule: TrainScheduleResponse | undefined;
+  }) => void;
 };
 
 /**
@@ -442,7 +833,22 @@ export class Service2Service {
     );
 
     this.logger.log(`[service2/check] step=fetch_train_schedule ${baseCtx}`);
-    const trainSchedule = await this.irctc.getTrainSchedule(trainNo);
+    const scheduleResult = await this.irctc.getTrainSchedule(trainNo);
+    if (!scheduleResult.ok && scheduleResult.reason === 'maintenance') {
+      this.logger.warn(
+        `[service2/check] step=irctc_schedule_maintenance ${baseCtx} irctc=${scheduleResult.message}`,
+      );
+      return {
+        status: 'failed',
+        chartStatus: {
+          kind: 'irctc_unavailable',
+          message: IRCTC_RESERVATIONS_BLOCKED_MESSAGE,
+          detail: scheduleResult.message,
+        },
+        vacantBerth: { vbd: [], error: null },
+      };
+    }
+    const trainSchedule = scheduleResult.ok ? scheduleResult.schedule : null;
     this.logger.log(
       `[service2/check] step=train_schedule_done ${baseCtx} stations=${trainSchedule?.stationList?.length ?? 0}`,
     );
@@ -582,51 +988,72 @@ export class Service2Service {
       vbd: [],
       error: null,
     };
-    const remoteStation = composition.remote ?? boardingStation;
+    const chartTypeForVacantBerth = chartTypeFromComposition(composition);
+    const initialRemoteStation = composition.remote ?? boardingStation;
     const trainSourceStation = composition.from ?? boardingStation;
     this.logger.log(
-      `[service2/check] step=vacant_berth_loop_start ${baseCtx} classes=${classes.length} remote=${remoteStation} trainSource=${trainSourceStation} classList=${classes.join(',')}`,
+      `[service2/check] step=vacant_berth_setup ${baseCtx} classes=${classes.length} initialRemote=${initialRemoteStation} trainSource=${trainSourceStation} chartType=${chartTypeForVacantBerth} chartTwoDate=${composition.chartTwoDate ?? 'none'} classList=${classes.join(',')}`,
     );
     const allVbd: unknown[] = [];
     const errors: string[] = [];
-    for (const classCode of classes) {
-      try {
-        this.logger.log(
-          `[service2/check] step=vacant_berth_class ${baseCtx} cls=${classCode}`,
-        );
-        const vbdRes = await this.irctc.getVacantBerth({
-          trainNo,
-          boardingStation,
-          remoteStation,
-          trainSourceStation,
-          jDate,
-          cls: classCode,
-          chartType: 1,
-        });
-        const vbdPayload = vbdRes as { vbd?: unknown[]; error?: string | null };
-        const vbdList = Array.isArray(vbdPayload?.vbd) ? vbdPayload.vbd : [];
-        for (const item of vbdList) {
-          allVbd.push(item);
+
+    const appendVacantBerthRound = async (
+      roundBoarding: string,
+      roundRemote: string,
+      roundLabel: string,
+    ) => {
+      this.logger.log(
+        `[service2/check] step=vacant_berth_round_start ${baseCtx} label=${roundLabel} boarding=${roundBoarding} remote=${roundRemote}`,
+      );
+      for (const classCode of classes) {
+        try {
+          this.logger.log(
+            `[service2/check] step=vacant_berth_class ${baseCtx} label=${roundLabel} cls=${classCode}`,
+          );
+          const vbdRes = await this.irctc.getVacantBerth({
+            trainNo,
+            boardingStation: roundBoarding,
+            remoteStation: roundRemote,
+            trainSourceStation,
+            jDate,
+            cls: classCode,
+            chartType: chartTypeForVacantBerth,
+          });
+          const vbdPayload = vbdRes as { vbd?: unknown[]; error?: string | null };
+          const vbdList = Array.isArray(vbdPayload?.vbd) ? vbdPayload.vbd : [];
+          for (const item of vbdList) {
+            allVbd.push(item);
+          }
+          if (vbdPayload?.error) {
+            errors.push(`${roundLabel}/${classCode}: ${vbdPayload.error}`);
+          }
+          this.logger.log(
+            `[service2/check] step=vacant_berth_class_done ${baseCtx} label=${roundLabel} cls=${classCode} segments=${vbdList.length} apiError=${vbdPayload?.error ?? 'none'}`,
+          );
+        } catch (err) {
+          const emsg = err instanceof Error ? err.message : String(err);
+          errors.push(`${roundLabel}/${classCode}: ${emsg}`);
+          this.logger.error(
+            `[service2/check] step=vacant_berth_class_error ${baseCtx} label=${roundLabel} cls=${classCode} ${emsg}`,
+            err instanceof Error ? err.stack : undefined,
+          );
         }
-        if (vbdPayload?.error) {
-          errors.push(`${classCode}: ${vbdPayload.error}`);
-        }
-        this.logger.log(
-          `[service2/check] step=vacant_berth_class_done ${baseCtx} cls=${classCode} segments=${vbdList.length} apiError=${vbdPayload?.error ?? 'none'}`,
-        );
-      } catch (err) {
-        const emsg = err instanceof Error ? err.message : String(err);
-        errors.push(`${classCode}: ${emsg}`);
-        this.logger.error(
-          `[service2/check] step=vacant_berth_class_error ${baseCtx} cls=${classCode} ${emsg}`,
-          err instanceof Error ? err.stack : undefined,
-        );
       }
-    }
+      this.logger.log(
+        `[service2/check] step=vacant_berth_round_done ${baseCtx} label=${roundLabel} totalSegmentsSoFar=${allVbd.length}`,
+      );
+    };
+
+    await appendVacantBerthRound(
+      boardingStation,
+      initialRemoteStation,
+      'initial',
+    );
     vacantBerth = {
       vbd: allVbd,
       error: errors.length > 0 ? errors.join('; ') : null,
     };
+
     this.logger.log(
       `[service2/check] step=vacant_berth_all_done ${baseCtx} totalSegments=${allVbd.length} aggregatedError=${vacantBerth.error ?? 'none'}`,
     );
@@ -660,72 +1087,202 @@ export class Service2Service {
       `[service2/check] step=composition_payload_summary ${baseCtx} coaches=${compositionPayload.cdd.length} classesOnTrain=${compositionPayload.classes.join(',')}`,
     );
 
+    const planDestinationStation = String(
+      destinationStation ?? composition.to ?? boardingStation,
+    ).trim();
+    const routeLegsForPlan = routeConsecutiveLegsForJourney(
+      trainSchedule,
+      boardingStation,
+      planDestinationStation,
+    );
+    const boardingStationsFetched = new Set<string>();
+    boardingStationsFetched.add(boardingStation.trim().toUpperCase());
+
     let openAiSummary: string | null = null;
     let resultOpenAiStructuredSeats: OpenAIStructuredSeat[] | undefined;
-    let resultOpenAiBookingPlan:
-      | { instruction: string; approx_price: number }[]
-      | undefined;
+    let resultOpenAiBookingPlan: OpenAiBookingPlanItem[] | undefined;
     let resultOpenAiTotalPrice: number | undefined;
     const apiKey = process.env.OPENAI_API_KEY;
     if (apiKey?.trim()) {
       try {
-        this.logger.log(
-          `[service2/check] step=openai_request_start ${baseCtx} model=${process.env.OPENAI_MODEL ?? 'default'}`,
-        );
-        hooks?.onAiStarted?.({ destinationStation: destForUi });
-        const userMessage = buildOpenAIUserMessage({
-          trainNumber: trainNo,
-          originStation: boardingStation,
-          destinationStation: destinationStation ?? composition.to,
-          journeyDate: jDate,
-          classCode: cls,
-          passengerDetails: params.passengerDetails,
-          composition: compositionPayload,
-          chartPreparationDetails: chartPreparationDetails ?? null,
-          vacantBerth,
-          trainSchedule,
-        });
-        this.logger.log(
-          `[service2/check] step=openai_user_message_built ${baseCtx} chars=${userMessage.length}`,
-        );
+        const chainBoardings: string[] = [];
+        const maxOpenAiChain = 12;
         const client = new OpenAI({ apiKey: apiKey.trim() });
         const textVerbosity = openAiTextVerbosity();
-        const response = await client.responses.create({
-          model: process.env.OPENAI_MODEL,
-          instructions: OPENAI_AGENT_PROMPT,
-          input: [{ role: 'user', content: userMessage }],
-          ...openAiResponsesTuning(),
-          text: {
-            ...(textVerbosity ? { verbosity: textVerbosity } : {}),
-            format: {
-              type: 'json_schema',
-              name: 'railchart_response',
-              description:
-                'Response with summary, seats, booking_plan (instruction + approx_price per segment), and total_price (INR)',
-              schema: OPENAI_RESPONSE_JSON_SCHEMA,
-              strict: true,
+
+        for (let chainAttempt = 1; chainAttempt <= maxOpenAiChain; chainAttempt++) {
+          this.logger.log(
+            `[service2/check] step=openai_request_start ${baseCtx} chainAttempt=${chainAttempt}/${maxOpenAiChain} model=${process.env.OPENAI_MODEL ?? 'default'}`,
+          );
+          if (chainAttempt === 1) {
+            hooks?.onAiStarted?.({ destinationStation: destForUi });
+          }
+
+          vacantBerth = {
+            vbd: allVbd,
+            error: errors.length > 0 ? errors.join('; ') : null,
+          };
+          const userMessage = buildOpenAIUserMessage({
+            trainNumber: trainNo,
+            originStation: boardingStation,
+            destinationStation: destinationStation ?? composition.to,
+            journeyDate: jDate,
+            classCode: cls,
+            passengerDetails: params.passengerDetails,
+            composition: compositionPayload,
+            chartPreparationDetails: chartPreparationDetails ?? null,
+            vacantBerth,
+            trainSchedule,
+            vacantBerthChainBoardings:
+              chainBoardings.length > 0 ? [...chainBoardings] : undefined,
+          });
+          this.logger.log(
+            `[service2/check] step=openai_user_message_built ${baseCtx} chainAttempt=${chainAttempt} chars=${userMessage.length}`,
+          );
+          const OPENAI_PROMPT_LOG_MAX = 32_000;
+          const instructionsForLog =
+            OPENAI_AGENT_PROMPT.length > OPENAI_PROMPT_LOG_MAX
+              ? `${OPENAI_AGENT_PROMPT.slice(0, OPENAI_PROMPT_LOG_MAX)}… [truncated, totalChars=${OPENAI_AGENT_PROMPT.length}]`
+              : OPENAI_AGENT_PROMPT;
+          this.logger.log(
+            `[service2/check] step=openai_prompt_instructions ${baseCtx} chars=${OPENAI_AGENT_PROMPT.length} ${instructionsForLog}`,
+          );
+          const userMessageForLog =
+            userMessage.length > OPENAI_PROMPT_LOG_MAX
+              ? `${userMessage.slice(0, OPENAI_PROMPT_LOG_MAX)}… [truncated, totalChars=${userMessage.length}]`
+              : userMessage;
+          this.logger.log(
+            `[service2/check] step=openai_prompt_user ${baseCtx} chars=${userMessage.length} ${userMessageForLog}`,
+          );
+
+          const response = await client.responses.create({
+            model: process.env.OPENAI_MODEL,
+            instructions: OPENAI_AGENT_PROMPT,
+            input: [{ role: 'user', content: userMessage }],
+            ...openAiResponsesTuning(),
+            text: {
+              ...(textVerbosity ? { verbosity: textVerbosity } : {}),
+              format: {
+                type: 'json_schema',
+                name: 'railchart_response',
+                description:
+                  'Response with summary, seats, booking_plan (instruction + approx_price per segment), and total_price (INR)',
+                schema: OPENAI_RESPONSE_JSON_SCHEMA,
+                // booking_plan uses anyOf (filled segment vs {}); strict rejects that union
+                strict: false,
+              },
             },
-          },
-        });
-        const rawContent = response.output_text?.trim();
-        this.logger.log(
-          `[service2/check] step=openai_response ${baseCtx} outputChars=${rawContent?.length ?? 0} responseId=${(response as { id?: string }).id ?? 'n/a'}`,
-        );
-        if (rawContent) {
+          });
+
+          const rawContent = response.output_text?.trim();
+          this.logger.log(
+            `[service2/check] step=openai_response ${baseCtx} chainAttempt=${chainAttempt} outputChars=${rawContent?.length ?? 0} responseId=${(response as { id?: string }).id ?? 'n/a'}`,
+          );
+          if (!rawContent) {
+            this.logger.warn(
+              `[service2/check] step=openai_response_body_empty ${baseCtx} chainAttempt=${chainAttempt} responseId=${(response as { id?: string }).id ?? 'n/a'}`,
+            );
+            break;
+          }
+          this.logger.log(
+            `[service2/check] step=openai_response_output_exact ${baseCtx} chars=${rawContent.length} ${rawContent}`,
+          );
           const parsed = parseOpenAIStructuredResponse(rawContent);
           openAiSummary = parsed.summary ?? rawContent;
           if (parsed.seats?.length) {
             resultOpenAiStructuredSeats = parsed.seats;
           }
-          if (parsed.booking_plan?.length) {
-            resultOpenAiBookingPlan = parsed.booking_plan;
-          }
-          if (parsed.total_price != null) {
-            resultOpenAiTotalPrice = parsed.total_price;
+          if (Array.isArray(parsed.booking_plan)) {
+            let normalizedPlan = normalizeBookingPlanToRouteLegs(
+              parsed.booking_plan,
+              routeLegsForPlan,
+            );
+            let fullJourneyCollapsed = false;
+            if (normalizedPlan.length > 1 && routeLegsForPlan.length > 1) {
+              const { plan: collapsed, collapsed: didCollapse } =
+                collapseFullJourneySingleTicketLegs(
+                  normalizedPlan,
+                  routeLegsForPlan,
+                  boardingStation,
+                  planDestinationStation,
+                  parsed.total_price,
+                );
+              if (didCollapse) {
+                normalizedPlan = collapsed;
+                fullJourneyCollapsed = true;
+              }
+            }
+            if (normalizedPlan.length > 0) {
+              resultOpenAiBookingPlan = normalizedPlan;
+              resultOpenAiTotalPrice = sumFilledPlanPrices(normalizedPlan);
+            } else {
+              resultOpenAiBookingPlan = undefined;
+            }
+            if (
+              fullJourneyCollapsed &&
+              typeof openAiSummary === 'string' &&
+              openAiSummary.length > 0
+            ) {
+              openAiSummary =
+                scrubErroneousTteFromFullJourneySummary(openAiSummary);
+            }
+          } else {
+            resultOpenAiBookingPlan = undefined;
+            if (parsed.total_price != null) {
+              resultOpenAiTotalPrice = parsed.total_price;
+            }
           }
           this.logger.log(
-            `[service2/check] step=openai_parsed ${baseCtx} seats=${parsed.seats?.length ?? 0} bookingPlan=${parsed.booking_plan?.length ?? 0} totalPrice=${parsed.total_price ?? 'n/a'}`,
+            `[service2/check] step=openai_parsed ${baseCtx} chainAttempt=${chainAttempt} seats=${parsed.seats?.length ?? 0} bookingPlanRaw=${parsed.booking_plan?.length ?? 0} bookingPlanNorm=${resultOpenAiBookingPlan?.length ?? 0} totalPrice=${resultOpenAiTotalPrice ?? parsed.total_price ?? 'n/a'}`,
           );
+
+          const compactForCover = normalizeCompactBookingPlan(
+            resultOpenAiBookingPlan as unknown as unknown[],
+          );
+          if (
+            routeLegsForPlan.length > 0 &&
+            compactPlanFullyCoversRoute(compactForCover, routeLegsForPlan)
+          ) {
+            break;
+          }
+
+          const furthest = furthestTicketDestinationTowardGoal(
+            resultOpenAiBookingPlan,
+            routeLegsForPlan,
+            planDestinationStation,
+          );
+          if (!furthest) {
+            break;
+          }
+          const nextBoarding = resolveNextVacantBerthBoarding(
+            furthest,
+            routeLegsForPlan,
+            planDestinationStation,
+            boardingStationsFetched,
+          );
+          if (!nextBoarding) {
+            break;
+          }
+
+          hooks?.onPartialOpenAiResult?.({
+            chainRound: chainAttempt,
+            nextBoardingStation: nextBoarding,
+            openAiSummary,
+            openAiStructuredSeats: resultOpenAiStructuredSeats,
+            openAiBookingPlan: resultOpenAiBookingPlan,
+            openAiTotalPrice: resultOpenAiTotalPrice,
+            composition: compositionPayload,
+            chartPreparationDetails,
+            trainSchedule: trainSchedule ?? undefined,
+          });
+
+          chainBoardings.push(nextBoarding);
+          await appendVacantBerthRound(
+            nextBoarding,
+            nextBoarding,
+            `chain_${nextBoarding}`,
+          );
+          boardingStationsFetched.add(nextBoarding.trim().toUpperCase());
         }
       } catch (err) {
         const emsg = err instanceof Error ? err.message : String(err);
@@ -741,9 +1298,14 @@ export class Service2Service {
       );
     }
 
-    const finalStatus = vacantBerth.error ? 'failed' : 'success';
+    const hasUsableOpenAiResult =
+      Boolean(resultOpenAiStructuredSeats?.length) ||
+      Boolean(resultOpenAiBookingPlan?.length) ||
+      (typeof openAiSummary === 'string' && openAiSummary.trim().length > 0);
+    const finalStatus =
+      vacantBerth.error && !hasUsableOpenAiResult ? 'failed' : 'success';
     this.logger.log(
-      `[service2/check] step=return ${baseCtx} status=${finalStatus} vacantBerthError=${vacantBerth.error ?? 'none'} hasOpenAiSummary=${Boolean(openAiSummary)}`,
+      `[service2/check] step=return ${baseCtx} status=${finalStatus} vacantBerthError=${vacantBerth.error ?? 'none'} hasOpenAiSummary=${Boolean(openAiSummary)} hasUsableOpenAiResult=${hasUsableOpenAiResult}`,
     );
 
     return {
@@ -760,16 +1322,10 @@ export class Service2Service {
   }
 }
 
-function toStr(v: unknown): string {
-  if (v == null) return '';
-  if (typeof v === 'string' || typeof v === 'number') return String(v);
-  return '';
-}
-
 function parseOpenAIStructuredResponse(raw: string): {
   summary?: string;
   seats?: OpenAIStructuredSeat[];
-  booking_plan?: { instruction: string; approx_price: number }[];
+  booking_plan?: unknown[];
   total_price?: number;
 } {
   try {
@@ -795,18 +1351,9 @@ function parseOpenAIStructuredResponse(raw: string): {
         to: toStr(s.to),
       }));
     const booking_plan = Array.isArray(obj.booking_plan)
-      ? obj.booking_plan
-          .filter(
-            (x): x is Record<string, unknown> =>
-              x != null && typeof x === 'object',
-          )
-          .map((x) => ({
-            instruction: toStr(x.instruction),
-            approx_price:
-              typeof x.approx_price === 'number' && x.approx_price >= 0
-                ? x.approx_price
-                : 0,
-          }))
+      ? obj.booking_plan.filter(
+          (x): x is Record<string, unknown> => x != null && typeof x === 'object',
+        )
       : undefined;
     const total_price =
       typeof obj.total_price === 'number' && obj.total_price >= 0
@@ -831,10 +1378,24 @@ function buildOpenAIUserMessage(ctx: {
     | null;
   vacantBerth: Service2CheckResult['vacantBerth'];
   trainSchedule: TrainScheduleResponse | null;
+  /** Boarding stations used for extra IRCTC vacant-berth fetches (chained segments). */
+  vacantBerthChainBoardings?: string[];
 }): string {
   const chartTimeStr = ctx.chartPreparationDetails
     ? `Chart time for ${ctx.chartPreparationDetails.chartingStationCode}: ${ctx.chartPreparationDetails.firstChartCreationTime} (stored in DB: ${ctx.chartPreparationDetails.storedInDb})`
     : 'Chart preparation time not available for this station.';
+
+  const routeLegs = routeConsecutiveLegsForJourney(
+    ctx.trainSchedule,
+    ctx.originStation,
+    ctx.destinationStation,
+  );
+  const routeLegsBlock =
+    routeLegs.length > 0
+      ? `**Route legs for this journey** (${routeLegs.length} legs) — \`booking_plan\` MUST be an array of exactly **${routeLegs.length}** elements in this order (index 0 = first leg, etc.):\n${routeLegs
+        .map((l, i) => `${i + 1}. ${l.from} → ${l.to}`)
+        .join('\n')}`
+      : '**Route legs for this journey**: Not derived (boarding/destination not found on cached schedule). Return \`booking_plan\` as a compact array in journey order: only objects \`{ "instruction", "approx_price" }\` for bookable segments (no empty slots required).';
 
   return `Current data from IRCTC APIs:
 
@@ -865,6 +1426,13 @@ ${
     : '(schedule not in cache)'
 }
 
+${routeLegsBlock}
+${
+  ctx.vacantBerthChainBoardings?.length
+    ? `\n**Vacant berth data sources:** IRCTC was called multiple times with the same train/date/classes; boarding station was advanced to: ${ctx.vacantBerthChainBoardings.join(', ')}. The JSON below is the **concatenation** of all responses.\n`
+    : ''
+}
+
 **Entire raw vacant berth data (all classes)** — use this complete list to build the "seats" array (keys: coach, berth, class, seat, from, to); do not rely only on the summary above.
 \`\`\`json
 ${JSON.stringify(ctx.vacantBerth.vbd)}
@@ -878,8 +1446,8 @@ Apply the algorithm from your instructions. Use:
 - Seat segments: use the entire raw vacant berth JSON above for all classes (coachName, berthNumber, from, to, class)
 
 Return a JSON object with:
-- "summary": concise situation summary and recommended next steps based on the algorithm result.
-- "seats": array of seat objects with keys coach, berth, class, seat, from, to (from the segments you used in the best plan).
-- "booking_plan": array of objects, each with "instruction" (string, format "FROM_STATION - TO_STATION - CLASS") and "approx_price" (number, approximate fare in INR for that segment). Use typical Indian Railways fare rules for the class and distance.
-- "total_price": number, total approximate fare for the entire journey in INR (sum of all segment approx_price).`;
+- "summary": If no vacant segment starts at the boarding station: exactly "Sorry, we couldn't find any tickets, try some other train". Otherwise: what to book plus for any uncovered leg to destination: "Speak to the TTE to figure out a space".
+- "seats": Seat objects from the chosen plan only; [] if no plan.
+- "booking_plan": If the journey is fully covered, return only the real booked tickets in order, one object per ticket. If the journey is partial, use one slot per leg with \`{}\` for uncovered legs. If a chosen ticket covers multiple partial legs, repeat its instruction as needed but **split** that ticket’s fare across those legs (or full fare on first covered leg, 0 on the rest) — never full price on every leg.
+- "total_price": Sum of distinct ticket fares; must equal the sum of all \`approx_price\` in \`booking_plan\`.`;
 }

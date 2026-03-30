@@ -105,6 +105,12 @@ export class Service2Controller {
             );
             writeSse('progress', { phase: 'ai_started', ...info });
           },
+          onPartialOpenAiResult: (info) => {
+            this.logger.log(
+              `[service2/check/stream] step=partial_openai nextBoarding=${info.nextBoardingStation} chainRound=${info.chainRound}`,
+            );
+            writeSse('progress', { phase: 'partial_ai_result', ...info });
+          },
         },
       );
       this.logger.log(

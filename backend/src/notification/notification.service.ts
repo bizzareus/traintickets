@@ -2,7 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Resend } from 'resend';
 import axios from 'axios';
-import type { Service2CheckResult } from '../service2/service2.service';
+import {
+  isFilledOpenAiPlanItem,
+  type OpenAiBookingPlanItem,
+  type Service2CheckResult,
+} from '../service2/service2.service';
 import type { ChartTimeAvailabilityTask } from '@prisma/client';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
@@ -160,8 +164,9 @@ export class NotificationService {
       return result.openAiSummary.trim();
     }
     const plan = result.openAiBookingPlan;
-    if (plan?.length) {
-      return plan.map((s) => s.instruction).join(' | ');
+    const filled = plan?.filter(isFilledOpenAiPlanItem) ?? [];
+    if (filled.length > 0) {
+      return filled.map((s) => s.instruction).join(' | ');
     }
     return 'Seats available. Check details on LastBerth.';
   }
@@ -217,14 +222,24 @@ export class NotificationService {
     return `${fromCode} - ${fromName} → ${toCode} - ${toName}`;
   }
 
+  /** Format top-level route for email header using full station names when available. */
+  private formatJourneyRoute(
+    fromCode: string,
+    toCode: string,
+    stationNameMap: Map<string, string>,
+  ): string {
+    const fromName = stationNameMap.get(fromCode.trim().toUpperCase()) ?? fromCode;
+    const toName = stationNameMap.get(toCode.trim().toUpperCase()) ?? toCode;
+    return `${fromName} → ${toName}`;
+  }
+
   /** Build HTML email body matching booking UI: train header, route with >, chart prep, ticket cards, total right-aligned. */
   private buildSeatsFoundEmailHtml(params: {
     trainLabel: string;
     routeDisplay: string;
     chartPreparationText?: string;
-    bookUrl: string;
     trainNumber: string;
-    plan: { instruction: string; approx_price: number }[];
+    plan: OpenAiBookingPlanItem[];
     totalPrice?: number;
     stationNameMap: Map<string, string>;
   }): string {
@@ -232,16 +247,16 @@ export class NotificationService {
       trainLabel,
       routeDisplay,
       chartPreparationText,
-      bookUrl,
       trainNumber,
       plan,
       totalPrice,
       stationNameMap,
     } = params;
 
+    const bookable = plan.filter(isFilledOpenAiPlanItem);
     const cardRows =
-      plan.length > 0
-        ? plan
+      bookable.length > 0
+        ? bookable
             .map((seg, i) => {
               const segUrl = this.buildSegmentBookUrl(
                 trainNumber,
@@ -311,13 +326,6 @@ export class NotificationService {
                 ${cardRows}
               </table>
               ${totalRow}
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:20px;">
-                <tr>
-                  <td style="text-align:center;">
-                    <a href="${bookUrl}" style="display:inline-block; padding:14px 28px; border-radius:12px; background:#22c55e; color:#ffffff; font-size:15px; font-weight:600; text-decoration:none;">Book on IRCTC</a>
-                  </td>
-                </tr>
-              </table>
               <p style="margin:16px 0 0 0; font-size:12px; color:#94a3b8; text-align:center;">Book quickly — seats can sell out fast.</p>
             </td>
           </tr>
@@ -335,7 +343,7 @@ export class NotificationService {
     trainLabel: string;
     routeDisplay: string;
     chartPreparationText?: string;
-    plan: { instruction: string; approx_price: number }[];
+    plan: OpenAiBookingPlanItem[];
     totalPrice?: number;
     stationNameMap: Map<string, string>;
     bookUrl: string;
@@ -355,7 +363,8 @@ export class NotificationService {
       ...(chartPreparationText ? [chartPreparationText] : []),
       '',
     ];
-    plan.forEach((seg, i) => {
+    const bookable = plan.filter(isFilledOpenAiPlanItem);
+    bookable.forEach((seg, i) => {
       const segmentRoute = this.formatSegmentRoute(
         seg.instruction,
         stationNameMap,
@@ -422,7 +431,6 @@ export class NotificationService {
     const trainLabel = [task.trainNumber, task.trainName]
       .filter(Boolean)
       .join(' ');
-    const routeDisplay = `${task.fromStationCode} > ${task.toStationCode}`;
     const chartPreparationText = result.chartPreparationDetails
       ? `Chart preparation: ${result.chartPreparationDetails.firstChartCreationTime} at ${result.chartPreparationDetails.chartingStationCode}`
       : undefined;
@@ -430,6 +438,12 @@ export class NotificationService {
       result.trainSchedule?.stationList as
         | Array<{ stationCode?: string; stationName?: string }>
         | undefined,
+    );
+    const routeDisplay = `${task.fromStationCode} > ${task.toStationCode}`;
+    const emailRouteDisplay = this.formatJourneyRoute(
+      task.fromStationCode,
+      task.toStationCode,
+      stationNameMap,
     );
     const bookUrl = this.buildIrctcUrl({
       fromStationCode: task.fromStationCode,
@@ -461,9 +475,8 @@ export class NotificationService {
       const subject = `Seats Available - Train ${task.trainNumber} on ${journeyDate}`;
       const html = this.buildSeatsFoundEmailHtml({
         trainLabel,
-        routeDisplay,
+        routeDisplay: emailRouteDisplay,
         chartPreparationText,
-        bookUrl,
         trainNumber: task.trainNumber,
         plan,
         totalPrice,

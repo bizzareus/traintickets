@@ -19,6 +19,18 @@ export type Service2CheckStreamProgress =
   | {
       phase: "ai_started";
       destinationStation: string;
+    }
+  | {
+      phase: "partial_ai_result";
+      chainRound: number;
+      nextBoardingStation: string;
+      openAiSummary: string | null;
+      openAiStructuredSeats?: unknown[];
+      openAiBookingPlan?: unknown[];
+      openAiTotalPrice?: number;
+      composition?: Record<string, unknown>;
+      chartPreparationDetails?: Record<string, unknown>;
+      trainSchedule?: { stationList?: unknown[] } | null;
     };
 
 export async function fetchService2CheckStream(
