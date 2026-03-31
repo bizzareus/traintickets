@@ -833,7 +833,12 @@ export class Service2Service {
     );
 
     this.logger.log(`[service2/check] step=fetch_train_schedule ${baseCtx}`);
-    const scheduleResult = await this.irctc.getTrainSchedule(trainNo);
+    const scheduleResult = await this.irctc.getTrainSchedule(trainNo, {
+      fillRunsOnFromComposition: {
+        jDate,
+        boardingStation,
+      },
+    });
     if (!scheduleResult.ok && scheduleResult.reason === 'maintenance') {
       this.logger.warn(
         `[service2/check] step=irctc_schedule_maintenance ${baseCtx} irctc=${scheduleResult.message}`,

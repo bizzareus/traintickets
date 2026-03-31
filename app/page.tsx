@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, Fragment } from "react";
+import { useState, useEffect, useRef, useMemo, Fragment } from "react";
 import { apiClient, irctcScheduleClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { fetchService2CheckStream } from "@/lib/service2CheckStream";
@@ -14,6 +14,149 @@ const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 
 type Station = { code: string; name: string };
 type TrainOption = { number: string; label: string };
+
+/** IRCTC schedule weekday flags (Y/N), same keys as trnscheduleenquiry API. */
+type TrainRunsOnJson = Partial<
+  Record<
+    | "trainRunsOnMon"
+    | "trainRunsOnTue"
+    | "trainRunsOnWed"
+    | "trainRunsOnThu"
+    | "trainRunsOnFri"
+    | "trainRunsOnSat"
+    | "trainRunsOnSun",
+    string
+  >
+>;
+
+/** getDay(): 0 Sun … 6 Sat → IRCTC field names */
+const TRAIN_RUNS_ON_BY_GET_DAY = [
+  "trainRunsOnSun",
+  "trainRunsOnMon",
+  "trainRunsOnTue",
+  "trainRunsOnWed",
+  "trainRunsOnThu",
+  "trainRunsOnFri",
+  "trainRunsOnSat",
+] as const;
+
+function normalizeRunsOnFlag(v: unknown): "Y" | "N" | undefined {
+  if (v === "Y" || v === "N") return v;
+  if (typeof v === "string") {
+    const u = v.trim().toUpperCase();
+    if (u === "Y" || u === "N") return u;
+  }
+  return undefined;
+}
+
+/** Undefined if date invalid or schedule has no run-day data (do not block). */
+function getTrainRunsOnFlagForYmd(
+  ymd: string,
+  runs: TrainRunsOnJson | null | undefined,
+): "Y" | "N" | undefined {
+  if (!runs || Object.keys(runs).length === 0) return undefined;
+  const parts = ymd.trim().split("-").map(Number);
+  if (parts.length !== 3 || parts.some((n) => !Number.isFinite(n)))
+    return undefined;
+  const [y, mo, d] = parts;
+  const date = new Date(y, (mo ?? 1) - 1, d ?? 1);
+  if (Number.isNaN(date.getTime())) return undefined;
+  const key = TRAIN_RUNS_ON_BY_GET_DAY[date.getDay()];
+  return normalizeRunsOnFlag(runs[key]);
+}
+
+type JourneyRunDayUiError = {
+  message: string;
+  runningDayNames: string[];
+  nextRunDate: string | null;
+  nextRunDayAndDate: string | null;
+};
+
+function journeyErrorItemToTrainRunDay(
+  item: unknown,
+): JourneyRunDayUiError | null {
+  if (!item || typeof item !== "object") return null;
+  const e = item as Record<string, unknown>;
+  if (e.code !== "TRAIN_DOES_NOT_RUN_ON_DATE") return null;
+  return {
+    message: String(e.message ?? "This train does not run on that day."),
+    runningDayNames: Array.isArray(e.runningDayNames)
+      ? e.runningDayNames.map(String)
+      : [],
+    nextRunDate:
+      e.nextRunDate != null && String(e.nextRunDate).trim() !== ""
+        ? String(e.nextRunDate)
+        : null,
+    nextRunDayAndDate:
+      e.nextRunDayAndDate != null &&
+      String(e.nextRunDayAndDate).trim() !== ""
+        ? String(e.nextRunDayAndDate)
+        : null,
+  };
+}
+
+/** `POST .../journey/validate` body: `{ valid: false, errors }` */
+function extractTrainRunDayFromValidateBody(
+  data: unknown,
+): JourneyRunDayUiError | null {
+  if (!data || typeof data !== "object") return null;
+  const d = data as Record<string, unknown>;
+  if (d.valid !== false || !Array.isArray(d.errors)) return null;
+  for (const item of d.errors) {
+    const td = journeyErrorItemToTrainRunDay(item);
+    if (td) return td;
+  }
+  return null;
+}
+
+function firstJourneyValidationMessage(data: unknown): string | null {
+  if (!data || typeof data !== "object") return null;
+  const d = data as Record<string, unknown>;
+  if (d.valid !== false || !Array.isArray(d.errors)) return null;
+  const first = d.errors[0];
+  if (first && typeof first === "object" && "message" in first) {
+    return String((first as { message?: string }).message ?? "");
+  }
+  return null;
+}
+
+/** Parse journey 400 / validate error bodies (Nest may nest fields under `message`). */
+function extractJourneyTrainRunDayError(err: unknown): JourneyRunDayUiError | null {
+  const ax = err as { response?: { data?: unknown } };
+  const data = ax.response?.data;
+  if (!data || typeof data !== "object" || Array.isArray(data)) return null;
+  const fromValidate = extractTrainRunDayFromValidateBody(data);
+  if (fromValidate) return fromValidate;
+  const d = data as Record<string, unknown>;
+  let payload: Record<string, unknown> | null = null;
+  if (d.error === "TRAIN_DOES_NOT_RUN_ON_DATE") payload = d;
+  else if (
+    d.message != null &&
+    typeof d.message === "object" &&
+    !Array.isArray(d.message)
+  ) {
+    const m = d.message as Record<string, unknown>;
+    if (m.error === "TRAIN_DOES_NOT_RUN_ON_DATE") payload = m;
+  }
+  if (!payload) return null;
+  return {
+    message: String(
+      payload.message ?? "This train does not run on that day.",
+    ),
+    runningDayNames: Array.isArray(payload.runningDayNames)
+      ? payload.runningDayNames.map(String)
+      : [],
+    nextRunDate:
+      payload.nextRunDate != null && String(payload.nextRunDate).trim() !== ""
+        ? String(payload.nextRunDate)
+        : null,
+    nextRunDayAndDate:
+      payload.nextRunDayAndDate != null &&
+      String(payload.nextRunDayAndDate).trim() !== ""
+        ? String(payload.nextRunDayAndDate)
+        : null,
+  };
+}
 
 function SwapIcon({ className }: { className?: string }) {
   return (
@@ -358,6 +501,8 @@ export default function HomePage() {
   );
   const [scheduleLoading, setScheduleLoading] = useState(false);
   const [scheduleError, setScheduleError] = useState<string | null>(null);
+  const [scheduleTrainRunsOn, setScheduleTrainRunsOn] =
+    useState<TrainRunsOnJson | null>(null);
   const [loading, setLoading] = useState(false);
   /** Live status line while service2 SSE check is in progress. */
   const [service2StreamLine, setService2StreamLine] = useState("");
@@ -377,7 +522,15 @@ export default function HomePage() {
     journeyRequestId: string;
     tasks: { stationCode: string; chartAt: string; status: string }[];
   } | null>(null);
+  /** True when POST /journey returned 202 and setup runs in the background */
+  const [journeySetupQueued, setJourneySetupQueued] = useState(false);
   const [monitorError, setMonitorError] = useState<string | null>(null);
+  const [journeyRunDayApiError, setJourneyRunDayApiError] = useState<{
+    message: string;
+    runningDayNames: string[];
+    nextRunDate: string | null;
+    nextRunDayAndDate: string | null;
+  } | null>(null);
   const [monitorEmail, setMonitorEmail] = useState("");
   const [monitorMobile, setMonitorMobile] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -485,16 +638,25 @@ export default function HomePage() {
     if (!trainSelected || !trainNumber) {
       setScheduleStations(null);
       setScheduleError(null);
+      setScheduleTrainRunsOn(null);
       return;
     }
     setScheduleLoading(true);
     setScheduleStations(null);
     setScheduleError(null);
+    setScheduleTrainRunsOn(null);
     irctcScheduleClient
-      .get<{ stationList?: { stationCode?: string; stationName?: string }[] }>(
-        `/api/irctc/schedule/${encodeURIComponent(trainNumber)}`,
-      )
+      .get<{
+        stationList?: { stationCode?: string; stationName?: string }[];
+        trainRunsOn?: TrainRunsOnJson;
+      }>(`/api/irctc/schedule/${encodeURIComponent(trainNumber)}`)
       .then((r) => {
+        const tro = r.data?.trainRunsOn;
+        if (tro && typeof tro === "object" && !Array.isArray(tro)) {
+          setScheduleTrainRunsOn(tro as TrainRunsOnJson);
+        } else {
+          setScheduleTrainRunsOn(null);
+        }
         const list = r.data?.stationList;
         if (Array.isArray(list) && list.length > 0) {
           const stations = list
@@ -524,6 +686,7 @@ export default function HomePage() {
             "Failed to load schedule. Please try again.";
           setScheduleError(msg);
           setScheduleStations(null);
+          setScheduleTrainRunsOn(null);
         },
       )
       .finally(() => setScheduleLoading(false));
@@ -575,6 +738,19 @@ export default function HomePage() {
     : from.trim();
   const toCode = to.includes(" - ") ? to.split(" - ")[0].trim() : to.trim();
 
+  const trainRunsOnSelectedDate = useMemo(
+    () => getTrainRunsOnFlagForYmd(journeyDate, scheduleTrainRunsOn),
+    [journeyDate, scheduleTrainRunsOn],
+  );
+  const trainDoesNotRunOnSelectedDate = trainRunsOnSelectedDate === "N";
+  const trainRunDayMessage = trainDoesNotRunOnSelectedDate
+    ? "This train doesn't run on that day."
+    : null;
+  const formAlertMessage =
+    scheduleError ??
+    (trainDoesNotRunOnSelectedDate ? trainRunDayMessage : null) ??
+    error;
+
   /** When route order is known, clear To if it matches From or is not after From. */
   useEffect(() => {
     if (!scheduleStations?.length || !to.includes(" - ")) return;
@@ -593,6 +769,10 @@ export default function HomePage() {
     e.preventDefault();
     if (railMaint.onBlockedSearchAttempt()) return;
     if (scheduleError) return;
+    if (trainDoesNotRunOnSelectedDate) {
+      setError(trainRunDayMessage ?? "This train doesn't run on that day.");
+      return;
+    }
     if (!trainNumber.trim() || !fromCode || !journeyDate) {
       setError("Please enter train number, from station and date.");
       return;
@@ -746,15 +926,37 @@ export default function HomePage() {
     setMonitorSubmitting(true);
     setMonitorError(null);
     setMonitorSuccess(null);
+    setJourneyRunDayApiError(null);
+    setJourneySetupQueued(false);
     try {
-      const { data } = await apiClient.post<{
-        journeyRequestId: string;
-        tasks: {
-          id: string;
-          stationCode: string;
-          chartAt: string;
-          status: string;
-        }[];
+      const { data: validated } = await apiClient.post<{
+        valid: boolean;
+        errors?: Array<{ code: string; message: string }>;
+      }>("/api/availability/journey/validate", {
+        trainNumber: trainNumber.trim(),
+        fromStationCode: fromC,
+        toStationCode: toC,
+        journeyDate: journeyDate.trim(),
+        classCode: "3A",
+      });
+      if (!validated.valid) {
+        const runDay = extractTrainRunDayFromValidateBody(validated);
+        if (runDay) setJourneyRunDayApiError(runDay);
+        else
+          setMonitorError(
+            firstJourneyValidationMessage(validated) ?? "Validation failed.",
+          );
+        trackAnalyticsEvent({
+          name: "monitor_journey_submitted",
+          properties: { success: false, error: "validation_failed" },
+        });
+        return;
+      }
+
+      await apiClient.post<{
+        accepted?: boolean;
+        status?: string;
+        message?: string;
       }>("/api/availability/journey", {
         trainNumber: trainNumber.trim(),
         fromStationCode: fromC,
@@ -764,16 +966,14 @@ export default function HomePage() {
         email,
         mobile,
       });
-      setMonitorJourneyResponse({
-        journeyRequestId: data.journeyRequestId,
-        tasks: data.tasks ?? [],
-      });
+      setMonitorJourneyResponse(null);
+      setJourneySetupQueued(true);
       setMonitoringStartedPopupOpen(true);
       setChartPendingModalDismissed(true);
       setMonitoringLeg(null);
       trackAnalyticsEvent({
         name: "monitor_journey_submitted",
-        properties: { success: true },
+        properties: { success: true, queued: true },
       });
       if (typeof window !== "undefined" && window.localStorage) {
         try {
@@ -789,17 +989,39 @@ export default function HomePage() {
         }
       }
     } catch (err: unknown) {
-      const ax = err as {
-        response?: { data?: { message?: string } };
-      };
-      setMonitorError(ax.response?.data?.message ?? "Request failed.");
-      trackAnalyticsEvent({
-        name: "monitor_journey_submitted",
-        properties: {
-          success: false,
-          error: ax.response?.data?.message ?? "request_failed",
-        },
-      });
+      const runDayPayload = extractJourneyTrainRunDayError(err);
+      if (runDayPayload) {
+        setJourneyRunDayApiError(runDayPayload);
+        trackAnalyticsEvent({
+          name: "monitor_journey_submitted",
+          properties: {
+            success: false,
+            error: "train_does_not_run_on_date",
+          },
+        });
+      } else {
+        const ax = err as {
+          response?: { data?: unknown; status?: number };
+        };
+        const data = ax.response?.data;
+        const msg =
+          firstJourneyValidationMessage(data) ??
+          (typeof data === "object" &&
+          data &&
+          "message" in data &&
+          typeof (data as { message?: unknown }).message === "string"
+            ? String((data as { message: string }).message)
+            : null) ??
+          "Request failed.";
+        setMonitorError(msg);
+        trackAnalyticsEvent({
+          name: "monitor_journey_submitted",
+          properties: {
+            success: false,
+            error: "request_failed",
+          },
+        });
+      }
     } finally {
       setMonitorSubmitting(false);
     }
@@ -1524,12 +1746,19 @@ export default function HomePage() {
                 >
                   Departure Date
                 </label>
-                <div className="grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px]">
+                <div
+                  className={`grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 text-sm min-h-[38px] ${
+                    trainDoesNotRunOnSelectedDate
+                      ? "outline-red-400 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-red-500"
+                      : "outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600"
+                  }`}
+                >
                   <select
                     id="departure-date-select"
                     value={journeyDate}
                     onChange={(e) => setJourneyDate(e.target.value)}
                     required
+                    aria-invalid={trainDoesNotRunOnSelectedDate}
                     className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 p-0 text-inherit appearance-none cursor-pointer"
                   >
                     {dateOptions.map((opt) => (
@@ -1548,7 +1777,11 @@ export default function HomePage() {
                 <div className="p-4 pt-0">
                   <button
                     type="submit"
-                    disabled={loading || !!scheduleError}
+                    disabled={
+                      loading ||
+                      !!scheduleError ||
+                      trainDoesNotRunOnSelectedDate
+                    }
                     className="w-full rounded-xl bg-blue-600 py-4 min-h-[48px] font-semibold text-white text-base active:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {loading ? "Searching…" : "Search"}
@@ -1629,9 +1862,9 @@ export default function HomePage() {
           </section>
         )}
 
-        {(scheduleError || error) && (
+        {formAlertMessage && (
           <div className="mt-4 rounded-xl bg-red-50/80 border border-red-100 px-4 py-3 text-red-700 text-sm">
-            {scheduleError ?? error}
+            {formAlertMessage}
           </div>
         )}
 
@@ -2698,6 +2931,69 @@ export default function HomePage() {
           minutesDisplay={railMaint.displayMinutes}
         />
 
+        {journeyRunDayApiError && (
+          <div
+            className="fixed inset-0 z-[115] flex items-center justify-center bg-black/50 p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="journey-run-day-api-title"
+            onClick={() => setJourneyRunDayApiError(null)}
+          >
+            <div
+              className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h2
+                id="journey-run-day-api-title"
+                className="text-lg font-bold text-slate-900 leading-snug"
+              >
+                Train does not run on this date
+              </h2>
+              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                {journeyRunDayApiError.message}
+              </p>
+              {journeyRunDayApiError.runningDayNames.length > 0 && (
+                <div className="mt-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Days this train usually runs
+                  </p>
+                  <p className="mt-1 text-sm text-slate-900">
+                    {journeyRunDayApiError.runningDayNames.join(", ")}
+                  </p>
+                </div>
+              )}
+              {journeyRunDayApiError.nextRunDayAndDate && (
+                <div className="mt-4 rounded-xl bg-slate-50 px-3 py-2.5">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Next run after your date
+                  </p>
+                  <p className="mt-1 text-sm font-medium text-slate-900">
+                    {journeyRunDayApiError.nextRunDayAndDate}
+                  </p>
+                  {journeyRunDayApiError.nextRunDate && (
+                    <p className="mt-1 font-mono text-xs text-slate-500">
+                      {journeyRunDayApiError.nextRunDate}
+                    </p>
+                  )}
+                </div>
+              )}
+              {journeyRunDayApiError.runningDayNames.length === 0 &&
+                !journeyRunDayApiError.nextRunDayAndDate && (
+                  <p className="mt-3 text-xs text-slate-500">
+                    Pick another journey date or confirm the schedule on IRCTC.
+                  </p>
+                )}
+              <button
+                type="button"
+                onClick={() => setJourneyRunDayApiError(null)}
+                className="mt-6 w-full rounded-xl bg-blue-600 py-3 text-sm font-semibold text-white active:bg-blue-700"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        )}
+
         {showChartPendingMonitor &&
           !chartPendingModalDismissed &&
           chartStatusPayload && (
@@ -2834,7 +3130,8 @@ export default function HomePage() {
             </div>
           )}
 
-        {monitoringStartedPopupOpen && monitorJourneyResponse && (
+        {monitoringStartedPopupOpen &&
+          (monitorJourneyResponse || journeySetupQueued) && (
           <div
             className="fixed inset-0 z-[110] flex items-center justify-center bg-black/50 p-0"
             role="dialog"
@@ -2857,6 +3154,7 @@ export default function HomePage() {
               });
               setMonitoringStartedPopupOpen(false);
               setMonitorJourneyResponse(null);
+              setJourneySetupQueued(false);
               setMonitorSuccess(null);
               setMonitorError(null);
             }}
@@ -2874,7 +3172,9 @@ export default function HomePage() {
                     id="monitoring-started-title"
                     className="mt-1 font-bold text-emerald-950 text-xl leading-snug"
                   >
-                    We&apos;ll watch this train for you
+                    {journeySetupQueued
+                      ? "Your alert is being set up"
+                      : "We'll watch this train for you"}
                   </h2>
                 </div>
                 <button
@@ -2897,6 +3197,7 @@ export default function HomePage() {
                     });
                     setMonitoringStartedPopupOpen(false);
                     setMonitorJourneyResponse(null);
+                    setJourneySetupQueued(false);
                     setMonitorSuccess(null);
                     setMonitorError(null);
                   }}
@@ -2920,6 +3221,13 @@ export default function HomePage() {
                 </button>
               </div>
               <div className="flex-1 min-h-0 overflow-y-auto px-4 py-5 space-y-4 text-slate-700 text-base leading-relaxed">
+                {journeySetupQueued && (
+                  <p className="rounded-lg border border-emerald-200/80 bg-emerald-50/90 px-3 py-2.5 text-sm text-emerald-950">
+                    We&apos;re finishing setup in the background—chart times,
+                    route checks, and your contact details are being configured
+                    now. You don&apos;t need to wait on this screen.
+                  </p>
+                )}
                 <p>
                   You&apos;re signed up. For your journey on{" "}
                   <span className="font-semibold text-slate-900">
@@ -3005,6 +3313,7 @@ export default function HomePage() {
                     });
                     setMonitoringStartedPopupOpen(false);
                     setMonitorJourneyResponse(null);
+                    setJourneySetupQueued(false);
                     setMonitorSuccess(null);
                     setMonitorError(null);
                   }}

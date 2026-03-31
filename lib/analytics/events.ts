@@ -74,7 +74,7 @@ export type AnalyticsEvent =
     }
   | {
       name: "monitor_journey_submitted";
-      properties: { success: boolean; error?: string };
+      properties: { success: boolean; error?: string; queued?: boolean };
     }
   | {
       name: "irctc_book_clicked";

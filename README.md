@@ -46,6 +46,7 @@ Open **http://localhost:3000**.
 |-----|--------|-------------|
 | `DATABASE_URL` | Backend | Supabase PostgreSQL connection string |
 | `JWT_SECRET` | Backend | Secret for JWT signing |
+| `CHART_TIME_INGESTION_PASSWORD` | Backend | Password to unlock `/admin/*` (verified via `POST /api/chart-time-ingestion/verify`) |
 | `API_URL` | Backend | Backend base URL (for webhook callback) |
 | `FRONTEND_URL` | Backend | Frontend origin (CORS) |
 | `NEXT_PUBLIC_API_URL` | Frontend | Backend API URL |
@@ -69,3 +70,10 @@ Open **http://localhost:3000**.
 2. User selects train, class, station and clicks **Get Instant Alert** → creates a MonitoringRequest and ChartEventInstances.
 3. Cron (every minute in NestJS) finds due ChartEventInstances, claims them via DB, and triggers Browser Use for each MonitoringRequest.
 4. Webhook receives result: if `seat_available`, alerts are sent and request marked completed; else expired.
+
+## Admin chart-time ingestion
+
+- All `/admin/*` routes show a password screen until you enter `CHART_TIME_INGESTION_PASSWORD` (verified via `POST /api/chart-time-ingestion/verify`). The browser remembers unlock for that tab until you click **Lock admin** or close the tab.
+- Open `/admin/chart-time-ingestion` after unlocking.
+- Enter train number and journey date (`YYYY-MM-DD`) to run `POST /api/chart-time-ingestion/run` (no second password on that form).
+- The backend loops schedule stations in order, calls IRCTC `trainComposition` for each station, and persists chart times into `TrainStationChartTime` using existing IRCTC persistence logic.

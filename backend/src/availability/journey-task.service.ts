@@ -1,10 +1,40 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
-import { IrctcService } from '../irctc/irctc.service';
+import { IrctcService, type TrainScheduleResponse } from '../irctc/irctc.service';
 import { Service2Service } from '../service2/service2.service';
 import { NotificationService } from '../notification/notification.service';
 import { DateTime } from 'luxon';
+import {
+  getTrainDoesNotRunOnDateError,
+  parseJourneyYmdForValidation,
+} from '../common/train-run-day.validation';
+
+export type JourneyValidationError = {
+  code: string;
+  message: string;
+  runningDayNames?: string[];
+  nextRunDate?: string | null;
+  nextRunDayAndDate?: string | null;
+  requestedJourneyDate?: string;
+};
+
+export type JourneyValidContext = {
+  schedule: TrainScheduleResponse;
+  fromCode: string;
+  toCode: string;
+  trainNumber: string;
+  stationsToProcess: string[];
+  jYmd: string;
+};
+
+export type JourneyValidationResult =
+  | { valid: true; context: JourneyValidContext }
+  | { valid: false; errors: JourneyValidationError[] };
 
 /**
  * Builds chartAt (Date) from journey date and HH:MM chart time (local).
@@ -45,58 +75,84 @@ export class JourneyTaskService {
   ) {}
 
   /**
-   * Create one task per station (and per chart one/chart two) in the route, scheduled at each chart time.
-   * If stationCodesToMonitor is provided, only creates tasks for those stations.
-   * If chart time is already past, run Browser Use immediately and mark task completed.
-   * Returns journeyRequestId and list of tasks.
+   * Validates journey monitoring request (schedule, run day, route, optional station filter).
+   * On success returns schedule + resolved route segment so callers avoid a second schedule fetch.
    */
-  async createJourneyTasks(params: {
+  async validateJourneyForMonitoring(params: {
     trainNumber: string;
-    trainName?: string;
     fromStationCode: string;
     toStationCode: string;
     journeyDate: string;
-    classCode: string;
     stationCodesToMonitor?: string[];
-    email?: string;
-    mobile?: string;
-  }): Promise<{
-    journeyRequestId: string;
-    tasks: Array<{
-      id: string;
-      stationCode: string;
-      chartAt: string;
-      status: string;
-    }>;
-  }> {
-    const journeyDate = new Date(params.journeyDate);
+  }): Promise<JourneyValidationResult> {
+    const jYmd = parseJourneyYmdForValidation(params.journeyDate);
+    if (!jYmd) {
+      return {
+        valid: false,
+        errors: [
+          {
+            code: 'INVALID_JOURNEY_DATE',
+            message: 'Journey date must be a valid YYYY-MM-DD.',
+          },
+        ],
+      };
+    }
+
     const fromCode = params.fromStationCode.trim().toUpperCase();
     const toCode = params.toStationCode.trim().toUpperCase();
     const trainNumber = params.trainNumber.trim();
-    const classCode = (params.classCode || '3A').trim().toUpperCase();
-    const now = new Date();
     const stationCodesToMonitor = params.stationCodesToMonitor?.map((c) =>
       String(c).trim().toUpperCase(),
     );
-    const email = params.email?.trim() || undefined;
-    const mobile = params.mobile?.trim() || undefined;
 
-    const scheduleResult = await this.irctc.getTrainSchedule(trainNumber);
+    const scheduleResult = await this.irctc.getTrainSchedule(trainNumber, {
+      fillRunsOnFromComposition: {
+        jDate: jYmd,
+        boardingStation: fromCode,
+      },
+    });
     if (!scheduleResult.ok) {
       if (scheduleResult.reason === 'maintenance') {
-        throw new Error(
-          'IRCTC is temporarily unavailable (maintenance or downtime). Please try again later.',
-        );
+        return {
+          valid: false,
+          errors: [
+            {
+              code: 'IRCTC_MAINTENANCE',
+              message:
+                'IRCTC is temporarily unavailable (maintenance or downtime). Please try again later.',
+            },
+          ],
+        };
       }
-      throw new Error(
-        'Train schedule not found. Please try again after the route is loaded.',
-      );
+      return {
+        valid: false,
+        errors: [
+          {
+            code: 'SCHEDULE_UNAVAILABLE',
+            message:
+              'Train schedule not found. Please try again after the route is loaded.',
+          },
+        ],
+      };
     }
+
     const schedule = scheduleResult.schedule;
     if (!schedule.stationList?.length) {
-      throw new Error(
-        'Train schedule not found. Please try again after the route is loaded.',
-      );
+      return {
+        valid: false,
+        errors: [
+          {
+            code: 'SCHEDULE_UNAVAILABLE',
+            message:
+              'Train schedule not found. Please try again after the route is loaded.',
+          },
+        ],
+      };
+    }
+
+    const runDayErr = getTrainDoesNotRunOnDateError(jYmd, schedule.trainRunsOn);
+    if (runDayErr) {
+      return { valid: false, errors: [runDayErr] };
     }
 
     const list = schedule.stationList as Array<{
@@ -109,16 +165,129 @@ export class JourneyTaskService {
     const fromIdx = codes.findIndex((c) => c === fromCode);
     const toIdx = codes.findIndex((c) => c === toCode);
     if (fromIdx < 0 || toIdx < 0 || fromIdx >= toIdx) {
-      throw new Error(
-        'From/to stations not found on this train route or invalid order.',
-      );
+      return {
+        valid: false,
+        errors: [
+          {
+            code: 'ROUTE_INVALID',
+            message:
+              'From/to stations not found on this train route or invalid order.',
+          },
+        ],
+      };
     }
 
     const stationCodesInRoute = codes.slice(fromIdx, toIdx + 1);
+
+    if (stationCodesToMonitor != null && stationCodesToMonitor.length > 0) {
+      const missing = stationCodesToMonitor.filter(
+        (c) => !stationCodesInRoute.includes(c),
+      );
+      if (missing.length > 0) {
+        return {
+          valid: false,
+          errors: [
+            {
+              code: 'STATION_NOT_ON_ROUTE',
+              message: `These stations are not on the route segment: ${missing.join(', ')}.`,
+            },
+          ],
+        };
+      }
+    }
+
     const stationsToProcess =
       stationCodesToMonitor != null && stationCodesToMonitor.length > 0
         ? stationCodesInRoute.filter((c) => stationCodesToMonitor.includes(c))
         : stationCodesInRoute;
+
+    if (stationsToProcess.length === 0) {
+      return {
+        valid: false,
+        errors: [
+          {
+            code: 'NO_STATIONS_TO_MONITOR',
+            message:
+              'No stations to monitor on this route for the selection. Check from/to and optional station list.',
+          },
+        ],
+      };
+    }
+
+    return {
+      valid: true,
+      context: {
+        schedule,
+        fromCode,
+        toCode,
+        trainNumber,
+        stationsToProcess,
+        jYmd,
+      },
+    };
+  }
+
+  private throwIfInvalidJourney(v: JourneyValidationResult): asserts v is {
+    valid: true;
+    context: JourneyValidContext;
+  } {
+    if (v.valid) return;
+    const e = v.errors[0];
+    if (e.code === 'TRAIN_DOES_NOT_RUN_ON_DATE') {
+      throw new BadRequestException({
+        statusCode: HttpStatus.BAD_REQUEST,
+        error: e.code,
+        message: e.message,
+        runningDayNames: e.runningDayNames ?? [],
+        nextRunDate: e.nextRunDate ?? null,
+        nextRunDayAndDate: e.nextRunDayAndDate ?? null,
+        requestedJourneyDate: e.requestedJourneyDate,
+      });
+    }
+    throw new Error(e.message);
+  }
+
+  /**
+   * Create one task per station (and per chart one/chart two) in the route, scheduled at each chart time.
+   * If stationCodesToMonitor is provided, only creates tasks for those stations.
+   * If chart time is already past, run Browser Use immediately and mark task completed.
+   * Returns journeyRequestId and list of tasks.
+   */
+  async createJourneyTasks(
+    params: {
+      trainNumber: string;
+      trainName?: string;
+      fromStationCode: string;
+      toStationCode: string;
+      journeyDate: string;
+      classCode: string;
+      stationCodesToMonitor?: string[];
+      email?: string;
+      mobile?: string;
+    },
+    /** When set (e.g. after POST journey/validate), skips a duplicate schedule fetch. */
+    opts?: { validatedContext?: JourneyValidContext },
+  ): Promise<{
+    journeyRequestId: string;
+    tasks: Array<{
+      id: string;
+      stationCode: string;
+      chartAt: string;
+      status: string;
+    }>;
+  }> {
+    const validation: JourneyValidationResult = opts?.validatedContext
+      ? { valid: true, context: opts.validatedContext }
+      : await this.validateJourneyForMonitoring(params);
+    this.throwIfInvalidJourney(validation);
+    const { schedule, fromCode, toCode, trainNumber, stationsToProcess } =
+      validation.context;
+
+    const journeyDate = new Date(params.journeyDate.trim());
+    const classCode = (params.classCode || '3A').trim().toUpperCase();
+    const now = new Date();
+    const email = params.email?.trim() || undefined;
+    const mobile = params.mobile?.trim() || undefined;
 
     type ChartEntry = {
       chartOne: string;

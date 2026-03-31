@@ -8,6 +8,11 @@ import {
   ServiceUnavailableException,
 } from '@nestjs/common';
 import type { Response } from 'express';
+import { IrctcService } from '../irctc/irctc.service';
+import {
+  getTrainDoesNotRunOnDateError,
+  parseJourneyYmdForValidation,
+} from '../common/train-run-day.validation';
 import { Service2Service } from './service2.service';
 
 function normalizeCheckBody(body: Record<string, unknown>) {
@@ -33,7 +38,10 @@ function normalizeCheckBody(body: Record<string, unknown>) {
 export class Service2Controller {
   private readonly logger = new Logger(Service2Controller.name);
 
-  constructor(private service2: Service2Service) {}
+  constructor(
+    private service2: Service2Service,
+    private irctc: IrctcService,
+  ) {}
 
   @Post('check/stream')
   async checkStream(
@@ -83,6 +91,77 @@ export class Service2Controller {
         trainNumber: normalized.trainNumber,
         stationCode: normalized.stationCode,
       });
+
+      const jYmd = parseJourneyYmdForValidation(normalized.journeyDate);
+      if (!jYmd) {
+        this.logger.warn(
+          `[service2/check/stream] step=validation_failed invalid_journey_date`,
+        );
+        writeSse('error', {
+          code: 'INVALID_JOURNEY_DATE',
+          message: 'Journey date must be a valid YYYY-MM-DD.',
+        });
+        res.end();
+        return;
+      }
+
+      const scheduleResult = await this.irctc.getTrainSchedule(
+        normalized.trainNumber,
+        {
+          fillRunsOnFromComposition: {
+            jDate: jYmd,
+            boardingStation: normalized.stationCode,
+          },
+        },
+      );
+      if (!scheduleResult.ok) {
+        if (scheduleResult.reason === 'maintenance') {
+          this.logger.warn(
+            `[service2/check/stream] step=validation_failed irctc_maintenance`,
+          );
+          writeSse('error', {
+            code: 'IRCTC_MAINTENANCE',
+            message:
+              'IRCTC is temporarily unavailable (maintenance or downtime). Please try again later.',
+          });
+        } else {
+          this.logger.warn(
+            `[service2/check/stream] step=validation_failed schedule_unavailable`,
+          );
+          writeSse('error', {
+            code: 'SCHEDULE_UNAVAILABLE',
+            message:
+              'Train schedule not found. Please try again after the route is loaded.',
+          });
+        }
+        res.end();
+        return;
+      }
+
+      const schedule = scheduleResult.schedule;
+      if (!schedule.stationList?.length) {
+        this.logger.warn(
+          `[service2/check/stream] step=validation_failed empty_station_list`,
+        );
+        writeSse('error', {
+          code: 'SCHEDULE_UNAVAILABLE',
+          message:
+            'Train schedule not found. Please try again after the route is loaded.',
+        });
+        res.end();
+        return;
+      }
+
+      const runDayErr = getTrainDoesNotRunOnDateError(jYmd, schedule.trainRunsOn);
+      if (runDayErr) {
+        this.logger.warn(
+          `[service2/check/stream] step=validation_failed train_does_not_run_on_date code=${runDayErr.code}`,
+        );
+        writeSse('error', runDayErr);
+        res.end();
+        return;
+      }
+
       const result = await this.service2.check(
         {
           trainNumber: normalized.trainNumber,

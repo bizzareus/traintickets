@@ -133,6 +133,8 @@ model TrainScheduleCache {
   stationFrom  String   @map("station_from")
   stationTo    String   @map("station_to")
   stationList  Json     @map("station_list") // array of { stationCode, stationName, ... }
+  /// IRCTC schedule: trainRunsOnMon..Sun as "Y"|"N" (JSON object)
+  trainRunsOn  Json?    @map("train_runs_on")
   fetchedAt    DateTime @default(now()) @map("fetched_at")
 
   @@index([trainNumber])

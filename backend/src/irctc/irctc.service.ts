@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import axios, { type AxiosError } from 'axios';
 import axiosRetry from 'axios-retry';
+import type { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 
 const scheduleClient = axios.create();
@@ -59,12 +60,55 @@ export type ScheduleStation = {
   [k: string]: unknown;
 };
 
+/** IRCTC `trnscheduleenquiry` weekday flags (Y/N). */
+export type TrainRunsOnJson = Partial<
+  Record<
+    | 'trainRunsOnMon'
+    | 'trainRunsOnTue'
+    | 'trainRunsOnWed'
+    | 'trainRunsOnThu'
+    | 'trainRunsOnFri'
+    | 'trainRunsOnSat'
+    | 'trainRunsOnSun',
+    string
+  >
+>;
+
+const TRAIN_RUNS_ON_KEYS = [
+  'trainRunsOnMon',
+  'trainRunsOnTue',
+  'trainRunsOnWed',
+  'trainRunsOnThu',
+  'trainRunsOnFri',
+  'trainRunsOnSat',
+  'trainRunsOnSun',
+] as const satisfies readonly (keyof TrainRunsOnJson)[];
+
+function extractTrainRunsOnFromIrctc(
+  raw: Record<string, unknown>,
+): TrainRunsOnJson | undefined {
+  const out: TrainRunsOnJson = {};
+  for (const k of TRAIN_RUNS_ON_KEYS) {
+    const v = raw[k];
+    if (v === 'Y' || v === 'N') {
+      out[k] = v;
+      continue;
+    }
+    if (typeof v === 'string') {
+      const t = v.trim().toUpperCase();
+      if (t === 'Y' || t === 'N') out[k] = t;
+    }
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
+}
+
 export type TrainScheduleResponse = {
   trainNumber: string;
   trainName: string;
   stationFrom: string;
   stationTo: string;
   stationList: ScheduleStation[];
+  trainRunsOn?: TrainRunsOnJson;
 };
 
 /** IRCTC schedule API returned `errorMessage` (maintenance / downtime). */
@@ -80,6 +124,15 @@ export type GetTrainScheduleResult =
   | { ok: true; schedule: TrainScheduleResponse }
   | { ok: false; reason: 'unavailable' }
   | { ok: false; reason: 'maintenance'; message: string };
+
+export type GetTrainScheduleOptions = {
+  forceRefresh?: boolean;
+  /** When `TrainScheduleCache` has no weekday flags, call trainComposition and persist `train_runs_on`. */
+  fillRunsOnFromComposition?: {
+    jDate: string;
+    boardingStation: string;
+  };
+};
 
 export type TrainCompositionCddItem = {
   coachName: string;
@@ -119,6 +172,7 @@ export class IrctcService {
 
   async getTrainSchedule(
     trainNumber: string,
+    opts?: GetTrainScheduleOptions,
   ): Promise<GetTrainScheduleResult> {
     const num = String(trainNumber).trim();
     if (!num) return { ok: false, reason: 'unavailable' };
@@ -126,17 +180,25 @@ export class IrctcService {
     const cached = await this.prisma.trainScheduleCache.findUnique({
       where: { trainNumber: num },
     });
-    if (cached) {
-      return {
-        ok: true,
-        schedule: {
-          trainNumber: cached.trainNumber,
-          trainName: cached.trainName,
-          stationFrom: cached.stationFrom,
-          stationTo: cached.stationTo,
-          stationList: (cached.stationList as ScheduleStation[]) ?? [],
-        },
+    if (cached && !opts?.forceRefresh) {
+      const trainRunsOn =
+        cached.trainRunsOn != null &&
+        typeof cached.trainRunsOn === 'object' &&
+        !Array.isArray(cached.trainRunsOn)
+          ? (cached.trainRunsOn as TrainRunsOnJson)
+          : undefined;
+      let schedule: TrainScheduleResponse = {
+        trainNumber: cached.trainNumber,
+        trainName: cached.trainName,
+        stationFrom: cached.stationFrom,
+        stationTo: cached.stationTo,
+        stationList: (cached.stationList as ScheduleStation[]) ?? [],
+        ...(trainRunsOn && Object.keys(trainRunsOn).length > 0
+          ? { trainRunsOn }
+          : {}),
       };
+      schedule = await this.maybeFillScheduleTrainRunsOn(num, schedule, opts);
+      return { ok: true, schedule };
     }
 
     try {
@@ -144,6 +206,11 @@ export class IrctcService {
       if (!data?.stationList?.length) {
         return { ok: false, reason: 'unavailable' };
       }
+
+      const runsPayload: Prisma.InputJsonValue | undefined =
+        data.trainRunsOn && Object.keys(data.trainRunsOn).length > 0
+          ? (data.trainRunsOn as Prisma.InputJsonValue)
+          : undefined;
 
       await this.prisma.trainScheduleCache.upsert({
         where: { trainNumber: num },
@@ -153,6 +220,7 @@ export class IrctcService {
           stationFrom: data.stationFrom,
           stationTo: data.stationTo,
           stationList: data.stationList as object,
+          ...(runsPayload != null ? { trainRunsOn: runsPayload } : {}),
         },
         update: {
           trainName: data.trainName,
@@ -160,10 +228,12 @@ export class IrctcService {
           stationTo: data.stationTo,
           stationList: data.stationList as object,
           fetchedAt: new Date(),
+          ...(runsPayload != null ? { trainRunsOn: runsPayload } : {}),
         },
       });
 
-      return { ok: true, schedule: data };
+      let schedule = await this.maybeFillScheduleTrainRunsOn(num, data, opts);
+      return { ok: true, schedule };
     } catch (err) {
       if (err instanceof IrctcScheduleMaintenanceError) {
         return {
@@ -210,11 +280,20 @@ export class IrctcService {
         throw new IrctcScheduleMaintenanceError(em.trim());
       }
     }
-    const data = parsed as TrainScheduleResponse;
-    if (!data || !Array.isArray(data.stationList)) {
+    const raw = parsed as Record<string, unknown>;
+    if (!raw || !Array.isArray(raw.stationList)) {
       throw new Error('Schedule for this train is not available.');
     }
-    return data;
+    const trainRunsOn = extractTrainRunsOnFromIrctc(raw);
+    const schedule: TrainScheduleResponse = {
+      trainNumber: String(raw.trainNumber ?? ''),
+      trainName: String(raw.trainName ?? ''),
+      stationFrom: String(raw.stationFrom ?? ''),
+      stationTo: String(raw.stationTo ?? ''),
+      stationList: raw.stationList as ScheduleStation[],
+      ...(trainRunsOn ? { trainRunsOn } : {}),
+    };
+    return schedule;
   }
 
   async getTrainList(): Promise<TrainOption[]> {
@@ -300,11 +379,70 @@ export class IrctcService {
     }
   }
 
-  async getTrainComposition(payload: {
+  private scheduleTrainRunsOnEmpty(schedule: TrainScheduleResponse): boolean {
+    const r = schedule.trainRunsOn;
+    return !r || Object.keys(r).length === 0;
+  }
+
+  private async maybeFillScheduleTrainRunsOn(
+    trainNumber: string,
+    schedule: TrainScheduleResponse,
+    opts?: GetTrainScheduleOptions,
+  ): Promise<TrainScheduleResponse> {
+    if (
+      !this.scheduleTrainRunsOnEmpty(schedule) ||
+      !opts?.fillRunsOnFromComposition
+    ) {
+      return schedule;
+    }
+    const runs = await this.tryHydrateTrainRunsOnFromComposition(
+      trainNumber,
+      opts.fillRunsOnFromComposition,
+    );
+    if (!runs) return schedule;
+    return { ...schedule, trainRunsOn: runs };
+  }
+
+  /** Weekday flags on trainComposition JSON (root or nested DTO), same keys as schedule API. */
+  private extractTrainRunsOnFromCompositionBody(
+    raw: Record<string, unknown>,
+  ): TrainRunsOnJson | undefined {
+    let runs = extractTrainRunsOnFromIrctc(raw);
+    if (runs && Object.keys(runs).length > 0) return runs;
+    const dto = raw.chartStatusResponseDto;
+    if (dto && typeof dto === 'object' && !Array.isArray(dto)) {
+      runs = extractTrainRunsOnFromIrctc(dto as Record<string, unknown>);
+      if (runs && Object.keys(runs).length > 0) return runs;
+    }
+    return undefined;
+  }
+
+  private async persistTrainRunsOnToScheduleCache(
+    trainNumber: string,
+    runs: TrainRunsOnJson,
+  ): Promise<void> {
+    const num = String(trainNumber).trim();
+    const existing = await this.prisma.trainScheduleCache.findUnique({
+      where: { trainNumber: num },
+    });
+    if (!existing) return;
+    await this.prisma.trainScheduleCache.update({
+      where: { trainNumber: num },
+      data: {
+        trainRunsOn: runs as Prisma.InputJsonValue,
+        fetchedAt: new Date(),
+      },
+    });
+  }
+
+  /**
+   * POST trainComposition; returns parsed JSON after basic shape checks (same as getTrainComposition).
+   */
+  private async postTrainComposition(payload: {
     trainNo: string;
     jDate: string;
     boardingStation: string;
-  }): Promise<TrainCompositionResponse> {
+  }): Promise<Record<string, unknown>> {
     const body = {
       trainNo: String(payload.trainNo).trim(),
       jDate: String(payload.jDate).trim().slice(0, 10),
@@ -342,9 +480,9 @@ export class IrctcService {
         'Train composition is temporarily unavailable. Please try again later.',
       );
     }
-    let data: TrainCompositionResponse;
+    let data: Record<string, unknown>;
     try {
-      data = JSON.parse(text) as TrainCompositionResponse;
+      data = JSON.parse(text) as Record<string, unknown>;
     } catch {
       throw new Error(
         'Train composition is temporarily unavailable. Please try again later.',
@@ -358,6 +496,41 @@ export class IrctcService {
         'Train composition is temporarily unavailable. Please try again later.',
       );
     }
+    return data;
+  }
+
+  private async tryHydrateTrainRunsOnFromComposition(
+    trainNumber: string,
+    ctx: { jDate: string; boardingStation: string },
+  ): Promise<TrainRunsOnJson | null> {
+    try {
+      const raw = await this.postTrainComposition({
+        trainNo: trainNumber,
+        jDate: ctx.jDate,
+        boardingStation: ctx.boardingStation,
+      });
+      const typed = raw as unknown as TrainCompositionResponse;
+      try {
+        await this.persistChartTimesFromComposition(typed);
+      } catch {
+        // best-effort chart times
+      }
+      const runs = this.extractTrainRunsOnFromCompositionBody(raw);
+      if (!runs || Object.keys(runs).length === 0) return null;
+      await this.persistTrainRunsOnToScheduleCache(trainNumber, runs);
+      return runs;
+    } catch {
+      return null;
+    }
+  }
+
+  async getTrainComposition(payload: {
+    trainNo: string;
+    jDate: string;
+    boardingStation: string;
+  }): Promise<TrainCompositionResponse> {
+    const raw = await this.postTrainComposition(payload);
+    const data = raw as unknown as TrainCompositionResponse;
     try {
       await this.persistChartTimesFromComposition(data);
     } catch {

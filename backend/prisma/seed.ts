@@ -97,6 +97,15 @@ async function main() {
     trainName: 'SWRAN J RAJDHANI',
     stationFrom: 'NDLS',
     stationTo: 'SBIB',
+    trainRunsOn: {
+      trainRunsOnMon: 'Y',
+      trainRunsOnTue: 'Y',
+      trainRunsOnWed: 'Y',
+      trainRunsOnThu: 'Y',
+      trainRunsOnFri: 'Y',
+      trainRunsOnSat: 'Y',
+      trainRunsOnSun: 'Y',
+    },
     stationList: [
       {
         stationCode: 'NDLS',
@@ -227,6 +236,7 @@ async function main() {
       stationFrom: schedule12958.stationFrom,
       stationTo: schedule12958.stationTo,
       stationList: schedule12958.stationList,
+      trainRunsOn: schedule12958.trainRunsOn,
     },
     create: schedule12958,
   });

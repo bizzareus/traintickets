@@ -14,6 +14,7 @@ import { AvailabilityModule } from './availability/availability.module';
 import { IrctcModule } from './irctc/irctc.module';
 import { ChartTimeModule } from './chart-time/chart-time.module';
 import { Service2Module } from './service2/service2.module';
+import { ChartTimeIngestionModule } from './chart-time-ingestion/chart-time-ingestion.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { Service2Module } from './service2/service2.module';
     IrctcModule,
     ChartTimeModule,
     Service2Module,
+    ChartTimeIngestionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
