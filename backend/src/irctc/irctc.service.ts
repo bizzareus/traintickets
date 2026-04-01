@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import axios, { type AxiosError } from 'axios';
+import { Injectable, Logger } from '@nestjs/common';
+import axios, { type AxiosError, isAxiosError } from 'axios';
 import axiosRetry from 'axios-retry';
 import type { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
@@ -19,6 +19,19 @@ const IRCTC_VACANT_BERTH_URL =
   'https://www.irctc.co.in/online-charts/api/vacantBerth';
 const IRCTC_TRAIN_COMPOSITION_URL =
   'https://www.irctc.co.in/online-charts/api/trainComposition';
+
+/**
+ * TrainScheduleCache row fields used here (`train_runs_on` in DB).
+ * Keeps typings aligned with prisma/schema.prisma if the TS server picks up an older generated client.
+ */
+type TrainScheduleCacheScheduleRow = {
+  trainNumber: string;
+  trainName: string;
+  stationFrom: string;
+  stationTo: string;
+  stationList: Prisma.JsonValue;
+  trainRunsOn: Prisma.JsonValue | null;
+};
 
 /** Parse "YYYY-MM-DD HH:MM" or "YYYY-MM-DD HH:MM:SS" to { date, time } (time as HH:MM). */
 function parseChartDateTime(
@@ -168,6 +181,8 @@ export type TrainCompositionResponse = {
 
 @Injectable()
 export class IrctcService {
+  private readonly logger = new Logger(IrctcService.name);
+
   constructor(private prisma: PrismaService) {}
 
   async getTrainSchedule(
@@ -177,9 +192,9 @@ export class IrctcService {
     const num = String(trainNumber).trim();
     if (!num) return { ok: false, reason: 'unavailable' };
 
-    const cached = await this.prisma.trainScheduleCache.findUnique({
+    const cached = (await this.prisma.trainScheduleCache.findUnique({
       where: { trainNumber: num },
-    });
+    })) as TrainScheduleCacheScheduleRow | null;
     if (cached && !opts?.forceRefresh) {
       const trainRunsOn =
         cached.trainRunsOn != null &&
@@ -197,9 +212,16 @@ export class IrctcService {
           ? { trainRunsOn }
           : {}),
       };
+      this.logger.log(
+        `[irctc/schedule] cache_hit train=${num} stations=${schedule.stationList.length}`,
+      );
       schedule = await this.maybeFillScheduleTrainRunsOn(num, schedule, opts);
       return { ok: true, schedule };
     }
+
+    this.logger.log(
+      `[irctc/schedule] cache_miss train=${num} forceRefresh=${Boolean(opts?.forceRefresh)}`,
+    );
 
     try {
       const data = await this.fetchScheduleFromIrctc(num);
@@ -221,7 +243,7 @@ export class IrctcService {
           stationTo: data.stationTo,
           stationList: data.stationList as object,
           ...(runsPayload != null ? { trainRunsOn: runsPayload } : {}),
-        },
+        } as Prisma.TrainScheduleCacheCreateInput,
         update: {
           trainName: data.trainName,
           stationFrom: data.stationFrom,
@@ -229,19 +251,28 @@ export class IrctcService {
           stationList: data.stationList as object,
           fetchedAt: new Date(),
           ...(runsPayload != null ? { trainRunsOn: runsPayload } : {}),
-        },
+        } as Prisma.TrainScheduleCacheUpdateInput,
       });
 
-      let schedule = await this.maybeFillScheduleTrainRunsOn(num, data, opts);
+      const schedule = await this.maybeFillScheduleTrainRunsOn(num, data, opts);
+      this.logger.log(
+        `[irctc/schedule] ok train=${num} stations=${schedule.stationList.length}`,
+      );
       return { ok: true, schedule };
     } catch (err) {
       if (err instanceof IrctcScheduleMaintenanceError) {
+        this.logger.warn(
+          `[irctc/schedule] maintenance train=${num} message=${err.irctcMessage}`,
+        );
         return {
           ok: false,
           reason: 'maintenance',
           message: err.irctcMessage,
         };
       }
+      this.logger.warn(
+        `[irctc/schedule] failed train=${num} ${err instanceof Error ? err.message : String(err)}`,
+      );
       return { ok: false, reason: 'unavailable' };
     }
   }
@@ -259,19 +290,53 @@ export class IrctcService {
       headers['Cookie'] = cookies.trim();
     }
 
-    const res = await scheduleClient.get<string>(url, {
-      headers,
-      responseType: 'text',
-    });
+    const hasCookies = Boolean(cookies?.trim());
+    const t0 = Date.now();
+    this.logger.log(
+      `[irctc/schedule] irctc_request_start train=${trainNumber} cookies=${hasCookies}`,
+    );
 
+    let res: { status: number; data: string };
+    try {
+      res = await scheduleClient.get<string>(url, {
+        headers,
+        responseType: 'text',
+      });
+    } catch (err) {
+      const ms = Date.now() - t0;
+      if (isAxiosError(err)) {
+        this.logger.warn(
+          `[irctc/schedule] irctc_http_error train=${trainNumber} ms=${ms} code=${err.code ?? 'n/a'} status=${err.response?.status ?? 'n/a'} message=${err.message}`,
+        );
+      } else {
+        this.logger.warn(
+          `[irctc/schedule] irctc_http_error train=${trainNumber} ms=${ms} ${err instanceof Error ? err.message : String(err)}`,
+        );
+      }
+      throw err;
+    }
+
+    const msHttp = Date.now() - t0;
     const text = res.data;
+    const bytes = typeof text === 'string' ? text.length : 0;
+    this.logger.log(
+      `[irctc/schedule] irctc_http_ok train=${trainNumber} ms=${msHttp} status=${res.status} bytes=${bytes}`,
+    );
+
     if (!text?.trim()) {
+      this.logger.warn(
+        `[irctc/schedule] empty_body train=${trainNumber} ms=${msHttp}`,
+      );
       throw new Error('Schedule for this train is not available.');
     }
     let parsed: unknown;
     try {
       parsed = JSON.parse(text);
     } catch {
+      const preview = text.slice(0, 160).replace(/\s+/g, ' ');
+      this.logger.warn(
+        `[irctc/schedule] json_parse_error train=${trainNumber} preview=${preview}`,
+      );
       throw new Error('Schedule for this train is not available.');
     }
     if (parsed && typeof parsed === 'object') {
@@ -282,6 +347,9 @@ export class IrctcService {
     }
     const raw = parsed as Record<string, unknown>;
     if (!raw || !Array.isArray(raw.stationList)) {
+      this.logger.warn(
+        `[irctc/schedule] bad_shape train=${trainNumber} hasStationList=${Array.isArray((raw as { stationList?: unknown })?.stationList)}`,
+      );
       throw new Error('Schedule for this train is not available.');
     }
     const trainRunsOn = extractTrainRunsOnFromIrctc(raw);
@@ -345,6 +413,11 @@ export class IrctcService {
     const cookies = process.env.IRCTC_COOKIES;
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
+    const t0 = Date.now();
+    this.logger.log(
+      `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} cookies=${Boolean(cookies?.trim())}`,
+    );
+
     let res: Response;
     try {
       res = await fetch(IRCTC_VACANT_BERTH_URL, {
@@ -353,6 +426,7 @@ export class IrctcService {
         body: JSON.stringify(body),
       });
     } catch (err) {
+      const ms = Date.now() - t0;
       const cause: string =
         err instanceof Error
           ? err.cause != null
@@ -363,11 +437,21 @@ export class IrctcService {
                 : 'Unknown error'
             : err.message
           : String(err);
+      this.logger.warn(
+        `[irctc/vacantBerth] network_error ms=${ms} trainNo=${payload.trainNo} ${cause}`,
+      );
       throw new Error(`IRCTC request failed (network/connection): ${cause}`);
     }
 
     const text = await res.text();
+    const ms = Date.now() - t0;
+    this.logger.log(
+      `[irctc/vacantBerth] response ms=${ms} status=${res.status} bytes=${text.length}`,
+    );
     if (!res.ok) {
+      this.logger.warn(
+        `[irctc/vacantBerth] http_error status=${res.status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
+      );
       throw new Error(`IRCTC vacantBerth failed: ${res.status} ${text}`);
     }
     try {
@@ -395,6 +479,9 @@ export class IrctcService {
     ) {
       return schedule;
     }
+    this.logger.log(
+      `[irctc/schedule] hydrate_runs_on train=${trainNumber} jDate=${opts.fillRunsOnFromComposition.jDate} station=${opts.fillRunsOnFromComposition.boardingStation}`,
+    );
     const runs = await this.tryHydrateTrainRunsOnFromComposition(
       trainNumber,
       opts.fillRunsOnFromComposition,
@@ -431,7 +518,7 @@ export class IrctcService {
       data: {
         trainRunsOn: runs as Prisma.InputJsonValue,
         fetchedAt: new Date(),
-      },
+      } as Prisma.TrainScheduleCacheUpdateInput,
     });
   }
 
@@ -469,13 +556,25 @@ export class IrctcService {
     const cookies = process.env.IRCTC_COOKIES;
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
+    const t0 = Date.now();
+    this.logger.log(
+      `[irctc/trainComposition] request_start trainNo=${body.trainNo} jDate=${body.jDate} cookies=${Boolean(cookies?.trim())}`,
+    );
+
     const res = await fetch(IRCTC_TRAIN_COMPOSITION_URL, {
       method: 'POST',
       headers,
       body: JSON.stringify(body),
     });
     const text = await res.text();
+    const ms = Date.now() - t0;
+    this.logger.log(
+      `[irctc/trainComposition] response ms=${ms} status=${res.status} bytes=${text.length}`,
+    );
     if (!res.ok) {
+      this.logger.warn(
+        `[irctc/trainComposition] http_error status=${res.status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
+      );
       throw new Error(
         'Train composition is temporarily unavailable. Please try again later.',
       );
