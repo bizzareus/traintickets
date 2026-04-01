@@ -463,7 +463,7 @@ function TicketJourneyChartStrip({
 
   return (
     <div
-      className="-mx-4 -mb-4 mt-4 flex gap-3 rounded-b-xl border-t border-amber-300 bg-amber-100 px-4 py-1 text-amber-900"
+      className="-mx-4 mt-4 flex min-h-[32px] gap-3 rounded-b-xl border-t border-amber-300 bg-amber-100 px-4 py-3 text-amber-900"
       role="status"
     >
       <div className="min-w-0 flex-1 text-left">
@@ -474,7 +474,10 @@ function TicketJourneyChartStrip({
         ) : (
           <>
             <p className="mt-0.5 text-xs leading-snug text-amber-900">
-              Final Chart will be prepared at - {finalChartTime}
+              <span className="font-semibold">
+                Final Chart will be prepared at
+              </span>{" "}
+              {finalChartTime}
               <br />
             </p>
           </>
