@@ -1,11 +1,11 @@
-import {
-  BadRequestException,
-  HttpStatus,
-  Injectable,
-} from '@nestjs/common';
+import { BadRequestException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
-import { IrctcService, type TrainScheduleResponse } from '../irctc/irctc.service';
+import {
+  IrctcService,
+  type TrainScheduleResponse,
+} from '../irctc/irctc.service';
+import { TrainCompositionService } from '../train-composition/train-composition.service';
 import { Service2Service } from '../service2/service2.service';
 import { NotificationService } from '../notification/notification.service';
 import { DateTime } from 'luxon';
@@ -70,6 +70,7 @@ export class JourneyTaskService {
     private prisma: PrismaService,
     private chartTime: ChartTimeService,
     private irctc: IrctcService,
+    private trainComposition: TrainCompositionService,
     private service2: Service2Service,
     private notificationService: NotificationService,
   ) {}
@@ -316,23 +317,14 @@ export class JourneyTaskService {
       logLabel: string,
     ) => {
       const jDateStr = dateForComposition.toISOString().slice(0, 10);
-      console.log(
-        `[createJourneyTasks] trainComposition jDate=${jDateStr} label=${logLabel} stationCount=${stationCodes.length}`,
+      await this.trainComposition.persistChartTimesFromCompositionForBoardingStations(
+        {
+          trainNumber,
+          journeyDate: jDateStr,
+          stationCodes,
+          logContext: `journey_tasks_${logLabel}`,
+        },
       );
-      for (const stCode of stationCodes) {
-        try {
-          await this.irctc.getTrainComposition({
-            trainNo: trainNumber,
-            jDate: jDateStr,
-            boardingStation: stCode,
-          });
-        } catch (err) {
-          console.warn(
-            `Chart time fetch failed for ${trainNumber} @ ${stCode} (${jDateStr}):`,
-            err instanceof Error ? err.message : err,
-          );
-        }
-      }
       await refreshChartTimesMap();
       const covered = stationsToProcess.filter((s) =>
         chartTimesWithSecond.get(s),

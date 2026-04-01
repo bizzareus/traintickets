@@ -1,0 +1,22 @@
+---
+description: Style the Next/React UI with Tailwind CSS only—utilities and config—no exceptions for new layout or component styling.
+alwaysApply: true
+---
+
+# Tailwind CSS only for UI styling
+
+For **all new and edited UI** in this repo (pages, layouts, components under `app/`, shared React components):
+
+- **Use Tailwind CSS** via `className` and utilities from `tailwind.config.ts` (including arbitrary values like `w-[123px]`, `bg-[#fff]`, `min-h-[50vh]` when you need literals).
+- **Do not** introduce or expand **inline `style={{ ... }}`** for ordinary layout, spacing, typography, colors, flex/grid, borders, or shadows—express these with Tailwind classes first.
+- **Do not** add **CSS Modules**, **styled-components**, **Emotion**, or other CSS-in-JS styling stacks for component styling.
+- **Do not** rely on **new global CSS rules** in `globals.css` (or similar) for what Tailwind utilities can express; keep globals for true baselines only (e.g. resets, font faces) unless the user explicitly asks otherwise.
+
+Use the project’s existing patterns (e.g. `cn` / `clsx` + `tailwind-merge` if present) to compose classes.
+
+## Narrow exceptions
+
+- APIs that **only** accept style objects or non-Tailwind styling (e.g. some chart/canvas options, `next/og` `ImageResponse` layouts)—use the minimum required there; still use Tailwind everywhere else in the same feature.
+- **Third-party** components that inject their own styles: wrap and align with Tailwind on your elements; don’t replace them with a parallel styling system.
+
+**Default:** if you are about to style something, **Tailwind only**—no substitutes.

@@ -9,28 +9,45 @@ import {
 } from '@nestjs/common';
 import type { Response } from 'express';
 import { IrctcService } from '../irctc/irctc.service';
+import { captureSentryException } from '../common/sentry-report';
 import {
   getTrainDoesNotRunOnDateError,
   parseJourneyYmdForValidation,
 } from '../common/train-run-day.validation';
 import { Service2Service } from './service2.service';
 
+/** Avoids String(object) → '[object Object]' for request body fields. */
+function unknownToTrimmedString(value: unknown, fallback = ''): string {
+  if (value == null) return fallback;
+  if (typeof value === 'string') return value.trim();
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return String(value).trim();
+  }
+  return fallback;
+}
+
+function unknownToOptionalTrimmedString(value: unknown): string | undefined {
+  if (value == null) return undefined;
+  if (typeof value === 'string') return value.trim();
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return String(value).trim();
+  }
+  return undefined;
+}
+
 function normalizeCheckBody(body: Record<string, unknown>) {
+  const destinationRaw = unknownToOptionalTrimmedString(
+    body.destinationStation,
+  );
   return {
-    trainNumber: String(body.trainNumber ?? '').trim(),
-    stationCode: String(body.stationCode ?? '')
-      .trim()
-      .toUpperCase(),
-    journeyDate: String(body.journeyDate ?? '').trim(),
-    classCode: String(body.classCode ?? '3A')
-      .trim()
-      .toUpperCase(),
-    destinationStation: body.destinationStation
-      ? String(body.destinationStation).trim().toUpperCase()
+    trainNumber: unknownToTrimmedString(body.trainNumber),
+    stationCode: unknownToTrimmedString(body.stationCode).toUpperCase(),
+    journeyDate: unknownToTrimmedString(body.journeyDate),
+    classCode: unknownToTrimmedString(body.classCode, '3A').toUpperCase(),
+    destinationStation: destinationRaw
+      ? destinationRaw.toUpperCase()
       : undefined,
-    passengerDetails: body.passengerDetails
-      ? String(body.passengerDetails).trim()
-      : undefined,
+    passengerDetails: unknownToOptionalTrimmedString(body.passengerDetails),
   };
 }
 
@@ -152,7 +169,10 @@ export class Service2Controller {
         return;
       }
 
-      const runDayErr = getTrainDoesNotRunOnDateError(jYmd, schedule.trainRunsOn);
+      const runDayErr = getTrainDoesNotRunOnDateError(
+        jYmd,
+        schedule.trainRunsOn,
+      );
       if (runDayErr) {
         this.logger.warn(
           `[service2/check/stream] step=validation_failed train_does_not_run_on_date code=${runDayErr.code}`,
@@ -203,6 +223,9 @@ export class Service2Controller {
         `[service2/check/stream] step=error ${message}`,
         err instanceof Error ? err.stack : undefined,
       );
+      captureSentryException(err, {
+        tags: { route: 'POST /api/service2/check/stream' },
+      });
       writeSse('error', { message });
       res.end();
     }

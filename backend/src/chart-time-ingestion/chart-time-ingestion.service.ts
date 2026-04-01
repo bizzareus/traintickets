@@ -7,8 +7,14 @@ import {
 import { DateTime } from 'luxon';
 import { PrismaService } from '../prisma/prisma.service';
 import { IrctcService } from '../irctc/irctc.service';
+import { TrainCompositionService } from '../train-composition/train-composition.service';
 
-const CHART_TASK_STATUSES = ['pending', 'running', 'completed', 'failed'] as const;
+const CHART_TASK_STATUSES = [
+  'pending',
+  'running',
+  'completed',
+  'failed',
+] as const;
 
 type StationIngestionStatus = 'saved' | 'failed' | 'skipped';
 
@@ -60,7 +66,9 @@ export function splitRawEntriesFromIngestionText(text: string): string[] {
  * Parse a single entry into an IRCTC train number (digits only).
  * Accepts `22637`, `22637 - WEST COAST EXP`, optional surrounding quotes / trailing comma.
  */
-export function extractTrainNumberFromIngestionChunk(chunk: string): string | null {
+export function extractTrainNumberFromIngestionChunk(
+  chunk: string,
+): string | null {
   let s = String(chunk ?? '').trim();
   if (!s) return null;
   if (s.endsWith(',')) s = s.slice(0, -1).trim();
@@ -80,6 +88,7 @@ export class ChartTimeIngestionService {
 
   constructor(
     private readonly irctc: IrctcService,
+    private readonly trainComposition: TrainCompositionService,
     private readonly prisma: PrismaService,
   ) {}
 
@@ -113,7 +122,9 @@ export class ChartTimeIngestionService {
   }): string[] {
     let rawChunks: string[] = [];
     if (Array.isArray(body.trainNumbers)) {
-      rawChunks = body.trainNumbers.map((x) => String(x).trim()).filter(Boolean);
+      rawChunks = body.trainNumbers
+        .map((x) => String(x).trim())
+        .filter(Boolean);
     } else if (typeof body.trainNumbersText === 'string') {
       rawChunks = splitRawEntriesFromIngestionText(body.trainNumbersText);
     } else {
@@ -129,7 +140,9 @@ export class ChartTimeIngestionService {
   async runIngestion(params: RunIngestionParams) {
     const startedAt = Date.now();
     const trainNumber = String(params.trainNumber ?? '').trim();
-    const journeyDate = String(params.journeyDate ?? '').trim().slice(0, 10);
+    const journeyDate = String(params.journeyDate ?? '')
+      .trim()
+      .slice(0, 10);
 
     const scheduleResult = await this.irctc.getTrainSchedule(trainNumber, {
       forceRefresh: true,
@@ -167,7 +180,7 @@ export class ChartTimeIngestionService {
       }
 
       try {
-        await this.irctc.getTrainComposition({
+        await this.trainComposition.fetchForBoarding({
           trainNo: trainNumber,
           jDate: journeyDate,
           boardingStation: stationCode,
@@ -227,19 +240,21 @@ export class ChartTimeIngestionService {
     trainNumbers: string[];
     journeyDate: string;
   }) {
-    const journeyDate = String(params.journeyDate ?? '').trim().slice(0, 10);
+    const journeyDate = String(params.journeyDate ?? '')
+      .trim()
+      .slice(0, 10);
     const unique = [
       ...new Set(
-        params.trainNumbers
-          .map((t) => String(t ?? '').trim())
-          .filter(Boolean),
+        params.trainNumbers.map((t) => String(t ?? '').trim()).filter(Boolean),
       ),
     ];
     if (!journeyDate) {
       throw new ServiceUnavailableException('journeyDate is required.');
     }
     if (unique.length === 0) {
-      throw new ServiceUnavailableException('At least one train number is required.');
+      throw new ServiceUnavailableException(
+        'At least one train number is required.',
+      );
     }
     if (unique.length > CHART_TIME_INGESTION_MAX_TRAINS_PER_BATCH) {
       throw new ServiceUnavailableException(
@@ -471,8 +486,9 @@ export class ChartTimeIngestionService {
     }
 
     const datesToTry = [params.today, params.tomorrow] as const;
-    let lastRun: Awaited<ReturnType<ChartTimeIngestionService['runIngestion']>> | null =
-      null;
+    let lastRun: Awaited<
+      ReturnType<ChartTimeIngestionService['runIngestion']>
+    > | null = null;
     let journeyDateUsed: string | null = null;
     let triedTomorrow = false;
 
@@ -529,9 +545,14 @@ export class ChartTimeIngestionService {
   }
 
   /** Chart-time availability tasks (admin list). */
-  async listChartTimeAvailabilityTasks(opts: { limit?: number; status?: string }) {
+  async listChartTimeAvailabilityTasks(opts: {
+    limit?: number;
+    status?: string;
+  }) {
     const take = Math.min(Math.max(Number(opts.limit) || 300, 1), 500);
-    const raw = String(opts.status ?? '').trim().toLowerCase();
+    const raw = String(opts.status ?? '')
+      .trim()
+      .toLowerCase();
     const statusFilter = CHART_TASK_STATUSES.includes(
       raw as (typeof CHART_TASK_STATUSES)[number],
     )

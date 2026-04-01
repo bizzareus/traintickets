@@ -1,0 +1,32 @@
+---
+description: Use the database via Prisma and schema.prisma as the source of truth; avoid substituting app logic for persisted data.
+alwaysApply: true
+---
+
+# Database-first data: Prisma schema and real queries
+
+## Treat `backend/prisma/schema.prisma` as the contract
+
+Whenever you **read or write persisted domain data** (users, trains, chart rules, monitoring requests, executions, etc.):
+
+1. **Open and consult** `backend/prisma/schema.prisma` first—models, fields, relations, enums, and indexes define what exists and how it links.
+2. **Fetch and persist through the database** using the project’s Prisma setup (e.g. `PrismaService` / services in `backend/src`), not by reconstructing that state with ad-hoc in-memory structures, static fixtures, or duplicated “logical copies” of DB rows.
+
+## Do this
+
+- **Prefer `prisma.*` queries** (with appropriate `include` / `select`) to load what the UI or API needs.
+- **Align types and shapes** with the schema (and generated Prisma types), not hand-rolled parallel types that drift from the DB.
+- If required data **is not modeled**, add or adjust models in `schema.prisma` and migrate—**do not** fake long-lived data only in application code when it belongs in PostgreSQL.
+
+## Avoid this
+
+- Hardcoding datasets that should live in (or come from) tables defined in the schema.
+- Skipping the DB and “computing” entity state in code when the same information is already stored or should be stored per the schema.
+- Adding new API behavior that ignores existing tables and fields without checking the schema.
+
+## Scope
+
+- **Backend**: implement data access with Prisma against the real DB (or documented test DB), following existing module patterns in `backend/src`.
+- **Frontend**: get persisted data through backend APIs that themselves use the DB; do not invent server-side state on the client when the backend should query Prisma.
+
+If you are unsure whether something is persisted, **check `schema.prisma` before writing logic.**

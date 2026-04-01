@@ -4,6 +4,10 @@ import type { ResponseCreateParamsNonStreaming } from 'openai/resources/response
 import type { ReasoningEffort } from 'openai/resources/shared';
 import { IrctcService } from '../irctc/irctc.service';
 import type { TrainScheduleResponse } from '../irctc/irctc.service';
+import {
+  TrainCompositionService,
+  sourceStationCodesFromOpenAiSeats,
+} from '../train-composition/train-composition.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 
 function toStr(v: unknown): string {
@@ -396,6 +400,15 @@ export type Service2CheckResult = {
     | { kind: 'not_prepared_yet'; message: string }
     | { kind: 'chart_error'; error: string }
     | { kind: 'irctc_unavailable'; message: string; detail?: string };
+  /**
+   * After a successful AI plan: we could not confirm a chart row in DB for the charting/boarding
+   * stations (even after a composition refetch from the passenger boarding station).
+   */
+  chartRefreshNotice?: {
+    checkedStationCode: string;
+    message: string;
+    indicativeChartTime?: string | null;
+  };
 };
 
 /** User-facing copy when IRCTC schedule API returns maintenance / downtime. */
@@ -838,6 +851,24 @@ export type Service2CheckHooks = {
   }) => void;
 };
 
+async function trainHasChartTimeRowForAnyStation(
+  chartTime: ChartTimeService,
+  trainNumber: string,
+  stationCodes: string[],
+): Promise<boolean> {
+  const seen = new Set<string>();
+  for (const raw of stationCodes) {
+    const code = String(raw ?? '')
+      .trim()
+      .toUpperCase();
+    if (!code || seen.has(code)) continue;
+    seen.add(code);
+    const t = await chartTime.getChartTime(trainNumber, code);
+    if (t != null) return true;
+  }
+  return false;
+}
+
 /**
  * Service 2: IRCTC APIs only.
  * 1. Call trainComposition to get classes and chart time.
@@ -852,6 +883,7 @@ export class Service2Service {
   constructor(
     private irctc: IrctcService,
     private chartTime: ChartTimeService,
+    private trainComposition: TrainCompositionService,
   ) {}
 
   async check(
@@ -940,7 +972,7 @@ export class Service2Service {
       this.logger.log(
         `[service2/check] step=fetch_composition ${baseCtx} jDate=${jDate}`,
       );
-      composition = await this.irctc.getTrainComposition({
+      composition = await this.trainComposition.fetchForBoarding({
         trainNo,
         jDate,
         boardingStation,
@@ -1162,6 +1194,8 @@ export class Service2Service {
         const maxOpenAiChain = 12;
         const client = new OpenAI({ apiKey: apiKey.trim() });
         const textVerbosity = openAiTextVerbosity();
+        /** True once we emit partial AI SSE (chart hydrate runs before each emit). */
+        let service2PartialOpenAiEmitted = false;
 
         for (
           let chainAttempt = 1;
@@ -1245,7 +1279,22 @@ export class Service2Service {
             `[service2/check] step=openai_response_output_exact ${baseCtx} chars=${rawContent.length} ${rawContent}`,
           );
           const parsed = parseOpenAIStructuredResponse(rawContent);
-          openAiSummary = parsed.summary ?? rawContent;
+          const summaryTrimmed =
+            typeof parsed.summary === 'string' ? parsed.summary.trim() : '';
+          if (summaryTrimmed) {
+            openAiSummary = summaryTrimmed;
+          } else if (
+            Array.isArray(parsed.booking_plan) &&
+            parsed.booking_plan.length > 0
+          ) {
+            openAiSummary =
+              'Suggested multi-leg booking plan for your journey is below.';
+          } else if (stringLooksLikeJsonObject(rawContent)) {
+            openAiSummary =
+              'We could not read the AI journey plan. Please try your search again.';
+          } else {
+            openAiSummary = rawContent.trim() || null;
+          }
           if (parsed.seats?.length) {
             resultOpenAiStructuredSeats = parsed.seats;
           }
@@ -1323,6 +1372,27 @@ export class Service2Service {
             break;
           }
 
+          const hydrateFromSeats = sourceStationCodesFromOpenAiSeats(
+            resultOpenAiStructuredSeats,
+          );
+          if (hydrateFromSeats.length > 0) {
+            try {
+              await this.trainComposition.persistChartTimesFromCompositionForBoardingStations(
+                {
+                  trainNumber: trainNo,
+                  journeyDate: jDate,
+                  stationCodes: hydrateFromSeats,
+                  logContext: `service2_partial_ai_chain_${chainAttempt}`,
+                },
+              );
+            } catch (hydrateErr) {
+              this.logger.warn(
+                `[service2/check] step=chart_hydrate_partial_ai ${baseCtx} ${hydrateErr instanceof Error ? hydrateErr.message : String(hydrateErr)}`,
+              );
+            }
+          }
+
+          service2PartialOpenAiEmitted = true;
           hooks?.onPartialOpenAiResult?.({
             chainRound: chainAttempt,
             nextBoardingStation: nextBoarding,
@@ -1343,6 +1413,28 @@ export class Service2Service {
           );
           boardingStationsFetched.add(nextBoarding.trim().toUpperCase());
         }
+
+        if (!service2PartialOpenAiEmitted) {
+          const seatSourcesAfterOpenAi = sourceStationCodesFromOpenAiSeats(
+            resultOpenAiStructuredSeats,
+          );
+          if (seatSourcesAfterOpenAi.length > 0) {
+            try {
+              await this.trainComposition.persistChartTimesFromCompositionForBoardingStations(
+                {
+                  trainNumber: trainNo,
+                  journeyDate: jDate,
+                  stationCodes: seatSourcesAfterOpenAi,
+                  logContext: 'service2_openai_after_chain',
+                },
+              );
+            } catch (finalHydrateErr) {
+              this.logger.warn(
+                `[service2/check] step=chart_hydrate_after_openai_chain ${baseCtx} ${finalHydrateErr instanceof Error ? finalHydrateErr.message : String(finalHydrateErr)}`,
+              );
+            }
+          }
+        }
       } catch (err) {
         const emsg = err instanceof Error ? err.message : String(err);
         this.logger.error(
@@ -1355,6 +1447,80 @@ export class Service2Service {
       this.logger.warn(
         `[service2/check] step=openai_skipped_no_api_key ${baseCtx}`,
       );
+    }
+
+    let chartRefreshNotice: Service2CheckResult['chartRefreshNotice'];
+    const openAiFailed =
+      typeof openAiSummary === 'string' &&
+      openAiSummary.startsWith('OpenAI summary unavailable');
+    const gotAiResponse = Boolean(
+      apiKey?.trim() &&
+      !openAiFailed &&
+      (resultOpenAiStructuredSeats?.length ||
+        resultOpenAiBookingPlan?.length ||
+        (typeof openAiSummary === 'string' && openAiSummary.trim().length > 0)),
+    );
+    if (gotAiResponse) {
+      const stationCandidates = [
+        chartPreparationDetails?.chartingStationCode,
+        composition.remote,
+        boardingStation,
+      ]
+        .map((s) =>
+          String(s ?? '')
+            .trim()
+            .toUpperCase(),
+        )
+        .filter(Boolean);
+      const uniqueStations = [...new Set(stationCandidates)];
+      let hasChartRow = await trainHasChartTimeRowForAnyStation(
+        this.chartTime,
+        trainNo,
+        uniqueStations,
+      );
+      if (!hasChartRow) {
+        this.logger.log(
+          `[service2/check] step=post_ai_no_chart_row refetch_composition boarding=${boardingStation} candidates=${uniqueStations.join(',')}`,
+        );
+        try {
+          await this.trainComposition.fetchForBoarding({
+            trainNo,
+            jDate,
+            boardingStation,
+          });
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : String(err);
+          this.logger.warn(
+            `[service2/check] step=post_ai_composition_refetch_failed ${msg}`,
+          );
+        }
+        hasChartRow = await trainHasChartTimeRowForAnyStation(
+          this.chartTime,
+          trainNo,
+          uniqueStations,
+        );
+      }
+      if (!hasChartRow) {
+        const matchFull = composition.chartOneDate?.match(
+          /\d{4}-\d{2}-\d{2}\s+(\d{1,2}:\d{2})/,
+        );
+        const indicative =
+          chartPreparationDetails?.firstChartCreationTime?.trim() ||
+          (matchFull ? matchFull[1] : null) ||
+          null;
+        const primaryStation =
+          uniqueStations[0] ?? boardingStation.toUpperCase();
+        chartRefreshNotice = {
+          checkedStationCode: primaryStation,
+          indicativeChartTime: indicative,
+          message: indicative
+            ? `Chart may not be prepared yet at ${primaryStation}. Availability is usually updated when the chart is released (around ${indicative} per IRCTC). Please check again after that time.`
+            : `Chart may not be prepared yet at ${primaryStation}. Availability is usually updated when the chart is released; please check again later.`,
+        };
+        this.logger.log(
+          `[service2/check] step=post_ai_chart_refresh_notice station=${primaryStation} indicative=${indicative ?? 'none'}`,
+        );
+      }
     }
 
     const hasUsableOpenAiResult =
@@ -1377,8 +1543,57 @@ export class Service2Service {
       openAiBookingPlan: resultOpenAiBookingPlan,
       openAiTotalPrice: resultOpenAiTotalPrice,
       trainSchedule: trainSchedule ?? undefined,
+      chartRefreshNotice,
     };
   }
+}
+
+/** True if the model output is clearly JSON, so we must not show it verbatim as “summary”. */
+function stringLooksLikeJsonObject(s: string): boolean {
+  const t = s.trimStart();
+  return t.startsWith('{') || t.startsWith('```');
+}
+
+/**
+ * Strip optional ```json fences and extract the first top-level `{ ... }` object,
+ * respecting strings so braces inside quoted text do not break the span.
+ */
+function extractFirstJsonObject(raw: string): string | null {
+  let s = raw.trim();
+  if (s.startsWith('```')) {
+    s = s
+      .replace(/^```(?:json)?\s*/i, '')
+      .replace(/\s*```\s*$/m, '')
+      .trim();
+  }
+  const start = s.indexOf('{');
+  if (start < 0) return null;
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+  for (let i = start; i < s.length; i++) {
+    const c = s[i];
+    if (inString) {
+      if (escape) {
+        escape = false;
+      } else if (c === '\\') {
+        escape = true;
+      } else if (c === '"') {
+        inString = false;
+      }
+      continue;
+    }
+    if (c === '"') {
+      inString = true;
+      continue;
+    }
+    if (c === '{') depth++;
+    else if (c === '}') {
+      depth--;
+      if (depth === 0) return s.slice(start, i + 1);
+    }
+  }
+  return null;
 }
 
 function parseOpenAIStructuredResponse(raw: string): {
@@ -1387,16 +1602,17 @@ function parseOpenAIStructuredResponse(raw: string): {
   booking_plan?: unknown[];
   total_price?: number;
 } {
+  const jsonSlice =
+    extractFirstJsonObject(raw) ??
+    (raw.trim().startsWith('{') ? raw.trim() : null);
+  if (!jsonSlice) return {};
   try {
-    const obj = JSON.parse(raw) as {
-      summary?: string;
-      seats?: unknown[];
-      booking_plan?: unknown;
-      total_price?: unknown;
-    };
+    const obj = JSON.parse(jsonSlice) as Record<string, unknown>;
+    const summaryRaw = obj.summary ?? obj.Summary;
     const summary =
-      typeof obj.summary === 'string' ? obj.summary.trim() : undefined;
-    const arr = Array.isArray(obj.seats) ? obj.seats : [];
+      typeof summaryRaw === 'string' ? summaryRaw.trim() : undefined;
+    const seatsKey = obj.seats ?? obj.Seats;
+    const arr = Array.isArray(seatsKey) ? seatsKey : [];
     const seats: OpenAIStructuredSeat[] = arr
       .filter(
         (s): s is Record<string, unknown> => s != null && typeof s === 'object',
@@ -1409,16 +1625,16 @@ function parseOpenAIStructuredResponse(raw: string): {
         from: toStr(s.from),
         to: toStr(s.to),
       }));
-    const booking_plan = Array.isArray(obj.booking_plan)
-      ? obj.booking_plan.filter(
+    const planRaw = obj.booking_plan ?? obj.bookingPlan;
+    const booking_plan = Array.isArray(planRaw)
+      ? planRaw.filter(
           (x): x is Record<string, unknown> =>
             x != null && typeof x === 'object',
         )
       : undefined;
+    const priceRaw = obj.total_price ?? obj.totalPrice;
     const total_price =
-      typeof obj.total_price === 'number' && obj.total_price >= 0
-        ? obj.total_price
-        : undefined;
+      typeof priceRaw === 'number' && priceRaw >= 0 ? priceRaw : undefined;
     return { summary, seats, booking_plan, total_price };
   } catch {
     return {};

@@ -468,17 +468,14 @@ function TicketJourneyChartStrip({
     >
       <div className="min-w-0 flex-1 text-left">
         {loading && !finalChartTime ? (
-          <p className="mt-1 text-xs leading-snug text-amber-800">
+          <p className="mt-1 text-s leading-snug font-semibold text-amber-800">
             Checking chart times for this leg…
           </p>
         ) : (
           <>
-            <p className="mt-0.5 text-xs leading-snug text-amber-900">
-              <span className="font-semibold">
-                Final Chart will be prepared at
-              </span>{" "}
-              {finalChartTime}
-              <br />
+            <p className="mt-0.5 text-s leading-snug font-semibold text-amber-900">
+              Final Chart will be prepared at{" "}
+              <span className="font-semibold">{finalChartTime}</span>
             </p>
           </>
         )}

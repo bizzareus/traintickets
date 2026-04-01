@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
-import { SentryGlobalFilter, SentryModule } from '@sentry/nestjs/setup';
+import { SentryModule } from '@sentry/nestjs/setup';
+import { SentryHttpExceptionFilter } from './common/sentry-http-exception.filter';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
@@ -42,7 +43,9 @@ import { ConfirmTktProxyModule } from './confirmtkt-proxy/confirmtkt-proxy.modul
   providers: [
     {
       provide: APP_FILTER,
-      useClass: SentryGlobalFilter,
+      useFactory: (httpAdapterHost: HttpAdapterHost) =>
+        new SentryHttpExceptionFilter(httpAdapterHost),
+      inject: [HttpAdapterHost],
     },
     AppService,
   ],

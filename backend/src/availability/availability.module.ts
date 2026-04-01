@@ -6,6 +6,7 @@ import { BrowserUseModule } from '../browser-use/browser-use.module';
 import { ChartTimeModule } from '../chart-time/chart-time.module';
 import { IrctcModule } from '../irctc/irctc.module';
 import { Service2Module } from '../service2/service2.module';
+import { TrainCompositionModule } from '../train-composition/train-composition.module';
 import { NotificationModule } from '../notification/notification.module';
 
 @Module({
@@ -13,6 +14,7 @@ import { NotificationModule } from '../notification/notification.module';
     BrowserUseModule,
     ChartTimeModule,
     IrctcModule,
+    TrainCompositionModule,
     Service2Module,
     NotificationModule,
   ],
