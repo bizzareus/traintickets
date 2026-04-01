@@ -46,6 +46,17 @@ body {
   will-change: left;
 }
 
+/* Rail ties pattern (was inline style — avoids a11y/CSS linters flagging inline styles) */
+.search-loader-track-ties {
+  background: repeating-linear-gradient(
+    90deg,
+    #78716c 0px,
+    #78716c 3px,
+    #ffffff 3px,
+    #ffffff 11px
+  );
+}
+
 @keyframes search-loader-dot-wave {
   0%,
   60%,
