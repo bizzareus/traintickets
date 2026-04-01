@@ -1,6 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo, Fragment } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+  Fragment,
+} from "react";
 import { apiClient, irctcScheduleClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { fetchService2CheckStream } from "@/lib/service2CheckStream";
@@ -20,6 +27,7 @@ import {
   getTrainRunsOnFlagForYmd,
   type TrainRunsOnJson,
 } from "@/lib/trainRunsOn";
+import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 
@@ -300,6 +308,12 @@ type CheckResult = {
     bookings?: { from?: string; to?: string; status?: string }[];
     fullJourneyConfirmed?: boolean;
     chartPreparationDetails?: ChartPreparationDetails;
+    /** Backend: chart row missing in DB after AI + composition refetch */
+    chartRefreshNotice?: {
+      checkedStationCode: string;
+      message: string;
+      indicativeChartTime?: string | null;
+    };
     fullRouteStations?: {
       stationCode?: string;
       stationName?: string;
@@ -328,6 +342,9 @@ type Service2CheckOkBody = {
   openAiTotalPrice?: number;
   trainSchedule?: NonNullable<CheckResult["resultPayload"]>["trainSchedule"];
   chartStatus?: NonNullable<CheckResult["resultPayload"]>["chartStatus"];
+  chartRefreshNotice?: NonNullable<
+    CheckResult["resultPayload"]
+  >["chartRefreshNotice"];
 };
 
 /** Format date as YYYY-MM-DD in local timezone (toISOString is UTC and can shift the date). */
@@ -351,6 +368,27 @@ function formatJourneyDateFriendly(ymd: string): string {
     month: "long",
     year: "numeric",
   });
+}
+
+/**
+ * If the API mistakenly returns the full model JSON in `openAiSummary`, avoid
+ * rendering it as a wall of text; pull out `summary` when possible.
+ */
+function displayTextFromOpenAiSummary(
+  raw: string | null | undefined,
+): string | null {
+  if (raw == null) return null;
+  const t = typeof raw === "string" ? raw.trim() : "";
+  if (!t) return null;
+  if (!t.startsWith("{")) return t;
+  try {
+    const j = JSON.parse(t) as { summary?: string };
+    if (typeof j.summary === "string" && j.summary.trim())
+      return j.summary.trim();
+  } catch {
+    /* ignore */
+  }
+  return "We could not display this plan correctly. Please try your search again.";
 }
 
 /** Short phrase for “as of when” in IRCTC disclaimer (chart / availability snapshot). */
@@ -401,6 +439,47 @@ function TicketCardTitleRow({
       >
         Availability as of {asOfPhrase}
       </p>
+    </div>
+  );
+}
+
+/** Footer strip under each ticket card: IRCTC chart times per station (Success-style bar). */
+function TicketJourneyChartStrip({
+  fromMeta,
+  toMeta,
+  loading,
+}: {
+  fromMeta?: StationChartMetaItem;
+  toMeta?: StationChartMetaItem;
+  loading: boolean;
+}) {
+  const pickFinalChartTime = (meta?: StationChartMetaItem): string | null =>
+    meta?.chartTwoTime?.trim() || meta?.chartOneTime?.trim() || null;
+
+  const finalChartTime =
+    pickFinalChartTime(fromMeta) ?? pickFinalChartTime(toMeta);
+
+  if (!loading && !finalChartTime) return null;
+
+  return (
+    <div
+      className="-mx-4 -mb-4 mt-4 flex gap-3 rounded-b-xl border-t border-amber-300 bg-amber-100 px-4 py-1 text-amber-900"
+      role="status"
+    >
+      <div className="min-w-0 flex-1 text-left">
+        {loading && !finalChartTime ? (
+          <p className="mt-1 text-xs leading-snug text-amber-800">
+            Checking chart times for this leg…
+          </p>
+        ) : (
+          <>
+            <p className="mt-0.5 text-xs leading-snug text-amber-900">
+              Final Chart will be prepared at - {finalChartTime}
+              <br />
+            </p>
+          </>
+        )}
+      </div>
     </div>
   );
 }
@@ -470,6 +549,12 @@ export default function HomePage() {
     useState(false);
   const [helpfulFeedbackPopupOpen, setHelpfulFeedbackPopupOpen] =
     useState(false);
+  const [stationChartMetaByCode, setStationChartMetaByCode] = useState<
+    Record<string, StationChartMetaItem>
+  >({});
+  const [legChartMetaLoading, setLegChartMetaLoading] = useState<
+    Record<string, boolean>
+  >({});
   const [irctcBookConfirm, setIrctcBookConfirm] = useState<{
     url: string;
     source: "booking_plan" | "openai_plan";
@@ -483,9 +568,9 @@ export default function HomePage() {
   const fromDropdownBlurCloseTimer = useRef<ReturnType<
     typeof setTimeout
   > | null>(null);
-  const toDropdownBlurCloseTimer = useRef<ReturnType<
-    typeof setTimeout
-  > | null>(null);
+  const toDropdownBlurCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
   const [trainDropdownOpen, setTrainDropdownOpen] = useState(false);
   const [fromDropdownOpen, setFromDropdownOpen] = useState(false);
   const [toDropdownOpen, setToDropdownOpen] = useState(false);
@@ -825,6 +910,7 @@ export default function HomePage() {
           openAiTotalPrice: data.openAiTotalPrice,
           trainSchedule: data.trainSchedule ?? undefined,
           chartStatus: data.chartStatus ?? undefined,
+          chartRefreshNotice: data.chartRefreshNotice ?? undefined,
           vbd: data.vacantBerth?.vbd ?? [],
           error: data.vacantBerth?.error ?? null,
         },
@@ -1043,6 +1129,76 @@ export default function HomePage() {
     chartDetails || fullRouteStations.length > 0 || longestPath;
 
   const chartStatusPayload = uiPayload?.chartStatus;
+  const openAiSummaryForDisplay = displayTextFromOpenAiSummary(
+    uiPayload?.openAiSummary,
+  );
+
+  /** Recover plan/seats from a mistaken full-JSON `openAiSummary` string. */
+  const {
+    openAiBookingPlanResolved,
+    openAiStructuredSeatsResolved,
+    openAiTotalPriceResolved,
+  } = useMemo(() => {
+    const plan = uiPayload?.openAiBookingPlan;
+    const seats = uiPayload?.openAiStructuredSeats;
+    let total = uiPayload?.openAiTotalPrice;
+    const hasPlan = Array.isArray(plan) && plan.length > 0;
+    const hasSeats = Array.isArray(seats) && seats.length > 0;
+
+    let blob: {
+      booking_plan?: unknown[];
+      seats?: unknown[];
+      total_price?: number;
+    } | null = null;
+    const raw = uiPayload?.openAiSummary;
+    if (
+      (!hasPlan || !hasSeats) &&
+      typeof raw === "string" &&
+      raw.trim().startsWith("{")
+    ) {
+      try {
+        blob = JSON.parse(raw.trim()) as {
+          booking_plan?: unknown[];
+          seats?: unknown[];
+          total_price?: number;
+        };
+      } catch {
+        blob = null;
+      }
+    }
+
+    const planOut = hasPlan
+      ? plan!
+      : Array.isArray(blob?.booking_plan)
+        ? (blob!.booking_plan as NonNullable<
+            CheckResult["resultPayload"]
+          >["openAiBookingPlan"])
+        : [];
+
+    const seatsOut = hasSeats
+      ? seats!
+      : Array.isArray(blob?.seats)
+        ? (blob!.seats as NonNullable<
+            CheckResult["resultPayload"]
+          >["openAiStructuredSeats"])
+        : [];
+
+    if (total == null && typeof blob?.total_price === "number") {
+      total = blob.total_price;
+    }
+
+    return {
+      openAiBookingPlanResolved: planOut ?? [],
+      openAiStructuredSeatsResolved: seatsOut ?? [],
+      openAiTotalPriceResolved: total,
+    };
+  }, [
+    uiPayload?.openAiBookingPlan,
+    uiPayload?.openAiStructuredSeats,
+    uiPayload?.openAiTotalPrice,
+    uiPayload?.openAiSummary,
+  ]);
+
   const showChartPendingMonitor =
     Boolean(checkResult && !loading) &&
     payload?.serviceSource === "service2" &&
@@ -1117,31 +1273,37 @@ export default function HomePage() {
     });
   }, [monitoringLeg]);
 
-  // Build full journey legs (ticket + gap) from route and booking plan
-  const scheduleList =
-    uiPayload?.trainSchedule?.stationList ??
-    scheduleStations?.map((s) => ({
-      stationCode: s.code,
-      stationName: s.name,
-    }));
-  const routeStationsRaw = Array.isArray(scheduleList)
-    ? scheduleList
-        .map((s) => ({
-          code: String(s.stationCode ?? "")
-            .trim()
-            .toUpperCase(),
-          name: String(s.stationName ?? "").trim(),
-        }))
-        .filter((s) => s.code)
-    : [];
-  const fromIdx = routeStationsRaw.findIndex((s) => s.code === fromCode);
-  const toIdx = routeStationsRaw.findIndex((s) => s.code === toCode);
-  const routeStations =
-    fromIdx >= 0 && toIdx >= 0 && fromIdx < toIdx
+  // Build full journey legs (ticket + gap) from route and booking plan (memoized so chart-meta effect deps stay stable).
+  const routeStations = useMemo(() => {
+    const scheduleList =
+      uiPayload?.trainSchedule?.stationList ??
+      scheduleStations?.map((s) => ({
+        stationCode: s.code,
+        stationName: s.name,
+      }));
+    const routeStationsRaw = Array.isArray(scheduleList)
+      ? scheduleList
+          .map((s) => ({
+            code: String(s.stationCode ?? "")
+              .trim()
+              .toUpperCase(),
+            name: String(s.stationName ?? "").trim(),
+          }))
+          .filter((s) => s.code)
+      : [];
+    const fromIdx = routeStationsRaw.findIndex((s) => s.code === fromCode);
+    const toIdx = routeStationsRaw.findIndex((s) => s.code === toCode);
+    return fromIdx >= 0 && toIdx >= 0 && fromIdx < toIdx
       ? routeStationsRaw.slice(fromIdx, toIdx + 1)
       : [];
-  const openAiPlan = uiPayload?.openAiBookingPlan ?? [];
-  const openAiStructuredSeats = uiPayload?.openAiStructuredSeats ?? [];
+  }, [
+    uiPayload?.trainSchedule?.stationList,
+    scheduleStations,
+    fromCode,
+    toCode,
+  ]);
+  const openAiPlan = openAiBookingPlanResolved;
+  const openAiStructuredSeats = openAiStructuredSeatsResolved;
 
   function isEmptyService2PlanSlot(
     slot:
@@ -1160,73 +1322,207 @@ export default function HomePage() {
   }
 
   // Parse plan segments: each item matches openAiPlan index (empty slots → no from/to)
-  const planSegments = openAiPlan.map(
-    (
-      item:
-        | { instruction?: string; approx_price?: number }
-        | Record<string, never>,
-    ) => {
-      const instr =
-        typeof item === "string"
-          ? item
-          : "instruction" in item
-            ? (item.instruction ?? "")
-            : "";
-      const parts = instr.split(" - ").map((p) => p.trim());
-      return {
-        fromCode: (parts[0] ?? "").toUpperCase(),
-        toCode: (parts[1] ?? "").toUpperCase(),
-        classCode: parts[2]?.trim() ?? "3A",
-        approx_price:
-          "approx_price" in item && typeof item.approx_price === "number"
-            ? item.approx_price
-            : null,
-        instruction: instr,
-      };
-    },
+  const planSegments = useMemo(
+    () =>
+      openAiPlan.map(
+        (
+          item:
+            | { instruction?: string; approx_price?: number }
+            | Record<string, never>,
+        ) => {
+          const instr =
+            typeof item === "string"
+              ? item
+              : "instruction" in item
+                ? (item.instruction ?? "")
+                : "";
+          const parts = instr.split(" - ").map((p) => p.trim());
+          return {
+            fromCode: (parts[0] ?? "").toUpperCase(),
+            toCode: (parts[1] ?? "").toUpperCase(),
+            classCode: parts[2]?.trim() ?? "3A",
+            approx_price:
+              "approx_price" in item && typeof item.approx_price === "number"
+                ? item.approx_price
+                : null,
+            instruction: instr,
+          };
+        },
+      ),
+    [openAiPlan],
   );
 
   const routeLegCount =
     routeStations.length >= 2 ? routeStations.length - 1 : 0;
   const planAlignedWithRoute =
     routeLegCount > 0 && openAiPlan.length === routeLegCount;
-  const alignedJourneyLegs =
-    planAlignedWithRoute && routeStations.length >= 2
-      ? routeStations.slice(0, -1).map((fromSt, i) => ({
-          fromCode: fromSt.code,
-          toCode: routeStations[i + 1]!.code,
-          seg: planSegments[i]!,
-          slot: openAiPlan[i],
-        }))
-      : null;
+  const alignedJourneyLegs = useMemo(() => {
+    if (!planAlignedWithRoute || routeStations.length < 2) return null;
+    return routeStations.slice(0, -1).map((fromSt, i) => ({
+      fromCode: fromSt.code,
+      toCode: routeStations[i + 1]!.code,
+      seg: planSegments[i]!,
+      slot: openAiPlan[i],
+    }));
+  }, [planAlignedWithRoute, routeStations, planSegments, openAiPlan]);
   // Route index of a station code (for coverage check)
-  const routeIndex = (code: string) =>
-    routeStations.findIndex(
-      (s) => s.code === String(code).trim().toUpperCase(),
-    );
+  const routeIndex = useCallback(
+    (code: string) =>
+      routeStations.findIndex(
+        (s) => s.code === String(code).trim().toUpperCase(),
+      ),
+    [routeStations],
+  );
   // Check if a consecutive route pair (fromCode, toCode) at indices (i, i+1) is covered by any plan segment
-  const isPairCovered = (fromCodeLeg: string, toCodeLeg: string) => {
-    const i = routeIndex(fromCodeLeg);
-    const j = routeIndex(toCodeLeg);
-    if (i < 0 || j !== i + 1) return false;
-    return planSegments.some((seg) => {
-      if (!seg.fromCode || !seg.toCode) return false;
-      const segFromIdx = routeIndex(seg.fromCode);
-      const segToIdx = routeIndex(seg.toCode);
-      return (
-        segFromIdx >= 0 && segToIdx >= 0 && segFromIdx <= i && segToIdx >= j
-      );
-    });
-  };
+  const isPairCovered = useCallback(
+    (fromCodeLeg: string, toCodeLeg: string) => {
+      const i = routeIndex(fromCodeLeg);
+      const j = routeIndex(toCodeLeg);
+      if (i < 0 || j !== i + 1) return false;
+      return planSegments.some((seg) => {
+        if (!seg.fromCode || !seg.toCode) return false;
+        const segFromIdx = routeIndex(seg.fromCode);
+        const segToIdx = routeIndex(seg.toCode);
+        return (
+          segFromIdx >= 0 && segToIdx >= 0 && segFromIdx <= i && segToIdx >= j
+        );
+      });
+    },
+    [planSegments, routeIndex],
+  );
   /** Hide micro-legs already covered by a prior ticket’s span (empty slot but not a gap). */
-  const alignedJourneyLegsForDisplay =
-    alignedJourneyLegs == null
-      ? null
-      : alignedJourneyLegs.filter((leg) => {
-          if (!isEmptyService2PlanSlot(leg.slot)) return true;
-          if (isPairCovered(leg.fromCode, leg.toCode)) return false;
-          return true;
-        });
+  const alignedJourneyLegsForDisplay = useMemo(() => {
+    if (alignedJourneyLegs == null) return null;
+    return alignedJourneyLegs.filter((leg) => {
+      if (!isEmptyService2PlanSlot(leg.slot)) return true;
+      if (isPairCovered(leg.fromCode, leg.toCode)) return false;
+      return true;
+    });
+  }, [alignedJourneyLegs, isPairCovered]);
+
+  /**
+   * Per ticket leg: fetch chart meta per endpoint `sourceStation` (from + to for the strip).
+   * API body is only trainNumber, journeyDate, sourceStation (no stationCodes).
+   */
+  const service2ChartLegRequests = useMemo(() => {
+    if (uiPayload?.serviceSource !== "service2") return [];
+    type Job = { legKey: string; sourceStations: string[] };
+    const out: Job[] = [];
+    const pushLeg = (aRaw: string, bRaw: string) => {
+      const a = String(aRaw ?? "")
+        .trim()
+        .toUpperCase();
+      const b = String(bRaw ?? "")
+        .trim()
+        .toUpperCase();
+      if (!a || !b) return;
+      const sourceStations: string[] = [];
+      const seen = new Set<string>();
+      for (const c of [a, b]) {
+        if (!seen.has(c)) {
+          seen.add(c);
+          sourceStations.push(c);
+        }
+      }
+      out.push({ legKey: `${a}-${b}`, sourceStations });
+    };
+    if (alignedJourneyLegsForDisplay?.length) {
+      for (const leg of alignedJourneyLegsForDisplay) {
+        if (isEmptyService2PlanSlot(leg.slot)) continue;
+        pushLeg(leg.seg.fromCode ?? "", leg.seg.toCode ?? "");
+      }
+      return out;
+    }
+    if (!planAlignedWithRoute) {
+      for (const seg of planSegments) {
+        if (!seg.fromCode || !seg.toCode) continue;
+        pushLeg(seg.fromCode, seg.toCode);
+      }
+    }
+    return out;
+  }, [
+    uiPayload?.serviceSource,
+    alignedJourneyLegsForDisplay,
+    planAlignedWithRoute,
+    planSegments,
+  ]);
+
+  useEffect(() => {
+    if (uiPayload?.serviceSource !== "service2") {
+      setStationChartMetaByCode({});
+      setLegChartMetaLoading({});
+      return;
+    }
+    if (
+      service2ChartLegRequests.length === 0 ||
+      !trainNumber.trim() ||
+      !journeyDate.trim()
+    ) {
+      setStationChartMetaByCode({});
+      setLegChartMetaLoading({});
+      return;
+    }
+    const ac = new AbortController();
+    const jobs = service2ChartLegRequests;
+    setStationChartMetaByCode({});
+    const init: Record<string, boolean> = {};
+    for (const j of jobs) init[j.legKey] = true;
+    setLegChartMetaLoading(init);
+
+    void Promise.all(
+      jobs.map(async (job) => {
+        try {
+          await Promise.all(
+            job.sourceStations.map(async (sourceStation) => {
+              try {
+                const r = await apiClient.post<{
+                  stations: StationChartMetaItem[];
+                }>(
+                  "/api/train-composition/stations-meta",
+                  {
+                    trainNumber: trainNumber.trim(),
+                    journeyDate: journeyDate.trim(),
+                    sourceStation,
+                  },
+                  { timeout: 120_000, signal: ac.signal },
+                );
+                if (ac.signal.aborted) return;
+                const rows = Array.isArray(r.data?.stations)
+                  ? r.data.stations
+                  : [];
+                setStationChartMetaByCode((prev) => {
+                  const next = { ...prev };
+                  for (const row of rows) {
+                    const k = String(row.stationCode ?? "")
+                      .trim()
+                      .toUpperCase();
+                    if (k) next[k] = row;
+                  }
+                  return next;
+                });
+              } catch {
+                /* keep merged meta from other stations / legs */
+              }
+            }),
+          );
+        } finally {
+          if (!ac.signal.aborted) {
+            setLegChartMetaLoading((p) => ({ ...p, [job.legKey]: false }));
+          }
+        }
+      }),
+    );
+
+    return () => {
+      ac.abort();
+    };
+  }, [
+    uiPayload?.serviceSource,
+    service2ChartLegRequests,
+    trainNumber,
+    journeyDate,
+  ]);
+
   // Ticket cards: one per plan segment (Book). Gap cards: consecutive route pairs not covered (Monitor).
   const ticketCards = planAlignedWithRoute
     ? []
@@ -1256,8 +1552,8 @@ export default function HomePage() {
         )
       : ticketCards.length > 0
         ? ticketCards.reduce((sum, seg) => sum + (seg.approx_price ?? 0), 0)
-        : typeof uiPayload?.openAiTotalPrice === "number"
-          ? uiPayload.openAiTotalPrice
+        : typeof openAiTotalPriceResolved === "number"
+          ? openAiTotalPriceResolved
           : null;
 
   /** While SSE is still chaining OpenAI + vacant berth, show loaders on empty legs. */
@@ -1979,8 +2275,7 @@ export default function HomePage() {
                     )}
                   </div>
                 </div>
-              ) : Array.isArray(uiPayload.openAiBookingPlan) &&
-                uiPayload.openAiBookingPlan.length > 0 ? (
+              ) : openAiBookingPlanResolved.length > 0 ? (
                 <div className="rounded-2xl border border-slate-200/90 bg-white shadow-lg overflow-hidden">
                   {/* Train header with total fare on top right */}
                   <div className="border-b border-slate-100 px-4 py-4 flex flex-wrap items-start justify-between gap-3">
@@ -2024,10 +2319,21 @@ export default function HomePage() {
                     )}
                   </div>
 
-                  {uiPayload.openAiSummary && (
+                  {openAiSummaryForDisplay && (
                     <div className="px-4 pt-3 pb-1">
                       <p className="text-sm font-semibold text-slate-700 leading-snug">
-                        {uiPayload.openAiSummary}
+                        {openAiSummaryForDisplay}
+                      </p>
+                    </div>
+                  )}
+
+                  {uiPayload.chartRefreshNotice && (
+                    <div
+                      className="mx-4 mt-3 rounded-lg border border-amber-200/90 bg-amber-50/95 px-3 py-2.5 text-left"
+                      role="status"
+                    >
+                      <p className="text-sm font-medium text-amber-950">
+                        {uiPayload.chartRefreshNotice.message}
                       </p>
                     </div>
                   )}
@@ -2055,19 +2361,25 @@ export default function HomePage() {
                             const seg = leg.seg;
                             const scheduleListWithTimes =
                               uiPayload?.trainSchedule?.stationList ?? [];
+                            const segFromU = String(seg.fromCode ?? "")
+                              .trim()
+                              .toUpperCase();
+                            const segToU = String(seg.toCode ?? "")
+                              .trim()
+                              .toUpperCase();
                             const fromStationSchedule =
                               scheduleListWithTimes.find(
                                 (s) =>
                                   String(s.stationCode ?? "")
                                     .trim()
-                                    .toUpperCase() === leg.fromCode,
+                                    .toUpperCase() === segFromU,
                               );
                             const toStationSchedule =
                               scheduleListWithTimes.find(
                                 (s) =>
                                   String(s.stationCode ?? "")
                                     .trim()
-                                    .toUpperCase() === leg.toCode,
+                                    .toUpperCase() === segToU,
                               );
                             const depTime =
                               fromStationSchedule?.departureTime?.trim() ||
@@ -2115,13 +2427,13 @@ export default function HomePage() {
                                           ).toString()}`
                                         : "https://www.irctc.co.in/eticketing/login";
                                     return (
-                                      <div className="flex flex-col rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 py-4 w-full shadow-sm">
+                                      <div className="flex flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 pt-4 pb-0 w-full shadow-sm">
                                         <TicketCardTitleRow
                                           ticketIndex={ticketIndex}
                                           classCode={seg.classCode}
                                           asOfPhrase={ticketCardAsOfPhrase}
                                         />
-                                        <div className="flex items-start gap-2 text-sm font-medium text-slate-800">
+                                        <div className="flex items-start gap-2 text-sm font-medium text-slate-800 pb-4">
                                           <div className="min-w-0 flex-1">
                                             <p className="leading-tight">
                                               {stationLabel(seg.fromCode)}
@@ -2145,7 +2457,7 @@ export default function HomePage() {
                                           </div>
                                         </div>
                                         {seatsForSegment.length > 0 && (
-                                          <p className="mt-2 text-sm text-slate-600">
+                                          <p className="mt-2 text-sm text-slate-600 pb-4">
                                             {seatsForSegment
                                               .map(
                                                 (s) =>
@@ -2175,6 +2487,19 @@ export default function HomePage() {
                                         >
                                           Book
                                         </button>
+                                        <TicketJourneyChartStrip
+                                          fromMeta={
+                                            stationChartMetaByCode[segFromU]
+                                          }
+                                          toMeta={
+                                            stationChartMetaByCode[segToU]
+                                          }
+                                          loading={
+                                            legChartMetaLoading[
+                                              `${segFromU}-${segToU}`
+                                            ] ?? false
+                                          }
+                                        />
                                       </div>
                                     );
                                   })()
@@ -2290,6 +2615,12 @@ export default function HomePage() {
                                   },
                                 ).toString()}`
                               : "https://www.irctc.co.in/eticketing/login";
+                          const ticketSegFromU = String(seg.fromCode ?? "")
+                            .trim()
+                            .toUpperCase();
+                          const ticketSegToU = String(seg.toCode ?? "")
+                            .trim()
+                            .toUpperCase();
                           return (
                             <Fragment
                               key={`ticket-${seg.fromCode}-${seg.toCode}-${i}`}
@@ -2299,13 +2630,13 @@ export default function HomePage() {
                                   <ChevronDownIcon className="h-10 w-10 text-slate-400" />
                                 </div>
                               )}
-                              <div className="flex flex-col rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 py-4 w-full shadow-sm">
+                              <div className="flex flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 pt-4 pb-0 w-full shadow-sm">
                                 <TicketCardTitleRow
                                   ticketIndex={i + 1}
                                   classCode={seg.classCode}
                                   asOfPhrase={ticketCardAsOfPhrase}
                                 />
-                                <div className="flex items-start gap-2 text-sm font-medium text-slate-800">
+                                <div className="flex items-start gap-2 pb-4 text-sm font-medium text-slate-800">
                                   <div className="min-w-0 flex-1">
                                     <p className="leading-tight">
                                       {stationLabel(seg.fromCode)}
@@ -2329,7 +2660,7 @@ export default function HomePage() {
                                   </div>
                                 </div>
                                 {seatsForSegment.length > 0 && (
-                                  <p className="mt-2 text-sm text-slate-600">
+                                  <p className="mt-2 text-sm text-slate-600 pb-4">
                                     {seatsForSegment
                                       .map(
                                         (s) =>
@@ -2358,6 +2689,17 @@ export default function HomePage() {
                                 >
                                   Book
                                 </button>
+                                <TicketJourneyChartStrip
+                                  fromMeta={
+                                    stationChartMetaByCode[ticketSegFromU]
+                                  }
+                                  toMeta={stationChartMetaByCode[ticketSegToU]}
+                                  loading={
+                                    legChartMetaLoading[
+                                      `${ticketSegFromU}-${ticketSegToU}`
+                                    ] ?? false
+                                  }
+                                />
                               </div>
                             </Fragment>
                           );
@@ -2511,22 +2853,22 @@ export default function HomePage() {
                   <div className="p-4">
                     <div
                       className={`rounded-xl border px-4 py-6 text-center ${
-                        uiPayload.openAiSummary
+                        openAiSummaryForDisplay
                           ? "border-slate-200/90 bg-slate-50/80"
                           : "border-red-200/80 bg-red-50/60"
                       }`}
                     >
                       <p
                         className={`font-medium text-sm whitespace-pre-wrap ${
-                          uiPayload.openAiSummary
+                          openAiSummaryForDisplay
                             ? "text-slate-800"
                             : "text-red-800"
                         }`}
                       >
-                        {uiPayload.openAiSummary?.trim() ||
+                        {openAiSummaryForDisplay?.trim() ||
                           "No tickets found between these stations"}
                       </p>
-                      {!uiPayload.openAiSummary?.trim() && (
+                      {!openAiSummaryForDisplay?.trim() && (
                         <p className="mt-1 text-sm text-red-700/90">
                           Try a different date, train, or route.
                         </p>

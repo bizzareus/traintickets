@@ -354,10 +354,32 @@ export class IrctcService {
     }
     const trainRunsOn = extractTrainRunsOnFromIrctc(raw);
     const schedule: TrainScheduleResponse = {
-      trainNumber: String(raw.trainNumber ?? ''),
-      trainName: String(raw.trainName ?? ''),
-      stationFrom: String(raw.stationFrom ?? ''),
-      stationTo: String(raw.stationTo ?? ''),
+      trainNumber:
+        typeof raw.trainNumber === 'string'
+          ? raw.trainNumber
+          : typeof raw.trainNumber === 'number' &&
+              Number.isFinite(raw.trainNumber)
+            ? String(raw.trainNumber)
+            : '',
+      trainName:
+        typeof raw.trainName === 'string'
+          ? raw.trainName
+          : typeof raw.trainName === 'number' && Number.isFinite(raw.trainName)
+            ? String(raw.trainName)
+            : '',
+      stationFrom:
+        typeof raw.stationFrom === 'string'
+          ? raw.stationFrom
+          : typeof raw.stationFrom === 'number' &&
+              Number.isFinite(raw.stationFrom)
+            ? String(raw.stationFrom)
+            : '',
+      stationTo:
+        typeof raw.stationTo === 'string'
+          ? raw.stationTo
+          : typeof raw.stationTo === 'number' && Number.isFinite(raw.stationTo)
+            ? String(raw.stationTo)
+            : '',
       stationList: raw.stationList as ScheduleStation[],
       ...(trainRunsOn ? { trainRunsOn } : {}),
     };
@@ -525,11 +547,14 @@ export class IrctcService {
   /**
    * POST trainComposition; returns parsed JSON after basic shape checks (same as getTrainComposition).
    */
-  private async postTrainComposition(payload: {
-    trainNo: string;
-    jDate: string;
-    boardingStation: string;
-  }): Promise<Record<string, unknown>> {
+  async postTrainComposition(
+    payload: {
+      trainNo: string;
+      jDate: string;
+      boardingStation: string;
+    },
+    opts?: { allowChartNotPrepared?: boolean },
+  ): Promise<Record<string, unknown>> {
     const body = {
       trainNo: String(payload.trainNo).trim(),
       jDate: String(payload.jDate).trim().slice(0, 10),
@@ -587,14 +612,46 @@ export class IrctcService {
         'Train composition is temporarily unavailable. Please try again later.',
       );
     }
-    if (data?.error) throw new Error(String(data.error));
-    const invalid =
-      data.cdd == null || data.trainNo == null || data.remote == null;
-    if (invalid) {
+
+    const errMsg =
+      typeof data.error === 'string' && data.error.trim() !== ''
+        ? data.error.trim()
+        : '';
+
+    const allowSoftChartPending =
+      opts?.allowChartNotPrepared === true &&
+      errMsg.length > 0 &&
+      /chart\s*not\s*prepared|not\s+yet\s*prepared|chart\s*not\s*ready/i.test(
+        errMsg,
+      );
+
+    if (errMsg && !allowSoftChartPending) {
+      throw new Error(errMsg);
+    }
+
+    const trainNoRaw = data.trainNo;
+    const trainNoStr =
+      typeof trainNoRaw === 'string'
+        ? trainNoRaw.trim()
+        : typeof trainNoRaw === 'number' && Number.isFinite(trainNoRaw)
+          ? String(trainNoRaw)
+          : '';
+    const trainNoOk = trainNoStr.length > 0;
+    if (!trainNoOk) {
       throw new Error(
-        'Train composition is temporarily unavailable. Please try again later.',
+        errMsg || 'Train composition is temporarily unavailable.',
       );
     }
+
+    if (!allowSoftChartPending) {
+      const invalid = data.cdd == null || data.remote == null;
+      if (invalid) {
+        throw new Error(
+          'Train composition is temporarily unavailable. Please try again later.',
+        );
+      }
+    }
+
     return data;
   }
 
@@ -623,12 +680,15 @@ export class IrctcService {
     }
   }
 
-  async getTrainComposition(payload: {
-    trainNo: string;
-    jDate: string;
-    boardingStation: string;
-  }): Promise<TrainCompositionResponse> {
-    const raw = await this.postTrainComposition(payload);
+  async getTrainComposition(
+    payload: {
+      trainNo: string;
+      jDate: string;
+      boardingStation: string;
+    },
+    opts?: { allowChartNotPrepared?: boolean },
+  ): Promise<TrainCompositionResponse> {
+    const raw = await this.postTrainComposition(payload, opts);
     const data = raw as unknown as TrainCompositionResponse;
     try {
       await this.persistChartTimesFromComposition(data);

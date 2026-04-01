@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { IrctcService } from '../irctc/irctc.service';
 
 /**
  * Chart preparation time per train/station (e.g. train 29251 from NDLS at 19:54).
@@ -7,7 +8,12 @@ import { PrismaService } from '../prisma/prisma.service';
  */
 @Injectable()
 export class ChartTimeService {
-  constructor(private prisma: PrismaService) {}
+  private readonly logger = new Logger(ChartTimeService.name);
+
+  constructor(
+    private prisma: PrismaService,
+    private readonly irctc: IrctcService,
+  ) {}
 
   /**
    * Get chart time for a station of a train. Returns HH:MM (24h) or null.
@@ -89,30 +95,77 @@ export class ChartTimeService {
    * Get chart one and chart two (with day offset) per station for a train.
    * Used to create one task per chart event (chart one and optionally chart two).
    */
+  /**
+   * Chart one (and optional chart two) for one train + station from DB.
+   */
+  async getChartMetaForTrainStation(
+    trainNumber: string,
+    stationCode: string,
+  ): Promise<{
+    chartOne: string;
+    chartTwo?: { time: string; dayOffset: number };
+  } | null> {
+    const code = String(stationCode).trim().toUpperCase();
+    const map = await this.getChartTimesWithSecondChartForTrain(trainNumber, [
+      code,
+    ]);
+    return map.get(code) ?? null;
+  }
+
   async getChartTimesWithSecondChartForTrain(
     trainNumber: string,
     stationCodes: string[],
   ): Promise<
-    Map<string, { chartOne: string; chartTwo?: { time: string; dayOffset: number } }>
+    Map<
+      string,
+      { chartOne: string; chartTwo?: { time: string; dayOffset: number } }
+    >
   > {
     const num = String(trainNumber).trim();
+    const normalizedCodes = stationCodes.map((c) =>
+      String(c).trim().toUpperCase(),
+    );
     const where: { trainNumber: string; stationCode?: { in: string[] } } = {
       trainNumber: num,
     };
-    if (stationCodes.length > 0) {
+    if (normalizedCodes.length > 0) {
       where.stationCode = {
-        in: stationCodes.map((c) => String(c).trim().toUpperCase()),
+        in: normalizedCodes,
       };
     }
-    const rows = await this.prisma.trainStationChartTime.findMany({
-      where,
-    });
+    let rows = await this.prisma.trainStationChartTime.findMany({ where });
+
+    // DB-first read; if missing for requested stations, hydrate once from composition API.
+    if (rows.length === 0 && normalizedCodes.length > 0) {
+      const jDate = new Date().toISOString().slice(0, 10);
+      for (const code of normalizedCodes) {
+        try {
+          await this.irctc.getTrainComposition(
+            {
+              trainNo: num,
+              jDate,
+              boardingStation: code,
+            },
+            { allowChartNotPrepared: true },
+          );
+        } catch (e) {
+          const message = e instanceof Error ? e.message : String(e);
+          this.logger.warn(
+            `[chartTime] composition hydrate failed train=${num} station=${code} jDate=${jDate}: ${message}`,
+          );
+        }
+      }
+      rows = await this.prisma.trainStationChartTime.findMany({ where });
+    }
     const map = new Map<
       string,
       { chartOne: string; chartTwo?: { time: string; dayOffset: number } }
     >();
     for (const r of rows) {
-      const entry: { chartOne: string; chartTwo?: { time: string; dayOffset: number } } = {
+      const entry: {
+        chartOne: string;
+        chartTwo?: { time: string; dayOffset: number };
+      } = {
         chartOne: r.chartTimeLocal,
       };
       if (r.chartTwoTimeLocal?.trim()) {
