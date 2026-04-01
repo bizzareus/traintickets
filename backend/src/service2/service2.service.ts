@@ -31,8 +31,8 @@ export function isFilledOpenAiPlanItem(
 ): item is { instruction: string; approx_price: number } {
   if (item == null || typeof item !== 'object') return false;
   if (Object.keys(item).length === 0) return false;
-  const instruction = String(
-    (item as { instruction?: unknown }).instruction ?? '',
+  const instruction = toStr(
+    (item as Record<string, unknown>).instruction,
   ).trim();
   return instruction.length > 0;
 }
@@ -46,7 +46,11 @@ export function routeConsecutiveLegsForJourney(
   const list = schedule?.stationList;
   if (!Array.isArray(list) || list.length < 2) return [];
   const codes = list
-    .map((s) => String(s.stationCode ?? '').trim().toUpperCase())
+    .map((s) =>
+      String(s.stationCode ?? '')
+        .trim()
+        .toUpperCase(),
+    )
     .filter(Boolean);
   const fromIdx = codes.indexOf(boardingStation.trim().toUpperCase());
   const toIdx = codes.indexOf(destinationStation.trim().toUpperCase());
@@ -62,7 +66,7 @@ export function routeConsecutiveLegsForJourney(
 function isRawBookingPlanSlotEmpty(raw: unknown): boolean {
   if (raw == null) return true;
   if (typeof raw !== 'object') return true;
-  if (Object.keys(raw as object).length === 0) return true;
+  if (Object.keys(raw).length === 0) return true;
   const rec = raw as Record<string, unknown>;
   const instruction = toStr(rec.instruction).trim();
   if (instruction.length > 0) return false;
@@ -563,7 +567,7 @@ const OPENAI_RESPONSE_JSON_SCHEMA = {
     summary: {
       type: 'string',
       description:
-        'If no vacant segment can start from the boarding station, set exactly: Sorry, we couldn\'t find any tickets, try some other train. Otherwise: concise booking guidance. Mention Speak to the TTE to figure out a space only for genuinely uncovered gaps. Do not add extra no-gap commentary.',
+        "If no vacant segment can start from the boarding station, set exactly: Sorry, we couldn't find any tickets, try some other train. Otherwise: concise booking guidance. Mention Speak to the TTE to figure out a space only for genuinely uncovered gaps. Do not add extra no-gap commentary.",
     },
     seats: {
       type: 'array',
@@ -734,11 +738,7 @@ function chartCalendarDateForJourney(
 ): string {
   const chartM = parseIrctcClockToMinutes(chartTimeLocal);
   const depM = parseIrctcClockToMinutes(boardingDepartureClock);
-  if (
-    chartM != null &&
-    depM != null &&
-    depM < chartM
-  ) {
+  if (chartM != null && depM != null && depM < chartM) {
     return ymdMinusOneDay(journeyDateYmd);
   }
   return journeyDateYmd;
@@ -750,7 +750,10 @@ function boardingDepartureOrArrivalClock(
 ): string | null {
   if (!schedule?.stationList?.length) return null;
   const st = schedule.stationList.find(
-    (s) => String(s.stationCode ?? '').trim().toUpperCase() === boardingStation,
+    (s) =>
+      String(s.stationCode ?? '')
+        .trim()
+        .toUpperCase() === boardingStation,
   );
   if (!st) return null;
   const dep = st.departureTime?.trim();
@@ -787,9 +790,7 @@ function isChartTimeInFuture(
 }
 
 /** Parse IRCTC "YYYY-MM-DD HH:MM[:SS]" as an IST instant. */
-function parseIrctcDateTimeIst(
-  value: string | null | undefined,
-): Date | null {
+function parseIrctcDateTimeIst(value: string | null | undefined): Date | null {
   if (!value || typeof value !== 'string') return null;
   const m = value
     .trim()
@@ -1069,7 +1070,10 @@ export class Service2Service {
             cls: classCode,
             chartType: chartTypeForVacantBerth,
           });
-          const vbdPayload = vbdRes as { vbd?: unknown[]; error?: string | null };
+          const vbdPayload = vbdRes as {
+            vbd?: unknown[];
+            error?: string | null;
+          };
           const vbdList = Array.isArray(vbdPayload?.vbd) ? vbdPayload.vbd : [];
           for (const item of vbdList) {
             allVbd.push(item);
@@ -1108,8 +1112,7 @@ export class Service2Service {
       `[service2/check] step=vacant_berth_all_done ${baseCtx} totalSegments=${allVbd.length} aggregatedError=${vacantBerth.error ?? 'none'}`,
     );
 
-    const destForUi =
-      destinationStation ?? composition.to ?? boardingStation;
+    const destForUi = destinationStation ?? composition.to ?? boardingStation;
 
     hooks?.onIrctcDataReady?.({
       vacantSegmentCount: allVbd.length,
@@ -1160,7 +1163,11 @@ export class Service2Service {
         const client = new OpenAI({ apiKey: apiKey.trim() });
         const textVerbosity = openAiTextVerbosity();
 
-        for (let chainAttempt = 1; chainAttempt <= maxOpenAiChain; chainAttempt++) {
+        for (
+          let chainAttempt = 1;
+          chainAttempt <= maxOpenAiChain;
+          chainAttempt++
+        ) {
           this.logger.log(
             `[service2/check] step=openai_request_start ${baseCtx} chainAttempt=${chainAttempt}/${maxOpenAiChain} model=${process.env.OPENAI_MODEL ?? 'default'}`,
           );
@@ -1404,7 +1411,8 @@ function parseOpenAIStructuredResponse(raw: string): {
       }));
     const booking_plan = Array.isArray(obj.booking_plan)
       ? obj.booking_plan.filter(
-          (x): x is Record<string, unknown> => x != null && typeof x === 'object',
+          (x): x is Record<string, unknown> =>
+            x != null && typeof x === 'object',
         )
       : undefined;
     const total_price =
@@ -1445,9 +1453,9 @@ function buildOpenAIUserMessage(ctx: {
   const routeLegsBlock =
     routeLegs.length > 0
       ? `**Route legs for this journey** (${routeLegs.length} legs) — \`booking_plan\` MUST be an array of exactly **${routeLegs.length}** elements in this order (index 0 = first leg, etc.):\n${routeLegs
-        .map((l, i) => `${i + 1}. ${l.from} → ${l.to}`)
-        .join('\n')}`
-      : '**Route legs for this journey**: Not derived (boarding/destination not found on cached schedule). Return \`booking_plan\` as a compact array in journey order: only objects \`{ "instruction", "approx_price" }\` for bookable segments (no empty slots required).';
+          .map((l, i) => `${i + 1}. ${l.from} → ${l.to}`)
+          .join('\n')}`
+      : '**Route legs for this journey**: Not derived (boarding/destination not found on cached schedule). Return `booking_plan` as a compact array in journey order: only objects `{ "instruction", "approx_price" }` for bookable segments (no empty slots required).';
 
   return `Current data from IRCTC APIs:
 

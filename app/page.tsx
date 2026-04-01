@@ -12,11 +12,6 @@ import { useIstRailMaintenance } from "@/hooks/useIstRailMaintenance";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 
-/** ARIA enumerated true/false as strings (satisfies React `Booleanish` and static a11y checks). */
-function ariaBool(value: boolean): "true" | "false" {
-  return value ? "true" : "false";
-}
-
 type Station = { code: string; name: string };
 type TrainOption = { number: string; label: string };
 
@@ -1472,7 +1467,7 @@ export default function HomePage() {
                         id="train-search-input"
                         type="text"
                         role="combobox"
-                        aria-expanded={ariaBool(trainDropdownOpen)}
+                        aria-expanded={trainDropdownOpen}
                         aria-controls="train-dropdown"
                         aria-autocomplete="list"
                         value={trainInput}
@@ -1534,7 +1529,7 @@ export default function HomePage() {
                                 <button
                                   type="button"
                                   role="option"
-                                  aria-selected={ariaBool(selected)}
+                                  aria-selected={selected}
                                   className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
                                   onMouseDown={(e) => {
                                     e.preventDefault();
@@ -1838,7 +1833,7 @@ export default function HomePage() {
                         value={journeyDate}
                         onChange={(e) => setJourneyDate(e.target.value)}
                         required
-                        aria-invalid={ariaBool(trainDoesNotRunOnSelectedDate)}
+                        aria-invalid={trainDoesNotRunOnSelectedDate}
                         aria-describedby={
                           trainDoesNotRunOnSelectedDate
                             ? "departure-date-run-day-error"
