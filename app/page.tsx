@@ -810,10 +810,8 @@ export default function HomePage() {
   const trainRunDayMessage = trainDoesNotRunOnSelectedDate
     ? "This train doesn't run on that day."
     : null;
-  const formAlertMessage =
-    scheduleError ??
-    (trainDoesNotRunOnSelectedDate ? trainRunDayMessage : null) ??
-    error;
+  /** Schedule / search errors only — train run-day message is shown under Departure Date. */
+  const formAlertMessage = scheduleError ?? error;
 
   /** When route order is known, clear To if it matches From or is not after From. */
   useEffect(() => {
@@ -1331,6 +1329,7 @@ export default function HomePage() {
     const j = routeIndex(toCodeLeg);
     if (i < 0 || j !== i + 1) return false;
     return planSegments.some((seg) => {
+      if (!seg.fromCode || !seg.toCode) return false;
       const segFromIdx = routeIndex(seg.fromCode);
       const segToIdx = routeIndex(seg.toCode);
       return (
@@ -1338,6 +1337,15 @@ export default function HomePage() {
       );
     });
   };
+  /** Hide micro-legs already covered by a prior ticket’s span (empty slot but not a gap). */
+  const alignedJourneyLegsForDisplay =
+    alignedJourneyLegs == null
+      ? null
+      : alignedJourneyLegs.filter((leg) => {
+          if (!isEmptyService2PlanSlot(leg.slot)) return true;
+          if (isPairCovered(leg.fromCode, leg.toCode)) return false;
+          return true;
+        });
   // Ticket cards: one per plan segment (Book). Gap cards: consecutive route pairs not covered (Monitor).
   const ticketCards = planAlignedWithRoute
     ? []
@@ -1831,6 +1839,11 @@ export default function HomePage() {
                         onChange={(e) => setJourneyDate(e.target.value)}
                         required
                         aria-invalid={ariaBool(trainDoesNotRunOnSelectedDate)}
+                        aria-describedby={
+                          trainDoesNotRunOnSelectedDate
+                            ? "departure-date-run-day-error"
+                            : undefined
+                        }
                         className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 p-0 text-inherit appearance-none cursor-pointer"
                       >
                         {dateOptions.map((opt) => (
@@ -1843,6 +1856,15 @@ export default function HomePage() {
                         <ChevronUpDownIcon className="size-5 text-gray-500" />
                       </span>
                     </div>
+                    {trainDoesNotRunOnSelectedDate && trainRunDayMessage && (
+                      <p
+                        id="departure-date-run-day-error"
+                        role="alert"
+                        className="mt-2 text-sm font-medium text-red-600"
+                      >
+                        {trainRunDayMessage}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -2071,12 +2093,12 @@ export default function HomePage() {
 
                   {/* Full journey: plan segments as Book cards, then gap legs as Monitor cards */}
                   <div className="px-4 py-4 space-y-3">
-                    {alignedJourneyLegs != null &&
-                    alignedJourneyLegs.length > 0 ? (
+                    {alignedJourneyLegsForDisplay != null &&
+                    alignedJourneyLegsForDisplay.length > 0 ? (
                       <>
                         {(() => {
                           let ticketIndex = 0;
-                          return alignedJourneyLegs.map((leg, i) => {
+                          return alignedJourneyLegsForDisplay.map((leg, i) => {
                             const stationLabel = (code: string) => {
                               const s = stationsForRoute.find(
                                 (x) =>

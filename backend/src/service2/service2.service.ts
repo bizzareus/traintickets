@@ -247,6 +247,51 @@ function parseInstructionEndpoints(
   return { from, to };
 }
 
+/** Same physical ticket on consecutive route-leg slots (model mistake) → merge fares, keep {} on repeats. */
+function instructionDedupeKey(instruction: string): string | null {
+  const ends = parseInstructionEndpoints(instruction);
+  if (!ends) return null;
+  const parts = instruction.split(' - ').map((p) => p.trim());
+  const cls = (parts[2] ?? '').toUpperCase().replace(/\s+/g, '');
+  return `${ends.from}|${ends.to}|${cls}`;
+}
+
+function collapseConsecutiveDuplicateBookingInstructions(
+  plan: OpenAiBookingPlanItem[],
+): OpenAiBookingPlanItem[] {
+  if (plan.length === 0) return plan;
+  const out: OpenAiBookingPlanItem[] = plan.map((item) =>
+    isFilledOpenAiPlanItem(item) ? { ...item } : {},
+  );
+  let i = 0;
+  while (i < out.length) {
+    if (!isFilledOpenAiPlanItem(out[i])) {
+      i++;
+      continue;
+    }
+    const key = instructionDedupeKey(out[i].instruction);
+    if (key == null) {
+      i++;
+      continue;
+    }
+    let sum = out[i].approx_price ?? 0;
+    let j = i + 1;
+    while (j < out.length) {
+      if (!isFilledOpenAiPlanItem(out[j])) break;
+      const keyJ = instructionDedupeKey(out[j].instruction);
+      if (keyJ !== key) break;
+      sum += out[j].approx_price ?? 0;
+      out[j] = {};
+      j++;
+    }
+    if (j > i + 1) {
+      out[i] = { instruction: out[i].instruction, approx_price: sum };
+    }
+    i = j;
+  }
+  return out;
+}
+
 /**
  * When the model repeats the same boarding→destination ticket on every route leg
  * (with bogus zeros / bad totals), collapse to one bookable segment for the UI.
@@ -499,9 +544,9 @@ For each consecutive route leg (local stations **A→B** along the route):
 
 2. **If covered:** emit \`{ "instruction": "FROM - TO - CLASS", "approx_price": <number> }\`.
    - **instruction** is the **actual ticket** you book for that vacant segment — usually the segment’s own endpoints and class (e.g. **ST - KOTA - 3AC**), **not** rewritten as A - B unless the ticket is only for that short leg.
-   - **approx_price:** A single ticket has **one** total fare **P** in INR. If that ticket spans **k** consecutive route legs, you must **not** put the full **P** on every leg (that would make **total_price** wrong when summed). Use one of:
-     - **Preferred:** Split **P** across the **k** legs: allocate a share per leg (e.g. **P/k** evenly, or proportional to distance along the route if you estimate it).
-     - **Simpler fallback:** Put **P** on the **first** covered leg only and **0** on the other **k−1** legs for that same ticket (you may repeat the same **instruction** on each covered leg, but only one leg carries the non-zero fare for that ticket).
+   - **approx_price:** A single ticket has **one** total fare **P** in INR. If that ticket spans **k** consecutive schedule legs (many **A→B** micro-hops under one IRCTC ticket), you must **not** emit **k** filled objects with the same **instruction** — that breaks the product UI. Use **exactly one** of:
+     - **Required for multi-hop tickets:** Put **P** (or your prorated shares that sum to **P**) on the **first** micro-leg that ticket covers, and emit **{}** (empty object) on **every following** micro-leg until that ticket ends. **Never** repeat the same **FROM - TO - CLASS** instruction on two **consecutive** array positions.
+     - **Optional:** Split **P** across the **k** legs with **different** per-leg instructions only if they are genuinely different tickets (they are not).
 
 3. **If not covered** by any chosen segment: emit **{}** (empty object). This rule is for partial journeys only; do not use \`{}\` when the journey is fully covered.
 
@@ -541,7 +586,7 @@ const OPENAI_RESPONSE_JSON_SCHEMA = {
     booking_plan: {
       type: 'array',
       description:
-        'If the journey is fully covered, return only actual booked tickets in order (one object per real ticket, no duplicates, no {}). If the journey is partial, use one element per route leg in order with {} for uncovered legs. For covered partial legs, instruction is the covering ticket and approx_price is the allocated share for that leg.',
+        'If the journey is fully covered, return only actual booked tickets in order (one object per real ticket, no duplicates, no {}). If the journey is partial, use one element per schedule micro-leg in order. For one physical ticket spanning several micro-legs: only the first micro-leg may be a filled object; use {} on subsequent micro-legs under that ticket. Never repeat the same instruction on consecutive indices.',
       items: {
         anyOf: [
           {
@@ -1202,6 +1247,8 @@ export class Service2Service {
               parsed.booking_plan,
               routeLegsForPlan,
             );
+            normalizedPlan =
+              collapseConsecutiveDuplicateBookingInstructions(normalizedPlan);
             let fullJourneyCollapsed = false;
             if (normalizedPlan.length > 1 && routeLegsForPlan.length > 1) {
               const { plan: collapsed, collapsed: didCollapse } =
@@ -1453,6 +1500,6 @@ Apply the algorithm from your instructions. Use:
 Return a JSON object with:
 - "summary": If no vacant segment starts at the boarding station: exactly "Sorry, we couldn't find any tickets, try some other train". Otherwise: what to book plus for any uncovered leg to destination: "Speak to the TTE to figure out a space".
 - "seats": Seat objects from the chosen plan only; [] if no plan.
-- "booking_plan": If the journey is fully covered, return only the real booked tickets in order, one object per ticket. If the journey is partial, use one slot per leg with \`{}\` for uncovered legs. If a chosen ticket covers multiple partial legs, repeat its instruction as needed but **split** that ticket’s fare across those legs (or full fare on first covered leg, 0 on the rest) — never full price on every leg.
+- "booking_plan": If the journey is fully covered, return only the real booked tickets in order, one object per ticket. If the journey is partial, use **one array slot per schedule micro-leg** (same count as the numbered route legs). For each physical IRCTC ticket that spans several micro-legs: put **one** filled object on the **first** micro-leg only (instruction + approx_price or prorated shares), then **\`{}\`** on each following micro-leg until that ticket ends — **do not** repeat the same instruction on consecutive slots.
 - "total_price": Sum of distinct ticket fares; must equal the sum of all \`approx_price\` in \`booking_plan\`.`;
 }
