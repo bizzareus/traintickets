@@ -1,0 +1,43 @@
+---
+description: Reuse shared project utilities first; prefer npm for primitives; add new logic in lib/common modules, not inline in pages.
+alwaysApply: true
+---
+
+# Shared utilities, npm, and where code lives
+
+## 1. Search the repo before writing anything reusable
+
+**Always** look for an existing implementation before adding new helpers or duplicating logic:
+
+- **Frontend / Next app**: search and read `lib/` (e.g. `lib/utils.ts`, `lib/api.ts`, and other `lib/**/*.ts`). Use or extend these instead of reimplementing in `app/**/*.tsx`.
+- **Backend**: search `backend/src` for existing services, helpers, or shared modules used across features.
+
+If something fits with a small extension, **extend the existing module** rather than copying logic into a page or route.
+
+## 2. Put reusable logic in shared modules, not in pages
+
+Logic that could apply to **more than one screen** (formatting, parsing, API shaping, validation, constants, stream helpers, etc.) belongs in a **shared module**—typically under `lib/` for the app or a dedicated shared area under `backend/src`—**not** buried inside `app/page.tsx` or a single route file.
+
+- New helpers: add or export from `lib/` (or backend equivalent), with a clear name and single responsibility.
+- Pages and API routes should **import** shared behavior; avoid large blocks of generic logic inline.
+
+## 3. Prefer npm for well-solved “basic” problems
+
+When implementing **common, well-solved problems**, use a **maintained npm package** instead of hand-rolled primitives.
+
+- **Dates / time zones / formatting / parsing**: use something already in the project or add one lightweight option; avoid ad-hoc date string math.
+- **Collections & object utilities** (deep clone, group-by, debounce, pick/omit, etc.): prefer `lodash-es`, `es-toolkit`, or small focused packages—not a one-off that reimplements them.
+- **IDs, validation, encoding, retry/backoff**: prefer standard libraries where they reduce bugs.
+
+## Before adding a dependency
+
+1. **Check `package.json`** (root and `backend/`) for an existing library.
+2. Prefer **small** or **tree-shakeable** packages.
+3. Avoid a **second** library that duplicates the same role unless migrating.
+
+## Exceptions
+
+- Truly **one-off** UI glue that is not a reusable primitive.
+- **Performance-critical** paths where profiling justifies custom code (document why).
+
+**Order of preference:** existing project `lib/` (or backend shared code) → npm → new shared module (not inline in a single page).

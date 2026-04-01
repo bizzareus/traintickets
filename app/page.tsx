@@ -9,153 +9,22 @@ import {
   IstRailMaintenanceModal,
 } from "@/components/IstRailMaintenance";
 import { useIstRailMaintenance } from "@/hooks/useIstRailMaintenance";
+import {
+  extractJourneyTrainRunDayError,
+  extractTrainRunDayFromValidateBody,
+  firstJourneyValidationMessage,
+  type JourneyRunDayUiError,
+} from "@/lib/journeyValidationErrors";
+import {
+  buildTrainDoesNotRunUiMessage,
+  getTrainRunsOnFlagForYmd,
+  type TrainRunsOnJson,
+} from "@/lib/trainRunsOn";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 
 type Station = { code: string; name: string };
 type TrainOption = { number: string; label: string };
-
-/** IRCTC schedule weekday flags (Y/N), same keys as trnscheduleenquiry API. */
-type TrainRunsOnJson = Partial<
-  Record<
-    | "trainRunsOnMon"
-    | "trainRunsOnTue"
-    | "trainRunsOnWed"
-    | "trainRunsOnThu"
-    | "trainRunsOnFri"
-    | "trainRunsOnSat"
-    | "trainRunsOnSun",
-    string
-  >
->;
-
-/** getDay(): 0 Sun … 6 Sat → IRCTC field names */
-const TRAIN_RUNS_ON_BY_GET_DAY = [
-  "trainRunsOnSun",
-  "trainRunsOnMon",
-  "trainRunsOnTue",
-  "trainRunsOnWed",
-  "trainRunsOnThu",
-  "trainRunsOnFri",
-  "trainRunsOnSat",
-] as const;
-
-function normalizeRunsOnFlag(v: unknown): "Y" | "N" | undefined {
-  if (v === "Y" || v === "N") return v;
-  if (typeof v === "string") {
-    const u = v.trim().toUpperCase();
-    if (u === "Y" || u === "N") return u;
-  }
-  return undefined;
-}
-
-/** Undefined if date invalid or schedule has no run-day data (do not block). */
-function getTrainRunsOnFlagForYmd(
-  ymd: string,
-  runs: TrainRunsOnJson | null | undefined,
-): "Y" | "N" | undefined {
-  if (!runs || Object.keys(runs).length === 0) return undefined;
-  const parts = ymd.trim().split("-").map(Number);
-  if (parts.length !== 3 || parts.some((n) => !Number.isFinite(n)))
-    return undefined;
-  const [y, mo, d] = parts;
-  const date = new Date(y, (mo ?? 1) - 1, d ?? 1);
-  if (Number.isNaN(date.getTime())) return undefined;
-  const key = TRAIN_RUNS_ON_BY_GET_DAY[date.getDay()];
-  return normalizeRunsOnFlag(runs[key]);
-}
-
-type JourneyRunDayUiError = {
-  message: string;
-  runningDayNames: string[];
-  nextRunDate: string | null;
-  nextRunDayAndDate: string | null;
-};
-
-function journeyErrorItemToTrainRunDay(
-  item: unknown,
-): JourneyRunDayUiError | null {
-  if (!item || typeof item !== "object") return null;
-  const e = item as Record<string, unknown>;
-  if (e.code !== "TRAIN_DOES_NOT_RUN_ON_DATE") return null;
-  return {
-    message: String(e.message ?? "This train does not run on that day."),
-    runningDayNames: Array.isArray(e.runningDayNames)
-      ? e.runningDayNames.map(String)
-      : [],
-    nextRunDate:
-      e.nextRunDate != null && String(e.nextRunDate).trim() !== ""
-        ? String(e.nextRunDate)
-        : null,
-    nextRunDayAndDate:
-      e.nextRunDayAndDate != null && String(e.nextRunDayAndDate).trim() !== ""
-        ? String(e.nextRunDayAndDate)
-        : null,
-  };
-}
-
-/** `POST .../journey/validate` body: `{ valid: false, errors }` */
-function extractTrainRunDayFromValidateBody(
-  data: unknown,
-): JourneyRunDayUiError | null {
-  if (!data || typeof data !== "object") return null;
-  const d = data as Record<string, unknown>;
-  if (d.valid !== false || !Array.isArray(d.errors)) return null;
-  for (const item of d.errors) {
-    const td = journeyErrorItemToTrainRunDay(item);
-    if (td) return td;
-  }
-  return null;
-}
-
-function firstJourneyValidationMessage(data: unknown): string | null {
-  if (!data || typeof data !== "object") return null;
-  const d = data as Record<string, unknown>;
-  if (d.valid !== false || !Array.isArray(d.errors)) return null;
-  const first = d.errors[0];
-  if (first && typeof first === "object" && "message" in first) {
-    return String((first as { message?: string }).message ?? "");
-  }
-  return null;
-}
-
-/** Parse journey 400 / validate error bodies (Nest may nest fields under `message`). */
-function extractJourneyTrainRunDayError(
-  err: unknown,
-): JourneyRunDayUiError | null {
-  const ax = err as { response?: { data?: unknown } };
-  const data = ax.response?.data;
-  if (!data || typeof data !== "object" || Array.isArray(data)) return null;
-  const fromValidate = extractTrainRunDayFromValidateBody(data);
-  if (fromValidate) return fromValidate;
-  const d = data as Record<string, unknown>;
-  let payload: Record<string, unknown> | null = null;
-  if (d.error === "TRAIN_DOES_NOT_RUN_ON_DATE") payload = d;
-  else if (
-    d.message != null &&
-    typeof d.message === "object" &&
-    !Array.isArray(d.message)
-  ) {
-    const m = d.message as Record<string, unknown>;
-    if (m.error === "TRAIN_DOES_NOT_RUN_ON_DATE") payload = m;
-  }
-  if (!payload) return null;
-  return {
-    message: String(payload.message ?? "This train does not run on that day."),
-    runningDayNames: Array.isArray(payload.runningDayNames)
-      ? payload.runningDayNames.map(String)
-      : [],
-    nextRunDate:
-      payload.nextRunDate != null && String(payload.nextRunDate).trim() !== ""
-        ? String(payload.nextRunDate)
-        : null,
-    nextRunDayAndDate:
-      payload.nextRunDayAndDate != null &&
-      String(payload.nextRunDayAndDate).trim() !== ""
-        ? String(payload.nextRunDayAndDate)
-        : null,
-  };
-}
 
 function SwapIcon({ className }: { className?: string }) {
   return (
@@ -586,12 +455,8 @@ export default function HomePage() {
   /** True when POST /journey returned 202 and setup runs in the background */
   const [journeySetupQueued, setJourneySetupQueued] = useState(false);
   const [monitorError, setMonitorError] = useState<string | null>(null);
-  const [journeyRunDayApiError, setJourneyRunDayApiError] = useState<{
-    message: string;
-    runningDayNames: string[];
-    nextRunDate: string | null;
-    nextRunDayAndDate: string | null;
-  } | null>(null);
+  const [journeyRunDayApiError, setJourneyRunDayApiError] =
+    useState<JourneyRunDayUiError | null>(null);
   const [monitorEmail, setMonitorEmail] = useState("");
   const [monitorMobile, setMonitorMobile] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -615,7 +480,15 @@ export default function HomePage() {
   const trainDropdownBlurCloseTimer = useRef<ReturnType<
     typeof setTimeout
   > | null>(null);
+  const fromDropdownBlurCloseTimer = useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null);
+  const toDropdownBlurCloseTimer = useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null);
   const [trainDropdownOpen, setTrainDropdownOpen] = useState(false);
+  const [fromDropdownOpen, setFromDropdownOpen] = useState(false);
+  const [toDropdownOpen, setToDropdownOpen] = useState(false);
   const [stationGateMessage, setStationGateMessage] = useState<string | null>(
     null,
   );
@@ -648,6 +521,12 @@ export default function HomePage() {
     return () => {
       if (trainDropdownBlurCloseTimer.current) {
         clearTimeout(trainDropdownBlurCloseTimer.current);
+      }
+      if (fromDropdownBlurCloseTimer.current) {
+        clearTimeout(fromDropdownBlurCloseTimer.current);
+      }
+      if (toDropdownBlurCloseTimer.current) {
+        clearTimeout(toDropdownBlurCloseTimer.current);
       }
     };
   }, []);
@@ -691,6 +570,8 @@ export default function HomePage() {
   useEffect(() => {
     setFrom("");
     setTo("");
+    setFromDropdownOpen(false);
+    setToDropdownOpen(false);
   }, [trainNumber]);
 
   useEffect(() => {
@@ -802,9 +683,10 @@ export default function HomePage() {
     [journeyDate, scheduleTrainRunsOn],
   );
   const trainDoesNotRunOnSelectedDate = trainRunsOnSelectedDate === "N";
-  const trainRunDayMessage = trainDoesNotRunOnSelectedDate
-    ? "This train doesn't run on that day."
-    : null;
+  const trainRunDayMessage = useMemo(() => {
+    if (!trainDoesNotRunOnSelectedDate) return null;
+    return buildTrainDoesNotRunUiMessage(journeyDate, scheduleTrainRunsOn);
+  }, [trainDoesNotRunOnSelectedDate, scheduleTrainRunsOn, journeyDate]);
   /** Schedule / search errors only — train run-day message is shown under Departure Date. */
   const formAlertMessage = scheduleError ?? error;
 
@@ -874,10 +756,12 @@ export default function HomePage() {
         },
         (ev) => {
           if (ev.phase === "started") {
+            const num = (ev.trainNumber ?? trainNumber).trim() || "your train";
+            const src = (from.trim() || fromCode).trim() || "your station";
+            const dep = to.trim() ? to.trim() : "your destination";
+            const dateStr = formatJourneyDateFriendly(journeyDate.trim());
             setService2StreamLine(
-              ev.trainNumber
-                ? `Checking train ${ev.trainNumber}…`
-                : "Checking IRCTC…",
+              `Finding about train ${num} for your journey from ${src} to ${dep} on ${dateStr}…`,
             );
             return;
           }
@@ -1092,6 +976,8 @@ export default function HomePage() {
     });
     setFrom(to);
     setTo(from);
+    setFromDropdownOpen(false);
+    setToDropdownOpen(false);
   }
 
   const stationsForRoute = scheduleStations?.length
@@ -1593,7 +1479,7 @@ export default function HomePage() {
                     className={`min-w-0 relative ${scheduleError ? "opacity-60" : !trainSelected ? "opacity-75" : ""}`}
                   >
                     <label
-                      htmlFor="from-dropdown-button"
+                      htmlFor="from-station-input"
                       className="block text-medium font-semibold text-gray-900 mb-1.5"
                     >
                       From
@@ -1607,27 +1493,52 @@ export default function HomePage() {
                           onClick={promptSelectTrainFirst}
                         />
                       )}
-                      <div
-                        id="from-dropdown-button"
-                        role="button"
-                        tabIndex={scheduleError || !trainSelected ? -1 : 0}
-                        {...(!scheduleError &&
-                          trainSelected && {
-                            "data-dropdown-toggle": "from-dropdown",
-                            "data-dropdown-trigger": "click",
-                          })}
-                        className="grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none"
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ")
-                            e.preventDefault();
-                        }}
-                      >
+                      <div className="grid w-full grid-cols-1 cursor-text rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none">
                         <input
+                          id="from-station-input"
                           type="text"
+                          role="combobox"
+                          aria-expanded={fromDropdownOpen}
+                          aria-controls="from-dropdown"
+                          aria-autocomplete="list"
                           value={from}
-                          onChange={(e) => setFrom(e.target.value)}
+                          onChange={(e) => {
+                            setFrom(e.target.value);
+                            if (trainSelected && !scheduleError) {
+                              setFromDropdownOpen(true);
+                            }
+                          }}
                           onFocus={() => {
-                            if (!trainSelected) promptSelectTrainFirst();
+                            if (fromDropdownBlurCloseTimer.current) {
+                              clearTimeout(fromDropdownBlurCloseTimer.current);
+                              fromDropdownBlurCloseTimer.current = null;
+                            }
+                            if (!trainSelected) {
+                              promptSelectTrainFirst();
+                              return;
+                            }
+                            if (!scheduleError) {
+                              setFromDropdownOpen(true);
+                            }
+                          }}
+                          onBlur={() => {
+                            if (fromDropdownBlurCloseTimer.current) {
+                              clearTimeout(fromDropdownBlurCloseTimer.current);
+                            }
+                            fromDropdownBlurCloseTimer.current = setTimeout(
+                              () => {
+                                setFromDropdownOpen(false);
+                                fromDropdownBlurCloseTimer.current = null;
+                              },
+                              180,
+                            );
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === "Escape") {
+                              e.preventDefault();
+                              setFromDropdownOpen(false);
+                              (e.target as HTMLInputElement).blur();
+                            }
                           }}
                           placeholder={
                             !trainSelected
@@ -1640,6 +1551,7 @@ export default function HomePage() {
                           }
                           disabled={!trainSelected || !!scheduleError}
                           className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-90"
+                          autoComplete="off"
                         />
                         <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
                           <ChevronUpDownIcon className="size-5 text-gray-500" />
@@ -1649,26 +1561,30 @@ export default function HomePage() {
                     {!scheduleError && trainSelected && (
                       <div
                         id="from-dropdown"
-                        className="z-10 hidden absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5"
+                        className={`z-10 absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5 ${fromDropdownOpen ? "" : "hidden"}`}
                       >
                         {mounted && (
                           <ul
+                            role="listbox"
                             className="text-base sm:text-sm"
-                            aria-labelledby="from-dropdown-button"
+                            aria-labelledby="from-station-input"
                           >
                             {stationOptions.map((s) => {
                               const optionLabel = `${s.code} - ${s.name}`;
                               const selected = from === optionLabel;
                               return (
-                                <li key={s.code}>
+                                <li key={s.code} role="presentation">
                                   <button
                                     type="button"
+                                    role="option"
+                                    aria-selected={selected}
                                     className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
+                                    onMouseDown={(e) => {
+                                      e.preventDefault();
+                                    }}
                                     onClick={() => {
                                       setFrom(optionLabel);
-                                      document
-                                        .getElementById("from-dropdown")
-                                        ?.classList.add("hidden");
+                                      setFromDropdownOpen(false);
                                     }}
                                   >
                                     <span className="block truncate font-normal">
@@ -1718,7 +1634,7 @@ export default function HomePage() {
                     className={`min-w-0 relative ${scheduleError ? "opacity-60" : !trainSelected ? "opacity-75" : ""}`}
                   >
                     <label
-                      htmlFor="to-dropdown-button"
+                      htmlFor="to-station-input"
                       className="block text-medium font-semibold text-gray-900 mb-1.5"
                     >
                       To
@@ -1732,27 +1648,52 @@ export default function HomePage() {
                           onClick={promptSelectTrainFirst}
                         />
                       )}
-                      <div
-                        id="to-dropdown-button"
-                        role="button"
-                        tabIndex={scheduleError || !trainSelected ? -1 : 0}
-                        {...(!scheduleError &&
-                          trainSelected && {
-                            "data-dropdown-toggle": "to-dropdown",
-                            "data-dropdown-trigger": "click",
-                          })}
-                        className="grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none"
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ")
-                            e.preventDefault();
-                        }}
-                      >
+                      <div className="grid w-full grid-cols-1 cursor-text rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none">
                         <input
+                          id="to-station-input"
                           type="text"
+                          role="combobox"
+                          aria-expanded={toDropdownOpen}
+                          aria-controls="to-dropdown"
+                          aria-autocomplete="list"
                           value={to}
-                          onChange={(e) => setTo(e.target.value)}
+                          onChange={(e) => {
+                            setTo(e.target.value);
+                            if (trainSelected && !scheduleError) {
+                              setToDropdownOpen(true);
+                            }
+                          }}
                           onFocus={() => {
-                            if (!trainSelected) promptSelectTrainFirst();
+                            if (toDropdownBlurCloseTimer.current) {
+                              clearTimeout(toDropdownBlurCloseTimer.current);
+                              toDropdownBlurCloseTimer.current = null;
+                            }
+                            if (!trainSelected) {
+                              promptSelectTrainFirst();
+                              return;
+                            }
+                            if (!scheduleError) {
+                              setToDropdownOpen(true);
+                            }
+                          }}
+                          onBlur={() => {
+                            if (toDropdownBlurCloseTimer.current) {
+                              clearTimeout(toDropdownBlurCloseTimer.current);
+                            }
+                            toDropdownBlurCloseTimer.current = setTimeout(
+                              () => {
+                                setToDropdownOpen(false);
+                                toDropdownBlurCloseTimer.current = null;
+                              },
+                              180,
+                            );
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === "Escape") {
+                              e.preventDefault();
+                              setToDropdownOpen(false);
+                              (e.target as HTMLInputElement).blur();
+                            }
                           }}
                           placeholder={
                             !trainSelected
@@ -1765,6 +1706,7 @@ export default function HomePage() {
                           }
                           disabled={!trainSelected || !!scheduleError}
                           className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-90"
+                          autoComplete="off"
                         />
                         <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
                           <ChevronUpDownIcon className="size-5 text-gray-500" />
@@ -1774,26 +1716,30 @@ export default function HomePage() {
                     {!scheduleError && trainSelected && (
                       <div
                         id="to-dropdown"
-                        className="z-10 hidden absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5"
+                        className={`z-10 absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5 ${toDropdownOpen ? "" : "hidden"}`}
                       >
                         {mounted && (
                           <ul
+                            role="listbox"
                             className="text-base sm:text-sm"
-                            aria-labelledby="to-dropdown-button"
+                            aria-labelledby="to-station-input"
                           >
                             {toOptions.map((s) => {
                               const optionLabel = `${s.code} - ${s.name}`;
                               const selected = to === optionLabel;
                               return (
-                                <li key={s.code}>
+                                <li key={s.code} role="presentation">
                                   <button
                                     type="button"
+                                    role="option"
+                                    aria-selected={selected}
                                     className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
+                                    onMouseDown={(e) => {
+                                      e.preventDefault();
+                                    }}
                                     onClick={() => {
                                       setTo(optionLabel);
-                                      document
-                                        .getElementById("to-dropdown")
-                                        ?.classList.add("hidden");
+                                      setToDropdownOpen(false);
                                     }}
                                   >
                                     <span className="block truncate font-normal">
