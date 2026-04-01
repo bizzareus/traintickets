@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { apiClient } from "@/lib/api";
-import { CHART_TIME_INGESTION_MAX_TRAINS_PER_BATCH } from "@/lib/chart-time-ingestion-constants";
+import { CHART_TIME_INGESTION_TRAIN_LIST_BATCH } from "@/lib/chart-time-ingestion-constants";
 
 type StationResult = {
   stationCode: string;
@@ -11,8 +11,10 @@ type StationResult = {
   error: string | null;
 };
 
-type TrainIngestionOk = {
-  ok: true;
+type TrainListIngested = {
+  kind: "ingested";
+  journeyDateUsed: string;
+  triedTomorrow: boolean;
   trainNumber: string;
   journeyDate: string;
   trainName: string;
@@ -26,49 +28,50 @@ type TrainIngestionOk = {
   stations: StationResult[];
 };
 
-type TrainIngestionFail = {
-  ok: false;
+type TrainListSkipped = {
+  kind: "skipped_existing";
   trainNumber: string;
+  label: string;
+};
+
+type TrainListFailed = {
+  kind: "failed";
+  trainNumber: string;
+  label: string;
   error: string;
 };
 
-type BatchIngestionResponse = {
-  journeyDate: string;
-  trains: (TrainIngestionOk | TrainIngestionFail)[];
-  skippedAlreadyInDb?: string[];
+type TrainListBatchResponse = {
+  mode: "train_list";
+  datesTried: { today: string; tomorrow: string };
+  trains: (TrainListIngested | TrainListSkipped | TrainListFailed)[];
   summary: {
-    trainCount: number;
-    trainsSkippedExistingDb?: number;
-    trainsRun?: number;
-    trainsOk: number;
-    trainsFailed: number;
+    pickedFromTrainList: number;
+    ingestedCount: number;
+    skippedExistingDbCount: number;
+    failedCount: number;
     stationsAttempted: number;
     stationsSaved: number;
     stationsFailed: number;
     stationsSkipped: number;
     elapsedMs: number;
+    remainingPendingTrainList: number;
   };
 };
 
 export default function ChartTimeIngestionPage() {
-  const [trainNumbersText, setTrainNumbersText] = useState("");
-  const [journeyDate, setJourneyDate] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [result, setResult] = useState<BatchIngestionResponse | null>(null);
+  const [result, setResult] = useState<TrainListBatchResponse | null>(null);
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function onRun() {
     setLoading(true);
     setError("");
     setResult(null);
     try {
-      const { data } = await apiClient.post<BatchIngestionResponse>(
-        "/api/chart-time-ingestion/run",
-        {
-          trainNumbersText,
-          journeyDate: journeyDate.trim(),
-        },
+      const { data } = await apiClient.post<TrainListBatchResponse>(
+        "/api/chart-time-ingestion/run-train-list",
+        {},
       );
       setResult(data);
     } catch (err: unknown) {
@@ -89,108 +92,78 @@ export default function ChartTimeIngestionPage() {
     <div>
       <h1 className="text-2xl font-bold text-slate-900">Chart-time ingestion</h1>
       <p className="mt-1 text-slate-600">
-        Backfill chart times station-by-station using IRCTC train composition.
+        Backfill chart times from the <code className="rounded bg-slate-100 px-0.5">TrainList</code>{" "}
+        table: up to {CHART_TIME_INGESTION_TRAIN_LIST_BATCH} trains per run that are not yet marked
+        done. Journey dates are <strong>IST today</strong>, then <strong>tomorrow</strong> if no
+        chart rows or successful composition calls for today. Each row is marked{" "}
+        <code className="rounded bg-slate-100 px-0.5">chart_time_ingestion_done</code> after
+        processing (reset via SQL if you need to retry).
       </p>
 
-      <form
-        onSubmit={onSubmit}
-        className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow"
-      >
-        <div className="grid gap-4">
-          <div>
-            <label className="block text-sm font-medium text-slate-700">
-              Train numbers
-            </label>
-            <p className="mt-0.5 text-xs text-slate-500">
-              Paste plain numbers (one per line) or quoted train-list lines like{" "}
-              <code className="rounded bg-slate-100 px-0.5">&quot;22637 - WEST COAST EXP&quot;,</code>{" "}
-              — the number before <code className="rounded bg-slate-100 px-0.5"> - </code> is used.
-              Duplicates ignored; trains that already have rows in{" "}
-              <code className="rounded bg-slate-100 px-0.5">TrainStationChartTime</code> are skipped.
-              Up to {CHART_TIME_INGESTION_MAX_TRAINS_PER_BATCH} trains per run.
-            </p>
-            <textarea
-              value={trainNumbersText}
-              onChange={(e) => setTrainNumbersText(e.target.value)}
-              className="mt-2 min-h-[10rem] w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm"
-              placeholder={`"22637 - WEST COAST EXP",
-"22638 - WEST COAST EXP",
-12951`}
-              required
-              spellCheck={false}
-            />
-          </div>
-          <div className="sm:max-w-xs">
-            <label className="block text-sm font-medium text-slate-700">
-              Journey date
-            </label>
-            <input
-              type="date"
-              value={journeyDate}
-              onChange={(e) => setJourneyDate(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
-              required
-            />
-          </div>
-        </div>
+      <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow">
         {error && (
-          <div className="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
-            {error}
-          </div>
+          <div className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>
         )}
         <button
-          type="submit"
+          type="button"
+          onClick={onRun}
           disabled={loading}
-          className="mt-5 rounded-lg bg-primary px-5 py-2 font-medium text-primary-foreground disabled:opacity-60"
+          className="rounded-lg bg-primary px-5 py-2 font-medium text-primary-foreground disabled:opacity-60"
         >
-          {loading ? "Running..." : "Run ingestion"}
+          {loading ? "Running…" : `Run next ${CHART_TIME_INGESTION_TRAIN_LIST_BATCH} trains`}
         </button>
-      </form>
+      </div>
 
       {result && (
         <div className="mt-6 space-y-4">
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow">
             <h2 className="text-lg font-semibold text-slate-900">Batch summary</h2>
             <p className="mt-1 text-sm text-slate-600">
-              Date: {result.journeyDate} | Parsed trains: {result.summary.trainCount}
-              {(result.summary.trainsSkippedExistingDb ?? 0) > 0 && (
-                <>
-                  {" "}
-                  | Skipped (already in DB): {result.summary.trainsSkippedExistingDb}
-                </>
-              )}
-              {(result.summary.trainsRun ?? result.trains.length) > 0 && (
-                <>
-                  {" "}
-                  | Run: {result.summary.trainsRun ?? result.trains.length} (
-                  {result.summary.trainsOk} ok, {result.summary.trainsFailed} failed)
-                </>
-              )}
-              {" "}
-              | Stations — attempted: {result.summary.stationsAttempted}, saved:{" "}
-              {result.summary.stationsSaved}, failed: {result.summary.stationsFailed},
-              skipped: {result.summary.stationsSkipped} | Total elapsed:{" "}
-              {result.summary.elapsedMs} ms
+              IST dates tried: today {result.datesTried.today}, tomorrow {result.datesTried.tomorrow}
+              {" · "}
+              Picked: {result.summary.pickedFromTrainList} | Ingested:{" "}
+              {result.summary.ingestedCount} | Skipped (already had chart times):{" "}
+              {result.summary.skippedExistingDbCount} | Failed: {result.summary.failedCount}
+              {" · "}
+              Stations — attempted: {result.summary.stationsAttempted}, saved:{" "}
+              {result.summary.stationsSaved}, failed: {result.summary.stationsFailed}, skipped:{" "}
+              {result.summary.stationsSkipped} | Elapsed: {result.summary.elapsedMs} ms
+              {" · "}
+              Remaining pending in TrainList: {result.summary.remainingPendingTrainList}
             </p>
-            {result.skippedAlreadyInDb && result.skippedAlreadyInDb.length > 0 && (
-              <p className="mt-2 text-xs text-slate-600">
-                <span className="font-medium text-slate-800">Not ingested (existing chart times):</span>{" "}
-                {result.skippedAlreadyInDb.join(", ")}
-              </p>
-            )}
           </div>
 
           {result.trains.map((t, ti) =>
-            t.ok ? (
+            t.kind === "skipped_existing" ? (
+              <div
+                key={`${t.trainNumber}-skip-${ti}`}
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700"
+              >
+                <span className="font-medium text-slate-900">{t.label}</span> — skipped (chart times
+                already in DB); marked done on TrainList.
+              </div>
+            ) : t.kind === "failed" ? (
+              <div
+                key={`${t.trainNumber}-err-${ti}`}
+                className="rounded-2xl border border-red-200 bg-red-50 p-6 shadow"
+              >
+                <h3 className="font-semibold text-red-900">{t.label}</h3>
+                <p className="mt-2 text-sm text-red-800">{t.error}</p>
+              </div>
+            ) : (
               <div key={`${t.trainNumber}-${ti}`} className="space-y-3">
                 <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow">
                   <h3 className="text-lg font-semibold text-slate-900">
                     {t.trainName} ({t.trainNumber})
                   </h3>
                   <p className="mt-1 text-sm text-slate-600">
-                    Attempted: {t.totals.attempted} | Saved: {t.totals.succeeded} |
-                    Failed: {t.totals.failed} | Skipped: {t.totals.skipped} | Elapsed:{" "}
-                    {t.elapsedMs} ms
+                    Journey date used: {t.journeyDateUsed}
+                    {t.triedTomorrow && t.journeyDateUsed === result.datesTried.tomorrow
+                      ? " (fell back from today)"
+                      : null}
+                    {" · "}
+                    Attempted: {t.totals.attempted} | Saved: {t.totals.succeeded} | Failed:{" "}
+                    {t.totals.failed} | Skipped: {t.totals.skipped} | Elapsed: {t.elapsedMs} ms
                   </p>
                 </div>
                 <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow">
@@ -218,16 +191,6 @@ export default function ChartTimeIngestionPage() {
                     </tbody>
                   </table>
                 </div>
-              </div>
-            ) : (
-              <div
-                key={`${t.trainNumber}-err-${ti}`}
-                className="rounded-2xl border border-red-200 bg-red-50 p-6 shadow"
-              >
-                <h3 className="font-semibold text-red-900">
-                  Train {t.trainNumber} — failed
-                </h3>
-                <p className="mt-2 text-sm text-red-800">{t.error}</p>
               </div>
             ),
           )}

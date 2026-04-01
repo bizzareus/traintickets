@@ -4,6 +4,7 @@ import {
   ServiceUnavailableException,
   UnauthorizedException,
 } from '@nestjs/common';
+import { DateTime } from 'luxon';
 import { PrismaService } from '../prisma/prisma.service';
 import { IrctcService } from '../irctc/irctc.service';
 
@@ -25,6 +26,9 @@ type RunIngestionParams = {
 
 /** Max trains per `runIngestionBatch` / `POST .../run` (deduped). */
 export const CHART_TIME_INGESTION_MAX_TRAINS_PER_BATCH = 80;
+
+/** `TrainList` rows per `runTrainListBatchIngestion` / `POST .../run-train-list`. */
+export const TRAIN_LIST_CHART_INGESTION_BATCH = 50;
 
 /**
  * Split pasted ingestion text into raw entries.
@@ -319,6 +323,208 @@ export class ChartTimeIngestionService {
         stationsSkipped,
         elapsedMs,
       },
+    };
+  }
+
+  /**
+   * Next `TRAIN_LIST_CHART_INGESTION_BATCH` trains from `TrainList` with
+   * `chartTimeIngestionDone = false`, using IST today then tomorrow if no chart rows were stored.
+   * Sets `chartTimeIngestionDone` on each row after processing.
+   */
+  async runTrainListBatchIngestion() {
+    const ist = DateTime.now().setZone('Asia/Kolkata');
+    const today = ist.toFormat('yyyy-LL-dd');
+    const tomorrow = ist.plus({ days: 1 }).toFormat('yyyy-LL-dd');
+
+    const rows = await this.prisma.trainList.findMany({
+      where: { chartTimeIngestionDone: false },
+      orderBy: { trainNumber: 'asc' },
+      take: TRAIN_LIST_CHART_INGESTION_BATCH,
+    });
+
+    const batchStarted = Date.now();
+    const settled = await Promise.allSettled(
+      rows.map((row) =>
+        this.ingestTrainListRowForChartTimes({
+          id: row.id,
+          trainNumber: row.trainNumber,
+          today,
+          tomorrow,
+        }),
+      ),
+    );
+
+    type RowResult =
+      | {
+          kind: 'skipped_existing';
+          trainNumber: string;
+          label: string;
+        }
+      | ({
+          kind: 'ingested';
+          journeyDateUsed: string;
+          triedTomorrow: boolean;
+        } & Awaited<ReturnType<ChartTimeIngestionService['runIngestion']>>)
+      | {
+          kind: 'failed';
+          trainNumber: string;
+          label: string;
+          error: string;
+        };
+
+    const trains: RowResult[] = settled.map((s, i) => {
+      const row = rows[i];
+      if (s.status === 'fulfilled') return s.value;
+      return {
+        kind: 'failed' as const,
+        trainNumber: row.trainNumber,
+        label: row.label,
+        error: this.toErrorMessage(s.reason),
+      };
+    });
+
+    let stationsAttempted = 0;
+    let stationsSaved = 0;
+    let stationsFailed = 0;
+    let stationsSkipped = 0;
+    for (const t of trains) {
+      if (t.kind !== 'ingested') continue;
+      stationsAttempted += t.totals.attempted;
+      stationsSaved += t.totals.succeeded;
+      stationsFailed += t.totals.failed;
+      stationsSkipped += t.totals.skipped;
+    }
+
+    const remainingPendingTrainList = await this.prisma.trainList.count({
+      where: { chartTimeIngestionDone: false },
+    });
+
+    const elapsedMs = Date.now() - batchStarted;
+    const ingested = trains.filter((t) => t.kind === 'ingested');
+    const skippedExisting = trains.filter((t) => t.kind === 'skipped_existing');
+    const failed = trains.filter((t) => t.kind === 'failed');
+
+    this.logger.log(
+      `[chart-time-ingestion] train_list_batch today=${today} tomorrow=${tomorrow} picked=${rows.length} ingested=${ingested.length} skipped_existing=${skippedExisting.length} failed=${failed.length} remaining_pending=${remainingPendingTrainList} elapsedMs=${elapsedMs}`,
+    );
+
+    return {
+      mode: 'train_list' as const,
+      datesTried: { today, tomorrow },
+      trains,
+      summary: {
+        pickedFromTrainList: rows.length,
+        ingestedCount: ingested.length,
+        skippedExistingDbCount: skippedExisting.length,
+        failedCount: failed.length,
+        stationsAttempted,
+        stationsSaved,
+        stationsFailed,
+        stationsSkipped,
+        elapsedMs,
+        remainingPendingTrainList,
+      },
+    };
+  }
+
+  private async ingestTrainListRowForChartTimes(params: {
+    id: string;
+    trainNumber: string;
+    today: string;
+    tomorrow: string;
+  }): Promise<
+    | {
+        kind: 'skipped_existing';
+        trainNumber: string;
+        label: string;
+      }
+    | ({
+        kind: 'ingested';
+        journeyDateUsed: string;
+        triedTomorrow: boolean;
+      } & Awaited<ReturnType<ChartTimeIngestionService['runIngestion']>>)
+    | {
+        kind: 'failed';
+        trainNumber: string;
+        label: string;
+        error: string;
+      }
+  > {
+    const row = await this.prisma.trainList.findUniqueOrThrow({
+      where: { id: params.id },
+      select: { id: true, trainNumber: true, label: true },
+    });
+
+    const existingChartCount = await this.prisma.trainStationChartTime.count({
+      where: { trainNumber: row.trainNumber },
+    });
+    if (existingChartCount > 0) {
+      await this.prisma.trainList.update({
+        where: { id: row.id },
+        data: { chartTimeIngestionDone: true },
+      });
+      return {
+        kind: 'skipped_existing',
+        trainNumber: row.trainNumber,
+        label: row.label,
+      };
+    }
+
+    const datesToTry = [params.today, params.tomorrow] as const;
+    let lastRun: Awaited<ReturnType<ChartTimeIngestionService['runIngestion']>> | null =
+      null;
+    let journeyDateUsed: string | null = null;
+    let triedTomorrow = false;
+
+    for (let i = 0; i < datesToTry.length; i++) {
+      const journeyDate = datesToTry[i];
+      if (i === 1) triedTomorrow = true;
+      const countBefore = await this.prisma.trainStationChartTime.count({
+        where: { trainNumber: row.trainNumber },
+      });
+      try {
+        lastRun = await this.runIngestion({
+          trainNumber: row.trainNumber,
+          journeyDate,
+        });
+      } catch (err) {
+        this.logger.warn(
+          `[chart-time-ingestion] train_list_row_error train=${row.trainNumber} date=${journeyDate} error=${this.toErrorMessage(err)}`,
+        );
+        lastRun = null;
+        continue;
+      }
+      journeyDateUsed = journeyDate;
+      const countAfter = await this.prisma.trainStationChartTime.count({
+        where: { trainNumber: row.trainNumber },
+      });
+      const gotChartRows = countAfter > countBefore;
+      const gotCompositions = lastRun.totals.succeeded > 0;
+      if (gotChartRows || gotCompositions) {
+        break;
+      }
+    }
+
+    await this.prisma.trainList.update({
+      where: { id: row.id },
+      data: { chartTimeIngestionDone: true },
+    });
+
+    if (lastRun && journeyDateUsed) {
+      return {
+        kind: 'ingested',
+        journeyDateUsed,
+        triedTomorrow,
+        ...lastRun,
+      };
+    }
+
+    return {
+      kind: 'failed',
+      trainNumber: row.trainNumber,
+      label: row.label,
+      error:
+        'No usable IRCTC response for IST today or tomorrow (schedule/composition unavailable or all stations failed).',
     };
   }
 

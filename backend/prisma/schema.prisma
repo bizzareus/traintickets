@@ -117,12 +117,14 @@ model BrowserExecution {
 
 // Train list (seeded from trainlist.txt, used for dropdown)
 model TrainList {
-  id          String   @id @default(cuid())
-  trainNumber String   @unique @map("train_number")
-  label       String   // e.g. "22637 - WEST COAST EXP"
+  id                     String   @id @default(cuid())
+  trainNumber            String   @unique @map("train_number")
+  label                  String // e.g. "22637 - WEST COAST EXP"
+  chartTimeIngestionDone Boolean  @default(false) @map("chart_time_ingestion_done")
 
   @@index([trainNumber])
   @@index([label])
+  @@index([chartTimeIngestionDone])
 }
 
 // Cached IRCTC train schedule (station list for from/to)
