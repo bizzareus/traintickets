@@ -8,6 +8,7 @@ import {
   type Service2CheckResult,
 } from '../service2/service2.service';
 import type { ChartTimeAvailabilityTask } from '@prisma/client';
+import { irctcBookingRedirect } from '../../../lib/irctcBookingRedirect';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
@@ -178,14 +179,12 @@ export class NotificationService {
     trainNumber: string;
     classCode: string;
   }): string {
-    const irctcClass = task.classCode.replace(/AC$/i, 'A');
-    return `https://www.irctc.co.in/nget/redirect?${new URLSearchParams({
-      origin: task.fromStationCode,
-      destination: task.toStationCode,
+    return irctcBookingRedirect({
+      from: task.fromStationCode,
+      to: task.toStationCode,
       trainNo: task.trainNumber,
-      class: irctcClass,
-      quota: 'GN',
-    }).toString()}`;
+      classCode: task.classCode,
+    });
   }
 
   /** Build IRCTC URL for a segment from instruction "FROM - TO - CLASS". */
@@ -196,17 +195,16 @@ export class NotificationService {
     const parts = instruction.split(' - ').map((p) => p.trim());
     const origin = parts[0] ?? '';
     const destination = parts[1] ?? '';
-    const classCode = (parts[2] ?? '3A').replace(/AC$/i, 'A');
+    const classCode = parts[2] ?? '3A';
     if (!origin || !destination) {
       return 'https://www.irctc.co.in/eticketing/login';
     }
-    return `https://www.irctc.co.in/nget/redirect?${new URLSearchParams({
-      origin,
-      destination,
+    return irctcBookingRedirect({
+      from: origin,
+      to: destination,
       trainNo: trainNumber,
-      class: classCode,
-      quota: 'GN',
-    }).toString()}`;
+      classCode,
+    });
   }
 
   /** Format segment for display: "CODE - Name → CODE - Name" using station names when available. */

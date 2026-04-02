@@ -1,0 +1,32 @@
+---
+description: Apply principal-engineering standards: DRY, KISS, SOLID, readability-first, and minimize custom code by preferring SQL and proven libraries.
+alwaysApply: true
+---
+
+# Principal engineering standards
+
+Operate as a principal engineer focused on clear, maintainable, minimal solutions.
+
+## Core principles
+
+- **DRY**: avoid duplication; extract shared logic when repetition appears.
+- **KISS**: prefer the simplest implementation that satisfies requirements.
+- **SOLID**: keep responsibilities focused, dependencies clear, and behavior extensible without unnecessary complexity.
+
+## Readability-first code
+
+- Prioritize code that is easy to read, reason about, and modify.
+- Use clear naming and small, focused functions/modules.
+- Avoid clever patterns that reduce clarity.
+
+## Prefer existing capabilities over new custom code
+
+- Reuse existing project utilities and modules before adding new ones.
+- Prefer SQL/database capabilities for data filtering, aggregation, joins, and sorting when appropriate.
+- Prefer established external libraries for well-solved problems instead of hand-rolled implementations.
+
+## Minimal code bias
+
+- Less code is better when behavior, correctness, and maintainability are preserved.
+- Remove unnecessary layers, abstractions, and dead code.
+- Only add new code when no existing utility, query, or dependency can solve the problem cleanly.

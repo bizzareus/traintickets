@@ -27,6 +27,7 @@ import {
   getTrainRunsOnFlagForYmd,
   type TrainRunsOnJson,
 } from "@/lib/trainRunsOn";
+import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
@@ -445,21 +446,46 @@ function TicketCardTitleRow({
 
 /** Footer strip under each ticket card: IRCTC chart times per station (Success-style bar). */
 function TicketJourneyChartStrip({
+  journeyDate,
   fromMeta,
   toMeta,
   loading,
 }: {
+  journeyDate: string;
   fromMeta?: StationChartMetaItem;
   toMeta?: StationChartMetaItem;
   loading: boolean;
 }) {
-  const pickFinalChartTime = (meta?: StationChartMetaItem): string | null =>
-    meta?.chartTwoTime?.trim() || meta?.chartOneTime?.trim() || null;
+  const pickFinalChart = (
+    meta?: StationChartMetaItem,
+  ): { time: string; dayOffset: number } | null => {
+    const chartTwo = meta?.chartTwoTime?.trim();
+    if (chartTwo) {
+      return {
+        time: chartTwo,
+        dayOffset: meta?.chartTwoIsNextDay ? 1 : 0,
+      };
+    }
+    const chartOne = meta?.chartOneTime?.trim();
+    if (chartOne) {
+      return { time: chartOne, dayOffset: 0 };
+    }
+    return null;
+  };
 
-  const finalChartTime =
-    pickFinalChartTime(fromMeta) ?? pickFinalChartTime(toMeta);
+  const finalChart = pickFinalChart(fromMeta) ?? pickFinalChart(toMeta);
+  const finalChartDateLabel = useMemo(() => {
+    if (!finalChart) return null;
+    const base = new Date(`${journeyDate}T00:00:00`);
+    if (Number.isNaN(base.getTime())) return null;
+    base.setDate(base.getDate() + finalChart.dayOffset);
+    return base.toLocaleDateString("en-IN", {
+      day: "numeric",
+      month: "short",
+    });
+  }, [journeyDate, finalChart]);
 
-  if (!loading && !finalChartTime) return null;
+  if (!loading && !finalChart) return null;
 
   return (
     <div
@@ -467,15 +493,16 @@ function TicketJourneyChartStrip({
       role="status"
     >
       <div className="min-w-0 flex-1 text-left">
-        {loading && !finalChartTime ? (
+        {loading && !finalChart ? (
           <p className="mt-1 text-s leading-snug font-semibold text-amber-800">
             Checking chart times for this leg…
           </p>
         ) : (
           <>
             <p className="mt-0.5 text-s leading-snug font-semibold text-amber-900">
-              Final Chart will be prepared at{" "}
-              <span className="font-semibold">{finalChartTime}</span>
+              Final availability will be on{" "}
+              {finalChartDateLabel ? `on ${finalChartDateLabel} ` : ""}
+              at <span className="font-semibold">{finalChart?.time}</span>
             </p>
           </>
         )}
@@ -1069,7 +1096,7 @@ export default function HomePage() {
   const stationsForRoute = trainSelected
     ? scheduleLoading
       ? []
-      : scheduleStations ?? []
+      : (scheduleStations ?? [])
     : stations;
   const stationOptions = stationsForRoute
     .filter(
@@ -1094,8 +1121,7 @@ export default function HomePage() {
       : trainSelected
         ? []
         : stationsForRoute.filter(
-            (s) =>
-              !fromCode || s.code.toUpperCase() !== fromCode.toUpperCase(),
+            (s) => !fromCode || s.code.toUpperCase() !== fromCode.toUpperCase(),
           );
   const toOptions = stationsEligibleForTo
     .filter(
@@ -2415,22 +2441,12 @@ export default function HomePage() {
                                             .trim()
                                             .toUpperCase() === seg.toCode,
                                       );
-                                    const irctcClass = seg.classCode.replace(
-                                      /AC$/i,
-                                      "A",
-                                    );
-                                    const bookUrl =
-                                      seg.fromCode && seg.toCode && trainNumber
-                                        ? `https://www.irctc.co.in/nget/redirect?${new URLSearchParams(
-                                            {
-                                              origin: seg.fromCode,
-                                              destination: seg.toCode,
-                                              trainNo: trainNumber,
-                                              class: irctcClass,
-                                              quota: "GN",
-                                            },
-                                          ).toString()}`
-                                        : "https://www.irctc.co.in/eticketing/login";
+                                    const bookUrl = irctcBookingRedirect({
+                                      from: seg.fromCode,
+                                      to: seg.toCode,
+                                      trainNo: trainNumber,
+                                      classCode: seg.classCode,
+                                    });
                                     return (
                                       <div className="flex flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 pt-4 pb-0 w-full shadow-sm">
                                         <TicketCardTitleRow
@@ -2493,6 +2509,7 @@ export default function HomePage() {
                                           Book
                                         </button>
                                         <TicketJourneyChartStrip
+                                          journeyDate={journeyDate}
                                           fromMeta={
                                             stationChartMetaByCode[segFromU]
                                           }
@@ -2607,19 +2624,12 @@ export default function HomePage() {
                             toStationSchedule?.arrivalTime?.trim() ||
                             toStationSchedule?.departureTime?.trim() ||
                             null;
-                          const irctcClass = seg.classCode.replace(/AC$/i, "A");
-                          const bookUrl =
-                            seg.fromCode && seg.toCode && trainNumber
-                              ? `https://www.irctc.co.in/nget/redirect?${new URLSearchParams(
-                                  {
-                                    origin: seg.fromCode,
-                                    destination: seg.toCode,
-                                    trainNo: trainNumber,
-                                    class: irctcClass,
-                                    quota: "GN",
-                                  },
-                                ).toString()}`
-                              : "https://www.irctc.co.in/eticketing/login";
+                          const bookUrl = irctcBookingRedirect({
+                            from: seg.fromCode,
+                            to: seg.toCode,
+                            trainNo: trainNumber,
+                            classCode: seg.classCode,
+                          });
                           const ticketSegFromU = String(seg.fromCode ?? "")
                             .trim()
                             .toUpperCase();
@@ -2695,6 +2705,7 @@ export default function HomePage() {
                                   Book
                                 </button>
                                 <TicketJourneyChartStrip
+                                  journeyDate={journeyDate}
                                   fromMeta={
                                     stationChartMetaByCode[ticketSegFromU]
                                   }
@@ -2778,7 +2789,6 @@ export default function HomePage() {
                           const origin = parts[0]?.trim() ?? "";
                           const destination = parts[1]?.trim() ?? "";
                           const classCode = parts[2]?.trim() ?? "3A";
-                          const irctcClass = classCode.replace(/AC$/i, "A");
                           const stationLabel = (code: string) => {
                             const s = stationsForRoute.find(
                               (x) =>
@@ -2787,18 +2797,12 @@ export default function HomePage() {
                             );
                             return s ? `${s.code} - ${s.name}` : code;
                           };
-                          const bookUrl =
-                            origin && destination && trainNumber
-                              ? `https://www.irctc.co.in/nget/redirect?${new URLSearchParams(
-                                  {
-                                    origin,
-                                    destination,
-                                    trainNo: trainNumber,
-                                    class: irctcClass,
-                                    quota: "GN",
-                                  },
-                                ).toString()}`
-                              : "https://www.irctc.co.in/eticketing/login";
+                          const bookUrl = irctcBookingRedirect({
+                            from: origin,
+                            to: destination,
+                            trainNo: trainNumber,
+                            classCode,
+                          });
                           return (
                             <div
                               key={i}
@@ -3248,32 +3252,6 @@ export default function HomePage() {
                   className="rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
                 >
                   No
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const irctcUrl = "https://www.irctc.co.in/eticketing/login";
-                    trackAnalyticsEvent({
-                      name: "button_clicked",
-                      properties: { button_id: "helpful_feedback_irctc" },
-                    });
-                    trackAnalyticsEvent({
-                      name: "irctc_open_login_clicked",
-                      properties: {},
-                    });
-                    window.open(irctcUrl, "_blank", "noopener,noreferrer");
-                    trackAnalyticsEvent({
-                      name: "popup_closed",
-                      properties: {
-                        popup: "helpful_feedback",
-                        method: "continue_irctc",
-                      },
-                    });
-                    setHelpfulFeedbackPopupOpen(false);
-                  }}
-                  className="rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white active:bg-blue-700"
-                >
-                  Open IRCTC
                 </button>
               </div>
             </div>
