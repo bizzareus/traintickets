@@ -1066,8 +1066,10 @@ export default function HomePage() {
     setToDropdownOpen(false);
   }
 
-  const stationsForRoute = scheduleStations?.length
-    ? scheduleStations
+  const stationsForRoute = trainSelected
+    ? scheduleLoading
+      ? []
+      : scheduleStations ?? []
     : stations;
   const stationOptions = stationsForRoute
     .filter(
@@ -1089,9 +1091,12 @@ export default function HomePage() {
       ? fromIndexOnSchedule >= 0
         ? scheduleStations.slice(fromIndexOnSchedule + 1)
         : []
-      : stationsForRoute.filter(
-          (s) => !fromCode || s.code.toUpperCase() !== fromCode.toUpperCase(),
-        );
+      : trainSelected
+        ? []
+        : stationsForRoute.filter(
+            (s) =>
+              !fromCode || s.code.toUpperCase() !== fromCode.toUpperCase(),
+          );
   const toOptions = stationsEligibleForTo
     .filter(
       (s) =>

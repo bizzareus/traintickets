@@ -140,9 +140,9 @@ export class ChartTimeIngestionService {
   async runIngestion(params: RunIngestionParams) {
     const startedAt = Date.now();
     const trainNumber = String(params.trainNumber ?? '').trim();
-    const journeyDate = String(params.journeyDate ?? '')
-      .trim()
-      .slice(0, 10);
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const journeyDate = yesterday.toISOString().slice(0, 10);
 
     const scheduleResult = await this.irctc.getTrainSchedule(trainNumber, {
       forceRefresh: true,
@@ -248,9 +248,6 @@ export class ChartTimeIngestionService {
         params.trainNumbers.map((t) => String(t ?? '').trim()).filter(Boolean),
       ),
     ];
-    if (!journeyDate) {
-      throw new ServiceUnavailableException('journeyDate is required.');
-    }
     if (unique.length === 0) {
       throw new ServiceUnavailableException(
         'At least one train number is required.',
