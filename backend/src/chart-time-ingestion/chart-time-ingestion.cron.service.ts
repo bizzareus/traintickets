@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
+// import { Cron } from '@nestjs/schedule';
 import { ChartTimeIngestionService } from './chart-time-ingestion.service';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class ChartTimeIngestionCronService {
   private running = false;
 
   /** Every 10 minutes: ingest next 50 pending train-list rows. */
-  @Cron('*/90 * * * *')
+  // @Cron('*/90 * * * *')
   async runTrainListIngestionBatchCron(): Promise<void> {
     if (this.running) {
       this.logger.warn(
