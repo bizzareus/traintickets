@@ -7,7 +7,7 @@ export class ChartTimeIngestionCronService {
   private readonly logger = new Logger(ChartTimeIngestionCronService.name);
   private running = false;
 
-  /** Every 10 minutes: ingest next 50 pending train-list rows. */
+  /** Every 10 minutes: ingest next 500 pending train-list rows. */
   // @Cron('*/90 * * * *')
   async runTrainListIngestionBatchCron(): Promise<void> {
     if (this.running) {

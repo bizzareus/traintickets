@@ -34,7 +34,7 @@ type RunIngestionParams = {
 export const CHART_TIME_INGESTION_MAX_TRAINS_PER_BATCH = 80;
 
 /** `TrainList` rows per `runTrainListBatchIngestion` / `POST .../run-train-list`. */
-export const TRAIN_LIST_CHART_INGESTION_BATCH = 50;
+export const TRAIN_LIST_CHART_INGESTION_BATCH = 500;
 
 /**
  * Split pasted ingestion text into raw entries.

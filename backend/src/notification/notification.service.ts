@@ -8,7 +8,7 @@ import {
   type Service2CheckResult,
 } from '../service2/service2.service';
 import type { ChartTimeAvailabilityTask } from '@prisma/client';
-import { irctcBookingRedirect } from '../../../lib/irctcBookingRedirect';
+import { irctcBookingRedirect } from '../common/irctc-booking-redirect';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
@@ -226,7 +226,8 @@ export class NotificationService {
     toCode: string,
     stationNameMap: Map<string, string>,
   ): string {
-    const fromName = stationNameMap.get(fromCode.trim().toUpperCase()) ?? fromCode;
+    const fromName =
+      stationNameMap.get(fromCode.trim().toUpperCase()) ?? fromCode;
     const toName = stationNameMap.get(toCode.trim().toUpperCase()) ?? toCode;
     return `${fromName} → ${toName}`;
   }

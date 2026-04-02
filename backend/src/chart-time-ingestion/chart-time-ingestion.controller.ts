@@ -55,7 +55,7 @@ export class ChartTimeIngestionController {
     });
   }
 
-  /** Next batch of pending `TrainList` rows (50): IST today, then tomorrow if no chart data. */
+  /** Next batch of pending `TrainList` rows (500): IST today, then tomorrow if no chart data. */
   @Post('run-train-list')
   runTrainList() {
     return this.ingestion.runTrainListBatchIngestion();
