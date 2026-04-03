@@ -13,6 +13,8 @@ export class TrainCompositionController {
       journeyDate?: string;
       /** Boarding / station to resolve chart times for (DB then IRCTC composition). */
       sourceStation?: string;
+      /** When true, calls IRCTC `trainComposition` for this boarding station (slower, fresh). */
+      refreshFromIrctc?: unknown;
     },
   ) {
     const trainNumber = String(body?.trainNumber ?? '').trim();
@@ -25,10 +27,12 @@ export class TrainCompositionController {
         'trainNumber, journeyDate (YYYY-MM-DD), and sourceStation are required',
       );
     }
+    const refreshFromIrctc = body?.refreshFromIrctc === true;
     const station = await this.trainComposition.fetchSourceStationChartMeta({
       trainNumber,
       journeyDate,
       sourceStation,
+      refreshFromIrctc,
     });
     return { stations: [station] };
   }

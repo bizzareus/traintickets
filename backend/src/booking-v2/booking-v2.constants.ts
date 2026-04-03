@@ -1,4 +1,4 @@
-/** ConfirmTkt mweb client headers (trial proxy — rotate if keys expire). */
+/** ConfirmTkt API base URLs. Stations/search use mweb headers; availability uses web headers. */
 export const BOOKING_V2_CONFIRMTKT_BASE = {
   stationsSuggest:
     'https://cttrainsapi.confirmtkt.com/api/v2/trains/stations/auto-suggestion',
@@ -8,15 +8,34 @@ export const BOOKING_V2_CONFIRMTKT_BASE = {
     'https://cttrainsapi.confirmtkt.com/api/v1/availability/fetchAvailability',
 } as const;
 
-export const BOOKING_V2_CONFIRMTKT_HEADERS: Record<string, string> = {
+/**
+ * Travel classes tried for “best available” path finding (ConfirmTkt).
+ * Order is used as a tie-break when multiple classes are confirmed (prefer earlier = typical budget order).
+ */
+export const BOOKING_V2_ALTERNATE_PATH_CLASSES = [
+  'SL',
+  '2S',
+  '3A',
+  '3E',
+  '2A',
+  '1A',
+  '1H',
+  'CC',
+  'EC',
+  'EA',
+  'FC',
+] as const;
+
+/** ConfirmTkt **web** client headers for `fetchAvailability` (matches browser curl). */
+export const BOOKING_V2_CONFIRMTKT_AVAILABILITY_HEADERS: Record<string, string> = {
   Accept: '*/*',
   'Accept-Language': 'en-US,en;q=0.9',
-  ApiKey: 'ct-mweb!2$',
+  ApiKey: 'ct-web!2$',
   'CT-Token':
     '10D579F94FD6215A0486F4420D1306E574C1F48178356C7F8B17603E66374E04',
   'CT-Userkey':
     'C87DE5CEE4A90596896DD7A15FA3F2DD678136DD2431C3356C0CA5282C123E63',
-  ClientId: 'ct-mweb',
+  ClientId: 'ct-web',
   'Content-Type': 'application/json',
   DNT: '1',
   DeviceId: '2e886267-22b0-4da4-bdc5-636345e083f7',
@@ -31,4 +50,10 @@ export const BOOKING_V2_CONFIRMTKT_HEADERS: Record<string, string> = {
     '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
   'sec-ch-ua-mobile': '?0',
   'sec-ch-ua-platform': '"macOS"',
+};
+
+export const BOOKING_V2_CONFIRMTKT_HEADERS: Record<string, string> = {
+  ...BOOKING_V2_CONFIRMTKT_AVAILABILITY_HEADERS,
+  ApiKey: 'ct-mweb!2$',
+  ClientId: 'ct-mweb',
 };

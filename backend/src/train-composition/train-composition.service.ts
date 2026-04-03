@@ -153,15 +153,21 @@ export class TrainCompositionService {
   }
 
   /**
-   * Chart times for one train + station from `TrainStationChartTime` only (no IRCTC).
-   * `journeyDate` is accepted for API symmetry; rows are not keyed by date in DB.
+   * Chart times for one train + boarding station.
+   * With `refreshFromIrctc`, calls IRCTC trainComposition for that boarding point and fills
+   * chart times from the response (and DB side effects from {@link fetchForBoarding}).
    */
   async fetchSourceStationChartMeta(params: {
     trainNumber: string;
     journeyDate: string;
     sourceStation: string;
+    /** When true, POST IRCTC trainComposition for this boarding station before reading DB. */
+    refreshFromIrctc?: boolean;
   }): Promise<StationChartMetaDto> {
     const trainNumber = String(params.trainNumber ?? '').trim();
+    const journeyDate = String(params.journeyDate ?? '')
+      .trim()
+      .slice(0, 10);
     const stationCode = String(params.sourceStation ?? '')
       .trim()
       .toUpperCase();
@@ -172,11 +178,40 @@ export class TrainCompositionService {
       trainDepartureTime: null,
     };
 
+    if (params.refreshFromIrctc && trainNumber && journeyDate && stationCode) {
+      try {
+        const comp = await this.fetchForBoarding(
+          {
+            trainNo: trainNumber,
+            jDate: journeyDate,
+            boardingStation: stationCode,
+          },
+          { allowChartNotPrepared: true },
+        );
+        const ex = this.irctc.chartTimesFromCompositionResponse(comp);
+        if (ex.chartOneTime?.trim()) {
+          row.chartOneTime = ex.chartOneTime.trim();
+          row.chartTwoTime = ex.chartTwoTime?.trim() ?? null;
+          row.chartTwoIsNextDay = ex.chartTwoIsNextDay;
+          row.chartRemoteStation = ex.chartRemoteStation;
+        }
+        if (ex.irctcError) {
+          row.compositionError = ex.irctcError;
+        }
+      } catch (err) {
+        row.compositionError =
+          err instanceof Error ? err.message : String(err);
+        this.logger.warn(
+          `[trainComposition] refreshFromIrctc failed train=${trainNumber} station=${stationCode}: ${row.compositionError}`,
+        );
+      }
+    }
+
     const cached = await this.chartTime.getChartMetaForTrainStation(
       trainNumber,
       stationCode,
     );
-    if (cached?.chartOne?.trim()) {
+    if (cached?.chartOne?.trim() && !row.chartOneTime?.trim()) {
       applyDbCachedToRow(row, cached);
     }
 

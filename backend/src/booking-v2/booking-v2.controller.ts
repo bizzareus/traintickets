@@ -15,6 +15,13 @@ function trimStr(v: unknown): string {
   return '';
 }
 
+function bodyStringArray(v: unknown): string[] {
+  if (!Array.isArray(v)) return [];
+  return v
+    .map((x) => trimStr(x).toUpperCase())
+    .filter((s) => s.length > 0);
+}
+
 @Controller('api/booking-v2')
 export class BookingV2Controller {
   constructor(private readonly bookingV2: BookingV2Service) {}
@@ -61,7 +68,8 @@ export class BookingV2Controller {
       from?: unknown;
       to?: unknown;
       date?: unknown;
-      travelClass?: unknown;
+      /** Train search `avlClasses` — each is probed via fetchAvailability. */
+      avlClasses?: unknown;
       quota?: unknown;
     },
   ) {
@@ -69,7 +77,7 @@ export class BookingV2Controller {
     const from = trimStr(body?.from);
     const to = trimStr(body?.to);
     const date = trimStr(body?.date);
-    const travelClass = trimStr(body?.travelClass) || 'SL';
+    const avlClasses = bodyStringArray(body?.avlClasses);
     const quota = trimStr(body?.quota) || 'GN';
     if (!trainNumber || !from || !to || !date) {
       throw new BadRequestException(
@@ -86,7 +94,7 @@ export class BookingV2Controller {
       from,
       to,
       date,
-      travelClass,
+      avlClasses,
       quota,
     });
   }

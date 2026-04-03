@@ -2,13 +2,17 @@ import { Injectable, Logger } from '@nestjs/common';
 import { IrctcService } from '../irctc/irctc.service';
 import type { ScheduleStation } from '../irctc/irctc.service';
 import {
+  BOOKING_V2_ALTERNATE_PATH_CLASSES,
+  BOOKING_V2_CONFIRMTKT_AVAILABILITY_HEADERS,
   BOOKING_V2_CONFIRMTKT_BASE,
   BOOKING_V2_CONFIRMTKT_HEADERS,
 } from './booking-v2.constants';
 import {
   avlDayMatchesJourneyDate,
   isLegConfirmed,
-  pickFarthestConfirmedStationIndex,
+  normalizeAndDedupeClassCodes,
+  orderedDestinationIndices,
+  parseConfirmTktAvailablityType,
   stationCodesBetweenStops,
   ymdToConfirmTktDate,
 } from './booking-v2.utils';
@@ -16,6 +20,10 @@ import {
 export type AlternatePathLeg = {
   from: string;
   to: string;
+  /** Confirmed booking segment vs. hop with no usable class — check live on IRCTC/ConfirmTkt. */
+  segmentKind: 'confirmed' | 'check_realtime';
+  /** Travel class when `segmentKind` is confirmed; null for check_realtime. */
+  travelClass: string | null;
   confirmTktStatus: string | null;
   availablityStatus: string | null;
   predictionPercentage: string | null;
@@ -35,10 +43,24 @@ export type FindAlternatePathsResult = {
 };
 
 type AvlDayRow = {
+  availablityType?: number | string | null;
   availablityStatus?: string | null;
   confirmTktStatus?: string | null;
   predictionPercentage?: string | null;
   availabilityDisplayName?: string | null;
+};
+
+type SegmentProbeRow = {
+  day: AvlDayRow | null;
+  fare: number | null;
+  fetchError?: string;
+};
+
+type MultiClassProbeResult = {
+  perClass: SegmentProbeRow[];
+  bestConfirmedClassIndex: number | null;
+  /** First class with an availability row (for regret / realtime messaging). */
+  displayRow: AvlDayRow | null;
 };
 
 @Injectable()
@@ -186,11 +208,19 @@ export class BookingV2Service {
       dateOfJourney: dateDdMmYyyy,
       quota: quota.trim().toUpperCase() || 'GN',
       travelClass: travelClass.trim().toUpperCase() || 'SL',
+      enableTG: 'true',
+      tGPlan: 'CTG-A36',
+      showTGPrediction: 'false',
+      tgColor: 'DEFAULT',
+      showPredictionGlobal: 'true',
+      showNewMealOptions: 'true',
+      showNewAlternates: 'false',
+      showNewAltText: 'true',
     });
     const url = `${BOOKING_V2_CONFIRMTKT_BASE.fetchAvailability}?${params}`;
     const res = await fetch(url, {
       method: 'POST',
-      headers: BOOKING_V2_CONFIRMTKT_HEADERS,
+      headers: BOOKING_V2_CONFIRMTKT_AVAILABILITY_HEADERS,
       body: '',
     });
     const text = await res.text();
@@ -212,15 +242,13 @@ export class BookingV2Service {
     from: string;
     to: string;
     date: string;
-    travelClass?: string;
+    /** Classes offered on this train (train search `avlClasses`). When empty, a default list is used. */
+    avlClasses?: string[];
     quota?: string;
   }): Promise<FindAlternatePathsResult> {
     const trainNumber = String(input.trainNumber).trim();
     const from = String(input.from).trim().toUpperCase();
     const to = String(input.to).trim().toUpperCase();
-    const travelClass = String(input.travelClass ?? 'SL')
-      .trim()
-      .toUpperCase();
     const quota = String(input.quota ?? 'GN').trim().toUpperCase();
     const dateDdMmYyyy = this.normalizeToConfirmTktDate(input.date);
     const debugLog: string[] = [];
@@ -233,8 +261,14 @@ export class BookingV2Service {
       throw new Error('trainNumber, from, to, and valid date are required');
     }
 
+    const fromTrain = normalizeAndDedupeClassCodes(input.avlClasses ?? []);
+    const classes =
+      fromTrain.length > 0
+        ? fromTrain
+        : [...BOOKING_V2_ALTERNATE_PATH_CLASSES];
+
     logStep(
-      `Start: ${from} → ${to} | journeyDate=${input.date} (ConfirmTkt ${dateDdMmYyyy}) | class=${travelClass} quota=${quota}`,
+      `Start: ${from} → ${to} | journeyDate=${input.date} (ConfirmTkt ${dateDdMmYyyy}) | probeClasses=${classes.join(',')} (${fromTrain.length ? 'from train avlClasses' : 'fallback list'}) quota=${quota}`,
     );
 
     const sched = await this.irctc.getTrainSchedule(trainNumber);
@@ -282,107 +316,176 @@ export class BookingV2Service {
     let currentIdx = 0;
     const targetIdx = stations.length - 1;
     let hop = 0;
+    const probeCache = new Map<string, MultiClassProbeResult>();
+    const maxIterations = Math.max(8, stations.length * 4);
+    let iterations = 0;
 
-    while (currentIdx < targetIdx) {
+    const cacheKey = (a: string, b: string) => `${a}|${b}`;
+
+    while (currentIdx < targetIdx && iterations < maxIterations) {
+      iterations += 1;
       hop += 1;
-      const candidateIndices: number[] = [];
-      for (let j = currentIdx + 1; j <= targetIdx; j++) {
-        candidateIndices.push(j);
-      }
-
-      const destCodes = candidateIndices.map((i) => stations[i]);
+      const destOrder = orderedDestinationIndices(currentIdx, targetIdx);
+      const waveLabels = destOrder.map(
+        (i) => `${stations[currentIdx]}→${stations[i]}`,
+      );
       logStep(
-        `Hop ${hop}: boarding ${stations[currentIdx]} — checking ConfirmTkt availability to: ${destCodes.join(', ')} (${candidateIndices.length} parallel calls)`,
+        `Hop ${hop}: at ${stations[currentIdx]} — parallel fetch (${destOrder.length} ODs × ${classes.length} classes), manual priority: ${waveLabels.join(' > ')}; first confirmed in this order wins`,
       );
 
-      const segmentResults = await Promise.all(
-        candidateIndices.map((destIdx) =>
-          this.fetchSegmentAvailability(
-            trainNumber,
-            stations[currentIdx],
-            stations[destIdx],
-            dateDdMmYyyy,
-            travelClass,
-            quota,
-          ),
-        ),
+      const probes: MultiClassProbeResult[] = await Promise.all(
+        destOrder.map(async (destIdx) => {
+          const fromStn = stations[currentIdx];
+          const toStn = stations[destIdx];
+          const key = cacheKey(fromStn, toStn);
+          let probe = probeCache.get(key);
+          if (!probe) {
+            probe = await this.probeSegmentAllClasses(
+              trainNumber,
+              fromStn,
+              toStn,
+              dateDdMmYyyy,
+              classes,
+              quota,
+            );
+            probeCache.set(key, probe);
+          }
+          return probe;
+        }),
       );
 
-      for (let i = 0; i < segmentResults.length; i++) {
-        const destIdx = candidateIndices[i];
-        const seg = segmentResults[i];
-        logStep(
-          this.formatSegmentProbeLine(
-            stations[currentIdx],
-            stations[destIdx],
-            seg,
-          ),
-        );
+      let chosenDestIdx: number | null = null;
+      let chosenProbe: MultiClassProbeResult | null = null;
+      for (let w = 0; w < destOrder.length; w++) {
+        const destIdx = destOrder[w]!;
+        const fromStn = stations[currentIdx];
+        const toStn = stations[destIdx];
+        const probe = probes[w]!;
+        logStep(this.formatMultiClassProbeLine(fromStn, toStn, probe, classes));
+        if (probe.bestConfirmedClassIndex != null) {
+          chosenDestIdx = destIdx;
+          chosenProbe = probe;
+          break;
+        }
       }
 
-      const days = segmentResults.map((s) => s.day);
-      const nextIdx = pickFarthestConfirmedStationIndex(
-        days,
-        candidateIndices,
-      );
-
-      if (nextIdx == null) {
+      if (
+        chosenDestIdx != null &&
+        chosenProbe != null &&
+        chosenProbe.bestConfirmedClassIndex != null
+      ) {
+        const bc = chosenProbe.bestConfirmedClassIndex;
+        const picked = chosenProbe.perClass[bc]!;
+        const day = picked.day;
         logStep(
-          `Hop ${hop}: no segment from ${stations[currentIdx]} satisfied Confirm/Probable/AVAILABLE* — marking failure to ${stations[targetIdx]}`,
+          `Hop ${hop}: CHOSEN ${stations[currentIdx]} → ${stations[chosenDestIdx]} | class=${classes[bc]}${picked.fare != null ? ` fare ₹${picked.fare}` : ''}`,
         );
         legs.push({
           from: stations[currentIdx],
-          to: stations[targetIdx],
-          confirmTktStatus: 'NO_CONFIRMED_PATH',
-          availablityStatus: null,
-          predictionPercentage: null,
-          availabilityDisplayName: null,
-          fare: null,
+          to: stations[chosenDestIdx],
+          segmentKind: 'confirmed',
+          travelClass: classes[bc],
+          confirmTktStatus: day ? String(day.confirmTktStatus ?? '') : null,
+          availablityStatus: day ? String(day.availablityStatus ?? '') : null,
+          predictionPercentage: day
+            ? String(day.predictionPercentage ?? '')
+            : null,
+          availabilityDisplayName: day
+            ? String(day.availabilityDisplayName ?? '')
+            : null,
+          fare: picked.fare,
         });
+        currentIdx = chosenDestIdx;
+        continue;
+      }
+
+      const nextIdx = currentIdx + 1;
+      if (nextIdx > targetIdx) {
+        logStep(`Hop ${hop}: cannot advance past ${stations[targetIdx]}`);
         break;
       }
 
-      const pickedK = candidateIndices.indexOf(nextIdx);
-      const day = segmentResults[pickedK]?.day ?? null;
-      const fare = segmentResults[pickedK]?.fare ?? null;
-
+      const fromStn = stations[currentIdx];
+      const toStn = stations[nextIdx];
+      const key = cacheKey(fromStn, toStn);
+      let bridge = probeCache.get(key);
+      if (!bridge) {
+        bridge = await this.probeSegmentAllClasses(
+          trainNumber,
+          fromStn,
+          toStn,
+          dateDdMmYyyy,
+          classes,
+          quota,
+        );
+        probeCache.set(key, bridge);
+      }
       logStep(
-        `Hop ${hop}: CHOSEN farthest usable segment ${stations[currentIdx]} → ${stations[nextIdx]} (ticket availability OK for greedy step)${fare != null ? ` | fare ₹${fare}` : ''}`,
+        `Hop ${hop}: no confirmed segment in destination order — bridge ${fromStn} → ${toStn} (check realtime)`,
       );
+      logStep(this.formatMultiClassProbeLine(fromStn, toStn, bridge, classes));
 
-      legs.push({
-        from: stations[currentIdx],
-        to: stations[nextIdx],
-        confirmTktStatus: day ? String(day.confirmTktStatus ?? '') : null,
-        availablityStatus: day ? String(day.availablityStatus ?? '') : null,
-        predictionPercentage: day
-          ? String(day.predictionPercentage ?? '')
-          : null,
-        availabilityDisplayName: day
-          ? String(day.availabilityDisplayName ?? '')
-          : null,
-        fare,
-      });
-
+      if (bridge.bestConfirmedClassIndex != null) {
+        const bc: number = bridge.bestConfirmedClassIndex;
+        const picked = bridge.perClass[bc]!;
+        const day = picked.day;
+        logStep(
+          `Hop ${hop}: bridge segment is confirmed in ${classes[bc]}${picked.fare != null ? ` fare ₹${picked.fare}` : ''}`,
+        );
+        legs.push({
+          from: fromStn,
+          to: toStn,
+          segmentKind: 'confirmed',
+          travelClass: classes[bc],
+          confirmTktStatus: day ? String(day.confirmTktStatus ?? '') : null,
+          availablityStatus: day ? String(day.availablityStatus ?? '') : null,
+          predictionPercentage: day
+            ? String(day.predictionPercentage ?? '')
+            : null,
+          availabilityDisplayName: day
+            ? String(day.availabilityDisplayName ?? '')
+            : null,
+          fare: picked.fare,
+        });
+      } else {
+        const disp = bridge.displayRow;
+        legs.push({
+          from: fromStn,
+          to: toStn,
+          segmentKind: 'check_realtime',
+          travelClass: null,
+          confirmTktStatus: disp ? String(disp.confirmTktStatus ?? '') : null,
+          availablityStatus: disp ? String(disp.availablityStatus ?? '') : null,
+          predictionPercentage: disp
+            ? String(disp.predictionPercentage ?? '')
+            : null,
+          availabilityDisplayName: disp
+            ? String(disp.availabilityDisplayName ?? '')
+            : null,
+          fare: null,
+        });
+      }
       currentIdx = nextIdx;
     }
 
-    const confirmedLegs = legs.filter(
-      (l) => l.confirmTktStatus !== 'NO_CONFIRMED_PATH',
-    );
+    const confirmedLegs = legs.filter((l) => l.segmentKind === 'confirmed');
     const totalFare =
       confirmedLegs.length > 0 &&
       confirmedLegs.every((l) => typeof l.fare === 'number')
         ? confirmedLegs.reduce((s, l) => s + (l.fare ?? 0), 0)
         : null;
 
-    const hasFailure = legs.some(
-      (l) => l.confirmTktStatus === 'NO_CONFIRMED_PATH',
-    );
+    const hasRealtime = legs.some((l) => l.segmentKind === 'check_realtime');
     const isComplete =
-      !hasFailure &&
+      !hasRealtime &&
       legs.length > 0 &&
       legs[legs.length - 1].to === stations[targetIdx];
+
+    if (currentIdx < targetIdx) {
+      logStep(
+        `Stopped before final stop ${stations[targetIdx]} (still at ${stations[currentIdx]} after ${iterations} iteration(s))`,
+      );
+    }
 
     logStep(
       `Done: isComplete=${isComplete} legs=${legs.length}${totalFare != null ? ` totalFare=₹${totalFare}` : ''}`,
@@ -399,34 +502,132 @@ export class BookingV2Service {
     };
   }
 
-  private formatSegmentProbeLine(
+  /** One-line per segment: each probed class with the availability snapshot we used from ConfirmTkt. */
+  private formatMultiClassProbeLine(
     fromStn: string,
     toStn: string,
-    seg: {
-      day: AvlDayRow | null;
-      fare: number | null;
-      fetchError?: string;
-    },
+    probe: MultiClassProbeResult,
+    classCodes: readonly string[],
   ): string {
-    if (seg.fetchError) {
-      return `  ${fromStn} → ${toStn}: FETCH ERROR — ${seg.fetchError}`;
+    const parts = classCodes.map((code, i) => {
+      const p = probe.perClass[i];
+      const label = p
+        ? this.formatPerClassAvailabilityLabel(p)
+        : 'missing';
+      return `${code} (${label})`;
+    });
+    const best = probe.bestConfirmedClassIndex;
+    const bestStr =
+      best != null && classCodes[best]
+        ? ` | picked ${classCodes[best]}`
+        : ' | no confirmed class';
+    return `  ${fromStn} → ${toStn} — ${parts.join(', ')}${bestStr}`;
+  }
+
+  /** Human-readable label from one fetchAvailability row (debug / UI). */
+  private formatPerClassAvailabilityLabel(row: SegmentProbeRow): string {
+    if (row.fetchError) {
+      const m = row.fetchError.trim();
+      return m.length > 28 ? `${m.slice(0, 25)}…` : m;
     }
-    if (!seg.day) {
-      return `  ${fromStn} → ${toStn}: no avl row for journey date (or empty avlDayList)`;
+    if (!row.day) {
+      return 'no row';
     }
-    const ok = isLegConfirmed(seg.day);
-    const disp = String(
-      seg.day.availabilityDisplayName ?? seg.day.availablityStatus ?? '?',
-    ).trim();
-    const ct = String(seg.day.confirmTktStatus ?? '?').trim();
-    const pred = seg.day.predictionPercentage
-      ? ` prediction=${seg.day.predictionPercentage}%`
-      : '';
-    const fareStr = seg.fare != null ? ` fare=₹${seg.fare}` : '';
-    const verdict = ok
-      ? 'ticket availability USABLE (Confirm / Probable / AVAILABLE*)'
-      : 'not usable as confirmed leg';
-    return `  ${fromStn} → ${toStn}: ${verdict} | ${disp} | ConfirmTkt status=${ct}${pred}${fareStr}`;
+    const day = row.day;
+    const disp = String(day.availabilityDisplayName ?? '').trim();
+    const st = String(day.availablityStatus ?? '').trim();
+    const ct = String(day.confirmTktStatus ?? '').trim();
+    const at = parseConfirmTktAvailablityType(day.availablityType);
+
+    if (at === 3) {
+      return disp ? `Waiting (${this.shortenDebugLabel(disp, 20)})` : 'Waiting';
+    }
+    if (at === 1) {
+      return disp ? this.shortenDebugLabel(disp, 24) : 'Available';
+    }
+
+    if (isLegConfirmed(day)) {
+      if (disp) return this.shortenDebugLabel(disp, 24);
+      if (st.toUpperCase().startsWith('AVAILABLE')) {
+        const tail = st.replace(/^AVAILABLE/i, '').replace(/^[-#]/, '').slice(0, 14);
+        return tail ? `Avail ${tail}` : 'Available';
+      }
+      return ct ? this.shortenDebugLabel(ct, 24) : 'Confirmed';
+    }
+
+    const du = disp.toUpperCase();
+    const su = st.toUpperCase();
+    if (du.includes('WL') || du.includes('WAITLIST') || su.includes('WL')) {
+      const num =
+        disp.match(/WL\D*(\d+)/i)?.[1] ??
+        st.match(/WL\D*(\d+)/i)?.[1] ??
+        disp.match(/(\d+)/)?.[1];
+      return num ? `WL-${num}` : 'WL';
+    }
+    if (du.includes('RAC') || su.includes('RAC')) {
+      return disp ? this.shortenDebugLabel(disp, 24) : 'RAC';
+    }
+    if (du.includes('REGRET') || su.includes('REGRET')) {
+      return 'Regret';
+    }
+    if (disp) return this.shortenDebugLabel(disp, 24);
+    if (ct) return this.shortenDebugLabel(ct, 24);
+    if (st) return this.shortenDebugLabel(st, 24);
+    return '?';
+  }
+
+  private shortenDebugLabel(s: string, max: number): string {
+    const t = s.trim();
+    if (t.length <= max) return t;
+    return `${t.slice(0, Math.max(1, max - 1))}…`;
+  }
+
+  private pickBestConfirmedClassIndex(
+    perClass: SegmentProbeRow[],
+  ): number | null {
+    let best: { i: number; fare: number } | null = null;
+    for (let i = 0; i < perClass.length; i++) {
+      const row = perClass[i]?.day;
+      if (!isLegConfirmed(row)) continue;
+      const fare = perClass[i]?.fare;
+      const fareN =
+        typeof fare === 'number' && !Number.isNaN(fare)
+          ? fare
+          : Number.POSITIVE_INFINITY;
+      if (
+        best == null ||
+        fareN < best.fare ||
+        (fareN === best.fare && i < best.i)
+      ) {
+        best = { i, fare: fareN };
+      }
+    }
+    return best?.i ?? null;
+  }
+
+  private async probeSegmentAllClasses(
+    trainNo: string,
+    fromStn: string,
+    toStn: string,
+    dateDdMmYyyy: string,
+    classCodes: readonly string[],
+    quota: string,
+  ): Promise<MultiClassProbeResult> {
+    const perClass = await Promise.all(
+      classCodes.map((c) =>
+        this.fetchSegmentAvailability(
+          trainNo,
+          fromStn,
+          toStn,
+          dateDdMmYyyy,
+          c,
+          quota,
+        ),
+      ),
+    );
+    const bestConfirmedClassIndex = this.pickBestConfirmedClassIndex(perClass);
+    const displayRow = perClass.find((p) => p.day)?.day ?? null;
+    return { perClass, bestConfirmedClassIndex, displayRow };
   }
 
   private async fetchSegmentAvailability(

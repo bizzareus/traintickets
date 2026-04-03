@@ -1,10 +1,23 @@
 import {
   avlDayMatchesJourneyDate,
   isLegConfirmed,
+  normalizeAndDedupeClassCodes,
+  orderedDestinationIndices,
+  parseConfirmTktAvailablityType,
   pickFarthestConfirmedStationIndex,
   stationCodesBetweenStops,
   ymdToConfirmTktDate,
 } from './booking-v2.utils';
+
+describe('normalizeAndDedupeClassCodes', () => {
+  it('trims, uppercases, dedupes in order', () => {
+    expect(normalizeAndDedupeClassCodes(['sl', ' 3a ', 'SL', '2A'])).toEqual([
+      'SL',
+      '3A',
+      '2A',
+    ]);
+  });
+});
 
 describe('ymdToConfirmTktDate', () => {
   it('maps YYYY-MM-DD to DD-MM-YYYY', () => {
@@ -38,6 +51,17 @@ describe('stationCodesBetweenStops', () => {
   });
 });
 
+describe('parseConfirmTktAvailablityType', () => {
+  it('parses number and numeric string', () => {
+    expect(parseConfirmTktAvailablityType(3)).toBe(3);
+    expect(parseConfirmTktAvailablityType('1')).toBe(1);
+  });
+  it('returns null for invalid', () => {
+    expect(parseConfirmTktAvailablityType(null)).toBeNull();
+    expect(parseConfirmTktAvailablityType('')).toBeNull();
+  });
+});
+
 describe('isLegConfirmed', () => {
   it('accepts Confirm and Probable', () => {
     expect(isLegConfirmed({ confirmTktStatus: 'Confirm' })).toBe(true);
@@ -58,6 +82,24 @@ describe('isLegConfirmed', () => {
         availablityStatus: 'REGRET',
       }),
     ).toBe(false);
+  });
+  it('availablityType 3 forces waiting (not confirmed) even if strings look good', () => {
+    expect(
+      isLegConfirmed({
+        availablityType: 3,
+        confirmTktStatus: 'Confirm',
+        availablityStatus: 'AVAILABLE-0080#',
+      }),
+    ).toBe(false);
+  });
+  it('availablityType 1 forces confirmed ticket per ConfirmTkt', () => {
+    expect(
+      isLegConfirmed({
+        availablityType: 1,
+        confirmTktStatus: 'No Chance',
+        availablityStatus: 'REGRET',
+      }),
+    ).toBe(true);
   });
 });
 
@@ -80,6 +122,18 @@ describe('pickFarthestConfirmedStationIndex', () => {
         [1, 2],
       ),
     ).toBeNull();
+  });
+});
+
+describe('orderedDestinationIndices', () => {
+  it('full journey first, then shorter hops (manual Surat-style order)', () => {
+    expect(orderedDestinationIndices(0, 5)).toEqual([5, 4, 3, 2, 1]);
+  });
+  it('from intermediate board: same priority toward final stop', () => {
+    expect(orderedDestinationIndices(1, 5)).toEqual([5, 4, 3, 2]);
+  });
+  it('two-stop slice', () => {
+    expect(orderedDestinationIndices(0, 1)).toEqual([1]);
   });
 });
 

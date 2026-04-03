@@ -699,6 +699,48 @@ export class IrctcService {
   }
 
   /**
+   * Human-readable chart times from a trainComposition JSON (same parsing as DB persist).
+   */
+  chartTimesFromCompositionResponse(
+    data: TrainCompositionResponse | null | undefined,
+  ): {
+    chartOneTime: string | null;
+    chartTwoTime: string | null;
+    chartTwoIsNextDay: boolean;
+    chartRemoteStation: string | null;
+    irctcError: string | null;
+  } {
+    if (!data) {
+      return {
+        chartOneTime: null,
+        chartTwoTime: null,
+        chartTwoIsNextDay: false,
+        chartRemoteStation: null,
+        irctcError: null,
+      };
+    }
+    const chartOne = parseChartDateTime(data.chartOneDate);
+    const chartTwo = parseChartDateTime(data.chartTwoDate);
+    const trainStartDate = (data.trainStartDate ?? '').slice(0, 10);
+    let chartTwoIsNextDay = false;
+    if (chartTwo?.date && trainStartDate && chartTwo.date > trainStartDate) {
+      chartTwoIsNextDay = true;
+    }
+    const remote =
+      data.chartStatusResponseDto?.remoteStationCode ??
+      data.remote?.trim().toUpperCase() ??
+      null;
+    const err = data.error?.trim() || null;
+    return {
+      chartOneTime: chartOne?.time ?? null,
+      chartTwoTime: chartTwo?.time ?? null,
+      chartTwoIsNextDay,
+      chartRemoteStation: remote,
+      irctcError: err,
+    };
+  }
+
+  /**
    * Parse chartOneDate/chartTwoDate from composition response and store in DB.
    * First chart = same day + time; second chart = same or next day + time (chartTwoDayOffset).
    */
