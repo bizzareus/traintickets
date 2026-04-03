@@ -338,7 +338,6 @@ function LegChartTimeInsight({
     }
     setAlertSubmitting(true);
     setAlertError(null);
-    setAlertSuccess(null);
     try {
       await apiClient.post("/api/availability/journey", {
         trainNumber: trainNumber.trim(),
