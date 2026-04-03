@@ -857,11 +857,6 @@ export default function BookingV2Page() {
   const [altLoading, setAltLoading] = useState(false);
   const [altResult, setAltResult] = useState<AlternatePathsResponse | null>(null);
   const [altError, setAltError] = useState<string | null>(null);
-  /** WL / regret class card selected to show per-class “Find seats” CTA. */
-  const [classChipFocus, setClassChipFocus] = useState<{
-    trainNumber: string;
-    travelClass: string;
-  } | null>(null);
 
   useEffect(() => {
     if (fromDeb.length < 2) {
@@ -950,7 +945,6 @@ export default function BookingV2Page() {
     setSearchError(null);
     setSearchLoading(true);
     setTrains([]);
-    setClassChipFocus(null);
     try {
       const r = await apiClient.get<{ data?: { trainList?: TrainListItem[] } }>(
         "/api/booking-v2/trains/search",
@@ -1252,13 +1246,8 @@ export default function BookingV2Page() {
                             classCode: cls,
                           })
                         : "https://www.irctc.co.in/eticketing/login";
-                    const chipFocused =
-                      classChipFocus?.trainNumber === t.trainNumber &&
-                      classChipFocus?.travelClass === cls;
                     const chipShell = cn(
-                      "min-w-[100px] shrink-0 rounded-lg border bg-gray-50 px-2.5 py-2 text-xs",
-                      chipFocused && "border-blue-500 ring-2 ring-blue-600 ring-offset-1",
-                      !chipFocused && "border-gray-200",
+                      "min-w-[100px] shrink-0 rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-2 text-xs",
                     );
 
                     const chipBody = (
@@ -1300,24 +1289,11 @@ export default function BookingV2Page() {
                             {chipBody}
                           </a>
                         ) : (
-                          <button
-                            type="button"
-                            className={cn(
-                              chipShell,
-                              "text-left hover:bg-gray-100 focus-visible:outline focus-visible:ring-2 focus-visible:ring-blue-500/40",
-                            )}
-                            onClick={() => {
-                              setClassChipFocus((prev) =>
-                                prev?.trainNumber === t.trainNumber && prev?.travelClass === cls
-                                  ? null
-                                  : { trainNumber: t.trainNumber, travelClass: cls },
-                              );
-                            }}
-                          >
+                          <div className={chipShell}>
                             {chipBody}
-                          </button>
+                          </div>
                         )}
-                        {chipFocused && !bookable && (
+                        {!bookable && (
                           <button
                             type="button"
                             className="rounded-md bg-blue-600 px-2 py-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
@@ -1336,10 +1312,7 @@ export default function BookingV2Page() {
               <div className="mt-3 flex flex-wrap gap-2">
                 <button
                   type="button"
-                  onClick={() => {
-                    setClassChipFocus(null);
-                    void findAlternates(t);
-                  }}
+                  onClick={() => void findAlternates(t)}
                   disabled={altLoading && altForTrain === t.trainNumber}
                   className={cn(
                     "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25",
