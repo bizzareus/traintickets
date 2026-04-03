@@ -1326,15 +1326,7 @@ export default function BookingV2Page() {
           ))}
         </ul>
 
-        {!searchLoading && trains.length === 0 && fromSt && toSt && (
-          <div
-            className="rounded-xl border border-dashed border-gray-300 bg-white p-10 text-center shadow-sm"
-            role="status"
-          >
-            <p className="text-sm font-medium text-gray-600">No trains loaded for this route yet.</p>
-            <p className="mt-1 text-sm text-gray-500">Tap &quot;Search trains&quot; to load results.</p>
-          </div>
-        )}
+        
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
