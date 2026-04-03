@@ -125,9 +125,7 @@ export function avlDayMatchesJourneyDate(
 }
 
 /** True when vendor status text means the train has already left (hide from search). */
-export function availabilityTextsIndicateTrainDeparted(
-  parts: readonly (string | number | null | undefined)[],
-): boolean {
+export function availabilityTextsIndicateTrainDeparted(parts: readonly unknown[]): boolean {
   const blob = parts
     .map((x) => String(x ?? '').trim().toLowerCase())
     .filter((s) => s.length > 0)
