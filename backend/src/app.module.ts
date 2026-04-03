@@ -19,6 +19,7 @@ import { ChartTimeModule } from './chart-time/chart-time.module';
 import { Service2Module } from './service2/service2.module';
 import { ChartTimeIngestionModule } from './chart-time-ingestion/chart-time-ingestion.module';
 import { ConfirmTktProxyModule } from './confirmtkt-proxy/confirmtkt-proxy.module';
+import { BookingV2Module } from './booking-v2/booking-v2.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { ConfirmTktProxyModule } from './confirmtkt-proxy/confirmtkt-proxy.modul
     Service2Module,
     ChartTimeIngestionModule,
     ConfirmTktProxyModule,
+    BookingV2Module,
   ],
   controllers: [AppController],
   providers: [
