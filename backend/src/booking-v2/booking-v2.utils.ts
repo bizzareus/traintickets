@@ -1,7 +1,9 @@
 export type ScheduleStopLike = { stationCode?: string | null };
 
 /** Uppercase, trim, dedupe while preserving first-seen order (e.g. train `avlClasses`). */
-export function normalizeAndDedupeClassCodes(codes: readonly string[]): string[] {
+export function normalizeAndDedupeClassCodes(
+  codes: readonly string[],
+): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
   for (const c of codes) {
@@ -17,7 +19,9 @@ export function normalizeAndDedupeClassCodes(codes: readonly string[]): string[]
 
 /** Journey date from UI: `YYYY-MM-DD` → upstream `DD-MM-YYYY`. */
 export function ymdToRailApiDdMmYyyy(ymd: string): string | null {
-  const m = String(ymd).trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  const m = String(ymd)
+    .trim()
+    .match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (!m) return null;
   const [, y, mo, d] = m;
   return `${d}-${mo}-${y}`;
@@ -31,7 +35,11 @@ export function stationCodesBetweenStops(
 ): string[] | null {
   if (!Array.isArray(stationList) || stationList.length < 2) return null;
   const codes = stationList
-    .map((s) => String(s.stationCode ?? '').trim().toUpperCase())
+    .map((s) =>
+      String(s.stationCode ?? '')
+        .trim()
+        .toUpperCase(),
+    )
     .filter(Boolean);
   const a = fromCode.trim().toUpperCase();
   const b = toCode.trim().toUpperCase();
@@ -71,7 +79,9 @@ export function isLegConfirmed(avl: AvlDayLike | null | undefined): boolean {
   if (at === 1) return true;
   const ct = String(avl.vendorPredictionStatus ?? '').trim();
   if (ct === 'Confirm' || ct === 'Probable') return true;
-  const st = String(avl.availablityStatus ?? '').trim().toUpperCase();
+  const st = String(avl.availablityStatus ?? '')
+    .trim()
+    .toUpperCase();
   return st.startsWith('AVAILABLE');
 }
 
@@ -85,7 +95,8 @@ export function pickFarthestConfirmedStationIndex(
 ): number | null {
   if (results.length !== candidateStationIndices.length) return null;
   for (let k = results.length - 1; k >= 0; k--) {
-    if (isLegConfirmed(results[k] ?? undefined)) return candidateStationIndices[k];
+    if (isLegConfirmed(results[k] ?? undefined))
+      return candidateStationIndices[k];
   }
   return null;
 }
@@ -116,7 +127,9 @@ export function avlDayMatchesJourneyDate(
   const jParts = journeyDdMmYyyy.split('-').map((x) => parseInt(x, 10));
   if (jParts.length !== 3 || jParts.some((n) => Number.isNaN(n))) return false;
   const [jd, jm, jy] = jParts;
-  const m = String(availablityDate).trim().match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+  const m = String(availablityDate)
+    .trim()
+    .match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
   if (!m) return false;
   const d = parseInt(m[1], 10);
   const mo = parseInt(m[2], 10);
@@ -125,9 +138,15 @@ export function avlDayMatchesJourneyDate(
 }
 
 /** True when vendor status text means the train has already left (hide from search). */
-export function availabilityTextsIndicateTrainDeparted(parts: readonly unknown[]): boolean {
+export function availabilityTextsIndicateTrainDeparted(
+  parts: readonly unknown[],
+): boolean {
   const blob = parts
-    .map((x) => String(x ?? '').trim().toLowerCase())
+    .map((x) =>
+      String(x ?? '')
+        .trim()
+        .toLowerCase(),
+    )
     .filter((s) => s.length > 0)
     .join(' ');
   if (!blob) return false;
@@ -162,10 +181,12 @@ export function trainSearchRowIndicatesDeparted(train: unknown): boolean {
 
 /** Removes departed trains from `{ data: { trainList } }` search payloads (mutates copy only). */
 export function filterDepartedTrainsFromSearchResponse(root: unknown): unknown {
-  if (root == null || typeof root !== 'object' || Array.isArray(root)) return root;
+  if (root == null || typeof root !== 'object' || Array.isArray(root))
+    return root;
   const o = root as Record<string, unknown>;
   const data = o.data;
-  if (data == null || typeof data !== 'object' || Array.isArray(data)) return root;
+  if (data == null || typeof data !== 'object' || Array.isArray(data))
+    return root;
   const d = data as Record<string, unknown>;
   const list = d.trainList;
   if (!Array.isArray(list)) return root;
@@ -250,8 +271,7 @@ export function legScheduleTiming(
 
   let durationMinutes: number | null = null;
   if (depPick && arrPick) {
-    let delta =
-      arrPick.minutes - depPick.minutes + (dayTo - dayFrom) * 24 * 60;
+    let delta = arrPick.minutes - depPick.minutes + (dayTo - dayFrom) * 24 * 60;
     if (delta < 0) delta += 24 * 60;
     durationMinutes = delta;
   }
@@ -271,21 +291,23 @@ export function collapsibleRealtimeRemainderEndpoints(
   const d = journeyDestinationCode.trim().toUpperCase();
   const n = legs.length;
   if (n === 0) return null;
-  const last = legs[n - 1]!;
+  const last = legs[n - 1];
   if (String(last.to).trim().toUpperCase() !== d) return null;
   if (last.segmentKind !== 'check_realtime') return null;
 
   let start = n - 1;
   for (let i = n - 2; i >= 0; i--) {
-    const leg = legs[i]!;
+    const leg = legs[i];
     if (leg.segmentKind !== 'check_realtime') break;
     if (
       String(leg.to).trim().toUpperCase() !==
-      String(legs[i + 1]!.from).trim().toUpperCase()
+      String(legs[i + 1].from)
+        .trim()
+        .toUpperCase()
     ) {
       break;
     }
     start = i;
   }
-  return { from: legs[start]!.from, to: legs[n - 1]!.to };
+  return { from: legs[start].from, to: legs[n - 1].to };
 }

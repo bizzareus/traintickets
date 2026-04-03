@@ -57,9 +57,9 @@ function getTrainRunsOnFlagForYmd(
 }
 
 function getTrainRunningDayNames(runs: TrainRunsOnJson): string[] {
-  return RUN_DAY_ORDER.filter(
-    (k) => normalizeRunsOnFlag(runs[k]) === 'Y',
-  ).map((k) => RUN_KEY_TO_LABEL[k] ?? String(k));
+  return RUN_DAY_ORDER.filter((k) => normalizeRunsOnFlag(runs[k]) === 'Y').map(
+    (k) => RUN_KEY_TO_LABEL[k] ?? String(k),
+  );
 }
 
 function parseYmdLocal(ymd: string): Date {
@@ -105,7 +105,9 @@ function findNextTrainRunYmdAfter(
 }
 
 export function parseJourneyYmdForValidation(raw: string): string | null {
-  const t = String(raw ?? '').trim().slice(0, 10);
+  const t = String(raw ?? '')
+    .trim()
+    .slice(0, 10);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(t)) return null;
   const [y, mo, d] = t.split('-').map(Number);
   const dt = new Date(y, mo - 1, d);

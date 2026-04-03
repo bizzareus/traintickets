@@ -1,4 +1,9 @@
-import { ArgumentsHost, Catch, HttpException, Injectable } from '@nestjs/common';
+import {
+  ArgumentsHost,
+  Catch,
+  HttpException,
+  Injectable,
+} from '@nestjs/common';
 import { BaseExceptionFilter, HttpAdapterHost } from '@nestjs/core';
 import { captureException } from '@sentry/nestjs';
 
