@@ -851,6 +851,7 @@ export default function BookingV2Page() {
   const [trains, setTrains] = useState<TrainListItem[]>([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [hasSearched, setHasSearched] = useState(false);
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
   const [altTrainName, setAltTrainName] = useState<string | null>(null);
   const [altAvlClasses, setAltAvlClasses] = useState<string[] | undefined>();
@@ -943,6 +944,7 @@ export default function BookingV2Page() {
       return;
     }
     setSearchError(null);
+    setHasSearched(true);
     setSearchLoading(true);
     setTrains([]);
     try {
@@ -1203,6 +1205,19 @@ export default function BookingV2Page() {
               <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" />
             </svg>
             <span>{searchError}</span>
+          </div>
+        )}
+
+        {hasSearched && !searchLoading && !searchError && trains.length === 0 && (
+          <div
+            className="mb-6 rounded-xl border border-blue-100 bg-blue-50 px-4 py-5 text-sm text-blue-950 shadow-sm"
+            role="status"
+            aria-live="polite"
+          >
+            <p className="font-semibold">No trains loaded</p>
+            <p className="mt-1 text-blue-900">
+              No trains were found for this route and date. Try a different station pair or journey date.
+            </p>
           </div>
         )}
 
