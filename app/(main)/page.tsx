@@ -849,6 +849,7 @@ export default function BookingV2Page() {
     setJourneyDate(todayYmd());
   }, []);
   const [trains, setTrains] = useState<TrainListItem[]>([]);
+  const [hasSearched, setHasSearched] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
@@ -942,6 +943,7 @@ export default function BookingV2Page() {
       setSearchError("Pick a journey date.");
       return;
     }
+    setHasSearched(true);
     setSearchError(null);
     setSearchLoading(true);
     setTrains([]);
@@ -1325,6 +1327,16 @@ export default function BookingV2Page() {
             </li>
           ))}
         </ul>
+
+      {hasSearched && !searchLoading && !searchError && trains.length === 0 && (
+        <div
+          className="mt-4 rounded-xl border border-gray-200 bg-white px-5 py-4 text-sm text-gray-700 shadow-sm"
+          role="status"
+          aria-live="polite"
+        >
+          No trains loaded for this route and date. Try another day or station pair.
+        </div>
+      )}
 
         
 
