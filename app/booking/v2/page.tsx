@@ -31,7 +31,6 @@ type TrainListItem = {
   toStnCode?: string;
   avlClasses?: string[];
   availabilityCache?: Record<string, AvailabilityCacheEntry>;
-  availabilityCacheTatkal?: Record<string, AvailabilityCacheEntry>;
 };
 
 type AlternateLeg = {
@@ -562,7 +561,6 @@ export default function BookingV2Page() {
                 <div className="flex min-w-min gap-2 px-1">
                   {(t.avlClasses ?? []).map((cls) => {
                     const gn = t.availabilityCache?.[cls];
-                    const tq = t.availabilityCacheTatkal?.[cls];
                     return (
                       <div
                         key={cls}
@@ -574,15 +572,6 @@ export default function BookingV2Page() {
                             <div className="text-[10px] uppercase text-gray-500">General</div>
                             <div>{gn.availabilityDisplayName ?? gn.confirmTktStatus ?? "—"}</div>
                             {gn.fare != null && <div className="font-semibold">₹{gn.fare}</div>}
-                          </div>
-                        )}
-                        {tq && (
-                          <div className="mt-1 border-t border-gray-200 pt-1 text-gray-700">
-                            <div className="text-[10px] uppercase text-gray-500">Tatkal</div>
-                            <div>{tq.availabilityDisplayName ?? tq.confirmTktStatus ?? "—"}</div>
-                            {tq.fare != null && Number(tq.fare) > 0 && (
-                              <div className="font-semibold">₹{tq.fare}</div>
-                            )}
                           </div>
                         )}
                       </div>
