@@ -30,6 +30,8 @@ export type FindAlternatePathsResult = {
   legCount: number;
   isComplete: boolean;
   stationCodesOnRoute: string[];
+  /** Step-by-step trace for debugging (also logged with Logger). */
+  debugLog: string[];
 };
 
 type AvlDayRow = {
@@ -221,12 +223,25 @@ export class BookingV2Service {
       .toUpperCase();
     const quota = String(input.quota ?? 'GN').trim().toUpperCase();
     const dateDdMmYyyy = this.normalizeToConfirmTktDate(input.date);
+    const debugLog: string[] = [];
+    const logStep = (msg: string) => {
+      debugLog.push(msg);
+      this.logger.log(`[alternate-paths ${trainNumber}] ${msg}`);
+    };
+
     if (!trainNumber || !from || !to || !dateDdMmYyyy) {
       throw new Error('trainNumber, from, to, and valid date are required');
     }
 
+    logStep(
+      `Start: ${from} → ${to} | journeyDate=${input.date} (ConfirmTkt ${dateDdMmYyyy}) | class=${travelClass} quota=${quota}`,
+    );
+
     const sched = await this.irctc.getTrainSchedule(trainNumber);
     if (!sched.ok || !sched.schedule?.stationList?.length) {
+      logStep(
+        `IRCTC schedule: FAILED or empty (ok=${sched.ok}) — cannot list intermediate stops`,
+      );
       return {
         trainNumber,
         legs: [],
@@ -234,12 +249,20 @@ export class BookingV2Service {
         legCount: 0,
         isComplete: false,
         stationCodesOnRoute: [],
+        debugLog,
       };
     }
+
+    logStep(
+      `IRCTC schedule: OK — ${sched.schedule.stationList.length} stops on full route (${sched.schedule.trainName ?? 'train'})`,
+    );
 
     const stationList = sched.schedule.stationList as ScheduleStation[];
     const stations = stationCodesBetweenStops(stationList, from, to);
     if (!stations?.length) {
+      logStep(
+        `Route slice: FAILED — "${from}" or "${to}" not found in order on this train (or same station)`,
+      );
       return {
         trainNumber,
         legs: [],
@@ -247,18 +270,30 @@ export class BookingV2Service {
         legCount: 0,
         isComplete: false,
         stationCodesOnRoute: [],
+        debugLog,
       };
     }
+
+    logStep(
+      `Route slice: ${stations.length} stops from boarding to destination: ${stations.join(' → ')}`,
+    );
 
     const legs: AlternatePathLeg[] = [];
     let currentIdx = 0;
     const targetIdx = stations.length - 1;
+    let hop = 0;
 
     while (currentIdx < targetIdx) {
+      hop += 1;
       const candidateIndices: number[] = [];
       for (let j = currentIdx + 1; j <= targetIdx; j++) {
         candidateIndices.push(j);
       }
+
+      const destCodes = candidateIndices.map((i) => stations[i]);
+      logStep(
+        `Hop ${hop}: boarding ${stations[currentIdx]} — checking ConfirmTkt availability to: ${destCodes.join(', ')} (${candidateIndices.length} parallel calls)`,
+      );
 
       const segmentResults = await Promise.all(
         candidateIndices.map((destIdx) =>
@@ -273,6 +308,18 @@ export class BookingV2Service {
         ),
       );
 
+      for (let i = 0; i < segmentResults.length; i++) {
+        const destIdx = candidateIndices[i];
+        const seg = segmentResults[i];
+        logStep(
+          this.formatSegmentProbeLine(
+            stations[currentIdx],
+            stations[destIdx],
+            seg,
+          ),
+        );
+      }
+
       const days = segmentResults.map((s) => s.day);
       const nextIdx = pickFarthestConfirmedStationIndex(
         days,
@@ -280,6 +327,9 @@ export class BookingV2Service {
       );
 
       if (nextIdx == null) {
+        logStep(
+          `Hop ${hop}: no segment from ${stations[currentIdx]} satisfied Confirm/Probable/AVAILABLE* — marking failure to ${stations[targetIdx]}`,
+        );
         legs.push({
           from: stations[currentIdx],
           to: stations[targetIdx],
@@ -295,6 +345,10 @@ export class BookingV2Service {
       const pickedK = candidateIndices.indexOf(nextIdx);
       const day = segmentResults[pickedK]?.day ?? null;
       const fare = segmentResults[pickedK]?.fare ?? null;
+
+      logStep(
+        `Hop ${hop}: CHOSEN farthest usable segment ${stations[currentIdx]} → ${stations[nextIdx]} (ticket availability OK for greedy step)${fare != null ? ` | fare ₹${fare}` : ''}`,
+      );
 
       legs.push({
         from: stations[currentIdx],
@@ -330,6 +384,10 @@ export class BookingV2Service {
       legs.length > 0 &&
       legs[legs.length - 1].to === stations[targetIdx];
 
+    logStep(
+      `Done: isComplete=${isComplete} legs=${legs.length}${totalFare != null ? ` totalFare=₹${totalFare}` : ''}`,
+    );
+
     return {
       trainNumber,
       legs,
@@ -337,7 +395,38 @@ export class BookingV2Service {
       legCount: legs.length,
       isComplete,
       stationCodesOnRoute: stations,
+      debugLog,
     };
+  }
+
+  private formatSegmentProbeLine(
+    fromStn: string,
+    toStn: string,
+    seg: {
+      day: AvlDayRow | null;
+      fare: number | null;
+      fetchError?: string;
+    },
+  ): string {
+    if (seg.fetchError) {
+      return `  ${fromStn} → ${toStn}: FETCH ERROR — ${seg.fetchError}`;
+    }
+    if (!seg.day) {
+      return `  ${fromStn} → ${toStn}: no avl row for journey date (or empty avlDayList)`;
+    }
+    const ok = isLegConfirmed(seg.day);
+    const disp = String(
+      seg.day.availabilityDisplayName ?? seg.day.availablityStatus ?? '?',
+    ).trim();
+    const ct = String(seg.day.confirmTktStatus ?? '?').trim();
+    const pred = seg.day.predictionPercentage
+      ? ` prediction=${seg.day.predictionPercentage}%`
+      : '';
+    const fareStr = seg.fare != null ? ` fare=₹${seg.fare}` : '';
+    const verdict = ok
+      ? 'ticket availability USABLE (Confirm / Probable / AVAILABLE*)'
+      : 'not usable as confirmed leg';
+    return `  ${fromStn} → ${toStn}: ${verdict} | ${disp} | ConfirmTkt status=${ct}${pred}${fareStr}`;
   }
 
   private async fetchSegmentAvailability(
@@ -347,7 +436,11 @@ export class BookingV2Service {
     dateDdMmYyyy: string,
     travelClass: string,
     quota: string,
-  ): Promise<{ day: AvlDayRow | null; fare: number | null }> {
+  ): Promise<{
+    day: AvlDayRow | null;
+    fare: number | null;
+    fetchError?: string;
+  }> {
     try {
       const raw = await this.checkAvailability(
         trainNo,
@@ -361,10 +454,11 @@ export class BookingV2Service {
       const fare = this.extractFare(raw);
       return { day, fare };
     } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
       this.logger.warn(
-        `[booking-v2] availability segment failed ${trainNo} ${fromStn}-${toStn}: ${err instanceof Error ? err.message : String(err)}`,
+        `[booking-v2] availability segment failed ${trainNo} ${fromStn}-${toStn}: ${msg}`,
       );
-      return { day: null, fare: null };
+      return { day: null, fare: null, fetchError: msg };
     }
   }
 

@@ -51,6 +51,7 @@ type AlternatePathsResponse = {
   legCount: number;
   isComplete: boolean;
   stationCodesOnRoute: string[];
+  debugLog?: string[];
 };
 
 function formatDurationMinutes(mins: number | undefined): string {
@@ -662,6 +663,24 @@ export default function BookingV2Page() {
                         </>
                       )}
                     </p>
+                  )}
+                  {altResult.debugLog && altResult.debugLog.length > 0 && (
+                    <details className="rounded-md border border-gray-200 bg-gray-50 p-3">
+                      <summary className="cursor-pointer text-sm font-semibold text-gray-800">
+                        Step-by-step debug trace ({altResult.debugLog.length} lines)
+                      </summary>
+                      <ol className="mt-2 max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-xs text-gray-700">
+                        {altResult.debugLog.map((line, i) => (
+                          <li key={i} className="whitespace-pre-wrap py-0.5">
+                            {line}
+                          </li>
+                        ))}
+                      </ol>
+                      <p className="mt-2 text-xs text-gray-500">
+                        Same lines are logged on the API server as{" "}
+                        <code className="rounded bg-gray-200 px-1">[alternate-paths …]</code>.
+                      </p>
+                    </details>
                   )}
                   <ol className="list-decimal space-y-3 pl-5">
                     {altResult.legs.map((leg, i) => (
