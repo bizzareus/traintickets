@@ -9,11 +9,13 @@ import {
   extractTrainRunDayFromValidateBody,
   firstJourneyValidationMessage,
 } from "@/lib/journeyValidationErrors";
+import { isIrctcDirectBookable } from "@/lib/bookingV2Availability";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import {
   buildJourneyChartAlertSchedulePhrase,
   describeChartPreparationForStation,
 } from "@/lib/stationChartMetaSummary";
+import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { cn } from "@/lib/utils";
 
@@ -31,6 +33,10 @@ type AvailabilityCacheEntry = {
   fare?: string;
   availabilityDisplayName?: string;
   railDataStatus?: string;
+  /** Upstream `availablityType`: 1 = bookable on IRCTC, 3 = waiting, etc. */
+  availablityType?: number | string | null;
+  availablityStatus?: string | null;
+  vendorPredictionStatus?: string | null;
 };
 
 type TrainListItem = {
@@ -645,7 +651,7 @@ function StationFieldSimple(props: {
         <input
           id={inputId}
           type="text"
-          className="block w-full rounded-md border border-gray-300 bg-gray-50 py-1.5 pl-2 pr-8 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25"
+          className="block min-h-11 w-full rounded-md border border-gray-300 bg-gray-50 py-2.5 pl-2 pr-8 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:min-h-12 sm:py-3"
           placeholder="Search station name or code…"
           value={displayText}
           autoComplete="off"
@@ -762,6 +768,11 @@ export default function BookingV2Page() {
   const [altLoading, setAltLoading] = useState(false);
   const [altResult, setAltResult] = useState<AlternatePathsResponse | null>(null);
   const [altError, setAltError] = useState<string | null>(null);
+  /** WL / regret class card selected to show per-class “Find seats” CTA. */
+  const [classChipFocus, setClassChipFocus] = useState<{
+    trainNumber: string;
+    travelClass: string;
+  } | null>(null);
 
   useEffect(() => {
     if (fromDeb.length < 2) {
@@ -850,6 +861,7 @@ export default function BookingV2Page() {
     setSearchError(null);
     setSearchLoading(true);
     setTrains([]);
+    setClassChipFocus(null);
     try {
       const r = await apiClient.get<{ data?: { trainList?: TrainListItem[] } }>(
         "/api/booking-v2/trains/search",
@@ -875,22 +887,37 @@ export default function BookingV2Page() {
   }, [fromSt, toSt, journeyDate]);
 
   const findAlternates = useCallback(
-    async (trainNumber: string, avlClasses?: string[], trainName?: string) => {
-      if (!fromSt || !toSt || !journeyDate) return;
-      setAltForTrain(trainNumber);
-      setAltTrainName(trainName?.trim() ? trainName.trim() : null);
-      setAltAvlClasses(avlClasses);
+    async (t: TrainListItem, focusTravelClass?: string) => {
+      if (!journeyDate) return;
+      /** Alternate-path probes use this train’s run endpoints (e.g. NDLS → CSMT), not only the user’s search pair. */
+      const fromCode = (t.fromStnCode ?? fromSt?.stationCode ?? "").trim().toUpperCase();
+      const toCode = (t.toStnCode ?? toSt?.stationCode ?? "").trim().toUpperCase();
+      if (!fromCode || !toCode) return;
+
+      const fc = focusTravelClass?.trim().toUpperCase();
+      const avlClassesForRequest =
+        fc && fc.length > 0
+          ? [fc]
+          : t.avlClasses && t.avlClasses.length > 0
+            ? t.avlClasses
+            : undefined;
+
+      setAltForTrain(t.trainNumber);
+      setAltTrainName(t.trainName?.trim() ? t.trainName.trim() : null);
+      setAltAvlClasses(avlClassesForRequest);
       setAltLoading(true);
       setAltError(null);
       setAltResult(null);
       try {
         const r = await apiClient.post<AlternatePathsResponse>("/api/booking-v2/alternate-paths", {
-          trainNumber,
-          from: fromSt.stationCode,
-          to: toSt.stationCode,
+          trainNumber: t.trainNumber,
+          from: fromCode,
+          to: toCode,
           date: journeyDate,
           quota: "GN",
-          ...(avlClasses && avlClasses.length > 0 ? { avlClasses } : {}),
+          ...(avlClassesForRequest && avlClassesForRequest.length > 0
+            ? { avlClasses: avlClassesForRequest }
+            : {}),
         });
         setAltResult(r.data);
       } catch (e: unknown) {
@@ -948,15 +975,15 @@ export default function BookingV2Page() {
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
         <header className="mb-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            Train{" "}
-            <span className="text-blue-600">ticket</span> search
+            We find you seats in{" "}
+            <span className="text-blue-600">WL/Regret Trains</span>
           </h1>
           <p className="mt-2 max-w-2xl text-base text-slate-600">
-            Search trains and explore split-journey options with live rail availability.
+            Find the best seat available throughout your journey in the train you want to travel
           </p>
         </header>
 
-        <section className="mb-8 rounded-xl border border-gray-200 bg-white p-3 shadow-md sm:p-4">
+        <div className="mb-8">
           <h2 className="sr-only">Journey search</h2>
           <p className="mb-2 text-sm font-medium text-gray-700 sm:mb-3">
             Where are you travelling?
@@ -1046,16 +1073,12 @@ export default function BookingV2Page() {
                 </svg>
                 Departure date
               </label>
-              <input
+              <JourneyDatePicker
                 id={journeyDateInputId}
-                type="date"
-                className="block w-full cursor-pointer rounded-md border border-gray-300 bg-gray-50 py-1.5 pl-2 pr-2 text-sm font-semibold text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25"
-                value={journeyDate ?? ""}
-                onChange={(e) => setJourneyDate(e.target.value)}
+                value={journeyDate}
+                onChange={setJourneyDate}
+                dateLabel={dateLabel}
               />
-              <p className="mt-1 line-clamp-1 text-[11px] font-medium leading-tight text-gray-500 sm:text-xs">
-                {dateLabel}
-              </p>
             </div>
             <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
               <button
@@ -1075,7 +1098,7 @@ export default function BookingV2Page() {
               </button>
             </div>
           </div>
-        </section>
+        </div>
 
         {searchError && (
           <div
@@ -1101,29 +1124,19 @@ export default function BookingV2Page() {
               key={`${t.trainNumber}-${t.departureTime}`}
               className="rounded-xl border border-gray-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg"
             >
-              <div className="flex flex-wrap items-start justify-between gap-2">
-                <div>
-                  <h2 className="text-lg font-bold text-gray-900">
-                    {t.trainNumber} {t.trainName}
-                  </h2>
-                  <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
-                    <span className="font-semibold">
-                      {t.departureTime ?? "—"} {t.fromStnCode}
-                    </span>
-                    <span className="text-gray-400">{formatDurationMinutes(t.duration)}</span>
-                    <span className="font-semibold">
-                      {t.arrivalTime ?? "—"} {t.toStnCode}
-                    </span>
-                  </div>
+              <div>
+                <h2 className="text-lg font-bold text-gray-900">
+                  {t.trainNumber} {t.trainName}
+                </h2>
+                <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
+                  <span className="font-semibold">
+                    {t.departureTime ?? "—"} {t.fromStnCode}
+                  </span>
+                  <span className="text-gray-400">{formatDurationMinutes(t.duration)}</span>
+                  <span className="font-semibold">
+                    {t.arrivalTime ?? "—"} {t.toStnCode}
+                  </span>
                 </div>
-                <a
-                  href={`https://www.indianrail.gov.in/enquiry/Static/Train_Schedule.html`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-medium text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
-                >
-                  Schedule
-                </a>
               </div>
 
               <div className="mt-3 -mx-1 overflow-x-auto pb-1">
@@ -1135,11 +1148,27 @@ export default function BookingV2Page() {
                       gn?.railDataStatus ??
                       "—";
                     const statusCls = gn ? chipGeneralStatusClass(line) : undefined;
-                    return (
-                      <div
-                        key={cls}
-                        className="min-w-[100px] shrink-0 rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-2 text-xs"
-                      >
+                    const bookable = gn ? isIrctcDirectBookable(gn) : false;
+                    const irctcHref =
+                      fromSt && toSt
+                        ? irctcBookingRedirect({
+                            from: fromSt.stationCode,
+                            to: toSt.stationCode,
+                            trainNo: t.trainNumber,
+                            classCode: cls,
+                          })
+                        : "https://www.irctc.co.in/eticketing/login";
+                    const chipFocused =
+                      classChipFocus?.trainNumber === t.trainNumber &&
+                      classChipFocus?.travelClass === cls;
+                    const chipShell = cn(
+                      "min-w-[100px] shrink-0 rounded-lg border bg-gray-50 px-2.5 py-2 text-xs",
+                      chipFocused && "border-blue-500 ring-2 ring-blue-600 ring-offset-1",
+                      !chipFocused && "border-gray-200",
+                    );
+
+                    const chipBody = (
+                      <>
                         <div className="font-bold text-gray-900">{cls}</div>
                         {gn && (
                           <div className="mt-1 text-gray-700">
@@ -1156,6 +1185,54 @@ export default function BookingV2Page() {
                             )}
                           </div>
                         )}
+                      </>
+                    );
+
+                    return (
+                      <div
+                        key={cls}
+                        className="flex min-w-[100px] shrink-0 flex-col items-stretch gap-1.5"
+                      >
+                        {bookable && gn ? (
+                          <a
+                            href={irctcHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cn(
+                              chipShell,
+                              "block text-left text-inherit no-underline hover:bg-gray-100 focus-visible:outline focus-visible:ring-2 focus-visible:ring-blue-500/40",
+                            )}
+                          >
+                            {chipBody}
+                          </a>
+                        ) : (
+                          <button
+                            type="button"
+                            className={cn(
+                              chipShell,
+                              "text-left hover:bg-gray-100 focus-visible:outline focus-visible:ring-2 focus-visible:ring-blue-500/40",
+                            )}
+                            onClick={() => {
+                              setClassChipFocus((prev) =>
+                                prev?.trainNumber === t.trainNumber && prev?.travelClass === cls
+                                  ? null
+                                  : { trainNumber: t.trainNumber, travelClass: cls },
+                              );
+                            }}
+                          >
+                            {chipBody}
+                          </button>
+                        )}
+                        {chipFocused && !bookable && (
+                          <button
+                            type="button"
+                            className="rounded-md bg-blue-600 px-2 py-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                            disabled={altLoading && altForTrain === t.trainNumber}
+                            onClick={() => void findAlternates(t, cls)}
+                          >
+                            Find seats
+                          </button>
+                        )}
                       </div>
                     );
                   })}
@@ -1165,7 +1242,10 @@ export default function BookingV2Page() {
               <div className="mt-3 flex flex-wrap gap-2">
                 <button
                   type="button"
-                  onClick={() => void findAlternates(t.trainNumber, t.avlClasses, t.trainName)}
+                  onClick={() => {
+                    setClassChipFocus(null);
+                    void findAlternates(t);
+                  }}
                   disabled={altLoading && altForTrain === t.trainNumber}
                   className={cn(
                     "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25",

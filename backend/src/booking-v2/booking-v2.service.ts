@@ -9,6 +9,7 @@ import {
 } from './booking-v2.constants';
 import {
   avlDayMatchesJourneyDate,
+  filterDepartedTrainsFromSearchResponse,
   isLegConfirmed,
   normalizeAndDedupeClassCodes,
   orderedDestinationIndices,
@@ -214,7 +215,8 @@ export class BookingV2Service {
     }
     try {
       const parsed = JSON.parse(text) as unknown;
-      return this.sanitizeVendorStatusKeys(parsed);
+      const sanitized = this.sanitizeVendorStatusKeys(parsed);
+      return filterDepartedTrainsFromSearchResponse(sanitized);
     } catch {
       throw new Error('Train search: invalid JSON');
     }

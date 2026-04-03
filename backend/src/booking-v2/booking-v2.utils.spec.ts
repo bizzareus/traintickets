@@ -1,11 +1,13 @@
 import {
   avlDayMatchesJourneyDate,
+  filterDepartedTrainsFromSearchResponse,
   isLegConfirmed,
   normalizeAndDedupeClassCodes,
   orderedDestinationIndices,
   parseUpstreamAvailablityType,
   pickFarthestConfirmedStationIndex,
   stationCodesBetweenStops,
+  trainSearchRowIndicatesDeparted,
   ymdToRailApiDdMmYyyy,
 } from './booking-v2.utils';
 
@@ -141,5 +143,49 @@ describe('avlDayMatchesJourneyDate', () => {
   it('matches upstream day string to DD-MM-YYYY', () => {
     expect(avlDayMatchesJourneyDate('5-4-2026', '05-04-2026')).toBe(true);
     expect(avlDayMatchesJourneyDate('05-04-2026', '05-04-2026')).toBe(true);
+  });
+});
+
+describe('trainSearchRowIndicatesDeparted', () => {
+  it('is true when any cache class has Train Departed', () => {
+    expect(
+      trainSearchRowIndicatesDeparted({
+        trainNumber: '1',
+        availabilityCache: {
+          SL: { railDataStatus: 'Train Departed', fare: '655' },
+        },
+      }),
+    ).toBe(true);
+  });
+  it('is false for WL / available rows', () => {
+    expect(
+      trainSearchRowIndicatesDeparted({
+        trainNumber: '1',
+        availabilityCache: {
+          SL: { railDataStatus: 'WL 10' },
+        },
+      }),
+    ).toBe(false);
+  });
+  it('is false when cache missing', () => {
+    expect(trainSearchRowIndicatesDeparted({ trainNumber: '1' })).toBe(false);
+  });
+});
+
+describe('filterDepartedTrainsFromSearchResponse', () => {
+  it('drops departed trains from data.trainList', () => {
+    const out = filterDepartedTrainsFromSearchResponse({
+      data: {
+        trainList: [
+          {
+            trainNumber: 'gone',
+            availabilityCache: { SL: { railDataStatus: 'Train Departed' } },
+          },
+          { trainNumber: 'ok', availabilityCache: { SL: { railDataStatus: 'AVAILABLE-1' } } },
+        ],
+      },
+    }) as { data: { trainList: { trainNumber: string }[] } };
+    expect(out.data.trainList).toHaveLength(1);
+    expect(out.data.trainList[0].trainNumber).toBe('ok');
   });
 });

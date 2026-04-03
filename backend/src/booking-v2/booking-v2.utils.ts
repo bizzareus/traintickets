@@ -123,3 +123,54 @@ export function avlDayMatchesJourneyDate(
   const y = parseInt(m[3], 10);
   return d === jd && mo === jm && y === jy;
 }
+
+/** True when vendor status text means the train has already left (hide from search). */
+export function availabilityTextsIndicateTrainDeparted(
+  parts: readonly (string | number | null | undefined)[],
+): boolean {
+  const blob = parts
+    .map((x) => String(x ?? '').trim().toLowerCase())
+    .filter((s) => s.length > 0)
+    .join(' ');
+  if (!blob) return false;
+  if (blob.includes('train departed')) return true;
+  if (/\bhas\s+departed\b/.test(blob)) return true;
+  return false;
+}
+
+/**
+ * ConfirmTkt `trainList` row: if any `availabilityCache` class shows departure, the train is omitted.
+ */
+export function trainSearchRowIndicatesDeparted(train: unknown): boolean {
+  if (!train || typeof train !== 'object') return false;
+  const row = train as Record<string, unknown>;
+  const cache = row.availabilityCache;
+  if (!cache || typeof cache !== 'object' || Array.isArray(cache)) return false;
+  for (const v of Object.values(cache)) {
+    if (!v || typeof v !== 'object' || Array.isArray(v)) continue;
+    const e = v as Record<string, unknown>;
+    if (
+      availabilityTextsIndicateTrainDeparted([
+        e.availabilityDisplayName,
+        e.railDataStatus,
+        e.availablityStatus,
+      ])
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/** Removes departed trains from `{ data: { trainList } }` search payloads (mutates copy only). */
+export function filterDepartedTrainsFromSearchResponse(root: unknown): unknown {
+  if (root == null || typeof root !== 'object' || Array.isArray(root)) return root;
+  const o = root as Record<string, unknown>;
+  const data = o.data;
+  if (data == null || typeof data !== 'object' || Array.isArray(data)) return root;
+  const d = data as Record<string, unknown>;
+  const list = d.trainList;
+  if (!Array.isArray(list)) return root;
+  const trainList = list.filter((row) => !trainSearchRowIndicatesDeparted(row));
+  return { ...o, data: { ...d, trainList } };
+}

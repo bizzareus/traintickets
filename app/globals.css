@@ -98,3 +98,22 @@ body {
     opacity: 0.9;
   }
 }
+
+/*
+ * flowbite-datepicker ships v4 utility names (e.g. bg-neutral-primary-medium) that do not exist
+ * in this app’s Tailwind v3 build, so the popup renders effectively transparent. Force a solid card.
+ */
+.datepicker .datepicker-picker {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.datepicker .datepicker-header,
+.datepicker .datepicker-title,
+.datepicker .datepicker-controls {
+  background-color: #ffffff !important;
+}
