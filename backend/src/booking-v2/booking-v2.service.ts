@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { IrctcService } from '../irctc/irctc.service';
-import type { ScheduleStation } from '../irctc/irctc.service';
+import { CacheService } from '../cache/cache.service';
+import { StationCacheService } from '../cache/station-cache.service';
 import {
   BOOKING_V2_ALTERNATE_PATH_CLASSES,
   BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
@@ -88,11 +89,18 @@ type MultiClassProbeResult = {
   displayRow: AvlDayRow | null;
 };
 
+/** 24 hours in milliseconds — TTL for train search cache entries. */
+const TRAIN_SEARCH_TTL_MS = 24 * 60 * 60 * 1000;
+
 @Injectable()
 export class BookingV2Service {
   private readonly logger = new Logger(BookingV2Service.name);
 
-  constructor(private readonly irctc: IrctcService) {}
+  constructor(
+    private readonly irctc: IrctcService,
+    private readonly cache: CacheService,
+    private readonly stationCache: StationCacheService,
+  ) {}
 
   /** `YYYY-MM-DD` or passthrough if already `DD-MM-YYYY`. */
   normalizeToRailApiDate(dateInput: string): string | null {
@@ -130,6 +138,13 @@ export class BookingV2Service {
 
   async searchStations(searchString: string): Promise<unknown> {
     const q = String(searchString ?? '').trim();
+
+    // DB-first: try the station cache before hitting the upstream API.
+    const cached = await this.stationCache.search(q);
+    if (cached !== null) {
+      return { data: { stationList: cached } };
+    }
+
     const params = new URLSearchParams({
       searchString: q,
       sourceStnCode: '',
@@ -156,7 +171,39 @@ export class BookingV2Service {
     } catch {
       throw new Error('Station search: invalid JSON');
     }
-    return this.mergeStationSuggestResponse(parsed);
+    const merged = this.mergeStationSuggestResponse(parsed);
+
+    // Fire-and-forget: populate the station cache from API results.
+    const stations = this.extractStationListFromResponse(merged);
+    if (stations.length > 0) {
+      void this.stationCache
+        .upsertMany(stations)
+        .catch((e: unknown) =>
+          this.logger.warn('[booking-v2/stations] cache upsert failed', e),
+        );
+    }
+
+    return merged;
+  }
+
+  /** Extract a flat stationList from a merged suggest response for cache upsert. */
+  private extractStationListFromResponse(
+    body: unknown,
+  ): Array<{ stationCode: string; stationName: string }> {
+    if (!body || typeof body !== 'object') return [];
+    const data = (body as Record<string, unknown>).data;
+    if (!data || typeof data !== 'object') return [];
+    const list = (data as Record<string, unknown>).stationList;
+    if (!Array.isArray(list)) return [];
+    const out: Array<{ stationCode: string; stationName: string }> = [];
+    for (const row of list) {
+      if (!row || typeof row !== 'object') continue;
+      const r = row as Record<string, string>;
+      const code = (r.stationCode ?? '').trim();
+      const name = (r.stationName ?? '').trim();
+      if (code && name) out.push({ stationCode: code, stationName: name });
+    }
+    return out;
   }
 
   /** Merge stationList + popularStationList (+ preferred), dedupe by code+name. */
@@ -205,6 +252,20 @@ export class BookingV2Service {
   ): Promise<unknown> {
     const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
     if (!dateDdMmYyyy) throw new Error('Invalid journey date');
+
+    const cacheKey = `trains:${from.trim().toUpperCase()}:${to.trim().toUpperCase()}:${dateDdMmYyyy}`;
+    return this.cache.getOrSet(
+      cacheKey,
+      () => this.fetchTrainsFromUpstream(from, to, dateDdMmYyyy),
+      TRAIN_SEARCH_TTL_MS,
+    );
+  }
+
+  private async fetchTrainsFromUpstream(
+    from: string,
+    to: string,
+    dateDdMmYyyy: string,
+  ): Promise<unknown> {
     const params = new URLSearchParams({
       sourceStationCode: from.trim().toUpperCase(),
       destinationStationCode: to.trim().toUpperCase(),

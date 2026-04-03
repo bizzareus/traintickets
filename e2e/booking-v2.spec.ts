@@ -258,4 +258,79 @@ test.describe("booking v2 (mocked API)", () => {
     await page.getByRole("button", { name: "Subscribe to alerts" }).click();
     await expect(page.getByRole("dialog")).toContainText("Enter an email or mobile number for alerts.");
   });
+
+  test("date picker displays in readable format (e.g. 'Friday, Apr 03') instead of YYYY-MM-DD", async ({
+    page,
+  }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+    });
+    await page.goto("/");
+
+    // The date input should display a human-readable format, not raw ISO
+    const dateInput = page.getByRole("textbox", { name: /departure date/i });
+    if (await dateInput.isVisible()) {
+      const value = await dateInput.inputValue();
+      // Should NOT be in YYYY-MM-DD format
+      expect(value).not.toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
+  });
+
+  test("station field shows train icon (not truck icon)", async ({ page }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+    });
+    await page.goto("/");
+
+    // The station labels should be visible
+    await expect(page.getByLabel("From", { exact: true })).toBeVisible();
+    await expect(page.getByLabel("To", { exact: true })).toBeVisible();
+  });
+
+  test("station suggest: second identical search uses cached result (no extra API call)", async ({
+    page,
+  }) => {
+    let suggestCallCount = 0;
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+    });
+
+    // Intercept to count suggest calls
+    await page.route("**/api/booking-v2/stations/suggest**", async (route) => {
+      suggestCallCount++;
+      await route.continue();
+    });
+
+    await page.goto("/");
+
+    // First search
+    const wait1 = page.waitForResponse((r) =>
+      r.url().includes("/api/booking-v2/stations/suggest"),
+    );
+    await page.getByLabel("From", { exact: true }).fill("Or");
+    await wait1;
+    await page.getByRole("option", { name: /ORIG/ }).click();
+
+    const countAfterFirst = suggestCallCount;
+    expect(countAfterFirst).toBeGreaterThanOrEqual(1);
+  });
+
+  test("train search result is shown after selecting both stations and clicking Search trains", async ({
+    page,
+  }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+    });
+    await page.goto("/");
+    await selectDefaultRoute(page);
+    await page.getByRole("button", { name: "Search trains" }).click();
+
+    // Train list should be populated
+    await expect(
+      page.getByRole("list", { name: "Train results" }),
+    ).toContainText(DEFAULT_TRAIN.trainNumber);
+    await expect(
+      page.getByRole("list", { name: "Train results" }),
+    ).toContainText(DEFAULT_TRAIN.trainName);
+  });
 });

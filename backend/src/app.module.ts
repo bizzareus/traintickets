@@ -20,12 +20,14 @@ import { Service2Module } from './service2/service2.module';
 import { ChartTimeIngestionModule } from './chart-time-ingestion/chart-time-ingestion.module';
 import { RailFeedProxyModule } from './rail-feed-proxy/rail-feed-proxy.module';
 import { BookingV2Module } from './booking-v2/booking-v2.module';
+import { CacheModule } from './cache/cache.module';
 
 @Module({
   imports: [
     SentryModule.forRoot(),
     ConfigModule.forRoot({ isGlobal: true }),
     PrismaModule,
+    CacheModule,
     AuthModule,
     TrainsModule,
     StationsModule,
