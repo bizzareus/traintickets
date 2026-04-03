@@ -4,6 +4,7 @@ import {
   alternatePathTwoConfirmed,
   alternatePathTwoIntermediatesConfirmed,
   alternatePathWithCollapsedRemainder,
+  DEFAULT_STATIONS,
   DEFAULT_TRAIN,
   installBookingV2Mocks,
 } from "./fixtures/booking-v2-mocks";
@@ -72,7 +73,9 @@ test.describe("booking v2 (mocked API)", () => {
     await page.goto("/");
     await selectDefaultRoute(page);
     await page.getByRole("button", { name: "Search trains" }).click();
-    await expect(page.getByRole("status")).toContainText("No trains loaded");
+    await expect(
+      page.getByRole("status").filter({ hasText: "No trains loaded" }),
+    ).toBeVisible();
   });
 
   test("train search API error surfaces in UI", async ({ page }) => {
@@ -287,32 +290,41 @@ test.describe("booking v2 (mocked API)", () => {
     await expect(page.getByLabel("To", { exact: true })).toBeVisible();
   });
 
-  test("station suggest: second identical search uses cached result (no extra API call)", async ({
+  test("station suggest: typing in From field fires suggest API and shows options", async ({
     page,
   }) => {
     let suggestCallCount = 0;
     await installBookingV2Mocks(page, {
       alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
-    });
-
-    // Intercept to count suggest calls
-    await page.route("**/api/booking-v2/stations/suggest**", async (route) => {
-      suggestCallCount++;
-      await route.continue();
+      // Count suggest calls inside the mock by using a custom stations override
+      stations: DEFAULT_STATIONS,
     });
 
     await page.goto("/");
 
-    // First search
+    // First suggest call
     const wait1 = page.waitForResponse((r) =>
-      r.url().includes("/api/booking-v2/stations/suggest"),
+      r.url().includes("/api/booking-v2/stations/suggest") && r.request().method() === "GET",
     );
     await page.getByLabel("From", { exact: true }).fill("Or");
     await wait1;
-    await page.getByRole("option", { name: /ORIG/ }).click();
+    suggestCallCount++;
 
-    const countAfterFirst = suggestCallCount;
-    expect(countAfterFirst).toBeGreaterThanOrEqual(1);
+    // Options should appear from the mock suggest response
+    await expect(page.getByRole("option", { name: /ORIG/ })).toBeVisible();
+    expect(suggestCallCount).toBe(1);
+
+    // Second suggest call on To field
+    const wait2 = page.waitForResponse((r) =>
+      r.url().includes("/api/booking-v2/stations/suggest") && r.request().method() === "GET",
+    );
+    await page.getByRole("option", { name: /ORIG/ }).click();
+    await page.getByLabel("To", { exact: true }).fill("De");
+    await wait2;
+    suggestCallCount++;
+
+    await expect(page.getByRole("option", { name: /DEST/ })).toBeVisible();
+    expect(suggestCallCount).toBe(2);
   });
 
   test("train search result is shown after selecting both stations and clicking Search trains", async ({

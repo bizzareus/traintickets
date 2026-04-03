@@ -1,4 +1,5 @@
 import { Global, Module } from '@nestjs/common';
+import { PrismaModule } from '../prisma/prisma.module';
 import { CacheService } from './cache.service';
 import { PostgresCacheService } from './postgres-cache.service';
 import { StationCacheService } from './station-cache.service';
@@ -14,6 +15,7 @@ import { StationCacheService } from './station-cache.service';
  */
 @Global()
 @Module({
+  imports: [PrismaModule],
   providers: [
     { provide: CacheService, useClass: PostgresCacheService },
     StationCacheService,
