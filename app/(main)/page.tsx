@@ -351,6 +351,7 @@ function LegChartTimeInsight({
   const [mobile, setMobile] = useState("");
   const [alertSubmitting, setAlertSubmitting] = useState(false);
   const [alertError, setAlertError] = useState<string | null>(null);
+  const [alertSuccess, setAlertSuccess] = useState<string | null>(null);
   const [alertAlreadySet, setAlertAlreadySet] = useState(false);
 
   useEffect(() => {
@@ -433,6 +434,7 @@ function LegChartTimeInsight({
       });
       markLegAlertSet(trainNumber, legFrom, legTo, journeyDate);
       setAlertAlreadySet(true);
+      setAlertSuccess("Alert set up! We'll notify you when a ticket opens on this leg.");
       try {
         window.localStorage.setItem(
           MONITOR_CONTACT_STORAGE_KEY,
@@ -447,19 +449,78 @@ function LegChartTimeInsight({
     }
   }, [email, mobile, trainNumber, trainName, legFrom, legTo, journeyDate, classCode]);
 
+  // --- Alert CTA block — shown in all non-error states ---
+  const alertBlock = alertAlreadySet ? (
+    <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2.5">
+      <p className="text-sm font-semibold text-emerald-900">✓ Alert set up</p>
+      <p className="mt-0.5 text-sm text-emerald-800">
+        {alertSuccess ?? "We'll notify you when a ticket opens on this leg."}
+      </p>
+    </div>
+  ) : (
+    <div className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-3">
+      <p className="text-sm font-semibold text-gray-900">Get notified when seats open</p>
+      <p className="mt-0.5 text-xs text-gray-600">
+        We&apos;ll watch chart runs for {legFrom} → {legTo} and alert you if availability changes.
+        {chartDateTimeFormatted ? ` Chart time: ${chartDateTimeFormatted}.` : ""}
+      </p>
+      <div className="mt-2 flex flex-col gap-2 sm:flex-row">
+        <input
+          type="email"
+          className="w-full rounded-md border border-gray-300 bg-white px-2 py-1.5 text-sm"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          autoComplete="email"
+        />
+        <input
+          type="tel"
+          className="w-full rounded-md border border-gray-300 bg-white px-2 py-1.5 text-sm"
+          placeholder="Mobile (optional)"
+          value={mobile}
+          onChange={(e) => setMobile(e.target.value)}
+          autoComplete="tel"
+        />
+      </div>
+      <button
+        type="button"
+        disabled={alertSubmitting}
+        onClick={() => void subscribeAlert()}
+        className="bg-blue-600 hover:bg-blue-700 mt-2 w-full rounded-lg px-3 py-2 text-sm font-semibold text-white shadow-sm disabled:opacity-60 sm:w-auto"
+      >
+        {alertSubmitting ? "Setting up…" : "Set alert for this leg"}
+      </button>
+      {alertError && <p className="mt-2 text-sm text-red-700">{alertError}</p>}
+    </div>
+  );
+
   if (loading) {
     return (
-      <p className="mt-3 text-sm text-gray-500">Loading chart status for {stationCode}…</p>
+      <div className="mt-3 space-y-3">
+        <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2.5">
+          <svg className="h-4 w-4 animate-spin text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+          <p className="text-sm font-medium text-amber-900">
+            Checking chart preparation time for {stationCode}…
+          </p>
+        </div>
+        {alertBlock}
+      </div>
     );
   }
 
   if (chartPrepared === true) {
     return (
-      <div className="mt-3 rounded-md bg-red-50 px-3 py-2.5">
-        <p className="text-sm font-semibold text-red-900">Chart already prepared</p>
-        <p className="mt-1 text-sm text-red-800">
-          Chart was prepared at {chartDateTimeFormatted} for {stationCode}. It&apos;s unlikely to find any more tickets on this leg.
-        </p>
+      <div className="mt-3 space-y-3">
+        <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2.5">
+          <p className="text-sm font-semibold text-red-900">Chart already prepared</p>
+          <p className="mt-1 text-sm text-red-800">
+            Chart was prepared at <span className="font-semibold">{chartDateTimeFormatted}</span> for {stationCode}. Ticket availability is unlikely to change.
+          </p>
+        </div>
+        {alertBlock}
       </div>
     );
   }
@@ -467,63 +528,26 @@ function LegChartTimeInsight({
   if (chartPrepared === false) {
     return (
       <div className="mt-3 space-y-3">
-        <div className="rounded-md bg-amber-50 px-3 py-2.5">
-          <p className="text-sm font-semibold text-amber-900">Chart NOT prepared yet</p>
+        <div className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2.5">
+          <p className="text-sm font-semibold text-amber-900">Chart not prepared yet</p>
           <p className="mt-1 text-sm text-amber-800">
-            Once the chart prepares at <span className="font-semibold">{chartDateTimeFormatted}</span> then you might get tickets on this leg.
+            Chart prepares at <span className="font-bold text-amber-950">{chartDateTimeFormatted}</span>. Tickets may open up after that.
           </p>
         </div>
-        {alertAlreadySet ? (
-          <div className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2.5">
-            <p className="text-sm font-semibold text-emerald-900">Alert set up</p>
-            <p className="mt-1 text-sm text-emerald-800">
-              You&apos;ve set up an alert for this leg. We&apos;ll inform you when a ticket is available.
-            </p>
-          </div>
-        ) : (
-          <div className="rounded-md border border-gray-200 bg-gray-50 px-3 py-3">
-            <p className="text-sm font-semibold text-gray-900">Set up alert for this leg</p>
-            <p className="mt-1 text-xs text-gray-600">
-              We&apos;ll check availability at chart time ({formatTimeAmPm(chartTime)}) and notify you if seats open up on {legFrom} → {legTo}.
-            </p>
-            <div className="mt-2 flex flex-col gap-2 sm:flex-row">
-              <input
-                type="email"
-                className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email"
-              />
-              <input
-                type="tel"
-                className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
-                placeholder="Mobile (optional)"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
-                autoComplete="tel"
-              />
-            </div>
-            <button
-              type="button"
-              disabled={alertSubmitting}
-              onClick={() => void subscribeAlert()}
-              className="bg-blue-600 hover:bg-blue-700 mt-2 rounded-lg px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-60"
-            >
-              {alertSubmitting ? "Setting up…" : "Set alert"}
-            </button>
-            {alertError && <p className="mt-2 text-sm text-red-700">{alertError}</p>}
-          </div>
-        )}
+        {alertBlock}
       </div>
     );
   }
 
+  // chartPrepared === null — no chart time available yet
   return (
-    <div className="mt-3 rounded-md bg-gray-100 px-3 py-2.5">
-      <p className="text-sm text-gray-700">
-        Chart preparation time for {stationCode} is not available yet.
-      </p>
+    <div className="mt-3 space-y-3">
+      <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5">
+        <p className="text-sm font-medium text-gray-700">
+          Chart preparation time for <span className="font-semibold">{stationCode}</span> is not yet available.
+        </p>
+      </div>
+      {alertBlock}
     </div>
   );
 }
