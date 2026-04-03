@@ -147,3 +147,30 @@ export function summarizeStationChartPreparation(
   }
   return `Chart preparation for boarding at ${st}: ${parts.join("; ")}.`;
 }
+
+/**
+ * Short phrase for post-subscribe copy: journey date plus IRCTC chart-window hints when meta is loaded.
+ */
+export function buildJourneyChartAlertSchedulePhrase(args: {
+  journeyDateYmd: string;
+  metaLoading: boolean;
+  metaErr: string | null;
+  metaFrom: StationChartMetaItem | null | undefined;
+  metaTo: StationChartMetaItem | null | undefined;
+  legFromCode: string;
+  legToCode: string;
+  sameLegEndpoints: boolean;
+}): string {
+  const ymd = args.journeyDateYmd.trim().slice(0, 10);
+  const dateLabel = formatJourneyDateUtcLabel(ymd);
+  if (args.metaLoading || args.metaErr) {
+    return dateLabel;
+  }
+  const fromSummary = summarizeStationChartPreparation(args.metaFrom, args.legFromCode);
+  const toSummary = args.sameLegEndpoints ? null : summarizeStationChartPreparation(args.metaTo, args.legToCode);
+  const bits = [fromSummary, toSummary].filter((s): s is string => Boolean(s));
+  if (bits.length > 0) {
+    return `${dateLabel} (${bits.join(" ")})`;
+  }
+  return dateLabel;
+}

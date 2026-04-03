@@ -10,7 +10,10 @@ import {
   firstJourneyValidationMessage,
 } from "@/lib/journeyValidationErrors";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
-import { describeChartPreparationForStation } from "@/lib/stationChartMetaSummary";
+import {
+  buildJourneyChartAlertSchedulePhrase,
+  describeChartPreparationForStation,
+} from "@/lib/stationChartMetaSummary";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { cn } from "@/lib/utils";
 
@@ -220,7 +223,7 @@ function AlternatePathRemainderInsights({
   const [mobile, setMobile] = useState("");
   const [monitorSubmitting, setMonitorSubmitting] = useState(false);
   const [monitorError, setMonitorError] = useState<string | null>(null);
-  const [monitorQueued, setMonitorQueued] = useState(false);
+  const [monitorSuccessCopy, setMonitorSuccessCopy] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -320,7 +323,7 @@ function AlternatePathRemainderInsights({
     }
     setMonitorSubmitting(true);
     setMonitorError(null);
-    setMonitorQueued(false);
+    setMonitorSuccessCopy(null);
     try {
       const { data: validated } = await apiClient.post<{
         valid: boolean;
@@ -352,7 +355,19 @@ function AlternatePathRemainderInsights({
         email: em,
         mobile: mob,
       });
-      setMonitorQueued(true);
+      const schedulePhrase = buildJourneyChartAlertSchedulePhrase({
+        journeyDateYmd: journeyDate.trim(),
+        metaLoading,
+        metaErr,
+        metaFrom,
+        metaTo,
+        legFromCode: legFrom,
+        legToCode: legTo,
+        sameLegEndpoints,
+      });
+      setMonitorSuccessCopy(
+        `Alert has been set up! We will inform you if there are any tickets available on ${schedulePhrase}. But you need to be quick to book those tickets. If you have already boarded the train, you will still receive notifications as per realtime availability.`,
+      );
       try {
         window.localStorage.setItem(
           MONITOR_CONTACT_STORAGE_KEY,
@@ -377,6 +392,11 @@ function AlternatePathRemainderInsights({
     legTo,
     journeyDate,
     monitorClassCode,
+    metaLoading,
+    metaErr,
+    metaFrom,
+    metaTo,
+    sameLegEndpoints,
   ]);
 
   return (
@@ -457,11 +477,8 @@ function AlternatePathRemainderInsights({
           {monitorSubmitting ? "Subscribing…" : "Subscribe to alerts"}
         </button>
         {monitorError && <p className="mt-2 text-sm text-red-700">{monitorError}</p>}
-        {monitorQueued && (
-          <p className="mt-2 text-sm font-medium text-emerald-800">
-            Alert setup queued. We finish chart checks and notifications in the background — same flow as on the home
-            booking page.
-          </p>
+        {monitorSuccessCopy && (
+          <p className="mt-2 text-sm font-medium text-emerald-800">{monitorSuccessCopy}</p>
         )}
       </div>
     </div>
@@ -596,13 +613,19 @@ function StationFieldSimple(props: {
   const showLoading = loading || pendingDebounce;
 
   return (
-    <div ref={wrapRef} className="relative min-w-0 flex-1 border-b border-gray-200 px-4 py-4 sm:border-b-0 sm:border-r">
+    <div
+      ref={wrapRef}
+      className={cn(
+        "relative min-w-0 flex-1 border-b border-gray-200 px-3 py-2.5 sm:border-b-0 sm:border-r sm:py-2",
+        showList && "z-[55]",
+      )}
+    >
       <label
         htmlFor={inputId}
-        className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500"
+        className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500"
       >
         <svg
-          className="h-4 w-4 shrink-0 text-blue-600"
+          className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -618,25 +641,41 @@ function StationFieldSimple(props: {
         </svg>
         {label}
       </label>
-      <input
-        id={inputId}
-        type="text"
-        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25"
-        placeholder="Search station name or code…"
-        value={displayText}
-        autoComplete="off"
-        role="combobox"
-        aria-expanded={showList}
-        aria-autocomplete="list"
-        onChange={(e) => {
-          onUserType(e.target.value);
-          onOpenChange(true);
-        }}
-        onFocus={() => onOpenChange(true)}
-      />
+      <div className="relative">
+        <input
+          id={inputId}
+          type="text"
+          className="block w-full rounded-md border border-gray-300 bg-gray-50 py-1.5 pl-2 pr-8 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25"
+          placeholder="Search station name or code…"
+          value={displayText}
+          autoComplete="off"
+          role="combobox"
+          aria-expanded={showList}
+          aria-autocomplete="list"
+          aria-controls={showList ? `${inputId}-listbox` : undefined}
+          onChange={(e) => {
+            onUserType(e.target.value);
+            onOpenChange(true);
+          }}
+          onFocus={() => onOpenChange(true)}
+        />
+        <span
+          className="pointer-events-none absolute inset-y-0 right-0 flex w-8 items-center justify-center text-gray-400"
+          aria-hidden
+        >
+          <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              fillRule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </span>
+      </div>
       {showList && (
         <ul
-          className="absolute inset-x-0 top-full z-30 mt-1 max-h-56 divide-y divide-gray-100 overflow-auto rounded-lg border border-gray-200 bg-white shadow-lg"
+          id={`${inputId}-listbox`}
+          className="absolute inset-x-0 top-full z-[60] mt-1 max-h-56 divide-y divide-gray-100 overflow-auto rounded-lg border border-gray-200 bg-white shadow-lg sm:min-w-[min(100%,18rem)]"
           role="listbox"
         >
           {showLoading && (
@@ -917,12 +956,12 @@ export default function BookingV2Page() {
           </p>
         </header>
 
-        <section className="mb-8 rounded-xl border border-gray-200 bg-white p-4 shadow-md sm:p-6">
+        <section className="mb-8 rounded-xl border border-gray-200 bg-white p-3 shadow-md sm:p-4">
           <h2 className="sr-only">Journey search</h2>
-          <p className="mb-4 text-sm font-medium text-gray-700">
+          <p className="mb-2 text-sm font-medium text-gray-700 sm:mb-3">
             Where are you travelling?
           </p>
-          <div className="flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch">
+          <div className="flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch sm:overflow-visible">
             <StationFieldSimple
               label="From"
               query={fromQ}
@@ -942,11 +981,11 @@ export default function BookingV2Page() {
               onOpenChange={openFrom}
               suggestError={fromSuggestError}
             />
-            <div className="flex items-center justify-center border-gray-200 bg-white px-2 py-3 sm:w-14 sm:flex-col sm:border-x sm:py-0">
+            <div className="flex shrink-0 items-center justify-center border-gray-200 bg-white px-2 py-2 sm:w-11 sm:flex-col sm:border-x sm:py-0">
               <button
                 type="button"
                 onClick={swapStations}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-100"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:h-8 sm:w-8"
                 aria-label="Swap from and to stations"
               >
                 <svg
@@ -985,13 +1024,13 @@ export default function BookingV2Page() {
               onOpenChange={openTo}
               suggestError={toSuggestError}
             />
-            <div className="min-w-0 flex-1 border-t border-gray-200 bg-white px-4 py-4 sm:border-t-0 sm:border-r">
+            <div className="min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 sm:border-t-0 sm:border-r sm:py-2">
               <label
                 htmlFor={journeyDateInputId}
-                className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500"
+                className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500"
               >
                 <svg
-                  className="h-4 w-4 shrink-0 text-blue-600"
+                  className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -1010,18 +1049,20 @@ export default function BookingV2Page() {
               <input
                 id={journeyDateInputId}
                 type="date"
-                className="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm font-semibold text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25"
+                className="block w-full cursor-pointer rounded-md border border-gray-300 bg-gray-50 py-1.5 pl-2 pr-2 text-sm font-semibold text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25"
                 value={journeyDate ?? ""}
                 onChange={(e) => setJourneyDate(e.target.value)}
               />
-              <p className="mt-2 text-xs font-medium text-gray-500">{dateLabel}</p>
+              <p className="mt-1 line-clamp-1 text-[11px] font-medium leading-tight text-gray-500 sm:text-xs">
+                {dateLabel}
+              </p>
             </div>
-            <div className="flex items-stretch border-t border-gray-200 p-3 sm:border-t-0 sm:p-0">
+            <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
               <button
                 type="button"
                 onClick={() => void runSearch()}
                 disabled={searchLoading}
-                className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-w-[140px] sm:rounded-b-none sm:rounded-r-xl sm:px-8"
+                className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-2.5 text-center text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-sm"
               >
                 {searchLoading ? (
                   <span className="inline-flex items-center gap-2">
