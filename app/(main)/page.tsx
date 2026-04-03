@@ -850,6 +850,7 @@ export default function BookingV2Page() {
   }, []);
   const [trains, setTrains] = useState<TrainListItem[]>([]);
   const [searchLoading, setSearchLoading] = useState(false);
+  const [trainSearchSettled, setTrainSearchSettled] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
   const [altTrainName, setAltTrainName] = useState<string | null>(null);
@@ -931,7 +932,12 @@ export default function BookingV2Page() {
     setToSt(a);
     setFromQ(b ? `${b.stationCode} - ${b.stationName}` : "");
     setToQ(a ? `${a.stationCode} - ${a.stationName}` : "");
+    setTrainSearchSettled(false);
   }, [fromSt, toSt]);
+
+  useEffect(() => {
+    setTrainSearchSettled(false);
+  }, [fromSt, toSt, journeyDate]);
 
   const runSearch = useCallback(async () => {
     if (!fromSt || !toSt) {
@@ -944,6 +950,7 @@ export default function BookingV2Page() {
     }
     setSearchError(null);
     setSearchLoading(true);
+    setTrainSearchSettled(false);
     setTrains([]);
     try {
       const r = await apiClient.get<{ data?: { trainList?: TrainListItem[] } }>(
@@ -966,6 +973,7 @@ export default function BookingV2Page() {
       setSearchError(msg);
     } finally {
       setSearchLoading(false);
+      setTrainSearchSettled(true);
     }
   }, [fromSt, toSt, journeyDate]);
 
@@ -1324,9 +1332,18 @@ export default function BookingV2Page() {
               </div>
             </li>
           ))}
+          {trainSearchSettled && !searchLoading && trains.length === 0 && !searchError && (
+            <li className="list-none">
+              <div
+                className="rounded-xl border border-dashed border-gray-200 bg-gray-50 px-5 py-8 text-center text-sm text-gray-600"
+                role="status"
+                aria-live="polite"
+              >
+                No trains loaded for this route and date. Try another date or nearby stations.
+              </div>
+            </li>
+          )}
         </ul>
-
-        
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
