@@ -18,7 +18,7 @@ import { IrctcModule } from './irctc/irctc.module';
 import { ChartTimeModule } from './chart-time/chart-time.module';
 import { Service2Module } from './service2/service2.module';
 import { ChartTimeIngestionModule } from './chart-time-ingestion/chart-time-ingestion.module';
-import { ConfirmTktProxyModule } from './confirmtkt-proxy/confirmtkt-proxy.module';
+import { RailFeedProxyModule } from './rail-feed-proxy/rail-feed-proxy.module';
 import { BookingV2Module } from './booking-v2/booking-v2.module';
 
 @Module({
@@ -38,7 +38,7 @@ import { BookingV2Module } from './booking-v2/booking-v2.module';
     ChartTimeModule,
     Service2Module,
     ChartTimeIngestionModule,
-    ConfirmTktProxyModule,
+    RailFeedProxyModule,
     BookingV2Module,
   ],
   controllers: [AppController],

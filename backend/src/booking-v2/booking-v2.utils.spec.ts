@@ -3,10 +3,10 @@ import {
   isLegConfirmed,
   normalizeAndDedupeClassCodes,
   orderedDestinationIndices,
-  parseConfirmTktAvailablityType,
+  parseUpstreamAvailablityType,
   pickFarthestConfirmedStationIndex,
   stationCodesBetweenStops,
-  ymdToConfirmTktDate,
+  ymdToRailApiDdMmYyyy,
 } from './booking-v2.utils';
 
 describe('normalizeAndDedupeClassCodes', () => {
@@ -19,13 +19,13 @@ describe('normalizeAndDedupeClassCodes', () => {
   });
 });
 
-describe('ymdToConfirmTktDate', () => {
+describe('ymdToRailApiDdMmYyyy', () => {
   it('maps YYYY-MM-DD to DD-MM-YYYY', () => {
-    expect(ymdToConfirmTktDate('2026-04-05')).toBe('05-04-2026');
+    expect(ymdToRailApiDdMmYyyy('2026-04-05')).toBe('05-04-2026');
   });
   it('returns null for invalid', () => {
-    expect(ymdToConfirmTktDate('5-4-2026')).toBeNull();
-    expect(ymdToConfirmTktDate('')).toBeNull();
+    expect(ymdToRailApiDdMmYyyy('5-4-2026')).toBeNull();
+    expect(ymdToRailApiDdMmYyyy('')).toBeNull();
   });
 });
 
@@ -51,26 +51,26 @@ describe('stationCodesBetweenStops', () => {
   });
 });
 
-describe('parseConfirmTktAvailablityType', () => {
+describe('parseUpstreamAvailablityType', () => {
   it('parses number and numeric string', () => {
-    expect(parseConfirmTktAvailablityType(3)).toBe(3);
-    expect(parseConfirmTktAvailablityType('1')).toBe(1);
+    expect(parseUpstreamAvailablityType(3)).toBe(3);
+    expect(parseUpstreamAvailablityType('1')).toBe(1);
   });
   it('returns null for invalid', () => {
-    expect(parseConfirmTktAvailablityType(null)).toBeNull();
-    expect(parseConfirmTktAvailablityType('')).toBeNull();
+    expect(parseUpstreamAvailablityType(null)).toBeNull();
+    expect(parseUpstreamAvailablityType('')).toBeNull();
   });
 });
 
 describe('isLegConfirmed', () => {
   it('accepts Confirm and Probable', () => {
-    expect(isLegConfirmed({ confirmTktStatus: 'Confirm' })).toBe(true);
-    expect(isLegConfirmed({ confirmTktStatus: 'Probable' })).toBe(true);
+    expect(isLegConfirmed({ vendorPredictionStatus: 'Confirm' })).toBe(true);
+    expect(isLegConfirmed({ vendorPredictionStatus: 'Probable' })).toBe(true);
   });
   it('accepts AVAILABLE*', () => {
     expect(
       isLegConfirmed({
-        confirmTktStatus: 'No Chance',
+        vendorPredictionStatus: 'No Chance',
         availablityStatus: 'AVAILABLE-0080#',
       }),
     ).toBe(true);
@@ -78,7 +78,7 @@ describe('isLegConfirmed', () => {
   it('rejects REGRET', () => {
     expect(
       isLegConfirmed({
-        confirmTktStatus: 'No Chance',
+        vendorPredictionStatus: 'No Chance',
         availablityStatus: 'REGRET',
       }),
     ).toBe(false);
@@ -87,16 +87,16 @@ describe('isLegConfirmed', () => {
     expect(
       isLegConfirmed({
         availablityType: 3,
-        confirmTktStatus: 'Confirm',
+        vendorPredictionStatus: 'Confirm',
         availablityStatus: 'AVAILABLE-0080#',
       }),
     ).toBe(false);
   });
-  it('availablityType 1 forces confirmed ticket per ConfirmTkt', () => {
+  it('availablityType 1 forces confirmed ticket even when other strings disagree', () => {
     expect(
       isLegConfirmed({
         availablityType: 1,
-        confirmTktStatus: 'No Chance',
+        vendorPredictionStatus: 'No Chance',
         availablityStatus: 'REGRET',
       }),
     ).toBe(true);
@@ -107,9 +107,9 @@ describe('pickFarthestConfirmedStationIndex', () => {
   it('picks farthest confirmed', () => {
     const idx = pickFarthestConfirmedStationIndex(
       [
-        { confirmTktStatus: 'Confirm' },
-        { confirmTktStatus: 'No Chance', availablityStatus: 'REGRET' },
-        { confirmTktStatus: 'Probable' },
+        { vendorPredictionStatus: 'Confirm' },
+        { vendorPredictionStatus: 'No Chance', availablityStatus: 'REGRET' },
+        { vendorPredictionStatus: 'Probable' },
       ],
       [1, 2, 3],
     );
@@ -138,7 +138,7 @@ describe('orderedDestinationIndices', () => {
 });
 
 describe('avlDayMatchesJourneyDate', () => {
-  it('matches ConfirmTkt day string to DD-MM-YYYY', () => {
+  it('matches upstream day string to DD-MM-YYYY', () => {
     expect(avlDayMatchesJourneyDate('5-4-2026', '05-04-2026')).toBe(true);
     expect(avlDayMatchesJourneyDate('05-04-2026', '05-04-2026')).toBe(true);
   });

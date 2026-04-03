@@ -15,8 +15,8 @@ export function normalizeAndDedupeClassCodes(codes: readonly string[]): string[]
   return out;
 }
 
-/** Journey date from UI: `YYYY-MM-DD` → ConfirmTkt `DD-MM-YYYY`. */
-export function ymdToConfirmTktDate(ymd: string): string | null {
+/** Journey date from UI: `YYYY-MM-DD` → upstream `DD-MM-YYYY`. */
+export function ymdToRailApiDdMmYyyy(ymd: string): string | null {
   const m = String(ymd).trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (!m) return null;
   const [, y, mo, d] = m;
@@ -43,17 +43,18 @@ export function stationCodesBetweenStops(
 
 export type AvlDayLike = {
   availablityStatus?: string | null;
-  confirmTktStatus?: string | null;
+  /** Vendor prediction-style status text (normalized from upstream availability rows). */
+  vendorPredictionStatus?: string | null;
   /**
-   * ConfirmTkt `data.avlDayList[n].availablityType`:
+   * Upstream `data.avlDayList[n].availablityType`:
    * `1` = ticket available, `3` = waiting (no ticket for this read).
    * When set, this takes precedence over loose string heuristics.
    */
   availablityType?: number | string | null;
 };
 
-/** Numeric `availablityType` from ConfirmTkt day row (string or number in JSON). */
-export function parseConfirmTktAvailablityType(v: unknown): number | null {
+/** Numeric `availablityType` from an availability day row (string or number in JSON). */
+export function parseUpstreamAvailablityType(v: unknown): number | null {
   if (v == null) return null;
   if (typeof v === 'number' && !Number.isNaN(v)) return v;
   if (typeof v === 'string') {
@@ -65,10 +66,10 @@ export function parseConfirmTktAvailablityType(v: unknown): number | null {
 
 export function isLegConfirmed(avl: AvlDayLike | null | undefined): boolean {
   if (!avl) return false;
-  const at = parseConfirmTktAvailablityType(avl.availablityType);
+  const at = parseUpstreamAvailablityType(avl.availablityType);
   if (at === 3) return false;
   if (at === 1) return true;
-  const ct = String(avl.confirmTktStatus ?? '').trim();
+  const ct = String(avl.vendorPredictionStatus ?? '').trim();
   if (ct === 'Confirm' || ct === 'Probable') return true;
   const st = String(avl.availablityStatus ?? '').trim().toUpperCase();
   return st.startsWith('AVAILABLE');
@@ -106,7 +107,7 @@ export function orderedDestinationIndices(
   return out;
 }
 
-/** Match ConfirmTkt `availablityDate` like "5-4-2026" to journey parts. */
+/** Match upstream `availablityDate` like "5-4-2026" to journey parts. */
 export function avlDayMatchesJourneyDate(
   availablityDate: string | null | undefined,
   journeyDdMmYyyy: string,

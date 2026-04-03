@@ -1,5 +1,5 @@
-/** ConfirmTkt API base URLs. Stations/search use mweb headers; availability uses web headers. */
-export const BOOKING_V2_CONFIRMTKT_BASE = {
+/** Third-party rail API base URLs (stations / search / availability). */
+export const BOOKING_V2_RAIL_API_BASE = {
   stationsSuggest:
     'https://cttrainsapi.confirmtkt.com/api/v2/trains/stations/auto-suggestion',
   trainsSearch:
@@ -9,7 +9,7 @@ export const BOOKING_V2_CONFIRMTKT_BASE = {
 } as const;
 
 /**
- * Travel classes tried for “best available” path finding (ConfirmTkt).
+ * Travel classes tried for “best available” path finding.
  * Order is used as a tie-break when multiple classes are confirmed (prefer earlier = typical budget order).
  */
 export const BOOKING_V2_ALTERNATE_PATH_CLASSES = [
@@ -26,8 +26,8 @@ export const BOOKING_V2_ALTERNATE_PATH_CLASSES = [
   'FC',
 ] as const;
 
-/** ConfirmTkt **web** client headers for `fetchAvailability` (matches browser curl). */
-export const BOOKING_V2_CONFIRMTKT_AVAILABILITY_HEADERS: Record<string, string> = {
+/** Web-style client headers for availability POST (matches browser-shaped upstream expectations). */
+export const BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS: Record<string, string> = {
   Accept: '*/*',
   'Accept-Language': 'en-US,en;q=0.9',
   ApiKey: 'ct-web!2$',
@@ -52,8 +52,8 @@ export const BOOKING_V2_CONFIRMTKT_AVAILABILITY_HEADERS: Record<string, string> 
   'sec-ch-ua-platform': '"macOS"',
 };
 
-export const BOOKING_V2_CONFIRMTKT_HEADERS: Record<string, string> = {
-  ...BOOKING_V2_CONFIRMTKT_AVAILABILITY_HEADERS,
+export const BOOKING_V2_RAIL_API_HEADERS: Record<string, string> = {
+  ...BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
   ApiKey: 'ct-mweb!2$',
   ClientId: 'ct-mweb',
 };

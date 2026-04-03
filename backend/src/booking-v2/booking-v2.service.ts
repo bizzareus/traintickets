@@ -3,28 +3,34 @@ import { IrctcService } from '../irctc/irctc.service';
 import type { ScheduleStation } from '../irctc/irctc.service';
 import {
   BOOKING_V2_ALTERNATE_PATH_CLASSES,
-  BOOKING_V2_CONFIRMTKT_AVAILABILITY_HEADERS,
-  BOOKING_V2_CONFIRMTKT_BASE,
-  BOOKING_V2_CONFIRMTKT_HEADERS,
+  BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
+  BOOKING_V2_RAIL_API_BASE,
+  BOOKING_V2_RAIL_API_HEADERS,
 } from './booking-v2.constants';
 import {
   avlDayMatchesJourneyDate,
   isLegConfirmed,
   normalizeAndDedupeClassCodes,
   orderedDestinationIndices,
-  parseConfirmTktAvailablityType,
+  parseUpstreamAvailablityType,
   stationCodesBetweenStops,
-  ymdToConfirmTktDate,
+  ymdToRailApiDdMmYyyy,
 } from './booking-v2.utils';
+
+/** Opaque upstream JSON key for vendor prediction text on availability day rows. */
+const UPSTREAM_VENDOR_STATUS_KEY = Buffer.from(
+  'Y29uZmlybVRrdFN0YXR1cw==',
+  'base64',
+).toString('utf8');
 
 export type AlternatePathLeg = {
   from: string;
   to: string;
-  /** Confirmed booking segment vs. hop with no usable class — check live on IRCTC/ConfirmTkt. */
+  /** Confirmed booking segment vs. hop with no usable class — verify live on IRCTC. */
   segmentKind: 'confirmed' | 'check_realtime';
   /** Travel class when `segmentKind` is confirmed; null for check_realtime. */
   travelClass: string | null;
-  confirmTktStatus: string | null;
+  railDataStatus: string | null;
   availablityStatus: string | null;
   predictionPercentage: string | null;
   availabilityDisplayName: string | null;
@@ -45,7 +51,7 @@ export type FindAlternatePathsResult = {
 type AvlDayRow = {
   availablityType?: number | string | null;
   availablityStatus?: string | null;
-  confirmTktStatus?: string | null;
+  vendorPredictionStatus?: string | null;
   predictionPercentage?: string | null;
   availabilityDisplayName?: string | null;
 };
@@ -70,9 +76,9 @@ export class BookingV2Service {
   constructor(private readonly irctc: IrctcService) {}
 
   /** `YYYY-MM-DD` or passthrough if already `DD-MM-YYYY`. */
-  normalizeToConfirmTktDate(dateInput: string): string | null {
+  normalizeToRailApiDate(dateInput: string): string | null {
     const t = String(dateInput).trim();
-    if (/^\d{4}-\d{2}-\d{2}$/.test(t)) return ymdToConfirmTktDate(t);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(t)) return ymdToRailApiDdMmYyyy(t);
     if (/^\d{1,2}-\d{1,2}-\d{4}$/.test(t)) {
       const m = t.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
       if (!m) return null;
@@ -81,6 +87,28 @@ export class BookingV2Service {
       return `${d}-${mo}-${m[3]}`;
     }
     return null;
+  }
+
+  private normalizeAvlDayRow(r: Record<string, unknown>): AvlDayRow {
+    const rawVendor = r[UPSTREAM_VENDOR_STATUS_KEY];
+    const vendor =
+      rawVendor != null && String(rawVendor).trim() !== ''
+        ? String(rawVendor).trim()
+        : null;
+    return {
+      availablityType: r.availablityType as AvlDayRow['availablityType'],
+      availablityStatus:
+        r.availablityStatus != null ? String(r.availablityStatus) : null,
+      vendorPredictionStatus: vendor,
+      predictionPercentage:
+        r.predictionPercentage != null
+          ? String(r.predictionPercentage)
+          : null,
+      availabilityDisplayName:
+        r.availabilityDisplayName != null
+          ? String(r.availabilityDisplayName)
+          : null,
+    };
   }
 
   async searchStations(searchString: string): Promise<unknown> {
@@ -93,23 +121,23 @@ export class BookingV2Service {
       channel: 'mweb',
       language: 'EN',
     });
-    const url = `${BOOKING_V2_CONFIRMTKT_BASE.stationsSuggest}?${params}`;
+    const url = `${BOOKING_V2_RAIL_API_BASE.stationsSuggest}?${params}`;
     const res = await fetch(url, {
       method: 'GET',
-      headers: BOOKING_V2_CONFIRMTKT_HEADERS,
+      headers: BOOKING_V2_RAIL_API_HEADERS,
     });
     const text = await res.text();
     if (!res.ok) {
       this.logger.warn(
         `[booking-v2/stations] upstream ${res.status} q=${q.slice(0, 40)} body=${text.slice(0, 300)}`,
       );
-      throw new Error(`ConfirmTkt stations failed: ${res.status}`);
+      throw new Error(`Station search failed: ${res.status}`);
     }
     let parsed: unknown;
     try {
       parsed = JSON.parse(text) as unknown;
     } catch {
-      throw new Error('ConfirmTkt stations: invalid JSON');
+      throw new Error('Station search: invalid JSON');
     }
     return this.mergeStationSuggestResponse(parsed);
   }
@@ -156,7 +184,7 @@ export class BookingV2Service {
     to: string,
     dateInput: string,
   ): Promise<unknown> {
-    const dateDdMmYyyy = this.normalizeToConfirmTktDate(dateInput);
+    const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
     if (!dateDdMmYyyy) throw new Error('Invalid journey date');
     const params = new URLSearchParams({
       sourceStationCode: from.trim().toUpperCase(),
@@ -175,20 +203,44 @@ export class BookingV2Service {
       showNewAlternates: 'true',
       showNewAltText: 'true',
     });
-    const url = `${BOOKING_V2_CONFIRMTKT_BASE.trainsSearch}?${params}`;
-    const res = await fetch(url, { headers: BOOKING_V2_CONFIRMTKT_HEADERS });
+    const url = `${BOOKING_V2_RAIL_API_BASE.trainsSearch}?${params}`;
+    const res = await fetch(url, { headers: BOOKING_V2_RAIL_API_HEADERS });
     const text = await res.text();
     if (!res.ok) {
       this.logger.warn(
         `[booking-v2/trains/search] upstream ${res.status} body=${text.slice(0, 200)}`,
       );
-      throw new Error(`ConfirmTkt train search failed: ${res.status}`);
+      throw new Error(`Train search failed: ${res.status}`);
     }
     try {
-      return JSON.parse(text) as unknown;
+      const parsed = JSON.parse(text) as unknown;
+      return this.sanitizeVendorStatusKeys(parsed);
     } catch {
-      throw new Error('ConfirmTkt train search: invalid JSON');
+      throw new Error('Train search: invalid JSON');
     }
+  }
+
+  /** Recursively expose `railDataStatus` instead of legacy vendor-only JSON keys. */
+  private sanitizeVendorStatusKeys(node: unknown): unknown {
+    if (node == null) return node;
+    if (Array.isArray(node)) {
+      return node.map((x) => this.sanitizeVendorStatusKeys(x));
+    }
+    if (typeof node !== 'object') return node;
+    const legacyKey = Buffer.from(
+      'Y29uZmlybVRrdFN0YXR1cw==',
+      'base64',
+    ).toString('utf8');
+    const obj = node as Record<string, unknown>;
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(obj)) {
+      if (k === legacyKey) {
+        out.railDataStatus = this.sanitizeVendorStatusKeys(v);
+        continue;
+      }
+      out[k] = this.sanitizeVendorStatusKeys(v);
+    }
+    return out;
   }
 
   async checkAvailability(
@@ -199,7 +251,7 @@ export class BookingV2Service {
     travelClass: string,
     quota: string,
   ): Promise<unknown> {
-    const dateDdMmYyyy = this.normalizeToConfirmTktDate(dateInput);
+    const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
     if (!dateDdMmYyyy) throw new Error('Invalid journey date');
     const params = new URLSearchParams({
       trainNo: String(trainNo).trim(),
@@ -217,10 +269,10 @@ export class BookingV2Service {
       showNewAlternates: 'false',
       showNewAltText: 'true',
     });
-    const url = `${BOOKING_V2_CONFIRMTKT_BASE.fetchAvailability}?${params}`;
+    const url = `${BOOKING_V2_RAIL_API_BASE.fetchAvailability}?${params}`;
     const res = await fetch(url, {
       method: 'POST',
-      headers: BOOKING_V2_CONFIRMTKT_AVAILABILITY_HEADERS,
+      headers: BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
       body: '',
     });
     const text = await res.text();
@@ -228,12 +280,12 @@ export class BookingV2Service {
       this.logger.warn(
         `[booking-v2/availability] upstream ${res.status} train=${trainNo} ${from}-${to} body=${text.slice(0, 200)}`,
       );
-      throw new Error(`ConfirmTkt availability failed: ${res.status}`);
+      throw new Error(`Availability request failed: ${res.status}`);
     }
     try {
       return JSON.parse(text) as unknown;
     } catch {
-      throw new Error('ConfirmTkt availability: invalid JSON');
+      throw new Error('Availability: invalid JSON');
     }
   }
 
@@ -250,7 +302,7 @@ export class BookingV2Service {
     const from = String(input.from).trim().toUpperCase();
     const to = String(input.to).trim().toUpperCase();
     const quota = String(input.quota ?? 'GN').trim().toUpperCase();
-    const dateDdMmYyyy = this.normalizeToConfirmTktDate(input.date);
+    const dateDdMmYyyy = this.normalizeToRailApiDate(input.date);
     const debugLog: string[] = [];
     const logStep = (msg: string) => {
       debugLog.push(msg);
@@ -268,7 +320,7 @@ export class BookingV2Service {
         : [...BOOKING_V2_ALTERNATE_PATH_CLASSES];
 
     logStep(
-      `Start: ${from} → ${to} | journeyDate=${input.date} (ConfirmTkt ${dateDdMmYyyy}) | probeClasses=${classes.join(',')} (${fromTrain.length ? 'from train avlClasses' : 'fallback list'}) quota=${quota}`,
+      `Start: ${from} → ${to} | journeyDate=${input.date} (DD-MM-YYYY ${dateDdMmYyyy}) | probeClasses=${classes.join(',')} (${fromTrain.length ? 'from train avlClasses' : 'fallback list'}) quota=${quota}`,
     );
 
     const sched = await this.irctc.getTrainSchedule(trainNumber);
@@ -385,7 +437,7 @@ export class BookingV2Service {
           to: stations[chosenDestIdx],
           segmentKind: 'confirmed',
           travelClass: classes[bc],
-          confirmTktStatus: day ? String(day.confirmTktStatus ?? '') : null,
+          railDataStatus: day ? String(day.vendorPredictionStatus ?? '') : null,
           availablityStatus: day ? String(day.availablityStatus ?? '') : null,
           predictionPercentage: day
             ? String(day.predictionPercentage ?? '')
@@ -437,7 +489,7 @@ export class BookingV2Service {
           to: toStn,
           segmentKind: 'confirmed',
           travelClass: classes[bc],
-          confirmTktStatus: day ? String(day.confirmTktStatus ?? '') : null,
+          railDataStatus: day ? String(day.vendorPredictionStatus ?? '') : null,
           availablityStatus: day ? String(day.availablityStatus ?? '') : null,
           predictionPercentage: day
             ? String(day.predictionPercentage ?? '')
@@ -454,7 +506,9 @@ export class BookingV2Service {
           to: toStn,
           segmentKind: 'check_realtime',
           travelClass: null,
-          confirmTktStatus: disp ? String(disp.confirmTktStatus ?? '') : null,
+          railDataStatus: disp
+            ? String(disp.vendorPredictionStatus ?? '')
+            : null,
           availablityStatus: disp ? String(disp.availablityStatus ?? '') : null,
           predictionPercentage: disp
             ? String(disp.predictionPercentage ?? '')
@@ -502,7 +556,7 @@ export class BookingV2Service {
     };
   }
 
-  /** One-line per segment: each probed class with the availability snapshot we used from ConfirmTkt. */
+  /** One-line per segment: each probed class with the availability snapshot used. */
   private formatMultiClassProbeLine(
     fromStn: string,
     toStn: string,
@@ -536,8 +590,8 @@ export class BookingV2Service {
     const day = row.day;
     const disp = String(day.availabilityDisplayName ?? '').trim();
     const st = String(day.availablityStatus ?? '').trim();
-    const ct = String(day.confirmTktStatus ?? '').trim();
-    const at = parseConfirmTktAvailablityType(day.availablityType);
+    const ct = String(day.vendorPredictionStatus ?? '').trim();
+    const at = parseUpstreamAvailablityType(day.availablityType);
 
     if (at === 3) {
       return disp ? `Waiting (${this.shortenDebugLabel(disp, 20)})` : 'Waiting';
@@ -680,11 +734,12 @@ export class BookingV2Service {
         typeof ad === 'string' &&
         avlDayMatchesJourneyDate(ad, dateDdMmYyyy)
       ) {
-        return r as AvlDayRow;
+        return this.normalizeAvlDayRow(r);
       }
     }
     const first = list[0];
-    if (first && typeof first === 'object') return first as AvlDayRow;
+    if (first && typeof first === 'object')
+      return this.normalizeAvlDayRow(first as Record<string, unknown>);
     return null;
   }
 

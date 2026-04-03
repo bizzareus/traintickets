@@ -8,16 +8,15 @@ import {
 } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import {
-  CONFIRMTKT_STATIC_HEADERS,
-  CONFIRMTKT_UPSTREAM_BASE,
-} from './confirmtkt-proxy.constants';
+  RAIL_FEED_STATIC_HEADERS,
+  RAIL_FEED_UPSTREAM_BASE,
+} from './rail-feed-proxy.constants';
 
 /**
- * GET proxy to ConfirmTkt fetchAvailability (query params only on this server).
- * Upstream is still POST with empty body, as ConfirmTkt expects.
+ * GET proxy: forwards query params to upstream availability POST (empty body).
  */
-@Controller('api/confirmtkt')
-export class ConfirmTktProxyController {
+@Controller('api/rail-feed')
+export class RailFeedProxyController {
   @Get('availability')
   async proxyAvailability(
     @Req() req: Request,
@@ -29,12 +28,12 @@ export class ConfirmTktProxyController {
       if (value === undefined) continue;
       qs.set(key, Array.isArray(value) ? value[0] : value);
     }
-    const url = `${CONFIRMTKT_UPSTREAM_BASE}?${qs.toString()}`;
+    const url = `${RAIL_FEED_UPSTREAM_BASE}?${qs.toString()}`;
 
     try {
       const upstream = await fetch(url, {
         method: 'POST',
-        headers: CONFIRMTKT_STATIC_HEADERS,
+        headers: RAIL_FEED_STATIC_HEADERS,
         body: '',
       });
       const text = await upstream.text();
@@ -44,7 +43,7 @@ export class ConfirmTktProxyController {
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       throw new HttpException(
-        { message: 'ConfirmTkt proxy request failed', detail: msg },
+        { message: 'Rail availability proxy request failed', detail: msg },
         HttpStatus.BAD_GATEWAY,
       );
     }

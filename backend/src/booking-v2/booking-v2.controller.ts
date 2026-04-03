@@ -52,7 +52,7 @@ export class BookingV2Controller {
     if (!f || !t || !d) {
       throw new BadRequestException('from, to, and date query params are required');
     }
-    if (!this.bookingV2.normalizeToConfirmTktDate(d)) {
+    if (!this.bookingV2.normalizeToRailApiDate(d)) {
       throw new BadRequestException(
         'date must be YYYY-MM-DD or DD-MM-YYYY',
       );
@@ -84,7 +84,7 @@ export class BookingV2Controller {
         'trainNumber, from, to, and date are required',
       );
     }
-    if (!this.bookingV2.normalizeToConfirmTktDate(date)) {
+    if (!this.bookingV2.normalizeToRailApiDate(date)) {
       throw new BadRequestException(
         'date must be YYYY-MM-DD or DD-MM-YYYY',
       );

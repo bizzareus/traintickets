@@ -27,7 +27,7 @@ type AvailabilityCacheEntry = {
   travelClass?: string;
   fare?: string;
   availabilityDisplayName?: string;
-  confirmTktStatus?: string;
+  railDataStatus?: string;
 };
 
 type TrainListItem = {
@@ -47,7 +47,7 @@ type AlternateLeg = {
   to: string;
   segmentKind: "confirmed" | "check_realtime";
   travelClass: string | null;
-  confirmTktStatus: string | null;
+  railDataStatus: string | null;
   availablityStatus: string | null;
   predictionPercentage: string | null;
   availabilityDisplayName: string | null;
@@ -118,7 +118,7 @@ function AlternatePathLegListItem({
             <>
               <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
                 <p className="text-2xl font-extrabold leading-tight tracking-tight text-emerald-950 tabular-nums">
-                  {leg.availabilityDisplayName ?? leg.confirmTktStatus ?? "Available"}
+                  {leg.availabilityDisplayName ?? leg.railDataStatus ?? "Available"}
                 </p>
                 {leg.travelClass ? (
                   <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-700">
@@ -174,9 +174,9 @@ function AlternatePathLegListItem({
                 </span>
                 <span className="text-lg font-bold tracking-tight text-gray-900">{leg.to}</span>
               </div>
-              {(leg.availabilityDisplayName ?? leg.confirmTktStatus) && (
+              {(leg.availabilityDisplayName ?? leg.railDataStatus) && (
                 <p className="mt-3 text-sm text-gray-700">
-                  Last check: {leg.availabilityDisplayName ?? leg.confirmTktStatus}
+                  Last check: {leg.availabilityDisplayName ?? leg.railDataStatus}
                 </p>
               )}
               <a
@@ -913,7 +913,7 @@ export default function BookingV2Page() {
             <span className="text-blue-600">ticket</span> search
           </h1>
           <p className="mt-2 max-w-2xl text-base text-slate-600">
-            Search trains and explore split-journey options with ConfirmTkt data. Sign in on IRCTC when you book.
+            Search trains and explore split-journey options with live rail availability. Sign in on IRCTC when you book.
           </p>
         </header>
 
@@ -1076,7 +1076,7 @@ export default function BookingV2Page() {
                   </div>
                 </div>
                 <a
-                  href={`https://www.confirmtkt.com/train-schedule/${t.trainNumber}`}
+                  href={`https://www.indianrail.gov.in/enquiry/Static/Train_Schedule.html`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-medium text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
@@ -1091,7 +1091,7 @@ export default function BookingV2Page() {
                     const gn = t.availabilityCache?.[cls];
                     const line =
                       gn?.availabilityDisplayName ??
-                      gn?.confirmTktStatus ??
+                      gn?.railDataStatus ??
                       "—";
                     const statusCls = gn ? chipGeneralStatusClass(line) : undefined;
                     return (

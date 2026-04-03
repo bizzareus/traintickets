@@ -9,15 +9,15 @@ describe('BookingV2Service', () => {
     service = new BookingV2Service(irctc);
   });
 
-  describe('normalizeToConfirmTktDate', () => {
+  describe('normalizeToRailApiDate', () => {
     it('converts YYYY-MM-DD to DD-MM-YYYY', () => {
-      expect(service.normalizeToConfirmTktDate('2026-04-05')).toBe('05-04-2026');
+      expect(service.normalizeToRailApiDate('2026-04-05')).toBe('05-04-2026');
     });
     it('pads DD-MM-YYYY input', () => {
-      expect(service.normalizeToConfirmTktDate('5-4-2026')).toBe('05-04-2026');
+      expect(service.normalizeToRailApiDate('5-4-2026')).toBe('05-04-2026');
     });
     it('returns null for garbage', () => {
-      expect(service.normalizeToConfirmTktDate('not-a-date')).toBeNull();
+      expect(service.normalizeToRailApiDate('not-a-date')).toBeNull();
     });
   });
 });
