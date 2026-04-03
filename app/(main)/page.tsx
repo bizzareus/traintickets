@@ -810,28 +810,6 @@ function todayYmd(): string {
   return `${y}-${mo}-${day}`;
 }
 
-/** Deterministic label (UTC date parts) to avoid SSR/client hydration mismatch. */
-function formatDateLabel(ymd: string): string {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd)) return ymd;
-  const [y, mo, d] = ymd.split("-").map(Number);
-  const w = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const dt = new Date(Date.UTC(y, mo - 1, d));
-  return `${w[dt.getUTCDay()]}, ${months[mo - 1]} ${String(d).padStart(2, "0")}`;
-}
 
 function useDebounced<T>(value: T, ms: number): T {
   const [v, setV] = useState(value);
@@ -1213,10 +1191,7 @@ export default function BookingV2Page() {
     [fromSt, toSt, journeyDate],
   );
 
-  const dateLabel = useMemo(
-    () => (journeyDate != null ? formatDateLabel(journeyDate) : "—"),
-    [journeyDate],
-  );
+  
 
   const alternatePathLegsPartition = useMemo(() => {
     if (!altResult?.legs.length) return null;
@@ -1269,9 +1244,6 @@ export default function BookingV2Page() {
 
         <div className="mb-8">
           <h2 className="sr-only">Journey search</h2>
-          <p className="mb-2 text-sm font-medium text-gray-700 sm:mb-3">
-            Where are you travelling?
-          </p>
           <div className="flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch sm:overflow-visible">
             <StationFieldSimple
               label="From"
@@ -1361,7 +1333,6 @@ export default function BookingV2Page() {
                 id={journeyDateInputId}
                 value={journeyDate}
                 onChange={setJourneyDate}
-                dateLabel={dateLabel}
               />
             </div>
             <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">

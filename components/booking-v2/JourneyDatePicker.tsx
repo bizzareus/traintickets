@@ -20,13 +20,12 @@ export type JourneyDatePickerProps = {
   id: string;
   value: string | null;
   onChange: (ymd: string) => void;
-  dateLabel: string;
 };
 
 /**
  * Flowbite / Tailwind datepicker (flowbite-datepicker) for journey YYYY-MM-DD state.
  */
-export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDatePickerProps) {
+export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const dpRef = useRef<DatepickerInstance | null>(null);
   const onChangeRef = useRef(onChange);
@@ -98,9 +97,6 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
           autoComplete="off"
         />
       </div>
-      <p className="mt-1 line-clamp-1 text-[11px] font-medium leading-tight text-gray-500 sm:text-xs">
-        {dateLabel}
-      </p>
     </>
   );
 }
