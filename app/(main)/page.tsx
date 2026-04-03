@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { apiClient } from "@/lib/api";
-import { partitionAlternatePathLegsForModal } from "@/lib/bookingV2AlternatePathsDisplay";
+import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDisplay";
 import {
   extractJourneyTrainRunDayError,
   extractTrainRunDayFromValidateBody,
@@ -817,25 +817,6 @@ function collapsedAlternatePathTimingSummary(legs: AlternateLeg[]): {
   return { timePart, durationLabel };
 }
 
-/** Prefer API schedule for merged realtime OD; else aggregate per-leg times from collapsed legs. */
-function collapsedRemainderTimingDisplay(
-  alt: AlternatePathsResponse,
-  collapsedLegs: AlternateLeg[],
-): { timePart: string | null; durationLabel: string | null } | null {
-  const m = alt.remainderMergedSchedule;
-  if (m) {
-    const dep = formatTimeAmPm(m.departureTime);
-    const arr = formatTimeAmPm(m.arrivalTime);
-    const hasDur = m.durationMinutes != null && !Number.isNaN(m.durationMinutes);
-    let timePart: string | null = null;
-    if (dep && arr) timePart = `${dep} → ${arr}`;
-    else if (dep) timePart = `Dep ${dep}`;
-    else if (arr) timePart = `Arr ${arr}`;
-    const durationLabel = hasDur ? formatDurationMinutes(m.durationMinutes ?? undefined) : null;
-    if (timePart || durationLabel) return { timePart, durationLabel };
-  }
-  return collapsedAlternatePathTimingSummary(collapsedLegs);
-}
 
 function todayYmd(): string {
   const d = new Date();
@@ -1229,18 +1210,11 @@ export default function BookingV2Page() {
 
   
 
-  const alternatePathLegsPartition = useMemo(() => {
-    if (!altResult?.legs.length) return null;
-    if (!toSt?.stationCode) {
-      return { mode: "flat" as const, legs: altResult.legs };
-    }
-    return partitionAlternatePathLegsForModal(altResult.legs, toSt.stationCode);
-  }, [altResult, toSt]);
-
-  const collapsedRemainderLegs = useMemo(() => {
-    if (!altResult || alternatePathLegsPartition?.mode !== "collapsed") return [];
-    return altResult.legs.slice(alternatePathLegsPartition.confirmedPrefix.length);
-  }, [altResult, alternatePathLegsPartition]);
+  /** Flat list of display items: each is a single leg card or a collapsed "no tickets" span. */
+  const alternatePathDisplayItems = useMemo(
+    () => (altResult?.legs.length ? buildAlternatePathDisplayItems(altResult.legs) : []),
+    [altResult],
+  );
 
   const journeyDateInputId = useId();
 
@@ -1649,78 +1623,89 @@ export default function BookingV2Page() {
                     </details>
                     )}
                   <ol className="list-none space-y-5 pl-0" role="list" aria-label="Journey segments">
-                    {alternatePathLegsPartition?.mode === "collapsed" ? (
-                      <>
-                        {alternatePathLegsPartition.confirmedPrefix.map((leg, i) => {
-                          const total =
-                            alternatePathLegsPartition.confirmedPrefix.length + 1;
-                          return (
-                            <AlternatePathLegListItem
-                              key={`conf-${i}`}
-                              leg={leg}
-                              trainNumber={altResult.trainNumber}
-                              trainName={altTrainName}
-                              journeyDate={journeyDate ?? ""}
-                              stepIndex={i + 1}
-                              stepTotal={total}
-                            />
-                          );
-                        })}
-                        <li className="list-none">
+                    {alternatePathDisplayItems.map((item, i) => {
+                      const stepTotal = alternatePathDisplayItems.length;
+                      const stepIndex = i + 1;
+
+                      if (item.kind === "single") {
+                        return (
+                          <AlternatePathLegListItem
+                            key={i}
+                            leg={item.leg}
+                            trainNumber={altResult.trainNumber}
+                            trainName={altTrainName}
+                            journeyDate={journeyDate ?? ""}
+                            stepIndex={stepIndex}
+                            stepTotal={stepTotal}
+                          />
+                        );
+                      }
+
+                      // Collapsed unavailable span (≥2 chained check_realtime legs).
+                      const isJourneyTail =
+                        item.to.trim().toUpperCase() ===
+                        (toSt?.stationCode ?? "").trim().toUpperCase();
+                      const timingSummary = collapsedAlternatePathTimingSummary(item.legs);
+                      return (
+                        <li key={i} className="list-none">
                           <div className="flex gap-3 sm:gap-4">
                             <div className="flex shrink-0 flex-col items-center">
                               <span
                                 className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-sm font-bold tabular-nums text-amber-950 ring-2 ring-amber-200"
                                 aria-hidden
                               >
-                                {alternatePathLegsPartition.confirmedPrefix.length + 1}
+                                {stepIndex}
                               </span>
                             </div>
                             <div className="min-w-0 flex-1 rounded-xl border border-amber-200/90 bg-amber-50/40 p-4 shadow-sm">
                               <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
-                                Leg {alternatePathLegsPartition.confirmedPrefix.length + 1} of{" "}
-                                {alternatePathLegsPartition.confirmedPrefix.length + 1}
+                                Leg {stepIndex} of {stepTotal}
                               </p>
+                              <div className="mt-2 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                                <p className="text-2xl font-extrabold leading-tight tracking-tight text-amber-950">
+                                  No confirmed tickets
+                                </p>
+                              </div>
                               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                                 <span className="text-lg font-bold tracking-tight text-gray-900">
-                                  {alternatePathLegsPartition.fromLastConfirmedStopToDestination.from}
+                                  {item.from}
                                 </span>
                                 <span className="text-sm font-medium text-gray-400" aria-hidden="true">
                                   →
                                 </span>
                                 <span className="text-lg font-bold tracking-tight text-gray-900">
-                                  {alternatePathLegsPartition.fromLastConfirmedStopToDestination.to}
+                                  {item.to}
                                 </span>
-                                <span className="inline-flex items-center rounded-full bg-amber-200/80 px-2.5 py-0.5 text-xs font-semibold text-amber-950">
-                                  To final destination
-                                </span>
+                                {isJourneyTail && (
+                                  <span className="inline-flex items-center rounded-full bg-amber-200/80 px-2.5 py-0.5 text-xs font-semibold text-amber-950">
+                                    To final destination
+                                  </span>
+                                )}
                               </div>
-                              {(() => {
-                                const s = collapsedRemainderTimingDisplay(altResult, collapsedRemainderLegs);
-                                if (!s) return null;
-                                return (
-                                  <p className="mt-1.5 text-sm tabular-nums text-gray-600">
-                                    {s.timePart}
-                                    {s.durationLabel && (
-                                      <span className="text-gray-500">
-                                        {s.timePart ? ` · ${s.durationLabel}` : s.durationLabel}
-                                      </span>
-                                    )}
-                                  </p>
-                                );
-                              })()}
+                              {timingSummary && (
+                                <p className="mt-1.5 text-sm tabular-nums text-gray-600">
+                                  {timingSummary.timePart}
+                                  {timingSummary.durationLabel && (
+                                    <span className="text-gray-500">
+                                      {timingSummary.timePart
+                                        ? ` · ${timingSummary.durationLabel}`
+                                        : timingSummary.durationLabel}
+                                    </span>
+                                  )}
+                                </p>
+                              )}
                               <p className="mt-3 text-sm font-medium text-amber-950">
-                                There are no tickets available overall.
+                                {isJourneyTail
+                                  ? "There are no tickets available overall."
+                                  : "No tickets available on this segment."}
                               </p>
                               {journeyDate && (
                                 <AlternatePathRemainderInsights
                                   trainNumber={altResult.trainNumber}
                                   trainName={altTrainName}
                                   journeyDate={journeyDate}
-                                  legFrom={
-                                    alternatePathLegsPartition.fromLastConfirmedStopToDestination.from
-                                  }
-                                  legTo={alternatePathLegsPartition.fromLastConfirmedStopToDestination.to}
+                                  legFrom={item.from}
+                                  legTo={item.to}
                                   monitorClassCode={altAvlClasses?.[0] ?? "SL"}
                                   journeyDestinationCode={toSt?.stationCode}
                                 />
@@ -1728,20 +1713,8 @@ export default function BookingV2Page() {
                             </div>
                           </div>
                         </li>
-                      </>
-                    ) : (
-                      (alternatePathLegsPartition?.legs ?? altResult.legs).map((leg, i, arr) => (
-                        <AlternatePathLegListItem
-                          key={i}
-                          leg={leg}
-                          trainNumber={altResult.trainNumber}
-                          trainName={altTrainName}
-                          journeyDate={journeyDate ?? ""}
-                          stepIndex={i + 1}
-                          stepTotal={arr.length}
-                        />
-                      ))
-                    )}
+                      );
+                    })}
                   </ol>
                 </div>
               )}

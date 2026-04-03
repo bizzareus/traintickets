@@ -99,6 +99,32 @@ function emptyLegSegment(
 }
 
 /** Two confirmed hops (positive “short” path). */
+
+/**
+ * Middle segment unavailable: one confirmed leg, then 4 chained check_realtime
+ * hops (NZM-style — should collapse to a single no-tickets card), then
+ * one confirmed leg at the end.
+ */
+export function alternatePathMiddleChainUnavailable(trainNumber: string): MockAlternatePathsResponse {
+  const legs: MockAlternateLeg[] = [
+    emptyLegSegment("ORIG", "A", "confirmed", { fare: 100 }),
+    emptyLegSegment("A", "B", "check_realtime"),
+    emptyLegSegment("B", "C", "check_realtime"),
+    emptyLegSegment("C", "D", "check_realtime"),
+    emptyLegSegment("D", "MID", "check_realtime"),
+    emptyLegSegment("MID", "DEST", "confirmed", { fare: 200 }),
+  ];
+  return {
+    trainNumber,
+    legs,
+    totalFare: 300,
+    legCount: legs.length,
+    isComplete: false,
+    stationCodesOnRoute: ["ORIG", "A", "B", "C", "D", "MID", "DEST"],
+    remainderMergedSchedule: null,
+  };
+}
+
 export function alternatePathTwoConfirmed(trainNumber: string): MockAlternatePathsResponse {
   const legs: MockAlternateLeg[] = [
     emptyLegSegment("ORIG", "MID", "confirmed", { fare: 200 }),

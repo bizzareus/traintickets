@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import {
   alternatePathLongRealtimeChain,
+  alternatePathMiddleChainUnavailable,
   alternatePathTwoConfirmed,
   alternatePathTwoIntermediatesConfirmed,
   alternatePathWithCollapsedRemainder,
@@ -89,6 +90,34 @@ test.describe("booking v2 (mocked API)", () => {
     await expect(
       page.getByRole("alert").filter({ hasText: "Rail search unavailable" }),
     ).toBeVisible();
+  });
+
+  test("alternate path: 4 chained unavailable hops in middle collapse into one card", async ({ page }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathMiddleChainUnavailable(String(body.trainNumber ?? "")),
+    });
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+
+    // Should show 3 leg cards total: confirmed ORIG→A, collapsed A→MID, confirmed MID→DEST
+    const legHeaders = dialog.locator("text=/^LEG \\d+ OF \\d+$/i");
+    await expect(legHeaders).toHaveCount(3);
+
+    // The collapsed middle card should say "No confirmed tickets" and show A → MID span
+    await expect(dialog).toContainText("No confirmed tickets");
+    // "No tickets available on this segment." should appear for the middle span
+    await expect(dialog).toContainText("No tickets available on this segment.");
+
+    // Individual hop codes B, C, D must NOT appear as station codes in any leg card
+    // (they are interior nodes of the collapsed span and should not be rendered separately)
+    const stationSpans = dialog.locator(".text-lg.font-bold.tracking-tight");
+    const allStationTexts = await stationSpans.allTextContents();
+    expect(allStationTexts.some((t) => t.trim() === "B")).toBe(false);
+    expect(allStationTexts.some((t) => t.trim() === "C")).toBe(false);
+    expect(allStationTexts.some((t) => t.trim() === "D")).toBe(false);
   });
 
   test("alternate path: two confirmed segments (short positive)", async ({ page }) => {

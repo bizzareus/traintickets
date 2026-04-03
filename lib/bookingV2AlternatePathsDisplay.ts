@@ -1,7 +1,13 @@
 /**
- * Shapes alternate-path legs for the booking v2 modal: collapse a suffix of
- * consecutive `check_realtime` hops that chain together and end at the journey
- * destination into one “from → destination” row.
+ * Shapes alternate-path legs for the booking v2 modal.
+ *
+ * Any contiguous run of ≥2 consecutive `check_realtime` legs that chain
+ * (leg[i].to === leg[i+1].from) is collapsed into a single "unavailable
+ * segment" display item showing the span from the first leg's origin to the
+ * last leg's destination.  A lone `check_realtime` hop is kept as-is.
+ *
+ * This produces a flat list of `AlternatePathDisplayItem`s ready to render
+ * directly — one card per item.
  */
 
 export type AlternatePathLegForPartition = {
@@ -10,24 +16,96 @@ export type AlternatePathLegForPartition = {
   segmentKind: "confirmed" | "check_realtime";
 };
 
-export type AlternatePathLegsModalPartition<T extends AlternatePathLegForPartition> =
-  | { mode: "flat"; legs: T[] }
-  | {
-      mode: "collapsed";
-      /** Legs shown individually before the merged realtime tail (may include confirmed or check_realtime). */
-      confirmedPrefix: T[];
-      fromLastConfirmedStopToDestination: { from: string; to: string };
-    };
+/** A single leg shown as one card (confirmed or lone check_realtime). */
+export type AlternatePathDisplayItemSingle<T extends AlternatePathLegForPartition> = {
+  kind: "single";
+  leg: T;
+};
+
+/**
+ * A collapsed span of ≥2 chained `check_realtime` legs shown as one merged
+ * "no tickets" card spanning `from` → `to`.
+ */
+export type AlternatePathDisplayItemCollapsed<T extends AlternatePathLegForPartition> = {
+  kind: "collapsed";
+  from: string;
+  to: string;
+  /** Original legs making up this span, for timing aggregation. */
+  legs: T[];
+};
+
+export type AlternatePathDisplayItem<T extends AlternatePathLegForPartition> =
+  | AlternatePathDisplayItemSingle<T>
+  | AlternatePathDisplayItemCollapsed<T>;
 
 function normCode(s: string): string {
   return s.trim().toUpperCase();
 }
 
 /**
- * Index of the first leg in the longest suffix such that: every leg is
- * `check_realtime`, consecutive legs chain (to → from), and the last leg ends
- * at `dest`. Returns null if the final leg does not qualify.
+ * Convert a legs array into a flat sequence of display items, collapsing
+ * any contiguous chain of ≥2 `check_realtime` legs into a single item.
  */
+export function buildAlternatePathDisplayItems<T extends AlternatePathLegForPartition>(
+  legs: T[],
+): AlternatePathDisplayItem<T>[] {
+  const items: AlternatePathDisplayItem<T>[] = [];
+  let i = 0;
+
+  while (i < legs.length) {
+    const leg = legs[i];
+
+    if (leg.segmentKind !== "check_realtime") {
+      items.push({ kind: "single", leg });
+      i++;
+      continue;
+    }
+
+    // Walk forward to find the longest chained run of check_realtime legs.
+    let end = i; // inclusive index of last leg in the run
+    for (let j = i + 1; j < legs.length; j++) {
+      const next = legs[j];
+      if (next.segmentKind !== "check_realtime") break;
+      if (normCode(legs[j - 1].to) !== normCode(next.from)) break;
+      end = j;
+    }
+
+    const runLegs = legs.slice(i, end + 1);
+
+    if (runLegs.length >= 2) {
+      // Collapse the whole chain into one card.
+      items.push({
+        kind: "collapsed",
+        from: runLegs[0].from,
+        to: runLegs[runLegs.length - 1].to,
+        legs: runLegs,
+      });
+    } else {
+      // Single unavailable hop — keep as-is.
+      items.push({ kind: "single", leg });
+    }
+
+    i = end + 1;
+  }
+
+  return items;
+}
+
+// ---------------------------------------------------------------------------
+// Legacy export kept for backward-compat with existing e2e tests that assert
+// on the old "collapsed suffix" shape.  New code should use
+// `buildAlternatePathDisplayItems` instead.
+// ---------------------------------------------------------------------------
+
+export type AlternatePathLegsModalPartition<T extends AlternatePathLegForPartition> =
+  | { mode: "flat"; legs: T[] }
+  | {
+      mode: "collapsed";
+      /** Legs shown individually before the merged realtime tail. */
+      confirmedPrefix: T[];
+      fromLastConfirmedStopToDestination: { from: string; to: string };
+    };
+
 function findCollapsibleRealtimeSuffixStart<T extends AlternatePathLegForPartition>(
   legs: T[],
   dest: string,
