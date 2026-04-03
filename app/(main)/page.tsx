@@ -1290,7 +1290,13 @@ export default function BookingV2Page() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="mb-3 flex items-center justify-between">
-                <h3 className="text-lg font-bold text-gray-900">Best available on train {altForTrain}</h3>
+                <h3 className="text-lg font-bold text-gray-900">
+                  {altLoading
+                    ? `Finding best available seats on ${
+                        altTrainName?.trim() || altForTrain || "this train"
+                      }`
+                    : `Best available on ${altTrainName?.trim() || altForTrain || "train"}`}
+                </h3>
                 <button
                   type="button"
                   className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100"
@@ -1305,7 +1311,19 @@ export default function BookingV2Page() {
                   Close
                 </button>
               </div>
-              {altLoading && <p className="text-sm text-gray-600">Checking segments…</p>}
+              {altLoading && (
+                <div
+                  className="flex flex-col items-center justify-center gap-4 py-10"
+                  role="status"
+                  aria-live="polite"
+                >
+                  <div
+                    className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-blue-600"
+                    aria-hidden
+                  />
+                  <span className="sr-only">Finding best available seats, please wait</span>
+                </div>
+              )}
               {altError && <p className="text-sm text-red-700">{altError}</p>}
               {altResult && (
                 <div className="space-y-3 text-sm">
