@@ -21,6 +21,29 @@ import { cn } from "@/lib/utils";
 import moment from "moment";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
+const LEG_ALERT_STORAGE_PREFIX = "lastBerth_leg_alert_";
+
+function legAlertKey(trainNumber: string, from: string, to: string, date: string): string {
+  const raw = `${trainNumber.trim()}|${from.trim().toUpperCase()}|${to.trim().toUpperCase()}|${date.trim().slice(0, 10)}`;
+  let hash = 0;
+  for (let i = 0; i < raw.length; i++) {
+    hash = ((hash << 5) - hash + raw.charCodeAt(i)) | 0;
+  }
+  return `${LEG_ALERT_STORAGE_PREFIX}${Math.abs(hash).toString(36)}`;
+}
+
+function isLegAlertSet(trainNumber: string, from: string, to: string, date: string): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.localStorage.getItem(legAlertKey(trainNumber, from, to, date)) === "1";
+  } catch { return false; }
+}
+
+function markLegAlertSet(trainNumber: string, from: string, to: string, date: string): void {
+  try {
+    window.localStorage.setItem(legAlertKey(trainNumber, from, to, date), "1");
+  } catch { /* ignore */ }
+}
 
 /** Convert 24h "HH:MM" to 12h "h:mm A" using moment. Returns original if parsing fails. */
 function formatTimeAmPm(time: string | null | undefined): string | null {
@@ -247,9 +270,12 @@ function LegChartTimeInsight({
   const [mobile, setMobile] = useState("");
   const [alertSubmitting, setAlertSubmitting] = useState(false);
   const [alertError, setAlertError] = useState<string | null>(null);
-  const [alertSuccess, setAlertSuccess] = useState<string | null>(null);
+  const [alertAlreadySet, setAlertAlreadySet] = useState(false);
 
   useEffect(() => {
+    if (isLegAlertSet(trainNumber, legFrom, legTo, journeyDate)) {
+      setAlertAlreadySet(true);
+    }
     try {
       const raw = typeof window !== "undefined" ? window.localStorage.getItem(MONITOR_CONTACT_STORAGE_KEY) : null;
       if (raw) {
@@ -258,7 +284,7 @@ function LegChartTimeInsight({
         if (o.mobile) setMobile(o.mobile);
       }
     } catch { /* ignore */ }
-  }, []);
+  }, [trainNumber, legFrom, legTo, journeyDate]);
 
   useEffect(() => {
     let cancel = false;
@@ -324,7 +350,8 @@ function LegChartTimeInsight({
         email: em,
         mobile: mob,
       });
-      setAlertSuccess("Alert set up! We'll notify you when seats open up on this leg.");
+      markLegAlertSet(trainNumber, legFrom, legTo, journeyDate);
+      setAlertAlreadySet(true);
       try {
         window.localStorage.setItem(
           MONITOR_CONTACT_STORAGE_KEY,
@@ -365,40 +392,48 @@ function LegChartTimeInsight({
             Once the chart prepares at <span className="font-semibold">{chartDateTimeFormatted}</span> then you might get tickets on this leg.
           </p>
         </div>
-        <div className="rounded-md border border-gray-200 bg-gray-50 px-3 py-3">
-          <p className="text-sm font-semibold text-gray-900">Set up alert for this leg</p>
-          <p className="mt-1 text-xs text-gray-600">
-            We&apos;ll check availability at chart time ({formatTimeAmPm(chartTime)}) and notify you if seats open up on {legFrom} → {legTo}.
-          </p>
-          <div className="mt-2 flex flex-col gap-2 sm:flex-row">
-            <input
-              type="email"
-              className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              autoComplete="email"
-            />
-            <input
-              type="tel"
-              className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
-              placeholder="Mobile (optional)"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-              autoComplete="tel"
-            />
+        {alertAlreadySet ? (
+          <div className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2.5">
+            <p className="text-sm font-semibold text-emerald-900">Alert set up</p>
+            <p className="mt-1 text-sm text-emerald-800">
+              You&apos;ve set up an alert for this leg. We&apos;ll inform you when a ticket is available.
+            </p>
           </div>
-          <button
-            type="button"
-            disabled={alertSubmitting}
-            onClick={() => void subscribeAlert()}
-            className="bg-blue-600 hover:bg-blue-700 mt-2 rounded-lg px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-60"
-          >
-            {alertSubmitting ? "Setting up…" : "Set alert"}
-          </button>
-          {alertError && <p className="mt-2 text-sm text-red-700">{alertError}</p>}
-          {alertSuccess && <p className="mt-2 text-sm font-medium text-emerald-800">{alertSuccess}</p>}
-        </div>
+        ) : (
+          <div className="rounded-md border border-gray-200 bg-gray-50 px-3 py-3">
+            <p className="text-sm font-semibold text-gray-900">Set up alert for this leg</p>
+            <p className="mt-1 text-xs text-gray-600">
+              We&apos;ll check availability at chart time ({formatTimeAmPm(chartTime)}) and notify you if seats open up on {legFrom} → {legTo}.
+            </p>
+            <div className="mt-2 flex flex-col gap-2 sm:flex-row">
+              <input
+                type="email"
+                className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="email"
+              />
+              <input
+                type="tel"
+                className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
+                placeholder="Mobile (optional)"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+                autoComplete="tel"
+              />
+            </div>
+            <button
+              type="button"
+              disabled={alertSubmitting}
+              onClick={() => void subscribeAlert()}
+              className="bg-blue-600 hover:bg-blue-700 mt-2 rounded-lg px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-60"
+            >
+              {alertSubmitting ? "Setting up…" : "Set alert"}
+            </button>
+            {alertError && <p className="mt-2 text-sm text-red-700">{alertError}</p>}
+          </div>
+        )}
       </div>
     );
   }
