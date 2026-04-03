@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import {
   alternatePathLongRealtimeChain,
   alternatePathMiddleChainUnavailable,
+  alternatePathMultiClassConfirmed,
   alternatePathTwoConfirmed,
   alternatePathTwoIntermediatesConfirmed,
   alternatePathWithCollapsedRemainder,
@@ -118,6 +119,35 @@ test.describe("booking v2 (mocked API)", () => {
     expect(allStationTexts.some((t) => t.trim() === "B")).toBe(false);
     expect(allStationTexts.some((t) => t.trim() === "C")).toBe(false);
     expect(allStationTexts.some((t) => t.trim() === "D")).toBe(false);
+  });
+
+  test("alternate path: multi-class confirmed — shows sub-cards for each available class", async ({
+    page,
+  }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathMultiClassConfirmed(String(body.trainNumber ?? "")),
+    });
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+
+    // Both class options should appear
+    await expect(dialog).toContainText("Class SL");
+    await expect(dialog).toContainText("Class 3A");
+
+    // Both availability labels should be shown
+    await expect(dialog).toContainText("AVAILABLE-0020");
+    await expect(dialog).toContainText("AVAILABLE-0005");
+
+    // Both fares should appear
+    await expect(dialog).toContainText("₹655");
+    await expect(dialog).toContainText("₹1270");
+
+    // Two Book buttons — one per class option
+    const bookLinks = dialog.getByRole("link", { name: /Book/ });
+    await expect(bookLinks).toHaveCount(2);
   });
 
   test("alternate path: two confirmed segments (short positive)", async ({ page }) => {

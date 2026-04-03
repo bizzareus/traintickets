@@ -82,6 +82,15 @@ type TrainListItem = {
   availabilityCache?: Record<string, AvailabilityCacheEntry>;
 };
 
+type AlternateClassOption = {
+  travelClass: string;
+  railDataStatus: string | null;
+  availablityStatus: string | null;
+  predictionPercentage: string | null;
+  availabilityDisplayName: string | null;
+  fare: number | null;
+};
+
 type AlternateLeg = {
   from: string;
   to: string;
@@ -92,6 +101,8 @@ type AlternateLeg = {
   predictionPercentage: string | null;
   availabilityDisplayName: string | null;
   fare: number | null;
+  /** All confirmed class options for this segment, sorted cheapest-first. */
+  confirmedClassOptions?: AlternateClassOption[];
   /** Set from IRCTC schedule when the API includes leg timing (HH:MM). */
   departureTime?: string | null;
   arrivalTime?: string | null;
@@ -115,6 +126,52 @@ type AlternatePathsResponse = {
   debugLog?: string[];
 };
 
+function ConfirmedClassOptionCard({
+  option,
+  from,
+  to,
+  trainNumber,
+}: {
+  option: AlternateClassOption;
+  from: string;
+  to: string;
+  trainNumber: string;
+}) {
+  const href = irctcBookingRedirect({
+    from,
+    to,
+    trainNo: trainNumber,
+    classCode: option.travelClass,
+  });
+  return (
+    <div className="flex flex-col gap-2 rounded-lg border border-emerald-100 bg-emerald-50/60 p-3">
+      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+        <p className="text-lg font-extrabold leading-tight tracking-tight text-emerald-950 tabular-nums">
+          {option.availabilityDisplayName ?? option.railDataStatus ?? "Available"}
+        </p>
+        <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-700">
+          Class {option.travelClass}
+        </span>
+        <span className="inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-900">
+          Available
+        </span>
+      </div>
+      {option.fare != null && (
+        <p className="text-base font-bold text-gray-900">₹{option.fare.toFixed(0)}</p>
+      )}
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-blue-600 hover:bg-blue-700 inline-flex w-full items-center justify-center rounded-lg px-3 py-2 text-sm font-bold text-white shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        aria-label={`Book ${option.travelClass} class IRCTC ticket from ${from} to ${to}`}
+      >
+        Book
+      </a>
+    </div>
+  );
+}
+
 function AlternatePathLegListItem({
   leg,
   trainNumber,
@@ -131,6 +188,9 @@ function AlternatePathLegListItem({
   stepTotal: number;
 }) {
   const isConfirmed = leg.segmentKind === "confirmed";
+  const multiClass =
+    isConfirmed &&
+    (leg.confirmedClassOptions?.length ?? 0) > 1;
   const bookHref = irctcBookingRedirect({
     from: leg.from,
     to: leg.to,
@@ -167,19 +227,7 @@ function AlternatePathLegListItem({
               <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
                 Leg {stepIndex} of {stepTotal}
               </p>
-              <div className="mt-2 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                <p className="text-2xl font-extrabold leading-tight tracking-tight text-emerald-950 tabular-nums">
-                  {leg.availabilityDisplayName ?? leg.railDataStatus ?? "Available"}
-                </p>
-                {leg.travelClass ? (
-                  <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-700">
-                    Class {leg.travelClass}
-                  </span>
-                ) : null}
-              </div>
-              <span className="mt-2 inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-900">
-                Available
-              </span>
+              {/* Route line — shared across both single and multi-class layouts */}
               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                 <span className="text-lg font-bold tracking-tight text-gray-900">{leg.from}</span>
                 <span className="text-sm font-medium text-gray-400" aria-hidden="true">
@@ -188,18 +236,51 @@ function AlternatePathLegListItem({
                 <span className="text-lg font-bold tracking-tight text-gray-900">{leg.to}</span>
               </div>
               <AlternatePathLegScheduleLine leg={leg} />
-              {leg.fare != null && (
-                <p className="mt-3 text-xl font-bold text-gray-900">₹{leg.fare.toFixed(0)}</p>
+
+              {multiClass ? (
+                /* Multiple confirmed classes — show one sub-card per class */
+                <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2" role="list" aria-label="Available class options">
+                  {leg.confirmedClassOptions!.map((opt) => (
+                    <div key={opt.travelClass} role="listitem">
+                      <ConfirmedClassOptionCard
+                        option={opt}
+                        from={leg.from}
+                        to={leg.to}
+                        trainNumber={trainNumber}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                /* Single confirmed class — original single-card layout */
+                <>
+                  <div className="mt-2 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                    <p className="text-2xl font-extrabold leading-tight tracking-tight text-emerald-950 tabular-nums">
+                      {leg.availabilityDisplayName ?? leg.railDataStatus ?? "Available"}
+                    </p>
+                    {leg.travelClass ? (
+                      <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-700">
+                        Class {leg.travelClass}
+                      </span>
+                    ) : null}
+                  </div>
+                  <span className="mt-2 inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-900">
+                    Available
+                  </span>
+                  {leg.fare != null && (
+                    <p className="mt-3 text-xl font-bold text-gray-900">₹{leg.fare.toFixed(0)}</p>
+                  )}
+                  <a
+                    href={bookHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 hover:bg-blue-700 mt-4 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-bold text-white shadow-md transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto sm:min-w-[220px]"
+                    aria-label={`Book IRCTC ticket from ${leg.from} to ${leg.to}`}
+                  >
+                    Book
+                  </a>
+                </>
               )}
-              <a
-                href={bookHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 mt-4 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-bold text-white shadow-md transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto sm:min-w-[220px]"
-                aria-label={`Book IRCTC ticket from ${leg.from} to ${leg.to}`}
-              >
-                Book
-              </a>
             </>
           ) : (
             <>

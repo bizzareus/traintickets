@@ -31,6 +31,15 @@ export type MockTrain = {
   >;
 };
 
+export type MockAlternateClassOption = {
+  travelClass: string;
+  railDataStatus: string | null;
+  availablityStatus: string | null;
+  predictionPercentage: string | null;
+  availabilityDisplayName: string | null;
+  fare: number | null;
+};
+
 export type MockAlternateLeg = {
   from: string;
   to: string;
@@ -41,6 +50,7 @@ export type MockAlternateLeg = {
   predictionPercentage: string | null;
   availabilityDisplayName: string | null;
   fare: number | null;
+  confirmedClassOptions?: MockAlternateClassOption[];
   departureTime?: string | null;
   arrivalTime?: string | null;
   durationMinutes?: number | null;
@@ -137,6 +147,47 @@ export function alternatePathTwoConfirmed(trainNumber: string): MockAlternatePat
     legCount: 2,
     isComplete: true,
     stationCodesOnRoute: ["ORIG", "MID", "DEST"],
+    remainderMergedSchedule: null,
+  };
+}
+
+/**
+ * One confirmed leg where two classes (SL and 3A) are both available.
+ * The leg carries confirmedClassOptions with both classes so the UI can
+ * show two sub-cards.
+ */
+export function alternatePathMultiClassConfirmed(trainNumber: string): MockAlternatePathsResponse {
+  const legs: MockAlternateLeg[] = [
+    {
+      ...emptyLegSegment("ORIG", "DEST", "confirmed", { travelClass: "SL", fare: 655 }),
+      availabilityDisplayName: "AVAILABLE-0020",
+      confirmedClassOptions: [
+        {
+          travelClass: "SL",
+          railDataStatus: null,
+          availablityStatus: null,
+          predictionPercentage: null,
+          availabilityDisplayName: "AVAILABLE-0020",
+          fare: 655,
+        },
+        {
+          travelClass: "3A",
+          railDataStatus: null,
+          availablityStatus: null,
+          predictionPercentage: null,
+          availabilityDisplayName: "AVAILABLE-0005",
+          fare: 1270,
+        },
+      ],
+    },
+  ];
+  return {
+    trainNumber,
+    legs,
+    totalFare: 655,
+    legCount: 1,
+    isComplete: true,
+    stationCodesOnRoute: ["ORIG", "DEST"],
     remainderMergedSchedule: null,
   };
 }
