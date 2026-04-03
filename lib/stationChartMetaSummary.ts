@@ -1,5 +1,45 @@
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 
+const MONTHS_SHORT = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+] as const;
+
+function parseYmdParts(ymd: string): { y: number; m: number; d: number } | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd)) return null;
+  const [y, m, d] = ymd.split("-").map(Number);
+  return { y, m, d };
+}
+
+/**
+ * Journey calendar day + clock time, e.g. `2026-04-06` + `19:18` → `6 Apr, 19:18`.
+ * `addCalendarDays` shifts the date (e.g. 1 when the second chart is the next day).
+ */
+function formatJourneyDayAndChartTime(
+  journeyDateYmd: string,
+  timeStr: string,
+  addCalendarDays: number,
+): string {
+  const ymd = journeyDateYmd.trim().slice(0, 10);
+  const parts = parseYmdParts(ymd);
+  const t = timeStr.trim();
+  if (!parts || !t) return t || ymd;
+  const dt = new Date(Date.UTC(parts.y, parts.m - 1, parts.d + addCalendarDays));
+  const day = dt.getUTCDate();
+  const mon = MONTHS_SHORT[dt.getUTCMonth()];
+  return `${day} ${mon}, ${t}`;
+}
+
 /** UTC calendar label for YYYY-MM-DD (matches booking v2 `formatDateLabel`). */
 export function formatJourneyDateUtcLabel(ymd: string): string {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd)) return ymd;
@@ -42,17 +82,18 @@ export function describeChartPreparationForStation(
   const dateLabel = formatJourneyDateUtcLabel(journeyDateYmd.trim().slice(0, 10));
   const title = `${code} · ${dateLabel}`;
 
+  const ymd = journeyDateYmd.trim().slice(0, 10);
   const lines: string[] = [];
   const c1 = meta?.chartOneTime?.trim();
   const c2 = meta?.chartTwoTime?.trim();
   if (c1) {
-    lines.push(`First chart is usually prepared around ${c1} (IRCTC time at this station).`);
+    lines.push(
+      `First chart is usually prepared around ${formatJourneyDayAndChartTime(ymd, c1, 0)}.`,
+    );
   }
   if (c2) {
     lines.push(
-      meta?.chartTwoIsNextDay
-        ? `Second chart is usually prepared around ${c2} on the next calendar day.`
-        : `Second chart is usually prepared around ${c2}.`,
+      `Second chart is usually prepared around ${formatJourneyDayAndChartTime(ymd, c2, meta?.chartTwoIsNextDay ? 1 : 0)}.`,
     );
   }
   const remote = meta?.chartRemoteStation?.trim();

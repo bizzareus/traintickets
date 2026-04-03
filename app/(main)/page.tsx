@@ -913,7 +913,7 @@ export default function BookingV2Page() {
             <span className="text-blue-600">ticket</span> search
           </h1>
           <p className="mt-2 max-w-2xl text-base text-slate-600">
-            Search trains and explore split-journey options with live rail availability. Sign in on IRCTC when you book.
+            Search trains and explore split-journey options with live rail availability.
           </p>
         </header>
 
