@@ -851,6 +851,7 @@ export default function BookingV2Page() {
   const [trains, setTrains] = useState<TrainListItem[]>([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [emptyTrainSearch, setEmptyTrainSearch] = useState(false);
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
   const [altTrainName, setAltTrainName] = useState<string | null>(null);
   const [altAvlClasses, setAltAvlClasses] = useState<string[] | undefined>();
@@ -924,6 +925,10 @@ export default function BookingV2Page() {
     };
   }, [toDeb]);
 
+  useEffect(() => {
+    setEmptyTrainSearch(false);
+  }, [fromSt, toSt, journeyDate]);
+
   const swapStations = useCallback(() => {
     const a = fromSt;
     const b = toSt;
@@ -936,13 +941,16 @@ export default function BookingV2Page() {
   const runSearch = useCallback(async () => {
     if (!fromSt || !toSt) {
       setSearchError("Select both stations.");
+      setEmptyTrainSearch(false);
       return;
     }
     if (!journeyDate) {
       setSearchError("Pick a journey date.");
+      setEmptyTrainSearch(false);
       return;
     }
     setSearchError(null);
+    setEmptyTrainSearch(false);
     setSearchLoading(true);
     setTrains([]);
     try {
@@ -956,7 +964,9 @@ export default function BookingV2Page() {
           },
         },
       );
-      setTrains(r.data?.data?.trainList ?? []);
+      const list = r.data?.data?.trainList ?? [];
+      setTrains(list);
+      setEmptyTrainSearch(list.length === 0);
     } catch (e: unknown) {
       let msg = "Search failed";
       if (e && typeof e === "object" && "response" in e) {
@@ -964,6 +974,7 @@ export default function BookingV2Page() {
         msg = ax.response?.data?.message ?? msg;
       } else if (e instanceof Error) msg = e.message;
       setSearchError(msg);
+      setEmptyTrainSearch(false);
     } finally {
       setSearchLoading(false);
     }
@@ -1326,7 +1337,15 @@ export default function BookingV2Page() {
           ))}
         </ul>
 
-        
+        {emptyTrainSearch && trains.length === 0 && !searchLoading && (
+          <div
+            className="mb-6 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700"
+            role="status"
+            aria-live="polite"
+          >
+            No trains loaded for this route and date. Try another date or different stations.
+          </div>
+        )}
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
