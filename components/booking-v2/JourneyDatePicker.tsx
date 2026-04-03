@@ -9,16 +9,6 @@ function dateToYmd(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] as const;
-
-function ymdToReadable(ymd: string): string {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd)) return ymd;
-  const [y, mo, d] = ymd.split("-").map(Number);
-  const dt = new Date(Date.UTC(y, mo - 1, d));
-  return `${WEEKDAYS[dt.getUTCDay()]}, ${MONTHS[mo - 1]} ${String(d).padStart(2, "0")}`;
-}
-
 const YMD_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 type DatepickerInstance = {
@@ -45,8 +35,8 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
   valueRef.current = value;
 
   useEffect(() => {
-    const input = inputRef.current;
-    if (!input) return;
+    const inputEl = inputRef.current;
+    if (!inputEl) return;
 
     const onPick = (ev: Event) => {
       const ce = ev as CustomEvent<{ date?: Date }>;
@@ -54,7 +44,7 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
       if (d instanceof Date && !Number.isNaN(d.getTime())) {
         const ymd = dateToYmd(d);
         onChangeRef.current(ymd);
-        if (inputRef.current) inputRef.current.value = ymdToReadable(ymd);
+        if (inputRef.current) inputRef.current.value = ymd;
       }
     };
 
@@ -74,26 +64,24 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
       const v = valueRef.current;
       if (v && YMD_RE.test(v)) {
         dp.setDate(v);
-        el.value = ymdToReadable(v);
+        el.value = v;
       }
     });
 
     return () => {
       cancelled = true;
-      const el = inputRef.current;
-      if (el) el.removeEventListener("changeDate", onPick);
+      inputEl.removeEventListener("changeDate", onPick);
       dpRef.current?.destroy();
       dpRef.current = null;
     };
     // Intentionally once: picker owns the input; callback read via ref.
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount once; sync via effect below
   }, []);
 
   useEffect(() => {
     const dp = dpRef.current;
     if (!dp || !value || !YMD_RE.test(value)) return;
     dp.setDate(value, { autohide: false });
-    if (inputRef.current) inputRef.current.value = ymdToReadable(value);
+    if (inputRef.current) inputRef.current.value = value;
   }, [value]);
 
   return (

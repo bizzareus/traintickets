@@ -18,8 +18,16 @@ import {
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { cn } from "@/lib/utils";
+import moment from "moment";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
+
+/** Convert 24h "HH:MM" to 12h "h:mm A" using moment. Returns original if parsing fails. */
+function formatTimeAmPm(time: string | null | undefined): string | null {
+  if (!time?.trim()) return null;
+  const m = moment(time.trim(), "HH:mm", true);
+  return m.isValid() ? m.format("h:mm A") : time.trim();
+}
 
 type StationRow = {
   stationCode: string;
@@ -87,12 +95,15 @@ type AlternatePathsResponse = {
 function AlternatePathLegListItem({
   leg,
   trainNumber,
+  trainName,
+  journeyDate,
   stepIndex,
   stepTotal,
 }: {
   leg: AlternateLeg;
   trainNumber: string;
-  /** 1-based position in the journey breakdown (e.g. 1 of 3). */
+  trainName?: string | null;
+  journeyDate: string;
   stepIndex: number;
   stepTotal: number;
 }) {
@@ -102,12 +113,6 @@ function AlternatePathLegListItem({
     to: leg.to,
     trainNo: trainNumber,
     classCode: leg.travelClass ?? "SL",
-  });
-  const checkHref = irctcBookingRedirect({
-    from: leg.from,
-    to: leg.to,
-    trainNo: trainNumber,
-    classCode: "SL",
   });
 
   return (
@@ -201,20 +206,209 @@ function AlternatePathLegListItem({
                   Last check: {leg.availabilityDisplayName ?? leg.railDataStatus}
                 </p>
               )}
-              <a
-                href={checkHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-blue-600 text-blue-600 hover:bg-blue-50 mt-4 inline-flex w-full items-center justify-center rounded-lg border-2 bg-white px-4 py-3 text-sm font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto sm:min-w-[200px]"
-                aria-label={`Open IRCTC for ${leg.from} to ${leg.to}`}
-              >
-                Check live on IRCTC
-              </a>
+              <LegChartTimeInsight
+                trainNumber={trainNumber}
+                trainName={trainName}
+                journeyDate={journeyDate}
+                stationCode={leg.from}
+                legFrom={leg.from}
+                legTo={leg.to}
+                classCode={leg.travelClass ?? "SL"}
+              />
             </>
           )}
         </div>
       </div>
     </li>
+  );
+}
+
+/** Fetches chart time for a station and shows chart-prepared or chart-not-prepared messaging with alert subscription. */
+function LegChartTimeInsight({
+  trainNumber,
+  trainName,
+  journeyDate,
+  stationCode,
+  legFrom,
+  legTo,
+  classCode,
+}: {
+  trainNumber: string;
+  trainName?: string | null;
+  journeyDate: string;
+  stationCode: string;
+  legFrom: string;
+  legTo: string;
+  classCode: string;
+}) {
+  const [meta, setMeta] = useState<StationChartMetaItem | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [alertSubmitting, setAlertSubmitting] = useState(false);
+  const [alertError, setAlertError] = useState<string | null>(null);
+  const [alertSuccess, setAlertSuccess] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      const raw = typeof window !== "undefined" ? window.localStorage.getItem(MONITOR_CONTACT_STORAGE_KEY) : null;
+      if (raw) {
+        const o = JSON.parse(raw) as { email?: string; mobile?: string };
+        if (o.email) setEmail(o.email);
+        if (o.mobile) setMobile(o.mobile);
+      }
+    } catch { /* ignore */ }
+  }, []);
+
+  useEffect(() => {
+    let cancel = false;
+    setLoading(true);
+    setMeta(null);
+    apiClient
+      .post<{ stations: StationChartMetaItem[] }>(
+        "/api/train-composition/stations-meta",
+        {
+          trainNumber: trainNumber.trim(),
+          journeyDate: journeyDate.trim(),
+          sourceStation: stationCode.trim().toUpperCase(),
+          refreshFromIrctc: true,
+        },
+        { timeout: 120_000 },
+      )
+      .then((r) => {
+        if (!cancel) setMeta(r.data?.stations?.[0] ?? null);
+      })
+      .catch(() => {
+        if (!cancel) setMeta(null);
+      })
+      .finally(() => {
+        if (!cancel) setLoading(false);
+      });
+    return () => { cancel = true; };
+  }, [trainNumber, journeyDate, stationCode]);
+
+  const chartTime = meta?.chartOneTime?.trim() || null;
+  const chartPrepared = useMemo(() => {
+    if (!chartTime || !journeyDate) return null;
+    const ymd = journeyDate.trim().slice(0, 10);
+    const chartMoment = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm");
+    if (!chartMoment.isValid()) return null;
+    return moment().isAfter(chartMoment);
+  }, [chartTime, journeyDate]);
+
+  const chartDateTimeFormatted = useMemo(() => {
+    if (!chartTime || !journeyDate) return null;
+    const ymd = journeyDate.trim().slice(0, 10);
+    const m = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm");
+    return m.isValid() ? m.format("ddd, MMM DD [at] h:mm A") : chartTime;
+  }, [chartTime, journeyDate]);
+
+  const subscribeAlert = useCallback(async () => {
+    const em = email.trim() || undefined;
+    const mob = mobile.trim() || undefined;
+    if (!em && !mob) {
+      setAlertError("Enter an email or mobile number for alerts.");
+      return;
+    }
+    setAlertSubmitting(true);
+    setAlertError(null);
+    setAlertSuccess(null);
+    try {
+      await apiClient.post("/api/availability/journey", {
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromStationCode: legFrom.trim().toUpperCase(),
+        toStationCode: legTo.trim().toUpperCase(),
+        journeyDate: journeyDate.trim(),
+        classCode: classCode.trim().toUpperCase(),
+        email: em,
+        mobile: mob,
+      });
+      setAlertSuccess("Alert set up! We'll notify you when seats open up on this leg.");
+      try {
+        window.localStorage.setItem(
+          MONITOR_CONTACT_STORAGE_KEY,
+          JSON.stringify({ email: em ?? "", mobile: mob ?? "" }),
+        );
+      } catch { /* ignore */ }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Failed to set up alert.";
+      setAlertError(msg);
+    } finally {
+      setAlertSubmitting(false);
+    }
+  }, [email, mobile, trainNumber, trainName, legFrom, legTo, journeyDate, classCode]);
+
+  if (loading) {
+    return (
+      <p className="mt-3 text-sm text-gray-500">Loading chart status for {stationCode}…</p>
+    );
+  }
+
+  if (chartPrepared === true) {
+    return (
+      <div className="mt-3 rounded-md bg-red-50 px-3 py-2.5">
+        <p className="text-sm font-semibold text-red-900">Chart already prepared</p>
+        <p className="mt-1 text-sm text-red-800">
+          Chart was prepared at {chartDateTimeFormatted} for {stationCode}. It&apos;s unlikely to find any more tickets on this leg.
+        </p>
+      </div>
+    );
+  }
+
+  if (chartPrepared === false) {
+    return (
+      <div className="mt-3 space-y-3">
+        <div className="rounded-md bg-amber-50 px-3 py-2.5">
+          <p className="text-sm font-semibold text-amber-900">Chart NOT prepared yet</p>
+          <p className="mt-1 text-sm text-amber-800">
+            Once the chart prepares at <span className="font-semibold">{chartDateTimeFormatted}</span> then you might get tickets on this leg.
+          </p>
+        </div>
+        <div className="rounded-md border border-gray-200 bg-gray-50 px-3 py-3">
+          <p className="text-sm font-semibold text-gray-900">Set up alert for this leg</p>
+          <p className="mt-1 text-xs text-gray-600">
+            We&apos;ll check availability at chart time ({formatTimeAmPm(chartTime)}) and notify you if seats open up on {legFrom} → {legTo}.
+          </p>
+          <div className="mt-2 flex flex-col gap-2 sm:flex-row">
+            <input
+              type="email"
+              className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+            />
+            <input
+              type="tel"
+              className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm"
+              placeholder="Mobile (optional)"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+              autoComplete="tel"
+            />
+          </div>
+          <button
+            type="button"
+            disabled={alertSubmitting}
+            onClick={() => void subscribeAlert()}
+            className="bg-blue-600 hover:bg-blue-700 mt-2 rounded-lg px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-60"
+          >
+            {alertSubmitting ? "Setting up…" : "Set alert"}
+          </button>
+          {alertError && <p className="mt-2 text-sm text-red-700">{alertError}</p>}
+          {alertSuccess && <p className="mt-2 text-sm font-medium text-emerald-800">{alertSuccess}</p>}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-3 rounded-md bg-gray-100 px-3 py-2.5">
+      <p className="text-sm text-gray-700">
+        Chart preparation time for {stationCode} is not available yet.
+      </p>
+    </div>
   );
 }
 
@@ -544,8 +738,8 @@ function formatDurationMinutes(mins: number | undefined): string {
 }
 
 function AlternatePathLegScheduleLine({ leg }: { leg: AlternateLeg }) {
-  const dep = leg.departureTime?.trim() || null;
-  const arr = leg.arrivalTime?.trim() || null;
+  const dep = formatTimeAmPm(leg.departureTime);
+  const arr = formatTimeAmPm(leg.arrivalTime);
   const hasDuration =
     leg.durationMinutes != null && !Number.isNaN(leg.durationMinutes);
   const hasClocks = Boolean(dep) || Boolean(arr);
@@ -570,8 +764,8 @@ function collapsedAlternatePathTimingSummary(legs: AlternateLeg[]): {
   durationLabel: string | null;
 } | null {
   if (legs.length === 0) return null;
-  const dep = legs[0]?.departureTime?.trim() || null;
-  const arr = legs[legs.length - 1]?.arrivalTime?.trim() || null;
+  const dep = formatTimeAmPm(legs[0]?.departureTime);
+  const arr = formatTimeAmPm(legs[legs.length - 1]?.arrivalTime);
   const allDur = legs.every(
     (l) => l.durationMinutes != null && !Number.isNaN(l.durationMinutes as number),
   );
@@ -595,8 +789,8 @@ function collapsedRemainderTimingDisplay(
 ): { timePart: string | null; durationLabel: string | null } | null {
   const m = alt.remainderMergedSchedule;
   if (m) {
-    const dep = m.departureTime?.trim() || null;
-    const arr = m.arrivalTime?.trim() || null;
+    const dep = formatTimeAmPm(m.departureTime);
+    const arr = formatTimeAmPm(m.arrivalTime);
     const hasDur = m.durationMinutes != null && !Number.isNaN(m.durationMinutes);
     let timePart: string | null = null;
     if (dep && arr) timePart = `${dep} → ${arr}`;
@@ -849,6 +1043,7 @@ export default function BookingV2Page() {
     setJourneyDate(todayYmd());
   }, []);
   const [trains, setTrains] = useState<TrainListItem[]>([]);
+  const [hasSearched, setHasSearched] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
@@ -942,6 +1137,7 @@ export default function BookingV2Page() {
       setSearchError("Pick a journey date.");
       return;
     }
+    setHasSearched(true);
     setSearchError(null);
     setSearchLoading(true);
     setTrains([]);
@@ -1205,6 +1401,11 @@ export default function BookingV2Page() {
             <span>{searchError}</span>
           </div>
         )}
+        {hasSearched && !searchLoading && !searchError && trains.length === 0 && (
+          <div className="mb-6 rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-700" role="status">
+            No trains found for this route on the selected date.
+          </div>
+        )}
 
         <ul className="space-y-5" role="list" aria-label="Train results">
           {trains.map((t) => (
@@ -1218,11 +1419,11 @@ export default function BookingV2Page() {
                 </h2>
                 <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
                   <span className="font-semibold">
-                    {t.departureTime ?? "—"} {t.fromStnCode}
+                    {formatTimeAmPm(t.departureTime) ?? "—"} {t.fromStnCode}
                   </span>
                   <span className="text-gray-400">{formatDurationMinutes(t.duration)}</span>
                   <span className="font-semibold">
-                    {t.arrivalTime ?? "—"} {t.toStnCode}
+                    {formatTimeAmPm(t.arrivalTime) ?? "—"} {t.toStnCode}
                   </span>
                 </div>
               </div>
@@ -1326,7 +1527,15 @@ export default function BookingV2Page() {
           ))}
         </ul>
 
-        
+        {!searchLoading && trains.length === 0 && fromSt && toSt && !searchError && (
+          <div
+            className="mt-4 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600"
+            role="status"
+            aria-live="polite"
+          >
+            No trains loaded for this route yet.
+          </div>
+        )}
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
@@ -1443,6 +1652,8 @@ export default function BookingV2Page() {
                               key={`conf-${i}`}
                               leg={leg}
                               trainNumber={altResult.trainNumber}
+                              trainName={altTrainName}
+                              journeyDate={journeyDate ?? ""}
                               stepIndex={i + 1}
                               stepTotal={total}
                             />
@@ -1517,6 +1728,8 @@ export default function BookingV2Page() {
                           key={i}
                           leg={leg}
                           trainNumber={altResult.trainNumber}
+                          trainName={altTrainName}
+                          journeyDate={journeyDate ?? ""}
                           stepIndex={i + 1}
                           stepTotal={arr.length}
                         />
