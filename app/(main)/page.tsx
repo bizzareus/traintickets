@@ -1333,7 +1333,15 @@ export default function BookingV2Page() {
           ))}
         </ul>
 
-        
+        {!searchLoading && trains.length === 0 && fromSt && toSt && !searchError && (
+          <div
+            className="mt-4 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600"
+            role="status"
+            aria-live="polite"
+          >
+            No trains loaded for this route yet.
+          </div>
+        )}
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div

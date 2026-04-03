@@ -44,6 +44,7 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
       if (d instanceof Date && !Number.isNaN(d.getTime())) {
         const ymd = dateToYmd(d);
         onChangeRef.current(ymd);
+        if (inputRef.current) inputRef.current.value = ymd;
       }
     };
 
@@ -63,6 +64,7 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
       const v = valueRef.current;
       if (v && YMD_RE.test(v)) {
         dp.setDate(v);
+        el.value = v;
       }
     });
 
@@ -79,6 +81,7 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
     const dp = dpRef.current;
     if (!dp || !value || !YMD_RE.test(value)) return;
     dp.setDate(value, { autohide: false });
+    if (inputRef.current) inputRef.current.value = value;
   }, [value]);
 
   return (
