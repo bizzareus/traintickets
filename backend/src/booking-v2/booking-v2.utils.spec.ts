@@ -274,7 +274,10 @@ describe('filterDepartedTrainsFromSearchResponse', () => {
             trainNumber: 'gone',
             availabilityCache: { SL: { railDataStatus: 'Train Departed' } },
           },
-          { trainNumber: 'ok', availabilityCache: { SL: { railDataStatus: 'AVAILABLE-1' } } },
+          {
+            trainNumber: 'ok',
+            availabilityCache: { SL: { railDataStatus: 'AVAILABLE-1' } },
+          },
         ],
       },
     }) as { data: { trainList: { trainNumber: string }[] } };

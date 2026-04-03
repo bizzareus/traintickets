@@ -17,9 +17,7 @@ function trimStr(v: unknown): string {
 
 function bodyStringArray(v: unknown): string[] {
   if (!Array.isArray(v)) return [];
-  return v
-    .map((x) => trimStr(x).toUpperCase())
-    .filter((s) => s.length > 0);
+  return v.map((x) => trimStr(x).toUpperCase()).filter((s) => s.length > 0);
 }
 
 @Controller('api/booking-v2')
@@ -50,12 +48,12 @@ export class BookingV2Controller {
     const t = trimStr(to).toUpperCase();
     const d = trimStr(date);
     if (!f || !t || !d) {
-      throw new BadRequestException('from, to, and date query params are required');
+      throw new BadRequestException(
+        'from, to, and date query params are required',
+      );
     }
     if (!this.bookingV2.normalizeToRailApiDate(d)) {
-      throw new BadRequestException(
-        'date must be YYYY-MM-DD or DD-MM-YYYY',
-      );
+      throw new BadRequestException('date must be YYYY-MM-DD or DD-MM-YYYY');
     }
     return this.bookingV2.searchTrains(f, t, d);
   }
@@ -85,9 +83,7 @@ export class BookingV2Controller {
       );
     }
     if (!this.bookingV2.normalizeToRailApiDate(date)) {
-      throw new BadRequestException(
-        'date must be YYYY-MM-DD or DD-MM-YYYY',
-      );
+      throw new BadRequestException('date must be YYYY-MM-DD or DD-MM-YYYY');
     }
     return this.bookingV2.findAlternatePaths({
       trainNumber,

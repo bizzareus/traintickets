@@ -260,3 +260,25 @@ model AlertLog {
 
   @@index([monitoringRequestId])
 }
+
+// Generic key-value cache (Postgres-backed now; swap provider to RedisCacheService for Redis)
+model CacheEntry {
+  key       String    @id
+  value     Json
+  expiresAt DateTime? @map("expires_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  @@index([expiresAt])
+  @@map("cache_entry")
+}
+
+// Station autocomplete search index — populated from ConfirmTkt API responses
+model StationCache {
+  stationCode String   @id @map("station_code")
+  stationName String   @map("station_name")
+  metadata    Json     // full original station object from API
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@index([stationName])
+  @@map("station_cache")
+}

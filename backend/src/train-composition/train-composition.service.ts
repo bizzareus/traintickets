@@ -199,8 +199,7 @@ export class TrainCompositionService {
           row.compositionError = ex.irctcError;
         }
       } catch (err) {
-        row.compositionError =
-          err instanceof Error ? err.message : String(err);
+        row.compositionError = err instanceof Error ? err.message : String(err);
         this.logger.warn(
           `[trainComposition] refreshFromIrctc failed train=${trainNumber} station=${stationCode}: ${row.compositionError}`,
         );
