@@ -63,6 +63,32 @@ export type AlternatePathLeg = {
   durationMinutes: number | null;
 };
 
+// ---------------------------------------------------------------------------
+// Progress streaming
+// ---------------------------------------------------------------------------
+
+/** Granular events emitted during findAlternatePaths for real-time UI feedback. */
+export type AlternatePathProgressEvent =
+  | { type: 'schedule_ok'; trainName: string | null; stopCount: number }
+  | { type: 'schedule_fail' }
+  | { type: 'route_ok'; from: string; to: string; stopCount: number }
+  | { type: 'route_fail'; from: string; to: string }
+  | {
+      type: 'hop_confirmed';
+      from: string;
+      to: string;
+      travelClass: string;
+      fare: number | null;
+      hopIndex: number;
+    }
+  | { type: 'hop_unavailable'; from: string; to: string; hopIndex: number }
+  | {
+      type: 'done';
+      isComplete: boolean;
+      legCount: number;
+      totalFare: number | null;
+    };
+
 export type AlternatePathRemainderMergedSchedule = {
   from: string;
   to: string;
@@ -386,15 +412,19 @@ export class BookingV2Service {
     }
   }
 
-  async findAlternatePaths(input: {
-    trainNumber: string;
-    from: string;
-    to: string;
-    date: string;
-    /** Classes offered on this train (train search `avlClasses`). When empty, a default list is used. */
-    avlClasses?: string[];
-    quota?: string;
-  }): Promise<FindAlternatePathsResult> {
+  async findAlternatePaths(
+    input: {
+      trainNumber: string;
+      from: string;
+      to: string;
+      date: string;
+      /** Classes offered on this train (train search `avlClasses`). When empty, a default list is used. */
+      avlClasses?: string[];
+      quota?: string;
+    },
+    onProgress?: (event: AlternatePathProgressEvent) => void,
+  ): Promise<FindAlternatePathsResult> {
+    const emit = (ev: AlternatePathProgressEvent) => onProgress?.(ev);
     const trainNumber = String(input.trainNumber).trim();
     const from = String(input.from).trim().toUpperCase();
     const to = String(input.to).trim().toUpperCase();
@@ -425,6 +455,7 @@ export class BookingV2Service {
       logStep(
         `IRCTC schedule: FAILED or empty (ok=${sched.ok}) — cannot list intermediate stops`,
       );
+      emit({ type: 'schedule_fail' });
       return {
         trainNumber,
         legs: [],
@@ -440,6 +471,11 @@ export class BookingV2Service {
     logStep(
       `IRCTC schedule: OK — ${sched.schedule.stationList.length} stops on full route (${sched.schedule.trainName ?? 'train'})`,
     );
+    emit({
+      type: 'schedule_ok',
+      trainName: sched.schedule.trainName ?? null,
+      stopCount: sched.schedule.stationList.length,
+    });
 
     const stationList = sched.schedule.stationList;
     const stations = stationCodesBetweenStops(stationList, from, to);
@@ -447,6 +483,7 @@ export class BookingV2Service {
       logStep(
         `Route slice: FAILED — "${from}" or "${to}" not found in order on this train (or same station)`,
       );
+      emit({ type: 'route_fail', from, to });
       return {
         trainNumber,
         legs: [],
@@ -462,6 +499,7 @@ export class BookingV2Service {
     logStep(
       `Route slice: ${stations.length} stops from boarding to destination: ${stations.join(' → ')}`,
     );
+    emit({ type: 'route_ok', from, to, stopCount: stations.length });
 
     const legTim = (fromSt: string, toSt: string) =>
       legScheduleTiming(stationList, fromSt, toSt);
@@ -534,6 +572,14 @@ export class BookingV2Service {
         logStep(
           `Hop ${hop}: CHOSEN ${stations[currentIdx]} → ${stations[chosenDestIdx]} | class=${classes[bc]}${picked.fare != null ? ` fare ₹${picked.fare}` : ''}`,
         );
+        emit({
+          type: 'hop_confirmed',
+          from: stations[currentIdx],
+          to: stations[chosenDestIdx],
+          travelClass: classes[bc],
+          fare: picked.fare,
+          hopIndex: hop,
+        });
         legs.push({
           from: stations[currentIdx],
           to: stations[chosenDestIdx],
@@ -583,6 +629,12 @@ export class BookingV2Service {
         `Hop ${hop}: no confirmed segment in destination order — bridge ${fromStn} → ${toStn} (check realtime)`,
       );
       logStep(this.formatMultiClassProbeLine(fromStn, toStn, bridge, classes));
+      emit({
+        type: 'hop_unavailable',
+        from: fromStn,
+        to: toStn,
+        hopIndex: hop,
+      });
 
       if (bridge.bestConfirmedClassIndex != null) {
         const bc: number = bridge.bestConfirmedClassIndex;
@@ -591,6 +643,14 @@ export class BookingV2Service {
         logStep(
           `Hop ${hop}: bridge segment is confirmed in ${classes[bc]}${picked.fare != null ? ` fare ₹${picked.fare}` : ''}`,
         );
+        emit({
+          type: 'hop_confirmed',
+          from: fromStn,
+          to: toStn,
+          travelClass: classes[bc],
+          fare: picked.fare,
+          hopIndex: hop,
+        });
         legs.push({
           from: fromStn,
           to: toStn,
@@ -658,6 +718,7 @@ export class BookingV2Service {
     logStep(
       `Done: isComplete=${isComplete} legs=${legs.length}${totalFare != null ? ` totalFare=₹${totalFare}` : ''}`,
     );
+    emit({ type: 'done', isComplete, legCount: legs.length, totalFare });
 
     const journeyDest = stations[targetIdx] ?? to;
     const remainderEp = collapsibleRealtimeRemainderEndpoints(

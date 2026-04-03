@@ -109,6 +109,16 @@ type AlternateLeg = {
   durationMinutes?: number | null;
 };
 
+/** Mirror of backend AlternatePathProgressEvent. */
+type AlternatePathProgressEvent =
+  | { type: "schedule_ok"; trainName: string | null; stopCount: number }
+  | { type: "schedule_fail" }
+  | { type: "route_ok"; from: string; to: string; stopCount: number }
+  | { type: "route_fail"; from: string; to: string }
+  | { type: "hop_confirmed"; from: string; to: string; travelClass: string; fare: number | null; hopIndex: number }
+  | { type: "hop_unavailable"; from: string; to: string; hopIndex: number }
+  | { type: "done"; isComplete: boolean; legCount: number; totalFare: number | null };
+
 type AlternatePathsResponse = {
   trainNumber: string;
   legs: AlternateLeg[];
@@ -125,6 +135,116 @@ type AlternatePathsResponse = {
   } | null;
   debugLog?: string[];
 };
+
+/** Converts a raw progress event into a human-readable status line and icon. */
+function describeProgressEvent(
+  ev: AlternatePathProgressEvent,
+  journeyFrom: string,
+  journeyTo: string,
+): { icon: string; text: string; kind: "neutral" | "success" | "warn" | "done" } {
+  switch (ev.type) {
+    case "schedule_ok":
+      return {
+        icon: "🗺️",
+        text: `Route map loaded${ev.trainName ? ` for ${ev.trainName}` : ""} — ${ev.stopCount} stations`,
+        kind: "neutral",
+      };
+    case "schedule_fail":
+      return { icon: "⚠️", text: "Could not load train schedule", kind: "warn" };
+    case "route_ok":
+      return {
+        icon: "📍",
+        text: `Scanning ${ev.stopCount} stops between ${ev.from} and ${ev.to}`,
+        kind: "neutral",
+      };
+    case "route_fail":
+      return {
+        icon: "⚠️",
+        text: `${ev.from} → ${ev.to} not found on this train's route`,
+        kind: "warn",
+      };
+    case "hop_confirmed":
+      return {
+        icon: "✅",
+        text: `Found ${ev.travelClass} ticket${ev.fare != null ? ` (₹${ev.fare})` : ""} — ${ev.from} → ${ev.to}`,
+        kind: "success",
+      };
+    case "hop_unavailable":
+      return {
+        icon: "🔍",
+        text: `Exploring options from ${ev.from} → ${ev.to}…`,
+        kind: "neutral",
+      };
+    case "done":
+      if (ev.isComplete) {
+        return {
+          icon: "🎉",
+          text: `Full journey covered in ${ev.legCount} segment${ev.legCount !== 1 ? "s" : ""}${ev.totalFare != null ? ` — ₹${ev.totalFare} total` : ""}`,
+          kind: "done",
+        };
+      }
+      return {
+        icon: ev.legCount > 0 ? "🔶" : "😔",
+        text:
+          ev.legCount > 0
+            ? `Found ${ev.legCount} confirmed segment${ev.legCount !== 1 ? "s" : ""}. Checking remaining ${journeyFrom} → ${journeyTo} stretch…`
+            : `No confirmed tickets found for ${journeyFrom} → ${journeyTo}`,
+        kind: ev.legCount > 0 ? "warn" : "warn",
+      };
+  }
+}
+
+function AlternatePathProgressFeed({
+  events,
+  from,
+  to,
+}: {
+  events: AlternatePathProgressEvent[];
+  from: string;
+  to: string;
+}) {
+  return (
+    <div className="py-4" role="status" aria-live="polite" aria-label="Search progress">
+      <div className="mb-4 flex items-center gap-3">
+        <div
+          className="h-7 w-7 shrink-0 animate-spin rounded-full border-[3px] border-gray-200 border-t-blue-600"
+          aria-hidden
+        />
+        <p className="text-sm font-semibold text-gray-700">
+          Searching for the best seats on this train…
+        </p>
+      </div>
+      {events.length > 0 && (
+        <ol className="space-y-1.5 pl-1" aria-label="Steps completed">
+          {events.map((ev, i) => {
+            const { icon, text, kind } = describeProgressEvent(ev, from, to);
+            return (
+              <li
+                key={i}
+                className={cn(
+                  "flex items-start gap-2 rounded-lg px-2.5 py-1.5 text-sm",
+                  kind === "success" && "bg-emerald-50 text-emerald-900",
+                  kind === "warn" && "bg-amber-50 text-amber-900",
+                  kind === "done" && "bg-blue-50 text-blue-900 font-semibold",
+                  kind === "neutral" && "text-gray-600",
+                )}
+              >
+                <span aria-hidden className="mt-0.5 shrink-0 text-base leading-none">
+                  {icon}
+                </span>
+                <span>{text}</span>
+              </li>
+            );
+          })}
+        </ol>
+      )}
+      {events.length === 0 && (
+        <p className="text-xs text-gray-400">Contacting rail systems…</p>
+      )}
+      <span className="sr-only">Finding best available seats, please wait</span>
+    </div>
+  );
+}
 
 function ConfirmedClassOptionCard({
   option,
@@ -1151,6 +1271,7 @@ export default function BookingV2Page() {
   const [altLoading, setAltLoading] = useState(false);
   const [altResult, setAltResult] = useState<AlternatePathsResponse | null>(null);
   const [altError, setAltError] = useState<string | null>(null);
+  const [altProgress, setAltProgress] = useState<AlternatePathProgressEvent[]>([]);
 
   useEffect(() => {
     if (fromDeb.length < 2) {
@@ -1286,24 +1407,71 @@ export default function BookingV2Page() {
       setAltLoading(true);
       setAltError(null);
       setAltResult(null);
+      setAltProgress([]);
+
+      const body = JSON.stringify({
+        trainNumber: t.trainNumber,
+        from: fromCode,
+        to: toCode,
+        date: journeyDate,
+        quota: "GN",
+        ...(avlClassesForRequest && avlClassesForRequest.length > 0
+          ? { avlClasses: avlClassesForRequest }
+          : {}),
+      });
+
       try {
-        const r = await apiClient.post<AlternatePathsResponse>("/api/booking-v2/alternate-paths", {
-          trainNumber: t.trainNumber,
-          from: fromCode,
-          to: toCode,
-          date: journeyDate,
-          quota: "GN",
-          ...(avlClassesForRequest && avlClassesForRequest.length > 0
-            ? { avlClasses: avlClassesForRequest }
-            : {}),
-        });
-        setAltResult(r.data);
+        const resp = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL ?? ""}/api/booking-v2/alternate-paths/stream`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body,
+          },
+        );
+
+        if (!resp.ok || !resp.body) {
+          let msg = `Request failed (${resp.status})`;
+          try {
+            const j = (await resp.json()) as { message?: string };
+            if (j.message) msg = j.message;
+          } catch { /* ignore */ }
+          setAltError(msg);
+          return;
+        }
+
+        const reader = resp.body.getReader();
+        const decoder = new TextDecoder();
+        let buf = "";
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buf += decoder.decode(value, { stream: true });
+          const lines = buf.split("\n");
+          buf = lines.pop() ?? "";
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) continue;
+            try {
+              const msg = JSON.parse(trimmed) as {
+                type: string;
+                event?: AlternatePathProgressEvent;
+                data?: AlternatePathsResponse;
+                message?: string;
+              };
+              if (msg.type === "progress" && msg.event) {
+                setAltProgress((prev) => [...prev, msg.event!]);
+              } else if (msg.type === "result" && msg.data) {
+                setAltResult(msg.data);
+              } else if (msg.type === "error") {
+                setAltError(msg.message ?? "Unknown error");
+              }
+            } catch { /* malformed line — skip */ }
+          }
+        }
       } catch (e: unknown) {
-        let msg = "Request failed";
-        if (e && typeof e === "object" && "response" in e) {
-          const ax = e as { response?: { data?: { message?: string } } };
-          msg = ax.response?.data?.message ?? msg;
-        } else if (e instanceof Error) msg = e.message;
+        const msg = e instanceof Error ? e.message : "Request failed";
         setAltError(msg);
       } finally {
         setAltLoading(false);
@@ -1665,17 +1833,11 @@ export default function BookingV2Page() {
                 </button>
               </div>
               {altLoading && (
-                <div
-                  className="flex flex-col items-center justify-center gap-4 py-10"
-                  role="status"
-                  aria-live="polite"
-                >
-                  <div
-                    className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-blue-600"
-                    aria-hidden
-                  />
-                  <span className="sr-only">Finding best available seats, please wait</span>
-                </div>
+                <AlternatePathProgressFeed
+                  events={altProgress}
+                  from={fromSt?.stationCode ?? ""}
+                  to={toSt?.stationCode ?? ""}
+                />
               )}
               {altError && <p className="text-sm text-red-700">{altError}</p>}
               {altResult && (

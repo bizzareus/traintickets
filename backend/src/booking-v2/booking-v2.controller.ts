@@ -5,8 +5,11 @@ import {
   Get,
   Post,
   Query,
+  Res,
 } from '@nestjs/common';
+import type { Response } from 'express';
 import { BookingV2Service } from './booking-v2.service';
+import type { AlternatePathProgressEvent } from './booking-v2.service';
 
 function trimStr(v: unknown): string {
   if (v == null) return '';
@@ -93,5 +96,72 @@ export class BookingV2Controller {
       avlClasses,
       quota,
     });
+  }
+
+  /**
+   * Same as POST /alternate-paths but streams NDJSON progress events followed
+   * by the final result line as the response body completes.
+   *
+   * Each line is a JSON object:
+   *   { type: "progress", event: AlternatePathProgressEvent }
+   *   { type: "result", data: FindAlternatePathsResult }
+   *   { type: "error", message: string }
+   */
+  @Post('alternate-paths/stream')
+  async alternatePathsStream(
+    @Body()
+    body: {
+      trainNumber?: unknown;
+      from?: unknown;
+      to?: unknown;
+      date?: unknown;
+      avlClasses?: unknown;
+      quota?: unknown;
+    },
+    @Res() res: Response,
+  ) {
+    const trainNumber = trimStr(body?.trainNumber);
+    const from = trimStr(body?.from);
+    const to = trimStr(body?.to);
+    const date = trimStr(body?.date);
+    const avlClasses = bodyStringArray(body?.avlClasses);
+    const quota = trimStr(body?.quota) || 'GN';
+
+    if (!trainNumber || !from || !to || !date) {
+      res
+        .status(400)
+        .json({ message: 'trainNumber, from, to, and date are required' });
+      return;
+    }
+    if (!this.bookingV2.normalizeToRailApiDate(date)) {
+      res
+        .status(400)
+        .json({ message: 'date must be YYYY-MM-DD or DD-MM-YYYY' });
+      return;
+    }
+
+    res.setHeader('Content-Type', 'application/x-ndjson');
+    res.setHeader('Transfer-Encoding', 'chunked');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.flushHeaders();
+
+    const writeLine = (obj: unknown) => {
+      res.write(JSON.stringify(obj) + '\n');
+    };
+
+    try {
+      const result = await this.bookingV2.findAlternatePaths(
+        { trainNumber, from, to, date, avlClasses, quota },
+        (event: AlternatePathProgressEvent) => {
+          writeLine({ type: 'progress', event });
+        },
+      );
+      writeLine({ type: 'result', data: result });
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Unexpected error';
+      writeLine({ type: 'error', message });
+    } finally {
+      res.end();
+    }
   }
 }

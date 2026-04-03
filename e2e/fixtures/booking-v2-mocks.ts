@@ -403,6 +403,35 @@ export async function installBookingV2Mocks(
       return;
     }
 
+    if (path === "/api/booking-v2/alternate-paths/stream" && method === "POST") {
+      if (cfg.alternatePathsError) {
+        await jsonFulfill(route, cfg.alternatePathsError.status, cfg.alternatePathsError.body);
+        return;
+      }
+      let body: Record<string, unknown> = {};
+      try {
+        body = req.postDataJSON() as Record<string, unknown>;
+      } catch {
+        body = {};
+      }
+      const alt =
+        typeof cfg.alternatePaths === "function" ? cfg.alternatePaths(body) : cfg.alternatePaths;
+
+      // Emit a few representative progress lines then the final result as NDJSON
+      const ndjson = [
+        JSON.stringify({ type: "progress", event: { type: "schedule_ok", trainName: "Mock Express", stopCount: 10 } }),
+        JSON.stringify({ type: "progress", event: { type: "route_ok", from: String(body.from ?? "ORIG"), to: String(body.to ?? "DEST"), stopCount: 5 } }),
+        JSON.stringify({ type: "result", data: alt }),
+      ].join("\n") + "\n";
+
+      await route.fulfill({
+        status: 200,
+        contentType: "application/x-ndjson",
+        body: ndjson,
+      });
+      return;
+    }
+
     if (path === "/api/train-composition/stations-meta" && method === "POST") {
       if (cfg.stationsMetaError) {
         await jsonFulfill(route, cfg.stationsMetaError.status, cfg.stationsMetaError.body);

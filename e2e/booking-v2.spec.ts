@@ -413,6 +413,90 @@ test.describe("booking v2 (mocked API)", () => {
   // Use alternatePathLongRealtimeChain with segmentCount=1 → single ORIG→DEST hop
   // which buildAlternatePathDisplayItems keeps as kind:"single".
 
+  // ---------------------------------------------------------------------------
+  // Streaming progress feed
+  // ---------------------------------------------------------------------------
+
+  test("streaming progress: shows step-by-step progress while searching for seats", async ({
+    page,
+  }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+    });
+    await page.goto("/");
+    await selectDefaultRoute(page);
+    await page.getByRole("button", { name: "Search trains" }).click();
+    await expect(page.getByRole("list", { name: "Train results" })).toContainText(
+      DEFAULT_TRAIN.trainNumber,
+    );
+
+    // Intercept the stream to inject a deliberate delay so we can see the loading state
+    let resolveStream: (() => void) | null = null;
+    await page.route("**/api/booking-v2/alternate-paths/stream", async (route) => {
+      const req = route.request();
+      let body: Record<string, unknown> = {};
+      try { body = req.postDataJSON() as Record<string, unknown>; } catch { /**/ }
+      const alt = alternatePathTwoConfirmed(String(body.trainNumber ?? "12345"));
+      const ndjson = [
+        JSON.stringify({ type: "progress", event: { type: "schedule_ok", trainName: "Mock Express", stopCount: 8 } }),
+        JSON.stringify({ type: "progress", event: { type: "route_ok", from: "ORIG", to: "DEST", stopCount: 3 } }),
+        JSON.stringify({ type: "progress", event: { type: "hop_confirmed", from: "ORIG", to: "MID", travelClass: "SL", fare: 200, hopIndex: 1 } }),
+        JSON.stringify({ type: "result", data: alt }),
+      ].join("\n") + "\n";
+      // Hold the response momentarily so the loading UI is visible
+      await new Promise<void>((res) => { resolveStream = res; setTimeout(res, 60); });
+      await route.fulfill({ status: 200, contentType: "application/x-ndjson", body: ndjson });
+    });
+
+    await page.getByRole("button", { name: "Find best available seats" }).click();
+
+    // Loading state — spinner and initial text should appear
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByText("Searching for the best seats on this train…")).toBeVisible({
+      timeout: 5_000,
+    });
+
+    resolveStream?.();
+
+    // After stream resolves, results should appear
+    await expect(dialog.getByText("Best available on")).toBeVisible({ timeout: 10_000 });
+  });
+
+  test("streaming progress: progress events rendered as step items", async ({ page }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+    });
+
+    // Override stream to emit known events synchronously
+    await page.route("**/api/booking-v2/alternate-paths/stream", async (route) => {
+      const req = route.request();
+      let body: Record<string, unknown> = {};
+      try { body = req.postDataJSON() as Record<string, unknown>; } catch { /**/ }
+      const alt = alternatePathTwoConfirmed(String(body.trainNumber ?? "12345"));
+      const ndjson = [
+        JSON.stringify({ type: "progress", event: { type: "schedule_ok", trainName: "Mock Express", stopCount: 10 } }),
+        JSON.stringify({ type: "progress", event: { type: "hop_confirmed", from: "ORIG", to: "MID", travelClass: "SL", fare: 200, hopIndex: 1 } }),
+        JSON.stringify({ type: "result", data: alt }),
+      ].join("\n") + "\n";
+      await route.fulfill({ status: 200, contentType: "application/x-ndjson", body: ndjson });
+    });
+
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+    // After stream completes the result should show
+    await expect(dialog).toContainText("Best available on", { timeout: 10_000 });
+
+    // The confirmed-ticket progress event text should appear in the result
+    await expect(dialog).toContainText("ORIG");
+    await expect(dialog).toContainText("MID");
+  });
+
+  // ---------------------------------------------------------------------------
+  // LegChartTimeInsight — chart preparation time + alert CTA
+  // ---------------------------------------------------------------------------
+
   test("chart time: shows spinner while loading station meta", async ({ page }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
