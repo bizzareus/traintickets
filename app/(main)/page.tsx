@@ -849,6 +849,7 @@ export default function BookingV2Page() {
     setJourneyDate(todayYmd());
   }, []);
   const [trains, setTrains] = useState<TrainListItem[]>([]);
+  const [hasSearched, setHasSearched] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
@@ -957,6 +958,7 @@ export default function BookingV2Page() {
         },
       );
       setTrains(r.data?.data?.trainList ?? []);
+      setHasSearched(true);
     } catch (e: unknown) {
       let msg = "Search failed";
       if (e && typeof e === "object" && "response" in e) {
@@ -964,6 +966,7 @@ export default function BookingV2Page() {
         msg = ax.response?.data?.message ?? msg;
       } else if (e instanceof Error) msg = e.message;
       setSearchError(msg);
+      setHasSearched(true);
     } finally {
       setSearchLoading(false);
     }
@@ -1326,7 +1329,15 @@ export default function BookingV2Page() {
           ))}
         </ul>
 
-        
+        {!searchLoading && !searchError && hasSearched && trains.length === 0 && (
+          <div
+            className="mt-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700"
+            role="status"
+            aria-live="polite"
+          >
+            No trains loaded
+          </div>
+        )}
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
