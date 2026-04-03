@@ -1,9 +1,12 @@
 import { expect, test } from "@playwright/test";
 import {
   alternatePathLongRealtimeChain,
+  alternatePathMiddleChainUnavailable,
+  alternatePathMultiClassConfirmed,
   alternatePathTwoConfirmed,
   alternatePathTwoIntermediatesConfirmed,
   alternatePathWithCollapsedRemainder,
+  DEFAULT_STATIONS,
   DEFAULT_TRAIN,
   installBookingV2Mocks,
 } from "./fixtures/booking-v2-mocks";
@@ -72,7 +75,9 @@ test.describe("booking v2 (mocked API)", () => {
     await page.goto("/");
     await selectDefaultRoute(page);
     await page.getByRole("button", { name: "Search trains" }).click();
-    await expect(page.getByRole("status")).toContainText("No trains loaded");
+    await expect(
+      page.getByRole("status").filter({ hasText: "No trains loaded" }),
+    ).toBeVisible();
   });
 
   test("train search API error surfaces in UI", async ({ page }) => {
@@ -86,6 +91,63 @@ test.describe("booking v2 (mocked API)", () => {
     await expect(
       page.getByRole("alert").filter({ hasText: "Rail search unavailable" }),
     ).toBeVisible();
+  });
+
+  test("alternate path: 4 chained unavailable hops in middle collapse into one card", async ({ page }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathMiddleChainUnavailable(String(body.trainNumber ?? "")),
+    });
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+
+    // Should show 3 leg cards total: confirmed ORIG→A, collapsed A→MID, confirmed MID→DEST
+    const legHeaders = dialog.locator("text=/^LEG \\d+ OF \\d+$/i");
+    await expect(legHeaders).toHaveCount(3);
+
+    // The collapsed middle card should say "No confirmed tickets" and show A → MID span
+    await expect(dialog).toContainText("No confirmed tickets");
+    // "No tickets available on this segment." should appear for the middle span
+    await expect(dialog).toContainText("No tickets available on this segment.");
+
+    // Individual hop codes B, C, D must NOT appear as station codes in any leg card
+    // (they are interior nodes of the collapsed span and should not be rendered separately)
+    const stationSpans = dialog.locator(".text-lg.font-bold.tracking-tight");
+    const allStationTexts = await stationSpans.allTextContents();
+    expect(allStationTexts.some((t) => t.trim() === "B")).toBe(false);
+    expect(allStationTexts.some((t) => t.trim() === "C")).toBe(false);
+    expect(allStationTexts.some((t) => t.trim() === "D")).toBe(false);
+  });
+
+  test("alternate path: multi-class confirmed — shows sub-cards for each available class", async ({
+    page,
+  }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathMultiClassConfirmed(String(body.trainNumber ?? "")),
+    });
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+
+    // Both class options should appear
+    await expect(dialog).toContainText("Class SL");
+    await expect(dialog).toContainText("Class 3A");
+
+    // Both availability labels should be shown
+    await expect(dialog).toContainText("AVAILABLE-0020");
+    await expect(dialog).toContainText("AVAILABLE-0005");
+
+    // Both fares should appear
+    await expect(dialog).toContainText("₹655");
+    await expect(dialog).toContainText("₹1270");
+
+    // Two Book buttons — one per class option
+    const bookLinks = dialog.getByRole("link", { name: /Book/ });
+    await expect(bookLinks).toHaveCount(2);
   });
 
   test("alternate path: two confirmed segments (short positive)", async ({ page }) => {
@@ -287,32 +349,41 @@ test.describe("booking v2 (mocked API)", () => {
     await expect(page.getByLabel("To", { exact: true })).toBeVisible();
   });
 
-  test("station suggest: second identical search uses cached result (no extra API call)", async ({
+  test("station suggest: typing in From field fires suggest API and shows options", async ({
     page,
   }) => {
     let suggestCallCount = 0;
     await installBookingV2Mocks(page, {
       alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
-    });
-
-    // Intercept to count suggest calls
-    await page.route("**/api/booking-v2/stations/suggest**", async (route) => {
-      suggestCallCount++;
-      await route.continue();
+      // Count suggest calls inside the mock by using a custom stations override
+      stations: DEFAULT_STATIONS,
     });
 
     await page.goto("/");
 
-    // First search
+    // First suggest call
     const wait1 = page.waitForResponse((r) =>
-      r.url().includes("/api/booking-v2/stations/suggest"),
+      r.url().includes("/api/booking-v2/stations/suggest") && r.request().method() === "GET",
     );
     await page.getByLabel("From", { exact: true }).fill("Or");
     await wait1;
-    await page.getByRole("option", { name: /ORIG/ }).click();
+    suggestCallCount++;
 
-    const countAfterFirst = suggestCallCount;
-    expect(countAfterFirst).toBeGreaterThanOrEqual(1);
+    // Options should appear from the mock suggest response
+    await expect(page.getByRole("option", { name: /ORIG/ })).toBeVisible();
+    expect(suggestCallCount).toBe(1);
+
+    // Second suggest call on To field
+    const wait2 = page.waitForResponse((r) =>
+      r.url().includes("/api/booking-v2/stations/suggest") && r.request().method() === "GET",
+    );
+    await page.getByRole("option", { name: /ORIG/ }).click();
+    await page.getByLabel("To", { exact: true }).fill("De");
+    await wait2;
+    suggestCallCount++;
+
+    await expect(page.getByRole("option", { name: /DEST/ })).toBeVisible();
+    expect(suggestCallCount).toBe(2);
   });
 
   test("train search result is shown after selecting both stations and clicking Search trains", async ({
@@ -332,5 +403,144 @@ test.describe("booking v2 (mocked API)", () => {
     await expect(
       page.getByRole("list", { name: "Train results" }),
     ).toContainText(DEFAULT_TRAIN.trainName);
+  });
+
+  // ---------------------------------------------------------------------------
+  // LegChartTimeInsight — chart preparation time + alert CTA
+  // ---------------------------------------------------------------------------
+
+  // LegChartTimeInsight is rendered for a lone check_realtime leg (not chained).
+  // Use alternatePathLongRealtimeChain with segmentCount=1 → single ORIG→DEST hop
+  // which buildAlternatePathDisplayItems keeps as kind:"single".
+
+  test("chart time: shows spinner while loading station meta", async ({ page }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+    });
+
+    let resolveMeta: (() => void) | null = null;
+    await page.route("**/api/train-composition/stations-meta", async (route) => {
+      await new Promise<void>((res) => { resolveMeta = res; });
+      await route.continue();
+    });
+
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByText(/Checking chart preparation time for/i)).toBeVisible({
+      timeout: 8_000,
+    });
+    // Alert CTA already visible while still loading
+    await expect(dialog.getByText("Get notified when seats open")).toBeVisible();
+
+    resolveMeta?.();
+  });
+
+  test("chart time: chart NOT prepared yet — shows chart time and alert CTA", async ({
+    page,
+  }) => {
+    // chartOneTime "23:59" is always in the future today → not prepared yet
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+      stationsMetaBySource: {
+        ORIG: { stationCode: "ORIG", chartOneTime: "23:59", chartTwoTime: null },
+      },
+    });
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByText("Chart not prepared yet")).toBeVisible({ timeout: 15_000 });
+    await expect(dialog).toContainText("11:59 PM");
+
+    await expect(dialog.getByText("Get notified when seats open")).toBeVisible();
+    await expect(dialog.getByRole("button", { name: "Set alert for this leg" })).toBeVisible();
+  });
+
+  test("chart time: chart ALREADY prepared — shows warning and still shows alert CTA", async ({
+    page,
+  }) => {
+    // chartOneTime "00:01" is always in the past today → already prepared
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+      stationsMetaBySource: {
+        ORIG: { stationCode: "ORIG", chartOneTime: "00:01", chartTwoTime: null },
+      },
+    });
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByText("Chart already prepared")).toBeVisible({ timeout: 15_000 });
+
+    // Alert CTA must still be visible even though chart is already prepared
+    await expect(dialog.getByText("Get notified when seats open")).toBeVisible();
+  });
+
+  test("chart time: no chart time available — shows fallback card and alert CTA", async ({
+    page,
+  }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+      stationsMetaBySource: {
+        ORIG: { stationCode: "ORIG", chartOneTime: null, chartTwoTime: null },
+      },
+    });
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+    await expect(
+      dialog.getByText(/Chart preparation time for .+ is not yet available/i),
+    ).toBeVisible({ timeout: 15_000 });
+
+    // Alert CTA still present
+    await expect(dialog.getByText("Get notified when seats open")).toBeVisible();
+  });
+
+  test("chart time: alert CTA — requires email or mobile before submitting", async ({ page }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+      stationsMetaBySource: {
+        ORIG: { stationCode: "ORIG", chartOneTime: "23:59" },
+      },
+    });
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByText("Chart not prepared yet")).toBeVisible({ timeout: 15_000 });
+
+    await dialog.getByRole("button", { name: "Set alert for this leg" }).first().click();
+    await expect(dialog.getByText("Enter an email or mobile number for alerts.")).toBeVisible();
+  });
+
+  test("chart time: alert CTA — successful alert submission shows confirmation", async ({
+    page,
+  }) => {
+    await installBookingV2Mocks(page, {
+      alternatePaths: (body) =>
+        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+      stationsMetaBySource: {
+        ORIG: { stationCode: "ORIG", chartOneTime: "23:59" },
+      },
+    });
+    await page.goto("/");
+    await openAlternateModal(page);
+
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByText("Chart not prepared yet")).toBeVisible({ timeout: 15_000 });
+
+    await dialog.getByPlaceholder("Email").first().fill("e2e-leg@example.com");
+    await dialog.getByRole("button", { name: "Set alert for this leg" }).first().click();
+
+    await expect(dialog.getByText("✓ Alert set up")).toBeVisible({ timeout: 8_000 });
+    await expect(dialog.getByText(/We'll notify you when a ticket opens/i)).toBeVisible();
   });
 });

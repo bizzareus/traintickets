@@ -27,6 +27,16 @@ const UPSTREAM_VENDOR_STATUS_KEY = Buffer.from(
   'base64',
 ).toString('utf8');
 
+/** One class option for a confirmed leg — used in `confirmedClassOptions`. */
+export type AlternatePathClassOption = {
+  travelClass: string;
+  railDataStatus: string | null;
+  availablityStatus: string | null;
+  predictionPercentage: string | null;
+  availabilityDisplayName: string | null;
+  fare: number | null;
+};
+
 export type AlternatePathLeg = {
   from: string;
   to: string;
@@ -39,6 +49,12 @@ export type AlternatePathLeg = {
   predictionPercentage: string | null;
   availabilityDisplayName: string | null;
   fare: number | null;
+  /**
+   * All confirmed class options for this segment, sorted cheapest-first.
+   * Populated only when `segmentKind` is `'confirmed'`.
+   * When there is only one confirmed class this will have length 1.
+   */
+  confirmedClassOptions: AlternatePathClassOption[];
   /** From IRCTC schedule at boarding stop (HH:MM). */
   departureTime: string | null;
   /** From IRCTC schedule at alighting stop (HH:MM). */
@@ -532,6 +548,10 @@ export class BookingV2Service {
             ? String(day.availabilityDisplayName ?? '')
             : null,
           fare: picked.fare,
+          confirmedClassOptions: this.buildConfirmedClassOptions(
+            chosenProbe.perClass,
+            classes,
+          ),
           ...legTim(stations[currentIdx], stations[chosenDestIdx]),
         });
         currentIdx = chosenDestIdx;
@@ -585,6 +605,10 @@ export class BookingV2Service {
             ? String(day.availabilityDisplayName ?? '')
             : null,
           fare: picked.fare,
+          confirmedClassOptions: this.buildConfirmedClassOptions(
+            bridge.perClass,
+            classes,
+          ),
           ...legTim(fromStn, toStn),
         });
       } else {
@@ -605,6 +629,7 @@ export class BookingV2Service {
             ? String(disp.availabilityDisplayName ?? '')
             : null,
           fare: null,
+          confirmedClassOptions: [],
           ...legTim(fromStn, toStn),
         });
       }
@@ -739,6 +764,40 @@ export class BookingV2Service {
     const t = s.trim();
     if (t.length <= max) return t;
     return `${t.slice(0, Math.max(1, max - 1))}…`;
+  }
+
+  /** Build all confirmed class options sorted cheapest-first. */
+  private buildConfirmedClassOptions(
+    perClass: SegmentProbeRow[],
+    classCodes: readonly string[],
+  ): AlternatePathClassOption[] {
+    const options: Array<AlternatePathClassOption & { fareN: number }> = [];
+    for (let i = 0; i < perClass.length; i++) {
+      const row = perClass[i];
+      if (!row || !isLegConfirmed(row.day)) continue;
+      const day = row.day;
+      const fareN =
+        typeof row.fare === 'number' && !Number.isNaN(row.fare)
+          ? row.fare
+          : Number.POSITIVE_INFINITY;
+      options.push({
+        travelClass: classCodes[i] ?? '',
+        railDataStatus: day ? String(day.vendorPredictionStatus ?? '') : null,
+        availablityStatus: day ? String(day.availablityStatus ?? '') : null,
+        predictionPercentage: day
+          ? String(day.predictionPercentage ?? '')
+          : null,
+        availabilityDisplayName: day
+          ? String(day.availabilityDisplayName ?? '')
+          : null,
+        fare: row.fare,
+        fareN,
+      });
+    }
+    options.sort(
+      (a, b) => a.fareN - b.fareN || a.travelClass.localeCompare(b.travelClass),
+    );
+    return options.map(({ fareN: _fareN, ...rest }) => rest);
   }
 
   private pickBestConfirmedClassIndex(
