@@ -851,6 +851,7 @@ export default function BookingV2Page() {
   const [trains, setTrains] = useState<TrainListItem[]>([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [hasSearched, setHasSearched] = useState(false);
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
   const [altTrainName, setAltTrainName] = useState<string | null>(null);
   const [altAvlClasses, setAltAvlClasses] = useState<string[] | undefined>();
@@ -957,6 +958,7 @@ export default function BookingV2Page() {
         },
       );
       setTrains(r.data?.data?.trainList ?? []);
+      setHasSearched(true);
     } catch (e: unknown) {
       let msg = "Search failed";
       if (e && typeof e === "object" && "response" in e) {
@@ -1326,7 +1328,14 @@ export default function BookingV2Page() {
           ))}
         </ul>
 
-        
+        {hasSearched && trains.length === 0 && !searchLoading && !searchError && (
+          <div
+            role="status"
+            className="rounded-xl border border-gray-200 bg-white p-8 text-center text-gray-500 shadow-sm"
+          >
+            No trains loaded
+          </div>
+        )}
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
