@@ -851,6 +851,7 @@ export default function BookingV2Page() {
   const [trains, setTrains] = useState<TrainListItem[]>([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [hasSearched, setHasSearched] = useState(false);
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
   const [altTrainName, setAltTrainName] = useState<string | null>(null);
   const [altAvlClasses, setAltAvlClasses] = useState<string[] | undefined>();
@@ -944,6 +945,7 @@ export default function BookingV2Page() {
     }
     setSearchError(null);
     setSearchLoading(true);
+    setHasSearched(false);
     setTrains([]);
     try {
       const r = await apiClient.get<{ data?: { trainList?: TrainListItem[] } }>(
@@ -957,6 +959,7 @@ export default function BookingV2Page() {
         },
       );
       setTrains(r.data?.data?.trainList ?? []);
+      setHasSearched(true);
     } catch (e: unknown) {
       let msg = "Search failed";
       if (e && typeof e === "object" && "response" in e) {
@@ -968,6 +971,8 @@ export default function BookingV2Page() {
       setSearchLoading(false);
     }
   }, [fromSt, toSt, journeyDate]);
+
+  const showEmptyTrainStatus = hasSearched && !searchLoading && !searchError && trains.length === 0;
 
   const findAlternates = useCallback(
     async (t: TrainListItem, focusTravelClass?: string) => {
@@ -1326,7 +1331,16 @@ export default function BookingV2Page() {
           ))}
         </ul>
 
-        
+        {showEmptyTrainStatus && (
+          <div
+            className="mt-4 rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-600 shadow-sm"
+            role="status"
+            aria-live="polite"
+          >
+            <p className="font-semibold text-gray-900">No trains loaded</p>
+            <p className="mt-1">Try a different route or date to see more results.</p>
+          </div>
+        )}
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
