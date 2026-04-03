@@ -9,6 +9,16 @@ function dateToYmd(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
+const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] as const;
+
+function ymdToReadable(ymd: string): string {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd)) return ymd;
+  const [y, mo, d] = ymd.split("-").map(Number);
+  const dt = new Date(Date.UTC(y, mo - 1, d));
+  return `${WEEKDAYS[dt.getUTCDay()]}, ${MONTHS[mo - 1]} ${String(d).padStart(2, "0")}`;
+}
+
 const YMD_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 type DatepickerInstance = {
@@ -42,7 +52,9 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
       const ce = ev as CustomEvent<{ date?: Date }>;
       const d = ce.detail?.date;
       if (d instanceof Date && !Number.isNaN(d.getTime())) {
-        onChangeRef.current(dateToYmd(d));
+        const ymd = dateToYmd(d);
+        onChangeRef.current(ymd);
+        if (inputRef.current) inputRef.current.value = ymdToReadable(ymd);
       }
     };
 
@@ -62,6 +74,7 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
       const v = valueRef.current;
       if (v && YMD_RE.test(v)) {
         dp.setDate(v);
+        el.value = ymdToReadable(v);
       }
     });
 
@@ -80,6 +93,7 @@ export function JourneyDatePicker({ id, value, onChange, dateLabel }: JourneyDat
     const dp = dpRef.current;
     if (!dp || !value || !YMD_RE.test(value)) return;
     dp.setDate(value, { autohide: false });
+    if (inputRef.current) inputRef.current.value = ymdToReadable(value);
   }, [value]);
 
   return (

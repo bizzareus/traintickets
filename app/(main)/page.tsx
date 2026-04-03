@@ -636,7 +636,7 @@ function formatDateLabel(ymd: string): string {
     "Dec",
   ];
   const dt = new Date(Date.UTC(y, mo - 1, d));
-  return `${w[dt.getUTCDay()]}, ${d} ${months[mo - 1]}`;
+  return `${w[dt.getUTCDay()]}, ${months[mo - 1]} ${String(d).padStart(2, "0")}`;
 }
 
 function useDebounced<T>(value: T, ms: number): T {
