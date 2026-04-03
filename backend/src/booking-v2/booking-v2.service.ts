@@ -9,8 +9,10 @@ import {
 } from './booking-v2.constants';
 import {
   avlDayMatchesJourneyDate,
+  collapsibleRealtimeRemainderEndpoints,
   filterDepartedTrainsFromSearchResponse,
   isLegConfirmed,
+  legScheduleTiming,
   normalizeAndDedupeClassCodes,
   orderedDestinationIndices,
   parseUpstreamAvailablityType,
@@ -36,6 +38,20 @@ export type AlternatePathLeg = {
   predictionPercentage: string | null;
   availabilityDisplayName: string | null;
   fare: number | null;
+  /** From IRCTC schedule at boarding stop (HH:MM). */
+  departureTime: string | null;
+  /** From IRCTC schedule at alighting stop (HH:MM). */
+  arrivalTime: string | null;
+  /** Travel time for this leg when both clocks resolved (and `dayCount` when present). */
+  durationMinutes: number | null;
+};
+
+export type AlternatePathRemainderMergedSchedule = {
+  from: string;
+  to: string;
+  departureTime: string | null;
+  arrivalTime: string | null;
+  durationMinutes: number | null;
 };
 
 export type FindAlternatePathsResult = {
@@ -45,6 +61,8 @@ export type FindAlternatePathsResult = {
   legCount: number;
   isComplete: boolean;
   stationCodesOnRoute: string[];
+  /** When the UI merges a realtime suffix, IRCTC schedule timing for that whole OD (DEE → BVI). */
+  remainderMergedSchedule: AlternatePathRemainderMergedSchedule | null;
   /** Step-by-step trace for debugging (also logged with Logger). */
   debugLog: string[];
 };
@@ -337,6 +355,7 @@ export class BookingV2Service {
         legCount: 0,
         isComplete: false,
         stationCodesOnRoute: [],
+        remainderMergedSchedule: null,
         debugLog,
       };
     }
@@ -358,6 +377,7 @@ export class BookingV2Service {
         legCount: 0,
         isComplete: false,
         stationCodesOnRoute: [],
+        remainderMergedSchedule: null,
         debugLog,
       };
     }
@@ -365,6 +385,9 @@ export class BookingV2Service {
     logStep(
       `Route slice: ${stations.length} stops from boarding to destination: ${stations.join(' → ')}`,
     );
+
+    const legTim = (fromSt: string, toSt: string) =>
+      legScheduleTiming(stationList, fromSt, toSt);
 
     const legs: AlternatePathLeg[] = [];
     let currentIdx = 0;
@@ -448,6 +471,7 @@ export class BookingV2Service {
             ? String(day.availabilityDisplayName ?? '')
             : null,
           fare: picked.fare,
+          ...legTim(stations[currentIdx], stations[chosenDestIdx]),
         });
         currentIdx = chosenDestIdx;
         continue;
@@ -500,6 +524,7 @@ export class BookingV2Service {
             ? String(day.availabilityDisplayName ?? '')
             : null,
           fare: picked.fare,
+          ...legTim(fromStn, toStn),
         });
       } else {
         const disp = bridge.displayRow;
@@ -519,6 +544,7 @@ export class BookingV2Service {
             ? String(disp.availabilityDisplayName ?? '')
             : null,
           fare: null,
+          ...legTim(fromStn, toStn),
         });
       }
       currentIdx = nextIdx;
@@ -547,6 +573,17 @@ export class BookingV2Service {
       `Done: isComplete=${isComplete} legs=${legs.length}${totalFare != null ? ` totalFare=₹${totalFare}` : ''}`,
     );
 
+    const journeyDest = stations[targetIdx] ?? to;
+    const remainderEp = collapsibleRealtimeRemainderEndpoints(legs, journeyDest);
+    const remainderMergedSchedule: AlternatePathRemainderMergedSchedule | null =
+      remainderEp != null
+        ? {
+            from: remainderEp.from,
+            to: remainderEp.to,
+            ...legScheduleTiming(stationList, remainderEp.from, remainderEp.to),
+          }
+        : null;
+
     return {
       trainNumber,
       legs,
@@ -554,6 +591,7 @@ export class BookingV2Service {
       legCount: legs.length,
       isComplete,
       stationCodesOnRoute: stations,
+      remainderMergedSchedule,
       debugLog,
     };
   }

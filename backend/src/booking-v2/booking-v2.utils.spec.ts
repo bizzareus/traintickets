@@ -1,7 +1,9 @@
 import {
   avlDayMatchesJourneyDate,
+  collapsibleRealtimeRemainderEndpoints,
   filterDepartedTrainsFromSearchResponse,
   isLegConfirmed,
+  legScheduleTiming,
   normalizeAndDedupeClassCodes,
   orderedDestinationIndices,
   parseUpstreamAvailablityType,
@@ -10,6 +12,97 @@ import {
   trainSearchRowIndicatesDeparted,
   ymdToRailApiDdMmYyyy,
 } from './booking-v2.utils';
+
+describe('collapsibleRealtimeRemainderEndpoints', () => {
+  it('returns merged OD for chained realtime suffix to dest', () => {
+    const legs = [
+      { from: 'A', to: 'B', segmentKind: 'confirmed' },
+      { from: 'B', to: 'C', segmentKind: 'check_realtime' },
+      { from: 'C', to: 'D', segmentKind: 'check_realtime' },
+    ];
+    expect(collapsibleRealtimeRemainderEndpoints(legs, 'D')).toEqual({
+      from: 'B',
+      to: 'D',
+    });
+  });
+  it('returns null when last leg is not realtime', () => {
+    const legs = [
+      { from: 'A', to: 'B', segmentKind: 'check_realtime' },
+      { from: 'B', to: 'D', segmentKind: 'confirmed' },
+    ];
+    expect(collapsibleRealtimeRemainderEndpoints(legs, 'D')).toBeNull();
+  });
+  it('returns single-leg suffix when earlier realtime hop does not chain', () => {
+    const legs = [
+      { from: 'B', to: 'X', segmentKind: 'check_realtime' },
+      { from: 'Y', to: 'D', segmentKind: 'check_realtime' },
+    ];
+    expect(collapsibleRealtimeRemainderEndpoints(legs, 'D')).toEqual({
+      from: 'Y',
+      to: 'D',
+    });
+  });
+});
+
+describe('legScheduleTiming', () => {
+  it('returns same-day duration and padded clocks', () => {
+    const list = [
+      {
+        stationCode: 'AAA',
+        departureTime: '10:05',
+        arrivalTime: '10:03',
+        dayCount: '1',
+      },
+      {
+        stationCode: 'BBB',
+        arrivalTime: '15:20',
+        departureTime: '15:22',
+        dayCount: '1',
+      },
+    ];
+    expect(legScheduleTiming(list, 'AAA', 'BBB')).toEqual({
+      departureTime: '10:05',
+      arrivalTime: '15:20',
+      durationMinutes: 5 * 60 + 15, // 315
+    });
+  });
+
+  it('uses dayCount for overnight legs', () => {
+    const list = [
+      {
+        stationCode: 'X',
+        departureTime: '23:00',
+        dayCount: '1',
+      },
+      {
+        stationCode: 'Y',
+        arrivalTime: '02:00',
+        dayCount: '2',
+      },
+    ];
+    expect(legScheduleTiming(list, 'X', 'Y')).toEqual({
+      departureTime: '23:00',
+      arrivalTime: '02:00',
+      durationMinutes: 180,
+    });
+  });
+
+  it('adds 24h when same dayCount but arrival before departure', () => {
+    const list = [
+      { stationCode: 'X', departureTime: '23:00', dayCount: '1' },
+      { stationCode: 'Y', arrivalTime: '02:00', dayCount: '1' },
+    ];
+    expect(legScheduleTiming(list, 'X', 'Y')?.durationMinutes).toBe(180);
+  });
+
+  it('returns nulls when stations missing', () => {
+    expect(legScheduleTiming([], 'A', 'B')).toEqual({
+      departureTime: null,
+      arrivalTime: null,
+      durationMinutes: null,
+    });
+  });
+});
 
 describe('normalizeAndDedupeClassCodes', () => {
   it('trims, uppercases, dedupes in order', () => {

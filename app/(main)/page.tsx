@@ -61,6 +61,10 @@ type AlternateLeg = {
   predictionPercentage: string | null;
   availabilityDisplayName: string | null;
   fare: number | null;
+  /** Set from IRCTC schedule when the API includes leg timing (HH:MM). */
+  departureTime?: string | null;
+  arrivalTime?: string | null;
+  durationMinutes?: number | null;
 };
 
 type AlternatePathsResponse = {
@@ -70,6 +74,13 @@ type AlternatePathsResponse = {
   legCount: number;
   isComplete: boolean;
   stationCodesOnRoute: string[];
+  remainderMergedSchedule?: {
+    from: string;
+    to: string;
+    departureTime: string | null;
+    arrivalTime: string | null;
+    durationMinutes: number | null;
+  } | null;
   debugLog?: string[];
 };
 
@@ -125,7 +136,10 @@ function AlternatePathLegListItem({
         >
           {isConfirmed ? (
             <>
-              <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
+                Leg {stepIndex} of {stepTotal}
+              </p>
+              <div className="mt-2 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
                 <p className="text-2xl font-extrabold leading-tight tracking-tight text-emerald-950 tabular-nums">
                   {leg.availabilityDisplayName ?? leg.railDataStatus ?? "Available"}
                 </p>
@@ -138,9 +152,6 @@ function AlternatePathLegListItem({
               <span className="mt-2 inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-900">
                 Available
               </span>
-              <p className="mt-3 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
-                Leg {stepIndex} of {stepTotal}
-              </p>
               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                 <span className="text-lg font-bold tracking-tight text-gray-900">{leg.from}</span>
                 <span className="text-sm font-medium text-gray-400" aria-hidden="true">
@@ -148,6 +159,7 @@ function AlternatePathLegListItem({
                 </span>
                 <span className="text-lg font-bold tracking-tight text-gray-900">{leg.to}</span>
               </div>
+              <AlternatePathLegScheduleLine leg={leg} />
               {leg.fare != null && (
                 <p className="mt-3 text-xl font-bold text-gray-900">₹{leg.fare.toFixed(0)}</p>
               )}
@@ -163,7 +175,10 @@ function AlternatePathLegListItem({
             </>
           ) : (
             <>
-              <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
+                Leg {stepIndex} of {stepTotal}
+              </p>
+              <div className="mt-2 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
                 <p className="text-2xl font-extrabold leading-tight tracking-tight text-amber-950">
                   No confirmed tickets
                 </p>
@@ -173,9 +188,6 @@ function AlternatePathLegListItem({
                   </span>
                 ) : null}
               </div>
-              <p className="mt-3 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
-                Leg {stepIndex} of {stepTotal}
-              </p>
               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                 <span className="text-lg font-bold tracking-tight text-gray-900">{leg.from}</span>
                 <span className="text-sm font-medium text-gray-400" aria-hidden="true">
@@ -183,6 +195,7 @@ function AlternatePathLegListItem({
                 </span>
                 <span className="text-lg font-bold tracking-tight text-gray-900">{leg.to}</span>
               </div>
+              <AlternatePathLegScheduleLine leg={leg} />
               {(leg.availabilityDisplayName ?? leg.railDataStatus) && (
                 <p className="mt-3 text-sm text-gray-700">
                   Last check: {leg.availabilityDisplayName ?? leg.railDataStatus}
@@ -213,6 +226,7 @@ function AlternatePathRemainderInsights({
   legFrom,
   legTo,
   monitorClassCode,
+  journeyDestinationCode,
 }: {
   trainNumber: string;
   trainName?: string | null;
@@ -220,6 +234,8 @@ function AlternatePathRemainderInsights({
   legFrom: string;
   legTo: string;
   monitorClassCode: string;
+  /** When set and equal to `legTo`, hide IRCTC composition-error lines at destination (not useful for where you alight). */
+  journeyDestinationCode?: string | null;
 }) {
   const [metaFrom, setMetaFrom] = useState<StationChartMetaItem | null>(null);
   const [metaTo, setMetaTo] = useState<StationChartMetaItem | null>(null);
@@ -317,6 +333,14 @@ function AlternatePathRemainderInsights({
     () => describeChartPreparationForStation(metaTo, legTo, journeyDate),
     [metaTo, legTo, journeyDate],
   );
+  const destChartLinesForUi = useMemo(() => {
+    const dest = journeyDestinationCode?.trim().toUpperCase() ?? "";
+    const to = legTo.trim().toUpperCase();
+    if (!dest || dest !== to) return destChart.lines;
+    return destChart.lines.filter(
+      (line) => !/^\s*IRCTC\s+status:/i.test(line),
+    );
+  }, [destChart.lines, journeyDestinationCode, legTo]);
   const sameLegEndpoints =
     legFrom.trim().toUpperCase() === legTo.trim().toUpperCase() && legFrom.trim().length > 0;
 
@@ -439,7 +463,7 @@ function AlternatePathRemainderInsights({
               <div className="space-y-1.5">
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-amber-900/75">Destination</p>
                 <p className="font-semibold leading-snug text-amber-950">{destChart.title}</p>
-                {destChart.lines.map((line, i) => (
+                {destChartLinesForUi.map((line, i) => (
                   <p key={i} className="leading-snug text-amber-950/95">
                     {line}
                   </p>
@@ -517,6 +541,71 @@ function formatDurationMinutes(mins: number | undefined): string {
   const m = mins % 60;
   if (h <= 0) return `${m}m`;
   return `${h}h ${m}m`;
+}
+
+function AlternatePathLegScheduleLine({ leg }: { leg: AlternateLeg }) {
+  const dep = leg.departureTime?.trim() || null;
+  const arr = leg.arrivalTime?.trim() || null;
+  const hasDuration =
+    leg.durationMinutes != null && !Number.isNaN(leg.durationMinutes);
+  const hasClocks = Boolean(dep) || Boolean(arr);
+  if (!hasClocks && !hasDuration) return null;
+
+  const timePart =
+    dep && arr ? `${dep} → ${arr}` : dep ? `Dep ${dep}` : arr ? `Arr ${arr}` : null;
+  const durLabel = formatDurationMinutes(leg.durationMinutes ?? undefined);
+
+  return (
+    <p className="mt-1.5 text-sm tabular-nums text-gray-600">
+      {timePart}
+      {hasDuration && (
+        <span className="text-gray-500">{timePart ? ` · ${durLabel}` : durLabel}</span>
+      )}
+    </p>
+  );
+}
+
+function collapsedAlternatePathTimingSummary(legs: AlternateLeg[]): {
+  timePart: string | null;
+  durationLabel: string | null;
+} | null {
+  if (legs.length === 0) return null;
+  const dep = legs[0]?.departureTime?.trim() || null;
+  const arr = legs[legs.length - 1]?.arrivalTime?.trim() || null;
+  const allDur = legs.every(
+    (l) => l.durationMinutes != null && !Number.isNaN(l.durationMinutes as number),
+  );
+  const totalMins = allDur
+    ? legs.reduce((s, l) => s + (l.durationMinutes as number), 0)
+    : null;
+  let timePart: string | null = null;
+  if (dep && arr) timePart = `${dep} → ${arr}`;
+  else if (dep) timePart = `Dep ${dep}`;
+  else if (arr) timePart = `Arr ${arr}`;
+  const durationLabel =
+    totalMins != null ? formatDurationMinutes(totalMins) : null;
+  if (!timePart && !durationLabel) return null;
+  return { timePart, durationLabel };
+}
+
+/** Prefer API schedule for merged realtime OD; else aggregate per-leg times from collapsed legs. */
+function collapsedRemainderTimingDisplay(
+  alt: AlternatePathsResponse,
+  collapsedLegs: AlternateLeg[],
+): { timePart: string | null; durationLabel: string | null } | null {
+  const m = alt.remainderMergedSchedule;
+  if (m) {
+    const dep = m.departureTime?.trim() || null;
+    const arr = m.arrivalTime?.trim() || null;
+    const hasDur = m.durationMinutes != null && !Number.isNaN(m.durationMinutes);
+    let timePart: string | null = null;
+    if (dep && arr) timePart = `${dep} → ${arr}`;
+    else if (dep) timePart = `Dep ${dep}`;
+    else if (arr) timePart = `Arr ${arr}`;
+    const durationLabel = hasDur ? formatDurationMinutes(m.durationMinutes ?? undefined) : null;
+    if (timePart || durationLabel) return { timePart, durationLabel };
+  }
+  return collapsedAlternatePathTimingSummary(collapsedLegs);
 }
 
 function todayYmd(): string {
@@ -947,6 +1036,11 @@ export default function BookingV2Page() {
     return partitionAlternatePathLegsForModal(altResult.legs, toSt.stationCode);
   }, [altResult, toSt]);
 
+  const collapsedRemainderLegs = useMemo(() => {
+    if (!altResult || alternatePathLegsPartition?.mode !== "collapsed") return [];
+    return altResult.legs.slice(alternatePathLegsPartition.confirmedPrefix.length);
+  }, [altResult, alternatePathLegsPartition]);
+
   const journeyDateInputId = useId();
 
   useEffect(() => {
@@ -1339,7 +1433,9 @@ export default function BookingV2Page() {
                       {altResult.totalFare != null && (
                         <>
                           {" "}
-                          Total fare (confirmed segments): ₹{altResult.totalFare.toFixed(0)}
+                          <span className="font-bold text-gray-950">
+                            Total fare (confirmed segments): ₹{altResult.totalFare.toFixed(0)}
+                          </span>
                         </>
                       )}
                     </p>
@@ -1416,6 +1512,20 @@ export default function BookingV2Page() {
                                   To final destination
                                 </span>
                               </div>
+                              {(() => {
+                                const s = collapsedRemainderTimingDisplay(altResult, collapsedRemainderLegs);
+                                if (!s) return null;
+                                return (
+                                  <p className="mt-1.5 text-sm tabular-nums text-gray-600">
+                                    {s.timePart}
+                                    {s.durationLabel && (
+                                      <span className="text-gray-500">
+                                        {s.timePart ? ` · ${s.durationLabel}` : s.durationLabel}
+                                      </span>
+                                    )}
+                                  </p>
+                                );
+                              })()}
                               <p className="mt-3 text-sm font-medium text-amber-950">
                                 There are no tickets available overall.
                               </p>
@@ -1429,6 +1539,7 @@ export default function BookingV2Page() {
                                   }
                                   legTo={alternatePathLegsPartition.fromLastConfirmedStopToDestination.to}
                                   monitorClassCode={altAvlClasses?.[0] ?? "SL"}
+                                  journeyDestinationCode={toSt?.stationCode}
                                 />
                               )}
                             </div>

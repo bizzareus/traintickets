@@ -174,3 +174,120 @@ export function filterDepartedTrainsFromSearchResponse(root: unknown): unknown {
   const trainList = list.filter((row) => !trainSearchRowIndicatesDeparted(row));
   return { ...o, data: { ...d, trainList } };
 }
+
+/** IRCTC schedule row subset used for leg timing (see `trnscheduleenquiry` / seed shapes). */
+export type IrctcScheduleStopLite = {
+  stationCode?: string | null;
+  arrivalTime?: string | null;
+  departureTime?: string | null;
+  dayCount?: unknown;
+};
+
+function normalizeScheduleStationCode(s: string | null | undefined): string {
+  return String(s ?? '')
+    .trim()
+    .toUpperCase();
+}
+
+function parseIrctcScheduleClock(
+  raw: string | null | undefined,
+): { display: string; minutes: number } | null {
+  if (raw == null) return null;
+  const t = String(raw).trim();
+  if (t === '' || t === '--') return null;
+  const m = t.match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return null;
+  const h = parseInt(m[1], 10);
+  const min = parseInt(m[2], 10);
+  if (h > 23 || min > 59) return null;
+  return {
+    display: `${h.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`,
+    minutes: h * 60 + min,
+  };
+}
+
+function parseScheduleDayCount(raw: unknown): number | null {
+  if (raw == null) return null;
+  const n = parseInt(String(raw).trim(), 10);
+  return Number.isFinite(n) && n >= 1 ? n : null;
+}
+
+/**
+ * Departure/arrival clocks and duration for one onboard leg using IRCTC schedule rows.
+ * Uses `dayCount` when present so multi-day and overnight legs stay correct.
+ */
+export function legScheduleTiming(
+  stationList: IrctcScheduleStopLite[] | null | undefined,
+  fromCode: string,
+  toCode: string,
+): {
+  departureTime: string | null;
+  arrivalTime: string | null;
+  durationMinutes: number | null;
+} {
+  if (!Array.isArray(stationList) || stationList.length === 0) {
+    return { departureTime: null, arrivalTime: null, durationMinutes: null };
+  }
+  const a = normalizeScheduleStationCode(fromCode);
+  const b = normalizeScheduleStationCode(toCode);
+  const fromStop = stationList.find(
+    (s) => normalizeScheduleStationCode(s.stationCode) === a,
+  );
+  const toStop = stationList.find(
+    (s) => normalizeScheduleStationCode(s.stationCode) === b,
+  );
+  if (!fromStop || !toStop) {
+    return { departureTime: null, arrivalTime: null, durationMinutes: null };
+  }
+
+  const depPick =
+    parseIrctcScheduleClock(fromStop.departureTime as string | undefined) ??
+    parseIrctcScheduleClock(fromStop.arrivalTime as string | undefined);
+  const arrPick =
+    parseIrctcScheduleClock(toStop.arrivalTime as string | undefined) ??
+    parseIrctcScheduleClock(toStop.departureTime as string | undefined);
+
+  const dayFrom = parseScheduleDayCount(fromStop.dayCount) ?? 1;
+  const dayTo = parseScheduleDayCount(toStop.dayCount) ?? dayFrom;
+
+  let durationMinutes: number | null = null;
+  if (depPick && arrPick) {
+    let delta =
+      arrPick.minutes - depPick.minutes + (dayTo - dayFrom) * 24 * 60;
+    if (delta < 0) delta += 24 * 60;
+    durationMinutes = delta;
+  }
+
+  return {
+    departureTime: depPick?.display ?? null,
+    arrivalTime: arrPick?.display ?? null,
+    durationMinutes,
+  };
+}
+
+/** Same collapsed-suffix OD as frontend `partitionAlternatePathLegsForModal`. */
+export function collapsibleRealtimeRemainderEndpoints(
+  legs: readonly { from: string; to: string; segmentKind: string }[],
+  journeyDestinationCode: string,
+): { from: string; to: string } | null {
+  const d = journeyDestinationCode.trim().toUpperCase();
+  const n = legs.length;
+  if (n === 0) return null;
+  const last = legs[n - 1]!;
+  if (String(last.to).trim().toUpperCase() !== d) return null;
+  if (last.segmentKind !== 'check_realtime') return null;
+
+  let start = n - 1;
+  for (let i = n - 2; i >= 0; i--) {
+    const leg = legs[i]!;
+    if (leg.segmentKind !== 'check_realtime') break;
+    if (
+      String(leg.to).trim().toUpperCase() !==
+      String(legs[i + 1]!.from).trim().toUpperCase()
+    ) {
+      break;
+    }
+    start = i;
+  }
+  return { from: legs[start]!.from, to: legs[n - 1]!.to };
+}

@@ -41,6 +41,17 @@ export type MockAlternateLeg = {
   predictionPercentage: string | null;
   availabilityDisplayName: string | null;
   fare: number | null;
+  departureTime?: string | null;
+  arrivalTime?: string | null;
+  durationMinutes?: number | null;
+};
+
+export type MockRemainderMergedSchedule = {
+  from: string;
+  to: string;
+  departureTime: string | null;
+  arrivalTime: string | null;
+  durationMinutes: number | null;
 };
 
 export type MockAlternatePathsResponse = {
@@ -50,6 +61,7 @@ export type MockAlternatePathsResponse = {
   legCount: number;
   isComplete: boolean;
   stationCodesOnRoute: string[];
+  remainderMergedSchedule?: MockRemainderMergedSchedule | null;
   debugLog?: string[];
 };
 
@@ -79,6 +91,9 @@ function emptyLegSegment(
     predictionPercentage: null,
     availabilityDisplayName: kind === "confirmed" ? "AVAILABLE-0123" : "WL 42",
     fare: kind === "confirmed" ? 450 : null,
+    departureTime: null,
+    arrivalTime: null,
+    durationMinutes: null,
     ...extras,
   };
 }
@@ -96,6 +111,7 @@ export function alternatePathTwoConfirmed(trainNumber: string): MockAlternatePat
     legCount: 2,
     isComplete: true,
     stationCodesOnRoute: ["ORIG", "MID", "DEST"],
+    remainderMergedSchedule: null,
   };
 }
 
@@ -113,6 +129,7 @@ export function alternatePathTwoIntermediatesConfirmed(trainNumber: string): Moc
     legCount: 3,
     isComplete: true,
     stationCodesOnRoute: ["ORIG", "S1", "S2", "DEST"],
+    remainderMergedSchedule: null,
   };
 }
 
@@ -133,6 +150,13 @@ export function alternatePathWithCollapsedRemainder(trainNumber: string): MockAl
     legCount: 3,
     isComplete: false,
     stationCodesOnRoute: ["ORIG", "MID", "PEN", "DEST"],
+    remainderMergedSchedule: {
+      from: "MID",
+      to: "DEST",
+      departureTime: "09:15",
+      arrivalTime: "21:40",
+      durationMinutes: 745,
+    },
   };
 }
 
@@ -161,6 +185,13 @@ export function alternatePathLongRealtimeChain(
     legCount: legs.length,
     isComplete: false,
     stationCodesOnRoute: codes,
+    remainderMergedSchedule: {
+      from: first,
+      to: last,
+      departureTime: "08:00",
+      arrivalTime: "22:00",
+      durationMinutes: 840,
+    },
   };
 }
 
