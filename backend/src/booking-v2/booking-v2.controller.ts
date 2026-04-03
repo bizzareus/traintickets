@@ -20,10 +20,15 @@ export class BookingV2Controller {
   constructor(private readonly bookingV2: BookingV2Service) {}
 
   @Get('stations/suggest')
-  async suggestStations(@Query('q') q: string | undefined) {
-    const searchString = trimStr(q);
+  async suggestStations(
+    @Query('q') q: string | undefined,
+    @Query('searchString') searchStringParam: string | undefined,
+  ) {
+    const searchString = trimStr(q) || trimStr(searchStringParam);
     if (searchString.length < 2) {
-      throw new BadRequestException('Query q must be at least 2 characters');
+      throw new BadRequestException(
+        'Query q or searchString must be at least 2 characters',
+      );
     }
     return this.bookingV2.searchStations(searchString);
   }

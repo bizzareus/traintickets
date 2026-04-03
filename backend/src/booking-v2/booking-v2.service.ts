@@ -70,19 +70,61 @@ export class BookingV2Service {
       language: 'EN',
     });
     const url = `${BOOKING_V2_CONFIRMTKT_BASE.stationsSuggest}?${params}`;
-    const res = await fetch(url, { headers: BOOKING_V2_CONFIRMTKT_HEADERS });
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: BOOKING_V2_CONFIRMTKT_HEADERS,
+    });
     const text = await res.text();
     if (!res.ok) {
       this.logger.warn(
-        `[booking-v2/stations] upstream ${res.status} body=${text.slice(0, 200)}`,
+        `[booking-v2/stations] upstream ${res.status} q=${q.slice(0, 40)} body=${text.slice(0, 300)}`,
       );
       throw new Error(`ConfirmTkt stations failed: ${res.status}`);
     }
+    let parsed: unknown;
     try {
-      return JSON.parse(text) as unknown;
+      parsed = JSON.parse(text) as unknown;
     } catch {
       throw new Error('ConfirmTkt stations: invalid JSON');
     }
+    return this.mergeStationSuggestResponse(parsed);
+  }
+
+  /** Merge stationList + popularStationList (+ preferred), dedupe by code+name. */
+  private mergeStationSuggestResponse(body: unknown): unknown {
+    if (!body || typeof body !== 'object') return body;
+    const root = body as Record<string, unknown>;
+    const data = root.data;
+    if (!data || typeof data !== 'object') return body;
+    const d = data as Record<string, unknown>;
+    const merge = (lists: unknown[][]): unknown[] => {
+      const seen = new Set<string>();
+      const out: unknown[] = [];
+      for (const list of lists) {
+        for (const row of list) {
+          if (!row || typeof row !== 'object') continue;
+          const r = row as Record<string, unknown>;
+          const code = String(r.stationCode ?? '').trim();
+          const name = String(r.stationName ?? '').trim();
+          const key = `${code}|${name}`.toUpperCase();
+          if (!code || seen.has(key)) continue;
+          seen.add(key);
+          out.push(row);
+        }
+      }
+      return out;
+    };
+    const a = Array.isArray(d.stationList) ? d.stationList : [];
+    const b = Array.isArray(d.popularStationList) ? d.popularStationList : [];
+    const c = Array.isArray(d.preferredStationList) ? d.preferredStationList : [];
+    const stationList = merge([a, b, c]);
+    return {
+      ...root,
+      data: {
+        ...d,
+        stationList,
+      },
+    };
   }
 
   async searchTrains(

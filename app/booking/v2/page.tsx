@@ -101,10 +101,28 @@ function useDebounced<T>(value: T, ms: number): T {
   return v;
 }
 
+function extractAxiosMessage(e: unknown): string {
+  if (e && typeof e === "object" && "response" in e) {
+    const ax = e as {
+      response?: { status?: number; data?: { message?: string | string[] } };
+      message?: string;
+    };
+    const d = ax.response?.data?.message;
+    if (Array.isArray(d)) return d.join(", ");
+    if (typeof d === "string" && d.trim()) return d;
+    if (ax.response?.status === 502 || ax.response?.status === 503) {
+      return "Station search service unavailable. Try again.";
+    }
+    if (ax.response?.status === 400) return "Type at least 2 characters to search.";
+  }
+  if (e instanceof Error && e.message) return e.message;
+  return "Could not load stations. Check that the API is running (NEXT_PUBLIC_API_URL).";
+}
+
 function StationFieldSimple(props: {
   label: string;
   query: string;
-  onQueryChange: (q: string) => void;
+  onUserType: (q: string) => void;
   value: StationRow | null;
   onSelect: (s: StationRow) => void;
   suggestions: StationRow[];
@@ -112,11 +130,12 @@ function StationFieldSimple(props: {
   pendingDebounce: boolean;
   open: boolean;
   onOpenChange: (o: boolean) => void;
+  suggestError: string | null;
 }) {
   const {
     label,
     query,
-    onQueryChange,
+    onUserType,
     value,
     onSelect,
     suggestions,
@@ -124,6 +143,7 @@ function StationFieldSimple(props: {
     pendingDebounce,
     open,
     onOpenChange,
+    suggestError,
   } = props;
   const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -153,7 +173,7 @@ function StationFieldSimple(props: {
         placeholder="Type station…"
         value={displayText}
         onChange={(e) => {
-          onQueryChange(e.target.value);
+          onUserType(e.target.value);
           onOpenChange(true);
         }}
         onFocus={() => onOpenChange(true)}
@@ -164,7 +184,10 @@ function StationFieldSimple(props: {
           role="listbox"
         >
           {showLoading && <li className="px-3 py-2 text-sm text-gray-500">Loading…</li>}
-          {!showLoading && suggestions.length === 0 && (
+          {!showLoading && suggestError && (
+            <li className="px-3 py-2 text-sm text-gray-700">{suggestError}</li>
+          )}
+          {!showLoading && !suggestError && suggestions.length === 0 && (
             <li className="px-3 py-2 text-sm text-gray-500">No stations</li>
           )}
           {suggestions.map((s) => (
@@ -200,8 +223,30 @@ export default function BookingV2Page() {
   const [toOpen, setToOpen] = useState(false);
   const [fromSuggest, setFromSuggest] = useState<StationRow[]>([]);
   const [toSuggest, setToSuggest] = useState<StationRow[]>([]);
+  const [fromSuggestError, setFromSuggestError] = useState<string | null>(null);
+  const [toSuggestError, setToSuggestError] = useState<string | null>(null);
   const [fromLoad, setFromLoad] = useState(false);
   const [toLoad, setToLoad] = useState(false);
+
+  const openFrom = useCallback(
+    (open: boolean) => {
+      setFromOpen(open);
+      if (open && fromSt) {
+        setFromQ(fromSt.stationName);
+      }
+    },
+    [fromSt],
+  );
+
+  const openTo = useCallback(
+    (open: boolean) => {
+      setToOpen(open);
+      if (open && toSt) {
+        setToQ(toSt.stationName);
+      }
+    },
+    [toSt],
+  );
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
   useEffect(() => {
     setJourneyDate(todayYmd());
@@ -218,19 +263,27 @@ export default function BookingV2Page() {
   useEffect(() => {
     if (fromDeb.length < 2) {
       setFromSuggest([]);
+      setFromSuggestError(null);
       return;
     }
     let c = false;
     setFromLoad(true);
+    setFromSuggestError(null);
     apiClient
       .get<{ data?: { stationList?: StationRow[] } }>("/api/booking-v2/stations/suggest", {
-        params: { q: fromDeb },
+        params: { q: fromDeb, searchString: fromDeb },
       })
       .then((r) => {
-        if (!c) setFromSuggest(r.data?.data?.stationList ?? []);
+        if (!c) {
+          setFromSuggest(r.data?.data?.stationList ?? []);
+          setFromSuggestError(null);
+        }
       })
-      .catch(() => {
-        if (!c) setFromSuggest([]);
+      .catch((e) => {
+        if (!c) {
+          setFromSuggest([]);
+          setFromSuggestError(extractAxiosMessage(e));
+        }
       })
       .finally(() => {
         if (!c) setFromLoad(false);
@@ -243,19 +296,27 @@ export default function BookingV2Page() {
   useEffect(() => {
     if (toDeb.length < 2) {
       setToSuggest([]);
+      setToSuggestError(null);
       return;
     }
     let c = false;
     setToLoad(true);
+    setToSuggestError(null);
     apiClient
       .get<{ data?: { stationList?: StationRow[] } }>("/api/booking-v2/stations/suggest", {
-        params: { q: toDeb },
+        params: { q: toDeb, searchString: toDeb },
       })
       .then((r) => {
-        if (!c) setToSuggest(r.data?.data?.stationList ?? []);
+        if (!c) {
+          setToSuggest(r.data?.data?.stationList ?? []);
+          setToSuggestError(null);
+        }
       })
-      .catch(() => {
-        if (!c) setToSuggest([]);
+      .catch((e) => {
+        if (!c) {
+          setToSuggest([]);
+          setToSuggestError(extractAxiosMessage(e));
+        }
       })
       .finally(() => {
         if (!c) setToLoad(false);
@@ -364,20 +425,21 @@ export default function BookingV2Page() {
             <StationFieldSimple
               label="From"
               query={fromQ}
-              onQueryChange={(q) => {
+              onUserType={(q) => {
                 setFromQ(q);
                 setFromSt(null);
               }}
               value={fromSt}
               onSelect={(s) => {
                 setFromSt(s);
-                setFromQ(`${s.stationCode} - ${s.stationName}`);
+                setFromQ(s.stationName);
               }}
               suggestions={fromSuggest}
               loading={fromLoad}
               pendingDebounce={fromQ !== fromDeb && fromQ.length >= 2}
               open={fromOpen}
-              onOpenChange={setFromOpen}
+              onOpenChange={openFrom}
+              suggestError={fromSuggestError}
             />
             <div className="flex items-center justify-center border-gray-200 px-1 py-2 sm:border-r sm:py-0">
               <button
@@ -392,20 +454,21 @@ export default function BookingV2Page() {
             <StationFieldSimple
               label="To"
               query={toQ}
-              onQueryChange={(q) => {
+              onUserType={(q) => {
                 setToQ(q);
                 setToSt(null);
               }}
               value={toSt}
               onSelect={(s) => {
                 setToSt(s);
-                setToQ(`${s.stationCode} - ${s.stationName}`);
+                setToQ(s.stationName);
               }}
               suggestions={toSuggest}
               loading={toLoad}
               pendingDebounce={toQ !== toDeb && toQ.length >= 2}
               open={toOpen}
-              onOpenChange={setToOpen}
+              onOpenChange={openTo}
+              suggestError={toSuggestError}
             />
             <div className="min-w-0 flex-1 border-t border-gray-200 px-3 py-2.5 sm:border-t-0 sm:border-r sm:border-gray-200 sm:px-4">
               <div className="mb-0.5 flex items-center gap-1.5 text-gray-500">
