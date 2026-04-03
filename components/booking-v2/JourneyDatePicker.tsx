@@ -9,6 +9,12 @@ function dateToYmd(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
+/** Local calendar date from YYYY-MM-DD (avoids UTC parse shifting the day). */
+function ymdToLocalDate(ymd: string): Date {
+  const [y, m, d] = ymd.split("-").map(Number);
+  return new Date(y, m - 1, d);
+}
+
 const YMD_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 type DatepickerInstance = {
@@ -41,9 +47,8 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
       const ce = ev as CustomEvent<{ date?: Date }>;
       const d = ce.detail?.date;
       if (d instanceof Date && !Number.isNaN(d.getTime())) {
-        const ymd = dateToYmd(d);
-        onChangeRef.current(ymd);
-        if (inputRef.current) inputRef.current.value = ymd;
+        onChangeRef.current(dateToYmd(d));
+        // Input value is already refreshed by the picker using `format` (e.g. "Friday, Apr 03").
       }
     };
 
@@ -54,7 +59,8 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
       const el = inputRef.current;
       const dp = new Datepicker(el, {
         autohide: true,
-        format: "yyyy-mm-dd",
+        // flowbite-datepicker tokens: DD = weekday, M = short month, dd = day (padded)
+        format: "DD, M dd",
         orientation: "bottom",
         todayHighlight: true,
       }) as DatepickerInstance;
@@ -62,8 +68,7 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
       el.addEventListener("changeDate", onPick);
       const v = valueRef.current;
       if (v && YMD_RE.test(v)) {
-        dp.setDate(v);
-        el.value = v;
+        dp.setDate(ymdToLocalDate(v));
       }
     });
 
@@ -79,8 +84,7 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
   useEffect(() => {
     const dp = dpRef.current;
     if (!dp || !value || !YMD_RE.test(value)) return;
-    dp.setDate(value, { autohide: false });
-    if (inputRef.current) inputRef.current.value = value;
+    dp.setDate(ymdToLocalDate(value), { autohide: false });
   }, [value]);
 
   return (

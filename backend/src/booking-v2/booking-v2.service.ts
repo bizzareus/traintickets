@@ -120,9 +120,7 @@ export class BookingV2Service {
         r.availablityStatus != null ? String(r.availablityStatus) : null,
       vendorPredictionStatus: vendor,
       predictionPercentage:
-        r.predictionPercentage != null
-          ? String(r.predictionPercentage)
-          : null,
+        r.predictionPercentage != null ? String(r.predictionPercentage) : null,
       availabilityDisplayName:
         r.availabilityDisplayName != null
           ? String(r.availabilityDisplayName)
@@ -187,7 +185,9 @@ export class BookingV2Service {
     };
     const a = Array.isArray(d.stationList) ? d.stationList : [];
     const b = Array.isArray(d.popularStationList) ? d.popularStationList : [];
-    const c = Array.isArray(d.preferredStationList) ? d.preferredStationList : [];
+    const c = Array.isArray(d.preferredStationList)
+      ? d.preferredStationList
+      : [];
     const stationList = merge([a, b, c]);
     return {
       ...root,
@@ -321,7 +321,9 @@ export class BookingV2Service {
     const trainNumber = String(input.trainNumber).trim();
     const from = String(input.from).trim().toUpperCase();
     const to = String(input.to).trim().toUpperCase();
-    const quota = String(input.quota ?? 'GN').trim().toUpperCase();
+    const quota = String(input.quota ?? 'GN')
+      .trim()
+      .toUpperCase();
     const dateDdMmYyyy = this.normalizeToRailApiDate(input.date);
     const debugLog: string[] = [];
     const logStep = (msg: string) => {
@@ -335,9 +337,7 @@ export class BookingV2Service {
 
     const fromTrain = normalizeAndDedupeClassCodes(input.avlClasses ?? []);
     const classes =
-      fromTrain.length > 0
-        ? fromTrain
-        : [...BOOKING_V2_ALTERNATE_PATH_CLASSES];
+      fromTrain.length > 0 ? fromTrain : [...BOOKING_V2_ALTERNATE_PATH_CLASSES];
 
     logStep(
       `Start: ${from} → ${to} | journeyDate=${input.date} (DD-MM-YYYY ${dateDdMmYyyy}) | probeClasses=${classes.join(',')} (${fromTrain.length ? 'from train avlClasses' : 'fallback list'}) quota=${quota}`,
@@ -364,7 +364,7 @@ export class BookingV2Service {
       `IRCTC schedule: OK — ${sched.schedule.stationList.length} stops on full route (${sched.schedule.trainName ?? 'train'})`,
     );
 
-    const stationList = sched.schedule.stationList as ScheduleStation[];
+    const stationList = sched.schedule.stationList;
     const stations = stationCodesBetweenStops(stationList, from, to);
     if (!stations?.length) {
       logStep(
@@ -434,10 +434,10 @@ export class BookingV2Service {
       let chosenDestIdx: number | null = null;
       let chosenProbe: MultiClassProbeResult | null = null;
       for (let w = 0; w < destOrder.length; w++) {
-        const destIdx = destOrder[w]!;
+        const destIdx = destOrder[w];
         const fromStn = stations[currentIdx];
         const toStn = stations[destIdx];
-        const probe = probes[w]!;
+        const probe = probes[w];
         logStep(this.formatMultiClassProbeLine(fromStn, toStn, probe, classes));
         if (probe.bestConfirmedClassIndex != null) {
           chosenDestIdx = destIdx;
@@ -452,7 +452,7 @@ export class BookingV2Service {
         chosenProbe.bestConfirmedClassIndex != null
       ) {
         const bc = chosenProbe.bestConfirmedClassIndex;
-        const picked = chosenProbe.perClass[bc]!;
+        const picked = chosenProbe.perClass[bc];
         const day = picked.day;
         logStep(
           `Hop ${hop}: CHOSEN ${stations[currentIdx]} → ${stations[chosenDestIdx]} | class=${classes[bc]}${picked.fare != null ? ` fare ₹${picked.fare}` : ''}`,
@@ -505,7 +505,7 @@ export class BookingV2Service {
 
       if (bridge.bestConfirmedClassIndex != null) {
         const bc: number = bridge.bestConfirmedClassIndex;
-        const picked = bridge.perClass[bc]!;
+        const picked = bridge.perClass[bc];
         const day = picked.day;
         logStep(
           `Hop ${hop}: bridge segment is confirmed in ${classes[bc]}${picked.fare != null ? ` fare ₹${picked.fare}` : ''}`,
@@ -574,7 +574,10 @@ export class BookingV2Service {
     );
 
     const journeyDest = stations[targetIdx] ?? to;
-    const remainderEp = collapsibleRealtimeRemainderEndpoints(legs, journeyDest);
+    const remainderEp = collapsibleRealtimeRemainderEndpoints(
+      legs,
+      journeyDest,
+    );
     const remainderMergedSchedule: AlternatePathRemainderMergedSchedule | null =
       remainderEp != null
         ? {
@@ -605,9 +608,7 @@ export class BookingV2Service {
   ): string {
     const parts = classCodes.map((code, i) => {
       const p = probe.perClass[i];
-      const label = p
-        ? this.formatPerClassAvailabilityLabel(p)
-        : 'missing';
+      const label = p ? this.formatPerClassAvailabilityLabel(p) : 'missing';
       return `${code} (${label})`;
     });
     const best = probe.bestConfirmedClassIndex;
@@ -643,7 +644,10 @@ export class BookingV2Service {
     if (isLegConfirmed(day)) {
       if (disp) return this.shortenDebugLabel(disp, 24);
       if (st.toUpperCase().startsWith('AVAILABLE')) {
-        const tail = st.replace(/^AVAILABLE/i, '').replace(/^[-#]/, '').slice(0, 14);
+        const tail = st
+          .replace(/^AVAILABLE/i, '')
+          .replace(/^[-#]/, '')
+          .slice(0, 14);
         return tail ? `Avail ${tail}` : 'Available';
       }
       return ct ? this.shortenDebugLabel(ct, 24) : 'Confirmed';
@@ -757,10 +761,7 @@ export class BookingV2Service {
     }
   }
 
-  private extractAvlDay(
-    raw: unknown,
-    dateDdMmYyyy: string,
-  ): AvlDayRow | null {
+  private extractAvlDay(raw: unknown, dateDdMmYyyy: string): AvlDayRow | null {
     if (!raw || typeof raw !== 'object') return null;
     const data = (raw as Record<string, unknown>).data;
     if (!data || typeof data !== 'object') return null;

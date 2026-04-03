@@ -935,11 +935,12 @@ function StationFieldSimple(props: {
           strokeWidth={1.5}
           stroke="currentColor"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.25 2.25 0 00-1.227-1.294l-.5-.166a.75.75 0 01-.564-.708v-.158a.75.75 0 01.474-.696l.88-.292a2.25 2.25 0 011.692 0l11.26 3.758a2.25 2.25 0 011.692 0l.88.292a.75.75 0 01.474.696v.158a.75.75 0 01-.564.708l-.5.166a2.25 2.25 0 00-1.227 1.294 17.902 17.902 0 00-3.213 9.193c.04.62-.469 1.124-1.09 1.124H18.75"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 3.1V7a4 4 0 0 0 8 0V3.1" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="m9 15-1-1" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="m15 15 1-1" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="m8 19-2 3" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="m16 19 2 3" />
         </svg>
         {label}
       </label>
