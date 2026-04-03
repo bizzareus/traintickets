@@ -849,6 +849,7 @@ export default function BookingV2Page() {
     setJourneyDate(todayYmd());
   }, []);
   const [trains, setTrains] = useState<TrainListItem[]>([]);
+  const [hasCompletedTrainSearch, setHasCompletedTrainSearch] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
@@ -943,6 +944,7 @@ export default function BookingV2Page() {
       return;
     }
     setSearchError(null);
+    setHasCompletedTrainSearch(false);
     setSearchLoading(true);
     setTrains([]);
     try {
@@ -957,6 +959,7 @@ export default function BookingV2Page() {
         },
       );
       setTrains(r.data?.data?.trainList ?? []);
+      setHasCompletedTrainSearch(true);
     } catch (e: unknown) {
       let msg = "Search failed";
       if (e && typeof e === "object" && "response" in e) {
@@ -1325,8 +1328,16 @@ export default function BookingV2Page() {
             </li>
           ))}
         </ul>
-
-        
+        {!searchLoading && !searchError && hasCompletedTrainSearch && trains.length === 0 && (
+          <div
+            className="mt-4 rounded-xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm"
+            role="status"
+            aria-live="polite"
+          >
+            <p className="font-semibold text-slate-900">No trains loaded for this search.</p>
+            <p className="mt-1">Try another date or adjust your stations to see more options.</p>
+          </div>
+        )}
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
