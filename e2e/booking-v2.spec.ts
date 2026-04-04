@@ -513,7 +513,7 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText(/Checking chart preparation time for/i)).toBeVisible({
+    await expect(dialog.getByText(/Still checking the best options/i)).toBeVisible({
       timeout: 8_000,
     });
     // Alert CTA already visible while still loading

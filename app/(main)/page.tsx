@@ -615,17 +615,71 @@ function LegChartTimeInsight({
 
   if (loading) {
     return (
-      <div className="mt-3 space-y-3">
-        <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2.5">
-          <svg className="h-4 w-4 animate-spin text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-          </svg>
-          <p className="text-sm font-medium text-amber-900">
-            Checking chart preparation time for {stationCode}…
-          </p>
+      <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-4">
+        {/* Header row: spinner + context message */}
+        <div className="flex items-start gap-3">
+          <div className="mt-0.5 shrink-0">
+            <svg className="h-4 w-4 animate-spin text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-blue-900">
+              Still checking the best options…
+            </p>
+            <p className="mt-0.5 text-xs text-blue-700">
+              We&apos;re looking up chart preparation times for {stationCode}. Tickets on this leg
+              ({legFrom} → {legTo}) may open up when the chart runs — set an alert below and
+              we&apos;ll notify you the moment availability changes.
+            </p>
+          </div>
         </div>
-        {alertBlock}
+
+        {/* Alert form — shown inline so user can act while waiting */}
+        <div className="mt-3 border-t border-blue-200/70 pt-3">
+          {alertAlreadySet ? (
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold text-emerald-700">✓ Alert set up</span>
+              <span className="text-xs text-emerald-600">
+                {alertSuccess ?? "We'll notify you when a ticket opens on this leg."}
+              </span>
+            </div>
+          ) : (
+            <>
+              <p className="mb-2 text-xs font-semibold text-blue-900">
+                Get notified when seats open
+              </p>
+              <div className="flex flex-col gap-2 sm:flex-row">
+                <input
+                  type="email"
+                  className="w-full rounded-md border border-blue-200 bg-white px-2 py-1.5 text-sm placeholder:text-gray-400"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="email"
+                />
+                <input
+                  type="tel"
+                  className="w-full rounded-md border border-blue-200 bg-white px-2 py-1.5 text-sm placeholder:text-gray-400"
+                  placeholder="Mobile (optional)"
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  autoComplete="tel"
+                />
+              </div>
+              <button
+                type="button"
+                disabled={alertSubmitting}
+                onClick={() => void subscribeAlert()}
+                className="bg-blue-600 hover:bg-blue-700 mt-2 w-full rounded-lg px-3 py-2 text-sm font-semibold text-white shadow-sm disabled:opacity-60 sm:w-auto"
+              >
+                {alertSubmitting ? "Setting up…" : "Set alert for this leg"}
+              </button>
+              {alertError && <p className="mt-1.5 text-xs text-red-700">{alertError}</p>}
+            </>
+          )}
+        </div>
       </div>
     );
   }
