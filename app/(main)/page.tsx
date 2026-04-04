@@ -126,6 +126,8 @@ type AlternatePathsResponse = {
   legCount: number;
   isComplete: boolean;
   stationCodesOnRoute: string[];
+  /** Code → full station name from the IRCTC schedule. */
+  stationNameMap?: Record<string, string>;
   remainderMergedSchedule?: {
     from: string;
     to: string;
@@ -292,6 +294,17 @@ function ConfirmedClassOptionCard({
   );
 }
 
+function StationLabel({ code, name }: { code: string; name?: string }) {
+  return (
+    <span className="flex flex-col leading-tight">
+      <span className="text-lg font-bold tracking-tight text-gray-900">{code}</span>
+      {name && (
+        <span className="text-[11px] font-normal text-gray-500 leading-tight">{name}</span>
+      )}
+    </span>
+  );
+}
+
 function AlternatePathLegListItem({
   leg,
   trainNumber,
@@ -299,6 +312,7 @@ function AlternatePathLegListItem({
   journeyDate,
   stepIndex,
   stepTotal,
+  stationNameMap,
 }: {
   leg: AlternateLeg;
   trainNumber: string;
@@ -306,6 +320,7 @@ function AlternatePathLegListItem({
   journeyDate: string;
   stepIndex: number;
   stepTotal: number;
+  stationNameMap?: Record<string, string>;
 }) {
   const isConfirmed = leg.segmentKind === "confirmed";
   const multiClass =
@@ -317,6 +332,8 @@ function AlternatePathLegListItem({
     trainNo: trainNumber,
     classCode: leg.travelClass ?? "SL",
   });
+  const fromName = stationNameMap?.[leg.from.toUpperCase()];
+  const toName = stationNameMap?.[leg.to.toUpperCase()];
 
   return (
     <li className="list-none">
@@ -349,11 +366,9 @@ function AlternatePathLegListItem({
               </p>
               {/* Route line — shared across both single and multi-class layouts */}
               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
-                <span className="text-lg font-bold tracking-tight text-gray-900">{leg.from}</span>
-                <span className="text-sm font-medium text-gray-400" aria-hidden="true">
-                  →
-                </span>
-                <span className="text-lg font-bold tracking-tight text-gray-900">{leg.to}</span>
+                <StationLabel code={leg.from} name={fromName} />
+                <span className="text-sm font-medium text-gray-400" aria-hidden="true">→</span>
+                <StationLabel code={leg.to} name={toName} />
               </div>
               <AlternatePathLegScheduleLine leg={leg} />
 
@@ -418,11 +433,9 @@ function AlternatePathLegListItem({
                 ) : null}
               </div>
               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
-                <span className="text-lg font-bold tracking-tight text-gray-900">{leg.from}</span>
-                <span className="text-sm font-medium text-gray-400" aria-hidden="true">
-                  →
-                </span>
-                <span className="text-lg font-bold tracking-tight text-gray-900">{leg.to}</span>
+                <StationLabel code={leg.from} name={fromName} />
+                <span className="text-sm font-medium text-gray-400" aria-hidden="true">→</span>
+                <StationLabel code={leg.to} name={toName} />
               </div>
               <AlternatePathLegScheduleLine leg={leg} />
               {(leg.availabilityDisplayName ?? leg.railDataStatus) && (
@@ -1957,6 +1970,7 @@ export default function BookingV2Page() {
                             journeyDate={journeyDate ?? ""}
                             stepIndex={stepIndex}
                             stepTotal={stepTotal}
+                            stationNameMap={altResult.stationNameMap}
                           />
                         );
                       }
@@ -1987,15 +2001,15 @@ export default function BookingV2Page() {
                                 </p>
                               </div>
                               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
-                                <span className="text-lg font-bold tracking-tight text-gray-900">
-                                  {item.from}
-                                </span>
-                                <span className="text-sm font-medium text-gray-400" aria-hidden="true">
-                                  →
-                                </span>
-                                <span className="text-lg font-bold tracking-tight text-gray-900">
-                                  {item.to}
-                                </span>
+                                <StationLabel
+                                  code={item.from}
+                                  name={altResult.stationNameMap?.[item.from.toUpperCase()]}
+                                />
+                                <span className="text-sm font-medium text-gray-400" aria-hidden="true">→</span>
+                                <StationLabel
+                                  code={item.to}
+                                  name={altResult.stationNameMap?.[item.to.toUpperCase()]}
+                                />
                                 {isJourneyTail && (
                                   <span className="inline-flex items-center rounded-full bg-amber-200/80 px-2.5 py-0.5 text-xs font-semibold text-amber-950">
                                     To final destination

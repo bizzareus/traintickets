@@ -104,6 +104,8 @@ export type FindAlternatePathsResult = {
   legCount: number;
   isComplete: boolean;
   stationCodesOnRoute: string[];
+  /** Code → human-readable name for every station on the route (from IRCTC schedule). */
+  stationNameMap: Record<string, string>;
   /** When the UI merges a realtime suffix, IRCTC schedule timing for that whole OD (DEE → BVI). */
   remainderMergedSchedule: AlternatePathRemainderMergedSchedule | null;
   /** Step-by-step trace for debugging (also logged with Logger). */
@@ -450,6 +452,8 @@ export class BookingV2Service {
       `Start: ${from} → ${to} | journeyDate=${input.date} (DD-MM-YYYY ${dateDdMmYyyy}) | probeClasses=${classes.join(',')} (${fromTrain.length ? 'from train avlClasses' : 'fallback list'}) quota=${quota}`,
     );
 
+    const stationNameMap: Record<string, string> = {};
+
     const sched = await this.irctc.getTrainSchedule(trainNumber);
     if (!sched.ok || !sched.schedule?.stationList?.length) {
       logStep(
@@ -463,6 +467,7 @@ export class BookingV2Service {
         legCount: 0,
         isComplete: false,
         stationCodesOnRoute: [],
+        stationNameMap,
         remainderMergedSchedule: null,
         debugLog,
       };
@@ -478,6 +483,13 @@ export class BookingV2Service {
     });
 
     const stationList = sched.schedule.stationList;
+
+    // Build a code→name lookup from the full schedule (upper-cased keys).
+    for (const st of stationList) {
+      const code = String(st.stationCode ?? '').trim().toUpperCase();
+      const name = String(st.stationName ?? '').trim();
+      if (code && name) stationNameMap[code] = name;
+    }
     const stations = stationCodesBetweenStops(stationList, from, to);
     if (!stations?.length) {
       logStep(
@@ -491,6 +503,7 @@ export class BookingV2Service {
         legCount: 0,
         isComplete: false,
         stationCodesOnRoute: [],
+        stationNameMap,
         remainderMergedSchedule: null,
         debugLog,
       };
@@ -741,6 +754,7 @@ export class BookingV2Service {
       legCount: legs.length,
       isComplete,
       stationCodesOnRoute: stations,
+      stationNameMap,
       remainderMergedSchedule,
       debugLog,
     };
