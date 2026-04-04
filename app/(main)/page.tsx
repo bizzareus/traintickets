@@ -512,7 +512,7 @@ function LegChartTimeInsight({
           trainNumber: trainNumber.trim(),
           journeyDate: journeyDate.trim(),
           sourceStation: stationCode.trim().toUpperCase(),
-          refreshFromIrctc: true,
+          refreshFromIrctc: false,
         },
         { timeout: 120_000 },
       )
