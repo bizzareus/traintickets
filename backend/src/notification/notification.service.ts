@@ -9,6 +9,12 @@ import {
 } from '../service2/service2.service';
 import type { ChartTimeAvailabilityTask } from '@prisma/client';
 import { irctcBookingRedirect } from '../common/irctc-booking-redirect';
+import type { ScheduleStation } from '../irctc/irctc.service';
+import {
+  formatJourneyDateReadable,
+  formatSegmentScheduleTimes,
+  hasBookablePlanForNotification,
+} from './notification.helpers';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
@@ -236,20 +242,26 @@ export class NotificationService {
   private buildSeatsFoundEmailHtml(params: {
     trainLabel: string;
     routeDisplay: string;
+    journeyDateReadable: string;
+    journeyTimesLine?: string;
     chartPreparationText?: string;
     trainNumber: string;
     plan: OpenAiBookingPlanItem[];
     totalPrice?: number;
     stationNameMap: Map<string, string>;
+    stationScheduleList?: ScheduleStation[];
   }): string {
     const {
       trainLabel,
       routeDisplay,
+      journeyDateReadable,
+      journeyTimesLine,
       chartPreparationText,
       trainNumber,
       plan,
       totalPrice,
       stationNameMap,
+      stationScheduleList,
     } = params;
 
     const bookable = plan.filter(isFilledOpenAiPlanItem);
@@ -265,6 +277,17 @@ export class NotificationService {
                 seg.instruction,
                 stationNameMap,
               );
+              const parts = seg.instruction.split(' - ').map((p) => p.trim());
+              const segFrom = parts[0] ?? '';
+              const segTo = parts[1] ?? '';
+              const segmentTimes =
+                segFrom && segTo
+                  ? formatSegmentScheduleTimes(
+                      stationScheduleList,
+                      segFrom,
+                      segTo,
+                    )
+                  : '';
               const classTag = (seg.instruction.split(' - ')[2] ?? '3A').trim();
               const priceStr =
                 seg.approx_price != null
@@ -278,7 +301,8 @@ export class NotificationService {
             <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">Ticket ${i + 1}
               <span style="display:inline-block; margin-left:8px; padding:3px 10px; border-radius:8px; background:#22c55e; color:#fff; font-size:12px; font-weight:600;">${classTag}</span>
             </p>
-            <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">${segmentRoute}</p>
+            <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segmentRoute)}</p>
+            ${segmentTimes ? `<p style="margin:0 0 10px 0; font-size:13px; color:#64748b;">${escapeHtml(segmentTimes)}</p>` : ''}
             ${priceStr ? `<p style="margin:10px 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
             <a href="${segUrl}" style="display:inline-block; margin-top:16px; padding:12px 24px; border-radius:12px; background:#22c55e; color:#fff; font-size:15px; font-weight:600; text-decoration:none;">Book</a>
           </td>
@@ -314,8 +338,10 @@ export class NotificationService {
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px; margin:0 auto; border-radius:16px; border:1px solid #e2e8f0; background:#ffffff; box-shadow:0 4px 6px -1px rgba(0,0,0,0.08); overflow:hidden;">
           <tr>
             <td style="padding:24px 24px 20px;">
-              <p style="margin:0; font-size:20px; font-weight:700; color:#0f172a;">${trainLabel}</p>
-              <p style="margin:8px 0 0 0; font-size:14px; color:#64748b;">${routeDisplay}</p>
+              <p style="margin:0; font-size:20px; font-weight:700; color:#0f172a;">${escapeHtml(trainLabel)}</p>
+              <p style="margin:8px 0 0 0; font-size:14px; color:#64748b;">${escapeHtml(routeDisplay)}</p>
+              <p style="margin:8px 0 0 0; font-size:14px; color:#334155;">${escapeHtml(journeyDateReadable)}</p>
+              ${journeyTimesLine ? `<p style="margin:6px 0 0 0; font-size:13px; color:#64748b;">${escapeHtml(journeyTimesLine)}</p>` : ''}
               ${chartPrepLine}
             </td>
           </tr>
@@ -341,24 +367,32 @@ export class NotificationService {
   private buildWhatsAppSeatsFoundText(params: {
     trainLabel: string;
     routeDisplay: string;
+    journeyDateReadable: string;
+    journeyTimesLine?: string;
     chartPreparationText?: string;
     plan: OpenAiBookingPlanItem[];
     totalPrice?: number;
     stationNameMap: Map<string, string>;
+    stationScheduleList?: ScheduleStation[];
     bookUrl: string;
   }): string {
     const {
       trainLabel,
       routeDisplay,
+      journeyDateReadable,
+      journeyTimesLine,
       chartPreparationText,
       plan,
       totalPrice,
       stationNameMap,
+      stationScheduleList,
       bookUrl,
     } = params;
     const lines: string[] = [
       trainLabel,
       routeDisplay,
+      journeyDateReadable,
+      ...(journeyTimesLine ? [journeyTimesLine] : []),
       ...(chartPreparationText ? [chartPreparationText] : []),
       '',
     ];
@@ -368,6 +402,17 @@ export class NotificationService {
         seg.instruction,
         stationNameMap,
       );
+      const parts = seg.instruction.split(' - ').map((p) => p.trim());
+      const segFrom = parts[0] ?? '';
+      const segTo = parts[1] ?? '';
+      const segmentTimes =
+        segFrom && segTo
+          ? formatSegmentScheduleTimes(
+              stationScheduleList,
+              segFrom,
+              segTo,
+            )
+          : '';
       const classTag = (seg.instruction.split(' - ')[2] ?? '3A').trim();
       const priceStr =
         seg.approx_price != null
@@ -375,6 +420,7 @@ export class NotificationService {
           : '';
       lines.push(`Ticket ${i + 1} [${classTag}]`);
       lines.push(segmentRoute);
+      if (segmentTimes) lines.push(segmentTimes);
       if (priceStr) lines.push(priceStr);
       lines.push('');
     });
@@ -426,6 +472,9 @@ export class NotificationService {
     if (result.status !== 'success') {
       return out;
     }
+    if (!hasBookablePlanForNotification(result)) {
+      return out;
+    }
 
     const trainLabel = [task.trainNumber, task.trainName]
       .filter(Boolean)
@@ -433,11 +482,10 @@ export class NotificationService {
     const chartPreparationText = result.chartPreparationDetails
       ? `Chart preparation: ${result.chartPreparationDetails.firstChartCreationTime} at ${result.chartPreparationDetails.chartingStationCode}`
       : undefined;
-    const stationNameMap = this.getStationNameMap(
-      result.trainSchedule?.stationList as
-        | Array<{ stationCode?: string; stationName?: string }>
-        | undefined,
-    );
+    const stationScheduleList = result.trainSchedule?.stationList as
+      | ScheduleStation[]
+      | undefined;
+    const stationNameMap = this.getStationNameMap(stationScheduleList);
     const routeDisplay = `${task.fromStationCode} > ${task.toStationCode}`;
     const emailRouteDisplay = this.formatJourneyRoute(
       task.fromStationCode,
@@ -453,33 +501,46 @@ export class NotificationService {
     const plan = result.openAiBookingPlan ?? [];
     const totalPrice = result.openAiTotalPrice ?? undefined;
 
+    const journeyDateStr =
+      task.journeyDate instanceof Date
+        ? task.journeyDate.toISOString().slice(0, 10)
+        : String(task.journeyDate).slice(0, 10);
+    const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
+    const journeyTimesLine = formatSegmentScheduleTimes(
+      stationScheduleList,
+      task.fromStationCode,
+      task.toStationCode,
+    );
+
     if (mobile?.trim()) {
       const whatsAppText = this.buildWhatsAppSeatsFoundText({
         trainLabel,
         routeDisplay,
+        journeyDateReadable,
+        journeyTimesLine: journeyTimesLine || undefined,
         chartPreparationText,
         plan,
         totalPrice,
         stationNameMap,
+        stationScheduleList,
         bookUrl,
       });
       out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText);
     }
 
     if (email?.trim()) {
-      const journeyDate =
-        task.journeyDate instanceof Date
-          ? task.journeyDate.toISOString().slice(0, 10)
-          : String(task.journeyDate).slice(0, 10);
-      const subject = `Seats Available - Train ${task.trainNumber} on ${journeyDate}`;
+      const subject = `Seats Available - Train ${task.trainNumber} on ${journeyDateReadable}`;
       const html = this.buildSeatsFoundEmailHtml({
         trainLabel,
         routeDisplay: emailRouteDisplay,
+        journeyDateReadable,
+        journeyTimesLine: journeyTimesLine || undefined,
         chartPreparationText,
         trainNumber: task.trainNumber,
         plan,
         totalPrice,
         stationNameMap,
+        stationScheduleList,
       });
       out.emailSent = await this.sendEmail(email.trim(), subject, html);
     }
