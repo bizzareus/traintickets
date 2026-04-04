@@ -793,6 +793,9 @@ function AlternatePathRemainderInsights({
     const fromCode = legFrom.trim().toUpperCase();
     const toCode = legTo.trim().toUpperCase();
     const sameStation = fromCode === toCode && fromCode.length > 0;
+    const toIsJourneyDest =
+      journeyDestinationCode != null &&
+      toCode === journeyDestinationCode.trim().toUpperCase();
 
     const fetchMeta = (sourceStation: string) =>
       apiClient.post<{ stations: StationChartMetaItem[] }>(
@@ -801,7 +804,7 @@ function AlternatePathRemainderInsights({
           trainNumber: trainNumber.trim(),
           journeyDate: journeyDate.trim(),
           sourceStation,
-          refreshFromIrctc: true,
+          refreshFromIrctc: false,
         },
         { timeout: 120_000 },
       );
@@ -809,7 +812,8 @@ function AlternatePathRemainderInsights({
     const run = async () => {
       const parts: string[] = [];
       try {
-        if (sameStation) {
+        if (sameStation || toIsJourneyDest) {
+          // Only fetch origin — destination is either same or not meaningful
           const r = await fetchMeta(fromCode);
           if (cancel) return;
           const row = r.data?.stations?.[0] ?? null;
@@ -843,7 +847,7 @@ function AlternatePathRemainderInsights({
     return () => {
       cancel = true;
     };
-  }, [trainNumber, journeyDate, legFrom, legTo]);
+  }, [trainNumber, journeyDate, legFrom, legTo, journeyDestinationCode]);
 
   const originChart = useMemo(
     () => describeChartPreparationForStation(metaFrom, legFrom, journeyDate),
@@ -955,7 +959,9 @@ function AlternatePathRemainderInsights({
         {metaLoading && (
           <p className="font-medium text-amber-900">
             Loading IRCTC chart preparation times for {legFrom.trim().toUpperCase()}
-            {sameLegEndpoints ? "" : ` and ${legTo.trim().toUpperCase()}`}…
+            {sameLegEndpoints || legTo.trim().toUpperCase() === (journeyDestinationCode?.trim().toUpperCase() ?? "")
+              ? ""
+              : ` and ${legTo.trim().toUpperCase()}`}…
           </p>
         )}
         {!metaLoading && metaErr && (
@@ -979,7 +985,7 @@ function AlternatePathRemainderInsights({
                 </p>
               ))}
             </div>
-            {!sameLegEndpoints && (
+            {!sameLegEndpoints && legTo.trim().toUpperCase() !== (journeyDestinationCode?.trim().toUpperCase() ?? "") && (
               <div className="space-y-1.5">
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-amber-900/75">Destination</p>
                 <p className="font-semibold leading-snug text-amber-950">{destChart.title}</p>
