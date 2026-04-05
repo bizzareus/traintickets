@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 import { apiClient } from "@/lib/api";
 import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDisplay";
@@ -15,15 +22,26 @@ import {
   buildJourneyChartAlertSchedulePhrase,
   describeChartPreparationForStation,
 } from "@/lib/stationChartMetaSummary";
+import {
+  IstRailMaintenanceBanner,
+  IstRailMaintenanceModal,
+} from "@/components/IstRailMaintenance";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
+import { useIstRailMaintenance } from "@/hooks/useIstRailMaintenance";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
+import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
 import { cn } from "@/lib/utils";
 import moment from "moment";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 const LEG_ALERT_STORAGE_PREFIX = "lastBerth_leg_alert_";
 
-function legAlertKey(trainNumber: string, from: string, to: string, date: string): string {
+function legAlertKey(
+  trainNumber: string,
+  from: string,
+  to: string,
+  date: string,
+): string {
   const raw = `${trainNumber.trim()}|${from.trim().toUpperCase()}|${to.trim().toUpperCase()}|${date.trim().slice(0, 10)}`;
   let hash = 0;
   for (let i = 0; i < raw.length; i++) {
@@ -32,17 +50,34 @@ function legAlertKey(trainNumber: string, from: string, to: string, date: string
   return `${LEG_ALERT_STORAGE_PREFIX}${Math.abs(hash).toString(36)}`;
 }
 
-function isLegAlertSet(trainNumber: string, from: string, to: string, date: string): boolean {
+function isLegAlertSet(
+  trainNumber: string,
+  from: string,
+  to: string,
+  date: string,
+): boolean {
   if (typeof window === "undefined") return false;
   try {
-    return window.localStorage.getItem(legAlertKey(trainNumber, from, to, date)) === "1";
-  } catch { return false; }
+    return (
+      window.localStorage.getItem(legAlertKey(trainNumber, from, to, date)) ===
+      "1"
+    );
+  } catch {
+    return false;
+  }
 }
 
-function markLegAlertSet(trainNumber: string, from: string, to: string, date: string): void {
+function markLegAlertSet(
+  trainNumber: string,
+  from: string,
+  to: string,
+  date: string,
+): void {
   try {
     window.localStorage.setItem(legAlertKey(trainNumber, from, to, date), "1");
-  } catch { /* ignore */ }
+  } catch {
+    /* ignore */
+  }
 }
 
 /** Convert 24h "HH:MM" to 12h "h:mm A" using moment. Returns original if parsing fails. */
@@ -115,9 +150,21 @@ type AlternatePathProgressEvent =
   | { type: "schedule_fail" }
   | { type: "route_ok"; from: string; to: string; stopCount: number }
   | { type: "route_fail"; from: string; to: string }
-  | { type: "hop_confirmed"; from: string; to: string; travelClass: string; fare: number | null; hopIndex: number }
+  | {
+      type: "hop_confirmed";
+      from: string;
+      to: string;
+      travelClass: string;
+      fare: number | null;
+      hopIndex: number;
+    }
   | { type: "hop_unavailable"; from: string; to: string; hopIndex: number }
-  | { type: "done"; isComplete: boolean; legCount: number; totalFare: number | null };
+  | {
+      type: "done";
+      isComplete: boolean;
+      legCount: number;
+      totalFare: number | null;
+    };
 
 type AlternatePathsResponse = {
   trainNumber: string;
@@ -143,7 +190,11 @@ function describeProgressEvent(
   ev: AlternatePathProgressEvent,
   journeyFrom: string,
   journeyTo: string,
-): { icon: string; text: string; kind: "neutral" | "success" | "warn" | "done" } {
+): {
+  icon: string;
+  text: string;
+  kind: "neutral" | "success" | "warn" | "done";
+} {
   switch (ev.type) {
     case "schedule_ok":
       return {
@@ -152,7 +203,11 @@ function describeProgressEvent(
         kind: "neutral",
       };
     case "schedule_fail":
-      return { icon: "⚠️", text: "Could not load train schedule", kind: "warn" };
+      return {
+        icon: "⚠️",
+        text: "Could not load train schedule",
+        kind: "warn",
+      };
     case "route_ok":
       return {
         icon: "📍",
@@ -206,7 +261,12 @@ function AlternatePathProgressFeed({
   to: string;
 }) {
   return (
-    <div className="py-4" role="status" aria-live="polite" aria-label="Search progress">
+    <div
+      className="py-4"
+      role="status"
+      aria-live="polite"
+      aria-label="Search progress"
+    >
       <div className="mb-4 flex items-center gap-3">
         <div
           className="h-7 w-7 shrink-0 animate-spin rounded-full border-[3px] border-gray-200 border-t-blue-600"
@@ -231,7 +291,10 @@ function AlternatePathProgressFeed({
                   kind === "neutral" && "text-gray-600",
                 )}
               >
-                <span aria-hidden className="mt-0.5 shrink-0 text-base leading-none">
+                <span
+                  aria-hidden
+                  className="mt-0.5 shrink-0 text-base leading-none"
+                >
                   {icon}
                 </span>
                 <span>{text}</span>
@@ -269,7 +332,9 @@ function ConfirmedClassOptionCard({
     <div className="flex flex-col gap-2 rounded-lg border border-emerald-100 bg-emerald-50/60 p-3">
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
         <p className="text-lg font-extrabold leading-tight tracking-tight text-emerald-950 tabular-nums">
-          {option.availabilityDisplayName ?? option.railDataStatus ?? "Available"}
+          {option.availabilityDisplayName ??
+            option.railDataStatus ??
+            "Available"}
         </p>
         <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-700">
           Class {option.travelClass}
@@ -279,7 +344,9 @@ function ConfirmedClassOptionCard({
         </span>
       </div>
       {option.fare != null && (
-        <p className="text-base font-bold text-gray-900">₹{option.fare.toFixed(0)}</p>
+        <p className="text-base font-bold text-gray-900">
+          ₹{option.fare.toFixed(0)}
+        </p>
       )}
       <a
         href={href}
@@ -297,9 +364,13 @@ function ConfirmedClassOptionCard({
 function StationLabel({ code, name }: { code: string; name?: string }) {
   return (
     <span className="flex flex-col leading-tight">
-      <span className="text-lg font-bold tracking-tight text-gray-900">{code}</span>
+      <span className="text-lg font-bold tracking-tight text-gray-900">
+        {code}
+      </span>
       {name && (
-        <span className="text-[11px] font-normal text-gray-500 leading-tight">{name}</span>
+        <span className="text-[11px] font-normal text-gray-500 leading-tight">
+          {name}
+        </span>
       )}
     </span>
   );
@@ -324,8 +395,7 @@ function AlternatePathLegListItem({
 }) {
   const isConfirmed = leg.segmentKind === "confirmed";
   const multiClass =
-    isConfirmed &&
-    (leg.confirmedClassOptions?.length ?? 0) > 1;
+    isConfirmed && (leg.confirmedClassOptions?.length ?? 0) > 1;
   const bookHref = irctcBookingRedirect({
     from: leg.from,
     to: leg.to,
@@ -367,14 +437,23 @@ function AlternatePathLegListItem({
               {/* Route line — shared across both single and multi-class layouts */}
               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                 <StationLabel code={leg.from} name={fromName} />
-                <span className="text-sm font-medium text-gray-400" aria-hidden="true">→</span>
+                <span
+                  className="text-sm font-medium text-gray-400"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
                 <StationLabel code={leg.to} name={toName} />
               </div>
               <AlternatePathLegScheduleLine leg={leg} />
 
               {multiClass ? (
                 /* Multiple confirmed classes — show one sub-card per class */
-                <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2" role="list" aria-label="Available class options">
+                <div
+                  className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2"
+                  role="list"
+                  aria-label="Available class options"
+                >
                   {leg.confirmedClassOptions!.map((opt) => (
                     <div key={opt.travelClass} role="listitem">
                       <ConfirmedClassOptionCard
@@ -391,7 +470,9 @@ function AlternatePathLegListItem({
                 <>
                   <div className="mt-2 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
                     <p className="text-2xl font-extrabold leading-tight tracking-tight text-emerald-950 tabular-nums">
-                      {leg.availabilityDisplayName ?? leg.railDataStatus ?? "Available"}
+                      {leg.availabilityDisplayName ??
+                        leg.railDataStatus ??
+                        "Available"}
                     </p>
                     {leg.travelClass ? (
                       <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-700">
@@ -403,7 +484,9 @@ function AlternatePathLegListItem({
                     Available
                   </span>
                   {leg.fare != null && (
-                    <p className="mt-3 text-xl font-bold text-gray-900">₹{leg.fare.toFixed(0)}</p>
+                    <p className="mt-3 text-xl font-bold text-gray-900">
+                      ₹{leg.fare.toFixed(0)}
+                    </p>
                   )}
                   <a
                     href={bookHref}
@@ -434,13 +517,19 @@ function AlternatePathLegListItem({
               </div>
               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                 <StationLabel code={leg.from} name={fromName} />
-                <span className="text-sm font-medium text-gray-400" aria-hidden="true">→</span>
+                <span
+                  className="text-sm font-medium text-gray-400"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
                 <StationLabel code={leg.to} name={toName} />
               </div>
               <AlternatePathLegScheduleLine leg={leg} />
               {(leg.availabilityDisplayName ?? leg.railDataStatus) && (
                 <p className="mt-3 text-sm text-gray-700">
-                  Last check: {leg.availabilityDisplayName ?? leg.railDataStatus}
+                  Last check:{" "}
+                  {leg.availabilityDisplayName ?? leg.railDataStatus}
                 </p>
               )}
               <LegChartTimeInsight
@@ -492,13 +581,18 @@ function LegChartTimeInsight({
       setAlertAlreadySet(true);
     }
     try {
-      const raw = typeof window !== "undefined" ? window.localStorage.getItem(MONITOR_CONTACT_STORAGE_KEY) : null;
+      const raw =
+        typeof window !== "undefined"
+          ? window.localStorage.getItem(MONITOR_CONTACT_STORAGE_KEY)
+          : null;
       if (raw) {
         const o = JSON.parse(raw) as { email?: string; mobile?: string };
         if (o.email) setEmail(o.email);
         if (o.mobile) setMobile(o.mobile);
       }
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }, [trainNumber, legFrom, legTo, journeyDate]);
 
   useEffect(() => {
@@ -525,7 +619,9 @@ function LegChartTimeInsight({
       .finally(() => {
         if (!cancel) setLoading(false);
       });
-    return () => { cancel = true; };
+    return () => {
+      cancel = true;
+    };
   }, [trainNumber, journeyDate, stationCode]);
 
   const chartTime = meta?.chartOneTime?.trim() || null;
@@ -566,20 +662,34 @@ function LegChartTimeInsight({
       });
       markLegAlertSet(trainNumber, legFrom, legTo, journeyDate);
       setAlertAlreadySet(true);
-      setAlertSuccess("Alert set up! We'll notify you when a ticket opens on this leg.");
+      setAlertSuccess(
+        "Alert set up! We'll notify you when a ticket opens on this leg.",
+      );
       try {
         window.localStorage.setItem(
           MONITOR_CONTACT_STORAGE_KEY,
           JSON.stringify({ email: em ?? "", mobile: mob ?? "" }),
         );
-      } catch { /* ignore */ }
+      } catch {
+        /* ignore */
+      }
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Failed to set up alert.";
+      const msg =
+        err instanceof Error ? err.message : "Failed to set up alert.";
       setAlertError(msg);
     } finally {
       setAlertSubmitting(false);
     }
-  }, [email, mobile, trainNumber, trainName, legFrom, legTo, journeyDate, classCode]);
+  }, [
+    email,
+    mobile,
+    trainNumber,
+    trainName,
+    legFrom,
+    legTo,
+    journeyDate,
+    classCode,
+  ]);
 
   // --- Alert CTA block — shown in all non-error states ---
   const alertBlock = alertAlreadySet ? (
@@ -591,10 +701,15 @@ function LegChartTimeInsight({
     </div>
   ) : (
     <div className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-3">
-      <p className="text-sm font-semibold text-gray-900">Get notified when seats open</p>
+      <p className="text-sm font-semibold text-gray-900">
+        Get notified when seats open
+      </p>
       <p className="mt-0.5 text-xs text-gray-600">
-        We&apos;ll watch chart runs for {legFrom} → {legTo} and alert you if availability changes.
-        {chartDateTimeFormatted ? ` Chart time: ${chartDateTimeFormatted}.` : ""}
+        We&apos;ll watch chart runs for {legFrom} → {legTo} and alert you if
+        availability changes.
+        {chartDateTimeFormatted
+          ? ` Chart time: ${chartDateTimeFormatted}.`
+          : ""}
       </p>
       <div className="mt-2 flex flex-col gap-2 sm:flex-row">
         <input
@@ -632,9 +747,25 @@ function LegChartTimeInsight({
         {/* Header row: spinner + context message */}
         <div className="flex items-start gap-3">
           <div className="mt-0.5 shrink-0">
-            <svg className="h-4 w-4 animate-spin text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            <svg
+              className="h-4 w-4 animate-spin text-blue-600"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              />
             </svg>
           </div>
           <div>
@@ -642,9 +773,10 @@ function LegChartTimeInsight({
               Still checking the best options…
             </p>
             <p className="mt-0.5 text-xs text-blue-700">
-              We&apos;re looking up chart preparation times for {stationCode}. Tickets on this leg
-              ({legFrom} → {legTo}) may open up when the chart runs — set an alert below and
-              we&apos;ll notify you the moment availability changes.
+              We&apos;re looking up chart preparation times for {stationCode}.
+              Tickets on this leg ({legFrom} → {legTo}) may open up when the
+              chart runs — set an alert below and we&apos;ll notify you the
+              moment availability changes.
             </p>
           </div>
         </div>
@@ -653,9 +785,12 @@ function LegChartTimeInsight({
         <div className="mt-3 border-t border-blue-200/70 pt-3">
           {alertAlreadySet ? (
             <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold text-emerald-700">✓ Alert set up</span>
+              <span className="text-sm font-semibold text-emerald-700">
+                ✓ Alert set up
+              </span>
               <span className="text-xs text-emerald-600">
-                {alertSuccess ?? "We'll notify you when a ticket opens on this leg."}
+                {alertSuccess ??
+                  "We'll notify you when a ticket opens on this leg."}
               </span>
             </div>
           ) : (
@@ -689,7 +824,9 @@ function LegChartTimeInsight({
               >
                 {alertSubmitting ? "Setting up…" : "Set alert for this leg"}
               </button>
-              {alertError && <p className="mt-1.5 text-xs text-red-700">{alertError}</p>}
+              {alertError && (
+                <p className="mt-1.5 text-xs text-red-700">{alertError}</p>
+              )}
             </>
           )}
         </div>
@@ -701,9 +838,13 @@ function LegChartTimeInsight({
     return (
       <div className="mt-3 space-y-3">
         <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2.5">
-          <p className="text-sm font-semibold text-red-900">Chart already prepared</p>
+          <p className="text-sm font-semibold text-red-900">
+            Chart already prepared
+          </p>
           <p className="mt-1 text-sm text-red-800">
-            Chart was prepared at <span className="font-semibold">{chartDateTimeFormatted}</span> for {stationCode}. Ticket availability is unlikely to change.
+            Chart was prepared at{" "}
+            <span className="font-semibold">{chartDateTimeFormatted}</span> for{" "}
+            {stationCode}. Ticket availability is unlikely to change.
           </p>
         </div>
         {alertBlock}
@@ -715,9 +856,15 @@ function LegChartTimeInsight({
     return (
       <div className="mt-3 space-y-3">
         <div className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2.5">
-          <p className="text-sm font-semibold text-amber-900">Chart not prepared yet</p>
+          <p className="text-sm font-semibold text-amber-900">
+            Chart not prepared yet
+          </p>
           <p className="mt-1 text-sm text-amber-800">
-            Chart prepares at <span className="font-bold text-amber-950">{chartDateTimeFormatted}</span>. Tickets may open up after that.
+            Chart prepares at{" "}
+            <span className="font-bold text-amber-950">
+              {chartDateTimeFormatted}
+            </span>
+            . Tickets may open up after that.
           </p>
         </div>
         {alertBlock}
@@ -730,7 +877,9 @@ function LegChartTimeInsight({
     <div className="mt-3 space-y-3">
       <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5">
         <p className="text-sm font-medium text-gray-700">
-          Chart preparation time for <span className="font-semibold">{stationCode}</span> is not yet available.
+          Chart preparation time for{" "}
+          <span className="font-semibold">{stationCode}</span> is not yet
+          available.
         </p>
       </div>
       {alertBlock}
@@ -765,7 +914,9 @@ function AlternatePathRemainderInsights({
   const [mobile, setMobile] = useState("");
   const [monitorSubmitting, setMonitorSubmitting] = useState(false);
   const [monitorError, setMonitorError] = useState<string | null>(null);
-  const [monitorSuccessCopy, setMonitorSuccessCopy] = useState<string | null>(null);
+  const [monitorSuccessCopy, setMonitorSuccessCopy] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     try {
@@ -820,19 +971,26 @@ function AlternatePathRemainderInsights({
           setMetaFrom(row);
           setMetaTo(row);
         } else {
-          const [a, b] = await Promise.allSettled([fetchMeta(fromCode), fetchMeta(toCode)]);
+          const [a, b] = await Promise.allSettled([
+            fetchMeta(fromCode),
+            fetchMeta(toCode),
+          ]);
           if (cancel) return;
           if (a.status === "fulfilled") {
             setMetaFrom(a.value.data?.stations?.[0] ?? null);
           } else {
             setMetaFrom(null);
-            parts.push(`Origin (${fromCode}): ${extractAxiosMessage(a.reason)}`);
+            parts.push(
+              `Origin (${fromCode}): ${extractAxiosMessage(a.reason)}`,
+            );
           }
           if (b.status === "fulfilled") {
             setMetaTo(b.value.data?.stations?.[0] ?? null);
           } else {
             setMetaTo(null);
-            parts.push(`Destination (${toCode}): ${extractAxiosMessage(b.reason)}`);
+            parts.push(
+              `Destination (${toCode}): ${extractAxiosMessage(b.reason)}`,
+            );
           }
         }
         if (!cancel && parts.length > 0) setMetaErr(parts.join(" "));
@@ -861,12 +1019,11 @@ function AlternatePathRemainderInsights({
     const dest = journeyDestinationCode?.trim().toUpperCase() ?? "";
     const to = legTo.trim().toUpperCase();
     if (!dest || dest !== to) return destChart.lines;
-    return destChart.lines.filter(
-      (line) => !/^\s*IRCTC\s+status:/i.test(line),
-    );
+    return destChart.lines.filter((line) => !/^\s*IRCTC\s+status:/i.test(line));
   }, [destChart.lines, journeyDestinationCode, legTo]);
   const sameLegEndpoints =
-    legFrom.trim().toUpperCase() === legTo.trim().toUpperCase() && legFrom.trim().length > 0;
+    legFrom.trim().toUpperCase() === legTo.trim().toUpperCase() &&
+    legFrom.trim().length > 0;
 
   const subscribeAlerts = useCallback(async () => {
     const em = email.trim() || undefined;
@@ -958,10 +1115,14 @@ function AlternatePathRemainderInsights({
       <div className="rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-950">
         {metaLoading && (
           <p className="font-medium text-amber-900">
-            Loading IRCTC chart preparation times for {legFrom.trim().toUpperCase()}
-            {sameLegEndpoints || legTo.trim().toUpperCase() === (journeyDestinationCode?.trim().toUpperCase() ?? "")
+            Loading IRCTC chart preparation times for{" "}
+            {legFrom.trim().toUpperCase()}
+            {sameLegEndpoints ||
+            legTo.trim().toUpperCase() ===
+              (journeyDestinationCode?.trim().toUpperCase() ?? "")
               ? ""
-              : ` and ${legTo.trim().toUpperCase()}`}…
+              : ` and ${legTo.trim().toUpperCase()}`}
+            …
           </p>
         )}
         {!metaLoading && metaErr && (
@@ -978,33 +1139,43 @@ function AlternatePathRemainderInsights({
               <p className="text-[11px] font-semibold uppercase tracking-wide text-amber-900/75">
                 {sameLegEndpoints ? "Station" : "Origin"}
               </p>
-              <p className="font-semibold leading-snug text-amber-950">{originChart.title}</p>
+              <p className="font-semibold leading-snug text-amber-950">
+                {originChart.title}
+              </p>
               {originChart.lines.map((line, i) => (
                 <p key={i} className="leading-snug text-amber-950/95">
                   {line}
                 </p>
               ))}
             </div>
-            {!sameLegEndpoints && legTo.trim().toUpperCase() !== (journeyDestinationCode?.trim().toUpperCase() ?? "") && (
-              <div className="space-y-1.5">
-                <p className="text-[11px] font-semibold uppercase tracking-wide text-amber-900/75">Destination</p>
-                <p className="font-semibold leading-snug text-amber-950">{destChart.title}</p>
-                {destChartLinesForUi.map((line, i) => (
-                  <p key={i} className="leading-snug text-amber-950/95">
-                    {line}
+            {!sameLegEndpoints &&
+              legTo.trim().toUpperCase() !==
+                (journeyDestinationCode?.trim().toUpperCase() ?? "") && (
+                <div className="space-y-1.5">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-amber-900/75">
+                    Destination
                   </p>
-                ))}
-              </div>
-            )}
+                  <p className="font-semibold leading-snug text-amber-950">
+                    {destChart.title}
+                  </p>
+                  {destChartLinesForUi.map((line, i) => (
+                    <p key={i} className="leading-snug text-amber-950/95">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              )}
           </div>
         )}
       </div>
 
       <div className="rounded-md border border-gray-200 bg-gray-50 px-3 py-3">
-        <p className="text-sm font-semibold text-gray-900">Get availability alerts</p>
+        <p className="text-sm font-semibold text-gray-900">
+          Get availability alerts
+        </p>
         <p className="mt-1 text-xs text-gray-600">
-          We can watch chart runs and this leg ({legFrom} → {legTo}) and notify you if seats open up. Uses the same
-          monitoring pipeline as the main booking page.
+          We can watch chart runs and this leg ({legFrom} → {legTo}) and notify
+          you if seats open up.
         </p>
         <div className="mt-2 flex flex-col gap-2 sm:flex-row">
           <input
@@ -1032,9 +1203,13 @@ function AlternatePathRemainderInsights({
         >
           {monitorSubmitting ? "Subscribing…" : "Subscribe to alerts"}
         </button>
-        {monitorError && <p className="mt-2 text-sm text-red-700">{monitorError}</p>}
+        {monitorError && (
+          <p className="mt-2 text-sm text-red-700">{monitorError}</p>
+        )}
         {monitorSuccessCopy && (
-          <p className="mt-2 text-sm font-medium text-emerald-800">{monitorSuccessCopy}</p>
+          <p className="mt-2 text-sm font-medium text-emerald-800">
+            {monitorSuccessCopy}
+          </p>
         )}
       </div>
     </div>
@@ -1078,14 +1253,22 @@ function AlternatePathLegScheduleLine({ leg }: { leg: AlternateLeg }) {
   if (!hasClocks && !hasDuration) return null;
 
   const timePart =
-    dep && arr ? `${dep} → ${arr}` : dep ? `Dep ${dep}` : arr ? `Arr ${arr}` : null;
+    dep && arr
+      ? `${dep} → ${arr}`
+      : dep
+        ? `Dep ${dep}`
+        : arr
+          ? `Arr ${arr}`
+          : null;
   const durLabel = formatDurationMinutes(leg.durationMinutes ?? undefined);
 
   return (
     <p className="mt-1.5 text-sm tabular-nums text-gray-600">
       {timePart}
       {hasDuration && (
-        <span className="text-gray-500">{timePart ? ` · ${durLabel}` : durLabel}</span>
+        <span className="text-gray-500">
+          {timePart ? ` · ${durLabel}` : durLabel}
+        </span>
       )}
     </p>
   );
@@ -1099,7 +1282,8 @@ function collapsedAlternatePathTimingSummary(legs: AlternateLeg[]): {
   const dep = formatTimeAmPm(legs[0]?.departureTime);
   const arr = formatTimeAmPm(legs[legs.length - 1]?.arrivalTime);
   const allDur = legs.every(
-    (l) => l.durationMinutes != null && !Number.isNaN(l.durationMinutes as number),
+    (l) =>
+      l.durationMinutes != null && !Number.isNaN(l.durationMinutes as number),
   );
   const totalMins = allDur
     ? legs.reduce((s, l) => s + (l.durationMinutes as number), 0)
@@ -1114,7 +1298,6 @@ function collapsedAlternatePathTimingSummary(legs: AlternateLeg[]): {
   return { timePart, durationLabel };
 }
 
-
 function todayYmd(): string {
   const d = new Date();
   const y = d.getFullYear();
@@ -1122,7 +1305,6 @@ function todayYmd(): string {
   const day = String(d.getDate()).padStart(2, "0");
   return `${y}-${mo}-${day}`;
 }
-
 
 function useDebounced<T>(value: T, ms: number): T {
   const [v, setV] = useState(value);
@@ -1145,7 +1327,8 @@ function extractAxiosMessage(e: unknown): string {
     if (ax.response?.status === 502 || ax.response?.status === 503) {
       return "Station search service unavailable. Try again.";
     }
-    if (ax.response?.status === 400) return "Type at least 2 characters to search.";
+    if (ax.response?.status === 400)
+      return "Type at least 2 characters to search.";
   }
   if (e instanceof Error && e.message) return e.message;
   return "Could not load stations. Check that the API is running (NEXT_PUBLIC_API_URL).";
@@ -1189,7 +1372,8 @@ function StationFieldSimple(props: {
   }, [onOpenChange]);
 
   const showList = open && query.length >= 2;
-  const displayText = value && !open ? `${value.stationCode} - ${value.stationName}` : query;
+  const displayText =
+    value && !open ? `${value.stationCode} - ${value.stationName}` : query;
   const showLoading = loading || pendingDebounce;
 
   return (
@@ -1213,10 +1397,18 @@ function StationFieldSimple(props: {
           strokeWidth={1.5}
           stroke="currentColor"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8 3.1V7a4 4 0 0 0 8 0V3.1" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8 3.1V7a4 4 0 0 0 8 0V3.1"
+          />
           <path strokeLinecap="round" strokeLinejoin="round" d="m9 15-1-1" />
           <path strokeLinecap="round" strokeLinejoin="round" d="m15 15 1-1" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"
+          />
           <path strokeLinecap="round" strokeLinejoin="round" d="m8 19-2 3" />
           <path strokeLinecap="round" strokeLinejoin="round" d="m16 19 2 3" />
         </svg>
@@ -1244,7 +1436,12 @@ function StationFieldSimple(props: {
           className="pointer-events-none absolute inset-y-0 right-0 flex w-8 items-center justify-center text-gray-400"
           aria-hidden
         >
-          <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <svg
+            className="h-4 w-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
             <path
               fillRule="evenodd"
               d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
@@ -1271,7 +1468,9 @@ function StationFieldSimple(props: {
             <li className="px-4 py-3 text-sm text-red-700">{suggestError}</li>
           )}
           {!showLoading && !suggestError && suggestions.length === 0 && (
-            <li className="px-4 py-3 text-sm text-gray-500">No stations match. Try another spelling.</li>
+            <li className="px-4 py-3 text-sm text-gray-500">
+              No stations match. Try another spelling.
+            </li>
           )}
           {suggestions.map((s) => (
             <li key={`${s.stationCode}-${s.stationName}`} role="option">
@@ -1284,7 +1483,9 @@ function StationFieldSimple(props: {
                   onOpenChange(false);
                 }}
               >
-                <span className="font-semibold text-gray-900">{s.stationCode}</span>
+                <span className="font-semibold text-gray-900">
+                  {s.stationCode}
+                </span>
                 <span className="text-gray-600"> — {s.stationName}</span>
               </button>
             </li>
@@ -1342,9 +1543,57 @@ export default function BookingV2Page() {
   const [altTrainName, setAltTrainName] = useState<string | null>(null);
   const [altAvlClasses, setAltAvlClasses] = useState<string[] | undefined>();
   const [altLoading, setAltLoading] = useState(false);
-  const [altResult, setAltResult] = useState<AlternatePathsResponse | null>(null);
+  const [altResult, setAltResult] = useState<AlternatePathsResponse | null>(
+    null,
+  );
   const [altError, setAltError] = useState<string | null>(null);
-  const [altProgress, setAltProgress] = useState<AlternatePathProgressEvent[]>([]);
+  const [altProgress, setAltProgress] = useState<AlternatePathProgressEvent[]>(
+    [],
+  );
+  const altAlternatePathCaptureRef = useRef<HTMLDivElement>(null);
+  const [altShareBusy, setAltShareBusy] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const {
+    showBanner,
+    maintenanceModalOpen,
+    dismissMaintenanceModal,
+    displayMinutes,
+    onBlockedSearchAttempt,
+  } = useIstRailMaintenance(mounted);
+
+  const shareAlternatePathScreenshot = useCallback(async () => {
+    const el = altAlternatePathCaptureRef.current;
+    if (!el) return;
+    setAltShareBusy(true);
+    try {
+      const trainLabel = altTrainName?.trim() || altForTrain || "train";
+      const result = await shareDomElementAsPng(el, {
+        fileName: "lastberth-journey.png",
+        title: `LastBerth — ${trainLabel}`,
+        text: `Journey options: ${trainLabel}`,
+      });
+      if (!result.ok) {
+        if (result.code === "share_rejected") return;
+        window.alert(
+          result.message ??
+            "Could not capture or share this screen. Try again or take a manual screenshot.",
+        );
+        return;
+      }
+      if (result.via === "download") {
+        window.alert(
+          "Image saved. Open WhatsApp, pick a chat, and attach this image from your downloads or gallery.",
+        );
+      }
+    } finally {
+      setAltShareBusy(false);
+    }
+  }, [altForTrain, altTrainName]);
 
   useEffect(() => {
     if (fromDeb.length < 2) {
@@ -1356,9 +1605,12 @@ export default function BookingV2Page() {
     setFromLoad(true);
     setFromSuggestError(null);
     apiClient
-      .get<{ data?: { stationList?: StationRow[] } }>("/api/booking-v2/stations/suggest", {
-        params: { q: fromDeb, searchString: fromDeb },
-      })
+      .get<{ data?: { stationList?: StationRow[] } }>(
+        "/api/booking-v2/stations/suggest",
+        {
+          params: { q: fromDeb, searchString: fromDeb },
+        },
+      )
       .then((r) => {
         if (!c) {
           setFromSuggest(r.data?.data?.stationList ?? []);
@@ -1389,9 +1641,12 @@ export default function BookingV2Page() {
     setToLoad(true);
     setToSuggestError(null);
     apiClient
-      .get<{ data?: { stationList?: StationRow[] } }>("/api/booking-v2/stations/suggest", {
-        params: { q: toDeb, searchString: toDeb },
-      })
+      .get<{ data?: { stationList?: StationRow[] } }>(
+        "/api/booking-v2/stations/suggest",
+        {
+          params: { q: toDeb, searchString: toDeb },
+        },
+      )
       .then((r) => {
         if (!c) {
           setToSuggest(r.data?.data?.stationList ?? []);
@@ -1422,6 +1677,7 @@ export default function BookingV2Page() {
   }, [fromSt, toSt]);
 
   const runSearch = useCallback(async () => {
+    if (onBlockedSearchAttempt()) return;
     if (!fromSt || !toSt) {
       setSearchError("Select both stations.");
       return;
@@ -1456,14 +1712,19 @@ export default function BookingV2Page() {
     } finally {
       setSearchLoading(false);
     }
-  }, [fromSt, toSt, journeyDate]);
+  }, [fromSt, toSt, journeyDate, onBlockedSearchAttempt]);
 
   const findAlternates = useCallback(
     async (t: TrainListItem, focusTravelClass?: string) => {
+      if (onBlockedSearchAttempt()) return;
       if (!journeyDate) return;
       /** Alternate-path probes use this train’s run endpoints (e.g. NDLS → CSMT), not only the user’s search pair. */
-      const fromCode = (t.fromStnCode ?? fromSt?.stationCode ?? "").trim().toUpperCase();
-      const toCode = (t.toStnCode ?? toSt?.stationCode ?? "").trim().toUpperCase();
+      const fromCode = (t.fromStnCode ?? fromSt?.stationCode ?? "")
+        .trim()
+        .toUpperCase();
+      const toCode = (t.toStnCode ?? toSt?.stationCode ?? "")
+        .trim()
+        .toUpperCase();
       if (!fromCode || !toCode) return;
 
       const fc = focusTravelClass?.trim().toUpperCase();
@@ -1508,7 +1769,9 @@ export default function BookingV2Page() {
           try {
             const j = (await resp.json()) as { message?: string };
             if (j.message) msg = j.message;
-          } catch { /* ignore */ }
+          } catch {
+            /* ignore */
+          }
           setAltError(msg);
           return;
         }
@@ -1540,7 +1803,9 @@ export default function BookingV2Page() {
               } else if (msg.type === "error") {
                 setAltError(msg.message ?? "Unknown error");
               }
-            } catch { /* malformed line — skip */ }
+            } catch {
+              /* malformed line — skip */
+            }
           }
         }
       } catch (e: unknown) {
@@ -1550,14 +1815,15 @@ export default function BookingV2Page() {
         setAltLoading(false);
       }
     },
-    [fromSt, toSt, journeyDate],
+    [fromSt, toSt, journeyDate, onBlockedSearchAttempt],
   );
-
-  
 
   /** Flat list of display items: each is a single leg card or a collapsed "no tickets" span. */
   const alternatePathDisplayItems = useMemo(
-    () => (altResult?.legs.length ? buildAlternatePathDisplayItems(altResult.legs) : []),
+    () =>
+      altResult?.legs.length
+        ? buildAlternatePathDisplayItems(altResult.legs)
+        : [],
     [altResult],
   );
 
@@ -1572,6 +1838,7 @@ export default function BookingV2Page() {
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
       <div className="sticky top-0 z-20">
+        <IstRailMaintenanceBanner show={showBanner} />
         <header
           className="border-b border-slate-100 bg-white/95 backdrop-blur-sm"
           role="banner"
@@ -1593,7 +1860,8 @@ export default function BookingV2Page() {
             <span className="text-blue-600">WL/Regret Trains</span>
           </h1>
           <p className="mt-2 max-w-2xl text-base text-slate-600">
-            Find the best seat available throughout your journey in the train you want to travel
+            Find the best seat available throughout your journey in the train
+            you want to travel
           </p>
         </header>
 
@@ -1727,11 +1995,17 @@ export default function BookingV2Page() {
             <span>{searchError}</span>
           </div>
         )}
-        {hasSearched && !searchLoading && !searchError && trains.length === 0 && (
-          <div className="mb-6 rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-700" role="status">
-            No trains found for this route on the selected date.
-          </div>
-        )}
+        {hasSearched &&
+          !searchLoading &&
+          !searchError &&
+          trains.length === 0 && (
+            <div
+              className="mb-6 rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-700"
+              role="status"
+            >
+              No trains found for this route on the selected date.
+            </div>
+          )}
 
         <ul className="space-y-5" role="list" aria-label="Train results">
           {trains.map((t) => (
@@ -1747,7 +2021,9 @@ export default function BookingV2Page() {
                   <span className="font-semibold">
                     {formatTimeAmPm(t.departureTime) ?? "—"} {t.fromStnCode}
                   </span>
-                  <span className="text-gray-400">{formatDurationMinutes(t.duration)}</span>
+                  <span className="text-gray-400">
+                    {formatDurationMinutes(t.duration)}
+                  </span>
                   <span className="font-semibold">
                     {formatTimeAmPm(t.arrivalTime) ?? "—"} {t.toStnCode}
                   </span>
@@ -1759,10 +2035,10 @@ export default function BookingV2Page() {
                   {(t.avlClasses ?? []).map((cls) => {
                     const gn = t.availabilityCache?.[cls];
                     const line =
-                      gn?.availabilityDisplayName ??
-                      gn?.railDataStatus ??
-                      "—";
-                    const statusCls = gn ? chipGeneralStatusClass(line) : undefined;
+                      gn?.availabilityDisplayName ?? gn?.railDataStatus ?? "—";
+                    const statusCls = gn
+                      ? chipGeneralStatusClass(line)
+                      : undefined;
                     const bookable = gn ? isIrctcDirectBookable(gn) : false;
                     const irctcHref =
                       fromSt && toSt
@@ -1782,7 +2058,9 @@ export default function BookingV2Page() {
                         <div className="font-bold text-gray-900">{cls}</div>
                         {gn && (
                           <div className="mt-1 text-gray-700">
-                            <div className="text-[10px] uppercase text-gray-500">General</div>
+                            <div className="text-[10px] uppercase text-gray-500">
+                              General
+                            </div>
                             <div
                               className={cn(
                                 statusCls ?? "font-medium text-gray-900",
@@ -1791,7 +2069,9 @@ export default function BookingV2Page() {
                               {line}
                             </div>
                             {gn.fare != null && (
-                              <div className="font-semibold text-gray-900">₹{gn.fare}</div>
+                              <div className="font-semibold text-gray-900">
+                                ₹{gn.fare}
+                              </div>
                             )}
                           </div>
                         )}
@@ -1816,15 +2096,15 @@ export default function BookingV2Page() {
                             {chipBody}
                           </a>
                         ) : (
-                          <div className={chipShell}>
-                            {chipBody}
-                          </div>
+                          <div className={chipShell}>{chipBody}</div>
                         )}
                         {!bookable && (
                           <button
                             type="button"
                             className="rounded-md bg-blue-600 px-2 py-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
-                            disabled={altLoading && altForTrain === t.trainNumber}
+                            disabled={
+                              altLoading && altForTrain === t.trainNumber
+                            }
                             onClick={() => void findAlternates(t, cls)}
                           >
                             Find seats
@@ -1843,25 +2123,33 @@ export default function BookingV2Page() {
                   disabled={altLoading && altForTrain === t.trainNumber}
                   className={cn(
                     "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25",
-                    altLoading && altForTrain === t.trainNumber && "cursor-wait opacity-60",
+                    altLoading &&
+                      altForTrain === t.trainNumber &&
+                      "cursor-wait opacity-60",
                   )}
                 >
-                  {altLoading && altForTrain === t.trainNumber ? "Finding…" : "Find best available seats"}
+                  {altLoading && altForTrain === t.trainNumber
+                    ? "Finding…"
+                    : "Find best available seats"}
                 </button>
               </div>
             </li>
           ))}
         </ul>
 
-        {!searchLoading && trains.length === 0 && fromSt && toSt && !searchError && (
-          <div
-            className="mt-4 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600"
-            role="status"
-            aria-live="polite"
-          >
-            No trains loaded for this route yet.
-          </div>
-        )}
+        {!searchLoading &&
+          trains.length === 0 &&
+          fromSt &&
+          toSt &&
+          !searchError && (
+            <div
+              className="mt-4 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600"
+              role="status"
+              aria-live="polite"
+            >
+              No trains loaded for this route yet.
+            </div>
+          )}
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
@@ -1878,33 +2166,51 @@ export default function BookingV2Page() {
             }}
           >
             <div
-              className="max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-xl border border-gray-200 bg-white p-6 shadow-2xl"
+              className="flex max-h-[85vh] w-full max-w-lg flex-col rounded-xl border border-gray-200 bg-white shadow-2xl"
               role="dialog"
               aria-modal="true"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="mb-3 flex items-center justify-between">
-                <h3 className="text-lg font-bold text-gray-900">
-                  {altLoading
-                    ? `Finding best available seats on ${
-                        altTrainName?.trim() || altForTrain || "this train"
-                      }`
-                    : `Best available on ${altTrainName?.trim() || altForTrain || "train"}`}
-                </h3>
-                <button
-                  type="button"
-                  className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100"
-                  onClick={() => {
-                    setAltResult(null);
-                    setAltError(null);
-                    setAltForTrain(null);
-                    setAltTrainName(null);
-                    setAltAvlClasses(undefined);
-                  }}
-                >
-                  Close
-                </button>
-              </div>
+              <div
+                ref={altAlternatePathCaptureRef}
+                className="min-h-0 flex-1 overflow-y-auto p-6"
+              >
+                <div className="mb-3 flex items-start justify-between gap-2">
+                  <h3 className="text-lg font-bold leading-snug text-gray-900">
+                    {altLoading
+                      ? `Finding best available seats on ${
+                          altTrainName?.trim() || altForTrain || "this train"
+                        }`
+                      : `Best available on ${altTrainName?.trim() || altForTrain || "train"}`}
+                  </h3>
+                  <div
+                    className="flex shrink-0 items-center gap-1"
+                    data-screenshot-exclude=""
+                  >
+                    <button
+                      type="button"
+                      className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 md:hidden"
+                      aria-label="Share journey as image (opens share sheet — choose WhatsApp)"
+                      disabled={altShareBusy}
+                      onClick={() => void shareAlternatePathScreenshot()}
+                    >
+                      {altShareBusy ? "Sharing…" : "Share"}
+                    </button>
+                    <button
+                      type="button"
+                      className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100"
+                      onClick={() => {
+                        setAltResult(null);
+                        setAltError(null);
+                        setAltForTrain(null);
+                        setAltTrainName(null);
+                        setAltAvlClasses(undefined);
+                      }}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
               {altLoading && (
                 <AlternatePathProgressFeed
                   events={altProgress}
@@ -1915,20 +2221,26 @@ export default function BookingV2Page() {
               {altError && <p className="text-sm text-red-700">{altError}</p>}
               {altResult && (
                 <div className="space-y-3 text-sm">
-                  {!altResult.isComplete && !altResult.legs.some((l) => l.segmentKind === "check_realtime") && (
-                    <p className="rounded-md bg-gray-100 px-3 py-2 text-gray-800">
-                      Could not build a full path to your destination with the current search.
-                    </p>
-                  )}
+                  {!altResult.isComplete &&
+                    !altResult.legs.some(
+                      (l) => l.segmentKind === "check_realtime",
+                    ) && (
+                      <p className="rounded-md bg-gray-100 px-3 py-2 text-gray-800">
+                        Could not build a full path to your destination with the
+                        current search.
+                      </p>
+                    )}
                   {altResult.isComplete && (
                     <p className="text-gray-900">
-                      Full journey covered in {altResult.legCount} confirmed segment
+                      Full journey covered in {altResult.legCount} confirmed
+                      segment
                       {altResult.legCount === 1 ? "" : "s"}.
                       {altResult.totalFare != null && (
                         <>
                           {" "}
                           <span className="font-bold text-gray-950">
-                            Total fare (confirmed segments): ₹{altResult.totalFare.toFixed(0)}
+                            Total fare (confirmed segments): ₹
+                            {altResult.totalFare.toFixed(0)}
                           </span>
                         </>
                       )}
@@ -1936,32 +2248,43 @@ export default function BookingV2Page() {
                   )}
                   {!altResult.isComplete &&
                     altResult.totalFare != null &&
-                    altResult.legs.some((l) => l.segmentKind === "confirmed") && (
+                    altResult.legs.some(
+                      (l) => l.segmentKind === "confirmed",
+                    ) && (
                       <p className="text-gray-700">
-                        Partial total (confirmed segments only): ₹{altResult.totalFare.toFixed(0)}
+                        Partial total (confirmed segments only): ₹
+                        {altResult.totalFare.toFixed(0)}
                       </p>
                     )}
                   {process.env.NODE_ENV === "development" &&
                     altResult.debugLog &&
                     altResult.debugLog.length > 0 && (
-                    <details className="rounded-md border border-gray-200 bg-gray-50 p-3">
-                      <summary className="cursor-pointer text-sm font-semibold text-gray-800">
-                        Step-by-step debug trace ({altResult.debugLog.length} lines)
-                      </summary>
-                      <ol className="mt-2 max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-xs text-gray-700">
-                        {altResult.debugLog.map((line, i) => (
-                          <li key={i} className="whitespace-pre-wrap py-0.5">
-                            {line}
-                          </li>
-                        ))}
-                      </ol>
-                      <p className="mt-2 text-xs text-gray-500">
-                        Same lines are logged on the API server as{" "}
-                        <code className="rounded bg-gray-200 px-1">[alternate-paths …]</code>.
-                      </p>
-                    </details>
+                      <details className="rounded-md border border-gray-200 bg-gray-50 p-3">
+                        <summary className="cursor-pointer text-sm font-semibold text-gray-800">
+                          Step-by-step debug trace ({altResult.debugLog.length}{" "}
+                          lines)
+                        </summary>
+                        <ol className="mt-2 max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-xs text-gray-700">
+                          {altResult.debugLog.map((line, i) => (
+                            <li key={i} className="whitespace-pre-wrap py-0.5">
+                              {line}
+                            </li>
+                          ))}
+                        </ol>
+                        <p className="mt-2 text-xs text-gray-500">
+                          Same lines are logged on the API server as{" "}
+                          <code className="rounded bg-gray-200 px-1">
+                            [alternate-paths …]
+                          </code>
+                          .
+                        </p>
+                      </details>
                     )}
-                  <ol className="list-none space-y-5 pl-0" role="list" aria-label="Journey segments">
+                  <ol
+                    className="list-none space-y-5 pl-0"
+                    role="list"
+                    aria-label="Journey segments"
+                  >
                     {alternatePathDisplayItems.map((item, i) => {
                       const stepTotal = alternatePathDisplayItems.length;
                       const stepIndex = i + 1;
@@ -1985,7 +2308,9 @@ export default function BookingV2Page() {
                       const isJourneyTail =
                         item.to.trim().toUpperCase() ===
                         (toSt?.stationCode ?? "").trim().toUpperCase();
-                      const timingSummary = collapsedAlternatePathTimingSummary(item.legs);
+                      const timingSummary = collapsedAlternatePathTimingSummary(
+                        item.legs,
+                      );
                       return (
                         <li key={i} className="list-none">
                           <div className="flex gap-3 sm:gap-4">
@@ -2009,12 +2334,25 @@ export default function BookingV2Page() {
                               <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                                 <StationLabel
                                   code={item.from}
-                                  name={altResult.stationNameMap?.[item.from.toUpperCase()]}
+                                  name={
+                                    altResult.stationNameMap?.[
+                                      item.from.toUpperCase()
+                                    ]
+                                  }
                                 />
-                                <span className="text-sm font-medium text-gray-400" aria-hidden="true">→</span>
+                                <span
+                                  className="text-sm font-medium text-gray-400"
+                                  aria-hidden="true"
+                                >
+                                  →
+                                </span>
                                 <StationLabel
                                   code={item.to}
-                                  name={altResult.stationNameMap?.[item.to.toUpperCase()]}
+                                  name={
+                                    altResult.stationNameMap?.[
+                                      item.to.toUpperCase()
+                                    ]
+                                  }
                                 />
                                 {isJourneyTail && (
                                   <span className="inline-flex items-center rounded-full bg-amber-200/80 px-2.5 py-0.5 text-xs font-semibold text-amber-950">
@@ -2058,10 +2396,16 @@ export default function BookingV2Page() {
                   </ol>
                 </div>
               )}
+              </div>
             </div>
           </div>
         )}
       </div>
+      <IstRailMaintenanceModal
+        open={maintenanceModalOpen}
+        onClose={dismissMaintenanceModal}
+        minutesDisplay={displayMinutes}
+      />
     </div>
   );
 }
