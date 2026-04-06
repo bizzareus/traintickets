@@ -261,6 +261,26 @@ function AlternatePathProgressFeed({
   from: string;
   to: string;
 }) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const hasDone = events.some((e) => e.type === "done");
+    if (hasDone) {
+      setProgress(100);
+      return;
+    }
+    
+    let p = 0;
+    for (const ev of events) {
+      if (ev.type === "schedule_ok") p += 15;
+      else if (ev.type === "route_ok") p += 15;
+      else if (ev.type === "hop_unavailable" || ev.type === "hop_confirmed") {
+         p += (94 - p) * 0.25; 
+      }
+    }
+    // Cap at 99% until done
+    setProgress(Math.min(99, Math.floor(p)));
+  }, [events]);
   const displayEvents = useMemo(() => {
     const hasDone = events.some((e) => e.type === "done");
     let lastUnavailIdx = -1;
@@ -271,6 +291,7 @@ function AlternatePathProgressFeed({
       }
     }
     return events.filter((ev, i) => {
+      if (ev.type === "schedule_ok") return false;
       if (ev.type === "hop_unavailable") {
         if (hasDone) return false;
         return i === lastUnavailIdx;
@@ -286,14 +307,27 @@ function AlternatePathProgressFeed({
       aria-live="polite"
       aria-label="Search progress"
     >
-      <div className="mb-4 flex items-center gap-3">
-        <div
-          className="h-7 w-7 shrink-0 animate-spin rounded-full border-[3px] border-gray-200 border-t-blue-600"
-          aria-hidden
-        />
-        <p className="text-sm font-semibold text-gray-700">
-          Searching for the best seats on this train…
-        </p>
+      <div className="mb-4">
+        <div className="mb-2 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div
+              className={`h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-gray-200 border-t-blue-600 ${progress === 100 ? 'border-t-emerald-500 opacity-0 transition-opacity' : ''}`}
+              aria-hidden
+            />
+            <p className="text-sm font-semibold text-gray-700">
+              {progress === 100 ? "Search complete!" : "Searching for the best seats…"}
+            </p>
+          </div>
+          <span className="text-xs font-bold text-gray-500 tabular-nums">
+            {progress}%
+          </span>
+        </div>
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-200">
+          <div
+            className={`h-full rounded-full transition-all duration-500 ease-out ${progress === 100 ? 'bg-emerald-500' : 'bg-blue-600'}`}
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       </div>
       {displayEvents.length > 0 && (
         <ol className="space-y-1.5 pl-1" aria-label="Steps completed">
@@ -1580,6 +1614,7 @@ export default function BookingV2Page() {
     [toSt],
   );
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
+  const [acOnly, setAcOnly] = useState(false);
   useEffect(() => {
     setJourneyDate(todayYmd());
   }, []);
@@ -1766,7 +1801,7 @@ export default function BookingV2Page() {
     } finally {
       setSearchLoading(false);
     }
-  }, [fromSt, toSt, journeyDate, onBlockedSearchAttempt]);
+  }, [fromSt, toSt, journeyDate, onBlockedSearchAttempt, acOnly]);
 
   const findAlternates = useCallback(
     async (t: TrainListItem, focusTravelClass?: string) => {
@@ -1782,12 +1817,16 @@ export default function BookingV2Page() {
       if (!fromCode || !toCode) return;
 
       const fc = focusTravelClass?.trim().toUpperCase();
+      const isAcClass = (c: string) => !["SL", "2S", "GN", "FC"].includes(c.toUpperCase());
+      let baseClasses = t.avlClasses && t.avlClasses.length > 0 ? t.avlClasses : undefined;
+      if (acOnly && baseClasses) {
+        baseClasses = baseClasses.filter(isAcClass);
+      }
+
       const avlClassesForRequest =
         fc && fc.length > 0
           ? [fc]
-          : t.avlClasses && t.avlClasses.length > 0
-            ? t.avlClasses
-            : undefined;
+          : baseClasses;
 
       setAltForTrain(t.trainNumber);
       setAltTrainName(t.trainName?.trim() ? t.trainName.trim() : null);
@@ -2060,6 +2099,18 @@ export default function BookingV2Page() {
               </button>
             </div>
           </div>
+          <div className="mt-3 flex items-center gap-2 px-1">
+            <input
+              type="checkbox"
+              id="acTicketsOnly"
+              checked={acOnly}
+              onChange={(e) => setAcOnly(e.target.checked)}
+              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
+            />
+            <label htmlFor="acTicketsOnly" className="text-sm font-medium text-gray-700 cursor-pointer select-none">
+              AC tickets only
+            </label>
+          </div>
         </div>
 
         {searchError && (
@@ -2116,7 +2167,7 @@ export default function BookingV2Page() {
 
               <div className="mt-3 -mx-1 overflow-x-auto pb-1">
                 <div className="flex min-w-min gap-2 px-1">
-                  {(t.avlClasses ?? []).map((cls) => {
+                  {(t.avlClasses ?? []).filter(c => !acOnly || !["SL", "2S", "GN", "FC"].includes(c.toUpperCase())).map((cls) => {
                     const gn = t.availabilityCache?.[cls];
                     const line =
                       gn?.availabilityDisplayName ?? gn?.railDataStatus ?? "—";
