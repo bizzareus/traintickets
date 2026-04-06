@@ -130,6 +130,34 @@ export type AnalyticsEvent =
       properties: {
         helpful: boolean;
       };
+    }
+  | {
+      name: "search_from_selected";
+      properties: { from_code: string; from_name: string };
+    }
+  | {
+      name: "search_to_selected";
+      properties: { to_code: string; to_name: string };
+    }
+  | {
+      name: "search_date_selected";
+      properties: { journey_date: string };
+    }
+  | {
+      name: "search_tickets_clicked";
+      properties: { from_code?: string; to_code?: string; journey_date?: string };
+    }
+  | {
+      name: "alternate_paths_popup_viewed";
+      properties: { train_number: string; from_code: string; to_code: string; journey_date: string };
+    }
+  | {
+      name: "alternate_paths_popup_loaded";
+      properties: { train_number: string; from_code: string; to_code: string; journey_date: string; success: boolean };
+    }
+  | {
+      name: "alternate_paths_irctc_clicked";
+      properties: { train_number: string; from_code: string; to_code: string; class_code: string };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];

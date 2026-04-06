@@ -10,6 +10,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { apiClient } from "@/lib/api";
+import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDisplay";
 import {
   extractJourneyTrainRunDayError,
@@ -260,6 +261,24 @@ function AlternatePathProgressFeed({
   from: string;
   to: string;
 }) {
+  const displayEvents = useMemo(() => {
+    const hasDone = events.some((e) => e.type === "done");
+    let lastUnavailIdx = -1;
+    for (let i = events.length - 1; i >= 0; i--) {
+      if (events[i].type === "hop_unavailable") {
+        lastUnavailIdx = i;
+        break;
+      }
+    }
+    return events.filter((ev, i) => {
+      if (ev.type === "hop_unavailable") {
+        if (hasDone) return false;
+        return i === lastUnavailIdx;
+      }
+      return true;
+    });
+  }, [events]);
+
   return (
     <div
       className="py-4"
@@ -276,9 +295,9 @@ function AlternatePathProgressFeed({
           Searching for the best seats on this train…
         </p>
       </div>
-      {events.length > 0 && (
+      {displayEvents.length > 0 && (
         <ol className="space-y-1.5 pl-1" aria-label="Steps completed">
-          {events.map((ev, i) => {
+          {displayEvents.map((ev, i) => {
             const { icon, text, kind } = describeProgressEvent(ev, from, to);
             return (
               <li
@@ -303,7 +322,7 @@ function AlternatePathProgressFeed({
           })}
         </ol>
       )}
-      {events.length === 0 && (
+      {displayEvents.length === 0 && (
         <p className="text-xs text-gray-400">Contacting rail systems…</p>
       )}
       <span className="sr-only">Finding best available seats, please wait</span>
@@ -352,6 +371,17 @@ function ConfirmedClassOptionCard({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => {
+          trackAnalyticsEvent({
+            name: "alternate_paths_irctc_clicked",
+            properties: {
+              train_number: trainNumber,
+              from_code: from,
+              to_code: to,
+              class_code: option.travelClass,
+            },
+          });
+        }}
         className="bg-blue-600 hover:bg-blue-700 inline-flex w-full items-center justify-center rounded-lg px-3 py-2 text-sm font-bold text-white shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         aria-label={`Book ${option.travelClass} class IRCTC ticket from ${from} to ${to}`}
       >
@@ -492,6 +522,17 @@ function AlternatePathLegListItem({
                     href={bookHref}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      trackAnalyticsEvent({
+                        name: "alternate_paths_irctc_clicked",
+                        properties: {
+                          train_number: trainNumber,
+                          from_code: leg.from,
+                          to_code: leg.to,
+                          class_code: leg.travelClass ?? "SL",
+                        },
+                      });
+                    }}
                     className="bg-blue-600 hover:bg-blue-700 mt-4 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-bold text-white shadow-md transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto sm:min-w-[220px]"
                     aria-label={`Book IRCTC ticket from ${leg.from} to ${leg.to}`}
                   >
@@ -896,6 +937,7 @@ function AlternatePathRemainderInsights({
   legTo,
   monitorClassCode,
   journeyDestinationCode,
+  isJourneyTail,
 }: {
   trainNumber: string;
   trainName?: string | null;
@@ -905,6 +947,7 @@ function AlternatePathRemainderInsights({
   monitorClassCode: string;
   /** When set and equal to `legTo`, hide IRCTC composition-error lines at destination (not useful for where you alight). */
   journeyDestinationCode?: string | null;
+  isJourneyTail?: boolean;
 }) {
   const [metaFrom, setMetaFrom] = useState<StationChartMetaItem | null>(null);
   const [metaTo, setMetaTo] = useState<StationChartMetaItem | null>(null);
@@ -1112,6 +1155,11 @@ function AlternatePathRemainderInsights({
 
   return (
     <div className="mt-3 space-y-3 border-t border-amber-200/80 pt-3">
+      <p className="mt-1 text-sm font-medium text-amber-950">
+        {isJourneyTail
+          ? "There are no tickets available overall."
+          : `No tickets available on this segment right now but since the charting time for ${legFrom.trim().toUpperCase()} station is ${metaFrom?.chartOneTime || (metaLoading ? "..." : "upcoming")}, at that time there will be new tickets which will come up, we can alert you then to book those tickets`}
+      </p>
       <div className="rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-950">
         {metaLoading && (
           <p className="font-medium text-amber-900">
@@ -1418,7 +1466,7 @@ function StationFieldSimple(props: {
         <input
           id={inputId}
           type="text"
-          className="block min-h-11 w-full rounded-md border border-gray-300 bg-gray-50 py-2.5 pl-2 pr-8 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:min-h-12 sm:py-3"
+          className="block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4"
           placeholder="Search station name or code…"
           value={displayText}
           autoComplete="off"
@@ -1554,8 +1602,14 @@ export default function BookingV2Page() {
   const [altShareBusy, setAltShareBusy] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  const [isAdminUser, setIsAdminUser] = useState(false);
   useEffect(() => {
     setMounted(true);
+    try {
+      setIsAdminUser(window.localStorage.getItem("admin") === "true");
+    } catch {
+      /* ignore */
+    }
   }, []);
 
   const {
@@ -1743,6 +1797,16 @@ export default function BookingV2Page() {
       setAltResult(null);
       setAltProgress([]);
 
+      trackAnalyticsEvent({
+        name: "alternate_paths_popup_viewed",
+        properties: {
+          train_number: t.trainNumber,
+          from_code: fromCode,
+          to_code: toCode,
+          journey_date: journeyDate,
+        },
+      });
+
       const body = JSON.stringify({
         trainNumber: t.trainNumber,
         from: fromCode,
@@ -1800,8 +1864,28 @@ export default function BookingV2Page() {
                 setAltProgress((prev) => [...prev, msg.event!]);
               } else if (msg.type === "result" && msg.data) {
                 setAltResult(msg.data);
+                trackAnalyticsEvent({
+                  name: "alternate_paths_popup_loaded",
+                  properties: {
+                    train_number: t.trainNumber,
+                    from_code: fromCode,
+                    to_code: toCode,
+                    journey_date: journeyDate,
+                    success: true,
+                  },
+                });
               } else if (msg.type === "error") {
                 setAltError(msg.message ?? "Unknown error");
+                trackAnalyticsEvent({
+                  name: "alternate_paths_popup_loaded",
+                  properties: {
+                    train_number: t.trainNumber,
+                    from_code: fromCode,
+                    to_code: toCode,
+                    journey_date: journeyDate,
+                    success: false,
+                  },
+                });
               }
             } catch {
               /* malformed line — skip */
@@ -1879,6 +1963,10 @@ export default function BookingV2Page() {
               onSelect={(s) => {
                 setFromSt(s);
                 setFromQ(s.stationName);
+                trackAnalyticsEvent({
+                  name: "search_from_selected",
+                  properties: { from_code: s.stationCode, from_name: s.stationName },
+                });
               }}
               suggestions={fromSuggest}
               loading={fromLoad}
@@ -1887,30 +1975,6 @@ export default function BookingV2Page() {
               onOpenChange={openFrom}
               suggestError={fromSuggestError}
             />
-            <div className="flex shrink-0 items-center justify-center border-gray-200 bg-white px-2 py-2 sm:w-11 sm:flex-col sm:border-x sm:py-0">
-              <button
-                type="button"
-                onClick={swapStations}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:h-8 sm:w-8"
-                aria-label="Swap from and to stations"
-              >
-                <svg
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
-                  />
-                </svg>
-              </button>
-            </div>
             <StationFieldSimple
               label="To"
               query={toQ}
@@ -1922,6 +1986,10 @@ export default function BookingV2Page() {
               onSelect={(s) => {
                 setToSt(s);
                 setToQ(s.stationName);
+                trackAnalyticsEvent({
+                  name: "search_to_selected",
+                  properties: { to_code: s.stationCode, to_name: s.stationName },
+                });
               }}
               suggestions={toSuggest}
               loading={toLoad}
@@ -1955,15 +2023,31 @@ export default function BookingV2Page() {
               <JourneyDatePicker
                 id={journeyDateInputId}
                 value={journeyDate}
-                onChange={setJourneyDate}
+                onChange={(ymd) => {
+                  setJourneyDate(ymd);
+                  trackAnalyticsEvent({
+                    name: "search_date_selected",
+                    properties: { journey_date: ymd },
+                  });
+                }}
               />
             </div>
             <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
               <button
                 type="button"
-                onClick={() => void runSearch()}
+                onClick={() => {
+                  trackAnalyticsEvent({
+                    name: "search_tickets_clicked",
+                    properties: {
+                      from_code: fromSt?.stationCode,
+                      to_code: toSt?.stationCode,
+                      journey_date: journeyDate ?? undefined,
+                    },
+                  });
+                  void runSearch();
+                }}
                 disabled={searchLoading}
-                className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-2.5 text-center text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-sm"
+                className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base"
               >
                 {searchLoading ? (
                   <span className="inline-flex items-center gap-2">
@@ -2137,19 +2221,7 @@ export default function BookingV2Page() {
           ))}
         </ul>
 
-        {!searchLoading &&
-          trains.length === 0 &&
-          fromSt &&
-          toSt &&
-          !searchError && (
-            <div
-              className="mt-4 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600"
-              role="status"
-              aria-live="polite"
-            >
-              No trains loaded for this route yet.
-            </div>
-          )}
+
 
         {(altResult || altError || (altLoading && altForTrain)) && (
           <div
@@ -2187,15 +2259,17 @@ export default function BookingV2Page() {
                     className="flex shrink-0 items-center gap-1"
                     data-screenshot-exclude=""
                   >
-                    <button
-                      type="button"
-                      className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 md:hidden"
-                      aria-label="Share journey as image (opens share sheet — choose WhatsApp)"
-                      disabled={altShareBusy}
-                      onClick={() => void shareAlternatePathScreenshot()}
-                    >
-                      {altShareBusy ? "Sharing…" : "Share"}
-                    </button>
+                    {isAdminUser && (
+                      <button
+                        type="button"
+                        className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 md:hidden"
+                        aria-label="Share journey as image (opens share sheet — choose WhatsApp)"
+                        disabled={altShareBusy}
+                        onClick={() => void shareAlternatePathScreenshot()}
+                      >
+                        {altShareBusy ? "Sharing…" : "Share"}
+                      </button>
+                    )}
                     <button
                       type="button"
                       className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100"
@@ -2372,11 +2446,6 @@ export default function BookingV2Page() {
                                   )}
                                 </p>
                               )}
-                              <p className="mt-3 text-sm font-medium text-amber-950">
-                                {isJourneyTail
-                                  ? "There are no tickets available overall."
-                                  : "No tickets available on this segment."}
-                              </p>
                               {journeyDate && (
                                 <AlternatePathRemainderInsights
                                   trainNumber={altResult.trainNumber}
@@ -2386,6 +2455,7 @@ export default function BookingV2Page() {
                                   legTo={item.to}
                                   monitorClassCode={altAvlClasses?.[0] ?? "SL"}
                                   journeyDestinationCode={toSt?.stationCode}
+                                  isJourneyTail={isJourneyTail}
                                 />
                               )}
                             </div>

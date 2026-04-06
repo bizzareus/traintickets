@@ -36,6 +36,7 @@ export default function AdminPasswordGate({
         adminPassword: password,
       });
       sessionStorage.setItem(SESSION_KEY, "1");
+      localStorage.setItem("admin", "true");
       setUnlocked(true);
       setPassword("");
     } catch (err: unknown) {

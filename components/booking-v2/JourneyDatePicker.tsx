@@ -95,7 +95,7 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
           id={id}
           type="text"
           readOnly
-          className="block w-full cursor-pointer rounded-md border border-gray-300 bg-gray-50 py-1.5 pl-2 pr-2 text-sm font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25"
+          className="block w-full cursor-pointer rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-lg font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4"
           placeholder="Select date"
           aria-haspopup="dialog"
           autoComplete="off"
