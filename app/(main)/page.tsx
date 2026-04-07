@@ -1847,25 +1847,20 @@ export default function BookingV2Page() {
     return trains.find((t) => t.trainNumber === altForTrain);
   }, [trains, altForTrain]);
 
-  const { lowestDirectSleeperFare, lowestDirectAcFare } = useMemo(() => {
-    let slFare: number | null = null;
-    let acFare: number | null = null;
+  const directFares = useMemo(() => {
+    let fares: { cls: string; fare: number }[] = [];
     if (altTrainObj?.availabilityCache) {
-      const acClasses = ["1A", "2A", "3A", "3E", "CC", "EC"];
       Object.entries(altTrainObj.availabilityCache).forEach(([cls, avail]) => {
         if (avail.fare) {
           const f = parseInt(avail.fare, 10);
           if (!isNaN(f)) {
-            if (cls === "SL") {
-              if (slFare === null || f < slFare) slFare = f;
-            } else if (acClasses.includes(cls)) {
-              if (acFare === null || f < acFare) acFare = f;
-            }
+            fares.push({ cls, fare: f });
           }
         }
       });
     }
-    return { lowestDirectSleeperFare: slFare, lowestDirectAcFare: acFare };
+    fares.sort((a, b) => b.fare - a.fare);
+    return fares;
   }, [altTrainObj]);
   const shareAlternatePathScreenshot = useCallback(async () => {
     const el = altAlternatePathCaptureRef.current;
@@ -2568,20 +2563,15 @@ export default function BookingV2Page() {
                           ₹{altResult.totalFare.toFixed(0)}
                         </span>
                         
-                        {(lowestDirectSleeperFare !== null || lowestDirectAcFare !== null) && (
+                        {directFares.length > 0 && (
                           <span className="text-xs text-slate-500 font-medium ml-1">
-                            vs{' '}
-                            {lowestDirectAcFare !== null && (
-                              <span>
-                                ₹{lowestDirectAcFare} for AC <span className="text-amber-600 font-bold">(↑{((altResult.totalFare - lowestDirectAcFare) / lowestDirectAcFare * 100).toFixed(0)}%)</span>
+                            vs direct waitlist:{' '}
+                            {directFares.map((df, idx) => (
+                              <span key={df.cls}>
+                                {df.cls} (₹{df.fare})
+                                {idx < directFares.length - 1 ? ", " : ""}
                               </span>
-                            )}
-                            {lowestDirectAcFare !== null && lowestDirectSleeperFare !== null && <span className="mx-1.5 text-slate-300">|</span>}
-                            {lowestDirectSleeperFare !== null && (
-                              <span>
-                                ₹{lowestDirectSleeperFare} for Non-AC <span className="text-amber-600 font-bold">(↑{((altResult.totalFare - lowestDirectSleeperFare) / lowestDirectSleeperFare * 100).toFixed(0)}%)</span>
-                              </span>
-                            )}
+                            ))}
                           </span>
                         )}
                       </div>
