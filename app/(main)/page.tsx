@@ -2537,12 +2537,12 @@ export default function BookingV2Page() {
                 <div className="space-y-3 text-sm">
                   {/* Fare summary banner */}
                   {altResult.isComplete && altResult.totalFare != null && (
-                    <div className="rounded-xl bg-gradient-to-r from-emerald-50 to-emerald-100/70 border border-emerald-200 px-4 py-3">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Total fare</p>
-                      <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-emerald-950 tabular-nums sm:text-3xl">
+                    <div className="rounded-xl bg-gradient-to-r from-slate-50 to-slate-100/70 border border-slate-200 px-4 py-3">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">Total fare</p>
+                      <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-slate-900 tabular-nums sm:text-3xl">
                         ₹{altResult.totalFare.toFixed(0)}
                       </p>
-                      <p className="mt-0.5 text-xs text-emerald-800">
+                      <p className="mt-0.5 text-xs text-slate-600">
                         Full journey covered in {altResult.legCount} confirmed segment{altResult.legCount === 1 ? "" : "s"}
                       </p>
                     </div>
