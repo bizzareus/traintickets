@@ -21,6 +21,7 @@ import { ChartTimeIngestionModule } from './chart-time-ingestion/chart-time-inge
 import { RailFeedProxyModule } from './rail-feed-proxy/rail-feed-proxy.module';
 import { BookingV2Module } from './booking-v2/booking-v2.module';
 import { CacheModule } from './cache/cache.module';
+import { WhatsappModule } from './whatsapp/whatsapp.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { CacheModule } from './cache/cache.module';
     ChartTimeIngestionModule,
     RailFeedProxyModule,
     BookingV2Module,
+    WhatsappModule,
   ],
   controllers: [AppController],
   providers: [
