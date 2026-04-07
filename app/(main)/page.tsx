@@ -2574,7 +2574,7 @@ export default function BookingV2Page() {
                         )}
                       </div>
                       <p className="mt-1 text-xs text-slate-600">
-                        Full journey covered in {altResult.legCount} confirmed segment{altResult.legCount === 1 ? "" : "s"}
+                        Full journey covered in {altResult.legCount} confirmed ticket{altResult.legCount === 1 ? "" : "s"}
                       </p>
                     </div>
                   )}
@@ -2582,7 +2582,7 @@ export default function BookingV2Page() {
                     altResult.totalFare != null &&
                     altResult.legs.some((l) => l.segmentKind === "confirmed") && (
                       <div className="rounded-xl bg-gradient-to-r from-blue-50 to-blue-100/70 border border-blue-200 px-4 py-3">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">Confirmed segments fare</p>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">Confirmed tickets fare</p>
                         <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-blue-950 tabular-nums sm:text-3xl">
                           ₹{altResult.totalFare.toFixed(0)}
                         </p>
