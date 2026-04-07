@@ -22,6 +22,7 @@ import { RailFeedProxyModule } from './rail-feed-proxy/rail-feed-proxy.module';
 import { BookingV2Module } from './booking-v2/booking-v2.module';
 import { CacheModule } from './cache/cache.module';
 import { WhatsappModule } from './whatsapp/whatsapp.module';
+import { RedditAutomationModule } from './reddit-automation/reddit-automation.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { WhatsappModule } from './whatsapp/whatsapp.module';
     RailFeedProxyModule,
     BookingV2Module,
     WhatsappModule,
+    RedditAutomationModule,
   ],
   controllers: [AppController],
   providers: [

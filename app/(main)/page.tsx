@@ -1283,7 +1283,7 @@ function AlternatePathRemainderInsights({
           onClick={() => void subscribeAlerts()}
           className="bg-blue-600 hover:bg-blue-700 mt-2 rounded-lg px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-60"
         >
-          {monitorSubmitting ? "Subscribing…" : "Subscribe to alerts"}
+          {monitorSubmitting ? "Subscribing…" : "Subscribe to chart prep"}
         </button>
         {monitorError && (
           <p className="mt-2 text-sm text-red-700">{monitorError}</p>
@@ -1627,9 +1627,8 @@ function CompactLegChartCta({
     }
   }, [trainNumber, legFrom, legTo, journeyDate]);
 
-  // Fetch chart preparation time when the alert form is opened
+  // Fetch chart preparation time
   useEffect(() => {
-    if (!open) return;
     let cancel = false;
     apiClient
       .post<{ stations: StationChartMetaItem[] }>(
@@ -1659,7 +1658,7 @@ function CompactLegChartCta({
     return () => {
       cancel = true;
     };
-  }, [open, trainNumber, journeyDate, legFrom]);
+  }, [trainNumber, journeyDate, legFrom]);
 
   const subscribe = useCallback(async () => {
     const em = email.trim() || undefined;
@@ -1709,13 +1708,18 @@ function CompactLegChartCta({
 
   if (!open) {
     return (
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="shrink-0 rounded-md border border-amber-400 bg-amber-50 px-2.5 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 transition-colors"
-      >
-        Subscribe to alerts
-      </button>
+      <div className="flex flex-col items-end gap-1">
+        {chartTimeLabel && (
+          <p className="text-[10px] text-amber-700/80 font-medium">New tickets open at {chartTimeLabel}</p>
+        )}
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="shrink-0 rounded-md border border-amber-400 bg-amber-50 px-2.5 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 transition-colors"
+        >
+          Subscribe to chart prep
+        </button>
+      </div>
     );
   }
 
@@ -1830,6 +1834,22 @@ export default function BookingV2Page() {
     setMounted(true);
     try {
       setIsAdminUser(window.localStorage.getItem("admin") === "true");
+      
+      // Auto-render injected data for headless screenshots
+      const botRenderStr = window.localStorage.getItem("bot_render_alt");
+      if (botRenderStr) {
+        const payload = JSON.parse(botRenderStr);
+        setAltResult(payload.altResult);
+        setAltForTrain(payload.trainNumber);
+        setAltTrainName(payload.trainName);
+        if (payload.journeyDate) {
+          setJourneyDate(payload.journeyDate);
+        }
+        if (payload.trains) {
+          setTrains(payload.trains);
+        }
+        window.localStorage.removeItem("bot_render_alt");
+      }
     } catch {
       /* ignore */
     }
@@ -2783,7 +2803,7 @@ export default function BookingV2Page() {
                               {!isConfirmed && (
                                 <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
                                   <span className="text-sm font-semibold text-amber-800">
-                                    No tickets available
+                                    {leg.availabilityDisplayName ? `Waitlisted (${leg.availabilityDisplayName})` : "No tickets available"}
                                   </span>
                                   <CompactLegChartCta
                                     trainNumber={altResult.trainNumber}
@@ -2844,7 +2864,7 @@ export default function BookingV2Page() {
                             </div>
                             <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
                               <span className="text-sm font-semibold text-amber-800">
-                                No tickets available
+                                {item.legs[0]?.availabilityDisplayName ? `Waitlisted (${item.legs[0].availabilityDisplayName})` : "No tickets available"}
                               </span>
                               <CompactLegChartCta
                                 trainNumber={altResult.trainNumber}
