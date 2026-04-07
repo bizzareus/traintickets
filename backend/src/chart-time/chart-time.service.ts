@@ -139,8 +139,7 @@ export class ChartTimeService {
     if (rows.length === 0 && normalizedCodes.length > 0) {
       const jDate = new Date().toISOString().slice(0, 10);
       for (const code of normalizedCodes) {
-        try {
-          await this.irctc.getTrainComposition(
+       const getTrainCompositionapi = await this.irctc.getTrainComposition(
             {
               trainNo: num,
               jDate,
@@ -148,14 +147,10 @@ export class ChartTimeService {
             },
             { allowChartNotPrepared: true },
           );
-        } catch (e) {
-          const message = e instanceof Error ? e.message : String(e);
-          this.logger.warn(
-            `[chartTime] composition hydrate failed train=${num} station=${code} jDate=${jDate}: ${message}`,
-          );
-        }
+          console.log('getTrainCompositionapi', getTrainCompositionapi);
       }
       rows = await this.prisma.trainStationChartTime.findMany({ where });
+      console.log('rows', rows);  
     }
     const map = new Map<
       string,
@@ -176,6 +171,7 @@ export class ChartTimeService {
       }
       map.set(r.stationCode, entry);
     }
+    console.log('mao', map)
     return map;
   }
 }

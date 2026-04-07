@@ -178,42 +178,13 @@ export class TrainCompositionService {
       trainDepartureTime: null,
     };
 
-    if (params.refreshFromIrctc && trainNumber && journeyDate && stationCode) {
-      try {
-        const comp = await this.fetchForBoarding(
-          {
-            trainNo: trainNumber,
-            jDate: journeyDate,
-            boardingStation: stationCode,
-          },
-          { allowChartNotPrepared: true },
-        );
-        const ex = this.irctc.chartTimesFromCompositionResponse(comp);
-        if (ex.chartOneTime?.trim()) {
-          row.chartOneTime = ex.chartOneTime.trim();
-          row.chartTwoTime = ex.chartTwoTime?.trim() ?? null;
-          row.chartTwoIsNextDay = ex.chartTwoIsNextDay;
-          row.chartRemoteStation = ex.chartRemoteStation;
-        }
-        if (ex.irctcError) {
-          row.compositionError = ex.irctcError;
-        }
-      } catch (err) {
-        row.compositionError = err instanceof Error ? err.message : String(err);
-        this.logger.warn(
-          `[trainComposition] refreshFromIrctc failed train=${trainNumber} station=${stationCode}: ${row.compositionError}`,
-        );
-      }
-    }
-
-    const cached = await this.chartTime.getChartMetaForTrainStation(
+     const cached = await this.chartTime.getChartMetaForTrainStation(
       trainNumber,
       stationCode,
     );
     if (cached?.chartOne?.trim() && !row.chartOneTime?.trim()) {
       applyDbCachedToRow(row, cached);
     }
-
     return row;
   }
 }

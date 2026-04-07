@@ -3,6 +3,7 @@ import axios, { type AxiosError, isAxiosError } from 'axios';
 import axiosRetry from 'axios-retry';
 import type { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import moment from 'moment';
 
 const scheduleClient = axios.create();
 axiosRetry(scheduleClient, {
@@ -553,7 +554,7 @@ export class IrctcService {
       jDate: string;
       boardingStation: string;
     },
-    opts?: { allowChartNotPrepared?: boolean },
+    opts?: { allowChartNotPrepared?: boolean; _retriedPreviousDay?: boolean },
   ): Promise<Record<string, unknown>> {
     const body = {
       trainNo: String(payload.trainNo).trim(),
@@ -581,25 +582,13 @@ export class IrctcService {
     const cookies = process.env.IRCTC_COOKIES;
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
-    const t0 = Date.now();
-    this.logger.log(
-      `[irctc/trainComposition] request_start trainNo=${body.trainNo} jDate=${body.jDate} cookies=${Boolean(cookies?.trim())}`,
-    );
-
     const res = await fetch(IRCTC_TRAIN_COMPOSITION_URL, {
       method: 'POST',
       headers,
       body: JSON.stringify(body),
     });
     const text = await res.text();
-    const ms = Date.now() - t0;
-    this.logger.log(
-      `[irctc/trainComposition] response ms=${ms} status=${res.status} bytes=${text.length}`,
-    );
     if (!res.ok) {
-      this.logger.warn(
-        `[irctc/trainComposition] http_error status=${res.status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
-      );
       throw new Error(
         'Train composition is temporarily unavailable. Please try again later.',
       );
@@ -618,12 +607,23 @@ export class IrctcService {
         ? data.error.trim()
         : '';
 
-    const allowSoftChartPending =
-      opts?.allowChartNotPrepared === true &&
+    const isChartNotPreparedError =
       errMsg.length > 0 &&
       /chart\s*not\s*prepared|not\s+yet\s*prepared|chart\s*not\s*ready/i.test(
         errMsg,
       );
+
+    if (isChartNotPreparedError && !opts?._retriedPreviousDay) {
+      const prevDate = moment(body.jDate).subtract(1, 'days').format('YYYY-MM-DD');
+  
+      return this.postTrainComposition(
+        { ...payload, jDate: prevDate },
+        { ...opts, _retriedPreviousDay: true },
+      );
+    }
+
+    const allowSoftChartPending =
+      opts?.allowChartNotPrepared === true && isChartNotPreparedError;
 
     if (errMsg && !allowSoftChartPending) {
       throw new Error(errMsg);
@@ -689,6 +689,7 @@ export class IrctcService {
     opts?: { allowChartNotPrepared?: boolean },
   ): Promise<TrainCompositionResponse> {
     const raw = await this.postTrainComposition(payload, opts);
+    console.log('raw >>> getTrainComposition', raw);
     const data = raw as unknown as TrainCompositionResponse;
     try {
       await this.persistChartTimesFromComposition(data);
