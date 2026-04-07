@@ -1843,6 +1843,30 @@ export default function BookingV2Page() {
     onBlockedSearchAttempt,
   } = useIstRailMaintenance(mounted);
 
+  const altTrainObj = useMemo(() => {
+    return trains.find((t) => t.trainNumber === altForTrain);
+  }, [trains, altForTrain]);
+
+  const { lowestDirectSleeperFare, lowestDirectAcFare } = useMemo(() => {
+    let slFare: number | null = null;
+    let acFare: number | null = null;
+    if (altTrainObj?.availabilityCache) {
+      const acClasses = ["1A", "2A", "3A", "3E", "CC", "EC"];
+      Object.entries(altTrainObj.availabilityCache).forEach(([cls, avail]) => {
+        if (avail.fare) {
+          const f = parseInt(avail.fare, 10);
+          if (!isNaN(f)) {
+            if (cls === "SL") {
+              if (slFare === null || f < slFare) slFare = f;
+            } else if (acClasses.includes(cls)) {
+              if (acFare === null || f < acFare) acFare = f;
+            }
+          }
+        }
+      });
+    }
+    return { lowestDirectSleeperFare: slFare, lowestDirectAcFare: acFare };
+  }, [altTrainObj]);
   const shareAlternatePathScreenshot = useCallback(async () => {
     const el = altAlternatePathCaptureRef.current;
     if (!el) return;
@@ -2538,13 +2562,35 @@ export default function BookingV2Page() {
                   {/* Fare summary banner */}
                   {altResult.isComplete && altResult.totalFare != null && (
                     <div className="rounded-xl bg-gradient-to-r from-slate-50 to-slate-100/70 border border-slate-200 px-4 py-3">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">Total fare</p>
-                      <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-slate-900 tabular-nums sm:text-3xl">
-                        ₹{altResult.totalFare.toFixed(0)}
-                      </p>
-                      <p className="mt-0.5 text-xs text-slate-600">
-                        Full journey covered in {altResult.legCount} confirmed segment{altResult.legCount === 1 ? "" : "s"}
-                      </p>
+                      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">Total fare</p>
+                          <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-slate-900 tabular-nums sm:text-3xl">
+                            ₹{altResult.totalFare.toFixed(0)}
+                          </p>
+                          <p className="mt-0.5 text-xs text-slate-600">
+                            Full journey covered in {altResult.legCount} confirmed segment{altResult.legCount === 1 ? "" : "s"}
+                          </p>
+                        </div>
+
+                        {(lowestDirectSleeperFare !== null || lowestDirectAcFare !== null) && (
+                          <div className="flex flex-col gap-1.5 rounded-lg bg-white/60 p-2.5 text-xs border border-slate-200/60 shadow-sm">
+                            <span className="font-semibold text-slate-700">Direct Waitlist Fares:</span>
+                            {lowestDirectSleeperFare !== null && (
+                              <div className="flex justify-between gap-6 text-slate-600">
+                                <span>Sleeper (SL)</span>
+                                <span className="font-medium whitespace-nowrap">₹{lowestDirectSleeperFare} <span className="text-slate-400 text-[10px] ml-1">(₹{(altResult.totalFare - lowestDirectSleeperFare).toFixed(0)} extra)</span></span>
+                              </div>
+                            )}
+                            {lowestDirectAcFare !== null && (
+                              <div className="flex justify-between gap-6 text-slate-600">
+                                <span>AC Classes</span>
+                                <span className="font-medium whitespace-nowrap">₹{lowestDirectAcFare} <span className="text-slate-400 text-[10px] ml-1">(₹{(altResult.totalFare - lowestDirectAcFare).toFixed(0)} extra)</span></span>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   )}
                   {!altResult.isComplete &&
