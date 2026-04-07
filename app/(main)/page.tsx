@@ -2508,10 +2508,8 @@ export default function BookingV2Page() {
                 <div className="mb-3 flex items-start justify-between gap-2">
                   <h3 className="text-lg font-bold leading-snug text-gray-900">
                     {altLoading
-                      ? `Finding best available seats on ${
-                          altTrainName?.trim() || altForTrain || "this train"
-                        }`
-                      : `Best available on ${altTrainName?.trim() || altForTrain || "train"}`}
+                      ? `Finding best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`
+                      : `Best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`}
                   </h3>
                   <div
                     className="flex shrink-0 items-center gap-1"
