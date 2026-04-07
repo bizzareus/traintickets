@@ -23,7 +23,7 @@ export class RedditAutomationService implements OnModuleInit {
   }
 
   // Runs every 5 minutes
-  @Cron('*/5 * * * *')
+  // @Cron('*/5 * * * *')
   async handleCron() {
     const threadId = process.env.REDDIT_THREAD_ID || '1lovrfq';
     this.logger.log(`Polling Reddit thread ${threadId}...`);
