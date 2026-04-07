@@ -2562,35 +2562,32 @@ export default function BookingV2Page() {
                   {/* Fare summary banner */}
                   {altResult.isComplete && altResult.totalFare != null && (
                     <div className="rounded-xl bg-gradient-to-r from-slate-50 to-slate-100/70 border border-slate-200 px-4 py-3">
-                      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">Total fare</p>
-                          <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-slate-900 tabular-nums sm:text-3xl">
-                            ₹{altResult.totalFare.toFixed(0)}
-                          </p>
-                          <p className="mt-0.5 text-xs text-slate-600">
-                            Full journey covered in {altResult.legCount} confirmed segment{altResult.legCount === 1 ? "" : "s"}
-                          </p>
-                        </div>
-
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">Total fare</p>
+                      <div className="mt-0.5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                        <span className="text-2xl font-extrabold tracking-tight text-slate-900 tabular-nums sm:text-3xl">
+                          ₹{altResult.totalFare.toFixed(0)}
+                        </span>
+                        
                         {(lowestDirectSleeperFare !== null || lowestDirectAcFare !== null) && (
-                          <div className="flex flex-col gap-1.5 rounded-lg bg-white/60 p-2.5 text-xs border border-slate-200/60 shadow-sm">
-                            <span className="font-semibold text-slate-700">Direct Waitlist Fares:</span>
-                            {lowestDirectSleeperFare !== null && (
-                              <div className="flex justify-between gap-6 text-slate-600">
-                                <span>Sleeper (SL)</span>
-                                <span className="font-medium whitespace-nowrap">₹{lowestDirectSleeperFare} <span className="text-slate-400 text-[10px] ml-1">(₹{(altResult.totalFare - lowestDirectSleeperFare).toFixed(0)} extra)</span></span>
-                              </div>
-                            )}
+                          <span className="text-xs text-slate-500 font-medium ml-1">
+                            vs{' '}
                             {lowestDirectAcFare !== null && (
-                              <div className="flex justify-between gap-6 text-slate-600">
-                                <span>AC Classes</span>
-                                <span className="font-medium whitespace-nowrap">₹{lowestDirectAcFare} <span className="text-slate-400 text-[10px] ml-1">(₹{(altResult.totalFare - lowestDirectAcFare).toFixed(0)} extra)</span></span>
-                              </div>
+                              <span>
+                                ₹{lowestDirectAcFare} for AC <span className="text-amber-600 font-bold">(↑{((altResult.totalFare - lowestDirectAcFare) / lowestDirectAcFare * 100).toFixed(0)}%)</span>
+                              </span>
                             )}
-                          </div>
+                            {lowestDirectAcFare !== null && lowestDirectSleeperFare !== null && <span className="mx-1.5 text-slate-300">|</span>}
+                            {lowestDirectSleeperFare !== null && (
+                              <span>
+                                ₹{lowestDirectSleeperFare} for Non-AC <span className="text-amber-600 font-bold">(↑{((altResult.totalFare - lowestDirectSleeperFare) / lowestDirectSleeperFare * 100).toFixed(0)}%)</span>
+                              </span>
+                            )}
+                          </span>
                         )}
                       </div>
+                      <p className="mt-1 text-xs text-slate-600">
+                        Full journey covered in {altResult.legCount} confirmed segment{altResult.legCount === 1 ? "" : "s"}
+                      </p>
                     </div>
                   )}
                   {!altResult.isComplete &&
