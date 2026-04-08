@@ -19,7 +19,10 @@ export class RedditAutomationService implements OnModuleInit {
 
   onModuleInit() {
     this.lastSeenTimestamp = Math.floor(Date.now() / 1000);
-    this.logger.log('RedditAutomationService initialized, starting from timestamp: ' + this.lastSeenTimestamp);
+    this.logger.log(
+      'RedditAutomationService initialized, starting from timestamp: ' +
+        this.lastSeenTimestamp,
+    );
   }
 
   // Runs every 5 minutes
@@ -30,7 +33,7 @@ export class RedditAutomationService implements OnModuleInit {
 
     try {
       const comments = await this.redditApi.getLatestComments(threadId);
-      
+
       let maxTimestamp = this.lastSeenTimestamp;
       const now = Math.floor(Date.now() / 1000);
 
@@ -43,24 +46,23 @@ export class RedditAutomationService implements OnModuleInit {
         }
 
         // Process if newer than lastSeen and at least 2 minutes old
-        if (createdUtc > this.lastSeenTimestamp && (now - createdUtc >= 120)) {
+        if (createdUtc > this.lastSeenTimestamp && now - createdUtc >= 120) {
           this.logger.log(`Found new comment to process: ${comment.data.id}`);
           await this.processComment(comment.data);
         }
       }
 
-      // We only update lastSeen if we processed old enough comments, 
-      // but to avoid processing the same comment forever, we should probably 
+      // We only update lastSeen if we processed old enough comments,
+      // but to avoid processing the same comment forever, we should probably
       // just set it to the max timestamp we saw that was also at least 2 minutes old.
       const threshold = now - 120;
       const validTimestamps = comments
-        .map(c => c.data?.created_utc)
-        .filter(t => t && t <= threshold && t > this.lastSeenTimestamp);
-      
+        .map((c) => c.data?.created_utc)
+        .filter((t) => t && t <= threshold && t > this.lastSeenTimestamp);
+
       if (validTimestamps.length > 0) {
         this.lastSeenTimestamp = Math.max(...validTimestamps);
       }
-      
     } catch (e) {
       this.logger.error('Error in handling cron for Reddit', e);
     }
@@ -70,12 +72,21 @@ export class RedditAutomationService implements OnModuleInit {
     try {
       // 1. Parse using GPT
       const query = await this.gpt.parseTravelQuery(comment.body, new Date());
-      if (!query.isTravelQuery || !query.origin || !query.destination || !query.date) {
-        this.logger.log(`Comment ${comment.id} is not a complete travel query or not related. Skipping.`);
+      if (
+        !query.isTravelQuery ||
+        !query.origin ||
+        !query.destination ||
+        !query.date
+      ) {
+        this.logger.log(
+          `Comment ${comment.id} is not a complete travel query or not related. Skipping.`,
+        );
         return;
       }
 
-      this.logger.log(`Comment ${comment.id} parsed: ${query.origin} to ${query.destination} on ${query.date}`);
+      this.logger.log(
+        `Comment ${comment.id} parsed: ${query.origin} to ${query.destination} on ${query.date}`,
+      );
 
       // We need to resolve city names/codes to station rows.
       // Easiest is to search and pick the first station code.
@@ -86,7 +97,9 @@ export class RedditAutomationService implements OnModuleInit {
       const toStations = toRes?.data?.stationList || [];
 
       if (!fromStations.length || !toStations.length) {
-        this.logger.warn(`Could not resolve stations for comment ${comment.id}. Skipping.`);
+        this.logger.warn(
+          `Could not resolve stations for comment ${comment.id}. Skipping.`,
+        );
         return;
       }
 
@@ -94,18 +107,26 @@ export class RedditAutomationService implements OnModuleInit {
       const toCode = toStations[0].stationCode;
 
       // 2. Train Search
-      const trainsRes: any = await this.bookingV2.searchTrains(fromCode, toCode, query.date);
+      const trainsRes: any = await this.bookingV2.searchTrains(
+        fromCode,
+        toCode,
+        query.date,
+      );
       const trains = trainsRes || [];
 
       if (!trains || trains.length === 0) {
-        this.logger.log(`No trains found for ${fromCode}->${toCode} on ${query.date}. Skipping.`);
+        this.logger.log(
+          `No trains found for ${fromCode}->${toCode} on ${query.date}. Skipping.`,
+        );
         return;
       }
 
       // Let's just pick the first train for alternate paths
       const targetTrain = trains[0];
-      const avlClasses = query.travelClass ? [query.travelClass] : targetTrain.avlClasses || ['SL', '3A', '2A'];
-      
+      const avlClasses = query.travelClass
+        ? [query.travelClass]
+        : targetTrain.avlClasses || ['SL', '3A', '2A'];
+
       // 3. Alternate Path
       const altResult = await this.bookingV2.findAlternatePaths({
         trainNumber: targetTrain.trainNumber,
@@ -117,7 +138,9 @@ export class RedditAutomationService implements OnModuleInit {
       });
 
       if (!altResult || !altResult.legs || altResult.legs.length === 0) {
-        this.logger.log(`No alternate paths found for train ${targetTrain.trainNumber}. Skipping.`);
+        this.logger.log(
+          `No alternate paths found for train ${targetTrain.trainNumber}. Skipping.`,
+        );
         return;
       }
 
@@ -128,7 +151,7 @@ export class RedditAutomationService implements OnModuleInit {
         trainNumber: targetTrain.trainNumber,
         trainName: targetTrain.trainName,
         journeyDate: query.date,
-        trains
+        trains,
       });
 
       // 5. Reply to Reddit
@@ -140,7 +163,6 @@ export class RedditAutomationService implements OnModuleInit {
 *Total fare:* ₹${altResult.totalFare?.toFixed(0) ?? 'N/A'}`;
 
       await this.redditApi.replyToComment(comment.id, markdown);
-
     } catch (e) {
       this.logger.error(`Error processing comment ${comment.id}`, e);
       // We explicitly skip and do not retry on error (per requirements)

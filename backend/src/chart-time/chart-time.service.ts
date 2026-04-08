@@ -139,18 +139,16 @@ export class ChartTimeService {
     if (rows.length === 0 && normalizedCodes.length > 0) {
       const jDate = new Date().toISOString().slice(0, 10);
       for (const code of normalizedCodes) {
-       const getTrainCompositionapi = await this.irctc.getTrainComposition(
-            {
-              trainNo: num,
-              jDate,
-              boardingStation: code,
-            },
-            { allowChartNotPrepared: true },
-          );
-          console.log('getTrainCompositionapi', getTrainCompositionapi);
+        const getTrainCompositionapi = await this.irctc.getTrainComposition(
+          {
+            trainNo: num,
+            jDate,
+            boardingStation: code,
+          },
+          { allowChartNotPrepared: true },
+        );
       }
       rows = await this.prisma.trainStationChartTime.findMany({ where });
-      console.log('rows', rows);  
     }
     const map = new Map<
       string,
@@ -171,7 +169,7 @@ export class ChartTimeService {
       }
       map.set(r.stationCode, entry);
     }
-    console.log('mao', map)
+    console.log('mao', map);
     return map;
   }
 }

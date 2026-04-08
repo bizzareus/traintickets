@@ -407,11 +407,7 @@ export class NotificationService {
       const segTo = parts[1] ?? '';
       const segmentTimes =
         segFrom && segTo
-          ? formatSegmentScheduleTimes(
-              stationScheduleList,
-              segFrom,
-              segTo,
-            )
+          ? formatSegmentScheduleTimes(stationScheduleList, segFrom, segTo)
           : '';
       const classTag = (seg.instruction.split(' - ')[2] ?? '3A').trim();
       const priceStr =
@@ -482,9 +478,7 @@ export class NotificationService {
     const chartPreparationText = result.chartPreparationDetails
       ? `Chart preparation: ${result.chartPreparationDetails.firstChartCreationTime} at ${result.chartPreparationDetails.chartingStationCode}`
       : undefined;
-    const stationScheduleList = result.trainSchedule?.stationList as
-      | ScheduleStation[]
-      | undefined;
+    const stationScheduleList = result.trainSchedule?.stationList;
     const stationNameMap = this.getStationNameMap(stationScheduleList);
     const routeDisplay = `${task.fromStationCode} > ${task.toStationCode}`;
     const emailRouteDisplay = this.formatJourneyRoute(

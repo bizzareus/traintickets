@@ -159,15 +159,14 @@ export class TrainCompositionService {
    */
   async fetchSourceStationChartMeta(params: {
     trainNumber: string;
-    journeyDate: string;
     sourceStation: string;
     /** When true, POST IRCTC trainComposition for this boarding station before reading DB. */
     refreshFromIrctc?: boolean;
   }): Promise<StationChartMetaDto> {
     const trainNumber = String(params.trainNumber ?? '').trim();
-    const journeyDate = String(params.journeyDate ?? '')
-      .trim()
-      .slice(0, 10);
+    // const journeyDate = String(params.journeyDate ?? '')
+    //   .trim()
+    //   .slice(0, 10);
     const stationCode = String(params.sourceStation ?? '')
       .trim()
       .toUpperCase();

@@ -3,6 +3,7 @@ import axios, { type AxiosError, isAxiosError } from 'axios';
 import axiosRetry from 'axios-retry';
 import type { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 
 const scheduleClient = axios.create();
@@ -463,6 +464,11 @@ export class IrctcService {
       this.logger.warn(
         `[irctc/vacantBerth] network_error ms=${ms} trainNo=${payload.trainNo} ${cause}`,
       );
+      // Report the network error to Sentry for monitoring
+      captureSentryException(err, {
+        tags: { service: 'irctc', endpoint: 'vacantBerth' },
+        extra: { ms, trainNo: payload.trainNo, cause },
+      });
       throw new Error(`IRCTC request failed (network/connection): ${cause}`);
     }
 
@@ -554,13 +560,14 @@ export class IrctcService {
       jDate: string;
       boardingStation: string;
     },
-    opts?: { allowChartNotPrepared?: boolean; _retriedPreviousDay?: boolean },
+    opts?: { allowChartNotPrepared?: boolean; _retriedPreviousDay?: boolean; _retriedTwoDays?: boolean },
   ): Promise<Record<string, unknown>> {
     const body = {
       trainNo: String(payload.trainNo).trim(),
       jDate: String(payload.jDate).trim().slice(0, 10),
       boardingStation: String(payload.boardingStation).trim().toUpperCase(),
     };
+    console.log('body', body);
 
     const headers: Record<string, string> = {
       Accept: 'application/json',
@@ -613,13 +620,27 @@ export class IrctcService {
         errMsg,
       );
 
-    if (isChartNotPreparedError && !opts?._retriedPreviousDay) {
-      const prevDate = moment(body.jDate).subtract(1, 'days').format('YYYY-MM-DD');
-  
-      return this.postTrainComposition(
-        { ...payload, jDate: prevDate },
-        { ...opts, _retriedPreviousDay: true },
-      );
+    // Handle "chart not prepared" by retrying up to two previous days
+    if (isChartNotPreparedError) {
+      // Determine how many days have already been retried
+      const alreadyRetried =
+        (opts?._retriedTwoDays ? 2 : 0) +
+        (opts?._retriedPreviousDay && !opts?._retriedTwoDays ? 1 : 0);
+      if (alreadyRetried < 2) {
+        const daysBack = alreadyRetried + 1;
+        const prevDate = moment(body.jDate)
+          .subtract(daysBack, 'days')
+          .format('YYYY-MM-DD');
+        const newOpts = {
+          ...opts,
+          _retriedPreviousDay: alreadyRetried === 0,
+          _retriedTwoDays: alreadyRetried >= 1,
+        };
+        return this.postTrainComposition(
+          { ...payload, jDate: prevDate },
+          newOpts,
+        );
+      }
     }
 
     const allowSoftChartPending =

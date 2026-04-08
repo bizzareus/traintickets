@@ -12,9 +12,9 @@ describe('notification.helpers', () => {
   describe('hasBookablePlanForNotification', () => {
     it('returns false when plan is missing or empty', () => {
       expect(hasBookablePlanForNotification({})).toBe(false);
-      expect(
-        hasBookablePlanForNotification({ openAiBookingPlan: [] }),
-      ).toBe(false);
+      expect(hasBookablePlanForNotification({ openAiBookingPlan: [] })).toBe(
+        false,
+      );
     });
 
     it('returns false when every slot is empty', () => {
@@ -82,9 +82,7 @@ describe('notification.helpers', () => {
     });
 
     it('returns empty string when schedule is missing', () => {
-      expect(
-        formatSegmentScheduleTimes(undefined, 'NDLS', 'BCT'),
-      ).toBe('');
+      expect(formatSegmentScheduleTimes(undefined, 'NDLS', 'BCT')).toBe('');
     });
   });
 

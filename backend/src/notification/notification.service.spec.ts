@@ -35,9 +35,7 @@ describe('NotificationService', () => {
   const successWithTickets: Service2CheckResult = {
     status: 'success',
     vacantBerth: { vbd: [], error: null },
-    openAiBookingPlan: [
-      { instruction: 'NDLS - BCT - 3A', approx_price: 1200 },
-    ],
+    openAiBookingPlan: [{ instruction: 'NDLS - BCT - 3A', approx_price: 1200 }],
     trainSchedule: {
       trainNumber: '12951',
       trainName: 'Test Express',
@@ -61,7 +59,9 @@ describe('NotificationService', () => {
   it('does not call sendEmail or sendWhatsApp when status is success but no bookable plan', async () => {
     const svc = new NotificationService(mockConfig());
     const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
-    const sendWhatsApp = jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(true);
+    const sendWhatsApp = jest
+      .spyOn(svc, 'sendWhatsApp')
+      .mockResolvedValue(true);
 
     const out = await svc.notifyUser({
       email: 'a@example.com',

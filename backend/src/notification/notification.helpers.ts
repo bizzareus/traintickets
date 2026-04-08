@@ -48,7 +48,10 @@ function findScheduleRow(
   const c = code.trim().toUpperCase();
   if (!c || !Array.isArray(stationList)) return undefined;
   return stationList.find(
-    (s) => String(s.stationCode ?? '').trim().toUpperCase() === c,
+    (s) =>
+      String(s.stationCode ?? '')
+        .trim()
+        .toUpperCase() === c,
   );
 }
 
@@ -63,9 +66,7 @@ export function departureTimeAtStation(
 }
 
 /** Arrival-ish time at destination leg (prefer arrival, then departure). */
-export function arrivalTimeAtStation(
-  row: ScheduleStation | undefined,
-): string {
+export function arrivalTimeAtStation(row: ScheduleStation | undefined): string {
   if (!row) return '';
   const arr = normalizeIrctcTimeDisplay(row.arrivalTime);
   if (arr) return arr;
@@ -84,14 +85,10 @@ export function formatSegmentScheduleTimes(
   const arr = arrivalTimeAtStation(toRow);
   const parts: string[] = [];
   if (dep) {
-    parts.push(
-      `Dep ${fromCode.trim().toUpperCase()}: ${dep}`,
-    );
+    parts.push(`Dep ${fromCode.trim().toUpperCase()}: ${dep}`);
   }
   if (arr) {
-    parts.push(
-      `Arr ${toCode.trim().toUpperCase()}: ${arr}`,
-    );
+    parts.push(`Arr ${toCode.trim().toUpperCase()}: ${arr}`);
   }
   return parts.join(' · ');
 }

@@ -486,7 +486,9 @@ export class BookingV2Service {
 
     // Build a code→name lookup from the full schedule (upper-cased keys).
     for (const st of stationList) {
-      const code = String(st.stationCode ?? '').trim().toUpperCase();
+      const code = String(st.stationCode ?? '')
+        .trim()
+        .toUpperCase();
       const name = String(st.stationName ?? '').trim();
       if (code && name) stationNameMap[code] = name;
     }

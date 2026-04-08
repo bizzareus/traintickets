@@ -7,6 +7,6 @@ import { BookingV2Module } from '../booking-v2/booking-v2.module';
 @Module({
   imports: [BookingV2Module],
   controllers: [WhatsappController],
-  providers: [WhatsappService, OpenaiService]
+  providers: [WhatsappService, OpenaiService],
 })
 export class WhatsappModule {}

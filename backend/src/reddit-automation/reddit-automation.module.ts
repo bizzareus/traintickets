@@ -8,18 +8,14 @@ import { RedditApiService } from './reddit-api.service';
 import { BookingV2Module } from '../booking-v2/booking-v2.module';
 
 @Module({
-  imports: [
-    ScheduleModule.forRoot(),
-    HttpModule,
-    BookingV2Module,
-  ],
+  imports: [ScheduleModule.forRoot(), HttpModule, BookingV2Module],
   providers: [
-    RedditAutomationService, 
-    ScreenshotService, 
-    RedditGptService, 
-    RedditApiService, 
-    Logger
+    RedditAutomationService,
+    ScreenshotService,
+    RedditGptService,
+    RedditApiService,
+    Logger,
   ],
-  exports: [RedditAutomationService]
+  exports: [RedditAutomationService],
 })
 export class RedditAutomationModule {}

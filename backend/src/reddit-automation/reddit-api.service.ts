@@ -47,12 +47,17 @@ export class RedditApiService {
       await this.refreshToken();
       if (!this.token) return [];
     }
-    
+
     try {
       const { data } = await lastValueFrom(
         this.http.get(
           `https://oauth.reddit.com/comments/${threadId}?limit=100`,
-          { headers: { Authorization: `Bearer ${this.token}`, 'User-Agent': 'LastBerthBot/1.0' } },
+          {
+            headers: {
+              Authorization: `Bearer ${this.token}`,
+              'User-Agent': 'LastBerthBot/1.0',
+            },
+          },
         ),
       );
       // Reddit returns an array: [0] is post, [1] is comments
@@ -61,7 +66,9 @@ export class RedditApiService {
       if (e.response?.status === 401) {
         this.token = null; // refresh next time
       }
-      this.logger.warn('Failed to fetch reddit comments: ' + (e.message || String(e)));
+      this.logger.warn(
+        'Failed to fetch reddit comments: ' + (e.message || String(e)),
+      );
       return [];
     }
   }
@@ -76,8 +83,16 @@ export class RedditApiService {
       await lastValueFrom(
         this.http.post(
           'https://oauth.reddit.com/api/comment',
-          new URLSearchParams({ thing_id: `t1_${commentId}`, text: markdown }).toString(),
-          { headers: { Authorization: `Bearer ${this.token}`, 'User-Agent': 'LastBerthBot/1.0' } },
+          new URLSearchParams({
+            thing_id: `t1_${commentId}`,
+            text: markdown,
+          }).toString(),
+          {
+            headers: {
+              Authorization: `Bearer ${this.token}`,
+              'User-Agent': 'LastBerthBot/1.0',
+            },
+          },
         ),
       );
       this.logger.log(`Successfully replied to comment ${commentId}`);
