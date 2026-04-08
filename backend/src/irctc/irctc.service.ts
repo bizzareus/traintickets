@@ -560,7 +560,11 @@ export class IrctcService {
       jDate: string;
       boardingStation: string;
     },
-    opts?: { allowChartNotPrepared?: boolean; _retriedPreviousDay?: boolean; _retriedTwoDays?: boolean },
+    opts?: {
+      allowChartNotPrepared?: boolean;
+      _retriedPreviousDay?: boolean;
+      _retriedTwoDays?: boolean;
+    },
   ): Promise<Record<string, unknown>> {
     const body = {
       trainNo: String(payload.trainNo).trim(),

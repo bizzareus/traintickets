@@ -177,7 +177,7 @@ export class TrainCompositionService {
       trainDepartureTime: null,
     };
 
-     const cached = await this.chartTime.getChartMetaForTrainStation(
+    const cached = await this.chartTime.getChartMetaForTrainStation(
       trainNumber,
       stationCode,
     );

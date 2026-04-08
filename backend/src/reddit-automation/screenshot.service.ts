@@ -9,11 +9,11 @@ export class ScreenshotService {
 
   async captureWithInjectedData(opts: {
     commentId: string;
-    altResult: any;
+    altResult: unknown;
     trainNumber: string;
     trainName?: string;
     journeyDate?: string;
-    trains: any[];
+    trains: unknown[];
   }): Promise<string> {
     const publicPath = process.env.SCREENSHOT_PUBLIC_PATH || '/screenshots';
     const fsPathBase =

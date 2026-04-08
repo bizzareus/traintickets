@@ -163,25 +163,27 @@ export class BookingV2Service {
   private normalizeAvlDayRow(r: Record<string, unknown>): AvlDayRow {
     const rawVendor = r[UPSTREAM_VENDOR_STATUS_KEY];
     const vendor =
-      rawVendor != null && String(rawVendor).trim() !== ''
-        ? String(rawVendor).trim()
+      typeof rawVendor === 'string' && rawVendor.trim() !== ''
+        ? rawVendor.trim()
         : null;
     return {
       availablityType: r.availablityType as AvlDayRow['availablityType'],
       availablityStatus:
-        r.availablityStatus != null ? String(r.availablityStatus) : null,
+        typeof r.availablityStatus === 'string' ? r.availablityStatus : null,
       vendorPredictionStatus: vendor,
       predictionPercentage:
-        r.predictionPercentage != null ? String(r.predictionPercentage) : null,
+        typeof r.predictionPercentage === 'string'
+          ? r.predictionPercentage
+          : null,
       availabilityDisplayName:
-        r.availabilityDisplayName != null
-          ? String(r.availabilityDisplayName)
+        typeof r.availabilityDisplayName === 'string'
+          ? r.availabilityDisplayName
           : null,
     };
   }
 
   async searchStations(searchString: string): Promise<unknown> {
-    const q = String(searchString ?? '').trim();
+    const q = (searchString || '').trim();
 
     // DB-first: try the station cache before hitting the upstream API.
     const cached = await this.stationCache.search(q);
@@ -264,8 +266,8 @@ export class BookingV2Service {
         for (const row of list) {
           if (!row || typeof row !== 'object') continue;
           const r = row as Record<string, unknown>;
-          const code = String(r.stationCode ?? '').trim();
-          const name = String(r.stationName ?? '').trim();
+          const code = ((r.stationCode as string) || '').trim();
+          const name = ((r.stationName as string) || '').trim();
           const key = `${code}|${name}`.toUpperCase();
           if (!code || seen.has(key)) continue;
           seen.add(key);
@@ -975,7 +977,7 @@ export class BookingV2Service {
         return this.normalizeAvlDayRow(r);
       }
     }
-    const first = list[0];
+    const first = list[0] as unknown;
     if (first && typeof first === 'object')
       return this.normalizeAvlDayRow(first as Record<string, unknown>);
     return null;

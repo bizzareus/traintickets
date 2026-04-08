@@ -43,13 +43,15 @@ export class WhatsappService {
     const dateDdMmYyyy = parsed.date;
     try {
       // Search stations to resolve codes
-      const [fromSuggest, toSuggest] = await Promise.all([
-        this.booking.searchStations(parsed.origin) as Promise<any>,
-        this.booking.searchStations(parsed.destination) as Promise<any>,
-      ]);
+      const [fromSuggest, toSuggest] = (await Promise.all([
+        this.booking.searchStations(parsed.origin),
+        this.booking.searchStations(parsed.destination),
+      ])) as Record<string, any>[];
 
-      const fromCode = fromSuggest?.data?.stationList?.[0]?.stationCode;
-      const toCode = toSuggest?.data?.stationList?.[0]?.stationCode;
+      const fromCode =
+        (fromSuggest?.data?.stationList?.[0]?.stationCode as string) || '';
+      const toCode =
+        (toSuggest?.data?.stationList?.[0]?.stationCode as string) || '';
 
       if (!fromCode || !toCode) {
         await this.sendReply(
@@ -65,8 +67,8 @@ export class WhatsappService {
         fromCode,
         toCode,
         dateDdMmYyyy,
-      )) as any;
-      const trains = trainsData?.data?.trainList || [];
+      )) as Record<string, any>;
+      const trains = (trainsData?.data?.trainList as any[]) || [];
       if (!trains.length) {
         await this.sendReply(
           sender,
@@ -80,16 +82,17 @@ export class WhatsappService {
       let text = `🚆 Top Trains from ${fromCode} to ${toCode} on ${parsed.date}:\n\n`;
       const topTrains = trains.slice(0, 3);
       for (const t of topTrains) {
-        const timeInfo = t.departureTime
-          ? `${t.departureTime} -> ${t.arrivalTime || '?'}`
+        const train = t as Record<string, any>;
+        const timeInfo = train.departureTime
+          ? `${train.departureTime as string} -> ${(train.arrivalTime as string) || '?'}`
           : '';
-        const classes = t.avlClasses?.join(', ') || 'N/A';
-        text += `*${t.trainNumber}* ${t.trainName}\n🕒 ${timeInfo}\n🎫 Classes: ${classes}\n\n`;
+        const classes = (train.avlClasses as string[])?.join(', ') || 'N/A';
+        text += `*${train.trainNumber as string}* ${train.trainName as string}\n🕒 ${timeInfo}\n🎫 Classes: ${classes}\n\n`;
       }
       text += `Please check the portal to book alternate seats if confirming these is difficult!`;
 
       await this.sendReply(sender, groupId, text);
-    } catch (e) {
+    } catch (e: unknown) {
       this.logger.error('Error processing flight logic', e);
       await this.sendReply(
         sender,

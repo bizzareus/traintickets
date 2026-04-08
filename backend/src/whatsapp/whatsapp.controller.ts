@@ -17,10 +17,7 @@ export class WhatsappController {
   constructor(private readonly whatsappService: WhatsappService) {}
 
   @Post()
-  async handleIncoming(
-    @Req() req: Request,
-    @Body() body: Record<string, unknown>,
-  ) {
+  handleIncoming(@Req() req: Request, @Body() body: Record<string, any>) {
     // Optional basic webhook validation
     const secret = process.env.WASENDER_WEBHOOK_SECRET;
     if (secret) {
@@ -58,28 +55,34 @@ export class WhatsappController {
       let fromMe = false;
 
       // Extract based on most common wrapper structures. (We'll assume direct root fields or `data` wrapper)
-      const data = (body.data as any) || body;
+      const data = (body.data as Record<string, any>) || body;
 
       // Determine what text is received
       messageText =
-        data.text ||
-        data.message ||
-        data.body ||
-        data.message?.conversation ||
+        (data.text as string) ||
+        (data.message as string) ||
+        (data.body as string) ||
+        (data.message?.conversation as string) ||
         '';
       if (typeof messageText !== 'string') {
-        messageText = data.message?.extendedTextMessage?.text || '';
+        const extendedText = data.message?.extendedTextMessage?.text as string;
+        messageText = extendedText || '';
       }
 
       // Determine routing logic
-      sender = data.from || data.sender || data.key?.remoteJid || '';
-      groupId = data.group_id || undefined;
+      sender =
+        (data.from as string) ||
+        (data.sender as string) ||
+        (data.key?.remoteJid as string) ||
+        '';
+      groupId = (data.group_id as string) || undefined;
 
       if (sender && sender.includes('@g.us')) {
         groupId = sender;
       }
 
-      fromMe = data.fromMe || data.key?.fromMe || false;
+      const fromMeVal = data.fromMe || data.key?.fromMe;
+      fromMe = !!fromMeVal;
 
       // Anti-reflex
       if (fromMe) {
@@ -90,7 +93,7 @@ export class WhatsappController {
       if (messageText && sender) {
         this.whatsappService
           .handleIncomingMessage(sender, messageText, groupId)
-          .catch((e) => {
+          .catch((e: Error) => {
             this.logger.error('Error running WA background job', e);
           });
       }

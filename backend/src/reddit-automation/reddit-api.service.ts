@@ -49,7 +49,7 @@ export class RedditApiService {
     }
 
     try {
-      const { data } = await lastValueFrom(
+      const resp = await lastValueFrom(
         this.http.get(
           `https://oauth.reddit.com/comments/${threadId}?limit=100`,
           {
@@ -60,14 +60,16 @@ export class RedditApiService {
           },
         ),
       );
+      const data = resp.data as Record<string, any>;
       // Reddit returns an array: [0] is post, [1] is comments
-      return data[1]?.data?.children || [];
+      return (data[1]?.data?.children as any[]) || [];
     } catch (e: any) {
-      if (e.response?.status === 401) {
+      const err = e as { response?: { status: number }; message?: string };
+      if (err.response?.status === 401) {
         this.token = null; // refresh next time
       }
       this.logger.warn(
-        'Failed to fetch reddit comments: ' + (e.message || String(e)),
+        'Failed to fetch reddit comments: ' + (err.message || String(e)),
       );
       return [];
     }

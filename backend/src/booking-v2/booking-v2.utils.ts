@@ -143,9 +143,11 @@ export function availabilityTextsIndicateTrainDeparted(
 ): boolean {
   const blob = parts
     .map((x) =>
-      String(x ?? '')
-        .trim()
-        .toLowerCase(),
+      typeof x === 'string'
+        ? x.trim().toLowerCase()
+        : String((x as any) || '')
+            .trim()
+            .toLowerCase(),
     )
     .filter((s) => s.length > 0)
     .join(' ');
@@ -227,7 +229,8 @@ function parseIrctcScheduleClock(
 
 function parseScheduleDayCount(raw: unknown): number | null {
   if (raw == null) return null;
-  const n = parseInt(String(raw).trim(), 10);
+  const s = typeof raw === 'string' ? raw.trim() : String(raw as any).trim();
+  const n = parseInt(s, 10);
   return Number.isFinite(n) && n >= 1 ? n : null;
 }
 

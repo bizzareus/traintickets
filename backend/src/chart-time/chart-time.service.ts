@@ -139,7 +139,7 @@ export class ChartTimeService {
     if (rows.length === 0 && normalizedCodes.length > 0) {
       const jDate = new Date().toISOString().slice(0, 10);
       for (const code of normalizedCodes) {
-        const getTrainCompositionapi = await this.irctc.getTrainComposition(
+        await this.irctc.getTrainComposition(
           {
             trainNo: num,
             jDate,

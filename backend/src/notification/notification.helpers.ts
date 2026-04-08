@@ -1,7 +1,6 @@
 import { DateTime } from 'luxon';
 import {
   isFilledOpenAiPlanItem,
-  type OpenAiBookingPlanItem,
   type Service2CheckResult,
 } from '../service2/service2.service';
 import type { ScheduleStation } from '../irctc/irctc.service';
@@ -35,8 +34,8 @@ export function formatJourneyDateReadable(ymd: string): string {
 
 export function normalizeIrctcTimeDisplay(t: unknown): string {
   if (t == null) return '';
-  const s = String(t).trim();
-  if (!s) return '';
+  const s = typeof t === 'string' ? t.trim() : String(t as any).trim();
+  if (!s || s === 'undefined' || s === 'null') return '';
   if (/^\d{4}$/.test(s)) return `${s.slice(0, 2)}:${s.slice(2, 4)}`;
   return s;
 }
