@@ -2198,7 +2198,6 @@ export default function BookingV2Page() {
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
       <div className="sticky top-0 z-20">
-        <IstRailMaintenanceBanner show={showBanner} />
         <header
           className="border-b border-slate-100 bg-white/95 backdrop-blur-sm"
           role="banner"

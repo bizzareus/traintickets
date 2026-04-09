@@ -11,6 +11,7 @@ function PostHogPageViewInner() {
 
   useEffect(() => {
     if (!pathname || !posthog || typeof window === "undefined") return;
+    if (pathname.startsWith("/admin")) return;
     try {
       posthog.capture("$pageview", {
         $current_url: window.location.href,

@@ -1,4 +1,7 @@
+"use client";
+
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 
 const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-706EQLNFKR";
@@ -8,7 +11,8 @@ const GA_MEASUREMENT_ID =
  * with NEXT_PUBLIC_GA_MEASUREMENT_ID when needed.
  */
 export function GoogleAnalytics() {
-  if (!GA_MEASUREMENT_ID) return null;
+  const pathname = usePathname();
+  if (!GA_MEASUREMENT_ID || (pathname && pathname.startsWith("/admin"))) return null;
 
   return (
     <>

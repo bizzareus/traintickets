@@ -9,6 +9,8 @@ import { posthog } from "./posthog-client";
  */
 export function trackAnalyticsEvent(event: AnalyticsEvent): void {
   if (typeof window === "undefined" || !isAnalyticsEnabled()) return;
+  // Skip tracking for admin routes
+  if (window.location.pathname.startsWith("/admin")) return;
   try {
     posthog.capture(
       event.name,

@@ -5,6 +5,9 @@
  */
 export function isAnalyticsEnabled(): boolean {
   if (typeof window !== "undefined") {
+    if (window.location.pathname.startsWith("/admin")) {
+      return false;
+    }
     try {
       if (window.localStorage.getItem("admin") === "true") {
         return false;

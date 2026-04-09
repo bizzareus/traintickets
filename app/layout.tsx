@@ -2,17 +2,23 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AnalyticsProvider } from "./providers/AnalyticsProvider";
+import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
+import { IstRailMaintenanceBanner } from "@/components/IstRailMaintenance";
 import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
+  display: "swap",
+  preload: true,
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+  display: "swap",
+  preload: true,
 });
 
 export const viewport: Viewport = {
@@ -123,9 +129,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://us.i.posthog.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <IstRailMaintenanceBanner show={isIstIndianRailwaysNightlyMaintenanceWindow()} />
         {/* Analytics first so PostHog client chunk + eager init run before other interactive scripts */}
         <AnalyticsProvider>{children}</AnalyticsProvider>
         <GoogleAnalytics />
