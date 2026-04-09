@@ -31,13 +31,17 @@ export class RedditAutomationService implements OnModuleInit {
     this.logger.log(`Polling Reddit thread ${threadId}...`);
 
     try {
-      const comments = await this.redditApi.getLatestComments(threadId);
+      const comments = (await this.redditApi.getLatestComments(threadId)) as Record<
+        string,
+        any
+      >[];
 
       let maxTimestamp = this.lastSeenTimestamp;
       const now = Math.floor(Date.now() / 1000);
 
       for (const comment of comments) {
-        const createdUtc = (comment.data?.created_utc as number) || 0;
+        const data = (comment.data || {}) as Record<string, any>;
+        const createdUtc = (data.created_utc as number) || 0;
         if (!createdUtc) continue;
 
         if (createdUtc > maxTimestamp) {

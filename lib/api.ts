@@ -1,7 +1,17 @@
 import axios, { type AxiosError } from "axios";
 import axiosRetry from "axios-retry";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
+const getInitialApiUrl = () => {
+  const url = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
+  
+  // Mixed-content protection: If the page is HTTPS, the API must be HTTPS (except on localhost)
+  if (typeof window !== "undefined" && window.location.protocol === "https:" && url.startsWith("http://") && !url.includes("localhost")) {
+    return url.replace("http://", "https://");
+  }
+  return url;
+};
+
+const API_URL = getInitialApiUrl();
 
 const IRCTC_SCHEDULE_TIMEOUT_MS = 10_000;
 

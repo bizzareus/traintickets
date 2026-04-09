@@ -1935,8 +1935,13 @@ export default function BookingV2Page() {
       })
       .catch((e) => {
         if (!c) {
+          const errMsg = extractAxiosMessage(e);
           setFromSuggest([]);
-          setFromSuggestError(extractAxiosMessage(e));
+          setFromSuggestError(errMsg);
+          trackAnalyticsEvent({
+            name: "station_suggestion_failed",
+            properties: { error: errMsg, query: fromDeb, field: "from" },
+          });
         }
       })
       .finally(() => {
@@ -1971,8 +1976,13 @@ export default function BookingV2Page() {
       })
       .catch((e) => {
         if (!c) {
+          const errMsg = extractAxiosMessage(e);
           setToSuggest([]);
-          setToSuggestError(extractAxiosMessage(e));
+          setToSuggestError(errMsg);
+          trackAnalyticsEvent({
+            name: "station_suggestion_failed",
+            properties: { error: errMsg, query: toDeb, field: "to" },
+          });
         }
       })
       .finally(() => {

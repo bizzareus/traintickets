@@ -158,6 +158,10 @@ export type AnalyticsEvent =
   | {
       name: "alternate_paths_irctc_clicked";
       properties: { train_number: string; from_code: string; to_code: string; class_code: string };
+    }
+  | {
+      name: "station_suggestion_failed";
+      properties: { error: string; query: string; field: "from" | "to" };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];

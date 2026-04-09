@@ -14,6 +14,10 @@ export function trackAnalyticsEvent(event: AnalyticsEvent): void {
       event.name,
       event.properties as Record<string, unknown>,
     );
+    // Also track to Google Analytics if gtag is defined
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", event.name, event.properties);
+    }
   } catch {
     /* ignore */
   }
