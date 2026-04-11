@@ -55,21 +55,27 @@ export class StationCacheService {
   async upsertMany(stations: StationRow[]): Promise<void> {
     if (stations.length === 0) return;
 
-    await this.prisma.$transaction(
-      stations.map((s) =>
-        this.prisma.stationCache.upsert({
-          where: { stationCode: s.stationCode.trim().toUpperCase() },
-          create: {
-            stationCode: s.stationCode.trim().toUpperCase(),
-            stationName: s.stationName.trim().toUpperCase(),
-            metadata: s as object,
-          },
-          update: {
-            stationName: s.stationName.trim().toUpperCase(),
-            metadata: s as object,
-          },
-        }),
-      ),
-    );
+    // Using chunks to avoid overwhelming the database or connection pool.
+    // We avoid $transaction here to prevent 'Expired Transaction' errors on large datasets.
+    const CHUNK_SIZE = 50;
+    for (let i = 0; i < stations.length; i += CHUNK_SIZE) {
+      const chunk = stations.slice(i, i + CHUNK_SIZE);
+      await Promise.allSettled(
+        chunk.map((s) =>
+          this.prisma.stationCache.upsert({
+            where: { stationCode: s.stationCode.trim().toUpperCase() },
+            create: {
+              stationCode: s.stationCode.trim().toUpperCase(),
+              stationName: s.stationName.trim().toUpperCase(),
+              metadata: s as object,
+            },
+            update: {
+              stationName: s.stationName.trim().toUpperCase(),
+              metadata: s as object,
+            },
+          }),
+        ),
+      );
+    }
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 function dateToYmd(d: Date): string {
   const y = d.getFullYear();
@@ -64,11 +65,11 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
 
       const dp = new Datepicker(el, {
         autohide: true,
-        // flowbite-datepicker tokens: DD = weekday, M = short month, dd = day (padded)
         format: "DD, M dd",
         orientation: "bottom",
         todayHighlight: true,
         minDate: istToday,
+        container: `#dp-container-${id}`,
       }) as DatepickerInstance;
       dpRef.current = dp;
       el.addEventListener("changeDate", onPick);
@@ -85,7 +86,7 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
       dpRef.current = null;
     };
     // Intentionally once: picker owns the input; callback read via ref.
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     const dp = dpRef.current;
@@ -94,19 +95,26 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
   }, [value]);
 
   return (
-    <>
-      <div className="relative">
-        <input
-          ref={inputRef}
-          id={id}
-          type="text"
-          readOnly
-          className="block w-full cursor-pointer rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-lg font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4"
-          placeholder="Select date"
-          aria-haspopup="dialog"
-          autoComplete="off"
-        />
-      </div>
-    </>
+    <div 
+      id={`dp-container-${id}`} 
+      className={cn(
+        "relative",
+        // Tailwind arbitrary variants to style the injected datepicker internal cells
+        "[&_.datepicker-cell.disabled]:text-gray-300 [&_.datepicker-cell.disabled]:opacity-50 [&_.datepicker-cell.disabled]:cursor-not-allowed [&_.datepicker-cell.disabled]:pointer-events-none",
+        "[&_.datepicker-cell.prev]:text-gray-300 [&_.datepicker-cell.prev]:opacity-40",
+        "[&_.datepicker-cell.next]:text-gray-300 [&_.datepicker-cell.next]:opacity-40"
+      )}
+    >
+      <input
+        ref={inputRef}
+        id={id}
+        type="text"
+        readOnly
+        className="block w-full cursor-pointer rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-lg font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4"
+        placeholder="Select date"
+        aria-haspopup="dialog"
+        autoComplete="off"
+      />
+    </div>
   );
 }

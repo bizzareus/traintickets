@@ -160,6 +160,14 @@ export type AnalyticsEvent =
       properties: { train_number: string; from_code: string; to_code: string; class_code: string };
     }
   | {
+      name: "chart_time_load_failed_booking_popup";
+      properties: {
+        trainNumber: string;
+        legFrom: string;
+        journeyDate: string;
+      };
+    }
+  | {
       name: "station_suggestion_failed";
       properties: { error: string; query: string; field: "from" | "to" };
     };
