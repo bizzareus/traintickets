@@ -1381,7 +1381,9 @@ function collapsedAlternatePathTimingSummary(legs: AlternateLeg[]): {
 }
 
 function todayYmd(): string {
-  const d = new Date();
+  const d = new Date(
+    new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
+  );
   const y = d.getFullYear();
   const mo = String(d.getMonth() + 1).padStart(2, "0");
   const day = String(d.getDate()).padStart(2, "0");

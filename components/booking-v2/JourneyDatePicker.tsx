@@ -57,12 +57,18 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
     void import("flowbite-datepicker/Datepicker").then(({ default: Datepicker }) => {
       if (cancelled || !inputRef.current) return;
       const el = inputRef.current;
+      const istToday = new Date(
+        new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
+      );
+      istToday.setHours(0, 0, 0, 0);
+
       const dp = new Datepicker(el, {
         autohide: true,
         // flowbite-datepicker tokens: DD = weekday, M = short month, dd = day (padded)
         format: "DD, M dd",
         orientation: "bottom",
         todayHighlight: true,
+        minDate: istToday,
       }) as DatepickerInstance;
       dpRef.current = dp;
       el.addEventListener("changeDate", onPick);
