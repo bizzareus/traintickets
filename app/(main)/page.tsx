@@ -2496,7 +2496,7 @@ export default function BookingV2Page() {
                             }
                             onClick={() => void findAlternates(t, cls)}
                           >
-                            Find seats
+                            Find in {cls}
                           </button>
                         )}
                       </div>
@@ -2518,8 +2518,8 @@ export default function BookingV2Page() {
                   )}
                 >
                   {altLoading && altForTrain === t.trainNumber
-                    ? "Finding…"
-                    : "Find best available seats"}
+                    ? "Searching…"
+                    : "Search all classes"}
                 </button>
               </div>
             </li>

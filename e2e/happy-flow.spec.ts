@@ -50,7 +50,7 @@ test.describe("The Happy Flow", () => {
     const trainItem = page
       .getByRole("listitem")
       .filter({ hasText: DEFAULT_TRAIN.trainNumber });
-    await trainItem.getByRole("button", { name: /Find best available seats/i }).click();
+    await trainItem.getByRole("button", { name: /Search all classes/i }).click();
 
     // 8. Verify the alternate path modal opens
     const dialog = page.getByRole("dialog");
