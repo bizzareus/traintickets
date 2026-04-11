@@ -1700,9 +1700,16 @@ function CompactLegChartCta({
 
   if (done || alreadySet) {
     return (
-      <span className="shrink-0 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-800">
-        ✓ Alert set
-      </span>
+      <div className="flex flex-col items-end gap-1">
+        {chartTimeLabel && (
+          <p className="text-[10px] font-medium text-emerald-700/90">
+            Will notify at {chartTimeLabel}
+          </p>
+        )}
+        <span className="shrink-0 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-800">
+          ✓ Alert set
+        </span>
+      </div>
     );
   }
 
@@ -1710,7 +1717,9 @@ function CompactLegChartCta({
     return (
       <div className="flex flex-col items-end gap-1">
         {chartTimeLabel && (
-          <p className="text-[10px] text-amber-700/80 font-medium">New tickets open at {chartTimeLabel}</p>
+          <p className="text-[10px] font-medium text-amber-700/90">
+            New tickets open at {chartTimeLabel}
+          </p>
         )}
         <button
           type="button"
@@ -1733,7 +1742,7 @@ function CompactLegChartCta({
       <div className="flex flex-col gap-1.5 sm:flex-row">
         <input
           type="email"
-          className="w-full rounded border border-blue-200 bg-white px-2 py-1 text-xs"
+          className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -1741,31 +1750,38 @@ function CompactLegChartCta({
         />
         <input
           type="tel"
-          className="w-full rounded border border-blue-200 bg-white px-2 py-1 text-xs"
+          className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
           placeholder="Mobile (optional)"
           value={mobile}
           onChange={(e) => setMobile(e.target.value)}
           autoComplete="tel"
         />
       </div>
-      <div className="mt-1.5 flex items-center gap-2">
-        <button
-          type="button"
-          disabled={submitting}
-          onClick={() => void subscribe()}
-          className="rounded bg-blue-600 px-2.5 py-1 text-xs font-semibold text-white hover:bg-blue-700 disabled:opacity-60"
-        >
-          {submitting ? "Setting up…" : "Set alert"}
-        </button>
-        <button
-          type="button"
-          onClick={() => setOpen(false)}
-          className="text-xs text-gray-500 hover:text-gray-700"
-        >
-          Cancel
-        </button>
+      <div className="mt-2 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            disabled={submitting}
+            onClick={() => void subscribe()}
+            className="rounded bg-blue-600 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 disabled:opacity-60"
+          >
+            {submitting ? "Setting up…" : "Set alert"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            className="text-xs font-medium text-gray-500 hover:text-gray-700"
+          >
+            Cancel
+          </button>
+        </div>
+        {chartTimeLabel && (
+          <span className="text-[10px] italic text-blue-700/80">
+            Triggers at {chartTimeLabel}
+          </span>
+        )}
       </div>
-      {error && <p className="mt-1 text-xs text-red-700">{error}</p>}
+      {error && <p className="mt-2 text-xs font-medium text-red-700">{error}</p>}
     </div>
   );
 }
