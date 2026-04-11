@@ -1704,7 +1704,7 @@ function CompactLegChartCta({
     return (
       <div className="flex flex-col items-end gap-1">
         {chartTimeLabel && (
-          <p className="text-[10px] font-medium text-emerald-700/90">
+          <p className="text-[14px] font-bold text-emerald-700/90">
             Will notify at {chartTimeLabel}
           </p>
         )}
@@ -1719,7 +1719,7 @@ function CompactLegChartCta({
     return (
       <div className="flex flex-col items-end gap-1">
         {chartTimeLabel && (
-          <p className="text-[10px] font-medium text-amber-700/90">
+          <p className="text-[14px] font-bold text-amber-700/90">
             New tickets open at {chartTimeLabel}
           </p>
         )}
