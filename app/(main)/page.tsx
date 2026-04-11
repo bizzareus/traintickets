@@ -1602,6 +1602,7 @@ function CompactLegChartCta({
   legFrom,
   legTo,
   classCode,
+  stationNameMap,
 }: {
   trainNumber: string;
   trainName?: string | null;
@@ -1609,6 +1610,7 @@ function CompactLegChartCta({
   legFrom: string;
   legTo: string;
   classCode: string;
+  stationNameMap?: Record<string, string>;
 }) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -1619,6 +1621,9 @@ function CompactLegChartCta({
   const [alreadySet, setAlreadySet] = useState(false);
   const [chartTimeLabel, setChartTimeLabel] = useState<string | null>(null);
   const [chartTimeLoading, setChartTimeLoading] = useState(false);
+
+  // Prevents duplicate calls for the same station on remounts or rapid state transitions
+  const lastFetchedRef = useRef<string | null>(null);
 
   useEffect(() => {
     if (isLegAlertSet(trainNumber, legFrom, legTo, journeyDate)) {
@@ -1642,6 +1647,10 @@ function CompactLegChartCta({
 
   // Fetch chart preparation time
   useEffect(() => {
+    const fetchKey = `${trainNumber.trim()}#${journeyDate.trim()}#${legFrom.trim().toUpperCase()}`;
+    if (lastFetchedRef.current === fetchKey) return;
+    lastFetchedRef.current = fetchKey;
+
     let cancel = false;
     setChartTimeLoading(true);
     apiClient
@@ -1762,9 +1771,9 @@ function CompactLegChartCta({
             Loading chart time...
           </span>
         ) : chartTimeLabel ? (
-          `Get notified when new seats open at ${chartTimeLabel} on ${legFrom} → ${legTo} route`
+          `Get notified when new seats open at ${chartTimeLabel} on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
         ) : (
-          `Get notified when new seats open on ${legFrom} → ${legTo} route`
+          `Get notified when new seats open on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
         )}
       </p>
       <div className="flex flex-col gap-1.5 sm:flex-row">
@@ -2867,6 +2876,7 @@ export default function BookingV2Page() {
                                     legFrom={leg.from}
                                     legTo={leg.to}
                                     classCode={leg.travelClass ?? altAvlClasses?.[0] ?? "SL"}
+                                    stationNameMap={altResult.stationNameMap}
                                   />
                                 </div>
                               )}
@@ -2898,7 +2908,7 @@ export default function BookingV2Page() {
                                 Leg {stepIndex} of {stepTotal}
                               </span>
                               <span className="font-bold text-gray-900 tabular-nums">
-                                {item.from} → {item.to}
+                                {getStationDisplayName(item.from, altResult.stationNameMap)} → {getStationDisplayName(item.to, altResult.stationNameMap)}
                               </span>
                               {stationsBetween != null && (
                                 <span className="text-xs text-gray-500">
@@ -2928,6 +2938,7 @@ export default function BookingV2Page() {
                                 legFrom={item.from}
                                 legTo={item.to}
                                 classCode={altAvlClasses?.[0] ?? "SL"}
+                                stationNameMap={altResult.stationNameMap}
                               />
                             </div>
                           </div>
