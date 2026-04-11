@@ -146,6 +146,10 @@ export class BookingV2Service {
     private readonly stationCache: StationCacheService,
   ) {}
 
+  async getTrainSchedule(trainNumber: string) {
+    return this.irctc.getTrainSchedule(trainNumber);
+  }
+
   /** `YYYY-MM-DD` or passthrough if already `DD-MM-YYYY`. */
   normalizeToRailApiDate(dateInput: string): string | null {
     const t = String(dateInput).trim();

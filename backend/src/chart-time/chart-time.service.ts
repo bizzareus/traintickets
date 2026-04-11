@@ -139,6 +139,7 @@ export class ChartTimeService {
     if (rows.length === 0 && normalizedCodes.length > 0) {
       const jDate = new Date().toISOString().slice(0, 10);
       for (const code of normalizedCodes) {
+        console.log('code', code);
         await this.irctc.getTrainComposition(
           {
             trainNo: num,
@@ -149,6 +150,7 @@ export class ChartTimeService {
         );
       }
       rows = await this.prisma.trainStationChartTime.findMany({ where });
+      console.log('rows', rows);
     }
     const map = new Map<
       string,

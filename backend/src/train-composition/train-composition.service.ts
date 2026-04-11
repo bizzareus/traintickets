@@ -181,6 +181,7 @@ export class TrainCompositionService {
       trainNumber,
       stationCode,
     );
+    console.log("cached", cached);
     if (cached?.chartOne?.trim() && !row.chartOneTime?.trim()) {
       applyDbCachedToRow(row, cached);
     }

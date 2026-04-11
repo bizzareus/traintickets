@@ -164,4 +164,26 @@ export class BookingV2Controller {
       res.end();
     }
   }
+
+  @Get('trains/schedule/:trainNumber')
+  async getTrainSchedule(
+    @Query('trainNumber') trainNumberParam: string | undefined,
+    @Res() res: Response,
+  ) {
+    // Both param and query fallback
+    const num = trimStr(trainNumberParam) || trimStr(res.req.params.trainNumber);
+    if (!num) {
+      throw new BadRequestException('trainNumber is required');
+    }
+    const result = await this.bookingV2.getTrainSchedule(num);
+    if (!result.ok) {
+      if (result.reason === 'maintenance') {
+        res.status(503).json({ message: result.message });
+        return;
+      }
+      res.status(404).json({ message: 'Schedule not available' });
+      return;
+    }
+    res.json(result.schedule);
+  }
 }
