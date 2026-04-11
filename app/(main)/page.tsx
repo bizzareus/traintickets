@@ -1390,6 +1390,16 @@ function todayYmd(): string {
   return `${y}-${mo}-${day}`;
 }
 
+function getStationDisplayName(
+  code: string,
+  map?: Record<string, string>,
+): string {
+  if (!code) return code;
+  const name = map?.[code.trim().toUpperCase()];
+  if (name) return `${name} (${code})`;
+  return code;
+}
+
 function useDebounced<T>(value: T, ms: number): T {
   const [v, setV] = useState(value);
   useEffect(() => {
@@ -1608,6 +1618,7 @@ function CompactLegChartCta({
   const [done, setDone] = useState(false);
   const [alreadySet, setAlreadySet] = useState(false);
   const [chartTimeLabel, setChartTimeLabel] = useState<string | null>(null);
+  const [chartTimeLoading, setChartTimeLoading] = useState(false);
 
   useEffect(() => {
     if (isLegAlertSet(trainNumber, legFrom, legTo, journeyDate)) {
@@ -1632,6 +1643,7 @@ function CompactLegChartCta({
   // Fetch chart preparation time
   useEffect(() => {
     let cancel = false;
+    setChartTimeLoading(true);
     apiClient
       .post<{ stations: StationChartMetaItem[] }>(
         "/api/train-composition/stations-meta",
@@ -1645,6 +1657,7 @@ function CompactLegChartCta({
       )
       .then((r) => {
         if (cancel) return;
+        setChartTimeLoading(false);
         const chartTime = r.data?.stations?.[0]?.chartOneTime?.trim();
         if (chartTime && journeyDate) {
           const ymd = journeyDate.trim().slice(0, 10);
@@ -1655,7 +1668,8 @@ function CompactLegChartCta({
         }
       })
       .catch(() => {
-        /* ignore */
+        if (cancel) return;
+        setChartTimeLoading(false);
       });
     return () => {
       cancel = true;
@@ -1718,11 +1732,16 @@ function CompactLegChartCta({
   if (!open) {
     return (
       <div className="flex flex-col items-end gap-1">
-        {chartTimeLabel && (
+        {chartTimeLoading ? (
+          <div className="flex items-center gap-1.5 text-[11px] font-bold italic text-amber-600 animate-pulse">
+            <span className="h-2.5 w-2.5 rounded-full border-2 border-amber-600 border-t-transparent animate-spin" />
+            Loading chart time...
+          </div>
+        ) : chartTimeLabel ? (
           <p className="text-[14px] font-bold text-amber-700/90">
             New tickets open at {chartTimeLabel}
           </p>
-        )}
+        ) : null}
         <button
           type="button"
           onClick={() => setOpen(true)}
@@ -1737,9 +1756,16 @@ function CompactLegChartCta({
   return (
     <div className="mt-2 w-full rounded-md border border-blue-200 bg-blue-50 p-2.5">
       <p className="mb-1.5 text-xs font-semibold text-blue-900">
-        {chartTimeLabel
-          ? `Get notified when new seats open at ${chartTimeLabel} on ${legFrom} → ${legTo} route`
-          : `Get notified when new seats open on ${legFrom} → ${legTo} route`}
+        {chartTimeLoading ? (
+          <span className="inline-flex items-center gap-1.5 italic text-blue-600/80">
+            <span className="h-2 w-2 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+            Loading chart time...
+          </span>
+        ) : chartTimeLabel ? (
+          `Get notified when new seats open at ${chartTimeLabel} on ${legFrom} → ${legTo} route`
+        ) : (
+          `Get notified when new seats open on ${legFrom} → ${legTo} route`
+        )}
       </p>
       <div className="flex flex-col gap-1.5 sm:flex-row">
         <input
@@ -2408,13 +2434,15 @@ export default function BookingV2Page() {
                 </h2>
                 <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
                   <span className="font-semibold">
-                    {formatTimeAmPm(t.departureTime) ?? "—"} {t.fromStnCode}
+                    {formatTimeAmPm(t.departureTime) ?? "—"}{" "}
+                    {t.fromStnCode}
                   </span>
                   <span className="text-gray-400">
                     {formatDurationMinutes(t.duration)}
                   </span>
                   <span className="font-semibold">
-                    {formatTimeAmPm(t.arrivalTime) ?? "—"} {t.toStnCode}
+                    {formatTimeAmPm(t.arrivalTime) ?? "—"}{" "}
+                    {t.toStnCode}
                   </span>
                 </div>
               </div>
@@ -2761,7 +2789,7 @@ export default function BookingV2Page() {
                                   Leg {stepIndex} of {stepTotal}
                                 </span>
                                 <span className="font-bold text-gray-900 tabular-nums">
-                                  {leg.from} → {leg.to}
+                                  {getStationDisplayName(leg.from, altResult.stationNameMap)} → {getStationDisplayName(leg.to, altResult.stationNameMap)}
                                 </span>
                                 {timeLine && (
                                   <span className="text-xs tabular-nums text-gray-500">
