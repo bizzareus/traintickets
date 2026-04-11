@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Suspense,
   useCallback,
   useEffect,
   useId,
@@ -9,6 +10,7 @@ import {
   useState,
 } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDisplay";
@@ -417,7 +419,7 @@ function ConfirmedClassOptionCard({
           });
         }}
         className="bg-blue-600 hover:bg-blue-700 inline-flex w-full items-center justify-center rounded-lg px-3 py-2 text-sm font-bold text-white shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-        aria-label={`Book ${option.travelClass} class IRCTC ticket from ${from} to ${to}`}
+        aria-label={`Book ${option.travelClass} class ticket from ${from} to ${to}`}
       >
         Book
       </a>
@@ -568,7 +570,7 @@ function AlternatePathLegListItem({
                       });
                     }}
                     className="bg-blue-600 hover:bg-blue-700 mt-4 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-bold text-white shadow-md transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto sm:min-w-[220px]"
-                    aria-label={`Book IRCTC ticket from ${leg.from} to ${leg.to}`}
+                    aria-label={`Book ticket from ${leg.from} to ${leg.to}`}
                   >
                     Book
                   </a>
@@ -1197,7 +1199,7 @@ function AlternatePathRemainderInsights({
       <div className="rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-950">
         {metaLoading && (
           <p className="font-medium text-amber-900">
-            Loading IRCTC chart preparation times for{" "}
+            Loading chart preparation times for{" "}
             {legFrom.trim().toUpperCase()}
             {sameLegEndpoints ||
             legTo.trim().toUpperCase() ===
@@ -1417,9 +1419,24 @@ function TrainScheduleBottomSheet({
   const [schedule, setSchedule] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const boardingStationRef = useRef<HTMLDivElement>(null);
+
+  const stationList = schedule?.stationList || [];
+  const from = highlightFrom.toUpperCase();
+  const to = highlightTo.toUpperCase();
+
+  const fromIdx = stationList.findIndex(
+    (s: any) => s.stationCode.toUpperCase() === from,
+  );
+  const toIdx = stationList.findIndex(
+    (s: any) => s.stationCode.toUpperCase() === to,
+  );
+
   useEffect(() => {
     if (!open || !trainNumber) return;
     setLoading(true);
+    setSchedule(null);
     setError(null);
     apiClient
       .get(`/api/booking-v2/trains/schedule/${trainNumber}`)
@@ -1432,18 +1449,20 @@ function TrainScheduleBottomSheet({
       .finally(() => setLoading(false));
   }, [open, trainNumber]);
 
+  // Auto-scroll to boarding station once loaded
+  useEffect(() => {
+    if (!loading && schedule && fromIdx >= 0 && open) {
+      const timer = setTimeout(() => {
+        boardingStationRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [loading, schedule, fromIdx, open]);
+
   if (!open) return null;
-
-  const stationList = schedule?.stationList || [];
-  const from = highlightFrom.toUpperCase();
-  const to = highlightTo.toUpperCase();
-
-  const fromIdx = stationList.findIndex(
-    (s: any) => s.stationCode.toUpperCase() === from,
-  );
-  const toIdx = stationList.findIndex(
-    (s: any) => s.stationCode.toUpperCase() === to,
-  );
 
   const isInRange = (idx: number) => {
     if (fromIdx < 0 || toIdx < 0) return false;
@@ -1473,11 +1492,11 @@ function TrainScheduleBottomSheet({
             </svg>
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto p-4 scroll-smooth">
+        <div ref={scrollContainerRef} className="flex-1 overflow-y-auto p-4 scroll-smooth">
           {loading && (
             <div className="flex h-64 flex-col items-center justify-center gap-3">
               <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
-              <p className="text-sm font-medium text-gray-500 italic">Fetching from IRCTC...</p>
+              <p className="text-sm font-medium text-gray-500 italic">Fetching schedule...</p>
             </div>
           )}
           {error && (
@@ -1496,6 +1515,7 @@ function TrainScheduleBottomSheet({
                 return (
                   <div 
                     key={idx} 
+                    ref={isBoarding ? boardingStationRef : null}
                     className={cn(
                       "group relative flex items-start gap-4 px-3 py-2 rounded-xl transition-all duration-200",
                       highlighted ? "bg-blue-50/60 ring-1 ring-blue-100/50" : "hover:bg-gray-50",
@@ -1503,15 +1523,15 @@ function TrainScheduleBottomSheet({
                     )}
                   >
                     {/* Timeline Line/Marker */}
-                    <div className="relative flex flex-col items-center mt-1.5 h-full w-4 shrink-0">
+                    <div className="relative flex flex-col items-center w-4 shrink-0 self-stretch">
                       <div className={cn(
-                        "h-3 w-3 rounded-full border-[2.5px] z-10 transition-transform",
+                        "mt-1.5 h-3 w-3 rounded-full border-[2.5px] z-10 transition-transform",
                         highlighted ? "bg-blue-600 border-blue-200 scale-110" : "bg-white border-gray-300",
                         (isBoarding || isAlighting) && "scale-125 shadow-sm"
                       )} />
                       {idx < stationList.length - 1 && (
                         <div className={cn(
-                          "absolute top-3 w-[1.5px] h-[calc(100%+12px)] transition-colors",
+                          "absolute top-4 bottom-[-10px] w-[1.5px] z-0 transition-colors",
                           highlighted && idx < toIdx ? "bg-blue-400" : "bg-gray-200"
                         )} />
                       )}
@@ -1838,6 +1858,10 @@ function CompactLegChartCta({
       .catch(() => {
         if (cancel) return;
         setChartTimeLoading(false);
+        trackAnalyticsEvent({
+          name: "chart_time_load_failed_booking_popup",
+          properties: { trainNumber, legFrom, journeyDate },
+        });
       });
     return () => {
       cancel = true;
@@ -1982,7 +2006,7 @@ function CompactLegChartCta({
   );
 }
 
-export default function BookingV2Page() {
+function BookingV2PageContent() {
   const [fromQ, setFromQ] = useState("");
   const [toQ, setToQ] = useState("");
   const fromDeb = useDebounced(fromQ, 300);
@@ -3152,5 +3176,13 @@ export default function BookingV2Page() {
         highlightTo={scheduleHighlightTo}
       />
     </div>
+  );
+}
+
+export default function BookingV2Page() {
+  return (
+    <Suspense fallback={null}>
+      <BookingV2PageContent />
+    </Suspense>
   );
 }

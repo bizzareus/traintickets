@@ -692,7 +692,7 @@ export class IrctcService {
       });
       const typed = raw as unknown as TrainCompositionResponse;
       try {
-        await this.persistChartTimesFromComposition(typed);
+        await this.persistChartTimesFromComposition(typed, ctx.boardingStation);
       } catch {
         // best-effort chart times
       }
@@ -717,7 +717,7 @@ export class IrctcService {
     console.log('raw >>> getTrainComposition', raw);
     const data = raw as unknown as TrainCompositionResponse;
     try {
-      await this.persistChartTimesFromComposition(data);
+      await this.persistChartTimesFromComposition(data, payload.boardingStation);
     } catch {
       // persist is best-effort; still return composition
     }
@@ -772,6 +772,7 @@ export class IrctcService {
    */
   private async persistChartTimesFromComposition(
     data: TrainCompositionResponse,
+    boardingStation: string,
   ): Promise<void> {
     const remote =
       data.chartStatusResponseDto?.remoteStationCode ??
@@ -795,12 +796,12 @@ export class IrctcService {
       where: {
         trainNumber_stationCode: {
           trainNumber: trainNo,
-          stationCode: remote,
+          stationCode: boardingStation,
         },
       },
       create: {
         trainNumber: trainNo,
-        stationCode: remote,
+        stationCode: boardingStation,
         chartTimeLocal: chartOne.time,
         chartTwoTimeLocal: chartTwo?.time ?? null,
         chartTwoDayOffset,
