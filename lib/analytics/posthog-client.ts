@@ -22,8 +22,13 @@ declare global {
 let initCalled = false;
 
 export function initPosthogBrowser(): void {
-  if (typeof window === "undefined" || !isAnalyticsEnabled() || !POSTHOG_KEY)
-    return;
+  if (typeof window === "undefined" || !POSTHOG_KEY) return;
+
+  // Suppression logic moved here to avoid hydration mismatches
+  const isAdminPath = window.location.pathname.startsWith("/admin");
+  const isAdminUser = window.localStorage.getItem("admin") === "true";
+  if (isAdminPath || isAdminUser) return;
+
   if (initCalled) return;
   initCalled = true;
 

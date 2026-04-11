@@ -1619,6 +1619,7 @@ function StationFieldSimple(props: {
   open: boolean;
   onOpenChange: (o: boolean) => void;
   suggestError: string | null;
+  className?: string;
 }) {
   const {
     label,
@@ -1632,6 +1633,7 @@ function StationFieldSimple(props: {
     open,
     onOpenChange,
     suggestError,
+    className,
   } = props;
   const wrapRef = useRef<HTMLDivElement>(null);
   const inputId = useId();
@@ -1655,6 +1657,7 @@ function StationFieldSimple(props: {
       className={cn(
         "relative min-w-0 flex-1 border-b border-gray-200 px-3 py-2.5 sm:border-b-0 sm:border-r sm:py-2",
         showList && "z-[55]",
+        className,
       )}
     >
       <label
@@ -2467,8 +2470,9 @@ function BookingV2PageContent() {
 
         <div className="mb-8">
           <h2 className="sr-only">Journey search</h2>
-          <div className="flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch sm:overflow-visible">
+          <div className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch">
             <StationFieldSimple
+              className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
               label="From"
               query={fromQ}
               onUserType={(q) => {
@@ -2514,7 +2518,7 @@ function BookingV2PageContent() {
               onOpenChange={openTo}
               suggestError={toSuggestError}
             />
-            <div className="min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 sm:border-t-0 sm:border-r sm:py-2">
+            <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:border-t-0 sm:border-r sm:py-2">
               <label
                 htmlFor={journeyDateInputId}
                 className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500"
@@ -2547,6 +2551,21 @@ function BookingV2PageContent() {
                   });
                 }}
               />
+              <div className="mt-2 flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="acTicketsOnly"
+                  checked={acOnly}
+                  onChange={(e) => setAcOnly(e.target.checked)}
+                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
+                />
+                <label
+                  htmlFor="acTicketsOnly"
+                  className="cursor-pointer select-none text-xs font-medium text-gray-600"
+                >
+                  AC tickets only
+                </label>
+              </div>
             </div>
             <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
               <button
@@ -2575,18 +2594,6 @@ function BookingV2PageContent() {
                 )}
               </button>
             </div>
-          </div>
-          <div className="mt-3 flex items-center gap-2 px-1">
-            <input
-              type="checkbox"
-              id="acTicketsOnly"
-              checked={acOnly}
-              onChange={(e) => setAcOnly(e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
-            />
-            <label htmlFor="acTicketsOnly" className="text-sm font-medium text-gray-700 cursor-pointer select-none">
-              AC tickets only
-            </label>
           </div>
         </div>
 

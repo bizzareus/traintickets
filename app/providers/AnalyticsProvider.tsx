@@ -21,10 +21,6 @@ export function AnalyticsProvider({ children }: { children: ReactNode }) {
     initPosthogBrowser();
   }, []);
 
-  if (!isAnalyticsEnabled() || !POSTHOG_KEY) {
-    return <>{children}</>;
-  }
-
   return (
     <PostHogProvider client={posthog}>
       <PostHogPageView />

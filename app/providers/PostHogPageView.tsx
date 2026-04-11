@@ -11,7 +11,11 @@ function PostHogPageViewInner() {
 
   useEffect(() => {
     if (!pathname || !posthog || typeof window === "undefined") return;
-    if (pathname.startsWith("/admin")) return;
+
+    const isAdminPath = pathname.startsWith("/admin");
+    const isAdminUser = window.localStorage.getItem("admin") === "true";
+    if (isAdminPath || isAdminUser) return;
+
     try {
       posthog.capture("$pageview", {
         $current_url: window.location.href,

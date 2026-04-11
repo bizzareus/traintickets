@@ -4,19 +4,6 @@
  * EU: https://eu.i.posthog.com
  */
 export function isAnalyticsEnabled(): boolean {
-  if (typeof window !== "undefined") {
-    if (window.location.pathname.startsWith("/admin")) {
-      return false;
-    }
-    try {
-      if (window.localStorage.getItem("admin") === "true") {
-        return false;
-      }
-    } catch {
-      /* ignore */
-    }
-  }
-
   return Boolean(
     typeof process !== "undefined" &&
       process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim(),
