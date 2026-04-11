@@ -38,30 +38,33 @@ export type JourneyValidationResult =
 
 /**
  * Builds chartAt (Date) from journey date and HH:MM chart time (local).
+ * Aligns with Asia/Kolkata (IST) zone for absolute moment calculation.
  */
 function buildChartAt(journeyDate: Date, chartTimeLocal: string): Date {
-  const [y, mo, d] = journeyDate
-    .toISOString()
-    .slice(0, 10)
-    .split('-')
-    .map(Number);
+  const jStr = journeyDate.toISOString().slice(0, 10); // "YYYY-MM-DD"
   const [h, min] = chartTimeLocal.split(':').map(Number);
-  return new Date(y, mo - 1, d, h ?? 0, min ?? 0, 0, 0);
+  return DateTime.fromFormat(`${jStr} ${h}:${min}`, 'yyyy-MM-dd H:m', {
+    zone: 'Asia/Kolkata',
+  }).toJSDate();
 }
 
 /**
  * Builds chartAt for journeyDate + dayOffset days + HH:MM (for chart two).
+ * Aligns with Asia/Kolkata (IST).
  */
 function buildChartAtWithDayOffset(
   journeyDate: Date,
   chartTimeLocal: string,
   dayOffset: number,
 ): Date {
-  const base = new Date(journeyDate);
-  base.setDate(base.getDate() + dayOffset);
+  const jStr = DateTime.fromJSDate(journeyDate)
+    .setZone('Asia/Kolkata')
+    .plus({ days: dayOffset })
+    .toFormat('yyyy-MM-dd');
   const [h, min] = chartTimeLocal.split(':').map(Number);
-  base.setHours(h ?? 0, min ?? 0, 0, 0);
-  return base;
+  return DateTime.fromFormat(`${jStr} ${h}:${min}`, 'yyyy-MM-dd H:m', {
+    zone: 'Asia/Kolkata',
+  }).toJSDate();
 }
 
 @Injectable()
@@ -633,7 +636,7 @@ export class JourneyTaskService {
     const due = await this.prisma.$queryRaw<
       Array<{ id: string }>
     >`SELECT id FROM "ChartTimeAvailabilityTask"
-      WHERE chart_at <= (NOW() AT TIME ZONE 'Asia/Kolkata')
+      WHERE chart_at <= NOW()
         AND status = 'pending'
       ORDER BY chart_at ASC
       LIMIT 20`;

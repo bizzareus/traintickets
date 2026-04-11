@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import { DateTime } from 'luxon';
 import { JourneyTaskService } from '../availability/journey-task.service';
 
 @Injectable()
@@ -8,8 +9,8 @@ export class ChartCronService {
 
   @Cron(CronExpression.EVERY_MINUTE) // every minute
   async handleChartCron() {
-    const now = new Date();
-    console.log('starting cron every minute', now.toISOString());
+    const nowIst = DateTime.now().setZone('Asia/Kolkata');
+    console.log('starting cron every minute', nowIst.toISO());
 
     // Find pending ChartTimeAvailabilityTask where chart time has arrived (chartAt <= now)
     // and trigger the check API internally to find any available seats for each task

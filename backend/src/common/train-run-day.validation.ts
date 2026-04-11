@@ -50,9 +50,10 @@ function getTrainRunsOnFlagForYmd(
   if (parts.length !== 3 || parts.some((n) => !Number.isFinite(n)))
     return undefined;
   const [y, mo, d] = parts;
-  const date = new Date(y, (mo ?? 1) - 1, d ?? 1);
+  // Construct date as UTC to avoid local timezone shifts for calendar-day logic
+  const date = new Date(Date.UTC(y, (mo ?? 1) - 1, d ?? 1));
   if (Number.isNaN(date.getTime())) return undefined;
-  const key = TRAIN_RUNS_ON_BY_GET_DAY[date.getDay()];
+  const key = TRAIN_RUNS_ON_BY_GET_DAY[date.getUTCDay()];
   return normalizeRunsOnFlag(runs[key]);
 }
 
