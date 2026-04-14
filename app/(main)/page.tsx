@@ -3175,7 +3175,7 @@ function BookingV2PageContent() {
                                 className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold tabular-nums sm:h-8 sm:w-8 sm:text-xs ${
                                   isConfirmed
                                     ? "bg-emerald-600 text-white ring-2 ring-emerald-200"
-                                    : "bg-amber-500 text-white ring-2 ring-amber-200"
+                                    : "bg-slate-500 text-white ring-2 ring-slate-200"
                                 }`}
                               >
                                 {stepIndex}
@@ -3188,18 +3188,18 @@ function BookingV2PageContent() {
                             <div className={`mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border ${
                               isConfirmed
                                 ? "border-emerald-200 bg-white"
-                                : "border-amber-200/80 bg-amber-50/40"
+                                : "border-slate-300 bg-slate-50/50 shadow-sm"
                             }`}>
                               {/* Leg header */}
                               <div className={`flex flex-wrap items-center gap-x-2 gap-y-1 px-3 py-2 sm:px-4 ${
                                 isConfirmed
                                   ? "border-b border-emerald-100 bg-emerald-50/80"
-                                  : "border-b border-amber-200/60 bg-amber-100/40"
+                                  : "border-b border-slate-200 bg-slate-100/50"
                               }`}>
                                 <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide ${
                                   isConfirmed
                                     ? "bg-emerald-600 text-white"
-                                    : "bg-amber-500 text-white"
+                                    : "bg-slate-500 text-white"
                                 }`}>
                                   Leg {stepIndex} of {stepTotal}
                                 </span>
@@ -3285,7 +3285,7 @@ function BookingV2PageContent() {
                               {/* No tickets row */}
                               {!isConfirmed && (
                                 <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
-                                  <span className="text-sm font-semibold text-amber-800">
+                                  <span className="text-sm font-semibold text-slate-700">
                                     {leg.availabilityDisplayName ? `Waitlisted (${leg.availabilityDisplayName})` : "No tickets available"}
                                   </span>
                                   <CompactLegChartCta
@@ -3312,7 +3312,7 @@ function BookingV2PageContent() {
                           {/* Timeline connector */}
                           <div className="flex w-8 shrink-0 flex-col items-center sm:w-10">
                             <span
-                              className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-amber-500 text-[11px] font-bold tabular-nums text-white ring-2 ring-amber-200 sm:h-8 sm:w-8 sm:text-xs"
+                              className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-slate-500 text-[11px] font-bold tabular-nums text-white ring-2 ring-slate-200 sm:h-8 sm:w-8 sm:text-xs"
                             >
                               {stepIndex}
                             </span>
@@ -3321,9 +3321,9 @@ function BookingV2PageContent() {
                             )}
                           </div>
                           {/* Card */}
-                          <div className="mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border border-amber-200/80 bg-white">
-                            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-amber-200/60 bg-amber-50/60 px-3 py-2 sm:px-4">
-                              <span className="shrink-0 rounded-full bg-amber-500 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
+                          <div className="mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm">
+                            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-slate-200 bg-slate-50/60 px-3 py-2 sm:px-4">
+                              <span className="shrink-0 rounded-full bg-slate-500 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
                                 Leg {stepIndex} of {stepTotal}
                               </span>
                               {stationsBetween != null && (
