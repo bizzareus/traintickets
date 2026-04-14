@@ -627,6 +627,112 @@ function AlternatePathLegListItem({
 }
 
 /** Fetches chart time for a station and shows chart-prepared or chart-not-prepared messaging with alert subscription. */
+function NextReleaseBottomSheet({
+  trainNumber,
+  journeyDate,
+  stationCode,
+  onClose,
+}: {
+  trainNumber: string;
+  journeyDate: string;
+  stationCode: string;
+  onClose: () => void;
+}) {
+  const [nextMeta, setNextMeta] = useState<StationChartMetaItem | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    apiClient
+      .post<{ stations: StationChartMetaItem[] }>(
+        "/api/train-composition/stations-meta",
+        {
+          trainNumber,
+          journeyDate,
+          sourceStation: stationCode,
+          refreshFromIrctc: false,
+        },
+      )
+      .then((r) => setNextMeta(r.data?.stations?.[0] ?? null))
+      .catch(() => setNextMeta(null))
+      .finally(() => setLoading(false));
+  }, [trainNumber, journeyDate, stationCode]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 backdrop-blur-[2px]"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-md rounded-t-3xl bg-white p-6 pb-12 shadow-2xl animate-in slide-in-from-bottom duration-300"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mx-auto mb-6 h-1.5 w-12 rounded-full bg-gray-200" />
+        <h3 className="text-xl font-extrabold text-gray-900">Next Release Info</h3>
+        <p className="mt-1 text-sm font-medium text-gray-500">
+          Scheduled release for station:{" "}
+          <span className="font-bold text-gray-800">{stationCode}</span>
+        </p>
+
+        <div className="mt-8">
+          {loading ? (
+            <div className="flex flex-col items-center justify-center py-10">
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
+              <p className="mt-4 text-xs font-bold text-blue-600 animate-pulse">
+                Fetching next release schedule...
+              </p>
+            </div>
+          ) : nextMeta?.chartOneTime ? (
+            <div className="relative overflow-hidden rounded-2xl border border-indigo-100 bg-indigo-50 p-5">
+              <div className="relative z-10">
+                <p className="text-xs font-bold uppercase tracking-widest text-indigo-600">
+                  Estimated Charting At
+                </p>
+                <p className="mt-2 text-2xl font-black tracking-tight text-indigo-950">
+                  {(() => {
+                    const ymd = journeyDate.slice(0, 10);
+                    const m = moment(
+                      `${ymd} ${nextMeta.chartOneTime}`,
+                      "YYYY-MM-DD HH:mm",
+                    ).add(nextMeta.chartOneDayOffset || 0, "days");
+                    return m.format("ddd, MMM DD [at] h:mm A");
+                  })()}{" "}
+                  IST
+                </p>
+                {nextMeta.chartNextRemoteStation && (
+                  <div className="mt-6 border-t border-indigo-200 pt-4">
+                    <p className="text-[11px] font-bold text-indigo-700/70">
+                      FOLLOWED BY ANOTHER RELEASE AT
+                    </p>
+                    <p className="mt-1 text-sm font-extrabold text-indigo-900">
+                      {nextMeta.chartNextRemoteStation}
+                    </p>
+                  </div>
+                )}
+              </div>
+              <div className="absolute right-[-20px] top-[-20px] h-32 w-32 rounded-full bg-indigo-500 opacity-5 blur-3xl" />
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-gray-100 bg-gray-50 p-8 text-center">
+              <p className="text-sm font-medium text-gray-400 italic">
+                No specific charting metadata was found for {stationCode}. It
+                might follow the same timeline as the previous station.
+              </p>
+            </div>
+          )}
+        </div>
+
+        <button
+          onClick={onClose}
+          className="bg-indigo-600 hover:bg-indigo-700 mt-8 w-full rounded-2xl px-4 py-4 text-sm font-black text-white shadow-lg shadow-indigo-200 transition-all active:scale-[0.98]"
+        >
+          Got it, Close
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function LegChartTimeInsight({
   trainNumber,
   trainName,
@@ -652,6 +758,7 @@ function LegChartTimeInsight({
   const [alertError, setAlertError] = useState<string | null>(null);
   const [alertSuccess, setAlertSuccess] = useState<string | null>(null);
   const [alertAlreadySet, setAlertAlreadySet] = useState(false);
+  const [showNextReleaseSheet, setShowNextReleaseSheet] = useState(false);
 
   useEffect(() => {
     if (isLegAlertSet(trainNumber, legFrom, legTo, journeyDate)) {
@@ -702,20 +809,28 @@ function LegChartTimeInsight({
   }, [trainNumber, journeyDate, stationCode]);
 
   const chartTime = meta?.chartOneTime?.trim() || null;
+  const chartOffset = meta?.chartOneDayOffset ?? 0;
+
   const chartPrepared = useMemo(() => {
     if (!chartTime || !journeyDate) return null;
     const ymd = journeyDate.trim().slice(0, 10);
-    const chartMoment = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm");
+    const chartMoment = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm").add(
+      chartOffset,
+      "days",
+    );
     if (!chartMoment.isValid()) return null;
     return moment().isAfter(chartMoment);
-  }, [chartTime, journeyDate]);
+  }, [chartTime, journeyDate, chartOffset]);
 
   const chartDateTimeFormatted = useMemo(() => {
     if (!chartTime || !journeyDate) return null;
     const ymd = journeyDate.trim().slice(0, 10);
-    const m = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm");
+    const m = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm").add(
+      chartOffset,
+      "days",
+    );
     return m.isValid() ? m.format("ddd, MMM DD [at] h:mm A") : chartTime;
-  }, [chartTime, journeyDate]);
+  }, [chartTime, journeyDate, chartOffset]);
 
   const subscribeAlert = useCallback(async () => {
     const em = email.trim() || undefined;
@@ -913,19 +1028,40 @@ function LegChartTimeInsight({
 
   if (chartPrepared === true) {
     return (
-      <div className="mt-3 space-y-3">
-        <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2.5">
-          <p className="text-sm font-semibold text-red-900">
-            Chart already prepared
-          </p>
-          <p className="mt-1 text-sm text-red-800">
-            Chart was prepared at{" "}
-            <span className="font-semibold">{chartDateTimeFormatted}</span> for{" "}
-            {stationCode}. Ticket availability is unlikely to change.
-          </p>
+      <>
+        <div className="mt-3 space-y-3">
+          <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2.5">
+            <p className="text-sm font-semibold text-red-900">
+              Chart for {meta?.chartRemoteStation || stationCode} was prepared
+            </p>
+            <p className="mt-1 text-sm text-red-800">
+              Chart was released at{" "}
+              <span className="font-semibold text-red-950">
+                {chartDateTimeFormatted}
+              </span>{" "}
+              for {stationCode}. Ticket availability is unlikely to change.
+            </p>
+            {meta?.chartNextRemoteStation && (
+              <button
+                type="button"
+                onClick={() => setShowNextReleaseSheet(true)}
+                className="mt-2 text-[11px] font-bold text-blue-600 hover:underline"
+              >
+                Check next release →
+              </button>
+            )}
+          </div>
+          {alertBlock}
         </div>
-        {alertBlock}
-      </div>
+        {showNextReleaseSheet && meta?.chartNextRemoteStation && (
+          <NextReleaseBottomSheet
+            trainNumber={trainNumber}
+            journeyDate={journeyDate}
+            stationCode={meta.chartNextRemoteStation}
+            onClose={() => setShowNextReleaseSheet(false)}
+          />
+        )}
+      </>
     );
   }
 
@@ -938,7 +1074,7 @@ function LegChartTimeInsight({
           </p>
           <p className="mt-1 text-sm text-amber-800">
             Chart prepares at{" "}
-            <span className="font-bold text-amber-950">
+            <span className="font-bold text-indigo-700">
               {chartDateTimeFormatted}
             </span>
             . Tickets may open up after that.
@@ -1147,6 +1283,11 @@ function AlternatePathRemainderInsights({
       });
       const schedulePhrase = buildJourneyChartAlertSchedulePhrase({
         journeyDateYmd: journeyDate.trim(),
+        stationNameMap: {},
+        trainOriginCode: null,
+        trainOriginDepartureTime: null,
+        remainderMergedSchedule: null,
+        debugLog: undefined,
         metaLoading,
         metaErr,
         metaFrom,
@@ -1803,6 +1944,9 @@ function CompactLegChartCta({
   const [alreadySet, setAlreadySet] = useState(false);
   const [chartTimeLabel, setChartTimeLabel] = useState<string | null>(null);
   const [chartTimeLoading, setChartTimeLoading] = useState(false);
+  const [chartIsPrepared, setChartIsPrepared] = useState<boolean | null>(null);
+  const [meta, setMeta] = useState<StationChartMetaItem | null>(null);
+  const [showNextReleaseSheet, setShowNextReleaseSheet] = useState(false);
 
   // Prevents duplicate calls for the same station on remounts or rapid state transitions
   const lastFetchedRef = useRef<string | null>(null);
@@ -1829,12 +1973,9 @@ function CompactLegChartCta({
 
   // Fetch chart preparation time
   useEffect(() => {
-    const fetchKey = `${trainNumber.trim()}#${journeyDate.trim()}#${legFrom.trim().toUpperCase()}`;
-    if (lastFetchedRef.current === fetchKey) return;
-    lastFetchedRef.current = fetchKey;
-
     let cancel = false;
     setChartTimeLoading(true);
+
     apiClient
       .post<{ stations: StationChartMetaItem[] }>(
         "/api/train-composition/stations-meta",
@@ -1848,23 +1989,33 @@ function CompactLegChartCta({
       )
       .then((r) => {
         if (cancel) return;
-        setChartTimeLoading(false);
-        const chartTime = r.data?.stations?.[0]?.chartOneTime?.trim();
+        const mObj = r.data?.stations?.[0];
+        setMeta(mObj ?? null);
+        const chartTime = mObj?.chartOneTime?.trim();
+        const chartOffset = mObj?.chartOneDayOffset ?? 0;
         if (chartTime && journeyDate) {
           const ymd = journeyDate.trim().slice(0, 10);
-          const m = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm");
+          const m = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm").add(
+            chartOffset,
+            "days",
+          );
           if (m.isValid()) {
             setChartTimeLabel(m.format("ddd, MMM DD [at] h:mm A"));
+            setChartIsPrepared(moment().isAfter(m));
           }
         }
       })
       .catch(() => {
         if (cancel) return;
-        setChartTimeLoading(false);
         trackAnalyticsEvent({
           name: "chart_time_load_failed_booking_popup",
           properties: { trainNumber, legFrom, journeyDate },
         });
+      })
+      .finally(() => {
+        if (!cancel) {
+          setChartTimeLoading(false);
+        }
       });
     return () => {
       cancel = true;
@@ -1928,22 +2079,53 @@ function CompactLegChartCta({
     return (
       <div className="flex flex-col items-end gap-1">
         {chartTimeLoading ? (
-          <div className="flex items-center gap-1.5 text-[11px] font-bold italic text-amber-600 animate-pulse">
-            <span className="h-2.5 w-2.5 rounded-full border-2 border-amber-600 border-t-transparent animate-spin" />
+          <div className="flex items-center gap-1.5 text-[11px] font-bold italic text-blue-500 animate-pulse">
+            <span className="h-2.5 w-2.5 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />
             Loading chart time...
           </div>
         ) : chartTimeLabel ? (
-          <p className="text-[14px] font-bold text-amber-700/90">
-            New tickets open at {chartTimeLabel}
-          </p>
+          <div className="flex flex-col items-end">
+            <p
+              className={cn(
+                "text-[14px] font-bold",
+                chartIsPrepared ? "text-red-600" : "text-indigo-600",
+              )}
+            >
+              {chartIsPrepared ? (
+                <>Chart for {meta?.chartRemoteStation || ""} was released at</>
+              ) : (
+                "New tickets open at"
+              )}{" "}
+              {chartTimeLabel}
+            </p>
+            {chartIsPrepared && meta?.chartNextRemoteStation && (
+              <button
+                type="button"
+                onClick={() => setShowNextReleaseSheet(true)}
+                className="mt-0.5 text-[11px] font-bold text-blue-600 hover:underline"
+              >
+                Check next release →
+              </button>
+            )}
+          </div>
         ) : null}
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="shrink-0 rounded-md border border-amber-400 bg-amber-50 px-2.5 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 transition-colors"
-        >
-          Subscribe to chart prep
-        </button>
+        {showNextReleaseSheet && meta?.chartNextRemoteStation && (
+          <NextReleaseBottomSheet
+            trainNumber={trainNumber}
+            journeyDate={journeyDate}
+            stationCode={meta.chartNextRemoteStation}
+            onClose={() => setShowNextReleaseSheet(false)}
+          />
+        )}
+        {!chartIsPrepared && (
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="shrink-0 rounded-md border border-amber-400 bg-amber-50 px-2.5 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 transition-colors"
+          >
+            Subscribe to chart prep
+          </button>
+        )}
       </div>
     );
   }
@@ -2831,6 +3013,37 @@ function BookingV2PageContent() {
               {altError && <p className="text-sm text-red-700">{altError}</p>}
               {altResult && (
                 <div className="space-y-3 text-sm">
+                  {/* Live Train Banner */}
+                  {(() => {
+                    const originTime =
+                      altResult.trainOriginDepartureTime && journeyDate
+                        ? moment(
+                            `${journeyDate} ${altResult.trainOriginDepartureTime}`,
+                            "YYYY-MM-DD HH:mm",
+                          )
+                        : null;
+                    if (originTime?.isValid() && moment().isAfter(originTime)) {
+                      return (
+                        <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-800">
+                          <span className="relative flex h-2 w-2">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                          </span>
+                          <span className="text-xs font-bold uppercase tracking-wider">
+                            Live Train in running status
+                          </span>
+                          {altResult.trainOriginCode && (
+                            <span className="text-[10px] opacity-75">
+                              (Started from {altResult.trainOriginCode} at{" "}
+                              {altResult.trainOriginDepartureTime} IST)
+                            </span>
+                          )}
+                        </div>
+                      );
+                    }
+                    return null;
+                  })()}
+
                   {/* Fare summary banner */}
                   {altResult.isComplete && altResult.totalFare != null && (
                     <div className="rounded-xl bg-gradient-to-r from-slate-50 to-slate-100/70 border border-slate-200 px-4 py-3">
@@ -2993,9 +3206,6 @@ function BookingV2PageContent() {
                                 }`}>
                                   Leg {stepIndex} of {stepTotal}
                                 </span>
-                                <span className="font-bold text-gray-900 tabular-nums">
-                                  {getStationDisplayName(leg.from, altResult.stationNameMap)} → {getStationDisplayName(leg.to, altResult.stationNameMap)}
-                                </span>
                                 {stationsBetween != null && (
                                   <button
                                     onClick={() => {
@@ -3004,11 +3214,14 @@ function BookingV2PageContent() {
                                       setScheduleHighlightTo(leg.to);
                                       setScheduleModalOpen(true);
                                     }}
-                                    className="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                                    className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 hover:text-blue-800 transition-colors"
                                   >
-                                    ({stationsBetween} station{stationsBetween !== 1 ? "s" : ""} between)
+                                    {stationsBetween} {stationsBetween === 1 ? "Station" : "Stations"}
                                   </button>
                                 )}
+                                <span className="font-bold text-gray-900 tabular-nums">
+                                  {getStationDisplayName(leg.from, altResult.stationNameMap)} → {getStationDisplayName(leg.to, altResult.stationNameMap)}
+                                </span>
                                 {timeLine && (
                                   <span className="text-xs tabular-nums text-gray-500">
                                     {timeLine}
@@ -3116,9 +3329,6 @@ function BookingV2PageContent() {
                               <span className="shrink-0 rounded-full bg-amber-500 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
                                 Leg {stepIndex} of {stepTotal}
                               </span>
-                              <span className="font-bold text-gray-900 tabular-nums">
-                                {getStationDisplayName(item.from, altResult.stationNameMap)} → {getStationDisplayName(item.to, altResult.stationNameMap)}
-                              </span>
                               {stationsBetween != null && (
                                 <button
                                   onClick={() => {
@@ -3127,11 +3337,14 @@ function BookingV2PageContent() {
                                     setScheduleHighlightTo(item.to);
                                     setScheduleModalOpen(true);
                                   }}
-                                  className="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                                  className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 hover:text-blue-800 transition-colors"
                                 >
-                                  ({stationsBetween} station{stationsBetween !== 1 ? "s" : ""} between)
+                                  {stationsBetween} {stationsBetween === 1 ? "Station" : "Stations"}
                                 </button>
                               )}
+                              <span className="font-bold text-gray-900 tabular-nums">
+                                {getStationDisplayName(item.from, altResult.stationNameMap)} → {getStationDisplayName(item.to, altResult.stationNameMap)}
+                              </span>
                               {timingSummary && (
                                 <span className="text-xs tabular-nums text-gray-500">
                                   {timingSummary.timePart}

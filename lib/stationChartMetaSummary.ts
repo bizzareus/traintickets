@@ -84,21 +84,31 @@ export function describeChartPreparationForStation(
 
   const ymd = journeyDateYmd.trim().slice(0, 10);
   const lines: string[] = [];
-  const c1 = meta?.chartOneTime?.trim();
-  const c2 = meta?.chartTwoTime?.trim();
+  const c1Offset = meta?.chartOneDayOffset ?? 0;
+  const c2Offset =
+    meta?.chartTwoDayOffset !== null && meta?.chartTwoDayOffset !== undefined
+      ? meta.chartTwoDayOffset
+      : meta?.chartTwoIsNextDay
+        ? 1
+        : 0;
+
   if (c1) {
     lines.push(
-      `First chart is usually prepared around ${formatJourneyDayAndChartTime(ymd, c1, 0)}.`,
+      `First chart is usually prepared around ${formatJourneyDayAndChartTime(ymd, c1, c1Offset)}.`,
     );
   }
   if (c2) {
     lines.push(
-      `Second chart is usually prepared around ${formatJourneyDayAndChartTime(ymd, c2, meta?.chartTwoIsNextDay ? 1 : 0)}.`,
+      `Second chart is usually prepared around ${formatJourneyDayAndChartTime(ymd, c2, c2Offset)}.`,
     );
   }
   const remote = meta?.chartRemoteStation?.trim();
   if (remote && remote !== code) {
     lines.push(`Remote charting station: ${remote}.`);
+  }
+  const nextRemote = meta?.chartNextRemoteStation?.trim();
+  if (nextRemote) {
+    lines.push(`Next chart is prepared at ${nextRemote}.`);
   }
   const fb = meta?.chartTimesFallbackFromStation?.trim();
   if (fb && fb !== code) {
@@ -125,11 +135,21 @@ export function summarizeStationChartPreparation(
   const parts: string[] = [];
   const c1 = meta.chartOneTime?.trim();
   const c2 = meta.chartTwoTime?.trim();
-  if (c1) parts.push(`first chart around ${c1}`);
+  const c1Offset = meta.chartOneDayOffset ?? 0;
+  const c2Offset =
+    meta.chartTwoDayOffset !== null && meta.chartTwoDayOffset !== undefined
+      ? meta.chartTwoDayOffset
+      : meta.chartTwoIsNextDay
+        ? 1
+        : 0;
+
+  if (c1) {
+    const timeLabel = c1Offset !== 0 ? `${c1} (${c1Offset > 0 ? "+" : ""}${c1Offset} day${Math.abs(c1Offset) !== 1 ? "s" : ""})` : c1;
+    parts.push(`first chart around ${timeLabel}`);
+  }
   if (c2) {
-    parts.push(
-      meta.chartTwoIsNextDay ? `second chart around ${c2} (next day)` : `second chart around ${c2}`,
-    );
+    const timeLabel = c2Offset !== 0 ? `${c2} (${c2Offset > 0 ? "+" : ""}${c2Offset} day${Math.abs(c2Offset) !== 1 ? "s" : ""})` : c2;
+    parts.push(`second chart around ${timeLabel}`);
   }
   const remote = meta.chartRemoteStation?.trim();
   if (remote && remote !== st) {

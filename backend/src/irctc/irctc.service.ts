@@ -731,37 +731,51 @@ export class IrctcService {
     data: TrainCompositionResponse | null | undefined,
   ): {
     chartOneTime: string | null;
+    chartOneDayOffset: number | null;
     chartTwoTime: string | null;
-    chartTwoIsNextDay: boolean;
+    chartTwoDayOffset: number | null;
     chartRemoteStation: string | null;
+    chartNextRemoteStation: string | null;
     irctcError: string | null;
   } {
     if (!data) {
       return {
         chartOneTime: null,
+        chartOneDayOffset: null,
         chartTwoTime: null,
-        chartTwoIsNextDay: false,
+        chartTwoDayOffset: null,
         chartRemoteStation: null,
+        chartNextRemoteStation: null,
         irctcError: null,
       };
     }
     const chartOne = parseChartDateTime(data.chartOneDate);
     const chartTwo = parseChartDateTime(data.chartTwoDate);
     const trainStartDate = (data.trainStartDate ?? '').slice(0, 10);
-    let chartTwoIsNextDay = false;
-    if (chartTwo?.date && trainStartDate && chartTwo.date > trainStartDate) {
-      chartTwoIsNextDay = true;
+
+    let chartOneDayOffset: number | null = null;
+    if (chartOne?.date && trainStartDate) {
+      chartOneDayOffset = moment(chartOne.date).diff(trainStartDate, 'days');
     }
+
+    let chartTwoDayOffset: number | null = null;
+    if (chartTwo?.date && trainStartDate) {
+      chartTwoDayOffset = moment(chartTwo.date).diff(trainStartDate, 'days');
+    }
+
     const remote =
       data.chartStatusResponseDto?.remoteStationCode ??
       data.remote?.trim().toUpperCase() ??
       null;
+    const nextRemote = data.nextRemote?.trim().toUpperCase() || null;
     const err = data.error?.trim() || null;
     return {
       chartOneTime: chartOne?.time ?? null,
+      chartOneDayOffset,
       chartTwoTime: chartTwo?.time ?? null,
-      chartTwoIsNextDay,
+      chartTwoDayOffset,
       chartRemoteStation: remote,
+      chartNextRemoteStation: nextRemote,
       irctcError: err,
     };
   }
@@ -787,10 +801,18 @@ export class IrctcService {
 
     const chartTwo = parseChartDateTime(data.chartTwoDate);
     const trainStartDate = (data.trainStartDate ?? '').slice(0, 10);
-    let chartTwoDayOffset = 0;
-    if (chartTwo?.date && trainStartDate) {
-      if (chartTwo.date > trainStartDate) chartTwoDayOffset = 1;
+
+    let chartOneDayOffset: number | null = null;
+    if (chartOne?.date && trainStartDate) {
+      chartOneDayOffset = moment(chartOne.date).diff(trainStartDate, 'days');
     }
+
+    let chartTwoDayOffset: number | null = null;
+    if (chartTwo?.date && trainStartDate) {
+      chartTwoDayOffset = moment(chartTwo.date).diff(trainStartDate, 'days');
+    }
+
+    const nextRemote = data.nextRemote?.trim().toUpperCase() || null;
 
     await this.prisma.trainStationChartTime.upsert({
       where: {
@@ -803,13 +825,19 @@ export class IrctcService {
         trainNumber: trainNo,
         stationCode: boardingStation,
         chartTimeLocal: chartOne.time,
+        chartOneDayOffset,
         chartTwoTimeLocal: chartTwo?.time ?? null,
         chartTwoDayOffset,
+        chartRemoteStation: remote,
+        chartNextRemoteStation: nextRemote,
       },
       update: {
         chartTimeLocal: chartOne.time,
+        chartOneDayOffset,
         chartTwoTimeLocal: chartTwo?.time ?? null,
         chartTwoDayOffset,
+        chartRemoteStation: remote,
+        chartNextRemoteStation: nextRemote,
       },
     });
   }

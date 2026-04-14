@@ -294,21 +294,21 @@ export class JourneyTaskService {
     const mobile = params.mobile?.trim() || undefined;
 
     type ChartEntry = {
-      chartOne: string;
-      chartTwo?: { time: string; dayOffset: number };
+      chartOne: { time: string; dayOffset: number | null };
+      chartTwo?: { time: string; dayOffset: number | null };
     };
     let chartTimesWithSecond =
       (await this.chartTime.getChartTimesWithSecondChartForTrain(
         trainNumber,
         stationsToProcess,
-      )) as Map<string, ChartEntry>;
+      )) as unknown as Map<string, ChartEntry>;
 
     const refreshChartTimesMap = async () => {
       chartTimesWithSecond =
         (await this.chartTime.getChartTimesWithSecondChartForTrain(
           trainNumber,
           stationsToProcess,
-        )) as Map<string, ChartEntry>;
+        )) as unknown as Map<string, ChartEntry>;
     };
 
     const routeHasAnyChartTime = () =>
@@ -425,7 +425,11 @@ export class JourneyTaskService {
 
       taskSpecs.push({
         stationCode,
-        chartAt: buildChartAt(journeyDate, entry.chartOne),
+        chartAt: buildChartAtWithDayOffset(
+          journeyDate,
+          entry.chartOne.time,
+          entry.chartOne.dayOffset ?? 0,
+        ),
       });
 
       if (entry.chartTwo) {
@@ -434,7 +438,7 @@ export class JourneyTaskService {
           chartAt: buildChartAtWithDayOffset(
             journeyDate,
             entry.chartTwo.time,
-            entry.chartTwo.dayOffset,
+            entry.chartTwo.dayOffset ?? 0,
           ),
         });
       }
@@ -667,8 +671,9 @@ export class JourneyTaskService {
       stationCode: string;
       stationName: string;
       chartOneTime: string;
+      chartOneDayOffset: number | null;
       chartTwoTime: string | null;
-      chartTwoDayOffset: number;
+      chartTwoDayOffset: number | null;
     }>
   > {
     const fromCode = params.fromStationCode.trim().toUpperCase();
@@ -696,21 +701,22 @@ export class JourneyTaskService {
 
     const stationCodesInRoute = codes.slice(fromIdx, toIdx + 1);
     type ChartEntry = {
-      chartOne: string;
-      chartTwo?: { time: string; dayOffset: number };
+      chartOne: { time: string; dayOffset: number | null };
+      chartTwo?: { time: string; dayOffset: number | null };
     };
     const chartTimesWithSecond =
       (await this.chartTime.getChartTimesWithSecondChartForTrain(
         trainNumber,
         stationCodesInRoute,
-      )) as Map<string, ChartEntry>;
+      )) as unknown as Map<string, ChartEntry>;
 
     const result: Array<{
       stationCode: string;
       stationName: string;
       chartOneTime: string;
+      chartOneDayOffset: number | null;
       chartTwoTime: string | null;
-      chartTwoDayOffset: number;
+      chartTwoDayOffset: number | null;
     }> = [];
 
     for (let i = fromIdx; i <= toIdx; i++) {
@@ -722,7 +728,8 @@ export class JourneyTaskService {
       result.push({
         stationCode,
         stationName,
-        chartOneTime: entry.chartOne,
+        chartOneTime: entry.chartOne.time,
+        chartOneDayOffset: entry.chartOne.dayOffset,
         chartTwoTime: entry.chartTwo?.time ?? null,
         chartTwoDayOffset: entry.chartTwo?.dayOffset ?? 0,
       });

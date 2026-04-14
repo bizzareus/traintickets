@@ -108,6 +108,9 @@ export type FindAlternatePathsResult = {
   stationNameMap: Record<string, string>;
   /** When the UI merges a realtime suffix, IRCTC schedule timing for that whole OD (DEE → BVI). */
   remainderMergedSchedule: AlternatePathRemainderMergedSchedule | null;
+  /** Code and departure time (HH:MM) of the train's very first station. */
+  trainOriginCode: string | null;
+  trainOriginDepartureTime: string | null;
   /** Step-by-step trace for debugging (also logged with Logger). */
   debugLog: string[];
 };
@@ -474,6 +477,8 @@ export class BookingV2Service {
         isComplete: false,
         stationCodesOnRoute: [],
         stationNameMap,
+        trainOriginCode: null,
+        trainOriginDepartureTime: null,
         remainderMergedSchedule: null,
         debugLog,
       };
@@ -512,6 +517,8 @@ export class BookingV2Service {
         isComplete: false,
         stationCodesOnRoute: [],
         stationNameMap,
+        trainOriginCode: null,
+        trainOriginDepartureTime: null,
         remainderMergedSchedule: null,
         debugLog,
       };
@@ -764,6 +771,8 @@ export class BookingV2Service {
       stationCodesOnRoute: stations,
       stationNameMap,
       remainderMergedSchedule,
+      trainOriginCode: stationList[0]?.stationCode?.trim().toUpperCase() || null,
+      trainOriginDepartureTime: stationList[0]?.departureTime || null,
       debugLog,
     };
   }

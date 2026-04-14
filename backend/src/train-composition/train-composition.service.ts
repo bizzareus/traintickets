@@ -17,8 +17,10 @@ export type StationChartMetaDto = {
   trainArrivalTime?: string | null;
   trainDepartureTime?: string | null;
   chartOneTime?: string | null;
+  chartOneDayOffset?: number | null;
   chartTwoTime?: string | null;
-  chartTwoIsNextDay?: boolean;
+  chartTwoDayOffset?: number | null;
+  chartTwoIsNextDay?: boolean; // deprecated, use chartTwoDayOffset
   chartRemoteStation?: string | null;
   compositionError?: string | null;
   /**
@@ -26,21 +28,28 @@ export type StationChartMetaDto = {
    * successful composition (train-wide window until local chart is prepared).
    */
   chartTimesFallbackFromStation?: string | null;
+  isLive?: boolean;
+  chartNextRemoteStation?: string | null;
 };
 
 function applyDbCachedToRow(
   row: StationChartMetaDto,
   cached: {
-    chartOne: string;
-    chartTwo?: { time: string; dayOffset: number };
+    chartOne: { time: string; dayOffset: number | null };
+    chartTwo?: { time: string; dayOffset: number | null };
+    chartRemoteStation?: string | null;
+    chartNextRemoteStation?: string | null;
   },
 ): void {
-  if (!cached.chartOne?.trim()) return;
-  row.chartOneTime = cached.chartOne.trim();
+  row.chartOneTime = cached.chartOne.time.trim();
+  row.chartOneDayOffset = cached.chartOne.dayOffset;
   if (cached.chartTwo?.time?.trim()) {
     row.chartTwoTime = cached.chartTwo.time.trim();
+    row.chartTwoDayOffset = cached.chartTwo.dayOffset;
     row.chartTwoIsNextDay = (cached.chartTwo.dayOffset ?? 0) >= 1;
   }
+  row.chartRemoteStation = cached.chartRemoteStation;
+  row.chartNextRemoteStation = cached.chartNextRemoteStation;
   row.compositionError = null;
 }
 
@@ -175,14 +184,43 @@ export class TrainCompositionService {
       stationCode,
       trainArrivalTime: null,
       trainDepartureTime: null,
+      chartOneDayOffset: null,
+      chartTwoDayOffset: null,
+      isLive: false,
     };
 
-    const cached = await this.chartTime.getChartMetaForTrainStation(
+    let cached = await this.chartTime.getChartMetaForTrainStation(
       trainNumber,
       stationCode,
     );
-    console.log("cached", cached);
-    if (cached?.chartOne?.trim() && !row.chartOneTime?.trim()) {
+
+    const needsRefresh =
+      params.refreshFromIrctc ||
+      !cached ||
+      cached.chartOne.dayOffset === null ||
+      !cached.chartRemoteStation;
+
+    if (needsRefresh) {
+      try {
+        const jDate = new Date().toISOString().slice(0, 10);
+        await this.fetchForBoarding(
+          { trainNo: trainNumber, jDate, boardingStation: stationCode },
+          { allowChartNotPrepared: true },
+        );
+        // Re-read after refresh
+        cached = await this.chartTime.getChartMetaForTrainStation(
+          trainNumber,
+          stationCode,
+        );
+        row.isLive = true;
+      } catch (err) {
+        this.logger.warn(
+          `[trainComposition] refresh/auto-refresh failed for ${trainNumber} at ${stationCode}: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      }
+    }
+
+    if (cached?.chartOne?.time?.trim()) {
       applyDbCachedToRow(row, cached);
     }
     return row;

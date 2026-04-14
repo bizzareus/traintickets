@@ -102,8 +102,10 @@ export class ChartTimeService {
     trainNumber: string,
     stationCode: string,
   ): Promise<{
-    chartOne: string;
-    chartTwo?: { time: string; dayOffset: number };
+    chartOne: { time: string; dayOffset: number | null };
+    chartTwo?: { time: string; dayOffset: number | null };
+    chartRemoteStation?: string | null;
+    chartNextRemoteStation?: string | null;
   } | null> {
     const code = String(stationCode).trim().toUpperCase();
     const map = await this.getChartTimesWithSecondChartForTrain(trainNumber, [
@@ -118,7 +120,12 @@ export class ChartTimeService {
   ): Promise<
     Map<
       string,
-      { chartOne: string; chartTwo?: { time: string; dayOffset: number } }
+      {
+        chartOne: { time: string; dayOffset: number | null };
+        chartTwo?: { time: string; dayOffset: number | null };
+        chartRemoteStation?: string | null;
+        chartNextRemoteStation?: string | null;
+      }
     >
   > {
     const num = String(trainNumber).trim();
@@ -154,19 +161,29 @@ export class ChartTimeService {
     }
     const map = new Map<
       string,
-      { chartOne: string; chartTwo?: { time: string; dayOffset: number } }
+      {
+        chartOne: { time: string; dayOffset: number | null };
+        chartTwo?: { time: string; dayOffset: number | null };
+      }
     >();
     for (const r of rows) {
       const entry: {
-        chartOne: string;
-        chartTwo?: { time: string; dayOffset: number };
+        chartOne: { time: string; dayOffset: number | null };
+        chartTwo?: { time: string; dayOffset: number | null };
+        chartRemoteStation?: string | null;
+        chartNextRemoteStation?: string | null;
       } = {
-        chartOne: r.chartTimeLocal,
+        chartOne: {
+          time: r.chartTimeLocal,
+          dayOffset: r.chartOneDayOffset,
+        },
+        chartRemoteStation: r.chartRemoteStation,
+        chartNextRemoteStation: r.chartNextRemoteStation,
       };
       if (r.chartTwoTimeLocal?.trim()) {
         entry.chartTwo = {
           time: r.chartTwoTimeLocal.trim(),
-          dayOffset: r.chartTwoDayOffset ?? 0,
+          dayOffset: r.chartTwoDayOffset,
         };
       }
       map.set(r.stationCode, entry);
