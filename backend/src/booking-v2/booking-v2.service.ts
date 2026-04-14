@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+import * as moment from 'moment';
 import { IrctcService } from '../irctc/irctc.service';
 import { CacheService } from '../cache/cache.service';
 import { StationCacheService } from '../cache/station-cache.service';
@@ -15,7 +16,9 @@ import {
   isLegConfirmed,
   legScheduleTiming,
   normalizeAndDedupeClassCodes,
+  normalizeScheduleStationCode,
   orderedDestinationIndices,
+  parseScheduleDayCount,
   parseUpstreamAvailablityType,
   stationCodesBetweenStops,
   ymdToRailApiDdMmYyyy,
@@ -540,7 +543,12 @@ export class BookingV2Service {
     const maxIterations = Math.max(8, stations.length * 4);
     let iterations = 0;
 
-    const cacheKey = (a: string, b: string) => `${a}|${b}`;
+    const startStopLine = stationList.find(
+      (s) => normalizeScheduleStationCode(s.stationCode) === stations[0],
+    );
+    const startDayCount = parseScheduleDayCount(startStopLine?.dayCount) ?? 1;
+
+    const cacheKey = (a: string, b: string, d: string) => `${a}|${b}|${d}`;
 
     while (currentIdx < targetIdx && iterations < maxIterations) {
       iterations += 1;
@@ -556,15 +564,25 @@ export class BookingV2Service {
       const probes: MultiClassProbeResult[] = await Promise.all(
         destOrder.map(async (destIdx) => {
           const fromStn = stations[currentIdx];
+          const fromStopLine = stationList.find(
+            (s) => normalizeScheduleStationCode(s.stationCode) === fromStn,
+          );
+          const fromDayCount =
+            parseScheduleDayCount(fromStopLine?.dayCount) ?? startDayCount;
+          const dayOffset = Math.max(0, fromDayCount - startDayCount);
+          const currentHopDate = moment(input.date, 'YYYY-MM-DD')
+            .add(dayOffset, 'days')
+            .format('DD-MM-YYYY');
+
           const toStn = stations[destIdx];
-          const key = cacheKey(fromStn, toStn);
+          const key = cacheKey(fromStn, toStn, currentHopDate);
           let probe = probeCache.get(key);
           if (!probe) {
             probe = await this.probeSegmentAllClasses(
               trainNumber,
               fromStn,
               toStn,
-              dateDdMmYyyy,
+              currentHopDate,
               classes,
               quota,
             );

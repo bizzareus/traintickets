@@ -204,7 +204,7 @@ export type IrctcScheduleStopLite = {
   dayCount?: unknown;
 };
 
-function normalizeScheduleStationCode(s: string | null | undefined): string {
+export function normalizeScheduleStationCode(s: string | null | undefined): string {
   return String(s ?? '')
     .trim()
     .toUpperCase();
@@ -227,7 +227,7 @@ function parseIrctcScheduleClock(
   };
 }
 
-function parseScheduleDayCount(raw: unknown): number | null {
+export function parseScheduleDayCount(raw: unknown): number | null {
   if (raw == null) return null;
   const s = typeof raw === 'string' ? raw.trim() : String(raw as any).trim();
   const n = parseInt(s, 10);
