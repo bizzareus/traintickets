@@ -670,8 +670,7 @@ function NextReleaseBottomSheet({
         <div className="mx-auto mb-6 h-1.5 w-12 rounded-full bg-gray-200" />
         <h3 className="text-xl font-extrabold text-gray-900">Next Release Info</h3>
         <p className="mt-1 text-sm font-medium text-gray-500">
-          Scheduled release for station:{" "}
-          <span className="font-bold text-gray-800">{stationCode}</span>
+          The next charting event is scheduled for:
         </p>
 
         <div className="mt-8">
@@ -683,32 +682,30 @@ function NextReleaseBottomSheet({
               </p>
             </div>
           ) : nextMeta?.chartOneTime ? (
-            <div className="relative overflow-hidden rounded-2xl border border-indigo-100 bg-indigo-50 p-5">
+            <div className="relative overflow-hidden rounded-2xl border border-indigo-100 bg-indigo-50 p-6">
               <div className="relative z-10">
-                <p className="text-xs font-bold uppercase tracking-widest text-indigo-600">
-                  Estimated Charting At
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-500">
+                  ESTIMATED CHARTING AT
                 </p>
-                <p className="mt-2 text-2xl font-black tracking-tight text-indigo-950">
-                  {(() => {
-                    const ymd = journeyDate.slice(0, 10);
-                    const m = moment(
-                      `${ymd} ${nextMeta.chartOneTime}`,
-                      "YYYY-MM-DD HH:mm",
-                    ).add(nextMeta.chartOneDayOffset || 0, "days");
-                    return m.format("ddd, MMM DD [at] h:mm A");
-                  })()}{" "}
-                  IST
-                </p>
-                {nextMeta.chartNextRemoteStation && (
-                  <div className="mt-6 border-t border-indigo-200 pt-4">
-                    <p className="text-[11px] font-bold text-indigo-700/70">
-                      FOLLOWED BY ANOTHER RELEASE AT
-                    </p>
-                    <p className="mt-1 text-sm font-extrabold text-indigo-900">
-                      {nextMeta.chartNextRemoteStation}
+                <div className="mt-2 space-y-2">
+                  <p className="text-xl font-black tracking-tight text-indigo-950">
+                    {(() => {
+                      const ymd = journeyDate.slice(0, 10);
+                      const m = moment(
+                        `${ymd} ${nextMeta.chartOneTime}`,
+                        "YYYY-MM-DD HH:mm",
+                      ).add(nextMeta.chartOneDayOffset || 0, "days");
+                      return m.format("ddd, MMM DD [at] h:mm A");
+                    })()}{" "}
+                    IST
+                  </p>
+                  <div className="flex items-baseline gap-2">
+                    <p className="text-4xl font-black text-indigo-700">
+                      {stationCode}
                     </p>
                   </div>
-                )}
+                </div>
+
               </div>
               <div className="absolute right-[-20px] top-[-20px] h-32 w-32 rounded-full bg-indigo-500 opacity-5 blur-3xl" />
             </div>
@@ -1032,7 +1029,7 @@ function LegChartTimeInsight({
         <div className="mt-3 space-y-3">
           <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2.5">
             <p className="text-sm font-semibold text-red-900">
-              Chart for {meta?.chartRemoteStation || stationCode} was prepared
+              Chart for {legFrom} was prepared
             </p>
             <p className="mt-1 text-sm text-red-800">
               Chart was released at{" "}
@@ -2092,7 +2089,7 @@ function CompactLegChartCta({
               )}
             >
               {chartIsPrepared ? (
-                <>Chart for {meta?.chartRemoteStation || ""} was released at</>
+                <>Chart for {legFrom} was released at</>
               ) : (
                 "New tickets open at"
               )}{" "}
