@@ -4,21 +4,14 @@ export default function AdminPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-slate-900">Admin</h1>
-      <p className="mt-1 text-slate-600">Manage trains, chart rules, and view execution logs.</p>
+      <p className="mt-1 text-slate-600">Track user alerts and manage chart-time backfills.</p>
       <ul className="mt-8 grid gap-4 sm:grid-cols-2">
         <Link
-          href="/admin/trains"
+          href="/admin/alerts"
           className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
         >
-          <h2 className="font-semibold text-slate-900">Trains</h2>
-          <p className="mt-1 text-sm text-slate-600">View and add trains.</p>
-        </Link>
-        <Link
-          href="/admin/chart-rules"
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
-        >
-          <h2 className="font-semibold text-slate-900">Chart rules</h2>
-          <p className="mt-1 text-sm text-slate-600">Manage chart preparation times per train/station.</p>
+          <h2 className="font-semibold text-slate-900">Alerts</h2>
+          <p className="mt-1 text-sm text-slate-600">View all journey monitoring tasks and user alerts.</p>
         </Link>
         <Link
           href="/admin/chart-time-ingestion"
@@ -26,20 +19,6 @@ export default function AdminPage() {
         >
           <h2 className="font-semibold text-slate-900">Chart-time ingestion</h2>
           <p className="mt-1 text-sm text-slate-600">Trigger station-wise chart-time backfill via IRCTC.</p>
-        </Link>
-        <Link
-          href="/admin/instances"
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
-        >
-          <h2 className="font-semibold text-slate-900">Chart event instances</h2>
-          <p className="mt-1 text-sm text-slate-600">Generated instances for journey dates.</p>
-        </Link>
-        <Link
-          href="/admin/executions"
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
-        >
-          <h2 className="font-semibold text-slate-900">Executions</h2>
-          <p className="mt-1 text-sm text-slate-600">Browser execution logs.</p>
         </Link>
       </ul>
     </div>

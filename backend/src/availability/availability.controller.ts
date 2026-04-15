@@ -373,4 +373,32 @@ export class AvailabilityController {
       })),
     };
   }
+
+  @Get('admin/alerts')
+  async getAllAlerts() {
+    const alerts = await this.journeyTask.getAllAlerts();
+    return {
+      alerts: alerts.map((a) => ({
+        id: a.id,
+        journeyRequestId: a.journeyRequestId,
+        trainNumber: a.trainNumber,
+        trainName: a.trainName,
+        fromStationCode: a.fromStationCode,
+        toStationCode: a.toStationCode,
+        stationCode: a.stationCode,
+        journeyDate: a.journeyDate.toISOString().slice(0, 10),
+        classCode: a.classCode,
+        chartAt: a.chartAt.toISOString(),
+        status: a.status,
+        createdAt: a.createdAt.toISOString(),
+        completedAt: a.completedAt?.toISOString?.() ?? null,
+        contact: (a as any).contact
+          ? {
+              email: (a as any).contact.email,
+              mobile: (a as any).contact.mobile,
+            }
+          : null,
+      })),
+    };
+  }
 }

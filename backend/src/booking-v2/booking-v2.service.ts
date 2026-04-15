@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import * as moment from 'moment';
+import moment from 'moment';
 import { IrctcService } from '../irctc/irctc.service';
 import { CacheService } from '../cache/cache.service';
 import { StationCacheService } from '../cache/station-cache.service';
@@ -657,15 +657,26 @@ export class BookingV2Service {
       }
 
       const fromStn = stations[currentIdx];
+      const fromStopLine = stationList.find(
+        (s) => normalizeScheduleStationCode(s.stationCode) === fromStn,
+      );
+      const fromDayCount =
+        parseScheduleDayCount(fromStopLine?.dayCount) ?? startDayCount;
+      const dayOffset = Math.max(0, fromDayCount - startDayCount);
+      const bridgeDate = moment(input.date, 'YYYY-MM-DD')
+        .add(dayOffset, 'days')
+        .format('DD-MM-YYYY');
+
+      const nextIdx = currentIdx + 1;
       const toStn = stations[nextIdx];
-      const key = cacheKey(fromStn, toStn);
+      const key = cacheKey(fromStn, toStn, bridgeDate);
       let bridge = probeCache.get(key);
       if (!bridge) {
         bridge = await this.probeSegmentAllClasses(
           trainNumber,
           fromStn,
           toStn,
-          dateDdMmYyyy,
+          bridgeDate,
           classes,
           quota,
         );

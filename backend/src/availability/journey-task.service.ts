@@ -658,6 +658,16 @@ export class JourneyTaskService {
     });
   }
 
+  async getAllAlerts() {
+    return this.prisma.chartTimeAvailabilityTask.findMany({
+      orderBy: { createdAt: 'desc' },
+      include: {
+        contact: true,
+      },
+      take: 200, // Limit to recent 200 for now
+    });
+  }
+
   /**
    * Get stations between from and to that have chart times, for the journey/stations endpoint.
    * Returns stationCode, stationName, chart one time, and optionally chart two time + day offset.

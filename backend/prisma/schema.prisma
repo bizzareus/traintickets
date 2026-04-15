@@ -165,6 +165,7 @@ model JourneyMonitorContact {
   createdAt        DateTime @default(now()) @map("created_at")
 
   @@index([journeyRequestId])
+  tasks            ChartTimeAvailabilityTask[]
 }
 
 model ChartTimeAvailabilityTask {
@@ -184,6 +185,8 @@ model ChartTimeAvailabilityTask {
   completedAt        DateTime? @map("completed_at")
   emailNotifiedAt    DateTime? @map("email_notified_at")
   whatsappNotifiedAt DateTime? @map("whatsapp_notified_at")
+
+  contact JourneyMonitorContact @relation(fields: [journeyRequestId], references: [journeyRequestId])
 
   @@index([chartAt, status])
   @@index([journeyRequestId])

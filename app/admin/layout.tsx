@@ -14,12 +14,8 @@ export default function AdminLayout({
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4">
             <Link href="/" className="text-xl font-semibold text-primary">LastBerth</Link>
             <nav className="flex flex-wrap items-center gap-4">
-              <Link href="/admin/trains" className="text-sm font-medium text-slate-600 hover:text-slate-900">Trains</Link>
-              <Link href="/admin/chart-rules" className="text-sm font-medium text-slate-600 hover:text-slate-900">Chart rules</Link>
+              <Link href="/admin/alerts" className="text-sm font-medium text-slate-600 hover:text-slate-900">Alerts</Link>
               <Link href="/admin/chart-time-ingestion" className="text-sm font-medium text-slate-600 hover:text-slate-900">Chart-time ingestion</Link>
-              <Link href="/admin/instances" className="text-sm font-medium text-slate-600 hover:text-slate-900">Chart instances</Link>
-              <Link href="/admin/executions" className="text-sm font-medium text-slate-600 hover:text-slate-900">Executions</Link>
-              <Link href="/dashboard" className="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</Link>
               <AdminLockButton />
             </nav>
           </div>
