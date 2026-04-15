@@ -530,16 +530,18 @@ export class JourneyTaskService {
    * Run a single ChartTimeAvailabilityTask by calling the Service2 check API
    * internally to find available seats at chart time.
    */
-  async runTask(taskId: string): Promise<void> {
+  async runTask(taskId: string, force = false): Promise<void> {
     const task = await this.prisma.chartTimeAvailabilityTask.findUnique({
       where: { id: taskId },
     });
-    if (!task || task.status !== 'pending') return;
+    if (!task || (!force && task.status !== "pending")) return;
 
-    await this.prisma.chartTimeAvailabilityTask.update({
-      where: { id: taskId },
-      data: { status: 'running' },
-    });
+    if (task.status === "pending") {
+      await this.prisma.chartTimeAvailabilityTask.update({
+        where: { id: taskId },
+        data: { status: "running" },
+      });
+    }
 
     const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
 
@@ -639,14 +641,19 @@ export class JourneyTaskService {
 
     const due = await this.prisma.$queryRaw<
       Array<{ id: string }>
-    >`SELECT id FROM "ChartTimeAvailabilityTask"
-      WHERE chart_at <= NOW()
-        AND status = 'pending'
-      ORDER BY chart_at ASC
-      LIMIT 20`;
-    console.log('due', due);
+    >`UPDATE "ChartTimeAvailabilityTask"
+      SET status = 'running'
+      WHERE id IN (
+        SELECT id FROM "ChartTimeAvailabilityTask"
+        WHERE chart_at <= NOW()
+          AND status = 'pending'
+        ORDER BY chart_at ASC
+        LIMIT 20
+      )
+      RETURNING id`;
+    console.log("marked as running", due);
     for (const task of due) {
-      await this.runTask(task.id);
+      await this.runTask(task.id, true);
     }
     return due.length;
   }
