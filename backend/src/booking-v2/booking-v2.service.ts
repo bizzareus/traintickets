@@ -667,7 +667,6 @@ export class BookingV2Service {
         .add(dayOffset, 'days')
         .format('DD-MM-YYYY');
 
-      const nextIdx = currentIdx + 1;
       const toStn = stations[nextIdx];
       const key = cacheKey(fromStn, toStn, bridgeDate);
       let bridge = probeCache.get(key);
