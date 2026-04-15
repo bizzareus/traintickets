@@ -84,6 +84,8 @@ export function describeChartPreparationForStation(
 
   const ymd = journeyDateYmd.trim().slice(0, 10);
   const lines: string[] = [];
+  const c1 = meta?.chartOneTime?.trim();
+  const c2 = meta?.chartTwoTime?.trim();
   const c1Offset = meta?.chartOneDayOffset ?? 0;
   const c2Offset =
     meta?.chartTwoDayOffset !== null && meta?.chartTwoDayOffset !== undefined
