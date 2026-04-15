@@ -18,6 +18,8 @@ type Alert = {
   status: string;
   createdAt: string;
   completedAt: string | null;
+  emailNotifiedAt: string | null;
+  whatsappNotifiedAt: string | null;
   contact: {
     email: string | null;
     mobile: string | null;
@@ -102,12 +104,14 @@ export default function AdminAlertsPage() {
                   <th className="px-6 py-4 font-semibold text-slate-900">Journey</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Monitor Station</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Status</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">Email</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">WhatsApp</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {alerts.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="px-6 py-12 text-center text-slate-500">
+                    <td colSpan={8} className="px-6 py-12 text-center text-slate-500">
                       No alerts have been setup yet.
                     </td>
                   </tr>
@@ -162,6 +166,26 @@ export default function AdminAlertsPage() {
                         >
                           {alert.status.toUpperCase()}
                         </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        {alert.emailNotifiedAt ? (
+                          <div className="flex flex-col gap-0.5">
+                            <span className="font-medium text-emerald-600">Yes</span>
+                            <span className="text-[10px] text-slate-400">{moment(alert.emailNotifiedAt).format("HH:mm, DD MMM")}</span>
+                          </div>
+                        ) : (
+                          <span className="text-slate-300">No</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4">
+                        {alert.whatsappNotifiedAt ? (
+                          <div className="flex flex-col gap-0.5">
+                            <span className="font-medium text-emerald-600">Yes</span>
+                            <span className="text-[10px] text-slate-400">{moment(alert.whatsappNotifiedAt).format("HH:mm, DD MMM")}</span>
+                          </div>
+                        ) : (
+                          <span className="text-slate-300">No</span>
+                        )}
                       </td>
                     </tr>
                   ))
