@@ -172,8 +172,13 @@ export default function AdminAlertsPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="flex flex-col gap-0.5 font-medium text-slate-700 uppercase">
-                          {moment.utc(alert.chartAt).utcOffset("+05:30").format("DD MMM, HH:mm")}
+                        <div className="flex flex-col gap-0.5 font-medium text-slate-700 uppercase leading-tight">
+                          <span>{moment.utc(alert.chartAt).utcOffset("+05:30").format("DD MMM, HH:mm")}</span>
+                          {alert.status === "pending" && (
+                            <span className="text-[10px] font-normal lowercase text-slate-400">
+                              ({moment(alert.chartAt).fromNow(true)})
+                            </span>
+                          )}
                         </div>
                       </td>
                       <td className="px-6 py-4">
