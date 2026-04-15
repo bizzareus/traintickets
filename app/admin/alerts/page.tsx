@@ -30,6 +30,16 @@ export default function AdminAlertsPage() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [nowIst, setNowIst] = useState("");
+
+  useEffect(() => {
+    const update = () => {
+      setNowIst(moment().utcOffset("+05:30").format("DD MMM, HH:mm:ss") + " IST");
+    };
+    update();
+    const timer = setInterval(update, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     fetchAlerts();
@@ -69,9 +79,14 @@ export default function AdminAlertsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-900">User Alerts</h1>
-          <p className="mt-1 text-sm text-slate-500">
-            History of all monitoring tasks setup by users.
-          </p>
+          <div className="mt-1 flex items-center gap-3">
+            <p className="text-sm text-slate-500">
+              History of all monitoring tasks setup by users.
+            </p>
+            <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+              Current: {nowIst}
+            </span>
+          </div>
         </div>
         <button
           onClick={fetchAlerts}
@@ -98,11 +113,12 @@ export default function AdminAlertsPage() {
             <table className="w-full text-left text-sm">
               <thead className="border-b border-slate-100 bg-slate-50/50">
                 <tr>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Setup At</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">Setup At (BST)</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Contact</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Train</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Journey</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Monitor Station</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">Trigger At (IST)</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Status</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Email</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">WhatsApp</th>
@@ -119,7 +135,7 @@ export default function AdminAlertsPage() {
                   alerts.map((alert) => (
                     <tr key={alert.id} className="transition hover:bg-slate-50/50">
                       <td className="whitespace-nowrap px-6 py-4 text-slate-600">
-                        {moment(alert.createdAt).format("DD MMM, HH:mm")}
+                        {moment.utc(alert.createdAt).utcOffset("+01:00").format("DD MMM, HH:mm")}
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex flex-col gap-0.5">
@@ -153,9 +169,11 @@ export default function AdminAlertsPage() {
                       <td className="px-6 py-4">
                         <div className="flex flex-col gap-0.5">
                           <span className="font-semibold text-slate-900">{alert.stationCode}</span>
-                          <span className="text-xs text-slate-500">
-                             at {moment(alert.chartAt).format("DD MMM, HH:mm")}
-                          </span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="flex flex-col gap-0.5 font-medium text-slate-700 uppercase">
+                          {moment.utc(alert.chartAt).utcOffset("+05:30").format("DD MMM, HH:mm")}
                         </div>
                       </td>
                       <td className="px-6 py-4">
