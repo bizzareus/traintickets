@@ -187,22 +187,20 @@ export default function AdminAlertsPage() {
                       </td>
                       <td className="px-6 py-4">
                         {alert.emailNotifiedAt ? (
-                          <div className="flex flex-col gap-0.5">
-                            <span className="font-medium text-emerald-600">Yes</span>
-                            <span className="text-[10px] text-slate-400">{moment(alert.emailNotifiedAt).format("HH:mm, DD MMM")}</span>
-                          </div>
+                          <span className="text-xs text-slate-600">
+                            {moment(alert.emailNotifiedAt).format("DD MMM, HH:mm")}
+                          </span>
                         ) : (
-                          <span className="text-slate-300">No</span>
+                          <span className="text-slate-300">—</span>
                         )}
                       </td>
                       <td className="px-6 py-4">
                         {alert.whatsappNotifiedAt ? (
-                          <div className="flex flex-col gap-0.5">
-                            <span className="font-medium text-emerald-600">Yes</span>
-                            <span className="text-[10px] text-slate-400">{moment(alert.whatsappNotifiedAt).format("HH:mm, DD MMM")}</span>
-                          </div>
+                          <span className="text-xs text-slate-600">
+                            {moment(alert.whatsappNotifiedAt).format("DD MMM, HH:mm")}
+                          </span>
                         ) : (
-                          <span className="text-slate-300">No</span>
+                          <span className="text-slate-300">—</span>
                         )}
                       </td>
                     </tr>
