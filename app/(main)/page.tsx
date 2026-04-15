@@ -178,6 +178,8 @@ type AlternatePathsResponse = {
   stationCodesOnRoute: string[];
   /** Code → full station name from the IRCTC schedule. */
   stationNameMap?: Record<string, string>;
+  trainOriginCode?: string | null;
+  trainOriginDepartureTime?: string | null;
   remainderMergedSchedule?: {
     from: string;
     to: string;
