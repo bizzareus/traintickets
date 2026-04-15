@@ -31,6 +31,8 @@ export default function AdminAlertsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [nowIst, setNowIst] = useState("");
+  const [sortField, setSortField] = useState<"createdAt" | "chartAt">("createdAt");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
   useEffect(() => {
     const update = () => {
@@ -58,6 +60,21 @@ export default function AdminAlertsPage() {
       setLoading(false);
     }
   }
+
+  const sortedAlerts = [...alerts].sort((a, b) => {
+    const valA = new Date(a[sortField]).getTime();
+    const valB = new Date(b[sortField]).getTime();
+    return sortOrder === "asc" ? valA - valB : valB - valA;
+  });
+
+  const toggleSort = (field: "createdAt" | "chartAt") => {
+    if (sortField === field) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortField(field);
+      setSortOrder("desc");
+    }
+  };
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
@@ -113,26 +130,46 @@ export default function AdminAlertsPage() {
             <table className="w-full text-left text-sm">
               <thead className="border-b border-slate-100 bg-slate-50/50">
                 <tr>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Setup At (BST)</th>
+                  <th
+                    className="cursor-pointer px-6 py-4 font-semibold text-slate-900 transition hover:bg-slate-100"
+                    onClick={() => toggleSort("createdAt")}
+                  >
+                    <div className="flex items-center gap-2">
+                      Setup At (BST)
+                      {sortField === "createdAt" && (
+                        <span>{sortOrder === "asc" ? "↑" : "↓"}</span>
+                      )}
+                    </div>
+                  </th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Contact</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Train</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Journey</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Monitor Station</th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Trigger At (IST)</th>
+                  <th
+                    className="cursor-pointer px-6 py-4 font-semibold text-slate-900 transition hover:bg-slate-100"
+                    onClick={() => toggleSort("chartAt")}
+                  >
+                    <div className="flex items-center gap-2">
+                      Trigger At (IST)
+                      {sortField === "chartAt" && (
+                        <span>{sortOrder === "asc" ? "↑" : "↓"}</span>
+                      )}
+                    </div>
+                  </th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Status</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Email</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">WhatsApp</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {alerts.length === 0 ? (
+                {sortedAlerts.length === 0 ? (
                   <tr>
                     <td colSpan={8} className="px-6 py-12 text-center text-slate-500">
                       No alerts have been setup yet.
                     </td>
                   </tr>
                 ) : (
-                  alerts.map((alert) => (
+                  sortedAlerts.map((alert) => (
                     <tr key={alert.id} className="transition hover:bg-slate-50/50">
                       <td className="whitespace-nowrap px-6 py-4 text-slate-600">
                         {moment.utc(alert.createdAt).utcOffset("+01:00").format("DD MMM, HH:mm")}
