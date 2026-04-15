@@ -1280,11 +1280,6 @@ function AlternatePathRemainderInsights({
       });
       const schedulePhrase = buildJourneyChartAlertSchedulePhrase({
         journeyDateYmd: journeyDate.trim(),
-        stationNameMap: {},
-        trainOriginCode: null,
-        trainOriginDepartureTime: null,
-        remainderMergedSchedule: null,
-        debugLog: undefined,
         metaLoading,
         metaErr,
         metaFrom,
