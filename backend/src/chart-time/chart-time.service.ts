@@ -164,6 +164,8 @@ export class ChartTimeService {
       {
         chartOne: { time: string; dayOffset: number | null };
         chartTwo?: { time: string; dayOffset: number | null };
+        chartRemoteStation?: string | null;
+        chartNextRemoteStation?: string | null;
       }
     >();
     for (const r of rows) {
@@ -175,10 +177,10 @@ export class ChartTimeService {
       } = {
         chartOne: {
           time: r.chartTimeLocal,
-          dayOffset: r.chartOneDayOffset,
+          dayOffset: (r as any).chartOneDayOffset,
         },
-        chartRemoteStation: r.chartRemoteStation,
-        chartNextRemoteStation: r.chartNextRemoteStation,
+        chartRemoteStation: (r as any).chartRemoteStation,
+        chartNextRemoteStation: (r as any).chartNextRemoteStation,
       };
       if (r.chartTwoTimeLocal?.trim()) {
         entry.chartTwo = {
