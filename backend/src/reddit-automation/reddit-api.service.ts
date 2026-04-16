@@ -77,8 +77,12 @@ export class RedditApiService {
 
   async getCommentsFromUrl(url: string): Promise<any[]> {
     try {
-      // Use the .json URL directly
-      const jsonUrl = url.endsWith('.json') ? url : `${url}.json`;
+      // Use the .json URL directly. Handle existing query parameters.
+      let jsonUrl = url;
+      if (!jsonUrl.includes('.json')) {
+        const [base, query] = jsonUrl.split('?');
+        jsonUrl = `${base.endsWith('/') ? base.slice(0, -1) : base}.json${query ? `?${query}` : ''}`;
+      }
       const resp = await lastValueFrom(
         this.http.get(jsonUrl, {
           headers: {
