@@ -8,6 +8,7 @@ import { RedditApiService } from './reddit-api.service';
 import { BookingV2Module } from '../booking-v2/booking-v2.module';
 import { PrismaModule } from '../prisma/prisma.module';
 import { RedditAutomationController } from './reddit-automation.controller';
+import { BrowserUseModule } from '../browser-use/browser-use.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { RedditAutomationController } from './reddit-automation.controller';
     HttpModule,
     BookingV2Module,
     PrismaModule,
+    BrowserUseModule,
   ],
   controllers: [RedditAutomationController],
   providers: [

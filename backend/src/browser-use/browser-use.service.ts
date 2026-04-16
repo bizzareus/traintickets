@@ -355,4 +355,45 @@ export class BrowserUseService {
       chartingStationCode,
     };
   }
+
+  /**
+   * Automates a search on LastBerth.com and takes a screenshot of the results.
+   */
+  async performLastBerthSearch(params: {
+    origin: string;
+    destination: string;
+    date: string;
+    trainNumber?: string;
+  }): Promise<{ screenshotUrl: string | null }> {
+    const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
+    const task = `Go to ${baseUrl}. 
+1. Find the search form.
+2. Enter "${params.origin}" in the 'From' station field.
+3. Enter "${params.destination}" in the 'To' station field.
+4. Select the date "${params.date}".
+${params.trainNumber ? `5. If there is a field for train number, enter "${params.trainNumber}".` : ''}
+6. Click the Search button (e.g. "Explore Options" or "Search").
+7. Wait for the results to load. 
+8. Once the results (trains or confirmed segments) are visible, take a full page screenshot.
+    `;
+
+    const apiKey = process.env.BROWSER_USE_API_KEY;
+    const client = new BrowserUse(apiKey ? { apiKey } : undefined);
+
+    const result = await client.run(task, {
+      startUrl: baseUrl,
+      llm: 'gemini-flash-latest',
+    });
+
+    if (result.status === 'finished') {
+      const lastStepWithScreenshot = [...(result.steps || [])]
+        .reverse()
+        .find((s) => s.screenshotUrl);
+      return {
+        screenshotUrl: lastStepWithScreenshot?.screenshotUrl || null,
+      };
+    }
+
+    return { screenshotUrl: null };
+  }
 }

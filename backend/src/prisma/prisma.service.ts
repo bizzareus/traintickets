@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
@@ -9,7 +10,7 @@ export class PrismaService
 {
   constructor() {
     const connectionString =
-      process.env.DATABASE_URL ?? 'postgresql://localhost:5432/railchart';
+      process.env.DATABASE_URL ?? 'postgresql://postgres:postgres@localhost:5432/railchart';
     const adapter = new PrismaPg({ connectionString });
     super({
       adapter,

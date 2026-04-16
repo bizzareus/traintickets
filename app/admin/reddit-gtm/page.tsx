@@ -14,12 +14,16 @@ interface AnalyzedComment {
   pnr: string | null;
   dateOfTravel: string | null;
   currentStatus: string | null;
-  analyzedAt: string;
+  screenshotUrl: string | null;
+  status: string;
+  createdAt: string;
+  analyzedAt: string | null;
 }
 
 export default function RedditGTMEngine() {
   const [url, setUrl] = useState("https://www.reddit.com/r/indianrailways/comments/1lovrfq/travel_queries_thread_for_all_questions_related/.json");
   const [loading, setLoading] = useState(false);
+  const [processingId, setProcessingId] = useState<string | null>(null);
   const [entries, setEntries] = useState<AnalyzedComment[]>([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
@@ -42,25 +46,44 @@ export default function RedditGTMEngine() {
     fetchEntries(page);
   }, [page]);
 
-  const handleAnalyze = async () => {
+  const handleSync = async () => {
     setLoading(true);
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009";
-      const res = await fetch(`${apiUrl}/api/admin/reddit-gtm/analyze`, {
+      const res = await fetch(`${apiUrl}/api/admin/reddit-gtm/sync`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
       });
       const data = await res.json();
-      console.log("Analyze response data:", data);
-      alert(`Analyzed ${data.analyzedCount} new comments!`);
+      alert(`Synced ${data.syncedCount} comments!`);
       fetchEntries(1);
       setPage(1);
     } catch (err) {
-      console.error("Analysis failed", err);
-      alert("Analysis failed. Check console.");
+      console.error("Sync failed", err);
+      alert("Sync failed. Check console.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleProcessAI = async (id: string) => {
+    setProcessingId(id);
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009";
+      const res = await fetch(`${apiUrl}/api/admin/reddit-gtm/process/${id}`, {
+        method: "POST",
+      });
+      if (res.ok) {
+        fetchEntries(page);
+      } else {
+        alert("Processing failed.");
+      }
+    } catch (err) {
+      console.error("Process failed", err);
+      alert("Process failed. Check console.");
+    } finally {
+      setProcessingId(null);
     }
   };
 
@@ -68,7 +91,7 @@ export default function RedditGTMEngine() {
     <div className="space-y-6">
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h1 className="text-2xl font-bold text-slate-900">Reddit GTM Engine</h1>
-        <p className="mt-1 text-slate-500">Fetch and analyze train queries from Reddit using AI.</p>
+        <p className="mt-1 text-slate-500">First sync comments from Reddit, then process them individually with AI.</p>
         
         <div className="mt-6 flex flex-col gap-4 sm:flex-row">
           <input
@@ -79,7 +102,7 @@ export default function RedditGTMEngine() {
             className="flex-1 rounded-lg border border-slate-300 px-4 py-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
           />
           <button
-            onClick={handleAnalyze}
+            onClick={handleSync}
             disabled={loading}
             className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-2 font-medium text-white transition-all hover:bg-indigo-700 disabled:opacity-50"
           >
@@ -89,16 +112,16 @@ export default function RedditGTMEngine() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Analyzing...
+                Syncing...
               </>
-            ) : "Analyze"}
+            ) : "Sync Comments"}
           </button>
         </div>
       </div>
 
       <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         <div className="border-b border-slate-100 bg-slate-50/50 px-6 py-4 flex justify-between items-center">
-          <h2 className="font-semibold text-slate-800">Recent Analyzed Threads ({total})</h2>
+          <h2 className="font-semibold text-slate-800">Reddit Queries ({total})</h2>
           <div className="flex gap-2">
             <button 
               disabled={page === 1}
@@ -123,45 +146,67 @@ export default function RedditGTMEngine() {
             <thead className="bg-slate-50 text-slate-500 font-medium">
               <tr>
                 <th className="px-6 py-3">User / Comment</th>
+                <th className="px-6 py-3">Status</th>
                 <th className="px-6 py-3">Train</th>
                 <th className="px-6 py-3">Route</th>
-                <th className="px-6 py-3">PNR</th>
-                <th className="px-6 py-3">Date</th>
-                <th className="px-6 py-3">Status</th>
-                <th className="px-6 py-3">Time</th>
+                <th className="px-6 py-3">Action</th>
+                <th className="px-6 py-3">Screenshot</th>
+                <th className="px-6 py-3">Last Activity</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {entries.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-10 text-center text-slate-400">No entries yet. Click analyze to fetch some!</td>
+                  <td colSpan={7} className="px-6 py-10 text-center text-slate-400">No entries yet. Click sync to fetch comments!</td>
                 </tr>
               ) : (
                 entries.map((item) => (
                   <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
                     <td className="px-6 py-4">
                       <div className="font-medium text-slate-900">u/{item.author}</div>
-                      <a href={item.permalink} target="_blank" rel="noreferrer" className="text-indigo-600 hover:underline text-xs line-clamp-1 max-w-[200px]">
+                      <a href={item.permalink} target="_blank" rel="noreferrer" className="text-indigo-600 hover:underline text-xs line-clamp-2 max-w-[250px]">
                         {item.content}
                       </a>
                     </td>
-                    <td className="px-6 py-4 text-slate-700 font-mono">{item.trainNumber || "—"}</td>
                     <td className="px-6 py-4">
-                      <div className="text-slate-900 font-medium">{item.origin || "—"}</div>
-                      <div className="text-slate-400 text-xs text-center">↓</div>
-                      <div className="text-slate-900 font-medium">{item.destination || "—"}</div>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium border ${
+                        item.status === 'PROCESSED' ? 'bg-green-50 text-green-700 border-green-100' :
+                        item.status === 'ANALYZED' ? 'bg-blue-50 text-blue-700 border-blue-100' :
+                        'bg-slate-50 text-slate-600 border-slate-100'
+                      }`}>
+                        {item.status}
+                      </span>
                     </td>
-                    <td className="px-6 py-4 text-slate-600 font-mono">{item.pnr || "—"}</td>
-                    <td className="px-6 py-4 text-slate-600">{item.dateOfTravel || "—"}</td>
+                    <td className="px-6 py-4 text-slate-700 font-mono text-xs">{item.trainNumber || "—"}</td>
                     <td className="px-6 py-4">
-                      {item.currentStatus ? (
-                        <span className="px-2 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-medium border border-amber-100">
-                          {item.currentStatus}
-                        </span>
-                      ) : "—"}
+                      <div className="text-slate-900 font-medium text-xs">{item.origin || "—"}</div>
+                      <div className="text-slate-400 text-[10px] text-center">↓</div>
+                      <div className="text-slate-900 font-medium text-xs">{item.destination || "—"}</div>
                     </td>
-                    <td className="px-6 py-4 text-slate-400 text-xs whitespace-nowrap">
-                      {moment(item.analyzedAt).fromNow()}
+                    <td className="px-6 py-4">
+                      {item.status === 'PENDING' ? (
+                        <button
+                          onClick={() => handleProcessAI(item.id)}
+                          disabled={processingId === item.id}
+                          className="px-3 py-1.5 bg-indigo-50 text-indigo-600 border border-indigo-100 rounded-lg text-xs font-semibold hover:bg-indigo-100 disabled:opacity-50"
+                        >
+                          {processingId === item.id ? "Processing..." : "Process AI"}
+                        </button>
+                      ) : (
+                        <span className="text-slate-400 text-xs">Complete</span>
+                      )}
+                    </td>
+                    <td className="px-6 py-4">
+                      {item.screenshotUrl ? (
+                        <a href={item.screenshotUrl} target="_blank" rel="noreferrer" className="group relative block h-8 w-12 overflow-hidden rounded border border-slate-200">
+                          <img src={item.screenshotUrl} alt="Result" className="h-full w-full object-cover transition-transform group-hover:scale-110" />
+                        </a>
+                      ) : (
+                        <span className="text-slate-300 italic text-[10px]">No result</span>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 text-slate-400 text-[10px] whitespace-nowrap">
+                      {moment(item.analyzedAt || item.createdAt).fromNow()}
                     </td>
                   </tr>
                 ))

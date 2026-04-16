@@ -277,8 +277,10 @@ model RedditAnalyzedComment {
   dateOfTravel     String?  @map("date_of_travel")
   currentStatus    String?  @map("current_status")
   rawJson          Json?    @map("raw_json")
+  screenshotUrl    String?  @map("screenshot_url")
+  status           String   @default("PENDING") @map("status")
   createdAt        DateTime @default(now()) @map("created_at")
-  analyzedAt       DateTime @default(now()) @map("analyzed_at")
+  analyzedAt       DateTime? @map("analyzed_at")
 
   @@index([trainNumber])
   @@index([pnr])

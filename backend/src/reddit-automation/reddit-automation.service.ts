@@ -4,6 +4,7 @@ import { RedditGptService } from './reddit-gpt.service';
 import { ScreenshotService } from './screenshot.service';
 import { BookingV2Service } from '../booking-v2/booking-v2.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { BrowserUseService } from '../browser-use/browser-use.service';
 
 @Injectable()
 export class RedditAutomationService implements OnModuleInit {
@@ -16,6 +17,7 @@ export class RedditAutomationService implements OnModuleInit {
     private readonly screenshot: ScreenshotService,
     private readonly bookingV2: BookingV2Service,
     private readonly prisma: PrismaService,
+    private readonly browserUse: BrowserUseService,
   ) {}
 
   onModuleInit() {
@@ -42,6 +44,7 @@ export class RedditAutomationService implements OnModuleInit {
       const now = Math.floor(Date.now() / 1000);
 
       for (const comment of comments) {
+        if (comment.kind !== 't1') continue;
         const data = (comment.data || {}) as Record<string, any>;
         const createdUtc = (data.created_utc as number) || 0;
         if (!createdUtc) continue;
@@ -75,56 +78,106 @@ export class RedditAutomationService implements OnModuleInit {
     }
   }
 
-  async analyzeGTM(url: string) {
-    this.logger.log(`Manually analyzing Reddit thread: ${url}`);
-    // 1. Parse thread ID from URL
-    const match = url.match(/\/comments\/([a-z0-9]+)/);
-    const threadId = match ? match[1] : '1lovrfq';
-
-    // 2. Fetch comments (using public URL if possible)
+  async syncRedditComments(url: string) {
+    this.logger.log(`Syncing Reddit thread: ${url}`);
+    // 1. Fetch comments
     const comments = (await this.redditApi.getCommentsFromUrl(
       url,
     )) as Record<string, any>[];
 
     const results: any[] = [];
     for (const comment of comments) {
+      if (comment.kind !== 't1') continue;
       const commentData = comment.data as Record<string, any>;
-      if (!commentData || !commentData.id) continue;
+      if (!commentData || !commentData.id || !commentData.body) continue;
 
-      // Check if already analyzed
-      const existing = await this.prisma.redditAnalyzedComment.findUnique({
+      // Sync to DB (upsert raw data)
+      const saved = await this.prisma.redditAnalyzedComment.upsert({
         where: { id: commentData.id },
-      });
-      if (existing) continue;
-
-      this.logger.log(`Analyzing new comment ${commentData.id}...`);
-
-      // Analyze with GPT
-      const gtmData = await this.gpt.parseGTMDetails(
-        commentData.body as string,
-        new Date(),
-      );
-
-      // Save to DB
-      const saved = await this.prisma.redditAnalyzedComment.create({
-        data: {
+        update: {
+          content: commentData.body as string,
+          author: commentData.author as string,
+          permalink: `https://reddit.com${commentData.permalink as string}`,
+          rawJson: commentData as any,
+        },
+        create: {
           id: commentData.id,
           content: commentData.body as string,
           author: commentData.author as string,
           permalink: `https://reddit.com${commentData.permalink as string}`,
-          trainNumber: gtmData.trainNumber,
-          origin: gtmData.origin,
-          destination: gtmData.destination,
-          pnr: gtmData.pnr,
-          dateOfTravel: gtmData.dateOfTravel,
-          currentStatus: gtmData.currentStatus,
           rawJson: commentData as any,
+          status: 'PENDING',
         },
       });
+
       results.push(saved);
     }
 
-    return { analyzedCount: results.length, items: results };
+    return { syncedCount: results.length, items: results };
+  }
+
+  async processCommentAI(id: string) {
+    this.logger.log(`Processing comment ${id} with AI...`);
+
+    const comment = await this.prisma.redditAnalyzedComment.findUnique({
+      where: { id },
+    });
+
+    if (!comment) throw new Error('Comment not found');
+
+    // 1. Analyze with GPT
+    const gtmData = await this.gpt.parseGTMDetails(
+      comment.content,
+      new Date(),
+    );
+
+    // 2. Update DB with analysis results
+    const updated = await this.prisma.redditAnalyzedComment.update({
+      where: { id },
+      data: {
+        trainNumber: gtmData.trainNumber,
+        origin: gtmData.origin,
+        destination: gtmData.destination,
+        pnr: gtmData.pnr,
+        dateOfTravel: gtmData.dateOfTravel,
+        currentStatus: gtmData.currentStatus,
+        status: 'ANALYZED',
+        analyzedAt: new Date(),
+      },
+    });
+
+    // 3. Automated Screenshot with BrowserUse
+    if (gtmData.origin && gtmData.destination) {
+      try {
+        this.logger.log(`Automating LastBerth search for ${id}...`);
+        const { screenshotUrl } = await this.browserUse.performLastBerthSearch({
+          origin: gtmData.origin,
+          destination: gtmData.destination,
+          date: gtmData.dateOfTravel || new Date().toISOString(),
+          trainNumber: gtmData.trainNumber || undefined,
+        });
+
+        if (screenshotUrl) {
+          await this.prisma.redditAnalyzedComment.update({
+            where: { id },
+            data: { 
+              screenshotUrl,
+              status: 'PROCESSED'
+            },
+          });
+          this.logger.log(`Saved screenshot for ${id}: ${screenshotUrl}`);
+        }
+      } catch (err) {
+        this.logger.error(`BrowserUse automation failed for ${id}: ${err.message}`);
+      }
+    }
+
+    return updated;
+  }
+
+  // Kept for backward compatibility if needed, but redirects to sync
+  async analyzeGTM(url: string) {
+    return this.syncRedditComments(url);
   }
 
   async getAnalyzedEntries(page: number) {
