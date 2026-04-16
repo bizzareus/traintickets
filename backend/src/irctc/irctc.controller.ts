@@ -2,13 +2,20 @@ import {
   Controller,
   Get,
   Param,
+  Query,
   ServiceUnavailableException,
 } from '@nestjs/common';
 import { IrctcService } from './irctc.service';
+import { IrctcChartService } from './irctc-chart.service';
+import { IrctcBrowserUseService } from './irctc-browser-use.service';
 
 @Controller('api/irctc')
 export class IrctcController {
-  constructor(private irctc: IrctcService) {}
+  constructor(
+    private irctc: IrctcService,
+    private irctcChart: IrctcChartService,
+    private browserUse: IrctcBrowserUseService,
+  ) {}
 
   @Get('trains')
   async getTrains() {
@@ -35,5 +42,35 @@ export class IrctcController {
       );
     }
     return result.schedule;
+  }
+
+  @Get('browser-use/:trainNumber')
+  async getChartV2(
+    @Param('trainNumber') trainNumber: string,
+    @Query('date') date: string,
+    @Query('station') station: string,
+  ) {
+    try {
+      return await this.browserUse.getTrainChart(trainNumber, date, station);
+    } catch (error) {
+      throw new ServiceUnavailableException(
+        `Failed to fetch train chart via Browser Use: ${error.message}`,
+      );
+    }
+  }
+
+  @Get('chart/:trainNumber')
+  async getChart(
+    @Param('trainNumber') trainNumber: string,
+    @Query('date') date: string,
+    @Query('station') station: string,
+  ) {
+    try {
+      return await this.irctcChart.getTrainChart(trainNumber, date, station);
+    } catch (error) {
+      throw new ServiceUnavailableException(
+        `Failed to fetch train chart: ${error.message}`,
+      );
+    }
   }
 }

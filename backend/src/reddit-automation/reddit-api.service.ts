@@ -75,6 +75,26 @@ export class RedditApiService {
     }
   }
 
+  async getCommentsFromUrl(url: string): Promise<any[]> {
+    try {
+      // Use the .json URL directly
+      const jsonUrl = url.endsWith('.json') ? url : `${url}.json`;
+      const resp = await lastValueFrom(
+        this.http.get(jsonUrl, {
+          headers: {
+            'User-Agent': 'LastBerthBot/1.0',
+          },
+        }),
+      );
+      const data = resp.data as any[];
+      // Reddit returns an array: [0] is post, [1] is comments
+      return (data[1]?.data?.children as any[]) || [];
+    } catch (e: any) {
+      this.logger.error(`Failed to fetch reddit comments from URL: ${url}`, e);
+      return [];
+    }
+  }
+
   async replyToComment(commentId: string, markdown: string): Promise<boolean> {
     if (!this.token) {
       await this.refreshToken();

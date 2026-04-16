@@ -81,9 +81,9 @@ export class RedditAutomationService implements OnModuleInit {
     const match = url.match(/\/comments\/([a-z0-9]+)/);
     const threadId = match ? match[1] : '1lovrfq';
 
-    // 2. Fetch comments
-    const comments = (await this.redditApi.getLatestComments(
-      threadId,
+    // 2. Fetch comments (using public URL if possible)
+    const comments = (await this.redditApi.getCommentsFromUrl(
+      url,
     )) as Record<string, any>[];
 
     const results: any[] = [];
