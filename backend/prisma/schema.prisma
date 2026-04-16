@@ -265,3 +265,22 @@ enum AlertLogStatus {
   sent
   failed
 }
+model RedditAnalyzedComment {
+  id               String   @id @map("id")
+  content          String   @map("content")
+  author           String   @map("author")
+  permalink        String   @map("permalink")
+  trainNumber      String?  @map("train_number")
+  origin           String?  @map("origin")
+  destination      String?  @map("destination")
+  pnr              String?  @map("pnr")
+  dateOfTravel     String?  @map("date_of_travel")
+  currentStatus    String?  @map("current_status")
+  rawJson          Json?    @map("raw_json")
+  createdAt        DateTime @default(now()) @map("created_at")
+  analyzedAt       DateTime @default(now()) @map("analyzed_at")
+
+  @@index([trainNumber])
+  @@index([pnr])
+  @@map("reddit_analyzed_comments")
+}

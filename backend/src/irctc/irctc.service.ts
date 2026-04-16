@@ -315,6 +315,16 @@ export class IrctcService {
           `[irctc/schedule] irctc_http_error train=${trainNumber} ms=${ms} ${err instanceof Error ? err.message : String(err)}`,
         );
       }
+
+      captureSentryException(err, {
+        tags: { service: 'irctc', endpoint: 'schedule' },
+        extra: {
+          ms,
+          trainNumber,
+          code: isAxiosError(err) ? err.code : undefined,
+          status: isAxiosError(err) ? err.response?.status : undefined,
+        },
+      });
       throw err;
     }
 

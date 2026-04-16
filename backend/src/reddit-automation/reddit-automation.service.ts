@@ -3,6 +3,7 @@ import { RedditApiService } from './reddit-api.service';
 import { RedditGptService } from './reddit-gpt.service';
 import { ScreenshotService } from './screenshot.service';
 import { BookingV2Service } from '../booking-v2/booking-v2.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class RedditAutomationService implements OnModuleInit {
@@ -14,6 +15,7 @@ export class RedditAutomationService implements OnModuleInit {
     private readonly gpt: RedditGptService,
     private readonly screenshot: ScreenshotService,
     private readonly bookingV2: BookingV2Service,
+    private readonly prisma: PrismaService,
   ) {}
 
   onModuleInit() {
@@ -71,6 +73,70 @@ export class RedditAutomationService implements OnModuleInit {
     } catch (e) {
       this.logger.error('Error in handling cron for Reddit', e);
     }
+  }
+
+  async analyzeGTM(url: string) {
+    this.logger.log(`Manually analyzing Reddit thread: ${url}`);
+    // 1. Parse thread ID from URL
+    const match = url.match(/\/comments\/([a-z0-9]+)/);
+    const threadId = match ? match[1] : '1lovrfq';
+
+    // 2. Fetch comments
+    const comments = (await this.redditApi.getLatestComments(
+      threadId,
+    )) as Record<string, any>[];
+
+    const results: any[] = [];
+    for (const comment of comments) {
+      const commentData = comment.data as Record<string, any>;
+      if (!commentData || !commentData.id) continue;
+
+      // Check if already analyzed
+      const existing = await this.prisma.redditAnalyzedComment.findUnique({
+        where: { id: commentData.id },
+      });
+      if (existing) continue;
+
+      this.logger.log(`Analyzing new comment ${commentData.id}...`);
+
+      // Analyze with GPT
+      const gtmData = await this.gpt.parseGTMDetails(
+        commentData.body as string,
+        new Date(),
+      );
+
+      // Save to DB
+      const saved = await this.prisma.redditAnalyzedComment.create({
+        data: {
+          id: commentData.id,
+          content: commentData.body as string,
+          author: commentData.author as string,
+          permalink: `https://reddit.com${commentData.permalink as string}`,
+          trainNumber: gtmData.trainNumber,
+          origin: gtmData.origin,
+          destination: gtmData.destination,
+          pnr: gtmData.pnr,
+          dateOfTravel: gtmData.dateOfTravel,
+          currentStatus: gtmData.currentStatus,
+          rawJson: commentData as any,
+        },
+      });
+      results.push(saved);
+    }
+
+    return { analyzedCount: results.length, items: results };
+  }
+
+  async getAnalyzedEntries(page: number) {
+    const take = 50;
+    const skip = (page - 1) * take;
+    const items = await this.prisma.redditAnalyzedComment.findMany({
+      orderBy: { analyzedAt: 'desc' },
+      take,
+      skip,
+    });
+    const total = await this.prisma.redditAnalyzedComment.count();
+    return { items, total, page, totalPages: Math.ceil(total / take) };
   }
 
   private async processComment(comment: Record<string, any>) {

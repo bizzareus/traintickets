@@ -6,9 +6,17 @@ import { ScreenshotService } from './screenshot.service';
 import { RedditGptService } from './reddit-gpt.service';
 import { RedditApiService } from './reddit-api.service';
 import { BookingV2Module } from '../booking-v2/booking-v2.module';
+import { PrismaModule } from '../prisma/prisma.module';
+import { RedditAutomationController } from './reddit-automation.controller';
 
 @Module({
-  imports: [ScheduleModule.forRoot(), HttpModule, BookingV2Module],
+  imports: [
+    ScheduleModule.forRoot(),
+    HttpModule,
+    BookingV2Module,
+    PrismaModule,
+  ],
+  controllers: [RedditAutomationController],
   providers: [
     RedditAutomationService,
     ScreenshotService,

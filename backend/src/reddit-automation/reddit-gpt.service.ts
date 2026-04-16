@@ -35,6 +35,21 @@ const RedditTravelQuerySchema = z.object({
     ),
 });
 
+const RedditGTMEngineSchema = z.object({
+  trainNumber: z.string().nullable().describe('The train number mentioned.'),
+  origin: z.string().nullable().describe('The origin station.'),
+  destination: z.string().nullable().describe('The destination station.'),
+  pnr: z
+    .string()
+    .nullable()
+    .describe('The PNR number if mentioned (usually 10 digits).'),
+  dateOfTravel: z.string().nullable().describe('The date of travel.'),
+  currentStatus: z
+    .string()
+    .nullable()
+    .describe('The current status of ticket mentioned (e.g. WL 5, RAC 2).'),
+});
+
 @Injectable()
 export class RedditGptService {
   private openai: OpenAI | null = null;
@@ -50,7 +65,7 @@ export class RedditGptService {
     text: string,
     currentDate: Date,
   ): Promise<z.infer<typeof RedditTravelQuerySchema>> {
-    const model = process.env.GPT_MODEL || 'gpt-3.5-turbo';
+    const model = process.env.GPT_MODEL || 'gpt-4o-mini';
     if (!this.openai) {
       this.logger.warn(
         'OpenAI API key not configured. Bypassing GPT extraction.',
@@ -66,7 +81,7 @@ export class RedditGptService {
 
     try {
       const response = await this.openai.chat.completions.parse({
-        model, // e.g. gpt-4o-mini or user-specified
+        model,
         messages: [
           {
             role: 'system',
@@ -95,6 +110,57 @@ Translate conversational city names to IRCTC station codes if possible, or leave
         destination: null,
         date: null,
         travelClass: null,
+      };
+    }
+  }
+
+  async parseGTMDetails(
+    text: string,
+    currentDate: Date,
+  ): Promise<z.infer<typeof RedditGTMEngineSchema>> {
+    const model = process.env.GPT_MODEL || 'gpt-4o-mini';
+    if (!this.openai) {
+      return {
+        trainNumber: null,
+        origin: null,
+        destination: null,
+        pnr: null,
+        dateOfTravel: null,
+        currentStatus: null,
+      };
+    }
+
+    try {
+      const response = await this.openai.chat.completions.parse({
+        model,
+        messages: [
+          {
+            role: 'system',
+            content: `You are an expert at extracting train travel details from Reddit comments. 
+Today's date is ${currentDate.toISOString().split('T')[0]}. 
+Extract the requested fields accurately.`,
+          },
+          { role: 'user', content: text },
+        ],
+        response_format: zodResponseFormat(
+          RedditGTMEngineSchema,
+          'gtm_extraction',
+        ),
+      });
+
+      if (!response.choices[0].message.parsed) {
+        throw new Error('No parsed message returned');
+      }
+      return response.choices[0].message.parsed;
+    } catch (e) {
+      this.logger.error('Failed to parse GTM schema', e);
+      return {
+        trainNumber: null,
+        origin: null,
+        destination: null,
+        pnr: null,
+        dateOfTravel: null,
+        currentStatus: null,
       };
     }
   }
