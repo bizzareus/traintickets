@@ -51,7 +51,7 @@ export class IrctcChartService {
       if (inputs.length > 0) {
         await inputs[0].click();
         await inputs[0].type(trainNumber, { delay: 100 });
-        await page.waitForTimeout(1000);
+        await new Promise(resolve => setTimeout(resolve, 1000));
         await page.keyboard.press('Enter');
       }
 
@@ -81,7 +81,7 @@ export class IrctcChartService {
       if (inputsAfterDate.length > 1) {
         await inputsAfterDate[1].click();
         await inputsAfterDate[1].type(boardingStation, { delay: 100 });
-        await page.waitForTimeout(1000);
+        await new Promise(resolve => setTimeout(resolve, 1000));
         await page.keyboard.press('Enter');
       }
 
@@ -97,7 +97,7 @@ export class IrctcChartService {
       }
 
       // 5. Wait for results
-      await page.waitForTimeout(5000); // Give it time to load
+      await new Promise(resolve => setTimeout(resolve, 5000)); // Give it time to load
 
       const fileName = `${trainNumber}_${journeyDate}_${boardingStation}.png`.replace(/\//g, '-');
       const filePath = `../public/charts/${fileName}`;
