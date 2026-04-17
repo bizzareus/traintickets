@@ -117,6 +117,7 @@ export class ChartTimeService {
   async getChartTimesWithSecondChartForTrain(
     trainNumber: string,
     stationCodes: string[],
+    jDate?: string,
   ): Promise<
     Map<
       string,
@@ -141,23 +142,21 @@ export class ChartTimeService {
       };
     }
     let rows = await this.prisma.trainStationChartTime.findMany({ where });
-
+    console.log('rows', rows);
     // DB-first read; if missing for requested stations, hydrate once from composition API.
     if (rows.length === 0 && normalizedCodes.length > 0) {
-      const jDate = new Date().toISOString().slice(0, 10);
+      const hydrationDate = jDate || new Date().toISOString().slice(0, 10);
       for (const code of normalizedCodes) {
-        console.log('code', code);
         await this.irctc.getTrainComposition(
           {
             trainNo: num,
-            jDate,
+            jDate: hydrationDate,
             boardingStation: code,
           },
           { allowChartNotPrepared: true },
         );
       }
       rows = await this.prisma.trainStationChartTime.findMany({ where });
-      console.log('rows', rows);
     }
     const map = new Map<
       string,
@@ -190,7 +189,6 @@ export class ChartTimeService {
       }
       map.set(r.stationCode, entry);
     }
-    console.log('mao', map);
     return map;
   }
 }

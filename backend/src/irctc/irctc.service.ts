@@ -724,7 +724,6 @@ export class IrctcService {
     opts?: { allowChartNotPrepared?: boolean },
   ): Promise<TrainCompositionResponse> {
     const raw = await this.postTrainComposition(payload, opts);
-    console.log('raw >>> getTrainComposition', raw);
     const data = raw as unknown as TrainCompositionResponse;
     try {
       await this.persistChartTimesFromComposition(data, payload.boardingStation);

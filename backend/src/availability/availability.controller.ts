@@ -24,6 +24,7 @@ type NormalizedJourneyCreate = {
   stationCodesToMonitor?: string[];
   email?: string;
   mobile?: string;
+  trainStartDate?: string;
 };
 
 function normalizeJourneyCreateParams(
@@ -36,6 +37,7 @@ function normalizeJourneyCreateParams(
   stationCodesToMonitor?: string[],
   email?: string,
   mobile?: string,
+  trainStartDate?: string,
 ): NormalizedJourneyCreate {
   return {
     trainNumber: String(trainNumber ?? '').trim(),
@@ -56,6 +58,7 @@ function normalizeJourneyCreateParams(
         : undefined,
     email: email ? String(email).trim() : undefined,
     mobile: mobile ? String(mobile).trim() : undefined,
+    trainStartDate: trainStartDate ? String(trainStartDate).trim() : undefined,
   };
 }
 
@@ -201,6 +204,7 @@ export class AvailabilityController {
     @Body('journeyDate') journeyDate: string,
     @Body('classCode') classCode: string,
     @Body('stationCodesToMonitor') stationCodesToMonitor?: string[],
+    @Body('trainStartDate') trainStartDate?: string,
   ) {
     const normalized = normalizeJourneyCreateParams(
       trainNumber,
@@ -210,6 +214,9 @@ export class AvailabilityController {
       journeyDate,
       classCode,
       stationCodesToMonitor,
+      undefined,
+      undefined,
+      trainStartDate,
     );
     if (
       !normalized.trainNumber ||
@@ -233,6 +240,7 @@ export class AvailabilityController {
       fromStationCode: normalized.fromStationCode,
       toStationCode: normalized.toStationCode,
       journeyDate: normalized.journeyDate,
+      trainStartDate: normalized.trainStartDate,
       stationCodesToMonitor: normalized.stationCodesToMonitor,
     });
     if (!result.valid) {
@@ -265,6 +273,7 @@ export class AvailabilityController {
     @Body('stationCodesToMonitor') stationCodesToMonitor?: string[],
     @Body('email') email?: string,
     @Body('mobile') mobile?: string,
+    @Body('trainStartDate') trainStartDate?: string,
   ) {
     const normalized = normalizeJourneyCreateParams(
       trainNumber,
@@ -276,6 +285,7 @@ export class AvailabilityController {
       stationCodesToMonitor,
       email,
       mobile,
+      trainStartDate,
     );
     if (
       !normalized.trainNumber ||
@@ -300,6 +310,7 @@ export class AvailabilityController {
       fromStationCode: normalized.fromStationCode,
       toStationCode: normalized.toStationCode,
       journeyDate: normalized.journeyDate,
+      trainStartDate: normalized.trainStartDate,
       stationCodesToMonitor: normalized.stationCodesToMonitor,
     });
     if (!validation.valid) {

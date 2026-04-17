@@ -118,6 +118,7 @@ type TrainListItem = {
   toStnCode?: string;
   avlClasses?: string[];
   availabilityCache?: Record<string, AvailabilityCacheEntry>;
+  trainStartDate?: string;
 };
 
 type AlternateClassOption = {
@@ -188,6 +189,7 @@ type AlternatePathsResponse = {
     durationMinutes: number | null;
   } | null;
   debugLog?: string[];
+  trainStartDate?: string;
 };
 
 /** Converts a raw progress event into a human-readable status line and icon. */
@@ -1109,6 +1111,7 @@ function AlternatePathRemainderInsights({
   monitorClassCode,
   journeyDestinationCode,
   isJourneyTail,
+  trainStartDate,
 }: {
   trainNumber: string;
   trainName?: string | null;
@@ -1116,6 +1119,7 @@ function AlternatePathRemainderInsights({
   legFrom: string;
   legTo: string;
   monitorClassCode: string;
+  trainStartDate?: string | null;
   /** When set and equal to `legTo`, hide IRCTC composition-error lines at destination (not useful for where you alight). */
   journeyDestinationCode?: string | null;
   isJourneyTail?: boolean;
@@ -1222,12 +1226,24 @@ function AlternatePathRemainderInsights({
   }, [trainNumber, journeyDate, legFrom, legTo, journeyDestinationCode]);
 
   const originChart = useMemo(
-    () => describeChartPreparationForStation(metaFrom, legFrom, journeyDate),
-    [metaFrom, legFrom, journeyDate],
+    () =>
+      describeChartPreparationForStation(
+        metaFrom,
+        legFrom,
+        journeyDate,
+        trainStartDate,
+      ),
+    [metaFrom, legFrom, journeyDate, trainStartDate],
   );
   const destChart = useMemo(
-    () => describeChartPreparationForStation(metaTo, legTo, journeyDate),
-    [metaTo, legTo, journeyDate],
+    () =>
+      describeChartPreparationForStation(
+        metaTo,
+        legTo,
+        journeyDate,
+        trainStartDate,
+      ),
+    [metaTo, legTo, journeyDate, trainStartDate],
   );
   const destChartLinesForUi = useMemo(() => {
     const dest = journeyDestinationCode?.trim().toUpperCase() ?? "";
@@ -1260,6 +1276,7 @@ function AlternatePathRemainderInsights({
         toStationCode: legTo.trim().toUpperCase(),
         journeyDate: journeyDate.trim(),
         classCode: monitorClassCode.trim().toUpperCase(),
+        trainStartDate: trainStartDate,
       });
       if (!validated.valid) {
         const runDay = extractTrainRunDayFromValidateBody(validated);
@@ -1279,6 +1296,7 @@ function AlternatePathRemainderInsights({
         classCode: monitorClassCode.trim().toUpperCase(),
         email: em,
         mobile: mob,
+        trainStartDate: trainStartDate,
       });
       const schedulePhrase = buildJourneyChartAlertSchedulePhrase({
         journeyDateYmd: journeyDate.trim(),
@@ -1322,6 +1340,7 @@ function AlternatePathRemainderInsights({
     metaFrom,
     metaTo,
     sameLegEndpoints,
+    trainStartDate,
   ]);
 
   return (
@@ -1420,7 +1439,7 @@ function AlternatePathRemainderInsights({
           onClick={() => void subscribeAlerts()}
           className="bg-blue-600 hover:bg-blue-700 mt-2 rounded-lg px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-60"
         >
-          {monitorSubmitting ? "Subscribing…" : "Subscribe to chart prep"}
+          {monitorSubmitting ? "Getting alert…" : "Get Ticket Alert"}
         </button>
         {monitorError && (
           <p className="mt-2 text-sm text-red-700">{monitorError}</p>
@@ -1920,6 +1939,7 @@ function CompactLegChartCta({
   legTo,
   classCode,
   stationNameMap,
+  trainStartDate,
 }: {
   trainNumber: string;
   trainName?: string | null;
@@ -1928,6 +1948,7 @@ function CompactLegChartCta({
   legTo: string;
   classCode: string;
   stationNameMap?: Record<string, string>;
+  trainStartDate?: string | null;
 }) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -1939,6 +1960,9 @@ function CompactLegChartCta({
   const [chartTimeLabel, setChartTimeLabel] = useState<string | null>(null);
   const [chartTimeLoading, setChartTimeLoading] = useState(false);
   const [chartIsPrepared, setChartIsPrepared] = useState<boolean | null>(null);
+  const [activeChartSource, setActiveChartSource] = useState<"one" | "two" | null>(
+    null,
+  );
   const [meta, setMeta] = useState<StationChartMetaItem | null>(null);
   const [showNextReleaseSheet, setShowNextReleaseSheet] = useState(false);
 
@@ -1985,17 +2009,61 @@ function CompactLegChartCta({
         if (cancel) return;
         const mObj = r.data?.stations?.[0];
         setMeta(mObj ?? null);
-        const chartTime = mObj?.chartOneTime?.trim();
-        const chartOffset = mObj?.chartOneDayOffset ?? 0;
-        if (chartTime && journeyDate) {
-          const ymd = journeyDate.trim().slice(0, 10);
-          const m = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm").add(
-            chartOffset,
-            "days",
-          );
-          if (m.isValid()) {
-            setChartTimeLabel(m.format("ddd, MMM DD [at] h:mm A"));
-            setChartIsPrepared(moment().isAfter(m));
+        const c1Time = mObj?.chartOneTime?.trim();
+        const c1Offset = mObj?.chartOneDayOffset ?? 0;
+        const c2Time = mObj?.chartTwoTime?.trim();
+        const c2Offset =
+          mObj?.chartTwoDayOffset !== null &&
+          mObj?.chartTwoDayOffset !== undefined
+            ? mObj.chartTwoDayOffset
+            : mObj?.chartTwoIsNextDay
+              ? 1
+              : 0;
+
+        if (journeyDate) {
+          const ymd = (trainStartDate || journeyDate).trim().slice(0, 10);
+          let targetM: moment.Moment | null = null;
+          let isPrep = false;
+
+          if (c1Time) {
+            const m1 = moment(`${ymd} ${c1Time}`, "YYYY-MM-DD HH:mm").add(
+              c1Offset,
+              "days",
+            );
+            if (m1.isValid()) {
+              targetM = m1;
+              isPrep = moment().isAfter(m1);
+
+              // If chart one is already prepared and there is a second chart, consider the second one
+              if (isPrep && c2Time) {
+                const m2 = moment(`${ymd} ${c2Time}`, "YYYY-MM-DD HH:mm").add(
+                  c2Offset,
+                  "days",
+                );
+                if (m2.isValid()) {
+                  targetM = m2;
+                  isPrep = moment().isAfter(m2);
+                }
+              }
+            }
+          }
+
+          if (targetM && targetM.isValid()) {
+            setChartTimeLabel(targetM.format("ddd, MMM DD [at] h:mm A"));
+            setChartIsPrepared(isPrep);
+
+            // Set source correctly
+            if (c1Time) {
+              const m1 = moment(`${ymd} ${c1Time}`, "YYYY-MM-DD HH:mm").add(
+                c1Offset,
+                "days",
+              );
+              if (m1.isValid() && targetM.isSame(m1)) {
+                setActiveChartSource("one");
+              } else if (c2Time) {
+                setActiveChartSource("two");
+              }
+            }
           }
         }
       })
@@ -2035,6 +2103,7 @@ function CompactLegChartCta({
         classCode: classCode.trim().toUpperCase(),
         email: em,
         mobile: mob,
+        trainStartDate: trainStartDate,
       });
       markLegAlertSet(trainNumber, legFrom, legTo, journeyDate);
       setDone(true);
@@ -2052,7 +2121,7 @@ function CompactLegChartCta({
     } finally {
       setSubmitting(false);
     }
-  }, [email, mobile, trainNumber, trainName, legFrom, legTo, journeyDate, classCode]);
+  }, [email, mobile, trainNumber, trainName, legFrom, legTo, journeyDate, classCode, trainStartDate]);
 
   if (done || alreadySet) {
     return (
@@ -2092,7 +2161,9 @@ function CompactLegChartCta({
               )}{" "}
               {chartTimeLabel}
             </p>
-            {chartIsPrepared && meta?.chartNextRemoteStation && (
+            {chartIsPrepared &&
+              activeChartSource === "one" &&
+              meta?.chartNextRemoteStation && (
               <button
                 type="button"
                 onClick={() => setShowNextReleaseSheet(true)}
@@ -2117,7 +2188,7 @@ function CompactLegChartCta({
             onClick={() => setOpen(true)}
             className="shrink-0 rounded-md border border-amber-400 bg-amber-50 px-2.5 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 transition-colors"
           >
-            Subscribe to chart prep
+            Get Ticket Alert
           </button>
         )}
       </div>
@@ -2500,6 +2571,7 @@ function BookingV2PageContent() {
           from_code: fromCode,
           to_code: toCode,
           journey_date: journeyDate,
+          trainStartDate: t.trainStartDate,
         },
       });
 
@@ -3293,6 +3365,7 @@ function BookingV2PageContent() {
                                     legTo={leg.to}
                                     classCode={leg.travelClass ?? altAvlClasses?.[0] ?? "SL"}
                                     stationNameMap={altResult.stationNameMap}
+                                    trainStartDate={altResult.trainStartDate}
                                   />
                                 </div>
                               )}
@@ -3363,6 +3436,7 @@ function BookingV2PageContent() {
                                 legTo={item.to}
                                 classCode={altAvlClasses?.[0] ?? "SL"}
                                 stationNameMap={altResult.stationNameMap}
+                                trainStartDate={altResult.trainStartDate}
                               />
                             </div>
                           </div>

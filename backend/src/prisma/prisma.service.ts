@@ -11,6 +11,12 @@ export class PrismaService
   constructor() {
     const connectionString =
       process.env.DATABASE_URL ?? 'postgresql://postgres:postgres@localhost:5432/railchart';
+    
+    // DEBUG LOG - Look for this in your terminal!
+    console.log('--------------------------------------------------');
+    console.log('PRISMA CONNECTING TO:', connectionString.split('@')[1] || connectionString);
+    console.log('--------------------------------------------------');
+
     const adapter = new PrismaPg({ connectionString });
     super({
       adapter,

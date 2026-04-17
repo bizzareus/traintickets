@@ -77,12 +77,13 @@ export function describeChartPreparationForStation(
   meta: StationChartMetaItem | null | undefined,
   stationCode: string,
   journeyDateYmd: string,
+  trainStartDateYmd?: string | null,
 ): ChartPrepDescription {
   const code = stationCode.trim().toUpperCase();
   const dateLabel = formatJourneyDateUtcLabel(journeyDateYmd.trim().slice(0, 10));
   const title = `${code} · ${dateLabel}`;
 
-  const ymd = journeyDateYmd.trim().slice(0, 10);
+  const ymd = (trainStartDateYmd || journeyDateYmd).trim().slice(0, 10);
   const lines: string[] = [];
   const c1 = meta?.chartOneTime?.trim();
   const c2 = meta?.chartTwoTime?.trim();

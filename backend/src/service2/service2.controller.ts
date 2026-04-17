@@ -48,6 +48,7 @@ function normalizeCheckBody(body: Record<string, unknown>) {
       ? destinationRaw.toUpperCase()
       : undefined,
     passengerDetails: unknownToOptionalTrimmedString(body.passengerDetails),
+    forceVacantBerth: body.forceVacantBerth === true || body.forceVacantBerth === 'true',
   };
 }
 
@@ -190,6 +191,8 @@ export class Service2Controller {
           classCode: normalized.classCode,
           destinationStation: normalized.destinationStation,
           passengerDetails: normalized.passengerDetails,
+          triggerSource: 'manual',
+          forceVacantBerth: normalized.forceVacantBerth,
         },
         {
           onIrctcDataReady: (info) => {
@@ -277,9 +280,11 @@ export class Service2Controller {
         classCode: normalized.classCode,
         destinationStation: normalized.destinationStation,
         passengerDetails: normalized.passengerDetails,
+        triggerSource: 'manual',
+        forceVacantBerth: normalized.forceVacantBerth,
       });
       this.logger.log(
-        `[service2/check] step=finished status=${out.status} chartStatus=${out.chartStatus ? JSON.stringify(out.chartStatus) : 'none'} hasOpenAiSummary=${Boolean(out.openAiSummary)}`,
+        `[service2/check] step=finished status=${out.status} chartStatus=${out.chartStatus ? JSON.stringify(out.chartStatus) : 'none'} hasOpenAiSummary=${Boolean(out.openAiSummary)} debugLines=${out.debugLog?.length ?? 0}`,
       );
       return out;
     } catch (err) {

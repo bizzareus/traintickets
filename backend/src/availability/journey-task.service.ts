@@ -30,6 +30,7 @@ export type JourneyValidContext = {
   trainNumber: string;
   stationsToProcess: string[];
   jYmd: string;
+  trainStartDate: string;
 };
 
 export type JourneyValidationResult =
@@ -87,9 +88,15 @@ export class JourneyTaskService {
     fromStationCode: string;
     toStationCode: string;
     journeyDate: string;
+    trainStartDate?: string;
     stationCodesToMonitor?: string[];
   }): Promise<JourneyValidationResult> {
     const jYmd = parseJourneyYmdForValidation(params.journeyDate);
+    const startYmd = params.trainStartDate
+      ? parseJourneyYmdForValidation(params.trainStartDate)
+      : null;
+
+    console.log('jYmd', jYmd, 'trainStartDate', startYmd);
     if (!jYmd) {
       return {
         valid: false,
@@ -154,8 +161,28 @@ export class JourneyTaskService {
       };
     }
 
-    const runDayErr = getTrainDoesNotRunOnDateError(jYmd, schedule.trainRunsOn);
+    const boardingStn = schedule.stationList.find((s) => s.stationCode === fromCode);
+    const dayCount = (boardingStn as any)?.dayCount ?? 1;
+    let resolvedTrainStartDate = startYmd;
+    if (!resolvedTrainStartDate && jYmd) {
+      if (dayCount > 1) {
+        const boardDate = DateTime.fromISO(jYmd);
+        resolvedTrainStartDate = boardDate.minus({ days: dayCount - 1 }).toISODate();
+      } else {
+        resolvedTrainStartDate = jYmd;
+      }
+    }
+
+    const validationDate = resolvedTrainStartDate || jYmd;
+    const runDayErr = getTrainDoesNotRunOnDateError(
+      validationDate,
+      schedule.trainRunsOn,
+    );
     if (runDayErr) {
+      // If we inferred or used a trainStartDate that is different from boarding date
+      if (resolvedTrainStartDate && resolvedTrainStartDate !== jYmd) {
+        runDayErr.message = `This train does not start its journey on ${resolvedTrainStartDate} (the date it would have to start to reach your boarding station ${fromCode} on ${jYmd}).`;
+      }
       return { valid: false, errors: [runDayErr] };
     }
 
@@ -227,6 +254,7 @@ export class JourneyTaskService {
         trainNumber,
         stationsToProcess,
         jYmd,
+        trainStartDate: resolvedTrainStartDate || jYmd,
       },
     };
   }
@@ -293,96 +321,43 @@ export class JourneyTaskService {
     const email = params.email?.trim() || undefined;
     const mobile = params.mobile?.trim() || undefined;
 
-    type ChartEntry = {
-      chartOne: { time: string; dayOffset: number | null };
-      chartTwo?: { time: string; dayOffset: number | null };
-    };
-    let chartTimesWithSecond =
-      (await this.chartTime.getChartTimesWithSecondChartForTrain(
+    const chartTimesWithSecond = new Map<string, any>();
+    const resolvedStations = new Set<string>();
+    const stationsToQueue = [fromCode];
+    const hydrationDate = validation.context.trainStartDate;
+
+    // Follow the chain of charting stations starting from the boarding station
+    while (stationsToQueue.length > 0) {
+      const current = stationsToQueue.shift()!;
+      if (resolvedStations.has(current)) continue;
+
+      const resMap = await this.chartTime.getChartTimesWithSecondChartForTrain(
         trainNumber,
-        stationsToProcess,
-      )) as unknown as Map<string, ChartEntry>;
-
-    const refreshChartTimesMap = async () => {
-      chartTimesWithSecond =
-        (await this.chartTime.getChartTimesWithSecondChartForTrain(
-          trainNumber,
-          stationsToProcess,
-        )) as unknown as Map<string, ChartEntry>;
-    };
-
-    const routeHasAnyChartTime = () =>
-      stationsToProcess.some((s) => chartTimesWithSecond.get(s));
-
-    const fetchCompositionForStations = async (
-      stationCodes: string[],
-      dateForComposition: Date,
-      logLabel: string,
-    ) => {
-      const jDateStr = dateForComposition.toISOString().slice(0, 10);
-      await this.trainComposition.persistChartTimesFromCompositionForBoardingStations(
-        {
-          trainNumber,
-          journeyDate: jDateStr,
-          stationCodes,
-          logContext: `journey_tasks_${logLabel}`,
-        },
+        [current],
+        hydrationDate,
       );
-      await refreshChartTimesMap();
-      const covered = stationsToProcess.filter((s) =>
-        chartTimesWithSecond.get(s),
-      ).length;
-      console.log(
-        `[createJourneyTasks] after ${logLabel} (jDate=${jDateStr}): stationsWithChartTimes=${covered}/${stationsToProcess.length}`,
-      );
-    };
+      const entry = resMap.get(current);
+      if (entry) {
+        chartTimesWithSecond.set(current, entry);
+        resolvedStations.add(current);
 
-    // If DB has no chart times for some stations, fetch from train composition API and persist
-    const missingStations = stationsToProcess.filter(
-      (s) => !chartTimesWithSecond.get(s),
-    );
-    if (missingStations.length > 0) {
-      await fetchCompositionForStations(
-        missingStations,
-        journeyDate,
-        'journey_date_missing_stations',
-      );
+        const next = entry.chartNextRemoteStation?.trim().toUpperCase();
+        if (next) {
+          // Check if 'next' is correctly ordered on our route segment AND before the destination.
+          // stationsToProcess contains the segment [fromCode, ..., toCode].
+          const nextIdx = stationsToProcess.indexOf(next);
+          // if nextIdx is >= 0 (on segment) AND < stationsToProcess.length - 1 (before destination)
+          if (nextIdx >= 0 && nextIdx < stationsToProcess.length - 1) {
+            if (!resolvedStations.has(next)) {
+              stationsToQueue.push(next);
+            }
+          }
+        }
+      } else {
+        // If no chart info even after hydration, we can't chain further from this station.
+        resolvedStations.add(current);
+      }
     }
-
-    // IRCTC composition is often keyed to the train's run date; if nothing was stored for this journey date, try previous calendar day
-    const hadChartTimesBeforePrevDay = routeHasAnyChartTime();
-    let attemptedPreviousDayFallback = false;
-    let pickedUpChartTimesFromPreviousDate = false;
-
-    if (!hadChartTimesBeforePrevDay) {
-      const prevRunDate = new Date(journeyDate);
-      prevRunDate.setDate(prevRunDate.getDate() - 1);
-      const prevStr = prevRunDate.toISOString().slice(0, 10);
-      attemptedPreviousDayFallback = true;
-      console.log(
-        `[createJourneyTasks] no chart times for journey date ${params.journeyDate}; trying previous calendar day jDate=${prevStr}`,
-      );
-      await fetchCompositionForStations(
-        stationsToProcess,
-        prevRunDate,
-        'previous_day_fallback',
-      );
-      pickedUpChartTimesFromPreviousDate = routeHasAnyChartTime();
-      console.log(
-        `[createJourneyTasks] previous_day_fallback result: pickedUpFromPreviousDate=${pickedUpChartTimesFromPreviousDate}`,
-      );
-    } else {
-      console.log(
-        `[createJourneyTasks] skipped previous_day_fallback (route already had chart times for journey context; journeyDate=${params.journeyDate})`,
-      );
-    }
-
-    console.log('[createJourneyTasks] chart resolution summary', {
-      trainNumber,
-      journeyDate: params.journeyDate,
-      attemptedPreviousDayFallback,
-      pickedUpChartTimesFromPreviousDate,
-    });
 
     let monitoringContactId: string | undefined;
     if (email || mobile) {
@@ -419,6 +394,8 @@ export class JourneyTaskService {
     const taskSpecs: Array<{ stationCode: string; chartAt: Date }> = [];
     const trainName = params.trainName ?? schedule.trainName;
 
+    const trainStartDate = new Date(validation.context.trainStartDate);
+
     for (const stationCode of stationsToProcess) {
       const entry = chartTimesWithSecond.get(stationCode);
       if (!entry) continue;
@@ -426,7 +403,7 @@ export class JourneyTaskService {
       taskSpecs.push({
         stationCode,
         chartAt: buildChartAtWithDayOffset(
-          journeyDate,
+          trainStartDate,
           entry.chartOne.time,
           entry.chartOne.dayOffset ?? 0,
         ),
@@ -436,7 +413,7 @@ export class JourneyTaskService {
         taskSpecs.push({
           stationCode,
           chartAt: buildChartAtWithDayOffset(
-            journeyDate,
+            trainStartDate,
             entry.chartTwo.time,
             entry.chartTwo.dayOffset ?? 0,
           ),
@@ -463,6 +440,14 @@ export class JourneyTaskService {
           },
         });
         const jid = jmr.id;
+        
+        await tx.journeyMonitorContact.create({
+          data: {
+            journeyRequestId: jid,
+            email: email || null,
+            mobile: mobile || null,
+          },
+        });
 
         const createdTasks: Array<{
           id: string;
@@ -472,7 +457,7 @@ export class JourneyTaskService {
         }> = [];
 
         for (const spec of taskSpecs) {
-          const task = await tx.chartTimeAvailabilityTask.create({
+          const task = await (tx.chartTimeAvailabilityTask as any).create({
             data: {
               journeyRequestId: jid,
               trainNumber,
@@ -481,6 +466,7 @@ export class JourneyTaskService {
               toStationCode: toCode,
               stationCode: spec.stationCode,
               journeyDate,
+              trainStartDate: new Date(validation.context.trainStartDate),
               classCode,
               chartAt: spec.chartAt,
               status: 'pending',
@@ -491,16 +477,6 @@ export class JourneyTaskService {
             stationCode: task.stationCode,
             chartAt: task.chartAt.toISOString(),
             status: task.status,
-          });
-        }
-
-        if (email || mobile) {
-          await tx.journeyMonitorContact.create({
-            data: {
-              journeyRequestId: jid,
-              email: email || null,
-              mobile: mobile || null,
-            },
           });
         }
 
@@ -544,6 +520,9 @@ export class JourneyTaskService {
     }
 
     const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
+    const trainStartDateStr = (task as any).trainStartDate
+      ? (task as any).trainStartDate.toISOString().slice(0, 10)
+      : journeyDateStr;
 
     try {
       console.log('running task', task.id);
@@ -551,6 +530,7 @@ export class JourneyTaskService {
         trainNumber: task.trainNumber,
         stationCode: task.stationCode,
         journeyDate: journeyDateStr,
+        trainStartDate: trainStartDateStr,
         classCode: task.classCode,
         destinationStation: task.toStationCode,
       });
@@ -558,8 +538,10 @@ export class JourneyTaskService {
         trainNumber: task.trainNumber,
         stationCode: task.stationCode,
         journeyDate: journeyDateStr,
+        trainStartDate: trainStartDateStr,
         classCode: task.classCode,
         destinationStation: task.toStationCode,
+        triggerSource: 'cron',
       });
 
       console.log('result', result);
@@ -666,7 +648,7 @@ export class JourneyTaskService {
   }
 
   async getAllAlerts() {
-    return this.prisma.chartTimeAvailabilityTask.findMany({
+    return (this.prisma.chartTimeAvailabilityTask as any).findMany({
       orderBy: { createdAt: 'desc' },
       include: {
         contact: true,

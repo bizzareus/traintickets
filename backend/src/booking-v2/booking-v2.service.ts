@@ -116,6 +116,7 @@ export type FindAlternatePathsResult = {
   trainOriginDepartureTime: string | null;
   /** Step-by-step trace for debugging (also logged with Logger). */
   debugLog: string[];
+  trainStartDate?: string;
 };
 
 type AvlDayRow = {
@@ -800,8 +801,11 @@ export class BookingV2Service {
       stationNameMap,
       remainderMergedSchedule,
       trainOriginCode: stationList[0]?.stationCode?.trim().toUpperCase() || null,
-      trainOriginDepartureTime: stationList[0]?.departureTime || null,
+      trainOriginDepartureTime: stationList[0]?.departureTime ?? null,
       debugLog,
+      trainStartDate: moment(input.date, 'YYYY-MM-DD')
+        .subtract(startDayCount - 1, 'days')
+        .format('YYYY-MM-DD'),
     };
   }
 

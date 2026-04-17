@@ -315,6 +315,9 @@ type CheckResult = {
       message: string;
       indicativeChartTime?: string | null;
     };
+    debugLog?: string[];
+    vacantBerthApiCalled?: boolean;
+    trainStartDate?: string;
     fullRouteStations?: {
       stationCode?: string;
       stationName?: string;
@@ -346,6 +349,9 @@ type Service2CheckOkBody = {
   chartRefreshNotice?: NonNullable<
     CheckResult["resultPayload"]
   >["chartRefreshNotice"];
+  debugLog?: string[];
+  vacantBerthApiCalled?: boolean;
+  trainStartDate?: string;
 };
 
 /** Format date as YYYY-MM-DD in local timezone (toISOString is UTC and can shift the date). */
@@ -565,6 +571,7 @@ export default function HomePage() {
     useState<JourneyRunDayUiError | null>(null);
   const [monitorEmail, setMonitorEmail] = useState("");
   const [monitorMobile, setMonitorMobile] = useState("");
+  const [isAdminUser, setIsAdminUser] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [chartPendingModalDismissed, setChartPendingModalDismissed] =
     useState(false);
@@ -606,6 +613,11 @@ export default function HomePage() {
   );
   useEffect(() => {
     setMounted(true);
+    try {
+      setIsAdminUser(window.localStorage.getItem("admin") === "true");
+    } catch {
+      /* ignore */
+    }
   }, []);
 
   const railMaint = useIstRailMaintenance(mounted);
@@ -938,8 +950,11 @@ export default function HomePage() {
           trainSchedule: data.trainSchedule ?? undefined,
           chartStatus: data.chartStatus ?? undefined,
           chartRefreshNotice: data.chartRefreshNotice ?? undefined,
+          debugLog: data.debugLog ?? [],
+          vacantBerthApiCalled: data.vacantBerthApiCalled ?? false,
           vbd: data.vacantBerth?.vbd ?? [],
           error: data.vacantBerth?.error ?? null,
+          trainStartDate: data.trainStartDate,
         },
       });
       if (data.vacantBerth?.error) setError(SERVICE2_NO_TICKETS_AVAILABLE_COPY);
@@ -989,6 +1004,7 @@ export default function HomePage() {
         toStationCode: toC,
         journeyDate: journeyDate.trim(),
         classCode: "3A",
+        trainStartDate: checkResult?.resultPayload?.trainStartDate,
       });
       if (!validated.valid) {
         const runDay = extractTrainRunDayFromValidateBody(validated);
@@ -1016,6 +1032,7 @@ export default function HomePage() {
         classCode: "3A",
         email,
         mobile,
+        trainStartDate: checkResult?.resultPayload?.trainStartDate,
       });
       setMonitorJourneyResponse(null);
       setJourneySetupQueued(true);
@@ -2300,7 +2317,7 @@ export default function HomePage() {
                           }}
                           className="rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white active:bg-amber-700 transition"
                         >
-                          Monitor tickets
+                          Get Ticket Alert
                         </button>
                       </div>
                     )}
@@ -2309,6 +2326,8 @@ export default function HomePage() {
               ) : openAiBookingPlanResolved.length > 0 ? (
                 <div className="rounded-2xl border border-slate-200/90 bg-white shadow-lg overflow-hidden">
                   {/* Train header with total fare on top right */}
+                  {/* Admin debug trace moved below header */}
+
                   <div className="border-b border-slate-100 px-4 py-4 flex flex-wrap items-start justify-between gap-3">
                     <div className="min-w-0">
                       <h2 className="text-base font-bold text-slate-900 leading-tight">
@@ -2368,6 +2387,56 @@ export default function HomePage() {
                       </p>
                     </div>
                   )}
+
+                  {isAdminUser &&
+                    uiPayload.debugLog &&
+                    uiPayload.debugLog.length > 0 && (
+                      <div className="mx-4 mt-3">
+                        <details className="rounded-xl border border-slate-200 bg-slate-50/50 p-3 shadow-sm transition-all hover:border-slate-300">
+                          <summary className="cursor-pointer text-sm font-bold text-slate-800 flex items-center justify-between group">
+                            <span className="flex items-center gap-2">
+                              <svg className="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                              </svg>
+                              Step-by-step debug trace ({uiPayload.debugLog.length} lines)
+                            </span>
+                            <span className="hidden items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 transition-colors group-hover:bg-slate-200 sm:flex">
+                              {uiPayload.vacantBerthApiCalled ? (
+                                <span className="flex items-center gap-1 text-emerald-600">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                  IRCTC API Used
+                                </span>
+                              ) : (
+                                <span className="flex items-center gap-1 text-slate-500">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-slate-400"></span>
+                                  Composition Only
+                                </span>
+                              )}
+                            </span>
+                          </summary>
+                          <div className="mt-3">
+                            <div className="mb-2 flex items-center justify-between sm:hidden">
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                                {uiPayload.vacantBerthApiCalled ? "IRCTC API Used" : "Composition Only"}
+                              </span>
+                            </div>
+                            <ol className="max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-[11px] leading-relaxed text-slate-600 scrollbar-thin scrollbar-thumb-slate-200">
+                              {uiPayload.debugLog.map((line, i) => (
+                                <li key={i} className="whitespace-pre-wrap py-1 border-b border-slate-100 last:border-0 border-dashed">
+                                  {line}
+                                </li>
+                              ))}
+                            </ol>
+                            <p className="mt-2 flex items-center gap-1 text-[10px] font-medium text-slate-400">
+                              <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              Logs also available on server as [service2/check …]
+                            </p>
+                          </div>
+                        </details>
+                      </div>
+                    )}
 
                   {/* Full journey: plan segments as Book cards, then gap legs as Monitor cards */}
                   <div className="px-4 py-4 space-y-3">
@@ -3459,7 +3528,7 @@ export default function HomePage() {
                     }}
                     className="w-full rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed active:bg-amber-700 transition"
                   >
-                    {monitorSubmitting ? "Starting…" : "Monitor tickets"}
+                    {monitorSubmitting ? "Getting alert…" : "Get Ticket Alert"}
                   </button>
                 </div>
               </div>

@@ -177,6 +177,7 @@ model ChartTimeAvailabilityTask {
   toStationCode      String    @map("to_station_code")
   stationCode        String    @map("station_code")
   journeyDate        DateTime  @map("journey_date") @db.Date
+  trainStartDate     DateTime? @map("train_start_date") @db.Date
   classCode          String    @map("class_code")
   chartAt            DateTime  @map("chart_at")
   status             String    @default("pending")
@@ -186,7 +187,7 @@ model ChartTimeAvailabilityTask {
   emailNotifiedAt    DateTime? @map("email_notified_at")
   whatsappNotifiedAt DateTime? @map("whatsapp_notified_at")
 
-  contact JourneyMonitorContact @relation(fields: [journeyRequestId], references: [journeyRequestId])
+  contact JourneyMonitorContact? @relation(fields: [journeyRequestId], references: [journeyRequestId])
 
   @@index([chartAt, status])
   @@index([journeyRequestId])

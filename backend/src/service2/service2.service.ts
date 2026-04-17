@@ -405,10 +405,14 @@ export type Service2CheckResult = {
    * stations (even after a composition refetch from the passenger boarding station).
    */
   chartRefreshNotice?: {
-    checkedStationCode: string;
     message: string;
-    indicativeChartTime?: string | null;
+    checkedStationCode: string;
+    indicativeChartTime: string | null;
   };
+  /** Step-by-step trace for debugging (also logged with Logger). */
+  debugLog?: string[];
+  /** True if IRCTC vacantBerth API was called (usually only for cron/chart-prep). */
+  vacantBerthApiCalled?: boolean;
 };
 
 /** User-facing copy when IRCTC schedule API returns maintenance / downtime. */
@@ -894,46 +898,67 @@ export class Service2Service {
       classCode: string;
       destinationStation?: string;
       passengerDetails?: string;
+      triggerSource?: 'manual' | 'cron';
+      forceVacantBerth?: boolean;
+      /** The date the train starts its journey from source (Day 1). Useful for multi-day routes. */
+      trainStartDate?: string;
     },
     hooks?: Service2CheckHooks,
   ): Promise<Service2CheckResult> {
+    const debugLog: string[] = [];
+    const logStep = (msg: string) => {
+      debugLog.push(msg);
+      this.logger.log(`[service2/check] ${msg}`);
+    };
+
     const trainNo = String(params.trainNumber).trim();
-    const boardingStation = String(params.stationCode).trim().toUpperCase();
-    const jDate = String(params.journeyDate).trim().slice(0, 10);
+    const jDate = String(params.journeyDate ?? '')
+      .trim()
+      .slice(0, 10);
+    const trainStartDate = params.trainStartDate
+      ? String(params.trainStartDate).trim().slice(0, 10)
+      : jDate;
+    const boardingStation = String(params.stationCode ?? '')
+      .trim()
+      .toUpperCase();
     const cls = String(params.classCode).trim().toUpperCase();
+    const triggerSource = params.triggerSource ?? 'manual';
     const destinationStation = params.destinationStation
       ? String(params.destinationStation).trim().toUpperCase()
       : undefined;
 
-    const baseCtx = `train=${trainNo} station=${boardingStation} date=${jDate} class=${cls}`;
-    this.logger.log(
-      `[service2/check] step=start ${baseCtx} dest=${destinationStation ?? 'default-from-composition'} hasPassengerDetails=${Boolean(params.passengerDetails)}`,
+    const baseCtx = `train=${trainNo} station=${boardingStation} date=${jDate} class=${cls} source=${triggerSource}`;
+    logStep(
+      `step=start ${baseCtx} dest=${destinationStation ?? 'default-from-composition'} hasPassengerDetails=${Boolean(params.passengerDetails)}`,
     );
 
-    this.logger.log(`[service2/check] step=fetch_train_schedule ${baseCtx}`);
+    logStep(`step=fetch_train_schedule ${baseCtx}`);
     const scheduleResult = await this.irctc.getTrainSchedule(trainNo, {
       fillRunsOnFromComposition: {
         jDate,
         boardingStation,
       },
     });
-    if (!scheduleResult.ok && scheduleResult.reason === 'maintenance') {
-      this.logger.warn(
-        `[service2/check] step=irctc_schedule_maintenance ${baseCtx} irctc=${scheduleResult.message}`,
-      );
+    if (!scheduleResult.ok) {
+      const irctcMsg =
+        scheduleResult.reason === 'maintenance'
+          ? scheduleResult.message
+          : 'IRCTC schedule service unavailable';
+      logStep(`step=irctc_schedule_maintenance ${baseCtx} irctc=${irctcMsg}`);
       return {
         status: 'failed',
         chartStatus: {
           kind: 'irctc_unavailable',
           message: IRCTC_RESERVATIONS_BLOCKED_MESSAGE,
-          detail: scheduleResult.message,
+          detail: irctcMsg,
         },
         vacantBerth: { vbd: [], error: null },
+        debugLog,
       };
     }
     const trainSchedule = scheduleResult.ok ? scheduleResult.schedule : null;
-    this.logger.log(
-      `[service2/check] step=train_schedule_done ${baseCtx} stations=${trainSchedule?.stationList?.length ?? 0}`,
+    logStep(
+      `step=train_schedule_done ${baseCtx} stations=${trainSchedule?.stationList?.length ?? 0}`,
     );
 
     const boardingDepartureClock = boardingDepartureOrArrivalClock(
@@ -941,21 +966,21 @@ export class Service2Service {
       boardingStation,
     );
 
-    this.logger.log(`[service2/check] step=chart_time_db_lookup ${baseCtx}`);
+    logStep(`step=chart_time_db_lookup ${baseCtx}`);
     const chartTimeFromDb = await this.chartTime.getChartTime(
       trainNo,
       boardingStation,
     );
-    this.logger.log(
-      `[service2/check] step=chart_time_db_result ${baseCtx} fromDb=${chartTimeFromDb ?? 'none'} boardingDepClock=${boardingDepartureClock ?? 'none'}`,
+    logStep(
+      `step=chart_time_db_result ${baseCtx} fromDb=${chartTimeFromDb ?? 'none'} boardingDepClock=${boardingDepartureClock ?? 'none'}`,
     );
 
     if (
       chartTimeFromDb &&
       isChartTimeInFuture(jDate, chartTimeFromDb, boardingDepartureClock)
     ) {
-      this.logger.warn(
-        `[service2/check] step=exit_early_chart_not_ready_db ${baseCtx} chartTimeFromDb=${chartTimeFromDb}`,
+      logStep(
+        `step=exit_early_chart_not_ready_db ${baseCtx} chartTimeFromDb=${chartTimeFromDb}`,
       );
       return {
         status: 'failed',
@@ -964,39 +989,39 @@ export class Service2Service {
           message: 'Chart is not prepared for this journey date yet.',
         },
         vacantBerth: { vbd: [], error: null },
+        debugLog,
       };
     }
 
     let composition: Awaited<ReturnType<IrctcService['getTrainComposition']>>;
     try {
-      this.logger.log(
-        `[service2/check] step=fetch_composition ${baseCtx} jDate=${jDate}`,
+      logStep(
+        `step=fetch_composition ${baseCtx} jDate=${jDate} trainStartDate=${trainStartDate}`,
       );
       composition = await this.trainComposition.fetchForBoarding({
         trainNo,
-        jDate,
+        jDate: trainStartDate,
         boardingStation,
       });
-      this.logger.log(
-        `[service2/check] step=composition_ok ${baseCtx} remote=${composition.remote ?? '?'} chartOneDate=${composition.chartOneDate ?? 'none'} trainName=${composition.trainName ?? '?'}`,
+      logStep(
+        `step=composition_ok ${baseCtx} remote=${composition.remote ?? '?'} chartOneDate=${composition.chartOneDate ?? 'none'} trainName=${composition.trainName ?? '?'}`,
       );
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      this.logger.error(
-        `[service2/check] step=composition_error ${baseCtx} ${msg}`,
-        err instanceof Error ? err.stack : undefined,
-      );
+      logStep(`step=composition_error ${baseCtx} ${msg}`);
       if (/chart\s+not\s+prepared/i.test(msg)) {
         return {
           status: 'failed',
           chartStatus: { kind: 'chart_error', error: 'Chart not prepared' },
           vacantBerth: { vbd: [], error: null },
+          debugLog,
         };
       }
       return {
         status: 'failed',
         chartStatus: { kind: 'chart_error', error: msg },
         vacantBerth: { vbd: [], error: null },
+        debugLog,
       };
     }
 
@@ -1011,8 +1036,8 @@ export class Service2Service {
         timeLocal &&
         isChartTimeInFuture(jDate, timeLocal, boardingDepartureClock)
       ) {
-        this.logger.warn(
-          `[service2/check] step=exit_early_chart_not_ready_composition ${baseCtx} chartOneDate=${composition.chartOneDate} parsedLocal=${timeLocal}`,
+        logStep(
+          `step=exit_early_chart_not_ready_composition ${baseCtx} chartOneDate=${composition.chartOneDate} parsedLocal=${timeLocal}`,
         );
         return {
           status: 'failed',
@@ -1021,6 +1046,7 @@ export class Service2Service {
             message: 'Chart is not prepared for this journey date yet.',
           },
           vacantBerth: { vbd: [], error: null },
+          debugLog,
         };
       }
     }
@@ -1032,8 +1058,8 @@ export class Service2Service {
           .filter(Boolean),
       ),
     ].sort();
-    this.logger.log(
-      `[service2/check] step=classes_from_composition ${baseCtx} count=${classes.length} codes=${classes.join(',')}`,
+    logStep(
+      `step=classes_from_composition ${baseCtx} count=${classes.length} codes=${classes.join(',')}`,
     );
 
     let chartPreparationDetails:
@@ -1051,8 +1077,8 @@ export class Service2Service {
         boardingStation;
       let storedInDb = false;
       if (timeLocal) {
-        this.logger.log(
-          `[service2/check] step=persist_chart_time ${baseCtx} stationCode=${stationCode} timeLocal=${timeLocal}`,
+        logStep(
+          `step=persist_chart_time ${baseCtx} stationCode=${stationCode} timeLocal=${timeLocal}`,
         );
         await this.chartTime.setChartTime(trainNo, stationCode, timeLocal);
         storedInDb = true;
@@ -1062,8 +1088,8 @@ export class Service2Service {
         firstChartCreationTime: timeLocal ?? chartOneDate,
         storedInDb,
       };
-      this.logger.log(
-        `[service2/check] step=chart_prep_details ${baseCtx} ${JSON.stringify(chartPreparationDetails)}`,
+      logStep(
+        `step=chart_prep_details ${baseCtx} ${JSON.stringify(chartPreparationDetails)}`,
       );
     }
 
@@ -1071,11 +1097,12 @@ export class Service2Service {
       vbd: [],
       error: null,
     };
+    let vacantBerthApiCalled = false;
     const chartTypeForVacantBerth = chartTypeFromComposition(composition);
     const initialRemoteStation = composition.remote ?? boardingStation;
     const trainSourceStation = composition.from ?? boardingStation;
-    this.logger.log(
-      `[service2/check] step=vacant_berth_setup ${baseCtx} classes=${classes.length} initialRemote=${initialRemoteStation} trainSource=${trainSourceStation} chartType=${chartTypeForVacantBerth} chartTwoDate=${composition.chartTwoDate ?? 'none'} classList=${classes.join(',')}`,
+    logStep(
+      `step=vacant_berth_setup ${baseCtx} classes=${classes.length} initialRemote=${initialRemoteStation} trainSource=${trainSourceStation} chartType=${chartTypeForVacantBerth} chartTwoDate=${composition.chartTwoDate ?? 'none'} classList=${classes.join(',')}`,
     );
     const allVbd: unknown[] = [];
     const errors: string[] = [];
@@ -1085,20 +1112,32 @@ export class Service2Service {
       roundRemote: string,
       roundLabel: string,
     ) => {
-      this.logger.log(
-        `[service2/check] step=vacant_berth_round_start ${baseCtx} label=${roundLabel} boarding=${roundBoarding} remote=${roundRemote}`,
+      // Logic for deciding whether to hit vacantBerth API
+      const isManual = triggerSource === 'manual';
+      const forceManual = params.forceVacantBerth === true;
+
+      if (isManual && !forceManual) {
+        logStep(
+          `step=vacant_berth_round_skip ${baseCtx} label=${roundLabel} reason="Triggered manually; skipping detailed IRCTC vacant-berth fetch to rely on composition counts only. Set forceVacantBerth=true to override."`,
+        );
+        return;
+      }
+
+      vacantBerthApiCalled = true;
+      logStep(
+        `step=vacant_berth_round_start ${baseCtx} label=${roundLabel} boarding=${roundBoarding} remote=${roundRemote}`,
       );
       for (const classCode of classes) {
         try {
-          this.logger.log(
-            `[service2/check] step=vacant_berth_class ${baseCtx} label=${roundLabel} cls=${classCode}`,
+          logStep(
+            `step=vacant_berth_class ${baseCtx} label=${roundLabel} cls=${classCode}`,
           );
           const vbdRes = await this.irctc.getVacantBerth({
             trainNo,
             boardingStation: roundBoarding,
             remoteStation: roundRemote,
             trainSourceStation,
-            jDate,
+            jDate: trainStartDate,
             cls: classCode,
             chartType: chartTypeForVacantBerth,
           });
@@ -1113,20 +1152,17 @@ export class Service2Service {
           if (vbdPayload?.error) {
             errors.push(`${roundLabel}/${classCode}: ${vbdPayload.error}`);
           }
-          this.logger.log(
-            `[service2/check] step=vacant_berth_class_done ${baseCtx} label=${roundLabel} cls=${classCode} segments=${vbdList.length} apiError=${vbdPayload?.error ?? 'none'}`,
+          logStep(
+            `step=vacant_berth_class_done ${baseCtx} label=${roundLabel} cls=${classCode} segments=${vbdList.length} apiError=${vbdPayload?.error ?? 'none'}`,
           );
         } catch (err) {
           const emsg = err instanceof Error ? err.message : String(err);
           errors.push(`${roundLabel}/${classCode}: ${emsg}`);
-          this.logger.error(
-            `[service2/check] step=vacant_berth_class_error ${baseCtx} label=${roundLabel} cls=${classCode} ${emsg}`,
-            err instanceof Error ? err.stack : undefined,
-          );
+          logStep(`step=vacant_berth_class_error ${baseCtx} label=${roundLabel} cls=${classCode} ${emsg}`);
         }
       }
-      this.logger.log(
-        `[service2/check] step=vacant_berth_round_done ${baseCtx} label=${roundLabel} totalSegmentsSoFar=${allVbd.length}`,
+      logStep(
+        `step=vacant_berth_round_done ${baseCtx} label=${roundLabel} totalSegmentsSoFar=${allVbd.length}`,
       );
     };
 
@@ -1140,8 +1176,8 @@ export class Service2Service {
       error: errors.length > 0 ? errors.join('; ') : null,
     };
 
-    this.logger.log(
-      `[service2/check] step=vacant_berth_all_done ${baseCtx} totalSegments=${allVbd.length} aggregatedError=${vacantBerth.error ?? 'none'}`,
+    logStep(
+      `step=vacant_berth_all_done ${baseCtx} totalSegments=${allVbd.length} aggregatedError=${vacantBerth.error ?? 'none'}`,
     );
 
     const destForUi = destinationStation ?? composition.to ?? boardingStation;
@@ -1168,8 +1204,8 @@ export class Service2Service {
       })),
     };
 
-    this.logger.log(
-      `[service2/check] step=composition_payload_summary ${baseCtx} coaches=${compositionPayload.cdd.length} classesOnTrain=${compositionPayload.classes.join(',')}`,
+    logStep(
+      `step=composition_payload_summary ${baseCtx} coaches=${compositionPayload.cdd.length} classesOnTrain=${compositionPayload.classes.join(',')}`,
     );
 
     const planDestinationStation = String(
@@ -1202,8 +1238,8 @@ export class Service2Service {
           chainAttempt <= maxOpenAiChain;
           chainAttempt++
         ) {
-          this.logger.log(
-            `[service2/check] step=openai_request_start ${baseCtx} chainAttempt=${chainAttempt}/${maxOpenAiChain} model=${process.env.OPENAI_MODEL ?? 'default'}`,
+          logStep(
+            `step=openai_request_start ${baseCtx} chainAttempt=${chainAttempt}/${maxOpenAiChain} model=${process.env.OPENAI_MODEL ?? 'default'}`,
           );
           if (chainAttempt === 1) {
             hooks?.onAiStarted?.({ destinationStation: destForUi });
@@ -1226,6 +1262,7 @@ export class Service2Service {
             trainSchedule,
             vacantBerthChainBoardings:
               chainBoardings.length > 0 ? [...chainBoardings] : undefined,
+            trainStartDate,
           });
           this.logger.log(
             `[service2/check] step=openai_user_message_built ${baseCtx} chainAttempt=${chainAttempt} chars=${userMessage.length}`,
@@ -1266,12 +1303,12 @@ export class Service2Service {
           });
 
           const rawContent = response.output_text?.trim();
-          this.logger.log(
-            `[service2/check] step=openai_response ${baseCtx} chainAttempt=${chainAttempt} outputChars=${rawContent?.length ?? 0} responseId=${(response as { id?: string }).id ?? 'n/a'}`,
+          logStep(
+            `step=openai_response ${baseCtx} chainAttempt=${chainAttempt} outputChars=${rawContent?.length ?? 0} responseId=${(response as { id?: string }).id ?? 'n/a'}`,
           );
           if (!rawContent) {
-            this.logger.warn(
-              `[service2/check] step=openai_response_body_empty ${baseCtx} chainAttempt=${chainAttempt} responseId=${(response as { id?: string }).id ?? 'n/a'}`,
+            logStep(
+              `step=openai_response_body_empty ${baseCtx} chainAttempt=${chainAttempt} responseId=${(response as { id?: string }).id ?? 'n/a'}`,
             );
             break;
           }
@@ -1340,8 +1377,8 @@ export class Service2Service {
               resultOpenAiTotalPrice = parsed.total_price;
             }
           }
-          this.logger.log(
-            `[service2/check] step=openai_parsed ${baseCtx} chainAttempt=${chainAttempt} seats=${parsed.seats?.length ?? 0} bookingPlanRaw=${parsed.booking_plan?.length ?? 0} bookingPlanNorm=${resultOpenAiBookingPlan?.length ?? 0} totalPrice=${resultOpenAiTotalPrice ?? parsed.total_price ?? 'n/a'}`,
+          logStep(
+            `step=openai_parsed ${baseCtx} chainAttempt=${chainAttempt} seats=${parsed.seats?.length ?? 0} bookingPlanRaw=${parsed.booking_plan?.length ?? 0} bookingPlanNorm=${resultOpenAiBookingPlan?.length ?? 0} totalPrice=${resultOpenAiTotalPrice ?? parsed.total_price ?? 'n/a'}`,
           );
 
           const compactForCover = normalizeCompactBookingPlan(
@@ -1406,6 +1443,9 @@ export class Service2Service {
           });
 
           chainBoardings.push(nextBoarding);
+          logStep(
+            `step=openai_request_chaining ${baseCtx} nextBoarding=${nextBoarding} reason="Plan did not reach destination; fetching more data from next station."`,
+          );
           await appendVacantBerthRound(
             nextBoarding,
             nextBoarding,
@@ -1437,15 +1477,12 @@ export class Service2Service {
         }
       } catch (err) {
         const emsg = err instanceof Error ? err.message : String(err);
-        this.logger.error(
-          `[service2/check] step=openai_error ${baseCtx} ${emsg}`,
-          err instanceof Error ? err.stack : undefined,
-        );
+        logStep(`step=openai_error ${baseCtx} ${emsg}`);
         openAiSummary = `OpenAI summary unavailable: ${emsg}`;
       }
     } else {
-      this.logger.warn(
-        `[service2/check] step=openai_skipped_no_api_key ${baseCtx}`,
+      logStep(
+        `step=openai_skipped_no_api_key ${baseCtx}`,
       );
     }
 
@@ -1529,21 +1566,24 @@ export class Service2Service {
       (typeof openAiSummary === 'string' && openAiSummary.trim().length > 0);
     const finalStatus =
       vacantBerth.error && !hasUsableOpenAiResult ? 'failed' : 'success';
-    this.logger.log(
-      `[service2/check] step=return ${baseCtx} status=${finalStatus} vacantBerthError=${vacantBerth.error ?? 'none'} hasOpenAiSummary=${Boolean(openAiSummary)} hasUsableOpenAiResult=${hasUsableOpenAiResult}`,
+
+    logStep(
+      `step=return ${baseCtx} status=${finalStatus} vacantBerthError=${vacantBerth.error ?? 'none'} vacantBerthApiCalled=${vacantBerthApiCalled} hasOpenAiSummary=${Boolean(openAiSummary)} hasUsableOpenAiResult=${hasUsableOpenAiResult}`,
     );
 
     return {
       status: finalStatus,
       composition: compositionPayload,
       chartPreparationDetails,
-      vacantBerth: { vbd: [], error: null },
+      vacantBerth,
       openAiSummary,
       openAiStructuredSeats: resultOpenAiStructuredSeats,
       openAiBookingPlan: resultOpenAiBookingPlan,
       openAiTotalPrice: resultOpenAiTotalPrice,
       trainSchedule: trainSchedule ?? undefined,
       chartRefreshNotice,
+      debugLog,
+      vacantBerthApiCalled,
     };
   }
 }
@@ -1646,6 +1686,7 @@ function buildOpenAIUserMessage(ctx: {
   originStation: string;
   destinationStation: string;
   journeyDate: string;
+  trainStartDate?: string | null;
   classCode: string;
   passengerDetails?: string;
   composition: NonNullable<Service2CheckResult['composition']>;
@@ -1680,6 +1721,7 @@ function buildOpenAIUserMessage(ctx: {
 - Origin (boarding) station: ${ctx.originStation}
 - Destination station: ${ctx.destinationStation}
 - Travel date: ${ctx.journeyDate}
+${ctx.trainStartDate ? `- Train start date: ${ctx.trainStartDate}` : ''}
 ${ctx.passengerDetails ? `- Passenger details: ${ctx.passengerDetails}` : ''}
 
 **Train composition**
