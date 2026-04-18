@@ -2640,6 +2640,7 @@ function BookingV2PageContent() {
                     to_code: toCode,
                     journey_date: journeyDate,
                     success: true,
+                    trainStartDate: t.trainStartDate,
                   },
                 });
               } else if (msg.type === "error") {
@@ -2652,6 +2653,7 @@ function BookingV2PageContent() {
                     to_code: toCode,
                     journey_date: journeyDate,
                     success: false,
+                    trainStartDate: t.trainStartDate,
                   },
                 });
               }

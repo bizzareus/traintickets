@@ -149,15 +149,34 @@ export type AnalyticsEvent =
     }
   | {
       name: "alternate_paths_popup_viewed";
-      properties: { train_number: string; from_code: string; to_code: string; journey_date: string };
+      properties: {
+        train_number: string;
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        trainStartDate?: string;
+      };
     }
   | {
       name: "alternate_paths_popup_loaded";
-      properties: { train_number: string; from_code: string; to_code: string; journey_date: string; success: boolean };
+      properties: {
+        train_number: string;
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        success: boolean;
+        trainStartDate?: string;
+      };
     }
   | {
       name: "alternate_paths_irctc_clicked";
-      properties: { train_number: string; from_code: string; to_code: string; class_code: string };
+      properties: {
+        train_number: string;
+        from_code: string;
+        to_code: string;
+        class_code: string;
+        trainStartDate?: string;
+      };
     }
   | {
       name: "chart_time_load_failed_booking_popup";
