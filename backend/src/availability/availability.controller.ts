@@ -398,17 +398,16 @@ export class AvailabilityController {
         toStationCode: a.toStationCode,
         stationCode: a.stationCode,
         journeyDate: a.journeyDate.toISOString().slice(0, 10),
-        classCode: a.classCode,
         chartAt: a.chartAt.toISOString(),
         status: a.status,
         createdAt: a.createdAt.toISOString(),
         completedAt: a.completedAt?.toISOString?.() ?? null,
         emailNotifiedAt: a.emailNotifiedAt?.toISOString?.() ?? null,
         whatsappNotifiedAt: a.whatsappNotifiedAt?.toISOString?.() ?? null,
-        contact: (a as any).contact
+        contact: a.contact
           ? {
-              email: (a as any).contact.email,
-              mobile: (a as any).contact.mobile,
+              email: a.contact.email,
+              mobile: a.contact.mobile,
             }
           : null,
       })),

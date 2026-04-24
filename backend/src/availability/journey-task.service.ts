@@ -38,18 +38,6 @@ export type JourneyValidationResult =
   | { valid: false; errors: JourneyValidationError[] };
 
 /**
- * Builds chartAt (Date) from journey date and HH:MM chart time (local).
- * Aligns with Asia/Kolkata (IST) zone for absolute moment calculation.
- */
-function buildChartAt(journeyDate: Date, chartTimeLocal: string): Date {
-  const jStr = journeyDate.toISOString().slice(0, 10); // "YYYY-MM-DD"
-  const [h, min] = chartTimeLocal.split(':').map(Number);
-  return DateTime.fromFormat(`${jStr} ${h}:${min}`, 'yyyy-MM-dd H:m', {
-    zone: 'Asia/Kolkata',
-  }).toJSDate();
-}
-
-/**
  * Builds chartAt for journeyDate + dayOffset days + HH:MM (for chart two).
  * Aligns with Asia/Kolkata (IST).
  */
@@ -66,6 +54,12 @@ function buildChartAtWithDayOffset(
   return DateTime.fromFormat(`${jStr} ${h}:${min}`, 'yyyy-MM-dd H:m', {
     zone: 'Asia/Kolkata',
   }).toJSDate();
+}
+
+function stationDayCount(station: unknown): number {
+  if (station == null || typeof station !== 'object') return 1;
+  const dayCount = (station as { dayCount?: unknown }).dayCount;
+  return typeof dayCount === 'number' ? dayCount : 1;
 }
 
 @Injectable()
@@ -161,13 +155,17 @@ export class JourneyTaskService {
       };
     }
 
-    const boardingStn = schedule.stationList.find((s) => s.stationCode === fromCode);
-    const dayCount = (boardingStn as any)?.dayCount ?? 1;
+    const boardingStn = schedule.stationList.find(
+      (s) => s.stationCode === fromCode,
+    );
+    const dayCount = stationDayCount(boardingStn);
     let resolvedTrainStartDate = startYmd;
     if (!resolvedTrainStartDate && jYmd) {
       if (dayCount > 1) {
         const boardDate = DateTime.fromISO(jYmd);
-        resolvedTrainStartDate = boardDate.minus({ days: dayCount - 1 }).toISODate();
+        resolvedTrainStartDate = boardDate
+          .minus({ days: dayCount - 1 })
+          .toISODate();
       } else {
         resolvedTrainStartDate = jYmd;
       }
@@ -312,8 +310,7 @@ export class JourneyTaskService {
       ? { valid: true, context: opts.validatedContext }
       : await this.validateJourneyForMonitoring(params);
     this.throwIfInvalidJourney(validation);
-    const { schedule, fromCode, toCode, trainNumber, stationsToProcess } =
-      validation.context;
+    const { schedule, fromCode, toCode, trainNumber } = validation.context;
 
     const journeyDate = new Date(params.journeyDate.trim());
     const classCode = (params.classCode || '3A').trim().toUpperCase();
@@ -408,7 +405,7 @@ export class JourneyTaskService {
           },
         });
         const jid = jmr.id;
-        
+
         await tx.journeyMonitorContact.create({
           data: {
             journeyRequestId: jid,
@@ -424,7 +421,7 @@ export class JourneyTaskService {
           status: string;
         }> = [];
         for (const spec of taskSpecs) {
-          const task = await (tx.chartTimeAvailabilityTask as any).create({
+          const task = await tx.chartTimeAvailabilityTask.create({
             data: {
               journeyRequestId: jid,
               trainNumber,
@@ -476,18 +473,18 @@ export class JourneyTaskService {
     const task = await this.prisma.chartTimeAvailabilityTask.findUnique({
       where: { id: taskId },
     });
-    if (!task || (!force && task.status !== "pending")) return;
+    if (!task || (!force && task.status !== 'pending')) return;
 
-    if (task.status === "pending") {
+    if (task.status === 'pending') {
       await this.prisma.chartTimeAvailabilityTask.update({
         where: { id: taskId },
-        data: { status: "running" },
+        data: { status: 'running' },
       });
     }
 
     const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
-    const trainStartDateStr = (task as any).trainStartDate
-      ? (task as any).trainStartDate.toISOString().slice(0, 10)
+    const trainStartDateStr = task.trainStartDate
+      ? task.trainStartDate.toISOString().slice(0, 10)
       : journeyDateStr;
 
     try {
@@ -596,7 +593,7 @@ export class JourneyTaskService {
         LIMIT 20
       )
       RETURNING id`;
-    console.log("marked as running", due);
+    console.log('marked as running', due);
     for (const task of due) {
       await this.runTask(task.id, true);
     }
@@ -610,8 +607,8 @@ export class JourneyTaskService {
     });
   }
 
-  async getAllAlerts() {
-    return (this.prisma.chartTimeAvailabilityTask as any).findMany({
+  getAllAlerts() {
+    return this.prisma.chartTimeAvailabilityTask.findMany({
       orderBy: { createdAt: 'desc' },
       include: {
         contact: true,

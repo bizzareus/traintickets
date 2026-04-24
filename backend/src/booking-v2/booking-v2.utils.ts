@@ -204,7 +204,9 @@ export type IrctcScheduleStopLite = {
   dayCount?: unknown;
 };
 
-export function normalizeScheduleStationCode(s: string | null | undefined): string {
+export function normalizeScheduleStationCode(
+  s: string | null | undefined,
+): string {
   return String(s ?? '')
     .trim()
     .toUpperCase();
