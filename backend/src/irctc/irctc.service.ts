@@ -567,7 +567,7 @@ export class IrctcService {
   async postTrainComposition(
     payload: {
       trainNo: string;
-      jDate: string;
+      jDate: Date | string;
       boardingStation: string;
     },
     opts?: {
@@ -576,9 +576,13 @@ export class IrctcService {
       _retriedTwoDays?: boolean;
     },
   ): Promise<Record<string, unknown>> {
+    const jDateStr =
+      payload.jDate instanceof Date
+        ? payload.jDate.toISOString().slice(0, 10)
+        : String(payload.jDate).trim().slice(0, 10);
     const body = {
       trainNo: String(payload.trainNo).trim(),
-      jDate: String(payload.jDate).trim().slice(0, 10),
+      jDate: jDateStr,
       boardingStation: String(payload.boardingStation).trim().toUpperCase(),
     };
     console.log('body', body);
@@ -692,7 +696,7 @@ export class IrctcService {
 
   private async tryHydrateTrainRunsOnFromComposition(
     trainNumber: string,
-    ctx: { jDate: string; boardingStation: string },
+    ctx: { jDate: Date | string; boardingStation: string },
   ): Promise<TrainRunsOnJson | null> {
     try {
       const raw = await this.postTrainComposition({
@@ -718,7 +722,7 @@ export class IrctcService {
   async getTrainComposition(
     payload: {
       trainNo: string;
-      jDate: string;
+      jDate: Date | string;
       boardingStation: string;
     },
     opts?: { allowChartNotPrepared?: boolean },

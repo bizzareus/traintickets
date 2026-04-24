@@ -183,7 +183,7 @@ export class NotificationService {
     fromStationCode: string;
     toStationCode: string;
     trainNumber: string;
-    classCode: string;
+    classCode?: string | null;
   }): string {
     return irctcBookingRedirect({
       from: task.fromStationCode,
@@ -191,6 +191,13 @@ export class NotificationService {
       trainNo: task.trainNumber,
       classCode: task.classCode,
     });
+  }
+
+  private firstPlannedClassCode(result: Service2CheckResult): string | null {
+    const filled = result.openAiBookingPlan?.find(isFilledOpenAiPlanItem);
+    const instruction = filled?.instruction ?? '';
+    const parts = instruction.split(' - ').map((p) => p.trim());
+    return parts[2] || null;
   }
 
   /** Build IRCTC URL for a segment from instruction "FROM - TO - CLASS". */
@@ -456,7 +463,6 @@ export class NotificationService {
       | 'fromStationCode'
       | 'toStationCode'
       | 'journeyDate'
-      | 'classCode'
     >;
     result: Service2CheckResult;
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
@@ -490,7 +496,7 @@ export class NotificationService {
       fromStationCode: task.fromStationCode,
       toStationCode: task.toStationCode,
       trainNumber: task.trainNumber,
-      classCode: task.classCode,
+      classCode: this.firstPlannedClassCode(result),
     });
     const plan = result.openAiBookingPlan ?? [];
     const totalPrice = result.openAiTotalPrice ?? undefined;

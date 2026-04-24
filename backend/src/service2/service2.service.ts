@@ -895,7 +895,7 @@ export class Service2Service {
       trainNumber: string;
       stationCode: string;
       journeyDate: string;
-      classCode: string;
+      classCode?: string;
       destinationStation?: string;
       passengerDetails?: string;
       triggerSource?: 'manual' | 'cron';
@@ -921,7 +921,7 @@ export class Service2Service {
     const boardingStation = String(params.stationCode ?? '')
       .trim()
       .toUpperCase();
-    const cls = String(params.classCode).trim().toUpperCase();
+    const cls = String(params.classCode ?? 'ALL').trim().toUpperCase();
     const triggerSource = params.triggerSource ?? 'manual';
     const destinationStation = params.destinationStation
       ? String(params.destinationStation).trim().toUpperCase()

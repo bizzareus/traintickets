@@ -117,7 +117,7 @@ export class ChartTimeService {
   async getChartTimesWithSecondChartForTrain(
     trainNumber: string,
     stationCodes: string[],
-    jDate?: string,
+    jDate?: Date,
   ): Promise<
     Map<
       string,
@@ -142,7 +142,6 @@ export class ChartTimeService {
       };
     }
     let rows = await this.prisma.trainStationChartTime.findMany({ where });
-    console.log('rows', rows);
     // DB-first read; if missing for requested stations, hydrate once from composition API.
     if (rows.length === 0 && normalizedCodes.length > 0) {
       const hydrationDate = jDate || new Date().toISOString().slice(0, 10);

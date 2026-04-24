@@ -178,7 +178,6 @@ model ChartTimeAvailabilityTask {
   stationCode        String    @map("station_code")
   journeyDate        DateTime  @map("journey_date") @db.Date
   trainStartDate     DateTime? @map("train_start_date") @db.Date
-  classCode          String    @map("class_code")
   chartAt            DateTime  @map("chart_at")
   status             String    @default("pending")
   resultPayload      Json?     @map("result_payload")

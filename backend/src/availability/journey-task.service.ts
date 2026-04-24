@@ -320,44 +320,14 @@ export class JourneyTaskService {
     const now = new Date();
     const email = params.email?.trim() || undefined;
     const mobile = params.mobile?.trim() || undefined;
+    const trainStartDate = new Date(validation.context.trainStartDate);
 
-    const chartTimesWithSecond = new Map<string, any>();
-    const resolvedStations = new Set<string>();
-    const stationsToQueue = [fromCode];
-    const hydrationDate = validation.context.trainStartDate;
-
-    // Follow the chain of charting stations starting from the boarding station
-    while (stationsToQueue.length > 0) {
-      const current = stationsToQueue.shift()!;
-      if (resolvedStations.has(current)) continue;
-
-      const resMap = await this.chartTime.getChartTimesWithSecondChartForTrain(
+    const chartTimesWithSecond =
+      await this.chartTime.getChartTimesWithSecondChartForTrain(
         trainNumber,
-        [current],
-        hydrationDate,
+        [fromCode],
+        trainStartDate,
       );
-      const entry = resMap.get(current);
-      if (entry) {
-        chartTimesWithSecond.set(current, entry);
-        resolvedStations.add(current);
-
-        const next = entry.chartNextRemoteStation?.trim().toUpperCase();
-        if (next) {
-          // Check if 'next' is correctly ordered on our route segment AND before the destination.
-          // stationsToProcess contains the segment [fromCode, ..., toCode].
-          const nextIdx = stationsToProcess.indexOf(next);
-          // if nextIdx is >= 0 (on segment) AND < stationsToProcess.length - 1 (before destination)
-          if (nextIdx >= 0 && nextIdx < stationsToProcess.length - 1) {
-            if (!resolvedStations.has(next)) {
-              stationsToQueue.push(next);
-            }
-          }
-        }
-      } else {
-        // If no chart info even after hydration, we can't chain further from this station.
-        resolvedStations.add(current);
-      }
-    }
 
     let monitoringContactId: string | undefined;
     if (email || mobile) {
@@ -394,11 +364,9 @@ export class JourneyTaskService {
     const taskSpecs: Array<{ stationCode: string; chartAt: Date }> = [];
     const trainName = params.trainName ?? schedule.trainName;
 
-    const trainStartDate = new Date(validation.context.trainStartDate);
-
-    for (const stationCode of stationsToProcess) {
-      const entry = chartTimesWithSecond.get(stationCode);
-      if (!entry) continue;
+    const entry = chartTimesWithSecond.get(fromCode);
+    if (entry) {
+      const stationCode = fromCode;
 
       taskSpecs.push({
         stationCode,
@@ -455,7 +423,6 @@ export class JourneyTaskService {
           chartAt: string;
           status: string;
         }> = [];
-
         for (const spec of taskSpecs) {
           const task = await (tx.chartTimeAvailabilityTask as any).create({
             data: {
@@ -467,7 +434,6 @@ export class JourneyTaskService {
               stationCode: spec.stationCode,
               journeyDate,
               trainStartDate: new Date(validation.context.trainStartDate),
-              classCode,
               chartAt: spec.chartAt,
               status: 'pending',
             },
@@ -531,7 +497,6 @@ export class JourneyTaskService {
         stationCode: task.stationCode,
         journeyDate: journeyDateStr,
         trainStartDate: trainStartDateStr,
-        classCode: task.classCode,
         destinationStation: task.toStationCode,
       });
       const result = await this.service2.check({
@@ -539,7 +504,6 @@ export class JourneyTaskService {
         stationCode: task.stationCode,
         journeyDate: journeyDateStr,
         trainStartDate: trainStartDateStr,
-        classCode: task.classCode,
         destinationStation: task.toStationCode,
         triggerSource: 'cron',
       });
@@ -572,7 +536,6 @@ export class JourneyTaskService {
                 fromStationCode: task.fromStationCode,
                 toStationCode: task.toStationCode,
                 journeyDate: task.journeyDate,
-                classCode: task.classCode,
               },
               result,
             })
