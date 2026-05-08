@@ -11,8 +11,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Temporarily disabled dark mode until fully implemented */
+    --background: #f8fafc;
+    --foreground: #0f172a;
   }
 }
 
