@@ -607,11 +607,39 @@ export class IrctcService {
     const cookies = process.env.IRCTC_COOKIES;
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
-    const res = await fetch(IRCTC_TRAIN_COMPOSITION_URL, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(body),
-    });
+    const t0 = Date.now();
+    let res: Response;
+    try {
+      res = await fetch(IRCTC_TRAIN_COMPOSITION_URL, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(body),
+      });
+    } catch (err) {
+      const ms = Date.now() - t0;
+      const cause =
+        err instanceof Error
+          ? err.cause instanceof Error
+            ? err.cause.message
+            : err.message
+          : String(err);
+      this.logger.warn(
+        `[irctc/trainComposition] network_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} ${cause}`,
+      );
+      captureSentryException(err, {
+        tags: { service: 'irctc', endpoint: 'trainComposition' },
+        extra: {
+          ms,
+          trainNo: body.trainNo,
+          boardingStation: body.boardingStation,
+          jDate: body.jDate,
+          cause,
+        },
+      });
+      throw new Error(
+        'We are unable to contact rail systems. Please try again later.',
+      );
+    }
     const text = await res.text();
     if (!res.ok) {
       throw new Error(
@@ -730,7 +758,10 @@ export class IrctcService {
     const raw = await this.postTrainComposition(payload, opts);
     const data = raw as unknown as TrainCompositionResponse;
     try {
-      await this.persistChartTimesFromComposition(data, payload.boardingStation);
+      await this.persistChartTimesFromComposition(
+        data,
+        payload.boardingStation,
+      );
     } catch {
       // persist is best-effort; still return composition
     }

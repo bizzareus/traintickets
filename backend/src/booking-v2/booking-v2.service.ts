@@ -217,6 +217,9 @@ export class BookingV2Service {
     });
     const text = await res.text();
     if (!res.ok) {
+      if (res.status === 404) {
+        return { data: { stationList: [] }, message: 'No station found' };
+      }
       this.logger.warn(
         `[booking-v2/stations] upstream ${res.status} q=${q.slice(0, 40)} body=${text.slice(0, 300)}`,
       );
@@ -800,7 +803,8 @@ export class BookingV2Service {
       stationCodesOnRoute: stations,
       stationNameMap,
       remainderMergedSchedule,
-      trainOriginCode: stationList[0]?.stationCode?.trim().toUpperCase() || null,
+      trainOriginCode:
+        stationList[0]?.stationCode?.trim().toUpperCase() || null,
       trainOriginDepartureTime: stationList[0]?.departureTime ?? null,
       debugLog,
       trainStartDate: moment(input.date, 'YYYY-MM-DD')

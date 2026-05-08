@@ -94,6 +94,20 @@ describe('BookingV2Service', () => {
         'Station search failed: 503',
       );
     });
+
+    it('returns an empty station result when upstream returns 404', async () => {
+      mockStationCache.search.mockResolvedValueOnce(null);
+      jest.spyOn(global, 'fetch').mockResolvedValueOnce({
+        ok: false,
+        status: 404,
+        text: () => Promise.resolve('Not Found'),
+      } as Response);
+
+      await expect(service.searchStations('zzzz')).resolves.toEqual({
+        data: { stationList: [] },
+        message: 'No station found',
+      });
+    });
   });
 
   describe('searchTrains (cache integration)', () => {

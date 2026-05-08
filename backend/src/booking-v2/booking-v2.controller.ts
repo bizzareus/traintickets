@@ -23,6 +23,18 @@ function bodyStringArray(v: unknown): string[] {
   return v.map((x) => trimStr(x).toUpperCase()).filter((s) => s.length > 0);
 }
 
+function streamErrorMessage(err: unknown): string {
+  const message = err instanceof Error ? err.message : 'Unexpected error';
+  if (
+    /fetch failed|ETIMEDOUT|IRCTC request failed|Train composition is temporarily unavailable|unable to contact rail systems/i.test(
+      message,
+    )
+  ) {
+    return 'We are unable to contact rail systems. Please try again later.';
+  }
+  return message;
+}
+
 @Controller('api/booking-v2')
 export class BookingV2Controller {
   constructor(private readonly bookingV2: BookingV2Service) {}
@@ -158,8 +170,7 @@ export class BookingV2Controller {
       );
       writeLine({ type: 'result', data: result });
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Unexpected error';
-      writeLine({ type: 'error', message });
+      writeLine({ type: 'error', message: streamErrorMessage(err) });
     } finally {
       res.end();
     }
@@ -171,7 +182,8 @@ export class BookingV2Controller {
     @Res() res: Response,
   ) {
     // Both param and query fallback
-    const num = trimStr(trainNumberParam) || trimStr(res.req.params.trainNumber);
+    const num =
+      trimStr(trainNumberParam) || trimStr(res.req.params.trainNumber);
     if (!num) {
       throw new BadRequestException('trainNumber is required');
     }
