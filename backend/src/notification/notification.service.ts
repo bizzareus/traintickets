@@ -441,6 +441,56 @@ export class NotificationService {
     return lines.join('\n');
   }
 
+  private buildNoSeatsEmailHtml(params: {
+    trainLabel: string;
+    routeDisplay: string;
+    journeyDateReadable: string;
+    bookUrl: string;
+    openAiSummary?: string | null;
+  }): string {
+    const { trainLabel, routeDisplay, journeyDateReadable, bookUrl, openAiSummary } = params;
+    return `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body style="font-family:system-ui,sans-serif;line-height:1.5;color:#0f172a;background:#f1f5f9;margin:0;padding:32px 16px;">
+  <div style="max-width:560px;margin:0 auto;background:#fff;border-radius:16px;padding:24px;border:1px solid #e2e8f0;box-shadow:0 4px 6px -1px rgba(0,0,0,0.08);">
+    <h2 style="margin:0 0 16px 0;font-size:20px;color:#0f172a;">No Tickets Found 😔</h2>
+    <p style="margin:0 0 12px 0;">We tried our best to find tickets for your journey:</p>
+    <div style="background:#f8fafc;padding:12px;border-radius:8px;margin-bottom:16px;">
+      <p style="margin:0;font-weight:600;">${escapeHtml(trainLabel)}</p>
+      <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(routeDisplay)}</p>
+      <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(journeyDateReadable)}</p>
+    </div>
+    <p style="margin:0 0 16px 0;color:#b91c1c;">${escapeHtml(openAiSummary || "Unfortunately, we couldn't find any available tickets at this time.")}</p>
+    <p style="margin:0 0 16px 0;">You can try checking on LastBerth for other trains:</p>
+    <a href="https://lastberth.com" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Search on LastBerth</a>
+  </div>
+  <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.</p>
+</body>
+</html>`;
+  }
+
+  private buildNoSeatsWhatsAppText(params: {
+    trainLabel: string;
+    routeDisplay: string;
+    journeyDateReadable: string;
+    bookUrl: string;
+    openAiSummary?: string | null;
+  }): string {
+    const { trainLabel, routeDisplay, journeyDateReadable, bookUrl, openAiSummary } = params;
+    return `No Tickets Found 😔
+
+Train: ${trainLabel}
+Route: ${routeDisplay}
+Date: ${journeyDateReadable}
+
+${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}
+
+You can try checking on LastBerth for other trains:
+https://lastberth.com`;
+  }
+
   /** Build station code -> name map from train schedule (for UI-style segment labels). */
   private getStationNameMap(
     stationList?: Array<{ stationCode?: string; stationName?: string }>,
@@ -478,9 +528,7 @@ export class NotificationService {
     if (result.status !== 'success') {
       return out;
     }
-    if (!hasBookablePlanForNotification(result)) {
-      return out;
-    }
+    const hasTickets = hasBookablePlanForNotification(result);
 
     const trainLabel = [task.trainNumber, task.trainName]
       .filter(Boolean)
@@ -517,35 +565,54 @@ export class NotificationService {
     );
 
     if (mobile?.trim()) {
-      const whatsAppText = this.buildWhatsAppSeatsFoundText({
-        trainLabel,
-        routeDisplay,
-        journeyDateReadable,
-        journeyTimesLine: journeyTimesLine || undefined,
-        chartPreparationText,
-        plan,
-        totalPrice,
-        stationNameMap,
-        stationScheduleList,
-        bookUrl,
-      });
+      const whatsAppText = hasTickets
+        ? this.buildWhatsAppSeatsFoundText({
+            trainLabel,
+            routeDisplay,
+            journeyDateReadable,
+            journeyTimesLine: journeyTimesLine || undefined,
+            chartPreparationText,
+            plan,
+            totalPrice,
+            stationNameMap,
+            stationScheduleList,
+            bookUrl,
+          })
+        : this.buildNoSeatsWhatsAppText({
+            trainLabel,
+            routeDisplay,
+            journeyDateReadable,
+            bookUrl,
+            openAiSummary: result.openAiSummary,
+          });
+
       out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText);
     }
 
     if (email?.trim()) {
-      const subject = `Seats Available - Train ${task.trainNumber} on ${journeyDateReadable}`;
-      const html = this.buildSeatsFoundEmailHtml({
-        trainLabel,
-        routeDisplay: emailRouteDisplay,
-        journeyDateReadable,
-        journeyTimesLine: journeyTimesLine || undefined,
-        chartPreparationText,
-        trainNumber: task.trainNumber,
-        plan,
-        totalPrice,
-        stationNameMap,
-        stationScheduleList,
-      });
+      const subject = hasTickets
+        ? `Seats Available - Train ${task.trainNumber} on ${journeyDateReadable}`
+        : `No Tickets Found - Train ${task.trainNumber} on ${journeyDateReadable}`;
+      const html = hasTickets
+        ? this.buildSeatsFoundEmailHtml({
+            trainLabel,
+            routeDisplay: emailRouteDisplay,
+            journeyDateReadable,
+            journeyTimesLine: journeyTimesLine || undefined,
+            chartPreparationText,
+            trainNumber: task.trainNumber,
+            plan,
+            totalPrice,
+            stationNameMap,
+            stationScheduleList,
+          })
+        : this.buildNoSeatsEmailHtml({
+            trainLabel,
+            routeDisplay: emailRouteDisplay,
+            journeyDateReadable,
+            bookUrl,
+            openAiSummary: result.openAiSummary,
+          });
       out.emailSent = await this.sendEmail(email.trim(), subject, html);
     }
     return out;

@@ -97,13 +97,7 @@ function isRetryableChartTaskFailure(payload: unknown): boolean {
 }
 
 function chartAtIsDue(chartAt: Date, now = new Date()): boolean {
-  const chartWall = DateTime.fromJSDate(chartAt, { zone: 'utc' }).toFormat(
-    'yyyyMMddHHmmss',
-  );
-  const nowIstWall = DateTime.fromJSDate(now)
-    .setZone('Asia/Kolkata')
-    .toFormat('yyyyMMddHHmmss');
-  return chartWall <= nowIstWall;
+  return chartAt.getTime() <= now.getTime();
 }
 
 @Injectable()
@@ -524,6 +518,35 @@ export class JourneyTaskService {
       console.log('result', result);
 
       const status = result.status === 'success' ? 'completed' : 'failed';
+
+      const isNotPrepared =
+        status === 'failed' &&
+        (result as any).chartStatus?.kind === 'not_prepared_yet';
+
+      if (isNotPrepared) {
+        const delayMs = 30 * 60_000; // 30 minutes
+        const nextRunAt = new Date(Date.now() + delayMs);
+        await this.prisma.chartTimeAvailabilityTask.update({
+          where: { id: taskId },
+          data: {
+            status: 'pending',
+            resultPayload: result as object,
+            nextRunAt,
+            lockedAt: null,
+            completedAt: null,
+            retryCount: Math.max(0, attemptNumber - 1),
+            lastError: chartTaskFailureText(result).slice(0, 1000),
+          },
+        });
+        console.log(
+          'scheduled chart task retry for chart not prepared',
+          taskId,
+          'nextRunAt',
+          nextRunAt.toISOString(),
+        );
+        return;
+      }
+
       if (
         status === 'failed' &&
         attemptNumber < MAX_CHART_TASK_ATTEMPTS &&
@@ -651,35 +674,52 @@ export class JourneyTaskService {
       'IST',
     );
 
-    const due = await this.prisma.$queryRaw<
-      Array<{ id: string; retry_count: number }>
-    >`UPDATE "ChartTimeAvailabilityTask"
-      SET status = 'running',
-          locked_at = NOW(),
-          retry_count = retry_count + 1,
-          last_error = NULL
-      WHERE id IN (
-        SELECT id FROM "ChartTimeAvailabilityTask"
-        WHERE completed_at IS NULL
-          AND (
-            (
-              status = 'pending'
-              AND chart_at <= (NOW() AT TIME ZONE 'Asia/Kolkata')
-              AND (next_run_at IS NULL OR next_run_at <= NOW())
-            )
-            OR (
-              status = 'running'
+    let due: Array<{ id: string; retry_count: number }> = [];
+    let attempt = 0;
+    while (attempt < 2) {
+      try {
+        due = await this.prisma.$queryRaw<
+          Array<{ id: string; retry_count: number }>
+        >`UPDATE "ChartTimeAvailabilityTask"
+          SET status = 'running',
+              locked_at = NOW(),
+              retry_count = retry_count + 1,
+              last_error = NULL
+          WHERE id IN (
+            SELECT id FROM "ChartTimeAvailabilityTask"
+            WHERE completed_at IS NULL
               AND (
-                locked_at IS NULL
-                OR locked_at <= NOW() - INTERVAL '10 minutes'
+                (
+                  status = 'pending'
+                  AND chart_at <= NOW()
+                  AND (next_run_at IS NULL OR next_run_at <= NOW())
+                )
+                OR (
+                  status = 'running'
+                  AND (
+                    locked_at IS NULL
+                    OR locked_at <= NOW() - INTERVAL '10 minutes'
+                  )
+                )
               )
-            )
+            ORDER BY COALESCE(next_run_at, chart_at) ASC
+            LIMIT 20
+            FOR UPDATE SKIP LOCKED
           )
-        ORDER BY COALESCE(next_run_at, chart_at) ASC
-        LIMIT 20
-        FOR UPDATE SKIP LOCKED
-      )
-      RETURNING id, retry_count`;
+          RETURNING id, retry_count`;
+        break; // Success
+      } catch (error) {
+        attempt++;
+        const msg = error instanceof Error ? error.message : String(error);
+        console.warn(`runDueTasks query failed (attempt ${attempt}):`, msg);
+        if (attempt >= 2) {
+          // Gracefully return 0 tasks if it keeps failing. Cron will retry next minute.
+          return 0;
+        }
+        // Wait 1 second before retrying
+        await new Promise((res) => setTimeout(res, 1000));
+      }
+    }
     console.log('marked as running', due);
     for (const task of due) {
       await this.runTask(task.id, true);

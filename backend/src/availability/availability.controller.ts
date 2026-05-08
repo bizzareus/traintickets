@@ -410,4 +410,15 @@ export class AvailabilityController {
       })),
     };
   }
+
+  @Post('admin/alerts/:id/trigger')
+  async triggerAlert(@Param('id') id: string) {
+    try {
+      await this.journeyTask.runTask(id, true);
+      return { success: true, message: 'Alert triggered successfully' };
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      throw new ServiceUnavailableException(`Failed to trigger alert: ${message}`);
+    }
+  }
 }

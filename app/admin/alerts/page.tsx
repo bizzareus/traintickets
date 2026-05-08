@@ -61,6 +61,17 @@ export default function AdminAlertsPage() {
     }
   }
 
+  async function triggerAlert(id: string) {
+    if (!confirm("Are you sure you want to trigger this alert?")) return;
+    try {
+      await apiClient.post(`/api/availability/admin/alerts/${id}/trigger`);
+      fetchAlerts();
+    } catch (err) {
+      console.error("Failed to trigger alert", err);
+      alert("Failed to trigger alert");
+    }
+  }
+
   const sortedAlerts = [...alerts].sort((a, b) => {
     const valA = new Date(a[sortField]).getTime();
     const valB = new Date(b[sortField]).getTime();
@@ -159,12 +170,13 @@ export default function AdminAlertsPage() {
                   <th className="px-6 py-4 font-semibold text-slate-900">Status</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Email</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">WhatsApp</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {sortedAlerts.length === 0 ? (
                   <tr>
-                    <td colSpan={8} className="px-6 py-12 text-center text-slate-500">
+                    <td colSpan={9} className="px-6 py-12 text-center text-slate-500">
                       No alerts have been setup yet.
                     </td>
                   </tr>
@@ -243,6 +255,17 @@ export default function AdminAlertsPage() {
                           </span>
                         ) : (
                           <span className="text-slate-300">—</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4">
+                        {(alert.status === "failed" ||
+                          (alert.status === "pending" && moment().isAfter(moment(alert.chartAt)))) && (
+                          <button
+                            onClick={() => triggerAlert(alert.id)}
+                            className="rounded bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-600 hover:bg-indigo-100"
+                          >
+                            Trigger
+                          </button>
                         )}
                       </td>
                     </tr>
