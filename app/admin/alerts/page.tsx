@@ -167,7 +167,7 @@ export default function AdminAlertsPage() {
                       )}
                     </div>
                   </th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Status</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">Status / Run Info</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Email</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">WhatsApp</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Actions</th>
@@ -231,13 +231,25 @@ export default function AdminAlertsPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <span
-                          className={`inline-flex items-center rounded-lg border px-2 py-0.5 text-xs font-semibold ${getStatusColor(
-                            alert.status
-                          )}`}
-                        >
-                          {alert.status.toUpperCase()}
-                        </span>
+                        <div className="flex flex-col items-start gap-1">
+                          <span
+                            className={`inline-flex items-center rounded-lg border px-2 py-0.5 text-xs font-semibold ${getStatusColor(
+                              alert.status
+                            )}`}
+                          >
+                            {alert.status.toUpperCase()}
+                          </span>
+                          {alert.completedAt && (
+                            <span className="text-[10px] text-slate-500 font-medium">
+                              Ran at: {moment.utc(alert.completedAt).utcOffset("+05:30").format("HH:mm:ss")}
+                            </span>
+                          )}
+                          {alert.completedAt && moment(alert.completedAt).diff(moment(alert.chartAt), 'minutes') > 10 && (
+                            <span className="text-[10px] text-rose-500 font-medium bg-rose-50 px-1.5 py-0.5 rounded border border-rose-100">
+                              {moment(alert.completedAt).diff(moment(alert.chartAt), 'minutes')}m Late
+                            </span>
+                          )}
+                        </div>
                       </td>
                       <td className="px-6 py-4">
                         {alert.emailNotifiedAt ? (
