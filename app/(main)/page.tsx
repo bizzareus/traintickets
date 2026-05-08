@@ -38,6 +38,7 @@ import moment from "moment";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 const LEG_ALERT_STORAGE_PREFIX = "lastBerth_leg_alert_";
+const IST_UTC_OFFSET_MINUTES = 330;
 
 function legAlertKey(
   trainNumber: string,
@@ -81,6 +82,33 @@ function markLegAlertSet(
   } catch {
     /* ignore */
   }
+}
+
+function parseChartDateTimeIst(
+  ymd: string,
+  time: string,
+  addDays: number,
+): moment.Moment | null {
+  const datePart = ymd.trim().slice(0, 10);
+  const match = time.trim().match(/^(\d{1,2}):(\d{2})/);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(datePart) || !match) return null;
+  const chartMoment = moment
+    .parseZone(
+      `${datePart}T${match[1].padStart(2, "0")}:${match[2]}:00+05:30`,
+    )
+    .add(addDays, "days");
+  return chartMoment.isValid() ? chartMoment : null;
+}
+
+function chartMomentHasPassedIst(chartMoment: moment.Moment): boolean {
+  return Date.now() > chartMoment.valueOf();
+}
+
+function formatChartMomentIst(chartMoment: moment.Moment): string {
+  return chartMoment
+    .clone()
+    .utcOffset(IST_UTC_OFFSET_MINUTES)
+    .format("ddd, MMM DD [at] h:mm A");
 }
 
 /** Convert 24h "HH:MM" to 12h "h:mm A" using moment. Returns original if parsing fails. */
@@ -695,11 +723,14 @@ function NextReleaseBottomSheet({
                   <p className="text-xl font-black tracking-tight text-indigo-950">
                     {(() => {
                       const ymd = journeyDate.slice(0, 10);
-                      const m = moment(
-                        `${ymd} ${nextMeta.chartOneTime}`,
-                        "YYYY-MM-DD HH:mm",
-                      ).add(nextMeta.chartOneDayOffset || 0, "days");
-                      return m.format("ddd, MMM DD [at] h:mm A");
+                      const m = parseChartDateTimeIst(
+                        ymd,
+                        nextMeta.chartOneTime,
+                        nextMeta.chartOneDayOffset || 0,
+                      );
+                      return m
+                        ? formatChartMomentIst(m)
+                        : nextMeta.chartOneTime;
                     })()}{" "}
                     IST
                   </p>
@@ -815,22 +846,16 @@ function LegChartTimeInsight({
   const chartPrepared = useMemo(() => {
     if (!chartTime || !journeyDate) return null;
     const ymd = journeyDate.trim().slice(0, 10);
-    const chartMoment = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm").add(
-      chartOffset,
-      "days",
-    );
-    if (!chartMoment.isValid()) return null;
-    return moment().isAfter(chartMoment);
+    const chartMoment = parseChartDateTimeIst(ymd, chartTime, chartOffset);
+    if (!chartMoment) return null;
+    return chartMomentHasPassedIst(chartMoment);
   }, [chartTime, journeyDate, chartOffset]);
 
   const chartDateTimeFormatted = useMemo(() => {
     if (!chartTime || !journeyDate) return null;
     const ymd = journeyDate.trim().slice(0, 10);
-    const m = moment(`${ymd} ${chartTime}`, "YYYY-MM-DD HH:mm").add(
-      chartOffset,
-      "days",
-    );
-    return m.isValid() ? m.format("ddd, MMM DD [at] h:mm A") : chartTime;
+    const m = parseChartDateTimeIst(ymd, chartTime, chartOffset);
+    return m ? formatChartMomentIst(m) : chartTime;
   }, [chartTime, journeyDate, chartOffset]);
 
   const subscribeAlert = useCallback(async () => {
@@ -2026,39 +2051,30 @@ function CompactLegChartCta({
           let isPrep = false;
 
           if (c1Time) {
-            const m1 = moment(`${ymd} ${c1Time}`, "YYYY-MM-DD HH:mm").add(
-              c1Offset,
-              "days",
-            );
-            if (m1.isValid()) {
+            const m1 = parseChartDateTimeIst(ymd, c1Time, c1Offset);
+            if (m1) {
               targetM = m1;
-              isPrep = moment().isAfter(m1);
+              isPrep = chartMomentHasPassedIst(m1);
 
               // If chart one is already prepared and there is a second chart, consider the second one
               if (isPrep && c2Time) {
-                const m2 = moment(`${ymd} ${c2Time}`, "YYYY-MM-DD HH:mm").add(
-                  c2Offset,
-                  "days",
-                );
-                if (m2.isValid()) {
+                const m2 = parseChartDateTimeIst(ymd, c2Time, c2Offset);
+                if (m2) {
                   targetM = m2;
-                  isPrep = moment().isAfter(m2);
+                  isPrep = chartMomentHasPassedIst(m2);
                 }
               }
             }
           }
 
-          if (targetM && targetM.isValid()) {
-            setChartTimeLabel(targetM.format("ddd, MMM DD [at] h:mm A"));
+          if (targetM) {
+            setChartTimeLabel(formatChartMomentIst(targetM));
             setChartIsPrepared(isPrep);
 
             // Set source correctly
             if (c1Time) {
-              const m1 = moment(`${ymd} ${c1Time}`, "YYYY-MM-DD HH:mm").add(
-                c1Offset,
-                "days",
-              );
-              if (m1.isValid() && targetM.isSame(m1)) {
+              const m1 = parseChartDateTimeIst(ymd, c1Time, c1Offset);
+              if (m1 && targetM.isSame(m1)) {
                 setActiveChartSource("one");
               } else if (c2Time) {
                 setActiveChartSource("two");
@@ -2082,7 +2098,7 @@ function CompactLegChartCta({
     return () => {
       cancel = true;
     };
-  }, [trainNumber, journeyDate, legFrom]);
+  }, [trainNumber, journeyDate, legFrom, trainStartDate]);
 
   const subscribe = useCallback(async () => {
     const em = email.trim() || undefined;

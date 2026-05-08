@@ -6,8 +6,14 @@ import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 
-const scheduleClient = createRetryingAxiosClient();
-const trainCompositionClient = createRetryingAxiosClient({ retryPost: true });
+const scheduleClient = createRetryingAxiosClient({
+  serviceName: 'irctc/schedule',
+});
+const trainCompositionClient = createRetryingAxiosClient({
+  serviceName: 'irctc/trainComposition',
+  retryPost: true,
+  retryTimeouts: true,
+});
 
 const IRCTC_SCHEDULE_URL =
   'https://www.irctc.co.in/eticketing/protected/mapps1/trnscheduleenquiry';
@@ -580,7 +586,7 @@ export class IrctcService {
       jDate: jDateStr,
       boardingStation: String(payload.boardingStation).trim().toUpperCase(),
     };
-    console.log('body', body);
+    console.log('postTrainComposition >> body', body);
 
     const headers: Record<string, string> = {
       Accept: 'application/json',

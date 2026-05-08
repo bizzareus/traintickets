@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
+import { ScheduleModule } from '@nestjs/schedule';
 import { SentryModule } from '@sentry/nestjs/setup';
 import { SentryHttpExceptionFilter } from './common/sentry-http-exception.filter';
 import { AppController } from './app.controller';
@@ -28,6 +29,7 @@ import { RedditAutomationModule } from './reddit-automation/reddit-automation.mo
   imports: [
     SentryModule.forRoot(),
     ConfigModule.forRoot({ isGlobal: true }),
+    ScheduleModule.forRoot(),
     PrismaModule,
     CacheModule,
     AuthModule,

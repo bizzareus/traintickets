@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { GoogleAdSense } from "./GoogleAdSense";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
@@ -140,6 +141,7 @@ export default function RootLayout({
         <IstRailMaintenanceBanner show={isIstIndianRailwaysNightlyMaintenanceWindow()} />
         {/* Analytics first so PostHog client chunk + eager init run before other interactive scripts */}
         <AnalyticsProvider>{children}</AnalyticsProvider>
+        <GoogleAdSense />
         <GoogleAnalytics />
         <script
           type="application/ld+json"

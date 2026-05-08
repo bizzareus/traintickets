@@ -1,5 +1,4 @@
 import { Module, Logger } from '@nestjs/common';
-import { ScheduleModule } from '@nestjs/schedule';
 import { HttpModule } from '@nestjs/axios';
 import { RedditAutomationService } from './reddit-automation.service';
 import { ScreenshotService } from './screenshot.service';
@@ -11,13 +10,7 @@ import { RedditAutomationController } from './reddit-automation.controller';
 import { BrowserUseModule } from '../browser-use/browser-use.module';
 
 @Module({
-  imports: [
-    ScheduleModule.forRoot(),
-    HttpModule,
-    BookingV2Module,
-    PrismaModule,
-    BrowserUseModule,
-  ],
+  imports: [HttpModule, BookingV2Module, PrismaModule, BrowserUseModule],
   controllers: [RedditAutomationController],
   providers: [
     RedditAutomationService,
