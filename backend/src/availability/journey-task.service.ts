@@ -14,6 +14,8 @@ import {
   parseJourneyYmdForValidation,
 } from '../common/train-run-day.validation';
 
+const MAX_CHART_TASK_ATTEMPTS = 3;
+
 export type JourneyValidationError = {
   code: string;
   message: string;
@@ -59,7 +61,49 @@ function buildChartAtWithDayOffset(
 function stationDayCount(station: unknown): number {
   if (station == null || typeof station !== 'object') return 1;
   const dayCount = (station as { dayCount?: unknown }).dayCount;
-  return typeof dayCount === 'number' ? dayCount : 1;
+  if (typeof dayCount === 'number' && Number.isFinite(dayCount)) {
+    return dayCount;
+  }
+  if (typeof dayCount === 'string') {
+    const parsed = parseInt(dayCount.trim(), 10);
+    return Number.isFinite(parsed) && parsed >= 1 ? parsed : 1;
+  }
+  return 1;
+}
+
+function isRetryableRailFailureText(text: string): boolean {
+  return /fetch failed|ETIMEDOUT|ECONNRESET|ECONNREFUSED|EAI_AGAIN|ENOTFOUND|network|temporarily unavailable|unable to contact rail systems|IRCTC schedule service unavailable/i.test(
+    text,
+  );
+}
+
+function retryDelayMsForAttempt(attemptNumber: number): number {
+  return attemptNumber <= 1 ? 5 * 60_000 : 15 * 60_000;
+}
+
+function chartTaskFailureText(payload: unknown): string {
+  if (payload == null) return '';
+  if (typeof payload === 'string') return payload;
+  if (payload instanceof Error) return payload.message;
+  try {
+    return JSON.stringify(payload);
+  } catch {
+    return '[unserializable failure payload]';
+  }
+}
+
+function isRetryableChartTaskFailure(payload: unknown): boolean {
+  return isRetryableRailFailureText(chartTaskFailureText(payload));
+}
+
+function chartAtIsDue(chartAt: Date, now = new Date()): boolean {
+  const chartWall = DateTime.fromJSDate(chartAt, { zone: 'utc' }).toFormat(
+    'yyyyMMddHHmmss',
+  );
+  const nowIstWall = DateTime.fromJSDate(now)
+    .setZone('Asia/Kolkata')
+    .toFormat('yyyyMMddHHmmss');
+  return chartWall <= nowIstWall;
 }
 
 @Injectable()
@@ -106,9 +150,6 @@ export class JourneyTaskService {
     const fromCode = params.fromStationCode.trim().toUpperCase();
     const toCode = params.toStationCode.trim().toUpperCase();
     const trainNumber = params.trainNumber.trim();
-    const stationCodesToMonitor = params.stationCodesToMonitor?.map((c) =>
-      String(c).trim().toUpperCase(),
-    );
 
     const scheduleResult = await this.irctc.getTrainSchedule(trainNumber, {
       fillRunsOnFromComposition: {
@@ -206,43 +247,6 @@ export class JourneyTaskService {
       };
     }
 
-    const stationCodesInRoute = codes.slice(fromIdx, toIdx + 1);
-
-    if (stationCodesToMonitor != null && stationCodesToMonitor.length > 0) {
-      const missing = stationCodesToMonitor.filter(
-        (c) => !stationCodesInRoute.includes(c),
-      );
-      if (missing.length > 0) {
-        return {
-          valid: false,
-          errors: [
-            {
-              code: 'STATION_NOT_ON_ROUTE',
-              message: `These stations are not on the route segment: ${missing.join(', ')}.`,
-            },
-          ],
-        };
-      }
-    }
-
-    const stationsToProcess =
-      stationCodesToMonitor != null && stationCodesToMonitor.length > 0
-        ? stationCodesInRoute.filter((c) => stationCodesToMonitor.includes(c))
-        : stationCodesInRoute;
-
-    if (stationsToProcess.length === 0) {
-      return {
-        valid: false,
-        errors: [
-          {
-            code: 'NO_STATIONS_TO_MONITOR',
-            message:
-              'No stations to monitor on this route for the selection. Check from/to and optional station list.',
-          },
-        ],
-      };
-    }
-
     return {
       valid: true,
       context: {
@@ -250,7 +254,7 @@ export class JourneyTaskService {
         fromCode,
         toCode,
         trainNumber,
-        stationsToProcess,
+        stationsToProcess: [fromCode],
         jYmd,
         trainStartDate: resolvedTrainStartDate || jYmd,
       },
@@ -278,9 +282,8 @@ export class JourneyTaskService {
   }
 
   /**
-   * Create one task per station (and per chart one/chart two) in the route, scheduled at each chart time.
-   * If stationCodesToMonitor is provided, only creates tasks for those stations.
-   * If chart time is already past, run Browser Use immediately and mark task completed.
+   * Create one task per chart event for the boarding station.
+   * If chart time is already past, run the check immediately and mark task completed.
    * Returns journeyRequestId and list of tasks.
    */
   async createJourneyTasks(
@@ -433,6 +436,10 @@ export class JourneyTaskService {
               trainStartDate: new Date(validation.context.trainStartDate),
               chartAt: spec.chartAt,
               status: 'pending',
+              retryCount: 0,
+              nextRunAt: null,
+              lockedAt: null,
+              lastError: null,
             },
           });
           createdTasks.push({
@@ -450,7 +457,7 @@ export class JourneyTaskService {
 
     for (const t of tasks) {
       const chartAt = new Date(t.chartAt);
-      if (chartAt <= now) {
+      if (chartAtIsDue(chartAt, now)) {
         await this.runTask(t.id);
         const updated = await this.prisma.chartTimeAvailabilityTask.findUnique({
           where: { id: t.id },
@@ -475,10 +482,19 @@ export class JourneyTaskService {
     });
     if (!task || (!force && task.status !== 'pending')) return;
 
+    const attemptNumber =
+      (task.retryCount ?? 0) + (task.status === 'pending' ? 1 : 0);
+
     if (task.status === 'pending') {
       await this.prisma.chartTimeAvailabilityTask.update({
         where: { id: taskId },
-        data: { status: 'running' },
+        data: {
+          status: 'running',
+          retryCount: { increment: 1 },
+          lockedAt: new Date(),
+          completedAt: null,
+          lastError: null,
+        },
       });
     }
 
@@ -508,12 +524,27 @@ export class JourneyTaskService {
       console.log('result', result);
 
       const status = result.status === 'success' ? 'completed' : 'failed';
+      if (
+        status === 'failed' &&
+        attemptNumber < MAX_CHART_TASK_ATTEMPTS &&
+        isRetryableChartTaskFailure(result)
+      ) {
+        await this.scheduleTaskRetry(taskId, result, attemptNumber);
+        return;
+      }
+
       await this.prisma.chartTimeAvailabilityTask.update({
         where: { id: taskId },
         data: {
           status,
           resultPayload: result as object,
           completedAt: new Date(),
+          lockedAt: null,
+          nextRunAt: null,
+          lastError:
+            status === 'failed'
+              ? chartTaskFailureText(result).slice(0, 1000)
+              : null,
         },
       });
 
@@ -555,15 +586,54 @@ export class JourneyTaskService {
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
+      if (
+        attemptNumber < MAX_CHART_TASK_ATTEMPTS &&
+        isRetryableRailFailureText(message)
+      ) {
+        await this.scheduleTaskRetry(taskId, { error: message }, attemptNumber);
+        return;
+      }
+
       await this.prisma.chartTimeAvailabilityTask.update({
         where: { id: taskId },
         data: {
           status: 'failed',
           resultPayload: { error: message } as object,
           completedAt: new Date(),
+          lockedAt: null,
+          nextRunAt: null,
+          lastError: message.slice(0, 1000),
         },
       });
     }
+  }
+
+  private async scheduleTaskRetry(
+    taskId: string,
+    resultPayload: object,
+    attemptNumber: number,
+  ): Promise<void> {
+    const delayMs = retryDelayMsForAttempt(attemptNumber);
+    const nextRunAt = new Date(Date.now() + delayMs);
+    await this.prisma.chartTimeAvailabilityTask.update({
+      where: { id: taskId },
+      data: {
+        status: 'pending',
+        resultPayload,
+        nextRunAt,
+        lockedAt: null,
+        completedAt: null,
+        lastError: chartTaskFailureText(resultPayload).slice(0, 1000),
+      },
+    });
+    console.log(
+      'scheduled chart task retry',
+      taskId,
+      'attempt',
+      attemptNumber,
+      'nextRunAt',
+      nextRunAt.toISOString(),
+    );
   }
 
   /**
@@ -572,8 +642,8 @@ export class JourneyTaskService {
    * Called by cron every minute.
    */
   async runDueTasks(): Promise<number> {
-    // chartAt is stored as IST wall-clock time.
-    // Use raw SQL so Postgres converts NOW() to IST for an accurate comparison.
+    // chartAt is stored as an IST wall-clock timestamp in Postgres.
+    // Operational timestamps (next_run_at/locked_at) use DB NOW().
     const istNow = DateTime.now().setZone('Asia/Kolkata');
     console.log(
       'running due tasks',
@@ -582,17 +652,34 @@ export class JourneyTaskService {
     );
 
     const due = await this.prisma.$queryRaw<
-      Array<{ id: string }>
+      Array<{ id: string; retry_count: number }>
     >`UPDATE "ChartTimeAvailabilityTask"
-      SET status = 'running'
+      SET status = 'running',
+          locked_at = NOW(),
+          retry_count = retry_count + 1,
+          last_error = NULL
       WHERE id IN (
         SELECT id FROM "ChartTimeAvailabilityTask"
-        WHERE chart_at <= NOW()
-          AND status = 'pending'
-        ORDER BY chart_at ASC
+        WHERE completed_at IS NULL
+          AND (
+            (
+              status = 'pending'
+              AND chart_at <= (NOW() AT TIME ZONE 'Asia/Kolkata')
+              AND (next_run_at IS NULL OR next_run_at <= NOW())
+            )
+            OR (
+              status = 'running'
+              AND (
+                locked_at IS NULL
+                OR locked_at <= NOW() - INTERVAL '10 minutes'
+              )
+            )
+          )
+        ORDER BY COALESCE(next_run_at, chart_at) ASC
         LIMIT 20
+        FOR UPDATE SKIP LOCKED
       )
-      RETURNING id`;
+      RETURNING id, retry_count`;
     console.log('marked as running', due);
     for (const task of due) {
       await this.runTask(task.id, true);

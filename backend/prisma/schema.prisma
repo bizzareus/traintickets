@@ -181,6 +181,10 @@ model ChartTimeAvailabilityTask {
   chartAt            DateTime  @map("chart_at")
   status             String    @default("pending")
   resultPayload      Json?     @map("result_payload")
+  retryCount         Int       @default(0) @map("retry_count")
+  nextRunAt          DateTime? @map("next_run_at")
+  lockedAt           DateTime? @map("locked_at")
+  lastError          String?   @map("last_error")
   createdAt          DateTime  @default(now()) @map("created_at")
   completedAt        DateTime? @map("completed_at")
   emailNotifiedAt    DateTime? @map("email_notified_at")
@@ -189,6 +193,7 @@ model ChartTimeAvailabilityTask {
   contact JourneyMonitorContact? @relation(fields: [journeyRequestId], references: [journeyRequestId])
 
   @@index([chartAt, status])
+  @@index([status, nextRunAt, lockedAt])
   @@index([journeyRequestId])
 }
 

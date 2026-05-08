@@ -9,9 +9,6 @@ import { TrainCompositionService } from '../train-composition/train-composition.
 
 describe('JourneyTaskService', () => {
   let service: JourneyTaskService;
-  let prisma: PrismaService;
-  let service2: Service2Service;
-  let notification: NotificationService;
 
   const mockPrisma = {
     $queryRaw: jest.fn(),
@@ -29,7 +26,9 @@ describe('JourneyTaskService', () => {
   };
 
   const mockNotification = {
-    notifyUser: jest.fn().mockResolvedValue({ emailSent: true, whatsappSent: true }),
+    notifyUser: jest
+      .fn()
+      .mockResolvedValue({ emailSent: true, whatsappSent: true }),
   };
 
   beforeEach(async () => {
@@ -47,76 +46,115 @@ describe('JourneyTaskService', () => {
     }).compile();
 
     service = module.get<JourneyTaskService>(JourneyTaskService);
-    prisma = module.get<PrismaService>(PrismaService);
-    service2 = module.get<Service2Service>(Service2Service);
-    notification = module.get<NotificationService>(NotificationService);
   });
 
-  it("should be defined", () => {
+  it('should be defined', () => {
     expect(service).toBeDefined();
   });
 
-  describe("runDueTasks", () => {
-    it("should pick up due tasks and mark them as running", async () => {
-      const mockTasks = [{ id: "task-1" }, { id: "task-2" }];
+  describe('runDueTasks', () => {
+    it('should pick up due tasks and mark them as running', async () => {
+      const mockTasks = [{ id: 'task-1' }, { id: 'task-2' }];
       mockPrisma.$queryRaw.mockResolvedValue(mockTasks);
 
       // Mock runTask to prevent actual execution logic for this test
-      const runTaskSpy = jest.spyOn(service, "runTask").mockResolvedValue(undefined);
+      const runTaskSpy = jest
+        .spyOn(service, 'runTask')
+        .mockResolvedValue(undefined);
 
       const result = await service.runDueTasks();
 
-      expect(prisma.$queryRaw).toHaveBeenCalled();
+      expect(mockPrisma.$queryRaw).toHaveBeenCalled();
       expect(runTaskSpy).toHaveBeenCalledTimes(2);
       expect(result).toBe(2);
     });
   });
 
-  describe("runTask", () => {
+  describe('runTask', () => {
     const mockTaskData = {
-      id: "task-1",
-      journeyRequestId: "jid-1",
-      trainNumber: "12121",
-      stationCode: "NDLS",
-      journeyDate: new Date("2026-10-10"),
-      classCode: "3A",
-      toStationCode: "BPL",
-      status: "pending",
+      id: 'task-1',
+      journeyRequestId: 'jid-1',
+      trainNumber: '12121',
+      stationCode: 'NDLS',
+      journeyDate: new Date('2026-10-10'),
+      trainStartDate: new Date('2026-10-10'),
+      classCode: '3A',
+      toStationCode: 'BPL',
+      status: 'pending',
+      retryCount: 0,
     };
 
-    it("should process a task and send notification if tickets are found", async () => {
-      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(mockTaskData);
+    it('should process a task and send notification if tickets are found', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(
+        mockTaskData,
+      );
       mockService2.check.mockResolvedValue({
-        status: "success",
-        availability: [{ status: "AVAILABLE 10" }],
+        status: 'success',
+        availability: [{ status: 'AVAILABLE 10' }],
       });
       mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
-        email: "test@example.com",
-        mobile: "9999999999",
+        email: 'test@example.com',
+        mobile: '9999999999',
       });
 
-      await service.runTask("task-1", true);
+      await service.runTask('task-1', true);
 
-      expect(prisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
+      const completedData: unknown = expect.objectContaining({
+        status: 'completed',
+      });
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
         expect.objectContaining({
-          data: expect.objectContaining({ status: "completed" }),
+          data: completedData,
         }),
       );
-      expect(notification.notifyUser).toHaveBeenCalled();
+      expect(mockNotification.notifyUser).toHaveBeenCalled();
     });
 
-    it("should mark task as failed if IRCTC check fails", async () => {
-      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(mockTaskData);
-      mockService2.check.mockResolvedValue({ status: "failed", availability: [] });
+    it('should mark task as failed if IRCTC check fails', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(
+        mockTaskData,
+      );
+      mockService2.check.mockResolvedValue({
+        status: 'failed',
+        availability: [],
+      });
 
-      await service.runTask("task-1", true);
+      await service.runTask('task-1', true);
 
-      expect(prisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
+      const failedData: unknown = expect.objectContaining({ status: 'failed' });
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
         expect.objectContaining({
-          data: expect.objectContaining({ status: "failed" }),
+          data: failedData,
         }),
       );
-      expect(notification.notifyUser).not.toHaveBeenCalled();
+      expect(mockNotification.notifyUser).not.toHaveBeenCalled();
+    });
+
+    it('should retry transient rail failures instead of permanently failing immediately', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(
+        mockTaskData,
+      );
+      mockService2.check.mockResolvedValue({
+        status: 'failed',
+        debugLog: ['step=composition_error fetch failed'],
+        chartStatus: { kind: 'chart_error', error: 'fetch failed' },
+      });
+
+      await service.runTask('task-1', true);
+
+      const anyDate: unknown = expect.any(Date);
+      const retryData: unknown = expect.objectContaining({
+        status: 'pending',
+        nextRunAt: anyDate,
+        lockedAt: null,
+        completedAt: null,
+      });
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: retryData,
+        }),
+      );
+      expect(mockNotification.notifyUser).not.toHaveBeenCalled();
     });
   });
 });

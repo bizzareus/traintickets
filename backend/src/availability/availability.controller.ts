@@ -332,38 +332,35 @@ export class AvailabilityController {
       });
     }
 
-    void this.journeyTask
-      .createJourneyTasks(normalized, {
-        validatedContext: validation.context,
+    const result = await this.journeyTask.createJourneyTasks(normalized, {
+      validatedContext: validation.context,
+    });
+
+    void this.notification
+      .sendAdminMonitoringRequestEmail({
+        journeyRequestId: result.journeyRequestId,
+        taskCount: result.tasks.length,
+        trainNumber: normalized.trainNumber,
+        trainName: normalized.trainName,
+        fromStationCode: normalized.fromStationCode,
+        toStationCode: normalized.toStationCode,
+        journeyDate: normalized.journeyDate,
+        classCode: normalized.classCode,
+        stationCodesToMonitor: [validation.context.fromCode],
+        userEmail: normalized.email,
+        userMobile: normalized.mobile,
       })
-      .then((result) => {
-        void this.notification
-          .sendAdminMonitoringRequestEmail({
-            journeyRequestId: result.journeyRequestId,
-            taskCount: result.tasks.length,
-            trainNumber: normalized.trainNumber,
-            trainName: normalized.trainName,
-            fromStationCode: normalized.fromStationCode,
-            toStationCode: normalized.toStationCode,
-            journeyDate: normalized.journeyDate,
-            classCode: normalized.classCode,
-            stationCodesToMonitor: normalized.stationCodesToMonitor,
-            userEmail: normalized.email,
-            userMobile: normalized.mobile,
-          })
-          .catch((err) =>
-            console.error('Admin monitoring request notification failed', err),
-          );
-      })
-      .catch((err) => {
-        console.error('[availability/journey] background setup failed', err);
-      });
+      .catch((err) =>
+        console.error('Admin monitoring request notification failed', err),
+      );
 
     return {
       accepted: true,
       status: 'queued',
       message:
-        'Your alert setup has started. We are finishing configuration in the background — chart times, checks, and notifications will be wired up shortly.',
+        'Journey monitoring has been configured. You will be notified if seats are found.',
+      journeyRequestId: result.journeyRequestId,
+      tasks: result.tasks,
     };
   }
 
