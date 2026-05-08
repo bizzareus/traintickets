@@ -2275,21 +2275,15 @@ function BookingV2PageContent() {
   const openFrom = useCallback(
     (open: boolean) => {
       setFromOpen(open);
-      if (open && fromSt) {
-        setFromQ(fromSt.stationName);
-      }
     },
-    [fromSt],
+    [],
   );
 
   const openTo = useCallback(
     (open: boolean) => {
       setToOpen(open);
-      if (open && toSt) {
-        setToQ(toSt.stationName);
-      }
     },
-    [toSt],
+    [],
   );
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
   const [acOnly, setAcOnly] = useState(false);

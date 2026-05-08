@@ -199,8 +199,14 @@ export class BookingV2Service {
     // DB-first: try the station cache before hitting the upstream API.
     const cached = await this.stationCache.search(q);
     if (cached !== null) {
+      this.logger.log(
+        `[booking-v2/stations] source=cache q=${q.slice(0, 40)} count=${cached.length}`,
+      );
       return { data: { stationList: cached } };
     }
+    this.logger.log(
+      `[booking-v2/stations] source=upstream reason=cache_miss q=${q.slice(0, 40)}`,
+    );
 
     const params = new URLSearchParams({
       searchString: q,
@@ -218,6 +224,9 @@ export class BookingV2Service {
     const text = await res.text();
     if (!res.ok) {
       if (res.status === 404) {
+        this.logger.log(
+          `[booking-v2/stations] source=upstream status=404 q=${q.slice(0, 40)} count=0`,
+        );
         return { data: { stationList: [] }, message: 'No station found' };
       }
       this.logger.warn(
@@ -235,9 +244,17 @@ export class BookingV2Service {
 
     // Fire-and-forget: populate the station cache from API results.
     const stations = this.extractStationListFromResponse(merged);
+    this.logger.log(
+      `[booking-v2/stations] source=upstream status=${res.status ?? 'ok'} q=${q.slice(0, 40)} count=${stations.length}`,
+    );
     if (stations.length > 0) {
       void this.stationCache
         .upsertMany(stations)
+        .then(() =>
+          this.logger.log(
+            `[booking-v2/stations] cache_upsert q=${q.slice(0, 40)} count=${stations.length}`,
+          ),
+        )
         .catch((e: unknown) =>
           this.logger.warn('[booking-v2/stations] cache upsert failed', e),
         );
