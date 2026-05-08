@@ -1,19 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
-import axios, { type AxiosError, isAxiosError } from 'axios';
-import axiosRetry from 'axios-retry';
+import { isAxiosError } from 'axios';
 import type { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
+import { createRetryingAxiosClient } from '../common/retrying-axios';
 
-const scheduleClient = axios.create();
-axiosRetry(scheduleClient, {
-  retries: 3,
-  retryDelay: (retryCount) => axiosRetry.exponentialDelay(retryCount),
-  retryCondition: (err: AxiosError) =>
-    axiosRetry.isNetworkOrIdempotentRequestError(err) ||
-    (err.response?.status ?? 0) >= 500,
-});
+const scheduleClient = createRetryingAxiosClient();
+const trainCompositionClient = createRetryingAxiosClient({ retryPost: true });
 
 const IRCTC_SCHEDULE_URL =
   'https://www.irctc.co.in/eticketing/protected/mapps1/trnscheduleenquiry';
@@ -21,6 +15,7 @@ const IRCTC_VACANT_BERTH_URL =
   'https://www.irctc.co.in/online-charts/api/vacantBerth';
 const IRCTC_TRAIN_COMPOSITION_URL =
   'https://www.irctc.co.in/online-charts/api/trainComposition';
+const IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS = 15_000;
 
 /**
  * TrainScheduleCache row fields used here (`train_runs_on` in DB).
@@ -608,40 +603,55 @@ export class IrctcService {
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
     const t0 = Date.now();
-    let res: Response;
+    let status = 0;
+    let text = '';
     try {
-      res = await fetch(IRCTC_TRAIN_COMPOSITION_URL, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(body),
-      });
+      const res = await trainCompositionClient.post<string>(
+        IRCTC_TRAIN_COMPOSITION_URL,
+        body,
+        {
+          headers,
+          responseType: 'text',
+          timeout: IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS,
+        },
+      );
+      status = res.status;
+      text = typeof res.data === 'string' ? res.data : JSON.stringify(res.data);
     } catch (err) {
-      const ms = Date.now() - t0;
-      const cause =
-        err instanceof Error
+      if (isAxiosError(err) && err.response) {
+        status = err.response.status;
+        text =
+          typeof err.response.data === 'string'
+            ? err.response.data
+            : JSON.stringify(err.response.data);
+      } else {
+        const ms = Date.now() - t0;
+        const cause = isAxiosError(err)
           ? err.cause instanceof Error
             ? err.cause.message
             : err.message
-          : String(err);
-      this.logger.warn(
-        `[irctc/trainComposition] network_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} ${cause}`,
-      );
-      captureSentryException(err, {
-        tags: { service: 'irctc', endpoint: 'trainComposition' },
-        extra: {
-          ms,
-          trainNo: body.trainNo,
-          boardingStation: body.boardingStation,
-          jDate: body.jDate,
-          cause,
-        },
-      });
-      throw new Error(
-        'We are unable to contact rail systems. Please try again later.',
-      );
+          : err instanceof Error
+            ? err.message
+            : String(err);
+        this.logger.warn(
+          `[irctc/trainComposition] network_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} ${cause}`,
+        );
+        captureSentryException(err, {
+          tags: { service: 'irctc', endpoint: 'trainComposition' },
+          extra: {
+            ms,
+            trainNo: body.trainNo,
+            boardingStation: body.boardingStation,
+            jDate: body.jDate,
+            cause,
+          },
+        });
+        throw new Error(
+          'We are unable to contact rail systems. Please try again later.',
+        );
+      }
     }
-    const text = await res.text();
-    if (!res.ok) {
+    if (status < 200 || status >= 300) {
       throw new Error(
         'Train composition is temporarily unavailable. Please try again later.',
       );

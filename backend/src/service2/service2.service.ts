@@ -996,7 +996,7 @@ export class Service2Service {
     let composition: Awaited<ReturnType<IrctcService['getTrainComposition']>>;
     try {
       logStep(
-        `step=fetch_composition ${baseCtx} jDate=${jDate} trainStartDate=${trainStartDate}`,
+        `step=fetch_composition ${baseCtx} compositionRequestDate=${trainStartDate} journeyDate=${jDate}`,
       );
       composition = await this.trainComposition.fetchForBoarding({
         trainNo,
