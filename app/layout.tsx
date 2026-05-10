@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { GoogleAdSense } from "./GoogleAdSense";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
@@ -134,14 +133,20 @@ export default function RootLayout({
         <link rel="preconnect" href="https://us.i.posthog.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2619716052518481"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <IstRailMaintenanceBanner show={isIstIndianRailwaysNightlyMaintenanceWindow()} />
+        <IstRailMaintenanceBanner
+          show={isIstIndianRailwaysNightlyMaintenanceWindow()}
+        />
         {/* Analytics first so PostHog client chunk + eager init run before other interactive scripts */}
         <AnalyticsProvider>{children}</AnalyticsProvider>
-        <GoogleAdSense />
         <GoogleAnalytics />
         <script
           type="application/ld+json"

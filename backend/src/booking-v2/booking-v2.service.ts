@@ -119,6 +119,84 @@ export type FindAlternatePathsResult = {
   trainStartDate?: string;
 };
 
+export type BookingV2TrainSearchRow = {
+  trainNumber: string;
+  trainName?: string;
+  departureTime?: string;
+  arrivalTime?: string;
+  duration?: number;
+  fromStnCode?: string;
+  toStnCode?: string;
+  avlClasses?: string[];
+  availabilityCache?: Record<string, unknown>;
+  trainStartDate?: string;
+};
+
+export type BestTrainSearchInput = {
+  from: string;
+  to: string;
+  date: string;
+  quota?: string;
+  acOnly?: boolean;
+  maxTrains?: number;
+  trains?: BookingV2TrainSearchRow[];
+};
+
+export type BestTrainScore = {
+  originConfirmed: boolean;
+  confirmedContiguousStationsFromOrigin: number;
+  confirmedContiguousMinutesFromOrigin: number;
+  totalConfirmedStations: number;
+  totalConfirmedMinutes: number;
+  longestConfirmedLegStations: number;
+  longestConfirmedLegMinutes: number;
+  isComplete: boolean;
+  totalFare: number | null;
+};
+
+export type BestTrainCandidateResult = {
+  train: BookingV2TrainSearchRow;
+  alternatePath: FindAlternatePathsResult;
+  score: BestTrainScore;
+  rankReason: string;
+};
+
+export type BestTrainSearchResult = {
+  from: string;
+  to: string;
+  date: string;
+  acOnly: boolean;
+  totalTrainsFound: number;
+  candidatesEvaluated: number;
+  candidatesSkipped: number;
+  results: BestTrainCandidateResult[];
+};
+
+export type BestTrainProgressEvent =
+  | { type: 'search_start'; from: string; to: string; date: string }
+  | {
+      type: 'candidates_ready';
+      totalTrainsFound: number;
+      candidateCount: number;
+    }
+  | {
+      type: 'train_started';
+      trainNumber: string;
+      trainName: string | null;
+      index: number;
+      total: number;
+    }
+  | {
+      type: 'train_done';
+      trainNumber: string;
+      trainName: string | null;
+      index: number;
+      total: number;
+      result: BestTrainCandidateResult | null;
+      skippedReason?: string;
+    }
+  | { type: 'done'; resultCount: number; evaluatedCount: number };
+
 type AvlDayRow = {
   availablityType?: number | string | null;
   availablityStatus?: string | null;
@@ -142,6 +220,139 @@ type MultiClassProbeResult = {
 
 /** 24 hours in milliseconds — TTL for train search cache entries. */
 const TRAIN_SEARCH_TTL_MS = 24 * 60 * 60 * 1000;
+const BEST_TRAIN_CONCURRENCY = 3;
+const NON_AC_CLASS_CODES = new Set(['SL', '2S', 'GN', 'FC']);
+
+function isAcClassCode(code: string): boolean {
+  return !NON_AC_CLASS_CODES.has(code.trim().toUpperCase());
+}
+
+function parseRailClockMinutes(raw: string | null | undefined): number | null {
+  if (!raw) return null;
+  const m = String(raw)
+    .trim()
+    .match(/^(\d{1,2}):(\d{2})/);
+  if (!m) return null;
+  const h = parseInt(m[1], 10);
+  const min = parseInt(m[2], 10);
+  if (h > 23 || min > 59) return null;
+  return h * 60 + min;
+}
+
+function normalizeTrainSearchRow(
+  item: unknown,
+): BookingV2TrainSearchRow | null {
+  if (!item || typeof item !== 'object') return null;
+  const r = item as Record<string, unknown>;
+  const trainNumber = String(r.trainNumber ?? '').trim();
+  if (!trainNumber) return null;
+  const avlClasses = Array.isArray(r.avlClasses)
+    ? r.avlClasses
+        .map((c) =>
+          String(c ?? '')
+            .trim()
+            .toUpperCase(),
+        )
+        .filter(Boolean)
+    : undefined;
+  const duration =
+    typeof r.duration === 'number'
+      ? r.duration
+      : typeof r.duration === 'string'
+        ? parseInt(r.duration, 10)
+        : undefined;
+  return {
+    ...(item as BookingV2TrainSearchRow),
+    trainNumber,
+    trainName: String(r.trainName ?? '').trim(),
+    departureTime:
+      typeof r.departureTime === 'string' ? r.departureTime : undefined,
+    arrivalTime: typeof r.arrivalTime === 'string' ? r.arrivalTime : undefined,
+    duration: Number.isFinite(duration) ? duration : undefined,
+    fromStnCode:
+      typeof r.fromStnCode === 'string'
+        ? r.fromStnCode.trim().toUpperCase()
+        : undefined,
+    toStnCode:
+      typeof r.toStnCode === 'string'
+        ? r.toStnCode.trim().toUpperCase()
+        : undefined,
+    avlClasses,
+    trainStartDate:
+      typeof r.trainStartDate === 'string' ? r.trainStartDate : undefined,
+  };
+}
+
+function extractTrainListRows(root: unknown): BookingV2TrainSearchRow[] {
+  if (!root || typeof root !== 'object') return [];
+  const data = (root as Record<string, unknown>).data;
+  if (!data || typeof data !== 'object') return [];
+  const list = (data as Record<string, unknown>).trainList;
+  if (!Array.isArray(list)) return [];
+  return list
+    .map((item) => normalizeTrainSearchRow(item))
+    .filter((row): row is BookingV2TrainSearchRow => row != null);
+}
+
+function normalizeTrainRows(
+  rows: BookingV2TrainSearchRow[] | undefined,
+): BookingV2TrainSearchRow[] {
+  if (!Array.isArray(rows)) return [];
+  return rows
+    .map((item) => normalizeTrainSearchRow(item))
+    .filter((row): row is BookingV2TrainSearchRow => row != null);
+}
+
+function limitBestTrainCandidates(
+  rows: BookingV2TrainSearchRow[],
+  maxTrains: number | undefined,
+): BookingV2TrainSearchRow[] {
+  if (typeof maxTrains !== 'number' || !Number.isFinite(maxTrains)) {
+    return rows;
+  }
+  const n = Math.max(1, Math.floor(maxTrains));
+  return rows.slice(0, n);
+}
+
+function compareBestTrainResults(
+  a: BestTrainCandidateResult,
+  b: BestTrainCandidateResult,
+): number {
+  const as = a.score;
+  const bs = b.score;
+  const confirmedHoursCmp =
+    bs.confirmedContiguousMinutesFromOrigin -
+    as.confirmedContiguousMinutesFromOrigin;
+  if (confirmedHoursCmp !== 0) return confirmedHoursCmp;
+
+  const boolCmp = Number(bs.originConfirmed) - Number(as.originConfirmed);
+  if (boolCmp !== 0) return boolCmp;
+
+  const ad = a.train.duration ?? Number.MAX_SAFE_INTEGER;
+  const bd = b.train.duration ?? Number.MAX_SAFE_INTEGER;
+  if (ad !== bd) return ad - bd;
+
+  const af = as.totalFare ?? Number.POSITIVE_INFINITY;
+  const bf = bs.totalFare ?? Number.POSITIVE_INFINITY;
+  if (af !== bf) return af - bf;
+
+  const longestMinutesCmp =
+    bs.longestConfirmedLegMinutes - as.longestConfirmedLegMinutes;
+  if (longestMinutesCmp !== 0) return longestMinutesCmp;
+
+  const longestStationsCmp =
+    bs.longestConfirmedLegStations - as.longestConfirmedLegStations;
+  if (longestStationsCmp !== 0) return longestStationsCmp;
+
+  const completeCmp = Number(bs.isComplete) - Number(as.isComplete);
+  if (completeCmp !== 0) return completeCmp;
+
+  const aDep =
+    parseRailClockMinutes(a.train.departureTime) ?? Number.MAX_SAFE_INTEGER;
+  const bDep =
+    parseRailClockMinutes(b.train.departureTime) ?? Number.MAX_SAFE_INTEGER;
+  return aDep - bDep;
+}
 
 @Injectable()
 export class BookingV2Service {
@@ -336,6 +547,255 @@ export class BookingV2Service {
       () => this.fetchTrainsFromUpstream(from, to, dateDdMmYyyy),
       TRAIN_SEARCH_TTL_MS,
     );
+  }
+
+  async findBestTrains(
+    input: BestTrainSearchInput,
+    onProgress?: (event: BestTrainProgressEvent) => void,
+  ): Promise<BestTrainSearchResult> {
+    const from = String(input.from ?? '')
+      .trim()
+      .toUpperCase();
+    const to = String(input.to ?? '')
+      .trim()
+      .toUpperCase();
+    const date = String(input.date ?? '').trim();
+    const quota = String(input.quota ?? 'GN')
+      .trim()
+      .toUpperCase();
+    const dateDdMmYyyy = this.normalizeToRailApiDate(date);
+    if (!from || !to || !dateDdMmYyyy) {
+      throw new Error('from, to, and valid date are required');
+    }
+
+    const acOnly = input.acOnly === true;
+
+    onProgress?.({ type: 'search_start', from, to, date });
+    let allTrains = normalizeTrainRows(input.trains);
+    if (allTrains.length === 0) {
+      const rawSearch = await this.searchTrains(from, to, date);
+      allTrains = extractTrainListRows(rawSearch);
+    }
+
+    const candidates = limitBestTrainCandidates(allTrains, input.maxTrains);
+    onProgress?.({
+      type: 'candidates_ready',
+      totalTrainsFound: allTrains.length,
+      candidateCount: candidates.length,
+    });
+
+    let evaluatedCount = 0;
+    let skippedCount = 0;
+    const results: BestTrainCandidateResult[] = [];
+
+    await this.mapWithConcurrency(
+      candidates,
+      BEST_TRAIN_CONCURRENCY,
+      async (train, index) => {
+        const trainName = train.trainName?.trim() || null;
+        onProgress?.({
+          type: 'train_started',
+          trainNumber: train.trainNumber,
+          trainName,
+          index: index + 1,
+          total: candidates.length,
+        });
+
+        const trainFrom = (train.fromStnCode ?? from).trim().toUpperCase();
+        const trainTo = (train.toStnCode ?? to).trim().toUpperCase();
+        const avlClasses = normalizeAndDedupeClassCodes(train.avlClasses ?? []);
+        const classesForRequest = acOnly
+          ? avlClasses.filter(isAcClassCode)
+          : avlClasses;
+
+        if (acOnly && avlClasses.length > 0 && classesForRequest.length === 0) {
+          skippedCount += 1;
+          onProgress?.({
+            type: 'train_done',
+            trainNumber: train.trainNumber,
+            trainName,
+            index: index + 1,
+            total: candidates.length,
+            result: null,
+            skippedReason: 'No AC classes listed for this train',
+          });
+          return;
+        }
+
+        try {
+          const alternatePath = await this.findAlternatePaths({
+            trainNumber: train.trainNumber,
+            from: trainFrom,
+            to: trainTo,
+            date,
+            quota,
+            avlClasses: classesForRequest,
+          });
+          evaluatedCount += 1;
+          const score = this.scoreBestTrainCandidate(alternatePath);
+          const result: BestTrainCandidateResult = {
+            train,
+            alternatePath,
+            score,
+            rankReason: this.describeBestTrainScore(score, trainFrom, trainTo),
+          };
+          if (score.originConfirmed) {
+            results.push(result);
+          } else {
+            skippedCount += 1;
+          }
+          onProgress?.({
+            type: 'train_done',
+            trainNumber: train.trainNumber,
+            trainName,
+            index: index + 1,
+            total: candidates.length,
+            result: score.originConfirmed ? result : null,
+            skippedReason: score.originConfirmed
+              ? undefined
+              : 'No confirmed ticket starts from the origin',
+          });
+        } catch (err) {
+          skippedCount += 1;
+          const message = err instanceof Error ? err.message : String(err);
+          this.logger.warn(
+            `[booking-v2/best-trains] train=${train.trainNumber} failed: ${message}`,
+          );
+          onProgress?.({
+            type: 'train_done',
+            trainNumber: train.trainNumber,
+            trainName,
+            index: index + 1,
+            total: candidates.length,
+            result: null,
+            skippedReason: message,
+          });
+        }
+      },
+    );
+
+    results.sort(compareBestTrainResults);
+    onProgress?.({
+      type: 'done',
+      resultCount: results.length,
+      evaluatedCount,
+    });
+
+    return {
+      from,
+      to,
+      date,
+      acOnly,
+      totalTrainsFound: allTrains.length,
+      candidatesEvaluated: evaluatedCount,
+      candidatesSkipped: skippedCount,
+      results,
+    };
+  }
+
+  private scoreBestTrainCandidate(
+    alternatePath: FindAlternatePathsResult,
+  ): BestTrainScore {
+    const route = alternatePath.stationCodesOnRoute.map((c) =>
+      c.trim().toUpperCase(),
+    );
+    const routeIndex = new Map(route.map((code, i) => [code, i]));
+    const origin = route[0] ?? null;
+    let contiguousCursor = origin;
+    let contiguousStations = 0;
+    let contiguousMinutes = 0;
+    let totalStations = 0;
+    let totalMinutes = 0;
+    let longestStations = 0;
+    let longestMinutes = 0;
+    let stillContiguous = true;
+
+    for (const leg of alternatePath.legs) {
+      if (leg.segmentKind !== 'confirmed') {
+        stillContiguous = false;
+        continue;
+      }
+      const from = leg.from.trim().toUpperCase();
+      const to = leg.to.trim().toUpperCase();
+      const fromIdx = routeIndex.get(from);
+      const toIdx = routeIndex.get(to);
+      const stationSpan =
+        fromIdx != null && toIdx != null && toIdx > fromIdx
+          ? toIdx - fromIdx
+          : 0;
+      const minutes =
+        typeof leg.durationMinutes === 'number' && leg.durationMinutes > 0
+          ? leg.durationMinutes
+          : 0;
+
+      totalStations += stationSpan;
+      totalMinutes += minutes;
+      longestStations = Math.max(longestStations, stationSpan);
+      longestMinutes = Math.max(longestMinutes, minutes);
+
+      if (stillContiguous && contiguousCursor === from && stationSpan > 0) {
+        contiguousStations += stationSpan;
+        contiguousMinutes += minutes;
+        contiguousCursor = to;
+      } else {
+        stillContiguous = false;
+      }
+    }
+
+    const firstLeg = alternatePath.legs[0];
+    const originConfirmed =
+      Boolean(origin) &&
+      firstLeg?.segmentKind === 'confirmed' &&
+      firstLeg.from.trim().toUpperCase() === origin;
+
+    return {
+      originConfirmed,
+      confirmedContiguousStationsFromOrigin: contiguousStations,
+      confirmedContiguousMinutesFromOrigin: contiguousMinutes,
+      totalConfirmedStations: totalStations,
+      totalConfirmedMinutes: totalMinutes,
+      longestConfirmedLegStations: longestStations,
+      longestConfirmedLegMinutes: longestMinutes,
+      isComplete: alternatePath.isComplete,
+      totalFare: alternatePath.totalFare,
+    };
+  }
+
+  private describeBestTrainScore(
+    score: BestTrainScore,
+    from: string,
+    to: string,
+  ): string {
+    if (!score.originConfirmed) {
+      return `No confirmed ticket starts from ${from}.`;
+    }
+    const hours = Math.floor(score.confirmedContiguousMinutesFromOrigin / 60);
+    const minutes = score.confirmedContiguousMinutesFromOrigin % 60;
+    const duration =
+      score.confirmedContiguousMinutesFromOrigin > 0
+        ? `${hours > 0 ? `${hours}h ` : ''}${minutes}m`.trim()
+        : 'the first confirmed segment';
+    if (score.isComplete) {
+      return `Confirmed from ${from} to ${to}, covering the full journey.`;
+    }
+    return `Confirmed from ${from} for ${score.confirmedContiguousStationsFromOrigin} station hop(s), about ${duration}.`;
+  }
+
+  private async mapWithConcurrency<T>(
+    items: T[],
+    concurrency: number,
+    worker: (item: T, index: number) => Promise<void>,
+  ): Promise<void> {
+    let next = 0;
+    const run = async () => {
+      while (next < items.length) {
+        const index = next;
+        next += 1;
+        await worker(items[index], index);
+      }
+    };
+    const count = Math.max(1, Math.min(concurrency, items.length));
+    await Promise.all(Array.from({ length: count }, run));
   }
 
   private async fetchTrainsFromUpstream(

@@ -97,10 +97,7 @@ export type AnalyticsEvent =
       name: "popup_opened";
       properties: {
         popup: PopupId;
-        plan_source?:
-          | "booking_plan"
-          | "openai_plan"
-          | "helpful_feedback";
+        plan_source?: "booking_plan" | "openai_plan" | "helpful_feedback";
         from_code?: string;
         to_code?: string;
       };
@@ -116,10 +113,7 @@ export type AnalyticsEvent =
       name: "button_clicked";
       properties: {
         button_id: HomeButtonId;
-        plan_source?:
-          | "booking_plan"
-          | "openai_plan"
-          | "helpful_feedback";
+        plan_source?: "booking_plan" | "openai_plan" | "helpful_feedback";
         train_number?: string;
         from_code?: string;
         to_code?: string;
@@ -145,7 +139,21 @@ export type AnalyticsEvent =
     }
   | {
       name: "search_tickets_clicked";
-      properties: { from_code?: string; to_code?: string; journey_date?: string };
+      properties: {
+        from_code?: string;
+        to_code?: string;
+        journey_date?: string;
+      };
+    }
+  | {
+      name: "best_train_search_clicked";
+      properties: {
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        ac_only: boolean;
+        train_count: number;
+      };
     }
   | {
       name: "alternate_paths_popup_viewed";
