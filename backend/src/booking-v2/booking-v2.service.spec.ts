@@ -1,4 +1,5 @@
 import { BookingV2Service } from './booking-v2.service';
+import type { FindAlternatePathsResult } from './booking-v2.service';
 import type { IrctcService } from '../irctc/irctc.service';
 import type { CacheService } from '../cache/cache.service';
 import type { StationCacheService } from '../cache/station-cache.service';
@@ -22,6 +23,77 @@ const mockStationCache: jest.Mocked<
   search: jest.fn().mockResolvedValue(null),
   upsertMany: jest.fn().mockResolvedValue(undefined),
 };
+
+function altResult(
+  trainNumber: string,
+  legs: FindAlternatePathsResult['legs'],
+): FindAlternatePathsResult {
+  return {
+    trainNumber,
+    legs,
+    totalFare: legs
+      .filter((l) => l.segmentKind === 'confirmed')
+      .reduce<number | null>((sum, l) => {
+        if (sum == null || l.fare == null) return null;
+        return sum + l.fare;
+      }, 0),
+    legCount: legs.length,
+    isComplete:
+      legs.length > 0 &&
+      legs.every((l) => l.segmentKind === 'confirmed') &&
+      legs[legs.length - 1].to === 'D',
+    stationCodesOnRoute: ['A', 'B', 'C', 'D'],
+    stationNameMap: {},
+    remainderMergedSchedule: null,
+    trainOriginCode: 'A',
+    trainOriginDepartureTime: '08:00',
+    debugLog: [],
+  };
+}
+
+function confirmedLeg(
+  from: string,
+  to: string,
+  durationMinutes: number,
+  fare = 100,
+): FindAlternatePathsResult['legs'][number] {
+  return {
+    from,
+    to,
+    segmentKind: 'confirmed',
+    travelClass: 'SL',
+    railDataStatus: 'Confirm',
+    availablityStatus: 'AVAILABLE',
+    predictionPercentage: null,
+    availabilityDisplayName: 'Available',
+    fare,
+    confirmedClassOptions: [],
+    departureTime: '08:00',
+    arrivalTime: '09:00',
+    durationMinutes,
+  };
+}
+
+function realtimeLeg(
+  from: string,
+  to: string,
+): FindAlternatePathsResult['legs'][number] {
+  return {
+    from,
+    to,
+    segmentKind: 'check_realtime',
+    travelClass: null,
+    railDataStatus: null,
+    availablityStatus: null,
+    predictionPercentage: null,
+    availabilityDisplayName: null,
+    fare: null,
+    confirmedClassOptions: [],
+    departureTime: '08:00',
+    arrivalTime: '09:00',
+    durationMinutes: 60,
+  };
+}
 
 describe('BookingV2Service', () => {
   let service: BookingV2Service;
@@ -130,6 +202,183 @@ describe('BookingV2Service', () => {
         service.searchTrains('NDLS', 'CSTM', 'bad-date'),
       ).rejects.toThrow('Invalid journey date');
       expect(mockCache.getOrSet).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('findBestTrains', () => {
+    it('evaluates the supplied train rows instead of running a second search', async () => {
+      const searchSpy = jest.spyOn(service, 'searchTrains');
+      const findSpy = jest
+        .spyOn(service, 'findAlternatePaths')
+        .mockResolvedValue(altResult('1', [confirmedLeg('A', 'D', 240)]));
+
+      const result = await service.findBestTrains({
+        from: 'A',
+        to: 'D',
+        date: '2026-05-09',
+        trains: [
+          {
+            trainNumber: '1',
+            trainName: 'Listed Train',
+            departureTime: '07:30',
+            arrivalTime: '10:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            avlClasses: ['SL'],
+          },
+        ],
+      });
+
+      expect(searchSpy).not.toHaveBeenCalled();
+      expect(findSpy).toHaveBeenCalledTimes(1);
+      expect(findSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ trainNumber: '1' }),
+      );
+      expect(result.results).toHaveLength(1);
+      expect(result.results[0].train.trainNumber).toBe('1');
+    });
+
+    it('keeps only trains with confirmed tickets from origin and ranks by confirmed hours before station hops', async () => {
+      jest
+        .spyOn(service, 'findAlternatePaths')
+        .mockImplementation(async (input) => {
+          if (input.trainNumber === '101') {
+            return altResult('101', [confirmedLeg('A', 'D', 100)]);
+          }
+          if (input.trainNumber === '102') {
+            return altResult('102', [
+              realtimeLeg('A', 'B'),
+              confirmedLeg('B', 'D', 180),
+            ]);
+          }
+          return altResult('103', [
+            confirmedLeg('A', 'B', 240),
+            realtimeLeg('B', 'D'),
+          ]);
+        });
+
+      const result = await service.findBestTrains({
+        from: 'A',
+        to: 'D',
+        date: '2026-05-09',
+        trains: [
+          {
+            trainNumber: '101',
+            trainName: 'Short Confirm',
+            departureTime: '08:00',
+            arrivalTime: '12:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            duration: 240,
+            avlClasses: ['SL'],
+          },
+          {
+            trainNumber: '102',
+            trainName: 'No Origin Confirm',
+            departureTime: '09:00',
+            arrivalTime: '13:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            duration: 240,
+            avlClasses: ['SL'],
+          },
+          {
+            trainNumber: '103',
+            trainName: 'Long Confirm',
+            departureTime: '10:00',
+            arrivalTime: '14:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            duration: 240,
+            avlClasses: ['SL'],
+          },
+        ],
+      });
+
+      expect(result.results.map((r) => r.train.trainNumber)).toEqual([
+        '103',
+        '101',
+      ]);
+      expect(result.results[0].score.originConfirmed).toBe(true);
+      expect(
+        result.results[0].score.confirmedContiguousStationsFromOrigin,
+      ).toBe(1);
+      expect(result.candidatesSkipped).toBe(1);
+    });
+
+    it('breaks confirmed-hour ties by fastest train, then price, then longest leg', async () => {
+      jest
+        .spyOn(service, 'findAlternatePaths')
+        .mockImplementation(async (input) => {
+          if (input.trainNumber === '201') {
+            return altResult('201', [confirmedLeg('A', 'D', 240, 800)]);
+          }
+          if (input.trainNumber === '202') {
+            return altResult('202', [confirmedLeg('A', 'D', 240, 700)]);
+          }
+          if (input.trainNumber === '203') {
+            return altResult('203', [confirmedLeg('A', 'D', 240, 600)]);
+          }
+          return altResult('204', [
+            confirmedLeg('A', 'B', 120, 600),
+            confirmedLeg('B', 'D', 120, 0),
+          ]);
+        });
+
+      const result = await service.findBestTrains({
+        from: 'A',
+        to: 'D',
+        date: '2026-05-09',
+        trains: [
+          {
+            trainNumber: '201',
+            trainName: 'Fast Pricey',
+            departureTime: '08:00',
+            arrivalTime: '11:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            duration: 180,
+            avlClasses: ['SL'],
+          },
+          {
+            trainNumber: '202',
+            trainName: 'Slow Cheap',
+            departureTime: '09:00',
+            arrivalTime: '14:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            duration: 300,
+            avlClasses: ['SL'],
+          },
+          {
+            trainNumber: '203',
+            trainName: 'Same Speed Cheapest',
+            departureTime: '10:00',
+            arrivalTime: '13:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            duration: 180,
+            avlClasses: ['SL'],
+          },
+          {
+            trainNumber: '204',
+            trainName: 'Same Fare Split Leg',
+            departureTime: '11:00',
+            arrivalTime: '14:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            duration: 180,
+            avlClasses: ['SL'],
+          },
+        ],
+      });
+
+      expect(result.results.map((r) => r.train.trainNumber)).toEqual([
+        '203',
+        '204',
+        '201',
+        '202',
+      ]);
     });
   });
 });

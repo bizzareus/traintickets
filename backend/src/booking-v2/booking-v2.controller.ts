@@ -9,7 +9,11 @@ import {
 } from '@nestjs/common';
 import type { Response } from 'express';
 import { BookingV2Service } from './booking-v2.service';
-import type { AlternatePathProgressEvent } from './booking-v2.service';
+import type {
+  AlternatePathProgressEvent,
+  BookingV2TrainSearchRow,
+  BestTrainProgressEvent,
+} from './booking-v2.service';
 
 function trimStr(v: unknown): string {
   if (v == null) return '';
@@ -165,6 +169,76 @@ export class BookingV2Controller {
       const result = await this.bookingV2.findAlternatePaths(
         { trainNumber, from, to, date, avlClasses, quota },
         (event: AlternatePathProgressEvent) => {
+          writeLine({ type: 'progress', event });
+        },
+      );
+      writeLine({ type: 'result', data: result });
+    } catch (err: unknown) {
+      writeLine({ type: 'error', message: streamErrorMessage(err) });
+    } finally {
+      res.end();
+    }
+  }
+
+  @Post('best-trains/stream')
+  async bestTrainsStream(
+    @Body()
+    body: {
+      from?: unknown;
+      to?: unknown;
+      date?: unknown;
+      quota?: unknown;
+      acOnly?: unknown;
+      maxTrains?: unknown;
+      trains?: unknown;
+    },
+    @Res() res: Response,
+  ) {
+    const from = trimStr(body?.from).toUpperCase();
+    const to = trimStr(body?.to).toUpperCase();
+    const date = trimStr(body?.date);
+    const quota = trimStr(body?.quota) || 'GN';
+    const acOnly = body?.acOnly === true || trimStr(body?.acOnly) === 'true';
+    const maxTrainsRaw =
+      typeof body?.maxTrains === 'number'
+        ? body.maxTrains
+        : parseInt(trimStr(body?.maxTrains), 10);
+    const maxTrains = Number.isFinite(maxTrainsRaw) ? maxTrainsRaw : undefined;
+
+    if (!from || !to || !date) {
+      res.status(400).json({ message: 'from, to, and date are required' });
+      return;
+    }
+    if (!this.bookingV2.normalizeToRailApiDate(date)) {
+      res
+        .status(400)
+        .json({ message: 'date must be YYYY-MM-DD or DD-MM-YYYY' });
+      return;
+    }
+
+    res.setHeader('Content-Type', 'application/x-ndjson');
+    res.setHeader('Transfer-Encoding', 'chunked');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.flushHeaders();
+
+    const writeLine = (obj: unknown) => {
+      res.write(JSON.stringify(obj) + '\n');
+    };
+
+    try {
+      const result = await this.bookingV2.findBestTrains(
+        {
+          from,
+          to,
+          date,
+          quota,
+          acOnly,
+          maxTrains,
+          trains: Array.isArray(body?.trains)
+            ? (body.trains as BookingV2TrainSearchRow[])
+            : undefined,
+        },
+        (event: BestTrainProgressEvent) => {
           writeLine({ type: 'progress', event });
         },
       );
