@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import flowbitePlugin from "flowbite/plugin";
+import typographyPlugin from "@tailwindcss/typography";
 
 /**
  * Tailwind v3 config with Flowbite.
@@ -39,6 +40,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [flowbitePlugin],
+  plugins: [flowbitePlugin, typographyPlugin],
 };
 export default config;

@@ -2957,6 +2957,11 @@ function BookingV2PageContent() {
             >
               LastBerth
             </Link>
+            <nav className="flex items-center gap-3 text-sm font-semibold text-slate-700">
+              <Link href="/blog" className="hover:text-slate-900">
+                Blog
+              </Link>
+            </nav>
           </div>
         </header>
       </div>

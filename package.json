@@ -28,6 +28,7 @@
     "browser-use-sdk": "^3.3.0",
     "clsx": "^2.1.1",
     "flowbite": "^4.0.1",
+    "gray-matter": "^4.0.3",
     "html2canvas": "^1.4.1",
     "moment": "^2.30.1",
     "next": "^16.1.6",
@@ -35,10 +36,13 @@
     "posthog-js": "^1.364.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
