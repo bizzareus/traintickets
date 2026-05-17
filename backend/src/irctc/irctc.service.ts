@@ -9,6 +9,11 @@ import { createRetryingAxiosClient } from '../common/retrying-axios';
 const scheduleClient = createRetryingAxiosClient({
   serviceName: 'irctc/schedule',
 });
+const rapidApiScheduleClient = createRetryingAxiosClient({
+  serviceName: 'rapidapi/train-status',
+  retries: 2,
+  retryTimeouts: true,
+});
 const trainCompositionClient = createRetryingAxiosClient({
   serviceName: 'irctc/trainComposition',
   retryPost: true,
@@ -21,6 +26,10 @@ const IRCTC_VACANT_BERTH_URL =
   'https://www.irctc.co.in/online-charts/api/vacantBerth';
 const IRCTC_TRAIN_COMPOSITION_URL =
   'https://www.irctc.co.in/online-charts/api/trainComposition';
+const RAPIDAPI_TRAIN_STATUS_URL =
+  'https://indian-railway-irctc.p.rapidapi.com/api/trains/v1/train/status';
+const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
+const RAPIDAPI_TRAIN_STATUS_TIMEOUT_MS = 10_000;
 const IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS = 15_000;
 
 /**
@@ -35,6 +44,15 @@ type TrainScheduleCacheScheduleRow = {
   stationList: Prisma.JsonValue;
   trainRunsOn: Prisma.JsonValue | null;
 };
+
+function strFromUnknown(value: unknown): string {
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return String(value);
+  }
+  if (typeof value === 'boolean') return String(value);
+  return '';
+}
 
 /** Parse "YYYY-MM-DD HH:MM" or "YYYY-MM-DD HH:MM:SS" to { date, time } (time as HH:MM). */
 function parseChartDateTime(
@@ -116,6 +134,39 @@ function extractTrainRunsOnFromIrctc(
     }
   }
   return Object.keys(out).length > 0 ? out : undefined;
+}
+
+const RAPIDAPI_RUNNING_ON_KEYS = [
+  'trainRunsOnSun',
+  'trainRunsOnMon',
+  'trainRunsOnTue',
+  'trainRunsOnWed',
+  'trainRunsOnThu',
+  'trainRunsOnFri',
+  'trainRunsOnSat',
+] as const satisfies readonly (keyof TrainRunsOnJson)[];
+
+function extractTrainRunsOnFromRapidApi(
+  runningOn: unknown,
+): TrainRunsOnJson | undefined {
+  const raw = strFromUnknown(runningOn).trim().toUpperCase();
+  if (raw.length !== RAPIDAPI_RUNNING_ON_KEYS.length) return undefined;
+  const out: TrainRunsOnJson = {};
+  for (let i = 0; i < RAPIDAPI_RUNNING_ON_KEYS.length; i++) {
+    const flag = raw[i];
+    if (flag === 'Y' || flag === 'N') {
+      out[RAPIDAPI_RUNNING_ON_KEYS[i]] = flag;
+    }
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
+}
+
+function rapidApiDepartureDate(journeyDateYmd?: string): string {
+  const parsed = journeyDateYmd
+    ? moment(journeyDateYmd, 'YYYY-MM-DD', true)
+    : null;
+  if (parsed?.isValid()) return parsed.format('YYYYMMDD');
+  return moment().utcOffset(330).format('YYYYMMDD');
 }
 
 export type TrainScheduleResponse = {
@@ -227,7 +278,10 @@ export class IrctcService {
     );
 
     try {
-      const data = await this.fetchScheduleFromIrctc(num);
+      const data = await this.fetchScheduleFromIrctc(
+        num,
+        opts?.fillRunsOnFromComposition?.jDate,
+      );
       if (!data?.stationList?.length) {
         return { ok: false, reason: 'unavailable' };
       }
@@ -282,6 +336,7 @@ export class IrctcService {
 
   private async fetchScheduleFromIrctc(
     trainNumber: string,
+    journeyDateYmd?: string,
   ): Promise<TrainScheduleResponse> {
     const url = `${IRCTC_SCHEDULE_URL}/${encodeURIComponent(trainNumber)}`;
     const headers = {
@@ -305,6 +360,7 @@ export class IrctcService {
       res = await scheduleClient.get<string>(url, {
         headers,
         responseType: 'text',
+        timeout: IRCTC_SCHEDULE_TIMEOUT_MS,
       });
     } catch (err) {
       const ms = Date.now() - t0;
@@ -316,6 +372,33 @@ export class IrctcService {
         this.logger.warn(
           `[irctc/schedule] irctc_http_error train=${trainNumber} ms=${ms} ${err instanceof Error ? err.message : String(err)}`,
         );
+      }
+
+      if (this.isScheduleTimeoutError(err)) {
+        this.logger.warn(
+          `[irctc/schedule] irctc_timeout_fallback train=${trainNumber} timeoutMs=${IRCTC_SCHEDULE_TIMEOUT_MS}`,
+        );
+        try {
+          this.logger.log(
+            `[irctc/schedule] using rapidapi fallback train=${trainNumber}`
+          );
+          return await this.fetchScheduleFromRapidApi(
+            trainNumber,
+            journeyDateYmd,
+          );
+        } catch (fallbackErr) {
+          this.logger.warn(
+            `[irctc/schedule] rapidapi_fallback_failed train=${trainNumber} ${fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)}`,
+          );
+          captureSentryException(fallbackErr, {
+            tags: { service: 'rapidapi', endpoint: 'trainStatus' },
+            extra: {
+              trainNumber,
+              journeyDateYmd,
+              primaryErrorCode: isAxiosError(err) ? err.code : undefined,
+            },
+          });
+        }
       }
 
       captureSentryException(err, {
@@ -398,6 +481,175 @@ export class IrctcService {
       ...(trainRunsOn ? { trainRunsOn } : {}),
     };
     return schedule;
+  }
+
+  private isScheduleTimeoutError(err: unknown): boolean {
+    if (!isAxiosError(err)) return false;
+    if (err.response?.status === 408 || err.response?.status === 504) {
+      return true;
+    }
+    if (err.code === 'ECONNABORTED' || err.code === 'ETIMEDOUT') return true;
+    return /timeout/i.test(err.message);
+  }
+
+  private rapidApiKey(): string | null {
+    const raw =
+      process.env.RAPIDAPI_IRCTC_KEY ??
+      process.env.IRCTC_RAPIDAPI_KEY ??
+      process.env.RAPIDAPI_KEY;
+    const key = raw?.trim();
+    return key ? key : null;
+  }
+
+  private async fetchScheduleFromRapidApi(
+    trainNumber: string,
+    journeyDateYmd?: string,
+  ): Promise<TrainScheduleResponse> {
+    const key = this.rapidApiKey();
+    if (!key) {
+      throw new Error(
+        'RapidAPI key missing. Set RAPIDAPI_IRCTC_KEY to enable schedule fallback.',
+      );
+    }
+
+    const departureDate = rapidApiDepartureDate(journeyDateYmd);
+    const t0 = Date.now();
+    this.logger.log(
+      `[irctc/schedule] rapidapi_request_start train=${trainNumber} departureDate=${departureDate}`,
+    );
+    this.logger.debug(
+      `[irctc/schedule] rapidapi_request_params RAPIDAPI_TRAIN_STATUS_URL=${RAPIDAPI_TRAIN_STATUS_URL} params=${{
+          departure_date: departureDate,
+          isH5: 'true',
+          client: 'web',
+          deviceIdentifier: 'Mozilla%20Firefox-138.0.0.0',
+          train_number: trainNumber,
+        }}`,
+    );
+    const res = await rapidApiScheduleClient.get<unknown>(
+      RAPIDAPI_TRAIN_STATUS_URL,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-rapid-api': 'rapid-api-database',
+          'x-rapidapi-host': 'indian-railway-irctc.p.rapidapi.com',
+          'x-rapidapi-key': key,
+        },
+        params: {
+          departure_date: departureDate,
+          isH5: 'true',
+          client: 'web',
+          deviceIdentifier: 'Mozilla%20Firefox-138.0.0.0',
+          train_number: trainNumber,
+        },
+        timeout: RAPIDAPI_TRAIN_STATUS_TIMEOUT_MS,
+      },
+    );
+
+    const schedule = this.normalizeRapidApiSchedule(trainNumber, res.data);
+    const ms = Date.now() - t0;
+    this.logger.log(
+      `[irctc/schedule] rapidapi_ok train=${trainNumber} ms=${ms} status=${res.status} stations=${schedule.stationList.length}`,
+    );
+    return schedule;
+  }
+
+  private normalizeRapidApiSchedule(
+    trainNumber: string,
+    payload: unknown,
+  ): TrainScheduleResponse {
+    const root =
+      payload && typeof payload === 'object' && !Array.isArray(payload)
+        ? (payload as Record<string, unknown>)
+        : {};
+    const statusCode = root.code;
+    if (typeof statusCode === 'number' && statusCode >= 400) {
+      throw new Error(`RapidAPI train status failed with code ${statusCode}`);
+    }
+
+    const body = Array.isArray(root.body) ? root.body : [];
+    const requestedTrain = trainNumber.trim();
+    let selected: Record<string, unknown> | null = null;
+    let fallback: Record<string, unknown> | null = null;
+
+    for (const groupRaw of body) {
+      if (
+        !groupRaw ||
+        typeof groupRaw !== 'object' ||
+        Array.isArray(groupRaw)
+      ) {
+        continue;
+      }
+      const trains = (groupRaw as Record<string, unknown>).trains;
+      if (!Array.isArray(trains)) continue;
+      for (const trainRaw of trains) {
+        if (
+          !trainRaw ||
+          typeof trainRaw !== 'object' ||
+          Array.isArray(trainRaw)
+        ) {
+          continue;
+        }
+        const train = trainRaw as Record<string, unknown>;
+        if (!Array.isArray(train.schedule)) continue;
+        if (strFromUnknown(train.trainNumber).trim() === requestedTrain) {
+          selected = train;
+          break;
+        }
+        fallback ??= train;
+      }
+      if (selected) break;
+    }
+
+    selected ??= fallback;
+
+    if (!selected) {
+      throw new Error('RapidAPI schedule for this train is not available.');
+    }
+
+    const rawStations = Array.isArray(selected.schedule)
+      ? selected.schedule
+      : [];
+    const stationList: ScheduleStation[] = rawStations
+      .filter(
+        (station): station is Record<string, unknown> =>
+          station != null &&
+          typeof station === 'object' &&
+          !Array.isArray(station),
+      )
+      .map((station) => {
+        const stationCode = strFromUnknown(station.stationCode)
+          .trim()
+          .toUpperCase();
+        const stationName = strFromUnknown(station.stationName).trim();
+        return {
+          ...station,
+          stationCode,
+          stationName,
+          arrivalTime: strFromUnknown(station.arrivalTime).trim(),
+          departureTime: strFromUnknown(station.departureTime).trim(),
+        };
+      })
+      .filter((station) => station.stationCode.length > 0);
+
+    if (stationList.length === 0) {
+      throw new Error('RapidAPI schedule for this train is not available.');
+    }
+
+    const trainRunsOn = extractTrainRunsOnFromRapidApi(selected.runningOn);
+    return {
+      trainNumber:
+        strFromUnknown(selected.trainNumber).trim() || requestedTrain,
+      trainName: strFromUnknown(selected.trainName).trim(),
+      stationFrom:
+        strFromUnknown(selected.stationFrom).trim().toUpperCase() ||
+        stationList[0].stationCode,
+      stationTo:
+        strFromUnknown(selected.stationTo).trim().toUpperCase() ||
+        stationList[stationList.length - 1].stationCode,
+      stationList,
+      ...(trainRunsOn ? { trainRunsOn } : {}),
+    };
   }
 
   async getTrainList(): Promise<TrainOption[]> {
