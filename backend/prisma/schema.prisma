@@ -197,6 +197,16 @@ model ChartTimeAvailabilityTask {
   @@index([journeyRequestId])
 }
 
+model CronLease {
+  name      String   @id
+  ownerId   String   @map("owner_id")
+  expiresAt DateTime @map("expires_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("CronLease")
+}
+
 model AvailabilityCheck {
   id            String    @id @default(cuid())
   jobId         String?   @unique @map("job_id")

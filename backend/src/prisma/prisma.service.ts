@@ -3,6 +3,17 @@ import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 
+function parsePositiveInt(
+  raw: string | undefined,
+  fallback: number,
+  min: number,
+  max: number,
+): number {
+  const parsed = Number.parseInt(raw ?? '', 10);
+  if (!Number.isFinite(parsed)) return fallback;
+  return Math.min(max, Math.max(min, parsed));
+}
+
 @Injectable()
 export class PrismaService
   extends PrismaClient
@@ -10,14 +21,35 @@ export class PrismaService
 {
   constructor() {
     const connectionString =
-      process.env.DATABASE_URL ?? 'postgresql://postgres:postgres@localhost:5432/railchart';
-    
+      process.env.DATABASE_URL ??
+      'postgresql://postgres:postgres@localhost:5432/railchart';
+    const poolMax = parsePositiveInt(process.env.DATABASE_POOL_MAX, 5, 1, 15);
+
     // DEBUG LOG - Look for this in your terminal!
     console.log('--------------------------------------------------');
-    console.log('PRISMA CONNECTING TO:', connectionString.split('@')[1] || connectionString);
+    console.log(
+      'PRISMA CONNECTING TO:',
+      connectionString.split('@')[1] || connectionString,
+      `poolMax=${poolMax}`,
+    );
     console.log('--------------------------------------------------');
 
-    const adapter = new PrismaPg({ connectionString });
+    const adapter = new PrismaPg({
+      connectionString,
+      max: poolMax,
+      idleTimeoutMillis: parsePositiveInt(
+        process.env.DATABASE_POOL_IDLE_TIMEOUT_MS,
+        10_000,
+        1_000,
+        60_000,
+      ),
+      connectionTimeoutMillis: parsePositiveInt(
+        process.env.DATABASE_POOL_CONNECTION_TIMEOUT_MS,
+        5_000,
+        1_000,
+        30_000,
+      ),
+    });
     super({
       adapter,
       log:
