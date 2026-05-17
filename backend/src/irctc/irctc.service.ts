@@ -301,6 +301,7 @@ export class IrctcService {
 
     let res: { status: number; data: string };
     try {
+      console.log('[irctc/schedule] request', { url, headers }); // Important to log the URL and headers for debugging schedule fetch issues
       res = await scheduleClient.get<string>(url, {
         headers,
         responseType: 'text',
