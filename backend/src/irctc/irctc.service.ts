@@ -10,7 +10,7 @@ const scheduleClient = createRetryingAxiosClient({
   serviceName: 'irctc/schedule',
 });
 const rapidApiScheduleClient = createRetryingAxiosClient({
-  serviceName: 'rapidapi/train-status',
+  serviceName: 'rapidapi/train-search',
   retries: 2,
   retryTimeouts: true,
 });
@@ -26,10 +26,10 @@ const IRCTC_VACANT_BERTH_URL =
   'https://www.irctc.co.in/online-charts/api/vacantBerth';
 const IRCTC_TRAIN_COMPOSITION_URL =
   'https://www.irctc.co.in/online-charts/api/trainComposition';
-const RAPIDAPI_TRAIN_STATUS_URL =
-  'https://indian-railway-irctc.p.rapidapi.com/api/trains/v1/train/status';
+const RAPIDAPI_TRAIN_SEARCH_URL =
+  'https://indian-railway-irctc.p.rapidapi.com/api/trains-search/v1/train';
 const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
-const RAPIDAPI_TRAIN_STATUS_TIMEOUT_MS = 10_000;
+const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
 const IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS = 15_000;
 
 /**
@@ -159,14 +159,6 @@ function extractTrainRunsOnFromRapidApi(
     }
   }
   return Object.keys(out).length > 0 ? out : undefined;
-}
-
-function rapidApiDepartureDate(journeyDateYmd?: string): string {
-  const parsed = journeyDateYmd
-    ? moment(journeyDateYmd, 'YYYY-MM-DD', true)
-    : null;
-  if (parsed?.isValid()) return parsed.format('YYYYMMDD');
-  return moment().utcOffset(330).format('YYYYMMDD');
 }
 
 export type TrainScheduleResponse = {
@@ -380,18 +372,15 @@ export class IrctcService {
         );
         try {
           this.logger.log(
-            `[irctc/schedule] using rapidapi fallback train=${trainNumber}`
+            `[irctc/schedule] using rapidapi fallback train=${trainNumber}`,
           );
-          return await this.fetchScheduleFromRapidApi(
-            trainNumber,
-            journeyDateYmd,
-          );
+          return await this.fetchScheduleFromRapidApi(trainNumber);
         } catch (fallbackErr) {
           this.logger.warn(
             `[irctc/schedule] rapidapi_fallback_failed train=${trainNumber} ${fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)}`,
           );
           captureSentryException(fallbackErr, {
-            tags: { service: 'rapidapi', endpoint: 'trainStatus' },
+            tags: { service: 'rapidapi', endpoint: 'trainSearch' },
             extra: {
               trainNumber,
               journeyDateYmd,
@@ -503,7 +492,6 @@ export class IrctcService {
 
   private async fetchScheduleFromRapidApi(
     trainNumber: string,
-    journeyDateYmd?: string,
   ): Promise<TrainScheduleResponse> {
     const key = this.rapidApiKey();
     if (!key) {
@@ -512,37 +500,24 @@ export class IrctcService {
       );
     }
 
-    const departureDate = rapidApiDepartureDate(journeyDateYmd);
     const t0 = Date.now();
     this.logger.log(
-      `[irctc/schedule] rapidapi_request_start train=${trainNumber} departureDate=${departureDate}`,
-    );
-    this.logger.debug(
-      `[irctc/schedule] rapidapi_request_params RAPIDAPI_TRAIN_STATUS_URL=${RAPIDAPI_TRAIN_STATUS_URL} params=${{
-          departure_date: departureDate,
-          isH5: 'true',
-          client: 'web',
-          deviceIdentifier: 'Mozilla%20Firefox-138.0.0.0',
-          train_number: trainNumber,
-        }}`,
+      `[irctc/schedule] rapidapi_request_start train=${trainNumber}`,
     );
     const res = await rapidApiScheduleClient.get<unknown>(
-      RAPIDAPI_TRAIN_STATUS_URL,
+      `${RAPIDAPI_TRAIN_SEARCH_URL}/${encodeURIComponent(trainNumber)}`,
       {
         headers: {
           'Content-Type': 'application/json',
-          'x-rapid-api': 'rapid-api-database',
-          'x-rapidapi-host': 'indian-railway-irctc.p.rapidapi.com',
-          'x-rapidapi-key': key,
+          'X-Rapid-Api': 'rapid-api-database',
+          'X-Rapidapi-Host': 'indian-railway-irctc.p.rapidapi.com',
+          'X-Rapidapi-Key': key,
         },
         params: {
-          departure_date: departureDate,
           isH5: 'true',
           client: 'web',
-          deviceIdentifier: 'Mozilla%20Firefox-138.0.0.0',
-          train_number: trainNumber,
         },
-        timeout: RAPIDAPI_TRAIN_STATUS_TIMEOUT_MS,
+        timeout: RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS,
       },
     );
 
@@ -564,7 +539,7 @@ export class IrctcService {
         : {};
     const statusCode = root.code;
     if (typeof statusCode === 'number' && statusCode >= 400) {
-      throw new Error(`RapidAPI train status failed with code ${statusCode}`);
+      throw new Error(`RapidAPI train search failed with code ${statusCode}`);
     }
 
     const body = Array.isArray(root.body) ? root.body : [];
