@@ -143,6 +143,18 @@ Avoid it when:
 
 In those cases, a full-journey confirmed or RAC option may be better, even if the departure time is less convenient.
 
+---
+
+## Common Booking Questions (FAQ)
+
+### Is segment booking legal according to Indian Railways?
+Yes, booking multiple separate tickets (segments) on the exact same train or across connecting trains is entirely legal and supported by the passenger reservation system. Each ticket generates its own unique PNR and is treated as a separate, valid booking.
+
+### What happens if the first leg of my segment booking is delayed?
+Because each segment is booked under a separate PNR, Indian Railways does not automatically coordinate or guarantee your connection. If your first segment is severely delayed, causing you to miss the departure of your second segment, you are not eligible for automatic compensation or a free transfer. You should always consult the [official Indian Railways booking information](https://www.indianrail.gov.in/) regarding refund rules for missed connections and maintain a comfortable time buffer between legs.
+
+---
+
 ## Bottom line
 
 A confirmed ticket from origin is the foundation of a sensible segment booking plan. It does not remove every risk, but it separates a practical partial journey from a plan that depends on luck before it even begins.

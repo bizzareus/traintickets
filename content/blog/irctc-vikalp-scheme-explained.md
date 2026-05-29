@@ -74,16 +74,37 @@ Many travelers complain that they opted for Vikalp but never got a seat. Usually
 
 ---
 
-## Common Questions
+### Original Ticket vs. VIKALP Allocated Ticket
 
-### Is Vikalp available for Tatkal tickets?
-Yes. Vikalp is available for all waitlisted passengers, regardless of whether you booked under the General quota or the Tatkal quota.
+Under the [official IRCTC VIKALP Terms & Conditions](https://contents.irctc.co.in/en/vikalpTerms.html), how your journey shifts after alternate allocation is highly regulated. Here is a direct comparison of the rules:
+
+| Feature | Original Ticket | VIKALP Allocated Ticket |
+| :--- | :--- | :--- |
+| **Ticket Status** | Waitlisted (WL) | Fully Confirmed (CNF) on the alternate train |
+| **Boarding/Destination Stations** | Exact stations booked | Can be shifted to "nearby" stations (up to 70–100 km radius) |
+| **Class Upgrades** | Not applicable | Free of cost (no extra fare charged for booking in a higher class) |
+| **Class Downgrades** | Not applicable | Possible; the difference in fare is not auto-refunded (must file a TDR) |
+| **Cancellation Charges** | Flat waitlist fee (Rs. 60 + GST) | Standard confirmed ticket cancellation fees (varies by class/timing) |
+| **Ticket Validity** | Invalid for boarding if waitlisted after charting | Original ticket becomes invalid; boarding original train is a fineable offense |
+
+---
+
+## Common Booking Questions (FAQ)
+
+### Does opting for VIKALP guarantee a confirmed seat?
+No, VIKALP does not guarantee a confirmed seat. It only registers your request to be considered for vacant berths on alternative trains during chart preparation.
+
+### Will I get a refund of the fare difference if I am downgraded under VIKALP?
+If you are allocated an alternate train in a lower class than what you originally booked, you will not receive an automatic refund. To claim the difference in fare, you must file a Ticket Deposit Receipt (TDR) online through the IRCTC portal after charting.
+
+### Is VIKALP available for Tatkal tickets?
+Yes. VIKALP is available for all waitlisted passengers, regardless of whether you booked under the General quota or the Tatkal quota.
 
 ### What if I don't want to travel on the allocated alternate train?
-If you are allocated a seat on an alternate train but decide not to travel, you must cancel your ticket. You will be charged standard cancellation fees for a confirmed ticket.
+Once you are allocated an alternative seat under VIKALP, you are treated as a confirmed passenger on that train. If you decide not to travel, you must cancel your ticket, and standard confirmed cancellation charges will apply.
 
-### Can RAC passengers opt for Vikalp?
-No. Vikalp is only for fully waitlisted passengers. If your ticket is RAC (Reservation Against Cancellation), you already have a seat (even if it's a shared berth), so you are not eligible for Vikalp.
+### Can RAC passengers opt for VIKALP?
+No. VIKALP is only for fully waitlisted passengers. If your ticket is RAC (Reservation Against Cancellation), you already have a seat (even if it's a shared berth), so you are not eligible for VIKALP.
 
 ---
 

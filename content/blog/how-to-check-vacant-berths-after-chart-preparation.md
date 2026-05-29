@@ -153,6 +153,18 @@ A 20-minute confirmed segment from your origin may technically be "confirmed," b
 
 Sometimes travellers hope they can adjust onboard if the next segment is not confirmed. That is not a plan. Travel only with a valid ticket for the segment you intend to occupy, and leave room for a fallback if the remaining stretch does not open.
 
+---
+
+## Common Booking Questions (FAQ)
+
+### Where can I see real-time vacant berths after chart preparation?
+You can view real-time vacant berths directly on the [official IRCTC Charts/Vacancy Portal](https://www.irctc.co.in/online-charts). This portal is updated immediately after the first reservation chart is prepared (typically 4 hours before departure) and shows vacant seats coach-by-coach across all classes.
+
+### Can I book a vacant seat after chart preparation online?
+Yes, if any vacant seats remain or open up after chart preparation, they are released for booking under "Current Booking" or "Current Availability." You can book these tickets online through the IRCTC website or app up to 30 minutes before the scheduled departure of the train.
+
+---
+
 ## Bottom line
 
 To check vacant berths after chart preparation, search beyond the full route. Look at station pairs, re-check near the chart window, and prioritize confirmed travel from your real origin.

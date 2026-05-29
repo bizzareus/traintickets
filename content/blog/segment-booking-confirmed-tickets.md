@@ -84,6 +84,18 @@ Also avoid it when the uncertain part is the late-night final leg into a smaller
 
 In those cases, prioritize trains that already show confirmed/RAC for the full journey, even if they depart at a less convenient time.
 
+---
+
+## Common Booking Questions (FAQ)
+
+### How do I book segment tickets on the same train?
+You must search for each station-to-station leg individually on the IRCTC portal and complete separate bookings for each. This will generate a separate PNR number and separate seat/berth allocations for each segment of your journey.
+
+### Can I change my seat/berth easily during the journey if I book segments?
+Since each segment is a separate ticket, you will likely have different seats or berths assigned for each leg. When the train reaches the intermediate station where your first segment ends and the second begins, you must move your luggage to your newly assigned seat or berth. You can check the overall layout and train rules on the [official Indian Railways passenger services site](https://www.indianrail.gov.in/).
+
+---
+
 ## Related guides
 
 - [Why confirmed from origin matters in segment booking](/blog/confirmed-from-origin-segment-booking)

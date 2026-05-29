@@ -126,6 +126,30 @@ To understand how to find these hidden seats, read our guide on [how segment boo
 
 ---
 
+### Regular Booking vs. VIKALP Booking vs. Segment Booking
+
+Understanding how standard waitlist bookings, VIKALP's database matching, and active segment booking compare is key to taking control of your journey:
+
+| Feature | Regular (Waitlisted) Booking | VIKALP Scheme Booking | Segment Booking |
+| :--- | :--- | :--- | :--- |
+| **Control over Route/Train** | Full control (you choose the exact train) | Zero control (system selects from your list or nearby stations) | Full control (you choose exactly which legs/trains to combine) |
+| **Upgrade/Downgrade Risk** | No class change | Possible upgrade (free) or downgrade (TDR required for refund) | You select the exact class for each leg |
+| **Boarding Flexibility** | Fixed boarding station | May change boarding station (up to 70–100 km radius) | Fixed boarding station for each leg |
+| **Cancellation Rules** | Flat waitlist refund fee if waitlist stays unconfirmed | Confirmed cancellation fee applies if shifted | Separate cancellation applies per segment PNR |
+| **Complexity** | 1 ticket, auto-cancelled if WL | 1 ticket, wait-and-see after charting | Multiple tickets, requires moving berths/coaches |
+
+---
+
+## Common Booking Questions (FAQ)
+
+### Can I select specific alternative trains under VIKALP?
+Yes, when opting into VIKALP, you can select up to 7 alternative trains that travel on the same route to your destination. Note that you should only select trains you are genuinely comfortable traveling on.
+
+### What happens if I refuse to travel on the allocated VIKALP train?
+If you are allocated a seat on an alternate train but decide not to travel, you are treated as a confirmed passenger who cancelled their ticket. Standard cancellation fees for a confirmed ticket will apply based on the [official IRCTC VIKALP rules](https://contents.irctc.co.in/en/vikalpTerms.html).
+
+---
+
 ## The Verdict
 
 Treat the VIKALP scheme as a backup plan, not your primary strategy. If you do use it, make sure to select only those alternative trains that you are genuinely comfortable traveling on, and keep an eye on your phone for that last-minute SMS confirmation. 

@@ -43,7 +43,7 @@ These two terms are related, but they are not the same thing.
 
 Your **boarding station** is where the chart expects you to get on the train.
 
-If you book from Station A to Station D but set your boarding station as Station B, you are telling the railway system that you will board at B, not A. That matters because charting, seat release, and onboard validation can depend on where you are expected to appear.
+If you book from Station A to Station D but set your boarding station as Station B, you are telling the railway system that you will board at B, not A. That matters because charting, seat release, and onboard validation can depend on where you are expected to appear. Note that under the [official IRCTC Boarding Point Change Rules](https://contents.irctc.co.in/en/BoardingPointChangeRules.html), you can change your boarding station online up to 24 hours before the scheduled departure of the train.
 
 For last-minute tickets, the practical rule is simple: check availability from the station where you will actually board.
 
@@ -156,22 +156,24 @@ For you, the useful result is Kota → Vadodara because Kota is where you intend
 
 Now change one detail: you find a confirmed seat from an earlier station before Kota, but the train reaches that station at 1:10 am. That may be technically bookable, but it is only practical if you can safely and reliably board there. This is where station-pair checking becomes a travel decision, not just a search trick.
 
-## Common questions
+## Common Booking Questions (FAQ)
+
+### Can I change my boarding station after booking an IRCTC ticket?
+Yes, you can change your boarding station online through the IRCTC portal up to 24 hours before the scheduled departure of the train. Note that once you change your boarding station, the original boarding point is forfeited, and you cannot board from there.
+
+### What is Remote Location Quota (RLWL)?
+Remote Location Quota is a dedicated pool of seats set aside for passengers boarding from major intermediate stations (remote locations). These seats are charted separately from the train's originating station, meaning waitlist clearing behaves differently for this quota.
 
 ### Is boarding station the same as from station?
-
 Not always. The **from station** is the station used for the booked journey. The **boarding station** is where you are expected to board. In many bookings they are the same, but they can differ when the ticket allows a different boarding point.
 
 ### Does remote location mean a different train?
-
 No. It is the same train. Remote location refers to how availability and charting may be handled around an intermediate station.
 
 ### Can I book from one station and board from another?
-
 Only do this when the booking flow and current railway rules allow the boarding station you intend to use. Do not assume you can quietly board later or earlier without consequences. If the chart expects you at one station and you appear somewhere else, you can run into validation or no-show problems.
 
 ### Why does LastBerth show different results for the same train?
-
 Because the useful answer is often segment-specific. A train can be unavailable for the full route but still have confirmed space for part of your journey.
 
 ## Final check before booking

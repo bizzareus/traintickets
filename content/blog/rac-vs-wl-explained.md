@@ -79,6 +79,32 @@ For example, if **Delhi (NDLS) → Lucknow (LKO)** is WL on your first-choice tr
 
 This is exactly the scenario [LastBerth](/) is built for: WL/Regret trains where you still want a practical, bookable plan instead of refreshing one uncertain status.
 
+---
+
+### Confirmed vs. RAC vs. Waitlisted (WL)
+
+Knowing how these statuses affect your travel rights and cancellations is essential when making last-minute bookings. According to the [official IRCTC refund and cancellation rules](https://contents.irctc.co.in/en/refundRules.html), the rules differ significantly:
+
+| Feature | Confirmed (CNF) | RAC (Reservation Against Cancellation) | Waitlisted (WL) |
+| :--- | :--- | :--- | :--- |
+| **Right to Board** | Yes, full boarding rights | Yes, full boarding rights | No (fully waitlisted e-tickets are invalid for boarding) |
+| **Berth Status** | Full individual berth assigned | Shared sitting berth (two passengers per side-lower berth) | No seat/berth assigned |
+| **Upgrade to Full Berth** | Guaranteed | High chance (if confirmed passengers cancel or quotas release) | Must progress through RAC first |
+| **Cancellation Fee (48 hrs+ prior)** | Standard flat fee per class (e.g. Rs. 120 for 3AC) | Flat clerkage fee (Rs. 60 + GST) | Flat clerkage fee (Rs. 60 + GST) |
+| **Cancellation Fee (Within 4 hours/Chart)** | 50% of fare or no refund (depending on exact window) | Flat clerkage fee (Rs. 60 + GST) up to 30 mins before departure | Fully automatic refund (clerkage deducted) if waitlisted after charting |
+
+---
+
+## Common Booking Questions (FAQ)
+
+### How many RAC seats are allocated per coach?
+The exact number of RAC seats varies depending on the train class. For instance, in AC 3-Tier (3A), there are usually 4 to 8 side lower berths earmarked for RAC, meaning 8 to 16 passengers will share those side lower seats (two passengers per side-lower berth).
+
+### Will a waitlisted ticket automatically convert to RAC first before getting confirmed?
+Yes. During the booking queue clearance (caused by ticket cancellations and quota releases), a waitlisted ticket progresses into the RAC pool. Only after the RAC queue is fully cleared do subsequent cancellations result in direct confirmed berths.
+
+---
+
 ## Related guides
 
 - [Best train when all trains show WL/RAC/Regret](/blog/best-train-when-all-trains-show-waiting-list)

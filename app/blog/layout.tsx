@@ -2,21 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: {
+    default: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
+    absolute: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
+  },
   description:
-    "Practical guides for finding confirmed train tickets, understanding IRCTC charting, and booking smarter journeys.",
+    "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and booking smarter railway journeys on LastBerth.",
   openGraph: {
     type: "website",
     url: "/blog",
-    title: "LastBerth Blog",
+    title: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
     description:
-      "Practical guides for finding confirmed train tickets, understanding IRCTC charting, and booking smarter journeys.",
+      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and booking smarter railway journeys on LastBerth.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LastBerth Blog",
+    title: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
     description:
-      "Practical guides for finding confirmed train tickets, understanding IRCTC charting, and booking smarter journeys.",
+      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and booking smarter railway journeys on LastBerth.",
   },
 };
 

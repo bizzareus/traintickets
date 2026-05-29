@@ -3,7 +3,9 @@ import Link from "next/link";
 import { listBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: {
+    absolute: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
+  },
   alternates: { canonical: "/blog" },
 };
 
@@ -24,12 +26,11 @@ export default function BlogIndexPage() {
   return (
     <div>
       <header className="mb-8">
-        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-          LastBerth Blog
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
+          Read & Find Confirmed Train Tickets: IRCTC Guides
         </h1>
         <p className="mt-2 max-w-2xl text-base text-slate-600">
-          Practical guides for finding confirmed tickets, understanding chart
-          preparation, and booking smarter journeys.
+          LastBerth Blog — Practical guides for finding confirmed train tickets, understanding IRCTC charting, and booking smarter railway journeys.
         </p>
       </header>
 

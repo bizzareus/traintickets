@@ -103,6 +103,18 @@ For class switching, start with the class you actually want. If it is WL, RAC, o
 
 Do not let availability bully you into a journey you will regret. A confirmed ticket is powerful, but it still has to match the people, timing, luggage, and conditions of the trip.
 
+---
+
+## Common Booking Questions (FAQ)
+
+### Can the TTE upgrade my seat class onboard if vacant berths are available?
+Yes, the Traveling Ticket Examiner (TTE) is authorized to upgrade your seat to a higher class onboard if berths are vacant after chart preparation. You will be required to pay the exact fare difference between your booked class and the upgraded class.
+
+### Do I get a refund if I am downgraded to a lower class onboard?
+Yes. If you are downgraded to a lower class due to railway operational reasons or coach changes, you are eligible for a refund of the difference in fare. You must file a Ticket Deposit Receipt (TDR) online through the IRCTC portal within the designated time limit. For exact timings and eligibility, see the [official IRCTC refund and TDR guidelines](https://contents.irctc.co.in/en/refundRules.html).
+
+---
+
 ## Bottom line
 
 Changing class is one of the cleanest ways to turn a waitlisted search into a confirmed journey. It is often simpler than segment booking and less uncertain than hoping for WL movement.

@@ -2967,9 +2967,8 @@ function BookingV2PageContent() {
       </div>
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
         <header className="mb-8">
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            We find you seats in{" "}
-            <span className="text-blue-600">WL/Regret Trains</span>
+          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
+            Find <span className="text-blue-600">Confirmed Train Tickets</span> & Seat Availability in WL/Regret Trains
           </h1>
           <p className="mt-2 max-w-2xl text-base text-slate-600">
             Find the best seat available throughout your journey in the train

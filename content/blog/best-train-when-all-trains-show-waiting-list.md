@@ -156,7 +156,19 @@ When you book in parts, add up every leg. Also consider whether different classe
 
 ### Assuming segment availability means certainty
 
-Availability can change, and different ticket types have different travel rules. A segment result is a decision aid, not a promise. If a leg shows Regret, the system may not even accept a booking for that station pair; if a leg shows RAC or WL, check what that status means for your ticket type before relying on it.
+Availability can change, and different ticket types have different travel rules. A segment result is a decision aid, not a promise. If a leg shows Regret, the system may not even accept a booking for that station pair; if a leg shows RAC or WL, check what that status means for your ticket type before relying on it. For detailed regulations on ticket status, consult the [official IRCTC refund and booking rules](https://contents.irctc.co.in/en/Rules_Waitlisted_Passengers.pdf).
+
+---
+
+## Common Booking Questions (FAQ)
+
+### What does "Regret" status mean on IRCTC?
+**Regret** status indicates that the waiting list has reached its maximum capacity limit for that class and route. When a train enters "Regret" status, the railway system will not accept any more bookings or let you join the waitlist.
+
+### Can I board a train with a fully waitlisted e-ticket?
+No. Fully waitlisted e-tickets (where all passengers on the PNR remain waitlisted after chart preparation) are automatically cancelled and refunded to your original payment account. Boarding a train with an invalid, waitlisted e-ticket is treated as traveling without a ticket, which is a punishable offense.
+
+---
 
 ## How LastBerth helps
 

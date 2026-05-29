@@ -111,6 +111,31 @@ A seat is useful only if you can board from the station shown on the ticket. Do 
 
 Last-minute booking works better when you decide your fallback before the pressure starts. Know when you will try another train, another class, a segment, or a different mode of travel.
 
+---
+
+### Tatkal vs. Current Availability Comparison Table
+
+Both options are extremely useful for last-minute travelers, but they operate under completely different rules. According to the [official IRCTC Tatkal Booking Rules](https://contents.irctc.co.in/en/tatkalBookingRules.html), here are the key differences:
+
+| Feature | Tatkal Quota | Current Availability |
+| :--- | :--- | :--- |
+| **Booking Window** | Opens at 10:00 AM (AC) and 11:00 AM (Non-AC) exactly one day prior to train's origin departure date | Opens only after chart preparation (typically 4 hours before departure) up to 30 mins before train departure |
+| **Ticket Pricing** | Extra Tatkal charges added (ranges from Rs. 100 to Rs. 500 depending on class/distance) | No extra fee; sometimes booked at a discount (up to 10% off on basic fare for vacant seats) |
+| **Cancellation Refund** | No refund whatsoever on confirmed Tatkal tickets (except for rare delayed/cancelled trains) | Standard clerkage charge (Rs. 60 + GST) deducted if cancelled within eligible window |
+| **Berth Source** | A separate dedicated quota of seats set aside specifically for last-minute travelers | Unsold seats from the general and other quotas released to the open pool after charting |
+
+---
+
+## Common Booking Questions (FAQ)
+
+### At what time do Tatkal bookings open daily?
+Tatkal bookings open every single day at **10:00 AM** for all AC classes (3AC, 2AC, 1AC, Executive Chairs) and at **11:00 AM** for all non-AC classes (Sleeper, Second Sitting). This booking opens exactly one day before the train chugs out from its originating station.
+
+### Are refunds allowed for cancelled confirmed Tatkal tickets?
+No. Indian Railways grants **zero refund** on the cancellation of fully confirmed Tatkal tickets. Refunds are only allowed if the train is cancelled, delayed by more than 3 hours, or if the route is diverted and the passenger decides not to travel.
+
+---
+
 ## How LastBerth helps
 
 [LastBerth](/) is useful when a direct search does not give a clear confirmed ticket. You can compare practical signals instead of guessing from a crowded availability screen:
