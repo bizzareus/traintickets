@@ -18,6 +18,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-vikalp-scheme-explained.md | Vikalp scheme explained — how alternate train allotment works | 2026-05-29 |
 | irctc-vikalp-scheme-guide.md | Vikalp scheme critical analysis — 5 rules/gotchas to know | 2026-05-29 |
 | gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances.md | GNWL vs RLWL vs PQWL vs TQWL — which waitlist type confirms | 2026-05-29 |
+| connecting-train-bookings-irctc-link-pnr-guide.md | IRCTC Connecting Train Bookings — Linking PNRs and missed connection refunds | 2026-05-30 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
@@ -27,8 +28,6 @@ This file tracks all blog posts published to avoid duplication.
 - Senior citizen / ladies / disability quotas on IRCTC
 - Cancellation and refund rules in detail (TDR filing, refund timelines by status/class/timing)
 - Platform ticket / unreserved travel as emergency last resort
-- Connecting trains / multi-train journey planning (different from same-train segments)
-- How train delays affect onward connections
 - Understanding coach composition on a platform
 - Station platform navigation tips for last-minute boarders
 - IRCTC app vs website — Tatkal booking differences, speed tips
