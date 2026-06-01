@@ -19,12 +19,13 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-vikalp-scheme-guide.md | Vikalp scheme critical analysis — 5 rules/gotchas to know | 2026-05-29 |
 | gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances.md | GNWL vs RLWL vs PQWL vs TQWL — which waitlist type confirms | 2026-05-29 |
 | connecting-train-bookings-irctc-link-pnr-guide.md | IRCTC Connecting Train Bookings — Linking PNRs and missed connection refunds | 2026-05-30 |
+| family-group-train-booking-adjacent-berths-irctc.md | Securing Adjacent Berths on IRCTC — Family Booking Survival Guide | 2026-05-31 |
+| ultimate-tatkal-booking-guide-speed-hacks.md | Tatkal & Premium Tatkal booking tactics, speed hacks, and cancellation rules | 2026-06-01 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
 - Tatkal booking tactics in depth (Premium Tatkal vs Tatkal, opening times, charges by class, cancellation rules)
 - PNR status tracking and group booking partial confirmations
-- Group/family booking strategies (adjacent berths, splitting PNRs)
 - Senior citizen / ladies / disability quotas on IRCTC
 - Cancellation and refund rules in detail (TDR filing, refund timelines by status/class/timing)
 - Platform ticket / unreserved travel as emergency last resort

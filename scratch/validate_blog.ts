@@ -25,20 +25,21 @@ async function validateBlog(filePath: string) {
     .replace(/[\*_`\-]/g, "") // Emphasis and lists
     .trim();
 
-  // Make sure we have enough words (QuillBot needs at least 40-80 words)
+  // Make sure we have enough words (QuillBot needs at least 80 words)
   let words = cleanText.split(/\s+/).filter(Boolean);
   let wordCount = words.length;
   console.log(`Extracted plain text: ${wordCount} words.`);
-  if (wordCount < 40) {
-    console.error("Text is too short for QuillBot AI Detector (minimum 40 words required).");
+  if (wordCount < 80) {
+    console.error("Text is too short for QuillBot AI Detector (minimum 80 words required).");
     process.exit(1);
   }
 
-  if (wordCount > 1000) {
-    console.log(`Text exceeds 1000 words (${wordCount} words). Slicing to the first 1000 words for QuillBot compatibility.`);
-    words = words.slice(0, 1000);
+  // Quillbot free allows up to 1200 words, let's scan the first 350 words to be safe and fast.
+  if (wordCount > 350) {
+    console.log(`Text exceeds 350 words (${wordCount} words). Slicing to the first 350 words for QuillBot compatibility.`);
+    words = words.slice(0, 350);
     cleanText = words.join(" ");
-    wordCount = 1000;
+    wordCount = 350;
   }
 
   console.log("Launching browser...");
@@ -59,94 +60,60 @@ async function validateBlog(filePath: string) {
       console.log("Accepted cookies");
     }
 
-    const inputLocator = page.locator("[placeholder*='To analyze text']");
-    if (!(await inputLocator.isVisible())) {
-      throw new Error("Could not locate the input text area.");
+    const editor = page.locator("[contenteditable='true']");
+    if (!(await editor.isVisible())) {
+      throw new Error("Could not locate the contenteditable text area.");
     }
 
-    await inputLocator.click();
-    await inputLocator.focus();
-    
-    console.log("Typing text into QuillBot (this might take a few seconds)...");
-    // Type in smaller chunks to avoid issues, or type directly with slight delay
-    await page.keyboard.type(cleanText, { delay: 1 });
+    console.log("Filling editor with blog text...");
+    await editor.click();
+    await editor.fill(cleanText);
 
-    // Wait and click
+    // Dispatch custom events to register content changes
+    await editor.evaluate((el: HTMLElement) => {
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+      el.dispatchEvent(new Event("change", { bubbles: true }));
+      el.dispatchEvent(new KeyboardEvent("keydown", { bubbles: true, key: " " }));
+      el.dispatchEvent(new KeyboardEvent("keyup", { bubbles: true, key: " " }));
+    });
+
+    // Press End and space to ensure it registers the word count
+    await page.keyboard.press("End");
+    await page.keyboard.type(" ");
+
     await page.waitForTimeout(2000);
-    const detectBtn = page.locator("button:has-text('Detect AI')").first();
+
+    const detectBtn = page.getByRole("button", { name: "Detect AI", exact: true });
+    if (!(await detectBtn.isVisible())) {
+      throw new Error("Could not locate the 'Detect AI' button.");
+    }
+
     const isEnabled = await detectBtn.isEnabled();
     console.log(`Detect button is enabled: ${isEnabled}`);
     
-    await detectBtn.click({ force: true });
-    console.log("Clicked 'Detect AI'. Waiting for results...");
+    await detectBtn.click();
+    console.log("Clicked 'Detect AI'. Waiting 35 seconds for analysis...");
+    await page.waitForTimeout(35000);
 
-    // Wait for network response and UI update
-    await page.waitForTimeout(10000);
-    
+    // Save screenshot
+    await page.screenshot({ path: "scratch/quillbot_blog_results.png" });
+    console.log("Saved results screenshot to scratch/quillbot_blog_results.png");
+
     const bodyText = await page.locator("body").innerText();
     const lines = bodyText.split("\n").map(l => l.trim()).filter(Boolean);
 
-    // Let's print lines containing percentages or words like "AI" / "Human"
     console.log("\n--- DETECTOR OUTPUT ---");
     let aiPercentage: string | null = null;
     let humanPercentage: string | null = null;
 
-    // Search for the specific pattern "X% of text is likely AI" or "X% AI-generated"
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      if (line.includes("of text is likely AI") || line.includes("likely AI")) {
-        // The percentage is usually on the preceding line or in the line itself
-        console.log(`Status line: "${line}"`);
-        const prevLine = lines[i - 1];
-        if (prevLine && prevLine.includes("%")) {
-          aiPercentage = prevLine;
-        }
-      }
-      if (line.includes("AI-generated") && line.includes("%")) {
-        console.log(`AI-generated line: "${line}"`);
-        aiPercentage = line.split(" ")[0]; // Get the first word
-      }
-      if (line.includes("Human-written & AI-refined")) {
-        console.log(`Refined line: "${line}"`);
-        const prevLine = lines[i - 1];
-        if (prevLine && prevLine.includes("%")) {
-          console.log(`Human-written & AI-refined percentage: ${prevLine}`);
-        }
-      }
-      if (line.includes("Human-written")) {
-        // Let's capture the percentage
-        console.log(`Human line: "${line}"`);
-        const prevLine = lines[i - 1];
-        if (prevLine && prevLine.includes("%")) {
-          humanPercentage = prevLine;
-        }
-      }
-    }
-
-    // fallback extraction from raw lines
-    if (!aiPercentage) {
-      // Find the first line that is just a percentage followed by "of text is likely AI" or check matching lines
-      const aiGeneratedIndices = lines.map((l, idx) => l === "AI-generated" ? idx : -1).filter(idx => idx !== -1);
-      for (const idx of aiGeneratedIndices) {
-        const prev = lines[idx - 1];
-        if (prev && prev.includes("%")) {
-          aiPercentage = prev;
-          break;
-        }
-      }
-    }
-
-    console.log("------------------------");
-    console.log(`Extracted AI Score: ${aiPercentage || "Could not extract AI percentage directly"}`);
-    console.log(`Extracted Human Score: ${humanPercentage || "Could not extract Human percentage directly"}`);
-    
-    // Dump matching lines for debug
-    console.log("\nMatching lines of interest:");
-    lines.forEach(l => {
-      if (l.includes("%") || l.toLowerCase().includes("ai") || l.toLowerCase().includes("human")) {
-        console.log(`-> ${l}`);
+    // Output all lines containing percentages, AI, or human references to see result clearly
+    lines.forEach((line, i) => {
+      const lower = line.toLowerCase();
+      if (lower.includes("%") || lower.includes("ai") || lower.includes("human")) {
+        console.log(`Line ${i}: ${line}`);
       }
     });
+    console.log("------------------------\n");
 
   } catch (err: any) {
     console.error("Error during validation:", err.message);
