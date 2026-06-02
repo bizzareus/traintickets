@@ -78,21 +78,17 @@ describe('StationCacheService', () => {
   describe('upsertMany', () => {
     it('does nothing when given an empty list', async () => {
       const prisma = makePrisma();
-      const transactionMock = jest.fn();
-      (prisma as unknown as { $transaction: jest.Mock }).$transaction =
-        transactionMock;
+      const upsertMock = jest.spyOn(prisma.stationCache, 'upsert');
       const svc = new StationCacheService(prisma);
 
       await svc.upsertMany([]);
-      expect(transactionMock).not.toHaveBeenCalled();
+      expect(upsertMock).not.toHaveBeenCalled();
     });
 
-    it('calls $transaction with one upsert per station', async () => {
+    it('calls upsert for each station', async () => {
       const upsertMock = jest.fn().mockReturnValue({});
-      const transactionMock = jest.fn().mockResolvedValue([]);
       const prisma = {
         stationCache: { upsert: upsertMock },
-        $transaction: transactionMock,
       } as unknown as PrismaService;
       const svc = new StationCacheService(prisma);
 
@@ -101,16 +97,13 @@ describe('StationCacheService', () => {
         { stationCode: 'cstm', stationName: 'Mumbai CST' },
       ]);
 
-      expect(transactionMock).toHaveBeenCalledTimes(1);
       expect(upsertMock).toHaveBeenCalledTimes(2);
     });
 
     it('normalizes stationCode and stationName to uppercase in the upsert', async () => {
       const upsertMock = jest.fn().mockReturnValue({});
-      const transactionMock = jest.fn().mockResolvedValue([]);
       const prisma = {
         stationCache: { upsert: upsertMock },
-        $transaction: transactionMock,
       } as unknown as PrismaService;
       const svc = new StationCacheService(prisma);
 

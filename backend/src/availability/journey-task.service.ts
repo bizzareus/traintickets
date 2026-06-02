@@ -517,8 +517,8 @@ export class JourneyTaskService {
 
       if (
         result.status !== 'success' ||
-        !result.seats ||
-        result.seats.length === 0
+        !result.openAiStructuredSeats ||
+        result.openAiStructuredSeats.length === 0
       ) {
         const scheduleResult = await this.irctc.getTrainSchedule(
           task.trainNumber,
@@ -572,8 +572,8 @@ export class JourneyTaskService {
 
                   if (
                     offsetResult.status === 'success' &&
-                    offsetResult.seats &&
-                    offsetResult.seats.length > 0
+                    offsetResult.openAiStructuredSeats &&
+                    offsetResult.openAiStructuredSeats.length > 0
                   ) {
                     console.log(
                       `[alert-task ${task.id}] Found confirmed seats using fallback: ${X_offset} -> ${Y_offset}`,

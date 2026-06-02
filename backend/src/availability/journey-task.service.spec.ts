@@ -96,7 +96,7 @@ describe('JourneyTaskService', () => {
       mockService2.check.mockResolvedValue({
         status: 'success',
         availability: [{ status: 'AVAILABLE 10' }],
-        seats: [
+        openAiStructuredSeats: [
           {
             coach: 'A1',
             berth: '10',
@@ -199,13 +199,13 @@ describe('JourneyTaskService', () => {
       // Direct check NZM -> BPL returns failed
       mockService2.check.mockResolvedValueOnce({
         status: 'failed',
-        seats: [],
+        openAiStructuredSeats: [],
       });
 
       // Let's say offset NDLS -> BPL succeeds (before=1, after=0)
       mockService2.check.mockResolvedValueOnce({
         status: 'success',
-        seats: [
+        openAiStructuredSeats: [
           {
             coach: 'A1',
             berth: '12',
