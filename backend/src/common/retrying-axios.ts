@@ -13,7 +13,9 @@ export function createRetryingAxiosClient(
   opts: RetryingAxiosClientOptions = {},
 ): AxiosInstance {
   const retries = opts.retries ?? 3;
-  const retryStatuses = new Set(opts.retryStatuses ?? [429, 500, 502, 503, 504]);
+  const retryStatuses = new Set(
+    opts.retryStatuses ?? [429, 500, 502, 503, 504],
+  );
   const client = axios.create();
 
   axiosRetry(client, {

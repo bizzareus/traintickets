@@ -57,3 +57,8 @@ export const BOOKING_V2_RAIL_API_HEADERS: Record<string, string> = {
   ApiKey: 'ct-mweb!2$',
   ClientId: 'ct-mweb',
 };
+
+/**
+ * Maximum stations before boarding or after destination to shift when auto-exploring fallbacks.
+ */
+export const BOOKING_V2_MAX_STATIONS_OFFSET = 3;

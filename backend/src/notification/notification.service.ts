@@ -58,13 +58,13 @@ export class NotificationService {
   }
 
   async sendWhatsApp(mobile: string, message: string): Promise<boolean> {
-    console.info("whatsapp service was called");
+    console.info('whatsapp service was called');
     if (!this.wasenderKey?.trim()) {
       return false;
     }
     const to = toE164(mobile);
     try {
-      console.info("sending whatsapp message", {message, to});
+      console.info('sending whatsapp message', { message, to });
       await axios.post(
         `${WASENDER_BASE}/api/send-message`,
         { to: to.startsWith('+') ? to : `+${to}`, text: message },
@@ -84,12 +84,12 @@ export class NotificationService {
   }
 
   async sendEmail(to: string, subject: string, html: string): Promise<boolean> {
-    console.info("email service was called");
+    console.info('email service was called');
     if (!this.resend) {
       return false;
     }
     try {
-      console.info("sending email message", {RESEND_FROM, to, html, subject});
+      console.info('sending email message', { RESEND_FROM, to, html, subject });
       await this.resend.emails.send({
         from: RESEND_FROM,
         to: [to],
@@ -448,7 +448,13 @@ export class NotificationService {
     bookUrl: string;
     openAiSummary?: string | null;
   }): string {
-    const { trainLabel, routeDisplay, journeyDateReadable, bookUrl, openAiSummary } = params;
+    const {
+      trainLabel,
+      routeDisplay,
+      journeyDateReadable,
+      bookUrl,
+      openAiSummary,
+    } = params;
     return `
 <!DOCTYPE html>
 <html>
@@ -478,7 +484,13 @@ export class NotificationService {
     bookUrl: string;
     openAiSummary?: string | null;
   }): string {
-    const { trainLabel, routeDisplay, journeyDateReadable, bookUrl, openAiSummary } = params;
+    const {
+      trainLabel,
+      routeDisplay,
+      journeyDateReadable,
+      bookUrl,
+      openAiSummary,
+    } = params;
     return `No Tickets Found 😔
 
 Train: ${trainLabel}

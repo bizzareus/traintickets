@@ -418,7 +418,9 @@ export class AvailabilityController {
       return { success: true, message: 'Alert triggered successfully' };
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      throw new ServiceUnavailableException(`Failed to trigger alert: ${message}`);
+      throw new ServiceUnavailableException(
+        `Failed to trigger alert: ${message}`,
+      );
     }
   }
 }

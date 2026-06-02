@@ -9,6 +9,7 @@ import {
   BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
   BOOKING_V2_RAIL_API_BASE,
   BOOKING_V2_RAIL_API_HEADERS,
+  BOOKING_V2_MAX_STATIONS_OFFSET,
 } from './booking-v2.constants';
 import {
   avlDayMatchesJourneyDate,
@@ -21,7 +22,6 @@ import {
   orderedDestinationIndices,
   parseScheduleDayCount,
   parseUpstreamAvailablityType,
-  stationCodesBetweenStops,
   ymdToRailApiDdMmYyyy,
 } from './booking-v2.utils';
 
@@ -914,11 +914,80 @@ export class BookingV2Service {
       from: string;
       to: string;
       date: string;
-      /** Classes offered on this train (train search `avlClasses`). When empty, a default list is used. */
       avlClasses?: string[];
       quota?: string;
     },
     onProgress?: (event: AlternatePathProgressEvent) => void,
+  ): Promise<FindAlternatePathsResult> {
+    const sharedProbeCache = new Map<string, MultiClassProbeResult>();
+
+    // 1. Try standard/direct route first (no offsets)
+    const directResult = await this.findAlternatePathsInternal(
+      input,
+      onProgress,
+      sharedProbeCache,
+    );
+    if (
+      directResult.isComplete &&
+      directResult.legs.length > 0 &&
+      directResult.legs.every((l) => l.segmentKind === 'confirmed')
+    ) {
+      return directResult;
+    }
+
+    // 2. If direct is not fully confirmed, try offset fallbacks
+    const maxOffset = BOOKING_V2_MAX_STATIONS_OFFSET;
+    for (let offset = 1; offset <= maxOffset; offset++) {
+      const combos = [
+        { before: offset, after: 0 },
+        { before: 0, after: offset },
+        { before: offset, after: offset },
+      ];
+
+      for (const combo of combos) {
+        this.logger.log(
+          `[alternate-paths ${input.trainNumber}] Retrying with offset combo: before=${combo.before}, after=${combo.after}`,
+        );
+        const offsetResult = await this.findAlternatePathsInternal(
+          {
+            ...input,
+            stationsBefore: combo.before,
+            stationsAfter: combo.after,
+          },
+          onProgress,
+          sharedProbeCache,
+        );
+
+        if (
+          offsetResult.isComplete &&
+          offsetResult.legs.length > 0 &&
+          offsetResult.legs.every((l) => l.segmentKind === 'confirmed')
+        ) {
+          this.logger.log(
+            `[alternate-paths ${input.trainNumber}] Found fully confirmed path using offset: before=${combo.before}, after=${combo.after}`,
+          );
+          return offsetResult;
+        }
+      }
+    }
+
+    // 3. Fallback to standard result if no fully confirmed path is found with offsets
+    return directResult;
+  }
+
+  async findAlternatePathsInternal(
+    input: {
+      trainNumber: string;
+      from: string;
+      to: string;
+      date: string;
+      avlClasses?: string[];
+      quota?: string;
+      stationsBefore?: number;
+      stationsAfter?: number;
+    },
+    onProgress?: (event: AlternatePathProgressEvent) => void,
+    sharedProbeCache?: Map<string, MultiClassProbeResult>,
   ): Promise<FindAlternatePathsResult> {
     const emit = (ev: AlternatePathProgressEvent) => onProgress?.(ev);
     const trainNumber = String(input.trainNumber).trim();
@@ -943,7 +1012,7 @@ export class BookingV2Service {
       fromTrain.length > 0 ? fromTrain : [...BOOKING_V2_ALTERNATE_PATH_CLASSES];
 
     logStep(
-      `Start: ${from} → ${to} | journeyDate=${input.date} (DD-MM-YYYY ${dateDdMmYyyy}) | probeClasses=${classes.join(',')} (${fromTrain.length ? 'from train avlClasses' : 'fallback list'}) quota=${quota}`,
+      `Start: ${from} → ${to} (offsets: before=${input.stationsBefore ?? 0}, after=${input.stationsAfter ?? 0}) | journeyDate=${input.date} (DD-MM-YYYY ${dateDdMmYyyy}) | probeClasses=${classes.join(',')} (${fromTrain.length ? 'from train avlClasses' : 'fallback list'}) quota=${quota}`,
     );
 
     const stationNameMap: Record<string, string> = {};
@@ -988,8 +1057,19 @@ export class BookingV2Service {
       const name = String(st.stationName ?? '').trim();
       if (code && name) stationNameMap[code] = name;
     }
-    const stations = stationCodesBetweenStops(stationList, from, to);
-    if (!stations?.length) {
+
+    // Find index of from and to in stationList to construct offset slice
+    const codes = stationList
+      .map((s) =>
+        String(s.stationCode ?? '')
+          .trim()
+          .toUpperCase(),
+      )
+      .filter(Boolean);
+    const fromIdx = codes.indexOf(from);
+    const toIdx = codes.indexOf(to);
+
+    if (fromIdx < 0 || toIdx < 0 || fromIdx >= toIdx) {
       logStep(
         `Route slice: FAILED — "${from}" or "${to}" not found in order on this train (or same station)`,
       );
@@ -1009,6 +1089,13 @@ export class BookingV2Service {
       };
     }
 
+    const startIdx = Math.max(0, fromIdx - (input.stationsBefore ?? 0));
+    const endIdx = Math.min(
+      stationList.length - 1,
+      toIdx + (input.stationsAfter ?? 0),
+    );
+    const stations = codes.slice(startIdx, endIdx + 1);
+
     logStep(
       `Route slice: ${stations.length} stops from boarding to destination: ${stations.join(' → ')}`,
     );
@@ -1021,7 +1108,8 @@ export class BookingV2Service {
     let currentIdx = 0;
     const targetIdx = stations.length - 1;
     let hop = 0;
-    const probeCache = new Map<string, MultiClassProbeResult>();
+    const probeCache =
+      sharedProbeCache ?? new Map<string, MultiClassProbeResult>();
     const maxIterations = Math.max(8, stations.length * 4);
     let iterations = 0;
 
@@ -1535,18 +1623,23 @@ export class BookingV2Service {
     this.logger.log(`[pnr] Fetching PNR status for ${pnr}`);
 
     try {
-      const response = await axios.get('https://irctc1.p.rapidapi.com/api/v3/getPNRStatus', {
-        params: { pnrNumber: pnr },
-        headers: {
-          'x-rapidapi-key': key,
-          'x-rapidapi-host': 'irctc1.p.rapidapi.com',
-          'Content-Type': 'application/json',
+      const response = await axios.get(
+        'https://irctc1.p.rapidapi.com/api/v3/getPNRStatus',
+        {
+          params: { pnrNumber: pnr },
+          headers: {
+            'x-rapidapi-key': key,
+            'x-rapidapi-host': 'irctc1.p.rapidapi.com',
+            'Content-Type': 'application/json',
+          },
         },
-      });
+      );
       return response.data;
     } catch (error) {
       const errMsg = error instanceof Error ? error.message : String(error);
-      this.logger.error(`[pnr] Failed to fetch PNR status for ${pnr}: ${errMsg}`);
+      this.logger.error(
+        `[pnr] Failed to fetch PNR status for ${pnr}: ${errMsg}`,
+      );
       throw new Error(`Failed to fetch PNR status: ${errMsg}`);
     }
   }

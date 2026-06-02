@@ -921,7 +921,9 @@ export class Service2Service {
     const boardingStation = String(params.stationCode ?? '')
       .trim()
       .toUpperCase();
-    const cls = String(params.classCode ?? 'ALL').trim().toUpperCase();
+    const cls = String(params.classCode ?? 'ALL')
+      .trim()
+      .toUpperCase();
     const triggerSource = params.triggerSource ?? 'manual';
     const destinationStation = params.destinationStation
       ? String(params.destinationStation).trim().toUpperCase()
@@ -1158,7 +1160,9 @@ export class Service2Service {
         } catch (err) {
           const emsg = err instanceof Error ? err.message : String(err);
           errors.push(`${roundLabel}/${classCode}: ${emsg}`);
-          logStep(`step=vacant_berth_class_error ${baseCtx} label=${roundLabel} cls=${classCode} ${emsg}`);
+          logStep(
+            `step=vacant_berth_class_error ${baseCtx} label=${roundLabel} cls=${classCode} ${emsg}`,
+          );
         }
       }
       logStep(
@@ -1481,9 +1485,7 @@ export class Service2Service {
         openAiSummary = `OpenAI summary unavailable: ${emsg}`;
       }
     } else {
-      logStep(
-        `step=openai_skipped_no_api_key ${baseCtx}`,
-      );
+      logStep(`step=openai_skipped_no_api_key ${baseCtx}`);
     }
 
     let chartRefreshNotice: Service2CheckResult['chartRefreshNotice'];

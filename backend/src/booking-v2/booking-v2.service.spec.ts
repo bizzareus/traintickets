@@ -386,7 +386,9 @@ describe('BookingV2Service', () => {
   describe('getPnrStatus', () => {
     it('calls getPNRStatus endpoint with correct options and returns data', async () => {
       const fakeData = { status: true, data: { Pnr: '1234567890' } };
-      const getSpy = jest.spyOn(axios, 'get').mockResolvedValueOnce({ data: fakeData });
+      const getSpy = jest
+        .spyOn(axios, 'get')
+        .mockResolvedValueOnce({ data: fakeData });
 
       const result = await service.getPnrStatus('1234567890');
 
@@ -406,12 +408,111 @@ describe('BookingV2Service', () => {
     });
 
     it('throws error when axios request fails', async () => {
-      const getSpy = jest.spyOn(axios, 'get').mockRejectedValueOnce(new Error('Network Error'));
+      const getSpy = jest
+        .spyOn(axios, 'get')
+        .mockRejectedValueOnce(new Error('Network Error'));
 
       await expect(service.getPnrStatus('1234567890')).rejects.toThrow(
         'Failed to fetch PNR status: Network Error',
       );
       getSpy.mockRestore();
+    });
+  });
+
+  describe('findAlternatePaths with station offsets', () => {
+    const input = {
+      trainNumber: '12951',
+      from: 'NZM', // Boarding NZM
+      to: 'BPL', // Destination BPL
+      date: '2026-06-02',
+    };
+
+    beforeEach(() => {
+      service['irctc'].getTrainSchedule = jest.fn().mockResolvedValue({
+        ok: true,
+        schedule: {
+          trainName: 'Test Express',
+          stationList: [
+            { stationCode: 'NDLS' }, // NZM - 1
+            { stationCode: 'NZM' }, // Boarding X
+            { stationCode: 'AGC' },
+            { stationCode: 'BPL' }, // Destination Y
+            { stationCode: 'BCT' }, // BPL + 1
+          ],
+        },
+      });
+    });
+
+    it('returns direct route immediately if it is fully confirmed', async () => {
+      // Mock probeSegmentAllClasses to return confirmed segment for NZM -> BPL
+      const probeSpy = jest
+        .spyOn(service as any, 'probeSegmentAllClasses')
+        .mockResolvedValue({
+          bestConfirmedClassIndex: 0,
+          perClass: [
+            {
+              fare: 100,
+              day: {
+                availablityStatus: 'AVAILABLE 10',
+                vendorPredictionStatus: 'Confirm',
+              },
+            },
+          ],
+        });
+
+      const result = await service.findAlternatePaths(input);
+
+      // Verify it successfully found direct confirmed route NZM -> BPL
+      expect(result.legs).toHaveLength(1);
+      expect(result.legs[0].from).toBe('NZM');
+      expect(result.legs[0].to).toBe('BPL');
+      expect(result.legs[0].segmentKind).toBe('confirmed');
+      expect(probeSpy).toHaveBeenCalledTimes(2); // Probed NZM -> BPL and NZM -> AGC in parallel wave
+      probeSpy.mockRestore();
+    });
+
+    it('tries offset combinations and returns the first fully confirmed offset result if direct is waitlisted', async () => {
+      const probeSpy = jest
+        .spyOn(service as any, 'probeSegmentAllClasses')
+        .mockImplementation((trainNumber, fromStn, toStn) => {
+          // Direct NZM -> BPL is waitlisted
+          if (fromStn === 'NZM' && toStn === 'BPL') {
+            return Promise.resolve({
+              bestConfirmedClassIndex: null,
+              perClass: [],
+              displayRow: { availablityStatus: 'RLWL 1' },
+            });
+          }
+          // Offset NDLS -> BPL is confirmed
+          if (fromStn === 'NDLS' && toStn === 'BPL') {
+            return Promise.resolve({
+              bestConfirmedClassIndex: 0,
+              perClass: [
+                {
+                  fare: 120,
+                  day: {
+                    availablityStatus: 'AVAILABLE 5',
+                    vendorPredictionStatus: 'Confirm',
+                  },
+                },
+              ],
+            });
+          }
+          return Promise.resolve({
+            bestConfirmedClassIndex: null,
+            perClass: [],
+          });
+        });
+
+      const result = await service.findAlternatePaths(input);
+
+      // NZM -> BPL (failed) -> offsets tried
+      // Combination 1: before=1, after=0 -> NDLS -> BPL (succeeds!)
+      expect(result.legs).toHaveLength(1);
+      expect(result.legs[0].from).toBe('NDLS');
+      expect(result.legs[0].to).toBe('BPL');
+      expect(result.legs[0].segmentKind).toBe('confirmed');
+      probeSpy.mockRestore();
     });
   });
 });

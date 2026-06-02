@@ -35,6 +35,9 @@ import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
 import { cn } from "@/lib/utils";
 import moment from "moment";
+import { SmartPnrPredictor } from "@/components/booking-v2/SmartPnrPredictor";
+import { VisualSegmentSplitter } from "@/components/booking-v2/VisualSegmentSplitter";
+import { LiveScraperCockpit } from "@/components/booking-v2/LiveScraperCockpit";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 const LEG_ALERT_STORAGE_PREFIX = "lastBerth_leg_alert_";
@@ -2265,8 +2268,9 @@ function CompactLegChartCta({
       } catch {
         /* ignore */
       }
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Failed to set alert.");
+    } catch (err: any) {
+      const msg = err?.response?.data?.message || err?.message || "Failed to set alert.";
+      setError(msg);
     } finally {
       setSubmitting(false);
     }
@@ -2472,6 +2476,7 @@ function BookingV2PageContent() {
   const [pnrLoading, setPnrLoading] = useState(false);
   const [pnrError, setPnrError] = useState<string | null>(null);
   const [pnrData, setPnrData] = useState<PnrStatusData | null>(null);
+  const [showScraperCockpit, setShowScraperCockpit] = useState(false);
   const altAlternatePathCaptureRef = useRef<HTMLDivElement>(null);
   const [altShareBusy, setAltShareBusy] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -3400,6 +3405,58 @@ function BookingV2PageContent() {
                   </div>
                 </div>
               )}
+
+              {/* Smart PNR Status Predictor */}
+              <SmartPnrPredictor pnrData={pnrData} />
+
+              {/* Stress-Free Ticket Rescue & Segment Splitter */}
+              <div className="mt-6 border-t border-slate-100 pt-6">
+                <VisualSegmentSplitter
+                  fromCode={pnrData.From}
+                  toCode={pnrData.To}
+                  trainNumber={pnrData.TrainNo}
+                  trainName={pnrData.TrainName}
+                  journeyDate={journeyDate || ""}
+                  altResult={altResult}
+                  altLoading={altLoading}
+                />
+
+                {/* Scraper Cockpit Expandable Section */}
+                <div className="mt-6 rounded-2xl border border-purple-100 bg-purple-50/20 p-5">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <h4 className="text-base font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        <span className="h-2.5 w-2.5 rounded-full bg-purple-500 animate-pulse" />
+                        Guardian Live Scraper & Coach Blueprint Monitor
+                      </h4>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        Track live IRCTC charting prep and scan vacant berths on our interactive seat grid.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowScraperCockpit(!showScraperCockpit)}
+                      className="inline-flex items-center justify-center rounded-xl bg-purple-600 hover:bg-purple-500 px-4 py-2 text-xs font-black uppercase tracking-wider text-white shadow-md shadow-purple-500/10 transition-all hover:scale-[1.02] active:scale-95 shrink-0"
+                    >
+                      {showScraperCockpit ? "Close Scraper Cockpit" : "Launch Live Scraper"}
+                    </button>
+                  </div>
+
+                  {showScraperCockpit && (
+                    <div className="mt-4 animate-in fade-in duration-300">
+                      <LiveScraperCockpit
+                        trainNumber={pnrData.TrainNo}
+                        trainName={pnrData.TrainName}
+                        fromStationCode={pnrData.From}
+                        toStationCode={pnrData.To}
+                        journeyDate={journeyDate || ""}
+                        classCode={pnrData.Class}
+                        inlineMode={true}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -4072,6 +4129,22 @@ function BookingV2PageContent() {
                                       altResult.stationNameMap,
                                     )}
                                   </span>
+                                  {stepIndex === 1 &&
+                                    fromSt?.stationCode &&
+                                    leg.from.toUpperCase() !==
+                                      fromSt.stationCode.toUpperCase() && (
+                                      <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm animate-pulse">
+                                        💡 Book from earlier station: {leg.from}
+                                      </span>
+                                    )}
+                                  {isLast &&
+                                    toSt?.stationCode &&
+                                    leg.to.toUpperCase() !==
+                                      toSt.stationCode.toUpperCase() && (
+                                      <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm animate-pulse">
+                                        💡 Book to further station: {leg.to}
+                                      </span>
+                                    )}
                                   {timeLine && (
                                     <span className="text-xs tabular-nums text-gray-500">
                                       {timeLine}

@@ -506,7 +506,7 @@ export class JourneyTaskService {
         trainStartDate: trainStartDateStr,
         destinationStation: task.toStationCode,
       });
-      const result = await this.service2.check({
+      let result = await this.service2.check({
         trainNumber: task.trainNumber,
         stationCode: task.stationCode,
         journeyDate: journeyDateStr,
@@ -514,6 +514,86 @@ export class JourneyTaskService {
         destinationStation: task.toStationCode,
         triggerSource: 'cron',
       });
+
+      if (
+        result.status !== 'success' ||
+        !result.seats ||
+        result.seats.length === 0
+      ) {
+        const scheduleResult = await this.irctc.getTrainSchedule(
+          task.trainNumber,
+        );
+        if (scheduleResult.ok && scheduleResult.schedule?.stationList?.length) {
+          const stationList = scheduleResult.schedule.stationList;
+          const codes = stationList
+            .map((s) =>
+              String(s.stationCode ?? '')
+                .trim()
+                .toUpperCase(),
+            )
+            .filter(Boolean);
+          const fromIdx = codes.indexOf(task.fromStationCode);
+          const toIdx = codes.indexOf(task.toStationCode);
+
+          if (fromIdx >= 0 && toIdx >= 0 && fromIdx < toIdx) {
+            const maxOffset = 3;
+            let offsetFound = false;
+
+            for (let offset = 1; offset <= maxOffset; offset++) {
+              const combos = [
+                { before: offset, after: 0 },
+                { before: 0, after: offset },
+                { before: offset, after: offset },
+              ];
+
+              for (const combo of combos) {
+                const startIdx = Math.max(0, fromIdx - combo.before);
+                const endIdx = Math.min(codes.length - 1, toIdx + combo.after);
+
+                // Skip if we didn't actually shift
+                if (startIdx === fromIdx && endIdx === toIdx) continue;
+
+                const X_offset = codes[startIdx];
+                const Y_offset = codes[endIdx];
+
+                console.log(
+                  `[alert-task ${task.id}] Trying fallback station offset (before=${combo.before}, after=${combo.after}): ${X_offset} -> ${Y_offset}`,
+                );
+
+                try {
+                  const offsetResult = await this.service2.check({
+                    trainNumber: task.trainNumber,
+                    stationCode: X_offset,
+                    journeyDate: journeyDateStr,
+                    trainStartDate: trainStartDateStr,
+                    destinationStation: Y_offset,
+                    triggerSource: 'cron',
+                  });
+
+                  if (
+                    offsetResult.status === 'success' &&
+                    offsetResult.seats &&
+                    offsetResult.seats.length > 0
+                  ) {
+                    console.log(
+                      `[alert-task ${task.id}] Found confirmed seats using fallback: ${X_offset} -> ${Y_offset}`,
+                    );
+                    result = offsetResult;
+                    offsetFound = true;
+                    break;
+                  }
+                } catch (err) {
+                  console.error(
+                    `[alert-task ${task.id}] Offset check failed for ${X_offset} -> ${Y_offset}`,
+                    err,
+                  );
+                }
+              }
+              if (offsetFound) break;
+            }
+          }
+        }
+      }
 
       console.log('result', result);
 

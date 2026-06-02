@@ -40,7 +40,12 @@ describe('JourneyTaskService', () => {
         { provide: Service2Service, useValue: mockService2 },
         { provide: NotificationService, useValue: mockNotification },
         { provide: ChartTimeService, useValue: {} },
-        { provide: IrctcService, useValue: {} },
+        {
+          provide: IrctcService,
+          useValue: {
+            getTrainSchedule: jest.fn().mockResolvedValue({ ok: false }),
+          },
+        },
         { provide: TrainCompositionService, useValue: {} },
       ],
     }).compile();
@@ -91,6 +96,16 @@ describe('JourneyTaskService', () => {
       mockService2.check.mockResolvedValue({
         status: 'success',
         availability: [{ status: 'AVAILABLE 10' }],
+        seats: [
+          {
+            coach: 'A1',
+            berth: '10',
+            class: '3A',
+            seat: '10',
+            from: 'NDLS',
+            to: 'BPL',
+          },
+        ],
       });
       mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
         email: 'test@example.com',
@@ -155,6 +170,90 @@ describe('JourneyTaskService', () => {
         }),
       );
       expect(mockNotification.notifyUser).not.toHaveBeenCalled();
+    });
+
+    it('should try nearby station offsets and notify if an offset check succeeds', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
+        ...mockTaskData,
+        fromStationCode: 'NZM', // user requested boarding NZM
+        toStationCode: 'BPL', // user requested destination BPL
+        stationCode: 'NZM',
+      });
+
+      const scheduleSpy = jest
+        .spyOn(service['irctc'], 'getTrainSchedule')
+        .mockResolvedValueOnce({
+          ok: true,
+          schedule: {
+            trainName: 'Test Express',
+            stationList: [
+              { stationCode: 'NDLS' }, // NZM - 1
+              { stationCode: 'NZM' }, // Boarding X
+              { stationCode: 'AGC' },
+              { stationCode: 'BPL' }, // Destination Y
+              { stationCode: 'ET' }, // BPL + 1
+            ],
+          },
+        } as any);
+
+      // Direct check NZM -> BPL returns failed
+      mockService2.check.mockResolvedValueOnce({
+        status: 'failed',
+        seats: [],
+      });
+
+      // Let's say offset NDLS -> BPL succeeds (before=1, after=0)
+      mockService2.check.mockResolvedValueOnce({
+        status: 'success',
+        seats: [
+          {
+            coach: 'A1',
+            berth: '12',
+            class: '3A',
+            seat: '12',
+            from: 'NDLS',
+            to: 'BPL',
+          },
+        ],
+      });
+
+      mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
+        email: 'test@example.com',
+        mobile: '9999999999',
+      });
+
+      await service.runTask('task-1', true);
+
+      // Verify direct check + offset check both called
+      expect(mockService2.check).toHaveBeenCalledTimes(2);
+      expect(mockService2.check).toHaveBeenNthCalledWith(
+        1,
+        expect.objectContaining({
+          stationCode: 'NZM',
+          destinationStation: 'BPL',
+        }),
+      );
+      expect(mockService2.check).toHaveBeenNthCalledWith(
+        2,
+        expect.objectContaining({
+          stationCode: 'NDLS',
+          destinationStation: 'BPL',
+        }),
+      );
+
+      // Verify task marked as completed
+      const completedData: unknown = expect.objectContaining({
+        status: 'completed',
+      });
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: completedData,
+        }),
+      );
+
+      // Verify user notified
+      expect(mockNotification.notifyUser).toHaveBeenCalled();
+      scheduleSpy.mockRestore();
     });
   });
 });

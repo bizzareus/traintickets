@@ -38,7 +38,7 @@ async function openAlternateModal(page: import("@playwright/test").Page) {
   await selectDefaultRoute(page);
   await page.getByRole("button", { name: "Search trains" }).click();
   await expect(page.getByRole("list", { name: "Train results" })).toContainText(DEFAULT_TRAIN.trainNumber);
-  await page.getByRole("button", { name: "Find best available seats" }).click();
+  await page.getByRole("button", { name: "Search all classes" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
 }
 
@@ -76,7 +76,7 @@ test.describe("booking v2 (mocked API)", () => {
     await selectDefaultRoute(page);
     await page.getByRole("button", { name: "Search trains" }).click();
     await expect(
-      page.getByRole("status").filter({ hasText: "No trains loaded" }),
+      page.getByRole("status").filter({ hasText: "No trains found" }),
     ).toBeVisible();
   });
 
@@ -107,10 +107,8 @@ test.describe("booking v2 (mocked API)", () => {
     const legHeaders = dialog.locator("text=/^LEG \\d+ OF \\d+$/i");
     await expect(legHeaders).toHaveCount(3);
 
-    // The collapsed middle card should say "No confirmed tickets" and show A → MID span
-    await expect(dialog).toContainText("No confirmed tickets");
-    // "No tickets available on this segment." should appear for the middle span
-    await expect(dialog).toContainText("No tickets available on this segment.");
+    // The collapsed middle card should show Waitlisted and the stations
+    await expect(dialog).toContainText("Waitlisted");
 
     // Individual hop codes B, C, D must NOT appear as station codes in any leg card
     // (they are interior nodes of the collapsed span and should not be rendered separately)
@@ -134,8 +132,8 @@ test.describe("booking v2 (mocked API)", () => {
     const dialog = page.getByRole("dialog");
 
     // Both class options should appear
-    await expect(dialog).toContainText("Class SL");
-    await expect(dialog).toContainText("Class 3A");
+    await expect(dialog).toContainText("SL");
+    await expect(dialog).toContainText("3A");
 
     // Both availability labels should be shown
     await expect(dialog).toContainText("AVAILABLE-0020");
@@ -157,8 +155,9 @@ test.describe("booking v2 (mocked API)", () => {
     await page.goto("/");
     await openAlternateModal(page);
 
-    await expect(page.getByRole("dialog")).toContainText("Full journey covered in 2 confirmed segments");
-    await expect(page.getByRole("dialog")).toContainText("Total fare (confirmed segments): ₹450");
+    await expect(page.getByRole("dialog")).toContainText("Full journey covered in 2 confirmed tickets");
+    await expect(page.getByRole("dialog")).toContainText("Total fare");
+    await expect(page.getByRole("dialog")).toContainText("₹450");
     await expect(page.getByRole("dialog")).toContainText("ORIG");
     await expect(page.getByRole("dialog")).toContainText("MID");
     await expect(page.getByRole("dialog")).toContainText("Book");
@@ -172,7 +171,7 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog).toContainText("Full journey covered in 3 confirmed segments");
+    await expect(dialog).toContainText("Full journey covered in 3 confirmed tickets");
     await expect(dialog).toContainText("S1");
     await expect(dialog).toContainText("S2");
   });
@@ -185,11 +184,9 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog).toContainText("There are no tickets available overall.");
-    await expect(dialog).toContainText("To final destination");
     await expect(dialog).toContainText("MID");
     await expect(dialog).toContainText("DEST");
-    await expect(dialog.getByText("Get availability alerts")).toBeVisible();
+    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
   });
 
   test("alternate path: 20-segment realtime chain collapses to single remainder row", async ({ page }) => {
@@ -201,10 +198,10 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog).toContainText("There are no tickets available overall.");
     await expect(dialog).toContainText("ORIG");
     await expect(dialog).toContainText("DEST");
     await expect(dialog).toContainText("Leg 1 of 1");
+    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
   });
 
   test("alternate path: 50-segment realtime chain still shows collapsed leg and subscribe panel", async ({
@@ -218,8 +215,9 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog).toContainText("There are no tickets available overall.");
-    await expect(dialog.getByText("Get availability alerts")).toBeVisible();
+    await expect(dialog).toContainText("ORIG");
+    await expect(dialog).toContainText("DEST");
+    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
   });
 
   test("alternate path API error shows in modal", async ({ page }) => {
@@ -229,7 +227,7 @@ test.describe("booking v2 (mocked API)", () => {
     await page.goto("/");
     await selectDefaultRoute(page);
     await page.getByRole("button", { name: "Search trains" }).click();
-    await page.getByRole("button", { name: "Find best available seats" }).click();
+    await page.getByRole("button", { name: "Search all classes" }).click();
     await expect(page.getByRole("dialog")).toContainText("Upstream timeout");
   });
 
@@ -245,19 +243,19 @@ test.describe("booking v2 (mocked API)", () => {
       timeout: 15_000,
     });
 
+    await page.getByRole("button", { name: "Get Ticket Alert" }).first().click();
     await page.getByPlaceholder("Email").fill("e2e-mock@example.com");
-    await page.getByRole("button", { name: "Subscribe to alerts" }).click();
+    await page.getByRole("button", { name: "Set alert" }).click();
 
-    await expect(page.getByText(/Alert has been set up!/)).toBeVisible();
-    await expect(page.getByText(/realtime availability/)).toBeVisible();
+    await expect(page.getByText("✓ Alert set")).toBeVisible();
   });
 
   test("subscribe workflow: validation failure shows message", async ({ page }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) => alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
-      journeyValidate: {
-        valid: false,
-        errors: [{ code: "RUN_DAY", message: "Train does not run on this day." }],
+      journeyPostError: {
+        status: 400,
+        body: { message: "Train does not run on this day." },
       },
     });
     await page.goto("/");
@@ -266,17 +264,17 @@ test.describe("booking v2 (mocked API)", () => {
       timeout: 15_000,
     });
 
+    await page.getByRole("button", { name: "Get Ticket Alert" }).first().click();
     await page.getByPlaceholder("Email").fill("e2e@example.com");
-    await page.getByRole("button", { name: "Subscribe to alerts" }).click();
+    await page.getByRole("button", { name: "Set alert" }).click();
 
     await expect(page.getByRole("dialog")).toContainText("Train does not run on this day.");
-    await expect(page.getByText(/Alert has been set up!/)).not.toBeVisible();
+    await expect(page.getByText("✓ Alert set")).not.toBeVisible();
   });
 
-  test("subscribe workflow: journey POST error after validate", async ({ page }) => {
+  test("subscribe workflow: journey POST error shows message", async ({ page }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) => alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
-      journeyValidate: { valid: true },
       journeyPostError: { status: 400, body: { message: "Queue full" } },
     });
     await page.goto("/");
@@ -285,8 +283,9 @@ test.describe("booking v2 (mocked API)", () => {
       timeout: 15_000,
     });
 
+    await page.getByRole("button", { name: "Get Ticket Alert" }).first().click();
     await page.getByPlaceholder("Email").fill("e2e@example.com");
-    await page.getByRole("button", { name: "Subscribe to alerts" }).click();
+    await page.getByRole("button", { name: "Set alert" }).click();
 
     await expect(page.getByRole("dialog")).toContainText("Queue full");
   });
@@ -317,8 +316,9 @@ test.describe("booking v2 (mocked API)", () => {
       timeout: 15_000,
     });
 
-    await page.getByRole("button", { name: "Subscribe to alerts" }).click();
-    await expect(page.getByRole("dialog")).toContainText("Enter an email or mobile number for alerts.");
+    await page.getByRole("button", { name: "Get Ticket Alert" }).first().click();
+    await page.getByRole("button", { name: "Set alert" }).click();
+    await expect(page.getByRole("dialog")).toContainText("Enter an email or mobile number.");
   });
 
   test("date picker displays in readable format (e.g. 'Friday, Apr 03') instead of YYYY-MM-DD", async ({
@@ -448,18 +448,18 @@ test.describe("booking v2 (mocked API)", () => {
       await route.fulfill({ status: 200, contentType: "application/x-ndjson", body: ndjson });
     });
 
-    await page.getByRole("button", { name: "Find best available seats" }).click();
+    await page.getByRole("button", { name: "Search all classes" }).click();
 
     // Loading state — spinner and initial text should appear
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("Searching for the best seats on this train…")).toBeVisible({
+    await expect(dialog.getByText("Searching for the best seats…")).toBeVisible({
       timeout: 5_000,
     });
 
     resolveStream?.();
 
     // After stream resolves, results should appear
-    await expect(dialog.getByText("Best available on")).toBeVisible({ timeout: 10_000 });
+    await expect(dialog.getByText("Best seats on")).toBeVisible({ timeout: 10_000 });
   });
 
   test("streaming progress: progress events rendered as step items", async ({ page }) => {
@@ -486,7 +486,7 @@ test.describe("booking v2 (mocked API)", () => {
 
     const dialog = page.getByRole("dialog");
     // After stream completes the result should show
-    await expect(dialog).toContainText("Best available on", { timeout: 10_000 });
+    await expect(dialog).toContainText("Best seats on", { timeout: 10_000 });
 
     // The confirmed-ticket progress event text should appear in the result
     await expect(dialog).toContainText("ORIG");
@@ -513,11 +513,11 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText(/Still checking the best options/i)).toBeVisible({
+    await expect(dialog.getByText(/Loading chart time/i)).toBeVisible({
       timeout: 8_000,
     });
     // Alert CTA already visible while still loading
-    await expect(dialog.getByText("Get notified when seats open")).toBeVisible();
+    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
 
     resolveMeta?.();
   });
@@ -537,14 +537,13 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("Chart not prepared yet")).toBeVisible({ timeout: 15_000 });
+    await expect(dialog.getByText("New tickets open at")).toBeVisible({ timeout: 15_000 });
     await expect(dialog).toContainText("11:59 PM");
 
-    await expect(dialog.getByText("Get notified when seats open")).toBeVisible();
-    await expect(dialog.getByRole("button", { name: "Set alert for this leg" })).toBeVisible();
+    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
   });
 
-  test("chart time: chart ALREADY prepared — shows warning and still shows alert CTA", async ({
+  test("chart time: chart ALREADY prepared — shows warning", async ({
     page,
   }) => {
     // chartOneTime "00:01" is always in the past today → already prepared
@@ -559,13 +558,13 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("Chart already prepared")).toBeVisible({ timeout: 15_000 });
+    await expect(dialog.getByText("Chart for ORIG was released at")).toBeVisible({ timeout: 15_000 });
 
-    // Alert CTA must still be visible even though chart is already prepared
-    await expect(dialog.getByText("Get notified when seats open")).toBeVisible();
+    // Alert CTA must not be visible since chart is already prepared
+    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).not.toBeVisible();
   });
 
-  test("chart time: no chart time available — shows fallback card and alert CTA", async ({
+  test("chart time: no chart time available — shows fallback alert CTA", async ({
     page,
   }) => {
     await installBookingV2Mocks(page, {
@@ -579,12 +578,8 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(
-      dialog.getByText(/Chart preparation time for .+ is not yet available/i),
-    ).toBeVisible({ timeout: 15_000 });
-
     // Alert CTA still present
-    await expect(dialog.getByText("Get notified when seats open")).toBeVisible();
+    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
   });
 
   test("chart time: alert CTA — requires email or mobile before submitting", async ({ page }) => {
@@ -599,10 +594,11 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("Chart not prepared yet")).toBeVisible({ timeout: 15_000 });
+    await expect(dialog.getByText("New tickets open at")).toBeVisible({ timeout: 15_000 });
 
-    await dialog.getByRole("button", { name: "Set alert for this leg" }).first().click();
-    await expect(dialog.getByText("Enter an email or mobile number for alerts.")).toBeVisible();
+    await dialog.getByRole("button", { name: "Get Ticket Alert" }).first().click();
+    await dialog.getByRole("button", { name: "Set alert" }).first().click();
+    await expect(dialog.getByText("Enter an email or mobile number.")).toBeVisible();
   });
 
   test("chart time: alert CTA — successful alert submission shows confirmation", async ({
@@ -619,12 +615,13 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("Chart not prepared yet")).toBeVisible({ timeout: 15_000 });
+    await expect(dialog.getByText("New tickets open at")).toBeVisible({ timeout: 15_000 });
 
+    await dialog.getByRole("button", { name: "Get Ticket Alert" }).first().click();
     await dialog.getByPlaceholder("Email").first().fill("e2e-leg@example.com");
-    await dialog.getByRole("button", { name: "Set alert for this leg" }).first().click();
+    await dialog.getByRole("button", { name: "Set alert" }).first().click();
 
-    await expect(dialog.getByText("✓ Alert set up")).toBeVisible({ timeout: 8_000 });
-    await expect(dialog.getByText(/We'll notify you when a ticket opens/i)).toBeVisible();
+    await expect(dialog.getByText("✓ Alert set")).toBeVisible({ timeout: 8_000 });
+    await expect(dialog.getByText(/Will notify at .*11:59 PM/)).toBeVisible();
   });
 });

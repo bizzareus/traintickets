@@ -39,17 +39,22 @@ Go to https://www.irctc.co.in/online-charts/.
       // client.run() returns the final output as a string by default if no schema is provided.
       // In v3, it can also return a Session object or similar depending on the SDK version.
       // Based on README, await client.run(task) returns the output.
-      
+
       const response = await this.client.run(task);
 
-      this.logger.log(`Browser Use agent completed. Response: ${JSON.stringify(response)}`);
+      this.logger.log(
+        `Browser Use agent completed. Response: ${JSON.stringify(response)}`,
+      );
 
       return {
         ok: true,
         agentResponse: response,
       };
     } catch (error) {
-      this.logger.error(`Browser Use agent failed: ${error.message}`, error.stack);
+      this.logger.error(
+        `Browser Use agent failed: ${error.message}`,
+        error.stack,
+      );
       return {
         ok: false,
         error: error.message,

@@ -35,10 +35,9 @@ export class RedditAutomationService implements OnModuleInit {
     this.logger.log(`Polling Reddit thread ${threadId}...`);
 
     try {
-      const comments = (await this.redditApi.getLatestComments(threadId)) as Record<
-        string,
-        any
-      >[];
+      const comments = (await this.redditApi.getLatestComments(
+        threadId,
+      )) as Record<string, any>[];
 
       let maxTimestamp = this.lastSeenTimestamp;
       const now = Math.floor(Date.now() / 1000);
@@ -81,9 +80,10 @@ export class RedditAutomationService implements OnModuleInit {
   async syncRedditComments(url: string) {
     this.logger.log(`Syncing Reddit thread: ${url}`);
     // 1. Fetch comments
-    const comments = (await this.redditApi.getCommentsFromUrl(
-      url,
-    )) as Record<string, any>[];
+    const comments = (await this.redditApi.getCommentsFromUrl(url)) as Record<
+      string,
+      any
+    >[];
 
     const results: any[] = [];
     for (const comment of comments) {
@@ -126,10 +126,7 @@ export class RedditAutomationService implements OnModuleInit {
     if (!comment) throw new Error('Comment not found');
 
     // 1. Analyze with GPT
-    const gtmData = await this.gpt.parseGTMDetails(
-      comment.content,
-      new Date(),
-    );
+    const gtmData = await this.gpt.parseGTMDetails(comment.content, new Date());
 
     // 2. Update DB with analysis results
     const updated = await this.prisma.redditAnalyzedComment.update({
@@ -160,15 +157,17 @@ export class RedditAutomationService implements OnModuleInit {
         if (screenshotUrl) {
           await this.prisma.redditAnalyzedComment.update({
             where: { id },
-            data: { 
+            data: {
               screenshotUrl,
-              status: 'PROCESSED'
+              status: 'PROCESSED',
             },
           });
           this.logger.log(`Saved screenshot for ${id}: ${screenshotUrl}`);
         }
       } catch (err) {
-        this.logger.error(`BrowserUse automation failed for ${id}: ${err.message}`);
+        this.logger.error(
+          `BrowserUse automation failed for ${id}: ${err.message}`,
+        );
       }
     }
 

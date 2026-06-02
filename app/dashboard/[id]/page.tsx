@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
+import { LiveScraperCockpit } from "@/components/booking-v2/LiveScraperCockpit";
 
 type Request = {
   id: string;
@@ -76,6 +77,16 @@ export default function MonitoringDetailPage() {
             Status: <span className="font-medium">{request.status}</span>
           </p>
         </div>
+
+        <LiveScraperCockpit
+          trainNumber={request.train.trainNumber}
+          trainName={request.train.trainName}
+          fromStationCode={request.stationCode}
+          toStationCode={request.stationCode}
+          journeyDate={request.journeyDate}
+          classCode={request.classCode}
+          inlineMode={true}
+        />
 
         {executions.length > 0 && (
           <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-8 shadow">
