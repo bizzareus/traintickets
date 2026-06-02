@@ -82,7 +82,12 @@ export function isLegConfirmed(avl: AvlDayLike | null | undefined): boolean {
   const st = String(avl.availablityStatus ?? '')
     .trim()
     .toUpperCase();
-  return st.startsWith('AVAILABLE');
+  return (
+    st.startsWith('AVAILABLE') ||
+    st.startsWith('CURR_AVBL') ||
+    st.startsWith('CNF') ||
+    st.startsWith('CURRENT AV')
+  );
 }
 
 /**

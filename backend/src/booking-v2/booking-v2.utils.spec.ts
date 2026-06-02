@@ -170,6 +170,37 @@ describe('isLegConfirmed', () => {
       }),
     ).toBe(true);
   });
+  it('accepts CURR_AVBL*', () => {
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'CURR_AVBL 12',
+      }),
+    ).toBe(true);
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'curr_avbl-5',
+      }),
+    ).toBe(true);
+  });
+  it('accepts CNF*', () => {
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'CNF',
+      }),
+    ).toBe(true);
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'cnf/available',
+      }),
+    ).toBe(true);
+  });
+  it('accepts CURRENT AV*', () => {
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'CURRENT AVAILABLE',
+      }),
+    ).toBe(true);
+  });
   it('rejects REGRET', () => {
     expect(
       isLegConfirmed({

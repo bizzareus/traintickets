@@ -372,7 +372,12 @@ export class BookingV2Service {
   /** `YYYY-MM-DD` or passthrough if already `DD-MM-YYYY`. */
   normalizeToRailApiDate(dateInput: string): string | null {
     const t = String(dateInput).trim();
-    if (/^\d{4}-\d{2}-\d{2}$/.test(t)) return ymdToRailApiDdMmYyyy(t);
+    if (/^\d{4}-\d{1,2}-\d{1,2}$/.test(t)) {
+      const m = t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+      if (!m) return null;
+      const [, y, mo, d] = m;
+      return `${d.padStart(2, '0')}-${mo.padStart(2, '0')}-${y}`;
+    }
     if (/^\d{1,2}-\d{1,2}-\d{4}$/.test(t)) {
       const m = t.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
       if (!m) return null;
@@ -604,7 +609,11 @@ export class BookingV2Service {
 
         const trainFrom = (train.fromStnCode ?? from).trim().toUpperCase();
         const trainTo = (train.toStnCode ?? to).trim().toUpperCase();
-        const avlClasses = normalizeAndDedupeClassCodes(train.avlClasses ?? []);
+        const rawClasses =
+          Array.isArray(train.avlClasses) && train.avlClasses.length > 0
+            ? train.avlClasses
+            : [...BOOKING_V2_ALTERNATE_PATH_CLASSES];
+        const avlClasses = normalizeAndDedupeClassCodes(rawClasses);
         const classesForRequest = acOnly
           ? avlClasses.filter(isAcClassCode)
           : avlClasses;
@@ -1140,7 +1149,7 @@ export class BookingV2Service {
           const fromDayCount =
             parseScheduleDayCount(fromStopLine?.dayCount) ?? startDayCount;
           const dayOffset = Math.max(0, fromDayCount - startDayCount);
-          const currentHopDate = moment(input.date, 'YYYY-MM-DD')
+          const currentHopDate = moment(dateDdMmYyyy, 'DD-MM-YYYY')
             .add(dayOffset, 'days')
             .format('DD-MM-YYYY');
 
@@ -1233,7 +1242,7 @@ export class BookingV2Service {
       const fromDayCount =
         parseScheduleDayCount(fromStopLine?.dayCount) ?? startDayCount;
       const dayOffset = Math.max(0, fromDayCount - startDayCount);
-      const bridgeDate = moment(input.date, 'YYYY-MM-DD')
+      const bridgeDate = moment(dateDdMmYyyy, 'DD-MM-YYYY')
         .add(dayOffset, 'days')
         .format('DD-MM-YYYY');
 
@@ -1373,7 +1382,7 @@ export class BookingV2Service {
         stationList[0]?.stationCode?.trim().toUpperCase() || null,
       trainOriginDepartureTime: stationList[0]?.departureTime ?? null,
       debugLog,
-      trainStartDate: moment(input.date, 'YYYY-MM-DD')
+      trainStartDate: moment(dateDdMmYyyy, 'DD-MM-YYYY')
         .subtract(startDayCount - 1, 'days')
         .format('YYYY-MM-DD'),
     };

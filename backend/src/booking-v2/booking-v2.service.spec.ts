@@ -113,6 +113,11 @@ describe('BookingV2Service', () => {
     it('converts YYYY-MM-DD to DD-MM-YYYY', () => {
       expect(service.normalizeToRailApiDate('2026-04-05')).toBe('05-04-2026');
     });
+    it('converts YYYY-M-D and YYYY-MM-D to DD-MM-YYYY with zero padding', () => {
+      expect(service.normalizeToRailApiDate('2026-6-2')).toBe('02-06-2026');
+      expect(service.normalizeToRailApiDate('2026-12-5')).toBe('05-12-2026');
+      expect(service.normalizeToRailApiDate('2026-5-18')).toBe('18-05-2026');
+    });
     it('pads DD-MM-YYYY input', () => {
       expect(service.normalizeToRailApiDate('5-4-2026')).toBe('05-04-2026');
     });
@@ -381,6 +386,40 @@ describe('BookingV2Service', () => {
         '202',
       ]);
     });
+
+    it('enforces acOnly when train avlClasses is empty or undefined by defaulting to AC-only fallback classes', async () => {
+      const findSpy = jest
+        .spyOn(service, 'findAlternatePaths')
+        .mockResolvedValue(altResult('301', [confirmedLeg('A', 'D', 240)]));
+
+      await service.findBestTrains({
+        from: 'A',
+        to: 'D',
+        date: '2026-05-09',
+        acOnly: true,
+        trains: [
+          {
+            trainNumber: '301',
+            trainName: 'Undefined Class Train',
+            departureTime: '07:30',
+            arrivalTime: '10:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            avlClasses: undefined,
+          },
+        ],
+      });
+
+      expect(findSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          trainNumber: '301',
+          avlClasses: expect.arrayContaining(['3A', '2A', '1A']),
+        }),
+      );
+      const calledArgs = findSpy.mock.calls[0][0];
+      expect(calledArgs.avlClasses).not.toContain('SL');
+      expect(calledArgs.avlClasses).not.toContain('2S');
+    });
   });
 
   describe('getPnrStatus', () => {
@@ -512,6 +551,42 @@ describe('BookingV2Service', () => {
       expect(result.legs[0].from).toBe('NDLS');
       expect(result.legs[0].to).toBe('BPL');
       expect(result.legs[0].segmentKind).toBe('confirmed');
+      probeSpy.mockRestore();
+    });
+
+    it('successfully processes input dates formatted as DD-MM-YYYY without producing invalid dates', async () => {
+      const probeSpy = jest
+        .spyOn(service as any, 'probeSegmentAllClasses')
+        .mockResolvedValue({
+          bestConfirmedClassIndex: 0,
+          perClass: [
+            {
+              fare: 100,
+              day: {
+                availablityStatus: 'AVAILABLE 10',
+                vendorPredictionStatus: 'Confirm',
+              },
+            },
+          ],
+        });
+
+      const result = await service.findAlternatePaths({
+        ...input,
+        date: '02-06-2026',
+      });
+
+      expect(result.legs).toHaveLength(1);
+      expect(result.legs[0].from).toBe('NZM');
+      expect(result.legs[0].to).toBe('BPL');
+      expect(result.legs[0].segmentKind).toBe('confirmed');
+      expect(probeSpy).toHaveBeenCalledWith(
+        expect.any(String),
+        'NZM',
+        expect.any(String),
+        '02-06-2026',
+        expect.any(Array),
+        expect.any(String),
+      );
       probeSpy.mockRestore();
     });
   });
