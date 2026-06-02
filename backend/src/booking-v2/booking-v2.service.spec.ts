@@ -3,6 +3,7 @@ import type { FindAlternatePathsResult } from './booking-v2.service';
 import type { IrctcService } from '../irctc/irctc.service';
 import type { CacheService } from '../cache/cache.service';
 import type { StationCacheService } from '../cache/station-cache.service';
+import axios from 'axios';
 
 const mockCache: jest.Mocked<
   Pick<CacheService, 'get' | 'set' | 'del' | 'getOrSet'>
@@ -379,6 +380,38 @@ describe('BookingV2Service', () => {
         '201',
         '202',
       ]);
+    });
+  });
+
+  describe('getPnrStatus', () => {
+    it('calls getPNRStatus endpoint with correct options and returns data', async () => {
+      const fakeData = { status: true, data: { Pnr: '1234567890' } };
+      const getSpy = jest.spyOn(axios, 'get').mockResolvedValueOnce({ data: fakeData });
+
+      const result = await service.getPnrStatus('1234567890');
+
+      expect(getSpy).toHaveBeenCalledWith(
+        'https://irctc1.p.rapidapi.com/api/v3/getPNRStatus',
+        {
+          params: { pnrNumber: '1234567890' },
+          headers: {
+            'x-rapidapi-key': expect.any(String),
+            'x-rapidapi-host': 'irctc1.p.rapidapi.com',
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      expect(result).toEqual(fakeData);
+      getSpy.mockRestore();
+    });
+
+    it('throws error when axios request fails', async () => {
+      const getSpy = jest.spyOn(axios, 'get').mockRejectedValueOnce(new Error('Network Error'));
+
+      await expect(service.getPnrStatus('1234567890')).rejects.toThrow(
+        'Failed to fetch PNR status: Network Error',
+      );
+      getSpy.mockRestore();
     });
   });
 });

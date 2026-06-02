@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+import axios from 'axios';
 import moment from 'moment';
 import { IrctcService } from '../irctc/irctc.service';
 import { CacheService } from '../cache/cache.service';
@@ -1522,5 +1523,31 @@ export class BookingV2Service {
       return Number.isNaN(n) ? null : n;
     }
     return null;
+  }
+
+  async getPnrStatus(pnr: string): Promise<any> {
+    const key =
+      process.env.RAPIDAPI_IRCTC_KEY ??
+      process.env.IRCTC_RAPIDAPI_KEY ??
+      process.env.RAPIDAPI_KEY ??
+      '9e95d7e163msh2f68cfcffd3392ep1ee859jsnc3dc7e695e20';
+
+    this.logger.log(`[pnr] Fetching PNR status for ${pnr}`);
+
+    try {
+      const response = await axios.get('https://irctc1.p.rapidapi.com/api/v3/getPNRStatus', {
+        params: { pnrNumber: pnr },
+        headers: {
+          'x-rapidapi-key': key,
+          'x-rapidapi-host': 'irctc1.p.rapidapi.com',
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      const errMsg = error instanceof Error ? error.message : String(error);
+      this.logger.error(`[pnr] Failed to fetch PNR status for ${pnr}: ${errMsg}`);
+      throw new Error(`Failed to fetch PNR status: ${errMsg}`);
+    }
   }
 }

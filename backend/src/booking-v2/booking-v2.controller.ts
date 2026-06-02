@@ -3,6 +3,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   Query,
   Res,
@@ -271,5 +272,14 @@ export class BookingV2Controller {
       return;
     }
     res.json(result.schedule);
+  }
+
+  @Get('pnr/:pnr')
+  async getPnrStatus(@Param('pnr') pnr: string) {
+    const trimmed = trimStr(pnr);
+    if (!trimmed || trimmed.length !== 10 || !/^\d+$/.test(trimmed)) {
+      throw new BadRequestException('PNR must be a 10-digit number');
+    }
+    return this.bookingV2.getPnrStatus(trimmed);
   }
 }
