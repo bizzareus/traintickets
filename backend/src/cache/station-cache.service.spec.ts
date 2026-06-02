@@ -87,12 +87,10 @@ describe('StationCacheService', () => {
       expect(transactionMock).not.toHaveBeenCalled();
     });
 
-    it('calls $transaction with one upsert per station', async () => {
+    it('calls upsert per station without transaction to avoid lockups', async () => {
       const upsertMock = jest.fn().mockReturnValue({});
-      const transactionMock = jest.fn().mockResolvedValue([]);
       const prisma = {
         stationCache: { upsert: upsertMock },
-        $transaction: transactionMock,
       } as unknown as PrismaService;
       const svc = new StationCacheService(prisma);
 
@@ -101,16 +99,13 @@ describe('StationCacheService', () => {
         { stationCode: 'cstm', stationName: 'Mumbai CST' },
       ]);
 
-      expect(transactionMock).toHaveBeenCalledTimes(1);
       expect(upsertMock).toHaveBeenCalledTimes(2);
     });
 
     it('normalizes stationCode and stationName to uppercase in the upsert', async () => {
       const upsertMock = jest.fn().mockReturnValue({});
-      const transactionMock = jest.fn().mockResolvedValue([]);
       const prisma = {
         stationCache: { upsert: upsertMock },
-        $transaction: transactionMock,
       } as unknown as PrismaService;
       const svc = new StationCacheService(prisma);
 

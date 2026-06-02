@@ -151,6 +151,10 @@ model JourneyMonitoringRequest {
   journeyDate         DateTime           @map("journey_date") @db.Date
   classCode           String             @map("class_code")
   createdAt           DateTime           @default(now()) @map("created_at")
+  preferredBerths     String[]           @default([]) @map("preferred_berths")
+  minAdjacentBerths   Int                @default(1) @map("min_adjacent_berths")
+  notifyOnlyOnMatch   Boolean            @default(false) @map("notify_only_on_match")
+  passengerDetails    Json?              @map("passenger_details")
   monitoringContact   MonitoringContact? @relation(fields: [monitoringContactId], references: [id])
 
   @@index([monitoringContactId])

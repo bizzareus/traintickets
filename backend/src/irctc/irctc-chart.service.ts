@@ -28,7 +28,7 @@ export class IrctcChartService {
     try {
       const page = await browser.newPage();
       await page.setViewport({ width: 1280, height: 800 });
-      
+
       // Use a modern user agent
       await page.setUserAgent(
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36',
@@ -42,7 +42,9 @@ export class IrctcChartService {
       });
 
       this.logger.log('Waiting for form to load...');
-      await page.waitForSelector('input[id^="react-select-"]', { timeout: 30000 });
+      await page.waitForSelector('input[id^="react-select-"]', {
+        timeout: 30000,
+      });
 
       // 1. Enter Train Name/Number
       this.logger.log(`Entering train number: ${trainNumber}`);
@@ -51,7 +53,7 @@ export class IrctcChartService {
       if (inputs.length > 0) {
         await inputs[0].click();
         await inputs[0].type(trainNumber, { delay: 100 });
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         await page.keyboard.press('Enter');
       }
 
@@ -59,11 +61,14 @@ export class IrctcChartService {
       this.logger.log(`Entering journey date: ${journeyDate}`);
       // The date field is tricky in React, sometimes fill or type doesn't trigger the state update.
       // We'll click, clear and type.
-      const dateInputSelector = 'div:has(> label:has-text("Journey Date*")) input';
+      const dateInputSelector =
+        'div:has(> label:has-text("Journey Date*")) input';
       // Puppeteer doesn't support :has-text directly like Playwright, so we find it via evaluate or specific selector
       await page.evaluate((date) => {
         const labels = Array.from(document.querySelectorAll('label'));
-        const dateLabel = labels.find(l => l.textContent?.includes('Journey Date*'));
+        const dateLabel = labels.find((l) =>
+          l.textContent?.includes('Journey Date*'),
+        );
         if (dateLabel) {
           const input = dateLabel.parentElement?.querySelector('input');
           if (input) {
@@ -81,7 +86,7 @@ export class IrctcChartService {
       if (inputsAfterDate.length > 1) {
         await inputsAfterDate[1].click();
         await inputsAfterDate[1].type(boardingStation, { delay: 100 });
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         await page.keyboard.press('Enter');
       }
 
@@ -89,7 +94,7 @@ export class IrctcChartService {
       this.logger.log('Clicking "Get Train Chart"...');
       const buttons = await page.$$('button');
       for (const btn of buttons) {
-        const text = await page.evaluate(el => el.textContent, btn);
+        const text = await page.evaluate((el) => el.textContent, btn);
         if (text?.includes('GET TRAIN CHART')) {
           await btn.click();
           break;
@@ -97,11 +102,15 @@ export class IrctcChartService {
       }
 
       // 5. Wait for results
-      await new Promise(resolve => setTimeout(resolve, 5000)); // Give it time to load
+      await new Promise((resolve) => setTimeout(resolve, 5000)); // Give it time to load
 
-      const fileName = `${trainNumber}_${journeyDate}_${boardingStation}.png`.replace(/\//g, '-');
+      const fileName =
+        `${trainNumber}_${journeyDate}_${boardingStation}.png`.replace(
+          /\//g,
+          '-',
+        );
       const filePath = `../public/charts/${fileName}`;
-      
+
       this.logger.log(`Capturing result screenshot: ${fileName}`);
       await page.screenshot({ path: filePath, fullPage: true });
 
@@ -111,7 +120,10 @@ export class IrctcChartService {
         pageTitle: await page.title(),
       };
     } catch (error) {
-      this.logger.error(`Failed to fetch IRCTC chart: ${error.message}`, error.stack);
+      this.logger.error(
+        `Failed to fetch IRCTC chart: ${error.message}`,
+        error.stack,
+      );
       throw error;
     } finally {
       await browser.close();

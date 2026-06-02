@@ -100,6 +100,57 @@ function chartAtIsDue(chartAt: Date, now = new Date()): boolean {
   return chartAt.getTime() <= now.getTime();
 }
 
+interface NormalizedBerth {
+  coach: string;
+  berthNumber: number;
+  berthType: string;
+  from: string;
+  to: string;
+}
+
+function checkPreferencesMatch(
+  berths: NormalizedBerth[],
+  preferredBerths: string[],
+  minAdjacentBerths: number,
+  classCode?: string,
+): boolean {
+  if (berths.length === 0) return false;
+
+  const preferredSet = new Set(
+    (preferredBerths || []).map((b) => b.trim().toUpperCase()),
+  );
+
+  if (minAdjacentBerths <= 1) {
+    if (preferredSet.size === 0) return true;
+    return berths.some((b) => preferredSet.has(b.berthType));
+  }
+
+  // Resolves physical bay sizes: 2A has 6, 1A has 4, 3A/SL have 8
+  const cleanClass = (classCode || '3A').trim().toUpperCase();
+  const baySize = cleanClass === '2A' ? 6 : cleanClass === '1A' ? 4 : 8;
+
+  const groups: Record<string, NormalizedBerth[]> = {};
+  for (const berth of berths) {
+    if (!berth.berthNumber || berth.berthNumber <= 0) continue;
+    const bayIndex = Math.floor((berth.berthNumber - 1) / baySize);
+    const key = `${berth.coach}_${bayIndex}`;
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(berth);
+  }
+
+  for (const key in groups) {
+    const bayBerths = groups[key];
+    if (bayBerths.length >= minAdjacentBerths) {
+      if (preferredSet.size === 0) return true;
+      const matchingCount = bayBerths.filter((b) =>
+        preferredSet.has(b.berthType),
+      ).length;
+      if (matchingCount >= minAdjacentBerths) return true;
+    }
+  }
+  return false;
+}
+
 @Injectable()
 export class JourneyTaskService {
   constructor(
@@ -291,6 +342,10 @@ export class JourneyTaskService {
       stationCodesToMonitor?: string[];
       email?: string;
       mobile?: string;
+      preferredBerths?: string[];
+      minAdjacentBerths?: number;
+      notifyOnlyOnMatch?: boolean;
+      passengerDetails?: any;
     },
     /** When set (e.g. after POST journey/validate), skips a duplicate schedule fetch. */
     opts?: { validatedContext?: JourneyValidContext },
@@ -399,6 +454,10 @@ export class JourneyTaskService {
             toStationCode: toCode,
             journeyDate,
             classCode,
+            preferredBerths: params.preferredBerths || [],
+            minAdjacentBerths: params.minAdjacentBerths ?? 1,
+            notifyOnlyOnMatch: params.notifyOnlyOnMatch ?? false,
+            passengerDetails: params.passengerDetails ?? null,
           },
         });
         const jid = jmr.id;
@@ -577,10 +636,78 @@ export class JourneyTaskService {
         });
         console.log('contact', contact);
         if (contact && (contact.email || contact.mobile)) {
+          // Fetch the JourneyMonitoringRequest to get seat preferences
+          const jmr = await this.prisma.journeyMonitoringRequest.findUnique({
+            where: { id: task.journeyRequestId },
+          });
+
+          let preferredBerths: string[] = [];
+          let minAdjacentBerths = 1;
+          let notifyOnlyOnMatch = false;
+
+          if (jmr) {
+            preferredBerths = jmr.preferredBerths || [];
+            minAdjacentBerths = jmr.minAdjacentBerths ?? 1;
+            notifyOnlyOnMatch = jmr.notifyOnlyOnMatch ?? false;
+          }
+
+          // Extract all vacant berths from result
+          const berths: NormalizedBerth[] = [];
+          if (result.openAiStructuredSeats) {
+            for (const s of result.openAiStructuredSeats) {
+              berths.push({
+                coach: s.coach,
+                berthNumber: Number(s.berth || 0),
+                berthType: String(s.seat || '')
+                  .trim()
+                  .toUpperCase(),
+                from: s.from,
+                to: s.to,
+              });
+            }
+          }
+          if (berths.length === 0 && Array.isArray(result.vacantBerth?.vbd)) {
+            for (const item of result.vacantBerth.vbd) {
+              if (item && typeof item === 'object') {
+                const coach = String(
+                  (item as any).coachName || (item as any).coach || '',
+                ).trim();
+                const berthNumber = Number((item as any).berthNumber || 0);
+                const berthType = String(
+                  (item as any).berthCode || (item as any).berthType || '',
+                )
+                  .trim()
+                  .toUpperCase();
+                const from = String(
+                  (item as any).fromStation || (item as any).from || '',
+                ).trim();
+                const to = String(
+                  (item as any).toStation || (item as any).to || '',
+                ).trim();
+                berths.push({ coach, berthNumber, berthType, from, to });
+              }
+            }
+          }
+
+          const hasMatch = checkPreferencesMatch(
+            berths,
+            preferredBerths,
+            minAdjacentBerths,
+            jmr?.classCode,
+          );
+
+          let finalMobile = contact.mobile;
+          if (notifyOnlyOnMatch && !hasMatch) {
+            console.log(
+              `Preferences not matched for task ${task.id}. Skipping WhatsApp/Call alert.`,
+            );
+            finalMobile = null;
+          }
+
           void this.notificationService
             .notifyUser({
               email: contact.email,
-              mobile: contact.mobile,
+              mobile: finalMobile,
               task: {
                 trainNumber: task.trainNumber,
                 trainName: task.trainName,
@@ -589,6 +716,7 @@ export class JourneyTaskService {
                 journeyDate: task.journeyDate,
               },
               result,
+              passengerDetails: jmr?.passengerDetails,
             })
             .then((status) => {
               const data: {

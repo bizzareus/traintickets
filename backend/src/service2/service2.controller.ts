@@ -48,7 +48,8 @@ function normalizeCheckBody(body: Record<string, unknown>) {
       ? destinationRaw.toUpperCase()
       : undefined,
     passengerDetails: unknownToOptionalTrimmedString(body.passengerDetails),
-    forceVacantBerth: body.forceVacantBerth === true || body.forceVacantBerth === 'true',
+    forceVacantBerth:
+      body.forceVacantBerth === true || body.forceVacantBerth === 'true',
   };
 }
 

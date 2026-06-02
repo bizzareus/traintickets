@@ -56,7 +56,7 @@ describe('NotificationService', () => {
     },
   };
 
-  it('does not call sendEmail or sendWhatsApp when status is success but no bookable plan', async () => {
+  it('calls sendEmail and sendWhatsApp with "No Tickets Found" alert when status is success but no bookable plan', async () => {
     const svc = new NotificationService(mockConfig());
     const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
     const sendWhatsApp = jest
@@ -70,9 +70,9 @@ describe('NotificationService', () => {
       result: successEmptyPlan,
     });
 
-    expect(sendEmail).not.toHaveBeenCalled();
-    expect(sendWhatsApp).not.toHaveBeenCalled();
-    expect(out).toEqual({ emailSent: false, whatsappSent: false });
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    expect(out).toEqual({ emailSent: true, whatsappSent: true });
   });
 
   it('sends email with readable journey date and schedule times in HTML', async () => {

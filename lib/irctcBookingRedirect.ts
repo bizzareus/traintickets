@@ -3,6 +3,7 @@ type IrctcBookingRedirectParams = {
   to?: string | null;
   trainNo?: string | null;
   classCode?: string | null;
+  passengerDetails?: any[] | null;
 };
 
 /**
@@ -23,5 +24,17 @@ export function irctcBookingRedirect(params: IrctcBookingRedirectParams): string
   }
 
   // user requested format: irctc.co.in/nget/redirect?from=NDLS&to=PTA&trainNo=11057&class=3E&page=train-chart
-  return `https://irctc.co.in/nget/redirect?from=${from}&to=${to}&trainNo=${trainNo}&class=${classCode}&page=train-chart`;
+  const baseUrl = `https://irctc.co.in/nget/redirect?from=${from}&to=${to}&trainNo=${trainNo}&class=${classCode}&page=train-chart`;
+
+  if (params.passengerDetails && params.passengerDetails.length > 0) {
+    try {
+      // standard browser btoa
+      const base64Str = btoa(JSON.stringify(params.passengerDetails));
+      return `${baseUrl}#expressData=${base64Str}`;
+    } catch (e) {
+      console.error("Failed to base64 encode passengerDetails", e);
+    }
+  }
+
+  return baseUrl;
 }

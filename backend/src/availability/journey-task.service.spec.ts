@@ -19,6 +19,9 @@ describe('JourneyTaskService', () => {
     journeyMonitorContact: {
       findUnique: jest.fn(),
     },
+    journeyMonitoringRequest: {
+      findUnique: jest.fn(),
+    },
   };
 
   const mockService2 = {

@@ -30,6 +30,8 @@ import {
   IstRailMaintenanceModal,
 } from "@/components/IstRailMaintenance";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
+import { SeatPreferencesWidget } from "@/components/SeatPreferencesWidget";
+import { PassengerProfileManager } from "@/components/PassengerProfileManager";
 import { useIstRailMaintenance } from "@/hooks/useIstRailMaintenance";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
@@ -848,6 +850,29 @@ function LegChartTimeInsight({
   const [alertAlreadySet, setAlertAlreadySet] = useState(false);
   const [showNextReleaseSheet, setShowNextReleaseSheet] = useState(false);
 
+  const [preferredBerths, setPreferredBerths] = useState<string[]>([]);
+  const [minAdjacentBerths, setMinAdjacentBerths] = useState<number>(1);
+  const [notifyOnlyOnMatch, setNotifyOnlyOnMatch] = useState<boolean>(false);
+  const [selectedPassengerIds, setSelectedPassengerIds] = useState<string[]>([]);
+
+  const getSelectedPassengerDetails = useCallback((ids: string[]) => {
+    try {
+      const stored = window.localStorage.getItem("lastberth_passenger_profiles");
+      if (stored) {
+        const all: any[] = JSON.parse(stored);
+        return all.filter((p: any) => ids.includes(p.id)).map((p: any) => ({
+          name: p.name,
+          age: p.age,
+          gender: p.gender,
+          berth: p.berthPreference === 'none' ? '' : p.berthPreference
+        }));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return [];
+  }, []);
+
   useEffect(() => {
     if (isLegAlertSet(trainNumber, legFrom, legTo, journeyDate)) {
       setAlertAlreadySet(true);
@@ -933,6 +958,10 @@ function LegChartTimeInsight({
         classCode: classCode.trim().toUpperCase(),
         email: em,
         mobile: mob,
+        preferredBerths,
+        minAdjacentBerths,
+        notifyOnlyOnMatch,
+        passengerDetails: getSelectedPassengerDetails(selectedPassengerIds),
       });
       markLegAlertSet(trainNumber, legFrom, legTo, journeyDate);
       setAlertAlreadySet(true);
@@ -963,6 +992,11 @@ function LegChartTimeInsight({
     legTo,
     journeyDate,
     classCode,
+    preferredBerths,
+    minAdjacentBerths,
+    notifyOnlyOnMatch,
+    selectedPassengerIds,
+    getSelectedPassengerDetails,
   ]);
 
   // --- Alert CTA block — shown in all non-error states ---
@@ -1003,6 +1037,19 @@ function LegChartTimeInsight({
           autoComplete="tel"
         />
       </div>
+      <PassengerProfileManager
+        selectedIds={selectedPassengerIds}
+        onSelectionChange={setSelectedPassengerIds}
+        compact={true}
+      />
+      <SeatPreferencesWidget
+        preferredBerths={preferredBerths}
+        setPreferredBerths={setPreferredBerths}
+        minAdjacentBerths={minAdjacentBerths}
+        setMinAdjacentBerths={setMinAdjacentBerths}
+        notifyOnlyOnMatch={notifyOnlyOnMatch}
+        setNotifyOnlyOnMatch={setNotifyOnlyOnMatch}
+      />
       <button
         type="button"
         disabled={alertSubmitting}
@@ -1090,6 +1137,19 @@ function LegChartTimeInsight({
                   autoComplete="tel"
                 />
               </div>
+              <PassengerProfileManager
+                selectedIds={selectedPassengerIds}
+                onSelectionChange={setSelectedPassengerIds}
+                compact={true}
+              />
+              <SeatPreferencesWidget
+                preferredBerths={preferredBerths}
+                setPreferredBerths={setPreferredBerths}
+                minAdjacentBerths={minAdjacentBerths}
+                setMinAdjacentBerths={setMinAdjacentBerths}
+                notifyOnlyOnMatch={notifyOnlyOnMatch}
+                setNotifyOnlyOnMatch={setNotifyOnlyOnMatch}
+              />
               <button
                 type="button"
                 disabled={alertSubmitting}
@@ -1216,6 +1276,29 @@ function AlternatePathRemainderInsights({
   const [monitorSuccessCopy, setMonitorSuccessCopy] = useState<string | null>(
     null,
   );
+
+  const [preferredBerths, setPreferredBerths] = useState<string[]>([]);
+  const [minAdjacentBerths, setMinAdjacentBerths] = useState<number>(1);
+  const [notifyOnlyOnMatch, setNotifyOnlyOnMatch] = useState<boolean>(false);
+  const [selectedPassengerIds, setSelectedPassengerIds] = useState<string[]>([]);
+
+  const getSelectedPassengerDetails = useCallback((ids: string[]) => {
+    try {
+      const stored = window.localStorage.getItem("lastberth_passenger_profiles");
+      if (stored) {
+        const all: any[] = JSON.parse(stored);
+        return all.filter((p: any) => ids.includes(p.id)).map((p: any) => ({
+          name: p.name,
+          age: p.age,
+          gender: p.gender,
+          berth: p.berthPreference === 'none' ? '' : p.berthPreference
+        }));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return [];
+  }, []);
 
   useEffect(() => {
     try {
@@ -1378,6 +1461,10 @@ function AlternatePathRemainderInsights({
         email: em,
         mobile: mob,
         trainStartDate: trainStartDate,
+        preferredBerths,
+        minAdjacentBerths,
+        notifyOnlyOnMatch,
+        passengerDetails: getSelectedPassengerDetails(selectedPassengerIds),
       });
       const schedulePhrase = buildJourneyChartAlertSchedulePhrase({
         journeyDateYmd: journeyDate.trim(),
@@ -1422,6 +1509,11 @@ function AlternatePathRemainderInsights({
     metaTo,
     sameLegEndpoints,
     trainStartDate,
+    preferredBerths,
+    minAdjacentBerths,
+    notifyOnlyOnMatch,
+    selectedPassengerIds,
+    getSelectedPassengerDetails,
   ]);
 
   return (
@@ -1513,6 +1605,19 @@ function AlternatePathRemainderInsights({
             autoComplete="tel"
           />
         </div>
+        <PassengerProfileManager
+          selectedIds={selectedPassengerIds}
+          onSelectionChange={setSelectedPassengerIds}
+          compact={true}
+        />
+        <SeatPreferencesWidget
+          preferredBerths={preferredBerths}
+          setPreferredBerths={setPreferredBerths}
+          minAdjacentBerths={minAdjacentBerths}
+          setMinAdjacentBerths={setMinAdjacentBerths}
+          notifyOnlyOnMatch={notifyOnlyOnMatch}
+          setNotifyOnlyOnMatch={setNotifyOnlyOnMatch}
+        />
         <button
           type="button"
           disabled={monitorSubmitting}
@@ -2092,6 +2197,29 @@ function CompactLegChartCta({
   const [meta, setMeta] = useState<StationChartMetaItem | null>(null);
   const [showNextReleaseSheet, setShowNextReleaseSheet] = useState(false);
 
+  const [preferredBerths, setPreferredBerths] = useState<string[]>([]);
+  const [minAdjacentBerths, setMinAdjacentBerths] = useState<number>(1);
+  const [notifyOnlyOnMatch, setNotifyOnlyOnMatch] = useState<boolean>(false);
+  const [selectedPassengerIds, setSelectedPassengerIds] = useState<string[]>([]);
+
+  const getSelectedPassengerDetails = useCallback((ids: string[]) => {
+    try {
+      const stored = window.localStorage.getItem("lastberth_passenger_profiles");
+      if (stored) {
+        const all: any[] = JSON.parse(stored);
+        return all.filter((p: any) => ids.includes(p.id)).map((p: any) => ({
+          name: p.name,
+          age: p.age,
+          gender: p.gender,
+          berth: p.berthPreference === 'none' ? '' : p.berthPreference
+        }));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return [];
+  }, []);
+
   // Prevents duplicate calls for the same station on remounts or rapid state transitions
   const lastFetchedRef = useRef<string | null>(null);
 
@@ -2221,6 +2349,10 @@ function CompactLegChartCta({
         email: em,
         mobile: mob,
         trainStartDate: trainStartDate,
+        preferredBerths,
+        minAdjacentBerths,
+        notifyOnlyOnMatch,
+        passengerDetails: getSelectedPassengerDetails(selectedPassengerIds),
       });
       markLegAlertSet(trainNumber, legFrom, legTo, journeyDate);
       setDone(true);
@@ -2248,6 +2380,11 @@ function CompactLegChartCta({
     journeyDate,
     classCode,
     trainStartDate,
+    preferredBerths,
+    minAdjacentBerths,
+    notifyOnlyOnMatch,
+    selectedPassengerIds,
+    getSelectedPassengerDetails,
   ]);
 
   if (done || alreadySet) {
@@ -2354,6 +2491,19 @@ function CompactLegChartCta({
           autoComplete="tel"
         />
       </div>
+      <PassengerProfileManager
+        selectedIds={selectedPassengerIds}
+        onSelectionChange={setSelectedPassengerIds}
+        compact={true}
+      />
+      <SeatPreferencesWidget
+        preferredBerths={preferredBerths}
+        setPreferredBerths={setPreferredBerths}
+        minAdjacentBerths={minAdjacentBerths}
+        setMinAdjacentBerths={setMinAdjacentBerths}
+        notifyOnlyOnMatch={notifyOnlyOnMatch}
+        setNotifyOnlyOnMatch={setNotifyOnlyOnMatch}
+      />
       <div className="mt-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <button

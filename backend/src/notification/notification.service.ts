@@ -58,13 +58,13 @@ export class NotificationService {
   }
 
   async sendWhatsApp(mobile: string, message: string): Promise<boolean> {
-    console.info("whatsapp service was called");
+    console.info('whatsapp service was called');
     if (!this.wasenderKey?.trim()) {
       return false;
     }
     const to = toE164(mobile);
     try {
-      console.info("sending whatsapp message", {message, to});
+      console.info('sending whatsapp message', { message, to });
       await axios.post(
         `${WASENDER_BASE}/api/send-message`,
         { to: to.startsWith('+') ? to : `+${to}`, text: message },
@@ -84,12 +84,12 @@ export class NotificationService {
   }
 
   async sendEmail(to: string, subject: string, html: string): Promise<boolean> {
-    console.info("email service was called");
+    console.info('email service was called');
     if (!this.resend) {
       return false;
     }
     try {
-      console.info("sending email message", {RESEND_FROM, to, html, subject});
+      console.info('sending email message', { RESEND_FROM, to, html, subject });
       await this.resend.emails.send({
         from: RESEND_FROM,
         to: [to],
@@ -188,13 +188,23 @@ export class NotificationService {
     toStationCode: string;
     trainNumber: string;
     classCode?: string | null;
+    passengerDetails?: any;
   }): string {
-    return irctcBookingRedirect({
+    const baseUrl = irctcBookingRedirect({
       from: task.fromStationCode,
       to: task.toStationCode,
       trainNo: task.trainNumber,
       classCode: task.classCode,
     });
+    if (task.passengerDetails) {
+      try {
+        const base64Str = Buffer.from(JSON.stringify(task.passengerDetails)).toString('base64');
+        return `${baseUrl}#expressData=${base64Str}`;
+      } catch (e) {
+        console.error('Failed to base64 encode passengerDetails', e);
+      }
+    }
+    return baseUrl;
   }
 
   private firstPlannedClassCode(result: Service2CheckResult): string | null {
@@ -208,6 +218,7 @@ export class NotificationService {
   private buildSegmentBookUrl(
     trainNumber: string,
     instruction: string,
+    passengerDetails?: any,
   ): string {
     const parts = instruction.split(' - ').map((p) => p.trim());
     const origin = parts[0] ?? '';
@@ -216,12 +227,21 @@ export class NotificationService {
     if (!origin || !destination) {
       return 'https://www.irctc.co.in/eticketing/login';
     }
-    return irctcBookingRedirect({
+    const baseUrl = irctcBookingRedirect({
       from: origin,
       to: destination,
       trainNo: trainNumber,
       classCode,
     });
+    if (passengerDetails) {
+      try {
+        const base64Str = Buffer.from(JSON.stringify(passengerDetails)).toString('base64');
+        return `${baseUrl}#expressData=${base64Str}`;
+      } catch (e) {
+        console.error('Failed to base64 encode passengerDetails', e);
+      }
+    }
+    return baseUrl;
   }
 
   /** Format segment for display: "CODE - Name → CODE - Name" using station names when available. */
@@ -261,6 +281,7 @@ export class NotificationService {
     totalPrice?: number;
     stationNameMap: Map<string, string>;
     stationScheduleList?: ScheduleStation[];
+    passengerDetails?: any;
   }): string {
     const {
       trainLabel,
@@ -273,6 +294,7 @@ export class NotificationService {
       totalPrice,
       stationNameMap,
       stationScheduleList,
+      passengerDetails,
     } = params;
 
     const bookable = plan.filter(isFilledOpenAiPlanItem);
@@ -283,6 +305,7 @@ export class NotificationService {
               const segUrl = this.buildSegmentBookUrl(
                 trainNumber,
                 seg.instruction,
+                passengerDetails,
               );
               const segmentRoute = this.formatSegmentRoute(
                 seg.instruction,
@@ -448,7 +471,12 @@ export class NotificationService {
     bookUrl: string;
     openAiSummary?: string | null;
   }): string {
-    const { trainLabel, routeDisplay, journeyDateReadable, bookUrl, openAiSummary } = params;
+    const {
+      trainLabel,
+      routeDisplay,
+      journeyDateReadable,
+      openAiSummary,
+    } = params;
     return `
 <!DOCTYPE html>
 <html>
@@ -478,7 +506,12 @@ export class NotificationService {
     bookUrl: string;
     openAiSummary?: string | null;
   }): string {
-    const { trainLabel, routeDisplay, journeyDateReadable, bookUrl, openAiSummary } = params;
+    const {
+      trainLabel,
+      routeDisplay,
+      journeyDateReadable,
+      openAiSummary,
+    } = params;
     return `No Tickets Found 😔
 
 Train: ${trainLabel}
@@ -519,8 +552,9 @@ https://lastberth.com`;
       | 'journeyDate'
     >;
     result: Service2CheckResult;
+    passengerDetails?: any;
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
-    const { email, mobile, task, result } = params;
+    const { email, mobile, task, result, passengerDetails } = params;
     const out = { emailSent: false, whatsappSent: false };
     if (!email?.trim() && !mobile?.trim()) {
       return out;
@@ -549,6 +583,7 @@ https://lastberth.com`;
       toStationCode: task.toStationCode,
       trainNumber: task.trainNumber,
       classCode: this.firstPlannedClassCode(result),
+      passengerDetails,
     });
     const plan = result.openAiBookingPlan ?? [];
     const totalPrice = result.openAiTotalPrice ?? undefined;
@@ -605,6 +640,7 @@ https://lastberth.com`;
             totalPrice,
             stationNameMap,
             stationScheduleList,
+            passengerDetails,
           })
         : this.buildNoSeatsEmailHtml({
             trainLabel,

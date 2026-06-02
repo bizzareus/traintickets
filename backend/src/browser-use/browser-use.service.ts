@@ -38,6 +38,21 @@ export const ChartPreparationResultSchema = z.object({
         .describe('e.g. { "3A": "available", "2A": "waitlist" }'),
     })
     .describe('Longest path from origin toward destination with availability'),
+  vacantBerths: z
+    .array(
+      z.object({
+        coach: z.string().describe('e.g., A1, B1, S3'),
+        berthNumber: z.number().describe('Berth/Seat number, e.g. 12'),
+        berthType: z.string().describe('e.g., LB, MB, UB, SL, SU, SM'),
+        fromStationCode: z.string().describe('From station code, e.g. NDLS'),
+        toStationCode: z.string().describe('To station code, e.g. CNB'),
+        classCode: z.string().describe('Class code, e.g. 3A, SL, 2A'),
+      }),
+    )
+    .optional()
+    .describe(
+      'List of vacant berths extracted from the chart overlay / Berth Details',
+    ),
 });
 
 export type ChartPreparationResult = z.infer<
@@ -45,7 +60,7 @@ export type ChartPreparationResult = z.infer<
 >;
 
 /**
- * Prompt: extract chart preparation details and longest available path from origin to destination.
+ * Prompt: extract chart preparation details, longest available path from origin to destination, and detailed vacant berths.
  * Do NOT book tickets; only read and return the structured data.
  */
 function buildChartPreparationPrompt(params: {
@@ -63,7 +78,7 @@ function buildChartPreparationPrompt(params: {
   const travelDate = params.journeyDate.trim().slice(0, 10);
   const classLabel = params.classCode || '3A';
 
-  return `You are an automation agent. Your task is ONLY to open the IRCTC reservation chart page, fill in the train/date/station, load the chart, and extract chart preparation details plus the longest path with availability from the user's origin to their destination. Do NOT book any ticket. Do NOT proceed to payment or booking flow. Only read and return the requested data.
+  return `You are an automation agent. Your task is ONLY to open the IRCTC reservation chart page, fill in the train/date/station, load the chart, and extract chart preparation details, the longest path with availability, and detailed vacant berths from the user's origin to their destination. Do NOT book any ticket. Do NOT proceed to payment or booking flow. Only read and return the requested data.
 
 ## STRICT RULE – STAY ON START URL
 You must strictly stay on the start URL provided (https://www.irctc.co.in/online-charts/). Do not navigate to other domains or external URLs. Perform all steps only on this page or on pages within the same IRCTC online-charts flow (same site). If a link would take you elsewhere, do not follow it.
@@ -86,9 +101,15 @@ You must strictly stay on the start URL provided (https://www.irctc.co.in/online
    - Chart preparation details: "First Chart Creation" time (HH:MM 24h), "Charting Station" code and name, journey date.
    - Full route: list of stations in order from origin (${params.originStationCode}) to destination (${params.destinationStationCode}) as shown on the chart.
 
-7. For each class that has a "Berth Details" button (e.g. 3A, 2A, 1A, SL, CC), click that class's "Berth Details" button. On the berth details view, use the from-station and to-station (or segment) information for each berth to determine the longest route/segment that has at least one confirmed or vacant berth for that class. Example: if berths show segments like NDLS→JP, NDLS→AII, NDLS→SBIB, the longest segment with a berth is the one that reaches farthest toward the user's destination. Do this for every class (open Berth Details, analyse segments, then go back or switch to the next class). Build availabilityByClass (e.g. "3A": "available" with longest segment from→to, "2A": "available" or "waitlist", etc.) and overall longest path: the single longest segment found across all classes (from/to station code and name, available true if any class has a berth on that segment).
+7. For each class that has a "Berth Details" button (e.g. 3A, 2A, 1A, SL, CC), click that class's "Berth Details" button. 
+   On the berth details view:
+   - Use the from-station and to-station (or segment) information for each berth to determine the longest route/segment that has at least one confirmed or vacant berth for that class.
+   - Extract the complete list of vacant berths shown in the tabular view. Each berth entry must contain the coach (e.g. B1, B2), berth number (e.g. 14), berth type/seat type (e.g. LB, MB, UB, SL, SU, SM), from station code (e.g. NDLS), to station code (e.g. CNB), and the class code (e.g. 3A, SL, 2A).
+   - Go back or switch to the next class after extracting class's vacant berths.
+   
+8. Build availabilityByClass (e.g. "3A": "available", "2A": "available" or "waitlist", etc.) and overall longest path (longest segment found across all classes with available: true).
 
-8. Return the data in the exact JSON structure required by the schema: chartPreparationDetails, fullRouteStations, longestPathAvailable (with fromStationCode, fromStationName, toStationCode, toStationName, available, and availabilityByClass). Do not book.`;
+9. Return the data in the exact JSON structure required by the schema: chartPreparationDetails, fullRouteStations, longestPathAvailable, and the list of vacantBerths. Do not book.`;
 }
 
 /**

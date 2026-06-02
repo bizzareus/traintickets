@@ -102,19 +102,17 @@ describe('createRetryingAxiosClient', () => {
     createRetryingAxiosClient();
     const retryCondition = lastRetryOptions().retryCondition;
 
-    expect(retryCondition(errorFor({ method: 'GET', status: 429 }))).toBe(
-      true,
-    );
-    expect(retryCondition(errorFor({ method: 'GET', status: 502 }))).toBe(
-      true,
-    );
+    expect(retryCondition(errorFor({ method: 'GET', status: 429 }))).toBe(true);
+    expect(retryCondition(errorFor({ method: 'GET', status: 502 }))).toBe(true);
   });
 
   it('does not retry 400 responses', () => {
     createRetryingAxiosClient();
 
     expect(
-      lastRetryOptions().retryCondition(errorFor({ method: 'GET', status: 400 })),
+      lastRetryOptions().retryCondition(
+        errorFor({ method: 'GET', status: 400 }),
+      ),
     ).toBe(false);
   });
 });

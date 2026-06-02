@@ -7,13 +7,17 @@ export class RedditAutomationController {
 
   @Post('sync')
   async syncLatest(@Body() body: { url?: string }) {
-    const threadUrl = body.url || 'https://www.reddit.com/r/indianrailways/comments/1lovrfq/travel_queries_thread_for_all_questions_related/.json';
+    const threadUrl =
+      body.url ||
+      'https://www.reddit.com/r/indianrailways/comments/1lovrfq/travel_queries_thread_for_all_questions_related/.json';
     return await this.redditService.syncRedditComments(threadUrl);
   }
 
   @Post('analyze')
   async analyzeLatest(@Body() body: { url?: string }) {
-    const threadUrl = body.url || 'https://www.reddit.com/r/indianrailways/comments/1lovrfq/travel_queries_thread_for_all_questions_related/.json';
+    const threadUrl =
+      body.url ||
+      'https://www.reddit.com/r/indianrailways/comments/1lovrfq/travel_queries_thread_for_all_questions_related/.json';
     return await this.redditService.syncRedditComments(threadUrl);
   }
 

@@ -274,6 +274,10 @@ export class AvailabilityController {
     @Body('email') email?: string,
     @Body('mobile') mobile?: string,
     @Body('trainStartDate') trainStartDate?: string,
+    @Body('preferredBerths') preferredBerths?: string[],
+    @Body('minAdjacentBerths') minAdjacentBerths?: number,
+    @Body('notifyOnlyOnMatch') notifyOnlyOnMatch?: boolean,
+    @Body('passengerDetails') passengerDetails?: any,
   ) {
     const normalized = normalizeJourneyCreateParams(
       trainNumber,
@@ -332,9 +336,18 @@ export class AvailabilityController {
       });
     }
 
-    const result = await this.journeyTask.createJourneyTasks(normalized, {
-      validatedContext: validation.context,
-    });
+    const result = await this.journeyTask.createJourneyTasks(
+      {
+        ...normalized,
+        preferredBerths,
+        minAdjacentBerths,
+        notifyOnlyOnMatch,
+        passengerDetails,
+      },
+      {
+        validatedContext: validation.context,
+      },
+    );
 
     void this.notification
       .sendAdminMonitoringRequestEmail({
@@ -418,7 +431,9 @@ export class AvailabilityController {
       return { success: true, message: 'Alert triggered successfully' };
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      throw new ServiceUnavailableException(`Failed to trigger alert: ${message}`);
+      throw new ServiceUnavailableException(
+        `Failed to trigger alert: ${message}`,
+      );
     }
   }
 }
