@@ -5,6 +5,10 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "packageManager": "npm@10.9.2",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "build": "prisma generate && nest build",
     "postinstall": "prisma generate",
