@@ -479,17 +479,26 @@ export class JourneyTaskService {
     const attemptNumber =
       (task.retryCount ?? 0) + (task.status === 'pending' ? 1 : 0);
 
+    let firstRunAt = task.firstRunAt;
+
     if (task.status === 'pending') {
+      const now = new Date();
+      if (!firstRunAt) {
+        firstRunAt = now;
+      }
       await this.prisma.chartTimeAvailabilityTask.update({
         where: { id: taskId },
         data: {
           status: 'running',
           retryCount: { increment: 1 },
-          lockedAt: new Date(),
+          lockedAt: now,
           completedAt: null,
           lastError: null,
+          firstRunAt,
         },
       });
+    } else if (!firstRunAt) {
+      firstRunAt = new Date();
     }
 
     const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
@@ -536,7 +545,7 @@ export class JourneyTaskService {
           const toIdx = codes.indexOf(task.toStationCode);
 
           if (fromIdx >= 0 && toIdx >= 0 && fromIdx < toIdx) {
-            const maxOffset = 3;
+            const maxOffset = 4;
             let offsetFound = false;
 
             for (let offset = 1; offset <= maxOffset; offset++) {
@@ -616,6 +625,7 @@ export class JourneyTaskService {
             completedAt: null,
             retryCount: Math.max(0, attemptNumber - 1),
             lastError: chartTaskFailureText(result).slice(0, 1000),
+            firstRunAt: firstRunAt || new Date(),
           },
         });
         console.log(
@@ -632,7 +642,17 @@ export class JourneyTaskService {
         attemptNumber < MAX_CHART_TASK_ATTEMPTS &&
         isRetryableChartTaskFailure(result)
       ) {
-        await this.scheduleTaskRetry(taskId, result, attemptNumber);
+        await this.scheduleTaskRetry(
+          
+         
+         
+         ,
+        
+          taskId,
+          result,
+          attemptNumber,
+          firstRunAt || new Date(),
+        );
         return;
       }
 
@@ -648,6 +668,7 @@ export class JourneyTaskService {
             status === 'failed'
               ? chartTaskFailureText(result).slice(0, 1000)
               : null,
+          firstRunAt: firstRunAt || new Date(),
         },
       });
 
@@ -688,12 +709,22 @@ export class JourneyTaskService {
         }
       }
     } catch (err) {
-      const message = err instanceof Error ? err.message : String(err);
+      const message = err instanceof 
+          Error ?
+          err.message : Strin
+         g(err);
+         ,
+        
       if (
         attemptNumber < MAX_CHART_TASK_ATTEMPTS &&
         isRetryableRailFailureText(message)
       ) {
-        await this.scheduleTaskRetry(taskId, { error: message }, attemptNumber);
+        await this.scheduleTaskRetry(
+          taskId,
+          { error: message },
+          attemptNumber,
+          firstRunAt || new Date(),
+        );
         return;
       }
 
@@ -706,6 +737,7 @@ export class JourneyTaskService {
           lockedAt: null,
           nextRunAt: null,
           lastError: message.slice(0, 1000),
+          firstRunAt: firstRunAt || new Date(),
         },
       });
     }
@@ -715,6 +747,7 @@ export class JourneyTaskService {
     taskId: string,
     resultPayload: object,
     attemptNumber: number,
+    firstRunAt?: Date,
   ): Promise<void> {
     const delayMs = retryDelayMsForAttempt(attemptNumber);
     const nextRunAt = new Date(Date.now() + delayMs);
@@ -727,6 +760,7 @@ export class JourneyTaskService {
         lockedAt: null,
         completedAt: null,
         lastError: chartTaskFailureText(resultPayload).slice(0, 1000),
+        ...(firstRunAt ? { firstRunAt } : {}),
       },
     });
     console.log(

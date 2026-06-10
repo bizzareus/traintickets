@@ -399,6 +399,7 @@ export class AvailabilityController {
         status: a.status,
         createdAt: a.createdAt.toISOString(),
         completedAt: a.completedAt?.toISOString?.() ?? null,
+        firstRunAt: a.firstRunAt?.toISOString?.() ?? null,
         emailNotifiedAt: a.emailNotifiedAt?.toISOString?.() ?? null,
         whatsappNotifiedAt: a.whatsappNotifiedAt?.toISOString?.() ?? null,
         contact: a.contact

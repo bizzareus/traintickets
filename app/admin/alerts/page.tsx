@@ -18,6 +18,7 @@ type Alert = {
   status: string;
   createdAt: string;
   completedAt: string | null;
+  firstRunAt: string | null;
   emailNotifiedAt: string | null;
   whatsappNotifiedAt: string | null;
   contact: {
@@ -168,6 +169,7 @@ export default function AdminAlertsPage() {
                     </div>
                   </th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Status / Run Info</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">First Run / Delay</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Email</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">WhatsApp</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Actions</th>
@@ -176,7 +178,7 @@ export default function AdminAlertsPage() {
               <tbody className="divide-y divide-slate-100">
                 {sortedAlerts.length === 0 ? (
                   <tr>
-                    <td colSpan={9} className="px-6 py-12 text-center text-slate-500">
+                    <td colSpan={11} className="px-6 py-12 text-center text-slate-500">
                       No alerts have been setup yet.
                     </td>
                   </tr>
@@ -250,6 +252,35 @@ export default function AdminAlertsPage() {
                             </span>
                           )}
                         </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        {alert.firstRunAt ? (
+                          <div className="flex flex-col items-start gap-1 text-xs">
+                            <span className="font-semibold text-slate-900 leading-tight">
+                              {moment.utc(alert.firstRunAt).utcOffset("+05:30").format("DD MMM, HH:mm:ss")}
+                            </span>
+                            {(() => {
+                              const diffMs = moment(alert.firstRunAt).diff(moment(alert.chartAt));
+                              const diffSecsTotal = Math.floor(diffMs / 1000);
+                              const isLate = diffSecsTotal > 0;
+                              const absSecsTotal = Math.abs(diffSecsTotal);
+                              const diffMins = Math.floor(absSecsTotal / 60);
+                              const diffSecs = absSecsTotal % 60;
+                              return (
+                                <span className={`font-semibold text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded border leading-none inline-flex items-center mt-1 ${
+                                  isLate 
+                                    ? 'text-rose-600 bg-rose-50 border-rose-100' 
+                                    : 'text-emerald-600 bg-emerald-50 border-emerald-100'
+                                }`}>
+                                  {isLate ? 'Late ' : 'Early '}
+                                  {diffMins}m {diffSecs}s
+                                </span>
+                              );
+                            })()}
+                          </div>
+                        ) : (
+                          <span className="text-slate-300">—</span>
+                        )}
                       </td>
                       <td className="px-6 py-4">
                         {alert.emailNotifiedAt ? (

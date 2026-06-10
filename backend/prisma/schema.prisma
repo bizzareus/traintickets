@@ -185,6 +185,7 @@ model ChartTimeAvailabilityTask {
   nextRunAt          DateTime? @map("next_run_at")
   lockedAt           DateTime? @map("locked_at")
   lastError          String?   @map("last_error")
+  firstRunAt         DateTime? @map("first_run_at")
   createdAt          DateTime  @default(now()) @map("created_at")
   completedAt        DateTime? @map("completed_at")
   emailNotifiedAt    DateTime? @map("email_notified_at")
