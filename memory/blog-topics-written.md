@@ -23,11 +23,11 @@ This file tracks all blog posts published to avoid duplication.
 | ultimate-tatkal-booking-guide-speed-hacks.md | Tatkal & Premium Tatkal booking tactics, speed hacks, and cancellation rules | 2026-06-01 |
 | irctc-special-quotas-senior-citizen-ladies-disability-lower-berth.md | IRCTC Special Quotas: How to Secure Lower Berths for Seniors, Ladies, and Divyangjan Travelers | 2026-06-02 |
 | irctc-cancellation-refund-rules-tdr-guide.md | The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing | 2026-06-10 |
+| understanding-coach-composition-find-train-platform.md | Indian Railways Coach Composition: How to Locate Your Train Coach on the Platform Without Panic | 2026-06-10 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
 - PNR status tracking and group booking partial confirmations
 - Platform ticket / unreserved travel as emergency last resort
-- Understanding coach composition on a platform
 - Station platform navigation tips for last-minute boarders
 - IRCTC app vs website — Tatkal booking differences, speed tips
