@@ -6,7 +6,7 @@
   },
   "deploy": {
     "startCommand": "npm run start:prod",
-    "preDeployCommand": "npx prisma migrate deploy",
+    "preDeployCommand": "npx prisma migrate resolve --applied 20260602020237_add_current_booking_analytics_cache || true && npx prisma migrate deploy",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
