@@ -22,11 +22,11 @@ This file tracks all blog posts published to avoid duplication.
 | family-group-train-booking-adjacent-berths-irctc.md | Securing Adjacent Berths on IRCTC — Family Booking Survival Guide | 2026-05-31 |
 | ultimate-tatkal-booking-guide-speed-hacks.md | Tatkal & Premium Tatkal booking tactics, speed hacks, and cancellation rules | 2026-06-01 |
 | irctc-special-quotas-senior-citizen-ladies-disability-lower-berth.md | IRCTC Special Quotas: How to Secure Lower Berths for Seniors, Ladies, and Divyangjan Travelers | 2026-06-02 |
+| irctc-cancellation-refund-rules-tdr-guide.md | The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing | 2026-06-10 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
 - PNR status tracking and group booking partial confirmations
-- Cancellation and refund rules in detail (TDR filing, refund timelines by status/class/timing)
 - Platform ticket / unreserved travel as emergency last resort
 - Understanding coach composition on a platform
 - Station platform navigation tips for last-minute boarders

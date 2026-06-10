@@ -53,12 +53,15 @@ async function validateBlog(filePath: string) {
     console.log("Navigating to QuillBot AI Content Detector...");
     await page.goto("https://quillbot.com/ai-content-detector", { waitUntil: "networkidle", timeout: 45000 });
     
-    // Accept cookies if present
-    const acceptCookies = page.getByRole("button", { name: "Accept All" });
-    if (await acceptCookies.isVisible()) {
-      await acceptCookies.click();
-      console.log("Accepted cookies");
-    }
+    // Accept cookies or remove cookie banner if present
+    await page.evaluate(() => {
+      document.getElementById("onetrust-consent-sdk")?.remove();
+      const darkFilter = document.querySelector(".onetrust-pc-dark-filter");
+      darkFilter?.remove();
+      const banner = document.querySelector(".ot-sdk-container");
+      banner?.remove();
+    });
+    console.log("Removed cookie banner and overlay");
 
     const editor = page.locator("[contenteditable='true']");
     if (!(await editor.isVisible())) {

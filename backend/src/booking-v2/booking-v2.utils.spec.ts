@@ -95,6 +95,14 @@ describe('legScheduleTiming', () => {
     expect(legScheduleTiming(list, 'X', 'Y')?.durationMinutes).toBe(180);
   });
 
+  it('guards against invalid/reversed dayCount order', () => {
+    const list = [
+      { stationCode: 'X', departureTime: '23:00', dayCount: '2' },
+      { stationCode: 'Y', arrivalTime: '02:00', dayCount: '1' }, // dayCount is corrupt (1 < 2)
+    ];
+    expect(legScheduleTiming(list, 'X', 'Y')?.durationMinutes).toBe(180);
+  });
+
   it('returns nulls when stations missing', () => {
     expect(legScheduleTiming([], 'A', 'B')).toEqual({
       departureTime: null,
@@ -143,6 +151,27 @@ describe('stationCodesBetweenStops', () => {
   });
   it('returns null when code missing', () => {
     expect(stationCodesBetweenStops(list, 'AAA', 'ZZ')).toBeNull();
+  });
+  it('handles duplicate stations in a circular route/loop', () => {
+    const circularList = [
+      { stationCode: 'AAA' },
+      { stationCode: 'BBB' },
+      { stationCode: 'CCC' },
+      { stationCode: 'BBB' },
+      { stationCode: 'DDD' },
+    ];
+    expect(circularList[3].stationCode).toBe('BBB');
+    expect(stationCodesBetweenStops(circularList, 'CCC', 'BBB')).toEqual([
+      'CCC',
+      'BBB',
+    ]);
+    expect(circularList[1].stationCode).toBe('BBB');
+    expect(stationCodesBetweenStops(circularList, 'BBB', 'DDD')).toEqual([
+      'BBB',
+      'CCC',
+      'BBB',
+      'DDD',
+    ]);
   });
 });
 
@@ -227,6 +256,23 @@ describe('isLegConfirmed', () => {
       }),
     ).toBe(true);
   });
+  it('accepts slashed status formats where the current status is confirmed (e.g. GNWL10/CNF)', () => {
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'GNWL10/CNF',
+      }),
+    ).toBe(true);
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'RLWL2/AVAILABLE',
+      }),
+    ).toBe(true);
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'RAC 5/RAC 2',
+      }),
+    ).toBe(false);
+  });
 });
 
 describe('pickFarthestConfirmedStationIndex', () => {
@@ -267,6 +313,10 @@ describe('avlDayMatchesJourneyDate', () => {
   it('matches upstream day string to DD-MM-YYYY', () => {
     expect(avlDayMatchesJourneyDate('5-4-2026', '05-04-2026')).toBe(true);
     expect(avlDayMatchesJourneyDate('05-04-2026', '05-04-2026')).toBe(true);
+  });
+  it('matches upstream day string in YYYY-MM-DD format', () => {
+    expect(avlDayMatchesJourneyDate('2026-04-05', '05-04-2026')).toBe(true);
+    expect(avlDayMatchesJourneyDate('2026-4-5', '05-04-2026')).toBe(true);
   });
 });
 

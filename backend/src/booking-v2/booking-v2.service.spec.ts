@@ -245,23 +245,27 @@ describe('BookingV2Service', () => {
     });
 
     it('keeps only trains with confirmed tickets from origin and ranks by confirmed hours before station hops', async () => {
-      jest
-        .spyOn(service, 'findAlternatePaths')
-        .mockImplementation(async (input) => {
-          if (input.trainNumber === '101') {
-            return altResult('101', [confirmedLeg('A', 'D', 100)]);
-          }
-          if (input.trainNumber === '102') {
-            return altResult('102', [
+      jest.spyOn(service, 'findAlternatePaths').mockImplementation((input) => {
+        if (input.trainNumber === '101') {
+          return Promise.resolve(
+            altResult('101', [confirmedLeg('A', 'D', 100)]),
+          );
+        }
+        if (input.trainNumber === '102') {
+          return Promise.resolve(
+            altResult('102', [
               realtimeLeg('A', 'B'),
               confirmedLeg('B', 'D', 180),
-            ]);
-          }
-          return altResult('103', [
+            ]),
+          );
+        }
+        return Promise.resolve(
+          altResult('103', [
             confirmedLeg('A', 'B', 240),
             realtimeLeg('B', 'D'),
-          ]);
-        });
+          ]),
+        );
+      });
 
       const result = await service.findBestTrains({
         from: 'A',
@@ -313,23 +317,29 @@ describe('BookingV2Service', () => {
     });
 
     it('breaks confirmed-hour ties by fastest train, then price, then longest leg', async () => {
-      jest
-        .spyOn(service, 'findAlternatePaths')
-        .mockImplementation(async (input) => {
-          if (input.trainNumber === '201') {
-            return altResult('201', [confirmedLeg('A', 'D', 240, 800)]);
-          }
-          if (input.trainNumber === '202') {
-            return altResult('202', [confirmedLeg('A', 'D', 240, 700)]);
-          }
-          if (input.trainNumber === '203') {
-            return altResult('203', [confirmedLeg('A', 'D', 240, 600)]);
-          }
-          return altResult('204', [
+      jest.spyOn(service, 'findAlternatePaths').mockImplementation((input) => {
+        if (input.trainNumber === '201') {
+          return Promise.resolve(
+            altResult('201', [confirmedLeg('A', 'D', 240, 800)]),
+          );
+        }
+        if (input.trainNumber === '202') {
+          return Promise.resolve(
+            altResult('202', [confirmedLeg('A', 'D', 240, 700)]),
+          );
+        }
+        if (input.trainNumber === '203') {
+          return Promise.resolve(
+            altResult('203', [confirmedLeg('A', 'D', 240, 600)]),
+          );
+        }
+        return Promise.resolve(
+          altResult('204', [
             confirmedLeg('A', 'B', 120, 600),
             confirmedLeg('B', 'D', 120, 0),
-          ]);
-        });
+          ]),
+        );
+      });
 
       const result = await service.findBestTrains({
         from: 'A',
@@ -587,6 +597,146 @@ describe('BookingV2Service', () => {
         expect.any(Array),
         expect.any(String),
       );
+      probeSpy.mockRestore();
+    });
+
+    it('correctly adjusts segment probe dates based on station dayCount when using offsets', async () => {
+      service['irctc'].getTrainSchedule = jest.fn().mockResolvedValue({
+        ok: true,
+        schedule: {
+          trainName: 'Test Express MultiDay',
+          stationList: [
+            { stationCode: 'NDLS', dayCount: 1 },
+            { stationCode: 'NZM', dayCount: 2 },
+            { stationCode: 'AGC', dayCount: 2 },
+            { stationCode: 'BPL', dayCount: 3 },
+            { stationCode: 'BCT', dayCount: 4 },
+          ],
+        },
+      });
+
+      const probeSpy = jest
+        .spyOn(service as any, 'probeSegmentAllClasses')
+        .mockImplementation((trainNumber, fromStn, toStn, date) => {
+          // Direct NZM -> BPL on 02-06-2026 is waitlisted
+          if (fromStn === 'NZM' && toStn === 'BPL' && date === '02-06-2026') {
+            return Promise.resolve({
+              bestConfirmedClassIndex: null,
+              perClass: [],
+              displayRow: { availablityStatus: 'RLWL 1' },
+            });
+          }
+          // Offset NDLS -> BPL on 01-06-2026 is confirmed
+          if (fromStn === 'NDLS' && toStn === 'BPL' && date === '01-06-2026') {
+            return Promise.resolve({
+              bestConfirmedClassIndex: 0,
+              perClass: [
+                {
+                  fare: 120,
+                  day: {
+                    availablityStatus: 'AVAILABLE 5',
+                    vendorPredictionStatus: 'Confirm',
+                  },
+                },
+              ],
+            });
+          }
+          return Promise.resolve({
+            bestConfirmedClassIndex: null,
+            perClass: [],
+          });
+        });
+
+      const result = await service.findAlternatePaths({
+        trainNumber: '12951',
+        from: 'NZM',
+        to: 'BPL',
+        date: '02-06-2026',
+      });
+
+      // Assert that it found the offset route starting at NDLS on the correct day (01-06-2026)
+      expect(result.legs).toHaveLength(1);
+      expect(result.legs[0].from).toBe('NDLS');
+      expect(result.legs[0].to).toBe('BPL');
+      expect(result.legs[0].segmentKind).toBe('confirmed');
+
+      // Verify that the probe dates were called correctly:
+      // NZM -> BPL direct should be queried on 02-06-2026
+      expect(probeSpy).toHaveBeenCalledWith(
+        expect.any(String),
+        'NZM',
+        'BPL',
+        '02-06-2026',
+        expect.any(Array),
+        expect.any(String),
+      );
+
+      // NDLS -> BPL offset should be queried on 01-06-2026 (Day 1 departure for Day 2 NZM boarding)
+      expect(probeSpy).toHaveBeenCalledWith(
+        expect.any(String),
+        'NDLS',
+        'BPL',
+        '01-06-2026',
+        expect.any(Array),
+        expect.any(String),
+      );
+
+      expect(result.trainStartDate).toBe('2026-06-01');
+
+      probeSpy.mockRestore();
+    });
+
+    it('handles circular/loop station routes without throwing errors or failing to find paths', async () => {
+      service['irctc'].getTrainSchedule = jest.fn().mockResolvedValue({
+        ok: true,
+        schedule: {
+          trainName: 'Test Circular Express',
+          stationList: [
+            { stationCode: 'NDLS', dayCount: 1 },
+            { stationCode: 'NZM', dayCount: 1 },
+            { stationCode: 'AGC', dayCount: 1 },
+            { stationCode: 'NZM', dayCount: 2 },
+            { stationCode: 'BPL', dayCount: 2 },
+          ],
+        },
+      });
+
+      const probeSpy = jest
+        .spyOn(service as any, 'probeSegmentAllClasses')
+        .mockResolvedValue({
+          bestConfirmedClassIndex: 0,
+          perClass: [
+            {
+              fare: 100,
+              day: {
+                availablityStatus: 'AVAILABLE 10',
+                vendorPredictionStatus: 'Confirm',
+              },
+            },
+          ],
+        });
+
+      const result = await service.findAlternatePaths({
+        trainNumber: '12345',
+        from: 'AGC',
+        to: 'NZM',
+        date: '02-06-2026',
+      });
+
+      expect(result.legs).toHaveLength(1);
+      expect(result.legs[0].from).toBe('AGC');
+      expect(result.legs[0].to).toBe('NZM');
+      expect(result.legs[0].segmentKind).toBe('confirmed');
+
+      expect(probeSpy).toHaveBeenCalledWith(
+        '12345',
+        'AGC',
+        'NZM',
+        '02-06-2026',
+        expect.any(Array),
+        expect.any(String),
+      );
+
       probeSpy.mockRestore();
     });
   });

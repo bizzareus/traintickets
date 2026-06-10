@@ -43,10 +43,22 @@ export function stationCodesBetweenStops(
     .filter(Boolean);
   const a = fromCode.trim().toUpperCase();
   const b = toCode.trim().toUpperCase();
-  const i = codes.indexOf(a);
-  const j = codes.indexOf(b);
-  if (i < 0 || j < 0 || i >= j) return null;
-  return codes.slice(i, j + 1);
+  let fromIdx = -1;
+  let toIdx = -1;
+  for (let i = 0; i < codes.length; i++) {
+    if (codes[i] === a) {
+      for (let j = i + 1; j < codes.length; j++) {
+        if (codes[j] === b) {
+          fromIdx = i;
+          toIdx = j;
+          break;
+        }
+      }
+      if (fromIdx !== -1) break;
+    }
+  }
+  if (fromIdx < 0 || toIdx < 0) return null;
+  return codes.slice(fromIdx, toIdx + 1);
 }
 
 export type AvlDayLike = {
@@ -82,11 +94,13 @@ export function isLegConfirmed(avl: AvlDayLike | null | undefined): boolean {
   const st = String(avl.availablityStatus ?? '')
     .trim()
     .toUpperCase();
+  const parts = st.split('/');
+  const currentStatus = (parts[parts.length - 1] ?? '').trim();
   return (
-    st.startsWith('AVAILABLE') ||
-    st.startsWith('CURR_AVBL') ||
-    st.startsWith('CNF') ||
-    st.startsWith('CURRENT AV')
+    currentStatus.startsWith('AVAILABLE') ||
+    currentStatus.startsWith('CURR_AVBL') ||
+    currentStatus.startsWith('CNF') ||
+    currentStatus.startsWith('CURRENT AV')
   );
 }
 
@@ -132,14 +146,22 @@ export function avlDayMatchesJourneyDate(
   const jParts = journeyDdMmYyyy.split('-').map((x) => parseInt(x, 10));
   if (jParts.length !== 3 || jParts.some((n) => Number.isNaN(n))) return false;
   const [jd, jm, jy] = jParts;
-  const m = String(availablityDate)
-    .trim()
-    .match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
-  if (!m) return false;
-  const d = parseInt(m[1], 10);
-  const mo = parseInt(m[2], 10);
-  const y = parseInt(m[3], 10);
-  return d === jd && mo === jm && y === jy;
+  const clean = String(availablityDate).trim();
+  const m1 = clean.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+  if (m1) {
+    const d = parseInt(m1[1], 10);
+    const mo = parseInt(m1[2], 10);
+    const y = parseInt(m1[3], 10);
+    return d === jd && mo === jm && y === jy;
+  }
+  const m2 = clean.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+  if (m2) {
+    const y = parseInt(m2[1], 10);
+    const mo = parseInt(m2[2], 10);
+    const d = parseInt(m2[3], 10);
+    return d === jd && mo === jm && y === jy;
+  }
+  return false;
 }
 
 /** True when vendor status text means the train has already left (hide from search). */
@@ -277,7 +299,10 @@ export function legScheduleTiming(
     parseIrctcScheduleClock(toStop.departureTime as string | undefined);
 
   const dayFrom = parseScheduleDayCount(fromStop.dayCount) ?? 1;
-  const dayTo = parseScheduleDayCount(toStop.dayCount) ?? dayFrom;
+  const dayTo = Math.max(
+    dayFrom,
+    parseScheduleDayCount(toStop.dayCount) ?? dayFrom,
+  );
 
   let durationMinutes: number | null = null;
   if (depPick && arrPick) {

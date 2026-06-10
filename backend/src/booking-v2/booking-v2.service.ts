@@ -22,7 +22,6 @@ import {
   orderedDestinationIndices,
   parseScheduleDayCount,
   parseUpstreamAvailablityType,
-  ymdToRailApiDdMmYyyy,
 } from './booking-v2.utils';
 
 /** Opaque upstream JSON key for vendor prediction text on availability day rows. */
@@ -1075,10 +1074,22 @@ export class BookingV2Service {
           .toUpperCase(),
       )
       .filter(Boolean);
-    const fromIdx = codes.indexOf(from);
-    const toIdx = codes.indexOf(to);
+    let fromIdx = -1;
+    let toIdx = -1;
+    for (let i = 0; i < codes.length; i++) {
+      if (codes[i] === from) {
+        for (let j = i + 1; j < codes.length; j++) {
+          if (codes[j] === to) {
+            fromIdx = i;
+            toIdx = j;
+            break;
+          }
+        }
+        if (fromIdx !== -1) break;
+      }
+    }
 
-    if (fromIdx < 0 || toIdx < 0 || fromIdx >= toIdx) {
+    if (fromIdx < 0 || toIdx < 0) {
       logStep(
         `Route slice: FAILED — "${from}" or "${to}" not found in order on this train (or same station)`,
       );
@@ -1122,10 +1133,15 @@ export class BookingV2Service {
     const maxIterations = Math.max(8, stations.length * 4);
     let iterations = 0;
 
-    const startStopLine = stationList.find(
-      (s) => normalizeScheduleStationCode(s.stationCode) === stations[0],
+    const boardingStopLine = stationList.find(
+      (s) => normalizeScheduleStationCode(s.stationCode) === from,
     );
-    const startDayCount = parseScheduleDayCount(startStopLine?.dayCount) ?? 1;
+    const boardingDayCount =
+      parseScheduleDayCount(boardingStopLine?.dayCount) ?? 1;
+    const trainStartMoment = moment(dateDdMmYyyy, 'DD-MM-YYYY').subtract(
+      boardingDayCount - 1,
+      'days',
+    );
 
     const cacheKey = (a: string, b: string, d: string) => `${a}|${b}|${d}`;
 
@@ -1147,10 +1163,10 @@ export class BookingV2Service {
             (s) => normalizeScheduleStationCode(s.stationCode) === fromStn,
           );
           const fromDayCount =
-            parseScheduleDayCount(fromStopLine?.dayCount) ?? startDayCount;
-          const dayOffset = Math.max(0, fromDayCount - startDayCount);
-          const currentHopDate = moment(dateDdMmYyyy, 'DD-MM-YYYY')
-            .add(dayOffset, 'days')
+            parseScheduleDayCount(fromStopLine?.dayCount) ?? 1;
+          const currentHopDate = trainStartMoment
+            .clone()
+            .add(fromDayCount - 1, 'days')
             .format('DD-MM-YYYY');
 
           const toStn = stations[destIdx];
@@ -1239,11 +1255,10 @@ export class BookingV2Service {
       const fromStopLine = stationList.find(
         (s) => normalizeScheduleStationCode(s.stationCode) === fromStn,
       );
-      const fromDayCount =
-        parseScheduleDayCount(fromStopLine?.dayCount) ?? startDayCount;
-      const dayOffset = Math.max(0, fromDayCount - startDayCount);
-      const bridgeDate = moment(dateDdMmYyyy, 'DD-MM-YYYY')
-        .add(dayOffset, 'days')
+      const fromDayCount = parseScheduleDayCount(fromStopLine?.dayCount) ?? 1;
+      const bridgeDate = trainStartMoment
+        .clone()
+        .add(fromDayCount - 1, 'days')
         .format('DD-MM-YYYY');
 
       const toStn = stations[nextIdx];
@@ -1382,9 +1397,7 @@ export class BookingV2Service {
         stationList[0]?.stationCode?.trim().toUpperCase() || null,
       trainOriginDepartureTime: stationList[0]?.departureTime ?? null,
       debugLog,
-      trainStartDate: moment(dateDdMmYyyy, 'DD-MM-YYYY')
-        .subtract(startDayCount - 1, 'days')
-        .format('YYYY-MM-DD'),
+      trainStartDate: trainStartMoment.format('YYYY-MM-DD'),
     };
   }
 
