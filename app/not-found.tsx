@@ -35,17 +35,8 @@ export default function NotFound() {
         </Link>
 
         <Link
-          href="/dashboard"
-          className="group flex flex-col items-center rounded-2xl border border-slate-200/80 bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
-        >
-          <span className="text-3xl transition-transform duration-300 group-hover:scale-110" role="img" aria-label="Dashboard">📊</span>
-          <span className="mt-3 text-sm font-bold text-slate-900">Dashboard</span>
-          <span className="mt-1 text-xs text-slate-500">Manage alerts</span>
-        </Link>
-
-        <Link
           href="/blog"
-          className="group flex flex-col items-center rounded-2xl border border-slate-200/80 bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-md col-span-2"
+          className="group flex flex-col items-center rounded-2xl border border-slate-200/80 bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
         >
           <span className="text-3xl transition-transform duration-300 group-hover:scale-110" role="img" aria-label="Blog">📖</span>
           <span className="mt-3 text-sm font-bold text-slate-900">LastBerth Blog</span>
