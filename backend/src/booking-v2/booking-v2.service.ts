@@ -18,7 +18,6 @@ import {
   isLegConfirmed,
   legScheduleTiming,
   normalizeAndDedupeClassCodes,
-  normalizeScheduleStationCode,
   orderedDestinationIndices,
   parseScheduleDayCount,
   parseUpstreamAvailablityType,
@@ -244,7 +243,7 @@ function normalizeTrainSearchRow(
 ): BookingV2TrainSearchRow | null {
   if (!item || typeof item !== 'object') return null;
   const r = item as Record<string, unknown>;
-  const trainNumber = String(r.trainNumber ?? '').trim();
+  const trainNumber = String((r.trainNumber as any) ?? '').trim();
   if (!trainNumber) return null;
   const avlClasses = Array.isArray(r.avlClasses)
     ? r.avlClasses
@@ -264,7 +263,7 @@ function normalizeTrainSearchRow(
   return {
     ...(item as BookingV2TrainSearchRow),
     trainNumber,
-    trainName: String(r.trainName ?? '').trim(),
+    trainName: String((r.trainName as any) ?? '').trim(),
     departureTime:
       typeof r.departureTime === 'string' ? r.departureTime : undefined,
     arrivalTime: typeof r.arrivalTime === 'string' ? r.arrivalTime : undefined,
@@ -368,21 +367,52 @@ export class BookingV2Service {
     return this.irctc.getTrainSchedule(trainNumber);
   }
 
-  /** `YYYY-MM-DD` or passthrough if already `DD-MM-YYYY`. */
+  /** `YYYY-MM-DD`, `DD-MM-YYYY`, slashes, or other valid formats parsed to `DD-MM-YYYY`. */
   normalizeToRailApiDate(dateInput: string): string | null {
-    const t = String(dateInput).trim();
+    const t = String(dateInput).trim().replace(/\//g, '-');
     if (/^\d{4}-\d{1,2}-\d{1,2}$/.test(t)) {
       const m = t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
-      if (!m) return null;
-      const [, y, mo, d] = m;
-      return `${d.padStart(2, '0')}-${mo.padStart(2, '0')}-${y}`;
+      if (m) {
+        const [, y, mo, d] = m;
+        const parsed = `${d.padStart(2, '0')}-${mo.padStart(2, '0')}-${y}`;
+        if (moment(parsed, 'DD-MM-YYYY', true).isValid()) {
+          return parsed;
+        }
+      }
     }
     if (/^\d{1,2}-\d{1,2}-\d{4}$/.test(t)) {
       const m = t.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
-      if (!m) return null;
-      const d = m[1].padStart(2, '0');
-      const mo = m[2].padStart(2, '0');
-      return `${d}-${mo}-${m[3]}`;
+      if (m) {
+        const d = m[1].padStart(2, '0');
+        const mo = m[2].padStart(2, '0');
+        const parsed = `${d}-${mo}-${m[3]}`;
+        if (moment(parsed, 'DD-MM-YYYY', true).isValid()) {
+          return parsed;
+        }
+      }
+    }
+
+    // Fallback to strict moment parsing of other known formats to avoid deprecation warnings
+    const formats = [
+      'YYYY-MM-DD',
+      'YYYY-M-D',
+      'DD-MM-YYYY',
+      'D-M-YYYY',
+      'D MMM YYYY',
+      'DD MMM YYYY',
+      'D MMMM YYYY',
+      'DD MMMM YYYY',
+      'MMM D, YYYY',
+      'MMM DD, YYYY',
+      'MMMM D, YYYY',
+      'MMMM DD, YYYY',
+    ];
+    const parsedMoment = moment(t, formats, true);
+    if (parsedMoment.isValid()) {
+      const year = parsedMoment.year();
+      if (year >= 2000 && year <= 2100) {
+        return parsedMoment.format('DD-MM-YYYY');
+      }
     }
     return null;
   }
@@ -1133,9 +1163,7 @@ export class BookingV2Service {
     const maxIterations = Math.max(8, stations.length * 4);
     let iterations = 0;
 
-    const boardingStopLine = stationList.find(
-      (s) => normalizeScheduleStationCode(s.stationCode) === from,
-    );
+    const boardingStopLine = stationList[fromIdx];
     const boardingDayCount =
       parseScheduleDayCount(boardingStopLine?.dayCount) ?? 1;
     const trainStartMoment = moment(dateDdMmYyyy, 'DD-MM-YYYY').subtract(
@@ -1159,9 +1187,7 @@ export class BookingV2Service {
       const probes: MultiClassProbeResult[] = await Promise.all(
         destOrder.map(async (destIdx) => {
           const fromStn = stations[currentIdx];
-          const fromStopLine = stationList.find(
-            (s) => normalizeScheduleStationCode(s.stationCode) === fromStn,
-          );
+          const fromStopLine = stationList[startIdx + currentIdx];
           const fromDayCount =
             parseScheduleDayCount(fromStopLine?.dayCount) ?? 1;
           const currentHopDate = trainStartMoment
@@ -1252,9 +1278,7 @@ export class BookingV2Service {
       }
 
       const fromStn = stations[currentIdx];
-      const fromStopLine = stationList.find(
-        (s) => normalizeScheduleStationCode(s.stationCode) === fromStn,
-      );
+      const fromStopLine = stationList[startIdx + currentIdx];
       const fromDayCount = parseScheduleDayCount(fromStopLine?.dayCount) ?? 1;
       const bridgeDate = trainStartMoment
         .clone()

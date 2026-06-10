@@ -124,6 +124,21 @@ describe('BookingV2Service', () => {
     it('returns null for garbage', () => {
       expect(service.normalizeToRailApiDate('not-a-date')).toBeNull();
     });
+    it('converts slash-separated dates correctly', () => {
+      expect(service.normalizeToRailApiDate('2026/04/05')).toBe('05-04-2026');
+      expect(service.normalizeToRailApiDate('05/04/2026')).toBe('05-04-2026');
+      expect(service.normalizeToRailApiDate('2026/6/2')).toBe('02-06-2026');
+      expect(service.normalizeToRailApiDate('5/4/2026')).toBe('05-04-2026');
+    });
+    it('returns null for invalid calendar dates', () => {
+      expect(service.normalizeToRailApiDate('2026-02-30')).toBeNull();
+      expect(service.normalizeToRailApiDate('2026-13-05')).toBeNull();
+      expect(service.normalizeToRailApiDate('32-05-2026')).toBeNull();
+    });
+    it('handles descriptive dates with moment fallback', () => {
+      expect(service.normalizeToRailApiDate('2 Jun 2026')).toBe('02-06-2026');
+      expect(service.normalizeToRailApiDate('June 2, 2026')).toBe('02-06-2026');
+    });
   });
 
   describe('searchStations (cache integration)', () => {
@@ -733,6 +748,65 @@ describe('BookingV2Service', () => {
         'AGC',
         'NZM',
         '02-06-2026',
+        expect.any(Array),
+        expect.any(String),
+      );
+
+      probeSpy.mockRestore();
+    });
+
+    it('correctly maps repeated station codes to their exact route dayCount indices during hop traversal', async () => {
+      service['irctc'].getTrainSchedule = jest.fn().mockResolvedValue({
+        ok: true,
+        schedule: {
+          trainName: 'Test Circular MultiLeg',
+          stationList: [
+            { stationCode: 'NDLS', dayCount: 1 },
+            { stationCode: 'NZM', dayCount: 1 },
+            { stationCode: 'AGC', dayCount: 2 },
+            { stationCode: 'NZM', dayCount: 3 },
+            { stationCode: 'BPL', dayCount: 3 },
+          ],
+        },
+      });
+
+      const probeSpy = jest
+        .spyOn(service as any, 'probeSegmentAllClasses')
+        .mockImplementation((_trainNumber, fromStn, toStn, _date) => {
+          if (fromStn === 'NDLS' && toStn === 'BPL') {
+            return Promise.resolve({
+              bestConfirmedClassIndex: null,
+              perClass: [],
+              displayRow: { availablityStatus: 'WL 1' },
+            });
+          }
+          return Promise.resolve({
+            bestConfirmedClassIndex: 0,
+            perClass: [
+              {
+                fare: 100,
+                day: {
+                  availablityStatus: 'AVAILABLE 10',
+                  vendorPredictionStatus: 'Confirm',
+                },
+              },
+            ],
+          });
+        });
+
+      const result = await service.findAlternatePaths({
+        trainNumber: '99999',
+        from: 'NDLS',
+        to: 'BPL',
+        date: '03-06-2026',
+      });
+
+      expect(result.trainStartDate).toBe('2026-06-03');
+      expect(probeSpy).toHaveBeenCalledWith(
+        '99999',
+        'NZM',
+        'BPL',
+        '05-06-2026',
         expect.any(Array),
         expect.any(String),
       );

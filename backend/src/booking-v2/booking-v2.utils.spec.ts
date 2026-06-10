@@ -110,6 +110,23 @@ describe('legScheduleTiming', () => {
       durationMinutes: null,
     });
   });
+
+  it('correctly handles circular/loop routes where a station is visited twice', () => {
+    const list = [
+      { stationCode: 'AAA', departureTime: '10:00', dayCount: '1' },
+      { stationCode: 'BBB', departureTime: '12:00', dayCount: '1' },
+      { stationCode: 'CCC', departureTime: '14:00', dayCount: '1' },
+      { stationCode: 'BBB', arrivalTime: '16:00', dayCount: '2' },
+      { stationCode: 'DDD', arrivalTime: '18:00', dayCount: '2' },
+    ];
+    // BBB is visited twice. We query leg CCC -> BBB.
+    // Sequential lookup must find BBB at index 3 (arrival 16:00, day 2), not index 1.
+    expect(legScheduleTiming(list, 'CCC', 'BBB')).toEqual({
+      departureTime: '14:00',
+      arrivalTime: '16:00',
+      durationMinutes: 120 + 24 * 60, // 2h same-day offset + 1 day difference = 1560 minutes
+    });
+  });
 });
 
 describe('normalizeAndDedupeClassCodes', () => {
@@ -317,6 +334,11 @@ describe('avlDayMatchesJourneyDate', () => {
   it('matches upstream day string in YYYY-MM-DD format', () => {
     expect(avlDayMatchesJourneyDate('2026-04-05', '05-04-2026')).toBe(true);
     expect(avlDayMatchesJourneyDate('2026-4-5', '05-04-2026')).toBe(true);
+  });
+  it('matches upstream day string with slash separators', () => {
+    expect(avlDayMatchesJourneyDate('05/04/2026', '05-04-2026')).toBe(true);
+    expect(avlDayMatchesJourneyDate('2026/04/05', '05-04-2026')).toBe(true);
+    expect(avlDayMatchesJourneyDate('2026/4/5', '05-04-2026')).toBe(true);
   });
 });
 

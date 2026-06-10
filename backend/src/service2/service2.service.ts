@@ -1014,7 +1014,10 @@ export class Service2Service {
       if (/chart\s+not\s+prepared/i.test(msg)) {
         return {
           status: 'failed',
-          chartStatus: { kind: 'chart_error', error: 'Chart not prepared' },
+          chartStatus: {
+            kind: 'not_prepared_yet',
+            message: 'Chart is not prepared for this journey date yet.',
+          },
           vacantBerth: { vbd: [], error: null },
           debugLog,
         };

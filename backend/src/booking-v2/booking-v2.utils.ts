@@ -146,7 +146,7 @@ export function avlDayMatchesJourneyDate(
   const jParts = journeyDdMmYyyy.split('-').map((x) => parseInt(x, 10));
   if (jParts.length !== 3 || jParts.some((n) => Number.isNaN(n))) return false;
   const [jd, jm, jy] = jParts;
-  const clean = String(availablityDate).trim();
+  const clean = String(availablityDate).trim().replace(/\//g, '-');
   const m1 = clean.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
   if (m1) {
     const d = parseInt(m1[1], 10);
@@ -281,12 +281,26 @@ export function legScheduleTiming(
   }
   const a = normalizeScheduleStationCode(fromCode);
   const b = normalizeScheduleStationCode(toCode);
-  const fromStop = stationList.find(
-    (s) => normalizeScheduleStationCode(s.stationCode) === a,
-  );
-  const toStop = stationList.find(
-    (s) => normalizeScheduleStationCode(s.stationCode) === b,
-  );
+
+  let fromIdx = -1;
+  let toIdx = -1;
+  for (let i = 0; i < stationList.length; i++) {
+    if (normalizeScheduleStationCode(stationList[i].stationCode) === a) {
+      fromIdx = i;
+      break;
+    }
+  }
+  if (fromIdx !== -1) {
+    for (let j = fromIdx + 1; j < stationList.length; j++) {
+      if (normalizeScheduleStationCode(stationList[j].stationCode) === b) {
+        toIdx = j;
+        break;
+      }
+    }
+  }
+
+  const fromStop = fromIdx !== -1 ? stationList[fromIdx] : undefined;
+  const toStop = toIdx !== -1 ? stationList[toIdx] : undefined;
   if (!fromStop || !toStop) {
     return { departureTime: null, arrivalTime: null, durationMinutes: null };
   }

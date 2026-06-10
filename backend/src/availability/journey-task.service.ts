@@ -762,7 +762,7 @@ export class JourneyTaskService {
           Array<{ id: string; retry_count: number }>
         >`UPDATE "ChartTimeAvailabilityTask"
           SET status = 'running',
-              locked_at = NOW(),
+              locked_at = (NOW() AT TIME ZONE 'utc'),
               retry_count = retry_count + 1,
               last_error = NULL
           WHERE id IN (
@@ -771,14 +771,14 @@ export class JourneyTaskService {
               AND (
                 (
                   status = 'pending'
-                  AND chart_at <= NOW()
-                  AND (next_run_at IS NULL OR next_run_at <= NOW())
+                  AND chart_at <= (NOW() AT TIME ZONE 'utc')
+                  AND (next_run_at IS NULL OR next_run_at <= (NOW() AT TIME ZONE 'utc'))
                 )
                 OR (
                   status = 'running'
                   AND (
                     locked_at IS NULL
-                    OR locked_at <= NOW() - INTERVAL '10 minutes'
+                    OR locked_at <= (NOW() AT TIME ZONE 'utc') - INTERVAL '10 minutes'
                   )
                 )
               )
