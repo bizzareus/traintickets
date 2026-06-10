@@ -83,6 +83,13 @@ export const metadata: Metadata = {
     description:
       "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC.",
   },
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        { url: "/blog/rss.xml", title: "LastBerth Blog RSS Feed" },
+      ],
+    },
+  },
   robots: {
     index: true,
     follow: true,

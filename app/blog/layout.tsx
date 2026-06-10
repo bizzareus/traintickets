@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   },
   description:
     "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and booking smarter railway journeys on LastBerth.",
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        { url: "/blog/rss.xml", title: "LastBerth Blog RSS Feed" },
+      ],
+    },
+  },
   openGraph: {
     type: "website",
     url: "/blog",

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getBlogPost, listBlogPostSlugs } from "@/lib/blog";
+import { getBlogPost, listBlogPostSlugs, listBlogPosts } from "@/lib/blog";
 
 export const dynamicParams = false;
 
@@ -75,9 +76,39 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       "@type": "WebPage",
       "@id": `${baseUrl}/blog/${post.slug}`,
     },
-    author: { "@type": "Organization", name: "LastBerth" },
-    publisher: { "@type": "Organization", name: "LastBerth" },
+    author: {
+      "@type": "Organization",
+      name: "LastBerth",
+      url: baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "LastBerth",
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/favicon.svg`,
+      },
+    },
+    image: [
+      `${baseUrl}/opengraph-image`,
+    ],
   };
+
+  const allPosts = listBlogPosts();
+  const otherPosts = allPosts.filter((p) => p.slug !== post.slug);
+  const relatedPosts = otherPosts
+    .map((p) => {
+      const sharedTags = p.tags.filter((tag) => post.tags.includes(tag)).length;
+      return { post: p, sharedTags };
+    })
+    .sort((a, b) => {
+      if (b.sharedTags !== a.sharedTags) {
+        return b.sharedTags - a.sharedTags;
+      }
+      return b.post.date.localeCompare(a.post.date);
+    })
+    .slice(0, 3)
+    .map((x) => x.post);
 
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
@@ -116,6 +147,40 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {post.content}
         </ReactMarkdown>
       </div>
+
+      {relatedPosts.length > 0 ? (
+        <div className="mt-12 border-t border-slate-100 pt-8">
+          <h2 className="text-xl font-bold text-slate-900 mb-6">
+            Recommended Reading
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {relatedPosts.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/blog/${p.slug}`}
+                className="group flex flex-col justify-between rounded-xl border border-slate-100 bg-slate-50/50 p-4 hover:bg-slate-50 hover:shadow-xs transition-all duration-200"
+              >
+                <div>
+                  <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2 text-sm leading-snug">
+                    {p.title}
+                  </h3>
+                  {p.description ? (
+                    <p className="mt-2 text-xs text-slate-500 line-clamp-3">
+                      {p.description}
+                    </p>
+                  ) : null}
+                </div>
+                <div className="mt-4 flex items-center justify-between text-[10px] font-semibold text-slate-600">
+                  <span>{formatYmd(p.date)}</span>
+                  <span className="text-blue-600 font-bold group-hover:underline">
+                    Read →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       <script
         type="application/ld+json"
