@@ -445,16 +445,10 @@ export class NotificationService {
     trainLabel: string;
     routeDisplay: string;
     journeyDateReadable: string;
-    bookUrl: string;
     openAiSummary?: string | null;
   }): string {
-    const {
-      trainLabel,
-      routeDisplay,
-      journeyDateReadable,
-      bookUrl,
-      openAiSummary,
-    } = params;
+    const { trainLabel, routeDisplay, journeyDateReadable, openAiSummary } =
+      params;
     return `
 <!DOCTYPE html>
 <html>
@@ -481,16 +475,10 @@ export class NotificationService {
     trainLabel: string;
     routeDisplay: string;
     journeyDateReadable: string;
-    bookUrl: string;
     openAiSummary?: string | null;
   }): string {
-    const {
-      trainLabel,
-      routeDisplay,
-      journeyDateReadable,
-      bookUrl,
-      openAiSummary,
-    } = params;
+    const { trainLabel, routeDisplay, journeyDateReadable, openAiSummary } =
+      params;
     return `No Tickets Found 😔
 
 Train: ${trainLabel}
@@ -594,7 +582,6 @@ https://lastberth.com`;
             trainLabel,
             routeDisplay,
             journeyDateReadable,
-            bookUrl,
             openAiSummary: result.openAiSummary,
           });
 
@@ -622,7 +609,6 @@ https://lastberth.com`;
             trainLabel,
             routeDisplay: emailRouteDisplay,
             journeyDateReadable,
-            bookUrl,
             openAiSummary: result.openAiSummary,
           });
       out.emailSent = await this.sendEmail(email.trim(), subject, html);

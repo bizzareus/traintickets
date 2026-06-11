@@ -61,10 +61,8 @@ export class IrctcChartService {
       this.logger.log(`Entering journey date: ${journeyDate}`);
       // The date field is tricky in React, sometimes fill or type doesn't trigger the state update.
       // We'll click, clear and type.
-      const dateInputSelector =
-        'div:has(> label:has-text("Journey Date*")) input';
       // Puppeteer doesn't support :has-text directly like Playwright, so we find it via evaluate or specific selector
-      await page.evaluate((date) => {
+      await page.evaluate(() => {
         const labels = Array.from(document.querySelectorAll('label'));
         const dateLabel = labels.find((l) =>
           l.textContent?.includes('Journey Date*'),
@@ -76,7 +74,7 @@ export class IrctcChartService {
             input.value = '';
           }
         }
-      }, journeyDate);
+      });
       await page.keyboard.type(journeyDate, { delay: 100 });
       await page.keyboard.press('Enter');
 

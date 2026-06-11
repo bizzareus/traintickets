@@ -643,11 +643,6 @@ export class JourneyTaskService {
         isRetryableChartTaskFailure(result)
       ) {
         await this.scheduleTaskRetry(
-          
-         
-         
-         ,
-        
           taskId,
           result,
           attemptNumber,
@@ -709,12 +704,8 @@ export class JourneyTaskService {
         }
       }
     } catch (err) {
-      const message = err instanceof 
-          Error ?
-          err.message : Strin
-         g(err);
-         ,
-        
+      const message = err instanceof Error ? err.message : String(err);
+
       if (
         attemptNumber < MAX_CHART_TASK_ATTEMPTS &&
         isRetryableRailFailureText(message)
