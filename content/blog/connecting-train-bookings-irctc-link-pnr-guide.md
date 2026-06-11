@@ -1,8 +1,8 @@
 ---
-title: "The Ultimate Guide to IRCTC Connecting Train Bookings: Official 'Link PNR' Trick to Protect Against Delays"
-description: "Missed your connecting train in India? Learn how to officially link PNRs on IRCTC, protect your journey against late trains, and get zero-fee refunds."
+title: "How to Link PNR for Connecting Train on IRCTC: Complete Booking Guide"
+description: "Learn how to book connecting journey tickets on IRCTC, link two PNRs, understand connecting journey booking rules, and claim refunds if you miss your connection due to train delays."
 date: "2026-05-30"
-updated: "2026-05-30"
+updated: "2026-06-11"
 tags:
   - connecting trains
   - train booking
@@ -10,6 +10,9 @@ tags:
   - refunds
   - link PNR
   - travel tips
+  - connecting journey booking
+  - how to link pnr
+  - connecting pnr
 ---
 
 ## TL;DR
@@ -112,6 +115,21 @@ Linking your PNRs protects your wallet, but it does not protect your travel plan
 
 ## Common Booking Questions (FAQ)
 
+### What is connecting PNR in IRCTC?
+A connecting PNR is a ticket that has been officially linked to a previously booked PNR through IRCTC's **Connecting Journey Booking** feature. When two PNRs are connected, the railway system recognizes that the second journey depends on the first train arriving on time. If a delay on the first train causes you to miss the second, you are eligible for a full refund on the second ticket with zero cancellation charges.
+
+### How to link PNR for connecting train?
+You link PNRs **during the booking of the second ticket** — not after. Go to the IRCTC website or app, navigate to **Trains → Connecting Journey Booking**, enter the PNR of your already-booked first ticket, and proceed to search and book the second leg. The system validates that passenger names match and station alignment is correct before allowing the link.
+
+### How to link two PNR in IRCTC after booking?
+Unfortunately, you **cannot link two PNRs after both have been booked independently**. The linking must happen during the booking process of the second ticket. If you have already booked both tickets separately, there is no option on IRCTC to retroactively connect them. You would need to cancel the second ticket and rebook it through the Connecting Journey Booking flow.
+
+### What does connecting journey booking mean?
+Connecting journey booking means booking two separate train tickets as a linked chain through IRCTC's official system. The first ticket covers one leg of your journey (e.g., Delhi to Kanpur), and the second covers the onward leg (e.g., Kanpur to Lucknow). By linking them, you create a financial safety net: if Train 1's delay makes you miss Train 2, you get a 100% refund on Train 2 with no cancellation or clerkage fees.
+
+### What are the connecting journey booking rules?
+The key rules are: (1) Neither ticket can be Tatkal or Premium Tatkal — only General quota. (2) Passenger names, ages, and genders must match exactly on both PNRs. (3) The destination of Train 1 must be the origin/boarding station of Train 2, or they must be in the same city cluster (e.g., NDLS and NZM). (4) The gap between Train 1's scheduled arrival and Train 2's scheduled departure must be between 1 minute and 5 days. (5) The first ticket must be Confirmed or RAC, not fully waitlisted.
+
 ### Can I link two tickets that I already booked separately?
 No. You must link the first PNR **during the booking process** of the second ticket. There is currently no option on IRCTC to link two independently booked, pre-existing PNRs.
 
@@ -120,6 +138,9 @@ You can only link to a PNR that has a status of **Confirmed (CNF)** or **Reserva
 
 ### Does the refund cover the first ticket as well?
 No. The delay refund only applies to the second (missed) ticket because you successfully travelled on the first train (even if it was delayed). If you choose not to board the first train at all due to its delay, you must file a separate TDR for Train 1 under the "Train delayed by more than 3 hours" rule.
+
+### How to book connecting trains in IRCTC?
+The process is: (1) Book your first leg normally and note the PNR. (2) Go to **Trains → Connecting Journey Booking** on the IRCTC site or app. (3) Enter PNR 1 for validation. (4) Search for your second train from the connecting station. (5) Select passengers (must match PNR 1), pay, and book. The second ticket will display a "Connected PNR" tag on your booking.
 
 ---
 

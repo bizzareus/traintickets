@@ -2,14 +2,17 @@
 title: "The Complete Guide to IRCTC Quotas: Securing Lower Berths for Seniors, Ladies, and Divyangjan Travelers"
 description: "Struggling to secure a lower berth for elderly parents or relatives on Indian Railways? Learn how IRCTC's special quotas, concessions, and card registration work, with pro hacks to ensure a comfortable journey."
 date: "2026-06-02"
-updated: "2026-06-02"
+updated: "2026-06-11"
 tags:
   - irctc quotas
   - senior citizen booking
   - lower berth quota
   - ladies quota
+  - ladies quota in irctc
+  - ss quota in railway
   - divyangjan concession
   - train travel tips
+  - lower berth
 ---
 
 ## TL;DR
@@ -31,7 +34,7 @@ If you understand how these quotas work, how the algorithm allocates them, and t
 
 ---
 
-## 1. The Lower Berth / Senior Citizen Quota (SS Quota)
+## SS Quota in Railway: The Lower Berth / Senior Citizen Quota Explained
 
 The most popular and widely used quota for comfortable travel is the **Senior Citizen / Lower Berth Quota**, commonly referred to as the **SS Quota** on reservation charts.
 
@@ -54,7 +57,7 @@ Before COVID-19, senior citizens enjoyed a 40% (for men) and 50% (for women) con
 
 ---
 
-## 2. The Ladies Quota (LD Quota)
+## Ladies Quota in IRCTC: How the LD Quota Works for Female Travelers
 
 Safety and privacy during overnight travel are major concerns for solo female travelers. To address this, Indian Railways offers the **Ladies Quota (LD Quota)**.
 
