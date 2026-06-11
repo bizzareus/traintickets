@@ -76,11 +76,11 @@ Most people first look downward: 3A to Sleeper, 2A to 3A, AC Chair Car to second
 
 If 3A is WL but 2A is confirmed, the fare jump may be worth it when the trip is urgent, overnight, family-heavy, or competing with a messy segment plan. This is not about always buying the expensive ticket. It is about comparing the full plan. A confirmed 2A ticket on the same train may be cleaner than two separate confirmed legs in lower classes, especially if the segment plan involves a midnight station gap.
 
-Look at the total cost, not just the fare difference. Include cancellation risk, taxis, food during a long wait, and the mental load of coordinating multiple PNRs.
+Don't just look at the ticket fare. Look at the big picture. Between cancellation fees, station food, auto rides, and the headache of tracking multiple PNRs, a cheap ticket can get expensive fast.
 
-## When Is It Worth Downgrading Your Train Class for a Confirmed Seat?
+## When should you drop down to a lower class?
 
-Downgrading to a lower class makes sense when the train runs during the day, the weather is manageable, your luggage is light, and the lower class offers a confirmed end-to-end ticket. You are trading comfort for certainty and timely arrival — a worthwhile tradeoff when made deliberately rather than out of desperation.
+Downgrading is a good call if it's a daytime journey, the weather is decent, and your luggage is light. Most of all, it gives you a confirmed ticket instead of a waitlist. Sure, you lose some comfort. But you get peace of mind and a timely arrival. That's a solid trade if you make it deliberately.
 
 There are also times when moving down is the right answer.
 
@@ -120,10 +120,10 @@ Do not let availability bully you into a journey you will regret. A confirmed ti
 ## Common Booking Questions (FAQ)
 
 ### Can the TTE upgrade my seat class onboard if vacant berths are available?
-Yes, the Traveling Ticket Examiner (TTE) is authorized to upgrade your seat to a higher class onboard if berths are vacant after chart preparation. You will be required to pay the exact fare difference between your booked class and the upgraded class.
+Yes! The Traveling Ticket Examiner (TTE) can upgrade you onboard if there are empty berths after the chart is prepared. You'll just need to pay the difference in fare between your original class and the new one.
 
-### Do I get a refund if I am downgraded to a lower class onboard?
-Yes. If you are downgraded to a lower class due to railway operational reasons or coach changes, you are eligible for a refund of the difference in fare. You must file a Ticket Deposit Receipt (TDR) online through the IRCTC portal within the designated time limit. For exact timings and eligibility, see the [official IRCTC refund and TDR guidelines](https://contents.irctc.co.in/en/refundRules.html).
+### What if the TTE downgrades me onboard? Do I get money back?
+Yes. If the railway puts you in a lower class because of coach changes or track issues, you get the fare difference back. Just make sure you file a Ticket Deposit Receipt (TDR) online through IRCTC. There's a tight deadline for this. To see the exact rules and timelines, check the [official IRCTC refund and TDR guidelines](https://contents.irctc.co.in/en/refundRules.html).
 
 ---
 

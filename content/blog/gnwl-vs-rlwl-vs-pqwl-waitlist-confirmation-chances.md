@@ -43,7 +43,7 @@ This difference directly affects whether you can board or need a backup plan.
 
 ## What Is GNWL (General Waiting List) and What Are Its Confirmation Chances?
 
-GNWL is the main waitlist quota assigned when you book from a train's originating station. It has the highest confirmation chances because the general pool is the largest, receives the most cancellations, and benefits from chart-time seat adjustments. Low GNWL numbers (under 20–30 for Sleeper, under 10 for AC) on non-peak dates usually clear before departure.
+GNWL is the waitlist pool you get when booking a ticket starting right from the train's originating station. It's easily your best bet for confirmation because the general seat quota is huge, sees tons of daily cancellations, and gets extra seats during final chart prep. Typically, low GNWL positions (say, under 30 in Sleeper or under 10 in AC) on ordinary days clear easily before the train departs.
 
 This is the main waitlist quota. It applies when you book from the train's originating station (or a nearby starting point classified under the general pool).
 
@@ -145,23 +145,24 @@ RSWL quotas are small and move rarely. In most practical situations, RSWL/1 is t
 
 ## How Do GNWL, RLWL, PQWL, TQWL, and RSWL Compare?
 
-GNWL has the best confirmation chances due to its large pool and frequent cancellations. RLWL is moderate but depends on your specific station pair. PQWL is shared across many pairs and clears slowly. TQWL only clears from rare Tatkal cancellations. RSWL has the smallest pool and almost never confirms. The table below summarizes the key differences.
+Let's compare them: the general queue (GNWL) usually gets you the absolute best confirmation odds since it has a massive seat pool and daily cancellations. Remote location queues (RLWL) are decent but completely tied to that specific boarding stop. The pooled queue (PQWL) clumps a bunch of mid-route stations together and barely moves. Tatkal lists (TQWL) are tough to clear because nobody cancels those expensive tickets, and roadside station tickets (RSWL) are so tiny they rarely ever change. Take a look at the summary below.
 
-| Waitlist type | What it means | Pool size | Typical confirmation chances |
+
+| Waitlist Type | What it actually means | How big is the pool? | Will it get confirmed? |
 |---|---|---|---|
-| GNWL | General quota from originating station | Large | Best, especially low numbers on normal days |
-| RLWL | Specific intermediate station pair | Medium-small | Moderate, depends on that pair's cancellation activity |
-| PQWL | Shared pool for many intermediate pairs | Variable, shared | Low to very low |
-| TQWL | Tatkal quota waitlist | Small | Low, only clears from Tatkal cancellations |
-| RSWL | Small roadside station quota | Very small | Rarely clears |
+| GNWL | Ticket booked from train's start station | Huge | Best chances, especially if your number is low |
+| RLWL | Assigned for major intermediate stations | Medium to Small | Decent, but depends on others canceling from that same station |
+| PQWL | Shared pool for smaller intermediate legs | Mix of small pools | Hard to clear; moves very slowly |
+| TQWL | Waiting list for Tatkal tickets | Very Small | Horrible odds; clears only if Tatkal bookings cancel |
+| RSWL | Small quota for roadside stops | Tiny | Next to zero; almost never moves |
 
 These are patterns based on how each quota works. Actual movement on any given day depends on the specific train, route, date, and how many passengers cancel.
 
 ---
 
-## How Do You Read Your PNR Waitlist Status Correctly?
+## Making Sense of Your PNR Waitlist Codes
 
-Your PNR status shows a format like WL/GNWL/18 or WL/PQWL/12. The letters before the number identify which quota pool your ticket is in — GNWL, RLWL, PQWL, TQWL, or RSWL. Compare your booking status (at purchase) with current status (now) to gauge movement. Significant movement in GNWL is a good sign; barely any movement in PQWL is a warning.
+When you look up your PNR, you will run into strings like WL/GNWL/18 or WL/PQWL/12. The text between the slashes tells you exactly which quota pool has your seat. Always compare the status at the time of booking with the current live status to see if it's moving. A major jump in GNWL is a great sign, whereas a frozen PQWL is an alarm bell.
 
 When you check your PNR on IRCTC or any third-party platform, the status shows something like:
 

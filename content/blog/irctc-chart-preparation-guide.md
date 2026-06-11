@@ -101,7 +101,7 @@ Use it as a basic check only. For last-minute travel, the useful signal is segme
 ## Common Booking Questions (FAQ)
 
 ### When is the final train chart prepared?
-The first reservation chart is typically prepared 4 hours before the scheduled departure of the train from its originating station. The second and final chart is prepared 30 minutes before the scheduled departure of the train, incorporating any last-minute cancellations and current bookings made via the [official IRCTC portal](https://www.irctc.co.in/).
+The first chart goes up 4 hours before the train leaves the starting station. But don't worry. They prepare a second, final chart just 30 minutes before departure. That's when they update all the last-minute cancellations and current bookings done on the [official IRCTC portal](https://www.irctc.co.in/).
 
 ### What happens if my ticket is partially confirmed and partially waitlisted after charting?
 On a group/family e-ticket PNR, if at least one passenger has a confirmed or RAC status while others remain waitlisted, the waitlisted passengers are permitted to board and travel. The Travelling Ticket Examiner (TTE) will assist with seat/berth adjustment onboard, subject to availability.

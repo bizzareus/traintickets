@@ -103,9 +103,9 @@ When every listed train looks difficult, make a quick table. You do not need any
 5. **What is the real cost?** Compare total price across all legs you would actually book.
 6. **Which plan is simplest?** Use the longest confirmed leg to choose between close options.
 
-This is the same practical logic behind [segment booking for confirmed tickets](/blog/segment-booking-confirmed-tickets): secure movement first, then optimize comfort, speed, and cost.
+It's the exact same logic we use for [segment booking for confirmed tickets](/blog/segment-booking-confirmed-tickets). Get moving first. Sort out comfort and costs later.
 
-## How Do You Choose Between WL, RAC, and Segment Plans?
+## WL vs RAC vs Segment Plans: What's the Play?
 
 To choose between WL, RAC, and segment plans, compare the confirmed travel hours from your origin, the station where uncertainty begins, and the total fare. A train with 11 confirmed hours plus a short uncertain stretch usually beats one with only 5 confirmed hours, even if the latter is cheaper or faster overall.
 
@@ -173,9 +173,9 @@ Availability can change, and different ticket types have different travel rules.
 ## Common Booking Questions (FAQ)
 
 ### What does "Regret" status mean on IRCTC?
-**Regret** status indicates that the waiting list has reached its maximum capacity limit for that class and route. When a train enters "Regret" status, the railway system will not accept any more bookings or let you join the waitlist.
+It means the train is 100% full. The waitlist has hit its limit too. Once a route goes into "Regret" status, IRCTC won't let you book a ticket or even join the waitlist queue. 
 
-### Can I board a train with a fully waitlisted e-ticket?
+### Can I board the train with a fully waitlisted e-ticket?
 No. Fully waitlisted e-tickets (where all passengers on the PNR remain waitlisted after chart preparation) are automatically cancelled and refunded to your original payment account. Boarding a train with an invalid, waitlisted e-ticket is treated as traveling without a ticket, which is a punishable offense.
 
 ---

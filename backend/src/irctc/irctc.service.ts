@@ -5,6 +5,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
+import { IrctcChartService } from './irctc-chart.service';
 
 const scheduleClient = createRetryingAxiosClient({
   serviceName: 'irctc/schedule',
@@ -229,7 +230,10 @@ export type TrainCompositionResponse = {
 export class IrctcService {
   private readonly logger = new Logger(IrctcService.name);
 
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private irctcChart: IrctcChartService,
+  ) {}
 
   async getTrainSchedule(
     trainNumber: string,
@@ -701,14 +705,26 @@ export class IrctcService {
             : err.message
           : String(err);
       this.logger.warn(
-        `[irctc/vacantBerth] network_error ms=${ms} trainNo=${payload.trainNo} ${cause}`,
+        `[irctc/vacantBerth] network_error ms=${ms} trainNo=${payload.trainNo} ${cause}. Falling back to browser...`,
       );
       // Report the network error to Sentry for monitoring
       captureSentryException(err, {
         tags: { service: 'irctc', endpoint: 'vacantBerth' },
         extra: { ms, trainNo: payload.trainNo, cause },
       });
-      throw new Error(`IRCTC request failed (network/connection): ${cause}`);
+      try {
+        return await this.irctcChart.getVacantBerthViaBrowser(
+          payload.trainNo,
+          payload.jDate,
+          payload.boardingStation,
+          payload.cls,
+        );
+      } catch (fallbackErr) {
+        this.logger.error(
+          `[irctc/vacantBerth] browser fallback failed: ${fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)}`,
+        );
+        throw new Error(`IRCTC request failed (network/connection): ${cause}`);
+      }
     }
 
     const text = await res.text();
@@ -718,16 +734,43 @@ export class IrctcService {
     );
     if (!res.ok) {
       this.logger.warn(
-        `[irctc/vacantBerth] http_error status=${res.status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
+        `[irctc/vacantBerth] http_error status=${res.status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}. Falling back to browser...`,
       );
-      throw new Error(`IRCTC vacantBerth failed: ${res.status} ${text}`);
+      try {
+        return await this.irctcChart.getVacantBerthViaBrowser(
+          payload.trainNo,
+          payload.jDate,
+          payload.boardingStation,
+          payload.cls,
+        );
+      } catch (fallbackErr) {
+        this.logger.error(
+          `[irctc/vacantBerth] browser fallback failed: ${fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)}`,
+        );
+        throw new Error(`IRCTC vacantBerth failed: ${res.status} ${text}`);
+      }
     }
     try {
       return JSON.parse(text) as unknown;
     } catch {
-      throw new Error(
-        `IRCTC vacantBerth returned non-JSON: ${text.slice(0, 200)}`,
+      this.logger.warn(
+        `[irctc/vacantBerth] json_parse_error. Falling back to browser...`,
       );
+      try {
+        return await this.irctcChart.getVacantBerthViaBrowser(
+          payload.trainNo,
+          payload.jDate,
+          payload.boardingStation,
+          payload.cls,
+        );
+      } catch (fallbackErr) {
+        this.logger.error(
+          `[irctc/vacantBerth] browser fallback failed: ${fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)}`,
+        );
+        throw new Error(
+          `IRCTC vacantBerth returned non-JSON: ${text.slice(0, 200)}`,
+        );
+      }
     }
   }
 
@@ -869,7 +912,7 @@ export class IrctcService {
             ? err.message
             : String(err);
         this.logger.warn(
-          `[irctc/trainComposition] network_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} ${cause}`,
+          `[irctc/trainComposition] network_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} ${cause}. Falling back to browser...`,
         );
         captureSentryException(err, {
           tags: { service: 'irctc', endpoint: 'trainComposition' },
@@ -881,15 +924,26 @@ export class IrctcService {
             cause,
           },
         });
-        throw new Error(
-          'We are unable to contact rail systems. Please try again later.',
-        );
+        try {
+          return await this.irctcChart.getTrainCompositionViaBrowser(
+            body.trainNo,
+            body.jDate,
+            body.boardingStation,
+          );
+        } catch (fallbackErr) {
+          this.logger.error(
+            `[irctc/trainComposition] browser fallback failed: ${fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)}`,
+          );
+          throw new Error(
+            'We are unable to contact rail systems. Please try again later.',
+          );
+        }
       }
     }
     if (status < 200 || status >= 300) {
       const ms = Date.now() - t0;
       this.logger.warn(
-        `[irctc/trainComposition] http_error status=${status} ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate}`,
+        `[irctc/trainComposition] http_error status=${status} ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate}. Falling back to browser...`,
       );
       captureSentryException(new Error(`HTTP error status ${status}`), {
         tags: { service: 'irctc', endpoint: 'trainComposition' },
@@ -902,9 +956,20 @@ export class IrctcService {
           response: text.slice(0, 1000),
         },
       });
-      throw new Error(
-        'Train composition is temporarily unavailable. Please try again later.',
-      );
+      try {
+        return await this.irctcChart.getTrainCompositionViaBrowser(
+          body.trainNo,
+          body.jDate,
+          body.boardingStation,
+        );
+      } catch (fallbackErr) {
+        this.logger.error(
+          `[irctc/trainComposition] browser fallback failed: ${fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)}`,
+        );
+        throw new Error(
+          'Train composition is temporarily unavailable. Please try again later.',
+        );
+      }
     }
     let data: Record<string, unknown>;
     try {
@@ -912,7 +977,7 @@ export class IrctcService {
     } catch (parseErr) {
       const ms = Date.now() - t0;
       this.logger.warn(
-        `[irctc/trainComposition] json_parse_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate}`,
+        `[irctc/trainComposition] json_parse_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate}. Falling back to browser...`,
       );
       captureSentryException(
         parseErr instanceof Error ? parseErr : new Error('JSON parse failed'),
@@ -927,9 +992,20 @@ export class IrctcService {
           },
         },
       );
-      throw new Error(
-        'Train composition is temporarily unavailable. Please try again later.',
-      );
+      try {
+        return await this.irctcChart.getTrainCompositionViaBrowser(
+          body.trainNo,
+          body.jDate,
+          body.boardingStation,
+        );
+      } catch (fallbackErr) {
+        this.logger.error(
+          `[irctc/trainComposition] browser fallback failed: ${fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)}`,
+        );
+        throw new Error(
+          'Train composition is temporarily unavailable. Please try again later.',
+        );
+      }
     }
 
     const errMsg =
