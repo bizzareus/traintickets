@@ -24,10 +24,10 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-special-quotas-senior-citizen-ladies-disability-lower-berth.md | IRCTC Special Quotas: How to Secure Lower Berths for Seniors, Ladies, and Divyangjan Travelers | 2026-06-02 |
 | irctc-cancellation-refund-rules-tdr-guide.md | The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing | 2026-06-10 |
 | understanding-coach-composition-find-train-platform.md | Indian Railways Coach Composition: How to Locate Your Train Coach on the Platform Without Panic | 2026-06-10 |
+| irctc-partial-confirmation-rules-waitlist-travel-guide.md | IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers | 2026-06-11 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
-- PNR status tracking and group booking partial confirmations
 - Platform ticket / unreserved travel as emergency last resort
 - Station platform navigation tips for last-minute boarders
 - IRCTC app vs website — Tatkal booking differences, speed tips
