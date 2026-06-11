@@ -887,6 +887,21 @@ export class IrctcService {
       }
     }
     if (status < 200 || status >= 300) {
+      const ms = Date.now() - t0;
+      this.logger.warn(
+        `[irctc/trainComposition] http_error status=${status} ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate}`,
+      );
+      captureSentryException(new Error(`HTTP error status ${status}`), {
+        tags: { service: 'irctc', endpoint: 'trainComposition' },
+        extra: {
+          status,
+          ms,
+          trainNo: body.trainNo,
+          boardingStation: body.boardingStation,
+          jDate: body.jDate,
+          response: text.slice(0, 1000),
+        },
+      });
       throw new Error(
         'Train composition is temporarily unavailable. Please try again later.',
       );
@@ -894,7 +909,24 @@ export class IrctcService {
     let data: Record<string, unknown>;
     try {
       data = JSON.parse(text) as Record<string, unknown>;
-    } catch {
+    } catch (parseErr) {
+      const ms = Date.now() - t0;
+      this.logger.warn(
+        `[irctc/trainComposition] json_parse_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate}`,
+      );
+      captureSentryException(
+        parseErr instanceof Error ? parseErr : new Error('JSON parse failed'),
+        {
+          tags: { service: 'irctc', endpoint: 'trainComposition' },
+          extra: {
+            ms,
+            trainNo: body.trainNo,
+            boardingStation: body.boardingStation,
+            jDate: body.jDate,
+            rawText: text.slice(0, 1000),
+          },
+        },
+      );
       throw new Error(
         'Train composition is temporarily unavailable. Please try again later.',
       );
