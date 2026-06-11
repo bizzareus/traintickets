@@ -19,6 +19,82 @@ export type BlogPost = BlogPostMeta & {
   content: string;
 };
 
+export type FaqEntry = {
+  question: string;
+  answer: string;
+};
+
+/**
+ * Extracts FAQ question/answer pairs from blog markdown content.
+ * Looks for H3 headings (### ) within an FAQ section (identified by an H2
+ * containing "FAQ" or "Common Booking Questions"). Each H3 is treated as a
+ * question, and all text until the next heading or section break is the answer.
+ */
+export function parseFaqFromMarkdown(markdown: string): FaqEntry[] {
+  const lines = markdown.split("\n");
+  const entries: FaqEntry[] = [];
+
+  // Find the FAQ section start (H2 containing "FAQ" or "Common Booking Questions")
+  let inFaqSection = false;
+  let currentQuestion: string | null = null;
+  let currentAnswerLines: string[] = [];
+
+  const flushEntry = () => {
+    if (currentQuestion && currentAnswerLines.length > 0) {
+      const answer = currentAnswerLines
+        .join(" ")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (answer) {
+        entries.push({ question: currentQuestion, answer });
+      }
+    }
+    currentQuestion = null;
+    currentAnswerLines = [];
+  };
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    // Detect FAQ section start
+    if (/^## /.test(trimmed) && /faq|common.*question/i.test(trimmed)) {
+      inFaqSection = true;
+      continue;
+    }
+
+    if (!inFaqSection) continue;
+
+    // End of FAQ section (another H2 or horizontal rule followed by H2)
+    if (/^## /.test(trimmed) && !/faq|common.*question/i.test(trimmed)) {
+      flushEntry();
+      break;
+    }
+
+    // H3 = new question
+    if (/^### /.test(trimmed)) {
+      flushEntry();
+      currentQuestion = trimmed.replace(/^###\s+/, "").replace(/\?$/, "?");
+      continue;
+    }
+
+    // Skip empty lines, horizontal rules, and markdown formatting within answer
+    if (currentQuestion) {
+      if (trimmed === "" || trimmed === "---") continue;
+      // Strip markdown formatting for clean plain-text answer
+      const cleanLine = trimmed
+        .replace(/\*\*([^*]+)\*\*/g, "$1")  // bold
+        .replace(/\*([^*]+)\*/g, "$1")       // italic
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")  // links
+        .replace(/`([^`]+)`/g, "$1");        // inline code
+      currentAnswerLines.push(cleanLine);
+    }
+  }
+  flushEntry();
+
+  return entries;
+}
+
+
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
 function safeReadDir(dir: string): string[] {

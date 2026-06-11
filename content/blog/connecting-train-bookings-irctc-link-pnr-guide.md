@@ -26,7 +26,7 @@ To prevent this, Indian Railways offers an official **Connecting Journey Booking
 
 ---
 
-## The Nightmare of Manual Connecting Bookings
+## What Happens if You Book Connecting Trains Without Linking PNRs?
 
 Anyone who travels by Indian Railways knows that delays are a reality. When you need to travel a long distance (such as Delhi to Guwahati or Mumbai to Kerala) and direct trains are completely sold out, booking a connecting journey—like taking Train A to a major junction, and then Train B to your final destination—is a brilliant alternative.
 
@@ -55,7 +55,7 @@ To use this feature, your tickets must satisfy several strict conditions:
 
 ---
 
-## Step-by-Step: How to Link PNRs on IRCTC
+## How Do You Link PNRs on IRCTC? (Step-by-Step)
 
 You cannot link two PNRs if both have already been booked independently. You must link them **while booking the second ticket**. Here is the exact process:
 
@@ -82,7 +82,7 @@ If Train A runs late and you miss Train B, here are the official refund rules un
 
 ---
 
-## How to Claim Your Refund (The 3-Hour Golden Rule)
+## How Do You Claim a Refund for a Missed Connection? (The 3-Hour Rule)
 
 If the worst happens and you miss your connection, do not panic. But you must act quickly. You only have a **3-hour window** from the moment your first train actually rolls into the junction station.
 
@@ -103,7 +103,7 @@ If the worst happens and you miss your connection, do not panic. But you must ac
 
 ---
 
-## Strategic Tips for Connecting Journeys
+## What Are the Best Strategies for Connecting Train Journeys?
 
 Linking your PNRs protects your wallet, but it does not protect your travel plans. To make sure you actually reach your destination, follow these practical rules of thumb:
 

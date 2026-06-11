@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getBlogPost, listBlogPostSlugs, listBlogPosts } from "@/lib/blog";
+import { getBlogPost, listBlogPostSlugs, listBlogPosts, parseFaqFromMarkdown } from "@/lib/blog";
 
 export const dynamicParams = false;
 
@@ -93,6 +93,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       `${baseUrl}/opengraph-image`,
     ],
   };
+
+  const faqEntries = parseFaqFromMarkdown(post.content);
+  const faqJsonLd = faqEntries.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqEntries.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  } : null;
 
   const allPosts = listBlogPosts();
   const otherPosts = allPosts.filter((p) => p.slug !== post.slug);
@@ -186,6 +200,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      ) : null}
     </article>
   );
 }

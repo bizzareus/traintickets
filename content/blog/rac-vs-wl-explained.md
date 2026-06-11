@@ -21,7 +21,7 @@ tags:
 - **WL** means you are still waiting for an allotment. A fully waitlisted e-ticket after chart preparation is not valid for boarding.
 - The same train can show Confirmed, RAC, WL, or Regret depending on station pair, class, quota, and timing.
 
-## What “Confirmed” actually means
+## What Does "Confirmed" Actually Mean on a Train Ticket?
 
 When a ticket is **confirmed**, IRCTC has assigned you a specific seat or berth, depending on class and quota, for the segment you booked.
 
@@ -29,7 +29,7 @@ That last part matters. If your ticket is **Jaipur (JP) → Ahmedabad (ADI)**, t
 
 Confirmed is the cleanest status for last-minute travel because you can plan your boarding, luggage, and arrival without waiting for another status change.
 
-## What RAC means (in practical terms)
+## What Does RAC Mean in Indian Railways?
 
 **RAC** (Reservation Against Cancellation) usually means:
 
@@ -41,7 +41,7 @@ RAC is often “good enough” for a short or urgent journey. For an overnight t
 
 Example: **Chennai Central (MAS) → Bengaluru (SBC)** on a same-day trip may be acceptable on RAC if you just need to reach. **Mumbai (CSMT) → Nagpur (NGP)** overnight on RAC is a tougher call because sleep and baggage matter more.
 
-## What WL means
+## What Does WL (Waiting List) Mean on a Train Ticket?
 
 **WL** (Waiting List) means:
 
@@ -52,7 +52,7 @@ WL movement can happen anytime, but it often gets more dynamic around **chart pr
 
 The most important practical caveat: if all passengers on an IRCTC e-ticket remain waitlisted after chart preparation, the names are dropped from the chart and the ticket is not valid for boarding. Counter tickets and partially confirmed group PNRs have their own complications, so always read the passenger-wise status before acting.
 
-## Why two people see different statuses for the same train
+## Why Do Two People See Different Statuses for the Same Train?
 
 Statuses differ because availability depends on:
 
@@ -65,7 +65,7 @@ So **Howrah (HWH) → Patna (PNBE)** might show WL in 3A, while **Dhanbad (DHN) 
 
 This is why screenshots from friends can be misleading. Unless the station pair, class, date, quota, and boarding station match yours, their status is only a clue.
 
-## What to do if you need to travel today
+## What Should You Do if You Need to Travel Today?
 
 Instead of staring at one train’s full-route status, use this approach:
 

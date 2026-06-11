@@ -34,7 +34,9 @@ If you understand how these quotas work, how the algorithm allocates them, and t
 
 ---
 
-## SS Quota in Railway: The Lower Berth / Senior Citizen Quota Explained
+## What Is the SS Quota in Indian Railways and Who Is Eligible?
+
+The SS Quota (Senior Citizen / Lower Berth Quota) guarantees lower berths to men aged 60+, women aged 45+, and pregnant women — but only if the PNR has a maximum of two passengers and both independently qualify. Adding any ineligible passenger pushes the entire booking into the General Quota.
 
 The most popular and widely used quota for comfortable travel is the **Senior Citizen / Lower Berth Quota**, commonly referred to as the **SS Quota** on reservation charts.
 
@@ -57,7 +59,9 @@ Before COVID-19, senior citizens enjoyed a 40% (for men) and 50% (for women) con
 
 ---
 
-## Ladies Quota in IRCTC: How the LD Quota Works for Female Travelers
+## How Does the Ladies Quota (LD Quota) Work in IRCTC?
+
+The Ladies Quota (LD Quota) reserves a dedicated bay of 6 berths in Sleeper Class for female-only passengers or groups. Solo women or all-female groups can select this quota during booking. It often has confirmed berths available even when the General Quota is waitlisted, providing both safety and better availability.
 
 Safety and privacy during overnight travel are major concerns for solo female travelers. To address this, Indian Railways offers the **Ladies Quota (LD Quota)**.
 
@@ -72,7 +76,9 @@ Safety and privacy during overnight travel are major concerns for solo female tr
 
 ---
 
-## 3. The Divyangjan (Persons with Disability) Quota
+## What Is the Divyangjan (Disability) Quota and How Do You Book It Online?
+
+The Divyangjan Quota (DP Quota) provides up to 75% fare concession in Sleeper and 3AC classes, plus automatic lower berth allocation. To book online, passengers must have a verified 19-digit Photo Identity Card issued by their regional Divisional Railway Manager (DRM). One companion also receives the same concession rate.
 
 The **Divyangjan Quota (DP Quota)** is one of the most generous quotas on Indian Railways, offering both guaranteed lower/modified berths and substantial monetary concessions.
 
@@ -102,7 +108,9 @@ To book a Divyangjan ticket online, you must have a **Divyangjan Photo Identity 
 
 ---
 
-## 4. Pro Booking Hacks to Guarantee Lower Berths
+## How Can You Guarantee a Lower Berth When IRCTC Quotas Are Exhausted?
+
+When quota berths are unavailable, use the separate-PNR trick: book seniors alone under the SS Quota on one PNR, and younger travelers separately under General Quota. You can also force lower-berth-only booking via IRCTC's "Other Preferences" section, or request a swap from the TTE using their Hand-Held Terminal after departure.
 
 If the special quotas are exhausted, or if you are ineligible (for example, traveling as a young adult accompanying a senior parent), you can use these tactical strategies to maximize your chances of getting a lower berth.
 

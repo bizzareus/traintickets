@@ -2,7 +2,7 @@
 title: "Securing Adjacent Berths on IRCTC: The Ultimate Family Booking Survival Guide"
 description: "Why does IRCTC split families across different train coaches? Learn how the seat allocation algorithm works and the specific booking preferences to ensure your group stays together."
 date: "2026-05-31"
-updated: "2026-05-31"
+updated: "2026-06-11"
 tags:
   - family booking
   - adjacent berths
@@ -30,7 +30,9 @@ Here is a breakdown of how the Indian Railways seat allocation algorithm works a
 
 ---
 
-## How the IRCTC Seat Allocation Algorithm Works
+## How Does the IRCTC Seat Allocation Algorithm Work?
+
+The IRCTC Passenger Reservation System (PRS) allocates seats based on two principles: weight distribution across coaches (filling from the center outward to maintain train balance) and group cohesion (keeping passengers on the same PNR together). If no single coach has enough adjacent berths for your group, the algorithm splits your family across coaches rather than failing the booking.
 
 Indian Railways does not allot seats randomly, nor does it simply fill the train from Coach 1 to Coach 18. Instead, the computerized Passenger Reservation System (PRS) operates on two primary principles: **physics (load balancing)** and **passenger demographics**.
 
@@ -50,7 +52,9 @@ By default, the system chooses to split you up because a confirmed split ticket 
 
 ---
 
-## The "Secret" IRCTC Booking Preferences You Must Use
+## What IRCTC Booking Preferences Prevent Family Split Across Coaches?
+
+Under "Other Preferences" on the IRCTC passenger details page, check "Book only if all berths are allotted in the same coach" to prevent family splitting. Additional options include requiring at least one or two lower berths for senior citizens. If the condition cannot be met, the booking fails and your money is refunded instead of scattering your family.
 
 When filling out the passenger details on the IRCTC website or app, most travelers skip past the **"Other Preferences"** section. This is a massive mistake. This section contains the exact tools designed to prevent split bookings.
 
@@ -67,7 +71,9 @@ Under "Other Preferences," you will find three critical check-boxes:
 
 ---
 
-## 4 Pro Hacks to Secure Adjacent Berths
+## How Can You Secure Adjacent Berths for Your Family on IRCTC?
+
+To secure adjacent berths, pre-save family details in the IRCTC Master List for faster booking, split groups of 5+ into two separate PNRs booked simultaneously, avoid selecting "Lower Berth" for all passengers (leave young travelers as "No Preference"), and book seniors on a separate PNR with the lower berth condition to maximize flexibility.
 
 If you want to maximize your chances of sitting together without having your booking fail, use these advanced strategies:
 
@@ -91,7 +97,9 @@ If you have elderly parents and young kids traveling together, book the seniors 
 
 ---
 
-## On-Board Survival: How to Swap Berths Legally
+## How Do You Legally Swap Berths on an Indian Train?
+
+To swap berths legally, first approach the TTE (Train Ticket Examiner) after chart checking — they can officially re-allot vacant "No-Show" berths to your family. If the train is full, politely request solo travelers to swap by offering an upgrade (your lower berth for their upper), and always explain your reason (keeping children or elderly together).
 
 If the worst happens and your family is split, do not panic. You can still resolve the situation once you board the train.
 
@@ -106,7 +114,9 @@ If the train is fully packed and the TTE cannot help, you will have to request f
 
 ---
 
-## Understanding the Layout: Typical Indian Railway Coach Configurations
+## What Are the Typical Indian Railway Coach Layouts for Families?
+
+Sleeper coaches have 72–80 berths in 8-berth bays (LB, MB, UB × 2 plus side berths). AC 3-Tier has 64–72 berths in similar 8-berth bays. AC 2-Tier has 46–54 berths in 6-berth bays (no middle berths). For families, the best strategy is to target consecutive berth numbers within a single bay — berths 1–6 (inner bay) plus 7–8 (side berths).
 
 To plan your swap or understand your ticket, keep this visual layout of standard coaches in mind:
 
