@@ -25,6 +25,8 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-cancellation-refund-rules-tdr-guide.md | The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing | 2026-06-10 |
 | understanding-coach-composition-find-train-platform.md | Indian Railways Coach Composition: How to Locate Your Train Coach on the Platform Without Panic | 2026-06-10 |
 | irctc-partial-confirmation-rules-waitlist-travel-guide.md | IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers | 2026-06-11 |
+| travel-sleeper-ac-class-general-platform-ticket.md | Can you travel in Sleeper/AC with a General/Platform ticket | 2026-06-12 |
+
 
 ## Topics NOT yet covered (candidates for future posts)
 
