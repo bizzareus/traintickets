@@ -15,11 +15,7 @@ const rapidApiScheduleClient = createRetryingAxiosClient({
   retries: 2,
   retryTimeouts: true,
 });
-const trainCompositionClient = createRetryingAxiosClient({
-  serviceName: 'irctc/trainComposition',
-  retryPost: true,
-  retryTimeouts: true,
-});
+// trainCompositionClient is replaced by gotScraping
 
 const IRCTC_SCHEDULE_URL =
   'https://www.irctc.co.in/eticketing/protected/mapps1/trnscheduleenquiry';
@@ -896,33 +892,27 @@ export class IrctcService {
     let status = 0;
     let text = '';
     try {
-      const res = await trainCompositionClient.post<string>(
-        IRCTC_TRAIN_COMPOSITION_URL,
-        body,
-        {
-          headers,
-          responseType: 'text',
-          timeout: IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS,
-        },
-      );
-      status = res.status;
-      text = typeof res.data === 'string' ? res.data : JSON.stringify(res.data);
-    } catch (err) {
-      if (isAxiosError(err) && err.response) {
-        status = err.response.status;
+      const { gotScraping: gotScrap } = await (eval(
+        `import('got-scraping')`,
+      ) as Promise<any>);
+      const res = await gotScrap.post(IRCTC_TRAIN_COMPOSITION_URL, {
+        headers,
+        json: body,
+        timeout: { request: IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS },
+        retry: { limit: 2 },
+      });
+      status = res.statusCode;
+      text = res.body;
+    } catch (err: any) {
+      if (err.response) {
+        status = err.response.statusCode;
         text =
-          typeof err.response.data === 'string'
-            ? err.response.data
-            : JSON.stringify(err.response.data);
+          typeof err.response.body === 'string'
+            ? err.response.body
+            : JSON.stringify(err.response.body);
       } else {
         const ms = Date.now() - t0;
-        const cause = isAxiosError(err)
-          ? err.cause instanceof Error
-            ? err.cause.message
-            : err.message
-          : err instanceof Error
-            ? err.message
-            : String(err);
+        const cause = err instanceof Error ? err.message : String(err);
         const isFallbackEnabled =
           process.env.IRCTC_BROWSER_FALLBACK_ENABLED === 'true';
         this.logger.warn(
