@@ -27,7 +27,7 @@ const RAPIDAPI_TRAIN_SEARCH_URL =
   'https://indian-railway-irctc.p.rapidapi.com/api/trains-search/v1/train';
 const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
 const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
-const IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS = 15_000;
+const IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS = 30_000;
 
 /**
  * TrainScheduleCache row fields used here (`train_runs_on` in DB).
