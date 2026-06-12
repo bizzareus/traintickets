@@ -896,6 +896,7 @@ export class IrctcService {
       const res = await gotScraping.post(IRCTC_TRAIN_COMPOSITION_URL, {
         headers,
         json: body,
+        http2: false,
         timeout: { request: IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS },
         retry: { limit: 2 },
       });
