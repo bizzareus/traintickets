@@ -5,7 +5,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
-import { IrctcChartService } from './irctc-chart.service';
+import { IrctcBrowserFallbackService } from './irctc-browser-fallback.service';
 
 const scheduleClient = createRetryingAxiosClient({
   serviceName: 'irctc/schedule',
@@ -232,7 +232,7 @@ export class IrctcService {
 
   constructor(
     private prisma: PrismaService,
-    private irctcChart: IrctcChartService,
+    private irctcBrowserFallback: IrctcBrowserFallbackService,
   ) {}
 
   async getTrainSchedule(
@@ -716,7 +716,7 @@ export class IrctcService {
       });
       if (isFallbackEnabled) {
         try {
-          return await this.irctcChart.getVacantBerthViaBrowser(
+          return await this.irctcBrowserFallback.getVacantBerthViaBrowser(
             payload.trainNo,
             payload.jDate,
             payload.boardingStation,
@@ -744,7 +744,7 @@ export class IrctcService {
       );
       if (isFallbackEnabled) {
         try {
-          return await this.irctcChart.getVacantBerthViaBrowser(
+          return await this.irctcBrowserFallback.getVacantBerthViaBrowser(
             payload.trainNo,
             payload.jDate,
             payload.boardingStation,
@@ -768,7 +768,7 @@ export class IrctcService {
       );
       if (isFallbackEnabled) {
         try {
-          return await this.irctcChart.getVacantBerthViaBrowser(
+          return await this.irctcBrowserFallback.getVacantBerthViaBrowser(
             payload.trainNo,
             payload.jDate,
             payload.boardingStation,
@@ -940,7 +940,7 @@ export class IrctcService {
         });
         if (isFallbackEnabled) {
           try {
-            return await this.irctcChart.getTrainCompositionViaBrowser(
+            return await this.irctcBrowserFallback.getTrainCompositionViaBrowser(
               body.trainNo,
               body.jDate,
               body.boardingStation,
@@ -976,7 +976,7 @@ export class IrctcService {
       });
       if (isFallbackEnabled) {
         try {
-          return await this.irctcChart.getTrainCompositionViaBrowser(
+          return await this.irctcBrowserFallback.getTrainCompositionViaBrowser(
             body.trainNo,
             body.jDate,
             body.boardingStation,
@@ -1016,7 +1016,7 @@ export class IrctcService {
       );
       if (isFallbackEnabled) {
         try {
-          return await this.irctcChart.getTrainCompositionViaBrowser(
+          return await this.irctcBrowserFallback.getTrainCompositionViaBrowser(
             body.trainNo,
             body.jDate,
             body.boardingStation,
