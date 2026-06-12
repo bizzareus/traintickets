@@ -6,6 +6,7 @@ import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { IrctcBrowserFallbackService } from './irctc-browser-fallback.service';
+import { gotScraping } from 'got-scraping';
 
 const scheduleClient = createRetryingAxiosClient({
   serviceName: 'irctc/schedule',
@@ -892,10 +893,7 @@ export class IrctcService {
     let status = 0;
     let text = '';
     try {
-      const { gotScraping: gotScrap } = await (eval(
-        `import('got-scraping')`,
-      ) as Promise<any>);
-      const res = await gotScrap.post(IRCTC_TRAIN_COMPOSITION_URL, {
+      const res = await gotScraping.post(IRCTC_TRAIN_COMPOSITION_URL, {
         headers,
         json: body,
         timeout: { request: IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS },
