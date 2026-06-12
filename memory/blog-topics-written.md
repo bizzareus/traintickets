@@ -30,6 +30,6 @@ This file tracks all blog posts published to avoid duplication.
 
 ## Topics NOT yet covered (candidates for future posts)
 
-- Platform ticket / unreserved travel as emergency last resort
 - Station platform navigation tips for last-minute boarders
 - IRCTC app vs website — Tatkal booking differences, speed tips
+
