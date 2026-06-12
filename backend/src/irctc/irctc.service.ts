@@ -24,7 +24,7 @@ const IRCTC_VACANT_BERTH_URL =
 const IRCTC_TRAIN_COMPOSITION_URL =
   'https://www.irctc.co.in/online-charts/api/trainComposition';
 const RAPIDAPI_TRAIN_SEARCH_URL =
-  'https://indian-railway-irctc.p.rapidapi.com/api/trains-search/v1/train';
+  'https://irctc1.p.rapidapi.com/api/v1/getTrainSchedule';
 const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
 const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
 const IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS = 30_000;
@@ -128,31 +128,6 @@ function extractTrainRunsOnFromIrctc(
     if (typeof v === 'string') {
       const t = v.trim().toUpperCase();
       if (t === 'Y' || t === 'N') out[k] = t;
-    }
-  }
-  return Object.keys(out).length > 0 ? out : undefined;
-}
-
-const RAPIDAPI_RUNNING_ON_KEYS = [
-  'trainRunsOnSun',
-  'trainRunsOnMon',
-  'trainRunsOnTue',
-  'trainRunsOnWed',
-  'trainRunsOnThu',
-  'trainRunsOnFri',
-  'trainRunsOnSat',
-] as const satisfies readonly (keyof TrainRunsOnJson)[];
-
-function extractTrainRunsOnFromRapidApi(
-  runningOn: unknown,
-): TrainRunsOnJson | undefined {
-  const raw = strFromUnknown(runningOn).trim().toUpperCase();
-  if (raw.length !== RAPIDAPI_RUNNING_ON_KEYS.length) return undefined;
-  const out: TrainRunsOnJson = {};
-  for (let i = 0; i < RAPIDAPI_RUNNING_ON_KEYS.length; i++) {
-    const flag = raw[i];
-    if (flag === 'Y' || flag === 'N') {
-      out[RAPIDAPI_RUNNING_ON_KEYS[i]] = flag;
     }
   }
   return Object.keys(out).length > 0 ? out : undefined;
@@ -505,17 +480,15 @@ export class IrctcService {
       `[irctc/schedule] rapidapi_request_start train=${trainNumber}`,
     );
     const res = await rapidApiScheduleClient.get<unknown>(
-      `${RAPIDAPI_TRAIN_SEARCH_URL}/${encodeURIComponent(trainNumber)}`,
+      RAPIDAPI_TRAIN_SEARCH_URL,
       {
         headers: {
           'Content-Type': 'application/json',
-          'X-Rapid-Api': 'rapid-api-database',
-          'X-Rapidapi-Host': 'indian-railway-irctc.p.rapidapi.com',
+          'X-Rapidapi-Host': 'irctc1.p.rapidapi.com',
           'X-Rapidapi-Key': key,
         },
         params: {
-          isH5: 'true',
-          client: 'web',
+          trainNo: trainNumber,
         },
         timeout: RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS,
       },
@@ -537,55 +510,29 @@ export class IrctcService {
       payload && typeof payload === 'object' && !Array.isArray(payload)
         ? (payload as Record<string, unknown>)
         : {};
-    const statusCode = root.code;
-    if (typeof statusCode === 'number' && statusCode >= 400) {
-      throw new Error(`RapidAPI train search failed with code ${statusCode}`);
+
+    if (root.status === false) {
+      throw new Error(
+        `RapidAPI train search failed: ${strFromUnknown(root.message)}`,
+      );
     }
 
-    const body = Array.isArray(root.body) ? root.body : [];
-    const requestedTrain = trainNumber.trim();
-    let selected: Record<string, unknown> | null = null;
-    let fallback: Record<string, unknown> | null = null;
-
-    for (const groupRaw of body) {
-      if (
-        !groupRaw ||
-        typeof groupRaw !== 'object' ||
-        Array.isArray(groupRaw)
-      ) {
-        continue;
-      }
-      const trains = (groupRaw as Record<string, unknown>).trains;
-      if (!Array.isArray(trains)) continue;
-      for (const trainRaw of trains) {
-        if (
-          !trainRaw ||
-          typeof trainRaw !== 'object' ||
-          Array.isArray(trainRaw)
-        ) {
-          continue;
-        }
-        const train = trainRaw as Record<string, unknown>;
-        if (!Array.isArray(train.schedule)) continue;
-        if (strFromUnknown(train.trainNumber).trim() === requestedTrain) {
-          selected = train;
-          break;
-        }
-        fallback ??= train;
-      }
-      if (selected) break;
-    }
-
-    selected ??= fallback;
-
-    if (!selected) {
+    const data = root.data as Record<string, unknown>;
+    if (!data || typeof data !== 'object' || Array.isArray(data)) {
       throw new Error('RapidAPI schedule for this train is not available.');
     }
 
-    const rawStations = Array.isArray(selected.schedule)
-      ? selected.schedule
-      : [];
-    const stationList: ScheduleStation[] = rawStations
+    const rawRoute = Array.isArray(data.route) ? data.route : [];
+
+    const formatMinutes = (minutes: unknown): string => {
+      const mins = Number(minutes);
+      if (isNaN(mins)) return '--:--';
+      const h = Math.floor(mins / 60) % 24;
+      const m = mins % 60;
+      return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+    };
+
+    const stationList: ScheduleStation[] = rawRoute
       .filter(
         (station): station is Record<string, unknown> =>
           station != null &&
@@ -593,16 +540,22 @@ export class IrctcService {
           !Array.isArray(station),
       )
       .map((station) => {
-        const stationCode = strFromUnknown(station.stationCode)
+        const stationCode = strFromUnknown(station.station_code)
           .trim()
           .toUpperCase();
-        const stationName = strFromUnknown(station.stationName).trim();
+        const stationName = strFromUnknown(station.station_name).trim();
         return {
           ...station,
           stationCode,
           stationName,
-          arrivalTime: strFromUnknown(station.arrivalTime).trim(),
-          departureTime: strFromUnknown(station.departureTime).trim(),
+          arrivalTime: formatMinutes(station.sta_min),
+          departureTime: formatMinutes(station.std_min),
+          distance: strFromUnknown(station.distance_from_source).trim() || '0',
+          dayCount: typeof station.day === 'number' ? station.day : 1,
+          haltTime:
+            typeof station.halt === 'number' && station.halt > 0
+              ? `${station.halt} min`
+              : '--',
         };
       })
       .filter((station) => station.stationCode.length > 0);
@@ -611,17 +564,26 @@ export class IrctcService {
       throw new Error('RapidAPI schedule for this train is not available.');
     }
 
-    const trainRunsOn = extractTrainRunsOnFromRapidApi(selected.runningOn);
+    let trainRunsOn: TrainRunsOnJson | undefined = undefined;
+    const runDays = data.runDays as Record<string, boolean>;
+    if (runDays && typeof runDays === 'object' && !Array.isArray(runDays)) {
+      trainRunsOn = {
+        trainRunsOnSun: runDays.sun ? 'Y' : 'N',
+        trainRunsOnMon: runDays.mon ? 'Y' : 'N',
+        trainRunsOnTue: runDays.tue ? 'Y' : 'N',
+        trainRunsOnWed: runDays.wed ? 'Y' : 'N',
+        trainRunsOnThu: runDays.thu ? 'Y' : 'N',
+        trainRunsOnFri: runDays.fri ? 'Y' : 'N',
+        trainRunsOnSat: runDays.sat ? 'Y' : 'N',
+      };
+    }
+
     return {
       trainNumber:
-        strFromUnknown(selected.trainNumber).trim() || requestedTrain,
-      trainName: strFromUnknown(selected.trainName).trim(),
-      stationFrom:
-        strFromUnknown(selected.stationFrom).trim().toUpperCase() ||
-        stationList[0].stationCode,
-      stationTo:
-        strFromUnknown(selected.stationTo).trim().toUpperCase() ||
-        stationList[stationList.length - 1].stationCode,
+        strFromUnknown(data.trainNumber).trim() || trainNumber.trim(),
+      trainName: strFromUnknown(data.trainName).trim(),
+      stationFrom: stationList[0].stationCode,
+      stationTo: stationList[stationList.length - 1].stationCode,
       stationList,
       ...(trainRunsOn ? { trainRunsOn } : {}),
     };
@@ -911,7 +873,8 @@ export class IrctcService {
       } else {
         const ms = Date.now() - t0;
         const cause = err instanceof Error ? err.message : String(err);
-        const isFallbackEnabled = process.env.IRCTC_BROWSER_FALLBACK_ENABLED !== 'false';
+        const isFallbackEnabled =
+          process.env.IRCTC_BROWSER_FALLBACK_ENABLED !== 'false';
         this.logger.warn(
           `[irctc/trainComposition] network_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} ${cause}.${isFallbackEnabled ? ' Falling back to browser...' : ''}`,
         );
