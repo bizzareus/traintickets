@@ -701,7 +701,7 @@ export class IrctcService {
             : err.message
           : String(err);
       const isFallbackEnabled =
-        process.env.IRCTC_BROWSER_FALLBACK_ENABLED === 'true';
+        process.env.IRCTC_BROWSER_FALLBACK_ENABLED !== 'false';
       this.logger.warn(
         `[irctc/vacantBerth] network_error ms=${ms} trainNo=${payload.trainNo} ${cause}.${isFallbackEnabled ? ' Falling back to browser...' : ''}`,
       );
@@ -734,7 +734,7 @@ export class IrctcService {
     );
     if (!res.ok) {
       const isFallbackEnabled =
-        process.env.IRCTC_BROWSER_FALLBACK_ENABLED === 'true';
+        process.env.IRCTC_BROWSER_FALLBACK_ENABLED !== 'false';
       this.logger.warn(
         `[irctc/vacantBerth] http_error status=${res.status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}.${isFallbackEnabled ? ' Falling back to browser...' : ''}`,
       );
@@ -758,7 +758,7 @@ export class IrctcService {
       return JSON.parse(text) as unknown;
     } catch {
       const isFallbackEnabled =
-        process.env.IRCTC_BROWSER_FALLBACK_ENABLED === 'true';
+        process.env.IRCTC_BROWSER_FALLBACK_ENABLED !== 'false';
       this.logger.warn(
         `[irctc/vacantBerth] json_parse_error.${isFallbackEnabled ? ' Falling back to browser...' : ''}`,
       );
@@ -896,7 +896,6 @@ export class IrctcService {
       const res = await gotScraping.post(IRCTC_TRAIN_COMPOSITION_URL, {
         headers,
         json: body,
-        http2: false,
         timeout: { request: IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS },
         retry: { limit: 2 },
       });
@@ -912,8 +911,7 @@ export class IrctcService {
       } else {
         const ms = Date.now() - t0;
         const cause = err instanceof Error ? err.message : String(err);
-        const isFallbackEnabled =
-          process.env.IRCTC_BROWSER_FALLBACK_ENABLED === 'true';
+        const isFallbackEnabled = process.env.IRCTC_BROWSER_FALLBACK_ENABLED !== 'false';
         this.logger.warn(
           `[irctc/trainComposition] network_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} ${cause}.${isFallbackEnabled ? ' Falling back to browser...' : ''}`,
         );
@@ -948,7 +946,7 @@ export class IrctcService {
     if (status < 200 || status >= 300) {
       const ms = Date.now() - t0;
       const isFallbackEnabled =
-        process.env.IRCTC_BROWSER_FALLBACK_ENABLED === 'true';
+        process.env.IRCTC_BROWSER_FALLBACK_ENABLED !== 'false';
       this.logger.warn(
         `[irctc/trainComposition] http_error status=${status} ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate}.${isFallbackEnabled ? ' Falling back to browser...' : ''}`,
       );
@@ -986,7 +984,7 @@ export class IrctcService {
     } catch (parseErr) {
       const ms = Date.now() - t0;
       const isFallbackEnabled =
-        process.env.IRCTC_BROWSER_FALLBACK_ENABLED === 'true';
+        process.env.IRCTC_BROWSER_FALLBACK_ENABLED !== 'false';
       this.logger.warn(
         `[irctc/trainComposition] json_parse_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate}.${isFallbackEnabled ? ' Falling back to browser...' : ''}`,
       );
