@@ -651,6 +651,14 @@ export class JourneyTaskService {
         return;
       }
 
+      if (result.status === 'success' && result.openAiStructuredSeats) {
+        // Find it from the origin and remove the fare option temporarily per requirements
+        result.openAiStructuredSeats = result.openAiStructuredSeats.map((seat: any) => {
+          const { fare, ...rest } = seat;
+          return rest;
+        });
+      }
+
       await this.prisma.chartTimeAvailabilityTask.update({
         where: { id: taskId },
         data: {

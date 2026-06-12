@@ -35,7 +35,7 @@ const config: Config = {
         muted: "#94a3b8",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        sans: ["'Google Sans Flex'", "var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
       },
     },

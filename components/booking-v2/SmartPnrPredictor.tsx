@@ -30,6 +30,7 @@ export interface PnrStatusData {
 
 interface SmartPnrPredictorProps {
   pnrData: PnrStatusData;
+  compactMode?: boolean;
 }
 
 export function getConfirmationProbability(statusStr: string | undefined, bookingStr?: string): {
@@ -102,7 +103,7 @@ export function getConfirmationProbability(statusStr: string | undefined, bookin
   return { probability, type: wlType, current: currentWl };
 }
 
-export function SmartPnrPredictor({ pnrData }: SmartPnrPredictorProps) {
+export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPredictorProps) {
   const analysis = useMemo(() => {
     if (!pnrData.PassengerStatus || pnrData.PassengerStatus.length === 0) {
       return { minProb: 100, passengers: [], confirmedCount: 0 };
@@ -168,6 +169,51 @@ export function SmartPnrPredictor({ pnrData }: SmartPnrPredictorProps) {
   const radius = 40;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (analysis.minProb / 100) * circumference;
+
+  if (compactMode) {
+    return (
+      <div className={`overflow-hidden rounded-2xl border ${config.borderColor} ${config.bgColor} p-6 backdrop-blur-md transition-all duration-500 shadow-md ${config.shadowColor} flex flex-col items-center justify-center`}>
+        <div className="relative flex shrink-0 items-center justify-center">
+          <svg className="h-32 w-32 rotate-[-90deg] transform" aria-label={`Confirmation probability ${analysis.minProb}%`}>
+            <circle
+              cx="64"
+              cy="64"
+              r={radius}
+              className="stroke-slate-200/40 fill-none"
+              strokeWidth="8"
+            />
+            <circle
+              cx="64"
+              cy="64"
+              r={radius}
+              className={`${config.strokeColor} fill-none transition-all duration-1000 ease-out`}
+              strokeWidth="8"
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+              strokeLinecap="round"
+              style={{ filter: config.glowFilter }}
+            />
+          </svg>
+          <div className="absolute flex flex-col items-center justify-center">
+            <span className="text-3xl font-black tracking-tight text-slate-800 tabular-nums">
+              {analysis.minProb}%
+            </span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+              Confidence
+            </span>
+          </div>
+        </div>
+        <div className="mt-4 text-center">
+          <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ${config.textColor} bg-white/80 shadow-sm border border-current/10 mb-2`}>
+            {config.label}
+          </span>
+          <p className="text-xs text-slate-600 font-medium">
+            {analysis.confirmedCount} / {analysis.passengers.length} Booked CNF
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`mt-5 overflow-hidden rounded-2xl border ${config.borderColor} ${config.bgColor} p-5 backdrop-blur-md transition-all duration-500 shadow-md ${config.shadowColor}`}>

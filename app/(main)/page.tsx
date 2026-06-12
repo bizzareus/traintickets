@@ -36,6 +36,8 @@ import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
 import { cn } from "@/lib/utils";
 import moment from "moment";
 import { SmartPnrPredictor } from "@/components/booking-v2/SmartPnrPredictor";
+import { StationChartingStatus } from "@/components/booking-v2/StationChartingStatus";
+import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
 
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 const LEG_ALERT_STORAGE_PREFIX = "lastBerth_leg_alert_";
@@ -2419,6 +2421,8 @@ function CompactLegChartCta({
   );
 }
 
+const IS_TICKET_ALERT_ENABLED = process.env.NEXT_PUBLIC_ENABLE_TICKET_ALERT_CTA === "true";
+
 function BookingV2PageContent() {
   const [fromQ, setFromQ] = useState("");
   const [toQ, setToQ] = useState("");
@@ -2477,6 +2481,20 @@ function BookingV2PageContent() {
   const altAlternatePathCaptureRef = useRef<HTMLDivElement>(null);
   const [altShareBusy, setAltShareBusy] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isLiveChartPrepared, setIsLiveChartPrepared] = useState(false);
+
+  const originChartTime = useMemo(() => {
+    if (!pnrData?.DepartureTime || !pnrData?.Doj) return "4 hours before departure";
+    try {
+      const parsed = moment(`${pnrData.Doj} ${pnrData.DepartureTime}`, "DD-MM-YYYY HH:mm");
+      if (!parsed.isValid()) return "4 hours before departure";
+      
+      parsed.subtract(4, "hours");
+      return parsed.format("ddd, MMM D [at] h:mm A");
+    } catch {
+      return "4 hours before departure";
+    }
+  }, [pnrData]);
 
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
   const [scheduleTrainNumber, setScheduleTrainNumber] = useState("");
@@ -2522,7 +2540,7 @@ function BookingV2PageContent() {
   }, [trains, altForTrain]);
 
   const directFares = useMemo(() => {
-    let fares: { cls: string; fare: number }[] = [];
+    const fares: { cls: string; fare: number }[] = [];
     if (altTrainObj?.availabilityCache) {
       Object.entries(altTrainObj.availabilityCache).forEach(([cls, avail]) => {
         if (avail.fare) {
@@ -3160,7 +3178,7 @@ function BookingV2PageContent() {
                     })()}
 
                     {/* Fare summary banner */}
-                    {altResult.isComplete && altResult.totalFare != null && (
+                    {altResult.isComplete && altResult.totalFare != null && !IS_TICKET_ALERT_ENABLED && (
                       <div className="rounded-xl bg-gradient-to-r from-slate-50 to-slate-100/70 border border-slate-200 px-4 py-3">
                         <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           Total fare
@@ -3215,6 +3233,19 @@ function BookingV2PageContent() {
                           the current search.
                         </p>
                       )}
+
+                    {!IS_TICKET_ALERT_ENABLED && (
+                      <EntireJourneyAlertCTA 
+                        trainNumber={altForTrain || pnrData?.TrainNo || ""}
+                        trainName={altTrainName || pnrData?.TrainName || undefined}
+                        trainStartDate={pnrData?.Doj || journeyDate || ""}
+                        journeyDate={journeyDate || pnrData?.Doj || ""}
+                        classCode={pnrData?.Class || "SL"}
+                        defaultOrigin={fromSt?.stationCode || pnrData?.From || ""}
+                        defaultDestination={toSt?.stationCode || pnrData?.To || ""}
+                        originChartTime={originChartTime}
+                      />
+                    )}
 
                     {/* Admin debug trace */}
                     {isAdminUser &&
@@ -3874,6 +3905,14 @@ function BookingV2PageContent() {
                 Quota: <span className="text-white font-bold">{pnrData.Quota}</span> | Class: <span className="text-white font-bold">{pnrData.Class}</span>
               </div>
             </div>
+            {IS_TICKET_ALERT_ENABLED && (
+              <div className="bg-blue-50 border-b border-blue-100 p-3">
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm transition flex items-center justify-center gap-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                  Get Ticket Alert (Chart expected at {originChartTime})
+                </button>
+              </div>
+            )}
             <div className="p-4 sm:p-5">
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-b border-slate-100 pb-4 mb-4">
                 <div>
@@ -3883,6 +3922,12 @@ function BookingV2PageContent() {
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">
                     Departing on <span className="font-semibold text-slate-700">{pnrData.Doj}</span>
+                    <StationChartingStatus 
+                      trainNumber={pnrData.TrainNo} 
+                      journeyDate={pnrData.Doj} 
+                      stationCode={pnrData.From} 
+                      onStatusFetched={setIsLiveChartPrepared}
+                    />
                   </p>
                 </div>
                 <div className="flex items-center gap-3 text-sm font-medium">
@@ -3934,16 +3979,20 @@ function BookingV2PageContent() {
                 </div>
               )}
 
-              {/* Smart PNR Status Predictor */}
-              <SmartPnrPredictor pnrData={pnrData} />
-
-              {/* Inline Ticket Finder (Alternate Seats) */}
-              <div className="mt-6 border-t border-slate-100 pt-6">
-                {(altResult || altError || (altLoading && altForTrain)) && (
-                  <div className="rounded-2xl border border-blue-100 bg-white shadow-sm relative flex flex-col max-h-[80vh] sm:max-h-[600px] overflow-hidden">
-                    {renderAlternatePathContent()}
+              {/* Smart PNR Predictor & Alternate Seats Side-by-Side */}
+              <div className="mt-6 flex flex-col lg:flex-row gap-6 border-t border-slate-100 pt-6 items-start relative">
+                {!isLiveChartPrepared && (
+                  <div className="w-full lg:w-[30%] shrink-0 lg:sticky lg:top-6">
+                    <SmartPnrPredictor pnrData={pnrData} compactMode={true} />
                   </div>
                 )}
+                <div className={`w-full flex-1 ${isLiveChartPrepared ? "" : "lg:w-[70%]"}`}>
+                  {(altResult || altError || (altLoading && altForTrain)) && (
+                    <div className="rounded-2xl border border-blue-100 bg-white shadow-sm relative flex flex-col max-h-[80vh] sm:max-h-[600px] overflow-hidden h-full">
+                      {renderAlternatePathContent()}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
