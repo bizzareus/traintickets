@@ -2269,7 +2269,8 @@ function CompactLegChartCta({
         /* ignore */
       }
     } catch (err: any) {
-      const msg = err?.response?.data?.message || err?.message || "Failed to set alert.";
+      const msg =
+        err?.response?.data?.message || err?.message || "Failed to set alert.";
       setError(msg);
     } finally {
       setSubmitting(false);
@@ -2421,7 +2422,8 @@ function CompactLegChartCta({
   );
 }
 
-const IS_TICKET_ALERT_ENABLED = process.env.NEXT_PUBLIC_ENABLE_TICKET_ALERT_CTA === "true";
+const IS_TICKET_ALERT_ENABLED =
+  process.env.NEXT_PUBLIC_ENABLE_TICKET_ALERT_CTA === "true";
 
 function BookingV2PageContent() {
   const [fromQ, setFromQ] = useState("");
@@ -2484,17 +2486,39 @@ function BookingV2PageContent() {
   const [isLiveChartPrepared, setIsLiveChartPrepared] = useState(false);
 
   const originChartTime = useMemo(() => {
-    if (!pnrData?.DepartureTime || !pnrData?.Doj) return "4 hours before departure";
+    if (!pnrData?.DepartureTime || !pnrData?.Doj)
+      return "4 hours before departure";
     try {
-      const parsed = moment(`${pnrData.Doj} ${pnrData.DepartureTime}`, "DD-MM-YYYY HH:mm");
+      const parsed = moment(
+        `${pnrData.Doj} ${pnrData.DepartureTime}`,
+        "DD-MM-YYYY HH:mm",
+      );
       if (!parsed.isValid()) return "4 hours before departure";
-      
+
       parsed.subtract(4, "hours");
       return parsed.format("ddd, MMM D [at] h:mm A");
     } catch {
       return "4 hours before departure";
     }
   }, [pnrData]);
+
+  const isChartLikelyPrepared = useMemo(() => {
+    if (!pnrData?.DepartureTime || !pnrData?.Doj) return false;
+    try {
+      const parsed = moment(
+        `${pnrData.Doj} ${pnrData.DepartureTime}`,
+        "DD-MM-YYYY HH:mm",
+      );
+      if (!parsed.isValid()) return false;
+
+      parsed.subtract(4, "hours");
+      return moment().isAfter(parsed);
+    } catch {
+      return false;
+    }
+  }, [pnrData]);
+
+  const effectiveChartPrepared = isLiveChartPrepared || isChartLikelyPrepared;
 
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
   const [scheduleTrainNumber, setScheduleTrainNumber] = useState("");
@@ -2823,7 +2847,11 @@ function BookingV2PageContent() {
   }, [fromSt, toSt, journeyDate, trains, acOnly, onBlockedSearchAttempt]);
 
   const findAlternates = useCallback(
-    async (t: TrainListItem, focusTravelClass?: string, overrideDate?: string) => {
+    async (
+      t: TrainListItem,
+      focusTravelClass?: string,
+      overrideDate?: string,
+    ) => {
       if (onBlockedSearchAttempt()) return;
       const targetDate = overrideDate ?? journeyDate;
       if (!targetDate) return;
@@ -2975,7 +3003,9 @@ function BookingV2PageContent() {
     setSearchError(null);
 
     try {
-      const response = await apiClient.get<PnrStatusResponse>(`/api/booking-v2/pnr/${trimmed}`);
+      const response = await apiClient.get<PnrStatusResponse>(
+        `/api/booking-v2/pnr/${trimmed}`,
+      );
       const res = response.data;
       if (!res.status || !res.data) {
         setPnrError(res.message || "Failed to fetch PNR status.");
@@ -2998,14 +3028,25 @@ function BookingV2PageContent() {
 
       // Sync Station Inputs
       if (data.From) {
-        const fromStn = { stationCode: data.From, stationName: data.BoardingStationName || data.SourceName || data.From };
+        const fromStn = {
+          stationCode: data.From,
+          stationName: data.BoardingStationName || data.SourceName || data.From,
+        };
         setFromSt(fromStn);
-        setFromQ(`${data.From} - ${data.BoardingStationName || data.SourceName || data.From}`);
+        setFromQ(
+          `${data.From} - ${data.BoardingStationName || data.SourceName || data.From}`,
+        );
       }
       if (data.To) {
-        const toStn = { stationCode: data.To, stationName: data.ReservationUptoName || data.DestinationName || data.To };
+        const toStn = {
+          stationCode: data.To,
+          stationName:
+            data.ReservationUptoName || data.DestinationName || data.To,
+        };
         setToSt(toStn);
-        setToQ(`${data.To} - ${data.ReservationUptoName || data.DestinationName || data.To}`);
+        setToQ(
+          `${data.To} - ${data.ReservationUptoName || data.DestinationName || data.To}`,
+        );
       }
 
       // Construct Mock TrainListItem
@@ -3017,10 +3058,12 @@ function BookingV2PageContent() {
         fromStnCode: data.From,
         toStnCode: data.To,
         avlClasses: undefined,
-        trainStartDate: data.Doj ? (() => {
-          const parts = data.Doj.split("-");
-          return `${parts[2]}-${parts[1].padStart(2, "0")}-${parts[0].padStart(2, "0")}`;
-        })() : undefined,
+        trainStartDate: data.Doj
+          ? (() => {
+              const parts = data.Doj.split("-");
+              return `${parts[2]}-${parts[1].padStart(2, "0")}-${parts[0].padStart(2, "0")}`;
+            })()
+          : undefined,
       };
 
       // Call Alternate Seats finder
@@ -3082,547 +3125,505 @@ function BookingV2PageContent() {
   }, []);
 
   const renderAlternatePathContent = () => (
-              <div
-                ref={altAlternatePathCaptureRef}
-                className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6"
-              >
-                <div className="mb-3 flex items-start justify-between gap-2">
-                  <h3 className="text-lg font-bold leading-snug text-gray-900">
-                    {altLoading
-                      ? `Finding best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`
-                      : `Best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`}
-                  </h3>
-                  <div
-                    className="flex shrink-0 items-center gap-1"
-                    data-screenshot-exclude=""
-                  >
-                    {isAdminUser && (
-                      <button
-                        type="button"
-                        className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 md:hidden"
-                        aria-label="Share journey as image (opens share sheet — choose WhatsApp)"
-                        disabled={altShareBusy}
-                        onClick={() => void shareAlternatePathScreenshot()}
-                      >
-                        {altShareBusy ? "Sharing…" : "Share"}
-                      </button>
-                    )}
-                    <button
-                      type="button"
-                      className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
-                      onClick={() => {
-                        setAltResult(null);
-                        setAltError(null);
-                        setAltForTrain(null);
-                        setAltTrainName(null);
-                        setAltAvlClasses(undefined);
-                      }}
-                      aria-label="Close"
-                    >
-                      <svg
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </div>
+    <div
+      ref={altAlternatePathCaptureRef}
+      className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6"
+    >
+      <div className="mb-3 flex items-start justify-between gap-2">
+        <h3 className="text-lg font-bold leading-snug text-gray-900">
+          {altLoading
+            ? `Finding best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`
+            : `Best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`}
+        </h3>
+        <div
+          className="flex shrink-0 items-center gap-1"
+          data-screenshot-exclude=""
+        >
+          {isAdminUser && (
+            <button
+              type="button"
+              className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 md:hidden"
+              aria-label="Share journey as image (opens share sheet — choose WhatsApp)"
+              disabled={altShareBusy}
+              onClick={() => void shareAlternatePathScreenshot()}
+            >
+              {altShareBusy ? "Sharing…" : "Share"}
+            </button>
+          )}
+          <button
+            type="button"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+            onClick={() => {
+              setAltResult(null);
+              setAltError(null);
+              setAltForTrain(null);
+              setAltTrainName(null);
+              setAltAvlClasses(undefined);
+            }}
+            aria-label="Close"
+          >
+            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fillRule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      {altLoading && (
+        <AlternatePathProgressFeed
+          events={altProgress}
+          from={fromSt?.stationCode ?? ""}
+          to={toSt?.stationCode ?? ""}
+        />
+      )}
+      {altError && <p className="text-sm text-red-700">{altError}</p>}
+      {altResult && (
+        <div className="space-y-3 text-sm">
+          {/* Live Train Banner */}
+          {(() => {
+            const originTime =
+              altResult.trainOriginDepartureTime && journeyDate
+                ? moment(
+                    `${journeyDate} ${altResult.trainOriginDepartureTime}`,
+                    "YYYY-MM-DD HH:mm",
+                  )
+                : null;
+            if (originTime?.isValid() && moment().isAfter(originTime)) {
+              return (
+                <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-800">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider">
+                    Live Train in running status
+                  </span>
+                  {altResult.trainOriginCode && (
+                    <span className="text-[10px] opacity-75">
+                      (Started from {altResult.trainOriginCode} at{" "}
+                      {altResult.trainOriginDepartureTime} IST)
+                    </span>
+                  )}
                 </div>
-                {altLoading && (
-                  <AlternatePathProgressFeed
-                    events={altProgress}
-                    from={fromSt?.stationCode ?? ""}
-                    to={toSt?.stationCode ?? ""}
-                  />
-                )}
-                {altError && <p className="text-sm text-red-700">{altError}</p>}
-                {altResult && (
-                  <div className="space-y-3 text-sm">
-                    {/* Live Train Banner */}
-                    {(() => {
-                      const originTime =
-                        altResult.trainOriginDepartureTime && journeyDate
-                          ? moment(
-                              `${journeyDate} ${altResult.trainOriginDepartureTime}`,
-                              "YYYY-MM-DD HH:mm",
-                            )
-                          : null;
-                      if (
-                        originTime?.isValid() &&
-                        moment().isAfter(originTime)
-                      ) {
-                        return (
-                          <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-800">
-                            <span className="relative flex h-2 w-2">
-                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-                            </span>
-                            <span className="text-xs font-bold uppercase tracking-wider">
-                              Live Train in running status
-                            </span>
-                            {altResult.trainOriginCode && (
-                              <span className="text-[10px] opacity-75">
-                                (Started from {altResult.trainOriginCode} at{" "}
-                                {altResult.trainOriginDepartureTime} IST)
-                              </span>
-                            )}
-                          </div>
-                        );
-                      }
-                      return null;
-                    })()}
+              );
+            }
+            return null;
+          })()}
 
-                    {/* Fare summary banner */}
-                    {altResult.isComplete && altResult.totalFare != null && !IS_TICKET_ALERT_ENABLED && (
-                      <div className="rounded-xl bg-gradient-to-r from-slate-50 to-slate-100/70 border border-slate-200 px-4 py-3">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
-                          Total fare
-                        </p>
-                        <div className="mt-0.5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                          <span className="text-2xl font-extrabold tracking-tight text-slate-900 tabular-nums sm:text-3xl">
-                            ₹{altResult.totalFare.toFixed(0)}
-                          </span>
+          {/* Fare summary banner */}
+          {altResult.isComplete &&
+            altResult.totalFare != null &&
+            !IS_TICKET_ALERT_ENABLED && (
+              <div className="rounded-xl bg-gradient-to-r from-slate-50 to-slate-100/70 border border-slate-200 px-4 py-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                  Total fare
+                </p>
+                <div className="mt-0.5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                  <span className="text-2xl font-extrabold tracking-tight text-slate-900 tabular-nums sm:text-3xl">
+                    ₹{altResult.totalFare.toFixed(0)}
+                  </span>
 
-                          {directFares.length > 0 && (
-                            <span className="text-xs text-slate-500 font-medium ml-1">
-                              vs direct waitlist:{" "}
-                              {directFares.map((df, idx) => (
-                                <span key={df.cls}>
-                                  {df.cls} (₹{df.fare})
-                                  {idx < directFares.length - 1 ? ", " : ""}
-                                </span>
-                              ))}
+                  {directFares.length > 0 && (
+                    <span className="text-xs text-slate-500 font-medium ml-1">
+                      vs direct waitlist:{" "}
+                      {directFares.map((df, idx) => (
+                        <span key={df.cls}>
+                          {df.cls} (₹{df.fare})
+                          {idx < directFares.length - 1 ? ", " : ""}
+                        </span>
+                      ))}
+                    </span>
+                  )}
+                </div>
+                <p className="mt-1 text-xs text-slate-600">
+                  Full journey covered in {altResult.legCount} confirmed ticket
+                  {altResult.legCount === 1 ? "" : "s"}
+                </p>
+              </div>
+            )}
+
+          {!altResult.isComplete &&
+            altResult.totalFare != null &&
+            IS_TICKET_ALERT_ENABLED &&
+            altResult.legs.some((l) => l.segmentKind === "confirmed") && (
+              <div className="rounded-xl bg-gradient-to-r from-blue-50 to-blue-100/70 border border-blue-200 px-4 py-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+                  Confirmed tickets fare
+                </p>
+                <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-blue-950 tabular-nums sm:text-3xl">
+                  ₹{altResult.totalFare.toFixed(0)}
+                </p>
+                <p className="mt-0.5 text-xs text-blue-800">
+                  Some legs have no confirmed tickets yet — total may change
+                </p>
+              </div>
+            )}
+          {!altResult.isComplete &&
+            !altResult.legs.some((l) => l.segmentKind === "check_realtime") && (
+              <p className="rounded-md bg-gray-100 px-3 py-2 text-gray-800">
+                Could not build a full path to your destination with the current
+                search.
+              </p>
+            )}
+
+          {IS_TICKET_ALERT_ENABLED && (
+            <EntireJourneyAlertCTA
+              trainNumber={altForTrain || pnrData?.TrainNo || ""}
+              trainName={altTrainName || pnrData?.TrainName || undefined}
+              trainStartDate={pnrData?.Doj || journeyDate || ""}
+              journeyDate={journeyDate || pnrData?.Doj || ""}
+              classCode={pnrData?.Class || "SL"}
+              defaultOrigin={fromSt?.stationCode || pnrData?.From || ""}
+              defaultDestination={toSt?.stationCode || pnrData?.To || ""}
+              originChartTime={originChartTime}
+            />
+          )}
+
+          {/* Admin debug trace */}
+          {isAdminUser &&
+            altResult.debugLog &&
+            altResult.debugLog.length > 0 && (
+              <details className="rounded-md border border-gray-200 bg-gray-50 p-3">
+                <summary className="cursor-pointer text-sm font-semibold text-gray-800">
+                  Step-by-step debug trace ({altResult.debugLog.length} lines)
+                </summary>
+                <ol className="mt-2 max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-xs text-gray-700">
+                  {altResult.debugLog.map((line, i) => (
+                    <li key={i} className="whitespace-pre-wrap py-0.5">
+                      {line}
+                    </li>
+                  ))}
+                </ol>
+                <p className="mt-2 text-xs text-gray-500">
+                  Same lines are logged on the API server as{" "}
+                  <code className="rounded bg-gray-200 px-1">
+                    [alternate-paths …]
+                  </code>
+                  .
+                </p>
+              </details>
+            )}
+
+          {/* ── JOURNEY LEGS ── */}
+          <ol
+            className="relative list-none pl-0"
+            role="list"
+            aria-label="Journey segments"
+          >
+            {alternatePathDisplayItems.map((item, i) => {
+              const stepTotal = alternatePathDisplayItems.length;
+              const stepIndex = i + 1;
+              const isLast = i === alternatePathDisplayItems.length - 1;
+
+              /** Count stations between two codes on the route. */
+              const countStationsBetween = (
+                fromCode: string,
+                toCode: string,
+              ): number | null => {
+                const route = altResult.stationCodesOnRoute;
+                if (!route || route.length === 0) return null;
+                const f = fromCode.trim().toUpperCase();
+                const t = toCode.trim().toUpperCase();
+                const fi = route.findIndex((c) => c.toUpperCase() === f);
+                const ti = route.findIndex((c) => c.toUpperCase() === t);
+                if (fi < 0 || ti < 0 || ti <= fi) return null;
+                const between = ti - fi - 1;
+                return between > 0 ? between : null;
+              };
+
+              if (item.kind === "single") {
+                const leg = item.leg;
+                const isConfirmed = leg.segmentKind === "confirmed";
+                const dep = formatTimeAmPm(leg.departureTime);
+                const arr = formatTimeAmPm(leg.arrivalTime);
+                const stationsBetween = countStationsBetween(leg.from, leg.to);
+                const timeLine =
+                  dep && arr
+                    ? `${dep} → ${arr}`
+                    : dep
+                      ? `Dep ${dep}`
+                      : arr
+                        ? `Arr ${arr}`
+                        : null;
+
+                // Build class options: use confirmedClassOptions if available, else build from the single leg
+                const classOptions: AlternateClassOption[] = isConfirmed
+                  ? leg.confirmedClassOptions &&
+                    leg.confirmedClassOptions.length > 0
+                    ? leg.confirmedClassOptions
+                    : [
+                        {
+                          travelClass: leg.travelClass ?? "SL",
+                          railDataStatus: leg.railDataStatus ?? null,
+                          availablityStatus: leg.availablityStatus ?? null,
+                          predictionPercentage:
+                            leg.predictionPercentage ?? null,
+                          availabilityDisplayName:
+                            leg.availabilityDisplayName ?? null,
+                          fare: leg.fare ?? null,
+                        },
+                      ]
+                  : [];
+
+                return (
+                  <li key={i} className="relative flex gap-0">
+                    {/* Timeline connector */}
+                    <div className="flex w-8 shrink-0 flex-col items-center sm:w-10">
+                      <span
+                        className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold tabular-nums sm:h-8 sm:w-8 sm:text-xs ${
+                          isConfirmed
+                            ? "bg-emerald-600 text-white ring-2 ring-emerald-200"
+                            : "bg-slate-500 text-white ring-2 ring-slate-200"
+                        }`}
+                      >
+                        {stepIndex}
+                      </span>
+                      {!isLast && <div className="w-0.5 flex-1 bg-gray-200" />}
+                    </div>
+                    {/* Card */}
+                    <div
+                      className={`mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border ${
+                        isConfirmed
+                          ? "border-emerald-200 bg-white"
+                          : "border-slate-300 bg-slate-50/50 shadow-sm"
+                      }`}
+                    >
+                      {/* Leg header */}
+                      <div
+                        className={`flex flex-wrap items-center gap-x-2 gap-y-1 px-3 py-2 sm:px-4 ${
+                          isConfirmed
+                            ? "border-b border-emerald-100 bg-emerald-50/80"
+                            : "border-b border-slate-200 bg-slate-100/50"
+                        }`}
+                      >
+                        <span
+                          className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide ${
+                            isConfirmed
+                              ? "bg-emerald-600 text-white"
+                              : "bg-slate-500 text-white"
+                          }`}
+                        >
+                          Leg {stepIndex} of {stepTotal}
+                        </span>
+                        {stationsBetween != null && (
+                          <button
+                            onClick={() => {
+                              setScheduleTrainNumber(altResult.trainNumber);
+                              setScheduleHighlightFrom(leg.from);
+                              setScheduleHighlightTo(leg.to);
+                              setScheduleModalOpen(true);
+                            }}
+                            className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 hover:text-blue-800 transition-colors"
+                          >
+                            {stationsBetween}{" "}
+                            {stationsBetween === 1 ? "Station" : "Stations"}
+                          </button>
+                        )}
+                        <span className="font-bold text-gray-900 tabular-nums">
+                          {getStationDisplayName(
+                            leg.from,
+                            altResult.stationNameMap,
+                          )}{" "}
+                          →{" "}
+                          {getStationDisplayName(
+                            leg.to,
+                            altResult.stationNameMap,
+                          )}
+                        </span>
+                        {stepIndex === 1 &&
+                          fromSt?.stationCode &&
+                          leg.from.toUpperCase() !==
+                            fromSt.stationCode.toUpperCase() && (
+                            <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm animate-pulse">
+                              💡 Book from earlier station: {leg.from}
                             </span>
                           )}
-                        </div>
-                        <p className="mt-1 text-xs text-slate-600">
-                          Full journey covered in {altResult.legCount} confirmed
-                          ticket{altResult.legCount === 1 ? "" : "s"}
-                        </p>
+                        {isLast &&
+                          toSt?.stationCode &&
+                          leg.to.toUpperCase() !==
+                            toSt.stationCode.toUpperCase() && (
+                            <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm animate-pulse">
+                              💡 Book to further station: {leg.to}
+                            </span>
+                          )}
+                        {timeLine && (
+                          <span className="text-xs tabular-nums text-gray-500">
+                            {timeLine}
+                            {leg.durationMinutes != null && (
+                              <span className="text-gray-400">
+                                {" · "}
+                                {formatDurationMinutes(leg.durationMinutes)}
+                              </span>
+                            )}
+                          </span>
+                        )}
                       </div>
-                    )}
-                    {!altResult.isComplete &&
-                      altResult.totalFare != null &&
-                      altResult.legs.some(
-                        (l) => l.segmentKind === "confirmed",
-                      ) && (
-                        <div className="rounded-xl bg-gradient-to-r from-blue-50 to-blue-100/70 border border-blue-200 px-4 py-3">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">
-                            Confirmed tickets fare
-                          </p>
-                          <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-blue-950 tabular-nums sm:text-3xl">
-                            ₹{altResult.totalFare.toFixed(0)}
-                          </p>
-                          <p className="mt-0.5 text-xs text-blue-800">
-                            Some legs have no confirmed tickets yet — total may
-                            change
-                          </p>
-                        </div>
-                      )}
-                    {!altResult.isComplete &&
-                      !altResult.legs.some(
-                        (l) => l.segmentKind === "check_realtime",
-                      ) && (
-                        <p className="rounded-md bg-gray-100 px-3 py-2 text-gray-800">
-                          Could not build a full path to your destination with
-                          the current search.
-                        </p>
-                      )}
-
-                    {!IS_TICKET_ALERT_ENABLED && (
-                      <EntireJourneyAlertCTA 
-                        trainNumber={altForTrain || pnrData?.TrainNo || ""}
-                        trainName={altTrainName || pnrData?.TrainName || undefined}
-                        trainStartDate={pnrData?.Doj || journeyDate || ""}
-                        journeyDate={journeyDate || pnrData?.Doj || ""}
-                        classCode={pnrData?.Class || "SL"}
-                        defaultOrigin={fromSt?.stationCode || pnrData?.From || ""}
-                        defaultDestination={toSt?.stationCode || pnrData?.To || ""}
-                        originChartTime={originChartTime}
-                      />
-                    )}
-
-                    {/* Admin debug trace */}
-                    {isAdminUser &&
-                      altResult.debugLog &&
-                      altResult.debugLog.length > 0 && (
-                        <details className="rounded-md border border-gray-200 bg-gray-50 p-3">
-                          <summary className="cursor-pointer text-sm font-semibold text-gray-800">
-                            Step-by-step debug trace (
-                            {altResult.debugLog.length} lines)
-                          </summary>
-                          <ol className="mt-2 max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-xs text-gray-700">
-                            {altResult.debugLog.map((line, i) => (
-                              <li
-                                key={i}
-                                className="whitespace-pre-wrap py-0.5"
-                              >
-                                {line}
-                              </li>
-                            ))}
-                          </ol>
-                          <p className="mt-2 text-xs text-gray-500">
-                            Same lines are logged on the API server as{" "}
-                            <code className="rounded bg-gray-200 px-1">
-                              [alternate-paths …]
-                            </code>
-                            .
-                          </p>
-                        </details>
-                      )}
-
-                    {/* ── JOURNEY LEGS ── */}
-                    <ol
-                      className="relative list-none pl-0"
-                      role="list"
-                      aria-label="Journey segments"
-                    >
-                      {alternatePathDisplayItems.map((item, i) => {
-                        const stepTotal = alternatePathDisplayItems.length;
-                        const stepIndex = i + 1;
-                        const isLast =
-                          i === alternatePathDisplayItems.length - 1;
-
-                        /** Count stations between two codes on the route. */
-                        const countStationsBetween = (
-                          fromCode: string,
-                          toCode: string,
-                        ): number | null => {
-                          const route = altResult.stationCodesOnRoute;
-                          if (!route || route.length === 0) return null;
-                          const f = fromCode.trim().toUpperCase();
-                          const t = toCode.trim().toUpperCase();
-                          const fi = route.findIndex(
-                            (c) => c.toUpperCase() === f,
-                          );
-                          const ti = route.findIndex(
-                            (c) => c.toUpperCase() === t,
-                          );
-                          if (fi < 0 || ti < 0 || ti <= fi) return null;
-                          const between = ti - fi - 1;
-                          return between > 0 ? between : null;
-                        };
-
-                        if (item.kind === "single") {
-                          const leg = item.leg;
-                          const isConfirmed = leg.segmentKind === "confirmed";
-                          const dep = formatTimeAmPm(leg.departureTime);
-                          const arr = formatTimeAmPm(leg.arrivalTime);
-                          const stationsBetween = countStationsBetween(
-                            leg.from,
-                            leg.to,
-                          );
-                          const timeLine =
-                            dep && arr
-                              ? `${dep} → ${arr}`
-                              : dep
-                                ? `Dep ${dep}`
-                                : arr
-                                  ? `Arr ${arr}`
-                                  : null;
-
-                          // Build class options: use confirmedClassOptions if available, else build from the single leg
-                          const classOptions: AlternateClassOption[] =
-                            isConfirmed
-                              ? leg.confirmedClassOptions &&
-                                leg.confirmedClassOptions.length > 0
-                                ? leg.confirmedClassOptions
-                                : [
-                                    {
-                                      travelClass: leg.travelClass ?? "SL",
-                                      railDataStatus:
-                                        leg.railDataStatus ?? null,
-                                      availablityStatus:
-                                        leg.availablityStatus ?? null,
-                                      predictionPercentage:
-                                        leg.predictionPercentage ?? null,
-                                      availabilityDisplayName:
-                                        leg.availabilityDisplayName ?? null,
-                                      fare: leg.fare ?? null,
-                                    },
-                                  ]
-                              : [];
-
-                          return (
-                            <li key={i} className="relative flex gap-0">
-                              {/* Timeline connector */}
-                              <div className="flex w-8 shrink-0 flex-col items-center sm:w-10">
-                                <span
-                                  className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold tabular-nums sm:h-8 sm:w-8 sm:text-xs ${
-                                    isConfirmed
-                                      ? "bg-emerald-600 text-white ring-2 ring-emerald-200"
-                                      : "bg-slate-500 text-white ring-2 ring-slate-200"
-                                  }`}
-                                >
-                                  {stepIndex}
-                                </span>
-                                {!isLast && (
-                                  <div className="w-0.5 flex-1 bg-gray-200" />
-                                )}
-                              </div>
-                              {/* Card */}
+                      {/* Class rows for confirmed */}
+                      {isConfirmed && classOptions.length > 0 && (
+                        <div className="divide-y divide-gray-100">
+                          {classOptions.map((opt) => {
+                            const optHref = irctcBookingRedirect({
+                              from: leg.from,
+                              to: leg.to,
+                              trainNo: altResult.trainNumber,
+                              classCode: opt.travelClass,
+                            });
+                            return (
                               <div
-                                className={`mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border ${
-                                  isConfirmed
-                                    ? "border-emerald-200 bg-white"
-                                    : "border-slate-300 bg-slate-50/50 shadow-sm"
-                                }`}
+                                key={opt.travelClass}
+                                className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4"
                               >
-                                {/* Leg header */}
-                                <div
-                                  className={`flex flex-wrap items-center gap-x-2 gap-y-1 px-3 py-2 sm:px-4 ${
-                                    isConfirmed
-                                      ? "border-b border-emerald-100 bg-emerald-50/80"
-                                      : "border-b border-slate-200 bg-slate-100/50"
-                                  }`}
-                                >
-                                  <span
-                                    className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide ${
-                                      isConfirmed
-                                        ? "bg-emerald-600 text-white"
-                                        : "bg-slate-500 text-white"
-                                    }`}
-                                  >
-                                    Leg {stepIndex} of {stepTotal}
+                                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 min-w-0">
+                                  <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-bold text-gray-700">
+                                    {opt.travelClass}
                                   </span>
-                                  {stationsBetween != null && (
-                                    <button
-                                      onClick={() => {
-                                        setScheduleTrainNumber(
-                                          altResult.trainNumber,
-                                        );
-                                        setScheduleHighlightFrom(leg.from);
-                                        setScheduleHighlightTo(leg.to);
-                                        setScheduleModalOpen(true);
-                                      }}
-                                      className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 hover:text-blue-800 transition-colors"
-                                    >
-                                      {stationsBetween}{" "}
-                                      {stationsBetween === 1
-                                        ? "Station"
-                                        : "Stations"}
-                                    </button>
-                                  )}
-                                  <span className="font-bold text-gray-900 tabular-nums">
-                                    {getStationDisplayName(
-                                      leg.from,
-                                      altResult.stationNameMap,
-                                    )}{" "}
-                                    →{" "}
-                                    {getStationDisplayName(
-                                      leg.to,
-                                      altResult.stationNameMap,
-                                    )}
+                                  <span className="text-sm font-semibold text-emerald-800">
+                                    {opt.availabilityDisplayName ??
+                                      opt.railDataStatus ??
+                                      "Available"}
                                   </span>
-                                  {stepIndex === 1 &&
-                                    fromSt?.stationCode &&
-                                    leg.from.toUpperCase() !==
-                                      fromSt.stationCode.toUpperCase() && (
-                                      <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm animate-pulse">
-                                        💡 Book from earlier station: {leg.from}
-                                      </span>
-                                    )}
-                                  {isLast &&
-                                    toSt?.stationCode &&
-                                    leg.to.toUpperCase() !==
-                                      toSt.stationCode.toUpperCase() && (
-                                      <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm animate-pulse">
-                                        💡 Book to further station: {leg.to}
-                                      </span>
-                                    )}
-                                  {timeLine && (
-                                    <span className="text-xs tabular-nums text-gray-500">
-                                      {timeLine}
-                                      {leg.durationMinutes != null && (
-                                        <span className="text-gray-400">
-                                          {" · "}
-                                          {formatDurationMinutes(
-                                            leg.durationMinutes,
-                                          )}
-                                        </span>
-                                      )}
+                                  {opt.fare != null && (
+                                    <span className="text-sm font-bold text-gray-900 tabular-nums">
+                                      ₹{opt.fare.toFixed(0)}
                                     </span>
                                   )}
                                 </div>
-                                {/* Class rows for confirmed */}
-                                {isConfirmed && classOptions.length > 0 && (
-                                  <div className="divide-y divide-gray-100">
-                                    {classOptions.map((opt) => {
-                                      const optHref = irctcBookingRedirect({
-                                        from: leg.from,
-                                        to: leg.to,
-                                        trainNo: altResult.trainNumber,
-                                        classCode: opt.travelClass,
-                                      });
-                                      return (
-                                        <div
-                                          key={opt.travelClass}
-                                          className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4"
-                                        >
-                                          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 min-w-0">
-                                            <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-bold text-gray-700">
-                                              {opt.travelClass}
-                                            </span>
-                                            <span className="text-sm font-semibold text-emerald-800">
-                                              {opt.availabilityDisplayName ??
-                                                opt.railDataStatus ??
-                                                "Available"}
-                                            </span>
-                                            {opt.fare != null && (
-                                              <span className="text-sm font-bold text-gray-900 tabular-nums">
-                                                ₹{opt.fare.toFixed(0)}
-                                              </span>
-                                            )}
-                                          </div>
-                                          <a
-                                            href={optHref}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            onClick={() =>
-                                              trackAnalyticsEvent({
-                                                name: "alternate_paths_irctc_clicked",
-                                                properties: {
-                                                  train_number:
-                                                    altResult.trainNumber,
-                                                  from_code: leg.from,
-                                                  to_code: leg.to,
-                                                  class_code: opt.travelClass,
-                                                },
-                                              })
-                                            }
-                                            className="shrink-0 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
-                                          >
-                                            Book Now
-                                          </a>
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
-                                )}
-                                {/* No tickets row */}
-                                {!isConfirmed && (
-                                  <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
-                                    <span className="text-sm font-semibold text-slate-700">
-                                      {leg.availabilityDisplayName
-                                        ? `Waitlisted (${leg.availabilityDisplayName})`
-                                        : "No tickets available"}
-                                    </span>
-                                    <CompactLegChartCta
-                                      trainNumber={altResult.trainNumber}
-                                      trainName={altTrainName}
-                                      journeyDate={journeyDate ?? ""}
-                                      legFrom={leg.from}
-                                      legTo={leg.to}
-                                      classCode={
-                                        leg.travelClass ??
-                                        altAvlClasses?.[0] ??
-                                        "SL"
-                                      }
-                                      stationNameMap={altResult.stationNameMap}
-                                      trainStartDate={altResult.trainStartDate}
-                                    />
-                                  </div>
-                                )}
+                                <a
+                                  href={optHref}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={() =>
+                                    trackAnalyticsEvent({
+                                      name: "alternate_paths_irctc_clicked",
+                                      properties: {
+                                        train_number: altResult.trainNumber,
+                                        from_code: leg.from,
+                                        to_code: leg.to,
+                                        class_code: opt.travelClass,
+                                      },
+                                    })
+                                  }
+                                  className="shrink-0 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                                >
+                                  Book Now
+                                </a>
                               </div>
-                            </li>
-                          );
-                        }
+                            );
+                          })}
+                        </div>
+                      )}
+                      {/* No tickets row */}
+                      {!isConfirmed && (
+                        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
+                          <span className="text-sm font-semibold text-slate-700">
+                            {leg.availabilityDisplayName
+                              ? `Waitlisted (${leg.availabilityDisplayName})`
+                              : "No tickets available"}
+                          </span>
+                          <CompactLegChartCta
+                            trainNumber={altResult.trainNumber}
+                            trainName={altTrainName}
+                            journeyDate={journeyDate ?? ""}
+                            legFrom={leg.from}
+                            legTo={leg.to}
+                            classCode={
+                              leg.travelClass ?? altAvlClasses?.[0] ?? "SL"
+                            }
+                            stationNameMap={altResult.stationNameMap}
+                            trainStartDate={altResult.trainStartDate}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                );
+              }
 
-                        // Collapsed unavailable span (≥2 chained check_realtime legs)
-                        const timingSummary =
-                          collapsedAlternatePathTimingSummary(item.legs);
-                        const stationsBetween = countStationsBetween(
-                          item.from,
-                          item.to,
-                        );
-                        return (
-                          <li key={i} className="relative flex gap-0">
-                            {/* Timeline connector */}
-                            <div className="flex w-8 shrink-0 flex-col items-center sm:w-10">
-                              <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-slate-500 text-[11px] font-bold tabular-nums text-white ring-2 ring-slate-200 sm:h-8 sm:w-8 sm:text-xs">
-                                {stepIndex}
-                              </span>
-                              {!isLast && (
-                                <div className="w-0.5 flex-1 bg-gray-200" />
-                              )}
-                            </div>
-                            {/* Card */}
-                            <div className="mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm">
-                              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-slate-200 bg-slate-50/60 px-3 py-2 sm:px-4">
-                                <span className="shrink-0 rounded-full bg-slate-500 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
-                                  Leg {stepIndex} of {stepTotal}
-                                </span>
-                                {stationsBetween != null && (
-                                  <button
-                                    onClick={() => {
-                                      setScheduleTrainNumber(
-                                        altResult.trainNumber,
-                                      );
-                                      setScheduleHighlightFrom(item.from);
-                                      setScheduleHighlightTo(item.to);
-                                      setScheduleModalOpen(true);
-                                    }}
-                                    className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 hover:text-blue-800 transition-colors"
-                                  >
-                                    {stationsBetween}{" "}
-                                    {stationsBetween === 1
-                                      ? "Station"
-                                      : "Stations"}
-                                  </button>
-                                )}
-                                <span className="font-bold text-gray-900 tabular-nums">
-                                  {getStationDisplayName(
-                                    item.from,
-                                    altResult.stationNameMap,
-                                  )}{" "}
-                                  →{" "}
-                                  {getStationDisplayName(
-                                    item.to,
-                                    altResult.stationNameMap,
-                                  )}
-                                </span>
-                                {timingSummary && (
-                                  <span className="text-xs tabular-nums text-gray-500">
-                                    {timingSummary.timePart}
-                                    {timingSummary.durationLabel && (
-                                      <span className="text-gray-400">
-                                        {timingSummary.timePart ? " · " : ""}
-                                        {timingSummary.durationLabel}
-                                      </span>
-                                    )}
-                                  </span>
-                                )}
-                              </div>
-                              <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
-                                <span className="text-sm font-semibold text-amber-800">
-                                  {item.legs[0]?.availabilityDisplayName
-                                    ? `Waitlisted (${item.legs[0].availabilityDisplayName})`
-                                    : "No tickets available"}
-                                </span>
-                                <CompactLegChartCta
-                                  trainNumber={altResult.trainNumber}
-                                  trainName={altTrainName}
-                                  journeyDate={journeyDate ?? ""}
-                                  legFrom={item.from}
-                                  legTo={item.to}
-                                  classCode={altAvlClasses?.[0] ?? "SL"}
-                                  stationNameMap={altResult.stationNameMap}
-                                  trainStartDate={altResult.trainStartDate}
-                                />
-                              </div>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ol>
+              // Collapsed unavailable span (≥2 chained check_realtime legs)
+              const timingSummary = collapsedAlternatePathTimingSummary(
+                item.legs,
+              );
+              const stationsBetween = countStationsBetween(item.from, item.to);
+              return (
+                <li key={i} className="relative flex gap-0">
+                  {/* Timeline connector */}
+                  <div className="flex w-8 shrink-0 flex-col items-center sm:w-10">
+                    <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-slate-500 text-[11px] font-bold tabular-nums text-white ring-2 ring-slate-200 sm:h-8 sm:w-8 sm:text-xs">
+                      {stepIndex}
+                    </span>
+                    {!isLast && <div className="w-0.5 flex-1 bg-gray-200" />}
                   </div>
-                )}
-              </div>
+                  {/* Card */}
+                  <div className="mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-slate-200 bg-slate-50/60 px-3 py-2 sm:px-4">
+                      <span className="shrink-0 rounded-full bg-slate-500 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
+                        Leg {stepIndex} of {stepTotal}
+                      </span>
+                      {stationsBetween != null && (
+                        <button
+                          onClick={() => {
+                            setScheduleTrainNumber(altResult.trainNumber);
+                            setScheduleHighlightFrom(item.from);
+                            setScheduleHighlightTo(item.to);
+                            setScheduleModalOpen(true);
+                          }}
+                          className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 hover:text-blue-800 transition-colors"
+                        >
+                          {stationsBetween}{" "}
+                          {stationsBetween === 1 ? "Station" : "Stations"}
+                        </button>
+                      )}
+                      <span className="font-bold text-gray-900 tabular-nums">
+                        {getStationDisplayName(
+                          item.from,
+                          altResult.stationNameMap,
+                        )}{" "}
+                        →{" "}
+                        {getStationDisplayName(
+                          item.to,
+                          altResult.stationNameMap,
+                        )}
+                      </span>
+                      {timingSummary && (
+                        <span className="text-xs tabular-nums text-gray-500">
+                          {timingSummary.timePart}
+                          {timingSummary.durationLabel && (
+                            <span className="text-gray-400">
+                              {timingSummary.timePart ? " · " : ""}
+                              {timingSummary.durationLabel}
+                            </span>
+                          )}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
+                      <span className="text-sm font-semibold text-amber-800">
+                        {item.legs[0]?.availabilityDisplayName
+                          ? `Waitlisted (${item.legs[0].availabilityDisplayName})`
+                          : "No tickets available"}
+                      </span>
+                      <CompactLegChartCta
+                        trainNumber={altResult.trainNumber}
+                        trainName={altTrainName}
+                        journeyDate={journeyDate ?? ""}
+                        legFrom={item.from}
+                        legTo={item.to}
+                        classCode={altAvlClasses?.[0] ?? "SL"}
+                        stationNameMap={altResult.stationNameMap}
+                        trainStartDate={altResult.trainStartDate}
+                      />
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      )}
+    </div>
   );
 
   return (
@@ -3650,7 +3651,8 @@ function BookingV2PageContent() {
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
         <header className="mb-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
-            Find <span className="text-blue-600">Confirmed Train Tickets</span> & Seat Availability in WL/Regret Trains
+            Find <span className="text-blue-600">Confirmed Train Tickets</span>{" "}
+            & Seat Availability in WL/Regret Trains
           </h1>
           <p className="mt-2 max-w-2xl text-base text-slate-600">
             Find the best seat available throughout your journey in the train
@@ -3898,17 +3900,37 @@ function BookingV2PageContent() {
           <div className="mb-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md animate-fade-in">
             <div className="bg-slate-900 px-4 py-3 text-white flex justify-between items-center flex-wrap gap-2">
               <div className="flex items-center gap-2">
-                <span className="rounded bg-blue-600 px-2 py-0.5 text-xs font-black uppercase tracking-wider">PNR</span>
-                <span className="text-sm font-bold tracking-wider font-mono">{pnrData.Pnr}</span>
+                <span className="rounded bg-blue-600 px-2 py-0.5 text-xs font-black uppercase tracking-wider">
+                  PNR
+                </span>
+                <span className="text-sm font-bold tracking-wider font-mono">
+                  {pnrData.Pnr}
+                </span>
               </div>
               <div className="text-xs font-semibold text-slate-300">
-                Quota: <span className="text-white font-bold">{pnrData.Quota}</span> | Class: <span className="text-white font-bold">{pnrData.Class}</span>
+                Quota:{" "}
+                <span className="text-white font-bold">{pnrData.Quota}</span> |
+                Class:{" "}
+                <span className="text-white font-bold">{pnrData.Class}</span>
               </div>
             </div>
             {IS_TICKET_ALERT_ENABLED && (
               <div className="bg-blue-50 border-b border-blue-100 p-3">
                 <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm transition flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                    />
+                  </svg>
                   Get Ticket Alert (Chart expected at {originChartTime})
                 </button>
               </div>
@@ -3917,76 +3939,111 @@ function BookingV2PageContent() {
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-b border-slate-100 pb-4 mb-4">
                 <div>
                   <h3 className="text-base font-bold text-slate-900 sm:text-lg flex items-center gap-2">
-                    <span className="text-blue-600 font-extrabold">{pnrData.TrainNo}</span>
+                    <span className="text-blue-600 font-extrabold">
+                      {pnrData.TrainNo}
+                    </span>
                     <span>{pnrData.TrainName}</span>
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Departing on <span className="font-semibold text-slate-700">{pnrData.Doj}</span>
-                    <StationChartingStatus 
-                      trainNumber={pnrData.TrainNo} 
-                      journeyDate={pnrData.Doj} 
-                      stationCode={pnrData.From} 
+                    Departing on{" "}
+                    <span className="font-semibold text-slate-700">
+                      {pnrData.Doj}
+                    </span>
+                    <StationChartingStatus
+                      trainNumber={pnrData.TrainNo}
+                      journeyDate={pnrData.Doj}
+                      stationCode={pnrData.From}
                       onStatusFetched={setIsLiveChartPrepared}
                     />
                   </p>
                 </div>
                 <div className="flex items-center gap-3 text-sm font-medium">
                   <div className="text-right">
-                    <span className="block font-black text-slate-900 tracking-wide">{pnrData.From}</span>
-                    <span className="text-xs text-slate-500">{pnrData.BoardingStationName || pnrData.SourceName || "Origin"}</span>
+                    <span className="block font-black text-slate-900 tracking-wide">
+                      {pnrData.From}
+                    </span>
+                    <span className="text-xs text-slate-500">
+                      {pnrData.BoardingStationName ||
+                        pnrData.SourceName ||
+                        "Origin"}
+                    </span>
                   </div>
                   <div className="flex flex-col items-center justify-center min-w-[64px]">
-                    <span className="text-[10px] text-slate-400 font-mono tracking-widest uppercase">Direct</span>
+                    <span className="text-[10px] text-slate-400 font-mono tracking-widest uppercase">
+                      Direct
+                    </span>
                     <div className="h-0.5 w-full bg-slate-200 relative my-1">
                       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-blue-600"></div>
                     </div>
-                    {pnrData.Duration && <span className="text-[10px] text-slate-500">{pnrData.Duration}</span>}
+                    {pnrData.Duration && (
+                      <span className="text-[10px] text-slate-500">
+                        {pnrData.Duration}
+                      </span>
+                    )}
                   </div>
                   <div>
-                    <span className="block font-black text-slate-900 tracking-wide">{pnrData.To}</span>
-                    <span className="text-xs text-slate-500">{pnrData.ReservationUptoName || pnrData.DestinationName || "Destination"}</span>
+                    <span className="block font-black text-slate-900 tracking-wide">
+                      {pnrData.To}
+                    </span>
+                    <span className="text-xs text-slate-500">
+                      {pnrData.ReservationUptoName ||
+                        pnrData.DestinationName ||
+                        "Destination"}
+                    </span>
                   </div>
                 </div>
               </div>
 
-              {pnrData.PassengerStatus && pnrData.PassengerStatus.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Passenger Seat Status</h4>
-                  <div className="grid gap-2 sm:grid-cols-2">
-                    {pnrData.PassengerStatus.map((passenger: PnrPassengerStatus) => (
-                      <div
-                        key={passenger.Number}
-                        className="flex items-center justify-between rounded-lg border border-slate-100 bg-slate-50/50 p-2.5 text-xs shadow-2xs"
-                      >
-                        <span className="font-semibold text-slate-600">Passenger {passenger.Number}</span>
-                        <div className="flex items-center gap-1.5">
-                          {passenger.BookingStatus && (
-                            <span className="rounded bg-slate-200/80 px-1.5 py-0.5 font-medium text-slate-700">
-                              Bkg: {passenger.BookingStatus}
+              {pnrData.PassengerStatus &&
+                pnrData.PassengerStatus.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                      Passenger Seat Status
+                    </h4>
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      {pnrData.PassengerStatus.map(
+                        (passenger: PnrPassengerStatus) => (
+                          <div
+                            key={passenger.Number}
+                            className="flex items-center justify-between rounded-lg border border-slate-100 bg-slate-50/50 p-2.5 text-xs shadow-2xs"
+                          >
+                            <span className="font-semibold text-slate-600">
+                              Passenger {passenger.Number}
                             </span>
-                          )}
-                          <span className={`rounded px-1.5 py-0.5 font-bold ${
-                            passenger.CurrentStatus === "CNF" || passenger.ConfirmTktStatus === "Confirm"
-                              ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
-                              : "bg-amber-100 text-amber-800 border border-amber-200"
-                          }`}>
-                            Cur: {passenger.CurrentStatus}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
+                            <div className="flex items-center gap-1.5">
+                              {passenger.BookingStatus && (
+                                <span className="rounded bg-slate-200/80 px-1.5 py-0.5 font-medium text-slate-700">
+                                  Bkg: {passenger.BookingStatus}
+                                </span>
+                              )}
+                              <span
+                                className={`rounded px-1.5 py-0.5 font-bold ${
+                                  passenger.CurrentStatus === "CNF" ||
+                                  passenger.ConfirmTktStatus === "Confirm"
+                                    ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
+                                    : "bg-amber-100 text-amber-800 border border-amber-200"
+                                }`}
+                              >
+                                Cur: {passenger.CurrentStatus}
+                              </span>
+                            </div>
+                          </div>
+                        ),
+                      )}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
               {/* Smart PNR Predictor & Alternate Seats Side-by-Side */}
               <div className="mt-6 flex flex-col lg:flex-row gap-6 border-t border-slate-100 pt-6 items-start relative">
-                {!isLiveChartPrepared && (
+                {!effectiveChartPrepared && (
                   <div className="w-full lg:w-[30%] shrink-0 lg:sticky lg:top-6">
                     <SmartPnrPredictor pnrData={pnrData} compactMode={true} />
                   </div>
                 )}
-                <div className={`w-full flex-1 ${isLiveChartPrepared ? "" : "lg:w-[70%]"}`}>
+                <div
+                  className={`w-full flex-1 ${!effectiveChartPrepared ? "lg:w-[70%]" : ""}`}
+                >
                   {(altResult || altError || (altLoading && altForTrain)) && (
                     <div className="rounded-2xl border border-blue-100 bg-white shadow-sm relative flex flex-col max-h-[80vh] sm:max-h-[600px] overflow-hidden h-full">
                       {renderAlternatePathContent()}
@@ -4322,30 +4379,31 @@ function BookingV2PageContent() {
           ))}
         </ul>
 
-        {searchType !== "pnr" && (altResult || altError || (altLoading && altForTrain)) && (
-          <div
-            className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center sm:p-6"
-            role="presentation"
-            onClick={() => {
-              if (!altLoading) {
-                setAltResult(null);
-                setAltError(null);
-                setAltForTrain(null);
-                setAltTrainName(null);
-                setAltAvlClasses(undefined);
-              }
-            }}
-          >
+        {searchType !== "pnr" &&
+          (altResult || altError || (altLoading && altForTrain)) && (
             <div
-              className="flex h-full w-full flex-col bg-white sm:h-auto sm:max-h-[90vh] sm:max-w-2xl sm:rounded-xl sm:border sm:border-gray-200 sm:shadow-2xl"
-              role="dialog"
-              aria-modal="true"
-              onClick={(e) => e.stopPropagation()}
+              className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center sm:p-6"
+              role="presentation"
+              onClick={() => {
+                if (!altLoading) {
+                  setAltResult(null);
+                  setAltError(null);
+                  setAltForTrain(null);
+                  setAltTrainName(null);
+                  setAltAvlClasses(undefined);
+                }
+              }}
             >
-              {renderAlternatePathContent()}
+              <div
+                className="flex h-full w-full flex-col bg-white sm:h-auto sm:max-h-[90vh] sm:max-w-2xl sm:rounded-xl sm:border sm:border-gray-200 sm:shadow-2xl"
+                role="dialog"
+                aria-modal="true"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {renderAlternatePathContent()}
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
       <IstRailMaintenanceModal
         open={maintenanceModalOpen}
