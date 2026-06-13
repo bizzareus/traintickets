@@ -3118,6 +3118,15 @@ function BookingV2PageContent() {
 
   const journeyDateInputId = useId();
 
+  const handleTabSwitch = (type: "route" | "pnr") => {
+    setSearchType(type);
+    setAltResult(null);
+    setAltError(null);
+    setAltForTrain(null);
+    setAltTrainName(null);
+    setAltAvlClasses(undefined);
+  };
+
   useEffect(() => {
     void import("flowbite").then((fb) => {
       if (typeof fb.initFlowbite === "function") fb.initFlowbite();
@@ -3665,7 +3674,7 @@ function BookingV2PageContent() {
           <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[280px] sm:max-w-[320px] backdrop-blur-md border border-white/40 shadow-xs">
             <button
               type="button"
-              onClick={() => setSearchType("route")}
+              onClick={() => handleTabSwitch("route")}
               className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 ${
                 searchType === "route"
                   ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
@@ -3676,7 +3685,7 @@ function BookingV2PageContent() {
             </button>
             <button
               type="button"
-              onClick={() => setSearchType("pnr")}
+              onClick={() => handleTabSwitch("pnr")}
               className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 ${
                 searchType === "pnr"
                   ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
