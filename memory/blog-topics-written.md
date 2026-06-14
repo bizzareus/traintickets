@@ -27,10 +27,10 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-partial-confirmation-rules-waitlist-travel-guide.md | IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers | 2026-06-11 |
 | travel-sleeper-ac-class-general-platform-ticket.md | Can you travel in Sleeper/AC with a General/Platform ticket | 2026-06-12 |
 | how-to-transfer-confirmed-train-ticket-another-person.md | How to transfer a confirmed train ticket to a family member | 2026-06-13 |
+| irctc-app-vs-website-tatkal-booking.md | IRCTC App vs. Website: Which is Faster for Tatkal Ticket Booking? | 2026-06-14 |
 
 
 ## Topics NOT yet covered (candidates for future posts)
 
 - Station platform navigation tips for last-minute boarders
-- IRCTC app vs website — Tatkal booking differences, speed tips
 
