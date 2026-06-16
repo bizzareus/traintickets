@@ -28,6 +28,7 @@ This file tracks all blog posts published to avoid duplication.
 | travel-sleeper-ac-class-general-platform-ticket.md | Can you travel in Sleeper/AC with a General/Platform ticket | 2026-06-12 |
 | how-to-transfer-confirmed-train-ticket-another-person.md | How to transfer a confirmed train ticket to a family member | 2026-06-13 |
 | irctc-app-vs-website-tatkal-booking.md | IRCTC App vs. Website: Which is Faster for Tatkal Ticket Booking? | 2026-06-14 |
+| irctc-auto-upgradation-rules-secrets.md | IRCTC Auto Upgradation: How It Works, Rules, and Secrets to Get a Free Upgrade | 2026-06-16 |
 
 
 ## Topics NOT yet covered (candidates for future posts)
