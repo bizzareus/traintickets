@@ -2,7 +2,7 @@
 title: "IRCTC Current Availability Explained: What It Is, When It Opens, and How to Use It"
 description: "Everything you need to know about IRCTC current availability — how it differs from general availability, when the vacancy chart is prepared, and practical strategies for booking last-minute confirmed tickets."
 date: "2026-06-11"
-updated: "2026-06-11"
+updated: "2026-06-16"
 tags:
   - current availability
   - vacancy chart
@@ -10,6 +10,9 @@ tags:
   - last minute tickets
   - confirmed tickets
   - chart preparation
+  - current availability timing
+  - when does current availability open
+  - current available ticket
 ---
 
 ## TL;DR
@@ -231,8 +234,6 @@ Current availability appears immediately after the first chart is prepared, whic
 
 ### What is a vacancy chart in IRCTC?
 
-### What is a vacancy chart in IRCTC?
-
 Think of it as a coach-wise layout of the train post-charting. It shows exactly which berths are free, their coach number, and whether they're upper or lower berths. Head to the [IRCTC Charts/Vacancy portal](https://www.irctc.co.in/online-charts) to check it out. General availability only lists a simple number, whereas this map details the actual vacant spots.
 
 ### How is current availability different from general availability?
@@ -254,6 +255,26 @@ If current availability shows WL, it means every single berth for your route is 
 ### Can I check current availability without logging into IRCTC?
 
 Yes, you can. Apps like NTES and other booking platforms show real-time current availability without needing a login. But to actually book that seat, you'll still have to sign into your IRCTC account.
+
+### When does current availability open in IRCTC?
+
+Current availability opens immediately after the first chart is prepared, which is typically **4 hours before the train's scheduled departure** from its originating station. For example, if a train departs Delhi at 4 PM, current availability would appear around 12 noon. For early-morning trains (before 7–8 AM), charts are often prepared the previous night between 8–10 PM, so current availability opens the evening before.
+
+### What does "current available ticket" mean in IRCTC?
+
+A "current available ticket" is a ticket booked after chart preparation using seats that became available through cancellations, quota releases, and auto-cancelled waitlisted tickets. It is a regular confirmed ticket at standard fare (sometimes with up to 10% discount). There are no extra charges like Tatkal, and standard cancellation rules apply.
+
+### How many hours before departure does current booking open in IRCTC?
+
+Current availability booking opens approximately **4 hours before departure** (after the first chart) and closes **30 minutes before departure**. So you have a roughly 3.5-hour window to book. For trains departing early in the morning, this window can start the previous evening when charts are prepared early.
+
+### What is current availability booking time in IRCTC?
+
+The current availability booking window runs from the moment the first chart is prepared (usually 4 hours before departure) until 30 minutes before the train's scheduled departure from its originating station. AC class and non-AC class charts are prepared at the same time for the same train — there is no separate timing like Tatkal.
+
+### Is a current available ticket confirmed or not?
+
+Yes, a current available ticket is **fully confirmed**. When you book during the current availability window, you are assigned an actual berth number in a specific coach. It is not RAC or WL — it is a standard confirmed reservation. You will see your coach and berth details immediately upon booking.
 
 ---
 

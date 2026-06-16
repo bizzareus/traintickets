@@ -168,12 +168,16 @@ function parseMetaFromMatter(
   };
 }
 
-function postPathForSlug(slug: string): string {
+function postPathForSlug(slug: string, lang?: string): string {
+  if (lang && lang !== "en") {
+    return path.join(BLOG_DIR, lang, `${slug}.md`);
+  }
   return path.join(BLOG_DIR, `${slug}.md`);
 }
 
-export const listBlogPostSlugs = cache((): string[] => {
-  const files = safeReadDir(BLOG_DIR);
+export const listBlogPostSlugs = cache((lang?: string): string[] => {
+  const dir = lang && lang !== "en" ? path.join(BLOG_DIR, lang) : BLOG_DIR;
+  const files = safeReadDir(dir);
   const slugs = files
     .filter((f) => f.toLowerCase().endsWith(".md"))
     .map((f) => f.slice(0, -3))
@@ -182,10 +186,10 @@ export const listBlogPostSlugs = cache((): string[] => {
   return slugs;
 });
 
-export const listBlogPosts = cache((): BlogPostMeta[] => {
+export const listBlogPosts = cache((lang?: string): BlogPostMeta[] => {
   const metas: BlogPostMeta[] = [];
-  for (const slug of listBlogPostSlugs()) {
-    const p = postPathForSlug(slug);
+  for (const slug of listBlogPostSlugs(lang)) {
+    const p = postPathForSlug(slug, lang);
     let raw = "";
     try {
       raw = fs.readFileSync(p, "utf8");
@@ -201,13 +205,13 @@ export const listBlogPosts = cache((): BlogPostMeta[] => {
   return metas;
 });
 
-export const getBlogPost = cache((slug: string): BlogPost | null => {
+export const getBlogPost = cache((slug: string, lang?: string): BlogPost | null => {
   const s = String(slug ?? "")
     .trim()
     .toLowerCase()
     .replace(/[^a-z0-9-]/g, "");
   if (!s) return null;
-  const p = postPathForSlug(s);
+  const p = postPathForSlug(s, lang);
   let raw = "";
   try {
     raw = fs.readFileSync(p, "utf8");
@@ -218,3 +222,50 @@ export const getBlogPost = cache((slug: string): BlogPost | null => {
   const meta = parseMetaFromMatter(s, data as Record<string, unknown>, content);
   return { ...meta, content };
 });
+
+export function hasBlogPostTranslation(slug: string, lang: string): boolean {
+  if (!lang || lang === "en") return true;
+  const s = String(slug ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9-]/g, "");
+  if (!s) return false;
+  const p = postPathForSlug(s, lang);
+  return fs.existsSync(p);
+}
+
+export function mapStateToLanguage(stateCode: string): string | null {
+  const code = stateCode.toUpperCase().trim();
+  switch (code) {
+    case "MH": return "mr"; // Marathi
+    case "UP":
+    case "BR":
+    case "MP":
+    case "DL":
+    case "RJ":
+    case "HR":
+    case "UK":
+    case "CG":
+    case "JH":
+    case "CH": return "hi"; // Hindi
+    case "WB": return "bn"; // Bengali
+    case "TN": return "ta"; // Tamil
+    case "TG":
+    case "AP": return "te"; // Telugu
+    case "KL": return "ml"; // Malayalam
+    default: return null;
+  }
+}
+
+export function getLanguageName(langCode: string): string {
+  switch (langCode) {
+    case "mr": return "Marathi";
+    case "hi": return "Hindi";
+    case "bn": return "Bengali";
+    case "ta": return "Tamil";
+    case "te": return "Telugu";
+    case "ml": return "Malayalam";
+    default: return "English";
+  }
+}
+
