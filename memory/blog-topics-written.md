@@ -29,6 +29,7 @@ This file tracks all blog posts published to avoid duplication.
 | how-to-transfer-confirmed-train-ticket-another-person.md | How to transfer a confirmed train ticket to a family member | 2026-06-13 |
 | irctc-app-vs-website-tatkal-booking.md | IRCTC App vs. Website: Which is Faster for Tatkal Ticket Booking? | 2026-06-14 |
 | irctc-auto-upgradation-rules-secrets.md | IRCTC Auto Upgradation: How It Works, Rules, and Secrets to Get a Free Upgrade | 2026-06-16 |
+| how-to-book-train-tickets-in-india-for-foreigners-ultimate-guide.md | How to Book Train Tickets in India for Foreigners: The Ultimate Guide | 2026-06-17 |
 
 
 ## Topics NOT yet covered (candidates for future posts)
