@@ -30,6 +30,8 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-app-vs-website-tatkal-booking.md | IRCTC App vs. Website: Which is Faster for Tatkal Ticket Booking? | 2026-06-14 |
 | irctc-auto-upgradation-rules-secrets.md | IRCTC Auto Upgradation: How It Works, Rules, and Secrets to Get a Free Upgrade | 2026-06-16 |
 | how-to-book-train-tickets-in-india-for-foreigners-ultimate-guide.md | How to Book Train Tickets in India for Foreigners: The Ultimate Guide | 2026-06-17 |
+| how-to-travel-with-dog-cat-indian-railways-pet-rules.md | How to Travel with a Dog in Indian Trains: Pet Booking Rules | 2026-06-17 |
+
 
 
 ## Topics NOT yet covered (candidates for future posts)

@@ -1,0 +1,89 @@
+---
+title: "How to Travel with a Dog in Indian Trains: Pet Booking Rules"
+description: "Want to travel with a dog or cat on Indian Railways? Learn the official pet booking rules, 1AC coupe requirements, veterinary certificate steps, and fees."
+date: "2026-06-17"
+updated: "2026-06-17"
+tags:
+  - pet travel
+  - dog booking
+  - indian railways
+  - irctc rules
+---
+
+## TL;DR
+
+- **Where they can sit:** Only in First Class AC (1AC) or First Class (FC) compartments—and only if you buy out the entire 2-berth coupe or 4-berth cabin.
+- **Where they can't go:** Absolutely banned in 2AC, 3AC, Sleeper Class, and General coaches.
+- **The cheaper option:** The train's dog box (a ventilated metal cage in the luggage van).
+- **Paperwork check:** You'll need a vet certificate showing they are fit to travel and up-to-date on rabies shots, signed just a day or two before the journey.
+
+---
+
+## What is the Indian Railways Pet Booking Policy?
+
+**You can legally travel with your dog or cat on Indian trains, but they are only allowed in two places: inside your compartment or in a dog box. To keep your pet with you, you must book all berths in a First Class AC (1AC) or First Class (FC) cabin or coupe. Otherwise, they have to travel in the luggage van.**
+
+Let's be real—the thought of leaving your pet in a dark, noisy luggage compartment is terrifying for most pet parents. That’s why almost everyone tries to get a First AC ticket. But here is the catch: you can't just book one berth in 1AC and show up with a dog. You must book the entire cabin (either a 2-berth coupe or a 4-berth cabin) under a single PNR. If you don't book the whole space, and a co-passenger complains about your dog, the ticket collector will force you to move your pet to the luggage van immediately.
+
+---
+
+## Can You Carry a Dog or Cat in AC 2 Tier (2A) or AC 3 Tier (3A)?
+
+**No, pets are strictly banned inside AC 2 Tier, AC 3 Tier, Sleeper, and General coaches. The only passenger class where pets are allowed is First AC (1AC) or First Class (FC), and only if you book the whole compartment. If you sneak a pet into other classes, you will be heavily fined.**
+
+Don't even try to sneak your puppy or kitten into a 2AC or 3AC coach in a handbag. It might seem tempting, but it’s a terrible idea. Train ticket examiners (TTEs) and co-passengers will notice eventually. The moment you are caught, the railway staff is legally required to remove the animal at the next station and place them in the luggage van. On top of that, you'll be charged a steep penalty based on six times the standard luggage rates. It's just not worth the stress for you or your pet.
+
+Here is a quick look at where pets are allowed:
+
+| Coach Class | Allowed with Passenger? | Requirements |
+| :--- | :--- | :--- |
+| **AC First Class (1AC / IA)** | Yes | Must book entire 2-berth coupe or 4-berth cabin |
+| **First Class (FC)** | Yes | Must book entire coupe or cabin |
+| **AC 2 Tier / AC 3 Tier** | No | Strictly prohibited (transferred to dog box if caught) |
+| **Sleeper / Second Class** | No | Strictly prohibited |
+
+---
+
+## How Do You Book a Dog Box in the Luggage Van?
+
+**Booking a dog box requires visiting the luggage booking office at your originating station at least three hours before departure. You must present your confirmed tickets, a veterinary fitness certificate, pay the booking charges based on your pet's weight, and bring a secure crate with food and water for the journey.**
+
+If booking a private 1AC coupe is out of your budget, the only legal alternative is the dog box in the luggage/brake van. These are small, ventilated iron cages built into the guard's coach.
+
+To book a dog box, follow these steps:
+1. Head to the station's parcel or luggage booking office early on the day of travel.
+2. Present your confirmed train tickets and your pet's veterinary health certificate.
+3. The booking clerk will weigh your pet inside their crate.
+4. Pay the freight charges, which are calculated based on the luggage scale rates.
+5. Secure your pet in the cage, ensuring they have sufficient food and water. You will be responsible for feeding them at station stops.
+
+> [!WARNING]
+> While dog boxes are ventilated, they can get extremely hot or cold depending on the season. For the safety of your pet, avoid using dog boxes during peak summer (April to July) or extreme winter.
+
+---
+
+## What Documents and Certificates are Required for Pet Travel?
+
+**To travel with your pet, you must present a certificate of fitness and rabies vaccination from a registered veterinary doctor, issued 24 to 48 hours before departure. Additionally, you must carry your confirmed tickets and a government-issued photo ID like an Aadhaar Card or Passport during booking.**
+
+Having the right paperwork is crucial. Without these documents, the luggage clerk will refuse to book your pet, and the ticket conductor will block you from boarding.
+
+Make sure your veterinary certificate clearly states:
+- The pet's breed, age, color, and name.
+- Confirmation that the pet is fit to travel by rail.
+- Detailed records of recent vaccinations, especially the rabies shot.
+
+Keep both the original certificate and a couple of photocopies handy, as the station office will keep a copy for their records.
+
+---
+
+## Common Booking Questions (FAQ)
+
+### How much does it cost to travel with a dog in Indian Railways?
+The charges depend on the pet's weight and the travel distance. For dog boxes in the luggage van, charges are based on a standard 30 kg luggage rate. For 1AC travel, pets are charged at a 60 kg rate, usually ranging from ₹200 to ₹1,200 depending on the distance.
+
+### Can I travel with a cat in a train?
+Yes, cats can travel under the exact same rules as dogs. You must either book a private 1AC cabin/coupe and carry them in a carrier, or book them in a container/crate to be kept in the luggage van's dog box.
+
+### What happens if a co-passenger objects to my dog in 1AC?
+If you have booked a 4-berth 1AC cabin and did not book all 4 seats, a co-passenger has the right to object to your pet's presence. In this case, the guard will immediately move your pet to the luggage van's dog box, and you will not receive a refund.

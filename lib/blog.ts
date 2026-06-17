@@ -234,6 +234,17 @@ export function hasBlogPostTranslation(slug: string, lang: string): boolean {
   return fs.existsSync(p);
 }
 
+export function getAvailableTranslations(slug: string): string[] {
+  const allLangs = ["mr", "hi", "bn", "ta", "te", "ml"];
+  const available = ["en"]; // English is always the fallback/default
+  for (const lang of allLangs) {
+    if (hasBlogPostTranslation(slug, lang)) {
+      available.push(lang);
+    }
+  }
+  return available;
+}
+
 export function mapStateToLanguage(stateCode: string): string | null {
   const code = stateCode.toUpperCase().trim();
   switch (code) {

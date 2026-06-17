@@ -3,39 +3,62 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getBlogPost, listBlogPostSlugs, listBlogPosts, parseFaqFromMarkdown } from "@/lib/blog";
+import { getBlogPost, listBlogPostSlugs, listBlogPosts, parseFaqFromMarkdown, hasBlogPostTranslation, mapStateToLanguage, getLanguageName, getAvailableTranslations } from "@/lib/blog";
+import { headers } from "next/headers";
+import { LanguagePromptSheet } from "@/components/blog/LanguagePromptSheet";
+import { BlogLanguageSelector } from "@/components/blog/BlogLanguageSelector";
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
+  const params: { slug: string[] }[] = [];
+  
+  // English posts: /blog/my-post
+  for (const slug of listBlogPostSlugs("en")) {
+    params.push({ slug: [slug] });
+  }
+  
+  // Regional posts: /blog/hi/my-post
   const langs = ["mr", "hi", "bn", "ta", "te", "ml"];
-  const params: { lang: string; slug: string }[] = [];
   for (const lang of langs) {
-    const slugs = listBlogPostSlugs(lang);
-    for (const slug of slugs) {
-      params.push({ lang, slug });
+    for (const slug of listBlogPostSlugs(lang)) {
+      params.push({ slug: [lang, slug] });
     }
   }
+  
   return params;
 }
 
-type RegionalBlogPostPageProps = {
-  params: Promise<{ lang: string; slug: string }>;
+type BlogPostPageProps = {
+  params: Promise<{ slug: string[] }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata({
   params,
-}: RegionalBlogPostPageProps): Promise<Metadata> {
-  const { lang, slug } = await params;
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug: slugArray } = await params;
+  let lang = "en";
+  let slug = slugArray[0];
+  if (slugArray.length === 2) {
+    lang = slugArray[0];
+    slug = slugArray[1];
+  } else if (slugArray.length > 2) {
+    return {};
+  }
+
   const post = getBlogPost(slug, lang);
   if (!post) return {};
+  
+  const canonicalUrl = lang === "en" ? `/blog/${post.slug}` : `/blog/${lang}/${post.slug}`;
+  
   return {
     title: post.title,
     description: post.description,
-    alternates: { canonical: `/blog/${lang}/${post.slug}` },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "article",
-      url: `/blog/${lang}/${post.slug}`,
+      url: canonicalUrl,
       title: post.title,
       description: post.description,
     },
@@ -58,10 +81,31 @@ function formatYmd(ymd: string): string {
   });
 }
 
-export default async function RegionalBlogPostPage({ params }: RegionalBlogPostPageProps) {
-  const { lang, slug } = await params;
+export default async function BlogPostPage({ params, searchParams }: BlogPostPageProps) {
+  const { slug: slugArray } = await params;
+  
+  let lang = "en";
+  let slug = slugArray[0];
+  if (slugArray.length === 2) {
+    lang = slugArray[0];
+    slug = slugArray[1];
+  } else if (slugArray.length > 2) {
+    notFound();
+  }
+
   const post = getBlogPost(slug, lang);
   if (!post) notFound();
+
+  // Detect region for language prompt ONLY if it's the English version
+  let showPrompt = false;
+  let suggestedLang = "";
+  if (lang === "en") {
+    const headersList = await headers();
+    const searchProps = searchParams ? await searchParams : {};
+    const regionCode = (searchProps.region as string) || headersList.get("x-vercel-ip-country-region") || "";
+    suggestedLang = mapStateToLanguage(regionCode) || "";
+    showPrompt = suggestedLang ? hasBlogPostTranslation(slug, suggestedLang) : false;
+  }
 
   const siteUrl =
     process.env.NEXT_PUBLIC_APP_URL ||
@@ -73,6 +117,8 @@ export default async function RegionalBlogPostPage({ params }: RegionalBlogPostP
       ? siteUrl
       : "https://lastberth.com";
 
+  const canonicalUrl = lang === "en" ? `${baseUrl}/blog/${post.slug}` : `${baseUrl}/blog/${lang}/${post.slug}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -82,7 +128,7 @@ export default async function RegionalBlogPostPage({ params }: RegionalBlogPostP
     dateModified: post.updated ?? post.date,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${baseUrl}/blog/${lang}/${post.slug}`,
+      "@id": canonicalUrl,
     },
     author: {
       "@type": "Organization",
@@ -132,6 +178,8 @@ export default async function RegionalBlogPostPage({ params }: RegionalBlogPostP
     .slice(0, 3)
     .map((x) => x.post);
 
+  const availableLangs = getAvailableTranslations(post.slug);
+
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <header className="mb-6">
@@ -162,6 +210,15 @@ export default async function RegionalBlogPostPage({ params }: RegionalBlogPostP
             </span>
           ))}
         </div>
+        {availableLangs.length > 1 && (
+          <div className="mt-6 border-t border-slate-100 pt-4">
+            <BlogLanguageSelector 
+              availableLangs={availableLangs} 
+              currentLang={lang} 
+              currentSlug={post.slug} 
+            />
+          </div>
+        )}
       </header>
 
       <div className="prose prose-slate max-w-none prose-headings:scroll-mt-24">
@@ -179,7 +236,7 @@ export default async function RegionalBlogPostPage({ params }: RegionalBlogPostP
             {relatedPosts.map((p) => (
               <Link
                 key={p.slug}
-                href={`/blog/${lang}/${p.slug}`}
+                href={lang === "en" ? `/blog/${p.slug}` : `/blog/${lang}/${p.slug}`}
                 className="group flex flex-col justify-between rounded-xl border border-slate-100 bg-slate-50/50 p-4 hover:bg-slate-50 hover:shadow-xs transition-all duration-200"
               >
                 <div>
@@ -214,6 +271,14 @@ export default async function RegionalBlogPostPage({ params }: RegionalBlogPostP
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       ) : null}
+      
+      {showPrompt && suggestedLang && (
+        <LanguagePromptSheet 
+          suggestedLang={suggestedLang} 
+          currentSlug={slug} 
+          langName={getLanguageName(suggestedLang)}
+        />
+      )}
     </article>
   );
 }
