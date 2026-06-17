@@ -13,6 +13,7 @@ export type BlogPostMeta = {
   updated: string | null;
   tags: string[];
   readingTimeMinutes: number;
+  sources: string[];
 };
 
 export type BlogPost = BlogPostMeta & {
@@ -156,6 +157,7 @@ function parseMetaFromMatter(
   const date = ymdOrNull(data.date) ?? "1970-01-01";
   const updated = ymdOrNull(data.updated);
   const tags = normalizeTags(data.tags);
+  const sources = Array.isArray(data.sources) ? data.sources.map(String) : [];
   const readingTimeMinutes = estimateReadingTimeMinutes(content);
   return {
     slug,
@@ -165,6 +167,7 @@ function parseMetaFromMatter(
     updated,
     tags,
     readingTimeMinutes,
+    sources,
   };
 }
 

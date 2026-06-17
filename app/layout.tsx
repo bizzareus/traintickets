@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
+import Link from "next/link";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
@@ -170,7 +171,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           show={isIstIndianRailwaysNightlyMaintenanceWindow()}
         />
         {/* Analytics first so PostHog client chunk + eager init run before other interactive scripts */}
-        <AnalyticsProvider>{children}</AnalyticsProvider>
+        <AnalyticsProvider>
+          <div className="flex min-h-screen flex-col">
+            <main className="flex-1">{children}</main>
+            <footer className="border-t border-slate-200 bg-slate-50 py-12 text-sm text-slate-600">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-4">LastBerth</h3>
+                  <p>Find confirmed train tickets and predict waiting list confirmations across Indian Railways.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-4">Resources</h3>
+                  <ul className="space-y-2">
+                    <li><Link href="/blog" className="hover:text-blue-600">Blog</Link></li>
+                    <li><Link href="/glossary" className="hover:text-blue-600">Railway Glossary</Link></li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-4">Top Routes</h3>
+                  <ul className="space-y-2">
+                    <li><Link href="/routes/delhi-to-mumbai" className="hover:text-blue-600">Delhi to Mumbai</Link></li>
+                    <li><Link href="/routes/delhi-to-patna" className="hover:text-blue-600">Delhi to Patna</Link></li>
+                    <li><Link href="/routes/mumbai-to-bengaluru" className="hover:text-blue-600">Mumbai to Bengaluru</Link></li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-4">Legal</h3>
+                  <ul className="space-y-2">
+                    <li><Link href="/privacy" className="hover:text-blue-600">Privacy Policy</Link></li>
+                    <li><Link href="/terms" className="hover:text-blue-600">Terms of Service</Link></li>
+                  </ul>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </AnalyticsProvider>
         <GoogleAnalytics />
         <script
           type="application/ld+json"

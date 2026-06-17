@@ -4,9 +4,13 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getBlogPost, listBlogPostSlugs, listBlogPosts, parseFaqFromMarkdown, hasBlogPostTranslation, mapStateToLanguage, getLanguageName, getAvailableTranslations } from "@/lib/blog";
+import { parseHowToFromMarkdown } from "@/lib/seo/schema-howto";
+import { autoLinkGlossaryTerms } from "@/lib/seo/auto-linker";
 import { headers } from "next/headers";
 import { LanguagePromptSheet } from "@/components/blog/LanguagePromptSheet";
 import { BlogLanguageSelector } from "@/components/blog/BlogLanguageSelector";
+import { AuthorBio } from "@/components/blog/AuthorBio";
+import { OfficialSources } from "@/components/blog/OfficialSources";
 
 export const dynamicParams = false;
 
@@ -51,11 +55,20 @@ export async function generateMetadata({
   if (!post) return {};
   
   const canonicalUrl = lang === "en" ? `/blog/${post.slug}` : `/blog/${lang}/${post.slug}`;
+  const availableLangs = getAvailableTranslations(post.slug);
+  const languages: Record<string, string> = {};
+  for (const l of availableLangs) {
+    const localeCode = l === "en" ? "en-IN" : `${l}-IN`;
+    languages[localeCode] = l === "en" ? `/blog/${post.slug}` : `/blog/${l}/${post.slug}`;
+  }
   
   return {
     title: post.title,
     description: post.description,
-    alternates: { canonical: canonicalUrl },
+    alternates: { 
+      canonical: canonicalUrl,
+      languages
+    },
     openGraph: {
       type: "article",
       url: canonicalUrl,
@@ -163,6 +176,19 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
   } : null;
 
   const allPosts = listBlogPosts(lang);
+  
+  const howToData = parseHowToFromMarkdown(post.content);
+  const howToJsonLd = howToData ? {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: howToData.name,
+    step: howToData.steps.map((step, index) => ({
+      "@type": "HowToStep",
+      name: step.name,
+      text: step.text,
+      url: `${canonicalUrl}#step-${index + 1}`
+    }))
+  } : null;
   const otherPosts = allPosts.filter((p) => p.slug !== post.slug);
   const relatedPosts = otherPosts
     .map((p) => {
@@ -223,9 +249,12 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
 
       <div className="prose prose-slate max-w-none prose-headings:scroll-mt-24">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {post.content}
+          {autoLinkGlossaryTerms(post.content)}
         </ReactMarkdown>
       </div>
+
+      <OfficialSources sources={post.sources} />
+      <AuthorBio />
 
       {relatedPosts.length > 0 ? (
         <div className="mt-12 border-t border-slate-100 pt-8">
@@ -269,6 +298,12 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      ) : null}
+      {howToJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
         />
       ) : null}
       
