@@ -303,19 +303,5 @@ model RedditAnalyzedComment {
   @@map("reddit_analyzed_comments")
 }
 
-model CurrentBookingAnalyticsCache {
-  id                  String   @id @default(cuid())
-  trainNumber         String   @map("train_number")
-  stationCode         String   @map("station_code")
-  classCode           String   @map("class_code")
-  successRatePercent  Int      @map("success_rate_percent")
-  avgBerthsReleased   Float    @map("avg_berths_released")
-  optimalWindowStart  String   @map("optimal_window_start")
-  optimalWindowEnd    String   @map("optimal_window_end")
-  updatedAt           DateTime @updatedAt @map("updated_at")
 
-  @@unique([trainNumber, stationCode, classCode])
-  @@index([trainNumber, stationCode])
-  @@map("current_booking_analytics_cache")
-}
 

@@ -59,6 +59,25 @@ export class PrismaService
 
   async onModuleInit() {
     await this.$connect();
+
+    // Self-healing database check: ensure all modified columns from migration 20260602020237 exist
+    try {
+      await this.$executeRawUnsafe(`
+        ALTER TABLE "CronLease" ALTER COLUMN "updated_at" DROP DEFAULT;
+      `);
+      await this.$executeRawUnsafe(`
+        ALTER TABLE "reddit_analyzed_comments" ADD COLUMN IF NOT EXISTS "status" TEXT NOT NULL DEFAULT 'PENDING';
+      `);
+      await this.$executeRawUnsafe(`
+        ALTER TABLE "reddit_analyzed_comments" ALTER COLUMN "analyzed_at" DROP NOT NULL;
+      `);
+      await this.$executeRawUnsafe(`
+        ALTER TABLE "reddit_analyzed_comments" ALTER COLUMN "analyzed_at" DROP DEFAULT;
+      `);
+      console.log('Self-healing database check: cron/reddit columns verified/created.');
+    } catch (e) {
+      console.error('Error during self-healing database check:', e);
+    }
   }
 
   async onModuleDestroy() {

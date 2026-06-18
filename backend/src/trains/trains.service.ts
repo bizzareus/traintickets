@@ -86,28 +86,8 @@ export class TrainsService {
 
     if (!train) throw new NotFoundException('Train not found');
 
-    // 1. Fetch all cached analytics for this train
-    const cachedAnalytics =
-      await this.prisma.currentBookingAnalyticsCache.findMany({
-        where: { trainNumber: train.trainNumber },
-      });
-
-    // 2. Map and merge cached analytics or fall back to the mathematical hash
+    // 1. Map and generate fallback mathematical hash for chart rules
     const mappedChartRules = train.chartRules.map((r) => {
-      const cacheEntry = cachedAnalytics.find(
-        (c) => c.stationCode === r.stationCode,
-      );
-
-      if (cacheEntry) {
-        return {
-          ...r,
-          predictionProbability: cacheEntry.successRatePercent,
-          avgBerthsReleased: cacheEntry.avgBerthsReleased,
-          optimalWindowStart: cacheEntry.optimalWindowStart,
-          optimalWindowEnd: cacheEntry.optimalWindowEnd,
-        };
-      }
-
       const trainNum = parseInt(train.trainNumber, 10) || 0;
       const firstChar = r.stationCode.charCodeAt(0) || 0;
       const predictionProbability = 70 + ((trainNum + firstChar) % 25);
