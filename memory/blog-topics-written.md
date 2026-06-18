@@ -31,6 +31,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-auto-upgradation-rules-secrets.md | IRCTC Auto Upgradation: How It Works, Rules, and Secrets to Get a Free Upgrade | 2026-06-16 |
 | how-to-book-train-tickets-in-india-for-foreigners-ultimate-guide.md | How to Book Train Tickets in India for Foreigners: The Ultimate Guide | 2026-06-17 |
 | how-to-travel-with-dog-cat-indian-railways-pet-rules.md | How to Travel with a Dog in Indian Trains: Pet Booking Rules | 2026-06-17 |
+| irctc-retiring-room-booking-rules-dormitory.md | IRCTC Retiring Room Booking: Book Cheap Station Rooms | 2026-06-18 |
 
 
 
