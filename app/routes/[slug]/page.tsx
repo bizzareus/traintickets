@@ -93,18 +93,37 @@ export default async function RoutePage({ params }: Props) {
         </div>
 
         <h2 className="text-2xl font-bold text-slate-900 mb-4">Popular Trains on this Route</h2>
-        <ul className="list-disc pl-5 space-y-2 text-slate-700 mb-12">
+        <div className="grid gap-4 sm:grid-cols-2 mb-12">
           {data.topTrains.map((train, idx) => (
-            <li key={idx} className="font-medium">{train}</li>
+            <Link 
+              key={idx} 
+              href={`/trains/${train.number}`}
+              className="flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:shadow-md transition duration-200 group"
+            >
+              <div>
+                <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-100 uppercase tracking-wider">
+                  #{train.number}
+                </span>
+                <h3 className="font-bold text-slate-900 mt-1 group-hover:text-blue-600 transition-colors">
+                  {train.name}
+                </h3>
+              </div>
+              <span className="text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition duration-200">
+                →
+              </span>
+            </Link>
           ))}
-        </ul>
+        </div>
 
         <div className="rounded-xl bg-slate-900 p-6 text-white text-center">
           <h3 className="text-xl font-bold mb-2">Need a Confirmed Ticket?</h3>
           <p className="text-slate-300 mb-4">LastBerth monitors cancellations and alternative routing to get you a seat.</p>
-          <button className="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-full font-bold transition-colors">
+          <Link
+            href={`/?from=${data.origin.code}&to=${data.destination.code}&fromName=${encodeURIComponent(data.origin.name)}&toName=${encodeURIComponent(data.destination.name)}`}
+            className="inline-block bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-full font-bold transition-colors"
+          >
             Find Alternate Routes
-          </button>
+          </Link>
         </div>
       </div>
 

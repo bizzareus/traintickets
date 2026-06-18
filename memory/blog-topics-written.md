@@ -32,8 +32,7 @@ This file tracks all blog posts published to avoid duplication.
 | how-to-book-train-tickets-in-india-for-foreigners-ultimate-guide.md | How to Book Train Tickets in India for Foreigners: The Ultimate Guide | 2026-06-17 |
 | how-to-travel-with-dog-cat-indian-railways-pet-rules.md | How to Travel with a Dog in Indian Trains: Pet Booking Rules | 2026-06-17 |
 | irctc-retiring-room-booking-rules-dormitory.md | IRCTC Retiring Room Booking: Book Cheap Station Rooms | 2026-06-18 |
-
-
+| emergency-quota-in-railway-how-to-apply.md | Emergency Quota (EQ) — how it works, how to apply with letter format, rules and deadlines | 2026-06-19 |
 
 ## Topics NOT yet covered (candidates for future posts)
 

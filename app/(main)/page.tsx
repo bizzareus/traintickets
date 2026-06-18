@@ -36,9 +36,11 @@ import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
 import { cn } from "@/lib/utils";
 import moment from "moment";
 import { SmartPnrPredictor } from "@/components/booking-v2/SmartPnrPredictor";
+import { SeatStatus } from "@/components/booking-v2/SeatStatus";
 import { StationChartingStatus } from "@/components/booking-v2/StationChartingStatus";
 import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
 
+import { Header } from "@/components/Header";
 const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
 const LEG_ALERT_STORAGE_PREFIX = "lastBerth_leg_alert_";
 const IST_UTC_OFFSET_MINUTES = 330;
@@ -2426,6 +2428,8 @@ const IS_TICKET_ALERT_ENABLED =
   process.env.NEXT_PUBLIC_ENABLE_TICKET_ALERT_CTA === "true";
 
 function BookingV2PageContent() {
+  const searchParams = useSearchParams();
+  const autoSearchTriggered = useRef(false);
   const [fromQ, setFromQ] = useState("");
   const [toQ, setToQ] = useState("");
   const fromDeb = useDebounced(fromQ, 300);
@@ -2475,7 +2479,7 @@ function BookingV2PageContent() {
   const [altProgress, setAltProgress] = useState<AlternatePathProgressEvent[]>(
     [],
   );
-  const [searchType, setSearchType] = useState<"route" | "pnr">("route");
+  const [searchType, setSearchType] = useState<"route" | "pnr" | "seat">("route");
   const [pnr, setPnr] = useState("");
   const [pnrLoading, setPnrLoading] = useState(false);
   const [pnrError, setPnrError] = useState<string | null>(null);
@@ -2484,6 +2488,28 @@ function BookingV2PageContent() {
   const [altShareBusy, setAltShareBusy] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isLiveChartPrepared, setIsLiveChartPrepared] = useState(false);
+
+  useEffect(() => {
+    const fromCode = searchParams.get("from");
+    const toCode = searchParams.get("to");
+    const fromName = searchParams.get("fromName");
+    const toName = searchParams.get("toName");
+
+    if (fromCode && toCode) {
+      const fSt = {
+        stationCode: fromCode.toUpperCase(),
+        stationName: fromName || fromCode.toUpperCase(),
+      };
+      const tSt = {
+        stationCode: toCode.toUpperCase(),
+        stationName: toName || toCode.toUpperCase(),
+      };
+      setFromSt(fSt);
+      setFromQ(fromName ? `${fromCode.toUpperCase()} - ${fromName}` : fromCode.toUpperCase());
+      setToSt(tSt);
+      setToQ(toName ? `${toCode.toUpperCase()} - ${toName}` : toCode.toUpperCase());
+    }
+  }, [searchParams]);
 
   const originChartTime = useMemo(() => {
     if (!pnrData?.DepartureTime || !pnrData?.Doj)
@@ -2738,6 +2764,22 @@ function BookingV2PageContent() {
       setSearchLoading(false);
     }
   }, [fromSt, toSt, journeyDate, onBlockedSearchAttempt, acOnly]);
+
+  useEffect(() => {
+    if (fromSt && toSt && journeyDate && !autoSearchTriggered.current) {
+      const fromCode = searchParams.get("from");
+      const toCode = searchParams.get("to");
+      if (
+        fromCode &&
+        toCode &&
+        fromSt.stationCode === fromCode.toUpperCase() &&
+        toSt.stationCode === toCode.toUpperCase()
+      ) {
+        autoSearchTriggered.current = true;
+        void runSearch();
+      }
+    }
+  }, [fromSt, toSt, journeyDate, runSearch, searchParams]);
 
   const runBestTrainSearch = useCallback(async () => {
     if (onBlockedSearchAttempt()) return;
@@ -3118,7 +3160,7 @@ function BookingV2PageContent() {
 
   const journeyDateInputId = useId();
 
-  const handleTabSwitch = (type: "route" | "pnr") => {
+  const handleTabSwitch = (type: "route" | "pnr" | "seat") => {
     setSearchType(type);
     setAltResult(null);
     setAltError(null);
@@ -3637,26 +3679,7 @@ function BookingV2PageContent() {
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
-      <div className="sticky top-0 z-20">
-        <header
-          className="border-b border-slate-100 bg-white/95 backdrop-blur-sm"
-          role="banner"
-        >
-          <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
-            <Link
-              href="/"
-              className="text-lg font-semibold tracking-tight text-blue-600"
-            >
-              LastBerth
-            </Link>
-            <nav className="flex items-center gap-3 text-sm font-semibold text-slate-700">
-              <Link href="/blog" className="hover:text-slate-900">
-                Blog
-              </Link>
-            </nav>
-          </div>
-        </header>
-      </div>
+      <Header />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
         <header className="mb-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
@@ -3671,9 +3694,10 @@ function BookingV2PageContent() {
 
         <div className="mb-8">
           {/* Tab Switcher */}
-          <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[280px] sm:max-w-[320px] backdrop-blur-md border border-white/40 shadow-xs">
+          <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[360px] sm:max-w-[440px] backdrop-blur-md border border-white/40 shadow-xs">
             <button
               type="button"
+              id="tabSearchRoute"
               onClick={() => handleTabSwitch("route")}
               className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 ${
                 searchType === "route"
@@ -3685,6 +3709,7 @@ function BookingV2PageContent() {
             </button>
             <button
               type="button"
+              id="tabSearchPnr"
               onClick={() => handleTabSwitch("pnr")}
               className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 ${
                 searchType === "pnr"
@@ -3694,10 +3719,30 @@ function BookingV2PageContent() {
             >
               Search PNR
             </button>
+            <button
+              type="button"
+              id="tabSeatStatus"
+              onClick={() => handleTabSwitch("seat")}
+              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 ${
+                searchType === "seat"
+                  ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              Seat Status
+            </button>
           </div>
 
-          <h2 className="sr-only">Journey search</h2>
-          {searchType === "route" ? (
+          <h2 className="sr-only">
+            {searchType === "route"
+              ? "Search Route"
+              : searchType === "pnr"
+                ? "Search PNR"
+                : "Seat Status"}
+          </h2>
+          {searchType === "seat" ? (
+            <SeatStatus />
+          ) : searchType === "route" ? (
             <div className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch">
               <StationFieldSimple
                 className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
@@ -4388,7 +4433,7 @@ function BookingV2PageContent() {
           ))}
         </ul>
 
-        {searchType !== "pnr" &&
+        {searchType === "route" &&
           (altResult || altError || (altLoading && altForTrain)) && (
             <div
               className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center sm:p-6"

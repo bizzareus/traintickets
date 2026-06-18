@@ -1,21 +1,16 @@
-import type { Metadata } from "next";
-
-type Props = {
-  params: { id: string };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return {
-    alternates: {
-      canonical: `/trains/${params.id}`,
-    },
-  };
-}
+import { Header } from "@/components/Header";
 
 export default function TrainDetailLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
+      <Header />
+      <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
+        {children}
+      </main>
+    </div>
+  );
 }

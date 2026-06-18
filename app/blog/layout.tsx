@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
   title: {
@@ -37,29 +38,7 @@ export default function BlogLayout({
 }>) {
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
-      <div className="sticky top-0 z-20">
-        <header
-          className="border-b border-slate-100 bg-white/95 backdrop-blur-sm"
-          role="banner"
-        >
-          <div className="mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-            <Link
-              href="/"
-              className="text-lg font-semibold tracking-tight text-blue-600"
-            >
-              LastBerth
-            </Link>
-            <nav className="flex items-center gap-3 text-sm font-semibold text-slate-700">
-              <Link href="/blog" className="hover:text-slate-900">
-                Blog
-              </Link>
-              <Link href="/search" className="hover:text-slate-900">
-                Search
-              </Link>
-            </nav>
-          </div>
-        </header>
-      </div>
+      <Header />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
         {children}
       </main>

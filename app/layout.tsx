@@ -183,6 +183,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div>
                   <h3 className="font-bold text-slate-900 mb-4">Resources</h3>
                   <ul className="space-y-2">
+                    <li><Link href="/seat-status" className="hover:text-blue-600">Seat Status & Coach Map</Link></li>
                     <li><Link href="/blog" className="hover:text-blue-600">Blog</Link></li>
                     <li><Link href="/glossary" className="hover:text-blue-600">Railway Glossary</Link></li>
                   </ul>
@@ -190,9 +191,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div>
                   <h3 className="font-bold text-slate-900 mb-4">Top Routes</h3>
                   <ul className="space-y-2">
-                    <li><Link href="/routes/delhi-to-mumbai" className="hover:text-blue-600">Delhi to Mumbai</Link></li>
-                    <li><Link href="/routes/delhi-to-patna" className="hover:text-blue-600">Delhi to Patna</Link></li>
-                    <li><Link href="/routes/mumbai-to-bengaluru" className="hover:text-blue-600">Mumbai to Bengaluru</Link></li>
+                    <li><Link href="/routes/delhi-to-mumbai" className="hover:text-blue-600">Delhi to Mumbai (Rajdhani 12952)</Link></li>
+                    <li><Link href="/routes/delhi-to-patna" className="hover:text-blue-600">Delhi to Patna (Rajdhani 12310)</Link></li>
+                    <li><Link href="/routes/mumbai-to-bengaluru" className="hover:text-blue-600">Mumbai to Bengaluru (Udyan 11301)</Link></li>
+                    <li><Link href="/routes/chennai-to-bengaluru" className="hover:text-blue-600">Chennai to Bengaluru (Shatabdi 12007)</Link></li>
+                    <li><Link href="/routes/kolkata-to-delhi" className="hover:text-blue-600">Kolkata to Delhi (Rajdhani 12301)</Link></li>
+                    <li><Link href="/routes/mumbai-to-ahmedabad" className="hover:text-blue-600">Mumbai to Ahmedabad (Shatabdi 12009)</Link></li>
                   </ul>
                 </div>
                 <div>
