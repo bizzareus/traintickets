@@ -179,11 +179,40 @@ export default async function TrainDetailPage({ params }: Props) {
       )}
       <Suspense
         fallback={
-          <div className="min-h-screen bg-slate-950 flex items-center justify-center relative overflow-hidden">
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="text-center z-10">
-              <div className="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-6" />
-              <h2 className="text-xl font-medium text-slate-300">Retrieving Train Route & Schedule...</h2>
+          <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm animate-pulse">
+            {/* Category badge skeleton */}
+            <div className="h-4 bg-slate-100 rounded w-32 mb-4"></div>
+            
+            {/* Title skeleton */}
+            <div className="h-10 bg-slate-200 rounded w-2/3 mb-4"></div>
+            
+            {/* Meta description lines skeleton */}
+            <div className="h-5 bg-slate-100 rounded w-1/2 mb-8"></div>
+            
+            {/* Grid metrics row skeleton */}
+            <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-8">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="h-20 bg-slate-50/50 border border-slate-200/60 rounded-xl p-4 flex flex-col justify-between">
+                  <div className="h-3.5 bg-slate-100 rounded w-16"></div>
+                  <div className="h-6 bg-slate-200/80 rounded w-20"></div>
+                </div>
+              ))}
+            </div>
+
+            {/* Content area table headers skeleton */}
+            <div className="border-b border-slate-100 pb-4 mb-4">
+              <div className="h-6 bg-slate-100 rounded w-1/4"></div>
+            </div>
+
+            {/* Content area table rows skeleton */}
+            <div className="space-y-4">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="flex justify-between items-center py-2 border-b border-slate-100/60">
+                  <div className="h-5 bg-slate-100 rounded w-1/3"></div>
+                  <div className="h-5 bg-slate-100 rounded w-1/6"></div>
+                  <div className="h-5 bg-slate-100 rounded w-1/12"></div>
+                </div>
+              ))}
             </div>
           </div>
         }
