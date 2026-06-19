@@ -34,8 +34,11 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-retiring-room-booking-rules-dormitory.md | IRCTC Retiring Room Booking: Book Cheap Station Rooms | 2026-06-18 |
 | emergency-quota-in-railway-how-to-apply.md | Emergency Quota (EQ) — how it works, how to apply with letter format, rules and deadlines | 2026-06-19 |
 | indian-railways-luggage-rules-baggage-allowance-limit.md | Indian Railways Luggage Rules: Free Allowance, Limits & Fines | 2026-06-19 |
+| irctc-circular-journey-ticket-rules-booking-guide.md | IRCTC Circular Journey Ticket: Rules, Booking Process & Telescopic Fare Savings Guide | 2026-06-20 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
 - Station platform navigation tips for last-minute boarders
+- Guide to food delivery in train (e-catering rules and apps)
+- A guide to IRCTC e-Wallet registration and payments
 
