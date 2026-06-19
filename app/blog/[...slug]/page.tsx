@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getBlogPost, listBlogPostSlugs, listBlogPosts, parseFaqFromMarkdown, hasBlogPostTranslation, mapStateToLanguage, getLanguageName, getAvailableTranslations } from "@/lib/blog";
+import { getBlogTranslation } from "@/lib/blog-translations";
 import { parseHowToFromMarkdown } from "@/lib/seo/schema-howto";
 import { autoLinkGlossaryTerms } from "@/lib/seo/auto-linker";
 import { headers } from "next/headers";
@@ -260,11 +261,11 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
           </span>
           {post.updated ? (
             <span className="rounded-md bg-slate-100 px-2 py-1">
-              Updated {formatYmd(post.updated)}
+              {getBlogTranslation("updated", lang)} {formatYmd(post.updated)}
             </span>
           ) : null}
           <span className="rounded-md bg-slate-100 px-2 py-1">
-            {post.readingTimeMinutes} min read
+            {post.readingTimeMinutes} {getBlogTranslation("minRead", lang)}
           </span>
           {post.tags.slice(0, 6).map((t) => (
             <span
@@ -298,7 +299,7 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
       {relatedPosts.length > 0 ? (
         <div className="mt-12 border-t border-slate-100 pt-8">
           <h2 className="text-xl font-bold text-slate-900 mb-6">
-            Recommended Reading
+            {getBlogTranslation("recommended", lang)}
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             {relatedPosts.map((p) => (
@@ -320,7 +321,7 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
                 <div className="mt-4 flex items-center justify-between text-[10px] font-semibold text-slate-600">
                   <span>{formatYmd(p.date)}</span>
                   <span className="text-blue-600 font-bold group-hover:underline">
-                    Read →
+                    {getBlogTranslation("read", lang)}
                   </span>
                 </div>
               </Link>

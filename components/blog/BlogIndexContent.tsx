@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { listBlogPosts, getLanguageName } from "@/lib/blog";
+import { getBlogTranslation } from "@/lib/blog-translations";
 import { BlogIndexLanguageSelector } from "@/components/blog/BlogIndexLanguageSelector";
 
 function formatYmd(ymd: string): string {
@@ -24,10 +25,10 @@ export function BlogIndexContent({ lang = "en" }: { lang?: string }) {
       <header className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
-            Read & Find Confirmed Train Tickets: IRCTC Guides
+            {getBlogTranslation("title", lang)}
           </h1>
           <p className="mt-2 max-w-2xl text-base text-slate-600">
-            LastBerth Blog — Practical guides for finding confirmed train tickets, understanding IRCTC charting, and booking smarter railway journeys.
+            {getBlogTranslation("desc", lang)}
           </p>
         </div>
         <div className="shrink-0">
@@ -38,10 +39,10 @@ export function BlogIndexContent({ lang = "en" }: { lang?: string }) {
       {lang !== "en" && !isFallback && (
         <div className="mb-6 rounded-xl border border-blue-100 bg-blue-50/50 p-4 text-sm text-blue-900 flex items-center justify-between gap-4 animate-in fade-in slide-in-from-top duration-300">
           <span>
-            Showing articles translated in <strong>{getLanguageName(lang)}</strong>.
+            {getBlogTranslation("showingTranslated", lang)} <strong>{getLanguageName(lang)}</strong>.
           </span>
           <Link href="/blog" className="font-semibold text-blue-700 hover:text-blue-800 hover:underline shrink-0">
-            Show all in English →
+            {getBlogTranslation("showAllEnglish", lang)}
           </Link>
         </div>
       )}
@@ -49,17 +50,17 @@ export function BlogIndexContent({ lang = "en" }: { lang?: string }) {
       {lang !== "en" && isFallback && (
         <div className="mb-6 rounded-xl border border-amber-100 bg-amber-50/50 p-4 text-sm text-amber-900 flex items-center justify-between gap-4 animate-in fade-in slide-in-from-top duration-300">
           <span>
-            No articles are translated in <strong>{getLanguageName(lang)}</strong> yet. Showing all English articles instead.
+            {getBlogTranslation("noTranslationsYet", lang)} <strong>{getLanguageName(lang)}</strong>{getBlogTranslation("noTranslationsYetSuffix", lang)}
           </span>
           <Link href="/blog" className="font-semibold text-amber-700 hover:text-amber-800 hover:underline shrink-0">
-            Clear filter
+            {getBlogTranslation("clearFilter", lang)}
           </Link>
         </div>
       )}
 
       {displayPosts.length === 0 ? (
         <div className="rounded-xl border border-slate-200 bg-white p-6 text-sm text-slate-700">
-          No posts yet.
+          {getBlogTranslation("noPosts", lang)}
         </div>
       ) : (
         <ol className="space-y-4" aria-label="Blog posts">
@@ -88,7 +89,7 @@ export function BlogIndexContent({ lang = "en" }: { lang?: string }) {
                         {formatYmd(p.date)}
                       </span>
                       <span className="rounded-md bg-slate-100 px-2 py-1">
-                        {p.readingTimeMinutes} min read
+                        {p.readingTimeMinutes} {getBlogTranslation("minRead", lang)}
                       </span>
                       {p.tags.slice(0, 4).map((t) => (
                         <span
@@ -104,7 +105,7 @@ export function BlogIndexContent({ lang = "en" }: { lang?: string }) {
                     href={href}
                     className="inline-flex shrink-0 items-center justify-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-bold text-blue-600 hover:bg-blue-600 hover:text-white"
                   >
-                    Read
+                    {getBlogTranslation("read", lang).replace(" →", "")}
                   </Link>
                 </div>
               </li>

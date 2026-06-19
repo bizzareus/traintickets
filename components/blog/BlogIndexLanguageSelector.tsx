@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { getBlogTranslation } from "@/lib/blog-translations";
 
 const getLanguageName = (langCode: string): string => {
   switch (langCode) {
@@ -31,7 +32,7 @@ export function BlogIndexLanguageSelector({ currentLang }: { currentLang: string
   return (
     <div className="flex items-center gap-2">
       <label htmlFor="blog-index-language" className="text-sm font-semibold text-slate-600">
-        Language:
+        {getBlogTranslation("language", currentLang)}
       </label>
       <select
         id="blog-index-language"
