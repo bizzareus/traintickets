@@ -11,6 +11,7 @@ import { LanguagePromptSheet } from "@/components/blog/LanguagePromptSheet";
 import { BlogLanguageSelector } from "@/components/blog/BlogLanguageSelector";
 import { AuthorBio } from "@/components/blog/AuthorBio";
 import { OfficialSources } from "@/components/blog/OfficialSources";
+import { BlogIndexContent } from "@/components/blog/BlogIndexContent";
 
 export const dynamicParams = false;
 
@@ -30,6 +31,11 @@ export async function generateStaticParams() {
     }
   }
   
+  // Regional index pages: /blog/hi
+  for (const lang of langs) {
+    params.push({ slug: [lang] });
+  }
+  
   return params;
 }
 
@@ -42,6 +48,30 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug: slugArray } = await params;
+
+  // Case 1: Regional index page, e.g. /blog/hi
+  if (slugArray.length === 1 && ["mr", "hi", "bn", "ta", "te", "ml"].includes(slugArray[0])) {
+    const lang = slugArray[0];
+    const canonicalUrl = `/blog/${lang}`;
+    const allLangs = ["en", "mr", "hi", "bn", "ta", "te", "ml"];
+    const languages: Record<string, string> = {};
+    for (const l of allLangs) {
+      const url = l === "en" ? "/blog" : `/blog/${l}`;
+      languages[l] = url;
+      languages[`${l}-IN`] = url;
+    }
+    languages["x-default"] = "/blog";
+
+    return {
+      title: `Read & Find Confirmed Train Tickets | IRCTC Booking Guides (${getLanguageName(lang)})`,
+      alternates: {
+        canonical: canonicalUrl,
+        languages,
+      },
+    };
+  }
+
+  // Case 2: Blog post page
   let lang = "en";
   let slug = slugArray[0];
   if (slugArray.length === 2) {
@@ -58,9 +88,11 @@ export async function generateMetadata({
   const availableLangs = getAvailableTranslations(post.slug);
   const languages: Record<string, string> = {};
   for (const l of availableLangs) {
-    const localeCode = l === "en" ? "en-IN" : `${l}-IN`;
-    languages[localeCode] = l === "en" ? `/blog/${post.slug}` : `/blog/${l}/${post.slug}`;
+    const url = l === "en" ? `/blog/${post.slug}` : `/blog/${l}/${post.slug}`;
+    languages[l] = url;
+    languages[`${l}-IN`] = url;
   }
+  languages["x-default"] = `/blog/${post.slug}`;
   
   return {
     title: post.title,
@@ -97,6 +129,13 @@ function formatYmd(ymd: string): string {
 export default async function BlogPostPage({ params, searchParams }: BlogPostPageProps) {
   const { slug: slugArray } = await params;
   
+  // Case 1: Regional index page, e.g. /blog/hi
+  if (slugArray.length === 1 && ["mr", "hi", "bn", "ta", "te", "ml"].includes(slugArray[0])) {
+    const lang = slugArray[0];
+    return <BlogIndexContent lang={lang} />;
+  }
+
+  // Case 2: Blog post page
   let lang = "en";
   let slug = slugArray[0];
   if (slugArray.length === 2) {

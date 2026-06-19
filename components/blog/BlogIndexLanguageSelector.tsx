@@ -24,7 +24,7 @@ export function BlogIndexLanguageSelector({ currentLang }: { currentLang: string
     if (val === "en") {
       router.push("/blog");
     } else {
-      router.push(`/blog?lang=${val}`);
+      router.push(`/blog/${val}`);
     }
   };
 

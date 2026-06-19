@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { cache } from "react";
+import { cache as reactCache } from "react";
+const cache = reactCache || (<T extends Function>(fn: T): T => fn);
 
 export type BlogPostMeta = {
   slug: string;
