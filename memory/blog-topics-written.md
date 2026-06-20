@@ -36,9 +36,9 @@ This file tracks all blog posts published to avoid duplication.
 | indian-railways-luggage-rules-baggage-allowance-limit.md | Indian Railways Luggage Rules: Free Allowance, Limits & Fines | 2026-06-19 |
 | irctc-circular-journey-ticket-rules-booking-guide.md | IRCTC Circular Journey Ticket: Rules, Booking Process & Telescopic Fare Savings Guide | 2026-06-20 |
 | irctc-ecatering-food-delivery-in-train-guide.md | Guide to food delivery in train (e-catering rules and apps) | 2026-06-20 |
+| irctc-ewallet-registration-booking-payment-guide.md | A complete guide on how to register for IRCTC e-Wallet, complete PAN/Aadhaar verification, deposit money, and make fast payments for train tickets | 2026-06-21 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
 - Station platform navigation tips for last-minute boarders
-- A guide to IRCTC e-Wallet registration and payments
 
