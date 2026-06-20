@@ -101,9 +101,9 @@ Typically, charts for morning trains are prepared around 8:00 PM the night befor
 
 ## What Should You Do if Your Emergency Quota Application is Rejected?
 
-**Don't worry if your application is rejected. Since the quota is tiny, getting turned down is the usual outcome. Instead of cancelling your trip, try these smart travel tactics:**
+**Do not panic if your request is turned down. Since the quota is extremely small, missing out is actually the most common outcome. Instead of calling off your travel plans, you can use these smart backup strategies to get your journey back on track:**
 
-If you get rejected, don't worry. There are still ways to make the trip happen. The easiest option is to check 'Current Booking' availability right after they print the chart. If there are any unsold seats left on the train, the railway sells them at the station counters or on the IRCTC app, often with a nice little discount. It's a quick way to grab a last-minute confirmed berth.
+The easiest option is to check 'Current Booking' availability right after they print the chart. If there are any unsold seats left on the train, the railway sells them at the station counters or on the IRCTC app, often with a nice little discount. It's a quick way to grab a last-minute confirmed berth.
 
 Another option is booking a split route. If you can't find a single seat from start to finish, try breaking the journey into two legs on the exact same train. For example, you might book from Delhi to Secunderabad, and then get a second ticket from Secunderabad to Bangalore on the same train. Using a tool like LastBerth makes it easy to find these split combinations without any guesswork.
 
@@ -114,10 +114,10 @@ Finally, don't forget to check the Vikalp box when booking. If your ticket doesn
 ## Frequently Asked Questions
 
 ### Who actually gets these seats?
-They are reserved for VIPs, railway employees, government officers on duty, and passengers facing sudden medical or family emergencies.
+Indian Railways sets these seats aside for VIPs, department staff, government officers on official travel, and regular passengers dealing with sudden hospitalizations or a death in the family.
 
 ### Can an ordinary passenger get approved?
-Yes, regular passengers have a shot at getting confirmed if they show the DRM office clear, official paperwork like hospital letters or official transit orders. But keep in mind that approvals are entirely discretionary and never guaranteed.
+Yes, normal passengers can get their tickets confirmed if they present solid proof like hospital documents or official transit orders. However, approval is completely discretionary and never guaranteed.
 
 ### Is there any charge for submitting the request?
 Not a single paisa. The process is completely free of charge, though you must already hold a valid waitlisted or RAC ticket.
