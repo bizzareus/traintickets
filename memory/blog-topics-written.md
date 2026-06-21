@@ -38,6 +38,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-ecatering-food-delivery-in-train-guide.md | Guide to food delivery in train (e-catering rules and apps) | 2026-06-20 |
 | irctc-ewallet-registration-booking-payment-guide.md | A complete guide on how to register for IRCTC e-Wallet, complete PAN/Aadhaar verification, deposit money, and make fast payments for train tickets | 2026-06-21 |
 | station-platform-navigation-tips-last-minute-boarders.md | Station platform navigation tips for last-minute boarders, locating coaches, and boarding safely | 2026-06-21 |
+| irctc-child-ticket-booking-rules-fares.md | Complete guide to Indian Railways child ticket booking rules, age limits, half fare vs full fare, and step-by-step IRCTC booking instructions | 2026-06-21 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
