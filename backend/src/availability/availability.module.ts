@@ -8,6 +8,7 @@ import { IrctcModule } from '../irctc/irctc.module';
 import { Service2Module } from '../service2/service2.module';
 import { TrainCompositionModule } from '../train-composition/train-composition.module';
 import { NotificationModule } from '../notification/notification.module';
+import { BookingV2Module } from '../booking-v2/booking-v2.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { NotificationModule } from '../notification/notification.module';
     TrainCompositionModule,
     Service2Module,
     NotificationModule,
+    BookingV2Module,
   ],
   controllers: [AvailabilityController],
   providers: [AvailabilityService, JourneyTaskService],

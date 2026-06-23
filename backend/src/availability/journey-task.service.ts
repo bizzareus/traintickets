@@ -8,11 +8,14 @@ import {
 import { TrainCompositionService } from '../train-composition/train-composition.service';
 import { Service2Service } from '../service2/service2.service';
 import { NotificationService } from '../notification/notification.service';
+import { BookingV2Service } from '../booking-v2/booking-v2.service';
 import { DateTime } from 'luxon';
 import {
   getTrainDoesNotRunOnDateError,
   parseJourneyYmdForValidation,
 } from '../common/train-run-day.validation';
+import { hasBookablePlanForNotification } from '../notification/notification.helpers';
+import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
 const MAX_CHART_TASK_ATTEMPTS = 3;
 
@@ -109,6 +112,7 @@ export class JourneyTaskService {
     private trainComposition: TrainCompositionService,
     private service2: Service2Service,
     private notificationService: NotificationService,
+    private bookingV2Service: BookingV2Service,
   ) {}
 
   /**
@@ -681,6 +685,32 @@ export class JourneyTaskService {
         });
         console.log('contact', contact);
         if (contact && (contact.email || contact.mobile)) {
+          let alternativeTrains: BestTrainCandidateResult[] | undefined;
+          const hasTickets = hasBookablePlanForNotification(result);
+
+          if (!hasTickets) {
+            try {
+              const req = await this.prisma.journeyMonitoringRequest.findUnique({
+                where: { id: task.journeyRequestId },
+              });
+              if (req) {
+                const classCode = req.classCode.toUpperCase();
+                const isAc = !['SL', '2S', 'GN', 'FC'].includes(classCode);
+                const bestResult = await this.bookingV2Service.findBestTrains({
+                  from: task.fromStationCode,
+                  to: task.toStationCode,
+                  date: task.journeyDate.toISOString().slice(0, 10),
+                  quota: 'GN',
+                  acOnly: isAc,
+                  maxTrains: 3,
+                });
+                alternativeTrains = bestResult.results.slice(0, 3);
+              }
+            } catch (err) {
+              console.error('Failed to find best alternative trains', err);
+            }
+          }
+
           void this.notificationService
             .notifyUser({
               email: contact.email,
@@ -693,6 +723,7 @@ export class JourneyTaskService {
                 journeyDate: task.journeyDate,
               },
               result,
+              alternativeTrains,
             })
             .then((status) => {
               const data: {

@@ -6,6 +6,7 @@ import { NotificationService } from '../notification/notification.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import { IrctcService } from '../irctc/irctc.service';
 import { TrainCompositionService } from '../train-composition/train-composition.service';
+import { BookingV2Service } from '../booking-v2/booking-v2.service';
 
 describe('JourneyTaskService', () => {
   let service: JourneyTaskService;
@@ -17,6 +18,9 @@ describe('JourneyTaskService', () => {
       update: jest.fn(),
     },
     journeyMonitorContact: {
+      findUnique: jest.fn(),
+    },
+    journeyMonitoringRequest: {
       findUnique: jest.fn(),
     },
   };
@@ -31,6 +35,10 @@ describe('JourneyTaskService', () => {
       .mockResolvedValue({ emailSent: true, whatsappSent: true }),
   };
 
+  const mockBookingV2 = {
+    findBestTrains: jest.fn(),
+  };
+
   beforeEach(async () => {
     jest.clearAllMocks();
     const module: TestingModule = await Test.createTestingModule({
@@ -39,6 +47,7 @@ describe('JourneyTaskService', () => {
         { provide: PrismaService, useValue: mockPrisma },
         { provide: Service2Service, useValue: mockService2 },
         { provide: NotificationService, useValue: mockNotification },
+        { provide: BookingV2Service, useValue: mockBookingV2 },
         { provide: ChartTimeService, useValue: {} },
         {
           provide: IrctcService,

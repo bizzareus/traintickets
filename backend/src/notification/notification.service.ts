@@ -15,6 +15,7 @@ import {
   formatSegmentScheduleTimes,
   hasBookablePlanForNotification,
 } from './notification.helpers';
+import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
@@ -446,9 +447,44 @@ export class NotificationService {
     routeDisplay: string;
     journeyDateReadable: string;
     openAiSummary?: string | null;
+    alternativeTrains?: BestTrainCandidateResult[];
+    fromCode: string;
+    toCode: string;
+    date: string;
   }): string {
-    const { trainLabel, routeDisplay, journeyDateReadable, openAiSummary } =
+    const { trainLabel, routeDisplay, journeyDateReadable, openAiSummary, alternativeTrains, fromCode, toCode, date } =
       params;
+    
+    let alternativesHtml = '';
+    if (alternativeTrains && alternativeTrains.length > 0) {
+      const trainCards = alternativeTrains.map(alt => {
+        const train = alt.train;
+        const trainNameStr = [train.trainNumber, train.trainName].filter(Boolean).join(' - ');
+        
+        // Find best segment from alternatePath
+        const confirmedLegs = alt.alternatePath.legs.filter(l => l.segmentKind === 'confirmed');
+        let bestLegStr = '';
+        if (confirmedLegs.length > 0) {
+          const firstLeg = confirmedLegs[0];
+          const classStr = firstLeg.travelClass ? ` [Class ${firstLeg.travelClass}]` : '';
+          const statusStr = firstLeg.availabilityDisplayName || firstLeg.railDataStatus || 'Available';
+          bestLegStr = `<p style="margin:4px 0 0 0;font-size:13px;font-weight:600;color:#059669;">${statusStr}${classStr}</p>`;
+        }
+        
+        return `
+        <div style="padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px;">
+          <p style="margin:0;font-weight:600;font-size:15px;color:#1e293b;">${escapeHtml(trainNameStr)}</p>
+          ${bestLegStr}
+        </div>`;
+      }).join('');
+
+      alternativesHtml = `
+      <div style="margin-top:24px;padding-top:16px;border-top:1px solid #e2e8f0;">
+        <h3 style="margin:0 0 12px 0;font-size:16px;color:#0f172a;">Alternative Trains Available:</h3>
+        ${trainCards}
+      </div>`;
+    }
+
     return `
 <!DOCTYPE html>
 <html>
@@ -463,8 +499,9 @@ export class NotificationService {
       <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(journeyDateReadable)}</p>
     </div>
     <p style="margin:0 0 16px 0;color:#b91c1c;">${escapeHtml(openAiSummary || "Unfortunately, we couldn't find any available tickets at this time.")}</p>
-    <p style="margin:0 0 16px 0;">You can try checking on LastBerth for other trains:</p>
-    <a href="https://lastberth.com" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Search on LastBerth</a>
+    ${alternativesHtml}
+    <p style="margin:16px 0 16px 0;">You can try checking on LastBerth for other trains:</p>
+    <a href="https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Search on LastBerth</a>
   </div>
   <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.</p>
 </body>
@@ -476,19 +513,44 @@ export class NotificationService {
     routeDisplay: string;
     journeyDateReadable: string;
     openAiSummary?: string | null;
+    alternativeTrains?: BestTrainCandidateResult[];
+    fromCode: string;
+    toCode: string;
+    date: string;
   }): string {
-    const { trainLabel, routeDisplay, journeyDateReadable, openAiSummary } =
+    const { trainLabel, routeDisplay, journeyDateReadable, openAiSummary, alternativeTrains, fromCode, toCode, date } =
       params;
+    
+    let alternativesText = '';
+    if (alternativeTrains && alternativeTrains.length > 0) {
+      const trainLines = alternativeTrains.map((alt, i) => {
+        const train = alt.train;
+        const trainNameStr = [train.trainNumber, train.trainName].filter(Boolean).join(' - ');
+        
+        const confirmedLegs = alt.alternatePath.legs.filter(l => l.segmentKind === 'confirmed');
+        let bestLegStr = '';
+        if (confirmedLegs.length > 0) {
+          const firstLeg = confirmedLegs[0];
+          const classStr = firstLeg.travelClass ? ` [Class ${firstLeg.travelClass}]` : '';
+          const statusStr = firstLeg.availabilityDisplayName || firstLeg.railDataStatus || 'Available';
+          bestLegStr = `\n  ↳ ${statusStr}${classStr}`;
+        }
+        return `${i + 1}. ${trainNameStr}${bestLegStr}`;
+      }).join('\n\n');
+
+      alternativesText = `\n\nAlternative Trains Available:\n${trainLines}`;
+    }
+
     return `No Tickets Found 😔
 
 Train: ${trainLabel}
 Route: ${routeDisplay}
 Date: ${journeyDateReadable}
 
-${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}
+${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}${alternativesText}
 
 You can try checking on LastBerth for other trains:
-https://lastberth.com`;
+https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`;
   }
 
   /** Build station code -> name map from train schedule (for UI-style segment labels). */
@@ -519,8 +581,9 @@ https://lastberth.com`;
       | 'journeyDate'
     >;
     result: Service2CheckResult;
+    alternativeTrains?: BestTrainCandidateResult[];
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
-    const { email, mobile, task, result } = params;
+    const { email, mobile, task, result, alternativeTrains } = params;
     const out = { emailSent: false, whatsappSent: false };
     if (!email?.trim() && !mobile?.trim()) {
       return out;
@@ -583,6 +646,10 @@ https://lastberth.com`;
             routeDisplay,
             journeyDateReadable,
             openAiSummary: result.openAiSummary,
+            alternativeTrains,
+            fromCode: task.fromStationCode,
+            toCode: task.toStationCode,
+            date: journeyDateStr,
           });
 
       out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText);
@@ -610,6 +677,10 @@ https://lastberth.com`;
             routeDisplay: emailRouteDisplay,
             journeyDateReadable,
             openAiSummary: result.openAiSummary,
+            alternativeTrains,
+            fromCode: task.fromStationCode,
+            toCode: task.toStationCode,
+            date: journeyDateStr,
           });
       out.emailSent = await this.sendEmail(email.trim(), subject, html);
     }
