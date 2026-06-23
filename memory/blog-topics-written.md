@@ -42,6 +42,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-ticket-booking-limits-aadhaar-verification.md | A complete guide on IRCTC monthly ticket booking limits, Aadhaar link, and passenger verification | 2026-06-22 |
 | how-to-change-boarding-point-irctc-rules-process.md | How to change boarding station online in IRCTC, rules, and timelines | 2026-06-22 |
 | irctc-regret-meaning-ticket-booking-rules.md | What Regret status means in IRCTC, how it differs from WL, and booking solutions | 2026-06-23 |
+| irctc-booking-timings-rules.md | Complete guide to IRCTC daily booking timings, midnight maintenance window shutdown, Tatkal opening hours, and current availability times | 2026-06-23 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
