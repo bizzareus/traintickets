@@ -364,6 +364,11 @@ export class NotificationService {
               </table>
               ${totalRow}
               <p style="margin:16px 0 0 0; font-size:12px; color:#94a3b8; text-align:center;">Book quickly — seats can sell out fast.</p>
+              <div style="margin-top:20px; padding:12px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; text-align:center;">
+                <p style="margin:0; font-size:13px; color:#475569;">
+                  💡 <strong>Tip:</strong> Look for the realtime seat status on LastBerth to track vacant seats around you.
+                </p>
+              </div>
             </td>
           </tr>
         </table>
@@ -502,6 +507,11 @@ export class NotificationService {
     ${alternativesHtml}
     <p style="margin:16px 0 16px 0;">You can try checking on LastBerth for other trains:</p>
     <a href="https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Search on LastBerth</a>
+    <div style="margin-top:20px; padding:12px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; text-align:center;">
+      <p style="margin:0; font-size:13px; color:#475569;">
+        💡 <strong>Tip:</strong> Look for the realtime seat status on LastBerth to track vacant seats around you.
+      </p>
+    </div>
   </div>
   <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.</p>
 </body>
