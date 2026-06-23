@@ -9,6 +9,7 @@ import {
   sourceStationCodesFromOpenAiSeats,
 } from '../train-composition/train-composition.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
+import { captureSentryException } from '../common/sentry-report';
 
 function toStr(v: unknown): string {
   if (v == null) return '';
@@ -1334,8 +1335,10 @@ export class Service2Service {
             openAiSummary =
               'Suggested multi-leg booking plan for your journey is below.';
           } else if (stringLooksLikeJsonObject(rawContent)) {
-            openAiSummary =
-              'We could not read the AI journey plan. Please try your search again.';
+            openAiSummary = null;
+            captureSentryException(new Error('Failed to read AI journey plan'), {
+              extra: { rawContent, parsed, baseCtx },
+            });
           } else {
             openAiSummary = rawContent.trim() || null;
           }
