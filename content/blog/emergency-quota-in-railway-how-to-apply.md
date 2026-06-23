@@ -101,11 +101,11 @@ As a rule, charts for morning trains are prepared around 8:00 PM the night befor
 
 ## What Should You Do if Your Emergency Quota Application is Rejected?
 
-**Don't worry if your application gets rejected. Since the quota is so small, rejection is actually the standard result. Instead of cancelling your plans, try these smart travel tactics to get your journey back on track:**
+**Don't lose heart if the railway turns down your application. Since there are so few EQ seats, rejection is unfortunately the default outcome. Rather than calling off your trip entirely, you should check out these practical backup options to keep your travel plans on track:**
 
-First, check for 'Current Booking' availability immediately after chart preparation. Any leftover empty seats are sold on the IRCTC website or at the station, sometimes at a discount. These are fully confirmed bookings.
+First, look for 'Current Booking' availability right after chart preparation. Any empty berths that are left over are sold directly on the IRCTC app or at station counters, often with a nice little discount. This is a very simple way to get a confirmed ticket at the last minute.
 
-Second, try booking a split journey. If a direct confirmed seat isn't open, break your trip into sections on the same train. For example, instead of Delhi to Bangalore, book Delhi to Secunderabad and then Secunderabad to Bangalore on the same train. You can use LastBerth to spot these combinations automatically.
+Second, try booking a split route on the same train. If you can't find a direct confirmed seat from start to finish, try breaking the trip into two separate legs. For example, you might book from Delhi to Secunderabad, and then Secunderabad to Bangalore on the exact same train. Using a tool like LastBerth makes it easy to find these split ticket options without any guesswork.
 
 Lastly, make sure you opt into the IRCTC Vikalp scheme during booking. It automatically matches you with vacant seats on alternative trains.
 
@@ -117,7 +117,7 @@ Lastly, make sure you opt into the IRCTC Vikalp scheme during booking. It automa
 They are kept for VIPs, railway staff, government officials on duty, and passengers facing genuine medical or family crises.
 
 ### Can an ordinary passenger get approved?
-Regular passengers have a chance if they show the DRM office concrete paperwork, such as hospital records or official transit orders. However, approval is discretionary and you shouldn't assume it's guaranteed.
+Yes, normal passengers can get confirmed if they show the DRM office concrete paperwork like hospital records or official transit orders. But keep in mind that approvals are entirely discretionary and never guaranteed.
 
 ### Is there any charge for submitting the request?
 You won't have to pay a single rupee. The application is completely free of charge, though you must already hold a valid waitlisted or RAC ticket.
