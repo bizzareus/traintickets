@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 export default function SearchRedirect() {
   const router = useRouter();
   useEffect(() => {
-    router.replace("/");
+    router.replace("/" + window.location.search);
   }, [router]);
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">

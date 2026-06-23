@@ -2494,6 +2494,7 @@ function BookingV2PageContent() {
     const toCode = searchParams.get("to");
     const fromName = searchParams.get("fromName");
     const toName = searchParams.get("toName");
+    const dateParam = searchParams.get("date");
 
     if (fromCode && toCode) {
       const fSt = {
@@ -2508,6 +2509,9 @@ function BookingV2PageContent() {
       setFromQ(fromName ? `${fromCode.toUpperCase()} - ${fromName}` : fromCode.toUpperCase());
       setToSt(tSt);
       setToQ(toName ? `${toCode.toUpperCase()} - ${toName}` : toCode.toUpperCase());
+    }
+    if (dateParam) {
+      setJourneyDate(dateParam);
     }
   }, [searchParams]);
 
