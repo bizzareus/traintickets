@@ -44,6 +44,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-regret-meaning-ticket-booking-rules.md | What Regret status means in IRCTC, how it differs from WL, and booking solutions | 2026-06-23 |
 | irctc-booking-timings-rules.md | Complete guide to IRCTC daily booking timings, midnight maintenance window shutdown, Tatkal opening hours, and current availability times | 2026-06-23 |
 | irctc-uts-app-booking-guide.md | IRCTC UTS App Booking: Rules, GPS Limits & Platform Tickets | 2026-06-23 |
+| irctc-counter-ticket-vs-eticket.md | IRCTC Counter Ticket vs E-Ticket: Rules, Booking, and Cancellation Differences | 2026-06-24 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
