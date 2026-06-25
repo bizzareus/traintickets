@@ -45,6 +45,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-booking-timings-rules.md | Complete guide to IRCTC daily booking timings, midnight maintenance window shutdown, Tatkal opening hours, and current availability times | 2026-06-23 |
 | irctc-uts-app-booking-guide.md | IRCTC UTS App Booking: Rules, GPS Limits & Platform Tickets | 2026-06-23 |
 | irctc-counter-ticket-vs-eticket.md | IRCTC Counter Ticket vs E-Ticket: Rules, Booking, and Cancellation Differences | 2026-06-24 |
+| two-stop-rule-irctc-missed-train-rules.md | Indian Railways Two-Stop Rule: Missed Train Rules & Facts | 2026-06-25 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
