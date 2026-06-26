@@ -6,6 +6,7 @@ import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
 import { IstRailMaintenanceBanner } from "@/components/IstRailMaintenance";
+import { listChartTimesIndex } from "@/lib/chartTimes";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -133,6 +134,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const chartTimesPages = listChartTimesIndex().slice(0, 6);
   return (
     <html lang="en">
       <head>
@@ -200,12 +202,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-4">Legal</h3>
+                  <h3 className="font-bold text-slate-900 mb-4">
+                    <Link href="/chart-times" className="hover:text-blue-600">Chart Times</Link>
+                  </h3>
                   <ul className="space-y-2">
-                    <li><Link href="/privacy" className="hover:text-blue-600">Privacy Policy</Link></li>
-                    <li><Link href="/terms" className="hover:text-blue-600">Terms of Service</Link></li>
+                    {chartTimesPages.length > 0 ? (
+                      chartTimesPages.map((t) => (
+                        <li key={t.slug}>
+                          <Link href={`/chart-times/${t.slug}`} className="hover:text-blue-600">
+                            {t.trainName || t.trainNumber} ({t.trainNumber})
+                          </Link>
+                        </li>
+                      ))
+                    ) : (
+                      <li><Link href="/chart-times" className="hover:text-blue-600">Browse train chart times</Link></li>
+                    )}
                   </ul>
                 </div>
+              </div>
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10 pt-6 border-t border-slate-200 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-slate-500">
+                <p>&copy; {new Date().getFullYear()} LastBerth. All rights reserved.</p>
+                <nav className="flex items-center gap-4">
+                  <Link href="/privacy" className="hover:text-blue-600">Privacy Policy</Link>
+                  <Link href="/terms" className="hover:text-blue-600">Terms of Service</Link>
+                </nav>
               </div>
             </footer>
           </div>
