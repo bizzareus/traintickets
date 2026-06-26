@@ -406,22 +406,20 @@ function AlternatePathProgressFeed({
     setProgress(Math.min(99, Math.floor(p)));
   }, [events]);
   const displayEvents = useMemo(() => {
-    const hasDone = events.some((e) => e.type === "done");
-    let lastUnavailIdx = -1;
-    for (let i = events.length - 1; i >= 0; i--) {
-      if (events[i].type === "hop_unavailable") {
-        lastUnavailIdx = i;
-        break;
-      }
-    }
-    return events.filter((ev, i) => {
-      if (ev.type === "schedule_ok") return false;
-      if (ev.type === "hop_unavailable") {
-        if (hasDone) return false;
-        return i === lastUnavailIdx;
-      }
-      return true;
-    });
+    // Show only a single, high-level status line while loading. The +/-3-station
+    // offset retries re-emit per-hop ("found route") events on every attempt, so
+    // accumulating them made the same routes appear many times in the UI. Surface
+    // just the latest route-level step here; the final set of tickets is rendered
+    // from the result once the search completes.
+    const HIDE = new Set([
+      "schedule_ok",
+      "done",
+      "hop_confirmed",
+      "hop_unavailable",
+    ]);
+    const visible = events.filter((ev) => !HIDE.has(ev.type));
+    const last = visible[visible.length - 1];
+    return last ? [last] : [];
   }, [events]);
 
   return (
