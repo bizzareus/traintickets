@@ -1,0 +1,77 @@
+{
+  "trainNumber": "02543",
+  "trainName": "FESTIVE RIDE",
+  "originStation": "KGN",
+  "destinationStation": "DJ",
+  "slug": "02543-festive-ride-chart-times",
+  "stations": [
+    {
+      "stationCode": "KGN",
+      "stationName": "KURSEONG",
+      "arrivalTime": "--",
+      "departureTime": "12:00",
+      "day": null,
+      "distance": "0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TUNG",
+      "stationName": "TUNG",
+      "arrivalTime": "12:45",
+      "departureTime": "13:00",
+      "day": null,
+      "distance": "8",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SAD",
+      "stationName": "SONADA",
+      "arrivalTime": "14:30",
+      "departureTime": "14:40",
+      "day": null,
+      "distance": "16",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "GHUM",
+      "stationName": "GHUM",
+      "arrivalTime": "16:10",
+      "departureTime": "16:32",
+      "day": null,
+      "distance": "25",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DJ",
+      "stationName": "DARJEELING",
+      "arrivalTime": "17:02",
+      "departureTime": "--",
+      "day": null,
+      "distance": "31",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for FESTIVE RIDE (02543) from KGN to DJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-26T22:55:25.822Z",
+  "knownChartCount": 0
+}

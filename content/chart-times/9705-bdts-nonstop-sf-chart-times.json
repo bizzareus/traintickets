@@ -1,0 +1,38 @@
+{
+  "trainNumber": "9705",
+  "trainName": "Bdts Nonstop Sf",
+  "originStation": "JP",
+  "destinationStation": "BDTS",
+  "slug": "9705-bdts-nonstop-sf-chart-times",
+  "stations": [
+    {
+      "stationCode": "JP",
+      "stationName": "Jaipur",
+      "arrivalTime": "",
+      "departureTime": "18:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BDTS",
+      "stationName": "Bandra Terminus",
+      "arrivalTime": "11:20",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1152.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Bdts Nonstop Sf (9705) from JP to BDTS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
+  "generatedAt": "2026-06-26T23:12:33.954Z",
+  "knownChartCount": 0
+}

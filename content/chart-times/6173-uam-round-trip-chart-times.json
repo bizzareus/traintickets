@@ -1,0 +1,51 @@
+{
+  "trainNumber": "6173",
+  "trainName": "Uam Round Trip",
+  "originStation": "UAM",
+  "destinationStation": "UAMR",
+  "slug": "6173-uam-round-trip-chart-times",
+  "stations": [
+    {
+      "stationCode": "UAM",
+      "stationName": "Udagamandalam",
+      "arrivalTime": "",
+      "departureTime": "09:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "19:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UAM"
+    },
+    {
+      "stationCode": "KXT",
+      "stationName": "KETTI",
+      "arrivalTime": "10:10",
+      "departureTime": "10:30",
+      "day": 1,
+      "distance": "9.0",
+      "chartTimeLocal": "19:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UAM"
+    },
+    {
+      "stationCode": "UAMR",
+      "stationName": "Udagamandalam Round Trip",
+      "arrivalTime": "11:00",
+      "departureTime": "",
+      "day": 1,
+      "distance": "18.0",
+      "chartTimeLocal": "19:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UAM"
+    }
+  ],
+  "summary": "The first reservation chart for Uam Round Trip (6173) is prepared at Udagamandalam (UAM) around 7:06 PM, with a second (vacancy) chart around 9:30 AM. 3 of 3 stations on the UAM to UAMR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-26T22:58:41.418Z",
+  "knownChartCount": 3
+}

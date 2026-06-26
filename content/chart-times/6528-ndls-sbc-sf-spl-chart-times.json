@@ -1,0 +1,103 @@
+{
+  "trainNumber": "6528",
+  "trainName": "Ndls Sbc Sf Spl",
+  "originStation": "SMVB",
+  "destinationStation": "BWT",
+  "slug": "6528-ndls-sbc-sf-spl-chart-times",
+  "stations": [
+    {
+      "stationCode": "SMVB",
+      "stationName": "Smvt Bengaluru",
+      "arrivalTime": "",
+      "departureTime": "04:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BYPL",
+      "stationName": "BAIYYAPPANAHALI",
+      "arrivalTime": "04:16",
+      "departureTime": "04:17",
+      "day": 1,
+      "distance": "1.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KJM",
+      "stationName": "Krishnarajapurm",
+      "arrivalTime": "04:21",
+      "departureTime": "04:22",
+      "day": 1,
+      "distance": "4.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "WFD",
+      "stationName": "Whitefield",
+      "arrivalTime": "04:32",
+      "departureTime": "04:33",
+      "day": 1,
+      "distance": "13.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MLO",
+      "stationName": "Malur",
+      "arrivalTime": "04:49",
+      "departureTime": "04:50",
+      "day": 1,
+      "distance": "33.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TCL",
+      "stationName": "TYAKAL",
+      "arrivalTime": "05:00",
+      "departureTime": "05:01",
+      "day": 1,
+      "distance": "48.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BWT",
+      "stationName": "Bangarapet",
+      "arrivalTime": "05:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "60.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Ndls Sbc Sf Spl (6528) from SMVB to BWT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-26T22:59:17.578Z",
+  "knownChartCount": 0
+}
