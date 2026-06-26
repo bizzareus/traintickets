@@ -3,259 +3,369 @@
     "trainNumber": "00961",
     "trainName": "VALLEY QUEEN SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "961-valley-queen-spl-chart-times",
+    "canonicalNumber": "961"
   },
   {
     "trainNumber": "00962",
     "trainName": "VALLEY QUEEN SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "962-valley-queen-spl-chart-times",
+    "canonicalNumber": "962"
   },
   {
     "trainNumber": "01001",
     "trainName": "LTT SRC SF SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1001-ltt-src-sf-spl-chart-times",
+    "canonicalNumber": "1001"
   },
   {
     "trainNumber": "01002",
     "trainName": "SRC LTT SF SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1002-src-ltt-sf-spl-chart-times",
+    "canonicalNumber": "1002"
   },
   {
     "trainNumber": "01003",
     "trainName": "LTT MAO SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1003-ltt-mao-spl-chart-times",
+    "canonicalNumber": "1003"
   },
   {
     "trainNumber": "01004",
     "trainName": "MAO LTT SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1004-mao-ltt-special-chart-times",
+    "canonicalNumber": "1004"
   },
   {
     "trainNumber": "01005",
     "trainName": "CSMT CAPE SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1005-csmt-tn-spl-chart-times",
+    "canonicalNumber": "1005"
   },
   {
     "trainNumber": "01006",
     "trainName": "TN CSMT SPECIAL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1006-tn-csmt-special-chart-times",
+    "canonicalNumber": "1006"
   },
   {
     "trainNumber": "01007",
     "trainName": "LTT LUR SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1007-pnvl-swv-spl-chart-times",
+    "canonicalNumber": "1007"
   },
   {
     "trainNumber": "01008",
     "trainName": "LUR LTT SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1008-swv-pnvl-spl-chart-times",
+    "canonicalNumber": "1008"
   },
   {
     "trainNumber": "01011",
     "trainName": "CSMT ADB SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1011-csmt-hyb-spl-chart-times",
+    "canonicalNumber": "1011"
   },
   {
     "trainNumber": "01012",
     "trainName": "ADB CSMT SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1012-hyb-csmt-spl-chart-times",
+    "canonicalNumber": "1012"
   },
   {
     "trainNumber": "01013",
     "trainName": "CSMT SMVB SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1013-ltt-smvb-special-chart-times",
+    "canonicalNumber": "1013"
   },
   {
     "trainNumber": "01014",
     "trainName": "SMVB CSMT SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1014-smvb-ltt-spl-chart-times",
+    "canonicalNumber": "1014"
   },
   {
     "trainNumber": "01015",
     "trainName": "CSMT MAS SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1015-csmt-mas-spl-chart-times",
+    "canonicalNumber": "1015"
   },
   {
     "trainNumber": "01016",
     "trainName": "MAS CSMT SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1016-mas-csmt-spl-chart-times",
+    "canonicalNumber": "1016"
   },
   {
     "trainNumber": "01018",
     "trainName": "DNR LTT SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1018-dnr-ltt-spl-chart-times",
+    "canonicalNumber": "1018"
   },
   {
     "trainNumber": "01019",
     "trainName": "LTT SHC  SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1019-csmt-mao-spl-chart-times",
+    "canonicalNumber": "1019"
   },
   {
     "trainNumber": "01020",
     "trainName": "MAO CSMT SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1020-mao-csmt-spl-chart-times",
+    "canonicalNumber": "1020"
   },
   {
     "trainNumber": "01021",
     "trainName": "CSMT KRMR SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1021-csmt-ngp-spl-chart-times",
+    "canonicalNumber": "1021"
   },
   {
     "trainNumber": "01022",
     "trainName": "NGP LTT SPECIAL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1022-ngp-csmt-special-chart-times",
+    "canonicalNumber": "1022"
   },
   {
     "trainNumber": "01023",
     "trainName": "PUNE KOP SPECIAL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1023-pune-kop-special-chart-times",
+    "canonicalNumber": "1023"
   },
   {
     "trainNumber": "01024",
     "trainName": "KOP PUNE SPECIAL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1024-kop-pune-special-chart-times",
+    "canonicalNumber": "1024"
   },
   {
     "trainNumber": "01025",
     "trainName": "DR BALLIA SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1025-dr-ballia-spl-chart-times",
+    "canonicalNumber": "1025"
   },
   {
     "trainNumber": "01026",
     "trainName": "BUI DR SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1026-bui-dr-spl-chart-times",
+    "canonicalNumber": "1026"
   },
   {
     "trainNumber": "01027",
     "trainName": "DR GORAKHPUR SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1027-dr-gorakhpur-spl-chart-times",
+    "canonicalNumber": "1027"
   },
   {
     "trainNumber": "01028",
     "trainName": "GKP DR SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1028-gkp-dr-spl-chart-times",
+    "canonicalNumber": "1028"
   },
   {
     "trainNumber": "01029",
     "trainName": "LTT CPR SPL",
     "completed": true,
-    "httpStatus": 200
+    "httpStatus": 200,
+    "slug": "1029-csmt-kop-spl-chart-times",
+    "canonicalNumber": "1029"
   },
   {
     "trainNumber": "01030",
     "trainName": "KOP CSMT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1030-kop-csmt-spl-chart-times",
+    "canonicalNumber": "1030"
   },
   {
     "trainNumber": "01032",
     "trainName": "BSBS CSMT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1032-bsbs-csmt-spl-chart-times",
+    "canonicalNumber": "1032"
   },
   {
     "trainNumber": "01034",
     "trainName": "MAU CSMT KUMBH",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1034-mau-csmt-kumbh-chart-times",
+    "canonicalNumber": "1034"
   },
   {
     "trainNumber": "01039",
     "trainName": "PUNE DNR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1039-csmt-kop-spl-chart-times",
+    "canonicalNumber": "1039"
   },
   {
     "trainNumber": "01040",
     "trainName": "KOP CSMT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1040-kop-csmt-spl-chart-times",
+    "canonicalNumber": "1040"
   },
   {
     "trainNumber": "01041",
     "trainName": "LTT NED SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1041-ltt-src-spl-chart-times",
+    "canonicalNumber": "1041"
   },
   {
     "trainNumber": "01042",
     "trainName": "SRC LTT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1042-src-ltt-spl-chart-times",
+    "canonicalNumber": "1042"
   },
   {
     "trainNumber": "01043",
     "trainName": "LTT MFP SPECIAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1043-ltt-spj-special-chart-times",
+    "canonicalNumber": "1043"
   },
   {
     "trainNumber": "01044",
     "trainName": "MFP LTT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1044-spj-ltt-spl-chart-times",
+    "canonicalNumber": "1044"
   },
   {
     "trainNumber": "01046",
     "trainName": "CSMT FEST SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1046-csmt-fest-spl-chart-times",
+    "canonicalNumber": "1046"
   },
   {
     "trainNumber": "01047",
     "trainName": "PUNE BBS SPECIAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1047-csmt-dnr-spl-chart-times",
+    "canonicalNumber": "1047"
   },
   {
     "trainNumber": "01048",
     "trainName": "MAO LTT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1048-mao-ltt-spl-chart-times",
+    "canonicalNumber": "1048"
   },
   {
     "trainNumber": "01049",
     "trainName": "CSMT KUR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1049-csmt-kur-spl-chart-times",
+    "canonicalNumber": "1049"
   },
   {
     "trainNumber": "01050",
     "trainName": "MAO  CSMT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1050-mao-csmt-spl-chart-times",
+    "canonicalNumber": "1050"
   },
   {
     "trainNumber": "01051",
     "trainName": "LTT BSBS SPECIAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1051-ltt-bnrs-special-chart-times",
+    "canonicalNumber": "1051"
   },
   {
     "trainNumber": "01055",
     "trainName": "LTT PTNR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1055-csmt-bbs-sf-spl-chart-times",
+    "canonicalNumber": "1055"
   },
   {
     "trainNumber": "01056",
     "trainName": "PTNR LTT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1056-bbs-csmt-sumrspl-chart-times",
+    "canonicalNumber": "1056"
   },
   {
     "trainNumber": "01057",
     "trainName": "LTT PTNR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1057-csmt-bsb-sf-spl-chart-times",
+    "canonicalNumber": "1057"
   },
   {
     "trainNumber": "01058",
