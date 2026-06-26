@@ -47,6 +47,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-counter-ticket-vs-eticket.md | IRCTC Counter Ticket vs E-Ticket: Rules, Booking, and Cancellation Differences | 2026-06-24 |
 | two-stop-rule-irctc-missed-train-rules.md | Indian Railways Two-Stop Rule: Missed Train Rules & Facts | 2026-06-25 |
 | live-train-running-status-where-is-my-train.md | Live train running status: NTES Spot Your Train, Where Is My Train app, SMS 139, RTIS GPS tracking, platform numbers (EN + hi/mr/bn/ta/te/ml) | 2026-06-26 |
+| irctc-pnr-status-check-meaning-guide.md | IRCTC PNR status check: how to check (IRCTC/139/LastBerth), all status codes (CNF/RAC/WL/GNWL/RLWL/PQWL/TQWL/RLGN), booking vs current status, confirmation chances; targets rising query "pnr status" (EN + hi/mr/bn/ta/te/ml) | 2026-06-26 |
 
 ## SEO triage actions (GSC / Google Trends driven)
 
