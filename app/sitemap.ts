@@ -29,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: url("/search"), lastModified: now },
     { url: url("/booking/v2"), lastModified: now },
     { url: url("/chart-times"), lastModified: now },
+    { url: url("/pnr-status"), lastModified: now },
   ];
 
   // 2. Glossary term pages
