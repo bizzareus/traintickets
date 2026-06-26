@@ -1,5 +1,22 @@
 import axios, { type AxiosError } from "axios";
 import axiosRetry from "axios-retry";
+import { captureApiException } from "@/lib/analytics/track";
+
+/** Report a backend/API error to PostHog, then let the original rejection flow on. */
+function reportApiError(error: AxiosError): Promise<never> {
+  const data = error.response?.data as { message?: string; error?: string } | undefined;
+  captureApiException(error, {
+    method: error.config?.method?.toUpperCase(),
+    url: error.config?.url,
+    status: error.response?.status,
+    message: error.message,
+    responseMessage:
+      (typeof data?.message === "string" && data.message) ||
+      (typeof data?.error === "string" && data.error) ||
+      undefined,
+  });
+  return Promise.reject(error);
+}
 
 const getInitialApiUrl = () => {
   const url = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
@@ -36,6 +53,8 @@ apiClient.interceptors.request.use((config) => {
   config.headers = { ...getAuthHeaders(), ...config.headers } as typeof config.headers;
   return config;
 });
+
+apiClient.interceptors.response.use((response) => response, reportApiError);
 
 /**
  * Axios instance for IRCTC train schedule: 10s per attempt, up to 3 retries on
