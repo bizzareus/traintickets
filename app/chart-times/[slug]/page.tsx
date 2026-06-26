@@ -9,6 +9,7 @@ import {
 import { formatJourneyDateUtcLabel } from "@/lib/stationChartMetaSummary";
 import ChartTimesTable from "./ChartTimesTable";
 import ChartTimeAlertCTA from "./ChartTimeAlertCTA";
+import ChartVacancyChecker from "../../chart-vacancy/ChartVacancyChecker";
 
 function normalizeJourneyDate(raw: string | string[] | undefined): string | null {
   const v = (Array.isArray(raw) ? raw[0] : raw)?.trim().slice(0, 10);
@@ -172,6 +173,21 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
 
       <section className="mb-6 rounded-xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700 shadow-sm">
         <p>{data.summary}</p>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="mb-3 text-lg font-semibold text-slate-900">
+          Live chart vacancy for {data.trainName} ({data.trainNumber})
+        </h2>
+        <ChartVacancyChecker
+          fixedTrainNumber={data.trainNumber}
+          fixedTrainName={data.trainName}
+          presetStations={data.stations.map((s) => ({
+            stationCode: s.stationCode,
+            stationName: s.stationName,
+          }))}
+          initialJourneyDate={journeyDate}
+        />
       </section>
 
       <ChartTimesTable

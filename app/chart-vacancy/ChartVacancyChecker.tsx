@@ -53,15 +53,44 @@ function prettyChartDate(raw?: string | null): string | null {
   return `${Number(d)} ${months[Number(mo) - 1]} ${y}, ${h}:${min}`;
 }
 
-/** Live IRCTC chart-vacancy checker: coach-wise vacant berths after chart preparation. */
-export default function ChartVacancyChecker() {
+/**
+ * Live IRCTC chart-vacancy checker: coach-wise vacant berths after chart preparation.
+ *
+ * Two modes:
+ *  - Standalone (no fixedTrainNumber): a searchable train picker that loads the
+ *    schedule and boarding stations on demand (used on /chart-vacancy).
+ *  - Fixed train (fixedTrainNumber + presetStations): the train is locked and the
+ *    boarding stations are supplied by the page, so it's a one-click vacancy tool
+ *    embedded on each per-train chart page.
+ */
+export default function ChartVacancyChecker({
+  fixedTrainNumber,
+  fixedTrainName,
+  presetStations,
+  initialJourneyDate,
+}: {
+  fixedTrainNumber?: string;
+  fixedTrainName?: string;
+  presetStations?: ScheduleStation[];
+  initialJourneyDate?: string | null;
+} = {}) {
+  const fixed = Boolean(fixedTrainNumber);
+
   const [trains, setTrains] = useState<TrainOption[]>([]);
-  const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState<TrainOption | null>(null);
+  const [query, setQuery] = useState(
+    fixed ? `${fixedTrainNumber} — ${fixedTrainName ?? ""}` : "",
+  );
+  const [selected, setSelected] = useState<TrainOption | null>(
+    fixed ? { trainNumber: fixedTrainNumber as string, trainName: fixedTrainName ?? "" } : null,
+  );
   const [open, setOpen] = useState(false);
-  const [stations, setStations] = useState<ScheduleStation[]>([]);
-  const [boarding, setBoarding] = useState("");
-  const [journeyDate, setJourneyDate] = useState("");
+  const [stations, setStations] = useState<ScheduleStation[]>(
+    fixed ? presetStations ?? [] : [],
+  );
+  const [boarding, setBoarding] = useState(
+    fixed ? presetStations?.[0]?.stationCode ?? "" : "",
+  );
+  const [journeyDate, setJourneyDate] = useState(initialJourneyDate || "");
   const [stationsLoading, setStationsLoading] = useState(false);
   const [checking, setChecking] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -69,11 +98,12 @@ export default function ChartVacancyChecker() {
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setJourneyDate(todayYmd());
-  }, []);
+    if (!initialJourneyDate) setJourneyDate(todayYmd());
+  }, [initialJourneyDate]);
 
-  // Train list for the searchable picker.
+  // Train list for the searchable picker (standalone mode only).
   useEffect(() => {
+    if (fixed) return;
     let cancelled = false;
     apiClient
       .get<Array<{ trainNumber?: string; trainName?: string }>>("/api/trains")
@@ -92,7 +122,7 @@ export default function ChartVacancyChecker() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [fixed]);
 
   useEffect(() => {
     function onClick(e: MouseEvent) {
@@ -130,17 +160,18 @@ export default function ChartVacancyChecker() {
       setStations(list);
       if (list[0]) setBoarding(list[0].stationCode);
     } catch {
-      // Schedule unavailable — let the user type a boarding code via the result error.
+      // Schedule unavailable — the check will surface an error.
     } finally {
       setStationsLoading(false);
     }
   }
 
   const resolvedNumber = useMemo(() => {
+    if (fixed) return fixedTrainNumber as string;
     if (selected) return selected.trainNumber;
     const m = query.trim().match(/^(\d{3,6})/);
     return m ? m[1] : "";
-  }, [selected, query]);
+  }, [fixed, fixedTrainNumber, selected, query]);
 
   async function check() {
     const num = resolvedNumber;
@@ -171,11 +202,9 @@ export default function ChartVacancyChecker() {
   }
 
   const cdd = result?.cdd ?? [];
-  const chartPrepared =
-    cdd.length > 0 || result?.chartStatusResponseDto?.chartOneFlag === 1;
+  const chartPrepared = cdd.length > 0 || result?.chartStatusResponseDto?.chartOneFlag === 1;
   const totalVacant = cdd.reduce((sum, c) => sum + (c.vacantBerths || 0), 0);
 
-  // Group coaches by class for the vacancy view.
   const byClass = useMemo(() => {
     const map = new Map<string, CddItem[]>();
     for (const c of result?.cdd ?? []) {
@@ -196,48 +225,50 @@ export default function ChartVacancyChecker() {
         }}
         className="flex flex-col gap-4 lg:flex-row lg:items-end"
       >
-        {/* Train picker */}
-        <div className="relative flex-1" ref={boxRef}>
-          <label htmlFor="cv-train" className="mb-1.5 block text-sm font-medium text-slate-700">
-            Train
-          </label>
-          <div className="relative">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-            <input
-              id="cv-train"
-              type="text"
-              autoComplete="off"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setSelected(null);
-                setOpen(true);
-              }}
-              onFocus={() => setOpen(true)}
-              placeholder="Search train name or number…"
-              className="block w-full rounded-md border border-slate-300 bg-white py-2.5 pl-9 pr-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
-            />
+        {/* Train picker — standalone mode only */}
+        {!fixed && (
+          <div className="relative flex-1" ref={boxRef}>
+            <label htmlFor="cv-train" className="mb-1.5 block text-sm font-medium text-slate-700">
+              Train
+            </label>
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <input
+                id="cv-train"
+                type="text"
+                autoComplete="off"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setSelected(null);
+                  setOpen(true);
+                }}
+                onFocus={() => setOpen(true)}
+                placeholder="Search train name or number…"
+                className="block w-full rounded-md border border-slate-300 bg-white py-2.5 pl-9 pr-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
+              />
+            </div>
+            {open && matches.length > 0 && (
+              <ul className="absolute z-20 mt-1 max-h-72 w-full overflow-auto rounded-md border border-slate-200 bg-white py-1 shadow-lg">
+                {matches.map((t) => (
+                  <li key={t.trainNumber}>
+                    <button
+                      type="button"
+                      onClick={() => void selectTrain(t)}
+                      className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-slate-50"
+                    >
+                      <span className="font-medium text-slate-900">{t.trainNumber}</span>
+                      <span className="text-slate-600">{t.trainName}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-          {open && matches.length > 0 && (
-            <ul className="absolute z-20 mt-1 max-h-72 w-full overflow-auto rounded-md border border-slate-200 bg-white py-1 shadow-lg">
-              {matches.map((t) => (
-                <li key={t.trainNumber}>
-                  <button
-                    type="button"
-                    onClick={() => void selectTrain(t)}
-                    className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-slate-50"
-                  >
-                    <span className="font-medium text-slate-900">{t.trainNumber}</span>
-                    <span className="text-slate-600">{t.trainName}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        )}
 
         {/* Boarding station */}
-        <div className="lg:w-56">
+        <div className={fixed ? "flex-1" : "lg:w-56"}>
           <label htmlFor="cv-board" className="mb-1.5 block text-sm font-medium text-slate-700">
             Boarding station
           </label>
@@ -263,7 +294,7 @@ export default function ChartVacancyChecker() {
         </div>
 
         {/* Journey date */}
-        <div className="lg:w-44">
+        <div className={fixed ? "lg:w-44" : "lg:w-44"}>
           <label htmlFor="cv-date" className="mb-1.5 block text-sm font-medium text-slate-700">
             Journey date
           </label>
@@ -296,7 +327,7 @@ export default function ChartVacancyChecker() {
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <h3 className="flex items-center gap-2 text-base font-semibold text-slate-900">
               <TrainFront className="h-4 w-4 text-blue-700" />
-              {result.trainName || resolvedNumber} ({resolvedNumber})
+              {result.trainName || fixedTrainName || resolvedNumber} ({resolvedNumber})
             </h3>
             {chartPrepared && (
               <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-sm font-semibold text-emerald-700">
