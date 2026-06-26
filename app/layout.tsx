@@ -227,6 +227,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <Link href="/terms" className="hover:text-blue-600">Terms of Service</Link>
                 </nav>
               </div>
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-6 text-center text-slate-500">
+                <p>
+                  Made with <span aria-hidden="true">❤️</span><span className="sr-only">love</span> by{" "}
+                  <a
+                    href="https://linkedin.com/in/kartikarora"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-blue-600 hover:underline"
+                  >
+                    Kartik
+                  </a>
+                </p>
+              </div>
             </footer>
           </div>
         </AnalyticsProvider>
