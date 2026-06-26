@@ -26,7 +26,7 @@ export default function ChartTimesIndexPage() {
           Browse station-by-station reservation chart preparation times for
           Indian Railways trains — when each chart is prepared, so you can check
           chart vacancy and vacant berths. Looking for live vacant berths? See{" "}
-          <Link href="/chart-vacancy" className="text-blue-600 hover:underline">
+          <Link href="/seat-status" className="text-blue-600 hover:underline">
             IRCTC chart vacancy
           </Link>
           .

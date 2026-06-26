@@ -1232,32 +1232,50 @@
   {
     "trainNumber": "01217",
     "trainName": "NGP DNR  SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1217-ngp-dnr-spl-chart-times",
+    "canonicalNumber": "1217"
   },
   {
     "trainNumber": "01219",
     "trainName": "PNVL GKP SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1219-ngp-pryj-special-chart-times",
+    "canonicalNumber": "1219"
   },
   {
     "trainNumber": "01221",
     "trainName": "NGP HDP SF SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1221-ngp-hdp-sf-spl-chart-times",
+    "canonicalNumber": "1221"
   },
   {
     "trainNumber": "01222",
     "trainName": "HDP NGP SF SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1222-hdp-ngp-sf-spl-chart-times",
+    "canonicalNumber": "1222"
   },
   {
     "trainNumber": "01331",
     "trainName": "HDP AMRIT BHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1331-hdp-amrit-bharat-chart-times",
+    "canonicalNumber": "1331"
   },
   {
     "trainNumber": "01332",
     "trainName": "AMRIT BHARAT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1332-amrit-bharat-spl-chart-times",
+    "canonicalNumber": "1332"
   },
   {
     "trainNumber": "01333",
