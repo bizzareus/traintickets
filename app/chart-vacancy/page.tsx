@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ChartTimesFinder from "../chart-times/ChartTimesFinder";
+import ChartVacancyChecker from "./ChartVacancyChecker";
+import { listChartTimesIndex } from "@/lib/chartTimes";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 const canonicalUrl = `${siteUrl}/chart-vacancy`;
@@ -46,6 +47,8 @@ const FAQS: { q: string; a: string }[] = [
 ];
 
 export default function ChartVacancyPage() {
+  const popularTrains = listChartTimesIndex().slice(0, 12);
+
   const webPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -63,6 +66,18 @@ export default function ChartVacancyPage() {
     },
   };
 
+  const softwareJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "IRCTC Chart Vacancy Checker — LastBerth",
+    url: canonicalUrl,
+    applicationCategory: "TravelApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+    description:
+      "Check live IRCTC chart vacancy — coach-wise vacant berths after the reservation chart is prepared, for any train and journey date.",
+  };
+
   const howToJsonLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -70,8 +85,8 @@ export default function ChartVacancyPage() {
     step: [
       {
         "@type": "HowToStep",
-        name: "Find your train's chart time",
-        text: "Enter the train name/number and journey date to see when its reservation chart is prepared at each station.",
+        name: "Enter your train and journey date",
+        text: "Search the train by name or number, pick the boarding station and journey date, and select Check Vacancy.",
       },
       {
         "@type": "HowToStep",
@@ -99,6 +114,7 @@ export default function ChartVacancyPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
@@ -120,7 +136,7 @@ export default function ChartVacancyPage() {
       </header>
 
       <div className="mb-6">
-        <ChartTimesFinder />
+        <ChartVacancyChecker />
       </div>
 
       <div className="mb-8 flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between">
@@ -156,17 +172,19 @@ export default function ChartVacancyPage() {
 
         <h2>How do I check chart vacancy?</h2>
         <p>
-          Enter your train name or number and journey date above to see the
-          station-wise{" "}
-          <Link href="/chart-times" className="text-blue-600 hover:underline">
-            chart preparation times
-          </Link>{" "}
-          for that train — so you know exactly when the chart is ready. Once it is
-          prepared, check the live vacant berths via{" "}
+          Use the checker above: search your train, pick the boarding station and
+          journey date, and select <strong>Check Vacancy</strong>. We fetch the
+          live IRCTC chart and show the <strong>coach-wise vacant berths</strong>{" "}
+          for that train once its reservation chart is prepared. For the exact
+          vacant berth numbers and a visual coach map, open{" "}
           <Link href="/seat-status" className="text-blue-600 hover:underline">
             Seat Status &amp; Coach Map
-          </Link>{" "}
-          and book any current-availability seat before departure.
+          </Link>
+          ; to see when the chart is prepared at each halt, see the{" "}
+          <Link href="/chart-times" className="text-blue-600 hover:underline">
+            station-wise chart times
+          </Link>
+          .
         </p>
 
         <h2>When is the train chart prepared?</h2>
@@ -200,6 +218,29 @@ export default function ChartVacancyPage() {
           </div>
         ))}
       </article>
+
+      {popularTrains.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-3 text-lg font-semibold text-slate-900">
+            Popular train chart vacancy &amp; chart times
+          </h2>
+          <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {popularTrains.map((t) => (
+              <li key={t.slug}>
+                <Link
+                  href={`/chart-times/${t.slug}`}
+                  className="block rounded-md border border-slate-200 bg-white px-3 py-2 text-sm hover:border-blue-200 hover:bg-blue-50"
+                >
+                  <span className="font-medium text-slate-900">
+                    {t.trainName || t.trainNumber}
+                  </span>{" "}
+                  <span className="text-slate-500">({t.trainNumber})</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <p className="mt-8 text-sm text-slate-500">
         Related:{" "}
