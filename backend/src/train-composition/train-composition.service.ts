@@ -171,11 +171,14 @@ export class TrainCompositionService {
     sourceStation: string;
     /** When true, POST IRCTC trainComposition for this boarding station before reading DB. */
     refreshFromIrctc?: boolean;
+    /** Journey date (YYYY-MM-DD) to query IRCTC composition for; defaults to today. */
+    journeyDate?: string;
   }): Promise<StationChartMetaDto> {
     const trainNumber = String(params.trainNumber ?? '').trim();
-    // const journeyDate = String(params.journeyDate ?? '')
-    //   .trim()
-    //   .slice(0, 10);
+    const journeyDate =
+      String(params.journeyDate ?? '')
+        .trim()
+        .slice(0, 10) || undefined;
     const stationCode = String(params.sourceStation ?? '')
       .trim()
       .toUpperCase();
@@ -202,7 +205,7 @@ export class TrainCompositionService {
 
     if (needsRefresh) {
       try {
-        const jDate = new Date().toISOString().slice(0, 10);
+        const jDate = journeyDate || new Date().toISOString().slice(0, 10);
         await this.fetchForBoarding(
           { trainNo: trainNumber, jDate, boardingStation: stationCode },
           { allowChartNotPrepared: true },

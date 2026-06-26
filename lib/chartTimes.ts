@@ -199,6 +199,18 @@ async function fetchTrainData(trainNumber: string): Promise<TrainApiResponse | n
   }
 }
 
+/** Journey-date offsets (in days) to try when a train's chart isn't prepared for today. */
+const DATE_FALLBACK_OFFSETS = [0, 1, -1];
+
+/** YYYY-MM-DD for today + `days` (server-local). */
+function ymdOffset(days: number): string {
+  const d = new Date();
+  d.setDate(d.getDate() + days);
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${d.getFullYear()}-${m}-${day}`;
+}
+
 /** Max station-meta requests in flight while generating one page. */
 const FETCH_CONCURRENCY = 8;
 /** Per-station IRCTC composition fetch timeout. */
@@ -221,12 +233,13 @@ async function fetchStationChartMeta(
   trainNumber: string,
   stationCode: string,
   refreshFromIrctc = false,
+  journeyDate?: string,
 ): Promise<StationMeta | null> {
   try {
     const res = await fetch(`${apiBaseUrl()}/api/train-composition/stations-meta`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ trainNumber, sourceStation: stationCode, refreshFromIrctc }),
+      body: JSON.stringify({ trainNumber, sourceStation: stationCode, refreshFromIrctc, journeyDate }),
       signal: AbortSignal.timeout(STATION_FETCH_TIMEOUT_MS),
       cache: "no-store",
     });
@@ -284,14 +297,30 @@ async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | 
 
   const trainName = train.trainName || train.schedule?.trainName || "";
 
-  // Fetch chart meta per station (backend reads DB first, hits IRCTC only when
-  // missing, and persists). Bounded concurrency keeps generation time in check.
   const codes = stationList.map((s) =>
     String(s.stationCode || "").trim().toUpperCase(),
   );
   const trainNo = train.trainNumber || trainNumber;
+  const originCode = codes[0];
+
+  // IRCTC returns "chart not prepared" when the train doesn't run on the queried
+  // date. Probe the origin across today, +1 and -1 day to find a date for which a
+  // chart exists, then fetch every station for that date. (Chart times are
+  // date-independent times-of-day, so any valid running date populates them.)
+  let chosenDate = ymdOffset(0);
+  for (const off of DATE_FALLBACK_OFFSETS) {
+    const d = ymdOffset(off);
+    const probe = await fetchStationChartMeta(trainNo, originCode, off !== 0, d);
+    if (probe?.chartTimeLocal) {
+      chosenDate = d;
+      break;
+    }
+  }
+
+  // Fetch chart meta per station for the chosen date (backend reads DB first,
+  // hits IRCTC only when missing, and persists). Bounded concurrency.
   const metas = await mapWithConcurrency(codes, FETCH_CONCURRENCY, (code) =>
-    fetchStationChartMeta(trainNo, code),
+    fetchStationChartMeta(trainNo, code, false, chosenDate),
   );
 
   // Second pass: for stations that got a first chart but no second chart, make a
@@ -302,7 +331,7 @@ async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | 
     .filter((i) => metas[i]?.chartTimeLocal && !metas[i]?.chartTwoTimeLocal);
   if (secondPassIdx.length > 0) {
     await mapWithConcurrency(secondPassIdx, FETCH_CONCURRENCY, async (i) => {
-      const refreshed = await fetchStationChartMeta(trainNo, codes[i], true);
+      const refreshed = await fetchStationChartMeta(trainNo, codes[i], true, chosenDate);
       if (refreshed?.chartTwoTimeLocal) metas[i] = refreshed;
     });
   }

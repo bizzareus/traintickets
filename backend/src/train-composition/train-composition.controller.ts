@@ -18,22 +18,22 @@ export class TrainCompositionController {
     },
   ) {
     const trainNumber = String(body?.trainNumber ?? '').trim();
-    // const journeyDate = String(body?.journeyDate ?? '')
-    //   .trim()
-    //   .slice(0, 10);
+    const journeyDate =
+      String(body?.journeyDate ?? '')
+        .trim()
+        .slice(0, 10) || undefined;
     const sourceStation = String(body?.sourceStation ?? '').trim();
     if (!trainNumber || !sourceStation) {
       throw new BadRequestException(
-        'trainNumber, journeyDate (YYYY-MM-DD), and sourceStation are required',
+        'trainNumber and sourceStation are required',
       );
     }
-    console.log('trainNumber', trainNumber);
-    console.log('sourceStation', sourceStation);
     const refreshFromIrctc = body?.refreshFromIrctc === true;
     const station = await this.trainComposition.fetchSourceStationChartMeta({
       trainNumber,
       sourceStation,
       refreshFromIrctc,
+      journeyDate,
     });
     return { stations: [station] };
   }
