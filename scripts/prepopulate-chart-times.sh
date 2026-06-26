@@ -8,6 +8,9 @@
 # schedule + chart times and persist content/chart-times/<n>-<name>-chart-times.json,
 # so the static SEO pages get warmed in bulk. Progress is written back to the JSON
 # after every train, so the run is resumable — re-running skips completed trains.
+# On success it also records the generated `slug` and `canonicalNumber` (the number
+# the app actually used, leading zeros dropped) so tracking matches the filenames.
+# Transient non-200s (IRCTC flakiness under load) are retried before giving up.
 #
 # Requires: jq, curl, and the web app running (default http://localhost:3010).
 #
@@ -25,6 +28,7 @@
 #   -u, --base-url URL   web app base URL (default http://localhost:3010 or $BASE_URL)
 #   -d, --delay SECONDS  pause between trains (default 1)
 #   -l, --limit N        process at most N trains this run (default: all pending)
+#   -r, --retries N      retry a non-200 up to N times (default 2)
 #       --force          re-process trains already marked completed
 #   -h, --help           show this help
 #
@@ -34,10 +38,13 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INPUT="$SCRIPT_DIR/chart-times-trains.json"
+CONTENT_DIR="$SCRIPT_DIR/../content/chart-times"   # where the app persists pages (local runs)
 BASE_URL="${BASE_URL:-http://localhost:3010}"
 DELAY=1
 LIMIT=0          # 0 => no limit
 FORCE=0
+RETRIES=2        # extra attempts on a non-200 (IRCTC schedule fetch is flaky under load)
+RETRY_DELAY=4    # seconds between retries
 REQ_TIMEOUT=180  # per-page generation can be slow (per-station IRCTC fetches)
 
 usage() { sed -n '2,/^$/p' "$0" | sed 's/^#\{1,\} \{0,1\}//; s/^#$//'; exit "${1:-1}"; }
@@ -48,6 +55,7 @@ while [[ $# -gt 0 ]]; do
     -u|--base-url) BASE_URL="${2:-}"; shift 2 ;;
     -d|--delay)    DELAY="${2:-1}"; shift 2 ;;
     -l|--limit)    LIMIT="${2:-0}"; shift 2 ;;
+    -r|--retries)  RETRIES="${2:-2}"; shift 2 ;;
     --force)       FORCE=1; shift ;;
     -h|--help)     usage 0 ;;
     *) echo "Unknown argument: $1" >&2; usage 1 ;;
@@ -94,15 +102,40 @@ for i in "${IDX[@]}"; do
   name="$(jq -r ".[$i].trainName // \"\"" "$INPUT")"
   [[ "$num" =~ ^[0-9]{3,6}$ ]] || { echo "skip[$i]: bad trainNumber '$num'" >&2; continue; }
 
-  # Warm by train number; the page resolves the schedule + chart times and writes
-  # the correctly-named content/chart-times/<num>-<name>-chart-times.json file.
+  # Warm by the train number from the list (the IRCTC schedule lookup may need the
+  # zero-padded form, so we don't strip it). The page resolves schedule + chart
+  # times and writes content/chart-times/<canonical>-<name>-chart-times.json, where
+  # <canonical> is the number the API returns (often without leading zeros).
+  # The IRCTC schedule fetch is flaky under load, so retry a non-200 a few times.
   url="$BASE_URL/chart-times/$num"
-  code="$(curl -sS -o /dev/null -w '%{http_code}' --max-time "$REQ_TIMEOUT" "$url" || echo 000)"
+  code=000; attempt=0
+  while :; do
+    code="$(curl -sS -o /dev/null -w '%{http_code}' --max-time "$REQ_TIMEOUT" "$url" || echo 000)"
+    [[ "$code" == "200" ]] && break
+    [[ "$attempt" -ge "$RETRIES" ]] && break
+    attempt=$((attempt + 1))
+    sleep "$RETRY_DELAY"
+  done
 
   processed=$((processed + 1))
   if [[ "$code" == "200" ]]; then
     status="ok"; ok=$((ok + 1))
-    jq ".[$i].completed = true | .[$i].httpStatus = 200" "$INPUT" > "$tmp" && mv "$tmp" "$INPUT"
+    # Find the file the app actually wrote so tracking lines up with the filename,
+    # even when the canonical number drops leading zeros (00961 -> 961-...json).
+    bare="$(printf '%s' "$num" | sed 's/^0\{1,\}//')"
+    slug=""
+    for cand in "$num" "$bare"; do
+      f="$(ls "$CONTENT_DIR/${cand}-"*-chart-times.json 2>/dev/null | head -n1 || true)"
+      if [[ -n "$f" ]]; then slug="$(basename "$f" .json)"; break; fi
+    done
+    if [[ -n "$slug" ]]; then
+      canonical="${slug%%-*}"
+      jq --arg s "$slug" --arg c "$canonical" \
+        ".[$i].completed = true | .[$i].httpStatus = 200 | .[$i].slug = \$s | .[$i].canonicalNumber = \$c" \
+        "$INPUT" > "$tmp" && mv "$tmp" "$INPUT"
+    else
+      jq ".[$i].completed = true | .[$i].httpStatus = 200" "$INPUT" > "$tmp" && mv "$tmp" "$INPUT"
+    fi
   else
     status="failed($code)"; failed=$((failed + 1))
     jq ".[$i].completed = false | .[$i].httpStatus = ($code | tonumber? // 0)" "$INPUT" > "$tmp" && mv "$tmp" "$INPUT"
