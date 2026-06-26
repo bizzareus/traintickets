@@ -18,16 +18,16 @@ export const metadata: Metadata = {
 
 const FAQS: { q: string; a: string }[] = [
   {
-    q: "What is IRCTC chart vacancy?",
-    a: "Chart vacancy is the berths left empty after a train's reservation chart is prepared, from cancellations and unfilled quotas. Enter your train, date and boarding station to see the coach-wise vacant berths; they can be booked as current-availability tickets before departure.",
+    q: "When does chart vacancy show up?",
+    a: "Once the train's chart is prepared — these days that's about 4 hours before departure for the first chart, and a second chart is made closer to the train leaving. Until then there's nothing to show; check back in that window and the freed-up berths will appear coach by coach.",
   },
   {
-    q: "How do I check chart vacancy and vacant berths?",
-    a: "After the reservation chart is prepared, select a coach to see its berth map with vacant, booked and partially-booked berths for your journey leg. The live coach map highlights exactly which berths are free so you can book a confirmed last-minute seat.",
+    q: "Can I still book a vacant berth after the chart is ready?",
+    a: "Yes. Berths left empty after charting are sold as current-availability tickets, with a real coach and berth number. That window stays open until roughly 30 minutes before departure, so a vacant berth here is often the quickest route to a confirmed last-minute seat.",
   },
   {
-    q: "What do the coach codes like S1, B2, A1 mean?",
-    a: "The letter is the class — S is Sleeper, B is AC 3 Tier, A is AC 2 Tier, H is AC First, C is Chair Car, D is Second Sitting — and the number is the coach sequence in that class. So B2 is the second AC 3-Tier coach.",
+    q: "What do coach codes like S1, B2 or A1 mean?",
+    a: "The letter is the class and the number is its order in the train. S is Sleeper, B is AC 3-tier, A is AC 2-tier, H is AC First, C is Chair Car, D is Second Sitting — so B2 is the second AC 3-tier coach from that class's first one.",
   },
 ];
 
@@ -68,32 +68,40 @@ export default function SeatStatusPage() {
         <article className="mt-16 prose prose-slate mx-auto text-gray-600">
           <h2>What is IRCTC chart vacancy?</h2>
           <p>
-            Chart vacancy is the list of berths left empty after a train&apos;s
-            reservation chart is prepared — from cancellations and unfilled quotas.
-            Enter your train, journey date and boarding station above to see the
-            coach-wise vacant berths on a live coach map, then book any vacant
-            berth as a current-availability ticket before departure.
+            A few hours before a train departs, Railways freezes the final
+            passenger list — that&apos;s the reservation chart. Chart vacancy is
+            whatever is still empty once it&apos;s drawn up: berths freed by
+            cancellations, plus quota seats nobody booked. Those go back on sale as
+            current-availability tickets, sometimes right up to half an hour before
+            departure. Put in your train, date and boarding point above and the
+            page shows how many berths are open in each coach.
           </p>
 
-          <h2>How to check chart vacancy and seat status?</h2>
+          <h2>How do I check chart vacancy for my train?</h2>
           <p>
-            Using our interactive coach map, you can easily find where your seat is located inside the train coach. 
-            Simply enter your train number or name, select your date of journey, boarding station, and the coach number 
-            (e.g., S1, B2, A1). If you want to check availability for a specific leg, you can also optionally enter your 
-            destination station.
+            Start with the train — number or name, either works — then the travel
+            date and the station you&apos;re boarding from. Open a coach such as S4
+            or B2 to see its berth map. Travelling only part of the route? Add your
+            destination and the map narrows to berths that are free on just that
+            leg, which is where a lot of otherwise-hidden seats turn up.
           </p>
 
-          <h3>Find Vacant Berths</h3>
+          <h3>Spotting a berth you can actually book</h3>
           <p>
-            Before booking a ticket, it&apos;s often helpful to know if there are any fully or partially vacant seats available
-            on your train. Our vacant berth finder highlights seats that are available for your selected journey leg, 
-            giving you a better chance at securing a confirmed ticket.
+            A fully empty berth is the easy case. The ones people miss are
+            part-booked berths — a seat taken only between two later stations that
+            sits free for your stretch. The map shows both, so even when the
+            booking page flashes &ldquo;regret&rdquo; you can often find a berth
+            that&apos;s confirmed end-to-end for your journey.
           </p>
-          
-          <h3>Understanding the Coach Layout</h3>
+
+          <h3>Reading the coach map</h3>
           <p>
-            The visual coach map organizes seats by bays and cabins, exactly as they appear in the real train.
-            You can easily identify Lower (L), Middle (M), Upper (U), Side Lower (SL), and Side Upper (SU) berths.
+            Each bay mirrors the real coach: Lower (L), Middle (M) and Upper (U)
+            run down the main side, with Side Lower (SL) and Side Upper (SU) along
+            the aisle. It pays to glance at this before booking — a side-upper is a
+            rough draw for an overnight trip, and the map tells you exactly what
+            you&apos;re getting.
           </p>
 
           <h2>Frequently asked questions</h2>
