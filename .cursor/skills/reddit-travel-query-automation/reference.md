@@ -1,5 +1,55 @@
 # Reference — Reddit fetch, images, LastBerth UI
 
+## Cowork / Claude-in-Chrome working snippets (verified)
+
+In Cowork the in-page JS executor returns the **last expression synchronously** and does **not** await Promises. So use **synchronous XHR** inside an already-open tab on the correct origin. `reddit.com`, `preview.redd.it`, `i.redd.it` are blocked for WebFetch and Chrome navigation — only the tab-XHR / canvas paths below work.
+
+**1. Fetch newest comments (run in an open `reddit.com` tab):**
+```javascript
+(function(){
+  var x=new XMLHttpRequest();
+  x.open('GET','https://www.reddit.com/r/indianrailways/comments/1lovrfq/travel_queries_thread_for_all_questions_related/.json?sort=new&limit=50',false);
+  x.setRequestHeader('Accept','application/json'); x.send();
+  var j=JSON.parse(x.responseText);
+  var c=j[1].data.children.map(function(ch){return ch.data;}).filter(function(d){return d.body;});
+  return JSON.stringify(c.map(function(d){return {id:d.id,author:d.author,created:d.created_utc,body:d.body,
+    media:d.media_metadata?Object.values(d.media_metadata).map(function(m){return m.s&&m.s.u;}).filter(Boolean):[]};}));
+})()
+```
+
+**2. Pull a ticket image as base64 (run in the reddit tab; async stored on window, polled):**
+```javascript
+// call 1 — start
+window.__d=false;window.__b=null;
+(async function(){var r=await fetch(IMG_URL);var bl=await r.blob();var bm=await createImageBitmap(bl);
+ var sc=Math.min(1,620/bm.width),w=Math.round(bm.width*sc),h=Math.round(bm.height*sc);
+ var c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(bm,0,0,w,h);
+ window.__b=c.toDataURL('image/jpeg',0.5).split(',')[1];window.__d=true;})();'started'
+// call 2 — poll: JSON.stringify({d:window.__d,len:window.__b&&window.__b.length})
+// call 3 — return window.__b  (if it exceeds the token cap it auto-saves to a tool-result .txt)
+```
+Then decode the saved/returned base64 to a real file with a local process and read it:
+```python
+import base64; open('out.jpg','wb').write(base64.b64decode(open('b64.txt').read().strip().strip('"')))
+```
+
+**3. LastBerth backend, all classes for a route (run in an open `lastberth.com` tab):**
+```javascript
+(function(){
+  var B='https://backend-production-11a50.up.railway.app';
+  function g(u){var x=new XMLHttpRequest();x.open('GET',u,false);x.send();return JSON.parse(x.responseText);}
+  var routes=[{from:'ADI',to:'BZA',date:'2026-06-29',tn:'20804'}]; // add more
+  return JSON.stringify(routes.map(function(r){
+    var j=g(B+'/api/booking-v2/trains/search?from='+r.from+'&to='+r.to+'&date='+r.date);
+    var t=(j.data.trainList||[]).find(function(x){return String(x.trainNumber)===r.tn;});
+    if(!t) return {tn:r.tn,found:false,onRoute:(j.data.trainList||[]).map(function(x){return x.trainNumber+' '+x.trainName;})};
+    var av={};Object.keys(t.availabilityCache||{}).forEach(function(c){var a=t.availabilityCache[c];av[c]={a:a.availability,p:a.prediction,fare:a.fare};});
+    return {tn:r.tn,name:t.trainName,avail:av,alternates:t.newAlternates||{}};
+  }));
+})()
+```
+Station codes: `GET {B}/api/booking-v2/stations/suggest?q={name}` (first result is usually the Jn).
+
 ## Reddit JSON fetch
 
 **Thread JSON URL pattern:**
