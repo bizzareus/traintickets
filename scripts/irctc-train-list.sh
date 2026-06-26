@@ -17,6 +17,10 @@
 #   ./irctc-train-list.sh -c '<cookie string>'  # cookie passed inline
 #   ./irctc-train-list.sh -c "$(cat cookie.txt)" -o trains.json
 #   ./irctc-train-list.sh -e path/to/.env       # custom .env location
+#   ./irctc-train-list.sh -n -o scripts/chart-times-trains.json  # normalized list for bulk prepopulate
+#
+# -n / --normalized emits a flat array ready for prepopulate-chart-times.sh:
+#   [ { "trainNumber": "12952", "trainName": "MUMBAI RAJDHANI", "completed": false }, ... ]
 #
 # Exit codes: 0 ok, 1 bad usage, 2 missing cookie, 3 HTTP/transport error.
 
@@ -28,6 +32,7 @@ COOKIE=""
 ENV_FILE="$SCRIPT_DIR/../backend/.env"   # default: backend/.env at repo root
 OUTPUT=""       # empty => stdout
 RAW=0           # 1 => skip jq pretty-printing
+NORMALIZED=0    # 1 => emit [{trainNumber,trainName,completed:false}] for bulk prepopulate
 
 # Read KEY=value from an env file without sourcing it (cookie values contain
 # ';', '=', '+' that would break shell evaluation). Strips surrounding quotes.
@@ -55,6 +60,7 @@ while [[ $# -gt 0 ]]; do
     -e|--env)    ENV_FILE="${2:-}"; shift 2 ;;
     -o|--output) OUTPUT="${2:-}"; shift 2 ;;
     -r|--raw)    RAW=1; shift ;;
+    -n|--normalized) NORMALIZED=1; shift ;;
     -h|--help)   usage 0 ;;
     *) echo "Unknown argument: $1" >&2; usage 1 ;;
   esac
@@ -113,7 +119,36 @@ emit() {
   else cat; fi
 }
 
-if [[ "$RAW" -eq 0 ]] && command -v jq >/dev/null 2>&1; then
+# Flatten the (variably-shaped) IRCTC response into
+# [{trainNumber, trainName, completed:false}]. Accepts an array of "12952 - NAME"
+# strings, an array of objects ({trainNumber|trainNo, trainName|name}), or any of
+# those wrapped under .trainList / .data.trainList.
+NORMALIZE_JQ='
+def to_entry:
+  if type == "string" then
+    (capture("^\\s*(?<num>\\d{3,6})\\s*[-:]?\\s*(?<name>.*)$") // {num:"", name:.})
+    | {trainNumber: .num, trainName: (.name | gsub("^\\s+|\\s+$";"")), completed: false}
+  elif type == "object" then
+    { trainNumber: ((.trainNumber // .trainNo // .train_no // .number // "") | tostring),
+      trainName:   ((.trainName  // .name   // .train_name // "") | tostring),
+      completed: false }
+  else empty end;
+(.trainList? // .data?.trainList? // .)
+| (if type == "array" then . else [.] end)
+| map(to_entry)
+| map(select(.trainNumber | test("^[0-9]{3,6}$")))
+| unique_by(.trainNumber)
+'
+
+if [[ "$NORMALIZED" -eq 1 ]]; then
+  command -v jq >/dev/null 2>&1 || { echo "Error: -n/--normalized requires jq." >&2; exit 1; }
+  if jq "$NORMALIZE_JQ" "$tmp_body" 2>/dev/null | emit; then
+    :
+  else
+    echo "Error: could not normalize response (unexpected shape). Re-run without -n to inspect raw JSON." >&2
+    exit 3
+  fi
+elif [[ "$RAW" -eq 0 ]] && command -v jq >/dev/null 2>&1; then
   # Pretty-print; fall back to raw if the response isn't valid JSON.
   if jq . "$tmp_body" 2>/dev/null | emit; then :; else
     echo "Warning: response was not valid JSON; emitting raw." >&2
