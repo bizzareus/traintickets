@@ -38,7 +38,11 @@
 #   -r, --retries N      retry a non-200 up to N times (default 2)
 #       --force          re-process trains already marked completed
 #       --fillup         backfill missing chart times in existing content pages
+#       --include-spl    also process SPL / Special trains (skipped by default)
 #   -h, --help           show this help
+#
+# By default SPL / Special trains (name contains "SPL" or "Special") are skipped —
+# they have no useful chart vacancy data. Pass --include-spl to process them.
 #
 # Exit codes: 0 ok, 1 bad usage/deps, 2 input missing/invalid.
 
@@ -52,6 +56,7 @@ DELAY=1
 LIMIT=0          # 0 => no limit
 FORCE=0
 FILLUP=0         # 1 => backfill missing chart times in existing content pages
+SKIP_SPECIAL=1   # 1 => skip SPL / Special trains (no useful chart data); --include-spl to process them
 RETRIES=2        # extra attempts on a non-200 (IRCTC schedule fetch is flaky under load)
 RETRY_DELAY=4    # seconds between retries
 REQ_TIMEOUT=180  # per-page generation can be slow (per-station IRCTC fetches)
@@ -67,6 +72,7 @@ while [[ $# -gt 0 ]]; do
     -r|--retries)  RETRIES="${2:-2}"; shift 2 ;;
     --force)       FORCE=1; shift ;;
     --fillup)      FILLUP=1; shift ;;
+    --include-spl) SKIP_SPECIAL=0; shift ;;
     -h|--help)     usage 0 ;;
     *) echo "Unknown argument: $1" >&2; usage 1 ;;
   esac
@@ -100,6 +106,17 @@ find_content_file() {
   return 1
 }
 
+# True (0) when a train name marks a special train (SPL / Special) — these have
+# no useful chart vacancy data, so we skip them unless --include-spl is passed.
+is_special() {
+  local lc
+  lc="$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')"
+  case "$lc" in
+    *spl*|*special*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
 # --fillup: re-fetch only pages that still have unfound chart times.
 if [[ "$FILLUP" -eq 1 ]]; then
   [[ -d "$CONTENT_DIR" ]] || { echo "Error: no content dir at $CONTENT_DIR" >&2; exit 2; }
@@ -117,8 +134,13 @@ if [[ "$FILLUP" -eq 1 ]]; then
     fi
     before="$(jq '.knownChartCount // 0' "$f")"
     num="$(jq -r '.trainNumber // ""' "$f")"
+    fname="$(jq -r '.trainName // ""' "$f")"
     if ! [[ "$num" =~ ^[0-9]{3,6}$ ]]; then
       echo "[fillup] skip $(basename "$f") (no train number)" >&2
+      continue
+    fi
+    if [[ "$SKIP_SPECIAL" -eq 1 ]] && is_special "$fname"; then
+      incomplete=$((incomplete - 1))
       continue
     fi
     # Force a fresh regeneration so the +1/-1-date fallback can find chart times
@@ -189,6 +211,10 @@ for i in "${IDX[@]}"; do
   num="$(jq -r ".[$i].trainNumber" "$INPUT")"
   name="$(jq -r ".[$i].trainName // \"\"" "$INPUT")"
   [[ "$num" =~ ^[0-9]{3,6}$ ]] || { echo "skip[$i]: bad trainNumber '$num'" >&2; continue; }
+  if [[ "$SKIP_SPECIAL" -eq 1 ]] && is_special "$name"; then
+    echo "[$num] skipped (special train '$name'; use --include-spl)" >&2
+    continue
+  fi
 
   # Warm by the train number from the list (the IRCTC schedule lookup may need the
   # zero-padded form, so we don't strip it). The page resolves schedule + chart
