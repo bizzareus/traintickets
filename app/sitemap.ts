@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { listBlogPosts, getAvailableTranslations } from "@/lib/blog";
 import { getAllGlossaryTerms } from "@/lib/seo/glossary-db";
 import { getTopRoutes } from "@/lib/seo/routes-db";
+import { listChartTimesIndex } from "@/lib/chartTimes";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_APP_URL ||
@@ -27,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: url("/"), lastModified: now },
     { url: url("/search"), lastModified: now },
     { url: url("/booking/v2"), lastModified: now },
+    { url: url("/chart-times"), lastModified: now },
   ];
 
   // 2. Glossary term pages
@@ -52,6 +54,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   const trainRoutes: MetadataRoute.Sitemap = trainNumbers.map((id) => ({
     url: url(`/trains/${id}`),
+    lastModified: now,
+  }));
+
+  // 4b. Chart-preparation-time pages (every committed content/chart-times/*.json)
+  const chartTimesRoutes: MetadataRoute.Sitemap = listChartTimesIndex().map((t) => ({
+    url: url(`/chart-times/${t.slug}`),
     lastModified: now,
   }));
 
@@ -105,6 +113,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...glossaryRoutes,
     ...trainRouteRoutes,
     ...trainRoutes,
+    ...chartTimesRoutes,
     ...blogIndexRoutes,
     ...postRoutes,
   ];
