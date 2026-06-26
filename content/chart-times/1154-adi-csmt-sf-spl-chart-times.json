@@ -1,0 +1,103 @@
+{
+  "trainNumber": "1154",
+  "trainName": "Adi Csmt Sf Spl",
+  "originStation": "ADI",
+  "destinationStation": "CSMT",
+  "slug": "1154-adi-csmt-sf-spl-chart-times",
+  "stations": [
+    {
+      "stationCode": "ADI",
+      "stationName": "Ahmedabad Jn",
+      "arrivalTime": "",
+      "departureTime": "04:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "05:30",
+      "departureTime": "05:35",
+      "day": 1,
+      "distance": "100.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ST",
+      "stationName": "Surat",
+      "arrivalTime": "07:05",
+      "departureTime": "07:10",
+      "day": 1,
+      "distance": "229.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BSR",
+      "stationName": "Vasai Road",
+      "arrivalTime": "10:20",
+      "departureTime": "10:25",
+      "day": 1,
+      "distance": "444.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TNA",
+      "stationName": "Thane",
+      "arrivalTime": "11:42",
+      "departureTime": "11:45",
+      "day": 1,
+      "distance": "495.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DR",
+      "stationName": "Dadar",
+      "arrivalTime": "12:22",
+      "departureTime": "12:25",
+      "day": 1,
+      "distance": "519.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "CSMT",
+      "stationName": "C Shivaji Mah T",
+      "arrivalTime": "12:55",
+      "departureTime": "",
+      "day": 1,
+      "distance": "528.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Adi Csmt Sf Spl (1154) from ADI to CSMT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-26T16:12:48.583Z",
+  "knownChartCount": 0
+}

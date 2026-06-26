@@ -1,0 +1,103 @@
+{
+  "trainNumber": "1177",
+  "trainName": "Pnvl Dsj Sf Spl",
+  "originStation": "PNVL",
+  "destinationStation": "DSJ",
+  "slug": "1177-pnvl-dsj-sf-spl-chart-times",
+  "stations": [
+    {
+      "stationCode": "PNVL",
+      "stationName": "Panvel",
+      "arrivalTime": "",
+      "departureTime": "09:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BSR",
+      "stationName": "Vasai Road",
+      "arrivalTime": "10:42",
+      "departureTime": "10:47",
+      "day": 1,
+      "distance": "68.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ST",
+      "stationName": "Surat",
+      "arrivalTime": "13:27",
+      "departureTime": "13:30",
+      "day": 1,
+      "distance": "283.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "15:12",
+      "departureTime": "15:22",
+      "day": 1,
+      "distance": "412.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "RTM",
+      "stationName": "Ratlam Jn",
+      "arrivalTime": "19:02",
+      "departureTime": "19:07",
+      "day": 1,
+      "distance": "673.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KOTA",
+      "stationName": "Kota Jn",
+      "arrivalTime": "22:45",
+      "departureTime": "22:50",
+      "day": 1,
+      "distance": "939.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DSJ",
+      "stationName": "Delhi Safdarjng",
+      "arrivalTime": "04:30",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1401.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Pnvl Dsj Sf Spl (1177) from PNVL to DSJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-26T16:14:43.449Z",
+  "knownChartCount": 0
+}
