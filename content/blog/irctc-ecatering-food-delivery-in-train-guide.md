@@ -2,7 +2,7 @@
 title: "How to Order Food in Train: IRCTC e-Catering & App Guide"
 description: "Learn how to order food in train using IRCTC e-Catering. Compare best food delivery apps, check refund rules, and get hot meals delivered to your seat."
 date: "2026-06-20"
-updated: "2026-06-20"
+updated: "2026-06-26"
 tags:
   - train booking
   - irctc
@@ -47,6 +47,20 @@ The rules for ordering food in train require a valid 10-digit PNR number, and th
 You can't just order food whenever you feel like it. Indian Railways has strict logistical guidelines to ensure delivery agents can safely board and exit the trains. For starters, you must place your order at least one to two hours before the train reaches the delivery station. If the train is already pulling into the platform, the app won't let you book.
 
 Additionally, pay attention to the station stops. Food delivery is only available at designated e-catering stations, which are usually larger junctions. If your train only stops at a station for two minutes, the system won't allow food bookings there. Finally, restaurant operating hours matter. Most kitchens close by 10:00 PM, so don't expect a hot dinner if your train stops at midnight.
+
+## How Do You File an IRCTC Catering or Food Hygiene Complaint?
+
+To file an IRCTC catering or food hygiene complaint, use the Rail Madad portal (railmadad.indianrailways.gov.in) or call 139, or for e-catering specifically call the helpline 1323. Quote your 10-digit PNR, describe the issue, and attach a photo or bill. Valid complaints can trigger refunds and penalties on the vendor.
+
+Poor hygiene, stale food, overcharging above MRP, or a missed delivery are all legitimate grievances, and the railways act on them quickly when you give clear evidence. Here is how to raise one effectively:
+
+- **Rail Madad (all rail/catering issues):** Go to `railmadad.indianrailways.gov.in` or use the Rail Madad app, choose the catering category, enter your PNR, and upload a photo of the food or the bill. You get a complaint number to track the resolution.
+- **Phone:** Call **139** (the single railway helpline) for general catering complaints, or the IRCTC e-catering helpline **1323** for Food on Track / aggregator orders.
+- **In the app:** Raise the complaint directly inside the Food on Track app against the specific order so it is linked to the vendor.
+- **What to include:** your PNR, train number, the station/vendor, the date and time, the exact problem, and a clear photo or the bill showing any overcharging.
+- **What you can expect:** documented hygiene or overcharging complaints are commonly resolved with a refund, and repeat-offending vendors face penalties or de-listing by IRCTC.
+
+Always complain while you are still on the journey if possible — fresh evidence (a photo of the meal, the sealed packaging, or the printed bill) makes the case far stronger than a report filed days later.
 
 ## Can You Get Food Delivered to Your Seat on a Waitlisted Ticket?
 

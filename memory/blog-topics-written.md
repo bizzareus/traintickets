@@ -48,6 +48,13 @@ This file tracks all blog posts published to avoid duplication.
 | two-stop-rule-irctc-missed-train-rules.md | Indian Railways Two-Stop Rule: Missed Train Rules & Facts | 2026-06-25 |
 | live-train-running-status-where-is-my-train.md | Live train running status: NTES Spot Your Train, Where Is My Train app, SMS 139, RTIS GPS tracking, platform numbers (EN + hi/mr/bn/ta/te/ml) | 2026-06-26 |
 
+## SEO triage actions (GSC / Google Trends driven)
+
+| Date | Action | Slug(s) | Note |
+|---|---|---|---|
+| 2026-06-26 | EXPAND | how-to-check-vacant-berths-after-chart-preparation | Added "How Do You Check IRCTC Chart Vacancy Online?" section + title/desc targeting rising query "chart vacancy" (+40%); all 7 langs |
+| 2026-06-26 | EXPAND | irctc-ecatering-food-delivery-in-train-guide | Added "How Do You File an IRCTC Catering or Food Hygiene Complaint?" section for breakout query "irctc catering hygiene complaint"; all 7 langs |
+
 ## Topics NOT yet covered (candidates for future posts)
 
 - (none)

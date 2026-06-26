@@ -1,8 +1,8 @@
 ---
-title: "How to Check Vacant Berths After Chart Preparation"
-description: "A practical guide to chart vacancy, current availability, station-pair searches, and safer last-minute checks for Indian Railways trips."
+title: "How to Check IRCTC Chart Vacancy & Vacant Berths"
+description: "Check IRCTC chart vacancy and vacant berths after chart preparation: use the official Charts/Vacancy portal, current availability, and station-pair searches."
 date: "2026-05-15"
-updated: "2026-06-11"
+updated: "2026-06-26"
 tags:
   - chart vacancy
   - vacant berths
@@ -35,6 +35,20 @@ Those open berths are often described by travellers as **chart vacancy** or **cu
 That last point is where many people get tripped up. "Available" does not always mean "available for my whole journey." A berth can be open from Nagpur to Secunderabad but not from Nagpur to Bengaluru. It can be available in Sleeper but not in 3A. It can show for one boarding point and disappear for another.
 
 For a deeper timing overview, read the [IRCTC chart preparation guide](/blog/irctc-chart-preparation-guide).
+
+## How Do You Check IRCTC Chart Vacancy Online?
+
+To check IRCTC chart vacancy, open the official Charts/Vacancy portal at irctc.co.in/online-charts, then select your train, boarding station, and journey date. It displays a coach-by-coach map of every vacant berth by class once the first chart is prepared, roughly 4 hours before departure.
+
+The Charts/Vacancy portal is the most reliable way to see real, post-chart vacancies coach by coach:
+
+- **Open the IRCTC Charts/Vacancy page** at `irctc.co.in/online-charts` — you can view it without logging in.
+- **Select the train number, boarding station, and date of journey.** Vacancy is tied to a boarding point, so pick the station you will actually start from.
+- **Read the coach-by-coach layout.** Berths marked free show the exact coach and berth numbers open in each class (SL, 3A, 2A, and so on).
+- **Mind the timing window.** Data appears after the first chart is prepared (about 4 hours before departure); a second chart can refresh it closer to departure.
+- **Book fast.** Anything shown is a `"current available ticket"` — a fully confirmed seat with coach and berth numbers — and it stays bookable until 30 minutes before departure.
+
+Treat what you see as a live snapshot, not a reservation. **Chart vacancy** changes minute by minute as other passengers book, so confirm the berth is still free before you rely on it.
 
 ## How Do You Check Vacant Berths After Chart Preparation?
 
