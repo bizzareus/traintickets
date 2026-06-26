@@ -8,6 +8,7 @@ import {
 } from "@/lib/chartTimes";
 import { formatJourneyDateUtcLabel } from "@/lib/stationChartMetaSummary";
 import ChartTimesTable from "./ChartTimesTable";
+import ChartTimeAlertCTA from "./ChartTimeAlertCTA";
 
 function normalizeJourneyDate(raw: string | string[] | undefined): string | null {
   const v = (Array.isArray(raw) ? raw[0] : raw)?.trim().slice(0, 10);
@@ -172,6 +173,18 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
       <section className="mb-6 rounded-xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700 shadow-sm">
         <p>{data.summary}</p>
       </section>
+
+      <ChartTimeAlertCTA
+        trainNumber={data.trainNumber}
+        trainName={data.trainName}
+        destinationCode={
+          data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
+        }
+        stations={data.stations
+          .slice(0, -1)
+          .map((s) => ({ stationCode: s.stationCode, stationName: s.stationName }))}
+        initialJourneyDate={journeyDate}
+      />
 
       <ChartTimesTable stations={data.stations} journeyDate={journeyDate} />
 
