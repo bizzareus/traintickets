@@ -2,6 +2,16 @@ import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        // Chart-vacancy tool moved from /seat-status; keep the old URL working (301).
+        source: "/seat-status",
+        destination: "/chart-vacancy",
+        statusCode: 301,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -15,7 +15,7 @@ export function Header() {
             LastBerth
           </Link>
           <nav className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 text-sm font-semibold text-slate-700 sm:gap-x-4">
-            <Link href="/seat-status" className="hover:text-blue-600 transition-colors">
+            <Link href="/chart-vacancy" className="hover:text-blue-600 transition-colors">
               Chart Vacancy
             </Link>
             <Link href="/pnr-status" className="hover:text-blue-600 transition-colors">

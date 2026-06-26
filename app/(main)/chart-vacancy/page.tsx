@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: "IRCTC Chart Vacancy — Live Vacant Berths & Coach Map | LastBerth",
   description: "Check IRCTC chart vacancy: live vacant berths after the reservation chart is prepared, coach-wise, with a visual coach map. See free berths from your boarding station and book current-availability tickets.",
   alternates: {
-    canonical: "/seat-status",
+    canonical: "/chart-vacancy",
   },
   openGraph: {
     title: "IRCTC Chart Vacancy — Live Vacant Berths & Coach Map | LastBerth",
     description: "Live IRCTC chart vacancy: coach-wise vacant berths after charting, with a visual coach map.",
-    url: "/seat-status",
+    url: "/chart-vacancy",
   },
 };
 
@@ -41,7 +41,7 @@ const faqJsonLd = {
   })),
 };
 
-export default function SeatStatusPage() {
+export default function ChartVacancyPage() {
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
       <Header />
