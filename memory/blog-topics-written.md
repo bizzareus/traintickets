@@ -46,6 +46,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-uts-app-booking-guide.md | IRCTC UTS App Booking: Rules, GPS Limits & Platform Tickets | 2026-06-23 |
 | irctc-counter-ticket-vs-eticket.md | IRCTC Counter Ticket vs E-Ticket: Rules, Booking, and Cancellation Differences | 2026-06-24 |
 | two-stop-rule-irctc-missed-train-rules.md | Indian Railways Two-Stop Rule: Missed Train Rules & Facts | 2026-06-25 |
+| live-train-running-status-where-is-my-train.md | Live train running status: NTES Spot Your Train, Where Is My Train app, SMS 139, RTIS GPS tracking, platform numbers (EN + hi/mr/bn/ta/te/ml) | 2026-06-26 |
 
 ## Topics NOT yet covered (candidates for future posts)
 
