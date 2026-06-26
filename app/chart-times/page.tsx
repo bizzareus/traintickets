@@ -7,9 +7,9 @@ export const dynamicParams = true;
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Train Chart Preparation Times — Station by Station | LastBerth",
+  title: "IRCTC Chart Vacancy & Train Chart Preparation Times — Station by Station | LastBerth",
   description:
-    "Find reservation chart preparation times for Indian Railways trains, station by station. See when the first and second charts are prepared at each halt.",
+    "IRCTC chart vacancy and train chart preparation times, station by station. See when the first and second reservation charts are prepared for any train, and check vacant berths.",
   alternates: { canonical: "/chart-times" },
 };
 
@@ -20,12 +20,16 @@ export default function ChartTimesIndexPage() {
     <>
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-          Train Chart Preparation Times
+          IRCTC Chart Vacancy &amp; Train Chart Preparation Times
         </h1>
         <p className="mt-2 text-slate-600">
           Browse station-by-station reservation chart preparation times for
-          Indian Railways trains. Each page lists every halt on the route with
-          the time its chart is prepared.
+          Indian Railways trains — when each chart is prepared, so you can check
+          chart vacancy and vacant berths. Looking for live vacant berths? See{" "}
+          <Link href="/chart-vacancy" className="text-blue-600 hover:underline">
+            IRCTC chart vacancy
+          </Link>
+          .
         </p>
       </header>
 

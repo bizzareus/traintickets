@@ -28,6 +28,7 @@ export async function GET() {
   lines.push(`- [Search](${baseUrl}/search): Live search interface to query trains and check seat quotas.`);
   lines.push(`- [PNR Status](${baseUrl}/pnr-status): Live IRCTC PNR status check with waiting-list (WL/RAC/CNF) confirmation chances and chart timing.`);
   lines.push(`- [Booking V2](${baseUrl}/booking/v2): Fast, optimized passenger booking flow for Tatkal tickets.`);
+  lines.push(`- [Chart Vacancy](${baseUrl}/chart-vacancy): IRCTC chart vacancy — when the train chart is prepared, vacant berths after charting, and current-availability booking.`);
   lines.push(`- [Chart Times](${baseUrl}/chart-times): IRCTC vacancy chart preparation times for trains, station by station, with chart-prep alerts.`);
   lines.push("");
   lines.push("## Popular Trains");
