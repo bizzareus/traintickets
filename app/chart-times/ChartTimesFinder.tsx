@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Search, CalendarDays } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import { buildChartTimesSlug } from "@/lib/chartTimesSlug";
+import { trackAnalyticsEvent } from "@/lib/analytics/track";
 
 type TrainOption = { trainNumber: string; trainName: string };
 
@@ -96,10 +97,21 @@ export default function ChartTimesFinder() {
     setSelected(t);
     setQuery(`${t.trainNumber} — ${t.trainName}`);
     setOpen(false);
+    trackAnalyticsEvent({
+      name: "chart_times_train_selected",
+      properties: { train_number: t.trainNumber },
+    });
   }
 
   function submit() {
     if (!resolvedTrain) return;
+    trackAnalyticsEvent({
+      name: "chart_times_search_submitted",
+      properties: {
+        train_number: resolvedTrain.trainNumber,
+        journey_date: journeyDate || "",
+      },
+    });
     const slug = buildChartTimesSlug(
       resolvedTrain.trainNumber,
       resolvedTrain.trainName,

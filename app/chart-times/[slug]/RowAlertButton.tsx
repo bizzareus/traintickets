@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { BellRing, X } from "lucide-react";
 import { apiClient } from "@/lib/api";
+import { trackAnalyticsEvent } from "@/lib/analytics/track";
 
 function ymdPlusDays(days: number): string {
   const d = new Date();
@@ -82,6 +83,17 @@ export default function RowAlertButton({
         mobile: mob || undefined,
       });
       setSuccess(true);
+      trackAnalyticsEvent({
+        name: "chart_alert_submitted",
+        properties: {
+          success: true,
+          source: "row",
+          train_number: trainNumber,
+          station_code: stationCode,
+          has_email: Boolean(em),
+          has_mobile: Boolean(mob),
+        },
+      });
     } catch (err: unknown) {
       const e = err as {
         response?: { data?: { message?: string; errors?: Array<{ message?: string }> } };
@@ -90,7 +102,20 @@ export default function RowAlertButton({
         e?.response?.data?.errors?.[0]?.message ||
         e?.response?.data?.message ||
         "Couldn't set up the alert. Please try again.";
-      setError(typeof msg === "string" ? msg : JSON.stringify(msg));
+      const errMsg = typeof msg === "string" ? msg : JSON.stringify(msg);
+      setError(errMsg);
+      trackAnalyticsEvent({
+        name: "chart_alert_submitted",
+        properties: {
+          success: false,
+          source: "row",
+          train_number: trainNumber,
+          station_code: stationCode,
+          has_email: Boolean(em),
+          has_mobile: Boolean(mob),
+          error: errMsg,
+        },
+      });
     } finally {
       setLoading(false);
     }
@@ -100,7 +125,13 @@ export default function RowAlertButton({
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setOpen(true);
+          trackAnalyticsEvent({
+            name: "chart_alert_opened",
+            properties: { source: "row", train_number: trainNumber, station_code: stationCode },
+          });
+        }}
         className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 whitespace-nowrap"
       >
         <BellRing className="h-3.5 w-3.5" />

@@ -197,6 +197,38 @@ export type AnalyticsEvent =
   | {
       name: "station_suggestion_failed";
       properties: { error: string; query: string; field: "from" | "to" };
+    }
+  | {
+      name: "chart_times_search_submitted";
+      properties: { train_number: string; journey_date: string };
+    }
+  | {
+      name: "chart_times_train_selected";
+      properties: { train_number: string };
+    }
+  | {
+      name: "chart_alert_opened";
+      properties: {
+        source: "page" | "row";
+        train_number: string;
+        station_code?: string;
+      };
+    }
+  | {
+      name: "chart_alert_submitted";
+      properties: {
+        success: boolean;
+        source: "page" | "row";
+        train_number: string;
+        station_code: string;
+        has_email: boolean;
+        has_mobile: boolean;
+        error?: string;
+      };
+    }
+  | {
+      name: "pnr_status_checked";
+      properties: { success: boolean; error?: string };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];

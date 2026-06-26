@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { BellRing } from "lucide-react";
 import { apiClient } from "@/lib/api";
+import { trackAnalyticsEvent } from "@/lib/analytics/track";
 
 const CLASSES = ["SL", "3A", "2A", "1A", "CC", "EC", "2S"] as const;
 
@@ -89,6 +90,17 @@ export default function ChartTimeAlertCTA({
         mobile: mob || undefined,
       });
       setSuccess(true);
+      trackAnalyticsEvent({
+        name: "chart_alert_submitted",
+        properties: {
+          success: true,
+          source: "page",
+          train_number: trainNumber,
+          station_code: stationCode,
+          has_email: Boolean(em),
+          has_mobile: Boolean(mob),
+        },
+      });
     } catch (err: unknown) {
       const e = err as {
         response?: { data?: { message?: string; errors?: Array<{ message?: string }> } };
@@ -97,7 +109,20 @@ export default function ChartTimeAlertCTA({
         e?.response?.data?.errors?.[0]?.message ||
         e?.response?.data?.message ||
         "Couldn't set up the alert. Please check your inputs and try again.";
-      setError(typeof msg === "string" ? msg : JSON.stringify(msg));
+      const errMsg = typeof msg === "string" ? msg : JSON.stringify(msg);
+      setError(errMsg);
+      trackAnalyticsEvent({
+        name: "chart_alert_submitted",
+        properties: {
+          success: false,
+          source: "page",
+          train_number: trainNumber,
+          station_code: stationCode,
+          has_email: Boolean(em),
+          has_mobile: Boolean(mob),
+          error: errMsg,
+        },
+      });
     } finally {
       setLoading(false);
     }
@@ -130,7 +155,13 @@ export default function ChartTimeAlertCTA({
         </div>
         <button
           type="button"
-          onClick={() => setExpanded(true)}
+          onClick={() => {
+            setExpanded(true);
+            trackAnalyticsEvent({
+              name: "chart_alert_opened",
+              properties: { source: "page", train_number: trainNumber, station_code: stationCode },
+            });
+          }}
           className="shrink-0 rounded-md bg-blue-600 px-4 py-2.5 font-medium text-white transition hover:bg-blue-700"
         >
           Set up alert

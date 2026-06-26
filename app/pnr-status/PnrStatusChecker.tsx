@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { apiClient } from "@/lib/api";
+import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import {
   SmartPnrPredictor,
   type PnrStatusData,
@@ -34,12 +35,25 @@ export default function PnrStatusChecker() {
         `/api/booking-v2/pnr/${trimmed}`,
       );
       if (!res.data?.status || !res.data?.data) {
-        setError(res.data?.message || "Couldn't fetch this PNR. Please re-check the number.");
+        const errMsg = res.data?.message || "Couldn't fetch this PNR. Please re-check the number.";
+        setError(errMsg);
+        trackAnalyticsEvent({
+          name: "pnr_status_checked",
+          properties: { success: false, error: errMsg },
+        });
         return;
       }
       setData(res.data.data);
+      trackAnalyticsEvent({
+        name: "pnr_status_checked",
+        properties: { success: true },
+      });
     } catch {
       setError("Couldn't fetch PNR status right now. Please try again in a moment.");
+      trackAnalyticsEvent({
+        name: "pnr_status_checked",
+        properties: { success: false, error: "request_failed" },
+      });
     } finally {
       setLoading(false);
     }
