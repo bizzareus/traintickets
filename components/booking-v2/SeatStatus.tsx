@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import { apiClient } from "@/lib/api";
+import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { ChevronRight, CircleCheck, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
@@ -768,8 +769,25 @@ export function SeatStatus() {
       const data = res.data;
       if (data.error) {
         setError(data.error);
+        trackAnalyticsEvent({
+          name: "seat_status_checked",
+          properties: {
+            success: false,
+            train_number: selectedTrain.number,
+            coach: selectedCoach.coachName,
+            error: data.error,
+          },
+        });
       } else {
         setResult(data);
+        trackAnalyticsEvent({
+          name: "seat_status_checked",
+          properties: {
+            success: true,
+            train_number: selectedTrain.number,
+            coach: selectedCoach.coachName,
+          },
+        });
       }
     } catch (e) {
       const msg =
@@ -778,6 +796,15 @@ export function SeatStatus() {
         (e as { message?: string })?.message ??
         "Failed to fetch seat status.";
       setError(String(msg));
+      trackAnalyticsEvent({
+        name: "seat_status_checked",
+        properties: {
+          success: false,
+          train_number: selectedTrain?.number,
+          coach: selectedCoach?.coachName,
+          error: String(msg),
+        },
+      });
     } finally {
       setLoading(false);
     }

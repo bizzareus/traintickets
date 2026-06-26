@@ -226,9 +226,22 @@ export type AnalyticsEvent =
         error?: string;
       };
     }
+  // PNR feature (prefix: search_pnr_*)
+  | { name: "search_pnr_feature_clicked"; properties: Record<string, never> }
   | {
-      name: "pnr_status_checked";
+      name: "search_pnr_status_checked";
       properties: { success: boolean; error?: string };
+    }
+  // Seat status / coach map feature (prefix: seat_status_*)
+  | { name: "seat_status_feature_clicked"; properties: Record<string, never> }
+  | {
+      name: "seat_status_checked";
+      properties: {
+        success: boolean;
+        train_number?: string;
+        coach?: string;
+        error?: string;
+      };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];

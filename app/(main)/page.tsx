@@ -3052,12 +3052,21 @@ function BookingV2PageContent() {
       );
       const res = response.data;
       if (!res.status || !res.data) {
-        setPnrError(res.message || "Failed to fetch PNR status.");
+        const pnrErrMsg = res.message || "Failed to fetch PNR status.";
+        setPnrError(pnrErrMsg);
+        trackAnalyticsEvent({
+          name: "search_pnr_status_checked",
+          properties: { success: false, error: pnrErrMsg },
+        });
         return;
       }
 
       const data = res.data;
       setPnrData(data);
+      trackAnalyticsEvent({
+        name: "search_pnr_status_checked",
+        properties: { success: true },
+      });
 
       // Parse and sync journey date
       let parsedDate = journeyDate;
@@ -3125,6 +3134,10 @@ function BookingV2PageContent() {
         msg = err.message;
       }
       setPnrError(msg);
+      trackAnalyticsEvent({
+        name: "search_pnr_status_checked",
+        properties: { success: false, error: msg },
+      });
     } finally {
       setPnrLoading(false);
     }
@@ -3169,6 +3182,11 @@ function BookingV2PageContent() {
     setAltForTrain(null);
     setAltTrainName(null);
     setAltAvlClasses(undefined);
+    if (type === "pnr") {
+      trackAnalyticsEvent({ name: "search_pnr_feature_clicked", properties: {} });
+    } else if (type === "seat") {
+      trackAnalyticsEvent({ name: "seat_status_feature_clicked", properties: {} });
+    }
   };
 
   useEffect(() => {
@@ -4169,6 +4187,14 @@ function BookingV2PageContent() {
               </button>
             </div>
 
+            {bestTrainLoading && (
+              <p className="mt-2 text-xs text-slate-500">
+                This can take 2–3 minutes — we&apos;re scanning multiple trains,
+                routes and station combinations to find confirmed tickets. You
+                can keep this open while it runs.
+              </p>
+            )}
+
             {(bestTrainLoading ||
               bestTrainError ||
               bestTrainResult ||
@@ -4283,7 +4309,7 @@ function BookingV2PageContent() {
                                   }}
                                   className="inline-flex shrink-0 items-center justify-center rounded-lg border border-blue-600 px-3 py-2 text-sm font-bold text-blue-600 hover:bg-blue-600 hover:text-white"
                                 >
-                                  View plan
+                                  See Available Tickets
                                 </button>
                               </div>
                             </li>

@@ -38,20 +38,20 @@ export default function PnrStatusChecker() {
         const errMsg = res.data?.message || "Couldn't fetch this PNR. Please re-check the number.";
         setError(errMsg);
         trackAnalyticsEvent({
-          name: "pnr_status_checked",
+          name: "search_pnr_status_checked",
           properties: { success: false, error: errMsg },
         });
         return;
       }
       setData(res.data.data);
       trackAnalyticsEvent({
-        name: "pnr_status_checked",
+        name: "search_pnr_status_checked",
         properties: { success: true },
       });
     } catch {
       setError("Couldn't fetch PNR status right now. Please try again in a moment.");
       trackAnalyticsEvent({
-        name: "pnr_status_checked",
+        name: "search_pnr_status_checked",
         properties: { success: false, error: "request_failed" },
       });
     } finally {
