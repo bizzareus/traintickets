@@ -2,142 +2,170 @@
   {
     "trainNumber": "00961",
     "trainName": "VALLEY QUEEN SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "00962",
     "trainName": "VALLEY QUEEN SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01001",
     "trainName": "LTT SRC SF SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01002",
     "trainName": "SRC LTT SF SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01003",
     "trainName": "LTT MAO SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01004",
     "trainName": "MAO LTT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01005",
     "trainName": "CSMT CAPE SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01006",
     "trainName": "TN CSMT SPECIAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01007",
     "trainName": "LTT LUR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01008",
     "trainName": "LUR LTT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01011",
     "trainName": "CSMT ADB SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01012",
     "trainName": "ADB CSMT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01013",
     "trainName": "CSMT SMVB SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01014",
     "trainName": "SMVB CSMT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01015",
     "trainName": "CSMT MAS SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01016",
     "trainName": "MAS CSMT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01018",
     "trainName": "DNR LTT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01019",
     "trainName": "LTT SHC  SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01020",
     "trainName": "MAO CSMT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01021",
     "trainName": "CSMT KRMR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01022",
     "trainName": "NGP LTT SPECIAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01023",
     "trainName": "PUNE KOP SPECIAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01024",
     "trainName": "KOP PUNE SPECIAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01025",
     "trainName": "DR BALLIA SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01026",
     "trainName": "BUI DR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01027",
     "trainName": "DR GORAKHPUR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01028",
     "trainName": "GKP DR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01029",
     "trainName": "LTT CPR SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "01030",

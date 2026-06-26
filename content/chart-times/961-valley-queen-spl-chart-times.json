@@ -1,0 +1,51 @@
+{
+  "trainNumber": "961",
+  "trainName": "Valley Queen Spl",
+  "originStation": "MJ",
+  "destinationStation": "KBK",
+  "slug": "961-valley-queen-spl-chart-times",
+  "stations": [
+    {
+      "stationCode": "MJ",
+      "stationName": "Marwar Jn",
+      "arrivalTime": "",
+      "departureTime": "09:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "FLD",
+      "stationName": "Phulad",
+      "arrivalTime": "11:00",
+      "departureTime": "11:15",
+      "day": 1,
+      "distance": "26.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KBK",
+      "stationName": "KHAMIL GHAT",
+      "arrivalTime": "12:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "47.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Valley Queen Spl (961) from MJ to KBK are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 3 stations.",
+  "generatedAt": "2026-06-26T15:49:56.583Z",
+  "knownChartCount": 0
+}
