@@ -1280,22 +1280,34 @@
   {
     "trainNumber": "01333",
     "trainName": "PUNE DBG SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1333-pune-dbg-spl-chart-times",
+    "canonicalNumber": "1333"
   },
   {
     "trainNumber": "01401",
     "trainName": "PUNE JU INAGURAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1401-pune-ngp-special-chart-times",
+    "canonicalNumber": "1401"
   },
   {
     "trainNumber": "01402",
     "trainName": "NGP PUNE SPECIAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1402-ngp-pune-special-chart-times",
+    "canonicalNumber": "1402"
   },
   {
     "trainNumber": "01403",
     "trainName": "PUNE AMI SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1403-pune-ami-spl-chart-times",
+    "canonicalNumber": "1403"
   },
   {
     "trainNumber": "01404",
@@ -1560,7 +1572,10 @@
   {
     "trainNumber": "01466",
     "trainName": "AJNI PUNE SF",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1466-kalaburagi-solapur-demu-special-chart-times",
+    "canonicalNumber": "1466"
   },
   {
     "trainNumber": "01467",
@@ -1655,12 +1670,18 @@
   {
     "trainNumber": "01487",
     "trainName": "PUNE HARANGUL EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1487-hdp-harangul-exp-chart-times",
+    "canonicalNumber": "1487"
   },
   {
     "trainNumber": "01488",
     "trainName": "HARANGUL PUNE EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1488-harangul-hdp-exp-chart-times",
+    "canonicalNumber": "1488"
   },
   {
     "trainNumber": "01489",
@@ -1895,7 +1916,10 @@
   {
     "trainNumber": "01921",
     "trainName": "PUNE VGLJ SF SP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1921-hdp-vglj-sf-spl-chart-times",
+    "canonicalNumber": "1921"
   },
   {
     "trainNumber": "01922",
@@ -1970,12 +1994,16 @@
   {
     "trainNumber": "02058",
     "trainName": "TEN  CSTM  EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "2058-scl-special-chart-times",
+    "canonicalNumber": "2058"
   },
   {
     "trainNumber": "02066",
     "trainName": "ERS  CSTM  EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "02081",
@@ -2025,7 +2053,10 @@
   {
     "trainNumber": "02134",
     "trainName": "MAJN LTT AC EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "2134-jbp-bdts-sf-spl-chart-times",
+    "canonicalNumber": "2134"
   },
   {
     "trainNumber": "02139",
@@ -2200,7 +2231,8 @@
   {
     "trainNumber": "02213",
     "trainName": "YPR NDLS AC SF",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "02248",

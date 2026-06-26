@@ -1,0 +1,90 @@
+{
+  "trainNumber": "1466",
+  "trainName": "Kalaburagi - Solapur Demu Special",
+  "originStation": "KLBG",
+  "destinationStation": "SUR",
+  "slug": "1466-kalaburagi-solapur-demu-special-chart-times",
+  "stations": [
+    {
+      "stationCode": "KLBG",
+      "stationName": "Kalaburagi",
+      "arrivalTime": "",
+      "departureTime": "20:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "GUR",
+      "stationName": "Ganagapur Road",
+      "arrivalTime": "20:53",
+      "departureTime": "20:55",
+      "day": 1,
+      "distance": "26.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DUD",
+      "stationName": "Dudhani",
+      "arrivalTime": "21:18",
+      "departureTime": "21:20",
+      "day": 1,
+      "distance": "49.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "AKOR",
+      "stationName": "Akalkot Road",
+      "arrivalTime": "21:50",
+      "departureTime": "21:52",
+      "day": 1,
+      "distance": "77.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "HG",
+      "stationName": "Hotgi",
+      "arrivalTime": "22:30",
+      "departureTime": "22:32",
+      "day": 1,
+      "distance": "97.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SUR",
+      "stationName": "Solapur Jn",
+      "arrivalTime": "23:20",
+      "departureTime": "",
+      "day": 1,
+      "distance": "113.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Kalaburagi - Solapur Demu Special (1466) from KLBG to SUR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-06-26T22:32:56.641Z",
+  "knownChartCount": 0
+}
