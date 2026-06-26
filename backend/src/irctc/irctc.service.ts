@@ -83,6 +83,17 @@ const SCHEDULE_HEADERS: Record<string, string> = {
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36',
 };
 
+/**
+ * Indian Railways train numbers are 5 digits, so a leading-zero number like
+ * "01921" can get stored/passed around as "1921". IRCTC's trainComposition API
+ * only recognises the 5-digit form, so normalize 1–4 digit numbers by left-
+ * padding with zeros. 5+ digit or non-numeric values pass through unchanged.
+ */
+export function to5DigitTrainNo(trainNo: string | number | null | undefined): string {
+  const t = String(trainNo ?? '').trim();
+  return /^\d{1,4}$/.test(t) ? t.padStart(5, '0') : t;
+}
+
 export type TrainOption = { number: string; label: string };
 
 export type ScheduleStation = {
@@ -1107,7 +1118,7 @@ export class IrctcService {
         ? payload.jDate.toISOString().slice(0, 10)
         : String(payload.jDate).trim().slice(0, 10);
     const body = {
-      trainNo: String(payload.trainNo).trim(),
+      trainNo: to5DigitTrainNo(payload.trainNo),
       jDate: jDateStr,
       boardingStation: String(payload.boardingStation).trim().toUpperCase(),
     };
@@ -1450,7 +1461,7 @@ export class IrctcService {
       data.remote?.trim().toUpperCase();
     if (!remote) return;
 
-    const trainNo = String(data.trainNo ?? '').trim();
+    const trainNo = to5DigitTrainNo(data.trainNo);
     if (!trainNo) return;
 
     const chartOne = parseChartDateTime(data.chartOneDate);

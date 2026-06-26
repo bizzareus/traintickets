@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { IrctcService } from '../irctc/irctc.service';
+import { IrctcService, to5DigitTrainNo } from '../irctc/irctc.service';
 
 /**
  * Chart preparation time per train/station (e.g. train 29251 from NDLS at 19:54).
@@ -25,7 +25,7 @@ export class ChartTimeService {
     const row = await this.prisma.trainStationChartTime.findUnique({
       where: {
         trainNumber_stationCode: {
-          trainNumber: String(trainNumber).trim(),
+          trainNumber: to5DigitTrainNo(trainNumber),
           stationCode: String(stationCode).trim().toUpperCase(),
         },
       },
@@ -47,7 +47,7 @@ export class ChartTimeService {
       ? `${match[1].padStart(2, '0')}:${match[2].padStart(2, '0')}`
       : raw;
     const normalized = {
-      trainNumber: String(trainNumber).trim(),
+      trainNumber: to5DigitTrainNo(trainNumber),
       stationCode: String(stationCode).trim().toUpperCase(),
       chartTimeLocal: chartTime,
     };
@@ -72,7 +72,7 @@ export class ChartTimeService {
     trainNumber: string,
     stationCodes: string[],
   ): Promise<Map<string, string>> {
-    const num = String(trainNumber).trim();
+    const num = to5DigitTrainNo(trainNumber);
     const where: { trainNumber: string; stationCode?: { in: string[] } } = {
       trainNumber: num,
     };
@@ -129,7 +129,7 @@ export class ChartTimeService {
       }
     >
   > {
-    const num = String(trainNumber).trim();
+    const num = to5DigitTrainNo(trainNumber);
     const normalizedCodes = stationCodes.map((c) =>
       String(c).trim().toUpperCase(),
     );
