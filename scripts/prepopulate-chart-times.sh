@@ -23,6 +23,7 @@
 #   ./scripts/prepopulate-chart-times.sh -d 2 -l 100   # 2s delay, only 100 this run
 #   ./scripts/prepopulate-chart-times.sh --force       # re-warm even completed trains
 #   ./scripts/prepopulate-chart-times.sh --fillup      # re-fetch only pages with missing chart times
+#   ./scripts/prepopulate-chart-times.sh -t 12952      # (re)populate only train 12952
 #
 # --fillup mode: instead of the train list, scan already-generated
 # content/chart-times/*.json pages, find any with stations whose chart time is
@@ -36,6 +37,7 @@
 #   -d, --delay SECONDS  pause between pages (default 1)
 #   -l, --limit N        process at most N pages this run (default: all)
 #   -r, --retries N      retry a non-200 up to N times (default 2)
+#   -t, --train NUMBER   (re)populate only this train number, then exit
 #       --force          re-process trains already marked completed
 #       --fillup         backfill missing chart times in existing content pages
 #       --include-spl    also process SPL / Special trains (skipped by default)
@@ -56,6 +58,7 @@ DELAY=1
 LIMIT=0          # 0 => no limit
 FORCE=0
 FILLUP=0         # 1 => backfill missing chart times in existing content pages
+TRAIN=""         # when set, (re)populate only this train number and exit
 SKIP_SPECIAL=1   # 1 => skip SPL / Special trains (no useful chart data); --include-spl to process them
 RETRIES=2        # extra attempts on a non-200 (IRCTC schedule fetch is flaky under load)
 RETRY_DELAY=4    # seconds between retries
@@ -70,6 +73,7 @@ while [[ $# -gt 0 ]]; do
     -d|--delay)    DELAY="${2:-1}"; shift 2 ;;
     -l|--limit)    LIMIT="${2:-0}"; shift 2 ;;
     -r|--retries)  RETRIES="${2:-2}"; shift 2 ;;
+    -t|--train)    TRAIN="${2:-}"; shift 2 ;;
     --force)       FORCE=1; shift ;;
     --fillup)      FILLUP=1; shift ;;
     --include-spl) SKIP_SPECIAL=0; shift ;;
@@ -116,6 +120,36 @@ is_special() {
     *) return 1 ;;
   esac
 }
+
+# --train: (re)populate only one train, then exit. Force-regenerates the page
+# (back up + restore-if-worse, so a down/flaky backend can't wipe good data).
+# Bypasses the train list and the SPL/Special skip (the train was named explicitly).
+if [[ -n "$TRAIN" ]]; then
+  [[ "$TRAIN" =~ ^[0-9]{3,6}$ ]] || { echo "Error: --train must be a 3-6 digit number" >&2; exit 1; }
+  echo "Repopulating chart-times for train $TRAIN (target $BASE_URL)…" >&2
+  existing="$(find_content_file "$TRAIN" || true)"
+  before=0
+  bak=""
+  if [[ -n "$existing" ]]; then
+    before="$(jq '.knownChartCount // 0' "$existing")"
+    bak="${existing}.repop.bak"
+    mv "$existing" "$bak"
+  fi
+  code="$(warm "$BASE_URL/chart-times/$TRAIN")"
+  newf="$(find_content_file "$TRAIN" || true)"
+  after=0
+  [[ -n "$newf" ]] && after="$(jq '.knownChartCount // 0' "$newf")"
+  if [[ "$code" == "200" && "$after" =~ ^[0-9]+$ && "$after" -ge "$before" ]]; then
+    [[ -n "$bak" ]] && rm -f "$bak"
+    echo "Done. train=$TRAIN known ${before}->${after} (HTTP $code) -> ${newf:-<no file written>}" >&2
+    exit 0
+  fi
+  # Regeneration was worse/empty/failed — restore the original page if we had one.
+  [[ -n "$newf" && -n "$bak" && "$newf" != "$bak" ]] && rm -f "$newf"
+  [[ -n "$bak" ]] && mv "$bak" "$existing"
+  echo "Kept original for train=$TRAIN (regen known=$after vs before=$before, HTTP $code)" >&2
+  exit 0
+fi
 
 # --fillup: re-fetch only pages that still have unfound chart times.
 if [[ "$FILLUP" -eq 1 ]]; then
