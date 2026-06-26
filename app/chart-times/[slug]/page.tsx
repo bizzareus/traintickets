@@ -174,19 +174,29 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
         <p>{data.summary}</p>
       </section>
 
-      <ChartTimeAlertCTA
+      <ChartTimesTable
+        stations={data.stations}
+        journeyDate={journeyDate}
         trainNumber={data.trainNumber}
         trainName={data.trainName}
         destinationCode={
           data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
         }
-        stations={data.stations
-          .slice(0, -1)
-          .map((s) => ({ stationCode: s.stationCode, stationName: s.stationName }))}
-        initialJourneyDate={journeyDate}
       />
 
-      <ChartTimesTable stations={data.stations} journeyDate={journeyDate} />
+      <div className="mt-8">
+        <ChartTimeAlertCTA
+          trainNumber={data.trainNumber}
+          trainName={data.trainName}
+          destinationCode={
+            data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
+          }
+          stations={data.stations
+            .slice(0, -1)
+            .map((s) => ({ stationCode: s.stationCode, stationName: s.stationName }))}
+          initialJourneyDate={journeyDate}
+        />
+      </div>
 
       <p className="mt-6 text-sm text-slate-500">
         Looking for the full timetable, halts and seat confirmation chances?{" "}

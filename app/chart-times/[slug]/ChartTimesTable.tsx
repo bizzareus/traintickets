@@ -1,5 +1,6 @@
 import type { ChartTimeStationRow } from "@/lib/chartTimes";
 import { formatChartPrep } from "@/lib/chartTimeDisplay";
+import RowAlertButton from "./RowAlertButton";
 
 function formatDay(day?: number | null): string {
   if (day === null || day === undefined) return "—";
@@ -8,14 +9,21 @@ function formatDay(day?: number | null): string {
 
 /**
  * Full schedule of a train with a chart-preparation-time column per station.
- * Pure server-rendered markup so the table is present in the crawled HTML.
+ * The data cells are server-rendered (present in crawled HTML); each row also
+ * gets a small client "Get Alert" island for that station.
  */
 export default function ChartTimesTable({
   stations,
   journeyDate,
+  trainNumber,
+  trainName,
+  destinationCode,
 }: {
   stations: ChartTimeStationRow[];
   journeyDate?: string | null;
+  trainNumber: string;
+  trainName: string;
+  destinationCode: string;
 }) {
   return (
     <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
@@ -42,6 +50,9 @@ export default function ChartTimesTable({
             </th>
             <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">
               2nd Chart Preparation Time
+            </th>
+            <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">
+              Alert
             </th>
           </tr>
         </thead>
@@ -90,6 +101,20 @@ export default function ChartTimesTable({
                   </span>
                 ) : (
                   <span className="font-medium text-slate-400">NA</span>
+                )}
+              </td>
+              <td className="px-4 py-3">
+                {s.stationCode !== destinationCode ? (
+                  <RowAlertButton
+                    trainNumber={trainNumber}
+                    trainName={trainName}
+                    stationCode={s.stationCode}
+                    stationName={s.stationName}
+                    destinationCode={destinationCode}
+                    initialJourneyDate={journeyDate}
+                  />
+                ) : (
+                  <span className="text-slate-400">—</span>
                 )}
               </td>
             </tr>
