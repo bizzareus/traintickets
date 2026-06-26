@@ -1284,9 +1284,11 @@ export class IrctcService {
         (opts?._retriedTwoDays ? 2 : 0) +
         (opts?._retriedPreviousDay && !opts?._retriedTwoDays ? 1 : 0);
       if (alreadyRetried < 2) {
-        const daysBack = alreadyRetried + 1;
+        // Recurse on the already-decremented date, stepping back exactly one day
+        // each time (today -> -1 -> -2). Subtracting `alreadyRetried + 1` from the
+        // current date skipped a day (e.g. 26 -> 25 -> 23, missing the 24th).
         const prevDate = moment(body.jDate)
-          .subtract(daysBack, 'days')
+          .subtract(1, 'days')
           .format('YYYY-MM-DD');
         const newOpts = {
           ...opts,
@@ -1315,7 +1317,7 @@ export class IrctcService {
           ? String(trainNoRaw)
           : '';
     const trainNoOk = trainNoStr.length > 0;
-    if (!trainNoOk) {
+    if (!trainNoOk && !allowSoftChartPending) {
       throw new Error(
         errMsg || 'Train composition is temporarily unavailable.',
       );
