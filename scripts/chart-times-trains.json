@@ -370,27 +370,42 @@
   {
     "trainNumber": "01058",
     "trainName": "CSMT SUMMER SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1058-csmt-summer-spl-chart-times",
+    "canonicalNumber": "1058"
   },
   {
     "trainNumber": "01059",
     "trainName": "LTT SSB SPECIAL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1059-sur-csmt-spl-chart-times",
+    "canonicalNumber": "1059"
   },
   {
     "trainNumber": "01060",
     "trainName": "SSB LTT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1060-dnr-csmt-spl-chart-times",
+    "canonicalNumber": "1060"
   },
   {
     "trainNumber": "01064",
     "trainName": "AMRIT BHARAT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1064-amrit-bharat-spl-chart-times",
+    "canonicalNumber": "1064"
   },
   {
     "trainNumber": "01068",
     "trainName": "KRMR LTT SPL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "1068-krmr-ltt-spl-chart-times",
+    "canonicalNumber": "1068"
   },
   {
     "trainNumber": "01071",
