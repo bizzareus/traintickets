@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BellRing } from "lucide-react";
 import { apiClient } from "@/lib/api";
 
@@ -8,11 +8,16 @@ const CLASSES = ["SL", "3A", "2A", "1A", "CC", "EC", "2S"] as const;
 
 type StationOption = { stationCode: string; stationName: string };
 
-function todayYmd(): string {
+function ymdPlusDays(days: number): string {
   const d = new Date();
+  d.setDate(d.getDate() + days);
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const day = String(d.getDate()).padStart(2, "0");
   return `${d.getFullYear()}-${m}-${day}`;
+}
+
+function todayYmd(): string {
+  return ymdPlusDays(0);
 }
 
 /**
@@ -48,6 +53,14 @@ export default function ChartTimeAlertCTA({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+
+  // Default the journey date to the next day (tomorrow) unless the page already
+  // supplied one. Done after mount to avoid an SSR/client "today" mismatch.
+  useEffect(() => {
+    if (!initialJourneyDate) {
+      setJourneyDate(ymdPlusDays(1));
+    }
+  }, [initialJourneyDate]);
 
   const subscribe = async () => {
     const em = email.trim();
@@ -107,7 +120,7 @@ export default function ChartTimeAlertCTA({
       <div className="mb-6 flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="flex items-center gap-2 text-base font-semibold text-slate-900">
-            <BellRing className="h-4 w-4 text-teal-700" />
+            <BellRing className="h-4 w-4 text-blue-700" />
             Get a chart preparation alert
           </h2>
           <p className="mt-1 text-sm text-slate-600">
@@ -118,7 +131,7 @@ export default function ChartTimeAlertCTA({
         <button
           type="button"
           onClick={() => setExpanded(true)}
-          className="shrink-0 rounded-md bg-teal-700 px-4 py-2.5 font-medium text-white transition hover:bg-teal-800"
+          className="shrink-0 rounded-md bg-blue-600 px-4 py-2.5 font-medium text-white transition hover:bg-blue-700"
         >
           Set up alert
         </button>
@@ -127,9 +140,9 @@ export default function ChartTimeAlertCTA({
   }
 
   return (
-    <div className="mb-6 rounded-xl border border-teal-200 bg-teal-50/60 p-5 shadow-sm">
+    <div className="mb-6 rounded-xl border border-blue-200 bg-blue-50/60 p-5 shadow-sm">
       <h2 className="flex items-center gap-2 text-base font-semibold text-slate-900">
-        <BellRing className="h-4 w-4 text-teal-700" />
+        <BellRing className="h-4 w-4 text-blue-700" />
         Chart preparation alert for {trainName} ({trainNumber})
       </h2>
       <p className="mt-1 text-sm text-slate-600">
@@ -143,7 +156,7 @@ export default function ChartTimeAlertCTA({
           <select
             value={stationCode}
             onChange={(e) => setStationCode(e.target.value)}
-            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/25"
+            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
           >
             {stations.map((s) => (
               <option key={s.stationCode} value={s.stationCode}>
@@ -157,7 +170,7 @@ export default function ChartTimeAlertCTA({
           <select
             value={classCode}
             onChange={(e) => setClassCode(e.target.value)}
-            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/25"
+            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
           >
             {CLASSES.map((c) => (
               <option key={c} value={c}>
@@ -173,7 +186,7 @@ export default function ChartTimeAlertCTA({
             value={journeyDate.slice(0, 10)}
             min={todayYmd()}
             onChange={(e) => setJourneyDate(e.target.value)}
-            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/25"
+            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
           />
         </label>
       </div>
@@ -185,7 +198,7 @@ export default function ChartTimeAlertCTA({
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
           autoComplete="email"
-          className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/25"
+          className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
         />
         <input
           type="tel"
@@ -193,7 +206,7 @@ export default function ChartTimeAlertCTA({
           onChange={(e) => setMobile(e.target.value)}
           placeholder="Mobile (for WhatsApp/SMS)"
           autoComplete="tel"
-          className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/25"
+          className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
         />
       </div>
 
@@ -202,7 +215,7 @@ export default function ChartTimeAlertCTA({
           type="button"
           disabled={loading}
           onClick={subscribe}
-          className="rounded-md bg-teal-700 px-5 py-2.5 font-medium text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loading ? "Setting up…" : "Set alert"}
         </button>

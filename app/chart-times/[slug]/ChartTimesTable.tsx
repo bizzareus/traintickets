@@ -70,7 +70,7 @@ export default function ChartTimesTable({
               <td className="px-4 py-3">
                 {s.chartTimeLocal ? (
                   <div className="flex flex-col gap-1">
-                    <span className="inline-flex w-fit items-center rounded-md bg-teal-50 px-2 py-1 font-semibold text-teal-700">
+                    <span className="inline-flex w-fit items-center rounded-md bg-blue-50 px-2 py-1 font-semibold text-blue-700">
                       {formatChartPrep(s.chartTimeLocal, s.chartOneDayOffset, journeyDate)}
                     </span>
                     {s.chartRemoteStation && s.chartRemoteStation !== s.stationCode ? (

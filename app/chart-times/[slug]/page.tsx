@@ -141,11 +141,11 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
       />
 
       <nav className="mb-4 text-sm text-slate-500" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-teal-700">
+        <Link href="/" className="hover:text-blue-700">
           Home
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/chart-times" className="hover:text-teal-700">
+        <Link href="/chart-times" className="hover:text-blue-700">
           Chart Times
         </Link>
         <span className="mx-2">/</span>
@@ -164,7 +164,7 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           <span className="font-medium">{data.destinationStation}</span>.
         </p>
         {journeyDateLabel && (
-          <p className="mt-3 inline-flex items-center gap-2 rounded-md bg-teal-50 px-3 py-1.5 text-sm font-medium text-teal-800">
+          <p className="mt-3 inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-1.5 text-sm font-medium text-blue-800">
             Journey date: {journeyDateLabel}
           </p>
         )}
@@ -192,7 +192,7 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
         Looking for the full timetable, halts and seat confirmation chances?{" "}
         <Link
           href={`/trains/${data.trainNumber}`}
-          className="font-medium text-teal-700 hover:underline"
+          className="font-medium text-blue-700 hover:underline"
         >
           View the {data.trainNumber} train schedule →
         </Link>

@@ -139,7 +139,7 @@ export default function ChartTimesFinder() {
               }}
               onFocus={() => setOpen(true)}
               placeholder="Search train name or number…"
-              className="block w-full rounded-md border border-slate-300 bg-white py-2.5 pl-9 pr-3 text-slate-900 placeholder:text-slate-400 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/25"
+              className="block w-full rounded-md border border-slate-300 bg-white py-2.5 pl-9 pr-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
             />
           </div>
           {open && (matches.length > 0 || loadError) && (
@@ -184,7 +184,7 @@ export default function ChartTimesFinder() {
               value={journeyDate}
               min={todayYmd()}
               onChange={(e) => setJourneyDate(e.target.value)}
-              className="block w-full rounded-md border border-slate-300 bg-white py-2.5 pl-9 pr-3 text-slate-900 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/25"
+              className="block w-full rounded-md border border-slate-300 bg-white py-2.5 pl-9 pr-3 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
             />
           </div>
         </div>
@@ -192,7 +192,7 @@ export default function ChartTimesFinder() {
         <button
           type="submit"
           disabled={!resolvedTrain}
-          className="rounded-md bg-teal-700 px-5 py-2.5 font-medium text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
           View chart times
         </button>

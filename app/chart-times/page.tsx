@@ -60,7 +60,7 @@ export default function ChartTimesIndexPage() {
                     </span>
                   )}
                 </span>
-                <span className="text-teal-700">→</span>
+                <span className="text-blue-700">→</span>
               </Link>
             </li>
           ))}
