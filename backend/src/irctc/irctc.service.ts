@@ -28,8 +28,11 @@ const IRCTC_TRAIN_COMPOSITION_URL =
   'https://www.irctc.co.in/online-charts/api/trainComposition';
 const RAPIDAPI_TRAIN_SEARCH_URL =
   'https://irctc1.p.rapidapi.com/api/v1/getTrainSchedule';
+const RAPIDAPI_SEARCH_STATION_URL =
+  'https://irctc1.p.rapidapi.com/api/v1/searchStation';
 const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
 const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
+const RAPIDAPI_SEARCH_STATION_TIMEOUT_MS = 8_000;
 const IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS = 30_000;
 
 /**
@@ -602,6 +605,61 @@ export class IrctcService {
       stationList,
       trainRunsOn,
     };
+  }
+
+  /**
+   * Station autocomplete fallback via RapidAPI (irctc1.p.rapidapi.com).
+   * Used only when the local station_cache misses. Fast and reliable, unlike
+   * the IRCTC rail-API station endpoint. Never throws — returns [] on any error
+   * so the caller can degrade gracefully.
+   */
+  async searchStationsViaRapidApi(
+    query: string,
+  ): Promise<Array<{ stationCode: string; stationName: string }>> {
+    const q = query.trim();
+    if (q.length < 2) return [];
+    const key = this.rapidApiKey();
+    if (!key) {
+      this.logger.warn(
+        '[irctc/searchStation] RapidAPI key missing; skipping station fallback.',
+      );
+      return [];
+    }
+    try {
+      const res = await rapidApiScheduleClient.get<unknown>(
+        RAPIDAPI_SEARCH_STATION_URL,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Rapidapi-Host': 'irctc1.p.rapidapi.com',
+            'X-Rapidapi-Key': key,
+          },
+          params: { query: q },
+          timeout: RAPIDAPI_SEARCH_STATION_TIMEOUT_MS,
+        },
+      );
+      const root =
+        res.data && typeof res.data === 'object' && !Array.isArray(res.data)
+          ? (res.data as Record<string, unknown>)
+          : {};
+      const list = Array.isArray(root.data) ? root.data : [];
+      const out: Array<{ stationCode: string; stationName: string }> = [];
+      for (const row of list) {
+        if (!row || typeof row !== 'object') continue;
+        const r = row as Record<string, unknown>;
+        const code = strFromUnknown(r.code).trim().toUpperCase();
+        const name = (strFromUnknown(r.eng_name) || strFromUnknown(r.name))
+          .trim()
+          .toUpperCase();
+        if (code && name) out.push({ stationCode: code, stationName: name });
+      }
+      return out;
+    } catch (err) {
+      this.logger.warn(
+        `[irctc/searchStation] RapidAPI station search failed for "${q}": ${err instanceof Error ? err.message : String(err)}`,
+      );
+      return [];
+    }
   }
 
   private async fetchScheduleFromRapidApi(

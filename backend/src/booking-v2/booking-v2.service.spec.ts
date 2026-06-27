@@ -21,8 +21,12 @@ const mockCache: jest.Mocked<
 const mockStationCache: jest.Mocked<
   Pick<StationCacheService, 'search' | 'upsertMany'>
 > = {
-  search: jest.fn().mockResolvedValue(null),
+  search: jest.fn().mockResolvedValue([]),
   upsertMany: jest.fn().mockResolvedValue(undefined),
+};
+
+const mockIrctc: jest.Mocked<Pick<IrctcService, 'searchStationsViaRapidApi'>> = {
+  searchStationsViaRapidApi: jest.fn().mockResolvedValue([]),
 };
 
 function altResult(
@@ -101,7 +105,7 @@ describe('BookingV2Service', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    const irctc = {} as IrctcService;
+    const irctc = mockIrctc as unknown as IrctcService;
     service = new BookingV2Service(
       irctc,
       mockCache as unknown as CacheService,
@@ -155,51 +159,26 @@ describe('BookingV2Service', () => {
       expect(result).toEqual({ data: { stationList: cached } });
     });
 
-    it('falls through to upstream when cache returns null', async () => {
-      mockStationCache.search.mockResolvedValueOnce(null);
-      const body = JSON.stringify({
-        data: {
-          stationList: [{ stationCode: 'CSTM', stationName: 'Mumbai CST' }],
-        },
-      });
-      const fetchSpy = jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-        ok: true,
-        text: () => Promise.resolve(body),
-      } as Response);
+    it('falls back to RapidAPI when the cache misses, and backfills the cache', async () => {
+      mockStationCache.search.mockResolvedValueOnce([]);
+      const apiRows = [{ stationCode: 'CSTM', stationName: 'MUMBAI CST' }];
+      mockIrctc.searchStationsViaRapidApi.mockResolvedValueOnce(apiRows);
 
       const result = await service.searchStations('mum');
 
-      expect(fetchSpy).toHaveBeenCalled();
-      const data = (result as { data: { stationList: unknown[] } }).data;
-      expect(data.stationList).toHaveLength(1);
-      fetchSpy.mockRestore();
+      expect(mockIrctc.searchStationsViaRapidApi).toHaveBeenCalledWith('mum');
+      expect(result).toEqual({ data: { stationList: apiRows } });
+      expect(mockStationCache.upsertMany).toHaveBeenCalledWith(apiRows);
     });
 
-    it('throws when upstream returns non-OK status', async () => {
-      mockStationCache.search.mockResolvedValueOnce(null);
-      jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-        ok: false,
-        status: 503,
-        text: () => Promise.resolve('Service Unavailable'),
-      } as Response);
-
-      await expect(service.searchStations('mum')).rejects.toThrow(
-        'Station search failed: 503',
-      );
-    });
-
-    it('returns an empty station result when upstream returns 404', async () => {
-      mockStationCache.search.mockResolvedValueOnce(null);
-      jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-        ok: false,
-        status: 404,
-        text: () => Promise.resolve('Not Found'),
-      } as Response);
+    it('returns an empty list when both cache and RapidAPI miss', async () => {
+      mockStationCache.search.mockResolvedValueOnce([]);
+      mockIrctc.searchStationsViaRapidApi.mockResolvedValueOnce([]);
 
       await expect(service.searchStations('zzzz')).resolves.toEqual({
         data: { stationList: [] },
-        message: 'No station found',
       });
+      expect(mockStationCache.upsertMany).not.toHaveBeenCalled();
     });
   });
 

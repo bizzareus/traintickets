@@ -454,130 +454,29 @@ export class BookingV2Service {
   async searchStations(searchString: string): Promise<unknown> {
     const q = (searchString || '').trim();
 
-    // DB-first: try the station cache before hitting the upstream API.
+    // DB-first: station_cache is the seeded source of truth for autocomplete.
     const cached = await this.stationCache.search(q);
-    if (cached !== null) {
+    if (cached.length > 0) {
       this.logger.log(
         `[booking-v2/stations] source=cache q=${q.slice(0, 40)} count=${cached.length}`,
       );
       return { data: { stationList: cached } };
     }
-    this.logger.log(
-      `[booking-v2/stations] source=upstream reason=cache_miss q=${q.slice(0, 40)}`,
-    );
 
-    const params = new URLSearchParams({
-      searchString: q,
-      sourceStnCode: '',
-      popularStnListLimit: '15',
-      preferredStnListLimit: '6',
-      channel: 'mweb',
-      language: 'EN',
-    });
-    const url = `${BOOKING_V2_RAIL_API_BASE.stationsSuggest}?${params}`;
-    const res = await fetch(url, {
-      method: 'GET',
-      headers: BOOKING_V2_RAIL_API_HEADERS,
-    });
-    const text = await res.text();
-    if (!res.ok) {
-      if (res.status === 404) {
-        this.logger.log(
-          `[booking-v2/stations] source=upstream status=404 q=${q.slice(0, 40)} count=0`,
-        );
-        return { data: { stationList: [] }, message: 'No station found' };
-      }
-      this.logger.warn(
-        `[booking-v2/stations] upstream ${res.status} q=${q.slice(0, 40)} body=${text.slice(0, 300)}`,
-      );
-      throw new Error(`Station search failed: ${res.status}`);
-    }
-    let parsed: unknown;
-    try {
-      parsed = JSON.parse(text) as unknown;
-    } catch {
-      throw new Error('Station search: invalid JSON');
-    }
-    const merged = this.mergeStationSuggestResponse(parsed);
-
-    // Fire-and-forget: populate the station cache from API results.
-    const stations = this.extractStationListFromResponse(merged);
+    // Cache miss → RapidAPI fallback (fast/reliable, unlike the IRCTC rail API).
+    // Backfill the cache so the next lookup for this station is served from DB.
+    const fromApi = await this.irctc.searchStationsViaRapidApi(q);
     this.logger.log(
-      `[booking-v2/stations] source=upstream status=${res.status ?? 'ok'} q=${q.slice(0, 40)} count=${stations.length}`,
+      `[booking-v2/stations] source=rapidapi reason=cache_miss q=${q.slice(0, 40)} count=${fromApi.length}`,
     );
-    if (stations.length > 0) {
+    if (fromApi.length > 0) {
       void this.stationCache
-        .upsertMany(stations)
-        .then(() =>
-          this.logger.log(
-            `[booking-v2/stations] cache_upsert q=${q.slice(0, 40)} count=${stations.length}`,
-          ),
-        )
+        .upsertMany(fromApi)
         .catch((e: unknown) =>
           this.logger.warn('[booking-v2/stations] cache upsert failed', e),
         );
     }
-
-    return merged;
-  }
-
-  /** Extract a flat stationList from a merged suggest response for cache upsert. */
-  private extractStationListFromResponse(
-    body: unknown,
-  ): Array<{ stationCode: string; stationName: string }> {
-    if (!body || typeof body !== 'object') return [];
-    const data = (body as Record<string, unknown>).data;
-    if (!data || typeof data !== 'object') return [];
-    const list = (data as Record<string, unknown>).stationList;
-    if (!Array.isArray(list)) return [];
-    const out: Array<{ stationCode: string; stationName: string }> = [];
-    for (const row of list) {
-      if (!row || typeof row !== 'object') continue;
-      const r = row as Record<string, string>;
-      const code = (r.stationCode ?? '').trim();
-      const name = (r.stationName ?? '').trim();
-      if (code && name) out.push({ stationCode: code, stationName: name });
-    }
-    return out;
-  }
-
-  /** Merge stationList + popularStationList (+ preferred), dedupe by code+name. */
-  private mergeStationSuggestResponse(body: unknown): unknown {
-    if (!body || typeof body !== 'object') return body;
-    const root = body as Record<string, unknown>;
-    const data = root.data;
-    if (!data || typeof data !== 'object') return body;
-    const d = data as Record<string, unknown>;
-    const merge = (lists: unknown[][]): unknown[] => {
-      const seen = new Set<string>();
-      const out: unknown[] = [];
-      for (const list of lists) {
-        for (const row of list) {
-          if (!row || typeof row !== 'object') continue;
-          const r = row as Record<string, unknown>;
-          const code = ((r.stationCode as string) || '').trim();
-          const name = ((r.stationName as string) || '').trim();
-          const key = `${code}|${name}`.toUpperCase();
-          if (!code || seen.has(key)) continue;
-          seen.add(key);
-          out.push(row);
-        }
-      }
-      return out;
-    };
-    const a = Array.isArray(d.stationList) ? d.stationList : [];
-    const b = Array.isArray(d.popularStationList) ? d.popularStationList : [];
-    const c = Array.isArray(d.preferredStationList)
-      ? d.preferredStationList
-      : [];
-    const stationList = merge([a, b, c]);
-    return {
-      ...root,
-      data: {
-        ...d,
-        stationList,
-      },
-    };
+    return { data: { stationList: fromApi } };
   }
 
   async searchTrains(

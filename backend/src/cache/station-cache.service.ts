@@ -7,9 +7,6 @@ export type StationRow = {
   [key: string]: unknown;
 };
 
-/** Minimum number of DB results required to treat a station autocomplete query as a cache hit. */
-const MIN_STATION_RESULTS = 5;
-
 /**
  * Dedicated cache for station autocomplete.
  *
@@ -22,12 +19,13 @@ export class StationCacheService {
   constructor(private readonly prisma: PrismaService) {}
 
   /**
-   * Search cached stations by code prefix or name substring.
-   * Returns null when results are below the minimum threshold (caller should fall back to API).
+   * Search cached stations by code prefix or name substring. Returns whatever
+   * the DB has (no upstream fallback) — the station_cache table is seeded, so
+   * this is the source of truth for autocomplete.
    */
-  async search(q: string): Promise<StationRow[] | null> {
+  async search(q: string): Promise<StationRow[]> {
     const normalized = q.trim().toUpperCase();
-    if (normalized.length < 2) return null;
+    if (normalized.length < 2) return [];
 
     const rows = await this.prisma.stationCache.findMany({
       where: {
@@ -39,8 +37,6 @@ export class StationCacheService {
       take: 20,
       orderBy: { stationCode: 'asc' },
     });
-
-    if (rows.length < MIN_STATION_RESULTS) return null;
 
     return rows.map((r) => ({
       stationCode: r.stationCode,
