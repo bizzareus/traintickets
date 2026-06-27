@@ -1,5 +1,6 @@
 // This file configures the Sentry browser SDK. It runs in the client bundle only.
 import * as Sentry from "@sentry/nextjs";
+import { isBrowserOnLocalhost, isLocalhostUrl } from "@/lib/observability";
 
 function clientTracesSampleRate(): number {
   const raw = process.env.NEXT_PUBLIC_SENTRY_TRACES_SAMPLE_RATE?.trim();
@@ -11,7 +12,8 @@ function clientTracesSampleRate(): number {
 }
 
 const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN?.trim();
-if (dsn) {
+// Never send anything from a localhost page — don't even init the SDK there.
+if (dsn && !isBrowserOnLocalhost()) {
   Sentry.init({
     dsn,
     environment:
@@ -19,5 +21,14 @@ if (dsn) {
       process.env.NODE_ENV ||
       "development",
     tracesSampleRate: clientTracesSampleRate(),
+    // Defensive: drop any event/trace tied to localhost (e.g. SPA navigations).
+    beforeSend: (event) =>
+      isBrowserOnLocalhost() || isLocalhostUrl(event.request?.url)
+        ? null
+        : event,
+    beforeSendTransaction: (event) =>
+      isBrowserOnLocalhost() || isLocalhostUrl(event.request?.url)
+        ? null
+        : event,
   });
 }

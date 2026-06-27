@@ -1,6 +1,49 @@
 import * as Sentry from '@sentry/nestjs';
 import { nodeProfilingIntegration } from '@sentry/profiling-node';
 
+const LOCALHOST_HOSTS = new Set(['localhost', '127.0.0.1', '0.0.0.0', '::1']);
+
+function normalizeHost(hostname: string): string {
+  let h = hostname.toLowerCase().trim();
+  if (h.startsWith('[')) {
+    const end = h.indexOf(']');
+    if (end !== -1) return h.slice(1, end);
+  }
+  if ((h.match(/:/g) || []).length === 1) {
+    h = h.slice(0, h.indexOf(':'));
+  }
+  return h;
+}
+
+function isLocalhostHostname(hostname?: string | null): boolean {
+  if (!hostname) return false;
+  const h = normalizeHost(hostname);
+  return (
+    LOCALHOST_HOSTS.has(h) || h.endsWith('.local') || h.endsWith('.localhost')
+  );
+}
+
+function isLocalhostUrl(url?: string | null): boolean {
+  if (!url) return false;
+  try {
+    return isLocalhostHostname(new URL(url).hostname);
+  } catch {
+    return /(^|\/\/|@)(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])(:|\/|$)/i.test(
+      url,
+    );
+  }
+}
+
+/** Drop events/traces tied to a localhost host, keeping local dev out of Sentry. */
+function isLocalhostEvent(event: {
+  request?: { url?: string };
+  server_name?: string;
+}): boolean {
+  return (
+    isLocalhostUrl(event.request?.url) || isLocalhostHostname(event.server_name)
+  );
+}
+
 function parseSampleRate(value: string | undefined, fallback: number): number {
   if (value == null || value.trim() === '') return fallback;
   const n = Number.parseFloat(value);
@@ -45,5 +88,8 @@ if (dsn) {
     profileSessionSampleRate: profileSessionSampleRate(),
     profileLifecycle: 'trace',
     sendDefaultPii: sendDefaultPii(),
+    beforeSend: (event) => (isLocalhostEvent(event) ? null : event),
+    beforeSendTransaction: (event) =>
+      isLocalhostEvent(event) ? null : event,
   });
 }

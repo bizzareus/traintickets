@@ -1,5 +1,6 @@
 import posthog from "posthog-js";
-import { isAnalyticsEnabled, posthogApiHost } from "./config";
+import { posthogApiHost } from "./config";
+import { isBrowserOnLocalhost } from "@/lib/observability";
 
 /**
  * Lazy browser init: call from a client `useEffect` after the first commit so
@@ -23,6 +24,9 @@ let initCalled = false;
 
 export function initPosthogBrowser(): void {
   if (typeof window === "undefined" || !POSTHOG_KEY) return;
+
+  // Don't capture anything from localhost — keeps local dev out of PostHog.
+  if (isBrowserOnLocalhost()) return;
 
   // Suppression logic moved here to avoid hydration mismatches
   const isAdminPath = window.location.pathname.startsWith("/admin");
