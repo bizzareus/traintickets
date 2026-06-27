@@ -25,8 +25,11 @@ const mockStationCache: jest.Mocked<
   upsertMany: jest.fn().mockResolvedValue(undefined),
 };
 
-const mockIrctc: jest.Mocked<Pick<IrctcService, 'searchStationsViaRapidApi'>> = {
+const mockIrctc: jest.Mocked<
+  Pick<IrctcService, 'searchStationsViaRapidApi' | 'getTrainClasses'>
+> = {
   searchStationsViaRapidApi: jest.fn().mockResolvedValue([]),
+  getTrainClasses: jest.fn().mockResolvedValue([]),
 };
 
 function altResult(

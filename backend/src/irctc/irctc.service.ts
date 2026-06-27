@@ -30,9 +30,12 @@ const RAPIDAPI_TRAIN_SEARCH_URL =
   'https://irctc1.p.rapidapi.com/api/v1/getTrainSchedule';
 const RAPIDAPI_SEARCH_STATION_URL =
   'https://irctc1.p.rapidapi.com/api/v1/searchStation';
+const RAPIDAPI_TRAIN_CLASSES_URL =
+  'https://irctc1.p.rapidapi.com/api/v1/getTrainClasses';
 const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
 const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
 const RAPIDAPI_SEARCH_STATION_TIMEOUT_MS = 8_000;
+const RAPIDAPI_TRAIN_CLASSES_TIMEOUT_MS = 8_000;
 const IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS = 30_000;
 
 /**
@@ -657,6 +660,75 @@ export class IrctcService {
     } catch (err) {
       this.logger.warn(
         `[irctc/searchStation] RapidAPI station search failed for "${q}": ${err instanceof Error ? err.message : String(err)}`,
+      );
+      return [];
+    }
+  }
+
+  /**
+   * Travel classes a train offers (e.g. ["SL","3A","2A","1A"]). DB-first
+   * (TrainScheduleCache.availableClasses); on a miss, falls back to RapidAPI
+   * getTrainClasses and persists the result. Used to probe only real classes in
+   * alternate-paths instead of every possible class. Never throws — returns []
+   * when unknown so the caller falls back to the full class list.
+   */
+  async getTrainClasses(trainNo: string): Promise<string[]> {
+    const num = String(trainNo).trim();
+    if (!num) return [];
+
+    // DB-first.
+    try {
+      const row = await this.prisma.trainScheduleCache.findUnique({
+        where: { trainNumber: num },
+        select: { availableClasses: true },
+      });
+      if (row?.availableClasses && row.availableClasses.length > 0) {
+        return row.availableClasses;
+      }
+    } catch {
+      // Column may not exist yet (pre-migration) — fall through to RapidAPI.
+    }
+
+    const key = this.rapidApiKey();
+    if (!key) return [];
+    try {
+      const res = await rapidApiScheduleClient.get<unknown>(
+        RAPIDAPI_TRAIN_CLASSES_URL,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Rapidapi-Host': 'irctc1.p.rapidapi.com',
+            'X-Rapidapi-Key': key,
+          },
+          params: { trainNo: num },
+          timeout: RAPIDAPI_TRAIN_CLASSES_TIMEOUT_MS,
+        },
+      );
+      const root =
+        res.data && typeof res.data === 'object' && !Array.isArray(res.data)
+          ? (res.data as Record<string, unknown>)
+          : {};
+      const data = Array.isArray(root.data) ? root.data : [];
+      const classes = [
+        ...new Set(
+          data
+            .map((c) => strFromUnknown(c).trim().toUpperCase())
+            .filter(Boolean),
+        ),
+      ];
+      if (classes.length > 0) {
+        // Persist back (only updates if the schedule row exists; no-op otherwise).
+        await this.prisma.trainScheduleCache
+          .updateMany({
+            where: { trainNumber: num },
+            data: { availableClasses: classes },
+          })
+          .catch(() => undefined);
+      }
+      return classes;
+    } catch (err) {
+      this.logger.warn(
+        `[irctc/getTrainClasses] RapidAPI failed for ${num}: ${err instanceof Error ? err.message : String(err)}`,
       );
       return [];
     }

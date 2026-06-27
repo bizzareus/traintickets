@@ -114,6 +114,9 @@ model TrainScheduleCache {
   fetchedAt   DateTime @default(now()) @map("fetched_at")
   /// IRCTC schedule: trainRunsOnMon..Sun as "Y"|"N" (JSON object)
   trainRunsOn Json?    @map("train_runs_on")
+  /// Travel classes the train offers (e.g. ["SL","3A","2A","1A"]); used to probe
+  /// only real classes in alternate-paths instead of all possible classes.
+  availableClasses String[] @default([]) @map("available_classes")
 
   @@index([trainNumber])
 }
