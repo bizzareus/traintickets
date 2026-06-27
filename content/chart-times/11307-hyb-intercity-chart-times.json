@@ -1,0 +1,103 @@
+{
+  "trainNumber": "11307",
+  "trainName": "Hyb Intercity",
+  "originStation": "KLBG",
+  "destinationStation": "HYB",
+  "slug": "11307-hyb-intercity-chart-times",
+  "stations": [
+    {
+      "stationCode": "KLBG",
+      "stationName": "Kalaburagi",
+      "arrivalTime": "",
+      "departureTime": "06:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SDB",
+      "stationName": "Shahabad",
+      "arrivalTime": "06:21",
+      "departureTime": "06:22",
+      "day": 1,
+      "distance": "26.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "WADI",
+      "stationName": "Wadi",
+      "arrivalTime": "06:40",
+      "departureTime": "06:45",
+      "day": 1,
+      "distance": "36.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TDU",
+      "stationName": "Tandur",
+      "arrivalTime": "07:39",
+      "departureTime": "07:40",
+      "day": 1,
+      "distance": "107.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "VKB",
+      "stationName": "Vikarabad Jn",
+      "arrivalTime": "08:34",
+      "departureTime": "08:36",
+      "day": 1,
+      "distance": "149.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "LPI",
+      "stationName": "Lingampalli",
+      "arrivalTime": "09:29",
+      "departureTime": "09:30",
+      "day": 1,
+      "distance": "198.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "HYB",
+      "stationName": "Hyderabad Decan",
+      "arrivalTime": "10:35",
+      "departureTime": "",
+      "day": 1,
+      "distance": "222.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Hyb Intercity (11307) from KLBG to HYB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-26T23:49:03.782Z",
+  "knownChartCount": 0
+}

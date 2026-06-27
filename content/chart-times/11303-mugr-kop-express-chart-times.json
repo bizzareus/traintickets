@@ -1,0 +1,38 @@
+{
+  "trainNumber": "11303",
+  "trainName": "Mugr Kop Express",
+  "originStation": "SUR",
+  "destinationStation": "LTT",
+  "slug": "11303-mugr-kop-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "SUR",
+      "stationName": "Solapur Jn",
+      "arrivalTime": "",
+      "departureTime": "09:20",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "LTT",
+      "stationName": "Lokmanyatilak T",
+      "arrivalTime": "03:45",
+      "departureTime": "",
+      "day": 2,
+      "distance": "419.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Mugr Kop Express (11303) from SUR to LTT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
+  "generatedAt": "2026-06-26T23:48:21.206Z",
+  "knownChartCount": 0
+}
