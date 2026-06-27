@@ -131,9 +131,9 @@ function TrainAutocomplete({
   value: TrainOption | null;
   onSelect: (t: TrainOption) => void;
 }) {
-  const [query, setQuery] = useState(
-    value ? `${value.number} - ${value.label}` : "",
-  );
+  // `label` already includes the train number (e.g. "12958 - SWRAN J RAJDHANI"),
+  // so show it as-is rather than prefixing the number again.
+  const [query, setQuery] = useState(value ? value.label : "");
   const [open, setOpen] = useState(false);
   const [suggestions, setSuggestions] = useState<TrainOption[]>([]);
   const [loading, setLoading] = useState(false);
@@ -143,7 +143,7 @@ function TrainAutocomplete({
   const debounced = useDebounced(query, 700);
 
   useEffect(() => {
-    if (value) setQuery(`${value.number} - ${value.label}`);
+    if (value) setQuery(value.label);
   }, [value]);
 
   useEffect(() => {
@@ -233,12 +233,11 @@ function TrainAutocomplete({
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => {
                   onSelect(t);
-                  setQuery(`${t.number} - ${t.label}`);
+                  setQuery(t.label);
                   setOpen(false);
                 }}
               >
-                <span className="font-bold text-blue-700">{t.number}</span>
-                <span className="ml-2 text-gray-600">{t.label}</span>
+                <span className="text-gray-700">{t.label}</span>
               </button>
             </li>
           ))}
@@ -1001,7 +1000,7 @@ export function SeatStatus() {
                 </span>
                 <span className="text-slate-400">—</span>
                 <span className="text-sm font-semibold text-slate-300">
-                  {selectedTrain?.number} {selectedTrain?.label}
+                  {selectedTrain?.label}
                 </span>
               </div>
               <p className="mt-1 flex flex-wrap items-center gap-2 text-xs text-slate-400">
