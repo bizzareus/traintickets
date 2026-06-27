@@ -742,7 +742,11 @@ export class IrctcService {
     const q = query.trim();
     if (q.length < 2) return [];
 
-    // Search DB first
+    // Train search is served entirely from the TrainList table (seeded from
+    // prisma/trainlist.txt). We intentionally do NOT fall back to IRCTC's live
+    // trainList endpoint: it is slow/flaky and would hang the request (it was
+    // timing out at ~12s and returning empty). If a query misses, the fix is to
+    // (re)seed TrainList, not to call IRCTC.
     const rows = await this.prisma.trainList.findMany({
       where: {
         OR: [
@@ -754,47 +758,10 @@ export class IrctcService {
       orderBy: { label: 'asc' },
     });
 
-    if (rows.length > 0) {
-      return rows.map((row) => ({
-        number: row.trainNumber,
-        label: row.label,
-      }));
-    }
-
-    // If not found in DB, try IRCTC API directly
-    try {
-      const res = await fetchWithTimeout(
-        `https://www.irctc.co.in/eticketing/trainList?q=${encodeURIComponent(q)}`,
-        {
-          headers: {
-            Accept: 'application/json',
-            'User-Agent':
-              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
-          },
-        },
-      );
-      if (res.ok) {
-        const text = await res.text();
-        if (text) {
-          // Output is typically like "12958 - ADI SJ RAJDHANI","..."
-          const arr = JSON.parse(`[${text}]`) as string[];
-          return arr
-            .filter((item) => item.toLowerCase().includes(q.toLowerCase()))
-            .slice(0, 20)
-            .map((item) => {
-              const [num, ...rest] = item.split(' - ');
-              return {
-                number: num.trim(),
-                label: rest.join(' - ').trim() || 'Unknown',
-              };
-            });
-        }
-      }
-    } catch (e) {
-      this.logger.error(`IRCTC trainList search failed for query "${q}"`, e);
-    }
-
-    return [];
+    return rows.map((row) => ({
+      number: row.trainNumber,
+      label: row.label,
+    }));
   }
 
   async getVacantBerth(payload: {
