@@ -46,6 +46,11 @@
 # By default SPL / Special trains (name contains "SPL" or "Special") are skipped —
 # they have no useful chart vacancy data. Pass --include-spl to process them.
 #
+# Pruning: in the normal (list) mode, trains that are skipped for being special,
+# have an invalid train number, or fail to generate (non-200 after retries) are
+# REMOVED from the input JSON, so the list shrinks to only real, working trains.
+# (Does not apply to --fillup or --train modes.)
+#
 # Exit codes: 0 ok, 1 bad usage/deps, 2 input missing/invalid.
 
 set -euo pipefail
@@ -218,36 +223,51 @@ already="$(jq '[.[] | select(.completed == true)] | length' "$INPUT")"
 echo "Input: $INPUT ($total trains, $already already completed)" >&2
 echo "Target: $BASE_URL/chart-times/<trainNumber>  (delay ${DELAY}s, limit ${LIMIT:-all}, force=$FORCE)" >&2
 
-# Indices to process this run (read into an array portably; macOS bash 3.2 has no mapfile).
-IDX=()
+# Snapshot the trains to process this run into parallel arrays (number + name).
+# We iterate the snapshot — not live array indices — because special/failed
+# trains get REMOVED from $INPUT mid-loop, which would shift positional indices.
+# All mutations below target trainNumber, so they stay correct as the list shrinks.
+NUMS=(); NAMES=()
 if [[ "$FORCE" -eq 1 ]]; then
-  JQ_SELECT='to_entries[].key'
+  JQ_SELECT='.[]'
 else
-  JQ_SELECT='to_entries[] | select(.value.completed != true) | .key'
+  JQ_SELECT='.[] | select(.completed != true)'
 fi
-while IFS= read -r _key; do
-  [[ -n "$_key" ]] && IDX+=("$_key")
-done < <(jq -r "$JQ_SELECT" "$INPUT")
+while IFS=$'\t' read -r _num _name; do
+  [[ -n "$_num" ]] && { NUMS+=("$_num"); NAMES+=("$_name"); }
+done < <(jq -r "$JQ_SELECT | [(.trainNumber|tostring), (.trainName // \"\")] | @tsv" "$INPUT")
 
-if [[ "${#IDX[@]}" -eq 0 ]]; then
+if [[ "${#NUMS[@]}" -eq 0 ]]; then
   echo "Nothing to do — all trains already completed (use --force to re-run)." >&2
   exit 0
 fi
 
-processed=0 ok=0 failed=0
 tmp="$(mktemp)"; trap 'rm -f "$tmp"' EXIT
 
-for i in "${IDX[@]}"; do
+# Drop every entry with this train number from the input list (in place, resumable).
+remove_train() {
+  jq --arg n "$1" 'map(select((.trainNumber|tostring) != $n))' "$INPUT" > "$tmp" && mv "$tmp" "$INPUT"
+}
+
+processed=0 ok=0 failed=0 removed=0 special=0 bad=0
+count="${#NUMS[@]}"
+
+for ((j = 0; j < count; j++)); do
   if [[ "$LIMIT" -gt 0 && "$processed" -ge "$LIMIT" ]]; then
     echo "Reached limit of $LIMIT; stopping (resumable)." >&2
     break
   fi
-  num="$(jq -r ".[$i].trainNumber" "$INPUT")"
-  name="$(jq -r ".[$i].trainName // \"\"" "$INPUT")"
-  [[ "$num" =~ ^[0-9]{3,6}$ ]] || { echo "skip[$i]: bad trainNumber '$num'" >&2; continue; }
+  num="${NUMS[$j]}"; name="${NAMES[$j]}"
+
+  # Invalid train number — junk that can never generate a page; drop it.
+  if ! [[ "$num" =~ ^[0-9]{3,6}$ ]]; then
+    echo "[$num] removed (bad trainNumber)" >&2
+    remove_train "$num"; removed=$((removed + 1)); bad=$((bad + 1)); continue
+  fi
+  # Special train (no useful chart data) — remove it (unless --include-spl).
   if [[ "$SKIP_SPECIAL" -eq 1 ]] && is_special "$name"; then
-    echo "[$num] skipped (special train '$name'; use --include-spl)" >&2
-    continue
+    echo "[$num] removed (special train '$name')" >&2
+    remove_train "$num"; removed=$((removed + 1)); special=$((special + 1)); continue
   fi
 
   # Warm by the train number from the list (the IRCTC schedule lookup may need the
@@ -256,10 +276,10 @@ for i in "${IDX[@]}"; do
   # <canonical> is the number the API returns (often without leading zeros).
   # The IRCTC schedule fetch is flaky under load, so retry a non-200 a few times.
   code="$(warm "$BASE_URL/chart-times/$num")"
-
   processed=$((processed + 1))
+
   if [[ "$code" == "200" ]]; then
-    status="ok"; ok=$((ok + 1))
+    ok=$((ok + 1))
     # Find the file the app actually wrote so tracking lines up with the filename,
     # even when the canonical number drops leading zeros (00961 -> 961-...json).
     f="$(find_content_file "$num" || true)"
@@ -267,19 +287,22 @@ for i in "${IDX[@]}"; do
     [[ -n "$f" ]] && slug="$(basename "$f" .json)"
     if [[ -n "$slug" ]]; then
       canonical="${slug%%-*}"
-      jq --arg s "$slug" --arg c "$canonical" \
-        ".[$i].completed = true | .[$i].httpStatus = 200 | .[$i].slug = \$s | .[$i].canonicalNumber = \$c" \
+      jq --arg n "$num" --arg s "$slug" --arg c "$canonical" \
+        'map(if (.trainNumber|tostring) == $n then .completed = true | .httpStatus = 200 | .slug = $s | .canonicalNumber = $c else . end)' \
         "$INPUT" > "$tmp" && mv "$tmp" "$INPUT"
     else
-      jq ".[$i].completed = true | .[$i].httpStatus = 200" "$INPUT" > "$tmp" && mv "$tmp" "$INPUT"
+      jq --arg n "$num" \
+        'map(if (.trainNumber|tostring) == $n then .completed = true | .httpStatus = 200 else . end)' \
+        "$INPUT" > "$tmp" && mv "$tmp" "$INPUT"
     fi
+    printf '[%d/%d] %s ok             %s\n' "$processed" "$count" "$num" "$name" >&2
   else
-    status="failed($code)"; failed=$((failed + 1))
-    jq ".[$i].completed = false | .[$i].httpStatus = ($code | tonumber? // 0)" "$INPUT" > "$tmp" && mv "$tmp" "$INPUT"
+    # Failed after retries — remove from the list per request.
+    remove_train "$num"; failed=$((failed + 1)); removed=$((removed + 1))
+    printf '[%d/%d] %s removed(failed %s) %s\n' "$processed" "$count" "$num" "$code" "$name" >&2
   fi
-  printf '[%d/%d] %s %-7s %s\n' "$processed" "${#IDX[@]}" "$num" "$status" "$name" >&2
 
   [[ "$DELAY" != "0" ]] && sleep "$DELAY" || true
 done
 
-echo "Done. processed=$processed ok=$ok failed=$failed (progress saved to $INPUT)" >&2
+echo "Done. processed=$processed ok=$ok removed=$removed (special=$special, failed=$failed, bad=$bad) — saved to $INPUT" >&2
