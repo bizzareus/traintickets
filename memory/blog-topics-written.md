@@ -54,6 +54,7 @@ This file tracks all blog posts published to avoid duplication.
 | indian-railways-sleeping-hours-middle-berth-rules.md | Indian Railways Sleeping Hours: Middle Berth Rules & Seating Rights | 2026-06-26 |
 | indian-railways-break-journey-rules.md | Indian Railways Break Journey Rules: Rules, Eligibility, Distance Limits, Endorsement Process & Telescopic Fare Savings Guide | 2026-06-27 |
 | irctc-premium-tatkal-booking-rules-fares.md | IRCTC Premium Tatkal Rules: Booking Process, Timings & Fares | 2026-06-27 |
+| irctc-acceptable-id-proofs-train-travel.md | Acceptable ID Proofs for Train Travel: IRCTC Rules, Digital IDs (DigiLocker/mAadhaar), and TTE Verification Guidelines (EN + hi/mr/bn/ta/te/ml) | 2026-06-27 |
 
 ## SEO triage actions (GSC / Google Trends driven)
 
