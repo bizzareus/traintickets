@@ -51,8 +51,12 @@ export async function GET() {
     );
     for (const t of chartTimesPages.slice(0, 100)) {
       const name = t.trainName || t.trainNumber;
+      const route =
+        t.originStation && t.destinationStation
+          ? ` from ${t.originStation} to ${t.destinationStation}`
+          : "";
       lines.push(
-        `- [${name} (${t.trainNumber}) Chart Times](${baseUrl}/chart-times/${t.slug}): When the first and second reservation charts are prepared at each station${t.originStation && t.destinationStation ? ` from ${t.originStation} to ${t.destinationStation}` : ""}.`,
+        `- [${name} (${t.trainNumber}) Chart Times](${baseUrl}/chart-times/${t.slug}): Chart preparation time, chart vacancy and chart status for train ${t.trainNumber} (${name})${route} — when the first and second reservation charts are prepared at each station.`,
       );
     }
     lines.push("");

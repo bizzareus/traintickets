@@ -46,9 +46,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
+    keywords: buildChartTimesKeywords(data),
     alternates: { canonical: `/chart-times/${data.slug}` },
     openGraph: { title, description, type: "article" },
   };
+}
+
+/**
+ * Query variants travellers actually search for, per train. Covers the train
+ * number, train name and origin/destination pair across the common phrasings
+ * (chart preparation time, chart time, chart vacancy, first/second chart, chart
+ * status) so a single page can rank for the long tail.
+ */
+function buildChartTimesKeywords(data: {
+  trainNumber: string;
+  trainName: string;
+  originStation: string;
+  destinationStation: string;
+}): string[] {
+  const { trainNumber, trainName, originStation, destinationStation } = data;
+  const route = `${originStation} to ${destinationStation}`;
+  return [
+    `${trainNumber} chart preparation time`,
+    `${trainNumber} chart time`,
+    `${trainNumber} chart vacancy`,
+    `${trainNumber} chart status`,
+    `${trainNumber} first chart prepared`,
+    `${trainNumber} second chart`,
+    `when is chart prepared for ${trainNumber}`,
+    `irctc chart preparation ${trainNumber}`,
+    `${trainName} chart preparation time`,
+    `${trainName} (${trainNumber}) chart time`,
+    `${route} chart preparation time`,
+    `${trainNumber} ${trainName} chart vacancy`,
+  ];
 }
 
 export default async function ChartTimesPage({ params, searchParams }: Props) {
@@ -76,6 +107,7 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
     name: `${data.trainName} (${data.trainNumber}) Chart Preparation Times`,
     description: `Station-by-station reservation chart preparation times for train ${data.trainName} (${data.trainNumber}).`,
     url: canonicalUrl,
+    keywords: buildChartTimesKeywords(data).join(", "),
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
