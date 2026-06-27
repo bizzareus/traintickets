@@ -25,6 +25,9 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-cancellation-refund-rules-tdr-guide.md | The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing | 2026-06-10 |
 | understanding-coach-composition-find-train-platform.md | Indian Railways Coach Composition: How to Locate Your Train Coach on the Platform Without Panic | 2026-06-10 |
 | irctc-partial-confirmation-rules-waitlist-travel-guide.md | IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers | 2026-06-11 |
+| wl-waiting-list-meaning-indian-railway.md | WL Full Form in Railway: What WL Means in Train Booking & How Waiting List Works | 2026-06-11 |
+| irctc-current-availability-explained.md | IRCTC Current Availability Explained: What It Is, When It Opens, and How to Use It | 2026-06-11 |
+| train-berth-types-availability-reservation-guide.md | Train Berths in India: Types, Availability, and How Berth Reservation Actually Works | 2026-06-11 |
 | travel-sleeper-ac-class-general-platform-ticket.md | Can you travel in Sleeper/AC with a General/Platform ticket | 2026-06-12 |
 | how-to-transfer-confirmed-train-ticket-another-person.md | How to transfer a confirmed train ticket to a family member | 2026-06-13 |
 | irctc-app-vs-website-tatkal-booking.md | IRCTC App vs. Website: Which is Faster for Tatkal Ticket Booking? | 2026-06-14 |
@@ -48,7 +51,9 @@ This file tracks all blog posts published to avoid duplication.
 | two-stop-rule-irctc-missed-train-rules.md | Indian Railways Two-Stop Rule: Missed Train Rules & Facts | 2026-06-25 |
 | live-train-running-status-where-is-my-train.md | Live train running status: NTES Spot Your Train, Where Is My Train app, SMS 139, RTIS GPS tracking, platform numbers (EN + hi/mr/bn/ta/te/ml) | 2026-06-26 |
 | irctc-pnr-status-check-meaning-guide.md | IRCTC PNR status check: how to check (IRCTC/139/LastBerth), all status codes (CNF/RAC/WL/GNWL/RLWL/PQWL/TQWL/RLGN), booking vs current status, confirmation chances; targets rising query "pnr status" (EN + hi/mr/bn/ta/te/ml) | 2026-06-26 |
+| indian-railways-sleeping-hours-middle-berth-rules.md | Indian Railways Sleeping Hours: Middle Berth Rules & Seating Rights | 2026-06-26 |
 | indian-railways-break-journey-rules.md | Indian Railways Break Journey Rules: Rules, Eligibility, Distance Limits, Endorsement Process & Telescopic Fare Savings Guide | 2026-06-27 |
+| irctc-premium-tatkal-booking-rules-fares.md | IRCTC Premium Tatkal Rules: Booking Process, Timings & Fares | 2026-06-27 |
 
 ## SEO triage actions (GSC / Google Trends driven)
 
