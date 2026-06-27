@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/nestjs';
 import { nodeProfilingIntegration } from '@sentry/profiling-node';
+import { isBenignUpstreamErrorMessage } from './common/expected-upstream-errors';
 
 const LOCALHOST_HOSTS = new Set(['localhost', '127.0.0.1', '0.0.0.0', '::1']);
 
@@ -41,6 +42,21 @@ function isLocalhostEvent(event: {
 }): boolean {
   return (
     isLocalhostUrl(event.request?.url) || isLocalhostHostname(event.server_name)
+  );
+}
+
+/**
+ * Final backstop: drop events whose exception message is a known expected
+ * upstream condition (e.g. "Chart not prepared"), in case one reaches Sentry
+ * via a path that bypasses the manual capture / global filter gates.
+ */
+function isBenignUpstreamEvent(event: {
+  exception?: { values?: Array<{ value?: string }> };
+}): boolean {
+  return Boolean(
+    event.exception?.values?.some((v) =>
+      isBenignUpstreamErrorMessage(v?.value),
+    ),
   );
 }
 
@@ -88,7 +104,8 @@ if (dsn) {
     profileSessionSampleRate: profileSessionSampleRate(),
     profileLifecycle: 'trace',
     sendDefaultPii: sendDefaultPii(),
-    beforeSend: (event) => (isLocalhostEvent(event) ? null : event),
+    beforeSend: (event) =>
+      isLocalhostEvent(event) || isBenignUpstreamEvent(event) ? null : event,
     beforeSendTransaction: (event) =>
       isLocalhostEvent(event) ? null : event,
   });

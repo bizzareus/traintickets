@@ -8,6 +8,7 @@ import { BaseExceptionFilter, HttpAdapterHost } from '@nestjs/core';
 import { captureException } from '@sentry/nestjs';
 
 import { isSentryEnabled } from './sentry-report';
+import { isBenignUpstreamError } from './expected-upstream-errors';
 
 /**
  * Sentry’s default Nest global filter skips all HttpException (treated as expected). This filter
@@ -34,6 +35,11 @@ export class SentryHttpExceptionFilter extends BaseExceptionFilter {
   }
 
   private shouldReportToSentry(exception: unknown): boolean {
+    // Expected upstream conditions (e.g. "Chart not prepared") are normal
+    // states, not faults — never report them regardless of how they surface.
+    if (isBenignUpstreamError(exception)) {
+      return false;
+    }
     if (!(exception instanceof HttpException)) {
       return true;
     }

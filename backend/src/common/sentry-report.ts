@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/nestjs';
+import { isBenignUpstreamError } from './expected-upstream-errors';
 
 export function isSentryEnabled(): boolean {
   return Boolean(process.env.SENTRY_DSN?.trim());
@@ -13,6 +14,8 @@ export function captureSentryException(
   opts?: { tags?: Record<string, string>; extra?: Record<string, unknown> },
 ): void {
   if (!isSentryEnabled()) return;
+  // Expected upstream conditions (e.g. "Chart not prepared") are not faults.
+  if (isBenignUpstreamError(exception)) return;
   Sentry.withScope((scope) => {
     scope.setTag('mechanism.type', 'manual.nestjs');
     if (opts?.tags) {
