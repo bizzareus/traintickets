@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12034",
+  "trainName": "Ndls Cnb Sht",
+  "originStation": "NDLS",
+  "destinationStation": "CNB",
+  "slug": "12034-ndls-cnb-sht-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "15:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "07:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "GZB",
+      "stationName": "Ghaziabad",
+      "arrivalTime": "16:12",
+      "departureTime": "16:14",
+      "day": 1,
+      "distance": "24.0",
+      "chartTimeLocal": "07:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "ALJN",
+      "stationName": "Aligarh Jn",
+      "arrivalTime": "17:18",
+      "departureTime": "17:20",
+      "day": 1,
+      "distance": "129.0",
+      "chartTimeLocal": "07:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "ETW",
+      "stationName": "Etawah Jn",
+      "arrivalTime": "19:05",
+      "departureTime": "19:07",
+      "day": 1,
+      "distance": "299.0",
+      "chartTimeLocal": "07:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "20:50",
+      "departureTime": "",
+      "day": 1,
+      "distance": "439.0",
+      "chartTimeLocal": "07:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    }
+  ],
+  "summary": "The first reservation chart for Ndls Cnb Sht (12034) is prepared at New Delhi (NDLS) around 7:40 AM, with a second (vacancy) chart around 3:25 PM. 5 of 5 stations on the NDLS to CNB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:11:06.849Z",
+  "knownChartCount": 5
+}

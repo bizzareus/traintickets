@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12246",
+  "trainName": "Duronto Express",
+  "originStation": "SMVB",
+  "destinationStation": "HWH",
+  "slug": "12246-duronto-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "SMVB",
+      "stationName": "Smvt Bengaluru",
+      "arrivalTime": "",
+      "departureTime": "11:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
+    },
+    {
+      "stationCode": "RU",
+      "stationName": "Renigunta Jn",
+      "arrivalTime": "16:35",
+      "departureTime": "16:45",
+      "day": 1,
+      "distance": "338.0",
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
+    },
+    {
+      "stationCode": "BZA",
+      "stationName": "Vijayawada Jn",
+      "arrivalTime": "22:00",
+      "departureTime": "22:10",
+      "day": 1,
+      "distance": "713.0",
+      "chartTimeLocal": "12:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
+    },
+    {
+      "stationCode": "VZM",
+      "stationName": "Vizianagram Jn",
+      "arrivalTime": "04:15",
+      "departureTime": "04:25",
+      "day": 2,
+      "distance": "1111.0",
+      "chartTimeLocal": "12:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
+    },
+    {
+      "stationCode": "BBS",
+      "stationName": "Bhubaneswar",
+      "arrivalTime": "09:25",
+      "departureTime": "09:35",
+      "day": 2,
+      "distance": "1492.0",
+      "chartTimeLocal": "18:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BBS"
+    },
+    {
+      "stationCode": "HWH",
+      "stationName": "Howrah Jn",
+      "arrivalTime": "17:05",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1931.0",
+      "chartTimeLocal": "18:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BBS"
+    }
+  ],
+  "summary": "The first reservation chart for Duronto Express (12246) is prepared at Smvt Bengaluru (SMVB) around 9:32 PM, with a second (vacancy) chart around 11 AM. 6 of 6 stations on the SMVB to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:35:02.030Z",
+  "knownChartCount": 6
+}

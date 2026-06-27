@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12596",
+  "trainName": "Gkp Humsafar Ex",
+  "originStation": "ANVT",
+  "destinationStation": "GKP",
+  "slug": "12596-gkp-humsafar-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "ANVT",
+      "stationName": "Anand Vihar TRM",
+      "arrivalTime": "",
+      "departureTime": "20:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "00:50",
+      "departureTime": "00:55",
+      "day": 2,
+      "distance": "427.0",
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "LKO",
+      "stationName": "Lucknow Nr",
+      "arrivalTime": "02:30",
+      "departureTime": "02:40",
+      "day": 2,
+      "distance": "501.0",
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "GD",
+      "stationName": "Gonda Jn",
+      "arrivalTime": "05:00",
+      "departureTime": "05:05",
+      "day": 2,
+      "distance": "617.0",
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "BST",
+      "stationName": "Basti",
+      "arrivalTime": "06:09",
+      "departureTime": "06:12",
+      "day": 2,
+      "distance": "707.0",
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "GKP",
+      "stationName": "Gorakhpur Jn",
+      "arrivalTime": "07:40",
+      "departureTime": "",
+      "day": 2,
+      "distance": "771.0",
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    }
+  ],
+  "summary": "The first reservation chart for Gkp Humsafar Ex (12596) is prepared at Anand Vihar TRM (ANVT) around 12 PM, with a second (vacancy) chart around 7:45 PM. 6 of 6 stations on the ANVT to GKP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:29:53.276Z",
+  "knownChartCount": 6
+}

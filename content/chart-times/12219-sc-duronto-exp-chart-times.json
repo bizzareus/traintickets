@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12219",
+  "trainName": "Sc Duronto Exp",
+  "originStation": "LTT",
+  "destinationStation": "SC",
+  "slug": "12219-sc-duronto-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "LTT",
+      "stationName": "Lokmanyatilak T",
+      "arrivalTime": "",
+      "departureTime": "23:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "13:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
+    },
+    {
+      "stationCode": "PUNE",
+      "stationName": "Pune Jn",
+      "arrivalTime": "02:00",
+      "departureTime": "02:05",
+      "day": 2,
+      "distance": "176.0",
+      "chartTimeLocal": "16:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "SUR",
+      "stationName": "Solapur Jn",
+      "arrivalTime": "05:37",
+      "departureTime": "05:40",
+      "day": 2,
+      "distance": "440.0",
+      "chartTimeLocal": "19:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SUR"
+    },
+    {
+      "stationCode": "WADI",
+      "stationName": "Wadi",
+      "arrivalTime": "07:50",
+      "departureTime": "07:53",
+      "day": 2,
+      "distance": "589.0",
+      "chartTimeLocal": "19:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SUR"
+    },
+    {
+      "stationCode": "SC",
+      "stationName": "Secunderabad Jn",
+      "arrivalTime": "11:30",
+      "departureTime": "",
+      "day": 2,
+      "distance": "773.0",
+      "chartTimeLocal": "19:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SUR"
+    }
+  ],
+  "summary": "The first reservation chart for Sc Duronto Exp (12219) is prepared at Lokmanyatilak T (LTT) around 1:07 PM, with a second (vacancy) chart around 10:32 PM. 5 of 5 stations on the LTT to SC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:32:19.501Z",
+  "knownChartCount": 5
+}

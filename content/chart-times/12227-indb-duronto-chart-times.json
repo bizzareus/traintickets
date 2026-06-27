@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12227",
+  "trainName": "Indb Duronto",
+  "originStation": "MMCT",
+  "destinationStation": "INDB",
+  "slug": "12227-indb-duronto-chart-times",
+  "stations": [
+    {
+      "stationCode": "MMCT",
+      "stationName": "Mumbai Central",
+      "arrivalTime": "",
+      "departureTime": "23:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMCT"
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "03:26",
+      "departureTime": "03:36",
+      "day": 2,
+      "distance": "392.0",
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMCT"
+    },
+    {
+      "stationCode": "RTM",
+      "stationName": "Ratlam Jn",
+      "arrivalTime": "07:00",
+      "departureTime": "07:05",
+      "day": 2,
+      "distance": "653.0",
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMCT"
+    },
+    {
+      "stationCode": "UJN",
+      "stationName": "Ujjain Jn",
+      "arrivalTime": "08:40",
+      "departureTime": "08:45",
+      "day": 2,
+      "distance": "750.0",
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMCT"
+    },
+    {
+      "stationCode": "INDB",
+      "stationName": "Indore Jn Bg",
+      "arrivalTime": "10:20",
+      "departureTime": "",
+      "day": 2,
+      "distance": "829.0",
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMCT"
+    }
+  ],
+  "summary": "The first reservation chart for Indb Duronto (12227) is prepared at Mumbai Central (MMCT) around 1:40 PM, with a second (vacancy) chart around 10:54 PM. 5 of 5 stations on the MMCT to INDB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:33:20.926Z",
+  "knownChartCount": 5
+}

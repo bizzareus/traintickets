@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12595",
+  "trainName": "Anvt Humsafar",
+  "originStation": "GKP",
+  "destinationStation": "ANVT",
+  "slug": "12595-anvt-humsafar-chart-times",
+  "stations": [
+    {
+      "stationCode": "GKP",
+      "stationName": "Gorakhpur Jn",
+      "arrivalTime": "",
+      "departureTime": "20:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
+    },
+    {
+      "stationCode": "BST",
+      "stationName": "Basti",
+      "arrivalTime": "20:52",
+      "departureTime": "20:55",
+      "day": 1,
+      "distance": "65.0",
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
+    },
+    {
+      "stationCode": "GD",
+      "stationName": "Gonda Jn",
+      "arrivalTime": "22:25",
+      "departureTime": "22:30",
+      "day": 1,
+      "distance": "154.0",
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
+    },
+    {
+      "stationCode": "LKO",
+      "stationName": "Lucknow Nr",
+      "arrivalTime": "01:10",
+      "departureTime": "01:20",
+      "day": 2,
+      "distance": "271.0",
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "02:50",
+      "departureTime": "02:55",
+      "day": 2,
+      "distance": "345.0",
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
+    },
+    {
+      "stationCode": "ANVT",
+      "stationName": "Anand Vihar TRM",
+      "arrivalTime": "08:25",
+      "departureTime": "",
+      "day": 2,
+      "distance": "772.0",
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
+    }
+  ],
+  "summary": "The first reservation chart for Anvt Humsafar (12595) is prepared at Gorakhpur Jn (GKP) around 12:01 PM, with a second (vacancy) chart around 10:15 PM. 6 of 6 stations on the GKP to ANVT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:29:49.643Z",
+  "knownChartCount": 6
+}

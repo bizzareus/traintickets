@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12438",
+  "trainName": "Sc Rajdhani",
+  "originStation": "NZM",
+  "destinationStation": "SC",
+  "slug": "12438-sc-rajdhani-chart-times",
+  "stations": [
+    {
+      "stationCode": "NZM",
+      "stationName": "H Nizamuddin",
+      "arrivalTime": "",
+      "departureTime": "15:35",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "VGLJ",
+      "stationName": "V Lakshmibai Jhansi Jhs",
+      "arrivalTime": "20:10",
+      "departureTime": "20:15",
+      "day": 1,
+      "distance": "403.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BPL",
+      "stationName": "Bhopal  Jn",
+      "arrivalTime": "23:30",
+      "departureTime": "23:40",
+      "day": 1,
+      "distance": "694.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "NGP",
+      "stationName": "Nagpur",
+      "arrivalTime": "05:05",
+      "departureTime": "05:10",
+      "day": 2,
+      "distance": "1083.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BPQ",
+      "stationName": "Balharshah",
+      "arrivalTime": "08:00",
+      "departureTime": "08:05",
+      "day": 2,
+      "distance": "1294.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KZJ",
+      "stationName": "Kazipet Jn",
+      "arrivalTime": "11:03",
+      "departureTime": "11:05",
+      "day": 2,
+      "distance": "1528.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SC",
+      "stationName": "Secunderabad Jn",
+      "arrivalTime": "13:40",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1660.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Sc Rajdhani (12438) from NZM to SC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-27T01:03:43.507Z",
+  "knownChartCount": 0
+}

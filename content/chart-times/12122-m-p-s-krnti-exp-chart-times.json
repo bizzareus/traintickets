@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12122",
+  "trainName": "M P S Krnti Exp",
+  "originStation": "NZM",
+  "destinationStation": "JBP",
+  "slug": "12122-m-p-s-krnti-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "NZM",
+      "stationName": "H Nizamuddin",
+      "arrivalTime": "",
+      "departureTime": "17:55",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "09:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
+    },
+    {
+      "stationCode": "GWL",
+      "stationName": "Gwalior",
+      "arrivalTime": "21:45",
+      "departureTime": "21:47",
+      "day": 1,
+      "distance": "306.0",
+      "chartTimeLocal": "12:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
+    },
+    {
+      "stationCode": "VGLJ",
+      "stationName": "V Lakshmibai Jhansi Jhs",
+      "arrivalTime": "23:22",
+      "departureTime": "23:30",
+      "day": 1,
+      "distance": "403.0",
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
+    },
+    {
+      "stationCode": "SGO",
+      "stationName": "Saugor",
+      "arrivalTime": "02:40",
+      "departureTime": "02:45",
+      "day": 2,
+      "distance": "627.0",
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
+    },
+    {
+      "stationCode": "DMO",
+      "stationName": "Damoh",
+      "arrivalTime": "03:50",
+      "departureTime": "03:55",
+      "day": 2,
+      "distance": "704.0",
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
+    },
+    {
+      "stationCode": "KMZ",
+      "stationName": "Katni Murwara",
+      "arrivalTime": "05:20",
+      "departureTime": "05:25",
+      "day": 2,
+      "distance": "813.0",
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
+    },
+    {
+      "stationCode": "JBP",
+      "stationName": "Jabalpur",
+      "arrivalTime": "07:45",
+      "departureTime": "",
+      "day": 2,
+      "distance": "904.0",
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
+    }
+  ],
+  "summary": "The first reservation chart for M P S Krnti Exp (12122) is prepared at H Nizamuddin (NZM) around 9:55 AM, with a second (vacancy) chart around 5:40 PM. 7 of 7 stations on the NZM to JBP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:19:29.664Z",
+  "knownChartCount": 7
+}

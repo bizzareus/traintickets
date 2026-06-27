@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12274",
+  "trainName": "Hwh Duronto Exp",
+  "originStation": "NDLS",
+  "destinationStation": "HWH",
+  "slug": "12274-hwh-duronto-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "12:35",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "22:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "17:35",
+      "departureTime": "17:40",
+      "day": 1,
+      "distance": "441.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DDU",
+      "stationName": "Dd Upadhyaya Jn",
+      "arrivalTime": "22:03",
+      "departureTime": "22:10",
+      "day": 1,
+      "distance": "788.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "PNBE",
+      "stationName": "Patna Jn",
+      "arrivalTime": "00:43",
+      "departureTime": "00:50",
+      "day": 2,
+      "distance": "1000.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "JSME",
+      "stationName": "Jasidih Jn",
+      "arrivalTime": "04:49",
+      "departureTime": "04:51",
+      "day": 2,
+      "distance": "1221.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ASN",
+      "stationName": "Asansol Jn",
+      "arrivalTime": "07:26",
+      "departureTime": "07:31",
+      "day": 2,
+      "distance": "1332.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "HWH",
+      "stationName": "Howrah Jn",
+      "arrivalTime": "10:35",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1531.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "The first reservation chart for Hwh Duronto Exp (12274) is prepared at New Delhi (NDLS) around 10:55 PM. 1 of 7 stations on the NDLS to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-06-27T00:37:41.428Z",
+  "knownChartCount": 1
+}

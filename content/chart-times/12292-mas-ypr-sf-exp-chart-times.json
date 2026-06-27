@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12292",
+  "trainName": "Mas Ypr Sf Exp",
+  "originStation": "MAS",
+  "destinationStation": "YPR",
+  "slug": "12292-mas-ypr-sf-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "MAS",
+      "stationName": "Mgr Chennai Ctl",
+      "arrivalTime": "",
+      "departureTime": "23:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "AJJ",
+      "stationName": "Arakkonam Jn",
+      "arrivalTime": "00:23",
+      "departureTime": "00:25",
+      "day": 2,
+      "distance": "69.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "WJR",
+      "stationName": "Walajah Road Jn",
+      "arrivalTime": "00:53",
+      "departureTime": "00:55",
+      "day": 2,
+      "distance": "105.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "JTJ",
+      "stationName": "Jolarpettai",
+      "arrivalTime": "02:48",
+      "departureTime": "02:50",
+      "day": 2,
+      "distance": "214.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BWT",
+      "stationName": "Bangarapet",
+      "arrivalTime": "03:54",
+      "departureTime": "03:55",
+      "day": 2,
+      "distance": "292.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KJM",
+      "stationName": "Krishnarajapurm",
+      "arrivalTime": "04:35",
+      "departureTime": "04:36",
+      "day": 2,
+      "distance": "348.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "YPR",
+      "stationName": "Yesvantpur Jn",
+      "arrivalTime": "06:00",
+      "departureTime": "",
+      "day": 2,
+      "distance": "369.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Mas Ypr Sf Exp (12292) from MAS to YPR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-27T00:42:36.859Z",
+  "knownChartCount": 0
+}

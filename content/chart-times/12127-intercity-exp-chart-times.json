@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12127",
+  "trainName": "Intercity Exp",
+  "originStation": "CSMT",
+  "destinationStation": "PUNE",
+  "slug": "12127-intercity-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "CSMT",
+      "stationName": "C Shivaji Mah T",
+      "arrivalTime": "",
+      "departureTime": "06:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CSMT"
+    },
+    {
+      "stationCode": "DR",
+      "stationName": "Dadar",
+      "arrivalTime": "06:46",
+      "departureTime": "06:48",
+      "day": 1,
+      "distance": "9.0",
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CSMT"
+    },
+    {
+      "stationCode": "TNA",
+      "stationName": "Thane",
+      "arrivalTime": "07:08",
+      "departureTime": "07:10",
+      "day": 1,
+      "distance": "34.0",
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CSMT"
+    },
+    {
+      "stationCode": "LNL",
+      "stationName": "Lonavala",
+      "arrivalTime": "08:48",
+      "departureTime": "08:50",
+      "day": 1,
+      "distance": "128.0",
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CSMT"
+    },
+    {
+      "stationCode": "SVJR",
+      "stationName": "Shivajinagar",
+      "arrivalTime": "09:39",
+      "departureTime": "09:40",
+      "day": 1,
+      "distance": "190.0",
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CSMT"
+    },
+    {
+      "stationCode": "PUNE",
+      "stationName": "Pune Jn",
+      "arrivalTime": "10:00",
+      "departureTime": "",
+      "day": 1,
+      "distance": "192.0",
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CSMT"
+    }
+  ],
+  "summary": "The first reservation chart for Intercity Exp (12127) is prepared at C Shivaji Mah T (CSMT) around 8:29 PM. 6 of 6 stations on the CSMT to PUNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:19:50.004Z",
+  "knownChartCount": 6
+}

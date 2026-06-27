@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12285",
+  "trainName": "Nzm Duronto",
+  "originStation": "SC",
+  "destinationStation": "NZM",
+  "slug": "12285-nzm-duronto-chart-times",
+  "stations": [
+    {
+      "stationCode": "SC",
+      "stationName": "Secunderabad Jn",
+      "arrivalTime": "",
+      "departureTime": "12:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
+    },
+    {
+      "stationCode": "BPQ",
+      "stationName": "Balharshah",
+      "arrivalTime": "17:55",
+      "departureTime": "18:00",
+      "day": 1,
+      "distance": "367.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
+    },
+    {
+      "stationCode": "NGP",
+      "stationName": "Nagpur",
+      "arrivalTime": "20:40",
+      "departureTime": "20:45",
+      "day": 1,
+      "distance": "578.0",
+      "chartTimeLocal": "11:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "RKMP",
+      "stationName": "Rani Kamalapati",
+      "arrivalTime": "02:04",
+      "departureTime": "02:12",
+      "day": 2,
+      "distance": "967.0",
+      "chartTimeLocal": "16:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:57",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RKMP"
+    },
+    {
+      "stationCode": "VGLJ",
+      "stationName": "V Lakshmibai Jhansi Jhs",
+      "arrivalTime": "05:30",
+      "departureTime": "05:35",
+      "day": 2,
+      "distance": "1264.0",
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
+    },
+    {
+      "stationCode": "NZM",
+      "stationName": "H Nizamuddin",
+      "arrivalTime": "10:40",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1667.0",
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
+    }
+  ],
+  "summary": "The first reservation chart for Nzm Duronto (12285) is prepared at Secunderabad Jn (SC) around 8:44 PM, with a second (vacancy) chart around 12:35 PM. 6 of 6 stations on the SC to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:38:55.659Z",
+  "knownChartCount": 6
+}

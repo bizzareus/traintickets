@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12430",
+  "trainName": "Ndls Lko Ac Exp",
+  "originStation": "NDLS",
+  "destinationStation": "LKO",
+  "slug": "12430-ndls-lko-ac-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "23:25",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "GZB",
+      "stationName": "Ghaziabad",
+      "arrivalTime": "00:03",
+      "departureTime": "00:05",
+      "day": 2,
+      "distance": "26.0",
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "MB",
+      "stationName": "Moradabad",
+      "arrivalTime": "02:13",
+      "departureTime": "02:20",
+      "day": 2,
+      "distance": "167.0",
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "BE",
+      "stationName": "Bareilly",
+      "arrivalTime": "03:33",
+      "departureTime": "03:35",
+      "day": 2,
+      "distance": "258.0",
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "SPN",
+      "stationName": "Shahjehanpur",
+      "arrivalTime": "04:40",
+      "departureTime": "04:42",
+      "day": 2,
+      "distance": "328.0",
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "LKO",
+      "stationName": "Lucknow Nr",
+      "arrivalTime": "07:25",
+      "departureTime": "",
+      "day": 2,
+      "distance": "493.0",
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    }
+  ],
+  "summary": "The first reservation chart for Ndls Lko Ac Exp (12430) is prepared at New Delhi (NDLS) around 3:25 PM, with a second (vacancy) chart around 11:10 PM. 6 of 6 stations on the NDLS to LKO route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:02:26.763Z",
+  "knownChartCount": 6
+}

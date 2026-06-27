@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12027",
+  "trainName": "Mas Sbc Shatabdi",
+  "originStation": "MAS",
+  "destinationStation": "SBC",
+  "slug": "12027-mas-sbc-shatabdi-chart-times",
+  "stations": [
+    {
+      "stationCode": "MAS",
+      "stationName": "Mgr Chennai Ctl",
+      "arrivalTime": "",
+      "departureTime": "17:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "07:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "KPD",
+      "stationName": "Katpadi Jn",
+      "arrivalTime": "18:58",
+      "departureTime": "19:00",
+      "day": 1,
+      "distance": "130.0",
+      "chartTimeLocal": "07:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "JTJ",
+      "stationName": "Jolarpettai",
+      "arrivalTime": "20:08",
+      "departureTime": "20:10",
+      "day": 1,
+      "distance": "214.0",
+      "chartTimeLocal": "07:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "BNC",
+      "stationName": "Bengaluru Cant",
+      "arrivalTime": "22:04",
+      "departureTime": "22:05",
+      "day": 1,
+      "distance": "358.0",
+      "chartTimeLocal": "07:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "SBC",
+      "stationName": "KSR Bengaluru",
+      "arrivalTime": "22:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "362.0",
+      "chartTimeLocal": "07:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
+    }
+  ],
+  "summary": "The first reservation chart for Mas Sbc Shatabdi (12027) is prepared at Mgr Chennai Ctl (MAS) around 7:34 AM, with a second (vacancy) chart around 7:55 PM. 5 of 5 stations on the MAS to SBC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:10:36.569Z",
+  "knownChartCount": 5
+}

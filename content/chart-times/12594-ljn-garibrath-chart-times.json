@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12594",
+  "trainName": "Ljn Garibrath",
+  "originStation": "BPL",
+  "destinationStation": "LJN",
+  "slug": "12594-ljn-garibrath-chart-times",
+  "stations": [
+    {
+      "stationCode": "BPL",
+      "stationName": "Bhopal  Jn",
+      "arrivalTime": "",
+      "departureTime": "23:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BHS",
+      "stationName": "Vidisha",
+      "arrivalTime": "00:26",
+      "departureTime": "00:28",
+      "day": 2,
+      "distance": "54.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BINA",
+      "stationName": "Bina Jn",
+      "arrivalTime": "01:43",
+      "departureTime": "01:45",
+      "day": 2,
+      "distance": "139.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "VGLJ",
+      "stationName": "V Lakshmibai Jhansi Jhs",
+      "arrivalTime": "03:35",
+      "departureTime": "03:43",
+      "day": 2,
+      "distance": "291.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ORAI",
+      "stationName": "Orai",
+      "arrivalTime": "04:58",
+      "departureTime": "05:00",
+      "day": 2,
+      "distance": "405.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "08:00",
+      "departureTime": "08:05",
+      "day": 2,
+      "distance": "512.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "LJN",
+      "stationName": "Lucknow Ne",
+      "arrivalTime": "09:45",
+      "departureTime": "",
+      "day": 2,
+      "distance": "586.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Ljn Garibrath (12594) from BPL to LJN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-27T01:29:44.595Z",
+  "knownChartCount": 0
+}

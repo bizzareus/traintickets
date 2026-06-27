@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12268",
+  "trainName": "Mmct Duronto Exp",
+  "originStation": "HAPA",
+  "destinationStation": "MMCT",
+  "slug": "12268-mmct-duronto-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "HAPA",
+      "stationName": "Hapa",
+      "arrivalTime": "",
+      "departureTime": "20:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "09:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HAPA"
+    },
+    {
+      "stationCode": "RJT",
+      "stationName": "Rajkot Jn",
+      "arrivalTime": "21:10",
+      "departureTime": "21:20",
+      "day": 1,
+      "distance": "77.0",
+      "chartTimeLocal": "09:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HAPA"
+    },
+    {
+      "stationCode": "SUNR",
+      "stationName": "Surendranagar",
+      "arrivalTime": "22:57",
+      "departureTime": "22:59",
+      "day": 1,
+      "distance": "193.0",
+      "chartTimeLocal": "09:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HAPA"
+    },
+    {
+      "stationCode": "ADI",
+      "stationName": "Ahmedabad Jn",
+      "arrivalTime": "01:00",
+      "departureTime": "01:10",
+      "day": 2,
+      "distance": "323.0",
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
+    },
+    {
+      "stationCode": "MMCT",
+      "stationName": "Mumbai Central",
+      "arrivalTime": "08:05",
+      "departureTime": "",
+      "day": 2,
+      "distance": "814.0",
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
+    }
+  ],
+  "summary": "The first reservation chart for Mmct Duronto Exp (12268) is prepared at Hapa (HAPA) around 9:48 AM, with a second (vacancy) chart around 7:50 PM. 5 of 5 stations on the HAPA to MMCT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:37:13.097Z",
+  "knownChartCount": 5
+}

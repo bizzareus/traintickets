@@ -1,0 +1,64 @@
+{
+  "trainNumber": "12157",
+  "trainName": "Hutatma Express",
+  "originStation": "PUNE",
+  "destinationStation": "SUR",
+  "slug": "12157-hutatma-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "PUNE",
+      "stationName": "Pune Jn",
+      "arrivalTime": "",
+      "departureTime": "17:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "DD",
+      "stationName": "Daund Jn",
+      "arrivalTime": "18:55",
+      "departureTime": "18:57",
+      "day": 1,
+      "distance": "76.0",
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "KWV",
+      "stationName": "Kurduvadi",
+      "arrivalTime": "20:10",
+      "departureTime": "20:12",
+      "day": 1,
+      "distance": "185.0",
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "SUR",
+      "stationName": "Solapur Jn",
+      "arrivalTime": "21:30",
+      "departureTime": "",
+      "day": 1,
+      "distance": "264.0",
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    }
+  ],
+  "summary": "The first reservation chart for Hutatma Express (12157) is prepared at Pune Jn (PUNE) around 8:08 AM, with a second (vacancy) chart around 7:57 PM. 4 of 4 stations on the PUNE to SUR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:24:10.161Z",
+  "knownChartCount": 4
+}

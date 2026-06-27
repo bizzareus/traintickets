@@ -1,0 +1,64 @@
+{
+  "trainNumber": "12124",
+  "trainName": "Deccan Queen",
+  "originStation": "PUNE",
+  "destinationStation": "CSMT",
+  "slug": "12124-deccan-queen-chart-times",
+  "stations": [
+    {
+      "stationCode": "PUNE",
+      "stationName": "Pune Jn",
+      "arrivalTime": "",
+      "departureTime": "07:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:33",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "LNL",
+      "stationName": "Lonavala",
+      "arrivalTime": "08:06",
+      "departureTime": "08:07",
+      "day": 1,
+      "distance": "64.0",
+      "chartTimeLocal": "20:33",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "DR",
+      "stationName": "Dadar",
+      "arrivalTime": "10:03",
+      "departureTime": "10:05",
+      "day": 1,
+      "distance": "183.0",
+      "chartTimeLocal": "20:33",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "CSMT",
+      "stationName": "C Shivaji Mah T",
+      "arrivalTime": "10:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "192.0",
+      "chartTimeLocal": "20:33",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PUNE"
+    }
+  ],
+  "summary": "The first reservation chart for Deccan Queen (12124) is prepared at Pune Jn (PUNE) around 8:33 PM. 4 of 4 stations on the PUNE to CSMT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:19:37.733Z",
+  "knownChartCount": 4
+}

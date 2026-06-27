@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12582",
+  "trainName": "Bnrs Sf Express",
+  "originStation": "NDLS",
+  "destinationStation": "BNRS",
+  "slug": "12582-bnrs-sf-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "22:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "GZB",
+      "stationName": "Ghaziabad",
+      "arrivalTime": "23:20",
+      "departureTime": "23:22",
+      "day": 1,
+      "distance": "26.0",
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "TDL",
+      "stationName": "Tundla Jn",
+      "arrivalTime": "01:23",
+      "departureTime": "01:25",
+      "day": 2,
+      "distance": "210.0",
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "GOY",
+      "stationName": "Govindpuri",
+      "arrivalTime": "04:20",
+      "departureTime": "04:25",
+      "day": 2,
+      "distance": "437.0",
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn.",
+      "arrivalTime": "07:15",
+      "departureTime": "07:25",
+      "day": 2,
+      "distance": "633.0",
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "GYN",
+      "stationName": "Gyanpur Road",
+      "arrivalTime": "08:41",
+      "departureTime": "08:43",
+      "day": 2,
+      "distance": "698.0",
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "BNRS",
+      "stationName": "BANARAS",
+      "arrivalTime": "10:00",
+      "departureTime": "",
+      "day": 2,
+      "distance": "754.0",
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    }
+  ],
+  "summary": "The first reservation chart for Bnrs Sf Express (12582) is prepared at New Delhi (NDLS) around 2:51 PM, with a second (vacancy) chart around 10:35 PM. 7 of 7 stations on the NDLS to BNRS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:27:41.086Z",
+  "knownChartCount": 7
+}

@@ -1,0 +1,51 @@
+{
+  "trainNumber": "12266",
+  "trainName": "Dee Duronto Exp",
+  "originStation": "JAT",
+  "destinationStation": "DEE",
+  "slug": "12266-dee-duronto-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "JAT",
+      "stationName": "Jammu Tawi",
+      "arrivalTime": "",
+      "departureTime": "19:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "10:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAT"
+    },
+    {
+      "stationCode": "LDH",
+      "stationName": "Ludhiana Jn",
+      "arrivalTime": "23:15",
+      "departureTime": "23:25",
+      "day": 1,
+      "distance": "265.0",
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
+    },
+    {
+      "stationCode": "DEE",
+      "stationName": "Delhi S Rohilla",
+      "arrivalTime": "03:55",
+      "departureTime": "",
+      "day": 2,
+      "distance": "578.0",
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
+    }
+  ],
+  "summary": "The first reservation chart for Dee Duronto Exp (12266) is prepared at Jammu Tawi (JAT) around 10:44 AM, with a second (vacancy) chart around 7 PM. 3 of 3 stations on the JAT to DEE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:37:02.650Z",
+  "knownChartCount": 3
+}

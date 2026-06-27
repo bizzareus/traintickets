@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12593",
+  "trainName": "Ljn Bpl G Rath",
+  "originStation": "LJN",
+  "destinationStation": "BPL",
+  "slug": "12593-ljn-bpl-g-rath-chart-times",
+  "stations": [
+    {
+      "stationCode": "LJN",
+      "stationName": "Lucknow Ne",
+      "arrivalTime": "",
+      "departureTime": "22:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "00:25",
+      "departureTime": "00:30",
+      "day": 2,
+      "distance": "74.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ORAI",
+      "stationName": "Orai",
+      "arrivalTime": "02:02",
+      "departureTime": "02:04",
+      "day": 2,
+      "distance": "181.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "VGLJ",
+      "stationName": "V Lakshmibai Jhansi Jhs",
+      "arrivalTime": "04:15",
+      "departureTime": "04:23",
+      "day": 2,
+      "distance": "295.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BINA",
+      "stationName": "Bina Jn",
+      "arrivalTime": "06:50",
+      "departureTime": "07:00",
+      "day": 2,
+      "distance": "448.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BHS",
+      "stationName": "Vidisha",
+      "arrivalTime": "07:54",
+      "departureTime": "07:56",
+      "day": 2,
+      "distance": "533.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BPL",
+      "stationName": "Bhopal  Jn",
+      "arrivalTime": "09:05",
+      "departureTime": "",
+      "day": 2,
+      "distance": "586.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Ljn Bpl G Rath (12593) from LJN to BPL are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-27T01:29:31.189Z",
+  "knownChartCount": 0
+}

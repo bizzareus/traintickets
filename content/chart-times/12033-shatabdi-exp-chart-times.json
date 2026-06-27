@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12033",
+  "trainName": "Shatabdi Exp",
+  "originStation": "CNB",
+  "destinationStation": "NDLS",
+  "slug": "12033-shatabdi-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "",
+      "departureTime": "06:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CNB"
+    },
+    {
+      "stationCode": "ETW",
+      "stationName": "Etawah Jn",
+      "arrivalTime": "07:19",
+      "departureTime": "07:21",
+      "day": 1,
+      "distance": "140.0",
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CNB"
+    },
+    {
+      "stationCode": "ALJN",
+      "stationName": "Aligarh Jn",
+      "arrivalTime": "09:05",
+      "departureTime": "09:07",
+      "day": 1,
+      "distance": "310.0",
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ALJN"
+    },
+    {
+      "stationCode": "GZB",
+      "stationName": "Ghaziabad",
+      "arrivalTime": "10:33",
+      "departureTime": "10:35",
+      "day": 1,
+      "distance": "416.0",
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ALJN"
+    },
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "11:20",
+      "departureTime": "",
+      "day": 1,
+      "distance": "439.0",
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ALJN"
+    }
+  ],
+  "summary": "The first reservation chart for Shatabdi Exp (12033) is prepared at Kanpur Central (CNB) around 8:08 PM. 5 of 5 stations on the CNB to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:11:02.275Z",
+  "knownChartCount": 5
+}

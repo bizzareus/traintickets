@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12169",
+  "trainName": "Sur Intercity",
+  "originStation": "PUNE",
+  "destinationStation": "SUR",
+  "slug": "12169-sur-intercity-chart-times",
+  "stations": [
+    {
+      "stationCode": "PUNE",
+      "stationName": "Pune Jn",
+      "arrivalTime": "",
+      "departureTime": "09:25",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "DD",
+      "stationName": "Daund Jn",
+      "arrivalTime": "10:33",
+      "departureTime": "10:35",
+      "day": 1,
+      "distance": "76.0",
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "JEUR",
+      "stationName": "Jeur",
+      "arrivalTime": "11:23",
+      "departureTime": "11:25",
+      "day": 1,
+      "distance": "151.0",
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "KWV",
+      "stationName": "Kurduvadi",
+      "arrivalTime": "12:02",
+      "departureTime": "12:05",
+      "day": 1,
+      "distance": "185.0",
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "SUR",
+      "stationName": "Solapur Jn",
+      "arrivalTime": "13:15",
+      "departureTime": "",
+      "day": 1,
+      "distance": "264.0",
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PUNE"
+    }
+  ],
+  "summary": "The first reservation chart for Sur Intercity (12169) is prepared at Pune Jn (PUNE) around 8:21 PM. 5 of 5 stations on the PUNE to SUR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:25:23.804Z",
+  "knownChartCount": 5
+}

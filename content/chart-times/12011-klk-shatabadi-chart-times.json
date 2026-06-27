@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12011",
+  "trainName": "Klk Shatabadi",
+  "originStation": "NDLS",
+  "destinationStation": "KLK",
+  "slug": "12011-klk-shatabadi-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "07:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "SNP",
+      "stationName": "Sonipat",
+      "arrivalTime": "08:18",
+      "departureTime": "08:20",
+      "day": 1,
+      "distance": "45.0",
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "PNP",
+      "stationName": "Panipat Jn",
+      "arrivalTime": "08:48",
+      "departureTime": "08:50",
+      "day": 1,
+      "distance": "90.0",
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "KKDE",
+      "stationName": "Kurukshetra Jn",
+      "arrivalTime": "09:30",
+      "departureTime": "09:32",
+      "day": 1,
+      "distance": "157.0",
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "UMB",
+      "stationName": "Ambala Cant Jn",
+      "arrivalTime": "10:22",
+      "departureTime": "10:24",
+      "day": 1,
+      "distance": "199.0",
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "CDG",
+      "stationName": "Chandigarh",
+      "arrivalTime": "10:59",
+      "departureTime": "11:07",
+      "day": 1,
+      "distance": "266.0",
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "KLK",
+      "stationName": "Kalka",
+      "arrivalTime": "11:40",
+      "departureTime": "",
+      "day": 1,
+      "distance": "303.0",
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NDLS"
+    }
+  ],
+  "summary": "The first reservation chart for Klk Shatabadi (12011) is prepared at New Delhi (NDLS) around 9:54 PM. 7 of 7 stations on the NDLS to KLK route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:09:22.125Z",
+  "knownChartCount": 7
+}

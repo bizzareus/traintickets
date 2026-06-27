@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12298",
+  "trainName": "Adi Duronto",
+  "originStation": "PUNE",
+  "destinationStation": "ADI",
+  "slug": "12298-adi-duronto-chart-times",
+  "stations": [
+    {
+      "stationCode": "PUNE",
+      "stationName": "Pune Jn",
+      "arrivalTime": "",
+      "departureTime": "21:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "LNL",
+      "stationName": "Lonavala",
+      "arrivalTime": "21:47",
+      "departureTime": "21:50",
+      "day": 1,
+      "distance": "64.0",
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "BSR",
+      "stationName": "Vasai Road",
+      "arrivalTime": "00:30",
+      "departureTime": "00:35",
+      "day": 2,
+      "distance": "191.0",
+      "chartTimeLocal": "14:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSR"
+    },
+    {
+      "stationCode": "ST",
+      "stationName": "Surat",
+      "arrivalTime": "03:19",
+      "departureTime": "03:22",
+      "day": 2,
+      "distance": "406.0",
+      "chartTimeLocal": "14:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSR"
+    },
+    {
+      "stationCode": "ADI",
+      "stationName": "Ahmedabad Jn",
+      "arrivalTime": "06:40",
+      "departureTime": "",
+      "day": 2,
+      "distance": "635.0",
+      "chartTimeLocal": "14:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSR"
+    }
+  ],
+  "summary": "The first reservation chart for Adi Duronto (12298) is prepared at Pune Jn (PUNE) around 11:06 AM, with a second (vacancy) chart around 8:45 PM. 5 of 5 stations on the PUNE to ADI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:43:17.658Z",
+  "knownChartCount": 5
+}

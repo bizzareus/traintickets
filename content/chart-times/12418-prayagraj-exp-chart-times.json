@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12418",
+  "trainName": "Prayagraj Exp",
+  "originStation": "NDLS",
+  "destinationStation": "PRYJ",
+  "slug": "12418-prayagraj-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "22:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "GZB",
+      "stationName": "Ghaziabad",
+      "arrivalTime": "22:42",
+      "departureTime": "22:44",
+      "day": 1,
+      "distance": "26.0",
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "ALJN",
+      "stationName": "Aligarh Jn",
+      "arrivalTime": "23:55",
+      "departureTime": "23:57",
+      "day": 1,
+      "distance": "132.0",
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "03:50",
+      "departureTime": "03:55",
+      "day": 2,
+      "distance": "441.0",
+      "chartTimeLocal": "17:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CNB"
+    },
+    {
+      "stationCode": "FTP",
+      "stationName": "Fatehpur",
+      "arrivalTime": "04:50",
+      "departureTime": "04:52",
+      "day": 2,
+      "distance": "519.0",
+      "chartTimeLocal": "17:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CNB"
+    },
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn.",
+      "arrivalTime": "07:00",
+      "departureTime": "",
+      "day": 2,
+      "distance": "636.0",
+      "chartTimeLocal": "17:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CNB"
+    }
+  ],
+  "summary": "The first reservation chart for Prayagraj Exp (12418) is prepared at New Delhi (NDLS) around 2:10 PM, with a second (vacancy) chart around 9:55 PM. 6 of 6 stations on the NDLS to PRYJ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:01:04.109Z",
+  "knownChartCount": 6
+}

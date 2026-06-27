@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12425",
+  "trainName": "Jammu Rajdhani",
+  "originStation": "NDLS",
+  "destinationStation": "JAT",
+  "slug": "12425-jammu-rajdhani-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "20:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "12:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "LDH",
+      "stationName": "Ludhiana Jn",
+      "arrivalTime": "00:28",
+      "departureTime": "00:38",
+      "day": 2,
+      "distance": "312.0",
+      "chartTimeLocal": "16:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LDH"
+    },
+    {
+      "stationCode": "PTKC",
+      "stationName": "PATHANKOT CANTT",
+      "arrivalTime": "03:10",
+      "departureTime": "03:12",
+      "day": 2,
+      "distance": "478.0",
+      "chartTimeLocal": "17:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:57",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PTKC"
+    },
+    {
+      "stationCode": "KTHU",
+      "stationName": "Kathua",
+      "arrivalTime": "03:41",
+      "departureTime": "03:43",
+      "day": 2,
+      "distance": "501.0",
+      "chartTimeLocal": "17:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KTHU"
+    },
+    {
+      "stationCode": "JAT",
+      "stationName": "Jammu Tawi",
+      "arrivalTime": "05:00",
+      "departureTime": "",
+      "day": 2,
+      "distance": "577.0",
+      "chartTimeLocal": "17:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KTHU"
+    }
+  ],
+  "summary": "The first reservation chart for Jammu Rajdhani (12425) is prepared at New Delhi (NDLS) around 12:41 PM, with a second (vacancy) chart around 8:25 PM. 5 of 5 stations on the NDLS to JAT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:02:03.147Z",
+  "knownChartCount": 5
+}

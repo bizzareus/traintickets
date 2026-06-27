@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12290",
+  "trainName": "Csmt Duronto Exp",
+  "originStation": "NGP",
+  "destinationStation": "CSMT",
+  "slug": "12290-csmt-duronto-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "NGP",
+      "stationName": "Nagpur",
+      "arrivalTime": "",
+      "departureTime": "19:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "10:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "WR",
+      "stationName": "Wardha Jn",
+      "arrivalTime": "20:44",
+      "departureTime": "20:45",
+      "day": 1,
+      "distance": "79.0",
+      "chartTimeLocal": "10:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "BD",
+      "stationName": "Badnera Jn",
+      "arrivalTime": "22:10",
+      "departureTime": "22:12",
+      "day": 1,
+      "distance": "175.0",
+      "chartTimeLocal": "10:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "BSL",
+      "stationName": "Bhusaval Jn",
+      "arrivalTime": "00:50",
+      "departureTime": "00:55",
+      "day": 2,
+      "distance": "393.0",
+      "chartTimeLocal": "15:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSL"
+    },
+    {
+      "stationCode": "CSMT",
+      "stationName": "C Shivaji Mah T",
+      "arrivalTime": "07:50",
+      "departureTime": "",
+      "day": 2,
+      "distance": "837.0",
+      "chartTimeLocal": "15:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSL"
+    }
+  ],
+  "summary": "The first reservation chart for Csmt Duronto Exp (12290) is prepared at Nagpur (NGP) around 10:39 AM, with a second (vacancy) chart around 7:35 PM. 5 of 5 stations on the NGP to CSMT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:42:20.542Z",
+  "knownChartCount": 5
+}

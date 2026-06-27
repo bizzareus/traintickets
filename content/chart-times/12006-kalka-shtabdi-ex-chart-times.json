@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12006",
+  "trainName": "Kalka Shtabdi Ex",
+  "originStation": "KLK",
+  "destinationStation": "NDLS",
+  "slug": "12006-kalka-shtabdi-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "KLK",
+      "stationName": "Kalka",
+      "arrivalTime": "",
+      "departureTime": "06:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "KLK"
+    },
+    {
+      "stationCode": "CDG",
+      "stationName": "Chandigarh",
+      "arrivalTime": "06:45",
+      "departureTime": "06:53",
+      "day": 1,
+      "distance": "38.0",
+      "chartTimeLocal": "20:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CDG"
+    },
+    {
+      "stationCode": "UMB",
+      "stationName": "Ambala Cant Jn",
+      "arrivalTime": "07:33",
+      "departureTime": "07:38",
+      "day": 1,
+      "distance": "106.0",
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "UMB"
+    },
+    {
+      "stationCode": "KKDE",
+      "stationName": "Kurukshetra Jn",
+      "arrivalTime": "08:08",
+      "departureTime": "08:10",
+      "day": 1,
+      "distance": "147.0",
+      "chartTimeLocal": "22:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "KKDE"
+    },
+    {
+      "stationCode": "PNP",
+      "stationName": "Panipat Jn",
+      "arrivalTime": "08:50",
+      "departureTime": "08:52",
+      "day": 1,
+      "distance": "214.0",
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PNP"
+    },
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "10:15",
+      "departureTime": "",
+      "day": 1,
+      "distance": "303.0",
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "PNP"
+    }
+  ],
+  "summary": "The first reservation chart for Kalka Shtabdi Ex (12006) is prepared at Kalka (KLK) around 8:32 PM. 6 of 6 stations on the KLK to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:09:03.673Z",
+  "knownChartCount": 6
+}

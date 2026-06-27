@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12224",
+  "trainName": "Ers Ltt Duronto",
+  "originStation": "ERS",
+  "destinationStation": "LTT",
+  "slug": "12224-ers-ltt-duronto-chart-times",
+  "stations": [
+    {
+      "stationCode": "ERS",
+      "stationName": "Ernakulam Jn",
+      "arrivalTime": "",
+      "departureTime": "21:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "11:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
+    },
+    {
+      "stationCode": "CLT",
+      "stationName": "Kozhikkode",
+      "arrivalTime": "00:42",
+      "departureTime": "00:45",
+      "day": 2,
+      "distance": "193.0",
+      "chartTimeLocal": "11:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
+    },
+    {
+      "stationCode": "MAJN",
+      "stationName": "Mangaluru Jn",
+      "arrivalTime": "03:55",
+      "departureTime": "04:00",
+      "day": 2,
+      "distance": "415.0",
+      "chartTimeLocal": "11:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
+    },
+    {
+      "stationCode": "MAO",
+      "stationName": "Madgaon",
+      "arrivalTime": "09:45",
+      "departureTime": "09:55",
+      "day": 2,
+      "distance": "846.0",
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:36",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
+    },
+    {
+      "stationCode": "RN",
+      "stationName": "Ratnagiri",
+      "arrivalTime": "15:25",
+      "departureTime": "15:30",
+      "day": 2,
+      "distance": "1180.0",
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:36",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
+    },
+    {
+      "stationCode": "PNVL",
+      "stationName": "Panvel",
+      "arrivalTime": "20:19",
+      "departureTime": "20:21",
+      "day": 2,
+      "distance": "1543.0",
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:36",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
+    },
+    {
+      "stationCode": "LTT",
+      "stationName": "Lokmanyatilak T",
+      "arrivalTime": "21:55",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1595.0",
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:36",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
+    }
+  ],
+  "summary": "The first reservation chart for Ers Ltt Duronto (12224) is prepared at Ernakulam Jn (ERS) around 11:56 AM, with a second (vacancy) chart around 9:15 PM. 7 of 7 stations on the ERS to LTT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:33:06.157Z",
+  "knownChartCount": 7
+}

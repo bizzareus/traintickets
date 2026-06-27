@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12241",
+  "trainName": "Cdg Asr Exp",
+  "originStation": "CDG",
+  "destinationStation": "ASR",
+  "slug": "12241-cdg-asr-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "CDG",
+      "stationName": "Chandigarh",
+      "arrivalTime": "",
+      "departureTime": "16:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SASN",
+      "stationName": "Sahibzada Asngr",
+      "arrivalTime": "16:50",
+      "departureTime": "16:52",
+      "day": 1,
+      "distance": "12.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "LDH",
+      "stationName": "Ludhiana Jn",
+      "arrivalTime": "18:47",
+      "departureTime": "18:54",
+      "day": 1,
+      "distance": "113.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "PGW",
+      "stationName": "Phagwara Jn",
+      "arrivalTime": "19:27",
+      "departureTime": "19:29",
+      "day": 1,
+      "distance": "149.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "JUC",
+      "stationName": "Jalandhar City",
+      "arrivalTime": "20:00",
+      "departureTime": "20:05",
+      "day": 1,
+      "distance": "170.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BEAS",
+      "stationName": "Beas",
+      "arrivalTime": "20:35",
+      "departureTime": "20:37",
+      "day": 1,
+      "distance": "206.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ASR",
+      "stationName": "Amritsar Jn",
+      "arrivalTime": "21:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "248.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Cdg Asr Exp (12241) from CDG to ASR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-27T00:34:32.361Z",
+  "knownChartCount": 0
+}

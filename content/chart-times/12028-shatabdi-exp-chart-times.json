@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12028",
+  "trainName": "Shatabdi Exp",
+  "originStation": "SBC",
+  "destinationStation": "MAS",
+  "slug": "12028-shatabdi-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "SBC",
+      "stationName": "KSR Bengaluru",
+      "arrivalTime": "",
+      "departureTime": "06:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "BNC",
+      "stationName": "Bengaluru Cant",
+      "arrivalTime": "06:09",
+      "departureTime": "06:10",
+      "day": 1,
+      "distance": "5.0",
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "JTJ",
+      "stationName": "Jolarpettai",
+      "arrivalTime": "07:49",
+      "departureTime": "07:50",
+      "day": 1,
+      "distance": "149.0",
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "KPD",
+      "stationName": "Katpadi Jn",
+      "arrivalTime": "08:53",
+      "departureTime": "08:55",
+      "day": 1,
+      "distance": "232.0",
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "MAS",
+      "stationName": "Mgr Chennai Ctl",
+      "arrivalTime": "11:00",
+      "departureTime": "",
+      "day": 1,
+      "distance": "362.0",
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    }
+  ],
+  "summary": "The first reservation chart for Shatabdi Exp (12028) is prepared at KSR Bengaluru (SBC) around 8:12 PM. 5 of 5 stations on the SBC to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:10:40.306Z",
+  "knownChartCount": 5
+}

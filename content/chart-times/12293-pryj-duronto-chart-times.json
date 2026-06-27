@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12293",
+  "trainName": "Pryj Duronto",
+  "originStation": "LTT",
+  "destinationStation": "PRYJ",
+  "slug": "12293-pryj-duronto-chart-times",
+  "stations": [
+    {
+      "stationCode": "LTT",
+      "stationName": "Lokmanyatilak T",
+      "arrivalTime": "",
+      "departureTime": "17:20",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "07:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
+    },
+    {
+      "stationCode": "BSL",
+      "stationName": "Bhusaval Jn",
+      "arrivalTime": "22:55",
+      "departureTime": "23:00",
+      "day": 1,
+      "distance": "429.0",
+      "chartTimeLocal": "13:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
+    },
+    {
+      "stationCode": "ET",
+      "stationName": "Itarsi Jn",
+      "arrivalTime": "02:50",
+      "departureTime": "03:00",
+      "day": 2,
+      "distance": "736.0",
+      "chartTimeLocal": "13:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
+    },
+    {
+      "stationCode": "JBP",
+      "stationName": "Jabalpur",
+      "arrivalTime": "06:00",
+      "departureTime": "06:10",
+      "day": 2,
+      "distance": "981.0",
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:52",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "STA",
+      "stationName": "Satna",
+      "arrivalTime": "08:25",
+      "departureTime": "08:30",
+      "day": 2,
+      "distance": "1170.0",
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:52",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn.",
+      "arrivalTime": "12:40",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1348.0",
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:52",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
+    }
+  ],
+  "summary": "The first reservation chart for Pryj Duronto (12293) is prepared at Lokmanyatilak T (LTT) around 7:54 AM, with a second (vacancy) chart around 4:48 PM. 6 of 6 stations on the LTT to PRYJ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:42:41.400Z",
+  "knownChartCount": 6
+}

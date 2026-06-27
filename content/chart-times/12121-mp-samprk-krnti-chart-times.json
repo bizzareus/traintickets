@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12121",
+  "trainName": "Mp Samprk Krnti",
+  "originStation": "JBP",
+  "destinationStation": "NZM",
+  "slug": "12121-mp-samprk-krnti-chart-times",
+  "stations": [
+    {
+      "stationCode": "JBP",
+      "stationName": "Jabalpur",
+      "arrivalTime": "",
+      "departureTime": "19:20",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "KMZ",
+      "stationName": "Katni Murwara",
+      "arrivalTime": "20:25",
+      "departureTime": "20:30",
+      "day": 1,
+      "distance": "92.0",
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "DMO",
+      "stationName": "Damoh",
+      "arrivalTime": "21:50",
+      "departureTime": "21:55",
+      "day": 1,
+      "distance": "201.0",
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "SGO",
+      "stationName": "Saugor",
+      "arrivalTime": "22:50",
+      "departureTime": "22:55",
+      "day": 1,
+      "distance": "278.0",
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGO"
+    },
+    {
+      "stationCode": "VGLJ",
+      "stationName": "V Lakshmibai Jhansi Jhs",
+      "arrivalTime": "02:10",
+      "departureTime": "02:18",
+      "day": 2,
+      "distance": "502.0",
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGO"
+    },
+    {
+      "stationCode": "GWL",
+      "stationName": "Gwalior",
+      "arrivalTime": "03:18",
+      "departureTime": "03:20",
+      "day": 2,
+      "distance": "599.0",
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGO"
+    },
+    {
+      "stationCode": "NZM",
+      "stationName": "H Nizamuddin",
+      "arrivalTime": "07:50",
+      "departureTime": "",
+      "day": 2,
+      "distance": "904.0",
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGO"
+    }
+  ],
+  "summary": "The first reservation chart for Mp Samprk Krnti (12121) is prepared at Jabalpur (JBP) around 9:05 AM, with a second (vacancy) chart around 7:05 PM. 7 of 7 stations on the JBP to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:19:25.267Z",
+  "knownChartCount": 7
+}

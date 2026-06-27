@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12614",
+  "trainName": "Wodeyar Sf Exp",
+  "originStation": "SBC",
+  "destinationStation": "MYS",
+  "slug": "12614-wodeyar-sf-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "SBC",
+      "stationName": "KSR Bengaluru",
+      "arrivalTime": "",
+      "departureTime": "15:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "05:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "KGI",
+      "stationName": "Kengeri",
+      "arrivalTime": "15:34",
+      "departureTime": "15:35",
+      "day": 1,
+      "distance": "13.0",
+      "chartTimeLocal": "05:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "RMGM",
+      "stationName": "Ramanagaram",
+      "arrivalTime": "16:01",
+      "departureTime": "16:02",
+      "day": 1,
+      "distance": "45.0",
+      "chartTimeLocal": "05:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "MYA",
+      "stationName": "Mandya",
+      "arrivalTime": "16:34",
+      "departureTime": "16:35",
+      "day": 1,
+      "distance": "93.0",
+      "chartTimeLocal": "05:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "MYS",
+      "stationName": "Mysuru Jn",
+      "arrivalTime": "17:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "139.0",
+      "chartTimeLocal": "05:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SBC"
+    }
+  ],
+  "summary": "The first reservation chart for Wodeyar Sf Exp (12614) is prepared at KSR Bengaluru (SBC) around 5:17 AM. 5 of 5 stations on the SBC to MYS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:31:34.257Z",
+  "knownChartCount": 5
+}

@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12560",
+  "trainName": "Shiv Ganga Exp",
+  "originStation": "NDLS",
+  "destinationStation": "BNRS",
+  "slug": "12560-shiv-ganga-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "20:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "01:00",
+      "departureTime": "01:05",
+      "day": 2,
+      "distance": "441.0",
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn.",
+      "arrivalTime": "03:45",
+      "departureTime": "03:55",
+      "day": 2,
+      "distance": "636.0",
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "GYN",
+      "stationName": "Gyanpur Road",
+      "arrivalTime": "05:00",
+      "departureTime": "05:02",
+      "day": 2,
+      "distance": "700.0",
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "BNRS",
+      "stationName": "BANARAS",
+      "arrivalTime": "06:10",
+      "departureTime": "",
+      "day": 2,
+      "distance": "757.0",
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    }
+  ],
+  "summary": "The first reservation chart for Shiv Ganga Exp (12560) is prepared at New Delhi (NDLS) around 12:05 PM, with a second (vacancy) chart around 7:50 PM. 5 of 5 stations on the NDLS to BNRS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:26:30.221Z",
+  "knownChartCount": 5
+}

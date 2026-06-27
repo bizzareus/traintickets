@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12373",
+  "trainName": "Sdah Rph Intrcty",
+  "originStation": "SDAH",
+  "destinationStation": "RPH",
+  "slug": "12373-sdah-rph-intrcty-chart-times",
+  "stations": [
+    {
+      "stationCode": "SDAH",
+      "stationName": "Sealdah",
+      "arrivalTime": "",
+      "departureTime": "09:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KQU",
+      "stationName": "Kamarkundu",
+      "arrivalTime": "09:51",
+      "departureTime": "09:52",
+      "day": 1,
+      "distance": "40.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BWN",
+      "stationName": "Barddhaman Jn",
+      "arrivalTime": "10:37",
+      "departureTime": "10:39",
+      "day": 1,
+      "distance": "101.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BHP",
+      "stationName": "Bolpur S Niktn",
+      "arrivalTime": "11:26",
+      "departureTime": "11:28",
+      "day": 1,
+      "distance": "153.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "PNE",
+      "stationName": "Prantik",
+      "arrivalTime": "11:39",
+      "departureTime": "11:40",
+      "day": 1,
+      "distance": "157.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SNT",
+      "stationName": "Sainthia",
+      "arrivalTime": "12:04",
+      "departureTime": "12:06",
+      "day": 1,
+      "distance": "186.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "RPH",
+      "stationName": "Rampur Hat",
+      "arrivalTime": "12:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "214.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Sdah Rph Intrcty (12373) from SDAH to RPH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-27T00:55:48.273Z",
+  "knownChartCount": 0
+}

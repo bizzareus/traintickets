@@ -1,0 +1,51 @@
+{
+  "trainNumber": "12452",
+  "trainName": "Shram Shkti Exp",
+  "originStation": "NDLS",
+  "destinationStation": "CNB",
+  "slug": "12452-shram-shkti-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "23:55",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "15:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "PNKD",
+      "stationName": "Panki Dham",
+      "arrivalTime": "05:09",
+      "departureTime": "05:10",
+      "day": 2,
+      "distance": "430.0",
+      "chartTimeLocal": "15:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "06:20",
+      "departureTime": "",
+      "day": 2,
+      "distance": "441.0",
+      "chartTimeLocal": "15:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    }
+  ],
+  "summary": "The first reservation chart for Shram Shkti Exp (12452) is prepared at New Delhi (NDLS) around 3:55 PM, with a second (vacancy) chart around 11:40 PM. 3 of 3 stations on the NDLS to CNB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:05:35.831Z",
+  "knownChartCount": 3
+}

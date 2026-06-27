@@ -1,0 +1,90 @@
+{
+  "trainNumber": "12294",
+  "trainName": "Ltt Duronto",
+  "originStation": "PRYJ",
+  "destinationStation": "LTT",
+  "slug": "12294-ltt-duronto-chart-times",
+  "stations": [
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn.",
+      "arrivalTime": "",
+      "departureTime": "18:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "STA",
+      "stationName": "Satna",
+      "arrivalTime": "20:55",
+      "departureTime": "21:00",
+      "day": 1,
+      "distance": "178.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "JBP",
+      "stationName": "Jabalpur",
+      "arrivalTime": "23:40",
+      "departureTime": "23:50",
+      "day": 1,
+      "distance": "367.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ET",
+      "stationName": "Itarsi Jn",
+      "arrivalTime": "03:35",
+      "departureTime": "03:45",
+      "day": 2,
+      "distance": "612.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BSL",
+      "stationName": "Bhusaval Jn",
+      "arrivalTime": "07:50",
+      "departureTime": "07:55",
+      "day": 2,
+      "distance": "919.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "LTT",
+      "stationName": "Lokmanyatilak T",
+      "arrivalTime": "14:55",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1348.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Ltt Duronto (12294) from PRYJ to LTT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-06-27T00:42:54.192Z",
+  "knownChartCount": 0
+}

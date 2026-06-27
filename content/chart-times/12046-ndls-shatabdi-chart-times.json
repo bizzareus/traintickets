@@ -1,0 +1,64 @@
+{
+  "trainNumber": "12046",
+  "trainName": "Ndls Shatabdi",
+  "originStation": "CDG",
+  "destinationStation": "NDLS",
+  "slug": "12046-ndls-shatabdi-chart-times",
+  "stations": [
+    {
+      "stationCode": "CDG",
+      "stationName": "Chandigarh",
+      "arrivalTime": "",
+      "departureTime": "12:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CDG"
+    },
+    {
+      "stationCode": "UMB",
+      "stationName": "Ambala Cant Jn",
+      "arrivalTime": "12:43",
+      "departureTime": "12:47",
+      "day": 1,
+      "distance": "68.0",
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "UMB"
+    },
+    {
+      "stationCode": "KUN",
+      "stationName": "Karnal",
+      "arrivalTime": "13:35",
+      "departureTime": "13:37",
+      "day": 1,
+      "distance": "143.0",
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "KUN"
+    },
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "15:20",
+      "departureTime": "",
+      "day": 1,
+      "distance": "266.0",
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "KUN"
+    }
+  ],
+  "summary": "The first reservation chart for Ndls Shatabdi (12046) is prepared at Chandigarh (CDG) around 8:09 PM. 4 of 4 stations on the CDG to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:11:57.218Z",
+  "knownChartCount": 4
+}

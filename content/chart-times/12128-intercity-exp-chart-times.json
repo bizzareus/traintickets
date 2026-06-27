@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12128",
+  "trainName": "Intercity Exp",
+  "originStation": "PUNE",
+  "destinationStation": "CSMT",
+  "slug": "12128-intercity-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "PUNE",
+      "stationName": "Pune Jn",
+      "arrivalTime": "",
+      "departureTime": "17:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "LNL",
+      "stationName": "Lonavala",
+      "arrivalTime": "18:38",
+      "departureTime": "18:40",
+      "day": 1,
+      "distance": "64.0",
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "TNA",
+      "stationName": "Thane",
+      "arrivalTime": "20:19",
+      "departureTime": "20:20",
+      "day": 1,
+      "distance": "159.0",
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "DR",
+      "stationName": "Dadar",
+      "arrivalTime": "20:38",
+      "departureTime": "20:40",
+      "day": 1,
+      "distance": "183.0",
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    },
+    {
+      "stationCode": "CSMT",
+      "stationName": "C Shivaji Mah T",
+      "arrivalTime": "21:15",
+      "departureTime": "",
+      "day": 1,
+      "distance": "192.0",
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
+    }
+  ],
+  "summary": "The first reservation chart for Intercity Exp (12128) is prepared at Pune Jn (PUNE) around 8:10 AM, with a second (vacancy) chart around 6:25 PM. 5 of 5 stations on the PUNE to CSMT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:19:54.099Z",
+  "knownChartCount": 5
+}

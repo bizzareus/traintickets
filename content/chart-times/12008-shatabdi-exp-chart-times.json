@@ -1,0 +1,64 @@
+{
+  "trainNumber": "12008",
+  "trainName": "Shatabdi Exp",
+  "originStation": "MYS",
+  "destinationStation": "MAS",
+  "slug": "12008-shatabdi-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "MYS",
+      "stationName": "Mysuru Jn",
+      "arrivalTime": "",
+      "departureTime": "14:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "05:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MYS"
+    },
+    {
+      "stationCode": "SBC",
+      "stationName": "KSR Bengaluru",
+      "arrivalTime": "16:05",
+      "departureTime": "16:10",
+      "day": 1,
+      "distance": "139.0",
+      "chartTimeLocal": "06:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "KPD",
+      "stationName": "Katpadi Jn",
+      "arrivalTime": "19:23",
+      "departureTime": "19:25",
+      "day": 1,
+      "distance": "371.0",
+      "chartTimeLocal": "06:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "MAS",
+      "stationName": "Mgr Chennai Ctl",
+      "arrivalTime": "21:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "500.0",
+      "chartTimeLocal": "06:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    }
+  ],
+  "summary": "The first reservation chart for Shatabdi Exp (12008) is prepared at Mysuru Jn (MYS) around 5:12 AM. 4 of 4 stations on the MYS to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:09:11.286Z",
+  "knownChartCount": 4
+}

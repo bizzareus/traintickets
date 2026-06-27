@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12243",
+  "trainName": "Mas Cbe Shatabdi",
+  "originStation": "MAS",
+  "destinationStation": "CBE",
+  "slug": "12243-mas-cbe-shatabdi-chart-times",
+  "stations": [
+    {
+      "stationCode": "MAS",
+      "stationName": "Mgr Chennai Ctl",
+      "arrivalTime": "",
+      "departureTime": "07:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "KPD",
+      "stationName": "Katpadi Jn",
+      "arrivalTime": "08:43",
+      "departureTime": "08:45",
+      "day": 1,
+      "distance": "130.0",
+      "chartTimeLocal": "20:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "JTJ",
+      "stationName": "Jolarpettai",
+      "arrivalTime": "09:53",
+      "departureTime": "09:55",
+      "day": 1,
+      "distance": "214.0",
+      "chartTimeLocal": "20:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "SA",
+      "stationName": "Salem Jn",
+      "arrivalTime": "11:17",
+      "departureTime": "11:20",
+      "day": 1,
+      "distance": "334.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SA"
+    },
+    {
+      "stationCode": "ED",
+      "stationName": "Erode Jn",
+      "arrivalTime": "12:15",
+      "departureTime": "12:20",
+      "day": 1,
+      "distance": "396.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SA"
+    },
+    {
+      "stationCode": "TUP",
+      "stationName": "Tiruppur",
+      "arrivalTime": "13:03",
+      "departureTime": "13:05",
+      "day": 1,
+      "distance": "446.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SA"
+    },
+    {
+      "stationCode": "CBE",
+      "stationName": "Coimbatore Jn",
+      "arrivalTime": "14:15",
+      "departureTime": "",
+      "day": 1,
+      "distance": "497.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SA"
+    }
+  ],
+  "summary": "The first reservation chart for Mas Cbe Shatabdi (12243) is prepared at Mgr Chennai Ctl (MAS) around 8:43 PM. 7 of 7 stations on the MAS to CBE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:34:49.106Z",
+  "knownChartCount": 7
+}

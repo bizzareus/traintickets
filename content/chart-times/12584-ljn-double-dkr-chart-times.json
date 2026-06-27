@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12584",
+  "trainName": "Ljn Double Dkr",
+  "originStation": "ANVT",
+  "destinationStation": "LJN",
+  "slug": "12584-ljn-double-dkr-chart-times",
+  "stations": [
+    {
+      "stationCode": "ANVT",
+      "stationName": "Anand Vihar TRM",
+      "arrivalTime": "",
+      "departureTime": "14:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "06:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "GZB",
+      "stationName": "Ghaziabad",
+      "arrivalTime": "14:33",
+      "departureTime": "14:35",
+      "day": 1,
+      "distance": "13.0",
+      "chartTimeLocal": "06:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "MB",
+      "stationName": "Moradabad",
+      "arrivalTime": "16:37",
+      "departureTime": "16:42",
+      "day": 1,
+      "distance": "154.0",
+      "chartTimeLocal": "06:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "BE",
+      "stationName": "Bareilly",
+      "arrivalTime": "18:06",
+      "departureTime": "18:08",
+      "day": 1,
+      "distance": "245.0",
+      "chartTimeLocal": "06:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "LJN",
+      "stationName": "Lucknow Ne",
+      "arrivalTime": "22:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "480.0",
+      "chartTimeLocal": "06:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    }
+  ],
+  "summary": "The first reservation chart for Ljn Double Dkr (12584) is prepared at Anand Vihar TRM (ANVT) around 6:05 AM, with a second (vacancy) chart around 5:53 PM. 5 of 5 stations on the ANVT to LJN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T01:27:48.947Z",
+  "knownChartCount": 5
+}

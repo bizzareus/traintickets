@@ -1,0 +1,64 @@
+{
+  "trainNumber": "12337",
+  "trainName": "Santiniketn Exp",
+  "originStation": "HWH",
+  "destinationStation": "BHP",
+  "slug": "12337-santiniketn-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "HWH",
+      "stationName": "Howrah Jn",
+      "arrivalTime": "",
+      "departureTime": "10:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "BWN",
+      "stationName": "Barddhaman Jn",
+      "arrivalTime": "11:02",
+      "departureTime": "11:04",
+      "day": 1,
+      "distance": "95.0",
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "GKH",
+      "stationName": "Guskara",
+      "arrivalTime": "11:40",
+      "departureTime": "11:41",
+      "day": 1,
+      "distance": "127.0",
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "BHP",
+      "stationName": "Bolpur S Niktn",
+      "arrivalTime": "12:15",
+      "departureTime": "",
+      "day": 1,
+      "distance": "146.0",
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "HWH"
+    }
+  ],
+  "summary": "The first reservation chart for Santiniketn Exp (12337) is prepared at Howrah Jn (HWH) around 8:50 PM. 4 of 4 stations on the HWH to BHP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T00:50:28.127Z",
+  "knownChartCount": 4
+}
