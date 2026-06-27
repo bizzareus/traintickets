@@ -57,6 +57,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-acceptable-id-proofs-train-travel.md | Acceptable ID Proofs for Train Travel: IRCTC Rules, Digital IDs (DigiLocker/mAadhaar), and TTE Verification Guidelines (EN + hi/mr/bn/ta/te/ml) | 2026-06-27 |
 | irctc-refund-status-check-track-ticket-refund.md | IRCTC Refund Status Check: How to Track Cancelled Train Ticket Refund Online (EN + hi/mr/bn/ta/te/ml) | 2026-06-27 |
 | duplicate-train-ticket-lost-counter-ticket-rules.md | Duplicate Train Ticket: Rules and charges for lost, torn, or damaged counter tickets in Indian Railways (EN + hi/mr/bn/ta/te/ml) | 2026-06-27 |
+| indian-railways-cloak-room-rules-luggage-storage.md | Indian Railways Cloak Room Rules: Luggage Storage, Charges, and Guidelines (EN + hi/mr/bn/ta/te/ml) | 2026-06-27 |
 
 ## SEO triage actions (GSC / Google Trends driven)
 
