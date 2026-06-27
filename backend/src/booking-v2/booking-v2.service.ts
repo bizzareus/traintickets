@@ -886,10 +886,31 @@ export class BookingV2Service {
   ): Promise<FindAlternatePathsResult> {
     const sharedProbeCache = new Map<string, MultiClassProbeResult>();
 
+    // Each internal pass (direct + every ±station offset combo) emits its own
+    // `done`. Suppress those — otherwise the client shows "Search complete" as
+    // soon as the direct pass finishes, while the offset retries are still
+    // running and the final result hasn't been sent. We emit a single `done`
+    // at the true end (see `finish`). Non-`done` events still stream through so
+    // the loader keeps showing progress across all passes.
+    const passProgress: typeof onProgress = onProgress
+      ? (event) => {
+          if (event.type !== 'done') onProgress(event);
+        }
+      : undefined;
+    const finish = (result: FindAlternatePathsResult): FindAlternatePathsResult => {
+      onProgress?.({
+        type: 'done',
+        isComplete: result.isComplete,
+        legCount: result.legs.length,
+        totalFare: result.totalFare,
+      });
+      return result;
+    };
+
     // 1. Try standard/direct route first (no offsets)
     const directResult = await this.findAlternatePathsInternal(
       input,
-      onProgress,
+      passProgress,
       sharedProbeCache,
     );
     if (
@@ -897,7 +918,7 @@ export class BookingV2Service {
       directResult.legs.length > 0 &&
       directResult.legs.every((l) => l.segmentKind === 'confirmed')
     ) {
-      return directResult;
+      return finish(directResult);
     }
 
     // 2. If direct is not fully confirmed, try offset fallbacks
@@ -919,7 +940,7 @@ export class BookingV2Service {
             stationsBefore: combo.before,
             stationsAfter: combo.after,
           },
-          onProgress,
+          passProgress,
           sharedProbeCache,
         );
 
@@ -931,13 +952,13 @@ export class BookingV2Service {
           this.logger.log(
             `[alternate-paths ${input.trainNumber}] Found fully confirmed path using offset: before=${combo.before}, after=${combo.after}`,
           );
-          return offsetResult;
+          return finish(offsetResult);
         }
       }
     }
 
     // 3. Fallback to standard result if no fully confirmed path is found with offsets
-    return directResult;
+    return finish(directResult);
   }
 
   async findAlternatePathsInternal(
