@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { listBlogPosts, getAvailableTranslations } from "@/lib/blog";
-import { getAllGlossaryTerms } from "@/lib/seo/glossary-db";
+import { getAllGlossaryTerms, listAvailableGlossaryLangs } from "@/lib/seo/glossary-db";
 import { getTopRoutes } from "@/lib/seo/routes-db";
 import { listChartTimesIndex } from "@/lib/chartTimes";
 
@@ -33,12 +33,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: url("/pnr-status"), lastModified: now },
   ];
 
-  // 2. Glossary term pages
+  // 2. Glossary: index + term pages, per language that has a translation file.
   const glossaryTerms = getAllGlossaryTerms();
-  const glossaryRoutes: MetadataRoute.Sitemap = glossaryTerms.map((term) => ({
-    url: url(`/glossary/${term.id}`),
-    lastModified: now,
-  }));
+  const glossaryLangs = listAvailableGlossaryLangs(); // ["en", ...translated]
+  const glossaryRoutes: MetadataRoute.Sitemap = [];
+  for (const lang of glossaryLangs) {
+    const indexPath = lang === "en" ? "/glossary" : `/glossary/${lang}`;
+    glossaryRoutes.push({ url: url(indexPath), lastModified: now });
+    for (const term of glossaryTerms) {
+      const termPath =
+        lang === "en" ? `/glossary/${term.id}` : `/glossary/${lang}/${term.id}`;
+      glossaryRoutes.push({ url: url(termPath), lastModified: now });
+    }
+  }
 
   // 3. Train route pages
   const routes = await getTopRoutes();
