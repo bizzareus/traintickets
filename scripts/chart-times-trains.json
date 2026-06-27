@@ -16412,8 +16412,10 @@
   {
     "trainNumber": "12329",
     "trainName": "SAMPARK K EXP",
-    "completed": false,
-    "httpStatus": 0
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12329-sampark-k-exp-chart-times",
+    "canonicalNumber": "12329"
   },
   {
     "trainNumber": "12330",
@@ -18458,387 +18460,618 @@
   {
     "trainNumber": "12616",
     "trainName": "GRAND TRUNK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12616-grand-trunk-exp-chart-times",
+    "canonicalNumber": "12616"
   },
   {
     "trainNumber": "12617",
     "trainName": "MANGLADWEEP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12617-mangladweep-exp-chart-times",
+    "canonicalNumber": "12617"
   },
   {
     "trainNumber": "12618",
     "trainName": "MNGLA LKSDP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12618-mngla-lksdp-exp-chart-times",
+    "canonicalNumber": "12618"
   },
   {
     "trainNumber": "12619",
     "trainName": "MATSYAGANDHA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12619-matsyagandha-exp-chart-times",
+    "canonicalNumber": "12619"
   },
   {
     "trainNumber": "12620",
     "trainName": "MATSYAGANDA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12620-matsyaganda-exp-chart-times",
+    "canonicalNumber": "12620"
   },
   {
     "trainNumber": "12621",
     "trainName": "TAMILNADU SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12621-tamilnadu-sf-exp-chart-times",
+    "canonicalNumber": "12621"
   },
   {
     "trainNumber": "12622",
     "trainName": "TAMILNADU EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12622-tamilnadu-exp-chart-times",
+    "canonicalNumber": "12622"
   },
   {
     "trainNumber": "12623",
     "trainName": "MAS TVC SF MAIL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12623-mas-tvc-sf-mail-chart-times",
+    "canonicalNumber": "12623"
   },
   {
     "trainNumber": "12624",
     "trainName": "TVC MAS SF MAIL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12624-tvc-mas-sf-mail-chart-times",
+    "canonicalNumber": "12624"
   },
   {
     "trainNumber": "12625",
     "trainName": "KERALA SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12625-kerala-sf-exp-chart-times",
+    "canonicalNumber": "12625"
   },
   {
     "trainNumber": "12626",
     "trainName": "KERALA EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12626-kerala-express-chart-times",
+    "canonicalNumber": "12626"
   },
   {
     "trainNumber": "12627",
     "trainName": "KARNATAKA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12627-karnataka-exp-chart-times",
+    "canonicalNumber": "12627"
   },
   {
     "trainNumber": "12628",
     "trainName": "KARNATAKA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12628-karnataka-exp-chart-times",
+    "canonicalNumber": "12628"
   },
   {
     "trainNumber": "12629",
     "trainName": "SAMPARK KRANTI",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12629-sampark-kranti-chart-times",
+    "canonicalNumber": "12629"
   },
   {
     "trainNumber": "12630",
     "trainName": "YPR S KRNTI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12630-ypr-s-krnti-exp-chart-times",
+    "canonicalNumber": "12630"
   },
   {
     "trainNumber": "12631",
     "trainName": "NELLAI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12631-nellai-sf-exp-chart-times",
+    "canonicalNumber": "12631"
   },
   {
     "trainNumber": "12632",
     "trainName": "NELLAI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12632-nellai-sf-exp-chart-times",
+    "canonicalNumber": "12632"
   },
   {
     "trainNumber": "12633",
     "trainName": "KANYAKUMARI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12633-kanyakumari-exp-chart-times",
+    "canonicalNumber": "12633"
   },
   {
     "trainNumber": "12634",
     "trainName": "KANYAKUMARI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12634-kanyakumari-exp-chart-times",
+    "canonicalNumber": "12634"
   },
   {
     "trainNumber": "12635",
     "trainName": "VAIGAI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12635-vaigai-sf-exp-chart-times",
+    "canonicalNumber": "12635"
   },
   {
     "trainNumber": "12636",
     "trainName": "VAIGAI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12636-vaigai-sf-exp-chart-times",
+    "canonicalNumber": "12636"
   },
   {
     "trainNumber": "12637",
     "trainName": "PANDIAN SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12637-pandian-sf-exp-chart-times",
+    "canonicalNumber": "12637"
   },
   {
     "trainNumber": "12638",
     "trainName": "PANDIAN SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12638-pandian-sf-exp-chart-times",
+    "canonicalNumber": "12638"
   },
   {
     "trainNumber": "12639",
     "trainName": "BRINDAVAN SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12639-brindavan-sf-exp-chart-times",
+    "canonicalNumber": "12639"
   },
   {
     "trainNumber": "12640",
     "trainName": "BRINDAVAN SF EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12640-brindavan-sf-ex-chart-times",
+    "canonicalNumber": "12640"
   },
   {
     "trainNumber": "12641",
     "trainName": "TIRUKKURAL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12641-tirukkural-exp-chart-times",
+    "canonicalNumber": "12641"
   },
   {
     "trainNumber": "12642",
     "trainName": "NZM CAPE SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12642-nzm-cape-sf-exp-chart-times",
+    "canonicalNumber": "12642"
   },
   {
     "trainNumber": "12643",
     "trainName": "TVC NZM SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12643-tvc-nzm-sf-exp-chart-times",
+    "canonicalNumber": "12643"
   },
   {
     "trainNumber": "12644",
     "trainName": "SWRN JAYNTI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12644-swrn-jaynti-exp-chart-times",
+    "canonicalNumber": "12644"
   },
   {
     "trainNumber": "12645",
     "trainName": "MILLENNIUM EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12645-millennium-exp-chart-times",
+    "canonicalNumber": "12645"
   },
   {
     "trainNumber": "12646",
     "trainName": "MILLENIUM EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12646-millenium-exp-chart-times",
+    "canonicalNumber": "12646"
   },
   {
     "trainNumber": "12647",
     "trainName": "KONGU SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12647-kongu-sf-exp-chart-times",
+    "canonicalNumber": "12647"
   },
   {
     "trainNumber": "12648",
     "trainName": "KONGU EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12648-kongu-express-chart-times",
+    "canonicalNumber": "12648"
   },
   {
     "trainNumber": "12649",
     "trainName": "SAMPARK KRANTI",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12649-sampark-kranti-chart-times",
+    "canonicalNumber": "12649"
   },
   {
     "trainNumber": "12650",
     "trainName": "YPR SAMPARK KRT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12650-ypr-s-kranti-chart-times",
+    "canonicalNumber": "12650"
   },
   {
     "trainNumber": "12651",
     "trainName": "NZM S KRNTI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12651-nzm-s-kranti-exp-chart-times",
+    "canonicalNumber": "12651"
   },
   {
     "trainNumber": "12652",
     "trainName": "SMPARK KRNT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12652-smpark-krnt-exp-chart-times",
+    "canonicalNumber": "12652"
   },
   {
     "trainNumber": "12653",
     "trainName": "ROCKFORT SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12653-rockfort-sf-exp-chart-times",
+    "canonicalNumber": "12653"
   },
   {
     "trainNumber": "12654",
     "trainName": "ROCKFORT SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12654-rockfort-sf-exp-chart-times",
+    "canonicalNumber": "12654"
   },
   {
     "trainNumber": "12655",
     "trainName": "NAVJEEVAN EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12655-navjeevan-exp-chart-times",
+    "canonicalNumber": "12655"
   },
   {
     "trainNumber": "12656",
     "trainName": "NAVJEEVAN SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12656-navjeevan-sf-exp-chart-times",
+    "canonicalNumber": "12656"
   },
   {
     "trainNumber": "12657",
     "trainName": "MAS SBC SF MAIL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12657-mas-sbc-sf-mail-chart-times",
+    "canonicalNumber": "12657"
   },
   {
     "trainNumber": "12658",
     "trainName": "SBC MAS SF MAIL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12658-sbc-mas-sf-mail-chart-times",
+    "canonicalNumber": "12658"
   },
   {
     "trainNumber": "12659",
     "trainName": "GURUDEV SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12659-gurudev-sf-exp-chart-times",
+    "canonicalNumber": "12659"
   },
   {
     "trainNumber": "12660",
     "trainName": "GURUDEV EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12660-gurudev-exp-chart-times",
+    "canonicalNumber": "12660"
   },
   {
     "trainNumber": "12661",
     "trainName": "POTHIGAI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12661-pothigai-sf-exp-chart-times",
+    "canonicalNumber": "12661"
   },
   {
     "trainNumber": "12662",
     "trainName": "POTHIGAI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12662-pothigai-sf-exp-chart-times",
+    "canonicalNumber": "12662"
   },
   {
     "trainNumber": "12663",
     "trainName": "HWH TPJ SUF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12663-hwh-tpj-suf-exp-chart-times",
+    "canonicalNumber": "12663"
   },
   {
     "trainNumber": "12664",
     "trainName": "TPJ HWH SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12664-tpj-hwh-sf-exp-chart-times",
+    "canonicalNumber": "12664"
   },
   {
     "trainNumber": "12665",
     "trainName": "HWH CAPE SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12665-hwh-cape-sf-exp-chart-times",
+    "canonicalNumber": "12665"
   },
   {
     "trainNumber": "12666",
     "trainName": "CAPE HWH SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12666-cape-hwh-sf-exp-chart-times",
+    "canonicalNumber": "12666"
   },
   {
     "trainNumber": "12667",
     "trainName": "MS CAPE SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12667-ms-cape-sf-exp-chart-times",
+    "canonicalNumber": "12667"
   },
   {
     "trainNumber": "12668",
     "trainName": "CAPE MS SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12668-cape-ms-sf-exp-chart-times",
+    "canonicalNumber": "12668"
   },
   {
     "trainNumber": "12669",
     "trainName": "GANGAKAVERI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12669-gangakaveri-exp-chart-times",
+    "canonicalNumber": "12669"
   },
   {
     "trainNumber": "12670",
     "trainName": "GANGAKAVERI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12670-gangakaveri-exp-chart-times",
+    "canonicalNumber": "12670"
   },
   {
     "trainNumber": "12671",
     "trainName": "NILAGIRI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12671-nilagiri-sf-exp-chart-times",
+    "canonicalNumber": "12671"
   },
   {
     "trainNumber": "12672",
     "trainName": "NILAGIRI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12672-nilagiri-sf-exp-chart-times",
+    "canonicalNumber": "12672"
   },
   {
     "trainNumber": "12673",
     "trainName": "CHERAN SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12673-cheran-sf-exp-chart-times",
+    "canonicalNumber": "12673"
   },
   {
     "trainNumber": "12674",
     "trainName": "CHERAN SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12674-cheran-sf-exp-chart-times",
+    "canonicalNumber": "12674"
   },
   {
     "trainNumber": "12675",
     "trainName": "KOVAI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12675-kovai-sf-exp-chart-times",
+    "canonicalNumber": "12675"
   },
   {
     "trainNumber": "12676",
     "trainName": "KOVAI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12676-kovai-sf-exp-chart-times",
+    "canonicalNumber": "12676"
   },
   {
     "trainNumber": "12677",
     "trainName": "ERNAKULAM EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12677-ernakulam-exp-chart-times",
+    "canonicalNumber": "12677"
   },
   {
     "trainNumber": "12678",
     "trainName": "SBC INTERCITY",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12678-sbc-intercity-chart-times",
+    "canonicalNumber": "12678"
   },
   {
     "trainNumber": "12679",
     "trainName": "CBE INTERCITY",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12679-cbe-intercity-chart-times",
+    "canonicalNumber": "12679"
   },
   {
     "trainNumber": "12680",
     "trainName": "MAS INTERCITY",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12680-mas-intercity-chart-times",
+    "canonicalNumber": "12680"
   },
   {
     "trainNumber": "12681",
     "trainName": "MAS CBE SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12681-mas-cbe-sf-exp-chart-times",
+    "canonicalNumber": "12681"
   },
   {
     "trainNumber": "12682",
     "trainName": "CBE MAS SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12682-cbe-mas-sf-exp-chart-times",
+    "canonicalNumber": "12682"
   },
   {
     "trainNumber": "12683",
     "trainName": "ERS SMVB SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12683-ers-smvb-sf-exp-chart-times",
+    "canonicalNumber": "12683"
   },
   {
     "trainNumber": "12684",
     "trainName": "ERNAKULAM SFEXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12684-ernakulam-sfexp-chart-times",
+    "canonicalNumber": "12684"
   },
   {
     "trainNumber": "12685",
     "trainName": "MAS MAQ SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12685-mas-maq-sf-exp-chart-times",
+    "canonicalNumber": "12685"
   },
   {
     "trainNumber": "12686",
     "trainName": "MAQ MAS SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12686-maq-mas-sf-exp-chart-times",
+    "canonicalNumber": "12686"
   },
   {
     "trainNumber": "12688",
     "trainName": "CDG MDU SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12688-cdg-mdu-sf-exp-chart-times",
+    "canonicalNumber": "12688"
   },
   {
     "trainNumber": "12689",
     "trainName": "MAS CAPE SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12689-mas-cape-sf-exp-chart-times",
+    "canonicalNumber": "12689"
   },
   {
     "trainNumber": "12690",
     "trainName": "CAPE MAS SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12690-cape-mas-sf-exp-chart-times",
+    "canonicalNumber": "12690"
   },
   {
     "trainNumber": "12691",
     "trainName": "MAS SMET SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12691-mas-smet-sf-exp-chart-times",
+    "canonicalNumber": "12691"
   },
   {
     "trainNumber": "12692",
     "trainName": "SMET MAS SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12692-smet-mas-sf-exp-chart-times",
+    "canonicalNumber": "12692"
   },
   {
     "trainNumber": "12693",
     "trainName": "PEARL CITY EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "12693-pearl-city-exp-chart-times",
+    "canonicalNumber": "12693"
   },
   {
     "trainNumber": "12694",
