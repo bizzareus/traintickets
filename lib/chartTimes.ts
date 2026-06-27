@@ -449,3 +449,38 @@ export function listChartTimesIndex(): {
   }
   return out.sort((a, b) => a.trainNumber.localeCompare(b.trainNumber));
 }
+
+/**
+ * Curated marquee trains for the "Popular trains" rail shown on the chart-times
+ * hub and in the site footer. These are recognisable, high-traffic trains
+ * (Rajdhani / Shatabdi / Duronto / named expresses) rather than whatever
+ * happens to sort first in the full index. Listed in display order; only the
+ * ones that have a committed chart-times page are surfaced.
+ */
+export const CURATED_POPULAR_CHART_TIMES: string[] = [
+  "12952", // Mumbai Rajdhani
+  "12302", // Howrah Rajdhani
+  "12310", // Patna (Rajdhani) Express
+  "12425", // Jammu Rajdhani
+  "12002", // New Delhi Shatabdi
+  "12007", // Mysuru Shatabdi
+  "12259", // Duronto Express
+  "12621", // Tamil Nadu Express
+  "12615", // Grand Trunk Express
+  "12137", // Punjab Mail
+  "12649", // Sampark Kranti
+  "12301", // Howrah Rajdhani (Via Gaya)
+];
+
+/** The curated popular trains that actually have a chart-times page, in order. */
+export function listPopularChartTimes(): ReturnType<typeof listChartTimesIndex> {
+  const byNumber = new Map(
+    listChartTimesIndex().map((t) => [t.trainNumber, t]),
+  );
+  const out: ReturnType<typeof listChartTimesIndex> = [];
+  for (const trainNumber of CURATED_POPULAR_CHART_TIMES) {
+    const t = byNumber.get(trainNumber);
+    if (t) out.push(t);
+  }
+  return out;
+}

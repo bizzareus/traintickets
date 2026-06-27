@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { listChartTimesIndex } from "@/lib/chartTimes";
+import { listPopularChartTimes } from "@/lib/chartTimes";
 import ChartTimesFinder from "./ChartTimesFinder";
 
 export const dynamicParams = true;
@@ -13,12 +13,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/chart-times" },
 };
 
-// Keep the "Popular trains" list on this page in sync with the footer, which
-// surfaces the same first six chart-time pages.
-const POPULAR_TRAINS_LIMIT = 6;
-
 export default function ChartTimesIndexPage() {
-  const trains = listChartTimesIndex().slice(0, POPULAR_TRAINS_LIMIT);
+  const trains = listPopularChartTimes();
 
   return (
     <>

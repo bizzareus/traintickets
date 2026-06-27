@@ -6,7 +6,7 @@ import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
 import { IstRailMaintenanceBanner } from "@/components/IstRailMaintenance";
-import { listChartTimesIndex } from "@/lib/chartTimes";
+import { listPopularChartTimes } from "@/lib/chartTimes";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -134,7 +134,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const chartTimesPages = listChartTimesIndex().slice(0, 6);
+  const chartTimesPages = listPopularChartTimes().slice(0, 6);
   return (
     <html lang="en">
       <head>
