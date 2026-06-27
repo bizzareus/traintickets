@@ -846,6 +846,8 @@ export function SeatStatus() {
             <JourneyDatePicker
               id={dateInputId}
               value={journeyDate}
+              minOffsetDays={-1}
+              inputClassName="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm font-medium text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
               onChange={(ymd) => {
                 setJourneyDate(ymd);
                 resetResult();
@@ -880,6 +882,7 @@ export function SeatStatus() {
           </div>
         </div>
 
+        {/* Coach + optional seat number, side by side */}
         <div className="grid gap-0 divide-y divide-gray-100 border-t border-gray-100 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
           <div className="px-4 py-3.5">
             <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wide text-gray-500">
@@ -914,17 +917,13 @@ export function SeatStatus() {
                 {coaches.map((c) => (
                   <option key={c.coachName} value={c.coachName}>
                     {c.coachName} ({c.classCode})
-                    {c.vacantBerths > 0 ? ` — ${c.vacantBerths} vacant` : ""}
+                    {c.vacantBerths > 0 ? ` (${c.vacantBerths} vacant)` : ""}
                   </option>
                 ))}
               </select>
             )}
           </div>
-        </div>
-
-        {/* Optional seat number + CTA */}
-        <div className="flex flex-col gap-3 border-t border-gray-100 px-4 py-3.5 sm:flex-row sm:items-end">
-          <div className="sm:w-48">
+          <div className="px-4 py-3.5">
             <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wide text-gray-500">
               Seat / berth no.{" "}
               <span className="normal-case font-normal text-gray-400">
@@ -940,12 +939,16 @@ export function SeatStatus() {
               className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm font-medium text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
             />
           </div>
+        </div>
+
+        {/* CTA */}
+        <div className="border-t border-gray-100 px-4 py-3.5">
           <button
             type="button"
             id="seatStatusCheckBtn"
             onClick={() => void handleCheck()}
             disabled={!canSubmit}
-            className="inline-flex flex-1 items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none"
+            className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
           >
             {loading ? (
               <span className="inline-flex items-center gap-2">

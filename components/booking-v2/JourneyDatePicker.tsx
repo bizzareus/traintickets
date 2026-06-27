@@ -27,12 +27,22 @@ export type JourneyDatePickerProps = {
   id: string;
   value: string | null;
   onChange: (ymd: string) => void;
+  /** Days relative to today for the earliest selectable date (e.g. -1 allows yesterday). Default 0 (today). */
+  minOffsetDays?: number;
+  /** Override the trigger input styling (defaults to the large search-field style). */
+  inputClassName?: string;
 };
 
 /**
  * Flowbite / Tailwind datepicker (flowbite-datepicker) for journey YYYY-MM-DD state.
  */
-export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProps) {
+export function JourneyDatePicker({
+  id,
+  value,
+  onChange,
+  minOffsetDays = 0,
+  inputClassName,
+}: JourneyDatePickerProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const dpRef = useRef<DatepickerInstance | null>(null);
   const onChangeRef = useRef(onChange);
@@ -62,13 +72,15 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
         new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
       );
       istToday.setHours(0, 0, 0, 0);
+      const minDate = new Date(istToday);
+      minDate.setDate(minDate.getDate() + minOffsetDays);
 
       const dp = new Datepicker(el, {
         autohide: true,
         format: "DD, M dd",
         orientation: "bottom",
         todayHighlight: true,
-        minDate: istToday,
+        minDate,
         container: `#dp-container-${id}`,
       }) as DatepickerInstance;
       dpRef.current = dp;
@@ -85,8 +97,8 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
       dpRef.current?.destroy();
       dpRef.current = null;
     };
-    // Intentionally once: picker owns the input; callback read via ref.
-  }, [id]);
+    // Intentionally once per id/min: picker owns the input; callback read via ref.
+  }, [id, minOffsetDays]);
 
   useEffect(() => {
     const dp = dpRef.current;
@@ -110,7 +122,11 @@ export function JourneyDatePicker({ id, value, onChange }: JourneyDatePickerProp
         id={id}
         type="text"
         readOnly
-        className="block w-full cursor-pointer rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-lg font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4"
+        className={cn(
+          "cursor-pointer",
+          inputClassName ??
+            "block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-lg font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4",
+        )}
         placeholder="Select date"
         aria-haspopup="dialog"
         autoComplete="off"
