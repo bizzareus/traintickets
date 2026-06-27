@@ -54,6 +54,10 @@ model ChartRule {
   sequenceNumber Int     @map("sequence_number")
   active         Boolean @default(true)
   train          Train   @relation(fields: [trainId], references: [id], onDelete: Cascade)
+
+  // Covers the previously-unindexed train_id FK and the hot
+  // `WHERE train_id IN (...) ORDER BY sequence_number` lookup.
+  @@index([trainId, sequenceNumber])
 }
 
 model MonitoringRequest {
@@ -250,7 +254,8 @@ model StationCache {
   metadata    Json
   updatedAt   DateTime @updatedAt @map("updated_at")
 
-  @@index([stationName])
+  // station_name index dropped: searches use ILIKE '%term%' (leading wildcard)
+  // which a B-tree can't serve, so it was never used and only added write cost.
   @@map("station_cache")
 }
 

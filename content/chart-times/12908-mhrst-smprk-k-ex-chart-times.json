@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12908",
+  "trainName": "Mhrst Smprk K Ex",
+  "originStation": "NZM",
+  "destinationStation": "BDTS",
+  "slug": "12908-mhrst-smprk-k-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "NZM",
+      "stationName": "H Nizamuddin",
+      "arrivalTime": "",
+      "departureTime": "16:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
+    },
+    {
+      "stationCode": "KOTA",
+      "stationName": "Kota Jn",
+      "arrivalTime": "21:15",
+      "departureTime": "21:20",
+      "day": 1,
+      "distance": "458.0",
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
+    },
+    {
+      "stationCode": "RTM",
+      "stationName": "Ratlam Jn",
+      "arrivalTime": "00:13",
+      "departureTime": "00:18",
+      "day": 2,
+      "distance": "724.0",
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "03:55",
+      "departureTime": "04:05",
+      "day": 2,
+      "distance": "986.0",
+      "chartTimeLocal": "17:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
+    },
+    {
+      "stationCode": "ST",
+      "stationName": "Surat",
+      "arrivalTime": "05:40",
+      "departureTime": "05:42",
+      "day": 2,
+      "distance": "1115.0",
+      "chartTimeLocal": "17:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
+    },
+    {
+      "stationCode": "BVI",
+      "stationName": "Borivali",
+      "arrivalTime": "08:23",
+      "departureTime": "08:25",
+      "day": 2,
+      "distance": "1347.0",
+      "chartTimeLocal": "17:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
+    },
+    {
+      "stationCode": "BDTS",
+      "stationName": "Bandra Terminus",
+      "arrivalTime": "09:15",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1366.0",
+      "chartTimeLocal": "17:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
+    }
+  ],
+  "summary": "The first reservation chart for Mhrst Smprk K Ex (12908) is prepared at H Nizamuddin (NZM) around 8:31 AM, with a second (vacancy) chart around 4:15 PM. 7 of 7 stations on the NZM to BDTS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T03:24:22.098Z",
+  "knownChartCount": 7
+}

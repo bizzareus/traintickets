@@ -1,9 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ChartTimeService } from '../chart-time/chart-time.service';
+import { CacheService } from '../cache/cache.service';
 import {
   IrctcService,
   type TrainCompositionResponse,
 } from '../irctc/irctc.service';
+
+/** Prepared chart times are immutable, so cache them for a long while. */
+const STATIONS_META_TTL_COMPLETE_MS = 6 * 60 * 60 * 1000;
+/** Pending (chart-not-prepared) results refresh sooner so they go live promptly. */
+const STATIONS_META_TTL_PENDING_MS = 5 * 60 * 1000;
 
 export type FetchTrainCompositionParams = {
   trainNo: string;
@@ -83,6 +89,7 @@ export class TrainCompositionService {
   constructor(
     private readonly irctc: IrctcService,
     private readonly chartTime: ChartTimeService,
+    private readonly cache: CacheService,
   ) {}
 
   /**
@@ -172,6 +179,47 @@ export class TrainCompositionService {
     /** When true, POST IRCTC trainComposition for this boarding station before reading DB. */
     refreshFromIrctc?: boolean;
     /** Journey date (YYYY-MM-DD) to query IRCTC composition for; defaults to today. */
+    journeyDate?: string;
+  }): Promise<StationChartMetaDto> {
+    // Explicit refresh always recomputes (and hits IRCTC); never cached.
+    if (params.refreshFromIrctc) {
+      return this.computeSourceStationChartMeta(params);
+    }
+
+    // This endpoint is called ~40k times (chart-times pages). The result is
+    // stable per train/station/date, so cache it: long TTL once the chart is
+    // prepared (immutable), short TTL while still pending.
+    const trainNo = String(params.trainNumber ?? '').trim();
+    const station = String(params.sourceStation ?? '')
+      .trim()
+      .toUpperCase();
+    const jDate =
+      String(params.journeyDate ?? '')
+        .trim()
+        .slice(0, 10) || 'today';
+    const cacheKey = `stations-meta:${trainNo}:${station}:${jDate}`;
+
+    const cached = await this.cache.get<StationChartMetaDto>(cacheKey);
+    if (cached) return cached;
+
+    const row = await this.computeSourceStationChartMeta(params);
+    const isComplete = Boolean(
+      row.chartOneTime &&
+        row.chartOneDayOffset != null &&
+        row.chartRemoteStation,
+    );
+    await this.cache.set(
+      cacheKey,
+      row,
+      isComplete ? STATIONS_META_TTL_COMPLETE_MS : STATIONS_META_TTL_PENDING_MS,
+    );
+    return row;
+  }
+
+  private async computeSourceStationChartMeta(params: {
+    trainNumber: string;
+    sourceStation: string;
+    refreshFromIrctc?: boolean;
     journeyDate?: string;
   }): Promise<StationChartMetaDto> {
     const trainNumber = String(params.trainNumber ?? '').trim();

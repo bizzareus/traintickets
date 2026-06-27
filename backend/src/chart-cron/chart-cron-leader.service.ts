@@ -58,6 +58,29 @@ export class ChartCronLeaderService {
     try {
       await this.ensureCronLeaseTable();
       const leaseSeconds = chartCronLeaseSeconds();
+
+      // Cheap read first. Every instance polls leadership every minute; if a
+      // different instance already holds an unexpired lease, return early
+      // without writing. This avoids non-leaders issuing a lease upsert every
+      // minute (which was a top DB write cost, ~58k writes to a single row).
+      const current = await this.prisma.$queryRaw<
+        Array<{ owner_id: string; expired: boolean }>
+      >`
+        SELECT "owner_id", ("expires_at" <= NOW()) AS expired
+        FROM "CronLease"
+        WHERE "name" = ${CHART_CRON_LEASE_NAME}
+      `;
+      const lease = current[0];
+      if (lease && !lease.expired && lease.owner_id !== this.ownerId) {
+        if (this.wasLeader) {
+          this.logger.warn(`chart cron leadership lost owner=${this.ownerId}`);
+          this.wasLeader = false;
+        }
+        return false;
+      }
+
+      // We hold it (needs renewal) or it is missing/expired (acquire). Only
+      // these cases reach the atomic write below.
       const rows = await this.prisma.$queryRaw<Array<{ name: string }>>`
         INSERT INTO "CronLease" ("name", "owner_id", "expires_at", "updated_at", "created_at")
         VALUES (

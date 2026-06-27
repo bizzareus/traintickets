@@ -5,6 +5,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
+import { fetchWithTimeout } from '../common/fetch-with-timeout';
 import { IrctcBrowserFallbackService } from './irctc-browser-fallback.service';
 
 const scheduleClient = createRetryingAxiosClient({
@@ -762,7 +763,7 @@ export class IrctcService {
 
     // If not found in DB, try IRCTC API directly
     try {
-      const res = await fetch(
+      const res = await fetchWithTimeout(
         `https://www.irctc.co.in/eticketing/trainList?q=${encodeURIComponent(q)}`,
         {
           headers: {
@@ -842,7 +843,7 @@ export class IrctcService {
 
     let res: Response;
     try {
-      res = await fetch(IRCTC_VACANT_BERTH_URL, {
+      res = await fetchWithTimeout(IRCTC_VACANT_BERTH_URL, {
         method: 'POST',
         headers,
         body: JSON.stringify(body),
@@ -987,7 +988,7 @@ export class IrctcService {
 
     let res: Response;
     try {
-      res = await fetch(IRCTC_COACH_COMPOSITION_URL, {
+      res = await fetchWithTimeout(IRCTC_COACH_COMPOSITION_URL, {
         method: 'POST',
         headers,
         body: JSON.stringify(body),

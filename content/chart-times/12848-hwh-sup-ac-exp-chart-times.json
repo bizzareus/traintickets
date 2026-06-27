@@ -1,0 +1,77 @@
+{
+  "trainNumber": "12848",
+  "trainName": "Hwh Sup Ac Exp",
+  "originStation": "DGHA",
+  "destinationStation": "HWH",
+  "slug": "12848-hwh-sup-ac-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "DGHA",
+      "stationName": "Digha",
+      "arrivalTime": "",
+      "departureTime": "15:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KATI",
+      "stationName": "Kanthi P H",
+      "arrivalTime": "15:56",
+      "departureTime": "15:58",
+      "day": 1,
+      "distance": "32.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TMZ",
+      "stationName": "Tamluk",
+      "arrivalTime": "16:48",
+      "departureTime": "16:50",
+      "day": 1,
+      "distance": "94.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MCA",
+      "stationName": "Mecheda",
+      "arrivalTime": "17:26",
+      "departureTime": "17:28",
+      "day": 1,
+      "distance": "127.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "HWH",
+      "stationName": "Howrah Jn",
+      "arrivalTime": "18:40",
+      "departureTime": "",
+      "day": 1,
+      "distance": "185.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Hwh Sup Ac Exp (12848) from DGHA to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-27T03:15:44.253Z",
+  "knownChartCount": 0
+}

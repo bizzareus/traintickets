@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12795",
+  "trainName": "Lpi Intercity",
+  "originStation": "BZA",
+  "destinationStation": "LPI",
+  "slug": "12795-lpi-intercity-chart-times",
+  "stations": [
+    {
+      "stationCode": "BZA",
+      "stationName": "Vijayawada Jn",
+      "arrivalTime": "",
+      "departureTime": "17:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BZA"
+    },
+    {
+      "stationCode": "MAG",
+      "stationName": "Mangalagiri",
+      "arrivalTime": "17:45",
+      "departureTime": "17:46",
+      "day": 1,
+      "distance": "12.0",
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BZA"
+    },
+    {
+      "stationCode": "GNT",
+      "stationName": "Guntur Jn",
+      "arrivalTime": "18:15",
+      "departureTime": "18:17",
+      "day": 1,
+      "distance": "32.0",
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BZA"
+    },
+    {
+      "stationCode": "NLDA",
+      "stationName": "Nalgonda",
+      "arrivalTime": "20:09",
+      "departureTime": "20:10",
+      "day": 1,
+      "distance": "204.0",
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BZA"
+    },
+    {
+      "stationCode": "SC",
+      "stationName": "Secunderabad Jn",
+      "arrivalTime": "22:10",
+      "departureTime": "22:15",
+      "day": 1,
+      "distance": "313.0",
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BZA"
+    },
+    {
+      "stationCode": "BMT",
+      "stationName": "Begampet",
+      "arrivalTime": "22:24",
+      "departureTime": "22:25",
+      "day": 1,
+      "distance": "318.0",
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BZA"
+    },
+    {
+      "stationCode": "LPI",
+      "stationName": "Lingampalli",
+      "arrivalTime": "23:35",
+      "departureTime": "",
+      "day": 1,
+      "distance": "336.0",
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BZA"
+    }
+  ],
+  "summary": "The first reservation chart for Lpi Intercity (12795) is prepared at Vijayawada Jn (BZA) around 8:12 AM. 7 of 7 stations on the BZA to LPI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-06-27T03:07:57.978Z",
+  "knownChartCount": 7
+}

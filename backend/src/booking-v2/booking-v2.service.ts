@@ -4,6 +4,7 @@ import moment from 'moment';
 import { IrctcService } from '../irctc/irctc.service';
 import { CacheService } from '../cache/cache.service';
 import { StationCacheService } from '../cache/station-cache.service';
+import { fetchWithTimeout } from '../common/fetch-with-timeout';
 import {
   BOOKING_V2_ALTERNATE_PATH_CLASSES,
   BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
@@ -220,6 +221,17 @@ type MultiClassProbeResult = {
 /** 24 hours in milliseconds — TTL for train search cache entries. */
 const TRAIN_SEARCH_TTL_MS = 24 * 60 * 60 * 1000;
 const BEST_TRAIN_CONCURRENCY = 3;
+/**
+ * Cap concurrent origin-destination probes per hop in alternate-paths. The
+ * previous unbounded Promise.all could fan out ~6 ODs × ~9 classes ≈ 54
+ * concurrent IRCTC calls per hop, exhausting the DB pool / IRCTC rate limit and
+ * driving p95 toward 70s. Each probe still fetches its classes in parallel
+ * internally, so the effective ceiling is this × class count.
+ */
+const ALT_PATH_PROBE_CONCURRENCY = (() => {
+  const n = Number.parseInt(process.env.ALT_PATH_PROBE_CONCURRENCY ?? '', 10);
+  return Number.isFinite(n) && n >= 1 && n <= 12 ? n : 3;
+})();
 const NON_AC_CLASS_CODES = new Set(['SL', '2S', 'GN', 'FC']);
 
 function isAcClassCode(code: string): boolean {
@@ -860,7 +872,9 @@ export class BookingV2Service {
       showNewAltText: 'true',
     });
     const url = `${BOOKING_V2_RAIL_API_BASE.trainsSearch}?${params}`;
-    const res = await fetch(url, { headers: BOOKING_V2_RAIL_API_HEADERS });
+    const res = await fetchWithTimeout(url, {
+      headers: BOOKING_V2_RAIL_API_HEADERS,
+    });
     const text = await res.text();
     if (!res.ok) {
       this.logger.warn(
@@ -1184,8 +1198,11 @@ export class BookingV2Service {
         `Hop ${hop}: at ${stations[currentIdx]} — parallel fetch (${destOrder.length} ODs × ${classes.length} classes), manual priority: ${waveLabels.join(' > ')}; first confirmed in this order wins`,
       );
 
-      const probes: MultiClassProbeResult[] = await Promise.all(
-        destOrder.map(async (destIdx) => {
+      const probes: MultiClassProbeResult[] = new Array(destOrder.length);
+      await this.mapWithConcurrency(
+        destOrder,
+        ALT_PATH_PROBE_CONCURRENCY,
+        async (destIdx, w) => {
           const fromStn = stations[currentIdx];
           const fromStopLine = stationList[startIdx + currentIdx];
           const fromDayCount =
@@ -1209,8 +1226,8 @@ export class BookingV2Service {
             );
             probeCache.set(key, probe);
           }
-          return probe;
-        }),
+          probes[w] = probe;
+        },
       );
 
       let chosenDestIdx: number | null = null;
