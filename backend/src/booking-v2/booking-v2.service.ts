@@ -220,6 +220,20 @@ type MultiClassProbeResult = {
 
 /** 24 hours in milliseconds — TTL for train search cache entries. */
 const TRAIN_SEARCH_TTL_MS = 24 * 60 * 60 * 1000;
+/**
+ * Short TTL for per-segment availability probes. The alternate-paths fan-out
+ * makes one fetchAvailability call per (train, from, to, date, class, quota);
+ * caching the small extracted result briefly lets concurrent/repeat searches
+ * for the same train+date reuse it instead of re-hitting the upstream. Kept
+ * short because seat availability is live. Env-tunable via
+ * BOOKING_V2_AVL_CACHE_TTL_MS (default 15m).
+ */
+const AVL_SEGMENT_TTL_MS = (() => {
+  const n = Number.parseInt(process.env.BOOKING_V2_AVL_CACHE_TTL_MS ?? '', 10);
+  return Number.isFinite(n) && n >= 60_000 && n <= 3_600_000
+    ? n
+    : 15 * 60 * 1000;
+})();
 const BEST_TRAIN_CONCURRENCY = 3;
 /**
  * Cap concurrent origin-destination probes per hop in alternate-paths. The
@@ -1516,6 +1530,12 @@ export class BookingV2Service {
     fare: number | null;
     fetchError?: string;
   }> {
+    const cacheKey = `avl:${String(trainNo).trim()}:${fromStn.trim().toUpperCase()}:${toStn.trim().toUpperCase()}:${dateDdMmYyyy}:${travelClass.trim().toUpperCase()}:${(quota || 'GN').trim().toUpperCase()}`;
+    const cached = await this.cache
+      .get<{ day: AvlDayRow | null; fare: number | null }>(cacheKey)
+      .catch(() => null);
+    if (cached) return cached;
+
     try {
       const raw = await this.checkAvailability(
         trainNo,
@@ -1527,7 +1547,12 @@ export class BookingV2Service {
       );
       const day = this.extractAvlDay(raw, dateDdMmYyyy);
       const fare = this.extractFare(raw);
-      return { day, fare };
+      const result = { day, fare };
+      // Cache only successful probes (never errors) for a short window.
+      void this.cache
+        .set(cacheKey, result, AVL_SEGMENT_TTL_MS)
+        .catch(() => undefined);
+      return result;
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       this.logger.warn(
