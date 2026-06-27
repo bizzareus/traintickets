@@ -1102,6 +1102,34 @@ export class IrctcService {
   /**
    * POST trainComposition; returns parsed JSON after basic shape checks (same as getTrainComposition).
    */
+  /**
+   * 1-indexed day on which the train reaches `stationCode` (origin = day 1),
+   * read from the cached schedule. Used to map a boarding date to the train's
+   * start date for IRCTC's composition API. Returns null when the schedule or
+   * station is unknown (caller falls back to a blind retry).
+   */
+  private async boardingStationDay(
+    trainNo: string,
+    stationCode: string,
+  ): Promise<number | null> {
+    try {
+      const result = await this.getTrainSchedule(trainNo);
+      if (!result.ok) return null;
+      const code = String(stationCode).trim().toUpperCase();
+      const stop = result.schedule.stationList.find(
+        (s) => String(s.stationCode).trim().toUpperCase() === code,
+      );
+      if (!stop) return null;
+      const raw =
+        (stop as { day?: unknown }).day ??
+        (stop as { dayCount?: unknown }).dayCount;
+      const day = Number(raw);
+      return Number.isFinite(day) && day >= 1 ? day : null;
+    } catch {
+      return null;
+    }
+  }
+
   async postTrainComposition(
     payload: {
       trainNo: string;
@@ -1110,6 +1138,9 @@ export class IrctcService {
     },
     opts?: {
       allowChartNotPrepared?: boolean;
+      /** Internal: schedule-aware retry already stepped to the train start date. */
+      _retriedStartDate?: boolean;
+      /** Internal: blind fallback retry state (used only when schedule unknown). */
       _retriedPreviousDay?: boolean;
       _retriedTwoDays?: boolean;
     },
@@ -1289,28 +1320,50 @@ export class IrctcService {
         errMsg,
       );
 
-    // Handle "chart not prepared" by retrying up to two previous days
-    if (isChartNotPreparedError) {
-      // Determine how many days have already been retried
-      const alreadyRetried =
-        (opts?._retriedTwoDays ? 2 : 0) +
-        (opts?._retriedPreviousDay && !opts?._retriedTwoDays ? 1 : 0);
-      if (alreadyRetried < 2) {
-        // Recurse on the already-decremented date, stepping back exactly one day
-        // each time (today -> -1 -> -2). Subtracting `alreadyRetried + 1` from the
-        // current date skipped a day (e.g. 26 -> 25 -> 23, missing the 24th).
-        const prevDate = moment(body.jDate)
-          .subtract(1, 'days')
-          .format('YYYY-MM-DD');
-        const newOpts = {
-          ...opts,
-          _retriedPreviousDay: alreadyRetried === 0,
-          _retriedTwoDays: alreadyRetried >= 1,
-        };
-        return this.postTrainComposition(
-          { ...payload, jDate: prevDate },
-          newOpts,
-        );
+    // Handle "chart not prepared". IRCTC's composition is keyed to the train's
+    // START date, but a boarding station can be on day 2/3/4 of a multi-day run
+    // (e.g. 12958 starts NDLS day 1, reaches Ajmer on day 2). So map the
+    // boarding date to the train start date using the schedule's day-offset and
+    // retry once with the correct start date. At the origin (day 1) there's
+    // nothing to step back to — the chart simply isn't prepared yet, so we
+    // surface that honestly instead of returning the previous (already-departed)
+    // run's composition.
+    if (isChartNotPreparedError && !opts?._retriedStartDate) {
+      const day = await this.boardingStationDay(
+        payload.trainNo,
+        body.boardingStation,
+      );
+      if (day != null) {
+        const stepsBack = day - 1;
+        if (stepsBack > 0) {
+          const startDate = moment(body.jDate)
+            .subtract(stepsBack, 'days')
+            .format('YYYY-MM-DD');
+          return this.postTrainComposition(
+            { ...payload, jDate: startDate },
+            { ...opts, _retriedStartDate: true },
+          );
+        }
+        // day === 1 (origin): do not step back to a prior run.
+      } else {
+        // Schedule unavailable — fall back to the old blind retry (today -> -1
+        // -> -2), stepping back exactly one day at a time.
+        const alreadyRetried =
+          (opts?._retriedTwoDays ? 2 : 0) +
+          (opts?._retriedPreviousDay && !opts?._retriedTwoDays ? 1 : 0);
+        if (alreadyRetried < 2) {
+          const prevDate = moment(body.jDate)
+            .subtract(1, 'days')
+            .format('YYYY-MM-DD');
+          return this.postTrainComposition(
+            { ...payload, jDate: prevDate },
+            {
+              ...opts,
+              _retriedPreviousDay: alreadyRetried === 0,
+              _retriedTwoDays: alreadyRetried >= 1,
+            },
+          );
+        }
       }
     }
 
