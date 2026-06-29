@@ -58,6 +58,11 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-refund-status-check-track-ticket-refund.md | IRCTC Refund Status Check: How to Track Cancelled Train Ticket Refund Online (EN + hi/mr/bn/ta/te/ml) | 2026-06-27 |
 | duplicate-train-ticket-lost-counter-ticket-rules.md | Duplicate Train Ticket: Rules and charges for lost, torn, or damaged counter tickets in Indian Railways (EN + hi/mr/bn/ta/te/ml) | 2026-06-27 |
 | indian-railways-cloak-room-rules-luggage-storage.md | Indian Railways Cloak Room Rules: Luggage Storage, Charges, and Guidelines (EN + hi/mr/bn/ta/te/ml) | 2026-06-27 |
+| irctc-name-correction-spelling-age-gender-rules.md | IRCTC Name Correction: How to correct spelling, age, and gender mistakes on train tickets (EN + hi/mr/bn/ta/te/ml) | 2026-06-27 |
+| how-to-transport-bike-scooter-indian-railways-parcel-luggage-rules.md | How to Transport Bike in Indian Railways: Rules, Cost, Booking Process, and Difference Between Luggage & Parcel (EN + hi/mr/bn/ta/te/ml) | 2026-06-28 |
+| irctc-ftr-booking-rules-book-full-train-coach.md | IRCTC FTR Booking Rules: How to Book Full Train or Coach (EN + hi/mr/bn/ta/te/ml) | 2026-06-29 |
+
+
 
 ## SEO triage actions (GSC / Google Trends driven)
 
