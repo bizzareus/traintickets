@@ -6,6 +6,7 @@ import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { fetchWithTimeout } from '../common/fetch-with-timeout';
+import { buildCurl, curlLogEnabled } from '../common/curl-log';
 import { IrctcBrowserFallbackService } from './irctc-browser-fallback.service';
 
 const scheduleClient = createRetryingAxiosClient({
@@ -388,7 +389,11 @@ export class IrctcService {
 
     let res: { status: number; data: string };
     try {
-      console.log('[irctc/schedule] request', { url, headers }); // Important to log the URL and headers for debugging schedule fetch issues
+      if (curlLogEnabled()) {
+        this.logger.log(
+          `[irctc/schedule] curl: ${buildCurl({ method: 'GET', url, headers })}`,
+        );
+      }
       res = await scheduleClient.get<string>(url, {
         headers,
         responseType: 'text',
@@ -940,6 +945,11 @@ export class IrctcService {
 
     let res: Response;
     try {
+      if (curlLogEnabled()) {
+        this.logger.log(
+          `[irctc/vacantBerth] curl: ${buildCurl({ method: 'POST', url: IRCTC_VACANT_BERTH_URL, headers, body: JSON.stringify(body) })}`,
+        );
+      }
       res = await fetchWithTimeout(IRCTC_VACANT_BERTH_URL, {
         method: 'POST',
         headers,
@@ -1085,6 +1095,11 @@ export class IrctcService {
 
     let res: Response;
     try {
+      if (curlLogEnabled()) {
+        this.logger.log(
+          `[irctc/coachComposition] curl: ${buildCurl({ method: 'POST', url: IRCTC_COACH_COMPOSITION_URL, headers, body: JSON.stringify(body) })}`,
+        );
+      }
       res = await fetchWithTimeout(IRCTC_COACH_COMPOSITION_URL, {
         method: 'POST',
         headers,
@@ -1278,6 +1293,11 @@ export class IrctcService {
     let status = 0;
     let text = '';
     try {
+      if (curlLogEnabled()) {
+        this.logger.log(
+          `[irctc/trainComposition] curl: ${buildCurl({ method: 'POST', url: IRCTC_TRAIN_COMPOSITION_URL, headers, body: JSON.stringify(body) })}`,
+        );
+      }
       const { gotScraping } = await import('got-scraping');
       const res = await gotScraping.post(IRCTC_TRAIN_COMPOSITION_URL, {
         headers,
