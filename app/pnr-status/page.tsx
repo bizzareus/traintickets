@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PnrStatusChecker from "./PnrStatusChecker";
+import { SearchPnrPanel } from "@/components/booking-v2/SearchPnrPanel";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 const canonicalUrl = `${siteUrl}/pnr-status`;
@@ -108,7 +108,7 @@ export default function PnrStatusPage() {
       </header>
 
       <div className="mb-8">
-        <PnrStatusChecker />
+        <SearchPnrPanel />
       </div>
 
       <article className="prose prose-slate max-w-none prose-headings:scroll-mt-24">
