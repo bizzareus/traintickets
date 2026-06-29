@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import moment from "moment";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
-import { SmartPnrPredictor } from "@/components/booking-v2/SmartPnrPredictor";
+import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
 import { StationChartingStatus } from "@/components/booking-v2/StationChartingStatus";
 import { AlternatePathContent } from "@/components/booking-v2/AlternatePathContent";
 import { TrainScheduleBottomSheet } from "@/components/booking-v2/TrainScheduleBottomSheet";
@@ -38,6 +38,8 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
   const [isLiveChartPrepared, setIsLiveChartPrepared] = useState(false);
   const [isAdminUser, setIsAdminUser] = useState(false);
+  const [chartAlertOpen, setChartAlertOpen] = useState(false);
+  const chartAlertShownForPnr = useRef<string | null>(null);
 
   // Schedule modal (opened from within AlternatePathContent leg cards)
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
@@ -90,6 +92,32 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
 
   const effectiveChartPrepared = isLiveChartPrepared || isChartLikelyPrepared;
 
+  /** True when any passenger is still waitlisted/RAC (not confirmed). */
+  const hasWaitlisted = useMemo(() => {
+    const passengers = pnrData?.PassengerStatus;
+    if (!passengers?.length) return false;
+    return passengers.some((p) => {
+      const cur = (p.CurrentStatus ?? "").toUpperCase();
+      const confirmed = cur.includes("CNF") || p.ConfirmTktStatus === "Confirm";
+      return !confirmed;
+    });
+  }, [pnrData]);
+
+  // Proactively prompt waitlisted users (once per PNR) to subscribe to chart
+  // alerts — the chart isn't prepared yet, so quota seats are still to be
+  // released and we can notify them when new seats open up for booking.
+  useEffect(() => {
+    if (
+      pnrData &&
+      hasWaitlisted &&
+      !effectiveChartPrepared &&
+      chartAlertShownForPnr.current !== pnrData.Pnr
+    ) {
+      chartAlertShownForPnr.current = pnrData.Pnr;
+      setChartAlertOpen(true);
+    }
+  }, [pnrData, hasWaitlisted, effectiveChartPrepared]);
+
   const handlePnrSearch = useCallback(async () => {
     const trimmed = pnr.trim();
     if (!trimmed || trimmed.length !== 10 || !/^\d+$/.test(trimmed)) {
@@ -99,6 +127,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
     setPnrLoading(true);
     setPnrError(null);
     setPnrData(null);
+    setChartAlertOpen(false);
 
     try {
       const response = await apiClient.get<PnrStatusResponse>(
@@ -387,50 +416,128 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                 </div>
               )}
 
-            {/* Smart PNR Predictor & Alternate Seats Side-by-Side */}
-            <div className="mt-6 flex flex-col lg:flex-row gap-6 border-t border-slate-100 pt-6 items-start relative">
-              {!effectiveChartPrepared && (
-                <div className="w-full lg:w-[30%] shrink-0 lg:sticky lg:top-6">
-                  <SmartPnrPredictor pnrData={pnrData} compactMode={true} />
+            {/* Alternate tickets (full width) */}
+            {(alt.altResult ||
+              alt.altError ||
+              (alt.altLoading && alt.altForTrain)) && (
+              <div className="mt-6 border-t border-slate-100 pt-6">
+                <div className="rounded-2xl border border-blue-100 bg-white shadow-sm relative flex flex-col max-h-[80vh] sm:max-h-[600px] overflow-hidden">
+                  <AlternatePathContent
+                    altForTrain={alt.altForTrain}
+                    altTrainName={alt.altTrainName}
+                    altAvlClasses={alt.altAvlClasses}
+                    altLoading={alt.altLoading}
+                    altResult={alt.altResult}
+                    altError={alt.altError}
+                    altProgress={alt.altProgress}
+                    journeyDate={journeyDate}
+                    fromCode={pnrData?.From}
+                    toCode={pnrData?.To}
+                    ctaTrainNumber={pnrData?.TrainNo}
+                    ctaTrainName={pnrData?.TrainName}
+                    ctaTrainStartDate={pnrData?.Doj}
+                    ctaJourneyDate={pnrData?.Doj}
+                    ctaClassCode={pnrData?.Class}
+                    originChartTime={originChartTime}
+                    isAdminUser={isAdminUser}
+                    onClose={alt.reset}
+                    onOpenSchedule={(trainNumber, from, to) => {
+                      setScheduleTrainNumber(trainNumber);
+                      setScheduleHighlightFrom(from);
+                      setScheduleHighlightTo(to);
+                      setScheduleModalOpen(true);
+                    }}
+                  />
                 </div>
-              )}
-              <div
-                className={`w-full flex-1 ${!effectiveChartPrepared ? "lg:w-[70%]" : ""}`}
-              >
-                {(alt.altResult ||
-                  alt.altError ||
-                  (alt.altLoading && alt.altForTrain)) && (
-                  <div className="rounded-2xl border border-blue-100 bg-white shadow-sm relative flex flex-col max-h-[80vh] sm:max-h-[600px] overflow-hidden h-full">
-                    <AlternatePathContent
-                      altForTrain={alt.altForTrain}
-                      altTrainName={alt.altTrainName}
-                      altAvlClasses={alt.altAvlClasses}
-                      altLoading={alt.altLoading}
-                      altResult={alt.altResult}
-                      altError={alt.altError}
-                      altProgress={alt.altProgress}
-                      journeyDate={journeyDate}
-                      fromCode={pnrData?.From}
-                      toCode={pnrData?.To}
-                      ctaTrainNumber={pnrData?.TrainNo}
-                      ctaTrainName={pnrData?.TrainName}
-                      ctaTrainStartDate={pnrData?.Doj}
-                      ctaJourneyDate={pnrData?.Doj}
-                      ctaClassCode={pnrData?.Class}
-                      originChartTime={originChartTime}
-                      isAdminUser={isAdminUser}
-                      onClose={alt.reset}
-                      onOpenSchedule={(trainNumber, from, to) => {
-                        setScheduleTrainNumber(trainNumber);
-                        setScheduleHighlightFrom(from);
-                        setScheduleHighlightTo(to);
-                        setScheduleModalOpen(true);
-                      }}
-                    />
-                  </div>
-                )}
               </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Chart-alert subscribe popup for waitlisted PNRs */}
+      {chartAlertOpen && pnrData && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center sm:p-6"
+          role="presentation"
+          onClick={() => setChartAlertOpen(false)}
+        >
+          <div
+            className="w-full max-h-[90vh] overflow-y-auto bg-white p-5 shadow-2xl sm:max-w-md sm:rounded-2xl sm:p-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="chartAlertTitle"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-3 flex items-start justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                  <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                    />
+                  </svg>
+                </span>
+                <h3
+                  id="chartAlertTitle"
+                  className="text-base font-bold text-slate-900"
+                >
+                  Get notified when seats open up
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setChartAlertOpen(false)}
+                aria-label="Close"
+                className="-mr-1 -mt-1 rounded-full p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+              >
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
             </div>
+
+            <p className="mb-4 text-sm leading-relaxed text-slate-600">
+              Your ticket is still on the waiting list. When the reservation
+              chart is prepared (around{" "}
+              <span className="font-semibold text-slate-800">
+                {originChartTime}
+              </span>
+              ), Indian Railways releases unused quota seats for booking.
+              Subscribe to chart alerts and we&apos;ll notify you the moment new
+              seats become available, so you can book a confirmed ticket.
+            </p>
+
+            <EntireJourneyAlertCTA
+              trainNumber={pnrData.TrainNo}
+              trainName={pnrData.TrainName}
+              trainStartDate={pnrData.Doj}
+              journeyDate={pnrData.Doj}
+              classCode={pnrData.Class || "SL"}
+              defaultOrigin={pnrData.From}
+              defaultDestination={pnrData.To}
+              originChartTime={originChartTime}
+            />
           </div>
         </div>
       )}
