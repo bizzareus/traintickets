@@ -726,6 +726,24 @@ export function AlternatePathContent({
     [altResult],
   );
 
+  // One-click "search all other trains" for the same route/date — shown once the
+  // search is done and this train can't fully confirm the journey (no complete
+  // path, or an error). Navigates to the homepage route search (which auto-runs
+  // from the from/to/date query params), so it works from the Route tab, the PNR
+  // tab, and the standalone /pnr-status page alike.
+  const searchAllTrainsHref =
+    fromCode && toCode
+      ? `/?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}${
+          journeyDate
+            ? `&date=${encodeURIComponent(journeyDate.slice(0, 10))}`
+            : ""
+        }`
+      : null;
+  const showSearchAllTrains =
+    !altLoading &&
+    Boolean(searchAllTrainsHref) &&
+    (Boolean(altError) || (Boolean(altResult) && !altResult?.isComplete));
+
   return (
     <div
       ref={captureRef}
@@ -768,6 +786,20 @@ export function AlternatePathContent({
           </button>
         </div>
       </div>
+      {showSearchAllTrains && searchAllTrainsHref && (
+        <a
+          href={searchAllTrainsHref}
+          className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100"
+        >
+          <span>
+            No confirmed seats here. Search all other trains
+            {fromCode && toCode ? ` from ${fromCode} to ${toCode}` : ""}
+          </span>
+          <span aria-hidden="true" className="text-base">
+            →
+          </span>
+        </a>
+      )}
       {altLoading && (
         <AlternatePathProgressFeed
           events={altProgress}
