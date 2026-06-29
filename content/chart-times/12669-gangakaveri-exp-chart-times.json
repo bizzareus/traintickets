@@ -12,11 +12,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:42",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GDR",
@@ -25,11 +25,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "138.0",
-      "chartTimeLocal": "07:42",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "OGL",
@@ -38,11 +38,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": "07:42",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BZA",
@@ -305,7 +305,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Gangakaveri Exp (12669) is prepared at Mgr Chennai Ctl (MAS) around 7:42 AM. 3 of 23 stations on the MAS to CPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-27T02:50:58.831Z",
-  "knownChartCount": 3
+  "summary": "Reservation chart preparation times for Gangakaveri Exp (12669) from MAS to CPR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 23 stations.",
+  "generatedAt": "2026-06-29T23:23:05.032Z",
+  "knownChartCount": 0
 }

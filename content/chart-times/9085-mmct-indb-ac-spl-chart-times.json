@@ -12,11 +12,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "13:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BVI",
@@ -25,11 +25,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": "13:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VAPI",
@@ -38,11 +38,11 @@
       "departureTime": "01:49",
       "day": 2,
       "distance": "170.0",
-      "chartTimeLocal": "13:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ST",
@@ -51,11 +51,11 @@
       "departureTime": "03:31",
       "day": 2,
       "distance": "263.0",
-      "chartTimeLocal": "13:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CYI",
@@ -64,11 +64,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "399.0",
-      "chartTimeLocal": "13:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DHD",
@@ -77,11 +77,11 @@
       "departureTime": "07:12",
       "day": 2,
       "distance": "540.0",
-      "chartTimeLocal": "13:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RTM",
@@ -90,11 +90,11 @@
       "departureTime": "08:55",
       "day": 2,
       "distance": "653.0",
-      "chartTimeLocal": "13:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UJN",
@@ -103,11 +103,11 @@
       "departureTime": "10:55",
       "day": 2,
       "distance": "750.0",
-      "chartTimeLocal": "13:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "INDB",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "812.0",
-      "chartTimeLocal": "13:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mmct Indb Ac Spl (9085) is prepared at Mumbai Central (MMCT) around 1:21 PM, with a second (vacancy) chart around 11 PM. 9 of 9 stations on the MMCT to INDB route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-26T23:09:16.640Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Mmct Indb Ac Spl (9085) from MMCT to INDB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:27.315Z",
+  "knownChartCount": 0
 }

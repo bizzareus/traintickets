@@ -12,11 +12,11 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:23",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBIB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MSH",
@@ -25,11 +25,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": "21:23",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBIB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNU",
@@ -38,11 +38,11 @@
       "departureTime": "18:37",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": "21:23",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBIB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ABR",
@@ -51,11 +51,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": "21:23",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBIB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "FA",
@@ -64,11 +64,11 @@
       "departureTime": "20:22",
       "day": 1,
       "distance": "280.0",
-      "chartTimeLocal": "21:23",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBIB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PMY",
@@ -77,11 +77,11 @@
       "departureTime": "21:31",
       "day": 1,
       "distance": "376.0",
-      "chartTimeLocal": "21:23",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBIB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JU",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "449.0",
-      "chartTimeLocal": "21:23",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBIB"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ju Vande Bharat (12462) is prepared at Sabarmati Bg (SBIB) around 9:23 PM. 7 of 7 stations on the SBIB to JU route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:07:04.095Z",
-  "knownChartCount": 7
+  "summary": "Reservation chart preparation times for Ju Vande Bharat (12462) from SBIB to JU are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-29T23:23:10.269Z",
+  "knownChartCount": 0
 }

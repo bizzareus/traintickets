@@ -12,11 +12,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KUDL",
@@ -25,11 +25,11 @@
       "departureTime": "18:16",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SNDD",
@@ -38,11 +38,11 @@
       "departureTime": "18:28",
       "day": 1,
       "distance": "44.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KKW",
@@ -51,11 +51,11 @@
       "departureTime": "18:48",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NAN",
@@ -64,11 +64,11 @@
       "departureTime": "19:06",
       "day": 1,
       "distance": "91.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VBW",
@@ -77,11 +77,11 @@
       "departureTime": "19:22",
       "day": 1,
       "distance": "112.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RAJP",
@@ -90,11 +90,11 @@
       "departureTime": "19:42",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VID",
@@ -103,11 +103,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "159.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ADVI",
@@ -116,11 +116,11 @@
       "departureTime": "20:32",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RN",
@@ -129,11 +129,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "225.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SGR",
@@ -142,11 +142,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "272.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AVRD",
@@ -155,11 +155,11 @@
       "departureTime": "22:38",
       "day": 1,
       "distance": "291.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SVX",
@@ -168,11 +168,11 @@
       "departureTime": "22:52",
       "day": 1,
       "distance": "305.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CHI",
@@ -181,11 +181,11 @@
       "departureTime": "23:12",
       "day": 1,
       "distance": "331.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KHED",
@@ -194,11 +194,11 @@
       "departureTime": "23:42",
       "day": 1,
       "distance": "372.0",
-      "chartTimeLocal": "08:02",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VEER",
@@ -207,11 +207,11 @@
       "departureTime": "01:42",
       "day": 2,
       "distance": "444.0",
-      "chartTimeLocal": "08:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MNI",
@@ -220,11 +220,11 @@
       "departureTime": "02:12",
       "day": 2,
       "distance": "468.0",
-      "chartTimeLocal": "08:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ROHA",
@@ -233,11 +233,11 @@
       "departureTime": "03:15",
       "day": 2,
       "distance": "510.0",
-      "chartTimeLocal": "08:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNVL",
@@ -246,11 +246,11 @@
       "departureTime": "04:30",
       "day": 2,
       "distance": "587.0",
-      "chartTimeLocal": "08:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TNA",
@@ -259,11 +259,11 @@
       "departureTime": "05:50",
       "day": 2,
       "distance": "622.0",
-      "chartTimeLocal": "08:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DR",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "647.0",
-      "chartTimeLocal": "08:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SWV"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Tutari Express (11004) is prepared at Sawantwadi Road (SWV) around 8:02 AM, with a second (vacancy) chart around 9:20 PM. 21 of 21 stations on the SWV to DR route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-26T23:15:34.593Z",
-  "knownChartCount": 21
+  "summary": "Reservation chart preparation times for Tutari Express (11004) from SWV to DR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 21 stations.",
+  "generatedAt": "2026-06-29T23:23:06.082Z",
+  "knownChartCount": 0
 }

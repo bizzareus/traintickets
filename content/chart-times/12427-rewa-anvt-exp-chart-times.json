@@ -12,11 +12,11 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "REWA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "STA",
@@ -25,11 +25,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "REWA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JTW",
@@ -38,11 +38,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "70.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "REWA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MKP",
@@ -51,11 +51,11 @@
       "departureTime": "18:57",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "REWA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DBR",
@@ -64,11 +64,11 @@
       "departureTime": "19:18",
       "day": 1,
       "distance": "150.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "REWA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRJ",
@@ -77,11 +77,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "182.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "REWA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PRYJ",
@@ -90,11 +90,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "227.0",
-      "chartTimeLocal": "11:41",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRO",
@@ -103,11 +103,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "284.0",
-      "chartTimeLocal": "11:41",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "FTP",
@@ -116,11 +116,11 @@
       "departureTime": "22:32",
       "day": 1,
       "distance": "344.0",
-      "chartTimeLocal": "11:41",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -129,11 +129,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "422.0",
-      "chartTimeLocal": "13:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:42",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ALJN",
@@ -142,11 +142,11 @@
       "departureTime": "04:05",
       "day": 2,
       "distance": "731.0",
-      "chartTimeLocal": "13:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:42",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -155,11 +155,11 @@
       "departureTime": "06:05",
       "day": 2,
       "distance": "837.0",
-      "chartTimeLocal": "13:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:42",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ANVT",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "850.0",
-      "chartTimeLocal": "13:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:42",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Rewa Anvt Exp (12427) is prepared at Rewa (REWA) around 8:16 PM. 13 of 13 stations on the REWA to ANVT route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:02:12.991Z",
-  "knownChartCount": 13
+  "summary": "Reservation chart preparation times for Rewa Anvt Exp (12427) from REWA to ANVT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
+  "generatedAt": "2026-06-29T23:23:05.901Z",
+  "knownChartCount": 0
 }

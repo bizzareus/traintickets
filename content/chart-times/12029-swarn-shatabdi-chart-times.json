@@ -12,11 +12,11 @@
       "departureTime": "07:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:48",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UMB",
@@ -25,11 +25,11 @@
       "departureTime": "09:43",
       "day": 1,
       "distance": "199.0",
-      "chartTimeLocal": "22:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "UMB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RPJ",
@@ -38,11 +38,11 @@
       "departureTime": "10:04",
       "day": 1,
       "distance": "227.0",
-      "chartTimeLocal": "22:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "UMB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LDH",
@@ -51,11 +51,11 @@
       "departureTime": "11:11",
       "day": 1,
       "distance": "312.0",
-      "chartTimeLocal": "22:42",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "LDH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PGW",
@@ -64,11 +64,11 @@
       "departureTime": "11:42",
       "day": 1,
       "distance": "348.0",
-      "chartTimeLocal": "22:42",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "LDH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JUC",
@@ -77,11 +77,11 @@
       "departureTime": "12:08",
       "day": 1,
       "distance": "369.0",
-      "chartTimeLocal": "22:52",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "JUC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BEAS",
@@ -90,11 +90,11 @@
       "departureTime": "12:40",
       "day": 1,
       "distance": "406.0",
-      "chartTimeLocal": "22:52",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "JUC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ASR",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "448.0",
-      "chartTimeLocal": "22:52",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "JUC"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Swarn Shatabdi (12029) is prepared at New Delhi (NDLS) around 9:48 PM. 8 of 8 stations on the NDLS to ASR route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:10:44.453Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Swarn Shatabdi (12029) from NDLS to ASR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:13.806Z",
+  "knownChartCount": 0
 }

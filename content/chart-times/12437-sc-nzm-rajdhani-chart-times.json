@@ -12,11 +12,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:33",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "12:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KZJ",
@@ -25,11 +25,11 @@
       "departureTime": "14:40",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": "21:33",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "12:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BPQ",
@@ -38,11 +38,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "367.0",
-      "chartTimeLocal": "21:33",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "12:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NGP",
@@ -51,11 +51,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "578.0",
-      "chartTimeLocal": "10:42",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BPL",
@@ -64,11 +64,11 @@
       "departureTime": "02:15",
       "day": 2,
       "distance": "973.0",
-      "chartTimeLocal": "15:48",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "02:00",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BPL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VGLJ",
@@ -77,11 +77,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "1264.0",
-      "chartTimeLocal": "19:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "05:10",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "VGLJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NZM",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1667.0",
-      "chartTimeLocal": "19:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "05:10",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "VGLJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sc Nzm Rajdhani (12437) is prepared at Secunderabad Jn (SC) around 9:33 PM, with a second (vacancy) chart around 12:35 PM. 7 of 7 stations on the SC to NZM route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:03:31.580Z",
-  "knownChartCount": 7
+  "summary": "Reservation chart preparation times for Sc Nzm Rajdhani (12437) from SC to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-29T23:23:06.962Z",
+  "knownChartCount": 0
 }

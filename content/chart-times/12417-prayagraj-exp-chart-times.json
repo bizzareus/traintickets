@@ -12,11 +12,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "12:18",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "FTP",
@@ -25,11 +25,11 @@
       "departureTime": "23:18",
       "day": 1,
       "distance": "117.0",
-      "chartTimeLocal": "12:18",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -38,11 +38,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "195.0",
-      "chartTimeLocal": "14:33",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:20",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ALJN",
@@ -51,11 +51,11 @@
       "departureTime": "04:17",
       "day": 2,
       "distance": "504.0",
-      "chartTimeLocal": "14:33",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:20",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -64,11 +64,11 @@
       "departureTime": "06:15",
       "day": 2,
       "distance": "610.0",
-      "chartTimeLocal": "14:33",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:20",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "636.0",
-      "chartTimeLocal": "14:33",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:20",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Prayagraj Exp (12417) is prepared at Prayagraj Jn. (PRYJ) around 12:18 PM, with a second (vacancy) chart around 9:55 PM. 6 of 6 stations on the PRYJ to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:00:58.125Z",
-  "knownChartCount": 6
+  "summary": "Reservation chart preparation times for Prayagraj Exp (12417) from PRYJ to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-06-29T23:23:03.564Z",
+  "knownChartCount": 0
 }

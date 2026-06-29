@@ -12,11 +12,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "11:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MBDP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AME",
@@ -25,11 +25,11 @@
       "departureTime": "19:43",
       "day": 1,
       "distance": "36.0",
-      "chartTimeLocal": "11:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MBDP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GUGD",
@@ -38,11 +38,11 @@
       "departureTime": "20:09",
       "day": 1,
       "distance": "67.0",
-      "chartTimeLocal": "11:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MBDP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RBL",
@@ -51,11 +51,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "96.0",
-      "chartTimeLocal": "11:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MBDP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LKO",
@@ -64,11 +64,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "173.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -77,11 +77,11 @@
       "departureTime": "00:07",
       "day": 2,
       "distance": "247.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ORAI",
@@ -90,11 +90,11 @@
       "departureTime": "01:34",
       "day": 2,
       "distance": "354.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VGLJ",
@@ -103,11 +103,11 @@
       "departureTime": "03:43",
       "day": 2,
       "distance": "468.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LAR",
@@ -116,11 +116,11 @@
       "departureTime": "05:07",
       "day": 2,
       "distance": "558.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BINA",
@@ -129,11 +129,11 @@
       "departureTime": "06:20",
       "day": 2,
       "distance": "621.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BHS",
@@ -142,11 +142,11 @@
       "departureTime": "07:20",
       "day": 2,
       "distance": "706.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BPL",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "759.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Pbh Bpl Express (12184) is prepared at MA BELHADEVI DP (MBDP) around 11:10 AM, with a second (vacancy) chart around 6:55 PM. 12 of 12 stations on the MBDP to BPL route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:27:58.299Z",
-  "knownChartCount": 12
+  "summary": "Reservation chart preparation times for Pbh Bpl Express (12184) from MBDP to BPL are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
+  "generatedAt": "2026-06-29T23:23:04.797Z",
+  "knownChartCount": 0
 }

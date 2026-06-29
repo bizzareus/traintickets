@@ -12,11 +12,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "08:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KOTA",
@@ -25,11 +25,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": "11:15",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KOTA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RTM",
@@ -38,11 +38,11 @@
       "departureTime": "00:18",
       "day": 2,
       "distance": "724.0",
-      "chartTimeLocal": "11:15",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KOTA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BRC",
@@ -51,11 +51,11 @@
       "departureTime": "04:05",
       "day": 2,
       "distance": "986.0",
-      "chartTimeLocal": "17:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:50",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ST",
@@ -64,11 +64,11 @@
       "departureTime": "05:42",
       "day": 2,
       "distance": "1115.0",
-      "chartTimeLocal": "17:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:50",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BVI",
@@ -77,11 +77,11 @@
       "departureTime": "08:25",
       "day": 2,
       "distance": "1347.0",
-      "chartTimeLocal": "17:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:50",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BDTS",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1366.0",
-      "chartTimeLocal": "17:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:50",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mhrst Smprk K Ex (12908) is prepared at H Nizamuddin (NZM) around 8:31 AM, with a second (vacancy) chart around 4:15 PM. 7 of 7 stations on the NZM to BDTS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:24:22.098Z",
-  "knownChartCount": 7
+  "summary": "Reservation chart preparation times for Mhrst Smprk K Ex (12908) from NZM to BDTS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-29T23:23:06.046Z",
+  "knownChartCount": 0
 }

@@ -12,11 +12,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BEAS",
@@ -25,11 +25,11 @@
       "departureTime": "17:35",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JUC",
@@ -38,11 +38,11 @@
       "departureTime": "18:12",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PGW",
@@ -51,11 +51,11 @@
       "departureTime": "18:32",
       "day": 1,
       "distance": "100.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LDH",
@@ -64,11 +64,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SMRL",
@@ -77,11 +77,11 @@
       "departureTime": "19:58",
       "day": 1,
       "distance": "173.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NMDA",
@@ -90,11 +90,11 @@
       "departureTime": "20:23",
       "day": 1,
       "distance": "204.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KARR",
@@ -103,11 +103,11 @@
       "departureTime": "20:41",
       "day": 1,
       "distance": "221.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SASN",
@@ -116,11 +116,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "237.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CDG",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "248.0",
-      "chartTimeLocal": "09:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Intercity Exp (12412) is prepared at Amritsar Jn (ASR) around 9:05 AM, with a second (vacancy) chart around 6:55 PM. 10 of 10 stations on the ASR to CDG route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:00:31.406Z",
-  "knownChartCount": 10
+  "summary": "Reservation chart preparation times for Intercity Exp (12412) from ASR to CDG are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
+  "generatedAt": "2026-06-29T23:23:03.595Z",
+  "knownChartCount": 0
 }

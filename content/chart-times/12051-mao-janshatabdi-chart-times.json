@@ -12,11 +12,11 @@
       "departureTime": "05:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DR",
@@ -25,11 +25,11 @@
       "departureTime": "05:20",
       "day": 1,
       "distance": "9.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TNA",
@@ -38,11 +38,11 @@
       "departureTime": "05:45",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNVL",
@@ -51,11 +51,11 @@
       "departureTime": "06:25",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CHI",
@@ -64,11 +64,11 @@
       "departureTime": "09:54",
       "day": 1,
       "distance": "325.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RN",
@@ -77,11 +77,11 @@
       "departureTime": "11:25",
       "day": 1,
       "distance": "431.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KKW",
@@ -90,11 +90,11 @@
       "departureTime": "13:42",
       "day": 1,
       "distance": "587.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KUDL",
@@ -103,11 +103,11 @@
       "departureTime": "14:22",
       "day": 1,
       "distance": "626.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SWV",
@@ -116,11 +116,11 @@
       "departureTime": "14:44",
       "day": 1,
       "distance": "655.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "THVM",
@@ -129,11 +129,11 @@
       "departureTime": "15:32",
       "day": 1,
       "distance": "701.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MAO",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "765.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mao Janshatabdi (12051) is prepared at C Shivaji Mah T (CSMT) around 8:25 PM, with a second (vacancy) chart around 4:55 AM. 11 of 11 stations on the CSMT to MAO route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:12:33.852Z",
-  "knownChartCount": 11
+  "summary": "Reservation chart preparation times for Mao Janshatabdi (12051) from CSMT to MAO are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
+  "generatedAt": "2026-06-29T23:23:17.146Z",
+  "knownChartCount": 0
 }

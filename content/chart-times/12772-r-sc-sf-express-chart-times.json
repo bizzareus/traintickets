@@ -12,11 +12,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "22:02",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "R"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DURG",
@@ -25,11 +25,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "37.0",
-      "chartTimeLocal": "22:02",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "R"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RJN",
@@ -38,11 +38,11 @@
       "departureTime": "18:09",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": "22:02",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "R"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "G",
@@ -51,11 +51,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "173.0",
-      "chartTimeLocal": "22:02",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "R"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NGP",
@@ -64,11 +64,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "303.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SEGM",
@@ -77,11 +77,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "379.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "WRR",
@@ -90,11 +90,11 @@
       "departureTime": "23:31",
       "day": 1,
       "distance": "454.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CD",
@@ -103,11 +103,11 @@
       "departureTime": "00:12",
       "day": 2,
       "distance": "500.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BPQ",
@@ -116,11 +116,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "514.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SKZR",
@@ -129,11 +129,11 @@
       "departureTime": "02:28",
       "day": 2,
       "distance": "583.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BPA",
@@ -142,11 +142,11 @@
       "departureTime": "02:55",
       "day": 2,
       "distance": "622.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MCI",
@@ -155,11 +155,11 @@
       "departureTime": "03:10",
       "day": 2,
       "distance": "642.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RDM",
@@ -168,11 +168,11 @@
       "departureTime": "03:25",
       "day": 2,
       "distance": "655.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JMKT",
@@ -181,11 +181,11 @@
       "departureTime": "04:12",
       "day": 2,
       "distance": "712.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KZJ",
@@ -194,11 +194,11 @@
       "departureTime": "05:05",
       "day": 2,
       "distance": "748.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ZN",
@@ -207,11 +207,11 @@
       "departureTime": "05:30",
       "day": 2,
       "distance": "796.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SC",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "880.0",
-      "chartTimeLocal": "11:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for R Sc Sf Express (12772) is prepared at Raipur Jn (R) around 10:02 PM. 17 of 17 stations on the R to SC route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:04:08.925Z",
-  "knownChartCount": 17
+  "summary": "Reservation chart preparation times for R Sc Sf Express (12772) from R to SC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
+  "generatedAt": "2026-06-29T23:23:19.394Z",
+  "knownChartCount": 0
 }

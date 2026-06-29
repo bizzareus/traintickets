@@ -12,11 +12,11 @@
       "departureTime": "04:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:08",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LPI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BMT",
@@ -25,11 +25,11 @@
       "departureTime": "05:00",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": "19:08",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LPI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SC",
@@ -38,11 +38,11 @@
       "departureTime": "05:25",
       "day": 1,
       "distance": "23.0",
-      "chartTimeLocal": "19:08",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LPI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NLDA",
@@ -51,11 +51,11 @@
       "departureTime": "06:50",
       "day": 1,
       "distance": "133.0",
-      "chartTimeLocal": "19:08",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LPI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GNT",
@@ -64,11 +64,11 @@
       "departureTime": "09:12",
       "day": 1,
       "distance": "304.0",
-      "chartTimeLocal": "19:08",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LPI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MAG",
@@ -77,11 +77,11 @@
       "departureTime": "09:36",
       "day": 1,
       "distance": "324.0",
-      "chartTimeLocal": "19:08",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LPI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BZA",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "336.0",
-      "chartTimeLocal": "19:08",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LPI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Bza Intercity (12796) is prepared at Lingampalli (LPI) around 7:08 PM, with a second (vacancy) chart around 6:35 AM. 7 of 7 stations on the LPI to BZA route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:08:03.139Z",
-  "knownChartCount": 7
+  "summary": "Reservation chart preparation times for Bza Intercity (12796) from LPI to BZA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-29T23:23:23.326Z",
+  "knownChartCount": 0
 }

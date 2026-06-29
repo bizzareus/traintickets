@@ -12,11 +12,11 @@
       "departureTime": "15:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "05:17",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KGI",
@@ -25,11 +25,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": "05:17",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RMGM",
@@ -38,11 +38,11 @@
       "departureTime": "16:02",
       "day": 1,
       "distance": "45.0",
-      "chartTimeLocal": "05:17",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MYA",
@@ -51,11 +51,11 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": "05:17",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MYS",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": "05:17",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Wodeyar Sf Exp (12614) is prepared at KSR Bengaluru (SBC) around 5:17 AM. 5 of 5 stations on the SBC to MYS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:31:34.257Z",
-  "knownChartCount": 5
+  "summary": "Reservation chart preparation times for Wodeyar Sf Exp (12614) from SBC to MYS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-29T23:23:28.664Z",
+  "knownChartCount": 0
 }

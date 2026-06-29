@@ -12,11 +12,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "11:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KCG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UR",
@@ -25,11 +25,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "21.0",
-      "chartTimeLocal": "11:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KCG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SHNR",
@@ -38,11 +38,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": "11:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KCG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JCL",
@@ -51,11 +51,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "88.0",
-      "chartTimeLocal": "11:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KCG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MBNR",
@@ -64,11 +64,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": "11:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KCG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "WPR",
@@ -77,11 +77,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "159.0",
-      "chartTimeLocal": "11:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KCG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GWD",
@@ -90,11 +90,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": "11:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KCG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KRNT",
@@ -103,11 +103,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "237.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DHNE",
@@ -116,11 +116,11 @@
       "departureTime": "01:10",
       "day": 2,
       "distance": "290.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GY",
@@ -129,11 +129,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "345.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TU",
@@ -142,11 +142,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "393.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MOO",
@@ -155,11 +155,11 @@
       "departureTime": "03:20",
       "day": 2,
       "distance": "446.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "YA",
@@ -168,11 +168,11 @@
       "departureTime": "03:35",
       "day": 2,
       "distance": "462.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KKM",
@@ -181,11 +181,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "478.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HX",
@@ -194,11 +194,11 @@
       "departureTime": "04:10",
       "day": 2,
       "distance": "501.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RJP",
@@ -207,11 +207,11 @@
       "departureTime": "04:55",
       "day": 2,
       "distance": "552.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KOU",
@@ -220,11 +220,11 @@
       "departureTime": "05:30",
       "day": 2,
       "distance": "586.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RU",
@@ -233,11 +233,11 @@
       "departureTime": "06:20",
       "day": 2,
       "distance": "626.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TPTY",
@@ -246,11 +246,11 @@
       "departureTime": "07:00",
       "day": 2,
       "distance": "636.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PAK",
@@ -259,11 +259,11 @@
       "departureTime": "07:50",
       "day": 2,
       "distance": "678.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CTO",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "708.0",
-      "chartTimeLocal": "15:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Venkatadri Sf (12797) is prepared at Kacheguda (KCG) around 11:50 AM, with a second (vacancy) chart around 7:50 PM. 21 of 21 stations on the KCG to CTO route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:08:08.785Z",
-  "knownChartCount": 21
+  "summary": "Reservation chart preparation times for Venkatadri Sf (12797) from KCG to CTO are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 21 stations.",
+  "generatedAt": "2026-06-29T23:23:23.339Z",
+  "knownChartCount": 0
 }

@@ -12,11 +12,11 @@
       "departureTime": "16:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:08",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RPH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SNT",
@@ -25,11 +25,11 @@
       "departureTime": "16:58",
       "day": 1,
       "distance": "28.0",
-      "chartTimeLocal": "21:08",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RPH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AMP",
@@ -38,11 +38,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": "21:08",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RPH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNE",
@@ -51,11 +51,11 @@
       "departureTime": "17:24",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": "21:08",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RPH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BHP",
@@ -64,11 +64,11 @@
       "departureTime": "17:26",
       "day": 1,
       "distance": "61.0",
-      "chartTimeLocal": "21:08",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RPH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GKH",
@@ -77,11 +77,11 @@
       "departureTime": "17:42",
       "day": 1,
       "distance": "80.0",
-      "chartTimeLocal": "21:08",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RPH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BWN",
@@ -90,11 +90,11 @@
       "departureTime": "18:22",
       "day": 1,
       "distance": "112.0",
-      "chartTimeLocal": "21:08",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RPH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KQU",
@@ -103,11 +103,11 @@
       "departureTime": "19:12",
       "day": 1,
       "distance": "174.0",
-      "chartTimeLocal": "21:08",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RPH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HWH",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": "21:08",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RPH"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Rph Hwh Express (12348) is prepared at Rampur Hat (RPH) around 9:08 PM. 9 of 9 stations on the RPH to HWH route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:51:18.595Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Rph Hwh Express (12348) from RPH to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:25.886Z",
+  "knownChartCount": 0
 }

@@ -12,11 +12,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:47",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KCG",
@@ -25,11 +25,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "8.0",
-      "chartTimeLocal": "07:47",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MBNR",
@@ -38,11 +38,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "113.0",
-      "chartTimeLocal": "07:47",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRNR",
@@ -51,11 +51,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": "07:47",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GWD",
@@ -64,11 +64,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": "07:47",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KRNT",
@@ -77,11 +77,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "244.0",
-      "chartTimeLocal": "13:25",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DHNE",
@@ -90,11 +90,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "297.0",
-      "chartTimeLocal": "13:25",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GY",
@@ -103,11 +103,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "353.0",
-      "chartTimeLocal": "13:25",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KRNT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ATP",
@@ -116,11 +116,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "410.0",
-      "chartTimeLocal": "15:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:22",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DMM",
@@ -129,11 +129,11 @@
       "departureTime": "01:20",
       "day": 2,
       "distance": "443.0",
-      "chartTimeLocal": "15:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:22",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KRY",
@@ -142,11 +142,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "510.0",
-      "chartTimeLocal": "15:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:22",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MCU",
@@ -155,11 +155,11 @@
       "departureTime": "02:25",
       "day": 2,
       "distance": "548.0",
-      "chartTimeLocal": "15:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:22",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MPL",
@@ -168,11 +168,11 @@
       "departureTime": "03:05",
       "day": 2,
       "distance": "588.0",
-      "chartTimeLocal": "15:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:22",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KCI",
@@ -181,11 +181,11 @@
       "departureTime": "03:30",
       "day": 2,
       "distance": "615.0",
-      "chartTimeLocal": "15:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:22",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PIL",
@@ -194,11 +194,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "630.0",
-      "chartTimeLocal": "15:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:22",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PAK",
@@ -207,11 +207,11 @@
       "departureTime": "04:40",
       "day": 2,
       "distance": "671.0",
-      "chartTimeLocal": "15:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:22",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TPTY",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "712.0",
-      "chartTimeLocal": "15:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:22",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Seven Hills Sf (12770) is prepared at Secunderabad Jn (SC) around 7:47 AM, with a second (vacancy) chart around 5:25 PM. 17 of 17 stations on the SC to TPTY route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:03:55.720Z",
-  "knownChartCount": 17
+  "summary": "Reservation chart preparation times for Seven Hills Sf (12770) from SC to TPTY are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
+  "generatedAt": "2026-06-29T23:23:19.433Z",
+  "knownChartCount": 0
 }

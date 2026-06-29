@@ -12,11 +12,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:20",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTJ",
@@ -25,11 +25,11 @@
       "departureTime": "07:20",
       "day": 1,
       "distance": "141.0",
-      "chartTimeLocal": "21:24",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MTJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AGC",
@@ -38,11 +38,11 @@
       "departureTime": "07:55",
       "day": 1,
       "distance": "195.0",
-      "chartTimeLocal": "21:35",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AGC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DHO",
@@ -51,11 +51,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "247.0",
-      "chartTimeLocal": "21:35",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AGC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MRA",
@@ -64,11 +64,11 @@
       "departureTime": "08:58",
       "day": 1,
       "distance": "275.0",
-      "chartTimeLocal": "21:35",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AGC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GWL",
@@ -77,11 +77,11 @@
       "departureTime": "09:28",
       "day": 1,
       "distance": "313.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VGLJ",
@@ -90,11 +90,11 @@
       "departureTime": "10:50",
       "day": 1,
       "distance": "410.0",
-      "chartTimeLocal": "21:48",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LAR",
@@ -103,11 +103,11 @@
       "departureTime": "11:43",
       "day": 1,
       "distance": "500.0",
-      "chartTimeLocal": "21:48",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BINA",
@@ -116,11 +116,11 @@
       "departureTime": "12:42",
       "day": 1,
       "distance": "563.0",
-      "chartTimeLocal": "21:48",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BPL",
@@ -129,11 +129,11 @@
       "departureTime": "14:15",
       "day": 1,
       "distance": "701.0",
-      "chartTimeLocal": "21:48",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RKMP",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "707.0",
-      "chartTimeLocal": "21:48",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Shatabdi Expres (12002) is prepared at New Delhi (NDLS) around 9:20 PM. 11 of 11 stations on the NDLS to RKMP route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:08:45.667Z",
-  "knownChartCount": 11
+  "summary": "Reservation chart preparation times for Shatabdi Expres (12002) from NDLS to RKMP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
+  "generatedAt": "2026-06-29T23:23:09.365Z",
+  "knownChartCount": 0
 }

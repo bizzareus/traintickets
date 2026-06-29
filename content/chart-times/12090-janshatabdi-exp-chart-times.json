@@ -12,11 +12,11 @@
       "departureTime": "05:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BDVT",
@@ -25,11 +25,11 @@
       "departureTime": "05:33",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TKE",
@@ -38,11 +38,11 @@
       "departureTime": "05:51",
       "day": 1,
       "distance": "39.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RRB",
@@ -51,11 +51,11 @@
       "departureTime": "06:18",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DRU",
@@ -64,11 +64,11 @@
       "departureTime": "06:28",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ASK",
@@ -77,11 +77,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TTR",
@@ -90,11 +90,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TK",
@@ -103,11 +103,11 @@
       "departureTime": "08:10",
       "day": 1,
       "distance": "205.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "YPR",
@@ -116,11 +116,11 @@
       "departureTime": "09:20",
       "day": 1,
       "distance": "269.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SBC",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "274.0",
-      "chartTimeLocal": "19:32",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SMET"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Janshatabdi Exp (12090) is prepared at Shivamogga Town (SMET) around 7:32 PM, with a second (vacancy) chart around 5 AM. 10 of 10 stations on the SMET to SBC route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:16:38.788Z",
-  "knownChartCount": 10
+  "summary": "Reservation chart preparation times for Janshatabdi Exp (12090) from SMET to SBC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
+  "generatedAt": "2026-06-29T23:23:23.099Z",
+  "knownChartCount": 0
 }

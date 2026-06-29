@@ -12,11 +12,11 @@
       "departureTime": "05:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "17:34",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:13",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HWH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TATA",
@@ -25,11 +25,11 @@
       "departureTime": "08:48",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": "20:06",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:33",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BSP",
@@ -38,11 +38,11 @@
       "departureTime": "15:05",
       "day": 1,
       "distance": "719.0",
-      "chartTimeLocal": "05:06",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BSP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "R",
@@ -51,11 +51,11 @@
       "departureTime": "16:37",
       "day": 1,
       "distance": "829.0",
-      "chartTimeLocal": "05:06",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BSP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NGP",
@@ -64,11 +64,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "1131.0",
-      "chartTimeLocal": "10:50",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NGP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AK",
@@ -77,11 +77,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "1384.0",
-      "chartTimeLocal": "10:50",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NGP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BSL",
@@ -90,11 +90,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "1524.0",
-      "chartTimeLocal": "10:50",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NGP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KYN",
@@ -103,11 +103,11 @@
       "departureTime": "07:02",
       "day": 2,
       "distance": "1915.0",
-      "chartTimeLocal": "10:50",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NGP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CSMT",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1968.0",
-      "chartTimeLocal": "10:50",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NGP"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Csmt Duronto Ex (12262) is prepared at Howrah Jn (HWH) around 5:34 PM, with a second (vacancy) chart around 5:13 AM. 9 of 9 stations on the HWH to CSMT route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:36:37.018Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Csmt Duronto Ex (12262) from HWH to CSMT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:14.413Z",
+  "knownChartCount": 0
 }

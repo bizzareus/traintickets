@@ -12,11 +12,11 @@
       "departureTime": "14:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "06:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SHC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SBV",
@@ -25,11 +25,11 @@
       "departureTime": "14:51",
       "day": 1,
       "distance": "17.0",
-      "chartTimeLocal": "06:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SHC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KGG",
@@ -38,11 +38,11 @@
       "departureTime": "15:52",
       "day": 1,
       "distance": "54.0",
-      "chartTimeLocal": "06:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SHC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BGS",
@@ -51,11 +51,11 @@
       "departureTime": "16:26",
       "day": 1,
       "distance": "94.0",
-      "chartTimeLocal": "06:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SHC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BJU",
@@ -64,11 +64,11 @@
       "departureTime": "17:00",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": "06:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SHC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DSS",
@@ -77,11 +77,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "137.0",
-      "chartTimeLocal": "06:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SHC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SPJ",
@@ -90,11 +90,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "160.0",
-      "chartTimeLocal": "06:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SHC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MFP",
@@ -103,11 +103,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "212.0",
-      "chartTimeLocal": "06:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SHC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HJP",
@@ -116,11 +116,11 @@
       "departureTime": "19:48",
       "day": 1,
       "distance": "266.0",
-      "chartTimeLocal": "11:48",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:33",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HJP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CPR",
@@ -129,11 +129,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "325.0",
-      "chartTimeLocal": "11:48",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:33",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HJP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SV",
@@ -142,11 +142,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "386.0",
-      "chartTimeLocal": "11:48",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:33",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HJP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DEOS",
@@ -155,11 +155,11 @@
       "departureTime": "23:17",
       "day": 1,
       "distance": "455.0",
-      "chartTimeLocal": "11:48",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:33",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HJP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GKP",
@@ -168,11 +168,11 @@
       "departureTime": "00:45",
       "day": 2,
       "distance": "505.0",
-      "chartTimeLocal": "14:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:31",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "GKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LKO",
@@ -181,11 +181,11 @@
       "departureTime": "06:05",
       "day": 2,
       "distance": "783.0",
-      "chartTimeLocal": "21:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "05:50",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DLI",
@@ -194,11 +194,11 @@
       "departureTime": "14:10",
       "day": 2,
       "distance": "1270.0",
-      "chartTimeLocal": "06:10",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "13:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UMB",
@@ -207,11 +207,11 @@
       "departureTime": "16:54",
       "day": 2,
       "distance": "1467.0",
-      "chartTimeLocal": "06:10",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "13:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LDH",
@@ -220,11 +220,11 @@
       "departureTime": "19:20",
       "day": 2,
       "distance": "1581.0",
-      "chartTimeLocal": "06:10",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "13:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PGW",
@@ -233,11 +233,11 @@
       "departureTime": "19:56",
       "day": 2,
       "distance": "1616.0",
-      "chartTimeLocal": "06:10",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "13:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JUC",
@@ -246,11 +246,11 @@
       "departureTime": "20:35",
       "day": 2,
       "distance": "1637.0",
-      "chartTimeLocal": "06:10",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "13:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BEAS",
@@ -259,11 +259,11 @@
       "departureTime": "21:07",
       "day": 2,
       "distance": "1674.0",
-      "chartTimeLocal": "06:10",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "13:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ASR",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1716.0",
-      "chartTimeLocal": "06:10",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "13:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Garib Rath Exp (12203) is prepared at Saharsa Jn (SHC) around 6:31 AM, with a second (vacancy) chart around 2:15 PM. 21 of 21 stations on the SHC to ASR route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:29:56.608Z",
-  "knownChartCount": 21
+  "summary": "Reservation chart preparation times for Garib Rath Exp (12203) from SHC to ASR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 21 stations.",
+  "generatedAt": "2026-06-29T23:23:06.899Z",
+  "knownChartCount": 0
 }

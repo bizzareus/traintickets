@@ -12,11 +12,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "10:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RJPB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNBE",
@@ -25,11 +25,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "3.0",
-      "chartTimeLocal": "10:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RJPB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DNR",
@@ -38,11 +38,11 @@
       "departureTime": "18:33",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": "10:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RJPB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ARA",
@@ -51,11 +51,11 @@
       "departureTime": "19:06",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": "10:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RJPB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BXR",
@@ -64,11 +64,11 @@
       "departureTime": "19:48",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": "10:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RJPB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DDU",
@@ -77,11 +77,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "215.0",
-      "chartTimeLocal": "15:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PRYJ",
@@ -90,11 +90,11 @@
       "departureTime": "01:10",
       "day": 2,
       "distance": "367.0",
-      "chartTimeLocal": "15:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GOY",
@@ -103,11 +103,11 @@
       "departureTime": "03:30",
       "day": 2,
       "distance": "563.0",
-      "chartTimeLocal": "15:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "FZD",
@@ -116,11 +116,11 @@
       "departureTime": "06:12",
       "day": 2,
       "distance": "774.0",
-      "chartTimeLocal": "15:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TDL",
@@ -129,11 +129,11 @@
       "departureTime": "06:50",
       "day": 2,
       "distance": "791.0",
-      "chartTimeLocal": "15:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "IDH",
@@ -142,11 +142,11 @@
       "departureTime": "07:40",
       "day": 2,
       "distance": "815.0",
-      "chartTimeLocal": "19:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "07:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "IDH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SWM",
@@ -155,11 +155,11 @@
       "departureTime": "11:05",
       "day": 2,
       "distance": "1039.0",
-      "chartTimeLocal": "19:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "07:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "IDH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BNLW",
@@ -168,11 +168,11 @@
       "departureTime": "11:52",
       "day": 2,
       "distance": "1104.0",
-      "chartTimeLocal": "19:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "07:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "IDH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DPA",
@@ -181,11 +181,11 @@
       "departureTime": "12:35",
       "day": 2,
       "distance": "1163.0",
-      "chartTimeLocal": "19:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "07:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "IDH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JP",
@@ -194,11 +194,11 @@
       "departureTime": "13:20",
       "day": 2,
       "distance": "1170.0",
-      "chartTimeLocal": "19:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "07:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "IDH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KSG",
@@ -207,11 +207,11 @@
       "departureTime": "14:40",
       "day": 2,
       "distance": "1279.0",
-      "chartTimeLocal": "19:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "07:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "IDH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AII",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1304.0",
-      "chartTimeLocal": "19:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "07:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "IDH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ziyarat Express (12395) is prepared at Rajendranagar T (RJPB) around 10 AM, with a second (vacancy) chart around 5:45 PM. 17 of 17 stations on the RJPB to AII route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:58:43.484Z",
-  "knownChartCount": 17
+  "summary": "Reservation chart preparation times for Ziyarat Express (12395) from RJPB to AII are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
+  "generatedAt": "2026-06-29T23:23:00.357Z",
+  "knownChartCount": 0
 }

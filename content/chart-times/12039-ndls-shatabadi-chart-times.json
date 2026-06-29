@@ -12,11 +12,11 @@
       "departureTime": "15:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:10",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "KGM"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HDW",
@@ -25,11 +25,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "7.0",
-      "chartTimeLocal": "21:12",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "HDW"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LKU",
@@ -38,11 +38,11 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "23.0",
-      "chartTimeLocal": "21:12",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "HDW"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RUPC",
@@ -51,11 +51,11 @@
       "departureTime": "16:46",
       "day": 1,
       "distance": "45.0",
-      "chartTimeLocal": "08:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:31",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RUPC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BLQR",
@@ -64,11 +64,11 @@
       "departureTime": "17:04",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": "08:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:31",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RUPC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RMU",
@@ -77,11 +77,11 @@
       "departureTime": "17:37",
       "day": 1,
       "distance": "90.0",
-      "chartTimeLocal": "08:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:31",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RUPC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MB",
@@ -90,11 +90,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "117.0",
-      "chartTimeLocal": "08:58",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -103,11 +103,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "258.0",
-      "chartTimeLocal": "08:58",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "281.0",
-      "chartTimeLocal": "08:58",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ndls Shatabadi (12039) is prepared at Kathgodam (KGM) around 9:10 PM. 9 of 9 stations on the KGM to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:11:35.158Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Ndls Shatabadi (12039) from KGM to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:14.848Z",
+  "knownChartCount": 0
 }

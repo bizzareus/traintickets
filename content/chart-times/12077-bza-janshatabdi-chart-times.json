@@ -12,11 +12,11 @@
       "departureTime": "07:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SPE",
@@ -25,11 +25,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NYP",
@@ -38,11 +38,11 @@
       "departureTime": "09:05",
       "day": 1,
       "distance": "110.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GDR",
@@ -51,11 +51,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "138.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NLR",
@@ -64,11 +64,11 @@
       "departureTime": "09:55",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KVZ",
@@ -77,11 +77,11 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "227.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "OGL",
@@ -90,11 +90,11 @@
       "departureTime": "11:30",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CLX",
@@ -103,11 +103,11 @@
       "departureTime": "12:10",
       "day": 1,
       "distance": "342.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TEL",
@@ -116,11 +116,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "399.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NGNT",
@@ -129,11 +129,11 @@
       "departureTime": "13:40",
       "day": 1,
       "distance": "424.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BZA",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "454.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Bza Janshatabdi (12077) is prepared at Mgr Chennai Ctl (MAS) around 8:45 PM. 11 of 11 stations on the MAS to BZA route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:15:15.358Z",
-  "knownChartCount": 11
+  "summary": "Reservation chart preparation times for Bza Janshatabdi (12077) from MAS to BZA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
+  "generatedAt": "2026-06-29T23:23:20.934Z",
+  "knownChartCount": 0
 }

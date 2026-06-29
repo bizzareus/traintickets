@@ -298,11 +298,11 @@
       "departureTime": "00:43",
       "day": 2,
       "distance": "1112.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SAG",
@@ -311,11 +311,11 @@
       "departureTime": "01:32",
       "day": 2,
       "distance": "1162.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DUI",
@@ -324,11 +324,11 @@
       "departureTime": "01:57",
       "day": 2,
       "distance": "1178.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LDH",
@@ -337,11 +337,11 @@
       "departureTime": "03:20",
       "day": 2,
       "distance": "1240.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JRC",
@@ -350,11 +350,11 @@
       "departureTime": "04:13",
       "day": 2,
       "distance": "1292.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PTKC",
@@ -363,11 +363,11 @@
       "departureTime": "06:05",
       "day": 2,
       "distance": "1405.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KTHU",
@@ -376,11 +376,11 @@
       "departureTime": "06:36",
       "day": 2,
       "distance": "1428.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JAT",
@@ -389,11 +389,11 @@
       "departureTime": "08:30",
       "day": 2,
       "distance": "1504.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MCTM",
@@ -402,11 +402,11 @@
       "departureTime": "09:45",
       "day": 2,
       "distance": "1557.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SVDK",
@@ -415,14 +415,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1582.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Jbp Svdk Exp (11449) is prepared at Jakhal Jn (JHL) around 12:10 PM, with a second (vacancy) chart around 7:55 PM. 10 of 32 stations on the JBP to SVDK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-26T23:53:03.835Z",
-  "knownChartCount": 10
+  "summary": "Reservation chart preparation times for Jbp Svdk Exp (11449) from JBP to SVDK are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 32 stations.",
+  "generatedAt": "2026-06-29T23:22:57.263Z",
+  "knownChartCount": 0
 }

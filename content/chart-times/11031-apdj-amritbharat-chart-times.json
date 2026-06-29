@@ -337,11 +337,11 @@
       "departureTime": "00:25",
       "day": 3,
       "distance": "1902.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MNE",
@@ -350,11 +350,11 @@
       "departureTime": "00:38",
       "day": 3,
       "distance": "1911.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NNA",
@@ -363,11 +363,11 @@
       "departureTime": "01:39",
       "day": 3,
       "distance": "1969.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KIR",
@@ -376,11 +376,11 @@
       "departureTime": "03:30",
       "day": 3,
       "distance": "2026.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BOE",
@@ -389,11 +389,11 @@
       "departureTime": "04:07",
       "day": 3,
       "distance": "2064.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KNE",
@@ -402,11 +402,11 @@
       "departureTime": "05:05",
       "day": 3,
       "distance": "2122.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AUB",
@@ -415,11 +415,11 @@
       "departureTime": "05:30",
       "day": 3,
       "distance": "2152.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NJP",
@@ -428,11 +428,11 @@
       "departureTime": "06:50",
       "day": 3,
       "distance": "2209.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SGUJ",
@@ -441,11 +441,11 @@
       "departureTime": "07:15",
       "day": 3,
       "distance": "2216.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BNV",
@@ -454,11 +454,11 @@
       "departureTime": "10:22",
       "day": 3,
       "distance": "2308.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HSA",
@@ -467,11 +467,11 @@
       "departureTime": "12:10",
       "day": 3,
       "distance": "2342.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "APDJ",
@@ -480,14 +480,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2377.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Apdj Amritbharat (11031) is prepared at Khagaria Jn (KGG) around 1:40 PM, with a second (vacancy) chart around 9:25 PM. 12 of 37 stations on the PNVL to APDJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-26T23:19:11.210Z",
-  "knownChartCount": 12
+  "summary": "Reservation chart preparation times for Apdj Amritbharat (11031) from PNVL to APDJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 37 stations.",
+  "generatedAt": "2026-06-29T23:23:10.416Z",
+  "knownChartCount": 0
 }

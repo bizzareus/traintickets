@@ -12,11 +12,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:02",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ON",
@@ -25,11 +25,11 @@
       "departureTime": "16:21",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": "07:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:02",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -38,11 +38,11 @@
       "departureTime": "16:53",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": "07:43",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:38",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PHD",
@@ -51,11 +51,11 @@
       "departureTime": "17:48",
       "day": 1,
       "distance": "157.0",
-      "chartTimeLocal": "07:43",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:38",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ETW",
@@ -64,11 +64,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": "07:43",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:38",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TDL",
@@ -77,11 +77,11 @@
       "departureTime": "19:28",
       "day": 1,
       "distance": "305.0",
-      "chartTimeLocal": "07:43",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:38",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ALJN",
@@ -90,11 +90,11 @@
       "departureTime": "20:17",
       "day": 1,
       "distance": "383.0",
-      "chartTimeLocal": "07:43",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:38",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -103,11 +103,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "489.0",
-      "chartTimeLocal": "07:43",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:38",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "512.0",
-      "chartTimeLocal": "07:43",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:38",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Swaran Shatabdi (12003) is prepared at Lucknow Ne (LJN) around 7:30 AM, with a second (vacancy) chart around 8:02 PM. 9 of 9 stations on the LJN to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:08:50.140Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Swaran Shatabdi (12003) from LJN to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:09.389Z",
+  "knownChartCount": 0
 }

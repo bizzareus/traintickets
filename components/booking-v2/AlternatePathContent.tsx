@@ -745,10 +745,7 @@ export function AlternatePathContent({
     (Boolean(altError) || (Boolean(altResult) && !altResult?.isComplete));
 
   return (
-    <div
-      ref={captureRef}
-      className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6"
-    >
+    <div ref={captureRef} className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
       <div className="mb-3 flex items-start justify-between gap-2">
         <h3 className="text-lg font-bold leading-snug text-gray-900">
           {altLoading
@@ -789,7 +786,7 @@ export function AlternatePathContent({
       {showSearchAllTrains && searchAllTrainsHref && (
         <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5">
           <span className="text-sm font-semibold text-slate-900">
-            Full seats not available
+            There are no full seats available in this journey
           </span>
           <a
             href={searchAllTrainsHref}
@@ -1064,8 +1061,7 @@ export function AlternatePathContent({
                         </span>
                         {stepIndex === 1 &&
                           fromCode &&
-                          leg.from.toUpperCase() !==
-                            fromCode.toUpperCase() && (
+                          leg.from.toUpperCase() !== fromCode.toUpperCase() && (
                             <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm animate-pulse">
                               💡 Book from earlier station: {leg.from}
                             </span>

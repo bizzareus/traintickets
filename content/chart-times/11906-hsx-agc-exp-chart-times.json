@@ -12,11 +12,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KUPR",
@@ -25,11 +25,11 @@
       "departureTime": "22:53",
       "day": 1,
       "distance": "21.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JUC",
@@ -38,11 +38,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JRC",
@@ -51,11 +51,11 @@
       "departureTime": "23:56",
       "day": 1,
       "distance": "48.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PGW",
@@ -64,11 +64,11 @@
       "departureTime": "00:10",
       "day": 2,
       "distance": "65.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LDH",
@@ -77,11 +77,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "100.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CDG",
@@ -90,11 +90,11 @@
       "departureTime": "03:13",
       "day": 2,
       "distance": "213.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UMB",
@@ -103,11 +103,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "280.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KUN",
@@ -116,11 +116,11 @@
       "departureTime": "04:52",
       "day": 2,
       "distance": "355.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNP",
@@ -129,11 +129,11 @@
       "departureTime": "05:28",
       "day": 2,
       "distance": "389.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -142,11 +142,11 @@
       "departureTime": "07:20",
       "day": 2,
       "distance": "478.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KSV",
@@ -155,11 +155,11 @@
       "departureTime": "08:52",
       "day": 2,
       "distance": "578.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTJ",
@@ -168,11 +168,11 @@
       "departureTime": "09:25",
       "day": 2,
       "distance": "619.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AGC",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "673.0",
-      "chartTimeLocal": "14:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:41",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HSX"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Hsx Agc Exp (11906) is prepared at HOSHIARPUR (HSX) around 2:30 PM, with a second (vacancy) chart around 11:41 PM. 14 of 14 stations on the HSX to AGC route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:08:35.175Z",
-  "knownChartCount": 14
+  "summary": "Reservation chart preparation times for Hsx Agc Exp (11906) from HSX to AGC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
+  "generatedAt": "2026-06-29T23:23:09.357Z",
+  "knownChartCount": 0
 }

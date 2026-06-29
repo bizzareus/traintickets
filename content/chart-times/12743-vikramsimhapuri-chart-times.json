@@ -12,11 +12,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:57",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GDR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NLR",
@@ -25,11 +25,11 @@
       "departureTime": "06:25",
       "day": 1,
       "distance": "39.0",
-      "chartTimeLocal": "19:57",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GDR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KVZ",
@@ -38,11 +38,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "89.0",
-      "chartTimeLocal": "19:57",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GDR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SKM",
@@ -51,11 +51,11 @@
       "departureTime": "07:25",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": "19:57",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GDR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "OGL",
@@ -64,11 +64,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "155.0",
-      "chartTimeLocal": "19:57",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GDR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CLX",
@@ -77,11 +77,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "204.0",
-      "chartTimeLocal": "19:57",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GDR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BPP",
@@ -90,11 +90,11 @@
       "departureTime": "08:55",
       "day": 1,
       "distance": "219.0",
-      "chartTimeLocal": "19:57",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GDR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TEL",
@@ -103,11 +103,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "262.0",
-      "chartTimeLocal": "19:57",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GDR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BZA",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "293.0",
-      "chartTimeLocal": "19:57",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GDR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Vikramsimhapuri (12743) is prepared at Gudur Jn (GDR) around 7:57 PM, with a second (vacancy) chart around 7:45 AM. 9 of 9 stations on the GDR to BZA route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:00:03.545Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Vikramsimhapuri (12743) from GDR to BZA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:14.816Z",
+  "knownChartCount": 0
 }

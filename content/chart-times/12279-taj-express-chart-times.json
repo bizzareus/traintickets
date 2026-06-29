@@ -12,11 +12,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:52",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DAA",
@@ -25,11 +25,11 @@
       "departureTime": "15:31",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": "21:52",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DBA",
@@ -38,11 +38,11 @@
       "departureTime": "15:54",
       "day": 1,
       "distance": "56.0",
-      "chartTimeLocal": "21:52",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GWL",
@@ -51,11 +51,11 @@
       "departureTime": "16:29",
       "day": 1,
       "distance": "98.0",
-      "chartTimeLocal": "06:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:14",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GWL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MRA",
@@ -64,11 +64,11 @@
       "departureTime": "16:57",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": "06:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:14",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GWL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DHO",
@@ -77,11 +77,11 @@
       "departureTime": "17:42",
       "day": 1,
       "distance": "164.0",
-      "chartTimeLocal": "06:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:14",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GWL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AGC",
@@ -90,11 +90,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "216.0",
-      "chartTimeLocal": "08:38",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AGC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RKM",
@@ -103,11 +103,11 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "220.0",
-      "chartTimeLocal": "08:38",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AGC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTJ",
@@ -116,11 +116,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "270.0",
-      "chartTimeLocal": "08:38",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AGC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "FDB",
@@ -129,11 +129,11 @@
       "departureTime": "20:47",
       "day": 1,
       "distance": "382.0",
-      "chartTimeLocal": "08:38",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AGC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NZM",
@@ -142,11 +142,11 @@
       "departureTime": "21:07",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": "08:38",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AGC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "410.0",
-      "chartTimeLocal": "08:38",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AGC"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Taj Express (12279) is prepared at V Lakshmibai Jhansi Jhs (VGLJ) around 9:52 PM. 12 of 12 stations on the VGLJ to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:38:03.236Z",
-  "knownChartCount": 12
+  "summary": "Reservation chart preparation times for Taj Express (12279) from VGLJ to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
+  "generatedAt": "2026-06-29T23:23:16.594Z",
+  "knownChartCount": 0
 }

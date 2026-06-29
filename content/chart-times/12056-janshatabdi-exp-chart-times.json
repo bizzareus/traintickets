@@ -12,11 +12,11 @@
       "departureTime": "05:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HW",
@@ -25,11 +25,11 @@
       "departureTime": "06:29",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RK",
@@ -38,11 +38,11 @@
       "departureTime": "07:09",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TPZ",
@@ -51,11 +51,11 @@
       "departureTime": "08:01",
       "day": 1,
       "distance": "125.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DBD",
@@ -64,11 +64,11 @@
       "departureTime": "08:22",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MOZ",
@@ -77,11 +77,11 @@
       "departureTime": "08:42",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTC",
@@ -90,11 +90,11 @@
       "departureTime": "09:23",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -103,11 +103,11 @@
       "departureTime": "10:18",
       "day": 1,
       "distance": "280.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TKJ",
@@ -116,11 +116,11 @@
       "departureTime": "10:45",
       "day": 1,
       "distance": "303.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "305.0",
-      "chartTimeLocal": "19:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Janshatabdi Exp (12056) is prepared at Dehradun (DDN) around 7:01 PM, with a second (vacancy) chart around 4:45 AM. 10 of 10 stations on the DDN to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:12:58.785Z",
-  "knownChartCount": 10
+  "summary": "Reservation chart preparation times for Janshatabdi Exp (12056) from DDN to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
+  "generatedAt": "2026-06-29T23:23:17.158Z",
+  "knownChartCount": 0
 }

@@ -311,11 +311,11 @@
       "departureTime": "00:30",
       "day": 3,
       "distance": "1747.0",
-      "chartTimeLocal": "04:32",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "14:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KJM",
@@ -324,11 +324,11 @@
       "departureTime": "02:27",
       "day": 3,
       "distance": "1881.0",
-      "chartTimeLocal": "04:32",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "14:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SMVB",
@@ -337,14 +337,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "1886.0",
-      "chartTimeLocal": "04:32",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "14:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Hte Smvb Exp (12835) is prepared at Jolarpettai (JTJ) around 4:32 AM, with a second (vacancy) chart around 2:25 PM. 3 of 26 stations on the HTE to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-27T03:13:22.941Z",
-  "knownChartCount": 3
+  "summary": "Reservation chart preparation times for Hte Smvb Exp (12835) from HTE to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 26 stations.",
+  "generatedAt": "2026-06-29T23:23:27.664Z",
+  "knownChartCount": 0
 }

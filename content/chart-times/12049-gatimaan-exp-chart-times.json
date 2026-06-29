@@ -12,11 +12,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "22:00",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GWL",
@@ -25,11 +25,11 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "98.0",
-      "chartTimeLocal": "22:00",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VGLJ"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AGC",
@@ -38,11 +38,11 @@
       "departureTime": "17:35",
       "day": 1,
       "distance": "216.0",
-      "chartTimeLocal": "07:48",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AGC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NZM",
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": "07:48",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AGC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Gatimaan Exp (12049) is prepared at V Lakshmibai Jhansi Jhs (VGLJ) around 10 PM. 4 of 4 stations on the VGLJ to NZM route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:12:23.581Z",
-  "knownChartCount": 4
+  "summary": "Reservation chart preparation times for Gatimaan Exp (12049) from VGLJ to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 4 stations.",
+  "generatedAt": "2026-06-29T23:23:15.939Z",
+  "knownChartCount": 0
 }

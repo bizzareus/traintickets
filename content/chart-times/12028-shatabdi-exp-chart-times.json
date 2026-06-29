@@ -12,11 +12,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:12",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BNC",
@@ -25,11 +25,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "5.0",
-      "chartTimeLocal": "20:12",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JTJ",
@@ -38,11 +38,11 @@
       "departureTime": "07:50",
       "day": 1,
       "distance": "149.0",
-      "chartTimeLocal": "20:12",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KPD",
@@ -51,11 +51,11 @@
       "departureTime": "08:55",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": "20:12",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MAS",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "362.0",
-      "chartTimeLocal": "20:12",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Shatabdi Exp (12028) is prepared at KSR Bengaluru (SBC) around 8:12 PM. 5 of 5 stations on the SBC to MAS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:10:40.306Z",
-  "knownChartCount": 5
+  "summary": "Reservation chart preparation times for Shatabdi Exp (12028) from SBC to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-29T23:23:13.801Z",
+  "knownChartCount": 0
 }

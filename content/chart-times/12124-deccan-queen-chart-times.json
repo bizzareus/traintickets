@@ -12,11 +12,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:33",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "PUNE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LNL",
@@ -25,11 +25,11 @@
       "departureTime": "08:07",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": "20:33",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "PUNE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DR",
@@ -38,11 +38,11 @@
       "departureTime": "10:05",
       "day": 1,
       "distance": "183.0",
-      "chartTimeLocal": "20:33",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "PUNE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CSMT",
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "192.0",
-      "chartTimeLocal": "20:33",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "PUNE"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Deccan Queen (12124) is prepared at Pune Jn (PUNE) around 8:33 PM. 4 of 4 stations on the PUNE to CSMT route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:19:37.733Z",
-  "knownChartCount": 4
+  "summary": "Reservation chart preparation times for Deccan Queen (12124) from PUNE to CSMT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 4 stations.",
+  "generatedAt": "2026-06-29T23:23:27.359Z",
+  "knownChartCount": 0
 }

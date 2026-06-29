@@ -12,11 +12,11 @@
       "departureTime": "06:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "17:36",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:07",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HWH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRC",
@@ -25,11 +25,11 @@
       "departureTime": "07:04",
       "day": 1,
       "distance": "8.0",
-      "chartTimeLocal": "17:36",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:07",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HWH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ULB",
@@ -38,11 +38,11 @@
       "departureTime": "07:24",
       "day": 1,
       "distance": "33.0",
-      "chartTimeLocal": "17:36",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:07",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HWH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MCA",
@@ -51,11 +51,11 @@
       "departureTime": "07:47",
       "day": 1,
       "distance": "59.0",
-      "chartTimeLocal": "17:36",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:07",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HWH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TMZ",
@@ -64,11 +64,11 @@
       "departureTime": "08:22",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": "17:36",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:07",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HWH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KATI",
@@ -77,11 +77,11 @@
       "departureTime": "09:18",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": "17:36",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:07",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HWH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RMRB",
@@ -90,11 +90,11 @@
       "departureTime": "09:36",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": "17:36",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:07",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HWH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DGHA",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "186.0",
-      "chartTimeLocal": "17:36",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:07",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HWH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Tamrolipta Exp (12857) is prepared at Howrah Jn (HWH) around 5:36 PM, with a second (vacancy) chart around 8:07 AM. 8 of 8 stations on the HWH to DGHA route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:17:04.710Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Tamrolipta Exp (12857) from HWH to DGHA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:22:58.582Z",
+  "knownChartCount": 0
 }

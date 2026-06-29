@@ -12,11 +12,11 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HW",
@@ -25,11 +25,11 @@
       "departureTime": "18:07",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": "07:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RK",
@@ -38,11 +38,11 @@
       "departureTime": "18:44",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": "07:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRE",
@@ -51,11 +51,11 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": "07:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MOZ",
@@ -64,11 +64,11 @@
       "departureTime": "20:40",
       "day": 1,
       "distance": "186.0",
-      "chartTimeLocal": "07:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTC",
@@ -77,11 +77,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "242.0",
-      "chartTimeLocal": "07:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -90,11 +90,11 @@
       "departureTime": "22:04",
       "day": 1,
       "distance": "289.0",
-      "chartTimeLocal": "07:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "315.0",
-      "chartTimeLocal": "07:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ddn Shtabadi Exp (12018) is prepared at Dehradun (DDN) around 7:31 AM, with a second (vacancy) chart around 9:05 PM. 8 of 8 stations on the DDN to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:09:52.582Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Ddn Shtabadi Exp (12018) from DDN to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:11.525Z",
+  "knownChartCount": 0
 }

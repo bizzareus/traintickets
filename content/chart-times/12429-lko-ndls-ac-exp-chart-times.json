@@ -12,11 +12,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "14:53",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SPN",
@@ -25,11 +25,11 @@
       "departureTime": "01:59",
       "day": 2,
       "distance": "165.0",
-      "chartTimeLocal": "14:53",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BE",
@@ -38,11 +38,11 @@
       "departureTime": "02:56",
       "day": 2,
       "distance": "236.0",
-      "chartTimeLocal": "14:53",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MB",
@@ -51,11 +51,11 @@
       "departureTime": "04:35",
       "day": 2,
       "distance": "326.0",
-      "chartTimeLocal": "14:53",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -64,11 +64,11 @@
       "departureTime": "06:47",
       "day": 2,
       "distance": "467.0",
-      "chartTimeLocal": "14:53",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "493.0",
-      "chartTimeLocal": "14:53",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LKO"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Lko Ndls Ac Exp (12429) is prepared at Lucknow Nr (LKO) around 2:53 PM, with a second (vacancy) chart around 11:15 PM. 6 of 6 stations on the LKO to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:02:22.065Z",
-  "knownChartCount": 6
+  "summary": "Reservation chart preparation times for Lko Ndls Ac Exp (12429) from LKO to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-06-29T23:23:05.910Z",
+  "knownChartCount": 0
 }

@@ -12,11 +12,11 @@
       "departureTime": "16:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "06:18",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "YPR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HUP",
@@ -25,11 +25,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "96.0",
-      "chartTimeLocal": "06:18",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "YPR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SSPN",
@@ -38,11 +38,11 @@
       "departureTime": "18:45",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": "06:18",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "YPR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DMM",
@@ -51,11 +51,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "187.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ATP",
@@ -64,11 +64,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "220.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GTL",
@@ -77,11 +77,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "288.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RC",
@@ -90,11 +90,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "409.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "YG",
@@ -103,11 +103,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "477.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CT",
@@ -116,11 +116,11 @@
       "departureTime": "01:21",
       "day": 2,
       "distance": "532.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LPI",
@@ -129,11 +129,11 @@
       "departureTime": "03:20",
       "day": 2,
       "distance": "677.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BMT",
@@ -142,11 +142,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "695.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SC",
@@ -155,11 +155,11 @@
       "departureTime": "04:30",
       "day": 2,
       "distance": "700.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CHZ",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "712.0",
-      "chartTimeLocal": "09:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DMM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sc Garib Rath (12736) is prepared at Yesvantpur Jn (YPR) around 6:18 AM. 13 of 13 stations on the YPR to CHZ route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T02:59:11.909Z",
-  "knownChartCount": 13
+  "summary": "Reservation chart preparation times for Sc Garib Rath (12736) from YPR to CHZ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
+  "generatedAt": "2026-06-29T23:23:13.786Z",
+  "knownChartCount": 0
 }

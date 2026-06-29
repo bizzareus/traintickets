@@ -12,11 +12,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:54",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BRC",
@@ -25,11 +25,11 @@
       "departureTime": "03:36",
       "day": 2,
       "distance": "392.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:54",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RTM",
@@ -38,11 +38,11 @@
       "departureTime": "07:05",
       "day": 2,
       "distance": "653.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:54",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UJN",
@@ -51,11 +51,11 @@
       "departureTime": "08:45",
       "day": 2,
       "distance": "750.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:54",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "INDB",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "829.0",
-      "chartTimeLocal": "13:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:54",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MMCT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Indb Duronto (12227) is prepared at Mumbai Central (MMCT) around 1:40 PM, with a second (vacancy) chart around 10:54 PM. 5 of 5 stations on the MMCT to INDB route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:33:20.926Z",
-  "knownChartCount": 5
+  "summary": "Reservation chart preparation times for Indb Duronto (12227) from MMCT to INDB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-29T23:23:10.089Z",
+  "knownChartCount": 0
 }

@@ -12,11 +12,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "14:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SNSI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KPG",
@@ -25,11 +25,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "41.0",
-      "chartTimeLocal": "14:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SNSI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MMR",
@@ -38,11 +38,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": "14:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SNSI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NK",
@@ -51,11 +51,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "158.0",
-      "chartTimeLocal": "14:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SNSI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "IGP",
@@ -64,11 +64,11 @@
       "departureTime": "01:45",
       "day": 2,
       "distance": "208.0",
-      "chartTimeLocal": "14:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SNSI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KYN",
@@ -77,11 +77,11 @@
       "departureTime": "03:22",
       "day": 2,
       "distance": "292.0",
-      "chartTimeLocal": "14:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SNSI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TNA",
@@ -90,11 +90,11 @@
       "departureTime": "03:49",
       "day": 2,
       "distance": "312.0",
-      "chartTimeLocal": "14:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SNSI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DR",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "336.0",
-      "chartTimeLocal": "14:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SNSI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sainagar Dr Exp (12132) is prepared at Sainagar Shirdi (SNSI) around 2:20 PM, with a second (vacancy) chart around 9:51 PM. 8 of 8 stations on the SNSI to DR route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:20:25.136Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Sainagar Dr Exp (12132) from SNSI to DR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:28.378Z",
+  "knownChartCount": 0
 }

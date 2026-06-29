@@ -12,11 +12,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -25,14 +25,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "636.0",
-      "chartTimeLocal": "12:38",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ndls Humsafar (12275) is prepared at Prayagraj Jn. (PRYJ) around 12:38 PM, with a second (vacancy) chart around 10:15 PM. 2 of 2 stations on the PRYJ to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:37:45.602Z",
-  "knownChartCount": 2
+  "summary": "Reservation chart preparation times for Ndls Humsafar (12275) from PRYJ to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
+  "generatedAt": "2026-06-29T23:23:16.591Z",
+  "knownChartCount": 0
 }

@@ -12,11 +12,11 @@
       "departureTime": "13:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:24",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "KOP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HTK",
@@ -25,11 +25,11 @@
       "departureTime": "13:55",
       "day": 1,
       "distance": "21.0",
-      "chartTimeLocal": "20:24",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "KOP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MRJ",
@@ -38,11 +38,11 @@
       "departureTime": "14:40",
       "day": 1,
       "distance": "48.0",
-      "chartTimeLocal": "20:24",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "KOP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SLI",
@@ -51,11 +51,11 @@
       "departureTime": "14:55",
       "day": 1,
       "distance": "55.0",
-      "chartTimeLocal": "20:24",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "KOP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "STR",
@@ -64,11 +64,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": "20:24",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "KOP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PUNE",
@@ -240,7 +240,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ahemdabad Exp (11050) is prepared at C SHAHUMHARAJ T (KOP) around 8:24 PM. 5 of 18 stations on the KOP to ADI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-26T23:22:31.100Z",
-  "knownChartCount": 5
+  "summary": "Reservation chart preparation times for Ahemdabad Exp (11050) from KOP to ADI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 18 stations.",
+  "generatedAt": "2026-06-29T23:23:12.580Z",
+  "knownChartCount": 0
 }

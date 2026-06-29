@@ -12,11 +12,11 @@
       "departureTime": "12:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "22:52",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "11:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BKN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SDGH",
@@ -25,11 +25,11 @@
       "departureTime": "13:02",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": "22:52",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "11:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BKN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RTGH",
@@ -38,11 +38,11 @@
       "departureTime": "13:48",
       "day": 1,
       "distance": "138.0",
-      "chartTimeLocal": "22:52",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "11:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BKN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CUR",
@@ -51,11 +51,11 @@
       "departureTime": "14:33",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": "22:52",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "11:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BKN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SDLP",
@@ -64,11 +64,11 @@
       "departureTime": "15:18",
       "day": 1,
       "distance": "238.0",
-      "chartTimeLocal": "22:52",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "11:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BKN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LHU",
@@ -77,11 +77,11 @@
       "departureTime": "15:58",
       "day": 1,
       "distance": "288.0",
-      "chartTimeLocal": "22:52",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "11:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BKN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -90,11 +90,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "463.0",
-      "chartTimeLocal": "11:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NDLS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -103,11 +103,11 @@
       "departureTime": "00:40",
       "day": 2,
       "distance": "903.0",
-      "chartTimeLocal": "14:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:20",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DDU",
@@ -116,11 +116,11 @@
       "departureTime": "04:40",
       "day": 2,
       "distance": "1251.0",
-      "chartTimeLocal": "20:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KQR",
@@ -129,11 +129,11 @@
       "departureTime": "07:57",
       "day": 2,
       "distance": "1530.0",
-      "chartTimeLocal": "20:11",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DHN",
@@ -142,11 +142,11 @@
       "departureTime": "09:17",
       "day": 2,
       "distance": "1653.0",
-      "chartTimeLocal": "20:28",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DHN"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SDAH",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1918.0",
-      "chartTimeLocal": "20:28",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DHN"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sdah Duronto (12260) is prepared at Bikaner Jn (BKN) around 10:52 PM, with a second (vacancy) chart around 11:55 AM. 12 of 12 stations on the BKN to SDAH route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:36:26.981Z",
-  "knownChartCount": 12
+  "summary": "Reservation chart preparation times for Sdah Duronto (12260) from BKN to SDAH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
+  "generatedAt": "2026-06-29T23:23:14.443Z",
+  "knownChartCount": 0
 }

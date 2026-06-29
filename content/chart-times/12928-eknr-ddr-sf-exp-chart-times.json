@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12928",
+  "trainName": "Eknr Ddr Sf Exp",
+  "originStation": "EKNR",
+  "destinationStation": "DDR",
+  "slug": "12928-eknr-ddr-sf-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "EKNR",
+      "stationName": "Ekata Nagar Kevadiya Kdcy",
+      "arrivalTime": "",
+      "departureTime": "21:25",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "22:50",
+      "departureTime": "23:05",
+      "day": 1,
+      "distance": "84.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BH",
+      "stationName": "Bharuch Jn",
+      "arrivalTime": "23:57",
+      "departureTime": "23:59",
+      "day": 1,
+      "distance": "154.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ST",
+      "stationName": "Surat",
+      "arrivalTime": "00:58",
+      "departureTime": "01:03",
+      "day": 2,
+      "distance": "213.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BL",
+      "stationName": "Valsad",
+      "arrivalTime": "02:15",
+      "departureTime": "02:20",
+      "day": 2,
+      "distance": "281.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BVI",
+      "stationName": "Borivali",
+      "arrivalTime": "04:30",
+      "departureTime": "04:33",
+      "day": 2,
+      "distance": "445.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DDR",
+      "stationName": "Dadar",
+      "arrivalTime": "05:30",
+      "departureTime": "",
+      "day": 2,
+      "distance": "469.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Eknr Ddr Sf Exp (12928) from EKNR to DDR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-29T23:23:09.212Z",
+  "knownChartCount": 0
+}

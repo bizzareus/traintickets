@@ -12,11 +12,11 @@
       "departureTime": "12:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "22:59",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -25,11 +25,11 @@
       "departureTime": "13:31",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": "22:59",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KRJ",
@@ -38,11 +38,11 @@
       "departureTime": "14:18",
       "day": 1,
       "distance": "89.0",
-      "chartTimeLocal": "22:59",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ALJN",
@@ -51,11 +51,11 @@
       "departureTime": "14:51",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": "06:51",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:36",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ALJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HRS",
@@ -64,11 +64,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "162.0",
-      "chartTimeLocal": "06:51",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:36",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ALJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TDL",
@@ -77,11 +77,11 @@
       "departureTime": "15:57",
       "day": 1,
       "distance": "210.0",
-      "chartTimeLocal": "06:51",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:36",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ALJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "FZD",
@@ -90,11 +90,11 @@
       "departureTime": "16:15",
       "day": 1,
       "distance": "226.0",
-      "chartTimeLocal": "06:51",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:36",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ALJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SKB",
@@ -103,11 +103,11 @@
       "departureTime": "16:37",
       "day": 1,
       "distance": "246.0",
-      "chartTimeLocal": "06:51",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:36",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ALJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ETW",
@@ -116,11 +116,11 @@
       "departureTime": "17:12",
       "day": 1,
       "distance": "302.0",
-      "chartTimeLocal": "09:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:57",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ETW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BNT",
@@ -129,11 +129,11 @@
       "departureTime": "17:31",
       "day": 1,
       "distance": "322.0",
-      "chartTimeLocal": "09:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:57",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ETW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PHD",
@@ -142,11 +142,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "358.0",
-      "chartTimeLocal": "09:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:57",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ETW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JJK",
@@ -155,11 +155,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "378.0",
-      "chartTimeLocal": "09:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:57",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ETW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RURA",
@@ -168,11 +168,11 @@
       "departureTime": "18:26",
       "day": 1,
       "distance": "397.0",
-      "chartTimeLocal": "09:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:57",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ETW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNKD",
@@ -181,11 +181,11 @@
       "departureTime": "19:02",
       "day": 1,
       "distance": "430.0",
-      "chartTimeLocal": "09:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:57",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ETW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -194,11 +194,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "441.0",
-      "chartTimeLocal": "09:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:57",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ETW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ON",
@@ -207,11 +207,11 @@
       "departureTime": "20:18",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": "09:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:57",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ETW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LKO",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "515.0",
-      "chartTimeLocal": "09:12",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:57",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ETW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Gomti Express (12420) is prepared at New Delhi (NDLS) around 10:59 PM. 17 of 17 stations on the NDLS to LKO route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:01:14.915Z",
-  "knownChartCount": 17
+  "summary": "Reservation chart preparation times for Gomti Express (12420) from NDLS to LKO are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
+  "generatedAt": "2026-06-29T23:23:04.846Z",
+  "knownChartCount": 0
 }

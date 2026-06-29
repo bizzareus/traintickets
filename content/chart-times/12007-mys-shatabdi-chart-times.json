@@ -12,11 +12,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KPD",
@@ -25,11 +25,11 @@
       "departureTime": "07:30",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": "20:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SBC",
@@ -38,11 +38,11 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "362.0",
-      "chartTimeLocal": "20:59",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MYS",
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "500.0",
-      "chartTimeLocal": "20:59",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBC"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mys Shatabdi (12007) is prepared at Mgr Chennai Ctl (MAS) around 8:37 PM. 4 of 4 stations on the MAS to MYS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:09:07.450Z",
-  "knownChartCount": 4
+  "summary": "Reservation chart preparation times for Mys Shatabdi (12007) from MAS to MYS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 4 stations.",
+  "generatedAt": "2026-06-29T23:23:10.455Z",
+  "knownChartCount": 0
 }

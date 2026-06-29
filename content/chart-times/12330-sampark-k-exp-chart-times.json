@@ -12,11 +12,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "12:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GOY",
@@ -25,11 +25,11 @@
       "departureTime": "01:05",
       "day": 2,
       "distance": "424.0",
-      "chartTimeLocal": "15:08",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:50",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "GOY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DDU",
@@ -38,11 +38,11 @@
       "departureTime": "06:10",
       "day": 2,
       "distance": "773.0",
-      "chartTimeLocal": "15:08",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:50",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "GOY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GAYA",
@@ -51,11 +51,11 @@
       "departureTime": "08:40",
       "day": 2,
       "distance": "976.0",
-      "chartTimeLocal": "19:58",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "08:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "GAYA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DHN",
@@ -64,11 +64,11 @@
       "departureTime": "11:42",
       "day": 2,
       "distance": "1175.0",
-      "chartTimeLocal": "20:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "11:27",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DHN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ASN",
@@ -77,11 +77,11 @@
       "departureTime": "12:53",
       "day": 2,
       "distance": "1234.0",
-      "chartTimeLocal": "20:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "11:27",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DHN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DGR",
@@ -90,11 +90,11 @@
       "departureTime": "13:27",
       "day": 2,
       "distance": "1276.0",
-      "chartTimeLocal": "20:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "11:27",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DHN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BWN",
@@ -103,11 +103,11 @@
       "departureTime": "14:25",
       "day": 2,
       "distance": "1339.0",
-      "chartTimeLocal": "20:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "11:27",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DHN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SDAH",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1440.0",
-      "chartTimeLocal": "20:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "11:27",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DHN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sampark K Exp (12330) is prepared at Anand Vihar TRM (ANVT) around 12:21 PM, with a second (vacancy) chart around 8:05 PM. 9 of 9 stations on the ANVT to SDAH route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:48:31.015Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Sampark K Exp (12330) from ANVT to SDAH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:23.767Z",
+  "knownChartCount": 0
 }

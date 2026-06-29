@@ -12,11 +12,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SDAH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BWN",
@@ -25,11 +25,11 @@
       "departureTime": "23:27",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SDAH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BHP",
@@ -38,11 +38,11 @@
       "departureTime": "00:23",
       "day": 2,
       "distance": "153.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SDAH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MLDT",
@@ -51,11 +51,11 @@
       "departureTime": "04:15",
       "day": 2,
       "distance": "335.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SDAH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KNE",
@@ -64,11 +64,11 @@
       "departureTime": "06:17",
       "day": 2,
       "distance": "480.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SDAH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NJP",
@@ -77,11 +77,11 @@
       "departureTime": "08:05",
       "day": 2,
       "distance": "567.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SDAH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JPG",
@@ -90,11 +90,11 @@
       "departureTime": "08:47",
       "day": 2,
       "distance": "602.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SDAH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HDB",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "624.0",
-      "chartTimeLocal": "12:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SDAH"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Darjeeling Mail (12343) is prepared at Sealdah (SDAH) around 12:10 PM, with a second (vacancy) chart around 9:50 PM. 8 of 8 stations on the SDAH to HDB route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:50:53.963Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Darjeeling Mail (12343) from SDAH to HDB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:25.877Z",
+  "knownChartCount": 0
 }

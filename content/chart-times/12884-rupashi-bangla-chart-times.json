@@ -12,11 +12,11 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:25",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "PRR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ANR",
@@ -25,11 +25,11 @@
       "departureTime": "15:54",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": "07:25",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "PRR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ADRA",
@@ -38,11 +38,11 @@
       "departureTime": "16:25",
       "day": 1,
       "distance": "40.0",
-      "chartTimeLocal": "07:25",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "PRR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CJN",
@@ -51,11 +51,11 @@
       "departureTime": "16:53",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": "07:25",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "PRR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BQA",
@@ -64,11 +64,11 @@
       "departureTime": "17:06",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": "09:06",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BQA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VSU",
@@ -77,11 +77,11 @@
       "departureTime": "17:31",
       "day": 1,
       "distance": "123.0",
-      "chartTimeLocal": "09:06",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BQA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GBA",
@@ -90,11 +90,11 @@
       "departureTime": "17:52",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": "09:06",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BQA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CDGR",
@@ -103,11 +103,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "160.0",
-      "chartTimeLocal": "09:06",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BQA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SLB",
@@ -116,11 +116,11 @@
       "departureTime": "18:17",
       "day": 1,
       "distance": "171.0",
-      "chartTimeLocal": "09:06",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BQA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MDN",
@@ -129,11 +129,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "195.0",
-      "chartTimeLocal": "09:06",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:51",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BQA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KGP",
@@ -142,11 +142,11 @@
       "departureTime": "19:13",
       "day": 1,
       "distance": "218.0",
-      "chartTimeLocal": "10:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:58",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRC",
@@ -155,11 +155,11 @@
       "departureTime": "20:32",
       "day": 1,
       "distance": "326.0",
-      "chartTimeLocal": "10:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:58",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HWH",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "333.0",
-      "chartTimeLocal": "10:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:58",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KGP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Rupashi Bangla (12884) is prepared at Purulia Jn (PRR) around 7:25 AM. 13 of 13 stations on the PRR to HWH route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:21:11.755Z",
-  "knownChartCount": 13
+  "summary": "Reservation chart preparation times for Rupashi Bangla (12884) from PRR to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
+  "generatedAt": "2026-06-29T23:23:03.630Z",
+  "knownChartCount": 0
 }

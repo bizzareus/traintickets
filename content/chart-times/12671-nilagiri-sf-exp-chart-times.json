@@ -12,11 +12,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "11:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AJJ",
@@ -25,11 +25,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": "11:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KPD",
@@ -38,11 +38,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": "11:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SA",
@@ -51,11 +51,11 @@
       "departureTime": "01:50",
       "day": 2,
       "distance": "334.0",
-      "chartTimeLocal": "11:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ED",
@@ -64,11 +64,11 @@
       "departureTime": "03:00",
       "day": 2,
       "distance": "396.0",
-      "chartTimeLocal": "11:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TUP",
@@ -77,11 +77,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "446.0",
-      "chartTimeLocal": "11:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CBF",
@@ -90,11 +90,11 @@
       "departureTime": "04:30",
       "day": 2,
       "distance": "494.0",
-      "chartTimeLocal": "11:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CBE",
@@ -103,11 +103,11 @@
       "departureTime": "05:20",
       "day": 2,
       "distance": "497.0",
-      "chartTimeLocal": "11:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTP",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "532.0",
-      "chartTimeLocal": "11:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Nilagiri Sf Exp (12671) is prepared at Mgr Chennai Ctl (MAS) around 11:07 AM, with a second (vacancy) chart around 8:50 PM. 9 of 9 stations on the MAS to MTP route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T02:51:17.015Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Nilagiri Sf Exp (12671) from MAS to MTP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:06.130Z",
+  "knownChartCount": 0
 }

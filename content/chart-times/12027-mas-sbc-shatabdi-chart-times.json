@@ -12,11 +12,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KPD",
@@ -25,11 +25,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": "07:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JTJ",
@@ -38,11 +38,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": "07:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BNC",
@@ -51,11 +51,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "358.0",
-      "chartTimeLocal": "07:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SBC",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "362.0",
-      "chartTimeLocal": "07:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mas Sbc Shatabdi (12027) is prepared at Mgr Chennai Ctl (MAS) around 7:34 AM, with a second (vacancy) chart around 7:55 PM. 5 of 5 stations on the MAS to SBC route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:10:36.569Z",
-  "knownChartCount": 5
+  "summary": "Reservation chart preparation times for Mas Sbc Shatabdi (12027) from MAS to SBC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-29T23:23:13.805Z",
+  "knownChartCount": 0
 }

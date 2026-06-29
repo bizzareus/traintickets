@@ -90,11 +90,11 @@
       "departureTime": "00:10",
       "day": 3,
       "distance": "1610.0",
-      "chartTimeLocal": "11:31",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PNVL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ST",
@@ -103,11 +103,11 @@
       "departureTime": "03:00",
       "day": 3,
       "distance": "1825.0",
-      "chartTimeLocal": "11:31",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PNVL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BRC",
@@ -116,11 +116,11 @@
       "departureTime": "04:40",
       "day": 3,
       "distance": "1954.0",
-      "chartTimeLocal": "11:31",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PNVL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RTM",
@@ -129,11 +129,11 @@
       "departureTime": "08:30",
       "day": 3,
       "distance": "2215.0",
-      "chartTimeLocal": "11:31",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PNVL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KOTA",
@@ -142,11 +142,11 @@
       "departureTime": "11:50",
       "day": 3,
       "distance": "2482.0",
-      "chartTimeLocal": "11:31",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PNVL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NZM",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2939.0",
-      "chartTimeLocal": "11:31",
-      "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": "21:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PNVL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ers Nzm Duronto (12283) is prepared at Vasai Road (BSR) around 11:31 AM, with a second (vacancy) chart around 9:25 PM. 6 of 12 stations on the ERS to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-27T00:38:36.105Z",
-  "knownChartCount": 6
+  "summary": "Reservation chart preparation times for Ers Nzm Duronto (12283) from ERS to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
+  "generatedAt": "2026-06-29T23:23:17.625Z",
+  "knownChartCount": 0
 }

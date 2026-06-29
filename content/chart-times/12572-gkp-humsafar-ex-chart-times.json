@@ -12,11 +12,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "427.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LKO",
@@ -38,11 +38,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "501.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GD",
@@ -51,11 +51,11 @@
       "departureTime": "05:05",
       "day": 2,
       "distance": "617.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BLP",
@@ -64,11 +64,11 @@
       "departureTime": "05:47",
       "day": 2,
       "distance": "657.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TLR",
@@ -77,11 +77,11 @@
       "departureTime": "06:16",
       "day": 2,
       "distance": "689.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BNY",
@@ -90,11 +90,11 @@
       "departureTime": "06:54",
       "day": 2,
       "distance": "725.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SDDN",
@@ -103,11 +103,11 @@
       "departureTime": "07:26",
       "day": 2,
       "distance": "766.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ANDN",
@@ -116,11 +116,11 @@
       "departureTime": "07:55",
       "day": 2,
       "distance": "797.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GKP",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "838.0",
-      "chartTimeLocal": "12:01",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Gkp Humsafar Ex (12572) is prepared at Anand Vihar TRM (ANVT) around 12:01 PM, with a second (vacancy) chart around 7:45 PM. 10 of 10 stations on the ANVT to GKP route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:27:03.841Z",
-  "knownChartCount": 10
+  "summary": "Reservation chart preparation times for Gkp Humsafar Ex (12572) from ANVT to GKP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
+  "generatedAt": "2026-06-29T23:23:24.370Z",
+  "knownChartCount": 0
 }

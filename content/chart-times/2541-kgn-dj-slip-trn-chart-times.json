@@ -12,11 +12,11 @@
       "departureTime": "14:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "06:55",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:09",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KGN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TUNG",
@@ -25,11 +25,11 @@
       "departureTime": "15:36",
       "day": 1,
       "distance": "7.0",
-      "chartTimeLocal": "06:55",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:09",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KGN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SAD",
@@ -38,11 +38,11 @@
       "departureTime": "16:17",
       "day": 1,
       "distance": "15.0",
-      "chartTimeLocal": "06:55",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:09",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KGN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GHUM",
@@ -51,11 +51,11 @@
       "departureTime": "17:06",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": "06:55",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:09",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KGN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DJ",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": "06:55",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "14:09",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KGN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Kgn Dj Slip Trn (2541) is prepared at Kurseong (KGN) around 6:55 AM, with a second (vacancy) chart around 2:09 PM. 5 of 5 stations on the KGN to DJ route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-26T22:55:01.295Z",
-  "knownChartCount": 5
+  "summary": "Reservation chart preparation times for Kgn Dj Slip Trn (2541) from KGN to DJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-29T23:23:22.921Z",
+  "knownChartCount": 0
 }

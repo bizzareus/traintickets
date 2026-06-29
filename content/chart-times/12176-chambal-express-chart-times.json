@@ -12,11 +12,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DBA",
@@ -25,11 +25,11 @@
       "departureTime": "08:14",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DAA",
@@ -38,11 +38,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "73.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VGLJ",
@@ -51,11 +51,11 @@
       "departureTime": "09:15",
       "day": 1,
       "distance": "98.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BWR",
@@ -64,11 +64,11 @@
       "departureTime": "09:38",
       "day": 1,
       "distance": "120.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NEW",
@@ -77,11 +77,11 @@
       "departureTime": "09:51",
       "day": 1,
       "distance": "129.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MRPR",
@@ -90,11 +90,11 @@
       "departureTime": "10:18",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HPP",
@@ -103,11 +103,11 @@
       "departureTime": "10:38",
       "day": 1,
       "distance": "183.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KLAR",
@@ -116,11 +116,11 @@
       "departureTime": "11:03",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MBA",
@@ -129,11 +129,11 @@
       "departureTime": "11:25",
       "day": 1,
       "distance": "235.0",
-      "chartTimeLocal": "21:03",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BNDA",
@@ -142,11 +142,11 @@
       "departureTime": "12:40",
       "day": 1,
       "distance": "289.0",
-      "chartTimeLocal": "21:07",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BNDA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ATE",
@@ -155,11 +155,11 @@
       "departureTime": "13:07",
       "day": 1,
       "distance": "321.0",
-      "chartTimeLocal": "21:07",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BNDA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CKTD",
@@ -168,11 +168,11 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "358.0",
-      "chartTimeLocal": "21:07",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BNDA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MKP",
@@ -181,11 +181,11 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "389.0",
-      "chartTimeLocal": "21:07",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BNDA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PCOI",
@@ -409,7 +409,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Chambal Express (12176) is prepared at Gwalior (GWL) around 9:03 PM. 14 of 31 stations on the GWL to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-27T00:26:43.968Z",
-  "knownChartCount": 14
+  "summary": "Reservation chart preparation times for Chambal Express (12176) from GWL to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 31 stations.",
+  "generatedAt": "2026-06-29T23:23:03.511Z",
+  "knownChartCount": 0
 }

@@ -12,11 +12,11 @@
       "departureTime": "06:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "17:24",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KGP",
@@ -25,11 +25,11 @@
       "departureTime": "07:50",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": "17:24",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MDN",
@@ -38,11 +38,11 @@
       "departureTime": "08:26",
       "day": 1,
       "distance": "131.0",
-      "chartTimeLocal": "17:24",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SLB",
@@ -51,11 +51,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "155.0",
-      "chartTimeLocal": "17:24",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CDGR",
@@ -64,11 +64,11 @@
       "departureTime": "08:56",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": "17:24",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GBA",
@@ -77,11 +77,11 @@
       "departureTime": "09:08",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": "17:24",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VSU",
@@ -90,11 +90,11 @@
       "departureTime": "09:32",
       "day": 1,
       "distance": "203.0",
-      "chartTimeLocal": "22:25",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VSU"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BQA",
@@ -103,11 +103,11 @@
       "departureTime": "09:58",
       "day": 1,
       "distance": "233.0",
-      "chartTimeLocal": "22:25",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VSU"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CJN",
@@ -116,11 +116,11 @@
       "departureTime": "10:11",
       "day": 1,
       "distance": "247.0",
-      "chartTimeLocal": "22:25",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VSU"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ADRA",
@@ -129,11 +129,11 @@
       "departureTime": "10:50",
       "day": 1,
       "distance": "286.0",
-      "chartTimeLocal": "22:25",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VSU"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ANR",
@@ -142,11 +142,11 @@
       "departureTime": "11:10",
       "day": 1,
       "distance": "300.0",
-      "chartTimeLocal": "22:25",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VSU"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PRR",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "326.0",
-      "chartTimeLocal": "22:25",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VSU"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Rupashi Bangla (12883) is prepared at Santragachi Jn (SRC) around 5:24 PM, with a second (vacancy) chart around 6:15 AM. 12 of 12 stations on the SRC to PRR route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:21:05.139Z",
-  "knownChartCount": 12
+  "summary": "Reservation chart preparation times for Rupashi Bangla (12883) from SRC to PRR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
+  "generatedAt": "2026-06-29T23:23:03.626Z",
+  "knownChartCount": 0
 }

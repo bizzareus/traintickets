@@ -12,11 +12,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "11:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LUNI",
@@ -25,11 +25,11 @@
       "departureTime": "20:12",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": "11:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PMY",
@@ -38,11 +38,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": "11:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MJ",
@@ -51,11 +51,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "104.0",
-      "chartTimeLocal": "11:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RANI",
@@ -64,11 +64,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "156.0",
-      "chartTimeLocal": "11:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "FA",
@@ -77,11 +77,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": "11:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SJWB",
@@ -90,11 +90,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "186.0",
-      "chartTimeLocal": "11:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PDWA",
@@ -103,11 +103,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "225.0",
-      "chartTimeLocal": "11:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ABR",
@@ -116,11 +116,11 @@
       "departureTime": "00:15",
       "day": 2,
       "distance": "269.0",
-      "chartTimeLocal": "16:16",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ABR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNU",
@@ -129,11 +129,11 @@
       "departureTime": "01:07",
       "day": 2,
       "distance": "322.0",
-      "chartTimeLocal": "16:16",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ABR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MSH",
@@ -142,11 +142,11 @@
       "departureTime": "01:57",
       "day": 2,
       "distance": "387.0",
-      "chartTimeLocal": "16:16",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ABR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ADI",
@@ -155,11 +155,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "456.0",
-      "chartTimeLocal": "17:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ADI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BRC",
@@ -168,11 +168,11 @@
       "departureTime": "05:28",
       "day": 2,
       "distance": "555.0",
-      "chartTimeLocal": "17:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ADI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ST",
@@ -181,11 +181,11 @@
       "departureTime": "07:27",
       "day": 2,
       "distance": "684.0",
-      "chartTimeLocal": "19:40",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ST"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VAPI",
@@ -194,11 +194,11 @@
       "departureTime": "08:40",
       "day": 2,
       "distance": "777.0",
-      "chartTimeLocal": "19:40",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ST"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BVI",
@@ -207,11 +207,11 @@
       "departureTime": "10:45",
       "day": 2,
       "distance": "917.0",
-      "chartTimeLocal": "19:40",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ST"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BDTS",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "936.0",
-      "chartTimeLocal": "19:40",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ST"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Surya Nagari Exp (12479) is prepared at Jodhpur Jn (JU) around 11:40 AM, with a second (vacancy) chart around 7:25 PM. 17 of 17 stations on the JU to BDTS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:09:52.906Z",
-  "knownChartCount": 17
+  "summary": "Reservation chart preparation times for Surya Nagari Exp (12479) from JU to BDTS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
+  "generatedAt": "2026-06-29T23:23:12.500Z",
+  "knownChartCount": 0
 }

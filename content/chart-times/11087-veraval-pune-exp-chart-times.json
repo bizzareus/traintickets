@@ -12,11 +12,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:06",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VRL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KSD",
@@ -25,11 +25,11 @@
       "departureTime": "12:03",
       "day": 1,
       "distance": "47.0",
-      "chartTimeLocal": "20:06",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VRL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JND",
@@ -38,11 +38,11 @@
       "departureTime": "12:37",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": "20:06",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VRL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NUD",
@@ -51,11 +51,11 @@
       "departureTime": "13:13",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": "20:06",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VRL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GDL",
@@ -64,11 +64,11 @@
       "departureTime": "13:39",
       "day": 1,
       "distance": "144.0",
-      "chartTimeLocal": "20:06",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "VRL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RJT",
@@ -77,11 +77,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "185.0",
-      "chartTimeLocal": "20:09",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RJT"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "WKR",
@@ -90,11 +90,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "227.0",
-      "chartTimeLocal": "20:09",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RJT"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SUNR",
@@ -103,11 +103,11 @@
       "departureTime": "16:54",
       "day": 1,
       "distance": "301.0",
-      "chartTimeLocal": "20:09",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RJT"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VG",
@@ -116,11 +116,11 @@
       "departureTime": "18:27",
       "day": 1,
       "distance": "367.0",
-      "chartTimeLocal": "20:09",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RJT"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ADI",
@@ -344,7 +344,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Veraval Pune Exp (11087) is prepared at Veraval (VRL) around 8:06 PM. 9 of 26 stations on the VRL to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-26T23:38:53.028Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Veraval Pune Exp (11087) from VRL to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 26 stations.",
+  "generatedAt": "2026-06-29T23:23:17.226Z",
+  "knownChartCount": 0
 }

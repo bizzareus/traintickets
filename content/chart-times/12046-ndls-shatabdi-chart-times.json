@@ -12,11 +12,11 @@
       "departureTime": "12:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:09",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CDG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UMB",
@@ -25,11 +25,11 @@
       "departureTime": "12:47",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": "20:28",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "UMB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KUN",
@@ -38,11 +38,11 @@
       "departureTime": "13:37",
       "day": 1,
       "distance": "143.0",
-      "chartTimeLocal": "23:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "KUN"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "266.0",
-      "chartTimeLocal": "23:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "KUN"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ndls Shatabdi (12046) is prepared at Chandigarh (CDG) around 8:09 PM. 4 of 4 stations on the CDG to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:11:57.218Z",
-  "knownChartCount": 4
+  "summary": "Reservation chart preparation times for Ndls Shatabdi (12046) from CDG to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 4 stations.",
+  "generatedAt": "2026-06-29T23:23:15.938Z",
+  "knownChartCount": 0
 }

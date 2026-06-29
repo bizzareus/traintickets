@@ -12,11 +12,11 @@
       "departureTime": "06:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SBC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BNC",
@@ -25,11 +25,11 @@
       "departureTime": "06:37",
       "day": 1,
       "distance": "5.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SBC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KJM",
@@ -38,11 +38,11 @@
       "departureTime": "06:51",
       "day": 1,
       "distance": "15.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SBC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BWT",
@@ -51,11 +51,11 @@
       "departureTime": "07:30",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SBC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KPN",
@@ -64,11 +64,11 @@
       "departureTime": "07:55",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SBC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JTJ",
@@ -77,11 +77,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "149.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SBC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AB",
@@ -90,11 +90,11 @@
       "departureTime": "09:07",
       "day": 1,
       "distance": "180.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SBC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KPD",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": "20:16",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SBC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Lalbagh Sf Exp (12608) is prepared at KSR Bengaluru (SBC) around 8:16 PM, with a second (vacancy) chart around 6:10 AM. 8 of 8 stations on the SBC to KPD route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:31:03.759Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Lalbagh Sf Exp (12608) from SBC to KPD are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:28.660Z",
+  "knownChartCount": 0
 }

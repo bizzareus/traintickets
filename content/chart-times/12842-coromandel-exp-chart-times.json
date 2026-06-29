@@ -12,11 +12,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "OGL",
@@ -25,11 +25,11 @@
       "departureTime": "11:00",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": "21:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "06:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BZA",
@@ -38,11 +38,11 @@
       "departureTime": "13:15",
       "day": 1,
       "distance": "431.0",
-      "chartTimeLocal": "21:36",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BZA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "EE",
@@ -51,11 +51,11 @@
       "departureTime": "14:10",
       "day": 1,
       "distance": "490.0",
-      "chartTimeLocal": "21:36",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BZA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TDD",
@@ -64,11 +64,11 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "538.0",
-      "chartTimeLocal": "21:36",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BZA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RJY",
@@ -77,11 +77,11 @@
       "departureTime": "15:40",
       "day": 1,
       "distance": "580.0",
-      "chartTimeLocal": "21:36",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BZA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VSKP",
@@ -90,11 +90,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "780.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BAM",
@@ -103,11 +103,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "1057.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KUR",
@@ -116,11 +116,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "1204.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BBS",
@@ -129,11 +129,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "1223.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CTC",
@@ -142,11 +142,11 @@
       "departureTime": "02:35",
       "day": 2,
       "distance": "1250.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JJKR",
@@ -155,11 +155,11 @@
       "departureTime": "03:25",
       "day": 2,
       "distance": "1322.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BHC",
@@ -168,11 +168,11 @@
       "departureTime": "05:12",
       "day": 2,
       "distance": "1366.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BLS",
@@ -181,11 +181,11 @@
       "departureTime": "05:53",
       "day": 2,
       "distance": "1428.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KGP",
@@ -194,11 +194,11 @@
       "departureTime": "07:40",
       "day": 2,
       "distance": "1546.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRC",
@@ -207,11 +207,11 @@
       "departureTime": "09:50",
       "day": 2,
       "distance": "1654.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HWH",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1662.0",
-      "chartTimeLocal": "09:32",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Coromandel Exp (12842) is prepared at Mgr Chennai Ctl (MAS) around 9:01 PM, with a second (vacancy) chart around 6:45 AM. 17 of 17 stations on the MAS to HWH route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:14:14.333Z",
-  "knownChartCount": 17
+  "summary": "Reservation chart preparation times for Coromandel Exp (12842) from MAS to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
+  "generatedAt": "2026-06-29T23:23:28.680Z",
+  "knownChartCount": 0
 }

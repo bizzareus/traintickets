@@ -12,11 +12,11 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:30",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HW",
@@ -25,11 +25,11 @@
       "departureTime": "17:32",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": "07:49",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:17",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NBD",
@@ -38,11 +38,11 @@
       "departureTime": "18:34",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": "07:49",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:17",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HW"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MB",
@@ -51,11 +51,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "219.0",
-      "chartTimeLocal": "11:22",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RMU",
@@ -64,11 +64,11 @@
       "departureTime": "21:13",
       "day": 1,
       "distance": "246.0",
-      "chartTimeLocal": "11:22",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BLQR",
@@ -77,11 +77,11 @@
       "departureTime": "21:33",
       "day": 1,
       "distance": "273.0",
-      "chartTimeLocal": "11:22",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RUPC",
@@ -90,11 +90,11 @@
       "departureTime": "21:52",
       "day": 1,
       "distance": "291.0",
-      "chartTimeLocal": "11:22",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LKU",
@@ -103,11 +103,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "313.0",
-      "chartTimeLocal": "11:22",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HDW",
@@ -116,11 +116,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "329.0",
-      "chartTimeLocal": "11:22",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KGM",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "336.0",
-      "chartTimeLocal": "11:22",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Janshatabdi Exp (12091) is prepared at Dehradun (DDN) around 7:30 AM, with a second (vacancy) chart around 11 PM. 10 of 10 stations on the DDN to KGM route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:16:43.441Z",
-  "knownChartCount": 10
+  "summary": "Reservation chart preparation times for Janshatabdi Exp (12091) from DDN to KGM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
+  "generatedAt": "2026-06-29T23:23:23.127Z",
+  "knownChartCount": 0
 }

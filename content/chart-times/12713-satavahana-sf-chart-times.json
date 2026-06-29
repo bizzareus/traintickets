@@ -12,11 +12,11 @@
       "departureTime": "06:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MDR",
@@ -25,11 +25,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "56.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KMT",
@@ -38,11 +38,11 @@
       "departureTime": "07:50",
       "day": 1,
       "distance": "100.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DKJ",
@@ -51,11 +51,11 @@
       "departureTime": "08:10",
       "day": 1,
       "distance": "123.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MABD",
@@ -64,11 +64,11 @@
       "departureTime": "08:30",
       "day": 1,
       "distance": "147.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KDM",
@@ -77,11 +77,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "163.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "WL",
@@ -90,11 +90,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "208.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KZJ",
@@ -103,11 +103,11 @@
       "departureTime": "09:50",
       "day": 1,
       "distance": "218.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ZN",
@@ -116,11 +116,11 @@
       "departureTime": "10:40",
       "day": 1,
       "distance": "266.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CHZ",
@@ -129,11 +129,11 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "337.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SC",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "350.0",
-      "chartTimeLocal": "20:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BZA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Satavahana Sf (12713) is prepared at Vijayawada Jn (BZA) around 8:01 PM, with a second (vacancy) chart around 7:35 AM. 11 of 11 stations on the BZA to SC route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T02:56:21.497Z",
-  "knownChartCount": 11
+  "summary": "Reservation chart preparation times for Satavahana Sf (12713) from BZA to SC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
+  "generatedAt": "2026-06-29T23:23:11.486Z",
+  "knownChartCount": 0
 }

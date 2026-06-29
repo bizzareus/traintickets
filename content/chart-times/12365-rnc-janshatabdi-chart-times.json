@@ -12,11 +12,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PNBE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TEA",
@@ -25,11 +25,11 @@
       "departureTime": "06:37",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": "21:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PNBE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JHD",
@@ -38,11 +38,11 @@
       "departureTime": "06:52",
       "day": 1,
       "distance": "45.0",
-      "chartTimeLocal": "21:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PNBE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GAYA",
@@ -51,11 +51,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": "21:46",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GAYA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PRP",
@@ -64,11 +64,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "125.0",
-      "chartTimeLocal": "21:46",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GAYA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KQR",
@@ -77,11 +77,11 @@
       "departureTime": "09:17",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": "21:46",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GAYA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HZD",
@@ -90,11 +90,11 @@
       "departureTime": "09:46",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": "21:46",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GAYA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNME",
@@ -103,11 +103,11 @@
       "departureTime": "10:07",
       "day": 1,
       "distance": "244.0",
-      "chartTimeLocal": "21:46",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GAYA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GMO",
@@ -116,11 +116,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "262.0",
-      "chartTimeLocal": "21:46",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GAYA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CRP",
@@ -129,11 +129,11 @@
       "departureTime": "10:52",
       "day": 1,
       "distance": "279.0",
-      "chartTimeLocal": "21:46",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GAYA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BKSC",
@@ -142,11 +142,11 @@
       "departureTime": "11:30",
       "day": 1,
       "distance": "294.0",
-      "chartTimeLocal": "22:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BKSC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MURI",
@@ -155,11 +155,11 @@
       "departureTime": "12:20",
       "day": 1,
       "distance": "346.0",
-      "chartTimeLocal": "22:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BKSC"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RNC",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "411.0",
-      "chartTimeLocal": "22:45",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BKSC"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Rnc Janshatabdi (12365) is prepared at Patna Jn (PNBE) around 9:25 PM, with a second (vacancy) chart around 5:55 AM. 13 of 13 stations on the PNBE to RNC route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:54:18.126Z",
-  "knownChartCount": 13
+  "summary": "Reservation chart preparation times for Rnc Janshatabdi (12365) from PNBE to RNC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
+  "generatedAt": "2026-06-29T23:23:28.018Z",
+  "knownChartCount": 0
 }

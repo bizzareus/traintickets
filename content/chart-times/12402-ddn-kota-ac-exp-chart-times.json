@@ -12,11 +12,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "12:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HW",
@@ -25,11 +25,11 @@
       "departureTime": "00:14",
       "day": 2,
       "distance": "52.0",
-      "chartTimeLocal": "12:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RK",
@@ -38,11 +38,11 @@
       "departureTime": "00:54",
       "day": 2,
       "distance": "93.0",
-      "chartTimeLocal": "12:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MOZ",
@@ -51,11 +51,11 @@
       "departureTime": "02:13",
       "day": 2,
       "distance": "177.0",
-      "chartTimeLocal": "12:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTC",
@@ -64,11 +64,11 @@
       "departureTime": "02:55",
       "day": 2,
       "distance": "232.0",
-      "chartTimeLocal": "12:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -77,11 +77,11 @@
       "departureTime": "03:49",
       "day": 2,
       "distance": "280.0",
-      "chartTimeLocal": "12:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NZM",
@@ -90,11 +90,11 @@
       "departureTime": "04:45",
       "day": 2,
       "distance": "302.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTJ",
@@ -103,11 +103,11 @@
       "departureTime": "06:20",
       "day": 2,
       "distance": "436.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BTE",
@@ -116,11 +116,11 @@
       "departureTime": "06:45",
       "day": 2,
       "distance": "469.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BXN",
@@ -129,11 +129,11 @@
       "departureTime": "07:10",
       "day": 2,
       "distance": "511.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HAN",
@@ -142,11 +142,11 @@
       "departureTime": "07:33",
       "day": 2,
       "distance": "544.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GGC",
@@ -155,11 +155,11 @@
       "departureTime": "08:05",
       "day": 2,
       "distance": "588.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SWM",
@@ -168,11 +168,11 @@
       "departureTime": "08:45",
       "day": 2,
       "distance": "652.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KOTA",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "760.0",
-      "chartTimeLocal": "20:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ddn Kota Ac Exp (12402) is prepared at Dehradun (DDN) around 12:46 PM, with a second (vacancy) chart around 10:30 PM. 14 of 14 stations on the DDN to KOTA route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:59:08.104Z",
-  "knownChartCount": 14
+  "summary": "Reservation chart preparation times for Ddn Kota Ac Exp (12402) from DDN to KOTA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
+  "generatedAt": "2026-06-29T23:23:01.802Z",
+  "knownChartCount": 0
 }

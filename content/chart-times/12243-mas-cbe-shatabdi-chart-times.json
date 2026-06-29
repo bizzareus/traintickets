@@ -12,11 +12,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:43",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KPD",
@@ -25,11 +25,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": "20:43",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JTJ",
@@ -38,11 +38,11 @@
       "departureTime": "09:55",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": "20:43",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SA",
@@ -51,11 +51,11 @@
       "departureTime": "11:20",
       "day": 1,
       "distance": "334.0",
-      "chartTimeLocal": "20:44",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ED",
@@ -64,11 +64,11 @@
       "departureTime": "12:20",
       "day": 1,
       "distance": "396.0",
-      "chartTimeLocal": "20:44",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TUP",
@@ -77,11 +77,11 @@
       "departureTime": "13:05",
       "day": 1,
       "distance": "446.0",
-      "chartTimeLocal": "20:44",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SA"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CBE",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "497.0",
-      "chartTimeLocal": "20:44",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SA"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mas Cbe Shatabdi (12243) is prepared at Mgr Chennai Ctl (MAS) around 8:43 PM. 7 of 7 stations on the MAS to CBE route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:34:49.106Z",
-  "knownChartCount": 7
+  "summary": "Reservation chart preparation times for Mas Cbe Shatabdi (12243) from MAS to CBE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-29T23:23:12.125Z",
+  "knownChartCount": 0
 }

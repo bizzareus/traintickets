@@ -12,11 +12,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:59",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ANVT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "13:45",
       "day": 1,
       "distance": "428.0",
-      "chartTimeLocal": "22:03",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "13:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DDU",
@@ -38,11 +38,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "775.0",
-      "chartTimeLocal": "11:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GMO",
@@ -51,11 +51,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "1148.0",
-      "chartTimeLocal": "11:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TATA",
@@ -64,11 +64,11 @@
       "departureTime": "04:10",
       "day": 2,
       "distance": "1330.0",
-      "chartTimeLocal": "18:04",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HIJ",
@@ -77,11 +77,11 @@
       "departureTime": "06:25",
       "day": 2,
       "distance": "1464.0",
-      "chartTimeLocal": "18:04",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JER",
@@ -90,11 +90,11 @@
       "departureTime": "07:15",
       "day": 2,
       "distance": "1529.0",
-      "chartTimeLocal": "18:04",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BLS",
@@ -103,11 +103,11 @@
       "departureTime": "07:55",
       "day": 2,
       "distance": "1576.0",
-      "chartTimeLocal": "18:04",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SORO",
@@ -116,11 +116,11 @@
       "departureTime": "08:29",
       "day": 2,
       "distance": "1610.0",
-      "chartTimeLocal": "18:04",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BHC",
@@ -129,11 +129,11 @@
       "departureTime": "09:12",
       "day": 2,
       "distance": "1639.0",
-      "chartTimeLocal": "18:04",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JJKR",
@@ -142,11 +142,11 @@
       "departureTime": "09:35",
       "day": 2,
       "distance": "1682.0",
-      "chartTimeLocal": "18:04",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CTC",
@@ -155,11 +155,11 @@
       "departureTime": "11:05",
       "day": 2,
       "distance": "1754.0",
-      "chartTimeLocal": "18:04",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BBS",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1782.0",
-      "chartTimeLocal": "18:04",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:55",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "TATA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Bbs S Kranti Exp (12820) is prepared at Anand Vihar TRM (ANVT) around 9:59 PM, with a second (vacancy) chart around 7:45 AM. 13 of 13 stations on the ANVT to BBS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:11:20.276Z",
-  "knownChartCount": 13
+  "summary": "Reservation chart preparation times for Bbs S Kranti Exp (12820) from ANVT to BBS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
+  "generatedAt": "2026-06-29T23:23:26.595Z",
+  "knownChartCount": 0
 }

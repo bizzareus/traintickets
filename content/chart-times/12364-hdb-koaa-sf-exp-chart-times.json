@@ -12,11 +12,11 @@
       "departureTime": "08:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "HDB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JPG",
@@ -25,11 +25,11 @@
       "departureTime": "08:47",
       "day": 1,
       "distance": "22.0",
-      "chartTimeLocal": "20:27",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:32",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JPG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NJP",
@@ -38,11 +38,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": "20:27",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:32",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JPG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KNE",
@@ -51,11 +51,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "145.0",
-      "chartTimeLocal": "20:27",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:32",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JPG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HCR",
@@ -64,11 +64,11 @@
       "departureTime": "11:45",
       "day": 1,
       "distance": "235.0",
-      "chartTimeLocal": "20:27",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "08:32",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "JPG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MLDT",
@@ -77,11 +77,11 @@
       "departureTime": "13:25",
       "day": 1,
       "distance": "290.0",
-      "chartTimeLocal": "23:05",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "13:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MLDT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PKR",
@@ -90,11 +90,11 @@
       "departureTime": "14:39",
       "day": 1,
       "distance": "358.0",
-      "chartTimeLocal": "23:05",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "13:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MLDT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RPH",
@@ -103,11 +103,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "411.0",
-      "chartTimeLocal": "23:05",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "13:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MLDT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BHP",
@@ -116,11 +116,11 @@
       "departureTime": "16:13",
       "day": 1,
       "distance": "472.0",
-      "chartTimeLocal": "23:05",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "13:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MLDT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BWN",
@@ -129,11 +129,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "523.0",
-      "chartTimeLocal": "23:05",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "13:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MLDT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KOAA",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "620.0",
-      "chartTimeLocal": "23:05",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "13:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MLDT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Hdb Koaa Sf Exp (12364) is prepared at Haldibari (HDB) around 8:25 PM, with a second (vacancy) chart around 8:10 AM. 11 of 11 stations on the HDB to KOAA route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:54:13.027Z",
-  "knownChartCount": 11
+  "summary": "Reservation chart preparation times for Hdb Koaa Sf Exp (12364) from HDB to KOAA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
+  "generatedAt": "2026-06-29T23:23:28.011Z",
+  "knownChartCount": 0
 }

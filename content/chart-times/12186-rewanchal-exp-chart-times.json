@@ -12,11 +12,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "09:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "REWA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "STA",
@@ -25,11 +25,11 @@
       "departureTime": "20:45",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": "09:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "REWA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UHR",
@@ -38,11 +38,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": "09:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "REWA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MYR",
@@ -51,11 +51,11 @@
       "departureTime": "21:22",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": "09:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "REWA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UDR",
@@ -64,11 +64,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "111.0",
-      "chartTimeLocal": "09:40",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "REWA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KMZ",
@@ -77,11 +77,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "150.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DMO",
@@ -90,11 +90,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "259.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PHA",
@@ -103,11 +103,11 @@
       "departureTime": "00:20",
       "day": 2,
       "distance": "285.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SGO",
@@ -116,11 +116,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "336.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KYE",
@@ -129,11 +129,11 @@
       "departureTime": "01:50",
       "day": 2,
       "distance": "389.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BINA",
@@ -142,11 +142,11 @@
       "departureTime": "02:55",
       "day": 2,
       "distance": "411.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MABA",
@@ -155,11 +155,11 @@
       "departureTime": "03:15",
       "day": 2,
       "distance": "428.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BAQ",
@@ -168,11 +168,11 @@
       "departureTime": "03:36",
       "day": 2,
       "distance": "456.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BHS",
@@ -181,11 +181,11 @@
       "departureTime": "04:03",
       "day": 2,
       "distance": "496.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BPL",
@@ -194,11 +194,11 @@
       "departureTime": "05:00",
       "day": 2,
       "distance": "549.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RKMP",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "555.0",
-      "chartTimeLocal": "12:27",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KMZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Rewanchal Exp (12186) is prepared at Rewa (REWA) around 9:40 AM, with a second (vacancy) chart around 7:35 PM. 16 of 16 stations on the REWA to RKMP route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:28:08.596Z",
-  "knownChartCount": 16
+  "summary": "Reservation chart preparation times for Rewanchal Exp (12186) from REWA to RKMP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
+  "generatedAt": "2026-06-29T23:23:04.784Z",
+  "knownChartCount": 0
 }

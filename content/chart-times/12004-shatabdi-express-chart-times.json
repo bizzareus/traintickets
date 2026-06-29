@@ -12,11 +12,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -25,11 +25,11 @@
       "departureTime": "06:42",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": "21:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ALJN",
@@ -38,11 +38,11 @@
       "departureTime": "07:49",
       "day": 1,
       "distance": "129.0",
-      "chartTimeLocal": "21:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TDL",
@@ -51,11 +51,11 @@
       "departureTime": "08:47",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": "21:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ETW",
@@ -64,11 +64,11 @@
       "departureTime": "09:42",
       "day": 1,
       "distance": "299.0",
-      "chartTimeLocal": "21:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PHD",
@@ -77,11 +77,11 @@
       "departureTime": "10:15",
       "day": 1,
       "distance": "355.0",
-      "chartTimeLocal": "21:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -90,11 +90,11 @@
       "departureTime": "11:28",
       "day": 1,
       "distance": "439.0",
-      "chartTimeLocal": "21:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ON",
@@ -103,11 +103,11 @@
       "departureTime": "11:56",
       "day": 1,
       "distance": "456.0",
-      "chartTimeLocal": "21:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LJN",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "512.0",
-      "chartTimeLocal": "21:27",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Shatabdi Express (12004) is prepared at New Delhi (NDLS) around 9:27 PM. 9 of 9 stations on the NDLS to LJN route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:08:54.492Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Shatabdi Express (12004) from NDLS to LJN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:10.451Z",
+  "knownChartCount": 0
 }

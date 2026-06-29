@@ -12,11 +12,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "11:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CHZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SC",
@@ -25,11 +25,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": "11:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CHZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BMT",
@@ -38,11 +38,11 @@
       "departureTime": "20:32",
       "day": 1,
       "distance": "17.0",
-      "chartTimeLocal": "11:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CHZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LPI",
@@ -51,11 +51,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "35.0",
-      "chartTimeLocal": "11:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CHZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CT",
@@ -64,11 +64,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": "11:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CHZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "YG",
@@ -77,11 +77,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "233.0",
-      "chartTimeLocal": "11:19",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CHZ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RC",
@@ -90,11 +90,11 @@
       "departureTime": "00:45",
       "day": 2,
       "distance": "302.0",
-      "chartTimeLocal": "15:55",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "RC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GTL",
@@ -103,11 +103,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "423.0",
-      "chartTimeLocal": "17:24",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "02:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "GTL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ATP",
@@ -116,11 +116,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "491.0",
-      "chartTimeLocal": "19:33",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DMM",
@@ -129,11 +129,11 @@
       "departureTime": "04:45",
       "day": 2,
       "distance": "524.0",
-      "chartTimeLocal": "19:33",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SSPN",
@@ -142,11 +142,11 @@
       "departureTime": "05:15",
       "day": 2,
       "distance": "557.0",
-      "chartTimeLocal": "19:33",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HUP",
@@ -155,11 +155,11 @@
       "departureTime": "06:00",
       "day": 2,
       "distance": "615.0",
-      "chartTimeLocal": "19:33",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "YPR",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "710.0",
-      "chartTimeLocal": "19:33",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "03:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ATP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Garibrath Exp (12735) is prepared at Charlapalli (CHZ) around 11:19 AM, with a second (vacancy) chart around 7:30 PM. 13 of 13 stations on the CHZ to YPR route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T02:59:06.320Z",
-  "knownChartCount": 13
+  "summary": "Reservation chart preparation times for Garibrath Exp (12735) from CHZ to YPR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
+  "generatedAt": "2026-06-29T23:23:13.768Z",
+  "knownChartCount": 0
 }

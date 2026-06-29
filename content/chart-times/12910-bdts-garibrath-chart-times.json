@@ -12,11 +12,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "08:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTJ",
@@ -25,11 +25,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": "08:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NZM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KOTA",
@@ -38,11 +38,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": "11:06",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:52",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KOTA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RTM",
@@ -51,11 +51,11 @@
       "departureTime": "00:18",
       "day": 2,
       "distance": "724.0",
-      "chartTimeLocal": "14:17",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RTM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BRC",
@@ -64,11 +64,11 @@
       "departureTime": "04:05",
       "day": 2,
       "distance": "986.0",
-      "chartTimeLocal": "14:17",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "23:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RTM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ST",
@@ -77,11 +77,11 @@
       "departureTime": "05:42",
       "day": 2,
       "distance": "1115.0",
-      "chartTimeLocal": "19:41",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "05:27",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ST"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BVI",
@@ -90,11 +90,11 @@
       "departureTime": "08:25",
       "day": 2,
       "distance": "1347.0",
-      "chartTimeLocal": "19:41",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "05:27",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ST"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BDTS",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1366.0",
-      "chartTimeLocal": "19:41",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "05:27",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ST"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Bdts Garibrath (12910) is prepared at H Nizamuddin (NZM) around 8:31 AM, with a second (vacancy) chart around 4:15 PM. 8 of 8 stations on the NZM to BDTS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:24:31.307Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Bdts Garibrath (12910) from NZM to BDTS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:07.125Z",
+  "knownChartCount": 0
 }

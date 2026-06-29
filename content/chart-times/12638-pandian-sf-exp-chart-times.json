@@ -12,11 +12,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KQN",
@@ -25,11 +25,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "41.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ABI",
@@ -38,11 +38,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "55.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DG",
@@ -51,11 +51,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "66.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MPA",
@@ -64,11 +64,11 @@
       "departureTime": "23:05",
       "day": 1,
       "distance": "124.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TPJ",
@@ -77,11 +77,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VRI",
@@ -90,11 +90,11 @@
       "departureTime": "01:16",
       "day": 2,
       "distance": "284.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VM",
@@ -103,11 +103,11 @@
       "departureTime": "02:20",
       "day": 2,
       "distance": "338.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CGL",
@@ -116,11 +116,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "441.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TBM",
@@ -129,11 +129,11 @@
       "departureTime": "04:15",
       "day": 2,
       "distance": "472.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MBM",
@@ -142,11 +142,11 @@
       "departureTime": "04:35",
       "day": 2,
       "distance": "490.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MS",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "497.0",
-      "chartTimeLocal": "11:23",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:15",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "MDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Pandian Sf Exp (12638) is prepared at Madurai Jn (MDU) around 11:23 AM, with a second (vacancy) chart around 10:15 PM. 12 of 12 stations on the MDU to MS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T02:45:41.733Z",
-  "knownChartCount": 12
+  "summary": "Reservation chart preparation times for Pandian Sf Exp (12638) from MDU to MS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
+  "generatedAt": "2026-06-29T23:23:00.483Z",
+  "knownChartCount": 0
 }

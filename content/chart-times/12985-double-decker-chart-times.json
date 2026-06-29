@@ -1,0 +1,103 @@
+{
+  "trainNumber": "12985",
+  "trainName": "Double Decker",
+  "originStation": "JP",
+  "destinationStation": "DEE",
+  "slug": "12985-double-decker-chart-times",
+  "stations": [
+    {
+      "stationCode": "JP",
+      "stationName": "Jaipur",
+      "arrivalTime": "",
+      "departureTime": "05:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "GADJ",
+      "stationName": "Gandhinagar Jpr",
+      "arrivalTime": "05:52",
+      "departureTime": "05:55",
+      "day": 1,
+      "distance": "6.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DO",
+      "stationName": "Dausa",
+      "arrivalTime": "06:35",
+      "departureTime": "06:37",
+      "day": 1,
+      "distance": "62.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "AWR",
+      "stationName": "Alwar",
+      "arrivalTime": "07:38",
+      "departureTime": "07:41",
+      "day": 1,
+      "distance": "151.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "GGN",
+      "stationName": "Gurgaon",
+      "arrivalTime": "09:36",
+      "departureTime": "09:38",
+      "day": 1,
+      "distance": "277.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DEC",
+      "stationName": "Delhi Cantt",
+      "arrivalTime": "09:53",
+      "departureTime": "09:55",
+      "day": 1,
+      "distance": "294.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DEE",
+      "stationName": "Delhi S Rohilla",
+      "arrivalTime": "10:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "303.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Double Decker (12985) from JP to DEE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-29T23:23:16.975Z",
+  "knownChartCount": 0
+}

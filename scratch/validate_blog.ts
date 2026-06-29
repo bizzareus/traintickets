@@ -51,16 +51,16 @@ async function validateBlog(filePath: string) {
 
   try {
     console.log("Navigating to QuillBot AI Content Detector...");
-    await page.goto("https://quillbot.com/ai-content-detector", { waitUntil: "networkidle", timeout: 45000 });
+    await page.goto("https://quillbot.com/ai-content-detector", { waitUntil: "domcontentloaded", timeout: 30000 });
     
-    // Accept cookies or remove cookie banner if present
-    await page.evaluate(() => {
-      document.getElementById("onetrust-consent-sdk")?.remove();
-      const darkFilter = document.querySelector(".onetrust-pc-dark-filter");
-      darkFilter?.remove();
-      const banner = document.querySelector(".ot-sdk-container");
-      banner?.remove();
+    // Wait for the body or editor to start loading
+    await page.waitForSelector("[contenteditable='true']", { timeout: 15000 }).catch(() => {});
+    
+    // Hide cookie banner and overlay via CSS injection
+    await page.addStyleTag({
+      content: '#onetrust-consent-sdk, .onetrust-pc-dark-filter, .ot-sdk-container { display: none !important; pointer-events: none !important; }'
     });
+    console.log("Injected CSS to hide cookie banner and overlay");
     console.log("Removed cookie banner and overlay");
 
     const editor = page.locator("[contenteditable='true']");

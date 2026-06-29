@@ -12,11 +12,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "IGU",
@@ -25,11 +25,11 @@
       "departureTime": "07:35",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TUP",
@@ -38,11 +38,11 @@
       "departureTime": "07:55",
       "day": 1,
       "distance": "51.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ED",
@@ -51,11 +51,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KRR",
@@ -64,11 +64,11 @@
       "departureTime": "09:35",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TPJ",
@@ -77,11 +77,11 @@
       "departureTime": "11:10",
       "day": 1,
       "distance": "242.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TJ",
@@ -90,11 +90,11 @@
       "departureTime": "12:04",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PML",
@@ -103,11 +103,11 @@
       "departureTime": "12:25",
       "day": 1,
       "distance": "317.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KMU",
@@ -116,11 +116,11 @@
       "departureTime": "12:38",
       "day": 1,
       "distance": "331.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MV",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "362.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "CBE"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mv Jan Shatabdi (12084) is prepared at Coimbatore Jn (CBE) around 7:56 PM. 10 of 10 stations on the CBE to MV route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:15:50.555Z",
-  "knownChartCount": 10
+  "summary": "Reservation chart preparation times for Mv Jan Shatabdi (12084) from CBE to MV are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
+  "generatedAt": "2026-06-29T23:23:22.027Z",
+  "knownChartCount": 0
 }

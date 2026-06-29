@@ -155,11 +155,11 @@
       "departureTime": "00:15",
       "day": 3,
       "distance": "2303.0",
-      "chartTimeLocal": "20:28",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "JBP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DDU",
@@ -168,11 +168,11 @@
       "departureTime": "04:18",
       "day": 3,
       "distance": "2446.0",
-      "chartTimeLocal": "20:28",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "JBP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ARA",
@@ -181,11 +181,11 @@
       "departureTime": "06:55",
       "day": 3,
       "distance": "2609.0",
-      "chartTimeLocal": "20:28",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "JBP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DNR",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2648.0",
-      "chartTimeLocal": "20:28",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "JBP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sbcdnr Humsafar (6509) is prepared at Prayagrajcheoki (PCOI) around 8:28 PM, with a second (vacancy) chart around 4:35 PM. 4 of 15 stations on the SBC to DNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-26T22:59:05.527Z",
-  "knownChartCount": 4
+  "summary": "Reservation chart preparation times for Sbcdnr Humsafar (6509) from SBC to DNR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
+  "generatedAt": "2026-06-29T23:23:25.225Z",
+  "knownChartCount": 0
 }

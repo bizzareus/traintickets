@@ -12,11 +12,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "08:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:06",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AJNI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SNI",
@@ -25,11 +25,11 @@
       "departureTime": "18:52",
       "day": 1,
       "distance": "44.0",
-      "chartTimeLocal": "08:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:06",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AJNI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TGP",
@@ -38,11 +38,11 @@
       "departureTime": "19:01",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": "08:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:06",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AJNI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "WR",
@@ -51,11 +51,11 @@
       "departureTime": "19:22",
       "day": 1,
       "distance": "76.0",
-      "chartTimeLocal": "08:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:06",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AJNI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PLO",
@@ -64,11 +64,11 @@
       "departureTime": "19:46",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": "08:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:06",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AJNI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DMN",
@@ -77,11 +77,11 @@
       "departureTime": "20:06",
       "day": 1,
       "distance": "126.0",
-      "chartTimeLocal": "08:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:06",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AJNI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CND",
@@ -90,11 +90,11 @@
       "departureTime": "20:21",
       "day": 1,
       "distance": "143.0",
-      "chartTimeLocal": "08:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:06",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AJNI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AMI",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": "08:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:06",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "AJNI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ajni Ami Sf Exp (12120) is prepared at Ajni (AJNI) around 8:45 AM, with a second (vacancy) chart around 8:06 PM. 8 of 8 stations on the AJNI to AMI route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:19:21.506Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Ajni Ami Sf Exp (12120) from AJNI to AMI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:26.311Z",
+  "knownChartCount": 0
 }

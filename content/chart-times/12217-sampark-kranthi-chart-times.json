@@ -12,11 +12,11 @@
       "departureTime": "04:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "QLN",
@@ -25,11 +25,11 @@
       "departureTime": "05:45",
       "day": 1,
       "distance": "59.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KYJ",
@@ -38,11 +38,11 @@
       "departureTime": "06:25",
       "day": 1,
       "distance": "100.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ALLP",
@@ -51,11 +51,11 @@
       "departureTime": "07:35",
       "day": 1,
       "distance": "143.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ERS",
@@ -64,11 +64,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TCR",
@@ -77,11 +77,11 @@
       "departureTime": "11:10",
       "day": 1,
       "distance": "274.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRR",
@@ -90,11 +90,11 @@
       "departureTime": "12:05",
       "day": 1,
       "distance": "307.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TIR",
@@ -103,11 +103,11 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "352.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CLT",
@@ -116,11 +116,11 @@
       "departureTime": "13:25",
       "day": 1,
       "distance": "392.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CAN",
@@ -129,11 +129,11 @@
       "departureTime": "14:45",
       "day": 1,
       "distance": "482.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KGQ",
@@ -142,11 +142,11 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "567.0",
-      "chartTimeLocal": "18:58",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MAJN",
@@ -344,7 +344,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sampark Kranthi (12217) is prepared at TRIVANDRUMNORTH (TVCN) around 6:58 PM, with a second (vacancy) chart around 4:35 AM. 11 of 26 stations on the TVCN to CDG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-27T00:32:01.990Z",
-  "knownChartCount": 11
+  "summary": "Reservation chart preparation times for Sampark Kranthi (12217) from TVCN to CDG are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 26 stations.",
+  "generatedAt": "2026-06-29T23:23:08.992Z",
+  "knownChartCount": 0
 }

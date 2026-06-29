@@ -12,11 +12,11 @@
       "departureTime": "06:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SVJR",
@@ -25,11 +25,11 @@
       "departureTime": "06:13",
       "day": 1,
       "distance": "3.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KK",
@@ -38,11 +38,11 @@
       "departureTime": "06:20",
       "day": 1,
       "distance": "7.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PMP",
@@ -51,11 +51,11 @@
       "departureTime": "06:30",
       "day": 1,
       "distance": "15.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CCH",
@@ -64,11 +64,11 @@
       "departureTime": "06:35",
       "day": 1,
       "distance": "17.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LNL",
@@ -77,11 +77,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KJT",
@@ -90,11 +90,11 @@
       "departureTime": "08:03",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KYN",
@@ -103,11 +103,11 @@
       "departureTime": "08:48",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DR",
@@ -116,11 +116,11 @@
       "departureTime": "09:35",
       "day": 1,
       "distance": "183.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CSMT",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "192.0",
-      "chartTimeLocal": "20:21",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "07:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "PUNE"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sinhagad Exp (11010) is prepared at Pune Jn (PUNE) around 8:21 PM, with a second (vacancy) chart around 7 AM. 10 of 10 stations on the PUNE to CSMT route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-26T23:16:08.159Z",
-  "knownChartCount": 10
+  "summary": "Reservation chart preparation times for Sinhagad Exp (11010) from PUNE to CSMT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
+  "generatedAt": "2026-06-29T23:23:07.181Z",
+  "knownChartCount": 0
 }

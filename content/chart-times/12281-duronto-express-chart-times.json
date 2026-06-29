@@ -12,11 +12,11 @@
       "departureTime": "07:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:31",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BBS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BLS",
@@ -25,11 +25,11 @@
       "departureTime": "10:28",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": "19:31",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BBS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ADRA",
@@ -38,11 +38,11 @@
       "departureTime": "14:35",
       "day": 1,
       "distance": "496.0",
-      "chartTimeLocal": "19:31",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BBS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GAYA",
@@ -51,11 +51,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "761.0",
-      "chartTimeLocal": "19:31",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BBS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DDU",
@@ -64,11 +64,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "964.0",
-      "chartTimeLocal": "19:31",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BBS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -77,11 +77,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "1311.0",
-      "chartTimeLocal": "19:31",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BBS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1750.0",
-      "chartTimeLocal": "19:31",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "20:50",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BBS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Duronto Express (12281) is prepared at Bhubaneswar (BBS) around 7:31 PM, with a second (vacancy) chart around 8:50 PM. 7 of 7 stations on the BBS to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:38:19.482Z",
-  "knownChartCount": 7
+  "summary": "Reservation chart preparation times for Duronto Express (12281) from BBS to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-06-29T23:23:16.608Z",
+  "knownChartCount": 0
 }

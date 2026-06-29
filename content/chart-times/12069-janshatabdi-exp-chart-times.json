@@ -12,11 +12,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KHS",
@@ -25,11 +25,11 @@
       "departureTime": "06:35",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SKT",
@@ -38,11 +38,11 @@
       "departureTime": "06:50",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BUA",
@@ -51,11 +51,11 @@
       "departureTime": "07:04",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CPH",
@@ -64,11 +64,11 @@
       "departureTime": "07:24",
       "day": 1,
       "distance": "80.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NIA",
@@ -77,11 +77,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "91.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AKT",
@@ -90,11 +90,11 @@
       "departureTime": "07:54",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BSP",
@@ -103,11 +103,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "133.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BYT",
@@ -116,11 +116,11 @@
       "departureTime": "09:25",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TLD",
@@ -129,11 +129,11 @@
       "departureTime": "09:46",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "R",
@@ -142,11 +142,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "243.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DURG",
@@ -155,11 +155,11 @@
       "departureTime": "11:30",
       "day": 1,
       "distance": "280.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RJN",
@@ -168,11 +168,11 @@
       "departureTime": "11:51",
       "day": 1,
       "distance": "311.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DGG",
@@ -181,11 +181,11 @@
       "departureTime": "12:16",
       "day": 1,
       "distance": "342.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "G",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "415.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RIG"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Janshatabdi Exp (12069) is prepared at Raigarh (RIG) around 7:54 PM. 15 of 15 stations on the RIG to G route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:14:34.671Z",
-  "knownChartCount": 15
+  "summary": "Reservation chart preparation times for Janshatabdi Exp (12069) from RIG to G are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
+  "generatedAt": "2026-06-29T23:23:19.365Z",
+  "knownChartCount": 0
 }

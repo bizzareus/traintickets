@@ -12,11 +12,11 @@
       "departureTime": "17:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "INDB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UJN",
@@ -25,11 +25,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "INDB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RTM",
@@ -38,11 +38,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "159.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "INDB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DHD",
@@ -51,11 +51,11 @@
       "departureTime": "21:57",
       "day": 1,
       "distance": "273.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "INDB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BRC",
@@ -64,11 +64,11 @@
       "departureTime": "00:47",
       "day": 2,
       "distance": "421.0",
-      "chartTimeLocal": "21:00",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "INDB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ST",
@@ -77,11 +77,11 @@
       "departureTime": "02:45",
       "day": 2,
       "distance": "550.0",
-      "chartTimeLocal": "21:00",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "INDB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VAPI",
@@ -90,11 +90,11 @@
       "departureTime": "03:52",
       "day": 2,
       "distance": "642.0",
-      "chartTimeLocal": "21:00",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "INDB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BVI",
@@ -103,11 +103,11 @@
       "departureTime": "06:32",
       "day": 2,
       "distance": "783.0",
-      "chartTimeLocal": "21:00",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "INDB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MMCT",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "812.0",
-      "chartTimeLocal": "21:00",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "19:55",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "INDB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Indb Mmct Ac Sup (9086) is prepared at Indore Jn Bg (INDB) around 9:05 PM. 9 of 9 stations on the INDB to MMCT route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-26T23:09:22.385Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Indb Mmct Ac Sup (9086) from INDB to MMCT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:27.338Z",
+  "knownChartCount": 0
 }

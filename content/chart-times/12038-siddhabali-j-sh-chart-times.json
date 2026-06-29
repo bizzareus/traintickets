@@ -12,11 +12,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -25,11 +25,11 @@
       "departureTime": "07:48",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HPU",
@@ -38,11 +38,11 @@
       "departureTime": "08:39",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GJL",
@@ -51,11 +51,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MNDR",
@@ -64,11 +64,11 @@
       "departureTime": "10:20",
       "day": 1,
       "distance": "123.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CPS",
@@ -77,11 +77,11 @@
       "departureTime": "10:42",
       "day": 1,
       "distance": "143.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HLDR",
@@ -90,11 +90,11 @@
       "departureTime": "10:58",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BJO",
@@ -103,11 +103,11 @@
       "departureTime": "11:20",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BSKR",
@@ -116,11 +116,11 @@
       "departureTime": "11:40",
       "day": 1,
       "distance": "193.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MZM",
@@ -129,11 +129,11 @@
       "departureTime": "12:14",
       "day": 1,
       "distance": "203.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NBD",
@@ -142,11 +142,11 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KTW",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "238.0",
-      "chartTimeLocal": "21:39",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "DLI"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Siddhabali J Sh (12038) is prepared at Old Delhi (DLI) around 9:39 PM. 12 of 12 stations on the DLI to KTW route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:11:30.753Z",
-  "knownChartCount": 12
+  "summary": "Reservation chart preparation times for Siddhabali J Sh (12038) from DLI to KTW are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
+  "generatedAt": "2026-06-29T23:23:14.840Z",
+  "knownChartCount": 0
 }

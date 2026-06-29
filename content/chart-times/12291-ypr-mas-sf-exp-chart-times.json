@@ -12,11 +12,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "12:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "YPR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KJM",
@@ -25,11 +25,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "22.0",
-      "chartTimeLocal": "12:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "YPR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BWT",
@@ -38,11 +38,11 @@
       "departureTime": "00:05",
       "day": 2,
       "distance": "78.0",
-      "chartTimeLocal": "12:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "YPR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JTJ",
@@ -51,11 +51,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "156.0",
-      "chartTimeLocal": "12:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "YPR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "WJR",
@@ -64,11 +64,11 @@
       "departureTime": "02:50",
       "day": 2,
       "distance": "265.0",
-      "chartTimeLocal": "12:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "YPR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AJJ",
@@ -77,11 +77,11 @@
       "departureTime": "03:25",
       "day": 2,
       "distance": "301.0",
-      "chartTimeLocal": "12:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "YPR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PER",
@@ -90,11 +90,11 @@
       "departureTime": "04:15",
       "day": 2,
       "distance": "364.0",
-      "chartTimeLocal": "12:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "YPR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MAS",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "369.0",
-      "chartTimeLocal": "12:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "YPR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ypr Mas Sf Exp (12291) is prepared at Yesvantpur Jn (YPR) around 12:57 PM, with a second (vacancy) chart around 10:30 PM. 8 of 8 stations on the YPR to MAS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:42:24.567Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Ypr Mas Sf Exp (12291) from YPR to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:17.634Z",
+  "knownChartCount": 0
 }

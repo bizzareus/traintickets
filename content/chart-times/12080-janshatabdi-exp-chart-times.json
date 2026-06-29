@@ -12,11 +12,11 @@
       "departureTime": "14:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "UBL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HVR",
@@ -25,11 +25,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "76.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "UBL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RNR",
@@ -38,11 +38,11 @@
       "departureTime": "15:32",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "UBL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HRR",
@@ -51,11 +51,11 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "131.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "UBL"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DVG",
@@ -64,11 +64,11 @@
       "departureTime": "16:07",
       "day": 1,
       "distance": "144.0",
-      "chartTimeLocal": "08:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "15:52",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DVG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JRU",
@@ -77,11 +77,11 @@
       "departureTime": "16:42",
       "day": 1,
       "distance": "190.0",
-      "chartTimeLocal": "08:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "15:52",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DVG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RRB",
@@ -90,11 +90,11 @@
       "departureTime": "17:28",
       "day": 1,
       "distance": "259.0",
-      "chartTimeLocal": "08:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "15:52",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DVG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ASK",
@@ -103,11 +103,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "304.0",
-      "chartTimeLocal": "08:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "15:52",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DVG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TTR",
@@ -116,11 +116,11 @@
       "departureTime": "18:26",
       "day": 1,
       "distance": "330.0",
-      "chartTimeLocal": "08:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "15:52",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DVG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TK",
@@ -129,11 +129,11 @@
       "departureTime": "19:13",
       "day": 1,
       "distance": "400.0",
-      "chartTimeLocal": "08:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "15:52",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DVG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "YPR",
@@ -142,11 +142,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "464.0",
-      "chartTimeLocal": "08:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "15:52",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DVG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SBC",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "470.0",
-      "chartTimeLocal": "08:07",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "15:52",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DVG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Janshatabdi Exp (12080) is prepared at Sss Hubballi Jn (UBL) around 8:20 PM. 12 of 12 stations on the UBL to SBC route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:15:30.758Z",
-  "knownChartCount": 12
+  "summary": "Reservation chart preparation times for Janshatabdi Exp (12080) from UBL to SBC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
+  "generatedAt": "2026-06-29T23:23:22.044Z",
+  "knownChartCount": 0
 }

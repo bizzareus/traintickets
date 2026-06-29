@@ -12,11 +12,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "12:25",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -25,11 +25,11 @@
       "departureTime": "21:02",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": "12:25",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ALJN",
@@ -38,11 +38,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "126.0",
-      "chartTimeLocal": "12:25",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ETW",
@@ -51,11 +51,11 @@
       "departureTime": "00:07",
       "day": 2,
       "distance": "296.0",
-      "chartTimeLocal": "12:25",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:10",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DLI"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -64,11 +64,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "435.0",
-      "chartTimeLocal": "16:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "01:45",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ON",
@@ -77,11 +77,11 @@
       "departureTime": "02:28",
       "day": 2,
       "distance": "453.0",
-      "chartTimeLocal": "16:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "01:45",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ASH",
@@ -90,11 +90,11 @@
       "departureTime": "03:55",
       "day": 2,
       "distance": "508.0",
-      "chartTimeLocal": "16:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "01:45",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BNZ",
@@ -103,11 +103,11 @@
       "departureTime": "04:20",
       "day": 2,
       "distance": "517.0",
-      "chartTimeLocal": "16:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "01:45",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BBK",
@@ -116,11 +116,11 @@
       "departureTime": "05:04",
       "day": 2,
       "distance": "542.0",
-      "chartTimeLocal": "16:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "01:45",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RDL",
@@ -129,11 +129,11 @@
       "departureTime": "05:54",
       "day": 2,
       "distance": "603.0",
-      "chartTimeLocal": "16:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "01:45",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AYC",
@@ -142,11 +142,11 @@
       "departureTime": "06:35",
       "day": 2,
       "distance": "641.0",
-      "chartTimeLocal": "16:00",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "01:45",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AY",
@@ -155,11 +155,11 @@
       "departureTime": "06:55",
       "day": 2,
       "distance": "648.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AY"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GGJ",
@@ -168,11 +168,11 @@
       "departureTime": "07:24",
       "day": 2,
       "distance": "680.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AY"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ABP",
@@ -181,11 +181,11 @@
       "departureTime": "07:48",
       "day": 2,
       "distance": "702.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AY"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MLPR",
@@ -194,11 +194,11 @@
       "departureTime": "08:08",
       "day": 2,
       "distance": "721.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AY"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SHG",
@@ -207,11 +207,11 @@
       "departureTime": "09:30",
       "day": 2,
       "distance": "746.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AY"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KRND",
@@ -220,11 +220,11 @@
       "departureTime": "10:00",
       "day": 2,
       "distance": "768.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AY"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SMZ",
@@ -233,11 +233,11 @@
       "departureTime": "10:13",
       "day": 2,
       "distance": "777.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AY"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "AMH",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "803.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "AY"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Kaifiyat Exp (12226) is prepared at Old Delhi (DLI) around 12:25 PM, with a second (vacancy) chart around 8:10 PM. 19 of 19 stations on the DLI to AMH route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:33:16.124Z",
-  "knownChartCount": 19
+  "summary": "Reservation chart preparation times for Kaifiyat Exp (12226) from DLI to AMH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
+  "generatedAt": "2026-06-29T23:23:10.094Z",
+  "knownChartCount": 0
 }

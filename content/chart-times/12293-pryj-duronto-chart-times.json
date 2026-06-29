@@ -12,11 +12,11 @@
       "departureTime": "17:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:54",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:48",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LTT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BSL",
@@ -25,11 +25,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "429.0",
-      "chartTimeLocal": "13:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:43",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BSL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ET",
@@ -38,11 +38,11 @@
       "departureTime": "03:00",
       "day": 2,
       "distance": "736.0",
-      "chartTimeLocal": "13:10",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:43",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BSL"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JBP",
@@ -51,11 +51,11 @@
       "departureTime": "06:10",
       "day": 2,
       "distance": "981.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "05:52",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "JBP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "STA",
@@ -64,11 +64,11 @@
       "departureTime": "08:30",
       "day": 2,
       "distance": "1170.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "05:52",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "JBP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PRYJ",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1348.0",
-      "chartTimeLocal": "19:56",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "05:52",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "JBP"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Pryj Duronto (12293) is prepared at Lokmanyatilak T (LTT) around 7:54 AM, with a second (vacancy) chart around 4:48 PM. 6 of 6 stations on the LTT to PRYJ route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:42:41.400Z",
-  "knownChartCount": 6
+  "summary": "Reservation chart preparation times for Pryj Duronto (12293) from LTT to PRYJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-06-29T23:23:18.748Z",
+  "knownChartCount": 0
 }

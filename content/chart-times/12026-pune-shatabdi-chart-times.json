@@ -12,11 +12,11 @@
       "departureTime": "14:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "04:55",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "HYB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BMT",
@@ -25,11 +25,11 @@
       "departureTime": "14:52",
       "day": 1,
       "distance": "6.0",
-      "chartTimeLocal": "04:55",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "HYB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LPI",
@@ -38,11 +38,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": "04:55",
-      "chartOneDayOffset": 0,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "HYB"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VKB",
@@ -51,11 +51,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": "07:45",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "15:30",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "VKB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TDU",
@@ -64,11 +64,11 @@
       "departureTime": "16:15",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": "08:15",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "WADI",
@@ -77,11 +77,11 @@
       "departureTime": "17:19",
       "day": 1,
       "distance": "185.0",
-      "chartTimeLocal": "08:15",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "16:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "TDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KLBG",
@@ -90,11 +90,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "222.0",
-      "chartTimeLocal": "08:24",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "KLBG"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SUR",
@@ -103,11 +103,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "335.0",
-      "chartTimeLocal": "09:41",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SUR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PUNE",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "598.0",
-      "chartTimeLocal": "09:41",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "SUR"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Pune Shatabdi (12026) is prepared at Hyderabad Decan (HYB) around 4:55 AM. 9 of 9 stations on the HYB to PUNE route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:10:32.273Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Pune Shatabdi (12026) from HYB to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:13.803Z",
+  "knownChartCount": 0
 }

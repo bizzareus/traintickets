@@ -12,11 +12,11 @@
       "departureTime": "06:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BEAS",
@@ -25,11 +25,11 @@
       "departureTime": "07:20",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "JUC",
@@ -38,11 +38,11 @@
       "departureTime": "08:02",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PGW",
@@ -51,11 +51,11 @@
       "departureTime": "08:22",
       "day": 1,
       "distance": "100.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DDL",
@@ -64,11 +64,11 @@
       "departureTime": "09:20",
       "day": 1,
       "distance": "143.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SIR",
@@ -77,11 +77,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "196.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "UMB",
@@ -90,11 +90,11 @@
       "departureTime": "11:04",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "YJUD",
@@ -103,11 +103,11 @@
       "departureTime": "11:43",
       "day": 1,
       "distance": "301.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRE",
@@ -116,11 +116,11 @@
       "departureTime": "12:18",
       "day": 1,
       "distance": "331.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RK",
@@ -129,11 +129,11 @@
       "departureTime": "13:04",
       "day": 1,
       "distance": "366.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HW",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "407.0",
-      "chartTimeLocal": "21:37",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "ASR"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Hw Janshatabdi (12054) is prepared at Amritsar Jn (ASR) around 9:37 PM. 11 of 11 stations on the ASR to HW route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:12:50.002Z",
-  "knownChartCount": 11
+  "summary": "Reservation chart preparation times for Hw Janshatabdi (12054) from ASR to HW are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
+  "generatedAt": "2026-06-29T23:23:17.186Z",
+  "knownChartCount": 0
 }

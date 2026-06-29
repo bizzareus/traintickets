@@ -12,11 +12,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:34",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BDTS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BVI",
@@ -25,11 +25,11 @@
       "departureTime": "17:59",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": "20:34",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "BDTS"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ST",
@@ -38,11 +38,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "252.0",
-      "chartTimeLocal": "10:57",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "20:40",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ST"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BRC",
@@ -51,11 +51,11 @@
       "departureTime": "22:29",
       "day": 1,
       "distance": "381.0",
-      "chartTimeLocal": "12:31",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:14",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BRC"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RTM",
@@ -64,11 +64,11 @@
       "departureTime": "01:53",
       "day": 2,
       "distance": "642.0",
-      "chartTimeLocal": "15:53",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "01:38",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "RTM"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KOTA",
@@ -77,11 +77,11 @@
       "departureTime": "04:40",
       "day": 2,
       "distance": "909.0",
-      "chartTimeLocal": "18:21",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:25",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "KOTA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MTJ",
@@ -90,11 +90,11 @@
       "departureTime": "08:20",
       "day": 2,
       "distance": "1233.0",
-      "chartTimeLocal": "20:17",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "08:05",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MTJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NZM",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1366.0",
-      "chartTimeLocal": "20:17",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "08:05",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "MTJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Nzm Garib Rath (12909) is prepared at Bandra Terminus (BDTS) around 8:34 PM. 8 of 8 stations on the BDTS to NZM route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T03:24:27.046Z",
-  "knownChartCount": 8
+  "summary": "Reservation chart preparation times for Nzm Garib Rath (12909) from BDTS to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:07.084Z",
+  "knownChartCount": 0
 }

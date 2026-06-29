@@ -12,11 +12,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "12:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BNRS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GYN",
@@ -25,11 +25,11 @@
       "departureTime": "23:04",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": "12:46",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "22:00",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "BNRS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PRYJ",
@@ -38,11 +38,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "121.0",
-      "chartTimeLocal": "14:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:20",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -51,11 +51,11 @@
       "departureTime": "02:50",
       "day": 2,
       "distance": "316.0",
-      "chartTimeLocal": "14:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:20",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "757.0",
-      "chartTimeLocal": "14:34",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:20",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Shiv Ganga Exp (12559) is prepared at BANARAS (BNRS) around 12:46 PM, with a second (vacancy) chart around 10 PM. 5 of 5 stations on the BNRS to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:26:26.470Z",
-  "knownChartCount": 5
+  "summary": "Reservation chart preparation times for Shiv Ganga Exp (12559) from BNRS to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-29T23:23:23.368Z",
+  "knownChartCount": 0
 }

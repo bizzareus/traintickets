@@ -12,11 +12,11 @@
       "departureTime": "09:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:49",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "14:27",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GHY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KYQ",
@@ -25,11 +25,11 @@
       "departureTime": "10:05",
       "day": 1,
       "distance": "7.0",
-      "chartTimeLocal": "19:49",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "14:27",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GHY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RNY",
@@ -38,11 +38,11 @@
       "departureTime": "11:00",
       "day": 1,
       "distance": "48.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "10:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RNY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "TNL",
@@ -51,11 +51,11 @@
       "departureTime": "11:37",
       "day": 1,
       "distance": "87.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "10:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RNY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ULG",
@@ -64,11 +64,11 @@
       "departureTime": "11:52",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "10:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RNY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "RPAN",
@@ -77,11 +77,11 @@
       "departureTime": "13:00",
       "day": 1,
       "distance": "171.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "10:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RNY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "VNE",
@@ -90,11 +90,11 @@
       "departureTime": "13:42",
       "day": 1,
       "distance": "222.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "10:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RNY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "HMY",
@@ -103,11 +103,11 @@
       "departureTime": "14:42",
       "day": 1,
       "distance": "314.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "10:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RNY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NLP",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "344.0",
-      "chartTimeLocal": "20:20",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "10:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "RNY"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Nlp Janshatabdi (12047) is prepared at Guwahati (GHY) around 7:49 PM, with a second (vacancy) chart around 2:27 PM. 9 of 9 stations on the GHY to NLP route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:12:07.472Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Nlp Janshatabdi (12047) from GHY to NLP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:15.935Z",
+  "knownChartCount": 0
 }

@@ -12,11 +12,11 @@
       "departureTime": "14:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "18:53",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "HWH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KGP",
@@ -25,11 +25,11 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "116.0",
-      "chartTimeLocal": "18:53",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "HWH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BLS",
@@ -110,7 +110,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Satabdi Express (12277) is prepared at Howrah Jn (HWH) around 6:53 PM. 2 of 8 stations on the HWH to PURI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-06-27T00:37:54.158Z",
-  "knownChartCount": 2
+  "summary": "Reservation chart preparation times for Satabdi Express (12277) from HWH to PURI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
+  "generatedAt": "2026-06-29T23:23:16.593Z",
+  "knownChartCount": 0
 }

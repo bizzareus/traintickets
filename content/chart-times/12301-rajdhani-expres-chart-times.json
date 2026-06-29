@@ -12,11 +12,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:28",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "HWH"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ASN",
@@ -25,11 +25,11 @@
       "departureTime": "18:49",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": "08:51",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "18:34",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "ASN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DHN",
@@ -38,11 +38,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "259.0",
-      "chartTimeLocal": "09:58",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DHN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PNME",
@@ -51,11 +51,11 @@
       "departureTime": "20:32",
       "day": 1,
       "distance": "306.0",
-      "chartTimeLocal": "09:58",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:45",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DHN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GAYA",
@@ -64,11 +64,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": "14:35",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:32",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "GAYA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DDU",
@@ -77,11 +77,11 @@
       "departureTime": "00:50",
       "day": 2,
       "distance": "661.0",
-      "chartTimeLocal": "16:50",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "00:36",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PRYJ",
@@ -90,11 +90,11 @@
       "departureTime": "02:45",
       "day": 2,
       "distance": "813.0",
-      "chartTimeLocal": "16:51",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "02:30",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "PRYJ"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -103,11 +103,11 @@
       "departureTime": "04:50",
       "day": 2,
       "distance": "1008.0",
-      "chartTimeLocal": "18:53",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDLS",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1449.0",
-      "chartTimeLocal": "18:53",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:35",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Rajdhani Expres (12301) is prepared at Howrah Jn (HWH) around 9:28 PM. 9 of 9 stations on the HWH to NDLS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:43:21.551Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Rajdhani Expres (12301) from HWH to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:18.758Z",
+  "knownChartCount": 0
 }

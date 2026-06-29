@@ -12,11 +12,11 @@
       "departureTime": "06:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:11",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SUR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KWV",
@@ -25,11 +25,11 @@
       "departureTime": "07:20",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": "20:11",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SUR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DD",
@@ -38,11 +38,11 @@
       "departureTime": "09:05",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": "20:11",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SUR"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PUNE",
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "264.0",
-      "chartTimeLocal": "20:11",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "SUR"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Hutatma Express (12158) is prepared at Solapur Jn (SUR) around 8:11 PM. 4 of 4 stations on the SUR to PUNE route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:24:14.857Z",
-  "knownChartCount": 4
+  "summary": "Reservation chart preparation times for Hutatma Express (12158) from SUR to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 4 stations.",
+  "generatedAt": "2026-06-29T23:23:00.264Z",
+  "knownChartCount": 0
 }

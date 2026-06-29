@@ -43,16 +43,40 @@ Strict Rules for Low AI Detection (AI Bypass):
 5. Structural Preservation: Retain all H2 questions and H3 FAQ headings exactly, ensuring the structure mirrors the original English version.
 6. Strictly output ONLY the translated markdown content. Do not add any introduction, explanations, notes, or conversational text.`;
 
-  const completion = await client.chat.completions.create({
-    model: 'gpt-4o-mini',
-    messages: [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: content }
-    ],
-    temperature: 0.3
-  });
+  const maxRetries = 3;
+  let attempt = 0;
+  let completion;
 
-  let translated = completion.choices[0].message.content || '';
+  while (attempt < maxRetries) {
+    try {
+      attempt++;
+      console.log(`   (Attempt ${attempt}/${maxRetries} to call OpenAI...)`);
+      const apiCall = client.chat.completions.create({
+        model: langCode === 'ml' ? 'gpt-4o' : 'gpt-4o-mini',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: content }
+        ],
+        temperature: 0.3
+      });
+
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Promise Timeout (120s)')), 120000)
+      );
+
+      completion = await Promise.race([apiCall, timeoutPromise]) as any;
+      break; // Success!
+    } catch (err: any) {
+      console.error(`   ⚠️ Attempt ${attempt} failed: ${err?.message || err}`);
+      if (attempt >= maxRetries) {
+        throw err;
+      }
+      console.log('   Waiting 5 seconds before retrying...');
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+    }
+  }
+
+  let translated = completion?.choices[0]?.message?.content || '';
   
   // Clean up any markdown code block wrap (e.g. ```markdown ... ```) if returned by the LLM
   translated = translated.trim();

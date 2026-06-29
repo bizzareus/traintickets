@@ -12,11 +12,11 @@
       "departureTime": "04:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "18:56",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "09:24",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BE",
@@ -25,11 +25,11 @@
       "departureTime": "08:19",
       "day": 1,
       "distance": "236.0",
-      "chartTimeLocal": "18:56",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "09:24",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MB",
@@ -38,11 +38,11 @@
       "departureTime": "09:39",
       "day": 1,
       "distance": "326.0",
-      "chartTimeLocal": "18:56",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "09:24",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GZB",
@@ -51,11 +51,11 @@
       "departureTime": "12:14",
       "day": 1,
       "distance": "467.0",
-      "chartTimeLocal": "18:56",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "09:24",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ANVT",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "480.0",
-      "chartTimeLocal": "18:56",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "09:24",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "LJN"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Anvt Double Dkr (12583) is prepared at Lucknow Ne (LJN) around 6:56 PM, with a second (vacancy) chart around 9:24 AM. 5 of 5 stations on the LJN to ANVT route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T01:27:45.113Z",
-  "knownChartCount": 5
+  "summary": "Reservation chart preparation times for Anvt Double Dkr (12583) from LJN to ANVT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-29T23:23:25.424Z",
+  "knownChartCount": 0
 }

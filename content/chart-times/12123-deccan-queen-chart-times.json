@@ -12,11 +12,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KJT",
@@ -25,11 +25,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "100.0",
-      "chartTimeLocal": "07:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "LNL",
@@ -38,11 +38,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": "07:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SVJR",
@@ -51,11 +51,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "190.0",
-      "chartTimeLocal": "07:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PUNE",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "192.0",
-      "chartTimeLocal": "07:20",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "19:05",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CSMT"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Deccan Queen (12123) is prepared at C Shivaji Mah T (CSMT) around 7:20 AM, with a second (vacancy) chart around 7:05 PM. 5 of 5 stations on the CSMT to PUNE route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:19:33.529Z",
-  "knownChartCount": 5
+  "summary": "Reservation chart preparation times for Deccan Queen (12123) from CSMT to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-06-29T23:23:26.313Z",
+  "knownChartCount": 0
 }

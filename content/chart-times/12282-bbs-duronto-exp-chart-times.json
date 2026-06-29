@@ -12,11 +12,11 @@
       "departureTime": "12:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "22:56",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "12:20",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "NDLS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "441.0",
-      "chartTimeLocal": "07:43",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "17:25",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "CNB"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "DDU",
@@ -38,11 +38,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "788.0",
-      "chartTimeLocal": "13:55",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:40",
-      "chartTwoDayOffset": 0,
-      "chartRemoteStation": "DDU"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ADRA",
@@ -51,11 +51,11 @@
       "departureTime": "04:15",
       "day": 2,
       "distance": "1234.0",
-      "chartTimeLocal": "20:15",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "04:00",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "ADRA"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BLS",
@@ -64,11 +64,11 @@
       "departureTime": "08:00",
       "day": 2,
       "distance": "1524.0",
-      "chartTimeLocal": "21:59",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BLS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     },
     {
       "stationCode": "BBS",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1729.0",
-      "chartTimeLocal": "21:59",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "07:45",
-      "chartTwoDayOffset": 1,
-      "chartRemoteStation": "BLS"
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Bbs Duronto Exp (12282) is prepared at New Delhi (NDLS) around 10:56 PM, with a second (vacancy) chart around 12:20 PM. 6 of 6 stations on the NDLS to BBS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:38:24.482Z",
-  "knownChartCount": 6
+  "summary": "Reservation chart preparation times for Bbs Duronto Exp (12282) from NDLS to BBS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-06-29T23:23:16.607Z",
+  "knownChartCount": 0
 }

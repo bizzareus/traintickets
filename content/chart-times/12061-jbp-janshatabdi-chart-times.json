@@ -12,11 +12,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RKMP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NDPM",
@@ -25,11 +25,11 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RKMP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "ET",
@@ -38,11 +38,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "86.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RKMP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "PPI",
@@ -51,11 +51,11 @@
       "departureTime": "20:08",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RKMP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "GAR",
@@ -64,11 +64,11 @@
       "departureTime": "20:42",
       "day": 1,
       "distance": "203.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RKMP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "KY",
@@ -77,11 +77,11 @@
       "departureTime": "21:04",
       "day": 1,
       "distance": "231.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RKMP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "NU",
@@ -90,11 +90,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "247.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RKMP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "SRID",
@@ -103,11 +103,11 @@
       "departureTime": "21:44",
       "day": 1,
       "distance": "278.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RKMP"
+      "chartRemoteStation": null
     },
     {
       "stationCode": "MML",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "328.0",
-      "chartTimeLocal": "21:05",
-      "chartOneDayOffset": -1,
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RKMP"
+      "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Jbp Janshatabdi (12061) is prepared at Rani Kamalapati (RKMP) around 9:05 PM. 9 of 9 stations on the RKMP to MML route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-06-27T00:13:34.362Z",
-  "knownChartCount": 9
+  "summary": "Reservation chart preparation times for Jbp Janshatabdi (12061) from RKMP to MML are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
+  "generatedAt": "2026-06-29T23:23:18.268Z",
+  "knownChartCount": 0
 }
