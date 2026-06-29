@@ -787,18 +787,18 @@ export function AlternatePathContent({
         </div>
       </div>
       {showSearchAllTrains && searchAllTrainsHref && (
-        <a
-          href={searchAllTrainsHref}
-          className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100"
-        >
-          <span>
-            No confirmed seats here. Search all other trains
-            {fromCode && toCode ? ` from ${fromCode} to ${toCode}` : ""}
+        <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2.5">
+          <span className="text-sm font-semibold text-slate-700">
+            Full seats not available
           </span>
-          <span aria-hidden="true" className="text-base">
-            →
-          </span>
-        </a>
+          <a
+            href={searchAllTrainsHref}
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-blue-600 px-3.5 py-2 text-sm font-bold text-white transition hover:bg-blue-700"
+          >
+            Find in other trains
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
       )}
       {altLoading && (
         <AlternatePathProgressFeed
