@@ -92,6 +92,13 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
 
   const effectiveChartPrepared = isLiveChartPrepared || isChartLikelyPrepared;
 
+  /** PNR Doj is DD-MM-YYYY; the journey/alert APIs expect YYYY-MM-DD. */
+  const journeyDateYmd = useMemo(() => {
+    const parts = (pnrData?.Doj ?? "").split("-");
+    if (parts.length !== 3) return "";
+    return `${parts[2]}-${parts[1].padStart(2, "0")}-${parts[0].padStart(2, "0")}`;
+  }, [pnrData]);
+
   /** True when any passenger is still waitlisted/RAC (not confirmed). */
   const hasWaitlisted = useMemo(() => {
     const passengers = pnrData?.PassengerStatus;
@@ -435,8 +442,8 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                     toCode={pnrData?.To}
                     ctaTrainNumber={pnrData?.TrainNo}
                     ctaTrainName={pnrData?.TrainName}
-                    ctaTrainStartDate={pnrData?.Doj}
-                    ctaJourneyDate={pnrData?.Doj}
+                    ctaTrainStartDate={journeyDateYmd}
+                    ctaJourneyDate={journeyDateYmd}
                     ctaClassCode={pnrData?.Class}
                     originChartTime={originChartTime}
                     isAdminUser={isAdminUser}
@@ -531,8 +538,8 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
             <EntireJourneyAlertCTA
               trainNumber={pnrData.TrainNo}
               trainName={pnrData.TrainName}
-              trainStartDate={pnrData.Doj}
-              journeyDate={pnrData.Doj}
+              trainStartDate={journeyDateYmd}
+              journeyDate={journeyDateYmd}
               classCode={pnrData.Class || "SL"}
               defaultOrigin={pnrData.From}
               defaultDestination={pnrData.To}
