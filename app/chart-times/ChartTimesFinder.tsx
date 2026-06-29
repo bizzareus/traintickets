@@ -25,6 +25,7 @@ export default function ChartTimesFinder() {
   const [selected, setSelected] = useState<TrainOption | null>(null);
   const [open, setOpen] = useState(false);
   const [journeyDate, setJourneyDate] = useState("");
+  const [navigating, setNavigating] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
 
   // Default the journey date to today. Done after mount (not via initial state)
@@ -117,6 +118,9 @@ export default function ChartTimesFinder() {
       resolvedTrain.trainName,
     );
     const qs = journeyDate ? `?date=${journeyDate}` : "";
+    // The target page is server-rendered and can take a few seconds (schedule +
+    // chart-time fetches), so show a loader until this component unmounts on nav.
+    setNavigating(true);
     router.push(`/chart-times/${slug}${qs}`);
   }
 
@@ -203,10 +207,17 @@ export default function ChartTimesFinder() {
 
         <button
           type="submit"
-          disabled={!resolvedTrain}
-          className="rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+          disabled={!resolvedTrain || navigating}
+          className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          View chart times
+          {navigating ? (
+            <>
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+              Loading…
+            </>
+          ) : (
+            "View chart times"
+          )}
         </button>
       </form>
     </div>
