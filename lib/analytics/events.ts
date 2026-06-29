@@ -174,6 +174,19 @@ export type AnalyticsEvent =
         journey_date: string;
         success: boolean;
         trainStartDate?: string;
+        /** Whether the full journey was covered by confirmed segments. */
+        is_complete?: boolean;
+        leg_count?: number;
+        total_fare?: number | null;
+        /** The available tickets/segments shown in the popup. */
+        tickets?: Array<{
+          from: string;
+          to: string;
+          kind: "confirmed" | "check_realtime";
+          travel_class: string | null;
+          availability: string | null;
+          fare: number | null;
+        }>;
       };
     }
   | {

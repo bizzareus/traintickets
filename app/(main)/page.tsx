@@ -2995,6 +2995,16 @@ function BookingV2PageContent() {
                 setAltProgress((prev) => [...prev, msg.event!]);
               } else if (msg.type === "result" && msg.data) {
                 setAltResult(msg.data);
+                // Attach the available tickets/segments shown in the popup.
+                const tickets = (msg.data.legs ?? []).map((leg) => ({
+                  from: leg.from,
+                  to: leg.to,
+                  kind: leg.segmentKind,
+                  travel_class: leg.travelClass,
+                  availability:
+                    leg.availabilityDisplayName ?? leg.availablityStatus,
+                  fare: leg.fare,
+                }));
                 trackAnalyticsEvent({
                   name: "alternate_paths_popup_loaded",
                   properties: {
@@ -3004,6 +3014,10 @@ function BookingV2PageContent() {
                     journey_date: targetDate,
                     success: true,
                     trainStartDate: t.trainStartDate,
+                    is_complete: msg.data.isComplete,
+                    leg_count: msg.data.legCount,
+                    total_fare: msg.data.totalFare,
+                    tickets,
                   },
                 });
               } else if (msg.type === "error") {
