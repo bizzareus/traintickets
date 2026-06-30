@@ -62,6 +62,8 @@ This file tracks all blog posts published to avoid duplication.
 | how-to-transport-bike-scooter-indian-railways-parcel-luggage-rules.md | How to Transport Bike in Indian Railways: Rules, Cost, Booking Process, and Difference Between Luggage & Parcel (EN + hi/mr/bn/ta/te/ml) | 2026-06-28 |
 | irctc-ftr-booking-rules-book-full-train-coach.md | IRCTC FTR Booking Rules: How to Book Full Train or Coach (EN + hi/mr/bn/ta/te/ml) | 2026-06-29 |
 | irctc-travel-insurance-rules-coverage-claim-guide.md | IRCTC Travel Insurance: Rules, Coverage & Nominee Guide (EN + hi/mr/bn/ta/te/ml) | 2026-06-29 |
+| ttr-full-form-in-train.md | TTR Full Form in Train: TTR vs TTE & IRCTC Ticket Rules (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
+| delhi-to-goa-train-guide.md | Delhi to Goa Train Guide: Best Trains, Fares & Booking Tips (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 
 
 ## SEO triage actions (GSC / Google Trends driven)
