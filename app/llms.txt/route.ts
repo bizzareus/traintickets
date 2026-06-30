@@ -1,5 +1,6 @@
 import { listBlogPosts } from "@/lib/blog";
 import { listChartTimesIndex } from "@/lib/chartTimes";
+import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_APP_URL ||
@@ -15,6 +16,7 @@ const baseUrl =
 export async function GET() {
   const posts = listBlogPosts();
   const chartTimesPages = listChartTimesIndex();
+  const foodMenuPages = listTrainFoodMenuIndex();
 
   const lines: string[] = [];
   lines.push("# LastBerth");
@@ -30,6 +32,7 @@ export async function GET() {
   lines.push(`- [Booking V2](${baseUrl}/booking/v2): Fast, optimized passenger booking flow for Tatkal tickets.`);
   lines.push(`- [Chart Vacancy](${baseUrl}/chart-vacancy): IRCTC chart vacancy — live coach-wise vacant berths after charting, with a visual coach map and current-availability booking.`);
   lines.push(`- [Chart Times](${baseUrl}/chart-times): IRCTC vacancy chart preparation times for trains, station by station, with chart-prep alerts.`);
+  lines.push(`- [Train Food Menu](${baseUrl}/irctc-train-food-menu): Readable IRCTC train catering menus and per-meal prices (Vande Bharat), organised by class and meal, replacing IRCTC's PDF menus.`);
   lines.push("");
   lines.push("## Indian Railways Rules & Domain Knowledge");
   lines.push("- **Chart Preparation Rules**: The first reservation chart is prepared 4 hours before scheduled departure from the originating (or remote charting) station. Once the first chart is prepared, standard online bookings close, and vacant seats are released as 'Current Availability'. The final (second) chart is prepared 30 minutes before departure.");
@@ -63,6 +66,20 @@ export async function GET() {
           : "";
       lines.push(
         `- [${name} (${t.trainNumber}) Chart Times](${baseUrl}/chart-times/${t.slug}): Chart preparation time, chart vacancy and chart status for train ${t.trainNumber} (${name})${route} — when the first and second reservation charts are prepared at each station.`,
+      );
+    }
+    lines.push("");
+  }
+
+  if (foodMenuPages.length > 0) {
+    lines.push("## Train Food Menus");
+    lines.push(
+      `Readable IRCTC catering menus and per-meal prices (taxes inclusive) per train, organised by class and meal. Full list of ${foodMenuPages.length} pages is in the [sitemap](${baseUrl}/sitemap.xml).`,
+    );
+    for (const m of foodMenuPages.slice(0, 100)) {
+      const route = m.route ? ` on the ${m.route} route` : "";
+      lines.push(
+        `- [${m.trainName} (${m.trainNumberPair}) Food Menu](${baseUrl}/irctc-train-food-menu/${m.slug}): IRCTC food menu and catering charges for train ${m.trainNumberPair} (${m.trainName})${route} — morning tea, breakfast, lunch/dinner and snacks by class.`,
       );
     }
     lines.push("");

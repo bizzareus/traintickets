@@ -8,6 +8,7 @@ import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { fetchWithTimeout } from '../common/fetch-with-timeout';
 import { buildCurl, curlLogEnabled } from '../common/curl-log';
 import { IrctcBrowserFallbackService } from './irctc-browser-fallback.service';
+import { IrctcCookieStoreService } from './irctc-cookie-store.service';
 
 const scheduleClient = createRetryingAxiosClient({
   serviceName: 'irctc/schedule',
@@ -225,6 +226,7 @@ export class IrctcService {
   constructor(
     private prisma: PrismaService,
     private irctcBrowserFallback: IrctcBrowserFallbackService,
+    private cookieStore: IrctcCookieStoreService,
   ) {}
 
   async getTrainSchedule(
@@ -376,7 +378,7 @@ export class IrctcService {
       ...SCHEDULE_HEADERS,
       greq: String(Date.now()),
     };
-    const cookies = process.env.IRCTC_COOKIES;
+    const cookies = this.cookieStore.getCookie();
     if (cookies?.trim()) {
       headers['Cookie'] = cookies.trim();
     }
@@ -935,7 +937,7 @@ export class IrctcService {
       'sec-ch-ua-mobile': '?0',
       'sec-ch-ua-platform': '"macOS"',
     };
-    const cookies = process.env.IRCTC_COOKIES;
+    const cookies = this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
     const t0 = Date.now();
@@ -1085,7 +1087,7 @@ export class IrctcService {
       'sec-ch-ua-mobile': '?0',
       'sec-ch-ua-platform': '"macOS"',
     };
-    const cookies = process.env.IRCTC_COOKIES;
+    const cookies = this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
     const t0 = Date.now();
@@ -1286,7 +1288,7 @@ export class IrctcService {
       'user-agent':
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
     };
-    const cookies = process.env.IRCTC_COOKIES;
+    const cookies = this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
     const t0 = Date.now();
