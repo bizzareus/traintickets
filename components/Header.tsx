@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { HomeStrings } from "@/lib/home/home-langs";
+import { MobileNav, type NavLink } from "@/components/MobileNav";
 
 const DEFAULT_NAV: HomeStrings["nav"] = {
   confirmed: "Confirmed Tickets",
@@ -24,10 +25,19 @@ export function Header({
 } = {}) {
   const homeHref = lang && lang !== "en" ? `/${lang}` : "/";
 
+  const links: NavLink[] = [
+    { href: homeHref, label: nav.confirmed },
+    { href: "/chart-vacancy", label: nav.chartVacancy },
+    { href: "/pnr-status", label: nav.pnrStatus },
+    { href: "/chart-times", label: nav.chartTimes },
+    { href: "/irctc-train-food-menu", label: nav.foodMenu },
+    { href: "/blog", label: nav.blog },
+  ];
+
   return (
     <div className="sticky top-0 z-20">
       <header
-        className="border-b border-slate-100 bg-white/95 backdrop-blur-sm"
+        className="relative border-b border-slate-100 bg-white/95 backdrop-blur-sm"
         role="banner"
       >
         <div className="mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
@@ -37,26 +47,20 @@ export function Header({
           >
             LastBerth
           </Link>
-          <nav className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 text-sm font-semibold text-slate-700 sm:gap-x-4">
-            <Link href={homeHref} className="hover:text-blue-600 transition-colors">
-              {nav.confirmed}
-            </Link>
-            <Link href="/chart-vacancy" className="hover:text-blue-600 transition-colors">
-              {nav.chartVacancy}
-            </Link>
-            <Link href="/pnr-status" className="hover:text-blue-600 transition-colors">
-              {nav.pnrStatus}
-            </Link>
-            <Link href="/chart-times" className="hover:text-blue-600 transition-colors">
-              {nav.chartTimes}
-            </Link>
-            <Link href="/irctc-train-food-menu" className="hover:text-blue-600 transition-colors">
-              {nav.foodMenu}
-            </Link>
-            <Link href="/blog" className="hover:text-blue-600 transition-colors">
-              {nav.blog}
-            </Link>
+          {/* Desktop inline nav (md+) */}
+          <nav className="hidden items-center justify-end gap-x-4 text-sm font-semibold text-slate-700 md:flex">
+            {links.map((l) => (
+              <Link
+                key={l.href + l.label}
+                href={l.href}
+                className="transition-colors hover:text-blue-600"
+              >
+                {l.label}
+              </Link>
+            ))}
           </nav>
+          {/* Mobile hamburger menu (below md) */}
+          <MobileNav links={links} />
         </div>
       </header>
     </div>
