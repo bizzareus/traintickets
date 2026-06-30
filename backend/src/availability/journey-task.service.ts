@@ -6,9 +6,17 @@ import {
   type TrainScheduleResponse,
 } from '../irctc/irctc.service';
 import { TrainCompositionService } from '../train-composition/train-composition.service';
-import { Service2Service } from '../service2/service2.service';
+import {
+  Service2Service,
+  type Service2CheckResult,
+  type OpenAiBookingPlanItem,
+  type OpenAIStructuredSeat,
+} from '../service2/service2.service';
 import { NotificationService } from '../notification/notification.service';
-import { BookingV2Service } from '../booking-v2/booking-v2.service';
+import {
+  BookingV2Service,
+  type FindAlternatePathsResult,
+} from '../booking-v2/booking-v2.service';
 import { DateTime } from 'luxon';
 import {
   getTrainDoesNotRunOnDateError,
@@ -97,6 +105,66 @@ function chartTaskFailureText(payload: unknown): string {
 
 function isRetryableChartTaskFailure(payload: unknown): boolean {
   return isRetryableRailFailureText(chartTaskFailureText(payload));
+}
+
+/**
+ * Map a Search-Route alternate-paths result onto the Service2CheckResult shape the
+ * alert task and notification already consume, so the seat alert can run on the
+ * same engine the homepage uses (ConfirmTkt availability + IRCTC schedule) instead
+ * of an OpenAI call. Confirmed legs become the booking plan (one filled slot per
+ * route leg, `{}` for a non-bookable hop). When no confirmed leg exists we report a
+ * `not_prepared_yet` status so the task keeps polling on its existing schedule.
+ */
+function alternatePathsToCheckResult(
+  alt: FindAlternatePathsResult,
+): Service2CheckResult {
+  const confirmedLegs = alt.legs.filter((l) => l.segmentKind === 'confirmed');
+
+  if (confirmedLegs.length === 0) {
+    return {
+      status: 'failed',
+      vacantBerth: { vbd: [], error: null },
+      chartStatus: {
+        kind: 'not_prepared_yet',
+        message: 'Confirmed seats not available yet',
+      },
+      debugLog: alt.debugLog,
+    };
+  }
+
+  const plan: OpenAiBookingPlanItem[] = alt.legs.map((l) =>
+    l.segmentKind === 'confirmed'
+      ? {
+          instruction: `${l.from} - ${l.to} - ${l.travelClass ?? ''}`.trim(),
+          approx_price: l.fare ?? 0,
+        }
+      : ({} as OpenAiBookingPlanItem),
+  );
+
+  const seats: OpenAIStructuredSeat[] = confirmedLegs.map((l) => ({
+    coach: '',
+    berth: '',
+    class: l.travelClass ?? '',
+    seat: '',
+    from: l.from,
+    to: l.to,
+  }));
+
+  const fullyConfirmed =
+    alt.isComplete && alt.legs.every((l) => l.segmentKind === 'confirmed');
+  const summary = fullyConfirmed
+    ? 'Confirmed seats are available for your full journey. Book now.'
+    : 'Confirmed seats are available for part of your journey. Book the confirmed legs below.';
+
+  return {
+    status: 'success',
+    vacantBerth: { vbd: [], error: null },
+    openAiSummary: summary,
+    openAiStructuredSeats: seats,
+    openAiBookingPlan: plan,
+    openAiTotalPrice: alt.totalFare ?? undefined,
+    debugLog: alt.debugLog,
+  };
 }
 
 function chartAtIsDue(chartAt: Date, now = new Date()): boolean {
@@ -519,94 +587,27 @@ export class JourneyTaskService {
         trainStartDate: trainStartDateStr,
         destinationStation: task.toStationCode,
       });
-      let result = await this.service2.check({
+      // Resolve the class the user subscribed for so we probe the same class
+      // they entered in the alert (the rest of the OD comes from the task).
+      const monitorRequest =
+        await this.prisma.journeyMonitoringRequest.findUnique({
+          where: { id: task.journeyRequestId },
+        });
+      const subscribedClass = monitorRequest?.classCode?.trim().toUpperCase();
+
+      // Check for vacant berths with the same engine the Search Route uses
+      // (alternate paths over ConfirmTkt availability + IRCTC schedule). It
+      // already retries across ±station offsets internally, so there's no
+      // manual offset loop here, and no OpenAI call.
+      const alt = await this.bookingV2Service.findAlternatePaths({
         trainNumber: task.trainNumber,
-        stationCode: task.stationCode,
-        journeyDate: journeyDateStr,
-        trainStartDate: trainStartDateStr,
-        destinationStation: task.toStationCode,
-        triggerSource: 'cron',
+        from: task.fromStationCode,
+        to: task.toStationCode,
+        date: journeyDateStr,
+        avlClasses: subscribedClass ? [subscribedClass] : undefined,
+        quota: 'GN',
       });
-
-      if (
-        result.status !== 'success' ||
-        !result.openAiStructuredSeats ||
-        result.openAiStructuredSeats.length === 0
-      ) {
-        const scheduleResult = await this.irctc.getTrainSchedule(
-          task.trainNumber,
-        );
-        if (scheduleResult.ok && scheduleResult.schedule?.stationList?.length) {
-          const stationList = scheduleResult.schedule.stationList;
-          const codes = stationList
-            .map((s) =>
-              String(s.stationCode ?? '')
-                .trim()
-                .toUpperCase(),
-            )
-            .filter(Boolean);
-          const fromIdx = codes.indexOf(task.fromStationCode);
-          const toIdx = codes.indexOf(task.toStationCode);
-
-          if (fromIdx >= 0 && toIdx >= 0 && fromIdx < toIdx) {
-            const maxOffset = 4;
-            let offsetFound = false;
-
-            for (let offset = 1; offset <= maxOffset; offset++) {
-              const combos = [
-                { before: offset, after: 0 },
-                { before: 0, after: offset },
-                { before: offset, after: offset },
-              ];
-
-              for (const combo of combos) {
-                const startIdx = Math.max(0, fromIdx - combo.before);
-                const endIdx = Math.min(codes.length - 1, toIdx + combo.after);
-
-                // Skip if we didn't actually shift
-                if (startIdx === fromIdx && endIdx === toIdx) continue;
-
-                const X_offset = codes[startIdx];
-                const Y_offset = codes[endIdx];
-
-                console.log(
-                  `[alert-task ${task.id}] Trying fallback station offset (before=${combo.before}, after=${combo.after}): ${X_offset} -> ${Y_offset}`,
-                );
-
-                try {
-                  const offsetResult = await this.service2.check({
-                    trainNumber: task.trainNumber,
-                    stationCode: X_offset,
-                    journeyDate: journeyDateStr,
-                    trainStartDate: trainStartDateStr,
-                    destinationStation: Y_offset,
-                    triggerSource: 'cron',
-                  });
-
-                  if (
-                    offsetResult.status === 'success' &&
-                    offsetResult.openAiStructuredSeats &&
-                    offsetResult.openAiStructuredSeats.length > 0
-                  ) {
-                    console.log(
-                      `[alert-task ${task.id}] Found confirmed seats using fallback: ${X_offset} -> ${Y_offset}`,
-                    );
-                    result = offsetResult;
-                    offsetFound = true;
-                    break;
-                  }
-                } catch (err) {
-                  console.error(
-                    `[alert-task ${task.id}] Offset check failed for ${X_offset} -> ${Y_offset}`,
-                    err,
-                  );
-                }
-              }
-              if (offsetFound) break;
-            }
-          }
-        }
-      }
+      const result = alternatePathsToCheckResult(alt);
 
       console.log('result', result);
 
