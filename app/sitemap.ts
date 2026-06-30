@@ -3,6 +3,7 @@ import { listBlogPosts, getAvailableTranslations } from "@/lib/blog";
 import { getAllGlossaryTerms, listAvailableGlossaryLangs } from "@/lib/seo/glossary-db";
 import { getTopRoutes } from "@/lib/seo/routes-db";
 import { listChartTimesIndex } from "@/lib/chartTimes";
+import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
 import { HOME_LANGS } from "@/lib/home/home-langs";
 
 const siteUrl =
@@ -90,6 +91,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: now,
   }));
 
+  // 4c. Train food-menu pages (index + every committed content/irctc-train-food-menu/*.json)
+  const foodMenuRoutes: MetadataRoute.Sitemap = [
+    { url: url("/irctc-train-food-menu"), lastModified: now },
+    ...listTrainFoodMenuIndex().map((m) => ({
+      url: url(`/irctc-train-food-menu/${m.slug}`),
+      lastModified: now,
+    })),
+  ];
+
   // 5. Localized blog index routes (e.g. /blog, /blog/hi, etc.)
   const langs = ["en", "mr", "hi", "bn", "ta", "te", "ml"];
   const blogIndexRoutes: MetadataRoute.Sitemap = langs.map((lang) => {
@@ -142,6 +152,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...trainRouteRoutes,
     ...trainRoutes,
     ...chartTimesRoutes,
+    ...foodMenuRoutes,
     ...blogIndexRoutes,
     ...postRoutes,
   ];

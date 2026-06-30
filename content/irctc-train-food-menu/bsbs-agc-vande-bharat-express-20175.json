@@ -1,0 +1,259 @@
+{
+  "trainNumber": "20175",
+  "trainNumberPair": "20175-76",
+  "trainName": "Vande Bharat Express",
+  "route": "BSBS-AGC",
+  "originCode": "BSBS",
+  "destinationCode": "AGC",
+  "classes": [
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Corn Starch Stirrer + Good quality Napkin tissue + Hard Ribbed disposable Cup"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs)"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 122,
+          "items": [
+            {
+              "item": "Veg.",
+              "description": "2 Millet mix Paratha + Subji + Veg Cutlet (1 pc) + Branded Curd or Kulcha (2 pcs + Chole + Veg Cutlet (1 pc) + Branded Curd or Millet mix Idli 3 Nos each + Sambhar + Veg. Croquet +Branded Curd or Paneer Cutlet 2pc- each + Sauted Vegetables + Finger Chips + 2 pcs of Branded Twin sliced pack brown/ multigrain bread + Butter Chiplet + Jam Sachet/Blister pack"
+            },
+            {
+              "item": "Non-Veg.",
+              "description": "Masala Omlette with Sauted Boiled vegetables + finger chips + with 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack or Cheese Omlette with Sauted Boiled vegetables + finger chips + with 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack"
+            },
+            {
+              "item": "Cake (Eggless)",
+              "description": "Branded Eggless Croissant"
+            },
+            {
+              "item": "Hot Beverages",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 222,
+          "items": [
+            {
+              "item": "Rice",
+              "description": "Veg. Pulao or Jeera Rice or Plain Rice or Matar Pulao"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Missi Roti (02 nos) or Lachha Parantha (02 nos) or RTE Fully Cooked Roti* (03 nos) or Methi Paratha (02 nos)"
+            },
+            {
+              "item": "Dal",
+              "description": "Kadhi Pakoda or Dal Makhani or Dal Pancmahal or Mix Dal"
+            },
+            {
+              "item": "Main Course Veg. Dish",
+              "description": "Aloo Pyaz Paneer or Matar Paneer or Paneer butter Masala or Palak Paneer"
+            },
+            {
+              "item": "Main Course Non Veg. dish",
+              "description": "Chichen Do pyaza or Red Chichen curry or Bhuna Chichen or Handi Chicken"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "Bhindi Masala or Aloo Gobhi or Mix Veg or Aloo Capsicum"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in blister pack"
+            },
+            {
+              "item": "Dessert",
+              "description": "Branded Ice cream/Branded Ice cream Sugar Free or Branded pre-packed Gulab Jamun/Balu shahi/ Ragi Laddoo"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 66,
+          "items": [
+            {
+              "item": "Snacks Hamper Bag",
+              "description": "Dry Samosa + Branded Namkeen/Bhujia/Diet Mixture +Branded Caramel Popcorn or Dal Kachori + Branded Namkeen/Bhujia/Diet Mixture +Branded Caramel Popcorn or Aloo-matar Samosa + Branded Namkeen/Bhujia/Diet Mixture +Branded Caramel Popcorn or Matar Kachori +Branded Namkeen/Bhujia/Diet Mixture +Branded Caramel Popcorn"
+            },
+            {
+              "item": "Tetra Pack Juice",
+              "description": "Branded Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit- Envelope with Stainless Steel Tea Spoon + Good quality Napkin tissue"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/Oats Cookies/ Millet based Cookies (2 Pcs)"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 155,
+          "items": [
+            {
+              "item": "Cereal",
+              "description": "Corn Flakes/Muesli/ Millet Muesli/Millet flakes/Oats with milk (Hot/Cold) and sugar/Honey Sachet"
+            },
+            {
+              "item": "Veg.",
+              "description": "2 Millet mix Paratha + Subji + Veg Cutlet (1 pc) + Branded Curd or Kulcha (2 pcs + Chole + Veg Cutlet (1 pc) + Branded Curd or Millet mix Idli 3 Nos each + Sambhar + Veg. Croquet +Branded Curd or Paneer Cutlet 2pc- each + Sauted Vegetables + Finger Chips + 2 pcs of Branded Twin sliced pack brown/ multigrain bread + Butter Chiplet + Jam Sachet/Blister pack"
+            },
+            {
+              "item": "Non-Veg.",
+              "description": "Masala Omlette with Sauted Boiled vegetables + finger chips + with 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack or Cheese Omlette with Sauted Boiled vegetables + finger chips + with 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack"
+            },
+            {
+              "item": "Fruit",
+              "description": "02 Banana/01 Apple/Orange-1pc"
+            },
+            {
+              "item": "Cake (Eggless)",
+              "description": "Branded Eggless Croissant"
+            },
+            {
+              "item": "Juice",
+              "description": "Branded Coconut water/Branded Diet Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice"
+            },
+            {
+              "item": "Hot Beverages",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 244,
+          "items": [
+            {
+              "item": "Soup",
+              "description": "Branded Pre-mix Sachet Tomato Soup + Packed Multigrain Soup sticks 2/ Dinner bun 1+ Butter Chiplet"
+            },
+            {
+              "item": "Rice",
+              "description": "Veg. Pulao or Jeera Rice or Plain Rice or Matar Pulao"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Missi Roti (02 nos) or Lachha Parantha (02 nos) or RTE Fully Cooked Roti* (03 nos) or Methi Paratha (02 nos)"
+            },
+            {
+              "item": "Dal",
+              "description": "Kadhi Pakoda or Dal Makhani or Dal Pancmahal or Mix Dal"
+            },
+            {
+              "item": "Main Course Veg. Dish",
+              "description": "Aloo Pyaz Paneer or Matar Paneer or Paneer butter Masala or Palak Paneer"
+            },
+            {
+              "item": "Main Course Non Veg. dish",
+              "description": "Chichen Do pyaza or Red Chichen curry or Bhuna Chichen or Handi Chicken"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "Bhindi Masala or Aloo Gobhi or Mix Veg or Aloo Capsicum"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in blister pack"
+            },
+            {
+              "item": "Dessert",
+              "description": "Premium flavoured Ice cream/ Premium flavoured Ice cream Sugar Free i.e. Chocolate/Butter scotch/ Kaju pista/ fruit & Nut) or Branded pre-packed Millet ladoo/Millet Kheer/Choorma Ladoo/Gujiya/ Mini Ghewar/Rabri/Kalakand/Makkhan Bada/Malpua (On Rotational Basis)"
+            }
+          ]
+        },
+        {
+          "service": "Evening Tea",
+          "price": 105,
+          "items": [
+            {
+              "item": "Snacks Hamper Bag",
+              "description": "Dry Samosa + Branded Chikki Bar/Millet Bar/Multi Millet Bar + Branded Namkeen/Bhujia/Diet Mixture +Branded Caramel Popcorn or Dal Kachori + Branded Chikki Bar/Millet Bar/Multi Millet Bar + Branded Namkeen/Bhujia/Diet Mixture +Branded Caramel Popcorn or Aloo-matar Samosa +Branded Chikki Bar/Millet Bar/Multi Millet Bar + Branded Namkeen/Bhujia/Diet Mixture +Branded Caramel Popcorn or Matar Kachori +Branded Chikki Bar/Millet Bar/Multi Millet Bar + Branded Namkeen/Bhujia/Diet Mixture +Branded Caramel Popcorn"
+            },
+            {
+              "item": "Dry Fruits",
+              "description": "Branded Salted Cashew Packet/ Salted Pistacchio Packet/Salted Almonds Packet/ Branded Makhana Packet"
+            },
+            {
+              "item": "Tetra Pack Juice",
+              "description": "Branded Coconut water/Branded Diet Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "All cooked meal packets should bear QR Code with details of Name of unit, FSSAI license no., Veg./Non-veg item name, Gramage etc. and date of packing and Veg/N.Veg. Sticker.",
+    "Pre-mix Tea/Coffee/Green Tea/Malt beverage should be served with Stirrer, disposable hard paper/corn starch cups, paper napkin & Hot Water (150 ml) in flask.",
+    "Only boneless chicken should be used in chicken dish preparation. Neck & wing portions of chicken should not be served.",
+    "The menu should be served on cyclic basis.",
+    "Service of Morning Tea/Breakfast/Lunch/Dinner to be done in acrylic trays (as per tray color to differentiate Veg./N. Veg.).",
+    "Service Evening Snacks to be preferably done in Snacks Box with co-branding of Vande Bharat Train.",
+    "All the packaging materials including disposable items may be as per color scheme of Vande Bharat Express with co-branding of IRCTC and Licensee.",
+    "Tray mat with Bi-lingual Menu/QR code to be used.",
+    "Hard ribbed disposable paper cups to be used for service of Beverages.",
+    "All food items should be individually packed & served in Coloured Teflon coated Aluminium Casseroles (60-70 micron)/ Corn Starch packaging material and Parathas should be packed/served in aluminum wrapper.",
+    "Malt beverages to be provided to Children instead of Tea/Coffee.",
+    "For the passengers of Executive class, the services will be more personalized through high quality crockery, cutlery, napkin etc."
+  ],
+  "slug": "bsbs-agc-vande-bharat-express-20175",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/20175.pdf",
+  "generatedAt": "2026-06-30T22:08:39.056Z"
+}

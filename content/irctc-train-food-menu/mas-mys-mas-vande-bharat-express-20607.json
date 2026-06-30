@@ -1,0 +1,282 @@
+{
+  "trainNumber": "20607",
+  "trainNumberPair": "20607-08",
+  "trainName": "Vande Bharat Express",
+  "route": "MAS-MYS-MAS",
+  "originCode": "MAS",
+  "destinationCode": "MYS",
+  "classes": [
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea, Coffee, Malt Beverages or individual packs of approved brands of Lemon Tea, Black Tea, Green Tea, Black Coffee {Sugar Sachet or Sugar free sachets}"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit, Cookies, Millet based Cookies (2 Pcs)"
+            },
+            {
+              "item": "Kit",
+              "description": "Corn Starch Stirrer, Good quality paper napkin tissue, Hard ribbed disposable cup"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 155,
+          "items": [
+            {
+              "item": "Cereal",
+              "description": "Corn Flakes, Muesli, Millet Muesli, Millet Flakes, Oats with milk (Hot/Cold) and sugar"
+            },
+            {
+              "item": "Veg.",
+              "description": "served on a weekly cyclic basis: (1) Idly 2 nos + Medhu Vada + Sarkarai Pongal + Kesari Sambar & Chutney; (2) Idly 2 nos + Medhu Vada + Pongal + Pineapple Kesari + Sambar & Chutney; (3) Idly 2 nos + Medhu Vada + Karabath /Rava kitchdi + Shavige kesaribath + Sambar & Chutney; (4) Idly 2 nos + Medhu Vada + Wheat Uppma/Lemon Seva Uppma+ Bread halwa/Kesari bath + Sambar & chutney"
+            },
+            {
+              "item": "or Non-Veg.",
+              "description": "served on a weekly cyclic basis: (1) Masala Omelette +Veg Cutlets -02 nos + 02 slice of Brown Bread + Butter chiplet + Jam in blister pack; (2) Omelette + Veg Cutlets -02 nos + 02 slice of Brown Bread + Butter chiplet + Jam in blister pack; (3) Muttai Poriyal + Veg Cutlets -02 nos + 02 slice of Brown Bread + Butter chiplet + Jam in blister pack; (4) Scrambled Egg + Veg Cutlets -02 nos + 02 slice of Brown Bread + Butter chiplet + Jam in blister pack"
+            },
+            {
+              "item": "Cake (Eggless)",
+              "description": "Branded Eggless Muffin, Walnut cake, Brownie, Fruit Cake, croissant"
+            },
+            {
+              "item": "Fruit",
+              "description": "02 Banana, 01 Apple, 01 Orange"
+            },
+            {
+              "item": "Drinks",
+              "description": "Branded Coconut water, Branded Diet Aerated Drink, Branded Lassi, Flavoured Milk, Fruit Juice"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 244,
+          "items": [
+            {
+              "item": "Hot Beverages",
+              "description": "Option of Branded Premix based Tea, Coffee, Malt Beverages or individual packs of approved brands of Lemon Tea, Black Tea, Green Tea, Black Coffee {Sugar Sachet or Sugar free sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Tomato Sauce Sachets, Packed envelope having Good Quality Paper Napkin, Refreshing Tissue, Salt & Pepper Sachet (on demand), Stainless Steel Spoon & Fork, Mouth Freshener"
+            },
+            {
+              "item": "Veg Soup",
+              "description": "Branded Pre-mix Sachet Tomato Soup, Packed multi grain soup stick (02 nos) / Dinner bun (01 nos), Butter Chiplet"
+            },
+            {
+              "item": "Rice",
+              "description": "served on a weekly cyclic basis: (1) Plain rice (Ponni); (2) Ghee Rice/Veg Biriyani/Vegetable Brinji (Seeraga Samba); (3) Tamarind Rice /Lemon Rice/Bisibela bath/Tomato Rice; (4) Vegetable brinji (Seeraga Samba)"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "served on a weekly cyclic basis: (1) Chapathi (2nos); (2) Malabari wheat Parotta (2 mos); (3) Chapathi (2nos); (4) Wheat Parotta (2 Nos)"
+            },
+            {
+              "item": "Dal Dish",
+              "description": "served on a weekly cyclic basis: (1) Tomato paruppu Kootu; (2) Chowchow Kootu/Peerkkangai paruppu kootu; (3) Sorekai Thovve (Bottle guard paruppu); (4) Vadacurry"
+            },
+            {
+              "item": "Main Course Veg Dish",
+              "description": "served on a weekly cyclic basis: (1) Vathal/Paruppu Urundai/Kara Kozhambu; (2) Kadhamba Kaikari Kurma/Paneer Chettinadu; (3) Soya Pattani curry; (4) Chettinad vegetable gravy"
+            },
+            {
+              "item": "or Main Course NonVeg Dish",
+              "description": "served on a weekly cyclic basis: (1) Pallipalayam Chicken Curry (Bone less); (2) Kozhi varutha Kozhambu (Bone less); (3) Koli Saaru (Bone less); (4) Chettinad Kozhi Curry (Bone less)"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "served on a weekly cyclic basis: (1) Vazhakkai varuval/Vazhaikkai Payaru Poriyal; (2) Cabbage pattani/Cabbage Carrot Poriyal; (3) Kovaikkai varuval; (4) Beetroot /Kothavaraikai Poriyal"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in bluster pack/Sachet"
+            },
+            {
+              "item": "Dessert",
+              "description": "Branded Premium Ice cream (Butter scotch, Kaju Pista, fruit & Nut) Or Branded pre-packed Ragi / Kambu Ladoo"
+            },
+            {
+              "item": "Kit",
+              "description": "Packed envelope having Good Quality Napkin Tissue Paper, Refreshing Tissue, Salt & Pepper Sachet, Stainless Steel spoon & fork, Mouth Freshener"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 105,
+          "items": [
+            {
+              "item": "Snacks Box",
+              "description": "served on a weekly cyclic basis: (1) Garam pakkoda +Branded Kadalai mittai/Branded Sweet Boli (Holige)/Branded Adhirasam + Chocopie + Kai Murukku; (2) Keera vadai + Branded Coconut jaggery laddu/Branded Sweet Boli (Holige)/Branded Adhirasam +Chocopie + Madras Mixture; (3) Masala Vada + Branded Ellu urundai/Branded Sweet Boli (Holige)/Branded Adhirasam +Chocopie + Kara boondhi; (4) Mysore Bonda+ Branded Pori urundai/Branded Sweet Boli (Holige)/ Branded Adhirasam + Chocopie + Milagu Thattai"
+            },
+            {
+              "item": "Dry Fruits",
+              "description": "Branded Salted Cashew Packet, Salted Pistacchio Packet, Salted Almonds Packet, Branded Makhana Packet"
+            },
+            {
+              "item": "Drink",
+              "description": "Branded Coconut water, Branded Diet Aerated Drink, Branded Lassi, Flavoured Milk, Fruit Juices"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea, Coffee, Malt Beverages or individual packs of approved brands of Lemon Tea, Black Tea, Green Tea, Black Coffee {Sugar Sachet or Sugar free sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Tomato Sauce Sachets, Packed envelope having Good Quality Paper Napkin, Refreshing Tissue, Salt & pepper, Stainless Steel spoon & Fork, Mouth Freshener"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea, Coffee, Malt Beverages or individual packs of approved brands of Lemon Tea, Black Tea, Green Tea, Black Coffee {Sugar Sachet or Sugar free sachets}"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit, Cookies, Millet based Cookies (2 Pcs)"
+            },
+            {
+              "item": "Kit",
+              "description": "Corn Starch stirrer, Good quality paper napkin, Hard ribbed disposable cup"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 122,
+          "items": [
+            {
+              "item": "Veg.",
+              "description": "served on a weekly cyclic basis: (1) Idly 2 nos + Medhu Vada + Sarkarai Pongal + Kesari Sambar & Chutney; (2) Idly 2 nos + Medhu Vada + Pongal + Pineapple Kesari + Sambar & Chutney; (3) Idly 2 nos + Medhu Vada + Karabath /Rava kitchdi + Shavige kesaribath + Sambar & Chutney; (4) Idly 2 nos + Medhu Vada + Wheat Uppma/Lemon Seva Uppma+ Bread halwa/Kesari bath + Sambar & chutney"
+            },
+            {
+              "item": "or Non-Veg.",
+              "description": "served on a weekly cyclic basis: (1) Masala Omlette +Veg Cutlets -02 nos + with 02 slice of Brown Bread + Butter chiplet; (2) Omlette + Veg Cutlets -02 nos + with 02 slice of Brown Bread + Butter chiplet; (3) Muttai Poriyal + Veg Cutlets -02 nos + with 02 slice of Brown Bread + Butter chiplet; (4) Scrambled Egg + Veg Cutlets -02 nos + with 02 slice of Brown Bread + Butter chiplet"
+            },
+            {
+              "item": "Cake (Eggless)",
+              "description": "Branded Eggless Muffin, Walnut cake, Brownie, Fruit Cake, Croissant"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 222,
+          "items": [
+            {
+              "item": "Hot Beverages",
+              "description": "Option of Branded Premix based Tea, Coffee, Malt Beverages or individual packs of approved brands of Lemon Tea, Black Tea, Green Tea, Black Coffee {Sugar Sachet or Sugar free sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Tomato Sauce Sachets, Packed envelope having Good Quality Paper Napkin, Refreshing Tissue, Salt & Pepper Sachet, Wooden/Corn Starch Spoon Spoon & Fork"
+            },
+            {
+              "item": "Rice",
+              "description": "served on a weekly cyclic basis: (1) Plain rice (Ponni); (2) Ghee Rice/Veg Biriyani/Vegetable Brinji (Seeraga Samba); (3) Tamarind Rice /Lemon Rice/Bisibela bath/Tomato Rice; (4) Vegetable brinji (Seeraga Samba)"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "served on a weekly cyclic basis: (1) Chapathi (2nos); (2) Malabari wheat Parotta (2 Nos); (3) Chapathi (2nos); (4) Wheat Parotta (2 Nos)"
+            },
+            {
+              "item": "Dal Dish",
+              "description": "served on a weekly cyclic basis: (1) Tomato paruppu Kootu; (2) Chowchow Kootu/Peerkkangai paruppu kootu; (3) Sorekai Thovve (Bottle guard paruppu); (4) Vadacurry"
+            },
+            {
+              "item": "Main Course Veg Dish",
+              "description": "served on a weekly cyclic basis: (1) Vathal/Paruppu Urundai/Kara Kozhambu; (2) Kadhamba Kaikari Kurma/Paneer Chettinadu; (3) Soya Pattani curry; (4) Chettinad vegetable gravy"
+            },
+            {
+              "item": "or Main Course NonVeg Dish",
+              "description": "served on a weekly cyclic basis: (1) Pallipalayam Chicken Curry (Bone less); (2) Kozhi varutha Kozhambu (Bone less); (3) Koli Saaru (Bone less); (4) Chettinad Kozhi Curry (Bone less)"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "served on a weekly cyclic basis: (1) Vazhakkai varuval/Vazhaikkai Payaru Poriyal; (2) Cabbage pattani/Cabbage Carrot Poriyal; (3) Kovaikkai varuval; (4) Beetroot /Kothavaraikai Poriyal"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in blister pack/Sachet"
+            },
+            {
+              "item": "Dessert",
+              "description": "Premium flavoured Ice cream Or Ragi / Kambu Ladoo"
+            },
+            {
+              "item": "Kit",
+              "description": "Packed envelope having Good Quality Paper Napkin, Refreshing Tissue, Salt & Pepper Sachet, Wooden/Corn Starch Spoon & Fork"
+            }
+          ]
+        },
+        {
+          "service": "Evening Hi-Tea Snacks",
+          "price": 66,
+          "items": [
+            {
+              "item": "Snacks Box",
+              "description": "served on a weekly cyclic basis: (1) Garam pakkoda +Branded Kadalai mittai/Branded Sweet Boli( Holige)/Branded Adhirasam+ Kai Murukku; (2) Keera vadai + Branded Coconut jaggery laddu/Branded Sweet Boli(Holige)/ Branded Adhirasam + Madras Mixture; (3) Masala Vada + Branded Ellu urundai/Branded Sweet Boli( Holige)/Branded Adhirasam + Kara boondhi; (4) Mysore Bonda + Branded Pori urundai/Branded Sweet Boli( Holige)/ Branded Adhirasam + Milagu Thattai"
+            },
+            {
+              "item": "Drink",
+              "description": "Branded Coconut water, Branded Aerated Drink, Branded Lassi, Flavoured Milk, Fruit Juices"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Branded Premix based Tea, Coffee, Malt Beverages or individual packs of approved brands of Lemon Tea, Black Tea, Green Tea, Black Coffee {Sugar Sachet or Sugar free sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Packed envelope having Good Quality Napkin Tissue Paper, Tomato Sauce Sachets, Refreshing Tissue, Salt & Pepper Sachet/Wooden/Corn Starch Spoon & Fork"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "All cooked meal packets should bear QR Code with details of Name of unit, FSSAI license no., Veg./Non-veg item name, Grammage etc. and date of packing and Veg/N.Veg. Sticker.",
+    "Pre-mix Tea/Coffee/Green Tea/Malt beverage should be served with Stirrer, disposable hard paper/corn starch cups, paper napkin & Hot Water (150 ml) in flask.",
+    "Only boneless chicken should be used in chicken dish preparation. Neck & wing portions of chicken should not be served.",
+    "The menu should be served on cyclic basis.",
+    "Service of Morning Tea/Breakfast/Lunch/Dinner to be done in acrylic trays (as per tray colour to differentiate Veg./N. Veg.).",
+    "Service Evening Snacks of local regional brands to be preferably done in Snacks Box with co-branding of Vande Bharat Train.",
+    "All the packaging materials including disposable items may be as per colour scheme of Vande Bharat Express with co-branding of IRCTC and Licensee.",
+    "Tray mat with Bi-lingual Menu/QR code to be used.",
+    "For the passengers of Executive Class, the services will be more personalized through high quality crockery, cutlery, napkin etc.",
+    "All food items should be individually packed & served in Aluminium Casseroles (60-70 microns)/Corn starch packaging material and Parottas/Chapatis should be packed/served in aluminium wrapper.",
+    "Malt beverages to be provided to children instead of Tea/Coffee."
+  ],
+  "slug": "mas-mys-mas-vande-bharat-express-20607",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/20607.pdf",
+  "generatedAt": "2026-06-30T22:08:48.492Z"
+}

@@ -6,6 +6,7 @@ const DEFAULT_NAV: HomeStrings["nav"] = {
   chartVacancy: "Chart Vacancy",
   pnrStatus: "PNR Status",
   chartTimes: "Chart Times",
+  foodMenu: "Food Menu",
   blog: "Blog",
 };
 
@@ -48,6 +49,9 @@ export function Header({
             </Link>
             <Link href="/chart-times" className="hover:text-blue-600 transition-colors">
               {nav.chartTimes}
+            </Link>
+            <Link href="/irctc-train-food-menu" className="hover:text-blue-600 transition-colors">
+              {nav.foodMenu}
             </Link>
             <Link href="/blog" className="hover:text-blue-600 transition-colors">
               {nav.blog}

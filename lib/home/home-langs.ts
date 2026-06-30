@@ -46,6 +46,7 @@ export type HomeStrings = {
     chartVacancy: string;
     pnrStatus: string;
     chartTimes: string;
+    foodMenu: string;
     blog: string;
   };
   seo: {

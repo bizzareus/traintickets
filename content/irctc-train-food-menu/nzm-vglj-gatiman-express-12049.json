@@ -1,0 +1,286 @@
+{
+  "trainNumber": "12049",
+  "trainNumberPair": "12049-50",
+  "trainName": "GATIMAN Express",
+  "route": "NZM-VGLJ",
+  "originCode": "NZM",
+  "destinationCode": "VGLJ",
+  "classes": [
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Breakfast",
+          "price": 175,
+          "items": [
+            {
+              "item": "Refresher",
+              "description": "Tetra pack juice"
+            },
+            {
+              "item": "Cut Fruits",
+              "description": "Cut Fruits/Seasonal Fruits"
+            },
+            {
+              "item": "Bread",
+              "description": "Brown bread slice"
+            },
+            {
+              "item": "Jam",
+              "description": "Jam blister"
+            },
+            {
+              "item": "Butter Chiplet",
+              "description": "Butter Chiplet"
+            },
+            {
+              "item": "Main Course (Veg.)",
+              "description": "Aloo paratha, Potato curry, Pickle / Mini Uttapam, Vada - 2 nos, Sambhar, Chutney / Cottage Cheese cutlet 2 Nos, Potato finger chips, Boiled veggies, Tomato ketchup"
+            },
+            {
+              "item": "Main Course (Non. Veg.)",
+              "description": "Plain Omelette, Potato finger chips, Boiled veggies, Tomato ketchup / Chicken Kathi Roll, Potato finger chips, Boiled veggies, Tomato ketchup"
+            },
+            {
+              "item": "Cake slice",
+              "description": "Choco/Strawberry muffins"
+            },
+            {
+              "item": "Salt Sachet",
+              "description": "Salt Sachet"
+            },
+            {
+              "item": "Pepper Sachet",
+              "description": "Pepper Sachet"
+            },
+            {
+              "item": "Mouth Freshener",
+              "description": "Mouth Freshener"
+            },
+            {
+              "item": "Digestive",
+              "description": "Cookies"
+            },
+            {
+              "item": "Cookies",
+              "description": "Cookies"
+            },
+            {
+              "item": "Tea/Coffee",
+              "description": "Disposable paper cups with tea/coffee kit"
+            },
+            {
+              "item": "Sanitizer",
+              "description": "IRCTC approved hand sanitizer"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 175,
+          "items": [
+            {
+              "item": "Namkeen",
+              "description": "Namkeen packet"
+            },
+            {
+              "item": "Refresher",
+              "description": "Cocojal/Nimbu pani"
+            },
+            {
+              "item": "Main Course (Veg.)",
+              "description": "Hariyali Malai Kebab, Mini kulchey, Pindi chana, Mint chutney / Cottage cheese shaslik, Lyonnaise potatoes, Tomato salsa / Panner Masala Kathi Roll, Crispy fried Stick Potato, Dhaniya Pudina Chutney, Tomato Ketchup"
+            },
+            {
+              "item": "Main Course (Non. Veg.)",
+              "description": "Chicken roll, Baked potato wedges, Tomato Ketchup"
+            },
+            {
+              "item": "Sweet",
+              "description": "Coconut Khoya Barfi / Chocolate Brownie"
+            },
+            {
+              "item": "Ice cream/ Cake Slice",
+              "description": "Ice cream/Fruit Cake Slice"
+            },
+            {
+              "item": "Salt Sachet",
+              "description": "Salt Sachet"
+            },
+            {
+              "item": "Pepper Sachet",
+              "description": "Pepper Sachet"
+            },
+            {
+              "item": "Mouth Freshener",
+              "description": "Mouth Freshener"
+            },
+            {
+              "item": "Tea/Coffee",
+              "description": "Tea Coffee kit with disposable paper cup"
+            },
+            {
+              "item": "Digestive",
+              "description": "Cookies -2"
+            },
+            {
+              "item": "Cookies",
+              "description": "Cookies"
+            },
+            {
+              "item": "Sanitizer",
+              "description": "IRCTC approved hand sanitizer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Breakfast",
+          "price": 250,
+          "items": [
+            {
+              "item": "Refresher",
+              "description": "Tetra pack juice"
+            },
+            {
+              "item": "Cut Fruits",
+              "description": "Cut Fruits/Seasonal Fruits"
+            },
+            {
+              "item": "Cornflakes served milk",
+              "description": "Cornflakes served with milk"
+            },
+            {
+              "item": "Bread",
+              "description": "Two slices of multigrain/brown bread"
+            },
+            {
+              "item": "Jam",
+              "description": "Jam blister"
+            },
+            {
+              "item": "Butter Chiplet",
+              "description": "Butter Chiplet"
+            },
+            {
+              "item": "Main Course (Veg.)",
+              "description": "Aloo paratha, Bhaji, Pickle / Mini Uttapam, Whole wheat upma, Sambhar, Chutney / Cottage Cheese Cutlet - (2 Nos.), Potato finger chip / packed chips, Butter green peas, Tomato ketchup"
+            },
+            {
+              "item": "Main Course (Non. Veg.)",
+              "description": "Plain Omelette, Potato finger chip / packed chips, Butter green peas, Tomato ketchup / Chicken Kathi Roll, Potato finger chip/ packed chips, Butter green peas, Tomato ketchup"
+            },
+            {
+              "item": "Yoghurt",
+              "description": "Flavoured yoghurt/Mishti Doi"
+            },
+            {
+              "item": "Cake slice",
+              "description": "Vanilla/Choco/Strawberry muffins"
+            },
+            {
+              "item": "Salt Sachet",
+              "description": "Salt Sachet"
+            },
+            {
+              "item": "Pepper Sachet",
+              "description": "Pepper Sachet"
+            },
+            {
+              "item": "Mouth Freshener",
+              "description": "Mouth Freshener"
+            },
+            {
+              "item": "Digestive",
+              "description": "Cookies"
+            },
+            {
+              "item": "Cookies",
+              "description": "Cookies"
+            },
+            {
+              "item": "Tea/Coffee",
+              "description": "Tea Coffee kit with disposable paper cup"
+            },
+            {
+              "item": "Sanitizer",
+              "description": "IRCTC approved hand sanitizer"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 250,
+          "items": [
+            {
+              "item": "Refresher",
+              "description": "Cocojal/Nimbu pani"
+            },
+            {
+              "item": "Roasted Nuts",
+              "description": "Roasted Nuts"
+            },
+            {
+              "item": "Main Course (Veg)",
+              "description": "Veg Shammi kebab, Mini kulchey, Pindi Chana, Mint chutney / Cottage cheese shaslik, Lyonnaise potatoes, Tomato salsa / Pasta-penne with bell - pepper & Napolitano Sauce, Butter Corn-American Style, Cheese Garlic Toast, Pepper & Tomato Salsa"
+            },
+            {
+              "item": "Main Course (Non. Veg)",
+              "description": "Chicken Kathi Roll, Baked Potato wedges, Cheese Garlic Toast, Pepper and tomato salsa"
+            },
+            {
+              "item": "Sweet",
+              "description": "Coconut Khoya Barfi / Chocolate Brownie"
+            },
+            {
+              "item": "Sandwich",
+              "description": "Coleslaw sandwich/Plain Cheese Sandwich"
+            },
+            {
+              "item": "Cake slice",
+              "description": "Tutty fruity cake slice"
+            },
+            {
+              "item": "Salt Sachet",
+              "description": "Salt Sachet"
+            },
+            {
+              "item": "Pepper Sachet",
+              "description": "Pepper Sachet"
+            },
+            {
+              "item": "Mouth Freshener",
+              "description": "Mouth Freshener"
+            },
+            {
+              "item": "Tea/ Coffee",
+              "description": "On service"
+            },
+            {
+              "item": "Digestive",
+              "description": "Cookies"
+            },
+            {
+              "item": "Cookies",
+              "description": "Cookies"
+            },
+            {
+              "item": "Sanitizer",
+              "description": "IRCTC approved hand sanitizer"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [],
+  "slug": "nzm-vglj-gatiman-express-12049",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/12049.pdf",
+  "generatedAt": "2026-06-30T22:08:10.531Z"
+}
