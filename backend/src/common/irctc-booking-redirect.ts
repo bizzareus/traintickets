@@ -25,9 +25,9 @@ export function irctcBookingRedirect(
     .replace(/AC$/i, 'A');
 
   if (!from || !to || !trainNo) {
-    return 'https://irctc.co.in/eticketing/login';
+    return 'https://www.irctc.co.in/eticketing/login';
   }
 
-  // user requested format: irctc.co.in/nget/redirect?from=NDLS&to=PTA&trainNo=11057&class=3E&page=train-chart
-  return `https://irctc.co.in/nget/redirect?from=${from}&to=${to}&trainNo=${trainNo}&class=${classCode}&page=train-chart`;
+  // user requested format: www.irctc.co.in/nget/redirect?from=PNU&to=ABR&trainNo=12957&class=3A&page=train-chart
+  return `https://www.irctc.co.in/nget/redirect?from=${from}&to=${to}&trainNo=${trainNo}&class=${classCode}&page=train-chart`;
 }
