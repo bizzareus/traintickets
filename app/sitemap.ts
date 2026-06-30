@@ -3,7 +3,7 @@ import { listBlogPosts, getAvailableTranslations } from "@/lib/blog";
 import { getAllGlossaryTerms, listAvailableGlossaryLangs } from "@/lib/seo/glossary-db";
 import { getTopRoutes } from "@/lib/seo/routes-db";
 import { listChartTimesIndex } from "@/lib/chartTimes";
-import { HOME_LANGS } from "@/lib/home/home-i18n";
+import { HOME_LANGS } from "@/lib/home/home-langs";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_APP_URL ||

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { HomeStrings } from "@/lib/home/home-i18n";
+import type { HomeStrings } from "@/lib/home/home-langs";
 
 const DEFAULT_NAV: HomeStrings["nav"] = {
   confirmed: "Confirmed Tickets",
