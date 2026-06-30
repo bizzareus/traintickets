@@ -107,6 +107,23 @@ export class IrctcSessionKeeperService implements OnModuleInit {
     };
   }
 
+  /**
+   * Manually overwrite the stored cookie bundle (admin paste-in). Use when the
+   * automated harvest can't be used from this host's IP and you want to drop in
+   * a cookie string captured from a working browser session yourself.
+   */
+  setCookieManually(cookie: string): { ok: boolean; error?: string; length?: number } {
+    const trimmed = (cookie ?? '').trim();
+    if (trimmed.length < 20 || !trimmed.includes('=')) {
+      return { ok: false, error: 'cookie string looks empty or malformed' };
+    }
+    this.cookieStore.setCookie(trimmed, { source: 'manual' });
+    this.lastRefreshAt = new Date().toISOString();
+    this.lastError = null;
+    this.logger.log(`[irctc-keeper] manual cookie set chars=${trimmed.length}`);
+    return { ok: true, length: trimmed.length };
+  }
+
   /** Harvest a fresh cookie bundle and persist it. Safe to call on demand. */
   async refresh(trigger: string): Promise<{ ok: boolean; error?: string }> {
     if (!this.enabled) return { ok: false, error: 'keeper disabled' };

@@ -23,6 +23,12 @@ export class AdminController {
     return this.irctcKeeper.refresh('manual');
   }
 
+  /** Manually paste in a cookie bundle (overrides whatever the keeper holds). */
+  @Post('irctc-keeper/cookie')
+  setIrctcKeeperCookie(@Body() body: { cookie?: string }) {
+    return this.irctcKeeper.setCookieManually(String(body?.cookie ?? ''));
+  }
+
   @Get('trains')
   getTrains() {
     return this.admin.getTrains();
