@@ -64,6 +64,10 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-travel-insurance-rules-coverage-claim-guide.md | IRCTC Travel Insurance: Rules, Coverage & Nominee Guide (EN + hi/mr/bn/ta/te/ml) | 2026-06-29 |
 | ttr-full-form-in-train.md | TTR Full Form in Train: TTR vs TTE & IRCTC Ticket Rules (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | delhi-to-goa-train-guide.md | Delhi to Goa Train Guide: Best Trains, Fares & Booking Tips (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
+| vande-bharat-train-rules-booking-routes.md | Vande Bharat Train Guide: Booking Rules, Routes & Ticket Fares (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
+| vande-bharat-routes-manufacturing-guide.md | Vande Bharat Routes: Stops, Manufacturing, and Latest News (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
+| toy-train-routes-booking-india-guide.md | Toy Train Booking in India: Routes, Fares & Heritage Guide (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
+| bullet-train-india-routes-speed-status.md | Bullet Train in India: Routes, Speed, and Project Status (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 
 
 ## SEO triage actions (GSC / Google Trends driven)
