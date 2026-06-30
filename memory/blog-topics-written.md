@@ -68,6 +68,7 @@ This file tracks all blog posts published to avoid duplication.
 | vande-bharat-routes-manufacturing-guide.md | Vande Bharat Routes: Stops, Manufacturing, and Latest News (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | toy-train-routes-booking-india-guide.md | Toy Train Booking in India: Routes, Fares & Heritage Guide (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | bullet-train-india-routes-speed-status.md | Bullet Train in India: Routes, Speed, and Project Status (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
+| shatabdi-express-timings-routes-tatkal-rules.md | Shatabdi Express Guide: Timings, Routes & Booking Rules (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 
 
 ## SEO triage actions (GSC / Google Trends driven)
