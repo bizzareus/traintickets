@@ -1,93 +1,111 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  CATERING_BLOCKS,
+  type CateringItem,
+  type CateringSection,
+} from "@/lib/mailExpressCatering";
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
 export const metadata: Metadata = {
   title:
-    "Train Tea, Coffee & Water Prices: Mail, Express & Humsafar (IRCTC) | LastBerth",
+    "Mail, Express & Humsafar Train Food Menu & Prices (IRCTC) | LastBerth",
   description:
-    "Official IRCTC beverage charges on Mail, Express and Humsafar trains: standard tea ₹5, tea with tea bag ₹10, coffee ₹10, Rail Neer water ₹14 (1 litre) / ₹9 (500 ml). At-station vs in-train rates, inclusive of taxes.",
+    "Official IRCTC catering charges on Mail, Express and Humsafar trains: breakfast, meals (veg, egg, chicken biryani), tea, coffee, Rail Neer water and the full à la carte tariff. At-station vs in-train rates, inclusive of taxes.",
   alternates: { canonical: "/irctc-train-food-menu/mail-express-humsafar" },
   openGraph: {
     title:
-      "Train Tea, Coffee & Water Prices: Mail, Express & Humsafar (IRCTC) | LastBerth",
+      "Mail, Express & Humsafar Train Food Menu & Prices (IRCTC) | LastBerth",
     description:
-      "Official IRCTC beverage charges on Mail, Express and Humsafar trains — tea, coffee, soup and Rail Neer water, at-station vs in-train.",
+      "Official IRCTC catering charges on Mail, Express and Humsafar trains: breakfast, meals, beverages and the full à la carte tariff.",
     url: "/irctc-train-food-menu/mail-express-humsafar",
   },
 };
 
-type Rate = { item: string; atStation: number | null; inTrain: number | null };
-type RateGroup = { title: string; note?: string; rows: Rate[] };
-
-const GROUPS: RateGroup[] = [
-  {
-    title: "Tea & coffee",
-    rows: [
-      {
-        item: "Standard tea (150 ml, in a 170 ml disposable cup)",
-        atStation: 5,
-        inTrain: 5,
-      },
-      {
-        item: "Tea with tea bag (150 ml, in a 170 ml disposable cup)",
-        atStation: 10,
-        inTrain: 10,
-      },
-      {
-        item: "Coffee, instant coffee powder (150 ml, in a 170 ml disposable cup)",
-        atStation: 10,
-        inTrain: 10,
-      },
-    ],
-  },
-  {
-    title: "Humsafar trains (via AVM vending machine)",
-    note: "Served on board only — not sold at stations.",
-    rows: [
-      {
-        item: "Tea, all variants without tea bag (100 ml, in a 120 ml cup)",
-        atStation: null,
-        inTrain: 10,
-      },
-      { item: "Coffee (100 ml, in a 120 ml cup)", atStation: null, inTrain: 15 },
-      { item: "Soup (100 ml, in a 120 ml cup)", atStation: null, inTrain: 15 },
-    ],
-  },
-  {
-    title: "Rail Neer / packaged drinking water (chilled)",
-    rows: [
-      { item: "1 litre bottle (1000 ml)", atStation: 14, inTrain: 14 },
-      { item: "500 ml bottle", atStation: 9, inTrain: 9 },
-    ],
-  },
-];
-
-function inr(n: number | null): string {
+function inr(n: number | null | undefined): string {
   return n == null ? "N/A" : `₹${n}`;
+}
+
+function VegMark({ veg }: { veg: boolean }) {
+  return veg ? (
+    <span
+      className="mt-1 inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-sm border border-green-600"
+      title="Vegetarian"
+      aria-label="Vegetarian"
+    >
+      <span className="h-1.5 w-1.5 rounded-full bg-green-600" />
+    </span>
+  ) : (
+    <span
+      className="mt-1 inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-sm border border-red-700"
+      title="Non-vegetarian"
+      aria-label="Non-vegetarian"
+    >
+      <svg viewBox="0 0 10 10" className="h-2 w-2 fill-red-700">
+        <polygon points="5,1 9,9 1,9" />
+      </svg>
+    </span>
+  );
+}
+
+function PriceChip({ label, value }: { label: string; value: string }) {
+  return (
+    <span className="flex-1 rounded-lg bg-slate-50 px-3 py-2 text-center sm:flex-none sm:min-w-[6rem] sm:text-left">
+      <span className="block text-xs text-slate-500">{label}</span>
+      <span className="text-base font-bold text-slate-900">{value}</span>
+    </span>
+  );
+}
+
+function ItemRow({ it, mode }: { it: CateringItem; mode: CateringSection["mode"] }) {
+  return (
+    <li className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-6">
+      <div className="mb-3 flex items-start gap-2 sm:mb-0">
+        <VegMark veg={it.veg} />
+        <span className="min-w-0">
+          <span className="block font-medium text-slate-800">{it.item}</span>
+          {it.desc && (
+            <span className="mt-0.5 block text-sm text-slate-500">{it.desc}</span>
+          )}
+        </span>
+      </div>
+      <div className="flex shrink-0 gap-2">
+        {mode === "station-train" ? (
+          <>
+            <PriceChip label="At station" value={inr(it.atStation)} />
+            <PriceChip label="In train" value={inr(it.inTrain)} />
+          </>
+        ) : (
+          <PriceChip label="Price" value={inr(it.price)} />
+        )}
+      </div>
+    </li>
+  );
 }
 
 const FAQS: { q: string; a: string }[] = [
   {
-    q: "How much does a cup of tea cost on a train?",
-    a: "On Mail and Express trains, standard tea is ₹5 and tea made with a tea bag is ₹10, served in a 150 ml portion. Coffee is ₹10. These are the official IRCTC rates, inclusive of taxes, and are the same whether bought at the station or on board.",
+    q: "How much does food cost on a Mail or Express train?",
+    a: "Standard IRCTC rates (inclusive of taxes): a veg breakfast is ₹35 at the station / ₹40 on board, a veg meal is ₹70 / ₹80, chicken biryani is ₹100 / ₹110, and the budget Janta Meal is ₹15 / ₹20. À la carte snacks start at ₹20.",
   },
   {
-    q: "What is the price of a water bottle in a train?",
-    a: "Rail Neer (IRCTC packaged drinking water) is ₹14 for a 1 litre bottle and ₹9 for a 500 ml bottle, chilled, inclusive of taxes. The price is the same at the station and on the train.",
+    q: "How much is a cup of tea or a water bottle on a train?",
+    a: "Standard tea is ₹5 and tea with a tea bag is ₹10; coffee is ₹10. Rail Neer packaged water is ₹14 for 1 litre and ₹9 for 500 ml. These rates are the same at the station and on board.",
   },
   {
-    q: "Why are Humsafar beverage prices different?",
-    a: "Humsafar trains serve tea, coffee and soup through AVM vending machines on board, in a 100 ml portion: tea ₹10, coffee ₹15 and soup ₹15. These are sold on the train only, not at stations.",
+    q: "What is the cheapest meal on a train?",
+    a: "The Janta Meal (7 pooris, aloo dry curry and pickle) is the cheapest at ₹15 at the station and ₹20 on board. Among à la carte items, chapati, samosa, idli and jalebi are ₹20.",
   },
   {
-    q: "Are these beverage rates the same on all trains?",
-    a: "These are the standard IRCTC rates for Mail, Express and Humsafar trains. Premium trains like Rajdhani, Shatabdi, Vande Bharat and Tejas include catering in the fare with their own menus, so they do not use this à la carte beverage list.",
+    q: "Are these rates the same on all trains?",
+    a: "These are the standard rates for Mail, Express and Humsafar trains. Premium trains like Rajdhani, Shatabdi, Vande Bharat and Tejas include catering in the fare with their own set menus, so they do not use this à la carte list.",
   },
 ];
 
-export default function MailExpressHumsafarBeveragesPage() {
+const TOC = CATERING_BLOCKS.map((b) => ({ id: b.id, heading: b.heading }));
+
+export default function MailExpressHumsafarPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -111,7 +129,7 @@ export default function MailExpressHumsafarBeveragesPage() {
       {
         "@type": "ListItem",
         position: 3,
-        name: "Mail / Express / Humsafar beverage prices",
+        name: "Mail / Express / Humsafar catering charges",
         item: `${SITE_URL}/irctc-train-food-menu/mail-express-humsafar`,
       },
     ],
@@ -142,62 +160,65 @@ export default function MailExpressHumsafarBeveragesPage() {
 
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-          Train Tea, Coffee &amp; Water Prices
+          Mail, Express &amp; Humsafar Train Food Menu &amp; Prices
         </h1>
         <p className="mt-2 text-slate-600">
-          Official IRCTC beverage charges on{" "}
-          <span className="font-medium">Mail, Express and Humsafar</span> trains,
-          for items bought at the station or on board. All rates are inclusive of
-          taxes and apply to vegetarian items.
+          Official IRCTC catering charges on{" "}
+          <span className="font-medium">Mail, Express and Humsafar</span> trains
+          — breakfast, meals, beverages and the full à la carte tariff. Prices
+          are inclusive of taxes; à la carte prices are inclusive of GST.
         </p>
       </header>
 
-      <div className="space-y-6">
-        {GROUPS.map((g) => (
-          <section key={g.title}>
-            <h2 className="mb-1 text-base font-bold text-slate-900">{g.title}</h2>
-            {g.note && <p className="mb-3 text-sm text-slate-500">{g.note}</p>}
-            {!g.note && <div className="mb-3" />}
-            <ul className="space-y-3">
-              {g.rows.map((r) => (
-                <li
-                  key={r.item}
-                  className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-6"
-                >
-                  <div className="mb-3 flex items-start gap-2 sm:mb-0">
-                    <span
-                      className="mt-1 inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-sm border border-green-600"
-                      title="Vegetarian"
-                      aria-label="Vegetarian"
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full bg-green-600" />
-                    </span>
-                    <span className="font-medium text-slate-800">{r.item}</span>
-                  </div>
-                  <div className="flex shrink-0 gap-2">
-                    <span className="flex-1 rounded-lg bg-slate-50 px-3 py-2 sm:flex-none sm:min-w-[6.5rem]">
-                      <span className="block text-xs text-slate-500">
-                        At station
-                      </span>
-                      <span className="text-lg font-bold text-slate-900">
-                        {inr(r.atStation)}
-                      </span>
-                    </span>
-                    <span className="flex-1 rounded-lg bg-slate-50 px-3 py-2 sm:flex-none sm:min-w-[6.5rem]">
-                      <span className="block text-xs text-slate-500">
-                        In train
-                      </span>
-                      <span className="text-lg font-bold text-slate-900">
-                        {inr(r.inTrain)}
-                      </span>
-                    </span>
-                  </div>
-                </li>
+      {/* Jump nav */}
+      <nav
+        aria-label="Sections"
+        className="mb-8 flex flex-wrap gap-2 text-sm font-medium"
+      >
+        {TOC.map((t) => (
+          <a
+            key={t.id}
+            href={`#${t.id}`}
+            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-slate-700 hover:border-blue-300 hover:text-blue-700"
+          >
+            {t.heading}
+          </a>
+        ))}
+      </nav>
+
+      <div className="space-y-10">
+        {CATERING_BLOCKS.map((block) => (
+          <section key={block.id} id={block.id} className="scroll-mt-20">
+            <h2 className="mb-4 text-xl font-bold text-slate-900">
+              {block.heading}
+            </h2>
+            <div className="space-y-6">
+              {block.sections.map((s) => (
+                <div key={s.title}>
+                  {(block.sections.length > 1 || s.title !== block.heading) && (
+                    <h3 className="mb-1 text-base font-semibold text-slate-800">
+                      {s.title}
+                    </h3>
+                  )}
+                  {s.note && (
+                    <p className="mb-2 text-sm text-slate-500">{s.note}</p>
+                  )}
+                  <ul className="mt-2 space-y-3">
+                    {s.items.map((it) => (
+                      <ItemRow key={it.item} it={it} mode={s.mode} />
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </section>
         ))}
       </div>
+
+      <p className="mt-8 text-sm text-slate-500">
+        Items are marked vegetarian (green) or non-vegetarian (red). Rates are
+        the standard IRCTC catering charges and may be revised by Railways.
+      </p>
 
       <section className="mt-12">
         <h2 className="mb-4 text-xl font-bold text-slate-900">

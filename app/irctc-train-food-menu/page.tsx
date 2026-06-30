@@ -95,7 +95,7 @@ export default function TrainFoodMenuIndexPage() {
             On a Mail, Express or Humsafar train?
           </span>
           <span className="block text-sm text-slate-500">
-            See standard tea, coffee and Rail Neer water prices.
+            See standard breakfast, meals, beverages and à la carte prices.
           </span>
         </span>
         <span className="shrink-0 text-blue-600" aria-hidden>
