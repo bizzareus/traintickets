@@ -1,0 +1,331 @@
+{
+  "trainNumber": "26501",
+  "trainNumberPair": "26501-02",
+  "trainName": "Vande Bharat Express",
+  "route": "PPTA-GKP-PPTA",
+  "originCode": "PPTA",
+  "destinationCode": "PPTA",
+  "classes": [
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Pre-Packed Biscuits (2pc)",
+              "description": "Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs)"
+            },
+            {
+              "item": "Tea/Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages/Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Cutlery & Disposables",
+              "description": "Kit- Envelope with Stainless Steel Tea Spoon + Good quality Napkin tissue"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 155,
+          "items": [
+            {
+              "item": "Cornflakes in sealed packed with Milk and Sugar Sachets",
+              "description": "Corn Flakes/ Muesli with Hot/Cold Milk + Sugar Sachet/ Jaggery Powder /Honey Sachet"
+            },
+            {
+              "item": "Bakery",
+              "description": "Muffin (Eggless)"
+            },
+            {
+              "item": "Veg B/F options",
+              "description": "served on a weekly cyclic basis: (1) 2 Sattu stuffed Paratha + Subji+ Veg Cutlet-1; (2) Poha + Veg Cutlet-2; (3) Kulcha / Ajwain Paratha-2 + Chole + Veg Cutlet-1"
+            },
+            {
+              "item": "Non Veg B/F options",
+              "description": "served on a weekly cyclic basis: (1) Omlette + Veg Cutlet-1 + Boiled Veg+ 2 Slice Brown Bread; (2) Omlette + Veg Cutlet-1 + Boiled Veg+ 2 Slice Brown Bread; (3) Omlette + Veg Cutlet-1 + Boiled Veg+ 2 Slice Brown Bread"
+            },
+            {
+              "item": "Fresh Whole Fruits",
+              "description": "Fresh Whole Fruits (Seasonal Fruit/Banana- 1 no)"
+            },
+            {
+              "item": "Tetra Pack",
+              "description": "Fruit Juice / Lassi/ Flavoured Milk"
+            },
+            {
+              "item": "Tea/ Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages/Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Tomato Ketchup Sachet",
+              "description": "Tomato Ketchup Sachet"
+            },
+            {
+              "item": "Cutlery & Disposables",
+              "description": "KIT- Packed envelope having Good Quality Napkin Tissue Paper + Refreshing Tissue + Stainless Steel spoon & fork"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 105,
+          "items": [
+            {
+              "item": "Roasted nuts in Sealed Pouch",
+              "description": "Branded Salted Cashew / Salted Almonds"
+            },
+            {
+              "item": "Namkeen in sealed packet",
+              "description": "Navratna Mixture/ Millet Mix / Namkeen"
+            },
+            {
+              "item": "Packed Hot Snacks",
+              "description": "Samosa/Kachori"
+            },
+            {
+              "item": "Tomato Ketchup Sachet",
+              "description": "Tomato Ketchup Sachet"
+            },
+            {
+              "item": "Packed Indian Sweets",
+              "description": "Motichoor laddo/ Indian Sweet/ Chana Dal Burfi"
+            },
+            {
+              "item": "Tetra Pack Beverage",
+              "description": "Fruit Juice /Lassi/ Flavoured Milk"
+            },
+            {
+              "item": "Tea / Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages/Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Cutlery & Disposables",
+              "description": "Kit- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 244,
+          "items": [
+            {
+              "item": "Soup Course",
+              "description": "Branded Soup Premix"
+            },
+            {
+              "item": "Dinner Bunn/Soup stick",
+              "description": "Dinner Bunn/Soup stick"
+            },
+            {
+              "item": "Butter in Blister Pack",
+              "description": "Butter"
+            },
+            {
+              "item": "Basmati Rice",
+              "description": "served on a weekly cyclic basis: (1) Veg. Pulao /Steamed Rice; (2) Peas Pulao / Navratna Pulao; (3) Steamed Rice / Jeera Rice"
+            },
+            {
+              "item": "Roti/ Chapati/Paratha",
+              "description": "Chapatti (3Nos) / Paratha (02 nos)"
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Poorvanchal Dal Tadka; (2) Mixed Dal Fry; (3) Dal Hing Tadka"
+            },
+            {
+              "item": "Veg Lunch/Dinner options (Paneer + Gravy)",
+              "description": "served on a weekly cyclic basis: (1) Champaran Paneer; (2) Paneer Butter Masala; (3) Paneer Dehati"
+            },
+            {
+              "item": "Main Course Non-Veg. dish (Boneless Chicken + Gravy)",
+              "description": "served on a weekly cyclic basis: (1) Champaran Murg; (2) Chicken Butter Masala; (3) Murg Dehati"
+            },
+            {
+              "item": "Dry Seasonal Veg",
+              "description": "Dry Seasonal Veg"
+            },
+            {
+              "item": "Packed Curd in cups / Buttermilk in Tetrapack",
+              "description": "Packed Curd in cups / Buttermilk in Tetrapack"
+            },
+            {
+              "item": "Pre-packed Pickle in blister packs",
+              "description": "Pickle"
+            },
+            {
+              "item": "Desserts",
+              "description": "Branded Premium Flavored Ice cream i.e. Butter Scotch, Kaju Pista etc. Or, Branded pre packed Indian Sweets - Gulab Jamun/ Rajbhog / Carrot Halwa"
+            },
+            {
+              "item": "Cutlery & Disposable",
+              "description": "Kit- Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Stainless Steel spoon & fork"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Pre-Packed Biscuits (2pc)",
+              "description": "Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs)"
+            },
+            {
+              "item": "Tea/Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages"
+            },
+            {
+              "item": "Disposables",
+              "description": "Hard ribbed disposable paper cups + Stirrer"
+            },
+            {
+              "item": "Good Quality Napkin Tissue Paper",
+              "description": "Good Quality Napkin Tissue Paper"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 122,
+          "items": [
+            {
+              "item": "Bakery",
+              "description": "Muffin (Eggless)"
+            },
+            {
+              "item": "Veg B/F options",
+              "description": "served on a weekly cyclic basis: (1) 2 Sattu stuffed Paratha + Subji+ Veg Cutlet-1; (2) Poha + Veg Cutlet-2; (3) Kulcha/ Ajwain Paratha-2 + Chole + Veg Cutlet-1"
+            },
+            {
+              "item": "Non Veg B/F options",
+              "description": "served on a weekly cyclic basis: (1) Omlette + Veg Cutlet-1 + Boiled Veg+ 2 Slice Brown Bread; (2) Omlette + Veg Cutlet-1 + Boiled Veg+ 2 Slice Brown Bread; (3) Omlette + Veg Cutlet-1 + Boiled Veg+ 2 Slice Brown Bread"
+            },
+            {
+              "item": "Tetra Pack",
+              "description": "Fruit Juice / Lassi/ Flavoured Milk"
+            },
+            {
+              "item": "Tea/Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages"
+            },
+            {
+              "item": "Disposables (Bio-degradable)/Accompaniments",
+              "description": "Disposable Spoon + Good Quality Napkin Tissue Paper + Tomato Ketchup Sachet"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 66,
+          "items": [
+            {
+              "item": "Packed Hot Snacks",
+              "description": "Samosa/Kachori"
+            },
+            {
+              "item": "Namkeen in sealed packet",
+              "description": "Navratna Mixture/ Millet Mix / Namkeen"
+            },
+            {
+              "item": "Tomato Ketchup Sachet",
+              "description": "Tomato Ketchup Sachet"
+            },
+            {
+              "item": "Packed Indian Sweets",
+              "description": "Motichoor laddo/ Indian Sweet/ Chana Dal Burfi"
+            },
+            {
+              "item": "Tetra Pack",
+              "description": "Fruit Juice / Lassi/ Flavoured Milk"
+            },
+            {
+              "item": "Tea/Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages"
+            },
+            {
+              "item": "Disposables",
+              "description": "Hard ribbed disposable paper cups + Stirrer"
+            },
+            {
+              "item": "Good Quality Napkin Tissue Paper",
+              "description": "Good Quality Napkin Tissue Paper"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 222,
+          "items": [
+            {
+              "item": "Basmati Rice",
+              "description": "served on a weekly cyclic basis: (1) Veg. Pulao /Steamed Rice; (2) Peas Pulao / Navratna Pulao; (3) Steamed Rice / Jeera Rice"
+            },
+            {
+              "item": "Roti/ Chapati/ Paratha",
+              "description": "Chapatti (3Nos) / Paratha (02 nos)"
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Poorvanchal Dal Tadka; (2) Mixed Dal Fry; (3) Dal Hing Tadka"
+            },
+            {
+              "item": "Veg Lunch/Dinner options (Paneer + Gravy)",
+              "description": "served on a weekly cyclic basis: (1) Champaran Paneer; (2) Paneer Butter Masala; (3) Paneer Dehati"
+            },
+            {
+              "item": "Main Course Non-Veg. dish (Boneless Chicken + Gravy)",
+              "description": "served on a weekly cyclic basis: (1) Champaran Murg; (2) Chicken Butter Masala; (3) Murg Dehati"
+            },
+            {
+              "item": "Dry Seasonal Veg.",
+              "description": "Dry Seasonal Veg"
+            },
+            {
+              "item": "Packed Curd in cups/ Buttermilk in Tetrapack",
+              "description": "Packed Curd in cups / Buttermilk in Tetrapack"
+            },
+            {
+              "item": "Pre-packed Pickle in blister packs",
+              "description": "Branded Pickle Sachets/Blisters"
+            },
+            {
+              "item": "Desserts",
+              "description": "Branded Flavored Ice cream Or, Branded Pre-packed Indian Sweets - Gulab Jamun/ Rajbhog / Carrot Halwa"
+            },
+            {
+              "item": "Disposables (Bio-degradable)",
+              "description": "Disposable Spoon + Good Quality Napkin Tissue Paper+ salt"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "All cooked meal packets should bear QR Code with details of Name of unit, FSSAI license no., Item name, Gramage etc. and date of packing and Veg/N.Veg. Sticker.",
+    "Pre-mix Tea/Coffee/Green Tea/Malt beverage should be served with Stirrer, disposable hard paper/corn starch cups, paper napkin & Hot Water in flask.",
+    "The menu should be served on cyclic basis.",
+    "Service of Morning Tea/Breakfast/Lunch/Dinner to be done in acrylic trays.",
+    "Service Evening Snacks to be preferably done in Snacks Box with co-branding of Vande Bharat Train.",
+    "All the packaging materials including disposable items may be as per color scheme of Vande Bharat Express with co-branding of IRCTC and Licensee.",
+    "Tray mat with Bi-lingual Menu/QR code to be used.",
+    "Hard ribbed disposable paper cups to be used for service of Beverages.",
+    "All food items should be individually packed & served in Coloured Teflon coated Aluminium Casseroles (60-70 micron) and Parathas should be packed/served in aluminum wrapper.",
+    "Malt beverages to be provided to Children instead of Tea/Coffee.",
+    "Option of Jain/ diabetic Food to be provided.",
+    "For the passengers of Executive class, the services will be through high quality crockery, cutlery, napkin etc."
+  ],
+  "slug": "ppta-gkp-ppta-vande-bharat-express-26501",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/26501.pdf",
+  "generatedAt": "2026-06-30T22:21:02.915Z"
+}

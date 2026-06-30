@@ -1,0 +1,262 @@
+{
+  "trainNumber": "22925",
+  "trainNumberPair": "22925-26",
+  "trainName": "Vande Bharat Express",
+  "route": "ADI-OKHA",
+  "originCode": "ADI",
+  "destinationCode": "OKHA",
+  "classes": [
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Wooden Stirrer, Good quality Napkin tissue, Disposable Cup, Mouth Freshener"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/ Cookies (Millet based Cookies 2 pcs)"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 122,
+          "items": [
+            {
+              "item": "Veg.",
+              "description": "2 Stuffed Paratha + Dal Vada 2 pcs + Branded Curd Or Batata Poha/ Kanda Poa + Methi Thepla 2 pcs + Branded Curd Or Ragi Bhakhri + Patra (2 pcs) + Branded Curd Or Bhagar Veg Upma + Ragi Thepla 2 pcs + Branded Curd"
+            },
+            {
+              "item": "Non-Veg.",
+              "description": "Masala Omlette with Sauted Boiled vegetables + Finger chips + with 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack"
+            },
+            {
+              "item": "Cake",
+              "description": "Branded Eggless Muffin/Walnut Cake/Croissant/Chocopie"
+            },
+            {
+              "item": "Hot Beverages",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Packed envelope having Good Quality Napkin Tissue Paper, Tomato Sauce Sachets, Refreshing Tisuue, Salt & Pepper Sachet, Wooden/Corn starch spoon & fork, Mouth Freshener"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 222,
+          "items": [
+            {
+              "item": "Rice dish",
+              "description": "served on a weekly cyclic basis: (1) Vagharela Bhaat; (2) Kashmiri Pulao; (3) Veg Pulao; (4) Pea Pulao"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "served on a weekly cyclic basis: (1) Tehdar Paratha (02 nos); (2) Lachha Paratha 2 nos; (3) Tawa Roti 3 nos; (4) Masala Puri 4 nos"
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Gujarati Kadhi; (2) Dal Makhni; (3) Gujrati Dal; (4) Dal Tadka"
+            },
+            {
+              "item": "Special Dish (Main Course)",
+              "description": "served on a weekly cyclic basis: (1) Methi Muthiya Curry or Butter Chicken (Boneless); (2) Khoya Paneer or Kombadi Rassa (Boneless); (3) Panner Butter Masala or Konkani Chicken (Boneless); (4) Kadhai Paneer or Chicken Kolhapuri (Boneless)"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "served on a weekly cyclic basis: (1) Bhindi Kurkuri; (2) Sev Ghathia Tamatar Bhaji; (3) Lahsuniya Batata Bhaji; (4) Tindli Bateta nu Shaak"
+            },
+            {
+              "item": "Branded Curd",
+              "description": "Packed Branded Curd in cups"
+            },
+            {
+              "item": "Dessert",
+              "description": "Premium Flavoured Ice cream/Premium Flavoured Ice Cream Sugar Free i.e. Chocolate/Butter Scotch/ Kaju Pista/ Fruit & Nut or Indian Sweets - Anjeer Barfi/ Kaju Katli/ Ragi Laddoo"
+            },
+            {
+              "item": "Kit",
+              "description": "Packed envelope having Good Quality Napkin Tissue Paper, Refreshing Tisuue, Salt & Pepper Sachet, Wooden/Corn starch spoon & fork, Mouth Freshener"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 66,
+          "items": [
+            {
+              "item": "Snacks Box",
+              "description": "Branded Masala Khakhra + Chocolate Bar/Branded Chikki Bar + Branded Caramel Popcorn or Branded Bhakharwadi + Chocolate Bar/Branded Chikki Bar + Branded Caramel Popcorn or Branded Methi Khakhra + Chocolate Bar/Branded Chikki Bar + Branded Caramel Popcorn or Murukku Chakli + Chocolate Bar/Branded Chikki Bar + Branded Caramel Popcorn"
+            },
+            {
+              "item": "Tetra Pack Drink",
+              "description": "Branded Coconut Water/Branded Diet Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Packed envelope having Good Quality Napkin Tissue Paper, Tomato Sauce Sachets, Refreshing Tisuue, Salt & Pepper Sachet, Wooden/Corn starch spoon & fork, Mouth Freshener"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Envelope with Stainless Steel Tea Spoon, Good quality Napkin tissue, Mouth Freshener"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/ Cookies (Millet based Cookies 2 pcs)"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 155,
+          "items": [
+            {
+              "item": "Veg.",
+              "description": "2 Stuff Paratha + Dal Vada 2 pcs + Branded Curd Or Batata Poha/Kanda Poha + Methi Thepla 2 pcs + Branded Curd Or Ragi Bhakhri + Patra (2 pcs) + Branded Curd Or Bhagar Veg Upma + Ragi Thepla 2 pcs + Branded Curd"
+            },
+            {
+              "item": "Non-Veg.",
+              "description": "Masala Omlette with Sauted Boiled vegetables + Finger chips + with 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack"
+            },
+            {
+              "item": "Fruit",
+              "description": "02 Banana/01 Apple"
+            },
+            {
+              "item": "Cake (Eggless)",
+              "description": "Branded Eggless Muffin/Walnut cake/Croissant"
+            },
+            {
+              "item": "Drinks",
+              "description": "Branded Coconut water/Branded Diet Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice"
+            },
+            {
+              "item": "Hot Beverages",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Tomato Sauce Sachets, Packed envelope having Good Quality Napkin Tissue Paper, Refreshing Tisuue, Salt & Pepper Sachet, Stainless Steel spoon & fork, Mouth Freshener"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 244,
+          "items": [
+            {
+              "item": "Soup",
+              "description": "Branded Pre-mix Sachet Tomato Soup + Packed Multigrain Soup sticks 2/ Dinner bun 1+ Butter chiplet"
+            },
+            {
+              "item": "Rice dish",
+              "description": "served on a weekly cyclic basis: (1) Vagharela Bhaat; (2) Kashmiri Pulao; (3) Veg. Pulao; (4) Pea Pulao"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "served on a weekly cyclic basis: (1) Tehdar Paratha (02 nos); (2) Lachha Paratha 2 nos; (3) Tawa Roti 3 nos; (4) Masala Puri 4 nos"
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Gujarati Kadhi; (2) Dal Makhni; (3) Gujrati Dal; (4) Dal Tadka"
+            },
+            {
+              "item": "Special Dish (Main Course)",
+              "description": "served on a weekly cyclic basis: (1) Methi Muthiya Curry or Butter Chicken (Boneless); (2) Khoya Paneer or Kombdi Rassa (Boneless); (3) Panner Butter Masala or Konkani Chicken (Boneless); (4) Kadhai Paneer or Chicken Kohlapuri (Boneless)"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "served on a weekly cyclic basis: (1) Bhindi Kurkuri; (2) Sev Ghathia Tamatar Bhaji; (3) Lahsuniya Batata Bhaji; (4) Tindli Bateta nu Shaak"
+            },
+            {
+              "item": "Branded Curd",
+              "description": "Packed Branded Curd in cups"
+            },
+            {
+              "item": "Dessert",
+              "description": "Premium flavoured Ice cream/ Premium flavoured Ice cream Sugar Free i.e. Chocolate/Butter scotch/ Kaju pista/ fruit & Nut or Anjeer Barfi/ Kaju Katli / Ragi Laddoo"
+            },
+            {
+              "item": "Kit",
+              "description": "Packed envelope having Good Quality Napkin Tissue Paper, Refreshing Tisuue, Salt & Pepper Sachet, Stainless Steel spoon & fork, Mouth Freshener"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 105,
+          "items": [
+            {
+              "item": "Snacks Box",
+              "description": "Branded Masala Khakhra + Croissant/Brownee +Chocolate Bar/ Branded Chikki Bar + Branded Caramel Popcorn or Branded Bhakharvadi + Croissant/Brownee +Chocolate Bar/ Branded Chikki Bar + Branded Caramel Popcorn or Branded Methi Khakhra + Croissant/Brownee +Chocolate Bar/ Branded Chikki Bar + Branded Caramel Popcorn or Murukku Chakli + Croissant/Brownee +Chocolate Bar/ Branded Chikki Bar + Branded Caramel Popcorn"
+            },
+            {
+              "item": "Dry Fruits",
+              "description": "Branded Salted Cashew Packet/ Salted Pistacchio Packet/Salted Almonds Packet/ Branded Makhana Packet"
+            },
+            {
+              "item": "Tetra Pack Drink",
+              "description": "Branded Coconut water/Branded Diet Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee {Sugar Sachet or Sugarfree sachets}"
+            },
+            {
+              "item": "Kit",
+              "description": "Tomato Sauce Sachets, Packed envelope having Good Quality Napkin Tissue Paper, Refreshing Tisuue, Salt & Pepper Sachet, Stainless Steel spoon & fork, Mouth Freshener"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "All food items should be individually packed & served in coloured in Aluminium Casseroles (50-60 micron)/Corn starch packing material & Parathas should be packed/served in aluminium wrapper.",
+    "All coked meal packets should bear QR Code with details of Name of unit, FSSAI license no., Veg./Non-veg item name, Gramage etc. and date of packing and Veg/N.Veg. Sticker.",
+    "Pre-mix Tea/Coffee/Green Tea/Malt beverage should be served with Stirrer, disposable hard paper/corn starch cups , paper napkin & Hot Water (150 ml) in flask.",
+    "Only boneless chicken should be used in chicken dish preparation. Neck & wing portions of chicken should not be served.",
+    "The menu should be served on cyclic basis.",
+    "Service of Morning Tea/Breakfast/Lunch/Dinner to be done in acrylic trays (as per tray color to differentiate Veg./N. Veg.).",
+    "Service Evening Snacks to be preferably done in Sancks Box with co-branding of Vande Bharat Train.",
+    "All the pakaging materials including disposable items may be as per color scheme of Vande Bharat Express with co-branding of IRCTC and Licensee.",
+    "4CP disposable Aluminium Casseroleswith lid of 65+ microns to be used for Lunch/Dinner.",
+    "Casseroles of 330 ml of 75+ microns with Aluminium lid to be used for serving of Breakfast.",
+    "Hard disposable paper cups to be used for serving of beverages."
+  ],
+  "slug": "adi-okha-vande-bharat-express-22925",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/22925.pdf",
+  "generatedAt": "2026-06-30T22:20:09.730Z"
+}

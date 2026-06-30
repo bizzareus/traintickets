@@ -1,0 +1,286 @@
+{
+  "trainNumber": "26401",
+  "trainNumberPair": "26401-02",
+  "trainName": "Vande Bharat Express",
+  "route": "JAT-SINA",
+  "originCode": "JAT",
+  "destinationCode": "SINA",
+  "classes": [
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Pre-Packed Biscuits",
+              "description": "Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs), served on a weekly cyclic basis: (1) Branded Digestive Biscuit/ Cookies/ Millet based Cookies; (2) Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs); (3) Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs)"
+            },
+            {
+              "item": "Tea/Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee /Green Tea/Lemon Tea, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee /Green Tea/Lemon Tea; (2) Branded Premix based Tea/ Coffee /Green Tea/Lemon Tea; (3) Branded Premix based Tea/ Coffee /Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Cutlery & Disposables",
+              "description": "Kit- Envelope with Stainless Steel Tea Spoon + Good quality Napkin tissue, served on a weekly cyclic basis: (1) Kit- Envelope with Stainless Steel Tea Spoon + Good quality Napkin tissue; (2) Kit- Envelope with Stainless Steel Tea Spoon + Good quality Napkin tissue; (3) Kit- Envelope with Stainless Steel Tea Spoon + Good quality Napkin tissue"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": null,
+          "items": [
+            {
+              "item": "Cornflakes",
+              "description": "Corn Flakes/ Muesli with Hot/Cold Milk + Sugar Sachet/ Jaggery Powder /Honey Sachet, served on a weekly cyclic basis: (1) Cornflakes (25gms) in sealed packed with Milk (100ml) and Sugar Sachets (7gms); (2) Corn Flakes/ Muesli with Hot/Cold Milk + Sugar Sachet/ Jaggery Powder /Honey Sachet; (3) Corn Flakes/ Muesli with Hot/Cold Milk + Sugar Sachet/ Jaggery Powder /Honey Sachet"
+            },
+            {
+              "item": "Bakery",
+              "description": "Muffin (Eggless), served on a weekly cyclic basis: (1) Muffin (Eggless); (2) Muffin (Eggless); (3) Muffin (Eggless)"
+            },
+            {
+              "item": "Veg B/F options",
+              "description": "served on a weekly cyclic basis: (1) Bedmi Poori / Kulcha / Ajwain Paratha (100 gm) + Chole (100 gms) + 01 Veg Cutlet (50 gm); (2) Masala Poha /Veg Upma / Vermicilli Upma (150 gm) + 02 Veg Cutlet (50 gm each); (3) 2 Idli + 1 Vada (150 gm) + Sambhar (120 gms)"
+            },
+            {
+              "item": "Fresh Whole Fruits",
+              "description": "Fresh Whole Fruit (Seasonal Fruit/ 01 banana), served on a weekly cyclic basis: (1) Fresh Whole Fruits (Seasonal Fruit / Banana-1 no); (2) Fresh Whole Fruit (Seasonal Fruit/ 01 Banana); (3) Fresh Whole Fruit (Seasonal Fruit/ 01 Banana)"
+            },
+            {
+              "item": "Tea/ Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee/Juice / Green Tea/Lemon Tea, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee/Juice / Green Tea/Lemon Tea; (2) Branded Premix based Tea/ Coffee/Juice / Green Tea/Lemon Tea; (3) Branded Premix based Tea/ Coffee/Juice / Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Tomato Ketchup Sachet",
+              "description": "Tomato Ketchup Sachet (8-10 gms), served on a weekly cyclic basis: (1) Tomato Ketchup Sachet; (2) Tomato Ketchup Sachet; (3) Tomato Ketchup Sachet"
+            },
+            {
+              "item": "Cutlery & Disposables",
+              "description": "KIT- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork, served on a weekly cyclic basis: (1) KIT- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork; (2) KIT- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork; (3) KIT- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": null,
+          "items": [
+            {
+              "item": "Roasted nuts in Sealed Pouch",
+              "description": "Branded Salted Cashew / Salted Almonds, served on a weekly cyclic basis: (1) Branded Salted Cashew / Salted Almonds; (2) Branded Salted Cashew / Salted Almonds; (3) Branded Salted Cashew / Salted Almonds"
+            },
+            {
+              "item": "Namkeen in sealed packet",
+              "description": "Navratna Mixture/ Millet Mix / Namkeen, served on a weekly cyclic basis: (1) Navratna Mixture/ Millet Mix / Namkeen; (2) Navratna Mixture/ Millet Mix / Namkeen; (3) Navratna Mixture/ Millet Mix / Namkeen"
+            },
+            {
+              "item": "Packed Hot Snacks",
+              "description": "Samosa/ Kachori / Veg Puff, served on a weekly cyclic basis: (1) Samosa/ Kachori / Veg Puff; (2) Samosa/ Kachori / Veg Puff; (3) Samosa/ Kachori / Veg Puff"
+            },
+            {
+              "item": "Tomato Ketchup Sachet",
+              "description": "Tomato Ketchup Sachet (8-10 gms), served on a weekly cyclic basis: (1) Tomato Ketchup Sachet; (2) Tomato Ketchup Sachet; (3) Tomato Ketchup Sachet"
+            },
+            {
+              "item": "Packed Indian Sweets",
+              "description": "Patisa / Kashmiri Roth Cake / Chana Dal Burfi, served on a weekly cyclic basis: (1) Patisa / Kashmiri Roth Cake / Chana Dal Burfi; (2) Patisa / Kashmiri Roth Cake / Chana Dal Burfi; (3) Patisa / Kashmiri Roth Cake / Chana Dal Burfi"
+            },
+            {
+              "item": "Tetra Pack Beverage",
+              "description": "Fruit Juice /Lassi/ Flavoured Milk, served on a weekly cyclic basis: (1) Fruit Juice /Lassi/ Flavoured Milk; (2) Fruit Juice /Lassi/ Flavoured Milk; (3) Fruit Juice /Lassi/ Flavoured Milk"
+            },
+            {
+              "item": "Tea / Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee/ Green Tea/Lemon Tea, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee/ Green Tea/Lemon Tea; (2) Branded Premix based Tea/ Coffee/ Green Tea/Lemon Tea; (3) Branded Premix based Tea/ Coffee/ Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Cutlery & Disposables",
+              "description": "Kit- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork, served on a weekly cyclic basis: (1) Kit- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork; (2) Kit- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork; (3) Kit- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork"
+            }
+          ]
+        },
+        {
+          "service": "Lunch / Dinner",
+          "price": null,
+          "items": [
+            {
+              "item": "Soup Course",
+              "description": "Branded Soup Premix in Sachet (10 gm), served on a weekly cyclic basis: (1) Branded Soup Premix; (2) Branded Soup Premix; (3) Branded Soup Premix"
+            },
+            {
+              "item": "2 Soup Sticks",
+              "description": "Dinner Bunn, served on a weekly cyclic basis: (1) Dinner Bunn; (2) Dinner Bunn; (3) Dinner Bunn"
+            },
+            {
+              "item": "Butter in Blister Pack",
+              "description": "Butter, served on a weekly cyclic basis: (1) Butter; (2) Butter; (3) Butter"
+            },
+            {
+              "item": "Basmati Rice",
+              "description": "served on a weekly cyclic basis: (1) Veg. Pulao / Kashmiri Pulao; (2) Peas Pulao / Navratna Pulao; (3) Steamed Rice / Jeera Rice"
+            },
+            {
+              "item": "Roti/ Chapati/ Paratha",
+              "description": "RTE Fully Cooked Roti* (3 Nos) / Paratha (02 nos), served on a weekly cyclic basis: (1) RTE Fully Cooked Roti* (3 Nos) / Paratha (02 nos); (2) RTE Fully Cooked Roti* (3 Nos) / Paratha (02 nos); (3) RTE Fully Cooked Roti* (3 Nos) / Paratha (02 nos)"
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Kadhi Pakode / Lobia Masala/ Dal Makhni; (2) Dal Panchratni / Kashmiri Rajma; (3) Yellow Dal Tadka / Chhole Masala"
+            },
+            {
+              "item": "Veg Lunch/Dinner options",
+              "description": "served on a weekly cyclic basis: (1) Paneer Methi Chaman / Kadhai Paneer; (2) Paneer Butter Masala / Matar Paneer; (3) Kashmiri Paneer Kofta / Paneer Do Pyaza"
+            },
+            {
+              "item": "Dry Seasonal Veg",
+              "description": "Dry Seasonal Veg, served on a weekly cyclic basis: (1) Dry Seasonal Veg; (2) Dry Seasonal Veg; (3) Dry Seasonal Veg"
+            },
+            {
+              "item": "Packed Curd in cups / Buttermilk in Tetrapack",
+              "description": "Packed Curd in cups / Buttermilk in Tetrapack, served on a weekly cyclic basis: (1) Packed Curd in cups / Buttermilk in Tetrapack; (2) Packed Curd in cups / Buttermilk in Tetrapack; (3) Packed Curd in cups / Buttermilk in Tetrapack"
+            },
+            {
+              "item": "Pre-packed Pickle in blister packs",
+              "description": "Pickle, served on a weekly cyclic basis: (1) Pickle; (2) Pickle; (3) Pickle"
+            },
+            {
+              "item": "Desserts",
+              "description": "Branded Flavored Ice cream (80-90 ml) or Branded Pre-packed Indian Sweets (50gm) - Gulab Jamun/ Tosha / Carrot Halwa, served on a weekly cyclic basis: (1) Branded Flavored Ice cream (80-90 ml) or Branded Pre-packed Indian Sweets (50gm) - Gulab Jamun/ Tosha / Carrot Halwa; (2) Branded Flavored Ice cream (80-90 ml) I.e Butter Scotch, Kaju Pista etc. Or, Indian Sweets (50 gms) - Gulab Jamun / Tosha / Carrot Halwa; (3) Branded Flavored Ice cream (80-90 ml) I.e Butter Scotch, Kaju Pista etc. Or, Indian Sweets (50 gms) - Gulab Jamun / Tosha / Carrot Halwa"
+            },
+            {
+              "item": "Cutlery & Disposable",
+              "description": "Kit- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork, served on a weekly cyclic basis: (1) Kit- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork; (2) Kit- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork; (3) Kit- Packed envelope having Good Quality Napkin Tissue Paper + Stainless Steel spoon & fork"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Pre-Packed Biscuits/Rusk",
+              "description": "Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs), served on a weekly cyclic basis: (1) Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs); (2) Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs); (3) Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs)"
+            },
+            {
+              "item": "Tea/Coffee with Hot Water",
+              "description": "Choice of Branded Premix based Tea/ Coffee / Kahwa, served on a weekly cyclic basis: (1) Choice of Branded Premix based Tea/ Coffee / Kahwa; (2) Choice of Premium Premix Tea/ Premix Coffee/Kahwa; (3) Choice of Premium Premix Tea/ Premix Coffee/Kahwa"
+            },
+            {
+              "item": "Disposables",
+              "description": "Hard ribbed disposable paper cups + Stirrer, Good Quality Napkin Tissue Paper, served on a weekly cyclic basis: (1) Hard ribbed disposable paper cups + Stirrer, Good Quality Napkin Tissue Paper; (2) Hard ribbed disposable paper cups + Stirrer, Good Quality Napkin Tissue Paper; (3) Hard ribbed disposable paper cups + Stirrer, Good Quality Napkin Tissue Paper"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": null,
+          "items": [
+            {
+              "item": "Bakery",
+              "description": "Muffin (Eggless), served on a weekly cyclic basis: (1) Muffin (Eggless); (2) Muffin (Eggless); (3) Muffin (Eggless)"
+            },
+            {
+              "item": "Veg B/F options",
+              "description": "served on a weekly cyclic basis: (1) Bedmi Poori / Kulcha / Ajwain Paratha (100 gm) + Chole (100 gms) + 01 Veg Cutlet (50 gm ); (2) Masala Poha /Veg Upma / Vermicilli Upma (150 gm) + 02 Veg Cutlet (50 gm each); (3) 2 Idli + 1 Vada (150 gm) + Sambhar (120 gms)"
+            },
+            {
+              "item": "Tea/Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee / Juice, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee / Juice; (2) Branded Premix based Tea/ Coffee / Juice; (3) Branded Premix based Tea/ Coffee / Juice"
+            },
+            {
+              "item": "Disposables (Bio-degradable)/Accompanimnet",
+              "description": "Disposable Spoon + Good Quality Napkin Tissue Paper+Tomato Ketchup Sachet (8-10gms), served on a weekly cyclic basis: (1) Disposable Spoon + Good Quality Napkin Tissue Paper+Tomato Ketchup Sachet (8-10gms); (2) Disposable Spoon + Good Quality Napkin Tissue Paper+Tomato Ketchup Sachet (8-10gms); (3) Disposable Spoon + Good Quality Napkin Tissue Paper+Tomato Ketchup Sachet (8-10gms)"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": null,
+          "items": [
+            {
+              "item": "Packed Hot Snacks",
+              "description": "Samosa/ Kachori / Veg Puff, served on a weekly cyclic basis: (1) Samosa/ Kachori / Veg Puff; (2) Samosa/ Kachori / Veg Puff; (3) Samosa/ Kachori / Veg Puff"
+            },
+            {
+              "item": "Namkeen in sealed packet",
+              "description": "Navratna Mixture/ Millet Mix / Namkeen, served on a weekly cyclic basis: (1) Navratna Mixture/ Millet Mix / Namkeen; (2) Navratna Mixture/ Millet Mix / Namkeen; (3) Navratna Mixture/ Millet Mix / Namkeen"
+            },
+            {
+              "item": "Tomato Ketchup Sachet",
+              "description": "Tomato Ketchup Sachet (8-10gms), served on a weekly cyclic basis: (1) Tomato Ketchup Sachet; (2) Tomato Ketchup Sachet; (3) Tomato Ketchup Sachet"
+            },
+            {
+              "item": "Packed Indian Sweets",
+              "description": "Motichoor laddo/ Kashmiri Roth Cake / Chana Dal Burfi, served on a weekly cyclic basis: (1) Motichoor laddo/ Kashmiri Roth Cake / Chana Dal Burfi; (2) Motichoor laddo/ Kashmiri Roth Cake / Chana Dal Burfi; (3) Motichoor laddo/ Kashmiri Roth Cake / Chana Dal Burfi"
+            },
+            {
+              "item": "Tetra Pack",
+              "description": "Fruit Juice / Lassi/ Flavoured Milk, served on a weekly cyclic basis: (1) Fruit Juice / Lassi/ Flavoured Milk; (2) Fruit Juice / Lassi/ Flavoured Milk; (3) Fruit Juice / Lassi/ Flavoured Milk"
+            },
+            {
+              "item": "Tea/Coffee with Hot Water",
+              "description": "Branded Premix based Tea/ Coffee, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee; (2) Branded Premix based Tea/ Coffee; (3) Branded Premix based Tea/ Coffee"
+            },
+            {
+              "item": "Disposables",
+              "description": "Hard ribbed disposable paper cups + Stirrer, Good Quality Napkin Tissue Paper, served on a weekly cyclic basis: (1) Hard ribbed disposable paper cups + Stirrer, Good Quality Napkin Tissue Paper; (2) Hard ribbed disposable paper cups + Stirrer, Good Quality Napkin Tissue Paper; (3) Hard ribbed disposable paper cups + Stirrer, Good Quality Napkin Tissue Paper"
+            }
+          ]
+        },
+        {
+          "service": "Lunch / Dinner",
+          "price": null,
+          "items": [
+            {
+              "item": "Basmati Rice",
+              "description": "served on a weekly cyclic basis: (1) Veg. Pulao / Kashmiri Pulao; (2) Peas Pulao / Navratna Pulao; (3) Steamed Rice / Jeera Rice"
+            },
+            {
+              "item": "Roti/ Chapati/ Paratha",
+              "description": "Chapatti (3Nos) / Paratha (02 nos), served on a weekly cyclic basis: (1) Chapatti (3Nos) / Paratha (02 nos); (2) Chapatti (3Nos) / Paratha (02 nos); (3) Chapatti (3Nos) / Paratha (02 nos)"
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Kadhi Pakode / Lobia Masala / Dal Makhani; (2) Dal Panchratni / Kashmiri Rajma; (3) Yellow Dal Tadka / Chhole Masala"
+            },
+            {
+              "item": "Veg Lunch/Dinner options",
+              "description": "served on a weekly cyclic basis: (1) Paneer Methi Chaman / Kadhai Paneer; (2) Paneer Butter Masala / Matar Paneer; (3) Kashmiri Paneer Kofta / Paneer Do Pyaza"
+            },
+            {
+              "item": "Dry Seasonal Veg",
+              "description": "Dry Seasonal Veg, served on a weekly cyclic basis: (1) Dry Seasonal Veg; (2) Dry Seasonal Veg; (3) Dry Seasonal Veg"
+            },
+            {
+              "item": "Packed Curd in cups / milk in Tetrapack",
+              "description": "Packed Curd in cups / Buttermilk in Tetrapack, served on a weekly cyclic basis: (1) Packed Curd in cups / Buttermilk in Tetrapack; (2) Packed Curd in cups / Buttermilk in Tetrapack; (3) Packed Curd in cups / Buttermilk in Tetrapack"
+            },
+            {
+              "item": "Pre-packed Pickle in blister packs",
+              "description": "Branded Pickle Sachets/Blisters, served on a weekly cyclic basis: (1) Branded Pickle Sachets/Blisters; (2) Branded Pickle Sachets/Blisters; (3) Branded Pickle Sachets/Blisters"
+            },
+            {
+              "item": "Desserts",
+              "description": "Branded Flavored Ice cream (80-90 ml) or Branded Pre-packed Indian Sweets (50gm) - Gulab Jamun/ Tosha / Carrot Halwa, served on a weekly cyclic basis: (1) Branded Flavored Ice cream (80-90 ml) or Branded Pre-packed Indian Sweets (50gm) - Gulab Jamun/ Tosha / Carrot Halwa; (2) Branded Flavored Ice cream (80-90 ml) or Branded Pre-packed Indian Sweets (50gm) - Gulab Jamun/ Tosha / Carrot Halwa; (3) Branded Flavored Ice cream (80-90 ml) or Branded Pre-packed Indian Sweets (50gm) - Gulab Jamun/ Tosha / Carrot Halwa"
+            },
+            {
+              "item": "Disposables (Bio-degradable)",
+              "description": "Disposable Spoon + Good Quality Napkin Tissue Paper+ salt, served on a weekly cyclic basis: (1) Disposable Spoon + Good Quality Napkin Tissue Paper+ salt; (2) Disposable Spoon + Good Quality Napkin Tissue Paper+ salt; (3) Disposable Spoon + Good Quality Napkin Tissue Paper+ salt"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [],
+  "slug": "jat-sina-vande-bharat-express-26401",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/26401.pdf",
+  "generatedAt": "2026-06-30T22:20:46.323Z"
+}

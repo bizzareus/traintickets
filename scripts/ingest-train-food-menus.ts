@@ -56,6 +56,15 @@ function fetchVandeBharatTrainNumbers(): string[] {
 }
 
 function downloadPdfText(trainNo: string): string {
+  // Optional local text cache (pdftotext output) to skip the slow/flaky IRCTC
+  // downloads: set MENU_TXT_CACHE to a dir containing <trainNo>.txt files.
+  const cacheDir = process.env.MENU_TXT_CACHE;
+  if (cacheDir) {
+    const cached = path.join(cacheDir, `${trainNo}.txt`);
+    if (fs.existsSync(cached) && fs.statSync(cached).size > 0) {
+      return fs.readFileSync(cached, "utf8");
+    }
+  }
   const tmp = path.join(os.tmpdir(), `vbmenu-${trainNo}.pdf`);
   try {
     execFileSync("curl", [

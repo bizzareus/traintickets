@@ -1,0 +1,94 @@
+{
+  "trainNumber": "27575",
+  "trainNumberPair": "27575-76",
+  "trainName": "Vande Bharat Express",
+  "route": "HWH-KYQ",
+  "originCode": "HWH",
+  "destinationCode": "KYQ",
+  "classes": [
+    {
+      "classCode": "SL",
+      "className": "Sleeper",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Tea",
+              "description": "Tea"
+            },
+            {
+              "item": "Biscuit & Muffin",
+              "description": "Biscuit & Muffin"
+            }
+          ]
+        },
+        {
+          "service": "Dinner",
+          "price": null,
+          "items": [
+            {
+              "item": "Rice dish",
+              "description": "served on a weekly cyclic basis: (1) Ghee Rice; (2) Basanti Pulao; (3) Green Peas Pulao"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Paratha"
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Cholar Dal; (2) Bhaja Moong Dal; (3) Mix Dal (Panchmishu)"
+            },
+            {
+              "item": "Vegetable Dish",
+              "description": "served on a weekly cyclic basis: (1) Aloo Gajar Methi Matar Bhaja; (2) Aloo Gobi Kadaisuti Bhaja; (3) Jhuri Aloo Bhaja"
+            },
+            {
+              "item": "Special Dish (Main Course)",
+              "description": "served on a weekly cyclic basis: (1) Matar Paneer; (2) Chanar Dalna; (3) Dhoker Dalna OR Bengali Chicken Curry; (2) Murgh Rogini; (3) Murgir jhol"
+            },
+            {
+              "item": "Dessert",
+              "description": "served on a weekly cyclic basis: (1) Kala Jamun; (2) Sandesh; (3) Kheer Kadam"
+            }
+          ]
+        },
+        {
+          "service": "Dinner",
+          "price": null,
+          "items": [
+            {
+              "item": "Rice dish",
+              "description": "served on a weekly cyclic basis: (1) Jeera Rice; (2) Jeera Corn Pulao; (3) Kismish Pulao"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Tehdar Paratha"
+            },
+            {
+              "item": "Dal",
+              "description": "Mixed Dali (Arhar, Moong)"
+            },
+            {
+              "item": "Vegetable Dish",
+              "description": "served on a weekly cyclic basis: (1) Lesera Aloo Bhaji; (2) Bhendi Aloo Bhaji; (3) Beans Aloo Bhaji"
+            },
+            {
+              "item": "Special Dish (Main Course)",
+              "description": "served on a weekly cyclic basis: (1) Paneer Masala; (2) Kadai Paneer (Assamese Style) OR Chicken Masala; (2) Chicken Curry (Assamese Style)"
+            },
+            {
+              "item": "Dessert",
+              "description": "served on a weekly cyclic basis: (1) Narikal Burfi; (2) Rasagulla; (3) Lalmohan"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [],
+  "slug": "hwh-kyq-vande-bharat-express-27575",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/27575.pdf",
+  "generatedAt": "2026-06-30T22:21:14.132Z"
+}

@@ -1,0 +1,250 @@
+{
+  "trainNumber": "26901",
+  "trainNumberPair": "26901-02",
+  "trainName": "Vande Bharat Express",
+  "route": "SBIB-VRL-SBIB",
+  "originCode": "SBIB",
+  "destinationCode": "VRL",
+  "classes": [
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/Coffee/Malt Beverages"
+            },
+            {
+              "item": "Kit",
+              "description": "Envelope with Stainless Steel Spoon, Good Quality Napkin Tissue"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit - 2 Pcs"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 155,
+          "items": [
+            {
+              "item": "Cereal",
+              "description": "Corn Flakes with Milk (Hot/Cold) and Sugar"
+            },
+            {
+              "item": "Veg",
+              "description": "02 Idli + 01 Medu Vada + Sambhar OR Masala Omelette 02 Eggs + Sauteed Veg with French Fries + 01 Mix Veg Cutlet + 02 Slices of Brown Bread + Butter Chiplet + Tomato Ketchup"
+            },
+            {
+              "item": "Fruit",
+              "description": "01 Banana"
+            },
+            {
+              "item": "Cake (Eggless)",
+              "description": "Branded Eggless Muffin/Cake"
+            },
+            {
+              "item": "Drinks",
+              "description": "Branded Fruit Juice OR Option of Branded Premix based Tea/Coffee/Malt Beverages"
+            },
+            {
+              "item": "Kit",
+              "description": "Branded Mouth Freshener, Good Quality Refreshing Tissue, Packed Envelope having Good Quality Napkin Tissue Paper, Spoon & Fork"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 244,
+          "items": [
+            {
+              "item": "Soup",
+              "description": "Branded Pre-Mix Sachet Tomato Soup, Packed Soup Sticks 2, Butter Chiplet"
+            },
+            {
+              "item": "Rice",
+              "description": "Rice"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Indian Bread"
+            },
+            {
+              "item": "Dal",
+              "description": "Dal"
+            },
+            {
+              "item": "Main Course Veg",
+              "description": "Paneer Dish OR Chicken Dish"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Dry Veg",
+              "description": "Dry Seasonal Veg"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in Blister Pack"
+            },
+            {
+              "item": "Dessert",
+              "description": "Branded Premium Flavoured Ice Cream"
+            },
+            {
+              "item": "Kit",
+              "description": "Branded Mouth Freshener, Good Quality Refreshing Tissue, Packed Envelope having Good Quality Napkin Tissue Paper, Salt & Pepper Sachets, Stainless Steel Spoon & Fork"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 105,
+          "items": [
+            {
+              "item": "Snacks Box",
+              "description": "Kachori + Cheese Sandwich in cardboard packing with butter & cheese slice + Pre packed Indian Sweet"
+            },
+            {
+              "item": "Dry Fruits",
+              "description": "Branded Salted Dry Fruit Packets"
+            },
+            {
+              "item": "Tetra Pack Drink",
+              "description": "Branded Fruit Juice OR Option of Branded Premix based Tea/Coffee/Malt Beverages"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/Coffee/Malt Beverages"
+            },
+            {
+              "item": "Kit",
+              "description": "Good Quality Refreshing Tissue, Packed Envelope having Good Quality Napkin Tissue Paper, Tomato Ketchup, Stainless Steel Spoon & Fork"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/Coffee/Malt Beverages"
+            },
+            {
+              "item": "Kit",
+              "description": "Stirrer, Good Quality Napkin Tissue"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit - 2 Pcs"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 122,
+          "items": [
+            {
+              "item": "Veg",
+              "description": "02 Idli + 01 Medu Vada + Sambhar OR Masala Omelette 02 Eggs + Sauteed Veg with French Fries + 01 Mix Veg Cutlet + 02 Slices of Brown Bread + Butter Chiplet + Tomato Ketchup"
+            },
+            {
+              "item": "Cake (Eggless)",
+              "description": "Branded Eggless Muffin/Cake"
+            },
+            {
+              "item": "Hot Beverages",
+              "description": "Option of Branded Premix based Tea/Coffee/Malt Beverages"
+            },
+            {
+              "item": "Kit",
+              "description": "Branded Mouth Freshener, Good Quality Refreshing Tissue, Packed Envelope having Good Quality Napkin Tissue Paper, Spoon & Fork"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 222,
+          "items": [
+            {
+              "item": "Rice",
+              "description": "Rice"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Indian Bread"
+            },
+            {
+              "item": "Dal",
+              "description": "Dal"
+            },
+            {
+              "item": "Main Course Veg",
+              "description": "Paneer Dish OR Chicken Dish"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Dry Veg",
+              "description": "Dry Seasonal Veg"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in Blister Pack"
+            },
+            {
+              "item": "Dessert",
+              "description": "Branded Flavoured Ice Cream"
+            },
+            {
+              "item": "Kit",
+              "description": "Branded Mouth Freshener, Good Quality Refreshing Tissue, Packed Envelope having Good Quality Napkin Tissue Paper, Salt & Pepper Sachets, Spoon & Fork"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 66,
+          "items": [
+            {
+              "item": "Snacks Box",
+              "description": "Kachori + Branded Indian Mixture + Pre packed Indian Sweet"
+            },
+            {
+              "item": "Tetra Pack Drink",
+              "description": "Branded Fruit Juice OR Option of Branded Premix based Tea/Coffee/Malt Beverages"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/Coffee/Malt Beverages"
+            },
+            {
+              "item": "Kit",
+              "description": "Good Quality Refreshing Tissue, Packed Envelope having Good Quality Napkin Tissue Paper, Tomato Sauce Sachets, Spoon"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [],
+  "slug": "sbib-vrl-sbib-vande-bharat-express-26901",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/26901.pdf",
+  "generatedAt": "2026-06-30T22:21:12.512Z"
+}

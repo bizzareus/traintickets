@@ -1,0 +1,370 @@
+{
+  "trainNumber": "22435",
+  "trainNumberPair": "22435-36",
+  "trainName": "Vande Bharat Express",
+  "route": "NDLS-BSB",
+  "originCode": "NDLS",
+  "destinationCode": "BSB",
+  "classes": [
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Premix based Tea/Coffee with option of Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/Cookies (2 Pcs)"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 122,
+          "items": [
+            {
+              "item": "Veg.",
+              "description": "2 Stuffed Parantha + Veg. Cutlet (2 pcs) + Branded Curd + Pickle / Dehydrated, packed & branded Veg. Upma/Veg. Poha + Branded Curd + Veg. Cutlet (2 pcs) / 2 Kulchas (total weight-s) + Chole + Branded Curd + Veg Cutlets (2 pcs). The above 3 sets of menu will necessarily be served on a cyclic basis of one week each."
+            },
+            {
+              "item": "Non. Veg.",
+              "description": "Masala Omlette with 02 slice of White/Brown bread + Butter chiplet with Veg. Cutlet (01 Pc.) + Branded Curd / Chicken Kathi Roll (s of chicken) + 2 slices of white/brown bread + Butter chiplet with Veg. Cutlet (01 Pc.) + Branded Curd. The above 2 sets of menu will necessarily be served on a cyclic basis of one week each."
+            },
+            {
+              "item": "Sandwiches",
+              "description": "Butter spreaded sliced Cheese Sandwich"
+            },
+            {
+              "item": "Cake",
+              "description": "Muffin/Slice cake"
+            },
+            {
+              "item": "Condiments",
+              "description": "Salt, Pepper, Tomato Sauce Sachets"
+            },
+            {
+              "item": "Tea/Coffee",
+              "description": "Premix based Tea/Coffee with option of Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Juice",
+              "description": "Branded Tetra Pack Fruit Juice"
+            },
+            {
+              "item": "Napkin",
+              "description": "Paper Napkin (Premium quality paper napkin with IRCTC logo)"
+            },
+            {
+              "item": "Hand sanitizer",
+              "description": "Hand sanitizer sachet (IRCTC approved brand)"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 222,
+          "items": [
+            {
+              "item": "Rice dish",
+              "description": "Kashmiri Pulao"
+            },
+            {
+              "item": "Dal",
+              "description": "Dal Makhani (1st week)/ Dal Panchmel (2nd week) / Dal Tadka (3rd week)"
+            },
+            {
+              "item": "Special Dish (Main Course) Veg. Dish",
+              "description": "Paneer butter masala (1st week)/Shahi paneer (2nd week)/ Kadhai Paneer (3rd week)/Navratan Korma (4th week)/ Khoya Matar (5th week)"
+            },
+            {
+              "item": "Non Veg. dish",
+              "description": "Boneless chicken of to be used. Butter chicken (1st week)/Shahi chicken (2nd week) / Kadhai Chicken (03rd week)"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "Bhindi Kurkuri/Aloo matar bean gazar/Aloo Capsicum"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Tehdar Parantha (02 no.)/Lachha Parantha (02 no.) - Only Tawa/Tawa Roti (03 no.)"
+            },
+            {
+              "item": "Branded Curd",
+              "description": "Packaged Branded Curd in cups"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in blister pack"
+            },
+            {
+              "item": "Dessert",
+              "description": "Premium flavoured Ice cream i.e. Butter scotch, Kaju pista, fruit & Nut (from March to October)/Moong Dal halwa - from November to February"
+            },
+            {
+              "item": "Condiments",
+              "description": "Salt and Pepper Sachet"
+            },
+            {
+              "item": "Napkin",
+              "description": "Paper Napkin (Premium quality paper napkin with IRCTC logo)"
+            },
+            {
+              "item": "Hand sanitizer",
+              "description": "Hand sanitizer sachet"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 66,
+          "items": [
+            {
+              "item": "Hot Snacks",
+              "description": "Dry Kachori/Dry Samosa"
+            },
+            {
+              "item": "Sandwiches",
+              "description": "Butter spreaded sliced cheese sandwich"
+            },
+            {
+              "item": "Popcorn",
+              "description": "Branded Caramel popcorn"
+            },
+            {
+              "item": "Drink",
+              "description": "Branded Lassi/Flavoured Milk in Tetra Pack"
+            },
+            {
+              "item": "Condiments",
+              "description": "Tomato ketchup sachet"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Premix Tea/Coffee with option of Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Napkin",
+              "description": "Paper Napkin (Premium quality paper napkin with IRCTC logo)."
+            },
+            {
+              "item": "Hand Sanitizer",
+              "description": "Hand sanitizer sachet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Premix based Tea/Coffee with option of Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/ Cookies (2 Pcs)"
+            },
+            {
+              "item": "Cereals with Milk",
+              "description": "Corn Flakes/Oats with milk and sugar"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 155,
+          "items": [
+            {
+              "item": "Veg.",
+              "description": "2 Stuffed Parantha + Veg. Cutlet (2 pcs )+ Branded Curd + Pickle / Dehydrated, packed & branded Veg. Upma/Veg. Poha + Branded Curd + Veg. Cutlet (2 pcs ) / 2 Kulchas (total weight-s)+ Chole + Branded Curd + Veg Cutlets (2 pcs ). The above 3 sets of menu will necessarily be served on a cyclic basis of one week each."
+            },
+            {
+              "item": "Non. Veg.",
+              "description": "Masala Omlette with 02 slice of White/Brown bread + Butter chiplet with Veg. Cutlet (01 Pc. ) + Branded Curd / Chicken Kathi Roll of chicken) + 2 slices of white/brown bread + Butter chiplet with Veg. Cutlet (01 Pc ) + Branded Curd. The above 2 sets of menu will necessarily be served on a cyclic basis of one week each."
+            },
+            {
+              "item": "Sandwiches",
+              "description": "Butter spreaded sliced Cheese Sandwich"
+            },
+            {
+              "item": "Cake",
+              "description": "Muffin/Slice cake"
+            },
+            {
+              "item": "Condiments",
+              "description": "Salt, Pepper, Tomato Sauce Sachets"
+            },
+            {
+              "item": "Tea/Coffee",
+              "description": "Premix based Tea/Coffee with option of Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Juice",
+              "description": "Branded Tetra Pack Fruit Juice"
+            },
+            {
+              "item": "Fruit",
+              "description": "Seasonal fresh whole fruit (Banana-2 Pc/Apple-1 Pc/ Orange-1 Pc) repeat on cyclic basis"
+            },
+            {
+              "item": "Napkin",
+              "description": "Paper Nakin (Premium quality paper napkin with IRCTC logo)"
+            },
+            {
+              "item": "Hand sanitizer",
+              "description": "Hand sanitizer sachet (IRCTC approved brand)"
+            },
+            {
+              "item": "Refreshing Tissue",
+              "description": "Refreshing Tissue (Individually Packed)"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 244,
+          "items": [
+            {
+              "item": "Soup",
+              "description": "Tomato Soup/ Mix Veg. Soup/ Sweet corn soup made from Branded Soup Pre-mix Sachet"
+            },
+            {
+              "item": "Rice dish",
+              "description": "Kashmiri Pulao"
+            },
+            {
+              "item": "Dal",
+              "description": "Dal Makhani (1st week)/ Dal Panchmel (2nd week)/ Dal Tadka (3rd week)"
+            },
+            {
+              "item": "Special Dish (Main Course) Veg. Dish",
+              "description": "Paneer butter Masala (1st week)/Shahi Paneer (2nd week)/ Kadhai Paneer(3rd week)/ Navratan Korma (4th week) /Khoya Matar (5th week)"
+            },
+            {
+              "item": "Non Veg. dish",
+              "description": "Boneless chicken of to be used. Butter chicken (1st week)/Shahi Chicken (2nd week)/Kadhai Chicken (3rd week)"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "Bhindi Kurkuri/ Aloo matar bean gazar/ Aloo Capsicum"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Tehdar Paratha (02 nos)/Lachha Parantha (02 nos)- Only Tawa/ Tawa Roti (03 nos)"
+            },
+            {
+              "item": "Branded Curd",
+              "description": "Packaged Branded Curd in cups"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in blister pack"
+            },
+            {
+              "item": "Dessert",
+              "description": "1. Premium flavoured Ice cream i.e. Butter scotch, Kaju pista, fruit & Nut) (from March to October)/Moong Dal Halwa - (from November to February) 2. Mewa Bite branded"
+            },
+            {
+              "item": "Condiments",
+              "description": "Salt and Pepper Sachet"
+            },
+            {
+              "item": "Napkin",
+              "description": "Paper Nakin (Premium quality paper napkin with IRCTC logo)"
+            },
+            {
+              "item": "Hand sanitizer",
+              "description": "Hand sanitizer sachet"
+            },
+            {
+              "item": "Refreshing Tissue",
+              "description": "Refreshing Tissue (Individually Packed)"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 105,
+          "items": [
+            {
+              "item": "Hot Snacks",
+              "description": "Dry Kachori/Dry Samosa"
+            },
+            {
+              "item": "Sandwiches",
+              "description": "Butter spreaded sliced Cheese Sandwich"
+            },
+            {
+              "item": "Popcorn",
+              "description": "Branded Caramel Popcorn"
+            },
+            {
+              "item": "Drink",
+              "description": "Branded Lassi/Flavored Milk in Tetra pack"
+            },
+            {
+              "item": "Ready to Eat Meal",
+              "description": "Dehydrated, packed & branded Veg. Upma/ Veg. Poha/ Veg. Noodles - options to be offered to passengers."
+            },
+            {
+              "item": "Chocolate Bar",
+              "description": "Chocolate Bar"
+            },
+            {
+              "item": "Condiments",
+              "description": "Tomato Ketchup sachet"
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Premix Tea/Coffee with option of Green Tea/Lemon Tea"
+            },
+            {
+              "item": "Napkin",
+              "description": "Paper Nakin (Premium quality paper napkin with IRCTC logo)"
+            },
+            {
+              "item": "Hand Sanitizer",
+              "description": "Hand sanitizer sachet"
+            },
+            {
+              "item": "Refreshing Tissue",
+              "description": "Refreshing Tissue (Individually Packed)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "All food items should be individually packed & served in bio-degradable packaging material with good quality disposable cutlery.",
+    "Packaging material should be food grade and FSSAI compliant.",
+    "Pre-mix Tea/Coffee/Green Tea should be served with Stirrer, Paper Cup, paper napkin & Hot Water (150 ml) in flask.",
+    "Bread Slices to be served in packed Envelope.",
+    "Salt, Pepper Sachets & tomato ketchup sachets to be served.",
+    "Parathas should be packed/served in aluminum foil or aluminum wrapper.",
+    "FSSAI approved and good quality of raw material should be used in meal preparation.",
+    "Proper recipes must be followed in preparation of all items especially items of gravy dishes.",
+    "The branded cooking vegetable oil should be used as cooking medium.",
+    "Long grain branded basmati rice must be used in preparation of kashmiri pulao.",
+    "Separate utensils should be used in preparation of veg. and non. veg. meal items.",
+    "Refreshing tissue (individually packed) hand sanitizer sachet must be served to each passenger during breakfast, lunch, evening tea and dinner services.",
+    "The menu should be served on cyclic basis.",
+    "Upma/Poha (preferably dehydrated version of IRCTC approved brand) to be served.",
+    "Option of sugar free to be offered to the passengers with Tea/Coffee service."
+  ],
+  "slug": "ndls-bsb-vande-bharat-express-22435",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/22435.pdf",
+  "generatedAt": "2026-06-30T22:19:19.352Z"
+}

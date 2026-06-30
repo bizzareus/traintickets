@@ -1,0 +1,166 @@
+{
+  "trainNumber": "26101",
+  "trainNumberPair": "26101-02",
+  "trainName": "Vande Bharat Express",
+  "route": "MAS-MDU",
+  "originCode": "MAS",
+  "destinationCode": "MDU",
+  "classes": [
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 50,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Tea or Coffee"
+            },
+            {
+              "item": "Accompaniment",
+              "description": "Sugar, Milk, Stirrer"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 150,
+          "items": [
+            {
+              "item": "Main Course",
+              "description": "Idli, Vada, Upma served with Sambar and Chutney"
+            },
+            {
+              "item": "Beverage",
+              "description": "Tea or Coffee"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 200,
+          "items": [
+            {
+              "item": "Rice dish",
+              "description": "Biryani or Pulao"
+            },
+            {
+              "item": "Dal",
+              "description": "Dal Tadka"
+            },
+            {
+              "item": "Special Dish (Main Course)",
+              "description": "Paneer Butter Masala"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Naan or Roti"
+            },
+            {
+              "item": "Dessert",
+              "description": "Gulab Jamun"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 100,
+          "items": [
+            {
+              "item": "Snack",
+              "description": "Samosa or Sandwich"
+            },
+            {
+              "item": "Beverage",
+              "description": "Tea or Coffee"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 70,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Tea or Coffee"
+            },
+            {
+              "item": "Accompaniment",
+              "description": "Sugar, Milk, Stirrer"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 200,
+          "items": [
+            {
+              "item": "Main Course",
+              "description": "Idli, Vada, Upma served with Sambar and Chutney"
+            },
+            {
+              "item": "Beverage",
+              "description": "Tea or Coffee"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 250,
+          "items": [
+            {
+              "item": "Rice dish",
+              "description": "Biryani or Pulao"
+            },
+            {
+              "item": "Dal",
+              "description": "Dal Tadka"
+            },
+            {
+              "item": "Special Dish (Main Course)",
+              "description": "Paneer Butter Masala"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Naan or Roti"
+            },
+            {
+              "item": "Dessert",
+              "description": "Gulab Jamun"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 120,
+          "items": [
+            {
+              "item": "Snack",
+              "description": "Samosa or Sandwich"
+            },
+            {
+              "item": "Beverage",
+              "description": "Tea or Coffee"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Menu is subject to change based on availability.",
+    "All prices are inclusive of taxes.",
+    "Complimentary bottled water is provided with each meal."
+  ],
+  "slug": "mas-mdu-vande-bharat-express-26101",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/26101.pdf",
+  "generatedAt": "2026-06-30T22:20:08.272Z"
+}

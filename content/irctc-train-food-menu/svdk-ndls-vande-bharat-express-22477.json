@@ -1,0 +1,221 @@
+{
+  "trainNumber": "22477",
+  "trainNumberPair": "22477-78",
+  "trainName": "Vande Bharat Express",
+  "route": "SVDK-NDLS",
+  "originCode": "SVDK",
+  "destinationCode": "NDLS",
+  "classes": [
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (2) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (3) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (4) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Corn Starch Stirrer + Good quality Napkin tissue + Disposable Cup + Hand Sanitizer"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs)"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 122,
+          "items": [
+            {
+              "item": "Hot Beverages",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (2) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (3) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (4) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Tomato Sauce Sachets + Packed envelope having Good Quality Napkin Tissue Paper + Refreshing Tisuue + Salt & Pepper Sachet + Corn starch spoon & fork + Sanitizer"
+            },
+            {
+              "item": "Rice",
+              "description": "Kashmiri Pulao"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "served on a weekly cyclic basis: (1) Tehdar Paratha (02 nos); (2) Lachha Parantha (02 nos); (3) Tawa Roti (03 nos); (4) Ajwain Prantha (02 nos)"
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Rajma Madra; (2) Mah ki Dal; (3) Chana Madra; (4) Dal Tadka"
+            },
+            {
+              "item": "Main Course Veg. Dish",
+              "description": "served on a weekly cyclic basis: (1) Paneer Pasanda; (2) Khoya Paneer; (3) Paneer butter Masala; (4) Kadhai Paneer"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "served on a weekly cyclic basis: (1) Bhindi Masala; (2) Aloo Gobhi; (3) Mix Veg; (4) Bhindi Kurkuri"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in blister pack"
+            },
+            {
+              "item": "Dessert",
+              "description": "Branded ce cream/ Ice cream Sugar Free i.e. Vanila /Strawberry or Branded prepacked Gulab Jamun/Balu shahi/ Ragi Laddoo"
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 66,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (2) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (3) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (4) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Packed envelope having Good Quality Napkin Tissue Paper + Tomato Sauce Sachets + Refreshing Tisuue + Salt & Pepper Sachet + Corn starch spoon & fork + Sanitizer"
+            },
+            {
+              "item": "Snacks Box",
+              "description": "served on a weekly cyclic basis: (1) Punjabi Samosa + Branded - Peanut Chikki Bar/ Ram Dana Chikki Bar/ Coconut Chikki bar + Hing chana; (2) Dry Kachori + Branded - Peanut Chikki Bar/ Ram Dana Chikki Bar/ Coconut Chikki bar+ Allo Bhujia; (3) Baked Samosa + Branded - Peanut Chikki Bar/ Ram Dana Chikki Bar/ Coconut Chikki bar + Kashmiri Mixture; (4) Samosa Green Pea + Branded - Peanut Chikki Bar/ Ram Dana Chikki Bar/ Coconut Chikki bar + Navratn mixture"
+            },
+            {
+              "item": "Tetra Pack Drinks",
+              "description": "Branded Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (2) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (3) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (4) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Envelope with Stainless Steel Tea Spoon + Good quality Napkin tissue + Hand Sanitizer"
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/ Cookies/ Millet based Cookies (2 Pcs)"
+            },
+            {
+              "item": "Cereal",
+              "description": "Corn Flakes/Muesli/ Millet Muesli/Millet flakes/Oats with milk (Hot/Cold) and sugar"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 155,
+          "items": [
+            {
+              "item": "Hot Beverages",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (2) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (3) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (4) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee"
+            },
+            {
+              "item": "Kit",
+              "description": "Kit: Tomato Sauce Sachets + Packed envelope having Good Quality Napkin Tissue Paper + Refreshing Tisuue + Salt & Pepper Sachet + Stainless Steel spoon & fork + Sanitizer"
+            },
+            {
+              "item": "Soup",
+              "description": "Branded Pre-mix Sachet Tomato Soup + Packed Multigrain Soup sticks 2/ Dinner bun 1+Butter Chiplet"
+            },
+            {
+              "item": "Rice",
+              "description": "Kashmiri Pulao"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "served on a weekly cyclic basis: (1) Tehdar Paratha (02 nos); (2) Lachha Parantha (02 nos); (3) Tawa Roti (03 nos); (4) Ajwain Prantha (02 nos)"
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Rajma Madra; (2) Mah ki Dal; (3) Chana Madra; (4) Dal Tadka"
+            },
+            {
+              "item": "Main Course Veg. Dish",
+              "description": "served on a weekly cyclic basis: (1) Paneer Pasanda; (2) Khoya Paneer; (3) Paneer butter Masala; (4) Kadhai Paneer"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "served on a weekly cyclic basis: (1) Bhindi Masala; (2) Aloo Gobhi; (3) Mix Veg; (4) Bhindi Kurkuri"
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in blister pack"
+            },
+            {
+              "item": "Dessert",
+              "description": "Premium flavoured Ice cream/ Premium flavoured Ice cream Sugar Free i.e. Vanila /Strawberry or Branded prepacked Gulab Jamun/Balu shahi/ Ragi Laddoo"
+            }
+          ]
+        },
+        {
+          "service": "Evening Tea",
+          "price": 105,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee, served on a weekly cyclic basis: (1) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (2) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (3) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee; (4) Branded Premix based Tea/ Coffee/ Malt Beverages or individual packs of approved brands of Lemon Tea/ Black Tea/Green Tea/Black Coffee"
+            },
+            {
+              "item": "Kit",
+              "description": "Tomato Sauce Sachets + Packed envelope having Good Quality Napkin Tissue Paper + Refreshing Tisuue + Salt & Pepper Sachet + Stainless Steel spoon & fork + Sanitizer"
+            },
+            {
+              "item": "Snacks Box",
+              "description": "served on a weekly cyclic basis: (1) Punjabi Samosa +Croissant/Brownie + Branded - Peanut Chikki Bar/ Ram Dana Chikki Bar/ Coconut Chikki/Millet bar/Multimillet bar + Hing chana; (2) Dry Kachori + Croissant/Brownie +Branded - Peanut Chikki Bar/ Ram Dana Chikki Bar/ Coconut Chikki bar//Millet bar/Multimillet bar+ Allo Bhujia; (3) Baked Samosa +Croissant/Brownie+ Branded - Peanut Chikki Bar/ Ram Dana Chikki Bar/ Coconut Chikki bar//Millet bar/Multimillet bar + Kashmiri Mixture; (4) Samosa Green Pea + Croissant/Brownie+Branded - Peanut Chikki Bar/ Ram Dana Chikki Bar/ Coconut Chikki bar//Millet bar/Multimillet bar+ Navratn mixture"
+            },
+            {
+              "item": "Dry Fruits",
+              "description": "Branded Salted Cashew Packet/ Salted Pistacchio Packet/Salted Almonds Packet/ Branded Makhana Packet"
+            },
+            {
+              "item": "Tetra Pack Drink",
+              "description": "Branded Coconut water/Branded Diet Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "All coked meal packets should bear QR Code with details of Name of unit, FSSAI license no., Veg./Non-veg item name, Gramage etc. and date of packing and Veg/N.Veg. Sticker.",
+    "Pre-mix Tea/Coffee/Green Tea/Malt beverage should be served with Stirrer, disposable hard paper/corn starch cups , paper napkin & Hot Water (150 ml) in flask.",
+    "Only boneless chicken should be used in chicken dish preparation. Neck & wing portions of chicken should not be served.",
+    "The menu should be served on cyclic basis.",
+    "Service of Morning Tea/Breakfast/Lunch/Dinner to be done in acrylic trays (as per tray color to differentiate Veg./N. Veg.).",
+    "Service Evening Snacks to be preferably done in Sancks Box with co-branding of Vande Bharat Train.",
+    "All the pakaging materials including disposable items may be as per color scheme of Vande Bharat Express with co-branding of IRCTC and Licensee.",
+    "Tray mat with Bi-lingual Menu/QR code to be used.",
+    "Hard ribbed disposable paper cups to be used for service of Beverages.",
+    "All food items should be individually packed & served in Coloured Teflon coated Aluminium Casseroles (60-70 micron)/ Corn Starch packaging material and Parathas should be packed/served in aluminum wrapper."
+  ],
+  "slug": "svdk-ndls-vande-bharat-express-22477",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/22477.pdf",
+  "generatedAt": "2026-06-30T22:19:41.148Z"
+}

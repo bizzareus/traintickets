@@ -1,0 +1,308 @@
+{
+  "trainNumber": "22671",
+  "trainNumberPair": "22671-72",
+  "trainName": "Tejas Express",
+  "route": "MS-MDU",
+  "originCode": "MS",
+  "destinationCode": "MDU",
+  "classes": [
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Tea/Coffee kit",
+              "description": "Filter Coffee (Ready made) with choice of without Sugar or Tea (Pre-mix) approved brands with Creamer or Option of Green Tea with Arrow root/Digestive Biscuits- 02 nos. (Individually packed- Approved brands)"
+            },
+            {
+              "item": "Refreshing Tissue & Hand Sanitiser Sachet",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 155,
+          "items": [
+            {
+              "item": "Cornflakes with Milk",
+              "description": "Corn flakes/Muesli Flakes/Wheat Flakes With Milk"
+            },
+            {
+              "item": "Vegetarian",
+              "description": "Iddly - 2 nos /Onion uttapam - 2 nos / Idiyappam - 4 nos, Medhu Vada - 1 no, Ven Pongal - 1 cup /Veg. uppma - 1 cup /Rava Kitchadi - 1 cup, Kesari - 1 cup / Sarkarai Pongal - 1 cup /Akkara adasal - 1 cup"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Coconut chutney, Carrot & Beans Sambar - /Tiffen Sambar - /Vegetable Khorma/ Stew - OR Multigrain Brown bread-2 Slices"
+            },
+            {
+              "item": "Non - Vegetarian",
+              "description": "Masala Omelette - 1 no (2 Eggs) -/ Cheese Omelette - 1 no (2 Eggs)-/ Egg Bhurji or Scrambled Egg - (2 Eggs), Veg Cutlet--2Nos"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Tomato Ketch Up, Butter"
+            },
+            {
+              "item": "Fresh Fruits",
+              "description": "Fresh Cut fruits"
+            },
+            {
+              "item": "Fruit Juice",
+              "description": "Tetra pack fruit Juice"
+            },
+            {
+              "item": "Tea/Coffee premix",
+              "description": "Tea Premix/Coffee premix/Green Tea kit"
+            }
+          ]
+        },
+        {
+          "service": "Evening Tea",
+          "price": 105,
+          "items": [
+            {
+              "item": "Cake",
+              "description": "Fruit / walnut Cake/Muffins/Doughnuts (Branded Pre-pack)"
+            },
+            {
+              "item": "Branded Pre-packed Sweet",
+              "description": "Sweet Bholi -1 Pc/Inipu Paniaram/Adhirasam"
+            },
+            {
+              "item": "Namkeen",
+              "description": "Kai Murukku - 1 no /Milagu Thattai - 1 no /Kara sev - 1no"
+            },
+            {
+              "item": "Snacks",
+              "description": "Onion Samosa 1 No/Mysore Bonda 1 Nos/ Keerai Vadai 1 Nos"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Tomato Ketchup"
+            },
+            {
+              "item": "Salted Dry Fruits",
+              "description": "Salted Cashew /Salted Almond"
+            },
+            {
+              "item": "Mixed Tea/Coffee",
+              "description": "Premix Tea/Coffee/Green Tea, Tetra pack Juice in disposable cups with stirrer"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 244,
+          "items": [
+            {
+              "item": "Soup",
+              "description": "Tomato Soup/ Veg Soup/Koallu Rasam"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Soup Sticks/Dinner Roll With Butter Chiplet, Salt & Pepper"
+            },
+            {
+              "item": "Starter",
+              "description": "Gobi Fry ( Gobi)/Pavakkai Varuval/Sennai Varuval"
+            },
+            {
+              "item": "Main Course - Vegetarian",
+              "description": "Paneer Chettinad/Veg Paneer Khoruma (Paneer & Veg And Gravy)/Paruppu Urundai Kozhambu (Paruppu Vada& Gravy)"
+            },
+            {
+              "item": "Main Course - Non - Vegetarian",
+              "description": "Chicken Chettinad/Palipalayam Chicken Curry/ Kozhi Varutha Kozhambu (Boneless Chicken+Gravy)"
+            },
+            {
+              "item": "Dal",
+              "description": "Drumstick Sambar/Paruppu Masiyal/Sundai Vathakozhambu"
+            },
+            {
+              "item": "Rice",
+              "description": "Jeera Pulao/Ghee Rice/Peas Pulao (Zeera Sambar/Basmati Rice)"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Pulkha - 3-4 Nos /Ghee Wheat Parotta - 2 Nos/Chapathi/Roti - 3-4 Nos"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Mixed Pickles, Salt & Pepper Sachets"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Fruits",
+              "description": "Seasonal Fruit-Banana (2Pc)/Cut Fruits Packed"
+            },
+            {
+              "item": "Dessert",
+              "description": "Branded prepacked Gulab Jamun (2 Nos)/Ice Cream (Fruit & Nut)/Ice Cream - Pistachio / Hazelnut"
+            },
+            {
+              "item": "Mouth Freshner",
+              "description": "Packed Mouth Freshner"
+            },
+            {
+              "item": "Paper Napkin",
+              "description": "Absorbent Tissue"
+            },
+            {
+              "item": "Hand Sanitizer Sachet",
+              "description": "Sanitizer Sachet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Tea/Coffee kit",
+              "description": "Filter Coffee (Ready made) Choice of without Sugar or Tea (Pre-mix) approved brands with Creamer or Option of Green Tea with Marie Biscuits- 02 nos. (Individually packed) or Digestive biscuits or cookies ( Approved brands)"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 122,
+          "items": [
+            {
+              "item": "Vegetarian - Mini Tiffin",
+              "description": "Iddly - 2 nos /Onion uthappam - 2 no / Idiyappam - 4 no, Medhu Vada - 1 no, Ven Pongal - 1 cup /Veg. uppma - 1 cup / Rava Kitchadi - 1 cup, Kesari - 1 cup / Sarkarai Pongal - 1 cup / Akkara adasal - 1 cup"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Coconut chutney, Carrot beans Sambar - /Small onion Sambar - / Vegetable Khorma/ Stew - Or Multigrain Brown bread-2 Slices"
+            },
+            {
+              "item": "Non - Vegetarian",
+              "description": "Omelette - 1 no (2Eggs)/Egg Burji (2Eggs), Veg Cutlet--2Nos"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Tomato Ketch Up, Butter"
+            },
+            {
+              "item": "Fruit Juice",
+              "description": "Tetra pack fruit Juice"
+            },
+            {
+              "item": "Tea/Coffee premix",
+              "description": "Tea Premix/Coffee premix/Green Tea kit"
+            }
+          ]
+        },
+        {
+          "service": "Evening Tea",
+          "price": 66,
+          "items": [
+            {
+              "item": "Sweet",
+              "description": "Sweet Bholi -1 Pc/Inipu Paniaram/Adhirasam"
+            },
+            {
+              "item": "Namkeen",
+              "description": "Kai Murukku - 1 no /Milagu Thattai - 1 no /Kara sev - 1no"
+            },
+            {
+              "item": "Snacks",
+              "description": "Onion Samosa 1 No/Mysore Bonda 1 Nos/ Keerai Vadai 1 Nos"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Tomato Ketchup"
+            },
+            {
+              "item": "Nutri bars",
+              "description": "Kadalai Mittai/Aellu Urundai / Pottu Kadalai Urundai"
+            },
+            {
+              "item": "Mixed Tea/Coffee",
+              "description": "Premix Tea/Coffee/Green Tea, Tetra pack Juice in disposable cups with stirrer"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 222,
+          "items": [
+            {
+              "item": "Soup",
+              "description": "Tomato Soup/ Veg Soup/Koallu Rasam"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Soup Sticks/Dinner Roll With Butter Chiplet, Salt & Pepper"
+            },
+            {
+              "item": "Starter",
+              "description": "Gobi Fry ( Gobi 65 )/Pavakkai Varuval/Sennai Varuval"
+            },
+            {
+              "item": "Main Course - Vegetarian",
+              "description": "Paneer Chettinad/Veg Paneer Khoruma (Paneer & Gravy )/Paruppu Urundai Kozhambu ( Paruppu Vadai & Gravy )"
+            },
+            {
+              "item": "Main Course - Non - Vegetarian",
+              "description": "Chicken Chettinad/Palipalayam Chicken Curry/ Kozhi Varutha Kozhambu (Boneless Chicken +Gravy)"
+            },
+            {
+              "item": "Dal",
+              "description": "Drumstick Sambar/Paruppu Masiyal/Sundai Vathakozhambu"
+            },
+            {
+              "item": "Rice",
+              "description": "Jeera Pulao/Ghee Rice/Peas Pulao (Zeera Sambar/Basmati Rice)"
+            },
+            {
+              "item": "Indian Bread",
+              "description": "Pulkha - 3-4 Nos /Ghee Wheat Paratha - 2 Nos/Roti - 3-4 Nos"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Mixed Pickles Blister, Salt, Pepper, Tissue Paper & Ss Cutleries"
+            },
+            {
+              "item": "Curd",
+              "description": "Branded Curd"
+            },
+            {
+              "item": "Dessert",
+              "description": "Branded prepacked Gulab Jamun 2 Nos /Kulfi/Ice Cream (Vannilla Or Butter Scotch Or Strawberry Or Chocolate)"
+            },
+            {
+              "item": "Paper Napkin",
+              "description": "Absorbent Tissue"
+            },
+            {
+              "item": "Hand Sanitizer Sachet",
+              "description": "Sanitizer Sachet"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Premix Tea to be served with Stirr, Paper Cup & Hot Water in thermos in service tray"
+  ],
+  "slug": "ms-mdu-tejas-express-22671",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/22671.pdf",
+  "generatedAt": "2026-06-30T22:19:59.367Z"
+}

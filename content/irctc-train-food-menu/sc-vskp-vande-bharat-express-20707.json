@@ -1,0 +1,250 @@
+{
+  "trainNumber": "20707",
+  "trainNumberPair": "20707-08",
+  "trainName": "Vande Bharat Express",
+  "route": "SC-VSKP",
+  "originCode": "SC",
+  "destinationCode": "VSKP",
+  "classes": [
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/Coffee/Malt Beverages or individual packs of approved brands of Lemon Tea/Black Tea/Green Tea/Black Coffee, served with Sugar Sachet or Sugarfree sachets."
+            },
+            {
+              "item": "Kit",
+              "description": "Corn starch Stirrer, Good quality Napkin tissue, Disposable Cup."
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/Cookies/Millet based Cookies (2 Pcs)."
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 122,
+          "items": [
+            {
+              "item": "Veg.",
+              "description": "served on a weekly cyclic basis: (1) Rice/Ragi Idli (2 nos) + Medhu Vada (1 no) + Sambar + Coconut/Ground nut chutney + Branded Curd; (2) Onion/Tomato Uttapam (2 nos) + Vada (1 no) + Sambar + Coconut chutney + Branded Curd; (3) Branded RTE Rava Upma + Vada (1 no) + Sambar + Coconut chutney + Branded Curd; (4) 2 Stuffed Parantha + Subji + Veg Cutlet (1 pc) + Branded Curd."
+            },
+            {
+              "item": "Non-Veg.",
+              "description": "served on a weekly cyclic basis: (1) Masala Omlette with Sauted Boiled vegetables + finger chips + 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack; (2) Cheese Omlette with Sauted Boiled vegetables + finger chips + 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack; (3) Egg Bhurjee with Sauted Boiled vegetables + finger chips + 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack; (4) Scrambled Egg with Sauted Boiled vegetables + finger chips + 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack."
+            },
+            {
+              "item": "Cake (Eggless)",
+              "description": "Branded Eggless Croissant."
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 222,
+          "items": [
+            {
+              "item": "Rice",
+              "description": "served on a weekly cyclic basis: (1) Steamed Rice; (2) Veg Fried Rice; (3) Jeera Rice; (4) Veg Pulav."
+            },
+            {
+              "item": "Indian Bread",
+              "description": "served on a weekly cyclic basis: (1) Paratha (2)/Pulka(3); (2) Lachha Parantha (02 nos); (3) RTE Fully Cooked Roti* (03 nos); (4) Ajwain Prantha (02 nos)."
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Tomato Dhall/Jeera Dhall; (2) Leafy dhall (Totakura/palakura pappu); (3) Dosakaya Pappu (Country cucumber dhall); (4) Dhall (Gongura pappu/Mamidikaya pappu (mango))."
+            },
+            {
+              "item": "Main Course Veg. Dish",
+              "description": "served on a weekly cyclic basis: (1) Paneer Butter Masala (with Paneer); (2) Methi Paneer Masala (with Paneer); (3) Matar Paneer (with Paneer); (4) Kadhai Paneer (with Paneer)."
+            },
+            {
+              "item": "Main Course Non Veg. dish",
+              "description": "served on a weekly cyclic basis: (1) Kodi koora (chicken curry) (with Boneless Chicken); (2) Gongura chicken (with Boneless Chicken); (3) Spicy Andhra Chicken Curry (with Boneless Chicken); (4) Kadhai Chicken (with Boneless Chicken)."
+            },
+            {
+              "item": "Curd",
+              "description": "Packaged Branded Curd in cups."
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "served on a weekly cyclic basis: (1) Dondakaya (Kundru) - groundnut fry; (2) Aloo Gobhi (or) Aratikaya fry (Gr Plantain); (3) Bhendi besan fry (bendakaya sanagapindi vepudu); (4) Sanagapappu vankaya koora (Brinjal with BengalGram dhall)."
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in blister pack."
+            },
+            {
+              "item": "Dessert",
+              "description": "Branded Ice cream/Ice cream Sugar Free or Branded pre-packed Anjeer Barfi/Kaju Katli/Ragi Laddoo."
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 66,
+          "items": [
+            {
+              "item": "Snacks Hamper Bag",
+              "description": "served on a weekly cyclic basis: (1) Onion Samosa + Branded Caramel Popcorn/Branded Chocopie + Branded Namkeen; (2) Bread pakoda/Mysore Bonda + Branded Caramel Popcorn/Branded Chocopie + Branded Namkeen; (3) Masala Vada/Plantin bhajji + Branded Caramel Popcorn/Branded Chocopie + Branded Namkeen; (4) Aloo Bonda/Corn Samosa + Branded Caramel Popcorn/Branded Chocopie + Branded Namkeen."
+            },
+            {
+              "item": "Tetra Pack Juice",
+              "description": "Branded Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice."
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Branded Premix based Tea/Coffee/Malt Beverages or individual packs of approved brands of Lemon Tea/Black Tea/Green Tea/Black Coffee, served with Sugar Sachet or Sugarfree sachets."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "EC",
+      "className": "Executive Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": 15,
+          "items": [
+            {
+              "item": "Hot Beverage",
+              "description": "Option of Branded Premix based Tea/Coffee/Malt Beverages or individual packs of approved brands of Lemon Tea/Black Tea/Green Tea/Black Coffee, served with Sugar Sachet or Sugarfree sachets."
+            },
+            {
+              "item": "Kit",
+              "description": "Envelope with Stainless Steel Tea Spoon, Good quality Napkin tissue."
+            },
+            {
+              "item": "Biscuit",
+              "description": "Branded Digestive Biscuit/Cookies/Millet based Cookies (2 Pcs)."
+            },
+            {
+              "item": "Cereal",
+              "description": "Corn Flakes/Muesli/Millet Muesli/Millet flakes/Oats with milk (Hot/Cold) and sugar."
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": 155,
+          "items": [
+            {
+              "item": "Veg.",
+              "description": "served on a weekly cyclic basis: (1) Rice/Ragi Idli (2 nos) + Medhu Vada (1 no) + Sambar (Onion/carrot) + Coconut/Ground nut chutney + Branded Curd; (2) Onion/Tomato Uttapam (2 nos) + Vada (1 no) + Sambar + Coconut chutney + Branded Curd; (3) Branded RTE Rava Upma + Vada (1 no) + Sambar + Coconut chutney + Branded Curd; (4) 2 Stuffed Parantha + Subji + Veg Cutlet (1 pc) + Branded Curd."
+            },
+            {
+              "item": "Non-Veg.",
+              "description": "served on a weekly cyclic basis: (1) Masala Omlette with Sauted Boiled vegetables + finger chips + 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack; (2) Cheese Omlette with Sauted Boiled vegetables + finger chips + 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack; (3) Egg Bhurjee with Sauted Boiled vegetables + finger chips + 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack; (4) Scrambled Egg with Sauted Boiled vegetables + finger chips + 02 slices of Brown/Multi Grain Bread + Butter chiplet + Jam in blister pack."
+            },
+            {
+              "item": "Fruit",
+              "description": "02 Banana/01 Apple."
+            },
+            {
+              "item": "Cake (Eggless)",
+              "description": "Branded Eggless Croissant."
+            },
+            {
+              "item": "Drinks",
+              "description": "Branded Coconut water/Branded Diet Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice."
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": 244,
+          "items": [
+            {
+              "item": "Soup",
+              "description": "Branded Pre-mix Sachet Tomato Soup + Packed Multigrain Soup sticks 2/Dinner bun 1 + Butter Chiplet."
+            },
+            {
+              "item": "Rice",
+              "description": "served on a weekly cyclic basis: (1) Steamed Rice; (2) Veg Fried Rice; (3) Jeera Rice; (4) Veg Pulav."
+            },
+            {
+              "item": "Indian Bread",
+              "description": "served on a weekly cyclic basis: (1) Paratha (2)/Pulka(3); (2) Lachha Parantha (02 nos); (3) RTE Fully Cooked Roti* (03 nos); (4) Ajwain Prantha (02 nos)."
+            },
+            {
+              "item": "Dal",
+              "description": "served on a weekly cyclic basis: (1) Tomato Dhall/Jeera Dhall; (2) Leafy dhall (Totakura/palakura pappu); (3) Dosakaya Pappu (Country cucumber dhall); (4) Dhall (Gongura pappu/Mamidikaya pappu (mango))."
+            },
+            {
+              "item": "Main Course Veg. Dish",
+              "description": "served on a weekly cyclic basis: (1) Paneer Butter Masala (with Paneer); (2) Methi Paneer Masala (with Paneer); (3) Matar Paneer (with Paneer); (4) Kadhai Paneer (with Paneer)."
+            },
+            {
+              "item": "Main Course Non Veg. dish",
+              "description": "served on a weekly cyclic basis: (1) Kodi koora (chicken curry) (with Boneless Chicken); (2) Gongura chicken (with Boneless Chicken); (3) Spicy Andhra Chicken Curry (with Boneless Chicken); (4) Kadhai Chicken (with Boneless Chicken)."
+            },
+            {
+              "item": "Curd",
+              "description": "Packaged Branded Curd in cups."
+            },
+            {
+              "item": "Dry Veg.",
+              "description": "served on a weekly cyclic basis: (1) Dondakaya (Kundru) - groundnut fry; (2) Aloo Gobhi (or) Aratikaya fry (Gr Plantain); (3) Bhendi besan fry (bendakaya sanagapindi vepudu); (4) Sanagapappu vankaya koora (Brinjal with BengalGram dhall)."
+            },
+            {
+              "item": "Pickle",
+              "description": "Pickle in blister pack."
+            },
+            {
+              "item": "Dessert",
+              "description": "Premium flavoured Ice cream/Premium flavoured Ice cream Sugar Free i.e. Chocolate/Butter scotch/Kaju pista/fruit & Nut or Branded pre-packed Anjeer Barfi/Kaju Katli/Ragi Laddoo."
+            }
+          ]
+        },
+        {
+          "service": "Evening Snacks",
+          "price": 105,
+          "items": [
+            {
+              "item": "Snacks Hamper Bag",
+              "description": "served on a weekly cyclic basis: (1) Onion Samosa + Branded - Cream Bun/Jam Bun/Custard bun/Danish Bun/Croissant/Chocolate Bun/Jam Roll/Brownie + Chocolate Bar/Branded Chikki Bar/Branded Chikki Bar/Millet bar/Multimillet bar + Branded Caramel Popcorn; (2) Bread pakoda/Mysore Bonda + Branded - Cream Bun/Jam Bun/Custard bun/Danish Bun/Croissant/Chocolate Bun/Jam Roll/Brownie + Chocolate Bar/Branded Chikki Bar/Branded Chikki Bar/Millet bar/Multimillet bar + Branded Caramel Popcorn; (3) Masala Vada/Plantin bhajji + Branded - Cream Bun/Jam Bun/Custard bun/Danish Bun/Croissant/Chocolate Bun/Jam Roll/Brownie + Chocolate Bar/Branded Chikki Bar/Branded Chikki Bar/Millet bar/Multimillet bar + Branded Caramel Popcorn; (4) Aloo Bonda/Corn Samosa + Branded - Cream Bun/Jam Bun/Custard bun/Danish Bun/Croissant/Chocolate Bun/Jam Roll/Brownie + Chocolate Bar/Branded Chikki Bar/Branded Chikki Bar/Millet bar/Multimillet bar + Branded Caramel Popcorn."
+            },
+            {
+              "item": "Dry Fruits",
+              "description": "Branded Salted Cashew Packet/Salted Pistacchio Packet/Salted Almonds Packet/Branded Makhana Packet."
+            },
+            {
+              "item": "Tetra Pack Juice",
+              "description": "Branded Coconut water/Branded Diet Aerated Drink/Branded Lassi/Flavoured Milk/Fruit Juice."
+            },
+            {
+              "item": "Hot Beverage",
+              "description": "Branded Premix based Tea/Coffee/Malt Beverages or individual packs of approved brands of Lemon Tea/Black Tea/Green Tea/Black Coffee, served with Sugar Sachet or Sugarfree sachets."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "All cooked meal packets should bear QR Code with details of Name of unit, FSSAI license no., Veg./Non-veg item name, Gramage etc. and date of packing and Veg/N.Veg. Sticker.",
+    "Pre-mix Tea/Coffee/Green Tea/Malt beverage should be served with Stirrer, disposable hard paper/corn starch cups, paper napkin & Hot Water (150 ml) in flask.",
+    "Only boneless chicken should be used in chicken dish preparation. Neck & wing portions of chicken should not be served.",
+    "The menu should be served on cyclic basis.",
+    "Service of Morning Tea/Breakfast/Lunch/Dinner to be done in acrylic trays (as per tray color to differentiate Veg./N. Veg.).",
+    "Service Evening Snacks to be preferably done in Snacks Box with co-branding of Vande Bharat Train.",
+    "All the packaging materials including disposable items may be as per color scheme of Vande Bharat Express with co-branding of IRCTC and Licensee.",
+    "Tray mat with Bi-lingual Menu/QR code to be used.",
+    "Hard ribbed disposable paper cups to be used for service of Beverages.",
+    "All food items should be individually packed & served in Coloured Teflon coated Aluminium Casseroles (60-70 micron)/Corn Starch packaging material and Parathas should be packed/served in aluminum wrapper.",
+    "Malt beverages to be provided to Children instead of Tea/Coffee."
+  ],
+  "slug": "sc-vskp-vande-bharat-express-20707",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/20707.pdf",
+  "generatedAt": "2026-06-30T22:16:17.441Z"
+}
