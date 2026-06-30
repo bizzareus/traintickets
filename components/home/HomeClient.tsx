@@ -14,11 +14,7 @@ import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { isIrctcDirectBookable } from "@/lib/bookingV2Availability";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
-import {
-  IstRailMaintenanceModal,
-} from "@/components/IstRailMaintenance";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
-import { useIstRailMaintenance } from "@/hooks/useIstRailMaintenance";
 import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
 import { cn } from "@/lib/utils";
 import { SeatStatus } from "@/components/booking-v2/SeatStatus";
@@ -373,7 +369,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [searchType, setSearchType] = useState<"route" | "pnr" | "seat">("route");
   const altAlternatePathCaptureRef = useRef<HTMLDivElement>(null);
   const [altShareBusy, setAltShareBusy] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const fromCode = searchParams.get("from");
@@ -406,15 +401,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [scheduleHighlightFrom, setScheduleHighlightFrom] = useState("");
   const [scheduleHighlightTo, setScheduleHighlightTo] = useState("");
 
-  const {
-    maintenanceModalOpen,
-    dismissMaintenanceModal,
-    displayMinutes,
-    onBlockedSearchAttempt,
-  } = useIstRailMaintenance(mounted);
-
-  // Shared alternate-paths engine for the Route tab.
-  const alt = useAlternatePaths({ acOnly, onBlockedSearchAttempt });
+  // Shared alternate-paths engine for the Route tab. The IRCTC nightly
+  // maintenance gate is intentionally NOT applied here: route search and
+  // alternate paths run on ConfirmTkt + RapidAPI, which stay up during the
+  // IRCTC online-charts maintenance window. The gate lives in SeatStatus
+  // (Chart Vacancy + Live Seat Tracker), which do hit the online-charts API.
+  const alt = useAlternatePaths({ acOnly });
   const {
     altForTrain,
     altTrainName,
@@ -430,7 +422,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
   const [isAdminUser, setIsAdminUser] = useState(false);
   useEffect(() => {
-    setMounted(true);
     try {
       setIsAdminUser(window.localStorage.getItem("admin") === "true");
 
@@ -585,7 +576,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   }, [toDeb]);
 
   const runSearch = useCallback(async () => {
-    if (onBlockedSearchAttempt()) return;
     if (!fromSt || !toSt) {
       setSearchError("Select both stations.");
       return;
@@ -623,7 +613,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     } finally {
       setSearchLoading(false);
     }
-  }, [fromSt, toSt, journeyDate, onBlockedSearchAttempt, acOnly]);
+  }, [fromSt, toSt, journeyDate, acOnly]);
 
   useEffect(() => {
     if (fromSt && toSt && journeyDate && !autoSearchTriggered.current) {
@@ -642,7 +632,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   }, [fromSt, toSt, journeyDate, runSearch, searchParams]);
 
   const runBestTrainSearch = useCallback(async () => {
-    if (onBlockedSearchAttempt()) return;
     if (!fromSt || !toSt) {
       setBestTrainError("Select both stations.");
       return;
@@ -746,7 +735,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     } finally {
       setBestTrainLoading(false);
     }
-  }, [fromSt, toSt, journeyDate, trains, acOnly, onBlockedSearchAttempt]);
+  }, [fromSt, toSt, journeyDate, trains, acOnly]);
 
   const bestTrainProgressSummary = useMemo(() => {
     const ready = [...bestTrainProgress]
@@ -1394,11 +1383,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
           )}
       </div>
       <HomeSeoContent t={t.seo} />
-      <IstRailMaintenanceModal
-        open={maintenanceModalOpen}
-        onClose={dismissMaintenanceModal}
-        minutesDisplay={displayMinutes}
-      />
       <TrainScheduleBottomSheet
         open={scheduleModalOpen}
         onClose={() => setScheduleModalOpen(false)}

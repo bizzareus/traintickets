@@ -13,6 +13,8 @@ import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { ChevronRight, CircleCheck, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
+import { IstRailMaintenanceModal } from "@/components/IstRailMaintenance";
+import { useIstRailMaintenance } from "@/hooks/useIstRailMaintenance";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -622,6 +624,19 @@ export function SeatStatus() {
 
   const [trainStations, setTrainStations] = useState<StationRow[] | null>(null);
 
+  // IRCTC nightly maintenance gate. SeatStatus powers both the Chart Vacancy
+  // page and the homepage Live Seat Tracker tab, and both read the IRCTC
+  // online-charts API, which is down during the window. Route search doesn't
+  // use that API, so the gate only lives here.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const {
+    maintenanceModalOpen,
+    dismissMaintenanceModal,
+    displayMinutes,
+    onBlockedSearchAttempt,
+  } = useIstRailMaintenance(mounted);
+
   const stationMap = useMemo(() => {
     const map: Record<string, string> = {};
     if (trainStations) {
@@ -680,6 +695,15 @@ export function SeatStatus() {
       setCoachesError(null);
       return;
     }
+    // Block the IRCTC online-charts call during nightly maintenance and show
+    // the "Search unavailable" modal instead of letting it fail.
+    if (onBlockedSearchAttempt()) {
+      setCoaches([]);
+      setSelectedCoach(null);
+      setCoachesError(null);
+      setCoachesLoading(false);
+      return;
+    }
     let cancelled = false;
     setCoachesLoading(true);
     setCoachesError(null);
@@ -724,7 +748,7 @@ export function SeatStatus() {
     return () => {
       cancelled = true;
     };
-  }, [selectedTrain, journeyDate, station]);
+  }, [selectedTrain, journeyDate, station, onBlockedSearchAttempt]);
 
   const resetResult = useCallback(() => {
     setResult(null);
@@ -1043,11 +1067,16 @@ export function SeatStatus() {
             <BerthAvailabilityList
               data={result}
               stationMap={stationMap}
-              bookUrl={`https://irctc.co.in/nget/redirect?from=${station?.stationCode ?? ""}&to=${destination?.stationCode ?? station?.stationCode ?? ""}&trainNo=${selectedTrain?.number ?? ""}&class=${selectedCoach?.classCode ?? ""}&page=train-chart`}
+              bookUrl={`https://www.irctc.co.in/nget/redirect?from=${station?.stationCode ?? ""}&to=${destination?.stationCode ?? station?.stationCode ?? ""}&trainNo=${selectedTrain?.number ?? ""}&class=${selectedCoach?.classCode ?? ""}&page=train-chart`}
             />
           </div>
         </div>
       )}
+      <IstRailMaintenanceModal
+        open={maintenanceModalOpen}
+        onClose={dismissMaintenanceModal}
+        minutesDisplay={displayMinutes}
+      />
     </div>
   );
 }
