@@ -32,7 +32,8 @@ export async function GET() {
   lines.push(`- [Booking V2](${baseUrl}/booking/v2): Fast, optimized passenger booking flow for Tatkal tickets.`);
   lines.push(`- [Chart Vacancy](${baseUrl}/chart-vacancy): IRCTC chart vacancy — live coach-wise vacant berths after charting, with a visual coach map and current-availability booking.`);
   lines.push(`- [Chart Times](${baseUrl}/chart-times): IRCTC vacancy chart preparation times for trains, station by station, with chart-prep alerts.`);
-  lines.push(`- [Train Food Menu](${baseUrl}/irctc-train-food-menu): Readable IRCTC train catering menus and per-meal prices (Vande Bharat), organised by class and meal, replacing IRCTC's PDF menus.`);
+  lines.push(`- [Train Food Menu](${baseUrl}/irctc-train-food-menu): Readable IRCTC train catering menus and per-meal prices (Vande Bharat, Tejas), organised by class and meal, replacing IRCTC's PDF menus.`);
+  lines.push(`- [Mail/Express/Humsafar beverage prices](${baseUrl}/irctc-train-food-menu/mail-express-humsafar): Official IRCTC tea, coffee, soup and Rail Neer water charges (at-station vs in-train) for Mail, Express and Humsafar trains.`);
   lines.push("");
   lines.push("## Indian Railways Rules & Domain Knowledge");
   lines.push("- **Chart Preparation Rules**: The first reservation chart is prepared 4 hours before scheduled departure from the originating (or remote charting) station. Once the first chart is prepared, standard online bookings close, and vacant seats are released as 'Current Availability'. The final (second) chart is prepared 30 minutes before departure.");

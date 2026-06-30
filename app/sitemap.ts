@@ -94,6 +94,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 4c. Train food-menu pages (index + every committed content/irctc-train-food-menu/*.json)
   const foodMenuRoutes: MetadataRoute.Sitemap = [
     { url: url("/irctc-train-food-menu"), lastModified: now },
+    { url: url("/irctc-train-food-menu/mail-express-humsafar"), lastModified: now },
     ...listTrainFoodMenuIndex().map((m) => ({
       url: url(`/irctc-train-food-menu/${m.slug}`),
       lastModified: now,

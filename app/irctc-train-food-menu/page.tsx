@@ -86,6 +86,23 @@ export default function TrainFoodMenuIndexPage() {
         </p>
       </header>
 
+      <Link
+        href="/irctc-train-food-menu/mail-express-humsafar"
+        className="mb-5 flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+      >
+        <span className="min-w-0">
+          <span className="block font-semibold text-slate-900">
+            On a Mail, Express or Humsafar train?
+          </span>
+          <span className="block text-sm text-slate-500">
+            See standard tea, coffee and Rail Neer water prices.
+          </span>
+        </span>
+        <span className="shrink-0 text-blue-600" aria-hidden>
+          →
+        </span>
+      </Link>
+
       {rows.length > 0 ? (
         <FoodMenuList rows={rows} />
       ) : (
