@@ -1,7 +1,7 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { chromium } from 'playwright';
 import { captureSentryException } from '../common/sentry-report';
+import { CdpClient, cookiesToHeaderString, type CdpCookie } from './cdp-client';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
 
 const ONLINE_CHARTS_URL = 'https://www.irctc.co.in/online-charts/';
@@ -23,17 +23,14 @@ const VERIFY_HEADERS: Record<string, string> = {
 
 /**
  * Keeps the IRCTC (Akamai-protected) cookie bundle fresh by driving a remote
- * browser-use cloud browser on an India residential IP, harvesting the cookies
- * over CDP, and writing them to the file-backed cookie store the rest of the
- * backend reads.
+ * browser-use cloud browser on an India residential IP and harvesting the
+ * cookies over raw CDP (see ./cdp-client.ts — no Playwright/Puppeteer), then
+ * writing them to the file-backed cookie store the rest of the backend reads.
  *
  * Why a remote browser: Akamai resets the HTTP/2 stream for datacenter IPs and
- * headless browsers, so we can't harvest cookies from Railway directly. The
- * cloud browser loads the page from a residential IP; the harvested cookies are
- * then usable from Railway in a plain fetch (verified in the spike).
- *
- * No local Chromium is needed — connectOverCDP only uses the playwright client
- * library to talk to the remote browser, so this runs fine inside Railway.
+ * headless browsers, so cookies can't be harvested from Railway directly. The
+ * cloud browser loads the page from a residential IP; the harvested cookies
+ * are then usable from Railway in a plain fetch (verified against live IRCTC).
  *
  * Gated by IRCTC_KEEPER_ENABLED=true and BROWSER_USE_API_KEY. Tunables:
  *   IRCTC_KEEPER_CRON          cron expression (default every 30 min)
@@ -114,35 +111,12 @@ export class IrctcSessionKeeperService implements OnModuleInit {
           `browser create ${createResp.status}: ${(await createResp.text()).slice(0, 200)}`,
         );
       }
-      const session = (await createResp.json()) as {
-        id: string;
-        cdpUrl?: string;
-      };
+      const session = (await createResp.json()) as { id: string; cdpUrl?: string };
       sessionId = session.id;
       if (!session.cdpUrl) throw new Error('no cdpUrl on create response');
 
-      // 2. Drive it over CDP and harvest cookies.
-      const browser = await chromium.connectOverCDP(session.cdpUrl);
-      let cookieString = '';
-      try {
-        const context = browser.contexts()[0] ?? (await browser.newContext());
-        const page = context.pages()[0] ?? (await context.newPage());
-        await page.goto(ONLINE_CHARTS_URL, {
-          waitUntil: 'domcontentloaded',
-          timeout: 60_000,
-        });
-        // Let Akamai's sensor JS settle the cookie bundle.
-        for (let i = 0; i < 12; i++) {
-          const cookies = await context.cookies('https://www.irctc.co.in');
-          if (cookies.some((c) => c.name === '_abck')) break;
-          await page.waitForTimeout(1500);
-        }
-        const cookies = await context.cookies('https://www.irctc.co.in');
-        cookieString = cookies.map((c) => `${c.name}=${c.value}`).join('; ');
-      } finally {
-        await browser.close().catch(() => {});
-      }
-
+      // 2. Drive it over raw CDP and harvest cookies.
+      const cookieString = await this.harvestCookies(session.cdpUrl);
       if (!cookieString) throw new Error('no cookies harvested');
 
       // 3. Verify the harvested cookies actually work in a plain fetch (the way
@@ -194,6 +168,49 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         }).catch(() => {});
       }
       this.refreshing = false;
+    }
+  }
+
+  /** Navigate the remote browser to online-charts and harvest IRCTC cookies over raw CDP. */
+  private async harvestCookies(cdpUrl: string): Promise<string> {
+    const cdp = await CdpClient.connect(cdpUrl);
+    let targetId: string | undefined;
+    try {
+      const target = await cdp.send<{ targetId: string }>('Target.createTarget', {
+        url: 'about:blank',
+      });
+      targetId = target.targetId;
+      const attach = await cdp.send<{ sessionId: string }>('Target.attachToTarget', {
+        targetId,
+        flatten: true,
+      });
+      const sessionId = attach.sessionId;
+
+      await cdp.send('Page.enable', {}, sessionId);
+      await cdp.send('Page.navigate', { url: ONLINE_CHARTS_URL }, sessionId);
+      try {
+        await cdp.waitForEvent('Page.loadEventFired', sessionId, 30_000);
+      } catch {
+        // Proceed anyway — the cookie-presence poll below is the real gate.
+      }
+
+      let cookies: CdpCookie[] = [];
+      for (let i = 0; i < 12; i++) {
+        const r = await cdp.send<{ cookies: CdpCookie[] }>(
+          'Network.getAllCookies',
+          {},
+          sessionId,
+        );
+        cookies = r.cookies.filter((c) => c.domain.includes('irctc.co.in'));
+        if (cookies.some((c) => c.name === '_abck')) break;
+        await new Promise((res) => setTimeout(res, 1500));
+      }
+      return cookiesToHeaderString(cookies);
+    } finally {
+      if (targetId) {
+        await cdp.send('Target.closeTarget', { targetId }).catch(() => {});
+      }
+      cdp.close();
     }
   }
 }
