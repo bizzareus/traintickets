@@ -243,40 +243,71 @@ export default async function TrainFoodMenuPage({ params }: Props) {
       </header>
 
       {/* Price at a glance */}
-      <section
-        className="mb-8 overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm"
-        aria-label="Price summary"
-      >
-        <table className="w-full min-w-[420px] text-left text-sm">
-          <thead>
-            <tr className="border-b border-slate-200 bg-slate-50 text-slate-600">
-              <th className="px-4 py-3 font-semibold">Meal</th>
-              {menu.classes.map((c) => (
-                <th key={c.classCode} className="px-4 py-3 font-semibold">
-                  {c.className}{" "}
-                  <span className="font-normal text-slate-400">
-                    ({c.classCode})
-                  </span>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {services.map((svc) => (
-              <tr key={svc} className="border-t border-slate-100">
-                <td className="px-4 py-3 font-medium text-slate-800">{svc}</td>
+      <section className="mb-8" aria-label="Prices at a glance">
+        <h2 className="mb-3 text-base font-bold text-slate-900">
+          Prices at a glance
+        </h2>
+
+        {/* Mobile: one card per meal with a price chip per class (no table) */}
+        <ul className="space-y-3 sm:hidden">
+          {services.map((svc) => (
+            <li
+              key={svc}
+              className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+            >
+              <div className="mb-2.5 font-semibold text-slate-800">{svc}</div>
+              <div className="flex flex-wrap gap-2">
                 {menu.classes.map((c) => (
-                  <td
+                  <span
                     key={c.classCode}
-                    className="px-4 py-3 font-semibold text-slate-900"
+                    className="min-w-[7rem] flex-1 rounded-lg bg-slate-50 px-3 py-2"
                   >
-                    {inr(priceFor(menu, c.classCode, svc))}
-                  </td>
+                    <span className="block text-xs text-slate-500">
+                      {c.className} ({c.classCode})
+                    </span>
+                    <span className="text-lg font-bold text-slate-900">
+                      {inr(priceFor(menu, c.classCode, svc))}
+                    </span>
+                  </span>
+                ))}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        {/* Desktop: compact comparison table */}
+        <div className="hidden overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm sm:block">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50 text-slate-600">
+                <th className="px-4 py-3 font-semibold">Meal</th>
+                {menu.classes.map((c) => (
+                  <th key={c.classCode} className="px-4 py-3 font-semibold">
+                    {c.className}{" "}
+                    <span className="font-normal text-slate-400">
+                      ({c.classCode})
+                    </span>
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {services.map((svc) => (
+                <tr key={svc} className="border-t border-slate-100">
+                  <td className="px-4 py-3 font-medium text-slate-800">{svc}</td>
+                  {menu.classes.map((c) => (
+                    <td
+                      key={c.classCode}
+                      className="px-4 py-3 font-semibold text-slate-900"
+                    >
+                      {inr(priceFor(menu, c.classCode, svc))}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       {/* Per-class detailed menu, with client-side dish/meal search */}
