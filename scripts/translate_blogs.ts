@@ -61,7 +61,7 @@ Strict Rules for Low AI Detection (AI Bypass):
       });
 
       const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error('Promise Timeout (120s)')), 120000)
+        setTimeout(() => reject(new Error('Promise Timeout (300s)')), 300000)
       );
 
       completion = await Promise.race([apiCall, timeoutPromise]) as any;

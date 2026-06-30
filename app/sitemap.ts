@@ -3,6 +3,7 @@ import { listBlogPosts, getAvailableTranslations } from "@/lib/blog";
 import { getAllGlossaryTerms, listAvailableGlossaryLangs } from "@/lib/seo/glossary-db";
 import { getTopRoutes } from "@/lib/seo/routes-db";
 import { listChartTimesIndex } from "@/lib/chartTimes";
+import { HOME_LANGS } from "@/lib/home/home-i18n";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_APP_URL ||
@@ -25,13 +26,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // 1. Static core routes
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: url("/"), lastModified: now },
     { url: url("/search"), lastModified: now },
     { url: url("/booking/v2"), lastModified: now },
     { url: url("/chart-times"), lastModified: now },
     { url: url("/chart-vacancy"), lastModified: now },
     { url: url("/pnr-status"), lastModified: now },
   ];
+
+  // 1b. Localized homepage (/ for English, /<lang> for the rest) with hreflang.
+  const homeRoutes: MetadataRoute.Sitemap = HOME_LANGS.map((lang) => {
+    const alternates: Record<string, string> = {};
+    for (const l of HOME_LANGS) {
+      const u = l === "en" ? url("/") : url(`/${l}`);
+      alternates[l] = u;
+      alternates[`${l}-IN`] = u;
+    }
+    alternates["x-default"] = url("/");
+
+    return {
+      url: lang === "en" ? url("/") : url(`/${lang}`),
+      lastModified: now,
+      alternates: { languages: alternates },
+    };
+  });
 
   // 2. Glossary: index + term pages, per language that has a translation file.
   const glossaryTerms = getAllGlossaryTerms();
@@ -118,6 +135,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   return [
+    ...homeRoutes,
     ...staticRoutes,
     ...glossaryRoutes,
     ...trainRouteRoutes,

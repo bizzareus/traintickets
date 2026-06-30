@@ -39,7 +39,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     id: "wl",
     term: "WL (Waiting List)",
     definition:
-      "Your ticket is in the queue but doesn't have a berth yet. If it's an e-ticket and still WL when the chart is made, it gets cancelled and refunded automatically, so you can't board on it. A number like WL 5 means five people are ahead of you for that quota.",
+      "WL stands for Waiting List, which is the full form of WL in railway bookings. A WL status means your ticket is placed in a queue but does not have a confirmed berth yet. Fully waitlisted e-tickets are automatically cancelled and refunded after chart preparation, meaning you cannot board the train on a WL status.",
     relatedTerms: ["rac", "cnf", "gnwl"],
   },
   {
@@ -95,7 +95,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     id: "current-availability",
     term: "Current Availability",
     definition:
-      "Berths still empty after the chart is made. Anyone can book these at the normal fare, with a real coach and berth, from roughly four hours before departure until about thirty minutes before. It's often the quickest way to a confirmed last-minute seat.",
+      "Current Availability is the real-time count of vacant seats that open for booking after the reservation chart is prepared. These tickets are 100% confirmed with assigned coach and berth numbers. The booking window opens 4 hours before departure (or the night before for morning trains) and closes 30 minutes before departure.",
     relatedTerms: ["chart-preparation", "tatkal"],
   },
   {
