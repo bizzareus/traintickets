@@ -72,13 +72,23 @@ export class IrctcSessionKeeperService implements OnModuleInit {
   }
 
   status() {
+    // Never return the raw cookie value, even behind auth — just its metadata.
+    const record = this.cookieStore.getRecord();
     return {
       enabled: this.enabled,
       refreshing: this.refreshing,
       lastRefreshAt: this.lastRefreshAt,
       lastError: this.lastError,
-      record: this.cookieStore.getRecord(),
       cookieFile: this.cookieStore.cookieFilePath,
+      cookie: record
+        ? {
+            present: true,
+            length: record.cookie.length,
+            updatedAt: record.updatedAt,
+            source: record.source,
+            sessionId: record.sessionId,
+          }
+        : { present: false },
     };
   }
 
