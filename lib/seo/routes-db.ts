@@ -40,6 +40,7 @@ const ROUTE_TRAINS: Record<string, { number: string; name: string }[]> = {
   ],
   "chennai-to-bengaluru": [
     { number: "12007", name: "Chennai KSR Bengaluru Shatabdi Express" },
+    { number: "12027", name: "Chennai KSR Bengaluru Shatabdi Express" },
     { number: "12607", name: "Lalbagh Express" },
   ],
   "kolkata-to-delhi": [
@@ -48,6 +49,7 @@ const ROUTE_TRAINS: Record<string, { number: string; name: string }[]> = {
   ],
   "bengaluru-to-chennai": [
     { number: "12008", name: "KSR Bengaluru Chennai Shatabdi Express" },
+    { number: "12028", name: "KSR Bengaluru Chennai Shatabdi Express" },
     { number: "12608", name: "Lalbagh Express" },
   ],
   "delhi-to-jammu": [

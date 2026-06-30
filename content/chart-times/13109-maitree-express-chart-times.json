@@ -1,0 +1,38 @@
+{
+  "trainNumber": "13109",
+  "trainName": "Maitree Express",
+  "originStation": "KOAA",
+  "destinationStation": "DAKA",
+  "slug": "13109-maitree-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "KOAA",
+      "stationName": "Kolkata Chitpur",
+      "arrivalTime": "",
+      "departureTime": "07:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DAKA",
+      "stationName": "Dhaka",
+      "arrivalTime": "16:05",
+      "departureTime": "",
+      "day": 1,
+      "distance": "375.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Maitree Express (13109) from KOAA to DAKA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
+  "generatedAt": "2026-06-30T21:16:04.719Z",
+  "knownChartCount": 0
+}

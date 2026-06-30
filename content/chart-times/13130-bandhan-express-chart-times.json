@@ -1,0 +1,38 @@
+{
+  "trainNumber": "13130",
+  "trainName": "BANDHAN EXPRESS",
+  "originStation": "KLNB",
+  "destinationStation": "KOAA",
+  "slug": "13130-bandhan-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "KLNB",
+      "stationName": "KHULNA",
+      "arrivalTime": "--",
+      "departureTime": "13:30",
+      "day": null,
+      "distance": "0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KOAA",
+      "stationName": "KOLKATA",
+      "arrivalTime": "18:10",
+      "departureTime": "--",
+      "day": null,
+      "distance": "172",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for BANDHAN EXPRESS (13130) from KLNB to KOAA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
+  "generatedAt": "2026-06-30T21:16:23.011Z",
+  "knownChartCount": 0
+}
