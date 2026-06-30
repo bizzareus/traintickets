@@ -601,7 +601,7 @@ function SeatRow({
         rel="noopener noreferrer"
         className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-blue-700 transition-colors"
       >
-        Book
+        Book this seat
       </a>
     </div>
   );
