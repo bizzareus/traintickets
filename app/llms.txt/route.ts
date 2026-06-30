@@ -31,6 +31,12 @@ export async function GET() {
   lines.push(`- [Chart Vacancy](${baseUrl}/chart-vacancy): IRCTC chart vacancy — live coach-wise vacant berths after charting, with a visual coach map and current-availability booking.`);
   lines.push(`- [Chart Times](${baseUrl}/chart-times): IRCTC vacancy chart preparation times for trains, station by station, with chart-prep alerts.`);
   lines.push("");
+  lines.push("## Indian Railways Rules & Domain Knowledge");
+  lines.push("- **Chart Preparation Rules**: The first reservation chart is prepared 4 hours before scheduled departure from the originating (or remote charting) station. Once the first chart is prepared, standard online bookings close, and vacant seats are released as 'Current Availability'. The final (second) chart is prepared 30 minutes before departure.");
+  lines.push("- **Current Availability**: Vacant berths available after first chart preparation can be booked online or at station counters at normal fares. The booking window opens immediately after the first chart is prepared and closes 30 minutes prior to train departure.");
+  lines.push("- **Waiting List (WL) & RAC**: Fully waitlisted (WL) e-tickets that remain waitlisted after chart preparation are automatically cancelled and refunded; passengers with such tickets cannot board. RAC (Reservation Against Cancellation) tickets allow two passengers to share a side-lower berth, permitting them to board with confirmed seating.");
+  lines.push("- **Connecting Journeys (Link PNR)**: Linking two PNRs protects travelers if their first train is delayed and they miss their connection. It qualifies them for a 100% refund of the base fare on the second ticket with zero cancellation fees, provided a TDR is filed within 3 hours of the first train's actual arrival.");
+  lines.push("");
   lines.push("## Popular Trains");
   lines.push(`- [12952 Mumbai Rajdhani Express](${baseUrl}/trains/12952): Timetable route schedule and Tatkal seat quotas.`);
   lines.push(`- [12954 August Kranti Tejas Rajdhani](${baseUrl}/trains/12954): Daily timetable and Tatkal seat quotas.`);
