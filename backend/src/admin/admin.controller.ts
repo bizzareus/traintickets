@@ -1,33 +1,11 @@
 import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AdminService } from './admin.service';
-import { IrctcSessionKeeperService } from '../irctc/irctc-session-keeper.service';
 
 @Controller('api/admin')
 @UseGuards(JwtAuthGuard)
 export class AdminController {
-  constructor(
-    private admin: AdminService,
-    private irctcKeeper: IrctcSessionKeeperService,
-  ) {}
-
-  /** Current IRCTC cookie-keeper state: enabled?, last refresh, last error. */
-  @Get('irctc-keeper')
-  getIrctcKeeperStatus() {
-    return this.irctcKeeper.status();
-  }
-
-  /** Force an immediate cookie refresh (spins up a browser-use session now). */
-  @Post('irctc-keeper/refresh')
-  refreshIrctcKeeper() {
-    return this.irctcKeeper.refresh('manual');
-  }
-
-  /** Manually paste in a cookie bundle (overrides whatever the keeper holds). */
-  @Post('irctc-keeper/cookie')
-  setIrctcKeeperCookie(@Body() body: { cookie?: string }) {
-    return this.irctcKeeper.setCookieManually(String(body?.cookie ?? ''));
-  }
+  constructor(private admin: AdminService) {}
 
   @Get('trains')
   getTrains() {

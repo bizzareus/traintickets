@@ -19,6 +19,8 @@ function extractError(err: unknown, fallback: string): string {
   return ax.response?.data?.message ?? ax.response?.data?.error ?? fallback;
 }
 
+const PW_STORAGE_KEY = "irctc_keeper_admin_password";
+
 export default function IrctcCookiesAdminPage() {
   const [status, setStatus] = useState<KeeperStatus | null>(null);
   const [loading, setLoading] = useState(true);
@@ -26,18 +28,35 @@ export default function IrctcCookiesAdminPage() {
   const [busy, setBusy] = useState<"refresh" | "manual" | null>(null);
   const [notice, setNotice] = useState("");
   const [cookie, setCookie] = useState("");
+  const [password, setPassword] = useState("");
+
+  // Persist the admin password locally so it survives reloads (same gate the
+  // chart-time-ingestion tools use). Sent as the x-admin-password header.
+  useEffect(() => {
+    setPassword(window.localStorage.getItem(PW_STORAGE_KEY) ?? "");
+  }, []);
+  const authHeaders = useCallback(
+    () => ({ "x-admin-password": password }),
+    [password],
+  );
 
   const loadStatus = useCallback(async () => {
+    if (!password) {
+      setLoading(false);
+      return;
+    }
     setError("");
     try {
-      const { data } = await apiClient.get<KeeperStatus>("/api/admin/irctc-keeper");
+      const { data } = await apiClient.get<KeeperStatus>("/api/admin/irctc-keeper", {
+        headers: { "x-admin-password": password },
+      });
       setStatus(data);
     } catch (err) {
       setError(extractError(err, "Failed to load keeper status."));
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [password]);
 
   useEffect(() => {
     void loadStatus();
@@ -51,6 +70,7 @@ export default function IrctcCookiesAdminPage() {
       const { data } = await apiClient.post<{ ok: boolean; error?: string }>(
         "/api/admin/irctc-keeper/refresh",
         {},
+        { headers: authHeaders() },
       );
       setNotice(
         data.ok
@@ -73,6 +93,7 @@ export default function IrctcCookiesAdminPage() {
       const { data } = await apiClient.post<{ ok: boolean; error?: string; length?: number }>(
         "/api/admin/irctc-keeper/cookie",
         { cookie },
+        { headers: authHeaders() },
       );
       if (data.ok) {
         setNotice(`Saved manual cookie (${data.length} chars).`);
@@ -107,6 +128,35 @@ export default function IrctcCookiesAdminPage() {
           {notice}
         </div>
       )}
+
+      {/* Admin password */}
+      <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow">
+        <label className="block text-sm font-medium text-slate-700">Admin password</label>
+        <div className="mt-2 flex gap-2">
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="CHART_TIME_INGESTION_PASSWORD"
+            className="w-full max-w-sm rounded-lg border border-slate-300 px-3 py-2 text-sm"
+          />
+          <button
+            type="button"
+            onClick={() => {
+              window.localStorage.setItem(PW_STORAGE_KEY, password);
+              setLoading(true);
+              void loadStatus();
+            }}
+            className="rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800"
+          >
+            Save &amp; load
+          </button>
+        </div>
+        <p className="mt-1 text-xs text-slate-500">
+          Same password as the other admin tools. Stored locally in your browser and sent as the{" "}
+          <code className="rounded bg-slate-100 px-0.5">x-admin-password</code> header.
+        </p>
+      </div>
 
       {/* Status */}
       <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow">
