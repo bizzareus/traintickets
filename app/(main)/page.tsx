@@ -48,6 +48,7 @@ import {
 } from "@/components/booking-v2/alternatePathHelpers";
 
 import { Header } from "@/components/Header";
+import { HomeSeoContent } from "@/components/HomeSeoContent";
 type StationRow = {
   stationCode: string;
   stationName: string;
@@ -874,7 +875,7 @@ function BookingV2PageContent() {
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              Seat Status
+              Live Seat Tracker
             </button>
           </div>
 
@@ -883,7 +884,7 @@ function BookingV2PageContent() {
               ? "Search Route"
               : searchType === "pnr"
                 ? "Search PNR"
-                : "Seat Status"}
+                : "Live Seat Tracker"}
           </h2>
           {searchType === "seat" ? (
             <SeatStatus />
@@ -1400,6 +1401,7 @@ function BookingV2PageContent() {
             </div>
           )}
       </div>
+      <HomeSeoContent />
       <IstRailMaintenanceModal
         open={maintenanceModalOpen}
         onClose={dismissMaintenanceModal}
