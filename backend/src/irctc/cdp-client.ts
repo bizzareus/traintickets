@@ -5,14 +5,41 @@
  *
  * Supports just what the IRCTC session keeper needs: create a target, attach
  * to it (flattened session), navigate, wait for an event, and read cookies.
+ *
+ * Every network-facing call here is timeout-guarded. A remote browser-use
+ * session that never opens its WebSocket, or never answers a CDP command,
+ * must not hang the caller forever — that would wedge the keeper's
+ * `refreshing` flag and silently kill every subsequent refresh until the
+ * process restarts.
  */
+
+const DEFAULT_CALL_TIMEOUT_MS = 20_000;
+const CONNECT_TIMEOUT_MS = 15_000;
 
 type PendingCall = {
   resolve: (value: unknown) => void;
   reject: (err: Error) => void;
+  timer: ReturnType<typeof setTimeout>;
 };
 
 type CdpEvent = { method: string; params: unknown; sessionId?: string };
+
+/** Reject with `label` if `promise` doesn't settle within `ms`. */
+function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    promise.then(
+      (v) => {
+        clearTimeout(timer);
+        resolve(v);
+      },
+      (e) => {
+        clearTimeout(timer);
+        reject(e);
+      },
+    );
+  });
+}
 
 export class CdpClient {
   private ws: WebSocket | null = null;
@@ -28,7 +55,11 @@ export class CdpClient {
 
   /** Resolve a browser-use (or any standard remote-debugging) cdpUrl to a live client. */
   static async connect(cdpHttpUrl: string): Promise<CdpClient> {
-    const versionResp = await fetch(`${cdpHttpUrl.replace(/\/$/, '')}/json/version`);
+    const versionResp = await withTimeout(
+      fetch(`${cdpHttpUrl.replace(/\/$/, '')}/json/version`),
+      CONNECT_TIMEOUT_MS,
+      'GET /json/version',
+    );
     if (!versionResp.ok) {
       throw new Error(`/json/version ${versionResp.status}`);
     }
@@ -37,7 +68,7 @@ export class CdpClient {
       throw new Error('no webSocketDebuggerUrl in /json/version response');
     }
     const client = new CdpClient(info.webSocketDebuggerUrl);
-    await client.open();
+    await withTimeout(client.open(), CONNECT_TIMEOUT_MS, 'CDP websocket open');
     return client;
   }
 
@@ -55,6 +86,7 @@ export class CdpClient {
       };
       ws.addEventListener('open', onOpen, { once: true });
       ws.addEventListener('error', onError, { once: true });
+      ws.addEventListener('close', onError, { once: true });
       ws.addEventListener('message', (ev) => this.onMessage(ev));
     });
   }
@@ -70,6 +102,7 @@ export class CdpClient {
       const call = this.pending.get(msg.id);
       if (!call) return;
       this.pending.delete(msg.id);
+      clearTimeout(call.timer);
       if (msg.error) call.reject(new Error(msg.error.message));
       else call.resolve(msg.result);
       return;
@@ -85,18 +118,27 @@ export class CdpClient {
     }
   }
 
-  /** Send a CDP command. Include `sessionId` to target an attached page session. */
+  /**
+   * Send a CDP command. Include `sessionId` to target an attached page session.
+   * Rejects after `timeoutMs` (default 20s) if the remote never answers, so a
+   * stalled browser can't hang the caller forever.
+   */
   send<T = unknown>(
     method: string,
     params: Record<string, unknown> = {},
     sessionId?: string,
+    timeoutMs = DEFAULT_CALL_TIMEOUT_MS,
   ): Promise<T> {
     if (!this.ws) throw new Error('CDP client not connected');
     const id = this.nextId++;
     const payload: Record<string, unknown> = { id, method, params };
     if (sessionId) payload.sessionId = sessionId;
     return new Promise<T>((resolve, reject) => {
-      this.pending.set(id, { resolve: resolve as (v: unknown) => void, reject });
+      const timer = setTimeout(() => {
+        this.pending.delete(id);
+        reject(new Error(`CDP command ${method} timed out after ${timeoutMs}ms`));
+      }, timeoutMs);
+      this.pending.set(id, { resolve: resolve as (v: unknown) => void, reject, timer });
       this.ws!.send(JSON.stringify(payload));
     });
   }
@@ -124,6 +166,7 @@ export class CdpClient {
     }
     this.ws = null;
     for (const call of this.pending.values()) {
+      clearTimeout(call.timer);
       call.reject(new Error('CDP client closed'));
     }
     this.pending.clear();

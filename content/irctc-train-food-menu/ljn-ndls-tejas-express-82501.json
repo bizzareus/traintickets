@@ -1,0 +1,194 @@
+{
+  "trainNumber": "82501",
+  "trainNumberPair": "82501-02",
+  "trainName": "Tejas Express",
+  "route": "LJN-NDLS",
+  "originCode": "LJN",
+  "destinationCode": "NDLS",
+  "classes": [
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Option 1",
+              "description": "Tea/Coffee (Pre-Mix Kit) with Paper Cup, Cookies (02 Nos- 20-25 gms), Napkin, Tray Mat Small"
+            },
+            {
+              "item": "Option 2",
+              "description": "Pre-packed Nimboo Pani (200 Ml) with Cookies (20-25 gms), Napkin, Tray Mat Small"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": null,
+          "items": [
+            {
+              "item": "Veg Combo-1",
+              "description": "2 Pc Veg. Cutlet (2 pcs of 50gm each- 100 gm), Poha (100 gm), Cornflakes (25 gms), Sugar Sachet, Milk (150 Ml)"
+            },
+            {
+              "item": "Veg Combo-2",
+              "description": "2 Pc of Veg. Uttapam (2 pcs of 50gm each= 100 gm), 100 gm of Vermicelli, Coconut Chutney"
+            },
+            {
+              "item": "Veg Combo-3",
+              "description": "2 Pc of Medu Vada (2 pcs of 50gm each= 100 gm), Suji Upma (100gm), Coconut Chutney"
+            },
+            {
+              "item": "Non. Veg",
+              "description": "1 Pc of Masala Omelette (2 eggs), 1 Pc of Veg. Cutlet (50gm), Sautéed Veg. (50gm)"
+            },
+            {
+              "item": "PAD Items",
+              "description": "Branded Mishti Dahi/Mango Dahi (80 to 100gm), 2 pc Brown Bread (50 gm), Butter blister pack (8 to 10 gms), Tomato Ketchup Sachet (8 to 10 gm), Branded Fruit Juice in Tetra Pack (200ml), Tea/Coffee Kit, Paper Cup, Napkin (optional), Salt & Pepper, Mouth Freshener, Hand Sanitizer, Tray Mat Large"
+            }
+          ]
+        },
+        {
+          "service": "Light Refreshment",
+          "price": null,
+          "items": [
+            {
+              "item": "Light Refreshment",
+              "description": "Masala Samosa (Small) / branded Cookies with Tea/Coffee premix in Paper Cup, Branded Muffins (1 PC) / Slice Cake (30 – 35 gms)"
+            }
+          ]
+        },
+        {
+          "service": "Evening Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Evening Tea",
+              "description": "Tetrapack Juice (200 ml), Baked Samosa (01 pc) 50 gm, Namkeen/Bhujiya (01 Pkt-25 gm), Muffins (1 PC) 30-35 gms, Tea/Coffee, Napkin, Tray Mat Large"
+            }
+          ]
+        },
+        {
+          "service": "Dinner",
+          "price": null,
+          "items": [
+            {
+              "item": "Main Course",
+              "description": "Paneer Tikka Masala (with 40 gms Paneer) / Chicken Tikka Masala 350 gms, Laccha Tawa Parantha (2 No.)/Tawa Chapat/Masala Puri (4 No.) – 100 gms, Dal Tadka (120 gms), Green Potato Bhaji (Dry Veg 60 gm), Jeera Rice/Veg. Pulao (100 gm)"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Pickle (Blister pack), Salt & Pepper, Packaged branded Curd in Cups (80 gms), Branded Yoghurt (80 gm)"
+            },
+            {
+              "item": "Dessert",
+              "description": "Ice Cream 80 -90 Ml/ Gulab Jamun (50 gm)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "EC",
+      "className": "Executive Class",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Option 1",
+              "description": "Tea/Coffee (Pre-Mix Kit) with Paper Cup, Cookies (02 Nos- 20-25 gms), Napkin, Tray Mat Small"
+            },
+            {
+              "item": "Option 2",
+              "description": "Pre-packed Nimboo Pani (200 Ml) with Cookies (20-25 gms), Napkin, Tray Mat Small"
+            },
+            {
+              "item": "Executive Class extras",
+              "description": "Premium Cookies 20-25 gms, Flavoured Lassi, in lieu of Nimbu Pani (200 Ml)"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": null,
+          "items": [
+            {
+              "item": "Veg Combo-1",
+              "description": "2 Pc Veg. Cutlet (2 pcs of 50gm each- 100 gm), Poha (100 gm), Cornflakes (25 gms), Sugar Sachet, Milk (150 Ml)"
+            },
+            {
+              "item": "Veg Combo-2",
+              "description": "2 Pc of Veg. Uttapam (2 pcs of 50gm each= 100 gm), 100 gm of Vermicelli, Coconut Chutney"
+            },
+            {
+              "item": "Veg Combo-3",
+              "description": "2 Pc of Medu Vada (2 pcs of 50gm each= 100 gm), Suji Upma (100gm), Coconut Chutney"
+            },
+            {
+              "item": "Non. Veg",
+              "description": "1 Pc of Masala Omelette (2 eggs), 1 Pc of Veg. Cutlet (50gm), Sautéed Veg. (50gm)"
+            },
+            {
+              "item": "PAD Items",
+              "description": "Branded Mishti Dahi/Mango Dahi (80 to 100gm), 2 pc Brown Bread (50 gm), Butter blister pack (8 to 10 gms), Tomato Ketchup Sachet (8 to 10 gm), Branded Fruit Juice in Tetra Pack (200ml), Tea/Coffee Kit, Paper Cup, Napkin (optional), Salt & Pepper, Mouth Freshener, Hand Sanitizer, Tray Mat Large"
+            }
+          ]
+        },
+        {
+          "service": "Light Refreshment",
+          "price": null,
+          "items": [
+            {
+              "item": "Light Refreshment",
+              "description": "Masala Samosa (Small) / branded Cookies with Tea/Coffee premix in Paper Cup, Branded Muffins (1 PC) / Slice Cake (30 – 35 gms)"
+            }
+          ]
+        },
+        {
+          "service": "Evening Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Evening Tea",
+              "description": "Tetrapack Juice (200 ml), Baked Samosa (01 pc) 50 gm, Namkeen/Bhujiya (01 Pkt-25 gm), Muffins (1 PC) 30-35 gms, Tea/Coffee, Napkin, Tray Mat Large"
+            },
+            {
+              "item": "Executive Class extras",
+              "description": "Packed Roasted Cashew/Almonds - 25gms"
+            }
+          ]
+        },
+        {
+          "service": "Dinner",
+          "price": null,
+          "items": [
+            {
+              "item": "Main Course",
+              "description": "Paneer Tikka Masala (with 40 gms Paneer) / Chicken Tikka Masala 350 gms, Laccha Tawa Parantha (2 No.)/Tawa Chapat/Masala Puri (4 No.) – 100 gms, Dal Tadka (120 gms), Green Potato Bhaji (Dry Veg 60 gm), Jeera Rice/Veg. Pulao (100 gm)"
+            },
+            {
+              "item": "Accompaniments",
+              "description": "Pickle (Blister pack), Salt & Pepper, Packaged branded Curd in Cups (80 gms), Branded Yoghurt (80 gm)"
+            },
+            {
+              "item": "Dessert",
+              "description": "Ice Cream 80 -90 Ml/ Gulab Jamun (50 gm)"
+            },
+            {
+              "item": "Executive Class extras",
+              "description": "Premium Ice Cream(80-90 gm)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [],
+  "slug": "ljn-ndls-tejas-express-82501",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/tejasMenu82501-02.html",
+  "generatedAt": "2026-06-30T23:01:55.406Z"
+}

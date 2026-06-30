@@ -1,0 +1,218 @@
+{
+  "trainNumber": "82901",
+  "trainNumberPair": "82901-02",
+  "trainName": "Tejas Express",
+  "route": "MMCT-ADI",
+  "originCode": "MMCT",
+  "destinationCode": "ADI",
+  "classes": [
+    {
+      "classCode": "CC",
+      "className": "Chair Car",
+      "services": [
+        {
+          "service": "Evening Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Option 1",
+              "description": "Eggless Cake (30-35 gms), 2 pcs Batata Vada/Samosa (80-90 gms), Masala Khakara (50 gms)"
+            },
+            {
+              "item": "Option 2",
+              "description": "Flavoured Croissant (30-35 gms), 2 pcs Sabudana Vada (80-90 gms), Bhakarvadi (50 gms)"
+            },
+            {
+              "item": "Option 3",
+              "description": "Muffin (30-35 gms), 2 pcs Patra/Kothimbir Vadi/Khandvi (80-90 gms)"
+            },
+            {
+              "item": "PAD Items",
+              "description": "Chaas (Tetra Pack 180-200 ml), Choice of Premix Tea/Coffee/Green Tea/Lemon Tea (120 ml), Salt & Pepper, Tomato Ketchup, Mustard Sauce, Refreshing Tissue"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": null,
+          "items": [
+            {
+              "item": "Option 1",
+              "description": "Paneer Tikka Masala (with 40 gms paneer)/Chicken Tikka Masala, Dal Palak, Green Peas Potato Bhaji, Veg. Pulao, Laccha Tawa Parantha (02 nos.)/Tawa Chapati/Masala Puri (04 nos.), Srikhand/Gajar Halwa"
+            },
+            {
+              "item": "Option 2",
+              "description": "Valor Papdi Muthiya nu Shaak/Chicken Kolhapuri, Dal Makhani, Sev Gaathiya Tamatar Bhaji, Kashmiri Pulao, Laccha Tawa Parantha (02 nos.)/Tawa Chapati/Masala Puri (04 nos.), Kesar Matho/Gulab Jamun"
+            },
+            {
+              "item": "Option 3",
+              "description": "Paneer Kofta Curry/Komdi Rassa, Gujarati kadhi, Tindli Bateta nu shaak, Vagharela Bhaat, Laccha Tawa Parantha (02 nos.)/Tawa Chapati/Masala Puri (04 nos.), Mango Srikhand/Moong Dal Sheera"
+            },
+            {
+              "item": "PAD Items",
+              "description": "Choice of Premix Tea/Coffee/Green Tea/Lemon Tea (120 ml), Salt & Pepper, Tomato Ketchup, Mustard Sauce, mix Pickle (Blister Pack), Refreshing Tissue"
+            }
+          ]
+        },
+        {
+          "service": "Morning Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Option 1",
+              "description": "Tea/Coffee (Pre-Mix Kit) with Paper Cup, Assorted Biscuit (02 Nos-20-25 gms)"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": null,
+          "items": [
+            {
+              "item": "Veg Combo 1",
+              "description": "2 pc Stuffed Paratha (150 gms), 2 pcs Dal Vada (80 gms)"
+            },
+            {
+              "item": "Veg Combo 2",
+              "description": "Vermicilli Veg. Upma (150 gms), 2 pc. Sandwich Dhokla (80 gms)"
+            },
+            {
+              "item": "Veg Combo 3",
+              "description": "Poha (150 gms), 2 pcs Methi Tepla (80 gms)"
+            },
+            {
+              "item": "Non-Veg Combo 1",
+              "description": "Masala Omlette (100 gm), 2 pcs Dal Vada (80 gms)"
+            },
+            {
+              "item": "Non-Veg Combo 2",
+              "description": "Egg Bhurjee/Scrambled (100 gms), Methi Thepla (2 pcs)"
+            },
+            {
+              "item": "Non-Veg Combo 3",
+              "description": "Plain Omlette (100 gm), Sandwich Dhokla (2 pcs)"
+            },
+            {
+              "item": "PAD Items",
+              "description": "Branded Flavoured Curd (80 gms), 2 pcs Brown Bread (50 gms), Butter Chiplet (8-10 gms), Tomato Ketchup Sachet (8-10 gms), Mustard Sauce sachet/Blister pack, Fruit Juice in Tetra Pack (180-200 ml), Branded Cake Eggless (30-35 gms), Premix Tea/Coffee Kit, Salt & Pepper, Mouth Freshner, Refreshing tissue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classCode": "EC",
+      "className": "Executive Class",
+      "services": [
+        {
+          "service": "Evening Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Option 1",
+              "description": "Eggless Cake (30-35 gms), 2 pcs Batata Vada/Samosa (80-90 gms), Masala Khakara (50 gms)"
+            },
+            {
+              "item": "Option 2",
+              "description": "Flavoured Croissant (30-35 gms), 2 pcs Sabudana Vada (80-90 gms), Bhakarvadi (50 gms)"
+            },
+            {
+              "item": "Option 3",
+              "description": "Muffin (30-35 gms), 2 pcs Patra/Kothimbir Vadi/Khandvi (80-90 gms)"
+            },
+            {
+              "item": "PAD Items",
+              "description": "Chaas (Tetra Pack 180-200 ml), Choice of Premix Tea/Coffee/Green Tea/Lemon Tea (120 ml), Salt & Pepper, Tomato Ketchup, Mustard Sauce, Refreshing Tissue"
+            },
+            {
+              "item": "Executive Class extras",
+              "description": "Sandwiches (cheese/tomato/cucumber cheese cream), Salted Almond/Kaju/Pistachio (20 gms), chocolate Bar (5 star/kit-kat/Energy Bars 20-25 gms)"
+            }
+          ]
+        },
+        {
+          "service": "Lunch/Dinner",
+          "price": null,
+          "items": [
+            {
+              "item": "Option 1",
+              "description": "Paneer Tikka Masala (with 40 gms paneer)/Chicken Tikka Masala, Dal Palak, Green Peas Potato Bhaji, Veg. Pulao, Laccha Tawa Parantha (02 nos.)/Tawa Chapati/Masala Puri (04 nos.), Srikhand/Gajar Halwa"
+            },
+            {
+              "item": "Option 2",
+              "description": "Valor Papdi Muthiya nu Shaak/Chicken Kolhapuri, Dal Makhani, Sev Gaathiya Tamatar Bhaji, Kashmiri Pulao, Laccha Tawa Parantha (02 nos.)/Tawa Chapati/Masala Puri (04 nos.), Kesar Matho/Gulab Jamun"
+            },
+            {
+              "item": "Option 3",
+              "description": "Paneer Kofta Curry/Komdi Rassa, Gujarati kadhi, Tindli Bateta nu shaak, Vagharela Bhaat, Laccha Tawa Parantha (02 nos.)/Tawa Chapati/Masala Puri (04 nos.), Mango Srikhand/Moong Dal Sheera"
+            },
+            {
+              "item": "PAD Items",
+              "description": "Choice of Premix Tea/Coffee/Green Tea/Lemon Tea (120 ml), Salt & Pepper, Tomato Ketchup, Mustard Sauce, mix Pickle (Blister Pack), Refreshing Tissue"
+            },
+            {
+              "item": "Executive Class extras",
+              "description": "Mix Veg. Soup made from Branded Soup Pre-mix Sachet (150ml), A Special Ice-Cream (80-90ml. Eg. Magnum/Cassatta/Cornetto etc), Packed bread roll (35-40 gm), Butter chiplet (08-10gm)"
+            }
+          ]
+        },
+        {
+          "service": "Morning Tea",
+          "price": null,
+          "items": [
+            {
+              "item": "Option 1",
+              "description": "Tea/Coffee (Pre-Mix Kit) with Paper Cup, Assorted Biscuit (02 Nos-20-25 gms)"
+            },
+            {
+              "item": "Executive Class extras",
+              "description": "Choice of Premix Tea/Coffee/Green Tea/Lemon Tea (120 ml), Assorted Cookies 20-25 gms, Salted Pistachios (20-25 gms), Coconut Water (180-200 gms), Refreshing Tissues"
+            }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": null,
+          "items": [
+            {
+              "item": "Veg Combo 1",
+              "description": "2 pc Stuffed Paratha (150 gms), 2 pcs Dal Vada (80 gms)"
+            },
+            {
+              "item": "Veg Combo 2",
+              "description": "Vermicilli Veg. Upma (150 gms), 2 pc. Sandwich Dhokla (80 gms)"
+            },
+            {
+              "item": "Veg Combo 3",
+              "description": "Poha (150 gms), 2 pcs Methi Tepla (80 gms)"
+            },
+            {
+              "item": "Non-Veg Combo 1",
+              "description": "Masala Omlette (100 gm), 2 pcs Dal Vada (80 gms)"
+            },
+            {
+              "item": "Non-Veg Combo 2",
+              "description": "Egg Bhurjee/Scrambled (100 gms), Methi Thepla (2 pcs)"
+            },
+            {
+              "item": "Non-Veg Combo 3",
+              "description": "Plain Omlette (100 gm), Sandwich Dhokla (2 pcs)"
+            },
+            {
+              "item": "PAD Items",
+              "description": "Branded Flavoured Curd (80 gms), 2 pcs Brown Bread (50 gms), Butter Chiplet (8-10 gms), Tomato Ketchup Sachet (8-10 gms), Mustard Sauce sachet/Blister pack, Fruit Juice in Tetra Pack (180-200 ml), Branded Cake Eggless (30-35 gms), Premix Tea/Coffee Kit, Salt & Pepper, Mouth Freshner, Refreshing tissue"
+            },
+            {
+              "item": "Executive Class extras",
+              "description": "Cornflakes (25 gms), Sugar Sachet, Milk (150 gms), Fresh Fruits (90-100 gms), Choice of Premix Tea/Coffee/Green Tea/Lemon Tea (120 ml), Fruit Juice in Tetra Pack/Diet Coke (180-200 ml), Branded Cake Eggless/Croissant/Muffins (30-35 gms)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [],
+  "slug": "mmct-adi-tejas-express-82901",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/tejasMenu82901-02.html",
+  "generatedAt": "2026-06-30T23:01:57.775Z"
+}

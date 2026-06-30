@@ -294,16 +294,16 @@ export default async function TrainFoodMenuPage({ params }: Props) {
       )}
 
       <p className="text-sm text-slate-500">
-        Source: official IRCTC menu (
+        Source:{" "}
         <a
           href={menu.sourcePdfUrl}
           target="_blank"
           rel="noopener noreferrer nofollow"
           className="font-medium text-blue-700 hover:underline"
         >
-          PDF
+          official IRCTC menu
         </a>
-        ). Menus are served on a cyclic basis and may change. See also{" "}
+        . Menus are served on a cyclic basis and may change. See also{" "}
         <Link
           href="/irctc-train-food-menu"
           className="font-medium text-blue-700 hover:underline"

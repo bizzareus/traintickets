@@ -22,6 +22,21 @@ const VERIFY_HEADERS: Record<string, string> = {
 };
 
 /**
+ * Node's fetch throws a generic `TypeError: fetch failed` for DNS/connection
+ * errors and stashes the real reason in `.cause` — surface it so a failure is
+ * diagnosable straight from logs without redeploying just to add detail.
+ */
+function describeError(err: unknown): string {
+  if (err instanceof Error) {
+    const cause = (err as { cause?: unknown }).cause;
+    const causeMsg =
+      cause instanceof Error ? cause.message : cause != null ? String(cause) : null;
+    return causeMsg ? `${err.message} (cause: ${causeMsg})` : err.message;
+  }
+  return String(err);
+}
+
+/**
  * Keeps the IRCTC (Akamai-protected) cookie bundle fresh by driving a remote
  * browser-use cloud browser on an India residential IP and harvesting the
  * cookies over raw CDP (see ./cdp-client.ts — no Playwright/Puppeteer), then
@@ -115,6 +130,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ proxyCountryCode: proxyCc, timeout: 5 }),
+        signal: AbortSignal.timeout(15_000),
       });
       if (!createResp.ok) {
         throw new Error(
@@ -140,6 +156,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
             greq: String(Date.now()),
             Cookie: cookieString,
           },
+          signal: AbortSignal.timeout(15_000),
         },
       );
       if (verify.status !== 200) {
@@ -157,7 +174,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
       );
       return { ok: true };
     } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
+      const msg = describeError(err);
       this.lastError = msg;
       this.logger.error(`[irctc-keeper] refresh failed trigger=${trigger}: ${msg}`);
       captureSentryException(err, {
@@ -175,6 +192,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ action: 'stop' }),
+          signal: AbortSignal.timeout(10_000),
         }).catch(() => {});
       }
       this.refreshing = false;

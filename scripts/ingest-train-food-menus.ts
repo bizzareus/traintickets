@@ -22,6 +22,41 @@ import { buildFoodMenuSlug } from "../lib/foodMenuSlug";
 
 const INDEX_URL = "https://menurates.irctc.co.in/";
 const PDF_BASE = "https://menurates.irctc.co.in/PDFFiles/VandeBharat";
+
+// Trains whose menu is published as an HTML page (Tejas), not a Vande Bharat
+// PDF. Keyed by canonical (lower) train number.
+const HTML_SOURCES: Record<string, { url: string; pair: string }> = {
+  "82501": {
+    url: "https://menurates.irctc.co.in/tejasMenu82501-02.html",
+    pair: "82501-02",
+  },
+  "82901": {
+    url: "https://menurates.irctc.co.in/tejasMenu82901-02.html",
+    pair: "82901-02",
+  },
+};
+
+function sourceFor(trainNo: string): {
+  url: string;
+  kind: "pdf" | "html";
+  pair?: string;
+} {
+  const html = HTML_SOURCES[trainNo];
+  if (html) return { url: html.url, kind: "html", pair: html.pair };
+  return { url: `${PDF_BASE}/${trainNo}.pdf`, kind: "pdf" };
+}
+
+function htmlToText(url: string): string {
+  return curlText(url)
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#39;|&rsquo;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 const OUT_DIR = path.join(__dirname, "../content/irctc-train-food-menu");
 const ENV_PATH = path.join(__dirname, "../backend/.env");
 const MODEL = process.env.OPENAI_MENU_MODEL || "gpt-4o";
@@ -127,7 +162,11 @@ Rules:
 - Keep food names and brands as written. Fix obvious OCR typos like "Nakin" -> "Napkin", "kectup" -> "ketchup".
 - Do NOT use em dashes. Use commas, full stops or normal hyphens.
 - "notes" is the numbered Note list at the bottom, each note as one cleaned string (drop the leading numbers).
-- Do not add, drop or hallucinate services or classes. Only use what the text contains.`;
+- Do not add, drop or hallucinate services or classes. Only use what the text contains.
+- Some menus (e.g. Tejas) are HTML, list "Chair Car" and "Executive Class" as two side-by-side columns, and have NO prices (set every price to null). The class codes are CC (Chair Car) and EC (Executive Class).
+- A single page may cover BOTH directions of a train pair (e.g. "82501 Ex LJN to NDLS" AND "82502 Ex NDLS to LJN"), each with its own meals. Combine ALL services from every direction into each class's services list, using the printed service names (Morning Tea, Breakfast, Light Refreshment, Evening Tea, Lunch/Dinner, Dinner). Do not drop a direction.
+- For Executive Class columns that say "Same as CC" (with or without premium additions), still output that EC service in full: reuse the Chair Car items for it, and append one item like { "item": "Executive Class extras", "description": "<the premium additions text>" }. Never leave an EC service empty or omit it.
+- "route" uses the first direction's endpoints (e.g. "LJN-NDLS"). "trainName" should be the full name, e.g. "Tejas Express" (not just "Tejas").`;
 
 type MenuItem = { item: string; description: string };
 type MenuService = { service: string; price: number | null; items: MenuItem[] };
@@ -162,7 +201,8 @@ function validate(m: ExtractedMenu, trainNo: string): string | null {
 }
 
 async function extractOne(client: OpenAI, trainNo: string): Promise<ExtractedMenu> {
-  const text = await downloadPdfText(trainNo);
+  const src = sourceFor(trainNo);
+  const text = src.kind === "html" ? htmlToText(src.url) : downloadPdfText(trainNo);
   const completion = await client.chat.completions.create({
     model: MODEL,
     temperature: 0,
@@ -171,7 +211,7 @@ async function extractOne(client: OpenAI, trainNo: string): Promise<ExtractedMen
       { role: "system", content: SYSTEM_PROMPT },
       {
         role: "user",
-        content: `Train number on the index: ${trainNo}\n\nPDF text:\n${text}`,
+        content: `Train number on the index: ${trainNo}\n\nMenu text:\n${text}`,
       },
     ],
   });
@@ -210,12 +250,14 @@ async function run() {
       const trainNo = trains[cursor++];
       try {
         const menu = await extractOne(client, trainNo);
+        const src = sourceFor(trainNo);
         // The requested train number is authoritative for the slug + canonical
-        // number — the model can mis-read/copy the number from the PDF.
+        // number — the model can mis-read/copy the number from the source.
         const pair =
-          menu.trainNumberPair && menu.trainNumberPair.includes(trainNo)
+          src.pair ||
+          (menu.trainNumberPair && menu.trainNumberPair.includes(trainNo)
             ? menu.trainNumberPair
-            : trainNo;
+            : trainNo);
         const slug = buildFoodMenuSlug(
           `${menu.route} ${menu.trainName}`.trim(),
           trainNo,
@@ -231,7 +273,7 @@ async function run() {
           trainNumber: trainNo,
           trainNumberPair: pair,
           slug,
-          sourcePdfUrl: `${PDF_BASE}/${trainNo}.pdf`,
+          sourcePdfUrl: src.url,
           generatedAt: new Date().toISOString(),
         };
         fs.writeFileSync(outPath, JSON.stringify(record, null, 2) + "\n");
