@@ -158,26 +158,44 @@ export class IrctcSessionKeeperService implements OnModuleInit {
       sessionId = session.id;
       if (!session.cdpUrl) throw new Error('no cdpUrl on create response');
 
-      // 2. Drive it over raw CDP and harvest cookies.
-      const cookieString = await this.harvestCookies(session.cdpUrl);
+      // 2. Drive it over raw CDP, harvest cookies, and verify them FROM INSIDE
+      //    the browser (residential IP, where the cookie was minted). The
+      //    in-browser status proves whether the cookie itself is valid,
+      //    independent of whether this host's IP can replay it.
+      const { cookieString, browserVerifyStatus } = await this.harvestCookies(
+        session.cdpUrl,
+        testTrain,
+      );
       if (!cookieString) throw new Error('no cookies harvested');
 
-      // 3. Verify the harvested cookies actually work in a plain fetch (the way
-      //    the backend uses them) before persisting — never overwrite good
-      //    cookies with broken ones.
-      const verify = await fetch(
-        `${SCHEDULE_URL}/${encodeURIComponent(testTrain)}`,
-        {
-          headers: {
-            ...VERIFY_HEADERS,
-            greq: String(Date.now()),
-            Cookie: cookieString,
+      // Diagnostic: also try the same request from THIS host's IP (Railway).
+      // A mismatch (browser 200 / host 403) means Akamai is IP-binding the
+      // session and the cookie can't simply be replayed from here.
+      let hostVerifyStatus: number | string = 0;
+      try {
+        const verify = await fetch(
+          `${SCHEDULE_URL}/${encodeURIComponent(testTrain)}`,
+          {
+            headers: {
+              ...VERIFY_HEADERS,
+              greq: String(Date.now()),
+              Cookie: cookieString,
+            },
+            signal: AbortSignal.timeout(15_000),
           },
-          signal: AbortSignal.timeout(15_000),
-        },
+        );
+        hostVerifyStatus = verify.status;
+      } catch (e) {
+        hostVerifyStatus = `err:${e instanceof Error ? e.message : String(e)}`;
+      }
+      this.logger.log(
+        `[irctc-keeper] verify browser_status=${browserVerifyStatus} host_status=${hostVerifyStatus}`,
       );
-      if (verify.status !== 200) {
-        throw new Error(`verify fetch returned ${verify.status}`);
+
+      // Gate on the in-browser verify: a 200 there means the cookie is good.
+      // Don't discard a valid cookie just because this host's IP can't use it.
+      if (browserVerifyStatus !== 200) {
+        throw new Error(`in-browser verify returned ${browserVerifyStatus}`);
       }
 
       this.cookieStore.setCookie(cookieString, {
@@ -187,7 +205,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
       this.lastRefreshAt = new Date().toISOString();
       this.lastError = null;
       this.logger.log(
-        `[irctc-keeper] refresh ok trigger=${trigger} cookieChars=${cookieString.length}`,
+        `[irctc-keeper] refresh ok trigger=${trigger} cookieChars=${cookieString.length} hostUsable=${hostVerifyStatus === 200}`,
       );
       return { ok: true };
     } catch (err) {
@@ -216,8 +234,15 @@ export class IrctcSessionKeeperService implements OnModuleInit {
     }
   }
 
-  /** Navigate the remote browser to online-charts and harvest IRCTC cookies over raw CDP. */
-  private async harvestCookies(cdpUrl: string): Promise<string> {
+  /**
+   * Navigate the remote browser to online-charts, harvest IRCTC cookies over
+   * raw CDP, and verify them with a same-origin fetch issued from inside that
+   * page (so it goes out over the residential proxy IP, with cookies attached).
+   */
+  private async harvestCookies(
+    cdpUrl: string,
+    testTrain: string,
+  ): Promise<{ cookieString: string; browserVerifyStatus: number | string }> {
     const cdp = await CdpClient.connect(cdpUrl);
     let targetId: string | undefined;
     try {
@@ -250,12 +275,48 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         if (cookies.some((c) => c.name === '_abck')) break;
         await new Promise((res) => setTimeout(res, 1500));
       }
-      return cookiesToHeaderString(cookies);
+      const cookieString = cookiesToHeaderString(cookies);
+
+      const browserVerifyStatus = await this.verifyInBrowser(cdp, sessionId, testTrain);
+      return { cookieString, browserVerifyStatus };
     } finally {
       if (targetId) {
         await cdp.send('Target.closeTarget', { targetId }).catch(() => {});
       }
       cdp.close();
+    }
+  }
+
+  /**
+   * Run a same-origin `fetch` to the schedule endpoint from within the page
+   * (residential IP, cookies auto-attached) and return its HTTP status. This
+   * is the source of truth for "is the harvested cookie valid", independent of
+   * whether the backend's own IP can replay it.
+   */
+  private async verifyInBrowser(
+    cdp: CdpClient,
+    sessionId: string,
+    testTrain: string,
+  ): Promise<number | string> {
+    const url = `${SCHEDULE_URL}/${encodeURIComponent(testTrain)}`;
+    const expression = `(async () => {
+      try {
+        const r = await fetch(${JSON.stringify(url)}, {
+          headers: { accept: 'application/json, text/plain, */*', bmirak: 'webbm', greq: String(Date.now()) },
+          credentials: 'include',
+        });
+        return r.status;
+      } catch (e) { return 'err:' + (e && e.message ? e.message : e); }
+    })()`;
+    try {
+      const res = await cdp.send<{ result?: { value?: number | string } }>(
+        'Runtime.evaluate',
+        { expression, awaitPromise: true, returnByValue: true },
+        sessionId,
+      );
+      return res.result?.value ?? 'no-value';
+    } catch (e) {
+      return `eval-err:${e instanceof Error ? e.message : String(e)}`;
     }
   }
 }
