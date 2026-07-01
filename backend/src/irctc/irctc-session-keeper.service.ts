@@ -48,6 +48,9 @@ function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
  * Gated by IRCTC_KEEPER_ENABLED=true and BRIGHTDATA_BROWSER_WSS. Tunables:
  *   IRCTC_KEEPER_CRON          cron expression (default every 30 min)
  *   BRIGHTDATA_BROWSER_WSS     wss://…@brd.superproxy.io:9222 CDP endpoint
+ *   IRCTC_KEEPER_LOG_COOKIE    'true' → log the full harvested cookie value to
+ *                              the app logs (secret! opt-in for debugging only,
+ *                              turn it back off once you've grabbed it)
  */
 @Injectable()
 export class IrctcSessionKeeperService implements OnModuleInit {
@@ -135,6 +138,14 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         'brightdata harvest',
       );
       if (!cookieString) throw new Error('no cookies harvested');
+
+      // Opt-in: dump the full cookie to the logs for manual inspection. This is
+      // a secret bundle — only enable IRCTC_KEEPER_LOG_COOKIE while debugging.
+      if (process.env.IRCTC_KEEPER_LOG_COOKIE === 'true') {
+        this.logger.warn(
+          `[irctc-keeper] harvested cookie (IRCTC_KEEPER_LOG_COOKIE on): ${cookieString}`,
+        );
+      }
 
       this.cookieStore.setCookie(cookieString, { source: 'brightdata' });
       this.lastRefreshAt = new Date().toISOString();
