@@ -98,6 +98,35 @@ type BestTrainProgressEvent =
     }
   | { type: "done"; resultCount: number; evaluatedCount: number };
 
+/** One confirmed/realtime leg of a cached best-train path (trimmed subset). */
+type CachedBestTrainLeg = {
+  from: string;
+  to: string;
+  segmentKind: "confirmed" | "check_realtime";
+  travelClass: string | null;
+  fare: number | null;
+  departureTime: string | null;
+  arrivalTime: string | null;
+};
+
+/** Trimmed best-train payload served by GET /best-trains/cached. */
+type CachedBestTrain = {
+  train: {
+    trainNumber: string;
+    trainName: string | null;
+    departureTime: string | null;
+    arrivalTime: string | null;
+  };
+  legs: CachedBestTrainLeg[];
+  totalFare: number | null;
+  isComplete: boolean;
+  rankReason: string;
+};
+
+type CachedBestTrainResponse =
+  | { cached: true; cachedAt: string; best: CachedBestTrain }
+  | { cached: false };
+
 
 /** Regret / sold-out style: orange → red gradient text. */
 function chipGeneralStatusClass(status: string): string | undefined {
@@ -365,6 +394,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [bestTrainProgress, setBestTrainProgress] = useState<
     BestTrainProgressEvent[]
   >([]);
+  // Precomputed best seat served instantly from the route cache (popular routes).
+  const [cachedBest, setCachedBest] = useState<{
+    best: CachedBestTrain;
+    cachedAt: string;
+  } | null>(null);
   const [searchType, setSearchType] = useState<"route" | "pnr" | "seat">("route");
   const altAlternatePathCaptureRef = useRef<HTMLDivElement>(null);
   const [altShareBusy, setAltShareBusy] = useState(false);
@@ -590,6 +624,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setBestTrainResult(null);
     setBestTrainError(null);
     setBestTrainProgress([]);
+    setCachedBest(null);
     try {
       const r = await apiClient.get<{ data?: { trainList?: TrainListItem[] } }>(
         "/api/booking-v2/trains/search",
@@ -602,6 +637,35 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         },
       );
       setTrains(r.data?.data?.trainList ?? []);
+
+      // Best-effort: if this popular route+date is precomputed, show the best
+      // seat instantly. The AC-only cache isn't precomputed (phase 1), so skip.
+      if (!acOnly) {
+        try {
+          const cr = await apiClient.get<CachedBestTrainResponse>(
+            "/api/booking-v2/best-trains/cached",
+            {
+              params: {
+                from: fromSt.stationCode,
+                to: toSt.stationCode,
+                date: journeyDate,
+              },
+            },
+          );
+          if (cr.data.cached) {
+            console.info(
+              `[best-seat] cache HIT ${fromSt.stationCode}→${toSt.stationCode} ${journeyDate} · train ${cr.data.best.train.trainNumber} · cachedAt ${cr.data.cachedAt}`,
+            );
+            setCachedBest({ best: cr.data.best, cachedAt: cr.data.cachedAt });
+          } else {
+            console.info(
+              `[best-seat] cache MISS ${fromSt.stationCode}→${toSt.stationCode} ${journeyDate} — showing live-scan CTA`,
+            );
+          }
+        } catch {
+          /* cache is best-effort; a miss/error just falls back to the CTA */
+        }
+      }
     } catch (e: unknown) {
       let msg = "Search failed";
       if (e && typeof e === "object" && "response" in e) {
@@ -1056,6 +1120,85 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 {bestTrainLoading ? "Checking trains…" : "Find best tickets"}
               </button>
             </div>
+
+            {cachedBest &&
+              !bestTrainResult &&
+              !bestTrainLoading &&
+              !bestTrainError && (
+                <div className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50/60 p-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-600 px-2 py-1 text-xs font-bold text-white">
+                      Best seat ready
+                    </span>
+                    <span className="text-xs font-medium text-slate-500">
+                      Updated{" "}
+                      {new Date(cachedBest.cachedAt).toLocaleString("en-IN", {
+                        day: "numeric",
+                        month: "short",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </span>
+                  </div>
+                  <div className="mt-3 rounded-lg border border-slate-200 bg-white p-3">
+                    <h3 className="font-bold text-slate-950">
+                      {cachedBest.best.train.trainNumber}{" "}
+                      {cachedBest.best.train.trainName}
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-600">
+                      {formatTimeAmPm(cachedBest.best.train.departureTime) ??
+                        "—"}{" "}
+                      →{" "}
+                      {formatTimeAmPm(cachedBest.best.train.arrivalTime) ?? "—"}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold text-emerald-800">
+                      {cachedBest.best.rankReason}
+                    </p>
+                    {cachedBest.best.legs.filter(
+                      (l) => l.segmentKind === "confirmed",
+                    ).length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {cachedBest.best.legs
+                          .filter((l) => l.segmentKind === "confirmed")
+                          .map((l, i) => (
+                            <span
+                              key={`${l.from}-${l.to}-${i}`}
+                              className="rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800"
+                            >
+                              {l.from} → {l.to}
+                              {l.travelClass ? ` · ${l.travelClass}` : ""}
+                              {l.fare != null ? ` · ₹${l.fare}` : ""}
+                            </span>
+                          ))}
+                      </div>
+                    )}
+                    <div className="mt-2 flex flex-wrap gap-2 text-xs font-semibold">
+                      <span
+                        className={cn(
+                          "rounded-md px-2 py-1",
+                          cachedBest.best.isComplete
+                            ? "bg-emerald-100 text-emerald-800"
+                            : "bg-amber-100 text-amber-800",
+                        )}
+                      >
+                        {cachedBest.best.isComplete
+                          ? "Confirmed all the way"
+                          : "Partly confirmed — check the rest live"}
+                      </span>
+                      {cachedBest.best.totalFare != null && (
+                        <span className="rounded-md bg-slate-100 px-2 py-1 text-slate-700">
+                          ₹{cachedBest.best.totalFare}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <p className="mt-2 text-xs text-slate-500">
+                    Cached from a recent scan. Tap{" "}
+                    <span className="font-semibold">Find best tickets</span> to
+                    re-scan all listed trains live.
+                  </p>
+                </div>
+              )}
 
             {bestTrainLoading && (
               <p className="mt-2 text-xs text-slate-500">

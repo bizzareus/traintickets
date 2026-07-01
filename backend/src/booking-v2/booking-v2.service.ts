@@ -4,6 +4,12 @@ import moment from 'moment';
 import { IrctcService } from '../irctc/irctc.service';
 import { CacheService } from '../cache/cache.service';
 import { StationCacheService } from '../cache/station-cache.service';
+import {
+  BestTrainsRouteCache,
+  bestTrainsCacheKey,
+  type CachedBestTrain,
+} from './best-trains-cache';
+import type { RouteCacheRecord } from '../route-cache/route-cache.store';
 import { fetchWithTimeout } from '../common/fetch-with-timeout';
 import {
   BOOKING_V2_ALTERNATE_PATH_CLASSES,
@@ -236,6 +242,12 @@ const AVL_SEGMENT_TTL_MS = (() => {
 })();
 const BEST_TRAIN_CONCURRENCY = 3;
 /**
+ * TTL for a precomputed best-train cache entry. Set 2h beyond the cron's 6h
+ * refresh threshold so an entry stays served while it becomes refresh-eligible —
+ * users never hit a window where the entry expired before the cron rewrote it.
+ */
+const BEST_TRAINS_CACHE_TTL_MS = 8 * 60 * 60 * 1000;
+/**
  * Cap concurrent origin-destination probes per hop in alternate-paths. The
  * previous unbounded Promise.all could fan out ~6 ODs × ~9 classes ≈ 54
  * concurrent IRCTC calls per hop, exhausting the DB pool / IRCTC rate limit and
@@ -387,6 +399,7 @@ export class BookingV2Service {
     private readonly irctc: IrctcService,
     private readonly cache: CacheService,
     private readonly stationCache: StationCacheService,
+    private readonly bestTrainsCache: BestTrainsRouteCache,
   ) {}
 
   async getTrainSchedule(trainNumber: string) {
@@ -655,6 +668,75 @@ export class BookingV2Service {
       candidatesSkipped: skippedCount,
       results,
     };
+  }
+
+  // -------------------------------------------------------------------------
+  // Precomputed best-train cache (written by the leader-elected cron, read on
+  // the request path). Read-only lookups never trigger a compute.
+  // -------------------------------------------------------------------------
+
+  /**
+   * Read the cached best train for an OD+date, or null on miss/expiry. Pure cache
+   * read — never computes. Returns the full record so callers get `cachedAt`.
+   */
+  async getCachedBestTrain(
+    from: string,
+    to: string,
+    date: string,
+  ): Promise<RouteCacheRecord<CachedBestTrain> | null> {
+    const key = bestTrainsCacheKey(from, to, this.normalizeToRailApiDate(date));
+    if (!key) return null;
+    const record = await this.bestTrainsCache.getRecord(key);
+    if (record) {
+      this.logger.log(
+        `[best-trains-cache] HIT key=${key} found=${record.value.found} cachedAt=${record.cachedAt.toISOString()}`,
+      );
+    } else {
+      this.logger.log(`[best-trains-cache] MISS key=${key}`);
+    }
+    return record;
+  }
+
+  /**
+   * Compute the best train for an OD+date via findBestTrains and store the trimmed
+   * top candidate. Cron-only (expensive). Caches an explicit `found: false` marker
+   * when no confirmed candidate exists so the request path shows the CTA rather
+   * than treating it as an un-cached route. Returns whether a train was found.
+   */
+  async computeAndCacheBestTrain(
+    from: string,
+    to: string,
+    date: string,
+  ): Promise<boolean> {
+    const key = bestTrainsCacheKey(from, to, this.normalizeToRailApiDate(date));
+    if (!key) throw new Error('from, to, and a valid date are required');
+
+    const result = await this.findBestTrains({ from, to, date, acOnly: false });
+    const top = result.results[0];
+
+    const payload: CachedBestTrain = top
+      ? {
+          found: true,
+          train: {
+            trainNumber: top.train.trainNumber,
+            trainName: top.train.trainName?.trim() || null,
+            departureTime: top.train.departureTime ?? null,
+            arrivalTime: top.train.arrivalTime ?? null,
+          },
+          legs: top.alternatePath.legs,
+          totalFare: top.alternatePath.totalFare,
+          isComplete: top.alternatePath.isComplete,
+          rankReason: top.rankReason,
+        }
+      : { found: false };
+
+    await this.bestTrainsCache.set(key, payload, BEST_TRAINS_CACHE_TTL_MS);
+    this.logger.log(
+      `[best-trains-cache] STORED key=${key} found=${payload.found}${
+        payload.found ? ` train=${payload.train.trainNumber}` : ''
+      } ttlMs=${BEST_TRAINS_CACHE_TTL_MS}`,
+    );
+    return payload.found;
   }
 
   private scoreBestTrainCandidate(

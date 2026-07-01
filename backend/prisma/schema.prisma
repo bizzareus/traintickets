@@ -251,6 +251,22 @@ model CacheEntry {
   @@map("cache_entry")
 }
 
+/**
+ * Precomputed route-level cache written by background crons (never on the request
+ * path). Keyed by an opaque string from a per-cache-type key builder; `value` is a
+ * small trimmed result blob. Backs the reusable RouteCacheStore pattern — new cache
+ * families (e.g. class-level) get their own table reusing that base.
+ */
+model RouteCaching {
+  cacheKey  String   @id @map("cache_key")
+  value     Json
+  cachedAt  DateTime @default(now()) @map("cached_at")
+  expiresAt DateTime @map("expires_at")
+
+  @@index([expiresAt])
+  @@map("route_caching")
+}
+
 model StationCache {
   stationCode String   @id @map("station_code")
   stationName String   @map("station_name")
