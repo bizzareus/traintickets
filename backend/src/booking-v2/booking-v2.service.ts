@@ -712,8 +712,26 @@ export class BookingV2Service {
     if (!key) throw new Error('from, to, and a valid date are required');
 
     const result = await this.findBestTrains({ from, to, date, acOnly: false });
-    const top = result.results[0];
+    return this.cacheBestTrainResult(from, to, date, result);
+  }
 
+  /**
+   * Persist the top candidate of an already-computed best-train result under the
+   * route cache key. Shared by the cron and the live best-trains endpoint so a
+   * real "Find best tickets" scan (full, non-AC) also warms the cache. Trims to
+   * the small homepage payload; stores an explicit no-train marker when empty.
+   * Best-effort: callers on the request path should not await/throw on this.
+   */
+  async cacheBestTrainResult(
+    from: string,
+    to: string,
+    date: string,
+    result: BestTrainSearchResult,
+  ): Promise<boolean> {
+    const key = bestTrainsCacheKey(from, to, this.normalizeToRailApiDate(date));
+    if (!key) return false;
+
+    const top = result.results[0];
     const payload: CachedBestTrain = top
       ? {
           found: true,

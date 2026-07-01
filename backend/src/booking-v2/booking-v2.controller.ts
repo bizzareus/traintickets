@@ -278,6 +278,13 @@ export class BookingV2Controller {
         },
       );
       writeLine({ type: 'result', data: result });
+      // Warm the route cache from a real full scan (skip AC-only — the cache
+      // stores the all-class best). Best-effort; never blocks the response.
+      if (!acOnly) {
+        void this.bookingV2
+          .cacheBestTrainResult(from, to, date, result)
+          .catch(() => undefined);
+      }
     } catch (err: unknown) {
       writeLine({ type: 'error', message: streamErrorMessage(err) });
     } finally {
