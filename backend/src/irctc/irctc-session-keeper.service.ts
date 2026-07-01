@@ -1,25 +1,13 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import puppeteer from 'puppeteer';
 import { captureSentryException } from '../common/sentry-report';
-import { CdpClient, cookiesToHeaderString, type CdpCookie } from './cdp-client';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
 
 const ONLINE_CHARTS_URL = 'https://www.irctc.co.in/online-charts/';
 const SCHEDULE_URL =
   'https://www.irctc.co.in/eticketing/protected/mapps1/trnscheduleenquiry';
-const UA =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36';
-const VERIFY_HEADERS: Record<string, string> = {
-  accept: 'application/json, text/plain, */*',
-  'accept-language': 'en-US,en;q=0.9',
-  bmirak: 'webbm',
-  dnt: '1',
-  referer: 'https://www.irctc.co.in/online-charts/',
-  'sec-fetch-dest': 'empty',
-  'sec-fetch-mode': 'cors',
-  'sec-fetch-site': 'same-origin',
-  'user-agent': UA,
-};
+const HARVEST_HARD_TIMEOUT_MS = 150_000;
 
 /**
  * Node's fetch throws a generic `TypeError: fetch failed` for DNS/connection
@@ -36,22 +24,33 @@ function describeError(err: unknown): string {
   return String(err);
 }
 
+function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const t = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    p.then(
+      (v) => { clearTimeout(t); resolve(v); },
+      (e) => { clearTimeout(t); reject(e); },
+    );
+  });
+}
+
 /**
- * Keeps the IRCTC (Akamai-protected) cookie bundle fresh by driving a remote
- * browser-use cloud browser on an India residential IP and harvesting the
- * cookies over raw CDP (see ./cdp-client.ts — no Playwright/Puppeteer), then
- * writing them to the file-backed cookie store the rest of the backend reads.
+ * Keeps the IRCTC (Akamai-protected) cookie bundle fresh by driving a BrightData
+ * Scraping Browser (a remote Chromium on a residential IP), loading online-charts
+ * so Akamai issues cookies, and writing the harvested cookie string to the
+ * file-backed cookie store the rest of the backend reads.
  *
- * Why a remote browser: Akamai resets the HTTP/2 stream for datacenter IPs and
- * headless browsers, so cookies can't be harvested from Railway directly. The
- * cloud browser loads the page from a residential IP; the harvested cookies
- * are then usable from Railway in a plain fetch (verified against live IRCTC).
+ * Why a remote browser: Akamai resets/403s requests from Railway's datacenter IP,
+ * so cookies can't be harvested (or used) from Railway directly. BrightData loads
+ * the page from a residential IP. The cookie is verified with a same-origin fetch
+ * issued INSIDE that browser (residential IP) before it's persisted — that's the
+ * source of truth for "is the cookie valid", independent of whether this host can
+ * replay it.
  *
- * Gated by IRCTC_KEEPER_ENABLED=true and BROWSER_USE_API_KEY. Tunables:
+ * Gated by IRCTC_KEEPER_ENABLED=true and BRIGHTDATA_BROWSER_WSS. Tunables:
  *   IRCTC_KEEPER_CRON          cron expression (default every 30 min)
- *   IRCTC_KEEPER_PROXY_CC      proxy country (default 'in')
  *   IRCTC_KEEPER_TEST_TRAIN    train number used to verify cookies (default 12951)
- *   BROWSER_USE_BASE_URL       default https://api.browser-use.com
+ *   BRIGHTDATA_BROWSER_WSS     wss://…@brd.superproxy.io:9222 CDP endpoint
  */
 @Injectable()
 export class IrctcSessionKeeperService implements OnModuleInit {
@@ -65,14 +64,14 @@ export class IrctcSessionKeeperService implements OnModuleInit {
   private get enabled(): boolean {
     return (
       process.env.IRCTC_KEEPER_ENABLED === 'true' &&
-      Boolean(process.env.BROWSER_USE_API_KEY?.trim())
+      Boolean(process.env.BRIGHTDATA_BROWSER_WSS?.trim())
     );
   }
 
   onModuleInit(): void {
     if (!this.enabled) {
       this.logger.log(
-        '[irctc-keeper] disabled (set IRCTC_KEEPER_ENABLED=true + BROWSER_USE_API_KEY to enable)',
+        '[irctc-keeper] disabled (set IRCTC_KEEPER_ENABLED=true + BRIGHTDATA_BROWSER_WSS to enable)',
       );
       return;
     }
@@ -109,8 +108,8 @@ export class IrctcSessionKeeperService implements OnModuleInit {
 
   /**
    * Manually overwrite the stored cookie bundle (admin paste-in). Use when the
-   * automated harvest can't be used from this host's IP and you want to drop in
-   * a cookie string captured from a working browser session yourself.
+   * automated harvest can't be used and you want to drop in a cookie string
+   * captured from a working browser session yourself.
    */
   setCookieManually(cookie: string): { ok: boolean; error?: string; length?: number } {
     const trimmed = (cookie ?? '').trim();
@@ -124,89 +123,35 @@ export class IrctcSessionKeeperService implements OnModuleInit {
     return { ok: true, length: trimmed.length };
   }
 
-  /** Harvest a fresh cookie bundle and persist it. Safe to call on demand. */
+  /** Harvest a fresh cookie bundle via BrightData and persist it. */
   async refresh(trigger: string): Promise<{ ok: boolean; error?: string }> {
     if (!this.enabled) return { ok: false, error: 'keeper disabled' };
     if (this.refreshing) return { ok: false, error: 'refresh already running' };
     this.refreshing = true;
-    const apiKey = process.env.BROWSER_USE_API_KEY!.trim();
-    const baseUrl =
-      process.env.BROWSER_USE_BASE_URL?.trim() || 'https://api.browser-use.com';
-    const proxyCc = process.env.IRCTC_KEEPER_PROXY_CC?.trim() || 'in';
     const testTrain = process.env.IRCTC_KEEPER_TEST_TRAIN?.trim() || '12951';
-    let sessionId: string | null = null;
 
     try {
-      this.logger.log(`[irctc-keeper] refresh trigger=${trigger} proxy=${proxyCc}`);
+      this.logger.log(`[irctc-keeper] refresh trigger=${trigger} via=brightdata`);
 
-      // 1. Create a remote browser session (India residential IP).
-      const createResp = await fetch(`${baseUrl}/api/v3/browsers`, {
-        method: 'POST',
-        headers: {
-          'X-Browser-Use-API-Key': apiKey,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ proxyCountryCode: proxyCc, timeout: 5 }),
-        signal: AbortSignal.timeout(15_000),
-      });
-      if (!createResp.ok) {
-        throw new Error(
-          `browser create ${createResp.status}: ${(await createResp.text()).slice(0, 200)}`,
-        );
-      }
-      const session = (await createResp.json()) as { id: string; cdpUrl?: string };
-      sessionId = session.id;
-      if (!session.cdpUrl) throw new Error('no cdpUrl on create response');
-
-      // 2. Drive it over raw CDP, harvest cookies, and verify them FROM INSIDE
-      //    the browser (residential IP, where the cookie was minted). The
-      //    in-browser status proves whether the cookie itself is valid,
-      //    independent of whether this host's IP can replay it.
-      const { cookieString, browserVerifyStatus } = await this.harvestCookies(
-        session.cdpUrl,
-        testTrain,
+      const { cookieString, browserVerifyStatus } = await withTimeout(
+        this.harvestViaBrightData(testTrain),
+        HARVEST_HARD_TIMEOUT_MS,
+        'brightdata harvest',
       );
       if (!cookieString) throw new Error('no cookies harvested');
 
-      // Diagnostic: also try the same request from THIS host's IP (Railway).
-      // A mismatch (browser 200 / host 403) means Akamai is IP-binding the
-      // session and the cookie can't simply be replayed from here.
-      let hostVerifyStatus: number | string = 0;
-      try {
-        const verify = await fetch(
-          `${SCHEDULE_URL}/${encodeURIComponent(testTrain)}`,
-          {
-            headers: {
-              ...VERIFY_HEADERS,
-              greq: String(Date.now()),
-              Cookie: cookieString,
-            },
-            signal: AbortSignal.timeout(15_000),
-          },
-        );
-        hostVerifyStatus = verify.status;
-      } catch (e) {
-        hostVerifyStatus = `err:${e instanceof Error ? e.message : String(e)}`;
-      }
       this.logger.log(
-        `[irctc-keeper] verify browser_status=${browserVerifyStatus} host_status=${hostVerifyStatus}`,
+        `[irctc-keeper] verify browser_status=${browserVerifyStatus} cookieChars=${cookieString.length}`,
       );
-
-      // Gate on the in-browser verify: a 200 there means the cookie is good.
-      // Don't discard a valid cookie just because this host's IP can't use it.
+      // Gate on the in-browser verify: 200 there means the cookie is valid.
       if (browserVerifyStatus !== 200) {
         throw new Error(`in-browser verify returned ${browserVerifyStatus}`);
       }
 
-      this.cookieStore.setCookie(cookieString, {
-        source: `browser-use:${proxyCc}`,
-        sessionId: sessionId ?? undefined,
-      });
+      this.cookieStore.setCookie(cookieString, { source: 'brightdata' });
       this.lastRefreshAt = new Date().toISOString();
       this.lastError = null;
-      this.logger.log(
-        `[irctc-keeper] refresh ok trigger=${trigger} cookieChars=${cookieString.length} hostUsable=${hostVerifyStatus === 200}`,
-      );
+      this.logger.log(`[irctc-keeper] refresh ok trigger=${trigger}`);
       return { ok: true };
     } catch (err) {
       const msg = describeError(err);
@@ -218,105 +163,67 @@ export class IrctcSessionKeeperService implements OnModuleInit {
       });
       return { ok: false, error: msg };
     } finally {
-      // Best-effort stop of the remote session to stop billing promptly.
-      if (sessionId) {
-        await fetch(`${baseUrl}/api/v3/browsers/${sessionId}`, {
-          method: 'PATCH',
-          headers: {
-            'X-Browser-Use-API-Key': apiKey,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ action: 'stop' }),
-          signal: AbortSignal.timeout(10_000),
-        }).catch(() => {});
-      }
       this.refreshing = false;
     }
   }
 
   /**
-   * Navigate the remote browser to online-charts, harvest IRCTC cookies over
-   * raw CDP, and verify them with a same-origin fetch issued from inside that
-   * page (so it goes out over the residential proxy IP, with cookies attached).
+   * Connect to the BrightData Scraping Browser, load online-charts so Akamai
+   * issues cookies, verify them with a same-origin fetch from inside that page
+   * (residential IP), and return the harvested cookie string + verify status.
    */
-  private async harvestCookies(
-    cdpUrl: string,
+  private async harvestViaBrightData(
     testTrain: string,
   ): Promise<{ cookieString: string; browserVerifyStatus: number | string }> {
-    const cdp = await CdpClient.connect(cdpUrl);
-    let targetId: string | undefined;
+    const wss = process.env.BRIGHTDATA_BROWSER_WSS!.trim();
+    const browser = await withTimeout(
+      puppeteer.connect({ browserWSEndpoint: wss }),
+      30_000,
+      'brightdata connect',
+    );
     try {
-      const target = await cdp.send<{ targetId: string }>('Target.createTarget', {
-        url: 'about:blank',
+      const page = await browser.newPage();
+      await page.goto(ONLINE_CHARTS_URL, {
+        waitUntil: 'domcontentloaded',
+        timeout: 90_000,
       });
-      targetId = target.targetId;
-      const attach = await cdp.send<{ sessionId: string }>('Target.attachToTarget', {
-        targetId,
-        flatten: true,
-      });
-      const sessionId = attach.sessionId;
+      // Let Akamai's sensor JS settle the cookie bundle.
+      await new Promise((r) => setTimeout(r, 6_000));
 
-      await cdp.send('Page.enable', {}, sessionId);
-      await cdp.send('Page.navigate', { url: ONLINE_CHARTS_URL }, sessionId);
-      try {
-        await cdp.waitForEvent('Page.loadEventFired', sessionId, 30_000);
-      } catch {
-        // Proceed anyway — the cookie-presence poll below is the real gate.
-      }
+      const scheduleUrl = `${SCHEDULE_URL}/${encodeURIComponent(testTrain)}`;
+      const browserVerifyStatus: number | string = await page.evaluate(
+        async (url: string) => {
+          try {
+            const res = await fetch(url, {
+              headers: {
+                accept: 'application/json, text/plain, */*',
+                bmirak: 'webbm',
+                greq: String(Date.now()),
+              },
+              credentials: 'include',
+            });
+            return res.status;
+          } catch (e) {
+            return `err:${e instanceof Error ? e.message : String(e)}`;
+          }
+        },
+        scheduleUrl,
+      );
 
-      let cookies: CdpCookie[] = [];
-      for (let i = 0; i < 12; i++) {
-        const r = await cdp.send<{ cookies: CdpCookie[] }>(
-          'Network.getAllCookies',
-          {},
-          sessionId,
-        );
-        cookies = r.cookies.filter((c) => c.domain.includes('irctc.co.in'));
-        if (cookies.some((c) => c.name === '_abck')) break;
-        await new Promise((res) => setTimeout(res, 1500));
-      }
-      const cookieString = cookiesToHeaderString(cookies);
+      // Harvest the full cookie bundle for irctc.co.in via CDP.
+      const client = await page.target().createCDPSession();
+      const { cookies } = (await client.send('Network.getAllCookies')) as {
+        cookies: { name: string; value: string; domain: string }[];
+      };
+      const cookieString = cookies
+        .filter((c) => c.domain.includes('irctc.co.in'))
+        .map((c) => `${c.name}=${c.value}`)
+        .join('; ');
 
-      const browserVerifyStatus = await this.verifyInBrowser(cdp, sessionId, testTrain);
       return { cookieString, browserVerifyStatus };
     } finally {
-      if (targetId) {
-        await cdp.send('Target.closeTarget', { targetId }).catch(() => {});
-      }
-      cdp.close();
-    }
-  }
-
-  /**
-   * Run a same-origin `fetch` to the schedule endpoint from within the page
-   * (residential IP, cookies auto-attached) and return its HTTP status. This
-   * is the source of truth for "is the harvested cookie valid", independent of
-   * whether the backend's own IP can replay it.
-   */
-  private async verifyInBrowser(
-    cdp: CdpClient,
-    sessionId: string,
-    testTrain: string,
-  ): Promise<number | string> {
-    const url = `${SCHEDULE_URL}/${encodeURIComponent(testTrain)}`;
-    const expression = `(async () => {
-      try {
-        const r = await fetch(${JSON.stringify(url)}, {
-          headers: { accept: 'application/json, text/plain, */*', bmirak: 'webbm', greq: String(Date.now()) },
-          credentials: 'include',
-        });
-        return r.status;
-      } catch (e) { return 'err:' + (e && e.message ? e.message : e); }
-    })()`;
-    try {
-      const res = await cdp.send<{ result?: { value?: number | string } }>(
-        'Runtime.evaluate',
-        { expression, awaitPromise: true, returnByValue: true },
-        sessionId,
-      );
-      return res.result?.value ?? 'no-value';
-    } catch (e) {
-      return `eval-err:${e instanceof Error ? e.message : String(e)}`;
+      // close() ends the BrightData session (stops billing); ignore errors.
+      await browser.close().catch(() => {});
     }
   }
 }
