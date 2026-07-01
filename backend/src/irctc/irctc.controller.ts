@@ -102,7 +102,7 @@ export class IrctcController {
     try {
       return await this.irctc.getTrainComposition(
         { trainNo, jDate, boardingStation },
-        { allowChartNotPrepared: true },
+        { allowChartNotPrepared: true, cacheByTrainNumber: true },
       );
     } catch (error) {
       throw new ServiceUnavailableException(

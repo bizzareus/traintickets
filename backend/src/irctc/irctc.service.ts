@@ -54,6 +54,19 @@ const IRCTC_CHART_MAX_ATTEMPTS = (() => {
   const n = Number.parseInt(process.env.IRCTC_CHART_MAX_ATTEMPTS ?? '', 10);
   return Number.isFinite(n) && n >= 1 && n <= 6 ? n : 4;
 })();
+/**
+ * How long a cached trainComposition JSON stays "fresh". Within this window the
+ * coach-list endpoint serves the cached copy without hitting IRCTC; past it (or
+ * if absent) it goes live and, on success, refreshes the cache. Default 4 weeks.
+ */
+const TRAIN_COMPOSITION_CACHE_TTL_MS = (() => {
+  const days = Number.parseInt(
+    process.env.IRCTC_TRAIN_COMPOSITION_CACHE_DAYS ?? '',
+    10,
+  );
+  const d = Number.isFinite(days) && days >= 1 && days <= 365 ? days : 28;
+  return d * 24 * 60 * 60 * 1000;
+})();
 
 /**
  * TrainScheduleCache row fields used here (`train_runs_on` in DB).
@@ -1503,25 +1516,106 @@ export class IrctcService {
     }
   }
 
+  /** Read the cached trainComposition JSON for a train, or null if absent. */
+  private async readTrainCompositionCache(
+    trainNumber: string,
+  ): Promise<{ data: TrainCompositionResponse; updatedAt: Date } | null> {
+    try {
+      const row = await this.prisma.trainCompositionCache.findUnique({
+        where: { trainNumber },
+      });
+      if (!row) return null;
+      return {
+        data: row.data as unknown as TrainCompositionResponse,
+        updatedAt: row.updatedAt,
+      };
+    } catch (e) {
+      this.logger.warn(
+        `[irctc/trainComposition] cache_read_failed trainNo=${trainNumber} ${e instanceof Error ? e.message : String(e)}`,
+      );
+      return null;
+    }
+  }
+
+  /** Persist a fresh trainComposition JSON for a train (best-effort). */
+  private async writeTrainCompositionCache(
+    trainNumber: string,
+    data: TrainCompositionResponse,
+  ): Promise<void> {
+    try {
+      const json = data as unknown as Prisma.InputJsonValue;
+      await this.prisma.trainCompositionCache.upsert({
+        where: { trainNumber },
+        update: { data: json },
+        create: { trainNumber, data: json },
+      });
+    } catch (e) {
+      this.logger.warn(
+        `[irctc/trainComposition] cache_write_failed trainNo=${trainNumber} ${e instanceof Error ? e.message : String(e)}`,
+      );
+    }
+  }
+
+  /** Only cache real, usable compositions (a non-empty coach list). */
+  private isCacheableComposition(data: TrainCompositionResponse): boolean {
+    const cdd = (data as unknown as { cdd?: unknown })?.cdd;
+    return Array.isArray(cdd) && cdd.length > 0;
+  }
+
   async getTrainComposition(
     payload: {
       trainNo: string;
       jDate: Date | string;
       boardingStation: string;
     },
-    opts?: { allowChartNotPrepared?: boolean },
+    opts?: { allowChartNotPrepared?: boolean; cacheByTrainNumber?: boolean },
   ): Promise<TrainCompositionResponse> {
-    const raw = await this.postTrainComposition(payload, opts);
-    const data = raw as unknown as TrainCompositionResponse;
-    try {
-      await this.persistChartTimesFromComposition(
-        data,
-        payload.boardingStation,
-      );
-    } catch {
-      // persist is best-effort; still return composition
+    const trainNo = String(payload.trainNo ?? '').trim();
+    const useCache = opts?.cacheByTrainNumber === true && trainNo.length > 0;
+
+    // Read the cache up front (once) so it can serve both the fresh-hit
+    // short-circuit and the API-failure fallback.
+    const cached = useCache
+      ? await this.readTrainCompositionCache(trainNo)
+      : null;
+
+    if (cached) {
+      const ageMs = Date.now() - cached.updatedAt.getTime();
+      if (ageMs < TRAIN_COMPOSITION_CACHE_TTL_MS) {
+        this.logger.log(
+          `[irctc/trainComposition] cache_hit trainNo=${trainNo} ageDays=${(ageMs / 86_400_000).toFixed(1)} (skipping IRCTC)`,
+        );
+        return cached.data;
+      }
     }
-    return data;
+
+    // Cache missing or stale (>= TTL) — go live.
+    try {
+      const raw = await this.postTrainComposition(payload, opts);
+      const data = raw as unknown as TrainCompositionResponse;
+      try {
+        await this.persistChartTimesFromComposition(
+          data,
+          payload.boardingStation,
+        );
+      } catch {
+        // persist is best-effort; still return composition
+      }
+      if (useCache && this.isCacheableComposition(data)) {
+        await this.writeTrainCompositionCache(trainNo, data);
+      }
+      return data;
+    } catch (err) {
+      // API failed — fall back to whatever we have cached, even if stale.
+      if (cached) {
+        const ageMs = Date.now() - cached.updatedAt.getTime();
+        this.logger.warn(
+          `[irctc/trainComposition] api_failed_serving_stale_cache trainNo=${trainNo} ageDays=${(ageMs / 86_400_000).toFixed(1)} err=${err instanceof Error ? err.message : String(err)}`,
+        );
+        return cached.data;
+      }
+      throw err;
+    }
   }
 
   /**

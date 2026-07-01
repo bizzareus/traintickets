@@ -327,3 +327,16 @@ model IrctcSession {
 
   @@map("irctc_session")
 }
+
+/// Full trainComposition JSON cached per train number, refreshed at most every
+/// 4 weeks. Serves the frontend coach-list loader when IRCTC is flaky/slow and
+/// avoids re-hitting IRCTC for the (largely static) coach layout. See
+/// IrctcService.getTrainComposition (cacheByTrainNumber path).
+model TrainCompositionCache {
+  trainNumber String   @id @map("train_number")
+  data        Json
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("train_composition_cache")
+}
