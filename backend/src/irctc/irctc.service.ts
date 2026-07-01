@@ -1568,10 +1568,25 @@ export class IrctcService {
       jDate: Date | string;
       boardingStation: string;
     },
-    opts?: { allowChartNotPrepared?: boolean; cacheByTrainNumber?: boolean },
+    opts?: {
+      allowChartNotPrepared?: boolean;
+      /** Serve/refresh the per-train JSON cache (train-wide data like `cdd`). */
+      cacheByTrainNumber?: boolean;
+      /**
+       * Only use a cached composition when it was fetched for THIS boarding
+       * station. Required by chart-time consumers: the cached JSON's chart
+       * times are station/remote-specific, so reusing another station's
+       * composition would persist wrong chart times. Coach-list consumers
+       * (which only read the train-wide `cdd`) leave this off.
+       */
+      matchBoardingStation?: boolean;
+    },
   ): Promise<TrainCompositionResponse> {
     const trainNo = String(payload.trainNo ?? '').trim();
     const useCache = opts?.cacheByTrainNumber === true && trainNo.length > 0;
+    const boardingUpper = String(payload.boardingStation ?? '')
+      .trim()
+      .toUpperCase();
 
     // Read the cache up front (once) so it can serve both the fresh-hit
     // short-circuit and the API-failure fallback.
@@ -1579,12 +1594,34 @@ export class IrctcService {
       ? await this.readTrainCompositionCache(trainNo)
       : null;
 
-    if (cached) {
+    // A cached composition is only usable for chart times if it was fetched for
+    // the same boarding station (its chart data is station-specific). For the
+    // coach-list consumer (no matchBoardingStation) any cached row is fine.
+    const cacheStationOk = (rec: { data: TrainCompositionResponse }): boolean =>
+      opts?.matchBoardingStation !== true ||
+      String((rec.data as { from?: string }).from ?? '')
+        .trim()
+        .toUpperCase() === boardingUpper;
+
+    // When serving a cached composition to a chart-time consumer, seed the
+    // per-station chart-time rows from it (date-independent: time-of-day +
+    // day-offset). Best-effort; uses the cache's own `from` so it's correct.
+    const seedChartTimesFromCache = (data: TrainCompositionResponse): void => {
+      if (opts?.matchBoardingStation !== true) return;
+      const from = String((data as { from?: string }).from ?? '')
+        .trim()
+        .toUpperCase();
+      if (!from) return;
+      void this.persistChartTimesFromComposition(data, from).catch(() => {});
+    };
+
+    if (cached && cacheStationOk(cached)) {
       const ageMs = Date.now() - cached.updatedAt.getTime();
       if (ageMs < TRAIN_COMPOSITION_CACHE_TTL_MS) {
         this.logger.log(
           `[irctc/trainComposition] cache_hit trainNo=${trainNo} ageDays=${(ageMs / 86_400_000).toFixed(1)} (skipping IRCTC)`,
         );
+        seedChartTimesFromCache(cached.data);
         return cached.data;
       }
     }
@@ -1609,12 +1646,14 @@ export class IrctcService {
       }
       return data;
     } catch (err) {
-      // API failed — fall back to whatever we have cached, even if stale.
-      if (cached) {
+      // API failed — fall back to a cached composition when it's usable for
+      // this caller (station-matched for chart-time consumers).
+      if (cached && cacheStationOk(cached)) {
         const ageMs = Date.now() - cached.updatedAt.getTime();
         this.logger.warn(
           `[irctc/trainComposition] api_failed_serving_stale_cache trainNo=${trainNo} ageDays=${(ageMs / 86_400_000).toFixed(1)} err=${err instanceof Error ? err.message : String(err)}`,
         );
+        seedChartTimesFromCache(cached.data);
         return cached.data;
       }
       throw err;
