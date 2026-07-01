@@ -1602,7 +1602,10 @@ export class IrctcService {
         // persist is best-effort; still return composition
       }
       if (useCache && this.isCacheableComposition(data)) {
-        await this.writeTrainCompositionCache(trainNo, data);
+        // Fire-and-forget: the response is already in hand, so don't make the
+        // caller wait on the DB write. writeTrainCompositionCache catches and
+        // logs its own errors, so this never rejects unhandled.
+        void this.writeTrainCompositionCache(trainNo, data);
       }
       return data;
     } catch (err) {
