@@ -615,6 +615,11 @@ export function SeatStatus() {
   const [coaches, setCoaches] = useState<CoachOption[]>([]);
   const [coachesLoading, setCoachesLoading] = useState(false);
   const [coachesError, setCoachesError] = useState<string | null>(null);
+  const [coachesErrorKind, setCoachesErrorKind] = useState<
+    "connection" | "other"
+  >("other");
+  // Bumping this re-runs the coach-list loader effect (used by "Try again").
+  const [coachReloadKey, setCoachReloadKey] = useState(0);
   const [selectedCoach, setSelectedCoach] = useState<CoachOption | null>(null);
   const [seatNumber, setSeatNumber] = useState("");
 
@@ -727,6 +732,7 @@ export function SeatStatus() {
         if (cancelled) return;
         const cdd = r.data?.cdd ?? [];
         if (cdd.length === 0) {
+          setCoachesErrorKind("other");
           setCoachesError(
             r.data?.error ??
               "No coach data available. Chart may not be prepared yet.",
@@ -737,6 +743,11 @@ export function SeatStatus() {
       })
       .catch((e: unknown) => {
         if (!cancelled) {
+          const status = (e as { response?: { status?: number } })?.response
+            ?.status;
+          setCoachesErrorKind(
+            status == null || status >= 500 ? "connection" : "other",
+          );
           const msg =
             (e as { response?: { data?: { message?: string } } })?.response
               ?.data?.message ??
@@ -752,7 +763,13 @@ export function SeatStatus() {
     return () => {
       cancelled = true;
     };
-  }, [selectedTrain, journeyDate, station, onBlockedSearchAttempt]);
+  }, [
+    selectedTrain,
+    journeyDate,
+    station,
+    onBlockedSearchAttempt,
+    coachReloadKey,
+  ]);
 
   const resetResult = useCallback(() => {
     setResult(null);
@@ -928,7 +945,20 @@ export function SeatStatus() {
                 Loading coaches…
               </div>
             ) : coachesError ? (
-              <p className="py-2 text-xs text-amber-700">{coachesError}</p>
+              coachesErrorKind === "connection" ? (
+                <div className="py-2 text-xs text-amber-700">
+                  <p className="font-medium">Trouble connecting to IRCTC.</p>
+                  <button
+                    type="button"
+                    onClick={() => setCoachReloadKey((k) => k + 1)}
+                    className="mt-1 font-semibold text-amber-800 underline underline-offset-2 hover:text-amber-900"
+                  >
+                    Try again
+                  </button>
+                </div>
+              ) : (
+                <p className="py-2 text-xs text-amber-700">{coachesError}</p>
+              )
             ) : coaches.length === 0 ? (
               <p className="py-2 text-xs text-gray-400">
                 {selectedTrain && journeyDate && station
