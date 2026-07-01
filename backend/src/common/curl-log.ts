@@ -27,11 +27,15 @@ export function buildCurl(opts: {
   const parts: string[] = [`curl '${shellEscape(opts.url)}'`];
   if (method !== 'GET') parts.push(`-X ${method}`);
 
+  // Opt-in: reveal the real cookie/secret header values for debugging what the
+  // server actually replays to IRCTC. Off by default so secrets never leak.
+  const revealSecrets =
+    process.env.IRCTC_LOG_COOKIE?.trim().toLowerCase() === 'true';
+
   for (const [key, raw] of Object.entries(opts.headers ?? {})) {
     if (raw == null) continue;
-    const value = SENSITIVE_HEADERS.has(key.toLowerCase())
-      ? '<redacted>'
-      : raw;
+    const sensitive = SENSITIVE_HEADERS.has(key.toLowerCase());
+    const value = sensitive && !revealSecrets ? '<redacted>' : raw;
     parts.push(`-H '${shellEscape(key)}: ${shellEscape(value)}'`);
   }
 
