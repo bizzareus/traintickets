@@ -5,7 +5,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
-import { fetchWithTimeout } from '../common/fetch-with-timeout';
+import { fetchWithTimeout, retryTransient } from '../common/fetch-with-timeout';
 import { buildCurl, curlLogEnabled } from '../common/curl-log';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
 
@@ -950,11 +950,20 @@ export class IrctcService {
           `[irctc/vacantBerth] curl: ${buildCurl({ method: 'POST', url: IRCTC_VACANT_BERTH_URL, headers, body: JSON.stringify(body) })}`,
         );
       }
-      res = await fetchWithTimeout(IRCTC_VACANT_BERTH_URL, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(body),
-      });
+      res = await retryTransient(
+        () =>
+          fetchWithTimeout(IRCTC_VACANT_BERTH_URL, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(body),
+          }),
+        {
+          onRetry: (attempt, err) =>
+            this.logger.warn(
+              `[irctc/vacantBerth] transient retry attempt=${attempt} trainNo=${payload.trainNo} ${err instanceof Error ? err.message : String(err)}`,
+            ),
+        },
+      );
     } catch (err) {
       const ms = Date.now() - t0;
       const cause: string =
@@ -1050,11 +1059,20 @@ export class IrctcService {
           `[irctc/coachComposition] curl: ${buildCurl({ method: 'POST', url: IRCTC_COACH_COMPOSITION_URL, headers, body: JSON.stringify(body) })}`,
         );
       }
-      res = await fetchWithTimeout(IRCTC_COACH_COMPOSITION_URL, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(body),
-      });
+      res = await retryTransient(
+        () =>
+          fetchWithTimeout(IRCTC_COACH_COMPOSITION_URL, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(body),
+          }),
+        {
+          onRetry: (attempt, err) =>
+            this.logger.warn(
+              `[irctc/coachComposition] transient retry attempt=${attempt} trainNo=${payload.trainNo} coach=${payload.coach} ${err instanceof Error ? err.message : String(err)}`,
+            ),
+        },
+      );
     } catch (err) {
       const ms = Date.now() - t0;
       const cause: string =
@@ -1249,12 +1267,23 @@ export class IrctcService {
         );
       }
       const { gotScraping } = await import('got-scraping');
-      const res = await gotScraping.post(IRCTC_TRAIN_COMPOSITION_URL, {
-        headers,
-        json: body,
-        timeout: { request: IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS },
-        retry: { limit: 2 },
-      });
+      // got does NOT retry POST by default (non-idempotent), so its own retry is
+      // a no-op here — we drive retries ourselves on a fresh connection.
+      const res = await retryTransient(
+        () =>
+          gotScraping.post(IRCTC_TRAIN_COMPOSITION_URL, {
+            headers,
+            json: body,
+            timeout: { request: IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS },
+            retry: { limit: 0 },
+          }),
+        {
+          onRetry: (attempt, e) =>
+            this.logger.warn(
+              `[irctc/trainComposition] transient retry attempt=${attempt} trainNo=${body.trainNo} ${e instanceof Error ? e.message : String(e)}`,
+            ),
+        },
+      );
       status = res.statusCode;
       text = res.body;
     } catch (err: any) {
