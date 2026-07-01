@@ -79,19 +79,40 @@ export function FoodOrderingMenu({ menu }: { menu: TrainFoodMenu }) {
       .filter((s) => s.items.length > 0);
   }, [cls, q]);
 
+  const nameWithRoute = menu.route
+    ? `${menu.route} ${menu.trainName}`
+    : menu.trainName;
+  const allServices = [
+    ...new Set(menu.classes.flatMap((c) => c.services.map((s) => s.service))),
+  ];
+  const prices = menu.classes
+    .flatMap((c) => c.services.map((s) => s.price))
+    .filter((p): p is number => typeof p === "number");
+  const minP = prices.length ? Math.min(...prices) : null;
+  const maxP = prices.length ? Math.max(...prices) : null;
+  const classList = menu.classes
+    .map((c) => `${c.className} (${c.classCode})`)
+    .join(" and ");
+  const pricePhrase =
+    minP != null && maxP != null
+      ? minP === maxP
+        ? `priced at ₹${minP}`
+        : `priced from ₹${minP} to ₹${maxP}`
+      : "with set catering charges";
+  const summary = `Full on-board food menu and IRCTC catering prices for ${nameWithRoute} (train ${menu.trainNumberPair}). Served in ${classList}, the menu covers ${allServices.join(", ").toLowerCase()}, ${pricePhrase}, inclusive of taxes. Browse every dish below or search the menu for exactly what you want.`;
+
   return (
     <div className="pb-16">
       {/* Hero */}
-      <div className="mb-4">
+      <div className="mb-5">
         <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">
-          IRCTC catering · {menu.route}
+          IRCTC on-board catering
         </p>
-        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-          {menu.trainName}{" "}
-          <span className="text-slate-400">({menu.trainNumberPair})</span>
+        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-slate-900 text-balance sm:text-3xl">
+          {nameWithRoute} - {menu.trainNumber} Food Menu
         </h1>
-        <p className="mt-1 text-sm text-slate-500">
-          On-board menu · prices inclusive of taxes
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
+          {summary}
         </p>
       </div>
 
