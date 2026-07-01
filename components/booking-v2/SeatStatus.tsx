@@ -621,6 +621,10 @@ export function SeatStatus() {
   const [result, setResult] = useState<CoachCompositionResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // "connection" => IRCTC/Akamai was flaky (503 / network) and it's worth just
+  // retrying the same request; "other" => a real problem (bad input, chart not
+  // prepared) where retrying won't help.
+  const [errorKind, setErrorKind] = useState<"connection" | "other">("other");
 
   const [trainStations, setTrainStations] = useState<StationRow[] | null>(null);
 
@@ -791,6 +795,7 @@ export function SeatStatus() {
       );
       const data = res.data;
       if (data.error) {
+        setErrorKind("other");
         setError(data.error);
         trackAnalyticsEvent({
           name: "seat_status_checked",
@@ -813,6 +818,12 @@ export function SeatStatus() {
         });
       }
     } catch (e) {
+      const status = (e as { response?: { status?: number } })?.response
+        ?.status;
+      // 503 (IRCTC unreachable after backend retries) or a bare network error
+      // (no response) => transient, offer a retry. 4xx => a real client error.
+      const isConnection = status == null || status >= 500;
+      setErrorKind(isConnection ? "connection" : "other");
       const msg =
         (e as { response?: { data?: { message?: string } }; message?: string })
           ?.response?.data?.message ??
@@ -985,8 +996,46 @@ export function SeatStatus() {
         </div>
       </div>
 
-      {/* Error */}
-      {error && (
+      {/* Connection trouble — worth just retrying the same request */}
+      {error && errorKind === "connection" && (
+        <div
+          className="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
+          role="alert"
+        >
+          <svg
+            className="mt-0.5 h-5 w-5 shrink-0 text-amber-500"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" />
+          </svg>
+          <div className="min-w-0 flex-1">
+            <p className="font-semibold">Trouble connecting to IRCTC servers</p>
+            <p className="mt-0.5 text-amber-800">
+              IRCTC didn&apos;t respond just now. This is usually temporary —
+              please try again.
+            </p>
+            <button
+              type="button"
+              onClick={() => void handleCheck()}
+              disabled={loading}
+              className="mt-2.5 inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500/30 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? (
+                <>
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                  Retrying…
+                </>
+              ) : (
+                "Try again"
+              )}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Real error — retrying won't help */}
+      {error && errorKind !== "connection" && (
         <div
           className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800"
           role="alert"
