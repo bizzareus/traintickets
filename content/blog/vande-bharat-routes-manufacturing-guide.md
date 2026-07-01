@@ -2,7 +2,7 @@
 title: "Vande Bharat Routes: Stops, Manufacturing, and Latest News"
 description: "WL full form is Waiting List. Read about the Vande Bharat routes, key stops, how it runs, how it is made at ICF Chennai, and sleeper train news."
 date: "2026-06-30"
-updated: "2026-06-30"
+updated: "2026-07-01"
 tags:
   - vande bharat routes
   - vande bharat train
@@ -82,3 +82,16 @@ Since Vande Bharat trains only have sitting coaches and no sleeper berths, there
 To get around waitlists, check for a `"current available ticket"`. These confirmed seats open up for booking right after the first chart is prepared (4 hours before train departure) and stay open until 30 minutes before launch.
 
 Additionally, you can use LastBerth's [Finding Smart Seats](/) tool to check if you can split the booking across different segments. You can track your ticket's confirmation odds with [PNR Status Search & Direct Booking](/) or check the physical seat maps using [Seat Status Coach Journey Lookup](/seat-status).
+
+## Vande Bharat menu, routes and schedules by train
+
+You can look up the on-board food menu, route and prices for **all 85 Vande Bharat trains** on the [IRCTC train food menu list](/irctc-train-food-menu), and the full station-by-station schedule with chart preparation times for popular services:
+
+| Route | Train numbers | Menu & schedule |
+| :--- | :--- | :--- |
+| New Delhi ↔ Katra (SVDK) | 22439 / 22440 | [Menu](/irctc-train-food-menu/ndls-svdk-vande-bharat-express-22439) · [Schedule](/chart-times/22439-vande-bharat-ex-chart-times) |
+| Jodhpur ↔ Sabarmati | 12461 / 12462 | [Schedule](/chart-times/12461-vande-bharat-exp-chart-times) |
+| Howrah ↔ Puri | 22895 / 22896 | [Menu](/irctc-train-food-menu/hwh-puri-vande-bharat-express-22895) |
+| Mumbai ↔ Ahmedabad | 22961 / 22962 | [Menu](/irctc-train-food-menu/mmct-adi-vande-bharat-express-22961) |
+
+Browse the [full list of Vande Bharat menus](/irctc-train-food-menu) to find your train's route and catering.
