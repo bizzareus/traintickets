@@ -22,6 +22,8 @@
  *   --delay=MS            pause between trains (default 1500ms; be gentle)
  *   --only=12016,12951    comma-separated train numbers to restrict to
  *   --startsWith=1        only trains whose number starts with this prefix
+ *   --includeCached       also refresh trains that already have a cache row
+ *                         (default: skip already-cached trains, run only the gaps)
  *
  * DATABASE_URL is read from backend/.env (dotenv). This writes to whatever DB
  * that points at — normally production Supabase. Reads are read-only except the
@@ -188,6 +190,9 @@ async function main() {
     .map((s) => s.trim())
     .filter(Boolean);
   const startsWith = (arg('startsWith') ?? '').trim();
+  // By default skip trains that already have a cache row; pass --includeCached
+  // to refresh them too.
+  const includeCached = process.argv.includes('--includeCached');
 
   let trains = await prisma.trainList.findMany({
     select: { trainNumber: true, label: true },
@@ -196,6 +201,21 @@ async function main() {
   if (only.length) trains = trains.filter((t) => only.includes(t.trainNumber));
   if (startsWith)
     trains = trains.filter((t) => t.trainNumber.startsWith(startsWith));
+
+  // Exclude trains that already have a composition cached (only run for the
+  // gaps), unless --includeCached was passed.
+  if (!includeCached) {
+    const cachedRows = await prisma.trainCompositionCache.findMany({
+      select: { trainNumber: true },
+    });
+    const cachedSet = new Set(cachedRows.map((r) => r.trainNumber));
+    const before = trains.length;
+    trains = trains.filter((t) => !cachedSet.has(t.trainNumber));
+    console.log(
+      `Skipping ${before - trains.length} already-cached trains; ${trains.length} remain to backfill.`,
+    );
+  }
+
   if (limit) trains = trains.slice(0, limit);
 
   // Preload known source-station codes from the schedule cache (one query).
