@@ -37,7 +37,15 @@ const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
 const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
 const RAPIDAPI_SEARCH_STATION_TIMEOUT_MS = 8_000;
 const RAPIDAPI_TRAIN_CLASSES_TIMEOUT_MS = 8_000;
-const IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS = 30_000;
+/**
+ * IRCTC online-charts (vacantBerth/coachComposition/trainComposition) are hit
+ * behind Akamai, which intermittently resets HTTP/2 connections. Use a short
+ * per-attempt timeout and retry a few times on a fresh connection — a healthy
+ * response comes back in <1s, so 5s is generous; a hung/poisoned connection is
+ * abandoned fast and retried. 4 attempts = 1 initial + 3 retries.
+ */
+const IRCTC_CHART_ATTEMPT_TIMEOUT_MS = 5_000;
+const IRCTC_CHART_MAX_ATTEMPTS = 4;
 
 /**
  * TrainScheduleCache row fields used here (`train_runs_on` in DB).
@@ -952,12 +960,17 @@ export class IrctcService {
       }
       res = await retryTransient(
         () =>
-          fetchWithTimeout(IRCTC_VACANT_BERTH_URL, {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(body),
-          }),
+          fetchWithTimeout(
+            IRCTC_VACANT_BERTH_URL,
+            {
+              method: 'POST',
+              headers,
+              body: JSON.stringify(body),
+            },
+            IRCTC_CHART_ATTEMPT_TIMEOUT_MS,
+          ),
         {
+          attempts: IRCTC_CHART_MAX_ATTEMPTS,
           onRetry: (attempt, err) =>
             this.logger.warn(
               `[irctc/vacantBerth] transient retry attempt=${attempt} trainNo=${payload.trainNo} ${err instanceof Error ? err.message : String(err)}`,
@@ -1061,12 +1074,17 @@ export class IrctcService {
       }
       res = await retryTransient(
         () =>
-          fetchWithTimeout(IRCTC_COACH_COMPOSITION_URL, {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(body),
-          }),
+          fetchWithTimeout(
+            IRCTC_COACH_COMPOSITION_URL,
+            {
+              method: 'POST',
+              headers,
+              body: JSON.stringify(body),
+            },
+            IRCTC_CHART_ATTEMPT_TIMEOUT_MS,
+          ),
         {
+          attempts: IRCTC_CHART_MAX_ATTEMPTS,
           onRetry: (attempt, err) =>
             this.logger.warn(
               `[irctc/coachComposition] transient retry attempt=${attempt} trainNo=${payload.trainNo} coach=${payload.coach} ${err instanceof Error ? err.message : String(err)}`,
@@ -1274,10 +1292,11 @@ export class IrctcService {
           gotScraping.post(IRCTC_TRAIN_COMPOSITION_URL, {
             headers,
             json: body,
-            timeout: { request: IRCTC_TRAIN_COMPOSITION_TIMEOUT_MS },
+            timeout: { request: IRCTC_CHART_ATTEMPT_TIMEOUT_MS },
             retry: { limit: 0 },
           }),
         {
+          attempts: IRCTC_CHART_MAX_ATTEMPTS,
           onRetry: (attempt, e) =>
             this.logger.warn(
               `[irctc/trainComposition] transient retry attempt=${attempt} trainNo=${body.trainNo} ${e instanceof Error ? e.message : String(e)}`,
