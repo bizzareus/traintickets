@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ChartCronLeaderService } from './chart-cron-leader.service';
 import { ChartCronService } from './chart-cron.service.js';
+import { CronLeaderModule } from './cron-leader.module';
 import { AvailabilityModule } from '../availability/availability.module';
 
 @Module({
-  imports: [AvailabilityModule],
-  providers: [ChartCronLeaderService, ChartCronService],
+  imports: [AvailabilityModule, CronLeaderModule],
+  providers: [ChartCronService],
 })
 export class ChartCronModule {}

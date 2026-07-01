@@ -78,6 +78,40 @@ export class BookingV2Controller {
     return this.bookingV2.searchTrains(f, t, d);
   }
 
+  /**
+   * Precomputed best-train for a route, served from the route cache written by the
+   * background cron. Pure cache read — never triggers a compute or an IRCTC call,
+   * so it stays fast. Miss (un-cached, expired, or a computed "no train" marker)
+   * returns { cached: false } and the client falls back to the live-scan CTA.
+   */
+  @Get('best-trains/cached')
+  async cachedBestTrain(
+    @Query('from') from: string | undefined,
+    @Query('to') to: string | undefined,
+    @Query('date') date: string | undefined,
+  ) {
+    const f = trimStr(from).toUpperCase();
+    const t = trimStr(to).toUpperCase();
+    const d = trimStr(date);
+    if (!f || !t || !d) {
+      throw new BadRequestException(
+        'from, to, and date query params are required',
+      );
+    }
+    if (!this.bookingV2.normalizeToRailApiDate(d)) {
+      throw new BadRequestException('date must be YYYY-MM-DD or DD-MM-YYYY');
+    }
+    const record = await this.bookingV2.getCachedBestTrain(f, t, d);
+    if (!record || record.value.found !== true) {
+      return { cached: false as const };
+    }
+    return {
+      cached: true as const,
+      cachedAt: record.cachedAt.toISOString(),
+      best: record.value,
+    };
+  }
+
   @Post('alternate-paths')
   async alternatePaths(
     @Body()
