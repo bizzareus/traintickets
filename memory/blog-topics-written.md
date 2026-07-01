@@ -42,7 +42,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-ewallet-registration-booking-payment-guide.md | A complete guide on how to register for IRCTC e-Wallet, complete PAN/Aadhaar verification, deposit money, and make fast payments for train tickets | 2026-06-21 |
 | station-platform-navigation-tips-last-minute-boarders.md | Station platform navigation tips for last-minute boarders, locating coaches, and boarding safely | 2026-06-21 |
 | irctc-child-ticket-booking-rules-fares.md | Complete guide to Indian Railways child ticket booking rules, age limits, half fare vs full fare, and step-by-step IRCTC booking instructions | 2026-06-21 |
-| irctc-ticket-booking-limits-aadhaar-verification.md | A complete guide on IRCTC monthly ticket booking limits, Aadhaar link, and passenger verification | 2026-06-22 |
+| irctc-ticket-booking-limits-aadhaar-verification.md | A complete guide on IRCTC monthly ticket booking limits, Aadhaar link, and passenger verification | 2026-07-01 |
 | how-to-change-boarding-point-irctc-rules-process.md | How to change boarding station online in IRCTC, rules, and timelines | 2026-06-22 |
 | irctc-regret-meaning-ticket-booking-rules.md | What Regret status means in IRCTC, how it differs from WL, and booking solutions | 2026-06-23 |
 | irctc-booking-timings-rules.md | Complete guide to IRCTC daily booking timings, midnight maintenance window shutdown, Tatkal opening hours, and current availability times | 2026-06-23 |

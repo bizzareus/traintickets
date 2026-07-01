@@ -11,9 +11,9 @@ tags:
 
 Have you ever tried booking train tickets for a family reunion or a big group of friends on IRCTC? If so, you know how fast it can turn into a circus. You sit at your laptop, tea in hand, ready to grab those seats, and suddenly a red warning pops up: "Monthly booking limit reached." Most people don't even realize there is a limit until they run face-first into it. The good news is Indian Railways gives you a built-in way to raise it. Below is exactly how many tickets you can book on IRCTC in a month, how the limit works per account, per day and per booking, and how to double it from 12 to 24.
 
-## How many tickets can you book on IRCTC in a month?
+## How many tickets can be booked from one IRCTC account per month?
 
-**You can book up to 12 train tickets in a calendar month on a standard IRCTC user ID. If you link your Aadhaar to your IRCTC profile and verify at least one passenger on the ticket, your monthly limit doubles to 24 tickets.** The count includes every ticket booked from that user ID, general, Tatkal and Premium Tatkal alike, and it resets on the 1st of each month.
+**You can book up to 12 train tickets in a calendar month from a standard, unverified IRCTC account. If you link your Aadhaar card to your IRCTC profile and verify at least one passenger on each booking, the monthly limit doubles to 24 tickets per user ID.** This count resets automatically on the 1st day of every month and includes all types of ticket bookings, such as general quota, Tatkal, and Premium Tatkal.
 
 | Account type | Monthly ticket limit | Requirement |
 | :--- | :--- | :--- |
@@ -24,7 +24,7 @@ Indian Railways introduced this limit to curb the black market, where unauthoriz
 
 ## Is the limit per account, per user, or per ID?
 
-These all mean the same thing. **The limit is counted per IRCTC user ID (one account).** It is not per card, per device or per family. If two people share one login, they share the same 12 or 24 tickets. If each person makes their own IRCTC account, each account gets its own monthly limit. There is no separate limit "per Aadhaar" beyond the account it is linked to.
+These all mean the same thing. **The limit is counted per IRCTC user ID (one account).** It is not per card, per device, or per family. If two people share one login, they share the same 12 or 24 ticket slots. If each person makes their own IRCTC account, each account gets its own monthly limit. There is no separate limit "per Aadhaar" card beyond the account to which it is linked.
 
 ## How many tickets can you book per day on IRCTC?
 
