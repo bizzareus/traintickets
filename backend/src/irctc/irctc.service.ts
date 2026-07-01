@@ -42,10 +42,18 @@ const RAPIDAPI_TRAIN_CLASSES_TIMEOUT_MS = 8_000;
  * behind Akamai, which intermittently resets HTTP/2 connections. Use a short
  * per-attempt timeout and retry a few times on a fresh connection — a healthy
  * response comes back in <1s, so 5s is generous; a hung/poisoned connection is
- * abandoned fast and retried. 4 attempts = 1 initial + 3 retries.
+ * abandoned fast and retried. Both are env-tunable so they can be dialed on
+ * Railway without a redeploy. Defaults: 5s per attempt, 4 attempts (1 + 3
+ * retries). Timeout clamped to [1s, 30s], attempts to [1, 6].
  */
-const IRCTC_CHART_ATTEMPT_TIMEOUT_MS = 5_000;
-const IRCTC_CHART_MAX_ATTEMPTS = 4;
+const IRCTC_CHART_ATTEMPT_TIMEOUT_MS = (() => {
+  const n = Number.parseInt(process.env.IRCTC_CHART_TIMEOUT_MS ?? '', 10);
+  return Number.isFinite(n) && n >= 1_000 && n <= 30_000 ? n : 5_000;
+})();
+const IRCTC_CHART_MAX_ATTEMPTS = (() => {
+  const n = Number.parseInt(process.env.IRCTC_CHART_MAX_ATTEMPTS ?? '', 10);
+  return Number.isFinite(n) && n >= 1 && n <= 6 ? n : 4;
+})();
 
 /**
  * TrainScheduleCache row fields used here (`train_runs_on` in DB).
