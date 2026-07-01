@@ -2,7 +2,7 @@
 title: "Shatabdi Express Guide: Timings, Routes & Booking Rules"
 description: "WL full form is Waiting List. Check the ultimate guide to Shatabdi Express timings, route schedules, Tatkal booking times, fares, and food catering rules."
 date: "2026-06-30"
-updated: "2026-06-30"
+updated: "2026-07-01"
 tags:
   - train booking
   - irctc
@@ -46,17 +46,28 @@ Planning a Shatabdi journey requires understanding these key booking windows:
 
 Shatabdi trains connect commercial centers and major tourist hubs. The table below outlines key Shatabdi Express routes, their train numbers, and general schedules:
 
-### Popular Shatabdi Routes & Train Numbers
+### List of major Shatabdi Express trains, routes and train numbers
 
-| Train Name | Train Number | Primary Route | Days of Operation | Key Stations Covered |
-| :--- | :--- | :--- | :--- | :--- |
-| **Bhopal Shatabdi** | 12002 / 12001 | New Delhi (NDLS) ↔ Rani Kamalapati (RKMP) | Daily | Agra Cantt, Gwalior, Jhansi |
-| **Kalka Shatabdi** | 12005 / 12006 | New Delhi (NDLS) ↔ Kalka (KLK) | Daily | Panipat, Kurukshetra, Ambala Cantt, Chandigarh |
-| **Amritsar Shatabdi** | 12013 / 12014 | New Delhi (NDLS) ↔ Amritsar (ASR) | Daily | Ambala Cantt, Ludhiana, Jalandhar City |
-| **Howrah Puri Shatabdi** | 12277 / 12278 | Howrah (HWH) ↔ Puri (PURI) | Daily | Kharagpur, Balasore, Cuttack, Bhubaneswar |
-| **Chennai Bangalore Shatabdi** | 12007 / 12008 | Chennai Central (MAS) ↔ Mysuru (MYS) | 6 Days (Except Wed) | Katpadi, KSR Bengaluru |
+Here are the main Shatabdi Express trains across India. Tap a train number to see its full station-by-station schedule and live chart preparation times on LastBerth.
 
-*Note: For the latest Shatabdi Express timing updates and platform coordinates, always check current running schedules before boarding.*
+| Route | Train numbers | Schedule & chart times |
+| :--- | :--- | :--- |
+| Bhopal (Rani Kamlapati) ↔ New Delhi | 12001 / 12002 | [12001 schedule](/chart-times/12001-ndls-shatabdi-chart-times) |
+| Lucknow ↔ New Delhi (Swarna) | 12003 / 12004 | [12004 schedule](/chart-times/12004-shatabdi-express-chart-times) |
+| Chennai ↔ Mysuru | 12007 / 12008 | [12007 schedule](/chart-times/12007-mys-shatabdi-chart-times) |
+| Mumbai Central ↔ Ahmedabad | 12009 / 12010 | [12009 schedule](/chart-times/12009-adi-shatabdi-exp-chart-times) |
+| New Delhi ↔ Ajmer | 12015 / 12016 | [12015 schedule](/chart-times/12015-ajmer-shatabdi-chart-times) |
+| Howrah ↔ Ranchi | 12019 / 12020 | [12019 schedule](/chart-times/12019-shatabdi-exp-chart-times) |
+| Pune ↔ Secunderabad | 12025 / 12026 | [12025 schedule](/chart-times/12025-shatabdi-exp-chart-times) |
+| Chennai ↔ KSR Bengaluru | 12027 / 12028 | [12027 schedule](/chart-times/12027-mas-sbc-shatabdi-chart-times) |
+| New Delhi ↔ Amritsar (Swarna) | 12029 / 12030 | [12029 schedule](/chart-times/12029-swarn-shatabdi-chart-times) |
+| New Delhi ↔ Chandigarh | 12045 / 12046 | [12045 schedule](/chart-times/12045-cdg-shatabdi-chart-times) |
+| Guwahati ↔ Dibrugarh | 12085 / 12086 | [12085 schedule](/chart-times/12085-shatabdi-exp-chart-times) |
+| Chennai ↔ Coimbatore | 12243 / 12244 | [12243 schedule](/chart-times/12243-mas-cbe-shatabdi-chart-times) |
+
+India also runs several **Jan Shatabdi Express** trains, a more affordable Shatabdi variant with a mix of AC chair car and second-sitting coaches. You can look up any train's timetable and chart timing on the [chart preparation times](/chart-times) page.
+
+*Timings and running days change with the seasonal timetable, so confirm the current schedule before you travel.*
 
 ---
 
@@ -116,3 +127,18 @@ No. Waitlisted e-tickets are automatically cancelled and refunded by IRCTC after
 
 ### How does the waiting list queue progress?
 The progression is **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. However, on Shatabdi trains, since there are no sleeper berths, there is no RAC category, and tickets move directly from WL to Confirmed status.
+
+### Which train is number 12001?
+Train 12001 is the New Delhi to Rani Kamlapati (Bhopal) Shatabdi Express, one of the fastest daytime trains in India. Its return service is 12002. You can see the [12001 route and chart times here](/chart-times/12001-ndls-shatabdi-chart-times).
+
+### What is the New Delhi to Amritsar Shatabdi train number?
+The New Delhi to Amritsar Swarna Shatabdi runs as **12029** (New Delhi to Amritsar) and **12030** (Amritsar to New Delhi), stopping at stations like Ambala Cantt, Ludhiana and Jalandhar. See the [12029 schedule](/chart-times/12029-swarn-shatabdi-chart-times).
+
+### Which is the New Delhi to Chandigarh Shatabdi?
+The New Delhi to Chandigarh Shatabdi runs as **12045** (New Delhi to Chandigarh) and **12046** (Chandigarh to New Delhi). Check the [12045 schedule and chart times](/chart-times/12045-cdg-shatabdi-chart-times).
+
+### How many Shatabdi Express trains are there in India?
+There are over 20 Shatabdi Express routes connecting major cities, plus several Jan Shatabdi Express services. See the table above for the main routes and their train numbers, or search any train on our [chart preparation times](/chart-times) page.
+
+### Which is the fastest Shatabdi Express?
+The New Delhi to Bhopal (Rani Kamlapati) Shatabdi, train 12001/12002, is consistently one of the fastest, averaging over 90 km/h across its run and touching much higher speeds on the Agra stretch.
