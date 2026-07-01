@@ -5,6 +5,7 @@ import { captureSentryException } from '../common/sentry-report';
 import { ChartCronLeaderService } from '../chart-cron/chart-cron-leader.service';
 import { BookingV2Service } from './booking-v2.service';
 import { bestTrainsCacheKey, BestTrainsRouteCache } from './best-trains-cache';
+import { PostHogTopRoutesService } from './posthog-top-routes.service';
 
 /**
  * The curated popular routes to keep warm, as IRCTC station-code pairs.
@@ -34,10 +35,11 @@ function envInt(name: string, fallback: number, min: number, max: number): numbe
 }
 
 /**
- * Keeps the best-train cache warm for the curated popular routes across today +
- * the next 5 days (IST). Ticks every 5 min but only recomputes a route+date whose
- * cached entry is missing or older than ~6h, capped per tick so a refresh wave
- * staggers across ticks instead of hammering IRCTC all at once.
+ * Keeps the best-train cache warm across today + the next 5 days (IST) for the
+ * curated popular routes plus the top routes users actually search (pulled from
+ * PostHog; see PostHogTopRoutesService). Ticks every 5 min but only recomputes a
+ * route+date whose cached entry is missing or older than ~6h, capped per tick so
+ * a refresh wave staggers across ticks instead of hammering IRCTC all at once.
  *
  * Single-replica: gated by the shared ChartCronLeaderService lease, so only the
  * leader replica does the work (same mechanism as ChartCronService).
@@ -57,6 +59,7 @@ export class BestSeatsCronService {
     private readonly bookingV2: BookingV2Service,
     private readonly bestTrainsCache: BestTrainsRouteCache,
     private readonly leader: ChartCronLeaderService,
+    private readonly topRoutes: PostHogTopRoutesService,
   ) {}
 
   private get enabled(): boolean {
@@ -83,14 +86,34 @@ export class BestSeatsCronService {
     }
   }
 
-  /** All (route, date) combos to keep warm: 9 routes x (today + next 5 days). */
-  private targetCombos(): Array<{ from: string; to: string; date: string }> {
+  /**
+   * All (route, date) combos to keep warm across today + the next 5 days: the
+   * curated popular routes plus the top routes users actually search (pulled from
+   * PostHog, deduped). PostHog results are cached in-process for an hour, so
+   * calling this every tick is cheap.
+   */
+  private async targetCombos(): Promise<
+    Array<{ from: string; to: string; date: string }>
+  > {
     const dates: string[] = [];
     for (let i = 0; i <= DAYS_AHEAD; i += 1) {
-      dates.push(moment().utcOffset(IST_UTC_OFFSET).add(i, 'days').format('YYYY-MM-DD'));
+      dates.push(
+        moment().utcOffset(IST_UTC_OFFSET).add(i, 'days').format('YYYY-MM-DD'),
+      );
     }
+
+    // Merge curated + PostHog top-searched routes, deduped by from->to.
+    const pairs = new Map<string, { from: string; to: string }>();
+    for (const r of POPULAR_ROUTE_PAIRS) {
+      pairs.set(`${r.from}:${r.to}`, { from: r.from, to: r.to });
+    }
+    const top = await this.topRoutes.getTopRoutes();
+    for (const r of top) {
+      pairs.set(`${r.from}:${r.to}`, { from: r.from, to: r.to });
+    }
+
     const combos: Array<{ from: string; to: string; date: string }> = [];
-    for (const route of POPULAR_ROUTE_PAIRS) {
+    for (const route of pairs.values()) {
       for (const date of dates) {
         combos.push({ from: route.from, to: route.to, date });
       }
@@ -109,7 +132,7 @@ export class BestSeatsCronService {
     const concurrency = envInt('BEST_SEATS_CONCURRENCY', 2, 1, 6);
     const cutoff = new Date(Date.now() - refreshMs);
 
-    const combos = this.targetCombos();
+    const combos = await this.targetCombos();
 
     // Figure out which combos are due (missing or stale), oldest-first, so a
     // refresh wave rolls through over successive ticks rather than all at once.

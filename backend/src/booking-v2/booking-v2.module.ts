@@ -6,6 +6,7 @@ import { BookingV2Service } from './booking-v2.service';
 import { BestTrainsRouteCache } from './best-trains-cache';
 import { AlternatePathsRouteCache } from './alternate-paths-cache';
 import { BestSeatsCronService } from './best-seats-cron.service';
+import { PostHogTopRoutesService } from './posthog-top-routes.service';
 
 @Module({
   imports: [IrctcModule, CronLeaderModule],
@@ -15,6 +16,7 @@ import { BestSeatsCronService } from './best-seats-cron.service';
     BestTrainsRouteCache,
     AlternatePathsRouteCache,
     BestSeatsCronService,
+    PostHogTopRoutesService,
   ],
   exports: [BookingV2Service],
 })
