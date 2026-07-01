@@ -33,7 +33,6 @@ import {
 
 import { Header } from "@/components/Header";
 import { HomeSeoContent } from "@/components/HomeSeoContent";
-import { HomeLanguageSelector } from "@/components/home/HomeLanguageSelector";
 import type { HomeStrings } from "@/lib/home/home-langs";
 
 type StationRow = {
@@ -804,15 +803,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
-      <Header lang={lang} nav={t.nav} />
+      <Header lang={lang} nav={t.nav} showLanguage />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
         <header className="mb-8">
-          <div className="mb-3">
-            <HomeLanguageSelector
-              currentLang={lang}
-              languageLabel={t.languageLabel}
-            />
-          </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
             {t.hero.titleLead}
             <span className="text-blue-600">{t.hero.titleHighlight}</span>
