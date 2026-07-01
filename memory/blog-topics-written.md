@@ -72,6 +72,7 @@ This file tracks all blog posts published to avoid duplication.
 | garib-rath-express-timings-routes-booking-rules.md | Garib Rath Express Guide: Timings, Bedroll Charges & Booking Rules (EN + hi/mr/bn/ta/te/ml) | 2026-07-01 |
 | rajdhani-express-timings-routes-booking-rules.md | Rajdhani Express Guide: Timings, Booking Rules, Catering & Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-01 |
 | duronto-express-timings-routes-booking-rules.md | Duronto Express Guide: Timings, Booking Rules, Fares & Catering (EN + hi/mr/bn/ta/te/ml) | 2026-07-01 |
+| amrit-bharat-express-routes-booking-rules-fares.md | Amrit Bharat Express Guide: Routes, Booking Rules & Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
 
 ## SEO triage actions (GSC / Google Trends driven)
 
