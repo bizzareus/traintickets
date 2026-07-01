@@ -98,7 +98,11 @@ export class TrainCompositionService {
    */
   async fetchForBoarding(
     params: FetchTrainCompositionParams,
-    opts?: { allowChartNotPrepared?: boolean },
+    opts?: {
+      allowChartNotPrepared?: boolean;
+      cacheByTrainNumber?: boolean;
+      matchBoardingStation?: boolean;
+    },
   ): Promise<TrainCompositionResponse> {
     const trainNo = String(params.trainNo ?? '').trim();
     const jDate = String(params.jDate ?? '')
@@ -256,7 +260,14 @@ export class TrainCompositionService {
         const jDate = journeyDate || new Date().toISOString().slice(0, 10);
         await this.fetchForBoarding(
           { trainNo: trainNumber, jDate, boardingStation: stationCode },
-          { allowChartNotPrepared: true },
+          {
+            allowChartNotPrepared: true,
+            // Use the per-train composition cache: serve/fall back to it when
+            // it was fetched for THIS station (chart times are station-specific),
+            // so IRCTC flakiness no longer blanks out chart meta for cached trains.
+            cacheByTrainNumber: true,
+            matchBoardingStation: true,
+          },
         );
         // Re-read after refresh
         cached = await this.chartTime.getChartMetaForTrainStation(
