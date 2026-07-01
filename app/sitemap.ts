@@ -4,6 +4,7 @@ import { getAllGlossaryTerms, listAvailableGlossaryLangs } from "@/lib/seo/gloss
 import { getTopRoutes } from "@/lib/seo/routes-db";
 import { listChartTimesIndex } from "@/lib/chartTimes";
 import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
+import { listStandardMenuSlugs } from "@/lib/standardMenu";
 import { HOME_LANGS } from "@/lib/home/home-langs";
 
 const siteUrl =
@@ -95,6 +96,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const foodMenuRoutes: MetadataRoute.Sitemap = [
     { url: url("/irctc-train-food-menu"), lastModified: now },
     { url: url("/irctc-train-food-menu/mail-express-humsafar"), lastModified: now },
+    ...listStandardMenuSlugs().map((slug) => ({
+      url: url(`/irctc-train-food-menu/${slug}`),
+      lastModified: now,
+    })),
     ...listTrainFoodMenuIndex().map((m) => ({
       url: url(`/irctc-train-food-menu/${m.slug}`),
       lastModified: now,

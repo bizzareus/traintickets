@@ -86,22 +86,40 @@ export default function TrainFoodMenuIndexPage() {
         </p>
       </header>
 
-      <Link
-        href="/irctc-train-food-menu/mail-express-humsafar"
-        className="mb-5 flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
-      >
-        <span className="min-w-0">
-          <span className="block font-semibold text-slate-900">
-            On a Mail, Express or Humsafar train?
-          </span>
-          <span className="block text-sm text-slate-500">
-            See standard breakfast, meals, beverages and à la carte prices.
-          </span>
-        </span>
-        <span className="shrink-0 text-blue-600" aria-hidden>
-          →
-        </span>
-      </Link>
+      <section className="mb-8" aria-label="Standard menus by class">
+        <h2 className="mb-1 text-base font-bold text-slate-900">
+          Not a Vande Bharat? Standard menus by class
+        </h2>
+        <p className="mb-3 text-sm text-slate-500">
+          Rajdhani, Shatabdi, Duronto and Mail/Express trains use IRCTC&apos;s
+          standard menu for their class and zone.
+        </p>
+        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          {[
+            { href: "/irctc-train-food-menu/rajdhani-1ac-executive", label: "Rajdhani 1AC & Executive Chair Car", sub: "First AC (1A) and Executive Chair Car (EC)" },
+            { href: "/irctc-train-food-menu/ac-2a-3a-cc", label: "AC 2A / 3A / Chair Car", sub: "Rajdhani, Shatabdi and AC Mail/Express" },
+            { href: "/irctc-train-food-menu/duronto-sleeper", label: "Duronto Sleeper Class", sub: "Duronto Express sleeper" },
+            { href: "/irctc-train-food-menu/mail-express-humsafar", label: "Mail / Express / Humsafar", sub: "Breakfast, meals, beverages, à la carte" },
+          ].map((c) => (
+            <li key={c.href}>
+              <Link
+                href={c.href}
+                className="flex h-full items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <span className="min-w-0">
+                  <span className="block font-semibold text-slate-900">
+                    {c.label}
+                  </span>
+                  <span className="block text-xs text-slate-500">{c.sub}</span>
+                </span>
+                <span className="shrink-0 text-blue-600" aria-hidden>
+                  →
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {rows.length > 0 ? (
         <FoodMenuList rows={rows} />

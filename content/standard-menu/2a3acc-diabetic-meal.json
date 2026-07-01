@@ -1,0 +1,38 @@
+{
+  "classGroup": "2A-3A-CC",
+  "classGroupName": "AC 2-Tier, 3-Tier & Chair Car",
+  "zone": "Diabetic Meal",
+  "key": "2a3acc-diabetic-meal",
+  "services": [
+    {
+      "service": "Morning Tea",
+      "price": 20,
+      "sets": [
+        "Biscuits Sugar free (Marie/ Ragi) (2 Pc packet), Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugarfree sachets, Dairy Creamer sachet, wooden Stirrer + Good quality Napkin tissue, Disposable Cup"
+      ]
+    },
+    {
+      "service": "Breakfast",
+      "price": 105,
+      "sets": [
+        "Sugar free Tetra Pack Fruit Drink (Guava/ Mango/ Mix Fruit/ Orange/ Pomegranate) OR Branded Tetra Pack Butter Milk, Veg. Besan Chila + Branded Curd + Tomato Ketchup Sachet + Pickle in Blister pack OR Omelette of 2 eggs + Boiled veg (with beans, Carrots & Peas) + Tomato Ketchup sachet + 2 sliced brown bread + Butter in blister pack, Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugarfree sachets, Dairy Creamer sachet, wooden Stirrer, Disposable Cup, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer sachet + Mouth freshner"
+      ]
+    },
+    {
+      "service": "Evening Snacks",
+      "price": 90,
+      "sets": [
+        "Butter Veg Sandwich, Dal Kachori OR Mattar Singara OR Methi Khakra OR Medur Vada, Branded Pre-packed Indian Sweet Without sugar (Coconut Barfi/ Mysore Pak/ Besan Laddu/ Ragi Laddu/ Mawa Bites), Namkeen in sealed packet (Peanuts/ Navratan Mixture/ Gujarati Mixtures/ Bikaneri Bhujia etc), Tomato Ketchup, Sugar free Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugarfree sachets, Dairy Creamer sachet, Stirrer, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner, Disposable Cup"
+      ]
+    },
+    {
+      "service": "Lunch/ Dinner",
+      "price": 185,
+      "sets": [
+        "Instead of Rice extra Roti/ Paratha may be served, Tehdar Paratha (02 nos) OR Wheat + Ragi mix Pratha (02 Nos), Panchratani Dal OR Dal Tadaka OR Amti Dal OR Sambhar OR Dal Yelow, Kadhai Paneer OR Panner Butter Masala OR Paneer Do Pyaza OR Mix Veg with Paneer, Kadhai Chicken (boneless chicken) OR Checken Curry (Boneless Checken) OR Chicken Cuury (Mumbai Style) (Chicken) OR Chicken Do Payaza (boneless chicken) OR Chichen Kadahi (boneless chicken), Dry Seasonal Vegetable, Branded Curd, Sugar free flavored Ice cream OR Sugar free Branded pre-packed Indian Sweet - Kala Jamun (2)/ Sandesh (2)/ Rasgulla (2)/ Milk Cake (2)/ Sugar free Branded Srikhand Mysore Pak (2)/ Ragi Ladoo (2), Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + pickle in sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner, Service in Good Quality Casseroles (50 microns or more)/ Biodegradable packaging like bagasse/ corn starch"
+      ]
+    }
+  ],
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/2A-3A-CC/Diabetic-Meal.pdf",
+  "generatedAt": "2026-07-01T00:57:20.541Z"
+}

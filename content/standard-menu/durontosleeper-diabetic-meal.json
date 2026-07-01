@@ -1,0 +1,47 @@
+{
+  "classGroup": "duronto-sleeper",
+  "classGroupName": "Duronto Sleeper Class",
+  "zone": "Diabetic Meal",
+  "key": "durontosleeper-diabetic-meal",
+  "services": [
+    {
+      "service": "Morning Tea",
+      "price": 15,
+      "sets": [
+        "Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup"
+      ]
+    },
+    {
+      "service": "Breakfast",
+      "price": 65,
+      "sets": [
+        "Kulcha 2 + Dry Chana + Pickle in sachet OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack, Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Veg. cutlet-2 + 2 sliced bread + Butter in blister pack + Tomato Ketchup OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack, Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Bhagar Veg Upma + Medu Vada + Coconut Chutney + Sambhar OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack, Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Pongal + Medu Vada + Coconut Chutney + Sambhar OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack, Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Onion Uttapam + Dal Vada + Coconut Chutney + Sambhar OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack, Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer"
+      ]
+    },
+    {
+      "service": "Evening Snacks",
+      "price": 50,
+      "sets": [
+        "Dal Kachori, Tomato Ketchup, Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup",
+        "Baked Litti, Tomato Ketchup, Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup",
+        "Kothambir Vadi, Tomato Ketchup, Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup",
+        "Mysore Bonda, Tomato Ketchup, Choice of Tea/ Coffee, Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup"
+      ]
+    },
+    {
+      "service": "Lunch & Dinner",
+      "price": 120,
+      "sets": [
+        "Plain Roti (4 no), Dal Fry OR Chicken Curry of regional preference (boneless chicken), Mix Seasonal Veg of regional preference (Without potato), Pickle Sachet, Branded Curd, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Plain Roti (4 no), Moong Dal OR Chicken Curry of regional preference (boneless chicken), Mix Seasonal Veg of regional preference (Without potato), Pickle Sachet, Branded Curd, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Plain Roti (4 no), Dal Tadka OR Chicken Curry of regional preference (boneless chicken), Mix Seasonal Veg of regional preference (Without potato), Pickle Sachet, Branded Curd, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer"
+      ]
+    }
+  ],
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/duronto-sleeper-class-menu/Diabetic-Meal.pdf",
+  "generatedAt": "2026-07-01T00:57:45.370Z"
+}

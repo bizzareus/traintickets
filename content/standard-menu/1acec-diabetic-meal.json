@@ -1,0 +1,38 @@
+{
+  "classGroup": "1AC-EC",
+  "classGroupName": "AC First Class & Executive Chair Car",
+  "zone": "Diabetic Meal",
+  "key": "1acec-diabetic-meal",
+  "services": [
+    {
+      "service": "Morning Tea",
+      "price": 35,
+      "sets": [
+        "Assorted Sugar Free Cookies/ Ragi Biscuits Sugar Free Cookies (2 Pc packet), Branded Choice of Premium Premix Tea/ Tea/Coffee/Green Tea/Lemon Tea without sugar, Sugarfree sachets, Dairy Creamer Sachet/ Blister, Envelope with Stainless Steel Tea Spoon + Good quality Napkin tissue"
+      ]
+    },
+    {
+      "service": "Breakfast",
+      "price": 140,
+      "sets": [
+        "Branded packed Oats/ Museli/ Corn Flakes/ Chocos/ Ragi Bites/ Ragi Muesli with Hot/Cold Milk & Branded Honey Sachet/ Sugarfree Sachet, Multigrain Breads/ Croissant/ Muffins, Marmalade/ Jam/ Chutney in blister pack as an option, Butter in Blister Pack, Veg. Besan Chila + Branded Curd + Tomato Ketchup Sachet + Pickle in Blister pack OR 2 Egg Omelette/ Fried/ Boiled/ Poached/ Scrambled with boiled veg (with beans, Carrots & Peas) + Tomato Sauce sachet, Seasonal fresh whole fruit (Banana-1 Pc/ Apple-1 Pc/ Orange-1 Pc) repeat on cyclic basis, Branded Choice of Premium Premix Tea/ Tea/Coffee/Green Tea/Lemon Tea without sugar, Sugarfree sachets, Dairy Creamer Sachet/ Blister, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Stainless Steel Spoon, Knife & Fork + Sanitizer + Mouth freshner"
+      ]
+    },
+    {
+      "service": "Evening Snacks",
+      "price": 140,
+      "sets": [
+        "Branded roasted nuts in sealed pouch (Cashewnuts/ Almonds), Dal Kachori, Veg. Sandwich, Packed Indian Sweet Without sugar (Coconut Barfi/ Mysore Pak/ Besan Laddu/ Ragi Laddu/ Mawa Bites), Tomato Sauce sachet, Branded Choice of Premium Premix Tea/ Tea/Coffee/Green Tea/Lemon Tea without sugar, Sugarfree sachets, Dairy Creamer Sachet/ Blister, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Stainless Steel spoon & fork + Sanitizer + Mouth freshner"
+      ]
+    },
+    {
+      "service": "Lunch/ Dinner",
+      "price": 245,
+      "sets": [
+        "Choice of Branded Soup Premix in sachet, Packed Soup sticks 2/ Dinner bun 1/ Croissant 1, Butter in Blister Pack, Salt Sachet & Pepper Sachet, Tehdar Paratha (02 nos), Panchratani Dal, Kadhai Paneer OR Kadhai Chicken (boneless chicken), Dry Seasonal Vegetable (Without Potato), Branded Curd, Pickle in Blister pack, Sugar free Premium flavored Ice cream/ Premium flavored Ice cream Sugar Free i.e. Butter Scotch, Kaju Pista, Fruit & Nut, Cassatta etc. / Sugar free Shri Khand, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Stainless Steel Spoon & Fork + Sanitizer + Mouth freshner"
+      ]
+    }
+  ],
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/1AC-EC/Diabetic-Meal.pdf",
+  "generatedAt": "2026-07-01T00:56:51.296Z"
+}

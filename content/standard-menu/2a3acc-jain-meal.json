@@ -1,0 +1,50 @@
+{
+  "classGroup": "2A-3A-CC",
+  "classGroupName": "AC 2-Tier, 3-Tier & Chair Car",
+  "zone": "Jain Meal",
+  "key": "2a3acc-jain-meal",
+  "services": [
+    {
+      "service": "Morning Tea",
+      "price": 20,
+      "sets": [
+        "Biscuits (Marie/ Ragi) (2 Pc packet), Choice of Tea/ Coffee/ Green Tea/ Lemon Tea OR Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, wooden Stirrer + Good quality Napkin tissue, Disposable Cup"
+      ]
+    },
+    {
+      "service": "Breakfast",
+      "price": 105,
+      "sets": [
+        "Branded Tetra Pack Fruit Drink( Guava/ Mango/ Mix Fruit/ Orange/ Pomegranate)/ Branded Tetra Pack Butter Milk/ Branded Tetra Pack Lassi, Veg. Besan Chila + Branded Curd + Pickle in Blister pack, Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, wooden Stirrer, Disposable Cup, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer sachet + Mouth freshner",
+        "Branded Tetra Pack Fruit Drink( Guava/ Mango/ Mix Fruit/ Orange/ Pomegranate)/ Branded Tetra Pack Butter Milk/ Branded Tetra Pack Lassi, Luchi 4 no. +Chana Dal + Branded Curd + Pickle in Blister pack, Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, wooden Stirrer, Disposable Cup, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer sachet + Mouth freshner",
+        "Branded Tetra Pack Fruit Drink( Guava/ Mango/ Mix Fruit/ Orange/ Pomegranate)/ Branded Tetra Pack Butter Milk Or Branded Packaged Kokam Drink, Paneer cutlet-2 + with Boiled Veg 2s with beans, & peas+ 2 sliced brown bread + Butter in blister pack, Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, wooden Stirrer, Disposable Cup, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer sachet + Mouth freshner",
+        "Branded Tetra Pack Fruit Drink( Guava/ Mango/ Mix Fruit/ Orange/ Pomegranate)/ Branded Tetra Pack Butter Milk/ Branded Tetra Pack Lassi, Bhagar Veg Upma + Medu Vada + Coconut Chutney+ Sambhar, Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, wooden Stirrer, Disposable Cup, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer sachet + Mouth freshner",
+        "Branded Tetra Pack Fruit Drink( Guava/ Mango/ Mix Fruit/ Orange/ Pomegranate)/ Branded Tetra Pack Butter Milk/ Branded Tetra Pack Lassi, 03 Idli + Medu Vada + Coconut Chutney+ Sambhar, Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, wooden Stirrer, Disposable Cup, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer sachet + Mouth freshner"
+      ]
+    },
+    {
+      "service": "Evening Snacks",
+      "price": 90,
+      "sets": [
+        "Veg Sandwich, Dal Kachori, Packed Indian Sweet(Coconut Barfi/ Mysore Pak/ Besan Laddu/ Ragi Laddu/ Mewa Bites/Chikki), Namkeen in sealed packet (Peanuts/ Navratan Mixture/ Gujarati Mixtures/ Bikaneri Bhujia etc), Choice of Tea/ Coffee/ Green Tea/ Lemon Tea OR Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, Stirrer, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner, Disposable Cup",
+        "Veg Sandwich, Mattar Singara, Packed Indian Sweet(Coconut Barfi/ Mysore Pak/ Besan Laddu/ Ragi Laddu/ Mawa Bites/Chikki), Namkeen in sealed packet (Peanuts/ Navratan Mixture/ Gujarati Mixtures/ Bikaneri Bhujia etc), Choice of Tea/ Coffee/ Green Tea/ Lemon Tea OR Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, Stirrer, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner, Disposable Cup",
+        "Veg Sandwich, Masala Khakhra, Packed Indian Sweet(Coconut Barfi/ Mysore Pak/ Besan Laddu/ Ragi Laddu/ Mawa Bites/Chikki/ Protien Bar), Namkeen in sealed packet (Peanuts/ Navratan Mixture/ Gujarati Mixtures/ Bikaneri Bhujia etc), Choice of Tea/ Coffee/ Green Tea/ Lemon Tea OR Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, Stirrer, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner, Disposable Cup",
+        "Veg Sandwich, Lilwa Mattar Kachori, Packed Indian Sweet(Coconut Barfi/ Mysore Pak/ Besan Laddu/ Ragi Laddu/ Mawa Bites/Chikki), Namkeen in sealed packet (Peanuts/ Navratan Mixture/ Gujarati Mixtures/ Bikaneri Bhujia etc), Choice of Tea/ Coffee/ Green Tea/ Lemon Tea OR Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, Stirrer, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner, Disposable Cup",
+        "Veg Sandwich, Masala Vada, Packed Indian Sweet(Coconut Barfi/ Mysore Pak/ Besan Laddu/ Ragi Laddu/ Mawa Bites/Chikki), Namkeen in sealed packet (Peanuts/ Navratan Mixture/ Gujarati Mixtures/ Bikaneri Bhujia etc), Choice of Tea/ Coffee/ Green Tea/ Lemon Tea OR Choice of Premix Tea/ Tea/ Coffee/ Green Tea/ Lemon Tea / Malt Beverages, Sugar Sachet / Sugarfree sachets/ Branded Jaggery Powder, Dairy Creamer sachet, Stirrer, Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner, Disposable Cup"
+      ]
+    },
+    {
+      "service": "Lunch/Dinner",
+      "price": 185,
+      "sets": [
+        "Veg. Pulao (Basmati Rice), Chapati/ Roti (03 nos)/Parantha s (2 nos), Panchratani Dal, Kadhai Paneer, Dry Seasonal Vegetable without Potato, Carrot, Branded Curd/ Mishti Doi, Flavored Ice cream or Branded Pre-packed Indian Sweet - Kala Jamun (2)/ Sandesh (2)/ Rasgulla (2)/ Milk Cake (2)/ Branded Srikhand / Chhena Poda/ Mysore Pak (2)/ Ragi Ladoo (2), Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + pickle in sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner",
+        "Plain Rice (Basmati Rice), Chapati/ Roti (03 nos)/Parantha s (2 nos), Moong Dal, Paneer Kofta, Dry Seasonal Vegetable without Potato, Carrot, Branded Curd/ Mishti Doi, Flavored Ice cream or Branded Pre-packed Indian Sweet - Kala Jamun (2)/ Sandesh (2)/ Rasgulla (2)/ Milk Cake (2)/ Branded Srikhand / Chhena Poda/ Mysore Pak (2)/ Ragi Ladoo (2), Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + pickle in sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner",
+        "Kashimri Pulao (Basmati Rice), Chapati/ Roti (03 nos)/Parantha s (2 nos), Gujarati Dal, Panner Butter Masala, Dry Seasonal Vegetable without Potato, Carrot, Branded Curd/ Mishti Doi, Flavored Ice cream or Branded Pre-packed Indian Sweet - Kala Jamun (2)/ Sandesh (2)/ Rasgulla (2)/ Milk Cake (2)/ Branded Srikhand / Chhena Poda/ Mysore Pak (2)/ Ragi Ladoo (2), Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + pickle in sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner",
+        "Jeera Rice (Basmati Rice), Chapati/ Roti (03 nos)/Parantha s (2 nos), Moong Dal, Matar Paneer Masala, Dry Seasonal Vegetable without Potato, Carrot, Branded Curd/ Mishti Doi, Flavored Ice cream or Branded Pre-packed Indian Sweet - Kala Jamun (2)/ Sandesh (2)/ Rasgulla (2)/ Milk Cake (2)/ Branded Srikhand / Chhena Poda/ Mysore Pak (2)/ Ragi Ladoo (2), Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + pickle in sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner",
+        "Peas Pulao (Basmati Rice), Chapati/ Roti (03 nos)/Parantha s (2 nos), Arhar Dal, Veg Kofta, Dry Seasonal Vegetable without Potato, Carrot, Branded Curd/ Mishti Doi, Flavored Ice cream or Branded Pre-packed Indian Sweet - Kala Jamun (2)/ Sandesh (2)/ Rasgulla (2)/ Milk Cake (2)/ Branded Srikhand / Chhena Poda/ Mysore Pak (2)/ Ragi Ladoo (2), Packed envelope having Good Quality Napkin Tissue Paper + Salt & Pepper Sachet + pickle in sachet + Disposable wooden spoon & fork + Sanitizer + Mouth freshner"
+      ]
+    }
+  ],
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/2A-3A-CC/Jain-Meal.pdf",
+  "generatedAt": "2026-07-01T00:57:22.814Z"
+}

@@ -1,0 +1,50 @@
+{
+  "classGroup": "duronto-sleeper",
+  "classGroupName": "Duronto Sleeper Class",
+  "zone": "Jain Meal",
+  "key": "durontosleeper-jain-meal",
+  "services": [
+    {
+      "service": "Morning Tea",
+      "price": 15,
+      "sets": [
+        "Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup"
+      ]
+    },
+    {
+      "service": "Breakfast",
+      "price": 65,
+      "sets": [
+        "Kulcha 2 + Dry Chana + Pickle in sachet, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Luchi 4 no. + Chana Dal + Pickle in Blister pack + Branded Curd, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Veg. Besan Chila (mixed with chopped tomato) + Pickle in Blister pack, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Paper Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Bhagar Veg Upma + Medu Vada + Coconut Chutney + Sambhar, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "03 Idli + Medu Vada + Coconut Chutney + Sambhar, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer"
+      ]
+    },
+    {
+      "service": "Evening Snacks",
+      "price": 50,
+      "sets": [
+        "Dal Kachori, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup",
+        "Mattar Singara, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup",
+        "Masala Khakhra, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Paper Cup",
+        "Lulwa Mattar Kachori, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup",
+        "Masala Vada, Choice of Tea/ Coffee, Sugar Sachet / Sugarfree sachets, Dairy Creamer sachet, Stirrer + Napkin tissue, Disposable Cup"
+      ]
+    },
+    {
+      "service": "Lunch & Dinner",
+      "price": 120,
+      "sets": [
+        "Veg. Pulao (Basmati Rice), Plain Roti (4 no), Dal Arhar, Mix Seasonal Veg of regional preference, Pickle Sachet, Branded Curd/ Mishti Doi, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Plain Rice (Basmati Rice), Plain Roti (4 no), Dal Arhar, Mix Seasonal Veg of regional preference, Pickle Sachet, Branded Curd/ Mishti Doi, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Kashimri Pulao (Basmati Rice), Plain Roti (4 no), Dal Arhar, Mix Seasonal Veg of regional preference, Pickle Sachet, Branded Curd/ Mishti Doi, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Jeera Rice (Basmati Rice), Plain Roti (4 no), Dal Arhar, Mix Seasonal Veg of regional preference, Pickle Sachet, Branded Curd/ Mishti Doi, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer",
+        "Peas Pulao (Basmati Rice), Plain Roti (4 no), Dal Arhar, Mix Seasonal Veg of regional preference, Pickle Sachet, Branded Curd/ Mishti Doi, Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + Sanitizer"
+      ]
+    }
+  ],
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/duronto-sleeper-class-menu/Jain-Meal.pdf",
+  "generatedAt": "2026-07-01T00:57:42.784Z"
+}

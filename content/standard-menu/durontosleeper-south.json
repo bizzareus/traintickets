@@ -1,0 +1,56 @@
+{
+  "classGroup": "duronto-sleeper",
+  "classGroupName": "Duronto Sleeper Class",
+  "zone": "South",
+  "key": "durontosleeper-south",
+  "services": [
+    {
+      "service": "Morning Tea",
+      "price": 15,
+      "sets": [
+        "Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup"
+      ]
+    },
+    {
+      "service": "Breakfast",
+      "price": 65,
+      "sets": [
+        "Bhagar Veg Upma + Medu Vada + Coconut Chutney+ Sambhar OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Onion Uttapam + Dal Vada + Coconut Chutney+ Sambhar OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Set Dosai (3 nos) + Medu Vada + Coconut Chutney+ Sambhar OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "03 Idli + Medu Vada + Coconut Chutney+ Sambhar OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Pongal + Medu Vada + Coconut Chutney+ Sambhar OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "2 Stuffed (Aloo/ Gobhi/ Mix Veg. Etc) Paratha + curd + Pickle in blister pack OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Paneer cutlet + 2 sliced brown bread + Butter in blister pack OR Omelette of 2 eggs + Tomato Ketchup sachet + 2 sliced bread + Butter in blister pack Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair"
+      ]
+    },
+    {
+      "service": "Evening Snacks",
+      "price": 50,
+      "sets": [
+        "Masala Vada Tomato Ketchup Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup",
+        "Mysore Bonda Tomato Ketchup Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup",
+        "Urad Vada Tomato Ketchup Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup",
+        "Aloo Samosa Tomato Ketchup Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup",
+        "Medu Pakoda Tomato Ketchup Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup",
+        "Medur Vada Tomato Ketchup Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup",
+        "Matar Samosa Tomato Ketchup Choice of Tea/ Coffee Sugar Sachet / Sugarfree sachets Dairy Creamer sachet Stirrer + Napkin tissue Disposable Cup"
+      ]
+    },
+    {
+      "service": "Lunch & Dinner",
+      "price": 120,
+      "sets": [
+        "Veg. Pulao Plain Roti (4 no) Dal Arhar Mix Seasonal Veg of regional preference OR Chicken Curry of regional preference (boneless chicken) Pickle Sachet Branded Curd/ Mishti Doi Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Jeera Rice Plain Roti (4 no) Dal Tadka Mix Seasonal Veg of regional preference OR Chicken Curry of regional preference (boneless chicken) Pickle Sachet Branded Curd/ Mishti Doi Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Plain Rice Plain Roti (4 no) Moong Dal Mix Seasonal Veg of regional preference OR Chicken Curry of regional preference (boneless chicken) Pickle Sachet Branded Curd/ Mishti Doi Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Jeera Rice Plain Roti (4 no) Dal Chana Mix Seasonal Veg of regional preference OR Chicken Curry of regional preference (boneless chicken) Pickle Sachet Branded Curd/ Mishti Doi Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Plain Rice Plain Roti (4 no) Dal Chola Mix Seasonal Veg of regional preference OR Chicken Curry of regional preference (boneless chicken) Pickle Sachet Branded Curd/ Mishti Doi Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Jeera Rice Plain Roti (4 no) Moong Dal Mix Seasonal Veg of regional preference OR Chicken Curry of regional preference (boneless chicken) Pickle Sachet Branded Curd/ Mishti Doi Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair",
+        "Veg. Pulao Plain Roti (4 no) Dal Fry Mix Seasonal Veg of regional preference OR Chicken Curry of regional preference (boneless chicken) Pickle Sachet Branded Curd/ Mishti Doi Napkin Tissue Paper + Salt & Pepper Sachet + Disposable wooden spoon + 01 Eclair"
+      ]
+    }
+  ],
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/duronto-sleeper-class-menu/South.pdf",
+  "generatedAt": "2026-07-01T00:57:46.230Z"
+}

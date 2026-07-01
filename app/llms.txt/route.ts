@@ -34,6 +34,9 @@ export async function GET() {
   lines.push(`- [Chart Times](${baseUrl}/chart-times): IRCTC vacancy chart preparation times for trains, station by station, with chart-prep alerts.`);
   lines.push(`- [Train Food Menu](${baseUrl}/irctc-train-food-menu): Readable IRCTC train catering menus and per-meal prices (Vande Bharat, Tejas), organised by class and meal, replacing IRCTC's PDF menus.`);
   lines.push(`- [Mail/Express/Humsafar catering charges](${baseUrl}/irctc-train-food-menu/mail-express-humsafar): Official IRCTC food prices for Mail, Express and Humsafar trains — breakfast, meals (veg/egg/chicken biryani, Janta Meal), beverages (tea, coffee, Rail Neer) and the full à la carte tariff, at-station vs in-train.`);
+  lines.push(`- [Rajdhani 1AC & Executive Chair Car menu](${baseUrl}/irctc-train-food-menu/rajdhani-1ac-executive): IRCTC standard menu and per-meal prices for First AC (1A) and Executive Chair Car (EC), by zone.`);
+  lines.push(`- [AC 2A / 3A / Chair Car menu](${baseUrl}/irctc-train-food-menu/ac-2a-3a-cc): IRCTC standard menu and prices for AC 2-tier, 3-tier and Chair Car (Rajdhani, Shatabdi, AC Mail/Express), by zone.`);
+  lines.push(`- [Duronto sleeper class menu](${baseUrl}/irctc-train-food-menu/duronto-sleeper): IRCTC standard menu and prices for Duronto Express sleeper class, by zone.`);
   lines.push("");
   lines.push("## Indian Railways Rules & Domain Knowledge");
   lines.push("- **Chart Preparation Rules**: The first reservation chart is prepared 4 hours before scheduled departure from the originating (or remote charting) station. Once the first chart is prepared, standard online bookings close, and vacant seats are released as 'Current Availability'. The final (second) chart is prepared 30 minutes before departure.");
