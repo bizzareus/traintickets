@@ -139,7 +139,7 @@ export class BookingV2Controller {
     if (!this.bookingV2.normalizeToRailApiDate(date)) {
       throw new BadRequestException('date must be YYYY-MM-DD or DD-MM-YYYY');
     }
-    return this.bookingV2.findAlternatePaths({
+    const { result } = await this.bookingV2.findAlternatePathsCached({
       trainNumber,
       from,
       to,
@@ -147,6 +147,7 @@ export class BookingV2Controller {
       avlClasses,
       quota,
     });
+    return result;
   }
 
   /**
@@ -201,13 +202,13 @@ export class BookingV2Controller {
     };
 
     try {
-      const result = await this.bookingV2.findAlternatePaths(
+      const { result, cached } = await this.bookingV2.findAlternatePathsCached(
         { trainNumber, from, to, date, avlClasses, quota },
         (event: AlternatePathProgressEvent) => {
           writeLine({ type: 'progress', event });
         },
       );
-      writeLine({ type: 'result', data: result });
+      writeLine({ type: 'result', data: result, cached });
     } catch (err: unknown) {
       writeLine({ type: 'error', message: streamErrorMessage(err) });
     } finally {
@@ -278,6 +279,13 @@ export class BookingV2Controller {
         },
       );
       writeLine({ type: 'result', data: result });
+      // Warm the route cache from a real full scan (skip AC-only — the cache
+      // stores the all-class best). Best-effort; never blocks the response.
+      if (!acOnly) {
+        void this.bookingV2
+          .cacheBestTrainResult(from, to, date, result)
+          .catch(() => undefined);
+      }
     } catch (err: unknown) {
       writeLine({ type: 'error', message: streamErrorMessage(err) });
     } finally {

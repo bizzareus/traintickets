@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { RouteCacheStore } from '../route-cache/route-cache.store';
+import { RouteCachingTableStore } from '../route-cache/route-caching-table.store';
 import type { AlternatePathLeg } from './booking-v2.service';
 
 /**
@@ -49,46 +49,13 @@ export function bestTrainsCacheKey(
 }
 
 /**
- * Best-train route cache backed by the `route_caching` table. A thin subclass of
- * the reusable RouteCacheStore — all caching behaviour is inherited; this only
- * binds the three Prisma hooks to the table.
+ * Best-train route cache — a thin subclass over the shared `route_caching` table.
+ * All caching behaviour and the table binding are inherited; this only fixes the
+ * payload type and (via bestTrainsCacheKey) the key prefix.
  */
 @Injectable()
-export class BestTrainsRouteCache extends RouteCacheStore<CachedBestTrain> {
-  constructor(private readonly prisma: PrismaService) {
-    super();
-  }
-
-  protected async findByKey(key: string) {
-    const row = await this.prisma.routeCaching.findUnique({
-      where: { cacheKey: key },
-    });
-    if (!row) return null;
-    return { value: row.value, cachedAt: row.cachedAt, expiresAt: row.expiresAt };
-  }
-
-  protected async upsert(key: string, value: CachedBestTrain, expiresAt: Date) {
-    const cachedAt = new Date();
-    await this.prisma.routeCaching.upsert({
-      where: { cacheKey: key },
-      create: { cacheKey: key, value: value as object, cachedAt, expiresAt },
-      update: { value: value as object, cachedAt, expiresAt },
-    });
-  }
-
-  protected async deleteByKey(key: string) {
-    await this.prisma.routeCaching
-      .delete({ where: { cacheKey: key } })
-      .catch((e: unknown) => {
-        // Ignore "record not found"; surface anything unexpected.
-        if (
-          e &&
-          typeof e === 'object' &&
-          'code' in e &&
-          (e as { code: string }).code === 'P2025'
-        )
-          return;
-        throw e;
-      });
+export class BestTrainsRouteCache extends RouteCachingTableStore<CachedBestTrain> {
+  constructor(prisma: PrismaService) {
+    super(prisma);
   }
 }

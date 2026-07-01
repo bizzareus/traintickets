@@ -9,6 +9,10 @@ import {
   bestTrainsCacheKey,
   type CachedBestTrain,
 } from './best-trains-cache';
+import {
+  AlternatePathsRouteCache,
+  alternatePathsCacheKey,
+} from './alternate-paths-cache';
 import type { RouteCacheRecord } from '../route-cache/route-cache.store';
 import { fetchWithTimeout } from '../common/fetch-with-timeout';
 import {
@@ -248,6 +252,20 @@ const BEST_TRAIN_CONCURRENCY = 3;
  */
 const BEST_TRAINS_CACHE_TTL_MS = 8 * 60 * 60 * 1000;
 /**
+ * TTL for a cached per-train alternate-paths result. Shorter than the best-train
+ * cache because these carry live seat availability (WL counts) that goes stale
+ * faster. Env-tunable via BOOKING_V2_ALT_PATHS_CACHE_TTL_MS (default 6h).
+ */
+const ALT_PATHS_CACHE_TTL_MS = (() => {
+  const n = Number.parseInt(
+    process.env.BOOKING_V2_ALT_PATHS_CACHE_TTL_MS ?? '',
+    10,
+  );
+  return Number.isFinite(n) && n >= 60_000 && n <= 24 * 60 * 60 * 1000
+    ? n
+    : 6 * 60 * 60 * 1000;
+})();
+/**
  * Cap concurrent origin-destination probes per hop in alternate-paths. The
  * previous unbounded Promise.all could fan out ~6 ODs × ~9 classes ≈ 54
  * concurrent IRCTC calls per hop, exhausting the DB pool / IRCTC rate limit and
@@ -400,6 +418,7 @@ export class BookingV2Service {
     private readonly cache: CacheService,
     private readonly stationCache: StationCacheService,
     private readonly bestTrainsCache: BestTrainsRouteCache,
+    private readonly altPathsCache: AlternatePathsRouteCache,
   ) {}
 
   async getTrainSchedule(trainNumber: string) {
@@ -712,8 +731,26 @@ export class BookingV2Service {
     if (!key) throw new Error('from, to, and a valid date are required');
 
     const result = await this.findBestTrains({ from, to, date, acOnly: false });
-    const top = result.results[0];
+    return this.cacheBestTrainResult(from, to, date, result);
+  }
 
+  /**
+   * Persist the top candidate of an already-computed best-train result under the
+   * route cache key. Shared by the cron and the live best-trains endpoint so a
+   * real "Find best tickets" scan (full, non-AC) also warms the cache. Trims to
+   * the small homepage payload; stores an explicit no-train marker when empty.
+   * Best-effort: callers on the request path should not await/throw on this.
+   */
+  async cacheBestTrainResult(
+    from: string,
+    to: string,
+    date: string,
+    result: BestTrainSearchResult,
+  ): Promise<boolean> {
+    const key = bestTrainsCacheKey(from, to, this.normalizeToRailApiDate(date));
+    if (!key) return false;
+
+    const top = result.results[0];
     const payload: CachedBestTrain = top
       ? {
           found: true,
@@ -953,6 +990,56 @@ export class BookingV2Service {
     } catch {
       throw new Error('Availability: invalid JSON');
     }
+  }
+
+  /**
+   * Cache-aware wrapper around findAlternatePaths, keyed by
+   * route + train + class-set + date (see alternatePathsCacheKey). On a hit,
+   * returns the stored result immediately (no IRCTC calls, no progress events);
+   * on a miss, computes with progress and stores the result. Used by the
+   * user-facing /alternate-paths endpoints so "Find in SL" / "Search all classes"
+   * both populate and read the same route_caching table. `cached` tells the
+   * caller which path was taken (for logging / client hints).
+   */
+  async findAlternatePathsCached(
+    input: {
+      trainNumber: string;
+      from: string;
+      to: string;
+      date: string;
+      avlClasses?: string[];
+      quota?: string;
+    },
+    onProgress?: (event: AlternatePathProgressEvent) => void,
+  ): Promise<{ result: FindAlternatePathsResult; cached: boolean }> {
+    const key = alternatePathsCacheKey(
+      input.from,
+      input.to,
+      input.trainNumber,
+      input.avlClasses,
+      this.normalizeToRailApiDate(input.date),
+    );
+
+    if (key) {
+      const hit = await this.altPathsCache.get(key);
+      if (hit) {
+        this.logger.log(`[alt-paths-cache] HIT key=${key}`);
+        return { result: hit, cached: true };
+      }
+      this.logger.log(`[alt-paths-cache] MISS key=${key}`);
+    }
+
+    const result = await this.findAlternatePaths(input, onProgress);
+
+    if (key) {
+      // Trim the (potentially large) debug trace before persisting.
+      const toStore: FindAlternatePathsResult = { ...result, debugLog: [] };
+      await this.altPathsCache.set(key, toStore, ALT_PATHS_CACHE_TTL_MS);
+      this.logger.log(
+        `[alt-paths-cache] STORED key=${key} legs=${result.legCount} complete=${result.isComplete} ttlMs=${ALT_PATHS_CACHE_TTL_MS}`,
+      );
+    }
+    return { result, cached: false };
   }
 
   async findAlternatePaths(
