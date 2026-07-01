@@ -313,3 +313,17 @@ model RedditAnalyzedComment {
 
 
 
+
+/// Shared, single-row store for the harvested IRCTC cookie bundle so all
+/// Railway replicas read the same cookie, plus a lock so only one replica
+/// harvests per cycle. Managed by IrctcCookieStoreService / the session keeper.
+model IrctcSession {
+  id              String    @id
+  cookie          String    @default("") @db.Text
+  source          String?
+  cookieUpdatedAt DateTime? @map("cookie_updated_at")
+  harvestLockedAt DateTime? @map("harvest_locked_at")
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  @@map("irctc_session")
+}

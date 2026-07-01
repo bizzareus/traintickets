@@ -1,96 +1,124 @@
 import { Injectable, Logger } from '@nestjs/common';
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+import { PrismaService } from '../prisma/prisma.service';
 
 export type IrctcCookieRecord = {
   cookie: string;
   updatedAt: string;
   source?: string;
-  sessionId?: string;
 };
 
+const SINGLETON_ID = 'singleton';
+/** How long a read is cached in-process before re-reading the shared row. */
+const CACHE_TTL_MS = 15_000;
+
 /**
- * File-backed store for the IRCTC cookie bundle. The session keeper writes the
- * freshly harvested cookie string here; IrctcService reads it for every
- * protected request. Falls back to the IRCTC_COOKIES env var when the file is
- * missing (e.g. before the keeper's first run, or if the keeper is disabled).
+ * Shared store for the IRCTC cookie bundle, backed by a single Postgres row
+ * (`irctc_session`) so every Railway replica reads the SAME cookie. The session
+ * keeper writes it; IrctcService reads it for each protected request. Falls back
+ * to the IRCTC_COOKIES env var when the row is empty (e.g. before the first
+ * harvest). Reads are cached in-process for CACHE_TTL_MS to keep the DB off the
+ * hot path.
  *
- * Path is configurable via IRCTC_COOKIE_FILE; defaults to ./irctc-cookies.json
- * in the process working directory. Note: on Railway the filesystem is per
- * instance and resets on deploy — that's fine because the keeper re-harvests on
- * boot. For multi-replica setups, point IRCTC_COOKIE_FILE at a shared volume or
- * swap this store for a DB/Redis-backed one.
+ * Also provides an atomic harvest lock (`tryClaimHarvest`) so that, across
+ * replicas, only one instance harvests per cycle instead of every replica
+ * spinning up its own BrightData session.
  */
 @Injectable()
 export class IrctcCookieStoreService {
   private readonly logger = new Logger(IrctcCookieStoreService.name);
-  private readonly filePath =
-    process.env.IRCTC_COOKIE_FILE?.trim() ||
-    path.join(process.cwd(), 'irctc-cookies.json');
-
   private cached: IrctcCookieRecord | null = null;
-  private cachedMtimeMs = 0;
+  private cachedAt = 0;
 
-  /** Current cookie string: from the file if present/fresh, else the env var. */
-  getCookie(): string {
-    const fromFile = this.readFile()?.cookie?.trim();
-    if (fromFile) return fromFile;
+  constructor(private readonly prisma: PrismaService) {}
+
+  /** Current cookie string: from the shared row if present, else the env var. */
+  async getCookie(): Promise<string> {
+    const rec = await this.getRecord();
+    const fromDb = rec?.cookie?.trim();
+    if (fromDb) return fromDb;
     return process.env.IRCTC_COOKIES?.trim() ?? '';
   }
 
-  /** Full record (for status/diagnostics), or null when only the env var exists. */
-  getRecord(): IrctcCookieRecord | null {
-    return this.readFile();
-  }
-
-  get cookieFilePath(): string {
-    return this.filePath;
-  }
-
-  /** Atomically persist a freshly harvested cookie bundle. */
-  setCookie(
-    cookie: string,
-    meta?: { source?: string; sessionId?: string },
-  ): void {
-    const record: IrctcCookieRecord = {
-      cookie: cookie.trim(),
-      updatedAt: new Date().toISOString(),
-      source: meta?.source,
-      sessionId: meta?.sessionId,
-    };
-    const dir = path.dirname(this.filePath);
-    fs.mkdirSync(dir, { recursive: true });
-    const tmp = `${this.filePath}.${process.pid}.tmp`;
-    fs.writeFileSync(tmp, JSON.stringify(record, null, 2), 'utf8');
-    fs.renameSync(tmp, this.filePath);
-    this.cached = record;
-    try {
-      this.cachedMtimeMs = fs.statSync(this.filePath).mtimeMs;
-    } catch {
-      this.cachedMtimeMs = Date.now();
+  /** Full record (for status/diagnostics), or null when the row is empty. */
+  async getRecord(): Promise<IrctcCookieRecord | null> {
+    if (this.cached && Date.now() - this.cachedAt < CACHE_TTL_MS) {
+      return this.cached;
     }
+    try {
+      const row = await this.prisma.irctcSession.findUnique({
+        where: { id: SINGLETON_ID },
+      });
+      this.cached =
+        row && row.cookie
+          ? {
+              cookie: row.cookie,
+              updatedAt: (row.cookieUpdatedAt ?? row.createdAt).toISOString(),
+              source: row.source ?? undefined,
+            }
+          : null;
+      this.cachedAt = Date.now();
+      return this.cached;
+    } catch (e) {
+      this.logger.warn(
+        `[irctc-cookies] read failed: ${e instanceof Error ? e.message : String(e)}`,
+      );
+      return this.cached; // serve last-known on a transient DB blip
+    }
+  }
+
+  /** Human-readable description of where the cookie lives (for status views). */
+  location(): string {
+    return 'postgres:irctc_session';
+  }
+
+  /** Persist a freshly harvested (or manually pasted) cookie bundle. */
+  async setCookie(
+    cookie: string,
+    meta?: { source?: string },
+  ): Promise<void> {
+    const trimmed = cookie.trim();
+    const now = new Date();
+    await this.prisma.irctcSession.upsert({
+      where: { id: SINGLETON_ID },
+      update: { cookie: trimmed, source: meta?.source, cookieUpdatedAt: now },
+      create: {
+        id: SINGLETON_ID,
+        cookie: trimmed,
+        source: meta?.source,
+        cookieUpdatedAt: now,
+      },
+    });
+    this.cached = {
+      cookie: trimmed,
+      updatedAt: now.toISOString(),
+      source: meta?.source,
+    };
+    this.cachedAt = Date.now();
     this.logger.log(
-      `[irctc-cookies] wrote ${record.cookie.length} chars source=${record.source ?? 'n/a'} -> ${this.filePath}`,
+      `[irctc-cookies] wrote ${trimmed.length} chars source=${meta?.source ?? 'n/a'} -> irctc_session`,
     );
   }
 
-  /** Read + cache the file, re-reading only when its mtime changes. */
-  private readFile(): IrctcCookieRecord | null {
-    try {
-      const stat = fs.statSync(this.filePath);
-      if (this.cached && stat.mtimeMs === this.cachedMtimeMs) {
-        return this.cached;
-      }
-      const raw = fs.readFileSync(this.filePath, 'utf8');
-      const parsed = JSON.parse(raw) as IrctcCookieRecord;
-      this.cached = parsed;
-      this.cachedMtimeMs = stat.mtimeMs;
-      return parsed;
-    } catch {
-      // Missing or unreadable file is expected before the first harvest.
-      this.cached = null;
-      this.cachedMtimeMs = 0;
-      return null;
-    }
+  /**
+   * Atomically claim the right to harvest. Returns true for exactly one caller
+   * across all replicas when the last claim is older than `staleMs`; others get
+   * false and should skip. Implemented as a conditional UPDATE (a single-row
+   * atomic operation in Postgres).
+   */
+  async tryClaimHarvest(staleMs: number): Promise<boolean> {
+    // Ensure the singleton row exists so the conditional UPDATE can match it.
+    await this.prisma.irctcSession.upsert({
+      where: { id: SINGLETON_ID },
+      update: {},
+      create: { id: SINGLETON_ID },
+    });
+    const cutoff = new Date(Date.now() - staleMs);
+    const affected = await this.prisma.$executeRaw`
+      UPDATE "irctc_session"
+      SET "harvest_locked_at" = now()
+      WHERE "id" = ${SINGLETON_ID}
+        AND ("harvest_locked_at" IS NULL OR "harvest_locked_at" < ${cutoff})
+    `;
+    return affected === 1;
   }
 }

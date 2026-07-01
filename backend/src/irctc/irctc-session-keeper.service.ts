@@ -8,6 +8,13 @@ const ONLINE_CHARTS_URL = 'https://www.irctc.co.in/online-charts/';
 const HARVEST_HARD_TIMEOUT_MS = 150_000;
 /** After DOMContentLoaded, how long to let Akamai's sensor JS settle cookies. */
 const COOKIE_SETTLE_MS = 6_000;
+/**
+ * Across replicas, only harvest if the last claim is older than this. Keeps the
+ * automatic (boot/cron) harvest to ~one BrightData session per window even with
+ * multiple Railway replicas. Slightly under the 30-min cron so each cron tick
+ * still refreshes.
+ */
+const HARVEST_CLAIM_WINDOW_MS = 20 * 60_000;
 
 /**
  * Node's fetch throws a generic `TypeError: fetch failed` for DNS/connection
@@ -85,22 +92,21 @@ export class IrctcSessionKeeperService implements OnModuleInit {
     await this.refresh('cron');
   }
 
-  status() {
+  async status() {
     // Never return the raw cookie value, even behind auth — just its metadata.
-    const record = this.cookieStore.getRecord();
+    const record = await this.cookieStore.getRecord();
     return {
       enabled: this.enabled,
       refreshing: this.refreshing,
       lastRefreshAt: this.lastRefreshAt,
       lastError: this.lastError,
-      cookieFile: this.cookieStore.cookieFilePath,
+      cookieFile: this.cookieStore.location(),
       cookie: record
         ? {
             present: true,
             length: record.cookie.length,
             updatedAt: record.updatedAt,
             source: record.source,
-            sessionId: record.sessionId,
           }
         : { present: false },
     };
@@ -110,12 +116,12 @@ export class IrctcSessionKeeperService implements OnModuleInit {
    * The full stored cookie string + metadata. Admin-only — this is the raw
    * secret bundle, exposed so it can be viewed/copied from the admin panel.
    */
-  getStoredCookie(): {
+  async getStoredCookie(): Promise<{
     cookie: string;
     updatedAt: string | null;
     source?: string;
-  } {
-    const record = this.cookieStore.getRecord();
+  }> {
+    const record = await this.cookieStore.getRecord();
     return {
       cookie: record?.cookie ?? '',
       updatedAt: record?.updatedAt ?? null,
@@ -128,12 +134,14 @@ export class IrctcSessionKeeperService implements OnModuleInit {
    * automated harvest can't be used and you want to drop in a cookie string
    * captured from a working browser session yourself.
    */
-  setCookieManually(cookie: string): { ok: boolean; error?: string; length?: number } {
+  async setCookieManually(
+    cookie: string,
+  ): Promise<{ ok: boolean; error?: string; length?: number }> {
     const trimmed = (cookie ?? '').trim();
     if (trimmed.length < 20 || !trimmed.includes('=')) {
       return { ok: false, error: 'cookie string looks empty or malformed' };
     }
-    this.cookieStore.setCookie(trimmed, { source: 'manual' });
+    await this.cookieStore.setCookie(trimmed, { source: 'manual' });
     this.lastRefreshAt = new Date().toISOString();
     this.lastError = null;
     this.logger.log(`[irctc-keeper] manual cookie set chars=${trimmed.length}`);
@@ -147,6 +155,20 @@ export class IrctcSessionKeeperService implements OnModuleInit {
     this.refreshing = true;
 
     try {
+      // For automatic runs (boot/cron), only one replica should harvest per
+      // window — claim an atomic lock in the shared row. Manual runs bypass it.
+      if (trigger !== 'manual') {
+        const claimed = await this.cookieStore.tryClaimHarvest(
+          HARVEST_CLAIM_WINDOW_MS,
+        );
+        if (!claimed) {
+          this.logger.log(
+            `[irctc-keeper] skip trigger=${trigger} — another replica harvested within the window`,
+          );
+          return { ok: false, error: 'skipped (recent harvest by another replica)' };
+        }
+      }
+
       this.logger.log(`[irctc-keeper] refresh trigger=${trigger} via=brightdata`);
 
       const cookieString = await withTimeout(
@@ -164,7 +186,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         );
       }
 
-      this.cookieStore.setCookie(cookieString, { source: 'brightdata' });
+      await this.cookieStore.setCookie(cookieString, { source: 'brightdata' });
       this.lastRefreshAt = new Date().toISOString();
       this.lastError = null;
       this.logger.log(

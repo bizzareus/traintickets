@@ -376,7 +376,7 @@ export class IrctcService {
       ...SCHEDULE_HEADERS,
       greq: String(Date.now()),
     };
-    const cookies = this.cookieStore.getCookie();
+    const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) {
       headers['Cookie'] = cookies.trim();
     }
@@ -935,7 +935,7 @@ export class IrctcService {
       'sec-ch-ua-mobile': '?0',
       'sec-ch-ua-platform': '"macOS"',
     };
-    const cookies = this.cookieStore.getCookie();
+    const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
     const t0 = Date.now();
@@ -1035,7 +1035,7 @@ export class IrctcService {
       'sec-ch-ua-mobile': '?0',
       'sec-ch-ua-platform': '"macOS"',
     };
-    const cookies = this.cookieStore.getCookie();
+    const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
     const t0 = Date.now();
@@ -1236,7 +1236,7 @@ export class IrctcService {
       'user-agent':
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
     };
-    const cookies = this.cookieStore.getCookie();
+    const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
     const t0 = Date.now();
