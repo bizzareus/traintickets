@@ -6,7 +6,7 @@ import { FoodMenuList } from "./FoodMenuList";
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
 export const metadata: Metadata = {
-  title: "IRCTC Train Food Menu & Prices (Vande Bharat) | LastBerth",
+  title: "IRCTC Train Food Menu & Prices (Vande Bharat)",
   description:
     "Readable IRCTC train food menus and catering prices, organised by class and meal. Browse Vande Bharat train menus with breakfast, lunch/dinner and snack charges — no PDFs.",
   alternates: { canonical: "/irctc-train-food-menu" },

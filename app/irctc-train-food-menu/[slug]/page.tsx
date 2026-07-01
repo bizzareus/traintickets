@@ -50,7 +50,7 @@ function allPrices(menu: TrainFoodMenu): number[] {
 }
 
 function title(menu: TrainFoodMenu): string {
-  return `${menu.trainName} (${menu.trainNumberPair}) Food Menu & Prices | IRCTC Catering | LastBerth`;
+  return `${menu.trainName} (${menu.trainNumberPair}) Food Menu & Prices | IRCTC Catering`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const menu = getTrainFoodMenu(slug);
   if (!menu) {
     return {
-      title: "Train Food Menu & Prices | IRCTC Catering | LastBerth",
+      title: "Train Food Menu & Prices | IRCTC Catering",
       description:
         "IRCTC train catering menu and prices, organised by class and meal.",
       alternates: { canonical: `/irctc-train-food-menu/${slug}` },

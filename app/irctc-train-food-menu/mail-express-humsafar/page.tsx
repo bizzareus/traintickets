@@ -9,8 +9,7 @@ import {
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
 export const metadata: Metadata = {
-  title:
-    "Mail, Express & Humsafar Train Food Menu & Prices (IRCTC) | LastBerth",
+  title: "Mail, Express & Humsafar Train Food Menu & Prices (IRCTC)",
   description:
     "Official IRCTC catering charges on Mail, Express and Humsafar trains: breakfast, meals (veg, egg, chicken biryani), tea, coffee, Rail Neer water and the full à la carte tariff. At-station vs in-train rates, inclusive of taxes.",
   alternates: { canonical: "/irctc-train-food-menu/mail-express-humsafar" },
