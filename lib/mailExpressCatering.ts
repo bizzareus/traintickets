@@ -105,6 +105,37 @@ export const CATERING_BLOCKS: CateringBlock[] = [
     ],
   },
   {
+    id: "late-running",
+    heading: "Late-running trains",
+    sections: [
+      {
+        title: "Menu for late-running trains (RSD)",
+        note: "Served when a train is running significantly behind schedule.",
+        mode: "single",
+        items: [
+          {
+            item: "Morning Tea / Coffee",
+            desc: "2 biscuits (Marie or approved brand) + tea/coffee kit (sugar or sugar-free sachet, tea/coffee, milk creamer sachet)",
+            veg: V,
+            price: 8,
+          },
+          {
+            item: "Breakfast / Evening Tea",
+            desc: "4 bread slices (brown/white) + butter chiplet + fruit drink (tetra pack) + tea/coffee kit",
+            veg: V,
+            price: 30,
+          },
+          {
+            item: "Lunch / Dinner",
+            desc: "Rice + dal (yellow dal / rajma / chole) + pickle, OR 7 poori + mixed veg / aloo bhaji + pickle + salt & pepper",
+            veg: V,
+            price: 30,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "a-la-carte",
     heading: "À la carte items",
     sections: [

@@ -1,0 +1,19 @@
+{
+  "classGroup": "1AC-EC",
+  "classGroupName": "AC First Class & Executive Chair Car",
+  "zone": "Continental Menu",
+  "key": "1acec-continental-menu",
+  "services": [
+    {
+      "service": "Continental main course (option)",
+      "price": null,
+      "sets": [
+        "Veg: 2 slices brown/whole-wheat bread, pasta with seasoning and red/white sauces, grilled cottage cheese slice, boiled assorted vegetables, butter chiplet, tomato ketchup.",
+        "Non-Veg: 2 slices bread (white/brown), macaroni/pasta with seasoning and barbeque/white sauces, chicken breast sauté, boiled assorted vegetables, butter chiplet, salt & pepper sachet, tomato ketchup.",
+        "Served as a continental option to the main course only; soup, dessert and other accompaniments follow the regular menu."
+      ]
+    }
+  ],
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/1AC-EC/Continental-Menu.pdf",
+  "generatedAt": "2026-07-01T00:00:00.000Z"
+}

@@ -121,6 +121,20 @@ export default function TrainFoodMenuIndexPage() {
         </ul>
       </section>
 
+      <section className="mb-8 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+        <h2 className="mb-1 text-base font-bold text-slate-900">
+          Vande Bharat: opted out of catering?
+        </h2>
+        <p className="text-sm leading-relaxed text-slate-600">
+          Current-booking and opt-out passengers on Vande Bharat trains can get a
+          ready-to-eat (cup/tub pack) meal at the same tariff, inclusive of GST:
+          in Chair Car, breakfast ₹122, lunch/dinner ₹222 (veg or chicken) and
+          evening tea ₹66; in Executive Chair Car, ₹155 / ₹244 / ₹105. Meals
+          include RTE items such as Rava Upma/Pongal/Poha, jeera rice with
+          rajma/dal, veg or chicken biryani, soup and a beverage.
+        </p>
+      </section>
+
       {rows.length > 0 ? (
         <FoodMenuList rows={rows} />
       ) : (
