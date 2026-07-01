@@ -4,6 +4,7 @@ import type { IrctcService } from '../irctc/irctc.service';
 import type { CacheService } from '../cache/cache.service';
 import type { StationCacheService } from '../cache/station-cache.service';
 import type { BestTrainsRouteCache } from './best-trains-cache';
+import type { AlternatePathsRouteCache } from './alternate-paths-cache';
 import axios from 'axios';
 
 const mockCache: jest.Mocked<
@@ -28,6 +29,14 @@ const mockStationCache: jest.Mocked<
 
 const mockBestTrainsCache: jest.Mocked<
   Pick<BestTrainsRouteCache, 'get' | 'getRecord' | 'set'>
+> = {
+  get: jest.fn().mockResolvedValue(null),
+  getRecord: jest.fn().mockResolvedValue(null),
+  set: jest.fn().mockResolvedValue(undefined),
+};
+
+const mockAltPathsCache: jest.Mocked<
+  Pick<AlternatePathsRouteCache, 'get' | 'getRecord' | 'set'>
 > = {
   get: jest.fn().mockResolvedValue(null),
   getRecord: jest.fn().mockResolvedValue(null),
@@ -123,6 +132,7 @@ describe('BookingV2Service', () => {
       mockCache as unknown as CacheService,
       mockStationCache as unknown as StationCacheService,
       mockBestTrainsCache as unknown as BestTrainsRouteCache,
+      mockAltPathsCache as unknown as AlternatePathsRouteCache,
     );
   });
 

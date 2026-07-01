@@ -168,11 +168,15 @@ export function useAlternatePaths(
                 type: string;
                 event?: AlternatePathProgressEvent;
                 data?: AlternatePathsResponse;
+                cached?: boolean;
                 message?: string;
               };
               if (msg.type === "progress" && msg.event) {
                 setAltProgress((prev) => [...prev, msg.event!]);
               } else if (msg.type === "result" && msg.data) {
+                console.info(
+                  `[alt-paths] ${msg.cached ? "cache HIT" : "computed"} ${t.trainNumber} ${fromCode}→${toCode} ${targetDate} classes=${avlClassesForRequest?.join(",") ?? "ALL"}`,
+                );
                 setAltResult(msg.data);
                 // Attach the available tickets/segments shown in the popup.
                 const tickets = (msg.data.legs ?? []).map((leg) => ({
