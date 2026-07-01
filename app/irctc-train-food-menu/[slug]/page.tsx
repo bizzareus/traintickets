@@ -6,7 +6,7 @@ import {
   listTrainFoodMenuSlugs,
   type TrainFoodMenu,
 } from "@/lib/trainFoodMenu";
-import { MenuClassesSearch } from "./MenuClassesSearch";
+import { FoodOrderingMenu } from "@/components/foodmenu/FoodOrderingMenu";
 
 export const dynamicParams = false;
 
@@ -18,11 +18,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
-function inr(n: number | null): string {
-  return n == null ? "—" : `₹${n}`;
-}
-
-/** Services in first-seen order across all classes (rows of the price grid). */
+/** Service names in first-seen order across all classes (for the FAQ text). */
 function serviceOrder(menu: TrainFoodMenu): string[] {
   const seen: string[] = [];
   for (const c of menu.classes) {
@@ -31,16 +27,6 @@ function serviceOrder(menu: TrainFoodMenu): string[] {
     }
   }
   return seen;
-}
-
-function priceFor(
-  menu: TrainFoodMenu,
-  classCode: string,
-  service: string,
-): number | null {
-  const cls = menu.classes.find((c) => c.classCode === classCode);
-  const svc = cls?.services.find((s) => s.service === service);
-  return svc?.price ?? null;
 }
 
 function allPrices(menu: TrainFoodMenu): number[] {
@@ -230,55 +216,9 @@ export default async function TrainFoodMenuPage({ params }: Props) {
         <span className="text-slate-700">{menu.trainNumber}</span>
       </nav>
 
-      <header className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-          {menu.trainName} ({menu.trainNumberPair}) Food Menu &amp; Prices
-        </h1>
-        <p className="mt-2 text-slate-600">
-          IRCTC catering menu and per-meal prices for{" "}
-          <span className="font-medium">{menu.trainName}</span> on the{" "}
-          <span className="font-medium">{menu.route}</span> route, organised by
-          class and meal. Prices are inclusive of taxes.
-        </p>
-      </header>
-
-      {/* Prices at a glance — card list (one row per meal, price chip per
-          class). No table: stacks on mobile, meal-left / chips-right on desktop. */}
-      <section className="mb-8" aria-label="Prices at a glance">
-        <h2 className="mb-3 text-base font-bold text-slate-900">
-          Prices at a glance
-        </h2>
-        <ul className="space-y-3">
-          {services.map((svc) => (
-            <li
-              key={svc}
-              className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-6"
-            >
-              <div className="mb-2.5 font-semibold text-slate-800 sm:mb-0">
-                {svc}
-              </div>
-              <div className="flex flex-wrap gap-2 sm:justify-end">
-                {menu.classes.map((c) => (
-                  <span
-                    key={c.classCode}
-                    className="flex-1 rounded-lg bg-slate-50 px-3 py-2 sm:flex-none sm:min-w-[9rem]"
-                  >
-                    <span className="block text-xs text-slate-500">
-                      {c.className} ({c.classCode})
-                    </span>
-                    <span className="text-lg font-bold text-slate-900">
-                      {inr(priceFor(menu, c.classCode, svc))}
-                    </span>
-                  </span>
-                ))}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Per-class detailed menu, with client-side dish/meal search */}
-      <MenuClassesSearch classes={menu.classes} />
+      {/* Food-ordering-style menu: hero (H1 + SEO summary), class toggle,
+          dish search, and category sections with dish cards + food tiles. */}
+      <FoodOrderingMenu menu={menu} />
 
       {menu.notes.length > 0 && (
         <section className="mb-8 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">

@@ -5,6 +5,7 @@ import {
   type CateringItem,
   type CateringSection,
 } from "@/lib/mailExpressCatering";
+import { dishVisual } from "@/lib/foodEmoji";
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
@@ -58,12 +59,21 @@ function PriceChip({ label, value }: { label: string; value: string }) {
 }
 
 function ItemRow({ it, mode }: { it: CateringItem; mode: CateringSection["mode"] }) {
+  const v = dishVisual(`${it.item} ${it.desc ?? ""}`);
   return (
     <li className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-6">
-      <div className="mb-3 flex items-start gap-2 sm:mb-0">
-        <VegMark veg={it.veg} />
+      <div className="mb-3 flex items-start gap-3 sm:mb-0">
+        <span
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${v.bg} text-2xl ring-1 ring-black/5`}
+          aria-hidden
+        >
+          {v.emoji}
+        </span>
         <span className="min-w-0">
-          <span className="block font-medium text-slate-800">{it.item}</span>
+          <span className="flex items-center gap-1.5">
+            <VegMark veg={it.veg} />
+            <span className="font-medium text-slate-800">{it.item}</span>
+          </span>
           {it.desc && (
             <span className="mt-0.5 block text-sm text-slate-500">{it.desc}</span>
           )}
