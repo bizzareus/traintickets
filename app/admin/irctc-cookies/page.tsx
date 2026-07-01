@@ -29,6 +29,8 @@ export default function IrctcCookiesAdminPage() {
   const [notice, setNotice] = useState("");
   const [cookie, setCookie] = useState("");
   const [password, setPassword] = useState("");
+  const [revealed, setRevealed] = useState<string | null>(null);
+  const [revealBusy, setRevealBusy] = useState(false);
 
   // Persist the admin password locally so it survives reloads (same gate the
   // chart-time-ingestion tools use). Sent as the x-admin-password header.
@@ -82,6 +84,22 @@ export default function IrctcCookiesAdminPage() {
     } finally {
       setBusy(null);
       void loadStatus();
+    }
+  }
+
+  async function onReveal() {
+    setRevealBusy(true);
+    setError("");
+    try {
+      const { data } = await apiClient.get<{ cookie: string }>(
+        "/api/admin/irctc-keeper/cookie",
+        { headers: authHeaders() },
+      );
+      setRevealed(data.cookie ?? "");
+    } catch (err) {
+      setError(extractError(err, "Failed to load cookie value."));
+    } finally {
+      setRevealBusy(false);
     }
   }
 
@@ -190,14 +208,58 @@ export default function IrctcCookiesAdminPage() {
           </dl>
         ) : null}
 
-        <button
-          type="button"
-          onClick={onRefresh}
-          disabled={busy !== null}
-          className="mt-5 rounded-lg bg-slate-900 px-5 py-2 text-sm font-medium text-white disabled:opacity-60"
-        >
-          {busy === "refresh" ? "Refreshing…" : "Refresh now (browser-use harvest)"}
-        </button>
+        <div className="mt-5 flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={onRefresh}
+            disabled={busy !== null}
+            className="rounded-lg bg-slate-900 px-5 py-2 text-sm font-medium text-white disabled:opacity-60"
+          >
+            {busy === "refresh" ? "Refreshing…" : "Refresh now (browser-use harvest)"}
+          </button>
+          {c?.present && (
+            <button
+              type="button"
+              onClick={() => (revealed === null ? void onReveal() : setRevealed(null))}
+              disabled={revealBusy}
+              className="rounded-lg border border-slate-300 px-5 py-2 text-sm font-medium text-slate-800 disabled:opacity-60"
+            >
+              {revealBusy
+                ? "Loading…"
+                : revealed === null
+                  ? "Show current cookie"
+                  : "Hide cookie"}
+            </button>
+          )}
+        </div>
+
+        {revealed !== null && (
+          <div className="mt-4">
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium text-slate-700">
+                Current stored cookie ({revealed.length} chars)
+              </label>
+              <button
+                type="button"
+                onClick={() => void navigator.clipboard?.writeText(revealed)}
+                className="text-sm text-blue-600 hover:underline"
+              >
+                Copy
+              </button>
+            </div>
+            <textarea
+              readOnly
+              value={revealed}
+              rows={6}
+              spellCheck={false}
+              onFocus={(e) => e.currentTarget.select()}
+              className="mt-2 w-full rounded-lg border border-slate-300 bg-slate-50 p-3 font-mono text-xs"
+            />
+            <p className="mt-1 text-xs text-amber-700">
+              This is the full secret cookie bundle — don&apos;t share it.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Manual cookie */}

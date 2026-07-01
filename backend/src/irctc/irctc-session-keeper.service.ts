@@ -107,6 +107,23 @@ export class IrctcSessionKeeperService implements OnModuleInit {
   }
 
   /**
+   * The full stored cookie string + metadata. Admin-only — this is the raw
+   * secret bundle, exposed so it can be viewed/copied from the admin panel.
+   */
+  getStoredCookie(): {
+    cookie: string;
+    updatedAt: string | null;
+    source?: string;
+  } {
+    const record = this.cookieStore.getRecord();
+    return {
+      cookie: record?.cookie ?? '',
+      updatedAt: record?.updatedAt ?? null,
+      source: record?.source,
+    };
+  }
+
+  /**
    * Manually overwrite the stored cookie bundle (admin paste-in). Use when the
    * automated harvest can't be used and you want to drop in a cookie string
    * captured from a working browser session yourself.

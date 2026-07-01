@@ -37,6 +37,13 @@ export class IrctcKeeperController {
     return this.keeper.status();
   }
 
+  /** The full stored cookie value (admin-only — the raw secret bundle). */
+  @Get('cookie')
+  getCookie(@Headers('x-admin-password') pw?: string) {
+    this.assertPassword(pw);
+    return this.keeper.getStoredCookie();
+  }
+
   /** Force an immediate browser-use harvest. */
   @Post('refresh')
   refresh(@Headers('x-admin-password') pw?: string) {
