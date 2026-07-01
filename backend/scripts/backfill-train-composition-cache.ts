@@ -21,6 +21,7 @@
  *   --limit=N             only process the first N trains (for a test run)
  *   --delay=MS            pause between trains (default 1500ms; be gentle)
  *   --only=12016,12951    comma-separated train numbers to restrict to
+ *   --startsWith=1        only trains whose number starts with this prefix
  *
  * DATABASE_URL is read from backend/.env (dotenv). This writes to whatever DB
  * that points at — normally production Supabase. Reads are read-only except the
@@ -186,12 +187,15 @@ async function main() {
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
+  const startsWith = (arg('startsWith') ?? '').trim();
 
   let trains = await prisma.trainList.findMany({
     select: { trainNumber: true, label: true },
     orderBy: { trainNumber: 'asc' },
   });
   if (only.length) trains = trains.filter((t) => only.includes(t.trainNumber));
+  if (startsWith)
+    trains = trains.filter((t) => t.trainNumber.startsWith(startsWith));
   if (limit) trains = trains.slice(0, limit);
 
   // Preload known source-station codes from the schedule cache (one query).
