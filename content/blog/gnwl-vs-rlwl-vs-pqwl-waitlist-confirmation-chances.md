@@ -2,7 +2,7 @@
 title: "GNWL vs RLWL vs PQWL vs TQWL: Which Waiting List Actually Gets Confirmed?"
 description: "Not all waiting lists are equal. Learn what GNWL, RLWL, PQWL, TQWL, and RSWL mean, and how each one behaves before and after chart preparation."
 date: "2026-05-29"
-updated: "2026-06-11"
+updated: "2026-07-01"
 tags:
   - waiting list
   - gnwl
@@ -244,3 +244,25 @@ The waitlist type matters as much as the waitlist number.
 GNWL gives you the best movement. RLWL depends heavily on your specific station pair. PQWL moves slowly and is often a last resort. TQWL and RSWL have very limited confirmation chances.
 
 Before you sit back and hope your ticket clears, check what type of waitlist you are actually in. That single piece of information changes whether you need to start planning a backup today or can reasonably wait.
+
+## Waiting list FAQ
+
+### What does PQWL mean in a train ticket?
+
+PQWL stands for **Pooled Quota Waiting List**. It is a waiting list shared across several short intermediate stations on a route, all drawing from one small "pooled" quota of berths. Because many station pairs compete for the same limited pool, PQWL clears slowly and is one of the least likely waiting lists to confirm. A PQWL ticket only moves when someone travelling within that same pooled stretch cancels.
+
+### What is pooled quota in railway booking?
+
+Pooled quota is a small block of berths that Indian Railways sets aside to be shared among intermediate (non-terminal) stations on a train's route. If you book between two mid-route stations, you often get a PQWL (pooled quota waiting list) ticket. It exists so short-distance passengers between minor stations can still get seats, but the pool is small, so confirmation is limited.
+
+### What does RLWL mean and does it get confirmed?
+
+RLWL stands for **Remote Location Waiting List**, used for busy intermediate stations that get their own quota. It clears only when someone travelling from that specific station or stretch cancels, so it confirms less predictably than GNWL, even on a low number.
+
+### Does GNWL 4 get cleared?
+
+A GNWL 4 (General Waiting List 4) has a good chance of clearing on most trains, because GNWL moves the fastest of all waiting lists and low numbers usually confirm before or at chart preparation. It is not guaranteed, though, on very high-demand trains or festival dates a GNWL 4 can still remain waitlisted. Check your train's history and keep a backup in mind if it hasn't moved a day before travel.
+
+### Which waiting list has the best chance of confirmation?
+
+GNWL (General Waiting List) has the best chance, because most of a train's berths are reserved for this quota. The typical order from best to worst is: GNWL, then RLWL, then PQWL, then TQWL (Tatkal) and RSWL, which rarely clear.
