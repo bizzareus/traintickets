@@ -5,9 +5,9 @@ import { captureSentryException } from '../common/sentry-report';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
 
 const ONLINE_CHARTS_URL = 'https://www.irctc.co.in/online-charts/';
-const SCHEDULE_URL =
-  'https://www.irctc.co.in/eticketing/protected/mapps1/trnscheduleenquiry';
 const HARVEST_HARD_TIMEOUT_MS = 150_000;
+/** After DOMContentLoaded, how long to let Akamai's sensor JS settle cookies. */
+const COOKIE_SETTLE_MS = 6_000;
 
 /**
  * Node's fetch throws a generic `TypeError: fetch failed` for DNS/connection
@@ -41,15 +41,12 @@ function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
  * file-backed cookie store the rest of the backend reads.
  *
  * Why a remote browser: Akamai resets/403s requests from Railway's datacenter IP,
- * so cookies can't be harvested (or used) from Railway directly. BrightData loads
- * the page from a residential IP. The cookie is verified with a same-origin fetch
- * issued INSIDE that browser (residential IP) before it's persisted — that's the
- * source of truth for "is the cookie valid", independent of whether this host can
- * replay it.
+ * so the cookies can't be harvested from Railway directly. BrightData loads the
+ * page from a residential IP and Akamai issues the bundle there. This is a bare
+ * harvest: load the page, let the sensor settle, read the cookies, store them.
  *
  * Gated by IRCTC_KEEPER_ENABLED=true and BRIGHTDATA_BROWSER_WSS. Tunables:
  *   IRCTC_KEEPER_CRON          cron expression (default every 30 min)
- *   IRCTC_KEEPER_TEST_TRAIN    train number used to verify cookies (default 12951)
  *   BRIGHTDATA_BROWSER_WSS     wss://…@brd.superproxy.io:9222 CDP endpoint
  */
 @Injectable()
@@ -128,30 +125,23 @@ export class IrctcSessionKeeperService implements OnModuleInit {
     if (!this.enabled) return { ok: false, error: 'keeper disabled' };
     if (this.refreshing) return { ok: false, error: 'refresh already running' };
     this.refreshing = true;
-    const testTrain = process.env.IRCTC_KEEPER_TEST_TRAIN?.trim() || '12951';
 
     try {
       this.logger.log(`[irctc-keeper] refresh trigger=${trigger} via=brightdata`);
 
-      const { cookieString, browserVerifyStatus } = await withTimeout(
-        this.harvestViaBrightData(testTrain),
+      const cookieString = await withTimeout(
+        this.harvestViaBrightData(),
         HARVEST_HARD_TIMEOUT_MS,
         'brightdata harvest',
       );
       if (!cookieString) throw new Error('no cookies harvested');
 
-      this.logger.log(
-        `[irctc-keeper] verify browser_status=${browserVerifyStatus} cookieChars=${cookieString.length}`,
-      );
-      // Gate on the in-browser verify: 200 there means the cookie is valid.
-      if (browserVerifyStatus !== 200) {
-        throw new Error(`in-browser verify returned ${browserVerifyStatus}`);
-      }
-
       this.cookieStore.setCookie(cookieString, { source: 'brightdata' });
       this.lastRefreshAt = new Date().toISOString();
       this.lastError = null;
-      this.logger.log(`[irctc-keeper] refresh ok trigger=${trigger}`);
+      this.logger.log(
+        `[irctc-keeper] refresh ok trigger=${trigger} cookieChars=${cookieString.length}`,
+      );
       return { ok: true };
     } catch (err) {
       const msg = describeError(err);
@@ -169,12 +159,10 @@ export class IrctcSessionKeeperService implements OnModuleInit {
 
   /**
    * Connect to the BrightData Scraping Browser, load online-charts so Akamai
-   * issues cookies, verify them with a same-origin fetch from inside that page
-   * (residential IP), and return the harvested cookie string + verify status.
+   * issues cookies, and return the harvested irctc.co.in cookie string. Bare
+   * harvest — no requests to any IRCTC API.
    */
-  private async harvestViaBrightData(
-    testTrain: string,
-  ): Promise<{ cookieString: string; browserVerifyStatus: number | string }> {
+  private async harvestViaBrightData(): Promise<string> {
     const wss = process.env.BRIGHTDATA_BROWSER_WSS!.trim();
     const browser = await withTimeout(
       puppeteer.connect({ browserWSEndpoint: wss }),
@@ -188,39 +176,17 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         timeout: 90_000,
       });
       // Let Akamai's sensor JS settle the cookie bundle.
-      await new Promise((r) => setTimeout(r, 6_000));
+      await new Promise((r) => setTimeout(r, COOKIE_SETTLE_MS));
 
-      const scheduleUrl = `${SCHEDULE_URL}/${encodeURIComponent(testTrain)}`;
-      const browserVerifyStatus: number | string = await page.evaluate(
-        async (url: string) => {
-          try {
-            const res = await fetch(url, {
-              headers: {
-                accept: 'application/json, text/plain, */*',
-                bmirak: 'webbm',
-                greq: String(Date.now()),
-              },
-              credentials: 'include',
-            });
-            return res.status;
-          } catch (e) {
-            return `err:${e instanceof Error ? e.message : String(e)}`;
-          }
-        },
-        scheduleUrl,
-      );
-
-      // Harvest the full cookie bundle for irctc.co.in via CDP.
+      // Read the full cookie bundle for irctc.co.in via CDP.
       const client = await page.target().createCDPSession();
       const { cookies } = (await client.send('Network.getAllCookies')) as {
         cookies: { name: string; value: string; domain: string }[];
       };
-      const cookieString = cookies
+      return cookies
         .filter((c) => c.domain.includes('irctc.co.in'))
         .map((c) => `${c.name}=${c.value}`)
         .join('; ');
-
-      return { cookieString, browserVerifyStatus };
     } finally {
       // close() ends the BrightData session (stops billing); ignore errors.
       await browser.close().catch(() => {});
