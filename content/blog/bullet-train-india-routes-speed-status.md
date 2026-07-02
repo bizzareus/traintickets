@@ -13,13 +13,13 @@ tags:
 ---
 
 ## TL;DR
-India is getting its first-ever bullet train! Running between Mumbai and Ahmedabad, this 508 km line borrows Japan's famous Shinkansen tech to hit speeds of 320 km/h. That means your travel time drops to a clean 2 hours. Trial runs start in 2026, and you'll be able to buy tickets by 2028.
+India is getting its first-ever bullet train! Running between Mumbai and Ahmedabad, this 508 km line borrows Japan's famous Shinkansen tech to hit speeds of 320 km/h. That means your travel time drops to a clean 2 hours. Trial runs start in 2026, and you'll be able to buy tickets by 2029.
 
 ---
 
 ## Checking Out India’s First Bullet Train Project
 
-**We've been waiting years, and it's finally happening: India's first high-speed rail is connecting Mumbai and Ahmedabad over a 508 km stretch. They're importing Japan's legendary Shinkansen E5 trains, which will cut down the journey between these business hubs to just a couple of hours.**
+**We've been waiting years, and it's finally happening: India's first high-speed rail is connecting Mumbai and Ahmedabad over a 508 km stretch. They're importing Japan's legendary Shinkansen E5 trains for initial testing, with plans to run the advanced E10 Series Shinkansen for full commercial services, which will cut down the journey between these business hubs to just a couple of hours.**
 
 Officially, it's called the Mumbai-Ahmedabad High-Speed Rail (MAHSR) project. It's being built by the NHSRCL in a massive joint effort with Japanese railway experts. And honestly, it's not just about getting places faster. We are talking about a total safety overhaul—think automated disaster-prevention systems, real-time track monitoring, and state-of-the-art crash protections.
 
@@ -53,25 +53,25 @@ To avoid choking Mumbai's already congested surface roads, the BKC terminal is b
 
 ## When Can We Actually Buy Tickets?
 
-**Right now, NHSRCL is targeting 2026 for the first trial runs on a short 48 km stretch between Surat and Bilimora. If they don't hit any major roadblocks, the full Mumbai-Ahmedabad line should open for regular commuters by 2028.**
+**Right now, NHSRCL is targeting 2026 for the first trial runs on a short 48 km stretch between Surat and Bilimora. If they don't hit any major roadblocks, the full Mumbai-Ahmedabad line should open for regular commuters by 2029.**
 
 Construction is moving at a decent clip, especially on the Gujarat side since land acquisition wrapped up earlier. Here's a quick look at the major milestones on the horizon:
-*   **First Tests (2026):** They are starting with a 48 km trial run between Surat and Bilimora. They'll run imported Japanese Shinkansen E5 coaches here to make sure the tracks and overhead power lines are completely stable.
-*   **Commercial Opening (2028):** The goal is to get the whole 508 km corridor running for the public by 2028. Though, this depends heavily on how fast they can wrap up the complex tunnel construction under Mumbai.
+*   **First Tests (2026):** They are starting with a 48 km trial run between Surat and Bilimora. They'll run imported Japanese Shinkansen E5 coaches here to make sure the tracks and overhead power lines are completely stable, preparing the way for the next-generation E10 Series Shinkansen.
+*   **Commercial Opening (2029):** The goal is to get the whole 508 km corridor running for the public by 2029. Though, this depends heavily on how fast they can wrap up the complex tunnel construction under Mumbai.
 *   **What's Built So Far:** If you travel around Gujarat, the progress is hard to miss. Over 300 km of the elevated concrete viaduct has been completed, and station buildings in cities like Surat and Vadodara are actually starting to look finished.
 
 ---
 
 ## Solid Alternatives for Traveling Right Now
 
-**Since the bullet train is still a couple of years away, you can take the fast Vande Bharat Express or grab a \"current available ticket\" on normal trains. These are confirmed berths that go on sale after the first chart is prepared 4 hours before departure.**
+**Since the bullet train is still a couple of years away, you can take the fast Vande Bharat Express or grab a "current available ticket" on normal trains. These are confirmed berths that go on sale after the first chart is prepared 10 hours before departure.**
 
 If you need to travel between Mumbai and Ahmedabad today, getting a seat can be a real headache because trains are almost always packed.
 
 If you get stuck with a waitlisted ticket, don't forget that **WL full form is Waiting List**. The booking queue moves step-by-step: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If your e-ticket doesn't get confirmed after chart preparation, the system automatically cancels it and refunds your money.
 
 Here are the absolute best ways to lock in a seat today:
-*   **Book the Vande Bharat:** It's your fastest option right now, connecting Mumbai and Gandhinagar in 5 hours and 25 minutes.
+*   **Book the Vande Bharat:** It's your fastest option right now, connecting Mumbai and Gandhinagar in 6 hours and 30 minutes (or Mumbai and Ahmedabad in 5 hours and 25 minutes).
 *   **Try LastBerth's Smart Seats:** If direct tickets are sold out, use the [Finding Smart Seats](/) tool to find seat-sharing slots on different legs of the same train.
-*   **Grab Current Tickets:** Keep an eye out for a `"current available ticket"`. These confirmed seats open up online or at the station exactly 4 hours before departure and stay open until 30 minutes before the train leaves.
+*   **Grab Current Tickets:** Keep an eye out for a `"current available ticket"`. These confirmed seats open up online or at the station as soon as the first chart is prepared (about 10 hours before departure) and stay open until 30 minutes before the train leaves.
 *   **Run a PNR Check:** Before you travel, double-check your confirmation chances using [PNR Status Search & Direct Booking](/) or check the physical seating charts via [Seat Status Coach Journey Lookup](/seat-status).
