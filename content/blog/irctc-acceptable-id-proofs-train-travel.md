@@ -44,7 +44,7 @@ Below is the complete, official list of the 10 acceptable ID proofs recognized b
 
 Many passengers make the mistake of assuming a photo of their Aadhaar or PAN card saved in their gallery or WhatsApp is enough. However, TTEs have strict instructions to reject these. Screenshots and image files are easy to edit, and accepting them makes it easy for unauthorized ticket transfers.
 
-If you cannot present a physical original card, you must use an approved app. A **current available ticket** is a **fully confirmed seat** with coach/berth numbers that opens 4 hours before departure and closes 30 minutes before. If you secure one of these last-minute tickets, ensure you have your physical ID or your digital app logged in before you step onto the platform.
+If you cannot present a physical original card, you must use an approved app. A **current available ticket** is a **fully confirmed seat** with coach/berth numbers that opens as soon as the first chart is prepared (about 10 hours before departure) and closes 30 minutes before. If you secure one of these last-minute tickets, ensure you have your physical ID or your digital app logged in before you step onto the platform.
 
 ---
 
@@ -66,7 +66,7 @@ Note that PDF files downloaded from your email or screenshots of the DigiLocker 
 
 ## What Happens If You Travel in a Train Without a Valid ID Proof?
 
-**If you are caught traveling without a valid, original ID proof, you will be treated as traveling without a ticket. The Ticket Examiner (TTE) will charge you the full ticket fare for the journey plus a penalty fee of ₹250, and you could be asked to leave the train.**
+**If you are caught traveling without a valid, original ID proof, you will be treated as traveling without a ticket. The Ticket Examiner (TTE) will charge you the full ticket fare for the journey plus a penalty fee of ₹500 (revised under the Jan Vishwas Act, 2026), and you could be asked to leave the train.**
 
 Even if you have a perfectly valid confirmed ticket booking in your name, failing to present a matching ID invalidates it. The railway system assumes you are traveling on someone else's ticket.
 
@@ -76,13 +76,13 @@ If you are on a group booking, at least one passenger listed on the ticket must 
 
 ## How Does ID Verification Work for Waiting List and RAC Tickets?
 
-**For RAC and waitlisted tickets, only the passenger whose name is listed first on the ticket needs to show a valid ID proof during verification. However, if your e-ticket remains on the waiting list after chart preparation, it cancels automatically, and you cannot board the train using it.**
+**For RAC and waitlisted tickets, at least one passenger booked on the ticket needs to show a valid ID proof during verification. However, if your e-ticket remains on the waiting list after chart preparation, it cancels automatically, and you cannot board the train using it.**
 
 First, you must understand the waitlist rules. The **WL full form is Waiting List**. When booking, tickets progress through a clear queue: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. 
 
 If you hold a physical counter ticket that is still waitlisted, you are allowed to travel in general coaches, but you must carry a valid ID. For online e-tickets, if your status does not reach RAC or Confirmed, it gets automatically cancelled and refunded to your payment method.
 
-If you are stuck on a waitlist, check your confirmation chances on LastBerth. If your PNR status shows a low probability, do not risk traveling without a valid booking. You can use LastBerth to search for alternatives or use the **Finding Smart Seats** feature to break the seat bookings across multiple coaches/segments where a single direct seat is unavailable. You can also use the **Seat Status Coach Journey Lookup** to identify open berths and secure a safe trip.
+If you are stuck on a waitlist, check your confirmation chances on [LastBerth](/). If your PNR status shows a low probability, do not risk traveling without a valid booking. You can use [LastBerth](/) to search for alternatives or use the [Finding Smart Seats](/) feature to break the seat bookings across multiple coaches/segments where a single direct seat is unavailable. You can also use the [Seat Status Coach Journey Lookup](/seat-status) to identify open berths and secure a safe trip.
 
 ---
 
@@ -98,7 +98,7 @@ No, photos, screenshots, or xerox copies of IDs are not valid. Only original phy
 Only if you access it via DigiLocker. Regular PDF downloads or images of PAN cards are not accepted by the TTE.
 
 ### What is the penalty for not carrying a valid ID?
-You will be treated as traveling without a ticket, meaning you must pay the actual ticket fare plus a minimum penalty of ₹250.
+You will be treated as traveling without a ticket, meaning you must pay the actual ticket fare plus a minimum penalty of ₹500 (revised under the Jan Vishwas Act, 2026).
 
 ### Do all passengers on a group ticket need to show ID?
 No, only one passenger whose name appears on the ticket needs to produce a valid ID proof during verification.

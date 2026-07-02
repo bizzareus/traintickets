@@ -78,7 +78,7 @@ If you want to secure a comfortable and confirmed trip without dealing with wait
 - **[PNR Status Search & Direct Booking](/)**: Check your waitlist confirmation chances instantly. If your ticket is unlikely to clear, you can find and book alternative trains.
 - **[Seat Status Coach Journey Lookup](/seat-status)**: Check exactly which berths are booked from which station to which station, helping you locate vacant berths on running trains.
 
-If you are looking for last-minute bookings, always check for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach and berth numbers. It opens for booking online and at counters 4 hours before the train's departure (once the first chart is prepared) and closes 30 minutes before departure.
+If you are looking for last-minute bookings, always check for a `"current available ticket"`. A current available ticket is a fully confirmed seat with coach and berth numbers. It opens for booking online and at counters as soon as the first chart is prepared (about 10 hours before departure) and closes 30 minutes before departure.
 
 ---
 
