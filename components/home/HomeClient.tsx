@@ -1163,6 +1163,21 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                       →{" "}
                       {formatTimeAmPm(cachedBest.best.train.arrivalTime) ?? "—"}
                     </p>
+                    {(() => {
+                      // With city-hub caching a hit may be for a sibling station
+                      // (e.g. searched DEE, best train departs NDLS). Surface the
+                      // real boarding point so it isn't misleading.
+                      const boarding = cachedBest.best.legs.find(
+                        (l) => l.segmentKind === "confirmed",
+                      )?.from;
+                      return boarding &&
+                        fromSt &&
+                        boarding !== fromSt.stationCode ? (
+                        <p className="mt-1 text-xs font-medium text-amber-700">
+                          Departs from {boarding} (near {fromSt.stationCode})
+                        </p>
+                      ) : null;
+                    })()}
                     <p className="mt-2 text-sm font-semibold text-emerald-800">
                       {cachedBest.best.rankReason}
                     </p>

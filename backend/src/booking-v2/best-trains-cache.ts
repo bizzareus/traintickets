@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { RouteCachingTableStore } from '../route-cache/route-caching-table.store';
+import { canonicalStation } from './station-hubs';
 import type { AlternatePathLeg } from './booking-v2.service';
 
 /**
@@ -29,8 +30,9 @@ export type CachedBestTrain =
 
 /**
  * Cache key for the best-train-per-route lookup — the single source of truth for
- * the key. For now `from`/`to` are the train's start/end station codes; a search
- * over the same OD reuses the entry. Returns null when the date can't be
+ * the key. from/to are canonicalized to their city hub (see canonicalStation), so
+ * every sibling station in a city shares one entry: a cached NDLS->MMCT result
+ * also serves DEE->BDTS, NZM->BCT, etc. Returns null when the date can't be
  * normalized so callers treat it as an un-cacheable/un-lookable input.
  */
 export function bestTrainsCacheKey(
@@ -38,14 +40,10 @@ export function bestTrainsCacheKey(
   to: string,
   normalizedDate: string | null,
 ): string | null {
-  const f = String(from ?? '')
-    .trim()
-    .toUpperCase();
-  const t = String(to ?? '')
-    .trim()
-    .toUpperCase();
+  const f = canonicalStation(from);
+  const t = canonicalStation(to);
   if (!f || !t || !normalizedDate) return null;
-  return `best-trains:v1:${f}:${t}:${normalizedDate}`;
+  return `best-trains:v2:${f}:${t}:${normalizedDate}`;
 }
 
 /**
