@@ -13,13 +13,13 @@ tags:
 
 ## TL;DR
 
-Ever spotted that tiny "Consider for Auto Upgradation" checkbox on IRCTC and wondered if it’s a trap? It’s not. It’s actually one of the coolest features of Indian Railways. Basically, you get bumped up from Sleeper to 3AC, or 3AC to 2AC, completely free. You don't pay a single rupee extra! But here's the catch—you only get it if your ticket is already confirmed, and if there are empty berths in the higher class when the charts are prepared. If you get upgraded and later decide to cancel, don't sweat: the cancellation fees are calculated on your cheap original ticket price, not the expensive upgraded one.
+Ever spotted that tiny "Consider for Auto Upgradation" checkbox on IRCTC and wondered if it’s a trap? It’s not. It’s actually one of the coolest features of Indian Railways. Basically, you get bumped up from Sleeper to 3AC, or 3AC to 2AC, completely free. You don't pay a single rupee extra! But here's the catch: you only get it if your ticket is already confirmed, and if there are empty berths in the higher class when the charts are prepared. If you get upgraded and later decide to cancel, don't sweat: the cancellation fees are calculated on your cheap original ticket price, not the expensive upgraded one.
 
 ---
 
 ## What is Auto Upgradation in IRCTC and how does it work?
 
-**IRCTC Auto Upgradation is a free, algorithm-based service that automatically shifts confirmed passengers to a higher class (like Sleeper to AC 3-Tier) without charging extra. This happens during final chart preparation—roughly 4 hours before the train leaves—to fill unsold, vacant berths in premium coaches.**
+**IRCTC Auto Upgradation is a free, algorithm-based service that automatically shifts confirmed passengers to a higher class (like Sleeper to AC 3-Tier) without charging extra. This occurs during final chart preparation, roughly 4 hours before departure, to fill vacant berths in premium coaches.**
 
 Let’s face it, we all love a free upgrade. It’s like getting bumped to business class on a flight, except on a train! Imagine buying a budget-friendly Sleeper ticket and finding yourself sleeping in a cool, air-conditioned 3AC coach. Yes, it actually happens.
 
@@ -105,7 +105,7 @@ So, while your waitlisted Sleeper ticket will never be upgraded to a 3AC seat, t
 
 ## What are the cancellation charges for an upgraded IRCTC ticket?
 
-**If you cancel an auto-upgraded ticket, the cancellation charges are calculated based on your original booked class, not the upgraded class. You do not pay the higher cancellation fees associated with the class you were upgraded to.**
+**If you cancel an auto-upgraded ticket, the cancellation charges are calculated based on your original booked class, not the upgraded class. You do not pay the higher cancellation fees associated with the premium class you were upgraded to, making the process risk-free.**
 
 This is a common point of confusion for travelers. Suppose you booked a Sleeper ticket for ₹450 and got lucky with a free upgrade to AC 3 Tier (where the fare is ₹1,200). If your plans change and you decide to cancel your ticket after the upgrade, you might worry that you will be charged the steep AC 3 Tier cancellation fee.
 

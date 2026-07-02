@@ -1,101 +1,105 @@
 ---
-title: "IRCTC चक्रवाढ यात्रा तिकीट: नियम आणि बुकिंग मार्गदर्शक"
-description: "भारतातील मल्टी-स्टॉप ट्रेन प्रवासावर पैसे वाचवा. नियम, टेलिस्कोपिक भाडे गणना आणि चक्रवाढ यात्रा तिकीट बुक करण्याची पायरी-दर-पायरी प्रक्रिया जाणून घ्या."
+title: "IRCTC सर्कुलर जर्नी तिकीट: नियम आणि बुकिंग मार्गदर्शक"
+description: "भारतामध्ये मल्टी-स्टॉप ट्रेन ट्रिपवर पैसे वाचवा. सर्कुलर जर्नी तिकिटांसाठी नियम, टेलिस्कोपिक भाडे गणना आणि स्टेप-बाय-स्टेप बुकिंग शिकून घ्या."
 date: "2026-06-20"
 updated: "2026-06-20"
 tags:
   - ट्रेन बुकिंग
   - irctc
-  - चक्रवाढ यात्रा तिकीट
+  - सर्कुलर जर्नी तिकीट
 ---
 
-Planning a multi-city vacation or a long pilgrimage across India can quickly become an expensive affair if you book individual point-to-point train tickets. The base fare for each leg of the journey resets, costing you a premium. Fortunately, Indian Railways offers a little-known, highly economical ticketing option: the Circular Journey Ticket (CJT). This ticket acts as a single transit pass for your entire multi-stop trip, utilizing a telescopic fare calculation system to drastically lower your travel expenses.
+भारतभर मल्टी-सिटी सुट्टी किंवा लांब तीर्थयात्रा नियोजित करत आहात का? प्रत्येक थांब्यासाठी वेगवेगळे पॉइंट-टू-पॉइंट ट्रेन तिकीट बुक करत असाल, तर तुम्ही पैसे वाया घालवत आहात. प्रत्येक वेळी तुम्ही नवीन टप्पा बुक करत असाल, बेस भाडे रीसेट होते. याचा अर्थ तुम्हाला प्रत्येक टप्प्यावर प्रीमियम द्यावा लागतो. सौभाग्याने, भारतीय रेल्वे याला टाळण्यासाठी एक चतुर मार्ग आहे, जरी खूप कमी प्रवाशांना याबद्दल माहिती आहे: सर्कुलर जर्नी तिकीट (CJT). याला तुमच्या संपूर्ण राउंड ट्रिपसाठी एकच ट्रान्झिट पास म्हणून विचार करा, जो "टेलिस्कोपिक भाडे गणना" वापरतो आणि तुमच्या एकूण तिकीट खर्चात कपात करतो.
 
-If you are mapping out a tour with multiple stops, understanding how to utilize these tickets can help you stay within budget. Here is everything you need to know about the rules, costs, and the step-by-step process of booking a circular journey ticket.
+जर तुमच्याकडे मल्टी-स्टॉप कार्यक्रम असेल, तर हे तिकीट कसे कार्य करते हे शिकणे तुमच्या प्रवासाच्या बजेटला नियंत्रणात ठेवेल. नियम, बुकिंग प्रक्रिया आणि तुम्ही किती पैसे वाचवू शकता यामध्ये डोकावूया.
 
-## What is a Circular Journey Ticket in Indian Railways?
+## सर्कुलर तिकीट म्हणजे नेमकं काय?
 
-A circular journey ticket in Indian Railways is a single booking sheet designed for travelers planning multi-stop or round-trip itineraries. It charges fares based on telescopic rates rather than individual point-to-point tickets, significantly reducing costs. It is perfect for pilgrimages, sightseeing tours, or multi-city business travel.
+या तिकीटाला तुमच्या संपूर्ण मार्गाला एकत्र बांधणारा मास्टर ट्रान्झिट पास म्हणून विचार करा. येथे मोठा फायदा म्हणजे प्रत्येक गंतव्यस्थानावर तुमचे बेस भाडे पुन्हा सुरू करण्याऐवजी, रेल्वे संपूर्ण प्रवासाला एक लांब मार्ग म्हणून गणना करतात. तीर्थयात्रा, कौटुंबिक सुट्टी किंवा लांब व्यवसाय प्रवासासाठी हे एक पूर्णपणे गेम-चेंजर आहे.
 
-Normally, when you book individual tickets, say from New Delhi to Varanasi, then Varanasi to Kolkata, and finally Kolkata back to New Delhi, you pay three separate base fares. Base fares in Indian Railways are front-loaded, meaning the first few hundred kilometers are the most expensive per kilometer. With a circular ticket, Indian Railways treats your entire journey as one continuous trip. The total distance is summed up, and the fare is calculated using a telescopic rate, which means the per-kilometer price decreases as the total distance increases.
+गणित कसे कार्य करते ते येथे आहे. जर तुम्ही वेगवेगळ्या तिकिटांचे बुकिंग केले—उदाहरणार्थ, दिल्ली ते वाराणसी, वाराणसी ते कोलकाता, आणि मग कोलकाता ते दिल्ली—तर तुम्ही तीन स्वतंत्र बेस भाडे देत आहात. भारतीय रेल्वे बेस भाडे फ्रंट-लोड करते. याचा अर्थ म्हणजे कोणत्याही प्रवासाच्या पहिल्या काही शंभर किलोमीटर नेहमीच प्रति किलोमीटर सर्वात महाग असतात. परंतु सर्कुलर तिकीटासह, प्रणाली तुमच्या संपूर्ण मार्गाला एक सतत रेषा म्हणून पाहते. ते तुमच्या लूपच्या प्रत्येक किलोमीटरची बेरीज करतात आणि टेलिस्कोपिक भाडे लागू करतात. तुमच्या एकूण प्रवासाच्या अंतरात वाढ होत असल्यास, प्रति किलोमीटर किंमत वास्तवात कमी होते.
 
-To get the most out of your trip, you can use the **Finding Smart Seats** feature on LastBerth, which helps you identify seat availability across various legs by breaking down bookings across multiple coaches when direct seats are scarce.
+हे सुरळीत कार्य करण्यासाठी, LastBerth वर **स्मार्ट सीट्स शोधणे** वैशिष्ट्य पहा. जेव्हा तुम्हाला संपूर्ण धावण्यासाठी एकच थेट बर्थ सापडत नाही तेव्हा तुम्हाला अनेक कोचमध्ये विभाजित प्रवास बुक करण्यासाठी हे उपयुक्त ठरते.
 
-## What Are the Rules for IRCTC Circular Journey Tickets?
+## खेळाचे नियम: बुकिंग आवश्यकता
 
-To qualify for circular journey ticket fares, your itinerary must begin and end at the same station, covering a minimum distance of 1,000 kilometers. The ticket allows a maximum of eight break journeys at different intermediate stations. Each break journey must have a minimum stopover duration of 24 hours.
+येथे एक अडचण आहे: तुम्ही फक्त हॅटमधून यादृच्छिक गंतव्ये निवडू शकत नाही. तुमचा प्रवास सुरूपासून समाप्तीपर्यंत किमान 1,000 किलोमीटर लांब असावा लागतो. आणि होय, तो नेमका त्याच ठिकाणी सुरू आणि संपला पाहिजे. याशिवाय, तुम्हाला आठपेक्षा जास्त थांबे (ब्रेक जर्नीज) असू शकत नाहीत, आणि प्रत्येक थांबा किमान 24 तास टिकला पाहिजे.
 
-To keep the system organized and prevent misuse, Indian Railways enforces several strict regulations:
+सिस्टमचा दुरुपयोग टाळण्यासाठी, रेल्वेने काही अव्यवहार्य मार्गदर्शक तत्त्वे ठरवली आहेत:
 
-* **Origin and Destination:** The route must be circular, meaning it must start and end at the exact same station.
-* **Break Journeys:** You are allowed up to eight break journeys. A break journey is defined as staying at a station for more than 24 hours. If your halt at a station is less than 24 hours, it counts as a simple transit connection rather than a break journey.
-* **Ticket Validity:** The validity of the ticket is calculated by adding the travel days and the break journey days. You are allowed 1 day of travel for every 400 km (or part thereof), plus 2 days for each approved break journey.
-* **No Class Mixing:** The class of travel (e.g., Sleeper Class, 3AC, 2AC) must generally remain the same throughout the circular journey.
+* **लूप नियम:** तुमचा मार्ग नेमका स्टेशनवर सुरू आणि संपला पाहिजे.
+* **हॉल्ट नियम:** तुम्हाला जास्तीत जास्त आठ ब्रेक जर्नीज मिळतात. ब्रेक जर्नी म्हणजे तुम्ही त्या स्टेशनवर 24 तासांपेक्षा जास्त काळ थांबत आहात. जर तुमचा थांबा 24 तासांपेक्षा कमी असेल, तर त्याला एक कनेक्शन मानले जाते, ब्रेक नाही.
+* **याची वैधता किती काळ आहे?** तिकीटाची वैधता तुमच्या प्रवासाच्या दिवसांची आणि ब्रेकच्या दिवसांची बेरीज करून गणना केली जाते. तुम्हाला प्रत्येक 400 किमी (किंवा त्याच्या कोणत्याही अंशासाठी) एक प्रवासाचा दिवस मिळतो, आणि प्रत्येक मान्यताप्राप्त ब्रेक जर्नीसाठी दोन अतिरिक्त दिवस मिळतात.
+* **क्लास सुसंगत ठेवा:** तुम्ही सामान्यतः एकाच सर्कुलर तिकीटावर वेगवेगळ्या वर्गांचे मिश्रण (जसे की स्लीपर आणि 3AC) करू शकत नाही. प्रवास वर्ग सुसंगत राहिला पाहिजे.
 
-Here is a summary of the core booking rules for quick reference:
+तुमच्या संदर्भासाठी जलद संदर्भासाठी मुख्य बुकिंग नियमांचे सारांश येथे आहे:
 
-| Rule Parameter | Requirement / Limit |
+| नियम पॅरामीटर | आवश्यकता / मर्यादा |
 | :--- | :--- |
-| **Minimum Route Distance** | 1,000 किलोमीटर |
-| **Start & End Stations** | Must be identical |
-| **Maximum Break Journeys** | 8 stops (each > 24 hours) |
-| **Halt Limit per Station** | Minimum 24 hours for it to count as a break |
-| **Booking Mode** | Counter Booking only (No online booking) |
+| **किमान मार्ग अंतर** | 1,000 किलोमीटर |
+| **सुरू आणि समाप्ती स्थानक** | नेमके असावे |
+| **कमाल ब्रेक जर्नीज** | 8 थांबे (प्रत्येक > 24 तास) |
+| **प्रत्येक स्थानकासाठी हॉल्ट मर्यादा** | ब्रेक म्हणून गणना करण्यासाठी किमान 24 तास |
+| **बुकिंग मोड** | काउंटर बुकिंग फक्त (ऑनलाइन बुकिंग नाही) |
 
-## How to Book a Circular Journey Ticket Step-by-Step?
+## स्टेप-बाय-स्टेप: तुमचे सर्कुलर तिकीट कसे बुक करावे
 
-You cannot book circular journey tickets online via the IRCTC website or app; they require manual reservation at physical counters. The booking process starts with submitting your detailed itinerary route to the station manager or divisional commercial manager. Once they calculate and approve the fare, you buy the ticket.
+तुम्हाला माहित असलेली पहिली गोष्ट म्हणजे: तुम्ही हे तिकीट ऑनलाइन बुक करू शकत नाही. IRCTC वेबसाइट किंवा अॅप याला समर्थन देत नाही. त्याऐवजी, तुम्हाला आपल्या आस्तीनांना रोल करणे आवश्यक आहे आणि भौतिक रेल्वे स्थानक आरक्षण काउंटरकडे जाणे आवश्यक आहे. संपूर्ण प्रक्रिया मॅन्युअल गणना आणि रेल्वे अधिकाऱ्यांच्या मान्यतेची आवश्यकता आहे.
 
-Because these bookings require manual verification of routes and distance calculations, the process cannot be done on the IRCTC app or portal. Follow these steps to book your ticket:
+तुम्ही हे तिकीट बुक करण्यासाठी खालीलप्रमाणे कार्य करावे लागेल:
 
-1. **Draft Your Itinerary:** Write down your complete route, including train numbers, dates of travel, and the stations where you plan to take break journeys.
-2. **Apply to the Station Manager:** Visit the main station commercial office or the office of the Divisional Commercial Manager (DCM) at your starting station. Present your written application containing the itinerary.
-3. **Get the Fare Calculation:** The commercial staff will verify the distance using official railway distance tables and calculate the telescopic fare. They will then issue a fare authority letter.
-4. **Purchase the Ticket:** Take this authority letter to the station's reservation counter. You will pay the calculated fare, and the clerk will issue your Circular Journey Ticket.
-5. **Reserve Your Berths:** Once you have the ticket, you must fill out reservation slips for each individual leg of your journey to secure actual coach and berth numbers.
+प्रथम, तुमचा संपूर्ण कार्यक्रम एका कागदावर लिहा. तुम्हाला ट्रेन नंबर, तारीख आणि तुम्ही 24 तासांपेक्षा जास्त थांबणार्या स्थानकांची यादी आवश्यक असेल.
 
-## What Happens if a Segment of Your Circular Journey is Waitlisted?
+नंतर, हा कार्यक्रम तुमच्या प्रवासाच्या सुरुवातीच्या स्थानकावर वाणिज्यिक कार्यालय किंवा विभागीय वाणिज्यिक व्यवस्थापकाच्या कार्यालयात आणा. याला औपचारिक अर्ज म्हणून सादर करा.
 
-When a segment of your route is waitlisted, your ticket enters a queue where WL full form is Waiting List. You will watch your status progress through the queue from WL (Waiting List) to RAC (Reservation Against Cancellation) and finally to a Confirmed seat. Position queues like WL/1 resolve faster than WL/10.
+त्यानंतर, कार्यालयातील कर्मचारी गणित करण्याची वाट पाहा. ते त्यांच्या अधिकृत तक्त्यांशी अंतरांची क्रॉस-रेफरन्स करतात, टेलिस्कोपिक भाडे काढतात, आणि तुम्हाला भाडे अधिकृतता पत्र जारी करतात.
 
-Because you are booking multiple segments at once, it is common to find that one or two legs of your trip do not have immediate seat availability. Here is how waitlists work for circular tickets:
+यानंतर, हे अधिकृत पत्र मानक आरक्षण विंडोवर आणा. ते बुकिंग क्लार्कला द्या, एकूण भाडे भरा, आणि तुमचे कागदी तिकीट घेऊन बाहेर पडा.
 
-* **The Queue System:** Your waitlist ticket will progress through three main stages: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**.
-* **Understanding Positions:** A status like WL/1 has a very high chance of clearing before chart preparation, whereas WL/10 or higher will require more cancellations to become confirmed.
-* **No Automatic Refunds:** Unlike waitlisted e-tickets booked online—which are automatically cancelled by the system with automatic refunds sent to your bank account—waitlisted circular tickets are counter tickets. They do not get cancelled automatically. If your ticket remains waitlisted after the chart is prepared, you must manually present the ticket at a reservation counter to claim your refund.
-* **Checking Confirmation Odds:** You can use the **PNR Status Search & Direct Booking** feature on LastBerth to track your waitlist progression and view real-time confirmation probabilities. If a leg is unlikely to clear, LastBerth can suggest alternative booking routes.
+शेवटी, लक्षात ठेवा की हे तिकीट फक्त भाडे कव्हर करते. तुम्हाला तुमच्या प्रवासाच्या प्रत्येक टप्प्यासाठी वैयक्तिक आरक्षण फॉर्म भरावे लागतील जेणेकरून वास्तविक कोच आणि बर्थ क्रमांक निश्चित करता येतील.
 
-If your waitlisted ticket does not confirm, you can look for a **current available ticket**. A current available ticket is a **fully confirmed seat** with coach/berth numbers, which opens 4 hours before departure (right after chart preparation) and closes 30 minutes before the train leaves. Alternatively, you can use the **Seat Status Coach Journey Lookup** on LastBerth to find vacant berths on the running train for specific segments of your journey.
+## तुमच्या मार्गावर वेटलिस्टेड सेगमेंट हाताळणे
 
-## How Much Money Can You Save with Circular Tickets?
+जर तुमच्या कोणत्याही टप्प्यावर वेटलिस्टेड असेल तर काय कराल? तुम्ही एकाच वेळी अनेक टप्पे बुक करत असल्याने, तुम्हाला किमान एका ट्रेनवर वेटलिस्ट (WL) येण्याची शक्यता आहे. तुमचे तिकीट मानक रांगेत सामील होईल, WL पासून RAC (रिझर्वेशन अगेंस्ट कॅन्सलेशन) कडे जातील आणि, आशा आहे की, पूर्णपणे पुष्टी झालेल्या सीटवर. नैसर्गिकरित्या, WL/1 सारख्या कमी रांगेतील क्रमांक जास्त जलद स्पष्ट होतात, WL/10 सारख्या उच्च क्रमांकांपेक्षा.
 
-Circular tickets save you money by utilizing telescopic fare calculation, which reduces the per-kilometer rate as your travel distance increases. Instead of paying multiple base fares for individual point-to-point journeys, you pay a single base fare. This method saves between thirty to fifty percent compared to standard bookings.
+सर्कुलर तिकिटांवर वेटलिस्ट कशी कार्य करते याचा तपशील येथे आहे:
 
-To illustrate the savings, consider a traveler embarking on a tour starting from New Delhi (NDLS), stopping at Lucknow (LKO), Varanasi (BSB), Patna (PNBE), and returning to New Delhi.
+* **मानक प्रगती:** तुमचे तिकीट तीन स्थितींमध्ये जाते: **WL → RAC → Confirmed**.
+* **पुष्टीकरणाची शक्यता:** कमी वेटलिस्ट क्रमांकाची अंतिम चार्ट तयार होण्यापूर्वी स्पष्ट होण्याची चांगली शक्यता असते, तर डबल-डिजिट वेटलिस्टसाठी बरेच कॅन्सलेशन लागेल.
+* **परतफेडीवर लक्ष ठेवा:** हे महत्त्वाचे आहे. जर तुम्ही ऑनलाइन ई-तिकिट बुक केले आणि ते वेटलिस्टेड राहिले, तर प्रणाली ते आपोआप रद्द करते आणि तुमचे पैसे परत करते. परंतु सर्कुलर तिकिटे कागदी काउंटर तिकीट आहेत. ते *कधीही* आपोआप रद्द होत नाहीत. जर तुमचे तिकीट चार्ट तयार केल्यानंतर वेटलिस्टेड राहिले, तर तुम्हाला ते रद्द करण्यासाठी भौतिक स्थानक काउंटरवर जावे लागेल आणि तुमची परतफेड मागितली पाहिजे.
+* **तुमच्या स्थितीवर लक्ष ठेवा:** LastBerth वर **PNR स्थिती शोधा आणि थेट बुकिंग** साधन वापरा जेणेकरून तुम्ही तुमच्या रांगेतील स्थितीवर लक्ष ठेवू शकता आणि वास्तविक पुष्टीकरणाची शक्यता पाहू शकता. जर विशिष्ट टप्पा निराशाजनक दिसत असेल, तर LastBerth तुमच्या प्रवासासाठी बचत करण्यासाठी पर्यायी ट्रेन मार्ग सुचवू शकते.
 
-Here is a comparison of purchasing separate point-to-point tickets versus a single Circular Journey Ticket for Sleeper Class:
+जर तुमची वेटलिस्टेड सीट स्पष्ट झाली नाही, तर घाबरू नका. तुम्ही **सध्याचे उपलब्ध तिकीट** तपासू शकता. हे पुष्टी केलेले बर्थ आहेत जे चार्ट तयार झाल्यानंतर (ट्रेन सुरू होण्याच्या 4 तास आधी) उघडतात आणि प्रस्थानाच्या 30 मिनिटांपर्यंत बुक करण्यायोग्य राहतात. आणखी एक ट्रिक म्हणजे LastBerth वर **सीट स्टेटस कोच जर्नी लुकअप** वापरणे जेणेकरून तुम्ही तुमच्या प्रवासाच्या विशिष्ट विभागांसाठी चालू ट्रेनमध्ये रिकाम्या बर्थ शोधू शकता.
 
-| Journey Legs / Booking Type | Distance (km) | Point-to-Point Cost (Approx) | Circular Journey Cost (Approx) |
+## आम्ही कोणत्या प्रकारच्या बचतीबद्दल बोलत आहोत?
+
+हे लूप तिकीट तुमच्या खिशात पैसे कसे ठेवतात? हे सर्व टेलिस्कोपिक किंमतींवर अवलंबून आहे. तुमचे एकूण अंतर वाढल्यास, तुम्ही प्रति किलोमीटर जे भाडे देता ते कमी होते. त्यामुळे प्रत्येक टप्प्यावर अनेक नवीन बेस भाडे देण्याऐवजी, तुम्ही एकच बेस भाडे देता. वास्तविक अर्थाने, हे तुम्हाला स्वतंत्र तिकिटे बुक करण्याच्या तुलनेत 30% ते 50% पर्यंत वाचवू शकते.
+
+समजा तुम्ही दिल्लीहून प्रवास करण्याचा निर्णय घेतला, लखनौमध्ये काही दिवस घालवले, वाराणसीकडे पुढे गेलात, पटना येथे काही वेळ घालवला, आणि मग दिल्लीकडे परत आलात.
+
+आम्ही तुम्हाला फरक दाखवण्यासाठी एक मानक स्लीपर क्लास प्रवासासाठी आकडेवारी काढली:
+
+| प्रवासाचे टप्पे / बुकिंग प्रकार | अंतर (किमी) | पॉइंट-टू-पॉइंट खर्च (सुमारे) | सर्कुलर तिकीट खर्च |
 | :--- | :--- | :--- | :--- |
-| Leg 1: New Delhi to Lucknow | 512 km | ₹325 | Included in single fare |
-| Leg 2: Lucknow to Varanasi | 300 km | ₹210 | Included in single fare |
-| Leg 3: Varanasi to Patna | 230 km | ₹175 | Included in single fare |
-| Leg 4: Patna to New Delhi | 1,000 km | ₹490 | Included in single fare |
-| **Total Cumulative Cost** | **2,042 km** | **₹1,200** | **₹720** |
-| **Total Savings** | - | - | **₹480 (40% Saved)** |
+| टप्पा 1: नवी दिल्ली ते लखनौ | 512 किमी | ₹325 | एकूण अंतरावर बिल केले |
+| टप्पा 2: लखनौ ते वाराणसी | 300 किमी | ₹210 | स्वतंत्र बेस भाडे नाही |
+| टप्पा 3: वाराणसी ते पटना | 230 किमी | ₹175 | एकत्रित तिकिटाने कव्हर केले |
+| टप्पा 4: पटना ते नवी दिल्ली | 1,000 किमी | ₹490 | एकाच पासमध्ये समाविष्ट |
+| **एकूण संचयी खर्च** | **2,042 किमी** | **₹1,200** | **₹720** |
+| **एकूण बचत** | - | - | **₹480 (40% बचत)** |
 
-By consolidating your travel into a single circular ticket, you bypass the front-loaded base fares of the shorter segments, resulting in massive savings, especially when traveling with family or in AC classes where base fares are much higher.
+तुमच्या सर्व थांब्यांना एकाच सर्कुलर शीटवर ठेवून, तुम्ही पुन्हा पुन्हा सर्वात उच्च बेस भाडे श्रेणी भरणे टाळता. हे एकटेच तुमच्या प्रवासाच्या बिलात मोठी कपात करते. एकूण किंमतीत मोठी घट होते—विशेषतः कौटुंबिक प्रवासासाठी किंवा जेव्हा तुम्ही AC वर्ग निवडता, जिथे स्वतंत्र बेस दर खूप वाढतात.
 
-## Common Booking Questions (FAQ)
+## सामान्य बुकिंग प्रश्न (FAQ)
 
-### Can I book a circular journey ticket online through IRCTC?
-No, circular journey tickets cannot be booked online. You must apply in writing with your itinerary to the Station Manager or Divisional Commercial Manager at your starting station, get the fare approved, purchase the ticket at the booking counter, and then reserve seats for each leg manually.
+### मी ऑनलाइन सर्कुलर जर्नी तिकीट बुक करू शकतो का?
+नाही, ऑनलाइन पोर्टल तुम्हाला हे बुक करण्यास परवानगी देणार नाही. तुम्हाला तुमचा मार्ग लिहावा लागेल, स्टेशन व्यवस्थापक किंवा DCM कडे मान्यतेसाठी सादर करावा लागेल, काउंटरवर कागदी तिकीट खरेदी करावे लागेल, आणि नंतर प्रत्येक टप्प्यासाठी तुमची सीट मॅन्युअली बुक करावी लागेल.
 
-### How is the validity of a circular journey ticket calculated?
-The validity of a circular journey ticket is the sum of travel days plus break journey days. You are allowed one day of travel for every 400 kilometers of the total journey distance, plus two days of stay for each approved break journey station along the route.
+### सर्कुलर जर्नी तिकीटाची वैधता कशी गणना केली जाते?
+वैधता तुमच्या प्रवासाच्या दिवसांची आणि ब्रेकच्या दिवसांची एकत्रित गणना आहे. प्रणाली तुम्हाला एकूण मार्गाच्या प्रत्येक 400 किमी (किंवा त्याच्या अंशासाठी) एक प्रवासाचा दिवस देते, आणि प्रत्येक मान्यताप्राप्त ब्रेक जर्नी स्थानकासाठी दोन अतिरिक्त दिवस देते.
 
-### What is telescopic fare calculation in Indian Railways?
-Telescopic fare calculation is a pricing model where the per-kilometer fare rate decreases as the total distance of the journey increases. Circular journey tickets leverage this rule to offer cheaper travel by combining multiple short trips into one long continuous distance.
+### भारतीय रेल्वेमध्ये टेलिस्कोपिक भाडे गणना म्हणजे काय?
+हे एक किंमत धोरण आहे जिथे प्रति किलोमीटर भाडे दर तुमच्या एकूण अंतरात वाढल्यास कमी होते. सर्कुलर तिकिटे या नियमाचा फायदा घेतात, तुमच्या प्रवासाच्या सर्व वैयक्तिक टप्प्यांची बेरीज करून एकच, लांब अंतर तयार करतात, तुम्हाला खूप कमी दर मिळवून देतात.
 
-### What happens if my waitlisted circular ticket does not get confirmed?
-Because circular tickets are paper tickets purchased at station counters, they do not qualify for automatic system refunds. If your waitlisted segment does not confirm, you must visit a physical railway reservation counter to cancel that portion of the ticket and claim your refund manually.
+### जर माझे वेटलिस्टेड सर्कुलर तिकीट पुष्टी झाले नाही तर काय होते?
+हे कागदी तिकिटे स्टेशन काउंटरवर खरेदी केले असल्याने, ते आपोआप रद्द होत नाहीत आणि तुम्हाला ऑटो-परतफेड मिळणार नाही. जर एखादा टप्पा वेटलिस्टेड राहिला, तर तुम्हाला त्या भागाला रद्द करण्यासाठी भौतिक आरक्षण विंडोवर जावे लागेल आणि तुमची परतफेड मॅन्युअली मागितली पाहिजे.

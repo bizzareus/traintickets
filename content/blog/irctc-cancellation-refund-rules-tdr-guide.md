@@ -15,9 +15,9 @@ Few things in life are as annoying as dealing with IRCTC cancellation rules. We'
 
 The Indian Railways refund system is notoriously complicated. It feels like you need a law degree to understand the different deadlines, percentage cuts, and class-specific fees. If you cancel a confirmed ticket even a minute past the eight-hour mark before your train departs, IRCTC keeps every single rupee. 
 
-I’ve spent the last decade traveling across India by train, filing TDRs, and arguing with TTEs. In this guide, I will break down exactly how the cancellation fees work, how to navigate the waitlist refund policies, and how to file a TDR so you don't lose a single paisa.
+Managing cancellations and filing a Ticket Deposit Receipt (TDR) does not have to be confusing. Understanding these specific timelines and fees ensures you recover your money instead of losing it to avoidable penalties.
 
-Let’s start with confirmed tickets. When you cancel a confirmed seat, the penalty is not fixed—it scales depending on how close you are to the departure time. 
+Let’s start with confirmed tickets. When you cancel a confirmed seat, the penalty is not fixed; it scales depending on how close you are to the departure time. 
 
 If you make the call early, specifically more than 72 hours before the train is scheduled to leave, you only pay a flat clerkage charge. This is a flat administrative fee that IRCTC keeps for processing the ticket. For Second Class, it is a tiny Rs. 60. For Sleeper class, it is Rs. 120. If you are in the AC tiers, it goes up: Rs. 180 for 3AC, Rs. 200 for 2AC, and Rs. 240 for 1AC (plus GST on all AC bookings).
 
@@ -29,7 +29,7 @@ If you are within 8 hours of departure, you have officially hit the point of no 
 
 ## What Are the Key IRCTC Cancellation Rules to Remember?
 
-The most important IRCTC cancellation rules are: confirmed tickets must be cancelled 8+ hours before departure for any refund, fully waitlisted e-tickets are auto-refunded (never cancel manually), RAC/WL tickets can be cancelled up to 30 minutes before departure, and confirmed Tatkal tickets are 100% non-refundable.
+The most important IRCTC cancellation rules are: **confirmed tickets** must be cancelled **8+ hours** before departure for any refund, **fully waitlisted e-tickets** are **auto-refunded** (never cancel manually), **RAC/WL tickets** can be cancelled up to **30 minutes** before departure, and **confirmed Tatkal tickets** are **100% non-refundable**.
 
 Before we jump into the detailed policy tables, here are the absolute essentials you should keep in mind:
 
@@ -43,7 +43,7 @@ Before we jump into the detailed policy tables, here are the absolute essentials
 
 ## What Are the Confirmed Ticket Cancellation Charges on IRCTC?
 
-IRCTC confirmed ticket cancellation charges depend on timing and class. If cancelled 72+ hours before departure, you pay a flat fee (Rs. 60 for 2S up to Rs. 240 + GST for 1AC). Between 72–24 hours, the penalty is 25% of fare. Between 24–8 hours, it jumps to 50%. Within 8 hours, no refund is given.
+**IRCTC confirmed ticket cancellation charges** depend on timing and class. If cancelled **72+ hours** before departure, you pay a **flat fee** (Rs. 60 for 2S up to Rs. 240 for 1AC). Between **72–24 hours**, the penalty is **25% of fare**. Between **24–8 hours**, it is **50%**, and within **8 hours**, **no refund** is given.
 
 For confirmed tickets, here is how the class-specific flat fees compare when cancelling more than 72 hours before departure:
 
@@ -61,7 +61,7 @@ If you cancel within the 72-hour window, the system automatically calculates the
 
 ## What Are the Cancellation Rules for RAC and Waitlisted Tickets?
 
-RAC and waitlisted tickets can be cancelled up to 30 minutes before scheduled departure for a flat Rs. 60 per passenger clerkage fee (plus GST for AC classes). Fully waitlisted e-tickets are automatically cancelled and refunded after chart preparation — you should never cancel them manually or you risk losing the convenience fee refund.
+**RAC and waitlisted tickets** can be cancelled up to **30 minutes** before scheduled departure for a flat **Rs. 60 per passenger clerkage fee** (plus GST for AC). **Fully waitlisted e-tickets** are **automatically cancelled and refunded** after chart preparation; you should never cancel them manually or you risk losing the convenience fee.
 
 If your ticket status is RAC (Reservation Against Cancellation) or Waitlisted (WL) when you cancel, the rules are much more forgiving.
 
@@ -74,7 +74,7 @@ If your ticket status is RAC (Reservation Against Cancellation) or Waitlisted (W
 
 ## Can You Get a Refund on Cancelled Tatkal Tickets?
 
-Confirmed Tatkal tickets are 100% non-refundable — you lose the entire fare if you cancel. Waitlisted Tatkal tickets can be cancelled up to 30 minutes before departure for a Rs. 60 + GST clerkage fee. The only exception for confirmed Tatkal is if the train is delayed 3+ hours or cancelled, in which case you can file a TDR for a full refund.
+**Confirmed Tatkal tickets** are **100% non-refundable**, meaning you lose the entire fare if you cancel. **Waitlisted Tatkal tickets** can be cancelled up to **30 minutes** before departure for a **Rs. 60 + GST clerkage fee**. If the train is **delayed 3+ hours** or cancelled, you can file a **TDR for a full refund**.
 
 Tatkal tickets are meant for urgent travel, and Indian Railways penalizes cancellations heavily to discourage hoarding.
 
@@ -86,7 +86,7 @@ Tatkal tickets are meant for urgent travel, and Indian Railways penalizes cancel
 
 ## What Is a TDR and When Should You File One on IRCTC?
 
-A TDR (Ticket Deposit Receipt) is a formal refund request filed when you couldn't travel due to railway-side issues — such as train delays over 3 hours, AC failure, coach detachment, or forced travel in a lower class. You file it on the IRCTC website or app, and it is verified by the zonal railway office before the refund is processed.
+A **TDR (Ticket Deposit Receipt)** is a formal refund request filed when you cannot travel due to **railway-side issues** (such as train delays over 3 hours, AC failure, or coach detachment). You file the TDR online, and it is verified by the **zonal railway office** before the **refund is processed**.
 
 A TDR is a formal request to Indian Railways to refund your fare when you were unable to travel due to circumstances beyond your control. You cannot simply cancel the ticket; you must file a TDR on the IRCTC website or app.
 
@@ -114,7 +114,7 @@ If you booked an AC 2 Tier ticket but were forced to travel in AC 3 Tier because
 
 ## How Do You File a TDR on IRCTC Step by Step?
 
-To file a TDR on IRCTC, log in to your account, go to My Account > My Transactions > Booked Ticket History, select the PNR, click File TDR, choose the reason, and submit. You will receive a confirmation SMS and email. TDR refunds typically take 15 to 45 days after verification by the zonal railway office.
+To **file a TDR on IRCTC**, log in to your account, go to **My Account > My Transactions > Booked Ticket History**, select the PNR, click **File TDR**, select the reason, and submit. You will receive a confirmation message, and the **refund** will be credited within **15 to 45 days**.
 
 1. Log in to your account on the **IRCTC website** or **IRCTC Rail Connect app**.
 2. Go to **My Account** > **My Transactions** > **Booked Ticket History**.
@@ -130,7 +130,7 @@ To file a TDR on IRCTC, log in to your account, go to My Account > My Transactio
 
 ## How Long Does an IRCTC Refund Take?
 
-IRCTC refund timelines depend on the payment method: iPay Wallet refunds arrive within 24 hours, UPI refunds take 2–3 working days, debit/credit card and net banking refunds take 3–7 working days, and TDR claim refunds take 15–45 days after zonal railway verification. You can track the status under My Transactions on IRCTC.
+**IRCTC refund timelines** depend on payment method: **iPay Wallet** takes **24 hours**, **UPI** takes **2-3 working days**, and **debit/credit cards** take **3-7 working days**. **TDR refunds** take **15-45 days** after verification. You can track your refund status under **My Transactions** on the website or app.
 
 The time it takes for your refund to reflect depends on the payment method you used during booking:
 

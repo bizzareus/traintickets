@@ -1,98 +1,98 @@
 ---
-title: "IRCTC अंशतः पुष्टीकरण: प्रतीक्षेत असलेल्या प्रवाशांसोबत प्रवास करण्याचे नियम"
-description: "प्रतीक्षेत असलेले प्रवासी अंशतः पुष्टीकरण असलेल्या IRCTC ई-तिकिटावर प्रवास करू शकतात का? अधिकृत रेल्वे नियम, TDR परतावा मार्गदर्शक तत्त्वे आणि मिश्र स्थितीच्या PNR साठी चढाई धोरणे शोधा."
+title: "IRCTC अंशतः पुष्टीकरण: प्रतीक्षेत असलेल्या प्रवाशांसह प्रवास करण्याचे नियम"
+description: "प्रतीक्षेत असलेल्या प्रवाशांना अंशतः पुष्टीकरण असलेल्या IRCTC ई-तिकिटावर प्रवास करता येईल का? अधिकृत रेल्वे नियम, TDR परतफेड मार्गदर्शक तत्त्वे, आणि मिश्र स्थितीच्या PNR साठी चढाई धोरणे शोधा."
 date: "2026-06-11"
 updated: null
 tags:
-  - irctc नियम
-  - अंशतः पुष्टीकरण
-  - प्रतीक्षा सूची प्रवास
-  - tdr परतावा
-  - तिकीट स्थिती
+  - irctc rules
+  - partial confirmation
+  - waitlist travel
+  - tdr refund
+  - ticket status
 ---
 
-Picture this: it's chart preparation day and you check your PNR status. Total mess. You expected a smooth family trip when booking. Instead, only two of you got confirmed berths. The other two are stranded on the waitlist with numbers like WL 12 and WL 13. 
+असे चित्रित करा: हे चार्ट तयारीचा दिवस आहे आणि तुम्ही तुमचा PNR स्थिती तपासता. एकूण गोंधळ. तुम्ही बुकिंग करताना एक सुरळीत कुटुंब प्रवासाची अपेक्षा केली होती. त्याऐवजी, फक्त तुमच्यातील दोन जणांना पुष्टीकरण मिळाले आहे. इतर दोन WL 12 आणि WL 13 सारख्या प्रतीक्षेत आहेत.
 
-Now you are stuck with a classic Indian Railways dilemma: Can the waitlisted members board the train? Will they get thrown out or fined by the TTE? Or should the whole group just scrap the trip? 
+आता तुम्ही एक शास्त्रीय भारतीय रेल्वेच्या गोंधळात अडकला आहात: प्रतीक्षेत असलेले सदस्य ट्रेनमध्ये चढू शकतात का? त्यांना TTE कडून बाहेर फेकले जाईल का किंवा दंड केला जाईल का? किंवा संपूर्ण गटाने प्रवास रद्द करावा का?
 
-The rules for partially confirmed tickets are very different from fully waitlisted ones. Knowing the ins and outs of this policy saves you from getting hit with massive fines, getting into heated debates with the TTE, or simply throwing away your money. 
+अंशतः पुष्टीकरण असलेल्या तिकिटांचे नियम पूर्णपणे प्रतीक्षेत असलेल्या तिकिटांपेक्षा खूप वेगळे आहेत. या धोरणाची माहिती असणे तुम्हाला मोठ्या दंडांपासून वाचवते, TTE सोबत गरमागरम चर्चांमध्ये पडण्यापासून, किंवा तुमचे पैसे फेकण्यापासून.
 
-Let's quickly dissect the real rules and refund hacks for these mixed PNRs.
-
----
-
-## What Is a Partially Confirmed Ticket in Indian Railways?
-
-What on earth is a partially confirmed ticket? Simple. It's when you book a group of people together under one PNR. When the chart goes up, only some passengers get confirmed berths or RAC seats, while the others are left hanging on the waiting list.
-
-Usually, this happens because you booked during a rush. People drop out, seats open up, but it's never quite enough for everyone. By the time the chart drops—usually 4 hours before the train leaves—you're stuck in this weird, limbo-like, half-and-half state. 
-
-It’s just how the system rolls when you book as a group. If you're still on the waitlist when the chart hits, that's it. Your PNR is officially tagged as "partially confirmed."
+चला, या मिश्र PNR साठी खरे नियम आणि परतफेडीच्या युक्त्या पटकन समजून घेऊया.
 
 ---
 
-## Can Waitlisted Passengers Travel with Confirmed Passengers on the Same E-Ticket?
+## भारतीय रेल्वेमध्ये अंशतः पुष्टीकरण असलेले तिकिट म्हणजे काय?
 
-Yes, waitlisted passengers can travel with confirmed passengers on the same online e-ticket. Think of it this way: a completely waitlisted online ticket gets wiped out and cancelled by the system automatically. But if just one seat on your PNR is confirmed, the whole ticket remains active and valid.
+अंशतः पुष्टीकरण असलेले तिकिट म्हणजे काय? सोपे. जेव्हा तुम्ही एका PNR अंतर्गत एकत्रितपणे लोकांचे गट बुक करता. जेव्हा चार्ट तयार केला जातो, तेव्हा फक्त काही प्रवाशांना पुष्टीकरण मिळते किंवा RAC आसन मिळते, तर इतर प्रतीक्षेत राहतात.
 
-Here is the crucial distinction you need to know. 
-If every single person on your e-ticket is waitlisted when the chart is prepared, the system automatically cancels the ticket. It refunds your money, and you cannot legally board the train. But if even one person gets a confirmed or RAC seat, the PNR remains completely active. The waitlisted passengers' names will actually print on the chart.
+सामान्यतः, हे त्या वेळी होते जेव्हा तुम्ही गर्दीत बुकिंग करता. लोक बाहेर पडतात, आसने उपलब्ध होतात, पण सर्वांसाठी कधीच पुरेसे नसते. चार्ट तयार झाल्यावर—सामान्यतः ट्रेन सुटण्याच्या 4 तास आधी—तुम्ही या विचित्र, अर्ध्या-अर्ध्या स्थितीत अडकलेले असता.
 
-Because the PNR is active, those waitlisted passengers can legally board. However, since they don't have their own berths, they have to share space with the confirmed members of the group. You can also track down the TTE to see if any seats are vacant due to no-shows.
+हे असेच आहे जेव्हा तुम्ही गट म्हणून बुक करता. जर तुम्ही चार्ट तयार झाल्यावर प्रतीक्षेत असाल, तर तेच. तुमचा PNR अधिकृतपणे "अंशतः पुष्टीकरण" म्हणून टॅग केला जातो.
+
+---
+
+## प्रतीक्षेत असलेले प्रवासी पुष्टीकरण असलेल्या प्रवाशांसह एकाच ई-तिकिटावर प्रवास करू शकतात का?
+
+होय, प्रतीक्षेत असलेले प्रवासी पुष्टीकरण असलेल्या प्रवाशांसह एकाच ऑनलाइन ई-तिकिटावर प्रवास करू शकतात. याला असे समजा: एक संपूर्ण प्रतीक्षेत असलेले ऑनलाइन तिकिट प्रणालीद्वारे स्वयंचलितपणे रद्द केले जाते. पण जर तुमच्या PNR वर एकही आसन पुष्टीकरण मिळाले, तर संपूर्ण तिकिट सक्रिय आणि वैध राहते.
+
+तुम्हाला माहित असलेली महत्त्वाची भिन्नता येथे आहे.
+जर तुमच्या ई-तिकिटवरील प्रत्येक व्यक्ती चार्ट तयार झाल्यावर प्रतीक्षेत असेल, तर प्रणाली तिकिट स्वयंचलितपणे रद्द करते. ते तुमचे पैसे परत करते, आणि तुम्हाला कायदेशीरपणे ट्रेनमध्ये चढण्याची परवानगी नाही. पण जर एकही व्यक्ती पुष्टीकरण किंवा RAC आसन मिळाले, तर PNR संपूर्णपणे सक्रिय राहते. प्रतीक्षेत असलेल्या प्रवाशांची नावे वास्तवात चार्टवर छापली जातात.
+
+PNR सक्रिय असल्यामुळे, त्या प्रतीक्षेत असलेल्या प्रवाशांना कायदेशीरपणे चढण्याची परवानगी आहे. तथापि, कारण त्यांच्याकडे स्वतःची आसने नाहीत, त्यांना गटातील पुष्टीकरण असलेल्या सदस्यांसह जागा सामायिक करावी लागेल. तुम्ही TTE कडे देखील पाहू शकता की कोणतीही आसने रिकामी आहेत का.
 
 > [!WARNING]
-> While traveling on a partially waitlisted e-ticket is legal, the waitlisted passenger has no right to demand a separate seat. If the coach is heavily crowded, sharing a single narrow berth for an overnight journey can be extremely uncomfortable.
+> अंशतः प्रतीक्षेत असलेल्या ई-तिकिटावर प्रवास करणे कायदेशीर आहे, परंतु प्रतीक्षेत असलेल्या प्रवाशाला स्वतंत्र आसनाची मागणी करण्याचा हक्क नाही. जर कोच खूप गर्दीचा असेल, तर रात्रभराच्या प्रवासासाठी एकच अरुंद बर्थ सामायिक करणे अत्यंत अस्वस्थ होऊ शकते.
 
 ---
 
-## What Are the Rules for Partially Confirmed Counter Tickets vs. E-Tickets?
+## अंशतः पुष्टीकरण असलेल्या काउंटर तिकिटांचे नियम आणि ई-तिकिटांचे नियम काय आहेत?
 
-For e-tickets, waitlisted passengers can only travel if someone else on the PNR is confirmed/RAC. For physical counter tickets bought at a station, waitlisted passengers can always board and travel, usually in the unreserved general compartment, because physical counter tickets never automatically cancel after chart preparation.
+ई-तिकिटांसाठी, प्रतीक्षेत असलेले प्रवासी फक्त तेव्हा प्रवास करू शकतात जेव्हा PNR वर दुसरा कोणी पुष्टीकरण/RAC असलेला असेल. स्टेशनवर खरेदी केलेल्या भौतिक काउंटर तिकिटांसाठी, प्रतीक्षेत असलेले प्रवासी नेहमीच चढू शकतात आणि प्रवास करू शकतात, सामान्यतः अनारक्षित सामान्य कोचमध्ये, कारण भौतिक काउंटर तिकिटे चार्ट तयारीनंतर स्वयंचलितपणे रद्द होत नाहीत.
 
-Does it matter where you bought the ticket? Absolutely. E-tickets are digital, handled by IRCTC's online system. Station counter tickets are those physical, yellow-colored paper tickets you buy at the window.
+तुम्ही तिकिट कुठून खरेदी केले हे महत्त्वाचे आहे का? नक्कीच. ई-तिकिटे डिजिटल आहेत, IRCTC च्या ऑनलाइन प्रणालीद्वारे हाताळली जातात. स्टेशन काउंटर तिकिटे म्हणजे तुम्ही खिडकीवर खरेदी केलेली भौतिक, पिवळ्या रंगाची कागदाची तिकिटे.
 
-Here is how they stack up:
-* **Online E-Tickets:** If the entire PNR is waitlisted, the system cancels it automatically. You can't board. But if even one seat is confirmed, the whole ticket stays active and waitlisted folks can board.
-* **Physical Counter Tickets:** These never cancel on their own. Even if you're fully waitlisted, you can walk onto the platform and travel in general unreserved coaches.
+त्यांचे तुलना कशी आहे:
+* **ऑनलाइन ई-तिकिट:** जर संपूर्ण PNR प्रतीक्षेत असेल, तर प्रणाली ते स्वयंचलितपणे रद्द करते. तुम्ही चढू शकत नाही. पण जर एकही आसन पुष्टीकरण मिळाले, तर संपूर्ण तिकिट सक्रिय राहते आणि प्रतीक्षेत असलेले लोक चढू शकतात.
+* **भौतिक काउंटर तिकिट:** हे कधीच स्वतःहून रद्द होत नाहीत. तुम्ही पूर्णपणे प्रतीक्षेत असले तरी, तुम्ही प्लॅटफॉर्मवर चालत जाऊ शकता आणि सामान्य अनारक्षित कोचमध्ये प्रवास करू शकता.
 
-If you board a reserved coach with a fully waitlisted e-ticket, you will be penalized as a ticketless traveler. But with a partially confirmed e-ticket, you are legally clear, though space will be tight.
-
----
-
-## How to File a TDR and Get a Refund for a Partially Confirmed Ticket?
-
-To get a full refund for a partially confirmed ticket when your group decides not to travel, you must file a Ticket Deposit Receipt (TDR) online. The TDR must be submitted at least 30 minutes before the train's scheduled departure, allowing a refund minus minor clerkage fees.
-
-If half the family gets waitlisted, you might want to call off the trip entirely. But watch out: you cannot get your money back for the confirmed seats by simply clicking 'cancel' after chart preparation. You will lose most of the fare.
-
-Here's how you get your money back:
-1. **Nobody boards the train:** Seriously, not a single passenger on that PNR should travel.
-2. **File a TDR:** Log in to IRCTC, open your booked history, and select 'File TDR'.
-3. **Select the reason:** Choose the option *'Party partially confirmed/waitlisted and all passengers did not travel.'*
-4. **Watch the clock:** Submit this at least 30 minutes before the train starts from its originating station. Don't be late.
-
-Once the railways check and confirm that nobody traveled on that PNR, they'll refund your fare. You only lose a tiny clerkage fee of ₹60 per passenger.
+जर तुम्ही पूर्णपणे प्रतीक्षेत असलेल्या ई-तिकिटासह आरक्षित कोचमध्ये चढले, तर तुम्हाला तिकिटविहीन प्रवाशा म्हणून दंड केला जाईल. पण अंशतः पुष्टीकरण असलेल्या ई-तिकिटासह, तुम्ही कायदेशीरपणे स्पष्ट आहात, तरी जागा कमी असेल.
 
 ---
 
-## Frequently Asked Questions (FAQ)
+## अंशतः पुष्टीकरण असलेल्या तिकिटासाठी TDR कसा दाखल करावा आणि परतफेड कशी मिळवावी?
 
-### Can I cancel only the waitlisted passengers on a partially confirmed ticket?
-Yes, absolutely. You can drop just the waitlisted members from a partially confirmed PNR before chart prep. If you cancel them online, the confirmed passengers' seats remain perfectly safe. Your refund for the waitlisted seats goes back to your bank, minus the Rs 60 clerkage fee.
+तुमच्या गटाने प्रवास न करण्याचा निर्णय घेतल्यास अंशतः पुष्टीकरण असलेल्या तिकिटासाठी पूर्ण परतफेड मिळवण्यासाठी, तुम्हाला ऑनलाइन तिकिट ठेवण्याची पावती (TDR) दाखल करावी लागेल. TDR ट्रेनच्या निर्धारित प्रस्थानाच्या किमान 30 मिनिटे आधी सादर करावी लागते, ज्यामुळे थोड्या क्लार्केज शुल्क वगळता परतफेड मिळते.
 
-### What happens if I do not file a TDR for a partially confirmed ticket?
-If you don't file the TDR in time and skip the journey, you'll lose every rupee spent on the confirmed passengers. While the waitlisted fares get credited back automatically, you must manually file a TDR to get a refund for the confirmed seats. Don't skip this step!
+जर कुटुंबातील अर्धे प्रतीक्षेत असले, तर तुम्हाला प्रवास पूर्णपणे रद्द करायचा असू शकतो. पण लक्ष ठेवा: तुम्ही चार्ट तयारीनंतर 'रद्द करा' क्लिक करून पुष्टीकरण असलेल्या आसनांसाठी तुमचे पैसे परत मिळवू शकत नाही. तुम्हाला बहुतेक भाडे गमवावे लागेल.
 
-### Can a waitlisted passenger get a middle or upper berth on board?
-Since they don't have assigned berths, they'll have to share. But once the train starts chugging, look for the TTE. If there are vacant berths from no-shows or cancellations, the TTE can officially assign them to your waitlisted travel companions.
+तुमचे पैसे परत मिळवण्यासाठी येथे काय करावे:
+1. **कोणीही ट्रेनमध्ये चढत नाही:** खरंच, त्या PNR वर एकही प्रवासी प्रवास करू नये.
+2. **TDR दाखल करा:** IRCTC मध्ये लॉगिन करा, तुमचा बुक केलेला इतिहास उघडा, आणि 'TDR दाखल करा' निवडा.
+3. **कारण निवडा:** *'पक्ष अंशतः पुष्टीकरण/प्रतीक्षेत आहे आणि सर्व प्रवासी प्रवास केले नाहीत.'* हा पर्याय निवडा.
+4. **घड्याळाकडे लक्ष ठेवा:** हे ट्रेनच्या सुरुवातीच्या स्थानकावरून सुरू होण्याच्या किमान 30 मिनिटे आधी सादर करा. उशीर करू नका.
 
-### Is traveling on a fully waitlisted e-ticket allowed if my friend has a confirmed ticket?
-No, never. If your friend is on a separate confirmed PNR and your online e-ticket is fully waitlisted, your ticket is dead. The system cancels it automatically. Getting on a train with an auto-cancelled e-ticket is illegal. You'll be treated as traveling without a ticket and fined heavily by the TTE.
+एकदा रेल्वे तपासून खात्री करते की त्या PNR वर कोणीही प्रवास केला नाही, ते तुमचे भाडे परत करतील. तुम्हाला प्रति प्रवासी ₹60 चा थोडा क्लार्केज शुल्क गमवावा लागेल.
 
 ---
 
-## Related Guides
+## वारंवार विचारले जाणारे प्रश्न (FAQ)
 
-- [RAC vs WL Status: What Do They Mean for Your Journey?](/blog/rac-vs-wl-explained)
-- [How to Check Vacant Berths After Chart Preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
-- [The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing](/blog/irctc-cancellation-refund-rules-tdr-guide)
+### अंशतः पुष्टीकरण असलेल्या तिकिटावर प्रतीक्षेत असलेले प्रवासी फक्त रद्द करू शकतो का?
+होय, नक्कीच. तुम्ही चार्ट तयारीपूर्वी अंशतः पुष्टीकरण असलेल्या PNR मधून फक्त प्रतीक्षेत असलेल्या सदस्यांना रद्द करू शकता. जर तुम्ही त्यांना ऑनलाइन रद्द केले, तर पुष्टीकरण असलेल्या प्रवाशांची आसने सुरक्षित राहतात. प्रतीक्षेत असलेल्या आसनांसाठी तुमची परतफेड तुमच्या बँकेत परत जाईल, ₹60 क्लार्केज शुल्क वगळता.
+
+### जर मी अंशतः पुष्टीकरण असलेल्या तिकिटासाठी TDR दाखल केला नाही तर काय होईल?
+जर तुम्ही वेळेत TDR दाखल केला नाही आणि प्रवास चुकला, तर पुष्टीकरण असलेल्या प्रवाशांवर खर्च केलेले प्रत्येक रुपया तुम्हाला गमवावे लागेल. प्रतीक्षेत असलेल्या भाड्यांवर स्वयंचलितपणे क्रेडिट मिळेल, पण पुष्टीकरण असलेल्या आसनांसाठी परतफेड मिळवण्यासाठी तुम्हाला मॅन्युअली TDR दाखल करावा लागेल. हा टप्पा चुकवू नका!
+
+### प्रतीक्षेत असलेला प्रवासी बोर्डवर मध्य किंवा वरची बर्थ मिळवू शकतो का?
+कारण त्यांच्याकडे नियुक्त बर्थ नाहीत, त्यांना सामायिक करावे लागेल. पण ट्रेन चालू झाल्यावर, TTE कडे पहा. जर नोंदणी न झालेल्या किंवा रद्द केलेल्या बर्थमुळे रिकाम्या बर्थ असतील, तर TTE तुमच्या प्रतीक्षेत असलेल्या प्रवासी मित्रांना अधिकृतपणे त्यांना नियुक्त करू शकतो.
+
+### जर माझा मित्र पुष्टीकरण असलेल्या तिकिटावर असेल तर पूर्णपणे प्रतीक्षेत असलेल्या ई-तिकिटावर प्रवास करणे कायदेशीर आहे का?
+नाही, कधीच नाही. जर तुमचा मित्र वेगळ्या पुष्टीकरण असलेल्या PNR वर असेल आणि तुमचे ऑनलाइन ई-तिकिट पूर्णपणे प्रतीक्षेत असेल, तर तुमचे तिकिट मृत आहे. प्रणाली ते स्वयंचलितपणे रद्द करते. स्वयंचलितपणे रद्द केलेल्या ई-तिकिटासह ट्रेनमध्ये चढणे कायदेशीर नाही. तुम्हाला तिकिटविहीन प्रवाशा म्हणून विचारले जाईल आणि TTE कडून मोठा दंड केला जाईल.
+
+---
+
+## संबंधित मार्गदर्शक
+
+- [RAC vs WL स्थिती: तुमच्या प्रवासासाठी त्यांचा काय अर्थ आहे?](/blog/rac-vs-wl-explained)
+- [चार्ट तयारीनंतर रिकाम्या बर्थची तपासणी कशी करावी](/blog/how-to-check-vacant-berths-after-chart-preparation)
+- [IRCTC रद्दीकरण नियम, परतफेड कालावधी, आणि TDR दाखल करण्यासाठी अंतिम मार्गदर्शक](/blog/irctc-cancellation-refund-rules-tdr-guide)

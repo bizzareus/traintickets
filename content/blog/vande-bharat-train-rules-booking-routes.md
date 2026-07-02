@@ -18,9 +18,9 @@ The Vande Bharat Express is India's premier semi-high-speed train, capable of ru
 
 ## What is the Vande Bharat Train and Its Key Features?
 
-**India's semi-high-speed Vande Bharat Express is a self-propelled train set designed to run up to 160 km/h. It features automatic sliding doors, onboard Wi-Fi, GPS traveler systems, and modern bio-vacuum restrooms for a premium travel experience.**
+India's semi-high-speed **Vande Bharat Express** is a self-propelled train set designed to run up to **160 km/h**. This train features **automatic sliding doors**, onboard **Wi-Fi**, GPS-based passenger information systems, and **bio-vacuum restrooms**, providing travellers with a premium and modern travel experience.
 
-Vande Bharat trains (initially called Train 18) represent a massive shift for Indian Railways. Unlike traditional trains, there is no separate engine locomotive pulling the coaches from the front. Instead, the motors are built directly under alternate coaches—similar to modern bullet trains and metro systems. This distributed power setup allows the train to speed up and slow down much faster, cutting travel times.
+Vande Bharat trains (initially called Train 18) represent a massive shift for Indian Railways. Unlike traditional trains, there is no separate engine locomotive pulling the coaches from the front. Instead, the motors are built directly under alternate coaches, similar to modern bullet trains and metro systems. This distributed power setup allows the train to speed up and slow down much faster, cutting travel times.
 
 The passenger cabins feel closer to an airplane than a typical train. Passengers traveling in the Executive Class get 360-degree rotating seats, alongside reading lights, sensor-controlled water taps, and spacious overhead luggage storage.
 
@@ -28,19 +28,19 @@ The passenger cabins feel closer to an airplane than a typical train. Passengers
 
 ## How to Book Vande Bharat Tickets and What are the Rules?
 
-**Passengers can book Vande Bharat tickets through the official IRCTC website or mobile app. The standard advance reservation window opens 120 days before departure. Tatkal bookings are permitted, but no senior citizen or general concessions apply to these trains.**
+Passengers can book **Vande Bharat tickets** through the official **IRCTC website or Rail Connect app** with an advance reservation window of **120 days**. While last-minute **Tatkal bookings** are permitted, **no senior citizen or general concessions** apply to these premium train services.
 
 Getting a ticket on the Vande Bharat is straightforward, but seats fill up fast.
 
 *   **Booking Windows:** The regular advance reservation window opens **120 days** before the journey date at 8:00 AM.
 *   **Tatkal Reservations:** Tatkal bookings open **1 day** before the train starts from its originating station. For AC classes, this starts at 10:00 AM. Fares are higher, and seats often disappear within a minute.
-*   **Concession Rules:** General concessions—including senior citizen discounts—are not allowed. Only specific Divyangjan (disability) bookings are supported.
+*   **Concession Rules:** General concessions, including senior citizen discounts, are not allowed. Only specific Divyangjan (disability) bookings are supported.
 
 ---
 
 ## How Much does a Vande Bharat Ticket Price Cost?
 
-**Vande Bharat ticket prices generally range from ₹1,000 to ₹1,800 for AC Chair Car (CC) and ₹2,000 to ₹3,500 for Executive Chair Car (EC). The total fare consists of the base ticket cost plus route-specific catering charges.**
+**Vande Bharat ticket prices** generally range from **₹1,000 to ₹1,800** for **AC Chair Car (CC)** and **₹2,000 to ₹3,500** for **Executive Chair Car (EC)**. The final passenger fare consists of the base ticket cost, booking fees, and route-specific catering charges.
 
 The train has two classes: AC Chair Car (CC) and Executive Chair Car (EC). The total fare includes the base ticket cost, booking fees, GST, superfast surcharges, and catering charges.
 
@@ -52,7 +52,7 @@ Meals are optional on some routes, but mandatory on others. If you choose "no fo
 
 ## What Are the Vande Bharat Sleeper Trains and Their Routes?
 
-**The Vande Bharat Sleeper trains are Indian Railways' next-generation overnight trains designed for comfortable long-distance travel at speeds up to 160 km/h.** Undergoing fleet expansion trials out of SMVT Bengaluru, these trains will first connect key hubs like the Kamakhya–Howrah route, utilizing AC First Class, AC 2-Tier, and AC 3-Tier sleeping reservation classes.
+The **Vande Bharat Sleeper trains** are Indian Railways' next-generation overnight trains designed for comfortable long-distance travel at speeds up to **160 km/h**. Currently undergoing trials, they will connect routes like Kamakhya–Howrah utilizing **AC First Class, AC 2-Tier, and AC 3-Tier** classes.
 
 The sleeping compartments feature significant upgrades over standard LHB coaches, including passenger-friendly reading lights, charging ports for every berth, noise-insulated cabins, and improved suspension to reduce overnight vibrations. The Kamakhya–Howrah route will link Northeast India to West Bengal with a fast, overnight schedule.
 
@@ -60,7 +60,7 @@ The sleeping compartments feature significant upgrades over standard LHB coaches
 
 ## What Should You Do if Vande Bharat Seats are Waitlisted?
 
-**When Vande Bharat seats are waitlisted, check the queue status. Since the WL full form is Waiting List, tickets progress from WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed. However, because Vande Bharat only has chair cars, there is no RAC category.**
+When **Vande Bharat seats are waitlisted**, check your status carefully. Since the **WL full form is Waiting List**, tickets usually progress from WL to RAC and then Confirmed. However, because Vande Bharat trains only feature chair cars, **there is no RAC category** on these services.
 
 Because Vande Bharat trains only have seating cars (CC and EC) and no sleeper coaches, there is **no RAC category** on these services. The progression goes directly from:
 

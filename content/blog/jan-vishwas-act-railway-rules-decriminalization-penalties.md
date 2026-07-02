@@ -24,7 +24,7 @@ tags:
 
 **The Jan Vishwas (Amendment of Provisions) Act, 2026, is a landmark legislation that decriminalizes minor railway offenses, replacing prison terms with civil penalties.** Instead of criminal prosecution and court trials, violations are now handled as administrative defaults, simplifying compliance while imposing higher monetary fines for offences.
 
-Before this reform, even minor errors—like vendor sales without a permit or boarding the wrong coach—could lead to criminal charges, magistrate court summons, and a permanent police record. By decriminalizing these acts, Indian Railways aims to reduce judicial backlog while enforcing discipline through direct financial penalties. Authorized railway officials now handle these offenses administratively.
+Before this reform, even minor errors, such as vendor sales without a permit or boarding the wrong coach, could lead to criminal charges, magistrate court summons, and a permanent police record. By decriminalizing these acts, Indian Railways aims to reduce judicial backlog while enforcing discipline through direct financial penalties. Authorized railway officials now handle these offenses administratively.
 
 ---
 

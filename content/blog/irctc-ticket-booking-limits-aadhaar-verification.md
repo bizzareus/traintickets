@@ -9,11 +9,11 @@ tags:
   - booking limits
 ---
 
-Have you ever tried booking train tickets for a family reunion or a big group of friends on IRCTC? If so, you know how fast it can turn into a circus. You sit at your laptop, tea in hand, ready to grab those seats, and suddenly a red warning pops up: "Monthly booking limit reached." Most people don't even realize there is a limit until they run face-first into it. The good news is Indian Railways gives you a built-in way to raise it. Below is exactly how many tickets you can book on IRCTC in a month, how the limit works per account, per day and per booking, and how to double it from 12 to 24.
+You sit at your screen ready to book, and a warning pops up: "Monthly booking limit reached." Indian Railways restricts standard accounts to prevent hoarding, but offers a simple way to double your slots. Here is a complete breakdown of monthly, daily, and session-specific ticket limits, along with steps to link your Aadhaar card.
 
 ## How many tickets can be booked from one IRCTC account per month?
 
-**You can book up to 12 train tickets in a calendar month from a standard, unverified IRCTC account. If you link your Aadhaar card to your IRCTC profile and verify at least one passenger on each booking, the monthly limit doubles to 24 tickets per user ID.** This count resets automatically on the 1st day of every month and includes all types of ticket bookings, such as general quota, Tatkal, and Premium Tatkal.
+**You can book up to 12 train tickets in a calendar month from a standard, unverified IRCTC account. If you link your Aadhaar card to your IRCTC profile and verify a passenger on the booking, the monthly limit doubles to 24 tickets per user ID.** This count resets on the first day of each month.
 
 | Booking Type / Limit Category | Limit Value | Key Rule & Requirement |
 | :--- | :--- | :--- |
@@ -28,7 +28,7 @@ Indian Railways introduced this limit to curb the black market, where unauthoriz
 
 ## Is the limit per account, per user, or per ID?
 
-These all mean the same thing. **The limit is counted per IRCTC user ID (one account).** It is not per card, per device, or per family. If two people share one login, they share the same 12 or 24 ticket slots. If each person makes their own IRCTC account, each account gets its own monthly limit. There is no separate limit "per Aadhaar" card beyond the account to which it is linked.
+**The monthly ticket limit is counted per IRCTC user ID (one account), not per person, payment card, or device.** If you share a login, you share the monthly quota. However, if family members register separate IRCTC accounts, each account gets its own individual 12 or 24 ticket limit.
 
 ## How many tickets can you book per day on IRCTC?
 
@@ -38,11 +38,11 @@ This daily Tatkal restriction ensures that users cannot monopolize last-minute s
 
 ## How many passengers can you book on one ticket?
 
-A single ticket (one PNR) can hold **up to 6 passengers in the general quota** and **up to 4 passengers in Tatkal**. So each ticket counts as one against your monthly limit no matter how many passengers are on it. If you need to move a large group, splitting them across multiple tickets uses up your monthly count faster, which is another reason the 24 limit is worth unlocking.
+A single ticket (one PNR) can hold **up to 6 passengers in the general quota** and **up to 4 passengers in Tatkal**. Each booked ticket counts as one unit against your monthly limit, regardless of passenger count. Splitting groups across multiple bookings consumes your monthly limit faster, making Aadhaar verification highly beneficial.
 
 ## How to link Aadhaar with IRCTC to increase the booking limit
 
-**Log into the IRCTC website or Rail Connect app, go to My Account, select Link Your Aadhaar, and enter your details. You will get a verification code on the mobile number registered with your Aadhaar to complete the link.**
+**Log into the IRCTC website or Rail Connect app, go to My Account, select Link Your Aadhaar, and enter your personal details. You will receive a verification OTP on the mobile number registered with Aadhaar to complete the linking process securely.**
 
 Make sure your mobile number is linked to your Aadhaar first, since you will need the OTP.
 
@@ -75,7 +75,7 @@ This prioritization helps genuine travellers book tickets successfully before se
 
 ## What happens when you reach the monthly limit?
 
-You simply cannot book any more tickets from that user ID until the limit resets at midnight on the 1st of the next calendar month. Cancelling a ticket does **not** give the slot back, a booked ticket still counts even after cancellation. If you are stuck mid-month, your options are to get your Aadhaar verified to unlock 24, or book from a different family member's IRCTC account.
+**When you reach the monthly IRCTC limit, you cannot book any more tickets until the quota resets at midnight on the first of the next calendar month.** Cancelling tickets does not restore your booking slots. To proceed, you must link your Aadhaar or use a family member's account.
 
 If you are struggling to find open seats for a group, LastBerth's **Finding Smart Seats** feature looks for berths across different coaches or segments when a single direct berth isn't available. If your tickets are waitlisted, the **PNR Status Search** tool shows confirmation chances, and the **Seat Status Coach Journey Lookup** finds vacant berths on the train.
 
