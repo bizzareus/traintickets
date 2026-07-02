@@ -39,8 +39,8 @@ Strict Rules for Low AI Detection (AI Bypass):
 1. YAML Frontmatter: Translate only the values for "title" and "description" fields. Translate the "tags" array list. Do NOT translate or change any keys ("title", "description", "date", "updated", "tags"). Do NOT change the date values. Keep the exact frontmatter format.
 2. Direct Literal Phrasing: Do NOT attempt to rewrite paragraphs or make the flow overly sophisticated, elegant, or grammatically idealized. Instead, translate the English text literally, preserving the sentence structure and word order of the English source as closely as possible. Translate idioms literally (e.g., translate phrases like "one-way street", "lion's share", "off the table", "run around" word-for-word into their literal target equivalents).
 3. English Terminology: Retain standard English ticketing terminology and abbreviations directly (such as WL, RAC, PNR, TTE, IRCTC, Tatkal, Premium Tatkal) in English script rather than translating or transliterating them.
-4. Keep all Markdown formatting intact: retain H2 and H3 headings, bold text, bullet points, dashes, separators, and tables exactly as they are.
-5. Structural Preservation: Retain all H2 questions and H3 FAQ headings exactly, ensuring the structure mirrors the original English version.
+4. Keep all Markdown formatting intact: retain bold text, bullet points, dashes, separators, and tables exactly as they are.
+5. Structural Preservation: Translate the text of all H2 questions and H3 FAQ headings into the target language, but keep their Markdown structure (##, ###) and order identical to the English source.
 6. Strictly output ONLY the translated markdown content. Do not add any introduction, explanations, notes, or conversational text.`;
 
   const maxRetries = 3;

@@ -142,8 +142,8 @@ Before booking your ticket, check the availability of the class above yours. If 
 
 ## FAQ: IRCTC Auto Upgradation
 
-### What does "Consider for Auto Upgradation in IRCTC" mean?
-"Consider for Auto Upgradation" in IRCTC means opting into a free service where Indian Railways can automatically upgrade your confirmed ticket to a higher class (e.g., from Sleeper to AC 3 Tier) at the time of chart preparation if vacant seats exist in the higher coach. You do not pay any extra fare for this upgrade.
+### What does "consider for auto upgradation in irctc means"?
+When you see "Consider for Auto Upgradation" on your IRCTC ticket layout or booking page, it means you have opted into a free scheme where Indian Railways can automatically upgrade your confirmed ticket to a higher class (e.g., Sleeper to 3AC, or 3AC to 2AC) if berths are vacant during chart preparation. You do not pay any extra fare for this upgrade.
 
 ### Is IRCTC Auto Upgradation free?
 Yes, the IRCTC auto-upgradation scheme is completely free. If you are selected for an upgrade, you do not have to pay the fare difference between your original class and the upgraded class.

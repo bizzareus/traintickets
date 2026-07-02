@@ -21,6 +21,14 @@ tags:
 - **WL** means you are still waiting for an allotment. A fully waitlisted e-ticket after chart preparation is not valid for boarding.
 - The same train can show Confirmed, RAC, WL, or Regret depending on station pair, class, quota, and timing.
 
+---
+
+## What is WL or RAC in Indian Railways?
+
+The terms **WL** (Waiting List) and **RAC** (Reservation Against Cancellation) indicate your ticket's booking status when direct confirmed berths are unavailable. In Indian Railways, the ticket confirmation queue moves in a set sequence: **WL -> RAC -> Confirmed**. While a WL ticket does not guarantee travel rights, an RAC ticket allows you to board the train and share a berth.
+
+---
+
 ## What Does "Confirmed" Actually Mean on a Train Ticket?
 
 When a ticket is **confirmed**, IRCTC has assigned you a specific seat or berth, depending on class and quota, for the segment you booked.
