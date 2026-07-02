@@ -43,7 +43,7 @@ This file tracks all blog posts published to avoid duplication.
 | station-platform-navigation-tips-last-minute-boarders.md | Station platform navigation tips for last-minute boarders, locating coaches, and boarding safely | 2026-06-21 |
 | irctc-child-ticket-booking-rules-fares.md | Complete guide to Indian Railways child ticket booking rules, age limits, half fare vs full fare, and step-by-step IRCTC booking instructions | 2026-06-21 |
 | irctc-ticket-booking-limits-aadhaar-verification.md | A complete guide on IRCTC monthly ticket booking limits, Aadhaar link, and passenger verification | 2026-07-02 |
-| how-to-change-boarding-point-irctc-rules-process.md | How to change boarding station online in IRCTC, rules, and timelines | 2026-06-22 |
+| how-to-change-boarding-point-irctc-rules-process.md | Learn the new 2026 IRCTC boarding point change rules, timelines, and how to update it online or offline | 2026-07-02 |
 | irctc-regret-meaning-ticket-booking-rules.md | What Regret status means in IRCTC, how it differs from WL, and booking solutions | 2026-06-23 |
 | irctc-booking-timings-rules.md | Complete guide to IRCTC daily booking timings, midnight maintenance window shutdown, Tatkal opening hours, and current availability times | 2026-06-23 |
 | irctc-uts-app-booking-guide.md | IRCTC UTS App Booking: Rules, GPS Limits & Platform Tickets | 2026-06-23 |
