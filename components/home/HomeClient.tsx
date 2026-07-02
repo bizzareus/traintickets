@@ -657,6 +657,18 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               `[best-seat] cache HIT ${fromSt.stationCode}→${toSt.stationCode} ${journeyDate} · train ${cr.data.best.train.trainNumber} · cachedAt ${cr.data.cachedAt}`,
             );
             setCachedBest({ best: cr.data.best, cachedAt: cr.data.cachedAt });
+            trackAnalyticsEvent({
+              name: "best_available_tickets_route_cache_viewed",
+              properties: {
+                from_code: fromSt.stationCode,
+                to_code: toSt.stationCode,
+                journey_date: journeyDate,
+                train_number: cr.data.best.train.trainNumber,
+                train_name: cr.data.best.train.trainName,
+                is_complete: cr.data.best.isComplete,
+                total_fare: cr.data.best.totalFare,
+              },
+            });
           } else {
             console.info(
               `[best-seat] cache MISS ${fromSt.stationCode}→${toSt.stationCode} ${journeyDate} — showing live-scan CTA`,

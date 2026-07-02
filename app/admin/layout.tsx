@@ -17,6 +17,7 @@ export default function AdminLayout({
               <Link href="/admin/alerts" className="text-sm font-medium text-slate-600 hover:text-slate-900">Alerts</Link>
               <Link href="/admin/chart-time-ingestion" className="text-sm font-medium text-slate-600 hover:text-slate-900">Chart-time ingestion</Link>
               <Link href="/admin/reddit-gtm" className="text-sm font-medium text-slate-600 hover:text-slate-900">Reddit GTM</Link>
+              <Link href="/admin/best-seats-cron" className="text-sm font-medium text-slate-600 hover:text-slate-900">Best-seats cron</Link>
               <AdminLockButton />
             </nav>
           </div>

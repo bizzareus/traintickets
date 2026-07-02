@@ -6,6 +6,7 @@ import { ChartCronLeaderService } from '../chart-cron/chart-cron-leader.service'
 import { BookingV2Service } from './booking-v2.service';
 import { bestTrainsCacheKey, BestTrainsRouteCache } from './best-trains-cache';
 import { PostHogTopRoutesService } from './posthog-top-routes.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 /**
  * The curated popular routes to keep warm, as IRCTC station-code pairs.
@@ -55,11 +56,17 @@ export class BestSeatsCronService {
   private readonly logger = new Logger(BestSeatsCronService.name);
   private running = false;
 
+  private readonly ownerId =
+    process.env.RAILWAY_REPLICA_ID?.trim() ||
+    process.env.RAILWAY_DEPLOYMENT_ID?.trim() ||
+    null;
+
   constructor(
     private readonly bookingV2: BookingV2Service,
     private readonly bestTrainsCache: BestTrainsRouteCache,
     private readonly leader: ChartCronLeaderService,
     private readonly topRoutes: PostHogTopRoutesService,
+    private readonly prisma: PrismaService,
   ) {}
 
   private get enabled(): boolean {
@@ -164,18 +171,41 @@ export class BestSeatsCronService {
     });
     const batch = due.slice(0, maxPerTick);
 
+    const startedAt = new Date();
     let refreshed = 0;
     let failed = 0;
+    const routes: Array<{
+      from: string;
+      to: string;
+      date: string;
+      status: 'ok' | 'empty' | 'failed';
+      train: string | null;
+    }> = [];
     await this.mapWithConcurrency(batch, concurrency, async (combo) => {
       try {
-        await this.bookingV2.computeAndCacheBestTrain(
-          combo.from,
-          combo.to,
-          combo.date,
-        );
+        const { found, trainNumber } =
+          await this.bookingV2.computeAndCacheBestTrain(
+            combo.from,
+            combo.to,
+            combo.date,
+          );
         refreshed += 1;
+        routes.push({
+          from: combo.from,
+          to: combo.to,
+          date: combo.date,
+          status: found ? 'ok' : 'empty',
+          train: trainNumber,
+        });
       } catch (err) {
         failed += 1;
+        routes.push({
+          from: combo.from,
+          to: combo.to,
+          date: combo.date,
+          status: 'failed',
+          train: null,
+        });
         this.logger.warn(
           `[best-seats-cron] refresh failed ${combo.from}->${combo.to} ${combo.date}: ${err instanceof Error ? err.message : String(err)}`,
         );
@@ -189,6 +219,28 @@ export class BestSeatsCronService {
     this.logger.log(
       `[best-seats-cron] due=${due.length} batch=${batch.length} refreshed=${refreshed} failed=${failed} skipped=${combos.length - due.length}`,
     );
+
+    // Record the run for the admin dashboard (best-effort — never fail the tick).
+    try {
+      await this.prisma.bestSeatsCronRun.create({
+        data: {
+          startedAt,
+          finishedAt: new Date(),
+          durationMs: Date.now() - startedAt.getTime(),
+          due: due.length,
+          batch: batch.length,
+          refreshed,
+          failed,
+          skipped: combos.length - due.length,
+          routes,
+          ownerId: this.ownerId,
+        },
+      });
+    } catch (err) {
+      this.logger.warn(
+        `[best-seats-cron] failed to record run: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
   }
 
   private async mapWithConcurrency<T>(
