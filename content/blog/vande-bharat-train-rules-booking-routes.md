@@ -2,7 +2,7 @@
 title: "Vande Bharat Train Guide: Booking Rules, Routes & Ticket Fares"
 description: "WL full form is Waiting List. Check the ultimate guide to Vande Bharat train features, booking rules, ticket prices, catering options, and seat booking."
 date: "2026-06-30"
-updated: "2026-06-30"
+updated: "2026-07-02"
 tags:
   - vande bharat
   - vande bharat train
@@ -50,6 +50,14 @@ Meals are optional on some routes, but mandatory on others. If you choose "no fo
 
 ---
 
+## What Are the Vande Bharat Sleeper Trains and Their Routes?
+
+**The Vande Bharat Sleeper trains are Indian Railways' next-generation overnight trains designed for comfortable long-distance travel at speeds up to 160 km/h.** Undergoing fleet expansion trials out of SMVT Bengaluru, these trains will first connect key hubs like the Kamakhya–Howrah route, utilizing AC First Class, AC 2-Tier, and AC 3-Tier sleeping reservation classes.
+
+The sleeping compartments feature significant upgrades over standard LHB coaches, including passenger-friendly reading lights, charging ports for every berth, noise-insulated cabins, and improved suspension to reduce overnight vibrations. The Kamakhya–Howrah route will link Northeast India to West Bengal with a fast, overnight schedule.
+
+---
+
 ## What Should You Do if Vande Bharat Seats are Waitlisted?
 
 **When Vande Bharat seats are waitlisted, check the queue status. Since the WL full form is Waiting List, tickets progress from WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed. However, because Vande Bharat only has chair cars, there is no RAC category.**
@@ -79,6 +87,9 @@ No, Indian Railways does not offer senior citizen concessions on Vande Bharat tr
 
 ### What is a current available ticket in Vande Bharat?
 A `"current available ticket"` is a confirmed seat that becomes available after chart preparation (4 hours before departure). You can book these online or at the station until 30 minutes before the train starts.
+
+### Which classes are available in Vande Bharat Sleeper trains?
+Vande Bharat Sleeper trains offer overnight berths in AC 3-Tier (3A), AC 2-Tier (2A), and AC First Class (1A) configurations, featuring enhanced cushioning, charging ports for every berth, and reading lights.
 
 ### Can we travel on a waitlisted ticket in Vande Bharat?
 No, you cannot travel with a waitlisted e-ticket. If your ticket remains unconfirmed after the chart is prepared, it is automatically cancelled and refunded. Boarding with a waitlisted ticket carries heavy penalties.

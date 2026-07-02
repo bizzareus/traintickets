@@ -9,9 +9,15 @@ type IrctcBookingRedirectParams = {
  * Canonical IRCTC booking redirect URL used across web + backend notifications.
  * Keeps query parameter names and static page target consistent everywhere.
  */
-export function irctcBookingRedirect(params: IrctcBookingRedirectParams): string {
-  const from = String(params.from ?? "").trim().toUpperCase();
-  const to = String(params.to ?? "").trim().toUpperCase();
+export function irctcBookingRedirect(
+  params: IrctcBookingRedirectParams,
+): string {
+  const from = String(params.from ?? "")
+    .trim()
+    .toUpperCase();
+  const to = String(params.to ?? "")
+    .trim()
+    .toUpperCase();
   const trainNo = String(params.trainNo ?? "").trim();
   const classCode = String(params.classCode ?? "")
     .trim()
