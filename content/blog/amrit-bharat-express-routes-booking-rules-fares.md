@@ -16,6 +16,7 @@ tags:
 - The train operates with a **push-pull engine setup** at both ends, reaching a maximum speed of 130 km/h with faster acceleration.
 - Crucially, there is **no RAC (Reservation Against Cancellation) quota**; passengers either get a confirmed seat or remain waitlisted.
 - Fares are fixed and transparent, priced about 1.15 times standard express trains, with **no dynamic flexi-fare pricing**.
+- The Advance Reservation Period (ARP) is **60 days** (excluding date of journey) instead of 120 days.
 - The minimum chargeable distance is 200 km for Sleeper Class and 50 km for General Second Class tickets.
 
 ---
@@ -32,9 +33,9 @@ The train is aerodynamically designed and features a striking orange and grey co
 
 ## What are the Booking Rules for Amrit Bharat Express?
 
-**Amrit Bharat Express bookings open up to 120 days in advance, with tickets available online via the IRCTC portal and at physical railway reservation counters.** Crucially, there is **no provision for RAC (Reservation Against Cancellation) tickets** on these trains; passengers must hold either a fully confirmed seat or be waitlisted.
+**Amrit Bharat Express bookings open up to 60 days in advance, with tickets available online via the IRCTC portal and at physical railway reservation counters.** Crucially, there is **no provision for RAC (Reservation Against Cancellation) tickets** on these trains; passengers must hold either a fully confirmed seat or be waitlisted.
 
-The 120-day Advance Reservation Period (ARP) is standard across Indian Railways. However, the waitlisting mechanics on the Amrit Bharat Express feature a major departure from regular trains. In Indian Railways, the **WL full form is Waiting List**, representing a standby queue. Usually, waitlisted passengers progress through a step-by-step pipeline: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. 
+The 60-day Advance Reservation Period (ARP) is standard across Indian Railways (reduced from 120 days starting November 1, 2024). The waitlisting mechanics on the Amrit Bharat Express feature a major departure from regular trains. In Indian Railways, the **WL full form is Waiting List**, representing a standby queue. Usually, waitlisted passengers progress through a step-by-step pipeline: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. 
 
 On the Amrit Bharat Express, there are no RAC tickets. This means that if a confirmed passenger cancels, a passenger from the waiting list is promoted directly to a confirmed status. Your position queue number (such as `WL/1` or `WL/10`) determines your priority. If your online e-ticket remains on the waitlist after the final reservation chart preparation, it is automatically cancelled and refunded by the system. You cannot travel on a waitlisted e-ticket.
 
@@ -83,9 +84,9 @@ Although it is a non-AC service, the coach design draws heavily from premium Van
 
 ## How to Secure a Last-Minute Ticket on Amrit Bharat Express?
 
-**Passengers can book last-minute tickets on Amrit Bharat Express using current booking options online or at station ticket counters.** A current available ticket is a fully confirmed seat with assigned coach and berth numbers that opens after the first chart is prepared.
+**Passengers can book last-minute tickets on Amrit Bharat Express using current booking options online or at station ticket counters.** A current available ticket is a confirmed seat with assigned coach and berth numbers that opens after the first chart is prepared.
 
-If you miss the initial 120-day booking window and the Tatkal quota is sold out, you can look for current booking seats. Once the first reservation chart is prepared (typically 4 hours before scheduled departure), any unsold tickets from emergency quotas or late cancellations are put up for sale. 
+If you miss the initial 60-day booking window, you can check for current booking seats, as there is no Tatkal or Premium Tatkal quota on this train. Once the first reservation chart is prepared (typically 10 hours before scheduled departure), any unsold tickets from emergency quotas or late cancellations are put up for sale. 
 
 The current availability window closes 30 minutes before the train leaves the station. These tickets are sold at the normal rate without Tatkal premium surcharges. However, because Amrit Bharat Express is heavily utilized, these last-minute confirmed seats clear out extremely quickly.
 
@@ -94,22 +95,28 @@ The current availability window closes 30 minutes before the train leaves the st
 ## Common Booking Questions (FAQ)
 
 ### Does Amrit Bharat Express have AC coaches?
-No, the Amrit Bharat Express is a fully non-air-conditioned train. It consists of Sleeper Class (non-AC) and Unreserved General Second Class coaches. If you require air conditioning, you will need to book tickets on other premium trains like Vande Bharat, Rajdhani, or Duronto.
+
+**No, the Amrit Bharat Express is a fully non-air-conditioned train consisting only of Sleeper and General Second Class coaches.** If you require air conditioning, you will need to book tickets on other premium trains like Vande Bharat, Rajdhani, or Duronto.
 
 ### Can I travel on a waitlisted ticket on Amrit Bharat Express?
-No, you cannot travel on a waitlisted ticket. In Indian Railways, if an online e-ticket remains on the waitlist after chart preparation, the system automatically cancels it and processes a refund. Since there are no RAC seats on Amrit Bharat, you must have a confirmed ticket to board.
+
+**No, you cannot travel on a waitlisted ticket as Amrit Bharat Express does not feature RAC berths for standby travel.** If your online e-ticket remains on the waitlist after chart preparation, it is automatically cancelled and refunded.
 
 ### What is the minimum chargeable distance for Amrit Bharat Express?
-The minimum chargeable distance is 200 km for Sleeper Class (base fare starting at ₹149) and 50 km for General Second Class (base fare starting at ₹36). Even if your travel distance is shorter, you will be billed for the minimum distance.
+
+**The minimum chargeable distance is 200 km for Sleeper Class (₹149 minimum) and 50 km for General Second Class (₹36 minimum).** Even if your travel distance is shorter, you will be billed for the minimum distance.
 
 ### Is there a dynamic fare system in Amrit Bharat Express?
-No. Unlike Rajdhani, Shatabdi, or Duronto Express, the Amrit Bharat Express does not use dynamic pricing or flexi-fares. The base fares are fixed and are set at approximately 1.15 times the standard Mail or Express train fare.
+
+**No, the Amrit Bharat Express does not use a dynamic fare or flexi-pricing system, offering stable, fixed pricing instead.** Fares are set at approximately 1.15 times standard Mail/Express fares.
 
 ### Are bedrolls provided in Amrit Bharat Express?
-Since it is a fully non-AC train, bedrolls are not automatically provided or included in the ticket fare. Passengers are advised to carry their own blankets or pillows for overnight journeys.
+
+**No, bedrolls are not provided or included in the fare on the non-AC Amrit Bharat Express trains.** Passengers are advised to carry their own blankets or pillows for overnight journeys.
 
 ### How do I check seat availability and probability of confirmation?
-You can check seat availability and confirmation chances online. If your preferred train is showing a waitlist, you can check alternative paths or split journeys using LastBerth, or search PNR confirmation probabilities directly on our home page.
+
+**You can check confirmation probabilities and find alternative smart seats by using the waitlist predictor tool on LastBerth.** If your preferred train is showing a waitlist, you can find split journeys using our homepage tools.
 
 ---
 
