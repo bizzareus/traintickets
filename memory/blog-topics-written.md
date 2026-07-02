@@ -73,6 +73,7 @@ This file tracks all blog posts published to avoid duplication.
 | rajdhani-express-timings-routes-booking-rules.md | Rajdhani Express Guide: Timings, Booking Rules, Catering & Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-01 |
 | duronto-express-timings-routes-booking-rules.md | Duronto Express Guide: Timings, Booking Rules, Fares & Catering (EN + hi/mr/bn/ta/te/ml) | 2026-07-01 |
 | amrit-bharat-express-routes-booking-rules-fares.md | Amrit Bharat Express Guide: Routes, Booking Rules & Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
+| jan-shatabdi-express-timings-routes-tatkal-rules.md | Jan Shatabdi Express Guide: Timings, Routes, Classes, Tatkal Rules & Booking Process (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
 
 ## SEO triage actions (GSC / Google Trends driven)
 
