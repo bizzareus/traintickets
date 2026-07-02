@@ -62,7 +62,6 @@ export default function BestSeatsCronAdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
-  const [expanded, setExpanded] = useState<string | null>(null);
 
   useEffect(() => {
     setPassword(window.localStorage.getItem(PW_STORAGE_KEY) ?? "");
@@ -202,7 +201,7 @@ export default function BestSeatsCronAdminPage() {
                       <th className="py-2 pr-3">Refreshed</th>
                       <th className="py-2 pr-3">Failed</th>
                       <th className="py-2 pr-3">Due</th>
-                      <th className="py-2 pr-3">Routes</th>
+                      <th className="py-2 pr-3">Routes cached</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -231,17 +230,10 @@ export default function BestSeatsCronAdminPage() {
                         </td>
                         <td className="py-2 pr-3 text-slate-600">{r.due}</td>
                         <td className="py-2 pr-3">
-                          <button
-                            type="button"
-                            onClick={() =>
-                              setExpanded(expanded === r.id ? null : r.id)
-                            }
-                            className="text-blue-600 hover:underline"
-                          >
-                            {expanded === r.id ? "hide" : `${r.routes.length} routes`}
-                          </button>
-                          {expanded === r.id && (
-                            <div className="mt-2 flex flex-wrap gap-1.5">
+                          {r.routes.length === 0 ? (
+                            <span className="text-xs text-slate-400">—</span>
+                          ) : (
+                            <div className="flex flex-wrap gap-1.5">
                               {r.routes.map((rt, i) => (
                                 <span
                                   key={`${rt.from}-${rt.to}-${rt.date}-${i}`}
@@ -252,7 +244,13 @@ export default function BestSeatsCronAdminPage() {
                                         ? "bg-slate-100 text-slate-600"
                                         : "bg-red-50 text-red-700"
                                   }`}
-                                  title={`${rt.status}${rt.train ? ` · ${rt.train}` : ""}`}
+                                  title={
+                                    rt.status === "ok"
+                                      ? `cached${rt.train ? ` · train ${rt.train}` : ""}`
+                                      : rt.status === "empty"
+                                        ? "cached — no confirmed train found"
+                                        : "failed to compute"
+                                  }
                                 >
                                   {rt.from}→{rt.to} {rt.date.slice(5)}
                                   {rt.train ? ` · ${rt.train}` : ""}

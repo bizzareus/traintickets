@@ -70,6 +70,8 @@ export class BestSeatsCronService {
   ) {}
 
   private get enabled(): boolean {
+    // Never run on a dev machine — this hits IRCTC hard and writes shared cache.
+    if (process.env.NODE_ENV === 'development') return false;
     const v = process.env.BEST_SEATS_CACHE_ENABLED?.trim().toLowerCase();
     return v !== '0' && v !== 'false' && v !== 'no' && v !== 'off';
   }
