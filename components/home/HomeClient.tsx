@@ -118,6 +118,8 @@ type CachedBestTrain = {
     arrivalTime: string | null;
   };
   legs: CachedBestTrainLeg[];
+  /** Station code -> display name for the codes used in `legs` (may be absent on older cache rows). */
+  stationNames?: Record<string, string>;
   totalFare: number | null;
   isComplete: boolean;
   rankReason: string;
@@ -1163,40 +1165,96 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 </div>
 
                 <div className="mt-3 space-y-2">
-                  {cachedBest.best.legs
-                    .filter((l) => l.segmentKind === "confirmed")
-                    .map((l, i) => (
-                      <div
-                        key={`${l.from}-${l.to}-${i}`}
-                        className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2"
-                      >
-                        <span className="min-w-0 text-sm font-semibold text-slate-800">
-                          {l.from} → {l.to}
-                          {l.travelClass ? ` · ${l.travelClass}` : ""}
-                          {l.fare != null ? ` · ₹${l.fare}` : ""}
-                        </span>
-                        <a
-                          href={irctcBookingRedirect({
+                  {(() => {
+                    // Walk legs in journey order; confirmed hops render with a
+                    // Book Now, unconfirmed (check_realtime) hops render as an
+                    // amber "book at chart prep / via TTE" row. Merge consecutive
+                    // unconfirmed hops into one span so a long check-live tail
+                    // doesn't spam many rows.
+                    type Row = {
+                      from: string;
+                      to: string;
+                      confirmed: boolean;
+                      travelClass: string | null;
+                      fare: number | null;
+                    };
+                    const rows: Row[] = [];
+                    for (const l of cachedBest.best.legs) {
+                      if (l.segmentKind === "confirmed") {
+                        rows.push({
+                          from: l.from,
+                          to: l.to,
+                          confirmed: true,
+                          travelClass: l.travelClass,
+                          fare: l.fare,
+                        });
+                      } else {
+                        const prev = rows[rows.length - 1];
+                        if (prev && !prev.confirmed) {
+                          prev.to = l.to; // extend the unconfirmed span
+                        } else {
+                          rows.push({
                             from: l.from,
                             to: l.to,
-                            trainNo: cachedBest.best.train.trainNumber,
-                            classCode: l.travelClass,
-                          })}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white no-underline hover:bg-emerald-700"
+                            confirmed: false,
+                            travelClass: null,
+                            fare: null,
+                          });
+                        }
+                      }
+                    }
+                    // "Full Station Name (CODE)" using the names cached with the
+                    // result; falls back to the bare code on older cache rows.
+                    const nameOf = (code: string) => {
+                      const n =
+                        cachedBest.best.stationNames?.[
+                          code.trim().toUpperCase()
+                        ];
+                      return n && n.trim() ? `${n} (${code})` : code;
+                    };
+                    return rows.map((r, i) =>
+                      r.confirmed ? (
+                        <div
+                          key={`c-${r.from}-${r.to}-${i}`}
+                          className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2"
                         >
-                          Book Now →
-                        </a>
-                      </div>
-                    ))}
+                          <span className="min-w-0 text-sm font-semibold text-slate-800">
+                            {nameOf(r.from)} → {nameOf(r.to)}
+                            {r.travelClass ? ` · ${r.travelClass}` : ""}
+                            {r.fare != null ? ` · ₹${r.fare}` : ""}
+                          </span>
+                          <a
+                            href={irctcBookingRedirect({
+                              from: r.from,
+                              to: r.to,
+                              trainNo: cachedBest.best.train.trainNumber,
+                              classCode: r.travelClass,
+                            })}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white no-underline hover:bg-emerald-700"
+                          >
+                            Book Now →
+                          </a>
+                        </div>
+                      ) : (
+                        <div
+                          key={`u-${r.from}-${r.to}-${i}`}
+                          className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2"
+                        >
+                          <span className="text-sm font-semibold text-slate-800">
+                            {nameOf(r.from)} → {nameOf(r.to)}
+                          </span>
+                          <p className="mt-0.5 text-xs font-medium text-amber-700">
+                            Not confirmed yet — no confirmed seat on this stretch.
+                            Book once the chart is prepared, or board and pay the
+                            TTE.
+                          </p>
+                        </div>
+                      ),
+                    );
+                  })()}
                 </div>
-
-                {!cachedBest.best.isComplete && (
-                  <p className="mt-2 text-xs font-medium text-amber-700">
-                    Partly confirmed — tap More options to check the rest live.
-                  </p>
-                )}
 
                 <div className="mt-3 flex items-center justify-between gap-2">
                   <span className="text-xs text-slate-400">
