@@ -2,9 +2,11 @@ import {
   Controller,
   Get,
   Headers,
+  Post,
   UnauthorizedException,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { BestSeatsCronService } from './best-seats-cron.service';
 
 /**
  * Admin dashboard data for the best-seats cache cron: recent runs (when it ran,
@@ -14,7 +16,23 @@ import { PrismaService } from '../prisma/prisma.service';
  */
 @Controller('api/admin/best-seats-cron')
 export class BestSeatsCronController {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly cron: BestSeatsCronService,
+  ) {}
+
+  /**
+   * Force one refresh pass now, bypassing the schedule / dev gate / leader lease.
+   * Handy for populating the cache locally or on demand. Runs synchronously and
+   * can take a while (multiple full best-train scans), so give it a long client
+   * timeout. Combos already fresh (< BEST_SEATS_REFRESH_MS) are skipped — set
+   * BEST_SEATS_REFRESH_MS=1 to force-refresh everything.
+   */
+  @Post('run')
+  async run(@Headers('x-admin-password') pw?: string) {
+    this.assertPassword(pw);
+    return this.cron.runNow();
+  }
 
   private assertPassword(pw?: string): void {
     const expected = String(

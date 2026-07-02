@@ -97,6 +97,32 @@ export class BestSeatsCronService {
   }
 
   /**
+   * Run one refresh pass on demand — bypasses the 5-min schedule, the
+   * NODE_ENV=development gate, and the leader lease (for a manual admin/local
+   * trigger). Still respects the in-process `running` guard so it won't overlap a
+   * scheduled tick. Only combos that are missing or older than BEST_SEATS_REFRESH_MS
+   * are recomputed; set BEST_SEATS_REFRESH_MS low (e.g. 1) to force-refresh all.
+   */
+  async runNow(): Promise<{ ok: boolean; error?: string }> {
+    if (this.running) return { ok: false, error: 'a run is already in progress' };
+    this.running = true;
+    try {
+      this.logger.log('[best-seats-cron] manual run triggered');
+      await this.refreshDueEntries();
+      return { ok: true };
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      this.logger.error(`[best-seats-cron] manual run failed: ${msg}`);
+      captureSentryException(err, {
+        tags: { service: 'best-seats-cron', trigger: 'manual' },
+      });
+      return { ok: false, error: msg };
+    } finally {
+      this.running = false;
+    }
+  }
+
+  /**
    * All (route, date) combos to keep warm across today + the next 5 days: the
    * curated popular routes plus the top routes users actually search (pulled from
    * PostHog, deduped). PostHog results are cached in-process for an hour, so
