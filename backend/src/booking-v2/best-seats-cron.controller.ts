@@ -27,10 +27,13 @@ export class BestSeatsCronController {
    * can take a while (multiple full best-train scans), so give it a long client
    * timeout. Combos already fresh (< BEST_SEATS_REFRESH_MS) are skipped — set
    * BEST_SEATS_REFRESH_MS=1 to force-refresh everything.
+   *
+   * Authenticated with the dedicated BEST_SEATS_CRON_API_KEY (x-api-key header),
+   * not the admin password — this is a machine/automation trigger.
    */
   @Post('run')
-  async run(@Headers('x-admin-password') pw?: string) {
-    this.assertPassword(pw);
+  async run(@Headers('x-api-key') apiKey?: string) {
+    this.assertApiKey(apiKey);
     return this.cron.runNow();
   }
 
@@ -43,6 +46,19 @@ export class BestSeatsCronController {
     }
     if (String(pw ?? '') !== expected) {
       throw new UnauthorizedException('Invalid admin password.');
+    }
+  }
+
+  /** Machine auth for the run trigger: a dedicated API key (x-api-key header). */
+  private assertApiKey(key?: string): void {
+    const expected = String(process.env.BEST_SEATS_CRON_API_KEY ?? '').trim();
+    if (!expected) {
+      throw new UnauthorizedException(
+        'BEST_SEATS_CRON_API_KEY is not configured.',
+      );
+    }
+    if (String(key ?? '') !== expected) {
+      throw new UnauthorizedException('Invalid API key.');
     }
   }
 
