@@ -369,17 +369,16 @@ Before finalising, re-read and fix any of these tells:
   final status and **book through your authorized channel** (IRCTC / counter).
 
 ## 17. Multi-agent execution (Antigravity capability)
-You may spin up specialised subagents to divide the work. A reliable pipeline:
-1. **Strategist** — runs GSC/Trends triage (Part B), picks the target + action
-   (EXPAND/REFRESH/WRITE NEW/CONSOLIDATE), and drafts the H2 question cluster + FAQ list.
-2. **Writer** — produces the English markdown to the Part C template and canonical facts.
-3. **AI-Bypass Editor** — humanises flagged sentences against §15; enforces the 40–60 word
-   direct-answer rule and the no-fluff/no-em-dash style.
-4. **Linguist Translator** — for each of hi/mr/bn/ta/te/ml, produces idiomatic, native-quality
-   translations preserving structure, links, and English abbreviations (Part E §12).
-5. **Compliance Auditor** — verifies frontmatter (char limits, `updated` bumped), the FAQ
-   schema contract (§7), slug consistency across all 7 files, no duplicate topic (Part F),
-   and that no code files were touched.
+You must leverage the multi-agent capabilities of Antigravity by spinning up specialized subagents to divide the research and writing tasks. Specifically, you must spin up agents to do the following 3 signal-gathering tasks:
+1. **Google Trends Analyst** — Visits the Google Trends IRCTC explore URL (`https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`) to pull the top trending or breakout keywords and identify immediate search spikes.
+2. **Google News Researcher** — Searches Google News for any fresh articles, announcements, policy updates, or press releases regarding IRCTC or trains in India.
+3. **GSC Performance Auditor** — Inspects Google Search Console results and queries to identify low-CTR or bottom-of-page-1 keywords (positions 5–20) that have high impressions and are ripe for content expansion or new coverage.
+
+Once these signal-gathering subagents compile their findings, you will triage the candidates, choose the topic, and spin up:
+- **Writer** — to produce the English markdown following the Part C template and canonical facts.
+- **AI-Bypass Editor** — to humanize sentences against §15, enforce the 40–60 word direct-answer rule, and eliminate AI-tells.
+- **Linguist Translator** — to generate native-quality localized translations (`hi, mr, bn, ta, te, ml`) using identical slug structures.
+- **Compliance Auditor** — to verify YAML frontmatter, character limits, parser schema safety, and ensure no source code is modified.
 
 ## 18. Definition of Done (all must be true before commit)
 - [ ] English post follows the template, question-H2s, 40–60 word answers, tables where apt.
