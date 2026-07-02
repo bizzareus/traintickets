@@ -46,7 +46,7 @@ This file tracks all blog posts published to avoid duplication.
 | how-to-change-boarding-point-irctc-rules-process.md | Learn the new 2026 IRCTC boarding point change rules, timelines, and how to update it online or offline | 2026-07-02 |
 | irctc-regret-meaning-ticket-booking-rules.md | What Regret status means in IRCTC, how it differs from WL, and booking solutions | 2026-06-23 |
 | irctc-booking-timings-rules.md | Complete guide to IRCTC daily booking timings, midnight maintenance window shutdown, Tatkal opening hours, and current availability times | 2026-06-23 |
-| irctc-uts-app-booking-guide.md | IRCTC UTS App Booking: Rules, GPS Limits & Platform Tickets | 2026-06-23 |
+| irctc-uts-app-booking-guide.md | RailOne app migration guide, UTS wallet transfer, GPS limits, and unreserved ticketing | 2026-07-02 |
 | irctc-counter-ticket-vs-eticket.md | IRCTC Counter Ticket vs E-Ticket: Rules, Booking, and Cancellation Differences | 2026-06-24 |
 | two-stop-rule-irctc-missed-train-rules.md | Indian Railways Two-Stop Rule: Missed Train Rules & Facts | 2026-06-25 |
 | live-train-running-status-where-is-my-train.md | Live train running status: NTES Spot Your Train, Where Is My Train app, SMS 139, RTIS GPS tracking, platform numbers (EN + hi/mr/bn/ta/te/ml) | 2026-06-26 |
