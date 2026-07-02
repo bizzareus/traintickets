@@ -39,7 +39,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     id: "wl",
     term: "WL (Waiting List)",
     definition:
-      "WL stands for Waiting List, which is the full form of WL in railway bookings. A WL status means your ticket is placed in a queue but does not have a confirmed berth yet. Fully waitlisted e-tickets are automatically cancelled and refunded after chart preparation, meaning you cannot board the train on a WL status.",
+      "The full form of WL in railway is Waiting List.",
     relatedTerms: ["rac", "cnf", "gnwl"],
   },
   {

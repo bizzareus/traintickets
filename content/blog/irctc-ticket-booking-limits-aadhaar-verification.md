@@ -2,7 +2,7 @@
 title: "How Many Tickets Can You Book on IRCTC in a Month? Limits Explained"
 description: "IRCTC lets you book 12 tickets a month, or 24 with Aadhaar verification. Full breakdown of the monthly ticket limit, plus per account, per day, per booking, master list and Tatkal rules."
 date: "2026-06-22"
-updated: "2026-07-01"
+updated: "2026-07-02"
 tags:
   - train booking
   - irctc
@@ -15,10 +15,14 @@ Have you ever tried booking train tickets for a family reunion or a big group of
 
 **You can book up to 12 train tickets in a calendar month from a standard, unverified IRCTC account. If you link your Aadhaar card to your IRCTC profile and verify at least one passenger on each booking, the monthly limit doubles to 24 tickets per user ID.** This count resets automatically on the 1st day of every month and includes all types of ticket bookings, such as general quota, Tatkal, and Premium Tatkal.
 
-| Account type | Monthly ticket limit | Requirement |
+| Booking Type / Limit Category | Limit Value | Key Rule & Requirement |
 | :--- | :--- | :--- |
-| Unverified IRCTC account | 12 tickets | None (standard booking) |
-| Aadhaar-verified account | 24 tickets | At least 1 passenger on the ticket is Aadhaar-verified in your Master List |
+| **Monthly booking (Unverified)** | 12 tickets | Standard account with no identity verification. |
+| **Monthly booking (Aadhaar-verified)** | 24 tickets | Account linked to Aadhaar + at least one verified passenger on booking. |
+| **Daily Tatkal booking limit** | 2 tickets | Maximum of two Tatkal PNRs booked per day per user ID. |
+| **Peak-hour session booking limit** | 2 tickets | Applies during 8:00 AM – 12:00 noon (General & Tatkal openings). |
+| **Max passengers (General)** | 6 passengers | Per single booking / PNR. |
+| **Max passengers (Tatkal)** | 4 passengers | Per single booking / PNR. |
 
 Indian Railways introduced this limit to curb the black market, where unauthorized agents buy tickets in bulk and resell them. For a regular traveller, 12 a month is usually plenty, but a large family or a frequent traveller can burn through it fast. Once you hit the wall, you cannot book again from that ID until the counter resets on the first day of the next month, so it pays to set up your Aadhaar link before you actually need it.
 
@@ -28,13 +32,9 @@ These all mean the same thing. **The limit is counted per IRCTC user ID (one acc
 
 ## How many tickets can you book per day on IRCTC?
 
-There is **no separate daily cap** on normal bookings, you can use your full monthly allowance in a single day if you want. The one exception is the busy morning windows, where IRCTC restricts individual users to **2 tickets per user ID per session**:
+There is **no separate daily cap on normal bookings, but you can only book up to 2 Tatkal tickets per day per user ID.** Additionally, during peak hours (8:00 AM to 12:00 noon), IRCTC restricts individual users to a maximum of 2 tickets per session across all booking types to prevent hoarding.
 
-- 8:00 AM to 10:00 AM (general advance-reservation opening)
-- 10:00 AM to 11:00 AM (AC Tatkal)
-- 11:00 AM to 12:00 noon (non-AC Tatkal)
-
-This rule exists to stop agents from hogging seats the moment booking opens. Outside these windows, only your monthly limit applies.
+This daily Tatkal restriction ensures that users cannot monopolize last-minute seats. Outside these peak windows and Tatkal limitations, only your monthly limit applies.
 
 ## How many passengers can you book on one ticket?
 
@@ -67,6 +67,12 @@ A common mistake is thinking that verifying your own account is enough. It isn't
 
 When booking, choose the verified passenger from the list. If you type their details manually at checkout, the system won't recognize the verification and the booking fails.
 
+## What are the peak-hour priority Aadhaar validation rules on IRCTC?
+
+**During the high-traffic peak hours of 8:00 AM to 12:00 PM, IRCTC enforces priority validation rules that prioritize bookings from Aadhaar-verified accounts.** Verified users benefit from faster checkout processing and bypass strict bot-detection screens, while unverified accounts face extra security checks, CAPTCHAs, and higher checkout failure rates.
+
+This prioritization helps genuine travellers book tickets successfully before seats run out, particularly during the opening minutes of general reservations (8:00 AM) and Tatkal bookings (10:00 AM for AC, 11:00 AM for non-AC). Because the system checks linked credentials pre-session, verified profiles experience reduced latency and a much higher chance of securing a confirmed berth.
+
 ## What happens when you reach the monthly limit?
 
 You simply cannot book any more tickets from that user ID until the limit resets at midnight on the 1st of the next calendar month. Cancelling a ticket does **not** give the slot back, a booked ticket still counts even after cancellation. If you are stuck mid-month, your options are to get your Aadhaar verified to unlock 24, or book from a different family member's IRCTC account.
@@ -81,7 +87,10 @@ Here are the most common questions about how many tickets you can book on IRCTC.
 Up to 12 tickets per calendar month on a normal IRCTC account, or 24 tickets if your account is Aadhaar-linked and at least one passenger on each ticket beyond the first 12 is Aadhaar-verified.
 
 ### How many tickets can I book on IRCTC in a day?
-There is no separate daily limit for normal bookings, you can use your whole monthly quota in one day. During the peak windows (8 to 10 AM, and the 10 to 11 AM and 11 to 12 noon Tatkal slots), individual users are capped at 2 tickets per session.
+There is no separate daily limit for normal bookings, you can use your whole monthly quota in one day. However, you can only book up to 2 Tatkal tickets per day per user ID. During the peak windows (8:00 AM to 12:00 noon), individual users are capped at 2 tickets per session.
+
+### What are the peak-hour priority Aadhaar validation rules?
+During high-traffic peak hours (8:00 AM to 12:00 PM), IRCTC fast-tracks transactions from Aadhaar-verified profiles. Linking Aadhaar helps bypass strict bot-detection queues and extra verification steps, yielding higher checkout success rates than unverified accounts.
 
 ### What is the IRCTC ticket limit per user or per account?
 The limit is 12 (or 24 with Aadhaar) per IRCTC user ID. It is counted per account, not per person, card or device. Separate accounts each get their own monthly limit.

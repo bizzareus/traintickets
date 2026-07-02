@@ -2,7 +2,7 @@
 title: "IRCTC Current Availability Explained: What It Is, When It Opens, and How to Use It"
 description: "Everything you need to know about IRCTC current availability — how it differs from general availability, when the vacancy chart is prepared, and practical strategies for booking last-minute confirmed tickets."
 date: "2026-06-11"
-updated: "2026-07-01"
+updated: "2026-07-02"
 tags:
   - current availability
   - vacancy chart
@@ -23,6 +23,22 @@ tags:
 - You can book current availability tickets on the IRCTC website or app up to 30 minutes before the train's scheduled departure.
 - There are no extra charges — you pay the base fare, and sometimes even get up to a 10% last-minute discount on vacant berths.
 - Current availability is not the same as Tatkal. Tatkal is a separate quota that opens one day before departure. Current availability appears much later, after charting.
+
+---
+
+## What is the booking time for IRCTC Current Availability?
+
+The booking time for IRCTC current availability starts from the preparation of the first chart (usually 4 hours before departure) and closes exactly 30 minutes before the train's scheduled departure from its originating station. For early morning trains, current booking is open overnight starting from the previous evening's chart preparation.
+
+Below is a structured guide detailing the exact booking times and current availability windows based on train departure times:
+
+| Train Departure Time | First Chart Prepared (Booking Opens) | Booking Closes | Example Scenario |
+| :--- | :--- | :--- | :--- |
+| **Early Morning (12:00 AM – 8:00 AM)** | Previous night between **8:00 PM and 11:00 PM** | 30 minutes before departure | A train departing at 6:00 AM opens for current booking at 9:00 PM the night before. |
+| **Mid-Day & Afternoon (8:00 AM – 6:00 PM)** | **4 hours before scheduled departure** | 30 minutes before departure | A train departing at 4:00 PM opens for current booking at 12:00 PM noon. |
+| **Evening & Night (6:00 PM – 12:00 AM)** | **4 hours before scheduled departure** | 30 minutes before departure | A train departing at 9:30 PM opens for current booking at 5:30 PM. |
+
+---
 
 ## What is Current Availability in IRCTC?
 
@@ -58,18 +74,6 @@ A few practical nuances people miss:
 - Between the first and second chart, more cancellations can trickle in. The second chart is your last realistic window.
 
 For a detailed breakdown of chart timing across different train types, see the [IRCTC chart preparation guide](/blog/irctc-chart-preparation-guide).
-
-## What is the booking time for IRCTC Current Availability?
-
-The booking time for IRCTC current availability starts from the preparation of the first chart (usually 4 hours before departure) and closes exactly 30 minutes before the train's scheduled departure from its originating station. For early morning trains, current booking is open overnight starting from the previous evening's chart preparation.
-
-Below is a structured guide detailing the exact booking times and current availability windows based on train departure times:
-
-| Train Departure Time | First Chart Prepared (Booking Opens) | Booking Closes | Example Scenario |
-| :--- | :--- | :--- | :--- |
-| **Early Morning (12:00 AM – 8:00 AM)** | Previous night between **8:00 PM and 11:00 PM** | 30 minutes before departure | A train departing at 6:00 AM opens for current booking at 9:00 PM the night before. |
-| **Mid-Day & Afternoon (8:00 AM – 6:00 PM)** | **4 hours before scheduled departure** | 30 minutes before departure | A train departing at 4:00 PM opens for current booking at 12:00 PM noon. |
-| **Evening & Night (6:00 PM – 12:00 AM)** | **4 hours before scheduled departure** | 30 minutes before departure | A train departing at 9:30 PM opens for current booking at 5:30 PM. |
 
 ## Is a current available ticket confirmed or not?
 

@@ -22,16 +22,16 @@ This file tracks all blog posts published to avoid duplication.
 | family-group-train-booking-adjacent-berths-irctc.md | Securing Adjacent Berths on IRCTC — Family Booking Survival Guide | 2026-05-31 |
 | ultimate-tatkal-booking-guide-speed-hacks.md | Tatkal & Premium Tatkal booking tactics, speed hacks, and cancellation rules | 2026-06-01 |
 | irctc-special-quotas-senior-citizen-ladies-disability-lower-berth.md | IRCTC Special Quotas: How to Secure Lower Berths for Seniors, Ladies, and Divyangjan Travelers | 2026-06-02 |
-| irctc-cancellation-refund-rules-tdr-guide.md | The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing | 2026-06-10 |
+| irctc-cancellation-refund-rules-tdr-guide.md | The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing | 2026-07-02 |
 | understanding-coach-composition-find-train-platform.md | Indian Railways Coach Composition: How to Locate Your Train Coach on the Platform Without Panic | 2026-06-10 |
 | irctc-partial-confirmation-rules-waitlist-travel-guide.md | IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers | 2026-06-11 |
 | wl-waiting-list-meaning-indian-railway.md | WL Full Form in Railway: What WL Means in Train Booking & How Waiting List Works | 2026-06-11 |
-| irctc-current-availability-explained.md | IRCTC Current Availability Explained: What It Is, When It Opens, and How to Use It | 2026-06-11 |
+| irctc-current-availability-explained.md | IRCTC Current Availability Explained: What It Is, When It Opens, and How to Use It | 2026-07-02 |
 | train-berth-types-availability-reservation-guide.md | Train Berths in India: Types, Availability, and How Berth Reservation Actually Works | 2026-06-11 |
 | travel-sleeper-ac-class-general-platform-ticket.md | Can you travel in Sleeper/AC with a General/Platform ticket | 2026-06-12 |
 | how-to-transfer-confirmed-train-ticket-another-person.md | How to transfer a confirmed train ticket to a family member | 2026-06-13 |
 | irctc-app-vs-website-tatkal-booking.md | IRCTC App vs. Website: Which is Faster for Tatkal Ticket Booking? | 2026-06-14 |
-| irctc-auto-upgradation-rules-secrets.md | IRCTC Auto Upgradation: How It Works, Rules, and Secrets to Get a Free Upgrade | 2026-06-16 |
+| irctc-auto-upgradation-rules-secrets.md | IRCTC Auto Upgradation: How It Works, Rules, and Secrets to Get a Free Upgrade | 2026-07-02 |
 | how-to-book-train-tickets-in-india-for-foreigners-ultimate-guide.md | How to Book Train Tickets in India for Foreigners: The Ultimate Guide | 2026-06-17 |
 | how-to-travel-with-dog-cat-indian-railways-pet-rules.md | How to Travel with a Dog in Indian Trains: Pet Booking Rules | 2026-06-17 |
 | irctc-retiring-room-booking-rules-dormitory.md | IRCTC Retiring Room Booking: Book Cheap Station Rooms | 2026-06-18 |
@@ -42,7 +42,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-ewallet-registration-booking-payment-guide.md | A complete guide on how to register for IRCTC e-Wallet, complete PAN/Aadhaar verification, deposit money, and make fast payments for train tickets | 2026-06-21 |
 | station-platform-navigation-tips-last-minute-boarders.md | Station platform navigation tips for last-minute boarders, locating coaches, and boarding safely | 2026-06-21 |
 | irctc-child-ticket-booking-rules-fares.md | Complete guide to Indian Railways child ticket booking rules, age limits, half fare vs full fare, and step-by-step IRCTC booking instructions | 2026-06-21 |
-| irctc-ticket-booking-limits-aadhaar-verification.md | A complete guide on IRCTC monthly ticket booking limits, Aadhaar link, and passenger verification | 2026-07-01 |
+| irctc-ticket-booking-limits-aadhaar-verification.md | A complete guide on IRCTC monthly ticket booking limits, Aadhaar link, and passenger verification | 2026-07-02 |
 | how-to-change-boarding-point-irctc-rules-process.md | How to change boarding station online in IRCTC, rules, and timelines | 2026-06-22 |
 | irctc-regret-meaning-ticket-booking-rules.md | What Regret status means in IRCTC, how it differs from WL, and booking solutions | 2026-06-23 |
 | irctc-booking-timings-rules.md | Complete guide to IRCTC daily booking timings, midnight maintenance window shutdown, Tatkal opening hours, and current availability times | 2026-06-23 |
@@ -64,7 +64,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-travel-insurance-rules-coverage-claim-guide.md | IRCTC Travel Insurance: Rules, Coverage & Nominee Guide (EN + hi/mr/bn/ta/te/ml) | 2026-06-29 |
 | ttr-full-form-in-train.md | TTR Full Form in Train: TTR vs TTE & IRCTC Ticket Rules (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | delhi-to-goa-train-guide.md | Delhi to Goa Train Guide: Best Trains, Fares & Booking Tips (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
-| vande-bharat-train-rules-booking-routes.md | Vande Bharat Train Guide: Booking Rules, Routes & Ticket Fares (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
+| vande-bharat-train-rules-booking-routes.md | Vande Bharat Train Guide: Booking Rules, Routes & Ticket Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
 | vande-bharat-routes-manufacturing-guide.md | Vande Bharat Routes: Stops, Manufacturing, and Latest News (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | toy-train-routes-booking-india-guide.md | Toy Train Booking in India: Routes, Fares & Heritage Guide (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | bullet-train-india-routes-speed-status.md | Bullet Train in India: Routes, Speed, and Project Status (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
@@ -75,6 +75,9 @@ This file tracks all blog posts published to avoid duplication.
 | amrit-bharat-express-routes-booking-rules-fares.md | Amrit Bharat Express Guide: Routes, Booking Rules & Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
 | jan-shatabdi-express-timings-routes-tatkal-rules.md | Jan Shatabdi Express Guide: Timings, Routes, Classes, Tatkal Rules & Booking Process (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
 | tejas-express-timings-routes-booking-rules.md | Tejas Express Guide: Timings, Routes, Fares & Booking Rules (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
+| jan-vishwas-act-railway-rules-decriminalization-penalties.md | Jan Vishwas Act 2026 railway rules, decriminalized offenses, civil penalties, and the 10% escalator clause | 2026-07-02 |
+| new-indian-railways-fines-jan-vishwas-act.md | Indian Railways Fines 2026: Jan Vishwas Act Penalty List (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
+
 
 ## SEO triage actions (GSC / Google Trends driven)
 
