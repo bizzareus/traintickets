@@ -3,12 +3,14 @@ import {
   Body,
   Controller,
   Get,
+  Headers,
   HttpCode,
   HttpStatus,
   Param,
   Post,
   Query,
   ServiceUnavailableException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { AvailabilityService } from './availability.service';
 import { JourneyTaskService } from './journey-task.service';
@@ -410,6 +412,33 @@ export class AvailabilityController {
           : null,
       })),
     };
+  }
+
+  /** Admin gate — same x-admin-password the other admin tools use. */
+  private assertAdmin(pw?: string): void {
+    const expected = String(
+      process.env.CHART_TIME_INGESTION_PASSWORD ?? '',
+    ).trim();
+    if (!expected) throw new UnauthorizedException('Admin password not set.');
+    if (String(pw ?? '') !== expected) {
+      throw new UnauthorizedException('Invalid admin password.');
+    }
+  }
+
+  /** Recent chart-notification cron runs (per-tick log) for the admin viewer. */
+  @Get('admin/cron-runs')
+  async cronRuns(
+    @Headers('x-admin-password') pw: string | undefined,
+    @Query('limit') limit?: string,
+    @Query('status') status?: string,
+  ) {
+    this.assertAdmin(pw);
+    const runs = await this.journeyTask.getRecentCronRuns({
+      cronName: 'chart-notification',
+      limit: limit ? Number.parseInt(limit, 10) : 120,
+      status: status?.trim() || undefined,
+    });
+    return { runs };
   }
 
   @Post('admin/alerts/:id/trigger')

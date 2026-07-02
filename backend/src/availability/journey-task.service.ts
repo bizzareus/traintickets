@@ -830,6 +830,23 @@ export class JourneyTaskService {
    * by calling the Service2 check API internally to find available seats.
    * Called by cron every minute.
    */
+  /** Recent cron run/tick logs for the admin viewer. */
+  async getRecentCronRuns(opts?: {
+    limit?: number;
+    cronName?: string;
+    status?: string;
+  }) {
+    const limit = Math.min(Math.max(opts?.limit ?? 120, 1), 500);
+    return this.prisma.cronRunLog.findMany({
+      where: {
+        ...(opts?.cronName ? { cronName: opts.cronName } : {}),
+        ...(opts?.status ? { status: opts.status } : {}),
+      },
+      orderBy: { startedAt: 'desc' },
+      take: limit,
+    });
+  }
+
   /** Persist one cron run/tick (best-effort — never throws into the cron). */
   async logCronRun(entry: {
     cronName: string;
