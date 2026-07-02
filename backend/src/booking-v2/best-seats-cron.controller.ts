@@ -83,6 +83,7 @@ export class BestSeatsCronController {
   }
 
   private cronEnabled(): boolean {
+    if (process.env.NODE_ENV === 'development') return false;
     const v = process.env.BEST_SEATS_CACHE_ENABLED?.trim().toLowerCase();
     return v !== '0' && v !== 'false' && v !== 'no' && v !== 'off';
   }

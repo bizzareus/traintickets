@@ -118,6 +118,8 @@ type CachedBestTrain = {
     arrivalTime: string | null;
   };
   legs: CachedBestTrainLeg[];
+  /** Station code -> display name for the codes used in `legs` (may be absent on older cache rows). */
+  stationNames?: Record<string, string>;
   totalFare: number | null;
   isComplete: boolean;
   rankReason: string;
@@ -1109,108 +1111,196 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             className="mb-5 rounded-xl border border-blue-100 bg-white p-4 shadow-sm"
             aria-labelledby="best-train-finder-heading"
           >
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h2
-                  id="best-train-finder-heading"
-                  className="text-base font-bold text-slate-950"
-                >
-                  Want us to scan every train below?
-                </h2>
-                <p className="mt-1 text-sm text-slate-600">
-                  We&apos;ll check all {trains.length} listed train
-                  {trains.length === 1 ? "" : "s"} and rank the best confirmed
-                  ticket combinations from {fromSt?.stationCode ?? "origin"}.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => void runBestTrainSearch()}
-                disabled={bestTrainLoading}
-                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-slate-950 px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {bestTrainLoading ? "Checking trains…" : "Find best tickets"}
-              </button>
-            </div>
-
             {cachedBest &&
-              !bestTrainResult &&
-              !bestTrainLoading &&
-              !bestTrainError && (
-                <div className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50/60 p-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-600 px-2 py-1 text-xs font-bold text-white">
-                      Best seat ready
-                    </span>
-                    <span className="text-xs font-medium text-slate-500">
-                      Updated{" "}
-                      {new Date(cachedBest.cachedAt).toLocaleString("en-IN", {
-                        day: "numeric",
-                        month: "short",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </span>
-                  </div>
-                  <div className="mt-3 rounded-lg border border-slate-200 bg-white p-3">
-                    <h3 className="font-bold text-slate-950">
+            !bestTrainResult &&
+            !bestTrainLoading &&
+            !bestTrainError ? (
+              <div>
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <h2
+                      id="best-train-finder-heading"
+                      className="text-base font-bold text-slate-950"
+                    >
+                      Found the best seats available for you to reach{" "}
+                      {toSt?.stationName || toSt?.stationCode || "your destination"}
+                    </h2>
+                    <p className="mt-1 text-sm font-semibold text-slate-900">
                       {cachedBest.best.train.trainNumber}{" "}
                       {cachedBest.best.train.trainName}
-                    </h3>
-                    <p className="mt-1 text-sm text-slate-600">
-                      {formatTimeAmPm(cachedBest.best.train.departureTime) ??
-                        "—"}{" "}
-                      →{" "}
-                      {formatTimeAmPm(cachedBest.best.train.arrivalTime) ?? "—"}
-                    </p>
-                    <p className="mt-2 text-sm font-semibold text-emerald-800">
-                      {cachedBest.best.rankReason}
-                    </p>
-                    {cachedBest.best.legs.filter(
-                      (l) => l.segmentKind === "confirmed",
-                    ).length > 0 && (
-                      <div className="mt-2 flex flex-wrap gap-1.5">
-                        {cachedBest.best.legs
-                          .filter((l) => l.segmentKind === "confirmed")
-                          .map((l, i) => (
-                            <span
-                              key={`${l.from}-${l.to}-${i}`}
-                              className="rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800"
-                            >
-                              {l.from} → {l.to}
-                              {l.travelClass ? ` · ${l.travelClass}` : ""}
-                              {l.fare != null ? ` · ₹${l.fare}` : ""}
-                            </span>
-                          ))}
-                      </div>
-                    )}
-                    <div className="mt-2 flex flex-wrap gap-2 text-xs font-semibold">
-                      <span
-                        className={cn(
-                          "rounded-md px-2 py-1",
-                          cachedBest.best.isComplete
-                            ? "bg-emerald-100 text-emerald-800"
-                            : "bg-amber-100 text-amber-800",
-                        )}
-                      >
-                        {cachedBest.best.isComplete
-                          ? "Confirmed all the way"
-                          : "Partly confirmed — check the rest live"}
+                      <span className="ml-2 font-normal text-slate-500">
+                        {formatTimeAmPm(cachedBest.best.train.departureTime) ??
+                          "—"}{" "}
+                        →{" "}
+                        {formatTimeAmPm(cachedBest.best.train.arrivalTime) ??
+                          "—"}
                       </span>
-                      {cachedBest.best.totalFare != null && (
-                        <span className="rounded-md bg-slate-100 px-2 py-1 text-slate-700">
-                          ₹{cachedBest.best.totalFare}
-                        </span>
-                      )}
-                    </div>
+                    </p>
+                    {(() => {
+                      // With city-hub caching a hit may be for a sibling station
+                      // (e.g. searched DEE, best train departs NDLS). Surface the
+                      // real boarding point so it isn't misleading.
+                      const boarding = cachedBest.best.legs.find(
+                        (l) => l.segmentKind === "confirmed",
+                      )?.from;
+                      return boarding &&
+                        fromSt &&
+                        boarding !== fromSt.stationCode ? (
+                        <p className="mt-1 text-xs font-medium text-amber-700">
+                          Departs from {boarding} (near {fromSt.stationCode})
+                        </p>
+                      ) : null;
+                    })()}
                   </div>
-                  <p className="mt-2 text-xs text-slate-500">
-                    Cached from a recent scan. Tap{" "}
-                    <span className="font-semibold">Find best tickets</span> to
-                    re-scan all listed trains live.
+                  {cachedBest.best.totalFare != null && (
+                    <div className="shrink-0 text-right">
+                      <div className="text-[11px] uppercase tracking-wide text-slate-500">
+                        Total
+                      </div>
+                      <div className="text-lg font-black text-slate-950">
+                        ₹{cachedBest.best.totalFare}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-3 space-y-2">
+                  {(() => {
+                    // Walk legs in journey order; confirmed hops render with a
+                    // Book Now, unconfirmed (check_realtime) hops render as an
+                    // amber "book at chart prep / via TTE" row. Merge consecutive
+                    // unconfirmed hops into one span so a long check-live tail
+                    // doesn't spam many rows.
+                    type Row = {
+                      from: string;
+                      to: string;
+                      confirmed: boolean;
+                      travelClass: string | null;
+                      fare: number | null;
+                    };
+                    const rows: Row[] = [];
+                    for (const l of cachedBest.best.legs) {
+                      if (l.segmentKind === "confirmed") {
+                        rows.push({
+                          from: l.from,
+                          to: l.to,
+                          confirmed: true,
+                          travelClass: l.travelClass,
+                          fare: l.fare,
+                        });
+                      } else {
+                        const prev = rows[rows.length - 1];
+                        if (prev && !prev.confirmed) {
+                          prev.to = l.to; // extend the unconfirmed span
+                        } else {
+                          rows.push({
+                            from: l.from,
+                            to: l.to,
+                            confirmed: false,
+                            travelClass: null,
+                            fare: null,
+                          });
+                        }
+                      }
+                    }
+                    // "Full Station Name (CODE)" using the names cached with the
+                    // result; falls back to the bare code on older cache rows.
+                    const nameOf = (code: string) => {
+                      const n =
+                        cachedBest.best.stationNames?.[
+                          code.trim().toUpperCase()
+                        ];
+                      return n && n.trim() ? `${n} (${code})` : code;
+                    };
+                    return rows.map((r, i) =>
+                      r.confirmed ? (
+                        <div
+                          key={`c-${r.from}-${r.to}-${i}`}
+                          className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2"
+                        >
+                          <span className="min-w-0 text-sm font-semibold text-slate-800">
+                            {nameOf(r.from)} → {nameOf(r.to)}
+                            {r.travelClass ? ` · ${r.travelClass}` : ""}
+                            {r.fare != null ? ` · ₹${r.fare}` : ""}
+                          </span>
+                          <a
+                            href={irctcBookingRedirect({
+                              from: r.from,
+                              to: r.to,
+                              trainNo: cachedBest.best.train.trainNumber,
+                              classCode: r.travelClass,
+                            })}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white no-underline hover:bg-emerald-700"
+                          >
+                            Book Now →
+                          </a>
+                        </div>
+                      ) : (
+                        <div
+                          key={`u-${r.from}-${r.to}-${i}`}
+                          className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2"
+                        >
+                          <span className="text-sm font-semibold text-slate-800">
+                            {nameOf(r.from)} → {nameOf(r.to)}
+                          </span>
+                          <p className="mt-0.5 text-xs font-medium text-amber-700">
+                            Not confirmed yet — no confirmed seat on this stretch.
+                            Book once the chart is prepared, or board and pay the
+                            TTE.
+                          </p>
+                        </div>
+                      ),
+                    );
+                  })()}
+                </div>
+
+                <div className="mt-3 flex items-center justify-between gap-2">
+                  <span className="text-xs text-slate-400">
+                    Updated{" "}
+                    {new Date(cachedBest.cachedAt).toLocaleString("en-IN", {
+                      day: "numeric",
+                      month: "short",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => void runBestTrainSearch()}
+                    disabled={bestTrainLoading}
+                    className="inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    More options
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2
+                    id="best-train-finder-heading"
+                    className="text-base font-bold text-slate-950"
+                  >
+                    Want us to scan every train below?
+                  </h2>
+                  <p className="mt-1 text-sm text-slate-600">
+                    We&apos;ll check all {trains.length} listed train
+                    {trains.length === 1 ? "" : "s"} and rank the best confirmed
+                    ticket combinations from {fromSt?.stationCode ?? "origin"}.
                   </p>
                 </div>
-              )}
+                <button
+                  type="button"
+                  onClick={() => void runBestTrainSearch()}
+                  disabled={bestTrainLoading}
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg bg-slate-950 px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {bestTrainLoading ? "Checking trains…" : "Find best tickets"}
+                </button>
+              </div>
+            )}
 
             {bestTrainLoading && (
               <p className="mt-2 text-xs text-slate-500">
@@ -1299,26 +1389,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                                   <p className="mt-2 text-sm font-semibold text-emerald-800">
                                     {item.rankReason}
                                   </p>
-                                  <div className="mt-2 flex flex-wrap gap-2 text-xs font-semibold text-slate-600">
-                                    <span className="rounded-md bg-emerald-50 px-2 py-1 text-emerald-800">
-                                      {formatDurationMinutes(
-                                        item.score
-                                          .confirmedContiguousMinutesFromOrigin,
-                                      )}{" "}
-                                      confirmed from origin
-                                    </span>
-                                    <span className="rounded-md bg-blue-50 px-2 py-1 text-blue-800">
-                                      Longest leg{" "}
-                                      {formatDurationMinutes(
-                                        item.score.longestConfirmedLegMinutes,
-                                      )}
-                                    </span>
-                                    {item.score.totalFare != null && (
-                                      <span className="rounded-md bg-slate-100 px-2 py-1 text-slate-700">
-                                        ₹{item.score.totalFare}
-                                      </span>
-                                    )}
-                                  </div>
                                 </div>
                                 <button
                                   type="button"
@@ -1347,7 +1417,21 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         )}
 
         <ul className="space-y-5" role="list" aria-label="Train results">
-          {trains.map((t) => (
+          {trains.map((t) => {
+            // Classes shown for this train (respecting the AC-only filter).
+            const displayedClasses = (t.avlClasses ?? []).filter(
+              (c) =>
+                !acOnly || !["SL", "2S", "GN", "FC"].includes(c.toUpperCase()),
+            );
+            // When every shown class is directly bookable on IRCTC there's no
+            // reason to offer the "Search all classes" fallback scan.
+            const allBookable =
+              displayedClasses.length > 0 &&
+              displayedClasses.every((cls) => {
+                const gn = t.availabilityCache?.[cls];
+                return gn ? isIrctcDirectBookable(gn) : false;
+              });
+            return (
             <li
               key={`${t.trainNumber}-${t.departureTime}`}
               className="rounded-xl border border-gray-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg"
@@ -1371,13 +1455,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
               <div className="mt-3 -mx-1 overflow-x-auto pb-1">
                 <div className="flex min-w-min gap-2 px-1">
-                  {(t.avlClasses ?? [])
-                    .filter(
-                      (c) =>
-                        !acOnly ||
-                        !["SL", "2S", "GN", "FC"].includes(c.toUpperCase()),
-                    )
-                    .map((cls) => {
+                  {displayedClasses.map((cls) => {
                       const gn = t.availabilityCache?.[cls];
                       const line =
                         gn?.availabilityDisplayName ??
@@ -1430,22 +1508,17 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                           key={cls}
                           className="flex min-w-[100px] shrink-0 flex-col items-stretch gap-1.5"
                         >
+                          <div className={chipShell}>{chipBody}</div>
                           {bookable && gn ? (
                             <a
                               href={irctcHref}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className={cn(
-                                chipShell,
-                                "block text-left text-inherit no-underline hover:bg-gray-100 focus-visible:outline focus-visible:ring-2 focus-visible:ring-blue-500/40",
-                              )}
+                              className="rounded-md bg-emerald-600 px-2 py-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-white no-underline hover:bg-emerald-700 focus-visible:outline focus-visible:ring-2 focus-visible:ring-emerald-500/40"
                             >
-                              {chipBody}
+                              Book
                             </a>
                           ) : (
-                            <div className={chipShell}>{chipBody}</div>
-                          )}
-                          {!bookable && (
                             <button
                               type="button"
                               className="rounded-md bg-blue-600 px-2 py-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
@@ -1463,25 +1536,28 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 </div>
               </div>
 
-              <div className="mt-3 flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => findAlternatesForRoute(t)}
-                  disabled={altLoading && altForTrain === t.trainNumber}
-                  className={cn(
-                    "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25",
-                    altLoading &&
-                      altForTrain === t.trainNumber &&
-                      "cursor-wait opacity-60",
-                  )}
-                >
-                  {altLoading && altForTrain === t.trainNumber
-                    ? "Searching…"
-                    : "Search all classes"}
-                </button>
-              </div>
+              {!allBookable && (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => findAlternatesForRoute(t)}
+                    disabled={altLoading && altForTrain === t.trainNumber}
+                    className={cn(
+                      "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25",
+                      altLoading &&
+                        altForTrain === t.trainNumber &&
+                        "cursor-wait opacity-60",
+                    )}
+                  >
+                    {altLoading && altForTrain === t.trainNumber
+                      ? "Searching…"
+                      : "Search all classes"}
+                  </button>
+                </div>
+              )}
             </li>
-          ))}
+            );
+          })}
         </ul>
 
         {searchType === "route" &&

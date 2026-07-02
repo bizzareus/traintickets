@@ -753,6 +753,22 @@ export class BookingV2Service {
     if (!key) return false;
 
     const top = result.results[0];
+    // Keep only the station names actually referenced by the legs, so the row
+    // stays small but the UI can show "Name (CODE)" for each leg endpoint.
+    const stationNames: Record<string, string> = {};
+    if (top) {
+      const nameMap = top.alternatePath.stationNameMap ?? {};
+      for (const leg of top.alternatePath.legs) {
+        for (const code of [leg.from, leg.to]) {
+          const c = code?.trim().toUpperCase();
+          const name = c ? nameMap[c] : undefined;
+          if (c && name && name.trim() && !stationNames[c]) {
+            stationNames[c] = name.trim();
+          }
+        }
+      }
+    }
+
     const payload: CachedBestTrain = top
       ? {
           found: true,
@@ -763,6 +779,7 @@ export class BookingV2Service {
             arrivalTime: top.train.arrivalTime ?? null,
           },
           legs: top.alternatePath.legs,
+          stationNames,
           totalFare: top.alternatePath.totalFare,
           isComplete: top.alternatePath.isComplete,
           rankReason: top.rankReason,

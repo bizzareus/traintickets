@@ -21,6 +21,8 @@ export type CachedBestTrain =
       };
       /** The confirmed booking path (legs) for the top candidate. */
       legs: AlternatePathLeg[];
+      /** Station code -> display name for every code used in `legs`. */
+      stationNames: Record<string, string>;
       totalFare: number | null;
       isComplete: boolean;
       rankReason: string;
