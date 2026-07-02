@@ -378,3 +378,31 @@ model TrainCompositionCache {
 
   @@map("train_composition_cache")
 }
+
+/// One row per run (tick) of a scheduled cron, capturing when it actually fired,
+/// how long it took, and the input/output of that run. Used to debug the
+/// chart-notification cron (ChartCronService -> JourneyTaskService.runDueTasks):
+/// it "never runs on time / always has issues", so we track every leader tick.
+model CronRunLog {
+  id             String    @id @default(cuid())
+  cronName       String    @map("cron_name")
+  startedAt      DateTime  @map("started_at")
+  finishedAt     DateTime? @map("finished_at")
+  durationMs     Int?      @map("duration_ms")
+  /// success | error | skipped_overlap
+  status         String
+  isLeader       Boolean   @default(false) @map("is_leader")
+  tasksClaimed   Int       @default(0) @map("tasks_claimed")
+  tasksRun       Int       @default(0) @map("tasks_run")
+  completedCount Int       @default(0) @map("completed_count")
+  failedCount    Int       @default(0) @map("failed_count")
+  /// { istNow, claimedTaskIds, ... }
+  input          Json?
+  /// { perTask: [{ taskId, trainNumber, from, to, status, lastError }], ... }
+  output         Json?
+  error          String?
+  createdAt      DateTime  @default(now()) @map("created_at")
+
+  @@index([cronName, startedAt])
+  @@map("cron_run_log")
+}

@@ -1,4 +1,5 @@
 import { BadRequestException, HttpStatus, Injectable } from '@nestjs/common';
+import type { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import {
@@ -170,6 +171,26 @@ function alternatePathsToCheckResult(
 function chartAtIsDue(chartAt: Date, now = new Date()): boolean {
   return chartAt.getTime() <= now.getTime();
 }
+
+/** Per-task outcome captured after a cron run, for CronRunLog output. */
+export type RunDueTaskResult = {
+  taskId: string;
+  trainNumber: string;
+  from: string;
+  to: string;
+  journeyDate: string | null;
+  status: string;
+  retryCount: number;
+  lastError: string | null;
+};
+
+/** What one `runDueTasks()` invocation processed — the run's input + output. */
+export type RunDueTasksResult = {
+  istNow: string;
+  claimedTaskIds: string[];
+  tasksRun: number;
+  results: RunDueTaskResult[];
+};
 
 @Injectable()
 export class JourneyTaskService {
@@ -809,7 +830,50 @@ export class JourneyTaskService {
    * by calling the Service2 check API internally to find available seats.
    * Called by cron every minute.
    */
-  async runDueTasks(): Promise<number> {
+  /** Persist one cron run/tick (best-effort — never throws into the cron). */
+  async logCronRun(entry: {
+    cronName: string;
+    startedAt: Date;
+    status: string;
+    isLeader?: boolean;
+    tasksClaimed?: number;
+    tasksRun?: number;
+    completedCount?: number;
+    failedCount?: number;
+    input?: unknown;
+    output?: unknown;
+    error?: string | null;
+  }): Promise<void> {
+    try {
+      const finishedAt = new Date();
+      await this.prisma.cronRunLog.create({
+        data: {
+          cronName: entry.cronName,
+          startedAt: entry.startedAt,
+          finishedAt,
+          durationMs: finishedAt.getTime() - entry.startedAt.getTime(),
+          status: entry.status,
+          isLeader: entry.isLeader ?? false,
+          tasksClaimed: entry.tasksClaimed ?? 0,
+          tasksRun: entry.tasksRun ?? 0,
+          completedCount: entry.completedCount ?? 0,
+          failedCount: entry.failedCount ?? 0,
+          input: (entry.input ?? undefined) as Prisma.InputJsonValue | undefined,
+          output: (entry.output ?? undefined) as
+            | Prisma.InputJsonValue
+            | undefined,
+          error: entry.error ?? null,
+        },
+      });
+    } catch (e) {
+      console.warn(
+        'logCronRun failed:',
+        e instanceof Error ? e.message : String(e),
+      );
+    }
+  }
+
+  async runDueTasks(): Promise<RunDueTasksResult> {
     // chartAt is stored as an IST wall-clock timestamp in Postgres.
     // Operational timestamps (next_run_at/locked_at) use DB NOW().
     const istNow = DateTime.now().setZone('Asia/Kolkata');
@@ -818,6 +882,13 @@ export class JourneyTaskService {
       istNow.toFormat('yyyy-MM-dd HH:mm:ss'),
       'IST',
     );
+
+    const empty: RunDueTasksResult = {
+      istNow: istNow.toFormat('yyyy-MM-dd HH:mm:ss'),
+      claimedTaskIds: [],
+      tasksRun: 0,
+      results: [],
+    };
 
     let due: Array<{ id: string; retry_count: number }> = [];
     let attempt = 0;
@@ -859,17 +930,62 @@ export class JourneyTaskService {
         console.warn(`runDueTasks query failed (attempt ${attempt}):`, msg);
         if (attempt >= 2) {
           // Gracefully return 0 tasks if it keeps failing. Cron will retry next minute.
-          return 0;
+          return empty;
         }
         // Wait 1 second before retrying
         await new Promise((res) => setTimeout(res, 1000));
       }
     }
     console.log('marked as running', due);
+    const claimedTaskIds = due.map((t) => t.id);
     for (const task of due) {
       await this.runTask(task.id, true);
     }
-    return due.length;
+
+    // Re-read the just-run tasks to capture the run's OUTPUT (final status +
+    // error per task). Note: notification send is fire-and-forget, so
+    // emailNotifiedAt/whatsappNotifiedAt may lag — status/lastError are the
+    // synchronous outcome of this run.
+    let results: RunDueTaskResult[] = [];
+    if (claimedTaskIds.length > 0) {
+      try {
+        const rows = await this.prisma.chartTimeAvailabilityTask.findMany({
+          where: { id: { in: claimedTaskIds } },
+          select: {
+            id: true,
+            trainNumber: true,
+            fromStationCode: true,
+            toStationCode: true,
+            journeyDate: true,
+            status: true,
+            retryCount: true,
+            lastError: true,
+          },
+        });
+        results = (rows ?? []).map((r) => ({
+          taskId: r.id,
+          trainNumber: r.trainNumber,
+          from: r.fromStationCode,
+          to: r.toStationCode,
+          journeyDate: r.journeyDate?.toISOString().slice(0, 10) ?? null,
+          status: r.status,
+          retryCount: r.retryCount ?? 0,
+          lastError: r.lastError ?? null,
+        }));
+      } catch (e) {
+        console.warn(
+          'runDueTasks: failed to summarize task outcomes:',
+          e instanceof Error ? e.message : String(e),
+        );
+      }
+    }
+
+    return {
+      istNow: istNow.toFormat('yyyy-MM-dd HH:mm:ss'),
+      claimedTaskIds,
+      tasksRun: due.length,
+      results,
+    };
   }
 
   async getTasksByJourneyRequestId(journeyRequestId: string) {

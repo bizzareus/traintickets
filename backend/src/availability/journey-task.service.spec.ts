@@ -80,7 +80,7 @@ describe('JourneyTaskService', () => {
 
       expect(mockPrisma.$queryRaw).toHaveBeenCalled();
       expect(runTaskSpy).toHaveBeenCalledTimes(2);
-      expect(result).toBe(2);
+      expect(result.tasksRun).toBe(2);
     });
   });
 
