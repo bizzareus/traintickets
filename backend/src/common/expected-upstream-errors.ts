@@ -10,6 +10,9 @@
 export const BENIGN_UPSTREAM_ERROR_PATTERNS: RegExp[] = [
   // "Chart not prepared" — charts aren't prepared until ~4h before departure.
   /chart\s*not\s*prepared|not\s+yet\s*prepared|chart\s*not\s*ready/i,
+  // "Train Cancelled" — a normal upstream state (the run isn't operating), not a
+  // fault. Return/log it as data; don't flag it as an error in Sentry.
+  /train\s+cancell?ed/i,
 ];
 
 /** True when a message matches a known expected/benign upstream condition. */
