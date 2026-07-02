@@ -107,6 +107,7 @@ type CachedBestTrainLeg = {
   fare: number | null;
   departureTime: string | null;
   arrivalTime: string | null;
+  durationMinutes?: number | null;
 };
 
 /** Trimmed best-train payload served by GET /best-trains/cached. */
@@ -1177,9 +1178,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                       confirmed: boolean;
                       travelClass: string | null;
                       fare: number | null;
+                      durationMinutes: number;
                     };
                     const rows: Row[] = [];
                     for (const l of cachedBest.best.legs) {
+                      const mins = l.durationMinutes ?? 0;
                       if (l.segmentKind === "confirmed") {
                         rows.push({
                           from: l.from,
@@ -1187,11 +1190,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                           confirmed: true,
                           travelClass: l.travelClass,
                           fare: l.fare,
+                          durationMinutes: mins,
                         });
                       } else {
                         const prev = rows[rows.length - 1];
                         if (prev && !prev.confirmed) {
                           prev.to = l.to; // extend the unconfirmed span
+                          prev.durationMinutes += mins; // ...and its duration
                         } else {
                           rows.push({
                             from: l.from,
@@ -1199,6 +1204,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                             confirmed: false,
                             travelClass: null,
                             fare: null,
+                            durationMinutes: mins,
                           });
                         }
                       }
@@ -1244,11 +1250,17 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                         >
                           <span className="text-sm font-semibold text-slate-800">
                             {nameOf(r.from)} → {nameOf(r.to)}
+                            {r.durationMinutes > 0
+                              ? ` · ${formatDurationMinutes(r.durationMinutes)}`
+                              : ""}
                           </span>
                           <p className="mt-0.5 text-xs font-medium text-amber-700">
-                            Not confirmed yet — no confirmed seat on this stretch.
-                            Book once the chart is prepared, or board and pay the
-                            TTE.
+                            Not confirmed yet — no confirmed seat for
+                            {r.durationMinutes > 0
+                              ? ` this ${formatDurationMinutes(r.durationMinutes)} stretch`
+                              : " this stretch"}
+                            . Book once the chart is prepared, or board and pay
+                            the TTE.
                           </p>
                         </div>
                       ),
