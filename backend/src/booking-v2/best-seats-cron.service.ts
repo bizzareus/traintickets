@@ -5,6 +5,7 @@ import { captureSentryException } from '../common/sentry-report';
 import { ChartCronLeaderService } from '../chart-cron/chart-cron-leader.service';
 import { BookingV2Service } from './booking-v2.service';
 import { bestTrainsCacheKey, BestTrainsRouteCache } from './best-trains-cache';
+import { canonicalStation } from './station-hubs';
 import { PostHogTopRoutesService } from './posthog-top-routes.service';
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -111,15 +112,20 @@ export class BestSeatsCronService {
       );
     }
 
-    // Merge curated + PostHog top-searched routes, deduped by from->to.
+    // Merge curated + PostHog top-searched routes, canonicalized to their city
+    // hub and deduped — so DEE->BDTS and NDLS->MMCT collapse to one primary
+    // (NDLS->MMCT) that the cache key also resolves to. Keeps the representative
+    // computed result on the city's main station.
     const pairs = new Map<string, { from: string; to: string }>();
-    for (const r of POPULAR_ROUTE_PAIRS) {
-      pairs.set(`${r.from}:${r.to}`, { from: r.from, to: r.to });
-    }
+    const addPair = (from: string, to: string) => {
+      const f = canonicalStation(from);
+      const t = canonicalStation(to);
+      if (!f || !t || f === t) return;
+      pairs.set(`${f}:${t}`, { from: f, to: t });
+    };
+    for (const r of POPULAR_ROUTE_PAIRS) addPair(r.from, r.to);
     const top = await this.topRoutes.getTopRoutes();
-    for (const r of top) {
-      pairs.set(`${r.from}:${r.to}`, { from: r.from, to: r.to });
-    }
+    for (const r of top) addPair(r.from, r.to);
 
     const combos: Array<{ from: string; to: string; date: string }> = [];
     for (const route of pairs.values()) {
