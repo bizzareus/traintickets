@@ -13,45 +13,54 @@ tags:
 
 ## TL;DR
 
-- **General Reservation Period:** Tickets for Tejas Express open 30 days in advance (ARP) instead of the standard 120 days.
-- **Tatkal Booking:** Tatkal quota booking starts at 10:00 AM, one day before departure, as Tejas only features premium AC classes.
-- **Current Booking:** Current availability opens 4 hours before train departure, allowing passengers to book confirmed seats at discounted rates.
-- **Refund Policy:** Automatic full refunds apply to waitlisted e-tickets. The delay compensation policy was discontinued by IRCTC in February 2024.
+- **General Reservation Period:** Tickets for Tejas Express open 60 days in advance (ARP) instead of the standard 120 days.
+- **Tatkal Booking:** There is no Tatkal or Premium Tatkal quota in Tejas Express trains; all bookings fall under the general quota.
+- **RAC Quota:** Tejas Express does not operate with RAC (Reservation Against Cancellation) berths; seats are either confirmed or waitlisted.
+- **Current Booking:** Current availability opens 4 hours before train departure (after first chart preparation) and remains bookable online until 5 minutes before departure.
 - **Catering:** Onboard food is optional; you can choose to skip it during booking to save on food charges.
+
+---
+
+Few things in life are as annoying as dealing with IRCTC booking rules. We've all been there: a sudden plan change, a family emergency, or simply a delayed train, and suddenly you're staring at your phone trying to figure out how to book a premium train like the Tejas Express. Can you book after chart preparation? What are the cancellation fees under the new 2026 rules?
+
+The Indian Railways reservation system for premium corporate trains is slightly different from standard trains. Understanding these specific timelines and rules ensures you secure your seats and recover your money instead of losing it to avoidable penalties or misunderstandings.
+
+Let’s dive into how booking, current availability, and refunds work on the premium Tejas Express.
 
 ---
 
 ## What is the Tejas Express booking time in IRCTC?
 
-**Tejas Express general tickets can be booked online via the IRCTC app or website starting at 8:00 AM daily up to 30 days in advance (ARP). For the Tatkal quota, bookings open one day before the journey, starting at 10:00 AM for AC classes, as Tejas is a fully air-conditioned train.**
+**Tejas Express general tickets can be booked online via the IRCTC app or website starting at 8:00 AM daily up to 60 days in advance (ARP). Unlike standard trains, there is no Tatkal or Premium Tatkal quota for Tejas Express bookings.**
 
-Unlike standard trains in India that have an Advance Reservation Period (ARP) of 120 days, the premium Tejas Express operates on a shorter **30-day booking window**. This makes it much easier to plan trips on shorter notice. 
+While standard Indian Railways services have a general Advance Reservation Period (ARP) of 60 days (reduced from 120 days in late 2024), the premium Tejas Express operates on the same **60-day booking window**. Booking opens daily at 8:00 AM. 
 
-For last-minute travelers, the Tatkal booking window opens at 10:00 AM sharp one day before the train's scheduled run. Because Tejas Express features only Executive Chair Car (EC) and AC Chair Car (CC) coaches, all seats fall under the AC Tatkal window. If general classes show zero availability, checking Tatkal at 10:00 AM is your best option.
+However, the most critical difference is that **Tejas Express has no Tatkal or Premium Tatkal quotas**. There are no last-minute 10:00 AM or 11:00 AM Tatkal windows. Every seat on the train is sold under the General Quota or specific regional quotas (like Ladies or Foreign Tourists). If you need to travel on short notice, your best bet is checking general availability or waiting for the current booking window to open.
 
 ---
 
 ## When does Current Availability open for Tejas Express?
 
-**Current availability for Tejas Express opens immediately after the first reservation chart preparation, which is exactly 4 hours before the train's scheduled departure from its originating station. A current available ticket is a fully confirmed seat with assigned coach and berth numbers, closing 30 minutes before departure.**
+**Current availability for Tejas Express opens immediately after the first reservation chart preparation, which is 4 hours before departure, and remains open until 5 minutes before scheduled departure.**
 
-If you missed the general booking window and did not secure a Tatkal ticket, current availability is your final option. Immediately after the chart is prepared, all unsold berths across different quotas (like ladies, seniors, or defense) are merged into a single pool. These seats are offered as a **current available ticket** at standard fares, or occasionally with a 10% discount on the base fare. 
+If you missed the general booking window and did not secure a confirmed seat, current availability is your final option. After the first reservation chart is prepared (typically 4 hours before the train departs from its originating station), all unsold berths across different quotas (such as Ladies, Senior Citizens, or Duty Passes) are merged into a single pool. 
 
-Unlike a waitlist, a current booking is a fully confirmed seat. You will instantly see your coach and seat number. If you check current booking and find no seats left, you can use the LastBerth platform to find alternative arrangements before the train departs.
+These seats are offered as **current available tickets** on the IRCTC app or website. Unlike standard trains where current booking closes 30 minutes before departure, Tejas Express allows you to book these seats online up to **5 minutes before the scheduled departure** of the train. If you check current booking and find no seats left, you can use the LastBerth platform to find alternative arrangements before the train departs.
 
 ---
 
 ## How does the Tejas Express refund policy work?
 
-**For corporate Tejas Express trains (like Delhi-Lucknow and Mumbai-Ahmedabad), a full refund is granted if you cancel a waitlisted e-ticket, as the system processes automatic refunds for waitlisted e-tickets after charting. However, confirmed Tatkal bookings are non-refundable, and normal AC cancellations follow standard slab-based clerkage fees.**
+**For corporate Tejas Express trains, a full refund is granted if you cancel a waitlisted e-ticket, but confirmed ticket cancellations are subject to a sliding scale of charges depending on the cancellation time.**
 
-For passengers on waitlists, understanding the refund flow is essential. First, **WL full form is Waiting List**. The booking progression goes from **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If you hold an e-ticket that remains waitlisted (e.g., in position queues like `WL/1` or `WL/10`) after the final charting, the system automatically cancels the ticket and refunds the amount to your payment account. You cannot board the train with a waitlisted e-ticket.
+Under the **April 2026 revised refund rules**, confirmed ticket cancellation charges are strictly determined by how far in advance the cancellation is made prior to the scheduled departure:
 
-For confirmed tickets, cancellation charges apply based on how close you cancel relative to the train's departure:
-- **More than 48 hours:** Flat ₹240 for Executive Class and ₹180 for AC Chair Car.
-- **Between 12 and 48 hours:** 25% of the ticket fare.
-- **Between 4 and 12 hours:** 50% of the ticket fare.
-- **Less than 4 hours:** No refund is permitted.
+- **More than 72 hours:** You pay only a flat cancellation charge of ₹240 for Executive Class (EC) and ₹180 for AC Chair Car (CC) (plus GST).
+- **Between 72 hours and 24 hours:** A penalty of **25% of the ticket fare** (or the flat charge, whichever is higher) is deducted.
+- **Between 24 hours and 8 hours:** A penalty of **50% of the ticket fare** (or the flat charge, whichever is higher) is deducted.
+- **Less than 8 hours:** No refund is permitted.
+
+Unlike standard trains, the Tejas Express does not operate with an RAC (Reservation Against Cancellation) system. Tickets are issued as either confirmed or waitlisted (WL). If you hold an e-ticket that remains waitlisted (e.g., in position queues like `WL/1` or `WL/10`) after chart preparation, the system automatically cancels it and refunds the fare (minus the convenience fee) to your bank account within 3–5 working days. You cannot board the train with a waitlisted e-ticket.
 
 *Important Note:* The delay compensation policy (which refunded ₹100 for delays over one hour and ₹250 for delays over two hours) was **discontinued by IRCTC on February 15, 2024**. Automatic financial payouts for delayed journeys are no longer active.
 
@@ -77,19 +86,37 @@ If you select the food option during booking, the catering charges are included 
 ## Common Booking Questions (FAQ)
 
 ### Can I travel in Tejas Express with an RAC ticket?
-Yes, you can travel in Tejas Express on an RAC (Reservation Against Cancellation) ticket. Under RAC status, two passengers share a side-lower chair space. As confirmed passengers cancel their tickets, RAC passengers are systematically upgraded to full confirmed seats.
 
-### Can I book a child ticket without a berth in Tejas Express?
-No, because Tejas Express is a fully seated train featuring only chair cars, every passenger—including children aged 5 to 11—must be allocated a separate seat. Consequently, you must pay the full adult fare for children in this age group, and there is no half-fare option without a seat allocation.
+**No, you cannot travel in Tejas Express with an RAC ticket as the train does not operate with RAC (Reservation Against Cancellation) status.** All tickets are issued as either fully confirmed or waitlisted (WL). If your ticket remains waitlisted after the final chart preparation, it is automatically cancelled and refunded.
+
+### Can I book a child ticket without a seat in Tejas Express?
+
+**No, you cannot book a child ticket without a seat because Tejas Express is a fully seated train featuring only chair cars.** Every passenger, including children aged 5 to 11, must be allocated a separate seat and paid for at the full adult fare. There is no option for a half-fare ticket without a seat allocation.
 
 ### Is food compulsory on the Tejas Express?
-No, onboard catering is entirely optional on the Tejas Express. You can opt-out of meals during the booking process on IRCTC. Selecting "No Food" will deduct the catering charges from your final ticket price, allowing you to carry your own food and save money.
+
+**No, onboard catering is entirely optional on the Tejas Express, and you can opt-out of meals during the booking process on IRCTC.** Selecting "No Food" will deduct the catering charges from your final ticket price, allowing you to carry your own food and save money.
 
 ### How do I check my Tejas Express confirmation chances?
-You can use the PNR status check & direct booking tool on LastBerth. LastBerth calculates the historical confirmation probability of your waitlist position. If your ticket has low chances of clearing, you can use the homepage tools like [Finding Smart Seats](/) or [Seat Status Coach Journey Lookup](/seat-status) to find split bookings and secure a confirmed seat on the same train.
+
+**You can check your Tejas Express confirmation chances by using the waitlist predictor tool on LastBerth.** LastBerth calculates the historical confirmation probability of your waitlist position. If your ticket has low chances of clearing, you can use the homepage tools like [Finding Smart Seats](/) or [Seat Status Coach Journey Lookup](/seat-status) to find split bookings.
 
 ### Does Tejas Express have a ladies quota?
-Yes, Tejas Express trains have a ladies quota set aside for female passengers traveling alone or with young children. This quota remains open until chart preparation, after which any unbooked seats are released to the general booking pool.
+
+**Yes, Tejas Express trains have a ladies quota set aside for female passengers traveling alone or with young children.** This quota remains open until chart preparation, after which any unbooked seats are merged into the general current booking pool.
 
 ### Is there a dynamic fare (flexi-fare) in Tejas Express?
-Yes, Tejas Express utilizes a dynamic pricing structure. The base fare increases in slabs of 10% for every 10% of seats sold. To get the cheapest ticket, it is highly recommended to book your seat as soon as the 30-day booking window opens.
+
+**Yes, Tejas Express utilizes a dynamic pricing structure where the base fare increases in slabs of 10% for every 10% of seats sold.** Fares are capped at 1.5 times the base fare. To secure the cheapest tickets, it is highly recommended to book as soon as the 60-day booking window opens.
+
+### Can I book Tejas Express tickets at offline railway station counters?
+
+**No, you cannot book corporate Tejas Express tickets at offline Indian Railways reservation counters as they are available exclusively online.** Tickets must be booked via the IRCTC website, the IRCTC Rail Connect app, or authorized online ticketing partners.
+
+---
+
+## Related Guides
+
+- [GNWL vs RLWL vs PQWL Waitlist Types Explained](/blog/gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances)
+- [How to Check Vacant Berths After Chart Preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
+- [Connecting Train Bookings: Linking PNRs for Missed Connections](/blog/connecting-train-bookings-irctc-link-pnr-guide)
