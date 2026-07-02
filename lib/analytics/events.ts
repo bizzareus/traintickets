@@ -56,6 +56,18 @@ export type AnalyticsEvent =
         error?: string;
       };
     }
+  | {
+      name: "best_available_tickets_route_cache_viewed";
+      properties: {
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        train_number: string;
+        train_name: string | null;
+        is_complete: boolean;
+        total_fare: number | null;
+      };
+    }
   | { name: "swap_stations_clicked"; properties: Record<string, never> }
   | {
       name: "train_selected_from_dropdown";

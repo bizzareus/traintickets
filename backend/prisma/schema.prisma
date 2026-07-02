@@ -267,6 +267,28 @@ model RouteCaching {
   @@map("route_caching")
 }
 
+/**
+ * One row per best-seats cron tick that did work — powers the admin dashboard
+ * view of when the cron ran, its outcome counts, and which routes it updated.
+ * `routes` is a JSON array of { from, to, date, status, train } for the batch.
+ */
+model BestSeatsCronRun {
+  id         String    @id @default(cuid())
+  startedAt  DateTime  @default(now()) @map("started_at")
+  finishedAt DateTime? @map("finished_at")
+  durationMs Int?      @map("duration_ms")
+  due        Int
+  batch      Int
+  refreshed  Int
+  failed     Int
+  skipped    Int
+  routes     Json
+  ownerId    String?   @map("owner_id")
+
+  @@index([startedAt])
+  @@map("best_seats_cron_run")
+}
+
 model StationCache {
   stationCode String   @id @map("station_code")
   stationName String   @map("station_name")

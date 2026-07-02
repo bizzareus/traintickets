@@ -720,18 +720,20 @@ export class BookingV2Service {
    * Compute the best train for an OD+date via findBestTrains and store the trimmed
    * top candidate. Cron-only (expensive). Caches an explicit `found: false` marker
    * when no confirmed candidate exists so the request path shows the CTA rather
-   * than treating it as an un-cached route. Returns whether a train was found.
+   * than treating it as an un-cached route. Returns the top train (or null) so
+   * callers (the cron) can record what was updated.
    */
   async computeAndCacheBestTrain(
     from: string,
     to: string,
     date: string,
-  ): Promise<boolean> {
+  ): Promise<{ found: boolean; trainNumber: string | null }> {
     const key = bestTrainsCacheKey(from, to, this.normalizeToRailApiDate(date));
     if (!key) throw new Error('from, to, and a valid date are required');
 
     const result = await this.findBestTrains({ from, to, date, acOnly: false });
-    return this.cacheBestTrainResult(from, to, date, result);
+    const found = await this.cacheBestTrainResult(from, to, date, result);
+    return { found, trainNumber: result.results[0]?.train.trainNumber ?? null };
   }
 
   /**
