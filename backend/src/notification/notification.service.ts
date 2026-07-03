@@ -10,6 +10,7 @@ import {
 import type { ChartTimeAvailabilityTask } from '@prisma/client';
 import { irctcBookingRedirect } from '../common/irctc-booking-redirect';
 import type { ScheduleStation } from '../irctc/irctc.service';
+import { StationCacheService } from '../cache/station-cache.service';
 import {
   formatJourneyDateReadable,
   formatSegmentScheduleTimes,
@@ -49,7 +50,10 @@ export class NotificationService {
   /** Receives a one-off email when POST /api/availability/journey creates monitoring tasks. */
   private readonly monitoringAdminEmail: string;
 
-  constructor(private config: ConfigService) {
+  constructor(
+    private config: ConfigService,
+    private readonly stationCache: StationCacheService,
+  ) {
     this.wasenderKey = this.config.get<string>('WASENDER_API_KEY');
     this.resendKey = this.config.get<string>('RESEND_API_KEY');
     this.resend = this.resendKey ? new Resend(this.resendKey) : null;
@@ -90,10 +94,17 @@ export class NotificationService {
       return false;
     }
     try {
-      console.info('sending email message', { RESEND_FROM, to, html, subject });
+      console.info('sending email message', { RESEND_FROM, to, subject });
+      // BCC the owner on every outbound email (skip if they're the recipient).
+      const bcc =
+        this.monitoringAdminEmail &&
+        this.monitoringAdminEmail.toLowerCase() !== to.trim().toLowerCase()
+          ? [this.monitoringAdminEmail]
+          : undefined;
       await this.resend.emails.send({
         from: RESEND_FROM,
         to: [to],
+        ...(bcc ? { bcc } : {}),
         subject,
         html,
       });
@@ -579,6 +590,32 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
     return map;
   }
 
+  /**
+   * Fill in full station names for any `codes` the map is missing, from the
+   * seeded station cache. Best-effort — on error (or an unknown code) the label
+   * simply falls back to the bare code.
+   */
+  private async enrichStationNames(
+    map: Map<string, string>,
+    codes: string[],
+  ): Promise<void> {
+    const missing = codes
+      .map((c) => String(c ?? '').trim().toUpperCase())
+      .filter((c) => c && !map.has(c));
+    if (missing.length === 0) return;
+    try {
+      const names = await this.stationCache.namesForCodes(missing);
+      for (const [code, name] of names) {
+        if (name?.trim()) map.set(code, name.trim());
+      }
+    } catch (err) {
+      console.warn(
+        'station name enrichment failed',
+        err instanceof Error ? err.message : String(err),
+      );
+    }
+  }
+
   async notifyUser(params: {
     email?: string | null;
     mobile?: string | null;
@@ -611,6 +648,19 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
       : undefined;
     const stationScheduleList = result.trainSchedule?.stationList;
     const stationNameMap = this.getStationNameMap(stationScheduleList);
+    const plan = result.openAiBookingPlan ?? [];
+    // This alert path often has no train schedule, leaving the name map empty so
+    // labels render as bare codes ("YA - YA"). Enrich it with full station names
+    // from the seeded station cache for the OD and every planned segment endpoint.
+    await this.enrichStationNames(stationNameMap, [
+      task.fromStationCode,
+      task.toStationCode,
+      ...plan.flatMap((p) =>
+        String(p?.instruction ?? '')
+          .split(' - ')
+          .slice(0, 2),
+      ),
+    ]);
     const routeDisplay = `${task.fromStationCode} > ${task.toStationCode}`;
     const emailRouteDisplay = this.formatJourneyRoute(
       task.fromStationCode,
@@ -623,7 +673,6 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
       trainNumber: task.trainNumber,
       classCode: this.firstPlannedClassCode(result),
     });
-    const plan = result.openAiBookingPlan ?? [];
     const totalPrice = result.openAiTotalPrice ?? undefined;
 
     const journeyDateStr =

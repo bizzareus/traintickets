@@ -46,6 +46,33 @@ export class StationCacheService {
   }
 
   /**
+   * Resolve station code -> display name for the given codes, from the seeded
+   * station_cache. Codes with no cached row are simply absent from the map, so
+   * callers fall back to the bare code.
+   */
+  async namesForCodes(codes: string[]): Promise<Map<string, string>> {
+    const map = new Map<string, string>();
+    const unique = [
+      ...new Set(
+        codes
+          .map((c) => String(c ?? '').trim().toUpperCase())
+          .filter(Boolean),
+      ),
+    ];
+    if (unique.length === 0) return map;
+    const rows = await this.prisma.stationCache.findMany({
+      where: { stationCode: { in: unique } },
+      select: { stationCode: true, stationName: true },
+    });
+    for (const r of rows) {
+      if (r.stationName?.trim()) {
+        map.set(r.stationCode.toUpperCase(), r.stationName.trim());
+      }
+    }
+    return map;
+  }
+
+  /**
    * Cache stations. Safe to call fire-and-forget.
    *
    * Station code/name are effectively static, so we only INSERT rows that don't

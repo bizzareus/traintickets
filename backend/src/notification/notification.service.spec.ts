@@ -1,6 +1,15 @@
 import { ConfigService } from '@nestjs/config';
 import { NotificationService } from './notification.service';
+import type { StationCacheService } from '../cache/station-cache.service';
 import type { Service2CheckResult } from '../service2/service2.service';
+
+function mockStationCache(): StationCacheService {
+  return {
+    namesForCodes: jest.fn().mockResolvedValue(new Map<string, string>()),
+    search: jest.fn().mockResolvedValue([]),
+    upsertMany: jest.fn().mockResolvedValue(undefined),
+  } as unknown as StationCacheService;
+}
 
 function mockConfig(overrides?: {
   resendKey?: string;
@@ -57,7 +66,7 @@ describe('NotificationService', () => {
   };
 
   it('sends "No Tickets Found" email and WhatsApp when status is success but no bookable plan', async () => {
-    const svc = new NotificationService(mockConfig());
+    const svc = new NotificationService(mockConfig(), mockStationCache());
     const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
     const sendWhatsApp = jest
       .spyOn(svc, 'sendWhatsApp')
@@ -83,7 +92,7 @@ describe('NotificationService', () => {
   });
 
   it('sends email with readable journey date and schedule times in HTML', async () => {
-    const svc = new NotificationService(mockConfig());
+    const svc = new NotificationService(mockConfig(), mockStationCache());
     const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
     jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(false);
 
