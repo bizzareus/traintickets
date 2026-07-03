@@ -9,6 +9,12 @@ export abstract class CacheService {
   abstract get<T>(key: string): Promise<T | null>;
   abstract set<T>(key: string, value: T, ttlMs?: number): Promise<void>;
   abstract del(key: string): Promise<void>;
+  /**
+   * Bulk-remove all expired entries in one statement. Called periodically (e.g.
+   * by the best-seats cron) instead of deleting each expired row on read — a
+   * single sweep replaces millions of per-read DELETEs. Returns rows removed.
+   */
+  abstract deleteExpired(): Promise<number>;
 
   /**
    * Return the cached value for `key`, or call `factory`, cache the result, and return it.

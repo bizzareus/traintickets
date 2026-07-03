@@ -13,11 +13,11 @@ export class PostgresCacheService extends CacheService {
   async get<T>(key: string): Promise<T | null> {
     const row = await this.prisma.cacheEntry.findUnique({ where: { key } });
     if (!row) return null;
+    // Treat an expired row as a miss, but do NOT delete it here — a per-read
+    // DELETE on every expired hit was ~12% of all DB time. A hot key gets
+    // overwritten by the next set() (upsert); cold expired rows are reaped in
+    // bulk by deleteExpired() (see the best-seats cron).
     if (row.expiresAt && row.expiresAt <= new Date()) {
-      // Expired — delete lazily (fire-and-forget)
-      void this.prisma.cacheEntry
-        .delete({ where: { key } })
-        .catch(() => undefined);
       return null;
     }
     return row.value as T;
@@ -30,6 +30,16 @@ export class PostgresCacheService extends CacheService {
       create: { key, value: value as object, expiresAt },
       update: { value: value as object, expiresAt, updatedAt: new Date() },
     });
+  }
+
+  async deleteExpired(): Promise<number> {
+    const res = await this.prisma.cacheEntry.deleteMany({
+      where: { expiresAt: { not: null, lt: new Date() } },
+    });
+    if (res.count > 0) {
+      this.logger.log(`[cache] swept ${res.count} expired cache_entry rows`);
+    }
+    return res.count;
   }
 
   async del(key: string): Promise<void> {

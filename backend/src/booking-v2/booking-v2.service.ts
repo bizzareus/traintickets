@@ -231,26 +231,28 @@ type MultiClassProbeResult = {
 /** 24 hours in milliseconds — TTL for train search cache entries. */
 const TRAIN_SEARCH_TTL_MS = 24 * 60 * 60 * 1000;
 /**
- * Short TTL for per-segment availability probes. The alternate-paths fan-out
- * makes one fetchAvailability call per (train, from, to, date, class, quota);
- * caching the small extracted result briefly lets concurrent/repeat searches
- * for the same train+date reuse it instead of re-hitting the upstream. Kept
- * short because seat availability is live. Env-tunable via
- * BOOKING_V2_AVL_CACHE_TTL_MS (default 15m).
+ * TTL for per-segment availability probes. The alternate-paths fan-out makes one
+ * fetchAvailability call per (train, from, to, date, class, quota); caching the
+ * small extracted result lets concurrent/repeat searches (and the every-6h cron)
+ * reuse it instead of re-hitting the upstream. This cache was the #1 DB load
+ * (millions of cache_entry writes) at the old 15m TTL, so it's now 6h — trading
+ * some availability freshness for far less DB/IRCTC churn. Env-tunable via
+ * BOOKING_V2_AVL_CACHE_TTL_MS (default 6h, max 24h).
  */
 const AVL_SEGMENT_TTL_MS = (() => {
   const n = Number.parseInt(process.env.BOOKING_V2_AVL_CACHE_TTL_MS ?? '', 10);
-  return Number.isFinite(n) && n >= 60_000 && n <= 3_600_000
+  return Number.isFinite(n) && n >= 60_000 && n <= 24 * 60 * 60 * 1000
     ? n
-    : 15 * 60 * 1000;
+    : 6 * 60 * 60 * 1000;
 })();
 const BEST_TRAIN_CONCURRENCY = 3;
 /**
- * TTL for a precomputed best-train cache entry. Set 2h beyond the cron's 6h
- * refresh threshold so an entry stays served while it becomes refresh-eligible —
- * users never hit a window where the entry expired before the cron rewrote it.
+ * TTL for a precomputed best-train cache entry. 12h — comfortably longer than
+ * the cron's 6h cadence + refresh threshold, so an entry is always still served
+ * while it becomes refresh-eligible (even entries written late in a multi-route
+ * run never expire before the next 6h run rewrites them).
  */
-const BEST_TRAINS_CACHE_TTL_MS = 8 * 60 * 60 * 1000;
+const BEST_TRAINS_CACHE_TTL_MS = 12 * 60 * 60 * 1000;
 /**
  * TTL for a cached per-train alternate-paths result. Shorter than the best-train
  * cache because these carry live seat availability (WL counts) that goes stale

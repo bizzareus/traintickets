@@ -8,6 +8,7 @@ import { bestTrainsCacheKey, BestTrainsRouteCache } from './best-trains-cache';
 import { canonicalStation } from './station-hubs';
 import { PostHogTopRoutesService } from './posthog-top-routes.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { CacheService } from '../cache/cache.service';
 
 /**
  * The curated popular routes to keep warm, as IRCTC station-code pairs.
@@ -39,9 +40,12 @@ function envInt(name: string, fallback: number, min: number, max: number): numbe
 /**
  * Keeps the best-train cache warm across today + the next 5 days (IST) for the
  * curated popular routes plus the top routes users actually search (pulled from
- * PostHog; see PostHogTopRoutesService). Ticks every 5 min but only recomputes a
- * route+date whose cached entry is missing or older than ~6h, capped per tick so
- * a refresh wave staggers across ticks instead of hammering IRCTC all at once.
+ * PostHog; see PostHogTopRoutesService). Runs every 6h and refreshes every route
+ * whose cached entry is missing or older than the refresh threshold — i.e. the
+ * whole set each run (per-run cap is high enough to cover it). The old 5-min
+ * cadence churned the segment-availability cache (millions of DB writes); a 6h
+ * cadence + 6h segment TTL cuts that dramatically. Each run also bulk-sweeps
+ * expired cache_entry rows (replacing per-read deletes).
  *
  * Single-replica: gated by the shared ChartCronLeaderService lease, so only the
  * leader replica does the work (same mechanism as ChartCronService).
@@ -49,8 +53,8 @@ function envInt(name: string, fallback: number, min: number, max: number): numbe
  * Tunables:
  *   BEST_SEATS_CACHE_ENABLED  '0'/'false' to disable entirely (default on)
  *   BEST_SEATS_REFRESH_MS     recompute an entry older than this (default 6h)
- *   BEST_SEATS_MAX_PER_TICK   max recomputes per tick (default 6)
- *   BEST_SEATS_CONCURRENCY    concurrent recomputes (default 2)
+ *   BEST_SEATS_MAX_PER_TICK   max recomputes per run (default 200 — covers all)
+ *   BEST_SEATS_CONCURRENCY    concurrent recomputes (default 3)
  */
 @Injectable()
 export class BestSeatsCronService {
@@ -68,6 +72,7 @@ export class BestSeatsCronService {
     private readonly leader: ChartCronLeaderService,
     private readonly topRoutes: PostHogTopRoutesService,
     private readonly prisma: PrismaService,
+    private readonly cache: CacheService,
   ) {}
 
   private get enabled(): boolean {
@@ -77,7 +82,7 @@ export class BestSeatsCronService {
     return v !== '0' && v !== 'false' && v !== 'no' && v !== 'off';
   }
 
-  @Cron(CronExpression.EVERY_5_MINUTES)
+  @Cron(CronExpression.EVERY_6_HOURS)
   async handleCron(): Promise<void> {
     if (!this.enabled) return;
     if (!(await this.leader.isLeader())) return;
@@ -85,6 +90,13 @@ export class BestSeatsCronService {
 
     this.running = true;
     try {
+      // One bulk sweep of expired cache_entry rows per run, replacing the old
+      // per-read DELETE storm. Best-effort — never block the refresh.
+      await this.cache.deleteExpired().catch((e) =>
+        this.logger.warn(
+          `[best-seats-cron] cache sweep failed: ${e instanceof Error ? e.message : String(e)}`,
+        ),
+      );
       await this.refreshDueEntries();
     } catch (err) {
       this.logger.error(
@@ -169,8 +181,11 @@ export class BestSeatsCronService {
       60_000,
       24 * 60 * 60 * 1000,
     );
-    const maxPerTick = envInt('BEST_SEATS_MAX_PER_TICK', 6, 1, 100);
-    const concurrency = envInt('BEST_SEATS_CONCURRENCY', 2, 1, 6);
+    // High cap: at a 6h cadence each run should refresh the whole due set (not
+    // stagger across ticks like the old 5-min cron). Concurrency 3 keeps a full
+    // run well under the 6h window.
+    const maxPerTick = envInt('BEST_SEATS_MAX_PER_TICK', 200, 1, 1000);
+    const concurrency = envInt('BEST_SEATS_CONCURRENCY', 3, 1, 6);
     const cutoff = new Date(Date.now() - refreshMs);
 
     const combos = await this.targetCombos();

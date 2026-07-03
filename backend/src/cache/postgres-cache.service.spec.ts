@@ -9,6 +9,7 @@ function makePrisma(
       findUnique: jest.fn(),
       upsert: jest.fn(),
       delete: jest.fn(),
+      deleteMany: jest.fn().mockResolvedValue({ count: 0 }),
       ...overrides,
     },
   } as unknown as PrismaService;
@@ -35,7 +36,7 @@ describe('PostgresCacheService', () => {
       expect(await svc.get('k')).toEqual({ x: 1 });
     });
 
-    it('returns null and schedules deletion for an expired entry', async () => {
+    it('returns null for an expired entry WITHOUT deleting on read', async () => {
       const past = new Date(Date.now() - 1_000);
       const deleteMock = jest.fn().mockResolvedValue({});
       const prisma = makePrisma({
@@ -47,9 +48,10 @@ describe('PostgresCacheService', () => {
       const svc = new PostgresCacheService(prisma);
       const result = await svc.get('k');
       expect(result).toBeNull();
-      // Allow microtask queue to flush the fire-and-forget delete
+      // No per-read delete anymore — expired rows are reaped in bulk by
+      // deleteExpired() to avoid a per-read DELETE storm.
       await new Promise((r) => setTimeout(r, 0));
-      expect(deleteMock).toHaveBeenCalledWith({ where: { key: 'k' } });
+      expect(deleteMock).not.toHaveBeenCalled();
     });
 
     it('returns value when expiresAt is null (no expiry)', async () => {
@@ -112,6 +114,24 @@ describe('PostgresCacheService', () => {
       const svc = new PostgresCacheService(prisma);
 
       await expect(svc.del('missing')).resolves.toBeUndefined();
+    });
+  });
+
+  describe('deleteExpired', () => {
+    it('bulk-deletes only expired rows and returns the count', async () => {
+      const deleteMany = jest.fn().mockResolvedValue({ count: 7 });
+      const prisma = makePrisma({ deleteMany });
+      const svc = new PostgresCacheService(prisma);
+
+      const removed = await svc.deleteExpired();
+
+      expect(removed).toBe(7);
+      expect(deleteMany).toHaveBeenCalledTimes(1);
+      const arg = deleteMany.mock.calls[0][0] as {
+        where: { expiresAt: { not: null; lt: Date } };
+      };
+      expect(arg.where.expiresAt.not).toBeNull();
+      expect(arg.where.expiresAt.lt).toBeInstanceOf(Date);
     });
   });
 
