@@ -25,7 +25,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-cancellation-refund-rules-tdr-guide.md | The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing | 2026-07-02 |
 | understanding-coach-composition-find-train-platform.md | Indian Railways Coach Composition: How to Locate Your Train Coach on the Platform Without Panic | 2026-06-10 |
 | irctc-partial-confirmation-rules-waitlist-travel-guide.md | IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers | 2026-06-11 |
-| wl-waiting-list-meaning-indian-railway.md | WL Full Form in Railway: What WL Means in Train Booking & How Waiting List Works | 2026-06-11 |
+| wl-waiting-list-meaning-indian-railway.md | WL Full Form in Railway: What WL Means in Train Booking & How Waiting List Works | 2026-07-04 |
 | irctc-current-availability-explained.md | IRCTC Current Availability Explained: What It Is, When It Opens, and How to Use It | 2026-07-02 |
 | train-berth-types-availability-reservation-guide.md | Train Berths in India: Types, Availability, and How Berth Reservation Actually Works | 2026-06-11 |
 | travel-sleeper-ac-class-general-platform-ticket.md | Can you travel in Sleeper/AC with a General/Platform ticket | 2026-06-12 |
@@ -42,7 +42,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-ewallet-registration-booking-payment-guide.md | A complete guide on how to register for IRCTC e-Wallet, complete PAN/Aadhaar verification, deposit money, and make fast payments for train tickets | 2026-06-21 |
 | station-platform-navigation-tips-last-minute-boarders.md | Station platform navigation tips for last-minute boarders, locating coaches, and boarding safely | 2026-06-21 |
 | irctc-child-ticket-booking-rules-fares.md | Complete guide to Indian Railways child ticket booking rules, age limits, half fare vs full fare, and step-by-step IRCTC booking instructions | 2026-06-21 |
-| irctc-ticket-booking-limits-aadhaar-verification.md | A complete guide on IRCTC monthly ticket booking limits, Aadhaar link, and passenger verification | 2026-07-02 |
+| irctc-ticket-booking-limits-aadhaar-verification.md | A complete guide on IRCTC monthly ticket booking limits, Aadhaar link, and passenger verification | 2026-07-04 |
 | how-to-change-boarding-point-irctc-rules-process.md | Learn the new 2026 IRCTC boarding point change rules, timelines, and how to update it online or offline | 2026-07-02 |
 | irctc-regret-meaning-ticket-booking-rules.md | What Regret status means in IRCTC, how it differs from WL, and booking solutions | 2026-06-23 |
 | irctc-booking-timings-rules.md | Complete guide to IRCTC daily booking timings, midnight maintenance window shutdown, Tatkal opening hours, and current availability times | 2026-06-23 |
@@ -78,6 +78,8 @@ This file tracks all blog posts published to avoid duplication.
 | jan-vishwas-act-railway-rules-decriminalization-penalties.md | Jan Vishwas Act 2026 railway rules, decriminalized offenses, civil penalties, and the 10% escalator clause | 2026-07-02 |
 | new-indian-railways-fines-jan-vishwas-act.md | Indian Railways Fines 2026: Jan Vishwas Act Penalty List (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
 | new-irctc-website-revamp-launch-date-features.md | New IRCTC website launch date, ticket booking capacity upgrades, Tatkal improvements, and RailOne integration | 2026-07-04 |
+| irctc-personal-id-booking-rules-section-143.md | Rules for booking train tickets for friends and family on a personal ID under Section 143 of the Railways Act | 2026-07-04 |
+| vande-bharat-food-booking-opt-out-refund-rules.md | Guide to Vande Bharat food booking rules, opting out of catering, onboard fees, and refunds | 2026-07-04 |
 
 
 ## SEO triage actions (GSC / Google Trends driven)
@@ -90,6 +92,10 @@ This file tracks all blog posts published to avoid duplication.
 | 2026-07-04 | EXPAND | vande-bharat-train-rules-booking-routes | Expanded Sleeper trains section with Bangalore-CSMT Mumbai overnight trials news; all 7 langs |
 | 2026-07-04 | EXPAND | vande-bharat-routes-manufacturing-guide | Updated latest Sleeper news with Bengaluru-Mumbai trials and safety clearances; all 7 langs |
 | 2026-07-04 | REFRESH | amrit-bharat-express-routes-booking-rules-fares | Updated route list with new Amritsar-NJP, Banaras-Pune, Ayodhya-LTT, and Nagercoil-Charlapalli routes; all 7 langs |
+| 2026-07-04 | EXPAND | irctc-ticket-booking-limits-aadhaar-verification | Target monthly booking limit with comparison table (+24 tickets); all 7 langs |
+| 2026-07-04 | EXPAND | wl-waiting-list-meaning-indian-railway | Optimize for 'wl full form in railway is Waiting List' & 60-day window; all 7 langs |
+| 2026-07-04 | NEW | irctc-personal-id-booking-rules-section-143 | Booking rules for family/friends, Section 143, RPF fines; all 7 langs |
+| 2026-07-04 | NEW | vande-bharat-food-booking-opt-out-refund-rules | Opt-out dining prices, ₹50 onboard ordering fee, delay refunds; all 7 langs |
 
 ## Topics NOT yet covered (candidates for future posts)
 
