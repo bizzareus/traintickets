@@ -30,7 +30,7 @@ This file tracks all blog posts published to avoid duplication.
 | train-berth-types-availability-reservation-guide.md | Train Berths in India: Types, Availability, and How Berth Reservation Actually Works | 2026-06-11 |
 | travel-sleeper-ac-class-general-platform-ticket.md | Can you travel in Sleeper/AC with a General/Platform ticket | 2026-06-12 |
 | how-to-transfer-confirmed-train-ticket-another-person.md | How to transfer a confirmed train ticket to a family member | 2026-06-13 |
-| irctc-app-vs-website-tatkal-booking.md | IRCTC App vs. Website: Which is Faster for Tatkal Ticket Booking? | 2026-07-02 |
+| irctc-app-vs-website-tatkal-booking.md | IRCTC App vs. Website: Which is Faster for Tatkal Ticket Booking? | 2026-07-04 |
 | irctc-auto-upgradation-rules-secrets.md | IRCTC Auto Upgradation: How It Works, Rules, and Secrets to Get a Free Upgrade | 2026-07-02 |
 | how-to-book-train-tickets-in-india-for-foreigners-ultimate-guide.md | How to Book Train Tickets in India for Foreigners: The Ultimate Guide | 2026-06-17 |
 | how-to-travel-with-dog-cat-indian-railways-pet-rules.md | How to Travel with a Dog in Indian Trains: Pet Booking Rules | 2026-06-17 |
@@ -64,19 +64,20 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-travel-insurance-rules-coverage-claim-guide.md | IRCTC Travel Insurance: Rules, Coverage & Nominee Guide (EN + hi/mr/bn/ta/te/ml) | 2026-06-29 |
 | ttr-full-form-in-train.md | TTR Full Form in Train: TTR vs TTE & IRCTC Ticket Rules (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | delhi-to-goa-train-guide.md | Delhi to Goa Train Guide: Best Trains, Fares & Booking Tips (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
-| vande-bharat-train-rules-booking-routes.md | Vande Bharat Train Guide: Booking Rules, Routes & Ticket Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
-| vande-bharat-routes-manufacturing-guide.md | Vande Bharat Routes: Stops, Manufacturing, and Latest News (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
+| vande-bharat-train-rules-booking-routes.md | Vande Bharat Train Guide: Booking Rules, Routes & Ticket Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-04 |
+| vande-bharat-routes-manufacturing-guide.md | Vande Bharat Routes: Stops, Manufacturing, and Latest News (EN + hi/mr/bn/ta/te/ml) | 2026-07-04 |
 | toy-train-routes-booking-india-guide.md | Toy Train Booking in India: Routes, Fares & Heritage Guide (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | bullet-train-india-routes-speed-status.md | Bullet Train in India: Routes, Speed, and Project Status (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | shatabdi-express-timings-routes-tatkal-rules.md | Shatabdi Express Guide: Timings, Routes & Booking Rules (EN + hi/mr/bn/ta/te/ml) | 2026-06-30 |
 | garib-rath-express-timings-routes-booking-rules.md | Garib Rath Express Guide: Timings, Bedroll Charges & Booking Rules (EN + hi/mr/bn/ta/te/ml) | 2026-07-01 |
 | rajdhani-express-timings-routes-booking-rules.md | Rajdhani Express Guide: Timings, Booking Rules, Catering & Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-01 |
 | duronto-express-timings-routes-booking-rules.md | Duronto Express Guide: Timings, Booking Rules, Fares & Catering (EN + hi/mr/bn/ta/te/ml) | 2026-07-01 |
-| amrit-bharat-express-routes-booking-rules-fares.md | Amrit Bharat Express Guide: Routes, Booking Rules & Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
+| amrit-bharat-express-routes-booking-rules-fares.md | Amrit Bharat Express Guide: Routes, Booking Rules & Fares (EN + hi/mr/bn/ta/te/ml) | 2026-07-04 |
 | jan-shatabdi-express-timings-routes-tatkal-rules.md | Jan Shatabdi Express Guide: Timings, Routes, Classes, Tatkal Rules & Booking Process (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
 | tejas-express-timings-routes-booking-rules.md | Tejas Express Guide: Timings, Routes, Fares & Booking Rules (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
 | jan-vishwas-act-railway-rules-decriminalization-penalties.md | Jan Vishwas Act 2026 railway rules, decriminalized offenses, civil penalties, and the 10% escalator clause | 2026-07-02 |
 | new-indian-railways-fines-jan-vishwas-act.md | Indian Railways Fines 2026: Jan Vishwas Act Penalty List (EN + hi/mr/bn/ta/te/ml) | 2026-07-02 |
+| new-irctc-website-revamp-launch-date-features.md | New IRCTC website launch date, ticket booking capacity upgrades, Tatkal improvements, and RailOne integration | 2026-07-04 |
 
 
 ## SEO triage actions (GSC / Google Trends driven)
@@ -85,6 +86,10 @@ This file tracks all blog posts published to avoid duplication.
 |---|---|---|---|
 | 2026-06-26 | EXPAND | how-to-check-vacant-berths-after-chart-preparation | Added "How Do You Check IRCTC Chart Vacancy Online?" section + title/desc targeting rising query "chart vacancy" (+40%); all 7 langs |
 | 2026-06-26 | EXPAND | irctc-ecatering-food-delivery-in-train-guide | Added "How Do You File an IRCTC Catering or Food Hygiene Complaint?" section for breakout query "irctc catering hygiene complaint"; all 7 langs |
+| 2026-07-04 | REFRESH | irctc-app-vs-website-tatkal-booking | Updated with July 15, 2026 portal revamp & capacity details; all 7 langs |
+| 2026-07-04 | EXPAND | vande-bharat-train-rules-booking-routes | Expanded Sleeper trains section with Bangalore-CSMT Mumbai overnight trials news; all 7 langs |
+| 2026-07-04 | EXPAND | vande-bharat-routes-manufacturing-guide | Updated latest Sleeper news with Bengaluru-Mumbai trials and safety clearances; all 7 langs |
+| 2026-07-04 | REFRESH | amrit-bharat-express-routes-booking-rules-fares | Updated route list with new Amritsar-NJP, Banaras-Pune, Ayodhya-LTT, and Nagercoil-Charlapalli routes; all 7 langs |
 
 ## Topics NOT yet covered (candidates for future posts)
 
