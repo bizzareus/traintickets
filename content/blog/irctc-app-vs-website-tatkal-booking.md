@@ -2,7 +2,7 @@
 title: "IRCTC App vs Website: Tatkal Booking Speed Comparison"
 description: "Is the IRCTC app faster than the website for Tatkal bookings? We compare speed, biometrics, captchas, timeouts, and payments to find the winner."
 date: "2026-06-14"
-updated: "2026-07-02"
+updated: "2026-07-04"
 tags:
   - tatkal booking
   - irctc app
@@ -36,6 +36,8 @@ The **IRCTC website** logs you out during Tatkal hours because server traffic pe
 It is a terrible feeling to reach the payment page and see a "Session Expired" screen. This happens because the web servers are running at 100% capacity during Tatkal hours. The system is set up to clean out slow or inactive users to save bandwidth.
 
 If your browser lags for even thirty seconds, the server thinks your connection has dropped. It then terminates your session, forcing you to log in all over again. This happens way more on the website than on the app because browsers make many separate requests to the server, and any of them can fail when the network is congested.
+
+To address these bottleneck issues, the Ministry of Railways is launching a fully upgraded **IRCTC website and mobile app** on **July 15, 2026**. This upgrade boosts server capacity to support **1.5 lakh bookings per minute** (a massive concurrency upgrade from previous limits) and introduces smoother CAPTCHAs to stop automated bots from causing artificial congestion.
 
 To prevent getting logged out on the website:
 - **Do not refresh the page:** Pressing F5 or clicking the reload button will kill your session immediately.
@@ -97,8 +99,6 @@ Here is why the choice between laptop and mobile matters:
 - **Network Reliability:** If your home Wi-Fi lags, a mobile phone can quickly switch to high-speed 5G mobile data, providing a more stable connection during the crucial 120-second booking window.
 - **Keyboard Advantage:** The only area where a laptop wins is typing speed. However, since you should pre-save passenger details in the IRCTC Master List, typing is almost completely eliminated on both devices.
 
----
-
 ## What is the new Aadhaar OTP verification rule for IRCTC Tatkal booking?
 
 Starting **July 15, 2026**, IRCTC mandates **Aadhaar OTP authentication** for all **Tatkal bookings** during passenger selection to verify identity and prevent bot-driven scalping. While this ensures a fairer distribution of seats, receiving and entering the mobile **verification OTP** adds a new time constraint that slows down booking speed.
@@ -135,7 +135,7 @@ The best time to log in is 9:58 AM for AC classes (booking opens at 10:00 AM) an
 No. Logging into your IRCTC account on both the app and website at the same time will trigger a security violation and log you out of both sessions. Always stick to one device and one active session.
 
 ### Why does the IRCTC website show \"service unavailable\" at 10 AM?
-The \"service unavailable\" error occurs because the website servers hit their maximum traffic capacity. The mobile app is usually more resilient because it routes traffic through different, lightweight API gateways.
+The \"service unavailable\" error occurs because the website servers hit their maximum traffic capacity. The mobile app is usually more resilient because it routes traffic through different, lightweight API gateways. Note that the upcoming **July 15, 2026 IRCTC portal upgrade** plans to eliminate this by boosting concurrency to **1.5 lakh bookings per minute**.
 
 ### How does the e-Wallet help in fast booking?
 The IRCTC e-Wallet allows you to pre-deposit money into your account. Paying via the e-Wallet bypasses bank payment gateways entirely, requiring only a transaction password and an internal OTP, saving up to 30 seconds.

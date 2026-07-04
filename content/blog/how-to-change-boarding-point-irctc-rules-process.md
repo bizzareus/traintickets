@@ -77,7 +77,7 @@ Furthermore, if you are already on a running train and need to find empty berths
 
 ## When Does Chart Preparation Happen and What Is Current Availability?
 
-**The first reservation chart is prepared approximately 4 hours before departure, while the final second chart is finalized 30 minutes before departure. After the first chart, any remaining vacant seats become a current available ticket, which is a confirmed seat bookable online or offline until 30 minutes before departure.**
+**The first reservation chart is prepared approximately 10 hours before departure, while the final second chart is finalized 30 minutes before departure. After the first chart, any remaining vacant seats become a current available ticket, which is a confirmed seat bookable online or offline until 30 minutes before departure.**
 
 The 30-minute window for boarding point changes directly aligns with the preparation of the final second reservation chart. This second chart accounts for last-minute cancellations and updates the TTE's handheld terminal. Once this second chart is prepared, no further modifications can be made to the passenger manifest.
 
@@ -90,7 +90,7 @@ A current available ticket represents a fantastic opportunity to grab a last-min
 Here are the quick answers to some of the most common doubts passengers have about changing their boarding stations.
 
 ### Can I change my boarding station after the first chart is prepared?
-Yes, under the new 2026 rules, you can change your boarding point even after the first chart (prepared 4 hours before departure) is published. The online change window remains open until the final second chart is prepared, which is 30 minutes before the train's scheduled departure from your boarding station.
+Yes, under the new 2026 rules, you can change your boarding point even after the first chart (prepared 10 hours before departure) is published. The online change window remains open until the final second chart is prepared, which is 30 minutes before the train's scheduled departure from your boarding station.
 
 ### Do I get a refund if the new boarding station is closer to my destination?
 No, you do not receive any refund of the fare difference. The ticket fare remains the same as originally booked, even if your new boarding station reduces the total distance of your journey.

@@ -2,7 +2,7 @@
 title: "Amrit Bharat Express: Routes, Booking Rules & Fares"
 description: "A complete guide to IRCTC Amrit Bharat Express routes, Sleeper & Second Class fares, booking rules, onboard amenities, and the unique no-RAC seat rules."
 date: "2026-07-02"
-updated: "2026-07-02"
+updated: "2026-07-04"
 tags:
   - train booking
   - irctc
@@ -58,7 +58,7 @@ Other standard charges like the superfast surcharge and booking reservation fees
 
 ## What is the Route List for Amrit Bharat Express?
 
-**Amrit Bharat Express trains connect major industrial hubs and metropolitan cities across India, focusing on long-distance migrant corridors.** Key routes include Howrah to Anand Vihar, Darbhanga to Anand Vihar, Sealdah to Banaras, and Alipurduar to SMVT Bengaluru, with the network steadily expanding.
+**Amrit Bharat Express trains connect major industrial hubs and metropolitan cities across India, focusing on long-distance migrant corridors.** With the expansion of new services, there are now **72 active services** operating across the network as of July 2026. Key routes include Howrah to Anand Vihar, Darbhanga to Anand Vihar, Sealdah to Banaras, and Alipurduar to SMVT Bengaluru, with several new services launched to connect high-demand sectors.
 
 These trains are specifically deployed on high-demand routes that experience heavy waitlists throughout the year. By linking key manufacturing, agricultural, and administrative cities, they ease the travel burden for millions of budget commuters.
 
@@ -67,7 +67,10 @@ Some of the most popular operational routes include:
 - **Malda Town - SMVT Bengaluru (13433/13434):** Serving the massive travel demand between West Bengal and Karnataka.
 - **Sealdah - Banaras (13103/13104):** A highly frequented route connecting Kolkata with Varanasi.
 - **Howrah - Anand Vihar Terminal (22349/22350):** An alternative high-speed connection between West Bengal and Delhi.
-
+- **Amritsar - New Jalpaiguri:** Connecting Punjab directly to North Bengal.
+- **Banaras - Pune:** Linking the holy city of Varanasi to the industrial and educational hub of Pune.
+- **Ayodhya - Lokmanya Tilak Terminal (LTT) Mumbai:** Providing high-speed connectivity for pilgrims traveling between Maharashtra and Ayodhya.
+- **Nagercoil - Charlapalli (Hyderabad):** Linking southernmost Tamil Nadu to Telangana.
 ---
 
 ## What are the Onboard Facilities and Coach Options?

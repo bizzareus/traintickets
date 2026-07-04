@@ -2,7 +2,7 @@
 title: "Vande Bharat Routes: Stops, Manufacturing, and Latest News"
 description: "WL full form is Waiting List. Read about the Vande Bharat routes, key stops, how it runs, how it is made at ICF Chennai, and sleeper train news."
 date: "2026-06-30"
-updated: "2026-07-01"
+updated: "2026-07-04"
 tags:
   - vande bharat routes
   - vande bharat train
@@ -63,7 +63,7 @@ To meet growing demand, other coach-building facilities like RCF Kapurthala and 
 
 The platform is expanding beyond day-trains:
 
-*   **Sleeper Coaches:** Current Vande Bharats are chair-car-only trains for routes under 8 hours. The upcoming Vande Bharat Sleeper will handle long-distance overnight runs (like Delhi to Mumbai). These will feature standard Upper, Middle, Lower, and Side berths, along with advanced shock absorbers for a smoother night's sleep.
+*   **Sleeper Coaches:** Current Vande Bharats are chair-car-only trains for routes under 8 hours. The first Vande Bharat Sleeper train was launched on the Howrah – Kamakhya route. The second sleeper rake has arrived in Bengaluru and is undergoing mandatory safety trials and technical clearances to run on the overnight **KSR Bengaluru to CSMT Mumbai Vande Bharat Sleeper** route. These overnight long-distance rakes feature AC First Class, AC 2-Tier, and AC 3-Tier configurations with advanced shock absorbers and noise-insulated cabins for a smoother night's sleep.
 *   **Visual Upgrades:** Newer sets are rolling out in a saffron-and-grey color scheme, featuring better seat recline angles, reliable washroom sensors, and conveniently placed phone charging sockets.
 *   **International Exports:** Indian Railways is redesigning the train sets to run on standard-gauge tracks for export to African, South American, and East Asian markets.
 

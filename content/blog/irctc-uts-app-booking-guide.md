@@ -70,7 +70,7 @@ Before resorting to crowded general coaches, you should use LastBerth's key feat
 - [PNR Status Search & Direct Booking](/) checks your confirmation probability and provides alternate booking options immediately.
 - [Seat Status Coach Journey Lookup](/seat-status) helps you find vacant berths on running trains that you can request the TTE to assign to you.
 
-Remember that a **current available ticket** is a **fully confirmed seat** with an assigned coach and berth. This becomes available for booking online or at counters after chart preparation (~4 hours before departure) until 30 minutes before train departure. If all confirmed seats are gone, a RailOne unreserved ticket is your safest legal fallback.
+Remember that a **current available ticket** is a **fully confirmed seat** with an assigned coach and berth. This becomes available for booking online or at counters after chart preparation (~10 hours before departure) until 30 minutes before train departure. If all confirmed seats are gone, a RailOne unreserved ticket is your safest legal fallback.
 
 ---
 
