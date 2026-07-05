@@ -14,15 +14,31 @@ function parsePositiveInt(
   return Math.min(max, Math.max(min, parsed));
 }
 
+/** Remove any `sslmode` query param so it can't override the explicit ssl config. */
+function stripSslmode(url: string): string {
+  try {
+    const u = new URL(url);
+    u.searchParams.delete('sslmode');
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
 @Injectable()
 export class PrismaService
   extends PrismaClient
   implements OnModuleInit, OnModuleDestroy
 {
   constructor() {
-    const connectionString =
+    const rawConnectionString =
       process.env.DATABASE_URL ??
       'postgresql://postgres:postgres@localhost:5432/railchart';
+    // Supabase's pooler presents a cert chain Node's default CAs don't trust
+    // ("self-signed certificate in certificate chain"), which crashes the pg
+    // adapter. Connect over TLS without verifying the server cert, and strip any
+    // sslmode= from the URL so it can't fight the explicit ssl option below.
+    const connectionString = stripSslmode(rawConnectionString);
     const poolMax = parsePositiveInt(process.env.DATABASE_POOL_MAX, 10, 1, 30);
     // Keep pooled connections warm. The previous 10s idle timeout closed
     // connections between traffic bursts; reopening them re-runs pgbouncer
@@ -52,6 +68,7 @@ export class PrismaService
       max: poolMax,
       idleTimeoutMillis,
       connectionTimeoutMillis,
+      ssl: { rejectUnauthorized: false },
     });
     super({
       adapter,
