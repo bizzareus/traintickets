@@ -28,7 +28,7 @@ tags:
 
 ## What is the WL Full Form in Railway and What Does it Mean?
 
-**The WL full form in railway is Waiting List. When your IRCTC ticket shows WL, it means you are waitlisted and do not have an assigned seat or berth. You can only secure a confirmed seat or a shared Reservation Against Cancellation (RAC) berth if passengers booked before you cancel their journey.**
+**WL full form in railway is Waiting List. When your IRCTC ticket shows WL, it means you are waitlisted and do not have an assigned seat or berth. You can only secure a confirmed seat or a shared Reservation Against Cancellation (RAC) berth if passengers booked before you cancel their journey.**
 
 When a train is fully booked, IRCTC doesn't stop selling tickets immediately. Instead, they put new bookings on a standby list (the WL). As people cancel their plans, everyone in the queue moves up a step. If enough people cancel, your ticket gets upgraded to a confirmed seat or a shared RAC berth.
 

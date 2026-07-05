@@ -81,6 +81,7 @@ This file tracks all blog posts published to avoid duplication.
 | irctc-personal-id-booking-rules-section-143.md | Rules for booking train tickets for friends and family on a personal ID under Section 143 of the Railways Act | 2026-07-04 |
 | vande-bharat-food-booking-opt-out-refund-rules.md | Guide to Vande Bharat food booking rules, opting out of catering, onboard fees, and refunds | 2026-07-04 |
 | irctc-booking-failed-money-deducted-refund-rules.md | IRCTC Ticket Booking Failed But Money Deducted: Refund Rules & Timelines (EN + hi/mr/bn/ta/te/ml) | 2026-07-05 |
+| how-to-unblock-irctc-id-deactivated-account.md | How to Unblock IRCTC User ID & Recover Deactivated Accounts (EN + hi/mr/bn/ta/te/ml) | 2026-07-05 |
 
 
 ## SEO triage actions (GSC / Google Trends driven)
@@ -117,6 +118,7 @@ This file tracks all blog posts published to avoid duplication.
 | 2026-07-05 | REFRESH | toy-train-routes-booking-india-guide | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
 | 2026-07-05 | REFRESH | train-berth-types-availability-reservation-guide | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
 | 2026-07-05 | REFRESH | vande-bharat-train-rules-booking-routes | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | NEW | how-to-unblock-irctc-id-deactivated-account | How to unblock deactivated/suspicious accounts; all 7 langs |
 
 ## Topics NOT yet covered (candidates for future posts)
 
