@@ -11,8 +11,14 @@ const baseUrl =
     ? siteUrl
     : "https://lastberth.com";
 
-// Non-page areas kept out of every crawler.
-const DISALLOW = ["/admin", "/dashboard", "/api"];
+// Non-page areas kept out of every crawler: the private user dashboard, the
+// admin console, the JSON API, and the auth screens (no SEO value).
+// Intentionally NOT blocked: /_next/static (JS/CSS/fonts) and the favicon/icon
+// routes. Googlebot needs the JS/CSS to render pages, and it needs the icons to
+// show a favicon in search results — blocking them would hurt indexing, not help
+// it. Those asset URLs are never indexed as pages; "Crawled - currently not
+// indexed" is the normal, correct state for them.
+const DISALLOW = ["/admin", "/dashboard", "/api", "/login", "/register"];
 
 // AI search / assistant crawlers we explicitly welcome (so content can surface in
 // ChatGPT, Perplexity, Gemini/AI Overviews, etc.). All are allowed site-wide

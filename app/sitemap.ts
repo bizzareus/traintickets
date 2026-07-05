@@ -27,9 +27,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   // 1. Static core routes
+  // NOTE: /search and /booking/v2 are intentionally excluded — both are legacy
+  // aliases that permanently redirect to "/", so listing them in the sitemap
+  // would tell Google to index redirect/duplicate URLs.
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: url("/search"), lastModified: now },
-    { url: url("/booking/v2"), lastModified: now },
     { url: url("/chart-times"), lastModified: now },
     { url: url("/chart-vacancy"), lastModified: now },
     { url: url("/pnr-status"), lastModified: now },
