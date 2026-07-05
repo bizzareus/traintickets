@@ -2,7 +2,7 @@
 title: "IRCTC Current Availability Explained: What It Is, When It Opens, and How to Use It"
 description: "Everything you need to know about IRCTC current availability, including how it differs from general availability, chart preparation timelines, and booking tips."
 date: "2026-06-11"
-updated: "2026-07-02"
+updated: "2026-07-05"
 tags:
   - current availability
   - vacancy chart
@@ -60,7 +60,7 @@ Here's the typical timeline for most trains:
 
 | Event | Typical Timing |
 | :--- | :--- |
-| General availability visible | From booking opening (120 days before) until chart preparation |
+| General availability visible | From booking opening (60 days before) until chart preparation |
 | **First chart prepared** | **~10 hours before departure from originating station** |
 | Current availability appears | Immediately after first chart |
 | Second/final chart prepared | ~30 minutes before departure |
@@ -87,7 +87,7 @@ Many passengers hesitate to book last-minute tickets because they worry "current
 
 | Aspect | General Availability | Current Availability |
 | :--- | :--- | :--- |
-| **When visible** | Booking opens (up to 120 days out) until chart preparation | After first chart until 30 mins before departure |
+| **When visible** | Booking opens (up to 60 days out) until chart preparation | After first chart until 30 mins before departure |
 | **What it shows** | Projected seats based on current bookings, cancellations, and quota patterns | Actual vacant berths at that moment |
 | **Status labels** | Available, WL, RAC, Regret/Not Available | Available (with exact count), WL, RAC, Regret |
 | **Quota visibility** | Shows combined picture across quotas | Shows what's actually released — including returned Tatkal, ladies, defence quotas |

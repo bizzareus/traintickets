@@ -415,9 +415,13 @@ git push origin main
   one locale) before pushing.
 - If a direct push to `main` is blocked by branch protection, push a feature branch and open
   a PR instead — never force around the guard.
-```
+## 21. Job Summary Reporting
+In the final summary of the job provided to the user, you must explicitly describe how you arrived at the new content or topics chosen for writing. Clearly specify the signal source for each topic:
+- Was it discovered from **Google Trends**? (e.g. seasonal keyword surges, breakout topics)
+- Was it identified from **Google Search Console (GSC)**? (e.g. high-impression / low-CTR queries, position 5-20 keywords)
+- Was it found from **Google News**? (e.g. fresh articles, Indian Railways press releases, rule updates)
 
-## 21. One-line self-check before you stop
+## 22. One-line self-check before you stop
 > "Did I move a real ranked query forward, answer its exact question in the first 50 words,
 > keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, and
 > touch nothing but markdown?" If any answer is no, fix it before committing.

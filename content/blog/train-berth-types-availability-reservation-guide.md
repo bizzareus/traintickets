@@ -2,7 +2,7 @@
 title: "Train Berths in India: Types, Availability, and How Berth Reservation Actually Works"
 description: "Everything you need to know about train berths — from Lower Berth vs Side Upper comfort differences, class-wise coach layouts, to how IRCTC's berth allocation algorithm decides who sleeps where. Practical tips to check berth availability and secure your preferred berth."
 date: "2026-06-11"
-updated: "2026-06-11"
+updated: "2026-07-05"
 tags:
   - train berth
   - berth availability
@@ -211,7 +211,7 @@ Getting your preferred berth requires a combination of booking early, utilizing 
 
 ### 1. Book Early — Really Early
 
-The booking window opens 120 days before departure. On popular routes like Delhi–Mumbai, Bengaluru–Chennai, or Kolkata–Patna, lower berths in 3AC can exhaust within the first 48 hours of opening. If lower berth matters to you, set a reminder for the opening date.
+The booking window opens 60 days before departure. On popular routes like Delhi–Mumbai, Bengaluru–Chennai, or Kolkata–Patna, lower berths in 3AC can exhaust within the first 48 hours of opening. If lower berth matters to you, set a reminder for the opening date.
 
 ### 2. Use the SS Quota for Seniors
 

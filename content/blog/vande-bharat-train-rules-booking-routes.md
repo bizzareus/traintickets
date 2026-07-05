@@ -2,7 +2,7 @@
 title: "Vande Bharat Train Guide: Booking Rules, Routes & Ticket Fares"
 description: "WL full form is Waiting List. Check the ultimate guide to Vande Bharat train features, booking rules, ticket prices, catering options, and seat booking."
 date: "2026-06-30"
-updated: "2026-07-04"
+updated: "2026-07-05"
 tags:
   - vande bharat
   - vande bharat train
@@ -28,11 +28,11 @@ The passenger cabins feel closer to an airplane than a typical train. Passengers
 
 ## How to Book Vande Bharat Tickets and What are the Rules?
 
-Passengers can book **Vande Bharat tickets** through the official **IRCTC website or Rail Connect app** with an advance reservation window of **120 days**. While last-minute **Tatkal bookings** are permitted, **no senior citizen or general concessions** apply to these premium train services.
+Passengers can book **Vande Bharat tickets** through the official **IRCTC website or Rail Connect app** with an advance reservation window of **60 days**. While last-minute **Tatkal bookings** are permitted, **no senior citizen or general concessions** apply to these premium train services.
 
 Getting a ticket on the Vande Bharat is straightforward, but seats fill up fast.
 
-*   **Booking Windows:** The regular advance reservation window opens **120 days** before the journey date at 8:00 AM.
+*   **Booking Windows:** The regular advance reservation window opens **60 days** before the journey date at 8:00 AM.
 *   **Tatkal Reservations:** Tatkal bookings open **1 day** before the train starts from its originating station. For AC classes, this starts at 10:00 AM. Fares are higher, and seats often disappear within a minute.
 *   **Concession Rules:** General concessions, including senior citizen discounts, are not allowed. Only specific Divyangjan (disability) bookings are supported.
 

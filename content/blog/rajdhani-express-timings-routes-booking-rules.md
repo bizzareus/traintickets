@@ -2,7 +2,7 @@
 title: "Rajdhani Express: Timings, Booking Rules, Catering & Fares"
 description: "WL full form is Waiting List. Check the ultimate guide to Rajdhani Express timings, seat layouts, dynamic ticket fares, and catering options."
 date: "2026-07-01"
-updated: "2026-07-01"
+updated: "2026-07-05"
 tags:
   - train booking
   - irctc
@@ -49,7 +49,7 @@ If you book 1AC, you get an upgraded menu with soup starters, multiple choices f
 
 ## When Does Rajdhani Express Booking and Tatkal Timings Open?
 
-**You can book regular Rajdhani Express tickets up to 120 days before your journey date. If those sell out, the Tatkal quota opens daily at 10:00 AM sharp, one day before the train departs its origin station. Remember, since it is an AC-only train, the early AC slot applies.**
+**You can book regular Rajdhani Express tickets up to 60 days before your journey date. If those sell out, the Tatkal quota opens daily at 10:00 AM sharp, one day before the train departs its origin station. Remember, since it is an AC-only train, the early AC slot applies.**
 
 Demand is huge, so seats often vanish within seconds. If you miss out on general tickets, try the Tatkal window. But keep an eye on ticket costs: Rajdhani uses a **Dynamic Pricing (Flexi-Fare)** system. Every time 10% of seats in a class sell, the base fare climbs by 10% until it hits a 1.5x cap. Tatkal tickets don't use dynamic pricing, but they have a high fixed premium added.
 

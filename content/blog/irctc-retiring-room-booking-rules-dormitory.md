@@ -2,7 +2,7 @@
 title: "IRCTC Retiring Room Booking: Book Cheap Station Rooms"
 description: "Need a budget place to stay during your train journey? Learn how to book IRCTC retiring rooms and dormitories online using PNR, rules, rates, and limits."
 date: "2026-06-18"
-updated: "2026-06-18"
+updated: "2026-07-05"
 tags:
   - retiring room
   - irctc booking
@@ -13,7 +13,7 @@ tags:
 ## TL;DR
 
 - **Eligibility:** Available only for passengers with a confirmed (CNF) or RAC ticket. Waitlisted (WL) tickets cannot be used.
-- **Booking Time:** Can be booked online in advance from 120 days up to 4 hours before train departure.
+- **Booking Time:** Can be booked online in advance from 60 days up to 4 hours before train departure.
 - **Duration:** Stay limits range from a minimum of 3 hours (hourly slots) up to a maximum of 48 hours.
 - **Accommodation Types:** Choose between AC/Non-AC Single Rooms, Double Rooms, and Dormitory beds.
 - **Locations:** Bookable at either the originating station, destination station, or intermediate transit stations.

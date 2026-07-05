@@ -2,7 +2,7 @@
 title: "Toy Train Booking in India: Routes, Fares & Heritage Guide"
 description: "WL full form is Waiting List. Plan your toy train booking for Shimla, Darjeeling, Ooty, and Matheran with this complete route, price, and booking guide."
 date: "2026-06-30"
-updated: "2026-06-30"
+updated: "2026-07-05"
 tags:
   - toy train
   - toy train booking
@@ -11,7 +11,7 @@ tags:
 ---
 
 ## TL;DR
-India is famous for its historic narrow-gauge mountain railways, affectionately called toy trains. The main routes run in Darjeeling, Shimla, Ooty, and Matheran. You can book tickets online via IRCTC. Because these trains have tiny capacities, secure your seats 120 days in advance.
+India is famous for its historic narrow-gauge mountain railways, affectionately called toy trains. The main routes run in Darjeeling, Shimla, Ooty, and Matheran. You can book tickets online via IRCTC. Because these trains have tiny capacities, secure your seats 60 days in advance.
 
 ---
 
@@ -32,7 +32,7 @@ Additionally, travelers visiting Mumbai can take a short excursion to ride the c
 
 ## How to Complete a Toy Train Booking on IRCTC?
 
-**Travelers can book toy train tickets online using the official IRCTC portal or mobile app by entering specific station codes. Seats sell out quickly, so it is highly recommended to book 120 days in advance.**
+**Travelers can book toy train tickets online using the official IRCTC portal or mobile app by entering specific station codes. Seats sell out quickly, so it is highly recommended to book 60 days in advance.**
 
 Booking a ticket online is straightforward if you know the details:
 
@@ -42,7 +42,7 @@ Booking a ticket online is straightforward if you know the details:
     *   **Darjeeling:** From `NJP` (New Jalpaiguri) or `KGN` (Kurseong) to `DJ` (Darjeeling).
     *   **Nilgiri (Ooty):** From `MTP` (Mettupalayam) to `UAM` (Ooty).
 3.  **Choose Your Coach Class:** Classes include First Class (FC), AC Chair Car (CC), and Second Seating (2S).
-4.  **Reserve Early:** Since the coaches are tiny and hold very few passengers, bookings fill up months in advance. Seats open exactly **120 days** before departure at 8:00 AM.
+4.  **Reserve Early:** Since the coaches are tiny and hold very few passengers, bookings fill up months in advance. Seats open exactly **60 days** before departure at 8:00 AM.
 
 ---
 

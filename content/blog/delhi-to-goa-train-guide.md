@@ -2,7 +2,7 @@
 title: "Delhi to Goa Train Guide: Best Trains, Fares & Booking Tips"
 description: "WL full form is Waiting List. Check the best trains from Delhi to Goa, ticket prices, travel times, and how to find seats on waitlisted journeys."
 date: "2026-06-30"
-updated: "2026-06-30"
+updated: "2026-07-05"
 tags:
   - delhi to goa train
   - train booking
@@ -59,12 +59,12 @@ The journey takes you from the northern plains of India, down through the centra
 
 ## How to Secure a Confirmed Train Ticket from Delhi to Goa?
 
-**To secure a confirmed train ticket from Delhi to Goa, book 120 days in advance when the IRCTC window opens. Since this route is highly waitlisted, you can also search for a \"current available ticket\"—a confirmed seat with coach/berth numbers that opens 4 hours before departure.**
+**To secure a confirmed train ticket from Delhi to Goa, book 60 days in advance when the IRCTC window opens. Since this route is highly waitlisted, you can also search for a \"current available ticket\"—a confirmed seat with coach/berth numbers that opens 4 hours before departure.**
 
 Because Goa is a prime tourist destination, securing a confirmed ticket can be extremely difficult, especially during the holiday season (October to March).
 
 ### Key Booking Windows
-*   **General Advance Booking:** Opens **120 days** before the date of travel at 8:00 AM.
+*   **General Advance Booking:** Opens **60 days** before the date of travel at 8:00 AM.
 *   **Tatkal Quota:** Opens **1 day** before departure at 10:00 AM for AC classes and 11:00 AM for Sleeper class.
 *   **Current Availability:** A `"current available ticket"` is a **fully confirmed seat** with coach/berth numbers. It opens after the first chart is prepared (4 hours before train departure) and closes 30 minutes before the train leaves.
 

@@ -2,7 +2,7 @@
 title: "Shatabdi Express Guide: Timings, Routes & Booking Rules"
 description: "WL full form is Waiting List. Check the ultimate guide to Shatabdi Express timings, route schedules, Tatkal booking times, fares, and food catering rules."
 date: "2026-06-30"
-updated: "2026-07-01"
+updated: "2026-07-05"
 tags:
   - train booking
   - irctc
@@ -11,7 +11,7 @@ tags:
 ---
 
 ## TL;DR
-Shatabdi Express is a premium network of daytime air-conditioned chair car trains operated by Indian Railways, connecting major cities. Tickets follow standard IRCTC rules with ARP of 120 days. Tatkal booking opens at 10:00 AM, and catering is optional.
+Shatabdi Express is a premium network of daytime air-conditioned chair car trains operated by Indian Railways, connecting major cities. Tickets follow standard IRCTC rules with ARP of 60 days. Tatkal booking opens at 10:00 AM, and catering is optional.
 
 ---
 
@@ -30,11 +30,11 @@ Shatabdi trains are among the fastest and most reliable options for daytime trai
 
 ## What are the Booking Rules and Tatkal Timings for Shatabdi Express?
 
-**Booking rules for Shatabdi Express follow the standard 120-day advance reservation period on IRCTC. Shatabdi Express Tatkal timings open one day before departure at 10:00 AM since these are air-conditioned (AC) trains. No general concessions are applicable on Shatabdi trains except for eligible Divyangjan passenger categories.**
+**Booking rules for Shatabdi Express follow the standard 60-day advance reservation period on IRCTC. Shatabdi Express Tatkal timings open one day before departure at 10:00 AM since these are air-conditioned (AC) trains. No general concessions are applicable on Shatabdi trains except for eligible Divyangjan passenger categories.**
 
 Planning a Shatabdi journey requires understanding these key booking windows:
 
-*   **Advance Reservation Period (ARP):** You can book seats up to **120 days** before the journey date starting at 8:00 AM daily.
+*   **Advance Reservation Period (ARP):** You can book seats up to **60 days** before the journey date starting at 8:00 AM daily.
 *   **Shatabdi Express Tatkal Timings:** Tatkal bookings open **1 day** before the train's scheduled departure from its originating station. Since all Shatabdi coaches are AC (Chair Car and Executive Chair Car), booking opens strictly at **10:00 AM**. Seats under this quota sell out within minutes, so keeping passenger lists ready is essential.
 *   **Concession Restrictions:** To keep fares aligned with operational costs, Indian Railways does not offer senior citizen discounts or other concessions on Shatabdi trains. Only passenger-level Divyangjan (disability) concessions are supported under specified quotas.
 

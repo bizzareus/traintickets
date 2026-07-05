@@ -2,7 +2,7 @@
 title: "Garib Rath Express: Timings, Bedroll Charges & Booking Rules"
 description: "WL full form is Waiting List. Check the ultimate guide to Garib Rath Express timings, side-middle berth layout, bedroll charges, and booking rules."
 date: "2026-07-01"
-updated: "2026-07-01"
+updated: "2026-07-05"
 tags:
   - train booking
   - irctc
@@ -59,7 +59,7 @@ This high-density configuration is the reason why Garib Rath fares are so afford
 
 ## What are the Booking Rules and Tatkal Timings for Garib Rath?
 
-**Booking a Garib Rath ticket follows standard IRCTC rules, opening 120 days in advance. Since these trains consist entirely of AC coaches (3AC and AC Chair Car), the Tatkal booking window opens daily at 10:00 AM, precisely one day before the train leaves its originating station.**
+**Booking a Garib Rath ticket follows standard IRCTC rules, opening 60 days in advance. Since these trains consist entirely of AC coaches (3AC and AC Chair Car), the Tatkal booking window opens daily at 10:00 AM, precisely one day before the train leaves its originating station.**
 
 Because of the low price point, demand for these tickets is crazy. If you're aiming for Tatkal, be ready on your app at least five minutes early. Remember:
 *   **AC Class Timings Apply:** Unlike sleeper class Tatkal which opens at 11:00 AM, Garib Rath opens at **10:00 AM**.

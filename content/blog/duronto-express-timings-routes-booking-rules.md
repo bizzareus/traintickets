@@ -2,7 +2,7 @@
 title: "Duronto Express: Timings, Booking Rules, Fares & Catering"
 description: "Complete guide to IRCTC Duronto Express bookings, dynamic pricing, optional catering charges, Tatkal timings, seat layouts, and major routes."
 date: "2026-07-01"
-updated: "2026-07-01"
+updated: "2026-07-05"
 tags:
   - train booking
   - irctc
@@ -32,9 +32,9 @@ Over the years, the Ministry of Railways updated this policy. Today, most Duront
 
 ## What is the Booking Time for Duronto Express Tickets?
 
-**Duronto Express advance ticket booking opens 120 days before the scheduled departure date from the originating station, starting at 8:00 AM daily.** General reservations can be made online via the IRCTC portal or at offline railway counters until the final reservation charts are prepared, which occurs four hours before the train departs.
+**Duronto Express advance ticket booking opens 60 days before the scheduled departure date from the originating station, starting at 8:00 AM daily.** General reservations can be made online via the IRCTC portal or at offline railway counters until the final reservation charts are prepared, which occurs four hours before the train departs.
 
-This 120-day Advance Reservation Period (ARP) is standard across all major Indian Railways services. Since Duronto Express is a highly popular service for long-distance routes, tickets in classes like 3AC and Sleeper tend to sell out quickly, particularly during major holidays, festivals, and school vacations.
+This 60-day Advance Reservation Period (ARP) is standard across all major Indian Railways services. Since Duronto Express is a highly popular service for long-distance routes, tickets in classes like 3AC and Sleeper tend to sell out quickly, particularly during major holidays, festivals, and school vacations.
 
 If you are unable to secure a confirmed ticket during the general reservation period, your ticket will land in the waiting list queue. In Indian Railways, the **WL full form is Waiting List**, representing a standby queue. The status transitions through a strict pipeline: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. 
 

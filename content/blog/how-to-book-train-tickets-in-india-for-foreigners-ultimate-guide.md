@@ -2,7 +2,7 @@
 title: "How to Book Train Tickets in India for Foreigners: The Ultimate Guide"
 description: "Wondering how to book train tickets in India as a foreign tourist? Learn how to register on IRCTC, use the Foreign Tourist Quota, and avoid payment failures."
 date: "2026-06-17"
-updated: "2026-06-17"
+updated: "2026-07-05"
 tags:
   - foreign tourist booking
   - irctc registration
@@ -43,7 +43,7 @@ Here's the easiest way to get through it:
 If you are planning your trip months in advance, you should definitely know about the Foreign Tourist Quota (FT Quota). Indian Railways sets aside a dedicated number of berths on popular routes—like Delhi to Agra, Jaipur, Varanasi, or Mumbai—specifically to help international visitors get confirmed seats.
 
 Here is why this quota is a lifesaver:
-- **A huge booking window:** While regular tickets can only be booked 120 days in advance, the FT quota opens a full **365 days before departure** for air-conditioned classes. This lets you plan your itinerary way ahead of time.
+- **A huge booking window:** While regular tickets can only be booked 60 days in advance, the FT quota opens a full **365 days before departure** for air-conditioned classes. This lets you plan your itinerary way ahead of time.
 - **Better availability:** Because only foreign passport holders can book these seats, they don't sell out instantly like the general quota tickets.
 - **Slightly higher cost:** FT quota tickets do carry a service charge, making them a bit more expensive, but the peace of mind of having a confirmed seat is well worth the extra couple of dollars.
 
@@ -51,7 +51,7 @@ To check these seats, just select "Foreign Tourist" from the Quota dropdown menu
 
 | Quota Feature | General Quota | Foreign Tourist Quota |
 | :--- | :--- | :--- |
-| **Booking Window** | 120 Days | 365 Days (AC Classes) |
+| **Booking Window** | 60 Days | 365 Days (AC Classes) |
 | **Ticket Cost** | Base Fare | Base Fare + Service Charge |
 | **Availability** | Hard to get on popular routes | Much better availability for tourists |
 | **Eligibility** | Indian Residents | Foreign Passports & NRIs |

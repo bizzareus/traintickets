@@ -2,7 +2,7 @@
 title: "Jan Shatabdi Express: Timings, Routes & Booking Rules"
 description: "A complete guide to IRCTC Jan Shatabdi Express booking rules, Tatkal ticket timings, coach classes, food catering options, and popular routes."
 date: "2026-07-02"
-updated: "2026-07-02"
+updated: "2026-07-05"
 tags:
   - train booking
   - irctc
@@ -51,7 +51,7 @@ However, train food quality can be hit-or-miss. If you want a decent meal, we re
 
 ## What is the Advance Reservation Period for Jan Shatabdi Trains?
 
-**You can book tickets for most Jan Shatabdi Express trains up to 120 days in advance, not counting the day of your journey. This four-month window gives you plenty of time to plan, though a few short-run day trains might operate on a tighter 30-day or 60-day advance booking schedule.**
+**You can book tickets for most Jan Shatabdi Express trains up to 60 days in advance, not counting the day of your journey. This two-month window gives you plenty of time to plan, though a few short-run day trains might operate on a tighter 30-day advance booking schedule.**
 
 We always suggest booking early, especially for weekend trips. If you are booking last-minute and the train is completely sold out, check for a current available ticket. A current available ticket is a fully confirmed seat with an assigned coach and seat number. It only opens up after the first chart preparation, which happens about 4 hours before the train departs, and stays bookable online until 30 minutes before departure.
 
