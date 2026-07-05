@@ -80,6 +80,7 @@ This file tracks all blog posts published to avoid duplication.
 | new-irctc-website-revamp-launch-date-features.md | New IRCTC website launch date, ticket booking capacity upgrades, Tatkal improvements, and RailOne integration | 2026-07-04 |
 | irctc-personal-id-booking-rules-section-143.md | Rules for booking train tickets for friends and family on a personal ID under Section 143 of the Railways Act | 2026-07-04 |
 | vande-bharat-food-booking-opt-out-refund-rules.md | Guide to Vande Bharat food booking rules, opting out of catering, onboard fees, and refunds | 2026-07-04 |
+| irctc-booking-failed-money-deducted-refund-rules.md | IRCTC Ticket Booking Failed But Money Deducted: Refund Rules & Timelines (EN + hi/mr/bn/ta/te/ml) | 2026-07-05 |
 
 
 ## SEO triage actions (GSC / Google Trends driven)
@@ -96,6 +97,14 @@ This file tracks all blog posts published to avoid duplication.
 | 2026-07-04 | EXPAND | wl-waiting-list-meaning-indian-railway | Optimize for 'wl full form in railway is Waiting List' & 60-day window; all 7 langs |
 | 2026-07-04 | NEW | irctc-personal-id-booking-rules-section-143 | Booking rules for family/friends, Section 143, RPF fines; all 7 langs |
 | 2026-07-04 | NEW | vande-bharat-food-booking-opt-out-refund-rules | Opt-out dining prices, ₹50 onboard ordering fee, delay refunds; all 7 langs |
+| 2026-07-05 | REFRESH | travel-sleeper-ac-class-general-platform-ticket | Updated for Jan Vishwas Act 2026 ₹500 minimum fine; all 7 langs |
+| 2026-07-05 | REFRESH | ttr-full-form-in-train | Updated for Jan Vishwas Act 2026 ₹500 minimum fine; all 7 langs |
+| 2026-07-05 | REFRESH | rac-vs-wl-explained | Updated for April 2026 cancellation slabs (72h/8h); all 7 langs |
+| 2026-07-05 | REFRESH | irctc-refund-status-check-track-ticket-refund | Updated for April 2026 cancellation slabs (8h cutoff); all 7 langs |
+| 2026-07-05 | EXPAND | irctc-vikalp-scheme-explained | Added partially confirmed group ticket rules & 2026 cancellation slabs; all 7 langs |
+| 2026-07-05 | EXPAND | irctc-vikalp-scheme-guide | Added partially confirmed group ticket rules & 2026 cancellation slabs; all 7 langs |
+| 2026-07-05 | EXPAND | understanding-coach-composition-find-train-platform | Added Reversed Rakes and Detached Coaches sections; all 7 langs |
+| 2026-07-05 | NEW | irctc-booking-failed-money-deducted-refund-rules | Failed booking refund rules, payment gateways, and ARN tracking; all 7 langs |
 
 ## Topics NOT yet covered (candidates for future posts)
 
