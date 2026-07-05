@@ -180,9 +180,7 @@ TREE=$(git write-tree) && C=$(echo "<msg>" | git commit-tree $TREE -p HEAD) && e
 
 ## Step 7 — Summary
 
-Report: signals used (GSC + Trends, or which were unavailable), the ranked batch and the
-action taken for each item and why, files changed, any CONSOLIDATE redirect/merge
-recommendations for the user, and push status.
+Report: signals used (GSC + Trends + News, or which were unavailable), the ranked batch and the action taken for each item and why (clearly stating how you arrived at each topic—whether it is from Google Trends, GSC, or Google News), files changed, any CONSOLIDATE redirect/merge recommendations for the user, and push status.
 
 ## Constraints
 
