@@ -2,7 +2,7 @@
 title: "The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing"
 description: "Confused by IRCTC cancellation fees and TDR deadlines? Here is a complete breakdown of refund charges, auto-refund rules, and step-by-step TDR filing tips to get your money back."
 date: "2026-06-10"
-updated: "2026-07-02"
+updated: "2026-07-05"
 tags:
   - irctc cancellation
   - refund rules
@@ -112,6 +112,22 @@ If you booked an AC 2 Tier ticket but were forced to travel in AC 3 Tier because
 
 ---
 
+## What Are the Standard IRCTC TDR Refund Slabs and Filing Reasons?
+
+**IRCTC TDR refund slabs determine the refund percentage based on the filing reason and deadline. For railway-side issues like a train delayed by over 3 hours, a 100% refund is granted if filed before departure. For AC failures, the fare difference between AC and Sleeper is refunded if filed within 20 hours of arrival.**
+
+| TDR Filing Reason | Refund Slab (Refund %) | Filing Deadline | Requirements / Key Rules |
+| :--- | :--- | :--- | :--- |
+| **Train running late >3 hours** | 100% of total fare | Before actual departure of train | Passenger must not have boarded the train. |
+| **AC Failure (in AC class)** | Difference between AC & Sleeper fare | Within 20 hours of train arrival | Must obtain AC failure certificate from the TTE. |
+| **Coach detached** | 100% of total fare | Within 3 hours of train departure | For passengers who could not be accommodated. |
+| **Train diverted (boarding/destination missed)** | 100% of total fare | Within 72 hours of scheduled departure | Applicable if the passenger does not want to travel via the diverted route. |
+| **Train cancelled by Railways** | 100% of total fare | Within 3 days of scheduled departure | Usually auto-refunded, but TDR serves as a backup for counter/specific tickets. |
+| **Travel in lower class** | Difference in fare | Within 48 hours of train arrival | Must obtain a lower-class certificate from the TTE. |
+| **Group ticket (partially confirmed)** | Fare of waitlisted passengers | Up to 30 minutes before departure | File TDR for non-travelling waitlisted passengers on joint PNR. |
+
+---
+
 ## How Do You File a TDR on IRCTC Step by Step?
 
 To **file a TDR on IRCTC**, log in to your account, go to **My Account > My Transactions > Booked Ticket History**, select the PNR, click **File TDR**, select the reason, and submit. You will receive a confirmation message, and the **refund** will be credited within **15 to 45 days**.
@@ -152,6 +168,13 @@ The best way to handle cancellation fees is to avoid booking highly risky ticket
 3. **Segment Booking Optimization:** If your direct train is waitlisted, LastBerth can find alternative combinations of confirmed segments, reducing the chance that you'll need to cancel a waitlisted ticket at the last minute.
 
 Understanding these rules ensures you never leave money on the table. Keep this guide bookmarked for your next journey so you are always prepared, whatever changes your plans may undergo.
+
+---
+
+## FAQ: Cancellation & TDR Questions
+
+### What are the main reasons to file a TDR on IRCTC?
+The main reasons are: train delayed by 3+ hours (100% refund), AC failure in AC coach (refund of fare difference), coach detached (100% refund), train diverted (100% refund), and passenger travelling in lower class (fare difference refund).
 
 ---
 
