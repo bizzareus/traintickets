@@ -105,6 +105,18 @@ This file tracks all blog posts published to avoid duplication.
 | 2026-07-05 | EXPAND | irctc-vikalp-scheme-guide | Added partially confirmed group ticket rules & 2026 cancellation slabs; all 7 langs |
 | 2026-07-05 | EXPAND | understanding-coach-composition-find-train-platform | Added Reversed Rakes and Detached Coaches sections; all 7 langs |
 | 2026-07-05 | NEW | irctc-booking-failed-money-deducted-refund-rules | Failed booking refund rules, payment gateways, and ARN tracking; all 7 langs |
+| 2026-07-05 | REFRESH | delhi-to-goa-train-guide | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | duronto-express-timings-routes-booking-rules | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | garib-rath-express-timings-routes-booking-rules | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | how-to-book-train-tickets-in-india-for-foreigners-ultimate-guide | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | irctc-current-availability-explained | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | irctc-retiring-room-booking-rules-dormitory | Updated retiring room booking window to 60 days; all 7 langs |
+| 2026-07-05 | REFRESH | jan-shatabdi-express-timings-routes-tatkal-rules | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | rajdhani-express-timings-routes-booking-rules | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | shatabdi-express-timings-routes-tatkal-rules | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | toy-train-routes-booking-india-guide | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | train-berth-types-availability-reservation-guide | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
+| 2026-07-05 | REFRESH | vande-bharat-train-rules-booking-routes | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
 
 ## Topics NOT yet covered (candidates for future posts)
 

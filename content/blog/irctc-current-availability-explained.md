@@ -26,9 +26,9 @@ tags:
 
 ---
 
-## What is the booking time for IRCTC Current Availability?
+## When does Current Availability open for booking?
 
-The **booking time for IRCTC current availability** starts from the preparation of the first chart (usually **10 hours before departure**) and closes exactly **30 minutes before departure** from the originating station. For early morning trains, current booking is open overnight starting from the previous evening's chart preparation.
+**Current availability opens for booking immediately after the first reservation chart is prepared, typically 10 hours before the train's departure from its originating station. The booking window remains open online and at counters until 30 minutes before departure.** For early morning trains, current booking is open overnight starting from the previous evening's chart preparation.
 
 Below is a structured guide detailing the exact booking times and current availability windows based on train departure times:
 
@@ -52,9 +52,9 @@ Think of it this way: general availability is like checking how many hotel rooms
 
 The distinction matters because general availability can be misleading close to departure. A train might show WL 12 in the general view, but once charting happens, cancellations, quota releases, and no-shows can open up 8 or 15 berths that weren't visible before. The reverse is also true: a train showing Available 3 in general view might tighten to zero after charting because those projected seats were absorbed by RAC and waitlist clearances.
 
-## When does Current Availability open for booking?
+## What is the booking time for IRCTC Current Availability?
 
-**Current availability opens for booking immediately after the first reservation chart is prepared, typically 10 hours before the train's departure from its originating station.** For early morning trains departing before 8:00 AM, the booking window opens the previous evening between 8:00 PM and 11:00 PM.
+**The official booking time for IRCTC current availability starts immediately after the first reservation chart is prepared (typically 10 hours before train departure) and closes 30 minutes before departure. This provides a booking window of approximately 9.5 hours to secure vacant seats.** For early morning departures, the booking window opens the previous evening.
 
 Here's the typical timeline for most trains:
 
