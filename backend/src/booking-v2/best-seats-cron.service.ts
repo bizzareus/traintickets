@@ -182,10 +182,12 @@ export class BestSeatsCronService {
       24 * 60 * 60 * 1000,
     );
     // High cap: at a 6h cadence each run should refresh the whole due set (not
-    // stagger across ticks like the old 5-min cron). Concurrency 3 keeps a full
-    // run well under the 6h window.
+    // stagger across ticks like the old 5-min cron). Keep concurrency low — the
+    // DB is cross-region and small, so a big parallel write burst causes lock
+    // contention / connection exhaustion. 2 is gentle; raise via env if the DB
+    // is co-located/upsized.
     const maxPerTick = envInt('BEST_SEATS_MAX_PER_TICK', 200, 1, 1000);
-    const concurrency = envInt('BEST_SEATS_CONCURRENCY', 3, 1, 6);
+    const concurrency = envInt('BEST_SEATS_CONCURRENCY', 2, 1, 6);
     const cutoff = new Date(Date.now() - refreshMs);
 
     const combos = await this.targetCombos();

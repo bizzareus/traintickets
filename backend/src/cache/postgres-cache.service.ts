@@ -33,13 +33,28 @@ export class PostgresCacheService extends CacheService {
   }
 
   async deleteExpired(): Promise<number> {
-    const res = await this.prisma.cacheEntry.deleteMany({
-      where: { expiresAt: { not: null, lt: new Date() } },
-    });
-    if (res.count > 0) {
-      this.logger.log(`[cache] swept ${res.count} expired cache_entry rows`);
+    const BATCH = 5000;
+    let total = 0;
+    // Delete in bounded batches — each its own autocommit statement — so a large
+    // expired backlog can't become one giant, lock-heavy DELETE that holds locks,
+    // exhausts DB connections, and trips the pooler circuit breaker. The
+    // iteration cap (2000 * 5000 = 10M rows) is a safety backstop.
+    for (let i = 0; i < 2000; i += 1) {
+      const removed = await this.prisma.$executeRaw`
+        DELETE FROM "cache_entry"
+        WHERE "key" IN (
+          SELECT "key" FROM "cache_entry"
+          WHERE "expires_at" IS NOT NULL AND "expires_at" < now()
+          LIMIT ${BATCH}
+        )
+      `;
+      total += removed;
+      if (removed < BATCH) break;
     }
-    return res.count;
+    if (total > 0) {
+      this.logger.log(`[cache] swept ${total} expired cache_entry rows (batched)`);
+    }
+    return total;
   }
 
   async del(key: string): Promise<void> {

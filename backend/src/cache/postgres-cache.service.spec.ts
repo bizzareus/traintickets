@@ -12,6 +12,7 @@ function makePrisma(
       deleteMany: jest.fn().mockResolvedValue({ count: 0 }),
       ...overrides,
     },
+    $executeRaw: jest.fn().mockResolvedValue(0),
   } as unknown as PrismaService;
 }
 
@@ -118,20 +119,30 @@ describe('PostgresCacheService', () => {
   });
 
   describe('deleteExpired', () => {
-    it('bulk-deletes only expired rows and returns the count', async () => {
-      const deleteMany = jest.fn().mockResolvedValue({ count: 7 });
-      const prisma = makePrisma({ deleteMany });
+    it('deletes in bounded batches and stops when a partial batch returns', async () => {
+      // First batch full (5000), second partial (100) -> loop stops after 2 calls.
+      const execRaw = jest
+        .fn()
+        .mockResolvedValueOnce(5000)
+        .mockResolvedValueOnce(100);
+      const prisma = makePrisma();
+      (prisma as unknown as { $executeRaw: jest.Mock }).$executeRaw = execRaw;
       const svc = new PostgresCacheService(prisma);
 
       const removed = await svc.deleteExpired();
 
-      expect(removed).toBe(7);
-      expect(deleteMany).toHaveBeenCalledTimes(1);
-      const arg = deleteMany.mock.calls[0][0] as {
-        where: { expiresAt: { not: null; lt: Date } };
-      };
-      expect(arg.where.expiresAt.not).toBeNull();
-      expect(arg.where.expiresAt.lt).toBeInstanceOf(Date);
+      expect(removed).toBe(5100);
+      expect(execRaw).toHaveBeenCalledTimes(2);
+    });
+
+    it('makes a single call when the first batch is already partial', async () => {
+      const execRaw = jest.fn().mockResolvedValue(0);
+      const prisma = makePrisma();
+      (prisma as unknown as { $executeRaw: jest.Mock }).$executeRaw = execRaw;
+      const svc = new PostgresCacheService(prisma);
+
+      expect(await svc.deleteExpired()).toBe(0);
+      expect(execRaw).toHaveBeenCalledTimes(1);
     });
   });
 
