@@ -2,7 +2,7 @@
 title: "TTR Full Form in Train: TTR vs TTE & IRCTC Ticket Rules"
 description: "WL full form is Waiting List. Learn the full form of TTR in train bookings, TTR vs TTE differences, duties of a TTR, and how waiting lists and refunds work."
 date: "2026-06-30"
-updated: "2026-06-30"
+updated: "2026-07-05"
 tags:
   - train booking
   - irctc
@@ -112,7 +112,7 @@ TTR stands for **Travelling Ticket Regulator** or **Travelling Ticket Representa
 There is no difference in their role. TTE is the official designation used by Indian Railways, while TTR is a slang or regional term used by passengers to describe the ticket checking staff on a train.
 
 ### Can a TTE/TTR fine you for having a waitlisted e-ticket?
-Yes. A waitlisted e-ticket is automatically cancelled after chart preparation. If you board a reserved coach with a waitlisted e-ticket, you will be treated as traveling without a ticket, and the TTR will charge you a minimum penalty of ₹250 plus the class fare.
+Yes. A waitlisted e-ticket is automatically cancelled after chart preparation. If you board a reserved coach with a waitlisted e-ticket, you will be treated as traveling without a ticket, and the TTR will charge you a minimum penalty of ₹500 (under the Jan Vishwas Act 2026) plus the class fare.
 
 ### What is the progression of a waiting list ticket?
 The queue progression is **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. As other passengers cancel their bookings, waitlisted tickets move into the RAC category, and RAC tickets eventually get upgraded to fully confirmed berths.

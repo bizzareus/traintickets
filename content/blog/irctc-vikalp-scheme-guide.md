@@ -2,7 +2,7 @@
 title: "Is the IRCTC VIKALP Scheme Actually Worth It? (A Hard Look at the Rules)"
 description: "Discover how the IRCTC VIKALP alternative train scheme really works, its hidden traps, and whether you should opt in for waitlisted tickets."
 date: "2026-05-29"
-updated: "2026-06-11"
+updated: "2026-07-05"
 tags:
   - irctc vikalp
   - waiting list
@@ -86,7 +86,7 @@ Sure, you are still in your booked class, but the quality of your travel experie
 
 ## What Are the Cancellation Charges After VIKALP Allocation?
 
-Once VIKALP allocates you to an alternate train, you are treated as a confirmed passenger. If you cancel, standard confirmed ticket cancellation charges apply — 25% to 50% of fare depending on timing, not the flat Rs. 60 waitlist fee. If the new train's chart is already prepared and you're within 4 hours of departure, you may get no refund at all.
+Once VIKALP allocates you to an alternate train, you are treated as a confirmed passenger. If you cancel, standard confirmed ticket cancellation charges apply — 25% to 50% of fare depending on timing, not the flat Rs. 60 waitlist fee. If the new train's chart is already prepared and you're within 8 hours of departure under the April 2026 rules, you may get no refund at all.
 
 What happens if the system assigns you a train that leaves 8 hours later than your original one, and you decide you would rather take a bus or skip the trip?
 
@@ -94,7 +94,15 @@ Once you are allocated an alternative seat under VIKALP, you are treated as a **
 
 - If you cancel the ticket after allocation, the cancellation charges will be calculated based on the rules of a **confirmed ticket** for that specific class.
 - You will not get the cheap, flat Rs. 60 waitlist cancellation charge. Instead, you will lose a significant chunk of your ticket price depending on how close you are to the new train's departure.
-- If the new train has already prepared its chart, you might get no refund at all unless you file a Ticket Deposit Receipt (TDR) under strict time windows.
+- If the new train has already prepared its chart, you might get no refund at all unless you file a Ticket Deposit Receipt (TDR) under strict time windows (which close 8 hours before departure for confirmed tickets under the 2026 slabs).
+
+---
+
+## Does VIKALP Work on Partially Confirmed Group Tickets?
+
+**No, the VIKALP scheme does not apply to group bookings where some passengers are confirmed or RAC; it only triggers if all passengers on the PNR are waitlisted.** If even a single member of your family has a confirmed berth, the backend algorithm excludes the entire booking from alternate train allocation.
+
+To bypass this constraint, you must split the PNR at a station reservation counter or online before charting. This separates the waitlisted passengers onto a new PNR, making them eligible for Vikalp. Otherwise, the waitlisted members must cancel their ticket (paying standard clerkage) or file a TDR if the confirmed members travel.
 
 ---
 

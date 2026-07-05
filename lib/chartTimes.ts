@@ -8,6 +8,9 @@ import {
 } from "@/lib/chartTimesSlug";
 import { formatClock12h } from "@/lib/chartTimeDisplay";
 
+/** True when running inside `next build` — the backend is not available. */
+const isBuildPhase = process.env.IS_BUILD_PHASE === "1";
+
 export { buildChartTimesSlug, parseTrainNumberFromSlug, slugifyTrainName };
 
 /**
@@ -388,6 +391,11 @@ export const getChartTimesPageData = cache(
     if (!num) return null;
 
     const cached = readCachedFile(num);
+
+    // During `next build` the backend is not running, so skip staleness checks
+    // and serve whatever committed JSON we have. ISR will refresh at runtime.
+    if (isBuildPhase) return cached;
+
     if (cached && !isStale(cached)) return cached;
 
     const fresh = await buildPageData(num);

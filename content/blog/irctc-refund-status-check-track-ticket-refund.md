@@ -2,7 +2,7 @@
 title: "IRCTC Refund Status Check: Track Cancelled Ticket Refund"
 description: "How do you check IRCTC refund status online? Read the step-by-step guide to track cancelled ticket refunds, PNR refund status, and delayed TDR refunds."
 date: "2026-06-27"
-updated: "2026-06-27"
+updated: "2026-07-05"
 tags:
   - train booking
   - irctc
@@ -77,7 +77,7 @@ While waiting for your TDR to clear, you can use [LastBerth](file:///) to check 
 
 **The refund rules state that fully waitlisted e-tickets are automatically cancelled and fully refunded after chart preparation. For confirmed tickets, refunds require manual cancellation before departure, with cancellation fees increasing from flat clerkage fees to 25% or 50% of the fare as the departure time approaches.**
 
-For waitlisted tickets, position queues matter. A ticket showing `WL/1` has a much higher confirmation chance than `WL/100`. If you cancel a waitlisted or RAC ticket manually, you can do so up to 30 minutes before departure for a flat clerkage fee of ₹60. However, if you hold a confirmed ticket and fail to cancel it or file a TDR at least 4 hours before departure, you will get zero refund.
+For waitlisted tickets, position queues matter. A ticket showing `WL/1` has a much higher confirmation chance than `WL/100`. If you cancel a waitlisted or RAC ticket manually, you can do so up to 30 minutes before departure for a flat clerkage fee of ₹60. However, if you hold a confirmed ticket and fail to cancel it or file a TDR at least 8 hours before departure under the April 2026 rules, you will get zero refund.
 
 ---
 

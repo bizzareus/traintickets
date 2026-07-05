@@ -1,7 +1,14 @@
 import { withSentryConfig } from "@sentry/nextjs";
+import { PHASE_PRODUCTION_BUILD } from "next/constants.js";
+
+/** @param {string} phase */
+export default function configFactory(phase) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    IS_BUILD_PHASE: phase === PHASE_PRODUCTION_BUILD ? "1" : "",
+  },
   async redirects() {
     return [
       {
@@ -43,7 +50,7 @@ const nextConfig = {
   },
 };
 
-export default withSentryConfig(nextConfig, {
+return withSentryConfig(nextConfig, {
   silent: !process.env.CI,
   widenClientFileUpload: true,
   tunnelRoute: "/monitoring",
@@ -56,3 +63,4 @@ export default withSentryConfig(nextConfig, {
   project: process.env.SENTRY_PROJECT,
   authToken: process.env.SENTRY_AUTH_TOKEN,
 });
+}

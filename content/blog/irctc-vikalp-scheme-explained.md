@@ -2,7 +2,7 @@
 title: "IRCTC Vikalp Scheme Explained: How to Get Confirmed Alternative Train Tickets"
 description: "A complete, zero-fluff guide to IRCTC's Vikalp scheme: how it works, when to opt-in, and smart hacks to double your chances of getting a confirmed seat."
 date: "2026-05-29"
-updated: "2026-06-11"
+updated: "2026-07-05"
 tags:
   - vikalp scheme
   - irctc
@@ -82,6 +82,14 @@ Many travelers complain that they opted for Vikalp but never got a seat. Usually
 
 ---
 
+## Does VIKALP Work on Partially Confirmed Group Tickets?
+
+**No, the VIKALP scheme does not work on partially confirmed group tickets; it only triggers for fully waitlisted PNRs.** If even one passenger on your group booking gets confirmed or RAC status, the entire PNR is excluded from Vikalp alternate train allocation.
+
+If you find yourself in this situation, you must split the PNR. You can split the waitlisted passengers onto a new PNR at the station counter or online, making them eligible for Vikalp. Alternatively, the waitlisted passengers can choose not to travel, and you can file a TDR to claim a refund for their portion of the ticket.
+
+---
+
 ### Original Ticket vs. VIKALP Allocated Ticket
 
 Under the [official IRCTC VIKALP Terms & Conditions](https://contents.irctc.co.in/en/vikalpTerms.html), how your journey shifts after alternate allocation is highly regulated. Here is a direct comparison of the rules:
@@ -92,7 +100,7 @@ Under the [official IRCTC VIKALP Terms & Conditions](https://contents.irctc.co.i
 | **Boarding/Destination Stations** | Exact stations booked | Can be shifted to "nearby" stations (up to 70–100 km radius) |
 | **Class Upgrades** | Not applicable | Free of cost (no extra fare charged for booking in a higher class) |
 | **Class Downgrades** | Not applicable | Possible; the difference in fare is not auto-refunded (must file a TDR) |
-| **Cancellation Charges** | Flat waitlist fee (Rs. 60 + GST) | Standard confirmed ticket cancellation fees (varies by class/timing) |
+| **Cancellation Charges** | Flat waitlist fee (Rs. 60 + GST) | Standard confirmed ticket cancellation fees (subject to the 8-hour zero-refund cutoff under April 2026 rules) |
 | **Ticket Validity** | Invalid for boarding if waitlisted after charting | Original ticket becomes invalid; boarding original train is a fineable offense |
 
 ---

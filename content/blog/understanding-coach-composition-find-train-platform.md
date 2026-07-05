@@ -2,7 +2,7 @@
 title: "Indian Railways Coach Composition: How to Locate Your Train Coach on the Platform Without Panic"
 description: "Confused by coach codes like M1, B2, or A1? Here is a complete guide to understanding Indian Railways coach composition, decoding coach symbols, and finding your carriage on a crowded platform."
 date: "2026-06-10"
-updated: "2026-06-11"
+updated: "2026-07-05"
 tags:
   - coach composition
   - train layout
@@ -87,6 +87,28 @@ Near the main entrance of the platform or the station's inquiry counter, you wil
 If you are at a station with no electronic indicators, or if the train is already arriving and you are confused, look for a licensed porter (Coolie) in a red shirt or a tea stall vendor. 
 * These individuals spend 12 to 15 hours a day on the exact same platforms. They know the stopping patterns of every single train by heart.
 * Simply ask: *"B3 coach aage aayega ya peeche?"* (Will the B3 coach arrive at the front or the back?). They will point you to the exact pillar number or spot within seconds.
+
+---
+
+## What is a Reversed Rake in Indian Railways?
+
+**A reversed rake occurs when a train arrives at a platform in the opposite order of its standard, announced layout (e.g., AC coaches at the rear instead of the front).** This happens due to engine reversals at junction stations where the train changes direction (e.g., Vadodara, Pune, or Chennai Central), or when a rake is shunted out of the yard in reverse orientation.
+
+To avoid getting caught off-guard by a reversed rake:
+- **Use the NTES App:** Under "Live Station" or "Train Schedule," look for any alerts about rake reversal.
+- **Listen to Announcements:** Listen carefully to platform announcements, which will explicitly state if the train is running with a reversed coach sequence.
+- **Verify with the Station Master's Board:** Zonal boards or digital signs near platform stairs will sometimes display "Rake Reversed" in flashing text.
+
+---
+
+## What to Do if Your Assigned Coach is Missing or Detached?
+
+On rare occasions, passengers arrive at the platform only to discover that their assigned coach (e.g., S5 or B3) is physically missing from the train rake. This happens when a coach is detached due to a mechanical issue (like a hot axle or brake failure) in the yard, and no replacement coach of the same class is available.
+
+If your coach is missing from the train:
+1. **Find the TTE Immediately:** Check near the AC coaches or the station master's office. The TTE will have the manually updated charting list.
+2. **Check the Physical Charting Boards:** Station charting boards will list where passengers of the detached coach have been relocated (often spread across other coaches of the same or higher class).
+3. **File a Ticket Deposit Receipt (TDR):** If the railways cannot accommodate you in the same class, or if you refuse to travel in a lower class, you are entitled to a full refund. Locate the TTE to get a physical "Guards Certificate" or "EFT" stating that the coach was missing, and file a TDR online within 72 hours of the train's departure using the reason *"Coach Detached / Lower Class Accommodation Provided."*
 
 ---
 
