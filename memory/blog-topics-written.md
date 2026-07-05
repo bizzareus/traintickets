@@ -118,7 +118,13 @@ This file tracks all blog posts published to avoid duplication.
 | 2026-07-05 | REFRESH | toy-train-routes-booking-india-guide | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
 | 2026-07-05 | REFRESH | train-berth-types-availability-reservation-guide | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
 | 2026-07-05 | REFRESH | vande-bharat-train-rules-booking-routes | Updated ARP window to 60 days (reduced from 120 days); all 7 langs |
-| 2026-07-05 | NEW | how-to-unblock-irctc-id-deactivated-account | How to unblock deactivated/suspicious accounts; all 7 langs |
+| 2026-07-05 | REFRESH | how-to-travel-with-dog-cat-indian-railways-pet-rules | Added online pet booking steps; all 7 langs |
+| 2026-07-05 | CONSOLIDATION | irctc-vikalp-scheme-explained | Merged content from irctc-vikalp-scheme-guide; all 7 langs |
+| 2026-07-05 | CONSOLIDATION | irctc-vikalp-scheme-guide | Replaced with redirection note to explained post; all 7 langs |
+| 2026-07-05 | REFRESH | indian-railways-luggage-rules-baggage-allowance-limit | Added Jan Vishwas Act ₹10,000 hazardous goods penalty; all 7 langs |
+| 2026-07-05 | REFRESH | irctc-partial-confirmation-rules-waitlist-travel-guide | Added April 2026 cancellation slabs and Jan Vishwas Act fines; all 7 langs |
+| 2026-07-05 | EXPAND | irctc-auto-upgradation-rules-secrets | GSC: "consider for auto upgradation means"/"what is auto upgradation" cluster (~244 imp @ pos 11, page 2). Added exact-match H2, LastBerth internal links (page had none), Related Guides, tighter CTR title; all 7 langs |
+| 2026-07-05 | EXPAND (CTR) | wl-waiting-list-meaning-indian-railway | GSC: 5,676 imp @ 0.1% CTR (6 clicks) @ pos 7. Rewrote title/meta with decision hook ("Will it confirm?"); fixed ML title/desc bug where "WL" was mistranslated to "വെള്ളം" (water); all 7 langs |
 
 ## Topics NOT yet covered (candidates for future posts)
 
