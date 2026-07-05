@@ -2,7 +2,7 @@
 title: "How Many Tickets Can You Book on IRCTC in a Month? Limits Explained"
 description: "IRCTC lets you book 12 tickets a month, or 24 with Aadhaar verification. Full breakdown of the monthly ticket limit, plus per account, per day, per booking, master list and Tatkal rules."
 date: "2026-06-22"
-updated: "2026-07-04"
+updated: "2026-07-05"
 tags:
   - train booking
   - irctc
@@ -73,6 +73,23 @@ When booking, choose the verified passenger from the list. If you type their det
 
 This prioritization helps genuine travellers book tickets successfully before seats run out, particularly during the opening minutes of general reservations (8:00 AM) and Tatkal bookings (10:00 AM for AC, 11:00 AM for non-AC). Because the system checks linked credentials pre-session, verified profiles experience reduced latency and a much higher chance of securing a confirmed berth.
 
+## Why is Aadhaar OTP Verification Mandatory for Tatkal Bookings?
+
+**Starting July 15, 2026, IRCTC has implemented mandatory Aadhaar-based OTP verification for online Tatkal ticket bookings. This security measure requires passengers to authenticate their identity using an OTP sent to their Aadhaar-linked mobile number to check bots and ensure fair ticket access.**
+
+### How Aadhaar OTP Verification Works
+During the peak Tatkal booking window (10:00 AM for AC and 11:00 AM for non-AC), the IRCTC system prompts users for Aadhaar OTP verification. This happens either at the time of login or during the passenger detail entry phase of the Tatkal flow. Once the passenger's details are retrieved from the Master List or entered, an OTP is triggered to the Aadhaar-registered mobile number, which must be entered within a limited window to complete the transaction.
+
+### Common Issues Faced by Passengers
+* **OTP Delivery Delay:** Network congestion during peak booking hours can delay the arrival of the OTP, leading to session timeouts and missed tickets.
+* **Mismatched Mobile Numbers:** Passengers often discover that the phone number currently in use does not match the one registered with UIDAI.
+* **Failure to Link Profile in Advance:** Trying to link Aadhaar or verify passenger profiles during the peak Tatkal booking window causes high transaction failure rates.
+
+### How to Prepare
+* **Pre-link in My Account:** Complete your own Aadhaar linking under the "Link Your Aadhaar" option in your IRCTC profile settings well ahead of the booking window.
+* **Verify Master List:** Add all frequent travellers to your Master List and ensure they have a "Verified" status with a green tick before Tatkal booking opens.
+* **Keep Registered Phone Active:** Ensure the mobile phone linked to your Aadhaar card is close by, active, and has sufficient network coverage to receive the OTP instantly.
+
 ## What happens when you reach the monthly limit?
 
 **When you reach the monthly IRCTC limit, you cannot book any more tickets until the quota resets at midnight on the first of the next calendar month.** Cancelling tickets does not restore your booking slots. To proceed, you must link your Aadhaar or use a family member's account.
@@ -82,6 +99,9 @@ If you are struggling to find open seats for a group, LastBerth's **Finding Smar
 ## IRCTC ticket limit FAQ
 
 Here are the most common questions about how many tickets you can book on IRCTC.
+
+### Is Aadhaar OTP verification mandatory for Tatkal bookings?
+Yes. Starting July 15, 2026, IRCTC requires Aadhaar OTP verification for all online Tatkal and Premium Tatkal bookings. Unverified profiles or users who fail to complete OTP authentication cannot book Tatkal tickets during peak hours.
 
 ### How many tickets can be booked in IRCTC in a month?
 Up to 12 tickets per calendar month on a normal IRCTC account, or 24 tickets if your account is Aadhaar-linked and at least one passenger on each ticket beyond the first 12 is Aadhaar-verified.
