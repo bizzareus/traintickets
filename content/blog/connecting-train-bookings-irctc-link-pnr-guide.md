@@ -2,7 +2,7 @@
 title: "How to Link PNR for Connecting Train on IRCTC: Complete Booking Guide"
 description: "Learn how to book connecting journey tickets on IRCTC, link two PNRs, understand connecting journey booking rules, and claim refunds if you miss your connection due to train delays."
 date: "2026-05-30"
-updated: "2026-06-11"
+updated: "2026-07-05"
 tags:
   - connecting trains
   - train booking
@@ -52,6 +52,19 @@ Once you link them, the database ties both PNRs together. Now, if your first tra
 
 ---
 
+## How Do You Link PNR for a Connecting Train on IRCTC?
+
+**To link PNRs for a connecting train on IRCTC, log into the official IRCTC website, select 'Connecting Journey Booking' under the 'Trains' menu, enter the PNR of your first confirmed or RAC ticket, and then search and book your second train journey.** The system will automatically validate the matching passenger names and stations, establishing the linked connection.
+
+### Rules and Requirements for Linking Connecting PNRs
+To successfully link your two train tickets and qualify for missed connection benefits, your booking must satisfy the following criteria:
+* **Primary PNR Status:** The PNR of your first train (Train A) must be in a **Confirmed (CNF)** or **Reservation Against Cancellation (RAC)** status at the time of linking. Fully waitlisted tickets cannot be used.
+* **Exact Passenger Matching:** The names, age, and gender of all passengers travelling on the second train must match the passenger details on the first train's PNR exactly.
+* **Station Alignment & City Clusters:** The destination station of your first train must match the boarding station of your second train, or both stations must belong to the same defined city cluster (for example, arriving at New Delhi [NDLS] and departing from Hazrat Nizamuddin [NZM]).
+* **Layover Time Window:** The scheduled arrival of the first train and the scheduled departure of the second train must have a time gap of at least **1 minute** and a maximum of **5 days**.
+
+---
+
 ## How to link two PNRs in IRCTC after booking
 
 You cannot link two PNRs in IRCTC after both tickets have already been booked. Indian Railways only allows you to link a connecting journey during the booking process of the second ticket. If you have already booked both tickets independently, there is no option to link them retroactively.
@@ -95,6 +108,14 @@ If you miss your connecting train due to a delay of the first train, you are eli
 
 ---
 
+## What is the Refund Policy for Missed Connecting Trains?
+
+**If you miss a connecting train due to the delay of your first train, the linked PNR refund policy entitles you to a 100% refund of the base fare of the second (missed) train with zero cancellation or clerkage charges, provided you file a Ticket Deposit Receipt (TDR) within 3 hours of the first train's actual arrival.**
+
+This policy applies specifically to tickets that were officially linked during the booking flow. Under standard cancellation rules, cancelling a ticket after a train's departure yields no refund. However, with linked PNRs, Indian Railways assumes responsibility for the disruption. Once the TDR is filed, the system validates the actual delay of the primary train via its running records before processing the full refund.
+
+---
+
 ## How to Get Your Money Back: The strict 3-Hour Deadline
 
 To claim your refund for a missed connection, you must file a TDR online or surrender your physical counter ticket within exactly 3 hours of the actual arrival of the first train at the junction station. Missing this strict railway deadline will result in a total loss of your refund.
@@ -131,6 +152,9 @@ Linking your PNRs protects your wallet, but it does not protect your travel plan
 ---
 
 ## FAQ: Clearing Your Doubts
+
+### Can I get a refund if the first train is late and I miss the connecting train?
+Yes. If the PNRs are linked, you are eligible for a 100% refund of the base fare of the second train with no cancellation fees, provided you file a TDR within 3 hours of the first train's arrival.
 
 ### What exactly is a connecting PNR on IRCTC?
 Think of it as chaining two bookings. The railway database links the PNRs. If Train A is late, they know it's not your fault. That means a full refund is yours.
