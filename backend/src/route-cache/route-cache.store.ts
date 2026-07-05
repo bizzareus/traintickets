@@ -37,6 +37,19 @@ export abstract class RouteCacheStore<T> {
   /** Remove the row for `key` (no-op if already gone). Implemented per table. */
   protected abstract deleteByKey(key: string): Promise<void>;
 
+  /** Fetch raw rows for many keys in one query. Implemented per table. */
+  protected abstract findManyByKeys(
+    keys: string[],
+  ): Promise<
+    Array<{ key: string; value: unknown; cachedAt: Date; expiresAt: Date }>
+  >;
+
+  /** Insert-or-replace many rows in one bulk statement. Implemented per table. */
+  protected abstract upsertMany(
+    items: Array<{ key: string; value: T }>,
+    expiresAt: Date,
+  ): Promise<void>;
+
   /**
    * Full record (value + age metadata) for `key`, or null on miss. An expired
    * row is treated as a miss and lazily deleted (fire-and-forget). The `cachedAt`
@@ -68,6 +81,51 @@ export abstract class RouteCacheStore<T> {
   async get(key: string): Promise<T | null> {
     const record = await this.getRecord(key);
     return record ? record.value : null;
+  }
+
+  /**
+   * Records for many keys in ONE query — expired/absent keys are simply not in
+   * the returned map. Used by the cron's due-check to avoid N per-key reads.
+   */
+  async getManyRecords(
+    keys: string[],
+  ): Promise<Map<string, RouteCacheRecord<T>>> {
+    const out = new Map<string, RouteCacheRecord<T>>();
+    const uniq = [...new Set(keys.filter(Boolean))];
+    if (uniq.length === 0) return out;
+    let rows: Array<{
+      key: string;
+      value: unknown;
+      cachedAt: Date;
+      expiresAt: Date;
+    }>;
+    try {
+      rows = await this.findManyByKeys(uniq);
+    } catch (e) {
+      this.logger.warn(
+        `route-cache bulk read failed: ${e instanceof Error ? e.message : String(e)}`,
+      );
+      return out;
+    }
+    const now = new Date();
+    for (const r of rows) {
+      if (r.expiresAt <= now) continue;
+      out.set(r.key, {
+        value: r.value as T,
+        cachedAt: r.cachedAt,
+        expiresAt: r.expiresAt,
+      });
+    }
+    return out;
+  }
+
+  /** Persist many values with a shared TTL in ONE bulk upsert. */
+  async setMany(
+    items: Array<{ key: string; value: T }>,
+    ttlMs: number,
+  ): Promise<void> {
+    if (items.length === 0) return;
+    await this.upsertMany(items, new Date(Date.now() + ttlMs));
   }
 
   /** Persist `value` under `key` with a TTL (ms from now). */

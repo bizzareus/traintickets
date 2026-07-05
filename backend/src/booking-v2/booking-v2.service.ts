@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { IrctcService } from '../irctc/irctc.service';
 import { CacheService } from '../cache/cache.service';
+import { InMemoryCacheService } from '../cache/in-memory-cache.service';
 import { StationCacheService } from '../cache/station-cache.service';
 import {
   BestTrainsRouteCache,
@@ -546,6 +547,10 @@ export class BookingV2Service {
   async findBestTrains(
     input: BestTrainSearchInput,
     onProgress?: (event: BestTrainProgressEvent) => void,
+    // When provided, per-segment availability probes read/write this cache
+    // instead of the shared Postgres cache_entry (the cron passes an in-memory
+    // one so a run never writes to the DB).
+    segmentCache?: CacheService,
   ): Promise<BestTrainSearchResult> {
     const from = String(input.from ?? '')
       .trim()
@@ -621,14 +626,18 @@ export class BookingV2Service {
         }
 
         try {
-          const alternatePath = await this.findAlternatePaths({
-            trainNumber: train.trainNumber,
-            from: trainFrom,
-            to: trainTo,
-            date,
-            quota,
-            avlClasses: classesForRequest,
-          });
+          const alternatePath = await this.findAlternatePaths(
+            {
+              trainNumber: train.trainNumber,
+              from: trainFrom,
+              to: trainTo,
+              date,
+              quota,
+              avlClasses: classesForRequest,
+            },
+            undefined,
+            segmentCache,
+          );
           evaluatedCount += 1;
           const score = this.scoreBestTrainCandidate(alternatePath);
           const result: BestTrainCandidateResult = {
@@ -733,7 +742,14 @@ export class BookingV2Service {
     const key = bestTrainsCacheKey(from, to, this.normalizeToRailApiDate(date));
     if (!key) throw new Error('from, to, and a valid date are required');
 
-    const result = await this.findBestTrains({ from, to, date, acOnly: false });
+    // Cron-only path: run the scan's per-segment probes through an in-memory
+    // cache so it never writes to the shared Postgres cache_entry (only the
+    // final trimmed result is persisted, to route_caching). Protects the DB.
+    const result = await this.findBestTrains(
+      { from, to, date, acOnly: false },
+      undefined,
+      new InMemoryCacheService(),
+    );
     const found = await this.cacheBestTrainResult(from, to, date, result);
     return { found, trainNumber: result.results[0]?.train.trainNumber ?? null };
   }
@@ -754,40 +770,7 @@ export class BookingV2Service {
     const key = bestTrainsCacheKey(from, to, this.normalizeToRailApiDate(date));
     if (!key) return false;
 
-    const top = result.results[0];
-    // Keep only the station names actually referenced by the legs, so the row
-    // stays small but the UI can show "Name (CODE)" for each leg endpoint.
-    const stationNames: Record<string, string> = {};
-    if (top) {
-      const nameMap = top.alternatePath.stationNameMap ?? {};
-      for (const leg of top.alternatePath.legs) {
-        for (const code of [leg.from, leg.to]) {
-          const c = code?.trim().toUpperCase();
-          const name = c ? nameMap[c] : undefined;
-          if (c && name && name.trim() && !stationNames[c]) {
-            stationNames[c] = name.trim();
-          }
-        }
-      }
-    }
-
-    const payload: CachedBestTrain = top
-      ? {
-          found: true,
-          train: {
-            trainNumber: top.train.trainNumber,
-            trainName: top.train.trainName?.trim() || null,
-            departureTime: top.train.departureTime ?? null,
-            arrivalTime: top.train.arrivalTime ?? null,
-          },
-          legs: top.alternatePath.legs,
-          stationNames,
-          totalFare: top.alternatePath.totalFare,
-          isComplete: top.alternatePath.isComplete,
-          rankReason: top.rankReason,
-        }
-      : { found: false };
-
+    const payload = this.buildBestTrainPayload(result);
     await this.bestTrainsCache.set(key, payload, BEST_TRAINS_CACHE_TTL_MS);
     this.logger.log(
       `[best-trains-cache] STORED key=${key} found=${payload.found}${
@@ -795,6 +778,71 @@ export class BookingV2Service {
       } ttlMs=${BEST_TRAINS_CACHE_TTL_MS}`,
     );
     return payload.found;
+  }
+
+  /** Trim a full best-train result to the small homepage cache payload. */
+  private buildBestTrainPayload(result: BestTrainSearchResult): CachedBestTrain {
+    const top = result.results[0];
+    if (!top) return { found: false };
+    // Keep only the station names actually referenced by the legs, so the row
+    // stays small but the UI can show "Name (CODE)" for each leg endpoint.
+    const stationNames: Record<string, string> = {};
+    const nameMap = top.alternatePath.stationNameMap ?? {};
+    for (const leg of top.alternatePath.legs) {
+      for (const code of [leg.from, leg.to]) {
+        const c = code?.trim().toUpperCase();
+        const name = c ? nameMap[c] : undefined;
+        if (c && name && name.trim() && !stationNames[c]) {
+          stationNames[c] = name.trim();
+        }
+      }
+    }
+    return {
+      found: true,
+      train: {
+        trainNumber: top.train.trainNumber,
+        trainName: top.train.trainName?.trim() || null,
+        departureTime: top.train.departureTime ?? null,
+        arrivalTime: top.train.arrivalTime ?? null,
+      },
+      legs: top.alternatePath.legs,
+      stationNames,
+      totalFare: top.alternatePath.totalFare,
+      isComplete: top.alternatePath.isComplete,
+      rankReason: top.rankReason,
+    };
+  }
+
+  /**
+   * Cron bulk path: compute the trimmed payload + cache key for a route WITHOUT
+   * writing (segment probes run through an in-memory cache, so no cache_entry
+   * writes). The cron collects these and writes them all in one bulk upsert via
+   * bulkStoreBestTrains.
+   */
+  async computeBestTrainPayload(
+    from: string,
+    to: string,
+    date: string,
+  ): Promise<{ key: string; payload: CachedBestTrain } | null> {
+    const key = bestTrainsCacheKey(from, to, this.normalizeToRailApiDate(date));
+    if (!key) return null;
+    const result = await this.findBestTrains(
+      { from, to, date, acOnly: false },
+      undefined,
+      new InMemoryCacheService(),
+    );
+    return { key, payload: this.buildBestTrainPayload(result) };
+  }
+
+  /** Bulk-write precomputed best-train payloads in one upsert (cron path). */
+  async bulkStoreBestTrains(
+    items: Array<{ key: string; payload: CachedBestTrain }>,
+  ): Promise<void> {
+    if (items.length === 0) return;
+    await this.bestTrainsCache.setMany(
+      items.map((i) => ({ key: i.key, value: i.payload })),
+      BEST_TRAINS_CACHE_TTL_MS,
+    );
   }
 
   private scoreBestTrainCandidate(
@@ -1073,6 +1121,7 @@ export class BookingV2Service {
       quota?: string;
     },
     onProgress?: (event: AlternatePathProgressEvent) => void,
+    segmentCache?: CacheService,
   ): Promise<FindAlternatePathsResult> {
     const sharedProbeCache = new Map<string, MultiClassProbeResult>();
 
@@ -1113,6 +1162,7 @@ export class BookingV2Service {
       input,
       passProgress,
       sharedProbeCache,
+      segmentCache,
     );
     if (
       directResult.isComplete &&
@@ -1143,6 +1193,7 @@ export class BookingV2Service {
           },
           passProgress,
           sharedProbeCache,
+          segmentCache,
         );
 
         if (
@@ -1175,6 +1226,7 @@ export class BookingV2Service {
     },
     onProgress?: (event: AlternatePathProgressEvent) => void,
     sharedProbeCache?: Map<string, MultiClassProbeResult>,
+    segmentCache?: CacheService,
   ): Promise<FindAlternatePathsResult> {
     const emit = (ev: AlternatePathProgressEvent) => onProgress?.(ev);
     const trainNumber = String(input.trainNumber).trim();
@@ -1358,6 +1410,7 @@ export class BookingV2Service {
               currentHopDate,
               classes,
               quota,
+              segmentCache,
             );
             probeCache.set(key, probe);
           }
@@ -1448,6 +1501,7 @@ export class BookingV2Service {
           bridgeDate,
           classes,
           quota,
+          segmentCache,
         );
         probeCache.set(key, bridge);
       }
@@ -1722,6 +1776,7 @@ export class BookingV2Service {
     dateDdMmYyyy: string,
     classCodes: readonly string[],
     quota: string,
+    segmentCache?: CacheService,
   ): Promise<MultiClassProbeResult> {
     const perClass = await Promise.all(
       classCodes.map((c) =>
@@ -1732,6 +1787,7 @@ export class BookingV2Service {
           dateDdMmYyyy,
           c,
           quota,
+          segmentCache,
         ),
       ),
     );
@@ -1747,13 +1803,17 @@ export class BookingV2Service {
     dateDdMmYyyy: string,
     travelClass: string,
     quota: string,
+    segmentCache?: CacheService,
   ): Promise<{
     day: AvlDayRow | null;
     fare: number | null;
     fetchError?: string;
   }> {
+    // The cron passes an in-memory cache so its probes never touch Postgres;
+    // user requests fall through to the shared Postgres cache.
+    const cache = segmentCache ?? this.cache;
     const cacheKey = `avl:${String(trainNo).trim()}:${fromStn.trim().toUpperCase()}:${toStn.trim().toUpperCase()}:${dateDdMmYyyy}:${travelClass.trim().toUpperCase()}:${(quota || 'GN').trim().toUpperCase()}`;
-    const cached = await this.cache
+    const cached = await cache
       .get<{ day: AvlDayRow | null; fare: number | null }>(cacheKey)
       .catch(() => null);
     if (cached) return cached;
@@ -1771,9 +1831,7 @@ export class BookingV2Service {
       const fare = this.extractFare(raw);
       const result = { day, fare };
       // Cache only successful probes (never errors) for a short window.
-      void this.cache
-        .set(cacheKey, result, AVL_SEGMENT_TTL_MS)
-        .catch(() => undefined);
+      void cache.set(cacheKey, result, AVL_SEGMENT_TTL_MS).catch(() => undefined);
       return result;
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);

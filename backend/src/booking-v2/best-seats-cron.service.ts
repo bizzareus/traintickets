@@ -1,10 +1,14 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import { Cron } from '@nestjs/schedule';
 import moment from 'moment';
 import { captureSentryException } from '../common/sentry-report';
 import { ChartCronLeaderService } from '../chart-cron/chart-cron-leader.service';
 import { BookingV2Service } from './booking-v2.service';
-import { bestTrainsCacheKey, BestTrainsRouteCache } from './best-trains-cache';
+import {
+  bestTrainsCacheKey,
+  BestTrainsRouteCache,
+  type CachedBestTrain,
+} from './best-trains-cache';
 import { canonicalStation } from './station-hubs';
 import { PostHogTopRoutesService } from './posthog-top-routes.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -40,12 +44,13 @@ function envInt(name: string, fallback: number, min: number, max: number): numbe
 /**
  * Keeps the best-train cache warm across today + the next 5 days (IST) for the
  * curated popular routes plus the top routes users actually search (pulled from
- * PostHog; see PostHogTopRoutesService). Runs every 6h and refreshes every route
- * whose cached entry is missing or older than the refresh threshold — i.e. the
- * whole set each run (per-run cap is high enough to cover it). The old 5-min
- * cadence churned the segment-availability cache (millions of DB writes); a 6h
- * cadence + 6h segment TTL cuts that dramatically. Each run also bulk-sweeps
- * expired cache_entry rows (replacing per-read deletes).
+ * PostHog; see PostHogTopRoutesService). Runs once daily at 03:00 IST and
+ * refreshes every route whose cached entry is missing or older than the refresh
+ * threshold. To protect the small cross-region DB it: (1) runs the scan's
+ * per-segment probes through an IN-MEMORY cache so a run never writes to the
+ * shared cache_entry table, (2) reads the due-check in one bulk SELECT and
+ * writes all results in one bulk upsert, and (3) bulk-sweeps expired cache_entry
+ * rows once per run.
  *
  * Single-replica: gated by the shared ChartCronLeaderService lease, so only the
  * leader replica does the work (same mechanism as ChartCronService).
@@ -82,7 +87,9 @@ export class BestSeatsCronService {
     return v !== '0' && v !== 'false' && v !== 'no' && v !== 'off';
   }
 
-  @Cron(CronExpression.EVERY_6_HOURS)
+  // Once daily at 03:00 IST — the lowest-traffic window — so the scan burst
+  // never competes with real traffic on the small cross-region DB.
+  @Cron('0 3 * * *', { timeZone: 'Asia/Kolkata' })
   async handleCron(): Promise<void> {
     if (!this.enabled) return;
     if (!(await this.leader.isLeader())) return;
@@ -192,34 +199,31 @@ export class BestSeatsCronService {
 
     const combos = await this.targetCombos();
 
-    // Figure out which combos are due (missing or stale), oldest-first, so a
-    // refresh wave rolls through over successive ticks rather than all at once.
-    const due: Array<{
-      from: string;
-      to: string;
-      date: string;
-      cachedAt: Date | null;
+    // Build (combo, cacheKey) pairs, then read ALL current cache states in ONE
+    // bulk query (not N per-combo reads).
+    const comboKeys: Array<{
+      combo: { from: string; to: string; date: string };
+      key: string;
     }> = [];
-    for (const combo of combos) {
+    for (const c of combos) {
       const key = bestTrainsCacheKey(
-        combo.from,
-        combo.to,
-        this.bookingV2.normalizeToRailApiDate(combo.date),
+        c.from,
+        c.to,
+        this.bookingV2.normalizeToRailApiDate(c.date),
       );
-      if (!key) continue;
-      const record = await this.bestTrainsCache.getRecord(key);
-      if (!record || record.cachedAt <= cutoff) {
-        due.push({ ...combo, cachedAt: record?.cachedAt ?? null });
-      }
+      if (key) comboKeys.push({ combo: c, key });
     }
+    const records = await this.bestTrainsCache.getManyRecords(
+      comboKeys.map((x) => x.key),
+    );
+
+    // Due = missing or older than the refresh threshold; oldest-first.
+    const due = comboKeys
+      .map((x) => ({ ...x, cachedAt: records.get(x.key)?.cachedAt ?? null }))
+      .filter((x) => !x.cachedAt || x.cachedAt <= cutoff)
+      .sort((a, b) => (a.cachedAt?.getTime() ?? 0) - (b.cachedAt?.getTime() ?? 0));
 
     if (due.length === 0) return;
-
-    due.sort((a, b) => {
-      const at = a.cachedAt ? a.cachedAt.getTime() : 0; // missing = oldest
-      const bt = b.cachedAt ? b.cachedAt.getTime() : 0;
-      return at - bt;
-    });
     const batch = due.slice(0, maxPerTick);
 
     const startedAt = new Date();
@@ -232,33 +236,33 @@ export class BestSeatsCronService {
       status: 'ok' | 'empty' | 'failed';
       train: string | null;
     }> = [];
-    await this.mapWithConcurrency(batch, concurrency, async (combo) => {
+    // Compute payloads (segment probes run through an in-memory cache → no
+    // cache_entry writes), collect them, then write all in ONE bulk upsert.
+    const toWrite: Array<{ key: string; payload: CachedBestTrain }> = [];
+    await this.mapWithConcurrency(batch, concurrency, async ({ combo }) => {
       try {
-        const { found, trainNumber } =
-          await this.bookingV2.computeAndCacheBestTrain(
-            combo.from,
-            combo.to,
-            combo.date,
-          );
+        const res = await this.bookingV2.computeBestTrainPayload(
+          combo.from,
+          combo.to,
+          combo.date,
+        );
+        if (!res) {
+          failed += 1;
+          routes.push({ ...combo, status: 'failed', train: null });
+          return;
+        }
+        toWrite.push(res);
         refreshed += 1;
         routes.push({
-          from: combo.from,
-          to: combo.to,
-          date: combo.date,
-          status: found ? 'ok' : 'empty',
-          train: trainNumber,
+          ...combo,
+          status: res.payload.found ? 'ok' : 'empty',
+          train: res.payload.found ? res.payload.train.trainNumber : null,
         });
       } catch (err) {
         failed += 1;
-        routes.push({
-          from: combo.from,
-          to: combo.to,
-          date: combo.date,
-          status: 'failed',
-          train: null,
-        });
+        routes.push({ ...combo, status: 'failed', train: null });
         this.logger.warn(
-          `[best-seats-cron] refresh failed ${combo.from}->${combo.to} ${combo.date}: ${err instanceof Error ? err.message : String(err)}`,
+          `[best-seats-cron] compute failed ${combo.from}->${combo.to} ${combo.date}: ${err instanceof Error ? err.message : String(err)}`,
         );
         captureSentryException(err, {
           tags: { service: 'best-seats-cron' },
@@ -267,8 +271,22 @@ export class BestSeatsCronService {
       }
     });
 
+    // Single bulk upsert for everything computed this run.
+    if (toWrite.length > 0) {
+      try {
+        await this.bookingV2.bulkStoreBestTrains(toWrite);
+      } catch (err) {
+        this.logger.error(
+          `[best-seats-cron] bulk store failed: ${err instanceof Error ? err.message : String(err)}`,
+        );
+        captureSentryException(err, {
+          tags: { service: 'best-seats-cron', phase: 'bulk-store' },
+        });
+      }
+    }
+
     this.logger.log(
-      `[best-seats-cron] due=${due.length} batch=${batch.length} refreshed=${refreshed} failed=${failed} skipped=${combos.length - due.length}`,
+      `[best-seats-cron] due=${due.length} batch=${batch.length} refreshed=${refreshed} failed=${failed} skipped=${combos.length - due.length} (in-memory probes, bulk read+write)`,
     );
 
     // Record the run for the admin dashboard (best-effort — never fail the tick).

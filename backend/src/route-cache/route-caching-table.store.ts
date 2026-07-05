@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { RouteCacheStore } from './route-cache.store';
 
@@ -28,6 +29,41 @@ export abstract class RouteCachingTableStore<T> extends RouteCacheStore<T> {
       create: { cacheKey: key, value: value as object, cachedAt, expiresAt },
       update: { value: value as object, cachedAt, expiresAt },
     });
+  }
+
+  protected async findManyByKeys(keys: string[]) {
+    const rows = await this.prisma.routeCaching.findMany({
+      where: { cacheKey: { in: keys } },
+    });
+    return rows.map((r) => ({
+      key: r.cacheKey,
+      value: r.value,
+      cachedAt: r.cachedAt,
+      expiresAt: r.expiresAt,
+    }));
+  }
+
+  protected async upsertMany(
+    items: Array<{ key: string; value: T }>,
+    expiresAt: Date,
+  ) {
+    const cachedAt = new Date();
+    const CHUNK = 200;
+    for (let i = 0; i < items.length; i += CHUNK) {
+      const chunk = items.slice(i, i + CHUNK);
+      const values = chunk.map(
+        (it) =>
+          Prisma.sql`(${it.key}, ${JSON.stringify(it.value)}::jsonb, ${cachedAt}, ${expiresAt})`,
+      );
+      await this.prisma.$executeRaw`
+        INSERT INTO "route_caching" ("cache_key", "value", "cached_at", "expires_at")
+        VALUES ${Prisma.join(values)}
+        ON CONFLICT ("cache_key") DO UPDATE SET
+          "value" = EXCLUDED."value",
+          "cached_at" = EXCLUDED."cached_at",
+          "expires_at" = EXCLUDED."expires_at"
+      `;
+    }
   }
 
   protected async deleteByKey(key: string) {

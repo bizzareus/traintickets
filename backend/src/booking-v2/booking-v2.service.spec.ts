@@ -256,6 +256,8 @@ describe('BookingV2Service', () => {
       expect(findSpy).toHaveBeenCalledTimes(1);
       expect(findSpy).toHaveBeenCalledWith(
         expect.objectContaining({ trainNumber: '1' }),
+        undefined,
+        undefined,
       );
       expect(result.results).toHaveLength(1);
       expect(result.results[0].train.trainNumber).toBe('1');
@@ -442,6 +444,8 @@ describe('BookingV2Service', () => {
           trainNumber: '301',
           avlClasses: expect.arrayContaining(['3A', '2A', '1A']),
         }),
+        undefined,
+        undefined,
       );
       const calledArgs = findSpy.mock.calls[0][0];
       expect(calledArgs.avlClasses).not.toContain('SL');
@@ -613,6 +617,7 @@ describe('BookingV2Service', () => {
         '02-06-2026',
         expect.any(Array),
         expect.any(String),
+        undefined,
       );
       probeSpy.mockRestore();
     });
@@ -686,6 +691,7 @@ describe('BookingV2Service', () => {
         '02-06-2026',
         expect.any(Array),
         expect.any(String),
+        undefined,
       );
 
       // NDLS -> BPL offset should be queried on 01-06-2026 (Day 1 departure for Day 2 NZM boarding)
@@ -696,6 +702,7 @@ describe('BookingV2Service', () => {
         '01-06-2026',
         expect.any(Array),
         expect.any(String),
+        undefined,
       );
 
       expect(result.trainStartDate).toBe('2026-06-01');
@@ -752,6 +759,7 @@ describe('BookingV2Service', () => {
         '02-06-2026',
         expect.any(Array),
         expect.any(String),
+        undefined,
       );
 
       probeSpy.mockRestore();
@@ -811,6 +819,7 @@ describe('BookingV2Service', () => {
         '05-06-2026',
         expect.any(Array),
         expect.any(String),
+        undefined,
       );
 
       probeSpy.mockRestore();

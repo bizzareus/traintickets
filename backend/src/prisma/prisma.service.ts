@@ -97,6 +97,7 @@ export class PrismaService
           reddit_status_exists: bigint;
           reddit_analyzed_nullable: string | null;
           reddit_analyzed_default: string | null;
+          cache_expires_idx_exists: bigint;
         }>
       >(`
         SELECT
@@ -107,10 +108,19 @@ export class PrismaService
           (SELECT is_nullable FROM information_schema.columns
              WHERE table_name = 'reddit_analyzed_comments' AND column_name = 'analyzed_at') AS reddit_analyzed_nullable,
           (SELECT column_default FROM information_schema.columns
-             WHERE table_name = 'reddit_analyzed_comments' AND column_name = 'analyzed_at') AS reddit_analyzed_default
+             WHERE table_name = 'reddit_analyzed_comments' AND column_name = 'analyzed_at') AS reddit_analyzed_default,
+          (SELECT count(*) FROM pg_indexes
+             WHERE tablename = 'cache_entry' AND indexname = 'cache_entry_expires_at_idx') AS cache_expires_idx_exists
       `);
 
       const stmts: string[] = [];
+      if (Number(state?.cache_expires_idx_exists ?? 1) === 0) {
+        // The @@index([expiresAt]) on cache_entry can go missing; without it,
+        // expiry sweeps full-scan a huge table. Recreate it if absent.
+        stmts.push(
+          'CREATE INDEX IF NOT EXISTS "cache_entry_expires_at_idx" ON "cache_entry" ("expires_at")',
+        );
+      }
       if (state?.cronlease_updated_default != null) {
         stmts.push('ALTER TABLE "CronLease" ALTER COLUMN "updated_at" DROP DEFAULT');
       }
