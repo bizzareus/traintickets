@@ -2,7 +2,7 @@
 title: "IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers"
 description: "Can waitlisted passengers travel on a partially confirmed IRCTC e-ticket? Discover the official railway rules, TDR refund guidelines, and boarding policies for mixed-status PNRs."
 date: "2026-06-11"
-updated: null
+updated: "2026-07-05"
 tags:
   - irctc rules
   - partial confirmation
@@ -61,17 +61,21 @@ If you board a reserved coach with a fully waitlisted e-ticket, you will be pena
 
 ## How to File a TDR and Get a Refund for a Partially Confirmed Ticket?
 
-To get a full refund for a partially confirmed ticket when your group decides not to travel, you must file a Ticket Deposit Receipt (TDR) online. The TDR must be submitted at least 30 minutes before the train's scheduled departure, allowing a refund minus minor clerkage fees.
+**To get a full refund for a partially confirmed ticket when your group decides not to travel, you must file a Ticket Deposit Receipt (TDR) online. The TDR must be submitted at least 30 minutes before the scheduled departure of the train from its originating station. This grants a refund minus a ₹60 clerkage fee per passenger.**
 
-If half the family gets waitlisted, you might want to call off the trip entirely. But watch out: you cannot get your money back for the confirmed seats by simply clicking 'cancel' after chart preparation. You will lose most of the fare.
+If some members of your group remain waitlisted, you might decide to call off the trip entirely. However, if you simply try to cancel confirmed tickets online after chart preparation, you will face standard confirmed ticket cancellation penalties. Under the April 2026 rules, these penalties are extremely high:
+- **More than 72 hours before departure:** Flat cancellation fee (₹240 for 1AC, ₹180 for 3AC, ₹120 for Sleeper).
+- **24 to 72 hours before departure:** 25% of the total fare is deducted.
+- **8 to 24 hours before departure:** 50% of the total fare is deducted.
+- **Less than 8 hours before departure:** No refund (0%) is provided.
 
-Here's how you get your money back:
-1. **Nobody boards the train:** Seriously, not a single passenger on that PNR should travel.
+To avoid losing your fare under the strict 8-hour zero-refund window, you must file a TDR for the entire party:
+1. **Nobody boards the train:** None of the passengers on that PNR should travel.
 2. **File a TDR:** Log in to IRCTC, open your booked history, and select 'File TDR'.
 3. **Select the reason:** Choose the option *'Party partially confirmed/waitlisted and all passengers did not travel.'*
-4. **Watch the clock:** Submit this at least 30 minutes before the train starts from its originating station. Don't be late.
+4. **Watch the clock:** Submit this TDR at least 30 minutes before the train starts from its originating station.
 
-Once the railways check and confirm that nobody traveled on that PNR, they'll refund your fare. You only lose a tiny clerkage fee of ₹60 per passenger.
+Once the railways verify that no passengers on the PNR traveled, they will refund the fare of both confirmed and waitlisted passengers, minus the standard clerkage fee of ₹60 per passenger.
 
 ---
 
@@ -87,7 +91,7 @@ If you don't file the TDR in time and skip the journey, you'll lose every rupee 
 Since they don't have assigned berths, they'll have to share. But once the train starts chugging, look for the TTE. If there are vacant berths from no-shows or cancellations, the TTE can officially assign them to your waitlisted travel companions.
 
 ### Is traveling on a fully waitlisted e-ticket allowed if my friend has a confirmed ticket?
-No, never. If your friend is on a separate confirmed PNR and your online e-ticket is fully waitlisted, your ticket is dead. The system cancels it automatically. Getting on a train with an auto-cancelled e-ticket is illegal. You'll be treated as traveling without a ticket and fined heavily by the TTE.
+No, never. If your friend is on a separate confirmed PNR and your online e-ticket is fully waitlisted, your ticket is dead. The system cancels it automatically. Boarding a train with an auto-cancelled e-ticket is illegal. Under the Jan Vishwas Act (effective July 1, 2026), you will be treated as traveling without a ticket and fined a minimum penalty of **₹500** plus the actual fare of the segment.
 
 ---
 

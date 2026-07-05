@@ -2,7 +2,7 @@
 title: "How to Travel with a Dog in Indian Trains: Pet Booking Rules"
 description: "Want to travel with a dog or cat on Indian Railways? Learn the official pet booking rules, 1AC coupe requirements, veterinary certificate steps, and fees."
 date: "2026-06-17"
-updated: "2026-06-17"
+updated: "2026-07-05"
 tags:
   - pet travel
   - dog booking
@@ -24,6 +24,26 @@ tags:
 **You can legally travel with your dog or cat on Indian trains, but they are only allowed in two places: inside your compartment or in a dog box. To keep your pet with you, you must book all berths in a First Class AC (1AC) or First Class (FC) cabin or coupe. Otherwise, they have to travel in the luggage van.**
 
 Let's be real—the thought of leaving your pet in a dark, noisy luggage compartment is terrifying for most pet parents. That’s why almost everyone tries to get a First AC ticket. But here is the catch: you can't just book one berth in 1AC and show up with a dog. You must book the entire cabin (either a 2-berth coupe or a 4-berth cabin) under a single PNR. If you don't book the whole space, and a co-passenger complains about your dog, the ticket collector will force you to move your pet to the luggage van immediately.
+
+---
+
+## How Do You Book a Dog or Cat Online on IRCTC?
+
+**Indian Railways has introduced an online pet booking utility integrated with its Parcel Management System. If you have a confirmed First AC (1AC) or First Class (FC) ticket and have booked the entire coupe or cabin, you can book your pet's carriage online through the IRCTC portal after the first chart is prepared.**
+
+This online booking system saves you from long queues at the parcel office, though you still need to complete the mandatory documentation.
+
+### Step-by-Step Online Booking Process:
+1. **Book Your Ticket:** Ensure you have a confirmed ticket in First AC or First Class, booking all berths in the coupe (2 seats) or cabin (4 seats) under a single PNR.
+2. **Access the Portal:** Visit the official [IRCTC Website](https://www.irctc.co.in). Under the **"TRAINS"** menu, select **"Dogs/Cats Booking"**.
+3. **Redirect to Parcel Site:** The system will redirect you to the official [Indian Railways Parcel Website](https://parcel.indianrail.gov.in).
+4. **Log In and Enter PNR:** Log in using your mobile number and OTP. Enter your PNR.
+5. **Pay the Fees:** The system will fetch your ticket details and calculate the charges. Complete the payment online.
+6. **Confirmation:** Once payment is successful, you will receive a confirmation SMS and a luggage ticket via email.
+
+> [!IMPORTANT]
+> **Booking Window:** The online pet booking window only opens **after the first chart is prepared** (usually 4 hours before the train's scheduled departure) and remains open until the final chart is generated.
+> You must still carry the original veterinary fitness and vaccination certificate (issued 24-48 hours before departure) along with a photocopy to the station.
 
 ---
 

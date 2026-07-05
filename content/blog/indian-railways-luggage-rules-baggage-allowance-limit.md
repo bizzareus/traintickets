@@ -2,7 +2,7 @@
 title: "Indian Railways Luggage Rules: Free Allowance, Limits & Fines"
 description: "Learn the latest Indian Railways luggage rules: free weight limits for AC and Sleeper classes, extra baggage fees, dimensions, and fines for excess luggage."
 date: "2026-06-19"
-updated: "2026-06-19"
+updated: "2026-07-05"
 tags:
   - train travel
   - irctc
@@ -39,7 +39,7 @@ Let's say you're traveling in AC 2 Tier. You can carry up to 50 kg for free. If 
 
 ## What is the Penalty for Carrying Excess Luggage in a Train?
 
-Don't get caught with heavy unbooked bags. If your luggage crosses the free limit and the extra 10-15 kg buffer (marginal allowance), the Ticket Examiner (TTE) will fine you. This penalty is steep: six times the standard luggage rate for all the extra weight. The minimum fine starts at fifty rupees.
+**Don't get caught with heavy, unbooked bags or incorrect declarations. If your luggage exceeds the free limit and the marginal allowance buffer, the Ticket Examiner (TTE) will fine you six times the standard luggage rate for the entire excess weight. Furthermore, under the Jan Vishwas Act of 2026, a penalty of ₹500 per quintal is charged for incorrect luggage declarations.**
 
 Getting caught with unbooked bags by a TTE is stressful and expensive. If you exceed the marginal allowance, the TTE will charge you six times the normal rate.
 
@@ -82,4 +82,4 @@ Yes, absolutely. Small personal bags—like laptops, purses, or small daypacks�
 No. You can't carry heavy goods like a washing machine, refrigerator, or TV carton inside the cabin. They block the walkways and represent a safety hazard. If you're moving house, book these items at the parcel counter to have them carried in the luggage van at the back of the train.
 
 ### What items are completely banned from Indian trains?
-Dangerous items like gas cylinders (even empty ones), fireworks, petrol, acid, or paint are completely forbidden. Getting caught carrying banned stuff triggers serious trouble. Section 164 of the Railways Act is very clear: you can be jailed for up to three years, fined ₹1,000, or hit with both penalties.
+Dangerous items like gas cylinders (even empty ones), fireworks, petrol, acid, or paint are completely forbidden. Under Section 164 of the Railways Act, as amended by the Jan Vishwas Act (effective July 1, 2026), the penalty for carrying prohibited, inflammable, or hazardous goods has been increased to a **minimum of ₹10,000** (up from ₹1,000), and you can still face severe legal actions including up to three years of imprisonment.

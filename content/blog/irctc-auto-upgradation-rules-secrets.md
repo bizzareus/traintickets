@@ -19,7 +19,7 @@ Ever spotted that tiny "Consider for Auto Upgradation" checkbox on IRCTC and won
 
 ## What is Auto Upgradation in IRCTC and how does it work?
 
-**IRCTC Auto Upgradation is a free, algorithm-based service that automatically shifts confirmed passengers to a higher class (like Sleeper to AC 3-Tier) without charging extra. This occurs during final chart preparation, roughly 4 hours before departure, to fill vacant berths in premium coaches.**
+**IRCTC Auto Upgradation is a free, algorithm-based service that automatically shifts confirmed passengers to a higher class (like Sleeper to AC 3-Tier) without charging extra. This happens during chart preparation, typically around 10 hours before departure (the previous night for early-morning trains), to fill vacant berths in premium coaches.**
 
 Let’s face it, we all love a free upgrade. It’s like getting bumped to business class on a flight, except on a train! Imagine buying a budget-friendly Sleeper ticket and finding yourself sleeping in a cool, air-conditioned 3AC coach. Yes, it actually happens.
 
@@ -120,7 +120,7 @@ This is a common point of confusion for travelers. Suppose you booked a Sleeper 
 Fortunately, Indian Railways rules protect you here:
 - The cancellation fee is always tied to the **original class of booking**.
 - For a confirmed Sleeper ticket cancelled after chart preparation (which is when upgrades happen), standard cancellation percentages apply to the original Sleeper fare, not the 3AC fare.
-- Since upgrades only occur during chart preparation (within 4 hours of departure), cancelling a ticket at this stage means you will follow the last-minute cancellation rules. Under the latest rules, cancelling a confirmed ticket within 8 hours of departure yields a 0% refund, but if you file a TDR for valid reasons, the refund is still calculated based on the Sleeper class fare.
+- Since upgrades happen only at chart preparation (typically around 10 hours before departure), your ticket is already charted by the time you are upgraded. A confirmed charted ticket generally cannot be cancelled online for a refund — you would need to file a TDR — and any refund you are eligible for is still calculated on your original Sleeper fare, not the 3AC fare.
 
 ---
 

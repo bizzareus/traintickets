@@ -145,9 +145,9 @@ If you booked multiple passengers on one PNR and some are confirmed while others
 
 ## What happens to WL tickets after chart preparation
 
-After chart preparation, which occurs four hours before departure, any waitlisted e-tickets are automatically cancelled and their fares are refunded to passengers. For counter tickets, the waitlist status remains active, allowing the passenger to cancel manually at a station window or attempt to travel without a guaranteed berth.
+After chart preparation, which typically occurs about ten hours before departure, any waitlisted e-tickets are automatically cancelled and their fares are refunded to passengers. For counter tickets, the waitlist status remains active, allowing the passenger to cancel manually at a station window or attempt to travel without a guaranteed berth.
 
-The first chart is usually prepared about **4 hours before the train's scheduled departure** from its originating station. A second and final chart follows roughly **30 minutes before departure**, incorporating any last-minute cancellations.
+The first chart is usually prepared about **10 hours before the train's scheduled departure** from its originating station (or the previous night for early-morning trains). A second and final chart follows roughly **30 minutes before departure**, incorporating any last-minute cancellations.
 
 Here is what happens at chart time:
 
