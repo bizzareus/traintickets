@@ -1,8 +1,8 @@
 ---
-title: "How Many Tickets Can You Book on IRCTC in a Month? Limits Explained"
-description: "IRCTC lets you book 12 tickets a month, or 24 with Aadhaar verification. Full breakdown of the monthly ticket limit, plus per account, per day, per booking, master list and Tatkal rules."
+title: "IRCTC Limit: 12 Tickets/Month, 24 With Aadhaar — 2026 Rules"
+description: "IRCTC lets you book 12 tickets a month, or 24 with Aadhaar verification. Full breakdown of the monthly, per-day, per-booking and Tatkal limits for 2026."
 date: "2026-06-22"
-updated: "2026-07-05"
+updated: "2026-07-06"
 tags:
   - train booking
   - irctc

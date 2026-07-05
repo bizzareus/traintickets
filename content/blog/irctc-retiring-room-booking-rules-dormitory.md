@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Retiring Room Booking: Book Cheap Station Rooms"
-description: "Need a budget place to stay during your train journey? Learn how to book IRCTC retiring rooms and dormitories online using PNR, rules, rates, and limits."
+title: "IRCTC Retiring Room: Book a Cheap Station Room With Your PNR"
+description: "How to book an IRCTC retiring room or dormitory online using your PNR: who is eligible, current rates, the booking window, and check-in rules for 2026."
 date: "2026-06-18"
-updated: "2026-07-05"
+updated: "2026-07-06"
 tags:
   - retiring room
   - irctc booking

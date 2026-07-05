@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Vikalp Scheme Explained: How to Get Confirmed Alternative Train Tickets"
-description: "A complete, zero-fluff guide to IRCTC's Vikalp scheme: how it works, when to opt-in, and smart hacks to double your chances of getting a confirmed seat."
+title: "IRCTC Vikalp: Turn a Waitlisted Ticket Into a Confirmed Seat"
+description: "IRCTC's Vikalp (ATAS) scheme shifts waitlisted passengers to an alternative train with a confirmed berth. How it works, when to opt in, and odds-boosting hacks."
 date: "2026-05-29"
-updated: "2026-07-05"
+updated: "2026-07-06"
 tags:
   - vikalp scheme
   - irctc

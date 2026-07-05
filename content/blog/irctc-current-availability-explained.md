@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Current Availability Explained: What It Is, When It Opens, and How to Use It"
-description: "Everything you need to know about IRCTC current availability, including how it differs from general availability, chart preparation timelines, and booking tips."
+title: "IRCTC Current Availability: Grab a Confirmed Last-Minute Seat"
+description: "How to use IRCTC current availability to book a fully confirmed last-minute seat: when it opens after chart preparation, how it differs from normal booking, and tips."
 date: "2026-06-11"
-updated: "2026-07-05"
+updated: "2026-07-06"
 tags:
   - current availability
   - vacancy chart
