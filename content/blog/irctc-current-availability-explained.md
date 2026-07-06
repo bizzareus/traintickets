@@ -15,6 +15,8 @@ tags:
   - current available ticket
 ---
 
+> **Find a confirmed last-minute seat:** After the chart prepares, LastBerth's [Chart Vacancy coach map](/chart-vacancy) shows exactly which berths are free on your train, coach by coach — so you can book a current-availability ticket with a real seat. Already booked? Track it on [Smart Seats PNR status](/).
+
 ## TL;DR
 
 - **Current Availability** is the real-time seat status that appears after chart preparation, showing berths that are actually open for booking right now (not a forecast).

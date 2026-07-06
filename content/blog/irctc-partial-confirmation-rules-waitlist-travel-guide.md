@@ -21,6 +21,8 @@ Let's quickly dissect the real rules and refund hacks for these mixed PNRs.
 
 ---
 
+> **Will your waitlist confirm?** Track your ticket with [Smart Seats PNR status](/), and once the chart is out, see the actual free berths on your train with the [Chart Vacancy coach map](/chart-vacancy) — then grab any open seat.
+
 ## What Is a Partially Confirmed Ticket in Indian Railways?
 
 What on earth is a partially confirmed ticket? Simple. It's when you book a group of people together under one PNR. When the chart goes up, only some passengers get confirmed berths or RAC seats, while the others are left hanging on the waiting list.

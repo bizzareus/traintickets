@@ -1,8 +1,8 @@
 ---
-title: "Can You Travel with a General or Platform Ticket in Sleeper or AC Class? Rules, Fines, and Emergency Options"
-description: "Everything you need to know about boarding a reserved Sleeper or AC coach with a general or platform ticket. Learn the official Indian Railways rules, exact fine calculations under Section 138, and how to legally handle emergency travel."
+title: "Caught in Sleeper With a General Ticket? Fines & Rules 2026"
+description: "Can you sit in a Sleeper or AC coach with a general or platform ticket? The exact fines under Section 138, TTE rules, and how to handle real emergencies in 2026."
 date: "2026-06-12"
-updated: "2026-07-05"
+updated: "2026-07-06"
 tags:
   - general ticket
   - platform ticket

@@ -16,6 +16,8 @@ tags:
   - berth wl no
 ---
 
+> **Will your waitlist confirm?** Track your ticket with [Smart Seats PNR status](/), and once the chart is out, see the actual free berths on your train with the [Chart Vacancy coach map](/chart-vacancy) — then grab any open seat.
+
 ## TL;DR
 
 - A **WL** ticket simply means you are on the waitlist. You don't have a seat yet.

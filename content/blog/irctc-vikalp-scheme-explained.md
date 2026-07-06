@@ -20,6 +20,8 @@ tags:
 
 ---
 
+> **Will your waitlist confirm?** Track your ticket with [Smart Seats PNR status](/), and once the chart is out, see the actual free berths on your train with the [Chart Vacancy coach map](/chart-vacancy) — then grab any open seat.
+
 ## What Is the IRCTC Vikalp Scheme?
 
 The IRCTC Vikalp Scheme (Alternate Train Accommodation Scheme) is a free, optional feature that automatically transfers waitlisted passengers to vacant berths on alternative trains traveling the same route. Introduced in 2015, it triggers during chart preparation — if your ticket stays waitlisted, the system searches up to 7 alternate trains you selected and shifts you at no extra cost.

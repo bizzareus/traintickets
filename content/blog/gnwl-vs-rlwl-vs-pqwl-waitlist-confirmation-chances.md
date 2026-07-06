@@ -13,6 +13,8 @@ tags:
   - train booking
 ---
 
+> **Will your waitlist confirm?** Track your ticket with [Smart Seats PNR status](/), and once the chart is out, see the actual free berths on your train with the [Chart Vacancy coach map](/chart-vacancy) — then grab any open seat.
+
 ## TL;DR
 
 Your PNR status shows a number, but the letters before that number tell you which pool your ticket is waiting in. Those letters matter.
