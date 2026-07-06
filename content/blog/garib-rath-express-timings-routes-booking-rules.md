@@ -1,8 +1,8 @@
 ---
 title: "Garib Rath Express: Timings, Bedroll Charges & Booking Rules"
-description: "WL full form is Waiting List. Check the ultimate guide to Garib Rath Express timings, side-middle berth layout, bedroll charges, and booking rules."
+description: "Complete Garib Rath Express guide: timings, the side-middle berth layout, ₹25 bedroll charges, Tatkal timing, and booking rules explained for 2026."
 date: "2026-07-01"
-updated: "2026-07-05"
+updated: "2026-07-06"
 tags:
   - train booking
   - irctc
