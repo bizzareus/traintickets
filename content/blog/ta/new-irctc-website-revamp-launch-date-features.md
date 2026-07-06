@@ -1,22 +1,31 @@
 ---
-title: "புதிய IRCTC இணையதளம்: தொடங்கும் தேதி & தற்காலிக மேம்பாடுகள்"
-description: "புதிய IRCTC இணையதளத்தின் தொடங்கும் தேதி, டிக்கெட் முன்பதிவு திறன், தற்காலிக மேம்பாடு மற்றும் RailOne செயலி ஒருங்கிணைப்பு விதிகளை அறியவும்."
+title: "IRCTC நெக்ஸ்ட்-ஜென் டிக்கெட் முன்பதிவு & RailOne செயலி (2026)"
+description: "IRCTC-யின் நெக்ஸ்ட்-ஜெனரேஷன் டிக்கெட் முன்பதிவு அமைப்பு மற்றும் RailOne சூப்பர் செயலி ஜூலை 15, 2026 அன்று தொடங்குகிறது: புதிய திறன், கோச்-மேப் முன்பதிவு, தற்காலிக சரிசெய்தல்கள் மற்றும் RailOne உள்நுழைவு."
 date: "2026-07-04"
-updated: "2026-07-04"
+updated: "2026-07-06"
 tags:
   - train booking
   - irctc
   - irctc new website
+  - irctc next generation ticket booking
   - tatkal booking
   - railone
 ---
 
 ## TL;DR
 
-- The **new IRCTC website revamp** launches on **July 15, 2026**, to significantly boost ticket booking speed and search capacity.
+- The **new IRCTC website revamp** launches on **July 15, 2026** — the core of India's **next-generation ticket booking system** — to significantly boost ticket booking speed and search capacity.
 - Key improvements include a 5x capacity upgrade to **1.5 lakh bookings per minute** and resolving payment timeout and CAPTCHA errors.
-- The unified **RailOne Super App** has replaced the decommissioned UTSonMobile app for all unreserved and reserved ticket bookings.
+- The unified **RailOne Super App** has replaced the decommissioned UTSonMobile app for all unreserved and reserved ticket bookings — and you log in with your **existing IRCTC credentials**, not a new account.
 - The advance reservation booking window is strictly **60 days** under the current Indian Railways policy guidelines.
+
+---
+
+## IRCTC-யின் நெக்ஸ்ட்-ஜெனரேஷன் டிக்கெட் முன்பதிவு அமைப்பு என்ன?
+
+**IRCTC's next-generation ticket booking system is the July 15, 2026 revamp of the IRCTC portal, backed by the unified RailOne app, rebuilt on a modern cloud-native architecture. It lifts capacity to 1.5 lakh bookings per minute, adds graphical coach-map seat selection and a fare calendar, and pulls reserved, unreserved, and platform tickets under a single login.**
+
+For years "IRCTC" meant one thing: a website that buckled the moment a popular train opened. The next-generation system is the fix. It is not a single new button but a full-stack modernization — a faster transactional backend, a redesigned interface, and the RailOne app as the mobile front door. Together they are meant to end the 10:00 AM Tatkal freeze and let you *see* the coach before you pick a berth, rather than guessing from a seat count.
 
 ---
 
@@ -76,6 +85,14 @@ Since the old UTSonMobile app was permanently shut down on March 1, 2026, passen
 
 ---
 
+## RailOne-ஐப் பயன்படுத்த உங்களுக்கு ஒரு புதிய கணக்கு தேவையா?
+
+**No. RailOne uses single sign-on with your existing IRCTC or UTS credentials, so there is no separate registration. Log in with your current IRCTC username and password, and the tickets you booked through IRCTC Rail Connect show up under "My Bookings" inside RailOne.** One login now covers reserved (Sleeper and AC), unreserved, and platform tickets.
+
+This is the point that confuses most first-time users: RailOne is a new *app*, not a new *account*. The IRCTC website still exists for desktop booking, and RailOne simply becomes the mobile front door to the same reservation system. If you already have an IRCTC ID, you are ready to go — the same rules on booking limits, Tatkal timings, and Aadhaar verification carry over unchanged. Once your chart is prepared, you can cross-check the actual empty berths on your train with the [Chart Vacancy coach map](/chart-vacancy) before you board.
+
+---
+
 ## ஜன விஷ்வாச சட்டத்தின் கீழ் புதிய டிக்கெட் இல்லாத பயணம் அபராதங்கள் என்ன?
 
 Under the **Jan Vishwas Act** effective **July 1, 2026**, the minimum penalty for **ticketless travel** has doubled to **₹500**. Additionally, the fine for unauthorized entry into a **women's coach** has been increased to **₹2,500** to strengthen safety and compliance across all train networks.
@@ -93,6 +110,15 @@ The revamped IRCTC website is scheduled to launch on July 15, 2026. This announc
 
 ### RailOne செயலி தொடங்கிய பிறகு UTS செயலியை இன்னும் பயன்படுத்த முடியுமா?
 No, the older UTSonMobile app was officially decommissioned on March 1, 2026. All unreserved ticket bookings, platform tickets, and season passes must now be purchased through the new unified RailOne Super App.
+
+### RailOne IRCTC-யைப் போலவே இருக்கிறதா?
+Not exactly. RailOne is the official unified mobile super app from Indian Railways (built by CRIS alongside IRCTC), while IRCTC remains the ticketing backbone that powers reserved bookings and the IRCTC website. Think of RailOne as the single app layer that combines reserved, unreserved, and platform tickets with train tracking, e-catering, and Rail Madad complaints.
+
+### RailOne-க்கு எனக்கு ஒரு புதிய கணக்கு அல்லது உள்நுழைவு தேவையா?
+No. RailOne offers single sign-on with your existing IRCTC or UTS credentials, so you do not register again. Log in with your current IRCTC username and password, and your past IRCTC Rail Connect bookings appear under "My Bookings" in the app.
+
+### RailOne-இல் தற்காலிக மற்றும் முன்பதிவு செய்யப்பட்ட டிக்கெட்டுகளை முன்பதிவு செய்ய முடியுமா?
+Yes. RailOne supports reserved bookings, including Sleeper and AC classes and Tatkal, in addition to unreserved and platform tickets — all from the same IRCTC login. Standard Tatkal timings (10:00 AM for AC, 11:00 AM for non-AC) and the Aadhaar verification rules still apply.
 
 ### புதிய IRCTC போர்ட்டில் மாதத்திற்கு முன்பதிவு வரம்பு என்ன?
 Under the revamped portal, standard IRCTC accounts can book up to 12 tickets per month. If you complete Aadhaar verification for your account and link your passengers, this monthly booking limit increases to 24 tickets.
