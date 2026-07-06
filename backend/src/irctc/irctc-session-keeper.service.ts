@@ -16,17 +16,46 @@ const COOKIE_SETTLE_MS = 6_000;
  */
 const HARVEST_CLAIM_WINDOW_MS = 20 * 60_000;
 
+function safeJson(v: unknown): string {
+  try {
+    const s = JSON.stringify(v);
+    return s && s !== '{}' ? s : Object.prototype.toString.call(v);
+  } catch {
+    return Object.prototype.toString.call(v);
+  }
+}
+
 /**
- * Node's fetch throws a generic `TypeError: fetch failed` for DNS/connection
- * errors and stashes the real reason in `.cause` — surface it so a failure is
- * diagnosable straight from logs without redeploying just to add detail.
+ * Turn any thrown value into a diagnosable string. Node's fetch throws a generic
+ * `TypeError: fetch failed` with the real reason on `.cause`, and some libraries
+ * (puppeteer/CDP/BrightData) throw plain objects that `String()` renders as the
+ * useless "[object Object]". Surface the message + cause, pull common fields off
+ * non-Error objects, and JSON-fallback — so failures are diagnosable from logs
+ * without redeploying to add detail.
  */
 function describeError(err: unknown): string {
   if (err instanceof Error) {
     const cause = (err as { cause?: unknown }).cause;
-    const causeMsg =
-      cause instanceof Error ? cause.message : cause != null ? String(cause) : null;
+    const causeMsg = cause != null ? describeError(cause) : null;
     return causeMsg ? `${err.message} (cause: ${causeMsg})` : err.message;
+  }
+  if (typeof err === 'string') return err;
+  if (err != null && typeof err === 'object') {
+    const o = err as Record<string, unknown>;
+    const picked = [
+      'message',
+      'error',
+      'reason',
+      'description',
+      'code',
+      'statusCode',
+    ]
+      .filter((k) => o[k] != null)
+      .map((k) => {
+        const v = o[k];
+        return `${k}=${typeof v === 'object' ? safeJson(v) : String(v)}`;
+      });
+    return picked.length > 0 ? picked.join(' ') : safeJson(err);
   }
   return String(err);
 }
