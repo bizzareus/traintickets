@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Auto Upgradation: How It Works & Free Upgrade Secrets"
-description: "What does 'Consider for Auto Upgradation' mean in IRCTC? Learn how the free upgrade scheme works, how to opt in, the rules for families, cancellation charges, and secrets to boost your chances of a free class upgrade."
+title: "IRCTC Auto Upgradation: Will You Get a Free Upgrade?"
+description: "Should you tick 'Consider for Auto Upgradation'? See how IRCTC's free Sleeper→3AC upgrade works, who's eligible, and how to boost your odds of getting one."
 date: "2026-06-16"
-updated: "2026-07-05"
+updated: "2026-07-06"
 tags:
   - irctc auto upgradation
   - free train upgrade
