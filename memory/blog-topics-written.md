@@ -82,6 +82,7 @@ This file tracks all blog posts published to avoid duplication.
 | vande-bharat-food-booking-opt-out-refund-rules.md | Guide to Vande Bharat food booking rules, opting out of catering, onboard fees, and refunds | 2026-07-04 |
 | irctc-booking-failed-money-deducted-refund-rules.md | IRCTC Ticket Booking Failed But Money Deducted: Refund Rules & Timelines (EN + hi/mr/bn/ta/te/ml) | 2026-07-05 |
 | how-to-unblock-irctc-id-deactivated-account.md | How to Unblock IRCTC User ID & Recover Deactivated Accounts (EN + hi/mr/bn/ta/te/ml) | 2026-07-05 |
+| train-classes-explained-1a-2a-3a-3e-sleeper-chair-car.md | Indian Train Classes Explained: 1A/2A/3A/3E/SL/CC/EC/2S — codes, fares, comfort, food, which class to book, 3E vs 3A, Sleeper vs 3AC (EN + hi/mr/bn/ta/te/ml) | 2026-07-06 |
 
 
 ## SEO triage actions (GSC / Google Trends driven)
@@ -125,6 +126,7 @@ This file tracks all blog posts published to avoid duplication.
 | 2026-07-05 | REFRESH | irctc-partial-confirmation-rules-waitlist-travel-guide | Added April 2026 cancellation slabs and Jan Vishwas Act fines; all 7 langs |
 | 2026-07-05 | EXPAND | irctc-auto-upgradation-rules-secrets | GSC: "consider for auto upgradation means"/"what is auto upgradation" cluster (~244 imp @ pos 11, page 2). Added exact-match H2, LastBerth internal links (page had none), Related Guides, tighter CTR title; all 7 langs |
 | 2026-07-05 | EXPAND (CTR) | wl-waiting-list-meaning-indian-railway | GSC: 5,676 imp @ 0.1% CTR (6 clicks) @ pos 7. Rewrote title/meta with decision hook ("Will it confirm?"); fixed ML title/desc bug where "WL" was mistranslated to "വെള്ളം" (water); all 7 langs |
+| 2026-07-06 | NEW | train-classes-explained-1a-2a-3a-3e-sleeper-chair-car | Signals unavailable this run (no Chrome extension connected, no GSC/Trends CSV) → Playbook D fallback. New evergreen class-comparison guide (1A/2A/3A/3E/SL/CC/EC/2S) covering "3a vs 3e", "sleeper vs 3ac", "train class codes", fares, food. Distinct decision/comparison angle vs berth-types post; cross-linked to avoid cannibalization; tags kept in English per task file. All 7 langs |
 
 ## Topics NOT yet covered (candidates for future posts)
 
