@@ -1,8 +1,8 @@
 ---
-title: "Jan Shatabdi Express: Timings, Routes & Booking Rules"
-description: "A complete guide to IRCTC Jan Shatabdi Express booking rules, Tatkal ticket timings, coach classes, food catering options, and popular routes."
+title: "Jan Shatabdi Express: Fares, Timings & Is It Worth It?"
+description: "Jan Shatabdi is the budget Shatabdi: fast day trains with AC & non-AC chair cars and no auto-catering. Compare fares, timings, routes and Tatkal booking rules."
 date: "2026-07-02"
-updated: "2026-07-05"
+updated: "2026-07-07"
 tags:
   - train booking
   - irctc

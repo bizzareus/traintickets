@@ -1,8 +1,8 @@
 ---
-title: "Amrit Bharat Express: Routes, Booking Rules & Fares"
-description: "A complete guide to IRCTC Amrit Bharat Express routes, Sleeper & Second Class fares, booking rules, onboard amenities, and the unique no-RAC seat rules."
+title: "Amrit Bharat Express: Non-AC Sleeper Fares, Routes & Rules"
+description: "Amrit Bharat is Indian Railways' new non-AC superfast: Sleeper & 2S only, no RAC, low fares. See routes, fares, booking rules and onboard amenities."
 date: "2026-07-02"
-updated: "2026-07-04"
+updated: "2026-07-07"
 tags:
   - train booking
   - irctc

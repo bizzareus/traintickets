@@ -1,8 +1,8 @@
 ---
-title: "Indian Railways Coach Composition: How to Locate Your Train Coach on the Platform Without Panic"
-description: "Confused by coach codes like M1, B2, or A1? Here is a complete guide to understanding Indian Railways coach composition, decoding coach symbols, and finding your carriage on a crowded platform."
+title: "Coach Position in Train: Find S1, B2 & A1 on the Platform"
+description: "Confused by codes like S1, B2 or A1? Decode Indian Railways coach composition and find your exact coach position on the platform before the train arrives."
 date: "2026-06-10"
-updated: "2026-07-05"
+updated: "2026-07-07"
 tags:
   - coach composition
   - train layout

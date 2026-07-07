@@ -1,8 +1,8 @@
 ---
-title: "RailOne App Guide: UTS Migration, Rules & Platform Tickets"
-description: "Learn how to use the RailOne super app for booking UTS unreserved train & platform tickets. Understand GPS distance limits, migration & wallet rules."
+title: "RailOne App: UTS, Platform Tickets & the GPS Limit 2026"
+description: "RailOne replaces the UTS app for unreserved, platform & season tickets. See the GPS distance limits that block bookings, R-Wallet setup, and migration steps."
 date: "2026-06-23"
-updated: "2026-07-02"
+updated: "2026-07-07"
 tags:
   - train booking
   - irctc
