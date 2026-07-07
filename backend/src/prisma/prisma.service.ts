@@ -57,10 +57,21 @@ export class PrismaService
       30_000,
     );
 
+    // Remote Postgres (Supabase/prod) requires SSL; a plain local dev Postgres
+    // doesn't speak it and errors with "server does not support SSL connections".
+    // Enable SSL for everything except localhost (override with DATABASE_SSL).
+    const isLocalDb = /@(localhost|127\.0\.0\.1|\[::1\])[:/]/.test(
+      connectionString,
+    );
+    const useSsl =
+      process.env.DATABASE_SSL != null
+        ? process.env.DATABASE_SSL === 'true'
+        : !isLocalDb;
+
     console.log(
       'PRISMA CONNECTING TO:',
       connectionString.split('@')[1] || connectionString,
-      `poolMax=${poolMax} idleTimeoutMs=${idleTimeoutMillis}`,
+      `poolMax=${poolMax} idleTimeoutMs=${idleTimeoutMillis} ssl=${useSsl}`,
     );
 
     const adapter = new PrismaPg({
@@ -68,7 +79,7 @@ export class PrismaService
       max: poolMax,
       idleTimeoutMillis,
       connectionTimeoutMillis,
-      ssl: { rejectUnauthorized: false },
+      ...(useSsl ? { ssl: { rejectUnauthorized: false } } : {}),
     });
     super({
       adapter,
