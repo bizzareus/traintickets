@@ -7,6 +7,7 @@ import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
 import { IstRailMaintenanceBanner } from "@/components/IstRailMaintenance";
 import { listPopularChartTimes } from "@/lib/chartTimes";
+import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -135,6 +136,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const chartTimesPages = listPopularChartTimes().slice(0, 6);
+  const foodMenuPages = listTrainFoodMenuIndex().slice(0, 6);
   return (
     <html lang="en">
       <head>
@@ -177,7 +179,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div className="flex min-h-screen flex-col">
             <main className="flex-1">{children}</main>
             <footer className="border-t border-slate-200 bg-slate-50 py-12 text-sm text-slate-600">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 <div>
                   <h3 className="font-bold text-slate-900 mb-4">LastBerth</h3>
                   <p>Find confirmed train tickets and predict waiting list confirmations across Indian Railways.</p>
@@ -186,6 +188,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <h3 className="font-bold text-slate-900 mb-4">Resources</h3>
                   <ul className="space-y-2">
                     <li><Link href="/chart-vacancy" className="hover:text-blue-600">Chart Vacancy & Coach Map</Link></li>
+                    <li><Link href="/pnr-status" className="hover:text-blue-600">PNR Status</Link></li>
                     <li><Link href="/blog" className="hover:text-blue-600">Blog</Link></li>
                     <li><Link href="/glossary" className="hover:text-blue-600">Railway Glossary</Link></li>
                   </ul>
@@ -216,6 +219,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       ))
                     ) : (
                       <li><Link href="/chart-times" className="hover:text-blue-600">Browse train chart times</Link></li>
+                    )}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-4">
+                    <Link href="/irctc-train-food-menu" className="hover:text-blue-600">Food Menu</Link>
+                  </h3>
+                  <ul className="space-y-2">
+                    {foodMenuPages.length > 0 ? (
+                      foodMenuPages.map((t) => (
+                        <li key={t.slug}>
+                          <Link href={`/irctc-train-food-menu/${t.slug}`} className="hover:text-blue-600">
+                            {t.trainName || t.trainNumber} ({t.trainNumber})
+                          </Link>
+                        </li>
+                      ))
+                    ) : (
+                      <li><Link href="/irctc-train-food-menu" className="hover:text-blue-600">Browse train food menus</Link></li>
                     )}
                   </ul>
                 </div>
