@@ -1,8 +1,8 @@
 ---
-title: "The Ultimate Guide to IRCTC Cancellation Rules, Refund Timelines, and TDR Filing"
-description: "Confused by IRCTC cancellation fees and TDR deadlines? Here is a complete breakdown of refund charges, auto-refund rules, and step-by-step TDR filing tips to get your money back."
+title: "IRCTC Refund Rules 2026: Cancellation Fees & TDR Filing"
+description: "How much refund do you get when you cancel an IRCTC ticket? Exact cancellation charges by class and timing, auto-refund rules, and step-by-step TDR filing."
 date: "2026-06-10"
-updated: "2026-07-05"
+updated: "2026-07-07"
 tags:
   - irctc cancellation
   - refund rules

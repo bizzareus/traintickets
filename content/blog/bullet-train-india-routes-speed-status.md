@@ -1,8 +1,8 @@
 ---
 title: "Bullet Train in India: Routes, Speed, and Project Status"
-description: "WL full form is Waiting List. Check out the latest on India's upcoming bullet train—covering the Mumbai-Ahmedabad route, speeds, station map, and launch dates."
+description: "When will India's bullet train run? Latest on the Mumbai–Ahmedabad route, 320 km/h speeds, all stations, fares, and the expected launch date. Updated 2026."
 date: "2026-06-30"
-updated: "2026-06-30"
+updated: "2026-07-07"
 tags:
   - bullet train
   - bullet train in india

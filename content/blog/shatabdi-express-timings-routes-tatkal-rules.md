@@ -1,8 +1,8 @@
 ---
 title: "Shatabdi Express Guide: Timings, Routes & Booking Rules"
-description: "WL full form is Waiting List. Check the ultimate guide to Shatabdi Express timings, route schedules, Tatkal booking times, fares, and food catering rules."
+description: "Shatabdi Express guide 2026: timings, route schedules, the Tatkal booking window, fares, and which meals come free with your seat. Plan before you book."
 date: "2026-06-30"
-updated: "2026-07-05"
+updated: "2026-07-07"
 tags:
   - train booking
   - irctc

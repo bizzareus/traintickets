@@ -1,8 +1,8 @@
 ---
 title: "TTR Full Form in Train: TTR vs TTE & IRCTC Ticket Rules"
-description: "WL full form is Waiting List. Learn the full form of TTR in train bookings, TTR vs TTE differences, duties of a TTR, and how waiting lists and refunds work."
+description: "TTR full form, and TTR vs TTE — what's the difference? Learn a travelling ticket examiner's duties, fining powers, and your rights if caught without a ticket."
 date: "2026-06-30"
-updated: "2026-07-05"
+updated: "2026-07-07"
 tags:
   - train booking
   - irctc

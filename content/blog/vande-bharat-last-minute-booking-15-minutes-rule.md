@@ -1,8 +1,8 @@
 ---
 title: "Vande Bharat Last-Minute Booking: 15-Minute Seat Rule Guide"
-description: "WL full form is Waiting List. Learn the new Indian Railways rule allowing you to book vacant seats on Vande Bharat trains up to 15 minutes before departure."
+description: "Can you board a Vande Bharat without a confirmed ticket? Learn the rule that lets you book vacant seats up to 15 minutes before departure — and how to grab one."
 date: "2026-07-02"
-updated: "2026-07-02"
+updated: "2026-07-07"
 tags:
   - train booking
   - irctc

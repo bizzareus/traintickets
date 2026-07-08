@@ -1,8 +1,8 @@
 ---
 title: "Vande Bharat Routes: Stops, Manufacturing, and Latest News"
-description: "WL full form is Waiting List. Read about the Vande Bharat routes, key stops, how it runs, how it is made at ICF Chennai, and sleeper train news."
+description: "Every Vande Bharat route and key stop, how the trains are built at ICF Chennai, their top speed, and the latest on the Vande Bharat sleeper. Updated 2026."
 date: "2026-06-30"
-updated: "2026-07-04"
+updated: "2026-07-07"
 tags:
   - vande bharat routes
   - vande bharat train

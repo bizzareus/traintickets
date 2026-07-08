@@ -1,8 +1,8 @@
 ---
 title: "Rajdhani Express: Timings, Booking Rules, Catering & Fares"
-description: "WL full form is Waiting List. Check the ultimate guide to Rajdhani Express timings, seat layouts, dynamic ticket fares, and catering options."
+description: "Rajdhani Express guide 2026: full timings, dynamic fares, seat layout, and which meals are included in your ticket price. Everything to know before you book."
 date: "2026-07-01"
-updated: "2026-07-05"
+updated: "2026-07-07"
 tags:
   - train booking
   - irctc

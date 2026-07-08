@@ -1,8 +1,8 @@
 ---
 title: "Vande Bharat Train Guide: Booking Rules, Routes & Ticket Fares"
-description: "WL full form is Waiting List. Check the ultimate guide to Vande Bharat train features, booking rules, ticket prices, catering options, and seat booking."
+description: "Vande Bharat train guide 2026: booking rules, ticket prices by class, catering, and seat features. Everything you need to know before you reserve a seat."
 date: "2026-06-30"
-updated: "2026-07-05"
+updated: "2026-07-07"
 tags:
   - vande bharat
   - vande bharat train

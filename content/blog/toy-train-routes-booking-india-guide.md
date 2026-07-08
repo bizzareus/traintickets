@@ -1,8 +1,8 @@
 ---
 title: "Toy Train Booking in India: Routes, Fares & Heritage Guide"
-description: "WL full form is Waiting List. Plan your toy train booking for Shimla, Darjeeling, Ooty, and Matheran with this complete route, price, and booking guide."
+description: "How to book India's toy trains to Shimla, Darjeeling, Ooty, and Matheran — routes, ticket prices, the best seats, and when to reserve these heritage rides."
 date: "2026-06-30"
-updated: "2026-07-05"
+updated: "2026-07-07"
 tags:
   - toy train
   - toy train booking
