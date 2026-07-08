@@ -12,11 +12,11 @@
       "departureTime": "08:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "AGC",
@@ -25,11 +25,11 @@
       "departureTime": "09:55",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "GWL",
@@ -38,11 +38,11 @@
       "departureTime": "11:09",
       "day": 1,
       "distance": "306.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "VGLJ",
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GWL"
     }
   ],
-  "summary": "Reservation chart preparation times for Gatimaan Exp (12050) from NZM to VGLJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 4 stations.",
-  "generatedAt": "2026-07-02T17:19:29.780Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gatimaan Exp (12050) is prepared at H Nizamuddin (NZM) around 10:06 PM. 4 of 4 stations on the NZM to VGLJ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:19:28.080Z",
+  "knownChartCount": 4
 }

@@ -12,11 +12,11 @@
       "departureTime": "14:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "05:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "SBC",
@@ -25,11 +25,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "KPD",
@@ -38,11 +38,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "371.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "MAS",
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "500.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     }
   ],
-  "summary": "Reservation chart preparation times for Shatabdi Exp (12008) from MYS to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 4 stations.",
-  "generatedAt": "2026-07-02T17:19:22.791Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Shatabdi Exp (12008) is prepared at Mysuru Jn (MYS) around 5:12 AM. 4 of 4 stations on the MYS to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:18:03.275Z",
+  "knownChartCount": 4
 }

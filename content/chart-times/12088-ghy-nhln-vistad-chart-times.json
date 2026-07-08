@@ -12,11 +12,11 @@
       "departureTime": "13:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "RNY",
@@ -25,11 +25,11 @@
       "departureTime": "14:45",
       "day": 1,
       "distance": "48.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNY"
     },
     {
       "stationCode": "TNL",
@@ -38,11 +38,11 @@
       "departureTime": "15:24",
       "day": 1,
       "distance": "87.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNY"
     },
     {
       "stationCode": "ULG",
@@ -51,11 +51,11 @@
       "departureTime": "15:47",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNY"
     },
     {
       "stationCode": "NMM",
@@ -64,11 +64,11 @@
       "departureTime": "16:31",
       "day": 1,
       "distance": "160.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNY"
     },
     {
       "stationCode": "RPAN",
@@ -77,11 +77,11 @@
       "departureTime": "16:54",
       "day": 1,
       "distance": "171.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPAN"
     },
     {
       "stationCode": "VNE",
@@ -90,11 +90,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "222.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VNE"
     },
     {
       "stationCode": "GPZ",
@@ -103,11 +103,11 @@
       "departureTime": "18:22",
       "day": 1,
       "distance": "273.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VNE"
     },
     {
       "stationCode": "HMY",
@@ -116,11 +116,11 @@
       "departureTime": "18:47",
       "day": 1,
       "distance": "314.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VNE"
     },
     {
       "stationCode": "NHLN",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "333.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VNE"
     }
   ],
-  "summary": "Reservation chart preparation times for Ghy Nhln Vistad (12088) from GHY to NHLN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-07-02T17:19:35.287Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ghy Nhln Vistad (12088) is prepared at Guwahati (GHY) around 8:13 PM, with a second (vacancy) chart around 1:30 PM. 10 of 10 stations on the GHY to NHLN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:57:12.785Z",
+  "knownChartCount": 10
 }

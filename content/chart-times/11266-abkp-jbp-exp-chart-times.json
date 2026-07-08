@@ -12,11 +12,11 @@
       "departureTime": "06:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "BSPR",
@@ -25,11 +25,11 @@
       "departureTime": "06:37",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "KTO",
@@ -38,11 +38,11 @@
       "departureTime": "07:09",
       "day": 1,
       "distance": "59.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "BRH",
@@ -51,11 +51,11 @@
       "departureTime": "07:25",
       "day": 1,
       "distance": "76.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "BJRI",
@@ -64,11 +64,11 @@
       "departureTime": "08:35",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "KTMA",
@@ -77,11 +77,11 @@
       "departureTime": "08:47",
       "day": 1,
       "distance": "143.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "APR",
@@ -90,11 +90,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "BUH",
@@ -103,11 +103,11 @@
       "departureTime": "09:48",
       "day": 1,
       "distance": "196.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "SDL",
@@ -116,11 +116,11 @@
       "departureTime": "10:20",
       "day": 1,
       "distance": "215.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "BRS",
@@ -129,11 +129,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "253.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "UMR",
@@ -142,11 +142,11 @@
       "departureTime": "11:22",
       "day": 1,
       "distance": "282.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "KTES",
@@ -155,11 +155,11 @@
       "departureTime": "13:00",
       "day": 1,
       "distance": "343.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "SHR",
@@ -168,11 +168,11 @@
       "departureTime": "13:55",
       "day": 1,
       "distance": "394.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     },
     {
       "stationCode": "JBP",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "432.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABKP"
     }
   ],
-  "summary": "Reservation chart preparation times for Abkp Jbp Exp (11266) from ABKP to JBP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-07-02T17:19:41.717Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Abkp Jbp Exp (11266) is prepared at Ambikapur (ABKP) around 8:04 PM, with a second (vacancy) chart around 12:45 PM. 14 of 14 stations on the ABKP to JBP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:14:36.830Z",
+  "knownChartCount": 14
 }

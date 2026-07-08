@@ -12,11 +12,11 @@
       "departureTime": "06:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KLK"
     },
     {
       "stationCode": "CDG",
@@ -25,11 +25,11 @@
       "departureTime": "06:53",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:38",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "UMB",
@@ -38,11 +38,11 @@
       "departureTime": "07:38",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "UMB"
     },
     {
       "stationCode": "KKDE",
@@ -51,11 +51,11 @@
       "departureTime": "08:10",
       "day": 1,
       "distance": "147.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:05",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KKDE"
     },
     {
       "stationCode": "PNP",
@@ -64,11 +64,11 @@
       "departureTime": "08:52",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNP"
     },
     {
       "stationCode": "NDLS",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "303.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNP"
     }
   ],
-  "summary": "Reservation chart preparation times for Kalka Shtabdi Ex (12006) from KLK to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
-  "generatedAt": "2026-07-02T17:19:22.799Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kalka Shtabdi Ex (12006) is prepared at Kalka (KLK) around 8:37 PM, with a second (vacancy) chart around 6 AM. 6 of 6 stations on the KLK to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:18:00.274Z",
+  "knownChartCount": 6
 }

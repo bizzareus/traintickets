@@ -12,11 +12,11 @@
       "departureTime": "05:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ETW"
     },
     {
       "stationCode": "BIX",
@@ -25,11 +25,11 @@
       "departureTime": "05:43",
       "day": 1,
       "distance": "37.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ETW"
     },
     {
       "stationCode": "SONI",
@@ -38,11 +38,11 @@
       "departureTime": "06:02",
       "day": 1,
       "distance": "61.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ETW"
     },
     {
       "stationCode": "MLAR",
@@ -51,11 +51,11 @@
       "departureTime": "06:28",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ETW"
     },
     {
       "stationCode": "GWL",
@@ -64,11 +64,11 @@
       "departureTime": "08:10",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ETW"
     },
     {
       "stationCode": "DBA",
@@ -77,11 +77,11 @@
       "departureTime": "08:48",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ETW"
     },
     {
       "stationCode": "SOR",
@@ -90,11 +90,11 @@
       "departureTime": "09:06",
       "day": 1,
       "distance": "180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ETW"
     },
     {
       "stationCode": "DAA",
@@ -103,11 +103,11 @@
       "departureTime": "09:24",
       "day": 1,
       "distance": "191.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ETW"
     },
     {
       "stationCode": "VGLJ",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "216.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ETW"
     }
   ],
-  "summary": "Reservation chart preparation times for Etw Vglj Exp (11904) from ETW to VGLJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:20.622Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Etw Vglj Exp (11904) is prepared at Etawah Jn (ETW) around 7:53 PM, with a second (vacancy) chart around 4:45 AM. 9 of 9 stations on the ETW to VGLJ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:17:47.402Z",
+  "knownChartCount": 9
 }

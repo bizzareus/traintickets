@@ -12,11 +12,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:16",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "REWA"
     },
     {
       "stationCode": "STA",
@@ -25,11 +25,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:16",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "REWA"
     },
     {
       "stationCode": "MYR",
@@ -38,11 +38,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:16",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "REWA"
     },
     {
       "stationCode": "KTE",
@@ -51,11 +51,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:16",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "REWA"
     },
     {
       "stationCode": "SHR",
@@ -64,11 +64,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:16",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "REWA"
     },
     {
       "stationCode": "JBP",
@@ -77,11 +77,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "239.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "GNS",
@@ -90,11 +90,11 @@
       "departureTime": "23:38",
       "day": 1,
       "distance": "327.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "NIR",
@@ -103,11 +103,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "361.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "SEY",
@@ -116,11 +116,11 @@
       "departureTime": "01:55",
       "day": 2,
       "distance": "436.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "CHUA",
@@ -129,11 +129,11 @@
       "departureTime": "02:20",
       "day": 2,
       "distance": "468.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "CWA",
@@ -142,11 +142,11 @@
       "departureTime": "03:30",
       "day": 2,
       "distance": "501.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "SASR",
@@ -155,11 +155,11 @@
       "departureTime": "05:00",
       "day": 2,
       "distance": "573.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "SONR",
@@ -168,11 +168,11 @@
       "departureTime": "05:35",
       "day": 2,
       "distance": "610.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "NITR",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "648.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "Reservation chart preparation times for Rewa Nitr Exp (11756) from REWA to NITR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-07-02T17:19:18.410Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rewa Nitr Exp (11756) is prepared at Rewa (REWA) around 8:16 PM, with a second (vacancy) chart around 4:42 PM. 14 of 14 stations on the REWA to NITR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:17:27.967Z",
+  "knownChartCount": 14
 }

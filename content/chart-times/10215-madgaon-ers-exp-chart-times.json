@@ -51,11 +51,11 @@
       "departureTime": "00:16",
       "day": 2,
       "distance": "258.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "UD",
@@ -64,11 +64,11 @@
       "departureTime": "01:04",
       "day": 2,
       "distance": "350.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "MAJN",
@@ -77,11 +77,11 @@
       "departureTime": "03:05",
       "day": 2,
       "distance": "431.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "KGQ",
@@ -90,11 +90,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "478.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "CAN",
@@ -103,11 +103,11 @@
       "departureTime": "04:55",
       "day": 2,
       "distance": "564.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "CLT",
@@ -116,11 +116,11 @@
       "departureTime": "06:10",
       "day": 2,
       "distance": "653.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "TIR",
@@ -129,11 +129,11 @@
       "departureTime": "06:50",
       "day": 2,
       "distance": "694.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "SRR",
@@ -142,11 +142,11 @@
       "departureTime": "07:50",
       "day": 2,
       "distance": "739.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "TCR",
@@ -155,11 +155,11 @@
       "departureTime": "08:28",
       "day": 2,
       "distance": "772.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "AWY",
@@ -168,11 +168,11 @@
       "departureTime": "09:22",
       "day": 2,
       "distance": "826.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "ERS",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "846.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     }
   ],
-  "summary": "Reservation chart preparation times for Madgaon Ers Exp (10215) from MAO to ERS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-07-02T17:19:16.084Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Madgaon Ers Exp (10215) is prepared at Mookambika Road (BYNR) around 12:22 PM, with a second (vacancy) chart around 8:45 PM. 11 of 14 stations on the MAO to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-07-07T01:06:04.667Z",
+  "knownChartCount": 11
 }

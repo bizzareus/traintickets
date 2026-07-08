@@ -12,11 +12,11 @@
       "departureTime": "06:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "JID",
@@ -25,11 +25,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "58.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "CPK",
@@ -38,11 +38,11 @@
       "departureTime": "07:42",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "HJI",
@@ -51,11 +51,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HJI"
     },
     {
       "stationCode": "LKA",
@@ -64,11 +64,11 @@
       "departureTime": "08:29",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HJI"
     },
     {
       "stationCode": "LMG",
@@ -77,11 +77,11 @@
       "departureTime": "09:02",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "LMG"
     },
     {
       "stationCode": "DPU",
@@ -90,11 +90,11 @@
       "departureTime": "09:37",
       "day": 1,
       "distance": "213.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DPU"
     },
     {
       "stationCode": "DMV",
@@ -103,11 +103,11 @@
       "departureTime": "10:15",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DMV"
     },
     {
       "stationCode": "BXJ",
@@ -116,11 +116,11 @@
       "departureTime": "10:32",
       "day": 1,
       "distance": "264.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DMV"
     },
     {
       "stationCode": "SZR",
@@ -129,11 +129,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "286.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DMV"
     },
     {
       "stationCode": "FKG",
@@ -142,11 +142,11 @@
       "departureTime": "11:34",
       "day": 1,
       "distance": "320.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DMV"
     },
     {
       "stationCode": "MXN",
@@ -155,11 +155,11 @@
       "departureTime": "12:10",
       "day": 1,
       "distance": "358.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DMV"
     },
     {
       "stationCode": "JTTN",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "376.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DMV"
     }
   ],
-  "summary": "Reservation chart preparation times for Jansatabdi Exp (12067) from GHY to JTTN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-07-02T17:19:31.887Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jansatabdi Exp (12067) is prepared at Guwahati (GHY) around 7:30 PM, with a second (vacancy) chart around 6:05 AM. 13 of 13 stations on the GHY to JTTN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:20:03.479Z",
+  "knownChartCount": 13
 }

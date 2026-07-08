@@ -12,11 +12,11 @@
       "departureTime": "06:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:31",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "DGR",
@@ -25,11 +25,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "158.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGR"
     },
     {
       "stationCode": "RNG",
@@ -38,11 +38,11 @@
       "departureTime": "07:58",
       "day": 1,
       "distance": "182.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGR"
     },
     {
       "stationCode": "ASN",
@@ -51,11 +51,11 @@
       "departureTime": "08:14",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "DHN",
@@ -64,11 +64,11 @@
       "departureTime": "09:28",
       "day": 1,
       "distance": "259.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "CRP",
@@ -77,11 +77,11 @@
       "departureTime": "10:26",
       "day": 1,
       "distance": "293.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "BKSC",
@@ -90,11 +90,11 @@
       "departureTime": "11:00",
       "day": 1,
       "distance": "308.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:40",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "MURI",
@@ -103,11 +103,11 @@
       "departureTime": "11:47",
       "day": 1,
       "distance": "361.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:40",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "RNC",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "426.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:40",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BKSC"
     }
   ],
-  "summary": "Reservation chart preparation times for Shatabdi Exp (12019) from HWH to RNC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:23.896Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Shatabdi Exp (12019) is prepared at Howrah Jn (HWH) around 8:31 PM. 9 of 9 stations on the HWH to RNC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:18:21.064Z",
+  "knownChartCount": 9
 }

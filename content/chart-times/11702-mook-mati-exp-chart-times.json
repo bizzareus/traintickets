@@ -12,11 +12,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "MML",
@@ -25,11 +25,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "4.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "NIR",
@@ -38,11 +38,11 @@
       "departureTime": "07:55",
       "day": 1,
       "distance": "123.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "BTC",
@@ -51,11 +51,11 @@
       "departureTime": "09:12",
       "day": 1,
       "distance": "198.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "G",
@@ -64,11 +64,11 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "239.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "DGG",
@@ -77,11 +77,11 @@
       "departureTime": "11:35",
       "day": 1,
       "distance": "312.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "RJN",
@@ -90,11 +90,11 @@
       "departureTime": "12:00",
       "day": 1,
       "distance": "343.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "DURG",
@@ -103,11 +103,11 @@
       "departureTime": "13:05",
       "day": 1,
       "distance": "374.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "R",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "411.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "Reservation chart preparation times for Mook Mati Exp (11702) from JBP to R are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:16.233Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mook Mati Exp (11702) is prepared at Jabalpur (JBP) around 7:43 PM, with a second (vacancy) chart around 5:33 AM. 9 of 9 stations on the JBP to R route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:17:11.180Z",
+  "knownChartCount": 9
 }

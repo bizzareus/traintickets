@@ -12,11 +12,11 @@
       "departureTime": "03:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "03:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DNR"
     },
     {
       "stationCode": "MKP",
@@ -25,11 +25,11 @@
       "departureTime": "12:22",
       "day": 1,
       "distance": "437.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "STA",
@@ -38,11 +38,11 @@
       "departureTime": "13:15",
       "day": 1,
       "distance": "515.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "MYR",
@@ -51,11 +51,11 @@
       "departureTime": "13:45",
       "day": 1,
       "distance": "550.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "KTE",
@@ -64,11 +64,11 @@
       "departureTime": "14:25",
       "day": 1,
       "distance": "613.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "JBP",
@@ -77,11 +77,11 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "704.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "NU",
@@ -90,11 +90,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "PPI",
@@ -103,11 +103,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "882.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "ET",
@@ -116,11 +116,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "948.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "KNW",
@@ -129,11 +129,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "1132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "PUNE",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1748.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KPG"
     }
   ],
-  "summary": "Reservation chart preparation times for Danapur - Pune Amrit Bharat Express (11432) from DNR to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-07-02T17:19:10.371Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Danapur - Pune Amrit Bharat Express (11432) is prepared at Danapur (DNR) around 7:30 PM, with a second (vacancy) chart around 3:15 AM. 11 of 11 stations on the DNR to PUNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:16:22.595Z",
+  "knownChartCount": 11
 }

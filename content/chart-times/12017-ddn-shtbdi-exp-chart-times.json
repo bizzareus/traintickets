@@ -12,11 +12,11 @@
       "departureTime": "06:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:34",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "GZB",
@@ -25,11 +25,11 @@
       "departureTime": "07:23",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "MTC",
@@ -38,11 +38,11 @@
       "departureTime": "08:03",
       "day": 1,
       "distance": "73.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTC"
     },
     {
       "stationCode": "MOZ",
@@ -51,11 +51,11 @@
       "departureTime": "08:43",
       "day": 1,
       "distance": "129.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTC"
     },
     {
       "stationCode": "SRE",
@@ -64,11 +64,11 @@
       "departureTime": "10:15",
       "day": 1,
       "distance": "187.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTC"
     },
     {
       "stationCode": "RK",
@@ -77,11 +77,11 @@
       "departureTime": "10:51",
       "day": 1,
       "distance": "222.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTC"
     },
     {
       "stationCode": "HW",
@@ -90,11 +90,11 @@
       "departureTime": "11:40",
       "day": 1,
       "distance": "263.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTC"
     },
     {
       "stationCode": "DDN",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "315.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTC"
     }
   ],
-  "summary": "Reservation chart preparation times for Ddn Shtbdi Exp (12017) from NDLS to DDN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:23.889Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ddn Shtbdi Exp (12017) is prepared at New Delhi (NDLS) around 9:34 PM. 8 of 8 stations on the NDLS to DDN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:18:17.921Z",
+  "knownChartCount": 8
 }

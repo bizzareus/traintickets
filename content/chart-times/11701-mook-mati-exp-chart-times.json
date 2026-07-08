@@ -12,11 +12,11 @@
       "departureTime": "14:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "DURG",
@@ -25,11 +25,11 @@
       "departureTime": "15:27",
       "day": 1,
       "distance": "37.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "RJN",
@@ -38,11 +38,11 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "DGG",
@@ -51,11 +51,11 @@
       "departureTime": "16:15",
       "day": 1,
       "distance": "99.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "G",
@@ -64,11 +64,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "173.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "BTC",
@@ -77,11 +77,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "213.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "NIR",
@@ -90,11 +90,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "288.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "MML",
@@ -103,11 +103,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "407.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "JBP",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "411.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "R"
     }
   ],
-  "summary": "Reservation chart preparation times for Mook Mati Exp (11701) from R to JBP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:16.241Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mook Mati Exp (11701) is prepared at Raipur Jn (R) around 9:51 PM. 9 of 9 stations on the R to JBP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:17:09.879Z",
+  "knownChartCount": 9
 }

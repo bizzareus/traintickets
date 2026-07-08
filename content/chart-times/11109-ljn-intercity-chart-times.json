@@ -12,11 +12,11 @@
       "departureTime": "06:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "CGN",
@@ -25,11 +25,11 @@
       "departureTime": "06:38",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "MOTH",
@@ -38,11 +38,11 @@
       "departureTime": "06:57",
       "day": 1,
       "distance": "56.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "AIT",
@@ -51,11 +51,11 @@
       "departureTime": "07:22",
       "day": 1,
       "distance": "89.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "ORAI",
@@ -64,11 +64,11 @@
       "departureTime": "07:48",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ORAI"
     },
     {
       "stationCode": "KPI",
@@ -77,11 +77,11 @@
       "departureTime": "08:14",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ORAI"
     },
     {
       "stationCode": "PHN",
@@ -90,11 +90,11 @@
       "departureTime": "08:30",
       "day": 1,
       "distance": "162.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ORAI"
     },
     {
       "stationCode": "GOY",
@@ -103,11 +103,11 @@
       "departureTime": "09:56",
       "day": 1,
       "distance": "218.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ORAI"
     },
     {
       "stationCode": "CNB",
@@ -116,11 +116,11 @@
       "departureTime": "10:25",
       "day": 1,
       "distance": "221.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ORAI"
     },
     {
       "stationCode": "ON",
@@ -129,11 +129,11 @@
       "departureTime": "10:58",
       "day": 1,
       "distance": "239.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ORAI"
     },
     {
       "stationCode": "LJN",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ORAI"
     }
   ],
-  "summary": "Reservation chart preparation times for Ljn Intercity (11109) from VGLJ to LJN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-07-02T17:19:37.406Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ljn Intercity (11109) is prepared at V Lakshmibai Jhansi Jhs (VGLJ) around 9:22 PM, with a second (vacancy) chart around 5:50 AM. 11 of 11 stations on the VGLJ to LJN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:12:54.972Z",
+  "knownChartCount": 11
 }

@@ -12,11 +12,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "SASR",
@@ -25,11 +25,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "CWA",
@@ -38,11 +38,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "152.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "SEY",
@@ -51,11 +51,11 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "KLZ",
@@ -64,11 +64,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "NIR",
@@ -77,11 +77,11 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "291.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "JBP",
@@ -90,11 +90,11 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "414.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "SHR",
@@ -103,11 +103,11 @@
       "departureTime": "17:24",
       "day": 1,
       "distance": "452.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "KTES",
@@ -116,11 +116,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "503.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "UMR",
@@ -129,11 +129,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "563.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "BRS",
@@ -142,11 +142,11 @@
       "departureTime": "20:44",
       "day": 1,
       "distance": "593.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "SDL",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "630.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "Reservation chart preparation times for Ngp Sdl Express (11201) from NGP to SDL are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:40.790Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ngp Sdl Express (11201) is prepared at Nagpur (NGP) around 7:44 PM, with a second (vacancy) chart around 7:45 AM. 12 of 12 stations on the NGP to SDL route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:14:11.146Z",
+  "knownChartCount": 12
 }

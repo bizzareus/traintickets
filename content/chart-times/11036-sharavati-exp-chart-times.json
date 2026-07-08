@@ -311,11 +311,11 @@
       "departureTime": "02:10",
       "day": 2,
       "distance": "1029.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "KYN",
@@ -324,11 +324,11 @@
       "departureTime": "04:30",
       "day": 2,
       "distance": "1167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "DR",
@@ -337,14 +337,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1212.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     }
   ],
-  "summary": "Reservation chart preparation times for Sharavati Exp (11036) from MYS to DR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 26 stations.",
-  "generatedAt": "2026-07-02T17:19:28.421Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sharavati Exp (11036) is prepared at Pune Jn (PUNE) around 8:08 PM, with a second (vacancy) chart around 1:50 PM. 3 of 26 stations on the MYS to DR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-07-07T01:08:40.163Z",
+  "knownChartCount": 3
 }

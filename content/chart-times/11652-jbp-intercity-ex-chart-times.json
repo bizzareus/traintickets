@@ -12,11 +12,11 @@
       "departureTime": "04:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "BRGW",
@@ -25,11 +25,11 @@
       "departureTime": "05:10",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "GAJB",
@@ -38,11 +38,11 @@
       "departureTime": "05:40",
       "day": 1,
       "distance": "47.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "SGAM",
@@ -51,11 +51,11 @@
       "departureTime": "05:50",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "NWB",
@@ -64,11 +64,11 @@
       "departureTime": "06:15",
       "day": 1,
       "distance": "86.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "MWJ",
@@ -77,11 +77,11 @@
       "departureTime": "06:28",
       "day": 1,
       "distance": "103.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "JOBA",
@@ -90,11 +90,11 @@
       "departureTime": "06:38",
       "day": 1,
       "distance": "110.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "BEHR",
@@ -103,11 +103,11 @@
       "departureTime": "07:10",
       "day": 1,
       "distance": "149.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "VST",
@@ -116,11 +116,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "MFQ",
@@ -129,11 +129,11 @@
       "departureTime": "07:55",
       "day": 1,
       "distance": "199.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "KHBJ",
@@ -142,11 +142,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "210.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "KTES",
@@ -155,11 +155,11 @@
       "departureTime": "09:45",
       "day": 1,
       "distance": "262.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "SHR",
@@ -168,11 +168,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "312.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "DOE",
@@ -181,11 +181,11 @@
       "departureTime": "10:45",
       "day": 1,
       "distance": "334.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "JBP",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "351.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     }
   ],
-  "summary": "Reservation chart preparation times for Jbp Intercity Ex (11652) from SGRL to JBP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
-  "generatedAt": "2026-07-02T17:19:15.116Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jbp Intercity Ex (11652) is prepared at Singrauli (SGRL) around 7:34 PM, with a second (vacancy) chart around 5:35 AM. 15 of 15 stations on the SGRL to JBP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:17:01.496Z",
+  "knownChartCount": 15
 }

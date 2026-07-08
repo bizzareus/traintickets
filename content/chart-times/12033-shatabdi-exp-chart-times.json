@@ -12,11 +12,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "ETW",
@@ -25,11 +25,11 @@
       "departureTime": "07:21",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "ALJN",
@@ -38,11 +38,11 @@
       "departureTime": "09:07",
       "day": 1,
       "distance": "310.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ALJN"
     },
     {
       "stationCode": "GZB",
@@ -51,11 +51,11 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "416.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ALJN"
     },
     {
       "stationCode": "NDLS",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "439.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ALJN"
     }
   ],
-  "summary": "Reservation chart preparation times for Shatabdi Exp (12033) from CNB to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
-  "generatedAt": "2026-07-02T17:19:26.301Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Shatabdi Exp (12033) is prepared at Kanpur Central (CNB) around 8:08 PM. 5 of 5 stations on the CNB to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:18:45.382Z",
+  "knownChartCount": 5
 }

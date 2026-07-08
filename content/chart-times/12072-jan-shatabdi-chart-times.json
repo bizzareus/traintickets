@@ -12,11 +12,11 @@
       "departureTime": "04:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "BMF",
@@ -25,11 +25,11 @@
       "departureTime": "04:55",
       "day": 1,
       "distance": "59.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "PAU",
@@ -38,11 +38,11 @@
       "departureTime": "05:30",
       "day": 1,
       "distance": "81.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "PBN",
@@ -51,11 +51,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "SELU",
@@ -64,11 +64,11 @@
       "departureTime": "06:55",
       "day": 1,
       "distance": "152.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "PTU",
@@ -77,11 +77,11 @@
       "departureTime": "07:25",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "J",
@@ -90,11 +90,11 @@
       "departureTime": "08:25",
       "day": 1,
       "distance": "224.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "CPSN",
@@ -103,11 +103,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "287.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "MMR",
@@ -116,11 +116,11 @@
       "departureTime": "11:50",
       "day": 1,
       "distance": "400.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "NK",
@@ -129,11 +129,11 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "473.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "IGP",
@@ -142,11 +142,11 @@
       "departureTime": "13:52",
       "day": 1,
       "distance": "523.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "KSRA",
@@ -168,11 +168,11 @@
       "departureTime": "15:40",
       "day": 1,
       "distance": "607.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "TNA",
@@ -181,11 +181,11 @@
       "departureTime": "16:02",
       "day": 1,
       "distance": "627.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "DR",
@@ -194,11 +194,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "651.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     },
     {
       "stationCode": "CSMT",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "660.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HNL"
     }
   ],
-  "summary": "Reservation chart preparation times for Jan Shatabdi (12072) from HNL to CSMT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-07-02T17:19:32.976Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jan Shatabdi (12072) is prepared at Hingoli Deccan (HNL) around 6:25 PM, with a second (vacancy) chart around 5:15 AM. 15 of 16 stations on the HNL to CSMT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-07-07T01:20:13.588Z",
+  "knownChartCount": 15
 }

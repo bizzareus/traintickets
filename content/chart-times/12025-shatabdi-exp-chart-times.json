@@ -12,11 +12,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "SUR",
@@ -25,11 +25,11 @@
       "departureTime": "09:03",
       "day": 1,
       "distance": "264.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:19",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "KLBG",
@@ -38,11 +38,11 @@
       "departureTime": "10:25",
       "day": 1,
       "distance": "377.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KLBG"
     },
     {
       "stationCode": "WADI",
@@ -51,11 +51,11 @@
       "departureTime": "11:20",
       "day": 1,
       "distance": "414.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KLBG"
     },
     {
       "stationCode": "TDU",
@@ -64,11 +64,11 @@
       "departureTime": "12:10",
       "day": 1,
       "distance": "484.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TDU"
     },
     {
       "stationCode": "VKB",
@@ -77,11 +77,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "525.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VKB"
     },
     {
       "stationCode": "LPI",
@@ -90,11 +90,11 @@
       "departureTime": "13:30",
       "day": 1,
       "distance": "575.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VKB"
     },
     {
       "stationCode": "BMT",
@@ -103,11 +103,11 @@
       "departureTime": "13:40",
       "day": 1,
       "distance": "593.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VKB"
     },
     {
       "stationCode": "HYB",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "598.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VKB"
     }
   ],
-  "summary": "Reservation chart preparation times for Shatabdi Exp (12025) from PUNE to HYB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:25.147Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Shatabdi Exp (12025) is prepared at Pune Jn (PUNE) around 8:04 PM. 9 of 9 stations on the PUNE to HYB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:18:32.638Z",
+  "knownChartCount": 9
 }

@@ -12,11 +12,11 @@
       "departureTime": "00:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "TNA",
@@ -25,11 +25,11 @@
       "departureTime": "01:10",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "PNVL",
@@ -38,11 +38,11 @@
       "departureTime": "01:45",
       "day": 1,
       "distance": "53.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "ROHA",
@@ -51,11 +51,11 @@
       "departureTime": "03:02",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KHED",
@@ -64,11 +64,11 @@
       "departureTime": "04:32",
       "day": 1,
       "distance": "268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "CHI",
@@ -77,11 +77,11 @@
       "departureTime": "05:10",
       "day": 1,
       "distance": "309.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "RN",
@@ -90,11 +90,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "415.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KKW",
@@ -103,11 +103,11 @@
       "departureTime": "10:12",
       "day": 1,
       "distance": "571.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "SWV",
@@ -116,11 +116,11 @@
       "departureTime": "11:12",
       "day": 1,
       "distance": "640.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "THVM",
@@ -129,11 +129,11 @@
       "departureTime": "12:32",
       "day": 1,
       "distance": "685.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KRMI",
@@ -142,11 +142,11 @@
       "departureTime": "13:02",
       "day": 1,
       "distance": "710.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "MAO",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "750.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     }
   ],
-  "summary": "Reservation chart preparation times for Ltt Madgaon Exp (11099) from LTT to MAO are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:36.256Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ltt Madgaon Exp (11099) is prepared at Lokmanyatilak T (LTT) around 3:03 PM, with a second (vacancy) chart around 12:42 PM. 12 of 12 stations on the LTT to MAO route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-07-07T01:12:04.578Z",
+  "knownChartCount": 12
 }
