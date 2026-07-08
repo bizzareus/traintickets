@@ -1,8 +1,8 @@
 ---
-title: "IRCTC குழந்தை டிக்கெட் முன்பதிவு விதிகள்: கட்டணங்கள் & வயது வரம்புகள்"
-description: "இந்திய ரயில்வே குழந்தை டிக்கெட் முன்பதிவு விதிகள், வயது வரம்புகள், பாதி கட்டணம் மற்றும் முழு கட்டணம், மற்றும் படி-by-படி IRCTC முன்பதிவு வழிமுறைகள் பற்றிய முழுமையான வழிகாட்டி."
+title: "Child Train Ticket Rules 2026: Free Under 5, Half Fare"
+description: "Do kids need a train ticket? Under 5 travel free; ages 5–11 pay half fare without a berth, full fare with one. IRCTC child ticket rules, fares & how to book."
 date: "2026-06-21"
-updated: "2026-06-21"
+updated: "2026-07-09"
 tags:
   - ரயில் முன்பதிவு
   - irctc

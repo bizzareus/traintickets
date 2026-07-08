@@ -1,8 +1,8 @@
 ---
-title: "Acceptable ID Proofs for Train Travel: IRCTC Rules"
-description: "What ID cards are allowed for train travel in India? Read the official list of 10 acceptable ID proofs, digital ID rules, and TTE verification guidelines."
+title: "Which ID Proofs Are Valid for Train Travel? (2026)"
+description: "Is your Aadhaar or driving licence valid to board a train? See every accepted ID proof — and whether a digital ID on DigiLocker or mParivahan works with the TTE."
 date: "2026-06-27"
-updated: "2026-06-27"
+updated: "2026-07-09"
 tags:
   - train travel
   - irctc rules

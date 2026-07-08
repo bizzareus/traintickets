@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Ticket Booking Failed But Money Deducted: Refund Rules & Timelines"
+title: "IRCTC Booking Failed, Money Deducted? Refund Timeline"
 description: "Did your IRCTC ticket booking fail but the money was deducted from your bank? Learn the exact refund timelines for UPI, cards, net banking, and how to track it."
 date: "2026-07-05"
-updated: "2026-07-05"
+updated: "2026-07-09"
 tags:
   - irctc refund
   - failed booking

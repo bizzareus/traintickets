@@ -1,8 +1,8 @@
 ---
-title: "IRCTC పిల్లల టికెట్ బుకింగ్ నియమాలు: ధరలు & వయస్సు పరిమితులు"
-description: "భారతీయ రైల్వే పిల్లల టికెట్ బుకింగ్ నియమాలు, వయస్సు పరిమితులు, అర్ధ ధర మరియు పూర్తి ధర, మరియు దశల వారీగా IRCTC బుకింగ్ సూచనలు."
+title: "Child Train Ticket Rules 2026: Free Under 5, Half Fare"
+description: "Do kids need a train ticket? Under 5 travel free; ages 5–11 pay half fare without a berth, full fare with one. IRCTC child ticket rules, fares & how to book."
 date: "2026-06-21"
-updated: "2026-06-21"
+updated: "2026-07-09"
 tags:
   - ట్రైన్ బుకింగ్
   - irctc

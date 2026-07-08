@@ -1,8 +1,8 @@
 ---
-title: "IRCTC കുട്ടി ടിക്കറ്റ് ബുക്കിംഗ് നിയമങ്ങൾ: നിരക്കുകളും പ്രായ പരിധികളും"
-description: "ഇന്ത്യൻ റെയിൽവേസ് കുട്ടി ടിക്കറ്റ് ബുക്കിംഗ് നിയമങ്ങൾ, പ്രായ പരിധികൾ, അർധ നിരക്ക് എതിരെ മുഴുവൻ നിരക്ക്, IRCTC ബുക്കിംഗ് നിർദ്ദേശങ്ങൾ എന്നിവയുടെ സമ്പൂർണ്ണ ഗൈഡ്."
+title: "Child Train Ticket Rules 2026: Free Under 5, Half Fare"
+description: "Do kids need a train ticket? Under 5 travel free; ages 5–11 pay half fare without a berth, full fare with one. IRCTC child ticket rules, fares & how to book."
 date: "2026-06-21"
-updated: "2026-06-21"
+updated: "2026-07-09"
 tags:
   - ട്രെയിൻ ബുക്കിംഗ്
   - ഐആർസിടിസി

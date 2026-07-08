@@ -2,7 +2,7 @@
 title: "IRCTC অটো আপগ্রেডেশন: আপনি কি বিনামূল্যে আপগ্রেড পাবেন?"
 description: "আপনার কি 'Consider for Auto Upgradation' টিক করা উচিত? দেখুন IRCTC-র বিনামূল্যে Sleeper→3AC আপগ্রেড কীভাবে কাজ করে, কে যোগ্য, এবং আপনার সম্ভাবনা কীভাবে বাড়াবেন।"
 date: "2026-06-16"
-updated: "2026-07-06"
+updated: "2026-07-09"
 tags:
   - irctc auto upgradation
   - free train upgrade
@@ -10,6 +10,8 @@ tags:
   - indian railways
   - coach upgrade
 ---
+
+> **আপনার টিকিট কি আপগ্রেড হয়েছে?** [Smart Seats](/) দিয়ে আপনার লাইভ PNR স্ট্যাটাস চেক করুন, এবং [Chart Vacancy](/chart-vacancy) ব্যবহার করে সেই খালি উচ্চ-ক্লাস বার্থগুলি দেখুন যেগুলিতে সিস্টেম চার্ট প্রস্তুতির পরে নিশ্চিত যাত্রীদের আপগ্রেড করে।
 
 ## TL;DR
 

@@ -2,7 +2,7 @@
 title: "IRCTC Auto Upgradation: Will You Get a Free Upgrade?"
 description: "Should you tick 'Consider for Auto Upgradation'? See how IRCTC's free Sleeper→3AC upgrade works, who's eligible, and how to boost your odds of getting one."
 date: "2026-06-16"
-updated: "2026-07-06"
+updated: "2026-07-09"
 tags:
   - irctc auto upgradation
   - free train upgrade
@@ -10,6 +10,8 @@ tags:
   - indian railways
   - coach upgrade
 ---
+
+> **Did your ticket get upgraded?** Check your live PNR status with [Smart Seats](/), and use [Chart Vacancy](/chart-vacancy) to see the empty higher-class berths the system upgrades confirmed passengers into after chart preparation.
 
 ## TL;DR
 

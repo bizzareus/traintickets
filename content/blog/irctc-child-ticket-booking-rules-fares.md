@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Child Ticket Booking Rules: Fares & Age Limits"
-description: "Complete guide to Indian Railways child ticket booking rules, age limits, half fare vs full fare, and step-by-step IRCTC booking instructions."
+title: "Child Train Ticket Rules 2026: Free Under 5, Half Fare"
+description: "Do kids need a train ticket? Under 5 travel free; ages 5–11 pay half fare without a berth, full fare with one. IRCTC child ticket rules, fares & how to book."
 date: "2026-06-21"
-updated: "2026-06-21"
+updated: "2026-07-09"
 tags:
   - train booking
   - irctc
