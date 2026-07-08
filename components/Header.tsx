@@ -29,13 +29,10 @@ export function Header({
 } = {}) {
   const homeHref = lang && lang !== "en" ? `/${lang}` : "/";
 
-  // Chart Vacancy, PNR Status, Chart Times and Food Menu were moved to the
-  // footer (Chart Times / Food Menu as train-link columns), so the top nav stays
-  // lean: just the home tabs and the blog.
-  const links: NavLink[] = [
-    { href: homeHref, label: nav.confirmed },
-    { href: "/blog", label: nav.blog },
-  ];
+  // Chart Vacancy, PNR Status, Chart Times and Food Menu live in the footer now
+  // (Chart Times / Food Menu as train-link columns). The logo already links home,
+  // so the top nav is just the blog.
+  const links: NavLink[] = [{ href: "/blog", label: nav.blog }];
 
   return (
     <div className="sticky top-0 z-20">
