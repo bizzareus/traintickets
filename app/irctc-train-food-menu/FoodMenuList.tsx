@@ -46,7 +46,9 @@ export function FoodMenuList({ rows }: { rows: TrainFoodMenuIndexRow[] }) {
             >
               <span className="min-w-0">
                 <span className="block truncate font-semibold text-slate-900">
-                  {r.route ? `${r.route} ${r.trainName}` : r.trainName}
+                  {r.route && !r.trainName.includes(" - ")
+                    ? `${r.route} ${r.trainName}`
+                    : r.trainName}
                 </span>
               </span>
               <span className="shrink-0 rounded-md bg-blue-50 px-2 py-1 text-xs font-bold text-blue-700">
