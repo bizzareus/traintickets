@@ -1,8 +1,8 @@
 ---
-title: "Tejas Express Timings, Routes, Fares & Booking Rules"
-description: "A complete guide to booking Tejas Express tickets. Learn about booking timings, ticket fares, route lists, IRCTC refund policy, and seat layouts."
+title: "Tejas Express: India's Private Train — Fares & Booking"
+description: "Tejas Express is India's first IRCTC-run 'private' train, with dynamic fares and no Tatkal or concession quota. Full guide to timings, routes, fares, and booking rules."
 date: "2026-07-02"
-updated: "2026-07-02"
+updated: "2026-07-09"
 tags:
   - train booking
   - irctc

@@ -1,8 +1,8 @@
 ---
-title: "How to Link PNR for Connecting Train on IRCTC: Complete Booking Guide"
-description: "Learn how to book connecting journey tickets on IRCTC, link two PNRs, understand connecting journey booking rules, and claim refunds if you miss your connection due to train delays."
+title: "Connecting Train on IRCTC: Link PNR & Refund If You Miss It"
+description: "Booking two trains for one trip? Learn how to link PNRs for a connecting journey on IRCTC, the minimum layover to keep, and whether you get a refund if a delay makes you miss the connection."
 date: "2026-05-30"
-updated: "2026-07-05"
+updated: "2026-07-09"
 tags:
   - connecting trains
   - train booking

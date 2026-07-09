@@ -1,8 +1,8 @@
 ---
-title: "How to Book Train Tickets in India for Foreigners: The Ultimate Guide"
-description: "Wondering how to book train tickets in India as a foreign tourist? Learn how to register on IRCTC, use the Foreign Tourist Quota, and avoid payment failures."
+title: "How Foreigners Book Indian Train Tickets: IRCTC & FTQ"
+description: "Can foreign tourists book Indian train tickets? Yes — learn how to register on IRCTC without an Indian mobile number, use the Foreign Tourist Quota (FTQ), and avoid payment failures."
 date: "2026-06-17"
-updated: "2026-07-05"
+updated: "2026-07-09"
 tags:
   - foreign tourist booking
   - irctc registration
