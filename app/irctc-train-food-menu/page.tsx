@@ -6,14 +6,17 @@ import { FoodMenuList } from "./FoodMenuList";
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
 export const metadata: Metadata = {
-  title: "IRCTC Train Food Menu & Prices (Vande Bharat)",
+  // CTR-focused title: leads with the ranking keyword ("IRCTC Train Food Menu
+  // & Prices", pos ~7 on 2k+ impressions) then a question hook that matches the
+  // page's top FAQ. Kept short so it survives the "%s | LastBerth" template.
+  title: "IRCTC Train Food Menu & Prices: Is Food Free?",
   description:
-    "Readable IRCTC train food menus and catering prices, organised by class and meal. Browse Vande Bharat train menus with breakfast, lunch/dinner and snack charges — no PDFs.",
+    "Is food free on Vande Bharat trains? See what's included and exact IRCTC catering prices by class and meal — breakfast ~₹120, lunch/dinner ~₹220. No PDFs.",
   alternates: { canonical: "/irctc-train-food-menu" },
   openGraph: {
-    title: "IRCTC Train Food Menu & Prices (Vande Bharat) | LastBerth",
+    title: "IRCTC Train Food Menu & Prices: Is Food Free? | LastBerth",
     description:
-      "Readable IRCTC train food menus and catering prices, organised by class and meal.",
+      "Is food free on Vande Bharat trains? What's included, plus exact IRCTC catering prices by class and meal — breakfast ~₹120, lunch/dinner ~₹220.",
     url: "/irctc-train-food-menu",
   },
 };
