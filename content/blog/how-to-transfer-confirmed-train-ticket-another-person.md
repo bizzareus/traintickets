@@ -1,8 +1,8 @@
 ---
-title: "How to Transfer a Confirmed Train Ticket to Another Person: Official IRCTC Rules and Process"
-description: "Can you transfer a confirmed train ticket to a family member or friend? Read the official Indian Railways rules, step-by-step counter process, required documents, and timeline limits."
+title: "Can You Transfer a Confirmed Train Ticket? IRCTC Rules"
+description: "Yes — you can transfer a confirmed train ticket to a parent, child, or spouse. Here's the exact counter process, who's eligible, the documents needed, and the 24-hour deadline."
 date: "2026-06-13"
-updated: "2026-06-13"
+updated: "2026-07-10"
 tags:
   - ticket transfer
   - irctc rules

@@ -1,8 +1,8 @@
 ---
-title: "The Complete Guide to IRCTC Quotas: Securing Lower Berths for Seniors, Ladies, and Divyangjan Travelers"
-description: "Struggling to secure a lower berth for elderly parents or relatives on Indian Railways? Learn how IRCTC's special quotas, concessions, and card registration work, with pro hacks to ensure a comfortable journey."
+title: "Lower Berth Quota for Seniors: How to Book It in 2026"
+description: "How to get a lower berth for elderly parents on Indian Railways: how the senior citizen, ladies (LD) and Divyangjan quotas work, the companion-rule trap, and 3 hacks when they're sold out."
 date: "2026-06-02"
-updated: "2026-06-11"
+updated: "2026-07-10"
 tags:
   - irctc quotas
   - senior citizen booking
