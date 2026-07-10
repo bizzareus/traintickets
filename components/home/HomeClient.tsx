@@ -178,11 +178,23 @@ function useDebounced<T>(value: T, ms: number): T {
 }
 
 function extractAxiosMessage(e: unknown): string {
-  if (e && typeof e === "object" && "response" in e) {
+  if (e && typeof e === "object") {
     const ax = e as {
+      isAxiosError?: boolean;
       response?: { status?: number; data?: { message?: string | string[] } };
+      code?: string;
       message?: string;
     };
+    // Connection-level failure: no HTTP response ever arrived (axios doesn't
+    // even set `response` then), and lib/api.ts already retried. That's the
+    // device failing to reach the server — almost always the user's own
+    // connection — so say that instead of axios's alarming bare "Network Error".
+    if (ax.isAxiosError && !ax.response) {
+      if (ax.code === "ECONNABORTED" || ax.code === "ETIMEDOUT") {
+        return "The connection timed out. Check your internet and try again.";
+      }
+      return "You appear to be offline. Check your internet connection and try again.";
+    }
     const d = ax.response?.data?.message;
     if (Array.isArray(d)) return d.join(", ");
     if (typeof d === "string" && d.trim()) return d;
