@@ -2,7 +2,7 @@
 title: "How to Travel with a Dog in Indian Trains: Pet Booking Rules"
 description: "Want to travel with a dog or cat on Indian Railways? Learn the official pet booking rules, 1AC coupe requirements, veterinary certificate steps, and fees."
 date: "2026-06-17"
-updated: "2026-07-05"
+updated: "2026-07-10"
 tags:
   - pet travel
   - dog booking
@@ -94,6 +94,61 @@ Make sure your veterinary certificate clearly states:
 - Detailed records of recent vaccinations, especially the rabies shot.
 
 Keep both the original certificate and a couple of photocopies handy, as the station office will keep a copy for their records.
+
+---
+
+## Can You Book Pet Travel Online on IRCTC?
+
+**No. You cannot add a pet while booking your passenger ticket on IRCTC, and the dog box in the luggage van is a counter-only process handled at the parcel/luggage office of your originating station, usually about 3 hours before departure. The only online route is the separate 1AC pet utility, which opens only after the first chart is prepared.**
+
+The ticket and the pet are two completely different transactions. Here is how it actually works:
+
+- **Dog box (luggage/brake van):** Strictly offline. You must visit the parcel/luggage office in person, present your confirmed ticket and vet certificate, and pay at the counter roughly 3 hours before the train leaves.
+- **1AC / First Class (whole coupe or cabin):** The only situation where an online step exists. After you have booked out the full coupe or cabin, you can register the pet through the IRCTC Dogs/Cats utility (which redirects to the Parcel Management System) once the first chart is ready.
+- **Normal booking flow:** There is no "add a pet" checkbox during regular online ticket booking. Do not expect to tick a box and bring your dog.
+
+Before you rely on the 1AC online option, confirm your coupe is fully yours—check the whole cabin is under one PNR via [Smart Seats](/).
+
+---
+
+## Can You Carry a Small Dog or Cat in a Basket in the Coach?
+
+**No. There is no exception for small pets, puppies, kittens, or baskets—the class rules apply regardless of size or breed. A cat is treated exactly like a dog. Unless you have booked the entire 1AC or First Class coupe or cabin, the animal must travel in the luggage van's dog box, not in the coach.**
+
+It is a common myth that a "small" pet tucked into a carry basket is fine in 2A, 3A, or Sleeper. It is not.
+
+- Size, weight, and breed make no difference to the rule.
+- A basket, sling, or handbag does not exempt you—if a co-passenger objects or the TTE notices, the pet is moved to the luggage van at the next stop.
+- Cats, small-breed dogs, and puppies all follow the identical class policy.
+- The only legal way to keep any pet inside the coach is a fully booked 1AC/FC coupe or cabin.
+
+---
+
+## How Much Does It Cost to Take a Dog on a Train?
+
+**Pet charges are calculated on the luggage/scale rate, based on your pet's weight and the distance travelled—there is no flat "pet fare." The dog box in the luggage van is billed on a minimum 30 kg basis, while an accompanied pet in 1AC is billed on a higher 60 kg basis. Typical charges range from about ₹200 to ₹1,200 depending on distance.**
+
+| Option | Charged on | Minimum weight basis | Typical charge (by distance) |
+| :--- | :--- | :--- | :--- |
+| **Dog box (SLR / luggage van)** | Luggage scale rate by weight × distance | ~30 kg | ~₹200 short-haul, up to ~₹700 medium-haul |
+| **1AC / First Class (whole coupe/cabin)** | Luggage scale rate by weight × distance | ~60 kg | up to ~₹1,200 for long-distance journeys |
+
+Because the fee is weight-and-distance based rather than fixed, always confirm the exact amount at the parcel office when you book—heavier pets and longer routes cost more.
+
+---
+
+## Do Vande Bharat, Rajdhani & Shatabdi Trains Allow Pets?
+
+**Vande Bharat and Shatabdi are chair-car day trains with no 1AC coupe and no luggage/brake van, so accompanied pet travel is effectively not possible on them. Rajdhani does have AC First Class, so a pet can travel only if you book the entire 1AC coupe or cabin—Rajdhani carries no dog box in the SLR.**
+
+| Train type | 1AC coupe/cabin? | Dog box in SLR? | Pet travel possible? |
+| :--- | :--- | :--- | :--- |
+| **Vande Bharat** | No | No | No |
+| **Shatabdi** | No | No | No |
+| **Rajdhani** | Yes | No | Only in a fully booked 1AC coupe/cabin |
+| **Mail / Express** | Yes (most) | Yes | 1AC whole coupe, or the dog box |
+
+If your pet must travel, choose a Mail/Express train that has either AC First Class or a luggage van with a dog box. Premium chair-car services like Vande Bharat and most Shatabdi routes are simply not built for pet travel.
 
 ---
 
