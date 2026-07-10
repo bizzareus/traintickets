@@ -6,7 +6,10 @@ import { dishVisual } from "@/lib/foodEmoji";
 
 /** Items that are accompaniments, not dishes — hidden from the visual menu. */
 const NON_FOOD = /napkin|sanitizer|tissue|tray ?mat|hand /i;
-const NON_VEG = /egg|omelette|omlette|chicken|fish|mutton|prawn|kheema|keema/i;
+// `egg(?!less)` so "Egg Bhurji"/"Omelette of 2 Eggs" flag non-veg but an
+// "Eggless" cake/muffin does not.
+const NON_VEG =
+  /egg(?!less)|omelette|omlette|chicken|fish|mutton|prawn|kheema|keema/i;
 
 function VegMark({ nonVeg }: { nonVeg: boolean }) {
   return (
@@ -160,15 +163,25 @@ export function FoodOrderingMenu({ menu }: { menu: TrainFoodMenu }) {
         <div className="space-y-8">
           {sections.map((s) => (
             <section key={s.service} id={`cat-${slugify(s.service)}`} className="scroll-mt-28">
-              <h2 className="mb-3 border-b border-slate-100 pb-2 text-lg font-bold text-slate-900">
-                {s.service}
-              </h2>
+              {/* One priced set meal. The price is the per-meal (set) charge —
+                  shown once here, NOT on each item (items are what the meal
+                  includes / the options you choose between). */}
+              <div className="mb-3 flex items-baseline justify-between gap-3 border-b border-slate-100 pb-2">
+                <h2 className="text-lg font-bold text-slate-900">{s.service}</h2>
+                {s.price != null && (
+                  <span className="shrink-0 whitespace-nowrap rounded-full bg-emerald-50 px-3 py-1 text-base font-extrabold text-emerald-700">
+                    ₹{s.price}
+                    <span className="ml-1 text-xs font-semibold text-emerald-600/80">
+                      per meal
+                    </span>
+                  </span>
+                )}
+              </div>
 
               <ul className="divide-y divide-slate-100">
                 {s.items.map((it, i) => {
                   const nonVeg = NON_VEG.test(it.item) || NON_VEG.test(it.description);
                   const v = dishVisual(`${it.item} ${it.description}`);
-                  const price = s.price;
                   return (
                     <li key={`${it.item}-${i}`} className="flex gap-3 py-3.5">
                       <div className="min-w-0 flex-1">
@@ -178,11 +191,6 @@ export function FoodOrderingMenu({ menu }: { menu: TrainFoodMenu }) {
                             {it.item}
                           </h3>
                         </div>
-                        {price != null && (
-                          <p className="mt-1 text-xl font-extrabold text-emerald-700">
-                            ₹{price}
-                          </p>
-                        )}
                         <p className="mt-1 text-sm leading-relaxed text-slate-500">
                           {it.description}
                         </p>
@@ -203,9 +211,10 @@ export function FoodOrderingMenu({ menu }: { menu: TrainFoodMenu }) {
       )}
 
       <p className="mt-8 rounded-lg bg-slate-50 p-3 text-xs text-slate-500">
-        Dish images are illustrative. The price shown is the meal/set price
-        (charged per meal, not per dish). Menu is served on a cyclic basis and
-        may change.
+        Each price is for the complete meal set (charged per meal, not per
+        dish). Where both a veg and non-veg option are listed you choose one;
+        the remaining items are included. Dish images are illustrative and the
+        menu is served on a cyclic basis, so it may change.
       </p>
     </div>
   );
