@@ -130,6 +130,13 @@ type CachedBestTrainResponse =
   | { cached: true; cachedAt: string; best: CachedBestTrain }
   | { cached: false };
 
+/**
+ * Cap the best-train scan at the first N listed trains. Each candidate fans out
+ * an expensive per-segment availability scan, so we only send the top few to the
+ * backend rather than the entire (often 30–60 train) search result.
+ */
+const BEST_TRAIN_SCAN_LIMIT = 10;
+
 
 /** Regret / sold-out style: orange → red gradient text. */
 function chipGeneralStatusClass(status: string): string | undefined {
@@ -729,6 +736,10 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setBestTrainResult(null);
     setBestTrainProgress([]);
 
+    // Only scan the top few listed trains — sending all 30–60 makes the backend
+    // fan out an availability probe per train and blows up the scan time/cost.
+    const scanTrains = trains.slice(0, BEST_TRAIN_SCAN_LIMIT);
+
     trackAnalyticsEvent({
       name: "best_train_search_clicked",
       properties: {
@@ -737,6 +748,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         journey_date: journeyDate,
         ac_only: acOnly,
         train_count: trains.length,
+        scanned_count: scanTrains.length,
       },
     });
 
@@ -752,8 +764,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             date: journeyDate,
             quota: "GN",
             acOnly,
-            maxTrains: trains.length,
-            trains,
+            maxTrains: scanTrains.length,
+            trains: scanTrains,
           }),
         },
       );

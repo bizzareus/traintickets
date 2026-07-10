@@ -164,7 +164,10 @@ export type AnalyticsEvent =
         to_code: string;
         journey_date: string;
         ac_only: boolean;
+        /** Total trains in the search result the user is scanning from. */
         train_count: number;
+        /** How many of those we actually sent to the backend to scan (capped). */
+        scanned_count: number;
       };
     }
   | {
