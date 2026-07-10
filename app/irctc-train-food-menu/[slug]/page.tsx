@@ -36,7 +36,12 @@ function allPrices(menu: TrainFoodMenu): number[] {
 }
 
 function title(menu: TrainFoodMenu): string {
-  return `${menu.trainName} (${menu.trainNumberPair}) Food Menu & Prices | IRCTC Catering`;
+  // These are all Vande Bharat trains, so the "What's Included?" hook applies
+  // universally. Train name leads (the query users type); the hook truncates
+  // gracefully on long names. Dropped the old "| IRCTC Catering" suffix — the
+  // root layout already appends "| LastBerth", so it was double-branded and
+  // ran well past the SERP length limit. The number pair stays in keywords/desc.
+  return `${menu.trainName} Food Menu & Price: What's Included?`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

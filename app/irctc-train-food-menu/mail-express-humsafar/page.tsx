@@ -10,13 +10,15 @@ import { dishVisual } from "@/lib/foodEmoji";
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
 export const metadata: Metadata = {
-  title: "Mail, Express & Humsafar Train Food Menu & Prices (IRCTC)",
+  // CTR title (≤48 ch before the "%s | LastBerth" template): keyword + a
+  // value hook. Old title was 57 ch and truncated badly with the brand suffix.
+  // "Humsafar" stays in the description/keywords rather than the title.
+  title: "Mail & Express Train Food Menu: Full Price List",
   description:
     "Official IRCTC catering charges on Mail, Express and Humsafar trains: breakfast, meals (veg, egg, chicken biryani), tea, coffee, Rail Neer water and the full à la carte tariff. At-station vs in-train rates, inclusive of taxes.",
   alternates: { canonical: "/irctc-train-food-menu/mail-express-humsafar" },
   openGraph: {
-    title:
-      "Mail, Express & Humsafar Train Food Menu & Prices (IRCTC) | LastBerth",
+    title: "Mail & Express Train Food Menu: Full Price List | LastBerth",
     description:
       "Official IRCTC catering charges on Mail, Express and Humsafar trains: breakfast, meals, beverages and the full à la carte tariff.",
     url: "/irctc-train-food-menu/mail-express-humsafar",

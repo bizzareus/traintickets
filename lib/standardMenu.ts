@@ -41,6 +41,10 @@ export const STANDARD_MENU_PAGES = [
     classGroupName: "AC First Class & Executive Chair Car",
     covers: "Rajdhani and premium trains, First AC (1A) and Executive Chair Car (EC)",
     heading: "Rajdhani (1AC & Executive Chair Car) Food Menu",
+    // CTR title (≤48 ch so it survives "%s | LastBerth"): keyword + question
+    // hook. Rajdhani catering is bundled into the fare, so "What's Included?"
+    // is both a hook and truthful to the page.
+    metaTitle: "Rajdhani Food Menu & Price: What's Included?",
   },
   {
     slug: "ac-2a-3a-cc",
@@ -48,6 +52,7 @@ export const STANDARD_MENU_PAGES = [
     classGroupName: "AC 2-Tier, 3-Tier & Chair Car",
     covers: "Rajdhani, Shatabdi and AC Mail/Express, in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
     heading: "AC 2A / 3A / Chair Car Food Menu",
+    metaTitle: "AC 2A/3A/Chair Car Food Menu & Meal Prices",
   },
   {
     slug: "duronto-sleeper",
@@ -55,6 +60,7 @@ export const STANDARD_MENU_PAGES = [
     classGroupName: "Duronto Sleeper Class",
     covers: "Duronto Express trains, sleeper class",
     heading: "Duronto Sleeper Class Food Menu",
+    metaTitle: "Duronto Food Menu & Price: What's Included?",
   },
 ] as const;
 
@@ -132,7 +138,7 @@ export function standardMenuMetadata(slug: string): Metadata {
     min != null ? `, starting at ₹${min}` : ""
   }, inclusive of taxes.`;
   return {
-    title: `${cfg.heading} & Prices (IRCTC)`,
+    title: cfg.metaTitle,
     description,
     keywords: [
       `${cfg.classGroupName} food menu`,
@@ -142,6 +148,6 @@ export function standardMenuMetadata(slug: string): Metadata {
       `train meal price ${cfg.classGroup}`,
     ],
     alternates: { canonical: `/irctc-train-food-menu/${cfg.slug}` },
-    openGraph: { title: `${cfg.heading} & Prices (IRCTC)`, description },
+    openGraph: { title: cfg.metaTitle, description },
   };
 }
