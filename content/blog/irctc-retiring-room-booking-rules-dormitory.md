@@ -2,7 +2,7 @@
 title: "IRCTC Retiring Room: Book a Cheap Station Room With Your PNR"
 description: "How to book an IRCTC retiring room or dormitory online using your PNR: who is eligible, current rates, the booking window, and check-in rules for 2026."
 date: "2026-06-18"
-updated: "2026-07-06"
+updated: "2026-07-10"
 tags:
   - retiring room
   - irctc booking
@@ -65,15 +65,15 @@ Here is a comparison of room types and availability:
 
 ## What Are the Cancellation and Refund Rules for IRCTC Retiring Rooms?
 
-**Retiring room cancellations are subject to deduction charges based on when you cancel. Cancelling more than 48 hours before check-in incurs a 10% deduction. Cancellations within 24 hours of check-in, or failure to check in, result in a 100% deduction with no refund.**
+**Retiring room cancellation charges depend on how far ahead you cancel, counted in days before the day of occupation. Cancelling 2 or more days in advance deducts 20% of the tariff; cancelling 1 day in advance deducts 50%; and cancelling on the same day of occupation (or a no-show) gets no refund.**
 
 Plans change, and knowing how refunds work is essential. Because there is a high demand for station rooms, cancellation policies are strictly enforced. Refunds are processed back to the original payment source account within 7 to 10 working days.
 
 Here is the exact deduction schedule for cancellations:
 
-- **More than 48 hours before check-in:** 10% of the room tariff is deducted.
-- **Between 24 to 48 hours before check-in:** 50% of the room tariff is deducted.
-- **Less than 24 hours before check-in:** 100% deduction (no refund is given).
+- **2 or more days before the day of occupation:** 20% of the room tariff is deducted.
+- **1 day before the day of occupation:** 50% of the room tariff is deducted.
+- **Same day of occupation (or no-show):** No refund is given.
 - **In case of train cancellation:** If the train is cancelled by the railway administration, a full refund of the retiring room booking amount is credited automatically without any cancellation charge.
 
 ---
