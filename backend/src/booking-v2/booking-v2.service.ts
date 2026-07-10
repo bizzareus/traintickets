@@ -504,7 +504,16 @@ export class BookingV2Service {
     const q = (searchString || '').trim();
 
     // DB-first: station_cache is the seeded source of truth for autocomplete.
-    const cached = await this.stationCache.search(q);
+    // A DB blip must not 500 the autocomplete — fall through to the RapidAPI
+    // fallback (which returns [] on its own failure) instead of throwing.
+    let cached: Awaited<ReturnType<StationCacheService['search']>> = [];
+    try {
+      cached = await this.stationCache.search(q);
+    } catch (err) {
+      this.logger.warn(
+        `[booking-v2/stations] cache search failed q=${q.slice(0, 40)}: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
     if (cached.length > 0) {
       this.logger.log(
         `[booking-v2/stations] source=cache q=${q.slice(0, 40)} count=${cached.length}`,

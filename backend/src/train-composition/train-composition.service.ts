@@ -244,10 +244,23 @@ export class TrainCompositionService {
       isLive: false,
     };
 
-    let cached = await this.chartTime.getChartMetaForTrainStation(
-      trainNumber,
-      stationCode,
-    );
+    // This read hydrates from IRCTC when the DB has no rows yet, so it can throw
+    // on IRCTC flakiness (NGHTTP2 stream resets etc.). Never let that 500 the
+    // endpoint: degrade to the empty (chart-pending) row instead of "unable to
+    // contact rail systems". The refresh block below still tries once more.
+    let cached: Awaited<
+      ReturnType<ChartTimeService['getChartMetaForTrainStation']>
+    > = null;
+    try {
+      cached = await this.chartTime.getChartMetaForTrainStation(
+        trainNumber,
+        stationCode,
+      );
+    } catch (err) {
+      this.logger.warn(
+        `[trainComposition] chart-meta read failed for ${trainNumber} at ${stationCode}: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
 
     const needsRefresh =
       params.refreshFromIrctc ||

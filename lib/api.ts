@@ -47,6 +47,31 @@ export function getAuthHeaders(): Record<string, string> {
 export const apiClient = axios.create({
   baseURL: API_URL,
   headers: { "Content-Type": "application/json" },
+  // Default per-request timeout so a hung request aborts (and can be retried)
+  // instead of hanging until the user gives up. Calls that legitimately need
+  // longer (e.g. live scans) pass their own `timeout`, which overrides this.
+  timeout: 20_000,
+});
+
+// The autocomplete (and most GETs) fired a single request with no resilience,
+// so a transient network drop (weak mobile signal) or a brief backend blip
+// surfaced as a hard "Network Error" with no retry. Retry idempotent (GET)
+// requests on network errors / timeouts / 5xx so those hiccups recover
+// silently. Non-idempotent methods are never retried (no double-submit).
+axiosRetry(apiClient, {
+  retries: 2,
+  shouldResetTimeout: true,
+  retryDelay: axiosRetry.exponentialDelay,
+  retryCondition: (error: AxiosError) => {
+    const method = (error.config?.method ?? "get").toLowerCase();
+    const idempotent =
+      method === "get" || method === "head" || method === "options";
+    if (!idempotent) return false;
+    if (axiosRetry.isNetworkError(error)) return true;
+    if (error.code === "ECONNABORTED") return true;
+    const status = error.response?.status;
+    return status != null && (status >= 500 || status === 408 || status === 429);
+  },
 });
 
 apiClient.interceptors.request.use((config) => {
