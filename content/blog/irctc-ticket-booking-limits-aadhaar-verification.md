@@ -2,7 +2,7 @@
 title: "IRCTC Limit: 12 Tickets/Month, 24 With Aadhaar — 2026 Rules"
 description: "IRCTC lets you book 12 tickets a month, or 24 with Aadhaar verification. Full breakdown of the monthly, per-day, per-booking and Tatkal limits for 2026."
 date: "2026-06-22"
-updated: "2026-07-06"
+updated: "2026-07-10"
 tags:
   - train booking
   - irctc
@@ -75,7 +75,7 @@ This prioritization helps genuine travellers book tickets successfully before se
 
 ## Why is Aadhaar OTP Verification Mandatory for Tatkal Bookings?
 
-**Starting July 15, 2026, IRCTC has implemented mandatory Aadhaar-based OTP verification for online Tatkal ticket bookings. This security measure requires passengers to authenticate their identity using an OTP sent to their Aadhaar-linked mobile number to check bots and ensure fair ticket access.**
+**Starting July 15, 2025, IRCTC has implemented mandatory Aadhaar-based OTP verification for online Tatkal ticket bookings. This security measure requires passengers to authenticate their identity using an OTP sent to their Aadhaar-linked mobile number to check bots and ensure fair ticket access.**
 
 ### How Aadhaar OTP Verification Works
 During the peak Tatkal booking window (10:00 AM for AC and 11:00 AM for non-AC), the IRCTC system prompts users for Aadhaar OTP verification. This happens either at the time of login or during the passenger detail entry phase of the Tatkal flow. Once the passenger's details are retrieved from the Master List or entered, an OTP is triggered to the Aadhaar-registered mobile number, which must be entered within a limited window to complete the transaction.
@@ -101,7 +101,7 @@ If you are struggling to find open seats for a group, LastBerth's **Finding Smar
 Here are the most common questions about how many tickets you can book on IRCTC.
 
 ### Is Aadhaar OTP verification mandatory for Tatkal bookings?
-Yes. Starting July 15, 2026, IRCTC requires Aadhaar OTP verification for all online Tatkal and Premium Tatkal bookings. Unverified profiles or users who fail to complete OTP authentication cannot book Tatkal tickets during peak hours.
+Yes. Starting July 15, 2025, IRCTC requires Aadhaar OTP verification for all online Tatkal and Premium Tatkal bookings. Unverified profiles or users who fail to complete OTP authentication cannot book Tatkal tickets during peak hours.
 
 ### How many tickets can be booked in IRCTC in a month?
 Up to 12 tickets per calendar month on a normal IRCTC account, or 24 tickets if your account is Aadhaar-linked and at least one passenger on each ticket beyond the first 12 is Aadhaar-verified.
