@@ -24,6 +24,7 @@ import { BookingV2Module } from './booking-v2/booking-v2.module';
 import { CacheModule } from './cache/cache.module';
 import { WhatsappModule } from './whatsapp/whatsapp.module';
 import { RedditAutomationModule } from './reddit-automation/reddit-automation.module';
+import { McpModule } from './mcp/mcp.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { RedditAutomationModule } from './reddit-automation/reddit-automation.mo
     BookingV2Module,
     WhatsappModule,
     RedditAutomationModule,
+    McpModule,
   ],
   controllers: [AppController],
   providers: [
