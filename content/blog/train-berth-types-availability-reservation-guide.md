@@ -2,7 +2,7 @@
 title: "Train Berths in India: Types, Availability, and How Berth Reservation Actually Works"
 description: "Everything you need to know about train berths — from Lower Berth vs Side Upper comfort differences, class-wise coach layouts, to how IRCTC's berth allocation algorithm decides who sleeps where. Practical tips to check berth availability and secure your preferred berth."
 date: "2026-06-11"
-updated: "2026-07-05"
+updated: "2026-07-11"
 tags:
   - train berth
   - berth availability
@@ -187,7 +187,7 @@ You can check seat status without logging in. Just put in your train number and 
 
 ### Method 3: After Chart Preparation
 
-Once the chart is prepared (usually 4 hours before departure), the picture changes entirely. Berths that were held under quotas get released. Passengers who did not pay or whose WL tickets got auto-cancelled free up space. To check availability at this stage, see the detailed [post-chart vacancy guide](/blog/how-to-check-vacant-berths-after-chart-preparation).
+Once the chart is prepared (usually 10 hours before departure), the picture changes entirely. Berths that were held under quotas get released. Passengers who did not pay or whose WL tickets got auto-cancelled free up space. To check availability at this stage, see the detailed [post-chart vacancy guide](/blog/how-to-check-vacant-berths-after-chart-preparation).
 
 ---
 

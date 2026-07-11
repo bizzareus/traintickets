@@ -2,7 +2,7 @@
 title: "Tejas Express: India's Private Train — Fares & Booking"
 description: "Tejas Express is India's first IRCTC-run 'private' train, with dynamic fares and no Tatkal or concession quota. Full guide to timings, routes, fares, and booking rules."
 date: "2026-07-02"
-updated: "2026-07-09"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
@@ -53,12 +53,12 @@ These seats are offered as **current available tickets** on the IRCTC app or web
 
 **For corporate Tejas Express trains, a full refund is granted if you cancel a waitlisted e-ticket, but confirmed ticket cancellations are subject to a sliding scale of charges depending on the cancellation time.**
 
-Under the **April 2026 revised refund rules**, confirmed ticket cancellation charges are strictly determined by how far in advance the cancellation is made prior to the scheduled departure:
+Under Indian Railways' refund rules, confirmed ticket cancellation charges are strictly determined by how far in advance the cancellation is made prior to the scheduled departure:
 
-- **More than 72 hours:** You pay only a flat cancellation charge of ₹240 for Executive Class (EC) and ₹180 for AC Chair Car (CC) (plus GST).
-- **Between 72 hours and 24 hours:** A penalty of **25% of the ticket fare** (or the flat charge, whichever is higher) is deducted.
-- **Between 24 hours and 8 hours:** A penalty of **50% of the ticket fare** (or the flat charge, whichever is higher) is deducted.
-- **Less than 8 hours:** No refund is permitted.
+- **More than 48 hours:** You pay only a flat cancellation charge of ₹240 for Executive Class (EC) and ₹180 for AC Chair Car (CC) (plus GST).
+- **Between 48 hours and 12 hours:** A penalty of **25% of the ticket fare** (or the flat charge, whichever is higher) is deducted.
+- **Between 12 hours and 4 hours:** A penalty of **50% of the ticket fare** (or the flat charge, whichever is higher) is deducted.
+- **Less than 4 hours:** No refund is permitted.
 
 Unlike standard trains, the Tejas Express does not operate with an RAC (Reservation Against Cancellation) system. Tickets are issued as either confirmed or waitlisted (WL). If you hold an e-ticket that remains waitlisted (e.g., in position queues like `WL/1` or `WL/10`) after chart preparation, the system automatically cancels it and refunds the fare (minus the convenience fee) to your bank account within 3–5 working days. You cannot board the train with a waitlisted e-ticket.
 

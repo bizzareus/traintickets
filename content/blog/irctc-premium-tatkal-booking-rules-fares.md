@@ -2,7 +2,7 @@
 title: "IRCTC Premium Tatkal Rules: Booking Process, Timings & Fares"
 description: "Learn IRCTC Premium Tatkal booking rules, timings, dynamic fares, and cancellation/refund policies. Find out how it differs from the standard Tatkal quota."
 date: "2026-06-27"
-updated: "2026-06-27"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
@@ -93,7 +93,7 @@ Under the Premium Tatkal quota, however, the system does not issue waitlisted ti
 
 If you are unsure whether to pay the high Premium Tatkal rate or try your luck with a standard waitlisted ticket, you can use [LastBerth's PNR Status Search & Direct Booking](file:///Users/kartikarora/Documents/personal/traintickets/app/page.tsx) tool. It checks PNR status directly, displays waitlist confirmation probability, and offers alternative seat suggestions. 
 
-Additionally, if you need to check seat assignments or find open berths on running trains, [LastBerth's Seat Status Coach Journey Lookup](file:///Users/kartikarora/Documents/personal/traintickets/app/page.tsx) lets you lookup specific seats to see exactly from which station to which station they are booked. If you miss the Premium Tatkal booking window, you can search for a **current available ticket**, which is a **fully confirmed seat** with coach/berth numbers that opens for booking 4 hours before departure and closes 30 minutes before.
+Additionally, if you need to check seat assignments or find open berths on running trains, [LastBerth's Seat Status Coach Journey Lookup](file:///Users/kartikarora/Documents/personal/traintickets/app/page.tsx) lets you lookup specific seats to see exactly from which station to which station they are booked. If you miss the Premium Tatkal booking window, you can search for a **current available ticket**, which is a **fully confirmed seat** with coach/berth numbers that opens for booking 10 hours before departure and closes 30 minutes before.
 
 ---
 

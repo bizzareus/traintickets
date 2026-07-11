@@ -2,7 +2,7 @@
 title: "How to Fix Name Mistakes on Your IRCTC Ticket"
 description: "Oops! Made an error on your train ticket details? Here's how to correct name, age, or gender typos according to IRCTC rules."
 date: "2026-06-27"
-updated: "2026-06-28"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
@@ -41,7 +41,7 @@ Need to change a wrong age or gender on your ticket? You'll have to submit a wri
 
 Minor age or gender errors are easy to fix offline. The officer will check your ID and update the ticket manually. Traveling with incorrect details, especially if it results in a senior citizen discount, can look like ticket fraud to a TTE. You might face hefty fines. Sorting out the typo before chart prep avoids unnecessary hassles on the train.
 
-If the details are way off or the ticket is waitlisted with slim chances of confirmation, booking a new ticket is safer. In such cases, look for a current available ticket, which is a fully confirmed seat with coach/berth numbers that opens for online booking 4 hours before departure and closes 30 minutes before the train leaves.
+If the details are way off or the ticket is waitlisted with slim chances of confirmation, booking a new ticket is safer. In such cases, look for a current available ticket, which is a fully confirmed seat with coach/berth numbers that opens for online booking 10 hours before departure and closes 30 minutes before the train leaves.
 
 ---
 
@@ -80,4 +80,4 @@ No. Indian Railways only lets you transfer a confirmed ticket to a close blood r
 In Indian Railways, WL stands for Waiting List. When you book a waitlisted ticket, you get placed in a queue. As others cancel, your ticket moves from WL (Waiting List) to RAC (Reservation Against Cancellation) and finally to Confirmed. Unconfirmed waitlisted e-tickets are automatically canceled and refunded after the chart is prepared.
 
 ### What's a current available ticket?
-A current available ticket is a confirmed seat that you can book online or offline after the first chart is prepared. It opens 4 hours before the train's departure and closes 30 minutes before departure.
+A current available ticket is a confirmed seat that you can book online or offline after the first chart is prepared. It opens 10 hours before the train's departure and closes 30 minutes before departure.

@@ -2,7 +2,7 @@
 title: "New Indian Railways Fines 2026: Jan Vishwas Act Penalty List"
 description: "Complete list of new Indian Railways fines and penalties under the Jan Vishwas Act 2026. Learn about ticketless travel, women's coach entry, and smoking fines."
 date: "2026-07-02"
-updated: "2026-07-02"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
@@ -107,7 +107,7 @@ Under the Jan Vishwas Act 2026, the minimum fine for ticketless travel is ₹500
 You cannot travel on a waitlisted online e-ticket, as it is automatically cancelled and refunded after chart preparation. However, if you bought a physical waiting list ticket from a station counter, you are allowed to travel in general/sleeper coaches but not in reserved compartments unless authorized.
 
 ### What is current availability in IRCTC?
-Current availability refers to fully confirmed seats that are left unsold after the first chart is prepared, usually about 4 hours before the train's departure. A current available ticket is a fully confirmed seat with assigned coach/berth, and it remains open for booking online or at the station counter until 30 minutes before departure.
+Current availability refers to fully confirmed seats that are left unsold after the first chart is prepared, usually about 10 hours before the train's departure. A current available ticket is a fully confirmed seat with assigned coach/berth, and it remains open for booking online or at the station counter until 30 minutes before departure.
 
 ### What is the fine for obstructing railway staff?
 Under the Jan Vishwas Act 2026, obstructing railway staff or employees from performing their duties carries a fine of ₹2,500. This is a significant increase from the older penalty of ₹500, aimed at ensuring the safety and efficiency of train operations.

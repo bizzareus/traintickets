@@ -2,7 +2,7 @@
 title: "Lower Berth Quota for Seniors: How to Book It in 2026"
 description: "How to get a lower berth for elderly parents on Indian Railways: how the senior citizen, ladies (LD) and Divyangjan quotas work, the companion-rule trap, and 3 hacks when they're sold out."
 date: "2026-06-02"
-updated: "2026-07-10"
+updated: "2026-07-11"
 tags:
   - irctc quotas
   - senior citizen booking
@@ -144,7 +144,7 @@ Since late 2018, Indian Railways has equipped TTEs with **Hand-Held Terminals (H
 
 Running out of quota seats or getting stuck on a waitlist is super annoying. [LastBerth](file:///) makes your life easier by giving you some neat tools:
 
-1. **Spotting empty berths post-chart:** As soon as the final chart goes up (usually 4 hours before the train chugs off), LastBerth scans for any empty seats you can request from the TTE.
+1. **Spotting empty berths post-chart:** As soon as the final chart goes up (usually 10 hours before the train chugs off), LastBerth scans for any empty seats you can request from the TTE.
 2. **Finding split booking routes:** If direct berths are sold out, the tool checks if you can split your journey. You might book from station A to B, and B to C on the same train to snag a confirmed lower berth.
 3. **Shifting classes:** Shifting from 3AC to 2AC or Sleeper can sometimes open up lower berths because the demand is different. LastBerth shows you these options instantly.
 

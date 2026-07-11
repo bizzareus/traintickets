@@ -2,7 +2,7 @@
 title: "IRCTC e-Wallet Guide: Registration, Booking & Payments"
 description: "A complete guide on how to register for IRCTC e-Wallet, complete PAN/Aadhaar verification, deposit money, and make fast payments for train tickets."
 date: "2026-06-21"
-updated: "2026-06-21"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
@@ -17,7 +17,7 @@ Think of the IRCTC e-Wallet as your personal prepaid account built directly into
 
 To use it, you just pre-fund your account. You can load money using UPI, cards, or net banking. When you are ready to book, skip the bank selection screen entirely. Choose "IRCTC e-Wallet" on the payment page, type in your transaction password, and the system confirms your ticket immediately.
 
-This payment speed is particularly useful when trying to book a "current available ticket", which is a **fully confirmed seat** with coach/berth numbers, which opens 4 hours before departure and closes 30 minutes before. Because these tickets sell out in minutes, using the e-wallet is the fastest way to complete your payment before the seats vanish.
+This payment speed is particularly useful when trying to book a "current available ticket", which is a **fully confirmed seat** with coach/berth numbers, which opens 10 hours before departure and closes 30 minutes before. Because these tickets sell out in minutes, using the e-wallet is the fastest way to complete your payment before the seats vanish.
 
 ## How to Register for IRCTC e-Wallet Online?
 

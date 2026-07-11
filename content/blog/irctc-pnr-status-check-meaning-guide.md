@@ -2,7 +2,7 @@
 title: "IRCTC PNR Status Check: Meaning, Codes & How to Read It"
 description: "Check your IRCTC PNR status and learn what every code means (CNF, RAC, WL, GNWL) plus how to read your waitlist confirmation chances before you travel."
 date: "2026-06-26"
-updated: "2026-06-26"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
@@ -130,7 +130,7 @@ If your PNR isn't looking good, these features get you to a confirmed seat:
 - **Finding Smart Seats:** When no single direct berth is free, our **[Smart Seats](/)** feature finds split availability across coaches/segments on the same train to stitch together a confirmed journey.
 - **Seat Status Coach Journey Lookup:** Use **[Coach Journey Lookup](/seat-status)** to see exactly from which station to which station a berth is booked, so you can find open berths on a running train.
 
-If you're booking last-minute, look for a `"current available ticket"` — a **fully confirmed seat** with coach and berth numbers, released roughly **4 hours before departure** and bookable until **30 minutes before** the train leaves. It's the fastest, cheapest way to lock in a confirmed berth when your waitlist won't budge.
+If you're booking last-minute, look for a `"current available ticket"` — a **fully confirmed seat** with coach and berth numbers, released roughly **10 hours before departure** and bookable until **30 minutes before** the train leaves. It's the fastest, cheapest way to lock in a confirmed berth when your waitlist won't budge.
 
 ---
 

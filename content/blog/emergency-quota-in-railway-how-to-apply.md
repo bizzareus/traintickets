@@ -2,7 +2,7 @@
 title: "Emergency Quota in Railway: How to Apply & Get Tickets Confirmed"
 description: "Wondering how to get a waitlisted train ticket confirmed under Emergency Quota (EQ)? Learn the rules, application process, and letter format."
 date: "2026-06-19"
-updated: "2026-06-19"
+updated: "2026-07-11"
 tags:
   - emergency quota
   - train booking
@@ -93,9 +93,9 @@ If your name is still on the waitlist after the final chart is made, your online
 
 ## How to Check if Your Ticket is Confirmed Under Emergency Quota?
 
-**Since they only distribute EQ berths during the final chart creation, your status will remain waitlisted until about four hours before departure. The wait can be incredibly stressful. Even if the office approved your request at midday, the IRCTC system won't reflect it until the chart is officially drawn.**
+**Since they only distribute EQ berths during the final chart creation, your status will remain waitlisted until about ten hours before departure. The wait can be incredibly stressful. Even if the office approved your request at midday, the IRCTC system won't reflect it until the chart is officially drawn.**
 
-Typically, charts for morning trains are prepared around 8:00 PM the night before. For afternoon or evening runs, the chart goes up three to four hours before departure. Once it is finalized, run a PNR status check. If your request succeeded, you will see a confirmed (CNF) status showing your coach and berth numbers. Otherwise, it stays waitlisted.
+Typically, charts for morning trains are prepared around 8:00 PM the night before. For afternoon or evening runs, the chart goes up about ten hours before departure. Once it is finalized, run a PNR status check. If your request succeeded, you will see a confirmed (CNF) status showing your coach and berth numbers. Otherwise, it stays waitlisted.
 
 ---
 

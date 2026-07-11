@@ -2,7 +2,7 @@
 title: "TTR Full Form in Train: TTR vs TTE & IRCTC Ticket Rules"
 description: "TTR full form, and TTR vs TTE — what's the difference? Learn a travelling ticket examiner's duties, fining powers, and your rights if caught without a ticket."
 date: "2026-06-30"
-updated: "2026-07-07"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
@@ -65,7 +65,7 @@ The TTR/TTE is the face of Indian Railways onboard the train. Their responsibili
 
 When passengers fail to board the train (no-shows) or cancel their bookings at the last minute, berths become vacant. In the past, TTEs marked these manually on paper charts. Today, TTEs carry **Handheld Terminals (HHTs)**—tablet-like devices connected to the central IRCTC server. 
 
-When a passenger is a no-show, the TTR marks them absent on the HHT. This seat immediately registers as vacant and is automatically offered to the next passenger in the RAC or WL queue, or made available for online booking as a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach/berth numbers, which opens 4 hours before departure and closes 30 minutes before.
+When a passenger is a no-show, the TTR marks them absent on the HHT. This seat immediately registers as vacant and is automatically offered to the next passenger in the RAC or WL queue, or made available for online booking as a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach/berth numbers, which opens 10 hours before departure and closes 30 minutes before.
 
 If you want to find open seats, use LastBerth’s [Seat Status Coach Journey Lookup](/seat-status). This allows you to check specific coach seats and see exactly from which station to which station they are booked, making it easy to find vacant berths on running trains and request the TTR to allot them to you.
 

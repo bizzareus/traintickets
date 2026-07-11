@@ -2,7 +2,7 @@
 title: "How Foreigners Book Indian Train Tickets: IRCTC & FTQ"
 description: "Can foreign tourists book Indian train tickets? Yes — learn how to register on IRCTC without an Indian mobile number, use the Foreign Tourist Quota (FTQ), and avoid payment failures."
 date: "2026-06-17"
-updated: "2026-07-09"
+updated: "2026-07-11"
 tags:
   - foreign tourist booking
   - irctc registration
@@ -84,7 +84,7 @@ Here is why you should avoid relying on Tatkal:
 - **No tourist buffer:** There is no special foreign tourist quota for Tatkal bookings, so you are buying from the general pool.
 - **OTP bottlenecks:** During the frantic booking hour, SMS delivery can slow down. If your verification code is delayed by even thirty seconds, the tickets will already be gone.
 
-Instead of stressful last-minute bookings, it is always safer to check **Current Availability** (which opens 4 hours before the train leaves) or look into alternative transport like local flights or buses.
+Instead of stressful last-minute bookings, it is always safer to check **Current Availability** (which opens 10 hours before the train leaves) or look into alternative transport like local flights or buses.
 
 ---
 

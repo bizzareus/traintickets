@@ -2,7 +2,7 @@
 title: "Indian Railways Two-Stop Rule: Missed Train Rules & Facts"
 description: "Missed your train at the boarding station? Learn about the Indian Railways two-stop rule, TTE seat reallocation rules, and how to file a TDR for refund."
 date: "2026-06-25"
-updated: "2026-06-25"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
@@ -80,7 +80,7 @@ If you miss your train, or if your ticket is stuck in a waitlist queue, you need
 - **PNR Status Search & Direct Booking:** If you are holding a waitlisted ticket, check its status on LastBerth. We calculate the exact confirmation probability and suggest alternative trains immediately if your ticket is unlikely to confirm.
 - **Seat Status Coach Journey Lookup:** If you board a train and want to find an empty berth, use our **[Coach Journey Lookup](/seat-status)** to see exactly from which station to which station specific seats are booked. This allows you to locate vacant berths and request the TTE to allocate them to you.
 
-If you are looking for a last-minute ticket, always check for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach/berth numbers, which opens 4 hours before departure and closes 30 minutes before. It is the cheapest and fastest way to secure a confirmed train ticket post-chart preparation.
+If you are looking for a last-minute ticket, always check for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach/berth numbers, which opens 10 hours before departure and closes 30 minutes before. It is the cheapest and fastest way to secure a confirmed train ticket post-chart preparation.
 
 ---
 

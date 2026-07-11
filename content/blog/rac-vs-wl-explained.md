@@ -2,7 +2,7 @@
 title: "Difference Between RAC and Waitlist: RAC vs WL vs Confirmed Tickets Explained"
 description: "What is the difference between RAC and waitlist in Indian Railways? Understand RAC, Waiting List (WL), and Confirmed tickets with examples, cancellation rules, and what to do when you need to travel today."
 date: "2026-05-15"
-updated: "2026-07-05"
+updated: "2026-07-11"
 tags:
   - rac
   - waiting list
@@ -104,8 +104,8 @@ Knowing how these statuses affect your travel rights and cancellations is essent
 | **Right to Board** | Yes, full boarding rights | Yes, full boarding rights | No (fully waitlisted e-tickets are invalid for boarding) |
 | **Berth Status** | Full individual berth assigned | Shared sitting berth (two passengers per side-lower berth) | No seat/berth assigned |
 | **Upgrade to Full Berth** | Guaranteed | High chance (if confirmed passengers cancel or quotas release) | Must progress through RAC first |
-| **Cancellation Fee (72 hrs+ prior)** | Standard flat fee per class (e.g. Rs. 120 for 3AC) | Flat clerkage fee (Rs. 60 + GST) | Flat clerkage fee (Rs. 60 + GST) |
-| **Cancellation Fee (Within 8 hours/Chart)** | 50% of fare or no refund (depending on exact window) | Flat clerkage fee (Rs. 60 + GST) up to 30 mins before departure | Fully automatic refund (clerkage deducted) if waitlisted after charting |
+| **Cancellation Fee (48 hrs+ prior)** | Standard flat fee per class (e.g. Rs. 120 for 3AC) | Flat clerkage fee (Rs. 60 + GST) | Flat clerkage fee (Rs. 60 + GST) |
+| **Cancellation Fee (Within 4 hours/Chart)** | 50% of fare or no refund (depending on exact window) | Flat clerkage fee (Rs. 60 + GST) up to 30 mins before departure | Fully automatic refund (clerkage deducted) if waitlisted after charting |
 
 ---
 
@@ -127,7 +127,7 @@ The exact number of RAC seats varies depending on the train class. For instance,
 Yes. During the booking queue clearance (caused by ticket cancellations and quota releases), a waitlisted ticket progresses into the RAC pool. Only after the RAC queue is fully cleared do subsequent cancellations result in direct confirmed berths.
 
 ### What is the difference between RAC and waiting list for cancellation charges?
-RAC and WL tickets both attract only a flat clerkage fee (Rs. 60 + GST) when cancelled more than 72 hours before departure under the April 2026 rules. This is significantly cheaper than cancelling a confirmed ticket, which incurs a class-based flat fee (e.g., Rs. 120 for 3AC). After chart preparation, fully waitlisted e-tickets are automatically cancelled and refunded with clerkage deducted — you do not need to manually cancel them.
+RAC and WL tickets both attract only a flat clerkage fee (Rs. 60 + GST) when cancelled, up to 30 minutes before departure. This is significantly cheaper than cancelling a confirmed ticket, which incurs a class-based flat fee (e.g., Rs. 120 for 3AC). After chart preparation, fully waitlisted e-tickets are automatically cancelled and refunded with clerkage deducted — you do not need to manually cancel them.
 
 ### Can I travel on a RAC ticket? Can I travel on a WL ticket?
 Yes, you can travel on an RAC ticket — it is a valid travel document. You will be assigned a shared sitting berth (typically a side-lower). No, you cannot travel on a fully waitlisted e-ticket after chart preparation — it gets auto-cancelled. Counter tickets with partial WL have different rules; check the passenger-wise status on each ticket.

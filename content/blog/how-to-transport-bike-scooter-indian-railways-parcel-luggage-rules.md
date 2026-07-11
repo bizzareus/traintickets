@@ -2,7 +2,7 @@
 title: "Transporting Your Bike with Indian Railways: Rules & Costs Explained"
 description: "Need to move your bike? Discover the step-by-step guide, rules, documents, and charges for bike transport via Indian Railways."
 date: "2026-06-28"
-updated: "2026-06-28"
+updated: "2026-07-11"
 tags:
   - train travel
   - irctc
@@ -94,7 +94,7 @@ Make sure you have these on hand:
 
 Moving across the country and managing tickets and bike transport can get tricky, especially when seats are in demand. Got a waitlisted ticket? Check your chances of confirmation on LastBerth. In Indian Railways, WL stands for Waiting List. Tickets go from **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. Your spot, like **WL/1** or **WL/10**, shows how soon your seat might confirm. E-tickets that don't clear the waitlist get automatically refunded or canceled, so check those waitlist odds early to plan other options.
 
-If direct tickets aren't available, use our [Finding Smart Seats](/) tool to break your trip into segments and secure a confirmed ticket. Or, grab a **current available ticket**. It’s a confirmed seat with coach/berth numbers, available 4 hours before the train leaves and closing 30 minutes before, perfect for last-minute plans. Already on the move and need to check empty berths? Use our [Seat Status Coach Journey Lookup](/seat-status) for real-time seat availability.
+If direct tickets aren't available, use our [Finding Smart Seats](/) tool to break your trip into segments and secure a confirmed ticket. Or, grab a **current available ticket**. It’s a confirmed seat with coach/berth numbers, available 10 hours before the train leaves and closing 30 minutes before, perfect for last-minute plans. Already on the move and need to check empty berths? Use our [Seat Status Coach Journey Lookup](/seat-status) for real-time seat availability.
 
 ---
 

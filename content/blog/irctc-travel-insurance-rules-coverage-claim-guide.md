@@ -2,7 +2,7 @@
 title: "IRCTC Travel Insurance: Rules, Coverage & Nominee Guide"
 description: "A complete guide to IRCTC travel insurance. Learn about rules, coverage up to 10 lakhs, ₹0.45 premium, nominee details, and claim process in Indian Railways."
 date: "2026-06-29"
-updated: "2026-06-29"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
@@ -88,7 +88,7 @@ Here is the standard claim workflow:
 
 For example, starting at a queue position like `WL/10` and moving to `WL/1` by chart preparation means you are still waitlisted. If it never confirms, the ticket is auto-cancelled and refunded. The ₹0.45 premium isn't returned, but the coverage never becomes active.
 
-Conversely, if you buy a **current available ticket**—which is a **fully confirmed seat** with coach and berth numbers that opens 4 hours before departure and closes 30 minutes before—the insurance goes into effect immediately when you board.
+Conversely, if you buy a **current available ticket**—which is a **fully confirmed seat** with coach and berth numbers that opens 10 hours before departure and closes 30 minutes before—the insurance goes into effect immediately when you board.
 
 If you are dealing with tricky waitlists, digital platforms make finding alternatives simple. You can use [LastBerth](/) to run a [PNR status](/) check to see confirmation probability and find better routes. If everything is full, the [Finding Smart Seats](/) tool helps you book across multiple segments, while the [Seat Status Coach Journey Lookup](/seat-status) shows vacant berths on running trains.
 
