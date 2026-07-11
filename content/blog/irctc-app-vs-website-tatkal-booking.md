@@ -2,7 +2,7 @@
 title: "IRCTC App vs Website: Tatkal Booking Speed Comparison"
 description: "Is the IRCTC app faster than the website for Tatkal bookings? We compare speed, biometrics, captchas, timeouts, and payments to find the winner."
 date: "2026-06-14"
-updated: "2026-07-06"
+updated: "2026-07-11"
 tags:
   - tatkal booking
   - irctc app
@@ -103,14 +103,14 @@ Here is why the choice between laptop and mobile matters:
 
 ## What is the new Aadhaar OTP verification rule for IRCTC Tatkal booking?
 
-Starting **July 15, 2026**, IRCTC mandates **Aadhaar OTP authentication** for all **Tatkal bookings** during passenger selection to verify identity and prevent bot-driven scalping. While this ensures a fairer distribution of seats, receiving and entering the mobile **verification OTP** adds a new time constraint that slows down booking speed.
+Starting **July 15, 2025**, IRCTC mandates **Aadhaar OTP authentication** for all **Tatkal bookings** during passenger selection to verify identity and prevent bot-driven scalping. While this ensures a fairer distribution of seats, receiving and entering the mobile **verification OTP** adds a new time constraint that slows down booking speed.
 
 Under this new mandate, when you select a passenger for a Tatkal or Premium Tatkal ticket, the system will trigger a verification OTP to the mobile number registered with Aadhaar. You must complete this OTP verification before proceeding to the payment page.
 
 How this affects booking speed:
 - **Immediate slowdown:** Since Tatkal bookings are typically won or lost in seconds, waiting for a government OTP SMS to arrive will add a critical delay of 10 to 30 seconds.
 - **Bot mitigation:** On the positive side, it levels the playing field. Script users and automated booking bots will no longer be able to bypass passenger verification, meaning genuine passengers will have a fairer shot at securing seats.
-- **Preparation advice:** Ensure that the mobile phone linked to the Aadhaar of every passenger in your Master List is switched on, has active network coverage, and is kept nearby during booking. It is also recommended to verify Aadhaar on your IRCTC profile settings before July 15, 2026, to minimize last-minute delays. For more details on verification limits, check out the guide on [IRCTC monthly ticket booking limits and Aadhaar link](/blog/irctc-ticket-booking-limits-aadhaar-verification).
+- **Preparation advice:** Ensure that the mobile phone linked to the Aadhaar of every passenger in your Master List is switched on, has active network coverage, and is kept nearby during booking. It is also recommended to verify Aadhaar on your IRCTC profile settings in advance, to minimize last-minute delays. For more details on verification limits, check out the guide on [IRCTC monthly ticket booking limits and Aadhaar link](/blog/irctc-ticket-booking-limits-aadhaar-verification).
 
 ---
 
@@ -149,7 +149,7 @@ Yes, Premium Tatkal (PT) is fully available on the IRCTC Rail Connect app. You c
 No, the UTS mobile app is strictly for booking unreserved general tickets, platform tickets, and seasonal suburban passes. It cannot be used to book reserved seats or Tatkal tickets.
 
 ### Does the new Aadhaar OTP verification rule apply to both Tatkal and Premium Tatkal?
-Yes, the mandatory Aadhaar OTP authentication starting July 15, 2026, applies to both Tatkal and Premium Tatkal quotas. You must complete the mobile verification for all selected passengers before you can proceed to the booking page.
+Yes, the mandatory Aadhaar OTP authentication starting July 15, 2025, applies to both Tatkal and Premium Tatkal quotas. You must complete the mobile verification for all selected passengers before you can proceed to the booking page.
 
 ### Which browser autofill is safest for Tatkal booking without getting banned?
 The native Google Chrome or Brave browser autofill is the safest. Third-party Tatkal autofill extensions are often detected by IRCTC's security filters, which can lead to immediate account suspension or transaction failure.

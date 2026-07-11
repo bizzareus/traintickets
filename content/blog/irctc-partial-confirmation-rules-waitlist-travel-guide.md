@@ -2,7 +2,7 @@
 title: "IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers"
 description: "Can waitlisted passengers travel on a partially confirmed IRCTC e-ticket? Discover the official railway rules, TDR refund guidelines, and boarding policies for mixed-status PNRs."
 date: "2026-06-11"
-updated: "2026-07-05"
+updated: "2026-07-11"
 tags:
   - irctc rules
   - partial confirmation
@@ -27,7 +27,7 @@ Let's quickly dissect the real rules and refund hacks for these mixed PNRs.
 
 What on earth is a partially confirmed ticket? Simple. It's when you book a group of people together under one PNR. When the chart goes up, only some passengers get confirmed berths or RAC seats, while the others are left hanging on the waiting list.
 
-Usually, this happens because you booked during a rush. People drop out, seats open up, but it's never quite enough for everyone. By the time the chart drops—usually 4 hours before the train leaves—you're stuck in this weird, limbo-like, half-and-half state. 
+Usually, this happens because you booked during a rush. People drop out, seats open up, but it's never quite enough for everyone. By the time the chart drops—usually about 10 hours before the train leaves—you're stuck in this weird, limbo-like, half-and-half state. 
 
 It’s just how the system rolls when you book as a group. If you're still on the waitlist when the chart hits, that's it. Your PNR is officially tagged as "partially confirmed."
 
@@ -65,13 +65,13 @@ If you board a reserved coach with a fully waitlisted e-ticket, you will be pena
 
 **To get a full refund for a partially confirmed ticket when your group decides not to travel, you must file a Ticket Deposit Receipt (TDR) online. The TDR must be submitted at least 30 minutes before the scheduled departure of the train from its originating station. This grants a refund minus a ₹60 clerkage fee per passenger.**
 
-If some members of your group remain waitlisted, you might decide to call off the trip entirely. However, if you simply try to cancel confirmed tickets online after chart preparation, you will face standard confirmed ticket cancellation penalties. Under the April 2026 rules, these penalties are extremely high:
-- **More than 72 hours before departure:** Flat cancellation fee (₹240 for 1AC, ₹180 for 3AC, ₹120 for Sleeper).
-- **24 to 72 hours before departure:** 25% of the total fare is deducted.
-- **8 to 24 hours before departure:** 50% of the total fare is deducted.
-- **Less than 8 hours before departure:** No refund (0%) is provided.
+If some members of your group remain waitlisted, you might decide to call off the trip entirely. However, if you simply try to cancel confirmed tickets online after chart preparation, you will face standard confirmed ticket cancellation penalties. Under Indian Railways' cancellation rules, these penalties are steep:
+- **More than 48 hours before departure:** Flat cancellation fee (₹240 for 1AC, ₹180 for 3AC, ₹120 for Sleeper).
+- **12 to 48 hours before departure:** 25% of the total fare is deducted.
+- **4 to 12 hours before departure:** 50% of the total fare is deducted.
+- **Less than 4 hours before departure:** No refund (0%) is provided.
 
-To avoid losing your fare under the strict 8-hour zero-refund window, you must file a TDR for the entire party:
+To avoid losing your fare under the strict 4-hour zero-refund window, you must file a TDR for the entire party:
 1. **Nobody boards the train:** None of the passengers on that PNR should travel.
 2. **File a TDR:** Log in to IRCTC, open your booked history, and select 'File TDR'.
 3. **Select the reason:** Choose the option *'Party partially confirmed/waitlisted and all passengers did not travel.'*

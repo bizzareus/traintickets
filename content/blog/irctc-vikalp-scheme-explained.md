@@ -2,7 +2,7 @@
 title: "IRCTC Vikalp: Turn a Waitlisted Ticket Into a Confirmed Seat"
 description: "IRCTC's Vikalp (ATAS) scheme shifts waitlisted passengers to an alternative train with a confirmed berth. How it works, when to opt in, and odds-boosting hacks."
 date: "2026-05-29"
-updated: "2026-07-06"
+updated: "2026-07-11"
 tags:
   - vikalp scheme
   - irctc
@@ -46,7 +46,7 @@ First, when you are booking that ticket on IRCTC and realize you are stuck on a 
 
 Next, the system will ask you to choose your alternate options. You can select up to seven different trains that travel on the same route. 
 
-Then, you just wait. When chart time rolls around—usually around four hours before the train chugs out of its originating station—the system checks your status. If you are still fully waitlisted, the backend algorithm immediately goes to work. It scans your chosen alternate trains to see if any of them have empty berths. 
+Then, you just wait. When chart time rolls around—usually around ten hours before the train chugs out of its originating station—the system checks your status. If you are still fully waitlisted, the backend algorithm immediately goes to work. It scans your chosen alternate trains to see if any of them have empty berths. 
 
 If it finds a free seat, boom! You get transferred. IRCTC shoots you an SMS with your fresh seat allocation, complete with your coach and berth details. 
 

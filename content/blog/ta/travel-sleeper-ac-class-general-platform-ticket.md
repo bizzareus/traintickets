@@ -2,7 +2,7 @@
 title: "ஜெனரல் டிக்கெட்டில் ஸ்லீப்பரில் பிடிபட்டீர்களா? அபராதம், விதிகள் 2026"
 description: "ஜெனரல் அல்லது பிளாட்ஃபார்ம் டிக்கெட்டுடன் Sleeper அல்லது AC கோச்சில் உட்காரலாமா? Section 138 இன் கீழ் அபராதம், TTE விதிகள், உண்மையான அவசரத்தில் என்ன செய்வது, 2026."
 date: "2026-06-12"
-updated: "2026-07-06"
+updated: "2026-07-11"
 tags:
   - general ticket
   - platform ticket
@@ -60,7 +60,7 @@ tags:
 Almost all Express and Mail trains have unreserved compartments, usually placed at the very front or very rear. You can buy a general ticket at the counter or use the official UTS mobile app. These tickets are incredibly cheap and let you travel legally in those specific general coaches. Just prepare yourself—they are always incredibly crowded.
 
 ### 2. தற்போதைய கிடைக்கும் டிக்கெட்டை முன்பதிவு செய்யவும்
-Once the chart is ready (4 hours before departure), any leftover berths go up for sale under 'Current Availability' at a 10% discount. You can book these on the IRCTC app or at the station reservation counter up to 30 minutes before the train pulls out. Our guide on [how IRCTC current availability works](/blog/irctc-current-availability-explained) covers how to grab these seats.
+Once the chart is ready (about 10 hours before departure), any leftover berths go up for sale under 'Current Availability' at a 10% discount. You can book these on the IRCTC app or at the station reservation counter up to 30 minutes before the train pulls out. Our guide on [how IRCTC current availability works](/blog/irctc-current-availability-explained) covers how to grab these seats.
 
 ### 3. மேடையில் TTE யை கேளுங்கள்
 Before the train leaves, locate the TTE standing near the reserved coaches. TTEs use Hand-Held Terminals (HHTs) that show exactly which berths are empty. If you explain your emergency politely, they might assign you a vacant berth right there on the spot. They'll issue a regular receipt and you won't be treated as an offender.
