@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Master List: Save Passengers to Book Tatkal Faster"
-description: "Learn how to create your IRCTC Master List and Travel List to pre-save up to 20 passengers, skip typing during the Tatkal rush, and book confirmed tickets in seconds."
+title: "IRCTC Master List: Save 20 Passengers for Faster Tatkal"
+description: "Create your IRCTC Master List to pre-save up to 20 passengers, skip typing in the Tatkal rush, and book confirmed tickets in seconds. Step-by-step 2026 guide."
 date: "2026-07-06"
-updated: "2026-07-06"
+updated: "2026-07-11"
 tags:
   - train booking
   - irctc
