@@ -1,8 +1,8 @@
 ---
-title: "GNWL vs RLWL vs PQWL vs TQWL: Which Waiting List Actually Gets Confirmed?"
-description: "Not all waiting lists are equal. Learn what GNWL, RLWL, PQWL, TQWL, and RSWL mean, and how each one behaves before and after chart preparation."
+title: "GNWL vs RLWL vs PQWL: Which Waitlist Confirms Fastest?"
+description: "GNWL clears often, PQWL rarely does — your waitlist type matters more than the number. Compare GNWL, RLWL, PQWL, TQWL & RSWL confirmation chances before you book."
 date: "2026-05-29"
-updated: "2026-07-01"
+updated: "2026-07-12"
 tags:
   - waiting list
   - gnwl
