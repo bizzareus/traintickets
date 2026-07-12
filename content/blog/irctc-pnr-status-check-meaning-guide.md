@@ -100,6 +100,8 @@ When you check a PNR you'll see two values side by side:
 
 The gap between them is what matters. A ticket that went from **WL 20 → WL 4** in a few days has strong momentum. One stuck at **WL 18 → WL 17** for a week probably won't clear. Looking only at the booking number tells you nothing about your live chances.
 
+Your PNR tells you whether you have a berth; to see where the train itself is right now — delays, platform, current station — check the [live train running status guide](/blog/live-train-running-status-where-is-my-train).
+
 ---
 
 ## Will Your Waitlisted PNR Get Confirmed?

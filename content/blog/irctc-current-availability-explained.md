@@ -2,7 +2,7 @@
 title: "IRCTC Current Availability: Grab a Confirmed Last-Minute Seat"
 description: "How to use IRCTC current availability to book a fully confirmed last-minute seat: when it opens after chart preparation, how it differs from normal booking, and tips."
 date: "2026-06-11"
-updated: "2026-07-06"
+updated: "2026-07-11"
 tags:
   - current availability
   - vacancy chart
@@ -75,7 +75,7 @@ A few practical nuances people miss:
 - **The timing is from the originating station**, not your boarding point. If you're boarding Train 12301 Rajdhani at Kanpur, the chart is still prepared based on New Delhi departure. Your boarding station matters for quota, but chart timing follows the origin.
 - Between the first and second chart, more cancellations can trickle in. The second chart is your last realistic window.
 
-For a detailed breakdown of chart timing across different train types, see the [IRCTC chart preparation guide](/blog/irctc-chart-preparation-guide).
+For a detailed breakdown of chart timing across different train types, see the [IRCTC chart preparation guide](/blog/irctc-chart-preparation-guide). And for the complete picture of every IRCTC booking window — including Tatkal open times and the nightly maintenance shutdown — see the [IRCTC booking timings guide](/blog/irctc-booking-timings-rules).
 
 ## Is a current available ticket confirmed or not?
 
@@ -173,7 +173,7 @@ Have your IRCTC login, passenger details, and payment method ready before the ch
 
 The second chart, prepared about 30 minutes before departure, can release a few more berths from very late cancellations. This is a narrower window; you have to book almost instantly because the booking cutoff is also 30 minutes before departure.
 
-This works best if you're already at or near the station. Booking a current availability ticket from home when you're 2 hours away from the station isn't useful unless you've already planned your commute.
+This works best if you're already at or near the station. Booking a current availability ticket from home when you're 2 hours away from the station isn't useful unless you've already planned your commute. Once you've grabbed a current-availability seat, use the [live train running status guide](/blog/live-train-running-status-where-is-my-train) to track exactly where your train is before you head to the station.
 
 ### Strategy 3: The night-before check for early trains
 

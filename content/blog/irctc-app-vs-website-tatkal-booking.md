@@ -29,6 +29,8 @@ The mobile app has a huge edge because it is built differently. A browser has to
 
 Logging in is also a breeze on your phone. The website forces you to type your password and solve a captcha before you even search. With the app, you just scan your fingerprint or enter a quick 4-digit PIN. It easily saves you ten to fifteen seconds, which is a lifetime during the Tatkal rush.
 
+If you're ever unsure when a booking window opens — AC vs non-AC Tatkal, general booking hours, or IRCTC's nightly maintenance shutdown — keep the [IRCTC booking timings guide](/blog/irctc-booking-timings-rules) handy.
+
 ---
 
 ## Why does the IRCTC website log you out during Tatkal booking?

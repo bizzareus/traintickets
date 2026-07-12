@@ -51,7 +51,7 @@ The sweet spot for comfort-conscious travellers. Bays have only **lower and uppe
 
 ### AC 3-Tier (3A)
 
-The most popular AC class in India. Same 8-berth bay as Sleeper (Lower, Middle, Upper on both sides plus Side Lower and Side Upper), but air-conditioned, curtained, with charging points near the lower berths. 64–72 berths per coach. Free bedding included. If you want AC without paying 2A prices, this is the default choice.
+The most popular AC class in India. Same 8-berth bay as Sleeper (Lower, Middle, Upper on both sides plus Side Lower and Side Upper), but air-conditioned, curtained, with charging points near the lower berths. 64–72 berths per coach. Free bedding included. If you want AC without paying 2A prices, this is the default choice. Not sure whether to pick lower, middle, upper or a side berth? The [train berth types guide](/blog/train-berth-types-availability-reservation-guide) compares comfort, privacy and luggage access for each.
 
 ### AC 3-Tier Economy (3E)
 
