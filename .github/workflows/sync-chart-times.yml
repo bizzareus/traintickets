@@ -1,0 +1,53 @@
+name: Sync chart-times
+
+# Drains the chart-times backlog reliably: for a batch of pending trains it calls
+# the live site's generation endpoint, writes content/chart-times/<slug>.json, and
+# commits + pushes to main (which republishes the pre-rendered pages on deploy).
+#
+# The script (scripts/sync-chart-times.mjs) clones the repo itself using
+# GITHUB_TOKEN and pushes via https://x-access-token:${TOKEN}@github.com/... —
+# exactly the form Actions' built-in token uses, so no PAT is needed. The
+# generation endpoint is public, so no other secrets are required.
+#
+# Cadence note: each run commits once, which triggers a Railway deploy. To avoid
+# rebuilding/restarting the BACKEND on content-only commits, set the backend
+# service's "Watch Paths" to `backend/**` in Railway (recommended).
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # every 6 hours
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: 'Number of pending trains to process this run'
+        required: false
+        default: '300'
+
+# Allow the built-in token to push the regenerated JSON back to the repo.
+permissions:
+  contents: write
+
+# Never let two syncs run at once (they'd race on the same files / push).
+concurrency:
+  group: sync-chart-times
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate + commit chart-times JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://lastberth.com' }}
+          GITHUB_REPO: ${{ github.repository }}
+          GIT_BRANCH: main
+          # Only needed if the endpoint is later protected; harmless when unset.
+          CHART_TIMES_SYNC_SECRET: ${{ secrets.CHART_TIMES_SYNC_SECRET }}
+          SYNC_BATCH: ${{ github.event.inputs.batch || '300' }}
+        run: node scripts/sync-chart-times.mjs
