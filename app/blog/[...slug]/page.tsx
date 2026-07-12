@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getBlogPost, listBlogPostSlugs, listBlogPosts, parseFaqFromMarkdown, hasBlogPostTranslation, mapStateToLanguage, getLanguageName, getAvailableTranslations } from "@/lib/blog";
+import { isLowQualityTranslation, indexableTranslations } from "@/lib/blog-quality";
 import { getBlogTranslation } from "@/lib/blog-translations";
 import { parseHowToFromMarkdown } from "@/lib/seo/schema-howto";
 import { autoLinkGlossaryTerms } from "@/lib/seo/auto-linker";
@@ -86,7 +87,9 @@ export async function generateMetadata({
   if (!post) return {};
   
   const canonicalUrl = lang === "en" ? `/blog/${post.slug}` : `/blog/${lang}/${post.slug}`;
-  const availableLangs = getAvailableTranslations(post.slug);
+  // Only advertise indexable languages as hreflang alternates — a broken
+  // machine translation is neither listed nor pointed at as an alternate.
+  const availableLangs = indexableTranslations(post.slug);
   const languages: Record<string, string> = {};
   for (const l of availableLangs) {
     const url = l === "en" ? `/blog/${post.slug}` : `/blog/${l}/${post.slug}`;
@@ -94,11 +97,19 @@ export async function generateMetadata({
     languages[`${l}-IN`] = url;
   }
   languages["x-default"] = `/blog/${post.slug}`;
-  
+
+  // A low-quality translation gets noindex (follow kept, so link equity still
+  // flows). Google was already declining to index these; this makes it explicit
+  // and stops them diluting crawl/index budget.
+  const lowQuality = isLowQualityTranslation(slug, lang);
+
   return {
     title: post.title,
     description: post.description,
-    alternates: { 
+    ...(lowQuality
+      ? { robots: { index: false, follow: true } }
+      : {}),
+    alternates: {
       canonical: canonicalUrl,
       languages
     },

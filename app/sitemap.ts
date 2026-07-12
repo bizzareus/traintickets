@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { listBlogPosts, getAvailableTranslations } from "@/lib/blog";
+import { listBlogPosts } from "@/lib/blog";
+import { indexableTranslations } from "@/lib/blog-quality";
 import { getAllGlossaryTerms, listAvailableGlossaryLangs } from "@/lib/seo/glossary-db";
 import { getTopRoutes } from "@/lib/seo/routes-db";
 import { listChartTimesIndex } from "@/lib/chartTimes";
@@ -132,7 +133,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const postRoutes: MetadataRoute.Sitemap = [];
   
   for (const p of posts) {
-    const availableLangs = getAvailableTranslations(p.slug);
+    // Only emit indexable languages — broken machine translations are dropped
+    // from both the sitemap and the hreflang alternates (see lib/blog-quality).
+    const availableLangs = indexableTranslations(p.slug);
     const alternates: Record<string, string> = {};
     for (const l of availableLangs) {
       const u = l === "en" ? url(`/blog/${p.slug}`) : url(`/blog/${l}/${p.slug}`);
