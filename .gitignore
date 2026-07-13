@@ -54,3 +54,6 @@ next-env.d.ts
 
 # scratch directory
 /scratch
+
+# weekly SEO routine reports (local artifacts; see docs/seo-weekly-routine.md)
+/seo/runs
