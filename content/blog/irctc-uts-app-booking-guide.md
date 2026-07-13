@@ -2,7 +2,7 @@
 title: "RailOne App: UTS, Platform Tickets & the GPS Limit 2026"
 description: "RailOne replaces the UTS app for unreserved, platform & season tickets. See the GPS distance limits that block bookings, R-Wallet setup, and migration steps."
 date: "2026-06-23"
-updated: "2026-07-07"
+updated: "2026-07-13"
 tags:
   - train booking
   - irctc
@@ -59,6 +59,48 @@ Here is a summary comparing the old UTS app and the new RailOne platform:
 
 ---
 
+## What Are the Rules for Booking Unreserved Tickets on RailOne?
+
+An unreserved (general) ticket booked on RailOne is **paperless and time-bound**: your journey must **commence within one hour** of booking, GPS/location must be switched on, and the ticket is valid **only in unreserved (general) coaches**. It cannot be cancelled once issued.
+
+The core UTS rules carry over unchanged to RailOne:
+
+- **Start within 1 hour.** A paperless journey ticket expires if you don't begin travelling within an hour of booking, so book only when you are ready to move.
+- **GPS must be on.** The app uses your location to confirm you are near the origin station (15 m–5 km) and not already on the train — location permission is mandatory.
+- **General coach only.** A RailOne unreserved ticket does **not** entitle you to a Sleeper, AC or reserved seat. Boarding a reserved coach invites a penalty of **₹250 plus the fare difference**.
+- **No cancellation.** Paperless unreserved and platform tickets **cannot be cancelled or refunded** once booked — double-check your stations before paying.
+- **Distance cap.** Unreserved tickets are meant for shorter, walk-up journeys; for long-distance travel you should book a reserved ticket instead.
+
+---
+
+## How Long Is a RailOne Platform Ticket Valid, and What Does It Cost?
+
+A **platform ticket booked on RailOne is valid for two hours** from the time of issue and lets you enter the platforms of a single station. The standard fare is **₹10**, though busy or festival-season stations may charge more. A platform ticket does **not** permit you to board or travel on any train.
+
+Buying it in-app means you skip the counter queue and the QR/digital ticket is shown to staff at the entry gate. If you end up boarding a train in an emergency on a platform ticket, you must pay the fare from the originating station plus the applicable penalty to the TTE — the platform ticket only legalises your presence on the platform, not the journey.
+
+---
+
+## Where Do You Find Your UTS Number and Booking History in RailOne?
+
+Your **RailOne login is the same mobile number** that was registered on your old UTS account, so there is no separate "UTS number" to hunt for. Your past unreserved tickets, season passes and R-Wallet transactions all appear under **Booking History** (and **Profile**) once you sign in with that number.
+
+The reference people call the "UTS number" is simply the **booking/ticket ID** printed on each unreserved ticket (it begins with a UTS prefix). Open any ticket from Booking History to see its full ID, class, distance and QR code — this is what the TTE scans or notes during checking. If your history looks empty, you have most likely logged in with a different mobile number than the one linked to UTS; log out and sign back in with the original number to restore it.
+
+---
+
+## Can You Book Reserved Tickets and See AI Waitlist Predictions on RailOne?
+
+Yes. RailOne isn't only for unreserved travel — it also runs the **reserved booking system (PRS)**, so you can book Sleeper, AC and Tatkal tickets, check PNR status, and even see an **AI-based prediction of your waitlist confirmation chance** built into the app. It uses your existing IRCTC RailConnect login for reserved bookings.
+
+That prediction is a helpful first read, but for a serious confirmation decision you want a second opinion and a concrete backup plan:
+
+- [Smart Seats & PNR Status](/) checks your confirmation probability and surfaces alternate confirmed booking paths across segments of the same train.
+- [Chart Vacancy](/chart-vacancy) shows a visual coach map of berths still empty after chart preparation — ideal when your waitlist is borderline.
+- [Coach Journey Lookup](/seat-status) reveals vacant berths on a running train that you can ask the TTE to assign.
+
+---
+
 ## Should You Use RailOne Tickets When Reserved Tickets Are Waitlisted?
 
 If your reserved seat remains waitlisted, booking an unreserved ticket via RailOne is a legal travel alternative. A **waitlisted online ticket** is auto-cancelled after chart preparation, but you can buy a confirmed **current available ticket** on RailOne or travel legally in the unreserved coach using a general RailOne ticket.
@@ -99,6 +141,15 @@ You get a 3% discount on unreserved tickets by paying through any online payment
 
 ### Can I order food on the train using RailOne?
 Yes, the RailOne app integrates e-catering services directly into its platform. You can enter your PNR number to browse restaurant menus and order food delivered to your berth at upcoming stations.
+
+### Is RailOne the same as the IRCTC Rail Connect app?
+No, they are separate apps, but they share the same account. RailOne is a unified "super app" that bundles reserved booking (the same PRS system IRCTC Rail Connect uses), unreserved/UTS tickets, platform tickets, live tracking and complaints. You log in to RailOne with your existing IRCTC RailConnect or UTS credentials.
+
+### Can I still use the old UTS app to book tickets?
+No. The standalone UTS app has been retired and unreserved, platform and season tickets are now booked through RailOne. Your UTS account, booking history and R-Wallet balance carry over automatically when you sign in with the same registered mobile number.
+
+### Who developed RailOne and is it an official app?
+RailOne is an official Indian Railways app developed by **CRIS (Centre for Railway Information Systems)** and launched on **1 July 2025**. Download only the CRIS-published app from the Google Play Store or Apple App Store — avoid look-alike third-party apps that copy the name.
 
 ---
 
