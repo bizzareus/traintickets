@@ -2,7 +2,7 @@
 title: "Amrit Bharat Express: Non-AC Sleeper Fares, Routes & Rules"
 description: "Amrit Bharat is Indian Railways' new non-AC superfast: Sleeper & 2S only, no RAC, low fares. See routes, fares, booking rules and onboard amenities."
 date: "2026-07-02"
-updated: "2026-07-07"
+updated: "2026-07-13"
 tags:
   - train booking
   - irctc
@@ -65,8 +65,8 @@ These trains are specifically deployed on high-demand routes that experience hea
 Some of the most popular operational routes include:
 - **Darbhanga - Anand Vihar Terminal (15557/15558):** Linking Bihar directly to the national capital.
 - **Malda Town - SMVT Bengaluru (13433/13434):** Serving the massive travel demand between West Bengal and Karnataka.
-- **Sealdah - Banaras (13103/13104):** A highly frequented route connecting Kolkata with Varanasi.
-- **Howrah - Anand Vihar Terminal (22349/22350):** An alternative high-speed connection between West Bengal and Delhi.
+- **Sealdah - Banaras (22587/22588):** A highly frequented route connecting Kolkata with Varanasi.
+- **Howrah - Anand Vihar Terminal (13065/13066):** An alternative high-speed connection between West Bengal and Delhi.
 - **Amritsar - New Jalpaiguri:** Connecting Punjab directly to North Bengal.
 - **Banaras - Pune:** Linking the holy city of Varanasi to the industrial and educational hub of Pune.
 - **Ayodhya - Lokmanya Tilak Terminal (LTT) Mumbai:** Providing high-speed connectivity for pilgrims traveling between Maharashtra and Ayodhya.
