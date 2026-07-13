@@ -10826,1502 +10826,1802 @@
   {
     "trainNumber": "15665",
     "trainName": "BG EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15666",
     "trainName": "BG EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15667",
     "trainName": "KAMAKHYA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15668",
     "trainName": "KYQ GIMB EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15669",
     "trainName": "NAGALAND EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15670",
     "trainName": "NAGALAND EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15671",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15672",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15673",
     "trainName": "KYQ AMRITBHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15674",
     "trainName": "CHZ AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15675",
     "trainName": "NJP GHY IC EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15676",
     "trainName": "GHY NJP IC EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15705",
     "trainName": "CHAMPARAN HUMSFR",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15706",
     "trainName": "CHAMPARAN HMSFR",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15707",
     "trainName": "KIR ASR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15708",
     "trainName": "ASR KIR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15711",
     "trainName": "HWH KIR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15712",
     "trainName": "KIR HWH EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15713",
     "trainName": "INTERCITY EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15714",
     "trainName": "INTERCITY EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15715",
     "trainName": "GARIB NAWAZ EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15716",
     "trainName": "GARIB NAWAZ EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15721",
     "trainName": "PAHARIA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15722",
     "trainName": "PAHARIA EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15723",
     "trainName": "JBN SGUT EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15724",
     "trainName": "SGUT JBN EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15725",
     "trainName": "NJP ANVT EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15726",
     "trainName": "ANVT NJP EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15733",
     "trainName": "FARAKKA EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15734",
     "trainName": "FARKKA EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15743",
     "trainName": "FARAKKA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15744",
     "trainName": "FARAKKA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15777",
     "trainName": "NJP APDJ TOURIST",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15778",
     "trainName": "APDJ NJP TOURIST",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15817",
     "trainName": "DONYI POLO EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15818",
     "trainName": "DONYI POLO EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15887",
     "trainName": "BPB GHY VISTADO",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15888",
     "trainName": "GHY BPB VISTADO",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15895",
     "trainName": "RNY MZS EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15896",
     "trainName": "MZS RNY EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15903",
     "trainName": "DBRG CDG EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15904",
     "trainName": "CDG DBRG EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15907",
     "trainName": "TSK NHLN VISTA",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15908",
     "trainName": "NHLN TSK VISTA",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15909",
     "trainName": "AVADH ASSAM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15910",
     "trainName": "AVADH ASSAM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15911",
     "trainName": "TSK NHLN EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15912",
     "trainName": "NHLN TSK EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15925",
     "trainName": "DGHR DBRG EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15926",
     "trainName": "DBRG DGHR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15929",
     "trainName": "TBM NTSK EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15930",
     "trainName": "NTSK TBM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15933",
     "trainName": "NTSK ASR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15934",
     "trainName": "ASR NTSK EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15941",
     "trainName": "JHAJHA DBRG EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15942",
     "trainName": "DBRG JHAJHA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15943",
     "trainName": "BARAK BP EXPRES",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15944",
     "trainName": "BARAK BP EXPRES",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15945",
     "trainName": "LTT DIBRUGARH EX",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15946",
     "trainName": "DBRG LTT EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15949",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15950",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15955",
     "trainName": "BRAHMPUTRA MAIL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15956",
     "trainName": "BRAHMPUTRA MAIL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15959",
     "trainName": "KAMRUP EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15960",
     "trainName": "KAMRUP EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15961",
     "trainName": "KAMRUP EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "15962",
     "trainName": "KAMRUP EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16003",
     "trainName": "MAS NSL EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16004",
     "trainName": "NSL MAS WKLY EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16021",
     "trainName": "KAVERI EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16022",
     "trainName": "KAVERI EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16031",
     "trainName": "ANDAMAN EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16032",
     "trainName": "ANDAMAN EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16053",
     "trainName": "MAS TPTY EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16054",
     "trainName": "TPTY MAS EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16057",
     "trainName": "SAPTHAGIRI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16058",
     "trainName": "SAPTHAGIRI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16089",
     "trainName": "YELAGIRI EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16090",
     "trainName": "YELAGIRI EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16093",
     "trainName": "MAS LJN EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16094",
     "trainName": "LJN MAS EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16101",
     "trainName": "MS QLN EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16102",
     "trainName": "QLN MS EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16103",
     "trainName": "TBM RMM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16104",
     "trainName": "RMM TBM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16107",
     "trainName": "SRC AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16108",
     "trainName": "TBM AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16115",
     "trainName": "MS PDY EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16116",
     "trainName": "PDY MS EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16121",
     "trainName": "TVC AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16122",
     "trainName": "TBM AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16127",
     "trainName": "MS GURUVAYUR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16128",
     "trainName": "GUV CHENNAI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16129",
     "trainName": "MS TN LINK EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16130",
     "trainName": "TN MS LINK EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16159",
     "trainName": "MS MAQ EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16160",
     "trainName": "MAQ CHENNAI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16175",
     "trainName": "MS KIK EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16176",
     "trainName": "KIK MS EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16179",
     "trainName": "MS MQ EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16180",
     "trainName": "MQ MS EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16185",
     "trainName": "VELANKANNI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16186",
     "trainName": "VELANKANNI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16187",
     "trainName": "KIK ERS EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16188",
     "trainName": "ERS KIK EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16203",
     "trainName": "MAS TPTY EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16204",
     "trainName": "TPTY MAS EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16205",
     "trainName": "MYSURU EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16206",
     "trainName": "TALGUPPA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16209",
     "trainName": "AII MYS EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16210",
     "trainName": "AJMER EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16215",
     "trainName": "CHAMUNDI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16216",
     "trainName": "CHAMUNDI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16217",
     "trainName": "MYS SNSI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16218",
     "trainName": "SNSI MYSURU EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16219",
     "trainName": "CMNR TPTY EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16220",
     "trainName": "TPTY CMNR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16223",
     "trainName": "SMVB RDP EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16224",
     "trainName": "RDP SMVB EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16227",
     "trainName": "MYS TLGP EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16228",
     "trainName": "TLGP MYS EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16231",
     "trainName": "MYSURU EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16232",
     "trainName": "MYS CUPJ EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16235",
     "trainName": "TN MYSURU EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16236",
     "trainName": "TUTICORIN EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16301",
     "trainName": "VENAD EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16302",
     "trainName": "VENAD EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16303",
     "trainName": "VANCHINAD EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16304",
     "trainName": "VANCHINAD EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16305",
     "trainName": "ERS CAN EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16306",
     "trainName": "CAN ERS EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16307",
     "trainName": "ALLP CAN EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16308",
     "trainName": "CAN ALLP EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16311",
     "trainName": "SGNR KCVL EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16312",
     "trainName": "TVCN SGNR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16315",
     "trainName": "MYS TVCN EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16316",
     "trainName": "TVCN MYS EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16317",
     "trainName": "HIMSAGAR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16318",
     "trainName": "HIMSAGAR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16319",
     "trainName": "SMVB HUMSAFAR",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16320",
     "trainName": "TVCN HUMSAFAR",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16325",
     "trainName": "NIL KTYM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16326",
     "trainName": "KTYM NIL EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16327",
     "trainName": "MDU GUV EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16328",
     "trainName": "GUV MDU EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16329",
     "trainName": "MAJN AMRITBHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16330",
     "trainName": "NCJ AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16331",
     "trainName": "TRIVANDRAM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16332",
     "trainName": "TVC LTT EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16333",
     "trainName": "VRL TVC EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16334",
     "trainName": "VERAVAL EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16335",
     "trainName": "GIMB NCJ EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16336",
     "trainName": "GANDHIDHAM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16337",
     "trainName": "OKHA ERS EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16338",
     "trainName": "ERS OKHA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16339",
     "trainName": "NAGARCOIL EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16340",
     "trainName": "NCJ LTT EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16341",
     "trainName": "GUV TVC EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16342",
     "trainName": "TVC GUV EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16343",
     "trainName": "AMRITHA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16344",
     "trainName": "AMRITHA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16345",
     "trainName": "NETRAVATI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16346",
     "trainName": "NETHRAVATHI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16347",
     "trainName": "MANGALORE EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16348",
     "trainName": "TRIVANDRUM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16349",
     "trainName": "RAJYA RANI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16350",
     "trainName": "RAJYA RANI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16351",
     "trainName": "NAGARCOIL EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16352",
     "trainName": "NCJ LTT EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16353",
     "trainName": "KCG NCJ EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16354",
     "trainName": "KACHEGUDA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16357",
     "trainName": "CHZ AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16358",
     "trainName": "NCJ AMRITBHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16359",
     "trainName": "ERS PATNA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16360",
     "trainName": "PNBE ERS EXPRES",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16361",
     "trainName": "ERS VLNK EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16362",
     "trainName": "VLNK ERS EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16363",
     "trainName": "ERS VLNK EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16364",
     "trainName": "VLNK ERS EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16367",
     "trainName": "KASHI TAMIL EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16368",
     "trainName": "KASHI TAMIL EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16377",
     "trainName": "ERNAKULAM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16378",
     "trainName": "SBC INTERCITY",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16381",
     "trainName": "KANYAKUMARI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16382",
     "trainName": "CAPE PUNE EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16501",
     "trainName": "ADI YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16505",
     "trainName": "GIMB SBC EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16506",
     "trainName": "GANDHIDHAM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16508",
     "trainName": "JODHPUR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16511",
     "trainName": "SBC CLT EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16512",
     "trainName": "CLT SBC EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16515",
     "trainName": "KARWAR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16516",
     "trainName": "KAWR YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16517",
     "trainName": "KANNUR  EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16518",
     "trainName": "BANGALORE EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16523",
     "trainName": "SMVB BLGT EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16524",
     "trainName": "BLGT SMVB EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16525",
     "trainName": "CAPE SBC EXPRES",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16526",
     "trainName": "KANYAKUMARI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16527",
     "trainName": "YPR KANNUR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16528",
     "trainName": "YESVANTPUR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16531",
     "trainName": "AII SBC G NAWAJ",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16532",
     "trainName": "GARIB NAWAZ EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16533",
     "trainName": "JU SBC EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16534",
     "trainName": "JODHPUR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16535",
     "trainName": "GOLGUMBAZ EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16536",
     "trainName": "GOLGUMBAZ EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16539",
     "trainName": "YPR MAJN EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16540",
     "trainName": "MAJN YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16541",
     "trainName": "YPR PVR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16542",
     "trainName": "PVR YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16545",
     "trainName": "YPR SNNR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16546",
     "trainName": "SNNR YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16547",
     "trainName": "YPR BJP EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16548",
     "trainName": "BJP YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16551",
     "trainName": "MAS AP EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16552",
     "trainName": "CHENNAI EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16553",
     "trainName": "SMVB LTT  EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16554",
     "trainName": "LTT  SMVB  EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16555",
     "trainName": "YPR TLGP EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16556",
     "trainName": "TLGP YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16559",
     "trainName": "SMVB BIDR  EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16560",
     "trainName": "BIDR SMVB EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16561",
     "trainName": "YPR TVCN AC EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16562",
     "trainName": "TVCN YPR AC EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16563",
     "trainName": "BNC KLBG EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16564",
     "trainName": "KLBG BNC EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16565",
     "trainName": "YPR MAQ EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16566",
     "trainName": "MAQ YPR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16571",
     "trainName": "YPR BIDR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16572",
     "trainName": "BIDR YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16573",
     "trainName": "PUDUCHERRY EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16574",
     "trainName": "PDY YPR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16575",
     "trainName": "GOMTESHWARA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16576",
     "trainName": "MAJN YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16577",
     "trainName": "YPR BIDR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16578",
     "trainName": "BIDR YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16579",
     "trainName": "SMET INTERCITY",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16580",
     "trainName": "YPR INTERCITY",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16581",
     "trainName": "YPR SMET EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16582",
     "trainName": "SMET YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16583",
     "trainName": "YPR LUR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16584",
     "trainName": "LUR YPR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16585",
     "trainName": "SMVB MRDW EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16586",
     "trainName": "MRDW SMVB EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16587",
     "trainName": "BIKANER EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16588",
     "trainName": "BKN YPR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16589",
     "trainName": "RANI CHENNAMMA",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16590",
     "trainName": "RANI CHENNAMMA",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16591",
     "trainName": "HAMPI EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16592",
     "trainName": "HAMPI EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16593",
     "trainName": "SBC NANDED EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16594",
     "trainName": "NED  YPR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16595",
     "trainName": "PANCHAGANGA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16596",
     "trainName": "PANCHAGANGA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16597",
     "trainName": "APDJ AMRITBHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16598",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16601",
     "trainName": "JBN AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16602",
     "trainName": "AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16603",
     "trainName": "MAVELI EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16604",
     "trainName": "MAVELI EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16605",
     "trainName": "ERNAD EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16606",
     "trainName": "ERNAD EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16613",
     "trainName": "RJT CBE EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16614",
     "trainName": "CBE RJT EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16615",
     "trainName": "CHEMMOZHI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16616",
     "trainName": "CHEMMOZHI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16617",
     "trainName": "RMM CBE EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16618",
     "trainName": "CBE RMM EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16619",
     "trainName": "DHN AMRIT BHARAT",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16620",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16621",
     "trainName": "RMM MAQ EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16622",
     "trainName": "MAQ RMM EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16629",
     "trainName": "MALABAR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16630",
     "trainName": "MALABAR EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16649",
     "trainName": "PARASURAM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16650",
     "trainName": "PARASURAM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16687",
     "trainName": "NAVYUG EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16688",
     "trainName": "NAVYUG EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16707",
     "trainName": "MAJN TEN EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16708",
     "trainName": "TEN MAJN EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16729",
     "trainName": "MDU PUU EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16730",
     "trainName": "PUU MDU EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16733",
     "trainName": "RMM OKHA EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16734",
     "trainName": "OKHA RMM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16751",
     "trainName": "MS RMM EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16752",
     "trainName": "RMM MS EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16765",
     "trainName": "MTP TN EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16766",
     "trainName": "TN MTP EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16779",
     "trainName": "TPTY RMM EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16780",
     "trainName": "RMM TPTY EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16787",
     "trainName": "TEN SVDK EXPRES",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16788",
     "trainName": "NAVYUG EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16791",
     "trainName": "PALARUVI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16792",
     "trainName": "PALARUVI EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16793",
     "trainName": "SHRADDHA SETHU",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16794",
     "trainName": "SHRADDHA SETHU",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16807",
     "trainName": "TBM TPJ EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16808",
     "trainName": "TPJ TBM EXPRESS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "16841",
