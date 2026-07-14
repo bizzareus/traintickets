@@ -2,7 +2,7 @@
 title: "IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers"
 description: "Can waitlisted passengers travel on a partially confirmed IRCTC e-ticket? Discover the official railway rules, TDR refund guidelines, and boarding policies for mixed-status PNRs."
 date: "2026-06-11"
-updated: "2026-07-14"
+updated: "2026-07-15"
 tags:
   - irctc rules
   - partial confirmation
@@ -81,6 +81,40 @@ Once the railways verify that no passengers on the PNR traveled, they will refun
 
 ---
 
+## What Happens to RAC Passengers in a Partially Confirmed Group?
+
+RAC (Reservation Against Cancellation) passengers in a partially confirmed group are in a far stronger position than waitlisted ones. An RAC ticket is a valid, chart-printed ticket that guarantees you can board and gives you half a side berth to share with one other RAC passenger. So if your PNR shows a mix of CNF, RAC, and WL statuses, three different things happen on board:
+
+- **Confirmed (CNF):** full allotted berth, printed on the chart with a coach and seat number.
+- **RAC:** guaranteed to travel, seated on a shared side-lower berth; upgraded to a full berth if a no-show frees one up.
+- **Waitlisted (WL):** no allotted space of their own — they can only board because at least one seat on the PNR is confirmed or RAC.
+
+The key point: RAC never auto-cancels. Even if every other passenger on your PNR were waitlisted, an RAC seat keeps the whole ticket alive, exactly the way a confirmed seat does. So an RAC passenger is both your safety net (they hold the PNR open) and a real, seated traveler.
+
+---
+
+## How Much Refund Do You Get on a Partially Confirmed Ticket?
+
+**If nobody in the group travels and you file the TDR correctly, you get back the full fare of every passenger — confirmed, RAC, and waitlisted alike — minus a ₹60 per-passenger clerkage fee. But if the confirmed or RAC members do board, only the dropped waitlisted portion is refunded, and the fares of those who traveled are forfeited entirely.**
+
+The refund you receive depends on who actually travels:
+
+- **No one travels + TDR filed:** near-full refund of the entire PNR (fare minus ₹60 clerkage per passenger).
+- **Confirmed/RAC travel, WL passengers dropped:** the waitlisted fares are auto-credited to your bank; the confirmed fares are used and non-refundable.
+- **You cancel the confirmed berths online after chart prep:** you lose the steep confirmed-cancellation penalty (see the charges above), so a TDR is almost always the better route when the whole group calls off the trip.
+
+The one deadline that matters: the "party partially confirmed" TDR must be submitted at least 30 minutes before the train departs its originating station. Miss it and the confirmed fares are gone.
+
+---
+
+## Can Waitlisted Passengers Get a Confirmed Berth After Boarding?
+
+Yes — sometimes. Once the train departs, passengers who booked but never showed up leave berths lying empty, and the onboard TTE can reallocate these vacant berths to your waitlisted companions for the rest of the journey, in order of waitlist priority (lower WL numbers first). There is no online way to claim them; you have to ask the TTE in person after departure.
+
+You do not have to guess where the empty berths are. Once the chart is prepared (about 8 hours before departure), check the [Chart Vacancy coach map](/chart-vacancy) to see exactly which berths on your train are unsold or vacant, and use the [Coach Journey Lookup](/seat-status) to see how availability changes station by station. Walk up to the TTE knowing the specific coach and berth numbers that are free — it turns a vague "please adjust us" into a concrete request that is far more likely to succeed.
+
+---
+
 ## Frequently Asked Questions (FAQ)
 
 ### Can I cancel only the waitlisted passengers on a partially confirmed ticket?
@@ -94,6 +128,12 @@ Since they don't have assigned berths, they'll have to share. But once the train
 
 ### Is traveling on a fully waitlisted e-ticket allowed if my friend has a confirmed ticket?
 No, never. If your friend is on a separate confirmed PNR and your online e-ticket is fully waitlisted, your ticket is dead. The system cancels it automatically. Boarding a train with an auto-cancelled e-ticket is illegal. Under the Jan Vishwas Act (effective July 1, 2026), you will be treated as traveling without a ticket and fined a minimum penalty of **₹500** plus the actual fare of the segment.
+
+### Does partial confirmation happen with Tatkal tickets?
+Yes, and it is very common. Tatkal quota sells out in seconds, so group Tatkal bookings often end up part-confirmed and part-waitlisted. The same rule applies: if the entire Tatkal PNR stays waitlisted, it auto-cancels, but a single confirmed or RAC seat keeps it alive. Remember that confirmed Tatkal tickets carry no refund on normal cancellation, so filing a TDR (only valid for disruptions like a 3-hour delay or cancelled train) is your only route to money back.
+
+### What if only one passenger is confirmed and everyone else is waitlisted?
+That single confirmed seat keeps the whole PNR active, so the waitlisted members can legally board and squeeze onto the confirmed berth. It is perfectly legal, but sharing one berth for an overnight trip is genuinely uncomfortable. Weigh that against filing a TDR before departure — often the smarter call for a large group with only one confirmed seat.
 
 ---
 
