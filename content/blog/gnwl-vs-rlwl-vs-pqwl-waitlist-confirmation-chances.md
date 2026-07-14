@@ -199,7 +199,7 @@ After the chart is prepared:
 
 This applies to all WL types. A GNWL ticket that does not clear is just as invalid at the gate as a PQWL ticket that does not clear.
 
-The timing of chart preparation varies. For trains departing in the evening or night, the chart usually gets prepared around ten hours before departure. For early morning trains, it may happen the previous evening. The [IRCTC chart preparation guide](/blog/irctc-chart-preparation-guide) covers this in more detail.
+The timing of chart preparation varies. For trains departing in the evening or night, the chart usually gets prepared four to eight hours before departure. For early morning trains, it may happen the previous evening. The [IRCTC chart preparation guide](/blog/irctc-chart-preparation-guide) covers this in more detail.
 
 ---
 
