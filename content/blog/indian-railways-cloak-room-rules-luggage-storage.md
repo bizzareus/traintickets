@@ -2,7 +2,7 @@
 title: "Indian Railways Cloak Room Rules: Luggage Storage Guide"
 description: "Confused about storing your bags at the station? Learn the latest Indian Railways Cloak Room rules, charges, locker prices, and how to keep your luggage safe."
 date: "2026-06-27"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -58,9 +58,9 @@ Hand your ticket and a government photo ID (like Aadhaar card, Passport, or PAN 
 
 ## Can You Use a Current Available Ticket for Cloak Room Storage?
 
-**Yes, you can use a current available ticket to store luggage in the cloakroom. A current available ticket is a fully confirmed seat with coach/berth numbers that opens 10 hours before departure and closes 30 minutes before, serving as a valid journey ticket.**
+**Yes, you can use a current available ticket to store luggage in the cloakroom. A current available ticket is a fully confirmed seat with coach/berth numbers that opens 8 hours before departure and closes 30 minutes before, serving as a valid journey ticket.**
 
-What if you just arrived in a city, want to sightsee for a day, but do not have a pre-booked train ticket? You can buy a **current available ticket** at the booking window or online. This is a **fully confirmed seat** complete with a coach and berth number. These tickets open for booking exactly 10 hours before a train departs (right after chart preparation) and close 30 minutes before departure.
+What if you just arrived in a city, want to sightsee for a day, but do not have a pre-booked train ticket? You can buy a **current available ticket** at the booking window or online. This is a **fully confirmed seat** complete with a coach and berth number. These tickets open for booking exactly 8 hours before a train departs (right after chart preparation) and close 30 minutes before departure.
 
 Since this counts as a valid journey ticket, the cloakroom staff will happily accept it. You can show your current available ticket, deposit your heavy bags, and explore the city hands-free.
 

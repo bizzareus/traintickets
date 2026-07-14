@@ -2,7 +2,7 @@
 title: "IRCTC Chart Preparation for Last-Minute Tickets"
 description: "A practical, no-hype guide to chart preparation: what changes after the chart, why WL/Regret can flip, and how to time your checks."
 date: "2026-05-15"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - chart preparation
   - irctc
@@ -19,7 +19,7 @@ tags:
 
 ## What Is Chart Preparation in Indian Railways?
 
-Chart preparation is when Indian Railways finalizes the reservation chart for a train, locking in confirmed berths, RAC seats, and waitlist outcomes. It typically happens 10 hours before departure from the originating station, with a second chart 30 minutes before departure. After charting, cancelled seats and released quotas become visible for booking.
+Chart preparation is when Indian Railways finalizes the reservation chart for a train, locking in confirmed berths, RAC seats, and waitlist outcomes. It typically happens 8 hours before departure from the originating station, with a second chart 30 minutes before departure. After charting, cancelled seats and released quotas become visible for booking.
 
 Chart preparation is the point where the railway turns booking data into the passenger chart used by the TTE. In plain English: it is when confirmed berths, RAC seats, dropped waitlists, and released vacancies become much clearer.
 
@@ -101,7 +101,7 @@ Use it as a basic check only. For last-minute travel, the useful signal is segme
 ## Common Booking Questions (FAQ)
 
 ### When is the final train chart prepared?
-The first chart goes up 10 hours before the train leaves the starting station. But don't worry. They prepare a second, final chart just 30 minutes before departure. That's when they update all the last-minute cancellations and current bookings done on the [official IRCTC portal](https://www.irctc.co.in/).
+The first chart goes up 8 hours before the train leaves the starting station. But don't worry. They prepare a second, final chart just 30 minutes before departure. That's when they update all the last-minute cancellations and current bookings done on the [official IRCTC portal](https://www.irctc.co.in/).
 
 ### What happens if my ticket is partially confirmed and partially waitlisted after charting?
 On a group/family e-ticket PNR, if at least one passenger has a confirmed or RAC status while others remain waitlisted, the waitlisted passengers are permitted to board and travel. The Travelling Ticket Examiner (TTE) will assist with seat/berth adjustment onboard, subject to availability.

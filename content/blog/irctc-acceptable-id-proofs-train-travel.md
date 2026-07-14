@@ -2,7 +2,7 @@
 title: "Which ID Proofs Are Valid for Train Travel? (2026)"
 description: "Is your Aadhaar or driving licence valid to board a train? See every accepted ID proof — and whether a digital ID on DigiLocker or mParivahan works with the TTE."
 date: "2026-06-27"
-updated: "2026-07-09"
+updated: "2026-07-14"
 tags:
   - train travel
   - irctc rules
@@ -44,7 +44,7 @@ Below is the complete, official list of the 10 acceptable ID proofs recognized b
 
 Many passengers make the mistake of assuming a photo of their Aadhaar or PAN card saved in their gallery or WhatsApp is enough. However, TTEs have strict instructions to reject these. Screenshots and image files are easy to edit, and accepting them makes it easy for unauthorized ticket transfers.
 
-If you cannot present a physical original card, you must use an approved app. A **current available ticket** is a **fully confirmed seat** with coach/berth numbers that opens as soon as the first chart is prepared (about 10 hours before departure) and closes 30 minutes before. If you secure one of these last-minute tickets, ensure you have your physical ID or your digital app logged in before you step onto the platform.
+If you cannot present a physical original card, you must use an approved app. A **current available ticket** is a **fully confirmed seat** with coach/berth numbers that opens as soon as the first chart is prepared (about 8 hours before departure) and closes 30 minutes before. If you secure one of these last-minute tickets, ensure you have your physical ID or your digital app logged in before you step onto the platform.
 
 ---
 

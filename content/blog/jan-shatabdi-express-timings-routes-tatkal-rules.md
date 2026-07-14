@@ -2,7 +2,7 @@
 title: "Jan Shatabdi Express: Fares, Timings & Is It Worth It?"
 description: "Jan Shatabdi is the budget Shatabdi: fast day trains with AC & non-AC chair cars and no auto-catering. Compare fares, timings, routes and Tatkal booking rules."
 date: "2026-07-02"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -53,7 +53,7 @@ However, train food quality can be hit-or-miss. If you want a decent meal, we re
 
 **You can book tickets for most Jan Shatabdi Express trains up to 60 days in advance, not counting the day of your journey. This two-month window gives you plenty of time to plan, though a few short-run day trains might operate on a tighter 30-day advance booking schedule.**
 
-We always suggest booking early, especially for weekend trips. If you are booking last-minute and the train is completely sold out, check for a current available ticket. A current available ticket is a fully confirmed seat with an assigned coach and seat number. It only opens up after the first chart preparation, which happens about 10 hours before the train departs, and stays bookable online until 30 minutes before departure.
+We always suggest booking early, especially for weekend trips. If you are booking last-minute and the train is completely sold out, check for a current available ticket. A current available ticket is a fully confirmed seat with an assigned coach and seat number. It only opens up after the first chart preparation, which happens about 8 hours before the train departs, and stays bookable online until 30 minutes before departure.
 
 To find these late vacancies, check out LastBerth's [Seat Status Coach Journey Lookup](/seat-status) tool. It shows exactly which berths are free for specific station pairs, helping you locate empty seats on a running train.
 
@@ -86,4 +86,4 @@ Yes. Tatkal booking is available for Jan Shatabdi trains. The booking window ope
 No. Indian Railways has suspended concessions for senior citizens on all regular trains, including Jan Shatabdi Express. All passengers, except for specific quotas like Divyangjan (disabled passengers) or students under strict conditions, must pay the full standard adult fare.
 
 ### Is current booking available for Jan Shatabdi trains?
-Yes. If seats remain vacant after the reservation chart is prepared (about 10 hours before the train's departure), they are made available under the current booking quota. You can book these confirmed seats online or at the station ticket counter up to 30 minutes before the train leaves.
+Yes. If seats remain vacant after the reservation chart is prepared (about 8 hours before the train's departure), they are made available under the current booking quota. You can book these confirmed seats online or at the station ticket counter up to 30 minutes before the train leaves.

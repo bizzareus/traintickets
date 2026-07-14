@@ -2,7 +2,7 @@
 title: "IRCTC Partial Confirmation: Rules for Traveling with Waitlisted Passengers"
 description: "Can waitlisted passengers travel on a partially confirmed IRCTC e-ticket? Discover the official railway rules, TDR refund guidelines, and boarding policies for mixed-status PNRs."
 date: "2026-06-11"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - irctc rules
   - partial confirmation
@@ -27,7 +27,7 @@ Let's quickly dissect the real rules and refund hacks for these mixed PNRs.
 
 What on earth is a partially confirmed ticket? Simple. It's when you book a group of people together under one PNR. When the chart goes up, only some passengers get confirmed berths or RAC seats, while the others are left hanging on the waiting list.
 
-Usually, this happens because you booked during a rush. People drop out, seats open up, but it's never quite enough for everyone. By the time the chart drops—usually about 10 hours before the train leaves—you're stuck in this weird, limbo-like, half-and-half state. 
+Usually, this happens because you booked during a rush. People drop out, seats open up, but it's never quite enough for everyone. By the time the chart drops—usually about 8 hours before the train leaves—you're stuck in this weird, limbo-like, half-and-half state. 
 
 It’s just how the system rolls when you book as a group. If you're still on the waitlist when the chart hits, that's it. Your PNR is officially tagged as "partially confirmed."
 

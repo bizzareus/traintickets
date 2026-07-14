@@ -2,7 +2,7 @@
 title: "Shatabdi Express Guide: Timings, Routes & Booking Rules"
 description: "Shatabdi Express guide 2026: timings, route schedules, the Tatkal booking window, fares, and which meals come free with your seat. Plan before you book."
 date: "2026-06-30"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -96,7 +96,7 @@ $$\text{WL (Waiting List)} \longrightarrow \text{RAC (Reservation Against Cancel
 
 However, since Shatabdi Express trains consist only of seating classes (CC and EC) and do not have sleeper berths, there is **no RAC category** on these trains. Tickets move directly from the waiting list to a fully confirmed seat. 
 
-Waitlist queues like `WL/1` or `WL/10` track your position in line. If your online e-ticket does not get confirmed and remains waitlisted after the final reservation chart is prepared (10 hours before departure), IRCTC automatically cancels it and issues a refund. You cannot travel on a waitlisted e-ticket.
+Waitlist queues like `WL/1` or `WL/10` track your position in line. If your online e-ticket does not get confirmed and remains waitlisted after the final reservation chart is prepared (8 hours before departure), IRCTC automatically cancels it and issues a refund. You cannot travel on a waitlisted e-ticket.
 
 ### How LastBerth helps you secure a seat
 If your direct route shows a waiting list, do not lose hope. You can use LastBerth’s premium features to find alternative travel arrangements:
@@ -104,7 +104,7 @@ If your direct route shows a waiting list, do not lose hope. You can use LastBer
 *   **[Finding Smart Seats](/)**: This tool finds seat availability across a journey by breaking the seat bookings across multiple coaches or segments where a single direct seat is unavailable on the same train.
 *   **[PNR Status Search & Direct Booking](/)**: Check your PNR status, view waitlist confirmation probabilities, and search for alternative train combinations immediately if confirmation looks unlikely.
 *   **[Seat Status Coach Journey Lookup](/seat-status)**: Look up specific seats to see exactly from which station to which station they are booked. This lets you identify empty seats on running trains and request the Travelling Ticket Examiner (TTE) to allocate them to you.
-*   **Current Availability Booking:** If you are booking at the last minute, check for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach and seat numbers. It opens 10 hours before departure (right after chart preparation) and closes 30 minutes before train departure.
+*   **Current Availability Booking:** If you are booking at the last minute, check for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach and seat numbers. It opens 8 hours before departure (right after chart preparation) and closes 30 minutes before train departure.
 
 ---
 
@@ -117,7 +117,7 @@ If your direct route shows a waiting list, do not lose hope. You can use LastBer
 Because Shatabdi Express is a fully air-conditioned train consisting of CC and EC classes, Tatkal bookings open at **10:00 AM** daily, exactly one day before the train departs from its originating station.
 
 ### What is a current available ticket in Shatabdi Express?
-A `"current available ticket"` is a confirmed seat that becomes available for booking online or at counters after the reservation chart is prepared. It opens 10 hours before departure and closes 30 minutes before departure.
+A `"current available ticket"` is a confirmed seat that becomes available for booking online or at counters after the reservation chart is prepared. It opens 8 hours before departure and closes 30 minutes before departure.
 
 ### Is food free on the Shatabdi Express?
 Food is not free; catering charges are included in the ticket fare by default. However, passengers can opt out of food during booking to reduce their overall ticket cost.

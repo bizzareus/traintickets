@@ -2,7 +2,7 @@
 title: "Vande Bharat Train Guide: Booking Rules, Routes & Ticket Fares"
 description: "Vande Bharat train guide 2026: booking rules, ticket prices by class, catering, and seat features. Everything you need to know before you reserve a seat."
 date: "2026-06-30"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - vande bharat
   - vande bharat train
@@ -69,7 +69,7 @@ Because Vande Bharat trains only have seating cars (CC and EC) and no sleeper co
 
 **WL (Waiting List) → Confirmed**
 
-If your ticket is not confirmed (e.g., still showing `WL/3`) when the final chart is prepared 10 hours before the train departs, **IRCTC will automatically cancel your e-ticket** and refund the amount. You are not allowed to board the train with a waitlisted e-ticket.
+If your ticket is not confirmed (e.g., still showing `WL/3`) when the final chart is prepared 8 hours before the train departs, **IRCTC will automatically cancel your e-ticket** and refund the amount. You are not allowed to board the train with a waitlisted e-ticket.
 
 To beat the waitlist, use LastBerth's [Finding Smart Seats](/) tool. It searches for split seats on the same train (like booking one seat for segment A-B and another for B-C). You can also monitor confirmation odds with [PNR Status Search & Direct Booking](/) or check physical seating layout maps via the [Seat Status Coach Journey Lookup](/seat-status).
 
@@ -89,7 +89,7 @@ No, catering is not free. Meals are charged as part of the ticket fare. However,
 No, Indian Railways does not offer senior citizen concessions on Vande Bharat trains. The full ticket price applies to all passengers, with exceptions only for authorized Divyangjan quotas.
 
 ### What is a current available ticket in Vande Bharat?
-A `"current available ticket"` is a confirmed seat that becomes available after chart preparation (10 hours before departure). You can book these online or at the station until 30 minutes before the train starts.
+A `"current available ticket"` is a confirmed seat that becomes available after chart preparation (8 hours before departure). You can book these online or at the station until 30 minutes before the train starts.
 
 ### Which classes are available in Vande Bharat Sleeper trains?
 Vande Bharat Sleeper trains offer overnight berths in AC 3-Tier (3A), AC 2-Tier (2A), and AC First Class (1A) configurations, featuring enhanced cushioning, charging ports for every berth, and reading lights.

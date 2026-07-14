@@ -2,7 +2,7 @@
 title: "IRCTC Ticket Booking Timings: Maintenance Hours & Rules"
 description: "A complete guide on IRCTC booking timings, Tatkal opening hours, night maintenance window shutdown (11:45 PM to 12:20 AM), and current availability times."
 date: "2026-06-23"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -65,9 +65,9 @@ To secure a ticket, make sure you log in 5 minutes early, keep your passenger li
 
 ## When Does Current Availability Open in IRCTC?
 
-Current Availability in IRCTC opens immediately after the first reservation chart is prepared, which is exactly 10 hours before the train's scheduled departure station. This booking window remains open until 30 minutes before the train departs, allowing passengers to book any remaining unsold seats on the route.
+Current Availability in IRCTC opens immediately after the first reservation chart is prepared, which is exactly 8 hours before the train's scheduled departure station. This booking window remains open until 30 minutes before the train departs, allowing passengers to book any remaining unsold seats on the route.
 
-Booking during this window is highly advantageous. A `"current available ticket"` is a **fully confirmed seat** with coach/berth numbers, which opens 10 hours before departure and closes 30 minutes before. 
+Booking during this window is highly advantageous. A `"current available ticket"` is a **fully confirmed seat** with coach/berth numbers, which opens 8 hours before departure and closes 30 minutes before. 
 
 Unlike Tatkal tickets, current availability tickets are sold at a discount (often 10% less than the base fare) because the railways want to fill the remaining vacant berths before the train departs. You can book these tickets online through the IRCTC app/website or at the station reservation counters. It is the absolute last chance to get a confirmed seat online before the train leaves the platform.
 

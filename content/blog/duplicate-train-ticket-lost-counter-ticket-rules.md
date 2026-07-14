@@ -2,7 +2,7 @@
 title: "Duplicate Train Ticket: Rules for Lost or Damaged Tickets"
 description: "Lost or damaged your Indian Railways counter ticket? Learn how to get a duplicate train ticket, exact charges, refund rules, and travel guidelines."
 date: "2026-06-27"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -61,7 +61,7 @@ The replacement fee depends on your current booking status and when you apply. I
 
 The short answer is no. Because window tickets are treated as legal tenders, a digital screenshot or photo is completely invalid for travel.
 
-If your train is leaving very soon and you don't have time to wait in line at a reservation counter, look into booking a current available ticket. These are confirmed seats that open up right after chart preparation (10 hours before departure) and remain bookable until 30 minutes before the train pulls out.
+If your train is leaving very soon and you don't have time to wait in line at a reservation counter, look into booking a current available ticket. These are confirmed seats that open up right after chart preparation (8 hours before departure) and remain bookable until 30 minutes before the train pulls out.
 
 If you decide to board with just a picture of your ticket, the TTE is legally obligated to penalize you. Showing your ID and proving the name matches won't waive the fine, so always ensure you have either an official duplicate or a brand-new valid booking.
 

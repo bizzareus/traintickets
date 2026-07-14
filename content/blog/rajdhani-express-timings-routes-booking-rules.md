@@ -2,7 +2,7 @@
 title: "Rajdhani Express: Timings, Booking Rules, Catering & Fares"
 description: "Rajdhani Express guide 2026: full timings, dynamic fares, seat layout, and which meals are included in your ticket price. Everything to know before you book."
 date: "2026-07-01"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -74,7 +74,7 @@ To overcome waitlist challenges, use these LastBerth features:
 *   **[Finding Smart Seats](/)**: When direct tickets are sold out, LastBerth searches for a split booking. It breaks down the route into available segments on the same train, so you might sit in coach A1 for the first leg and B2 for the next, but you still travel.
 *   **[PNR Status Search & Direct Booking](/)**: Paste your PNR number to see your exact confirmation probability. If the chances look slim, we'll recommend better travel routes right away.
 *   **[Seat Status Coach Journey Lookup](/seat-status)**: Scan the train layout to find vacant berths between specific stations. If you find one, walk up to the TTE and get it assigned on the spot.
-*   **Look for Current Tickets**: Search for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** sold after the first chart is prepared. It goes online 10 hours before departure and closes just 30 minutes before the train leaves the station.
+*   **Look for Current Tickets**: Search for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** sold after the first chart is prepared. It goes online 8 hours before departure and closes just 30 minutes before the train leaves the station.
 
 ---
 
@@ -96,4 +96,4 @@ Since the Rajdhani Express only has AC classes (1AC, 2AC, 3AC), the Tatkal booki
 If you booked an online e-ticket and it remains on the waiting list after chart preparation, you cannot travel with it; it is automatically cancelled and refunded. If you have a physical waitlisted ticket purchased from a station counter, you may board the train but must consult the TTE for any vacant berths.
 
 ### What is a current available ticket on Rajdhani?
-A **current available ticket** is a fully confirmed ticket with assigned coach and berth numbers that becomes available for booking after the reservation chart is prepared. This opens 10 hours before the train's scheduled departure and closes 30 minutes before departure.
+A **current available ticket** is a fully confirmed ticket with assigned coach and berth numbers that becomes available for booking after the reservation chart is prepared. This opens 8 hours before the train's scheduled departure and closes 30 minutes before departure.

@@ -2,7 +2,7 @@
 title: "IRCTC FTR Booking: Your Guide to Booking Full Trains or Coaches"
 description: "Got a big trip coming up, like a wedding or a group outing? Dive into the step-by-step guide for IRCTC FTR bookings, including costs, deposits, and cancellation info."
 date: "2026-06-29"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -81,7 +81,7 @@ If your booking is rejected or travel plans change, alternative ticket booking s
 
 Should you go with regular tickets, our [PNR Status Search & Direct Booking](/) tool can keep tabs on your ticket status and offer alternatives if confirmation looks unlikely. You can also use the [Seat Status Coach Journey Lookup](/seat-status) to see open seats on your train.
 
-Booking at the last minute? A `"current available ticket"` means a confirmed seat with a number. Current availability opens 10 hours before departure and shuts 30 minutes before. Check with LastBerth to snap up a confirmed spot when all else fails.
+Booking at the last minute? A `"current available ticket"` means a confirmed seat with a number. Current availability opens 8 hours before departure and shuts 30 minutes before. Check with LastBerth to snap up a confirmed spot when all else fails.
 
 ---
 

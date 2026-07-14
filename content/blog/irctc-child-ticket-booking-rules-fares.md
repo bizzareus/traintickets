@@ -46,7 +46,7 @@ If your family's tickets are waitlisted, keep checking them. You can use LastBer
 
 In Indian Railways, **WL full form is Waiting List**. The booking status progress follows a specific progression: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. 
 
-A ticket at `WL/1` has a very high chance of moving to RAC or getting confirmed. But if your child's ticket is stuck at `WL/10` or higher, it might not clear. Remember, online e-tickets that remain on the waiting list after chart preparation are automatically cancelled and refunded. If that happens, look for a `"current available ticket"`. This is a **fully confirmed seat** with coach/berth numbers that opens 10 hours before the train leaves and closes 30 minutes before.
+A ticket at `WL/1` has a very high chance of moving to RAC or getting confirmed. But if your child's ticket is stuck at `WL/10` or higher, it might not clear. Remember, online e-tickets that remain on the waiting list after chart preparation are automatically cancelled and refunded. If that happens, look for a `"current available ticket"`. This is a **fully confirmed seat** with coach/berth numbers that opens 8 hours before the train leaves and closes 30 minutes before.
 
 ## IRCTC Child Ticket Booking Rules (FAQ)
 
@@ -62,4 +62,4 @@ Yes, you can choose the half-fare option (without a berth) in Sleeper and all AC
 No. Children under 5 must travel with an adult. Children between 5 and 11 years (under 12) using half-fare tickets must also have an adult passenger traveling with them.
 
 ### What is a current available ticket and is it confirmed?
-A "current available ticket" is a fully confirmed seat with coach/berth numbers. It opens 10 hours before the train leaves and closes 30 minutes before.
+A "current available ticket" is a fully confirmed seat with coach/berth numbers. It opens 8 hours before the train leaves and closes 30 minutes before.

@@ -2,7 +2,7 @@
 title: "What is Regret in IRCTC? Meaning, Rules & Booking Solutions"
 description: "Learn what Regret means in IRCTC booking, how it differs from WL, if Regret tickets ever confirm, and hacks to book seats when booking is closed."
 date: "2026-06-23"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -76,7 +76,7 @@ You can book a confirmed ticket during a Regret status by using LastBerth's Smar
 Here are the best ways to bypass a Regret status and get a seat:
 
 - **Use LastBerth Smart Seats:** Instead of booking one direct ticket from A to C, you can split your journey. The train might show Regret for the full route, but have empty berths from A to B and B to C. **[LastBerth](/)** finds these split-seat options automatically, letting you book a confirmed journey across different coaches or seat numbers.
-- **Check Current Availability:** After the reservation chart is prepared (10 hours before departure), all unsold seats and cancelled quotas are released. This opens up as a `"current available ticket"`, which is a **fully confirmed seat** with coach/berth numbers. You can book this up to 30 minutes before the train departs.
+- **Check Current Availability:** After the reservation chart is prepared (8 hours before departure), all unsold seats and cancelled quotas are released. This opens up as a `"current available ticket"`, which is a **fully confirmed seat** with coach/berth numbers. You can book this up to 30 minutes before the train departs.
 - **Track Confirmation Probability:** If you already have a waitlisted ticket, search your PNR on LastBerth. Our system predicts its confirmation chances and highlights alternative travel options if it looks unlikely to clear.
 - **Look Up Seat Status:** Use LastBerth’s **[Coach Journey Lookup](/seat-status)** to see exactly where seats are occupied. This shows you which berths are empty on running trains so you can ask the TTE to allot them to you.
 

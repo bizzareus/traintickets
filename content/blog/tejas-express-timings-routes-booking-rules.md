@@ -2,7 +2,7 @@
 title: "Tejas Express: India's Private Train — Fares & Booking"
 description: "Tejas Express is India's first IRCTC-run 'private' train, with dynamic fares and no Tatkal or concession quota. Full guide to timings, routes, fares, and booking rules."
 date: "2026-07-02"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -16,7 +16,7 @@ tags:
 - **General Reservation Period:** Tickets for Tejas Express open 60 days in advance (ARP) instead of the standard 120 days.
 - **Tatkal Booking:** There is no Tatkal or Premium Tatkal quota in Tejas Express trains; all bookings fall under the general quota.
 - **RAC Quota:** Tejas Express does not operate with RAC (Reservation Against Cancellation) berths; seats are either confirmed or waitlisted.
-- **Current Booking:** Current availability opens as soon as the first chart is prepared (about 10 hours before departure) and remains bookable online until 5 minutes before departure.
+- **Current Booking:** Current availability opens as soon as the first chart is prepared (about 8 hours before departure) and remains bookable online until 5 minutes before departure.
 - **Catering:** Onboard food is optional; you can choose to skip it during booking to save on food charges.
 
 ---
@@ -41,9 +41,9 @@ However, the most critical difference is that **Tejas Express has no Tatkal or P
 
 ## When does Current Availability open for Tejas Express?
 
-**Current availability for Tejas Express opens immediately after the first reservation chart preparation, which is about 10 hours before departure, and remains open until 5 minutes before scheduled departure.**
+**Current availability for Tejas Express opens immediately after the first reservation chart preparation, which is about 8 hours before departure, and remains open until 5 minutes before scheduled departure.**
 
-If you missed the general booking window and did not secure a confirmed seat, current availability is your final option. After the first reservation chart is prepared (typically 10 hours before the train departs from its originating station), all unsold berths across different quotas (such as Ladies, Senior Citizens, or Duty Passes) are merged into a single pool. 
+If you missed the general booking window and did not secure a confirmed seat, current availability is your final option. After the first reservation chart is prepared (typically 8 hours before the train departs from its originating station), all unsold berths across different quotas (such as Ladies, Senior Citizens, or Duty Passes) are merged into a single pool. 
 
 These seats are offered as **current available tickets** on the IRCTC app or website. Unlike standard trains where current booking closes 30 minutes before departure, Tejas Express allows you to book these seats online up to **5 minutes before the scheduled departure** of the train. If you check current booking and find no seats left, you can use the LastBerth platform to find alternative arrangements before the train departs.
 

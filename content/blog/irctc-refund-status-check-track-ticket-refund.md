@@ -2,7 +2,7 @@
 title: "IRCTC Refund Status Check: Track Cancelled Ticket Refund"
 description: "How do you check IRCTC refund status online? Read the step-by-step guide to track cancelled ticket refunds, PNR refund status, and delayed TDR refunds."
 date: "2026-06-27"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -53,7 +53,7 @@ The table below outlines the typical timelines for different payment methods:
 
 **If you have not received your IRCTC refund within 7 working days, you should check the refund status on the IRCTC portal, copy the refund transaction ID, and contact your bank's customer support. The bank can trace the transaction using this ID to resolve any backend settlement delays.**
 
-It is common to worry when a refund is delayed, especially after canceling a ticket to buy a **current available ticket**—which is a **fully confirmed seat** with coach/berth numbers that opens 10 hours before departure and closes 30 minutes before. If the refund is marked as "Refunded" in IRCTC but not showing in your bank statement, the issue lies with the bank, not the railways.
+It is common to worry when a refund is delayed, especially after canceling a ticket to buy a **current available ticket**—which is a **fully confirmed seat** with coach/berth numbers that opens 8 hours before departure and closes 30 minutes before. If the refund is marked as "Refunded" in IRCTC but not showing in your bank statement, the issue lies with the bank, not the railways.
 
 Follow these steps if your refund is missing:
 - **Confirm the status:** Ensure the status is marked as "Refunded" and not "Failed" or "Initiated."

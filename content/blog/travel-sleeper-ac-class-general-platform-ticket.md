@@ -2,7 +2,7 @@
 title: "Caught in Sleeper With a General Ticket? Fines & Rules 2026"
 description: "Can you sit in a Sleeper or AC coach with a general or platform ticket? The exact fines under Section 138, TTE rules, and how to handle real emergencies in 2026."
 date: "2026-06-12"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - general ticket
   - platform ticket
@@ -73,7 +73,7 @@ If you're facing a sudden travel emergency, here are the best legal options avai
 Almost all Express and Mail trains have unreserved compartments, usually placed at the very front or very rear. You can buy a general ticket at the counter or use the official UTS mobile app. These tickets are incredibly cheap and let you travel legally in those specific general coaches. Just prepare yourself—they are always incredibly crowded.
 
 ### 2. Book a Current Availability Ticket
-Once the chart is ready (about 10 hours before departure), any leftover berths go up for sale under 'Current Availability' at a 10% discount. You can book these on the IRCTC app or at the station reservation counter up to 30 minutes before the train pulls out. Our guide on [how IRCTC current availability works](/blog/irctc-current-availability-explained) covers how to grab these seats.
+Once the chart is ready (about 8 hours before departure), any leftover berths go up for sale under 'Current Availability' at a 10% discount. You can book these on the IRCTC app or at the station reservation counter up to 30 minutes before the train pulls out. Our guide on [how IRCTC current availability works](/blog/irctc-current-availability-explained) covers how to grab these seats.
 
 ### 3. Ask the TTE on the Platform
 Before the train leaves, locate the TTE standing near the reserved coaches. TTEs use Hand-Held Terminals (HHTs) that show exactly which berths are empty. If you explain your emergency politely, they might assign you a vacant berth right there on the spot. They'll issue a regular receipt and you won't be treated as an offender.

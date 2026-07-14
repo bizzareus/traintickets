@@ -2,7 +2,7 @@
 title: "RailOne App: UTS, Platform Tickets & the GPS Limit 2026"
 description: "RailOne replaces the UTS app for unreserved, platform & season tickets. See the GPS distance limits that block bookings, R-Wallet setup, and migration steps."
 date: "2026-06-23"
-updated: "2026-07-13"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -112,7 +112,7 @@ Before resorting to crowded general coaches, you should use LastBerth's key feat
 - [PNR Status Search & Direct Booking](/) checks your confirmation probability and provides alternate booking options immediately.
 - [Seat Status Coach Journey Lookup](/seat-status) helps you find vacant berths on running trains that you can request the TTE to assign to you.
 
-Remember that a **current available ticket** is a **fully confirmed seat** with an assigned coach and berth. This becomes available for booking online or at counters after chart preparation (~10 hours before departure) until 30 minutes before train departure. If all confirmed seats are gone, a RailOne unreserved ticket is your safest legal fallback.
+Remember that a **current available ticket** is a **fully confirmed seat** with an assigned coach and berth. This becomes available for booking online or at counters after chart preparation (~8 hours before departure) until 30 minutes before train departure. If all confirmed seats are gone, a RailOne unreserved ticket is your safest legal fallback.
 
 ---
 

@@ -2,7 +2,7 @@
 title: "Bullet Train in India: Routes, Speed, and Project Status"
 description: "When will India's bullet train run? Latest on the Mumbai–Ahmedabad route, 320 km/h speeds, all stations, fares, and the expected launch date. Updated 2026."
 date: "2026-06-30"
-updated: "2026-07-07"
+updated: "2026-07-14"
 tags:
   - bullet train
   - bullet train in india
@@ -64,7 +64,7 @@ Construction is moving at a decent clip, especially on the Gujarat side since la
 
 ## Solid Alternatives for Traveling Right Now
 
-**Since the bullet train is still a couple of years away, you can take the fast Vande Bharat Express or grab a "current available ticket" on normal trains. These are confirmed berths that go on sale after the first chart is prepared 10 hours before departure.**
+**Since the bullet train is still a couple of years away, you can take the fast Vande Bharat Express or grab a "current available ticket" on normal trains. These are confirmed berths that go on sale after the first chart is prepared 8 hours before departure.**
 
 If you need to travel between Mumbai and Ahmedabad today, getting a seat can be a real headache because trains are almost always packed.
 
@@ -73,5 +73,5 @@ If you get stuck with a waitlisted ticket, don't forget that **WL full form is W
 Here are the absolute best ways to lock in a seat today:
 *   **Book the Vande Bharat:** It's your fastest option right now, connecting Mumbai and Gandhinagar in 6 hours and 30 minutes (or Mumbai and Ahmedabad in 5 hours and 25 minutes).
 *   **Try LastBerth's Smart Seats:** If direct tickets are sold out, use the [Finding Smart Seats](/) tool to find seat-sharing slots on different legs of the same train.
-*   **Grab Current Tickets:** Keep an eye out for a `"current available ticket"`. These confirmed seats open up online or at the station as soon as the first chart is prepared (about 10 hours before departure) and stay open until 30 minutes before the train leaves.
+*   **Grab Current Tickets:** Keep an eye out for a `"current available ticket"`. These confirmed seats open up online or at the station as soon as the first chart is prepared (about 8 hours before departure) and stay open until 30 minutes before the train leaves.
 *   **Run a PNR Check:** Before you travel, double-check your confirmation chances using [PNR Status Search & Direct Booking](/) or check the physical seating charts via [Seat Status Coach Journey Lookup](/seat-status).

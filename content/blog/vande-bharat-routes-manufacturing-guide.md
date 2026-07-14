@@ -2,7 +2,7 @@
 title: "Vande Bharat Routes: Stops, Manufacturing, and Latest News"
 description: "Every Vande Bharat route and key stop, how the trains are built at ICF Chennai, their top speed, and the latest on the Vande Bharat sleeper. Updated 2026."
 date: "2026-06-30"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - vande bharat routes
   - vande bharat train
@@ -79,7 +79,7 @@ Because these trains are highly popular, you will often find seats waitlisted. U
 
 Since Vande Bharat trains only have sitting coaches and no sleeper berths, there is **no RAC status** on these trains. The queue goes straight from WL to Confirmed. If your ticket is not confirmed when the final chart is made, it gets cancelled automatically.
 
-To get around waitlists, check for a `"current available ticket"`. These confirmed seats open up for booking right after the first chart is prepared (10 hours before train departure) and stay open until 30 minutes before launch.
+To get around waitlists, check for a `"current available ticket"`. These confirmed seats open up for booking right after the first chart is prepared (8 hours before train departure) and stay open until 30 minutes before launch.
 
 Additionally, you can use LastBerth's [Finding Smart Seats](/) tool to check if you can split the booking across different segments. You can track your ticket's confirmation odds with [PNR Status Search & Direct Booking](/) or check the physical seat maps using [Seat Status Coach Journey Lookup](/seat-status).
 

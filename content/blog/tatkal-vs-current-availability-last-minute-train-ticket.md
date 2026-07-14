@@ -2,7 +2,7 @@
 title: "Tatkal or Current Availability: Which Confirms Faster?"
 description: "Tatkal opens 10–11 AM a day before; Current Availability opens ~4 hrs before departure. Which lands a confirmed last-minute seat cheaper? A clear side-by-side guide."
 date: "2026-05-27"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - tatkal
   - current availability
@@ -59,7 +59,7 @@ For many travellers, this preparation matters more than refreshing the page repe
 
 ## When is Current Availability Better than Tatkal?
 
-Skip Tatkal and look for Current Availability if you're close to the departure time and charts are about to be prepared (or already done). It opens up after charting, usually around 10 hours before the train leaves. The best part? You get confirmed seats at standard rates. No annoying Tatkal surcharges, and you can even cancel it for a refund if plans change.
+Skip Tatkal and look for Current Availability if you're close to the departure time and charts are about to be prepared (or already done). It opens up after charting, usually around 8 hours before the train leaves. The best part? You get confirmed seats at standard rates. No annoying Tatkal surcharges, and you can even cancel it for a refund if plans change.
 
 Current Availability is useful when you are close to departure and want to know whether confirmed seats are still bookable. It can be especially helpful after chart preparation, because the charting process may change what is visible for booking.
 
@@ -129,7 +129,7 @@ Both options are extremely useful for last-minute travelers, but they operate un
 
 | Feature | Tatkal Quota | Current Availability |
 | :--- | :--- | :--- |
-| **Booking Window** | Opens at 10:00 AM (AC) and 11:00 AM (Non-AC) exactly one day prior to train's origin departure date | Opens only after chart preparation (typically 10 hours before departure) up to 30 mins before train departure |
+| **Booking Window** | Opens at 10:00 AM (AC) and 11:00 AM (Non-AC) exactly one day prior to train's origin departure date | Opens only after chart preparation (typically 8 hours before departure) up to 30 mins before train departure |
 | **Ticket Pricing** | Extra Tatkal charges added (ranges from Rs. 100 to Rs. 500 depending on class/distance) | No extra fee; sometimes booked at a discount (up to 10% off on basic fare for vacant seats) |
 | **Cancellation Refund** | No refund whatsoever on confirmed Tatkal tickets (except for rare delayed/cancelled trains) | Standard clerkage charge (Rs. 60 + GST) deducted if cancelled within eligible window |
 | **Berth Source** | A separate dedicated quota of seats set aside specifically for last-minute travelers | Unsold seats from the general and other quotas released to the open pool after charting |

@@ -2,7 +2,7 @@
 title: "ഇന്ത്യയിലെ ട്രെയിൻ ബെർത്ത്: തരം, ലഭ്യത, ബെർത്ത് റിസർവേഷൻ എങ്ങനെ പ്രവർത്തിക്കുന്നു"
 description: "ട്രെയിൻ ബെർത്ത് സംബന്ധിച്ച നിങ്ങൾക്കറിയേണ്ട എല്ലാം — താഴത്തെ ബെർത്ത് vs സൈഡ് അപ്പർ സുഖത്തിന്റെ വ്യത്യാസങ്ങൾ, ക്ലാസ് അനുസരിച്ചുള്ള കോച്ച് ലേയൗട്ടുകൾ, IRCTC-യുടെ ബെർത്ത് അലൊക്കേഷൻ ആൽഗോരിതം എങ്ങനെ ഉറപ്പിക്കുന്നു എന്നതുവരെ. ബെർത്ത് ലഭ്യത പരിശോധിക്കാൻ പ്രായോഗിക നിർദ്ദേശങ്ങൾ."
 date: "2026-06-11"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train berth
   - berth availability
@@ -187,7 +187,7 @@ You can check seat status without logging in. Just put in your train number and 
 
 ### Method 3: After Chart Preparation
 
-Once the chart is prepared (usually 10 hours before departure), the picture changes entirely. Berths that were held under quotas get released. Passengers who did not pay or whose WL tickets got auto-cancelled free up space. To check availability at this stage, see the detailed [post-chart vacancy guide](/blog/how-to-check-vacant-berths-after-chart-preparation).
+Once the chart is prepared (usually 8 hours before departure), the picture changes entirely. Berths that were held under quotas get released. Passengers who did not pay or whose WL tickets got auto-cancelled free up space. To check availability at this stage, see the detailed [post-chart vacancy guide](/blog/how-to-check-vacant-berths-after-chart-preparation).
 
 ---
 

@@ -2,7 +2,7 @@
 title: "IRCTC Auto Upgradation: Will You Get a Free Upgrade?"
 description: "Should you tick 'Consider for Auto Upgradation'? See how IRCTC's free Sleeper→3AC upgrade works, who's eligible, and how to boost your odds of getting one."
 date: "2026-06-16"
-updated: "2026-07-09"
+updated: "2026-07-14"
 tags:
   - irctc auto upgradation
   - free train upgrade
@@ -21,7 +21,7 @@ Ever spotted that tiny "Consider for Auto Upgradation" checkbox on IRCTC and won
 
 ## What is Auto Upgradation in IRCTC and how does it work?
 
-**IRCTC Auto Upgradation is a free, algorithm-based service that automatically shifts confirmed passengers to a higher class (like Sleeper to AC 3-Tier) without charging extra. This happens during chart preparation, typically around 10 hours before departure (the previous night for early-morning trains), to fill vacant berths in premium coaches.**
+**IRCTC Auto Upgradation is a free, algorithm-based service that automatically shifts confirmed passengers to a higher class (like Sleeper to AC 3-Tier) without charging extra. This happens during chart preparation, typically around 8 hours before departure (the previous night for early-morning trains), to fill vacant berths in premium coaches.**
 
 Let’s face it, we all love a free upgrade. It’s like getting bumped to business class on a flight, except on a train! Imagine buying a budget-friendly Sleeper ticket and finding yourself sleeping in a cool, air-conditioned 3AC coach. Yes, it actually happens.
 
@@ -122,7 +122,7 @@ This is a common point of confusion for travelers. Suppose you booked a Sleeper 
 Fortunately, Indian Railways rules protect you here:
 - The cancellation fee is always tied to the **original class of booking**.
 - For a confirmed Sleeper ticket cancelled after chart preparation (which is when upgrades happen), standard cancellation percentages apply to the original Sleeper fare, not the 3AC fare.
-- Since upgrades happen only at chart preparation (typically around 10 hours before departure), your ticket is already charted by the time you are upgraded. A confirmed charted ticket generally cannot be cancelled online for a refund — you would need to file a TDR — and any refund you are eligible for is still calculated on your original Sleeper fare, not the 3AC fare.
+- Since upgrades happen only at chart preparation (typically around 8 hours before departure), your ticket is already charted by the time you are upgraded. A confirmed charted ticket generally cannot be cancelled online for a refund — you would need to file a TDR — and any refund you are eligible for is still calculated on your original Sleeper fare, not the 3AC fare.
 
 ---
 

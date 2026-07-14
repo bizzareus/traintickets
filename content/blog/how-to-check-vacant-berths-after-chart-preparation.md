@@ -2,7 +2,7 @@
 title: "How to Check IRCTC Chart Vacancy & Vacant Berths"
 description: "Check IRCTC chart vacancy and vacant berths after chart preparation: use the official Charts/Vacancy portal, current availability, and station-pair searches."
 date: "2026-05-15"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - chart vacancy
   - vacant berths
@@ -20,7 +20,7 @@ Use this as a way to find practical options, not as a guarantee. Always verify t
 
 ## What Are Vacant Berths After Chart Preparation?
 
-Vacant berths after chart prep are basically any unsold seats or recently cancelled berths that get thrown back into the booking pool. Once the railways finalize the reservation chart (usually 10 hours before departure), these seats become fair game. They crop up because of last-minute cancellations, unused VIP or emergency quotas, passenger no-shows, or seats that are only free for certain parts of the train's journey.
+Vacant berths after chart prep are basically any unsold seats or recently cancelled berths that get thrown back into the booking pool. Once the railways finalize the reservation chart (usually 8 hours before departure), these seats become fair game. They crop up because of last-minute cancellations, unused VIP or emergency quotas, passenger no-shows, or seats that are only free for certain parts of the train's journey.
 
 Chart preparation is the stage where Indian Railways finalizes the passenger chart for a train and boarding point. Once that happens, the search result you see can change quickly. A train that looked fully booked earlier may show a small number of open berths, while another train may stay exactly the same.
 
@@ -38,14 +38,14 @@ For a deeper timing overview, read the [IRCTC chart preparation guide](/blog/irc
 
 ## How Do You Check IRCTC Chart Vacancy Online?
 
-To check IRCTC chart vacancy, open the official Charts/Vacancy portal at irctc.co.in/online-charts, then select your train, boarding station, and journey date. It displays a coach-by-coach map of every vacant berth by class once the first chart is prepared, roughly 10 hours before departure.
+To check IRCTC chart vacancy, open the official Charts/Vacancy portal at irctc.co.in/online-charts, then select your train, boarding station, and journey date. It displays a coach-by-coach map of every vacant berth by class once the first chart is prepared, roughly 8 hours before departure.
 
 The Charts/Vacancy portal is the most reliable way to see real, post-chart vacancies coach by coach:
 
 - **Open the IRCTC Charts/Vacancy page** at `irctc.co.in/online-charts` — you can view it without logging in.
 - **Select the train number, boarding station, and date of journey.** Vacancy is tied to a boarding point, so pick the station you will actually start from.
 - **Read the coach-by-coach layout.** Berths marked free show the exact coach and berth numbers open in each class (SL, 3A, 2A, and so on).
-- **Mind the timing window.** Data appears after the first chart is prepared (about 10 hours before departure); a second chart can refresh it closer to departure.
+- **Mind the timing window.** Data appears after the first chart is prepared (about 8 hours before departure); a second chart can refresh it closer to departure.
 - **Book fast.** Anything shown is a `"current available ticket"` — a fully confirmed seat with coach and berth numbers — and it stays bookable until 30 minutes before departure.
 
 Treat what you see as a live snapshot, not a reservation. **Chart vacancy** changes minute by minute as other passengers book, so confirm the berth is still free before you rely on it.
@@ -180,7 +180,7 @@ Sometimes travellers hope they can adjust onboard if the next segment is not con
 ## Common Booking Questions (FAQ)
 
 ### Where can I see real-time vacant berths after chart preparation?
-You can view real-time vacant berths directly on the [official IRCTC Charts/Vacancy Portal](https://www.irctc.co.in/online-charts). This portal is updated immediately after the first reservation chart is prepared (typically 10 hours before departure) and shows vacant seats coach-by-coach across all classes.
+You can view real-time vacant berths directly on the [official IRCTC Charts/Vacancy Portal](https://www.irctc.co.in/online-charts). This portal is updated immediately after the first reservation chart is prepared (typically 8 hours before departure) and shows vacant seats coach-by-coach across all classes.
 
 ### Can I book a vacant seat online after the chart is prepared?
 Yeah, you can. You'll find any leftover seats listed directly on IRCTC under the 'Current Booking' or 'Current Availability' sections right after chart preparation. Go ahead and book them on the app or site up to 30 minutes before departure.

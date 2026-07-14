@@ -2,7 +2,7 @@
 title: "Live Train Running Status: Track Where Is My Train"
 description: "Learn how to check live train running status using NTES, the Where Is My Train app, and SMS to 139. Track delays, platform numbers, and your train's location."
 date: "2026-06-26"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -137,7 +137,7 @@ LastBerth turns this window of time into a confirmed journey with three features
 - **PNR Status Search & Direct Booking:** Check your PNR on LastBerth to see the **waitlist confirmation probability**. If your ticket is unlikely to clear, we instantly suggest alternative trains and seat options so you are not left stranded.
 - **Seat Status Coach Journey Lookup:** Use our **[Coach Journey Lookup](/seat-status)** to see exactly from which station to which station a specific berth is booked, helping you find open berths on a running train and request them from the TTE.
 
-If you are searching last-minute, always look for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach and berth numbers, released to the public roughly **10 hours before departure** and closing about **30 minutes before** the train leaves. Combined with live running status, it is the fastest, cheapest way to lock in a confirmed berth at the eleventh hour.
+If you are searching last-minute, always look for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach and berth numbers, released to the public roughly **8 hours before departure** and closing about **30 minutes before** the train leaves. Combined with live running status, it is the fastest, cheapest way to lock in a confirmed berth at the eleventh hour.
 
 ---
 

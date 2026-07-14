@@ -2,7 +2,7 @@
 title: "How to Travel with a Dog in Indian Trains: Pet Booking Rules"
 description: "Want to travel with a dog or cat on Indian Railways? Learn the official pet booking rules, 1AC coupe requirements, veterinary certificate steps, and fees."
 date: "2026-06-17"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - pet travel
   - dog booking
@@ -42,7 +42,7 @@ This online booking system saves you from long queues at the parcel office, thou
 6. **Confirmation:** Once payment is successful, you will receive a confirmation SMS and a luggage ticket via email.
 
 > [!IMPORTANT]
-> **Booking Window:** The online pet booking window only opens **after the first chart is prepared** (usually 10 hours before the train's scheduled departure) and remains open until the final chart is generated.
+> **Booking Window:** The online pet booking window only opens **after the first chart is prepared** (usually 8 hours before the train's scheduled departure) and remains open until the final chart is generated.
 > You must still carry the original veterinary fitness and vaccination certificate (issued 24-48 hours before departure) along with a photocopy to the station.
 
 ---

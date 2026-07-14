@@ -2,7 +2,7 @@
 title: "Vande Bharat Last-Minute Booking: 15-Minute Seat Rule Guide"
 description: "Can you board a Vande Bharat without a confirmed ticket? Learn the rule that lets you book vacant seats up to 15 minutes before departure — and how to grab one."
 date: "2026-07-02"
-updated: "2026-07-07"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -29,7 +29,7 @@ However, keep in mind that this rule only applies if there are actual unoccupied
 
 **The 15-minute booking rule allows you to purchase confirmed tickets for any seats that remain unoccupied after the first chart is prepared. These last-minute seats stay open for booking until exactly 15 minutes before the train starts.**
 
-Usually, IRCTC prepares the first reservation chart about 10 hours before the train's scheduled departure. Under the old rules, booking after chart preparation was quite restrictive. With the revised system, any seat that remains vacant after the chart is generated is automatically put up for grabs.
+Usually, IRCTC prepares the first reservation chart about 8 hours before the train's scheduled departure. Under the old rules, booking after chart preparation was quite restrictive. With the revised system, any seat that remains vacant after the chart is generated is automatically put up for grabs.
 
 These seats are sold as a `"current available ticket"`. They are fully confirmed berths with assigned coach and seat numbers. You can book them right up until 15 minutes before the train pulls out of the station.
 
@@ -40,7 +40,7 @@ These seats are sold as a `"current available ticket"`. They are fully confirmed
 **You can book these last-minute tickets online through the official IRCTC website, the IRCTC Rail Connect mobile app, or physically at station Passenger Reservation System (PRS) counters.**
 
 Securing one of these seats is very straightforward. Here's what you need to do:
-1.  **Check Live Availability:** Open the IRCTC website or app within 10 hours of the train's departure.
+1.  **Check Live Availability:** Open the IRCTC website or app within 8 hours of the train's departure.
 2.  **Look for Current Booking:** If seats are vacant, the availability status will display the number of seats under the "Current Booking" or "Current Available" category.
 3.  **Book Instantly:** Complete your payment immediately, as these seats are limited and highly sought after by last-minute travellers.
 

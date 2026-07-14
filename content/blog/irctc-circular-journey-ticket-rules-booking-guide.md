@@ -2,7 +2,7 @@
 title: "IRCTC Circular Journey Ticket: Rules & Booking Guide"
 description: "Save money on multi-stop train trips in India. Learn the rules, telescopic fare calculation, and step-by-step booking for circular journey tickets."
 date: "2026-06-20"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -69,7 +69,7 @@ Here is the breakdown of how waitlists behave on circular tickets:
 * **Watch out for refunds:** This is crucial. If you book an online e-ticket and it stays waitlisted, the system cancels it automatically and refunds your money. But circular tickets are paper counter tickets. They *never* cancel automatically. If your ticket is still waitlisted after chart preparation, you must physically walk up to a station counter to cancel it and claim your refund.
 * **Keep tabs on your status:** Use the **PNR Status Search & Direct Booking** tool on LastBerth to keep an eye on your queue position and see realistic confirmation probabilities. If a specific leg looks hopeless, LastBerth can suggest alternative train routes to save your trip.
 
-If your waitlisted seat doesn't clear, don't panic. You can check for a **current available ticket**. These are confirmed berths that open up right after chart preparation (10 hours before the train starts) and remain bookable until 30 minutes before departure. Another trick is to use the **Seat Status Coach Journey Lookup** on LastBerth to locate empty berths on the running train for specific sections of your travel.
+If your waitlisted seat doesn't clear, don't panic. You can check for a **current available ticket**. These are confirmed berths that open up right after chart preparation (8 hours before the train starts) and remain bookable until 30 minutes before departure. Another trick is to use the **Seat Status Coach Journey Lookup** on LastBerth to locate empty berths on the running train for specific sections of your travel.
 
 ## What Kind of Savings Are We Talking About?
 

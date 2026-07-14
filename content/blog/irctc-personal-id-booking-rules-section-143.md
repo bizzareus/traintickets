@@ -2,7 +2,7 @@
 title: "Can I Book Train Tickets for Friends on Personal IRCTC ID? Rules"
 description: "Are you booking tickets for friends/family on your personal IRCTC account? Learn the rules of Section 143, passenger verification, and how to avoid penalties."
 date: "2026-07-04"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -50,7 +50,7 @@ This law target unauthorized ticketing agents (scalpers) who create fake persona
 
 When you book for others, the passengers must carry an acceptable original ID proof (like Aadhaar, PAN card, or Voter ID) during the journey. The Ticket Examiner (TTE) will verify that the name, age, and gender on the ticket match the traveler's ID. If a name spelling error occurs, you must visit a railway station counter with proof of relationship to correct it at least 24 hours before train departure.
 
-If the ticket is waitlisted, the standard queue progression applies: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. Note that if a waitlisted online e-ticket does not confirm after chart preparation (~10 hours before departure), IRCTC cancels it automatically and refunds the money to your booking account. You cannot board the train on a waitlisted e-ticket.
+If the ticket is waitlisted, the standard queue progression applies: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. Note that if a waitlisted online e-ticket does not confirm after chart preparation (~8 hours before departure), IRCTC cancels it automatically and refunds the money to your booking account. You cannot board the train on a waitlisted e-ticket.
 
 ---
 
@@ -100,7 +100,7 @@ If it is an online e-ticket, you cannot travel if it remains waitlisted (WL) aft
 
 ### What is a current available ticket on IRCTC?
 
-A current available ticket is a confirmed seat that goes on sale after chart preparation (usually 10 hours before departure) until 30 minutes before the train leaves. It is bookable online or at counters if seats remain vacant.
+A current available ticket is a confirmed seat that goes on sale after chart preparation (usually 8 hours before departure) until 30 minutes before the train leaves. It is bookable online or at counters if seats remain vacant.
 
 ### How do I check if a PNR booked for my friend is confirmed?
 

@@ -2,7 +2,7 @@
 title: "Indian Train Classes Explained: 1A, 2A, 3A, 3E, SL & CC"
 description: "Confused by train class codes? Compare 1A, 2A, 3A, 3E, Sleeper, Chair Car & 2S — fares, comfort, food and which Indian Railways class to actually book."
 date: "2026-07-06"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -158,7 +158,7 @@ Enter your route and date on IRCTC, the Indian Railways NTES portal, or [Smart S
 
 Here is how to read what you see:
 
-- **Available / a "current available ticket":** a fully confirmed seat with a coach and berth assigned. This status opens about 10 hours before departure once the chart is prepared and closes about 30 minutes before departure.
+- **Available / a "current available ticket":** a fully confirmed seat with a coach and berth assigned. This status opens about 8 hours before departure once the chart is prepared and closes about 30 minutes before departure.
 - **RAC:** Reservation Against Cancellation — you get to board and share a side-lower berth until a cancellation upgrades you.
 - **WL:** the full form of WL is **Waiting List**. You have no berth yet. The confirmation path is **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed** as passengers ahead cancel.
 

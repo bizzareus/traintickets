@@ -2,7 +2,7 @@
 title: "Duronto Express: Timings, Booking Rules, Fares & Catering"
 description: "Complete guide to IRCTC Duronto Express bookings, dynamic pricing, optional catering charges, Tatkal timings, seat layouts, and major routes."
 date: "2026-07-01"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -32,7 +32,7 @@ Over the years, the Ministry of Railways updated this policy. Today, most Duront
 
 ## What is the Booking Time for Duronto Express Tickets?
 
-**Duronto Express advance ticket booking opens 60 days before the scheduled departure date from the originating station, starting at 8:00 AM daily.** General reservations can be made online via the IRCTC portal or at offline railway counters until the final reservation charts are prepared, which occurs ten hours before the train departs.
+**Duronto Express advance ticket booking opens 60 days before the scheduled departure date from the originating station, starting at 8:00 AM daily.** General reservations can be made online via the IRCTC portal or at offline railway counters until the final reservation charts are prepared, which occurs eight hours before the train departs.
 
 This 60-day Advance Reservation Period (ARP) is standard across all major Indian Railways services. Since Duronto Express is a highly popular service for long-distance routes, tickets in classes like 3AC and Sleeper tend to sell out quickly, particularly during major holidays, festivals, and school vacations.
 
@@ -93,7 +93,7 @@ Here is how you can manage your catering choices:
 
 For tech-savvy commuters, the IRCTC website or Rail Connect app is the most convenient way to book. However, offline booking remains popular for travelers seeking physical counter tickets or passenger quota benefits.
 
-If you are trying to book a seat at the very last minute, look for the current availability window. A **current available ticket** is a **fully confirmed seat** with coach/berth numbers, which opens 10 hours before departure (immediately after first chart preparation) and closes 30 minutes before departure. These berths represent unclaimed quotas or late cancellations and are sold at the base fare without any Tatkal surcharge.
+If you are trying to book a seat at the very last minute, look for the current availability window. A **current available ticket** is a **fully confirmed seat** with coach/berth numbers, which opens 8 hours before departure (immediately after first chart preparation) and closes 30 minutes before departure. These berths represent unclaimed quotas or late cancellations and are sold at the base fare without any Tatkal surcharge.
 
 ---
 
@@ -115,7 +115,7 @@ Yes, Tatkal booking is available for Duronto Express. Booking starts at 10:00 AM
 If your waitlisted (WL) e-ticket does not clear and remains on the waitlist after chart preparation, the ticket is automatically cancelled by the IRCTC system. The fare is refunded back to your original payment method, and you are not permitted to board the train.
 
 ### How does the current booking system work in Duronto Express?
-Current booking opens immediately after the first reservation chart is prepared (about 10 hours before departure) and closes 30 minutes before the train departs. Any vacant berths are sold as fully confirmed current available tickets at the standard rate.
+Current booking opens immediately after the first reservation chart is prepared (about 8 hours before departure) and closes 30 minutes before the train departs. Any vacant berths are sold as fully confirmed current available tickets at the standard rate.
 
 ### Can I change my catering choice after booking a Duronto ticket?
 No, once your ticket is booked, you cannot change your catering choice from opt-in to opt-out or vice-versa on that booking. If you opted out but want food, you must order via the IRCTC e-Catering service before chart preparation.

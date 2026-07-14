@@ -2,7 +2,7 @@
 title: "Station Platform Navigation Tips for Last-Minute Boarders"
 description: "Locate your platform, check coach positions, and board your Indian Railways train safely even when you are running late at the station."
 date: "2026-06-21"
-updated: "2026-07-11"
+updated: "2026-07-14"
 tags:
   - train booking
   - irctc
@@ -33,7 +33,7 @@ You can read the coach position indicators by looking at the small, glowing digi
 
 Passenger trains in India can have up to 24 coaches. If you stand at the wrong end of the platform, you'll have to run a long way when the train arrives. This is dangerous when the platform is crowded.
 
-If you don't have a confirmed seat yet, look for last-minute options. A `"current available ticket"` is a **fully confirmed seat** with coach/berth numbers. It opens 10 hours before the train leaves and closes 30 minutes before. Once you get this, or if you use LastBerth's **Finding Smart Seats** feature to split your journey across coaches, check the overhead indicators to see where your coach will stop. You can also use the **Seat Status Coach Journey Lookup** to find vacant berths on running trains.
+If you don't have a confirmed seat yet, look for last-minute options. A `"current available ticket"` is a **fully confirmed seat** with coach/berth numbers. It opens 8 hours before the train leaves and closes 30 minutes before. Once you get this, or if you use LastBerth's **Finding Smart Seats** feature to split your journey across coaches, check the overhead indicators to see where your coach will stop. You can also use the **Seat Status Coach Journey Lookup** to find vacant berths on running trains.
 
 ## What Should You Do if Your Train is Already Arriving?
 
