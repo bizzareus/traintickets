@@ -2,7 +2,7 @@
 title: "GNWL vs RLWL vs PQWL: Which Waitlist Confirms Fastest?"
 description: "GNWL clears often, PQWL rarely does — your waitlist type matters more than the number. Compare GNWL, RLWL, PQWL, TQWL & RSWL confirmation chances before you book."
 date: "2026-05-29"
-updated: "2026-07-12"
+updated: "2026-07-14"
 tags:
   - waiting list
   - gnwl
@@ -55,7 +55,7 @@ GNWL is the most active waitlist. Big trains from major cities, like Rajdhani Ex
 
 - High base demand means frequent cancellations on popular routes
 - General quota is large compared to other pools
-- Tatkal bookings open two days before travel, pushing some passengers away from GNWL
+- Tatkal bookings open one day before travel, pushing some passengers away from GNWL
 - Chart preparation releases unconfirmed seats, some of which go back to GNWL
 
 ### When GNWL might not clear
@@ -114,7 +114,7 @@ TQWL is the waitlist for Tatkal quota bookings when all Tatkal seats are already
 
 TQWL appears when you book under the Tatkal quota and the Tatkal seats are already waitlisted at the time of booking.
 
-Tatkal is a premium quota that opens one day before travel (two days for some classes). It has a limited number of seats with higher fares. Once those fill up, further Tatkal bookings become TQWL.
+Tatkal is a premium quota that opens one day before travel (excluding the day of journey). It has a limited number of seats with higher fares. Once those fill up, further Tatkal bookings become TQWL.
 
 ### How TQWL behaves
 
@@ -199,7 +199,7 @@ After the chart is prepared:
 
 This applies to all WL types. A GNWL ticket that does not clear is just as invalid at the gate as a PQWL ticket that does not clear.
 
-The timing of chart preparation varies. For trains departing in the evening or night, the chart usually gets prepared four to eight hours before departure. For early morning trains, it may happen the previous evening. The [IRCTC chart preparation guide](/blog/irctc-chart-preparation-guide) covers this in more detail.
+The timing of chart preparation varies. For trains departing in the evening or night, the chart usually gets prepared around ten hours before departure. For early morning trains, it may happen the previous evening. The [IRCTC chart preparation guide](/blog/irctc-chart-preparation-guide) covers this in more detail.
 
 ---
 
