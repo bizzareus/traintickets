@@ -1,8 +1,8 @@
 ---
-title: "Difference Between RAC and Waitlist: RAC vs WL vs Confirmed Tickets Explained"
-description: "What is the difference between RAC and waitlist in Indian Railways? Understand RAC, Waiting List (WL), and Confirmed tickets with examples, cancellation rules, and what to do when you need to travel today."
+title: "RAC vs Waitlist: Which One Lets You Board the Train?"
+description: "RAC vs waitlist: RAC gives a shared seat you CAN travel on; a WL ticket often can't board. Compare RAC, WL & confirmed statuses and cancellation fees."
 date: "2026-05-15"
-updated: "2026-07-11"
+updated: "2026-07-15"
 tags:
   - rac
   - waiting list
