@@ -2,7 +2,7 @@
 title: "IRCTC Current Availability: Grab a Confirmed Last-Minute Seat"
 description: "How to use IRCTC current availability to book a fully confirmed last-minute seat: when it opens after chart preparation, how it differs from normal booking, and tips."
 date: "2026-06-11"
-updated: "2026-07-11"
+updated: "2026-07-13"
 tags:
   - current availability
   - vacancy chart
@@ -241,6 +241,8 @@ Understanding where these "sudden" seats come from helps you predict which train
 
 6. **Partial-route vacancies**: A berth occupied from Station A to Station C is available from Station C onward. These segment-level vacancies only become fully visible after charting.
 
+One source people overlook: **auto-upgradation**. When confirmed Sleeper or 3AC passengers who opted in are bumped to a higher class at charting, the berths they leave behind drop straight into the current availability pool for their original class. See [how IRCTC auto upgradation works](/blog/irctc-auto-upgradation-rules-secrets) — trains with a heavy AC composition tend to release more lower-class berths this way.
+
 The trains most likely to show current availability? Long-distance trains with multiple stops, midweek departures, routes with parallel train options (so demand splits), and trains with large Tatkal/special quotas relative to their size.
 
 ## How LastBerth Helps
@@ -337,3 +339,4 @@ Once the chart is prepared, search your route and date on the IRCTC website or R
 - [RAC vs WL vs Confirmed tickets explained](/blog/rac-vs-wl-explained)
 - [Best train when all trains show waiting list](/blog/best-train-when-all-trains-show-waiting-list)
 - [GNWL vs RLWL vs PQWL: Waitlist confirmation chances](/blog/gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances)
+- [IRCTC auto upgradation: will you get a free upgrade?](/blog/irctc-auto-upgradation-rules-secrets)
