@@ -2,7 +2,7 @@
 title: "The Ultimate Tatkal Speed Guide: How to Beat the 120-Second Booking Window"
 description: "Why do Tatkal tickets sell out in seconds? Learn the exact technical hacks, payment strategies, and differences between Tatkal and Premium Tatkal to secure your seat."
 date: "2026-06-01"
-updated: "2026-06-11"
+updated: "2026-07-16"
 tags:
   - tatkal hacks
   - premium tatkal
@@ -41,7 +41,7 @@ Before we talk about the speed tricks, you need to understand the playing field.
 | Feature | Tatkal Quota (CK) | Premium Tatkal Quota (PT) |
 | :--- | :--- | :--- |
 | **Pricing Structure** | Flat extra charge (10% to 30% of base fare, capped by class). | Dynamic pricing. Starts at Tatkal rate and increases as seats sell out (can go up to 3x). |
-| **Agent Booking** | Permitted after 15 minutes of opening (10:15 AM / 11:15 AM). | Strictly banned. Only retail users can book. |
+| **Agent Booking** | Permitted after 30 minutes of opening (10:30 AM / 11:30 AM). | Strictly banned. Only retail users can book. |
 | **Waitlist Rules** | Can go into Waitlist (CKWL) after confirmed seats are gone. | No waitlist. Once seats are sold, booking closes completely. |
 | **Refund on Cancellation** | Zero refund on confirmed tickets. | Zero refund on confirmed tickets. |
 

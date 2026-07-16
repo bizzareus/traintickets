@@ -2,7 +2,7 @@
 title: "IRCTC പ്രീമിയം തത്കാൽ നിയമങ്ങൾ: ബുക്കിംഗ് രീതി, സമയങ്ങൾ & നിരക്കുകൾ"
 description: "IRCTC പ്രീമിയം തത്കാൽ ബുക്കിംഗ് നിയമങ്ങൾ, സമയങ്ങൾ, ഡൈനാമിക് നിരക്കുകൾ, ടിക്കറ്റ് റദ്ദാക്കൽ/റീഫണ്ട് നയങ്ങൾ എന്നിവയെക്കുറിച്ച് അറിയുക. ഇത് സാധാരണ തത്കാലിൽ നിന്ന് എങ്ങനെ വ്യത്യാസപ്പെട്ടിരിക്കുന്നു എന്ന് മനസ്സിലാക്കുക."
 date: "2026-06-27"
-updated: "2026-07-14"
+updated: "2026-07-16"
 tags:
   - train booking
   - irctc
@@ -86,7 +86,7 @@ tags:
 | Feature / Rule | Standard Tatkal Quota | Premium Tatkal Quota |
 | :--- | :--- | :--- |
 | **Pricing** | Fixed extra charge (10% to 30% of base fare) | Dynamic charges (increases as seats sell out) |
-| **Agent Bookings** | Allowed 15 minutes after opening (10:15 AM / 11:15 AM) | Completely barred at all times |
+| **Agent Bookings** | Allowed 30 minutes after opening (10:30 AM / 11:30 AM) | Completely barred at all times |
 | **Waitlisted Tickets** | Issued (TQWL) if confirmed seats sell out | Not issued (shows \"Not Available\" when full) |
 | **Concessions** | Not allowed | Not allowed |
 | **Refunds on Cancellation** | No refund on confirmed tickets | No refund on confirmed tickets |
