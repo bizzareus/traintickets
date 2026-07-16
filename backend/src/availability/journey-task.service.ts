@@ -542,21 +542,40 @@ export class JourneyTaskService {
       { timeout: 30_000 },
     );
 
-    for (const t of tasks) {
-      const chartAt = new Date(t.chartAt);
-      if (chartAtIsDue(chartAt, now)) {
-        await this.runTask(t.id);
-        const updated = await this.prisma.chartTimeAvailabilityTask.findUnique({
-          where: { id: t.id },
-        });
-        if (updated) {
-          const i = tasks.findIndex((x) => x.id === t.id);
-          if (i >= 0) tasks[i].status = updated.status;
-        }
-      }
+    // Eagerly run any already-due tasks in the BACKGROUND so POST /journey returns
+    // as soon as the alert is persisted (the durable transaction above). This is
+    // fire-and-forget: the scheduled runDueTasks() sweep is the safety net, so a
+    // failure here only delays the first check to the next tick — it never loses
+    // the alert or blocks the user. Returned tasks stay 'pending' (queued ack).
+    const dueTaskIds = tasks
+      .filter((t) => chartAtIsDue(new Date(t.chartAt), now))
+      .map((t) => t.id);
+    if (dueTaskIds.length > 0) {
+      void this.runTasksInBackground(dueTaskIds, journeyRequestId);
     }
 
     return { journeyRequestId, tasks };
+  }
+
+  /**
+   * Fire-and-forget runner for the initial check of already-due tasks, detached
+   * from the POST /journey response. Sequential; logs and swallows errors (never
+   * throws) — the scheduled runDueTasks() sweep still covers anything that fails.
+   */
+  private async runTasksInBackground(
+    taskIds: string[],
+    journeyRequestId: string,
+  ): Promise<void> {
+    for (const id of taskIds) {
+      try {
+        await this.runTask(id);
+      } catch (err) {
+        console.error(
+          `[journey] background task run failed journeyRequestId=${journeyRequestId} taskId=${id}:`,
+          err instanceof Error ? err.message : String(err),
+        );
+      }
+    }
   }
 
   /**
