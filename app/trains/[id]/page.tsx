@@ -1,6 +1,12 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import TrainDetailClient, { Train } from "./TrainDetailClient";
+import {
+  buildTrainSlug,
+  getTrainIndex,
+  parseTrainNumberFromParam,
+} from "@/lib/trainSlug";
 
 export const dynamicParams = true;
 
@@ -23,217 +29,156 @@ async function fetchTrainData(id: string): Promise<Train | null> {
   }
 }
 
+const PRERENDERED_TRAIN_NUMBERS = [
+  "1080", "11013", "11301", "1144",
+  "12001", "12002", "12003", "12004", "12005", "12006", "12007", "12008",
+  "12009", "12010", "12011", "12012", "12013", "12014", "12015", "12016",
+  "12017", "12018", "12019", "12020", "12025", "12026", "12027", "12028",
+  "12029", "12030", "12031", "12032", "12033", "12034", "12035", "12036",
+  "12037", "12038", "12039", "12040", "12041", "12042", "12043", "12044",
+  "12045", "12046", "12047", "12048", "12049", "12050", "12085", "12086",
+  "12087", "12088", "12243", "12244", "12262", "12277", "12278", "12301",
+  "12302", "12310", "12314", "12381", "12394", "12425", "12445", "12607",
+  "12608", "12616", "12847", "12848", "12931", "12952", "12954", "12958",
+  "13107", "13108", "13109", "13110", "13129", "13130", "19020", "20977",
+  "20978", "22119", "22120", "22439", "22637",
+];
+
 export async function generateStaticParams() {
-  const trainNumbers = [
-    "1080",
-    "11013",
-    "11301",
-    "1144",
-    "12001",
-    "12002",
-    "12003",
-    "12004",
-    "12005",
-    "12006",
-    "12007",
-    "12008",
-    "12009",
-    "12010",
-    "12011",
-    "12012",
-    "12013",
-    "12014",
-    "12015",
-    "12016",
-    "12017",
-    "12018",
-    "12019",
-    "12020",
-    "12025",
-    "12026",
-    "12027",
-    "12028",
-    "12029",
-    "12030",
-    "12031",
-    "12032",
-    "12033",
-    "12034",
-    "12035",
-    "12036",
-    "12037",
-    "12038",
-    "12039",
-    "12040",
-    "12041",
-    "12042",
-    "12043",
-    "12044",
-    "12045",
-    "12046",
-    "12047",
-    "12048",
-    "12049",
-    "12050",
-    "12085",
-    "12086",
-    "12087",
-    "12088",
-    "12243",
-    "12244",
-    "12262",
-    "12277",
-    "12278",
-    "12301",
-    "12302",
-    "12310",
-    "12314",
-    "12381",
-    "12394",
-    "12425",
-    "12445",
-    "12607",
-    "12608",
-    "12616",
-    "12847",
-    "12848",
-    "12931",
-    "12952",
-    "12954",
-    "12958",
-    "13107",
-    "13108",
-    "13109",
-    "13110",
-    "13129",
-    "13130",
-    "19020",
-    "20977",
-    "20978",
-    "22119",
-    "22120",
-    "22439",
-    "22637"
-  ];
-  return trainNumbers.map((id) => ({ id }));
+  // Pre-render the slugged (canonical) URL when the train name is known
+  // locally; bare-number requests 308-redirect to it at runtime.
+  const index = getTrainIndex();
+  return PRERENDERED_TRAIN_NUMBERS.map((num) => ({
+    id: buildTrainSlug(num, index.get(num)?.trainName),
+  }));
 }
 
 type Props = {
   params: Promise<{ id: string }>;
 };
 
+/** Resolve the incoming `[id]` param to train number + best-known name + canonical slug. */
+function resolveTrainParam(id: string) {
+  const trainNumber = parseTrainNumberFromParam(id) ?? id;
+  const local = getTrainIndex().get(trainNumber);
+  return { trainNumber, local };
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const train = await fetchTrainData(id);
-  if (!train) {
+  const { trainNumber, local } = resolveTrainParam(id);
+  const train = await fetchTrainData(trainNumber);
+  const trainName = train?.trainName || local?.trainName;
+  const origin = train?.originStation || local?.originStation;
+  const dest = train?.destinationStation || local?.destinationStation;
+  const canonicalSlug = buildTrainSlug(trainNumber, trainName);
+
+  if (!trainName) {
     return {
-      title: `Train ${id} Route Schedule & Confirmation Chances | LastBerth`,
-      description: `View train schedule, intermediate halts, run days, platform info, and waiting list confirmation probability for train ${id}.`,
-      alternates: {
-        canonical: `/trains/${id}`,
-      },
+      // Root layout template appends "| LastBerth".
+      title: `Train ${trainNumber} Schedule, Route & Stops`,
+      description: `Full timetable for train ${trainNumber}: station list, arrival/departure timings, halts, platforms and days of operation, plus Tatkal booking windows.`,
+      alternates: { canonical: `/trains/${canonicalSlug}` },
     };
   }
 
   return {
-    title: `${train.trainName} (${train.trainNumber}) Route Schedule & Seat Confirmation Chances | LastBerth`,
-    description: `Check live route schedule, station list, arrival/departure timings, halt durations, and leg-by-leg seat confirmation chances for ${train.trainName} (${train.trainNumber}) from ${train.originStation} to ${train.destinationStation}.`,
-    alternates: {
-      canonical: `/trains/${id}`,
-    },
+    title: `${trainName} (${trainNumber}) Schedule, Route & Stops`,
+    description: `${trainName} (${trainNumber}) timetable from ${origin} to ${dest}: every stop with arrival/departure times, halts, platforms, days of operation and Tatkal booking windows.`,
+    alternates: { canonical: `/trains/${canonicalSlug}` },
   };
 }
 
 export default async function TrainDetailPage({ params }: Props) {
   const { id } = await params;
-  const train = await fetchTrainData(id);
+  const { trainNumber, local } = resolveTrainParam(id);
+  const train = await fetchTrainData(trainNumber);
+
+  // Canonicalize to the slugged URL (confirmtkt-style /trains/12015-ajmer-shatabdi)
+  // whenever the train name is known and the request used a different form.
+  const trainName = train?.trainName || local?.trainName;
+  const canonicalSlug = buildTrainSlug(trainNumber, trainName);
+  if (trainName && id !== canonicalSlug) {
+    permanentRedirect(`/trains/${canonicalSlug}`);
+  }
 
   const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
-  const canonicalUrl = `${siteUrl}/trains/${id}`;
+  const canonicalUrl = `${siteUrl}/trains/${canonicalSlug}`;
+
+  const displayName = trainName || `Train ${trainNumber}`;
+  const stationList = train?.schedule?.stationList;
+  const runsOn = train?.schedule?.trainRunsOn;
+  const runDays = runsOn
+    ? [
+        ["Monday", runsOn.trainRunsOnMon],
+        ["Tuesday", runsOn.trainRunsOnTue],
+        ["Wednesday", runsOn.trainRunsOnWed],
+        ["Thursday", runsOn.trainRunsOnThu],
+        ["Friday", runsOn.trainRunsOnFri],
+        ["Saturday", runsOn.trainRunsOnSat],
+        ["Sunday", runsOn.trainRunsOnSun],
+      ]
+        .filter(([, v]) => v === "Y")
+        .map(([d]) => d)
+    : [];
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": canonicalUrl,
-    "name": `${train?.trainName || id} (${id}) Schedule, Route Map & Tatkal Booking Windows`,
-    "description": `Check live timetable route schedule, station list, arrival/departure timings, halt durations, and Tatkal quota seat availability for train ${train?.trainName || id} (${id}).`,
+    "name": `${displayName} (${trainNumber}) Schedule, Route & Stops`,
+    "description": `Timetable, station list, halts, platforms and Tatkal booking windows for ${displayName} (${trainNumber}).`,
     "url": canonicalUrl,
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": `${siteUrl}/`
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Trains",
-          "item": `${siteUrl}/search`
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": train?.trainName || id,
-          "item": canonicalUrl
-        }
-      ]
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
+        { "@type": "ListItem", "position": 2, "name": "Trains", "item": `${siteUrl}/search` },
+        { "@type": "ListItem", "position": 3, "name": displayName, "item": canonicalUrl },
+      ],
+    },
+  };
+
+  // FAQ structured data — real facts only (Tatkal windows are the official
+  // IRCTC rule; route/stops/days come from the train's own schedule data,
+  // falling back to the committed local dataset when the API is unreachable).
+  const origin = train?.originStation || local?.originStation;
+  const dest = train?.destinationStation || local?.destinationStation;
+  const faqEntries: { q: string; a: string }[] = [];
+  if (trainName) {
+    faqEntries.push({
+      q: `When does Tatkal booking open for ${trainName} (${trainNumber})?`,
+      a: `Tatkal booking for ${trainName} (${trainNumber}) opens one day before departure at 10:00 AM for AC classes (1A, 2A, 3A, CC, EC) and 11:00 AM for Non-AC classes (SL, 2S) on IRCTC.`,
+    });
+    if (origin && dest) {
+      faqEntries.push({
+        q: `What is the route of ${trainName} (${trainNumber})?`,
+        a: `${trainName} (${trainNumber}) runs from ${origin} to ${dest}${
+          stationList?.length ? `, stopping at ${stationList.length} stations en route` : ""
+        }. The full station-by-station timetable with arrival and departure times is listed on this page.`,
+      });
     }
-  };
-
-  const getPopularityScore = (trainNumber: string): number => {
-    const trainNum = parseInt(trainNumber, 10) || 0;
-    return 75 + (trainNum % 25);
-  };
-
-  const getTatkalQuotaSeats = (trainNumber: string, classCode: string): number => {
-    const trainNum = parseInt(trainNumber, 10) || 0;
-    const classMultiplier = (() => {
-      switch (classCode) {
-        case "1A": return 4;
-        case "2A": return 12;
-        case "3A": return 48;
-        case "CC": return 30;
-        case "EC": return 8;
-        case "SL": return 120;
-        default: return 60;
+    if (runDays.length) {
+      faqEntries.push({
+        q: `On which days does ${trainName} (${trainNumber}) run?`,
+        a:
+          runDays.length === 7
+            ? `${trainName} (${trainNumber}) runs daily, all seven days of the week.`
+            : `${trainName} (${trainNumber}) runs on ${runDays.join(", ")}.`,
+      });
+    }
+  }
+  const faqJsonLd = faqEntries.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqEntries.map(({ q, a }) => ({
+          "@type": "Question",
+          "name": q,
+          "acceptedAnswer": { "@type": "Answer", "text": a },
+        })),
       }
-    })();
-    return classMultiplier + (trainNum % 9);
-  };
-
-  const faqJsonLd = train ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `When does Tatkal booking start for train ${train.trainName} (${train.trainNumber})?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Tatkal ticket bookings for train ${train.trainName} (${train.trainNumber}) open daily at 10:00 AM for AC classes (1A, 2A, 3A, CC, EC) and at 11:00 AM for Non-AC classes (SL, 2S) for journey departing the next day.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `What is the popularity and typical seat availability for train ${train.trainName} (${train.trainNumber})?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Train ${train.trainName} (${train.trainNumber}) has a popularity rating of ${getPopularityScore(train.trainNumber)}%. Estimated Tatkal quota seat capacity per class is: Sleeper (SL) ~${getTatkalQuotaSeats(train.trainNumber, 'SL')} seats, 3 Tier AC (3A) ~${getTatkalQuotaSeats(train.trainNumber, '3A')} seats, and 2 Tier AC (2A) ~${getTatkalQuotaSeats(train.trainNumber, '2A')} seats.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `What is the route and main origin/destination stations of train ${train.trainName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Train ${train.trainName} (#${train.trainNumber}) operates between ${train.originStation} as the source station and ${train.destinationStation} as the destination station, stopping at intermediate stations listed in the detailed timetable.`
-        }
-      }
-    ]
-  } : null;
+    : null;
 
   return (
     <>
@@ -250,16 +195,9 @@ export default async function TrainDetailPage({ params }: Props) {
       <Suspense
         fallback={
           <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm animate-pulse">
-            {/* Category badge skeleton */}
             <div className="h-4 bg-slate-100 rounded w-32 mb-4"></div>
-            
-            {/* Title skeleton */}
             <div className="h-10 bg-slate-200 rounded w-2/3 mb-4"></div>
-            
-            {/* Meta description lines skeleton */}
             <div className="h-5 bg-slate-100 rounded w-1/2 mb-8"></div>
-            
-            {/* Grid metrics row skeleton */}
             <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-8">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="h-20 bg-slate-50/50 border border-slate-200/60 rounded-xl p-4 flex flex-col justify-between">
@@ -268,13 +206,9 @@ export default async function TrainDetailPage({ params }: Props) {
                 </div>
               ))}
             </div>
-
-            {/* Content area table headers skeleton */}
             <div className="border-b border-slate-100 pb-4 mb-4">
               <div className="h-6 bg-slate-100 rounded w-1/4"></div>
             </div>
-
-            {/* Content area table rows skeleton */}
             <div className="space-y-4">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="flex justify-between items-center py-2 border-b border-slate-100/60">
@@ -287,7 +221,20 @@ export default async function TrainDetailPage({ params }: Props) {
           </div>
         }
       >
-        <TrainDetailClient initialTrainData={train} />
+        <TrainDetailClient
+          initialTrainData={train}
+          chartTimesSlug={local?.chartTimesSlug ?? null}
+          localTrain={
+            local
+              ? {
+                  trainNumber: local.trainNumber,
+                  trainName: local.trainName,
+                  originStation: local.originStation,
+                  destinationStation: local.destinationStation,
+                }
+              : null
+          }
+        />
       </Suspense>
     </>
   );
