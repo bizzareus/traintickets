@@ -2,7 +2,7 @@
 title: "Caught in Sleeper With a General Ticket? Fines & Rules 2026"
 description: "Can you sit in a Sleeper or AC coach with a general or platform ticket? The exact fines under Section 138, TTE rules, and how to handle real emergencies in 2026."
 date: "2026-06-12"
-updated: "2026-07-14"
+updated: "2026-07-16"
 tags:
   - general ticket
   - platform ticket
@@ -11,6 +11,8 @@ tags:
   - railway fine
   - sleeper class
 ---
+
+> **Skip the ₹500 fine — travel on a confirmed berth:** Search live train availability and book a proper reserved seat on [Smart Seats](/), or use the [Chart Vacancy coach map](/chart-vacancy) to find berths that open up after chart preparation for last-minute journeys.
 
 ## TL;DR
 

@@ -2,7 +2,7 @@
 title: "రైలు క్లాసులు: 1A, 2A, 3A, 3E, SL, CC వివరణ"
 description: "1A, 2A, 3A, 3E, Sleeper, Chair Car, 2S మధ్య తేడా తెలియదా? ఛార్జీలు, సౌకర్యం, భోజనం పోల్చి, ఏ క్లాస్ బుక్ చేసుకోవాలో తెలుసుకోండి."
 date: "2026-07-06"
-updated: "2026-07-14"
+updated: "2026-07-16"
 tags:
   - train booking
   - irctc
@@ -11,6 +11,8 @@ tags:
   - ac class comparison
   - train class codes
 ---
+
+> **క్లాస్ ఎంచుకున్నారా? ఇప్పుడు అందులో ఒక సీటును కనుగొనండి:** ఏ రూట్‌నైనా [Smart Seats](/)లో సెర్చ్ చేసి 1A, 2A, 3A, SL మరియు Chair Car లో లైవ్ లభ్యతను పోల్చండి — మరియు చార్ట్ తయారైన తర్వాత ఏ క్లాసుల్లో ఇంకా ఖాళీ బెర్తులు ఉన్నాయో చూడటానికి [Chart Vacancy coach map](/chart-vacancy)ని తనిఖీ చేయండి.
 
 ## TL;DR
 

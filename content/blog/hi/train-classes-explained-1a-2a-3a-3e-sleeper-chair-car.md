@@ -2,7 +2,7 @@
 title: "ट्रेन क्लास गाइड: 1A, 2A, 3A, 3E, स्लीपर और CC"
 description: "1A, 2A, 3A, 3E, स्लीपर, चेयर कार और 2S में उलझन? किराया, आराम, खाना और सही क्लास चुनने का पूरा तुलनात्मक गाइड।"
 date: "2026-07-06"
-updated: "2026-07-14"
+updated: "2026-07-16"
 tags:
   - train booking
   - irctc
@@ -11,6 +11,8 @@ tags:
   - ac class comparison
   - train class codes
 ---
+
+> **क्लास चुन ली? अब उसमें सीट ढूंढें:** किसी भी रूट को [Smart Seats](/) पर सर्च करें और 1A, 2A, 3A, SL और Chair Car में लाइव उपलब्धता की तुलना करें — और [Chart Vacancy coach map](/chart-vacancy) देखें कि चार्ट बनने के बाद किन क्लास में अब भी खाली बर्थ बची हैं।
 
 ## TL;DR
 

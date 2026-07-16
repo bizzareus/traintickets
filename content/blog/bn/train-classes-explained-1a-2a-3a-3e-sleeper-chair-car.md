@@ -2,7 +2,7 @@
 title: "ভারতীয় ট্রেন ক্লাস: 1A, 2A, 3A, 3E, SL ও CC ব্যাখ্যা"
 description: "ট্রেন ক্লাস কোড নিয়ে বিভ্রান্ত? 1A, 2A, 3A, 3E, Sleeper, Chair Car ও 2S তুলনা করুন — ভাড়া, আরাম, খাবার এবং কোন ক্লাস বুক করবেন তা জানুন।"
 date: "2026-07-06"
-updated: "2026-07-11"
+updated: "2026-07-16"
 tags:
   - train booking
   - irctc
@@ -11,6 +11,8 @@ tags:
   - ac class comparison
   - train class codes
 ---
+
+> **ক্লাস বেছে নিয়েছেন? এবার তাতে একটি সিট খুঁজুন:** যেকোনো রুট [Smart Seats](/)-এ সার্চ করে 1A, 2A, 3A, SL ও Chair Car-এ লাইভ প্রাপ্যতা তুলনা করুন — এবং চার্ট তৈরি হওয়ার পরে কোন ক্লাসে এখনও খালি বার্থ আছে তা দেখতে [Chart Vacancy coach map](/chart-vacancy) দেখুন।
 
 ## সংক্ষেপে (TL;DR)
 

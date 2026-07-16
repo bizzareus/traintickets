@@ -2,7 +2,7 @@
 title: "Indian Train Classes Explained: 1A, 2A, 3A, 3E, SL & CC"
 description: "Confused by train class codes? Compare 1A, 2A, 3A, 3E, Sleeper, Chair Car & 2S — fares, comfort, food and which Indian Railways class to actually book."
 date: "2026-07-06"
-updated: "2026-07-14"
+updated: "2026-07-16"
 tags:
   - train booking
   - irctc
@@ -11,6 +11,8 @@ tags:
   - ac class comparison
   - train class codes
 ---
+
+> **Picked your class? Now find a seat in it:** Search any route on [Smart Seats](/) to compare live availability across 1A, 2A, 3A, SL and Chair Car — and check the [Chart Vacancy coach map](/chart-vacancy) to see which classes still have open berths after chart preparation.
 
 ## TL;DR
 
