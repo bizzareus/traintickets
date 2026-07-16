@@ -4,6 +4,7 @@ import { permanentRedirect } from "next/navigation";
 import TrainDetailClient, { Train } from "./TrainDetailClient";
 import {
   buildTrainSlug,
+  getTopTrainSlugs,
   getTrainIndex,
   parseTrainNumberFromParam,
 } from "@/lib/trainSlug";
@@ -29,28 +30,11 @@ async function fetchTrainData(id: string): Promise<Train | null> {
   }
 }
 
-const PRERENDERED_TRAIN_NUMBERS = [
-  "1080", "11013", "11301", "1144",
-  "12001", "12002", "12003", "12004", "12005", "12006", "12007", "12008",
-  "12009", "12010", "12011", "12012", "12013", "12014", "12015", "12016",
-  "12017", "12018", "12019", "12020", "12025", "12026", "12027", "12028",
-  "12029", "12030", "12031", "12032", "12033", "12034", "12035", "12036",
-  "12037", "12038", "12039", "12040", "12041", "12042", "12043", "12044",
-  "12045", "12046", "12047", "12048", "12049", "12050", "12085", "12086",
-  "12087", "12088", "12243", "12244", "12262", "12277", "12278", "12301",
-  "12302", "12310", "12314", "12381", "12394", "12425", "12445", "12607",
-  "12608", "12616", "12847", "12848", "12931", "12952", "12954", "12958",
-  "13107", "13108", "13109", "13110", "13129", "13130", "19020", "20977",
-  "20978", "22119", "22120", "22439", "22637",
-];
-
 export async function generateStaticParams() {
-  // Pre-render the slugged (canonical) URL when the train name is known
-  // locally; bare-number requests 308-redirect to it at runtime.
-  const index = getTrainIndex();
-  return PRERENDERED_TRAIN_NUMBERS.map((num) => ({
-    id: buildTrainSlug(num, index.get(num)?.trainName),
-  }));
+  // Pre-render the top ~500 trains (stable core set + premium named trains +
+  // superfast expresses from the local dataset) at their slugged canonical
+  // URLs; other/bare-number requests render on demand and 308-redirect.
+  return getTopTrainSlugs(500).map((id) => ({ id }));
 }
 
 type Props = {

@@ -75,20 +75,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: now,
   }));
 
-  // 4. Train detail pages (matching pre-rendered static train IDs).
-  // Canonical URLs are slugged with the train name (/trains/12015-ajmer-shatabdi);
-  // names resolve from the local chart-times dataset, falling back to bare numbers.
-  const trainNumbers = [
-    "12952", "12954", "12310", "12394", "11301", "11013", "12007", "12607",
-    "12301", "12381", "12008", "12608", "12425", "12445", "12009", "12931",
-    "12302", "12314", "12958", "12001", "12002", "12003", "12004", "12005",
-    "12006", "12010", "12011", "12012", "12013", "12014", "22439", "1080",
-    "22637", "12616", "20977", "20978", "19020", "1144", "12262"
-  ];
-  const { buildTrainSlug, getTrainIndex } = await import("@/lib/trainSlug");
-  const trainIndex = getTrainIndex();
-  const trainRoutes: MetadataRoute.Sitemap = trainNumbers.map((id) => ({
-    url: url(`/trains/${buildTrainSlug(id, trainIndex.get(id)?.trainName)}`),
+  // 4. Train detail pages — the same top-500 slugged canonical URLs that
+  // generateStaticParams pre-renders (/trains/12015-ajmer-shatabdi).
+  const { getTopTrainSlugs } = await import("@/lib/trainSlug");
+  const trainRoutes: MetadataRoute.Sitemap = getTopTrainSlugs(500).map((slug) => ({
+    url: url(`/trains/${slug}`),
     lastModified: now,
   }));
 

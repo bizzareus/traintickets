@@ -7,6 +7,7 @@ import {
   parseTrainNumberFromSlug,
 } from "@/lib/chartTimes";
 import { formatJourneyDateUtcLabel } from "@/lib/stationChartMetaSummary";
+import { buildTrainSlug } from "@/lib/trainSlug";
 import ChartTimesTable from "./ChartTimesTable";
 import ChartTimeAlertCTA from "./ChartTimeAlertCTA";
 
@@ -233,10 +234,10 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
       <p className="mt-6 text-sm text-slate-500">
         Looking for the full timetable, halts and seat confirmation chances?{" "}
         <Link
-          href={`/trains/${data.trainNumber}`}
+          href={`/trains/${buildTrainSlug(data.trainNumber, data.trainName)}`}
           className="font-medium text-blue-700 hover:underline"
         >
-          View the {data.trainNumber} train schedule →
+          View the {data.trainName} ({data.trainNumber}) schedule →
         </Link>
       </p>
     </>
