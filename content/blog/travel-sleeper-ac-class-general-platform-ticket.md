@@ -55,7 +55,7 @@ Once you get on the train, you must find the TTE right away. Tell them about you
 
 If you get caught riding in a Sleeper coach with a general ticket, the TTE will charge you the fare difference between the general and Sleeper ticket, along with a flat penalty of ₹500 (doubled under the Jan Vishwas Act 2026). If you board without any ticket at all, you'll pay the full Sleeper fare from the train's starting point plus the ₹500 penalty.
 
-Here is how the fine is calculated in real life. Suppose you hold a general ticket but choose to sit in Sleeper class. The TTE will charge you the Sleeper fare, deduct whatever you paid for the general ticket, and tack on the ₹500 fine. For AC 3-Tier, the same logic applies using the 3AC fare. If you only have a platform ticket, you pay the full Sleeper fare from your boarding point plus the ₹500 fine. If you board with no ticket at all, the penalty is much worse because they calculate the Sleeper fare all the way from the train's starting station. Similarly, going from Sleeper class to AC 3-Tier will cost you the class fare difference plus the standard ₹500 fine.
+Here is how the fine is calculated in real life. Suppose you hold a general ticket but choose to sit in Sleeper class. The TTE will charge you the Sleeper fare, deduct whatever you paid for the general ticket, and tack on the ₹500 fine. For AC 3-Tier, the same logic applies using the 3AC fare. If you only have a platform ticket, you pay the full Sleeper fare from your boarding point plus the ₹500 fine. If you board with no ticket at all, the penalty is much worse because they calculate the Sleeper fare all the way from the train's starting station. Similarly, going from Sleeper class to AC 3-Tier will cost you the class fare difference plus the standard ₹500 fine. If you are unsure how these coaches differ, our guide to [train classes (1A, 2A, 3A, 3E, Sleeper & Chair Car)](/blog/train-classes-explained-1a-2a-3a-3e-sleeper-chair-car) breaks down what each one offers.
 
 *Just keep in mind: if you refuse to pay up, the TTE has the right to hand you over to the RPF at the very next stop. Under Sections 137 and 138 as updated in 2026, this will lead to civil recovery proceedings and an extra fine of up to ₹2,000 (increased from ₹1,000).*
 
@@ -131,4 +131,5 @@ You can book general and platform tickets on your phone using the UTS mobile app
 - [IRCTC Current Availability Explained: How to Find Last-Minute Seats](/blog/irctc-current-availability-explained)
 - [How to Check Vacant Berths After Chart Preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
 - [Should You Change Class to Get a Confirmed Ticket?](/blog/change-class-confirmed-train-ticket)
+- [Train Classes Explained: 1A, 2A, 3A, 3E, Sleeper & Chair Car](/blog/train-classes-explained-1a-2a-3a-3e-sleeper-chair-car)
 - [Indian Railways Coach Composition: Locate Your Coach and Platform](/blog/understanding-coach-composition-find-train-platform)
