@@ -2,7 +2,7 @@
 title: "Tejas Express: India's Private Train — Fares & Booking"
 description: "Tejas Express is India's first IRCTC-run 'private' train, with dynamic fares and no Tatkal or concession quota. Full guide to timings, routes, fares, and booking rules."
 date: "2026-07-02"
-updated: "2026-07-14"
+updated: "2026-07-17"
 tags:
   - train booking
   - irctc
@@ -10,6 +10,8 @@ tags:
   - booking rules
   - ticket fares
 ---
+
+> **Booking the Tejas Express?** With no RAC quota it's confirmed-or-waitlisted — track your PNR with [Smart Seats](/), and once the chart is out, see the real vacant berths on your train with [Chart Vacancy](/chart-vacancy) to grab a current-availability seat.
 
 ## TL;DR
 

@@ -2,7 +2,7 @@
 title: "IRCTC Next-Gen Ticket Booking & RailOne App (2026)"
 description: "IRCTC's next-generation ticket booking system and the RailOne super app launch July 15, 2026: new capacity, coach-map booking, Tatkal fixes, and RailOne login."
 date: "2026-07-04"
-updated: "2026-07-06"
+updated: "2026-07-17"
 tags:
   - train booking
   - irctc
@@ -11,6 +11,8 @@ tags:
   - tatkal booking
   - railone
 ---
+
+> **Booking on the new IRCTC / RailOne system?** Check live seat availability and your PNR status with [Smart Seats](/), and after chart preparation, see the real vacant berths on your train with [Chart Vacancy](/chart-vacancy) to grab a last-minute seat.
 
 ## TL;DR
 

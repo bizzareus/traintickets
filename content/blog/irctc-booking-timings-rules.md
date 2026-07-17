@@ -2,13 +2,15 @@
 title: "IRCTC Ticket Booking Timings: Maintenance Hours & Rules"
 description: "A complete guide on IRCTC booking timings, Tatkal opening hours, night maintenance window shutdown (11:45 PM to 12:20 AM), and current availability times."
 date: "2026-06-23"
-updated: "2026-07-14"
+updated: "2026-07-17"
 tags:
   - train booking
   - irctc
   - booking timings
   - maintenance window
 ---
+
+> **Ready to book at the right moment?** Check live availability and your PNR status with [Smart Seats](/), and after chart preparation, see the actual vacant berths on your train with [Chart Vacancy](/chart-vacancy) — perfect for Tatkal and last-minute current-availability seats.
 
 Planning a train journey in India requires more than just knowing your destination. You also need to understand the schedule of the Indian Railways booking platform. Since IRCTC operates on a strictly regulated daily schedule, booking your ticket at the wrong time can result in failed payments, locked accounts, or missed trains. 
 

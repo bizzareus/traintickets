@@ -2,7 +2,7 @@
 title: "Coach Position in Train: Find S1, B2 & A1 on the Platform"
 description: "Confused by codes like S1, B2 or A1? Decode Indian Railways coach composition and find your exact coach position on the platform before the train arrives."
 date: "2026-06-10"
-updated: "2026-07-07"
+updated: "2026-07-17"
 tags:
   - coach composition
   - train layout
@@ -10,6 +10,8 @@ tags:
   - coach position indicator
   - irctc travel hacks
 ---
+
+> **Know your coach before you board.** Check your PNR and confirmed coach/berth with [Smart Seats](/), and if you're still waitlisted, see which berths are actually free on your train after chart preparation with [Chart Vacancy](/chart-vacancy).
 
 We've all been there. You're standing on platform 1 at Howrah or platform 8 at CSMT Mumbai, surrounded by an absolute sea of people. The announcer suddenly blares that your train is arriving in two minutes. Your ticket says coach B2, but you have no clue where that's going to stop. 
 
