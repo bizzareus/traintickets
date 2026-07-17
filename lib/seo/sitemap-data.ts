@@ -7,6 +7,7 @@ import { listChartTimesIndex } from "@/lib/chartTimes";
 import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
 import { listStandardMenuSlugs } from "@/lib/standardMenu";
 import { HOME_LANGS } from "@/lib/home/home-langs";
+import type { SitemapBucket } from "@/lib/seo/sitemap-buckets";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_APP_URL ||
@@ -14,20 +15,21 @@ const siteUrl =
     ? `https://${process.env.VERCEL_URL}`
     : "https://lastberth.com");
 
-const baseUrl =
+export const SITEMAP_BASE_URL =
   typeof siteUrl === "string" && siteUrl.startsWith("http")
     ? siteUrl
     : "https://lastberth.com";
 
 function url(pathname: string): string {
   const p = pathname.startsWith("/") ? pathname : `/${pathname}`;
-  return `${baseUrl}${p}`;
+  return `${SITEMAP_BASE_URL}${p}`;
 }
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
-
-  // 1. Static core routes
+// The "pages" bucket: homepages, tool routes, glossary, train-route pages, and
+// the localized blog (index + posts) — everything content/money-page and every
+// URL that carries hreflang alternates.
+async function pagesBucket(now: Date): Promise<MetadataRoute.Sitemap> {
+  // Static core routes.
   // NOTE: /search and /booking/v2 are intentionally excluded — both are legacy
   // aliases that permanently redirect to "/", so listing them in the sitemap
   // would tell Google to index redirect/duplicate URLs.
@@ -37,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: url("/pnr-status"), lastModified: now },
   ];
 
-  // 1b. Localized homepage (/ for English, /<lang> for the rest) with hreflang.
+  // Localized homepage (/ for English, /<lang> for the rest) with hreflang.
   const homeRoutes: MetadataRoute.Sitemap = HOME_LANGS.map((lang) => {
     const alternates: Record<string, string> = {};
     for (const l of HOME_LANGS) {
@@ -54,7 +56,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  // 2. Glossary: index + term pages, per language that has a translation file.
+  // Glossary: index + term pages, per language that has a translation file.
   const glossaryTerms = getAllGlossaryTerms();
   const glossaryLangs = listAvailableGlossaryLangs(); // ["en", ...translated]
   const glossaryRoutes: MetadataRoute.Sitemap = [];
@@ -68,42 +70,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // 3. Train route pages
+  // Train route pages.
   const routes = await getTopRoutes();
   const trainRouteRoutes: MetadataRoute.Sitemap = routes.map((r) => ({
     url: url(`/routes/${r.origin}-to-${r.dest}`),
     lastModified: now,
   }));
 
-  // 4. Train detail pages — the same top-500 slugged canonical URLs that
-  // generateStaticParams pre-renders (/trains/12015-ajmer-shatabdi).
-  const { getTopTrainSlugs } = await import("@/lib/trainSlug");
-  const trainRoutes: MetadataRoute.Sitemap = getTopTrainSlugs(500).map((slug) => ({
-    url: url(`/trains/${slug}`),
-    lastModified: now,
-  }));
-
-  // 4b. Chart-preparation-time pages (every committed content/chart-times/*.json)
-  const chartTimesRoutes: MetadataRoute.Sitemap = listChartTimesIndex().map((t) => ({
-    url: url(`/chart-times/${t.slug}`),
-    lastModified: now,
-  }));
-
-  // 4c. Train food-menu pages (index + every committed content/irctc-train-food-menu/*.json)
-  const foodMenuRoutes: MetadataRoute.Sitemap = [
-    { url: url("/irctc-train-food-menu"), lastModified: now },
-    { url: url("/irctc-train-food-menu/mail-express-humsafar"), lastModified: now },
-    ...listStandardMenuSlugs().map((slug) => ({
-      url: url(`/irctc-train-food-menu/${slug}`),
-      lastModified: now,
-    })),
-    ...listTrainFoodMenuIndex().map((m) => ({
-      url: url(`/irctc-train-food-menu/${m.slug}`),
-      lastModified: now,
-    })),
-  ];
-
-  // 5. Localized blog index routes (e.g. /blog, /blog/hi, etc.)
+  // Localized blog index routes (e.g. /blog, /blog/hi, etc.)
   const langs = ["en", "mr", "hi", "bn", "ta", "te", "ml"];
   const blogIndexRoutes: MetadataRoute.Sitemap = langs.map((lang) => {
     const alternates: Record<string, string> = {};
@@ -117,16 +91,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return {
       url: lang === "en" ? url("/blog") : url(`/blog/${lang}`),
       lastModified: now,
-      alternates: {
-        languages: alternates,
-      },
+      alternates: { languages: alternates },
     };
   });
 
-  // 6. Localized blog post routes
+  // Localized blog post routes.
   const posts = listBlogPosts();
   const postRoutes: MetadataRoute.Sitemap = [];
-  
   for (const p of posts) {
     // Only emit indexable languages — broken machine translations are dropped
     // from both the sitemap and the hreflang alternates (see lib/blog-quality).
@@ -143,9 +114,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       postRoutes.push({
         url: l === "en" ? url(`/blog/${p.slug}`) : url(`/blog/${l}/${p.slug}`),
         lastModified: new Date(`${(p.updated ?? p.date).slice(0, 10)}T00:00:00Z`),
-        alternates: {
-          languages: alternates,
-        },
+        alternates: { languages: alternates },
       });
     }
   }
@@ -155,10 +124,105 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...glossaryRoutes,
     ...trainRouteRoutes,
-    ...trainRoutes,
-    ...chartTimesRoutes,
-    ...foodMenuRoutes,
     ...blogIndexRoutes,
     ...postRoutes,
   ];
+}
+
+// The "trains" bucket: the top-500 slugged train detail pages that
+// generateStaticParams pre-renders (/trains/12015-ajmer-shatabdi).
+async function trainsBucket(now: Date): Promise<MetadataRoute.Sitemap> {
+  const { getTopTrainSlugs } = await import("@/lib/trainSlug");
+  return getTopTrainSlugs(500).map((slug) => ({
+    url: url(`/trains/${slug}`),
+    lastModified: now,
+  }));
+}
+
+// The "chart-times" bucket: every committed content/chart-times/*.json page.
+function chartTimesBucket(now: Date): MetadataRoute.Sitemap {
+  return listChartTimesIndex().map((t) => ({
+    url: url(`/chart-times/${t.slug}`),
+    lastModified: now,
+  }));
+}
+
+// The "food-menu" bucket: index + every committed food-menu page.
+function foodMenuBucket(now: Date): MetadataRoute.Sitemap {
+  return [
+    { url: url("/irctc-train-food-menu"), lastModified: now },
+    { url: url("/irctc-train-food-menu/mail-express-humsafar"), lastModified: now },
+    ...listStandardMenuSlugs().map((slug) => ({
+      url: url(`/irctc-train-food-menu/${slug}`),
+      lastModified: now,
+    })),
+    ...listTrainFoodMenuIndex().map((m) => ({
+      url: url(`/irctc-train-food-menu/${m.slug}`),
+      lastModified: now,
+    })),
+  ];
+}
+
+/** Build the URL entries for one sitemap bucket. */
+export async function buildSitemapBucket(
+  id: SitemapBucket,
+): Promise<MetadataRoute.Sitemap> {
+  const now = new Date();
+  switch (id) {
+    case "pages":
+      return pagesBucket(now);
+    case "trains":
+      return trainsBucket(now);
+    case "chart-times":
+      return chartTimesBucket(now);
+    case "food-menu":
+      return foodMenuBucket(now);
+    default:
+      return [];
+  }
+}
+
+function xmlEscape(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+/**
+ * Serialize sitemap entries to a <urlset> document. Matches the shape Next's
+ * built-in metadata sitemap emits: xhtml:link alternates (when present) before
+ * <lastmod>, and the xhtml namespace declared on the root element.
+ */
+export function serializeUrlset(entries: MetadataRoute.Sitemap): string {
+  const hasAlternates = entries.some((e) => e.alternates?.languages);
+  const openTag = hasAlternates
+    ? '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
+    : '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+  const body = entries
+    .map((e) => {
+      const parts: string[] = [`<loc>${xmlEscape(e.url)}</loc>`];
+      const langs = e.alternates?.languages;
+      if (langs) {
+        for (const [hreflang, href] of Object.entries(langs)) {
+          parts.push(
+            `<xhtml:link rel="alternate" hreflang="${xmlEscape(hreflang)}" href="${xmlEscape(String(href))}" />`,
+          );
+        }
+      }
+      if (e.lastModified) {
+        const iso =
+          e.lastModified instanceof Date
+            ? e.lastModified.toISOString()
+            : new Date(e.lastModified).toISOString();
+        parts.push(`<lastmod>${iso}</lastmod>`);
+      }
+      return `<url>${parts.join("")}</url>`;
+    })
+    .join("");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n${openTag}${body}</urlset>\n`;
 }
