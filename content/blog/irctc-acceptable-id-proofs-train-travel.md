@@ -2,7 +2,7 @@
 title: "Which ID Proofs Are Valid for Train Travel? (2026)"
 description: "Is your Aadhaar or driving licence valid to board a train? See every accepted ID proof — and whether a digital ID on DigiLocker or mParivahan works with the TTE."
 date: "2026-06-27"
-updated: "2026-07-14"
+updated: "2026-07-17"
 tags:
   - train travel
   - irctc rules
@@ -17,7 +17,7 @@ When traveling on Indian Railways with a confirmed or RAC ticket, you must carry
 
 ## What are the Official Acceptable ID Proofs for Train Travel?
 
-**To travel on Indian Railways, you must carry one of the ten officially approved identity cards in original form. These acceptable ID proofs include your Aadhaar card, Voter ID, Passport, Driving License, PAN card, nationalized bank passbooks, student photo IDs, government-issued photo ID cards, credit cards with photos, or Unique Disability ID cards.**
+**To travel on Indian Railways, you must carry one of the ten officially approved identity cards in original form. These acceptable ID proofs include your Aadhaar card, Voter ID, Passport, Driving License, PAN card, nationalized bank passbooks, student photo IDs, government-issued photo ID cards, credit cards with photos, or photo ID cards issued by a local authority.**
 
 If you are boarding a train with a confirmed ticket or an RAC (Reservation Against Cancellation) seat, you must prove you are the passenger named on the reservation. The TTE checks this to prevent ticket black-marketing and identity fraud. 
 
@@ -33,7 +33,7 @@ Below is the complete, official list of the 10 acceptable ID proofs recognized b
 | 6 | **Student Photo ID Card** | Issued by recognized schools, colleges, or universities |
 | 7 | **Bank Passbook** | Laminated passbook with photograph, issued by Nationalized or Scheduled Banks |
 | 8 | **Credit Cards** | Laminated credit cards issued by banks with a photo of the cardholder |
-| 9 | **Unique Disability ID (UDID)** | Official photo identity card for persons with disabilities |
+| 9 | **Local Authority Photo ID** | Photo ID card with a serial number issued by a District Administration, Municipal body, or Panchayat |
 | 10 | **Government ID Card** | Photo identity cards issued by Central, State, or PSU departments |
 
 ---
@@ -89,7 +89,7 @@ If you are stuck on a waitlist, check your confirmation chances on [LastBerth](/
 ## IRCTC Acceptable ID Proofs for Train Travel (FAQ)
 
 ### What are the 10 acceptable ID proofs in Indian Railways?
-The 10 acceptable ID proofs are Aadhaar Card, Voter ID, Passport, Driving License, PAN Card, Student ID, Bank Passbook, Photo Credit Card, Govt ID, and Unique Disability ID.
+The 10 acceptable ID proofs are Aadhaar Card, Voter ID, Passport, Driving License, PAN Card, Student ID, Bank Passbook, Photo Credit Card, Govt ID, and a local-authority photo ID.
 
 ### Is a photo of my ID card on my phone valid?
 No, photos, screenshots, or xerox copies of IDs are not valid. Only original physical IDs or those verified inside DigiLocker/mAadhaar are accepted.

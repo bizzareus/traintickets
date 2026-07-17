@@ -1,8 +1,8 @@
 ---
 title: "Tatkal or Current Availability: Which Confirms Faster?"
-description: "Tatkal opens 10–11 AM a day before; Current Availability opens ~4 hrs before departure. Which lands a confirmed last-minute seat cheaper? A clear side-by-side guide."
+description: "Tatkal opens 10–11 AM a day before; Current Availability opens ~8 hrs before departure. Which lands a confirmed last-minute seat cheaper? A clear side-by-side guide."
 date: "2026-05-27"
-updated: "2026-07-14"
+updated: "2026-07-17"
 tags:
   - tatkal
   - current availability
