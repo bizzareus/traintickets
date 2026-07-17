@@ -2,7 +2,7 @@
 title: "Is Vande Bharat Food Mandatory? Opt-Out Price & Refunds"
 description: "Is catering mandatory on Vande Bharat trains? See the exact opt-out price difference, onboard ordering charges, and how to claim a refund when the meal isn't served."
 date: "2026-07-04"
-updated: "2026-07-09"
+updated: "2026-07-17"
 tags:
   - train booking
   - irctc
@@ -10,6 +10,8 @@ tags:
   - catering rules
   - food refund
 ---
+
+> **Travelling on a Vande Bharat?** Check live seat availability and your PNR status with [Smart Seats](/), and if you're waitlisted, see the real vacant berths on your train after chart preparation with [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 

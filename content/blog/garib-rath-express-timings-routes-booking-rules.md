@@ -2,13 +2,15 @@
 title: "Garib Rath Express: Timings, Bedroll Charges & Booking Rules"
 description: "Complete Garib Rath Express guide: timings, the side-middle berth layout, ₹25 bedroll charges, Tatkal timing, and booking rules explained for 2026."
 date: "2026-07-01"
-updated: "2026-07-14"
+updated: "2026-07-17"
 tags:
   - train booking
   - irctc
   - garib rath
   - travel guide
 ---
+
+> **Planning a Garib Rath trip?** Check live availability and your PNR status with [Smart Seats](/), and if your ticket is waitlisted, see the actual vacant AC berths after chart preparation with [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 Want AC comfort but on a tight budget? Indian Railways' Garib Rath Express cuts ticket fares by 40-50% compared to standard trains. But there’s a catch: you won't get bedrolls automatically (it’s an extra ₹25), the 3AC coaches cram in an extra side-middle berth, and Tatkal bookings start sharp at 10:00 AM.

@@ -2,13 +2,15 @@
 title: "Amrit Bharat Express: Non-AC Sleeper Fares, Routes & Rules"
 description: "Amrit Bharat is Indian Railways' new non-AC superfast: Sleeper & 2S only, no RAC, low fares. See routes, fares, booking rules and onboard amenities."
 date: "2026-07-02"
-updated: "2026-07-14"
+updated: "2026-07-17"
 tags:
   - train booking
   - irctc
   - amrit bharat express
   - amrit bharat routes
 ---
+
+> **Booked on the Amrit Bharat but stuck on the waitlist?** With no RAC quota it's confirmed-or-waitlisted — track your PNR with [Smart Seats](/) and, once the chart is out, see the real vacant berths on your train with [Chart Vacancy](/chart-vacancy) to grab any open seat.
 
 ## TL;DR
 

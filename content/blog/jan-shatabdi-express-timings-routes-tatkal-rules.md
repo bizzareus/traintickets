@@ -2,13 +2,15 @@
 title: "Jan Shatabdi Express: Fares, Timings & Is It Worth It?"
 description: "Jan Shatabdi is the budget Shatabdi: fast day trains with AC & non-AC chair cars and no auto-catering. Compare fares, timings, routes and Tatkal booking rules."
 date: "2026-07-02"
-updated: "2026-07-14"
+updated: "2026-07-17"
 tags:
   - train booking
   - irctc
   - jan shatabdi
   - tatkal rules
 ---
+
+> **Chasing a confirmed Jan Shatabdi seat?** Check live availability and your PNR status with [Smart Seats](/), and after chart preparation, spot the actual vacant Chair Car berths on your train with [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 Need a fast, cheap intercity ride? Jan Shatabdi Express is Indian Railways' answer for budget day trips. Before you book, you need to know how the seating classes differ, when Tatkal opens, and how catering works. Here is a quick, practical guide to getting a confirmed seat without the usual booking headache.
