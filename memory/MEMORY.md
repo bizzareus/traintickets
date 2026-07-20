@@ -1,0 +1,11 @@
+- [Dev server: Node 22 + localhost](dev-server-node-and-localhost.md) — shell defaults to Node 14 (breaks Next); use nvm v22.15.0, and Bash curl to localhost is sandboxed
+- [Railway project IDs](railway-project.md) — lastberth project/env/service IDs for traintickets; never print full `list_variables` output (secrets)
+- [IRCTC keeper Railway status](irctc-keeper-railway-status.md) — BROWSER_USE_BASE_URL domain gotcha; keeper still failing as of last check, needs re-verification
+- [Railway + Supabase migrations](railway-supabase-migrations.md) — prisma migrate can't run from Railway (only 6543 pooler reachable); preDeploy is non-blocking, migrations are manual via Supabase SQL editor; also the `npm install --include=dev` build fix
+- [LastBerth SEO: CTR vs content](lastberth-seo-ctr-vs-content.md) — top blog pages are content-saturated at ~0.1–0.9% CTR; prefer title/CTR fixes over re-expanding fresh pages; ML translations mistranslate WL→"water" & break frontmatter
+- [Blog topics written](blog-topics-written.md) — running log of daily-blog EXPAND/REFRESH/CONSOLIDATE/NEW actions; dedup new ideas against this
+- [SEO CTR+CTA experiment 2026-07](seo-ctr-cta-experiment-2026-07.md) — OPEN experiment: title rewrites + blog→tool CTAs shipped 2026-07-06; baselines + targets; CHECK BACK 2026-08-03 & 2026-09-01
+- [Railway canonical facts](lastberth-railway-canonical-facts.md) — ground-truth IRCTC/Railways facts (ARP 60d, chart-prep 10hr, Tatkal Aadhaar-OTP Jul 2025…) w/ official source + last-confirmed date; used by blog-fact-audit
+- [Blog fact-audit log](blog-fact-audit-log.md) — rotation state + verdicts for the daily fact-audit agent; dedup which slugs already audited; ALWAYS re-verify a proposed correction before editing
+- [Weekly SEO routine](lastberth-seo-weekly-routine.md) — `lastberth-seo-weekly` scheduled task (Mon 8am): GSC via Claude-in-Chrome (no MCP/Ahrefs), quick-wins/tech-debt/internal-links/movement → report + capped safe fixes
+- [PostHog conversion tracking](lastberth-posthog-conversion.md) — PostHog MCP (project 359354) now in the daily-blog routine; real tool/conversion event names + the blog→tool funnel to measure; blog's 2nd objective = convert readers to ticket-search users
