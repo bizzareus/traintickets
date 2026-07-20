@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { cache } from "react";
+import { cache as reactCache } from "react";
+const cache = reactCache || (<T extends (...args: unknown[]) => unknown>(fn: T): T => fn);
 import {
   buildFoodMenuSlug,
   parseTrainNumberFromFoodSlug,

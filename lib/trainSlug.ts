@@ -1,4 +1,8 @@
 import { cache } from "react";
+const reactCache =
+  typeof cache === "function"
+    ? cache
+    : <T extends (...args: unknown[]) => unknown>(fn: T): T => fn;
 import { listChartTimesIndex, slugifyTrainName } from "./chartTimes";
 
 /**
@@ -20,7 +24,7 @@ export type TrainIndexEntry = {
 };
 
 /** Cached map of trainNumber -> local train metadata. */
-export const getTrainIndex = cache((): Map<string, TrainIndexEntry> => {
+export const getTrainIndex = reactCache((): Map<string, TrainIndexEntry> => {
   const map = new Map<string, TrainIndexEntry>();
   for (const t of listChartTimesIndex()) {
     if (!t.trainNumber) continue;
@@ -95,7 +99,7 @@ function trainCategoryScore(trainName: string): number {
  * the stable core set first, then the local dataset ranked by category
  * (premium named trains, then superfast expresses), ties broken by number.
  */
-export const getTopTrainSlugs = cache((limit: number = 500): string[] => {
+export const getTopTrainSlugs = reactCache((limit: number = 500): string[] => {
   const index = getTrainIndex();
   const slugs: string[] = [];
   const seen = new Set<string>();
