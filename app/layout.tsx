@@ -104,6 +104,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  other: {
+    "msvalidate.01": "A5FB463C1706FB1DE5F75D9D754846D4",
+  },
   category: "travel",
   classification: "Train ticket booking and seat availability",
 };
