@@ -1,10 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { cache } from "react";
-const reactCache =
-  typeof cache === "function"
-    ? cache
-    : <T extends (...args: unknown[]) => unknown>(fn: T): T => fn;
+import { cache as reactCache } from "react";
+const cache = (reactCache as <T>(fn: T) => T) || ((fn) => fn);
 import {
   buildChartTimesSlug,
   parseTrainNumberFromSlug,
@@ -389,7 +386,7 @@ async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | 
  * JSON when present and fresh; otherwise generate it, persist it, and return it.
  * Falls back to a stale cache if regeneration fails (backend down, etc.).
  */
-export const getChartTimesPageData = reactCache(
+export const getChartTimesPageData = cache(
   async (trainNumber: string): Promise<ChartTimesPageData | null> => {
     const num = String(trainNumber || "").trim();
     if (!num) return null;

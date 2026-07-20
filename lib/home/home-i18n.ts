@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { cache as reactCache } from "react";
-const cache = reactCache || (<T extends (...args: unknown[]) => unknown>(fn: T): T => fn);
+const cache = (reactCache as <T>(fn: T) => T) || ((fn) => fn);
 import { HOME_LANGS, isHomeLang, type HomeStrings } from "./home-langs";
 
 /**
