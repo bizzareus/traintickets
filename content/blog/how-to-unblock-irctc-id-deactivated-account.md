@@ -2,13 +2,15 @@
 title: "How to Unblock IRCTC User ID & Recover Deactivated Accounts"
 description: "Learn how to check if your IRCTC account is blocked or deactivated, understand the deactivation reasons, and follow the steps to recover your ID."
 date: "2026-07-05"
-updated: "2026-07-05"
+updated: "2026-07-21"
 tags:
   - train booking
   - irctc
   - irctc id blocked
   - deactivated irctc account
 ---
+
+> **Locked out of IRCTC but need to check your PNR?** You can verify your ticket status without signing into IRCTC using [Smart Seats](/) or find berths after chart prep on [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 IRCTC is currently running security cleanups to deactivate inactive, suspicious, or unverified personal accounts. If you are locked out, you can check your account status by trying to log in or looking for email alerts. For accounts deactivated due to incomplete verification, you can easily recover access by completing OTP verification or emailing IRCTC customer support with valid identity proofs.
@@ -54,6 +56,24 @@ Here is how to keep your personal account in good standing:
 - **Respect booking limits:** An unverified ID lets you book up to 12 tickets a month. You can double this limit to 24 by completing your [Aadhaar verification](/blog/irctc-ticket-booking-limits-aadhaar-verification) on your profile page.
 - **Keep Aadhaar linked:** Linking your Aadhaar card keeps your account verified and prevents it from getting flagged during security sweeps.
 - **Use helper tools safely:** If you are dealing with waitlists, use the LastBerth homepage to find [Smart Seats](/) for split-journey confirmed paths, or look up vacant berths using [Coach Journey Lookup](/seat-status) rather than making dozens of search queries that might trigger bot-detection systems.
+
+---
+
+## What to Do If Your IRCTC Account Is Blocked During Tatkal Booking Rush
+**If your IRCTC account gets blocked during the Tatkal booking window, you cannot unblock it instantly because support verification takes 2 to 5 business days. Your best immediate option is to use an alternative verified family member's account or book an offline Tatkal ticket at a computerized Passenger Reservation System (PRS) counter.**
+
+Getting locked out right at 10:00 AM (for AC classes) or 11:00 AM (for non-AC classes) during Tatkal opening can be frustrating. Multiple failed OTP attempts, rapid page refreshes, or simultaneous logins from different devices often trigger IRCTC's automated anti-bot security locks, disabling access during peak rush hours.
+
+Because IRCTC customer service cannot bypass automated fraud locks in real-time, attempting multiple login retries will only extend the lockout duration. If no alternate family account is available, head to the nearest railway station counter immediately with physical passenger ID details. To avoid future rush-hour blocks, save passenger details in your Master List before Tatkal opens and avoid using third-party browser auto-fill scripts that flag suspicious automation.
+
+---
+
+## Can You Create a New IRCTC Account with the Same Mobile or Aadhaar Number?
+**No, you cannot register a new IRCTC account using a mobile number, email address, or Aadhaar already linked to an existing active or deactivated account. IRCTC enforces strict one-to-one mapping for credentials. To create a fresh account, you must register with a unique mobile number and email ID, then re-verify your Aadhaar.**
+
+When an IRCTC account is suspended or deactivated, its linked credentials remain locked in the system database to prevent identity duplication and unauthorized multi-account creation under Section 143 of the Railways Act. Attempting to sign up with previously registered contact details will result in immediate error messages such as "Mobile Number / Email Already Exists."
+
+If your previous account was permanently banned for policy violations, you must obtain a new mobile number and email address to register a fresh IRCTC account. Once registered, complete KYC verification by linking your Aadhaar on the new profile. Note that an Aadhaar number can only be linked to one active IRCTC account at any given time; if it remains linked to the deactivated profile, contact IRCTC support to release the Aadhaar mapping.
 
 ---
 

@@ -2,7 +2,7 @@
 title: "IRCTC Circular Journey Ticket: Rules & Booking Guide"
 description: "Save money on multi-stop train trips in India. Learn the rules, telescopic fare calculation, and step-by-step booking for circular journey tickets."
 date: "2026-06-20"
-updated: "2026-07-14"
+updated: "2026-07-21"
 tags:
   - train booking
   - irctc
@@ -12,6 +12,8 @@ tags:
 Planning a multi-city vacation or a long pilgrimage across India? If you're booking separate point-to-point train tickets for each stop, you're throwing money away. Every single time you book a new leg, the base fare resets. That means you pay a premium on every stretch. Luckily, Indian Railways has a clever way to avoid this, though very few travelers know about it: the Circular Journey Ticket (CJT). Think of it as a single transit pass for your entire round trip that uses "telescopic fare calculation" to slash your total ticket costs.
 
 If you've got a multi-stop itinerary, learning how these tickets work will keep your travel budget in check. Let's dive into the rules, the booking process, and how much you can actually save.
+
+> **Planning a multi-city rail journey?** Check seat availability across all train legs using [Smart Seats](/) or look up coach maps on [Coach Journey Lookup](/seat-status).
 
 ## What exactly is a Circular Ticket?
 
@@ -89,6 +91,18 @@ We ran the numbers for a standard Sleeper Class trip to show you the difference:
 | **Total Savings** | - | - | **₹480 (40% Saved)** |
 
 By putting all your stops onto a single circular sheet, you skip paying the highest base fare bracket repeatedly. That alone cuts your travel bill significantly. The total price drop is massive—especially for family trips or when you choose AC classes, where individual base rates really add up.
+
+## Can Senior Citizens and Special Quotas Claim Concessions on Circular Tickets?
+
+Yes, eligible passengers including senior citizens and specific quota holders can claim concessions on circular journey tickets, provided standard Indian Railways concession rules apply to the travel class. Concession benefits are calculated based on the total telescopic fare across the entire itinerary rather than individual leg fares, yielding higher overall savings for qualifying travelers.
+
+When booking a circular journey ticket under a concession, you must present valid government-issued photo identification and supporting certificates at the Divisional Commercial Manager (DCM) office or booking window during application. The concession percentage is applied directly to the total calculated base fare for the entire circuit. Keep in mind that quota reservations (such as Senior Citizen quota berths) are subject to availability per train leg. If a specific leg lacks quota berths, you can still avail of the fare concession while booking standard general berths for that segment. Note that certain special quotas like Tatkal cannot be combined with circular tickets.
+
+## How to Modify Itinerary or Dates on an Issued Circular Ticket
+
+Modifying an issued circular journey ticket requires visiting a Railway Reservation Counter before the scheduled departure of the affected leg. Passengers can change journey dates, train numbers, or specific stopover durations by paying standard reservation and modification fees per leg, provided overall itinerary route constraints and ticket validity period limits are maintained.
+
+Because circular tickets are issued as paper authority documents at physical booking counters, any changes to your travel dates or train choices cannot be performed online via IRCTC. To modify a leg, approach a reservation clerk with your original circular ticket and completed requisition slips specifying the revised train numbers or dates. If the requested change alters the total route distance or exceeds the calculated validity days, the railway authorities will re-evaluate the telescopic fare and issue an endorsement or revised fare slip. If you need to cancel a specific leg entirely while retaining the rest of your itinerary, ensure you surrender the segment reservation before chart preparation to claim applicable refund amounts.
 
 ## Common Booking Questions (FAQ)
 

@@ -2,12 +2,14 @@
 title: "How to Change Boarding Point in IRCTC: Rules & Process"
 description: "Learn the new 2026 IRCTC boarding point change rules. Update your boarding station online up to 30 minutes before departure using the RailOne or IRCTC app."
 date: "2026-06-22"
-updated: "2026-07-14"
+updated: "2026-07-21"
 tags:
   - train booking
   - irctc
   - boarding point change
 ---
+
+> **Need to change your boarding station or check seat status?** Verify your 10-digit PNR instantly on [Smart Seats](/) or find vacant berths after chart prep on [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 Need to change where you catch your train? Under the April 2026 Boarding Point Change Reform, you can now update your boarding station online up to 30 minutes before departure. This replacement of the old 24-hour rule makes last-minute travel plan adjustments simple and completely digital.
@@ -82,6 +84,22 @@ Furthermore, if you are already on a running train and need to find empty berths
 The 30-minute window for boarding point changes directly aligns with the preparation of the final second reservation chart. This second chart accounts for last-minute cancellations and updates the TTE's handheld terminal. Once this second chart is prepared, no further modifications can be made to the passenger manifest.
 
 A current available ticket represents a fantastic opportunity to grab a last-minute confirmed seat without a waitlist. It is sold at a slightly discounted base fare and does not carry tatkal charges. You can search for these vacant seats on the RailOne or IRCTC apps right after the first chart is published.
+
+---
+
+## Can You Change Boarding Point for Tatkal Train Tickets?
+
+**Yes, you can change the boarding point for Tatkal train tickets online or offline, provided your ticket is Confirmed or RAC. Under IRCTC rules, Tatkal tickets follow the same boarding station change policy as General quota bookings, allowing modification up to 30 minutes prior to train departure.**
+
+When traveling on a Tatkal quota ticket, plans can change rapidly due to emergency bookings. Indian Railways permits a one-time boarding point modification for confirmed Tatkal e-tickets through the RailOne app or IRCTC portal. However, waitlisted Tatkal tickets cannot request a boarding station change. Furthermore, if changing your boarding station results in a shorter travel distance, no refund of the Tatkal surcharge or fare difference will be issued.
+
+---
+
+## Can Boarding Point Be Changed to a Station AFTER the Original Destination?
+
+**No, you cannot change your boarding point to a station located after your ticket's original destination station. IRCTC boarding point changes are strictly restricted to valid stations along the booked route prior to your destination, as the destination defines the end boundary of your booked train journey.**
+
+The boarding point change feature allows passengers to alter where they board the train between the origin and destination recorded on the ticket. Attempting to select a station beyond your booked destination is invalid because your reservation and fare coverage terminate at the destination station. If you wish to travel beyond your original destination, you must purchase a separate extension ticket or book a new ticket for the additional journey segment, subject to seat availability.
 
 ---
 
