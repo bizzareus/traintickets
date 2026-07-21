@@ -2,7 +2,7 @@
 title: "Jan Vishwas Act Railway Rules: Decriminalization & New Fines"
 description: "Discover how the Jan Vishwas Act 2026 decriminalizes railway offenses. Learn about the new civil penalties, ticketless travel fines, and the escalator clause."
 date: "2026-07-02"
-updated: "2026-07-02"
+updated: "2026-07-21"
 tags:
   - jan vishwas act
   - railway rules
@@ -12,7 +12,7 @@ tags:
 
 ## TL;DR
 
-- The **Jan Vishwas (Amendment of Provisions) Act, 2026**, decriminalizes minor offenses under the Railways Act, replacing prison terms with civil penalties.
+- The **Jan Vishwas (Amendment of Provisions) Act, 2023** (effective July 2026), decriminalizes minor offenses under the Railways Act, replacing prison terms with civil penalties.
 - Major changes include a minimum ₹500 fine for ticketless travel, ₹2,000 for smoking or hawking, and ₹2,500 for entering women's coaches.
 - Fines are now administrative penalties collected directly by railway officers, eliminating criminal courts and police trials for these infractions.
 - An automatic **10% escalator clause** will raise all these penalty amounts by 10% every three years to offset inflation.
@@ -22,7 +22,7 @@ tags:
 
 ## What is the Jan Vishwas Act 2026 and How Does it Affect Railway Rules?
 
-**The Jan Vishwas (Amendment of Provisions) Act, 2026, is a landmark legislation that decriminalizes minor railway offenses, replacing prison terms with civil penalties.** Instead of criminal prosecution and court trials, violations are now handled as administrative defaults, simplifying compliance while imposing higher monetary fines for offences.
+**The Jan Vishwas (Amendment of Provisions) Act, 2023, is a landmark legislation (effective July 2026) that decriminalizes minor railway offenses, replacing prison terms with civil penalties.** Instead of criminal prosecution and court trials, violations are now handled as administrative defaults, simplifying compliance while imposing higher monetary fines for offences.
 
 Before this reform, even minor errors, such as vendor sales without a permit or boarding the wrong coach, could lead to criminal charges, magistrate court summons, and a permanent police record. By decriminalizing these acts, Indian Railways aims to reduce judicial backlog while enforcing discipline through direct financial penalties. Authorized railway officials now handle these offenses administratively.
 
