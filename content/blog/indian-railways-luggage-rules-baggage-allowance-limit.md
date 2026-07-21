@@ -2,7 +2,7 @@
 title: "Indian Railways Luggage Rules: Free Allowance, Limits & Fines"
 description: "Learn the latest Indian Railways luggage rules: free weight limits for AC and Sleeper classes, extra baggage fees, dimensions, and fines for excess luggage."
 date: "2026-06-19"
-updated: "2026-07-05"
+updated: "2026-07-21"
 tags:
   - train travel
   - irctc
@@ -59,7 +59,7 @@ If your bag is larger than 100 cm x 60 cm x 25 cm, it won't fit under the lower 
 
 ## How Do You Book Extra Baggage or Luggage on a Train?
 
-Need to register extra luggage? Head straight to the station's parcel or luggage office at least half an hour before departure. Show the officer your confirmed ticket, pay the excess fee—which is 1.5 times the normal rate—and get your receipt. Give yourself plenty of time so you don't end up chasing a moving train.
+Need to register extra luggage? Head straight to the station's parcel or luggage office at least half an hour before departure. Show the officer your confirmed ticket, pay the excess fee based on the standard luggage scale rate, and get your receipt. Give yourself plenty of time so you don't end up chasing a moving train.
 
 Don't run late or you'll miss your departure. Booking the extra baggage is actually pretty simple if you follow these steps once you arrive:
 
