@@ -2,13 +2,15 @@
 title: "Boarding Station vs Remote Location in IRCTC Charts"
 description: "Learn why IRCTC chart availability can differ by boarding station, remote location, and station pair, plus how to avoid checking the wrong route."
 date: "2026-05-15"
-updated: "2026-06-11"
+updated: "2026-07-21"
 tags:
   - boarding station
   - chart preparation
   - remote location
   - irctc
 ---
+
+> **Quick Tip:** Wondering how intermediate station quotas affect your seat availability? Check station-wise charting schedules on [Chart Times](/chart-times), track live vacancies with [Chart Vacancy](/chart-vacancy), or calculate your confirmation probability using [Smart Seats](/).
 
 ## TL;DR
 
@@ -167,6 +169,14 @@ Suppose you want to travel from Kota to Vadodara on a train that started much ea
 For you, the useful result is Kota → Vadodara because Kota is where you intend to board and Vadodara is where you need to get off. The origin result is background information. The Ratlam result is not your plan unless you can actually reach Ratlam and board there.
 
 Now change one detail: you find a confirmed seat from an earlier station before Kota, but the train reaches that station at 1:10 am. That may be technically bookable, but it is only practical if you can safely and reliably board there. This is where station-pair checking becomes a travel decision, not just a search trick.
+
+## What is Remote Location Waitlist (RLWL) and How Does It Clear?
+
+Remote Location Waitlist (RLWL) is issued for tickets booked between major intermediate stations along a train's route rather than the originating station. RLWL has a smaller pooled quota of berths compared to General Waitlist (GNWL), meaning RLWL tickets have a significantly lower probability of confirmation. RLWL confirmation relies almost entirely on cancellations within that specific intermediate segment before chart preparation.
+
+## How to Change Your Boarding Station in IRCTC Without Penalty
+
+IRCTC allows passengers to change their boarding station online up to **24 hours before the scheduled departure** of the train from its originating station. You can modify your boarding point through the IRCTC app/website under "Booked Ticket History" without paying any extra charges. Once changed, your original seat remains reserved from the new boarding station, and the TTE cannot reallocate your seat to another passenger for the missed initial stretch.
 
 ## Common Booking Questions (FAQ)
 

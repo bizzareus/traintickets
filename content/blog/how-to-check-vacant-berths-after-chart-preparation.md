@@ -2,13 +2,15 @@
 title: "How to Check IRCTC Chart Vacancy & Vacant Berths"
 description: "Check IRCTC chart vacancy and vacant berths after chart preparation: use the official Charts/Vacancy portal, current availability, and station-pair searches."
 date: "2026-05-15"
-updated: "2026-07-14"
+updated: "2026-07-21"
 tags:
   - chart vacancy
   - vacant berths
   - last minute tickets
   - indian railways
 ---
+
+> **Quick Tip:** Want to see the visual layout of open berths on your train after charting? Use [Chart Vacancy](/chart-vacancy) to browse coach-wise vacant berths, check coach positions with [Coach Journey Lookup](/seat-status), or verify PNR status updates via [Smart Seats](/).
 
 ## TL;DR
 
@@ -174,6 +176,14 @@ A 20-minute confirmed segment from your origin may technically be "confirmed," b
 ### Do not rely on the TTE to solve the gap
 
 Sometimes travellers hope they can adjust onboard if the next segment is not confirmed. That is not a plan. Travel only with a valid ticket for the segment you intend to occupy, and leave room for a fallback if the remaining stretch does not open.
+
+## How to View Vacant Berths Online via IRCTC & LastBerth Chart Vacancy
+
+You can check vacant berths online using either the official IRCTC Online Charts portal or [LastBerth Chart Vacancy](/chart-vacancy). Simply enter your train number or train name, journey date, and boarding station. The system renders an interactive coach layout showing exact coach numbers (e.g., B2, S4, A1) and berth numbers (e.g., 14 Lower, 23 Upper) that remain vacant after first chart preparation.
+
+## Can You Book a Vacant Berth Directly from the TTE Onboard?
+
+Yes. If a berth remains vacant after chart preparation and second chart prep, the Travelling Ticket Examiner (TTE) is authorized to allocate it to onboard passengers. RAC passengers get first preference for full berth allocation, followed by partially waitlisted passengers, and then unreserved ticket holders. The TTE will issue an official **Excess Fare Ticket (EFT)** receipt for the fare difference and reservation charge.
 
 ---
 

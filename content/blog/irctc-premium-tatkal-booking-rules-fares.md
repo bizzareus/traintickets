@@ -2,7 +2,7 @@
 title: "IRCTC Premium Tatkal Rules: Booking Process, Timings & Fares"
 description: "Learn IRCTC Premium Tatkal booking rules, timings, dynamic fares, and cancellation/refund policies. Find out how it differs from the standard Tatkal quota."
 date: "2026-06-27"
-updated: "2026-07-16"
+updated: 2026-07-21
 tags:
   - train booking
   - irctc
@@ -16,7 +16,7 @@ tags:
 - **Booking Timings:** Opens daily at **10:00 AM** for AC classes and **11:00 AM** for non-AC classes, exactly one day before the train departs from its originating station.
 - **Refund Policy:** There is **zero refund** on the cancellation of confirmed Premium Tatkal tickets.
 - **No Agent Bookings:** Travel agents are completely barred from booking Premium Tatkal tickets. Only individual web users can book them.
-- **No Waitlist:** Only confirmed or RAC tickets are booked under this quota; no waitlisted tickets are issued.
+- **No Waitlist/RAC:** Only confirmed (CNF) tickets are booked under this quota; no waitlisted or RAC tickets are issued.
 
 ---
 
@@ -38,13 +38,13 @@ Furthermore, no concessions are allowed in this quota. Whether you are booking f
 
 ## What is the Booking Time for IRCTC Premium Tatkal?
 
-The booking time for IRCTC Premium Tatkal opens at 10:00 AM daily for AC classes (1AC, 2AC, 3AC, CC) and at 11:00 AM daily for non-AC classes (Sleeper, Second Seating). These tickets can only be booked online exactly one day before the train's scheduled departure from the originating station.
+The booking time for IRCTC Premium Tatkal opens at 10:00 AM daily for AC classes (2AC, 3AC, CC, EC) and at 11:00 AM daily for non-AC classes (Sleeper, Second Seating). These tickets can only be booked online exactly one day before the train's scheduled departure from the originating station.
 
 It is important to remember that the booking window opens on the day before the train starts its journey from the originating station. If your boarding station is an intermediate stop and the train starts from its origin the previous night, your booking window will open a day earlier. 
 
 | Class Type | Opening Time | Booking Platform | Agent Access |
 | :--- | :--- | :--- | :--- |
-| **AC Classes** (1A, 2A, 3A, CC, 3E) | 10:00 AM (Daily) | IRCTC Website / App Only | Barred |
+| **AC Classes** (2A, 3A, CC, EC, 3E) | 10:00 AM (Daily) | IRCTC Website / App Only | Barred |
 | **Non-AC Classes** (SL, 2S) | 11:00 AM (Daily) | IRCTC Website / App Only | Barred |
 
 Because of high demand, Premium Tatkal tickets sell out within seconds. If you find that the dynamic fares have surged to unaffordable levels, you can use [LastBerth's Finding Smart Seats](file:///Users/kartikarora/Documents/personal/traintickets/app/page.tsx) feature. This tool finds seat availability across a journey by breaking the seat bookings across multiple coaches or segments where a single direct seat is unavailable, allowing you to secure a confirmed ticket at a lower rate.
@@ -81,7 +81,7 @@ Premium Tatkal differs from standard Tatkal primarily through its dynamic pricin
 
 When booking under the standard Tatkal quota, passengers can be placed on a waiting list if confirmed seats sell out. In Indian Railways, the **WL full form is Waiting List**. If you book a standard Tatkal ticket and it is waitlisted, your ticket enters a queue. You can track your position queue progression, which moves from **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. 
 
-Under the Premium Tatkal quota, however, the system does not issue waitlisted tickets. Once the quota is full, booking is closed, and the system displays "Not Available." Only confirmed (CNF) or RAC tickets are issued. If you are holding a waitlisted e-ticket under the standard quota (such as WL/1 or WL/10), remember that online waitlisted e-tickets are automatically cancelled after chart preparation, and system automatic refunds/cancellations for waitlisted e-tickets are issued within 3-5 days.
+Under the Premium Tatkal quota, however, the system does not issue waitlisted tickets. Once the quota is full, booking is closed, and the system displays "Not Available." Only confirmed (CNF) tickets are issued; no RAC or waitlisted tickets are allowed. If you are holding a waitlisted e-ticket under the standard quota (such as WL/1 or WL/10), remember that online waitlisted e-tickets are automatically cancelled after chart preparation, and system automatic refunds/cancellations for waitlisted e-tickets are issued within 3-5 days.
 
 | Feature / Rule | Standard Tatkal Quota | Premium Tatkal Quota |
 | :--- | :--- | :--- |

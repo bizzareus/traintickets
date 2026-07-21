@@ -1,5 +1,5 @@
 ---
-title: "Duronto Express: Timings, Booking Rules, Fares & Catering"
+title: "Duronto Express Booking Rules 2026: Timings, Dynamic Fares & Seat Availability"
 description: "Complete guide to IRCTC Duronto Express bookings, dynamic pricing, optional catering charges, Tatkal timings, seat layouts, and major routes."
 date: "2026-07-01"
 updated: "2026-07-21"
@@ -9,6 +9,8 @@ tags:
   - duronto express
   - duronto booking rules
 ---
+
+> **Quick Tip:** Planning a journey on a Duronto Express train? Check real-time seat availability with [Smart Seats](/), monitor chart preparation status on [Chart Times](/chart-times), or check vacant berths after charting on [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 
@@ -94,6 +96,14 @@ Here is how you can manage your catering choices:
 For tech-savvy commuters, the IRCTC website or Rail Connect app is the most convenient way to book. However, offline booking remains popular for travelers seeking physical counter tickets or passenger quota benefits.
 
 If you are trying to book a seat at the very last minute, look for the current availability window. A **current available ticket** is a **fully confirmed seat** with coach/berth numbers, which opens 8 hours before departure (immediately after first chart preparation) and closes 30 minutes before departure. These berths represent unclaimed quotas or late cancellations and are sold at the base fare without any Tatkal surcharge.
+
+## How Does Flexi-Fare Work in Duronto Express Tickets?
+
+Duronto Express fares operate on a dynamic pricing scheme known as Flexi-Fare. Under this system, base fares increase by **10% for every 10% of seats sold**, up to a maximum ceiling of **50% above the base fare**. The first 10% of berths are sold at the normal base fare, while subsequent blocks incur incremental surcharges. First AC (1A) and Executive Class (EC) are exempted from flexi-fare pricing.
+
+## Is Onboard Catering Mandatory in Duronto Express Trains?
+
+No, onboard catering is **optional** on all Duronto Express trains. When booking your ticket via IRCTC or at a reservation counter, passengers can select whether to opt in or opt out of meals. Choosing to opt out reduces the total ticket fare by removing the catering charges for tea, breakfast, lunch, or dinner during the journey.
 
 ---
 

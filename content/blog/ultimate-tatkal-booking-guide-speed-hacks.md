@@ -2,7 +2,7 @@
 title: "The Ultimate Tatkal Speed Guide: How to Beat the 120-Second Booking Window"
 description: "Why do Tatkal tickets sell out in seconds? Learn the exact technical hacks, payment strategies, and differences between Tatkal and Premium Tatkal to secure your seat."
 date: "2026-06-01"
-updated: "2026-07-16"
+updated: 2026-07-21
 tags:
   - tatkal hacks
   - premium tatkal
@@ -108,7 +108,7 @@ If you don't want to keep money in the wallet, use UPI. But don't do it on the s
 
 ## What Are the Cancellation and Refund Rules for Tatkal Tickets?
 
-Confirmed Tatkal and Premium Tatkal tickets have zero refund on cancellation — no exceptions unless the train is delayed over 3 hours, the route is diverted, or your coach is not attached. Waitlisted Tatkal e-tickets that remain unconfirmed after charting are auto-cancelled with a refund minus Rs. 60 + GST clerkage per passenger.
+Confirmed Tatkal and Premium Tatkal tickets have zero refund on cancellation — no exceptions unless the train is delayed over 3 hours, the route is diverted, or your coach is not attached. Waitlisted Tatkal e-tickets that remain unconfirmed after charting are auto-cancelled with a full refund (no cancellation or clerkage fee deducted).
 
 Before you hit book, make sure you understand the stakes. Tatkal tickets are expensive, and their cancellation rules are notoriously strict.
 
@@ -122,7 +122,7 @@ The only exceptions where a full refund is granted are:
 
 ### Waitlisted Tatkal Tickets (CKWL)
 If you end up on the waitlist and it doesn't clear after charts are prepared:
-- **Auto-Refund:** The system automatically cancels your waitlisted online ticket. You'll get your money back in 3-5 days, minus a small clerkage fee of Rs 60 plus GST per passenger.
+- **Auto-Refund:** The system automatically cancels your waitlisted online ticket. You'll get a full refund in 3-5 days with no cancellation or clerkage fee deducted.
 - **Don't board the train:** You cannot travel on a waitlisted e-ticket. If a TTE catches you, they'll treat you as ticketless and fine you heavily.
 
 ---
