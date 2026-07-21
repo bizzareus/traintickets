@@ -2,7 +2,7 @@
 title: "IRCTC Booking Failed, Money Deducted? Refund Timeline"
 description: "Did your IRCTC ticket booking fail but the money was deducted from your bank? Learn the exact refund timelines for UPI, cards, net banking, and how to track it."
 date: "2026-07-05"
-updated: "2026-07-17"
+updated: "2026-07-22"
 tags:
   - irctc refund
   - failed booking
@@ -12,7 +12,8 @@ tags:
   - irctc ipay
 ---
 
-> **Not sure your ticket actually booked?** A failed payment doesn't always mean a failed booking — check your PNR status instantly with [Smart Seats](/) to see if the seat went through. Need to rebook right away? [Chart Vacancy](/chart-vacancy) shows the exact vacant berths on any train after chart preparation.
+> [!TIP]
+> **Check Refund & Booking Status:** If your transaction failed, track your ticket status on [Smart Seats](/) or verify coach berth availability on [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 
@@ -68,6 +69,22 @@ If the refund has not credited to your account within the standard timeline, you
 
 ---
 
+## What Happens if Money Is Deducted After a Tatkal Session Timeout?
+
+When a Tatkal session times out after payment authorization, IRCTC marks the transaction as failed and does not generate a PNR. The money is auto-refunded to the source account within 3–5 working days for UPI or 5–7 working days for Net Banking.
+
+During peak Tatkal hours, payment gateways process thousands of requests simultaneously. If the gateway authorization response takes longer than IRCTC's 3-minute session limit, the reservation engine releases the locked berth back to the quota pool. However, since the bank already debited your account, the funds enter the gateway's holding pool. The merchant auto-reversal protocol triggers during nightly reconciliation, initiating a chargeback credit to your originating bank without requiring manual intervention or TDR filing.
+
+---
+
+## How to Check Bank Refund Status via IRCTC Ticket Refund History
+
+Log into the IRCTC portal → My Account → My Transactions → Ticket Refund History or Failed Transaction History. Copy the 15-digit Bank Reference Number or PG Reference ID and quote it to your bank's customer support if the refund is delayed beyond 5 business days.
+
+To locate your payment gateway reference code, open your IRCTC account dashboard and navigate to **My Transactions > Failed Transaction History**. Select the specific transaction to view the detailed payment breakdown. Note the **PG Reference ID** and **Bank Reference Number** (ARN for card payments). If your refund is not credited within the expected window, contact your bank's nodal officer or raise a query via their online grievance portal referencing this 15-digit ID for rapid resolution.
+
+---
+
 ## Common Booking Questions (FAQ)
 
 ### Why is my IRCTC ticket booking failed but money deducted?
@@ -93,6 +110,12 @@ To get the fastest refunds, use the **IRCTC iPay** payment gateway or the pre-fu
 
 ### Why is my refund status showing zero (₹0) on IRCTC?
 This is a database logging error that occurs because no PNR is generated for failed bookings. Once the nightly ledger reconciliation is completed by the payment gateway, the system updates and refunds the full amount.
+
+### Can I claim interest or compensation if IRCTC delays my refund beyond 7 days?
+As per Reserve Bank of India (RBI) turnaround time (TAT) guidelines, if an auto-refund for a failed electronic transaction is delayed beyond T+1 business days due to bank or payment gateway delays, the customer is entitled to compensation of ₹100 per day of delay. You can escalate the delayed refund to the banking ombudsman if the issuing bank fails to credit the compensation.
+
+### What should I do if the money was deducted but no PNR was sent to my mobile?
+Check your IRCTC account under **My Transactions > Booked Ticket History** and your registered email inbox. If no PNR appears in your account history, the booking failed and no SMS was generated. The debited money will be automatically credited back to your bank account within 3–5 business days.
 
 ---
 

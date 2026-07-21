@@ -1,8 +1,7 @@
----
-title: "IRCTC Refund Rules 2026: Cancellation Fees & TDR Filing"
+---title: "IRCTC Refund Rules 2026: Cancellation Fees & TDR Filing"
 description: "How much refund do you get when you cancel an IRCTC ticket? Exact cancellation charges by class and timing, auto-refund rules, and step-by-step TDR filing."
 date: "2026-06-10"
-updated: "2026-07-11"
+updated: "2026-07-22"
 tags:
   - irctc cancellation
   - refund rules
@@ -10,6 +9,10 @@ tags:
   - train ticket refund
   - travel hacks
 ---
+
+> [!TIP]
+> **Check Cancellation & Refund Odds:** Check your PNR status on [Smart Seats](/) or see available vacant berths after chart prep on [Chart Vacancy](/chart-vacancy).
+
 
 Few things in life are as annoying as dealing with IRCTC cancellation rules. We've all been there: a sudden plan change, a family emergency, or simply a delayed train, and suddenly you're staring at your phone trying to figure out if you'll get your hard-earned money back. Can you cancel after chart preparation? What on earth is a TDR? 
 
@@ -171,12 +174,31 @@ Understanding these rules ensures you never leave money on the table. Keep this 
 
 ---
 
+## What Are the TDR Rules for Automatic Train Cancellations vs Passenger Cancellations?
+
+If Indian Railways cancels a train due to floods, fog, or derailment, full refunds are processed automatically without filing a TDR for e-tickets. However, if a passenger cancels their own ticket or misses a train due to late running (>3 hours), a manual TDR must be filed before chart preparation or train departure.
+
+For automatic train cancellations, the refund amount is credited directly to the source payment method within 3–5 working days. For passenger-initiated TDR filings, IRCTC verifies the claim with the concerned Zonal Railway, and approval takes 15–90 days depending on the audit clearance.
+
+## What Are the Flat Clerkage Deductions per Passenger Across All Travel Classes?
+
+IRCTC levies a flat clerkage fee of ₹60 (+ GST for AC classes) per passenger for unconfirmed, RAC, or waitlisted e-tickets cancelled before chart preparation. For confirmed tickets cancelled >48 hours in advance, flat cancellation fees are ₹240 (1AC/Executive), ₹200 (2AC/FC), ₹180 (3AC/3E/CC), ₹120 (Sleeper), and ₹60 (Second Class).
+
+If a confirmed ticket is cancelled between 48 hours and 12 hours before scheduled departure, cancellation charges increase to 25% of the total fare. Between 12 hours and 4 hours before departure (up to chart preparation), charges escalate to 50% of the base fare.
+
 ## FAQ: Cancellation & TDR Questions
 
 ### What are the main reasons to file a TDR on IRCTC?
 The main reasons are: train delayed by 3+ hours (100% refund), AC failure in AC coach (refund of fare difference), coach detached (100% refund), train diverted (100% refund), and passenger travelling in lower class (fare difference refund).
 
 ---
+
+### Can I file a TDR if my coach AC was not working during the journey?
+Yes. If air conditioning fails during your journey, obtain a certificate from the TTE/Conductor and file a TDR under reason "AC Failure" within 20 hours of reaching your destination for a partial AC surcharge refund.
+
+### What happens if I file a TDR with an incorrect reason on IRCTC?
+IRCTC verifies TDR claims against CCM/TTE charts and train logs. Selecting an incorrect reason (such as claiming train delayed >3h when it ran on time) results in TDR rejection and zero refund.
+
 
 ## Related Guides
 
