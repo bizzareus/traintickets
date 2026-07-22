@@ -94,7 +94,6 @@ export default function ChartTimesTable({
               <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">Day</th>
               <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">1st Chart Preparation Time</th>
               <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">2nd Chart Preparation Time</th>
-              <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">Alert</th>
             </tr>
           </thead>
           <tbody>
@@ -108,9 +107,11 @@ export default function ChartTimesTable({
                 <td className="px-4 py-3 whitespace-nowrap text-slate-700">{s.arrivalTime || "—"}</td>
                 <td className="px-4 py-3 whitespace-nowrap text-slate-700">{s.departureTime || "—"}</td>
                 <td className="px-4 py-3 whitespace-nowrap text-slate-600">{formatDay(s.day)}</td>
-                <td className="px-4 py-3"><FirstChart s={s} journeyDate={journeyDate} /></td>
+                <td className="px-4 py-3">
+                  <FirstChart s={s} journeyDate={journeyDate} />
+                  {alertFor(s) && <div className="mt-2">{alertFor(s)}</div>}
+                </td>
                 <td className="px-4 py-3"><SecondChart s={s} journeyDate={journeyDate} /></td>
-                <td className="px-4 py-3">{alertFor(s) ?? <span className="text-slate-400">—</span>}</td>
               </tr>
             ))}
           </tbody>
@@ -132,7 +133,6 @@ export default function ChartTimesTable({
                 </div>
                 <div className="mt-0.5 text-xs text-slate-500">{formatDay(s.day)}</div>
               </div>
-              {alertFor(s)}
             </div>
 
             <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
@@ -155,6 +155,7 @@ export default function ChartTimesTable({
                 <div className="mb-1 text-xs text-slate-500">2nd Chart Preparation Time</div>
                 <SecondChart s={s} journeyDate={journeyDate} />
               </div>
+              {alertFor(s) && <div className="pt-1.5">{alertFor(s)}</div>}
             </div>
           </div>
         ))}
