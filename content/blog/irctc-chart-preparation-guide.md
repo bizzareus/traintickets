@@ -2,7 +2,7 @@
 title: "IRCTC Chart Preparation for Last-Minute Tickets"
 description: "A practical, no-hype guide to chart preparation: what changes after the chart, why WL/Regret can flip, and how to time your checks."
 date: "2026-05-15"
-updated: "2026-07-21"
+updated: "2026-07-22"
 tags:
   - chart preparation
   - irctc
@@ -81,9 +81,9 @@ The biggest risks include travelling on a fully waitlisted e-ticket (which is in
 - A fully waitlisted **e-ticket** after chart preparation is not valid for boarding. Do not treat “maybe the TTE will adjust” as your primary plan.
 - A partially confirmed family or group PNR has different refund and travel complications from a single passenger PNR. Check passenger-wise status, not only the headline PNR status.
 - Availability can differ by class. A train may be WL in 3A but confirmed in SL, or the reverse on some routes.
-## When is the First Train Chart Prepared? (4 Hours vs Morning Trains)
+## When is the First Train Chart Prepared? (8 Hours vs Morning Trains)
 
-The first reservation chart is prepared at least **4 hours before** departure from the train's originating station for daytime trains. For trains departing early in the morning (before 11:00 AM), Indian Railways prepares the initial chart the **previous evening at 8:00 PM**. Once the first chart is prepared, unallocated quota seats (such as VIP, Foreign Tourist, or Senior Citizen quotas) are released to the general waitlist.
+The first reservation chart is prepared **8 hours before** departure from the train's originating station. For trains departing early in the day (before 14:00), Indian Railways prepares the initial chart the **previous evening at 21:00 (9:00 PM)**. Once the first chart is prepared, unallocated quota seats (such as VIP, Foreign Tourist, or Senior Citizen quotas) are released to the general waitlist.
 
 ## Second Chart Preparation Rules: 30 Minutes Before Departure
 
@@ -91,7 +91,7 @@ A second and final reservation chart is prepared **30 minutes to 5 minutes befor
 
 ## What Happens If Your Ticket Remains Waitlisted After Charting?
 
-If a fully waitlisted e-ticket remains waitlisted after second chart preparation, IRCTC automatically cancels the ticket and refunds the fare (minus ₹60 clerkage fee per passenger) to your bank account within 3 to 5 working days. **Waitlisted e-ticket holders are strictly prohibited from boarding the train.** If caught travelling with a waitlisted e-ticket, you will be treated as travelling without a ticket and charged full fare plus penalties.
+If a fully waitlisted e-ticket remains waitlisted after second chart preparation, IRCTC automatically cancels the ticket and refunds the fare with a full refund (no cancellation or clerkage fee deducted) to your bank account within 3 to 5 working days. **Waitlisted e-ticket holders are strictly prohibited from boarding the train.** If caught travelling with a waitlisted e-ticket, you will be treated as travelling without a ticket and charged full fare plus penalties.
 
 ## Common questions
 
