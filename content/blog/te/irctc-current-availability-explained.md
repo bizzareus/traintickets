@@ -2,7 +2,7 @@
 title: "IRCTC ప్రస్తుత అందుబాటు: చివరి నిమిషంలో కన్ఫర్మ్ సీటు పొందండి"
 description: "IRCTC ప్రస్తుత అందుబాటుతో చివరి నిమిషంలో పూర్తిగా కన్ఫర్మ్ సీటును ఎలా బుక్ చేయాలి: ఇది చార్ట్ తయారీ తర్వాత ఎప్పుడు తెరుస్తుంది, సాధారణ బుకింగ్‌కు ఎలా భిన్నం, మరియు చిట్కాలు."
 date: "2026-06-11"
-updated: "2026-07-14"
+updated: "2026-07-22"
 tags:
   - ప్రస్తుత అందుబాటు
   - ఖాళీ చార్ట్
@@ -340,3 +340,5 @@ IRCTCలో ప్రస్తుత అందుబాటు అనేది �
 - [అన్ని ట్రైన్లు వేచి జాబితా చూపించినప్పుడు ఉత్తమ ట్రైన్](/blog/best-train-when-all-trains-show-waiting-list)
 - [GNWL vs RLWL vs PQWL: వేచి జాబితా నిర్ధారణ అవకాశాలు](/blog/gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances)
 - [IRCTC auto upgradation: మీకు ఉచిత అప్‌గ్రేడ్ లభిస్తుందా?](/blog/irctc-auto-upgradation-rules-secrets)
+
+

@@ -2,7 +2,7 @@
 title: "IRCTC Limit: 12 Tickets/Month, 24 With Aadhaar — 2026 Rules"
 description: "IRCTC lets you book 12 tickets a month, or 24 with Aadhaar verification. Full breakdown of the monthly, per-day, per-booking and Tatkal limits for 2026."
 date: "2026-06-22"
-updated: "2026-07-16"
+updated: "2026-07-22"
 tags:
   - train booking
   - irctc
@@ -92,6 +92,18 @@ During the peak Tatkal booking window (10:00 AM for AC and 11:00 AM for non-AC),
 * **Verify Master List:** Add all frequent travellers to your Master List and ensure they have a "Verified" status with a green tick before Tatkal booking opens.
 * **Keep Registered Phone Active:** Ensure the mobile phone linked to your Aadhaar card is close by, active, and has sufficient network coverage to receive the OTP instantly.
 
+## Are IRCTC Monthly Ticket Limits Calculated Per PNR or Per Passenger?
+
+**IRCTC monthly ticket limits are calculated strictly per PNR transaction, regardless of the number of passengers traveling on that single ticket.** Whether a PNR contains 1 solo passenger or 6 passengers, it consumes exactly 1 booking slot from your monthly quota (12 for standard accounts, 24 for Aadhaar-verified accounts).
+
+This distinction is crucial for families and group travelers. Booking 6 passengers together on a single PNR counts as 1 ticket toward your monthly quota, whereas booking 6 passengers on separate individual tickets consumes 6 quota slots.
+
+## How Many Tatkal Tickets Can You Book Per Month per Aadhaar Account?
+
+**You can book up to 2 Tatkal ticket PNRs per day per IRCTC user ID during peak hours, subject to your overall monthly limit of 12 (or 24 with Aadhaar).** Tatkal bookings count directly against your monthly ticket allowance alongside general quota bookings.
+
+While there is no separate monthly cap dedicated exclusively to Tatkal, the daily 2-Tatkal-PNR restriction during 10:00 AM – 12:00 PM prevents individual users from monopolizing last-minute quotas across multiple trains.
+
 ## What happens when you reach the monthly limit?
 
 **When you reach the monthly IRCTC limit, you cannot book any more tickets until the quota resets at midnight on the first of the next calendar month.** Cancelling tickets does not restore your booking slots. To proceed, you must link your Aadhaar or use a family member's account.
@@ -134,3 +146,10 @@ No. A ticket you have booked still counts toward your monthly limit even after y
 
 ### How many PNRs can be booked on IRCTC in a month?
 Each ticket is one PNR, so the PNR count matches the ticket limit: 12 per month normally, or 24 with an Aadhaar-verified account.
+
+### Is the monthly IRCTC limit per PNR or per passenger?
+The limit is counted per PNR transaction. One ticket with up to 6 passengers counts as 1 ticket against your monthly quota of 12 (or 24 with Aadhaar).
+
+### How many Tatkal tickets count towards the monthly limit?
+All Tatkal ticket PNRs count toward your monthly limit of 12 or 24 tickets. Additionally, you are capped at 2 Tatkal tickets per day per account.
+

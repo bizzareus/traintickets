@@ -2,7 +2,7 @@
 title: "IRCTC Current Availability: Grab a Confirmed Last-Minute Seat"
 description: "How to use IRCTC current availability to book a fully confirmed last-minute seat: when it opens after chart preparation, how it differs from normal booking, and tips."
 date: "2026-06-11"
-updated: "2026-07-14"
+updated: "2026-07-22"
 tags:
   - current availability
   - vacancy chart

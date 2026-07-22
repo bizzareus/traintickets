@@ -79,6 +79,10 @@ Site context: 1K clk / **143K impr** / 0.70% CTR / pos 6.9 (28d ending 07-11). M
 - **EXPAND(ranking):** irctc-retiring-room-booking-rules-dormitory — baseline **5,002 impr / 0.2% / pos 8.6**. Was thin (4 content H2s); +5 fan-out H2s + 2 FAQs (title already CTR-fixed 07-06, so ranking play only). EN+6 langs, `updated`→07-12. Success = pos 8.6 → ≤ ~6 (page 1) after re-crawl; watch impressions/clicks. Commit 0abd35f2.
 - **CTR retitle:** gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances — baseline **1,212 impr / 0.2% / pos 8.7**. Title tightened 71→53 ch ("…Which Waitlist Confirms Fastest?"); body saturated so title-only. Target ≥0.6% CTR, pos within ±1.5. (Also a page-2 ranking issue — retitle is the cheap lever; watch position too.) EN+6 langs, frontmatter only. Commit bbd00eab.
 
+## Addendum — 2026-07-22 batch #2 (signal-driven triage; re-check on the same dates)
+- **EXPAND(ranking)+CTA(funnel):** irctc-current-availability-explained (25,071 impr / 0.79% CTR / pos 6.7, +2 H2s + 2 FAQs), irctc-ticket-booking-limits-aadhaar-verification (11,804 impr / 0.40% CTR / pos 5.9, +2 H2s + 2 FAQs), jan-shatabdi-express-timings-routes-tatkal-rules (2,868 impr / 0.66% CTR / pos 5.0, +2 H2s + 2 FAQs), amrit-bharat-express-routes-booking-rules-fares (1,333 impr / 0.90% CTR / pos 5.5, +2 H2s + 2 FAQs).
+- **CTR retitle + EXPAND + CTA:** irctc-vikalp-scheme-explained (2,383 impr / 0.08% CTR severe bleeder / pos 8.4 → title "IRCTC Vikalp Scheme 2026: Rules, Alternate Train Allocation & Refund" + 2 H2s + 2 FAQs). Target ≥0.5% CTR, pos within ±1.5.
+
 ## Check-back dates
 - **2026-08-03 (~4 wks):** early read. Confirm new titles are live in SERP (spot-check). First CTR/position movement in GSC. PostHog: CTA clicks flowing?
 - **2026-09-01 (~8 wks):** full read. CTR delta per page vs baseline table above; decide keep / iterate / revert per guardrail. PostHog funnel numbers for the 6 CTA pages.

@@ -2,7 +2,7 @@
 title: "IRCTC বর্তমান উপলব্ধতা: শেষ মুহূর্তে কনফার্ম সিট পান"
 description: "IRCTC বর্তমান উপলব্ধতা দিয়ে শেষ মুহূর্তে সম্পূর্ণ কনফার্ম সিট কীভাবে বুক করবেন: এটি চার্ট প্রস্তুতির পর কখন খোলে, সাধারণ বুকিং থেকে কীভাবে আলাদা, এবং টিপস।"
 date: "2026-06-11"
-updated: "2026-07-14"
+updated: "2026-07-22"
 tags:
   - বর্তমান উপলব্ধতা
   - শূন্যতা চার্ট
@@ -340,3 +340,5 @@ IRCTC-তে বর্তমান উপলব্ধতা হল ট্রে�
 - [সেরা ট্রেন যখন সব ট্রেন অপেক্ষমাণ তালিকা দেখায়](/blog/best-train-when-all-trains-show-waiting-list)
 - [GNWL বনাম RLWL বনাম PQWL: অপেক্ষমাণ তালিকার নিশ্চিতকরণের সম্ভাবনা](/blog/gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances)
 - [IRCTC auto upgradation: আপনি কি বিনামূল্যে আপগ্রেড পাবেন?](/blog/irctc-auto-upgradation-rules-secrets)
+
+
