@@ -83,6 +83,15 @@ Site context: 1K clk / **143K impr** / 0.70% CTR / pos 6.9 (28d ending 07-11). M
 - **EXPAND(ranking)+CTA(funnel):** irctc-current-availability-explained (25,071 impr / 0.79% CTR / pos 6.7, +2 H2s + 2 FAQs), irctc-ticket-booking-limits-aadhaar-verification (11,804 impr / 0.40% CTR / pos 5.9, +2 H2s + 2 FAQs), jan-shatabdi-express-timings-routes-tatkal-rules (2,868 impr / 0.66% CTR / pos 5.0, +2 H2s + 2 FAQs), amrit-bharat-express-routes-booking-rules-fares (1,333 impr / 0.90% CTR / pos 5.5, +2 H2s + 2 FAQs).
 - **CTR retitle + EXPAND + CTA:** irctc-vikalp-scheme-explained (2,383 impr / 0.08% CTR severe bleeder / pos 8.4 → title "IRCTC Vikalp Scheme 2026: Rules, Alternate Train Allocation & Refund" + 2 H2s + 2 FAQs). Target ≥0.5% CTR, pos within ±1.5.
 
+
+## Addendum — 2026-07-23 batch (signal-driven triage; re-check on the same dates)
+- **CTR retitle + EXPAND + CTA:**
+  - irctc-auto-upgradation-rules-secrets (8,367 impr / 1.34% CTR / pos 7.3 → title "IRCTC Auto Upgradation Rules 2026: Free Upgrades & Meaning" + 2 H2s + 2 FAQs). Target ≥1.8% CTR, pos within ±1.5.
+  - travel-sleeper-ac-class-general-platform-ticket (6,854 impr / 0.82% CTR / pos 5.6 → title "Sleeper Travel with General Ticket: Fines & Rules 2026" + 2 H2s + 2 FAQs). Target ≥1.4% CTR, pos within ±1.5.
+  - train-classes-explained-1a-2a-3a-3e-sleeper-chair-car (6,054 impr / 0.26% CTR / pos 8.3 → title "Train Classes Explained 2026: 1A, 2A, 3A, 3E, SL & CC Fares" + 2 H2s + 2 FAQs). Target ≥0.8% CTR, pos within ±1.5.
+  - irctc-retiring-room-booking-rules-dormitory (5,002 impr / 0.22% CTR severe bleeder / pos 8.6 → title "IRCTC Retiring Room & Dormitory Rules 2026: Booking & Rates" + top CTA blockquote + 2 H2s + 2 FAQs). Target ≥0.7% CTR, pos within ±1.5.
+  - irctc-app-vs-website-tatkal-booking (5,339 impr / 1.16% CTR / pos 6.1 → title "IRCTC App vs Website Tatkal Booking: Speed & OTP Rules 2026" + 2 H2s + 2 FAQs). Target ≥1.6% CTR, pos within ±1.5.
+
 ## Check-back dates
 - **2026-08-03 (~4 wks):** early read. Confirm new titles are live in SERP (spot-check). First CTR/position movement in GSC. PostHog: CTA clicks flowing?
 - **2026-09-01 (~8 wks):** full read. CTR delta per page vs baseline table above; decide keep / iterate / revert per guardrail. PostHog funnel numbers for the 6 CTA pages.

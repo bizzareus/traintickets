@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Auto Upgradation: Will You Get a Free Upgrade?"
-description: "Should you tick 'Consider for Auto Upgradation'? See how IRCTC's free Sleeper→3AC upgrade works, who's eligible, and how to boost your odds of getting one."
+title: "IRCTC Auto Upgradation Rules 2026: Free Upgrades & Meaning"
+description: "What does 'Consider for Auto Upgradation' mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, eligibility rules, and tips to get upgraded."
 date: "2026-06-16"
-updated: "2026-07-14"
+updated: "2026-07-23"
 tags:
   - irctc auto upgradation
   - free train upgrade
@@ -158,7 +158,32 @@ Auto-upgradation only fires when the AC class above yours has empty berths at ch
 
 ---
 
+## What is the difference between IRCTC Auto Upgradation and Vikalp Scheme?
+
+**IRCTC Auto Upgradation automatically bumps confirmed passengers on the same train to a higher class (e.g., Sleeper → 3AC) for free when berths remain vacant at chart preparation. In contrast, the Vikalp (ATAS) scheme is designed for waitlisted passengers, offering them alternate seats on different trains running on the same route.**
+
+While both features help passengers get confirmed travel, their eligibility and execution are completely different:
+- **Target Audience:** Auto Upgradation requires a confirmed (CNF) ticket in a lower class. Vikalp is specifically for waitlisted or RAC passengers who need an alternate confirmed berth.
+- **Train Assignment:** Auto Upgradation keeps you on your original train and ticket fare. Vikalp transfers your booking to an entirely different train operating on the same route.
+- **Cost:** Neither scheme charges an additional fare, but Vikalp does not refund any price difference if you are shifted to a lower-class train berth.
+
+---
+
+## Can you opt out or change your Auto Upgradation choice after booking?
+
+**No, you cannot modify your Auto Upgradation preference online once your ticket is generated. If you leave the "Consider for Auto Upgradation" box unchecked during booking, Indian Railways will skip your PNR during chart preparation even if higher-class AC berths go completely empty.**
+
+If you selected the option during booking and later get upgraded, you cannot revert to your original coach or seat layout. If you decide to cancel an upgraded ticket after chart preparation, standard cancellation rules apply based on your original booked ticket fare, not the higher upgraded class fare.
+
+---
+
 ## FAQ: IRCTC Auto Upgradation
+
+### What is the difference between Auto Upgradation and Vikalp in IRCTC?
+Auto Upgradation moves confirmed passengers to a higher class on the same train for free at chart prep. Vikalp allocates waitlisted passengers alternate berths on different trains on the same route.
+
+### Can I change my Auto Upgradation choice after booking?
+No. You must choose "Consider for Auto Upgradation" at the time of ticket booking. Once the ticket is issued, the preference cannot be changed online.
 
 ### What does "consider for auto upgradation in irctc means"?
 When you see "Consider for Auto Upgradation" on your IRCTC ticket layout or booking page, it means you have opted into a free scheme where Indian Railways can automatically upgrade your confirmed ticket to a higher class (e.g., Sleeper to 3AC, or 3AC to 2AC) if berths are vacant during chart preparation. You do not pay any extra fare for this upgrade.

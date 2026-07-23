@@ -1,8 +1,8 @@
 ---
-title: "IRCTC App vs Website: Tatkal Booking Speed Comparison"
-description: "Is the IRCTC app faster than the website for Tatkal bookings? We compare speed, biometrics, captchas, timeouts, and payments to find the winner."
+title: "IRCTC App vs Website Tatkal Booking: Speed & OTP Rules 2026"
+description: "Is the IRCTC app faster than the website for Tatkal bookings? Compare speed, biometrics, captcha timeouts, Aadhaar OTP rules, and UPI payment shortcuts."
 date: "2026-06-14"
-updated: "2026-07-11"
+updated: "2026-07-23"
 tags:
   - tatkal booking
   - irctc app
@@ -130,7 +130,31 @@ With these smart backups, you don't have to worry about missing out during the T
 
 ---
 
+## Which is better for Tatkal master list auto-fill: IRCTC app or web portal?
+
+**The IRCTC Rail Connect mobile app is faster for Master List auto-filling during Tatkal hours. Selecting pre-saved passengers on the mobile app takes just two taps and bypasses dropdown lag, whereas the desktop web portal often experiences heavy database latency when fetching saved passenger names at 10 AM.**
+
+To maximize auto-fill speed on both platforms:
+- Add all passenger names, ages, and berth preferences to your Master List at least 30 minutes before booking opens.
+- Verify Aadhaar status in your IRCTC profile ahead of time to streamline mandatory Aadhaar OTP verification.
+
+---
+
+## What happens if IRCTC app fails or crashes during Tatkal payment?
+
+**If the IRCTC app crashes or shows a transaction error after money is deducted from your UPI or bank account, the ticket booking fails and the deducted amount is automatically refunded to your payment source within 3 to 5 business days under standard IRCTC refund rules.**
+
+If your booking session times out during payment processing, do not attempt a second payment on the same session; log back into the app and check your "Booked Ticket History" or "Failed Transactions" log before trying again.
+
+---
+
 ## Common Booking Questions (FAQ)
+
+### Is Master List auto-fill faster on the IRCTC app or website?
+The mobile app is faster because passenger selection uses lightweight API calls with zero dropdown latency.
+
+### What if my money is deducted but Tatkal booking fails on the app?
+The deducted fare is automatically refunded back to your bank account or UPI source within 3 to 5 working days.
 
 ### What is the best time to log in to IRCTC for Tatkal?
 The best time to log in is 9:58 AM for AC classes (booking opens at 10:00 AM) and 10:58 AM for Sleeper class (booking opens at 11:00 AM). Logging in earlier than this often leads to session expiry exactly when the booking window opens.

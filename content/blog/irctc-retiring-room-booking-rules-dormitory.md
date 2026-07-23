@@ -1,14 +1,17 @@
 ---
-title: "IRCTC Retiring Room: Book a Cheap Station Room With Your PNR"
-description: "How to book an IRCTC retiring room or dormitory online using your PNR: who is eligible, current rates, the booking window, and check-in rules for 2026."
+title: "IRCTC Retiring Room & Dormitory Rules 2026: Booking & Rates"
+description: "How to book an IRCTC retiring room or dormitory online using your PNR: hourly rates, CNF/RAC eligibility rules, stay limits, and cancellation charges 2026."
 date: "2026-06-18"
-updated: "2026-07-12"
+updated: "2026-07-23"
 tags:
   - retiring room
   - irctc booking
   - station dormitory
   - railway stay
 ---
+
+> **Resting between journeys?** Check your live PNR status on [Smart Seats](/) to see if your ticket is CNF or RAC (mandatory for retiring room booking), and use [Chart Vacancy](/chart-vacancy) to track seat availability.
+
 
 ## TL;DR
 
@@ -136,7 +139,31 @@ On cleanliness, manage expectations: linen is provided and rooms are cleaned bet
 
 ---
 
+## Can you book an IRCTC retiring room with RAC or Waitlisted ticket?
+
+**You can book an IRCTC retiring room with a Reservation Against Cancellation (RAC) ticket or a Confirmed (CNF) ticket. However, Waitlisted (WL) ticket holders are strictly barred from booking retiring rooms or dormitories online.**
+
+The IRCTC booking engine validates your 10-digit PNR during entry. If your ticket remains waitlisted at the time of booking, the system will trigger an error message and refuse room allocation.
+
+---
+
+## What are the check-in and check-out timing rules for IRCTC station dormitories?
+
+**Check-in and check-out times for IRCTC retiring rooms and dormitories operate on strict hourly slots (3, 6, 12, or 24 hours) calculated from your booked check-in time. If you overstay your booked duration without prior extension approval, an excess penalty charge equivalent to the next full time block is levied.**
+
+To avoid penalty charges during unexpected train delays:
+- Present your booking voucher and PNR to the station manager upon arrival.
+- If your train is delayed by more than 3 hours, inform the retiring room manager to adjust your check-in slot.
+
+---
+
 ## Common Booking Questions (FAQ)
+
+### Can RAC ticket holders book IRCTC retiring rooms?
+Yes. Both Confirmed (CNF) and RAC ticket holders are eligible. Waitlisted (WL) tickets are not allowed.
+
+### What happens if I overstay my retiring room booking duration?
+Overstaying without extension approval results in an excess fare charge equal to the next full room slot duration.
 
 ### Can I book a retiring room with a waitlisted (WL) ticket?
 

@@ -1,8 +1,8 @@
 ---
-title: "Caught in Sleeper With a General Ticket? Fines & Rules 2026"
-description: "Can you sit in a Sleeper or AC coach with a general or platform ticket? The exact fines under Section 138, TTE rules, and how to handle real emergencies in 2026."
+title: "Sleeper Travel with General Ticket: Fines & Rules 2026"
+description: "Can you sit in a Sleeper or AC coach with a general ticket? Penalty rules under Section 138, TTE fine calculations, and emergency travel steps in 2026."
 date: "2026-06-12"
-updated: "2026-07-16"
+updated: "2026-07-23"
 tags:
   - general ticket
   - platform ticket
@@ -94,7 +94,29 @@ Platform tickets are strictly for entering the station premises to drop off fami
 
 ---
 
+## What happens if you board an AC coach with a Sleeper ticket?
+
+**Boarding an AC coach (3AC, 2AC, or 1AC) with a Sleeper class ticket is a violation under Section 138 of the Railways Act. The TTE will charge you the fare difference between Sleeper and the target AC class for your entire journey, plus a flat penalty of ₹500 (doubled under the Jan Vishwas Act 2026).**
+
+If berths are available in the AC coach, the TTE will issue an Excess Fare Ticket (EFT) receipt legitimizing your stay. However, if the AC coach is fully occupied, you must return to your designated Sleeper coach at the next scheduled halt.
+
+---
+
+## Can TTE issue a berth to general ticket holders if seats are vacant?
+
+**Yes, a Travelling Ticket Examiner (TTE) can legally issue a vacant Sleeper or AC berth to a general ticket holder using their Hand-Held Terminal (HHT). The TTE calculates the fare difference from your origin station and issues an official Excess Fare Ticket (EFT) receipt along with the ₹500 penalty.**
+
+To avoid being treated as a ticketless traveler (which incurs full fare from the train origin station), locate the TTE immediately upon boarding.
+
+---
+
 ## Common Booking Questions (FAQ)
+
+### What happens if I board an AC coach with a Sleeper ticket?
+You pay the fare difference between Sleeper and the AC class plus a ₹500 penalty under Section 138. If no AC berth is empty, you must return to Sleeper class.
+
+### Can TTE issue a berth on the spot to a general ticket holder?
+Yes. If seats remain vacant after chart preparation, the TTE can issue an Excess Fare Ticket (EFT) for a Sleeper or AC berth after charging the fare difference and penalty.
 
 ### Can we travel in sleeper class with general ticket?
 No. General tickets are only valid for general (unreserved) compartments. Boarding a Sleeper class coach with one is not allowed, and the TTE will charge you the fare difference plus a ₹500 penalty.
