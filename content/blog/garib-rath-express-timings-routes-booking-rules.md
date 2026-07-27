@@ -2,7 +2,7 @@
 title: "Garib Rath Express: Timings, Bedroll Charges & Booking Rules"
 description: "Complete Garib Rath Express guide: timings, the side-middle berth layout, ₹25 bedroll charges, Tatkal timing, and booking rules explained for 2026."
 date: "2026-07-01"
-updated: "2026-07-17"
+updated: "2026-07-27"
 tags:
   - train booking
   - irctc
@@ -10,7 +10,7 @@ tags:
   - travel guide
 ---
 
-> **Planning a Garib Rath trip?** Check live availability and your PNR status with [Smart Seats](/), and if your ticket is waitlisted, see the actual vacant AC berths after chart preparation with [Chart Vacancy](/chart-vacancy).
+> **Planning a Garib Rath trip?** Check live availability and your PNR status with [Smart Seats](/), and view vacant berths on running coaches with [Coach Journey Lookup](/seat-status).
 
 ## TL;DR
 Want AC comfort but on a tight budget? Indian Railways' Garib Rath Express cuts ticket fares by 40-50% compared to standard trains. But there’s a catch: you won't get bedrolls automatically (it’s an extra ₹25), the 3AC coaches cram in an extra side-middle berth, and Tatkal bookings start sharp at 10:00 AM.
@@ -88,6 +88,22 @@ To bypass the endless waitlists, use these LastBerth hacks:
 
 ---
 
+## Why Are Garib Rath Bedrolls Charged Separately at ₹25?
+
+**To keep base fares ~40% lower than standard AC 3-Tier, Garib Rath unbundles bedroll charges. Passengers can opt-in for linen during booking or pay ₹25 in cash onboard directly to the coach attendant.**
+
+This unbundled pricing strategy allows travelers who carry their own sheets or do not require linen during daytime journeys to save on travel costs. For those needing a bedroll (2 bedsheets, 1 pillow, 1 blanket), selecting the option during IRCTC booking guarantees a kit, while onboard availability is subject to remaining stock with the attendant.
+
+---
+
+## What Is Side Middle Berth in Garib Rath AC 3-Tier Coaches?
+
+**Garib Rath 3AC coaches feature a unique 3x3 layout with 3 side berths (Side Lower, Side Middle, and Side Upper) instead of the standard 2 side berths. This design increases total coach capacity to 78–81 passengers per coach.**
+
+In standard 3AC LHB or ICF coaches, each bay has 6 berths inside and 2 side berths (Side Lower and Side Upper), totaling 64 to 72 seats. Garib Rath coaches added a Side Middle (SM) berth between the Side Lower and Side Upper berths to maximize passenger capacity, making ticket prices lower, though with slightly reduced headroom for side-berth passengers.
+
+---
+
 ## Garib Rath Booking Questions (FAQ)
 
 ### What is the full form of WL in Indian Railways?
@@ -107,3 +123,10 @@ No, meals are not included in the fare. You can buy snacks and food from the onb
 
 ### Can I travel on a waitlisted Garib Rath ticket?
 If it is an online e-ticket and stays waitlisted after chart preparation, you cannot board the train. It gets cancelled automatically. Only physical counter tickets that remain waitlisted allow you to board the general coaches or seek help from the TTE.
+
+### Does Garib Rath Express have General or Unreserved coaches?
+No, Garib Rath trains are fully air-conditioned and operate exclusively with reserved AC 3-Tier (3A) and AC Chair Car (CC) accommodation.
+
+### How do you book a bedroll after booking a Garib Rath ticket?
+If you did not opt-in during online booking, you can pay ₹25 cash directly to the bedroll attendant inside your coach.
+

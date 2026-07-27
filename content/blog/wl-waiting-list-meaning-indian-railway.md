@@ -2,7 +2,7 @@
 title: "WL Ticket: Will Yours Confirm? Chances by WL Number (2026)"
 description: "WL full form is Waiting List. Check whether your WL ticket will confirm, what WL/1 vs WL/40 mean for your chances, and if you can board with one."
 date: "2026-06-11"
-updated: "2026-07-14"
+updated: "2026-07-27"
 tags:
   - waiting list
   - wl
@@ -222,6 +222,16 @@ Instead of checking trains one by one, LastBerth compares segment-level availabi
 
 If your ticket is stuck on WL and you need to travel, LastBerth helps you find what is actually bookable right now, rather than waiting and hoping your waitlist clears.
 
+## What is the difference between GNWL, RLWL, PQWL, and TQWL?
+
+GNWL (General Waitlist) has the highest confirmation priority because it originates from the main starting stations with the largest quota pool. RLWL (Remote Location Waitlist) is assigned for major intermediate stations with a smaller dedicated quota. PQWL (Pooled Quota Waitlist) covers short-distance legs between intermediate stations and shares a small combined pool. TQWL (Tatkal Waitlist) rarely clears because Tatkal cancellations offer zero refund, resulting in extremely few cancellations.
+
+---
+
+## How to check your live waiting list confirmation probability?
+
+You can check real-time PNR confirmation odds on LastBerth Smart Seats using historical charting algorithms that track class-wise seat vacancies. By analyzing past chart data, train route trends, and quota movement patterns, Smart Seats predicts whether your WL ticket will progress to RAC or Confirmed before departure.
+
 ---
 
 ## Common Booking Questions (FAQ)
@@ -273,6 +283,14 @@ The number after WL is your position in the waiting queue. **WL/1** means you ar
 ### After WL, what comes? What is the order?
 
 The order is: **WL → RAC → Confirmed**. First, your WL ticket moves to RAC (Reservation Against Cancellation), which gives you a shared seat and the right to board. Then, with further cancellations, RAC moves to Confirmed, which gives you a full individual berth. A WL ticket never jumps directly to Confirmed — it must pass through RAC first.
+
+### Can a waitlisted e-ticket passenger board an AC or Sleeper coach?
+
+No, fully waitlisted online e-tickets are automatically cancelled at chart preparation and are invalid for boarding. Passengers holding waitlisted e-tickets are not permitted in AC or Sleeper reserved coaches.
+
+### What happens to your refund if your WL ticket is automatically cancelled?
+
+The full fare minus standard clerkage fee is refunded automatically to your original payment bank account within 3 to 5 business days. No manual TDR filing is required for auto-cancelled waitlisted e-tickets.
 
 ---
 

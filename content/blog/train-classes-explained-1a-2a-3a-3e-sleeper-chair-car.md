@@ -2,7 +2,7 @@
 title: "Train Classes Explained 2026: 1A, 2A, 3A, 3E, SL & CC Fares"
 description: "Confused by train class codes? Compare 1A, 2A, 3A, 3E, Sleeper, Chair Car & 2S — fares, bedding, layout differences, and which class to book on IRCTC in 2026."
 date: "2026-07-06"
-updated: "2026-07-23"
+updated: "2026-07-27"
 tags:
   - train booking
   - irctc
@@ -12,7 +12,7 @@ tags:
   - train class codes
 ---
 
-> **Picked your class? Now find a seat in it:** Search any route on [Smart Seats](/) to compare live availability across 1A, 2A, 3A, SL and Chair Car — and check the [Chart Vacancy coach map](/chart-vacancy) to see which classes still have open berths after chart preparation.
+> **Picked your class? Now find a seat in it:** Search any route on [Smart Seats](/) to compare live availability across 1A, 2A, 3A, SL and Chair Car — and check [Coach Journey Lookup](/seat-status) to see which classes still have open berths after chart preparation.
 
 ## TL;DR
 
@@ -206,6 +206,16 @@ Understanding these codes helps you locate your exact sleeping arrangement immed
 
 While both 3A and 3E keep you cool during summer journeys, 3E maximizes passenger capacity per coach to offer a cheaper AC alternative.
 
+## What is the difference between 3A and 3E Economy coaches?
+
+3E (AC 3-Tier Economy) coaches feature 83 berths with narrower middle berths and individual AC vents per bay, whereas standard 3A coaches have 72 berths with wider seating and standard layout. Introduced to offer a lower-cost AC travel option, 3E reduces berth width and adds a side-middle berth to increase coach capacity, making it slightly more compact than standard 3A.
+
+---
+
+## Which train classes include free meals and bedroll allowance?
+
+Bedrolls are free in 1A, 2A, 3A, and 3E AC classes (except Garib Rath), and catering is pre-included on Rajdhani, Shatabdi, Duronto, and Vande Bharat trains unless opted out. Non-AC classes like Sleeper (SL) and Second Sitting (2S) do not include free bedrolls or complimentary meals, though pantry food can be purchased onboard on select trains.
+
 ---
 
 ## Train Classes FAQ
@@ -251,6 +261,14 @@ Among reserved classes, Second Sitting (2S) is usually the cheapest, followed by
 ### Can I board a different class than the one on my ticket?
 
 No. You must travel in the class printed on your ticket. Boarding a higher class without a valid ticket or an official upgrade leads to a penalty from the TTE. If a higher class has space, ask the TTE about a paid upgrade or opt into auto-upgradation when booking.
+
+### Can you travel in AC 3-Tier with a Sleeper class ticket?
+
+No, travelling in a higher class with a lower class ticket is an offense under Section 138 of the Railways Act, incurring fare difference plus penalty.
+
+### What is Second Sitting (2S) and how does it differ from Sleeper (SL)?
+
+2S provides reserved non-AC padded seating without sleeping berths, whereas Sleeper (SL) offers 3-tier berths for overnight travel.
 
 ---
 

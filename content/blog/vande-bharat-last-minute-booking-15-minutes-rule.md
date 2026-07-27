@@ -2,13 +2,15 @@
 title: "Vande Bharat Last-Minute Booking: 15-Minute Seat Rule Guide"
 description: "Can you board a Vande Bharat without a confirmed ticket? Learn the rule that lets you book vacant seats up to 15 minutes before departure — and how to grab one."
 date: "2026-07-02"
-updated: "2026-07-14"
+updated: "2026-07-27"
 tags:
   - train booking
   - irctc
   - vande bharat
   - vande bharat train
 ---
+
+> **Planning a last-minute Vande Bharat trip?** Check live seat availability and PNR status with [Smart Seats](/), or find actual vacant berths after chart preparation with [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 You can now book vacant seats on the Vande Bharat Express and other reserved trains up to 15 minutes before they depart, even after charts are prepared. These last-minute tickets are bookable online via the IRCTC website, mobile app, or at railway counters. If direct tickets are waitlisted, you can also use LastBerth to check for segment booking options.
@@ -62,6 +64,22 @@ To beat the waitlist, try using LastBerth's [Finding Smart Seats](/) tool. It sp
 
 ---
 
+## How 15-Minute Current Booking Window Works for Vande Bharat
+
+**After final chart preparation (typically 30–15 minutes before train departure), unsold Vande Bharat seats are released under Current Availability online and at station counters.**
+
+This last-minute booking window allows travellers to purchase fully confirmed tickets right up until 15 minutes before departure. Once the system processes the final chart updates, remaining seats are made available on a first-come, first-served basis. You can conveniently book these berths through the IRCTC app, website, or directly at physical station ticket counters.
+
+---
+
+## Can You Book Vande Bharat Current Tickets After First Chart Preparation?
+
+**Yes, once the first chart is prepared (typically 4 hours before departure), any remaining vacant seats open for Current Availability booking up until 15 minutes before scheduled train departure.**
+
+Passengers do not need to wait until the last few minutes to secure a seat. As soon as the initial reservation chart is generated, unsold berths in AC Chair Car (CC) and Executive Class (EC) automatically transition to Current Booking status. These berths remain bookable across digital platforms and physical ticket windows until the strict 15-minute cutoff.
+
+---
+
 ## Last-Minute Vande Bharat Booking Questions (FAQ)
 
 ### Can we book tickets on the train after it departs?
@@ -78,3 +96,9 @@ If your e-ticket is still on the waiting list after chart preparation, IRCTC wil
 
 ### Can I travel on Vande Bharat with a waitlisted counter ticket?
 No, waitlisted passengers are not permitted to board Vande Bharat Express trains. Doing so will lead to heavy penalties and you will be asked to deboard at the next station.
+
+### Are Tatkal and Current Availability fares the same on Vande Bharat?
+No, Current Availability tickets are sold at normal base fare without Tatkal premium charges.
+
+### Can you cancel a Vande Bharat current availability ticket?
+No refund is granted for cancelling confirmed Current Availability tickets after chart preparation.

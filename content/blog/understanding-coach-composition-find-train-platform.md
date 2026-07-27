@@ -2,7 +2,7 @@
 title: "Coach Position in Train: Find S1, B2 & A1 on the Platform"
 description: "Confused by codes like S1, B2 or A1? Decode Indian Railways coach composition and find your exact coach position on the platform before the train arrives."
 date: "2026-06-10"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - coach composition
   - train layout
@@ -127,6 +127,18 @@ If your coach is missing from the train:
 
 ---
 
+## How to Read Platform Indicators and Coach Order Displays
+
+Electronic platform displays show coach codes (S1, B2, A1) in sequence from engine to guard van; match your coach designation on the platform pillar or digital overhead indicator to stand at the exact spot where your door will halt.
+
+---
+
+## What Do Engine-End and Guard-End Coach Numbers Mean?
+
+Engine-end indicates coaches closest to the locomotive (often SLR, General, or 1A/2A), while guard-end refers to coaches near the rear end of the train. Knowing whether your assigned coach is near the engine-end or guard-end helps you navigate to the correct section of the platform well before the train enters the station.
+
+---
+
 ## Frequently Asked Questions (FAQ)
 
 ### Why do some trains have coach C1 and C2 placed in the middle of AC 3-Tier coaches?
@@ -134,6 +146,12 @@ In mixed composition trains (such as day-night Express routes or Garib Rath trai
 
 ### What does the indicator letter "ENG" or "LOCO" mean on platform coach indicators?
 The codes "ENG" or "LOCO" on electronic platform indicators mark the exact position where the train's locomotive engine will stop. This provides passengers with a fixed reference point to determine whether their coach (e.g., S1 or B2) will halt towards the front, middle, or rear of the platform.
+
+### What should you do if coach position indicators are not working on the platform?
+Look for physical pillar markings or use LastBerth Coach Journey Lookup to check your train's standard rake composition.
+
+### Are coach positions the same for up and down journeys of the same train?
+No, train rakes reverse direction at terminal stations, so engine-end and guard-end coach orders flip for return journeys.
 
 ---
 

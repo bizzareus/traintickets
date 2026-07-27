@@ -101,6 +101,10 @@ Site context: 1K clk / **143K impr** / 0.70% CTR / pos 6.9 (28d ending 07-11). M
 ## Addendum — 2026-07-27 batch #3 (signal-driven triage; re-check on the same dates)
 - **EXPAND(ranking)+CTA(funnel):** irctc-auto-upgradation-rules-secrets (8,062 impr / 0.53% CTR / pos 7.3, #4 impr post, + top CTA + 2 H2s + 2 FAQs), vande-bharat-food-booking-opt-out-refund-rules (5,805 impr / 1.10% CTR / pos 4.9, #7 impr post, + top CTA + 2 H2s + 2 FAQs), irctc-app-vs-website-tatkal-booking (5,339 impr / 1.16% CTR / pos 6.1, + top CTA + 2 H2s + 2 FAQs), irctc-booking-failed-money-deducted-refund-rules (4,154 impr / 0.65% CTR / pos 6.4, + top CTA + 2 H2s + 2 FAQs), irctc-uts-app-booking-guide (2,693 impr / 1.15% CTR / pos 4.9, + top CTA + 2 H2s + 2 FAQs).
 
+## Addendum — 2026-07-27 batch #4 (signal-driven triage from fresh GSC Google Sheet export; re-check on same dates)
+- **CTR retitle + EXPAND(ranking)+CTA(funnel):** wl-waiting-list-meaning-indian-railway (11,438 impr / 0.17% CTR severe bleeder / pos 7.03 → frontmatter title fix "Waiting List (WL) Meaning 2026: Confirmation Chances & Rules" + top CTA + 2 H2s + 2 FAQs). Target ≥0.5% CTR, pos within ±1.5.
+- **EXPAND(ranking)+CTA(funnel):** train-classes-explained-1a-2a-3a-3e-sleeper-chair-car (15,033 impr / 0.22% CTR / pos 8.25, #6 impr post, + top CTA + 2 H2s + 2 FAQs), understanding-coach-composition-find-train-platform (8,222 impr / 0.51% CTR / pos 7.61, + top CTA + 2 H2s + 2 FAQs), vande-bharat-last-minute-booking-15-minutes-rule (1,958 impr / 2.09% CTR / pos 4.31, top-3 push, + top CTA + 2 H2s + 2 FAQs), garib-rath-express-timings-routes-booking-rules (2,496 impr / 1.56% CTR / pos 5.93, top-3 push, + top CTA + 2 H2s + 2 FAQs).
+
 ## Check-back dates
 - **2026-08-03 (~4 wks):** early read. Confirm new titles are live in SERP (spot-check). First CTR/position movement in GSC. PostHog: CTA clicks flowing?
 - **2026-09-01 (~8 wks):** full read. CTR delta per page vs baseline table above; decide keep / iterate / revert per guardrail. PostHog funnel numbers for the 6 CTA pages.
