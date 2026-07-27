@@ -1,8 +1,8 @@
 ---
 title: "How to Change Boarding Point in IRCTC: Rules & Process"
-description: "Learn the new 2026 IRCTC boarding point change rules. Update your boarding station online up to 30 minutes before departure using the RailOne or IRCTC app."
+description: "Learn official IRCTC boarding point change rules. Update your boarding station online at least 24 hours before scheduled departure using the RailOne or IRCTC app."
 date: "2026-06-22"
-updated: "2026-07-21"
+updated: "2026-07-26"
 tags:
   - train booking
   - irctc
@@ -12,19 +12,19 @@ tags:
 > **Need to change your boarding station or check seat status?** Verify your 10-digit PNR instantly on [Smart Seats](/) or find vacant berths after chart prep on [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
-Need to change where you catch your train? Under the April 2026 Boarding Point Change Reform, you can now update your boarding station online up to 30 minutes before departure. This replacement of the old 24-hour rule makes last-minute travel plan adjustments simple and completely digital.
+Need to change where you catch your train? Under official IRCTC rules, you can update your boarding station online up to 24 hours before scheduled train departure. This online facility makes travel plan adjustments simple and completely digital before chart preparation.
 
 ---
 
 ## Can You Change Your Boarding Station in IRCTC Online?
 
-**Yes, you can change your boarding station online through the new RailOne app, the official IRCTC portal, or the IRCTC mobile app. Under the new April 2026 rules, this online change is allowed up to 30 minutes before the train's scheduled departure, replacing the previous strict 24-hour deadline and remaining open until the second chart preparation.**
+**Yes, you can change your boarding station online through the RailOne app, the official IRCTC portal, or the IRCTC mobile app. Under IRCTC rules, this online change is allowed up to 24 hours before the train's scheduled departure.**
 
-This major update offers passengers incredible flexibility when travel plans shift at the last minute. Instead of committing to a station hours in advance, you can make changes on the go. The entire process is handled electronically, instantly updating the railway charts.
+This feature offers passengers flexibility when travel plans shift in advance. Instead of visiting a ticket counter hours in advance, you can make changes on the go. The entire process is handled electronically, updating the railway database before charts are prepared.
 
 ---
 
-## What Are the New 2026 IRCTC Boarding Point Change Rules?
+## What Are the IRCTC Boarding Point Change Rules?
 
 **IRCTC rules allow a boarding point change only once per booking for Confirmed and RAC tickets. Waitlisted tickets are not eligible for this change. Passengers lose all rights to board at the original station, and no refund is granted if the new boarding station results in a shorter travel distance.**
 
@@ -32,26 +32,26 @@ Once the boarding point is updated, your seat is officially assigned from the ne
 
 Waitlisted tickets cannot use this feature. Remember, WL full form is Waiting List, and your booking must move along the queue from WL (Waiting List) -> RAC -> Confirmed before you request a change. If your waitlisted e-ticket does not confirm by chart preparation, it is automatically cancelled and refunded.
 
-Here is a quick comparison of how the rules have evolved:
+Here is a quick overview of the official guidelines:
 
-| Feature | Old Rules (Pre-April 2026) | New Rules (Post-April 2026) |
+| Feature | IRCTC E-Ticket Rules | Paper / Counter Ticket Rules |
 | :--- | :--- | :--- |
-| **Change Deadline** | 24 hours before train departure | Up to 30 minutes before departure (until 2nd chart) |
-| **Ticket Eligibility** | Confirmed tickets only | Confirmed and RAC tickets (not Waitlisted) |
-| **Change Frequency** | Allowed only once | Allowed only once |
-| **Original Boarding Rights** | Lost completely | Lost completely (boarding at original station penalized) |
-| **Refund Policy** | No refund for shorter distance | No refund for shorter distance |
-| **Platform Channels** | IRCTC Web / App, PRS Counters | RailOne App, IRCTC Web / App, PRS Counters |
+| **Change Deadline** | At least 24 hours before scheduled departure | At least 24 hours before scheduled departure (PRS counter) |
+| **Ticket Eligibility** | Confirmed and RAC tickets (not Waitlisted) | Confirmed and RAC tickets (written application) |
+| **Change Frequency** | Allowed only once per booking | Allowed only once per booking |
+| **Original Boarding Rights** | Lost completely (boarding at original station penalized) | Lost completely |
+| **Refund Policy** | No refund for shorter travel distance | No refund for shorter travel distance |
+| **Platform Channels** | RailOne App, IRCTC Web / App | Computerized PRS Counter |
 
 ---
 
 ## How to Change Your Boarding Point Online or Offline?
 
-**To change your boarding point online, log into the RailOne app or the IRCTC website, open your Booked Ticket History, select the ticket, click 'Change Boarding Point', and confirm your new station. For offline bookings, present a written request at any computerized railway reservation counter (PRS) before chart preparation.**
+**To change your boarding point online, log into the RailOne app or the IRCTC website, open your Booked Ticket History, select the ticket, click 'Change Boarding Point', and confirm your new station. For offline bookings, present a written request at any computerized railway reservation counter (PRS) at least 24 hours before scheduled departure.**
 
-The online interface has been updated to reflect the 2026 reform, showing eligible stations instantly. Simply choose your new stop from the drop-down menu and confirm. The system updates your electronic ticket immediately, which you can verify on your dashboard.
+The online interface shows eligible stations along your route instantly. Simply choose your new stop from the drop-down menu and confirm. The system updates your electronic ticket immediately, which you can verify on your dashboard.
 
-If you have a physical counter ticket, you must visit a PRS counter to make the change. Ensure you carry your original ticket and a valid photo ID. The reservation clerk will update the database and issue a stamped confirmation printout.
+If you have a physical counter ticket, you must visit a PRS counter at least 24 hours before scheduled departure to make the change. Ensure you carry your original ticket and a valid photo ID. The reservation clerk will update the database and issue a stamped confirmation printout.
 
 ---
 
@@ -61,7 +61,7 @@ If you have a physical counter ticket, you must visit a PRS counter to make the 
 
 Once you submit the change, the ticket collector is notified that your seat is vacant until the new boarding station. If you board early, you are technically occupying a seat that could be allocated to other passengers. It is critical to plan your journey around the new boarding station to avoid heavy fines.
 
-To avoid being caught in this situation, check your travel timing carefully. If you are unsure about your itinerary, wait to make the change online. Since the window is open until 30 minutes before departure, you can decide closer to train time.
+To avoid being caught in this situation, check your travel timing carefully. If you are unsure about your itinerary, finalize your decision before the 24-hour deadline. Once submitted, the change is permanent.
 
 ---
 
@@ -79,9 +79,9 @@ Furthermore, if you are already on a running train and need to find empty berths
 
 ## When Does Chart Preparation Happen and What Is Current Availability?
 
-**The first reservation chart is prepared approximately 8 hours before departure, while the final second chart is finalized 30 minutes before departure. After the first chart, any remaining vacant seats become a current available ticket, which is a confirmed seat bookable online or offline until 30 minutes before departure.**
+**The first reservation chart is prepared approximately 8 hours before departure, while the final second chart is finalized 30 minutes before departure. Boarding point changes must be submitted online at least 24 hours prior to train departure, well before the first chart is generated.**
 
-The 30-minute window for boarding point changes directly aligns with the preparation of the final second reservation chart. This second chart accounts for last-minute cancellations and updates the TTE's handheld terminal. Once this second chart is prepared, no further modifications can be made to the passenger manifest.
+Submitting your boarding point change at least 24 hours in advance ensures the updated boarding station is correctly reflected when the reservation chart is prepared. Once the chart is generated, no further modifications can be made to the passenger manifest.
 
 A current available ticket represents a fantastic opportunity to grab a last-minute confirmed seat without a waitlist. It is sold at a slightly discounted base fare and does not carry tatkal charges. You can search for these vacant seats on the RailOne or IRCTC apps right after the first chart is published.
 
@@ -89,7 +89,7 @@ A current available ticket represents a fantastic opportunity to grab a last-min
 
 ## Can You Change Boarding Point for Tatkal Train Tickets?
 
-**Yes, you can change the boarding point for Tatkal train tickets online or offline, provided your ticket is Confirmed or RAC. Under IRCTC rules, Tatkal tickets follow the same boarding station change policy as General quota bookings, allowing modification up to 30 minutes prior to train departure.**
+**Yes, you can change the boarding point for Tatkal train tickets online or offline, provided your ticket is Confirmed or RAC. Under IRCTC rules, Tatkal tickets follow the same boarding station change policy as General quota bookings, allowing modification at least 24 hours prior to train departure.**
 
 When traveling on a Tatkal quota ticket, plans can change rapidly due to emergency bookings. Indian Railways permits a one-time boarding point modification for confirmed Tatkal e-tickets through the RailOne app or IRCTC portal. However, waitlisted Tatkal tickets cannot request a boarding station change. Furthermore, if changing your boarding station results in a shorter travel distance, no refund of the Tatkal surcharge or fare difference will be issued.
 
@@ -108,7 +108,7 @@ The boarding point change feature allows passengers to alter where they board th
 Here are the quick answers to some of the most common doubts passengers have about changing their boarding stations.
 
 ### Can I change my boarding station after the first chart is prepared?
-Yes, under the new 2026 rules, you can change your boarding point even after the first chart (prepared 8 hours before departure) is published. The online change window remains open until the final second chart is prepared, which is 30 minutes before the train's scheduled departure from your boarding station.
+No. Under IRCTC rules, you must change your boarding point online at least 24 hours before the train's scheduled departure, well before chart preparation begins.
 
 ### Do I get a refund if the new boarding station is closer to my destination?
 No, you do not receive any refund of the fare difference. The ticket fare remains the same as originally booked, even if your new boarding station reduces the total distance of your journey.
@@ -130,3 +130,4 @@ To change the boarding point for a physical paper ticket purchased at a counter,
 
 ### Does changing the boarding point cancel my original ticket?
 No, changing the boarding point does not cancel your ticket. It simply updates your boarding station in the official passenger list (chart), ensuring that the TTE knows you will board the train at a later stop and keeps your seat reserved for you.
+

@@ -2,7 +2,7 @@
 title: "Tatkal or Current Availability: Which Confirms Faster?"
 description: "Tatkal opens 10–11 AM a day before; Current Availability opens ~8 hrs before departure. Which lands a confirmed last-minute seat cheaper? A clear side-by-side guide."
 date: "2026-05-27"
-updated: 2026-07-21
+updated: "2026-07-23"
 tags:
   - tatkal
   - current availability
@@ -130,7 +130,7 @@ Both options are extremely useful for last-minute travelers, but they operate un
 | Feature | Tatkal Quota | Current Availability |
 | :--- | :--- | :--- |
 | **Booking Window** | Opens at 10:00 AM (AC) and 11:00 AM (Non-AC) exactly one day prior to train's origin departure date | Opens only after chart preparation (typically 8 hours before departure) up to 30 mins before train departure |
-| **Ticket Pricing** | Extra Tatkal charges added (ranges from Rs. 100 to Rs. 500 depending on class/distance) | No extra fee; sometimes booked at a discount (up to 10% off on basic fare for vacant seats) |
+| **Ticket Pricing** | Extra Tatkal charges added (ranges from Rs. 10 to Rs. 500 depending on class/distance) | No extra fee; sometimes booked at a discount (up to 10% off on basic fare for vacant seats) |
 | **Cancellation Refund** | No refund whatsoever on confirmed Tatkal tickets (except for rare delayed/cancelled trains) | Standard confirmed ticket cancellation rules apply (50% fee 12–4h before; no refund <4h / post-chart) |
 | **Berth Source** | A separate dedicated quota of seats set aside specifically for last-minute travelers | Unsold seats from the general and other quotas released to the open pool after charting |
 
@@ -139,7 +139,7 @@ Both options are extremely useful for last-minute travelers, but they operate un
 ## Common Booking Questions (FAQ)
 
 ### At what time do Tatkal bookings open daily?
-Tatkal bookings open every single day at **10:00 AM** for all AC classes (3AC, 2AC, 1AC, Executive Chairs) and at **11:00 AM** for all non-AC classes (Sleeper, Second Sitting). This booking opens exactly one day before the train chugs out from its originating station.
+Tatkal bookings open every single day at **10:00 AM** for all AC classes (3AC, 2AC, 3E, Executive Chairs) and at **11:00 AM** for all non-AC classes (Sleeper, Second Sitting). This booking opens exactly one day before the train chugs out from its originating station.
 
 ### Are refunds allowed for cancelled confirmed Tatkal tickets?
 No. Indian Railways grants **zero refund** on the cancellation of fully confirmed Tatkal tickets. Refunds are only allowed if the train is cancelled, delayed by more than 3 hours, or if the route is diverted and the passenger decides not to travel.

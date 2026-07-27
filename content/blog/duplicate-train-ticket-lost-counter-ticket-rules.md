@@ -2,7 +2,7 @@
 title: "Duplicate Train Ticket: Rules for Lost or Damaged Tickets"
 description: "Lost or damaged your Indian Railways counter ticket? Learn how to get a duplicate train ticket, exact charges, refund rules, and travel guidelines."
 date: "2026-06-27"
-updated: "2026-07-14"
+updated: 2026-07-27
 tags:
   - train booking
   - irctc
@@ -49,9 +49,10 @@ The replacement fee depends on your current booking status and when you apply. I
 
 | Ticket Type & Class | Lost Before Chart Prep | Lost After Chart Prep |
 |---|---|---|
-| **Second Class (2S) - Confirmed / RAC** | ₹50 per passenger | 50% of ticket fare |
-| **Sleeper Class (SL) - Confirmed / RAC** | ₹50 per passenger | 50% of ticket fare |
-| **AC Classes (3A, 2A, 1A, CC) - Confirmed / RAC** | ₹100 per passenger | 50% of ticket fare |
+| **Second Class (2S) - Confirmed** | ₹50 per passenger | 50% of ticket fare |
+| **Sleeper Class (SL) - Confirmed** | ₹50 per passenger | 50% of ticket fare |
+| **AC Classes (3A, 2A, 1A, CC) - Confirmed** | ₹100 per passenger | 50% of ticket fare |
+| **RAC Ticket - Lost After Chart Prep** | ₹50 (2S/SL) or ₹100 (AC) | No duplicate issued |
 | **Waiting List (WL) - All Classes** | No duplicate issued | No duplicate issued |
 | **Torn / Damaged Ticket - Confirmed / RAC** | ₹50 (2S/SL) or ₹100 (AC) | 25% of ticket fare |
 

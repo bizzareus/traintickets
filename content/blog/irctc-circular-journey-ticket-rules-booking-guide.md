@@ -2,7 +2,7 @@
 title: "IRCTC Circular Journey Ticket: Rules & Booking Guide"
 description: "Save money on multi-stop train trips in India. Learn the rules, telescopic fare calculation, and step-by-step booking for circular journey tickets."
 date: "2026-06-20"
-updated: "2026-07-21"
+updated: "2026-07-23"
 tags:
   - train booking
   - irctc
@@ -92,11 +92,11 @@ We ran the numbers for a standard Sleeper Class trip to show you the difference:
 
 By putting all your stops onto a single circular sheet, you skip paying the highest base fare bracket repeatedly. That alone cuts your travel bill significantly. The total price drop is massive—especially for family trips or when you choose AC classes, where individual base rates really add up.
 
-## Can Senior Citizens and Special Quotas Claim Concessions on Circular Tickets?
+## Can Special Quotas and Concessions Be Claimed on Circular Tickets?
 
-Yes, eligible passengers including senior citizens and specific quota holders can claim concessions on circular journey tickets, provided standard Indian Railways concession rules apply to the travel class. Concession benefits are calculated based on the total telescopic fare across the entire itinerary rather than individual leg fares, yielding higher overall savings for qualifying travelers.
+Eligible concession categories (such as Divyangjan / persons with disabilities and specified medical patients) can claim fare concessions on circular journey tickets, provided standard Indian Railways concession rules apply. Note that senior citizen fare concessions remain suspended across Indian Railways (since March 2020) and are not available on circular tickets. However, lower berth quota allocation (Senior Citizen quota) can still be selected for eligible travelers when berths are available. Concession benefits for eligible categories are calculated based on the total telescopic fare across the entire itinerary rather than individual leg fares, yielding higher overall savings for qualifying travelers.
 
-When booking a circular journey ticket under a concession, you must present valid government-issued photo identification and supporting certificates at the Divisional Commercial Manager (DCM) office or booking window during application. The concession percentage is applied directly to the total calculated base fare for the entire circuit. Keep in mind that quota reservations (such as Senior Citizen quota berths) are subject to availability per train leg. If a specific leg lacks quota berths, you can still avail of the fare concession while booking standard general berths for that segment. Note that certain special quotas like Tatkal cannot be combined with circular tickets.
+When booking a circular journey ticket under an eligible concession, you must present valid government-issued photo identification and supporting certificates at the Divisional Commercial Manager (DCM) office or booking window during application. The concession percentage is applied directly to the total calculated base fare for the entire circuit. Keep in mind that quota reservations (such as Senior Citizen lower berth quota) are subject to availability per train leg. If a specific leg lacks quota berths, qualifying passengers can still avail of their eligible fare concession while booking standard general berths for that segment. Note that certain special quotas like Tatkal cannot be combined with circular tickets.
 
 ## How to Modify Itinerary or Dates on an Issued Circular Ticket
 

@@ -967,9 +967,99 @@ export class IrctcService {
     const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
+    const proxyEnabled =
+      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() ===
+        'true' ||
+      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
+    const proxyUrl = proxyEnabled
+      ? process.env.BRIGHTDATA_PROXY_URL?.trim() ||
+        process.env.HTTPS_PROXY?.trim() ||
+        process.env.HTTP_PROXY?.trim() ||
+        undefined
+      : undefined;
+
+    if (proxyEnabled && proxyUrl) {
+      const t0 = Date.now();
+      this.logger.log(
+        `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} cookies=${Boolean(cookies?.trim())} via=brightdata_proxy`,
+      );
+
+      let status = 0;
+      let text = '';
+      try {
+        if (curlLogEnabled()) {
+          this.logger.log(
+            `[irctc/vacantBerth] curl: ${buildCurl({ method: 'POST', url: IRCTC_VACANT_BERTH_URL, headers, body: JSON.stringify(body) })}`,
+          );
+        }
+        const { gotScraping } = await import('got-scraping');
+        const res = await retryTransient(
+          () =>
+            gotScraping.post(IRCTC_VACANT_BERTH_URL, {
+              headers,
+              json: body,
+              proxyUrl,
+              timeout: { request: IRCTC_CHART_ATTEMPT_TIMEOUT_MS },
+              retry: { limit: 0 },
+            }),
+          {
+            attempts: IRCTC_CHART_MAX_ATTEMPTS,
+            onRetry: (attempt, err) =>
+              this.logger.warn(
+                `[irctc/vacantBerth] transient retry attempt=${attempt} trainNo=${payload.trainNo} ${err instanceof Error ? err.message : String(err)}`,
+              ),
+          },
+        );
+        status = res.statusCode;
+        text =
+          typeof res.body === 'string' ? res.body : JSON.stringify(res.body);
+      } catch (err: any) {
+        if (err.response) {
+          status = err.response.statusCode;
+          text =
+            typeof err.response.body === 'string'
+              ? err.response.body
+              : JSON.stringify(err.response.body);
+        } else {
+          const ms = Date.now() - t0;
+          const cause = err instanceof Error ? err.message : String(err);
+          this.logger.warn(
+            `[irctc/vacantBerth] network_error ms=${ms} trainNo=${payload.trainNo} ${cause}`,
+          );
+          captureSentryException(err, {
+            tags: { service: 'irctc', endpoint: 'vacantBerth' },
+            extra: { ms, trainNo: payload.trainNo, cause },
+          });
+          throw new Error(
+            `IRCTC request failed (network/connection): ${cause}`,
+          );
+        }
+      }
+
+      const ms = Date.now() - t0;
+      this.logger.log(
+        `[irctc/vacantBerth] response ms=${ms} status=${status} bytes=${text.length}`,
+      );
+      if (status < 200 || status >= 300) {
+        this.logger.warn(
+          `[irctc/vacantBerth] http_error status=${status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
+        );
+        throw new Error(`IRCTC vacantBerth failed: ${status} ${text}`);
+      }
+      try {
+        return JSON.parse(text) as unknown;
+      } catch {
+        this.logger.warn('[irctc/vacantBerth] json_parse_error');
+        throw new Error(
+          `IRCTC vacantBerth returned non-JSON: ${text.slice(0, 200)}`,
+        );
+      }
+    }
+
+    // Original direct execution path when feature flag is disabled
     const t0 = Date.now();
     this.logger.log(
-      `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} cookies=${Boolean(cookies?.trim())}`,
+      `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} cookies=${Boolean(cookies?.trim())} via=direct`,
     );
 
     let res: Response;
@@ -1013,7 +1103,6 @@ export class IrctcService {
       this.logger.warn(
         `[irctc/vacantBerth] network_error ms=${ms} trainNo=${payload.trainNo} ${cause}`,
       );
-      // Report the network error to Sentry for monitoring
       captureSentryException(err, {
         tags: { service: 'irctc', endpoint: 'vacantBerth' },
         extra: { ms, trainNo: payload.trainNo, cause },
@@ -1081,9 +1170,108 @@ export class IrctcService {
     const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
+    const proxyEnabled =
+      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() ===
+        'true' ||
+      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
+    const proxyUrl = proxyEnabled
+      ? process.env.BRIGHTDATA_PROXY_URL?.trim() ||
+        process.env.HTTPS_PROXY?.trim() ||
+        process.env.HTTP_PROXY?.trim() ||
+        undefined
+      : undefined;
+
+    if (proxyEnabled && proxyUrl) {
+      const t0 = Date.now();
+      this.logger.log(
+        `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} cookies=${Boolean(cookies?.trim())} via=brightdata_proxy`,
+      );
+
+      let status = 0;
+      let text = '';
+      try {
+        if (curlLogEnabled()) {
+          this.logger.log(
+            `[irctc/coachComposition] curl: ${buildCurl({ method: 'POST', url: IRCTC_COACH_COMPOSITION_URL, headers, body: JSON.stringify(body) })}`,
+          );
+        }
+        const { gotScraping } = await import('got-scraping');
+        const res = await retryTransient(
+          () =>
+            gotScraping.post(IRCTC_COACH_COMPOSITION_URL, {
+              headers,
+              json: body,
+              proxyUrl,
+              timeout: { request: IRCTC_CHART_ATTEMPT_TIMEOUT_MS },
+              retry: { limit: 0 },
+            }),
+          {
+            attempts: IRCTC_CHART_MAX_ATTEMPTS,
+            onRetry: (attempt, err) =>
+              this.logger.warn(
+                `[irctc/coachComposition] transient retry attempt=${attempt} trainNo=${payload.trainNo} coach=${payload.coach} ${err instanceof Error ? err.message : String(err)}`,
+              ),
+          },
+        );
+        status = res.statusCode;
+        text =
+          typeof res.body === 'string' ? res.body : JSON.stringify(res.body);
+      } catch (err: any) {
+        if (err.response) {
+          status = err.response.statusCode;
+          text =
+            typeof err.response.body === 'string'
+              ? err.response.body
+              : JSON.stringify(err.response.body);
+        } else {
+          const ms = Date.now() - t0;
+          const cause = err instanceof Error ? err.message : String(err);
+          this.logger.warn(
+            `[irctc/coachComposition] network_error ms=${ms} trainNo=${payload.trainNo} coach=${payload.coach} ${cause}`,
+          );
+          captureSentryException(err, {
+            tags: { service: 'irctc', endpoint: 'coachComposition' },
+            extra: {
+              ms,
+              trainNo: payload.trainNo,
+              coach: payload.coach,
+              cause,
+            },
+          });
+          throw new Error(
+            `IRCTC request failed (network/connection): ${cause}`,
+          );
+        }
+      }
+
+      const ms = Date.now() - t0;
+      this.logger.log(
+        `[irctc/coachComposition] response ms=${ms} status=${status} bytes=${text.length}`,
+      );
+      if (status < 200 || status >= 300) {
+        this.logger.warn(
+          `[irctc/coachComposition] http_error status=${status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
+        );
+        throw new Error(
+          `IRCTC coachComposition failed: ${status} ${text.slice(0, 200)}`,
+        );
+      }
+      try {
+        return JSON.parse(text) as unknown;
+      } catch {
+        this.logger.warn(
+          `[irctc/coachComposition] json_parse_error body_preview=${text.slice(0, 200)}`,
+        );
+        throw new Error(
+          `IRCTC coachComposition returned non-JSON: ${text.slice(0, 200)}`,
+        );
+      }
+    }
+
+    // Original direct execution path when feature flag is disabled
     const t0 = Date.now();
     this.logger.log(
-      `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} cookies=${Boolean(cookies?.trim())}`,
+      `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} cookies=${Boolean(cookies?.trim())} via=direct`,
     );
 
     let res: Response;
@@ -1273,7 +1461,6 @@ export class IrctcService {
       jDate: jDateStr,
       boardingStation: String(payload.boardingStation).trim().toUpperCase(),
     };
-    console.log('postTrainComposition >> body', body);
 
     const headers: Record<string, string> = {
       accept: 'application/json',
@@ -1296,6 +1483,17 @@ export class IrctcService {
     const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
+    const proxyEnabled =
+      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() ===
+        'true' ||
+      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
+    const proxyUrl = proxyEnabled
+      ? process.env.BRIGHTDATA_PROXY_URL?.trim() ||
+        process.env.HTTPS_PROXY?.trim() ||
+        process.env.HTTP_PROXY?.trim() ||
+        undefined
+      : undefined;
+
     const t0 = Date.now();
     let status = 0;
     let text = '';
@@ -1306,13 +1504,12 @@ export class IrctcService {
         );
       }
       const { gotScraping } = await import('got-scraping');
-      // got does NOT retry POST by default (non-idempotent), so its own retry is
-      // a no-op here — we drive retries ourselves on a fresh connection.
       const res = await retryTransient(
         () =>
           gotScraping.post(IRCTC_TRAIN_COMPOSITION_URL, {
             headers,
             json: body,
+            proxyUrl,
             timeout: { request: IRCTC_CHART_ATTEMPT_TIMEOUT_MS },
             retry: { limit: 0 },
           }),
@@ -1325,7 +1522,7 @@ export class IrctcService {
         },
       );
       status = res.statusCode;
-      text = res.body;
+      text = typeof res.body === 'string' ? res.body : JSON.stringify(res.body);
     } catch (err: any) {
       if (err.response) {
         status = err.response.statusCode;
