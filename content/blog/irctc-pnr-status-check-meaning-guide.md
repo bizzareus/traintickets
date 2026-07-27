@@ -2,7 +2,7 @@
 title: "IRCTC PNR Status Check: Meaning, Codes & How to Read It"
 description: "Check your IRCTC PNR status and learn what every code means (CNF, RAC, WL, GNWL) plus how to read your waitlist confirmation chances before you travel."
 date: "2026-06-26"
-updated: "2026-07-14"
+updated: "2026-07-27"
 tags:
   - train booking
   - irctc
@@ -11,6 +11,8 @@ tags:
   - waiting list
   - confirmation chances
 ---
+
+> **Checking your PNR status?** Track your live confirmation chances on [Smart Seats](/) or find vacant seats on your train after chart preparation using [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 
@@ -136,6 +138,18 @@ If you're booking last-minute, look for a `"current available ticket"` — a **f
 
 ---
 
+## How to check PNR status confirmation chances for RAC and waitlisted tickets?
+
+Enter your 10-digit PNR number on LastBerth Smart Seats to get data-driven confirmation predictions based on historical charting trends and class-wise seat vacancies.
+
+---
+
+## What happens to PNR status when a train is cancelled or diverted?
+
+If a train is cancelled by Indian Railways, all PNRs associated with online e-tickets are automatically cancelled and full refunds are credited without filing TDR.
+
+---
+
 ## Common PNR Questions (FAQ)
 
 ### How do I check my PNR status?
@@ -155,3 +169,9 @@ GNWL (General Waiting List) is issued for journeys from a train's originating st
 
 ### How accurate is PNR confirmation prediction?
 Prediction tools estimate confirmation chances using historical cancellation trends for that train, route, quota, and waitlist position. They are a helpful guide, not a guarantee. Always re-check your live current status close to departure and keep a backup plan if you are on a high or pooled waitlist.
+
+### How often is PNR status updated on IRCTC servers?
+PNR status updates in real-time whenever a passenger cancels a booking, during charting, or when seat reallocations occur.
+
+### Can you check PNR status for counter paper tickets online?
+Yes, you can check live PNR status for paper tickets issued at railway PRS counters online using your 10-digit PNR number.

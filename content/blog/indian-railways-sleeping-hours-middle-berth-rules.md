@@ -2,14 +2,14 @@
 title: "Indian Railways Sleeping Hours: Middle Berth Rules & Seating Rights"
 description: "Confused about middle berth timings in Indian trains? Read the official Indian Railways sleeping hours rules, seat sharing guidelines, and how to avoid disputes."
 date: "2026-06-26"
-updated: "2026-07-14"
+updated: "2026-07-27"
 tags:
   - train booking
   - irctc
   - sleeping hours
   - middle berth rules
   - passenger rights
----
+> **Planning overnight train travel?** Find confirmed seats with [Smart Seats](/) or check coach berth layout and seat status using [Coach Journey Lookup](/seat-status).
 
 ## TL;DR
 
@@ -82,6 +82,22 @@ If you are looking for last-minute bookings, always check for a `"current availa
 
 ---
 
+## What are the official sleeping hours rules for middle berth passengers in Indian Railways?
+
+Official sleeping hours for middle berth passengers in Indian Railways reserved coaches (Sleeper and AC classes) are strictly from 10:00 PM to 6:00 AM. During these eight hours, middle berth passengers have the legal right to raise their berth for sleeping. Outside this window (6:00 AM to 10:00 PM), the middle berth must be folded down so lower berth passengers can sit comfortably.
+
+According to official railway circulars, keeping the middle berth raised during daytime hours is a violation of passenger guidelines. Co-passengers sharing the bay must cooperate during the day to allow equal seating space on the lower berth.
+
+---
+
+## What to do if lower berth passenger refuses to fold down middle berth during day time?
+
+If a passenger refuses to fold down the middle berth or allow proper seating during daytime hours (6:00 AM to 10:00 PM), first politely inform them of the official 10:00 PM to 6:00 AM Indian Railways sleeping rule circular. If they remain uncooperative, escalate the matter immediately to the onboard TTE or file a complaint on the RailMadad app for immediate intervention.
+
+The TTE is empowered to enforce passenger guidelines on running trains. RailMadad complaints are tracked digitally and assigned directly to onboard staff or RPF officers for prompt resolution.
+
+---
+
 ## Indian Railways Sleeping Rules (FAQ)
 
 ### Can a passenger sleep on the lower berth during the day?
@@ -101,3 +117,9 @@ If a waitlisted e-ticket does not confirm after chart preparation, it is automat
 
 ### How does LastBerth help with booking confirmed seats?
 LastBerth uses advanced algorithms to find seat combinations across different segments of a train journey (smart seat bookings) where a single direct seat is unavailable, helping you travel with a confirmed ticket.
+
+### Can a lower berth passenger sleep during daytime outside official sleeping hours?
+During day hours (6 AM to 10 PM), lower berth seats are shared for sitting between lower, middle, and upper berth passengers. A lower berth passenger cannot claim exclusive sleeping rights on the berth during daytime if it prevents co-passengers from sitting.
+
+### Are sick or pregnant passengers exempt from middle berth sleeping hour restrictions?
+Passengers with medical conditions, senior citizens, and pregnant women are accommodated with mutual consent or TTE assistance. While standard rules prescribe 10:00 PM to 6:00 AM sleeping hours, onboard staff and co-passengers grant flexible sleeping permissions on humanitarian grounds.

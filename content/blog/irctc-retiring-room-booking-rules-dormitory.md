@@ -2,7 +2,7 @@
 title: "IRCTC Retiring Room & Dormitory Rules 2026: Booking & Rates"
 description: "How to book an IRCTC retiring room or dormitory online using your PNR: hourly rates, CNF/RAC eligibility rules, stay limits, and cancellation charges 2026."
 date: "2026-06-18"
-updated: "2026-07-23"
+updated: "2026-07-27"
 tags:
   - retiring room
   - irctc booking
@@ -10,7 +10,7 @@ tags:
   - railway stay
 ---
 
-> **Resting between journeys?** Check your live PNR status on [Smart Seats](/) to see if your ticket is CNF or RAC (mandatory for retiring room booking), and use [Chart Vacancy](/chart-vacancy) to track seat availability.
+> **Resting between journeys?** Check your live PNR status on [Smart Seats](/) to see if your ticket is CNF or RAC (mandatory for retiring room booking), and use [Coach Journey Lookup](/seat-status) to track seat availability across your train journey.
 
 
 ## TL;DR
@@ -157,7 +157,31 @@ To avoid penalty charges during unexpected train delays:
 
 ---
 
+## What is the cancellation and refund policy for IRCTC retiring room bookings?
+
+**Retiring room cancellations made more than 48 hours prior to check-in incur a 10% deduction, cancellations between 24 and 48 hours incur a 25% deduction, between 4 and 24 hours incur a 50% deduction, and no refund is granted for cancellations within 4 hours of check-in.**
+
+If your travel plans change, IRCTC allows online cancellation of retiring rooms through the booking portal. The refund amount depends on the time remaining before the scheduled check-in slot. Cancellation charges are deducted automatically, and the remaining amount is refunded to your original payment mode.
+
+---
+
+## Can you extend your retiring room booking period at the station counter?
+
+**Yes, retiring room stays can be extended at station booking counters subject to room availability, provided the total continuous occupancy does not exceed the maximum limit of 48 hours.**
+
+If your train is delayed or your layover is extended, you can approach the station retiring room caretaker or booking counter before your current slot expires. Extensions are granted only if the room or dormitory bed is not booked by another passenger for the subsequent slot.
+
+---
+
 ## Common Booking Questions (FAQ)
+
+### Can you book an IRCTC retiring room with a platform ticket?
+
+No, retiring room bookings strictly require a confirmed (CNF) or RAC train ticket PNR number at the origin or destination station.
+
+### Are retiring rooms and dormitories available 24 hours a day?
+
+Yes, retiring rooms operate on 12-hour and 24-hour slots with round-the-clock check-in based on your train schedule.
 
 ### Can RAC ticket holders book IRCTC retiring rooms?
 Yes. Both Confirmed (CNF) and RAC ticket holders are eligible. Waitlisted (WL) tickets are not allowed.

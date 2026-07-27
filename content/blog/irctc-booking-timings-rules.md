@@ -2,7 +2,7 @@
 title: "IRCTC Ticket Booking Timings: Maintenance Hours & Rules"
 description: "A complete guide on IRCTC booking timings, Tatkal opening hours, night maintenance window shutdown (11:45 PM to 12:20 AM), and current availability times."
 date: "2026-06-23"
-updated: "2026-07-17"
+updated: "2026-07-27"
 tags:
   - train booking
   - irctc
@@ -87,6 +87,18 @@ If you are struggling with restricted booking timings, long waitlists, or night 
 
 ---
 
+## What is the IRCTC nightly server maintenance timing window?
+
+IRCTC servers undergo nightly system maintenance between 11:45 PM and 12:20 AM IST during which online ticket booking and cancellation services are temporarily unavailable.
+
+---
+
+## What are opening hours for general advance reservation vs Tatkal booking?
+
+General advance booking opens 60 days before travel at 8:00 AM, AC Tatkal booking opens at 10:00 AM one day prior, and Non-AC Tatkal booking opens at 11:00 AM.
+
+---
+
 ## Common Booking Questions (FAQ)
 
 ### Can I book train tickets at 12:00 AM midnight?
@@ -100,3 +112,9 @@ No, you cannot travel on a train if your e-ticket remains in a fully waitlisted 
 
 ### How long before departure does current availability booking close?
 Current availability booking closes exactly 30 minutes before the train's scheduled departure from the station. After this point, no online bookings or modifications can be made for that specific train, and any remaining vacant berths can only be booked directly from the station ticket counter or through the train TTE.
+
+### Can you book tickets on IRCTC during server maintenance?
+No, ticketing services are shut down from 11:45 PM to 12:20 AM for daily system maintenance and data backup.
+
+### What time does Current Availability ticket booking close?
+Current Availability ticket booking closes 5 to 15 minutes before the scheduled departure of the train from your station.

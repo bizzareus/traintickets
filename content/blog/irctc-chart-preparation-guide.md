@@ -2,7 +2,7 @@
 title: "IRCTC Chart Preparation for Last-Minute Tickets"
 description: "A practical, no-hype guide to chart preparation: what changes after the chart, why WL/Regret can flip, and how to time your checks."
 date: "2026-05-15"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - chart preparation
   - irctc
@@ -93,6 +93,16 @@ A second and final reservation chart is prepared **30 minutes to 5 minutes befor
 
 If a fully waitlisted e-ticket remains waitlisted after second chart preparation, IRCTC automatically cancels the ticket and refunds the fare with a full refund (no cancellation or clerkage fee deducted) to your bank account within 3 to 5 working days. **Waitlisted e-ticket holders are strictly prohibited from boarding the train.** If caught travelling with a waitlisted e-ticket, you will be treated as travelling without a ticket and charged full fare plus penalties.
 
+## What Is the Difference Between First Reservation Chart and Second Reservation Chart?
+
+The first reservation chart is prepared approximately 4 hours before the train's departure from its originating station (or the previous evening for early morning trains), finalizing initial seat allocations and releasing unused quotas. The second and final reservation chart is prepared 30 to 15 minutes before departure incorporating last-minute current availability bookings and cancellations.
+
+## How to Book Vacant Berths Online After Chart Preparation?
+
+Unsold berths after initial charting open as Current Availability. You can view coach-wise vacant berths on [LastBerth Chart Vacancy](/chart-vacancy) and book them at normal base fare via IRCTC right up until the second chart is prepared 15 to 30 minutes before departure.
+
+---
+
 ## Common questions
 
 ### Will chart preparation definitely open tickets?
@@ -116,6 +126,12 @@ The first chart goes up 8 hours before the train leaves the starting station. Bu
 
 ### What happens if my ticket is partially confirmed and partially waitlisted after charting?
 On a group/family e-ticket PNR, if at least one passenger has a confirmed or RAC status while others remain waitlisted, the waitlisted passengers are permitted to board and travel. The Travelling Ticket Examiner (TTE) will assist with seat/berth adjustment onboard, subject to availability.
+
+### What time is chart prepared for early morning trains departing before 8 AM?
+For early morning trains, the first reservation chart is prepared on the previous evening at approximately 8:00 PM.
+
+### Can waitlist status change after second chart preparation?
+No, once the second chart is prepared 15-30 minutes before departure, all seat allocations are final and waitlists close.
 
 ---
 
