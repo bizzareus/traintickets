@@ -2,7 +2,7 @@
 title: "RailOne App: UTS, Platform Tickets & the GPS Limit 2026"
 description: "RailOne replaces the UTS app for unreserved, platform & season tickets. See the GPS distance limits that block bookings, R-Wallet setup, and migration steps."
 date: "2026-06-23"
-updated: "2026-07-14"
+updated: "2026-07-27"
 tags:
   - train booking
   - irctc
@@ -10,6 +10,8 @@ tags:
   - platform ticket
   - unreserved ticket
 ---
+
+> **Planning your train journey?** Search confirmed train options on [Smart Seats](/) or check coach layouts with [Coach Journey Lookup](/seat-status).
 
 ## TL;DR
 
@@ -116,6 +118,18 @@ Remember that a **current available ticket** is a **fully confirmed seat** with 
 
 ---
 
+## How Close to the Railway Track or Station Can You Book a UTS Ticket?
+
+For paperless tickets, you must be outside the geo-fenced station premises—typically between 20 meters and 5 kilometers away from the railway track or station. This strict distance restriction prevents passengers from attempting to book a ticket on the platform or inside the coach right after spotting a TTE (Travelling Ticket Examiner). If you are inside the station boundary or further than 5 km away, paperless booking will be blocked in the app.
+
+---
+
+## Can You Show UTS Paperless Ticket Without an Active Mobile Internet Connection?
+
+Yes, once booked, UTS paperless tickets are saved locally on your device in the app's offline Ticket History section. You can present your active ticket to ticket examiners without needing an active mobile internet data connection. However, generating the ticket initially requires internet access and active GPS location services.
+
+---
+
 ## Common RailOne Booking Questions (FAQ)
 
 ### What is the full form of UTS?
@@ -150,6 +164,12 @@ No. The standalone UTS app has been retired and unreserved, platform and season 
 
 ### Who developed RailOne and is it an official app?
 RailOne is an official Indian Railways app developed by **CRIS (Centre for Railway Information Systems)** and launched on **1 July 2025**. Download only the CRIS-published app from the Google Play Store or Apple App Store — avoid look-alike third-party apps that copy the name.
+
+### What happens if your phone battery dies while travelling with a UTS paperless ticket?
+Travelling with a dead phone is treated as travelling without a ticket under Indian Railways rules, subjecting you to standard unreserved class fines.
+
+### How do you transfer UTS R-Wallet balance when changing your phone number?
+Submit an R-Wallet surrender or mobile number change request at a railway booking counter along with ID proof to transfer your balance to the new registered mobile number.
 
 ---
 

@@ -2,7 +2,7 @@
 title: "Is Vande Bharat Food Mandatory? Opt-Out Price & Refunds"
 description: "Is catering mandatory on Vande Bharat trains? See the exact opt-out price difference, onboard ordering charges, and how to claim a refund when the meal isn't served."
 date: "2026-07-04"
-updated: "2026-07-17"
+updated: "2026-07-27"
 tags:
   - train booking
   - irctc
@@ -11,7 +11,7 @@ tags:
   - food refund
 ---
 
-> **Travelling on a Vande Bharat?** Check live seat availability and your PNR status with [Smart Seats](/), and if you're waitlisted, see the real vacant berths on your train after chart preparation with [Chart Vacancy](/chart-vacancy).
+> **Travelling on a Vande Bharat?** Check live seat availability and PNR status with [Smart Seats](/), or look up coach layouts and vacant berths along your route using [Coach Journey Lookup](/seat-status).
 
 ## TL;DR
 
@@ -62,6 +62,16 @@ To get a refund for food charges when cancelling a partially confirmed or waitli
 
 For travelers who miss their connection or experience booking issues, LastBerth's **[Finding Smart Seats](/)** tool can help find confirmed segments on alternative trains. You can also use the **[Coach Journey Lookup](/seat-status)** tool to check coach layouts and locate pantry staff quickly if there is a catering dispute onboard.
 
+## How to Opt Out of Meals During Booking vs Post-Booking on Vande Bharat
+
+During booking on IRCTC, select "No Food" under catering preferences to opt out and save ₹150–₹350. Once the ticket is booked, you cannot change your preference online; post-booking meal requests or cancellations must be handled onboard subject to staff availability and a ₹50 surcharge.
+
+---
+
+## What Food is Provided in Executive Class vs Chair Car on Vande Bharat Express?
+
+Executive Class (EC) offers premium meal options including welcome drinks, high-tea snacks, and multi-course meals served with superior cutlery, while AC Chair Car (CC) provides standard vegetarian or non-vegetarian boxed meals and tea/coffee.
+
 ---
 
 ## Common Booking Questions (FAQ)
@@ -101,3 +111,11 @@ If a Vande Bharat train is delayed by more than three hours, Indian Railways pro
 ### How do I check if my Vande Bharat ticket is confirmed?
 
 You can enter your 10-digit PNR number on LastBerth's PNR search to check if your booking status has moved from WL or RAC to Confirmed. Waitlisted e-tickets are automatically cancelled at chart preparation.
+
+### What happens if meal quality or service is poor on Vande Bharat?
+
+You can lodge an immediate complaint with the Train Captain onboard or submit feedback via the RailMadad app or IRCTC e-catering portal for quick resolution.
+
+### Can you change your food preference after the ticket is booked on IRCTC?
+
+No, IRCTC does not allow online modification of catering options after ticket generation. Any meal addition onboard incurs a ₹50 surcharge per meal.
