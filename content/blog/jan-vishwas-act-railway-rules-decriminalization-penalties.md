@@ -2,13 +2,15 @@
 title: "Jan Vishwas Act Railway Rules: Decriminalization & New Fines"
 description: "Discover how the Jan Vishwas Act 2026 decriminalizes railway offenses. Learn about the new civil penalties, ticketless travel fines, and the escalator clause."
 date: "2026-07-02"
-updated: "2026-07-21"
+updated: "2026-07-27"
 tags:
   - jan vishwas act
   - railway rules
   - train fines
   - travel guide
 ---
+> **Avoid railway fines for unconfirmed travel:** Check your ticket status on [Smart Seats](/) to ensure your waitlisted ticket confirmed before boarding, and use [Chart Vacancy](/chart-vacancy) to find vacant berths lawfully.
+
 
 ## TL;DR
 
@@ -92,8 +94,24 @@ Authorized railway officials, such as Travelling Ticket Examiners (TTEs) and sta
 
 ---
 
+
+## What is the Penalty for Traveling on a Waitlisted Ticket Under Jan Vishwas Rules?
+
+Under the amended Railways Act provisions, traveling on a fully waitlisted e-ticket after chart preparation is treated as ticketless travel. Passengers caught in reserved coaches with an unconfirmed online waitlisted ticket face a minimum civil penalty of ₹500 plus the full fare for the journey segment under Section 138. Counter waitlisted tickets permit travel only in general unreserved coaches.
+
+## How Are Civil Penalties Collected by TTEs and Railway Officers Onboard?
+
+Authorized Travelling Ticket Examiners (TTEs) and Ticket Collectors issue official administrative penalty receipts directly on handheld POS terminals or paper books. Fines are paid on the spot via cash, UPI, or card. Because offenses are decriminalized civil defaults, violators are no longer handed over to Railway Protection Force (RPF) for criminal court prosecution unless non-payment persists.
+
 ## Bottom line
 
 The Jan Vishwas Act 2026 represents a progressive shift in how Indian Railways manages passenger violations. By replacing criminal trials and imprisonment with higher civil penalties, the law makes travel regulation more efficient while penalizing offenders through strict financial penalties. 
 
 To ensure you never face these fines, make sure you always book a valid ticket. If direct trains show a waiting list, use the [Finding Smart Seats](/) tool on LastBerth to split your journey into confirmed seats, or check [Seat Status Coach Journey Lookup](/seat-status) to trace vacant berths. Always verify your status on the official IRCTC website or app before boarding.
+
+### Does a decriminalized civil fine show on your police record or passport check?
+No. Decriminalized civil defaults under the Jan Vishwas Act are administrative penalties collected directly by Indian Railways and do not generate criminal FIRs, court records, or adverse police verification entries for passport applications.
+
+### Can you appeal a penalty receipt issued by a TTE onboard?
+Yes. If you believe a penalty was wrongfully charged, you can file a formal complaint along with your penalty receipt on the RailMadad portal or appeal to the Senior Divisional Commercial Manager (Sr. DCM) of the relevant railway division.
+

@@ -2,7 +2,7 @@
 title: "Connecting Train on IRCTC: Link PNR & Refund If You Miss It"
 description: "Booking two trains for one trip? Learn how to link PNRs for a connecting journey on IRCTC, the minimum layover to keep, and whether you get a refund if a delay makes you miss the connection."
 date: "2026-05-30"
-updated: "2026-07-09"
+updated: "2026-07-27"
 tags:
   - connecting trains
   - train booking
@@ -14,6 +14,8 @@ tags:
   - how to link pnr
   - connecting pnr
 ---
+> **Connecting train at risk of delay?** Track live seat status on [Coach Journey Lookup](/seat-status) and check post-charting vacant berths on [Chart Vacancy](/chart-vacancy) if you need a quick alternate train.
+
 
 ## TL;DR
 
@@ -191,6 +193,15 @@ To book them, you just need Train A's PNR ready with you. Pop open your IRCTC ap
 
 ---
 
+
+## What is the Minimum Layover Required to Link Connecting PNRs on IRCTC?
+
+To link two PNRs under IRCTC Connecting Journey Booking rules, the scheduled arrival of your first train (Train A) and the scheduled departure of your second train (Train B) must have a minimum time gap. For connections at the exact same railway station, the layover must be between 1 hour and 5 days. If transferring between different stations in the same city (e.g., NDLS to NZM in Delhi), the minimum gap required is 3 hours.
+
+## What Happens if Train A is Delayed and You Miss Train B?
+
+If Train A is delayed causing you to miss Train B, IRCTC grants a full refund of the base fare for Train B without deducting standard cancellation fees. To claim this refund, you must file a Ticket Deposit Receipt (TDR) online within 3 hours of Train A’s actual arrival time at the connecting junction, selecting the reason "Missed Connecting Train due to Late Running of Main Train".
+
 ## How LastBerth Helps
 
 LastBerth helps you plan multi-train journeys by automatically identifying the best connecting junctions and trains with the highest seat availability. Instead of guessing layout schedules, it suggests and ranks valid segment options, allowing you to secure confirmed seats across your entire route even during heavy rush periods.
@@ -200,3 +211,10 @@ LastBerth helps you plan multi-train journeys by automatically identifying the b
 By using LastBerth to map out the best junction stations (like Kanpur, Prayagraj, or Itarsi) and using IRCTC's official **Connecting Journey Booking** to link those tickets, you get the absolute best of both worlds: **guaranteed seats for your journey and complete financial protection against delays.**
 
 *Have questions about planning a connecting route? Use our search filters to compare segment durations, transit comfort, and fares before you book your next multi-train journey!*
+
+### Can you link counter tickets with e-tickets for a connecting journey?
+Yes. You can link a physical counter ticket PNR with an online e-ticket PNR. Enter the counter PNR during the second ticket booking flow under IRCTC Connecting Journey Booking.
+
+### Can Tatkal tickets be linked as connecting journeys on IRCTC?
+Yes. Tatkal tickets can be linked as part of a connecting journey provided the layover time rules (minimum 1 hour same station, 3 hours different stations) are met.
+

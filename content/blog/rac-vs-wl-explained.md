@@ -2,7 +2,7 @@
 title: "RAC vs Waitlist: Which One Lets You Board the Train?"
 description: "RAC vs waitlist: RAC gives a shared seat you CAN travel on; a WL ticket often can't board. Compare RAC, WL & confirmed statuses and cancellation fees."
 date: "2026-05-15"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - rac
   - waiting list
@@ -134,8 +134,24 @@ Yes, you can travel on an RAC ticket — it is a valid travel document. You will
 
 ---
 
+
+## Can Two Passengers Travel on One RAC Ticket in Indian Railways?
+
+Yes, two passengers assigned RAC status on the same ticket share a single lower berth during overnight travel. In Indian Railways RAC arrangements, one lower berth is split into two sitting seats for two passengers. If one passenger cancels or fails to board before chart preparation, the remaining passenger gets upgraded to a full confirmed berth.
+
+## Which Confirmation Queue Clears Faster: RAC to CNF or WL to RAC?
+
+RAC to Confirmed (CNF) clears significantly faster than General Waiting List (GNWL) to RAC. Because RAC passengers are at the very top of the confirmation priority queue, any last-minute cancellation, no-show, or quota release immediately converts RAC 1, RAC 2, etc., into full berths before or during the journey.
+
 ## Related guides
 
 - [Best train when all trains show WL/RAC/Regret](/blog/best-train-when-all-trains-show-waiting-list)
 - [Why confirmed from origin matters in segment booking](/blog/confirmed-from-origin-segment-booking)
 - [IRCTC chart preparation for last-minute tickets](/blog/irctc-chart-preparation-guide)
+
+### Does an RAC passenger get a full berth if someone no-shows after chart prep?
+Yes. If a confirmed passenger does not turn up at their boarding station and the TTE marks them absent after two stations, the TTE reallocates that vacant berth to the highest-ranking RAC passenger on board.
+
+### What happens if an RAC passenger decides not to travel?
+If an RAC passenger cancels their ticket before chart preparation, a clerkage fee of ₹60 per passenger is deducted, and the rest is refunded. If canceling after chart prep, a TDR must be filed at least 30 minutes before train departure.
+

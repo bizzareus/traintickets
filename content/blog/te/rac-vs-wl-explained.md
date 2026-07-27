@@ -2,7 +2,7 @@
 title: "RAC vs Waitlist: రైలు ఎక్కేందుకు ఏది మిమ్మల్ని అనుమతిస్తుంది?"
 description: "భారతీయ రైల్వేలో RAC vs waitlist: RAC మీరు ప్రయాణించగలిగే ఒక పంచుకున్న సీటును ఇస్తుంది; WL టికెట్ తరచుగా బోర్డింగ్ చేయలేదు. RAC, WL మరియు confirmed స్థితులను, మార్పు క్రమాన్ని మరియు రద్దు ఫీజులను పోల్చండి."
 date: "2026-05-15"
-updated: "2026-07-15"
+updated: "2026-07-27"
 tags:
   - rac
   - waiting list
@@ -134,8 +134,24 @@ RAC మరియు WL టికెట్‌లు రెండూ బయలు�
 
 ---
 
+
+## ఒక RAC టికెట్‌పై ఇద్దరు ప్రయాణించవచ్చా?
+
+అవును, ఒక లోయర్ బెర్త్‌లో ఇద్దరు ప్రయాణికులు కూర్చుని ప్రయాణించవచ్చు.
+
+## RAC నుండి CNF త్వరగా క్లియర్ అవుతుందా?
+
+అవును, RAC నుండి కన్ఫర్మ్ జాబితా చాలా త్వరగా క్లియర్ అవుతుంది.
+
 ## Related guides
 
 - [Best train when all trains show WL/RAC/Regret](/blog/best-train-when-all-trains-show-waiting-list)
 - [Why confirmed from origin matters in segment booking](/blog/confirmed-from-origin-segment-booking)
 - [IRCTC chart preparation for last-minute tickets](/blog/irctc-chart-preparation-guide)
+
+### ఎవరైనా రాకపోతే RAC ప్రయాణికుడికి పూర్తి బెర్త్ వస్తుందా?
+అవును, TTE ఆ బెర్త్‌ను కేటాయిస్తారు.
+
+### RAC టికెట్ రద్దు చేస్తే నియమాలు ఏమిటి?
+₹60 క్లర్కేజ్ మినహాయించి మిగిలిన మొత్తం రీఫండ్ వస్తుంది.
+

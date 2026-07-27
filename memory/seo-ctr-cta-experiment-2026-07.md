@@ -92,6 +92,11 @@ Site context: 1K clk / **143K impr** / 0.70% CTR / pos 6.9 (28d ending 07-11). M
   - irctc-retiring-room-booking-rules-dormitory (5,002 impr / 0.22% CTR severe bleeder / pos 8.6 → title "IRCTC Retiring Room & Dormitory Rules 2026: Booking & Rates" + top CTA blockquote + 2 H2s + 2 FAQs). Target ≥0.7% CTR, pos within ±1.5.
   - irctc-app-vs-website-tatkal-booking (5,339 impr / 1.16% CTR / pos 6.1 → title "IRCTC App vs Website Tatkal Booking: Speed & OTP Rules 2026" + 2 H2s + 2 FAQs). Target ≥1.6% CTR, pos within ±1.5.
 
+
+## Addendum — 2026-07-27 batch (signal-driven triage; re-check on the same dates)
+- **CTR retitle + EXPAND + CTA:** station-platform-navigation-tips-last-minute-boarders (133 impr / 0.00% CTR / pos 7.0 → title "How to Find Your Train Platform & Coach Position Instantly" + top CTA + 3 H2s + 2 FAQs). Target ≥0.8% CTR, pos ≤ 5.0.
+- **EXPAND(ranking)+CTA(funnel):** jan-vishwas-act-railway-rules-decriminalization-penalties (599 impr / 3.67% CTR / pos 6.1, + top CTA + 2 H2s + 2 FAQs), connecting-train-bookings-irctc-link-pnr-guide (483 impr / 0.21% CTR / pos 7.1, + top CTA + 2 H2s + 2 FAQs), rac-vs-wl-explained (535 impr / 0.00% CTR / pos 9.5, + 2 H2s + 2 FAQs), toy-train-routes-booking-india-guide (490 impr / 0.61% CTR / pos 7.4, + top CTA + 2 H2s + 2 FAQs).
+
 ## Check-back dates
 - **2026-08-03 (~4 wks):** early read. Confirm new titles are live in SERP (spot-check). First CTR/position movement in GSC. PostHog: CTA clicks flowing?
 - **2026-09-01 (~8 wks):** full read. CTR delta per page vs baseline table above; decide keep / iterate / revert per guardrail. PostHog funnel numbers for the 6 CTA pages.
