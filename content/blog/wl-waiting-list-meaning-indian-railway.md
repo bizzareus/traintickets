@@ -234,6 +234,18 @@ You can check real-time PNR confirmation odds on LastBerth Smart Seats using his
 
 ---
 
+## How to calculate your waiting list confirmation chances accurately?
+
+Confirmation odds depend on waitlist quota type (GNWL > RLWL > PQWL), total number of AC vs Sleeper coaches, and days remaining before departure; use LastBerth Smart Seats for automated confirmation probabilities.
+
+---
+
+## What is the difference between WL/1 and WL/10 on an IRCTC ticket?
+
+WL/10 indicates you entered the waitlist at position 10, whereas the second number (e.g., WL/1) shows your current live position after cancellations.
+
+---
+
 ## Common Booking Questions (FAQ)
 
 ### What is the full form of WL in railway?
@@ -291,6 +303,14 @@ No, fully waitlisted online e-tickets are automatically cancelled at chart prepa
 ### What happens to your refund if your WL ticket is automatically cancelled?
 
 The full fare minus standard clerkage fee is refunded automatically to your original payment bank account within 3 to 5 business days. No manual TDR filing is required for auto-cancelled waitlisted e-tickets.
+
+### Does a waitlisted ticket guarantee a seat if you travel in Sleeper class?
+
+No, travelling with a waitlisted e-ticket in any reserved coach is illegal and subject to unreserved travel fines under Railways Act rules.
+
+### How many days before departure does waitlist confirmation peak?
+
+Waitlist confirmation activity peaks during final chart preparation 4 hours before departure as auto-upgradation and cancellations free up berths.
 
 ---
 

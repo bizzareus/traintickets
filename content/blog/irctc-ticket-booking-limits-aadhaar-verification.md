@@ -132,6 +132,18 @@ If you are struggling to find open seats for a group, LastBerth's **Finding Smar
 
 ---
 
+## How to link Aadhaar card to IRCTC account to double your monthly booking limit?
+
+Log into IRCTC, go to My Profile → Link Aadhaar, enter your 12-digit Aadhaar number, and verify the OTP sent to your registered mobile number to instantly upgrade your monthly limit from 12 to 24 tickets.
+
+---
+
+## What is the Tatkal ticket booking limit per user account and IP address?
+
+A user can book a maximum of 2 Tatkal tickets per user ID or IP address per day between 10:00 AM and 12:00 PM to ensure fair access for non-commercial travellers.
+
+---
+
 ## IRCTC ticket limit FAQ
 
 Here are the most common questions about how many tickets you can book on IRCTC.
@@ -175,13 +187,16 @@ The limit is counted per PNR transaction. One ticket with up to 6 passengers cou
 ### How many Tatkal tickets count towards the monthly limit?
 All Tatkal ticket PNRs count toward your monthly limit of 12 or 24 tickets. Additionally, you are capped at 2 Tatkal tickets per day per account.
 
-
-
 ### Does the 24-ticket monthly IRCTC limit apply to Tatkal bookings as well?
-
 Yes, the 24-ticket monthly limit for Aadhaar-verified accounts applies to all ticket types combined, including Tatkal, Premium Tatkal, and General quotas.
 
 ### Can multiple family members use one Aadhaar-verified IRCTC account for bookings?
-
 Yes, family members can be booked under one verified account, as long as at least one Aadhaar-verified passenger is included on bookings beyond the 12-ticket monthly limit.
+
+### How many passengers can be booked on a single IRCTC e-ticket?
+A maximum of 6 passengers can be booked on a single General quota PNR, and a maximum of 4 passengers on a single Tatkal quota PNR.
+
+### Do cancelled tickets count towards your monthly IRCTC booking limit?
+Yes, all generated PNRs count towards your monthly 12 or 24 ticket ceiling regardless of whether the ticket is later cancelled.
+
 

@@ -13,7 +13,7 @@ tags:
 
 நீங்கள் பதிவு செய்ய தயாராக உங்கள் திரையில் அமர்ந்திருக்கிறீர்கள், அப்போது ஒரு எச்சரிக்கை தோன்றுகிறது: "மாதாந்திர பதிவு வரம்பு அடைந்தது." இந்திய ரயில்வே, குவிப்பு தடுக்கும் வகையில் தரவிருப்ப கணக்குகளை கட்டுப்படுத்துகிறது, ஆனால் உங்கள் இடங்களை இரட்டிப்பாக்க ஒரு எளிய வழியை வழங்குகிறது. மாதாந்திர, தினசரி மற்றும் அமர்வு-சிறப்பு டிக்கெட் வரம்புகளின் முழு விவரங்கள், உங்கள் ஆதார் அட்டை இணைக்கும் படிகள் உடன் இங்கே உள்ளன.
 
-> **Need Quick Ticket Booking?** Search confirmed train availability and track PNR confirmation on [Smart Seats](/) or find coach seats on [Coach Journey Lookup](/seat-status).
+> **உங்களுக்கு விரைவான டிக்கெட் பதிவு தேவையா?** உறுதிப்படுத்தப்பட்ட ரயில் கிடைப்பைத் தேடவும், [Smart Seats](/) இல் PNR உறுதிப்படுத்தலைக் கண்காணிக்கவும் அல்லது [Coach Journey Lookup](/seat-status) இல் கோச் இருக்கைகளைக் கண்டறியவும்.
 
 ## IRCTC-ல் ஒரு மாதத்தில் எவ்வளவு டிக்கெட்டுகள் பதிவு செய்யலாம்?
 
@@ -100,23 +100,35 @@ tags:
 
 ஒரு குழுவிற்கான திறந்த இடங்களைப் பெறுவதில் நீங்கள் சிரமம் அனுபவிக்கிறீர்களானால், LastBerth-ன் **Finding Smart Seats** அம்சம், ஒரு தனி நேரடி இடம் கிடைக்காத போது, பல்வேறு கோச்சுகள் அல்லது பகுதிகளில் இடங்களைத் தேடும். உங்கள் டிக்கெட்டுகள் காத்திருப்பில் இருந்தால், **PNR நிலை தேடல்** கருவி உறுதிப்படுத்தல் வாய்ப்புகளை காட்டுகிறது, மற்றும் **இட நிலை கோச்சு பயணம் தேடல்** ரயிலில் காலியாக உள்ள இடங்களை கண்டறிகிறது.
 
-## What is the Difference Between Unverified and Aadhaar-Verified IRCTC Account Booking Limits?
+## சரிபார்க்கப்படாத மற்றும் ஆதார்-சரிபார்க்கப்பட்ட IRCTC கணக்கு பதிவு வரம்புகளுக்கு இடையே உள்ள வேறுபாடு என்ன?
 
-**An unverified IRCTC user account is limited to booking a maximum of 12 train tickets per calendar month. Linking and verifying your Aadhaar card on IRCTC increases your monthly booking quota to 24 tickets per month, provided at least one passenger on the booked PNR is also Aadhaar-verified.**
+**சரிபார்க்கப்படாத IRCTC பயனர் கணக்கு ஒரு காலண்டர் மாதத்தில் அதிகபட்சமாக 12 ரயில் டிக்கெட்டுகளை பதிவு செய்ய வரம்பிடப்பட்டுள்ளது. IRCTC இல் உங்கள் ஆதார் அட்டையை இணைத்து சரிபார்ப்பதன் மூலம் உங்கள் மாதாந்திர பதிவு அளவு மாதத்திற்கு 24 டிக்கெட்டுகள் வரை அதிகரிக்கும், பதிவு செய்யப்பட்ட PNR இல் குறைந்தது ஒரு பயணியாவது ஆதார்-சரிபார்க்கப்பட்டவராக இருக்க வேண்டும்.**
 
-- **Unverified Account Limit:** Maximum 12 tickets per month across all quotas.
-- **Aadhaar-Verified Account Limit:** Up to 24 tickets per month.
-- **Verification Requirement:** At least one passenger on the PNR must be verified in your IRCTC master list.
+- **சரிபார்க்கப்படாத கணக்கு வரம்பு:** அனைத்து ஒதுக்கீடுகளிலும் மாதத்திற்கு அதிகபட்சம் 12 டிக்கெட்டுகள்.
+- **ஆதார்-சரிபார்க்கப்பட்ட கணக்கு வரம்பு:** மாதத்திற்கு 24 டிக்கெட்டுகள் வரை.
+- **சரிபார்ப்பு தேவை:** PNR இல் உள்ள குறைந்தது ஒரு பயணியாவது உங்கள் IRCTC மாஸ்டர் பட்டியலில் சரிபார்க்கப்பட்டிருக்க வேண்டும்.
 
 ---
 
-## What Are the Rules for Booking Multiple Tickets on the Same Day from One IRCTC Account?
+## ஒரே IRCTC கணக்கிலிருந்து ஒரே நாளில் பல டிக்கெட்டுகளை பதிவு செய்வதற்கான விதிகள் என்ன?
 
-**A single IRCTC user account can book a maximum of 6 tickets per day across general quota and Tatkal quota combined. During peak morning Tatkal hours (10:00 AM to 12:00 PM), IRCTC restricts user logins to one active session and limits bookings to a maximum of 2 tickets per user IP address.**
+**ஒரு தனி IRCTC பயனர் கணக்கு பொது ஒதுக்கீடு மற்றும் தற்காலிக ஒதுக்கீடு இரண்டையும் சேர்த்து ஒரு நாளைக்கு அதிகபட்சமாக 6 டிக்கெட்டுகளை பதிவு செய்யலாம். காலை உச்ச தற்காலிக நேரங்களில் (காலை 10:00 முதல் மதியம் 12:00 வரை), IRCTC பயனர் உள்நுழைவை ஒரு செயலில் உள்ள அமர்வுக்கு கட்டுப்படுத்துகிறது மற்றும் பயனர் IP முகவரிக்கு அதிகபட்சமாக 2 டிக்கெட்டுகள் பதிவு செய்ய வரம்பிடுகிறது.**
 
-- **Daily Booking Cap:** Maximum 6 tickets per account per day.
-- **Tatkal Session Restriction:** 1 active login per user; 2 Tatkal tickets per IP between 10:00 AM and 12:00 PM.
-- **Master List Usage:** Save passenger profiles beforehand to complete booking before session timeouts.
+- **தினசரி பதிவு வரம்பு:** ஒரு கணக்கிற்கு ஒரு நாளைக்கு அதிகபட்சம் 6 டிக்கெட்டுகள்.
+- **தற்காலிக அமர்வு கட்டுப்பாடு:** பயனருக்கு 1 செயலில் உள்ள உள்நுழைவு; காலை 10:00 முதல் மதியம் 12:00 மணி வரை IP க்கு 2 தற்காலிக டிக்கெட்டுகள்.
+- **மாஸ்டர் பட்டியல் பயன்பாடு:** அமர்வு நேரம் முடிவதற்குள் பதிவை முடிக்க பயணி சுயவிவரங்களை முன்கூட்டியே சேமிக்கவும்.
+
+---
+
+## உங்கள் மாதாந்திர பதிவு வரம்பை இரட்டிப்பாக்க IRCTC கணக்குடன் ஆதார் அட்டையை எவ்வாறு இணைப்பது?
+
+IRCTC இல் உள்நுழைந்து, என் சுயவிவரம் → ஆதார் இணைக்கவும் என்பதற்குச் சென்று, உங்கள் 12-இலக்க ஆதார் எண்ணை உள்ளிட்டு, உங்கள் மாதாந்திர வரம்பை 12 இலிருந்து 24 டிக்கெட்டுகளாக உடனடியாக உயர்த்த உங்கள் பதிவுசெய்யப்பட்ட மொபைல் எண்ணிற்கு அனுப்பப்பட்ட OTP ஐ சரிபார்க்கவும்.
+
+---
+
+## ஒரு பயனர் கணக்கு மற்றும் IP முகவரிக்கு தற்காலிக டிக்கெட் பதிவு வரம்பு என்ன?
+
+வணிக ரீதியற்ற பயணிகளுக்கு நியாயமான அணுகலை உறுதிசெய்ய, ஒரு பயனர் ஒரு பயனர் ID அல்லது IP முகவரிக்கு ஒரு நாளைக்கு காலை 10:00 மணி முதல் மதியம் 12:00 மணி வரை அதிகபட்சமாக 2 தற்காலிக டிக்கெட்டுகளை பதிவு செய்யலாம்.
 
 ---
 
@@ -164,11 +176,15 @@ IRCTC-ல் நீங்கள் எவ்வளவு டிக்கெட�
 
 
 
-### Does the 24-ticket monthly IRCTC limit apply to Tatkal bookings as well?
+### 24-டிக்கெட் மாதாந்திர IRCTC வரம்பு தற்காலிக பதிவுகளுக்கும் பொருந்துமா?
+ஆம், ஆதார்-சரிபார்க்கப்பட்ட கணக்குகளுக்கான 24-டிக்கெட் மாதாந்திர வரம்பு தற்காலிக, பிரீமியம் தற்காலிக மற்றும் பொது ஒதுக்கீடுகள் உட்பட அனைத்து டிக்கெட் வகைகளுக்கும் பொருந்தும்.
 
-Yes, the 24-ticket monthly limit for Aadhaar-verified accounts applies to all ticket types combined, including Tatkal, Premium Tatkal, and General quotas.
+### பல குடும்ப உறுப்பினர்கள் பதிவுகளுக்கு ஒரு ஆதார்-சரிபார்க்கப்பட்ட IRCTC கணக்கைப் பயன்படுத்தலாமா?
+ஆம், 12-டிக்கெட் மாதாந்திர வரம்பிற்கு மேற்பட்ட பதிவுகளில் குறைந்தது ஒரு ஆதார்-சரிபார்க்கப்பட்ட பயணியாவது சேர்க்கப்படும் வரை, ஒரு சரிபார்க்கப்பட்ட கணக்கின் கீழ் குடும்ப உறுப்பினர்களைப் பதிவு செய்யலாம்.
 
-### Can multiple family members use one Aadhaar-verified IRCTC account for bookings?
+### ஒரு IRCTC e-டிக்கெட்டில் எத்தனை பயணிகளைப் பதிவு செய்ய முடியும்?
+ஒரு பொது ஒதுக்கீடு PNR இல் அதிகபட்சமாக 6 பயணிகளையும், ஒரு தற்காலிக ஒதுக்கீடு PNR இல் அதிகபட்சமாக 4 பயணிகளையும் பதிவு செய்யலாம்.
 
-Yes, family members can be booked under one verified account, as long as at least one Aadhaar-verified passenger is included on bookings beyond the 12-ticket monthly limit.
+### ரத்து செய்யப்பட்ட டிக்கெட்டுகள் உங்கள் மாதாந்திர IRCTC பதிவு வரம்பில் கணக்கிடப்படுமா?
+ஆம், டிக்கெட் பின்னர் ரத்து செய்யப்பட்டதா இல்லையா என்பதைப் பொருட்படுத்தாமல் உருவாக்கப்பட்ட அனைத்து PNR களும் உங்கள் மாதாந்திர 12 அல்லது 24 டிக்கெட் உச்சவரம்பில் கணக்கிடப்படும்.
 

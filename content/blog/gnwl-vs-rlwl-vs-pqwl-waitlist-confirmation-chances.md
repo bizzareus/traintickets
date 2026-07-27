@@ -269,6 +269,18 @@ Before you sit back and hope your ticket clears, check what type of waitlist you
 
 ---
 
+## Why does Pooled Quota Waitlist (PQWL) have lower confirmation chances than GNWL?
+
+PQWL covers intermediate origin-destination station pairs pooled together across a single coach quota, meaning berths only clear if a passenger travelling between those specific intermediate stations cancels.
+
+---
+
+## How to check PQWL confirmation probability before booking?
+
+You can check live PQWL confirmation odds on LastBerth Smart Seats, which analyzes historical charting algorithms to compare GNWL vs PQWL clearing rates.
+
+---
+
 ## Waiting list FAQ
 
 ### What does PQWL mean in a train ticket?
@@ -291,7 +303,6 @@ A GNWL 4 (General Waiting List 4) has a good chance of clearing on most trains, 
 
 GNWL (General Waiting List) has the best chance, because most of a train's berths are reserved for this quota. The typical order from best to worst is: GNWL, then RLWL, then PQWL, then TQWL (Tatkal) and RSWL, which rarely clear.
 
-
 ### Is GNWL always better than RLWL for waitlist confirmation chances?
 
 Yes, GNWL has access to the largest pool of seats and cancellations on the train, giving it higher confirmation probability.
@@ -299,4 +310,13 @@ Yes, GNWL has access to the largest pool of seats and cancellations on the train
 ### Can a PQWL ticket convert into RAC status before final chart preparation?
 
 PQWL tickets generally do not convert into RAC; they usually jump directly from WL to Confirmed if berths open, or remain WL.
+
+### What happens if a PQWL ticket is not confirmed at chart preparation?
+
+Unconfirmed PQWL online e-tickets are automatically cancelled by IRCTC and full fare minus ₹60 clerkage is refunded to your account.
+
+### Can PQWL tickets move directly to confirmed status without entering RAC?
+
+Yes, if a confirmed passenger cancels, a PQWL ticket can move directly to confirmed status (CNF) depending on berth availability.
+
 

@@ -15,7 +15,7 @@ tags:
 
 > **क्या आपकी वेटिंग लिस्ट कन्फर्म होगी?** [Smart Seats PNR स्थिति](/) से अपनी टिकट ट्रैक करें, और चार्ट बनने के बाद [Chart Vacancy कोच मैप](/chart-vacancy) से अपनी ट्रेन में वास्तव में खाली बर्थ देखें — फिर कोई भी खुली सीट पकड़ें।
 
-> **Checking Waitlist Confirmation Odds?** Monitor your live PNR status on [Smart Seats](/) or locate vacant berths after chart preparation on [Chart Vacancy](/chart-vacancy).
+> **वेटिंग लिस्ट कन्फर्मेशन संभावनाओं की जांच कर रहे हैं?** [Smart Seats](/) पर अपनी लाइव PNR स्थिति की निगरानी करें या चार्ट तैयारी के बाद [Chart Vacancy](/chart-vacancy) पर खाली बर्थ खोजें।
 
 ## TL;DR
 
@@ -248,23 +248,35 @@ GNWL आपको सबसे अच्छी गति देती है। 
 
 इससे पहले कि आप बैठें और उम्मीद करें कि आपकी टिकट क्लीयर हो जाए, जांचें कि आप वास्तव में किस प्रकार की वेटिंग लिस्ट में हैं। यह एकल जानकारी यह बदल देती है कि क्या आपको आज बैकअप योजना बनानी चाहिए या आप उचित रूप से इंतजार कर सकते हैं।
 
-## What is Remote Location Waitlist (RLWL) and Why Does It Clear Slower Than GNWL?
+## रिमोट लोकेशन वेटलिस्ट (RLWL) क्या है और यह GNWL की तुलना में धीमी गति से क्यों क्लीयर होती है?
 
-**Remote Location Waitlist (RLWL) is issued for passengers booking tickets between important intermediate stations. It clears significantly slower than General Waitlist (GNWL) because RLWL relies strictly on cancellations within a small, dedicated intermediate station quota rather than the main train seat pool.**
+**रिमोट लोकेशन वेटलिस्ट (RLWL) महत्वपूर्ण मध्यवर्ती स्टेशनों के बीच टिकट बुक करने वाले यात्रियों के लिए जारी की जाती है। यह जनरल वेटलिस्ट (GNWL) की तुलना में काफी धीमी गति से क्लीयर होती है क्योंकि RLWL मुख्य ट्रेन सीट पूल के बजाय केवल एक छोटे, समर्पित मध्यवर्ती स्टेशन कोटा के भीतर रद्दीकरण पर निर्भर करती है।**
 
-- **Dedicated Quota:** RLWL has a fixed, small pool of seats reserved for intermediate stations.
-- **Cancellation Dependence:** RLWL only moves when passengers on that exact intermediate route cancel.
-- **Confirmation Odds:** GNWL > RLWL > PQWL in priority.
+- **समर्पित कोटा:** RLWL के पास मध्यवर्ती स्टेशनों के लिए आरक्षित सीटों का एक निश्चित, छोटा पूल होता है।
+- **रद्दीकरण पर निर्भरता:** RLWL केवल तभी आगे बढ़ती है जब उसी सटीक मध्यवर्ती मार्ग पर यात्री रद्द करते हैं।
+- **कन्फर्मेशन संभावनाएं:** प्राथमिकता में GNWL > RLWL > PQWL।
 
 ---
 
-## How Does Pooled Quota Waitlist (PQWL) Work for Intermediate Station Passengers?
+## मध्यवर्ती स्टेशन यात्रियों के लिए पूल कोटा वेटलिस्ट (PQWL) कैसे काम करती है?
 
-**Pooled Quota Waitlist (PQWL) is shared across multiple small intermediate stations that do not have dedicated quotas. PQWL has the lowest confirmation priority in Indian Railways, clearing only after GNWL and RLWL quotas are satisfied and when cancellations occur within that specific pooled group.**
+**पूल कोटा वेटलिस्ट (PQWL) कई छोटे मध्यवर्ती स्टेशनों के बीच साझा की जाती है जिनके पास समर्पित कोटा नहीं होता है। भारतीय रेलवे में PQWL की कन्फर्मेशन प्राथमिकता सबसे कम होती है, जो केवल GNWL और RLWL कोटा संतुष्ट होने के बाद और उस विशिष्ट पूल्ड समूह के भीतर रद्दीकरण होने पर ही क्लीयर होती है।**
 
-- **Shared Pool:** Combines short-distance intermediate station travel requests into one pool.
-- **Chart Prep Clearance:** Rarely clears to confirmed status unless massive cancellations occur across the entire train.
-- **Best Strategy:** Book from the originating station or use segment booking tools on LastBerth.
+- **साझा पूल:** कम दूरी के मध्यवर्ती स्टेशन यात्रा अनुरोधों को एक पूल में जोड़ता है।
+- **चार्ट तैयारी पर क्लीयरेंस:** पूरी ट्रेन में भारी रद्दीकरण न होने तक शायद ही कभी कन्फर्म स्थिति में क्लीयर होती है।
+- **सर्वोत्तम रणनीति:** आरंभिक स्टेशन से बुक करें या LastBerth पर सेगमेंट बुकिंग टूल का उपयोग करें।
+
+---
+
+## पूल कोटा वेटलिस्ट (PQWL) की कन्फर्मेशन संभावनाएं GNWL की तुलना में कम क्यों होती हैं?
+
+PQWL एक ही कोच कोटा में एक साथ पूल्ड किए गए मध्यवर्ती मूल-गंतव्य स्टेशन जोड़ों को कवर करती है, जिसका अर्थ है कि बर्थ केवल तभी क्लीयर होती हैं जब उन विशिष्ट मध्यवर्ती स्टेशनों के बीच यात्रा करने वाला यात्री टिकट रद्द करता है।
+
+---
+
+## बुकिंग से पहले PQWL कन्फर्मेशन संभावना की जांच कैसे करें?
+
+आप LastBerth Smart Seats पर लाइव PQWL कन्फर्मेशन संभावनाएं जांच सकते हैं, जो GNWL बनाम PQWL क्लीयरिंग दरों की तुलना करने के लिए ऐतिहासिक चार्टिंग एल्गोरिदम का विश्लेषण करता है।
 
 ---
 
@@ -290,11 +302,20 @@ RLWL का मतलब है **दूरस्थ स्थान वेट�
 
 GNWL (सामान्य वेटिंग लिस्ट) की सबसे अच्छी संभावना होती है, क्योंकि अधिकांश ट्रेन की बर्थ इस कोटा के लिए आरक्षित होती हैं। सबसे अच्छे से सबसे खराब तक का सामान्य क्रम है: GNWL, फिर RLWL, फिर PQWL, फिर TQWL (तत्काल) और RSWL, जो शायद ही कभी क्लीयर होती हैं।
 
-### Is GNWL always better than RLWL for waitlist confirmation chances?
+### क्या वेटलिस्ट कन्फर्मेशन संभावनाओं के लिए GNWL हमेशा RLWL से बेहतर है?
 
-Yes, GNWL has access to the largest pool of seats and cancellations on the train, giving it higher confirmation probability.
+हां, GNWL के पास ट्रेन में सीटों और रद्दीकरण के सबसे बड़े पूल तक पहुंच होती है, जिससे इसे उच्च कन्फर्मेशन संभावना मिलती है।
 
-### Can a PQWL ticket convert into RAC status before final chart preparation?
+### क्या अंतिम चार्ट तैयारी से पहले PQWL टिकट RAC स्थिति में बदल सकता है?
 
-PQWL tickets generally do not convert into RAC; they usually jump directly from WL to Confirmed if berths open, or remain WL.
+PQWL टिकट आमतौर पर RAC में परिवर्तित नहीं होते हैं; बर्थ खुलने पर वे आमतौर पर WL से सीधे कन्फर्म (CNF) में कूद जाते हैं, या WL ही रहते हैं।
+
+### यदि चार्ट तैयारी के समय PQWL टिकट कन्फर्म नहीं होता है तो क्या होता है?
+
+अकन्फर्म PQWL ऑनलाइन ई-टिकट IRCTC द्वारा स्वचालित रूप से रद्द कर दिए जाते हैं और ₹60 क्लर्केज घटाकर पूरा किराया आपके खाते में वापस कर दिया जाता है।
+
+### क्या PQWL टिकट RAC में प्रवेश किए बिना सीधे कन्फर्म स्थिति में जा सकते हैं?
+
+हां, यदि कोई कन्फर्म यात्री रद्द करता है, तो बर्थ की उपलब्धता के आधार पर PQWL टिकट सीधे कन्फर्म स्थिति (CNF) में जा सकता है।
+
 

@@ -13,7 +13,7 @@ tags:
 
 आप अपनी स्क्रीन पर बुकिंग के लिए तैयार बैठे हैं, और एक चेतावनी आती है: "मासिक बुकिंग सीमा पहुँच गई।" भारतीय रेलवे मानक खातों को जमाखोरी से रोकने के लिए सीमित करता है, लेकिन आपके स्लॉट को दोगुना करने का एक सरल तरीका प्रदान करता है। यहाँ मासिक, दैनिक, और सत्र-विशिष्ट टिकट सीमाओं का पूरा विवरण है, साथ ही आपके आधार कार्ड को लिंक करने के चरण।
 
-> **Need Quick Ticket Booking?** Search confirmed train availability and track PNR confirmation on [Smart Seats](/) or find coach seats on [Coach Journey Lookup](/seat-status).
+> **क्या आपको त्वरित टिकट बुकिंग की आवश्यकता है?** कन्फर्म ट्रेन उपलब्धता खोजें और [Smart Seats](/) पर PNR कन्फर्मेशन ट्रैक करें या [Coach Journey Lookup](/seat-status) पर कोच सीटें खोजें।
 
 ## IRCTC में एक महीने में कितने टिकट बुक किए जा सकते हैं?
 
@@ -100,23 +100,35 @@ tags:
 
 यदि आप एक समूह के लिए खुली सीटें खोजने में संघर्ष कर रहे हैं, तो LastBerth का **Finding Smart Seats** फीचर विभिन्न कोचों या खंडों में बर्थ की तलाश करता है जब एकल सीधे बर्थ उपलब्ध नहीं है। यदि आपके टिकट वेटलिस्टेड हैं, तो **PNR स्थिति खोज** उपकरण पुष्टि के अवसर दिखाता है, और **सीट स्थिति कोच यात्रा खोज** ट्रेन पर खाली बर्थ खोजता है।
 
-## What is the Difference Between Unverified and Aadhaar-Verified IRCTC Account Booking Limits?
+## असत्यापित और आधार-सत्यापित IRCTC खाता बुकिंग सीमाओं के बीच क्या अंतर है?
 
-**An unverified IRCTC user account is limited to booking a maximum of 12 train tickets per calendar month. Linking and verifying your Aadhaar card on IRCTC increases your monthly booking quota to 24 tickets per month, provided at least one passenger on the booked PNR is also Aadhaar-verified.**
+**एक असत्यापित IRCTC उपयोगकर्ता खाता प्रति कैलेंडर महीने अधिकतम 12 ट्रेन टिकट बुकिंग तक सीमित है। IRCTC पर अपने आधार कार्ड को लिंक और सत्यापित करने से आपका मासिक बुकिंग कोटा 24 टिकट प्रति माह तक बढ़ जाता है, बशर्ते बुक किए गए PNR पर कम से कम एक यात्री भी आधार-सत्यापित हो।**
 
-- **Unverified Account Limit:** Maximum 12 tickets per month across all quotas.
-- **Aadhaar-Verified Account Limit:** Up to 24 tickets per month.
-- **Verification Requirement:** At least one passenger on the PNR must be verified in your IRCTC master list.
+- **असत्यापित खाता सीमा:** सभी कोटो में प्रति माह अधिकतम 12 टिकट।
+- **आधार-सत्यापित खाता सीमा:** प्रति माह 24 टिकट तक।
+- **सत्यापन आवश्यकता:** PNR पर कम से कम एक यात्री आपकी IRCTC मास्टर सूची में सत्यापित होना चाहिए।
 
 ---
 
-## What Are the Rules for Booking Multiple Tickets on the Same Day from One IRCTC Account?
+## एक IRCTC खाते से एक ही दिन में कई टिकट बुक करने के नियम क्या हैं?
 
-**A single IRCTC user account can book a maximum of 6 tickets per day across general quota and Tatkal quota combined. During peak morning Tatkal hours (10:00 AM to 12:00 PM), IRCTC restricts user logins to one active session and limits bookings to a maximum of 2 tickets per user IP address.**
+**एक एकल IRCTC उपयोगकर्ता खाता सामान्य कोटा और तत्काल कोटा मिलाकर प्रति दिन अधिकतम 6 टिकट बुक कर सकता है। सुबह के पीक तत्काल घंटों (10:00 AM से 12:00 PM) के दौरान, IRCTC उपयोगकर्ता लॉगिन को एक सक्रिय सत्र तक सीमित करता है और प्रति उपयोगकर्ता IP पते पर अधिकतम 2 टिकटों की बुकिंग की सीमा तय करता है।**
 
-- **Daily Booking Cap:** Maximum 6 tickets per account per day.
-- **Tatkal Session Restriction:** 1 active login per user; 2 Tatkal tickets per IP between 10:00 AM and 12:00 PM.
-- **Master List Usage:** Save passenger profiles beforehand to complete booking before session timeouts.
+- **दैनिक बुकिंग कैप:** प्रति खाता प्रति दिन अधिकतम 6 टिकट।
+- **तत्काल सत्र प्रतिबंध:** प्रति उपयोगकर्ता 1 सक्रिय लॉगिन; 10:00 AM से 12:00 PM के बीच प्रति IP 2 तत्काल टिकट।
+- **मास्टर सूची का उपयोग:** सत्र टाइमआउट से पहले बुकिंग पूरी करने के लिए यात्री प्रोफाइल पहले से सहेजें।
+
+---
+
+## मासिक बुकिंग सीमा दोगुनी करने के लिए IRCTC खाते में आधार कार्ड कैसे लिंक करें?
+
+IRCTC में लॉग इन करें, माय प्रोफाइल → लिंक आधार पर जाएं, अपना 12 अंकों का आधार नंबर दर्ज करें, और अपनी मासिक सीमा तुरंत 12 से 24 टिकटों में अपग्रेड करने के लिए अपने पंजीकृत मोबाइल नंबर पर भेजे गए OTP को सत्यापित करें।
+
+---
+
+## प्रति उपयोगकर्ता खाता और IP पता तत्काल टिकट बुकिंग सीमा क्या है?
+
+गैर-व्यावसायिक यात्रियों के लिए उचित पहुंच सुनिश्चित करने के लिए एक उपयोगकर्ता प्रति उपयोगकर्ता ID या IP पते पर 10:00 AM से 12:00 PM के बीच प्रति दिन अधिकतम 2 तत्काल टिकट बुक कर सकता है।
 
 ---
 
@@ -164,11 +176,15 @@ tags:
 
 
 
-### Does the 24-ticket monthly IRCTC limit apply to Tatkal bookings as well?
+### क्या 24-टिकट मासिक IRCTC सीमा तत्काल बुकिंग पर भी लागू होती है?
+हाँ, आधार-सत्यापित खातों के लिए 24-टिकट की मासिक सीमा तत्काल, प्रीमियम तत्काल और सामान्य कोटा सहित सभी टिकट प्रकारों पर लागू होती है।
 
-Yes, the 24-ticket monthly limit for Aadhaar-verified accounts applies to all ticket types combined, including Tatkal, Premium Tatkal, and General quotas.
+### क्या परिवार के कई सदस्य बुकिंग के लिए एक आधार-सत्यापित IRCTC खाते का उपयोग कर सकते हैं?
+हाँ, परिवार के सदस्यों को एक सत्यापित खाते के तहत बुक किया जा सकता है, जब तक कि 12-टिकट मासिक सीमा से अधिक की बुकिंग में कम से कम एक आधार-सत्यापित यात्री शामिल हो।
 
-### Can multiple family members use one Aadhaar-verified IRCTC account for bookings?
+### एक IRCTC e-टिकट पर कितने यात्री बुक किए जा सकते हैं?
+एक एकल सामान्य कोटा PNR पर अधिकतम 6 यात्री बुक किए जा सकते हैं, और एक एकल तत्काल कोटा PNR पर अधिकतम 4 यात्री बुक किए जा सकते हैं।
 
-Yes, family members can be booked under one verified account, as long as at least one Aadhaar-verified passenger is included on bookings beyond the 12-ticket monthly limit.
+### क्या रद्द किए गए टिकट आपकी मासिक IRCTC बुकिंग सीमा में गिने जाते हैं?
+हाँ, उत्पन्न किए गए सभी PNR आपके मासिक 12 या 24 टिकट सीमा में गिने जाते हैं, चाहे टिकट बाद में रद्द ही क्यों न कर दिया गया हो।
 

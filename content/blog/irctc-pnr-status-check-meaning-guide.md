@@ -144,9 +144,15 @@ Enter your 10-digit PNR number on LastBerth Smart Seats to get data-driven confi
 
 ---
 
-## What happens to PNR status when a train is cancelled or diverted?
+## What do PNR status codes CNF, RAC, WL, CAN, and NOSB mean?
 
-If a train is cancelled by Indian Railways, all PNRs associated with online e-tickets are automatically cancelled and full refunds are credited without filing TDR.
+CNF means Confirmed berth, RAC means shared seat berth, WL means Waitlisted, CAN means Cancelled, and NOSB means No Seat Berth (for children under 5 without separate seat).
+
+---
+
+## How to track PNR status changes automatically on your phone?
+
+Search your 10-digit PNR on LastBerth Smart Seats to receive real-time updates on coach, berth number, and chart preparation status without needing to log into IRCTC repeatedly.
 
 ---
 
@@ -175,3 +181,10 @@ PNR status updates in real-time whenever a passenger cancels a booking, during c
 
 ### Can you check PNR status for counter paper tickets online?
 Yes, you can check live PNR status for paper tickets issued at railway PRS counters online using your 10-digit PNR number.
+
+### Why does PNR status show chart not prepared until 4 hours before train departure?
+Indian Railways rules mandate that the first reservation chart is generated 4 hours prior to departure (or 8 PM the previous evening for morning trains).
+
+### Can PNR status change after boarding the train?
+Yes, if on-board passengers fail to turn up, TTEs allocate vacant berths to RAC or waitlisted passengers during the journey.
+

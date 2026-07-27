@@ -13,7 +13,7 @@ tags:
 
 നിങ്ങൾ ബുക്ക് ചെയ്യാൻ തയ്യാറായിരുന്നപ്പോൾ, ഒരു മുന്നറിയിപ്പ് ഉയരുന്നു: "മാസിക ബുക്കിംഗ് പരിധി എത്തിച്ചു." ഇന്ത്യൻ റെയ്ല്വേസ് സ്റ്റാൻഡേർഡ് അക്കൗണ്ടുകൾ നിയന്ത്രിക്കുന്നു, എന്നാൽ നിങ്ങളുടെ സ്ലോട്ടുകൾ ഇരട്ടിയാക്കാൻ ഒരു ലളിതമായ മാർഗം നൽകുന്നു. നിങ്ങളുടെ ആധാർ കാർഡ് ബന്ധിപ്പിക്കുന്നതിനുള്ള നടപടികൾക്കൊപ്പം മാസിക, ദൈനംദിന, സെഷൻ-സ്പെസിഫിക് ടിക്കറ്റ് പരിധികളുടെ സമ്പൂർണ്ണ വിശദീകരണം ഇവിടെ ഉണ്ട്.
 
-> **Need Quick Ticket Booking?** Search confirmed train availability and track PNR confirmation on [Smart Seats](/) or find coach seats on [Coach Journey Lookup](/seat-status).
+> **നിങ്ങൾക്ക് വേഗത്തിലുള്ള ടിക്കറ്റ് ബുക്കിംഗ് ആവശ്യമുണ്ടോ?** കൺഫേം ചെയ്ത ട്രെയിൻ ലഭ്യത തിരയുകയും [Smart Seats](/) ൽ PNR കൺഫർമേഷൻ ട്രാക്ക് ചെയ്യുകയും ചെയ്യുക അല്ലെങ്കിൽ [Coach Journey Lookup](/seat-status) ൽ കോച്ച് സീറ്റുകൾ കണ്ടെത്തുക.
 
 ## IRCTC-യിൽ ഒരു മാസത്തിൽ എത്ര ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാം?
 
@@ -100,23 +100,35 @@ tags:
 
 ഒരു ഗ്രൂപ്പിനായി തുറന്ന സീറ്റുകൾ കണ്ടെത്താൻ നിങ്ങൾക്ക് ബുദ്ധിമുട്ടുണ്ടെങ്കിൽ, LastBerth-ന്റെ **Finding Smart Seats** ഫീച്ചർ ഒരു നേരിട്ടുള്ള ബർത്ത് ലഭ്യമല്ലെങ്കിൽ വിവിധ കോച്ചുകൾക്കോ സെഗ്മെന്റുകൾക്കോ ബർത്ത് കണ്ടെത്താൻ ശ്രമിക്കുന്നു. നിങ്ങളുടെ ടിക്കറ്റുകൾ വെറ്റ്ലിസ്റ്റ് ചെയ്താൽ, **PNR സ്റ്റാറ്റസ് സെർച്ച്** ടൂൾ സ്ഥിരീകരണ സാധ്യതകൾ കാണിക്കുന്നു, **സീറ്റ് സ്റ്റാറ്റസ് കോച്ച് ജേർണി ലുക്കപ്പ്** ട്രെയിനിൽ ശൂന്യമായ ബർത്ത് കണ്ടെത്തുന്നു.
 
-## What is the Difference Between Unverified and Aadhaar-Verified IRCTC Account Booking Limits?
+## സ്ഥിരീകരിക്കാത്തതും ആധാർ-സ്ഥിരീകരിച്ചതുമായ IRCTC അക്കൗണ്ട് ബുക്കിംഗ് പരിധികൾ തമ്മിലുള്ള വ്യത്യാസം എന്താണ്?
 
-**An unverified IRCTC user account is limited to booking a maximum of 12 train tickets per calendar month. Linking and verifying your Aadhaar card on IRCTC increases your monthly booking quota to 24 tickets per month, provided at least one passenger on the booked PNR is also Aadhaar-verified.**
+**ഒരു സ്ഥിരീകരിക്കാത്ത IRCTC ഉപയോക്തൃ അക്കൗണ്ടിൽ ഒരു കലണ്ടർ മാസത്തിൽ പരമാവധി 12 ട്രെയിൻ ടിക്കറ്റുകൾ മാത്രമേ ബുക്ക് ചെയ്യാൻ കഴിയൂ. IRCTC-യിൽ നിങ്ങളുടെ ആധാർ കാർഡ് ബന്ധിപ്പിക്കുകയും സ്ഥിരീകരിക്കുകയും ചെയ്യുന്നത് ബുക്ക് ചെയ്യുന്ന PNR-ൽ കുറഞ്ഞത് ഒരു യാത്രക്കാരനെങ്കിലും ആധാർ-സ്ഥിരീകരിച്ച ആളാണെങ്കിൽ പ്രതിമാസ ബുക്കിംഗ് ക്വാട്ട പ്രതിമാസം 24 ടിക്കറ്റുകളായി ഉയർത്തുന്നു.**
 
-- **Unverified Account Limit:** Maximum 12 tickets per month across all quotas.
-- **Aadhaar-Verified Account Limit:** Up to 24 tickets per month.
-- **Verification Requirement:** At least one passenger on the PNR must be verified in your IRCTC master list.
+- **സ്ഥിരീകരിക്കാത്ത അക്കൗണ്ട് പരിധി:** എല്ലാ ക്വാട്ടകളിലുമായി പ്രതിമാസം പരമാവധി 12 ടിക്കറ്റുകൾ.
+- **ആധാർ-സ്ഥിരീകരിച്ച അക്കൗണ്ട് പരിധി:** പ്രതിമാസം 24 ടിക്കറ്റുകൾ വരെ.
+- **സ്ഥിരീകരണ ആവശ്യകത:** PNR-ലെ കുറഞ്ഞത് ഒരു യാത്രക്കാരനെങ്കിലും നിങ്ങളുടെ IRCTC മാസ്റ്റർ ലിസ്റ്റിൽ സ്ഥിരീകരിച്ചിരിക്കണം.
 
 ---
 
-## What Are the Rules for Booking Multiple Tickets on the Same Day from One IRCTC Account?
+## ഒരു IRCTC അക്കൗണ്ടിൽ നിന്ന് ഒരു ദിവസം തന്നെ ഒന്നിലധികം ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യുന്നതിനുള്ള നിയമങ്ങൾ എന്തൊക്കെയാണ്?
 
-**A single IRCTC user account can book a maximum of 6 tickets per day across general quota and Tatkal quota combined. During peak morning Tatkal hours (10:00 AM to 12:00 PM), IRCTC restricts user logins to one active session and limits bookings to a maximum of 2 tickets per user IP address.**
+**ഒരു സിംഗിൾ IRCTC ഉപയോക്തൃ അക്കൗണ്ടിന് ജനറൽ ക്വാട്ടയും ടാറ്റ്കൽ ക്വാട്ടയും ചേർത്ത് പ്രതിദിനം പരമാവധി 6 ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാം. രാവിലെ ടാറ്റ്കൽ സമയത്ത് (10:00 AM മുതൽ 12:00 PM വരെ), IRCTC ഉപയോക്തൃ ലോഗിൻ ഒരു ആക്റ്റീവ് സെഷനായി പരിമിതപ്പെടുത്തുകയും ഉപയോക്തൃ IP വിലാസത്തിന് പരമാവധി 2 ടിക്കറ്റുകൾ ബുക്കിംഗ് പരിമിതപ്പെടുത്തുകയും ചെയ്യുന്നു.**
 
-- **Daily Booking Cap:** Maximum 6 tickets per account per day.
-- **Tatkal Session Restriction:** 1 active login per user; 2 Tatkal tickets per IP between 10:00 AM and 12:00 PM.
-- **Master List Usage:** Save passenger profiles beforehand to complete booking before session timeouts.
+- **പ്രതിദിന ബുക്കിംഗ് പരിധി:** ഒരു അക്കൗണ്ടിന് പ്രതിദിനം പരമാവധി 6 ടിക്കറ്റുകൾ.
+- **ടാറ്റ്കൽ സെഷൻ നിയന്ത്രണം:** ഒരു ഉപയോക്താവിന് 1 ആക്റ്റീവ് ലോഗിൻ; 10:00 AM-നും 12:00 PM-നും ഇടയിൽ IP-ക്ക് 2 ടാറ്റ്കൽ ടിക്കറ്റുകൾ.
+- **മാസ്റ്റർ ലിസ്റ്റ് ഉപയോഗം:** സെഷൻ ടൈംഔട്ടിന് മുമ്പ് ബുക്കിംഗ് പൂർത്തിയാക്കാൻ യാത്രക്കാരുടെ പ്രൊഫൈലുകൾ മുൻകൂട്ടി സേവ് ചെയ്യുക.
+
+---
+
+## നിങ്ങളുടെ പ്രതിമാസ ബുക്കിംഗ് പരിധി ഇരട്ടിയാക്കാൻ IRCTC അക്കൗണ്ടിലേക്ക് ആധാർ കാർഡ് എങ്ങനെ ബന്ധിപ്പിക്കാം?
+
+IRCTC-യിൽ ലോഗിൻ ചെയ്യുക, മൈ പ്രൊഫൈൽ → ലിങ്ക് ആധാർ എന്നതിലേക്ക് പോകുക, നിങ്ങളുടെ 12-അക്ക ആധാർ നമ്പർ നൽകുക, നിങ്ങളുടെ പ്രതിമാസ പരിധി ഉടനടി 12-ൽ നിന്ന് 24 ടിക്കറ്റുകളായി ഉയർത്താൻ രജിസ്റ്റർ ചെയ്ത മൊബൈൽ നമ്പറിലേക്ക് അയച്ച OTP സ്ഥിരീകരിക്കുക.
+
+---
+
+## ഓരോ ഉപയോക്തൃ അക്കൗണ്ടിനും IP വിലാസത്തിനും ടാറ്റ്കൽ ടിക്കറ്റ് ബുക്കിംഗ് പരിധി എത്രയാണ്?
+
+വാണിജ്യേതര യാത്രക്കാർക്ക് ന്യായമായ പ്രവേശനം ഉറപ്പാക്കാൻ ഒരു ഉപയോക്താവിന് ഒരു ഉപയോക്തൃ ID അല്ലെങ്കിൽ IP വിലാസത്തിൽ രാവിലെ 10:00 AM-നും 12:00 PM-നും ഇടയിൽ പ്രതിദിനം പരമാവധി 2 ടാറ്റ്കൽ ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാം.
 
 ---
 
@@ -164,11 +176,15 @@ IRCTC-യിൽ എത്ര ടിക്കറ്റുകൾ ബുക്ക�
 
 
 
-### Does the 24-ticket monthly IRCTC limit apply to Tatkal bookings as well?
+### 24-ടിക്കറ്റ് പ്രതിമാസ IRCTC പരിധി ടാറ്റ്കൽ ബുക്കിംഗുകൾക്കും ബാധകമാണോ?
+അതെ, ആധാർ-സ്ഥിരീകരിച്ച അക്കൗണ്ടുകൾക്കുള്ള 24-ടിക്കറ്റ് പ്രതിമാസ പരിധി ടാറ്റ്കൽ, പ്രീമിയം ടാറ്റ്കൽ, ജനറൽ ക്വാട്ടകൾ ഉൾപ്പെടെയുള്ള എല്ലാ ടിക്കറ്റ് തരങ്ങൾക്കും ബാധകമാണ്.
 
-Yes, the 24-ticket monthly limit for Aadhaar-verified accounts applies to all ticket types combined, including Tatkal, Premium Tatkal, and General quotas.
+### ബുക്കിംഗുകൾക്കായി ഒന്നിലധികം കുടുംബാംഗങ്ങൾക്ക് ഒരു ആധാർ-സ്ഥിരീകരിച്ച IRCTC അക്കൗണ്ട് ഉപയോഗിക്കാമോ?
+അതെ, 12-ടിക്കറ്റ് പ്രതിമാസ പരിധിക്ക് മുകളിലുള്ള ബുക്കിംഗുകളിൽ കുറഞ്ഞത് ഒരു ആധാർ-സ്ഥിരീകരിച്ച യാത്രക്കാരനെങ്കിലും ഉൾപ്പെടുത്തിയിട്ടുണ്ടെങ്കിൽ, ഒരു സ്ഥിരീകരിച്ച അക്കൗണ്ടിന് കീഴിൽ കുടുംബാംഗങ്ങളെ ബുക്ക് ചെയ്യാം.
 
-### Can multiple family members use one Aadhaar-verified IRCTC account for bookings?
+### ഒരു IRCTC e-ടിക്കറ്റിൽ എത്ര യാത്രക്കാരെ ബുക്ക് ചെയ്യാം?
+ഒരു ജനറൽ ക്വാട്ട PNR-ൽ പരമാവധി 6 യാത്രക്കാരെയും, ഒരു ടാറ്റ്കൽ ക്വാട്ട PNR-ൽ പരമാവധി 4 യാത്രക്കാരെയും ബുക്ക് ചെയ്യാം.
 
-Yes, family members can be booked under one verified account, as long as at least one Aadhaar-verified passenger is included on bookings beyond the 12-ticket monthly limit.
+### റദ്ദാക്കിയ ടിക്കറ്റുകൾ നിങ്ങളുടെ പ്രതിമാസ IRCTC ബുക്കിംഗ് പരിധിയിൽ ഉൾപ്പെടുമോ?
+അതെ, ടിക്കറ്റ് പിന്നീട് റദ്ദാക്കിയാലും ജനറേറ്റ് ചെയ്ത എല്ലാ PNR-ങ്ങളും നിങ്ങളുടെ പ്രതിമാസ 12 അല്ലെങ്കിൽ 24 ടിക്കറ്റ് പരിധിയിൽ ഉൾപ്പെടും.
 

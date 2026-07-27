@@ -13,7 +13,7 @@ tags:
 
 మీరు బుక్ చేయడానికి సిద్ధంగా ఉన్న స్క్రీన్ వద్ద కూర్చొని ఉన్నప్పుడు, ఒక హెచ్చరిక కనిపిస్తుంది: "మాసిక బుకింగ్ పరిమితి చేరుకుంది." భారతీయ రైల్వేలు నిల్వను నివారించడానికి ప్రామాణిక ఖాతాలను పరిమితం చేస్తుంది, కానీ మీ స్లాట్లను డబుల్ చేయడానికి ఒక సులభమైన మార్గాన్ని అందిస్తుంది. మీ ఆధార్ కార్డును లింక్ చేయడానికి సంబంధించిన దశలతో పాటు నెలవారీ, రోజువారీ మరియు సెషన్-స్పెసిఫిక్ టిక్కెట్ పరిమితుల యొక్క పూర్తి విరామం ఇక్కడ ఉంది.
 
-> **Need Quick Ticket Booking?** Search confirmed train availability and track PNR confirmation on [Smart Seats](/) or find coach seats on [Coach Journey Lookup](/seat-status).
+> **మీకు వేగవంతమైన టిక్కెట్ బుకింగ్ కావాలా?** కన్ఫర్మ్ అయిన రైలు లభ్యతను శోధించండి మరియు [Smart Seats](/) లో PNR కన్ఫర్మేషన్‌ను ట్రాక్ చేయండి లేదా [Coach Journey Lookup](/seat-status) లో కోచ్ సీట్లను కనుగొనండి.
 
 ## IRCTC లో ఒక నెలలో ఎంతమంది టిక్కెట్లు బుక్ చేయవచ్చు?
 
@@ -100,23 +100,35 @@ tags:
 
 మీరు ఒక గ్రూప్ కోసం ఓపెన్ సీట్లను కనుగొనడంలో కష్టపడుతున్నట్లయితే, LastBerth యొక్క **Finding Smart Seats** ఫీచర్ ఒకే ప్రత్యక్ష బెర్త్ అందుబాటులో లేకపోతే వివిధ కోచులు లేదా విభాగాలలో బెర్త్‌లను అన్వేషిస్తుంది. మీ టిక్కెట్లు వెయిట్‌లిస్టులో ఉంటే, **PNR స్థితి శోధన** టూల్ నిర్ధారణ అవకాశాలను చూపిస్తుంది, మరియు **సీటు స్థితి కోచ్ జర్నీ లుక్‌అప్** ట్రైన్‌లో ఖాళీ బెర్త్‌లను కనుగొంటుంది.
 
-## What is the Difference Between Unverified and Aadhaar-Verified IRCTC Account Booking Limits?
+## ధృవీకరించని మరియు ఆధార్-ధృవీకరించబడిన IRCTC ఖాతా బుకింగ్ పరిమితుల మధ్య తేడా ఏమిటి?
 
-**An unverified IRCTC user account is limited to booking a maximum of 12 train tickets per calendar month. Linking and verifying your Aadhaar card on IRCTC increases your monthly booking quota to 24 tickets per month, provided at least one passenger on the booked PNR is also Aadhaar-verified.**
+**ధృవీకరించని IRCTC యూజర్ ఖాతా క్యాలెండర్ నెలకు గరిష్టంగా 12 రైలు టిక్కెట్లను బుక్ చేయడానికి పరిమితం చేయబడింది. IRCTC లో మీ ఆధార్ కార్డును లింక్ చేసి ధృవీకరించడం ద్వారా మీ నెలవారీ బుకింగ్ క్వోటా నెలకు 24 టిక్కెట్లకు పెరుగుతుంది, బుక్ చేసిన PNR పై కనీసం ఒక ప్రయాణికుడు కూడా ఆధార్-ధృవీకరించబడిన వ్యక్తి అయి ఉండాలి.**
 
-- **Unverified Account Limit:** Maximum 12 tickets per month across all quotas.
-- **Aadhaar-Verified Account Limit:** Up to 24 tickets per month.
-- **Verification Requirement:** At least one passenger on the PNR must be verified in your IRCTC master list.
+- **ధృవీకరించని ఖాతా పరిమితి:** అన్ని క్వోటాలలో నెలకు గరిష్టంగా 12 టిక్కెట్లు.
+- **ఆధార్-ధృవీకరించబడిన ఖాతా పరిమితి:** నెలకు 24 టిక్కెట్ల వరకు.
+- **ధృవీకరణ అవసరం:** PNR లోని కనీసం ఒక ప్రయాణికుడు మీ IRCTC మాస్టర్ జాబితాలో ధృవీకరించబడాలి.
 
 ---
 
-## What Are the Rules for Booking Multiple Tickets on the Same Day from One IRCTC Account?
+## ఒకే IRCTC ఖాతా నుండి ఒకే రోజులో అనేక టిక్కెట్లు బుక్ చేయడానికి నియమాలు ఏమిటి?
 
-**A single IRCTC user account can book a maximum of 6 tickets per day across general quota and Tatkal quota combined. During peak morning Tatkal hours (10:00 AM to 12:00 PM), IRCTC restricts user logins to one active session and limits bookings to a maximum of 2 tickets per user IP address.**
+**ఒకే IRCTC యూజర్ ఖాతా సాధారణ క్వోటా మరియు తాత్కాలిక క్వోటా కలిపి రోజుకు గరిష్టంగా 6 టిక్కెట్లను బుక్ చేయవచ్చు. ఉదయం పీక్ తాత్కాలిక సమయంలో (10:00 AM నుండి 12:00 PM), IRCTC యూజర్ లాగిన్‌ను ఒక సక్రియ సెషన్‌కు పరిమితం చేస్తుంది మరియు యూజర్ IP చిరునామాకు గరిష్టంగా 2 టిక్కెట్ల బుకింగ్‌ను పరిమితం చేస్తుంది.**
 
-- **Daily Booking Cap:** Maximum 6 tickets per account per day.
-- **Tatkal Session Restriction:** 1 active login per user; 2 Tatkal tickets per IP between 10:00 AM and 12:00 PM.
-- **Master List Usage:** Save passenger profiles beforehand to complete booking before session timeouts.
+- **రోజువారీ బుకింగ్ క్యాప్:** ఒక ఖాతాకు రోజుకు గరిష్టంగా 6 టిక్కెట్లు.
+- **తాత్కాలిక సెషన్ పరిమితి:** వినియోగదారుకు 1 సక్రియ లాగిన్; 10:00 AM నుండి 12:00 PM మధ్య IP కి 2 తాత్కాలిక టిక్కెట్లు.
+- **మాస్టర్ జాబితా వినియోగం:** సెషన్ టైమ్‌అవుట్ కావడానికి ముందే బుకింగ్ పూర్తి చేయడానికి ప్రయాణికుల ప్రొఫైల్‌లను ముందుగానే సేవ్ చేయండి.
+
+---
+
+## మీ నెలవారీ బుకింగ్ పరిమితిని రెట్టింపు చేయడానికి IRCTC ఖాతాకు ఆధార్ కార్డును ఎలా లింక్ చేయాలి?
+
+IRCTC లోకి లాగిన్ అవ్వండి, మై ప్రొఫైల్ → లింక్ ఆధార్‌కి వెళ్లండి, మీ 12-అంకెల ఆధార్ నంబర్‌ను నమోదు చేయండి మరియు మీ నెలవారీ పరిమితిని 12 నుండి 24 టిక్కెట్లకు వెంటనే అప్‌గ్రేడ్ చేయడానికి మీ నమోదిత మొబైల్ నంబర్‌కు పంపిన OTP ని ధృవీకరించండి.
+
+---
+
+## ప్రతి యూజర్ ఖాతా మరియు IP చిరునామాకు తాత్కాలిక టిక్కెట్ బుకింగ్ పరిమితి ఎంత?
+
+వాణిజ్యేతర ప్రయాణికులకు న్యాయమైన ప్రాప్యతను నిర్ధారించడానికి ఒక వినియోగదారు ప్రతి యూజర్ ID లేదా IP చిరునామాకు రోజుకు 10:00 AM నుండి 12:00 PM మధ్య గరిష్టంగా 2 తాత్కాలిక టిక్కెట్లను బుక్ చేయవచ్చు.
 
 ---
 
@@ -164,11 +176,15 @@ IRCTC లో మీరు ఎంతమంది టిక్కెట్లు �
 
 
 
-### Does the 24-ticket monthly IRCTC limit apply to Tatkal bookings as well?
+### 24-టిక్కెట్ల నెలవారీ IRCTC పరిమితి తాత్కాలిక బుకింగ్‌లకు కూడా వర్తిస్తుందా?
+అవును, ఆధార్-ధృవీకరించబడిన ఖాతాల కోసం 24-టిక్కెట్ల నెలవారీ పరిమితి తాత్కాలిక, ప్రీమియం తాత్కాలిక మరియు సాధారణ క్వోతాలతో సహా అన్ని టిక్కెట్ రకాలకు కలిపి వర్తిస్తుంది.
 
-Yes, the 24-ticket monthly limit for Aadhaar-verified accounts applies to all ticket types combined, including Tatkal, Premium Tatkal, and General quotas.
+### బహుళ కుటుంబ సభ్యులు బుకింగ్‌ల కోసం ఒకే ఆధార్-ధృవీకరించబడిన IRCTC ఖాతాను ఉపయోగించవచ్చా?
+అవును, 12-టిక్కెట్ల నెలవారీ పరిమితికి మించిన బుకింగ్‌లలో కనీసం ఒక ఆధార్-ధృవీకరించబడిన ప్రయాణికుడు చేర్చబడినంత వరకు, ఒక ధృవీకరించబడిన ఖాతా కింద కుటుంబ సభ్యులను బుక్ చేయవచ్చు.
 
-### Can multiple family members use one Aadhaar-verified IRCTC account for bookings?
+### ఒకే IRCTC e-టిక్కెట్‌పై ఎంతమంది ప్రయాణికులను బుక్ చేయవచ్చు?
+ఒకే సాధారణ క్వోటా PNR లో గరిష్టంగా 6 మంది ప్రయాణికులను మరియు ఒకే తాత్కాలిక క్వోటా PNR లో గరిష్టంగా 4 మంది ప్రయాణికులను బుక్ చేయవచ్చు.
 
-Yes, family members can be booked under one verified account, as long as at least one Aadhaar-verified passenger is included on bookings beyond the 12-ticket monthly limit.
+### రద్దు చేయబడిన టిక్కెట్లు మీ నెలవారీ IRCTC బుకింగ్ పరిమితిలో లెక్కించబడతాయా?
+అవును, టిక్కెట్ ఆ తర్వాత రద్దు చేయబడినా సరే, జారీ చేయబడిన అన్ని PNR లు మీ నెలవారీ 12 లేదా 24 టిక్కెట్ల పరిమితిలో లెక్కించబడతాయి.
 
