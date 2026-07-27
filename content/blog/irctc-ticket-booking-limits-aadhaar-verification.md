@@ -2,7 +2,7 @@
 title: "IRCTC Limit: 12 Tickets/Month, 24 With Aadhaar — 2026 Rules"
 description: "IRCTC lets you book 12 tickets a month, or 24 with Aadhaar verification. Full breakdown of the monthly, per-day, per-booking and Tatkal limits for 2026."
 date: "2026-06-22"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - train booking
   - irctc
@@ -12,6 +12,8 @@ tags:
 > **Make every booking count:** With only 12–24 tickets a month, don't waste a slot on a train that won't confirm. Check live seat availability and confirmation chances on [Smart Seats PNR status](/), and use the [Chart Vacancy coach map](/chart-vacancy) to grab berths that open up after chart preparation.
 
 You sit at your screen ready to book, and a warning pops up: "Monthly booking limit reached." Indian Railways restricts standard accounts to prevent hoarding, but offers a simple way to double your slots. Here is a complete breakdown of monthly, daily, and session-specific ticket limits, along with steps to link your Aadhaar card.
+
+> **Need Quick Ticket Booking?** Search confirmed train availability and track PNR confirmation on [Smart Seats](/) or find coach seats on [Coach Journey Lookup](/seat-status).
 
 ## How Many Tickets Can Be Booked in IRCTC in a Month?
 
@@ -110,6 +112,26 @@ While there is no separate monthly cap dedicated exclusively to Tatkal, the dail
 
 If you are struggling to find open seats for a group, LastBerth's **Finding Smart Seats** feature looks for berths across different coaches or segments when a single direct berth isn't available. If your tickets are waitlisted, the **PNR Status Search** tool shows confirmation chances, and the **Seat Status Coach Journey Lookup** finds vacant berths on the train.
 
+## What is the Difference Between Unverified and Aadhaar-Verified IRCTC Account Booking Limits?
+
+**An unverified IRCTC user account is limited to booking a maximum of 12 train tickets per calendar month. Linking and verifying your Aadhaar card on IRCTC increases your monthly booking quota to 24 tickets per month, provided at least one passenger on the booked PNR is also Aadhaar-verified.**
+
+- **Unverified Account Limit:** Maximum 12 tickets per month across all quotas.
+- **Aadhaar-Verified Account Limit:** Up to 24 tickets per month.
+- **Verification Requirement:** At least one passenger on the PNR must be verified in your IRCTC master list.
+
+---
+
+## What Are the Rules for Booking Multiple Tickets on the Same Day from One IRCTC Account?
+
+**A single IRCTC user account can book a maximum of 6 tickets per day across general quota and Tatkal quota combined. During peak morning Tatkal hours (10:00 AM to 12:00 PM), IRCTC restricts user logins to one active session and limits bookings to a maximum of 2 tickets per user IP address.**
+
+- **Daily Booking Cap:** Maximum 6 tickets per account per day.
+- **Tatkal Session Restriction:** 1 active login per user; 2 Tatkal tickets per IP between 10:00 AM and 12:00 PM.
+- **Master List Usage:** Save passenger profiles beforehand to complete booking before session timeouts.
+
+---
+
 ## IRCTC ticket limit FAQ
 
 Here are the most common questions about how many tickets you can book on IRCTC.
@@ -152,4 +174,14 @@ The limit is counted per PNR transaction. One ticket with up to 6 passengers cou
 
 ### How many Tatkal tickets count towards the monthly limit?
 All Tatkal ticket PNRs count toward your monthly limit of 12 or 24 tickets. Additionally, you are capped at 2 Tatkal tickets per day per account.
+
+
+
+### Does the 24-ticket monthly IRCTC limit apply to Tatkal bookings as well?
+
+Yes, the 24-ticket monthly limit for Aadhaar-verified accounts applies to all ticket types combined, including Tatkal, Premium Tatkal, and General quotas.
+
+### Can multiple family members use one Aadhaar-verified IRCTC account for bookings?
+
+Yes, family members can be booked under one verified account, as long as at least one Aadhaar-verified passenger is included on bookings beyond the 12-ticket monthly limit.
 

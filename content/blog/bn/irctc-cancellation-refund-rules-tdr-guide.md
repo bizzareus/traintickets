@@ -1,7 +1,8 @@
----title: "IRCTC ফেরত নিয়ম 2026: বাতিলকরণ ফি এবং TDR দাখিল"
+---
+title: "IRCTC Cancellation & Refund Rules 2026: TDR & Refund Timelines"
 description: "IRCTC টিকিট বাতিল করলে কত টাকা ফেরত পাবেন? ক্লাস ও সময় অনুযায়ী সঠিক বাতিলকরণ ফি, অটো-রিফান্ড নিয়ম এবং ধাপে ধাপে TDR দাখিল।"
 date: "2026-06-10"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - irctc cancellation
   - refund rules
@@ -29,6 +30,8 @@ tags:
 যদি আপনি departure এর 4 ঘণ্টার মধ্যে থাকেন, তবে আপনি আনুষ্ঠানিকভাবে ফিরে আসার পয়েন্টে পৌঁছেছেন। যদি আপনি একটি নির্দিষ্ট TDR কারণে যোগ্য না হন, তবে এই চূড়ান্ত সময়ের মধ্যে একটি নিশ্চিত টিকিট বাতিল করলে শূন্য রুপি ফেরত পাওয়া যায়।
 
 ---
+
+> **Check Cancellation & Refund Odds:** Track PNR status on [Smart Seats](/) or see available vacant berths after chart prep on [Chart Vacancy](/chart-vacancy).
 
 ## IRCTC বাতিলকরণের মূল নিয়মগুলি কি মনে রাখতে হবে?
 
@@ -182,6 +185,26 @@ tags:
 
 চার্ট তৈরির আগে ওয়েটলেস বা RAC টিকিটের জন্য প্রতি যাত্রী ₹৬০ (+ AC এর জন্য GST) ক্লার্কেজ চার্জ প্রযোজ্য। ৪৮ ঘণ্টা আগে নিশ্চিত টিকিট বাতিলের ফিস: ₹২৪০ (1AC), ₹২০০ (2AC), ₹১৮০ (3AC), ₹১২০ (Sleeper), ₹৬০ (2S)।
 
+## What Are the TDR Filing Time Limits After Train Chart Preparation?
+
+**To claim a refund for a missed train or cancelled passenger after chart preparation, you must file an online TDR within 4 hours after actual train departure from your station. Filing a TDR after 4 hours results in automatic forfeiture of the entire fare under Indian Railways refund rules.**
+
+- **Normal Cancellation Window:** Up to 4 hours before departure for confirmed tickets.
+- **Post-Chart TDR Window:** Within 4 hours after train departure for unutilized/partially confirmed tickets.
+- **No Refund After 4 Hours:** Late TDR claims are rejected automatically by IRCTC.
+
+---
+
+## How Much Cancellation Fee is Deducted for RAC and Waitlisted Tickets?
+
+**For RAC and waitlisted e-tickets cancelled up to 30 minutes before scheduled train departure, IRCTC deducts a flat clerkage fee of ₹60 per passenger (plus GST for AC classes). Fully waitlisted e-tickets that remain unconfirmed after chart preparation are auto-cancelled with the full refund credited automatically.**
+
+- **Clerkage Fee:** ₹60 per passenger for RAC and Waitlisted tickets.
+- **Auto-Refund:** Fully waitlisted e-tickets do not require manual cancellation; money is credited to original bank account.
+- **Counter Tickets:** Must be cancelled physically at a railway station counter within prescribed limits.
+
+---
+
 ## FAQ: বাতিলকরণ এবং TDR প্রশ্ন
 
 ### IRCTC-এ TDR দাখিলের প্রধান কারণগুলি কি?
@@ -199,4 +222,14 @@ tags:
 
 ### ভুল কারণে TDR ফাইল করলে কি হবে?
 যাচাইয়ে ভুল প্রমাণিত হলে TDR বাতিল হবে এবং কোন রিফান্ড পাওয়া যাবে না।
+
+
+
+### How many days does IRCTC take to credit TDR refund amount into your bank account?
+
+TDR refunds typically take 7 to 90 working days to process, as IRCTC verifies the claim with Railway Claims Tribunals.
+
+### Can you file a TDR if your train is running delayed by more than 3 hours?
+
+Yes, if the train is delayed by more than 3 hours and you do not travel, you can file a TDR before actual train departure for a 100% fare refund without cancellation fees.
 

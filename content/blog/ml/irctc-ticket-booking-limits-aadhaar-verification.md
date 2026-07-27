@@ -2,7 +2,7 @@
 title: "IRCTC പരിധി: മാസം 12 ടിക്കറ്റ്, Aadhaar-ഓടെ 24 — 2026 നിയമങ്ങൾ"
 description: "IRCTC-യിൽ മാസം 12 ടിക്കറ്റുകൾ, അല്ലെങ്കിൽ Aadhaar സ്ഥിരീകരണത്തോടെ 24 ബുക്ക് ചെയ്യാം. 2026-ലെ മാസ, ദിവസ, ബുക്കിംഗ്, Tatkal പരിധികളുടെ പൂർണ്ണ വിശദീകരണം."
 date: "2026-06-22"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - ട്രെയിൻ ബുക്കിംഗ്
   - irctc
@@ -12,6 +12,8 @@ tags:
 > **ഓരോ ബുക്കിംഗും ഫലപ്രദമാക്കുക:** മാസത്തിൽ വെറും 12–24 ടിക്കറ്റുകൾ മാത്രമുള്ളതിനാൽ, കൺഫേം ആകാത്ത ട്രെയിനിൽ ഒരു സ്ലോട്ട് പാഴാക്കരുത്. [Smart Seats PNR status](/) ൽ ലൈവ് സീറ്റ് ലഭ്യതയും കൺഫർമേഷൻ സാധ്യതകളും പരിശോധിക്കുക, കൂടാതെ ചാർട്ട് തയ്യാറാക്കിയ ശേഷം ഒഴിവാകുന്ന ബെർത്തുകൾ നേടാൻ [Chart Vacancy coach map](/chart-vacancy) ഉപയോഗിക്കുക.
 
 നിങ്ങൾ ബുക്ക് ചെയ്യാൻ തയ്യാറായിരുന്നപ്പോൾ, ഒരു മുന്നറിയിപ്പ് ഉയരുന്നു: "മാസിക ബുക്കിംഗ് പരിധി എത്തിച്ചു." ഇന്ത്യൻ റെയ്ല്വേസ് സ്റ്റാൻഡേർഡ് അക്കൗണ്ടുകൾ നിയന്ത്രിക്കുന്നു, എന്നാൽ നിങ്ങളുടെ സ്ലോട്ടുകൾ ഇരട്ടിയാക്കാൻ ഒരു ലളിതമായ മാർഗം നൽകുന്നു. നിങ്ങളുടെ ആധാർ കാർഡ് ബന്ധിപ്പിക്കുന്നതിനുള്ള നടപടികൾക്കൊപ്പം മാസിക, ദൈനംദിന, സെഷൻ-സ്പെസിഫിക് ടിക്കറ്റ് പരിധികളുടെ സമ്പൂർണ്ണ വിശദീകരണം ഇവിടെ ഉണ്ട്.
+
+> **Need Quick Ticket Booking?** Search confirmed train availability and track PNR confirmation on [Smart Seats](/) or find coach seats on [Coach Journey Lookup](/seat-status).
 
 ## IRCTC-യിൽ ഒരു മാസത്തിൽ എത്ര ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാം?
 
@@ -98,6 +100,26 @@ tags:
 
 ഒരു ഗ്രൂപ്പിനായി തുറന്ന സീറ്റുകൾ കണ്ടെത്താൻ നിങ്ങൾക്ക് ബുദ്ധിമുട്ടുണ്ടെങ്കിൽ, LastBerth-ന്റെ **Finding Smart Seats** ഫീച്ചർ ഒരു നേരിട്ടുള്ള ബർത്ത് ലഭ്യമല്ലെങ്കിൽ വിവിധ കോച്ചുകൾക്കോ സെഗ്മെന്റുകൾക്കോ ബർത്ത് കണ്ടെത്താൻ ശ്രമിക്കുന്നു. നിങ്ങളുടെ ടിക്കറ്റുകൾ വെറ്റ്ലിസ്റ്റ് ചെയ്താൽ, **PNR സ്റ്റാറ്റസ് സെർച്ച്** ടൂൾ സ്ഥിരീകരണ സാധ്യതകൾ കാണിക്കുന്നു, **സീറ്റ് സ്റ്റാറ്റസ് കോച്ച് ജേർണി ലുക്കപ്പ്** ട്രെയിനിൽ ശൂന്യമായ ബർത്ത് കണ്ടെത്തുന്നു.
 
+## What is the Difference Between Unverified and Aadhaar-Verified IRCTC Account Booking Limits?
+
+**An unverified IRCTC user account is limited to booking a maximum of 12 train tickets per calendar month. Linking and verifying your Aadhaar card on IRCTC increases your monthly booking quota to 24 tickets per month, provided at least one passenger on the booked PNR is also Aadhaar-verified.**
+
+- **Unverified Account Limit:** Maximum 12 tickets per month across all quotas.
+- **Aadhaar-Verified Account Limit:** Up to 24 tickets per month.
+- **Verification Requirement:** At least one passenger on the PNR must be verified in your IRCTC master list.
+
+---
+
+## What Are the Rules for Booking Multiple Tickets on the Same Day from One IRCTC Account?
+
+**A single IRCTC user account can book a maximum of 6 tickets per day across general quota and Tatkal quota combined. During peak morning Tatkal hours (10:00 AM to 12:00 PM), IRCTC restricts user logins to one active session and limits bookings to a maximum of 2 tickets per user IP address.**
+
+- **Daily Booking Cap:** Maximum 6 tickets per account per day.
+- **Tatkal Session Restriction:** 1 active login per user; 2 Tatkal tickets per IP between 10:00 AM and 12:00 PM.
+- **Master List Usage:** Save passenger profiles beforehand to complete booking before session timeouts.
+
+---
+
 ## IRCTC ടിക്കറ്റ് പരിധി FAQ
 
 IRCTC-യിൽ എത്ര ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാമെന്ന് സംബന്ധിച്ച ഏറ്റവും സാധാരണമായ ചോദ്യങ്ങൾ ഇവയാണ്.
@@ -139,4 +161,14 @@ IRCTC-യിൽ എത്ര ടിക്കറ്റുകൾ ബുക്ക�
 
 ### പ്രതിമാസ പരിധിയിൽ എത്ര Tatkal ടിക്കറ്റുകൾ ഉൾപ്പെടുന്നു?
 എല്ലാ Tatkal ടിക്കറ്റ് PNR-കളും നിങ്ങളുടെ 12 അല്ലെങ്കിൽ 24 ടിക്കറ്റുകളുടെ പ്രതിമാസ പരിധിയിൽ ഉൾപ്പെടുന്നു. കൂടാതെ, ഒരു അക്കൗണ്ടിൽ പ്രതിദിനം 2 Tatkal ടിക്കറ്റുകൾ മാത്രമേ ബുക്ക് ചെയ്യാനാകൂ.
+
+
+
+### Does the 24-ticket monthly IRCTC limit apply to Tatkal bookings as well?
+
+Yes, the 24-ticket monthly limit for Aadhaar-verified accounts applies to all ticket types combined, including Tatkal, Premium Tatkal, and General quotas.
+
+### Can multiple family members use one Aadhaar-verified IRCTC account for bookings?
+
+Yes, family members can be booked under one verified account, as long as at least one Aadhaar-verified passenger is included on bookings beyond the 12-ticket monthly limit.
 

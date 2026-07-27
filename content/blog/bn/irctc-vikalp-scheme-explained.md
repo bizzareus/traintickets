@@ -2,13 +2,15 @@
 title: "IRCTC বিকল্প স্কিম ২০২৬: নিয়ম, বিকল্প ট্রেন বরাদ্দ ও রিফান্ড"
 description: "IRCTC-এর Vikalp (ATAS) স্কিম WL যাত্রীদের নিশ্চিত বার্থসহ বিকল্প ট্রেনে সরিয়ে দেয়। এটি কীভাবে কাজ করে, কখন বাছবেন এবং সুযোগ বাড়ানোর হ্যাকস।"
 date: "2026-05-29"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - বিকল্প স্কিম
   - irctc
   - টিকিট বুকিং
   - অপেক্ষমাণ তালিকা
 ---
+
+> **Stuck on a Waitlisted Ticket?** Check alternate confirmed trains on [Smart Seats](/) or check vacant seats after chart preparation on [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 
@@ -123,6 +125,26 @@ IRCTC 2015 সালে বিকল্প স্কিম (অল্টার�
 
 ---
 
+## Does IRCTC Vikalp Guarantee a Confirmed Seat on the Alternate Train?
+
+**No, opting for IRCTC Vikalp does not guarantee a confirmed seat on an alternate train. Seat allocation depends entirely on vacancy availability in the selected alternate trains after chart preparation. If no berth opens up, your ticket remains on the original waitlist and is subject to standard refund rules.**
+
+- **Allocation Basis:** Depends on actual vacant seats after charting on alternate trains.
+- **Priority:** Vikalp passengers are allotted seats before fresh waitlisted bookings on alternate trains.
+- **No Extra Cost:** No extra fare is charged even if transferred to a higher-category train like Rajdhani or Vande Bharat.
+
+---
+
+## What Happens to Your Original PNR When Allotted a Seat Under Vikalp?
+
+**When a seat is allotted under the Vikalp scheme, your original booking is transferred to the alternate train and a new coach and berth number are assigned under the same PNR. Once allotted, you cannot travel on the original train, and standard cancellation fees apply if you cancel the new ticket.**
+
+- **PNR Continuity:** Same 10-digit PNR number is maintained for the new train booking.
+- **Boarding & Departure:** Boarding station and departure timings update to match the alternate train schedule.
+- **Cancellation Terms:** Cancelled Vikalp tickets follow standard cancellation charges for the alternate train class.
+
+---
+
 ## সাধারণ বুকিং প্রশ্ন (FAQ)
 
 ### বিকল্প গ্রহণ করলে কি নিশ্চিত সিট পাওয়া যায়?
@@ -181,4 +203,14 @@ IRCTC 2015 সালে বিকল্প স্কিম (অল্টার�
 
 ### বিকল্প সিট বরাদ্দের পর টিকিট বাতিল করলে কী হবে?
 একবার বরাদ্দ করা হলে, আপনার টিকিটকে নতুন ট্রেনে কনফার্মড হিসাবে বিবেচনা করা হয়।
+
+
+
+### Do you pay extra fare if Vikalp transfers you to a higher-class or higher-category train?
+
+No, no additional fare or difference in fare is charged if you are transferred to a higher train category or class under the Vikalp scheme.
+
+### Can you select specific seats or berth preferences for Vikalp alternate train bookings?
+
+No, seat and berth allocation under Vikalp is handled automatically by the system based on available vacancies.
 

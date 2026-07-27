@@ -2,7 +2,7 @@
 title: "IRCTC ప్రస్తుత అందుబాటు: చివరి నిమిషంలో కన్ఫర్మ్ సీటు పొందండి"
 description: "IRCTC ప్రస్తుత అందుబాటుతో చివరి నిమిషంలో పూర్తిగా కన్ఫర్మ్ సీటును ఎలా బుక్ చేయాలి: ఇది చార్ట్ తయారీ తర్వాత ఎప్పుడు తెరుస్తుంది, సాధారణ బుకింగ్‌కు ఎలా భిన్నం, మరియు చిట్కాలు."
 date: "2026-06-11"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - ప్రస్తుత అందుబాటు
   - ఖాళీ చార్ట్
@@ -16,6 +16,8 @@ tags:
 ---
 
 > **నిర్ధారిత చివరి నిమిషం సీటును కనుగొనండి:** చార్ట్ తయారైన తర్వాత, LastBerth యొక్క [Chart Vacancy కోచ్ మ్యాప్](/chart-vacancy) మీ ట్రైన్‌లో కోచ్-వారీగా ఏ బెర్త్‌లు ఖాళీగా ఉన్నాయో ఖచ్చితంగా చూపిస్తుంది — తద్వారా మీరు నిజమైన సీటుతో ప్రస్తుత అందుబాటు టిక్కెట్‌ను బుక్ చేయవచ్చు. ఇప్పటికే బుక్ చేశారా? దానిని [Smart Seats PNR status](/) లో ట్రాక్ చేయండి.
+
+> **Looking for Last-Minute Seats?** Check vacant seats after chart prep using [Chart Vacancy](/chart-vacancy) or check coach berth layouts on [Coach Journey Lookup](/seat-status).
 
 ## TL;DR
 
@@ -263,6 +265,25 @@ IRCTCలో ప్రతి ట్రైన్ మరియు విభాగ�
 
 ---
 
+## What is the Current Availability Booking Time Window for Day vs Night Trains?
+
+**The current availability booking time window for day trains opens 8 hours before departure (typically 8:00 AM for 4:00 PM departures). For night and early-morning trains (departing between 12:00 AM and 8:00 AM), current availability opens the previous evening between 8:00 PM and 11:00 PM upon chart preparation, closing 30 minutes before departure across all train types.**
+
+- **Day Trains (8 AM – 11 PM departure):** Chart prepares ~8 hours prior; booking remains open until 30 minutes before train departure.
+- **Overnight & Early Morning Trains (12 AM – 8 AM departure):** First chart is generated the previous evening (8 PM to 10 PM), providing a long overnight booking window.
+- **Intermediate Stations:** Current availability opens as soon as the first chart of the train originating station is finalized.
+
+---
+
+## How to Find Current Availability Seats on Intermediate Stations After Train Departure?
+
+**You can find current availability seats on intermediate stations after train departure by searching for vacant berths segment-by-segment on the IRCTC Chart Vacancy tool or LastBerth. When a passenger gets off early or cancels mid-route, the unallocated segment opens for current booking from intermediate stations until 30 minutes before arrival.**
+
+- **Segment-Wise Vacancy Scanning:** Check vacant berths between your origin and destination station pairs after the train leaves its first station.
+- **Boarding Point Adjustment:** If seats are vacant from a nearby major station along the route, you can book current availability from that station.
+
+---
+
 ## సాధారణ బుకింగ్ ప్రశ్నలు (FAQ)
 
 ### IRCTCలో ప్రస్తుత అందుబాటు అంటే ఏమిటి?
@@ -341,4 +362,14 @@ IRCTCలో ప్రస్తుత అందుబాటు అనేది �
 - [GNWL vs RLWL vs PQWL: వేచి జాబితా నిర్ధారణ అవకాశాలు](/blog/gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances)
 - [IRCTC auto upgradation: మీకు ఉచిత అప్‌గ్రేడ్ లభిస్తుందా?](/blog/irctc-auto-upgradation-rules-secrets)
 
+
+
+
+### Can you book current availability tickets after the train has left its originating station?
+
+Yes, you can book current availability tickets for intermediate stations up until 30 minutes before the train is scheduled to arrive at your specific boarding station.
+
+### What happens if a current availability ticket remains unbooked before train departure?
+
+Unbooked current availability berths are handed over to the onboard Train Ticket Examiner (TTE) to allocate to RAC passengers or unreserved ticket holders onboard.
 

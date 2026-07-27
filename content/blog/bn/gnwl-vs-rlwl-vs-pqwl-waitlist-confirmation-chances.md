@@ -2,7 +2,7 @@
 title: "GNWL বনাম RLWL বনাম PQWL: কোনটি দ্রুত নিশ্চিত হয়?"
 description: "GNWL প্রায়ই পরিষ্কার হয়, PQWL খুব কমই হয় — সংখ্যার চেয়ে আপনার অপেক্ষমাণ তালিকার প্রকার বেশি গুরুত্বপূর্ণ। বুক করার আগে GNWL, RLWL, PQWL, TQWL ও RSWL এর নিশ্চিতকরণের সম্ভাবনা তুলনা করুন।"
 date: "2026-05-29"
-updated: "2026-07-14"
+updated: "2026-07-27"
 tags:
   - অপেক্ষমাণ তালিকা
   - gnwl
@@ -14,6 +14,8 @@ tags:
 ---
 
 > **আপনার অপেক্ষমাণ তালিকা কি নিশ্চিত হবে?** [Smart Seats PNR স্ট্যাটাস](/) দিয়ে আপনার টিকিট ট্র্যাক করুন, এবং চার্ট প্রস্তুত হওয়ার পরে [Chart Vacancy কোচ ম্যাপ](/chart-vacancy) দিয়ে আপনার ট্রেনের প্রকৃত খালি বার্থ দেখুন — তারপর যেকোনো খালি আসন দখল করুন।
+
+> **Checking Waitlist Confirmation Odds?** Monitor your live PNR status on [Smart Seats](/) or locate vacant berths after chart preparation on [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 
@@ -245,3 +247,24 @@ RSWL কোটা ছোট এবং খুব কমই চলে। বেশ
 GNWL আপনাকে সেরা গতিশীলতা দেয়। RLWL আপনার নির্দিষ্ট স্টেশন জোড়ের উপর অত্যন্ত নির্ভরশীল। PQWL ধীরে চলে এবং প্রায়শই একটি শেষ রিসোর্ট। TQWL এবং RSWL এর নিশ্চিতকরণের সম্ভাবনা খুব সীমিত।
 
 আপনি যদি পিছনে বসে আপনার টিকিট পরিষ্কার হওয়ার আশা করেন, তবে পরীক্ষা করুন আপনি আসলে কোন ধরনের অপেক্ষমাণ তালিকায় আছেন। সেই একক তথ্যটি পরিবর্তন করে আপনি আজ ব্যাকআপ পরিকল্পনা শুরু করতে হবে কিনা বা অপেক্ষা করতে পারেন কিনা।
+
+## What is Remote Location Waitlist (RLWL) and Why Does It Clear Slower Than GNWL?
+
+**Remote Location Waitlist (RLWL) is issued for passengers booking tickets between important intermediate stations. It clears significantly slower than General Waitlist (GNWL) because RLWL relies strictly on cancellations within a small, dedicated intermediate station quota rather than the main train seat pool.**
+
+- **Dedicated Quota:** RLWL has a fixed, small pool of seats reserved for intermediate stations.
+- **Cancellation Dependence:** RLWL only moves when passengers on that exact intermediate route cancel.
+- **Confirmation Odds:** GNWL > RLWL > PQWL in priority.
+
+---
+
+## How Does Pooled Quota Waitlist (PQWL) Work for Intermediate Station Passengers?
+
+**Pooled Quota Waitlist (PQWL) is shared across multiple small intermediate stations that do not have dedicated quotas. PQWL has the lowest confirmation priority in Indian Railways, clearing only after GNWL and RLWL quotas are satisfied and when cancellations occur within that specific pooled group.**
+
+- **Shared Pool:** Combines short-distance intermediate station travel requests into one pool.
+- **Chart Prep Clearance:** Rarely clears to confirmed status unless massive cancellations occur across the entire train.
+- **Best Strategy:** Book from the originating station or use segment booking tools on LastBerth.
+
+---
+

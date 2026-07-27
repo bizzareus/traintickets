@@ -2,13 +2,15 @@
 title: "IRCTC विकल्प योजना 2026: नियम, वैकल्पिक ट्रेन आवंटन और रिफंड"
 description: "IRCTC की Vikalp (ATAS) योजना WL यात्रियों को कन्फर्म बर्थ वाली वैकल्पिक ट्रेन में शिफ्ट करती है। यह कैसे काम करती है, कब चुनें और चांस बढ़ाने के हैक्स।"
 date: "2026-05-29"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - विकल्प योजना
   - irctc
   - टिकट बुकिंग
   - वेटिंग लिस्ट
 ---
+
+> **Stuck on a Waitlisted Ticket?** Check alternate confirmed trains on [Smart Seats](/) or check vacant seats after chart preparation on [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR
 
@@ -123,6 +125,26 @@ IRCTC ने 2015 में विकल्प योजना (वैकल्�
 
 ---
 
+## Does IRCTC Vikalp Guarantee a Confirmed Seat on the Alternate Train?
+
+**No, opting for IRCTC Vikalp does not guarantee a confirmed seat on an alternate train. Seat allocation depends entirely on vacancy availability in the selected alternate trains after chart preparation. If no berth opens up, your ticket remains on the original waitlist and is subject to standard refund rules.**
+
+- **Allocation Basis:** Depends on actual vacant seats after charting on alternate trains.
+- **Priority:** Vikalp passengers are allotted seats before fresh waitlisted bookings on alternate trains.
+- **No Extra Cost:** No extra fare is charged even if transferred to a higher-category train like Rajdhani or Vande Bharat.
+
+---
+
+## What Happens to Your Original PNR When Allotted a Seat Under Vikalp?
+
+**When a seat is allotted under the Vikalp scheme, your original booking is transferred to the alternate train and a new coach and berth number are assigned under the same PNR. Once allotted, you cannot travel on the original train, and standard cancellation fees apply if you cancel the new ticket.**
+
+- **PNR Continuity:** Same 10-digit PNR number is maintained for the new train booking.
+- **Boarding & Departure:** Boarding station and departure timings update to match the alternate train schedule.
+- **Cancellation Terms:** Cancelled Vikalp tickets follow standard cancellation charges for the alternate train class.
+
+---
+
 ## सामान्य बुकिंग प्रश्न (FAQ)
 
 ### क्या विकल्प का चयन करने से पुष्टि की गई सीट की गारंटी मिलती है?
@@ -181,4 +203,14 @@ IRCTC ने 2015 में विकल्प योजना (वैकल्�
 
 ### विकल्प सीट आवंटन के बाद यदि मैं अपना टिकट रद्द कर दूं तो क्या होगा?
 एक बार आवंटित होने के बाद, आपके टिकट को नई ट्रेन में कन्फर्म माना जाता है। यदि आप रद्द करते हैं तो मानक कन्फर्म टिकट रद्दीकरण शुल्क लागू होते हैं।
+
+
+
+### Do you pay extra fare if Vikalp transfers you to a higher-class or higher-category train?
+
+No, no additional fare or difference in fare is charged if you are transferred to a higher train category or class under the Vikalp scheme.
+
+### Can you select specific seats or berth preferences for Vikalp alternate train bookings?
+
+No, seat and berth allocation under Vikalp is handled automatically by the system based on available vacancies.
 

@@ -93,12 +93,14 @@ Site context: 1K clk / **143K impr** / 0.70% CTR / pos 6.9 (28d ending 07-11). M
   - irctc-app-vs-website-tatkal-booking (5,339 impr / 1.16% CTR / pos 6.1 → title "IRCTC App vs Website Tatkal Booking: Speed & OTP Rules 2026" + 2 H2s + 2 FAQs). Target ≥1.6% CTR, pos within ±1.5.
 
 
-## Addendum — 2026-07-27 batch (signal-driven triage; re-check on the same dates)
-- **CTR retitle + EXPAND + CTA:** station-platform-navigation-tips-last-minute-boarders (133 impr / 0.00% CTR / pos 7.0 → title "How to Find Your Train Platform & Coach Position Instantly" + top CTA + 3 H2s + 2 FAQs). Target ≥0.8% CTR, pos ≤ 5.0.
-- **EXPAND(ranking)+CTA(funnel):** jan-vishwas-act-railway-rules-decriminalization-penalties (599 impr / 3.67% CTR / pos 6.1, + top CTA + 2 H2s + 2 FAQs), connecting-train-bookings-irctc-link-pnr-guide (483 impr / 0.21% CTR / pos 7.1, + top CTA + 2 H2s + 2 FAQs), rac-vs-wl-explained (535 impr / 0.00% CTR / pos 9.5, + 2 H2s + 2 FAQs), toy-train-routes-booking-india-guide (490 impr / 0.61% CTR / pos 7.4, + top CTA + 2 H2s + 2 FAQs).
+## Addendum — 2026-07-27 batch #2 (signal-driven triage; re-check on the same dates)
+- **EXPAND(ranking)+CTA(funnel):** irctc-current-availability-explained (25,071 impr / 0.79% CTR / pos 6.7, #1 impr post, + top CTA + 2 H2s + 2 FAQs), irctc-ticket-booking-limits-aadhaar-verification (11,804 impr / 0.40% CTR / pos 5.9, #2 impr post, + top CTA + 2 H2s + 2 FAQs), irctc-vikalp-scheme-explained (2,383 impr / 0.08% CTR severe bleeder / pos 8.4, + top CTA + 2 H2s + 2 FAQs), gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances (1,252 impr / 0.16% CTR severe bleeder / pos 8.7, + top CTA + 2 H2s + 2 FAQs).
+- **CTR retitle + REFRESH + CTA:** irctc-cancellation-refund-rules-tdr-guide (748 impr / 0.13% CTR / pos 9.0 → frontmatter title fix "IRCTC Cancellation & Refund Rules 2026: TDR & Refund Timelines" + top CTA + 2 H2s + 2 FAQs). Target ≥0.5% CTR, pos within ±1.5.
+- **CTR retitle + EXPAND + CTA:** ultimate-tatkal-booking-guide-speed-hacks (78 impr / 0.00% CTR / pos 7.7 → title "Tatkal Booking Speed Hacks 2026: AC & Non-AC Master List Rules" + top CTA + 2 H2s + 2 FAQs). Target ≥0.8% CTR, pos ≤ 5.5.
 
 ## Check-back dates
 - **2026-08-03 (~4 wks):** early read. Confirm new titles are live in SERP (spot-check). First CTR/position movement in GSC. PostHog: CTA clicks flowing?
 - **2026-09-01 (~8 wks):** full read. CTR delta per page vs baseline table above; decide keep / iterate / revert per guardrail. PostHog funnel numbers for the 6 CTA pages.
 
 To re-measure: get a fresh GSC 28-day Pages export (or live GSC via connected Chrome) and diff CTR/position against the baseline table; pull PostHog for CTA-link and /chart-vacancy referral events.
+

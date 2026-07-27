@@ -2,7 +2,7 @@
 title: "IRCTC வரம்பு: மாதம் 12 டிக்கெட், Aadhaar உடன் 24 — 2026 விதிகள்"
 description: "IRCTC-ல் மாதம் 12 டிக்கெட்டுகள், அல்லது Aadhaar சரிபார்ப்புடன் 24 பதிவு செய்யலாம். 2026-க்கான மாதாந்திர, தினசரி, பதிவு மற்றும் Tatkal வரம்புகளின் முழு விவரம்."
 date: "2026-06-22"
-updated: "2026-07-22"
+updated: "2026-07-27"
 tags:
   - ரயில் பதிவு
   - irctc
@@ -12,6 +12,8 @@ tags:
 > **ஒவ்வொரு பதிவையும் பயனுள்ளதாக்குங்கள்:** மாதம் 12–24 டிக்கெட்டுகள் மட்டுமே இருப்பதால், உறுதிப்படுத்தப்படாத ரயிலில் ஒரு இடத்தை வீணாக்க வேண்டாம். [Smart Seats PNR status](/) இல் நேரடி இருக்கை கிடைப்பு மற்றும் உறுதிப்படுத்தல் வாய்ப்புகளைச் சரிபார்க்கவும், மேலும் சார்ட் தயாரான பிறகு காலியாகும் பெர்த்துகளைப் பெற [Chart Vacancy coach map](/chart-vacancy) ஐப் பயன்படுத்தவும்.
 
 நீங்கள் பதிவு செய்ய தயாராக உங்கள் திரையில் அமர்ந்திருக்கிறீர்கள், அப்போது ஒரு எச்சரிக்கை தோன்றுகிறது: "மாதாந்திர பதிவு வரம்பு அடைந்தது." இந்திய ரயில்வே, குவிப்பு தடுக்கும் வகையில் தரவிருப்ப கணக்குகளை கட்டுப்படுத்துகிறது, ஆனால் உங்கள் இடங்களை இரட்டிப்பாக்க ஒரு எளிய வழியை வழங்குகிறது. மாதாந்திர, தினசரி மற்றும் அமர்வு-சிறப்பு டிக்கெட் வரம்புகளின் முழு விவரங்கள், உங்கள் ஆதார் அட்டை இணைக்கும் படிகள் உடன் இங்கே உள்ளன.
+
+> **Need Quick Ticket Booking?** Search confirmed train availability and track PNR confirmation on [Smart Seats](/) or find coach seats on [Coach Journey Lookup](/seat-status).
 
 ## IRCTC-ல் ஒரு மாதத்தில் எவ்வளவு டிக்கெட்டுகள் பதிவு செய்யலாம்?
 
@@ -98,6 +100,26 @@ tags:
 
 ஒரு குழுவிற்கான திறந்த இடங்களைப் பெறுவதில் நீங்கள் சிரமம் அனுபவிக்கிறீர்களானால், LastBerth-ன் **Finding Smart Seats** அம்சம், ஒரு தனி நேரடி இடம் கிடைக்காத போது, பல்வேறு கோச்சுகள் அல்லது பகுதிகளில் இடங்களைத் தேடும். உங்கள் டிக்கெட்டுகள் காத்திருப்பில் இருந்தால், **PNR நிலை தேடல்** கருவி உறுதிப்படுத்தல் வாய்ப்புகளை காட்டுகிறது, மற்றும் **இட நிலை கோச்சு பயணம் தேடல்** ரயிலில் காலியாக உள்ள இடங்களை கண்டறிகிறது.
 
+## What is the Difference Between Unverified and Aadhaar-Verified IRCTC Account Booking Limits?
+
+**An unverified IRCTC user account is limited to booking a maximum of 12 train tickets per calendar month. Linking and verifying your Aadhaar card on IRCTC increases your monthly booking quota to 24 tickets per month, provided at least one passenger on the booked PNR is also Aadhaar-verified.**
+
+- **Unverified Account Limit:** Maximum 12 tickets per month across all quotas.
+- **Aadhaar-Verified Account Limit:** Up to 24 tickets per month.
+- **Verification Requirement:** At least one passenger on the PNR must be verified in your IRCTC master list.
+
+---
+
+## What Are the Rules for Booking Multiple Tickets on the Same Day from One IRCTC Account?
+
+**A single IRCTC user account can book a maximum of 6 tickets per day across general quota and Tatkal quota combined. During peak morning Tatkal hours (10:00 AM to 12:00 PM), IRCTC restricts user logins to one active session and limits bookings to a maximum of 2 tickets per user IP address.**
+
+- **Daily Booking Cap:** Maximum 6 tickets per account per day.
+- **Tatkal Session Restriction:** 1 active login per user; 2 Tatkal tickets per IP between 10:00 AM and 12:00 PM.
+- **Master List Usage:** Save passenger profiles beforehand to complete booking before session timeouts.
+
+---
+
 ## IRCTC டிக்கெட் வரம்பு FAQ
 
 IRCTC-ல் நீங்கள் எவ்வளவு டிக்கெட்டுகள் பதிவு செய்யலாம் என்பதற்கான பொதுவான கேள்விகள் இங்கே உள்ளன.
@@ -139,4 +161,14 @@ IRCTC-ல் நீங்கள் எவ்வளவு டிக்கெட�
 
 ### மாத வரம்பில் எத்தனை Tatkal டிக்கெட்டுகள் கணக்கிடப்படும்?
 அனைத்து Tatkal டிக்கெட் PNR களும் உங்கள் மாத வரம்பான 12 அல்லது 24 டிக்கெட்டுகளில் கணக்கிடப்படும். மேலும், ஒரு கணக்கிற்கு நாளொன்றுக்கு 2 Tatkal டிக்கெட்டுகள் மட்டுமே பெற முடியும்.
+
+
+
+### Does the 24-ticket monthly IRCTC limit apply to Tatkal bookings as well?
+
+Yes, the 24-ticket monthly limit for Aadhaar-verified accounts applies to all ticket types combined, including Tatkal, Premium Tatkal, and General quotas.
+
+### Can multiple family members use one Aadhaar-verified IRCTC account for bookings?
+
+Yes, family members can be booked under one verified account, as long as at least one Aadhaar-verified passenger is included on bookings beyond the 12-ticket monthly limit.
 
