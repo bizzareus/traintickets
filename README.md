@@ -1,79 +1,139 @@
-# RailChart – Phase 1
+# 🚆 LastBerth (RailChart)
 
-Chart-based availability alerts for Indian Railways. Get instant alerts when seats open at chart time.
+> **Never miss a vacant berth after chart preparation.** Real-time Indian Railways seat availability tracking, chart preparation timelines, PNR status insights, and official IRCTC food menu guides.
 
-- **Frontend:** Next.js 14 (App Router) + Tailwind CSS
-- **Backend:** NestJS + Prisma
-- **Database:** PostgreSQL (Supabase)
+[![Website](https://img.shields.io/badge/Website-lastberth.com-0284c7?style=for-the-badge&logo=googlechrome)](https://lastberth.com)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org)
+[![NestJS](https://img.shields.io/badge/NestJS-Backend-E0234E?style=for-the-badge&logo=nestjs)](https://nestjs.com)
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge&logo=prisma)](https://prisma.io)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?style=for-the-badge&logo=postgresql)](https://postgresql.org)
 
-## Setup
+---
 
-### 1. Supabase (PostgreSQL)
+## 🌟 Key Features
 
-1. Create a project at [supabase.com](https://supabase.com).
-2. In **Project Settings → Database**, copy the **Connection string (URI)**.
-3. Use the **Session mode** (port 5432) URL for Prisma migrations; you can use **Transaction mode** (port 6543 with `?pgbouncer=true`) for the app if you prefer connection pooling.
+LastBerth brings transparency to Indian Railways train journeys by transforming complex raw IRCTC data into simple, actionable tools for passengers:
 
-### 2. Backend (NestJS)
+### 1. 📊 Real-Time Chart Vacancy Tracker & Coach Map
+* **Visual Coach Layout**: View exact free berths (Lower, Middle, Upper, Side Lower, Side Upper) coach-by-coach after chart preparation.
+* **Current Reservation Seat Finder**: Spot unallotted quota berths and last-minute cancellations available for instant booking.
+
+### 2. ⏱️ IRCTC Chart Preparation Time Predictor
+* **1st Chart Timeline (4 Hours Prior / 8 PM Rule)**: Calculate exact 1st chart preparation times based on departure schedule (e.g. 8 PM previous evening for morning departures up to 14:00).
+* **2nd Chart Timeline (30 Minutes Prior)**: Track 2nd chart preparation window when final passenger lists are handed to TTEs.
+* **Station-Wise Chart Ingestion**: Real-time station chart status tracking for intermediate stations along train routes.
+
+### 3. 🍱 IRCTC Railway Food Menu & Standard Meal Price Guide
+* **Official Approved Rates**: Detailed price lookup for IRCTC standard meals (Veg Thali, Non-Veg Thali, Breakfast, Standard Tea/Coffee).
+* **Pantry Car & Station Menu Guide**: Price transparency for passengers to avoid overcharging on express & mail trains.
+
+### 4. 🎫 PNR Status & Waitlist Confirmation Analytics
+* **Confirmation Probability**: Data-backed insights for GNWL, PQWL, and RLWL tickets.
+* **Instant Availability Alerts**: Receive push, SMS, or WhatsApp alerts the moment a vacant berth opens up at chart time.
+
+### 5. 🗺️ Interactive Train Routes & Station Timings
+* Complete route schedules, arrival/departure delays, platform numbers, and distance maps for all Indian Railways trains.
+
+### 📖 Passenger Glossary & Educational Guides
+* Comprehensive breakdown of IRCTC quotas (Tatkal, Premium Tatkal, Ladies Quota, Senior Citizen Quota) and refund rules.
+
+---
+
+## 🛠️ Tech Stack & Monorepo Architecture
+
+This monorepo consists of a Next.js frontend and a NestJS backend powered by PostgreSQL & Prisma ORM:
+
+```
+traintickets/
+├── app/                  # Next.js (App Router) frontend (Port 3010)
+│   ├── chart-times/      # Chart preparation timing calculator pages
+│   ├── irctc-train-food/ # Food menu & price transparency guides
+│   ├── pnr-status/       # PNR prediction & status lookup
+│   ├── routes/           # Interactive train route schedules
+│   └── trains/           # Chart vacancy maps & seat availability
+├── backend/              # NestJS backend API & background workers (Port 3009)
+│   ├── prisma/           # PostgreSQL schema & database migrations
+│   └── src/              # Ingestion engines, monitoring crons & webhooks
+└── public/               # Static assets & GitHub Pages micro-utilities
+```
+
+---
+
+## ⚙️ Quick Start Setup
+
+### Prerequisites
+* Node.js 22.x
+* PostgreSQL 16 local instance (`railchart` database)
+
+### 1. Database & Backend Setup
 
 ```bash
 cd backend
+
+# Create environment file
 cp .env.example .env
-# Edit .env: set DATABASE_URL (Supabase URI), JWT_SECRET, and optional API keys
+# Ensure DATABASE_URL="postgresql://postgres:postgres@localhost:5432/railchart"
+
+# Install dependencies and run migrations
 npm install
 npm run db:migrate
 npm run db:seed
+
+# Start backend dev server
 npm run start:dev
 ```
+*Backend API runs at `http://localhost:3009`.*
 
-API runs at **http://localhost:3001**. The chart cron runs every minute inside the NestJS process.
-
-### 3. Frontend (Next.js)
+### 2. Frontend Setup
 
 ```bash
-# From repo root
-cp .env.example .env.local
-# Set NEXT_PUBLIC_API_URL=http://localhost:3001 and NEXT_PUBLIC_APP_URL=http://localhost:3000
+# From repository root
 npm install
-npm run dev
+
+# Start Next.js frontend dev server
+npm run dev:web
 ```
+*Frontend opens at `http://localhost:3010`.*
 
-Open **http://localhost:3000**.
+---
 
-## Env vars
+## 🔑 Environment Variables
 
-| Var | Where | Description |
-|-----|--------|-------------|
-| `DATABASE_URL` | Backend | Supabase PostgreSQL connection string |
-| `JWT_SECRET` | Backend | Secret for JWT signing |
-| `CHART_TIME_INGESTION_PASSWORD` | Backend | Password to unlock `/admin/*` (verified via `POST /api/chart-time-ingestion/verify`) |
-| `API_URL` | Backend | Backend base URL (for webhook callback) |
-| `FRONTEND_URL` | Backend | Frontend origin (CORS) |
-| `NEXT_PUBLIC_API_URL` | Frontend | Backend API URL |
-| `NEXT_PUBLIC_APP_URL` | Frontend | App URL (used in alert deep links) |
-| `BROWSER_USE_*` | Backend | Browser Use API (availability checks) |
-| `WHATSAPP_API_KEY`, `CALL_API_KEY` | Backend | Alert channels (optional) |
+| Variable | Scope | Description |
+|---|---|---|
+| `DATABASE_URL` | Backend | PostgreSQL connection string (`postgresql://postgres:postgres@localhost:5432/railchart`) |
+| `JWT_SECRET` | Backend | Secret for authentication tokens |
+| `CHART_TIME_INGESTION_PASSWORD` | Backend | Password to unlock `/admin/*` chart ingestion tools |
+| `API_URL` | Backend | Backend base origin (`http://localhost:3009`) |
+| `FRONTEND_URL` | Backend | Frontend base origin (`http://localhost:3010`) |
+| `NEXT_PUBLIC_API_URL` | Frontend | Public backend API URL |
+| `NEXT_PUBLIC_APP_URL` | Frontend | Public app URL |
 
-## Scripts
+---
+
+## 📜 Key NPM Scripts
 
 | Command | Description |
-|--------|-------------|
-| `npm run dev` | Start Next.js frontend |
-| `npm run dev:api` | Start NestJS backend (watch) |
-| `npm run db:migrate` | Run Prisma migrations (from backend) |
-| `npm run db:seed` | Seed trains and chart rules (from backend) |
-| `npm run db:studio` | Open Prisma Studio (from backend) |
+|---|---|
+| `npm run dev` | Run both frontend (3010) and backend (3009) concurrently |
+| `npm run dev:web` | Start Next.js web application only |
+| `npm run dev:api` | Start NestJS API server only |
+| `npm run db:migrate` | Apply Prisma database migrations |
+| `npm run db:seed` | Seed initial train database and chart rules |
+| `npm run db:studio` | Open Prisma Studio database UI |
+| `npm run test:e2e` | Run Playwright end-to-end test suite |
 
-## Phase 1 flow
+---
 
-1. User searches route (from/to/date) and clicks **Monitor Availability**.
-2. User selects train, class, station and clicks **Get Instant Alert** → creates a MonitoringRequest and ChartEventInstances.
-3. Cron (every minute in NestJS) finds due ChartEventInstances, claims them via DB, and triggers Browser Use for each MonitoringRequest.
-4. Webhook receives result: if `seat_available`, alerts are sent and request marked completed; else expired.
+## 🔐 Admin Ingestion Tools
 
-## Admin chart-time ingestion
+- Admin routes under `/admin/chart-time-ingestion` require password unlocking using `CHART_TIME_INGESTION_PASSWORD`.
+- Ingestion fetches station composition and chart finalization timestamps directly to populate real-time vacancy maps.
 
-- All `/admin/*` routes show a password screen until you enter `CHART_TIME_INGESTION_PASSWORD` (verified via `POST /api/chart-time-ingestion/verify`). The browser remembers unlock for that tab until you click **Lock admin** or close the tab.
-- Open `/admin/chart-time-ingestion` after unlocking.
-- Enter train number and journey date (`YYYY-MM-DD`) to run `POST /api/chart-time-ingestion/run` (no second password on that form).
-- The backend loops schedule stations in order, calls IRCTC `trainComposition` for each station, and persists chart times into `TrainStationChartTime` using existing IRCTC persistence logic.
+---
+
+## 🌐 Live Product & Communities
+
+* **Official Website**: [lastberth.com](https://lastberth.com)
+* **Medium Blog**: [Medium @kartik.arora1508](https://medium.com/@kartik.arora1508)
+* **License**: Proprietary / All rights reserved.

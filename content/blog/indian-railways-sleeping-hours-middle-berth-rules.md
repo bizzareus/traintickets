@@ -9,6 +9,7 @@ tags:
   - sleeping hours
   - middle berth rules
   - passenger rights
+---
 > **Planning overnight train travel?** Find confirmed seats with [Smart Seats](/) or check coach berth layout and seat status using [Coach Journey Lookup](/seat-status).
 
 ## TL;DR
@@ -17,7 +18,6 @@ tags:
 - **Daytime Rules:** Outside this window (6:00 AM to 10:00 PM), the middle berth must remain folded down, and the lower berth serves as a shared seating space for lower, middle, and upper berth passengers.
 - **Disputes:** If a passenger refuses to follow these rules, you can resolve the issue through the on-duty Ticket Examiner (TTE) or file a complaint on the RailMadad portal.
 
----
 
 Travel in Indian Railways is as much about the social experience as it is about reaching your destination. However, when traveling overnight in Sleeper (SL) or AC Tier classes, one of the most common flashpoints among passengers is berth sharing—specifically regarding the middle berth. 
 

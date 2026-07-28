@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>IRCTC Chart Preparation Time Calculator & Seat Vacancy Checker | LastBerth</title>
+    <meta name="title" content="IRCTC Chart Preparation Time Calculator & Seat Vacancy Checker | LastBerth">
+    <meta name="description" content="Calculate exact 1st and 2nd train chart preparation times for Indian Railways. Find vacant berths and current reservation seat availability on LastBerth.">
+    <meta name="keywords" content="IRCTC chart preparation time, 1st chart timing, 2nd chart timing, vacant berth tracker, current reservation availability, Indian Railways waitlist confirmation">
+    <link rel="canonical" href="https://lastberth.com/tools/chart-calculator" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lastberth.com/tools/chart-calculator">
+    <meta property="og:title" content="IRCTC Chart Preparation Time Calculator | LastBerth">
+    <meta property="og:description" content="Calculate exact 1st and 2nd chart preparation times for Indian Railways trains and find vacant seats instantly.">
+    <meta property="og:image" content="https://lastberth.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="IRCTC Chart Preparation Time Calculator | LastBerth">
+    <meta property="twitter:description" content="Calculate 1st & 2nd chart timings for Indian Railways and track vacant berths post chart preparation.">
+
+    <!-- Google Fonts & Tailwind CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0265d6',
+                            700: '#034ea2',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "IRCTC Chart Preparation Time Calculator",
+      "url": "https://lastberth.com/tools/chart-calculator",
+      "description": "Calculate exact 1st and 2nd chart preparation times for Indian Railways trains.",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "All",
+      "author": {
+        "@type": "Organization",
+        "name": "LastBerth",
+        "url": "https://lastberth.com"
+      }
+    }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="https://lastberth.com" class="flex items-center space-x-3 text-white font-bold text-xl tracking-tight hover:opacity-90 transition">
+                <span class="bg-gradient-to-r from-blue-500 to-teal-400 text-transparent bg-clip-text text-2xl">⚡ LastBerth</span>
+                <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-medium">Free Tool</span>
+            </a>
+            <a href="https://lastberth.com" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg shadow-blue-600/20 transition duration-200">
+                Open LastBerth App →
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Hero & Calculator Section -->
+    <main class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 flex-grow">
+        
+        <!-- Hero Header -->
+        <div class="text-center space-y-4 mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/60 text-teal-400 text-xs font-semibold uppercase tracking-wider">
+                <span>🚆 Official IRCTC Chart Rule Calculator</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+                IRCTC Chart Preparation <br class="hidden sm:inline" />
+                <span class="bg-gradient-to-r from-blue-400 via-teal-300 to-emerald-400 text-transparent bg-clip-text">Time Calculator</span>
+            </h1>
+            <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
+                Find out the exact minute the 1st and 2nd charts are prepared for your train. Track vacant berths and book last-minute seats via Current Reservation.
+            </p>
+        </div>
+
+        <!-- Calculator Card -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-blue-950/40 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-60 h-60 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <form id="calcForm" onsubmit="calculateChartTime(event)" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    
+                    <!-- Train Departure Date -->
+                    <div>
+                        <label for="depDate" class="block text-sm font-medium text-slate-300 mb-2">Train Departure Date</label>
+                        <input type="date" id="depDate" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                    </div>
+
+                    <!-- Train Departure Time -->
+                    <div>
+                        <label for="depTime" class="block text-sm font-medium text-slate-300 mb-2">Departure Time (From Origin Station)</label>
+                        <input type="time" id="depTime" value="16:00" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                    </div>
+
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-blue-600/25 text-base transition duration-200 flex items-center justify-center space-x-2">
+                    <span>⚡ Calculate Chart Timings</span>
+                </button>
+            </form>
+
+            <!-- Results Output Box -->
+            <div id="resultsBox" class="mt-8 pt-8 border-t border-slate-800 hidden space-y-6">
+                
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <span>⏱️ Estimated Chart Preparation Timelines</span>
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    
+                    <!-- 1st Chart Box -->
+                    <div class="bg-slate-950/80 border border-blue-500/30 rounded-xl p-5 relative">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-md border border-blue-500/20">1st Chart Preparation</span>
+                            <span class="text-xs text-slate-400">4 Hours Prior</span>
+                        </div>
+                        <div id="chart1Time" class="text-2xl font-extrabold text-white mt-2">--:--</div>
+                        <p id="chart1Note" class="text-xs text-slate-400 mt-2">Vacant seats move to Current Reservation right after 1st chart.</p>
+                    </div>
+
+                    <!-- 2nd Chart Box -->
+                    <div class="bg-slate-950/80 border border-teal-500/30 rounded-xl p-5 relative">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-md border border-teal-500/20">2nd Chart Preparation</span>
+                            <span class="text-xs text-slate-400">30 Mins Prior</span>
+                        </div>
+                        <div id="chart2Time" class="text-2xl font-extrabold text-white mt-2">--:--</div>
+                        <p id="chart2Note" class="text-xs text-slate-400 mt-2">Final chart handed over to TTE. Booking closes.</p>
+                    </div>
+
+                </div>
+
+                <!-- CTA Banner inside Calculator -->
+                <div class="bg-gradient-to-r from-blue-900/40 to-slate-900 border border-blue-500/30 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <div class="text-sm font-bold text-white">Want to see exact vacant berths after chart prep?</div>
+                        <div class="text-xs text-slate-400">LastBerth shows coach-wise vacant seats with live alerts.</div>
+                    </div>
+                    <a id="searchBtn" href="https://lastberth.com" target="_blank" rel="noopener" class="whitespace-nowrap bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm transition">
+                        Check Vacant Seats Now →
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Train Search Box -->
+        <div class="mt-12 bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8">
+            <h2 class="text-xl font-bold text-white mb-2">🔍 Search Any Train on LastBerth</h2>
+            <p class="text-slate-400 text-sm mb-6">Enter train number or name to view live chart vacancy status & seat availability maps.</p>
+            
+            <form action="https://lastberth.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-3">
+                <input type="text" name="q" placeholder="Enter Train Number (e.g. 12951, 22436, Rajdhani)..." required class="flex-grow bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl text-sm whitespace-nowrap transition">
+                    Search LastBerth →
+                </button>
+            </form>
+        </div>
+
+        <!-- SEO Content & FAQ Section -->
+        <section class="mt-16 space-y-8 text-slate-300">
+            <div class="border-b border-slate-800 pb-4">
+                <h2 class="text-2xl font-bold text-white">Understanding IRCTC Chart Preparation Rules</h2>
+                <p class="text-slate-400 text-sm mt-1">Official guidelines for Indian Railways 1st Chart and 2nd Chart timelines.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-900/50 border border-slate-800/80 rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-2">📌 1st Chart Preparation Rule</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        For trains departing between <strong>00:00 and 14:00</strong>, the first reservation chart is usually prepared at <strong>08:00 PM (20:00) on the previous evening</strong>. For trains departing after <strong>14:00</strong>, the first chart is prepared at least <strong>4 hours prior to departure</strong> from the origin station.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900/50 border border-slate-800/80 rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-2">⏱️ 2nd Chart Preparation Rule</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        The second and final reservation chart is prepared <strong>30 minutes before scheduled departure</strong> from the train's originating station. Once the 2nd chart is finalized, internet booking closes and final lists are handed to TTEs.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="space-y-4 pt-6">
+                <h3 class="text-xl font-bold text-white">Frequently Asked Questions</h3>
+
+                <details class="bg-slate-900 border border-slate-800 rounded-xl p-4 cursor-pointer group">
+                    <summary class="font-semibold text-white group-hover:text-blue-400 transition">How to book vacant berths after 1st chart preparation?</summary>
+                    <p class="text-sm text-slate-400 mt-3 leading-relaxed">
+                        After the 1st chart is prepared, all unallotted quota seats and cancelled berths become available under <strong>Current Reservation</strong>. You can book these online on IRCTC or via the <a href="https://lastberth.com" class="text-blue-400 underline">LastBerth App</a> at a discounted rate until the 2nd chart is prepared.
+                    </p>
+                </details>
+
+                <details class="bg-slate-900 border border-slate-800 rounded-xl p-4 cursor-pointer group">
+                    <summary class="font-semibold text-white group-hover:text-blue-400 transition">Can waitlisted tickets get confirmed in 2nd chart?</summary>
+                    <p class="text-sm text-slate-400 mt-3 leading-relaxed">
+                        Yes! If passengers cancel their confirmed tickets between the 1st chart and 2nd chart, waitlisted passengers or current reservation buyers get allotted those berths during the 2nd chart finalization.
+                    </p>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900/50 py-8 mt-16">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500 space-y-2">
+            <p>© 2026 LastBerth. Powered by real-time Indian Railways chart analysis.</p>
+            <p class="space-x-4">
+                <a href="https://lastberth.com" class="hover:text-slate-300">Home</a>
+                <span>•</span>
+                <a href="https://lastberth.com/privacy" class="hover:text-slate-300">Privacy Policy</a>
+                <span>•</span>
+                <a href="https://medium.com/@kartik.arora1508" class="hover:text-slate-300">Medium Blog</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Calculator Logic Script -->
+    <script>
+        // Set default date to today
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('depDate').value = today;
+            calculateChartTime(new Event('submit'));
+        });
+
+        function calculateChartTime(e) {
+            if(e) e.preventDefault();
+
+            const dateInput = document.getElementById('depDate').value;
+            const timeInput = document.getElementById('depTime').value;
+
+            if(!dateInput || !timeInput) return;
+
+            const departureDateTime = new Date(`${dateInput}T${timeInput}`);
+            const depHour = departureDateTime.getHours();
+
+            let chart1DateTime = new Date(departureDateTime);
+
+            // IRCTC Rule logic:
+            // If departing between 00:00 and 14:00 -> 1st chart is 8:00 PM (20:00) previous day
+            if (depHour < 14) {
+                chart1DateTime.setDate(chart1DateTime.getDate() - 1);
+                chart1DateTime.setHours(20, 0, 0, 0);
+            } else {
+                // Otherwise 4 hours before departure
+                chart1DateTime.setHours(chart1DateTime.getHours() - 4);
+            }
+
+            // 2nd Chart: 30 minutes before departure
+            let chart2DateTime = new Date(departureDateTime);
+            chart2DateTime.setMinutes(chart2DateTime.getMinutes() - 30);
+
+            // Format dates neatly
+            const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            
+            document.getElementById('chart1Time').innerText = chart1DateTime.toLocaleDateString('en-IN', options);
+            document.getElementById('chart2Time').innerText = chart2DateTime.toLocaleDateString('en-IN', options);
+
+            document.getElementById('resultsBox').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
