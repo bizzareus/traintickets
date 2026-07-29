@@ -2,7 +2,7 @@
 title: "IRCTC Ticket Booking Timings: Maintenance Hours & Rules"
 description: "A complete guide on IRCTC booking timings, Tatkal opening hours, night maintenance window shutdown (11:45 PM to 12:20 AM), and current availability times."
 date: "2026-06-23"
-updated: "2026-07-27"
+updated: "2026-07-28"
 tags:
   - train booking
   - irctc
@@ -57,7 +57,7 @@ Here are the key timings and rules for Tatkal bookings:
 
 | Quota / Class | Opening Time (IST) | Days in Advance | Refund Rules |
 | :--- | :--- | :--- | :--- |
-| **AC Classes (1A, 2A, 3A, CC)** | 10:00 AM | 1 Day | No refund on confirmed tickets |
+| **AC Classes (2A, 3A, 3E, CC)** | 10:00 AM | 1 Day | No refund on confirmed tickets |
 | **Non-AC Classes (SL, 2S)** | 11:00 AM | 1 Day | No refund on confirmed tickets |
 | **Premium Tatkal (AC & Non-AC)** | Same as Tatkal | 1 Day | Dynamic pricing applies; no refund |
 
@@ -117,4 +117,4 @@ Current availability booking closes exactly 30 minutes before the train's schedu
 No, ticketing services are shut down from 11:45 PM to 12:20 AM for daily system maintenance and data backup.
 
 ### What time does Current Availability ticket booking close?
-Current Availability ticket booking closes 5 to 15 minutes before the scheduled departure of the train from your station.
+Current Availability ticket booking closes 30 minutes before the scheduled departure of the train from your station.
