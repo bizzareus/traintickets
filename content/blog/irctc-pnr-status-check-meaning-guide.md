@@ -187,4 +187,3 @@ Indian Railways rules mandate that the first reservation chart is generated 4 ho
 
 ### Can PNR status change after boarding the train?
 Yes, if on-board passengers fail to turn up, TTEs allocate vacant berths to RAC or waitlisted passengers during the journey.
-

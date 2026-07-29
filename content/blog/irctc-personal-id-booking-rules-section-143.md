@@ -151,4 +151,3 @@ A current available ticket is a confirmed seat that goes on sale after chart pre
 ### How do I check if a PNR booked for my friend is confirmed?
 
 You can enter the 10-digit PNR number on the official IRCTC site or use LastBerth's PNR tool to check the current booking status, coach details, and confirmation chances.
-

@@ -2,7 +2,7 @@
 title: "Indian Railways Two-Stop Rule: Missed Train Rules & Facts"
 description: "Missed your train at the boarding station? Learn about the Indian Railways two-stop rule, TTE seat reallocation rules, and how to file a TDR for refund."
 date: "2026-06-25"
-updated: "2026-07-14"
+updated: "2026-07-29"
 tags:
   - train booking
   - irctc
@@ -99,4 +99,4 @@ Yes, with the introduction of digital Handheld Terminals (HHTs), the TTE can mar
 No, you cannot travel on another train using a ticket booked for a missed train. A ticket is valid only for the specific train, date, and class for which it was purchased. Boarding another train with it will be treated as traveling without a ticket, and you will be fined.
 
 ### How do I change my boarding station last minute?
-You can change your boarding station online through the IRCTC app or website up to 24 hours before the train's scheduled departure from its originating station. For last-minute changes, Indian Railways has introduced rules allowing boarding point updates up to 30 minutes before train departure (before chart preparation) for confirmed tickets.
+You can change your boarding station online through the IRCTC app or website at least 24 hours before the scheduled departure of the train from its originating station.

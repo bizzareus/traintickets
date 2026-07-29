@@ -198,5 +198,3 @@ A maximum of 6 passengers can be booked on a single General quota PNR, and a max
 
 ### Do cancelled tickets count towards your monthly IRCTC booking limit?
 Yes, all generated PNRs count towards your monthly 12 or 24 ticket ceiling regardless of whether the ticket is later cancelled.
-
-

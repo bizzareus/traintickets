@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Ticket Booking Timings: Maintenance Hours & Rules"
-description: "A complete guide on IRCTC booking timings, Tatkal opening hours, night maintenance window shutdown (11:45 PM to 12:20 AM), and current availability times."
+title: "IRCTC Booking Timings 2026: Tatkal & Maintenance Hours"
+description: "Complete IRCTC booking timings guide. Includes 23:45–00:20 night maintenance window shutdown, 10 AM/11 AM Tatkal opening hours, and current availability."
 date: "2026-06-23"
-updated: "2026-07-28"
+updated: "2026-07-29"
 tags:
   - train booking
   - irctc
@@ -99,6 +99,27 @@ General advance booking opens 60 days before travel at 8:00 AM, AC Tatkal bookin
 
 ---
 
+## What Time Does IRCTC Close for Daily Night Maintenance (23:45 to 00:20)?
+
+IRCTC closes daily for server maintenance between 11:45 PM and 12:20 AM IST (35 minutes). During this window, database synchronization and transaction clearing occur. Online ticket bookings, cancellations, and PNR status checks are completely suspended on both the IRCTC website and mobile app.
+
+- **Maintenance Window:** 11:45 PM IST (23:45) to 12:20 AM IST (00:20).
+- **Impact:** No ticket booking, cancellation, chart view, or OTP generation.
+- **Payment Precaution:** Avoid starting bookings after 11:40 PM IST to prevent money deduction without ticket generation.
+
+---
+
+## When Do Tatkal and General Advance Booking Windows Open Daily?
+
+General advance reservation opens 60 days before travel at 8:00 AM IST daily. AC class Tatkal bookings (2A, 3A, 3E, CC) open at 10:00 AM IST one day prior to departure, while Non-AC Tatkal bookings (Sleeper Class, 2S) open at 11:00 AM IST.
+
+- **General Advance Window:** 8:00 AM IST daily (up to 60 days in advance).
+- **AC Tatkal Window:** 10:00 AM IST daily (1 day before train origin departure).
+- **Non-AC Tatkal Window:** 11:00 AM IST daily (1 day before train origin departure).
+- **Current Availability Window:** Opens after 1st chart prep (~8 hrs before departure) until 30 min before departure.
+
+---
+
 ## Common Booking Questions (FAQ)
 
 ### Can I book train tickets at 12:00 AM midnight?
@@ -118,3 +139,10 @@ No, ticketing services are shut down from 11:45 PM to 12:20 AM for daily system 
 
 ### What time does Current Availability ticket booking close?
 Current Availability ticket booking closes 30 minutes before the scheduled departure of the train from your station.
+
+
+### What time does IRCTC maintenance start and end?
+IRCTC server maintenance starts every night at 11:45 PM IST and ends at 12:20 AM IST. All online ticket booking services are suspended during this 35-minute window.
+
+### What is the exact opening time for AC and Non-AC Tatkal bookings?
+AC Tatkal ticket booking opens daily at 10:00 AM IST, while Non-AC Tatkal booking opens daily at 11:00 AM IST, one day prior to the train's departure from its originating station.

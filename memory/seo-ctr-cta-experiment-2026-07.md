@@ -105,7 +105,17 @@ Site context: 1K clk / **143K impr** / 0.70% CTR / pos 6.9 (28d ending 07-11). M
 - **CTR retitle + EXPAND(ranking)+CTA(funnel):** wl-waiting-list-meaning-indian-railway (11,438 impr / 0.17% CTR severe bleeder / pos 7.03 → frontmatter title fix "Waiting List (WL) Meaning 2026: Confirmation Chances & Rules" + top CTA + 2 H2s + 2 FAQs). Target ≥0.5% CTR, pos within ±1.5.
 - **EXPAND(ranking)+CTA(funnel):** train-classes-explained-1a-2a-3a-3e-sleeper-chair-car (15,033 impr / 0.22% CTR / pos 8.25, #6 impr post, + top CTA + 2 H2s + 2 FAQs), understanding-coach-composition-find-train-platform (8,222 impr / 0.51% CTR / pos 7.61, + top CTA + 2 H2s + 2 FAQs), vande-bharat-last-minute-booking-15-minutes-rule (1,958 impr / 2.09% CTR / pos 4.31, top-3 push, + top CTA + 2 H2s + 2 FAQs), garib-rath-express-timings-routes-booking-rules (2,496 impr / 1.56% CTR / pos 5.93, top-3 push, + top CTA + 2 H2s + 2 FAQs).
 
+## Addendum — 2026-07-29 batch (signal-driven triage from fresh GSC export; re-check on same dates)
+- **CTR retitle + EXPAND(ranking)+CTA(funnel):**
+  - irctc-booking-timings-rules (6,080 impr / 0.38% severe CTR bleeder / pos 4.2 → title "IRCTC Booking Timings 2026: Tatkal & Maintenance Hours" + 2 H2s + 2 FAQs). Target ≥0.8% CTR, pos within ±1.5.
+  - understanding-coach-composition-find-train-platform (8,222 impr / 0.51% CTR bleeder / pos 7.6 → title "How to Find Your Coach Position & Train Platform Location (2026)" + 2 H2s + 2 FAQs). Target ≥0.9% CTR, pos within ±1.5.
+  - irctc-ecatering-food-delivery-in-train-guide (1,277 impr / 0.31% CTR bleeder / pos 8.7 → title "IRCTC eCatering Guide 2026: How to Order Food on Trains" + top CTA + 2 H2s + 2 FAQs). Target ≥0.7% CTR, pos within ±1.5.
+  - tatkal-vs-current-availability-last-minute-train-ticket (822 impr / 0.24% severe CTR bleeder / pos 7.6 → title "Tatkal vs Current Availability: Which Ticket Confirms Faster? (2026)" + 2 H2s + 2 FAQs). Target ≥0.6% CTR, pos within ±1.5.
+- **EXPAND(ranking)+CTA(funnel):**
+  - irctc-circular-journey-ticket-rules-booking-guide (974 impr / 1.23% CTR / pos 7.6 → title "IRCTC Circular Journey Ticket Rules 2026: Booking & Rates" + 2 H2s + 2 FAQs). Target ≥1.6% CTR, pos within ±1.5.
+
 ## Check-back dates
+
 - **2026-08-03 (~4 wks):** early read. Confirm new titles are live in SERP (spot-check). First CTR/position movement in GSC. PostHog: CTA clicks flowing?
 - **2026-09-01 (~8 wks):** full read. CTR delta per page vs baseline table above; decide keep / iterate / revert per guardrail. PostHog funnel numbers for the 6 CTA pages.
 

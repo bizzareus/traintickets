@@ -318,5 +318,3 @@ Unconfirmed PQWL online e-tickets are automatically cancelled by IRCTC and full 
 ### Can PQWL tickets move directly to confirmed status without entering RAC?
 
 Yes, if a confirmed passenger cancels, a PQWL ticket can move directly to confirmed status (CNF) depending on berth availability.
-
-

@@ -126,4 +126,3 @@ You can check vacant berths after chart preparation using the IRCTC Charts porta
 ## Bottom line
 
 The Jan Vishwas (Amendment of Provisions) Act, 2023 (effective July 2026) replaces outdated criminal processes with strict monetary fines to ensure a safe, organized, and clean environment across Indian Railways. Make sure to verify your ticket status and purchase a valid confirmed seat through your authorized channel before boarding. If you are facing a waiting list, use [Smart Seats](/) to search for confirmed segment options on your train.
-

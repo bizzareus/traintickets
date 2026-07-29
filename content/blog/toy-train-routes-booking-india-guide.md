@@ -113,4 +113,3 @@ No. Most narrow-gauge toy trains do not operate Tatkal quota seats due to limite
 
 ### Are senior citizen or concession quotas available on toy trains?
 Standard lower berth and senior citizen booking options follow general Indian Railways rules, but specific quota seat numbers are extremely limited on heritage narrow-gauge lines.
-

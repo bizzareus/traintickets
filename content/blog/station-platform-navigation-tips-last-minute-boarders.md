@@ -78,4 +78,3 @@ Do not attempt to chase or board a moving train. Board the nearest open door of 
 
 ### Can I check coach position on IRCTC before reaching the station?
 Yes. The IRCTC Rail Connect app and NTES portal display expected coach position sequences prior to arrival. You can also use LastBerth [Coach Journey Lookup](/seat-status) to trace coach arrangements.
-

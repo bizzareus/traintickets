@@ -114,4 +114,3 @@ No. Decriminalized civil defaults under the Jan Vishwas Act are administrative p
 
 ### Can you appeal a penalty receipt issued by a TTE onboard?
 Yes. If you believe a penalty was wrongfully charged, you can file a formal complaint along with your penalty receipt on the RailMadad portal or appeal to the Senior Divisional Commercial Manager (Sr. DCM) of the relevant railway division.
-

@@ -187,4 +187,3 @@ Yes. If a confirmed passenger does not turn up at their boarding station and the
 
 ### What happens if an RAC passenger decides not to travel?
 If an RAC passenger cancels their ticket before chart preparation, a clerkage fee of ₹60 per passenger is deducted, and the rest is refunded. If canceling after chart prep, a TDR must be filed at least 30 minutes before train departure.
-

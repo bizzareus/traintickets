@@ -156,4 +156,3 @@ To change the boarding point for a physical paper ticket purchased at a counter,
 
 ### Does changing the boarding point cancel my original ticket?
 No, changing the boarding point does not cancel your ticket. It simply updates your boarding station in the official passenger list (chart), ensuring that the TTE knows you will board the train at a later stop and keeps your seat reserved for you.
-

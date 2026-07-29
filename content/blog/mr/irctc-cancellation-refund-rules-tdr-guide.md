@@ -232,4 +232,3 @@ TDR refunds typically take 7 to 90 working days to process, as IRCTC verifies th
 ### Can you file a TDR if your train is running delayed by more than 3 hours?
 
 Yes, if the train is delayed by more than 3 hours and you do not travel, you can file a TDR before actual train departure for a 100% fare refund without cancellation fees.
-

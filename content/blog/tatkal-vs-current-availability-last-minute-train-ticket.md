@@ -1,8 +1,8 @@
 ---
-title: "Tatkal or Current Availability: Which Confirms Faster?"
-description: "Tatkal opens 10–11 AM a day before; Current Availability opens ~8 hrs before departure. Which lands a confirmed last-minute seat cheaper? A clear side-by-side guide."
+title: "Tatkal vs Current Availability: Which Ticket Confirms Faster? (2026)"
+description: "Compare Tatkal vs Current Availability ticket booking. Learn opening timings, fare differences, cancellation refund rules, and which option gets confirmed seats faster."
 date: "2026-05-27"
-updated: "2026-07-23"
+updated: "2026-07-29"
 tags:
   - tatkal
   - current availability
@@ -136,6 +136,26 @@ Both options are extremely useful for last-minute travelers, but they operate un
 
 ---
 
+## What is the Fare Difference Between Tatkal Charges and Current Availability Fares?
+
+Tatkal tickets incur an additional Tatkal surge charge ranging from ₹100 to ₹500 depending on travel class, making them more expensive than general tickets. Conversely, Current Availability tickets are sold at basic fare or discounted rates (often 10% below base fare) to fill unsold berths post-charting.
+
+- **Tatkal Fare:** Base Fare + Tatkal Distance Surge Surcharge (10% to 30% extra, max ₹500).
+- **Current Availability Fare:** Base Fare minus 10% discount (no surge charges).
+- **Booking Window:** Tatkal opens 1 day prior at 10/11 AM; Current Availability opens post-1st chart prep.
+
+---
+
+## What Happens to Tatkal vs Current Availability Tickets if the Train is Cancelled?
+
+If a train is cancelled by Indian Railways, both Tatkal and Current Availability e-tickets receive a 100% full refund automatically credited to the original payment source. No TDR filing is required for fully cancelled trains.
+
+- **Railway Cancellation:** 100% full refund for both Tatkal and Current Availability e-tickets.
+- **Passenger Cancellation (Confirmed Tatkal):** Zero refund (100% penalty on confirmed Tatkal).
+- **Passenger Cancellation (Current Availability):** Standard flat clerkage/cancellation deduction applies.
+
+---
+
 ## Common Booking Questions (FAQ)
 
 ### At what time do Tatkal bookings open daily?
@@ -158,3 +178,10 @@ No. Indian Railways grants **zero refund** on the cancellation of fully confirme
 - longest confirmed leg
 
 Tatkal and Current Availability are still worth checking, but they should be part of a wider decision. The goal is not just to find any available seat. The goal is to choose the ticket that gives you the most workable journey before you pay.
+
+
+### Are Current Availability tickets cheaper than Tatkal tickets?
+Yes, Current Availability tickets are significantly cheaper than Tatkal tickets because they do not carry Tatkal surge charges and often include a 10% discount on base fares to fill vacant berths after chart preparation.
+
+### Do you get a refund if a confirmed Tatkal ticket is cancelled by the passenger?
+No, Indian Railways does not grant any refund on confirmed Tatkal tickets cancelled by the passenger. However, if the train itself is cancelled by railways, a 100% full refund is issued automatically.

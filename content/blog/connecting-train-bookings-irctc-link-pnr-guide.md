@@ -217,4 +217,3 @@ Yes. You can link a physical counter ticket PNR with an online e-ticket PNR. Ent
 
 ### Can Tatkal tickets be linked as connecting journeys on IRCTC?
 Yes. Tatkal tickets can be linked as part of a connecting journey provided the layover time rules (minimum 1 hour same station, 3 hours different stations) are met.
-

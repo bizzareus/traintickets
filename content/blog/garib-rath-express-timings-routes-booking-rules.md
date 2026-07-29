@@ -129,4 +129,3 @@ No, Garib Rath trains are fully air-conditioned and operate exclusively with res
 
 ### How do you book a bedroll after booking a Garib Rath ticket?
 If you did not opt-in during online booking, you can pay ₹25 cash directly to the bedroll attendant inside your coach.
-

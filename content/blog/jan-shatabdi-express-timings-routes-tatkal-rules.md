@@ -145,4 +145,3 @@ No. General UTS unreserved tickets are not valid for travel on Jan Shatabdi Expr
 
 ### Is food free on Shatabdi vs Jan Shatabdi?
 On Shatabdi Express, meals are included in the ticket fare. On Jan Shatabdi Express, catering is optional and meals must be bought separately from vendors.
-

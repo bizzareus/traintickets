@@ -184,4 +184,3 @@ No. Amrit Bharat Express has no AC coaches. It consists entirely of non-AC Sleep
 
 ### What time is the chart prepared for Amrit Bharat Express?
 The first chart is prepared 4 hours before departure from the originating station, opening the Current Availability window for remaining seats.
-

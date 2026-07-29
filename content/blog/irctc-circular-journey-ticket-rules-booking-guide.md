@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Circular Journey Ticket: Rules & Booking Guide"
-description: "Save money on multi-stop train trips in India. Learn the rules, telescopic fare calculation, and step-by-step booking for circular journey tickets."
+title: "IRCTC Circular Journey Ticket Rules 2026: Booking & Rates"
+description: "Complete IRCTC Circular Journey Ticket (CJT) rules guide. Learn telescopic fare calculation, 8 break-journey limits, 1,000 km minimum distance, and counter booking steps."
 date: "2026-06-20"
-updated: "2026-07-23"
+updated: "2026-07-29"
 tags:
   - train booking
   - irctc
@@ -104,6 +104,26 @@ Modifying an issued circular journey ticket requires visiting a Railway Reservat
 
 Because circular tickets are issued as paper authority documents at physical booking counters, any changes to your travel dates or train choices cannot be performed online via IRCTC. To modify a leg, approach a reservation clerk with your original circular ticket and completed requisition slips specifying the revised train numbers or dates. If the requested change alters the total route distance or exceeds the calculated validity days, the railway authorities will re-evaluate the telescopic fare and issue an endorsement or revised fare slip. If you need to cancel a specific leg entirely while retaining the rest of your itinerary, ensure you surrender the segment reservation before chart preparation to claim applicable refund amounts.
 
+## How Are Telescopic Fares Calculated for IRCTC Circular Journey Tickets?
+
+Telescopic fare calculation treats your entire multi-city circular itinerary as a single continuous journey rather than multiple separate point-to-point legs. Because per-kilometer passenger rates decrease as total journey distance increases, telescopic fares offer up to 20% to 30% savings over individual tickets.
+
+- **Distance Aggregation:** All leg distances are summed into a single total distance.
+- **Cost Benefit:** Base fare per kilometer drops progressively on longer total route distances.
+- **Single Pass:** One physical ticket covers the entire multi-station circular tour.
+
+---
+
+## What Are the Maximum Break Journey Rules Allowed on Circular Tickets?
+
+Circular Journey Tickets allow a maximum of 8 break journeys (halt stops longer than 24 hours) along your route. The minimum total route distance must be at least 1,000 kilometers, and the journey must start and end at the exact same railway station.
+
+- **Maximum Break Journeys:** Up to 8 halt stops allowed (must exceed 24 hours per stop).
+- **Minimum Route Length:** 1,000 km minimum circular loop distance.
+- **Ticket Validity Days:** 1 day per 400 km traveled + 2 extra days per approved break journey.
+
+---
+
 ## Common Booking Questions (FAQ)
 
 ### Can I book a circular journey ticket online?
@@ -117,3 +137,10 @@ It's a pricing strategy where the per-kilometer fare rate drops as your total di
 
 ### What happens if my waitlisted circular ticket does not get confirmed?
 Since these are paper tickets bought at a station counter, they won't cancel automatically and you won't get an auto-refund. If a segment stays waitlisted, you have to go to a physical reservation window to cancel that part and claim your refund manually.
+
+
+### How much can you save with an IRCTC Circular Journey Ticket?
+You can save 20% to 30% on multi-city train travel using a Circular Journey Ticket because Indian Railways applies telescopic pricing across your combined total distance instead of charging separate base fares for each leg.
+
+### Can you book a Circular Journey Ticket online on IRCTC?
+No, Circular Journey Tickets cannot be booked online. You must submit your printed itinerary to the Divisional Commercial Manager (DCM) office at a major railway station to receive a fare authority sheet for counter booking.

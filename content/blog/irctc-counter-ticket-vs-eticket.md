@@ -2,7 +2,7 @@
 title: "IRCTC Counter Ticket vs E-Ticket: Rules & Cancellation"
 description: "Compare IRCTC counter ticket vs e-ticket rules. Learn about waitlist travel permissions, online cancellation procedures, and automatic refund differences."
 date: "2026-06-24"
-updated: "2026-07-14"
+updated: "2026-07-29"
 tags:
   - train booking
   - irctc
@@ -71,7 +71,7 @@ Remember, this online process only cancels the reservation. You must physically 
 
 ## What is the Refund Rule for a Waitlisted E-Ticket?
 
-If an e-ticket remains fully waitlisted after chart preparation, the IRCTC system automatically cancels the ticket and processes a full refund back to the original payment source. The refund is credited within three to five working days after deducting a minimal clerkage fee of sixty rupees plus taxes.
+If an e-ticket remains fully waitlisted after chart preparation, the IRCTC system automatically cancels the ticket and processes a full refund back to the original payment source. The refund is credited within three to five working days with a full refund of fare (no cancellation or clerkage fee deducted).
 
 For e-tickets, the system handles the refund automatically, so you do not need to file a Ticket Deposit Receipt (TDR) or visit a station. However, if you still need to travel, you should check for a **current available ticket**. A current available ticket is a **fully confirmed seat** with coach and berth numbers. This quota opens 8 hours before the train's departure (immediately after chart preparation) and remains open until 30 minutes before departure. Booking a current available ticket online is the fastest way to replace an automatically cancelled waitlisted e-ticket.
 
