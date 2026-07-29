@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Auto Upgradation Rules 2026: Free Upgrades & Meaning"
-description: "What does 'Consider for Auto Upgradation' mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, eligibility rules, and tips to get upgraded."
+title: "IRCTC Auto Upgradation Rules 2026: Is It Free? (SL to AC)"
+description: "What does 'Consider for Auto Upgradation' mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, zero extra fee rules, and eligibility in 2026."
 date: "2026-06-16"
-updated: "2026-07-27"
+updated: "2026-07-29"
 tags:
   - irctc auto upgradation
   - free train upgrade

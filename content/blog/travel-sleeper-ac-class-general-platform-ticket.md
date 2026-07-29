@@ -1,8 +1,8 @@
 ---
 title: "Sleeper Travel with General Ticket: Fines & Rules 2026"
-description: "Can you sit in a Sleeper or AC coach with a general ticket? Penalty rules under Section 138, TTE fine calculations, and emergency travel steps in 2026."
+description: "Can you travel in Sleeper Class with a general ticket? See exact fine calculation (₹500 penalty + fare difference), TTE rules, and platform ticket steps."
 date: "2026-06-12"
-updated: "2026-07-23"
+updated: "2026-07-29"
 tags:
   - general ticket
   - platform ticket

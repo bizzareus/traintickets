@@ -1,8 +1,8 @@
 ---
-title: "IRCTC ஆட்டோ அப்கிரேடேஷன் விதிகள் 2026: இலவச அப்கிரேடு & விளக்கம்"
-description: "IRCTC-யில் 'Consider for Auto Upgradation' என்றால் என்ன? Sleeper-லிருந்து 3AC-க்கு இலவச அப்கிரேடு எப்படி வேலை செய்கிறது, விதிகள் மற்றும் டிப்ஸ்கள்."
+title: "IRCTC ஆட்டோ அப்கிரேடேஷன் விதிகள் 2026: இது இலவசமா?"
+description: "IRCTC-இல் 'Consider for Auto Upgradation' என்றால் என்ன? ஸ்லீப்பரிலிருந்து AC-க்கு இலவச அப்கிரேட் விதிகள்."
 date: "2026-06-16"
-updated: "2026-07-27"
+updated: "2026-07-29"
 tags:
   - irctc auto upgradation
   - free train upgrade

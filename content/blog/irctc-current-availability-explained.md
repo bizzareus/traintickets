@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Current Availability: Grab a Confirmed Last-Minute Seat"
-description: "How to use IRCTC current availability to book a fully confirmed last-minute seat: when it opens after chart preparation, how it differs from normal booking, and tips."
+title: "IRCTC Current Availability: Meaning, Opening Time & Rules (2026)"
+description: "Is CURR_AVBL a confirmed ticket? Learn when current availability opens after chart prep, booking rules up to 30 min before departure, and seat map tips."
 date: "2026-06-11"
-updated: "2026-07-27"
+updated: "2026-07-29"
 tags:
   - current availability
   - vacancy chart

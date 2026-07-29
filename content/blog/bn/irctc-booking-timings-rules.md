@@ -1,6 +1,6 @@
 ---
-title: "IRCTC Booking Timings 2026: Tatkal & Maintenance Hours"
-description: "IRCTC বুকিং সময়সূচীর সম্পূর্ণ গাইড। 23:45–00:20 নাইট মেইনটেন্যান্স উইন্ডো শাটডাউন, 10 AM/11 AM Tatkal বুকিং সময় এবং current availability নিয়ম।"
+title: "IRCTC বুকিং টাইমিং 2026: তৎকাল ও নাইট মেইনটেন্যান্স সময়"
+description: "IRCTC টিকিট বুকিং সময়সূচি। রাত ১১:৪৫ থেকে ১২:২০ টা পর্যন্ত সার্ভার বন্ধ এবং তৎকাল খোলার সঠিক সময়।"
 date: "2026-06-23"
 updated: "2026-07-29"
 tags:

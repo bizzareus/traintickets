@@ -1,6 +1,6 @@
 ---
-title: "IRCTC Booking Timings 2026: Tatkal & Maintenance Hours"
-description: "IRCTC బుకింగ్ సమయాల పూర్తి మార్గదర్శి. 23:45–00:20 నైట్ మెయింటెనెన్స్ విండో షట్‌డౌన్, 10 AM/11 AM Tatkal బుకింగ్ సమయాలు మరియు current availability నిబంధనలు."
+title: "IRCTC బుకింగ్ సమయాలు 2026: తత్కాల్ & నిర్వహణ వేళలు"
+description: "IRCTC టికెట్ బుకింగ్ సమయాల గైడ్. రాత్రి 11:45 నుండి 12:20 వరకు సర్వర్ నిలిపివేత మరియు తత్కాల్ సమయాలు."
 date: "2026-06-23"
 updated: "2026-07-29"
 tags:

@@ -1,8 +1,8 @@
 ---
-title: "IRCTC অটো আপগ্রেডেশন নিয়ম 2026: বিনামূল্যে আপগ্রেড ও অর্থ"
-description: "IRCTC-তে 'Consider for Auto Upgradation'-এর মানে কী? Sleeper থেকে 3AC বিনামূল্যে আপগ্রেড নিয়ম, যোগ্যতা ও আপগ্রেড পাওয়ার টিপস দেখুন।"
+title: "IRCTC অটো আপগ্রেডেশন নিয়ম 2026: এটি কি বিনামূল্যে? (SL থেকে AC)"
+description: "IRCTC-তে 'Consider for Auto Upgradation'-এর অর্থ কী? স্লিপার থেকে ৩এসি-তে বিনামূল্যে আপগ্রেডের নিয়ম।"
 date: "2026-06-16"
-updated: "2026-07-27"
+updated: "2026-07-29"
 tags:
   - irctc auto upgradation
   - free train upgrade

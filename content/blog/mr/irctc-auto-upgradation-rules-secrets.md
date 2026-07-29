@@ -1,8 +1,8 @@
 ---
-title: "IRCTC ऑटो अपग्रेडेशन नियम 2026: मोफत अपग्रेड आणि अर्थ"
-description: "IRCTC मध्ये 'Consider for Auto Upgradation' चा अर्थ काय? Sleeper ते 3AC मोफत अपग्रेड कसे काम करते, नियम आणि अपग्रेड मिळवण्याच्या टिप्स पाहा."
+title: "IRCTC ऑटो अपग्रेडेशन नियम 2026: हे मोफत आहे का? (स्लीपर ते AC)"
+description: "IRCTC मधील 'Consider for Auto Upgradation' चा अर्थ काय? स्लीपर वरून AC मध्ये मोफत अपग्रेड कसे मिळते?"
 date: "2026-06-16"
-updated: "2026-07-27"
+updated: "2026-07-29"
 tags:
   - irctc ऑटो अपग्रेडेशन
   - मोफत ट्रेन अपग्रेड

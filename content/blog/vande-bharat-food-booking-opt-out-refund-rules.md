@@ -1,8 +1,8 @@
 ---
-title: "Is Vande Bharat Food Mandatory? Opt-Out Price & Refunds"
-description: "Is catering mandatory on Vande Bharat trains? See the exact opt-out price difference, onboard ordering charges, and how to claim a refund when the meal isn't served."
+title: "Is Vande Bharat Food Mandatory? Opt-Out Price & Refunds (2026)"
+description: "Is catering mandatory on Vande Bharat trains? Learn the ₹150–₹350 opt-out savings, ₹50 onboard ordering fee, and how to get refunds for missed meals."
 date: "2026-07-04"
-updated: "2026-07-27"
+updated: "2026-07-29"
 tags:
   - train booking
   - irctc

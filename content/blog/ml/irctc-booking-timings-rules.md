@@ -1,6 +1,6 @@
 ---
-title: "IRCTC Booking Timings 2026: Tatkal & Maintenance Hours"
-description: "IRCTC ബുക്കിംഗ് സമയങ്ങളുടെ സമ്പൂർണ്ണ ഗൈഡ്. 23:45–00:20 നൈറ്റ് മെയിന്റനൻസ് വിൻഡോ ഷട്ടഡൗൺ, 10 AM/11 AM Tatkal ബുക്കിംഗ് സമയങ്ങൾ, current availability നിയമങ്ങൾ."
+title: "IRCTC ബുക്കിംഗ് സമയങ്ങൾ 2026: തത്കാൽ, മെയ്ന്റനൻസ് സമയം"
+description: "IRCTC ടിക്കറ്റ് ബുക്കിംഗ് സമയങ്ങൾ. രാത്രി 11:45 മുതൽ 12:20 വരെയുള്ള സെർവർ മെയ്ന്റനൻസ് സമയവും തത്കാൽ സമയങ്ങളും."
 date: "2026-06-23"
 updated: "2026-07-29"
 tags:

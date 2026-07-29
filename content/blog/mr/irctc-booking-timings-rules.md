@@ -1,6 +1,6 @@
 ---
-title: "IRCTC Booking Timings 2026: Tatkal & Maintenance Hours"
-description: "IRCTC बुकिंग वेळेची संपूर्ण माहिती. 23:45–00:20 नाइट मेंटेनन्स विंडो शटडाउन, 10 AM/11 AM Tatkal बुकिंग वेळ आणि current availability नियम."
+title: "IRCTC तिकीट बुकिंग वेळा 2026: तत्काळ आणि देखभाल वेळ"
+description: "IRCTC तिकीट बुकिंग वेळेचे नियम. रात्री ११:४५ ते १२:२० ची सर्व्हर देखभाल वेळ आणि तत्काळ उघडण्याच्या वेळा."
 date: "2026-06-23"
 updated: "2026-07-29"
 tags:
