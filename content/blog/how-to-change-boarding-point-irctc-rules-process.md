@@ -2,7 +2,7 @@
 title: "How to Change Boarding Point in IRCTC: Rules & Process"
 description: "Learn official IRCTC boarding point change rules. Update your boarding station online at least 24 hours before scheduled departure using the RailOne or IRCTC app."
 date: "2026-06-22"
-updated: "2026-07-26"
+updated: "2026-07-29"
 tags:
   - train booking
   - irctc
@@ -65,6 +65,23 @@ To avoid being caught in this situation, check your travel timing carefully. If 
 
 ---
 
+## How late can you change your boarding station on IRCTC before chart preparation?
+
+Under IRCTC rules, the deadline to change your boarding station online or offline is **at least 24 hours before the scheduled departure of the train from its origin station**.
+
+Once the 24-hour window closes, the online "Change Boarding Point" button is disabled. You cannot change your boarding station within 24 hours of train departure or after the first reservation chart is prepared.
+
+---
+
+## Will TTE allocate your seat to another passenger if you board without changing boarding point?
+
+Yes. If you board at a later station without changing your boarding point on IRCTC, the TTE (Travelling Ticket Examiner) is authorized to mark you absent and allocate your seat to another passenger:
+- **No-Show Rule:** If a passenger does not board at their ticketed boarding station, the TTE holds the berth until the next 2 stations or 1 hour (whichever is earlier).
+- **Seat Reallocation:** After passing the second station without the passenger boarding, the TTE marks the berth as vacant and reallocates it to an RAC passenger or an onboard passenger seeking an upgrade.
+- **Penalty:** If you board at a later station after your seat has been reallocated, you lose your berth reservation rights and must travel as an unreserved passenger with a penalty.
+
+---
+
 ## What Is the Smart Boarding Point Change Booking Hack?
 
 **The smart boarding point hack involves booking a ticket from a major originating station under the general quota and changing the boarding point to an intermediate station. This bypasses lower intermediate quotas, securing a confirmed seat on popular trains while ensuring you board legally at your preferred station.**
@@ -118,6 +135,15 @@ Yes, both Confirmed and RAC (Reservation Against Cancellation) ticket holders ar
 
 ### What is the WL full form in Indian Railways?
 WL full form is Waiting List. When a ticket is waitlisted, it is not yet confirmed and progresses through the queue: WL (Waiting List) -> RAC -> Confirmed. You cannot change your boarding point if your ticket remains waitlisted.
+
+### What happens if I miss the 24-hour deadline for changing my boarding point?
+If you miss the 24-hour deadline, you cannot change your boarding point online or at a counter. You must board from your original ticketed station, or risk having your seat reallocated by the TTE if you board at a later station.
+
+### Can you change your boarding point for counter tickets online?
+No. Physical tickets booked at railway reservation counters (PRS) cannot be changed online via the IRCTC app or website. You must submit a written request along with the original counter ticket at a computerized PRS reservation counter at least 24 hours before train departure.
+
+### Is there any fee charged by IRCTC for changing your boarding station?
+No. IRCTC does not charge any fee for changing your boarding point. The service is free of cost for both e-tickets and counter tickets. However, if the new boarding station shortens your travel distance, no fare refund is provided.
 
 ### Can I change my boarding point more than once?
 No, you can only change your boarding point once per ticket booking. Once the change is submitted, the action is permanent and cannot be reverted or edited again.

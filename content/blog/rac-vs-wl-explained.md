@@ -1,8 +1,8 @@
 ---
-title: "RAC vs Waitlist: Which One Lets You Board the Train?"
+title: "RAC vs WL Ticket: Confirmation Chances & Refund Rules 2026"
 description: "RAC vs waitlist: RAC gives a shared seat you CAN travel on; a WL ticket often can't board. Compare RAC, WL & confirmed statuses and cancellation fees."
 date: "2026-05-15"
-updated: "2026-07-27"
+updated: "2026-07-29"
 tags:
   - rac
   - waiting list
@@ -95,6 +95,23 @@ This is exactly the scenario [LastBerth](/) is built for: WL/Regret trains where
 
 ---
 
+## Can RAC ticket holders travel on the train if the ticket does not confirm?
+
+Yes, RAC (Reservation Against Cancellation) ticket holders are officially allowed to board the train and travel to their destination. An RAC ticket guarantees travel authority on the train, but instead of a full berth, two RAC passengers share a single Side Lower berth for seating during the journey.
+
+If cancellations occur during the journey or after first chart preparation, the TTE (Travelling Ticket Examiner) upgrades RAC passengers to full confirmed berths in order of their RAC ticket sequence.
+
+---
+
+## What is the cancellation charge for RAC and waitlisted tickets after chart prep?
+
+Cancellation rules and clerkage fees for RAC and waitlisted tickets differ based on when they are cancelled and whether it is an e-ticket or a counter ticket:
+- **RAC Tickets:** If an RAC ticket is cancelled up to 30 minutes before scheduled train departure, a clerkage fee of ₹60 per passenger (plus GST for AC classes) is deducted, and the remaining fare is refunded.
+- **Waitlisted E-Tickets:** If an e-ticket remains fully waitlisted after chart preparation, IRCTC automatically cancels it and refunds the full ticket amount minus ₹60 clerkage charge directly to your bank account.
+- **Waitlisted Counter Tickets:** Must be manually cancelled at a railway station reservation counter at least 30 minutes before train departure to claim a refund.
+
+---
+
 ### Confirmed vs. RAC vs. Waitlisted (WL)
 
 Knowing how these statuses affect your travel rights and cancellations is essential when making last-minute bookings. According to the [official IRCTC refund and cancellation rules](https://contents.irctc.co.in/en/refundRules.html), the rules differ significantly:
@@ -143,7 +160,23 @@ Yes, two passengers assigned RAC status on the same ticket share a single lower 
 
 RAC to Confirmed (CNF) clears significantly faster than General Waiting List (GNWL) to RAC. Because RAC passengers are at the very top of the confirmation priority queue, any last-minute cancellation, no-show, or quota release immediately converts RAC 1, RAC 2, etc., into full berths before or during the journey.
 
-## Related guides
+## Understanding Boarding Restrictions and Status Definitions
+
+### Why does my ticket status say "Regret"?
+
+Regret means the waiting list cap for that class or quota has been reached. IRCTC is no longer accepting new bookings for that segment. You can try booking via a different quota (like Tatkal) or book a segment from an earlier station.
+
+### What happens if your ticket remains RAC after chart preparation?
+
+If your ticket status remains RAC after final chart preparation, you can board the train. You will be assigned a shared seat on a Side Lower berth, and if a passenger with a confirmed ticket does not show up, the TTE will upgrade you to a full berth.
+
+### Can a waitlisted passenger board an AC coach with a general ticket or waitlisted e-ticket?
+
+No. Passengers holding fully waitlisted e-tickets or general unreserved tickets are not allowed to board reserved AC or Sleeper coaches. Boarding reserved coaches with an unconfirmed e-ticket results in a fine and detraining by the TTE.
+
+---
+
+## Related Guides
 
 - [Best train when all trains show WL/RAC/Regret](/blog/best-train-when-all-trains-show-waiting-list)
 - [Why confirmed from origin matters in segment booking](/blog/confirmed-from-origin-segment-booking)

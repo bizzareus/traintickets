@@ -2,7 +2,7 @@
 title: "Securing Adjacent Berths on IRCTC: The Ultimate Family Booking Survival Guide"
 description: "Why does IRCTC split families across different train coaches? Learn how the seat allocation algorithm works and the specific booking preferences to ensure your group stays together."
 date: "2026-05-31"
-updated: "2026-06-11"
+updated: "2026-07-29"
 tags:
   - family booking
   - adjacent berths
@@ -29,6 +29,8 @@ Why does this happen, even when the train has plenty of empty seats? And how can
 Let's look at how the seat booking algorithm actually works. More importantly, let's look at the simple steps to keep your family together.
 
 ---
+
+> Planning a family journey? Check your coach map and seat layout using [Coach Journey Lookup](/seat-status) or verify ticket confirmation probability with [Smart Seats](/).
 
 ## How Does the IRCTC Seat Allocation Algorithm Work?
 
@@ -97,6 +99,24 @@ Traveling with elderly parents and kids? Book the seniors on PNR A. Select the l
 
 ---
 
+## How to ensure adjacent seat allocations when booking tickets for family or group travel?
+
+To ensure your family or travel group is seated together in the same coach bay:
+- **Save Master List Profiles:** Store all passenger details in your IRCTC profile Master List before booking starts to process the transaction in seconds before bay blocks fill up.
+- **Select Mixed Berth Preferences:** Choose a mix of Lower, Middle, Upper, and Side berths rather than requesting all Lower berths, giving the algorithm a full 6-berth bay to fill.
+- **Book Early in the ARP:** Book as soon as the Advance Reservation Period opens when complete 6-berth or 8-berth bays are completely vacant.
+
+---
+
+## What happens if a group booking has partial confirmation (some CNF, some WL)?
+
+When a single PNR ticket has some passengers confirmed (CNF/RAC) and others waitlisted (WL) after chart preparation, the ticket is classified as a **partially confirmed PNR**:
+- **Boarding Rights:** All passengers on a partially confirmed counter or e-ticket are permitted to board the train together, but only the confirmed passengers get dedicated seats.
+- **Waitlisted Passengers:** Waitlisted passengers on a partially confirmed PNR must share berths with their confirmed family members or seek assistance from the TTE for unallocated vacant berths.
+- **Cancellation Option:** If you choose not to travel due to partial confirmation, you can cancel the entire PNR online before chart prep or file a TDR up to 30 minutes after chart prep for a full refund on waitlisted passengers.
+
+---
+
 ## Swapping Seats Legally on the Train
 
 If you still get split up, don't worry. You can usually sort it out after boarding the train.
@@ -109,6 +129,17 @@ If the train is fully packed and the TTE cannot help, you will have to request f
 - **Offer an Upgrade:** Never ask someone to swap their Lower berth for your Upper berth unless they are very young and willing. Instead, offer your Lower berth to someone who has an Upper berth. They will almost always accept.
 - **Target Solo Travelers:** Families or couples will not swap because they want to stay together. Look for solo travelers who are traveling light.
 - **Explain the "Why":** Politely explain that you are trying to keep a mother and child together, or need to assist an elderly relative. Most Indian train passengers are incredibly accommodating when approached politely.
+
+### How do I report an abusive passenger refusing to swap berths?
+If a passenger behaves aggressively or refuses a reasonable request, do not escalate. Inform the Travelling Ticket Examiner (TTE) or alert Railway Protection Force (RPF) personnel using the RailMadad app or by dialing **139**.
+
+### What is the maximum number of passengers allowed in a single IRCTC booking?
+
+On IRCTC general quota bookings, up to 6 passengers can be booked on a single PNR. For Tatkal quota bookings, a maximum of 4 passengers is allowed per PNR.
+
+### Do children under 5 years old get separate berths in family bookings?
+
+No. Children under 5 years of age travel for free without a separate berth. Their names are added to the PNR for insurance and record purposes, and they share berths with their parents.
 
 ---
 

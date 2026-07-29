@@ -1,8 +1,10 @@
 ---
-title: "ഇന്ത്യയിലെ ട്രെയിൻ ബെർത്ത്: തരം, ലഭ്യത, ബെർത്ത് റിസർവേഷൻ എങ്ങനെ പ്രവർത്തിക്കുന്നു"
+> നിങ്ങളുടെ സീറ്റ് സ്ഥാനമോ കോച്ച് ലേഔട്ടോ അറിയണോ? നിങ്ങളുടെ കൃത്യമായ കോച്ച് മാപ്പ് കണ്ടെത്തുന്നതിന് [Coach Journey Lookup](/seat-status) ഉപയോഗിക്കുക അല്ലെങ്കിൽ [Smart Seats](/) വഴി കൺഫർമേഷൻ സാധ്യതകൾ പരിശോധിക്കുക.
+
+title: "ട്രെയിൻ ബെർത്ത് തരങ്ങൾ വിവരണം: LB, MB, UB, SL, SU സീറ്റ് മാപ്പുകൾ (2026)"
 description: "ട്രെയിൻ ബെർത്ത് സംബന്ധിച്ച നിങ്ങൾക്കറിയേണ്ട എല്ലാം — താഴത്തെ ബെർത്ത് vs സൈഡ് അപ്പർ സുഖത്തിന്റെ വ്യത്യാസങ്ങൾ, ക്ലാസ് അനുസരിച്ചുള്ള കോച്ച് ലേയൗട്ടുകൾ, IRCTC-യുടെ ബെർത്ത് അലൊക്കേഷൻ ആൽഗോരിതം എങ്ങനെ ഉറപ്പിക്കുന്നു എന്നതുവരെ. ബെർത്ത് ലഭ്യത പരിശോധിക്കാൻ പ്രായോഗിക നിർദ്ദേശങ്ങൾ."
 date: "2026-06-11"
-updated: "2026-07-14"
+updated: "2026-07-29"
 tags:
   - train berth
   - berth availability
@@ -295,6 +297,12 @@ If you're traveling overnight, Lower Berths are super convenient. You don't have
 ### Is berth reservation compulsory for train travel?
 
 For general unreserved coaches, you just buy a ticket at the station and board. But for Sleeper, AC, or Chair Cars, you must book a seat in advance via IRCTC or a ticket counter. Trying to travel in these coaches without a reserved seat will get you fined.
+
+### IRCTC ബെർത്ത് അനുവദിക്കുന്നതിന് ഏത് അൽഗോരിതം ഉപയോഗിക്കുന്നു?
+ഭാര സമീകരണം നിലനിർത്താൻ ട്രെയിനിന്റെ മധ്യഭാഗത്ത് നിന്ന് ഇരുവശങ്ങളിലേക്കും ബെർത്തുകൾ അനുവദിക്കുന്നു. ഒരേ PNR-ലെ യാത്രക്കാർക്ക് അടുത്തടുത്തുള്ള ബെർത്തുകൾ നൽകാൻ ശ്രമിക്കുന്നു.
+
+### ടിക്കറ്റ് ബുക്കിംഗിൽ ബെർത്ത് മുൻഗണന ഉറപ്പാണോ?
+അല്ല, ബെർത്ത് മുൻഗണന ഒരു അഭ്യർത്ഥന മാത്രമാണ്, അത് ഉറപ്പില്ല.
 
 ---
 
