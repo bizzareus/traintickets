@@ -2,7 +2,7 @@
 title: "How to Travel with Dogs & Cats in Indian Railways (Pet Rules 2026)"
 description: "Want to travel with a dog or cat on Indian Railways? Learn the official pet booking rules, 1AC coupe requirements, veterinary certificate steps, and fees."
 date: "2026-06-17"
-updated: "2026-07-29"
+updated: "2026-07-30"
 tags:
   - pet travel
   - dog booking

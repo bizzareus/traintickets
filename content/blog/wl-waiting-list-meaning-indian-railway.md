@@ -2,7 +2,7 @@
 title: "WL Ticket: Will Yours Confirm? Chances by WL Number (2026)"
 description: "WL full form is Waiting List. Check whether your WL ticket will confirm, what WL/1 vs WL/40 mean for your chances, and if you can board with one."
 date: "2026-06-11"
-updated: "2026-07-27"
+updated: "2026-07-30"
 tags:
   - waiting list
   - wl

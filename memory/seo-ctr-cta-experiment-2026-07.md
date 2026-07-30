@@ -114,6 +114,15 @@ Site context: 1K clk / **143K impr** / 0.70% CTR / pos 6.9 (28d ending 07-11). M
 - **EXPAND(ranking)+CTA(funnel):**
   - irctc-circular-journey-ticket-rules-booking-guide (974 impr / 1.23% CTR / pos 7.6 → title "IRCTC Circular Journey Ticket Rules 2026: Booking & Rates" + 2 H2s + 2 FAQs). Target ≥1.6% CTR, pos within ±1.5.
 
+## Addendum — 2026-07-30 batch (signal-driven triage from fresh GSC export; re-check on same dates)
+- **CTR retitle + EXPAND(ranking)+CTA(funnel):**
+  - wl-waiting-list-meaning-indian-railway (11,431 EN + 9,866 HI impr / 0.2% CTR bleeder / pos 7.0 → title "Waiting List (WL) Meaning 2026: Confirmation Chances & Rules" + top CTA + updated date). Target ≥0.5% CTR, pos within ±1.5.
+  - irctc-ticket-booking-limits-aadhaar-verification (34,760 EN + 1,677 HI impr / 0.5% CTR bleeder / pos 5.4 → title "IRCTC Booking Limit 2026: 12 vs 24 Tickets (Aadhaar Rules)" + top CTA + updated date). Target ≥0.9% CTR, pos within ±1.5.
+- **EXPAND(ranking)+CTA(funnel):**
+  - understanding-coach-composition-find-train-platform (8,222 impr / 0.51% CTR bleeder / pos 7.6 → title "How to Find Your Coach Position & Train Platform Location (2026)" + top CTA + updated date). Target ≥0.9% CTR, pos within ±1.5.
+  - irctc-booking-failed-money-deducted-refund-rules (8,971 impr / 0.5% CTR bleeder / pos 6.7 → title "IRCTC Booking Failed, Money Deducted? Refund Timeline 2026" + top CTA + updated date). Target ≥0.9% CTR, pos within ±1.5.
+  - how-to-travel-with-dog-cat-indian-railways-pet-rules (2,278 impr / 0.75% CTR / pos 7.7 → title "How to Travel with Dogs & Cats in Indian Railways (Pet Rules 2026)" + top CTA + updated date). Target ≥1.1% CTR, pos within ±1.5.
+
 ## Check-back dates
 
 - **2026-08-03 (~4 wks):** early read. Confirm new titles are live in SERP (spot-check). First CTR/position movement in GSC. PostHog: CTA clicks flowing?

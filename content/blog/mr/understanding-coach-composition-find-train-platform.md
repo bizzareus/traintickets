@@ -2,7 +2,7 @@
 title: "How to Find Your Coach Position & Train Platform Location (2026)"
 description: "प्लॅटफॉर्मवर तुमच्या ट्रेन कोचची जागा त्वरित शोधायला शिका. इंजिन-एंड नंबर, प्लॅटफॉर्म मार्गदर्शन डिस्प्ले आणि S1, B2, A1 कोच क्रम समजून घ्या."
 date: "2026-06-10"
-updated: "2026-07-29"
+updated: "2026-07-30"
 tags:
   - कोच रचना
   - ट्रेन लेआउट

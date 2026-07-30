@@ -2,7 +2,7 @@
 title: "How to Find Your Coach Position & Train Platform Location (2026)"
 description: "Learn how to locate your train coach position on the platform instantly. Decode engine-end numbers, platform guidance displays, and S1, B2, A1 coach order."
 date: "2026-06-10"
-updated: "2026-07-29"
+updated: "2026-07-30"
 tags:
   - coach composition
   - train layout

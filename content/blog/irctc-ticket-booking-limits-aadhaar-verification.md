@@ -2,7 +2,7 @@
 title: "IRCTC Booking Limit 2026: 12 vs 24 Tickets (Aadhaar Rules)"
 description: "How many tickets can you book per month in IRCTC? Learn the 12 vs 24 ticket limits, Aadhaar linking steps, daily Tatkal caps, and per-PNR passenger rules."
 date: "2026-06-22"
-updated: "2026-07-29"
+updated: "2026-07-30"
 tags:
   - train booking
   - irctc

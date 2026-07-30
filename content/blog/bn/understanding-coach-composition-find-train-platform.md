@@ -2,7 +2,7 @@
 title: "How to Find Your Coach Position & Train Platform Location (2026)"
 description: "প্ল্যাটফর্মে আপনার ট্রেনের কামরার অবস্থান সহজেই খুঁজে নিন। ইঞ্জিন-এন্ড নম্বর, প্ল্যাটফর্ম ডিসপ্লে এবং S1, B2, A1 কোচ সাজানোর নিয়ম বুঝুন।"
 date: "2026-06-10"
-updated: "2026-07-29"
+updated: "2026-07-30"
 tags:
   - কোচ রচনা
   - ট্রেন লেআউট
