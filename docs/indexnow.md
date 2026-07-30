@@ -6,9 +6,9 @@
 
 ## 1. Key Configuration & Hosting
 
-- **API Key:** `ad74c6b278624dba9b957b46b4cb9367`
-- **Verification File:** `public/ad74c6b278624dba9b957b46b4cb9367.txt`
-- **Public URL:** `https://lastberth.com/ad74c6b278624dba9b957b46b4cb9367.txt`
+- **API Key:** `b65fef859e24499bb96c752a23b4dfec`
+- **Verification File:** `public/b65fef859e24499bb96c752a23b4dfec.txt`
+- **Public URL:** `https://lastberth.com/b65fef859e24499bb96c752a23b4dfec.txt`
 
 Search engines fetch this file to verify domain ownership when processing IndexNow submissions for `lastberth.com`.
 

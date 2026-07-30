@@ -1,6 +1,6 @@
 export const DEFAULT_SITE_URL =
   process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
-export const DEFAULT_INDEXNOW_KEY = "ad74c6b278624dba9b957b46b4cb9367";
+export const DEFAULT_INDEXNOW_KEY = "b65fef859e24499bb96c752a23b4dfec";
 export const INDEXNOW_ENDPOINT = "https://api.indexnow.org/IndexNow";
 
 export interface IndexNowOptions {
