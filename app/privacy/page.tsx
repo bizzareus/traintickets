@@ -64,7 +64,23 @@ export default function PrivacyPolicyPage() {
             Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze our Service.
           </p>
 
-          <h2>5. Contact Us</h2>
+          <h2>5. Third-Party Advertising and Google AdSense</h2>
+          <p>
+            LastBerth uses Google AdSense and other third-party advertising companies to serve advertisements when you visit our website.
+          </p>
+          <ul>
+            <li>
+              <strong>Third-Party Vendors:</strong> Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to LastBerth or other websites.
+            </li>
+            <li>
+              <strong>Advertising Cookies:</strong> Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to LastBerth and/or other sites on the Internet.
+            </li>
+            <li>
+              <strong>Opting Out:</strong> Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Google Ads Settings</a> or by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">aboutads.info</a>.
+            </li>
+          </ul>
+
+          <h2>6. Contact Us</h2>
           <p>
             If you have any questions about this privacy policy or our privacy practices, please contact us at privacy@lastberth.com.
           </p>

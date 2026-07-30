@@ -159,7 +159,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2619716052518481"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           crossOrigin="anonymous"
         />
       </head>
@@ -246,9 +246,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10 pt-6 border-t border-slate-200 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-slate-500">
                 <p>&copy; {new Date().getFullYear()} LastBerth. All rights reserved.</p>
-                <nav className="flex items-center gap-4">
+                <nav className="flex flex-wrap items-center gap-4 text-xs sm:text-sm">
+                  <Link href="/about" className="hover:text-blue-600">About Us</Link>
+                  <Link href="/contact" className="hover:text-blue-600">Contact Us</Link>
                   <Link href="/privacy" className="hover:text-blue-600">Privacy Policy</Link>
                   <Link href="/terms" className="hover:text-blue-600">Terms of Service</Link>
+                  <Link href="/disclaimer" className="hover:text-blue-600">Disclaimer</Link>
                 </nav>
               </div>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-6 text-center text-slate-500">
