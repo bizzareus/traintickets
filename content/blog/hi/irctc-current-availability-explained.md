@@ -1,8 +1,8 @@
 ---
-title: "IRCTC करेंट उपलब्धता (CURR_AVBL): अर्थ, खुलने का समय और नियम"
-description: "क्या CURR_AVBL कन्फर्म्ड टिकट है? चार्ट बनने के बाद करेंट उपलब्धता खुलने का समय और ट्रेन छूटने से 30 मिनट पहले तक बुकिंग नियम।"
+title: "Current Availability IRCTC 2026: खुलने का समय व कन्फर्म स्थिति"
+description: "What does CURR_AVBL mean in IRCTC? Current availability tickets are 100% confirmed berths with coach numbers, opening 4 hours before train departure."
 date: "2026-06-11"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - वर्तमान उपलब्धता
   - रिक्तता चार्ट

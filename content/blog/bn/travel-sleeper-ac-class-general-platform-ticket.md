@@ -1,8 +1,8 @@
 ---
-title: "জেনারেল টিকিটে স্লিপারে ভ্রমণ: জরিমানা ও রেলওয়ে নিয়ম 2026"
-description: "জেনারেল টিকিট নিয়ে কি স্লিপার কোচে যাত্রা করা যায়? জরিমানা হিসাব (₹৫০০ পেনাল্টি + ভাড়ার পার্থক্য) ও নিয়ম।"
+title: "General Ticket নিয়ে Sleeper Class এ যাত্রা: জরিমানা ও TTE নিয়মাবলী"
+description: "Can you travel in Sleeper class with a General unreserved ticket? Learn the exact ₹250 fine + fare difference rules, daytime rules & TTE berth allotment."
 date: "2026-06-12"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - সাধারণ টিকেট
   - প্ল্যাটফর্ম টিকেট
@@ -110,3 +110,10 @@ tags:
 - [How to Check Vacant Berths After Chart Preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
 - [Should You Change Class to Get a Confirmed Ticket?](/blog/change-class-confirmed-train-ticket)
 - [Indian Railways Coach Composition: Locate Your Coach and Platform](/blog/understanding-coach-composition-find-train-platform)
+
+## জেনারেল টিকিট নিয়ে স্লিপার ক্লাসে ভ্রমণ করলে কত জরিমানা হয়?
+
+**জেনারেল টিকিটে স্লিপার কোচে যাত্রা করলে সর্বনিম্ন ২৫০ টাকা জরিমানা এবং ভাড়ার পার্থক্য দিতে হবে।**
+
+---
+

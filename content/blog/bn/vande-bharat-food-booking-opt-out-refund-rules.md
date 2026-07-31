@@ -1,6 +1,6 @@
 ---
-title: "Vande Bharat Food Rules 2026: অপ্ট-আউট সাশ্রয়, বিনামূল্যে খাবার ও রিফান্ড নিয়ম"
-description: "Is catering mandatory on Vande Bharat Express? Compare ₹150–₹350 opt-out ticket savings, ₹50 onboard ordering fee, 3-hour delay free meal rules, and refund policy."
+title: "Vande Bharat Food Rules 2026: বিনামূল্যে খাবার, অপ্ট-আউট সাশ্রয় ও চার্জ"
+description: "Is food free on Vande Bharat Express? Meals are included in ticket price, but optional. Learn ₹150–₹350 opt-out savings, ₹50 onboard ordering fee & delay rules."
 date: "2026-07-04"
 updated: "2026-07-31"
 tags:
@@ -130,6 +130,14 @@ IRCTC-তে বুকিংয়ের সময়, অপ্ট-আউট �
 - **বিলম্বের সময়সীমা:** যাত্রার শুরুর স্টেশন বা প্রধান জংশন থেকে ৩ ঘণ্টার বেশি হতে হবে।
 - **খাবারের সময়:** সময়সূচী অনুযায়ী পরিবেশন (সকাল ৭-১০ নাস্তা, দুপুর ১২-২ লাঞ্চ, বিকেল ৪-৬ স্ন্যাক্স, রাত ৮-১০ ডিনার)।
 - **কোনো জরিমানা নেই:** "No Food" নির্বাচন করা যাত্রীরাও বিনামূল্যে এই খাবার পাবেন।
+
+---
+
+
+
+## বন্দে ভারত ট্রেনের টিকিটে কি খাবার বিনামূল্যে অন্তর্ভুক্ত থাকে?
+
+**বন্দে ভারত এক্সপ্রেসে খাবার আলাদাভাবে বিনামূল্যে নয়; ১৫০ থেকে ৩৫০ টাকা ক্যাটারিং চার্জ টিকিটের ভাড়ার অন্তর্ভুক্ত থাকে। বুকিংয়ের সময় খাবার না নেওয়ার অপশন বেছে নিয়ে টাকা বাঁচানো যায়।**
 
 ---
 

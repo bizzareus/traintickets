@@ -1,6 +1,6 @@
 ---
-title: "Vande Bharat Food Rules 2026: ഫുഡ് ഒപ്റ്റ്-ഔട്ട് ലാഭം, സൗജന്യ ഭക്ഷണം & റീഫണ്ട് നിയമങ്ങൾ"
-description: "Is catering mandatory on Vande Bharat Express? Compare ₹150–₹350 opt-out ticket savings, ₹50 onboard ordering fee, 3-hour delay free meal rules, and refund policy."
+title: "Vande Bharat Food Rules 2026: സൗജന്യ ഭക്ഷണം, ഒപ്റ്റ്-ഔട്ട് ലാഭം & നിരക്കുകൾ"
+description: "Is food free on Vande Bharat Express? Meals are included in ticket price, but optional. Learn ₹150–₹350 opt-out savings, ₹50 onboard ordering fee & delay rules."
 date: "2026-07-04"
 updated: "2026-07-31"
 tags:
@@ -134,4 +134,12 @@ IRCTC ബുക്കിംഗ് സമയത്ത് "No Food" എന്ന�
 ### IRCTC-യിൽ ടിക്കറ്റ് ബുക്ക് ചെയ്ത ശേഷം ഭക്ഷണ മുൻഗണന മാറ്റാനാകുമോ?
 
 ഇല്ല, ടിക്കറ്റ് ബുക്ക് ചെയ്ത ശേഷം ഓൺലൈനായി ഭക്ഷണ മുൻഗണന മാറ്റാൻ സാധിക്കില്ല. ട്രെയിനിൽ ഭക്ഷണം ആവശ്യപ്പെട്ടാൽ ഓരോ ഭക്ഷണത്തിനും ₹50 സർചാർജ് ഈടാക്കും.
+
+
+
+## വന്ദേ ഭാരത് ട്രെയിൻ ടിക്കറ്റിൽ ഭക്ഷണം സൗജന്യമായി ഉൾപ്പെടുന്നുണ്ടോ?
+
+**വന്ദേ ഭാരതിൽ ഭക്ഷണം സൗജന്യമല്ല; ₹150 മുതൽ ₹350 വരെയുള്ള കാറ്ററിംഗ് ചാർജ് ടിക്കറ്റ് നിരക്കിൽ ഉൾപ്പെടുന്നു. ബുക്കിംഗ് വേളയിൽ ഫുഡ് വേണ്ടെന്ന് വെച്ച് പണം ലാഭിക്കാം.**
+
+---
 

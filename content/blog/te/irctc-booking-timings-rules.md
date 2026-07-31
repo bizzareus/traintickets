@@ -1,6 +1,6 @@
 ---
-title: "IRCTC Booking Timings 2026: 60-రోజుల ARP నిబంధన, Tatkal మరియు నైట్ మెయింటెనెన్స్"
-description: "Master 2026 IRCTC ticket booking timings: new 60-day ARP advance reservation limit, 11:45 PM–12:20 AM server maintenance window, 10 AM/11 AM Tatkal & current availability."
+title: "IRCTC Maintenance Time 2026: రాత్రి 11:45 గంటల మెయింటెనెన్స్ సమయం"
+description: "Is IRCTC down? IRCTC server maintenance runs daily from 11:45 PM to 12:20 AM IST. Learn night ticket booking limits, payment downtime & reopening times."
 date: "2026-06-23"
 updated: "2026-07-31"
 tags:
@@ -147,3 +147,11 @@ IRCTC సర్వర్ మెయింటెనెన్స్ ప్రతి
 
 ### What is the exact opening time for AC and Non-AC Tatkal bookings?
 AC Tatkal టికెట్ బుకింగ్ ప్రతిరోజూ ఉదయం 10:00 AM ISTకి, Non-AC Tatkal బుకింగ్ ప్రతిరోజూ ఉదయం 11:00 AM ISTకి, రైలు ప్రారంభ స్టేషన్ నుండి బయలుదేరడానికి ఒక రోజు ముందు ప్రారంభమవుతుంది.
+
+
+## రాత్రి వేళ IRCTC మెయింటెనెన్స్ (Maintenance) ఏ సమయానికి ప్రారంభమవుతుంది?
+
+**IRCTC సర్వర్ మెయింటెనెన్స్ ప్రతిరోజూ రాత్రి 11:45 PM IST కి ప్రారంభమై రాత్రి 12:20 AM IST కి ముగుస్తుంది. ఈ 35 నిమిషాల సమయంలో టికెట్ బుకింగ్ మరియు పేమెంట్ గేట్‌వేలు పూర్తిగా పనిచేయవు.**
+
+---
+

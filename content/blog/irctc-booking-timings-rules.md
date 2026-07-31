@@ -1,6 +1,6 @@
 ---
-title: "IRCTC Booking Timings 2026: 60-Day ARP, Tatkal & Night Maintenance Hours"
-description: "Master 2026 IRCTC ticket booking timings: new 60-day ARP advance reservation limit, 11:45 PM–12:20 AM server maintenance window, 10 AM/11 AM Tatkal & current availability."
+title: "IRCTC Maintenance Time 2026: 11:45 PM Night Shutdown Hours"
+description: "Is IRCTC down? IRCTC server maintenance runs daily from 11:45 PM to 12:20 AM IST. Learn night ticket booking limits, payment downtime & reopening times."
 date: "2026-06-23"
 updated: "2026-07-31"
 tags:
@@ -156,6 +156,21 @@ Key guidelines for 60-Day ARP bookings:
 - **Opening Time:** Exactly 8:00 AM IST daily across IRCTC portal, app, and PRS counters.
 - **Exceptions:** Foreign tourist quota retains a 365-day ARP; select short-distance express trains have shorter 30-day or 15-day limits.
 - **Calculation:** Day of journey is excluded; for travel on July 1st, booking opens on May 2nd at 8:00 AM IST.
+
+---
+
+
+
+## What Time Does IRCTC Maintenance Start at Night?
+
+**IRCTC server maintenance starts daily at 11:45 PM IST and ends at 12:20 AM IST. During this 35-minute shutdown window, ticket booking, cancellation, PNR enquiries, and payment gateways are completely offline.**
+
+| Feature / Action | During IRCTC Maintenance (11:45 PM – 12:20 AM) | Reopening Time (12:20 AM IST) |
+|---|---|---|
+| **Ticket Booking (General/Tatkal)** | Unavailable | Fully Operational |
+| **Payment Gateway Connections** | Suspended / Disabled | Restored |
+| **PNR & Train Status Enquiries** | Blocked on App & Website | Available |
+| **Current Availability Search** | Suspended | Resumed |
 
 ---
 

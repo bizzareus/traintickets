@@ -1,8 +1,8 @@
 ---
-title: "ജനറൽ ടിക്കറ്റിൽ സ്ലീപ്പർ യാത്ര: പിഴയും റെയിൽവേ നിയമങ്ങളും 2026"
-description: "ജനറൽ ടിക്കറ്റുമായി സ്ലീപ്പർ കോച്ചിൽ യാത്ര ചെയ്യാമോ? പിഴ തുക (₹500 പിഴ + ടിക്കറ്റ് നിരക്ക് വ്യത്യാസം) വിവരങ്ങൾ."
+title: "General Ticket ഉപയോഗിച്ച് Sleeper Class യാത്ര: പിഴയും TTE നിയമങ്ങളും 2026"
+description: "Can you travel in Sleeper class with a General unreserved ticket? Learn the exact ₹250 fine + fare difference rules, daytime rules & TTE berth allotment."
 date: "2026-06-12"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - general ticket
   - platform ticket
@@ -108,3 +108,10 @@ UTS മൊബൈൽ ആപ്പ് ഉപയോഗിച്ച് നിങ്�
 - [How to Check Vacant Berths After Chart Preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
 - [Should You Change Class to Get a Confirmed Ticket?](/blog/change-class-confirmed-train-ticket)
 - [Indian Railways Coach Composition: Locate Your Coach and Platform](/blog/understanding-coach-composition-find-train-platform)
+
+## ജനറൽ ടിക്കറ്റുമായി സ്ലീപ്പർ ക്ലാസിൽ യാത്ര ചെയ്താൽ എത്ര പിഴ ഈടാക്കും?
+
+**ജനറൽ ടിക്കറ്റുമായി സ്ലീപ്പറിൽ യാത്ര ചെയ്താൽ കുറഞ്ഞത് ₹250 പിഴയും ടിക്കറ്റ് നിരക്കിലെ വ്യത്യാസവും നൽകണം.**
+
+---
+

@@ -1,6 +1,6 @@
 ---
-title: "Vande Bharat Food Rules 2026: Opt-Out Prices, Free Meals & Refund"
-description: "Is catering mandatory on Vande Bharat Express? Compare ₹150–₹350 opt-out ticket savings, ₹50 onboard ordering fee, 3-hour delay free meal rules, and refund policy."
+title: "Vande Bharat Food Rules: Free Meals, Opt-Out & Prices (2026)"
+description: "Is food free on Vande Bharat Express? Meals are included in ticket price, but optional. Learn ₹150–₹350 opt-out savings, ₹50 onboard ordering fee & delay rules."
 date: "2026-07-04"
 updated: "2026-07-31"
 tags:
@@ -132,3 +132,16 @@ You can lodge an immediate complaint with the Train Captain onboard or submit fe
 ### Can you change your food preference after the ticket is booked on IRCTC?
 
 No, IRCTC does not allow online modification of catering options after ticket generation. Any meal addition onboard incurs a ₹50 surcharge per meal.
+
+
+## Is Food Included Free in Vande Bharat Train Tickets?
+
+**Food is not separate or free on Vande Bharat Express; catering charges ranging from ₹150 to ₹350 are automatically included in the total ticket fare. However, passengers can opt out of meals during online booking to save on catering costs.**
+
+Key catering guidelines:
+- **Included in Fare:** Breakfast, tea, lunch, or dinner depending on journey timing.
+- **Opt-Out Savings:** Deselecting catering saves ₹150–₹220 in Chair Car (CC) and ₹250–₹350 in Executive Class (EC).
+- **Onboard Ordering Surcharge:** If you opt out during booking but order meals onboard, IRCTC charges an extra ₹50 service fee per meal.
+
+---
+

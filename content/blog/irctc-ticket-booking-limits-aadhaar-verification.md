@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Booking Limit 2026: 12 vs 24 Tickets (Aadhaar Rules)"
-description: "How many tickets can you book per month in IRCTC? Learn the 12 vs 24 ticket limits, Aadhaar linking steps, daily Tatkal caps, and per-PNR passenger rules."
+title: "IRCTC Ticket Limit 2026: 12 vs 24 Tickets/Month & Aadhaar Rules"
+description: "How many tickets can you book in IRCTC per month? Unverified accounts can book 12 tickets; Aadhaar-linked accounts get 24 tickets. Learn daily & PNR limits."
 date: "2026-06-22"
-updated: "2026-07-30"
+updated: "2026-07-31"
 tags:
   - train booking
   - irctc
@@ -198,3 +198,17 @@ A maximum of 6 passengers can be booked on a single General quota PNR, and a max
 
 ### Do cancelled tickets count towards your monthly IRCTC booking limit?
 Yes, all generated PNRs count towards your monthly 12 or 24 ticket ceiling regardless of whether the ticket is later cancelled.
+
+
+## How Many Train Tickets Can Be Booked from One IRCTC ID in a Day and Month?
+
+**In 2026, an unverified IRCTC user account can book up to 12 tickets per month, while an Aadhaar-verified account can book up to 24 tickets per month. Additionally, a maximum of 6 passengers can be booked on a single PNR ticket, and up to 2 Tatkal tickets per day per user ID.**
+
+Key booking quota limits:
+- **Unverified Monthly Limit:** 12 tickets per user account.
+- **Aadhaar-KYC Monthly Limit:** 24 tickets per user account (requires at least 1 Aadhaar-verified passenger on tickets 13–24).
+- **Single PNR Passenger Limit:** Maximum 6 passengers (4 passengers for Tatkal bookings).
+- **Daily Booking Cap:** Maximum 2 Tatkal PNRs per user account per day between 10:00 AM and 12:00 PM.
+
+---
+

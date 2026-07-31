@@ -1,6 +1,6 @@
 ---
-title: "IRCTC Booking Timings 2026: 60-दिवस ARP नियम, Tatkal व 11:45 PM मेन्टेनन्स"
-description: "Master 2026 IRCTC ticket booking timings: new 60-day ARP advance reservation limit, 11:45 PM–12:20 AM server maintenance window, 10 AM/11 AM Tatkal & current availability."
+title: "IRCTC Maintenance Time 2026: रात्री 11:45 वाजता शटडाऊनची वेळ"
+description: "Is IRCTC down? IRCTC server maintenance runs daily from 11:45 PM to 12:20 AM IST. Learn night ticket booking limits, payment downtime & reopening times."
 date: "2026-06-23"
 updated: "2026-07-31"
 tags:
@@ -157,6 +157,14 @@ AC Tatkal तिकीट बुकिंग दररोज सकाळी 10:
 - **उघडण्याची वेळ:** IRCTC पोर्टल, ॲप आणि स्टेशन काउंटरवर दररोज सकाळी 8:00 वाजता IST.
 - **अपवाद:** परदेशी पर्यटक कोटा 365 दिवसांचा ARP ठेवतो; काही लहान अंतराच्या एक्सप्रेस गाड्यांसाठी 30 किंवा 15 दिवसांची मर्यादा आहे.
 - **गणना:** प्रवासाचा दिवस वगळला जातो; 1 जुलैच्या प्रवासासाठी बुकिंग 2 मे रोजी सकाळी 8:00 वाजता उघडते.
+
+---
+
+
+
+## रात्री IRCTC मेन्टेनन्स (Maintenance) किती वाजता सुरू होते?
+
+**IRCTC सर्व्हर मेन्टेनन्स दररोज रात्री 11:45 वाजता IST सुरू होतो आणि रात्री 12:20 वाजता IST संपतो. या 35 मिनिटांच्या काळात तिकीट बुकिंग, रद्द करणे आणि पेमेंट गेटवे पूर्णपणे बंद राहतात.**
 
 ---
 

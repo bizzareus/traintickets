@@ -1,8 +1,8 @@
 ---
-title: "जनरल तिकिटावर स्लीपर प्रवास: दंड आणि रेल्वे नियम 2026"
-description: "जनरल तिकिटावर स्लीपर डब्यात प्रवास करता येतो का? दंडाची रक्कम (₹५०० दंड + भाड्याचा फरक) आणि TTE नियम."
+title: "General Ticket ने Sleeper Class मध्ये प्रवास: दंड आणि TTE नियम 2026"
+description: "Can you travel in Sleeper class with a General unreserved ticket? Learn the exact ₹250 fine + fare difference rules, daytime rules & TTE berth allotment."
 date: "2026-06-12"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - सामान्य तिकीट
   - प्लॅटफॉर्म तिकीट
@@ -108,3 +108,10 @@ tags:
 - [How to Check Vacant Berths After Chart Preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
 - [Should You Change Class to Get a Confirmed Ticket?](/blog/change-class-confirmed-train-ticket)
 - [Indian Railways Coach Composition: Locate Your Coach and Platform](/blog/understanding-coach-composition-find-train-platform)
+
+## जनरल तिकीट घेऊन स्लीपर क्लासमध्ये प्रवास केल्यास किती दंड होतो?
+
+**जनरल तिकिटावर स्लीपर क्लासमध्ये प्रवास केल्यास किमान ₹250 दंड आणि दोन्ही क्लासमधील फरकाची रक्कम द्यावी लागते.**
+
+---
+

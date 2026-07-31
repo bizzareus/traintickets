@@ -1,6 +1,6 @@
 ---
-title: "Vande Bharat Food Rules 2026: ఫుడ్ ఆప్ట్-అవుట్ పొదుపు, ఉచిత భోజనం & రీఫండ్ నిబంధనలు"
-description: "Is catering mandatory on Vande Bharat Express? Compare ₹150–₹350 opt-out ticket savings, ₹50 onboard ordering fee, 3-hour delay free meal rules, and refund policy."
+title: "Vande Bharat Food Rules 2026: ఉచిత భోజనం, ఆప్ట్-అవుట్ పొదుపు & ధరలు"
+description: "Is food free on Vande Bharat Express? Meals are included in ticket price, but optional. Learn ₹150–₹350 opt-out savings, ₹50 onboard ordering fee & delay rules."
 date: "2026-07-04"
 updated: "2026-07-31"
 tags:
@@ -134,6 +134,14 @@ IRCTC బుకింగ్ సమయంలో Catering Preferences కింద
 - **ఆలస్య పరిమితి:** ప్రారంభ స్టేషన్ నుండి 3 గంటల కంటే ఎక్కువ.
 - **భోజనం సమయాలు:** సమయాన్ని బట్టి వడ్డిస్తారు (ఉదయం 7-10 టిఫిన్, మధ్యాహ్నం 12-2 భోజనం, సాయంత్రం 4-6 స్నాక్స్, రాత్రి 8-10 డిన్నర్).
 - **ఎలాంటి రుసుము లేదు:** "No Food" ఎంచుకున్న వారికి కూడా ఉచిత భోజనం అందుతుంది.
+
+---
+
+
+
+## వందే భారత్ రైలు టికెట్‌లో భోజనం ఉచితంగా ఉంటుందా?
+
+**వందే భారత్ ఎక్స్‌ప్రెస్‌లో భోజనం ఉచితం కాదు; ₹150 నుండి ₹350 వరకు కేటరింగ్ ఛార్జీలు టికెట్ ధరలోనే ఉంటాయి. బుకింగ్ సమయంలో వద్దనుకుంటే డబ్బులు ఆదా అవుతాయి.**
 
 ---
 

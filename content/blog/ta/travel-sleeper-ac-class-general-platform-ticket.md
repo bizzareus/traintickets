@@ -1,8 +1,8 @@
 ---
-title: "ஜெனரல் டிக்கெட்டில் ஸ்லீப்பர் பயணம்: அபராதம் & விதிகள் 2026"
-description: "ஜெனரல் டிக்கெட்டுடன் ஸ்லீப்பர் பெட்டியில் பயணிக்கலாமா? அபராதத் தொகை (₹500 + கட்டண வித்தியாசம்) மற்றும் TTE விதிகள்."
+title: "General Ticket மூலம் Sleeper Class பயணம்: அபராதம் & TTE விதிகள் 2026"
+description: "Can you travel in Sleeper class with a General unreserved ticket? Learn the exact ₹250 fine + fare difference rules, daytime rules & TTE berth allotment."
 date: "2026-06-12"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - general ticket
   - platform ticket
@@ -110,3 +110,10 @@ UTS மொபைல் செயலியைப் பயன்படுத்�
 - [How to Check Vacant Berths After Chart Preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
 - [Should You Change Class to Get a Confirmed Ticket?](/blog/change-class-confirmed-train-ticket)
 - [Indian Railways Coach Composition: Locate Your Coach and Platform](/blog/understanding-coach-composition-find-train-platform)
+
+## ஜெனரல் டிக்கெட்டுடன் ஸ்லீப்பர் வகுப்பில் பயணித்தால் எவ்வளவு அபராதம்?
+
+**ஜெனரல் டிக்கெட்டில் ஸ்லீப்பர் வகுப்பில் பயணித்தால் குறைந்தபட்சம் ₹250 அபராதம் மற்றும் கட்டண வித்தியாசம் வசூலிக்கப்படும்.**
+
+---
+

@@ -1,8 +1,8 @@
 ---
-title: "జనరల్ టికెట్‌తో స్లీపర్ ప్రయాణం: జరిమానా & నిబంధనలు 2026"
-description: "జనరల్ టికెట్‌తో స్లీపర్ కోచ్‌లో ప్రయాణించవచ్చా? జరిమానా గణన (₹500 పెనాల్టీ + ఛార్జీల వ్యత్యాసం) మరియు వివరాలు."
+title: "General Ticket తో Sleeper Class లో ప్రయాణం: జరిమానా & TTE నిబంధనలు 2026"
+description: "Can you travel in Sleeper class with a General unreserved ticket? Learn the exact ₹250 fine + fare difference rules, daytime rules & TTE berth allotment."
 date: "2026-06-12"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - general ticket
   - platform ticket
@@ -110,3 +110,10 @@ If you've already boarded a Sleeper or AC coach with a general or platform ticke
 - [How to Check Vacant Berths After Chart Preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
 - [Should You Change Class to Get a Confirmed Ticket?](/blog/change-class-confirmed-train-ticket)
 - [Indian Railways Coach Composition: Locate Your Coach and Platform](/blog/understanding-coach-composition-find-train-platform)
+
+## జనరల్ టికెట్‌తో స్లీపర్ క్లాస్‌లో ప్రయాణిస్తే ఎంత జరిమానా పడుతుంది?
+
+**జనరల్ టికెట్‌పై స్లీపర్ క్లాస్‌లో ప్రయాణిస్తే కనీసం ₹250 జరిమానా మరియు టికెట్ ఛార్జీల వ్యత్యాసం చెల్లించాలి.**
+
+---
+

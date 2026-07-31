@@ -1,8 +1,8 @@
 ---
-title: "Sleeper Travel with General Ticket: Fines & Rules 2026"
-description: "Can you travel in Sleeper Class with a general ticket? See exact fine calculation (₹500 penalty + fare difference), TTE rules, and platform ticket steps."
+title: "General Ticket in Sleeper Class: Fine Amount & TTE Rules 2026"
+description: "Can you travel in Sleeper class with a General unreserved ticket? Learn the exact ₹250 fine + fare difference rules, daytime rules & TTE berth allotment."
 date: "2026-06-12"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - general ticket
   - platform ticket
@@ -155,3 +155,16 @@ You can book general and platform tickets on your phone using the UTS mobile app
 - [Should You Change Class to Get a Confirmed Ticket?](/blog/change-class-confirmed-train-ticket)
 - [Train Classes Explained: 1A, 2A, 3A, 3E, Sleeper & Chair Car](/blog/train-classes-explained-1a-2a-3a-3e-sleeper-chair-car)
 - [Indian Railways Coach Composition: Locate Your Coach and Platform](/blog/understanding-coach-composition-find-train-platform)
+
+
+## What Is the Fine for Traveling in Sleeper Class with a General Ticket?
+
+**If you travel in Sleeper Class with a General unreserved ticket, Indian Railways rules mandate a minimum fine of ₹250 plus the difference in fare between General and Sleeper class from your boarding point to your destination station.**
+
+Key penalty and authorization guidelines:
+- **Minimum Fine:** ₹250 flat penalty charged under Section 138 of the Indian Railways Act.
+- **Fare Difference:** Difference between unreserved General fare and Sleeper class fare for the traveled distance.
+- **TTE Seat Allotment:** If vacant berths exist after chart prep, the Traveling Ticket Examiner (TTE) can issue an Excess Fare Ticket (EFT) to regularize your journey legally.
+
+---
+

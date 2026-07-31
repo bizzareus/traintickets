@@ -1,6 +1,6 @@
 ---
-title: "Vande Bharat Food Rules 2026: உணவு விலகல் சேமிப்பு, இலவச உணவு & ரீஃபண்ட் விதிகள்"
-description: "Is catering mandatory on Vande Bharat Express? Compare ₹150–₹350 opt-out ticket savings, ₹50 onboard ordering fee, 3-hour delay free meal rules, and refund policy."
+title: "Vande Bharat Food Rules 2026: இலவச உணவு, விலகல் சேமிப்பு & கட்டணம்"
+description: "Is food free on Vande Bharat Express? Meals are included in ticket price, but optional. Learn ₹150–₹350 opt-out savings, ₹50 onboard ordering fee & delay rules."
 date: "2026-07-04"
 updated: "2026-07-31"
 tags:
@@ -80,6 +80,14 @@ tags:
 - **தாமத வரம்பு:** புறப்படும் நிலையத்திலிருந்து 3 மணி நேரத்திற்கு மேல் தாமதம்.
 - **உணவு வகை:** நேரத்திற்கு ஏற்ப வழங்கப்படும் (காலை 7-10 சிற்றுண்டி, மதியம் 12-2 மதிய உணவு, மாலை 4-6 ஸ்நாக்ஸ், இரவு 8-10 இரவு உணவு).
 - **கட்டணம் இல்லை:** "No Food" தேர்வு செய்த பயணிகளுக்கும் இலவச உணவு கிடைக்கும்.
+
+---
+
+
+
+## வந்தே பாரத் ரயில் டிக்கெட்டில் உணவு இலவசமாக சேர்க்கப்பட்டுள்ளதா?
+
+**வந்தே பாரத் எக்ஸ்பிரஸில் உணவு இலவசம் அல்ல; ₹150 முதல் ₹350 வரையிலான உணவுக் கட்டணம் டிக்கெட் கட்டணத்தில் சேர்க்கப்படும். முன்பதிவின் போது உணவைத் தவிர்த்து சேமிக்கலாம்.**
 
 ---
 

@@ -1,8 +1,8 @@
 ---
-title: "IRCTC करंट उपलब्धता (CURR_AVBL): अर्थ, वेळ आणि नियम 2026"
-description: "CURR_AVBL म्हणजे कन्फर्म तिकीट का? चार्ट तयार झाल्यावर करंट बुकिंग कधी सुरू होते आणि तिकीट नियम."
+title: "Current Availability IRCTC 2026: उघडण्याची वेळ व कन्फर्म स्थिती"
+description: "What does CURR_AVBL mean in IRCTC? Current availability tickets are 100% confirmed berths with coach numbers, opening 4 hours before train departure."
 date: "2026-06-11"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - वर्तमान उपलब्धता
   - रिक्तता चार्ट
@@ -372,4 +372,12 @@ Yes, you can book current availability tickets for intermediate stations up unti
 ### What happens if a current availability ticket remains unbooked before train departure?
 
 Unbooked current availability berths are handed over to the onboard Train Ticket Examiner (TTE) to allocate to RAC passengers or unreserved ticket holders onboard.
+
+
+
+## IRCTC ट्रेन तिकिटावर CURR_AVBL चा अर्थ काय आहे आणि ते कन्फर्म असते का?
+
+**होय, IRCTC तिकिटावरील CURR_AVBL (Current Availability) म्हणजे ती सीट 100% कन्फर्म आहे आणि बुकिंगनंतर लगेचच डबा आणि सीट क्रमांक मिळतो.**
+
+---
 
