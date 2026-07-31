@@ -2,7 +2,7 @@
 title: "IRCTC Retiring Room & Dormitory Rules 2026: Booking & Rates"
 description: "How to book an IRCTC retiring room or dormitory online using your PNR: hourly rates, CNF/RAC eligibility rules, stay limits, and cancellation charges 2026."
 date: "2026-06-18"
-updated: "2026-07-27"
+updated: "2026-07-31"
 tags:
   - retiring room
   - irctc booking
