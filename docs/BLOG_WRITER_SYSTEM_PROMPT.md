@@ -80,6 +80,11 @@ writing new ones** — Google rewards depth and freshness, and new thin posts ca
 | High-intent query, **decent impressions**, **zero coverage** in inventory | **WRITE NEW** | Create a new post (+ 6 translations). |
 | **Two of our pages** compete for the same query | **CONSOLIDATE** | Pick the canonical page, expand it, and add internal links from the weaker one (don't delete without reason). |
 
+### 4.1. Weekly Intent-Matching & Candidate Queue Automation
+Every week (or during scheduled triage runs), query signals with recent impression growth are cross-checked against the site sitemap & existing markdown content (`content/blog/*.md`) via `scripts/seo-weekly-intent-matcher.py`:
+- **Match Found (Intent Overlap ≥ 50%):** Routed to **EXPAND / CTR REWRITE** on the target existing page.
+- **No Match Found (Intent Overlap < 50%):** Added to **`memory/new-keyword-candidates.md`** for user review and automated article generation via Playbook D.
+
 ### Prioritisation within a run
 1. **Highest impressions × weakest position that we can realistically move** (a pos-9 query
    with 300 impressions beats a pos-3 query with 50).
