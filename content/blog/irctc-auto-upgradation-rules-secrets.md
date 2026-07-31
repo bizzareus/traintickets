@@ -1,6 +1,6 @@
 ---
 title: "IRCTC Auto Upgradation Rules 2026: Free Upgrades, Meaning & TTE Chart"
-description: "What does "Consider for Auto Upgradation" mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, zero extra fee rules, and PNR eligibility in 2026."
+description: "What does 'Consider for Auto Upgradation' mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, zero extra fee rules, and PNR eligibility in 2026."
 date: "2026-06-16"
 updated: "2026-07-31"
 tags:
