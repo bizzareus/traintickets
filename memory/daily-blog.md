@@ -168,6 +168,11 @@ blogs have historically under-linked the tools — so **blog→tool CTAs are a r
 its baseline table (fresh GSC Pages export + PostHog) and record the result / decide
 keep-iterate-revert per its guardrails.
 
+**D. Automated Intent-Matching & Candidate Queue (Sitemap Cross-Check):**
+Run `python3 scripts/seo-weekly-intent-matcher.py` to cross-check extracted high-impression keywords against the sitemap & existing inventory (`content/blog/*.md`):
+- **Intent Match Found (Score ≥ 50%):** Route the keyword directly to the target existing page for **Playbook A (EXPAND)** or **Playbook A-CTR (CTR Fix)** (mobile-first ≤58ch title, H2 fan-out, top CTA).
+- **No Intent Match (Score < 50%):** Append the keyword to **`memory/new-keyword-candidates.md`** for user review and automated generation via **Playbook D (WRITE NEW)**.
+
 **If GSC + Trends are unreachable** (no Chrome, no CSV): PostHog is still reachable over MCP, so
 prefer a **conversion-led action** — pull the Step 0C funnel and ship the highest-impact
 Playbook E CTA (or flag a tool-error bug) rather than guessing at SEO. Only if PostHog is also
