@@ -123,6 +123,14 @@ Site context: 1K clk / **143K impr** / 0.70% CTR / pos 6.9 (28d ending 07-11). M
   - irctc-booking-failed-money-deducted-refund-rules (8,971 impr / 0.5% CTR bleeder / pos 6.7 → title "IRCTC Booking Failed, Money Deducted? Refund Timeline 2026" + top CTA + updated date). Target ≥0.9% CTR, pos within ±1.5.
   - how-to-travel-with-dog-cat-indian-railways-pet-rules (2,278 impr / 0.75% CTR / pos 7.7 → title "How to Travel with Dogs & Cats in Indian Railways (Pet Rules 2026)" + top CTA + updated date). Target ≥1.1% CTR, pos within ±1.5.
 
+## Addendum — 2026-07-31 batch (signal-driven triage & fact refresh; re-check on same dates)
+- **CTR retitle + EXPAND + REFRESH + CTA (5-item batch across EN + 6 locale files = 35 files):**
+  - train-classes-explained-1a-2a-3a-3e-sleeper-chair-car (15,033 impr / 0.22% CTR / pos 8.25 → title "Train Classes Explained 2026: 1A, 2A, 3A, 3E, SL & CC Fares" (56 ch) + UB/MB/LB/SL/SU/SM berth code section added across all 6 translated files). Target ≥0.6% CTR, pos within ±1.5.
+  - irctc-master-list-add-passenger-tatkal-speed-guide (1,212 impr / 0.30% CTR / pos 6.1 → title "IRCTC Master List: Save Passenger Details for Faster Tatkal (2026)" (58 ch) + top CTA + Aadhaar 24-ticket limit section). Target ≥0.8% CTR, pos within ±1.5.
+  - irctc-booking-timings-rules (6,080 impr / 0.38% CTR / pos 4.2 → title "IRCTC Booking Timings 2026: 60-Day ARP, Tatkal & Night Maintenance Hours" (59 ch) + top CTA + 120-day to 60-day ARP text/table/FAQ refresh + 60-day ARP H2 section). Target ≥0.8% CTR, pos within ±1.5.
+  - vande-bharat-food-booking-opt-out-refund-rules (5,805 impr / 1.10% CTR / pos 4.9 → title "Vande Bharat Food Rules 2026: Opt-Out Prices, Free Meals & Refund" (56 ch) + top CTA + 3-hour delay free meal rule section). Target ≥1.5% CTR, pos within ±1.5.
+  - irctc-auto-upgradation-rules-secrets (8,062 impr / 0.53% CTR / pos 7.3 → title "IRCTC Auto Upgradation Rules 2026: Free Upgrades, Meaning & TTE Chart" (59 ch) + top CTA + direct-answer fan-out H2s verified). Target ≥1.0% CTR, pos within ±1.5.
+
 ## Check-back dates
 
 - **2026-08-03 (~4 wks):** early read. Confirm new titles are live in SERP (spot-check). First CTR/position movement in GSC. PostHog: CTA clicks flowing?

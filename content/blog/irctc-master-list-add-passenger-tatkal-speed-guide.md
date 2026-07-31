@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Master List: Save 20 Passengers for Faster Tatkal"
-description: "Create your IRCTC Master List to pre-save up to 20 passengers, skip typing in the Tatkal rush, and book confirmed tickets in seconds. Step-by-step 2026 guide."
+title: "IRCTC Master List: Save Passenger Details for Faster Tatkal (2026)"
+description: "Save up to 20 passengers in your IRCTC Master List to skip manual typing during Tatkal rush hours. Learn 2026 Aadhaar verification tricks & speed hacks."
 date: "2026-07-06"
-updated: "2026-07-11"
+updated: "2026-07-31"
 tags:
   - train booking
   - irctc
@@ -10,6 +10,8 @@ tags:
   - tatkal booking
   - add passenger
 ---
+> **Tatkal opens in minutes? Skip typing and check seats:** Use your pre-saved IRCTC Master List, then monitor live seat confirmation odds with [Smart Seats](/) and track post-chart prep vacant berths on [Chart Vacancy](/chart-vacancy).
+
 
 Every second counts in the Tatkal window. At 10:00 AM sharp for AC classes and 11:00 AM for sleeper, thousands of people are all fighting for the same handful of seats. The people who lose are almost never the ones with a slow internet connection. They are the ones still typing "R-A-J-E-S-H, age 34, male, lower berth" into the passenger form while the confirmed seats vanish.
 

@@ -1,8 +1,8 @@
 ---
-title: "IRCTC ഓട്ടോ അപഗ്രേഡേഷൻ നിയമങ്ങൾ 2026: ഇത് സൗജന്യമാണോ?"
-description: "IRCTC-യിൽ 'Consider for Auto Upgradation' എന്നാൽ എന്താണ്? സ്ലീപ്പറിൽ നിന്ന് AC-യിലേക്ക് സൗജന്യ അപ്‌ഗ്രേഡ് ലഭിക്കുന്ന വിധം."
+title: "IRCTC Auto Upgradation 2026: സ്ലീപ്പർ ടു AC സൗജന്യ അപ്ഗ്രേഡ് നിയമങ്ങൾ"
+description: "What does "Consider for Auto Upgradation" mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, zero extra fee rules, and PNR eligibility in 2026."
 date: "2026-06-16"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - irctc ഓട്ടോ അപ്ഗ്രേഡേഷൻ
   - സൗജന്യ ട്രെയിൻ അപ്ഗ്രേഡേഷൻ
@@ -10,6 +10,8 @@ tags:
   - ഇന്ത്യൻ റെയിൽവേസ്
   - കോച്ച് അപ്ഗ്രേഡേഷൻ
 ---
+> **നിങ്ങളുടെ ടിക്കറ്റ് അപ്ഗ്രേഡ് ആയോ?** [Smart Seats](/) വഴി ലൈവ് PNR സ്റ്റാറ്റസ് പരിശോധിക്കൂ, [Chart Vacancy](/chart-vacancy) വഴി ഒഴിവുള്ള ബർത്തുകൾ കണ്ടെത്തൂ.
+
 
 > **നിങ്ങളുടെ ടിക്കറ്റ് അപ്ഗ്രേഡ് ചെയ്യപ്പെട്ടോ?** [Smart Seats](/) ഉപയോഗിച്ച് നിങ്ങളുടെ തത്സമയ PNR നില പരിശോധിക്കുക, കൂടാതെ ചാർട്ട് തയ്യാറാക്കിയ ശേഷം സിസ്റ്റം സ്ഥിരീകരിച്ച യാത്രക്കാരെ അപ്ഗ്രേഡ് ചെയ്യുന്ന ഒഴിവുള്ള ഉയർന്ന-ക്ലാസ് ബെർത്തുകൾ കാണാൻ [Chart Vacancy](/chart-vacancy) ഉപയോഗിക്കുക.
 

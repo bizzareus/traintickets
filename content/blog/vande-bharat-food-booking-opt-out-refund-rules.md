@@ -1,8 +1,8 @@
 ---
-title: "Is Vande Bharat Food Mandatory? Opt-Out Price & Refunds (2026)"
-description: "Is catering mandatory on Vande Bharat trains? Learn the ₹150–₹350 opt-out savings, ₹50 onboard ordering fee, and how to get refunds for missed meals."
+title: "Vande Bharat Food Rules 2026: Opt-Out Prices, Free Meals & Refund"
+description: "Is catering mandatory on Vande Bharat Express? Compare ₹150–₹350 opt-out ticket savings, ₹50 onboard ordering fee, 3-hour delay free meal rules, and refund policy."
 date: "2026-07-04"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - train booking
   - irctc
@@ -10,6 +10,8 @@ tags:
   - catering rules
   - food refund
 ---
+> **Travelling on Vande Bharat?** Compare seat availability and PNR status across classes on [Smart Seats](/), check meal opt-out pricing rules below, and track coach layouts using [Coach Journey Lookup](/seat-status).
+
 
 > **Travelling on a Vande Bharat?** Check live seat availability and PNR status with [Smart Seats](/), or look up coach layouts and vacant berths along your route using [Coach Journey Lookup](/seat-status).
 
@@ -71,6 +73,17 @@ During booking on IRCTC, select "No Food" under catering preferences to opt out 
 ## What Food is Provided in Executive Class vs Chair Car on Vande Bharat Express?
 
 Executive Class (EC) offers premium meal options including welcome drinks, high-tea snacks, and multi-course meals served with superior cutlery, while AC Chair Car (CC) provides standard vegetarian or non-vegetarian boxed meals and tea/coffee.
+
+---
+
+## Is Food Free on Vande Bharat Trains if Delayed by More Than 3 Hours?
+
+**Yes, Indian Railways rules mandate that if a premium train like Vande Bharat, Rajdhani, or Shatabdi is delayed by more than 3 hours, free meals, refreshments, and bottled water must be provided to ALL passengers on board, regardless of whether they opted out of catering during booking.**
+
+Key delay catering rules:
+- **Delay Threshold:** Must exceed 3 hours from originating station or key junctions.
+- **Meal Type:** Served based on timing (Breakfast between 7–10 AM, Lunch 12–2 PM, Tea/Snacks 4–6 PM, Dinner 8–10 PM).
+- **No Opt-Out Penalty:** Even passengers who selected "No Food" receive emergency delay catering free of cost.
 
 ---
 

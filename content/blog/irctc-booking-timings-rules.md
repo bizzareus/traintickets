@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Booking Timings 2026: Tatkal & Maintenance Hours"
-description: "Complete IRCTC booking timings guide. Includes 23:45–00:20 night maintenance window shutdown, 10 AM/11 AM Tatkal opening hours, and current availability."
+title: "IRCTC Booking Timings 2026: 60-Day ARP, Tatkal & Night Maintenance Hours"
+description: "Master 2026 IRCTC ticket booking timings: new 60-day ARP advance reservation limit, 11:45 PM–12:20 AM server maintenance window, 10 AM/11 AM Tatkal & current availability."
 date: "2026-06-23"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - train booking
   - irctc
@@ -146,3 +146,16 @@ IRCTC server maintenance starts every night at 11:45 PM IST and ends at 12:20 AM
 
 ### What is the exact opening time for AC and Non-AC Tatkal bookings?
 AC Tatkal ticket booking opens daily at 10:00 AM IST, while Non-AC Tatkal booking opens daily at 11:00 AM IST, one day prior to the train's departure from its originating station.
+
+
+## How Does the 60-Day Advance Reservation Period (ARP) Rule Work in 2026?
+
+**Under Indian Railways rules in 2026, general advance ticket reservation opens daily at 8:00 AM IST exactly 60 days before the journey date (excluding departure day). This reduced 60-day limit prevents artificial ticket hoarding and agent blockings while giving genuine travelers better booking access.**
+
+Key guidelines for 60-Day ARP bookings:
+- **Opening Time:** Exactly 8:00 AM IST daily across IRCTC portal, app, and PRS counters.
+- **Exceptions:** Foreign tourist quota retains a 365-day ARP; select short-distance express trains have shorter 30-day or 15-day limits.
+- **Calculation:** Day of journey is excluded; for travel on July 1st, booking opens on May 2nd at 8:00 AM IST.
+
+---
+

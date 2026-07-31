@@ -1,8 +1,8 @@
 ---
-title: "IRCTC মাস্টার লিস্ট: 20 যাত্রী সেভ করে Tatkal দ্রুত বুক করুন"
-description: "আপনার IRCTC মাস্টার লিস্ট তৈরি করে 20 জন যাত্রী পর্যন্ত আগে থেকে সেভ করুন, Tatkal-এর ভিড়ে টাইপিং এড়ান এবং সেকেন্ডেই কনফার্ম টিকিট বুক করুন। ধাপে ধাপে 2026 গাইড।"
+title: "IRCTC Master List 2026: Tatkal বুকিং দ্রুত করতে যাত্রী সংরক্ষণ নির্দেশিকা"
+description: "Save up to 20 passengers in your IRCTC Master List to skip manual typing during Tatkal rush hours. Learn 2026 Aadhaar verification tricks & speed hacks."
 date: "2026-07-06"
-updated: "2026-07-11"
+updated: "2026-07-31"
 tags:
   - train booking
   - irctc
@@ -10,6 +10,8 @@ tags:
   - tatkal booking
   - add passenger
 ---
+> **তৎকাল খুলতে চলেছে? টাইপিং এড়িয়ে সিট দেখুন:** আপনার পূর্ব-সংরক্ষিত IRCTC Master List ব্যবহার করুন, তারপর [Smart Seats](/) এ লাইভ সিট নিশ্চিতকরণের সম্ভাবনা দেখুন এবং [Chart Vacancy](/chart-vacancy) দিয়ে চার্ট তৈরির পর খালি বার্থ ট্র্যাক করুন।
+
 
 Tatkal উইন্ডোতে প্রতিটি সেকেন্ড গুরুত্বপূর্ণ। AC ক্লাসের জন্য ঠিক সকাল ১০টায় এবং স্লিপারের জন্য ১১টায়, হাজার হাজার মানুষ একই মুষ্টিমেয় সিটের জন্য একসাথে লড়াই করছে। যারা হারে তারা প্রায় কখনোই ধীর ইন্টারনেটের লোক নয়। তারা তারাই যারা কনফার্ম সিট উধাও হয়ে যাওয়ার সময় এখনও "R-A-J-E-S-H, বয়স ৩৪, পুরুষ, লোয়ার বার্থ" টাইপ করছে।
 

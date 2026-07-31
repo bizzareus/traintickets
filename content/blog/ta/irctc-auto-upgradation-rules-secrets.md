@@ -1,8 +1,8 @@
 ---
-title: "IRCTC ஆட்டோ அப்கிரேடேஷன் விதிகள் 2026: இது இலவசமா?"
-description: "IRCTC-இல் 'Consider for Auto Upgradation' என்றால் என்ன? ஸ்லீப்பரிலிருந்து AC-க்கு இலவச அப்கிரேட் விதிகள்."
+title: "IRCTC Auto Upgradation 2026: ஸ்லீப்பர் டு AC இலவச அப் கிரேடு விதிகள்"
+description: "What does "Consider for Auto Upgradation" mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, zero extra fee rules, and PNR eligibility in 2026."
 date: "2026-06-16"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - irctc auto upgradation
   - free train upgrade
@@ -10,6 +10,8 @@ tags:
   - indian railways
   - coach upgrade
 ---
+> **உங்கள் டிக்கெட் அப் கிரேட் செய்யப்பட்டதா?** [Smart Seats](/) மூலம் நேரலை PNR நிலையைப் பார்க்கவும், மேலும் [Chart Vacancy](/chart-vacancy) மூலம் காலியிடங்களைப் பார்க்கவும்.
+
 
 > **உங்கள் டிக்கெட் அப்கிரேடு ஆனதா?** [Smart Seats](/) மூலம் உங்கள் நேரடி PNR நிலையைச் சரிபார்க்கவும், மேலும் அட்டவணை தயாரிப்புக்குப் பிறகு உறுதிப்படுத்தப்பட்ட பயணிகளை அமைப்பு அப்கிரேடு செய்யும் காலியான மேலான-வகுப்பு இடங்களைப் பார்க்க [Chart Vacancy](/chart-vacancy) ஐப் பயன்படுத்தவும்.
 

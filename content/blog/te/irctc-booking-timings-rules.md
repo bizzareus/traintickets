@@ -1,14 +1,16 @@
 ---
-title: "IRCTC బుకింగ్ సమయాలు 2026: తత్కాల్ & నిర్వహణ వేళలు"
-description: "IRCTC టికెట్ బుకింగ్ సమయాల గైడ్. రాత్రి 11:45 నుండి 12:20 వరకు సర్వర్ నిలిపివేత మరియు తత్కాల్ సమయాలు."
+title: "IRCTC Booking Timings 2026: 60-రోజుల ARP నిబంధన, Tatkal మరియు నైట్ మెయింటెనెన్స్"
+description: "Master 2026 IRCTC ticket booking timings: new 60-day ARP advance reservation limit, 11:45 PM–12:20 AM server maintenance window, 10 AM/11 AM Tatkal & current availability."
 date: "2026-06-23"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - రైలు బుకింగ్
   - irctc
   - బుకింగ్ సమయాలు
   - నిర్వహణ విండో
 ---
+> **సరైన సమయంలో బుకింగ్ చేయడానికి సిద్ధంగా ఉన్నారా?** [Smart Seats](/) ద్వారా లైవ్ సీట్ లభ్యత మరియు PNR స్టేటస్ చూడండి, [Chart Times](/chart-times) తో చార్ట్ టైమింగ్స్ ట్రాక్ చేయండి మరియు [Chart Vacancy](/chart-vacancy) ద్వారా ఖాళీ బర్త్‌లను చూడండి.
+
 
 > **సరైన సమయంలో బుక్ చేయడానికి సిద్ధంగా ఉన్నారా?** [Smart Seats](/) తో లైవ్ అందుబాటు మరియు మీ PNR స్థితిని తనిఖీ చేయండి, మరియు చార్ట్ సిద్ధమైన తర్వాత, [Chart Vacancy](/chart-vacancy) తో మీ రైలులో ఖాళీగా ఉన్న వాస్తవ బెర్త్‌లను చూడండి — Tatkal మరియు చివరి నిమిషం ప్రస్తుత అందుబాటు సీట్ల కోసం సరైనది.
 

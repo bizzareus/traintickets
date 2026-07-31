@@ -1,8 +1,8 @@
 ---
-title: "Train Classes Explained 2026: 1A, 2A, 3A, 3E, SL & CC Fares"
+title: "Train Classes Explained 2026: 1A, 2A, 3A, 3E, SL & CC Berth Fares"
 description: "Confused by train class codes? Compare 1A, 2A, 3A, 3E, Sleeper, Chair Car & 2S — fares, bedding, layout differences, and which class to book on IRCTC in 2026."
 date: "2026-07-06"
-updated: "2026-07-27"
+updated: "2026-07-31"
 tags:
   - train booking
   - irctc
@@ -188,7 +188,7 @@ When Sleeper is packed but 3E has room, or when 3A is WL but 2A on the next trai
 
 ---
 
-## What do UB, MB, LB, SL, and SU mean on train tickets?
+## What do UB, MB, LB, SL, SU, and SM mean in train classes?
 
 **These abbreviations represent berth position codes on Indian Railways tickets: LB stands for Lower Berth, MB for Middle Berth, UB for Upper Berth, SL for Side Lower Berth, and SU for Side Upper Berth. In 3AC Economy (3E) coaches, SM represents Side Middle Berth.**
 

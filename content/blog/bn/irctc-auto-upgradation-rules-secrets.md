@@ -1,8 +1,8 @@
 ---
-title: "IRCTC অটো আপগ্রেডেশন নিয়ম 2026: এটি কি বিনামূল্যে? (SL থেকে AC)"
-description: "IRCTC-তে 'Consider for Auto Upgradation'-এর অর্থ কী? স্লিপার থেকে ৩এসি-তে বিনামূল্যে আপগ্রেডের নিয়ম।"
+title: "IRCTC Auto Upgradation 2026: স্লিপার থেকে AC বিনামূল্যে আপগ্রেড নিয়ম"
+description: "What does "Consider for Auto Upgradation" mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, zero extra fee rules, and PNR eligibility in 2026."
 date: "2026-06-16"
-updated: "2026-07-29"
+updated: "2026-07-31"
 tags:
   - irctc auto upgradation
   - free train upgrade
@@ -10,6 +10,8 @@ tags:
   - indian railways
   - coach upgrade
 ---
+> **আপনার টিকিট কি আপগ্রেড হয়েছে?** [Smart Seats](/) দিয়ে আপনার লাইভ PNR স্ট্যাটাস দেখুন এবং চার্ট তৈরির পর খালি বার্থ দেখতে [Chart Vacancy](/chart-vacancy) ব্যবহার করুন।
+
 
 > **আপনার টিকিট কি আপগ্রেড হয়েছে?** [Smart Seats](/) দিয়ে আপনার লাইভ PNR স্ট্যাটাস চেক করুন, এবং [Chart Vacancy](/chart-vacancy) ব্যবহার করে সেই খালি উচ্চ-ক্লাস বার্থগুলি দেখুন যেগুলিতে সিস্টেম চার্ট প্রস্তুতির পরে নিশ্চিত যাত্রীদের আপগ্রেড করে।
 
