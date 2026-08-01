@@ -12,11 +12,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "LNL",
@@ -25,11 +25,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "BSR",
@@ -38,11 +38,11 @@
       "departureTime": "00:35",
       "day": 2,
       "distance": "191.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSR"
     },
     {
       "stationCode": "ST",
@@ -51,11 +51,11 @@
       "departureTime": "03:22",
       "day": 2,
       "distance": "406.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSR"
     },
     {
       "stationCode": "ADI",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "635.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSR"
     }
   ],
-  "summary": "Reservation chart preparation times for Adi Duronto (12298) from PUNE to ADI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
-  "generatedAt": "2026-07-02T17:19:27.531Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Adi Duronto (12298) is prepared at Pune Jn (PUNE) around 11:06 AM, with a second (vacancy) chart around 8:45 PM. 5 of 5 stations on the PUNE to ADI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:00:20.445Z",
+  "knownChartCount": 5
 }

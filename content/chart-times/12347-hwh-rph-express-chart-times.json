@@ -12,11 +12,11 @@
       "departureTime": "12:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "KQU",
@@ -25,11 +25,11 @@
       "departureTime": "12:37",
       "day": 1,
       "distance": "33.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "BWN",
@@ -38,11 +38,11 @@
       "departureTime": "13:19",
       "day": 1,
       "distance": "95.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "GKH",
@@ -51,11 +51,11 @@
       "departureTime": "14:01",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "BHP",
@@ -64,11 +64,11 @@
       "departureTime": "14:18",
       "day": 1,
       "distance": "146.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "PNE",
@@ -77,11 +77,11 @@
       "departureTime": "14:28",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "AMP",
@@ -90,11 +90,11 @@
       "departureTime": "14:44",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "SNT",
@@ -103,11 +103,11 @@
       "departureTime": "14:59",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "RPH",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     }
   ],
-  "summary": "Reservation chart preparation times for Hwh Rph Express (12347) from HWH to RPH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:34.281Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hwh Rph Express (12347) is prepared at Howrah Jn (HWH) around 8:39 PM. 9 of 9 stations on the HWH to RPH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:05:18.076Z",
+  "knownChartCount": 9
 }

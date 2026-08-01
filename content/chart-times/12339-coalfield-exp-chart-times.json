@@ -12,11 +12,11 @@
       "departureTime": "17:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "MNAE",
@@ -25,11 +25,11 @@
       "departureTime": "18:58",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "PAN",
@@ -38,11 +38,11 @@
       "departureTime": "19:06",
       "day": 1,
       "distance": "143.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "DGR",
@@ -51,11 +51,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "158.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "OYR",
@@ -64,11 +64,11 @@
       "departureTime": "19:28",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "UDL",
@@ -77,11 +77,11 @@
       "departureTime": "19:36",
       "day": 1,
       "distance": "175.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "RNG",
@@ -90,11 +90,11 @@
       "departureTime": "19:47",
       "day": 1,
       "distance": "182.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "ASN",
@@ -103,11 +103,11 @@
       "departureTime": "20:07",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "STN",
@@ -116,11 +116,11 @@
       "departureTime": "20:19",
       "day": 1,
       "distance": "209.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "ULT",
@@ -129,11 +129,11 @@
       "departureTime": "20:26",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "BRR",
@@ -142,11 +142,11 @@
       "departureTime": "20:32",
       "day": 1,
       "distance": "218.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "KMME",
@@ -155,11 +155,11 @@
       "departureTime": "20:37",
       "day": 1,
       "distance": "220.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "DHN",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "259.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     }
   ],
-  "summary": "Reservation chart preparation times for Coalfield Exp (12339) from HWH to DHN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-07-02T17:19:33.146Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Coalfield Exp (12339) is prepared at Howrah Jn (HWH) around 8:56 PM. 13 of 13 stations on the HWH to DHN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:05:04.324Z",
+  "knownChartCount": 13
 }

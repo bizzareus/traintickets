@@ -441,11 +441,11 @@
       "departureTime": "03:15",
       "day": 3,
       "distance": "2622.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "AJJ",
@@ -454,11 +454,11 @@
       "departureTime": "04:15",
       "day": 3,
       "distance": "2685.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "KPD",
@@ -467,11 +467,11 @@
       "departureTime": "05:35",
       "day": 3,
       "distance": "2746.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "JTJ",
@@ -480,11 +480,11 @@
       "departureTime": "06:55",
       "day": 3,
       "distance": "2830.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BWT",
@@ -493,11 +493,11 @@
       "departureTime": "08:07",
       "day": 3,
       "distance": "2908.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "KJM",
@@ -506,11 +506,11 @@
       "departureTime": "09:04",
       "day": 3,
       "distance": "2964.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "SMVB",
@@ -519,14 +519,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2969.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "Reservation chart preparation times for Ghy Smvb Exp (12510) from GHY to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 40 stations.",
-  "generatedAt": "2026-07-02T17:19:20.778Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ghy Smvb Exp (12510) is prepared at Perambur (PER) around 6:46 PM, with a second (vacancy) chart around 2:55 PM. 7 of 40 stations on the GHY to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T01:18:19.665Z",
+  "knownChartCount": 7
 }

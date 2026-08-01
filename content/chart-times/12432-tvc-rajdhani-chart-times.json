@@ -12,11 +12,11 @@
       "departureTime": "06:16",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:26",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:01",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "KOTA",
@@ -25,11 +25,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "RTM",
@@ -38,11 +38,11 @@
       "departureTime": "14:05",
       "day": 1,
       "distance": "724.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "BRC",
@@ -51,11 +51,11 @@
       "departureTime": "17:37",
       "day": 1,
       "distance": "986.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ST",
@@ -64,11 +64,11 @@
       "departureTime": "19:17",
       "day": 1,
       "distance": "1115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "BSR",
@@ -77,11 +77,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "1330.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "PNVL",
@@ -90,11 +90,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "1397.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "RN",
@@ -103,11 +103,11 @@
       "departureTime": "03:55",
       "day": 2,
       "distance": "1759.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "MAO",
@@ -116,11 +116,11 @@
       "departureTime": "08:35",
       "day": 2,
       "distance": "2094.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "KAWR",
@@ -129,11 +129,11 @@
       "departureTime": "09:28",
       "day": 2,
       "distance": "2176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "UD",
@@ -142,11 +142,11 @@
       "departureTime": "12:50",
       "day": 2,
       "distance": "2443.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "MAJN",
@@ -155,11 +155,11 @@
       "departureTime": "14:10",
       "day": 2,
       "distance": "2524.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "KGQ",
@@ -168,11 +168,11 @@
       "departureTime": "14:50",
       "day": 2,
       "distance": "2571.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "CAN",
@@ -181,11 +181,11 @@
       "departureTime": "16:10",
       "day": 2,
       "distance": "2657.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "CLT",
@@ -194,11 +194,11 @@
       "departureTime": "17:35",
       "day": 2,
       "distance": "2746.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "SRR",
@@ -207,11 +207,11 @@
       "departureTime": "19:25",
       "day": 2,
       "distance": "2832.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "TCR",
@@ -220,11 +220,11 @@
       "departureTime": "20:10",
       "day": 2,
       "distance": "2865.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "ERS",
@@ -233,11 +233,11 @@
       "departureTime": "21:30",
       "day": 2,
       "distance": "2939.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "ALLP",
@@ -246,11 +246,11 @@
       "departureTime": "22:30",
       "day": 2,
       "distance": "2996.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "QLN",
@@ -259,11 +259,11 @@
       "departureTime": "00:05",
       "day": 3,
       "distance": "3080.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "TVC",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "3144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CLT"
     }
   ],
-  "summary": "Reservation chart preparation times for Tvc Rajdhani (12432) from NZM to TVC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 21 stations.",
-  "generatedAt": "2026-07-02T17:19:09.154Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tvc Rajdhani (12432) is prepared at H Nizamuddin (NZM) around 9:26 PM, with a second (vacancy) chart around 6:01 AM. 21 of 21 stations on the NZM to TVC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:11:05.979Z",
+  "knownChartCount": 21
 }

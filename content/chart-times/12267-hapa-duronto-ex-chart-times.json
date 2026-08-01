@@ -12,11 +12,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMCT"
     },
     {
       "stationCode": "ADI",
@@ -25,11 +25,11 @@
       "departureTime": "04:55",
       "day": 2,
       "distance": "491.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "SUNR",
@@ -38,11 +38,11 @@
       "departureTime": "06:52",
       "day": 2,
       "distance": "622.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "RJT",
@@ -51,11 +51,11 @@
       "departureTime": "08:40",
       "day": 2,
       "distance": "738.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "HAPA",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "814.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
     }
   ],
-  "summary": "Reservation chart preparation times for Hapa  Duronto Ex (12267) from MMCT to HAPA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
-  "generatedAt": "2026-07-02T17:19:23.980Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hapa  Duronto Ex (12267) is prepared at Mumbai Central (MMCT) around 12:51 PM, with a second (vacancy) chart around 10:35 PM. 5 of 5 stations on the MMCT to HAPA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:59:00.578Z",
+  "knownChartCount": 5
 }

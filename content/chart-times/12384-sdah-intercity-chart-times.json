@@ -12,11 +12,11 @@
       "departureTime": "06:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "RNG",
@@ -25,11 +25,11 @@
       "departureTime": "06:52",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "UDL",
@@ -38,11 +38,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "DGR",
@@ -51,11 +51,11 @@
       "departureTime": "07:13",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "PAN",
@@ -64,11 +64,11 @@
       "departureTime": "07:26",
       "day": 1,
       "distance": "58.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "BWN",
@@ -77,11 +77,11 @@
       "departureTime": "08:13",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "BDC",
@@ -90,11 +90,11 @@
       "departureTime": "09:16",
       "day": 1,
       "distance": "173.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "NH",
@@ -103,11 +103,11 @@
       "departureTime": "09:36",
       "day": 1,
       "distance": "182.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "BP",
@@ -116,11 +116,11 @@
       "departureTime": "09:52",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "SDAH",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "220.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     }
   ],
-  "summary": "Reservation chart preparation times for Sdah Intercity (12384) from ASN to SDAH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-07-02T17:19:39.884Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sdah Intercity (12384) is prepared at Asansol Jn (ASN) around 8:01 PM, with a second (vacancy) chart around 6:25 AM. 10 of 10 stations on the ASN to SDAH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:08:51.908Z",
+  "knownChartCount": 10
 }

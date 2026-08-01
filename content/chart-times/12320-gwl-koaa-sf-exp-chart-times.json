@@ -12,11 +12,11 @@
       "departureTime": "15:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "MRA",
@@ -25,11 +25,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "39.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "DHO",
@@ -38,11 +38,11 @@
       "departureTime": "16:24",
       "day": 1,
       "distance": "66.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "AGC",
@@ -51,11 +51,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "MTJ",
@@ -64,11 +64,11 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "173.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "HTC",
@@ -77,11 +77,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "215.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "KSJ",
@@ -90,11 +90,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "278.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "FBD",
@@ -103,11 +103,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "386.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "KJN",
@@ -116,11 +116,11 @@
       "departureTime": "23:01",
       "day": 1,
       "distance": "444.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "CPA",
@@ -129,11 +129,11 @@
       "departureTime": "00:27",
       "day": 2,
       "distance": "522.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "CNB",
@@ -142,11 +142,11 @@
       "departureTime": "00:50",
       "day": 2,
       "distance": "525.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "PRYJ",
@@ -155,11 +155,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "720.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "DDU",
@@ -168,11 +168,11 @@
       "departureTime": "06:10",
       "day": 2,
       "distance": "872.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "GAYA",
@@ -181,11 +181,11 @@
       "departureTime": "08:40",
       "day": 2,
       "distance": "1075.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "DHN",
@@ -194,11 +194,11 @@
       "departureTime": "11:42",
       "day": 2,
       "distance": "1274.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "ASN",
@@ -207,11 +207,11 @@
       "departureTime": "12:53",
       "day": 2,
       "distance": "1333.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "DGR",
@@ -220,11 +220,11 @@
       "departureTime": "13:27",
       "day": 2,
       "distance": "1375.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "KOAA",
@@ -233,14 +233,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1535.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     }
   ],
-  "summary": "Reservation chart preparation times for Gwl Koaa Sf Exp (12320) from GWL to KOAA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 18 stations.",
-  "generatedAt": "2026-07-02T17:19:30.925Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gwl Koaa Sf Exp (12320) is prepared at Gwalior (GWL) around 9:49 PM, with a second (vacancy) chart around 3 PM. 18 of 18 stations on the GWL to KOAA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:02:02.853Z",
+  "knownChartCount": 18
 }

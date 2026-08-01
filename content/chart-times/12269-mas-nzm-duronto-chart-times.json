@@ -12,11 +12,11 @@
       "departureTime": "06:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:46",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "BZA",
@@ -25,11 +25,11 @@
       "departureTime": "12:20",
       "day": 1,
       "distance": "431.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "BPQ",
@@ -38,11 +38,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "880.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "NGP",
@@ -51,11 +51,11 @@
       "departureTime": "20:45",
       "day": 1,
       "distance": "1091.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "RKMP",
@@ -64,11 +64,11 @@
       "departureTime": "02:12",
       "day": 2,
       "distance": "1481.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:57",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "VGLJ",
@@ -77,11 +77,11 @@
       "departureTime": "05:35",
       "day": 2,
       "distance": "1778.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "GWL",
@@ -90,11 +90,11 @@
       "departureTime": "06:35",
       "day": 2,
       "distance": "1875.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "NZM",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "2180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     }
   ],
-  "summary": "Reservation chart preparation times for Mas Nzm Duronto (12269) from MAS to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:23.983Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mas Nzm Duronto (12269) is prepared at Mgr Chennai Ctl (MAS) around 8:46 PM, with a second (vacancy) chart around 6:20 AM. 8 of 8 stations on the MAS to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:59:03.148Z",
+  "knownChartCount": 8
 }

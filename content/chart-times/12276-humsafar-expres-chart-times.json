@@ -12,11 +12,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "PRYJ",
@@ -25,14 +25,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "633.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     }
   ],
-  "summary": "Reservation chart preparation times for Humsafar Expres (12276) from NDLS to PRYJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
-  "generatedAt": "2026-07-02T17:19:25.250Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Humsafar Expres (12276) is prepared at New Delhi (NDLS) around 2:31 PM, with a second (vacancy) chart around 10:15 PM. 2 of 2 stations on the NDLS to PRYJ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:59:18.951Z",
+  "knownChartCount": 2
 }

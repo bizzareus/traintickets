@@ -12,11 +12,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RJPB"
     },
     {
       "stationCode": "PNBE",
@@ -25,11 +25,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "3.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RJPB"
     },
     {
       "stationCode": "DNR",
@@ -38,11 +38,11 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RJPB"
     },
     {
       "stationCode": "ARA",
@@ -51,11 +51,11 @@
       "departureTime": "20:22",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RJPB"
     },
     {
       "stationCode": "DDU",
@@ -64,11 +64,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "215.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RJPB"
     },
     {
       "stationCode": "MZP",
@@ -77,11 +77,11 @@
       "departureTime": "23:23",
       "day": 1,
       "distance": "277.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MZP"
     },
     {
       "stationCode": "CNB",
@@ -90,11 +90,11 @@
       "departureTime": "02:30",
       "day": 2,
       "distance": "562.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MZP"
     },
     {
       "stationCode": "NDLS",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1003.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MZP"
     }
   ],
-  "summary": "Reservation chart preparation times for S Kranti Sup Ex (12393) from RJPB to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:39.940Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for S Kranti Sup Ex (12393) is prepared at Rajendranagar T (RJPB) around 11:20 AM, with a second (vacancy) chart around 7:05 PM. 8 of 8 stations on the RJPB to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:09:22.347Z",
+  "knownChartCount": 8
 }

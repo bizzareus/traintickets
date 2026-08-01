@@ -12,11 +12,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DEE"
     },
     {
       "stationCode": "LDH",
@@ -25,11 +25,11 @@
       "departureTime": "02:50",
       "day": 2,
       "distance": "314.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "JAT",
@@ -38,14 +38,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "578.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LDH"
     }
   ],
-  "summary": "Reservation chart preparation times for Jat Duronto Exp (12265) from DEE to JAT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 3 stations.",
-  "generatedAt": "2026-07-02T17:19:22.877Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jat Duronto Exp (12265) is prepared at Delhi S Rohilla (DEE) around 2:31 PM, with a second (vacancy) chart around 10:15 PM. 3 of 3 stations on the DEE to JAT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:58:58.071Z",
+  "knownChartCount": 3
 }

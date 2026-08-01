@@ -12,11 +12,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "PRYJ",
@@ -38,11 +38,11 @@
       "departureTime": "00:03",
       "day": 2,
       "distance": "636.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "DDU",
@@ -51,11 +51,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "DNR",
@@ -64,11 +64,11 @@
       "departureTime": "04:17",
       "day": 2,
       "distance": "990.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "PNBE",
@@ -77,11 +77,11 @@
       "departureTime": "04:45",
       "day": 2,
       "distance": "1000.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "RJPB",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1003.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     }
   ],
-  "summary": "Reservation chart preparation times for Rjpb Tejas Raj (12310) from NDLS to RJPB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:28.766Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rjpb Tejas Raj (12310) is prepared at New Delhi (NDLS) around 9:10 AM, with a second (vacancy) chart around 4:55 PM. 7 of 7 stations on the NDLS to RJPB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:00:47.566Z",
+  "knownChartCount": 7
 }

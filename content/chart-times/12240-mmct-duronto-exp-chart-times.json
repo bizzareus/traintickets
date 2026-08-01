@@ -12,11 +12,11 @@
       "departureTime": "10:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "SDLP",
@@ -25,11 +25,11 @@
       "departureTime": "12:00",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "LHU",
@@ -38,11 +38,11 @@
       "departureTime": "13:00",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "JJN",
@@ -51,11 +51,11 @@
       "departureTime": "13:43",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "SIKR",
@@ -64,11 +64,11 @@
       "departureTime": "14:33",
       "day": 1,
       "distance": "243.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "RGS",
@@ -77,11 +77,11 @@
       "departureTime": "15:16",
       "day": 1,
       "distance": "293.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "JP",
@@ -90,11 +90,11 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "354.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "SWM",
@@ -103,11 +103,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "485.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "KOTA",
@@ -116,11 +116,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "593.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "RTM",
@@ -129,11 +129,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "859.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "BRC",
@@ -142,11 +142,11 @@
       "departureTime": "03:08",
       "day": 2,
       "distance": "1121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "MMCT",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1512.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     }
   ],
-  "summary": "Reservation chart preparation times for Mmct Duronto Exp (12240) from HSR to MMCT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:20.740Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mmct Duronto Exp (12240) is prepared at Hisar (HSR) around 10:32 PM, with a second (vacancy) chart around 9:55 AM. 12 of 12 stations on the HSR to MMCT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:57:51.422Z",
+  "knownChartCount": 12
 }

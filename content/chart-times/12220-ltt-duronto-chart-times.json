@@ -12,11 +12,11 @@
       "departureTime": "23:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "WADI",
@@ -25,11 +25,11 @@
       "departureTime": "01:43",
       "day": 2,
       "distance": "184.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "SUR",
@@ -38,11 +38,11 @@
       "departureTime": "03:40",
       "day": 2,
       "distance": "334.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "PUNE",
@@ -51,11 +51,11 @@
       "departureTime": "07:55",
       "day": 2,
       "distance": "597.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:16",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "LTT",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "773.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:16",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "Reservation chart preparation times for Ltt Duronto (12220) from SC to LTT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
-  "generatedAt": "2026-07-02T17:19:17.455Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ltt Duronto (12220) is prepared at Secunderabad Jn (SC) around 2:55 PM, with a second (vacancy) chart around 10:50 PM. 5 of 5 stations on the SC to LTT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:57:01.716Z",
+  "knownChartCount": 5
 }

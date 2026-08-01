@@ -12,11 +12,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "KYN",
@@ -25,11 +25,11 @@
       "departureTime": "18:01",
       "day": 1,
       "distance": "54.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "BSL",
@@ -38,11 +38,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "445.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "AK",
@@ -51,11 +51,11 @@
       "departureTime": "00:40",
       "day": 2,
       "distance": "584.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "NGP",
@@ -64,11 +64,11 @@
       "departureTime": "04:15",
       "day": 2,
       "distance": "837.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "R",
@@ -77,11 +77,11 @@
       "departureTime": "08:15",
       "day": 2,
       "distance": "1139.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BSP",
@@ -90,11 +90,11 @@
       "departureTime": "10:00",
       "day": 2,
       "distance": "1250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "TATA",
@@ -103,11 +103,11 @@
       "departureTime": "16:20",
       "day": 2,
       "distance": "1719.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "HWH",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1968.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSP"
     }
   ],
-  "summary": "Reservation chart preparation times for Howrah Duronto (12261) from CSMT to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:22.859Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Howrah Duronto (12261) is prepared at C Shivaji Mah T (CSMT) around 8:09 AM, with a second (vacancy) chart around 7:40 PM. 9 of 9 stations on the CSMT to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:58:51.996Z",
+  "knownChartCount": 9
 }

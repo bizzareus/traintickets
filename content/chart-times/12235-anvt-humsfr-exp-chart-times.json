@@ -12,11 +12,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MDP"
     },
     {
       "stationCode": "JSME",
@@ -25,11 +25,11 @@
       "departureTime": "17:27",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MDP"
     },
     {
       "stationCode": "JAJ",
@@ -38,11 +38,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "73.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MDP"
     },
     {
       "stationCode": "KIUL",
@@ -51,11 +51,11 @@
       "departureTime": "19:13",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MDP"
     },
     {
       "stationCode": "MKA",
@@ -64,11 +64,11 @@
       "departureTime": "19:38",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MDP"
     },
     {
       "stationCode": "PNBE",
@@ -77,11 +77,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "251.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "ARA",
@@ -90,11 +90,11 @@
       "departureTime": "22:13",
       "day": 1,
       "distance": "300.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "BXR",
@@ -103,11 +103,11 @@
       "departureTime": "22:58",
       "day": 1,
       "distance": "368.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "DDU",
@@ -116,11 +116,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "462.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "PRYJ",
@@ -129,11 +129,11 @@
       "departureTime": "03:22",
       "day": 2,
       "distance": "615.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "CNB",
@@ -142,11 +142,11 @@
       "departureTime": "05:30",
       "day": 2,
       "distance": "810.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "ANVT",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1237.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     }
   ],
-  "summary": "Reservation chart preparation times for Anvt Humsfr Exp (12235) from MDP to ANVT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:19.662Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Anvt Humsfr Exp (12235) is prepared at Madhupur Jn (MDP) around 9:30 PM, with a second (vacancy) chart around 4:50 PM. 12 of 12 stations on the MDP to ANVT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:57:32.782Z",
+  "knownChartCount": 12
 }

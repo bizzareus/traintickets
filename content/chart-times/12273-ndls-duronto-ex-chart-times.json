@@ -12,11 +12,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:33",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "ASN",
@@ -25,11 +25,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:33",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "JSME",
@@ -38,11 +38,11 @@
       "departureTime": "12:10",
       "day": 1,
       "distance": "311.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "PNBE",
@@ -51,11 +51,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "532.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "DDU",
@@ -64,11 +64,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "744.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "CNB",
@@ -77,11 +77,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "1091.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "NDLS",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1531.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CNB"
     }
   ],
-  "summary": "Reservation chart preparation times for Ndls Duronto Ex (12273) from HWH to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:24.019Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ndls Duronto Ex (12273) is prepared at Howrah Jn (HWH) around 8:33 PM, with a second (vacancy) chart around 8:30 AM. 7 of 7 stations on the HWH to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:59:11.794Z",
+  "knownChartCount": 7
 }

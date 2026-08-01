@@ -12,11 +12,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "440.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "DDU",
@@ -38,11 +38,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "787.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "GAYA",
@@ -51,11 +51,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "990.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DHN",
@@ -64,11 +64,11 @@
       "departureTime": "06:23",
       "day": 2,
       "distance": "1189.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:08",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "ASN",
@@ -77,11 +77,11 @@
       "departureTime": "07:03",
       "day": 2,
       "distance": "1247.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:03",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "DGR",
@@ -90,11 +90,11 @@
       "departureTime": "07:33",
       "day": 2,
       "distance": "1289.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGR"
     },
     {
       "stationCode": "SDAH",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1454.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGR"
     }
   ],
-  "summary": "Reservation chart preparation times for Sealdah Rajdhni (12314) from NDLS to SDAH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:29.887Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sealdah Rajdhni (12314) is prepared at New Delhi (NDLS) around 8:30 AM, with a second (vacancy) chart around 4:15 PM. 8 of 8 stations on the NDLS to SDAH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:01:44.250Z",
+  "knownChartCount": 8
 }

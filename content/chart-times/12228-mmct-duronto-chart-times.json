@@ -12,11 +12,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "UJN",
@@ -25,11 +25,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "80.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "RTM",
@@ -38,11 +38,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "BRC",
@@ -51,11 +51,11 @@
       "departureTime": "03:08",
       "day": 2,
       "distance": "438.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "MMCT",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "829.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     }
   ],
-  "summary": "Reservation chart preparation times for Mmct Duronto (12228) from INDB to MMCT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
-  "generatedAt": "2026-07-02T17:19:18.501Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mmct Duronto (12228) is prepared at Indore Jn Bg (INDB) around 10:51 AM, with a second (vacancy) chart around 11:20 PM. 5 of 5 stations on the INDB to MMCT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:57:26.150Z",
+  "knownChartCount": 5
 }

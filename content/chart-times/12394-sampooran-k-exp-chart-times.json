@@ -12,11 +12,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "MZP",
@@ -38,11 +38,11 @@
       "departureTime": "01:45",
       "day": 2,
       "distance": "726.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "DDU",
@@ -51,11 +51,11 @@
       "departureTime": "03:25",
       "day": 2,
       "distance": "788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "ARA",
@@ -64,11 +64,11 @@
       "departureTime": "05:15",
       "day": 2,
       "distance": "951.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "DNR",
@@ -77,11 +77,11 @@
       "departureTime": "05:50",
       "day": 2,
       "distance": "990.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "PNBE",
@@ -90,11 +90,11 @@
       "departureTime": "06:45",
       "day": 2,
       "distance": "1000.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "RJPB",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1003.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     }
   ],
-  "summary": "Reservation chart preparation times for Sampooran K Exp (12394) from NDLS to RJPB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:39.868Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sampooran K Exp (12394) is prepared at New Delhi (NDLS) around 9:31 AM, with a second (vacancy) chart around 5:15 PM. 8 of 8 stations on the NDLS to RJPB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:09:23.646Z",
+  "knownChartCount": 8
 }

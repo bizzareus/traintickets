@@ -12,11 +12,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "MB",
@@ -25,11 +25,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "BE",
@@ -38,11 +38,11 @@
       "departureTime": "01:02",
       "day": 2,
       "distance": "245.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "SPN",
@@ -51,11 +51,11 @@
       "departureTime": "02:13",
       "day": 2,
       "distance": "315.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "LKO",
@@ -64,11 +64,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "480.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "GD",
@@ -77,11 +77,11 @@
       "departureTime": "08:10",
       "day": 2,
       "distance": "597.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "BST",
@@ -90,11 +90,11 @@
       "departureTime": "09:20",
       "day": 2,
       "distance": "686.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "GKP",
@@ -103,11 +103,11 @@
       "departureTime": "10:55",
       "day": 2,
       "distance": "750.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "BUG",
@@ -116,11 +116,11 @@
       "departureTime": "14:14",
       "day": 2,
       "distance": "859.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "NKE",
@@ -129,11 +129,11 @@
       "departureTime": "15:10",
       "day": 2,
       "distance": "900.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "BTH",
@@ -142,11 +142,11 @@
       "departureTime": "15:45",
       "day": 2,
       "distance": "937.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "SGL",
@@ -155,11 +155,11 @@
       "departureTime": "16:08",
       "day": 2,
       "distance": "959.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "BMKI",
@@ -168,11 +168,11 @@
       "departureTime": "16:27",
       "day": 2,
       "distance": "980.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "CAA",
@@ -181,11 +181,11 @@
       "departureTime": "16:57",
       "day": 2,
       "distance": "1012.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "MFP",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1060.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     }
   ],
-  "summary": "Reservation chart preparation times for Mfp Garib Rath (12212) from ANVT to MFP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
-  "generatedAt": "2026-07-02T17:19:16.308Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mfp Garib Rath (12212) is prepared at Anand Vihar TRM (ANVT) around 12:55 PM, with a second (vacancy) chart around 11:25 PM. 15 of 15 stations on the ANVT to MFP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:56:27.986Z",
+  "knownChartCount": 15
 }

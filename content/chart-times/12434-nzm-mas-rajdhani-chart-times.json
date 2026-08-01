@@ -12,11 +12,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "AGC",
@@ -25,11 +25,11 @@
       "departureTime": "17:27",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "GWL",
@@ -38,11 +38,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "306.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "VGLJ",
@@ -51,11 +51,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "BPL",
@@ -64,11 +64,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "694.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NGP",
@@ -77,11 +77,11 @@
       "departureTime": "05:10",
       "day": 2,
       "distance": "1083.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPQ",
@@ -90,11 +90,11 @@
       "departureTime": "08:05",
       "day": 2,
       "distance": "1294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:28",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPQ"
     },
     {
       "stationCode": "WL",
@@ -103,11 +103,11 @@
       "departureTime": "11:15",
       "day": 2,
       "distance": "1536.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "WL"
     },
     {
       "stationCode": "BZA",
@@ -116,11 +116,11 @@
       "departureTime": "14:30",
       "day": 2,
       "distance": "1744.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:27",
+      "chartOneDayOffset": 1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "MAS",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "2174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:27",
+      "chartOneDayOffset": 1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "Reservation chart preparation times for Nzm Mas Rajdhani (12434) from NZM to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-07-02T17:19:09.166Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Nzm Mas Rajdhani (12434) is prepared at H Nizamuddin (NZM) around 7:35 AM, with a second (vacancy) chart around 3:20 PM. 10 of 10 stations on the NZM to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:11:09.509Z",
+  "knownChartCount": 10
 }

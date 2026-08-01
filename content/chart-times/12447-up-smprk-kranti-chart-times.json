@@ -12,11 +12,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MKP"
     },
     {
       "stationCode": "CKTD",
@@ -25,11 +25,11 @@
       "departureTime": "18:33",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MKP"
     },
     {
       "stationCode": "ATE",
@@ -38,11 +38,11 @@
       "departureTime": "19:02",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MKP"
     },
     {
       "stationCode": "BNDA",
@@ -51,11 +51,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MKP"
     },
     {
       "stationCode": "MBA",
@@ -64,11 +64,11 @@
       "departureTime": "20:41",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MKP"
     },
     {
       "stationCode": "KLAR",
@@ -77,11 +77,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MKP"
     },
     {
       "stationCode": "HPP",
@@ -90,11 +90,11 @@
       "departureTime": "21:31",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MKP"
     },
     {
       "stationCode": "MRPR",
@@ -103,11 +103,11 @@
       "departureTime": "21:51",
       "day": 1,
       "distance": "228.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MKP"
     },
     {
       "stationCode": "VGLJ",
@@ -116,11 +116,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "AGC",
@@ -129,11 +129,11 @@
       "departureTime": "02:10",
       "day": 2,
       "distance": "508.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "MTJ",
@@ -142,11 +142,11 @@
       "departureTime": "02:47",
       "day": 2,
       "distance": "561.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:32",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "NZM",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "695.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:32",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MTJ"
     }
   ],
-  "summary": "Reservation chart preparation times for Up Smprk Kranti (12447) from MKP to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:11.630Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Up Smprk Kranti (12447) is prepared at Manikpur (MKP) around 8:04 AM, with a second (vacancy) chart around 5:45 PM. 12 of 12 stations on the MKP to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:12:14.705Z",
+  "knownChartCount": 12
 }

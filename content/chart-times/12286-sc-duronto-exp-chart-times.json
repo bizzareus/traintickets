@@ -12,11 +12,11 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "VGLJ",
@@ -25,11 +25,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "RKMP",
@@ -38,11 +38,11 @@
       "departureTime": "00:20",
       "day": 2,
       "distance": "700.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "NGP",
@@ -51,11 +51,11 @@
       "departureTime": "05:40",
       "day": 2,
       "distance": "1083.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPQ",
@@ -64,11 +64,11 @@
       "departureTime": "08:35",
       "day": 2,
       "distance": "1294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPQ"
     },
     {
       "stationCode": "SC",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1660.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPQ"
     }
   ],
-  "summary": "Reservation chart preparation times for Sc Duronto Exp (12286) from NZM to SC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
-  "generatedAt": "2026-07-02T17:19:26.417Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sc Duronto Exp (12286) is prepared at H Nizamuddin (NZM) around 7:55 AM, with a second (vacancy) chart around 3:40 PM. 6 of 6 stations on the NZM to SC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:59:51.979Z",
+  "knownChartCount": 6
 }

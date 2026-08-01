@@ -12,11 +12,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "CLT",
@@ -25,11 +25,11 @@
       "departureTime": "00:45",
       "day": 2,
       "distance": "193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "MAJN",
@@ -38,11 +38,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "415.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "MAO",
@@ -51,11 +51,11 @@
       "departureTime": "09:55",
       "day": 2,
       "distance": "846.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:36",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "RN",
@@ -64,11 +64,11 @@
       "departureTime": "15:30",
       "day": 2,
       "distance": "1180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:36",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "PNVL",
@@ -77,11 +77,11 @@
       "departureTime": "20:21",
       "day": 2,
       "distance": "1543.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:36",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "LTT",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1595.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:36",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     }
   ],
-  "summary": "Reservation chart preparation times for Ers Ltt Duronto (12224) from ERS to LTT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:18.509Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ers Ltt Duronto (12224) is prepared at Ernakulam Jn (ERS) around 11:56 AM, with a second (vacancy) chart around 9:15 PM. 7 of 7 stations on the ERS to LTT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:57:19.441Z",
+  "knownChartCount": 7
 }

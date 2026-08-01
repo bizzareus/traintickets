@@ -12,11 +12,11 @@
       "departureTime": "14:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "R",
@@ -25,11 +25,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "111.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "DURG",
@@ -38,11 +38,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "RJN",
@@ -51,11 +51,11 @@
       "departureTime": "16:51",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "G",
@@ -64,11 +64,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "283.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "NGP",
@@ -77,11 +77,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "413.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPL",
@@ -90,11 +90,11 @@
       "departureTime": "02:15",
       "day": 2,
       "distance": "808.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "VGLJ",
@@ -103,11 +103,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "1099.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "GWL",
@@ -116,11 +116,11 @@
       "departureTime": "06:25",
       "day": 2,
       "distance": "1196.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NDLS",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1509.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     }
   ],
-  "summary": "Reservation chart preparation times for Bsp Ndls Raj Ex (12441) from BSP to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-07-02T17:19:10.490Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bsp Ndls Raj Ex (12441) is prepared at Bilaspur Jn (BSP) around 10:08 PM, with a second (vacancy) chart around 1:45 PM. 10 of 10 stations on the BSP to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:11:53.438Z",
+  "knownChartCount": 10
 }

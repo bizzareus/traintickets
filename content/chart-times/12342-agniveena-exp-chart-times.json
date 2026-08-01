@@ -12,11 +12,11 @@
       "departureTime": "05:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:54",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "RNG",
@@ -25,11 +25,11 @@
       "departureTime": "05:43",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNG"
     },
     {
       "stationCode": "UDL",
@@ -38,11 +38,11 @@
       "departureTime": "05:50",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNG"
     },
     {
       "stationCode": "DGR",
@@ -51,11 +51,11 @@
       "departureTime": "06:03",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGR"
     },
     {
       "stationCode": "PAN",
@@ -64,11 +64,11 @@
       "departureTime": "06:17",
       "day": 1,
       "distance": "58.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGR"
     },
     {
       "stationCode": "MNAE",
@@ -77,11 +77,11 @@
       "departureTime": "06:26",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGR"
     },
     {
       "stationCode": "BWN",
@@ -90,11 +90,11 @@
       "departureTime": "07:07",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGR"
     },
     {
       "stationCode": "HWH",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGR"
     }
   ],
-  "summary": "Reservation chart preparation times for Agniveena Exp (12342) from ASN to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:33.154Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Agniveena Exp (12342) is prepared at Asansol Jn (ASN) around 7:54 PM, with a second (vacancy) chart around 5:15 AM. 8 of 8 stations on the ASN to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:05:09.132Z",
+  "knownChartCount": 8
 }

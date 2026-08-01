@@ -12,11 +12,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "WR",
@@ -25,11 +25,11 @@
       "departureTime": "20:45",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BD",
@@ -38,11 +38,11 @@
       "departureTime": "22:12",
       "day": 1,
       "distance": "175.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BSL",
@@ -51,11 +51,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "393.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "CSMT",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "837.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSL"
     }
   ],
-  "summary": "Reservation chart preparation times for Csmt Duronto Exp (12290) from NGP to CSMT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
-  "generatedAt": "2026-07-02T17:19:26.419Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Csmt Duronto Exp (12290) is prepared at Nagpur (NGP) around 10:39 AM, with a second (vacancy) chart around 7:35 PM. 5 of 5 stations on the NGP to CSMT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:59:54.581Z",
+  "knownChartCount": 5
 }

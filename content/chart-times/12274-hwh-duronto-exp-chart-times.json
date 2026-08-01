@@ -12,11 +12,11 @@
       "departureTime": "12:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:55",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "CNB",
@@ -97,7 +97,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Hwh Duronto Exp (12274) from NDLS to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:24.028Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hwh Duronto Exp (12274) is prepared at New Delhi (NDLS) around 10:55 PM. 1 of 7 stations on the NDLS to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T00:59:16.323Z",
+  "knownChartCount": 1
 }

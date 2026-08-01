@@ -12,11 +12,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "UHL",
@@ -25,11 +25,11 @@
       "departureTime": "06:43",
       "day": 1,
       "distance": "28.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "NLDM",
@@ -38,11 +38,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "44.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "ANSB",
@@ -51,11 +51,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "RPAR",
@@ -64,11 +64,11 @@
       "departureTime": "07:53",
       "day": 1,
       "distance": "100.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "SIR",
@@ -77,11 +77,11 @@
       "departureTime": "09:12",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "UMB",
@@ -90,11 +90,11 @@
       "departureTime": "10:05",
       "day": 1,
       "distance": "202.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "SRE",
@@ -103,11 +103,11 @@
       "departureTime": "11:25",
       "day": 1,
       "distance": "283.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "MB",
@@ -116,11 +116,11 @@
       "departureTime": "14:55",
       "day": 1,
       "distance": "475.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "BE",
@@ -129,11 +129,11 @@
       "departureTime": "16:24",
       "day": 1,
       "distance": "566.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "LKO",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Gurumukhi Exp (12326) from AADR to KOAA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-07-02T17:19:30.943Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gurumukhi Exp (12326) is prepared at Amb  Andaura (AADR) around 9:28 PM, with a second (vacancy) chart around 5:55 AM. 10 of 20 stations on the AADR to KOAA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T01:02:28.116Z",
+  "knownChartCount": 10
 }

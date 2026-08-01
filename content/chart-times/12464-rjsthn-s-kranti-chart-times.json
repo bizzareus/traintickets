@@ -12,11 +12,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "MTD",
@@ -25,11 +25,11 @@
       "departureTime": "21:27",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "DNA",
@@ -38,11 +38,11 @@
       "departureTime": "22:04",
       "day": 1,
       "distance": "149.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "MKN",
@@ -51,11 +51,11 @@
       "departureTime": "22:39",
       "day": 1,
       "distance": "193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "JP",
@@ -64,11 +64,11 @@
       "departureTime": "00:45",
       "day": 2,
       "distance": "313.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "AWR",
@@ -77,11 +77,11 @@
       "departureTime": "02:37",
       "day": 2,
       "distance": "464.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DEC",
@@ -90,11 +90,11 @@
       "departureTime": "05:21",
       "day": 2,
       "distance": "606.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DEE",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "616.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     }
   ],
-  "summary": "Reservation chart preparation times for Rjsthn S Kranti (12464) from JU to DEE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:13.857Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rjsthn S Kranti (12464) is prepared at Jodhpur Jn (JU) around 12:15 PM, with a second (vacancy) chart around 8 PM. 8 of 8 stations on the JU to DEE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:13:15.136Z",
+  "knownChartCount": 8
 }

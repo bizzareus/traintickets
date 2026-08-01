@@ -12,11 +12,11 @@
       "departureTime": "06:16",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:01",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "KOTA",
@@ -25,11 +25,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:33",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "RTM",
@@ -38,11 +38,11 @@
       "departureTime": "14:05",
       "day": 1,
       "distance": "724.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:34",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "BRC",
@@ -51,11 +51,11 @@
       "departureTime": "17:37",
       "day": 1,
       "distance": "986.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ST",
@@ -64,11 +64,11 @@
       "departureTime": "19:16",
       "day": 1,
       "distance": "1115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:01",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BSR",
@@ -77,11 +77,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "1330.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSR"
     },
     {
       "stationCode": "PUNE",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1520.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSR"
     }
   ],
-  "summary": "Reservation chart preparation times for Pune Durnto Exp (12264) from NZM to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:22.883Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Pune Durnto Exp (12264) is prepared at H Nizamuddin (NZM) around 9:27 PM, with a second (vacancy) chart around 6:01 AM. 7 of 7 stations on the NZM to PUNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:58:56.787Z",
+  "knownChartCount": 7
 }

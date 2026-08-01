@@ -12,11 +12,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAT"
     },
     {
       "stationCode": "LDH",
@@ -25,11 +25,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "265.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "DEE",
@@ -38,14 +38,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "578.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     }
   ],
-  "summary": "Reservation chart preparation times for Dee Duronto Exp (12266) from JAT to DEE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 3 stations.",
-  "generatedAt": "2026-07-02T17:19:24.050Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Dee Duronto Exp (12266) is prepared at Jammu Tawi (JAT) around 10:44 AM, with a second (vacancy) chart around 7 PM. 3 of 3 stations on the JAT to DEE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:58:59.326Z",
+  "knownChartCount": 3
 }

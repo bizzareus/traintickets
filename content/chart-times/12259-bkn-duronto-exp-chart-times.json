@@ -12,11 +12,11 @@
       "departureTime": "17:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SDAH"
     },
     {
       "stationCode": "DHN",
@@ -25,11 +25,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "266.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "KQR",
@@ -38,11 +38,11 @@
       "departureTime": "21:47",
       "day": 1,
       "distance": "388.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "DDU",
@@ -51,11 +51,11 @@
       "departureTime": "01:27",
       "day": 2,
       "distance": "667.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:06",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "CNB",
@@ -64,11 +64,11 @@
       "departureTime": "05:30",
       "day": 2,
       "distance": "1015.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "NDLS",
@@ -77,11 +77,11 @@
       "departureTime": "11:15",
       "day": 2,
       "distance": "1455.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "LHU",
@@ -90,11 +90,11 @@
       "departureTime": "13:53",
       "day": 2,
       "distance": "1630.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "SDLP",
@@ -103,11 +103,11 @@
       "departureTime": "14:30",
       "day": 2,
       "distance": "1680.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "CUR",
@@ -116,11 +116,11 @@
       "departureTime": "15:20",
       "day": 2,
       "distance": "1738.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "RTGH",
@@ -129,11 +129,11 @@
       "departureTime": "15:55",
       "day": 2,
       "distance": "1780.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "SDGH",
@@ -142,11 +142,11 @@
       "departureTime": "16:39",
       "day": 2,
       "distance": "1845.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "BKN",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1918.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDLS"
     }
   ],
-  "summary": "Reservation chart preparation times for Bkn Duronto Exp (12259) from SDAH to BKN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:22.853Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bkn Duronto Exp (12259) is prepared at Sealdah (SDAH) around 9:13 PM, with a second (vacancy) chart around 4:43 PM. 12 of 12 stations on the SDAH to BKN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:58:48.718Z",
+  "knownChartCount": 12
 }

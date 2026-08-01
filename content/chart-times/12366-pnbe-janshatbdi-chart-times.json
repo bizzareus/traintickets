@@ -12,11 +12,11 @@
       "departureTime": "14:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "MURI",
@@ -25,11 +25,11 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "66.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "BKSC",
@@ -38,11 +38,11 @@
       "departureTime": "16:25",
       "day": 1,
       "distance": "118.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "CRP",
@@ -51,11 +51,11 @@
       "departureTime": "17:09",
       "day": 1,
       "distance": "133.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "GMO",
@@ -64,11 +64,11 @@
       "departureTime": "17:36",
       "day": 1,
       "distance": "150.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "PNME",
@@ -77,11 +77,11 @@
       "departureTime": "17:54",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "HZD",
@@ -90,11 +90,11 @@
       "departureTime": "18:18",
       "day": 1,
       "distance": "195.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "KQR",
@@ -103,11 +103,11 @@
       "departureTime": "18:48",
       "day": 1,
       "distance": "243.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "PRP",
@@ -116,11 +116,11 @@
       "departureTime": "19:28",
       "day": 1,
       "distance": "287.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "GAYA",
@@ -129,11 +129,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "319.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "JHD",
@@ -142,11 +142,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "367.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "TEA",
@@ -155,11 +155,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "382.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "PNBE",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "411.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     }
   ],
-  "summary": "Reservation chart preparation times for Pnbe Janshatbdi (12366) from RNC to PNBE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-07-02T17:19:36.466Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Pnbe Janshatbdi (12366) is prepared at Ranchi (RNC) around 10:02 PM. 13 of 13 stations on the RNC to PNBE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:07:00.852Z",
+  "knownChartCount": 13
 }

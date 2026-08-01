@@ -12,11 +12,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "KOTA",
@@ -25,11 +25,11 @@
       "departureTime": "02:30",
       "day": 2,
       "distance": "458.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "RTM",
@@ -38,11 +38,11 @@
       "departureTime": "05:55",
       "day": 2,
       "distance": "724.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "BRC",
@@ -51,11 +51,11 @@
       "departureTime": "09:32",
       "day": 2,
       "distance": "986.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:05",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ST",
@@ -64,11 +64,11 @@
       "departureTime": "11:22",
       "day": 2,
       "distance": "1115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "VAPI",
@@ -77,11 +77,11 @@
       "departureTime": "12:25",
       "day": 2,
       "distance": "1207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BSR",
@@ -90,11 +90,11 @@
       "departureTime": "14:10",
       "day": 2,
       "distance": "1330.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "KYN",
@@ -103,11 +103,11 @@
       "departureTime": "15:20",
       "day": 2,
       "distance": "1382.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "05:24",
+      "chartOneDayOffset": 1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "LNL",
@@ -116,11 +116,11 @@
       "departureTime": "17:00",
       "day": 2,
       "distance": "1456.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "05:24",
+      "chartOneDayOffset": 1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "PUNE",
@@ -201,7 +201,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Darshan Express (12494) from NZM to MRJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
-  "generatedAt": "2026-07-02T17:19:18.453Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Darshan Express (12494) is prepared at H Nizamuddin (NZM) around 1:40 PM, with a second (vacancy) chart around 9:25 PM. 9 of 15 stations on the NZM to MRJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T01:16:15.119Z",
+  "knownChartCount": 9
 }

@@ -12,11 +12,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "TMZ",
@@ -25,11 +25,11 @@
       "departureTime": "10:09",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "PKU",
@@ -38,11 +38,11 @@
       "departureTime": "10:43",
       "day": 1,
       "distance": "70.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "KGP",
@@ -51,11 +51,11 @@
       "departureTime": "11:25",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "TATA",
@@ -64,11 +64,11 @@
       "departureTime": "13:20",
       "day": 1,
       "distance": "248.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "PRR",
@@ -77,11 +77,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "339.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "KNF",
@@ -90,11 +90,11 @@
       "departureTime": "16:36",
       "day": 1,
       "distance": "420.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "GMO",
@@ -103,11 +103,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "430.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "GAYA",
@@ -116,11 +116,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "600.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "DDU",
@@ -129,11 +129,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "803.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "PRYJ",
@@ -142,11 +142,11 @@
       "departureTime": "00:40",
       "day": 2,
       "distance": "955.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "GOY",
@@ -155,11 +155,11 @@
       "departureTime": "03:10",
       "day": 2,
       "distance": "1152.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "GZB",
@@ -168,11 +168,11 @@
       "departureTime": "08:15",
       "day": 2,
       "distance": "1563.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     },
     {
       "stationCode": "ANVT",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1576.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HLZ"
     }
   ],
-  "summary": "Reservation chart preparation times for Hlz Anvt Sf Exp (12443) from HLZ to ANVT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-07-02T17:19:10.510Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hlz Anvt Sf Exp (12443) is prepared at Haldia (HLZ) around 8:25 PM, with a second (vacancy) chart around 10:25 PM. 14 of 14 stations on the HLZ to ANVT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:12:01.850Z",
+  "knownChartCount": 14
 }

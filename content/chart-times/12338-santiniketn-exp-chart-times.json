@@ -12,11 +12,11 @@
       "departureTime": "13:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BHP"
     },
     {
       "stationCode": "GKH",
@@ -25,11 +25,11 @@
       "departureTime": "13:23",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BHP"
     },
     {
       "stationCode": "BWN",
@@ -38,11 +38,11 @@
       "departureTime": "14:06",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BHP"
     },
     {
       "stationCode": "HWH",
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "146.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BHP"
     }
   ],
-  "summary": "Reservation chart preparation times for Santiniketn Exp (12338) from BHP to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 4 stations.",
-  "generatedAt": "2026-07-02T17:19:33.145Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Santiniketn Exp (12338) is prepared at Bolpur S Niktn (BHP) around 11:02 PM. 4 of 4 stations on the BHP to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:05:01.454Z",
+  "knownChartCount": 4
 }

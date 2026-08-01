@@ -12,11 +12,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "PNKD",
@@ -25,11 +25,11 @@
       "departureTime": "00:14",
       "day": 2,
       "distance": "12.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "NDLS",
@@ -38,14 +38,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     }
   ],
-  "summary": "Reservation chart preparation times for Shram Shkti Exp (12451) from CNB to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 3 stations.",
-  "generatedAt": "2026-07-02T17:19:11.641Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Shram Shkti Exp (12451) is prepared at Kanpur Central (CNB) around 1:56 PM, with a second (vacancy) chart around 11:40 PM. 3 of 3 stations on the CNB to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:12:20.097Z",
+  "knownChartCount": 3
 }

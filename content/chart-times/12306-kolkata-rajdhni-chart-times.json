@@ -12,11 +12,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "PRYJ",
@@ -38,11 +38,11 @@
       "departureTime": "23:43",
       "day": 1,
       "distance": "636.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "DDU",
@@ -51,11 +51,11 @@
       "departureTime": "01:40",
       "day": 2,
       "distance": "788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "PNBE",
@@ -64,11 +64,11 @@
       "departureTime": "04:25",
       "day": 2,
       "distance": "1000.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "JSME",
@@ -77,11 +77,11 @@
       "departureTime": "07:43",
       "day": 2,
       "distance": "1221.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "MDP",
@@ -90,11 +90,11 @@
       "departureTime": "08:06",
       "day": 2,
       "distance": "1250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "BWN",
@@ -103,11 +103,11 @@
       "departureTime": "10:37",
       "day": 2,
       "distance": "1437.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "HWH",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1531.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JSME"
     }
   ],
-  "summary": "Reservation chart preparation times for Kolkata Rajdhni (12306) from NDLS to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:28.756Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kolkata Rajdhni (12306) is prepared at New Delhi (NDLS) around 9:14 AM, with a second (vacancy) chart around 4:35 PM. 9 of 9 stations on the NDLS to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T01:00:40.149Z",
+  "knownChartCount": 9
 }

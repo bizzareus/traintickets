@@ -12,11 +12,11 @@
       "departureTime": "10:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "18:21",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "BBS",
@@ -25,11 +25,11 @@
       "departureTime": "16:25",
       "day": 1,
       "distance": "439.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:13",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "VZM",
@@ -38,11 +38,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "821.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VZM"
     },
     {
       "stationCode": "BZA",
@@ -51,11 +51,11 @@
       "departureTime": "04:20",
       "day": 2,
       "distance": "1218.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VZM"
     },
     {
       "stationCode": "RU",
@@ -64,11 +64,11 @@
       "departureTime": "10:00",
       "day": 2,
       "distance": "1594.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VZM"
     },
     {
       "stationCode": "SMVB",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1931.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VZM"
     }
   ],
-  "summary": "Reservation chart preparation times for Smvb Duronto Exp (12245) from HWH to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
-  "generatedAt": "2026-07-02T17:19:20.754Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Smvb Duronto Exp (12245) is prepared at Howrah Jn (HWH) around 6:21 PM. 6 of 6 stations on the HWH to SMVB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:58:09.563Z",
+  "knownChartCount": 6
 }
