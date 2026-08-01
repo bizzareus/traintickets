@@ -2,7 +2,7 @@
 title: "Tatkal Token System Rules 2026: கவுண்டர் டோக்கன் நேரம்"
 description: "2026 தட்கல் டோக்கன் விதிகளான AC டோக்கன் நேரம் (8:30 AM), ஸ்லீப்பர் டோக்கன் (9:00 AM) மற்றும் ஆதார் சரிபார்ப்பு விதிகளை அறியவும்."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc

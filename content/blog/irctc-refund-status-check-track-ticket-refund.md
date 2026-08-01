@@ -2,7 +2,7 @@
 title: "IRCTC Refund Status Check: Track Cancelled Ticket Refund"
 description: "How do you check IRCTC refund status online? Read the step-by-step guide to track cancelled ticket refunds, PNR refund status, and delayed TDR refunds."
 date: "2026-06-27"
-updated: "2026-07-14"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc
@@ -35,7 +35,7 @@ Here is the step-by-step process to check your status:
 
 **IRCTC initiates ticket refunds within 24 to 48 hours after you cancel a confirmed ticket or after a waitlisted e-ticket is automatically cancelled. However, the actual time it takes for the funds to reflect in your account depends entirely on your original payment method, ranging from 1 to 7 business days.**
 
-When you book a ticket, your reservation goes through various stages. The **WL full form is Waiting List**. In the railway queue, tickets progress as: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If your e-ticket fails to confirm and remains on the waiting list (e.g., from `WL/10` down to `WL/1` or remains in queue), the system triggers an automatic cancellation after chart preparation. You do not need to cancel it manually; the system processes a full refund minus a minimal clerkage fee.
+When you book a ticket, your reservation goes through various stages. The **WL full form is Waiting List**. In the railway queue, tickets progress as: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If your e-ticket fails to confirm and remains on the waiting list (e.g., from `WL/10` down to `WL/1` or remains in queue), the system triggers an automatic cancellation after chart preparation. You do not need to cancel it manually; the system processes a full refund of fare (no cancellation or clerkage fee deducted).
 
 The table below outlines the typical timelines for different payment methods:
 
@@ -77,7 +77,7 @@ While waiting for your TDR to clear, you can use [LastBerth](file:///) to check 
 
 **The refund rules state that fully waitlisted e-tickets are automatically cancelled and fully refunded after chart preparation. For confirmed tickets, refunds require manual cancellation before departure, with cancellation fees increasing from flat clerkage fees to 25% or 50% of the fare as the departure time approaches.**
 
-For waitlisted tickets, position queues matter. A ticket showing `WL/1` has a much higher confirmation chance than `WL/100`. If you cancel a waitlisted or RAC ticket manually, you can do so up to 30 minutes before departure for a flat clerkage fee of ₹60. However, if you hold a confirmed ticket and fail to cancel it or file a TDR at least 8 hours before departure under the April 2026 rules, you will get zero refund.
+For waitlisted tickets, position queues matter. A ticket showing `WL/1` has a much higher confirmation chance than `WL/100`. If you cancel a waitlisted or RAC ticket manually, you can do so up to 30 minutes before departure for a flat clerkage fee of ₹60. However, if you hold a confirmed ticket and fail to cancel it or file a TDR at least 4 hours before scheduled train departure (or before chart preparation), you will get zero refund.
 
 ---
 

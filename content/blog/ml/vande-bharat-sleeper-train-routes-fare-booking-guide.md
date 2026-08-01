@@ -2,7 +2,7 @@
 title: "Vande Bharat Sleeper Train 2026: റൂട്ടുകൾ, നിരക്കുകൾ"
 description: "2026 വന്ദേ ഭാരത് സ്ലീപ്പർ ട്രെയിൻ റൂട്ടുകൾ, 1AC/2AC/3AC നിരക്കുകൾ, 160 കി.മീ വേഗത, IRCTC ബുക്കിംഗ് നിയമങ്ങൾ അറിയുക."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc

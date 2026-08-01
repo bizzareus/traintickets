@@ -2,7 +2,7 @@
 title: "Vande Bharat Sleeper Train 2026: రూట్లు, ఛార్జీలు"
 description: "2026 వందే భారత్ స్లీపర్ రైలు రూట్లు, 1AC/2AC/3AC ఛార్జీలు, 160 కిమీ వేగం మరియు IRCTC బుకింగ్ నిబంధనలు తెలుసుకోండి."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc

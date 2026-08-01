@@ -2,7 +2,7 @@
 title: "Vande Bharat Sleeper Train 2026: Routes, Fares & Booking"
 description: "Discover 2026 Vande Bharat Sleeper train routes, 1AC/2AC/3AC fares, 160 km/h schedule, berth layout features, and IRCTC booking rules vs Rajdhani."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc
@@ -85,4 +85,4 @@ Yes, onboard catering is included in the fare by default, serving dinner, breakf
 The Advance Reservation Period for Vande Bharat Sleeper trains follows the standard 60-day rule opening at 8:00 AM IST daily.
 
 ### Can you book Tatkal tickets on Vande Bharat Sleeper trains?
-Yes, Tatkal booking opens at 10:00 AM IST for 1A, 2A, and 3A classes under standard Tatkal surge pricing rules.
+Yes, Tatkal booking opens at 10:00 AM IST for 2A and 3A classes under standard Tatkal surge pricing rules (First AC / 1A is excluded from Tatkal).

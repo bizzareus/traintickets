@@ -2,7 +2,7 @@
 title: "Tatkal Token System Rules 2026: কাউন্টার টোকেন সময়"
 description: "২০২৬ তৎকাল টোকেন সিস্টেমের নিয়মাবলী: AC টোকেনের সময় (৮:৩০ AM), স্লিপার টোকেন (৯:০০ AM) এবং আধার যাচাই প্রক্রিয়া।"
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc

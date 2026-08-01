@@ -2,7 +2,7 @@
 title: "Tatkal Token System Rules 2026: കൗണ്ടർ ടോക്കൺ സമയം"
 description: "2026 തത്കാൽ ടോക്കൺ നിയമങ്ങൾ: AC ടോക്കൺ സമയം (8:30 AM), സ്ലീപ്പർ ടോക്കൺ (9:00 AM), ആധാർ വെരിഫിക്കേഷൻ വിവരങ്ങൾ അറിയുക."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc

@@ -2,7 +2,7 @@
 title: "Vande Bharat Sleeper Train 2026: मार्ग, भाडे आणि बुकिंग"
 description: "2026 वंदे भारत स्लीपर ट्रेनचे मार्ग, 1AC/2AC/3AC भाडे, 160 किमी/तास वेग, कोच लेआउट आणि IRCTC बुकिंग नियम पहा."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc

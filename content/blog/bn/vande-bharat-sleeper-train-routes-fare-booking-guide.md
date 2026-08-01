@@ -2,7 +2,7 @@
 title: "Vande Bharat Sleeper Train 2026: রুট, ভাড়া ও বুকিং"
 description: "২০২৬ বন্দে ভারত স্লিপার ট্রেনের রুট, 1AC/2AC/3AC ভাড়া, ১৬০ কিমি/ঘণ্টা গতি এবং IRCTC বুকিং নিয়মাবলী জেনে নিন।"
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc

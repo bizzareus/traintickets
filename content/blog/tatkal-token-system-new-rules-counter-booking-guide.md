@@ -2,7 +2,7 @@
 title: "Tatkal Token System Rules 2026: Counter Timings & Hacks"
 description: "Learn the 2026 Tatkal token system rules for counter ticket booking: AC token times (8:30 AM), Sleeper tokens (9:00 AM), Aadhaar verification, and online hacks."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc
@@ -30,7 +30,7 @@ Key operational highlights:
 
 ## What Are the Official Token Distribution Timings for AC and Non-AC Tatkal?
 
-**PRS counters distribute Tatkal tokens in two designated morning shifts: 8:30 AM to 9:00 AM for AC classes (1A, 2A, 3A, 3E, EC, CC), and 9:00 AM to 9:30 AM for Non-AC Sleeper (SL) class.**
+**PRS counters distribute Tatkal tokens in two designated morning shifts: 8:30 AM to 9:00 AM for AC classes (2A, 3A, 3E, EC, CC), and 9:00 AM to 9:30 AM for Non-AC Sleeper (SL) class.**
 
 Official schedule timeline:
 - **8:30 AM – 9:00 AM:** AC class token issuance at counter.

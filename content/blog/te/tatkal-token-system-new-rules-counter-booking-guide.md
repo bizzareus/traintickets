@@ -2,7 +2,7 @@
 title: "Tatkal Token System Rules 2026: కౌంటర్ టోకెన్ టైమింగ్స్"
 description: "2026 తత్కాల్ టోకెన్ నిబంధనలు: AC టోకెన్ సమయం (8:30 AM), స్లీపర్ టోకెన్ (9:00 AM), ఆధార్ వెరిఫికేషన్ మరియు ఆన్‌లైన్ హ్యాక్స్."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc

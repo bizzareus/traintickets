@@ -2,7 +2,7 @@
 title: "Vande Bharat Sleeper Train 2026: வழித்தடங்கள், கட்டணம்"
 description: "2026 வந்தே பாரத் ஸ்லீப்பர் ரயில் வழித்தடங்கள், 1AC/2AC/3AC கட்டணம், 160 கிமீ வேகம் மற்றும் IRCTC முன்பதிவு விதிகளை அறியவும்."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc

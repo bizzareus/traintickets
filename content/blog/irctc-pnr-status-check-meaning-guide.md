@@ -2,7 +2,7 @@
 title: "IRCTC PNR Status Check: Meaning, Codes & How to Read It"
 description: "Check your IRCTC PNR status and learn what every code means (CNF, RAC, WL, GNWL) plus how to read your waitlist confirmation chances before you travel."
 date: "2026-06-26"
-updated: "2026-07-27"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc
@@ -182,8 +182,8 @@ PNR status updates in real-time whenever a passenger cancels a booking, during c
 ### Can you check PNR status for counter paper tickets online?
 Yes, you can check live PNR status for paper tickets issued at railway PRS counters online using your 10-digit PNR number.
 
-### Why does PNR status show chart not prepared until 4 hours before train departure?
-Indian Railways rules mandate that the first reservation chart is generated 4 hours prior to departure (or 8 PM the previous evening for morning trains).
+### Why does PNR status show chart not prepared until 8 hours before train departure?
+Indian Railways rules mandate that the first reservation chart is generated 8 hours prior to departure (or 21:00 / 9:00 PM the previous evening for morning trains).
 
 ### Can PNR status change after boarding the train?
 Yes, if on-board passengers fail to turn up, TTEs allocate vacant berths to RAC or waitlisted passengers during the journey.

@@ -2,7 +2,7 @@
 title: "Tatkal Token System Rules 2026: टोकन वेळ व काउंटर नियम"
 description: "2026 तत्काळ टोकन सिस्टीमचे नियम पहा: AC टोकन वेळ (8:30 AM), स्लिपर टोकन (9:00 AM), आधार पडताळणी आणि ऑनलाइन टिप्स."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-01"
 tags:
   - train booking
   - irctc
