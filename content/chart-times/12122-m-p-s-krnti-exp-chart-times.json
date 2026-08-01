@@ -12,11 +12,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "GWL",
@@ -25,11 +25,11 @@
       "departureTime": "21:47",
       "day": 1,
       "distance": "306.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "VGLJ",
@@ -38,11 +38,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "SGO",
@@ -51,11 +51,11 @@
       "departureTime": "02:45",
       "day": 2,
       "distance": "627.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "DMO",
@@ -64,11 +64,11 @@
       "departureTime": "03:55",
       "day": 2,
       "distance": "704.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "KMZ",
@@ -77,11 +77,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "813.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "JBP",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "904.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     }
   ],
-  "summary": "Reservation chart preparation times for M P S Krnti Exp (12122) from NZM to JBP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:38.607Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for M P S Krnti Exp (12122) is prepared at H Nizamuddin (NZM) around 9:55 AM, with a second (vacancy) chart around 5:40 PM. 7 of 7 stations on the NZM to JBP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:50:52.945Z",
+  "knownChartCount": 7
 }

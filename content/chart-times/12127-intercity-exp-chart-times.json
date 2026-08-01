@@ -12,11 +12,11 @@
       "departureTime": "06:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "DR",
@@ -25,11 +25,11 @@
       "departureTime": "06:48",
       "day": 1,
       "distance": "9.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "TNA",
@@ -38,11 +38,11 @@
       "departureTime": "07:10",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "LNL",
@@ -51,11 +51,11 @@
       "departureTime": "08:50",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "SVJR",
@@ -64,11 +64,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "190.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "PUNE",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "192.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CSMT"
     }
   ],
-  "summary": "Reservation chart preparation times for Intercity Exp (12127) from CSMT to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
-  "generatedAt": "2026-07-02T17:19:39.790Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Intercity Exp (12127) is prepared at C Shivaji Mah T (CSMT) around 8:29 PM. 6 of 6 stations on the CSMT to PUNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:51:01.462Z",
+  "knownChartCount": 6
 }

@@ -12,11 +12,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "KMZ",
@@ -25,11 +25,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "DMO",
@@ -38,11 +38,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "201.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "SGO",
@@ -51,11 +51,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "278.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGO"
     },
     {
       "stationCode": "VGLJ",
@@ -64,11 +64,11 @@
       "departureTime": "02:18",
       "day": 2,
       "distance": "502.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGO"
     },
     {
       "stationCode": "GWL",
@@ -77,11 +77,11 @@
       "departureTime": "03:20",
       "day": 2,
       "distance": "599.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGO"
     },
     {
       "stationCode": "NZM",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "904.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGO"
     }
   ],
-  "summary": "Reservation chart preparation times for Mp Samprk Krnti (12121) from JBP to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:38.606Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mp Samprk Krnti (12121) is prepared at Jabalpur (JBP) around 9:05 AM, with a second (vacancy) chart around 7:05 PM. 7 of 7 stations on the JBP to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:50:51.650Z",
+  "knownChartCount": 7
 }

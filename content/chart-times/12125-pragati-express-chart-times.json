@@ -12,11 +12,11 @@
       "departureTime": "16:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "DR",
@@ -25,11 +25,11 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "9.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "TNA",
@@ -38,11 +38,11 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "PNVL",
@@ -51,11 +51,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "KJT",
@@ -64,11 +64,11 @@
       "departureTime": "18:07",
       "day": 1,
       "distance": "97.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "LNL",
@@ -77,11 +77,11 @@
       "departureTime": "18:48",
       "day": 1,
       "distance": "125.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "SVJR",
@@ -90,11 +90,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "186.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "PUNE",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "189.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     }
   ],
-  "summary": "Reservation chart preparation times for Pragati Express (12125) from CSMT to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:39.793Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Pragati Express (12125) is prepared at C Shivaji Mah T (CSMT) around 7:29 AM, with a second (vacancy) chart around 6:33 PM. 8 of 8 stations on the CSMT to PUNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:50:57.206Z",
+  "knownChartCount": 8
 }
