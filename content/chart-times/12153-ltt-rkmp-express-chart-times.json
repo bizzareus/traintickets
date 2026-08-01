@@ -12,11 +12,11 @@
       "departureTime": "16:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "TNA",
@@ -25,11 +25,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KYN",
@@ -38,11 +38,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "BSL",
@@ -51,11 +51,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "429.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "KNW",
@@ -64,11 +64,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "552.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "HD",
@@ -77,11 +77,11 @@
       "departureTime": "02:32",
       "day": 2,
       "distance": "660.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "ET",
@@ -90,11 +90,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "736.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "NDPM",
@@ -103,11 +103,11 @@
       "departureTime": "04:20",
       "day": 2,
       "distance": "753.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "RKMP",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "828.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     }
   ],
-  "summary": "Reservation chart preparation times for Ltt Rkmp Express (12153) from LTT to RKMP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:07.891Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ltt Rkmp Express (12153) is prepared at Lokmanyatilak T (LTT) around 7:35 AM, with a second (vacancy) chart around 3:55 PM. 9 of 9 stations on the LTT to RKMP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:53:12.237Z",
+  "knownChartCount": 9
 }

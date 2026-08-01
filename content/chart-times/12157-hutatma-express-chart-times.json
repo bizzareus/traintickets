@@ -12,11 +12,11 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "DD",
@@ -25,11 +25,11 @@
       "departureTime": "18:57",
       "day": 1,
       "distance": "76.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "KWV",
@@ -38,11 +38,11 @@
       "departureTime": "20:12",
       "day": 1,
       "distance": "185.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "SUR",
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "264.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "Reservation chart preparation times for Hutatma Express (12157) from PUNE to SUR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 4 stations.",
-  "generatedAt": "2026-07-02T17:19:07.912Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hutatma Express (12157) is prepared at Pune Jn (PUNE) around 8:08 AM, with a second (vacancy) chart around 7:57 PM. 4 of 4 stations on the PUNE to SUR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:53:17.420Z",
+  "knownChartCount": 4
 }

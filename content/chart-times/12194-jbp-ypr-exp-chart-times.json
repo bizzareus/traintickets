@@ -12,11 +12,11 @@
       "departureTime": "06:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "MML",
@@ -25,11 +25,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "4.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "NU",
@@ -38,11 +38,11 @@
       "departureTime": "07:50",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "PPI",
@@ -51,11 +51,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "ET",
@@ -64,11 +64,11 @@
       "departureTime": "10:25",
       "day": 1,
       "distance": "246.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ET"
     },
     {
       "stationCode": "NGP",
@@ -77,11 +77,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "543.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:53",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPQ",
@@ -90,11 +90,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "754.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:53",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "SKZR",
@@ -103,11 +103,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "824.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:53",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "RDM",
@@ -116,11 +116,11 @@
       "departureTime": "20:40",
       "day": 1,
       "distance": "895.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:53",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "KZJ",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Jbp Ypr Exp (12194) from JBP to YPR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-07-02T17:19:13.930Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jbp Ypr Exp (12194) is prepared at Jabalpur (JBP) around 8:08 PM. 9 of 19 stations on the JBP to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T00:55:31.006Z",
+  "knownChartCount": 9
 }

@@ -272,11 +272,11 @@
       "departureTime": "03:30",
       "day": 3,
       "distance": "1710.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:04",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AK"
     },
     {
       "stationCode": "KYN",
@@ -285,11 +285,11 @@
       "departureTime": "06:20",
       "day": 3,
       "distance": "1844.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:04",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AK"
     },
     {
       "stationCode": "LTT",
@@ -298,14 +298,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "1881.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:04",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AK"
     }
   ],
-  "summary": "Reservation chart preparation times for Puri Ltt Sf (12146) from KUR to LTT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 23 stations.",
-  "generatedAt": "2026-07-02T17:19:41.864Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Puri Ltt Sf (12146) is prepared at Nashik Road (NK) around 9:04 AM, with a second (vacancy) chart around 9:25 PM. 3 of 23 stations on the KUR to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T00:52:14.500Z",
+  "knownChartCount": 3
 }

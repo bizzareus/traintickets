@@ -12,11 +12,11 @@
       "departureTime": "14:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "KWV",
@@ -25,11 +25,11 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "JEUR",
@@ -38,11 +38,11 @@
       "departureTime": "15:20",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "DD",
@@ -51,11 +51,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "PUNE",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "264.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SUR"
     }
   ],
-  "summary": "Reservation chart preparation times for Pune Intercity (12170) from SUR to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
-  "generatedAt": "2026-07-02T17:19:10.404Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Pune Intercity (12170) is prepared at Solapur Jn (SUR) around 8:23 PM. 5 of 5 stations on the SUR to PUNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:53:56.557Z",
+  "knownChartCount": 5
 }
