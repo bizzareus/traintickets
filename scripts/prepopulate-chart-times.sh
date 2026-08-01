@@ -38,6 +38,7 @@
 #   -l, --limit N        process at most N pages this run (default: all)
 #   -r, --retries N      retry a non-200 up to N times (default 2)
 #   -t, --train NUMBER   (re)populate only this train number, then exit
+#   -p, --prefix PREFIX  prioritize train numbers starting with PREFIX first (default 12)
 #       --force          re-process trains already marked completed
 #       --fillup         backfill missing chart times in existing content pages
 #       --include-spl    also process SPL / Special trains (skipped by default)
@@ -64,6 +65,7 @@ LIMIT=0          # 0 => no limit
 FORCE=0
 FILLUP=0         # 1 => backfill missing chart times in existing content pages
 TRAIN=""         # when set, (re)populate only this train number and exit
+PREFIX="12"      # prioritize train numbers starting with this prefix first
 SKIP_SPECIAL=1   # 1 => skip SPL / Special trains (no useful chart data); --include-spl to process them
 RETRIES=2        # extra attempts on a non-200 (IRCTC schedule fetch is flaky under load)
 RETRY_DELAY=4    # seconds between retries
@@ -79,6 +81,7 @@ while [[ $# -gt 0 ]]; do
     -l|--limit)    LIMIT="${2:-0}"; shift 2 ;;
     -r|--retries)  RETRIES="${2:-2}"; shift 2 ;;
     -t|--train)    TRAIN="${2:-}"; shift 2 ;;
+    -p|--prefix)   PREFIX="${2:-12}"; shift 2 ;;
     --force)       FORCE=1; shift ;;
     --fillup)      FILLUP=1; shift ;;
     --include-spl) SKIP_SPECIAL=0; shift ;;
@@ -220,27 +223,56 @@ jq -e 'type == "array"' "$INPUT" >/dev/null 2>&1 || { echo "Error: $INPUT is not
 
 total="$(jq 'length' "$INPUT")"
 already="$(jq '[.[] | select(.completed == true)] | length' "$INPUT")"
-echo "Input: $INPUT ($total trains, $already already completed)" >&2
-echo "Target: $BASE_URL/chart-times/<trainNumber>  (delay ${DELAY}s, limit ${LIMIT:-all}, force=$FORCE)" >&2
+echo "Input: $INPUT ($total trains in list, $already marked completed in JSON)" >&2
+echo "Target: $BASE_URL/chart-times/<trainNumber>  (delay ${DELAY}s, limit ${LIMIT:-all}, force=$FORCE, prefix=$PREFIX)" >&2
 
-# Snapshot the trains to process this run into parallel arrays (number + name).
+# Identify train numbers that ALREADY have fully valid chart times in content dir
+complete_nums=""
+if [[ -d "$CONTENT_DIR" ]]; then
+  shopt -s nullglob
+  files=("$CONTENT_DIR"/*-chart-times.json)
+  shopt -u nullglob
+  if [[ ${#files[@]} -gt 0 ]]; then
+    complete_nums="$(jq -r 'select((.knownChartCount // 0) > 0 and ([.stations[]? | select(.chartTimeLocal == null)] | length) == 0) | (.trainNumber|tostring)' "${files[@]}" 2>/dev/null || true)"
+  fi
+fi
+
+# Snapshot the candidate trains to process this run into parallel arrays (number + name).
+# Candidates are filtered for missing chart times (unless --force) and sorted so that
+# train numbers starting with $PREFIX (default 12) are processed FIRST.
 # We iterate the snapshot — not live array indices — because special/failed
 # trains get REMOVED from $INPUT mid-loop, which would shift positional indices.
-# All mutations below target trainNumber, so they stay correct as the list shrinks.
 NUMS=(); NAMES=()
 if [[ "$FORCE" -eq 1 ]]; then
-  JQ_SELECT='.[]'
+  JQ_FILTER='
+    .[] |
+    (.trainNumber | tostring) as $num |
+    ($num | sub("^0+"; "")) as $bare |
+    (if ($num | startswith($prefix)) or ($bare | startswith($prefix)) then 0 else 1 end) as $prio |
+    {num: $num, name: (.trainName // ""), prio: $prio}
+  '
 else
-  JQ_SELECT='.[] | select(.completed != true)'
+  JQ_FILTER='
+    ($complete | split("\n") | map(select(length > 0)) | map({key: ., value: true}) | from_entries) as $complete_set |
+    .[] |
+    (.trainNumber | tostring) as $num |
+    ($num | sub("^0+"; "")) as $bare |
+    (($complete_set | has($num)) or ($complete_set | has($bare))) as $is_complete |
+    select(($is_complete | not) or (.completed != true)) |
+    (if ($num | startswith($prefix)) or ($bare | startswith($prefix)) then 0 else 1 end) as $prio |
+    {num: $num, name: (.trainName // ""), prio: $prio}
+  '
 fi
+
 while IFS=$'\t' read -r _num _name; do
   [[ -n "$_num" ]] && { NUMS+=("$_num"); NAMES+=("$_name"); }
-done < <(jq -r "$JQ_SELECT | [(.trainNumber|tostring), (.trainName // \"\")] | @tsv" "$INPUT")
+done < <(jq -r --arg prefix "$PREFIX" --arg complete "$complete_nums" "$JQ_FILTER" "$INPUT" | jq -r -s 'sort_by(.prio) | .[] | [(.num|tostring), (.name // "")] | @tsv')
 
 if [[ "${#NUMS[@]}" -eq 0 ]]; then
-  echo "Nothing to do — all trains already completed (use --force to re-run)." >&2
+  echo "Nothing to do — all trains already have chart times added (use --force to re-run)." >&2
   exit 0
 fi
+echo "Found ${#NUMS[@]} candidate trains missing complete chart times (prioritizing prefix '$PREFIX' first)." >&2
 
 tmp="$(mktemp)"; trap 'rm -f "$tmp"' EXIT
 

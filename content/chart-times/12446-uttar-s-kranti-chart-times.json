@@ -12,11 +12,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "MCTM",
@@ -25,11 +25,11 @@
       "departureTime": "20:18",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "RMJK",
@@ -38,11 +38,11 @@
       "departureTime": "20:34",
       "day": 1,
       "distance": "35.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "JAT",
@@ -51,11 +51,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "78.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "KTHU",
@@ -64,11 +64,11 @@
       "departureTime": "22:52",
       "day": 1,
       "distance": "155.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "PTKC",
@@ -77,11 +77,11 @@
       "departureTime": "23:27",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "JRC",
@@ -90,11 +90,11 @@
       "departureTime": "01:13",
       "day": 2,
       "distance": "291.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "LDH",
@@ -103,11 +103,11 @@
       "departureTime": "02:10",
       "day": 2,
       "distance": "343.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "UMB",
@@ -116,11 +116,11 @@
       "departureTime": "04:10",
       "day": 2,
       "distance": "456.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "PNP",
@@ -129,11 +129,11 @@
       "departureTime": "05:17",
       "day": 2,
       "distance": "565.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "NDLS",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "655.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     }
   ],
-  "summary": "Reservation chart preparation times for Uttar S Kranti (12446) from SVDK to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-07-02T17:19:11.628Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Uttar S Kranti (12446) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 11:19 AM, with a second (vacancy) chart around 7:35 PM. 11 of 11 stations on the SVDK to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:48:45.358Z",
+  "knownChartCount": 11
 }

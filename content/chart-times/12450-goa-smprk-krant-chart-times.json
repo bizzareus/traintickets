@@ -12,11 +12,11 @@
       "departureTime": "02:17",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:18",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "02:02",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "UMB",
@@ -25,11 +25,11 @@
       "departureTime": "03:10",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:18",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "02:02",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "PNP",
@@ -38,11 +38,11 @@
       "departureTime": "04:17",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:18",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "02:02",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "NDLS",
@@ -51,11 +51,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "266.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "NZM",
@@ -64,11 +64,11 @@
       "departureTime": "06:23",
       "day": 1,
       "distance": "274.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "KOTA",
@@ -77,11 +77,11 @@
       "departureTime": "11:20",
       "day": 1,
       "distance": "731.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:00",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "RTM",
@@ -90,11 +90,11 @@
       "departureTime": "14:53",
       "day": 1,
       "distance": "997.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:00",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "BRC",
@@ -214,7 +214,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Goa Smprk Krant (12450) from CDG to MAO are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-07-02T17:19:11.640Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Goa Smprk Krant (12450) is prepared at Chandigarh (CDG) around 4:18 PM, with a second (vacancy) chart around 2:02 AM. 7 of 16 stations on the CDG to MAO route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T00:48:23.117Z",
+  "knownChartCount": 7
 }

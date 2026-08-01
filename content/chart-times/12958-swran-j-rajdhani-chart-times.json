@@ -12,7 +12,7 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
+      "chartTimeLocal": "19:54",
       "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -64,11 +64,11 @@
       "departureTime": "01:40",
       "day": 2,
       "distance": "443.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "FA",
@@ -77,11 +77,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "650.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "ABR",
@@ -90,11 +90,11 @@
       "departureTime": "05:00",
       "day": 2,
       "distance": "748.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "PNU",
@@ -103,11 +103,11 @@
       "departureTime": "05:52",
       "day": 2,
       "distance": "801.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:37",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNU"
     },
     {
       "stationCode": "MSH",
@@ -116,11 +116,11 @@
       "departureTime": "06:40",
       "day": 2,
       "distance": "866.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:37",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNU"
     },
     {
       "stationCode": "SBIB",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "929.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:37",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNU"
     }
   ],
-  "summary": "Reservation chart preparation times for Swran J Rajdhani (12958) from NDLS to SBIB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-07-02T17:19:42.727Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Swran J Rajdhani (12958) is prepared at New Delhi (NDLS) around 7:54 PM. 7 of 10 stations on the NDLS to SBIB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T00:47:56.582Z",
+  "knownChartCount": 7
 }

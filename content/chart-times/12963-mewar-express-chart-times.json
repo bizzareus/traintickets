@@ -12,11 +12,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "BVH",
@@ -25,11 +25,11 @@
       "departureTime": "18:48",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "KSV",
@@ -38,11 +38,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "MTJ",
@@ -51,11 +51,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "BTE",
@@ -64,11 +64,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "BXN",
@@ -77,11 +77,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "209.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "HAN",
@@ -90,11 +90,11 @@
       "departureTime": "21:38",
       "day": 1,
       "distance": "242.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "SMVJ",
@@ -103,11 +103,11 @@
       "departureTime": "21:48",
       "day": 1,
       "distance": "252.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "GGC",
@@ -116,11 +116,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "286.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "SWM",
@@ -129,11 +129,11 @@
       "departureTime": "23:05",
       "day": 1,
       "distance": "350.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "KOTA",
@@ -142,11 +142,11 @@
       "departureTime": "00:45",
       "day": 2,
       "distance": "458.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "BUDI",
@@ -155,11 +155,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "496.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "MLGH",
@@ -168,11 +168,11 @@
       "departureTime": "02:30",
       "day": 2,
       "distance": "564.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "COR",
@@ -181,11 +181,11 @@
       "departureTime": "04:55",
       "day": 2,
       "distance": "629.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "KIN",
@@ -194,11 +194,11 @@
       "departureTime": "05:28",
       "day": 2,
       "distance": "665.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "MVJ",
@@ -207,11 +207,11 @@
       "departureTime": "05:57",
       "day": 2,
       "distance": "701.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "RPZ",
@@ -220,11 +220,11 @@
       "departureTime": "06:40",
       "day": 2,
       "distance": "739.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "UDZ",
@@ -233,14 +233,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "743.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "Reservation chart preparation times for Mewar Express (12963) from NZM to UDZ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 18 stations.",
-  "generatedAt": "2026-07-02T17:19:07.786Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mewar Express (12963) is prepared at H Nizamuddin (NZM) around 10:25 AM. 18 of 18 stations on the NZM to UDZ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-01T00:46:02.345Z",
+  "knownChartCount": 18
 }
