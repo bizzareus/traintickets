@@ -12,11 +12,11 @@
       "departureTime": "05:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DWR"
     },
     {
       "stationCode": "UBL",
@@ -25,11 +25,11 @@
       "departureTime": "06:05",
       "day": 1,
       "distance": "21.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DWR"
     },
     {
       "stationCode": "YLG",
@@ -38,11 +38,11 @@
       "departureTime": "06:40",
       "day": 1,
       "distance": "67.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DWR"
     },
     {
       "stationCode": "HVR",
@@ -51,11 +51,11 @@
       "departureTime": "07:08",
       "day": 1,
       "distance": "96.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DWR"
     },
     {
       "stationCode": "BYD",
@@ -64,11 +64,11 @@
       "departureTime": "07:22",
       "day": 1,
       "distance": "110.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DWR"
     },
     {
       "stationCode": "RNR",
@@ -77,11 +77,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DWR"
     },
     {
       "stationCode": "HRR",
@@ -90,11 +90,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DWR"
     },
     {
       "stationCode": "DVG",
@@ -103,11 +103,11 @@
       "departureTime": "08:20",
       "day": 1,
       "distance": "164.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "JRU",
@@ -116,11 +116,11 @@
       "departureTime": "09:00",
       "day": 1,
       "distance": "211.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "HSD",
@@ -129,11 +129,11 @@
       "departureTime": "09:25",
       "day": 1,
       "distance": "240.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "AJP",
@@ -142,11 +142,11 @@
       "departureTime": "09:43",
       "day": 1,
       "distance": "261.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "RRB",
@@ -155,11 +155,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "279.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "DRU",
@@ -168,11 +168,11 @@
       "departureTime": "10:11",
       "day": 1,
       "distance": "285.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "ASK",
@@ -181,11 +181,11 @@
       "departureTime": "10:50",
       "day": 1,
       "distance": "324.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "TTR",
@@ -194,11 +194,11 @@
       "departureTime": "11:12",
       "day": 1,
       "distance": "350.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "TK",
@@ -207,11 +207,11 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "420.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "YPR",
@@ -220,11 +220,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "484.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     },
     {
       "stationCode": "SBC",
@@ -233,14 +233,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "490.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DVG"
     }
   ],
-  "summary": "Reservation chart preparation times for Siddaganga Exp (12726) from DWR to SBC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 18 stations.",
-  "generatedAt": "2026-07-02T17:19:11.645Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Siddaganga Exp (12726) is prepared at Dharwar (DWR) around 8:08 PM, with a second (vacancy) chart around 5:20 AM. 18 of 18 stations on the DWR to SBC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T23:36:40.659Z",
+  "knownChartCount": 18
 }

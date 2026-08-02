@@ -12,11 +12,11 @@
       "departureTime": "08:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KYN",
@@ -500,7 +500,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ltt Bhagalpur Ex (12336) from LTT to BGP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 38 stations.",
-  "generatedAt": "2026-08-01T01:04:56.850Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ltt Bhagalpur Ex (12336) is prepared at Lokmanyatilak T (LTT) around 8:31 PM, with a second (vacancy) chart around 7:39 AM. 1 of 38 stations on the LTT to BGP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T03:23:24.369Z",
+  "knownChartCount": 1
 }

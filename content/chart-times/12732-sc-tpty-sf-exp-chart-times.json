@@ -25,11 +25,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "23.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "06:06",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "VKB",
@@ -103,11 +103,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "496.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "DMM",
@@ -116,11 +116,11 @@
       "departureTime": "01:20",
       "day": 2,
       "distance": "529.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "KRY",
@@ -129,11 +129,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "597.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "MCU",
@@ -142,11 +142,11 @@
       "departureTime": "02:25",
       "day": 2,
       "distance": "634.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "MPL",
@@ -155,11 +155,11 @@
       "departureTime": "03:05",
       "day": 2,
       "distance": "674.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "KCI",
@@ -168,11 +168,11 @@
       "departureTime": "03:30",
       "day": 2,
       "distance": "701.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "PIL",
@@ -181,11 +181,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "716.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "PAK",
@@ -194,11 +194,11 @@
       "departureTime": "04:40",
       "day": 2,
       "distance": "757.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "TPTY",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "799.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     }
   ],
-  "summary": "Reservation chart preparation times for Sc Tpty Sf Exp (12732) from SC to TPTY are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-07-02T17:19:12.800Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sc Tpty Sf Exp (12732) is prepared at Lingampalli (LPI) around 6:06 AM. 10 of 16 stations on the SC to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-02T23:48:36.984Z",
+  "knownChartCount": 10
 }

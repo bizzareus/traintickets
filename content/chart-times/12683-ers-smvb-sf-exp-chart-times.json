@@ -12,11 +12,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "AWY",
@@ -25,11 +25,11 @@
       "departureTime": "17:12",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "TCR",
@@ -38,11 +38,11 @@
       "departureTime": "18:03",
       "day": 1,
       "distance": "75.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "OTP",
@@ -51,11 +51,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "PGT",
@@ -64,11 +64,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "152.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "PTJ",
@@ -77,11 +77,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "TUP",
@@ -90,11 +90,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "244.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "ED",
@@ -103,11 +103,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "SA",
@@ -116,11 +116,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "356.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "TPT",
@@ -129,11 +129,11 @@
       "departureTime": "01:00",
       "day": 2,
       "distance": "469.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "BWT",
@@ -142,11 +142,11 @@
       "departureTime": "02:12",
       "day": 2,
       "distance": "554.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "KJM",
@@ -155,11 +155,11 @@
       "departureTime": "02:55",
       "day": 2,
       "distance": "611.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "SMVB",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "616.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     }
   ],
-  "summary": "Reservation chart preparation times for Ers Smvb Sf Exp (12683) from ERS to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-07-02T17:19:41.200Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ers Smvb Sf Exp (12683) is prepared at Ernakulam Jn (ERS) around 6:58 AM, with a second (vacancy) chart around 11:10 PM. 13 of 13 stations on the ERS to SMVB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T22:43:47.878Z",
+  "knownChartCount": 13
 }

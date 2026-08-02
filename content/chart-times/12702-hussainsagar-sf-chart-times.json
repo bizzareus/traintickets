@@ -12,11 +12,11 @@
       "departureTime": "14:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "BMT",
@@ -25,11 +25,11 @@
       "departureTime": "15:05",
       "day": 1,
       "distance": "6.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "LPI",
@@ -38,11 +38,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "VKB",
@@ -51,11 +51,11 @@
       "departureTime": "16:02",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "TDU",
@@ -64,11 +64,11 @@
       "departureTime": "16:40",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "SEM",
@@ -77,11 +77,11 @@
       "departureTime": "17:09",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "CT",
@@ -90,11 +90,11 @@
       "departureTime": "17:28",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "WADI",
@@ -103,11 +103,11 @@
       "departureTime": "18:02",
       "day": 1,
       "distance": "185.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "SDB",
@@ -116,11 +116,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "196.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "04:55",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "KLBG",
@@ -129,11 +129,11 @@
       "departureTime": "18:43",
       "day": 1,
       "distance": "222.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KLBG"
     },
     {
       "stationCode": "GUR",
@@ -142,11 +142,11 @@
       "departureTime": "19:12",
       "day": 1,
       "distance": "249.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KLBG"
     },
     {
       "stationCode": "SUR",
@@ -155,11 +155,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "335.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KLBG"
     },
     {
       "stationCode": "KWV",
@@ -168,11 +168,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "414.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KLBG"
     },
     {
       "stationCode": "PUNE",
@@ -181,11 +181,11 @@
       "departureTime": "00:50",
       "day": 2,
       "distance": "598.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "KYN",
@@ -194,11 +194,11 @@
       "departureTime": "03:28",
       "day": 2,
       "distance": "737.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "DR",
@@ -207,11 +207,11 @@
       "departureTime": "04:18",
       "day": 2,
       "distance": "781.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "CSMT",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "790.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "Reservation chart preparation times for Hussainsagar Sf (12702) from HYB to CSMT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
-  "generatedAt": "2026-07-02T17:19:07.870Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hussainsagar Sf (12702) is prepared at Hyderabad Decan (HYB) around 4:55 AM. 17 of 17 stations on the HYB to CSMT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T23:26:47.072Z",
+  "knownChartCount": 17
 }

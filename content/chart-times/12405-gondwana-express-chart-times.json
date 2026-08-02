@@ -12,11 +12,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "MKU",
@@ -383,7 +383,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Gondwana Express (12405) from BSL to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 29 stations.",
-  "generatedAt": "2026-08-01T01:09:52.819Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gondwana Express (12405) is prepared at Bhusaval Jn (BSL) around 8:58 PM, with a second (vacancy) chart around 5:45 AM. 1 of 29 stations on the BSL to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T03:45:16.194Z",
+  "knownChartCount": 1
 }

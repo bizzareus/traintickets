@@ -6368,36 +6368,12 @@
     "canonicalNumber": "12435"
   },
   {
-    "trainNumber": "12436",
-    "trainName": "JYG GARIB RATH",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12436-jyg-garib-rath-chart-times",
-    "canonicalNumber": "12436"
-  },
-  {
     "trainNumber": "12437",
     "trainName": "SC NZM RAJDHANI",
     "completed": true,
     "httpStatus": 200,
     "slug": "12437-sc-nzm-rajdhani-chart-times",
     "canonicalNumber": "12437"
-  },
-  {
-    "trainNumber": "12438",
-    "trainName": "SC RAJDHANI",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12438-sc-rajdhani-chart-times",
-    "canonicalNumber": "12438"
-  },
-  {
-    "trainNumber": "12439",
-    "trainName": "NED SGNR SF EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12439-ned-sgnr-sf-exp-chart-times",
-    "canonicalNumber": "12439"
   },
   {
     "trainNumber": "12440",
@@ -6414,14 +6390,6 @@
     "httpStatus": 200,
     "slug": "12441-bsp-ndls-raj-ex-chart-times",
     "canonicalNumber": "12441"
-  },
-  {
-    "trainNumber": "12442",
-    "trainName": "BSP RAJDHNI EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12442-bsp-rajdhni-exp-chart-times",
-    "canonicalNumber": "12442"
   },
   {
     "trainNumber": "12443",
@@ -6480,14 +6448,6 @@
     "canonicalNumber": "12449"
   },
   {
-    "trainNumber": "12450",
-    "trainName": "GOA SMPRK KRANT",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12450-goa-smprk-krant-chart-times",
-    "canonicalNumber": "12450"
-  },
-  {
     "trainNumber": "12451",
     "trainName": "SHRAM SHKTI EXP",
     "completed": true,
@@ -6502,22 +6462,6 @@
     "httpStatus": 200,
     "slug": "12452-shram-shkti-exp-chart-times",
     "canonicalNumber": "12452"
-  },
-  {
-    "trainNumber": "12453",
-    "trainName": "RNC NDLS RAJ EX",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12453-rnc-ndls-raj-ex-chart-times",
-    "canonicalNumber": "12453"
-  },
-  {
-    "trainNumber": "12454",
-    "trainName": "RNC RAJDHANI",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12454-rnc-rajdhani-chart-times",
-    "canonicalNumber": "12454"
   },
   {
     "trainNumber": "12455",
@@ -6550,22 +6494,6 @@
     "httpStatus": 200,
     "slug": "12458-bkn-dee-exp-chart-times",
     "canonicalNumber": "12458"
-  },
-  {
-    "trainNumber": "12459",
-    "trainName": "ASR INTERCITY",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12459-asr-intercity-chart-times",
-    "canonicalNumber": "12459"
-  },
-  {
-    "trainNumber": "12460",
-    "trainName": "ASR NDLS EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12460-asr-ndls-exp-chart-times",
-    "canonicalNumber": "12460"
   },
   {
     "trainNumber": "12461",
@@ -6680,36 +6608,12 @@
     "canonicalNumber": "12474"
   },
   {
-    "trainNumber": "12475",
-    "trainName": "HAPA SVDK EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12475-hapa-svdk-exp-chart-times",
-    "canonicalNumber": "12475"
-  },
-  {
-    "trainNumber": "12476",
-    "trainName": "SVDK HAPA EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12476-svdk-hapa-exp-chart-times",
-    "canonicalNumber": "12476"
-  },
-  {
     "trainNumber": "12477",
     "trainName": "JAM SVDK EXP",
     "completed": true,
     "httpStatus": 200,
     "slug": "12477-jam-svdk-exp-chart-times",
     "canonicalNumber": "12477"
-  },
-  {
-    "trainNumber": "12478",
-    "trainName": "SVDK JAM EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12478-svdk-jam-exp-chart-times",
-    "canonicalNumber": "12478"
   },
   {
     "trainNumber": "12479",
@@ -6752,28 +6656,12 @@
     "canonicalNumber": "12483"
   },
   {
-    "trainNumber": "12484",
-    "trainName": "ASR KCVL SF EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12484-asr-kcvl-sf-exp-chart-times",
-    "canonicalNumber": "12484"
-  },
-  {
     "trainNumber": "12485",
     "trainName": "NED SGNR SF EXP",
     "completed": true,
     "httpStatus": 200,
     "slug": "12485-ned-sgnr-sf-exp-chart-times",
     "canonicalNumber": "12485"
-  },
-  {
-    "trainNumber": "12486",
-    "trainName": "SGNR NED EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12486-sgnr-ned-exp-chart-times",
-    "canonicalNumber": "12486"
   },
   {
     "trainNumber": "12487",
@@ -6872,14 +6760,6 @@
     "canonicalNumber": "12498"
   },
   {
-    "trainNumber": "12501",
-    "trainName": "AGTL GARIB RATH",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12501-agtl-garib-rath-chart-times",
-    "canonicalNumber": "12501"
-  },
-  {
     "trainNumber": "12502",
     "trainName": "KOAA GARIB RATH",
     "completed": true,
@@ -6896,14 +6776,6 @@
     "canonicalNumber": "12503"
   },
   {
-    "trainNumber": "12504",
-    "trainName": "HUMSAFAR EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12504-humsafar-exp-chart-times",
-    "canonicalNumber": "12504"
-  },
-  {
     "trainNumber": "12505",
     "trainName": "NORTHEAST EXP",
     "completed": true,
@@ -6918,22 +6790,6 @@
     "httpStatus": 200,
     "slug": "12506-north-east-exp-chart-times",
     "canonicalNumber": "12506"
-  },
-  {
-    "trainNumber": "12507",
-    "trainName": "ARONAI EXPRESS",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12507-aronai-express-chart-times",
-    "canonicalNumber": "12507"
-  },
-  {
-    "trainNumber": "12508",
-    "trainName": "SCL TVC EXPRESS",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12508-scl-tvc-express-chart-times",
-    "canonicalNumber": "12508"
   },
   {
     "trainNumber": "12509",
@@ -6968,38 +6824,6 @@
     "canonicalNumber": "12512"
   },
   {
-    "trainNumber": "12513",
-    "trainName": "CHZ  SCL SF EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12513-chz-scl-sf-exp-chart-times",
-    "canonicalNumber": "12513"
-  },
-  {
-    "trainNumber": "12514",
-    "trainName": "SCL SC EXPRESS",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12514-scl-sc-express-chart-times",
-    "canonicalNumber": "12514"
-  },
-  {
-    "trainNumber": "12515",
-    "trainName": "CBE SCL SF EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12515-cbe-scl-sf-exp-chart-times",
-    "canonicalNumber": "12515"
-  },
-  {
-    "trainNumber": "12516",
-    "trainName": "SCL CBE EXPRESS",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12516-scl-cbe-express-chart-times",
-    "canonicalNumber": "12516"
-  },
-  {
     "trainNumber": "12517",
     "trainName": "GHY GARIB RATH",
     "completed": true,
@@ -7008,92 +6832,12 @@
     "canonicalNumber": "12517"
   },
   {
-    "trainNumber": "12518",
-    "trainName": "KOAA GARIB RATH",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12518-koaa-garib-rath-chart-times",
-    "canonicalNumber": "12518"
-  },
-  {
-    "trainNumber": "12519",
-    "trainName": "LTT AGTL AC EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12519-ltt-agtl-ac-exp-chart-times",
-    "canonicalNumber": "12519"
-  },
-  {
-    "trainNumber": "12520",
-    "trainName": "AGTL LTT AC EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12520-agtl-ltt-ac-exp-chart-times",
-    "canonicalNumber": "12520"
-  },
-  {
-    "trainNumber": "12521",
-    "trainName": "RAPTI SAGAR EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12521-rapti-sagar-exp-chart-times",
-    "canonicalNumber": "12521"
-  },
-  {
-    "trainNumber": "12522",
-    "trainName": "RAPTISAGAR EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12522-raptisagar-exp-chart-times",
-    "canonicalNumber": "12522"
-  },
-  {
-    "trainNumber": "12523",
-    "trainName": "NJP ANVT EXPRESS",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12523-njp-anvt-express-chart-times",
-    "canonicalNumber": "12523"
-  },
-  {
     "trainNumber": "12524",
     "trainName": "NDLS NJP SF EXP",
     "completed": true,
     "httpStatus": 200,
     "slug": "12524-anvt-njp-sf-exp-chart-times",
     "canonicalNumber": "12524"
-  },
-  {
-    "trainNumber": "12525",
-    "trainName": "KOAA DBRG EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12525-koaa-dbrg-exp-chart-times",
-    "canonicalNumber": "12525"
-  },
-  {
-    "trainNumber": "12526",
-    "trainName": "DBRG KOAA EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12526-dbrg-koaa-exp-chart-times",
-    "canonicalNumber": "12526"
-  },
-  {
-    "trainNumber": "12527",
-    "trainName": "RMR CDG SF EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12527-cpr-anvt-sf-exp-chart-times",
-    "canonicalNumber": "12527"
-  },
-  {
-    "trainNumber": "12528",
-    "trainName": "ANVT CPR SF EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12528-anvt-cpr-sf-exp-chart-times",
-    "canonicalNumber": "12528"
   },
   {
     "trainNumber": "12529",
@@ -7120,28 +6864,12 @@
     "canonicalNumber": "12531"
   },
   {
-    "trainNumber": "12532",
-    "trainName": "GKP INTERCITY",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12532-gkp-intercity-chart-times",
-    "canonicalNumber": "12532"
-  },
-  {
     "trainNumber": "12533",
     "trainName": "PUSHPAK EXPRESS",
     "completed": true,
     "httpStatus": 200,
     "slug": "12533-pushpak-express-chart-times",
     "canonicalNumber": "12533"
-  },
-  {
-    "trainNumber": "12534",
-    "trainName": "PUSHPAK EXPRESS",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12534-pushpak-express-chart-times",
-    "canonicalNumber": "12534"
   },
   {
     "trainNumber": "12535",
@@ -7160,22 +6888,6 @@
     "canonicalNumber": "12536"
   },
   {
-    "trainNumber": "12537",
-    "trainName": "MANDUADIH EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12537-manduadih-exp-chart-times",
-    "canonicalNumber": "12537"
-  },
-  {
-    "trainNumber": "12538",
-    "trainName": "PRRB MFP EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12538-prrb-mfp-exp-chart-times",
-    "canonicalNumber": "12538"
-  },
-  {
     "trainNumber": "12539",
     "trainName": "YPR LKO EXP",
     "completed": true,
@@ -7192,22 +6904,6 @@
     "canonicalNumber": "12540"
   },
   {
-    "trainNumber": "12541",
-    "trainName": "GKP LTT SUP EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12541-gkp-ltt-sup-exp-chart-times",
-    "canonicalNumber": "12541"
-  },
-  {
-    "trainNumber": "12546",
-    "trainName": "KARMABHOOMI EX",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12546-karmabhoomi-ex-chart-times",
-    "canonicalNumber": "12546"
-  },
-  {
     "trainNumber": "12547",
     "trainName": "AGC SBIB SF EXP",
     "completed": true,
@@ -7222,14 +6918,6 @@
     "httpStatus": 200,
     "slug": "12548-sbib-agc-sf-exp-chart-times",
     "canonicalNumber": "12548"
-  },
-  {
-    "trainNumber": "12549",
-    "trainName": "DURG MCTM SF",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12549-durg-mctm-sf-chart-times",
-    "canonicalNumber": "12549"
   },
   {
     "trainNumber": "12550",
@@ -7254,22 +6942,6 @@
     "httpStatus": 200,
     "slug": "12552-kyq-smvb-ac-exp-chart-times",
     "canonicalNumber": "12552"
-  },
-  {
-    "trainNumber": "12553",
-    "trainName": "VAISHALI EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12553-vaishali-exp-chart-times",
-    "canonicalNumber": "12553"
-  },
-  {
-    "trainNumber": "12554",
-    "trainName": "VAISHALI EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12554-vaishali-exp-chart-times",
-    "canonicalNumber": "12554"
   },
   {
     "trainNumber": "12555",
@@ -7328,28 +7000,12 @@
     "canonicalNumber": "12561"
   },
   {
-    "trainNumber": "12562",
-    "trainName": "SWTANTRTA S EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12562-swtantrta-s-exp-chart-times",
-    "canonicalNumber": "12562"
-  },
-  {
     "trainNumber": "12565",
     "trainName": "BIHAR S KRANTI",
     "completed": true,
     "httpStatus": 200,
     "slug": "12565-bihar-s-kranti-chart-times",
     "canonicalNumber": "12565"
-  },
-  {
-    "trainNumber": "12566",
-    "trainName": "BIHAR S KRANTI",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12566-bihar-s-kranti-chart-times",
-    "canonicalNumber": "12566"
   },
   {
     "trainNumber": "12571",
@@ -7366,14 +7022,6 @@
     "httpStatus": 200,
     "slug": "12572-gkp-humsafar-ex-chart-times",
     "canonicalNumber": "12572"
-  },
-  {
-    "trainNumber": "12577",
-    "trainName": "BAGMATI EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12577-bagmati-exp-chart-times",
-    "canonicalNumber": "12577"
   },
   {
     "trainNumber": "12578",
@@ -7958,14 +7606,6 @@
     "httpStatus": 200,
     "slug": "12658-sbc-mas-sf-mail-chart-times",
     "canonicalNumber": "12658"
-  },
-  {
-    "trainNumber": "12659",
-    "trainName": "GURUDEV SF EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12659-gurudev-sf-exp-chart-times",
-    "canonicalNumber": "12659"
   },
   {
     "trainNumber": "12660",

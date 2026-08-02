@@ -12,11 +12,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "CNB",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Goda Humsafar (12350) from NDLS to GODA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-01T01:05:45.163Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Goda Humsafar (12350) is prepared at New Delhi (NDLS) around 3:45 PM, with a second (vacancy) chart around 11:30 PM. 1 of 19 stations on the NDLS to GODA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T03:26:28.642Z",
+  "knownChartCount": 1
 }

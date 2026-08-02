@@ -12,11 +12,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "CVP",
@@ -25,11 +25,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "66.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "SRT",
@@ -38,11 +38,11 @@
       "departureTime": "21:57",
       "day": 1,
       "distance": "87.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "VPT",
@@ -51,11 +51,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "MDU",
@@ -64,11 +64,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "157.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "SDN",
@@ -77,11 +77,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "DG",
@@ -90,11 +90,11 @@
       "departureTime": "00:15",
       "day": 2,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "TPJ",
@@ -103,11 +103,11 @@
       "departureTime": "01:15",
       "day": 2,
       "distance": "317.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "VRI",
@@ -116,11 +116,11 @@
       "departureTime": "02:46",
       "day": 2,
       "distance": "440.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "VM",
@@ -129,11 +129,11 @@
       "departureTime": "03:40",
       "day": 2,
       "distance": "495.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "TMV",
@@ -142,11 +142,11 @@
       "departureTime": "04:15",
       "day": 2,
       "distance": "532.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "MLMR",
@@ -155,11 +155,11 @@
       "departureTime": "04:40",
       "day": 2,
       "distance": "562.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "CGL",
@@ -168,11 +168,11 @@
       "departureTime": "05:15",
       "day": 2,
       "distance": "598.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "TBM",
@@ -181,11 +181,11 @@
       "departureTime": "05:45",
       "day": 2,
       "distance": "628.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "MBM",
@@ -194,11 +194,11 @@
       "departureTime": "06:05",
       "day": 2,
       "distance": "646.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "MS",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "653.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     }
   ],
-  "summary": "Reservation chart preparation times for Nellai Sf Exp (12632) from TEN to MS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-07-02T17:19:34.473Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Nellai Sf Exp (12632) is prepared at Tirunelveli (TEN) around 10:35 AM, with a second (vacancy) chart around 10:55 PM. 16 of 16 stations on the TEN to MS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T18:13:00.569Z",
+  "knownChartCount": 16
 }

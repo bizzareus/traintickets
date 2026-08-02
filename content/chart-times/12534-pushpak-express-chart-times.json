@@ -12,11 +12,11 @@
       "departureTime": "08:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:18",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "KYN",
@@ -25,11 +25,11 @@
       "departureTime": "09:15",
       "day": 1,
       "distance": "54.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:18",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "IGP",
@@ -38,11 +38,11 @@
       "departureTime": "10:57",
       "day": 1,
       "distance": "137.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:18",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "NK",
@@ -51,11 +51,11 @@
       "departureTime": "11:40",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NK"
     },
     {
       "stationCode": "MMR",
@@ -64,11 +64,11 @@
       "departureTime": "12:35",
       "day": 1,
       "distance": "261.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NK"
     },
     {
       "stationCode": "BSL",
@@ -77,11 +77,11 @@
       "departureTime": "15:05",
       "day": 1,
       "distance": "445.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NK"
     },
     {
       "stationCode": "KNW",
@@ -90,11 +90,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "568.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NK"
     },
     {
       "stationCode": "ET",
@@ -103,11 +103,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "752.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NK"
     },
     {
       "stationCode": "RKMP",
@@ -116,11 +116,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "844.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "BPL",
@@ -207,11 +207,11 @@
       "departureTime": "07:15",
       "day": 2,
       "distance": "1435.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "BNZ",
@@ -233,14 +233,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1448.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     }
   ],
-  "summary": "Reservation chart preparation times for Pushpak Express (12534) from CSMT to GTNR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 18 stations.",
-  "generatedAt": "2026-07-02T17:19:24.080Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Pushpak Express (12534) is prepared at C Shivaji Mah T (CSMT) around 8:24 PM, with a second (vacancy) chart around 5:18 AM. 11 of 18 stations on the CSMT to GTNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-02T07:01:11.919Z",
+  "knownChartCount": 11
 }

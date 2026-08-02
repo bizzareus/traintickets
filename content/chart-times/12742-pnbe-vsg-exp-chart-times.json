@@ -12,11 +12,11 @@
       "departureTime": "14:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "06:05",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "ARA",
@@ -25,11 +25,11 @@
       "departureTime": "14:43",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "06:05",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "BXR",
@@ -38,11 +38,11 @@
       "departureTime": "15:26",
       "day": 1,
       "distance": "118.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "06:05",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "DDU",
@@ -279,7 +279,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Pnbe Vsg Exp (12742) from PNBE to VSG are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 21 stations.",
-  "generatedAt": "2026-07-02T17:19:13.892Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Pnbe Vsg Exp (12742) is prepared at Patna Jn (PNBE) around 6:05 AM. 3 of 21 stations on the PNBE to VSG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-02T23:54:19.280Z",
+  "knownChartCount": 3
 }

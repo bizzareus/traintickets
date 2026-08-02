@@ -12,11 +12,11 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "GWL",
@@ -136,7 +136,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bsp Rajdhni Exp (12442) from NDLS to BSP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-08-01T01:12:00.304Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bsp Rajdhni Exp (12442) is prepared at New Delhi (NDLS) around 7:25 AM, with a second (vacancy) chart around 3:10 PM. 1 of 10 stations on the NDLS to BSP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T06:51:26.021Z",
+  "knownChartCount": 1
 }

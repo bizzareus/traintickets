@@ -12,11 +12,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "RBL",
@@ -25,11 +25,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "78.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "AME",
@@ -38,11 +38,11 @@
       "departureTime": "22:33",
       "day": 1,
       "distance": "138.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "MBDP",
@@ -51,11 +51,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "173.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "PRYJ",
@@ -64,11 +64,11 @@
       "departureTime": "01:35",
       "day": 2,
       "distance": "232.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "MKP",
@@ -77,11 +77,11 @@
       "departureTime": "03:25",
       "day": 2,
       "distance": "333.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "STA",
@@ -90,11 +90,11 @@
       "departureTime": "04:25",
       "day": 2,
       "distance": "410.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "JBP",
@@ -103,11 +103,11 @@
       "departureTime": "07:05",
       "day": 2,
       "distance": "599.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "ET",
@@ -116,11 +116,11 @@
       "departureTime": "11:00",
       "day": 2,
       "distance": "844.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "NGP",
@@ -129,11 +129,11 @@
       "departureTime": "15:25",
       "day": 2,
       "distance": "1141.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPQ",
@@ -142,11 +142,11 @@
       "departureTime": "19:10",
       "day": 2,
       "distance": "1353.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "WL",
@@ -155,11 +155,11 @@
       "departureTime": "22:50",
       "day": 2,
       "distance": "1595.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BZA",
@@ -240,7 +240,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Lko Ypr Exp (12540) from LKO to YPR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 18 stations.",
-  "generatedAt": "2026-07-02T17:19:24.115Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Lko Ypr Exp (12540) is prepared at Lucknow Nr (LKO) around 10:36 AM, with a second (vacancy) chart around 8:10 PM. 12 of 18 stations on the LKO to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-02T09:03:01.457Z",
+  "knownChartCount": 12
 }

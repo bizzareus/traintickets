@@ -12,11 +12,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "TUP",
@@ -25,11 +25,11 @@
       "departureTime": "00:12",
       "day": 2,
       "distance": "51.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "ED",
@@ -38,11 +38,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "SA",
@@ -51,11 +51,11 @@
       "departureTime": "01:50",
       "day": 2,
       "distance": "164.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "KPD",
@@ -64,11 +64,11 @@
       "departureTime": "05:10",
       "day": 2,
       "distance": "367.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "AJJ",
@@ -77,11 +77,11 @@
       "departureTime": "06:00",
       "day": 2,
       "distance": "428.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "PER",
@@ -90,11 +90,11 @@
       "departureTime": "06:50",
       "day": 2,
       "distance": "491.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "MAS",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "497.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     }
   ],
-  "summary": "Reservation chart preparation times for Cbe Mas Sf Exp (12682) from CBE to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:41.199Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Cbe Mas Sf Exp (12682) is prepared at Coimbatore Jn (CBE) around 1:31 PM, with a second (vacancy) chart around 11:15 PM. 8 of 8 stations on the CBE to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T22:43:46.451Z",
+  "knownChartCount": 8
 }

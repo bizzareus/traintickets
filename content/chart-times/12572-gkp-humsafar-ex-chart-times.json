@@ -12,11 +12,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "427.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "LKO",
@@ -38,11 +38,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "501.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "GD",
@@ -51,11 +51,11 @@
       "departureTime": "05:05",
       "day": 2,
       "distance": "617.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "BLP",
@@ -64,11 +64,11 @@
       "departureTime": "05:47",
       "day": 2,
       "distance": "657.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "TLR",
@@ -77,11 +77,11 @@
       "departureTime": "06:16",
       "day": 2,
       "distance": "689.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "BNY",
@@ -116,11 +116,11 @@
       "departureTime": "07:55",
       "day": 2,
       "distance": "797.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "GKP",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "838.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     }
   ],
-  "summary": "Reservation chart preparation times for Gkp Humsafar Ex (12572) from ANVT to GKP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-07-02T17:19:27.706Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gkp Humsafar Ex (12572) is prepared at Anand Vihar TRM (ANVT) around 12:01 PM, with a second (vacancy) chart around 7:45 PM. 8 of 10 stations on the ANVT to GKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-02T16:09:52.293Z",
+  "knownChartCount": 8
 }

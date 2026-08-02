@@ -12,11 +12,11 @@
       "departureTime": "14:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "QLN",
@@ -285,11 +285,11 @@
       "departureTime": "00:25",
       "day": 3,
       "distance": "1929.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "AMLA",
@@ -298,11 +298,11 @@
       "departureTime": "02:30",
       "day": 3,
       "distance": "2097.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "BZU",
@@ -311,11 +311,11 @@
       "departureTime": "02:48",
       "day": 3,
       "distance": "2120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "ET",
@@ -324,11 +324,11 @@
       "departureTime": "05:05",
       "day": 3,
       "distance": "2226.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "BPL",
@@ -337,11 +337,11 @@
       "departureTime": "06:50",
       "day": 3,
       "distance": "2325.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "BINA",
@@ -350,11 +350,11 @@
       "departureTime": "08:50",
       "day": 3,
       "distance": "2463.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "VGLJ",
@@ -363,11 +363,11 @@
       "departureTime": "11:50",
       "day": 3,
       "distance": "2616.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "GWL",
@@ -376,11 +376,11 @@
       "departureTime": "13:12",
       "day": 3,
       "distance": "2713.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "AGC",
@@ -389,11 +389,11 @@
       "departureTime": "15:30",
       "day": 3,
       "distance": "2831.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "MTJ",
@@ -402,11 +402,11 @@
       "departureTime": "16:17",
       "day": 3,
       "distance": "2885.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NZM",
@@ -415,14 +415,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "3018.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:35",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BPL"
     }
   ],
-  "summary": "Reservation chart preparation times for Tvc Nzm Sf Exp (12643) from TVC to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 32 stations.",
-  "generatedAt": "2026-07-02T17:19:35.596Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tvc Nzm Sf Exp (12643) is prepared at Trivandrum Cntl (TVC) around 4:21 AM, with a second (vacancy) chart around 2 PM. 12 of 32 stations on the TVC to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-02T18:18:08.919Z",
+  "knownChartCount": 12
 }

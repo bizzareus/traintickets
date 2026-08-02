@@ -12,11 +12,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "AJJ",
@@ -25,11 +25,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "KPD",
@@ -38,11 +38,11 @@
       "departureTime": "00:35",
       "day": 2,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "JTJ",
@@ -51,11 +51,11 @@
       "departureTime": "01:55",
       "day": 2,
       "distance": "214.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "BWT",
@@ -64,11 +64,11 @@
       "departureTime": "02:55",
       "day": 2,
       "distance": "292.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "BNCE",
@@ -77,11 +77,11 @@
       "departureTime": "03:48",
       "day": 2,
       "distance": "355.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "BNC",
@@ -90,11 +90,11 @@
       "departureTime": "03:57",
       "day": 2,
       "distance": "358.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "SBC",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "362.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     }
   ],
-  "summary": "Reservation chart preparation times for Mas Sbc Sf Mail (12657) from MAS to SBC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:37.887Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mas Sbc Sf Mail (12657) is prepared at Mgr Chennai Ctl (MAS) around 12:52 PM, with a second (vacancy) chart around 10:35 PM. 8 of 8 stations on the MAS to SBC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T20:00:34.379Z",
+  "knownChartCount": 8
 }

@@ -12,11 +12,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMCT"
     },
     {
       "stationCode": "BRC",
@@ -162,7 +162,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Hisar Duronto (12239) from MMCT to HSR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-08-01T00:57:49.783Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hisar Duronto (12239) is prepared at Mumbai Central (MMCT) around 1:13 PM, with a second (vacancy) chart around 10:55 PM. 1 of 12 stations on the MMCT to HSR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T02:55:22.265Z",
+  "knownChartCount": 1
 }

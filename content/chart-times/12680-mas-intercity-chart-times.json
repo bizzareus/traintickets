@@ -12,11 +12,11 @@
       "departureTime": "06:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "TUP",
@@ -25,11 +25,11 @@
       "departureTime": "07:05",
       "day": 1,
       "distance": "51.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "ED",
@@ -38,11 +38,11 @@
       "departureTime": "07:50",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "SA",
@@ -51,11 +51,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "164.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "BQI",
@@ -64,11 +64,11 @@
       "departureTime": "09:20",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "MAP",
@@ -77,11 +77,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "229.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "SLY",
@@ -90,11 +90,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "253.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "JTJ",
@@ -103,11 +103,11 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "284.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "AB",
@@ -116,11 +116,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "315.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "KPD",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "367.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     }
   ],
-  "summary": "Reservation chart preparation times for Mas Intercity (12680) from CBE to KPD are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-07-02T17:19:41.192Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mas Intercity (12680) is prepared at Coimbatore Jn (CBE) around 7:53 PM, with a second (vacancy) chart around 7:35 AM. 10 of 10 stations on the CBE to KPD route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T22:26:49.332Z",
+  "knownChartCount": 10
 }

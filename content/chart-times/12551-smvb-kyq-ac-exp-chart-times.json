@@ -12,11 +12,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:25",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "JTJ",
@@ -25,11 +25,11 @@
       "departureTime": "11:50",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:25",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "KPD",
@@ -38,11 +38,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:25",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "GDR",
@@ -51,11 +51,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "484.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:25",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "BZA",
@@ -64,11 +64,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "777.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:25",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "SLO",
@@ -383,7 +383,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Smvb Kyq Ac Exp (12551) from SMVB to KYQ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 29 stations.",
-  "generatedAt": "2026-07-02T17:19:25.415Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Smvb Kyq Ac Exp (12551) is prepared at Smvt Bengaluru (SMVB) around 9:25 PM. 5 of 29 stations on the SMVB to KYQ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-02T12:06:54.049Z",
+  "knownChartCount": 5
 }

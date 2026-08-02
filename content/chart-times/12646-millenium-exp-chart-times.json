@@ -12,11 +12,11 @@
       "departureTime": "05:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:07",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "MTJ",
@@ -324,11 +324,11 @@
       "departureTime": "00:58",
       "day": 3,
       "distance": "2731.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SA"
     },
     {
       "stationCode": "AWY",
@@ -337,11 +337,11 @@
       "departureTime": "01:52",
       "day": 3,
       "distance": "2786.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SA"
     },
     {
       "stationCode": "ERS",
@@ -350,14 +350,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2805.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SA"
     }
   ],
-  "summary": "Reservation chart preparation times for Millenium Exp (12646) from NZM to ERS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 27 stations.",
-  "generatedAt": "2026-07-02T17:19:36.714Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Millenium Exp (12646) is prepared at H Nizamuddin (NZM) around 9:07 PM, with a second (vacancy) chart around 4:55 AM. 4 of 27 stations on the NZM to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-02T18:52:15.964Z",
+  "knownChartCount": 4
 }

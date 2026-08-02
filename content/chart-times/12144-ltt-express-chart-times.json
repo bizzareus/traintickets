@@ -12,11 +12,11 @@
       "departureTime": "04:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "03:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SLN"
     },
     {
       "stationCode": "MFKA",
@@ -188,7 +188,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ltt Express (12144) from SLN to LTT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-08-01T00:51:47.909Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ltt Express (12144) is prepared at Sultanpur (SLN) around 7:11 PM, with a second (vacancy) chart around 3:50 AM. 1 of 14 stations on the SLN to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T02:31:19.968Z",
+  "knownChartCount": 1
 }

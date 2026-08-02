@@ -12,11 +12,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGM"
     },
     {
       "stationCode": "HDW",
@@ -201,7 +201,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Jammu Garibrath (12207) from KGM to JAT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
-  "generatedAt": "2026-08-01T00:56:00.468Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jammu Garibrath (12207) is prepared at Kathgodam (KGM) around 8:56 AM, with a second (vacancy) chart around 6 PM. 1 of 15 stations on the KGM to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T02:46:05.828Z",
+  "knownChartCount": 1
 }

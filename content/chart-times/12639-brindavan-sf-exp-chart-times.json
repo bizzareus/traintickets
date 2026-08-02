@@ -12,11 +12,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "TRL",
@@ -25,11 +25,11 @@
       "departureTime": "08:05",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "AJJ",
@@ -38,11 +38,11 @@
       "departureTime": "08:35",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "SHU",
@@ -51,11 +51,11 @@
       "departureTime": "08:50",
       "day": 1,
       "distance": "90.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "WJR",
@@ -64,11 +64,11 @@
       "departureTime": "09:08",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "KPD",
@@ -77,11 +77,11 @@
       "departureTime": "09:35",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KPD"
     },
     {
       "stationCode": "AB",
@@ -90,11 +90,11 @@
       "departureTime": "10:12",
       "day": 1,
       "distance": "182.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KPD"
     },
     {
       "stationCode": "VN",
@@ -103,11 +103,11 @@
       "departureTime": "10:27",
       "day": 1,
       "distance": "198.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KPD"
     },
     {
       "stationCode": "JTJ",
@@ -116,11 +116,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KPD"
     },
     {
       "stationCode": "KPN",
@@ -129,11 +129,11 @@
       "departureTime": "11:33",
       "day": 1,
       "distance": "257.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KPD"
     },
     {
       "stationCode": "BWT",
@@ -142,11 +142,11 @@
       "departureTime": "12:05",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KPD"
     },
     {
       "stationCode": "KJM",
@@ -155,11 +155,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "348.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KPD"
     },
     {
       "stationCode": "BNC",
@@ -168,11 +168,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "358.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KPD"
     },
     {
       "stationCode": "SBC",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "362.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KPD"
     }
   ],
-  "summary": "Reservation chart preparation times for Brindavan Sf Exp (12639) from MAS to SBC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-07-02T17:19:35.583Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Brindavan Sf Exp (12639) is prepared at Mgr Chennai Ctl (MAS) around 8:41 PM, with a second (vacancy) chart around 7:25 AM. 14 of 14 stations on the MAS to SBC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T18:14:32.878Z",
+  "knownChartCount": 14
 }

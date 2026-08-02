@@ -12,11 +12,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "AGC",
@@ -25,11 +25,11 @@
       "departureTime": "23:27",
       "day": 1,
       "distance": "195.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "GWL",
@@ -38,11 +38,11 @@
       "departureTime": "01:15",
       "day": 2,
       "distance": "313.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "VGLJ",
@@ -51,11 +51,11 @@
       "departureTime": "02:38",
       "day": 2,
       "distance": "410.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:12",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "BPL",
@@ -64,11 +64,11 @@
       "departureTime": "06:50",
       "day": 2,
       "distance": "701.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "ET",
@@ -77,11 +77,11 @@
       "departureTime": "08:40",
       "day": 2,
       "distance": "793.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NGP",
@@ -90,11 +90,11 @@
       "departureTime": "13:10",
       "day": 2,
       "distance": "1090.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPQ",
@@ -103,11 +103,11 @@
       "departureTime": "16:25",
       "day": 2,
       "distance": "1301.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "WL",
@@ -116,11 +116,11 @@
       "departureTime": "19:50",
       "day": 2,
       "distance": "1544.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:50",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "WL"
     },
     {
       "stationCode": "KMT",
@@ -129,11 +129,11 @@
       "departureTime": "21:00",
       "day": 2,
       "distance": "1651.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:50",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "WL"
     },
     {
       "stationCode": "BZA",
@@ -142,11 +142,11 @@
       "departureTime": "23:10",
       "day": 2,
       "distance": "1751.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "MAS",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "Reservation chart preparation times for Tamilnadu Exp (12622) from NDLS to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:33.219Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tamilnadu Exp (12622) is prepared at New Delhi (NDLS) around 1:06 PM, with a second (vacancy) chart around 8:50 PM. 12 of 12 stations on the NDLS to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T18:10:08.193Z",
+  "knownChartCount": 12
 }

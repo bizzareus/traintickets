@@ -12,11 +12,11 @@
       "departureTime": "22:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "BZA",
@@ -25,11 +25,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "431.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "KMT",
@@ -38,11 +38,11 @@
       "departureTime": "05:20",
       "day": 2,
       "distance": "530.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "WL",
@@ -51,11 +51,11 @@
       "departureTime": "06:55",
       "day": 2,
       "distance": "638.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "BPQ",
@@ -64,11 +64,11 @@
       "departureTime": "10:35",
       "day": 2,
       "distance": "880.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "NGP",
@@ -77,11 +77,11 @@
       "departureTime": "13:50",
       "day": 2,
       "distance": "1091.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "ET",
@@ -90,11 +90,11 @@
       "departureTime": "18:35",
       "day": 2,
       "distance": "1388.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPL",
@@ -103,11 +103,11 @@
       "departureTime": "20:20",
       "day": 2,
       "distance": "1487.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "VGLJ",
@@ -116,11 +116,11 @@
       "departureTime": "00:31",
       "day": 3,
       "distance": "1778.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "GWL",
@@ -129,11 +129,11 @@
       "departureTime": "01:34",
       "day": 3,
       "distance": "1875.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "AGC",
@@ -142,11 +142,11 @@
       "departureTime": "03:07",
       "day": 3,
       "distance": "1993.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NZM",
@@ -155,11 +155,11 @@
       "departureTime": "06:02",
       "day": 3,
       "distance": "2180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NDLS",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     }
   ],
-  "summary": "Reservation chart preparation times for Tamilnadu Sf Exp (12621) from MAS to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-07-02T17:19:33.211Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tamilnadu Sf Exp (12621) is prepared at Mgr Chennai Ctl (MAS) around 12:18 PM, with a second (vacancy) chart around 9:45 PM. 13 of 13 stations on the MAS to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T18:09:46.581Z",
+  "knownChartCount": 13
 }

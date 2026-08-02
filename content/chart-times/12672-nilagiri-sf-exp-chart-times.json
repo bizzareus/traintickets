@@ -12,11 +12,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "CBE",
@@ -25,11 +25,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "36.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "TUP",
@@ -38,11 +38,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "86.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "ED",
@@ -51,11 +51,11 @@
       "departureTime": "00:05",
       "day": 2,
       "distance": "137.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "SA",
@@ -64,11 +64,11 @@
       "departureTime": "01:00",
       "day": 2,
       "distance": "199.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "KPD",
@@ -77,11 +77,11 @@
       "departureTime": "04:10",
       "day": 2,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "AJJ",
@@ -90,11 +90,11 @@
       "departureTime": "04:55",
       "day": 2,
       "distance": "464.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "PER",
@@ -103,11 +103,11 @@
       "departureTime": "05:45",
       "day": 2,
       "distance": "527.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "MAS",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "532.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     }
   ],
-  "summary": "Reservation chart preparation times for Nilagiri Sf Exp (12672) from MTP to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:40.166Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Nilagiri Sf Exp (12672) is prepared at Metupalaiyam (MTP) around 11:21 AM, with a second (vacancy) chart around 10:55 PM. 9 of 9 stations on the MTP to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T21:45:50.498Z",
+  "knownChartCount": 9
 }

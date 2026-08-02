@@ -12,11 +12,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "TRL",
@@ -25,11 +25,11 @@
       "departureTime": "06:45",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "AJJ",
@@ -38,11 +38,11 @@
       "departureTime": "07:10",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "WJR",
@@ -51,11 +51,11 @@
       "departureTime": "07:37",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "KPD",
@@ -64,11 +64,11 @@
       "departureTime": "08:05",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "AB",
@@ -77,11 +77,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "182.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "JTJ",
@@ -90,11 +90,11 @@
       "departureTime": "09:15",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "MAP",
@@ -103,11 +103,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "SA",
@@ -116,11 +116,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "334.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "ED",
@@ -129,11 +129,11 @@
       "departureTime": "12:05",
       "day": 1,
       "distance": "396.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "TUP",
@@ -142,11 +142,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "446.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "CBE",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "497.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     }
   ],
-  "summary": "Reservation chart preparation times for Kovai Sf Exp (12675) from MAS to CBE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:40.185Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kovai Sf Exp (12675) is prepared at Mgr Chennai Ctl (MAS) around 8:38 PM, with a second (vacancy) chart around 5:55 AM. 12 of 12 stations on the MAS to CBE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T21:45:54.620Z",
+  "knownChartCount": 12
 }

@@ -12,11 +12,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "GZB",
@@ -25,11 +25,11 @@
       "departureTime": "23:22",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "TDL",
@@ -38,11 +38,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "210.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "GOY",
@@ -51,11 +51,11 @@
       "departureTime": "04:25",
       "day": 2,
       "distance": "437.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "PRYJ",
@@ -64,11 +64,11 @@
       "departureTime": "07:25",
       "day": 2,
       "distance": "633.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "GYN",
@@ -77,11 +77,11 @@
       "departureTime": "08:43",
       "day": 2,
       "distance": "698.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "BNRS",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "754.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     }
   ],
-  "summary": "Reservation chart preparation times for Bnrs Sf Express (12582) from NDLS to BNRS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:28.836Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bnrs Sf Express (12582) is prepared at New Delhi (NDLS) around 2:51 PM, with a second (vacancy) chart around 10:35 PM. 7 of 7 stations on the NDLS to BNRS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T17:03:32.591Z",
+  "knownChartCount": 7
 }

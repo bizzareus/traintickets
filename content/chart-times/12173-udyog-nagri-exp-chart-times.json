@@ -12,11 +12,11 @@
       "departureTime": "16:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "TNA",
@@ -188,7 +188,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Udyog Nagri Exp (12173) from LTT to MBDP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-08-01T00:54:13.176Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Udyog Nagri Exp (12173) is prepared at Lokmanyatilak T (LTT) around 7:37 AM, with a second (vacancy) chart around 3:55 PM. 1 of 14 stations on the LTT to MBDP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-01T02:41:06.425Z",
+  "knownChartCount": 1
 }

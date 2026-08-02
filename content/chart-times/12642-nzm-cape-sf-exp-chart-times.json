@@ -12,11 +12,11 @@
       "departureTime": "05:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "AGC",
@@ -25,11 +25,11 @@
       "departureTime": "08:05",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:08",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "VGLJ",
@@ -38,11 +38,11 @@
       "departureTime": "11:33",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "BPL",
@@ -51,11 +51,11 @@
       "departureTime": "15:40",
       "day": 1,
       "distance": "694.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:30",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "ET",
@@ -64,11 +64,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "786.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:30",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "BZU",
@@ -77,11 +77,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "893.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:30",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NGP",
@@ -305,7 +305,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Nzm Cape Sf Exp (12642) from NZM to CAPE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 23 stations.",
-  "generatedAt": "2026-07-02T17:19:35.574Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Nzm Cape Sf Exp (12642) is prepared at H Nizamuddin (NZM) around 9:08 PM, with a second (vacancy) chart around 5:05 AM. 6 of 23 stations on the NZM to CAPE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-02T18:16:33.851Z",
+  "knownChartCount": 6
 }
