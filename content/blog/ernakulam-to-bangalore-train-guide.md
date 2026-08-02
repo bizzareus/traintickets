@@ -2,7 +2,7 @@
 title: "Ernakulam to Bangalore Train Guide 2026: Vande Bharat & Fares"
 description: "Complete train travel guide from Ernakulam (Kochi) to Bangalore (SBC/SMVB). Compare Vande Bharat, Intercity Express timings, Tatkal hacks, and seat availability."
 date: "2026-07-27"
-updated: "2026-07-27"
+updated: "2026-08-02"
 tags:
   - train booking
   - irctc
@@ -102,7 +102,7 @@ Sleeper Class (SL) fare is around ₹350 to ₹400, AC 3-Tier (3A) is ₹950 to 
 
 ### When does Tatkal booking open for Ernakulam to Bangalore trains?
 
-Tatkal booking opens at 10:00 AM for AC classes (3A, 2A, 1A, CC) and 11:00 AM for Non-AC classes (SL, 2S) on the day prior to the train's departure from its origin station.
+Tatkal booking opens at 10:00 AM for AC classes (3A, 2A, 3E, CC) and 11:00 AM for Non-AC classes (SL, 2S) on the day prior to the train's departure from its origin station.
 
 ### Which is the best train for overnight travel between Ernakulam and Bangalore?
 
@@ -110,7 +110,7 @@ The **Ernakulam – SMVT Express (16316)** and **Kanyakumari – KSR Bengaluru E
 
 ### What happens if an online e-ticket stays waitlisted after chart preparation?
 
-If an online waitlisted e-ticket does not confirm at chart preparation, it is automatically cancelled by IRCTC and the full fare (minus standard clerkage fee of ₹60) is refunded to your bank account within 3 to 5 working days.
+If an online waitlisted e-ticket does not confirm at chart preparation, it is automatically cancelled by IRCTC and the full fare (with no cancellation or clerkage fee deducted) is refunded to your bank account within 3 to 5 working days.
 
 ### Can you travel in Sleeper Class with an unreserved General ticket?
 
