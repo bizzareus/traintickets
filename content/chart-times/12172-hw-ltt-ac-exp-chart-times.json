@@ -103,7 +103,7 @@
       "departureTime": "07:50",
       "day": 2,
       "distance": "944.0",
-      "chartTimeLocal": "19:47",
+      "chartTimeLocal": "19:34",
       "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -116,7 +116,7 @@
       "departureTime": "12:25",
       "day": 2,
       "distance": "1219.0",
-      "chartTimeLocal": "19:47",
+      "chartTimeLocal": "19:34",
       "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -129,7 +129,7 @@
       "departureTime": "14:20",
       "day": 2,
       "distance": "1343.0",
-      "chartTimeLocal": "19:47",
+      "chartTimeLocal": "19:34",
       "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -176,6 +176,6 @@
     }
   ],
   "summary": "The first reservation chart for Hw Ltt Ac Exp (12172) is prepared at Haridwar Jn (HW) around 7:48 AM, with a second (vacancy) chart around 5:05 PM. 10 of 13 stations on the HW to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-01T00:54:02.321Z",
+  "generatedAt": "2026-08-03T00:21:07.328Z",
   "knownChartCount": 10
 }

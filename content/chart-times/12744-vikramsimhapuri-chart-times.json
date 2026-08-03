@@ -12,11 +12,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "TEL",
@@ -25,11 +25,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "BPP",
@@ -38,11 +38,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "CLX",
@@ -51,11 +51,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "89.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "OGL",
@@ -64,11 +64,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "SKM",
@@ -77,11 +77,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "KVZ",
@@ -90,11 +90,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "204.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "NLR",
@@ -103,11 +103,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "255.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "GDR",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "293.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "08:12",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "Reservation chart preparation times for Vikramsimhapuri (12744) from BZA to GDR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:13.902Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Vikramsimhapuri (12744) is prepared at Vijayawada Jn (BZA) around 8:12 AM. 9 of 9 stations on the BZA to GDR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-02T23:57:28.222Z",
+  "knownChartCount": 9
 }

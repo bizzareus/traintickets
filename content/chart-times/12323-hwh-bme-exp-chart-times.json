@@ -116,7 +116,7 @@
       "departureTime": "09:15",
       "day": 2,
       "distance": "997.0",
-      "chartTimeLocal": "21:03",
+      "chartTimeLocal": "20:53",
       "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -345,6 +345,6 @@
     }
   ],
   "summary": "The first reservation chart for Hwh Bme Exp (12323) is prepared at Howrah Jn (HWH) around 8:51 AM, with a second (vacancy) chart around 6:35 PM. 15 of 26 stations on the HWH to BME route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-01T01:02:17.797Z",
+  "generatedAt": "2026-08-03T01:08:55.765Z",
   "knownChartCount": 15
 }

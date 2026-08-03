@@ -12,11 +12,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "CLT",
@@ -162,7 +162,7 @@
       "chartRemoteStation": "PNVL"
     }
   ],
-  "summary": "The first reservation chart for Ers Nzm Duronto (12283) is prepared at Vasai Road (BSR) around 11:31 AM, with a second (vacancy) chart around 9:25 PM. 6 of 12 stations on the ERS to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-01T00:59:38.113Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Ers Nzm Duronto (12283) is prepared at Ernakulam Jn (ERS) around 1:30 PM, with a second (vacancy) chart around 11:10 PM. 7 of 12 stations on the ERS to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T00:58:35.341Z",
+  "knownChartCount": 7
 }

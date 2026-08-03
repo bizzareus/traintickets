@@ -142,7 +142,7 @@
       "departureTime": "12:40",
       "day": 1,
       "distance": "289.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -155,7 +155,7 @@
       "departureTime": "13:07",
       "day": 1,
       "distance": "321.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -168,7 +168,7 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "358.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -181,7 +181,7 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "389.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -410,6 +410,6 @@
     }
   ],
   "summary": "The first reservation chart for Chambal Express (12176) is prepared at Gwalior (GWL) around 9:03 PM. 14 of 31 stations on the GWL to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-01T00:54:25.022Z",
+  "generatedAt": "2026-08-03T00:23:07.967Z",
   "knownChartCount": 14
 }
