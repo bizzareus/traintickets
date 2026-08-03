@@ -12,11 +12,11 @@
       "departureTime": "13:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "MTJ",
@@ -136,7 +136,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Gujrat S Kranti (12918) from NZM to ADI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-07-02T17:19:37.950Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gujrat S Kranti (12918) is prepared at H Nizamuddin (NZM) around 11:06 PM, with a second (vacancy) chart around 1:10 PM. 1 of 10 stations on the NZM to ADI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T15:05:59.205Z",
+  "knownChartCount": 1
 }

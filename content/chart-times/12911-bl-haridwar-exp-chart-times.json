@@ -12,11 +12,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BL"
     },
     {
       "stationCode": "NVS",
@@ -227,7 +227,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bl Haridwar Exp (12911) from BL to HW are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
-  "generatedAt": "2026-07-02T17:19:36.751Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bl Haridwar Exp (12911) is prepared at Valsad (BL) around 9:25 PM, with a second (vacancy) chart around 2:55 PM. 1 of 17 stations on the BL to HW route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T15:00:18.566Z",
+  "knownChartCount": 1
 }

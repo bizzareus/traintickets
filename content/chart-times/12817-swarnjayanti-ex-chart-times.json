@@ -12,11 +12,11 @@
       "departureTime": "14:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "RNC",
@@ -25,11 +25,11 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "7.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "MURI",
@@ -38,11 +38,11 @@
       "departureTime": "15:52",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "JAA",
@@ -51,11 +51,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "BKSC",
@@ -64,11 +64,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "122.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "CRP",
@@ -77,11 +77,11 @@
       "departureTime": "18:03",
       "day": 1,
       "distance": "137.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:21",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "GMO",
@@ -90,11 +90,11 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "KQR",
@@ -103,11 +103,11 @@
       "departureTime": "19:26",
       "day": 1,
       "distance": "247.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GMO"
     },
     {
       "stationCode": "GAYA",
@@ -116,11 +116,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "323.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "GRRU",
@@ -129,11 +129,11 @@
       "departureTime": "21:46",
       "day": 1,
       "distance": "345.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "RFJ",
@@ -142,11 +142,11 @@
       "departureTime": "22:00",
       "day": 1,
       "distance": "361.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "AUBR",
@@ -155,11 +155,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "392.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DOS",
@@ -168,11 +168,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "409.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "SSM",
@@ -181,11 +181,11 @@
       "departureTime": "23:06",
       "day": 1,
       "distance": "426.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "BBU",
@@ -194,11 +194,11 @@
       "departureTime": "23:44",
       "day": 1,
       "distance": "474.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DDU",
@@ -207,11 +207,11 @@
       "departureTime": "02:10",
       "day": 2,
       "distance": "526.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "PRYJ",
@@ -220,11 +220,11 @@
       "departureTime": "04:25",
       "day": 2,
       "distance": "679.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "CNB",
@@ -233,11 +233,11 @@
       "departureTime": "06:40",
       "day": 2,
       "distance": "874.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "ANVT",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1301.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "Reservation chart preparation times for Swarnjayanti Ex (12817) from HTE to ANVT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-07-02T17:19:24.094Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Swarnjayanti Ex (12817) is prepared at Hatia (HTE) around 9:21 PM, with a second (vacancy) chart around 2:10 PM. 19 of 19 stations on the HTE to ANVT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T14:15:18.579Z",
+  "knownChartCount": 19
 }

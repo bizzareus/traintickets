@@ -12,11 +12,11 @@
       "departureTime": "01:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:16",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "DG",
@@ -201,7 +201,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Nzm S Kranti Exp (12651) from MDU to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
-  "generatedAt": "2026-08-02T19:26:05.856Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Nzm S Kranti Exp (12651) is prepared at Madurai Jn (MDU) around 3:16 PM, with a second (vacancy) chart around 12:50 AM. 1 of 15 stations on the MDU to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T12:28:14.600Z",
+  "knownChartCount": 1
 }

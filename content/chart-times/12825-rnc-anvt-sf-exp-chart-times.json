@@ -12,11 +12,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "MURI",
@@ -25,11 +25,11 @@
       "departureTime": "00:50",
       "day": 2,
       "distance": "62.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "BKSC",
@@ -38,11 +38,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "GMO",
@@ -51,11 +51,11 @@
       "departureTime": "03:15",
       "day": 2,
       "distance": "147.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "HZD",
@@ -64,11 +64,11 @@
       "departureTime": "03:48",
       "day": 2,
       "distance": "192.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "KQR",
@@ -77,11 +77,11 @@
       "departureTime": "04:19",
       "day": 2,
       "distance": "240.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "DDU",
@@ -90,11 +90,11 @@
       "departureTime": "08:40",
       "day": 2,
       "distance": "519.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "CNB",
@@ -103,11 +103,11 @@
       "departureTime": "13:25",
       "day": 2,
       "distance": "867.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "ANVT",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     }
   ],
-  "summary": "Reservation chart preparation times for Rnc Anvt Sf Exp (12825) from RNC to ANVT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:25.370Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rnc Anvt Sf Exp (12825) is prepared at Ranchi (RNC) around 2:07 PM, with a second (vacancy) chart around 11:40 PM. 9 of 9 stations on the RNC to ANVT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T14:17:34.371Z",
+  "knownChartCount": 9
 }

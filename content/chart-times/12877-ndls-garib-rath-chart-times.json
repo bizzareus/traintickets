@@ -12,11 +12,11 @@
       "departureTime": "16:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "MURI",
@@ -25,11 +25,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "62.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "BRKA",
@@ -38,11 +38,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "TORI",
@@ -51,11 +51,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "205.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "LTHR",
@@ -64,11 +64,11 @@
       "departureTime": "20:27",
       "day": 1,
       "distance": "238.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "DTO",
@@ -77,11 +77,11 @@
       "departureTime": "21:18",
       "day": 1,
       "distance": "305.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "GHD",
@@ -90,11 +90,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "339.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "MDJ",
@@ -103,11 +103,11 @@
       "departureTime": "22:51",
       "day": 1,
       "distance": "367.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "JPL",
@@ -116,11 +116,11 @@
       "departureTime": "23:02",
       "day": 1,
       "distance": "386.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "NBG",
@@ -129,11 +129,11 @@
       "departureTime": "23:18",
       "day": 1,
       "distance": "402.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "DOS",
@@ -142,11 +142,11 @@
       "departureTime": "23:58",
       "day": 1,
       "distance": "437.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "SSM",
@@ -155,11 +155,11 @@
       "departureTime": "00:14",
       "day": 2,
       "distance": "455.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "BBU",
@@ -168,11 +168,11 @@
       "departureTime": "00:42",
       "day": 2,
       "distance": "503.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "DDU",
@@ -181,11 +181,11 @@
       "departureTime": "01:40",
       "day": 2,
       "distance": "555.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "PRYJ",
@@ -194,11 +194,11 @@
       "departureTime": "03:35",
       "day": 2,
       "distance": "708.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "CNB",
@@ -207,11 +207,11 @@
       "departureTime": "05:40",
       "day": 2,
       "distance": "902.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "NDLS",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1343.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     }
   ],
-  "summary": "Reservation chart preparation times for Ndls Garib Rath (12877) from RNC to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
-  "generatedAt": "2026-07-02T17:19:32.193Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ndls Garib Rath (12877) is prepared at Ranchi (RNC) around 9:36 PM, with a second (vacancy) chart around 4:10 PM. 17 of 17 stations on the RNC to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T14:46:50.147Z",
+  "knownChartCount": 17
 }

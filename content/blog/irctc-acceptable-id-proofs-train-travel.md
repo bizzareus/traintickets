@@ -1,8 +1,8 @@
 ---
-title: "Which ID Proofs Are Valid for Train Travel? (2026)"
+title: "Which ID Proofs Are Valid for Train Travel? (2026 Rules)"
 description: "Is your Aadhaar or driving licence valid to board a train? See every accepted ID proof — and whether a digital ID on DigiLocker or mParivahan works with the TTE."
 date: "2026-06-27"
-updated: "2026-07-17"
+updated: "2026-08-03"
 tags:
   - train travel
   - irctc rules

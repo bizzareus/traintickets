@@ -12,11 +12,11 @@
       "departureTime": "04:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "DLJ",
@@ -25,11 +25,11 @@
       "departureTime": "05:02",
       "day": 1,
       "distance": "49.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "BTD",
@@ -38,11 +38,11 @@
       "departureTime": "05:38",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "SRGT",
@@ -51,11 +51,11 @@
       "departureTime": "06:46",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "VG",
@@ -64,11 +64,11 @@
       "departureTime": "08:17",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "ADI",
@@ -77,11 +77,11 @@
       "departureTime": "09:35",
       "day": 1,
       "distance": "298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "BRC",
@@ -90,11 +90,11 @@
       "departureTime": "11:28",
       "day": 1,
       "distance": "397.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "ST",
@@ -103,11 +103,11 @@
       "departureTime": "13:29",
       "day": 1,
       "distance": "526.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BL",
@@ -116,11 +116,11 @@
       "departureTime": "14:25",
       "day": 1,
       "distance": "595.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BSR",
@@ -129,11 +129,11 @@
       "departureTime": "16:40",
       "day": 1,
       "distance": "741.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "07:26",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BSR"
     },
     {
       "stationCode": "KYN",
@@ -142,11 +142,11 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "794.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "07:54",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "LNL",
@@ -155,11 +155,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "868.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "07:54",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "PUNE",
@@ -409,7 +409,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bvc Coa Sf Exp (12756) from BVC to COA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 31 stations.",
-  "generatedAt": "2026-07-02T17:19:16.246Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bvc Coa Sf Exp (12756) is prepared at Bhavnagar Trmus (BVC) around 6:13 PM, with a second (vacancy) chart around 4:10 AM. 12 of 31 stations on the BVC to COA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T13:49:00.741Z",
+  "knownChartCount": 12
 }

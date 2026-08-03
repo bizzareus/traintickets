@@ -12,11 +12,11 @@
       "departureTime": "06:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:19",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "KYQ",
@@ -526,7 +526,7 @@
       "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "The first reservation chart for Ghy Smvb Exp (12510) is prepared at Perambur (PER) around 6:46 PM, with a second (vacancy) chart around 2:55 PM. 7 of 40 stations on the GHY to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-01T01:18:19.665Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Ghy Smvb Exp (12510) is prepared at Guwahati (GHY) around 8:19 PM, with a second (vacancy) chart around 6 AM. 8 of 40 stations on the GHY to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T04:30:37.215Z",
+  "knownChartCount": 8
 }

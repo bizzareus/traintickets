@@ -12,11 +12,11 @@
       "departureTime": "09:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:19",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "PBN",
@@ -149,7 +149,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Sampark Kranti (12753) from NED to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-07-02T17:19:15.088Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sampark Kranti (12753) is prepared at H Sahib Nanded (NED) around 8:19 PM, with a second (vacancy) chart around 8:45 AM. 1 of 11 stations on the NED to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T13:47:55.554Z",
+  "knownChartCount": 1
 }

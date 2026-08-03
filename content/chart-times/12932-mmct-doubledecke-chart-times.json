@@ -12,11 +12,11 @@
       "departureTime": "05:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ND",
@@ -25,11 +25,11 @@
       "departureTime": "06:17",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ANND",
@@ -38,11 +38,11 @@
       "departureTime": "06:41",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "BRC",
@@ -51,11 +51,11 @@
       "departureTime": "07:13",
       "day": 1,
       "distance": "100.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:58",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "BH",
@@ -64,11 +64,11 @@
       "departureTime": "08:05",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:58",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ST",
@@ -77,11 +77,11 @@
       "departureTime": "09:12",
       "day": 1,
       "distance": "229.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "NVS",
@@ -90,11 +90,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "259.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NVS"
     },
     {
       "stationCode": "BL",
@@ -103,11 +103,11 @@
       "departureTime": "10:05",
       "day": 1,
       "distance": "298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BL"
     },
     {
       "stationCode": "VAPI",
@@ -116,11 +116,11 @@
       "departureTime": "10:22",
       "day": 1,
       "distance": "322.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "BVI",
@@ -129,11 +129,11 @@
       "departureTime": "12:10",
       "day": 1,
       "distance": "462.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "MMCT",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "491.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VAPI"
     }
   ],
-  "summary": "Reservation chart preparation times for Mmct Doubledecke (12932) from ADI to MMCT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-07-02T17:19:40.248Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mmct Doubledecke (12932) is prepared at Ahmedabad Jn (ADI) around 7:38 PM, with a second (vacancy) chart around 5:30 AM. 11 of 11 stations on the ADI to MMCT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T15:14:06.302Z",
+  "knownChartCount": 11
 }

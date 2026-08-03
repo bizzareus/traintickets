@@ -1,16 +1,17 @@
 ---
-title: "IRCTC Auto Upgradation Rules: Free Upgrades Explained"
+title: "Consider for Auto Upgradation IRCTC: Rules & Meaning"
 description: "What does 'Consider for Auto Upgradation' mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, zero extra fee rules, and PNR eligibility in 2026."
 date: "2026-06-16"
-updated: "2026-08-01"
+updated: "2026-08-03"
 tags:
   - irctc auto upgradation
+  - consider for auto upgradation in irctc means
   - free train upgrade
   - irctc booking tips
   - indian railways
   - coach upgrade
 ---
-> **Did your ticket get upgraded?** Check your live PNR status with [Smart Seats](/), and use [Chart Vacancy](/chart-vacancy) to see the empty higher-class berths the system upgrades confirmed passengers into after chart preparation.
+> **Did your ticket get upgraded?** Search train routes on [Smart Seats](/) or check your live PNR status, and use [Chart Vacancy](/chart-vacancy) to see the empty higher-class berths the system upgrades confirmed passengers into after chart preparation.
 
 ## TL;DR
 

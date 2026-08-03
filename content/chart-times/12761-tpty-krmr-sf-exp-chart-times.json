@@ -12,11 +12,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "RU",
@@ -25,11 +25,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "KHT",
@@ -38,11 +38,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "33.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "GDR",
@@ -51,11 +51,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "BZA",
@@ -64,11 +64,11 @@
       "departureTime": "01:50",
       "day": 2,
       "distance": "386.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "MDR",
@@ -77,11 +77,11 @@
       "departureTime": "02:55",
       "day": 2,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "KMT",
@@ -90,11 +90,11 @@
       "departureTime": "03:30",
       "day": 2,
       "distance": "486.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "MABD",
@@ -103,11 +103,11 @@
       "departureTime": "04:10",
       "day": 2,
       "distance": "533.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "WL",
@@ -116,11 +116,11 @@
       "departureTime": "05:10",
       "day": 2,
       "distance": "593.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "WL"
     },
     {
       "stationCode": "JMKT",
@@ -129,11 +129,11 @@
       "departureTime": "06:00",
       "day": 2,
       "distance": "637.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "WL"
     },
     {
       "stationCode": "PDPL",
@@ -142,11 +142,11 @@
       "departureTime": "06:50",
       "day": 2,
       "distance": "677.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "WL"
     },
     {
       "stationCode": "KRMR",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "712.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "WL"
     }
   ],
-  "summary": "Reservation chart preparation times for Tpty Krmr Sf Exp (12761) from TPTY to KRMR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:16.272Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tpty Krmr Sf Exp (12761) is prepared at Tirupati (TPTY) around 9:55 AM, with a second (vacancy) chart around 7:50 PM. 12 of 12 stations on the TPTY to KRMR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T13:50:11.502Z",
+  "knownChartCount": 12
 }

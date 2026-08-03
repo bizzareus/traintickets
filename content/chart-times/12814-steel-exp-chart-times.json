@@ -12,11 +12,11 @@
       "departureTime": "06:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "RHE",
@@ -25,11 +25,11 @@
       "departureTime": "06:35",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "GTS",
@@ -38,11 +38,11 @@
       "departureTime": "06:49",
       "day": 1,
       "distance": "37.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "CKU",
@@ -51,11 +51,11 @@
       "departureTime": "07:12",
       "day": 1,
       "distance": "67.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "JGM",
@@ -64,11 +64,11 @@
       "departureTime": "07:34",
       "day": 1,
       "distance": "96.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "SUA",
@@ -77,11 +77,11 @@
       "departureTime": "07:48",
       "day": 1,
       "distance": "112.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "KGP",
@@ -90,11 +90,11 @@
       "departureTime": "08:20",
       "day": 1,
       "distance": "135.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGP"
     },
     {
       "stationCode": "SRC",
@@ -103,11 +103,11 @@
       "departureTime": "09:42",
       "day": 1,
       "distance": "242.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGP"
     },
     {
       "stationCode": "HWH",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGP"
     }
   ],
-  "summary": "Reservation chart preparation times for Steel Exp (12814) from TATA to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-07-02T17:19:24.096Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Steel Exp (12814) is prepared at Tatanagar Jn (TATA) around 7:50 PM, with a second (vacancy) chart around 5:50 AM. 9 of 9 stations on the TATA to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T14:14:27.381Z",
+  "knownChartCount": 9
 }

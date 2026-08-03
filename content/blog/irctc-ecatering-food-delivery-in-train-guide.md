@@ -1,8 +1,8 @@
 ---
-title: "IRCTC eCatering Guide 2026: How to Order Food on Trains"
+title: "IRCTC eCatering Food Delivery in Train: 1323 & Rules 2026"
 description: "Order fresh food on train via IRCTC eCatering Food on Track app. Check delivery cut-off timings, station halts, regional thali options, and hygiene complaint steps."
 date: "2026-06-20"
-updated: "2026-07-29"
+updated: "2026-08-03"
 tags:
   - train booking
   - irctc

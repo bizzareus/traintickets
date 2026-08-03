@@ -56,6 +56,9 @@ def match_keyword_intent(query, pages):
     if not meaningful_tokens:
         meaningful_tokens = query_tokens
 
+    if not meaningful_tokens:
+        return {"matched": False, "page": None, "score": 0.0}
+
     best_match = None
     best_score = 0.0
 

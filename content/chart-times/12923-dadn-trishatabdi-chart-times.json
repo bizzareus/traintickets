@@ -12,11 +12,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DADN"
     },
     {
       "stationCode": "INDB",
@@ -175,7 +175,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Dadn Trishatabdi (12923) from DADN to NGP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-07-02T17:19:37.951Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Dadn Trishatabdi (12923) is prepared at Dr Ambedkar Ngr (DADN) around 10:57 AM, with a second (vacancy) chart around 8:45 PM. 1 of 13 stations on the DADN to NGP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T15:09:37.426Z",
+  "knownChartCount": 1
 }

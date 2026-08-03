@@ -12,11 +12,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "BVI",
@@ -25,11 +25,11 @@
       "departureTime": "00:10",
       "day": 2,
       "distance": "24.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "BL",
@@ -38,11 +38,11 @@
       "departureTime": "02:35",
       "day": 2,
       "distance": "189.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "ST",
@@ -51,11 +51,11 @@
       "departureTime": "03:46",
       "day": 2,
       "distance": "257.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "BH",
@@ -64,11 +64,11 @@
       "departureTime": "04:32",
       "day": 2,
       "distance": "316.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "VS",
@@ -77,11 +77,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "383.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "BRC",
@@ -90,11 +90,11 @@
       "departureTime": "05:50",
       "day": 2,
       "distance": "386.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "EKNR",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "469.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     }
   ],
-  "summary": "Reservation chart preparation times for Ddr Eknr Sf Exp (12927) from DDR to EKNR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-07-02T17:19:39.033Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ddr Eknr Sf Exp (12927) is prepared at Dadar (DDR) around 1:46 PM, with a second (vacancy) chart around 11:33 PM. 8 of 8 stations on the DDR to EKNR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T15:12:59.107Z",
+  "knownChartCount": 8
 }

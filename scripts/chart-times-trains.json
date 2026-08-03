@@ -6696,22 +6696,6 @@
     "canonicalNumber": "12490"
   },
   {
-    "trainNumber": "12491",
-    "trainName": "MOUR DHWAJ EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12491-mour-dhwaj-exp-chart-times",
-    "canonicalNumber": "12491"
-  },
-  {
-    "trainNumber": "12492",
-    "trainName": "MAUR DHAWAJ EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12492-maur-dhawaj-exp-chart-times",
-    "canonicalNumber": "12492"
-  },
-  {
     "trainNumber": "12493",
     "trainName": "DARSHAN EXPRESS",
     "completed": true,
@@ -7104,30 +7088,6 @@
     "canonicalNumber": "12591"
   },
   {
-    "trainNumber": "12592",
-    "trainName": "GORAKHPUR EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12592-gorakhpur-exp-chart-times",
-    "canonicalNumber": "12592"
-  },
-  {
-    "trainNumber": "12593",
-    "trainName": "LJN BPL G RATH",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12593-ljn-bpl-g-rath-chart-times",
-    "canonicalNumber": "12593"
-  },
-  {
-    "trainNumber": "12594",
-    "trainName": "LJN GARIBRATH",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12594-ljn-garibrath-chart-times",
-    "canonicalNumber": "12594"
-  },
-  {
     "trainNumber": "12595",
     "trainName": "ANVT HUMSAFAR",
     "completed": true,
@@ -7142,22 +7102,6 @@
     "httpStatus": 200,
     "slug": "12596-gkp-humsafar-ex-chart-times",
     "canonicalNumber": "12596"
-  },
-  {
-    "trainNumber": "12597",
-    "trainName": "ANTYODAYA EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12597-antyodaya-exp-chart-times",
-    "canonicalNumber": "12597"
-  },
-  {
-    "trainNumber": "12598",
-    "trainName": "CSMT GKP EXPRESS",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12598-csmt-gkp-express-chart-times",
-    "canonicalNumber": "12598"
   },
   {
     "trainNumber": "12601",
@@ -7230,14 +7174,6 @@
     "httpStatus": 200,
     "slug": "12611-nzm-garibrath-chart-times",
     "canonicalNumber": "12611"
-  },
-  {
-    "trainNumber": "12612",
-    "trainName": "MAS GARIB RATH",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12612-mas-garib-rath-chart-times",
-    "canonicalNumber": "12612"
   },
   {
     "trainNumber": "12613",
@@ -7496,30 +7432,6 @@
     "canonicalNumber": "12644"
   },
   {
-    "trainNumber": "12645",
-    "trainName": "MILLENNIUM EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12645-millennium-exp-chart-times",
-    "canonicalNumber": "12645"
-  },
-  {
-    "trainNumber": "12646",
-    "trainName": "MILLENIUM EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12646-millenium-exp-chart-times",
-    "canonicalNumber": "12646"
-  },
-  {
-    "trainNumber": "12647",
-    "trainName": "KONGU SF EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12647-kongu-sf-exp-chart-times",
-    "canonicalNumber": "12647"
-  },
-  {
     "trainNumber": "12648",
     "trainName": "KONGU EXPRESS",
     "completed": true,
@@ -7542,14 +7454,6 @@
     "httpStatus": 200,
     "slug": "12650-ypr-s-kranti-chart-times",
     "canonicalNumber": "12650"
-  },
-  {
-    "trainNumber": "12651",
-    "trainName": "NZM S KRNTI EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12651-nzm-s-kranti-exp-chart-times",
-    "canonicalNumber": "12651"
   },
   {
     "trainNumber": "12652",
@@ -7598,14 +7502,6 @@
     "httpStatus": 200,
     "slug": "12657-mas-sbc-sf-mail-chart-times",
     "canonicalNumber": "12657"
-  },
-  {
-    "trainNumber": "12658",
-    "trainName": "SBC MAS SF MAIL",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12658-sbc-mas-sf-mail-chart-times",
-    "canonicalNumber": "12658"
   },
   {
     "trainNumber": "12660",
@@ -9758,38 +9654,6 @@
     "httpStatus": 200,
     "slug": "12939-pune-jaipur-exp-chart-times",
     "canonicalNumber": "12939"
-  },
-  {
-    "trainNumber": "12940",
-    "trainName": "JP PUNE EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12940-jp-pune-exp-chart-times",
-    "canonicalNumber": "12940"
-  },
-  {
-    "trainNumber": "12941",
-    "trainName": "PARASNATH EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12941-parasnath-exp-chart-times",
-    "canonicalNumber": "12941"
-  },
-  {
-    "trainNumber": "12942",
-    "trainName": "PARASNATH EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12942-parasnath-exp-chart-times",
-    "canonicalNumber": "12942"
-  },
-  {
-    "trainNumber": "12943",
-    "trainName": "UDYOGKARMI EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12943-udyogkarmi-exp-chart-times",
-    "canonicalNumber": "12943"
   },
   {
     "trainNumber": "12944",
