@@ -2,7 +2,7 @@
 title: "General Quota (GN) in IRCTC: Meaning, Rules & Seat Limits"
 description: "What does General Quota (GN) mean in IRCTC train booking? Discover GN seat allocation rules across 1A, 2A, 3A, SL, and how GN confirmation compares to Tatkal."
 date: "2026-08-03"
-updated: "2026-08-03"
+updated: "2026-08-04"
 tags:
   - general quota
   - irctc
@@ -72,7 +72,7 @@ If your waitlist is GNWL 15 in Sleeper or GNWL 5 in 3AC, your confirmation odds 
 
 Here is how General Quota compares to other IRCTC booking quotas:
 
-- **GN vs Tatkal (TQ):** Tatkal opens at 10:00 AM (AC) and 11:00 AM (Non-AC) one day before departure with additional ₹125–₹500 fees. TQWL tickets only confirm if a Tatkal passenger cancels (which incurs 100% cancellation penalty, making cancellations rare).
+- **GN vs Tatkal (TQ):** Tatkal opens at 10:00 AM (AC) and 11:00 AM (Non-AC) one day before departure with additional ₹10–₹500 fees. TQWL tickets only confirm if a Tatkal passenger cancels (which incurs 100% cancellation penalty, making cancellations rare).
 - **GN vs Ladies Quota (LD):** Ladies quota reserves 6 berths per Sleeper coach for women travelling alone or with young children. Unused LD seats merge into GN at chart prep.
 - **GN vs Senior Citizen Quota (SS):** Reserves lower berths for men aged 60+ and women aged 45+. Unused SS berths revert to GNWL passengers needing lower berths.
 

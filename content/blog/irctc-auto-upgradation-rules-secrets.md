@@ -2,7 +2,7 @@
 title: "Consider for Auto Upgradation IRCTC: Rules & Meaning"
 description: "What does 'Consider for Auto Upgradation' mean in IRCTC? Learn how free Sleeper to 3AC upgrades work, zero extra fee rules, and PNR eligibility in 2026."
 date: "2026-06-16"
-updated: "2026-08-03"
+updated: "2026-08-04"
 tags:
   - irctc auto upgradation
   - consider for auto upgradation in irctc means
@@ -15,13 +15,13 @@ tags:
 
 ## TL;DR
 
-Spot that tiny "Consider for Auto Upgradation" checkbox on IRCTC? It’s one of the best features of Indian Railways. You get bumped up from Sleeper to 3AC, or 3AC to 2AC, completely free. You don't pay a single rupee extra. But here's the catch: you only get it if your ticket is already confirmed, and if there are empty berths in the higher class when charts are prepared around ~4 hours before departure. If you get upgraded and later cancel, cancellation fees are calculated on your cheap original ticket price (like ₹120 for Sleeper), not the expensive upgraded 3AC ticket.
+Spot that tiny "Consider for Auto Upgradation" checkbox on IRCTC? It’s one of the best features of Indian Railways. You get bumped up from Sleeper to 3AC, or 3AC to 2AC, completely free. You don't pay a single rupee extra. But here's the catch: you only get it if your ticket is already confirmed, and if there are empty berths in the higher class when charts are prepared around ~8 hours before departure. If you get upgraded and later cancel, cancellation fees are calculated on your cheap original ticket price (like ₹120 for Sleeper), not the expensive upgraded 3AC ticket.
 
 ---
 
 ## What is Auto Upgradation in IRCTC and how does it work?
 
-**IRCTC Auto Upgradation is a free, algorithm-based service that automatically shifts confirmed passengers to a higher class (like Sleeper to AC 3-Tier) without charging extra. This happens during chart preparation, typically around ~4 hours before departure (the previous night for early-morning trains), to fill vacant berths in premium coaches.**
+**IRCTC Auto Upgradation is a free, algorithm-based service that automatically shifts confirmed passengers to a higher class (like Sleeper to AC 3-Tier) without charging extra. This happens during chart preparation, typically around ~8 hours before departure (the previous night for early-morning trains), to fill vacant berths in premium coaches.**
 
 Getting bumped to business class on a flight is rare, but on a train, it actually happens. You buy a budget-friendly Sleeper ticket for ₹450 and find yourself sleeping in a cool, air-conditioned 3AC coach worth ₹1,200.
 
@@ -122,7 +122,7 @@ Suppose you booked a Sleeper ticket for ₹450 and got lucky with a free upgrade
 Indian Railways rules protect you here:
 - The cancellation fee is always tied to the **original class of booking**.
 - For a confirmed Sleeper ticket cancelled after chart preparation, standard cancellation rules apply to the original Sleeper fare, not the 3AC fare.
-- Since upgrades happen only at chart preparation (typically around ~4 hours before departure), your ticket is already charted. A confirmed charted ticket generally cannot be cancelled online for a refund. You need to file a TDR, and any refund you get is still calculated on your original Sleeper fare.
+- Since upgrades happen only at chart preparation (typically around ~8 hours before departure), your ticket is already charted. A confirmed charted ticket generally cannot be cancelled online for a refund. You need to file a TDR, and any refund you get is still calculated on your original Sleeper fare.
 
 ---
 
