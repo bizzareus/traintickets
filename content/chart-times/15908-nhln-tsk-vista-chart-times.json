@@ -12,11 +12,11 @@
       "departureTime": "05:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "HMY",
@@ -25,11 +25,11 @@
       "departureTime": "06:30",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "KTPR",
@@ -38,11 +38,11 @@
       "departureTime": "06:47",
       "day": 1,
       "distance": "33.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "NLP",
@@ -51,11 +51,11 @@
       "departureTime": "07:23",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "BGND",
@@ -64,11 +64,11 @@
       "departureTime": "07:53",
       "day": 1,
       "distance": "75.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "GOM",
@@ -77,11 +77,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "94.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "BDLN",
@@ -90,11 +90,11 @@
       "departureTime": "08:30",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "DMC",
@@ -103,11 +103,11 @@
       "departureTime": "08:48",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "DMGN",
@@ -116,11 +116,11 @@
       "departureTime": "09:27",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "DBRG",
@@ -129,11 +129,11 @@
       "departureTime": "09:50",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "NTSK",
@@ -142,11 +142,11 @@
       "departureTime": "10:50",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "TSK",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "225.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     }
   ],
-  "summary": "Reservation chart preparation times for Nhln Tsk Vista (15908) from NHLN to TSK are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-08-04T07:13:45.944Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Nhln Tsk Vista (15908) is prepared at Naharlagun (NHLN) around 9:14 PM, with a second (vacancy) chart around 5:30 AM. 12 of 12 stations on the NHLN to TSK route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:20:09.342Z",
+  "knownChartCount": 12
 }

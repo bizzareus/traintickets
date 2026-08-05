@@ -506,11 +506,11 @@
       "departureTime": "00:20",
       "day": 2,
       "distance": "1151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KGLE",
@@ -519,11 +519,11 @@
       "departureTime": "00:35",
       "day": 2,
       "distance": "1165.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "SALE",
@@ -532,11 +532,11 @@
       "departureTime": "01:03",
       "day": 2,
       "distance": "1207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KWAE",
@@ -545,11 +545,11 @@
       "departureTime": "01:28",
       "day": 2,
       "distance": "1224.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "NDAE",
@@ -558,11 +558,11 @@
       "departureTime": "02:01",
       "day": 2,
       "distance": "1263.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "ABKA",
@@ -571,11 +571,11 @@
       "departureTime": "02:20",
       "day": 2,
       "distance": "1286.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "BDC",
@@ -584,11 +584,11 @@
       "departureTime": "03:10",
       "day": 2,
       "distance": "1329.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "HWH",
@@ -597,14 +597,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1368.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     }
   ],
-  "summary": "Reservation chart preparation times for Kamrup Express (15962) from DBRG to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 46 stations.",
-  "generatedAt": "2026-08-04T18:40:25.873Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kamrup Express (15962) is prepared at Azimganj Jn (AZ) around 7:29 AM, with a second (vacancy) chart around 5:10 PM. 8 of 46 stations on the DBRG to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:21:19.263Z",
+  "knownChartCount": 8
 }

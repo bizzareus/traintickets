@@ -194,11 +194,11 @@
       "departureTime": "00:52",
       "day": 2,
       "distance": "781.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:37",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NOQ"
     },
     {
       "stationCode": "NCB",
@@ -207,11 +207,11 @@
       "departureTime": "01:20",
       "day": 2,
       "distance": "800.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:37",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NOQ"
     },
     {
       "stationCode": "NJP",
@@ -220,11 +220,11 @@
       "departureTime": "04:15",
       "day": 2,
       "distance": "926.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KNE",
@@ -233,11 +233,11 @@
       "departureTime": "05:20",
       "day": 2,
       "distance": "1013.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "BOE",
@@ -246,11 +246,11 @@
       "departureTime": "06:15",
       "day": 2,
       "distance": "1070.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KIR",
@@ -259,11 +259,11 @@
       "departureTime": "09:10",
       "day": 2,
       "distance": "1127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "NNA",
@@ -272,11 +272,11 @@
       "departureTime": "10:00",
       "day": 2,
       "distance": "1183.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "KGG",
@@ -285,11 +285,11 @@
       "departureTime": "11:30",
       "day": 2,
       "distance": "1250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "BJU",
@@ -298,11 +298,11 @@
       "departureTime": "12:50",
       "day": 2,
       "distance": "1306.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "DES",
@@ -311,11 +311,11 @@
       "departureTime": "13:58",
       "day": 2,
       "distance": "1374.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "AYRN",
@@ -324,11 +324,11 @@
       "departureTime": "14:26",
       "day": 2,
       "distance": "1383.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "HJP",
@@ -337,11 +337,11 @@
       "departureTime": "15:05",
       "day": 2,
       "distance": "1394.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "CPR",
@@ -350,11 +350,11 @@
       "departureTime": "17:10",
       "day": 2,
       "distance": "1453.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "BUI",
@@ -363,11 +363,11 @@
       "departureTime": "18:40",
       "day": 2,
       "distance": "1518.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "GCT",
@@ -376,11 +376,11 @@
       "departureTime": "20:00",
       "day": 2,
       "distance": "1583.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "BSB",
@@ -389,11 +389,11 @@
       "departureTime": "22:20",
       "day": 2,
       "distance": "1658.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:24",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "ABP",
@@ -552,7 +552,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ntsk Asr Express (15933) is prepared at New Tinsukia Jn (NTSK) around 8:14 PM, with a second (vacancy) chart around 9:30 AM. 1 of 42 stations on the NTSK to ASR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T14:00:23.878Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Ntsk Asr Express (15933) is prepared at New Tinsukia Jn (NTSK) around 8:14 PM, with a second (vacancy) chart around 9:30 AM. 17 of 42 stations on the NTSK to ASR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:20:30.495Z",
+  "knownChartCount": 17
 }

@@ -142,11 +142,11 @@
       "departureTime": "01:17",
       "day": null,
       "distance": "661",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "21:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "VAPI",
@@ -155,11 +155,11 @@
       "departureTime": "02:25",
       "day": null,
       "distance": "753",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "21:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "BVI",
@@ -168,11 +168,11 @@
       "departureTime": "04:29",
       "day": null,
       "distance": "893",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "21:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "BDTS",
@@ -181,14 +181,14 @@
       "departureTime": "--",
       "day": null,
       "distance": "912",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "21:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     }
   ],
-  "summary": "Reservation chart preparation times for VRL BDTS SPL (09018) from VRL to BDTS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-08-03T20:26:08.170Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for VRL BDTS SPL (09018) is prepared at SURAT (ST) around 8:12 PM, with a second (vacancy) chart around 9:32 PM. 4 of 14 stations on the VRL to BDTS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:18:09.699Z",
+  "knownChartCount": 4
 }

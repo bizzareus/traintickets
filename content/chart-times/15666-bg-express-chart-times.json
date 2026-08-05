@@ -25,11 +25,11 @@
       "departureTime": "06:45",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MXN"
     },
     {
       "stationCode": "MOBD",
@@ -38,11 +38,11 @@
       "departureTime": "07:05",
       "day": 1,
       "distance": "36.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MXN"
     },
     {
       "stationCode": "BBGN",
@@ -51,11 +51,11 @@
       "departureTime": "07:22",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MXN"
     },
     {
       "stationCode": "GLGT",
@@ -64,11 +64,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "78.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MXN"
     },
     {
       "stationCode": "FKG",
@@ -77,11 +77,11 @@
       "departureTime": "08:22",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MXN"
     },
     {
       "stationCode": "BXP",
@@ -90,11 +90,11 @@
       "departureTime": "08:42",
       "day": 1,
       "distance": "110.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MXN"
     },
     {
       "stationCode": "BXJ",
@@ -103,11 +103,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "141.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MXN"
     },
     {
       "stationCode": "DMV",
@@ -116,11 +116,11 @@
       "departureTime": "09:35",
       "day": 1,
       "distance": "155.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MXN"
     },
     {
       "stationCode": "DPU",
@@ -129,11 +129,11 @@
       "departureTime": "10:18",
       "day": 1,
       "distance": "193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MXN"
     },
     {
       "stationCode": "LMG",
@@ -142,11 +142,11 @@
       "departureTime": "11:10",
       "day": 1,
       "distance": "224.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LMG"
     },
     {
       "stationCode": "LKG",
@@ -168,11 +168,11 @@
       "departureTime": "11:44",
       "day": 1,
       "distance": "255.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LMG"
     },
     {
       "stationCode": "HJI",
@@ -181,11 +181,11 @@
       "departureTime": "11:58",
       "day": 1,
       "distance": "269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LMG"
     },
     {
       "stationCode": "JMK",
@@ -194,11 +194,11 @@
       "departureTime": "12:12",
       "day": 1,
       "distance": "286.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LMG"
     },
     {
       "stationCode": "KWM",
@@ -207,11 +207,11 @@
       "departureTime": "12:24",
       "day": 1,
       "distance": "297.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LMG"
     },
     {
       "stationCode": "CPK",
@@ -220,11 +220,11 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "314.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LMG"
     },
     {
       "stationCode": "JID",
@@ -233,11 +233,11 @@
       "departureTime": "13:14",
       "day": 1,
       "distance": "348.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LMG"
     },
     {
       "stationCode": "GHY",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "405.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LMG"
     }
   ],
-  "summary": "The first reservation chart for Bg Express (15666) is prepared at Mariani Jn (MXN) around 8:11 PM, with a second (vacancy) chart around 5:50 AM. 1 of 19 stations on the MXN to GHY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T22:34:00.361Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Bg Express (15666) is prepared at Mariani Jn (MXN) around 8:11 PM, with a second (vacancy) chart around 5:50 AM. 18 of 19 stations on the MXN to GHY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:18:25.292Z",
+  "knownChartCount": 18
 }

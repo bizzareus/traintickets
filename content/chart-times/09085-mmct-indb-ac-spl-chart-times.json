@@ -64,11 +64,11 @@
       "departureTime": "05:20",
       "day": null,
       "distance": "392",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMCT"
     },
     {
       "stationCode": "DHD",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "MMCT"
     }
   ],
-  "summary": "The first reservation chart for MMCT INDB AC SPL (09085) is prepared at MUMBAI CENTRAL (MMCT) around 1:21 PM, with a second (vacancy) chart around 11 PM. 8 of 9 stations on the MMCT to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T20:26:30.128Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for MMCT INDB AC SPL (09085) is prepared at MUMBAI CENTRAL (MMCT) around 1:21 PM, with a second (vacancy) chart around 11 PM. 9 of 9 stations on the MMCT to INDB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:18:11.492Z",
+  "knownChartCount": 9
 }

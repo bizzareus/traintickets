@@ -12,10 +12,10 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:02",
+      "chartTimeLocal": "19:19",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TSK"
     },
     {
@@ -25,11 +25,11 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "3.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "DBRG",
@@ -38,11 +38,11 @@
       "departureTime": "14:45",
       "day": 1,
       "distance": "45.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "DMGN",
@@ -51,11 +51,11 @@
       "departureTime": "15:02",
       "day": 1,
       "distance": "58.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "DMC",
@@ -64,11 +64,11 @@
       "departureTime": "15:34",
       "day": 1,
       "distance": "107.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "BDLN",
@@ -77,11 +77,11 @@
       "departureTime": "15:52",
       "day": 1,
       "distance": "120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "GOM",
@@ -90,11 +90,11 @@
       "departureTime": "16:18",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "BGND",
@@ -103,11 +103,11 @@
       "departureTime": "16:29",
       "day": 1,
       "distance": "150.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "NLP",
@@ -116,11 +116,11 @@
       "departureTime": "17:27",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "KTPR",
@@ -129,11 +129,11 @@
       "departureTime": "17:52",
       "day": 1,
       "distance": "193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "HMY",
@@ -142,11 +142,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     },
     {
       "stationCode": "NHLN",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "225.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:31",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TSK"
     }
   ],
-  "summary": "The first reservation chart for Tsk Nhln Vista (15907) is prepared at Tinsukia Jn (TSK) around 7:02 PM. 1 of 12 stations on the TSK to NHLN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T06:55:03.621Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Tsk Nhln Vista (15907) is prepared at Tinsukia Jn (TSK) around 7:19 PM, with a second (vacancy) chart around 1:20 PM. 12 of 12 stations on the TSK to NHLN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:20:08.036Z",
+  "knownChartCount": 12
 }

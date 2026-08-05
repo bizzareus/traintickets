@@ -12,11 +12,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "HMY",
@@ -25,11 +25,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "NLP",
@@ -38,11 +38,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "49.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "BGND",
@@ -51,11 +51,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "75.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "GOM",
@@ -64,11 +64,11 @@
       "departureTime": "10:02",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "BDLN",
@@ -77,11 +77,11 @@
       "departureTime": "10:17",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "DMC",
@@ -90,11 +90,11 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "DMGN",
@@ -103,11 +103,11 @@
       "departureTime": "11:20",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "DBRG",
@@ -116,11 +116,11 @@
       "departureTime": "11:45",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "NTSK",
@@ -129,11 +129,11 @@
       "departureTime": "13:05",
       "day": 1,
       "distance": "222.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "TSK",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "225.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:54",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NHLN"
     }
   ],
-  "summary": "Reservation chart preparation times for Nhln Tsk Express (15912) from NHLN to TSK are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-08-04T10:49:22.146Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Nhln Tsk Express (15912) is prepared at Naharlagun (NHLN) around 9:54 PM. 11 of 11 stations on the NHLN to TSK route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:20:17.989Z",
+  "knownChartCount": 11
 }

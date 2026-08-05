@@ -12,11 +12,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "UMB",
@@ -415,11 +415,11 @@
       "departureTime": "00:07",
       "day": 4,
       "distance": "2406.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "MXN",
@@ -428,11 +428,11 @@
       "departureTime": "01:10",
       "day": 4,
       "distance": "2445.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "SLGR",
@@ -441,11 +441,11 @@
       "departureTime": "02:00",
       "day": 4,
       "distance": "2499.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "NTSK",
@@ -454,11 +454,11 @@
       "departureTime": "03:50",
       "day": 4,
       "distance": "2601.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "DBRG",
@@ -467,14 +467,14 @@
       "departureTime": "",
       "day": 4,
       "distance": "2643.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GHY"
     }
   ],
-  "summary": "Reservation chart preparation times for Cdg Dbrg Exp (15904) from CDG to DBRG are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 36 stations.",
-  "generatedAt": "2026-08-04T06:54:48.706Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Cdg Dbrg Exp (15904) is prepared at Chandigarh (CDG) around 1:42 PM, with a second (vacancy) chart around 11:20 PM. 6 of 36 stations on the CDG to DBRG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:20:06.631Z",
+  "knownChartCount": 6
 }

@@ -12,11 +12,11 @@
       "departureTime": "11:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "GLPT",
@@ -25,11 +25,11 @@
       "departureTime": "12:37",
       "day": 1,
       "distance": "124.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "NBQ",
@@ -38,11 +38,11 @@
       "departureTime": "13:40",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "KOJ",
@@ -51,11 +51,11 @@
       "departureTime": "14:32",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:43",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "NOQ",
@@ -64,11 +64,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "285.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NOQ"
     },
     {
       "stationCode": "NCB",
@@ -77,11 +77,11 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "304.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NOQ"
     },
     {
       "stationCode": "NJP",
@@ -90,11 +90,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "430.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KNE",
@@ -103,11 +103,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "517.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KIR",
@@ -116,11 +116,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "631.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "KGG",
@@ -129,11 +129,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "755.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "BGS",
@@ -474,7 +474,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Kyq Gimb Exp (15668) from KYQ to GIMB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 36 stations.",
-  "generatedAt": "2026-08-03T22:38:06.102Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kyq Gimb Exp (15668) is prepared at Kamakhya (KYQ) around 8:43 PM, with a second (vacancy) chart around 10:45 AM. 10 of 36 stations on the KYQ to GIMB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:18:40.576Z",
+  "knownChartCount": 10
 }
