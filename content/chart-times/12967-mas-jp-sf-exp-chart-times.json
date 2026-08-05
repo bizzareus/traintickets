@@ -12,11 +12,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "GDR",
@@ -350,11 +350,11 @@
       "departureTime": "00:25",
       "day": 3,
       "distance": "1817.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:22",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "BWM",
@@ -363,11 +363,11 @@
       "departureTime": "00:55",
       "day": 3,
       "distance": "1850.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:22",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "RMA",
@@ -376,11 +376,11 @@
       "departureTime": "01:15",
       "day": 3,
       "distance": "1878.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:22",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "KOTA",
@@ -389,11 +389,11 @@
       "departureTime": "02:25",
       "day": 3,
       "distance": "1950.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:22",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "SWM",
@@ -402,11 +402,11 @@
       "departureTime": "04:20",
       "day": 3,
       "distance": "2058.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:22",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "DPA",
@@ -415,11 +415,11 @@
       "departureTime": "06:05",
       "day": 3,
       "distance": "2182.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:22",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "JP",
@@ -428,14 +428,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2189.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:22",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "UJN"
     }
   ],
-  "summary": "Reservation chart preparation times for Mas Jp Sf Exp (12967) from MAS to JP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 33 stations.",
-  "generatedAt": "2026-07-02T17:19:07.956Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mas Jp Sf Exp (12967) is prepared at Mgr Chennai Ctl (MAS) around 7:49 AM, with a second (vacancy) chart around 5:25 PM. 8 of 33 stations on the MAS to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T19:53:37.770Z",
+  "knownChartCount": 8
 }

@@ -12,11 +12,11 @@
       "departureTime": "04:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:47",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MLDT"
     },
     {
       "stationCode": "NFK",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Hwh Intercity (13012) from MLDT to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-07-02T17:19:13.992Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hwh Intercity (13012) is prepared at Malda Town (MLDT) around 8:30 PM, with a second (vacancy) chart around 8:47 AM. 1 of 19 stations on the MLDT to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T22:25:17.714Z",
+  "knownChartCount": 1
 }

@@ -12,11 +12,11 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "KSG",
@@ -25,11 +25,11 @@
       "departureTime": "18:17",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "FL",
@@ -38,11 +38,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "80.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "JP",
@@ -51,11 +51,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "135.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "GTJT",
@@ -64,11 +64,11 @@
       "departureTime": "20:18",
       "day": 1,
       "distance": "146.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DO",
@@ -77,11 +77,11 @@
       "departureTime": "20:59",
       "day": 1,
       "distance": "196.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "AWR",
@@ -90,11 +90,11 @@
       "departureTime": "22:23",
       "day": 1,
       "distance": "286.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "RE",
@@ -103,11 +103,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "360.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "CKD",
@@ -116,11 +116,11 @@
       "departureTime": "00:40",
       "day": 2,
       "distance": "416.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "BNW",
@@ -129,11 +129,11 @@
       "departureTime": "01:15",
       "day": 2,
       "distance": "443.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "ROK",
@@ -142,11 +142,11 @@
       "departureTime": "02:27",
       "day": 2,
       "distance": "492.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "GHNA",
@@ -155,11 +155,11 @@
       "departureTime": "03:03",
       "day": 2,
       "distance": "524.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "PNP",
@@ -168,11 +168,11 @@
       "departureTime": "03:58",
       "day": 2,
       "distance": "563.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "KUN",
@@ -181,11 +181,11 @@
       "departureTime": "04:23",
       "day": 2,
       "distance": "598.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "KKDE",
@@ -194,11 +194,11 @@
       "departureTime": "04:48",
       "day": 2,
       "distance": "631.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "UMB",
@@ -207,11 +207,11 @@
       "departureTime": "05:55",
       "day": 2,
       "distance": "672.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "CDG",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "740.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AWR"
     }
   ],
-  "summary": "Reservation chart preparation times for Aii Cdg G Rath (12983) from AII to CDG are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
-  "generatedAt": "2026-07-02T17:19:10.550Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Aii Cdg G Rath (12983) is prepared at Ajmer Jn (AII) around 9:50 AM, with a second (vacancy) chart around 5:35 PM. 17 of 17 stations on the AII to CDG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T20:05:50.240Z",
+  "knownChartCount": 17
 }

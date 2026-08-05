@@ -2,7 +2,7 @@
 title: "IRCTC Chart Preparation for Last-Minute Tickets"
 description: "A practical, no-hype guide to chart preparation: what changes after the chart, why WL/Regret can flip, and how to time your checks."
 date: "2026-05-15"
-updated: "2026-07-27"
+updated: "2026-08-05"
 tags:
   - chart preparation
   - irctc
@@ -95,7 +95,7 @@ If a fully waitlisted e-ticket remains waitlisted after second chart preparation
 
 ## What Is the Difference Between First Reservation Chart and Second Reservation Chart?
 
-The first reservation chart is prepared approximately 4 hours before the train's departure from its originating station (or the previous evening for early morning trains), finalizing initial seat allocations and releasing unused quotas. The second and final reservation chart is prepared 30 to 15 minutes before departure incorporating last-minute current availability bookings and cancellations.
+The first reservation chart is prepared approximately 8 hours before the train's departure from its originating station (or the previous evening at 21:00 for trains departing before 14:00), finalizing initial seat allocations and releasing unused quotas. The second and final reservation chart is prepared 30 to 15 minutes before departure incorporating last-minute current availability bookings and cancellations.
 
 ## How to Book Vacant Berths Online After Chart Preparation?
 
@@ -128,7 +128,7 @@ The first chart goes up 8 hours before the train leaves the starting station. Bu
 On a group/family e-ticket PNR, if at least one passenger has a confirmed or RAC status while others remain waitlisted, the waitlisted passengers are permitted to board and travel. The Travelling Ticket Examiner (TTE) will assist with seat/berth adjustment onboard, subject to availability.
 
 ### What time is chart prepared for early morning trains departing before 8 AM?
-For early morning trains, the first reservation chart is prepared on the previous evening at approximately 8:00 PM.
+For early morning trains departing before 14:00, the first reservation chart is prepared on the previous evening at 21:00 (9:00 PM).
 
 ### Can waitlist status change after second chart preparation?
 No, once the second chart is prepared 15-30 minutes before departure, all seat allocations are final and waitlists close.

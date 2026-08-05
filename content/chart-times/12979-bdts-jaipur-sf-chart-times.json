@@ -12,11 +12,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:53",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BDTS"
     },
     {
       "stationCode": "ADH",
@@ -25,11 +25,11 @@
       "departureTime": "17:13",
       "day": 1,
       "distance": "7.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:53",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BDTS"
     },
     {
       "stationCode": "BVI",
@@ -38,11 +38,11 @@
       "departureTime": "17:42",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:53",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BDTS"
     },
     {
       "stationCode": "PLG",
@@ -51,11 +51,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "76.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:53",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BDTS"
     },
     {
       "stationCode": "VAPI",
@@ -64,11 +64,11 @@
       "departureTime": "19:12",
       "day": 1,
       "distance": "159.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "BL",
@@ -77,11 +77,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "183.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "NVS",
@@ -90,11 +90,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "ST",
@@ -240,7 +240,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bdts Jaipur Sf (12979) from BDTS to JP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 18 stations.",
-  "generatedAt": "2026-07-02T17:19:10.578Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bdts Jaipur Sf (12979) is prepared at Bandra Terminus (BDTS) around 8:53 PM. 7 of 18 stations on the BDTS to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T20:05:29.029Z",
+  "knownChartCount": 7
 }

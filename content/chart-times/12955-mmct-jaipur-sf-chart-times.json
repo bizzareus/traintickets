@@ -12,11 +12,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:06",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MMCT"
     },
     {
       "stationCode": "BVI",
@@ -25,11 +25,11 @@
       "departureTime": "19:34",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:06",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MMCT"
     },
     {
       "stationCode": "VAPI",
@@ -77,11 +77,11 @@
       "departureTime": "00:18",
       "day": 2,
       "distance": "392.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "DHD",
@@ -90,11 +90,11 @@
       "departureTime": "02:16",
       "day": 2,
       "distance": "540.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "MGN",
@@ -103,11 +103,11 @@
       "departureTime": "02:42",
       "day": 2,
       "distance": "573.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "RTM",
@@ -116,11 +116,11 @@
       "departureTime": "04:10",
       "day": 2,
       "distance": "653.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "NAD",
@@ -129,11 +129,11 @@
       "departureTime": "05:00",
       "day": 2,
       "distance": "695.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "VMA",
@@ -142,11 +142,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "734.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "CMU",
@@ -155,11 +155,11 @@
       "departureTime": "05:45",
       "day": 2,
       "distance": "757.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "SVA",
@@ -168,11 +168,11 @@
       "departureTime": "06:00",
       "day": 2,
       "distance": "772.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "SGZ",
@@ -181,11 +181,11 @@
       "departureTime": "06:12",
       "day": 2,
       "distance": "786.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "BWM",
@@ -194,11 +194,11 @@
       "departureTime": "06:35",
       "day": 2,
       "distance": "819.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "RMA",
@@ -207,11 +207,11 @@
       "departureTime": "06:55",
       "day": 2,
       "distance": "847.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "KOTA",
@@ -220,11 +220,11 @@
       "departureTime": "07:55",
       "day": 2,
       "distance": "920.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "SWM",
@@ -233,11 +233,11 @@
       "departureTime": "09:45",
       "day": 2,
       "distance": "1027.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "DPA",
@@ -246,11 +246,11 @@
       "departureTime": "11:30",
       "day": 2,
       "distance": "1151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "JP",
@@ -259,14 +259,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1159.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "Reservation chart preparation times for Mmct Jaipur Sf (12955) from MMCT to JP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-07-02T17:19:42.260Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mmct Jaipur Sf (12955) is prepared at Mumbai Central (MMCT) around 9:06 AM. 17 of 20 stations on the MMCT to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T19:44:35.291Z",
+  "knownChartCount": 17
 }

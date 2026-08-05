@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Ticket Booking Limits: Daily & Monthly Rules (2026)"
-description: "How many tickets can you book in IRCTC per month? Unverified accounts can book 12 tickets; Aadhaar-linked accounts get 24 tickets. Learn daily & PNR limits."
+title: "IRCTC Booking Limits 2026: Per Month, Per Day & Aadhaar Rules"
+description: "How many tickets can you book in IRCTC per month and per day? Unverified accounts get 12 tickets/month; Aadhaar-linked accounts get 24. Learn Tatkal caps."
 date: "2026-06-22"
-updated: "2026-08-04"
+updated: "2026-08-05"
 tags:
   - train booking
   - irctc
@@ -19,16 +19,16 @@ You sit at your screen ready to book, and a warning pops up: "Monthly booking li
 
 ## How Many Tickets Can Be Booked in IRCTC in a Month?
 
-**You can book up to 12 tickets in a calendar month from a standard, unverified IRCTC account. By linking your Aadhaar card and verifying at least one passenger, you can double your monthly booking limit to 24 tickets per IRCTC user ID.** This count resets on the first day of each month.
+**You can book up to 12 tickets in a calendar month from a standard, unverified IRCTC account. By linking your Aadhaar card and verifying at least one passenger, you can double your monthly booking limit to 24 tickets per IRCTC user ID. This monthly limit resets automatically on the first day of each calendar month.**
 
 | Booking Type / Limit Category | Limit Value | Key Rule & Requirement |
 | :--- | :--- | :--- |
-| **Monthly booking (Unverified)** | 12 tickets | Standard account with no identity verification. |
-| **Monthly booking (Aadhaar-verified)** | 24 tickets | Account linked to Aadhaar + at least one verified passenger on booking. |
-| **Daily Tatkal booking limit** | 2 tickets | Maximum of two Tatkal PNRs booked per day per user ID. |
-| **Peak-hour session booking limit** | 2 tickets | Applies during 8:00 AM – 12:00 noon (General & Tatkal openings). |
-| **Max passengers (General)** | 6 passengers | Per single booking / PNR. |
-| **Max passengers (Tatkal)** | 4 passengers | Per single booking / PNR. |
+| **Monthly limit (Unverified account)** | 12 tickets | Standard account with no identity verification. |
+| **Monthly limit (Aadhaar-verified)** | 24 tickets | Profile linked to Aadhaar + 1 verified passenger on booking. |
+| **Daily booking limit (General)** | Unlimited* | Unlimited overall, capped at 2 tickets between 8 AM – 12 PM. |
+| **Daily Tatkal booking limit** | 2 tickets | Maximum of 2 Tatkal PNRs booked per day per user ID. |
+| **Max passengers per ticket (General)** | 6 passengers | Per single booking / PNR. |
+| **Max passengers per ticket (Tatkal)** | 4 passengers | Per single booking / PNR. |
 
 Indian Railways introduced this limit to curb the black market, where unauthorized agents buy tickets in bulk and resell them. For a regular traveller, 12 a month is usually plenty, but a large family or a frequent traveller can burn through it fast. Once you hit the wall, you cannot book again from that ID until the counter resets on the first day of the next month, so it pays to set up your Aadhaar link before you actually need it.
 

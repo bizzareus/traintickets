@@ -12,11 +12,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "MTJ",
@@ -25,11 +25,11 @@
       "departureTime": "18:45",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "SWM",
@@ -38,11 +38,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "350.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "KOTA",
@@ -51,11 +51,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "11:53",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "RTM",
@@ -64,11 +64,11 @@
       "departureTime": "01:07",
       "day": 2,
       "distance": "724.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "DHD",
@@ -77,11 +77,11 @@
       "departureTime": "02:33",
       "day": 2,
       "distance": "838.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "BRC",
@@ -90,11 +90,11 @@
       "departureTime": "04:39",
       "day": 2,
       "distance": "986.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "BH",
@@ -103,11 +103,11 @@
       "departureTime": "05:28",
       "day": 2,
       "distance": "1056.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ST",
@@ -116,11 +116,11 @@
       "departureTime": "06:18",
       "day": 2,
       "distance": "1115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:03",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BL",
@@ -129,11 +129,11 @@
       "departureTime": "07:05",
       "day": 2,
       "distance": "1183.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:03",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "VAPI",
@@ -142,11 +142,11 @@
       "departureTime": "07:25",
       "day": 2,
       "distance": "1207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:03",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BVI",
@@ -155,11 +155,11 @@
       "departureTime": "09:10",
       "day": 2,
       "distance": "1347.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:03",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "MMCT",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1377.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:03",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     }
   ],
-  "summary": "Reservation chart preparation times for Ak Tejas Raj Ex (12954) from NZM to MMCT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-07-02T17:19:42.226Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ak Tejas Raj Ex (12954) is prepared at H Nizamuddin (NZM) around 9:15 AM, with a second (vacancy) chart around 5 PM. 13 of 13 stations on the NZM to MMCT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T19:44:03.761Z",
+  "knownChartCount": 13
 }

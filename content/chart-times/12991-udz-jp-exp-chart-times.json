@@ -12,11 +12,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "RPZ",
@@ -25,11 +25,11 @@
       "departureTime": "06:09",
       "day": 1,
       "distance": "5.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "MVJ",
@@ -38,11 +38,11 @@
       "departureTime": "06:42",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "FAN",
@@ -51,11 +51,11 @@
       "departureTime": "06:55",
       "day": 1,
       "distance": "56.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "KIN",
@@ -64,11 +64,11 @@
       "departureTime": "07:14",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "COR",
@@ -77,11 +77,11 @@
       "departureTime": "08:10",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "BHL",
@@ -90,11 +90,11 @@
       "departureTime": "09:00",
       "day": 1,
       "distance": "169.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "MDL",
@@ -103,11 +103,11 @@
       "departureTime": "09:13",
       "day": 1,
       "distance": "180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "GBP",
@@ -116,11 +116,11 @@
       "departureTime": "09:56",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "BJNR",
@@ -129,11 +129,11 @@
       "departureTime": "10:04",
       "day": 1,
       "distance": "235.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "NSD",
@@ -142,11 +142,11 @@
       "departureTime": "10:32",
       "day": 1,
       "distance": "277.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "AII",
@@ -155,11 +155,11 @@
       "departureTime": "11:20",
       "day": 1,
       "distance": "301.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "KSG",
@@ -168,11 +168,11 @@
       "departureTime": "11:46",
       "day": 1,
       "distance": "326.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "FL",
@@ -181,11 +181,11 @@
       "departureTime": "12:27",
       "day": 1,
       "distance": "380.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "JOB",
@@ -194,11 +194,11 @@
       "departureTime": "12:44",
       "day": 1,
       "distance": "398.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "JP",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "435.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     }
   ],
-  "summary": "Reservation chart preparation times for Udz Jp Exp (12991) from UDZ to JP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-07-02T17:19:11.616Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Udz Jp Exp (12991) is prepared at Udaipur City (UDZ) around 8:51 PM, with a second (vacancy) chart around 8:45 AM. 16 of 16 stations on the UDZ to JP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T20:08:01.898Z",
+  "knownChartCount": 16
 }

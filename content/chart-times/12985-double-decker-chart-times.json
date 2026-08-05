@@ -12,11 +12,11 @@
       "departureTime": "05:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "GADJ",
@@ -25,11 +25,11 @@
       "departureTime": "05:55",
       "day": 1,
       "distance": "6.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DO",
@@ -38,11 +38,11 @@
       "departureTime": "06:37",
       "day": 1,
       "distance": "62.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "AWR",
@@ -51,11 +51,11 @@
       "departureTime": "07:41",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "GGN",
@@ -64,11 +64,11 @@
       "departureTime": "09:38",
       "day": 1,
       "distance": "277.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DEC",
@@ -77,11 +77,11 @@
       "departureTime": "09:55",
       "day": 1,
       "distance": "294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DEE",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "303.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     }
   ],
-  "summary": "Reservation chart preparation times for Double Decker (12985) from JP to DEE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:11.586Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Double Decker (12985) is prepared at Jaipur (JP) around 9:14 PM, with a second (vacancy) chart around 7:26 AM. 7 of 7 stations on the JP to DEE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T20:06:38.100Z",
+  "knownChartCount": 7
 }

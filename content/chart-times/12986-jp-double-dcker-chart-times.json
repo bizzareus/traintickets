@@ -12,11 +12,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DEE"
     },
     {
       "stationCode": "DEC",
@@ -25,11 +25,11 @@
       "departureTime": "17:42",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DEE"
     },
     {
       "stationCode": "GGN",
@@ -38,11 +38,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "27.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DEE"
     },
     {
       "stationCode": "AWR",
@@ -51,11 +51,11 @@
       "departureTime": "19:42",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DEE"
     },
     {
       "stationCode": "DO",
@@ -64,11 +64,11 @@
       "departureTime": "20:39",
       "day": 1,
       "distance": "242.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DEE"
     },
     {
       "stationCode": "GADJ",
@@ -77,11 +77,11 @@
       "departureTime": "21:26",
       "day": 1,
       "distance": "298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DEE"
     },
     {
       "stationCode": "JP",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "303.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "09:25",
+      "chartOneDayOffset": 0,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DEE"
     }
   ],
-  "summary": "Reservation chart preparation times for Jp Double Dcker (12986) from DEE to JP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-07-02T17:19:11.605Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jp Double Dcker (12986) is prepared at Delhi S Rohilla (DEE) around 9:25 AM. 7 of 7 stations on the DEE to JP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T20:06:54.384Z",
+  "knownChartCount": 7
 }

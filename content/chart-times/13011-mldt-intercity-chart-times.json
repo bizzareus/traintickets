@@ -12,11 +12,11 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:15",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "19:14",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "BDC",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Mldt Intercity (13011) from HWH to MLDT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-07-02T17:19:14.000Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mldt Intercity (13011) is prepared at Howrah Jn (HWH) around 9:15 PM, with a second (vacancy) chart around 7:14 PM. 1 of 19 stations on the HWH to MLDT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T22:23:46.006Z",
+  "knownChartCount": 1
 }

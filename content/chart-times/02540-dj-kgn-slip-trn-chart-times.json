@@ -1,0 +1,38 @@
+{
+  "trainNumber": "02540",
+  "trainName": "DJ KGN SLIP TRN",
+  "originStation": "DJ",
+  "destinationStation": "KGN",
+  "slug": "02540-dj-kgn-slip-trn-chart-times",
+  "stations": [
+    {
+      "stationCode": "DJ",
+      "stationName": "DARJEELING",
+      "arrivalTime": "--",
+      "departureTime": "09:00",
+      "day": null,
+      "distance": "0",
+      "chartTimeLocal": "22:19",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DJ"
+    },
+    {
+      "stationCode": "KGN",
+      "stationName": "KURSEONG",
+      "arrivalTime": "11:30",
+      "departureTime": "--",
+      "day": null,
+      "distance": "31",
+      "chartTimeLocal": "22:19",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DJ"
+    }
+  ],
+  "summary": "The first reservation chart for DJ KGN SLIP TRN (02540) is prepared at DARJEELING (DJ) around 10:19 PM, with a second (vacancy) chart around 8:45 AM. 2 of 2 stations on the DJ to KGN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:17:38.902Z",
+  "knownChartCount": 2
+}

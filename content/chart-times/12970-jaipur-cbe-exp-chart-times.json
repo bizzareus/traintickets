@@ -12,11 +12,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DPA",
@@ -376,11 +376,11 @@
       "departureTime": "01:10",
       "day": 3,
       "distance": "1752.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "WL"
     },
     {
       "stationCode": "NLR",
@@ -389,11 +389,11 @@
       "departureTime": "04:45",
       "day": 3,
       "distance": "2007.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "WL"
     },
     {
       "stationCode": "GDR",
@@ -402,11 +402,11 @@
       "departureTime": "05:25",
       "day": 3,
       "distance": "2045.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "WL"
     },
     {
       "stationCode": "MAS",
@@ -415,11 +415,11 @@
       "departureTime": "08:40",
       "day": 3,
       "distance": "2183.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "AJJ",
@@ -428,11 +428,11 @@
       "departureTime": "09:35",
       "day": 3,
       "distance": "2251.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "KPD",
@@ -441,11 +441,11 @@
       "departureTime": "10:30",
       "day": 3,
       "distance": "2312.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "JTJ",
@@ -454,11 +454,11 @@
       "departureTime": "12:00",
       "day": 3,
       "distance": "2396.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "SA",
@@ -467,11 +467,11 @@
       "departureTime": "13:35",
       "day": 3,
       "distance": "2516.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "ED",
@@ -480,11 +480,11 @@
       "departureTime": "14:40",
       "day": 3,
       "distance": "2578.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "TUP",
@@ -493,11 +493,11 @@
       "departureTime": "15:25",
       "day": 3,
       "distance": "2628.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "CBE",
@@ -506,14 +506,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2679.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAS"
     }
   ],
-  "summary": "Reservation chart preparation times for Jaipur Cbe Exp (12970) from JP to CBE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 39 stations.",
-  "generatedAt": "2026-07-02T17:19:09.155Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jaipur Cbe Exp (12970) is prepared at Jaipur (JP) around 11:35 AM, with a second (vacancy) chart around 7:20 PM. 12 of 39 stations on the JP to CBE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T19:56:58.191Z",
+  "knownChartCount": 12
 }

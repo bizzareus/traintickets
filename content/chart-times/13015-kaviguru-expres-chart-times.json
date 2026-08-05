@@ -12,11 +12,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "BDC",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Kaviguru Expres (13015) from HWH to JMP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-07-02T17:19:13.944Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kaviguru Expres (13015) is prepared at Howrah Jn (HWH) around 9:22 PM, with a second (vacancy) chart around 10:40 AM. 1 of 20 stations on the HWH to JMP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T22:26:50.001Z",
+  "knownChartCount": 1
 }

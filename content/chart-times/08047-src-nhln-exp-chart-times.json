@@ -1,0 +1,38 @@
+{
+  "trainNumber": "08047",
+  "trainName": "SRC NHLN EXP",
+  "originStation": "SRC",
+  "destinationStation": "NHLN",
+  "slug": "08047-src-nhln-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "BWN",
+      "stationName": "BARDDHAMAN JN",
+      "arrivalTime": "20:00",
+      "departureTime": "20:02",
+      "day": null,
+      "distance": "99",
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
+    },
+    {
+      "stationCode": "RPAN",
+      "stationName": "RANGAPARA NORTH",
+      "arrivalTime": "15:55",
+      "departureTime": "16:05",
+      "day": null,
+      "distance": "1075",
+      "chartTimeLocal": "19:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NJP"
+    }
+  ],
+  "summary": "The first reservation chart for SRC NHLN EXP (08047) is prepared at BARDDHAMAN JN (BWN) around 7:28 AM, with a second (vacancy) chart around 5:45 PM. 2 of 2 stations on the SRC to NHLN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-03T20:23:22.897Z",
+  "knownChartCount": 2
+}

@@ -12,11 +12,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GIMB"
     },
     {
       "stationCode": "BCOB",
@@ -25,11 +25,11 @@
       "departureTime": "23:42",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GIMB"
     },
     {
       "stationCode": "SIOB",
@@ -38,11 +38,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "53.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GIMB"
     },
     {
       "stationCode": "DHG",
@@ -51,11 +51,11 @@
       "departureTime": "01:27",
       "day": 2,
       "distance": "170.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GIMB"
     },
     {
       "stationCode": "ADI",
@@ -64,11 +64,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "300.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ANND",
@@ -77,11 +77,11 @@
       "departureTime": "05:15",
       "day": 2,
       "distance": "364.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "BRC",
@@ -90,11 +90,11 @@
       "departureTime": "05:53",
       "day": 2,
       "distance": "400.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ST",
@@ -103,11 +103,11 @@
       "departureTime": "07:45",
       "day": 2,
       "distance": "529.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "NDB",
@@ -116,11 +116,11 @@
       "departureTime": "10:15",
       "day": 2,
       "distance": "689.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDB"
     },
     {
       "stationCode": "JL",
@@ -129,11 +129,11 @@
       "departureTime": "13:25",
       "day": 2,
       "distance": "840.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDB"
     },
     {
       "stationCode": "BSL",
@@ -142,11 +142,11 @@
       "departureTime": "13:55",
       "day": 2,
       "distance": "864.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NDB"
     },
     {
       "stationCode": "NGP",
@@ -344,7 +344,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Gimb Puri Sf Ex (12993) from GIMB to PURI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 26 stations.",
-  "generatedAt": "2026-07-02T17:19:12.720Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gimb Puri Sf Ex (12993) is prepared at Gandhidham Bg (GIMB) around 3:10 PM, with a second (vacancy) chart around 10:55 PM. 11 of 26 stations on the GIMB to PURI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T20:09:04.899Z",
+  "knownChartCount": 11
 }

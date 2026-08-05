@@ -1,0 +1,77 @@
+{
+  "trainNumber": "15888",
+  "trainName": "Ghy Bpb Vistado",
+  "originStation": "GHY",
+  "destinationStation": "BPB",
+  "slug": "15888-ghy-bpb-vistado-chart-times",
+  "stations": [
+    {
+      "stationCode": "GHY",
+      "stationName": "Guwahati",
+      "arrivalTime": "",
+      "departureTime": "06:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MBG",
+      "stationName": "Maibong",
+      "arrivalTime": "10:53",
+      "departureTime": "10:55",
+      "day": 1,
+      "distance": "235.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "NHLG",
+      "stationName": "New Haflong",
+      "arrivalTime": "12:11",
+      "departureTime": "12:21",
+      "day": 1,
+      "distance": "269.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "JGLP",
+      "stationName": "Jatinga Lumpur",
+      "arrivalTime": "12:43",
+      "departureTime": "12:45",
+      "day": 1,
+      "distance": "281.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BPB",
+      "stationName": "Badarpur Jn",
+      "arrivalTime": "14:35",
+      "departureTime": "",
+      "day": 1,
+      "distance": "341.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Ghy Bpb Vistado (15888) from GHY to BPB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-08-05T22:17:39.094Z",
+  "knownChartCount": 0
+}

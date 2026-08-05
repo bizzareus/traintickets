@@ -12,11 +12,11 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "19:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AZ"
     },
     {
       "stationCode": "SDI",
@@ -201,7 +201,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ganadevta Exp (13018) from AZ to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
-  "generatedAt": "2026-07-02T17:19:15.165Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ganadevta Exp (13018) is prepared at Azimganj Jn (AZ) around 8:39 PM, with a second (vacancy) chart around 7:13 PM. 1 of 15 stations on the AZ to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T22:30:55.167Z",
+  "knownChartCount": 1
 }

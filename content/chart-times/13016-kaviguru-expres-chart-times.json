@@ -12,11 +12,11 @@
       "departureTime": "06:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JMP"
     },
     {
       "stationCode": "BUP",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Kaviguru Expres (13016) from JMP to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-07-02T17:19:13.950Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kaviguru Expres (13016) is prepared at Jamalpur Jn (JMP) around 8:55 PM, with a second (vacancy) chart around 6:10 AM. 1 of 20 stations on the JMP to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-03T22:28:21.705Z",
+  "knownChartCount": 1
 }
