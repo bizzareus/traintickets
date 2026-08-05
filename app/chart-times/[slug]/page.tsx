@@ -129,37 +129,49 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
     },
   };
 
+  const faqItems = [
+    {
+      question: `When is the first chart prepared for train ${data.trainName} (${data.trainNumber})?`,
+      answer: originChart
+        ? `The first reservation chart for train ${data.trainName} (${data.trainNumber}) is typically prepared around ${originChart} at its originating station ${firstStation?.stationName} (${firstStation?.stationCode}). The chart is generally prepared 4 hours before the train's scheduled departure from a station.`
+        : `The first reservation chart for a train is generally prepared about 4 hours before its scheduled departure from the originating station. Exact chart preparation times per station for ${data.trainName} (${data.trainNumber}) are listed in the table above as they become available.`,
+    },
+    {
+      question: `What is chart preparation time for a station mid-route?`,
+      answer: `For boarding stations along the route, the chart is prepared a few hours before the train reaches that station (or at a remote charting location). The table above lists the chart preparation time recorded for each station of ${data.trainName} (${data.trainNumber}).`,
+    },
+    {
+      question: `What is the route of train ${data.trainNumber}?`,
+      answer: `Train ${data.trainName} (${data.trainNumber}) runs from ${data.originStation} to ${data.destinationStation}, stopping at ${data.stations.length} stations listed in the schedule table above.`,
+    },
+  ];
+
+  const tableJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${canonicalUrl}#table`,
+    name: `${data.trainName} (${data.trainNumber}) IRCTC Reservation Chart Preparation Times & Schedule Table`,
+    description: `Station-by-station reservation chart preparation times for train ${data.trainName} (${data.trainNumber}) running from ${data.originStation} to ${data.destinationStation}.`,
+    numberOfItems: data.stations.length,
+    itemListElement: data.stations.map((s, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: `${s.stationName} (${s.stationCode})`,
+      description: `Halt ${idx + 1}: ${s.stationName} (${s.stationCode}) — Arrival: ${s.arrivalTime || "Origin"}, Departure: ${s.departureTime || "Destination"}, Day: ${s.day || 1}. 1st Chart Time: ${s.chartTimeLocal || "Awaiting chart data"}${s.chartTwoTimeLocal ? `, 2nd Chart Time: ${s.chartTwoTimeLocal}` : ""}.`,
+    })),
+  };
+
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `When is the first chart prepared for train ${data.trainName} (${data.trainNumber})?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: originChart
-            ? `The first reservation chart for train ${data.trainName} (${data.trainNumber}) is typically prepared around ${originChart} at its originating station ${firstStation?.stationName} (${firstStation?.stationCode}). The chart is generally prepared 4 hours before the train's scheduled departure from a station.`
-            : `The first reservation chart for a train is generally prepared about 4 hours before its scheduled departure from the originating station. Exact chart preparation times per station for ${data.trainName} (${data.trainNumber}) are listed in the table above as they become available.`,
-        },
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
       },
-      {
-        "@type": "Question",
-        name: `What is chart preparation time for a station mid-route?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `For boarding stations along the route, the chart is prepared a few hours before the train reaches that station (or at a remote charting location). The table above lists the chart preparation time recorded for each station of ${data.trainName} (${data.trainNumber}).`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What is the route of train ${data.trainNumber}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Train ${data.trainName} (${data.trainNumber}) runs from ${data.originStation} to ${data.destinationStation}, stopping at ${data.stations.length} stations listed in the schedule above.`,
-        },
-      },
-    ],
+    })),
   };
 
   return (
@@ -167,6 +179,10 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(tableJsonLd) }}
       />
       <script
         type="application/ld+json"
@@ -204,18 +220,26 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
       </header>
 
       <section className="mb-6 rounded-xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700 shadow-sm">
+        <h2 className="mb-2 text-base font-semibold text-slate-900">
+          Chart Preparation Summary — {data.trainName} ({data.trainNumber})
+        </h2>
         <p>{data.summary}</p>
       </section>
 
-      <ChartTimesTable
-        stations={data.stations}
-        journeyDate={journeyDate}
-        trainNumber={data.trainNumber}
-        trainName={data.trainName}
-        destinationCode={
-          data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
-        }
-      />
+      <section className="mb-8">
+        <h2 className="mb-3 text-lg font-bold text-slate-900">
+          Station-by-Station Chart Preparation Time Table
+        </h2>
+        <ChartTimesTable
+          stations={data.stations}
+          journeyDate={journeyDate}
+          trainNumber={data.trainNumber}
+          trainName={data.trainName}
+          destinationCode={
+            data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
+          }
+        />
+      </section>
 
       <div className="mt-8">
         <ChartTimeAlertCTA
@@ -230,6 +254,20 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           initialJourneyDate={journeyDate}
         />
       </div>
+
+      <section className="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="mb-4 text-xl font-bold text-slate-900">
+          Frequently Asked Questions — {data.trainName} ({data.trainNumber}) Chart Times
+        </h2>
+        <div className="space-y-4">
+          {faqItems.map((item, idx) => (
+            <div key={idx} className="rounded-lg border border-slate-100 bg-slate-50/60 p-4">
+              <h3 className="font-semibold text-slate-900">{item.question}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-slate-700">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <p className="mt-6 text-sm text-slate-500">
         Looking for the full timetable, halts and seat confirmation chances?{" "}

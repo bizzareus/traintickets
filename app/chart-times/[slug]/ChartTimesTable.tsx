@@ -81,85 +81,42 @@ export default function ChartTimesTable({
     ) : null;
 
   return (
-    <>
-      {/* Desktop / tablet: table */}
-      <div className="hidden overflow-x-auto rounded-xl border border-slate-200 shadow-sm md:block">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-slate-50 text-slate-700">
-            <tr>
-              <th scope="col" className="px-4 py-3 font-semibold">#</th>
-              <th scope="col" className="px-4 py-3 font-semibold">Station</th>
-              <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">Arrival</th>
-              <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">Departure</th>
-              <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">Day</th>
-              <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">1st Chart Preparation Time</th>
-              <th scope="col" className="px-4 py-3 font-semibold whitespace-nowrap">2nd Chart Preparation Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {stations.map((s, i) => (
-              <tr key={`${s.stationCode}-${i}`} className="border-t border-slate-100 align-top">
-                <td className="px-4 py-3 text-slate-500">{i + 1}</td>
-                <td className="px-4 py-3">
-                  <span className="font-medium text-slate-900">{s.stationName}</span>
-                  <span className="ml-1 text-slate-500">({s.stationCode})</span>
-                </td>
-                <td className="px-4 py-3 whitespace-nowrap text-slate-700">{s.arrivalTime || "—"}</td>
-                <td className="px-4 py-3 whitespace-nowrap text-slate-700">{s.departureTime || "—"}</td>
-                <td className="px-4 py-3 whitespace-nowrap text-slate-600">{formatDay(s.day)}</td>
-                <td className="px-4 py-3">
-                  <FirstChart s={s} journeyDate={journeyDate} />
-                  {alertFor(s) && <div className="mt-2">{alertFor(s)}</div>}
-                </td>
-                <td className="px-4 py-3"><SecondChart s={s} journeyDate={journeyDate} /></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Mobile: stacked cards */}
-      <div className="space-y-4 md:hidden">
-        {stations.map((s, i) => (
-          <div
-            key={`${s.stationCode}-${i}`}
-            className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <div className="font-semibold text-slate-900">
-                  <span className="text-slate-400">{i + 1}.</span> {s.stationName}{" "}
-                  <span className="font-normal text-slate-500">({s.stationCode})</span>
-                </div>
-                <div className="mt-0.5 text-xs text-slate-500">{formatDay(s.day)}</div>
-              </div>
-            </div>
-
-            <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
-              <div>
-                <div className="text-xs text-slate-500">Arrival</div>
-                <div className="text-slate-700">{s.arrivalTime || "—"}</div>
-              </div>
-              <div>
-                <div className="text-xs text-slate-500">Departure</div>
-                <div className="text-slate-700">{s.departureTime || "—"}</div>
-              </div>
-            </div>
-
-            <div className="mt-3 space-y-2 border-t border-slate-100 pt-3">
-              <div>
-                <div className="mb-1 text-xs text-slate-500">1st Chart Preparation Time</div>
+    <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+      <table className="w-full min-w-[640px] text-left text-sm" id="chart-times-table">
+        <caption className="sr-only">
+          {trainName} ({trainNumber}) Station-by-Station IRCTC Reservation Chart Preparation Times and Schedule Table
+        </caption>
+        <thead className="border-b border-slate-200 bg-slate-50 text-slate-700">
+          <tr>
+            <th scope="col" className="w-12 px-4 py-3 font-semibold">#</th>
+            <th scope="col" className="px-4 py-3 font-semibold">Station</th>
+            <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Arrival</th>
+            <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Departure</th>
+            <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">Day</th>
+            <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">1st Chart Preparation Time</th>
+            <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold">2nd Chart Preparation Time</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-slate-100">
+          {stations.map((s, i) => (
+            <tr key={`${s.stationCode}-${i}`} className="align-top hover:bg-slate-50/60 transition-colors">
+              <td className="px-4 py-3 font-mono text-xs text-slate-500">{i + 1}</td>
+              <th scope="row" className="px-4 py-3 font-normal">
+                <span className="font-semibold text-slate-900">{s.stationName}</span>
+                <span className="ml-1 font-mono text-xs text-slate-500">({s.stationCode})</span>
+              </th>
+              <td className="whitespace-nowrap px-4 py-3 text-slate-700">{s.arrivalTime || "—"}</td>
+              <td className="whitespace-nowrap px-4 py-3 text-slate-700">{s.departureTime || "—"}</td>
+              <td className="whitespace-nowrap px-4 py-3 text-slate-600">{formatDay(s.day)}</td>
+              <td className="px-4 py-3">
                 <FirstChart s={s} journeyDate={journeyDate} />
-              </div>
-              <div>
-                <div className="mb-1 text-xs text-slate-500">2nd Chart Preparation Time</div>
-                <SecondChart s={s} journeyDate={journeyDate} />
-              </div>
-              {alertFor(s) && <div className="pt-1.5">{alertFor(s)}</div>}
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
+                {alertFor(s) && <div className="mt-2">{alertFor(s)}</div>}
+              </td>
+              <td className="px-4 py-3"><SecondChart s={s} journeyDate={journeyDate} /></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
