@@ -12,10 +12,10 @@
       "departureTime": "11:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:03",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRY"
     },
     {
@@ -25,10 +25,10 @@
       "departureTime": "11:36",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": "20:00",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPU"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": "20:00",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPU"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "12:01",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": "20:00",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPU"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "12:32",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": "20:00",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPU"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "13:31",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": "20:00",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPU"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": "20:00",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPU"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "14:15",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": "20:03",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRY"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "14:38",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": "20:03",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRY"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "14:58",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": "20:03",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRY"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "15:13",
       "day": 1,
       "distance": "160.0",
-      "chartTimeLocal": "20:03",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRY"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "15:23",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": "20:03",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRY"
     },
     {
@@ -181,10 +181,10 @@
       "departureTime": "15:36",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": "20:03",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRY"
     },
     {
@@ -194,10 +194,10 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "190.0",
-      "chartTimeLocal": "20:03",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRY"
     },
     {
@@ -207,10 +207,10 @@
       "departureTime": "16:43",
       "day": 1,
       "distance": "210.0",
-      "chartTimeLocal": "20:03",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRY"
     },
     {
@@ -357,7 +357,7 @@
       "chartRemoteStation": "MB"
     }
   ],
-  "summary": "The first reservation chart for Purnagiri Janst (12035) is prepared at Tanakpur (TPU) around 8:03 PM. 26 of 27 stations on the TPU to DLI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T23:59:29.171Z",
+  "summary": "The first reservation chart for Purnagiri Janst (12035) is prepared at Tanakpur (TPU) around 8:07 PM, with a second (vacancy) chart around 2 PM. 26 of 27 stations on the TPU to DLI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:26:24.596Z",
   "knownChartCount": 26
 }

@@ -92,8 +92,8 @@
       "distance": "447.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DLI"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "504.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DLI"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "608.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DLI"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "698.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DLI"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "831.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DLI"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "933.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "GKP",
@@ -331,7 +331,7 @@
       "chartRemoteStation": "GKP"
     }
   ],
-  "summary": "The first reservation chart for Shc Garib Rath (12204) is prepared at Amritsar Jn (ASR) around 8:01 PM, with a second (vacancy) chart around 3:45 AM. 24 of 25 stations on the ASR to SHC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:43:36.660Z",
-  "knownChartCount": 24
+  "summary": "The first reservation chart for Shc Garib Rath (12204) is prepared at Amritsar Jn (ASR) around 8:01 PM, with a second (vacancy) chart around 3:45 AM. 25 of 25 stations on the ASR to SHC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:28:18.322Z",
+  "knownChartCount": 25
 }

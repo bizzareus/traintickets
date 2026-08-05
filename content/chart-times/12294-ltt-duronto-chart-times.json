@@ -51,11 +51,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "612.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "BSL",
@@ -64,11 +64,11 @@
       "departureTime": "07:55",
       "day": 2,
       "distance": "919.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "LTT",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1348.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSL"
     }
   ],
-  "summary": "The first reservation chart for Ltt Duronto (12294) is prepared at Prayagraj Jn. (PRYJ) around 8:25 AM, with a second (vacancy) chart around 5:55 PM. 1 of 6 stations on the PRYJ to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T01:01:11.620Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Ltt Duronto (12294) is prepared at Prayagraj Jn. (PRYJ) around 8:25 AM, with a second (vacancy) chart around 5:55 PM. 4 of 6 stations on the PRYJ to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:29:37.082Z",
+  "knownChartCount": 4
 }

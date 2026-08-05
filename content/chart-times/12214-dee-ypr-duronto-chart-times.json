@@ -25,11 +25,11 @@
       "departureTime": "03:55",
       "day": 2,
       "distance": "423.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DEE"
     },
     {
       "stationCode": "RKMP",
@@ -38,11 +38,11 @@
       "departureTime": "08:00",
       "day": 2,
       "distance": "720.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "NGP",
@@ -51,11 +51,11 @@
       "departureTime": "13:30",
       "day": 2,
       "distance": "1102.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "BPQ",
@@ -64,11 +64,11 @@
       "departureTime": "16:40",
       "day": 2,
       "distance": "1314.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "16:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPQ"
     },
     {
       "stationCode": "SC",
@@ -77,11 +77,11 @@
       "departureTime": "21:10",
       "day": 2,
       "distance": "1680.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:56",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "GTL",
@@ -90,11 +90,11 @@
       "departureTime": "02:40",
       "day": 3,
       "distance": "2089.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:21",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "YPR",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2365.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:21",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GTL"
     }
   ],
-  "summary": "Reservation chart preparation times for Dee Ypr Duronto (12214) from DEE to YPR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-08-03T00:49:21.688Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Dee Ypr Duronto (12214) is prepared at V Lakshmibai Jhansi Jhs (VGLJ) around 2:10 PM, with a second (vacancy) chart around 9:55 PM. 7 of 8 stations on the DEE to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:28:43.919Z",
+  "knownChartCount": 7
 }

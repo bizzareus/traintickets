@@ -116,11 +116,11 @@
       "departureTime": "01:55",
       "day": 3,
       "distance": "2094.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:54",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "01:40",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "MAJN",
@@ -129,11 +129,11 @@
       "departureTime": "09:25",
       "day": 3,
       "distance": "2524.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:54",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "01:40",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "CLT",
@@ -142,11 +142,11 @@
       "departureTime": "13:00",
       "day": 3,
       "distance": "2746.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:54",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "01:40",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "ERS",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2939.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:54",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "01:40",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MAO"
     }
   ],
-  "summary": "Reservation chart preparation times for Nzm Ers Duronto (12284) from NZM to ERS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-08-03T00:59:52.406Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Nzm Ers Duronto (12284) is prepared at Madgaon (MAO) around 3:54 PM, with a second (vacancy) chart around 1:40 AM. 4 of 12 stations on the NZM to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:29:30.238Z",
+  "knownChartCount": 4
 }

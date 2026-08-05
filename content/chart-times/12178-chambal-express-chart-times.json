@@ -363,11 +363,11 @@
       "departureTime": "00:35",
       "day": 2,
       "distance": "1076.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "PNME",
@@ -376,11 +376,11 @@
       "departureTime": "01:21",
       "day": 2,
       "distance": "1151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "GMO",
@@ -389,11 +389,11 @@
       "departureTime": "01:45",
       "day": 2,
       "distance": "1169.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DHN",
@@ -402,11 +402,11 @@
       "departureTime": "02:30",
       "day": 2,
       "distance": "1199.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "ASN",
@@ -415,11 +415,11 @@
       "departureTime": "03:43",
       "day": 2,
       "distance": "1257.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DGR",
@@ -428,11 +428,11 @@
       "departureTime": "04:22",
       "day": 2,
       "distance": "1300.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "BWN",
@@ -441,11 +441,11 @@
       "departureTime": "05:14",
       "day": 2,
       "distance": "1363.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "HWH",
@@ -454,14 +454,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1457.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "Reservation chart preparation times for Chambal Express (12178) from MTJ to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 35 stations.",
-  "generatedAt": "2026-08-03T00:40:12.760Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Chambal Express (12178) is prepared at Koderma Jn (KQR) around 3:15 PM, with a second (vacancy) chart around 9:42 PM. 8 of 35 stations on the MTJ to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:28:01.856Z",
+  "knownChartCount": 8
 }

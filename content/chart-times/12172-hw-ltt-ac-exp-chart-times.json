@@ -103,10 +103,10 @@
       "departureTime": "07:50",
       "day": 2,
       "distance": "944.0",
-      "chartTimeLocal": "19:34",
+      "chartTimeLocal": "19:17",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BPL"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "12:25",
       "day": 2,
       "distance": "1219.0",
-      "chartTimeLocal": "19:34",
+      "chartTimeLocal": "19:17",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BPL"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "14:20",
       "day": 2,
       "distance": "1343.0",
-      "chartTimeLocal": "19:34",
+      "chartTimeLocal": "19:17",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "07:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BPL"
     },
     {
@@ -142,11 +142,11 @@
       "departureTime": "17:35",
       "day": 2,
       "distance": "1600.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NK"
     },
     {
       "stationCode": "KYN",
@@ -155,11 +155,11 @@
       "departureTime": "20:25",
       "day": 2,
       "distance": "1734.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NK"
     },
     {
       "stationCode": "LTT",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1771.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NK"
     }
   ],
-  "summary": "The first reservation chart for Hw Ltt Ac Exp (12172) is prepared at Haridwar Jn (HW) around 7:48 AM, with a second (vacancy) chart around 5:05 PM. 10 of 13 stations on the HW to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:21:07.328Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Hw Ltt Ac Exp (12172) is prepared at Haridwar Jn (HW) around 7:48 AM, with a second (vacancy) chart around 5:05 PM. 13 of 13 stations on the HW to LTT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:27:49.085Z",
+  "knownChartCount": 13
 }

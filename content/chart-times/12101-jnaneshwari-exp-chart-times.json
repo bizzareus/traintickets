@@ -77,10 +77,10 @@
       "departureTime": "09:40",
       "day": 2,
       "distance": "821.0",
-      "chartTimeLocal": "20:10",
+      "chartTimeLocal": "19:27",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NGP"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "11:20",
       "day": 2,
       "distance": "951.0",
-      "chartTimeLocal": "20:10",
+      "chartTimeLocal": "19:27",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NGP"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "12:42",
       "day": 2,
       "distance": "1056.0",
-      "chartTimeLocal": "20:10",
+      "chartTimeLocal": "19:27",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NGP"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "13:35",
       "day": 2,
       "distance": "1087.0",
-      "chartTimeLocal": "20:10",
+      "chartTimeLocal": "19:27",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NGP"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "14:15",
       "day": 2,
       "distance": "1124.0",
-      "chartTimeLocal": "21:55",
+      "chartTimeLocal": "21:47",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "R"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "16:20",
       "day": 2,
       "distance": "1234.0",
-      "chartTimeLocal": "21:55",
+      "chartTimeLocal": "21:47",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "R"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "19:17",
       "day": 2,
       "distance": "1438.0",
-      "chartTimeLocal": "21:55",
+      "chartTimeLocal": "21:47",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "R"
     },
     {
@@ -168,11 +168,11 @@
       "departureTime": "20:50",
       "day": 2,
       "distance": "1539.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:45",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "CKP",
@@ -181,11 +181,11 @@
       "departureTime": "22:20",
       "day": 2,
       "distance": "1640.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:45",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "TATA",
@@ -194,11 +194,11 @@
       "departureTime": "23:20",
       "day": 2,
       "distance": "1703.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:45",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "KGP",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "ROU"
     }
   ],
-  "summary": "The first reservation chart for Jnaneshwari Exp (12101) is prepared at Lokmanyatilak T (LTT) around 10:59 AM, with a second (vacancy) chart around 8:05 PM. 15 of 18 stations on the LTT to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:08:01.305Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Jnaneshwari Exp (12101) is prepared at Lokmanyatilak T (LTT) around 10:59 AM, with a second (vacancy) chart around 8:05 PM. 18 of 18 stations on the LTT to SHM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:26:49.918Z",
+  "knownChartCount": 18
 }

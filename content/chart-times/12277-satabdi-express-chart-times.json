@@ -25,10 +25,10 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "116.0",
-      "chartTimeLocal": "18:53",
+      "chartTimeLocal": "18:52",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "HWH"
     },
     {
@@ -38,11 +38,11 @@
       "departureTime": "17:20",
       "day": 1,
       "distance": "234.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BLS"
     },
     {
       "stationCode": "BHC",
@@ -51,11 +51,11 @@
       "departureTime": "18:12",
       "day": 1,
       "distance": "296.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BLS"
     },
     {
       "stationCode": "JJKR",
@@ -64,11 +64,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "340.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BLS"
     },
     {
       "stationCode": "CTC",
@@ -77,11 +77,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "412.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BLS"
     },
     {
       "stationCode": "BBS",
@@ -90,11 +90,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "439.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BLS"
     },
     {
       "stationCode": "PURI",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "502.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BLS"
     }
   ],
-  "summary": "The first reservation chart for Satabdi Express (12277) is prepared at Howrah Jn (HWH) around 6:53 PM. 2 of 8 stations on the HWH to PURI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:57:33.427Z",
-  "knownChartCount": 2
+  "summary": "The first reservation chart for Satabdi Express (12277) is prepared at Howrah Jn (HWH) around 6:53 PM. 8 of 8 stations on the HWH to PURI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:29:22.956Z",
+  "knownChartCount": 8
 }

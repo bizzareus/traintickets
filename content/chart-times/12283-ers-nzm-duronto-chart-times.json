@@ -25,11 +25,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "MAJN",
@@ -38,11 +38,11 @@
       "departureTime": "06:05",
       "day": 2,
       "distance": "415.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "MAO",
@@ -51,11 +51,11 @@
       "departureTime": "12:00",
       "day": 2,
       "distance": "846.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "RN",
@@ -64,11 +64,11 @@
       "departureTime": "17:15",
       "day": 2,
       "distance": "1180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "PNVL",
@@ -77,11 +77,11 @@
       "departureTime": "21:40",
       "day": 2,
       "distance": "1543.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:39",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "BSR",
@@ -162,7 +162,7 @@
       "chartRemoteStation": "PNVL"
     }
   ],
-  "summary": "The first reservation chart for Ers Nzm Duronto (12283) is prepared at Ernakulam Jn (ERS) around 1:30 PM, with a second (vacancy) chart around 11:10 PM. 7 of 12 stations on the ERS to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:58:35.341Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Ers Nzm Duronto (12283) is prepared at Ernakulam Jn (ERS) around 1:30 PM, with a second (vacancy) chart around 11:10 PM. 12 of 12 stations on the ERS to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:29:24.759Z",
+  "knownChartCount": 12
 }

@@ -272,11 +272,11 @@
       "departureTime": "01:55",
       "day": 3,
       "distance": "1908.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "KYN",
@@ -285,11 +285,11 @@
       "departureTime": "04:25",
       "day": 3,
       "distance": "2042.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "LTT",
@@ -298,14 +298,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2079.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "The first reservation chart for Samarsata Exp (12152) is prepared at Shalimar (SHM) around 8:56 AM, with a second (vacancy) chart around 10:01 PM. 20 of 23 stations on the SHM to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:19:02.181Z",
-  "knownChartCount": 20
+  "summary": "The first reservation chart for Samarsata Exp (12152) is prepared at Shalimar (SHM) around 8:56 AM, with a second (vacancy) chart around 10:01 PM. 23 of 23 stations on the SHM to LTT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:27:39.868Z",
+  "knownChartCount": 23
 }

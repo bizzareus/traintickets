@@ -131,8 +131,8 @@
       "distance": "1180.0",
       "chartTimeLocal": "20:06",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "MAJN"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "1227.0",
       "chartTimeLocal": "20:06",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "MAJN"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "12:20",
       "day": 2,
       "distance": "1313.0",
-      "chartTimeLocal": "20:45",
+      "chartTimeLocal": "22:55",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CAN"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "13:55",
       "day": 2,
       "distance": "1402.0",
-      "chartTimeLocal": "20:45",
+      "chartTimeLocal": "22:55",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CAN"
     },
     {
@@ -181,10 +181,10 @@
       "departureTime": "14:30",
       "day": 2,
       "distance": "1443.0",
-      "chartTimeLocal": "20:45",
+      "chartTimeLocal": "22:55",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CAN"
     },
     {
@@ -194,10 +194,10 @@
       "departureTime": "15:35",
       "day": 2,
       "distance": "1488.0",
-      "chartTimeLocal": "20:45",
+      "chartTimeLocal": "22:55",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CAN"
     },
     {
@@ -207,10 +207,10 @@
       "departureTime": "16:20",
       "day": 2,
       "distance": "1521.0",
-      "chartTimeLocal": "20:45",
+      "chartTimeLocal": "22:55",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CAN"
     },
     {
@@ -220,11 +220,11 @@
       "departureTime": "17:40",
       "day": 2,
       "distance": "1592.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ERN"
     },
     {
       "stationCode": "KTYM",
@@ -233,11 +233,11 @@
       "departureTime": "18:40",
       "day": 2,
       "distance": "1655.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ERN"
     },
     {
       "stationCode": "CGY",
@@ -246,11 +246,11 @@
       "departureTime": "18:57",
       "day": 2,
       "distance": "1672.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ERN"
     },
     {
       "stationCode": "TRVL",
@@ -259,11 +259,11 @@
       "departureTime": "19:07",
       "day": 2,
       "distance": "1680.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ERN"
     },
     {
       "stationCode": "CNGR",
@@ -272,11 +272,11 @@
       "departureTime": "19:19",
       "day": 2,
       "distance": "1689.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ERN"
     },
     {
       "stationCode": "KYJ",
@@ -285,11 +285,11 @@
       "departureTime": "19:42",
       "day": 2,
       "distance": "1710.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ERN"
     },
     {
       "stationCode": "QLN",
@@ -298,11 +298,11 @@
       "departureTime": "20:30",
       "day": 2,
       "distance": "1750.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ERN"
     },
     {
       "stationCode": "TVCN",
@@ -311,14 +311,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1809.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ERN"
     }
   ],
-  "summary": "The first reservation chart for Tvcn Garibrath (12201) is prepared at Lokmanyatilak T (LTT) around 7:21 AM, with a second (vacancy) chart around 4:17 PM. 16 of 24 stations on the LTT to TVCN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:43:04.605Z",
-  "knownChartCount": 16
+  "summary": "The first reservation chart for Tvcn Garibrath (12201) is prepared at Lokmanyatilak T (LTT) around 7:21 AM, with a second (vacancy) chart around 4:17 PM. 24 of 24 stations on the LTT to TVCN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:28:16.050Z",
+  "knownChartCount": 24
 }

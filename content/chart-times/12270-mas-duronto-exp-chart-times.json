@@ -51,11 +51,11 @@
       "departureTime": "00:20",
       "day": 2,
       "distance": "700.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "NGP",
@@ -64,11 +64,11 @@
       "departureTime": "05:40",
       "day": 2,
       "distance": "1083.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPQ",
@@ -77,11 +77,11 @@
       "departureTime": "08:35",
       "day": 2,
       "distance": "1294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPQ"
     },
     {
       "stationCode": "BZA",
@@ -90,11 +90,11 @@
       "departureTime": "14:30",
       "day": 2,
       "distance": "1744.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:46",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "14:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "MAS",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "2174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:46",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "14:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Mas Duronto Exp (12270) is prepared at H Nizamuddin (NZM) around 7:55 AM, with a second (vacancy) chart around 3:40 PM. 1 of 8 stations on the NZM to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:56:44.415Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Mas Duronto Exp (12270) is prepared at H Nizamuddin (NZM) around 7:55 AM, with a second (vacancy) chart around 3:40 PM. 6 of 8 stations on the NZM to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:29:18.704Z",
+  "knownChartCount": 6
 }

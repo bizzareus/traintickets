@@ -12,11 +12,11 @@
       "departureTime": "06:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:06",
+      "chartTimeLocal": "20:44",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "JBP"
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "MML",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Jbp Ypr Exp (12194) is prepared at Jabalpur (JBP) around 8:06 PM. 9 of 19 stations on the JBP to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:42:32.333Z",
+  "summary": "The first reservation chart for Jbp Ypr Exp (12194) is prepared at Jabalpur (JBP) around 8:44 PM. 9 of 19 stations on the JBP to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:28:13.309Z",
   "knownChartCount": 9
 }

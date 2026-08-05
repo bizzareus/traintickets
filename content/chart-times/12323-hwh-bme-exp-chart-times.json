@@ -116,10 +116,10 @@
       "departureTime": "09:15",
       "day": 2,
       "distance": "997.0",
-      "chartTimeLocal": "20:53",
+      "chartTimeLocal": "20:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CNB"
     },
     {
@@ -129,11 +129,11 @@
       "departureTime": "15:30",
       "day": 2,
       "distance": "1432.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "RE",
@@ -142,11 +142,11 @@
       "departureTime": "17:20",
       "day": 2,
       "distance": "1514.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "MHRG",
@@ -155,11 +155,11 @@
       "departureTime": "18:02",
       "day": 2,
       "distance": "1564.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "LHU",
@@ -168,11 +168,11 @@
       "departureTime": "18:53",
       "day": 2,
       "distance": "1605.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "SDLP",
@@ -181,11 +181,11 @@
       "departureTime": "19:55",
       "day": 2,
       "distance": "1655.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "CUR",
@@ -194,11 +194,11 @@
       "departureTime": "20:45",
       "day": 2,
       "distance": "1713.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CUR"
     },
     {
       "stationCode": "RTGH",
@@ -207,11 +207,11 @@
       "departureTime": "21:55",
       "day": 2,
       "distance": "1756.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CUR"
     },
     {
       "stationCode": "SUJH",
@@ -220,11 +220,11 @@
       "departureTime": "22:38",
       "day": 2,
       "distance": "1801.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CUR"
     },
     {
       "stationCode": "LAU",
@@ -233,11 +233,11 @@
       "departureTime": "22:51",
       "day": 2,
       "distance": "1811.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CUR"
     },
     {
       "stationCode": "DIA",
@@ -246,11 +246,11 @@
       "departureTime": "23:17",
       "day": 2,
       "distance": "1842.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CUR"
     },
     {
       "stationCode": "CTKT",
@@ -259,11 +259,11 @@
       "departureTime": "23:50",
       "day": 2,
       "distance": "1878.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CUR"
     },
     {
       "stationCode": "DNA",
@@ -344,7 +344,7 @@
       "chartRemoteStation": "CUR"
     }
   ],
-  "summary": "The first reservation chart for Hwh Bme Exp (12323) is prepared at Howrah Jn (HWH) around 8:51 AM, with a second (vacancy) chart around 6:35 PM. 15 of 26 stations on the HWH to BME route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T01:08:55.765Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Hwh Bme Exp (12323) is prepared at Howrah Jn (HWH) around 8:51 AM, with a second (vacancy) chart around 6:35 PM. 26 of 26 stations on the HWH to BME route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:30:20.133Z",
+  "knownChartCount": 26
 }

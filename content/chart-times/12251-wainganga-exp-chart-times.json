@@ -90,10 +90,10 @@
       "departureTime": "10:40",
       "day": 2,
       "distance": "610.0",
-      "chartTimeLocal": "20:46",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "KCG"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "13:10",
       "day": 2,
       "distance": "748.0",
-      "chartTimeLocal": "20:46",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "KCG"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "17:25",
       "day": 2,
       "distance": "983.0",
-      "chartTimeLocal": "20:46",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "KCG"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "17:42",
       "day": 2,
       "distance": "994.0",
-      "chartTimeLocal": "20:46",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "KCG"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "19:12",
       "day": 2,
       "distance": "1129.0",
-      "chartTimeLocal": "20:46",
+      "chartTimeLocal": "20:07",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "KCG"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "21:05",
       "day": 2,
       "distance": "1232.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:09",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "G"
     },
     {
       "stationCode": "DGG",
@@ -168,11 +168,11 @@
       "departureTime": "22:00",
       "day": 2,
       "distance": "1305.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:09",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "G"
     },
     {
       "stationCode": "RJN",
@@ -181,11 +181,11 @@
       "departureTime": "22:30",
       "day": 2,
       "distance": "1337.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:09",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "G"
     },
     {
       "stationCode": "DURG",
@@ -194,11 +194,11 @@
       "departureTime": "23:30",
       "day": 2,
       "distance": "1368.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:09",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "G"
     },
     {
       "stationCode": "R",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "G"
     }
   ],
-  "summary": "The first reservation chart for Wainganga Exp (12251) is prepared at Yesvantpur Jn (YPR) around 1:47 PM, with a second (vacancy) chart around 11:25 PM. 18 of 22 stations on the YPR to KRBA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:55:24.236Z",
-  "knownChartCount": 18
+  "summary": "The first reservation chart for Wainganga Exp (12251) is prepared at Yesvantpur Jn (YPR) around 1:47 PM, with a second (vacancy) chart around 11:25 PM. 22 of 22 stations on the YPR to KRBA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:29:10.881Z",
+  "knownChartCount": 22
 }

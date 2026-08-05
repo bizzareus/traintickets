@@ -103,11 +103,11 @@
       "departureTime": "00:06",
       "day": 2,
       "distance": "224.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGM"
     },
     {
       "stationCode": "LJN",
@@ -116,11 +116,11 @@
       "departureTime": "03:05",
       "day": 2,
       "distance": "388.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGM"
     },
     {
       "stationCode": "CNB",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "462.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGM"
     }
   ],
-  "summary": "Reservation chart preparation times for Cnb Garibrath (12210) from KGM to CNB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-08-03T00:47:17.087Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Cnb Garibrath (12210) is prepared at Shahjehanpur (SPN) around 9:14 AM, with a second (vacancy) chart around 6 PM. 3 of 10 stations on the KGM to CNB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:28:35.104Z",
+  "knownChartCount": 3
 }

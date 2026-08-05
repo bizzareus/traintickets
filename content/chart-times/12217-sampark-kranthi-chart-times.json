@@ -194,11 +194,11 @@
       "departureTime": "04:55",
       "day": 2,
       "distance": "1379.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "ROHA",
@@ -207,11 +207,11 @@
       "departureTime": "09:17",
       "day": 2,
       "distance": "1665.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "PNVL",
@@ -220,11 +220,11 @@
       "departureTime": "10:35",
       "day": 2,
       "distance": "1742.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "BSR",
@@ -233,11 +233,11 @@
       "departureTime": "12:40",
       "day": 2,
       "distance": "1809.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "ST",
@@ -246,11 +246,11 @@
       "departureTime": "15:28",
       "day": 2,
       "distance": "2024.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "BRC",
@@ -259,11 +259,11 @@
       "departureTime": "17:12",
       "day": 2,
       "distance": "2153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "RTM",
@@ -272,11 +272,11 @@
       "departureTime": "20:53",
       "day": 2,
       "distance": "2415.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "KOTA",
@@ -285,11 +285,11 @@
       "departureTime": "23:55",
       "day": 2,
       "distance": "2681.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:37",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:22",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "NZM",
@@ -298,11 +298,11 @@
       "departureTime": "05:35",
       "day": 3,
       "distance": "3138.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:37",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:22",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "NDLS",
@@ -311,11 +311,11 @@
       "departureTime": "06:25",
       "day": 3,
       "distance": "3145.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:37",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:22",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "UMB",
@@ -324,11 +324,11 @@
       "departureTime": "09:10",
       "day": 3,
       "distance": "3344.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:37",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:22",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "CDG",
@@ -337,14 +337,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "3411.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:37",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:22",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "The first reservation chart for Sampark Kranthi (12217) is prepared at TRIVANDRUMNORTH (TVCN) around 6:58 PM, with a second (vacancy) chart around 4:35 AM. 11 of 26 stations on the TVCN to CDG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:49:53.978Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Sampark Kranthi (12217) is prepared at TRIVANDRUMNORTH (TVCN) around 6:58 PM, with a second (vacancy) chart around 4:35 AM. 23 of 26 stations on the TVCN to CDG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:28:46.442Z",
+  "knownChartCount": 23
 }

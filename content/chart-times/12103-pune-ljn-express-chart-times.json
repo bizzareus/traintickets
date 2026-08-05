@@ -90,11 +90,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "799.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "BPL",
@@ -103,11 +103,11 @@
       "departureTime": "03:35",
       "day": 2,
       "distance": "897.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "BINA",
@@ -116,11 +116,11 @@
       "departureTime": "05:35",
       "day": 2,
       "distance": "1035.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "VGLJ",
@@ -129,11 +129,11 @@
       "departureTime": "07:53",
       "day": 2,
       "distance": "1188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:38",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "ORAI",
@@ -142,11 +142,11 @@
       "departureTime": "09:10",
       "day": 2,
       "distance": "1302.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:38",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "PHN",
@@ -155,11 +155,11 @@
       "departureTime": "09:49",
       "day": 2,
       "distance": "1349.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:38",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "CNB",
@@ -168,11 +168,11 @@
       "departureTime": "11:35",
       "day": 2,
       "distance": "1409.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:38",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "LJN",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1482.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:38",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     }
   ],
-  "summary": "The first reservation chart for Pune Ljn Express (12103) is prepared at Pune Jn (PUNE) around 8:38 PM, with a second (vacancy) chart around 11:05 AM. 1 of 14 stations on the PUNE to LJN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:08:34.127Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Pune Ljn Express (12103) is prepared at Pune Jn (PUNE) around 8:38 PM, with a second (vacancy) chart around 11:05 AM. 9 of 14 stations on the PUNE to LJN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:26:59.611Z",
+  "knownChartCount": 9
 }

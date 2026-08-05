@@ -12,11 +12,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:03",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GWL"
+      "chartRemoteStation": "BNDA"
     },
     {
       "stationCode": "DBA",
@@ -311,11 +311,11 @@
       "departureTime": "00:35",
       "day": 2,
       "distance": "904.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "PNME",
@@ -324,11 +324,11 @@
       "departureTime": "01:21",
       "day": 2,
       "distance": "979.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "GMO",
@@ -337,11 +337,11 @@
       "departureTime": "01:45",
       "day": 2,
       "distance": "997.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DHN",
@@ -350,11 +350,11 @@
       "departureTime": "02:30",
       "day": 2,
       "distance": "1026.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "ASN",
@@ -363,11 +363,11 @@
       "departureTime": "03:43",
       "day": 2,
       "distance": "1085.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DGR",
@@ -376,11 +376,11 @@
       "departureTime": "04:22",
       "day": 2,
       "distance": "1127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "BWN",
@@ -389,11 +389,11 @@
       "departureTime": "05:14",
       "day": 2,
       "distance": "1191.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "HWH",
@@ -402,14 +402,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1285.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "The first reservation chart for Chambal Express (12176) is prepared at Gwalior (GWL) around 9:03 PM. 14 of 31 stations on the GWL to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:23:07.967Z",
-  "knownChartCount": 14
+  "summary": "The first reservation chart for Chambal Express (12176) is prepared at Gwalior (GWL) around 9:09 PM. 22 of 31 stations on the GWL to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:27:54.789Z",
+  "knownChartCount": 22
 }

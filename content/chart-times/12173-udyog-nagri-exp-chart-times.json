@@ -77,11 +77,11 @@
       "departureTime": "05:45",
       "day": 2,
       "distance": "834.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:02",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "VGLJ",
@@ -90,11 +90,11 @@
       "departureTime": "09:43",
       "day": 2,
       "distance": "1125.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "ORAI",
@@ -103,11 +103,11 @@
       "departureTime": "11:00",
       "day": 2,
       "distance": "1239.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "PHN",
@@ -116,11 +116,11 @@
       "departureTime": "11:34",
       "day": 2,
       "distance": "1287.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "CNB",
@@ -129,11 +129,11 @@
       "departureTime": "13:45",
       "day": 2,
       "distance": "1346.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "LKO",
@@ -142,11 +142,11 @@
       "departureTime": "15:40",
       "day": 2,
       "distance": "1420.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "RBL",
@@ -155,11 +155,11 @@
       "departureTime": "16:58",
       "day": 2,
       "distance": "1498.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "AME",
@@ -168,11 +168,11 @@
       "departureTime": "17:48",
       "day": 2,
       "distance": "1558.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "MBDP",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1593.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VGLJ"
     }
   ],
-  "summary": "The first reservation chart for Udyog Nagri Exp (12173) is prepared at Lokmanyatilak T (LTT) around 7:37 AM, with a second (vacancy) chart around 3:55 PM. 1 of 14 stations on the LTT to MBDP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:21:39.483Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Udyog Nagri Exp (12173) is prepared at Lokmanyatilak T (LTT) around 7:37 AM, with a second (vacancy) chart around 3:55 PM. 10 of 14 stations on the LTT to MBDP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:27:51.439Z",
+  "knownChartCount": 10
 }

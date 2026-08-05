@@ -194,11 +194,11 @@
       "departureTime": "02:25",
       "day": 2,
       "distance": "1385.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GOY"
     },
     {
       "stationCode": "PNBE",
@@ -207,11 +207,11 @@
       "departureTime": "05:20",
       "day": 2,
       "distance": "1597.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GOY"
     },
     {
       "stationCode": "JAJ",
@@ -220,11 +220,11 @@
       "departureTime": "08:55",
       "day": 2,
       "distance": "1774.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GOY"
     },
     {
       "stationCode": "JSME",
@@ -233,11 +233,11 @@
       "departureTime": "09:27",
       "day": 2,
       "distance": "1818.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GOY"
     },
     {
       "stationCode": "MDP",
@@ -246,11 +246,11 @@
       "departureTime": "09:49",
       "day": 2,
       "distance": "1847.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GOY"
     },
     {
       "stationCode": "ASN",
@@ -259,11 +259,11 @@
       "departureTime": "11:11",
       "day": 2,
       "distance": "1928.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GOY"
     },
     {
       "stationCode": "BWN",
@@ -272,11 +272,11 @@
       "departureTime": "12:51",
       "day": 2,
       "distance": "2033.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GOY"
     },
     {
       "stationCode": "KOAA",
@@ -285,14 +285,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "2130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GOY"
     }
   ],
-  "summary": "Reservation chart preparation times for Ananya Exp (12316) from UDZ to KOAA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 22 stations.",
-  "generatedAt": "2026-08-03T01:08:08.714Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ananya Exp (12316) is prepared at Dd Upadhyaya Jn (DDU) around 9:26 AM, with a second (vacancy) chart around 7:10 PM. 8 of 22 stations on the UDZ to KOAA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:30:10.700Z",
+  "knownChartCount": 8
 }

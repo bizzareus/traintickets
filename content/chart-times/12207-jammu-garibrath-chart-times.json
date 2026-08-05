@@ -116,11 +116,11 @@
       "departureTime": "01:05",
       "day": 2,
       "distance": "310.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "YJUD",
@@ -129,11 +129,11 @@
       "departureTime": "01:33",
       "day": 2,
       "distance": "340.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "UMB",
@@ -142,11 +142,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "391.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "LDH",
@@ -155,11 +155,11 @@
       "departureTime": "04:26",
       "day": 2,
       "distance": "504.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "JRC",
@@ -168,11 +168,11 @@
       "departureTime": "05:28",
       "day": 2,
       "distance": "557.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "PTKC",
@@ -181,11 +181,11 @@
       "departureTime": "07:20",
       "day": 2,
       "distance": "670.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "JAT",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "769.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MB"
     }
   ],
-  "summary": "The first reservation chart for Jammu Garibrath (12207) is prepared at Kathgodam (KGM) around 8:56 AM, with a second (vacancy) chart around 6 PM. 1 of 15 stations on the KGM to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:44:08.843Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Jammu Garibrath (12207) is prepared at Kathgodam (KGM) around 8:56 AM, with a second (vacancy) chart around 6 PM. 8 of 15 stations on the KGM to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:28:20.807Z",
+  "knownChartCount": 8
 }

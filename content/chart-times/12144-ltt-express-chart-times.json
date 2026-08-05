@@ -142,11 +142,11 @@
       "departureTime": "00:10",
       "day": 2,
       "distance": "1124.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNW"
     },
     {
       "stationCode": "MMR",
@@ -155,11 +155,11 @@
       "departureTime": "02:27",
       "day": 2,
       "distance": "1308.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNW"
     },
     {
       "stationCode": "NK",
@@ -168,11 +168,11 @@
       "departureTime": "03:30",
       "day": 2,
       "distance": "1381.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNW"
     },
     {
       "stationCode": "LTT",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1553.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNW"
     }
   ],
-  "summary": "The first reservation chart for Ltt Express (12144) is prepared at Sultanpur (SLN) around 7:11 PM, with a second (vacancy) chart around 3:50 AM. 1 of 14 stations on the SLN to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T00:10:25.734Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Ltt Express (12144) is prepared at Sultanpur (SLN) around 7:11 PM, with a second (vacancy) chart around 3:50 AM. 5 of 14 stations on the SLN to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:27:01.163Z",
+  "knownChartCount": 5
 }
