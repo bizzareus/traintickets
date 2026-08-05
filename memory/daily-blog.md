@@ -103,6 +103,10 @@ from either tool, use those instead of/in addition to the live pages.
   `irctc password reset`, `... share price`, `redbus`) — no content play. Keep genuine
   informational/product queries (a new app, a rule change, a scheme, a train).
 
+**C. Google News (Topic Stream)** — breaking news and policy changes:
+- Open the Google News Indian Railways topic page at `https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHZNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen` to scan current headlines, IRCTC press releases, fare/refund policy changes, new train launches, or passenger advisories.
+- Evaluate whether any new news story is relevant to travellers, figure out the practical takeaway (how it affects bookings, Tatkal, waitlists, or station rules), and convert it into a new post or an update to an existing guide.
+
 **Merge the two:** GSC tells you where you're already close (highest ROI); Trends tells you
 what's surging now. Cross-reference — a query that's both rising on Trends AND sitting at GSC
 position 5–20 is the top priority. Filter out navigational/brand/stock/competitor terms

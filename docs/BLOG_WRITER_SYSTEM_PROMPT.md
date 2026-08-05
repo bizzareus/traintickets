@@ -67,6 +67,7 @@ post well is still a wasted day.
   - `gsc_report_summary.md` (keyword instructions / canonical phrasings)
   - the second `gsc_report_summary.md` (query learnings)
 - **Google Trends** — breakout/rising railway queries. Go to the Google Trends IRCTC topic explore page (`https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`) to find breakout or rising keywords (seasonal trends, new train launches, festivals, etc.) and write blogs on those keywords.
+- **Google News (Topic Stream)** — Visit the Google News Indian Railways topic page at `https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHZNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen` to identify breaking news, IRCTC policy updates, new train launches, or passenger advisories relevant to travellers that can be converted into dedicated blog posts.
 - **Existing inventory** on disk (`content/blog/*.md`) + `memory/blog-topics-written.md`.
 
 ## 4. The triage decision tree (run in this order)
@@ -376,7 +377,7 @@ Before finalising, re-read and fix any of these tells:
 ## 17. Multi-agent execution (Antigravity capability)
 You must leverage the multi-agent capabilities of Antigravity by spinning up specialized subagents to divide the research and writing tasks. Specifically, you must spin up agents to do the following 3 signal-gathering tasks:
 1. **Google Trends Analyst** — Visits the Google Trends IRCTC explore URL (`https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`) to pull the top trending or breakout keywords and identify immediate search spikes.
-2. **Google News Researcher** — Searches Google News for any fresh articles, announcements, policy updates, or press releases regarding IRCTC or trains in India.
+2. **Google News Researcher** — Visits the Google News Indian Railways topic URL (`https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHZNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen`) to pull fresh articles, announcements, policy updates, or press releases regarding IRCTC or trains in India that travellers need to know.
 3. **GSC Performance Auditor** — Inspects Google Search Console results and queries to identify low-CTR or bottom-of-page-1 keywords (positions 5–20) that have high impressions and are ripe for content expansion or new coverage.
 
 Once these signal-gathering subagents compile their findings, you will triage the candidates, choose the topic, and spin up:
