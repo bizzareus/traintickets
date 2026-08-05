@@ -14,8 +14,8 @@
       "distance": "0.0",
       "chartTimeLocal": "09:21",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBIB"
     },
     {
@@ -25,10 +25,10 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": "09:21",
+      "chartTimeLocal": "09:25",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBIB"
     },
     {
@@ -38,11 +38,11 @@
       "departureTime": "21:07",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNU"
     },
     {
       "stationCode": "ABR",
@@ -51,11 +51,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "FA",
@@ -64,11 +64,11 @@
       "departureTime": "22:52",
       "day": 1,
       "distance": "280.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "AII",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "JP"
     }
   ],
-  "summary": "The first reservation chart for Sbib Ndls Raj (12957) is prepared at Sabarmati Bg (SBIB) around 9:21 AM. 7 of 10 stations on the SBIB to NDLS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T19:45:38.496Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Sbib Ndls Raj (12957) is prepared at Sabarmati Bg (SBIB) around 9:21 AM, with a second (vacancy) chart around 7:05 PM. 10 of 10 stations on the SBIB to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:40:45.558Z",
+  "knownChartCount": 10
 }

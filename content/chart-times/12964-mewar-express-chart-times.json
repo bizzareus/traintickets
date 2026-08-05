@@ -14,8 +14,8 @@
       "distance": "0.0",
       "chartTimeLocal": "10:30",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "UDZ"
     },
     {
@@ -27,8 +27,8 @@
       "distance": "5.0",
       "chartTimeLocal": "10:30",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "UDZ"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "43.0",
       "chartTimeLocal": "10:30",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "UDZ"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "79.0",
       "chartTimeLocal": "10:30",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "UDZ"
     },
     {
@@ -64,11 +64,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "MLGH",
@@ -77,11 +77,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "BUDI",
@@ -90,11 +90,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "248.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "KOTA",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "The first reservation chart for Mewar Express (12964) is prepared at Udaipur City (UDZ) around 10:30 AM. 15 of 18 stations on the UDZ to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T19:50:17.967Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Mewar Express (12964) is prepared at Udaipur City (UDZ) around 10:30 AM, with a second (vacancy) chart around 6:15 PM. 18 of 18 stations on the UDZ to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:41:00.126Z",
+  "knownChartCount": 18
 }

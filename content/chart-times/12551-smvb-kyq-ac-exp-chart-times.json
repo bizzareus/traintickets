@@ -259,11 +259,11 @@
       "departureTime": "02:00",
       "day": 3,
       "distance": "2370.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "BOE",
@@ -272,11 +272,11 @@
       "departureTime": "03:12",
       "day": 3,
       "distance": "2458.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "KNE",
@@ -285,11 +285,11 @@
       "departureTime": "03:57",
       "day": 3,
       "distance": "2515.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "NJP",
@@ -298,11 +298,11 @@
       "departureTime": "05:45",
       "day": 3,
       "distance": "2602.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "FLK",
@@ -311,11 +311,11 @@
       "departureTime": "07:35",
       "day": 3,
       "distance": "2690.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "NCB",
@@ -324,11 +324,11 @@
       "departureTime": "08:05",
       "day": 3,
       "distance": "2729.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "NOQ",
@@ -337,11 +337,11 @@
       "departureTime": "08:25",
       "day": 3,
       "distance": "2747.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "NBQ",
@@ -350,11 +350,11 @@
       "departureTime": "10:15",
       "day": 3,
       "distance": "2854.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "RNY",
@@ -363,11 +363,11 @@
       "departureTime": "11:53",
       "day": 3,
       "distance": "2963.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "KYQ",
@@ -376,14 +376,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "3004.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:41",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ASN"
     }
   ],
-  "summary": "The first reservation chart for Smvb Kyq Ac Exp (12551) is prepared at Smvt Bengaluru (SMVB) around 9:25 PM. 5 of 29 stations on the SMVB to KYQ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T12:06:54.049Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Smvb Kyq Ac Exp (12551) is prepared at Smvt Bengaluru (SMVB) around 9:25 PM. 15 of 29 stations on the SMVB to KYQ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:34:14.716Z",
+  "knownChartCount": 15
 }

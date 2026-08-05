@@ -116,11 +116,11 @@
       "departureTime": "02:05",
       "day": 2,
       "distance": "726.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "SWM",
@@ -129,11 +129,11 @@
       "departureTime": "03:20",
       "day": 2,
       "distance": "834.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "BTE",
@@ -142,11 +142,11 @@
       "departureTime": "05:30",
       "day": 2,
       "distance": "1016.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BTE"
     },
     {
       "stationCode": "NZM",
@@ -155,11 +155,11 @@
       "departureTime": "08:50",
       "day": 2,
       "distance": "1183.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "GZB",
@@ -168,11 +168,11 @@
       "departureTime": "09:26",
       "day": 2,
       "distance": "1206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "MTC",
@@ -181,11 +181,11 @@
       "departureTime": "10:04",
       "day": 2,
       "distance": "1253.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "TPZ",
@@ -194,11 +194,11 @@
       "departureTime": "12:25",
       "day": 2,
       "distance": "1360.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "RK",
@@ -207,11 +207,11 @@
       "departureTime": "13:21",
       "day": 2,
       "distance": "1392.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "HW",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1433.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     }
   ],
-  "summary": "The first reservation chart for Bl Haridwar Exp (12911) is prepared at Valsad (BL) around 9:25 PM, with a second (vacancy) chart around 2:55 PM. 1 of 17 stations on the BL to HW route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T15:00:18.566Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Bl Haridwar Exp (12911) is prepared at Valsad (BL) around 9:25 PM, with a second (vacancy) chart around 2:55 PM. 10 of 17 stations on the BL to HW route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:39:13.588Z",
+  "knownChartCount": 10
 }

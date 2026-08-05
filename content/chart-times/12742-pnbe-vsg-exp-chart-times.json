@@ -233,11 +233,11 @@
       "departureTime": "02:04",
       "day": 3,
       "distance": "2280.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "THVM",
@@ -246,11 +246,11 @@
       "departureTime": "02:46",
       "day": 3,
       "distance": "2326.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "MAO",
@@ -259,11 +259,11 @@
       "departureTime": "04:15",
       "day": 3,
       "distance": "2390.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "VSG",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2418.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KYN"
     }
   ],
-  "summary": "The first reservation chart for Pnbe Vsg Exp (12742) is prepared at Patna Jn (PNBE) around 6:05 AM. 3 of 21 stations on the PNBE to VSG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T23:54:19.280Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Pnbe Vsg Exp (12742) is prepared at Patna Jn (PNBE) around 6:05 AM. 7 of 21 stations on the PNBE to VSG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:36:23.371Z",
+  "knownChartCount": 7
 }

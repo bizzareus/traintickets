@@ -116,11 +116,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "981.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "BE",
@@ -129,11 +129,11 @@
       "departureTime": "06:07",
       "day": 2,
       "distance": "1216.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "MB",
@@ -142,11 +142,11 @@
       "departureTime": "07:58",
       "day": 2,
       "distance": "1307.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:43",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "LRJ",
@@ -155,11 +155,11 @@
       "departureTime": "09:44",
       "day": 2,
       "distance": "1447.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:43",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "SRE",
@@ -168,11 +168,11 @@
       "departureTime": "11:30",
       "day": 2,
       "distance": "1500.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:43",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "UMB",
@@ -181,11 +181,11 @@
       "departureTime": "12:50",
       "day": 2,
       "distance": "1581.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:43",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "LDH",
@@ -194,11 +194,11 @@
       "departureTime": "14:33",
       "day": 2,
       "distance": "1694.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:43",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "JUC",
@@ -207,11 +207,11 @@
       "departureTime": "15:45",
       "day": 2,
       "distance": "1751.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:43",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "BEAS",
@@ -220,11 +220,11 @@
       "departureTime": "16:20",
       "day": 2,
       "distance": "1788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:43",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "ASR",
@@ -233,14 +233,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1830.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:43",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MB"
     }
   ],
-  "summary": "The first reservation chart for Durgiana Exp (12357) is prepared at Kolkata Chitpur (KOAA) around 8:32 PM. 6 of 18 stations on the KOAA to ASR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T01:27:28.939Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Durgiana Exp (12357) is prepared at Kolkata Chitpur (KOAA) around 8:32 PM. 16 of 18 stations on the KOAA to ASR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:31:40.440Z",
+  "knownChartCount": 16
 }

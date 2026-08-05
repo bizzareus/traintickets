@@ -116,11 +116,11 @@
       "departureTime": "03:40",
       "day": 2,
       "distance": "941.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:18",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "NZM",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1074.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:18",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "Reservation chart preparation times for Gujrat S Kranti (12917) from ADI to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-08-03T15:04:42.667Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gujrat S Kranti (12917) is prepared at Mathura Jn (MTJ) around 1:46 PM, with a second (vacancy) chart around 11:18 PM. 2 of 10 stations on the ADI to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:39:28.530Z",
+  "knownChartCount": 2
 }

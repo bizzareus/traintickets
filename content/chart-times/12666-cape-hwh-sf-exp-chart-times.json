@@ -389,14 +389,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2408.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     }
   ],
-  "summary": "The first reservation chart for Cape Hwh Sf Exp (12666) is prepared at Kanyakumari (CAPE) around 8:09 PM, with a second (vacancy) chart around 5:35 AM. 15 of 30 stations on the CAPE to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T21:44:24.582Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Cape Hwh Sf Exp (12666) is prepared at Kanyakumari (CAPE) around 8:09 PM, with a second (vacancy) chart around 5:35 AM. 16 of 30 stations on the CAPE to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:35:10.421Z",
+  "knownChartCount": 16
 }

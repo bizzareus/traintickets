@@ -337,11 +337,11 @@
       "departureTime": "00:50",
       "day": 2,
       "distance": "1177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:23",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "AGC",
@@ -350,11 +350,11 @@
       "departureTime": "02:20",
       "day": 2,
       "distance": "1295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:23",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "MTJ",
@@ -363,11 +363,11 @@
       "departureTime": "02:57",
       "day": 2,
       "distance": "1349.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:23",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "NZM",
@@ -376,14 +376,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1482.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:23",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     }
   ],
-  "summary": "The first reservation chart for Gondwana Express (12405) is prepared at Bhusaval Jn (BSL) around 8:58 PM, with a second (vacancy) chart around 5:45 AM. 1 of 29 stations on the BSL to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T01:44:40.313Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Gondwana Express (12405) is prepared at Bhusaval Jn (BSL) around 8:58 PM, with a second (vacancy) chart around 5:45 AM. 5 of 29 stations on the BSL to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:32:58.115Z",
+  "knownChartCount": 5
 }

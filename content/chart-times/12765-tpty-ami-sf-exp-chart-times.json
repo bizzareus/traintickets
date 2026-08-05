@@ -12,10 +12,10 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "05:55",
+      "chartTimeLocal": "05:46",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPTY"
     },
     {
@@ -129,11 +129,11 @@
       "departureTime": "00:26",
       "day": 2,
       "distance": "525.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "MBNR",
@@ -142,11 +142,11 @@
       "departureTime": "01:37",
       "day": 2,
       "distance": "599.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "KCG",
@@ -155,11 +155,11 @@
       "departureTime": "03:40",
       "day": 2,
       "distance": "705.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "KMC",
@@ -168,11 +168,11 @@
       "departureTime": "05:35",
       "day": 2,
       "distance": "819.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "NZB",
@@ -181,11 +181,11 @@
       "departureTime": "06:30",
       "day": 2,
       "distance": "871.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "DAB",
@@ -194,11 +194,11 @@
       "departureTime": "07:15",
       "day": 2,
       "distance": "910.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "MUE",
@@ -207,11 +207,11 @@
       "departureTime": "08:10",
       "day": 2,
       "distance": "959.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "NED",
@@ -220,11 +220,11 @@
       "departureTime": "08:40",
       "day": 2,
       "distance": "981.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "PAU",
@@ -233,11 +233,11 @@
       "departureTime": "09:40",
       "day": 2,
       "distance": "1012.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "BMF",
@@ -246,11 +246,11 @@
       "departureTime": "10:10",
       "day": 2,
       "distance": "1034.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "HNL",
@@ -259,11 +259,11 @@
       "departureTime": "11:00",
       "day": 2,
       "distance": "1092.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "WHM",
@@ -272,11 +272,11 @@
       "departureTime": "11:45",
       "day": 2,
       "distance": "1140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "AK",
@@ -285,11 +285,11 @@
       "departureTime": "13:45",
       "day": 2,
       "distance": "1219.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "BD",
@@ -298,11 +298,11 @@
       "departureTime": "14:45",
       "day": 2,
       "distance": "1297.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "AMI",
@@ -311,14 +311,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1307.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NED"
     }
   ],
-  "summary": "The first reservation chart for Tpty Ami Sf Exp (12765) is prepared at Tirupati (TPTY) around 5:55 AM. 9 of 24 stations on the TPTY to AMI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T13:51:47.949Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Tpty Ami Sf Exp (12765) is prepared at Tirupati (TPTY) around 5:46 AM, with a second (vacancy) chart around 3:30 PM. 24 of 24 stations on the TPTY to AMI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:36:41.779Z",
+  "knownChartCount": 24
 }

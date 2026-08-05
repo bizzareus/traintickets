@@ -168,11 +168,11 @@
       "departureTime": "01:40",
       "day": 2,
       "distance": "1344.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "KGP",
@@ -181,11 +181,11 @@
       "departureTime": "03:15",
       "day": 2,
       "distance": "1463.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "SRC",
@@ -194,11 +194,11 @@
       "departureTime": "05:02",
       "day": 2,
       "distance": "1571.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "SHM",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1576.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     }
   ],
-  "summary": "The first reservation chart for Sc Shm Ac Sf Ex (12774) is prepared at Secunderabad Jn (SC) around 7:03 PM, with a second (vacancy) chart around 3:40 AM. 1 of 16 stations on the SC to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T13:55:02.926Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Sc Shm Ac Sf Ex (12774) is prepared at Secunderabad Jn (SC) around 7:03 PM, with a second (vacancy) chart around 3:40 AM. 5 of 16 stations on the SC to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:36:49.826Z",
+  "knownChartCount": 5
 }

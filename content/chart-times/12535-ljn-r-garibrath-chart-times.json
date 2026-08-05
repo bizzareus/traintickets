@@ -12,11 +12,11 @@
       "departureTime": "14:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "RGU",
@@ -38,11 +38,11 @@
       "departureTime": "17:18",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "BNDA",
@@ -51,11 +51,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "219.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "ATE",
@@ -64,11 +64,11 @@
       "departureTime": "18:44",
       "day": 1,
       "distance": "251.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "CKTD",
@@ -77,11 +77,11 @@
       "departureTime": "19:12",
       "day": 1,
       "distance": "288.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "STA",
@@ -90,11 +90,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "396.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "KTE",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "KTE"
     }
   ],
-  "summary": "The first reservation chart for Ljn R Garibrath (12535) is prepared at Katni (KTE) around 12:46 PM, with a second (vacancy) chart around 10:45 PM. 7 of 14 stations on the LJN to R route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T07:00:45.146Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Ljn R Garibrath (12535) is prepared at Lucknow Ne (LJN) around 6:10 AM, with a second (vacancy) chart around 1:52 PM. 14 of 14 stations on the LJN to R route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:34:05.956Z",
+  "knownChartCount": 14
 }

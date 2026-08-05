@@ -142,11 +142,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "512.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "SA",
@@ -155,11 +155,11 @@
       "departureTime": "01:50",
       "day": 2,
       "distance": "575.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "KPD",
@@ -168,11 +168,11 @@
       "departureTime": "05:10",
       "day": 2,
       "distance": "778.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "CTO",
@@ -181,11 +181,11 @@
       "departureTime": "05:40",
       "day": 2,
       "distance": "811.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "TPTY",
@@ -194,11 +194,11 @@
       "departureTime": "07:10",
       "day": 2,
       "distance": "883.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "RU",
@@ -207,11 +207,11 @@
       "departureTime": "07:45",
       "day": 2,
       "distance": "893.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "GDR",
@@ -220,11 +220,11 @@
       "departureTime": "09:15",
       "day": 2,
       "distance": "976.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "OGL",
@@ -233,11 +233,11 @@
       "departureTime": "11:35",
       "day": 2,
       "distance": "1130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "BZA",
@@ -246,11 +246,11 @@
       "departureTime": "14:10",
       "day": 2,
       "distance": "1268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "WL",
@@ -259,11 +259,11 @@
       "departureTime": "17:15",
       "day": 2,
       "distance": "1476.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "BPQ",
@@ -272,11 +272,11 @@
       "departureTime": "21:10",
       "day": 2,
       "distance": "1718.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "NGP",
@@ -422,7 +422,7 @@
       "chartRemoteStation": "BPL"
     }
   ],
-  "summary": "The first reservation chart for Tvc Nzm Sf Exp (12643) is prepared at Trivandrum Cntl (TVC) around 4:21 AM, with a second (vacancy) chart around 2 PM. 12 of 32 stations on the TVC to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T18:18:08.919Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Tvc Nzm Sf Exp (12643) is prepared at Trivandrum Cntl (TVC) around 4:21 AM, with a second (vacancy) chart around 2 PM. 23 of 32 stations on the TVC to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:34:51.429Z",
+  "knownChartCount": 23
 }

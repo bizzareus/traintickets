@@ -51,11 +51,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "135.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:03",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "RMA",
@@ -64,11 +64,11 @@
       "departureTime": "02:48",
       "day": 2,
       "distance": "287.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:03",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "KOTA",
@@ -77,11 +77,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "360.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "SWM",
@@ -90,11 +90,11 @@
       "departureTime": "05:35",
       "day": 2,
       "distance": "467.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SWM"
     },
     {
       "stationCode": "DPA",
@@ -103,11 +103,11 @@
       "departureTime": "07:20",
       "day": 2,
       "distance": "591.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SWM"
     },
     {
       "stationCode": "JP",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "599.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SWM"
     }
   ],
-  "summary": "Reservation chart preparation times for Indb Jp Sf Exp (12973) from INDB to JP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-08-03T19:59:18.309Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Indb Jp Sf Exp (12973) is prepared at Nagda Jn (NAD) around 12:15 PM, with a second (vacancy) chart around 10:03 PM. 6 of 9 stations on the INDB to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:41:28.014Z",
+  "knownChartCount": 6
 }

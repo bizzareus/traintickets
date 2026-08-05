@@ -25,10 +25,10 @@
       "departureTime": "13:45",
       "day": 1,
       "distance": "428.0",
-      "chartTimeLocal": "22:01",
+      "chartTimeLocal": "22:00",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CNB"
     },
     {
@@ -38,11 +38,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "764.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "KQR",
@@ -51,11 +51,11 @@
       "departureTime": "22:53",
       "day": 1,
       "distance": "1043.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:38",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KQR"
     },
     {
       "stationCode": "HZD",
@@ -64,11 +64,11 @@
       "departureTime": "23:23",
       "day": 1,
       "distance": "1091.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:38",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KQR"
     },
     {
       "stationCode": "GMO",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "KQR"
     }
   ],
-  "summary": "The first reservation chart for Anvt Rnc Sf Exp (12826) is prepared at Anand Vihar TRM (ANVT) around 9:59 PM, with a second (vacancy) chart around 7:45 AM. 6 of 9 stations on the ANVT to RNC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T14:18:05.768Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Anvt Rnc Sf Exp (12826) is prepared at Anand Vihar TRM (ANVT) around 9:59 PM, with a second (vacancy) chart around 7:45 AM. 9 of 9 stations on the ANVT to RNC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:37:23.466Z",
+  "knownChartCount": 9
 }

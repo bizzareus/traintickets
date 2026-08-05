@@ -64,11 +64,11 @@
       "departureTime": "00:32",
       "day": 2,
       "distance": "294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "JJKR",
@@ -77,11 +77,11 @@
       "departureTime": "01:07",
       "day": 2,
       "distance": "337.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "CTC",
@@ -90,11 +90,11 @@
       "departureTime": "02:20",
       "day": 2,
       "distance": "409.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "BBS",
@@ -103,11 +103,11 @@
       "departureTime": "03:00",
       "day": 2,
       "distance": "437.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "KUR",
@@ -116,11 +116,11 @@
       "departureTime": "03:25",
       "day": 2,
       "distance": "456.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "PURI",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "500.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     }
   ],
-  "summary": "Reservation chart preparation times for Shm Puri Sf Exp (12887) from SHM to PURI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-08-03T14:49:48.890Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Shm Puri Sf Exp (12887) is prepared at Bhadrak (BHC) around 10:06 AM, with a second (vacancy) chart around 11:42 PM. 6 of 10 stations on the SHM to PURI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:38:43.622Z",
+  "knownChartCount": 6
 }

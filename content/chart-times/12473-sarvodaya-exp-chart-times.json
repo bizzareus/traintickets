@@ -12,11 +12,11 @@
       "departureTime": "09:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:40",
+      "chartTimeLocal": "21:45",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "GIMB"
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "SIOB",
@@ -409,7 +409,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sarvodaya Exp (12473) is prepared at Gandhidham Bg (GIMB) around 9:40 PM. 12 of 31 stations on the GIMB to SVDK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T01:49:36.036Z",
+  "summary": "The first reservation chart for Sarvodaya Exp (12473) is prepared at Gandhidham Bg (GIMB) around 9:45 PM. 12 of 31 stations on the GIMB to SVDK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:33:18.600Z",
   "knownChartCount": 12
 }

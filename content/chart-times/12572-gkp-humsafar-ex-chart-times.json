@@ -90,11 +90,11 @@
       "departureTime": "06:54",
       "day": 2,
       "distance": "725.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "SDDN",
@@ -103,11 +103,11 @@
       "departureTime": "07:26",
       "day": 2,
       "distance": "766.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "ANDN",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "ANVT"
     }
   ],
-  "summary": "The first reservation chart for Gkp Humsafar Ex (12572) is prepared at Anand Vihar TRM (ANVT) around 12:01 PM, with a second (vacancy) chart around 7:45 PM. 8 of 10 stations on the ANVT to GKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T16:09:52.293Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Gkp Humsafar Ex (12572) is prepared at Anand Vihar TRM (ANVT) around 12:01 PM, with a second (vacancy) chart around 7:45 PM. 10 of 10 stations on the ANVT to GKP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:34:16.497Z",
+  "knownChartCount": 10
 }

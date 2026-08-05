@@ -272,11 +272,11 @@
       "departureTime": "02:26",
       "day": 3,
       "distance": "1857.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BRC",
@@ -285,11 +285,11 @@
       "departureTime": "04:11",
       "day": 3,
       "distance": "1985.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "ANND",
@@ -298,11 +298,11 @@
       "departureTime": "04:47",
       "day": 3,
       "distance": "2021.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "ADI",
@@ -311,11 +311,11 @@
       "departureTime": "06:05",
       "day": 3,
       "distance": "2085.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "VG",
@@ -324,11 +324,11 @@
       "departureTime": "07:28",
       "day": 3,
       "distance": "2151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "SUNR",
@@ -337,11 +337,11 @@
       "departureTime": "08:43",
       "day": 3,
       "distance": "2216.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "RJT",
@@ -350,11 +350,11 @@
       "departureTime": "10:40",
       "day": 3,
       "distance": "2332.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "HAPA",
@@ -363,11 +363,11 @@
       "departureTime": "11:49",
       "day": 3,
       "distance": "2408.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "JAM",
@@ -376,11 +376,11 @@
       "departureTime": "12:06",
       "day": 3,
       "distance": "2417.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "LPJ",
@@ -389,11 +389,11 @@
       "departureTime": "13:20",
       "day": 3,
       "distance": "2460.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BNVD",
@@ -402,11 +402,11 @@
       "departureTime": "13:53",
       "day": 3,
       "distance": "2496.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "PBR",
@@ -415,14 +415,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2548.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "The first reservation chart for Shm Pbr Suf Exp (12906) is prepared at Shalimar (SHM) around 9:43 AM, with a second (vacancy) chart around 8 PM. 20 of 32 stations on the SHM to PBR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T14:58:41.765Z",
-  "knownChartCount": 20
+  "summary": "The first reservation chart for Shm Pbr Suf Exp (12906) is prepared at Shalimar (SHM) around 9:43 AM, with a second (vacancy) chart around 8 PM. 32 of 32 stations on the SHM to PBR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:39:11.156Z",
+  "knownChartCount": 32
 }

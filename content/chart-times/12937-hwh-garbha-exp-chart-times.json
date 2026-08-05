@@ -194,11 +194,11 @@
       "departureTime": "02:25",
       "day": 3,
       "distance": "1851.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "02:10",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "SSM",
@@ -207,11 +207,11 @@
       "departureTime": "03:36",
       "day": 3,
       "distance": "1951.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "02:10",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "GAYA",
@@ -220,11 +220,11 @@
       "departureTime": "05:10",
       "day": 3,
       "distance": "2054.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "KQR",
@@ -233,11 +233,11 @@
       "departureTime": "06:26",
       "day": 3,
       "distance": "2130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DHN",
@@ -246,11 +246,11 @@
       "departureTime": "08:45",
       "day": 3,
       "distance": "2252.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "ASN",
@@ -259,11 +259,11 @@
       "departureTime": "09:49",
       "day": 3,
       "distance": "2311.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "HWH",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2511.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "The first reservation chart for Hwh Garbha Exp (12937) is prepared at Gandhidham Bg (GIMB) around 10:25 AM. 3 of 21 stations on the GIMB to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T15:16:13.544Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Hwh Garbha Exp (12937) is prepared at Gandhidham Bg (GIMB) around 10:25 AM. 10 of 21 stations on the GIMB to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:39:53.512Z",
+  "knownChartCount": 10
 }

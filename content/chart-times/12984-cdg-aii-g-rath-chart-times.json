@@ -12,10 +12,10 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "09:53",
+      "chartTimeLocal": "10:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CDG"
     },
     {
@@ -25,10 +25,10 @@
       "departureTime": "20:38",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": "09:53",
+      "chartTimeLocal": "10:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CDG"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "21:09",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": "09:53",
+      "chartTimeLocal": "10:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CDG"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "21:34",
       "day": 1,
       "distance": "143.0",
-      "chartTimeLocal": "09:53",
+      "chartTimeLocal": "10:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CDG"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": "09:53",
+      "chartTimeLocal": "10:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CDG"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "23:05",
       "day": 1,
       "distance": "216.0",
-      "chartTimeLocal": "09:53",
+      "chartTimeLocal": "10:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CDG"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "248.0",
-      "chartTimeLocal": "09:53",
+      "chartTimeLocal": "10:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CDG"
     },
     {
@@ -103,11 +103,11 @@
       "departureTime": "01:05",
       "day": 2,
       "distance": "298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "CKD",
@@ -116,11 +116,11 @@
       "departureTime": "01:29",
       "day": 2,
       "distance": "325.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "RE",
@@ -129,11 +129,11 @@
       "departureTime": "02:45",
       "day": 2,
       "distance": "380.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "AWR",
@@ -142,11 +142,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "454.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "DO",
@@ -155,11 +155,11 @@
       "departureTime": "04:52",
       "day": 2,
       "distance": "544.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "GTJT",
@@ -168,11 +168,11 @@
       "departureTime": "05:26",
       "day": 2,
       "distance": "594.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "JP",
@@ -181,11 +181,11 @@
       "departureTime": "06:20",
       "day": 2,
       "distance": "605.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "FL",
@@ -194,11 +194,11 @@
       "departureTime": "07:10",
       "day": 2,
       "distance": "660.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "KSG",
@@ -207,11 +207,11 @@
       "departureTime": "07:48",
       "day": 2,
       "distance": "714.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "AII",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "740.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     }
   ],
-  "summary": "The first reservation chart for Cdg Aii G Rath (12984) is prepared at Chandigarh (CDG) around 9:53 AM. 7 of 17 stations on the CDG to AII route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T20:06:36.546Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Cdg Aii G Rath (12984) is prepared at Chandigarh (CDG) around 10 AM, with a second (vacancy) chart around 11:40 PM. 17 of 17 stations on the CDG to AII route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:41:53.404Z",
+  "knownChartCount": 17
 }

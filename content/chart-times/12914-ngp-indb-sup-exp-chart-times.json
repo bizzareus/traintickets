@@ -90,11 +90,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "390.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "SJP",
@@ -103,11 +103,11 @@
       "departureTime": "02:52",
       "day": 2,
       "distance": "476.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BCH",
@@ -116,11 +116,11 @@
       "departureTime": "03:30",
       "day": 2,
       "distance": "519.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "MKC",
@@ -129,11 +129,11 @@
       "departureTime": "03:47",
       "day": 2,
       "distance": "538.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "UJN",
@@ -142,11 +142,11 @@
       "departureTime": "04:45",
       "day": 2,
       "distance": "579.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "DWX",
@@ -155,11 +155,11 @@
       "departureTime": "05:23",
       "day": 2,
       "distance": "620.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "INDB",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "659.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "Reservation chart preparation times for Ngp Indb Sup Exp (12914) from NGP to INDB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-08-03T15:02:53.057Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ngp Indb Sup Exp (12914) is prepared at Rani Kamalapati (RKMP) around 9:13 AM, with a second (vacancy) chart around 9:19 PM. 7 of 13 stations on the NGP to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:39:23.956Z",
+  "knownChartCount": 7
 }

@@ -12,10 +12,10 @@
       "departureTime": "13:55",
       "day": 1,
       "distance": "11.0",
-      "chartTimeLocal": "20:04",
+      "chartTimeLocal": "20:11",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:38",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MMCT"
     },
     {
@@ -25,10 +25,10 @@
       "departureTime": "14:30",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": "20:04",
+      "chartTimeLocal": "20:11",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:38",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MMCT"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": "20:18",
+      "chartTimeLocal": "20:21",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:32",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VAPI"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "194.0",
-      "chartTimeLocal": "20:19",
+      "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "16:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BL"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "17:20",
       "day": 1,
       "distance": "263.0",
-      "chartTimeLocal": "20:32",
+      "chartTimeLocal": "20:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "322.0",
-      "chartTimeLocal": "20:40",
+      "chartTimeLocal": "20:43",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BH"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "392.0",
-      "chartTimeLocal": "08:55",
+      "chartTimeLocal": "09:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRC"
     },
     {
@@ -103,11 +103,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "427.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANND"
     },
     {
       "stationCode": "ND",
@@ -116,11 +116,11 @@
       "departureTime": "19:41",
       "day": 1,
       "distance": "446.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANND"
     },
     {
       "stationCode": "VTA",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "483.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANND"
     }
   ],
-  "summary": "The first reservation chart for Karnavati Exp (12933) is prepared at Bandra Terminus (BDTS) around 8:04 PM. 7 of 10 stations on the BDTS to VTA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T15:14:37.653Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Karnavati Exp (12933) is prepared at Bandra Terminus (BDTS) around 8:11 PM, with a second (vacancy) chart around 1:38 PM. 10 of 10 stations on the BDTS to VTA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:39:49.094Z",
+  "knownChartCount": 10
 }

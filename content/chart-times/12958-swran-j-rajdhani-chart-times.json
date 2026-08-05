@@ -12,11 +12,11 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "DEC",
@@ -25,11 +25,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "16.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "GGN",
@@ -38,11 +38,11 @@
       "departureTime": "20:43",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "JP",
@@ -51,11 +51,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "309.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "AII",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "PNU"
     }
   ],
-  "summary": "The first reservation chart for Swran J Rajdhani (12958) is prepared at New Delhi (NDLS) around 7:54 PM. 7 of 10 stations on the NDLS to SBIB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T19:46:55.038Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Swran J Rajdhani (12958) is prepared at New Delhi (NDLS) around 11:55 AM, with a second (vacancy) chart around 7:40 PM. 10 of 10 stations on the NDLS to SBIB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:40:47.294Z",
+  "knownChartCount": 10
 }

@@ -233,11 +233,11 @@
       "departureTime": "00:20",
       "day": 3,
       "distance": "1806.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:47",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "PUNE",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "1879.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:47",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "Reservation chart preparation times for Gkp Pune Exp (11038) from GKP to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-03T20:46:03.745Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gkp Pune Exp (11038) is prepared at Daund Chord Lin (DDCC) around 8:07 PM, with a second (vacancy) chart around 6:47 AM. 2 of 19 stations on the GKP to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:46:02.880Z",
+  "knownChartCount": 2
 }

@@ -77,11 +77,11 @@
       "departureTime": "01:40",
       "day": 2,
       "distance": "245.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "ET",
@@ -90,11 +90,11 @@
       "departureTime": "03:20",
       "day": 2,
       "distance": "331.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ET"
     },
     {
       "stationCode": "BZU",
@@ -103,11 +103,11 @@
       "departureTime": "05:00",
       "day": 2,
       "distance": "437.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZU"
     },
     {
       "stationCode": "AMLA",
@@ -116,11 +116,11 @@
       "departureTime": "05:20",
       "day": 2,
       "distance": "460.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZU"
     },
     {
       "stationCode": "MTY",
@@ -129,11 +129,11 @@
       "departureTime": "05:36",
       "day": 2,
       "distance": "483.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZU"
     },
     {
       "stationCode": "PAR",
@@ -142,11 +142,11 @@
       "departureTime": "06:12",
       "day": 2,
       "distance": "524.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZU"
     },
     {
       "stationCode": "NRKR",
@@ -155,11 +155,11 @@
       "departureTime": "06:28",
       "day": 2,
       "distance": "542.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZU"
     },
     {
       "stationCode": "NGP",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "628.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZU"
     }
   ],
-  "summary": "The first reservation chart for Dadn Trishatabdi (12923) is prepared at Dr Ambedkar Ngr (DADN) around 10:57 AM, with a second (vacancy) chart around 8:45 PM. 1 of 13 stations on the DADN to NGP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T15:09:37.426Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Dadn Trishatabdi (12923) is prepared at Dr Ambedkar Ngr (DADN) around 10:57 AM, with a second (vacancy) chart around 8:45 PM. 9 of 13 stations on the DADN to NGP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:39:35.840Z",
+  "knownChartCount": 9
 }

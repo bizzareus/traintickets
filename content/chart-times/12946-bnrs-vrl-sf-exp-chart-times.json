@@ -12,11 +12,11 @@
       "departureTime": "07:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "PRYJ",
@@ -25,11 +25,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "GOY",
@@ -38,11 +38,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "317.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "ETW",
@@ -51,11 +51,11 @@
       "departureTime": "14:25",
       "day": 1,
       "distance": "453.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "TDL",
@@ -64,11 +64,11 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "545.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "IDH",
@@ -77,11 +77,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "569.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "GGC",
@@ -90,11 +90,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "729.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "KOTA",
@@ -103,11 +103,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "900.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:11",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "SGZ",
@@ -396,7 +396,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bnrs Vrl Sf Exp (12946) from BNRS to VRL are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 30 stations.",
-  "generatedAt": "2026-08-03T19:38:21.471Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bnrs Vrl Sf Exp (12946) is prepared at BANARAS (BNRS) around 8:25 PM, with a second (vacancy) chart around 7:15 AM. 8 of 30 stations on the BNRS to VRL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:40:15.783Z",
+  "knownChartCount": 8
 }

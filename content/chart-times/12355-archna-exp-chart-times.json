@@ -12,11 +12,11 @@
       "departureTime": "07:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:35",
+      "chartTimeLocal": "23:07",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "PNBE"
+      "chartRemoteStation": "MBDP"
     },
     {
       "stationCode": "DNR",
@@ -194,11 +194,11 @@
       "departureTime": "02:13",
       "day": 2,
       "distance": "1048.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     },
     {
       "stationCode": "UMB",
@@ -207,11 +207,11 @@
       "departureTime": "03:35",
       "day": 2,
       "distance": "1130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     },
     {
       "stationCode": "LDH",
@@ -220,11 +220,11 @@
       "departureTime": "05:35",
       "day": 2,
       "distance": "1243.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     },
     {
       "stationCode": "JRC",
@@ -233,11 +233,11 @@
       "departureTime": "06:36",
       "day": 2,
       "distance": "1295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     },
     {
       "stationCode": "PTKC",
@@ -246,11 +246,11 @@
       "departureTime": "08:25",
       "day": 2,
       "distance": "1408.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     },
     {
       "stationCode": "JAT",
@@ -259,14 +259,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1508.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     }
   ],
-  "summary": "The first reservation chart for Archna Exp (12355) is prepared at Patna Jn (PNBE) around 9:35 PM. 12 of 20 stations on the PNBE to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T01:26:41.299Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Archna Exp (12355) is prepared at Patna Jn (PNBE) around 11:07 PM. 18 of 20 stations on the PNBE to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:31:38.049Z",
+  "knownChartCount": 18
 }

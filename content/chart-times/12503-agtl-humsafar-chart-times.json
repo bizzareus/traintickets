@@ -168,10 +168,10 @@
       "departureTime": "11:10",
       "day": 2,
       "distance": "1569.0",
-      "chartTimeLocal": "18:19",
+      "chartTimeLocal": "19:42",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BBS"
     },
     {
@@ -181,10 +181,10 @@
       "departureTime": "11:45",
       "day": 2,
       "distance": "1597.0",
-      "chartTimeLocal": "18:19",
+      "chartTimeLocal": "19:42",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BBS"
     },
     {
@@ -194,10 +194,10 @@
       "departureTime": "13:48",
       "day": 2,
       "distance": "1712.0",
-      "chartTimeLocal": "18:19",
+      "chartTimeLocal": "19:42",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BBS"
     },
     {
@@ -207,10 +207,10 @@
       "departureTime": "16:05",
       "day": 2,
       "distance": "1893.0",
-      "chartTimeLocal": "18:19",
+      "chartTimeLocal": "19:42",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BBS"
     },
     {
@@ -220,11 +220,11 @@
       "departureTime": "17:40",
       "day": 2,
       "distance": "1996.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADL"
     },
     {
       "stationCode": "DKAE",
@@ -233,11 +233,11 @@
       "departureTime": "18:47",
       "day": 2,
       "distance": "2015.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADL"
     },
     {
       "stationCode": "RPH",
@@ -246,11 +246,11 @@
       "departureTime": "21:27",
       "day": 2,
       "distance": "2207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADL"
     },
     {
       "stationCode": "MLDT",
@@ -435,7 +435,7 @@
       "chartRemoteStation": "MLDT"
     }
   ],
-  "summary": "The first reservation chart for Agtl Humsafar (12503) is prepared at Smvt Bengaluru (SMVB) around 9:57 PM, with a second (vacancy) chart around 12:15 PM. 30 of 33 stations on the SMVB to AGTL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T04:28:42.401Z",
-  "knownChartCount": 30
+  "summary": "The first reservation chart for Agtl Humsafar (12503) is prepared at Smvt Bengaluru (SMVB) around 9:57 PM, with a second (vacancy) chart around 12:15 PM. 33 of 33 stations on the SMVB to AGTL route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:33:36.458Z",
+  "knownChartCount": 33
 }

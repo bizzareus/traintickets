@@ -25,11 +25,11 @@
       "departureTime": "05:20",
       "day": 2,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "PRYJ",
@@ -38,11 +38,11 @@
       "departureTime": "07:55",
       "day": 2,
       "distance": "636.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "DDU",
@@ -51,11 +51,11 @@
       "departureTime": "10:50",
       "day": 2,
       "distance": "788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "SSM",
@@ -64,11 +64,11 @@
       "departureTime": "12:00",
       "day": 2,
       "distance": "888.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "DOS",
@@ -77,11 +77,11 @@
       "departureTime": "12:15",
       "day": 2,
       "distance": "906.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "GAYA",
@@ -90,11 +90,11 @@
       "departureTime": "13:40",
       "day": 2,
       "distance": "991.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "NWD",
@@ -103,11 +103,11 @@
       "departureTime": "14:40",
       "day": 2,
       "distance": "1050.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "KIUL",
@@ -116,11 +116,11 @@
       "departureTime": "16:50",
       "day": 2,
       "distance": "1121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "AHA",
@@ -129,11 +129,11 @@
       "departureTime": "17:13",
       "day": 2,
       "distance": "1144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "JMP",
@@ -142,11 +142,11 @@
       "departureTime": "18:18",
       "day": 2,
       "distance": "1166.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "SGG",
@@ -155,11 +155,11 @@
       "departureTime": "18:53",
       "day": 2,
       "distance": "1195.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "BGP",
@@ -168,11 +168,11 @@
       "departureTime": "20:00",
       "day": 2,
       "distance": "1219.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DWLE",
@@ -181,11 +181,11 @@
       "departureTime": "20:29",
       "day": 2,
       "distance": "1246.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "BHLE",
@@ -194,11 +194,11 @@
       "departureTime": "20:45",
       "day": 2,
       "distance": "1257.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "MDLE",
@@ -207,11 +207,11 @@
       "departureTime": "21:03",
       "day": 2,
       "distance": "1269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "HSDA",
@@ -220,11 +220,11 @@
       "departureTime": "22:00",
       "day": 2,
       "distance": "1293.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "PYHT",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1325.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:24",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "The first reservation chart for Goda Humsafar (12350) is prepared at New Delhi (NDLS) around 3:45 PM, with a second (vacancy) chart around 11:30 PM. 1 of 19 stations on the NDLS to GODA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T01:24:21.112Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Goda Humsafar (12350) is prepared at New Delhi (NDLS) around 3:45 PM, with a second (vacancy) chart around 11:30 PM. 18 of 19 stations on the NDLS to GODA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:31:28.160Z",
+  "knownChartCount": 18
 }

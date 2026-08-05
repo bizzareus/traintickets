@@ -12,10 +12,10 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "08:22",
+      "chartTimeLocal": "08:20",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -27,8 +27,8 @@
       "distance": "3.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "21.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "28.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "49.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "92.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "114.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "141.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "164.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "167.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "232.0",
       "chartTimeLocal": "08:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "ND",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "VAPI"
     }
   ],
-  "summary": "The first reservation chart for Bvc Bdts Sf Exp (12972) is prepared at Bhavnagar Trmus (BVC) around 8:22 AM. 20 of 21 stations on the BVC to BDTS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T19:58:16.663Z",
-  "knownChartCount": 20
+  "summary": "The first reservation chart for Bvc Bdts Sf Exp (12972) is prepared at Bhavnagar Trmus (BVC) around 8:20 AM, with a second (vacancy) chart around 6:15 PM. 21 of 21 stations on the BVC to BDTS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:41:23.789Z",
+  "knownChartCount": 21
 }

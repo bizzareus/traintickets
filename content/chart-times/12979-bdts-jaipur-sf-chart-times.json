@@ -12,10 +12,10 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:53",
+      "chartTimeLocal": "20:30",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BDTS"
     },
     {
@@ -142,11 +142,11 @@
       "departureTime": "00:25",
       "day": 2,
       "distance": "529.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "MGN",
@@ -155,11 +155,11 @@
       "departureTime": "00:52",
       "day": 2,
       "distance": "562.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "RTM",
@@ -168,11 +168,11 @@
       "departureTime": "02:15",
       "day": 2,
       "distance": "642.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "NAD",
@@ -181,11 +181,11 @@
       "departureTime": "03:05",
       "day": 2,
       "distance": "684.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "KOTA",
@@ -194,11 +194,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "909.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "SWM",
@@ -207,11 +207,11 @@
       "departureTime": "07:15",
       "day": 2,
       "distance": "1017.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "DPA",
@@ -220,11 +220,11 @@
       "departureTime": "09:33",
       "day": 2,
       "distance": "1141.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "JP",
@@ -233,14 +233,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1148.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "The first reservation chart for Bdts Jaipur Sf (12979) is prepared at Bandra Terminus (BDTS) around 8:53 PM. 7 of 18 stations on the BDTS to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T20:05:29.029Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Bdts Jaipur Sf (12979) is prepared at Bandra Terminus (BDTS) around 8:30 PM, with a second (vacancy) chart around 4:50 PM. 15 of 18 stations on the BDTS to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:41:49.359Z",
+  "knownChartCount": 15
 }

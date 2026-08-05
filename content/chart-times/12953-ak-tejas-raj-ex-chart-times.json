@@ -12,10 +12,10 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:13",
+      "chartTimeLocal": "07:15",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "16:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MMCT"
     },
     {
@@ -27,8 +27,8 @@
       "distance": "30.0",
       "chartTimeLocal": "07:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "16:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MMCT"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": "08:51",
+      "chartTimeLocal": "09:14",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VAPI"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "194.0",
-      "chartTimeLocal": "08:51",
+      "chartTimeLocal": "09:14",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VAPI"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "263.0",
-      "chartTimeLocal": "10:21",
+      "chartTimeLocal": "10:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "322.0",
-      "chartTimeLocal": "10:21",
+      "chartTimeLocal": "10:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -90,11 +90,11 @@
       "departureTime": "21:54",
       "day": 1,
       "distance": "392.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "DHD",
@@ -103,11 +103,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "540.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "RTM",
@@ -175,7 +175,7 @@
       "chartRemoteStation": "MTJ"
     }
   ],
-  "summary": "The first reservation chart for Ak Tejas Raj Ex (12953) is prepared at Mumbai Central (MMCT) around 7:13 AM. 11 of 13 stations on the MMCT to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T19:43:47.200Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Ak Tejas Raj Ex (12953) is prepared at Mumbai Central (MMCT) around 7:15 AM, with a second (vacancy) chart around 4:55 PM. 13 of 13 stations on the MMCT to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:40:39.128Z",
+  "knownChartCount": 13
 }

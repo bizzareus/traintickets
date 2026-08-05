@@ -194,11 +194,11 @@
       "departureTime": "04:55",
       "day": 2,
       "distance": "727.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "LPI",
@@ -227,7 +227,7 @@
       "chartRemoteStation": "GTL"
     }
   ],
-  "summary": "The first reservation chart for Tpty Sc Sf Exp (12731) is prepared at Tirupati (TPTY) around 7:38 AM, with a second (vacancy) chart around 4:45 PM. 16 of 17 stations on the TPTY to SC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T23:47:14.141Z",
-  "knownChartCount": 16
+  "summary": "The first reservation chart for Tpty Sc Sf Exp (12731) is prepared at Tirupati (TPTY) around 7:38 AM, with a second (vacancy) chart around 4:45 PM. 17 of 17 stations on the TPTY to SC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:36:16.470Z",
+  "knownChartCount": 17
 }

@@ -103,11 +103,11 @@
       "departureTime": "01:50",
       "day": 2,
       "distance": "1294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BZA",
@@ -116,11 +116,11 @@
       "departureTime": "08:35",
       "day": 2,
       "distance": "1744.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "GDR",
@@ -129,11 +129,11 @@
       "departureTime": "13:05",
       "day": 2,
       "distance": "2036.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "MS",
@@ -142,11 +142,11 @@
       "departureTime": "16:10",
       "day": 2,
       "distance": "2178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:11",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "TBM",
@@ -155,11 +155,11 @@
       "departureTime": "16:37",
       "day": 2,
       "distance": "2203.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:11",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "CGL",
@@ -168,11 +168,11 @@
       "departureTime": "17:05",
       "day": 2,
       "distance": "2234.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:11",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "VM",
@@ -181,11 +181,11 @@
       "departureTime": "18:55",
       "day": 2,
       "distance": "2337.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:11",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "VRI",
@@ -194,11 +194,11 @@
       "departureTime": "19:38",
       "day": 2,
       "distance": "2391.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:11",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "TPJ",
@@ -207,11 +207,11 @@
       "departureTime": "21:30",
       "day": 2,
       "distance": "2514.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:11",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "DG",
@@ -220,11 +220,11 @@
       "departureTime": "22:35",
       "day": 2,
       "distance": "2608.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:11",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "MDU",
@@ -233,11 +233,11 @@
       "departureTime": "23:50",
       "day": 2,
       "distance": "2674.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "VPT",
@@ -246,11 +246,11 @@
       "departureTime": "00:25",
       "day": 3,
       "distance": "2718.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "SRT",
@@ -259,11 +259,11 @@
       "departureTime": "00:45",
       "day": 3,
       "distance": "2744.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "TEN",
@@ -272,11 +272,11 @@
       "departureTime": "02:15",
       "day": 3,
       "distance": "2831.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "NCJ",
@@ -285,11 +285,11 @@
       "departureTime": "03:23",
       "day": 3,
       "distance": "2904.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "CAPE",
@@ -298,14 +298,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2920.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MDU"
     }
   ],
-  "summary": "The first reservation chart for Nzm Cape Sf Exp (12642) is prepared at H Nizamuddin (NZM) around 9:08 PM, with a second (vacancy) chart around 5:05 AM. 6 of 23 stations on the NZM to CAPE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T18:16:33.851Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Nzm Cape Sf Exp (12642) is prepared at H Nizamuddin (NZM) around 9:08 PM, with a second (vacancy) chart around 5:05 AM. 22 of 23 stations on the NZM to CAPE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:34:48.509Z",
+  "knownChartCount": 22
 }

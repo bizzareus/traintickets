@@ -12,10 +12,10 @@
       "departureTime": "17:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "07:12",
+      "chartTimeLocal": "07:20",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "16:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MMCT"
     },
     {
@@ -25,10 +25,10 @@
       "departureTime": "17:22",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": "07:12",
+      "chartTimeLocal": "07:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "16:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MMCT"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "19:48",
       "day": 1,
       "distance": "263.0",
-      "chartTimeLocal": "09:49",
+      "chartTimeLocal": "09:45",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "19:33",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -51,11 +51,11 @@
       "departureTime": "21:16",
       "day": 1,
       "distance": "392.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:01",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "RTM",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "The first reservation chart for Ndls Tejas Raj (12951) is prepared at Mumbai Central (MMCT) around 7:12 AM. 7 of 8 stations on the MMCT to NDLS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T19:43:15.563Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Ndls Tejas Raj (12951) is prepared at Mumbai Central (MMCT) around 7:20 AM, with a second (vacancy) chart around 4:45 PM. 8 of 8 stations on the MMCT to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:40:36.955Z",
+  "knownChartCount": 8
 }

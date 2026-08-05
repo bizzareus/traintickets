@@ -103,11 +103,11 @@
       "departureTime": "03:10",
       "day": 2,
       "distance": "1016.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "ANVT",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1440.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "The first reservation chart for Sampark K Exp (12329) is prepared at Sealdah (SDAH) around 10:24 PM, with a second (vacancy) chart around 12:55 PM. 1 of 9 stations on the SDAH to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T01:13:04.230Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Sampark K Exp (12329) is prepared at Sealdah (SDAH) around 10:24 PM, with a second (vacancy) chart around 12:55 PM. 3 of 9 stations on the SDAH to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:30:34.375Z",
+  "knownChartCount": 3
 }

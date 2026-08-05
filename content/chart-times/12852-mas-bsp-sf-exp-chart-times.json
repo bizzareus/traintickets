@@ -77,11 +77,11 @@
       "departureTime": "01:10",
       "day": 2,
       "distance": "638.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "SKZR",
@@ -90,11 +90,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "810.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "BPQ",
@@ -103,11 +103,11 @@
       "departureTime": "05:40",
       "day": 2,
       "distance": "880.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPQ"
     },
     {
       "stationCode": "MME",
@@ -116,11 +116,11 @@
       "departureTime": "06:20",
       "day": 2,
       "distance": "932.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPQ"
     },
     {
       "stationCode": "NAB",
@@ -129,11 +129,11 @@
       "departureTime": "07:10",
       "day": 2,
       "distance": "998.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPQ"
     },
     {
       "stationCode": "WSA",
@@ -142,11 +142,11 @@
       "departureTime": "07:30",
       "day": 2,
       "distance": "1026.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPQ"
     },
     {
       "stationCode": "G",
@@ -155,11 +155,11 @@
       "departureTime": "09:25",
       "day": 2,
       "distance": "1130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "G"
     },
     {
       "stationCode": "RJN",
@@ -168,11 +168,11 @@
       "departureTime": "10:45",
       "day": 2,
       "distance": "1234.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "G"
     },
     {
       "stationCode": "DURG",
@@ -181,11 +181,11 @@
       "departureTime": "11:55",
       "day": 2,
       "distance": "1265.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "G"
     },
     {
       "stationCode": "R",
@@ -194,11 +194,11 @@
       "departureTime": "12:35",
       "day": 2,
       "distance": "1302.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "G"
     },
     {
       "stationCode": "BSP",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1412.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "G"
     }
   ],
-  "summary": "Reservation chart preparation times for Mas Bsp Sf Exp (12852) from MAS to BSP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-08-03T14:35:02.792Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mas Bsp Sf Exp (12852) is prepared at Warangal (WL) around 12:04 PM, with a second (vacancy) chart around 9:45 PM. 11 of 16 stations on the MAS to BSP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:38:12.762Z",
+  "knownChartCount": 11
 }

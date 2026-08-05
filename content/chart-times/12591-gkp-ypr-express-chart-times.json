@@ -467,14 +467,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2535.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPQ"
     }
   ],
-  "summary": "The first reservation chart for Gkp Ypr Express (12591) is prepared at Gorakhpur Jn (GKP) around 8:15 PM, with a second (vacancy) chart around 6:05 AM. 14 of 36 stations on the GKP to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T17:53:41.531Z",
-  "knownChartCount": 14
+  "summary": "The first reservation chart for Gkp Ypr Express (12591) is prepared at Gorakhpur Jn (GKP) around 8:15 PM, with a second (vacancy) chart around 6:05 AM. 15 of 36 stations on the GKP to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:34:42.367Z",
+  "knownChartCount": 15
 }
