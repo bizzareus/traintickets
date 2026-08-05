@@ -2,7 +2,7 @@
 title: "WL Ticket: Will Yours Confirm? Chances by WL Number (2026)"
 description: "WL full form is Waiting List. Check whether your WL ticket will confirm, what WL/1 vs WL/40 mean for your chances, and if you can board with one."
 date: "2026-06-11"
-updated: "2026-07-30"
+updated: "2026-08-05"
 tags:
   - waiting list
   - wl
@@ -131,7 +131,7 @@ You cannot travel in reserved coaches with a fully waitlisted e-ticket because t
 
 **No, you cannot travel on a fully waitlisted e-ticket after chart preparation.**
 
-If all passengers on your PNR are still on WL when the chart is prepared, the ticket is automatically cancelled. The fare is refunded to your original payment method (minus a small clerkage charge of ₹60 + GST per passenger). Your name is removed from the chart. You have no right to board.
+If all passengers on your PNR are still on WL when the chart is prepared, the ticket is automatically cancelled. The full fare is refunded automatically to your original payment method (with no cancellation or clerkage fee deducted). Your name is removed from the chart. You have no right to board.
 
 If you try to board with an automatically cancelled WL e-ticket, you are treated as a ticketless passenger. The TTE will charge a penalty.
 
@@ -266,7 +266,7 @@ Yes. This is the normal progression. When confirmed passengers cancel, RAC passe
 
 ### What happens if my WL ticket does not confirm?
 
-For **e-tickets**: the ticket is automatically cancelled after chart preparation, and the fare is refunded to your payment account (minus ₹60 + GST clerkage per passenger). For **counter tickets**: you can choose to cancel at the counter or attempt to board, though there is no guaranteed seat.
+For **e-tickets**: the ticket is automatically cancelled after chart preparation, and the full fare is refunded automatically to your payment account (with no cancellation or clerkage fee deducted). For **counter tickets**: you can choose to cancel at the counter or attempt to board, though there is no guaranteed seat.
 
 ### Is WL/1 guaranteed to get confirmed?
 
@@ -282,7 +282,7 @@ Check your PNR status on IRCTC or an enquiry platform. The status will show code
 
 ### What does "WL cancelled" mean in train booking?
 
-"WL cancelled" (also written as "CAN/MOD" or "WL/CAN") means your waitlisted ticket was cancelled — either automatically by the system after chart preparation (because your WL did not clear) or manually by you before chart time. For e-tickets, the refund is processed automatically with ₹60 + GST clerkage deducted per passenger. You cannot board with a WL cancelled ticket.
+"WL cancelled" (also written as "CAN/MOD" or "WL/CAN") means your waitlisted ticket was cancelled — either automatically by the system after chart preparation (because your WL did not clear) or manually by you before chart time. For auto-cancelled e-tickets, the full fare is refunded automatically with no cancellation or clerkage fee deducted. You cannot board with a WL cancelled ticket.
 
 ### What does WL/10 or WL/1 mean in train? What do WL numbers mean?
 
@@ -302,7 +302,7 @@ No, fully waitlisted online e-tickets are automatically cancelled at chart prepa
 
 ### What happens to your refund if your WL ticket is automatically cancelled?
 
-The full fare minus standard clerkage fee is refunded automatically to your original payment bank account within 3 to 5 business days. No manual TDR filing is required for auto-cancelled waitlisted e-tickets.
+The full fare is refunded automatically to your original payment bank account (with no cancellation or clerkage fee deducted) within 3 to 5 business days. No manual TDR filing is required for auto-cancelled waitlisted e-tickets.
 
 ### Does a waitlisted ticket guarantee a seat if you travel in Sleeper class?
 
@@ -310,7 +310,7 @@ No, travelling with a waitlisted e-ticket in any reserved coach is illegal and s
 
 ### How many days before departure does waitlist confirmation peak?
 
-Waitlist confirmation activity peaks during final chart preparation 4 hours before departure as auto-upgradation and cancellations free up berths.
+Waitlist confirmation activity peaks during first chart preparation (~8 hours before departure) as auto-upgradation and cancellations free up berths.
 
 ---
 

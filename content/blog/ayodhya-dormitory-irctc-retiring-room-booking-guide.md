@@ -1,8 +1,8 @@
 ---
-title: "Ayodhya Dormitory & IRCTC Retiring Room Booking Guide 2026"
-description: "Complete guide on booking Ayodhya Dham & Ayodhya Cantt railway station retiring rooms and dormitories online: PNR rules, hourly rates, amenities, and booking process."
+title: "Ayodhya Dormitory Booking: IRCTC Price, Rules & Fares"
+description: "Book Ayodhya Dham station AC dormitory beds from ₹150. Check IRCTC online PNR booking rules, tariffs, Ram Mandir distance, and 24-hr slot limits."
 date: "2026-07-31"
-updated: "2026-07-31"
+updated: "2026-08-05"
 tags:
   - ayodhya dormitory
   - irctc retiring room

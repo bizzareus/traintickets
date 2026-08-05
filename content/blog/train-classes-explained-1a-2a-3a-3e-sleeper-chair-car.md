@@ -1,8 +1,8 @@
 ---
-title: "Indian Train Classes Explained: 1A, 2A, 3A, 3E, SL & CC"
-description: "Confused by train class codes? Compare 1A, 2A, 3A, 3E, Sleeper, Chair Car & 2S — 3A in train meaning, UB/MB/LB berth acronyms, fares, and bedding rules."
+title: "3E vs 3A in Train: What is 3E Class & Seat Difference"
+description: "What is 3E class in train? Learn the difference between 3E and 3A, 3AC Economy berth layout, middle berth rules, and fare savings in 2026."
 date: "2026-07-06"
-updated: "2026-08-03"
+updated: "2026-08-05"
 tags:
   - train booking
   - 3a in train

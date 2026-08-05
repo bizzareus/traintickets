@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Refund Status Check: Track Cancelled Ticket Refund"
-description: "How do you check IRCTC refund status online? Read the step-by-step guide to track cancelled ticket refunds, PNR refund status, and delayed TDR refunds."
+title: "IRCTC Refund Timeline 2026: Track Refund Status & Days"
+description: "How many days for IRCTC ticket refund? Track cancelled ticket & TDR refund timeline (3–7 days for e-tickets, 15–45 days for TDR), and check status online."
 date: "2026-06-27"
-updated: "2026-08-01"
+updated: "2026-08-05"
 tags:
   - train booking
   - irctc

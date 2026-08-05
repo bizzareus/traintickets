@@ -1,8 +1,8 @@
 ---
-title: "Bullet Train in India: Routes, Speed, and Project Status"
-description: "When will India's bullet train run? Latest on the Mumbai–Ahmedabad route, 320 km/h speeds, all stations, fares, and the expected launch date. Updated 2026."
+title: "How Fast Are India's Bullet Trains? Speed & Route Status"
+description: "How fast is India's bullet train? Operates at 320 km/h (max design 350 km/h) on the Mumbai–Ahmedabad corridor. Check route status, station list & launch dates."
 date: "2026-06-30"
-updated: "2026-07-14"
+updated: "2026-08-05"
 tags:
   - bullet train
   - bullet train in india

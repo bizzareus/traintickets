@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Retiring Room & Dormitory Rules 2026: Booking & Rates"
-description: "How to book an IRCTC retiring room or dormitory online using your PNR: hourly rates, CNF/RAC eligibility rules, stay limits, and cancellation charges 2026."
+title: "IRCTC Retiring Room Booking: Online Rules, Rates & Dormitory"
+description: "Book IRCTC retiring rooms & station dormitories online with your PNR. Check 2026 hourly rates (₹100–₹1,500), CNF/RAC eligibility, and 48-hr limits."
 date: "2026-06-18"
-updated: "2026-07-31"
+updated: "2026-08-05"
 tags:
   - retiring room
   - irctc booking
@@ -159,7 +159,7 @@ To avoid penalty charges during unexpected train delays:
 
 ## What is the cancellation and refund policy for IRCTC retiring room bookings?
 
-**Retiring room cancellations made more than 48 hours prior to check-in incur a 10% deduction, cancellations between 24 and 48 hours incur a 25% deduction, between 4 and 24 hours incur a 50% deduction, and no refund is granted for cancellations within 4 hours of check-in.**
+**Retiring room cancellations made 2 or more days prior to the day of occupation incur a 20% deduction, cancellations 1 day prior incur a 50% deduction, and no refund is granted for cancellations made on the same day of occupation or in case of a no-show.**
 
 If your travel plans change, IRCTC allows online cancellation of retiring rooms through the booking portal. The refund amount depends on the time remaining before the scheduled check-in slot. Cancellation charges are deducted automatically, and the remaining amount is refunded to your original payment mode.
 
