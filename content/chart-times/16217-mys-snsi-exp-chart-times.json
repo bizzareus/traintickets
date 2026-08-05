@@ -259,11 +259,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "981.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GDG"
     },
     {
       "stationCode": "IDR",
@@ -272,11 +272,11 @@
       "departureTime": "00:45",
       "day": 2,
       "distance": "993.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GDG"
     },
     {
       "stationCode": "SUR",
@@ -285,11 +285,11 @@
       "departureTime": "02:55",
       "day": 2,
       "distance": "1052.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GDG"
     },
     {
       "stationCode": "KWV",
@@ -298,11 +298,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "1131.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GDG"
     },
     {
       "stationCode": "DD",
@@ -311,11 +311,11 @@
       "departureTime": "06:30",
       "day": 2,
       "distance": "1240.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GDG"
     },
     {
       "stationCode": "ANG",
@@ -324,11 +324,11 @@
       "departureTime": "08:10",
       "day": 2,
       "distance": "1324.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GDG"
     },
     {
       "stationCode": "BAP",
@@ -337,11 +337,11 @@
       "departureTime": "09:15",
       "day": 2,
       "distance": "1391.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GDG"
     },
     {
       "stationCode": "SNSI",
@@ -350,14 +350,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1427.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GDG"
     }
   ],
-  "summary": "Reservation chart preparation times for Mys Snsi Exp (16217) from MYS to SNSI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 27 stations.",
-  "generatedAt": "2026-08-04T20:59:55.644Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mys Snsi Exp (16217) is prepared at Nimbal (NBL) around 11:40 AM, with a second (vacancy) chart around 7:25 PM. 8 of 27 stations on the MYS to SNSI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:24:43.746Z",
+  "knownChartCount": 8
 }

@@ -25,11 +25,11 @@
       "departureTime": "07:05",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "PUT",
@@ -38,11 +38,11 @@
       "departureTime": "07:30",
       "day": 1,
       "distance": "36.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "EKM",
@@ -51,11 +51,11 @@
       "departureTime": "07:45",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "NG",
@@ -64,11 +64,11 @@
       "departureTime": "07:50",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "TRT",
@@ -77,11 +77,11 @@
       "departureTime": "08:05",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "AJJ",
@@ -90,11 +90,11 @@
       "departureTime": "08:25",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "TRL",
@@ -103,11 +103,11 @@
       "departureTime": "08:50",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "AVD",
@@ -116,11 +116,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "PER",
@@ -129,11 +129,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "145.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "MAS",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     }
   ],
-  "summary": "The first reservation chart for Tpty Mas Exp (16204) is prepared at Tirupati (TPTY) around 8:09 PM, with a second (vacancy) chart around 8:10 AM. 1 of 11 stations on the TPTY to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T20:10:51.587Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Tpty Mas Exp (16204) is prepared at Tirupati (TPTY) around 8:09 PM, with a second (vacancy) chart around 8:10 AM. 11 of 11 stations on the TPTY to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:24:10.141Z",
+  "knownChartCount": 11
 }

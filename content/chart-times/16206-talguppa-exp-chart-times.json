@@ -25,11 +25,11 @@
       "departureTime": "06:35",
       "day": 1,
       "distance": "35.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "HLN",
@@ -38,11 +38,11 @@
       "departureTime": "07:25",
       "day": 1,
       "distance": "89.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "HAS",
@@ -51,11 +51,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "ASK",
@@ -64,11 +64,11 @@
       "departureTime": "08:55",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "DRU",
@@ -77,11 +77,11 @@
       "departureTime": "09:28",
       "day": 1,
       "distance": "205.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "RRB",
@@ -90,11 +90,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "211.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "TKE",
@@ -103,11 +103,11 @@
       "departureTime": "10:08",
       "day": 1,
       "distance": "236.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "BDVT",
@@ -116,11 +116,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "256.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "SMET",
@@ -129,11 +129,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "274.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "KMSI",
@@ -142,11 +142,11 @@
       "departureTime": "11:26",
       "day": 1,
       "distance": "300.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "ARU",
@@ -155,11 +155,11 @@
       "departureTime": "11:41",
       "day": 1,
       "distance": "315.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "ANF",
@@ -168,11 +168,11 @@
       "departureTime": "12:05",
       "day": 1,
       "distance": "330.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "SRF",
@@ -181,11 +181,11 @@
       "departureTime": "12:35",
       "day": 1,
       "distance": "357.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "TLGP",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "372.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     }
   ],
-  "summary": "The first reservation chart for Talguppa Exp (16206) is prepared at Mysuru Jn (MYS) around 7:49 PM, with a second (vacancy) chart around 10:15 AM. 1 of 15 stations on the MYS to TLGP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T20:17:17.404Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Talguppa Exp (16206) is prepared at Mysuru Jn (MYS) around 7:49 PM, with a second (vacancy) chart around 10:15 AM. 15 of 15 stations on the MYS to TLGP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:24:15.486Z",
+  "knownChartCount": 15
 }

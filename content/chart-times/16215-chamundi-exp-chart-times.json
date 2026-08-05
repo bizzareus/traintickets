@@ -25,11 +25,11 @@
       "departureTime": "07:05",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "MYA",
@@ -38,11 +38,11 @@
       "departureTime": "07:28",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "MAD",
@@ -51,11 +51,11 @@
       "departureTime": "07:46",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "CPT",
@@ -64,11 +64,11 @@
       "departureTime": "08:01",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "RMGM",
@@ -77,11 +77,11 @@
       "departureTime": "08:12",
       "day": 1,
       "distance": "94.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "BID",
@@ -90,11 +90,11 @@
       "departureTime": "08:24",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "KGI",
@@ -103,11 +103,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "NYH",
@@ -116,11 +116,11 @@
       "departureTime": "08:46",
       "day": 1,
       "distance": "131.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "SBC",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     }
   ],
-  "summary": "The first reservation chart for Chamundi Exp (16215) is prepared at Mysuru Jn (MYS) around 7:50 PM, with a second (vacancy) chart around 7:13 AM. 1 of 10 stations on the MYS to SBC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T20:23:11.610Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Chamundi Exp (16215) is prepared at Mysuru Jn (MYS) around 7:50 PM, with a second (vacancy) chart around 7:13 AM. 10 of 10 stations on the MYS to SBC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:24:35.410Z",
+  "knownChartCount": 10
 }
