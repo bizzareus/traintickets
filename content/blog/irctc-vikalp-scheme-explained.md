@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Vikalp Scheme 2026: Rules, Alternate Allocation & Refund"
+title: "IRCTC Vikalp Scheme 2026: Alternate Train Rules & Refund"
 description: "IRCTC's Vikalp (ATAS) scheme shifts waitlisted passengers to an alternative train with a confirmed berth. How it works, when to opt in, and odds-boosting hacks."
 date: "2026-05-29"
-updated: "2026-08-03"
+updated: "2026-08-05"
 tags:
   - vikalp scheme
   - irctc

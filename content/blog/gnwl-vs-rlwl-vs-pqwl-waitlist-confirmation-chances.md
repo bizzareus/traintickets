@@ -2,7 +2,7 @@
 title: "GNWL vs RLWL vs PQWL: Which Waitlist Confirms Fastest?"
 description: "GNWL clears often, PQWL rarely does — your waitlist type matters more than the number. Compare GNWL, RLWL, PQWL, TQWL & RSWL confirmation chances before you book."
 date: "2026-05-29"
-updated: "2026-08-03"
+updated: "2026-08-05"
 tags:
   - waiting list
   - gnwl

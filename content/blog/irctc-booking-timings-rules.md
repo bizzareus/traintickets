@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Maintenance Time 2026: 11:45 PM Night Shutdown Hours"
+title: "IRCTC Maintenance Time & Booking Rules (2026)"
 description: "Is IRCTC down? IRCTC server maintenance runs daily from 11:45 PM to 12:20 AM IST. Learn night ticket booking limits, payment downtime & reopening times."
 date: "2026-06-23"
-updated: "2026-07-31"
+updated: "2026-08-05"
 tags:
   - train booking
   - irctc
