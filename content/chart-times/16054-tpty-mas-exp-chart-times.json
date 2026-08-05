@@ -25,11 +25,11 @@
       "departureTime": "10:40",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "PUT",
@@ -38,11 +38,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "36.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "EKM",
@@ -51,11 +51,11 @@
       "departureTime": "11:17",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "TRT",
@@ -64,11 +64,11 @@
       "departureTime": "11:35",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "AJJ",
@@ -77,11 +77,11 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "TRL",
@@ -90,11 +90,11 @@
       "departureTime": "12:20",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "PER",
@@ -103,11 +103,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "145.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "MAS",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     }
   ],
-  "summary": "The first reservation chart for Tpty Mas Exp (16054) is prepared at Tirupati (TPTY) around 8:25 PM, with a second (vacancy) chart around 11:40 AM. 1 of 9 stations on the TPTY to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T18:56:08.743Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Tpty Mas Exp (16054) is prepared at Tirupati (TPTY) around 8:25 PM, with a second (vacancy) chart around 11:40 AM. 9 of 9 stations on the TPTY to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:22:06.129Z",
+  "knownChartCount": 9
 }

@@ -272,11 +272,11 @@
       "departureTime": "00:15",
       "day": 3,
       "distance": "1211.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "TEL",
@@ -285,11 +285,11 @@
       "departureTime": "00:40",
       "day": 3,
       "distance": "1242.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "CLX",
@@ -298,11 +298,11 @@
       "departureTime": "01:30",
       "day": 3,
       "distance": "1300.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "OGL",
@@ -311,11 +311,11 @@
       "departureTime": "02:10",
       "day": 3,
       "distance": "1349.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "NLR",
@@ -324,11 +324,11 @@
       "departureTime": "04:20",
       "day": 3,
       "distance": "1465.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "SPE",
@@ -337,11 +337,11 @@
       "departureTime": "06:10",
       "day": 3,
       "distance": "1559.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "MS",
@@ -350,11 +350,11 @@
       "departureTime": "08:15",
       "day": 3,
       "distance": "1645.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "TBM",
@@ -363,14 +363,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "1670.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     }
   ],
-  "summary": "Reservation chart preparation times for Tbm Amrit Bharat (16108) from SRC to TBM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 28 stations.",
-  "generatedAt": "2026-08-04T19:15:25.223Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tbm Amrit Bharat (16108) is prepared at Vijayawada Jn (BZA) around 1:13 PM, with a second (vacancy) chart around 11:40 PM. 8 of 28 stations on the SRC to TBM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:22:54.795Z",
+  "knownChartCount": 8
 }

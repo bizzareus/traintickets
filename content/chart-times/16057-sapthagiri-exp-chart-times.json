@@ -25,11 +25,11 @@
       "departureTime": "06:50",
       "day": 1,
       "distance": "16.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "TRL",
@@ -38,11 +38,11 @@
       "departureTime": "07:10",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "AJJ",
@@ -51,11 +51,11 @@
       "departureTime": "07:37",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "TRT",
@@ -64,11 +64,11 @@
       "departureTime": "07:55",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "EKM",
@@ -77,11 +77,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "PUT",
@@ -90,11 +90,11 @@
       "departureTime": "08:30",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "RU",
@@ -103,11 +103,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "141.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "TPTY",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     }
   ],
-  "summary": "The first reservation chart for Sapthagiri Exp (16057) is prepared at Mgr Chennai Ctl (MAS) around 8:14 PM, with a second (vacancy) chart around 6:15 AM. 1 of 9 stations on the MAS to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T18:57:11.359Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Sapthagiri Exp (16057) is prepared at Mgr Chennai Ctl (MAS) around 8:14 PM, with a second (vacancy) chart around 6:15 AM. 9 of 9 stations on the MAS to TPTY route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:22:07.906Z",
+  "knownChartCount": 9
 }

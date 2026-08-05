@@ -25,11 +25,11 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "17.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "TBM",
@@ -38,11 +38,11 @@
       "departureTime": "18:42",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "CGL",
@@ -51,11 +51,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "56.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "MMK",
@@ -64,11 +64,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "81.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "MLMR",
@@ -77,11 +77,11 @@
       "departureTime": "19:48",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "OLA",
@@ -90,11 +90,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "110.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "TMV",
@@ -103,11 +103,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "122.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "MTL",
@@ -116,11 +116,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "131.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "VM",
@@ -129,11 +129,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "159.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "CBU",
@@ -142,11 +142,11 @@
       "departureTime": "21:46",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "VI",
@@ -155,11 +155,11 @@
       "departureTime": "21:58",
       "day": 1,
       "distance": "189.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "PDY",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     }
   ],
-  "summary": "The first reservation chart for Ms Pdy Express (16115) is prepared at Chennai Egmore (MS) around 8:11 AM, with a second (vacancy) chart around 5:55 PM. 1 of 13 stations on the MS to PDY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T19:16:42.310Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Ms Pdy Express (16115) is prepared at Chennai Egmore (MS) around 8:11 AM, with a second (vacancy) chart around 5:55 PM. 13 of 13 stations on the MS to PDY route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:22:57.090Z",
+  "knownChartCount": 13
 }

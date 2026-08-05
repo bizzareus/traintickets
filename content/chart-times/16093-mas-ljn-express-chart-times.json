@@ -389,11 +389,11 @@
       "departureTime": "00:05",
       "day": 2,
       "distance": "1006.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "SEGM",
@@ -402,11 +402,11 @@
       "departureTime": "01:05",
       "day": 2,
       "distance": "1040.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "NGP",
@@ -415,11 +415,11 @@
       "departureTime": "02:15",
       "day": 2,
       "distance": "1116.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "KATL",
@@ -428,11 +428,11 @@
       "departureTime": "03:05",
       "day": 2,
       "distance": "1175.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "MTY",
@@ -441,11 +441,11 @@
       "departureTime": "04:15",
       "day": 2,
       "distance": "1259.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "AMLA",
@@ -454,11 +454,11 @@
       "departureTime": "04:32",
       "day": 2,
       "distance": "1282.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BZU",
@@ -467,11 +467,11 @@
       "departureTime": "04:52",
       "day": 2,
       "distance": "1305.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "GDYA",
@@ -480,11 +480,11 @@
       "departureTime": "05:35",
       "day": 2,
       "distance": "1341.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "ET",
@@ -493,11 +493,11 @@
       "departureTime": "07:50",
       "day": 2,
       "distance": "1411.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPL",
@@ -506,11 +506,11 @@
       "departureTime": "09:40",
       "day": 2,
       "distance": "1503.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "BINA",
@@ -519,11 +519,11 @@
       "departureTime": "11:50",
       "day": 2,
       "distance": "1642.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "LAR",
@@ -532,11 +532,11 @@
       "departureTime": "12:40",
       "day": 2,
       "distance": "1704.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "VGLJ",
@@ -545,11 +545,11 @@
       "departureTime": "14:13",
       "day": 2,
       "distance": "1793.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "ORAI",
@@ -558,11 +558,11 @@
       "departureTime": "15:30",
       "day": 2,
       "distance": "1907.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "PHN",
@@ -571,11 +571,11 @@
       "departureTime": "16:07",
       "day": 2,
       "distance": "1954.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "CNB",
@@ -584,11 +584,11 @@
       "departureTime": "18:30",
       "day": 2,
       "distance": "2013.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "LJN",
@@ -597,14 +597,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "2086.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BPL"
     }
   ],
-  "summary": "The first reservation chart for Mas Ljn Express (16093) is prepared at Mgr Chennai Ctl (MAS) around 8:10 PM, with a second (vacancy) chart around 4:55 AM. 1 of 46 stations on the MAS to LJN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T19:03:21.475Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Mas Ljn Express (16093) is prepared at Mgr Chennai Ctl (MAS) around 8:10 PM, with a second (vacancy) chart around 4:55 AM. 18 of 46 stations on the MAS to LJN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:22:20.705Z",
+  "knownChartCount": 18
 }

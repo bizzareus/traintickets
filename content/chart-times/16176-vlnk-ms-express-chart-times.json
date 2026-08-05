@@ -25,11 +25,11 @@
       "departureTime": "22:08",
       "day": 1,
       "distance": "11.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "NCR",
@@ -38,11 +38,11 @@
       "departureTime": "22:22",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "KIK",
@@ -51,11 +51,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "TXR",
@@ -64,11 +64,11 @@
       "departureTime": "22:54",
       "day": 1,
       "distance": "35.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "PEM",
@@ -77,11 +77,11 @@
       "departureTime": "23:18",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "MV",
@@ -90,11 +90,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "SY",
@@ -103,11 +103,11 @@
       "departureTime": "23:58",
       "day": 1,
       "distance": "88.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "CDM",
@@ -116,11 +116,11 @@
       "departureTime": "00:15",
       "day": 2,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "CUPJ",
@@ -129,11 +129,11 @@
       "departureTime": "00:38",
       "day": 2,
       "distance": "143.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "VM",
@@ -142,11 +142,11 @@
       "departureTime": "02:10",
       "day": 2,
       "distance": "190.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "CGL",
@@ -155,11 +155,11 @@
       "departureTime": "03:35",
       "day": 2,
       "distance": "293.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "TBM",
@@ -168,11 +168,11 @@
       "departureTime": "04:10",
       "day": 2,
       "distance": "323.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "MS",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "348.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     }
   ],
-  "summary": "The first reservation chart for Vlnk Ms Express (16176) is prepared at VELLANKANNI (VLNK) around 11:53 AM, with a second (vacancy) chart around 11:20 PM. 1 of 14 stations on the VLNK to MS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T19:59:26.887Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Vlnk Ms Express (16176) is prepared at VELLANKANNI (VLNK) around 11:53 AM, with a second (vacancy) chart around 11:20 PM. 14 of 14 stations on the VLNK to MS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:23:43.039Z",
+  "knownChartCount": 14
 }

@@ -25,11 +25,11 @@
       "departureTime": "05:46",
       "day": 1,
       "distance": "8.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "CBU",
@@ -38,11 +38,11 @@
       "departureTime": "05:57",
       "day": 1,
       "distance": "16.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "VM",
@@ -51,11 +51,11 @@
       "departureTime": "06:25",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "MTL",
@@ -64,11 +64,11 @@
       "departureTime": "06:50",
       "day": 1,
       "distance": "66.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "TMV",
@@ -77,11 +77,11 @@
       "departureTime": "07:02",
       "day": 1,
       "distance": "75.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "MLMR",
@@ -90,11 +90,11 @@
       "departureTime": "07:25",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "MMK",
@@ -103,11 +103,11 @@
       "departureTime": "07:38",
       "day": 1,
       "distance": "116.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "CGL",
@@ -116,11 +116,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "141.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "TBM",
@@ -129,11 +129,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "172.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "TLM",
@@ -142,11 +142,11 @@
       "departureTime": "08:54",
       "day": 1,
       "distance": "180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "MS",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     }
   ],
-  "summary": "The first reservation chart for Pdy Ms Express (16116) is prepared at Puducherry (PDY) around 8:17 PM, with a second (vacancy) chart around 5:20 AM. 1 of 12 stations on the PDY to MS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-04T19:17:59.366Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Pdy Ms Express (16116) is prepared at Puducherry (PDY) around 8:17 PM, with a second (vacancy) chart around 5:20 AM. 12 of 12 stations on the PDY to MS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:22:59.222Z",
+  "knownChartCount": 12
 }
