@@ -2,7 +2,7 @@
 title: "IRCTC के लिए ऑटो अपग्रेडेशन पर विचार करें: नियम और अर्थ"
 description: "'ऑटो अपग्रेडेशन के लिए विचार करें' का अर्थ IRCTC में क्या है? जानें कि मुफ्त स्लीपर से 3AC अपग्रेड कैसे काम करते हैं, शून्य अतिरिक्त शुल्क नियम और 2026 में PNR पात्रता।"
 date: "2026-06-16"
-updated: "2026-08-04"
+updated: "2026-08-06"
 tags:
   - irctc auto upgradation
   - consider for auto upgradation in irctc means

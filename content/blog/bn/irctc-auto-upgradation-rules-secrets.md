@@ -2,7 +2,7 @@
 title: "IRCTC-এর জন্য অটো আপগ্রেডেশন বিবেচনা: নিয়ম ও অর্থ"
 description: "'অটো আপগ্রেডেশনের জন্য বিবেচনা' মানে কী IRCTC-তে? শিখুন কিভাবে বিনামূল্যে স্লিপার থেকে 3AC আপগ্রেড হয়, শূন্য অতিরিক্ত ফি নিয়ম এবং 2026 সালে PNR যোগ্যতা।"
 date: "2026-06-16"
-updated: "2026-08-04"
+updated: "2026-08-06"
 tags:
   - irctc auto upgradation
   - consider for auto upgradation in irctc means

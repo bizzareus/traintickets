@@ -1,8 +1,8 @@
 ---
-title: "WL Ticket: Will Yours Confirm? Chances by WL Number (2026)"
+title: "WL Meaning in IRCTC: Will Your Waiting Ticket Confirm?"
 description: "WL full form is Waiting List. Check whether your WL ticket will confirm, what WL/1 vs WL/40 mean for your chances, and if you can board with one."
 date: "2026-06-11"
-updated: "2026-08-05"
+updated: "2026-08-06"
 tags:
   - waiting list
   - wl

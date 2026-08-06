@@ -2,7 +2,7 @@
 title: "IRCTC Curr Avbl Meaning: Rules, Timings & Booking (2026)"
 description: "CURR_AVBL, Curr Avl, অথবা Curr Available এর অর্থ কি IRCTC তে? নিয়ম, চার্টের সময়, 100% নিশ্চিত বুকিং উইন্ডো এবং আসনের খালি থাকার টিপস শিখুন।"
 date: "2026-06-11"
-updated: "2026-08-05"
+updated: "2026-08-06"
 tags:
   - বর্তমান প্রাপ্যতা
   - curr avbl অর্থ

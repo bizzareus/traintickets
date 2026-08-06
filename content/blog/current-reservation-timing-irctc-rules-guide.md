@@ -2,7 +2,7 @@
 title: "Current Reservation IRCTC: Booking Timings & Fares (2026)"
 description: "When does current reservation open in IRCTC? Learn 1st vs 2nd chart prep timing, current availability discount fares, and how to book vacant berths online."
 date: "2026-08-05"
-updated: "2026-08-05"
+updated: "2026-08-06"
 tags:
   - train booking
   - irctc
@@ -33,7 +33,7 @@ When booking regular tickets earlier, waitlisted tickets follow a confirmation p
 
 $$\text{WL (Waiting List)} \rightarrow \text{RAC (Reservation Against Cancellation)} \rightarrow \text{Confirmed}$$
 
-If waitlisted e-tickets fail to reach RAC or confirmed status by chart preparation, they are automatically cancelled by the system, and a full refund minus clerkage is issued. Any vacant berths generated through these cancellations become available under Current Reservation.
+If waitlisted e-tickets fail to reach RAC or confirmed status by chart preparation, they are automatically cancelled by the system, and a full refund of fare (with no cancellation or clerkage fee deducted) is issued. Any vacant berths generated through these cancellations become available under Current Reservation.
 
 ---
 
@@ -69,7 +69,7 @@ If you are already at the station, you can also view vacant berths on visual coa
 
 ## What Are the Discount Fares and Cancellation Rules for Current Tickets?
 
-Current reservation tickets are offered at a discounted rate of up to 10% to 50% off base fares for specific trains, encouraging passengers to utilize empty capacity. However, cancellation rules are strict: confirmed current tickets cancelled before departure incur standard flat clerkage or cancellation fees.
+Current reservation tickets are offered at a discounted rate of up to 10% to 50% off base fares for specific trains, encouraging passengers to utilize empty capacity. However, cancellation rules are strict: confirmed current tickets cancelled before departure incur standard cancellation fees.
 
 Key financial and cancellation rules include:
 - **Base Fare Discount:** Up to 10% base fare discount applied automatically by IRCTC on select express and superfast trains.
