@@ -25,11 +25,11 @@
       "departureTime": "16:12",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "19:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AZ"
     },
     {
       "stationCode": "MGAE",
@@ -38,11 +38,11 @@
       "departureTime": "16:21",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "19:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AZ"
     },
     {
       "stationCode": "NHT",
@@ -51,11 +51,11 @@
       "departureTime": "16:42",
       "day": 1,
       "distance": "44.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "19:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AZ"
     },
     {
       "stationCode": "RPH",
@@ -64,11 +64,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "58.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "MLV",
@@ -77,11 +77,11 @@
       "departureTime": "17:17",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "SNT",
@@ -90,11 +90,11 @@
       "departureTime": "17:32",
       "day": 1,
       "distance": "86.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "AMP",
@@ -103,11 +103,11 @@
       "departureTime": "17:46",
       "day": 1,
       "distance": "99.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "PNE",
@@ -116,11 +116,11 @@
       "departureTime": "18:01",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "BHP",
@@ -129,11 +129,11 @@
       "departureTime": "18:11",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "GKH",
@@ -142,11 +142,11 @@
       "departureTime": "18:27",
       "day": 1,
       "distance": "137.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "BWN",
@@ -155,11 +155,11 @@
       "departureTime": "19:28",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "BDC",
@@ -168,11 +168,11 @@
       "departureTime": "20:38",
       "day": 1,
       "distance": "237.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "SHE",
@@ -181,11 +181,11 @@
       "departureTime": "20:56",
       "day": 1,
       "distance": "255.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     },
     {
       "stationCode": "HWH",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "277.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RPH"
     }
   ],
-  "summary": "The first reservation chart for Ganadevta Exp (13018) is prepared at Azimganj Jn (AZ) around 8:39 PM, with a second (vacancy) chart around 7:13 PM. 1 of 15 stations on the AZ to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T22:30:55.167Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Ganadevta Exp (13018) is prepared at Azimganj Jn (AZ) around 8:39 PM, with a second (vacancy) chart around 7:13 PM. 15 of 15 stations on the AZ to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T22:53:22.494Z",
+  "knownChartCount": 15
 }

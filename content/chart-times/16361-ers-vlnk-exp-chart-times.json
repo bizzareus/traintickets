@@ -337,11 +337,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "507.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "QLN"
     },
     {
       "stationCode": "ATQ",
@@ -350,11 +350,11 @@
       "departureTime": "01:18",
       "day": 2,
       "distance": "535.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "QLN"
     },
     {
       "stationCode": "PVI",
@@ -363,11 +363,11 @@
       "departureTime": "01:38",
       "day": 2,
       "distance": "560.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "QLN"
     },
     {
       "stationCode": "PKT",
@@ -376,11 +376,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "581.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "QLN"
     },
     {
       "stationCode": "AMM",
@@ -389,11 +389,11 @@
       "departureTime": "02:13",
       "day": 2,
       "distance": "593.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "QLN"
     },
     {
       "stationCode": "TTP",
@@ -402,11 +402,11 @@
       "departureTime": "02:50",
       "day": 2,
       "distance": "630.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "QLN"
     },
     {
       "stationCode": "TVR",
@@ -415,11 +415,11 @@
       "departureTime": "03:35",
       "day": 2,
       "distance": "656.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "QLN"
     },
     {
       "stationCode": "NGT",
@@ -428,11 +428,11 @@
       "departureTime": "04:50",
       "day": 2,
       "distance": "679.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "QLN"
     },
     {
       "stationCode": "VLNK",
@@ -441,14 +441,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "689.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "QLN"
     }
   ],
-  "summary": "Reservation chart preparation times for Ers Vlnk Exp (16361) from ERS to VLNK are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 34 stations.",
-  "generatedAt": "2026-08-05T10:27:59.031Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ers Vlnk Exp (16361) is prepared at KARAIKKUDI JN (KKDI) around 6:32 AM, with a second (vacancy) chart around 4:20 PM. 9 of 34 stations on the ERS to VLNK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:01:37.148Z",
+  "knownChartCount": 9
 }

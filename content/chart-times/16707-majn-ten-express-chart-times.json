@@ -12,11 +12,11 @@
       "departureTime": "13:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "KGQ",
@@ -25,11 +25,11 @@
       "departureTime": "13:36",
       "day": 1,
       "distance": "48.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "KZE",
@@ -38,11 +38,11 @@
       "departureTime": "13:56",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "CAN",
@@ -51,11 +51,11 @@
       "departureTime": "14:55",
       "day": 1,
       "distance": "133.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "TLY",
@@ -64,11 +64,11 @@
       "departureTime": "15:18",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "BDJ",
@@ -77,11 +77,11 @@
       "departureTime": "15:43",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "CLT",
@@ -90,11 +90,11 @@
       "departureTime": "16:40",
       "day": 1,
       "distance": "222.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "TIR",
@@ -103,11 +103,11 @@
       "departureTime": "17:20",
       "day": 1,
       "distance": "263.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "SRR",
@@ -116,11 +116,11 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "308.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "PGT",
@@ -129,11 +129,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "353.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "PGTN",
@@ -142,11 +142,11 @@
       "departureTime": "22:02",
       "day": 1,
       "distance": "357.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "KLGD",
@@ -155,11 +155,11 @@
       "departureTime": "22:26",
       "day": 1,
       "distance": "375.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "POY",
@@ -168,11 +168,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "410.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "UDT",
@@ -292,7 +292,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Majn Ten Express (16707) from MAJN to TEN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 22 stations.",
-  "generatedAt": "2026-08-05T14:54:00.464Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Majn Ten Express (16707) is prepared at Mangaluru Jn (MAJN) around 8:11 PM. 13 of 22 stations on the MAJN to TEN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:09:50.091Z",
+  "knownChartCount": 13
 }

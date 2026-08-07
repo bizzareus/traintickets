@@ -246,11 +246,11 @@
       "departureTime": "00:50",
       "day": 3,
       "distance": "1679.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ANG"
     },
     {
       "stationCode": "BJP",
@@ -259,11 +259,11 @@
       "departureTime": "03:10",
       "day": 3,
       "distance": "1788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ANG"
     },
     {
       "stationCode": "LMT",
@@ -272,11 +272,11 @@
       "departureTime": "04:20",
       "day": 3,
       "distance": "1850.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ANG"
     },
     {
       "stationCode": "BGK",
@@ -285,11 +285,11 @@
       "departureTime": "05:20",
       "day": 3,
       "distance": "1885.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ANG"
     },
     {
       "stationCode": "BDM",
@@ -298,11 +298,11 @@
       "departureTime": "05:50",
       "day": 3,
       "distance": "1911.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ANG"
     },
     {
       "stationCode": "GDG",
@@ -311,11 +311,11 @@
       "departureTime": "08:00",
       "day": 3,
       "distance": "1978.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ANG"
     },
     {
       "stationCode": "UBL",
@@ -324,14 +324,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2037.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ANG"
     }
   ],
-  "summary": "Reservation chart preparation times for Bnrs Ubl Expres (17324) from BNRS to UBL are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 25 stations.",
-  "generatedAt": "2026-08-05T21:52:10.054Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bnrs Ubl Expres (17324) is prepared at Solapur Jn (SUR) around 12:20 PM, with a second (vacancy) chart around 8:05 PM. 7 of 25 stations on the BNRS to UBL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:22:48.242Z",
+  "knownChartCount": 7
 }

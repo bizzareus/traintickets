@@ -12,11 +12,11 @@
       "departureTime": "09:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "SC",
@@ -25,11 +25,11 @@
       "departureTime": "09:55",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "KCG",
@@ -38,11 +38,11 @@
       "departureTime": "10:20",
       "day": 1,
       "distance": "17.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "SHNR",
@@ -51,11 +51,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "MBNR",
@@ -64,11 +64,11 @@
       "departureTime": "11:40",
       "day": 1,
       "distance": "123.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "GWD",
@@ -77,11 +77,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "198.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "KRNT",
@@ -90,11 +90,11 @@
       "departureTime": "13:55",
       "day": 1,
       "distance": "253.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:09",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "DHNE",
@@ -103,11 +103,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "307.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:09",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "GTL",
@@ -331,7 +331,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Hyb Vsg Express (17021) from HYB to VSG are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 25 stations.",
-  "generatedAt": "2026-08-05T16:20:00.696Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hyb Vsg Express (17021) is prepared at Hyderabad Decan (HYB) around 8:58 PM. 8 of 25 stations on the HYB to VSG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:14:06.623Z",
+  "knownChartCount": 8
 }

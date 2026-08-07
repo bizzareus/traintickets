@@ -12,11 +12,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "TNA",
@@ -25,11 +25,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KYN",
@@ -38,11 +38,11 @@
       "departureTime": "00:05",
       "day": 2,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KJT",
@@ -51,11 +51,11 @@
       "departureTime": "01:00",
       "day": 2,
       "distance": "84.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "LNL",
@@ -64,11 +64,11 @@
       "departureTime": "01:55",
       "day": 2,
       "distance": "112.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "PUNE",
@@ -77,11 +77,11 @@
       "departureTime": "03:05",
       "day": 2,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "LNN",
@@ -90,11 +90,11 @@
       "departureTime": "04:45",
       "day": 2,
       "distance": "268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "STR",
@@ -103,11 +103,11 @@
       "departureTime": "06:00",
       "day": 2,
       "distance": "322.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "KRD",
@@ -116,11 +116,11 @@
       "departureTime": "06:55",
       "day": 2,
       "distance": "380.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "SLI",
@@ -129,11 +129,11 @@
       "departureTime": "08:25",
       "day": 2,
       "distance": "448.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "MRJ",
@@ -142,11 +142,11 @@
       "departureTime": "09:30",
       "day": 2,
       "distance": "455.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "BGM",
@@ -155,11 +155,11 @@
       "departureTime": "11:55",
       "day": 2,
       "distance": "592.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "DWR",
@@ -168,11 +168,11 @@
       "departureTime": "13:55",
       "day": 2,
       "distance": "714.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "UBL",
@@ -214,7 +214,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ltt  Smvb  Exp (16554) from LTT to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-08-05T12:07:45.481Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ltt  Smvb  Exp (16554) is prepared at Lokmanyatilak T (LTT) around 1:41 PM, with a second (vacancy) chart around 10:53 PM. 13 of 16 stations on the LTT to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:05:04.887Z",
+  "knownChartCount": 13
 }

@@ -181,11 +181,11 @@
       "departureTime": "00:27",
       "day": 2,
       "distance": "571.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RC"
     },
     {
       "stationCode": "YNK",
@@ -194,11 +194,11 @@
       "departureTime": "01:40",
       "day": 2,
       "distance": "654.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RC"
     },
     {
       "stationCode": "SMVB",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "672.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RC"
     }
   ],
-  "summary": "Reservation chart preparation times for Bidr Smvb Exp (16560) from BIDR to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-08-05T12:12:56.605Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bidr Smvb Exp (16560) is prepared at Hindupur (HUP) around 9:27 AM, with a second (vacancy) chart around 7:05 PM. 3 of 16 stations on the BIDR to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:05:27.380Z",
+  "knownChartCount": 3
 }

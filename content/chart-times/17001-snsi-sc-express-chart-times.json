@@ -142,11 +142,11 @@
       "departureTime": "00:05",
       "day": 2,
       "distance": "374.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "PRLI",
@@ -155,11 +155,11 @@
       "departureTime": "01:55",
       "day": 2,
       "distance": "437.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "LTRR",
@@ -168,11 +168,11 @@
       "departureTime": "03:10",
       "day": 2,
       "distance": "500.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "UDGR",
@@ -181,11 +181,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "533.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "BHLK",
@@ -194,11 +194,11 @@
       "departureTime": "04:25",
       "day": 2,
       "distance": "576.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "BIDR",
@@ -207,11 +207,11 @@
       "departureTime": "05:02",
       "day": 2,
       "distance": "614.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "ZB",
@@ -220,11 +220,11 @@
       "departureTime": "05:35",
       "day": 2,
       "distance": "645.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "VKB",
@@ -233,11 +233,11 @@
       "departureTime": "06:45",
       "day": 2,
       "distance": "705.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "SKP",
@@ -246,11 +246,11 @@
       "departureTime": "07:09",
       "day": 2,
       "distance": "733.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "LPI",
@@ -259,11 +259,11 @@
       "departureTime": "07:20",
       "day": 2,
       "distance": "754.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "BMT",
@@ -272,11 +272,11 @@
       "departureTime": "08:00",
       "day": 2,
       "distance": "772.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "SC",
@@ -285,14 +285,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "776.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     }
   ],
-  "summary": "Reservation chart preparation times for Snsi Sc Express (17001) from SNSI to SC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 22 stations.",
-  "generatedAt": "2026-08-05T15:50:49.298Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Snsi Sc Express (17001) is prepared at Parbhani Jn (PBN) around 10:51 AM, with a second (vacancy) chart around 8:35 PM. 12 of 22 stations on the SNSI to SC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:12:48.659Z",
+  "knownChartCount": 12
 }

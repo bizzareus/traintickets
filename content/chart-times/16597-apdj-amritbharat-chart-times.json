@@ -480,11 +480,11 @@
       "departureTime": "01:10",
       "day": 3,
       "distance": "2269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "BOE",
@@ -493,11 +493,11 @@
       "departureTime": "02:27",
       "day": 3,
       "distance": "2357.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "KNE",
@@ -506,11 +506,11 @@
       "departureTime": "03:07",
       "day": 3,
       "distance": "2415.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "AUB",
@@ -519,11 +519,11 @@
       "departureTime": "03:37",
       "day": 3,
       "distance": "2445.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "NJP",
@@ -532,11 +532,11 @@
       "departureTime": "05:00",
       "day": 3,
       "distance": "2502.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "SGUJ",
@@ -545,11 +545,11 @@
       "departureTime": "05:45",
       "day": 3,
       "distance": "2509.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "BNV",
@@ -558,11 +558,11 @@
       "departureTime": "07:52",
       "day": 3,
       "distance": "2601.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "DLO",
@@ -571,11 +571,11 @@
       "departureTime": "08:03",
       "day": 3,
       "distance": "2610.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "HSA",
@@ -584,11 +584,11 @@
       "departureTime": "08:30",
       "day": 3,
       "distance": "2635.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "APDJ",
@@ -597,14 +597,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2670.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     }
   ],
-  "summary": "Reservation chart preparation times for Apdj Amritbharat (16597) from SMVB to APDJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 46 stations.",
-  "generatedAt": "2026-08-05T13:32:07.470Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Apdj Amritbharat (16597) is prepared at Malda Town (MLDT) around 7:15 PM, with a second (vacancy) chart around 10:55 AM. 10 of 46 stations on the SMVB to APDJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:07:34.762Z",
+  "knownChartCount": 10
 }

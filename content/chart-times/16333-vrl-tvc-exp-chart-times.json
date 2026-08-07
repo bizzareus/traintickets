@@ -12,11 +12,11 @@
       "departureTime": "06:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "KSD",
@@ -25,11 +25,11 @@
       "departureTime": "07:32",
       "day": 1,
       "distance": "47.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "JND",
@@ -38,11 +38,11 @@
       "departureTime": "07:58",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "NUD",
@@ -51,11 +51,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "GDL",
@@ -64,11 +64,11 @@
       "departureTime": "09:26",
       "day": 1,
       "distance": "144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "BKNG",
@@ -77,11 +77,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "RJT",
@@ -90,11 +90,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "185.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "WKR",
@@ -103,11 +103,11 @@
       "departureTime": "11:35",
       "day": 1,
       "distance": "227.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "SUNR",
@@ -116,11 +116,11 @@
       "departureTime": "12:49",
       "day": 1,
       "distance": "301.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "VG",
@@ -129,11 +129,11 @@
       "departureTime": "14:07",
       "day": 1,
       "distance": "367.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "ADI",
@@ -142,11 +142,11 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "432.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ANND",
@@ -155,11 +155,11 @@
       "departureTime": "16:43",
       "day": 1,
       "distance": "496.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "BRC",
@@ -168,11 +168,11 @@
       "departureTime": "17:22",
       "day": 1,
       "distance": "532.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "AKV",
@@ -181,11 +181,11 @@
       "departureTime": "18:26",
       "day": 1,
       "distance": "611.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:14",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ST",
@@ -773,7 +773,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Vrl Tvc Exp (16333) from VRL to TVC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 59 stations.",
-  "generatedAt": "2026-08-05T09:33:41.158Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Vrl Tvc Exp (16333) is prepared at Veraval (VRL) around 8:15 PM. 14 of 59 stations on the VRL to TVC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:58:47.910Z",
+  "knownChartCount": 14
 }

@@ -428,11 +428,11 @@
       "departureTime": "01:05",
       "day": 3,
       "distance": "2163.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "CRP",
@@ -441,11 +441,11 @@
       "departureTime": "01:53",
       "day": 3,
       "distance": "2178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "KTH",
@@ -454,11 +454,11 @@
       "departureTime": "02:30",
       "day": 3,
       "distance": "2199.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "DHN",
@@ -467,14 +467,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2212.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     }
   ],
-  "summary": "Reservation chart preparation times for Dhn Amrit Bharat (16619) from PTJ to DHN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 36 stations.",
-  "generatedAt": "2026-08-05T14:31:36.042Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Dhn Amrit Bharat (16619) is prepared at Bokaro Stl City (BKSC) around 7:58 PM, with a second (vacancy) chart around 11:40 PM. 4 of 36 stations on the PTJ to DHN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:08:48.981Z",
+  "knownChartCount": 4
 }

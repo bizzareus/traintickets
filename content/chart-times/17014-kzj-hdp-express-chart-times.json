@@ -142,11 +142,11 @@
       "departureTime": "00:15",
       "day": 2,
       "distance": "332.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KZJ"
     },
     {
       "stationCode": "UDGR",
@@ -155,11 +155,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "375.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "UDGR"
     },
     {
       "stationCode": "LTRR",
@@ -168,11 +168,11 @@
       "departureTime": "02:55",
       "day": 2,
       "distance": "408.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "UDGR"
     },
     {
       "stationCode": "LUR",
@@ -181,11 +181,11 @@
       "departureTime": "03:45",
       "day": 2,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "DRSV",
@@ -194,11 +194,11 @@
       "departureTime": "05:10",
       "day": 2,
       "distance": "520.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "BTW",
@@ -207,11 +207,11 @@
       "departureTime": "06:05",
       "day": 2,
       "distance": "557.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "KWV",
@@ -220,11 +220,11 @@
       "departureTime": "07:30",
       "day": 2,
       "distance": "594.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "DD",
@@ -233,11 +233,11 @@
       "departureTime": "09:25",
       "day": 2,
       "distance": "703.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "HDP",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "773.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LUR"
     }
   ],
-  "summary": "Reservation chart preparation times for Kzj Hdp Express (17014) from KZJ to HDP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-05T16:07:25.630Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kzj Hdp Express (17014) is prepared at Bhalki (BHLK) around 8:46 AM, with a second (vacancy) chart around 6 PM. 9 of 19 stations on the KZJ to HDP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:13:38.406Z",
+  "knownChartCount": 9
 }

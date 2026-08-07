@@ -207,11 +207,11 @@
       "departureTime": "00:10",
       "day": 2,
       "distance": "540.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPJ"
     },
     {
       "stationCode": "SY",
@@ -220,11 +220,11 @@
       "departureTime": "00:32",
       "day": 2,
       "distance": "560.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPJ"
     },
     {
       "stationCode": "CDM",
@@ -233,11 +233,11 @@
       "departureTime": "00:49",
       "day": 2,
       "distance": "577.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPJ"
     },
     {
       "stationCode": "TDPR",
@@ -246,11 +246,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "619.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPJ"
     },
     {
       "stationCode": "VM",
@@ -259,11 +259,11 @@
       "departureTime": "03:15",
       "day": 2,
       "distance": "662.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPJ"
     },
     {
       "stationCode": "PDY",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "699.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPJ"
     }
   ],
-  "summary": "Reservation chart preparation times for Cape Pdy Exp (16862) from CAPE to PDY are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 21 stations.",
-  "generatedAt": "2026-08-05T15:42:03.745Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Cape Pdy Exp (16862) is prepared at Mayiladuturai J (MV) around 12:22 PM, with a second (vacancy) chart around 10 PM. 6 of 21 stations on the CAPE to PDY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:12:18.677Z",
+  "knownChartCount": 6
 }

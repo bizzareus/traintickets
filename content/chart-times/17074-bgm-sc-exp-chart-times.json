@@ -194,11 +194,11 @@
       "departureTime": "00:12",
       "day": 2,
       "distance": "522.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "KSN",
@@ -207,11 +207,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "547.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "YG",
@@ -220,11 +220,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "590.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "TDU",
@@ -233,11 +233,11 @@
       "departureTime": "03:35",
       "day": 2,
       "distance": "698.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "VKB",
@@ -246,11 +246,11 @@
       "departureTime": "04:15",
       "day": 2,
       "distance": "739.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "LPI",
@@ -259,11 +259,11 @@
       "departureTime": "05:15",
       "day": 2,
       "distance": "788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "BMT",
@@ -272,11 +272,11 @@
       "departureTime": "05:45",
       "day": 2,
       "distance": "806.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "SC",
@@ -285,14 +285,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "810.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     }
   ],
-  "summary": "Reservation chart preparation times for Bgm  Sc Exp (17074) from BGM to SC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 22 stations.",
-  "generatedAt": "2026-08-05T17:29:52.419Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bgm  Sc Exp (17074) is prepared at Raichur (RC) around 12:40 PM, with a second (vacancy) chart around 9:45 PM. 8 of 22 stations on the BGM to SC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:17:47.393Z",
+  "knownChartCount": 8
 }

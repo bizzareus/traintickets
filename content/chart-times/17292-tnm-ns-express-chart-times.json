@@ -12,11 +12,11 @@
       "departureTime": "11:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "VLR",
@@ -25,11 +25,11 @@
       "departureTime": "12:24",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "KPD",
@@ -38,11 +38,11 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "CTO",
@@ -51,11 +51,11 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "126.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "TPTY",
@@ -64,11 +64,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "198.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "RU",
@@ -77,11 +77,11 @@
       "departureTime": "16:15",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "NLR",
@@ -90,11 +90,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "329.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "OGL",
@@ -103,11 +103,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "445.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "CLX",
@@ -116,11 +116,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "494.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "BPP",
@@ -129,11 +129,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "509.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "TEL",
@@ -142,11 +142,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "552.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "BZA",
@@ -155,11 +155,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "583.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TNM"
     },
     {
       "stationCode": "GDV",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Tnm Ns Express (17292) from TNM to NS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-08-05T19:16:00.601Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tnm Ns Express (17292) is prepared at Tiruvannamalai (TNM) around 8:06 PM. 12 of 20 stations on the TNM to NS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:21:15.811Z",
+  "knownChartCount": 12
 }

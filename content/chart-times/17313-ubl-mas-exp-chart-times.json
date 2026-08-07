@@ -12,11 +12,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "GDG",
@@ -25,11 +25,11 @@
       "departureTime": "22:26",
       "day": 1,
       "distance": "59.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "KBL",
@@ -38,11 +38,11 @@
       "departureTime": "23:12",
       "day": 1,
       "distance": "116.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "HPT",
@@ -51,11 +51,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "BAY",
@@ -64,11 +64,11 @@
       "departureTime": "01:35",
       "day": 2,
       "distance": "209.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "GTL",
@@ -77,11 +77,11 @@
       "departureTime": "03:10",
       "day": 2,
       "distance": "259.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "HX",
@@ -90,11 +90,11 @@
       "departureTime": "06:00",
       "day": 2,
       "distance": "444.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "RU",
@@ -103,11 +103,11 @@
       "departureTime": "08:20",
       "day": 2,
       "distance": "569.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "AJJ",
@@ -116,11 +116,11 @@
       "departureTime": "09:35",
       "day": 2,
       "distance": "641.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "PER",
@@ -129,11 +129,11 @@
       "departureTime": "10:30",
       "day": 2,
       "distance": "704.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "MAS",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "710.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     }
   ],
-  "summary": "Reservation chart preparation times for Ubl Mas Exp (17313) from UBL to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-08-05T19:35:25.378Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ubl Mas Exp (17313) is prepared at Sss Hubballi Jn (UBL) around 11:57 AM, with a second (vacancy) chart around 9:20 PM. 11 of 11 stations on the UBL to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-05T23:22:00.799Z",
+  "knownChartCount": 11
 }

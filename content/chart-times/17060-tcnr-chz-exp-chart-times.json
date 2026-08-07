@@ -103,11 +103,11 @@
       "departureTime": "00:05",
       "day": 2,
       "distance": "340.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "KRNT",
@@ -116,11 +116,11 @@
       "departureTime": "00:52",
       "day": 2,
       "distance": "393.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "GWD",
@@ -129,11 +129,11 @@
       "departureTime": "02:07",
       "day": 2,
       "distance": "449.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "WPR",
@@ -142,11 +142,11 @@
       "departureTime": "02:30",
       "day": 2,
       "distance": "471.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "MBNR",
@@ -155,11 +155,11 @@
       "departureTime": "03:42",
       "day": 2,
       "distance": "524.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "SHNR",
@@ -168,11 +168,11 @@
       "departureTime": "04:30",
       "day": 2,
       "distance": "578.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "KCG",
@@ -181,11 +181,11 @@
       "departureTime": "05:55",
       "day": 2,
       "distance": "629.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "MJF",
@@ -194,11 +194,11 @@
       "departureTime": "06:27",
       "day": 2,
       "distance": "638.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "CHZ",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "648.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     }
   ],
-  "summary": "Reservation chart preparation times for Tcnr Chz Exp (17060) from TCNR to CHZ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-08-05T17:06:23.290Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tcnr Chz Exp (17060) is prepared at Dhone (DHNE) around 5:59 AM, with a second (vacancy) chart around 8:45 PM. 9 of 16 stations on the TCNR to CHZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:16:32.378Z",
+  "knownChartCount": 9
 }

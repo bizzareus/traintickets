@@ -2,7 +2,7 @@
 title: "Amrit Bharat Express: Non-AC Sleeper Fares, Routes & Rules"
 description: "Amrit Bharat is Indian Railways' new non-AC superfast: Sleeper & 2S only, no RAC, low fares. See routes, fares, booking rules and onboard amenities."
 date: "2026-07-02"
-updated: "2026-07-22"
+updated: "2026-08-07"
 tags:
   - train booking
   - irctc
@@ -95,31 +95,7 @@ Although non-AC, the train features modern passenger upgrades including sealed g
 
 ## What is the Chart Preparation Time for Amrit Bharat Express?
 
-**The first reservation chart for Amrit Bharat Express is prepared 4 hours prior to origin station departure, after which vacant berths become bookable under Current Availability.** A second final chart is prepared 30 minutes before departure to incorporate last-minute cancellations.
-
-Because Amrit Bharat Express has no RAC quota, chart preparation directly promotes waitlisted passengers to confirmed berths or cancels remaining waitlisted e-tickets with automatic refunds.
-
-## Is Amrit Bharat Express an AC or Non-AC Train?
-
-**Amrit Bharat Express is a 100% non-air-conditioned superfast train consisting exclusively of Sleeper Class (SL) and General Unreserved (GS) coaches.** It is designed specifically to provide high-speed, affordable long-distance transportation for budget travelers without expensive AC surcharges.
-
-Although non-AC, the train features modern passenger upgrades including sealed gangways to block dust and track noise, zero-discharge bio-toilets, individual mobile charging points, LED lighting, and ergonomic cushioned seats.
-
-## What is the Chart Preparation Time for Amrit Bharat Express?
-
-**The first reservation chart for Amrit Bharat Express is prepared 4 hours prior to origin station departure, after which vacant berths become bookable under Current Availability.** A second final chart is prepared 30 minutes before departure to incorporate last-minute cancellations.
-
-Because Amrit Bharat Express has no RAC quota, chart preparation directly promotes waitlisted passengers to confirmed berths or cancels remaining waitlisted e-tickets with automatic refunds.
-
-## Is Amrit Bharat Express an AC or Non-AC Train?
-
-**Amrit Bharat Express is a 100% non-air-conditioned superfast train consisting exclusively of Sleeper Class (SL) and General Unreserved (GS) coaches.** It is designed specifically to provide high-speed, affordable long-distance transportation for budget travelers without expensive AC surcharges.
-
-Although non-AC, the train features modern passenger upgrades including sealed gangways to block dust and track noise, zero-discharge bio-toilets, individual mobile charging points, LED lighting, and ergonomic cushioned seats.
-
-## What is the Chart Preparation Time for Amrit Bharat Express?
-
-**The first reservation chart for Amrit Bharat Express is prepared 4 hours prior to origin station departure, after which vacant berths become bookable under Current Availability.** A second final chart is prepared 30 minutes before departure to incorporate last-minute cancellations.
+**The first reservation chart for Amrit Bharat Express is prepared ~8 hours prior to origin station departure, after which vacant berths become bookable under Current Availability.** A second final chart is prepared 30 minutes before departure to incorporate last-minute cancellations.
 
 Because Amrit Bharat Express has no RAC quota, chart preparation directly promotes waitlisted passengers to confirmed berths or cancels remaining waitlisted e-tickets with automatic refunds.
 
@@ -169,18 +145,6 @@ Amrit Bharat Express offers an excellent balance between speed, comfort, and aff
 No. Amrit Bharat Express has no AC coaches. It consists entirely of non-AC Sleeper Class and General Unreserved coaches.
 
 ### What time is the chart prepared for Amrit Bharat Express?
-The first chart is prepared 4 hours before departure from the originating station, opening the Current Availability window for remaining seats.
+The first chart is prepared ~8 hours before departure from the originating station, opening the Current Availability window for remaining seats.
 
 
-### Does Amrit Bharat Express have any AC coaches?
-No. Amrit Bharat Express has no AC coaches. It consists entirely of non-AC Sleeper Class and General Unreserved coaches.
-
-### What time is the chart prepared for Amrit Bharat Express?
-The first chart is prepared 4 hours before departure from the originating station, opening the Current Availability window for remaining seats.
-
-
-### Does Amrit Bharat Express have any AC coaches?
-No. Amrit Bharat Express has no AC coaches. It consists entirely of non-AC Sleeper Class and General Unreserved coaches.
-
-### What time is the chart prepared for Amrit Bharat Express?
-The first chart is prepared 4 hours before departure from the originating station, opening the Current Availability window for remaining seats.

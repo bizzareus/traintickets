@@ -272,11 +272,11 @@
       "departureTime": "00:30",
       "day": 3,
       "distance": "1435.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "ST",
@@ -285,11 +285,11 @@
       "departureTime": "01:46",
       "day": 3,
       "distance": "1504.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "BRC",
@@ -298,11 +298,11 @@
       "departureTime": "03:45",
       "day": 3,
       "distance": "1633.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "ANND",
@@ -311,11 +311,11 @@
       "departureTime": "04:17",
       "day": 3,
       "distance": "1668.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "ADI",
@@ -324,11 +324,11 @@
       "departureTime": "05:40",
       "day": 3,
       "distance": "1732.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "MSH",
@@ -337,11 +337,11 @@
       "departureTime": "06:57",
       "day": 3,
       "distance": "1801.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "ABR",
@@ -350,11 +350,11 @@
       "departureTime": "09:20",
       "day": 3,
       "distance": "1919.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "RANI",
@@ -363,11 +363,11 @@
       "departureTime": "10:56",
       "day": 3,
       "distance": "2033.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "MJ",
@@ -376,11 +376,11 @@
       "departureTime": "11:45",
       "day": 3,
       "distance": "2084.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "PMY",
@@ -389,11 +389,11 @@
       "departureTime": "12:17",
       "day": 3,
       "distance": "2114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "LUNI",
@@ -402,11 +402,11 @@
       "departureTime": "12:47",
       "day": 3,
       "distance": "2156.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "BGKT",
@@ -415,11 +415,11 @@
       "departureTime": "13:40",
       "day": 3,
       "distance": "2184.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "JU",
@@ -428,14 +428,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:55",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "Reservation chart preparation times for Jodhpur Exp (16534) from SBC to JU are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 33 stations.",
-  "generatedAt": "2026-08-05T11:45:55.429Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jodhpur Exp (16534) is prepared at Valsad (BL) around 8:55 AM, with a second (vacancy) chart around 6:30 PM. 13 of 33 stations on the SBC to JU route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:04:21.993Z",
+  "knownChartCount": 13
 }

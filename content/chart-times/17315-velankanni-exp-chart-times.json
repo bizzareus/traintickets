@@ -246,11 +246,11 @@
       "departureTime": "00:10",
       "day": 2,
       "distance": "778.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KJM"
     },
     {
       "stationCode": "SA",
@@ -259,11 +259,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "976.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KJM"
     },
     {
       "stationCode": "ED",
@@ -272,11 +272,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "1038.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KJM"
     },
     {
       "stationCode": "KRR",
@@ -285,11 +285,11 @@
       "departureTime": "06:30",
       "day": 2,
       "distance": "1104.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KJM"
     },
     {
       "stationCode": "TPJ",
@@ -298,11 +298,11 @@
       "departureTime": "09:10",
       "day": 2,
       "distance": "1179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KJM"
     },
     {
       "stationCode": "TJ",
@@ -311,11 +311,11 @@
       "departureTime": "09:58",
       "day": 2,
       "distance": "1229.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KJM"
     },
     {
       "stationCode": "TVR",
@@ -324,11 +324,11 @@
       "departureTime": "10:40",
       "day": 2,
       "distance": "1284.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KJM"
     },
     {
       "stationCode": "NGT",
@@ -337,11 +337,11 @@
       "departureTime": "11:50",
       "day": 2,
       "distance": "1307.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KJM"
     },
     {
       "stationCode": "VLNK",
@@ -350,14 +350,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1317.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KJM"
     }
   ],
-  "summary": "Reservation chart preparation times for Velankanni Exp (17315) from VSG to VLNK are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 27 stations.",
-  "generatedAt": "2026-08-05T19:38:32.549Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Velankanni Exp (17315) is prepared at Bangarapet (BWT) around 1:39 PM, with a second (vacancy) chart around 11:20 PM. 9 of 27 stations on the VSG to VLNK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:22:13.116Z",
+  "knownChartCount": 9
 }

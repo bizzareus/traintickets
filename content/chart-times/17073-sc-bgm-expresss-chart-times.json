@@ -142,11 +142,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "410.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "BAY",
@@ -155,11 +155,11 @@
       "departureTime": "02:30",
       "day": 2,
       "distance": "461.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "DAJ",
@@ -168,11 +168,11 @@
       "departureTime": "03:00",
       "day": 2,
       "distance": "487.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "TNGL",
@@ -181,11 +181,11 @@
       "departureTime": "03:12",
       "day": 2,
       "distance": "493.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "HPT",
@@ -194,11 +194,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "526.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "KBL",
@@ -207,11 +207,11 @@
       "departureTime": "04:30",
       "day": 2,
       "distance": "554.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "GDG",
@@ -220,11 +220,11 @@
       "departureTime": "05:35",
       "day": 2,
       "distance": "611.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "UBL",
@@ -233,11 +233,11 @@
       "departureTime": "07:00",
       "day": 2,
       "distance": "669.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "DWR",
@@ -246,11 +246,11 @@
       "departureTime": "07:27",
       "day": 2,
       "distance": "689.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "LD",
@@ -259,11 +259,11 @@
       "departureTime": "09:00",
       "day": 2,
       "distance": "760.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "KNP",
@@ -272,11 +272,11 @@
       "departureTime": "09:30",
       "day": 2,
       "distance": "785.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "BGM",
@@ -285,14 +285,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "810.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:23",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     }
   ],
-  "summary": "Reservation chart preparation times for Sc Bgm Expresss (17073) from SC to BGM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 22 stations.",
-  "generatedAt": "2026-08-05T17:28:10.032Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sc Bgm Expresss (17073) is prepared at Guntakal Jn (GTL) around 4:30 PM, with a second (vacancy) chart around 12:23 AM. 12 of 22 stations on the SC to BGM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:17:41.962Z",
+  "knownChartCount": 12
 }

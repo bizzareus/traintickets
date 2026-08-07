@@ -12,11 +12,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "AWY",
@@ -25,11 +25,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "TCR",
@@ -38,11 +38,11 @@
       "departureTime": "21:48",
       "day": 1,
       "distance": "75.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "SRR",
@@ -51,11 +51,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "107.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "PTB",
@@ -64,11 +64,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "KTU",
@@ -77,11 +77,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "137.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "TIR",
@@ -90,11 +90,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "152.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "PGI",
@@ -103,11 +103,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "CLT",
@@ -643,7 +643,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ers Okha Exp (16338) from ERS to OKHA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 49 stations.",
-  "generatedAt": "2026-08-05T09:46:25.582Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ers Okha Exp (16338) is prepared at Ernakulam Jn (ERS) around 10:33 AM, with a second (vacancy) chart around 8:10 PM. 8 of 49 stations on the ERS to OKHA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T22:59:49.089Z",
+  "knownChartCount": 8
 }

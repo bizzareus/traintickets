@@ -2,7 +2,7 @@
 title: "New Tatkal Token System 2026: PRS Counter Rules & Timings"
 description: "How does the new Tatkal token system work at railway counters? Learn morning token distribution times (8:30 AM AC / 9:00 AM non-AC) and online Aadhaar OTP rules."
 date: "2026-08-05"
-updated: "2026-08-05"
+updated: "2026-08-07"
 tags:
   - tatkal booking
   - irctc
@@ -17,7 +17,7 @@ tags:
 ## TL;DR
 
 - **New PRS Counter Token Rule (August 2026):** Physical Tatkal ticket buyers at station reservation counters must collect a physical numbered token during morning queue windows before booking opens.
-- **Token Timings:** Tokens for AC classes (1AC, 2AC, 3AC, 3E, CC) are distributed from **8:30 AM to 9:00 AM**. Tokens for Non-AC Sleeper (SL) and Second Sitting (2S) are issued from **9:00 AM to 9:30 AM**.
+- **Token Timings:** Tokens for AC classes (2AC, 3AC, 3E, EC, CC) are distributed from **8:30 AM to 9:00 AM**. Tokens for Non-AC Sleeper (SL) and Second Sitting (2S) are issued from **9:00 AM to 9:30 AM**.
 - **No Affect on Online Bookings:** Online Tatkal booking via the IRCTC website and Rail Connect app remains separate and requires **Aadhaar OTP verification**.
 - **Tatkal Waiting List (TQWL):** Unconfirmed TQWL e-tickets are auto-cancelled after chart preparation with automatic base fare refunds. Boarding with a waitlisted e-ticket is strictly prohibited.
 
@@ -31,7 +31,7 @@ This physical token system prevents queue jumping, overnight counter crowding, a
 
 Here is how the counter token allocation operates:
 
-1. **AC Class Tokens (8:30 AM – 9:00 AM):** Passengers seeking Tatkal berths in Executive Class, 1AC, 2AC, 3AC, 3E, or AC Chair Car must collect their token between 8:30 AM and 9:00 AM.
+1. **AC Class Tokens (8:30 AM – 9:00 AM):** Passengers seeking Tatkal berths in Executive Class, 2AC, 3AC, 3E, EC, or AC Chair Car must collect their token between 8:30 AM and 9:00 AM.
 2. **Non-AC Class Tokens (9:00 AM – 9:30 AM):** Passengers booking Sleeper Class (SL) or Second Seating (2S) Tatkal tickets collect tokens between 9:00 AM and 9:30 AM.
 3. **Strict Numbered Order:** When the official Tatkal window opens (10:00 AM for AC and 11:00 AM for Non-AC), counter officials service buyers in exact numerical order of their issued tokens.
 4. **One Token Per Person:** Each individual in the physical queue receives only one token and can book up to a maximum of 4 passengers on a single Tatkal requisition form.
@@ -46,7 +46,7 @@ Below is the official timeline for counter token collection versus actual bookin
 
 | Travel Class | Token Collection Window | Counter Booking Opens | Max Passengers / Form |
 | :--- | :--- | :--- | :--- |
-| **AC Classes (1A, 2A, 3A, 3E, CC)** | **8:30 AM – 9:00 AM** | **10:00 AM** | 4 Passengers |
+| **AC Classes (2A, 3A, 3E, EC, CC)** | **8:30 AM – 9:00 AM** | **10:00 AM** | 4 Passengers |
 | **Non-AC Classes (SL, 2S)** | **9:00 AM – 9:30 AM** | **11:00 AM** | 4 Passengers |
 
 If you arrive after the token distribution window closes (e.g. at 9:45 AM for AC Tatkal), you will only be served after all token-holding passengers ahead of you have completed their transactions.
@@ -75,8 +75,8 @@ If you arrive after the token distribution window closes (e.g. at 9:45 AM for AC
 When navigating Tatkal waitlists, passengers should keep these core rules in mind:
 
 - **WL full form is Waiting List.** The waitlist queue moves from **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**.
-- **Automatic E-ticket Cancellation:** If an online Tatkal e-ticket remains in TQWL status after the final reservation chart is prepared (~4 hours before departure), the system automatically cancels the ticket.
-- **Refund Policy:** The base ticket fare (minus clerkage charges) is auto-refunded to your bank account within 3–5 working days. Tatkal premium charges are non-refundable.
+- **Automatic E-ticket Cancellation:** If an online Tatkal e-ticket remains in TQWL status after the final reservation chart is prepared (~8 hours before departure), the system automatically cancels the ticket.
+- **Refund Policy:** The base ticket fare (full refund with no cancellation or clerkage fee deducted) is auto-refunded to your bank account within 3–5 working days. Tatkal premium charges are non-refundable.
 - **No Train Boarding:** Boarding a train with an unconfirmed online TQWL e-ticket is illegal. TTEs will treat you as travelling without a ticket and impose standard railway penalties.
 
 If your Tatkal ticket lands high on the waiting list, do not rely solely on confirmation. Search split-journey options on [Smart Seats](/) to find confirmed seats on adjacent legs of the same train.
@@ -111,7 +111,7 @@ No, the token system applies exclusively to physical counter bookings at station
 
 ### What time are AC Tatkal tokens given at station counters?
 
-Tokens for AC classes (1AC, 2AC, 3AC, 3E, and AC Chair Car) are issued between 8:30 AM and 9:00 AM at railway reservation counters. Counter booking for AC Tatkal tickets officially opens at 10:00 AM sharp.
+Tokens for AC classes (2AC, 3AC, 3E, EC, and AC Chair Car) are issued between 8:30 AM and 9:00 AM at railway reservation counters. Counter booking for AC Tatkal tickets officially opens at 10:00 AM sharp.
 
 ### What time are Sleeper class Tatkal tokens distributed?
 
@@ -123,7 +123,7 @@ No, counter staff issue only one token per person standing in the physical queue
 
 ### What happens if your Tatkal ticket remains in TQWL waiting list?
 
-If an online Tatkal e-ticket remains on the Tatkal Waiting List (TQWL) after final chart preparation (~4 hours before departure), it is automatically cancelled by the IRCTC system. The base fare (minus clerkage) is automatically refunded to your original payment account. You cannot board the train on a waitlisted e-ticket.
+If an online Tatkal e-ticket remains on the Tatkal Waiting List (TQWL) after final chart preparation (~8 hours before departure), it is automatically cancelled by the IRCTC system. The base fare (full refund of fare with no cancellation or clerkage fee deducted) is automatically refunded to your original payment account. You cannot board the train on a waitlisted e-ticket.
 
 ### Are Tatkal tickets refundable if cancelled by the passenger?
 

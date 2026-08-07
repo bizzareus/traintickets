@@ -519,11 +519,11 @@
       "departureTime": "00:30",
       "day": 3,
       "distance": "2325.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "BWT",
@@ -532,11 +532,11 @@
       "departureTime": "00:58",
       "day": 3,
       "distance": "2359.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "KJM",
@@ -545,11 +545,11 @@
       "departureTime": "01:37",
       "day": 3,
       "distance": "2415.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "SMVB",
@@ -558,14 +558,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2420.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     }
   ],
-  "summary": "Reservation chart preparation times for Blgt Smvb Exp (16524) from BLGT to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 43 stations.",
-  "generatedAt": "2026-08-05T11:30:33.556Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Blgt Smvb Exp (16524) is prepared at Kuppam (KPN) around 11:36 AM, with a second (vacancy) chart around 9:40 PM. 4 of 43 stations on the BLGT to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:03:43.349Z",
+  "knownChartCount": 4
 }

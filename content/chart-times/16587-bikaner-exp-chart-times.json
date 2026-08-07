@@ -363,11 +363,11 @@
       "departureTime": "01:15",
       "day": 3,
       "distance": "2005.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "RANI",
@@ -376,11 +376,11 @@
       "departureTime": "01:24",
       "day": 3,
       "distance": "2019.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "MJ",
@@ -389,11 +389,11 @@
       "departureTime": "02:25",
       "day": 3,
       "distance": "2071.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "PMY",
@@ -402,11 +402,11 @@
       "departureTime": "02:58",
       "day": 3,
       "distance": "2101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "LUNI",
@@ -415,11 +415,11 @@
       "departureTime": "03:30",
       "day": 3,
       "distance": "2143.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "JU",
@@ -428,11 +428,11 @@
       "departureTime": "04:25",
       "day": 3,
       "distance": "2174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "MTD",
@@ -441,11 +441,11 @@
       "departureTime": "05:55",
       "day": 3,
       "distance": "2278.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "NGO",
@@ -454,11 +454,11 @@
       "departureTime": "06:43",
       "day": 3,
       "distance": "2336.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "NOK",
@@ -467,11 +467,11 @@
       "departureTime": "07:17",
       "day": 3,
       "distance": "2387.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "BKN",
@@ -480,14 +480,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2451.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     }
   ],
-  "summary": "Reservation chart preparation times for Bikaner Exp (16587) from YPR to BKN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 37 stations.",
-  "generatedAt": "2026-08-05T13:13:12.323Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bikaner Exp (16587) is prepared at Falna (FA) around 10:02 AM, with a second (vacancy) chart around 7:35 PM. 10 of 37 stations on the YPR to BKN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:07:13.312Z",
+  "knownChartCount": 10
 }

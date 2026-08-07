@@ -12,11 +12,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSG"
     },
     {
       "stationCode": "MAO",
@@ -25,11 +25,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "28.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSG"
     },
     {
       "stationCode": "SVM",
@@ -38,11 +38,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "44.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSG"
     },
     {
       "stationCode": "QLM",
@@ -51,11 +51,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "62.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSG"
     },
     {
       "stationCode": "CLR",
@@ -64,11 +64,11 @@
       "departureTime": "11:10",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSG"
     },
     {
       "stationCode": "LD",
@@ -77,11 +77,11 @@
       "departureTime": "11:50",
       "day": 1,
       "distance": "146.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSG"
     },
     {
       "stationCode": "DWR",
@@ -90,11 +90,11 @@
       "departureTime": "13:22",
       "day": 1,
       "distance": "216.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSG"
     },
     {
       "stationCode": "UBL",
@@ -279,7 +279,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Vsg Sc Express (17040) from VSG to SC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 21 stations.",
-  "generatedAt": "2026-08-05T16:43:01.494Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Vsg Sc Express (17040) is prepared at Vasco Da Gama (VSG) around 8:17 PM. 7 of 21 stations on the VSG to SC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-05T23:15:22.471Z",
+  "knownChartCount": 7
 }
