@@ -1,5 +1,5 @@
 import { BadRequestException, HttpStatus, Injectable } from '@nestjs/common';
-import type { Prisma } from '@prisma/client';
+import type { Prisma, ChartTimeAvailabilityTask } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import {
@@ -129,7 +129,7 @@ function alternatePathsToCheckResult(
     return {
       status: 'failed',
       vacantBerth: { vbd: [], error: null },
-      chartStatus: alt.chartStatus ?? {
+      chartStatus: (alt as Record<string, unknown>).chartStatus ?? {
         kind: 'not_prepared_yet',
         message: 'Confirmed seats not available yet',
       },
@@ -737,7 +737,10 @@ export class JourneyTaskService {
       if (result.status === 'success' && result.openAiStructuredSeats) {
         // Find it from the origin and remove the fare option temporarily per requirements
         result.openAiStructuredSeats = result.openAiStructuredSeats.map(
-          ({ fare: _fare, ...rest }: Record<string, any>) => rest,
+          (seat) => {
+            const { fare: _fare, ...rest } = seat as Record<string, unknown>;
+            return rest as OpenAIStructuredSeat;
+          },
         );
       }
 
