@@ -238,6 +238,10 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
           <input
             type="text"
             id="pnrInput"
+            name="pnr"
+            inputMode="numeric"
+            autoComplete="off"
+            aria-label="Enter 10-Digit PNR Number"
             value={pnr}
             onChange={(e) => {
               const val = e.target.value.replace(/\D/g, "");

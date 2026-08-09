@@ -258,13 +258,13 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
   const availableLangs = getAvailableTranslations(post.slug);
 
   return (
-    <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <article itemScope itemType="https://schema.org/BlogPosting" className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <header className="mb-6">
-        <h1 className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+        <h1 itemProp="headline" className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
           {post.title}
         </h1>
         {post.description ? (
-          <p className="mt-3 text-base text-slate-600">{post.description}</p>
+          <p itemProp="description" className="mt-3 text-base text-slate-600">{post.description}</p>
         ) : null}
         <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600">
           <span className="rounded-md bg-slate-100 px-2 py-1">

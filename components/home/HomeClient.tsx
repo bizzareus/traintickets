@@ -323,6 +323,8 @@ function StationFieldSimple(props: {
       <div className="relative">
         <input
           id={inputId}
+          name={label.toLowerCase().includes("from") ? "fromStation" : "toStation"}
+          aria-label={label}
           type="text"
           className="block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4"
           placeholder={placeholder}
