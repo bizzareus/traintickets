@@ -15,6 +15,7 @@ import {
 } from '../service2/service2.service';
 import {
   NotificationService,
+  toE164,
   type JourneyLegCoverage,
 } from '../notification/notification.service';
 import {
@@ -408,8 +409,11 @@ export class JourneyTaskService {
     const journeyDate = new Date(params.journeyDate.trim());
     const classCode = (params.classCode || '3A').trim().toUpperCase();
     const now = new Date();
-    const email = params.email?.trim() || undefined;
-    const mobile = params.mobile?.trim() || undefined;
+    const email = params.email?.trim().toLowerCase() || undefined;
+    // Normalize to E.164 (add 91 prefix for 10-digit Indian numbers) so the
+    // DB always stores a consistent format regardless of what the client sent.
+    const rawMobile = params.mobile?.trim() || undefined;
+    const mobile = rawMobile ? toE164(rawMobile) : undefined;
     const trainStartDate = new Date(validation.context.trainStartDate);
 
     const chartTimesWithSecond =
@@ -444,10 +448,41 @@ export class JourneyTaskService {
           });
         }
       } else {
-        const created = await this.prisma.monitoringContact.create({
-          data: { email: email || null, mobile: mobile || null },
-        });
-        monitoringContactId = created.id;
+        try {
+          const created = await this.prisma.monitoringContact.create({
+            data: { email: email || null, mobile: mobile || null },
+          });
+          monitoringContactId = created.id;
+        } catch (err: unknown) {
+          // Another row with the same email or mobile was inserted concurrently
+          // (or the client retried). Recover gracefully by finding the conflict.
+          const errObj =
+            err != null && typeof err === 'object'
+              ? (err as Record<string, unknown>)
+              : null;
+          const causeKind =
+            errObj?.cause != null &&
+            typeof errObj.cause === 'object' &&
+            errObj.cause !== null &&
+            'kind' in errObj.cause
+              ? (errObj.cause as Record<string, unknown>).kind
+              : undefined;
+          const isUniqueViolation =
+            errObj?.code === 'P2002' ||
+            causeKind === 'UniqueConstraintViolation';
+          if (!isUniqueViolation) throw err;
+          const conflict = await this.prisma.monitoringContact.findFirst({
+            where: {
+              OR: [
+                ...(email ? [{ email }] : []),
+                ...(mobile ? [{ mobile }] : []),
+              ].filter((o) => Object.keys(o).length > 0),
+            },
+          });
+          if (conflict) {
+            monitoringContactId = conflict.id;
+          }
+        }
       }
     }
 

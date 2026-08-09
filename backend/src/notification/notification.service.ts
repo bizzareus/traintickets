@@ -33,7 +33,7 @@ function escapeHtml(text: string): string {
 }
 
 /** Normalize mobile to E.164 for WaSender (e.g. 919876543210). */
-function toE164(mobile: string): string {
+export function toE164(mobile: string): string {
   const digits = mobile.replace(/\D/g, '');
   if (digits.length === 10 && digits.startsWith('6') === false) {
     return `91${digits}`;
