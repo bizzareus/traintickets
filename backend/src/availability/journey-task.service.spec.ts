@@ -15,6 +15,8 @@ describe('JourneyTaskService', () => {
     $queryRaw: jest.fn(),
     chartTimeAvailabilityTask: {
       findUnique: jest.fn(),
+      findMany: jest.fn().mockResolvedValue([]),
+      findFirst: jest.fn().mockResolvedValue(null),
       update: jest.fn(),
     },
     journeyMonitorContact: {
@@ -33,10 +35,12 @@ describe('JourneyTaskService', () => {
     notifyUser: jest
       .fn()
       .mockResolvedValue({ emailSent: true, whatsappSent: true }),
+    extractJourneyLegCoverage: jest.fn().mockReturnValue([]),
   };
 
   const mockBookingV2 = {
     findBestTrains: jest.fn(),
+    findAlternatePaths: jest.fn().mockResolvedValue({ legs: [] }),
   };
 
   beforeEach(async () => {
@@ -48,7 +52,10 @@ describe('JourneyTaskService', () => {
         { provide: Service2Service, useValue: mockService2 },
         { provide: NotificationService, useValue: mockNotification },
         { provide: BookingV2Service, useValue: mockBookingV2 },
-        { provide: ChartTimeService, useValue: {} },
+        {
+          provide: ChartTimeService,
+          useValue: { getChartMetaForTrainStation: jest.fn() },
+        },
         {
           provide: IrctcService,
           useValue: {
@@ -102,19 +109,16 @@ describe('JourneyTaskService', () => {
       mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(
         mockTaskData,
       );
-      mockService2.check.mockResolvedValue({
-        status: 'success',
-        availability: [{ status: 'AVAILABLE 10' }],
-        openAiStructuredSeats: [
+      mockBookingV2.findAlternatePaths.mockResolvedValueOnce({
+        legs: [
           {
-            coach: 'A1',
-            berth: '10',
-            class: '3A',
-            seat: '10',
+            segmentKind: 'confirmed',
+            travelClass: '3A',
             from: 'NDLS',
             to: 'BPL',
           },
         ],
+        trainNumber: '12121',
       });
       mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
         email: 'test@example.com',
@@ -134,13 +138,14 @@ describe('JourneyTaskService', () => {
       expect(mockNotification.notifyUser).toHaveBeenCalled();
     });
 
-    it('should mark task as failed if IRCTC check fails', async () => {
-      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(
-        mockTaskData,
-      );
-      mockService2.check.mockResolvedValue({
-        status: 'failed',
-        availability: [],
+    it('should mark task as failed if IRCTC check fails after max retries', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
+        ...mockTaskData,
+        retryCount: 3,
+      });
+      mockBookingV2.findAlternatePaths.mockResolvedValueOnce({
+        legs: [],
+        chartStatus: { kind: 'chart_error', error: 'Invalid train' },
       });
 
       await service.runTask('task-1', true);
@@ -158,11 +163,9 @@ describe('JourneyTaskService', () => {
       mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(
         mockTaskData,
       );
-      mockService2.check.mockResolvedValue({
-        status: 'failed',
-        debugLog: ['step=composition_error fetch failed'],
-        chartStatus: { kind: 'chart_error', error: 'fetch failed' },
-      });
+      mockBookingV2.findAlternatePaths.mockRejectedValueOnce(
+        new Error('fetch failed'),
+      );
 
       await service.runTask('task-1', true);
 
@@ -181,49 +184,24 @@ describe('JourneyTaskService', () => {
       expect(mockNotification.notifyUser).not.toHaveBeenCalled();
     });
 
-    it('should try nearby station offsets and notify if an offset check succeeds', async () => {
+    it('should run alternate paths check and notify when confirmed legs are present', async () => {
       mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
         ...mockTaskData,
-        fromStationCode: 'NZM', // user requested boarding NZM
-        toStationCode: 'BPL', // user requested destination BPL
+        fromStationCode: 'NZM',
+        toStationCode: 'BPL',
         stationCode: 'NZM',
       });
 
-      const scheduleSpy = jest
-        .spyOn(service['irctc'], 'getTrainSchedule')
-        .mockResolvedValueOnce({
-          ok: true,
-          schedule: {
-            trainName: 'Test Express',
-            stationList: [
-              { stationCode: 'NDLS' }, // NZM - 1
-              { stationCode: 'NZM' }, // Boarding X
-              { stationCode: 'AGC' },
-              { stationCode: 'BPL' }, // Destination Y
-              { stationCode: 'ET' }, // BPL + 1
-            ],
-          },
-        } as any);
-
-      // Direct check NZM -> BPL returns failed
-      mockService2.check.mockResolvedValueOnce({
-        status: 'failed',
-        openAiStructuredSeats: [],
-      });
-
-      // Let's say offset NDLS -> BPL succeeds (before=1, after=0)
-      mockService2.check.mockResolvedValueOnce({
-        status: 'success',
-        openAiStructuredSeats: [
+      mockBookingV2.findAlternatePaths.mockResolvedValueOnce({
+        legs: [
           {
-            coach: 'A1',
-            berth: '12',
-            class: '3A',
-            seat: '12',
-            from: 'NDLS',
+            segmentKind: 'confirmed',
+            travelClass: '3A',
+            from: 'NZM',
             to: 'BPL',
           },
         ],
+        trainNumber: '12121',
       });
 
       mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
@@ -233,24 +211,13 @@ describe('JourneyTaskService', () => {
 
       await service.runTask('task-1', true);
 
-      // Verify direct check + offset check both called
-      expect(mockService2.check).toHaveBeenCalledTimes(2);
-      expect(mockService2.check).toHaveBeenNthCalledWith(
-        1,
+      expect(mockBookingV2.findAlternatePaths).toHaveBeenCalledWith(
         expect.objectContaining({
-          stationCode: 'NZM',
-          destinationStation: 'BPL',
-        }),
-      );
-      expect(mockService2.check).toHaveBeenNthCalledWith(
-        2,
-        expect.objectContaining({
-          stationCode: 'NDLS',
-          destinationStation: 'BPL',
+          from: 'NZM',
+          to: 'BPL',
         }),
       );
 
-      // Verify task marked as completed
       const completedData: unknown = expect.objectContaining({
         status: 'completed',
       });
@@ -260,9 +227,160 @@ describe('JourneyTaskService', () => {
         }),
       );
 
-      // Verify user notified
       expect(mockNotification.notifyUser).toHaveBeenCalled();
-      scheduleSpy.mockRestore();
+    });
+  });
+
+  describe('autoSubscribeForMissingLegs', () => {
+    const mockTask = {
+      trainNumber: '11010',
+      trainName: 'Sinhagad Exp',
+      fromStationCode: 'PUNE',
+      toStationCode: 'CSMT',
+      journeyDate: new Date('2026-08-10'),
+      trainStartDate: new Date('2026-08-10'),
+    };
+
+    const mockContact = {
+      email: 'user@example.com',
+      mobile: '9876543210',
+    };
+
+    it('Use Case 1: auto-subscribes user for station B when A->B is available but B->C is not', async () => {
+      jest
+        .spyOn(service['notificationService'], 'extractJourneyLegCoverage')
+        .mockReturnValue([
+          {
+            type: 'ticket',
+            ticketIndex: 1,
+            instruction: 'PUNE - CCH - CC',
+            approxPrice: 270,
+            fromCode: 'PUNE',
+            toCode: 'CCH',
+          },
+          {
+            type: 'no_ticket',
+            fromCode: 'CCH',
+            toCode: 'CSMT',
+          },
+        ]);
+
+      jest
+        .spyOn(service['chartTime'], 'getChartMetaForTrainStation')
+        .mockResolvedValue(null as any);
+
+      mockPrisma.chartTimeAvailabilityTask.findFirst = jest
+        .fn()
+        .mockResolvedValue(null);
+      mockPrisma.journeyMonitoringRequest.findUnique = jest
+        .fn()
+        .mockResolvedValue({ classCode: 'CC' });
+
+      const createTasksSpy = jest
+        .spyOn(service, 'createJourneyTasks')
+        .mockResolvedValue({
+          journeyRequestId: 'jid-new',
+          tasks: [
+            {
+              id: 'task-cch',
+              stationCode: 'CCH',
+              chartAt: '2026-08-10T05:50:00.000Z',
+              status: 'pending',
+            },
+          ],
+        });
+
+      const res = await service.autoSubscribeForMissingLegs({
+        journeyRequestId: 'jid-1',
+        task: mockTask,
+        result: {
+          status: 'success',
+          vacantBerth: { vbd: [], error: null },
+        },
+        contact: mockContact,
+      });
+
+      expect(res.createdTaskIds).toEqual(['task-cch']);
+      expect(createTasksSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          fromStationCode: 'CCH',
+          toStationCode: 'CSMT',
+          trainNumber: '11010',
+          email: 'user@example.com',
+          mobile: '9876543210',
+          stationCodesToMonitor: ['CCH'],
+        }),
+      );
+    });
+
+    it('Use Case 2: auto-subscribes user for remote station D when B->E is not available and chart is prepared at D', async () => {
+      jest
+        .spyOn(service['notificationService'], 'extractJourneyLegCoverage')
+        .mockReturnValue([
+          {
+            type: 'ticket',
+            ticketIndex: 1,
+            instruction: 'PUNE - CCH - CC',
+            approxPrice: 270,
+            fromCode: 'PUNE',
+            toCode: 'CCH',
+          },
+          {
+            type: 'no_ticket',
+            fromCode: 'CCH',
+            toCode: 'CSMT',
+          },
+        ]);
+
+      jest
+        .spyOn(service['chartTime'], 'getChartMetaForTrainStation')
+        .mockResolvedValue({
+          chartOne: { time: '05:50', dayOffset: 0 },
+          chartNextRemoteStation: 'KYN',
+        } as any);
+
+      mockPrisma.chartTimeAvailabilityTask.findFirst = jest
+        .fn()
+        .mockResolvedValue(null);
+      mockPrisma.journeyMonitoringRequest.findUnique = jest
+        .fn()
+        .mockResolvedValue({ classCode: 'CC' });
+
+      const createTasksSpy = jest
+        .spyOn(service, 'createJourneyTasks')
+        .mockResolvedValue({
+          journeyRequestId: 'jid-new-2',
+          tasks: [
+            {
+              id: 'task-kyn',
+              stationCode: 'KYN',
+              chartAt: '2026-08-10T07:15:00.000Z',
+              status: 'pending',
+            },
+          ],
+        });
+
+      const res = await service.autoSubscribeForMissingLegs({
+        journeyRequestId: 'jid-1',
+        task: mockTask,
+        result: {
+          status: 'success',
+          vacantBerth: { vbd: [], error: null },
+        },
+        contact: mockContact,
+      });
+
+      expect(res.createdTaskIds).toEqual(['task-kyn']);
+      expect(createTasksSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          fromStationCode: 'KYN',
+          toStationCode: 'CSMT',
+          trainNumber: '11010',
+          email: 'user@example.com',
+          mobile: '9876543210',
+          stationCodesToMonitor: ['KYN'],
+        }),
+      );
     });
   });
 });

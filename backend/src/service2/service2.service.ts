@@ -28,12 +28,12 @@ export type OpenAIStructuredSeat = {
 
 /** One route leg slot: either a bookable segment or an empty object when no ticket. */
 export type OpenAiBookingPlanItem =
-  | { instruction: string; approx_price: number }
+  | { instruction: string; approx_price: number; availability?: string }
   | Record<string, never>;
 
 export function isFilledOpenAiPlanItem(
   item: OpenAiBookingPlanItem | undefined | null,
-): item is { instruction: string; approx_price: number } {
+): item is { instruction: string; approx_price: number; availability?: string } {
   if (item == null || typeof item !== 'object') return false;
   if (Object.keys(item).length === 0) return false;
   const instruction = toStr(

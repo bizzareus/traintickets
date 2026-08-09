@@ -111,4 +111,118 @@ describe('NotificationService', () => {
     expect(html).toContain('Arr BCT: 20:15');
     expect(html).toMatch(/Book[\s\S]*Book/s);
   });
+
+  it('correctly extracts journey leg coverage for partial journeys', () => {
+    const svc = new NotificationService(mockConfig(), mockStationCache());
+    const stationScheduleList = [
+      { stationCode: 'PUNE', stationName: 'Pune Jn' },
+      { stationCode: 'CCH', stationName: 'Chinchvad' },
+      { stationCode: 'CSMT', stationName: 'C Shivaji Mah T' },
+    ];
+    const plan = [{ instruction: 'PUNE - CCH - CC', approx_price: 270 }];
+
+    const coverage = svc.extractJourneyLegCoverage({
+      fromStationCode: 'PUNE',
+      toStationCode: 'CSMT',
+      plan,
+      stationScheduleList,
+    });
+
+    expect(coverage).toEqual([
+      {
+        type: 'ticket',
+        ticketIndex: 1,
+        instruction: 'PUNE - CCH - CC',
+        approxPrice: 270,
+        fromCode: 'PUNE',
+        toCode: 'CCH',
+      },
+      {
+        type: 'no_ticket',
+        fromCode: 'CCH',
+        toCode: 'CSMT',
+      },
+    ]);
+  });
+
+  it('formats WhatsApp message with "No tickets available" and chart opening time for missing leg', async () => {
+    const svc = new NotificationService(
+      mockConfig({ wasenderKey: 'ws_test' }),
+      mockStationCache(),
+    );
+    const sendWhatsApp = jest
+      .spyOn(svc, 'sendWhatsApp')
+      .mockResolvedValue(true);
+
+    const partialResult: Service2CheckResult = {
+      status: 'success',
+      vacantBerth: { vbd: [], error: null },
+      openAiBookingPlan: [
+        {
+          instruction: 'PUNE - CCH - CC',
+          approx_price: 270,
+          availability: 'CURR_AVL 26',
+        },
+        {},
+      ],
+      openAiTotalPrice: 270,
+      chartPreparationDetails: {
+        chartingStationCode: 'PUNE',
+        firstChartCreationTime: '05:50',
+        storedInDb: true,
+      },
+      trainSchedule: {
+        trainNumber: '11010',
+        trainName: 'Sinhagad Exp',
+        stationFrom: 'PUNE',
+        stationTo: 'CSMT',
+        stationList: [
+          {
+            stationCode: 'PUNE',
+            stationName: 'Pune Jn',
+            departureTime: '0605',
+          },
+          { stationCode: 'CCH', stationName: 'Chinchvad', arrivalTime: '0634' },
+          {
+            stationCode: 'CSMT',
+            stationName: 'C Shivaji Mah T',
+            arrivalTime: '0955',
+          },
+        ],
+      },
+    };
+
+    await svc.notifyUser({
+      mobile: '919876543210',
+      task: {
+        trainNumber: '11010',
+        trainName: 'Sinhagad Exp',
+        fromStationCode: 'PUNE',
+        toStationCode: 'CSMT',
+        journeyDate: new Date('2026-08-10T00:00:00.000Z'),
+      },
+      result: partialResult,
+    });
+
+    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    const [, text] = sendWhatsApp.mock.calls[0];
+
+    expect(text).toContain('*LastBerth Chart Alert* 🔔');
+    expect(text).toContain(
+      'You subscribed to an alert when chart is prepared:',
+    );
+    expect(text).toContain('11010 Sinhagad Exp');
+    expect(text).toContain('PUNE > CSMT');
+    expect(text).toContain('Ticket 1 [CC] | CURR_AVL 26');
+    expect(text).toContain(
+      'Book on IRCTC: https://www.irctc.co.in/nget/redirect?from=PUNE&to=CCH&trainNo=11010&class=CC&page=train-chart',
+    );
+    expect(text).toContain('No tickets available:');
+    expect(text).toContain('CCH - Chinchvad → CSMT - C Shivaji Mah T');
+    expect(text).toMatch(
+      /(New tickets open at|Chart for Chinchvad was released at)/,
+    );
+    expect(text).toContain('/search?from=CCH&to=CSMT&date=2026-08-10');
+    expect(text).not.toContain('Total approx. fare');
+  });
 });

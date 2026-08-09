@@ -13,7 +13,10 @@ import {
   type OpenAiBookingPlanItem,
   type OpenAIStructuredSeat,
 } from '../service2/service2.service';
-import { NotificationService } from '../notification/notification.service';
+import {
+  NotificationService,
+  type JourneyLegCoverage,
+} from '../notification/notification.service';
 import {
   BookingV2Service,
   type FindAlternatePathsResult,
@@ -125,7 +128,7 @@ function alternatePathsToCheckResult(
     return {
       status: 'failed',
       vacantBerth: { vbd: [], error: null },
-      chartStatus: {
+      chartStatus: alt.chartStatus ?? {
         kind: 'not_prepared_yet',
         message: 'Confirmed seats not available yet',
       },
@@ -698,10 +701,9 @@ export class JourneyTaskService {
 
       if (result.status === 'success' && result.openAiStructuredSeats) {
         // Find it from the origin and remove the fare option temporarily per requirements
-        result.openAiStructuredSeats = result.openAiStructuredSeats.map((seat: any) => {
-          const { fare, ...rest } = seat;
-          return rest;
-        });
+        result.openAiStructuredSeats = result.openAiStructuredSeats.map(
+          ({ fare: _fare, ...rest }: Record<string, any>) => rest,
+        );
       }
 
       await this.prisma.chartTimeAvailabilityTask.update({
@@ -726,14 +728,30 @@ export class JourneyTaskService {
         });
         console.log('contact', contact);
         if (contact && (contact.email || contact.mobile)) {
+          try {
+            await this.autoSubscribeForMissingLegs({
+              journeyRequestId: task.journeyRequestId,
+              task,
+              result,
+              contact,
+            });
+          } catch (autoSubErr) {
+            console.error(
+              'Failed to auto-subscribe for missing legs',
+              autoSubErr,
+            );
+          }
+
           let alternativeTrains: BestTrainCandidateResult[] | undefined;
           const hasTickets = hasBookablePlanForNotification(result);
 
           if (!hasTickets) {
             try {
-              const req = await this.prisma.journeyMonitoringRequest.findUnique({
-                where: { id: task.journeyRequestId },
-              });
+              const req = await this.prisma.journeyMonitoringRequest.findUnique(
+                {
+                  where: { id: task.journeyRequestId },
+                },
+              );
               if (req) {
                 const classCode = req.classCode.toUpperCase();
                 const isAc = !['SL', '2S', 'GN', 'FC'].includes(classCode);
@@ -894,7 +912,9 @@ export class JourneyTaskService {
           tasksRun: entry.tasksRun ?? 0,
           completedCount: entry.completedCount ?? 0,
           failedCount: entry.failedCount ?? 0,
-          input: (entry.input ?? undefined) as Prisma.InputJsonValue | undefined,
+          input: (entry.input ?? undefined) as
+            | Prisma.InputJsonValue
+            | undefined,
           output: (entry.output ?? undefined) as
             | Prisma.InputJsonValue
             | undefined,
@@ -1119,5 +1139,139 @@ export class JourneyTaskService {
     }
 
     return result;
+  }
+
+  /**
+   * Automatically subscribes the user for missing/uncovered journey legs (Use Case 1 & 2):
+   * 1. If A->B is available but B->C is not available, subscribe for station B at B's chart time.
+   * 2. If B->E is not available and chart for onward seats releases at remote station D, subscribe for station D.
+   */
+  async autoSubscribeForMissingLegs(params: {
+    journeyRequestId: string;
+    task: Pick<
+      ChartTimeAvailabilityTask,
+      | 'trainNumber'
+      | 'trainName'
+      | 'fromStationCode'
+      | 'toStationCode'
+      | 'journeyDate'
+      | 'trainStartDate'
+    >;
+    result: Service2CheckResult;
+    contact?: { email?: string | null; mobile?: string | null } | null;
+  }): Promise<{ createdTaskIds: string[] }> {
+    const { journeyRequestId, task, result, contact } = params;
+    const email = contact?.email?.trim() || undefined;
+    const mobile = contact?.mobile?.trim() || undefined;
+
+    if (!email && !mobile) {
+      return { createdTaskIds: [] };
+    }
+
+    const plan = result.openAiBookingPlan ?? [];
+    const stationScheduleList = result.trainSchedule?.stationList;
+
+    const coverage = this.notificationService.extractJourneyLegCoverage({
+      fromStationCode: task.fromStationCode,
+      toStationCode: task.toStationCode,
+      plan,
+      stationScheduleList,
+    });
+
+    const uncoveredList = coverage.filter(
+      (c): c is Extract<JourneyLegCoverage, { type: 'no_ticket' }> =>
+        c.type === 'no_ticket',
+    );
+
+    if (uncoveredList.length === 0) {
+      return { createdTaskIds: [] };
+    }
+
+    const createdTaskIds: string[] = [];
+    const journeyDateStr =
+      task.journeyDate instanceof Date
+        ? task.journeyDate.toISOString().slice(0, 10)
+        : String(task.journeyDate).slice(0, 10);
+
+    let classCode = '3A';
+    try {
+      const origReq = await this.prisma.journeyMonitoringRequest.findUnique({
+        where: { id: journeyRequestId },
+      });
+      if (origReq?.classCode) classCode = origReq.classCode;
+    } catch {
+      // ignore
+    }
+
+    for (const unc of uncoveredList) {
+      const bStation = unc.fromCode;
+      const eStation = unc.toCode;
+
+      let targetStation = bStation;
+
+      try {
+        const meta = await this.chartTime.getChartMetaForTrainStation(
+          task.trainNumber,
+          bStation,
+        );
+
+        const remoteD =
+          meta?.chartNextRemoteStation ||
+          meta?.chartRemoteStation ||
+          (result.composition?.nextRemote &&
+          result.composition.nextRemote.trim().toUpperCase() !== bStation
+            ? result.composition.nextRemote
+            : undefined) ||
+          (result.composition?.remote &&
+          result.composition.remote.trim().toUpperCase() !== bStation
+            ? result.composition.remote
+            : undefined);
+
+        if (remoteD) {
+          targetStation = remoteD.trim().toUpperCase();
+        }
+      } catch {
+        // fallback to bStation
+      }
+
+      const existingTask =
+        await this.prisma.chartTimeAvailabilityTask.findFirst({
+          where: {
+            trainNumber: task.trainNumber,
+            stationCode: targetStation,
+            journeyDate: new Date(journeyDateStr),
+            journeyRequestId,
+          },
+        });
+
+      if (existingTask) {
+        continue;
+      }
+
+      try {
+        const createRes = await this.createJourneyTasks({
+          trainNumber: task.trainNumber,
+          trainName: task.trainName || undefined,
+          fromStationCode: targetStation,
+          toStationCode: eStation,
+          journeyDate: journeyDateStr,
+          classCode,
+          email,
+          mobile,
+          stationCodesToMonitor: [targetStation],
+        });
+
+        if (createRes.tasks?.length > 0) {
+          createdTaskIds.push(...createRes.tasks.map((t) => t.id));
+        }
+      } catch (createErr) {
+        console.warn(
+          `[journey] autoSubscribeForMissingLegs failed for train=${task.trainNumber} targetStation=${targetStation}:`,
+          createErr instanceof Error ? createErr.message : String(createErr),
+        );
+      }
+    }
+
+    return { createdTaskIds };
   }
 }

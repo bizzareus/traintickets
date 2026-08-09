@@ -230,6 +230,20 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
         <p>{data.summary}</p>
       </section>
 
+      <div className="mb-8">
+        <ChartTimeAlertCTA
+          trainNumber={data.trainNumber}
+          trainName={data.trainName}
+          destinationCode={
+            data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
+          }
+          stations={data.stations
+            .slice(0, -1)
+            .map((s) => ({ stationCode: s.stationCode, stationName: s.stationName }))}
+          initialJourneyDate={journeyDate}
+        />
+      </div>
+
       <section className="mb-8">
         <h2 className="mb-3 text-lg font-bold text-slate-900">
           Station-by-Station Chart Preparation Time Table
@@ -244,20 +258,6 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           }
         />
       </section>
-
-      <div className="mt-8">
-        <ChartTimeAlertCTA
-          trainNumber={data.trainNumber}
-          trainName={data.trainName}
-          destinationCode={
-            data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
-          }
-          stations={data.stations
-            .slice(0, -1)
-            .map((s) => ({ stationCode: s.stationCode, stationName: s.stationName }))}
-          initialJourneyDate={journeyDate}
-        />
-      </div>
 
       <section className="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="mb-4 text-xl font-bold text-slate-900">
