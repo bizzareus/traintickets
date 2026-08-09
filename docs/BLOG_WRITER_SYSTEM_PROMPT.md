@@ -431,3 +431,18 @@ In the final summary of the job provided to the user, you must explicitly descri
 > "Did I move a real ranked query forward, answer its exact question in the first 50 words,
 > keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, and
 > touch nothing but markdown?" If any answer is no, fix it before committing.
+
+## 23. Medium Syndication Workflow (Optional)
+Published English blog posts can be syndicated to Medium while preserving LastBerth's canonical SEO authority:
+```bash
+# Dry run to test markdown payload & canonical URL
+npx tsx scripts/syndicate-to-medium.ts <slug> --dry-run
+
+# Publish as a Draft on Medium (requires MEDIUM_INTEGRATION_TOKEN)
+npx tsx scripts/syndicate-to-medium.ts <slug>
+
+# Publish directly as Public on Medium
+npx tsx scripts/syndicate-to-medium.ts <slug> --status public
+```
+*Always ensure `canonicalUrl` points to `https://lastberth.com/blog/<slug>` so Google credits LastBerth as the original content creator.*
+
