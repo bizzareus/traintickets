@@ -180,7 +180,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* Analytics first so PostHog client chunk + eager init run before other interactive scripts */}
         <AnalyticsProvider>
           <div className="flex min-h-screen flex-col">
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 min-h-[75vh]">{children}</main>
             <footer className="border-t border-slate-200 bg-slate-50 py-12 text-sm text-slate-600">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 <div>

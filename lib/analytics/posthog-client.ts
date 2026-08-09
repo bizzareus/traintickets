@@ -42,7 +42,9 @@ export function initPosthogBrowser(): void {
         api_host: posthogApiHost(),
         capture_pageview: false,
         capture_pageleave: true,
-        enable_recording_console_log: true,
+        disable_session_recording: true,
+        disable_surveys: true,
+        autocapture: false,
         persistence: "localStorage+cookie",
       });
     }

@@ -402,9 +402,33 @@ function StationFieldSimple(props: {
   );
 }
 
-function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
+function UrlSearchParamsSync({
+  onParams,
+}: {
+  onParams: (
+    fromCode: string | null,
+    toCode: string | null,
+    fromName: string | null,
+    toName: string | null,
+    dateParam: string | null
+  ) => void;
+}) {
   const searchParams = useSearchParams();
+  useEffect(() => {
+    onParams(
+      searchParams.get("from"),
+      searchParams.get("to"),
+      searchParams.get("fromName"),
+      searchParams.get("toName"),
+      searchParams.get("date")
+    );
+  }, [searchParams, onParams]);
+  return null;
+}
+
+function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const autoSearchTriggered = useRef(false);
+  const [hasUrlParams, setHasUrlParams] = useState(false);
   const [fromQ, setFromQ] = useState("");
   const [toQ, setToQ] = useState("");
   const fromDeb = useDebounced(fromQ, 300);
@@ -428,6 +452,40 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setToOpen(open);
   }, []);
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
+
+  const handleUrlParams = useCallback(
+    (
+      fromCode: string | null,
+      toCode: string | null,
+      fromName: string | null,
+      toName: string | null,
+      dateParam: string | null
+    ) => {
+      if (fromCode && toCode) {
+        const fSt = {
+          stationCode: fromCode.toUpperCase(),
+          stationName: fromName || fromCode.toUpperCase(),
+        };
+        const tSt = {
+          stationCode: toCode.toUpperCase(),
+          stationName: toName || toCode.toUpperCase(),
+        };
+        setFromSt(fSt);
+        setFromQ(
+          fromName ? `${fromCode.toUpperCase()} - ${fromName}` : fromCode.toUpperCase()
+        );
+        setToSt(tSt);
+        setToQ(
+          toName ? `${toCode.toUpperCase()} - ${toName}` : toCode.toUpperCase()
+        );
+        setHasUrlParams(true);
+      }
+      if (dateParam) {
+        setJourneyDate(dateParam);
+      }
+    },
+    []
+  );
   const [acOnly, setAcOnly] = useState(false);
   useEffect(() => {
     setJourneyDate(todayYmd());
@@ -740,20 +798,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   }, [fromSt, toSt, journeyDate, acOnly]);
 
   useEffect(() => {
-    if (fromSt && toSt && journeyDate && !autoSearchTriggered.current) {
-      const fromCode = searchParams.get("from");
-      const toCode = searchParams.get("to");
-      if (
-        fromCode &&
-        toCode &&
-        fromSt.stationCode === fromCode.toUpperCase() &&
-        toSt.stationCode === toCode.toUpperCase()
-      ) {
-        autoSearchTriggered.current = true;
-        void runSearch();
-      }
+    if (fromSt && toSt && journeyDate && hasUrlParams && !autoSearchTriggered.current) {
+      autoSearchTriggered.current = true;
+      void runSearch();
     }
-  }, [fromSt, toSt, journeyDate, runSearch, searchParams]);
+  }, [fromSt, toSt, journeyDate, hasUrlParams, runSearch]);
 
   const runBestTrainSearch = useCallback(async () => {
     if (!fromSt || !toSt) {
@@ -933,6 +982,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
+      <Suspense fallback={null}>
+        <UrlSearchParamsSync onParams={handleUrlParams} />
+      </Suspense>
       <Header lang={lang} nav={t.nav} showLanguage />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
         <header className="mb-8">
@@ -1682,9 +1734,5 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 }
 
 export function HomeClient({ lang, t }: { lang: string; t: HomeStrings }) {
-  return (
-    <Suspense fallback={null}>
-      <BookingV2PageContent lang={lang} t={t} />
-    </Suspense>
-  );
+  return <BookingV2PageContent lang={lang} t={t} />;
 }
