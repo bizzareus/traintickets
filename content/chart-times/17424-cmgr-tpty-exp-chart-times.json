@@ -1,0 +1,90 @@
+{
+  "trainNumber": "17424",
+  "trainName": "Cmgr Tpty  Exp",
+  "originStation": "CMGR",
+  "destinationStation": "TPTY",
+  "slug": "17424-cmgr-tpty-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "CMGR",
+      "stationName": "Chikkamagaluru",
+      "arrivalTime": "",
+      "departureTime": "17:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SHYP",
+      "stationName": "Sakharayapatna",
+      "arrivalTime": "18:04",
+      "departureTime": "18:05",
+      "day": 1,
+      "distance": "29.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BLHI",
+      "stationName": "Bisalehalli",
+      "arrivalTime": "18:16",
+      "departureTime": "18:18",
+      "day": 1,
+      "distance": "36.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DRU",
+      "stationName": "Kadur",
+      "arrivalTime": "18:28",
+      "departureTime": "18:30",
+      "day": 1,
+      "distance": "46.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "RRB",
+      "stationName": "Birur Jn",
+      "arrivalTime": "18:45",
+      "departureTime": "19:05",
+      "day": 1,
+      "distance": "52.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TPTY",
+      "stationName": "Tirupati",
+      "arrivalTime": "07:50",
+      "departureTime": "",
+      "day": 2,
+      "distance": "596.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Cmgr Tpty  Exp (17424) from CMGR to TPTY are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-08-05T23:25:15.952Z",
+  "knownChartCount": 0
+}

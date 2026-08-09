@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22174",
+  "trainName": "Jbp Caf Sf Exp",
+  "originStation": "JBP",
+  "destinationStation": "CAF",
+  "slug": "22174-jbp-caf-sf-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "JBP",
+      "stationName": "Jabalpur",
+      "arrivalTime": "",
+      "departureTime": "05:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "18:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "MML",
+      "stationName": "Madan Mahal",
+      "arrivalTime": "05:23",
+      "departureTime": "05:25",
+      "day": 1,
+      "distance": "4.0",
+      "chartTimeLocal": "18:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "NIR",
+      "stationName": "Nainpur JN",
+      "arrivalTime": "07:10",
+      "departureTime": "07:15",
+      "day": 1,
+      "distance": "123.0",
+      "chartTimeLocal": "18:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "BTC",
+      "stationName": "Balaghat Jn",
+      "arrivalTime": "08:25",
+      "departureTime": "08:30",
+      "day": 1,
+      "distance": "198.0",
+      "chartTimeLocal": "18:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "G",
+      "stationName": "Gondia Jn",
+      "arrivalTime": "09:30",
+      "departureTime": "09:40",
+      "day": 1,
+      "distance": "239.0",
+      "chartTimeLocal": "18:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "NAB",
+      "stationName": "Nagbhir Jn",
+      "arrivalTime": "11:43",
+      "departureTime": "11:45",
+      "day": 1,
+      "distance": "370.0",
+      "chartTimeLocal": "18:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    },
+    {
+      "stationCode": "CAF",
+      "stationName": "Chanda Fort",
+      "arrivalTime": "13:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "477.0",
+      "chartTimeLocal": "18:58",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
+    }
+  ],
+  "summary": "The first reservation chart for Jbp Caf Sf Exp (22174) is prepared at Jabalpur (JBP) around 6:58 PM, with a second (vacancy) chart around 4:53 AM. 7 of 7 stations on the JBP to CAF route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:10:29.741Z",
+  "knownChartCount": 7
+}

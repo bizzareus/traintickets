@@ -1,0 +1,103 @@
+{
+  "trainNumber": "20826",
+  "trainName": "Bsp Vande Bharat",
+  "originStation": "NGP",
+  "destinationStation": "BSP",
+  "slug": "20826-bsp-vande-bharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "NGP",
+      "stationName": "Nagpur",
+      "arrivalTime": "",
+      "departureTime": "14:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "G",
+      "stationName": "Gondia Jn",
+      "arrivalTime": "15:28",
+      "departureTime": "15:30",
+      "day": 1,
+      "distance": "130.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "DGG",
+      "stationName": "Dongargarh",
+      "arrivalTime": "16:19",
+      "departureTime": "16:20",
+      "day": 1,
+      "distance": "204.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "RJN",
+      "stationName": "Raj Nandgaon",
+      "arrivalTime": "16:39",
+      "departureTime": "16:40",
+      "day": 1,
+      "distance": "235.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "DURG",
+      "stationName": "Durg",
+      "arrivalTime": "17:15",
+      "departureTime": "17:17",
+      "day": 1,
+      "distance": "266.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "R",
+      "stationName": "Raipur Jn",
+      "arrivalTime": "17:44",
+      "departureTime": "17:46",
+      "day": 1,
+      "distance": "303.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "BSP",
+      "stationName": "Bilaspur Jn",
+      "arrivalTime": "19:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "413.0",
+      "chartTimeLocal": "20:44",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    }
+  ],
+  "summary": "The first reservation chart for Bsp Vande Bharat (20826) is prepared at Nagpur (NGP) around 8:44 PM. 7 of 7 stations on the NGP to BSP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:47:18.758Z",
+  "knownChartCount": 7
+}

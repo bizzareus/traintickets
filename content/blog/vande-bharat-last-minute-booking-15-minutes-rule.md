@@ -2,7 +2,7 @@
 title: "Vande Bharat Last-Minute Booking: 15-Minute Seat Rule Guide"
 description: "Can you board a Vande Bharat without a confirmed ticket? Learn the rule that lets you book vacant seats up to 15 minutes before departure — and how to grab one."
 date: "2026-07-02"
-updated: "2026-07-27"
+updated: "2026-08-08"
 tags:
   - train booking
   - irctc
@@ -74,7 +74,7 @@ This last-minute booking window allows travellers to purchase fully confirmed ti
 
 ## Can You Book Vande Bharat Current Tickets After First Chart Preparation?
 
-**Yes, once the first chart is prepared (typically 4 hours before departure), any remaining vacant seats open for Current Availability booking up until 15 minutes before scheduled train departure.**
+**Yes, once the first chart is prepared (typically ~8 hours before departure), any remaining vacant seats open for Current Availability booking up until 15 minutes before scheduled train departure.**
 
 Passengers do not need to wait until the last few minutes to secure a seat. As soon as the initial reservation chart is generated, unsold berths in AC Chair Car (CC) and Executive Class (EC) automatically transition to Current Booking status. These berths remain bookable across digital platforms and physical ticket windows until the strict 15-minute cutoff.
 

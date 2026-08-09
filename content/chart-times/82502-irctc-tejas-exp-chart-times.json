@@ -1,0 +1,77 @@
+{
+  "trainNumber": "82502",
+  "trainName": "Irctc Tejas Exp",
+  "originStation": "NDLS",
+  "destinationStation": "LJN",
+  "slug": "82502-irctc-tejas-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "15:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "GZB",
+      "stationName": "Ghaziabad",
+      "arrivalTime": "16:02",
+      "departureTime": "16:04",
+      "day": 1,
+      "distance": "24.0",
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "TDL",
+      "stationName": "Tundla Jn",
+      "arrivalTime": "17:57",
+      "departureTime": "17:59",
+      "day": 1,
+      "distance": "207.0",
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "20:35",
+      "departureTime": "20:40",
+      "day": 1,
+      "distance": "439.0",
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "LJN",
+      "stationName": "Lucknow Ne",
+      "arrivalTime": "22:05",
+      "departureTime": "",
+      "day": 1,
+      "distance": "512.0",
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    }
+  ],
+  "summary": "The first reservation chart for Irctc Tejas Exp (82502) is prepared at New Delhi (NDLS) around 7:30 AM, with a second (vacancy) chart around 5:44 PM. 5 of 5 stations on the NDLS to LJN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T14:18:37.037Z",
+  "knownChartCount": 5
+}

@@ -1,0 +1,77 @@
+{
+  "trainNumber": "17619",
+  "trainName": "Cpsn Ned Exp",
+  "originStation": "CPSN",
+  "destinationStation": "NED",
+  "slug": "17619-cpsn-ned-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "CPSN",
+      "stationName": "C SAMBHAJINAGAR",
+      "arrivalTime": "",
+      "departureTime": "23:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "J",
+      "stationName": "Jalna",
+      "arrivalTime": "00:08",
+      "departureTime": "00:10",
+      "day": 2,
+      "distance": "63.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "PBN",
+      "stationName": "Parbhani Jn",
+      "arrivalTime": "02:08",
+      "departureTime": "02:10",
+      "day": 2,
+      "distance": "178.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "PAU",
+      "stationName": "Purna Jn",
+      "arrivalTime": "02:50",
+      "departureTime": "02:55",
+      "day": 2,
+      "distance": "206.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "NED",
+      "stationName": "H Sahib Nanded",
+      "arrivalTime": "04:30",
+      "departureTime": "",
+      "day": 2,
+      "distance": "237.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Cpsn Ned Exp (17619) from CPSN to NED are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-08-05T23:29:20.224Z",
+  "knownChartCount": 0
+}

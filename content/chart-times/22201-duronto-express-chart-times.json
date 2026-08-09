@@ -1,0 +1,64 @@
+{
+  "trainNumber": "22201",
+  "trainName": "Duronto Express",
+  "originStation": "SDAH",
+  "destinationStation": "PURI",
+  "slug": "22201-duronto-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "SDAH",
+      "stationName": "Sealdah",
+      "arrivalTime": "",
+      "departureTime": "20:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "09:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:36",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SDAH"
+    },
+    {
+      "stationCode": "KGP",
+      "stationName": "Kharagpur Jn",
+      "arrivalTime": "22:10",
+      "departureTime": "22:15",
+      "day": 1,
+      "distance": "136.0",
+      "chartTimeLocal": "14:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGP"
+    },
+    {
+      "stationCode": "BBS",
+      "stationName": "Bhubaneswar",
+      "arrivalTime": "02:25",
+      "departureTime": "02:30",
+      "day": 2,
+      "distance": "459.0",
+      "chartTimeLocal": "14:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGP"
+    },
+    {
+      "stationCode": "PURI",
+      "stationName": "Puri",
+      "arrivalTime": "04:10",
+      "departureTime": "",
+      "day": 2,
+      "distance": "522.0",
+      "chartTimeLocal": "14:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KGP"
+    }
+  ],
+  "summary": "The first reservation chart for Duronto Express (22201) is prepared at Sealdah (SDAH) around 9:52 AM, with a second (vacancy) chart around 7:36 PM. 4 of 4 stations on the SDAH to PURI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:13:14.906Z",
+  "knownChartCount": 4
+}

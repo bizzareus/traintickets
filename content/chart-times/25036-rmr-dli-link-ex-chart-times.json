@@ -1,0 +1,103 @@
+{
+  "trainNumber": "25036",
+  "trainName": "Rmr Dli Link Ex",
+  "originStation": "RMR",
+  "destinationStation": "DLI",
+  "slug": "25036-rmr-dli-link-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "RMR",
+      "stationName": "Ramnagar",
+      "arrivalTime": "",
+      "departureTime": "09:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "PRM",
+      "stationName": "Pirumadara",
+      "arrivalTime": "09:58",
+      "departureTime": "09:59",
+      "day": 1,
+      "distance": "9.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KPV",
+      "stationName": "Kashipur",
+      "arrivalTime": "10:17",
+      "departureTime": "10:22",
+      "day": 1,
+      "distance": "28.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MB",
+      "stationName": "Moradabad",
+      "arrivalTime": "11:45",
+      "departureTime": "12:25",
+      "day": 1,
+      "distance": "78.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "AMRO",
+      "stationName": "Amroha",
+      "arrivalTime": "12:52",
+      "departureTime": "12:54",
+      "day": 1,
+      "distance": "108.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "GZB",
+      "stationName": "Ghaziabad",
+      "arrivalTime": "14:39",
+      "departureTime": "14:41",
+      "day": 1,
+      "distance": "219.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DLI",
+      "stationName": "Old Delhi",
+      "arrivalTime": "15:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "239.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Rmr Dli Link Ex (25036) from RMR to DLI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T05:37:11.540Z",
+  "knownChartCount": 0
+}

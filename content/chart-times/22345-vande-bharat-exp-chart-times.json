@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22345",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "PNBE",
+  "destinationStation": "GTNR",
+  "slug": "22345-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "PNBE",
+      "stationName": "Patna Jn",
+      "arrivalTime": "",
+      "departureTime": "06:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    },
+    {
+      "stationCode": "ARA",
+      "stationName": "Ara Jn",
+      "arrivalTime": "06:38",
+      "departureTime": "06:40",
+      "day": 1,
+      "distance": "50.0",
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    },
+    {
+      "stationCode": "BXR",
+      "stationName": "Buxar",
+      "arrivalTime": "07:18",
+      "departureTime": "07:20",
+      "day": 1,
+      "distance": "118.0",
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    },
+    {
+      "stationCode": "DDU",
+      "stationName": "Dd Upadhyaya Jn",
+      "arrivalTime": "08:30",
+      "departureTime": "08:35",
+      "day": 1,
+      "distance": "212.0",
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    },
+    {
+      "stationCode": "BSB",
+      "stationName": "Varanasi Jn",
+      "arrivalTime": "09:27",
+      "departureTime": "09:32",
+      "day": 1,
+      "distance": "229.0",
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    },
+    {
+      "stationCode": "AY",
+      "stationName": "Ayodhya Dham Jn",
+      "arrivalTime": "12:10",
+      "departureTime": "12:15",
+      "day": 1,
+      "distance": "418.0",
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    },
+    {
+      "stationCode": "GTNR",
+      "stationName": "Gomati Nagar",
+      "arrivalTime": "14:35",
+      "departureTime": "",
+      "day": 1,
+      "distance": "544.0",
+      "chartTimeLocal": "21:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (22345) is prepared at Patna Jn (PNBE) around 9:22 PM, with a second (vacancy) chart around 6:25 AM. 7 of 7 stations on the PNBE to GTNR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:33:00.761Z",
+  "knownChartCount": 7
+}

@@ -1,0 +1,51 @@
+{
+  "trainNumber": "52596",
+  "trainName": "Steam Joyride",
+  "originStation": "DJ",
+  "destinationStation": "DJRZ",
+  "slug": "52596-steam-joyride-chart-times",
+  "stations": [
+    {
+      "stationCode": "DJ",
+      "stationName": "Darjeeling",
+      "arrivalTime": "",
+      "departureTime": "11:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "22:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DJ"
+    },
+    {
+      "stationCode": "GHUM",
+      "stationName": "Ghum",
+      "arrivalTime": "12:20",
+      "departureTime": "12:40",
+      "day": 1,
+      "distance": "7.0",
+      "chartTimeLocal": "22:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DJ"
+    },
+    {
+      "stationCode": "DJRZ",
+      "stationName": "To Darjeeling",
+      "arrivalTime": "13:15",
+      "departureTime": "",
+      "day": 1,
+      "distance": "13.0",
+      "chartTimeLocal": "22:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DJ"
+    }
+  ],
+  "summary": "The first reservation chart for Steam Joyride (52596) is prepared at Darjeeling (DJ) around 10:45 PM, with a second (vacancy) chart around 11:15 AM. 3 of 3 stations on the DJ to DJRZ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T08:12:02.215Z",
+  "knownChartCount": 3
+}

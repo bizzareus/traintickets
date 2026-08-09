@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22489",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "BSB",
+  "destinationStation": "MTC",
+  "slug": "22489-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "BSB",
+      "stationName": "Varanasi Jn",
+      "arrivalTime": "",
+      "departureTime": "09:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BSB"
+    },
+    {
+      "stationCode": "AY",
+      "stationName": "Ayodhya Dham Jn",
+      "arrivalTime": "11:34",
+      "departureTime": "11:36",
+      "day": 1,
+      "distance": "189.0",
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BSB"
+    },
+    {
+      "stationCode": "LKO",
+      "stationName": "Lucknow Nr",
+      "arrivalTime": "13:40",
+      "departureTime": "13:50",
+      "day": 1,
+      "distance": "324.0",
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BSB"
+    },
+    {
+      "stationCode": "BE",
+      "stationName": "Bareilly",
+      "arrivalTime": "17:13",
+      "departureTime": "17:15",
+      "day": 1,
+      "distance": "559.0",
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BSB"
+    },
+    {
+      "stationCode": "MB",
+      "stationName": "Moradabad",
+      "arrivalTime": "18:50",
+      "departureTime": "18:55",
+      "day": 1,
+      "distance": "650.0",
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BSB"
+    },
+    {
+      "stationCode": "HPU",
+      "stationName": "Hapur",
+      "arrivalTime": "20:10",
+      "departureTime": "20:12",
+      "day": 1,
+      "distance": "754.0",
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BSB"
+    },
+    {
+      "stationCode": "MTC",
+      "stationName": "Meerut City",
+      "arrivalTime": "21:05",
+      "departureTime": "",
+      "day": 1,
+      "distance": "783.0",
+      "chartTimeLocal": "21:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BSB"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (22489) is prepared at Varanasi Jn (BSB) around 9:05 PM. 7 of 7 stations on the BSB to MTC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T02:06:53.901Z",
+  "knownChartCount": 7
+}

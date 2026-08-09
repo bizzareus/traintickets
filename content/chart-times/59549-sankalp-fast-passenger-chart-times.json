@@ -1,0 +1,103 @@
+{
+  "trainNumber": "59549",
+  "trainName": "Sankalp Fast Passenger",
+  "originStation": "BRC",
+  "destinationStation": "VTA",
+  "slug": "59549-sankalp-fast-passenger-chart-times",
+  "stations": [
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "",
+      "departureTime": "06:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "VDA",
+      "stationName": "Vasad Jn",
+      "arrivalTime": "06:47",
+      "departureTime": "06:48",
+      "day": 1,
+      "distance": "20.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ANND",
+      "stationName": "Anand Jn",
+      "arrivalTime": "07:06",
+      "departureTime": "07:08",
+      "day": 1,
+      "distance": "36.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ND",
+      "stationName": "Nadiad Jn",
+      "arrivalTime": "07:24",
+      "departureTime": "07:26",
+      "day": 1,
+      "distance": "54.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MHD",
+      "stationName": "Mhmdvd Kheda Rd",
+      "arrivalTime": "07:40",
+      "departureTime": "07:42",
+      "day": 1,
+      "distance": "72.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BJD",
+      "stationName": "Barejadi",
+      "arrivalTime": "08:10",
+      "departureTime": "08:11",
+      "day": 1,
+      "distance": "83.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "VTA",
+      "stationName": "Vatva",
+      "arrivalTime": "08:30",
+      "departureTime": "",
+      "day": 1,
+      "distance": "92.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Sankalp Fast Passenger (59549) from BRC to VTA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T12:27:23.463Z",
+  "knownChartCount": 0
+}

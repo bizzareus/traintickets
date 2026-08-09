@@ -1,0 +1,77 @@
+{
+  "trainNumber": "22209",
+  "trainName": "Nzm Duronto",
+  "originStation": "MMCT",
+  "destinationStation": "NZM",
+  "slug": "22209-nzm-duronto-chart-times",
+  "stations": [
+    {
+      "stationCode": "MMCT",
+      "stationName": "Mumbai Central",
+      "arrivalTime": "",
+      "departureTime": "23:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "03:26",
+      "departureTime": "03:36",
+      "day": 2,
+      "distance": "392.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "RTM",
+      "stationName": "Ratlam Jn",
+      "arrivalTime": "07:00",
+      "departureTime": "07:05",
+      "day": 2,
+      "distance": "653.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KOTA",
+      "stationName": "Kota Jn",
+      "arrivalTime": "10:00",
+      "departureTime": "10:05",
+      "day": 2,
+      "distance": "920.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "NZM",
+      "stationName": "H Nizamuddin",
+      "arrivalTime": "15:50",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1377.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Nzm Duronto (22209) from MMCT to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-08-06T01:13:48.313Z",
+  "knownChartCount": 0
+}

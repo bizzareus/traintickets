@@ -1,0 +1,103 @@
+{
+  "trainNumber": "52451",
+  "trainName": "Shivalk Dlx Exp",
+  "originStation": "KLK",
+  "destinationStation": "SML",
+  "slug": "52451-shivalk-dlx-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "KLK",
+      "stationName": "Kalka",
+      "arrivalTime": "",
+      "departureTime": "05:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DMP",
+      "stationName": "DHARMPUR HMCHL",
+      "arrivalTime": "07:14",
+      "departureTime": "07:16",
+      "day": 1,
+      "distance": "33.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BOF",
+      "stationName": "Barog",
+      "arrivalTime": "07:45",
+      "departureTime": "07:50",
+      "day": 1,
+      "distance": "43.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SOL",
+      "stationName": "Solan",
+      "arrivalTime": "08:01",
+      "departureTime": "08:03",
+      "day": 1,
+      "distance": "47.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KDZ",
+      "stationName": "Kandaghat",
+      "arrivalTime": "08:38",
+      "departureTime": "08:40",
+      "day": 1,
+      "distance": "59.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TVI",
+      "stationName": "Taradevi",
+      "arrivalTime": "09:53",
+      "departureTime": "09:54",
+      "day": 1,
+      "distance": "85.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SML",
+      "stationName": "Shimla",
+      "arrivalTime": "10:40",
+      "departureTime": "",
+      "day": 1,
+      "distance": "96.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Shivalk Dlx Exp (52451) from KLK to SML are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T07:22:11.102Z",
+  "knownChartCount": 0
+}

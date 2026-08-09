@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22147",
+  "trainName": "Dr Snsi Sf Exp",
+  "originStation": "DR",
+  "destinationStation": "SNSI",
+  "slug": "22147-dr-snsi-sf-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "DR",
+      "stationName": "Dadar",
+      "arrivalTime": "",
+      "departureTime": "21:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TNA",
+      "stationName": "Thane",
+      "arrivalTime": "22:03",
+      "departureTime": "22:05",
+      "day": 1,
+      "distance": "25.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KYN",
+      "stationName": "Kalyan Jn",
+      "arrivalTime": "22:22",
+      "departureTime": "22:25",
+      "day": 1,
+      "distance": "45.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "NK",
+      "stationName": "Nashik Road",
+      "arrivalTime": "00:47",
+      "departureTime": "00:50",
+      "day": 2,
+      "distance": "179.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MMR",
+      "stationName": "Manmad Jn",
+      "arrivalTime": "01:40",
+      "departureTime": "01:43",
+      "day": 2,
+      "distance": "252.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KPG",
+      "stationName": "Kopargaon",
+      "arrivalTime": "02:42",
+      "departureTime": "02:45",
+      "day": 2,
+      "distance": "294.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SNSI",
+      "stationName": "Sainagar Shirdi",
+      "arrivalTime": "03:50",
+      "departureTime": "",
+      "day": 2,
+      "distance": "334.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Dr Snsi Sf Exp (22147) from DR to SNSI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T01:07:52.570Z",
+  "knownChartCount": 0
+}

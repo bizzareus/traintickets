@@ -1,0 +1,77 @@
+{
+  "trainNumber": "52588",
+  "trainName": "Dj Kgn Ng Train",
+  "originStation": "DJ",
+  "destinationStation": "KGN",
+  "slug": "52588-dj-kgn-ng-train-chart-times",
+  "stations": [
+    {
+      "stationCode": "DJ",
+      "stationName": "Darjeeling",
+      "arrivalTime": "",
+      "departureTime": "16:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "GHUM",
+      "stationName": "Ghum",
+      "arrivalTime": "16:35",
+      "departureTime": "16:40",
+      "day": 1,
+      "distance": "7.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SAD",
+      "stationName": "Sonada",
+      "arrivalTime": "17:25",
+      "departureTime": "17:27",
+      "day": 1,
+      "distance": "16.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TUNG",
+      "stationName": "Tung",
+      "arrivalTime": "18:07",
+      "departureTime": "18:08",
+      "day": 1,
+      "distance": "24.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KGN",
+      "stationName": "Kurseong",
+      "arrivalTime": "18:40",
+      "departureTime": "",
+      "day": 1,
+      "distance": "31.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Dj Kgn Ng Train (52588) from DJ to KGN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-08-06T07:56:10.109Z",
+  "knownChartCount": 0
+}

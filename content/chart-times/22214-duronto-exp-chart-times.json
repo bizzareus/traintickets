@@ -1,0 +1,64 @@
+{
+  "trainNumber": "22214",
+  "trainName": "Duronto Exp",
+  "originStation": "PNBE",
+  "destinationStation": "SHM",
+  "slug": "22214-duronto-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "PNBE",
+      "stationName": "Patna Jn",
+      "arrivalTime": "",
+      "departureTime": "20:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "JSME",
+      "stationName": "Jasidih Jn",
+      "arrivalTime": "00:07",
+      "departureTime": "00:09",
+      "day": 2,
+      "distance": "222.0",
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    },
+    {
+      "stationCode": "ASN",
+      "stationName": "Asansol Jn",
+      "arrivalTime": "01:43",
+      "departureTime": "01:48",
+      "day": 2,
+      "distance": "332.0",
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    },
+    {
+      "stationCode": "SHM",
+      "stationName": "Shalimar",
+      "arrivalTime": "05:45",
+      "departureTime": "",
+      "day": 2,
+      "distance": "546.0",
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
+    }
+  ],
+  "summary": "The first reservation chart for Duronto Exp (22214) is prepared at Jasidih Jn (JSME) around 12:45 PM, with a second (vacancy) chart around 8:30 PM. 3 of 4 stations on the PNBE to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-06T01:14:02.364Z",
+  "knownChartCount": 3
+}

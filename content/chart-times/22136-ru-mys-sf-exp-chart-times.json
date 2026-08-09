@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22136",
+  "trainName": "Ru Mys Sf Exp",
+  "originStation": "RU",
+  "destinationStation": "MYS",
+  "slug": "22136-ru-mys-sf-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "RU",
+      "stationName": "Renigunta Jn",
+      "arrivalTime": "",
+      "departureTime": "17:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KPD",
+      "stationName": "Katpadi Jn",
+      "arrivalTime": "19:10",
+      "departureTime": "19:12",
+      "day": 1,
+      "distance": "133.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "JTJ",
+      "stationName": "Jolarpettai",
+      "arrivalTime": "20:33",
+      "departureTime": "20:35",
+      "day": 1,
+      "distance": "217.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BNC",
+      "stationName": "Bengaluru Cant",
+      "arrivalTime": "22:29",
+      "departureTime": "22:30",
+      "day": 1,
+      "distance": "361.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SBC",
+      "stationName": "KSR Bengaluru",
+      "arrivalTime": "22:50",
+      "departureTime": "22:55",
+      "day": 1,
+      "distance": "365.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MYA",
+      "stationName": "Mandya",
+      "arrivalTime": "00:23",
+      "departureTime": "00:25",
+      "day": 2,
+      "distance": "458.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MYS",
+      "stationName": "Mysuru Jn",
+      "arrivalTime": "01:50",
+      "departureTime": "",
+      "day": 2,
+      "distance": "504.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Ru Mys Sf Exp (22136) from RU to MYS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T01:06:42.496Z",
+  "knownChartCount": 0
+}

@@ -1,0 +1,90 @@
+{
+  "trainNumber": "22425",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "AYC",
+  "destinationStation": "ANVT",
+  "slug": "22425-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "AYC",
+      "stationName": "Ayodhaya Cant",
+      "arrivalTime": "",
+      "departureTime": "15:25",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "AYC"
+    },
+    {
+      "stationCode": "LKO",
+      "stationName": "Lucknow Nr",
+      "arrivalTime": "17:10",
+      "departureTime": "17:15",
+      "day": 1,
+      "distance": "128.0",
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "AYC"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "18:35",
+      "departureTime": "18:40",
+      "day": 1,
+      "distance": "202.0",
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "AYC"
+    },
+    {
+      "stationCode": "ALJN",
+      "stationName": "Aligarh Jn",
+      "arrivalTime": "21:33",
+      "departureTime": "21:35",
+      "day": 1,
+      "distance": "511.0",
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "AYC"
+    },
+    {
+      "stationCode": "KRJ",
+      "stationName": "Khurja Jn",
+      "arrivalTime": "22:03",
+      "departureTime": "22:05",
+      "day": 1,
+      "distance": "554.0",
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "AYC"
+    },
+    {
+      "stationCode": "ANVT",
+      "stationName": "Anand Vihar TRM",
+      "arrivalTime": "23:40",
+      "departureTime": "",
+      "day": 1,
+      "distance": "629.0",
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "AYC"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (22425) is prepared at Ayodhaya Cant (AYC) around 9:39 PM. 6 of 6 stations on the AYC to ANVT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:52:08.992Z",
+  "knownChartCount": 6
+}

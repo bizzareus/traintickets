@@ -1,0 +1,103 @@
+{
+  "trainNumber": "58029",
+  "trainName": "Src Dgha Pss",
+  "originStation": "SRC",
+  "destinationStation": "DGHA",
+  "slug": "58029-src-dgha-pss-chart-times",
+  "stations": [
+    {
+      "stationCode": "SRC",
+      "stationName": "Santragachi Jn",
+      "arrivalTime": "",
+      "departureTime": "08:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ULB",
+      "stationName": "Ulubaria",
+      "arrivalTime": "08:33",
+      "departureTime": "08:35",
+      "day": 1,
+      "distance": "24.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BZN",
+      "stationName": "Bagnan",
+      "arrivalTime": "08:50",
+      "departureTime": "08:52",
+      "day": 1,
+      "distance": "37.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MCA",
+      "stationName": "Mecheda",
+      "arrivalTime": "09:06",
+      "departureTime": "09:08",
+      "day": 1,
+      "distance": "50.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TMZ",
+      "stationName": "Tamluk",
+      "arrivalTime": "09:46",
+      "departureTime": "09:48",
+      "day": 1,
+      "distance": "83.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KATI",
+      "stationName": "Kanthi P H",
+      "arrivalTime": "10:44",
+      "departureTime": "10:46",
+      "day": 1,
+      "distance": "145.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DGHA",
+      "stationName": "Digha",
+      "arrivalTime": "11:55",
+      "departureTime": "",
+      "day": 1,
+      "distance": "177.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Src Dgha Pss (58029) from SRC to DGHA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T10:31:01.265Z",
+  "knownChartCount": 0
+}

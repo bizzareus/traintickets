@@ -1,0 +1,90 @@
+{
+  "trainNumber": "22224",
+  "trainName": "Csmt Vandebharat",
+  "originStation": "SNSI",
+  "destinationStation": "CSMT",
+  "slug": "22224-csmt-vandebharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "SNSI",
+      "stationName": "Sainagar Shirdi",
+      "arrivalTime": "",
+      "departureTime": "17:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
+    },
+    {
+      "stationCode": "NK",
+      "stationName": "Nashik Road",
+      "arrivalTime": "19:33",
+      "departureTime": "19:35",
+      "day": 1,
+      "distance": "156.0",
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
+    },
+    {
+      "stationCode": "KYN",
+      "stationName": "Kalyan Jn",
+      "arrivalTime": "21:45",
+      "departureTime": "21:47",
+      "day": 1,
+      "distance": "290.0",
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
+    },
+    {
+      "stationCode": "TNA",
+      "stationName": "Thane",
+      "arrivalTime": "22:06",
+      "departureTime": "22:08",
+      "day": 1,
+      "distance": "310.0",
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
+    },
+    {
+      "stationCode": "DR",
+      "stationName": "Dadar",
+      "arrivalTime": "22:28",
+      "departureTime": "22:30",
+      "day": 1,
+      "distance": "334.0",
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
+    },
+    {
+      "stationCode": "CSMT",
+      "stationName": "C Shivaji Mah T",
+      "arrivalTime": "22:50",
+      "departureTime": "",
+      "day": 1,
+      "distance": "343.0",
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
+    }
+  ],
+  "summary": "The first reservation chart for Csmt Vandebharat (22224) is prepared at Sainagar Shirdi (SNSI) around 7:46 AM, with a second (vacancy) chart around 7:20 PM. 6 of 6 stations on the SNSI to CSMT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:14:22.760Z",
+  "knownChartCount": 6
+}

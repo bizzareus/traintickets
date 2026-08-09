@@ -1,0 +1,103 @@
+{
+  "trainNumber": "20661",
+  "trainName": "Dwr Vande Bharat",
+  "originStation": "SBC",
+  "destinationStation": "DWR",
+  "slug": "20661-dwr-vande-bharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "SBC",
+      "stationName": "KSR Bengaluru",
+      "arrivalTime": "",
+      "departureTime": "05:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "YPR",
+      "stationName": "Yesvantpur Jn",
+      "arrivalTime": "05:55",
+      "departureTime": "05:57",
+      "day": 1,
+      "distance": "6.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "TK",
+      "stationName": "Tumakuru",
+      "arrivalTime": "06:36",
+      "departureTime": "06:38",
+      "day": 1,
+      "distance": "70.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "DVG",
+      "stationName": "Davangere",
+      "arrivalTime": "09:30",
+      "departureTime": "09:32",
+      "day": 1,
+      "distance": "326.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "HVR",
+      "stationName": "Mmailara Haveri",
+      "arrivalTime": "10:20",
+      "departureTime": "10:22",
+      "day": 1,
+      "distance": "394.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "UBL",
+      "stationName": "Sss Hubballi Jn",
+      "arrivalTime": "11:15",
+      "departureTime": "11:20",
+      "day": 1,
+      "distance": "470.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "DWR",
+      "stationName": "Dharwar",
+      "arrivalTime": "12:00",
+      "departureTime": "",
+      "day": 1,
+      "distance": "490.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    }
+  ],
+  "summary": "The first reservation chart for Dwr Vande Bharat (20661) is prepared at KSR Bengaluru (SBC) around 8:22 PM, with a second (vacancy) chart around 5:30 AM. 7 of 7 stations on the SBC to DWR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:40:10.252Z",
+  "knownChartCount": 7
+}

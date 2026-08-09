@@ -1,0 +1,38 @@
+{
+  "trainNumber": "52592",
+  "trainName": "Diesel Joyride",
+  "originStation": "DJ",
+  "destinationStation": "DJRZ",
+  "slug": "52592-diesel-joyride-chart-times",
+  "stations": [
+    {
+      "stationCode": "DJ",
+      "stationName": "Darjeeling",
+      "arrivalTime": "",
+      "departureTime": "07:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DJRZ",
+      "stationName": "To Darjeeling",
+      "arrivalTime": "08:50",
+      "departureTime": "",
+      "day": 1,
+      "distance": "14.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Diesel Joyride (52592) from DJ to DJRZ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
+  "generatedAt": "2026-08-06T08:11:35.932Z",
+  "knownChartCount": 0
+}

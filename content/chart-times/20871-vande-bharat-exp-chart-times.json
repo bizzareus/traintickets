@@ -1,0 +1,77 @@
+{
+  "trainNumber": "20871",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "HWH",
+  "destinationStation": "ROU",
+  "slug": "20871-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "HWH",
+      "stationName": "Howrah Jn",
+      "arrivalTime": "",
+      "departureTime": "06:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "17:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "KGP",
+      "stationName": "Kharagpur Jn",
+      "arrivalTime": "07:28",
+      "departureTime": "07:30",
+      "day": 1,
+      "distance": "116.0",
+      "chartTimeLocal": "17:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "TATA",
+      "stationName": "Tatanagar Jn",
+      "arrivalTime": "09:10",
+      "departureTime": "09:15",
+      "day": 1,
+      "distance": "250.0",
+      "chartTimeLocal": "17:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "CKP",
+      "stationName": "Chakradharpur",
+      "arrivalTime": "09:58",
+      "departureTime": "10:00",
+      "day": 1,
+      "distance": "312.0",
+      "chartTimeLocal": "17:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "ROU",
+      "stationName": "Rourkela",
+      "arrivalTime": "12:05",
+      "departureTime": "",
+      "day": 1,
+      "distance": "413.0",
+      "chartTimeLocal": "17:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (20871) is prepared at Howrah Jn (HWH) around 5:04 PM, with a second (vacancy) chart around 5:44 AM. 5 of 5 stations on the HWH to ROU route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:50:50.693Z",
+  "knownChartCount": 5
+}

@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22440",
+  "trainName": "Vande Bharat Ex",
+  "originStation": "SVDK",
+  "destinationStation": "NDLS",
+  "slug": "22440-vande-bharat-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "SVDK",
+      "stationName": "Shri Mata Vaishno Devi Katra",
+      "arrivalTime": "",
+      "departureTime": "14:55",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SVDK"
+    },
+    {
+      "stationCode": "JAT",
+      "stationName": "Jammu Tawi",
+      "arrivalTime": "16:10",
+      "departureTime": "16:12",
+      "day": 1,
+      "distance": "78.0",
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SVDK"
+    },
+    {
+      "stationCode": "PTKC",
+      "stationName": "PATHANKOT CANTT",
+      "arrivalTime": "17:29",
+      "departureTime": "17:31",
+      "day": 1,
+      "distance": "178.0",
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SVDK"
+    },
+    {
+      "stationCode": "JRC",
+      "stationName": "Jalandhar Cant",
+      "arrivalTime": "18:51",
+      "departureTime": "18:53",
+      "day": 1,
+      "distance": "291.0",
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SVDK"
+    },
+    {
+      "stationCode": "LDH",
+      "stationName": "Ludhiana Jn",
+      "arrivalTime": "19:34",
+      "departureTime": "19:36",
+      "day": 1,
+      "distance": "343.0",
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SVDK"
+    },
+    {
+      "stationCode": "UMB",
+      "stationName": "Ambala Cant Jn",
+      "arrivalTime": "20:54",
+      "departureTime": "20:56",
+      "day": 1,
+      "distance": "456.0",
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SVDK"
+    },
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "23:10",
+      "departureTime": "",
+      "day": 1,
+      "distance": "655.0",
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SVDK"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Ex (22440) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 9:02 PM. 7 of 7 stations on the SVDK to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:53:28.602Z",
+  "knownChartCount": 7
+}

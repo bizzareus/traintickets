@@ -1,0 +1,103 @@
+{
+  "trainNumber": "26505",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "KURJ",
+  "destinationStation": "BNRS",
+  "slug": "26505-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "KURJ",
+      "stationName": "KHAJURAHO",
+      "arrivalTime": "",
+      "departureTime": "15:20",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KURJ"
+    },
+    {
+      "stationCode": "MBA",
+      "stationName": "Mahoba Jn",
+      "arrivalTime": "16:18",
+      "departureTime": "16:20",
+      "day": 1,
+      "distance": "64.0",
+      "chartTimeLocal": "21:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KURJ"
+    },
+    {
+      "stationCode": "BNDA",
+      "stationName": "Banda Jn",
+      "arrivalTime": "17:03",
+      "departureTime": "17:05",
+      "day": 1,
+      "distance": "117.0",
+      "chartTimeLocal": "21:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KURJ"
+    },
+    {
+      "stationCode": "CKTD",
+      "stationName": "Chitrakutdham K",
+      "arrivalTime": "18:03",
+      "departureTime": "18:05",
+      "day": 1,
+      "distance": "186.0",
+      "chartTimeLocal": "21:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KURJ"
+    },
+    {
+      "stationCode": "PCOI",
+      "stationName": "Prayagrajcheoki",
+      "arrivalTime": "20:10",
+      "departureTime": "20:15",
+      "day": 1,
+      "distance": "309.0",
+      "chartTimeLocal": "21:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KURJ"
+    },
+    {
+      "stationCode": "BDL",
+      "stationName": "Vindhyachal",
+      "arrivalTime": "21:00",
+      "departureTime": "21:02",
+      "day": 1,
+      "distance": "383.0",
+      "chartTimeLocal": "21:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KURJ"
+    },
+    {
+      "stationCode": "BNRS",
+      "stationName": "BANARAS",
+      "arrivalTime": "23:10",
+      "departureTime": "",
+      "day": 1,
+      "distance": "469.0",
+      "chartTimeLocal": "21:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KURJ"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (26505) is prepared at KHAJURAHO (KURJ) around 9:37 PM, with a second (vacancy) chart around 8 PM. 7 of 7 stations on the KURJ to BNRS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T06:11:52.128Z",
+  "knownChartCount": 7
+}

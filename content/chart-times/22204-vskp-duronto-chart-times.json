@@ -1,0 +1,64 @@
+{
+  "trainNumber": "22204",
+  "trainName": "Vskp Duronto",
+  "originStation": "SC",
+  "destinationStation": "VSKP",
+  "slug": "22204-vskp-duronto-chart-times",
+  "stations": [
+    {
+      "stationCode": "SC",
+      "stationName": "Secunderabad Jn",
+      "arrivalTime": "",
+      "departureTime": "20:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "11:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
+    },
+    {
+      "stationCode": "GNT",
+      "stationName": "Guntur Jn",
+      "arrivalTime": "23:53",
+      "departureTime": "23:55",
+      "day": 1,
+      "distance": "282.0",
+      "chartTimeLocal": "13:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GNT"
+    },
+    {
+      "stationCode": "BZA",
+      "stationName": "Vijayawada Jn",
+      "arrivalTime": "01:00",
+      "departureTime": "01:10",
+      "day": 2,
+      "distance": "313.0",
+      "chartTimeLocal": "15:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
+    },
+    {
+      "stationCode": "VSKP",
+      "stationName": "Visakhapatnam",
+      "arrivalTime": "06:30",
+      "departureTime": "",
+      "day": 2,
+      "distance": "663.0",
+      "chartTimeLocal": "15:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
+    }
+  ],
+  "summary": "The first reservation chart for Vskp Duronto (22204) is prepared at Secunderabad Jn (SC) around 11:52 AM, with a second (vacancy) chart around 8 PM. 4 of 4 stations on the SC to VSKP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:13:31.490Z",
+  "knownChartCount": 4
+}

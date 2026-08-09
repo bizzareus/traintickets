@@ -1,0 +1,77 @@
+{
+  "trainNumber": "22671",
+  "trainName": "Tejas Express",
+  "originStation": "MS",
+  "destinationStation": "MDU",
+  "slug": "22671-tejas-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "MS",
+      "stationName": "Chennai Egmore",
+      "arrivalTime": "",
+      "departureTime": "06:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
+    },
+    {
+      "stationCode": "TBM",
+      "stationName": "Tambaram",
+      "arrivalTime": "06:20",
+      "departureTime": "06:22",
+      "day": 1,
+      "distance": "25.0",
+      "chartTimeLocal": "20:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
+    },
+    {
+      "stationCode": "TPJ",
+      "stationName": "Tiruchchirapali",
+      "arrivalTime": "09:50",
+      "departureTime": "09:55",
+      "day": 1,
+      "distance": "336.0",
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPJ"
+    },
+    {
+      "stationCode": "DG",
+      "stationName": "Dindigul Jn",
+      "arrivalTime": "10:53",
+      "departureTime": "10:55",
+      "day": 1,
+      "distance": "431.0",
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPJ"
+    },
+    {
+      "stationCode": "MDU",
+      "stationName": "Madurai Jn",
+      "arrivalTime": "12:10",
+      "departureTime": "",
+      "day": 1,
+      "distance": "497.0",
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPJ"
+    }
+  ],
+  "summary": "The first reservation chart for Tejas Express (22671) is prepared at Chennai Egmore (MS) around 8:11 PM, with a second (vacancy) chart around 5:45 AM. 5 of 5 stations on the MS to MDU route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T02:52:21.320Z",
+  "knownChartCount": 5
+}

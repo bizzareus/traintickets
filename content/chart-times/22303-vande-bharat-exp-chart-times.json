@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22303",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "HWH",
+  "destinationStation": "GAYA",
+  "slug": "22303-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "HWH",
+      "stationName": "Howrah Jn",
+      "arrivalTime": "",
+      "departureTime": "06:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "DGR",
+      "stationName": "Durgapur",
+      "arrivalTime": "08:09",
+      "departureTime": "08:11",
+      "day": 1,
+      "distance": "158.0",
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "ASN",
+      "stationName": "Asansol Jn",
+      "arrivalTime": "08:33",
+      "departureTime": "08:35",
+      "day": 1,
+      "distance": "200.0",
+      "chartTimeLocal": "19:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "DHN",
+      "stationName": "Dhanbad Jn",
+      "arrivalTime": "09:43",
+      "departureTime": "09:45",
+      "day": 1,
+      "distance": "259.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
+    },
+    {
+      "stationCode": "PNME",
+      "stationName": "Parasnath",
+      "arrivalTime": "10:13",
+      "departureTime": "10:15",
+      "day": 1,
+      "distance": "306.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
+    },
+    {
+      "stationCode": "KQR",
+      "stationName": "Koderma Jn",
+      "arrivalTime": "10:58",
+      "departureTime": "11:00",
+      "day": 1,
+      "distance": "382.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
+    },
+    {
+      "stationCode": "GAYA",
+      "stationName": "Gaya Jn",
+      "arrivalTime": "12:30",
+      "departureTime": "",
+      "day": 1,
+      "distance": "458.0",
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (22303) is prepared at Howrah Jn (HWH) around 7:45 PM, with a second (vacancy) chart around 6:30 AM. 7 of 7 stations on the HWH to GAYA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:15:22.445Z",
+  "knownChartCount": 7
+}

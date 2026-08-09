@@ -1,0 +1,90 @@
+{
+  "trainNumber": "22962",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "ADI",
+  "destinationStation": "MMCT",
+  "slug": "22962-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "ADI",
+      "stationName": "Ahmedabad Jn",
+      "arrivalTime": "",
+      "departureTime": "06:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "06:55",
+      "departureTime": "06:58",
+      "day": 1,
+      "distance": "100.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ST",
+      "stationName": "Surat",
+      "arrivalTime": "08:15",
+      "departureTime": "08:20",
+      "day": 1,
+      "distance": "229.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "VAPI",
+      "stationName": "Vapi",
+      "arrivalTime": "09:13",
+      "departureTime": "09:15",
+      "day": 1,
+      "distance": "322.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BVI",
+      "stationName": "Borivali",
+      "arrivalTime": "10:43",
+      "departureTime": "10:45",
+      "day": 1,
+      "distance": "462.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MMCT",
+      "stationName": "Mumbai Central",
+      "arrivalTime": "11:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "491.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Vande Bharat Exp (22962) from ADI to MMCT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-08-06T04:35:48.108Z",
+  "knownChartCount": 0
+}

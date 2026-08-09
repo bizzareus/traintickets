@@ -1,0 +1,90 @@
+{
+  "trainNumber": "22301",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "HWH",
+  "destinationStation": "NJP",
+  "slug": "22301-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "HWH",
+      "stationName": "Howrah Jn",
+      "arrivalTime": "",
+      "departureTime": "05:55",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
+    },
+    {
+      "stationCode": "BHP",
+      "stationName": "Bolpur S Niktn",
+      "arrivalTime": "07:25",
+      "departureTime": "07:27",
+      "day": 1,
+      "distance": "146.0",
+      "chartTimeLocal": "21:48",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "BHP"
+    },
+    {
+      "stationCode": "MLDT",
+      "stationName": "Malda Town",
+      "arrivalTime": "10:22",
+      "departureTime": "10:25",
+      "day": 1,
+      "distance": "328.0",
+      "chartTimeLocal": "22:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MLDT"
+    },
+    {
+      "stationCode": "BOE",
+      "stationName": "Barsoi Jn",
+      "arrivalTime": "11:28",
+      "departureTime": "11:30",
+      "day": 1,
+      "distance": "416.0",
+      "chartTimeLocal": "22:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MLDT"
+    },
+    {
+      "stationCode": "KNE",
+      "stationName": "Kishanganj",
+      "arrivalTime": "12:15",
+      "departureTime": "12:17",
+      "day": 1,
+      "distance": "473.0",
+      "chartTimeLocal": "22:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MLDT"
+    },
+    {
+      "stationCode": "NJP",
+      "stationName": "New Jalpaiguri",
+      "arrivalTime": "13:30",
+      "departureTime": "",
+      "day": 1,
+      "distance": "561.0",
+      "chartTimeLocal": "22:35",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MLDT"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (22301) is prepared at Howrah Jn (HWH) around 8:10 PM, with a second (vacancy) chart around 5:40 AM. 6 of 6 stations on the HWH to NJP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:15:13.543Z",
+  "knownChartCount": 6
+}

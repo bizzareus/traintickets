@@ -1,0 +1,77 @@
+{
+  "trainNumber": "20947",
+  "trainName": "Jan Shatabdi Ex",
+  "originStation": "ADI",
+  "destinationStation": "EKNR",
+  "slug": "20947-jan-shatabdi-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "ADI",
+      "stationName": "Ahmedabad Jn",
+      "arrivalTime": "",
+      "departureTime": "07:55",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "19:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ADI"
+    },
+    {
+      "stationCode": "ND",
+      "stationName": "Nadiad Jn",
+      "arrivalTime": "08:29",
+      "departureTime": "08:31",
+      "day": 1,
+      "distance": "46.0",
+      "chartTimeLocal": "19:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ADI"
+    },
+    {
+      "stationCode": "ANND",
+      "stationName": "Anand Jn",
+      "arrivalTime": "08:44",
+      "departureTime": "08:46",
+      "day": 1,
+      "distance": "64.0",
+      "chartTimeLocal": "19:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ADI"
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "09:15",
+      "departureTime": "09:18",
+      "day": 1,
+      "distance": "100.0",
+      "chartTimeLocal": "19:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ADI"
+    },
+    {
+      "stationCode": "EKNR",
+      "stationName": "Ekata Nagar Kevadiya Kdcy",
+      "arrivalTime": "10:50",
+      "departureTime": "",
+      "day": 1,
+      "distance": "183.0",
+      "chartTimeLocal": "19:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ADI"
+    }
+  ],
+  "summary": "The first reservation chart for Jan Shatabdi Ex (20947) is prepared at Ahmedabad Jn (ADI) around 7:42 PM. 5 of 5 stations on the ADI to EKNR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:56:28.219Z",
+  "knownChartCount": 5
+}

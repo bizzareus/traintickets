@@ -1,0 +1,64 @@
+{
+  "trainNumber": "22415",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "BSB",
+  "destinationStation": "NDLS",
+  "slug": "22415-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "BSB",
+      "stationName": "Varanasi Jn",
+      "arrivalTime": "",
+      "departureTime": "06:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
+    },
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn.",
+      "arrivalTime": "07:30",
+      "departureTime": "07:34",
+      "day": 1,
+      "distance": "125.0",
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "09:26",
+      "departureTime": "09:30",
+      "day": 1,
+      "distance": "320.0",
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
+    },
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "14:05",
+      "departureTime": "",
+      "day": 1,
+      "distance": "760.0",
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (22415) is prepared at Varanasi Jn (BSB) around 9:06 PM, with a second (vacancy) chart around 7:19 AM. 4 of 4 stations on the BSB to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:51:32.166Z",
+  "knownChartCount": 4
+}

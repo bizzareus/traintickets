@@ -1,0 +1,90 @@
+{
+  "trainNumber": "20663",
+  "trainName": "Mas Vande Bharat",
+  "originStation": "MYS",
+  "destinationStation": "MAS",
+  "slug": "20663-mas-vande-bharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "MYS",
+      "stationName": "Mysuru Jn",
+      "arrivalTime": "",
+      "departureTime": "06:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
+    },
+    {
+      "stationCode": "MYA",
+      "stationName": "Mandya",
+      "arrivalTime": "06:28",
+      "departureTime": "06:30",
+      "day": 1,
+      "distance": "46.0",
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
+    },
+    {
+      "stationCode": "SBC",
+      "stationName": "KSR Bengaluru",
+      "arrivalTime": "07:40",
+      "departureTime": "07:45",
+      "day": 1,
+      "distance": "139.0",
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "KJM",
+      "stationName": "Krishnarajapurm",
+      "arrivalTime": "08:04",
+      "departureTime": "08:06",
+      "day": 1,
+      "distance": "153.0",
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "KPD",
+      "stationName": "Katpadi Jn",
+      "arrivalTime": "10:38",
+      "departureTime": "10:40",
+      "day": 1,
+      "distance": "371.0",
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    },
+    {
+      "stationCode": "MAS",
+      "stationName": "Mgr Chennai Ctl",
+      "arrivalTime": "12:30",
+      "departureTime": "",
+      "day": 1,
+      "distance": "500.0",
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
+    }
+  ],
+  "summary": "The first reservation chart for Mas Vande Bharat (20663) is prepared at Mysuru Jn (MYS) around 8:02 PM, with a second (vacancy) chart around 10:25 AM. 6 of 6 stations on the MYS to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:40:17.496Z",
+  "knownChartCount": 6
+}

@@ -1,0 +1,90 @@
+{
+  "trainNumber": "26963",
+  "trainName": "Udz Asv Vb Exp",
+  "originStation": "UDZ",
+  "destinationStation": "ASV",
+  "slug": "26963-udz-asv-vb-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "UDZ",
+      "stationName": "Udaipur City",
+      "arrivalTime": "",
+      "departureTime": "06:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
+    },
+    {
+      "stationCode": "ZW",
+      "stationName": "Zawar",
+      "arrivalTime": "06:43",
+      "departureTime": "06:45",
+      "day": 1,
+      "distance": "44.0",
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
+    },
+    {
+      "stationCode": "DNRP",
+      "stationName": "Dungarpur",
+      "arrivalTime": "07:47",
+      "departureTime": "07:49",
+      "day": 1,
+      "distance": "117.0",
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
+    },
+    {
+      "stationCode": "SJS",
+      "stationName": "Shamlaji Road",
+      "arrivalTime": "08:28",
+      "departureTime": "08:30",
+      "day": 1,
+      "distance": "170.0",
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
+    },
+    {
+      "stationCode": "HMT",
+      "stationName": "Himmatnagar",
+      "arrivalTime": "09:05",
+      "departureTime": "09:07",
+      "day": 1,
+      "distance": "211.0",
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
+    },
+    {
+      "stationCode": "ASV",
+      "stationName": "Asarva Jn",
+      "arrivalTime": "10:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "296.0",
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
+    }
+  ],
+  "summary": "The first reservation chart for Udz Asv Vb Exp (26963) is prepared at Udaipur City (UDZ) around 9:09 PM, with a second (vacancy) chart around 7:34 AM. 6 of 6 stations on the UDZ to ASV route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T06:20:57.754Z",
+  "knownChartCount": 6
+}

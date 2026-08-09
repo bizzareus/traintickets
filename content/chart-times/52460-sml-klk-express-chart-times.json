@@ -1,0 +1,103 @@
+{
+  "trainNumber": "52460",
+  "trainName": "Sml Klk Express",
+  "originStation": "SML",
+  "destinationStation": "KLK",
+  "slug": "52460-sml-klk-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "SML",
+      "stationName": "Shimla",
+      "arrivalTime": "",
+      "departureTime": "15:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TVI",
+      "stationName": "Taradevi",
+      "arrivalTime": "16:42",
+      "departureTime": "16:43",
+      "day": 1,
+      "distance": "11.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KDZ",
+      "stationName": "Kandaghat",
+      "arrivalTime": "17:55",
+      "departureTime": "17:57",
+      "day": 1,
+      "distance": "38.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SOL",
+      "stationName": "Solan",
+      "arrivalTime": "18:33",
+      "departureTime": "18:34",
+      "day": 1,
+      "distance": "50.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BOF",
+      "stationName": "Barog",
+      "arrivalTime": "18:48",
+      "departureTime": "18:53",
+      "day": 1,
+      "distance": "54.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DMP",
+      "stationName": "DHARMPUR HMCHL",
+      "arrivalTime": "19:17",
+      "departureTime": "19:19",
+      "day": 1,
+      "distance": "63.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KLK",
+      "stationName": "Kalka",
+      "arrivalTime": "21:05",
+      "departureTime": "",
+      "day": 1,
+      "distance": "96.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Sml Klk Express (52460) from SML to KLK are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T07:38:41.439Z",
+  "knownChartCount": 0
+}

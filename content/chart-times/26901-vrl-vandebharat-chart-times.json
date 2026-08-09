@@ -1,0 +1,103 @@
+{
+  "trainNumber": "26901",
+  "trainName": "Vrl Vandebharat",
+  "originStation": "SBIB",
+  "destinationStation": "VRL",
+  "slug": "26901-vrl-vandebharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "SBIB",
+      "stationName": "Sabarmati Bg",
+      "arrivalTime": "",
+      "departureTime": "05:25",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBIB"
+    },
+    {
+      "stationCode": "VG",
+      "stationName": "Viramgam Jn",
+      "arrivalTime": "06:40",
+      "departureTime": "06:42",
+      "day": 1,
+      "distance": "72.0",
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBIB"
+    },
+    {
+      "stationCode": "SUNR",
+      "stationName": "Surendranagar",
+      "arrivalTime": "07:35",
+      "departureTime": "07:37",
+      "day": 1,
+      "distance": "137.0",
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBIB"
+    },
+    {
+      "stationCode": "WKR",
+      "stationName": "Wankaner Jn",
+      "arrivalTime": "08:37",
+      "departureTime": "08:39",
+      "day": 1,
+      "distance": "212.0",
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBIB"
+    },
+    {
+      "stationCode": "RJT",
+      "stationName": "Rajkot Jn",
+      "arrivalTime": "09:31",
+      "departureTime": "09:36",
+      "day": 1,
+      "distance": "254.0",
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBIB"
+    },
+    {
+      "stationCode": "JND",
+      "stationName": "Junagadh Jn",
+      "arrivalTime": "10:52",
+      "departureTime": "10:54",
+      "day": 1,
+      "distance": "357.0",
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBIB"
+    },
+    {
+      "stationCode": "VRL",
+      "stationName": "Veraval",
+      "arrivalTime": "12:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "438.0",
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBIB"
+    }
+  ],
+  "summary": "The first reservation chart for Vrl Vandebharat (26901) is prepared at Sabarmati Bg (SBIB) around 7:25 PM, with a second (vacancy) chart around 9:21 AM. 7 of 7 stations on the SBIB to VRL route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T06:20:48.970Z",
+  "knownChartCount": 7
+}

@@ -1,0 +1,51 @@
+{
+  "trainNumber": "52595",
+  "trainName": "Joyride Steam",
+  "originStation": "DJ",
+  "destinationStation": "DJRZ",
+  "slug": "52595-joyride-steam-chart-times",
+  "stations": [
+    {
+      "stationCode": "DJ",
+      "stationName": "Darjeeling",
+      "arrivalTime": "",
+      "departureTime": "11:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "GHUM",
+      "stationName": "Ghum",
+      "arrivalTime": "12:20",
+      "departureTime": "12:45",
+      "day": 1,
+      "distance": "7.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DJRZ",
+      "stationName": "To Darjeeling",
+      "arrivalTime": "13:25",
+      "departureTime": "",
+      "day": 1,
+      "distance": "14.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Joyride Steam (52595) from DJ to DJRZ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 3 stations.",
+  "generatedAt": "2026-08-06T08:11:58.788Z",
+  "knownChartCount": 0
+}

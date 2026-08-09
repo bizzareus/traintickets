@@ -1,0 +1,64 @@
+{
+  "trainNumber": "20607",
+  "trainName": "Mys Vandebharat",
+  "originStation": "MAS",
+  "destinationStation": "MYS",
+  "slug": "20607-mys-vandebharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "MAS",
+      "stationName": "Mgr Chennai Ctl",
+      "arrivalTime": "",
+      "departureTime": "05:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "KPD",
+      "stationName": "Katpadi Jn",
+      "arrivalTime": "07:13",
+      "departureTime": "07:15",
+      "day": 1,
+      "distance": "130.0",
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "SBC",
+      "stationName": "KSR Bengaluru",
+      "arrivalTime": "10:00",
+      "departureTime": "10:05",
+      "day": 1,
+      "distance": "362.0",
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "MYS",
+      "stationName": "Mysuru Jn",
+      "arrivalTime": "12:20",
+      "departureTime": "",
+      "day": 1,
+      "distance": "500.0",
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
+    }
+  ],
+  "summary": "The first reservation chart for Mys Vandebharat (20607) is prepared at Mgr Chennai Ctl (MAS) around 8:14 PM, with a second (vacancy) chart around 5:35 AM. 4 of 4 stations on the MAS to MYS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:36:45.860Z",
+  "knownChartCount": 4
+}

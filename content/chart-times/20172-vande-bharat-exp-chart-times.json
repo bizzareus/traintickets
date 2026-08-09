@@ -1,0 +1,77 @@
+{
+  "trainNumber": "20172",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "NZM",
+  "destinationStation": "RKMP",
+  "slug": "20172-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "NZM",
+      "stationName": "H Nizamuddin",
+      "arrivalTime": "",
+      "departureTime": "14:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "06:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
+    },
+    {
+      "stationCode": "AGC",
+      "stationName": "Agra Cantt",
+      "arrivalTime": "16:16",
+      "departureTime": "16:20",
+      "day": 1,
+      "distance": "188.0",
+      "chartTimeLocal": "07:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
+    },
+    {
+      "stationCode": "GWL",
+      "stationName": "Gwalior",
+      "arrivalTime": "17:38",
+      "departureTime": "17:42",
+      "day": 1,
+      "distance": "306.0",
+      "chartTimeLocal": "07:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
+    },
+    {
+      "stationCode": "VGLJ",
+      "stationName": "V Lakshmibai Jhansi Jhs",
+      "arrivalTime": "18:56",
+      "departureTime": "19:00",
+      "day": 1,
+      "distance": "403.0",
+      "chartTimeLocal": "09:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
+    },
+    {
+      "stationCode": "RKMP",
+      "stationName": "Rani Kamalapati",
+      "arrivalTime": "22:16",
+      "departureTime": "",
+      "day": 1,
+      "distance": "700.0",
+      "chartTimeLocal": "09:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (20172) is prepared at H Nizamuddin (NZM) around 6:40 AM, with a second (vacancy) chart around 2:25 PM. 5 of 5 stations on the NZM to RKMP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:29:39.583Z",
+  "knownChartCount": 5
+}

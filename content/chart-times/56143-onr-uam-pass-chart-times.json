@@ -1,0 +1,90 @@
+{
+  "trainNumber": "56143",
+  "trainName": "Onr Uam Pass",
+  "originStation": "ONR",
+  "destinationStation": "UAM",
+  "slug": "56143-onr-uam-pass-chart-times",
+  "stations": [
+    {
+      "stationCode": "ONR",
+      "stationName": "Coonoor",
+      "arrivalTime": "",
+      "departureTime": "12:35",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "WEL",
+      "stationName": "Wellington",
+      "arrivalTime": "12:42",
+      "departureTime": "12:43",
+      "day": 1,
+      "distance": "2.0",
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "AVK",
+      "stationName": "Aravankadu",
+      "arrivalTime": "12:52",
+      "departureTime": "12:53",
+      "day": 1,
+      "distance": "5.0",
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "KXT",
+      "stationName": "KETTI",
+      "arrivalTime": "13:09",
+      "departureTime": "13:10",
+      "day": 1,
+      "distance": "11.0",
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "LOV",
+      "stationName": "Lovedale",
+      "arrivalTime": "13:26",
+      "departureTime": "13:27",
+      "day": 1,
+      "distance": "15.0",
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "UAM",
+      "stationName": "Udagamandalam",
+      "arrivalTime": "13:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "19.0",
+      "chartTimeLocal": "18:55",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    }
+  ],
+  "summary": "The first reservation chart for Onr Uam Pass (56143) is prepared at Coonoor (ONR) around 6:55 PM, with a second (vacancy) chart around 12:20 PM. 6 of 6 stations on the ONR to UAM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T09:23:50.612Z",
+  "knownChartCount": 6
+}

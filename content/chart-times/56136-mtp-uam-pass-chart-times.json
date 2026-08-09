@@ -1,0 +1,103 @@
+{
+  "trainNumber": "56136",
+  "trainName": "Mtp Uam Pass",
+  "originStation": "MTP",
+  "destinationStation": "UAM",
+  "slug": "56136-mtp-uam-pass-chart-times",
+  "stations": [
+    {
+      "stationCode": "MTP",
+      "stationName": "Metupalaiyam",
+      "arrivalTime": "",
+      "departureTime": "07:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
+    },
+    {
+      "stationCode": "ONR",
+      "stationName": "Coonoor",
+      "arrivalTime": "10:30",
+      "departureTime": "10:40",
+      "day": 1,
+      "distance": "28.0",
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "WEL",
+      "stationName": "Wellington",
+      "arrivalTime": "10:46",
+      "departureTime": "10:47",
+      "day": 1,
+      "distance": "29.0",
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "AVK",
+      "stationName": "Aravankadu",
+      "arrivalTime": "10:59",
+      "departureTime": "11:00",
+      "day": 1,
+      "distance": "32.0",
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "KXT",
+      "stationName": "KETTI",
+      "arrivalTime": "11:19",
+      "departureTime": "11:20",
+      "day": 1,
+      "distance": "38.0",
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "LOV",
+      "stationName": "Lovedale",
+      "arrivalTime": "11:39",
+      "departureTime": "11:40",
+      "day": 1,
+      "distance": "42.0",
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    },
+    {
+      "stationCode": "UAM",
+      "stationName": "Udagamandalam",
+      "arrivalTime": "11:55",
+      "departureTime": "",
+      "day": 1,
+      "distance": "46.0",
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ONR"
+    }
+  ],
+  "summary": "The first reservation chart for Mtp Uam Pass (56136) is prepared at Metupalaiyam (MTP) around 8:06 PM, with a second (vacancy) chart around 6:55 AM. 7 of 7 stations on the MTP to UAM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T09:17:23.911Z",
+  "knownChartCount": 7
+}

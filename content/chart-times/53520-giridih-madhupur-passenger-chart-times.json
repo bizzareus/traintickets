@@ -1,0 +1,103 @@
+{
+  "trainNumber": "53520",
+  "trainName": "Giridih - Madhupur Passenger",
+  "originStation": "GRD",
+  "destinationStation": "MDP",
+  "slug": "53520-giridih-madhupur-passenger-chart-times",
+  "stations": [
+    {
+      "stationCode": "GRD",
+      "stationName": "Giridih",
+      "arrivalTime": "",
+      "departureTime": "22:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MMD",
+      "stationName": "Maheshmunda",
+      "arrivalTime": "22:17",
+      "departureTime": "22:18",
+      "day": 1,
+      "distance": "10.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KBSH",
+      "stationName": "KRISHNA BALLABH",
+      "arrivalTime": "22:25",
+      "departureTime": "22:26",
+      "day": 1,
+      "distance": "21.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "JGD",
+      "stationName": "Jagadishpur",
+      "arrivalTime": "22:31",
+      "departureTime": "22:32",
+      "day": 1,
+      "distance": "25.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SAPT",
+      "stationName": "SUGAPAHARI",
+      "arrivalTime": "22:37",
+      "departureTime": "22:38",
+      "day": 1,
+      "distance": "30.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SGPA",
+      "stationName": "Sugapahari Halt",
+      "arrivalTime": "22:40",
+      "departureTime": "22:41",
+      "day": 1,
+      "distance": "31.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MDP",
+      "stationName": "Madhupur Jn",
+      "arrivalTime": "23:05",
+      "departureTime": "",
+      "day": 1,
+      "distance": "38.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Giridih - Madhupur Passenger (53520) from GRD to MDP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T08:29:44.632Z",
+  "knownChartCount": 0
+}

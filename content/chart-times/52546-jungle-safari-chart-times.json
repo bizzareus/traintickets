@@ -1,0 +1,77 @@
+{
+  "trainNumber": "52546",
+  "trainName": "Jungle Safari",
+  "originStation": "GBE",
+  "destinationStation": "SGUJ",
+  "slug": "52546-jungle-safari-chart-times",
+  "stations": [
+    {
+      "stationCode": "GBE",
+      "stationName": "GAYABARI",
+      "arrivalTime": "",
+      "departureTime": "14:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TDH",
+      "stationName": "TINDHARIA",
+      "arrivalTime": "15:25",
+      "departureTime": "15:30",
+      "day": 1,
+      "distance": "7.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "RTG",
+      "stationName": "RANGTONG",
+      "arrivalTime": "16:45",
+      "departureTime": "16:46",
+      "day": 1,
+      "distance": "19.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SN",
+      "stationName": "SUKNA",
+      "arrivalTime": "17:20",
+      "departureTime": "17:22",
+      "day": 1,
+      "distance": "27.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SGUJ",
+      "stationName": "Siliguri Jn",
+      "arrivalTime": "17:55",
+      "departureTime": "",
+      "day": 1,
+      "distance": "37.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Jungle Safari (52546) from GBE to SGUJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-08-06T07:55:59.667Z",
+  "knownChartCount": 0
+}

@@ -1,0 +1,103 @@
+{
+  "trainNumber": "20912",
+  "trainName": "Indb Vandebharat",
+  "originStation": "NGP",
+  "destinationStation": "INDB",
+  "slug": "20912-indb-vandebharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "NGP",
+      "stationName": "Nagpur",
+      "arrivalTime": "",
+      "departureTime": "15:20",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "BZU",
+      "stationName": "Betul",
+      "arrivalTime": "17:23",
+      "departureTime": "17:25",
+      "day": 1,
+      "distance": "191.0",
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "ET",
+      "stationName": "Itarsi Jn",
+      "arrivalTime": "19:00",
+      "departureTime": "19:05",
+      "day": 1,
+      "distance": "298.0",
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "NDPM",
+      "stationName": "Narmadapuram",
+      "arrivalTime": "19:22",
+      "departureTime": "19:23",
+      "day": 1,
+      "distance": "315.0",
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "BPL",
+      "stationName": "Bhopal  Jn",
+      "arrivalTime": "20:38",
+      "departureTime": "20:43",
+      "day": 1,
+      "distance": "396.0",
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "UJN",
+      "stationName": "Ujjain Jn",
+      "arrivalTime": "22:40",
+      "departureTime": "22:45",
+      "day": 1,
+      "distance": "579.0",
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    },
+    {
+      "stationCode": "INDB",
+      "stationName": "Indore Jn Bg",
+      "arrivalTime": "23:50",
+      "departureTime": "",
+      "day": 1,
+      "distance": "642.0",
+      "chartTimeLocal": "20:47",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "NGP"
+    }
+  ],
+  "summary": "The first reservation chart for Indb Vandebharat (20912) is prepared at Nagpur (NGP) around 8:47 PM. 7 of 7 stations on the NGP to INDB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:52:40.092Z",
+  "knownChartCount": 7
+}

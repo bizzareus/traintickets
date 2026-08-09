@@ -1,0 +1,90 @@
+{
+  "trainNumber": "59801",
+  "trainName": "Kota Jaipur Pass",
+  "originStation": "JP",
+  "destinationStation": "FL",
+  "slug": "59801-kota-jaipur-pass-chart-times",
+  "stations": [
+    {
+      "stationCode": "JP",
+      "stationName": "Jaipur",
+      "arrivalTime": "",
+      "departureTime": "20:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KKU",
+      "stationName": "Kanakpura",
+      "arrivalTime": "20:15",
+      "departureTime": "20:16",
+      "day": 1,
+      "distance": "8.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DNK",
+      "stationName": "Dhanakya",
+      "arrivalTime": "20:25",
+      "departureTime": "20:26",
+      "day": 1,
+      "distance": "18.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "JOB",
+      "stationName": "Asalpur Jobner",
+      "arrivalTime": "20:40",
+      "departureTime": "20:41",
+      "day": 1,
+      "distance": "36.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "HDA",
+      "stationName": "Hirnoda",
+      "arrivalTime": "20:50",
+      "departureTime": "20:51",
+      "day": 1,
+      "distance": "46.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "FL",
+      "stationName": "Phulera Jn",
+      "arrivalTime": "21:10",
+      "departureTime": "",
+      "day": 1,
+      "distance": "54.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Kota Jaipur Pass (59801) from JP to FL are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-08-06T13:27:36.219Z",
+  "knownChartCount": 0
+}

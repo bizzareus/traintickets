@@ -1,0 +1,103 @@
+{
+  "trainNumber": "20704",
+  "trainName": "Kcg Vande Bharat",
+  "originStation": "YPR",
+  "destinationStation": "KCG",
+  "slug": "20704-kcg-vande-bharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "YPR",
+      "stationName": "Yesvantpur Jn",
+      "arrivalTime": "",
+      "departureTime": "14:45",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "05:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "YPR"
+    },
+    {
+      "stationCode": "HUP",
+      "stationName": "Hindupur",
+      "arrivalTime": "15:55",
+      "departureTime": "15:57",
+      "day": 1,
+      "distance": "96.0",
+      "chartTimeLocal": "05:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "YPR"
+    },
+    {
+      "stationCode": "DMM",
+      "stationName": "Dharmavaram Jn",
+      "arrivalTime": "16:45",
+      "departureTime": "16:50",
+      "day": 1,
+      "distance": "175.0",
+      "chartTimeLocal": "05:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "YPR"
+    },
+    {
+      "stationCode": "ATP",
+      "stationName": "Anantapur",
+      "arrivalTime": "17:18",
+      "departureTime": "17:20",
+      "day": 1,
+      "distance": "209.0",
+      "chartTimeLocal": "05:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "YPR"
+    },
+    {
+      "stationCode": "KRNT",
+      "stationName": "Kurnool City",
+      "arrivalTime": "19:23",
+      "departureTime": "19:25",
+      "day": 1,
+      "distance": "374.0",
+      "chartTimeLocal": "05:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "YPR"
+    },
+    {
+      "stationCode": "MBNR",
+      "stationName": "Mahbubnagar",
+      "arrivalTime": "21:24",
+      "departureTime": "21:25",
+      "day": 1,
+      "distance": "505.0",
+      "chartTimeLocal": "05:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "YPR"
+    },
+    {
+      "stationCode": "KCG",
+      "stationName": "Kacheguda",
+      "arrivalTime": "23:00",
+      "departureTime": "",
+      "day": 1,
+      "distance": "610.0",
+      "chartTimeLocal": "05:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "YPR"
+    }
+  ],
+  "summary": "The first reservation chart for Kcg Vande Bharat (20704) is prepared at Yesvantpur Jn (YPR) around 5:52 AM. 7 of 7 stations on the YPR to KCG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:43:25.746Z",
+  "knownChartCount": 7
+}

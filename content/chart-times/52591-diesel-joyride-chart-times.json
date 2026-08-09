@@ -1,0 +1,51 @@
+{
+  "trainNumber": "52591",
+  "trainName": "Diesel Joyride",
+  "originStation": "DJ",
+  "destinationStation": "DJRZ",
+  "slug": "52591-diesel-joyride-chart-times",
+  "stations": [
+    {
+      "stationCode": "DJ",
+      "stationName": "Darjeeling",
+      "arrivalTime": "",
+      "departureTime": "09:35",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "22:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DJ"
+    },
+    {
+      "stationCode": "GHUM",
+      "stationName": "Ghum",
+      "arrivalTime": "10:20",
+      "departureTime": "10:40",
+      "day": 1,
+      "distance": "7.0",
+      "chartTimeLocal": "22:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DJ"
+    },
+    {
+      "stationCode": "DJRZ",
+      "stationName": "To Darjeeling",
+      "arrivalTime": "11:15",
+      "departureTime": "",
+      "day": 1,
+      "distance": "13.0",
+      "chartTimeLocal": "22:25",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DJ"
+    }
+  ],
+  "summary": "The first reservation chart for Diesel Joyride (52591) is prepared at Darjeeling (DJ) around 10:25 PM, with a second (vacancy) chart around 9:20 AM. 3 of 3 stations on the DJ to DJRZ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T07:56:16.301Z",
+  "knownChartCount": 3
+}

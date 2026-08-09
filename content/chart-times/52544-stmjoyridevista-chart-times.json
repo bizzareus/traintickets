@@ -1,0 +1,51 @@
+{
+  "trainNumber": "52544",
+  "trainName": "Stmjoyridevista",
+  "originStation": "DJ",
+  "destinationStation": "DJRZ",
+  "slug": "52544-stmjoyridevista-chart-times",
+  "stations": [
+    {
+      "stationCode": "DJ",
+      "stationName": "Darjeeling",
+      "arrivalTime": "",
+      "departureTime": "15:35",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "07:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DJ"
+    },
+    {
+      "stationCode": "GHUM",
+      "stationName": "Ghum",
+      "arrivalTime": "16:25",
+      "departureTime": "16:45",
+      "day": 1,
+      "distance": "7.0",
+      "chartTimeLocal": "07:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DJ"
+    },
+    {
+      "stationCode": "DJRZ",
+      "stationName": "To Darjeeling",
+      "arrivalTime": "17:20",
+      "departureTime": "",
+      "day": 1,
+      "distance": "13.0",
+      "chartTimeLocal": "07:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DJ"
+    }
+  ],
+  "summary": "The first reservation chart for Stmjoyridevista (52544) is prepared at Darjeeling (DJ) around 7:35 AM. 3 of 3 stations on the DJ to DJRZ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T07:55:47.887Z",
+  "knownChartCount": 3
+}

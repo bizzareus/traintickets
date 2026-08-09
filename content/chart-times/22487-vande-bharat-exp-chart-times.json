@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22487",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "DLI",
+  "destinationStation": "ASR",
+  "slug": "22487-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "DLI",
+      "stationName": "Old Delhi",
+      "arrivalTime": "",
+      "departureTime": "15:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "07:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DLI"
+    },
+    {
+      "stationCode": "UMB",
+      "stationName": "Ambala Cant Jn",
+      "arrivalTime": "17:27",
+      "departureTime": "17:29",
+      "day": 1,
+      "distance": "198.0",
+      "chartTimeLocal": "07:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DLI"
+    },
+    {
+      "stationCode": "LDH",
+      "stationName": "Ludhiana Jn",
+      "arrivalTime": "18:36",
+      "departureTime": "18:38",
+      "day": 1,
+      "distance": "311.0",
+      "chartTimeLocal": "07:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DLI"
+    },
+    {
+      "stationCode": "PGW",
+      "stationName": "Phagwara Jn",
+      "arrivalTime": "19:06",
+      "departureTime": "19:08",
+      "day": 1,
+      "distance": "347.0",
+      "chartTimeLocal": "07:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DLI"
+    },
+    {
+      "stationCode": "JRC",
+      "stationName": "Jalandhar Cant",
+      "arrivalTime": "19:24",
+      "departureTime": "19:26",
+      "day": 1,
+      "distance": "363.0",
+      "chartTimeLocal": "07:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DLI"
+    },
+    {
+      "stationCode": "BEAS",
+      "stationName": "Beas",
+      "arrivalTime": "19:58",
+      "departureTime": "20:00",
+      "day": 1,
+      "distance": "404.0",
+      "chartTimeLocal": "07:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DLI"
+    },
+    {
+      "stationCode": "ASR",
+      "stationName": "Amritsar Jn",
+      "arrivalTime": "20:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "447.0",
+      "chartTimeLocal": "07:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "DLI"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (22487) is prepared at Old Delhi (DLI) around 7:15 AM. 7 of 7 stations on the DLI to ASR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T02:06:46.933Z",
+  "knownChartCount": 7
+}

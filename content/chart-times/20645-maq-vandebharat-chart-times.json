@@ -1,0 +1,64 @@
+{
+  "trainNumber": "20645",
+  "trainName": "Maq Vandebharat",
+  "originStation": "MAO",
+  "destinationStation": "MAQ",
+  "slug": "20645-maq-vandebharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "MAO",
+      "stationName": "Madgaon",
+      "arrivalTime": "",
+      "departureTime": "17:35",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:59",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
+    },
+    {
+      "stationCode": "KAWR",
+      "stationName": "Karwar",
+      "arrivalTime": "18:20",
+      "departureTime": "18:22",
+      "day": 1,
+      "distance": "82.0",
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:59",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
+    },
+    {
+      "stationCode": "UD",
+      "stationName": "Udupi",
+      "arrivalTime": "21:12",
+      "departureTime": "21:14",
+      "day": 1,
+      "distance": "350.0",
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:59",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
+    },
+    {
+      "stationCode": "MAQ",
+      "stationName": "Mangaluru Cntl",
+      "arrivalTime": "22:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "437.0",
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:59",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
+    }
+  ],
+  "summary": "The first reservation chart for Maq Vandebharat (20645) is prepared at Madgaon (MAO) around 8:10 AM, with a second (vacancy) chart around 8:59 PM. 4 of 4 stations on the MAO to MAQ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:39:08.114Z",
+  "knownChartCount": 4
+}

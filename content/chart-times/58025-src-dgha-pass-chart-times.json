@@ -1,0 +1,103 @@
+{
+  "trainNumber": "58025",
+  "trainName": "Src Dgha Pass",
+  "originStation": "SRC",
+  "destinationStation": "DGHA",
+  "slug": "58025-src-dgha-pass-chart-times",
+  "stations": [
+    {
+      "stationCode": "SRC",
+      "stationName": "Santragachi Jn",
+      "arrivalTime": "",
+      "departureTime": "09:10",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ULB",
+      "stationName": "Ulubaria",
+      "arrivalTime": "09:33",
+      "departureTime": "09:35",
+      "day": 1,
+      "distance": "25.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BZN",
+      "stationName": "Bagnan",
+      "arrivalTime": "09:50",
+      "departureTime": "09:52",
+      "day": 1,
+      "distance": "38.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MCA",
+      "stationName": "Mecheda",
+      "arrivalTime": "10:06",
+      "departureTime": "10:08",
+      "day": 1,
+      "distance": "51.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "TMZ",
+      "stationName": "Tamluk",
+      "arrivalTime": "10:46",
+      "departureTime": "10:48",
+      "day": 1,
+      "distance": "85.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KATI",
+      "stationName": "Kanthi P H",
+      "arrivalTime": "11:44",
+      "departureTime": "11:46",
+      "day": 1,
+      "distance": "146.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "DGHA",
+      "stationName": "Digha",
+      "arrivalTime": "12:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "178.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Src Dgha Pass (58025) from SRC to DGHA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T10:14:11.819Z",
+  "knownChartCount": 0
+}

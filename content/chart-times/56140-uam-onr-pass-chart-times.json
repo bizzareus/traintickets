@@ -1,0 +1,90 @@
+{
+  "trainNumber": "56140",
+  "trainName": "Uam Onr Pass",
+  "originStation": "UAM",
+  "destinationStation": "ONR",
+  "slug": "56140-uam-onr-pass-chart-times",
+  "stations": [
+    {
+      "stationCode": "UAM",
+      "stationName": "Udagamandalam",
+      "arrivalTime": "",
+      "departureTime": "17:30",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "07:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "UAM"
+    },
+    {
+      "stationCode": "LOV",
+      "stationName": "Lovedale",
+      "arrivalTime": "17:40",
+      "departureTime": "17:41",
+      "day": 1,
+      "distance": "5.0",
+      "chartTimeLocal": "07:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "UAM"
+    },
+    {
+      "stationCode": "KXT",
+      "stationName": "KETTI",
+      "arrivalTime": "17:52",
+      "departureTime": "17:53",
+      "day": 1,
+      "distance": "9.0",
+      "chartTimeLocal": "07:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "UAM"
+    },
+    {
+      "stationCode": "AVK",
+      "stationName": "Aravankadu",
+      "arrivalTime": "18:06",
+      "departureTime": "18:07",
+      "day": 1,
+      "distance": "15.0",
+      "chartTimeLocal": "07:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "UAM"
+    },
+    {
+      "stationCode": "WEL",
+      "stationName": "Wellington",
+      "arrivalTime": "18:14",
+      "departureTime": "18:15",
+      "day": 1,
+      "distance": "18.0",
+      "chartTimeLocal": "07:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "UAM"
+    },
+    {
+      "stationCode": "ONR",
+      "stationName": "Coonoor",
+      "arrivalTime": "18:35",
+      "departureTime": "",
+      "day": 1,
+      "distance": "19.0",
+      "chartTimeLocal": "07:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "UAM"
+    }
+  ],
+  "summary": "The first reservation chart for Uam Onr Pass (56140) is prepared at Udagamandalam (UAM) around 7:31 AM. 6 of 6 stations on the UAM to ONR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T09:23:42.216Z",
+  "knownChartCount": 6
+}

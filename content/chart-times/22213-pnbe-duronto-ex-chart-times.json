@@ -1,0 +1,64 @@
+{
+  "trainNumber": "22213",
+  "trainName": "Pnbe Duronto Ex",
+  "originStation": "SHM",
+  "destinationStation": "PNBE",
+  "slug": "22213-pnbe-duronto-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "SHM",
+      "stationName": "Shalimar",
+      "arrivalTime": "",
+      "departureTime": "21:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "11:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
+    },
+    {
+      "stationCode": "ASN",
+      "stationName": "Asansol Jn",
+      "arrivalTime": "00:55",
+      "departureTime": "01:00",
+      "day": 2,
+      "distance": "214.0",
+      "chartTimeLocal": "11:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
+    },
+    {
+      "stationCode": "JSME",
+      "stationName": "Jasidih Jn",
+      "arrivalTime": "02:12",
+      "departureTime": "02:14",
+      "day": 2,
+      "distance": "325.0",
+      "chartTimeLocal": "11:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
+    },
+    {
+      "stationCode": "PNBE",
+      "stationName": "Patna Jn",
+      "arrivalTime": "06:15",
+      "departureTime": "",
+      "day": 2,
+      "distance": "546.0",
+      "chartTimeLocal": "11:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
+    }
+  ],
+  "summary": "The first reservation chart for Pnbe Duronto Ex (22213) is prepared at Shalimar (SHM) around 11:37 AM, with a second (vacancy) chart around 9:35 PM. 4 of 4 stations on the SHM to PNBE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:13:56.888Z",
+  "knownChartCount": 4
+}

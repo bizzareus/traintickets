@@ -1,0 +1,77 @@
+{
+  "trainNumber": "20643",
+  "trainName": "Cbe Vandebharat",
+  "originStation": "MAS",
+  "destinationStation": "CBE",
+  "slug": "20643-cbe-vandebharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "MAS",
+      "stationName": "Mgr Chennai Ctl",
+      "arrivalTime": "",
+      "departureTime": "14:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "04:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "SA",
+      "stationName": "Salem Jn",
+      "arrivalTime": "17:43",
+      "departureTime": "17:45",
+      "day": 1,
+      "distance": "334.0",
+      "chartTimeLocal": "04:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "ED",
+      "stationName": "Erode Jn",
+      "arrivalTime": "18:37",
+      "departureTime": "18:40",
+      "day": 1,
+      "distance": "396.0",
+      "chartTimeLocal": "04:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "TUP",
+      "stationName": "Tiruppur",
+      "arrivalTime": "19:18",
+      "departureTime": "19:20",
+      "day": 1,
+      "distance": "446.0",
+      "chartTimeLocal": "04:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MAS"
+    },
+    {
+      "stationCode": "CBE",
+      "stationName": "Coimbatore Jn",
+      "arrivalTime": "20:15",
+      "departureTime": "",
+      "day": 1,
+      "distance": "497.0",
+      "chartTimeLocal": "04:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "MAS"
+    }
+  ],
+  "summary": "The first reservation chart for Cbe Vandebharat (20643) is prepared at Mgr Chennai Ctl (MAS) around 4:15 AM. 5 of 5 stations on the MAS to CBE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:38:45.045Z",
+  "knownChartCount": 5
+}

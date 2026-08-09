@@ -1,0 +1,90 @@
+{
+  "trainNumber": "26401",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "JAT",
+  "destinationStation": "SINA",
+  "slug": "26401-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "JAT",
+      "stationName": "Jammu Tawi",
+      "arrivalTime": "",
+      "departureTime": "06:20",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAT"
+    },
+    {
+      "stationCode": "MCTM",
+      "stationName": "Martyr Captain Tushar Mahajan",
+      "arrivalTime": "07:39",
+      "departureTime": "07:41",
+      "day": 1,
+      "distance": "54.0",
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAT"
+    },
+    {
+      "stationCode": "SVDK",
+      "stationName": "Shri Mata Vaishno Devi Katra",
+      "arrivalTime": "08:05",
+      "departureTime": "08:10",
+      "day": 1,
+      "distance": "78.0",
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAT"
+    },
+    {
+      "stationCode": "REAI",
+      "stationName": "Reasi",
+      "arrivalTime": "08:28",
+      "departureTime": "08:30",
+      "day": 1,
+      "distance": "97.0",
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAT"
+    },
+    {
+      "stationCode": "BAHL",
+      "stationName": "Banihal",
+      "arrivalTime": "09:56",
+      "departureTime": "09:58",
+      "day": 1,
+      "distance": "190.0",
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAT"
+    },
+    {
+      "stationCode": "SINA",
+      "stationName": "Srinagar",
+      "arrivalTime": "11:10",
+      "departureTime": "",
+      "day": 1,
+      "distance": "269.0",
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAT"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (26401) is prepared at Jammu Tawi (JAT) around 8:45 PM, with a second (vacancy) chart around 9:43 AM. 6 of 6 stations on the JAT to SINA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T05:53:31.653Z",
+  "knownChartCount": 6
+}

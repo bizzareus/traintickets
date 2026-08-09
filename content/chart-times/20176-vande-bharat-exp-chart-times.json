@@ -1,0 +1,90 @@
+{
+  "trainNumber": "20176",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "AGC",
+  "destinationStation": "BNRS",
+  "slug": "20176-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "AGC",
+      "stationName": "Agra Cantt",
+      "arrivalTime": "",
+      "departureTime": "06:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
+    },
+    {
+      "stationCode": "TDL",
+      "stationName": "Tundla Jn",
+      "arrivalTime": "06:43",
+      "departureTime": "06:45",
+      "day": 1,
+      "distance": "30.0",
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
+    },
+    {
+      "stationCode": "ETW",
+      "stationName": "Etawah Jn",
+      "arrivalTime": "07:35",
+      "departureTime": "07:37",
+      "day": 1,
+      "distance": "122.0",
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "09:05",
+      "departureTime": "09:10",
+      "day": 1,
+      "distance": "261.0",
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
+    },
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn.",
+      "arrivalTime": "11:10",
+      "departureTime": "11:15",
+      "day": 1,
+      "distance": "456.0",
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
+    },
+    {
+      "stationCode": "BNRS",
+      "stationName": "BANARAS",
+      "arrivalTime": "13:00",
+      "departureTime": "",
+      "day": 1,
+      "distance": "577.0",
+      "chartTimeLocal": "19:40",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (20176) is prepared at Agra Cantt (AGC) around 7:40 PM, with a second (vacancy) chart around 5:45 AM. 6 of 6 stations on the AGC to BNRS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:29:50.901Z",
+  "knownChartCount": 6
+}

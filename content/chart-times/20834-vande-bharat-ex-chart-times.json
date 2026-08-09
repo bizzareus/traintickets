@@ -1,0 +1,103 @@
+{
+  "trainNumber": "20834",
+  "trainName": "Vande Bharat Ex",
+  "originStation": "SC",
+  "destinationStation": "VSKP",
+  "slug": "20834-vande-bharat-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "SC",
+      "stationName": "Secunderabad Jn",
+      "arrivalTime": "",
+      "departureTime": "15:00",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "06:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SC"
+    },
+    {
+      "stationCode": "WL",
+      "stationName": "Warangal",
+      "arrivalTime": "16:35",
+      "departureTime": "16:36",
+      "day": 1,
+      "distance": "142.0",
+      "chartTimeLocal": "06:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SC"
+    },
+    {
+      "stationCode": "KMT",
+      "stationName": "Khammam",
+      "arrivalTime": "17:45",
+      "departureTime": "17:46",
+      "day": 1,
+      "distance": "250.0",
+      "chartTimeLocal": "06:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "SC"
+    },
+    {
+      "stationCode": "BZA",
+      "stationName": "Vijayawada Jn",
+      "arrivalTime": "18:50",
+      "departureTime": "18:55",
+      "day": 1,
+      "distance": "350.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "RJY",
+      "stationName": "Rajahmundry",
+      "arrivalTime": "20:43",
+      "departureTime": "20:45",
+      "day": 1,
+      "distance": "499.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SLO",
+      "stationName": "Samalkot Jn",
+      "arrivalTime": "21:23",
+      "departureTime": "21:25",
+      "day": 1,
+      "distance": "549.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "VSKP",
+      "stationName": "Visakhapatnam",
+      "arrivalTime": "23:35",
+      "departureTime": "",
+      "day": 1,
+      "distance": "699.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Ex (20834) is prepared at Secunderabad Jn (SC) around 6:08 AM. 3 of 7 stations on the SC to VSKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-06T00:47:59.336Z",
+  "knownChartCount": 3
+}

@@ -1,0 +1,77 @@
+{
+  "trainNumber": "20948",
+  "trainName": "Jan Shatabdi Ex",
+  "originStation": "EKNR",
+  "destinationStation": "ADI",
+  "slug": "20948-jan-shatabdi-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "EKNR",
+      "stationName": "Ekata Nagar Kevadiya Kdcy",
+      "arrivalTime": "",
+      "departureTime": "11:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "12:15",
+      "departureTime": "12:18",
+      "day": 1,
+      "distance": "83.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ANND",
+      "stationName": "Anand Jn",
+      "arrivalTime": "12:50",
+      "departureTime": "12:52",
+      "day": 1,
+      "distance": "119.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ND",
+      "stationName": "Nadiad Jn",
+      "arrivalTime": "13:06",
+      "departureTime": "13:08",
+      "day": 1,
+      "distance": "137.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "ADI",
+      "stationName": "Ahmedabad Jn",
+      "arrivalTime": "14:10",
+      "departureTime": "",
+      "day": 1,
+      "distance": "183.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Jan Shatabdi Ex (20948) from EKNR to ADI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
+  "generatedAt": "2026-08-06T00:56:33.755Z",
+  "knownChartCount": 0
+}

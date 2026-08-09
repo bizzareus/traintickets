@@ -1,0 +1,90 @@
+{
+  "trainNumber": "22210",
+  "trainName": "Mmct Duronto",
+  "originStation": "NZM",
+  "destinationStation": "MMCT",
+  "slug": "22210-mmct-duronto-chart-times",
+  "stations": [
+    {
+      "stationCode": "NZM",
+      "stationName": "H Nizamuddin",
+      "arrivalTime": "",
+      "departureTime": "22:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KOTA",
+      "stationName": "Kota Jn",
+      "arrivalTime": "03:40",
+      "departureTime": "03:50",
+      "day": 2,
+      "distance": "458.0",
+      "chartTimeLocal": "17:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KOTA"
+    },
+    {
+      "stationCode": "RTM",
+      "stationName": "Ratlam Jn",
+      "arrivalTime": "07:00",
+      "departureTime": "07:05",
+      "day": 2,
+      "distance": "724.0",
+      "chartTimeLocal": "19:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
+    },
+    {
+      "stationCode": "BRC",
+      "stationName": "Vadodara Jn",
+      "arrivalTime": "10:33",
+      "departureTime": "10:43",
+      "day": 2,
+      "distance": "986.0",
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
+    },
+    {
+      "stationCode": "DDR",
+      "stationName": "Dadar",
+      "arrivalTime": "15:48",
+      "departureTime": "15:49",
+      "day": 2,
+      "distance": "1371.0",
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
+    },
+    {
+      "stationCode": "MMCT",
+      "stationName": "Mumbai Central",
+      "arrivalTime": "15:50",
+      "departureTime": "",
+      "day": 2,
+      "distance": "1377.0",
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:28",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
+    }
+  ],
+  "summary": "The first reservation chart for Mmct Duronto (22210) is prepared at Kota Jn (KOTA) around 5:21 PM, with a second (vacancy) chart around 3:35 AM. 5 of 6 stations on the NZM to MMCT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-06T01:13:52.499Z",
+  "knownChartCount": 5
+}

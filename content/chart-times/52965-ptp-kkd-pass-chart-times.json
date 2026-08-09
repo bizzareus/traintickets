@@ -1,0 +1,38 @@
+{
+  "trainNumber": "52965",
+  "trainName": "Ptp Kkd Pass",
+  "originStation": "PTP",
+  "destinationStation": "KKD",
+  "slug": "52965-ptp-kkd-pass-chart-times",
+  "stations": [
+    {
+      "stationCode": "PTP",
+      "stationName": "Patal Pani",
+      "arrivalTime": "",
+      "departureTime": "11:05",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "KKD",
+      "stationName": "KALKUND",
+      "arrivalTime": "13:05",
+      "departureTime": "",
+      "day": 1,
+      "distance": "10.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Ptp Kkd Pass (52965) from PTP to KKD are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
+  "generatedAt": "2026-08-06T08:12:17.971Z",
+  "knownChartCount": 0
+}

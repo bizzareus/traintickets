@@ -1,0 +1,103 @@
+{
+  "trainNumber": "20702",
+  "trainName": "Sc Vande Bharat",
+  "originStation": "TPTY",
+  "destinationStation": "SC",
+  "slug": "20702-sc-vande-bharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "TPTY",
+      "stationName": "Tirupati",
+      "arrivalTime": "",
+      "departureTime": "15:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "05:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "TPTY"
+    },
+    {
+      "stationCode": "NLR",
+      "stationName": "Nellore",
+      "arrivalTime": "16:34",
+      "departureTime": "16:35",
+      "day": 1,
+      "distance": "132.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "OGL",
+      "stationName": "Ongole",
+      "arrivalTime": "17:43",
+      "departureTime": "17:45",
+      "day": 1,
+      "distance": "248.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "GNT",
+      "stationName": "Guntur Jn",
+      "arrivalTime": "19:40",
+      "departureTime": "19:45",
+      "day": 1,
+      "distance": "380.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MRGA",
+      "stationName": "Miryalaguda",
+      "arrivalTime": "21:16",
+      "departureTime": "21:17",
+      "day": 1,
+      "distance": "514.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "NLDA",
+      "stationName": "Nalgonda",
+      "arrivalTime": "21:49",
+      "departureTime": "21:50",
+      "day": 1,
+      "distance": "551.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SC",
+      "stationName": "Secunderabad Jn",
+      "arrivalTime": "23:42",
+      "departureTime": "",
+      "day": 1,
+      "distance": "661.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "The first reservation chart for Sc Vande Bharat (20702) is prepared at Tirupati (TPTY) around 5:16 AM. 1 of 7 stations on the TPTY to SC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-06T00:43:19.186Z",
+  "knownChartCount": 1
+}

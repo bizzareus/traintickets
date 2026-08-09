@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22546",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "DDN",
+  "destinationStation": "LJN",
+  "slug": "22546-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "DDN",
+      "stationName": "Dehradun",
+      "arrivalTime": "",
+      "departureTime": "14:25",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "HW",
+      "stationName": "Haridwar Jn",
+      "arrivalTime": "15:31",
+      "departureTime": "15:36",
+      "day": 1,
+      "distance": "52.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "NBD",
+      "stationName": "Najibabad Jn",
+      "arrivalTime": "16:21",
+      "departureTime": "16:23",
+      "day": 1,
+      "distance": "121.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "MB",
+      "stationName": "Moradabad",
+      "arrivalTime": "17:38",
+      "departureTime": "17:43",
+      "day": 1,
+      "distance": "219.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BE",
+      "stationName": "Bareilly",
+      "arrivalTime": "18:57",
+      "departureTime": "18:59",
+      "day": 1,
+      "distance": "310.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "SPN",
+      "stationName": "Shahjehanpur",
+      "arrivalTime": "20:04",
+      "departureTime": "20:06",
+      "day": 1,
+      "distance": "380.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "LJN",
+      "stationName": "Lucknow Ne",
+      "arrivalTime": "22:40",
+      "departureTime": "",
+      "day": 1,
+      "distance": "545.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Vande Bharat Exp (22546) from DDN to LJN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
+  "generatedAt": "2026-08-06T02:36:51.605Z",
+  "knownChartCount": 0
+}

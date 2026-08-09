@@ -1,0 +1,90 @@
+{
+  "trainNumber": "26405",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "ASR",
+  "destinationStation": "SVDK",
+  "slug": "26405-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "ASR",
+      "stationName": "Amritsar Jn",
+      "arrivalTime": "",
+      "departureTime": "16:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ASR"
+    },
+    {
+      "stationCode": "BAT",
+      "stationName": "Batala Jn",
+      "arrivalTime": "17:18",
+      "departureTime": "17:20",
+      "day": 1,
+      "distance": "39.0",
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ASR"
+    },
+    {
+      "stationCode": "GSP",
+      "stationName": "Gurdaspur",
+      "arrivalTime": "17:58",
+      "departureTime": "18:00",
+      "day": 1,
+      "distance": "72.0",
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ASR"
+    },
+    {
+      "stationCode": "PTK",
+      "stationName": "Pathankot",
+      "arrivalTime": "18:32",
+      "departureTime": "18:42",
+      "day": 1,
+      "distance": "107.0",
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ASR"
+    },
+    {
+      "stationCode": "JAT",
+      "stationName": "Jammu Tawi",
+      "arrivalTime": "20:03",
+      "departureTime": "20:05",
+      "day": 1,
+      "distance": "207.0",
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ASR"
+    },
+    {
+      "stationCode": "SVDK",
+      "stationName": "Shri Mata Vaishno Devi Katra",
+      "arrivalTime": "21:45",
+      "departureTime": "",
+      "day": 1,
+      "distance": "285.0",
+      "chartTimeLocal": "08:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "ASR"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Exp (26405) is prepared at Amritsar Jn (ASR) around 8:40 AM. 6 of 6 stations on the ASR to SVDK route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T05:53:45.884Z",
+  "knownChartCount": 6
+}

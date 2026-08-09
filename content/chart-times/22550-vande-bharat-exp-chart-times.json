@@ -1,0 +1,90 @@
+{
+  "trainNumber": "22550",
+  "trainName": "Vande Bharat Exp",
+  "originStation": "PRYJ",
+  "destinationStation": "GKP",
+  "slug": "22550-vande-bharat-exp-chart-times",
+  "stations": [
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn.",
+      "arrivalTime": "",
+      "departureTime": "15:15",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "RBL",
+      "stationName": "Rae Bareli Jn",
+      "arrivalTime": "16:52",
+      "departureTime": "16:54",
+      "day": 1,
+      "distance": "123.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "LKO",
+      "stationName": "Lucknow Nr",
+      "arrivalTime": "18:15",
+      "departureTime": "18:25",
+      "day": 1,
+      "distance": "201.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "AY",
+      "stationName": "Ayodhya Dham Jn",
+      "arrivalTime": "20:26",
+      "departureTime": "20:28",
+      "day": 1,
+      "distance": "336.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "BST",
+      "stationName": "Basti",
+      "arrivalTime": "21:41",
+      "departureTime": "21:43",
+      "day": 1,
+      "distance": "436.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "GKP",
+      "stationName": "Gorakhpur Jn",
+      "arrivalTime": "22:40",
+      "departureTime": "",
+      "day": 1,
+      "distance": "500.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    }
+  ],
+  "summary": "Reservation chart preparation times for Vande Bharat Exp (22550) from PRYJ to GKP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
+  "generatedAt": "2026-08-06T02:37:09.111Z",
+  "knownChartCount": 0
+}

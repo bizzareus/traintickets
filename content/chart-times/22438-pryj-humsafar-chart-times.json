@@ -1,0 +1,51 @@
+{
+  "trainNumber": "22438",
+  "trainName": "Pryj Humsafar",
+  "originStation": "ANVT",
+  "destinationStation": "PRYJ",
+  "slug": "22438-pryj-humsafar-chart-times",
+  "stations": [
+    {
+      "stationCode": "ANVT",
+      "stationName": "Anand Vihar TRM",
+      "arrivalTime": "",
+      "departureTime": "22:35",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": null,
+      "chartOneDayOffset": null,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": null
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "03:25",
+      "departureTime": "03:30",
+      "day": 2,
+      "distance": "428.0",
+      "chartTimeLocal": "14:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    },
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn.",
+      "arrivalTime": "06:20",
+      "departureTime": "",
+      "day": 2,
+      "distance": "623.0",
+      "chartTimeLocal": "14:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
+    }
+  ],
+  "summary": "The first reservation chart for Pryj Humsafar (22438) is prepared at Kanpur Central (CNB) around 2:35 PM, with a second (vacancy) chart around 10:20 PM. 2 of 3 stations on the ANVT to PRYJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-06T01:53:23.057Z",
+  "knownChartCount": 2
+}

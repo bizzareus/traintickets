@@ -1,0 +1,103 @@
+{
+  "trainNumber": "22447",
+  "trainName": "Vande Bharat Ex",
+  "originStation": "NDLS",
+  "destinationStation": "AADR",
+  "slug": "22447-vande-bharat-ex-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "05:50",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "21:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "UMB",
+      "stationName": "Ambala Cant Jn",
+      "arrivalTime": "08:00",
+      "departureTime": "08:02",
+      "day": 1,
+      "distance": "199.0",
+      "chartTimeLocal": "22:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "UMB"
+    },
+    {
+      "stationCode": "CDG",
+      "stationName": "Chandigarh",
+      "arrivalTime": "08:38",
+      "departureTime": "08:45",
+      "day": 1,
+      "distance": "266.0",
+      "chartTimeLocal": "22:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CDG"
+    },
+    {
+      "stationCode": "ANSB",
+      "stationName": "Anandpur Sahib",
+      "arrivalTime": "10:00",
+      "departureTime": "10:02",
+      "day": 1,
+      "distance": "373.0",
+      "chartTimeLocal": "22:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CDG"
+    },
+    {
+      "stationCode": "NLDM",
+      "stationName": "Nangal Dam",
+      "arrivalTime": "10:16",
+      "departureTime": "10:18",
+      "day": 1,
+      "distance": "393.0",
+      "chartTimeLocal": "22:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CDG"
+    },
+    {
+      "stationCode": "UHL",
+      "stationName": "Una Himachal",
+      "arrivalTime": "10:36",
+      "departureTime": "10:38",
+      "day": 1,
+      "distance": "410.0",
+      "chartTimeLocal": "22:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CDG"
+    },
+    {
+      "stationCode": "AADR",
+      "stationName": "Amb  Andaura",
+      "arrivalTime": "11:10",
+      "departureTime": "",
+      "day": 1,
+      "distance": "437.0",
+      "chartTimeLocal": "22:14",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": null,
+      "chartTwoDayOffset": null,
+      "chartRemoteStation": "CDG"
+    }
+  ],
+  "summary": "The first reservation chart for Vande Bharat Ex (22447) is prepared at New Delhi (NDLS) around 9:17 PM, with a second (vacancy) chart around 5:35 AM. 7 of 7 stations on the NDLS to AADR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T01:53:58.915Z",
+  "knownChartCount": 7
+}

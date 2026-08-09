@@ -1,0 +1,103 @@
+{
+  "trainNumber": "20641",
+  "trainName": "Cbe Vande Bharat",
+  "originStation": "BNC",
+  "destinationStation": "CBE",
+  "slug": "20641-cbe-vande-bharat-chart-times",
+  "stations": [
+    {
+      "stationCode": "BNC",
+      "stationName": "Bengaluru Cant",
+      "arrivalTime": "",
+      "departureTime": "14:20",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "05:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNC"
+    },
+    {
+      "stationCode": "HSRA",
+      "stationName": "Hosur",
+      "arrivalTime": "15:05",
+      "departureTime": "15:07",
+      "day": 1,
+      "distance": "56.0",
+      "chartTimeLocal": "05:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNC"
+    },
+    {
+      "stationCode": "DPJ",
+      "stationName": "Dharmapuri",
+      "arrivalTime": "16:22",
+      "departureTime": "16:24",
+      "day": 1,
+      "distance": "148.0",
+      "chartTimeLocal": "05:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNC"
+    },
+    {
+      "stationCode": "SA",
+      "stationName": "Salem Jn",
+      "arrivalTime": "17:52",
+      "departureTime": "17:55",
+      "day": 1,
+      "distance": "214.0",
+      "chartTimeLocal": "05:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNC"
+    },
+    {
+      "stationCode": "ED",
+      "stationName": "Erode Jn",
+      "arrivalTime": "18:47",
+      "departureTime": "18:50",
+      "day": 1,
+      "distance": "277.0",
+      "chartTimeLocal": "05:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNC"
+    },
+    {
+      "stationCode": "TUP",
+      "stationName": "Tiruppur",
+      "arrivalTime": "19:28",
+      "departureTime": "19:30",
+      "day": 1,
+      "distance": "327.0",
+      "chartTimeLocal": "05:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNC"
+    },
+    {
+      "stationCode": "CBE",
+      "stationName": "Coimbatore Jn",
+      "arrivalTime": "20:40",
+      "departureTime": "",
+      "day": 1,
+      "distance": "376.0",
+      "chartTimeLocal": "05:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNC"
+    }
+  ],
+  "summary": "The first reservation chart for Cbe Vande Bharat (20641) is prepared at Bengaluru Cant (BNC) around 5:01 AM, with a second (vacancy) chart around 7:15 PM. 7 of 7 stations on the BNC to CBE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-06T00:38:35.966Z",
+  "knownChartCount": 7
+}
