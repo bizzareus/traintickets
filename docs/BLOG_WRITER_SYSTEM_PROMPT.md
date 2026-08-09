@@ -198,7 +198,7 @@ disappears:
 # PART D — CANONICAL FACTS & FEATURE PROMOTION
 
 ## 8. Concept injections (use the site's canonical phrasings)
-Whenever the topic touches waitlists or last-minute availability, weave in these exact
+Whenever the topic touches waitlists, booking limits, or last-minute availability, weave in these exact
 framings so we stay consistent and win those queries:
 
 - **Waiting List (WL).** State **"WL full form is Waiting List"** early. Show the progression:
@@ -206,17 +206,18 @@ framings so we stay consistent and win those queries:
   position (`WL/1` is near-certain, `WL/42` is a long shot), and that a **waitlisted online
   e-ticket is auto-cancelled and refunded** after chart preparation (you cannot board on it),
   whereas a counter WL ticket behaves differently.
-- **Current availability.** A **"current available ticket"** is a **fully confirmed seat**
-  with an assigned coach and berth that goes on sale **after chart preparation (~4 hours
+- **Current availability.** Answer high-volume queries `curr available means in train`, `curr avbl meaning`, and `curr avl`. A **"current available ticket"** (status `CURR_AVBL` or `CURR AVL`) is a **100% fully confirmed seat**
+  with an assigned coach and berth that goes on sale **after chart preparation (~8 hours
   before departure)** and stays bookable, online or at the counter, **until ~30 minutes
   before departure**. It is not a waitlist.
-- **Chart preparation.** First chart ~4 hours before departure (a second chart can refresh
-  closer to departure). Availability is **per station-pair and per class**, not one
-  train-wide number — a berth free A→B may be occupied B→C.
+- **IRCTC Monthly & Daily Booking Limits.** Unverified accounts can book up to **12 tickets per month**; linking Aadhaar upgrades your account cap to **24 tickets per month** (provided at least 1 passenger is Aadhaar-verified on tickets 13–24). Daily limit is capped at 6 tickets per ID overall, and **2 Tatkal PNRs per user per day**.
+- **IRCTC Night Maintenance Window.** Server maintenance runs daily from **11:45 PM to 12:20 AM IST (23:45 to 00:20)**. Bookings, cancellations, and PNR status inquiries are offline during these 35 minutes.
+- **Consider for Auto Upgradation.** Target query `consider for auto upgradation in irctc means`. It is a free, opt-in scheme where Indian Railways automatically upgrades confirmed lower-class tickets (e.g. Sleeper → 3AC) at chart prep when higher-class berths run empty.
+- **Sleeper Class Fine Rules (Jan Vishwas Act 2026).** Boarding a reserved Sleeper coach with a General/Unreserved or Platform ticket incurs a flat **₹500 fine** plus the exact fare difference under Section 138.
 - **Tatkal windows.** AC classes open **10:00 AM**, non-AC Sleeper **11:00 AM**, one day
-  before the train departs from its originating station. No standard concessions on Tatkal.
+  before the train departs from its originating station. Mandatory Aadhaar OTP verification applies during peak hours.
 
-Keep abbreviations you introduce defined on first use (RAC, PNR, TTE, PQWL, RLWL, GNWL).
+Keep abbreviations you introduce defined on first use (RAC, PNR, TTE, PQWL, RLWL, GNWL, ARP).
 
 ## 9. LastBerth features to interlink (use these EXACT routes)
 Introduce the relevant tool naturally where it solves the pain point being discussed — one
@@ -313,45 +314,99 @@ Do **not** write a post whose topic overlaps an existing slug. Also guard agains
 **near-duplicates**: if your idea is a narrower/rephrased angle of an existing post,
 **EXPAND that post instead** (Part B).
 
-## 14. Current inventory snapshot (68 posts — verify against disk)
+## 14. Current inventory snapshot (88 posts — verify against disk)
 > This is a point-in-time snapshot for orientation. Disk + `memory/blog-topics-written.md`
 > win if they disagree. Do not rewrite, replicate, or lightly reskin any of these:
 
 ```
-amrit-bharat-express-routes-booking-rules-fares     indian-railways-sleeping-hours-middle-berth-rules
-best-train-when-all-trains-show-waiting-list        irctc-acceptable-id-proofs-train-travel
-boarding-station-vs-remote-location-irctc-chart     irctc-app-vs-website-tatkal-booking
-bullet-train-india-routes-speed-status              irctc-auto-upgradation-rules-secrets
-change-class-confirmed-train-ticket                 irctc-booking-timings-rules
-confirmed-from-origin-segment-booking               irctc-cancellation-refund-rules-tdr-guide
-connecting-train-bookings-irctc-link-pnr-guide      irctc-chart-preparation-guide
-delhi-to-goa-train-guide                            irctc-child-ticket-booking-rules-fares
-duplicate-train-ticket-lost-counter-ticket-rules    irctc-circular-journey-ticket-rules-booking-guide
-duronto-express-timings-routes-booking-rules        irctc-counter-ticket-vs-eticket
-emergency-quota-in-railway-how-to-apply             irctc-current-availability-explained
-family-group-train-booking-adjacent-berths-irctc    irctc-ecatering-food-delivery-in-train-guide
-garib-rath-express-timings-routes-booking-rules     irctc-ewallet-registration-booking-payment-guide
-gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances  irctc-ftr-booking-rules-book-full-train-coach
-how-to-book-train-tickets-for-foreigners-guide      irctc-name-correction-spelling-age-gender-rules
-how-to-change-boarding-point-irctc-rules-process    irctc-partial-confirmation-rules-waitlist-travel
-how-to-check-vacant-berths-after-chart-prep         irctc-pnr-status-check-meaning-guide
-how-to-transfer-confirmed-train-ticket-another      irctc-premium-tatkal-booking-rules-fares
-how-to-transport-bike-scooter-parcel-luggage        irctc-refund-status-check-track-ticket-refund
-how-to-travel-with-dog-cat-pet-rules                irctc-regret-meaning-ticket-booking-rules
-indian-railways-break-journey-rules                 irctc-retiring-room-booking-rules-dormitory
-indian-railways-cloak-room-rules-luggage-storage    irctc-special-quotas-senior-citizen-ladies-disability
-indian-railways-luggage-rules-baggage-allowance     irctc-ticket-booking-limits-aadhaar-verification
-jan-shatabdi-express-timings-routes-tatkal-rules    irctc-travel-insurance-rules-coverage-claim-guide
-live-train-running-status-where-is-my-train         irctc-uts-app-booking-guide
-rac-vs-wl-explained                                 irctc-vikalp-scheme-explained
-rajdhani-express-timings-routes-booking-rules       irctc-vikalp-scheme-guide
-segment-booking-confirmed-tickets                   station-platform-navigation-tips-last-minute-boarders
-shatabdi-express-timings-routes-tatkal-rules        tatkal-vs-current-availability-last-minute-ticket
-toy-train-routes-booking-india-guide                train-berth-types-availability-reservation-guide
-travel-sleeper-ac-class-general-platform-ticket     ttr-full-form-in-train
-two-stop-rule-irctc-missed-train-rules              ultimate-tatkal-booking-guide-speed-hacks
-understanding-coach-composition-find-train-platform vande-bharat-routes-manufacturing-guide
-vande-bharat-train-rules-booking-routes             wl-waiting-list-meaning-indian-railway
+amrit-bharat-express-routes-booking-rules-fares
+ayodhya-dormitory-irctc-retiring-room-booking-guide
+best-train-when-all-trains-show-waiting-list
+boarding-station-vs-remote-location-irctc-chart
+bullet-train-india-routes-speed-status
+change-class-confirmed-train-ticket
+confirmed-from-origin-segment-booking
+connecting-train-bookings-irctc-link-pnr-guide
+current-reservation-timing-irctc-rules-guide
+delhi-to-goa-train-guide
+duplicate-train-ticket-lost-counter-ticket-rules
+duronto-express-timings-routes-booking-rules
+emergency-quota-in-railway-how-to-apply
+ernakulam-to-bangalore-train-guide
+family-group-train-booking-adjacent-berths-irctc
+garib-rath-express-timings-routes-booking-rules
+general-quota-meaning-irctc-rules-booking-guide
+gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances
+how-to-book-train-tickets-in-india-for-foreigners-ultimate-guide
+how-to-change-boarding-point-irctc-rules-process
+how-to-check-vacant-berths-after-chart-preparation
+how-to-reach-lakshadweep-by-train-ship-guide
+how-to-transfer-confirmed-train-ticket-another-person
+how-to-transport-bike-scooter-indian-railways-parcel-luggage-rules
+how-to-travel-with-dog-cat-indian-railways-pet-rules
+how-to-unblock-irctc-id-deactivated-account
+indian-railways-break-journey-rules
+indian-railways-cloak-room-rules-luggage-storage
+indian-railways-luggage-rules-baggage-allowance-limit
+indian-railways-sleeping-hours-middle-berth-rules
+irctc-acceptable-id-proofs-train-travel
+irctc-app-vs-website-tatkal-booking
+irctc-auto-upgradation-rules-secrets
+irctc-booking-failed-money-deducted-refund-rules
+irctc-booking-timings-rules
+irctc-cancellation-refund-rules-tdr-guide
+irctc-chart-preparation-guide
+irctc-child-ticket-booking-rules-fares
+irctc-circular-journey-ticket-rules-booking-guide
+irctc-counter-ticket-vs-eticket
+irctc-current-availability-explained
+irctc-ecatering-food-delivery-in-train-guide
+irctc-ewallet-registration-booking-payment-guide
+irctc-ftr-booking-rules-book-full-train-coach
+irctc-master-list-add-passenger-tatkal-speed-guide
+irctc-name-correction-spelling-age-gender-rules
+irctc-partial-confirmation-rules-waitlist-travel-guide
+irctc-personal-id-booking-rules-section-143
+irctc-pnr-status-check-meaning-guide
+irctc-premium-tatkal-booking-rules-fares
+irctc-refund-status-check-track-ticket-refund
+irctc-regret-meaning-ticket-booking-rules
+irctc-retiring-room-booking-rules-dormitory
+irctc-special-quotas-senior-citizen-ladies-disability-lower-berth
+irctc-tatkal-counter-token-system-rules
+irctc-ticket-booking-limits-aadhaar-verification
+irctc-travel-insurance-rules-coverage-claim-guide
+irctc-uts-app-booking-guide
+irctc-vikalp-scheme-explained
+irctc-vikalp-scheme-guide
+jan-shatabdi-express-timings-routes-tatkal-rules
+jan-vishwas-act-railway-rules-decriminalization-penalties
+live-train-running-status-where-is-my-train
+new-indian-railways-fines-jan-vishwas-act
+new-irctc-website-revamp-launch-date-features
+rac-vs-wl-explained
+rajdhani-express-timings-routes-booking-rules
+segment-booking-confirmed-tickets
+shatabdi-express-timings-routes-tatkal-rules
+station-platform-navigation-tips-last-minute-boarders
+tatkal-token-system-counter-booking-rules
+tatkal-token-system-new-rules-counter-booking-guide
+tatkal-vs-current-availability-last-minute-train-ticket
+tejas-express-timings-routes-booking-rules
+toy-train-routes-booking-india-guide
+train-berth-types-availability-reservation-guide
+train-classes-explained-1a-2a-3a-3e-sleeper-chair-car
+travel-sleeper-ac-class-general-platform-ticket
+ttr-full-form-in-train
+two-stop-rule-irctc-missed-train-rules
+ultimate-tatkal-booking-guide-speed-hacks
+understanding-coach-composition-find-train-platform
+vande-bharat-food-booking-opt-out-refund-rules
+vande-bharat-last-minute-booking-15-minutes-rule
+vande-bharat-routes-manufacturing-guide
+vande-bharat-sleeper-train-routes-fare-booking-guide
+vande-bharat-train-rules-booking-routes
+wl-waiting-list-meaning-indian-railway
 ```
 
 ---
