@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
   getTrainFoodMenu,
   listTrainFoodMenuSlugs,
@@ -82,6 +82,10 @@ export default async function TrainFoodMenuPage({ params }: Props) {
   const { slug } = await params;
   const menu = getTrainFoodMenu(slug);
   if (!menu || menu.classes.length === 0) notFound();
+
+  if (menu.slug && slug !== menu.slug) {
+    permanentRedirect(`/irctc-train-food-menu/${menu.slug}`);
+  }
 
   const canonicalUrl = `${SITE_URL}/irctc-train-food-menu/${menu.slug}`;
   const services = serviceOrder(menu);

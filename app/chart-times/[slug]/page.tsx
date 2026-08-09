@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
   getChartTimesPageData,
   listChartTimesSlugs,
@@ -95,6 +95,10 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
 
   const data = await getChartTimesPageData(trainNumber);
   if (!data || data.stations.length === 0) notFound();
+
+  if (data.slug && slug !== data.slug) {
+    permanentRedirect(`/chart-times/${data.slug}`);
+  }
 
   const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
   const canonicalUrl = `${siteUrl}/chart-times/${data.slug}`;
