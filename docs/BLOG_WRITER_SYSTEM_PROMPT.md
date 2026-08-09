@@ -432,17 +432,20 @@ In the final summary of the job provided to the user, you must explicitly descri
 > keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, and
 > touch nothing but markdown?" If any answer is no, fix it before committing.
 
-## 23. Medium Syndication Workflow (Optional)
-Published English blog posts can be syndicated to Medium while preserving LastBerth's canonical SEO authority:
-```bash
-# Dry run to test markdown payload & canonical URL
-npx tsx scripts/syndicate-to-medium.ts <slug> --dry-run
+## 23. Medium Syndication Workflow (Manual Import)
+To syndicate published English blog posts to Medium without risking Google duplicate-content penalties, always set the canonical link back to LastBerth:
 
-# Publish as a Draft on Medium (requires MEDIUM_INTEGRATION_TOKEN)
-npx tsx scripts/syndicate-to-medium.ts <slug>
+### Method A: Medium "Import a Story" (Recommended)
+1. Go to Medium's import tool: `https://medium.com/p/import`
+2. Paste the live post URL: `https://lastberth.com/blog/<slug>`
+3. Click **Import**. Medium automatically imports the content, formats it, and automatically sets the canonical URL to `https://lastberth.com/blog/<slug>`.
+4. Review the imported story and click **Publish**.
 
-# Publish directly as Public on Medium
-npx tsx scripts/syndicate-to-medium.ts <slug> --status public
-```
-*Always ensure `canonicalUrl` points to `https://lastberth.com/blog/<slug>` so Google credits LastBerth as the original content creator.*
+### Method B: Manual Creation
+1. Go to Medium → **Write a story** and paste the English title and body from `content/blog/<slug>.md`.
+2. Open **Story Settings** (top-right menu `...` → *Story settings*).
+3. Under **Advanced Settings**, check **"This story was originally published elsewhere"**.
+4. Enter the canonical URL: `https://lastberth.com/blog/<slug>` and save.
+5. Publish the story.
+
 
