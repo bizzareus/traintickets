@@ -2,7 +2,7 @@
 title: "आखरी समय में ट्रेन टिकट के लिए IRCTC चार्ट तैयारी (Chart Preparation)"
 description: "चार्ट तैयारी के लिए एक व्यावहारिक गाइड: चार्ट बनने के बाद क्या बदलता है, WL/Regret स्थिति क्यों बदल सकती है, और अपने टिकट की जांच कब करें।"
 date: "2026-05-15"
-updated: "2026-08-05"
+updated: "2026-08-09"
 tags:
   - chart preparation
   - irctc

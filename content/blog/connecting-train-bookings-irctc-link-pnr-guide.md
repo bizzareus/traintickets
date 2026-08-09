@@ -2,7 +2,7 @@
 title: "Connecting Train on IRCTC: Link PNR & Refund If You Miss It"
 description: "Booking two trains for one trip? Learn how to link PNRs for a connecting journey on IRCTC, the minimum layover to keep, and whether you get a refund if a delay makes you miss the connection."
 date: "2026-05-30"
-updated: "2026-07-27"
+updated: "2026-08-09"
 tags:
   - connecting trains
   - train booking
@@ -77,7 +77,7 @@ If you made the mistake of booking both tickets separately without linking them,
 
 ### Rules You Must Follow
 Here's the catch. You can't just link any two random tickets. IRCTC has some ground rules:
-- **No Tatkal bookings:** If you're booking under Tatkal or Premium Tatkal, you are out of luck. This feature only works for regular, general quota tickets.
+- **Tatkal bookings allowed:** You can link Tatkal tickets as part of a connecting journey as long as passenger details, station sequence, and layover timing criteria are met.
 - **Passenger details must match exactly:** Names must match 100%. Make sure spelling, ages, and genders match perfectly on both tickets.
 - **Stations must align:** The station where you get off Train A has to be the exact same station where you board Train B. Or, they must be part of the same station cluster in a city (like arriving at New Delhi [NDLS] and leaving from Nizamuddin [NZM]).
 - **Mind the gap:** Your layover must be between **1 minute** and **5 days**. But seriously, don't keep it too tight. Give yourself at least 3 hours. Trains in India get late. It's just how it is.
@@ -172,7 +172,7 @@ It's just a simple trick of tying two tickets in a chain. Imagine you are riding
 
 ### Rules to keep in mind:
 Keep these rules in mind before booking:
-- Tatkal or Premium Tatkal bookings won't work.
+- Tatkal tickets CAN be linked provided passenger and station details match.
 - Passenger details (names, age, gender) have to be a 100% exact match.
 - The station where you get off Train A must match where you board Train B, or be in the same city cluster.
 - The gap between trains must be between 1 minute and 5 days.
@@ -196,7 +196,7 @@ To book them, you just need Train A's PNR ready with you. Pop open your IRCTC ap
 
 ## What is the Minimum Layover Required to Link Connecting PNRs on IRCTC?
 
-To link two PNRs under IRCTC Connecting Journey Booking rules, the scheduled arrival of your first train (Train A) and the scheduled departure of your second train (Train B) must have a minimum time gap. For connections at the exact same railway station, the layover must be between 1 hour and 5 days. If transferring between different stations in the same city (e.g., NDLS to NZM in Delhi), the minimum gap required is 3 hours.
+To link two PNRs under IRCTC Connecting Journey Booking rules, the scheduled arrival of your first train (Train A) and the scheduled departure of your second train (Train B) must have a minimum time gap. The scheduled arrival of your first train (Train A) and scheduled departure of your second train (Train B) must have a gap between **1 minute** and **5 days**.
 
 ## What Happens if Train A is Delayed and You Miss Train B?
 
@@ -216,4 +216,4 @@ By using LastBerth to map out the best junction stations (like Kanpur, Prayagraj
 Yes. You can link a physical counter ticket PNR with an online e-ticket PNR. Enter the counter PNR during the second ticket booking flow under IRCTC Connecting Journey Booking.
 
 ### Can Tatkal tickets be linked as connecting journeys on IRCTC?
-Yes. Tatkal tickets can be linked as part of a connecting journey provided the layover time rules (minimum 1 hour same station, 3 hours different stations) are met.
+Yes. Tatkal tickets can be linked as part of a connecting journey provided the standard eligibility criteria (matching passenger details, station alignment, and 1 min to 5 days layover window) are met.

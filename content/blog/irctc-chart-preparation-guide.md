@@ -2,7 +2,7 @@
 title: "IRCTC Chart Preparation for Last-Minute Tickets"
 description: "A practical, no-hype guide to chart preparation: what changes after the chart, why WL/Regret can flip, and how to time your checks."
 date: "2026-05-15"
-updated: "2026-08-05"
+updated: "2026-08-09"
 tags:
   - chart preparation
   - irctc
@@ -91,7 +91,7 @@ A second and final reservation chart is prepared **30 minutes to 5 minutes befor
 
 ## What Happens If Your Ticket Remains Waitlisted After Charting?
 
-If a fully waitlisted e-ticket remains waitlisted after second chart preparation, IRCTC automatically cancels the ticket and refunds the fare with a full refund (no cancellation or clerkage fee deducted) to your bank account within 3 to 5 working days. **Waitlisted e-ticket holders are strictly prohibited from boarding the train.** If caught travelling with a waitlisted e-ticket, you will be treated as travelling without a ticket and charged full fare plus penalties.
+If a fully waitlisted e-ticket remains waitlisted after second chart preparation, IRCTC automatically cancels the ticket and refunds the fare (after deducting applicable clerkage charges) to your bank account within 3 to 5 working days. **Waitlisted e-ticket holders are strictly prohibited from boarding the train.** If caught travelling with a waitlisted e-ticket, you will be treated as travelling without a ticket and charged full fare plus penalties.
 
 ## What Is the Difference Between First Reservation Chart and Second Reservation Chart?
 
