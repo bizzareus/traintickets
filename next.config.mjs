@@ -23,6 +23,8 @@ const nextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
       {
         source: "/_next/static/:path*",
         headers: [

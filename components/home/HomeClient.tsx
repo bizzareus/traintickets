@@ -512,31 +512,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const altAlternatePathCaptureRef = useRef<HTMLDivElement>(null);
   const [altShareBusy, setAltShareBusy] = useState(false);
 
-  useEffect(() => {
-    const fromCode = searchParams.get("from");
-    const toCode = searchParams.get("to");
-    const fromName = searchParams.get("fromName");
-    const toName = searchParams.get("toName");
-    const dateParam = searchParams.get("date");
 
-    if (fromCode && toCode) {
-      const fSt = {
-        stationCode: fromCode.toUpperCase(),
-        stationName: fromName || fromCode.toUpperCase(),
-      };
-      const tSt = {
-        stationCode: toCode.toUpperCase(),
-        stationName: toName || toCode.toUpperCase(),
-      };
-      setFromSt(fSt);
-      setFromQ(fromName ? `${fromCode.toUpperCase()} - ${fromName}` : fromCode.toUpperCase());
-      setToSt(tSt);
-      setToQ(toName ? `${toCode.toUpperCase()} - ${toName}` : toCode.toUpperCase());
-    }
-    if (dateParam) {
-      setJourneyDate(dateParam);
-    }
-  }, [searchParams]);
 
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
   const [scheduleTrainNumber, setScheduleTrainNumber] = useState("");
