@@ -7,7 +7,7 @@ import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
 import { IstRailMaintenanceBanner } from "@/components/IstRailMaintenance";
 import { listPopularChartTimes } from "@/lib/chartTimes";
-import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
+import { AdSenseScriptLoader } from "@/components/AdSenseScriptLoader";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -157,11 +157,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="preconnect" href="https://us.i.posthog.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2619716052518481"
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
+        <AdSenseScriptLoader />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
