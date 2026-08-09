@@ -1045,7 +1045,15 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
           {searchType === "seat" ? (
             <SeatStatus />
           ) : searchType === "route" ? (
-            <div className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch">
+            <form
+              toolname="search_train_tickets"
+              tooldescription="Search confirmed train tickets, alternate segment routes, and seat availability across Indian Railways."
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!searchLoading) void runSearch();
+              }}
+              className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch"
+            >
               <StationFieldSimple
                 className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
                 label={t.form.from}
@@ -1152,18 +1160,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               </div>
               <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
                 <button
-                  type="button"
-                  onClick={() => {
-                    trackAnalyticsEvent({
-                      name: "search_tickets_clicked",
-                      properties: {
-                        from_code: fromSt?.stationCode,
-                        to_code: toSt?.stationCode,
-                        journey_date: journeyDate ?? undefined,
-                      },
-                    });
-                    void runSearch();
-                  }}
+                  type="submit"
                   disabled={searchLoading}
                   className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base"
                 >
@@ -1177,7 +1174,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   )}
                 </button>
               </div>
-            </div>
+            </form>
           ) : (
             <SearchPnrPanel />
           )}

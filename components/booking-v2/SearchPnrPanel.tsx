@@ -211,7 +211,15 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
   }, [pnr, alt, journeyDate]);
 
   return (
-    <div className={className}>
+    <form
+      toolname="check_pnr_status"
+      tooldescription="Check live 10-digit Indian Railways PNR status, seat allotment, and waiting list confirmation probability."
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (!pnrLoading && pnr.length === 10) void handlePnrSearch();
+      }}
+      className={className}
+    >
       <div className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:gap-4 sm:p-3">
         <div className="flex-1 min-w-0">
           <label
@@ -239,6 +247,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
             type="text"
             id="pnrInput"
             name="pnr"
+            toolparamdescription="10-digit PNR number printed on Indian Railways ticket"
             inputMode="numeric"
             autoComplete="off"
             aria-label="Enter 10-Digit PNR Number"
@@ -253,8 +262,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
         </div>
         <div className="mt-3 flex items-stretch sm:mt-0">
           <button
-            type="button"
-            onClick={() => void handlePnrSearch()}
+            type="submit"
             disabled={pnrLoading || pnr.length !== 10}
             className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:text-base"
           >
@@ -560,6 +568,6 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
         highlightFrom={scheduleHighlightFrom}
         highlightTo={scheduleHighlightTo}
       />
-    </div>
+      </form>
   );
 }
