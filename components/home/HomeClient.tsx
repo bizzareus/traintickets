@@ -1046,8 +1046,10 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             <SeatStatus />
           ) : searchType === "route" ? (
             <form
-              toolname="search_train_tickets"
-              tooldescription="Search confirmed train tickets, alternate segment routes, and seat availability across Indian Railways."
+              {...({
+                toolname: "search_train_tickets",
+                tooldescription: "Search confirmed train tickets, alternate segment routes, and seat availability across Indian Railways.",
+              } as Record<string, unknown>)}
               onSubmit={(e) => {
                 e.preventDefault();
                 if (!searchLoading) void runSearch();

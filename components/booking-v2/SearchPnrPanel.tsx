@@ -212,8 +212,10 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
 
   return (
     <form
-      toolname="check_pnr_status"
-      tooldescription="Check live 10-digit Indian Railways PNR status, seat allotment, and waiting list confirmation probability."
+      {...({
+        toolname: "check_pnr_status",
+        tooldescription: "Check live 10-digit Indian Railways PNR status, seat allotment, and waiting list confirmation probability.",
+      } as Record<string, unknown>)}
       onSubmit={(e) => {
         e.preventDefault();
         if (!pnrLoading && pnr.length === 10) void handlePnrSearch();
@@ -247,7 +249,9 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
             type="text"
             id="pnrInput"
             name="pnr"
-            toolparamdescription="10-digit PNR number printed on Indian Railways ticket"
+            {...({
+              toolparamdescription: "10-digit PNR number printed on Indian Railways ticket",
+            } as Record<string, unknown>)}
             inputMode="numeric"
             autoComplete="off"
             aria-label="Enter 10-Digit PNR Number"

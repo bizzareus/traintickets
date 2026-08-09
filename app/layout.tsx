@@ -7,6 +7,7 @@ import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
 import { IstRailMaintenanceBanner } from "@/components/IstRailMaintenance";
 import { listPopularChartTimes } from "@/lib/chartTimes";
+import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
 import { AdSenseScriptLoader } from "@/components/AdSenseScriptLoader";
 import "./globals.css";
 
@@ -227,7 +228,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </h3>
                   <ul className="space-y-2">
                     {foodMenuPages.length > 0 ? (
-                      foodMenuPages.map((t) => (
+                      foodMenuPages.map((t: { slug: string; trainName?: string; trainNumber: string }) => (
                         <li key={t.slug}>
                           <Link href={`/irctc-train-food-menu/${t.slug}`} className="hover:text-blue-600">
                             {t.trainName || t.trainNumber} ({t.trainNumber})
