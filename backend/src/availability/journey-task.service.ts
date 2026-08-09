@@ -129,10 +129,11 @@ function alternatePathsToCheckResult(
     return {
       status: 'failed',
       vacantBerth: { vbd: [], error: null },
-      chartStatus: (alt as Record<string, unknown>).chartStatus ?? {
-        kind: 'not_prepared_yet',
-        message: 'Confirmed seats not available yet',
-      },
+      chartStatus:
+        ((alt as Record<string, unknown>).chartStatus as Service2CheckResult['chartStatus']) ?? {
+          kind: 'not_prepared_yet' as const,
+          message: 'Confirmed seats not available yet',
+        },
       debugLog: alt.debugLog,
     };
   }
