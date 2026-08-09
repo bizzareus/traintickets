@@ -12482,1802 +12482,2402 @@
   {
     "trainNumber": "17391",
     "trainName": "SBC SNNR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17391-sbc-snnr-exp-chart-times",
+    "canonicalNumber": "17391"
   },
   {
     "trainNumber": "17392",
     "trainName": "SNNR SBC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17392-snnr-sbc-exp-chart-times",
+    "canonicalNumber": "17392"
   },
   {
     "trainNumber": "17405",
     "trainName": "KRISHNA EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17405-krishna-express-chart-times",
+    "canonicalNumber": "17405"
   },
   {
     "trainNumber": "17406",
     "trainName": "KRISHNA EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17406-krishna-express-chart-times",
+    "canonicalNumber": "17406"
   },
   {
     "trainNumber": "17407",
     "trainName": "PAMANI EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17407-pamani-express-chart-times",
+    "canonicalNumber": "17407"
   },
   {
     "trainNumber": "17408",
     "trainName": "PAMANI EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17408-pamani-express-chart-times",
+    "canonicalNumber": "17408"
   },
   {
     "trainNumber": "17411",
     "trainName": "MAHALAXMI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17411-mahalaxmi-exp-chart-times",
+    "canonicalNumber": "17411"
   },
   {
     "trainNumber": "17412",
     "trainName": "MAHALAXMI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17412-mahalaxmi-exp-chart-times",
+    "canonicalNumber": "17412"
   },
   {
     "trainNumber": "17415",
     "trainName": "HARIPRIYA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17415-haripriya-exp-chart-times",
+    "canonicalNumber": "17415"
   },
   {
     "trainNumber": "17416",
     "trainName": "HARIPRIYA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17416-haripriya-exp-chart-times",
+    "canonicalNumber": "17416"
   },
   {
     "trainNumber": "17417",
     "trainName": "TPTY SNSI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17417-tpty-snsi-exp-chart-times",
+    "canonicalNumber": "17417"
   },
   {
     "trainNumber": "17418",
     "trainName": "SNSI TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17418-snsi-tpty-exp-chart-times",
+    "canonicalNumber": "17418"
   },
   {
     "trainNumber": "17419",
     "trainName": "TPTY VSG  EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17419-tpty-vsg-exp-chart-times",
+    "canonicalNumber": "17419"
   },
   {
     "trainNumber": "17420",
     "trainName": "VSG TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17420-vsg-tpty-exp-chart-times",
+    "canonicalNumber": "17420"
   },
   {
     "trainNumber": "17421",
     "trainName": "TPTY QLN EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17421-tpty-qln-express-chart-times",
+    "canonicalNumber": "17421"
   },
   {
     "trainNumber": "17422",
     "trainName": "QLN TPTY EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17422-qln-tpty-express-chart-times",
+    "canonicalNumber": "17422"
   },
   {
     "trainNumber": "17423",
     "trainName": "TPTY CMGR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17423-tpty-cmgr-exp-chart-times",
+    "canonicalNumber": "17423"
   },
   {
     "trainNumber": "17424",
     "trainName": "CMGR TPTY  EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17424-cmgr-tpty-exp-chart-times",
+    "canonicalNumber": "17424"
   },
   {
     "trainNumber": "17425",
     "trainName": "TPTY SNSI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17425-tpty-snsi-exp-chart-times",
+    "canonicalNumber": "17425"
   },
   {
     "trainNumber": "17426",
     "trainName": "SNSI TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17426-snsi-tpty-exp-chart-times",
+    "canonicalNumber": "17426"
   },
   {
     "trainNumber": "17427",
     "trainName": "TPTY NS EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17427-tpty-ns-express-chart-times",
+    "canonicalNumber": "17427"
   },
   {
     "trainNumber": "17428",
     "trainName": "NS TPTY EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17428-ns-tpty-express-chart-times",
+    "canonicalNumber": "17428"
   },
   {
     "trainNumber": "17429",
     "trainName": "TPTY AK EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17429-tpty-ak-express-chart-times",
+    "canonicalNumber": "17429"
   },
   {
     "trainNumber": "17430",
     "trainName": "AK TPTY EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17430-ak-tpty-express-chart-times",
+    "canonicalNumber": "17430"
   },
   {
     "trainNumber": "17433",
     "trainName": "TPTY RXL EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17433-tpty-rxl-exp-chart-times",
+    "canonicalNumber": "17433"
   },
   {
     "trainNumber": "17434",
     "trainName": "RXL TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17434-rxl-tpty-exp-chart-times",
+    "canonicalNumber": "17434"
   },
   {
     "trainNumber": "17437",
     "trainName": "TPTY PVR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17437-tpty-pvr-exp-chart-times",
+    "canonicalNumber": "17437"
   },
   {
     "trainNumber": "17438",
     "trainName": "PVR TIRUPATI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17438-pvr-tirupati-exp-chart-times",
+    "canonicalNumber": "17438"
   },
   {
     "trainNumber": "17439",
     "trainName": "CHE HUMSAFAR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17439-che-humsafar-exp-chart-times",
+    "canonicalNumber": "17439"
   },
   {
     "trainNumber": "17440",
     "trainName": "HUMSAFAR EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17440-humsafar-expres-chart-times",
+    "canonicalNumber": "17440"
   },
   {
     "trainNumber": "17441",
     "trainName": "TPTY CHZ EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17441-tpty-chz-exp-chart-times",
+    "canonicalNumber": "17441"
   },
   {
     "trainNumber": "17442",
     "trainName": "CHZ TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17442-chz-tpty-exp-chart-times",
+    "canonicalNumber": "17442"
   },
   {
     "trainNumber": "17443",
     "trainName": "TPTY CHZ EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17443-tpty-chz-exp-chart-times",
+    "canonicalNumber": "17443"
   },
   {
     "trainNumber": "17444",
     "trainName": "CHZ TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17444-chz-tpty-exp-chart-times",
+    "canonicalNumber": "17444"
   },
   {
     "trainNumber": "17479",
     "trainName": "PURI TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17479-puri-tpty-exp-chart-times",
+    "canonicalNumber": "17479"
   },
   {
     "trainNumber": "17480",
     "trainName": "TPTY PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17480-tpty-puri-exp-chart-times",
+    "canonicalNumber": "17480"
   },
   {
     "trainNumber": "17481",
     "trainName": "BSP TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17481-bsp-tpty-exp-chart-times",
+    "canonicalNumber": "17481"
   },
   {
     "trainNumber": "17482",
     "trainName": "TPTY BSP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17482-tpty-bsp-exp-chart-times",
+    "canonicalNumber": "17482"
   },
   {
     "trainNumber": "17601",
     "trainName": "KCG SGNR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17601-kcg-sgnr-exp-chart-times",
+    "canonicalNumber": "17601"
   },
   {
     "trainNumber": "17602",
     "trainName": "SGNR KCG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17602-sgnr-kcg-exp-chart-times",
+    "canonicalNumber": "17602"
   },
   {
     "trainNumber": "17603",
     "trainName": "KCG YNK EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17603-kcg-ynk-exp-chart-times",
+    "canonicalNumber": "17603"
   },
   {
     "trainNumber": "17604",
     "trainName": "YNK KCG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17604-ynk-kcg-exp-chart-times",
+    "canonicalNumber": "17604"
   },
   {
     "trainNumber": "17605",
     "trainName": "KCG BGKT EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17605-kcg-bgkt-express-chart-times",
+    "canonicalNumber": "17605"
   },
   {
     "trainNumber": "17606",
     "trainName": "BGKT KCG EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17606-bgkt-kcg-express-chart-times",
+    "canonicalNumber": "17606"
   },
   {
     "trainNumber": "17609",
     "trainName": "PNBE PAU EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17609-pnbe-pau-exp-chart-times",
+    "canonicalNumber": "17609"
   },
   {
     "trainNumber": "17610",
     "trainName": "PAU PNBE EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17610-pau-pnbe-exp-chart-times",
+    "canonicalNumber": "17610"
   },
   {
     "trainNumber": "17611",
     "trainName": "RAJYARANI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17611-rajyarani-exp-chart-times",
+    "canonicalNumber": "17611"
   },
   {
     "trainNumber": "17612",
     "trainName": "RAJYA RANI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17612-rajya-rani-exp-chart-times",
+    "canonicalNumber": "17612"
   },
   {
     "trainNumber": "17613",
     "trainName": "PNVL NED EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17613-pnvl-ned-express-chart-times",
+    "canonicalNumber": "17613"
   },
   {
     "trainNumber": "17614",
     "trainName": "NED PNVL EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17614-ned-pnvl-exp-chart-times",
+    "canonicalNumber": "17614"
   },
   {
     "trainNumber": "17615",
     "trainName": "KCG TN EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17615-kcg-tn-express-chart-times",
+    "canonicalNumber": "17615"
   },
   {
     "trainNumber": "17616",
     "trainName": "TN KCG EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17616-tn-kcg-express-chart-times",
+    "canonicalNumber": "17616"
   },
   {
     "trainNumber": "17617",
     "trainName": "TAPOVAN EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17617-tapovan-express-chart-times",
+    "canonicalNumber": "17617"
   },
   {
     "trainNumber": "17618",
     "trainName": "TAPOVAN EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17618-tapovan-express-chart-times",
+    "canonicalNumber": "17618"
   },
   {
     "trainNumber": "17619",
     "trainName": "CPSN NED EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17619-cpsn-ned-exp-chart-times",
+    "canonicalNumber": "17619"
   },
   {
     "trainNumber": "17620",
     "trainName": "NED CPSN EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17620-ned-cpsn-exp-chart-times",
+    "canonicalNumber": "17620"
   },
   {
     "trainNumber": "17621",
     "trainName": "CPSN TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17621-cpsn-tpty-exp-chart-times",
+    "canonicalNumber": "17621"
   },
   {
     "trainNumber": "17622",
     "trainName": "TPTY CPSN EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17622-tpty-cpsn-exp-chart-times",
+    "canonicalNumber": "17622"
   },
   {
     "trainNumber": "17623",
     "trainName": "NED SGNR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17623-ned-sgnr-exp-chart-times",
+    "canonicalNumber": "17623"
   },
   {
     "trainNumber": "17625",
     "trainName": "KCG RAL EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17625-kcg-ral-exp-chart-times",
+    "canonicalNumber": "17625"
   },
   {
     "trainNumber": "17626",
     "trainName": "RAL VKB EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17626-ral-vkb-exp-chart-times",
+    "canonicalNumber": "17626"
   },
   {
     "trainNumber": "17629",
     "trainName": "PUNE NANDED EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17629-hdp-nanded-exp-chart-times",
+    "canonicalNumber": "17629"
   },
   {
     "trainNumber": "17630",
     "trainName": "NED HDP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17630-ned-hdp-exp-chart-times",
+    "canonicalNumber": "17630"
   },
   {
     "trainNumber": "17633",
     "trainName": "NED TCNR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17633-ned-tcnr-exp-chart-times",
+    "canonicalNumber": "17633"
   },
   {
     "trainNumber": "17634",
     "trainName": "TCNR NED EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17634-tcnr-ned-exp-chart-times",
+    "canonicalNumber": "17634"
   },
   {
     "trainNumber": "17635",
     "trainName": "NED DMM EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17635-ned-dmm-exp-chart-times",
+    "canonicalNumber": "17635"
   },
   {
     "trainNumber": "17636",
     "trainName": "DMM NED EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17636-dmm-ned-exp-chart-times",
+    "canonicalNumber": "17636"
   },
   {
     "trainNumber": "17637",
     "trainName": "J TCNR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17637-j-tcnr-exp-chart-times",
+    "canonicalNumber": "17637"
   },
   {
     "trainNumber": "17638",
     "trainName": "TCNR J EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17638-tcnr-j-exp-chart-times",
+    "canonicalNumber": "17638"
   },
   {
     "trainNumber": "17639",
     "trainName": "KCG AK EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17639-kcg-ak-express-chart-times",
+    "canonicalNumber": "17639"
   },
   {
     "trainNumber": "17640",
     "trainName": "AK KCG EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17640-ak-kcg-express-chart-times",
+    "canonicalNumber": "17640"
   },
   {
     "trainNumber": "17641",
     "trainName": "KCG NRKR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17641-kcg-nrkr-exp-chart-times",
+    "canonicalNumber": "17641"
   },
   {
     "trainNumber": "17642",
     "trainName": "NRKR KCG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17642-nrkr-kcg-exp-chart-times",
+    "canonicalNumber": "17642"
   },
   {
     "trainNumber": "17643",
     "trainName": "CIRCAR EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17643-circar-express-chart-times",
+    "canonicalNumber": "17643"
   },
   {
     "trainNumber": "17644",
     "trainName": "CIRCAR EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17644-circar-express-chart-times",
+    "canonicalNumber": "17644"
   },
   {
     "trainNumber": "17645",
     "trainName": "SC RAL EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17645-sc-ral-exp-chart-times",
+    "canonicalNumber": "17645"
   },
   {
     "trainNumber": "17646",
     "trainName": "RAL SC EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17646-ral-sc-express-chart-times",
+    "canonicalNumber": "17646"
   },
   {
     "trainNumber": "17647",
     "trainName": "HYB PAU EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17647-hyb-pau-express-chart-times",
+    "canonicalNumber": "17647"
   },
   {
     "trainNumber": "17648",
     "trainName": "PAU HYB EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17648-pau-hyb-express-chart-times",
+    "canonicalNumber": "17648"
   },
   {
     "trainNumber": "17651",
     "trainName": "KACHEGUDA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17651-kacheguda-exp-chart-times",
+    "canonicalNumber": "17651"
   },
   {
     "trainNumber": "17652",
     "trainName": "KCG CGL EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17652-kcg-cgl-express-chart-times",
+    "canonicalNumber": "17652"
   },
   {
     "trainNumber": "17653",
     "trainName": "KCG PDY EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17653-kcg-pdy-express-chart-times",
+    "canonicalNumber": "17653"
   },
   {
     "trainNumber": "17654",
     "trainName": "PDY KCG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17654-pdy-kcg-exp-chart-times",
+    "canonicalNumber": "17654"
   },
   {
     "trainNumber": "17655",
     "trainName": "COA PDY EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17655-coa-pdy-express-chart-times",
+    "canonicalNumber": "17655"
   },
   {
     "trainNumber": "17656",
     "trainName": "PDY COA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17656-pdy-coa-exp-chart-times",
+    "canonicalNumber": "17656"
   },
   {
     "trainNumber": "17659",
     "trainName": "SC BDCR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17659-sc-bdcr-exp-chart-times",
+    "canonicalNumber": "17659"
   },
   {
     "trainNumber": "17660",
     "trainName": "BDCR SC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17660-bdcr-sc-exp-chart-times",
+    "canonicalNumber": "17660"
   },
   {
     "trainNumber": "17661",
     "trainName": "KCG NSL EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17661-kcg-nsl-exp-chart-times",
+    "canonicalNumber": "17661"
   },
   {
     "trainNumber": "17662",
     "trainName": "NSL KCG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17662-nsl-kcg-exp-chart-times",
+    "canonicalNumber": "17662"
   },
   {
     "trainNumber": "17663",
     "trainName": "RC PBN EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17663-rc-j-express-chart-times",
+    "canonicalNumber": "17663"
   },
   {
     "trainNumber": "17664",
     "trainName": "NED RC EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17664-j-rc-express-chart-times",
+    "canonicalNumber": "17664"
   },
   {
     "trainNumber": "17665",
     "trainName": "NED LTT EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17665-ned-ltt-express-chart-times",
+    "canonicalNumber": "17665"
   },
   {
     "trainNumber": "17666",
     "trainName": "LTT NED EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17666-ltt-ned-exp-chart-times",
+    "canonicalNumber": "17666"
   },
   {
     "trainNumber": "17667",
     "trainName": "NED LTT EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17667-ned-ltt-exp-chart-times",
+    "canonicalNumber": "17667"
   },
   {
     "trainNumber": "17668",
     "trainName": "LTT NED EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17668-ltt-ned-express-chart-times",
+    "canonicalNumber": "17668"
   },
   {
     "trainNumber": "17687",
     "trainName": "MARATHWADA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17687-marathwada-exp-chart-times",
+    "canonicalNumber": "17687"
   },
   {
     "trainNumber": "17688",
     "trainName": "MARATHWADA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "17688-marathwada-exp-chart-times",
+    "canonicalNumber": "17688"
   },
   {
     "trainNumber": "18005",
     "trainName": "SAMBALESWARI EX",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18005-sambaleswari-ex-chart-times",
+    "canonicalNumber": "18005"
   },
   {
     "trainNumber": "18006",
     "trainName": "SAMALESWARI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18006-samaleswari-exp-chart-times",
+    "canonicalNumber": "18006"
   },
   {
     "trainNumber": "18008",
     "trainName": "VZR SHM EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18008-vzr-shm-exp-chart-times",
+    "canonicalNumber": "18008"
   },
   {
     "trainNumber": "18009",
     "trainName": "SRC AII EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18009-src-aii-express-chart-times",
+    "canonicalNumber": "18009"
   },
   {
     "trainNumber": "18010",
     "trainName": "SANTRAGACHI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18010-santragachi-exp-chart-times",
+    "canonicalNumber": "18010"
   },
   {
     "trainNumber": "18011",
     "trainName": "HWH CKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18011-hwh-ckp-exp-chart-times",
+    "canonicalNumber": "18011"
   },
   {
     "trainNumber": "18012",
     "trainName": "CKP HWH EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18012-ckp-hwh-exp-chart-times",
+    "canonicalNumber": "18012"
   },
   {
     "trainNumber": "18013",
     "trainName": "HWH BKSC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18013-hwh-bksc-exp-chart-times",
+    "canonicalNumber": "18013"
   },
   {
     "trainNumber": "18014",
     "trainName": "BKSC HWH EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18014-bksc-hwh-exp-chart-times",
+    "canonicalNumber": "18014"
   },
   {
     "trainNumber": "18015",
     "trainName": "SHM VZR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18015-shm-vzr-exp-chart-times",
+    "canonicalNumber": "18015"
   },
   {
     "trainNumber": "18016",
     "trainName": "VZR SHM EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18016-vzr-shm-exp-chart-times",
+    "canonicalNumber": "18016"
   },
   {
     "trainNumber": "18017",
     "trainName": "VZR PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18017-vzr-puri-exp-chart-times",
+    "canonicalNumber": "18017"
   },
   {
     "trainNumber": "18018",
     "trainName": "PURI VZR EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18018-puri-vzr-express-chart-times",
+    "canonicalNumber": "18018"
   },
   {
     "trainNumber": "18021",
     "trainName": "KGP KUR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18021-kgp-kur-exp-chart-times",
+    "canonicalNumber": "18021"
   },
   {
     "trainNumber": "18022",
     "trainName": "KUR KGP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18022-kur-kgp-exp-chart-times",
+    "canonicalNumber": "18022"
   },
   {
     "trainNumber": "18029",
     "trainName": "LTT SHALIMAR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18029-ltt-shalimar-exp-chart-times",
+    "canonicalNumber": "18029"
   },
   {
     "trainNumber": "18030",
     "trainName": "SHM LTT EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18030-shm-ltt-express-chart-times",
+    "canonicalNumber": "18030"
   },
   {
     "trainNumber": "18037",
     "trainName": "KGP JJKR EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18037-kgp-jjkr-express-chart-times",
+    "canonicalNumber": "18037"
   },
   {
     "trainNumber": "18039",
     "trainName": "SHM PURI  EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18039-shm-puri-exp-chart-times",
+    "canonicalNumber": "18039"
   },
   {
     "trainNumber": "18040",
     "trainName": "PURI SHM EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18040-puri-shm-express-chart-times",
+    "canonicalNumber": "18040"
   },
   {
     "trainNumber": "18041",
     "trainName": "SHM MAS EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18041-shm-mas-exp-chart-times",
+    "canonicalNumber": "18041"
   },
   {
     "trainNumber": "18042",
     "trainName": "MAS SHM EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18042-mas-shm-express-chart-times",
+    "canonicalNumber": "18042"
   },
   {
     "trainNumber": "18045",
     "trainName": "EAST COAST EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18045-east-coast-exp-chart-times",
+    "canonicalNumber": "18045"
   },
   {
     "trainNumber": "18046",
     "trainName": "EAST COAST EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18046-east-coast-exp-chart-times",
+    "canonicalNumber": "18046"
   },
   {
     "trainNumber": "18047",
     "trainName": "AMARAVATI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18047-amaravati-exp-chart-times",
+    "canonicalNumber": "18047"
   },
   {
     "trainNumber": "18048",
     "trainName": "VSG SHM EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18048-vsg-shm-exp-chart-times",
+    "canonicalNumber": "18048"
   },
   {
     "trainNumber": "18049",
     "trainName": "SHM BMPR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18049-shm-bmpr-exp-chart-times",
+    "canonicalNumber": "18049"
   },
   {
     "trainNumber": "18050",
     "trainName": "BMPR SHM EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18050-bmpr-shm-exp-chart-times",
+    "canonicalNumber": "18050"
   },
   {
     "trainNumber": "18051",
     "trainName": "BMPR ROU EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18051-bmpr-rou-exp-chart-times",
+    "canonicalNumber": "18051"
   },
   {
     "trainNumber": "18052",
     "trainName": "ROU BMPR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18052-rou-bmpr-exp-chart-times",
+    "canonicalNumber": "18052"
   },
   {
     "trainNumber": "18063",
     "trainName": "SRC YNK  AC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18063-src-ynk-ac-exp-chart-times",
+    "canonicalNumber": "18063"
   },
   {
     "trainNumber": "18064",
     "trainName": "YNK SRC EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18064-ynk-src-express-chart-times",
+    "canonicalNumber": "18064"
   },
   {
     "trainNumber": "18101",
     "trainName": "TATA JAT EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18101-tata-jat-exp-chart-times",
+    "canonicalNumber": "18101"
   },
   {
     "trainNumber": "18102",
     "trainName": "JAT TATA EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18102-jat-tata-express-chart-times",
+    "canonicalNumber": "18102"
   },
   {
     "trainNumber": "18103",
     "trainName": "JALIANWALABAG EX",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18103-jalianwalabag-ex-chart-times",
+    "canonicalNumber": "18103"
   },
   {
     "trainNumber": "18104",
     "trainName": "ASR TATA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18104-asr-tata-exp-chart-times",
+    "canonicalNumber": "18104"
   },
   {
     "trainNumber": "18105",
     "trainName": "ROU JYG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18105-rou-jyg-exp-chart-times",
+    "canonicalNumber": "18105"
   },
   {
     "trainNumber": "18106",
     "trainName": "JYG ROU EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18106-jyg-rou-exp-chart-times",
+    "canonicalNumber": "18106"
   },
   {
     "trainNumber": "18107",
     "trainName": "INTERCITY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18107-intercity-exp-chart-times",
+    "canonicalNumber": "18107"
   },
   {
     "trainNumber": "18108",
     "trainName": "JDB ROU EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18108-jdb-rou-express-chart-times",
+    "canonicalNumber": "18108"
   },
   {
     "trainNumber": "18109",
     "trainName": "TATA  NITR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18109-tata-nitr-exp-chart-times",
+    "canonicalNumber": "18109"
   },
   {
     "trainNumber": "18110",
     "trainName": "NITR TATA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18110-nitr-tata-exp-chart-times",
+    "canonicalNumber": "18110"
   },
   {
     "trainNumber": "18111",
     "trainName": "TATA YPR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18111-tata-ypr-exp-chart-times",
+    "canonicalNumber": "18111"
   },
   {
     "trainNumber": "18112",
     "trainName": "YPR TATA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18112-ypr-tata-exp-chart-times",
+    "canonicalNumber": "18112"
   },
   {
     "trainNumber": "18113",
     "trainName": "TATA RNC EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18113-tata-rnc-express-chart-times",
+    "canonicalNumber": "18113"
   },
   {
     "trainNumber": "18114",
     "trainName": "RNC TATA EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18114-rnc-tata-express-chart-times",
+    "canonicalNumber": "18114"
   },
   {
     "trainNumber": "18117",
     "trainName": "RAJYARANI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18117-rajyarani-exp-chart-times",
+    "canonicalNumber": "18117"
   },
   {
     "trainNumber": "18118",
     "trainName": "RAJYARANI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18118-rajyarani-exp-chart-times",
+    "canonicalNumber": "18118"
   },
   {
     "trainNumber": "18119",
     "trainName": "TATA JYG EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18119-tata-jyg-express-chart-times",
+    "canonicalNumber": "18119"
   },
   {
     "trainNumber": "18120",
     "trainName": "JYG TATA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18120-jyg-tata-exp-chart-times",
+    "canonicalNumber": "18120"
   },
   {
     "trainNumber": "18181",
     "trainName": "TATA THE EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18181-tata-the-exp-chart-times",
+    "canonicalNumber": "18181"
   },
   {
     "trainNumber": "18182",
     "trainName": "THE TATA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18182-the-tata-exp-chart-times",
+    "canonicalNumber": "18182"
   },
   {
     "trainNumber": "18183",
     "trainName": "TATA BXR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18183-tata-bxr-exp-chart-times",
+    "canonicalNumber": "18183"
   },
   {
     "trainNumber": "18184",
     "trainName": "BXR TATA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18184-bxr-tata-exp-chart-times",
+    "canonicalNumber": "18184"
   },
   {
     "trainNumber": "18185",
     "trainName": "TATA GODDA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18185-tata-godda-exp-chart-times",
+    "canonicalNumber": "18185"
   },
   {
     "trainNumber": "18186",
     "trainName": "GODDA TATA  EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18186-godda-tata-exp-chart-times",
+    "canonicalNumber": "18186"
   },
   {
     "trainNumber": "18189",
     "trainName": "TATA ERS EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18189-tata-ers-exp-chart-times",
+    "canonicalNumber": "18189"
   },
   {
     "trainNumber": "18190",
     "trainName": "ERS TATA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18190-ers-tata-exp-chart-times",
+    "canonicalNumber": "18190"
   },
   {
     "trainNumber": "18191",
     "trainName": "UTSARG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18191-utsarg-exp-chart-times",
+    "canonicalNumber": "18191"
   },
   {
     "trainNumber": "18192",
     "trainName": "UTSARG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18192-utsarg-exp-chart-times",
+    "canonicalNumber": "18192"
   },
   {
     "trainNumber": "18201",
     "trainName": "DURG NTV EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18201-durg-ntv-exp-chart-times",
+    "canonicalNumber": "18201"
   },
   {
     "trainNumber": "18202",
     "trainName": "NTV DURG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18202-ntv-durg-exp-chart-times",
+    "canonicalNumber": "18202"
   },
   {
     "trainNumber": "18203",
     "trainName": "BETWA EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18203-betwa-express-chart-times",
+    "canonicalNumber": "18203"
   },
   {
     "trainNumber": "18204",
     "trainName": "BETWA EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18204-betwa-express-chart-times",
+    "canonicalNumber": "18204"
   },
   {
     "trainNumber": "18205",
     "trainName": "DURG NTV EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18205-durg-ntv-exp-chart-times",
+    "canonicalNumber": "18205"
   },
   {
     "trainNumber": "18206",
     "trainName": "NTV DURG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18206-ntv-durg-exp-chart-times",
+    "canonicalNumber": "18206"
   },
   {
     "trainNumber": "18207",
     "trainName": "DURG AII EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18207-durg-aii-express-chart-times",
+    "canonicalNumber": "18207"
   },
   {
     "trainNumber": "18208",
     "trainName": "AII DURG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18208-aii-durg-exp-chart-times",
+    "canonicalNumber": "18208"
   },
   {
     "trainNumber": "18211",
     "trainName": "DURG JDB EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18211-durg-jdb-exp-chart-times",
+    "canonicalNumber": "18211"
   },
   {
     "trainNumber": "18212",
     "trainName": "JDB DURG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18212-jdb-durg-exp-chart-times",
+    "canonicalNumber": "18212"
   },
   {
     "trainNumber": "18213",
     "trainName": "DURG AII EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18213-durg-aii-exp-chart-times",
+    "canonicalNumber": "18213"
   },
   {
     "trainNumber": "18214",
     "trainName": "AII DURG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18214-aii-durg-exp-chart-times",
+    "canonicalNumber": "18214"
   },
   {
     "trainNumber": "18215",
     "trainName": "DURG JAT EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18215-durg-jat-express-chart-times",
+    "canonicalNumber": "18215"
   },
   {
     "trainNumber": "18216",
     "trainName": "UHP DURG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18216-uhp-durg-exp-chart-times",
+    "canonicalNumber": "18216"
   },
   {
     "trainNumber": "18233",
     "trainName": "INDB BSP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18233-indb-bsp-exp-chart-times",
+    "canonicalNumber": "18233"
   },
   {
     "trainNumber": "18234",
     "trainName": "NARMADA EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18234-narmada-express-chart-times",
+    "canonicalNumber": "18234"
   },
   {
     "trainNumber": "18235",
     "trainName": "BPL BSP EXP PAS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18235-bpl-bsp-exp-pas-chart-times",
+    "canonicalNumber": "18235"
   },
   {
     "trainNumber": "18236",
     "trainName": "BSP BPL PAS EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18236-bsp-bpl-pas-exp-chart-times",
+    "canonicalNumber": "18236"
   },
   {
     "trainNumber": "18237",
     "trainName": "CHATTISGARH EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18237-chattisgarh-exp-chart-times",
+    "canonicalNumber": "18237"
   },
   {
     "trainNumber": "18238",
     "trainName": "CHHATISGARH EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18238-chhatisgarh-exp-chart-times",
+    "canonicalNumber": "18238"
   },
   {
     "trainNumber": "18239",
     "trainName": "SHIVNATH EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18239-shivnath-expres-chart-times",
+    "canonicalNumber": "18239"
   },
   {
     "trainNumber": "18240",
     "trainName": "SHIVNATH EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18240-shivnath-expres-chart-times",
+    "canonicalNumber": "18240"
   },
   {
     "trainNumber": "18241",
     "trainName": "DURG ABKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18241-durg-abkp-exp-chart-times",
+    "canonicalNumber": "18241"
   },
   {
     "trainNumber": "18242",
     "trainName": "ABKP DURG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18242-abkp-durg-exp-chart-times",
+    "canonicalNumber": "18242"
   },
   {
     "trainNumber": "18243",
     "trainName": "BSP BGKT EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18243-bsp-bgkt-express-chart-times",
+    "canonicalNumber": "18243"
   },
   {
     "trainNumber": "18244",
     "trainName": "BGKT BSP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18244-bgkt-bsp-exp-chart-times",
+    "canonicalNumber": "18244"
   },
   {
     "trainNumber": "18245",
     "trainName": "BSP BKN EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18245-bsp-bkn-express-chart-times",
+    "canonicalNumber": "18245"
   },
   {
     "trainNumber": "18246",
     "trainName": "BKN BSP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18246-bkn-bsp-exp-chart-times",
+    "canonicalNumber": "18246"
   },
   {
     "trainNumber": "18247",
     "trainName": "BSP REWA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18247-bsp-rewa-express-chart-times",
+    "canonicalNumber": "18247"
   },
   {
     "trainNumber": "18248",
     "trainName": "REWA BSP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18248-rewa-bsp-exp-chart-times",
+    "canonicalNumber": "18248"
   },
   {
     "trainNumber": "18249",
     "trainName": "HASDEO EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18249-hasdeo-express-chart-times",
+    "canonicalNumber": "18249"
   },
   {
     "trainNumber": "18250",
     "trainName": "HASDEO EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18250-hasdeo-express-chart-times",
+    "canonicalNumber": "18250"
   },
   {
     "trainNumber": "18251",
     "trainName": "HASDEO EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18251-hasdeo-express-chart-times",
+    "canonicalNumber": "18251"
   },
   {
     "trainNumber": "18252",
     "trainName": "HASDEO EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18252-hasdeo-express-chart-times",
+    "canonicalNumber": "18252"
   },
   {
     "trainNumber": "18257",
     "trainName": "BSP CHRM EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18257-bsp-chrm-expres-chart-times",
+    "canonicalNumber": "18257"
   },
   {
     "trainNumber": "18258",
     "trainName": "CHRM BSP EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18258-chrm-bsp-expres-chart-times",
+    "canonicalNumber": "18258"
   },
   {
     "trainNumber": "18301",
     "trainName": "SBP RGDA EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18301-sbp-rgda-expres-chart-times",
+    "canonicalNumber": "18301"
   },
   {
     "trainNumber": "18302",
     "trainName": "RGDA SBP EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18302-rgda-sbp-express-chart-times",
+    "canonicalNumber": "18302"
   },
   {
     "trainNumber": "18303",
     "trainName": "SBP PURI INT EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18303-sbp-puri-int-exp-chart-times",
+    "canonicalNumber": "18303"
   },
   {
     "trainNumber": "18304",
     "trainName": "PURI SBP INT EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18304-puri-sbp-int-exp-chart-times",
+    "canonicalNumber": "18304"
   },
   {
     "trainNumber": "18309",
     "trainName": "SBP JAT EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18309-sbp-jat-express-chart-times",
+    "canonicalNumber": "18309"
   },
   {
     "trainNumber": "18310",
     "trainName": "JAT SBP EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18310-jat-sbp-express-chart-times",
+    "canonicalNumber": "18310"
   },
   {
     "trainNumber": "18311",
     "trainName": "SBP BOUDH EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18311-sbp-boudh-exp-chart-times",
+    "canonicalNumber": "18311"
   },
   {
     "trainNumber": "18312",
     "trainName": "BOUDH SBP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18312-boudh-sbp-exp-chart-times",
+    "canonicalNumber": "18312"
   },
   {
     "trainNumber": "18313",
     "trainName": "BOUDH BBSN EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18313-boudh-bbsn-exp-chart-times",
+    "canonicalNumber": "18313"
   },
   {
     "trainNumber": "18314",
     "trainName": "BBSN BOUDH EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18314-bbsn-boudh-exp-chart-times",
+    "canonicalNumber": "18314"
   },
   {
     "trainNumber": "18401",
     "trainName": "BGY PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18401-bgy-puri-exp-chart-times",
+    "canonicalNumber": "18401"
   },
   {
     "trainNumber": "18402",
     "trainName": "PURI BGY EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18402-puri-bgy-express-chart-times",
+    "canonicalNumber": "18402"
   },
   {
     "trainNumber": "18403",
     "trainName": "BGY PURI EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18403-bbs-dhn-express-chart-times",
+    "canonicalNumber": "18403"
   },
   {
     "trainNumber": "18404",
     "trainName": "PURI BGY EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18404-dhn-bbs-express-chart-times",
+    "canonicalNumber": "18404"
   },
   {
     "trainNumber": "18405",
     "trainName": "PURI  ADI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18405-puri-pnbe-exp-chart-times",
+    "canonicalNumber": "18405"
   },
   {
     "trainNumber": "18406",
     "trainName": "PNBE PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18406-pnbe-puri-exp-chart-times",
+    "canonicalNumber": "18406"
   },
   {
     "trainNumber": "18407",
     "trainName": "PURI SNSI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18407-puri-koraput-exp-chart-times",
+    "canonicalNumber": "18407"
   },
   {
     "trainNumber": "18409",
     "trainName": "JAGANNATH EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18409-jagannath-exp-chart-times",
+    "canonicalNumber": "18409"
   },
   {
     "trainNumber": "18410",
     "trainName": "SRI JAGANNATH EX",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18410-sri-jagannath-ex-chart-times",
+    "canonicalNumber": "18410"
   },
   {
     "trainNumber": "18415",
     "trainName": "BARBIL PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18415-barbil-puri-exp-chart-times",
+    "canonicalNumber": "18415"
   },
   {
     "trainNumber": "18416",
     "trainName": "PURI BBN EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18416-puri-bbn-exp-chart-times",
+    "canonicalNumber": "18416"
   },
   {
     "trainNumber": "18417",
     "trainName": "PURI GNPR EXPRE",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18417-puri-gnpr-expre-chart-times",
+    "canonicalNumber": "18417"
   },
   {
     "trainNumber": "18418",
     "trainName": "GNPR PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18418-gnpr-puri-exp-chart-times",
+    "canonicalNumber": "18418"
   },
   {
     "trainNumber": "18419",
     "trainName": "PURI JYG EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18419-puri-jyg-expres-chart-times",
+    "canonicalNumber": "18419"
   },
   {
     "trainNumber": "18420",
     "trainName": "JYG PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18420-jyg-puri-exp-chart-times",
+    "canonicalNumber": "18420"
   },
   {
     "trainNumber": "18421",
     "trainName": "PURI SONEPUR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18421-puri-sonepur-exp-chart-times",
+    "canonicalNumber": "18421"
   },
   {
     "trainNumber": "18422",
     "trainName": "SONEPUR PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18422-sonepur-puri-exp-chart-times",
+    "canonicalNumber": "18422"
   },
   {
     "trainNumber": "18425",
     "trainName": "PURI DURG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18425-puri-durg-exp-chart-times",
+    "canonicalNumber": "18425"
   },
   {
     "trainNumber": "18426",
     "trainName": "DURG PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18426-durg-puri-exp-chart-times",
+    "canonicalNumber": "18426"
   },
   {
     "trainNumber": "18427",
     "trainName": "PURI ANVT EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18427-puri-anvt-exp-chart-times",
+    "canonicalNumber": "18427"
   },
   {
     "trainNumber": "18428",
     "trainName": "ANVT PURI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18428-anvt-puri-exp-chart-times",
+    "canonicalNumber": "18428"
   },
   {
     "trainNumber": "18437",
     "trainName": "JUNAGARHROAD EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18437-junagarhroad-exp-chart-times",
+    "canonicalNumber": "18437"
   },
   {
     "trainNumber": "18438",
     "trainName": "JNRD BBS EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18438-jnrd-bbs-exp-chart-times",
+    "canonicalNumber": "18438"
   },
   {
     "trainNumber": "18447",
     "trainName": "HIRAKHAND EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18447-hirakhand-exp-chart-times",
+    "canonicalNumber": "18447"
   },
   {
     "trainNumber": "18448",
     "trainName": "HIRAKHAND EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18448-hirakhand-exp-chart-times",
+    "canonicalNumber": "18448"
   },
   {
     "trainNumber": "18449",
     "trainName": "BAIDYANATH DHAM",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18449-baidyanath-dham-chart-times",
+    "canonicalNumber": "18449"
   },
   {
     "trainNumber": "18450",
     "trainName": "B NATH DHAM EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18450-b-nath-dham-exp-chart-times",
+    "canonicalNumber": "18450"
   },
   {
     "trainNumber": "18451",
     "trainName": "TAPASWINI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18451-tapaswini-exp-chart-times",
+    "canonicalNumber": "18451"
   },
   {
     "trainNumber": "18452",
     "trainName": "TAPASWINI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18452-tapaswini-exp-chart-times",
+    "canonicalNumber": "18452"
   },
   {
     "trainNumber": "18463",
     "trainName": "PRASHANTHI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18463-prashanthi-exp-chart-times",
+    "canonicalNumber": "18463"
   },
   {
     "trainNumber": "18464",
     "trainName": "PRASHANTHI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18464-prashanthi-exp-chart-times",
+    "canonicalNumber": "18464"
   },
   {
     "trainNumber": "18477",
     "trainName": "UTKAL EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18477-utkal-express-chart-times",
+    "canonicalNumber": "18477"
   },
   {
     "trainNumber": "18478",
     "trainName": "KALINGAUTKAL EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18478-kalingautkal-exp-chart-times",
+    "canonicalNumber": "18478"
   },
   {
     "trainNumber": "18495",
     "trainName": "BHUBANESWAR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18495-bhubaneswar-exp-chart-times",
+    "canonicalNumber": "18495"
   },
   {
     "trainNumber": "18496",
     "trainName": "BBS RMM EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18496-bbs-rmm-express-chart-times",
+    "canonicalNumber": "18496"
   },
   {
     "trainNumber": "18501",
     "trainName": "VSKP GIMB EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18501-vskp-qln-exp-chart-times",
+    "canonicalNumber": "18501"
   },
   {
     "trainNumber": "18502",
     "trainName": "QLN VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18502-qln-vskp-exp-chart-times",
+    "canonicalNumber": "18502"
   },
   {
     "trainNumber": "18503",
     "trainName": "VSKP SNSI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18503-vskp-snsi-exp-chart-times",
+    "canonicalNumber": "18503"
   },
   {
     "trainNumber": "18504",
     "trainName": "SNSI VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18504-snsi-vskp-exp-chart-times",
+    "canonicalNumber": "18504"
   },
   {
     "trainNumber": "18505",
     "trainName": "VSKP TPTY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18505-vskp-tpty-exp-chart-times",
+    "canonicalNumber": "18505"
   },
   {
     "trainNumber": "18506",
     "trainName": "TPTY VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18506-tpty-vskp-exp-chart-times",
+    "canonicalNumber": "18506"
   },
   {
     "trainNumber": "18507",
     "trainName": "VSKP ASR HKG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18507-vskp-tpty-exp-chart-times",
+    "canonicalNumber": "18507"
   },
   {
     "trainNumber": "18508",
     "trainName": "TPTY VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18508-tpty-vskp-exp-chart-times",
+    "canonicalNumber": "18508"
   },
   {
     "trainNumber": "18509",
     "trainName": "VSKP SMVB EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18509-vskp-smvb-exp-chart-times",
+    "canonicalNumber": "18509"
   },
   {
     "trainNumber": "18510",
     "trainName": "SMVB VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18510-smvb-vskp-exp-chart-times",
+    "canonicalNumber": "18510"
   },
   {
     "trainNumber": "18511",
     "trainName": "INTERCITY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18511-intercity-exp-chart-times",
+    "canonicalNumber": "18511"
   },
   {
     "trainNumber": "18512",
     "trainName": "INTERCITY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18512-intercity-exp-chart-times",
+    "canonicalNumber": "18512"
   },
   {
     "trainNumber": "18515",
     "trainName": "VSKP KRDL EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18515-vskp-krdl-exp-chart-times",
+    "canonicalNumber": "18515"
   },
   {
     "trainNumber": "18516",
     "trainName": "KRDL VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18516-krdl-vskp-exp-chart-times",
+    "canonicalNumber": "18516"
   },
   {
     "trainNumber": "18517",
     "trainName": "KRBA VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18517-krba-vskp-exp-chart-times",
+    "canonicalNumber": "18517"
   },
   {
     "trainNumber": "18518",
     "trainName": "VSKP KRBA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18518-vskp-krba-exp-chart-times",
+    "canonicalNumber": "18518"
   },
   {
     "trainNumber": "18519",
     "trainName": "VSKP LTT EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18519-vskp-ltt-expres-chart-times",
+    "canonicalNumber": "18519"
   },
   {
     "trainNumber": "18520",
     "trainName": "LTT VSKP EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18520-ltt-vskp-express-chart-times",
+    "canonicalNumber": "18520"
   },
   {
     "trainNumber": "18521",
     "trainName": "TIRUMALA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18521-tirumala-exp-chart-times",
+    "canonicalNumber": "18521"
   },
   {
     "trainNumber": "18522",
     "trainName": "TIRUMALA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18522-tirumala-exp-chart-times",
+    "canonicalNumber": "18522"
   },
   {
     "trainNumber": "18523",
     "trainName": "VSKP BNRS EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18523-vskp-bnrs-exp-chart-times",
+    "canonicalNumber": "18523"
   },
   {
     "trainNumber": "18524",
     "trainName": "BNRS VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18524-bnrs-vskp-exp-chart-times",
+    "canonicalNumber": "18524"
   },
   {
     "trainNumber": "18525",
     "trainName": "BAM VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18525-bam-vskp-exp-chart-times",
+    "canonicalNumber": "18525"
   },
   {
     "trainNumber": "18526",
     "trainName": "VSKP BAM EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18526-vskp-bam-exp-chart-times",
+    "canonicalNumber": "18526"
   },
   {
     "trainNumber": "18527",
     "trainName": "VSKP CHZ EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18527-vskp-chz-express-chart-times",
+    "canonicalNumber": "18527"
   },
   {
     "trainNumber": "18528",
     "trainName": "CHZ VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18528-chz-vskp-exp-chart-times",
+    "canonicalNumber": "18528"
   },
   {
     "trainNumber": "18529",
     "trainName": "DURG VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18529-durg-vskp-exp-chart-times",
+    "canonicalNumber": "18529"
   },
   {
     "trainNumber": "18530",
     "trainName": "VSKP DURG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18530-vskp-durg-exp-chart-times",
+    "canonicalNumber": "18530"
   },
   {
     "trainNumber": "18561",
     "trainName": "VSKP KCG EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18561-vskp-kcg-exp-chart-times",
+    "canonicalNumber": "18561"
   },
   {
     "trainNumber": "18562",
     "trainName": "KCG VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18562-kcg-vskp-exp-chart-times",
+    "canonicalNumber": "18562"
   },
   {
     "trainNumber": "18567",
     "trainName": "VSKP QLN EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18567-vskp-qln-exp-chart-times",
+    "canonicalNumber": "18567"
   },
   {
     "trainNumber": "18568",
     "trainName": "QLN VSKP EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18568-qln-vskp-expres-chart-times",
+    "canonicalNumber": "18568"
   },
   {
     "trainNumber": "18573",
     "trainName": "VSKP BGKT EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18573-vskp-bgkt-exp-chart-times",
+    "canonicalNumber": "18573"
   },
   {
     "trainNumber": "18574",
     "trainName": "BGKT VSKP EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18574-bgkt-vskp-exp-chart-times",
+    "canonicalNumber": "18574"
   },
   {
     "trainNumber": "18603",
     "trainName": "RNC GODA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18603-rnc-goda-exp-chart-times",
+    "canonicalNumber": "18603"
   },
   {
     "trainNumber": "18604",
     "trainName": "GODA RNC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18604-goda-rnc-exp-chart-times",
+    "canonicalNumber": "18604"
   },
   {
     "trainNumber": "18609",
     "trainName": "RNC LTT EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18609-rnc-ltt-exp-chart-times",
+    "canonicalNumber": "18609"
   },
   {
     "trainNumber": "18610",
     "trainName": "LTT RANCHI EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18610-ltt-ranchi-exp-chart-times",
+    "canonicalNumber": "18610"
   },
   {
     "trainNumber": "18611",
     "trainName": "RNC BSBS EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18611-rnc-bsbs-exp-chart-times",
+    "canonicalNumber": "18611"
   },
   {
     "trainNumber": "18612",
     "trainName": "BNRS RNC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18612-bnrs-rnc-exp-chart-times",
+    "canonicalNumber": "18612"
   },
   {
     "trainNumber": "18615",
     "trainName": "KRIYA YOGA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18615-kriya-yoga-exp-chart-times",
+    "canonicalNumber": "18615"
   },
   {
     "trainNumber": "18616",
     "trainName": "KRIYA YOGA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18616-kriya-yoga-exp-chart-times",
+    "canonicalNumber": "18616"
   },
   {
     "trainNumber": "18619",
     "trainName": "INTERCITY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18619-intercity-exp-chart-times",
+    "canonicalNumber": "18619"
   },
   {
     "trainNumber": "18620",
     "trainName": "INTERCITY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18620-intercity-exp-chart-times",
+    "canonicalNumber": "18620"
   },
   {
     "trainNumber": "18621",
     "trainName": "PATLIPUTRA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18621-patliputra-exp-chart-times",
+    "canonicalNumber": "18621"
   },
   {
     "trainNumber": "18622",
     "trainName": "PATALIPUTRA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18622-pataliputra-exp-chart-times",
+    "canonicalNumber": "18622"
   },
   {
     "trainNumber": "18623",
     "trainName": "IPR HATIA EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18623-ipr-hatia-exp-chart-times",
+    "canonicalNumber": "18623"
   },
   {
     "trainNumber": "18624",
     "trainName": "HTE IPR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18624-hte-ipr-exp-chart-times",
+    "canonicalNumber": "18624"
   },
   {
     "trainNumber": "18625",
     "trainName": "PRNC HTE EXPRES",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18625-prnc-hte-expres-chart-times",
+    "canonicalNumber": "18625"
   },
   {
     "trainNumber": "18626",
     "trainName": "HTE PRNC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18626-hte-prnc-exp-chart-times",
+    "canonicalNumber": "18626"
   },
   {
     "trainNumber": "18627",
     "trainName": "INTERCITY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18627-intercity-exp-chart-times",
+    "canonicalNumber": "18627"
   },
   {
     "trainNumber": "18628",
     "trainName": "INTERCITY EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18628-intercity-exp-chart-times",
+    "canonicalNumber": "18628"
   },
   {
     "trainNumber": "18629",
     "trainName": "RNC GKP EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18629-rnc-gkp-express-chart-times",
+    "canonicalNumber": "18629"
   },
   {
     "trainNumber": "18630",
     "trainName": "GKP RNC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18630-gkp-rnc-exp-chart-times",
+    "canonicalNumber": "18630"
   },
   {
     "trainNumber": "18631",
     "trainName": "RNC CPU EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18631-rnc-cpu-exp-chart-times",
+    "canonicalNumber": "18631"
   },
   {
     "trainNumber": "18632",
     "trainName": "CPU RNC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18632-cpu-rnc-exp-chart-times",
+    "canonicalNumber": "18632"
   },
   {
     "trainNumber": "18633",
     "trainName": "PNBE RNC EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18633-pnbe-rnc-exp-chart-times",
+    "canonicalNumber": "18633"
   },
   {
     "trainNumber": "18634",
     "trainName": "RNC PNBE EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18634-rnc-pnbe-exp-chart-times",
+    "canonicalNumber": "18634"
   },
   {
     "trainNumber": "18635",
     "trainName": "RNC SSM EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18635-rnc-ssm-express-chart-times",
+    "canonicalNumber": "18635"
   },
   {
     "trainNumber": "18636",
     "trainName": "RANCHI EXPRESS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18636-ranchi-express-chart-times",
+    "canonicalNumber": "18636"
   },
   {
     "trainNumber": "18637",
     "trainName": "HTE SMVB EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18637-hte-smvb-exp-chart-times",
+    "canonicalNumber": "18637"
   },
   {
     "trainNumber": "18638",
     "trainName": "SMVB HTE EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18638-smvb-hte-exp-chart-times",
+    "canonicalNumber": "18638"
   },
   {
     "trainNumber": "18639",
