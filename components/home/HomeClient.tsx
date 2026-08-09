@@ -15,13 +15,40 @@ import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { isIrctcDirectBookable } from "@/lib/bookingV2Availability";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
+import dynamic from "next/dynamic";
 import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
 import { cn } from "@/lib/utils";
-import { SeatStatus } from "@/components/booking-v2/SeatStatus";
-import { AlternatePathContent } from "@/components/booking-v2/AlternatePathContent";
-import { SearchPnrPanel } from "@/components/booking-v2/SearchPnrPanel";
-import { TrainScheduleBottomSheet } from "@/components/booking-v2/TrainScheduleBottomSheet";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
+
+const SeatStatus = dynamic(
+  () => import("@/components/booking-v2/SeatStatus").then((m) => m.SeatStatus),
+  {
+    loading: () => (
+      <div className="flex h-36 items-center justify-center rounded-xl bg-white p-6 shadow-xs border border-gray-200">
+        <span className="h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600" />
+      </div>
+    ),
+  }
+);
+
+const SearchPnrPanel = dynamic(
+  () => import("@/components/booking-v2/SearchPnrPanel").then((m) => m.SearchPnrPanel),
+  {
+    loading: () => (
+      <div className="flex h-36 items-center justify-center rounded-xl bg-white p-6 shadow-xs border border-gray-200">
+        <span className="h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600" />
+      </div>
+    ),
+  }
+);
+
+const AlternatePathContent = dynamic(
+  () => import("@/components/booking-v2/AlternatePathContent").then((m) => m.AlternatePathContent)
+);
+
+const TrainScheduleBottomSheet = dynamic(
+  () => import("@/components/booking-v2/TrainScheduleBottomSheet").then((m) => m.TrainScheduleBottomSheet)
+);
 import type {
   AlternatePathsResponse,
   TrainListItem,
@@ -919,7 +946,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
           </p>
         </header>
 
-        <div className="mb-8">
+        <div className="mb-8 min-h-[148px]">
           {/* Tab Switcher */}
           <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[360px] sm:max-w-[440px] backdrop-blur-md border border-white/40 shadow-xs">
             <button

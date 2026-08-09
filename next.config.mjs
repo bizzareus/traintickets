@@ -6,6 +6,10 @@ export default function configFactory(phase) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react", "flowbite", "clsx", "tailwind-merge"],
+  },
   env: {
     IS_BUILD_PHASE: phase === PHASE_PRODUCTION_BUILD ? "1" : "",
   },
