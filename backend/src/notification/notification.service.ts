@@ -1,7 +1,6 @@
 import { Injectable, Optional } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Resend } from 'resend';
-import axios from 'axios';
 import {
   isFilledOpenAiPlanItem,
   routeConsecutiveLegsForJourney,
@@ -14,6 +13,10 @@ import type { ScheduleStation } from '../irctc/irctc.service';
 import { StationCacheService } from '../cache/station-cache.service';
 import { ShortLinkService } from '../short-link/short-link.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
+import { WasenderProvider } from './whatsapp-providers/wasender.provider';
+import { WatiProvider } from './whatsapp-providers/wati.provider';
+import { WhatsAppProviderFactory } from './whatsapp-providers/whatsapp.provider-factory';
+import type { SendWhatsAppPayload } from './whatsapp-providers/whatsapp-provider.interface';
 import {
   formatJourneyDateReadable,
   formatSegmentScheduleTimes,
@@ -21,7 +24,6 @@ import {
 } from './notification.helpers';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
-const WASENDER_BASE = 'https://www.wasenderapi.com';
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
 const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
 
@@ -121,6 +123,8 @@ export class NotificationService {
     private readonly stationCache: StationCacheService,
     @Optional() private readonly chartTimeService?: ChartTimeService,
     @Optional() private readonly shortLinkService?: ShortLinkService,
+    @Optional()
+    private readonly whatsAppProviderFactory?: WhatsAppProviderFactory,
   ) {
     this.wasenderKey = this.config.get<string>('WASENDER_API_KEY');
     this.resendKey = this.config.get<string>('RESEND_API_KEY');
@@ -130,30 +134,33 @@ export class NotificationService {
       DEFAULT_MONITORING_ADMIN_EMAIL;
   }
 
-  async sendWhatsApp(mobile: string, message: string): Promise<boolean> {
+  async sendWhatsApp(
+    mobile: string,
+    message: string,
+    options?: {
+      templateName?: string;
+      broadcastName?: string;
+      parameters?: Array<{ name: string; value: string }>;
+    },
+  ): Promise<boolean> {
     console.info('whatsapp service was called');
-    if (!this.wasenderKey?.trim()) {
-      return false;
-    }
-    const to = toE164(mobile);
-    try {
-      console.info('sending whatsapp message', { message, to });
-      await axios.post(
-        `${WASENDER_BASE}/api/send-message`,
-        { to: to.startsWith('+') ? to : `+${to}`, text: message },
-        {
-          headers: {
-            Authorization: `Bearer ${this.wasenderKey}`,
-            'Content-Type': 'application/json',
-          },
-          timeout: 15_000,
-        },
+    const provider =
+      this.whatsAppProviderFactory ??
+      new WhatsAppProviderFactory(
+        this.config,
+        new WasenderProvider(this.config),
+        new WatiProvider(this.config),
       );
-      return true;
-    } catch (err) {
-      console.error('WaSender WhatsApp send failed', err);
-      return false;
-    }
+
+    const payload: SendWhatsAppPayload = {
+      mobile,
+      text: message,
+      templateName: options?.templateName,
+      broadcastName: options?.broadcastName,
+      parameters: options?.parameters,
+    };
+
+    return provider.sendWhatsApp(payload);
   }
 
   async sendEmail(to: string, subject: string, html: string): Promise<boolean> {
@@ -1200,7 +1207,27 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
             date: journeyDateStr,
           });
 
-      out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText);
+      const templateName = hasTickets
+        ? this.config.get<string>('WATI_TEMPLATE_CHART_ALERT') ||
+          'chart_preparation_alert'
+        : this.config.get<string>('WATI_TEMPLATE_UNCOVERED_LEG') ||
+          'uncovered_leg_alert';
+
+      const parameters = [
+        { name: 'name', value: 'Passenger' },
+        { name: 'train_number', value: task.trainNumber },
+        { name: 'train_name', value: task.trainName || '' },
+        { name: 'from_code', value: task.fromStationCode },
+        { name: 'to_code', value: task.toStationCode },
+        { name: 'journey_date', value: journeyDateReadable },
+        { name: 'journey_times', value: journeyTimesLine || '' },
+      ];
+
+      out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText, {
+        templateName,
+        broadcastName: 'lastberth_alert',
+        parameters,
+      });
     }
 
     if (email?.trim()) {
@@ -1299,7 +1326,23 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
         alternativeTrains,
         stationNameMap,
       });
-      out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText);
+      const altTemplateName =
+        this.config.get<string>('WATI_TEMPLATE_ALT_TRAIN') ||
+        'alternative_train_alert';
+      const altParameters = [
+        { name: 'name', value: 'Passenger' },
+        { name: 'original_train_number', value: originalTrainNumber },
+        { name: 'original_train_name', value: originalTrainName },
+        { name: 'from_code', value: fromStationCode },
+        { name: 'to_code', value: toStationCode },
+        { name: 'journey_date', value: journeyDateReadable },
+      ];
+
+      out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText, {
+        templateName: altTemplateName,
+        broadcastName: 'lastberth_alt_alert',
+        parameters: altParameters,
+      });
     }
 
     if (email?.trim()) {
