@@ -418,3 +418,27 @@ model ShortLink {
 
   @@map("short_link")
 }
+
+/// Stores background alternative train search jobs triggered when a chart task notification finds no full-journey ticket.
+model AlternativeSearchTask {
+  id                  String    @id @default(cuid())
+  journeyTaskId       String?   @map("journey_task_id")
+  trainNumber         String    @map("train_number")
+  trainName           String?   @map("train_name")
+  fromStationCode     String    @map("from_station_code")
+  toStationCode       String    @map("to_station_code")
+  journeyDate         DateTime  @map("journey_date") @db.Date
+  classCode           String    @default("3A") @map("class_code")
+  monitoringContactId String?   @map("monitoring_contact_id")
+  email               String?
+  mobile              String?
+  status              String    @default("pending") // pending | processing | completed | no_alternatives_found | failed
+  resultPayload       Json?     @map("result_payload")
+  notificationSent    Boolean   @default(false) @map("notification_sent")
+  createdAt           DateTime  @default(now()) @map("created_at")
+  processedAt         DateTime? @map("processed_at")
+  lastError           String?   @map("last_error")
+
+  @@index([status, createdAt])
+  @@map("alternative_search_task")
+}

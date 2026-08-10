@@ -1231,4 +1231,232 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
     }
     return out;
   }
+
+  async notifyUserAlternativeTrains(params: {
+    email?: string | null;
+    mobile?: string | null;
+    originalTrainNumber: string;
+    originalTrainName?: string | null;
+    fromStationCode: string;
+    toStationCode: string;
+    journeyDate: Date | string;
+    alternativeTrains: BestTrainCandidateResult[];
+  }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
+    const {
+      email,
+      mobile,
+      originalTrainNumber,
+      originalTrainName,
+      fromStationCode,
+      toStationCode,
+      journeyDate,
+      alternativeTrains,
+    } = params;
+    const out = { emailSent: false, whatsappSent: false };
+
+    if (!email?.trim() && !mobile?.trim()) return out;
+    if (!alternativeTrains || alternativeTrains.length === 0) return out;
+
+    const journeyDateStr =
+      journeyDate instanceof Date
+        ? journeyDate.toISOString().slice(0, 10)
+        : String(journeyDate).slice(0, 10);
+    const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
+
+    const stationNameMap = new Map<string, string>();
+    await this.enrichStationNames(stationNameMap, [
+      fromStationCode,
+      toStationCode,
+      ...alternativeTrains.flatMap((a) =>
+        a.alternatePath.legs.flatMap((l) => [l.from, l.to]),
+      ),
+    ]);
+
+    const fromName =
+      stationNameMap.get(fromStationCode.toUpperCase()) ?? fromStationCode;
+    const toName =
+      stationNameMap.get(toStationCode.toUpperCase()) ?? toStationCode;
+    const routeDisplay = `${fromStationCode} - ${fromName} → ${toStationCode} - ${toName}`;
+    const originalTrainLabel = [originalTrainNumber, originalTrainName]
+      .filter(Boolean)
+      .join(' ');
+
+    if (mobile?.trim()) {
+      const whatsAppText = this.buildAlternativeTrainsWhatsAppText({
+        originalTrainLabel,
+        routeDisplay,
+        journeyDateReadable,
+        journeyDateStr,
+        fromStationCode,
+        toStationCode,
+        alternativeTrains,
+        stationNameMap,
+      });
+      out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText);
+    }
+
+    if (email?.trim()) {
+      const subject = `Alternative Trains Available - ${fromStationCode} to ${toStationCode} on ${journeyDateReadable}`;
+      const html = this.buildAlternativeTrainsEmailHtml({
+        originalTrainLabel,
+        routeDisplay,
+        journeyDateReadable,
+        journeyDateStr,
+        fromStationCode,
+        toStationCode,
+        alternativeTrains,
+        stationNameMap,
+      });
+      out.emailSent = await this.sendEmail(email.trim(), subject, html);
+    }
+
+    return out;
+  }
+
+  private buildAlternativeTrainsWhatsAppText(params: {
+    originalTrainLabel: string;
+    routeDisplay: string;
+    journeyDateReadable: string;
+    journeyDateStr: string;
+    fromStationCode: string;
+    toStationCode: string;
+    alternativeTrains: BestTrainCandidateResult[];
+    stationNameMap: Map<string, string>;
+  }): string {
+    const {
+      originalTrainLabel,
+      routeDisplay,
+      journeyDateReadable,
+      alternativeTrains,
+      stationNameMap,
+    } = params;
+
+    const lines: string[] = [
+      '*LastBerth Alternative Train Alert* 🔔',
+      `Full-journey confirmed tickets are available on another train for your route:`,
+      '',
+      `Requested Train: ${originalTrainLabel}`,
+      `Route: ${routeDisplay}`,
+      `Date: ${journeyDateReadable}`,
+      '',
+    ];
+
+    alternativeTrains.slice(0, 3).forEach((alt, idx) => {
+      const train = alt.train;
+      const trainLabel = [train.trainNumber, train.trainName]
+        .filter(Boolean)
+        .join(' ');
+      lines.push(`Option ${idx + 1}: ${trainLabel}`);
+
+      const confirmedLegs = alt.alternatePath.legs.filter(
+        (l) => l.segmentKind === 'confirmed',
+      );
+      for (const leg of confirmedLegs) {
+        const segFrom = leg.from;
+        const segTo = leg.to;
+        const fromName = stationNameMap.get(segFrom.toUpperCase()) ?? segFrom;
+        const toName = stationNameMap.get(segTo.toUpperCase()) ?? segTo;
+        const legRoute = `${segFrom} - ${fromName} → ${leg.to} - ${toName}`;
+        const classTag = leg.travelClass ?? '3A';
+        const availTag =
+          leg.availabilityDisplayName || leg.railDataStatus || 'Available';
+        const priceStr = leg.fare != null ? `approx ₹${leg.fare}` : '';
+        const segBookUrl = this.buildIrctcUrl({
+          fromStationCode: segFrom,
+          toStationCode: segTo,
+          trainNumber: train.trainNumber,
+          classCode: classTag,
+        });
+
+        lines.push(`Ticket [${classTag}] | ${availTag}`);
+        lines.push(legRoute);
+        if (priceStr) lines.push(priceStr);
+        lines.push(`Book on IRCTC: ${segBookUrl}`);
+      }
+      lines.push('');
+    });
+
+    return lines.join('\n').trim();
+  }
+
+  private buildAlternativeTrainsEmailHtml(params: {
+    originalTrainLabel: string;
+    routeDisplay: string;
+    journeyDateReadable: string;
+    journeyDateStr: string;
+    fromStationCode: string;
+    toStationCode: string;
+    alternativeTrains: BestTrainCandidateResult[];
+    stationNameMap: Map<string, string>;
+  }): string {
+    const {
+      originalTrainLabel,
+      routeDisplay,
+      journeyDateReadable,
+      alternativeTrains,
+      stationNameMap,
+    } = params;
+
+    const cardsHtml = alternativeTrains
+      .slice(0, 3)
+      .map((alt, idx) => {
+        const train = alt.train;
+        const trainLabel = [train.trainNumber, train.trainName]
+          .filter(Boolean)
+          .join(' ');
+        const confirmedLegs = alt.alternatePath.legs.filter(
+          (l) => l.segmentKind === 'confirmed',
+        );
+
+        const legsHtml = confirmedLegs
+          .map((leg) => {
+            const segFrom = leg.from;
+            const segTo = leg.to;
+            const fromName =
+              stationNameMap.get(segFrom.toUpperCase()) ?? segFrom;
+            const toName = stationNameMap.get(segTo.toUpperCase()) ?? segTo;
+            const legRoute = `${segFrom} - ${fromName} → ${leg.to} - ${toName}`;
+            const classTag = leg.travelClass ?? '3A';
+            const availTag =
+              leg.availabilityDisplayName || leg.railDataStatus || 'Available';
+            const priceStr = leg.fare != null ? `₹${leg.fare}` : '';
+            const segBookUrl = this.buildIrctcUrl({
+              fromStationCode: segFrom,
+              toStationCode: segTo,
+              trainNumber: train.trainNumber,
+              classCode: classTag,
+            });
+
+            return `
+        <div style="margin-top:8px; padding:12px; border-radius:8px; border:1px solid #86efac; background:#e6ffe6;">
+          <p style="margin:0; font-size:14px; font-weight:600; color:#166534;">Option ${idx + 1}: ${escapeHtml(trainLabel)}</p>
+          <p style="margin:4px 0 0 0; font-size:13px; color:#1e293b;">${escapeHtml(legRoute)}</p>
+          <p style="margin:4px 0 0 0; font-size:13px; font-weight:600; color:#059669;">Class ${classTag} | ${escapeHtml(availTag)} ${priceStr ? `(${priceStr})` : ''}</p>
+          <a href="${segBookUrl}" style="display:inline-block; margin-top:8px; padding:6px 14px; border-radius:6px; background:#16a34a; color:#fff; font-size:12px; font-weight:600; text-decoration:none;">Book on IRCTC</a>
+        </div>`;
+          })
+          .join('');
+
+        return legsHtml;
+      })
+      .join('');
+
+    return `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body style="font-family:system-ui,sans-serif;line-height:1.5;color:#0f172a;background:#f1f5f9;margin:0;padding:32px 16px;">
+  <div style="max-width:560px;margin:0 auto;background:#fff;border-radius:16px;padding:24px;border:1px solid #e2e8f0;box-shadow:0 4px 6px -1px rgba(0,0,0,0.08);">
+    <h2 style="margin:0 0 16px 0;font-size:20px;color:#0f172a;">Alternative Trains Available 🔔</h2>
+    <p style="margin:0 0 12px 0;">We found full-journey confirmed seats on another train for your route:</p>
+    <div style="background:#f8fafc;padding:12px;border-radius:8px;margin-bottom:16px;">
+      <p style="margin:0;font-weight:600;">Requested: ${escapeHtml(originalTrainLabel)}</p>
+      <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(routeDisplay)}</p>
+      <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(journeyDateReadable)}</p>
+    </div>
+    ${cardsHtml}
+  </div>
+</body>
+</html>`;
+  }
 }

@@ -1,4 +1,9 @@
-import { BadRequestException, HttpStatus, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpStatus,
+  Injectable,
+  Optional,
+} from '@nestjs/common';
 import type { Prisma, ChartTimeAvailabilityTask } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
@@ -18,6 +23,7 @@ import {
   toE164,
   type JourneyLegCoverage,
 } from '../notification/notification.service';
+import { AlternativeSearchTaskService } from './alternative-search-task.service';
 import {
   BookingV2Service,
   type FindAlternatePathsResult,
@@ -129,11 +135,12 @@ function alternatePathsToCheckResult(
     return {
       status: 'failed',
       vacantBerth: { vbd: [], error: null },
-      chartStatus:
-        ((alt as Record<string, unknown>).chartStatus as Service2CheckResult['chartStatus']) ?? {
-          kind: 'not_prepared_yet' as const,
-          message: 'Confirmed seats not available yet',
-        },
+      chartStatus: ((alt as Record<string, unknown>).chartStatus as
+        | Service2CheckResult['chartStatus']
+        | undefined) ?? {
+        kind: 'not_prepared_yet' as const,
+        message: 'Confirmed seats not available yet',
+      },
       debugLog: alt.debugLog,
     };
   }
@@ -207,6 +214,8 @@ export class JourneyTaskService {
     private service2: Service2Service,
     private notificationService: NotificationService,
     private bookingV2Service: BookingV2Service,
+    @Optional()
+    private alternativeSearchTaskService?: AlternativeSearchTaskService,
   ) {}
 
   /**
@@ -739,8 +748,9 @@ export class JourneyTaskService {
         // Find it from the origin and remove the fare option temporarily per requirements
         result.openAiStructuredSeats = result.openAiStructuredSeats.map(
           (seat) => {
-            const { fare: _fare, ...rest } = seat as Record<string, unknown>;
-            return rest as OpenAIStructuredSeat;
+            const copy = { ...seat } as Record<string, unknown>;
+            delete copy.fare;
+            return copy as OpenAIStructuredSeat;
           },
         );
       }
@@ -785,6 +795,26 @@ export class JourneyTaskService {
           const hasTickets = hasBookablePlanForNotification(result);
 
           if (!hasTickets) {
+            if (this.alternativeSearchTaskService) {
+              try {
+                await this.alternativeSearchTaskService.enqueueTask({
+                  journeyTaskId: task.id,
+                  trainNumber: task.trainNumber,
+                  trainName: task.trainName,
+                  fromStationCode: task.fromStationCode,
+                  toStationCode: task.toStationCode,
+                  journeyDate: task.journeyDate,
+                  email: contact.email || undefined,
+                  mobile: contact.mobile || undefined,
+                });
+              } catch (altErr) {
+                console.error(
+                  'Failed to enqueue alternative search task',
+                  altErr,
+                );
+              }
+            }
+
             try {
               const req = await this.prisma.journeyMonitoringRequest.findUnique(
                 {

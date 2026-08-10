@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Optional } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { JourneyTaskService } from '../availability/journey-task.service';
+import { AlternativeSearchTaskService } from '../availability/alternative-search-task.service';
 import { ChartCronLeaderService } from './chart-cron-leader.service';
 
 /** Identifies this cron in the cron_run_log table. */
@@ -13,6 +14,7 @@ export class ChartCronService {
   constructor(
     private journeyTask: JourneyTaskService,
     private leader: ChartCronLeaderService,
+    @Optional() private alternativeSearchTask?: AlternativeSearchTaskService,
   ) {}
 
   @Cron(CronExpression.EVERY_MINUTE) // every minute
@@ -42,6 +44,17 @@ export class ChartCronService {
       const run = await this.journeyTask.runDueTasks();
       if (run.tasksRun > 0) {
         console.log('chart_time_tasks_run=' + run.tasksRun);
+      }
+
+      if (this.alternativeSearchTask) {
+        try {
+          await this.alternativeSearchTask.processDueTasks();
+        } catch (altCronErr) {
+          console.error(
+            'Alternative search cron processing failed:',
+            altCronErr,
+          );
+        }
       }
       const completedCount = run.results.filter(
         (r) => r.status === 'completed',

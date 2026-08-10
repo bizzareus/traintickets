@@ -9,6 +9,7 @@ import { Service2Module } from '../service2/service2.module';
 import { TrainCompositionModule } from '../train-composition/train-composition.module';
 import { NotificationModule } from '../notification/notification.module';
 import { BookingV2Module } from '../booking-v2/booking-v2.module';
+import { AlternativeSearchTaskModule } from './alternative-search-task.module';
 
 @Module({
   imports: [
@@ -19,9 +20,14 @@ import { BookingV2Module } from '../booking-v2/booking-v2.module';
     Service2Module,
     NotificationModule,
     BookingV2Module,
+    AlternativeSearchTaskModule,
   ],
   controllers: [AvailabilityController],
   providers: [AvailabilityService, JourneyTaskService],
-  exports: [AvailabilityService, JourneyTaskService],
+  exports: [
+    AvailabilityService,
+    JourneyTaskService,
+    AlternativeSearchTaskModule,
+  ],
 })
 export class AvailabilityModule {}
