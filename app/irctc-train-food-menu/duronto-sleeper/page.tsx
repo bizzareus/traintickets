@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
-import { StandardMenuPage } from "@/components/foodmenu/StandardMenuPage";
-import { standardMenuMetadata } from "@/lib/standardMenu";
-
-const SLUG = "duronto-sleeper";
-
-export function generateMetadata(): Metadata {
-  return standardMenuMetadata(SLUG);
-}
+import { permanentRedirect } from "next/navigation";
 
 export default function Page() {
-  return <StandardMenuPage slug={SLUG} />;
+  permanentRedirect("/irctc-train-food-menu/duronto-sleeper-class-food-menu-prices");
 }

@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 /**
  * IRCTC standard class/zone catering menus (Rajdhani/premium 1AC-EC, AC
- * 2A-3A-CC, Duronto sleeper, Zone-specific AC menus, and Train Category pages).
+ * 2A-3A-CC, Duronto sleeper, Zone-specific AC & Sleeper menus, and Train Category pages).
  * Rendered under /irctc-train-food-menu/<slug>.
  */
 
@@ -88,6 +88,74 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     heading: "West Zone AC 2A / 3A / Chair Car Food Menu",
     metaTitle: "West Zone AC 2A/3A/CC Food Menu & Prices",
     zoneFilter: "West",
+  },
+  {
+    slug: "duronto-sleeper-class-food-menu-prices",
+    classGroup: "duronto-sleeper",
+    classGroupName: "Duronto Express Sleeper Class",
+    covers: "Duronto Express trains in Sleeper Class (SL)",
+    heading: "Duronto Sleeper Class Food Menu & Meal Charges",
+    metaTitle: "Duronto Sleeper Class Food Menu & Meal Prices",
+  },
+  {
+    slug: "north-zone-duronto-sleeper-food-menu",
+    classGroup: "duronto-sleeper",
+    classGroupName: "North Zone Duronto Sleeper Class",
+    covers: "Northern Zone Duronto trains in Sleeper Class (SL)",
+    heading: "North Zone Duronto Sleeper Class Food Menu",
+    metaTitle: "North Zone Duronto Sleeper Food Menu & Prices",
+    zoneFilter: "North",
+  },
+  {
+    slug: "south-zone-duronto-sleeper-food-menu",
+    classGroup: "duronto-sleeper",
+    classGroupName: "South Zone Duronto Sleeper Class",
+    covers: "Southern Zone Duronto trains in Sleeper Class (SL)",
+    heading: "South Zone Duronto Sleeper Class Food Menu",
+    metaTitle: "South Zone Duronto Sleeper Food Menu & Prices",
+    zoneFilter: "South",
+  },
+  {
+    slug: "east-zone-duronto-sleeper-food-menu",
+    classGroup: "duronto-sleeper",
+    classGroupName: "East Zone Duronto Sleeper Class",
+    covers: "Eastern Zone Duronto trains in Sleeper Class (SL)",
+    heading: "East Zone Duronto Sleeper Class Food Menu",
+    metaTitle: "East Zone Duronto Sleeper Food Menu & Prices",
+    zoneFilter: "East",
+  },
+  {
+    slug: "west-zone-duronto-sleeper-food-menu",
+    classGroup: "duronto-sleeper",
+    classGroupName: "West Zone Duronto Sleeper Class",
+    covers: "Western Zone Duronto trains in Sleeper Class (SL)",
+    heading: "West Zone Duronto Sleeper Class Food Menu",
+    metaTitle: "West Zone Duronto Sleeper Food Menu & Prices",
+    zoneFilter: "West",
+  },
+  {
+    slug: "duronto-ac-3tier-food-menu-prices",
+    classGroup: "2A-3A-CC",
+    classGroupName: "Duronto Express AC 3-Tier (3A)",
+    covers: "Duronto Express trains in AC 3-Tier (3A) coaches",
+    heading: "Duronto Express 3AC Food Menu & Catering Prices",
+    metaTitle: "Duronto 3AC Food Menu & Meal Prices",
+  },
+  {
+    slug: "duronto-ac-2tier-food-menu-prices",
+    classGroup: "2A-3A-CC",
+    classGroupName: "Duronto Express AC 2-Tier (2A)",
+    covers: "Duronto Express trains in AC 2-Tier (2A) coaches",
+    heading: "Duronto Express 2AC Food Menu & Catering Prices",
+    metaTitle: "Duronto 2AC Food Menu & Meal Prices",
+  },
+  {
+    slug: "duronto-ac-1st-class-food-menu-prices",
+    classGroup: "1AC-EC",
+    classGroupName: "Duronto Express AC First Class (1A)",
+    covers: "Duronto Express trains in First AC (1A) coaches",
+    heading: "Duronto Express First AC (1A) Food Menu",
+    metaTitle: "Duronto First AC Food Menu & Meal Prices",
   },
   {
     slug: "rajdhani-express-food-menu-prices",
@@ -174,10 +242,15 @@ function readAll(): RawMenu[] {
   return out;
 }
 
+function resolveSlugAlias(slug: string): string {
+  if (slug === "ac-2a-3a-cc") return "ac-coach-food-menu-prices";
+  if (slug === "duronto-sleeper") return "duronto-sleeper-class-food-menu-prices";
+  return slug;
+}
+
 export const getStandardMenuGroup = cache(
   (slug: string): StandardMenuGroup | null => {
-    // Legacy URL handling
-    const resolvedSlug = slug === "ac-2a-3a-cc" ? "ac-coach-food-menu-prices" : slug;
+    const resolvedSlug = resolveSlugAlias(slug);
     const cfg = STANDARD_MENU_PAGES.find((p) => p.slug === resolvedSlug);
     if (!cfg) return null;
 
@@ -239,7 +312,7 @@ export function listStandardMenuSlugs(): string[] {
 
 /** Metadata for a standard-menu page (title deduped: layout adds "| LastBerth"). */
 export function standardMenuMetadata(slug: string): Metadata {
-  const resolvedSlug = slug === "ac-2a-3a-cc" ? "ac-coach-food-menu-prices" : slug;
+  const resolvedSlug = resolveSlugAlias(slug);
   const cfg = STANDARD_MENU_PAGES.find((p) => p.slug === resolvedSlug);
   const group = getStandardMenuGroup(resolvedSlug);
   if (!cfg || !group) return { title: "Train Food Menu" };
@@ -255,10 +328,8 @@ export function standardMenuMetadata(slug: string): Metadata {
     description,
     keywords: [
       `${cfg.classGroupName} food menu`,
-      `rajdhani food menu price`,
-      `shatabdi express food menu`,
-      `vande bharat food price`,
-      `duronto food menu`,
+      `duronto sleeper food menu price`,
+      `duronto sleeper meal charges`,
       `irctc ${cfg.slug} menu`,
       `train meal price ${cfg.classGroup}`,
     ],

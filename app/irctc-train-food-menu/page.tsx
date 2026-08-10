@@ -99,6 +99,7 @@ export default function TrainFoodMenuIndexPage() {
         <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 mb-6">
           {[
             { href: "/irctc-train-food-menu/ac-coach-food-menu-prices", label: "AC 2A / 3A / Chair Car Menu", sub: "Standard AC 2-Tier, 3-Tier and Chair Car meal charges" },
+            { href: "/irctc-train-food-menu/duronto-sleeper-class-food-menu-prices", label: "Duronto Sleeper Class Menu", sub: "Official Duronto Express sleeper class catering prices" },
             { href: "/irctc-train-food-menu/rajdhani-express-food-menu-prices", label: "Rajdhani Express Food Menu", sub: "1AC, 2A, 3A & Executive Chair Car catering prices" },
             { href: "/irctc-train-food-menu/shatabdi-express-food-menu-prices", label: "Shatabdi Express Food Menu", sub: "Executive Chair Car (EC) & AC Chair Car (CC)" },
             { href: "/irctc-train-food-menu/vande-bharat-express-food-menu-prices", label: "Vande Bharat Express Menu", sub: "Executive Class & Chair Car catering rates" },
@@ -125,14 +126,34 @@ export default function TrainFoodMenuIndexPage() {
         </ul>
 
         <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-slate-700">
-          Zonal AC Coach Menus (2A, 3A, CC)
+          Zonal AC &amp; Sleeper Coach Menus
         </h3>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 mb-4">
           {[
             { href: "/irctc-train-food-menu/north-zone-2ac-3ac-cc-food-menu", label: "North Zone AC Menu" },
             { href: "/irctc-train-food-menu/south-zone-2ac-3ac-cc-food-menu", label: "South Zone AC Menu" },
             { href: "/irctc-train-food-menu/east-zone-2ac-3ac-cc-food-menu", label: "East Zone AC Menu" },
             { href: "/irctc-train-food-menu/west-zone-2ac-3ac-cc-food-menu", label: "West Zone AC Menu" },
+          ].map((z) => (
+            <Link
+              key={z.href}
+              href={z.href}
+              className="block rounded-lg border border-slate-200 bg-slate-50/70 p-3 text-center text-xs font-semibold text-slate-800 hover:bg-slate-100 hover:text-blue-700 transition-colors"
+            >
+              {z.label}
+            </Link>
+          ))}
+        </div>
+
+        <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-slate-700">
+          Zonal Duronto Sleeper Menus
+        </h3>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {[
+            { href: "/irctc-train-food-menu/north-zone-duronto-sleeper-food-menu", label: "North Duronto Sleeper" },
+            { href: "/irctc-train-food-menu/south-zone-duronto-sleeper-food-menu", label: "South Duronto Sleeper" },
+            { href: "/irctc-train-food-menu/east-zone-duronto-sleeper-food-menu", label: "East Duronto Sleeper" },
+            { href: "/irctc-train-food-menu/west-zone-duronto-sleeper-food-menu", label: "West Duronto Sleeper" },
           ].map((z) => (
             <Link
               key={z.href}

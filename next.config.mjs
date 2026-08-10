@@ -26,6 +26,11 @@ const nextConfig = {
         destination: "/irctc-train-food-menu/ac-coach-food-menu-prices",
         statusCode: 308,
       },
+      {
+        source: "/irctc-train-food-menu/duronto-sleeper",
+        destination: "/irctc-train-food-menu/duronto-sleeper-class-food-menu-prices",
+        statusCode: 308,
+      },
     ];
   },
   async headers() {
