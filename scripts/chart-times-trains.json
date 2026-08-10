@@ -14882,1502 +14882,2390 @@
   {
     "trainNumber": "18639",
     "trainName": "ARA RNC EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18639-ara-rnc-exp-chart-times",
+    "canonicalNumber": "18639"
   },
   {
     "trainNumber": "18640",
     "trainName": "RNC ARA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18640-rnc-ara-exp-chart-times",
+    "canonicalNumber": "18640"
   },
   {
     "trainNumber": "18641",
     "trainName": "HTE DURG EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18641-hte-durg-exp-chart-times",
+    "canonicalNumber": "18641"
   },
   {
     "trainNumber": "18642",
     "trainName": "DURG HTE EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18642-durg-hte-exp-chart-times",
+    "canonicalNumber": "18642"
   },
   {
     "trainNumber": "18645",
     "trainName": "EAST COAST EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18645-east-coast-exp-chart-times",
+    "canonicalNumber": "18645"
   },
   {
     "trainNumber": "18646",
     "trainName": "EAST COAST EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18646-east-coast-exp-chart-times",
+    "canonicalNumber": "18646"
   },
   {
     "trainNumber": "18755",
     "trainName": "SDL ABKP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18755-sdl-abkp-exp-chart-times",
+    "canonicalNumber": "18755"
   },
   {
     "trainNumber": "18756",
     "trainName": "ABKP SDL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "18756-abkp-sdl-exp-chart-times",
+    "canonicalNumber": "18756"
   },
   {
     "trainNumber": "19003",
     "trainName": "KHANDESH EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19003-khandesh-exp-chart-times",
+    "canonicalNumber": "19003"
   },
   {
     "trainNumber": "19004",
     "trainName": "KHANDESH EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19004-khandesh-exp-chart-times",
+    "canonicalNumber": "19004"
   },
   {
     "trainNumber": "19005",
     "trainName": "SURAT BSL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19005-surat-bsl-exp-chart-times",
+    "canonicalNumber": "19005"
   },
   {
     "trainNumber": "19006",
     "trainName": "BSL SURAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19006-bsl-surat-exp-chart-times",
+    "canonicalNumber": "19006"
   },
   {
     "trainNumber": "19007",
     "trainName": "SURAT BSL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19007-surat-bsl-exp-chart-times",
+    "canonicalNumber": "19007"
   },
   {
     "trainNumber": "19008",
     "trainName": "BSL SURAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19008-bsl-surat-exp-chart-times",
+    "canonicalNumber": "19008"
   },
   {
     "trainNumber": "19011",
     "trainName": "BL DHD EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19011-bl-dhd-express-chart-times",
+    "canonicalNumber": "19011"
   },
   {
     "trainNumber": "19012",
     "trainName": "DHD BL EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19012-dhd-bl-express-chart-times",
+    "canonicalNumber": "19012"
   },
   {
     "trainNumber": "19013",
     "trainName": "BSL KATNI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19013-bsl-katni-exp-chart-times",
+    "canonicalNumber": "19013"
   },
   {
     "trainNumber": "19014",
     "trainName": "KTE BSL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19014-kte-bsl-exp-chart-times",
+    "canonicalNumber": "19014"
   },
   {
     "trainNumber": "19015",
     "trainName": "SAURASHTRA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19015-saurashtra-exp-chart-times",
+    "canonicalNumber": "19015"
   },
   {
     "trainNumber": "19016",
     "trainName": "SAURASHTRA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19016-saurashtra-exp-chart-times",
+    "canonicalNumber": "19016"
   },
   {
     "trainNumber": "19019",
     "trainName": "BDTS HW EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19019-bdts-hw-exp-chart-times",
+    "canonicalNumber": "19019"
   },
   {
     "trainNumber": "19020",
     "trainName": "HW BDTS EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19020-hw-bdts-exp-chart-times",
+    "canonicalNumber": "19020"
   },
   {
     "trainNumber": "19021",
     "trainName": "BAM AMRIT BHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19021-bam-amrit-bharat-chart-times",
+    "canonicalNumber": "19021"
   },
   {
     "trainNumber": "19022",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19022-amrit-bharat-exp-chart-times",
+    "canonicalNumber": "19022"
   },
   {
     "trainNumber": "19023",
     "trainName": "FZR JANATA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19023-fzr-janata-exp-chart-times",
+    "canonicalNumber": "19023"
   },
   {
     "trainNumber": "19024",
     "trainName": "FZR MMCT JANTA",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19024-fzr-mmct-janta-chart-times",
+    "canonicalNumber": "19024"
   },
   {
     "trainNumber": "19025",
     "trainName": "ST AMRAVTI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19025-st-amravti-exp-chart-times",
+    "canonicalNumber": "19025"
   },
   {
     "trainNumber": "19027",
     "trainName": "JAT VIVEK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19027-jat-vivek-exp-chart-times",
+    "canonicalNumber": "19027"
   },
   {
     "trainNumber": "19028",
     "trainName": "JAT BDTS EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19028-jat-bdts-exp-chart-times",
+    "canonicalNumber": "19028"
   },
   {
     "trainNumber": "19031",
     "trainName": "YOGA EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19031-yoga-express-chart-times",
+    "canonicalNumber": "19031"
   },
   {
     "trainNumber": "19032",
     "trainName": "YOGA EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19032-yoga-express-chart-times",
+    "canonicalNumber": "19032"
   },
   {
     "trainNumber": "19033",
     "trainName": "GUJARAT QUEEN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19033-gujarat-queen-chart-times",
+    "canonicalNumber": "19033"
   },
   {
     "trainNumber": "19034",
     "trainName": "GUJARAT QUEEN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19034-gujarat-queen-chart-times",
+    "canonicalNumber": "19034"
   },
   {
     "trainNumber": "19035",
     "trainName": "ADI INTERCITY",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19035-adi-intercity-chart-times",
+    "canonicalNumber": "19035"
   },
   {
     "trainNumber": "19036",
     "trainName": "BRC INTERCITY",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19036-brc-intercity-chart-times",
+    "canonicalNumber": "19036"
   },
   {
     "trainNumber": "19037",
     "trainName": "AVADH EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19037-avadh-exp-chart-times",
+    "canonicalNumber": "19037"
   },
   {
     "trainNumber": "19038",
     "trainName": "AVADH EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19038-avadh-express-chart-times",
+    "canonicalNumber": "19038"
   },
   {
     "trainNumber": "19039",
     "trainName": "AVADH EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19039-avadh-express-chart-times",
+    "canonicalNumber": "19039"
   },
   {
     "trainNumber": "19040",
     "trainName": "AVADH EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19040-avadh-express-chart-times",
+    "canonicalNumber": "19040"
   },
   {
     "trainNumber": "19041",
     "trainName": "BDTS GCT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19041-bdts-gct-exp-chart-times",
+    "canonicalNumber": "19041"
   },
   {
     "trainNumber": "19043",
     "trainName": "BGKT HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19043-bgkt-humsafar-chart-times",
+    "canonicalNumber": "19043"
   },
   {
     "trainNumber": "19044",
     "trainName": "BDTS HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19044-bdts-humsafar-chart-times",
+    "canonicalNumber": "19044"
   },
   {
     "trainNumber": "19045",
     "trainName": "TAPTI GANGA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19045-tapti-ganga-exp-chart-times",
+    "canonicalNumber": "19045"
   },
   {
     "trainNumber": "19046",
     "trainName": "TAPTI GANGA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19046-tapti-ganga-exp-chart-times",
+    "canonicalNumber": "19046"
   },
   {
     "trainNumber": "19051",
     "trainName": "MFP SHRAMIK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19051-mfp-shramik-exp-chart-times",
+    "canonicalNumber": "19051"
   },
   {
     "trainNumber": "19052",
     "trainName": "BL SHRAMIK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19052-bl-shramik-exp-chart-times",
+    "canonicalNumber": "19052"
   },
   {
     "trainNumber": "19053",
     "trainName": "ST MFP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19053-st-mfp-exp-chart-times",
+    "canonicalNumber": "19053"
   },
   {
     "trainNumber": "19054",
     "trainName": "MFP ST EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19054-mfp-st-express-chart-times",
+    "canonicalNumber": "19054"
   },
   {
     "trainNumber": "19055",
     "trainName": "BDTS UDN EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19055-bdts-udn-exp-chart-times",
+    "canonicalNumber": "19055"
   },
   {
     "trainNumber": "19056",
     "trainName": "UDN BDTS EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19056-udn-bdts-express-chart-times",
+    "canonicalNumber": "19056"
   },
   {
     "trainNumber": "19057",
     "trainName": "UDN VARANASI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19057-surat-majn-exp-chart-times",
+    "canonicalNumber": "19057"
   },
   {
     "trainNumber": "19058",
     "trainName": "MAJN SURAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19058-majn-surat-exp-chart-times",
+    "canonicalNumber": "19058"
   },
   {
     "trainNumber": "19063",
     "trainName": "DANAPUR EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19063-danapur-express-chart-times",
+    "canonicalNumber": "19063"
   },
   {
     "trainNumber": "19064",
     "trainName": "DNR UDHNA  EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19064-dnr-udhna-exp-chart-times",
+    "canonicalNumber": "19064"
   },
   {
     "trainNumber": "19091",
     "trainName": "GKP HUMSAFAR EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19091-gkp-humsafar-ex-chart-times",
+    "canonicalNumber": "19091"
   },
   {
     "trainNumber": "19092",
     "trainName": "BDTS HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19092-bdts-humsafar-chart-times",
+    "canonicalNumber": "19092"
   },
   {
     "trainNumber": "19107",
     "trainName": "JANMABHOOMI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19107-janmabhoomi-exp-chart-times",
+    "canonicalNumber": "19107"
   },
   {
     "trainNumber": "19108",
     "trainName": "BHAVNAGAR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19108-bhavnagar-exp-chart-times",
+    "canonicalNumber": "19108"
   },
   {
     "trainNumber": "19115",
     "trainName": "DDR BHUJ EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19115-ddr-bhuj-exp-chart-times",
+    "canonicalNumber": "19115"
   },
   {
     "trainNumber": "19116",
     "trainName": "BHUJ DDR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19116-bhuj-ddr-exp-chart-times",
+    "canonicalNumber": "19116"
   },
   {
     "trainNumber": "19119",
     "trainName": "GNC SMNH IC EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19119-gnc-smnh-ic-exp-chart-times",
+    "canonicalNumber": "19119"
   },
   {
     "trainNumber": "19120",
     "trainName": "SMNH ADI IC EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19120-smnh-adi-ic-exp-chart-times",
+    "canonicalNumber": "19120"
   },
   {
     "trainNumber": "19165",
     "trainName": "SABARMATI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19165-sabarmati-exp-chart-times",
+    "canonicalNumber": "19165"
   },
   {
     "trainNumber": "19166",
     "trainName": "SABARMATI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19166-sabarmati-exp-chart-times",
+    "canonicalNumber": "19166"
   },
   {
     "trainNumber": "19167",
     "trainName": "SABARMATI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19167-sabarmati-exp-chart-times",
+    "canonicalNumber": "19167"
   },
   {
     "trainNumber": "19168",
     "trainName": "SABARMATI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19168-sabarmati-exp-chart-times",
+    "canonicalNumber": "19168"
   },
   {
     "trainNumber": "19201",
     "trainName": "BVC AYC EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19201-bvc-ayc-express-chart-times",
+    "canonicalNumber": "19201"
   },
   {
     "trainNumber": "19202",
     "trainName": "AYC BVC EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19202-ayc-bvc-express-chart-times",
+    "canonicalNumber": "19202"
   },
   {
     "trainNumber": "19203",
     "trainName": "BDTS VRL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19203-bdts-vrl-exp-chart-times",
+    "canonicalNumber": "19203"
   },
   {
     "trainNumber": "19204",
     "trainName": "VRL BDTS EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19204-vrl-bdts-exp-chart-times",
+    "canonicalNumber": "19204"
   },
   {
     "trainNumber": "19209",
     "trainName": "BVC OKHA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19209-bvc-okha-exp-chart-times",
+    "canonicalNumber": "19209"
   },
   {
     "trainNumber": "19210",
     "trainName": "OKHA BVC EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19210-okha-bvc-exp-chart-times",
+    "canonicalNumber": "19210"
   },
   {
     "trainNumber": "19217",
     "trainName": "SAURASHTRA JANTA",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19217-saurashtra-janta-chart-times",
+    "canonicalNumber": "19217"
   },
   {
     "trainNumber": "19218",
     "trainName": "SAURASHTRA JANTA",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19218-saurashtra-janta-chart-times",
+    "canonicalNumber": "19218"
   },
   {
     "trainNumber": "19223",
     "trainName": "SBIB JAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19223-sbib-jat-exp-chart-times",
+    "canonicalNumber": "19223"
   },
   {
     "trainNumber": "19224",
     "trainName": "JAT SBIB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19224-jat-sbib-exp-chart-times",
+    "canonicalNumber": "19224"
   },
   {
     "trainNumber": "19226",
     "trainName": "JAT JU EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19226-jat-bgkt-exp-chart-times",
+    "canonicalNumber": "19226"
   },
   {
     "trainNumber": "19251",
     "trainName": "SMNH OKHA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19251-smnh-okha-exp-chart-times",
+    "canonicalNumber": "19251"
   },
   {
     "trainNumber": "19252",
     "trainName": "OKHA SMNH EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19252-okha-smnh-exp-chart-times",
+    "canonicalNumber": "19252"
   },
   {
     "trainNumber": "19255",
     "trainName": "SURAT MAHUVA EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19255-surat-mahuva-ex-chart-times",
+    "canonicalNumber": "19255"
   },
   {
     "trainNumber": "19256",
     "trainName": "MAHUVA SURAT EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19256-mahuva-surat-ex-chart-times",
+    "canonicalNumber": "19256"
   },
   {
     "trainNumber": "19259",
     "trainName": "TVCN BVC EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19259-tvcn-bvc-express-chart-times",
+    "canonicalNumber": "19259"
   },
   {
     "trainNumber": "19260",
     "trainName": "BVC KCVL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19260-bvc-tvcn-exp-chart-times",
+    "canonicalNumber": "19260"
   },
   {
     "trainNumber": "19261",
     "trainName": "PORBANDAR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19261-porbandar-exp-chart-times",
+    "canonicalNumber": "19261"
   },
   {
     "trainNumber": "19262",
     "trainName": "PBR KCVL EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19262-pbr-kcvl-express-chart-times",
+    "canonicalNumber": "19262"
   },
   {
     "trainNumber": "19263",
     "trainName": "DELHI SR EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19263-delhi-sr-express-chart-times",
+    "canonicalNumber": "19263"
   },
   {
     "trainNumber": "19269",
     "trainName": "PBR MFP EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19269-pbr-mfp-express-chart-times",
+    "canonicalNumber": "19269"
   },
   {
     "trainNumber": "19270",
     "trainName": "PBR EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19270-pbr-express-chart-times",
+    "canonicalNumber": "19270"
   },
   {
     "trainNumber": "19271",
     "trainName": "BVC HW EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19271-bvc-hw-express-chart-times",
+    "canonicalNumber": "19271"
   },
   {
     "trainNumber": "19272",
     "trainName": "HW BVC EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19272-hw-bvc-express-chart-times",
+    "canonicalNumber": "19272"
   },
   {
     "trainNumber": "19301",
     "trainName": "DADN YPR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19301-dadn-ypr-exp-chart-times",
+    "canonicalNumber": "19301"
   },
   {
     "trainNumber": "19302",
     "trainName": "YPR DADN EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19302-ypr-dadn-exp-chart-times",
+    "canonicalNumber": "19302"
   },
   {
     "trainNumber": "19303",
     "trainName": "INDB BHOPAL  EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19303-indb-bhopal-exp-chart-times",
+    "canonicalNumber": "19303"
   },
   {
     "trainNumber": "19304",
     "trainName": "BPL INDB EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19304-bpl-indb-express-chart-times",
+    "canonicalNumber": "19304"
   },
   {
     "trainNumber": "19305",
     "trainName": "DADN KYQ EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19305-dadn-kyq-exp-chart-times",
+    "canonicalNumber": "19305"
   },
   {
     "trainNumber": "19306",
     "trainName": "KYQ DADN EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19306-kyq-dadn-exp-chart-times",
+    "canonicalNumber": "19306"
   },
   {
     "trainNumber": "19307",
     "trainName": "INDB UHL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19307-indb-uhl-exp-chart-times",
+    "canonicalNumber": "19307"
   },
   {
     "trainNumber": "19308",
     "trainName": "UHL INDB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19308-uhl-indb-exp-chart-times",
+    "canonicalNumber": "19308"
   },
   {
     "trainNumber": "19309",
     "trainName": "SHANTI EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19309-shanti-express-chart-times",
+    "canonicalNumber": "19309"
   },
   {
     "trainNumber": "19310",
     "trainName": "SHANTI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19310-shanti-exp-chart-times",
+    "canonicalNumber": "19310"
   },
   {
     "trainNumber": "19312",
     "trainName": "INDB PUNE EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19312-indb-pune-exp-chart-times",
+    "canonicalNumber": "19312"
   },
   {
     "trainNumber": "19313",
     "trainName": "INDB PNBE EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19313-indb-pnbe-exp-chart-times",
+    "canonicalNumber": "19313"
   },
   {
     "trainNumber": "19314",
     "trainName": "INDORE EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19314-indore-express-chart-times",
+    "canonicalNumber": "19314"
   },
   {
     "trainNumber": "19315",
     "trainName": "VIRBHUMI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19315-virbhumi-exp-chart-times",
+    "canonicalNumber": "19315"
   },
   {
     "trainNumber": "19316",
     "trainName": "VIRBHUMI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19316-virbhumi-exp-chart-times",
+    "canonicalNumber": "19316"
   },
   {
     "trainNumber": "19317",
     "trainName": "PURI HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19317-puri-humsafar-chart-times",
+    "canonicalNumber": "19317"
   },
   {
     "trainNumber": "19318",
     "trainName": "INDB HUMSAFAR EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19318-indb-humsafar-ex-chart-times",
+    "canonicalNumber": "19318"
   },
   {
     "trainNumber": "19319",
     "trainName": "VRL INDB MAHMANA",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19319-vrl-indb-mahmana-chart-times",
+    "canonicalNumber": "19319"
   },
   {
     "trainNumber": "19320",
     "trainName": "INDB VRL MAHMANA",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19320-indb-vrl-mahmana-chart-times",
+    "canonicalNumber": "19320"
   },
   {
     "trainNumber": "19321",
     "trainName": "INDB PNBE EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19321-indb-pnbe-exp-chart-times",
+    "canonicalNumber": "19321"
   },
   {
     "trainNumber": "19322",
     "trainName": "PNBE INDB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19322-pnbe-indb-exp-chart-times",
+    "canonicalNumber": "19322"
   },
   {
     "trainNumber": "19323",
     "trainName": "BPL INTERCITY",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19323-bpl-intercity-chart-times",
+    "canonicalNumber": "19323"
   },
   {
     "trainNumber": "19324",
     "trainName": "DADN INTERCITY",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19324-dadn-intercity-chart-times",
+    "canonicalNumber": "19324"
   },
   {
     "trainNumber": "19325",
     "trainName": "INDB AMRITSAR EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19325-indb-amritsar-ex-chart-times",
+    "canonicalNumber": "19325"
   },
   {
     "trainNumber": "19326",
     "trainName": "ASR INDB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19326-asr-indb-exp-chart-times",
+    "canonicalNumber": "19326"
   },
   {
     "trainNumber": "19327",
     "trainName": "RTM UDZ EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19327-rtm-udz-exp-chart-times",
+    "canonicalNumber": "19327"
   },
   {
     "trainNumber": "19329",
     "trainName": "CHITTAURGARH EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19329-chittaurgarh-ex-chart-times",
+    "canonicalNumber": "19329"
   },
   {
     "trainNumber": "19331",
     "trainName": "KCVL INDORE EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19331-kcvl-indore-exp-chart-times",
+    "canonicalNumber": "19331"
   },
   {
     "trainNumber": "19332",
     "trainName": "INDB KCVL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19332-indb-kcvl-exp-chart-times",
+    "canonicalNumber": "19332"
   },
   {
     "trainNumber": "19333",
     "trainName": "BKN MAHAMANA EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19333-bkn-mahamana-ex-chart-times",
+    "canonicalNumber": "19333"
   },
   {
     "trainNumber": "19334",
     "trainName": "INDB MAHMNA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19334-indb-mahmna-exp-chart-times",
+    "canonicalNumber": "19334"
   },
   {
     "trainNumber": "19335",
     "trainName": "GIMB INDB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19335-gimb-indb-exp-chart-times",
+    "canonicalNumber": "19335"
   },
   {
     "trainNumber": "19336",
     "trainName": "INDORE GIMB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19336-indore-gimb-exp-chart-times",
+    "canonicalNumber": "19336"
   },
   {
     "trainNumber": "19337",
     "trainName": "INDB DEE EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19337-indb-dee-exp-chart-times",
+    "canonicalNumber": "19337"
   },
   {
     "trainNumber": "19338",
     "trainName": "DEE INDB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19338-dee-indb-exp-chart-times",
+    "canonicalNumber": "19338"
   },
   {
     "trainNumber": "19339",
     "trainName": "DHD BPL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19339-dhd-bpl-exp-chart-times",
+    "canonicalNumber": "19339"
   },
   {
     "trainNumber": "19340",
     "trainName": "BHOPAL DAHOD EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19340-bhopal-dahod-ex-chart-times",
+    "canonicalNumber": "19340"
   },
   {
     "trainNumber": "19343",
     "trainName": "PANCHVALLEY EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19343-panchvalley-exp-chart-times",
+    "canonicalNumber": "19343"
   },
   {
     "trainNumber": "19344",
     "trainName": "PANCHVALLEY  EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19344-panchvalley-exp-chart-times",
+    "canonicalNumber": "19344"
   },
   {
     "trainNumber": "19401",
     "trainName": "ADI LUCKNOW EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19401-sbib-lucknow-ex-chart-times",
+    "canonicalNumber": "19401"
   },
   {
     "trainNumber": "19402",
     "trainName": "LKO ADI EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19402-lko-adi-express-chart-times",
+    "canonicalNumber": "19402"
   },
   {
     "trainNumber": "19403",
     "trainName": "SULTANPUR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19403-bhuj-dli-exp-chart-times",
+    "canonicalNumber": "19403"
   },
   {
     "trainNumber": "19404",
     "trainName": "DLI BHUJ EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19404-dli-bhuj-express-chart-times",
+    "canonicalNumber": "19404"
   },
   {
     "trainNumber": "19405",
     "trainName": "PNU GIMB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19405-pnu-gimb-exp-chart-times",
+    "canonicalNumber": "19405"
   },
   {
     "trainNumber": "19406",
     "trainName": "GIMB PNU EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19406-gimb-pnu-exp-chart-times",
+    "canonicalNumber": "19406"
   },
   {
     "trainNumber": "19407",
     "trainName": "SBIB LGH EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19407-sbib-lgh-exp-chart-times",
+    "canonicalNumber": "19407"
   },
   {
     "trainNumber": "19408",
     "trainName": "LGH SBIB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19408-lgh-sbib-exp-chart-times",
+    "canonicalNumber": "19408"
   },
   {
     "trainNumber": "19409",
     "trainName": "SBIB THAWE EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19409-sbib-thawe-exp-chart-times",
+    "canonicalNumber": "19409"
   },
   {
     "trainNumber": "19410",
     "trainName": "GKP ADI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19410-gkp-adi-exp-chart-times",
+    "canonicalNumber": "19410"
   },
   {
     "trainNumber": "19411",
     "trainName": "GNC DLPC EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19411-gnc-dlpc-exp-chart-times",
+    "canonicalNumber": "19411"
   },
   {
     "trainNumber": "19412",
     "trainName": "DLPC GNC EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19412-dlpc-gnc-exp-chart-times",
+    "canonicalNumber": "19412"
   },
   {
     "trainNumber": "19413",
     "trainName": "ADI KOLKATA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19413-adi-kolkata-exp-chart-times",
+    "canonicalNumber": "19413"
   },
   {
     "trainNumber": "19414",
     "trainName": "KOAA ADI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19414-koaa-adi-exp-chart-times",
+    "canonicalNumber": "19414"
   },
   {
     "trainNumber": "19415",
     "trainName": "SBIB SVDK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19415-sbib-svdk-exp-chart-times",
+    "canonicalNumber": "19415"
   },
   {
     "trainNumber": "19416",
     "trainName": "SVDK SBIB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19416-svdk-sbib-exp-chart-times",
+    "canonicalNumber": "19416"
   },
   {
     "trainNumber": "19417",
     "trainName": "MMCT ADI EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19417-mmct-adi-express-chart-times",
+    "canonicalNumber": "19417"
   },
   {
     "trainNumber": "19418",
     "trainName": "ADI MMCT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19418-adi-mmct-exp-chart-times",
+    "canonicalNumber": "19418"
   },
   {
     "trainNumber": "19419",
     "trainName": "MAS ADI EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19419-mas-adi-express-chart-times",
+    "canonicalNumber": "19419"
   },
   {
     "trainNumber": "19420",
     "trainName": "ADI CHENNAI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19420-adi-chennai-exp-chart-times",
+    "canonicalNumber": "19420"
   },
   {
     "trainNumber": "19421",
     "trainName": "ADI PNBE EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19421-adi-pnbe-exp-chart-times",
+    "canonicalNumber": "19421"
   },
   {
     "trainNumber": "19422",
     "trainName": "PNBE ADI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19422-pnbe-adi-exp-chart-times",
+    "canonicalNumber": "19422"
   },
   {
     "trainNumber": "19423",
     "trainName": "GIMB HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19423-gimb-humsafar-chart-times",
+    "canonicalNumber": "19423"
   },
   {
     "trainNumber": "19424",
     "trainName": "TEN HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19424-ten-humsafar-chart-times",
+    "canonicalNumber": "19424"
   },
   {
     "trainNumber": "19425",
     "trainName": "MMCT NDB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19425-mmct-ndb-exp-chart-times",
+    "canonicalNumber": "19425"
   },
   {
     "trainNumber": "19426",
     "trainName": "NDB MMCT EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19426-ndb-mmct-express-chart-times",
+    "canonicalNumber": "19426"
   },
   {
     "trainNumber": "19435",
     "trainName": "ADI ASN EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19435-adi-asn-exp-chart-times",
+    "canonicalNumber": "19435"
   },
   {
     "trainNumber": "19436",
     "trainName": "ASN ADI EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19436-asn-adi-express-chart-times",
+    "canonicalNumber": "19436"
   },
   {
     "trainNumber": "19483",
     "trainName": "ADI SHC EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19483-adi-shc-exp-chart-times",
+    "canonicalNumber": "19483"
   },
   {
     "trainNumber": "19484",
     "trainName": "SHC ADI EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19484-shc-adi-exp-chart-times",
+    "canonicalNumber": "19484"
   },
   {
     "trainNumber": "19489",
     "trainName": "ADI GKP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19489-adi-gkp-exp-chart-times",
+    "canonicalNumber": "19489"
   },
   {
     "trainNumber": "19490",
     "trainName": "GKP ADI EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19490-gkp-adi-express-chart-times",
+    "canonicalNumber": "19490"
   },
   {
     "trainNumber": "19559",
     "trainName": "TPTY OKHA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19559-tpty-okha-exp-chart-times",
+    "canonicalNumber": "19559"
   },
   {
     "trainNumber": "19560",
     "trainName": "OKHA TPTY EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19560-okha-tpty-exp-chart-times",
+    "canonicalNumber": "19560"
   },
   {
     "trainNumber": "19565",
     "trainName": "OKHA DDN EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19565-okha-ddn-exp-chart-times",
+    "canonicalNumber": "19565"
   },
   {
     "trainNumber": "19566",
     "trainName": "UTTARANCHAL EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19566-uttaranchal-exp-chart-times",
+    "canonicalNumber": "19566"
   },
   {
     "trainNumber": "19567",
     "trainName": "VIVEK EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19567-vivek-express-chart-times",
+    "canonicalNumber": "19567"
   },
   {
     "trainNumber": "19568",
     "trainName": "VIVEK EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19568-vivek-express-chart-times",
+    "canonicalNumber": "19568"
   },
   {
     "trainNumber": "19570",
     "trainName": "VRL MMCT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19570-vrl-mmct-exp-chart-times",
+    "canonicalNumber": "19570"
   },
   {
     "trainNumber": "19575",
     "trainName": "OKHA  NDT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19575-okha-ndt-exp-chart-times",
+    "canonicalNumber": "19575"
   },
   {
     "trainNumber": "19576",
     "trainName": "NDT OKHA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19576-ndt-okha-exp-chart-times",
+    "canonicalNumber": "19576"
   },
   {
     "trainNumber": "19577",
     "trainName": "TEN JAM EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19577-ten-jam-express-chart-times",
+    "canonicalNumber": "19577"
   },
   {
     "trainNumber": "19578",
     "trainName": "JAM TEN EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19578-jam-ten-exp-chart-times",
+    "canonicalNumber": "19578"
   },
   {
     "trainNumber": "19579",
     "trainName": "RJT DEE EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19579-rjt-dee-express-chart-times",
+    "canonicalNumber": "19579"
   },
   {
     "trainNumber": "19601",
     "trainName": "UDZ NJP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19601-udz-njp-exp-chart-times",
+    "canonicalNumber": "19601"
   },
   {
     "trainNumber": "19602",
     "trainName": "NJP UDZ EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19602-njp-udz-express-chart-times",
+    "canonicalNumber": "19602"
   },
   {
     "trainNumber": "19603",
     "trainName": "AII RMM HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19603-doz-goda-exp-chart-times",
+    "canonicalNumber": "19603"
   },
   {
     "trainNumber": "19604",
     "trainName": "GODA  DOZ EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19604-goda-doz-exp-chart-times",
+    "canonicalNumber": "19604"
   },
   {
     "trainNumber": "19607",
     "trainName": "KOAA MDJN EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19607-koaa-mdjn-exp-chart-times",
+    "canonicalNumber": "19607"
   },
   {
     "trainNumber": "19608",
     "trainName": "MDJN KOAA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19608-mdjn-koaa-exp-chart-times",
+    "canonicalNumber": "19608"
   },
   {
     "trainNumber": "19609",
     "trainName": "UDZ YNRK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19609-udz-ynrk-exp-chart-times",
+    "canonicalNumber": "19609"
   },
   {
     "trainNumber": "19610",
     "trainName": "UDAIPUR EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19610-udaipur-express-chart-times",
+    "canonicalNumber": "19610"
   },
   {
     "trainNumber": "19611",
     "trainName": "AII ASR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19611-aii-asr-exp-chart-times",
+    "canonicalNumber": "19611"
   },
   {
     "trainNumber": "19612",
     "trainName": "ASR AII EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19612-asr-aii-express-chart-times",
+    "canonicalNumber": "19612"
   },
   {
     "trainNumber": "19613",
     "trainName": "AII ASR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19613-aii-asr-exp-chart-times",
+    "canonicalNumber": "19613"
   },
   {
     "trainNumber": "19614",
     "trainName": "ASR AII EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19614-asr-aii-exp-chart-times",
+    "canonicalNumber": "19614"
   },
   {
     "trainNumber": "19615",
     "trainName": "KAVI GURU EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19615-kavi-guru-exp-chart-times",
+    "canonicalNumber": "19615"
   },
   {
     "trainNumber": "19616",
     "trainName": "KAVI GURU EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19616-kavi-guru-exp-chart-times",
+    "canonicalNumber": "19616"
   },
   {
     "trainNumber": "19623",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19623-amrit-bharat-exp-chart-times",
+    "canonicalNumber": "19623"
   },
   {
     "trainNumber": "19624",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19624-amrit-bharat-exp-chart-times",
+    "canonicalNumber": "19624"
   },
   {
     "trainNumber": "19625",
     "trainName": "AII BDTS SF SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "19626",
     "trainName": "BDTS AII SF",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19626-bdts-aii-sf-exp-chart-times",
+    "canonicalNumber": "19626"
   },
   {
     "trainNumber": "19659",
     "trainName": "SHM UDZ EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19659-shm-udz-express-chart-times",
+    "canonicalNumber": "19659"
   },
   {
     "trainNumber": "19660",
     "trainName": "UDZ SHM EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19660-udz-shm-exp-chart-times",
+    "canonicalNumber": "19660"
   },
   {
     "trainNumber": "19663",
     "trainName": "INDB KURJ EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19663-indb-kurj-exp-chart-times",
+    "canonicalNumber": "19663"
   },
   {
     "trainNumber": "19664",
     "trainName": "KURJ INDB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19664-kurj-indb-exp-chart-times",
+    "canonicalNumber": "19664"
   },
   {
     "trainNumber": "19665",
     "trainName": "KURJ UDZ EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19665-kurj-udz-exp-chart-times",
+    "canonicalNumber": "19665"
   },
   {
     "trainNumber": "19666",
     "trainName": "UDZ KURJ EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19666-udz-kurj-exp-chart-times",
+    "canonicalNumber": "19666"
   },
   {
     "trainNumber": "19667",
     "trainName": "MYS HUMSAFAR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19667-mys-humsafar-exp-chart-times",
+    "canonicalNumber": "19667"
   },
   {
     "trainNumber": "19668",
     "trainName": "UDZ HUMSAFAR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19668-udz-humsafar-exp-chart-times",
+    "canonicalNumber": "19668"
   },
   {
     "trainNumber": "19669",
     "trainName": "PPTA HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19669-ppta-humsafar-chart-times",
+    "canonicalNumber": "19669"
   },
   {
     "trainNumber": "19670",
     "trainName": "HUMSAFAR EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19670-humsafar-express-chart-times",
+    "canonicalNumber": "19670"
   },
   {
     "trainNumber": "19701",
     "trainName": "SAINIK EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19701-sainik-express-chart-times",
+    "canonicalNumber": "19701"
   },
   {
     "trainNumber": "19702",
     "trainName": "SAINIK EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19702-sainik-express-chart-times",
+    "canonicalNumber": "19702"
   },
   {
     "trainNumber": "19704",
     "trainName": "ASV UDZ EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19704-asv-udz-exp-chart-times",
+    "canonicalNumber": "19704"
   },
   {
     "trainNumber": "19707",
     "trainName": "AMRAPUR ARAVALI",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19707-amrapur-aravali-chart-times",
+    "canonicalNumber": "19707"
   },
   {
     "trainNumber": "19708",
     "trainName": "ARAVALI EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19708-aravali-express-chart-times",
+    "canonicalNumber": "19708"
   },
   {
     "trainNumber": "19709",
     "trainName": "KAVI GURU EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19709-kavi-guru-exp-chart-times",
+    "canonicalNumber": "19709"
   },
   {
     "trainNumber": "19710",
     "trainName": "KYQ JP KAVIGURU",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19710-kyq-jp-kaviguru-chart-times",
+    "canonicalNumber": "19710"
   },
   {
     "trainNumber": "19711",
     "trainName": "JP BPL EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19711-jp-bpl-express-chart-times",
+    "canonicalNumber": "19711"
   },
   {
     "trainNumber": "19712",
     "trainName": "BPL JP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19712-bpl-jp-exp-chart-times",
+    "canonicalNumber": "19712"
   },
   {
     "trainNumber": "19713",
     "trainName": "JP KRNT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19713-jp-krnt-exp-chart-times",
+    "canonicalNumber": "19713"
   },
   {
     "trainNumber": "19714",
     "trainName": "KRNT JP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19714-krnt-jp-exp-chart-times",
+    "canonicalNumber": "19714"
   },
   {
     "trainNumber": "19715",
     "trainName": "JP GTNR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19715-jp-gtnr-exp-chart-times",
+    "canonicalNumber": "19715"
   },
   {
     "trainNumber": "19716",
     "trainName": "GTNR JP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19716-gtnr-jp-exp-chart-times",
+    "canonicalNumber": "19716"
   },
   {
     "trainNumber": "19721",
     "trainName": "JP BXN EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19721-jp-bxn-exp-chart-times",
+    "canonicalNumber": "19721"
   },
   {
     "trainNumber": "19722",
     "trainName": "BXN JP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19722-bxn-jp-exp-chart-times",
+    "canonicalNumber": "19722"
   },
   {
     "trainNumber": "19725",
     "trainName": "DBG AMRIT BHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19725-dbg-amrit-bharat-chart-times",
+    "canonicalNumber": "19725"
   },
   {
     "trainNumber": "19726",
     "trainName": "AMRIT BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19726-amrit-bharat-exp-chart-times",
+    "canonicalNumber": "19726"
   },
   {
     "trainNumber": "19801",
     "trainName": "SGAC DNR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19801-sgac-dnr-exp-chart-times",
+    "canonicalNumber": "19801"
   },
   {
     "trainNumber": "19802",
     "trainName": "DNR SGAC EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19802-dnr-sgac-exp-chart-times",
+    "canonicalNumber": "19802"
   },
   {
     "trainNumber": "19803",
     "trainName": "KOTA SVDK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19803-kota-svdk-exp-chart-times",
+    "canonicalNumber": "19803"
   },
   {
     "trainNumber": "19804",
     "trainName": "KOTA EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19804-kota-express-chart-times",
+    "canonicalNumber": "19804"
   },
   {
     "trainNumber": "19805",
     "trainName": "KOTA UHP EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19805-kota-uhp-express-chart-times",
+    "canonicalNumber": "19805"
   },
   {
     "trainNumber": "19807",
     "trainName": "KOTA SIRSA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19807-kota-sirsa-exp-chart-times",
+    "canonicalNumber": "19807"
   },
   {
     "trainNumber": "19808",
     "trainName": "SSA KOTA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19808-ssa-kota-exp-chart-times",
+    "canonicalNumber": "19808"
   },
   {
     "trainNumber": "19809",
     "trainName": "KOTA JBP EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19809-kota-jbp-express-chart-times",
+    "canonicalNumber": "19809"
   },
   {
     "trainNumber": "19810",
     "trainName": "JBP KOTA EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19810-jbp-kota-express-chart-times",
+    "canonicalNumber": "19810"
   },
   {
     "trainNumber": "19811",
     "trainName": "KOTA ETW EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19811-kota-etw-exp-chart-times",
+    "canonicalNumber": "19811"
   },
   {
     "trainNumber": "19812",
     "trainName": "ETW KOTA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19812-etw-kota-exp-chart-times",
+    "canonicalNumber": "19812"
   },
   {
     "trainNumber": "19813",
     "trainName": "KOTA SIRSA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19813-kota-sirsa-exp-chart-times",
+    "canonicalNumber": "19813"
   },
   {
     "trainNumber": "19814",
     "trainName": "SSA KOTA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19814-ssa-kota-exp-chart-times",
+    "canonicalNumber": "19814"
   },
   {
     "trainNumber": "19815",
     "trainName": "MDS KOTA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19815-mds-kota-exp-chart-times",
+    "canonicalNumber": "19815"
   },
   {
     "trainNumber": "19816",
     "trainName": "KOTA MDS EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19816-kota-mds-exp-chart-times",
+    "canonicalNumber": "19816"
   },
   {
     "trainNumber": "19817",
     "trainName": "RTM AF EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19817-rtm-af-express-chart-times",
+    "canonicalNumber": "19817"
   },
   {
     "trainNumber": "19818",
     "trainName": "JAB RTM EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19818-jab-rtm-exp-chart-times",
+    "canonicalNumber": "19818"
   },
   {
     "trainNumber": "19821",
     "trainName": "ASV KOTA EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19821-asv-kota-express-chart-times",
+    "canonicalNumber": "19821"
   },
   {
     "trainNumber": "19822",
     "trainName": "KOTA ASV EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "19822-kota-asv-exp-chart-times",
+    "canonicalNumber": "19822"
   },
   {
     "trainNumber": "20101",
     "trainName": "SC VANDE BHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20101-sc-vande-bharat-chart-times",
+    "canonicalNumber": "20101"
   },
   {
     "trainNumber": "20102",
     "trainName": "NGP VANDE BHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20102-ngp-vande-bharat-chart-times",
+    "canonicalNumber": "20102"
   },
   {
     "trainNumber": "20103",
     "trainName": "LTT AMH SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20103-ltt-amh-sf-exp-chart-times",
+    "canonicalNumber": "20103"
   },
   {
     "trainNumber": "20104",
     "trainName": "AMH LTT SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20104-gkp-ltt-sf-exp-chart-times",
+    "canonicalNumber": "20104"
   },
   {
     "trainNumber": "20111",
     "trainName": "KONKAN KANYA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20111-konkan-kanya-exp-chart-times",
+    "canonicalNumber": "20111"
   },
   {
     "trainNumber": "20112",
     "trainName": "KONKAN KANYA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20112-konkan-kanya-exp-chart-times",
+    "canonicalNumber": "20112"
   },
   {
     "trainNumber": "20151",
     "trainName": "HDP REWA SFAST",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20151-hdp-rewa-sfast-chart-times",
+    "canonicalNumber": "20151"
   },
   {
     "trainNumber": "20152",
     "trainName": "REWA HDP SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20152-rewa-hdp-sf-exp-chart-times",
+    "canonicalNumber": "20152"
   },
   {
     "trainNumber": "20153",
     "trainName": "CSMT REWA SF SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "20154",
     "trainName": "REWA CSMT SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "20155",
     "trainName": "DADN NDLS SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20155-dadn-ndls-sf-exp-chart-times",
+    "canonicalNumber": "20155"
   },
   {
     "trainNumber": "20156",
     "trainName": "NDLS DADN SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20156-ndls-dadn-sf-exp-chart-times",
+    "canonicalNumber": "20156"
   },
   {
     "trainNumber": "20161",
     "trainName": "PUNE JBP SF SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "20162",
     "trainName": "JBP PUNE SPECIAL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "20163",
     "trainName": "BDTS JBP SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20163-bdts-jbp-sf-exp-chart-times",
+    "canonicalNumber": "20163"
   },
   {
     "trainNumber": "20164",
     "trainName": "JBP BDTS SF SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "20171",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20171-vande-bharat-exp-chart-times",
+    "canonicalNumber": "20171"
   },
   {
     "trainNumber": "20172",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20172-vande-bharat-exp-chart-times",
+    "canonicalNumber": "20172"
   },
   {
     "trainNumber": "20173",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20173-vande-bharat-exp-chart-times",
+    "canonicalNumber": "20173"
   },
   {
     "trainNumber": "20174",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20174-vande-bharat-exp-chart-times",
+    "canonicalNumber": "20174"
   },
   {
     "trainNumber": "20175",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20175-vande-bharat-exp-chart-times",
+    "canonicalNumber": "20175"
   },
   {
     "trainNumber": "20176",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20176-vande-bharat-exp-chart-times",
+    "canonicalNumber": "20176"
   },
   {
     "trainNumber": "20177",
     "trainName": "ASV AGC SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20177-asv-agc-sf-exp-chart-times",
+    "canonicalNumber": "20177"
   },
   {
     "trainNumber": "20178",
     "trainName": "AGC ASV SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20178-agc-asv-sf-exp-chart-times",
+    "canonicalNumber": "20178"
   },
   {
     "trainNumber": "20401",
     "trainName": "BSB LKO SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20401-bsb-lko-sf-exp-chart-times",
+    "canonicalNumber": "20401"
   },
   {
     "trainNumber": "20402",
     "trainName": "LKO BSB SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20402-lko-bsb-sf-exp-chart-times",
+    "canonicalNumber": "20402"
   },
   {
     "trainNumber": "20403",
     "trainName": "PRYJ LGH SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20403-pryj-lgh-sf-exp-chart-times",
+    "canonicalNumber": "20403"
   },
   {
     "trainNumber": "20404",
     "trainName": "LGH PRYJ SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20404-lgh-pryj-sf-exp-chart-times",
+    "canonicalNumber": "20404"
   },
   {
     "trainNumber": "20407",
     "trainName": "RNC NDLS RAJ EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20407-rnc-ndls-raj-ex-chart-times",
+    "canonicalNumber": "20407"
   },
   {
     "trainNumber": "20408",
     "trainName": "RNC RAJDHANI",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20408-rnc-rajdhani-chart-times",
+    "canonicalNumber": "20408"
   },
   {
     "trainNumber": "20409",
     "trainName": "DEC BTI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20409-dec-bti-sf-exp-chart-times",
+    "canonicalNumber": "20409"
   },
   {
     "trainNumber": "20410",
     "trainName": "BTI DEC SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20410-bti-dec-sf-exp-chart-times",
+    "canonicalNumber": "20410"
   },
   {
     "trainNumber": "20413",
     "trainName": "MAHAKAL EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20413-mahakal-express-chart-times",
+    "canonicalNumber": "20413"
   },
   {
     "trainNumber": "20414",
     "trainName": "MAHAKAL EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20414-mahakal-express-chart-times",
+    "canonicalNumber": "20414"
   },
   {
     "trainNumber": "20415",
     "trainName": "MAHAKAL EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20415-mahakal-express-chart-times",
+    "canonicalNumber": "20415"
   },
   {
     "trainNumber": "20416",
     "trainName": "MAHAKAL SUP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20416-mahakal-sup-exp-chart-times",
+    "canonicalNumber": "20416"
   },
   {
     "trainNumber": "20423",
     "trainName": "PATALKOT SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20423-patalkot-sf-exp-chart-times",
+    "canonicalNumber": "20423"
   },
   {
     "trainNumber": "20424",
     "trainName": "PATALKOT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20424-patalkot-exp-chart-times",
+    "canonicalNumber": "20424"
   },
   {
     "trainNumber": "20433",
     "trainName": "JAMMU MAIL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20433-jammu-mail-chart-times",
+    "canonicalNumber": "20433"
   },
   {
     "trainNumber": "20434",
     "trainName": "JAMMU MAIL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20434-jammu-mail-chart-times",
+    "canonicalNumber": "20434"
   },
   {
     "trainNumber": "20451",
     "trainName": "SGAC NDLS SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20451-sgac-ndls-sf-exp-chart-times",
+    "canonicalNumber": "20451"
   },
   {
     "trainNumber": "20452",
     "trainName": "NDLS SGAC SF EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20452-ndls-sgac-sf-ex-chart-times",
+    "canonicalNumber": "20452"
   },
   {
     "trainNumber": "20471",
     "trainName": "SGNR PURI SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20471-sgnr-puri-sf-exp-chart-times",
+    "canonicalNumber": "20471"
   },
   {
     "trainNumber": "20472",
     "trainName": "PURI SGNR S F",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20472-puri-sgnr-sf-chart-times",
+    "canonicalNumber": "20472"
   },
   {
     "trainNumber": "20473",
     "trainName": "CHETAK EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20473-chetak-express-chart-times",
+    "canonicalNumber": "20473"
   },
   {
     "trainNumber": "20474",
     "trainName": "CHETAK EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20474-chetak-express-chart-times",
+    "canonicalNumber": "20474"
   },
   {
     "trainNumber": "20475",
     "trainName": "BKN MRJ SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20475-bkn-mrj-sf-exp-chart-times",
+    "canonicalNumber": "20475"
   },
   {
     "trainNumber": "20476",
     "trainName": "MRJ BKN SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20476-mrj-bkn-sf-exp-chart-times",
+    "canonicalNumber": "20476"
   },
   {
     "trainNumber": "20481",
     "trainName": "TPJ SF HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20481-tpj-sf-humsafar-chart-times",
+    "canonicalNumber": "20481"
   },
   {
     "trainNumber": "20482",
     "trainName": "JU SF HUMSAFAR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20482-ju-sf-humsafar-chart-times",
+    "canonicalNumber": "20482"
   },
   {
     "trainNumber": "20483",
     "trainName": "BGKT DDR SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20483-bgkt-ddr-sf-exp-chart-times",
+    "canonicalNumber": "20483"
   },
   {
     "trainNumber": "20484",
     "trainName": "DDR BGKT SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20484-ddr-bgkt-sf-exp-chart-times",
+    "canonicalNumber": "20484"
   },
   {
     "trainNumber": "20485",
     "trainName": "JU SBIB SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20485-ju-sbib-sf-exp-chart-times",
+    "canonicalNumber": "20485"
   },
   {
     "trainNumber": "20486",
     "trainName": "SBIB JU EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20486-sbib-ju-exp-chart-times",
+    "canonicalNumber": "20486"
   },
   {
     "trainNumber": "20487",
     "trainName": "MALANI EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20487-malani-express-chart-times",
+    "canonicalNumber": "20487"
   },
   {
     "trainNumber": "20488",
     "trainName": "MALANI EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20488-malani-express-chart-times",
+    "canonicalNumber": "20488"
   },
   {
     "trainNumber": "20489",
     "trainName": "BME MTJ SUP FAST",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20489-bme-mtj-sup-fast-chart-times",
+    "canonicalNumber": "20489"
   },
   {
     "trainNumber": "20490",
     "trainName": "MTJ  BME SF",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20490-mtj-bme-sf-chart-times",
+    "canonicalNumber": "20490"
   },
   {
     "trainNumber": "20491",
     "trainName": "JSM SBIB SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20491-jsm-sbib-sf-exp-chart-times",
+    "canonicalNumber": "20491"
   },
   {
     "trainNumber": "20492",
     "trainName": "SBIB JSM SUP EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20492-sbib-jsm-sup-exp-chart-times",
+    "canonicalNumber": "20492"
   },
   {
     "trainNumber": "20493",
     "trainName": "MDU CDG SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20493-mdu-cdg-sf-exp-chart-times",
+    "canonicalNumber": "20493"
   },
   {
     "trainNumber": "20494",
     "trainName": "CDG MDU SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20494-cdg-mdu-sf-exp-chart-times",
+    "canonicalNumber": "20494"
   },
   {
     "trainNumber": "20495",
     "trainName": "JU HDP SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "20495-ju-hdp-sf-exp-chart-times",
+    "canonicalNumber": "20495"
   },
   {
     "trainNumber": "20496",
