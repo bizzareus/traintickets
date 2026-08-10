@@ -2,7 +2,7 @@
 title: "GNWL vs RLWL vs PQWL: Which Waitlist Confirms Fastest?"
 description: "GNWL clears often, PQWL rarely does — your waitlist type matters more than the number. Compare GNWL, RLWL, PQWL, TQWL & RSWL confirmation chances before you book."
 date: "2026-05-29"
-updated: "2026-08-05"
+updated: "2026-08-10"
 tags:
   - waiting list
   - gnwl
@@ -313,7 +313,7 @@ PQWL tickets generally do not convert into RAC; they usually jump directly from 
 
 ### What happens if a PQWL ticket is not confirmed at chart preparation?
 
-Unconfirmed PQWL online e-tickets are automatically cancelled by IRCTC and full fare minus ₹60 clerkage is refunded to your account.
+Unconfirmed PQWL online e-tickets are automatically cancelled by IRCTC with a full refund of fare (no cancellation or clerkage fee deducted) credited to your account.
 
 ### Can PQWL tickets move directly to confirmed status without entering RAC?
 

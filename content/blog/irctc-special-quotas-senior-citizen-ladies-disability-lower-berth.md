@@ -2,7 +2,7 @@
 title: "Lower Berth Quota for Seniors: How to Book It in 2026"
 description: "How to get a lower berth for elderly parents on Indian Railways: how the senior citizen, ladies (LD) and Divyangjan quotas work, the companion-rule trap, and 3 hacks when they're sold out."
 date: "2026-06-02"
-updated: "2026-07-22"
+updated: "2026-08-10"
 tags:
   - irctc quotas
   - senior citizen booking
@@ -178,29 +178,6 @@ Yes, pregnant women are eligible for lower berth allocation under the Senior Cit
 If a senior citizen travels on a single PNR with more than two passengers or with non-senior family members, the system automatically routes the booking through the General Quota instead of the SS Quota. To ensure a lower berth, it is recommended to book the senior citizen separately under the SS Quota on a standalone PNR, and book other family members under a separate PNR.
 
 ---
-
-## Can You Claim Senior Citizen Berth Allocation During Tatkal Booking?
-
-No, Senior Citizen Quota (SS Quota) and concessions do not apply to Tatkal or Premium Tatkal bookings. When booking Tatkal tickets, senior citizens must select normal General quota and manually check the Request Lower Berth preference box, though allocation depends on real-time availability.
-
-## What ID Documents Are Mandatory for Divyangjan Disability Quota Travel?
-
-Passengers booking under the Divyangjan quota must carry their official Unique Disability ID (UDID) card or the Railway Photo Identity Card issued by the Zonal Railway office during the journey. TTEs verify this card alongside original government photo ID; failure to produce it results in full ticket forfeiture and penalty.
-
----
-
-## Frequently Asked Questions
-
-### Are pregnant women eligible for automatic lower berth quota allocation?
-
-Yes, pregnant women are eligible for lower berth allocation under the Senior Citizen / Ladies / Pregnant Women (SS) Quota. When booking via IRCTC, passengers can select the pregnant woman option. While no medical certificate is required at the time of booking, a valid medical certificate from a registered practitioner must be carried during travel for verification by the TTE.
-
-### Can a senior citizen travelling with a family group get lower berths together?
-
-If a senior citizen travels on a single PNR with more than two passengers or with non-senior family members, the system automatically routes the booking through the General Quota instead of the SS Quota. To ensure a lower berth, it is recommended to book the senior citizen separately under the SS Quota on a standalone PNR, and book other family members under a separate PNR.
-
----
-
 ## Related Guides
 
 - [Securing Adjacent Berths: Family Booking Guide](/blog/family-group-train-booking-adjacent-berths-irctc)
