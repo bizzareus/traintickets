@@ -25,6 +25,7 @@ import { CacheModule } from './cache/cache.module';
 import { WhatsappModule } from './whatsapp/whatsapp.module';
 import { RedditAutomationModule } from './reddit-automation/reddit-automation.module';
 import { McpModule } from './mcp/mcp.module';
+import { ShortLinkModule } from './short-link/short-link.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { McpModule } from './mcp/mcp.module';
     WhatsappModule,
     RedditAutomationModule,
     McpModule,
+    ShortLinkModule,
   ],
   controllers: [AppController],
   providers: [

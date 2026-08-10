@@ -12,6 +12,7 @@ import type { ChartTimeAvailabilityTask } from '@prisma/client';
 import { irctcBookingRedirect } from '../common/irctc-booking-redirect';
 import type { ScheduleStation } from '../irctc/irctc.service';
 import { StationCacheService } from '../cache/station-cache.service';
+import { ShortLinkService } from '../short-link/short-link.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import {
   formatJourneyDateReadable,
@@ -64,7 +65,7 @@ function formatChartTimeIst(
   journeyDateYmd: string,
   timeStr: string,
   dayOffset: number = 0,
-): { label: string; isReleased: boolean } | null {
+): { label: string; formattedTime: string; isReleased: boolean } | null {
   const ymd = journeyDateYmd.slice(0, 10);
   const match = timeStr.trim().match(/^(\d{1,2}):(\d{2})/);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd) || !match) return null;
@@ -102,6 +103,7 @@ function formatChartTimeIst(
     label: isReleased
       ? `Chart for station was released at ${formattedTime}`
       : `New tickets open at ${formattedTime}`,
+    formattedTime,
     isReleased,
   };
 }
@@ -118,6 +120,7 @@ export class NotificationService {
     private config: ConfigService,
     private readonly stationCache: StationCacheService,
     @Optional() private readonly chartTimeService?: ChartTimeService,
+    @Optional() private readonly shortLinkService?: ShortLinkService,
   ) {
     this.wasenderKey = this.config.get<string>('WASENDER_API_KEY');
     this.resendKey = this.config.get<string>('RESEND_API_KEY');
@@ -352,8 +355,8 @@ export class NotificationService {
           if (formatted) {
             return {
               label: formatted.isReleased
-                ? `Chart for ${displayName} was released at ${formatted.label.split(' at ')[1] ?? formatted.label}`
-                : `New tickets open at ${formatted.label.split(' at ')[1] ?? formatted.label}`,
+                ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
+                : `New tickets open at ${formatted.formattedTime}`,
               isReleased: formatted.isReleased,
             };
           }
@@ -372,8 +375,8 @@ export class NotificationService {
       if (formatted) {
         return {
           label: formatted.isReleased
-            ? `Chart for ${displayName} was released at ${formatted.label.split(' at ')[1] ?? formatted.label}`
-            : `New tickets open at ${formatted.label.split(' at ')[1] ?? formatted.label}`,
+            ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
+            : `New tickets open at ${formatted.formattedTime}`,
           isReleased: formatted.isReleased,
         };
       }
@@ -388,8 +391,8 @@ export class NotificationService {
       if (formatted) {
         return {
           label: formatted.isReleased
-            ? `Chart for ${displayName} was released at ${formatted.label.split(' at ')[1] ?? formatted.label}`
-            : `New tickets open at ${formatted.label.split(' at ')[1] ?? formatted.label}`,
+            ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
+            : `New tickets open at ${formatted.formattedTime}`,
           isReleased: formatted.isReleased,
         };
       }
@@ -647,7 +650,30 @@ export class NotificationService {
           result,
         });
 
-        const alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}`;
+        let actionButtonHtml = '';
+        if (chartOpenInfo.isReleased) {
+          const alternateClassUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}&trainNo=${encodeURIComponent(trainNumber)}`;
+          actionButtonHtml = `<a href="${alternateClassUrl}" style="display:inline-block; padding:10px 20px; border-radius:8px; background:#2563eb; color:#fff; font-size:13px; font-weight:600; text-decoration:none;">Check Alternate Class Tickets</a>`;
+        } else {
+          let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}`;
+          if (this.shortLinkService) {
+            try {
+              alertUrl = await this.shortLinkService.createAlertShortLink({
+                trainNumber,
+                trainName: result?.trainSchedule?.trainName,
+                fromStationCode: item.fromCode,
+                toStationCode: item.toCode,
+                journeyDate: journeyDateStr,
+                classCode: this.firstPlannedClassCode(result),
+                email: params.email,
+                mobile: params.mobile,
+              });
+            } catch {
+              // fallback
+            }
+          }
+          actionButtonHtml = `<a href="${alertUrl}" style="display:inline-block; padding:10px 20px; border-radius:8px; background:#f59e0b; color:#fff; font-size:13px; font-weight:600; text-decoration:none;">Get Ticket Alert</a>`;
+        }
 
         return `
     <tr><td style="padding:0 0 12px 0;">
@@ -657,7 +683,7 @@ export class NotificationService {
             <p style="margin:0 0 8px 0; font-size:14px; font-weight:600; color:#b45309;">No tickets available</p>
             <p style="margin:0 0 8px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segDisplay)}</p>
             <p style="margin:0 0 12px 0; font-size:13px; font-weight:600; color:#4338ca;">${escapeHtml(chartOpenInfo.label)}</p>
-            <a href="${alertUrl}" style="display:inline-block; padding:10px 20px; border-radius:8px; background:#f59e0b; color:#fff; font-size:13px; font-weight:600; text-decoration:none;">Get Ticket Alert</a>
+            ${actionButtonHtml}
           </td>
         </tr>
       </table>
@@ -738,6 +764,8 @@ export class NotificationService {
     stationNameMap: Map<string, string>;
     stationScheduleList?: ScheduleStation[];
     result?: Service2CheckResult;
+    email?: string;
+    mobile?: string;
   }): Promise<string> {
     const {
       trainLabel,
@@ -824,12 +852,33 @@ export class NotificationService {
           result,
         });
 
-        const alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}`;
-
         lines.push(`No tickets available:`);
         lines.push(segDisplay);
         lines.push(chartOpenInfo.label);
-        lines.push(`Get alert for this leg: ${alertUrl}`);
+
+        if (chartOpenInfo.isReleased) {
+          const alternateClassUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}&trainNo=${encodeURIComponent(trainNumber)}`;
+          lines.push(`Check Alternate Class Tickets: ${alternateClassUrl}`);
+        } else {
+          let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}`;
+          if (this.shortLinkService) {
+            try {
+              alertUrl = await this.shortLinkService.createAlertShortLink({
+                trainNumber,
+                trainName: result?.trainSchedule?.trainName,
+                fromStationCode: item.fromCode,
+                toStationCode: item.toCode,
+                journeyDate: journeyDateStr,
+                classCode: this.firstPlannedClassCode(result),
+                email: params.email,
+                mobile: params.mobile,
+              });
+            } catch {
+              // fallback
+            }
+          }
+          lines.push(`Get alert for this leg: ${alertUrl}`);
+        }
         lines.push('');
       }
     }
@@ -1130,6 +1179,8 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
             stationNameMap,
             stationScheduleList,
             result,
+            email: email || undefined,
+            mobile: mobile || undefined,
           })
         : this.buildNoSeatsWhatsAppText({
             trainLabel,
