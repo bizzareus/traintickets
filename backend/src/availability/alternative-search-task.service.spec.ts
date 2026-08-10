@@ -20,14 +20,18 @@ describe('AlternativeSearchTaskService', () => {
     } as unknown as jest.Mocked<PrismaService>;
 
     bookingV2 = {
-      findBestTrainCandidates: jest.fn(),
+      findBestTrains: jest.fn(),
     } as unknown as jest.Mocked<BookingV2Service>;
 
     notification = {
       notifyUserAlternativeTrains: jest.fn(),
     } as unknown as jest.Mocked<NotificationService>;
 
-    service = new AlternativeSearchTaskService(prisma, bookingV2, notification);
+    service = new AlternativeSearchTaskService(
+      prisma,
+      bookingV2,
+      notification,
+    );
   });
 
   it('should enqueue a task and trigger async processing', async () => {
@@ -50,7 +54,9 @@ describe('AlternativeSearchTaskService', () => {
     (prisma.alternativeSearchTask.findUnique as jest.Mock).mockResolvedValue(
       mockTask,
     );
-    (bookingV2.findBestTrainCandidates as jest.Mock).mockResolvedValue([]);
+    (bookingV2.findBestTrains as jest.Mock).mockResolvedValue({
+      results: [],
+    });
     (prisma.alternativeSearchTask.update as jest.Mock).mockResolvedValue(
       mockTask,
     );
@@ -123,9 +129,9 @@ describe('AlternativeSearchTaskService', () => {
     (prisma.alternativeSearchTask.update as jest.Mock).mockResolvedValue(
       mockTask,
     );
-    (bookingV2.findBestTrainCandidates as jest.Mock).mockResolvedValue(
-      mockCandidates,
-    );
+    (bookingV2.findBestTrains as jest.Mock).mockResolvedValue({
+      results: mockCandidates,
+    });
     (notification.notifyUserAlternativeTrains as jest.Mock).mockResolvedValue({
       whatsappSent: true,
       emailSent: true,
@@ -134,7 +140,7 @@ describe('AlternativeSearchTaskService', () => {
     await service.processTask('alt_task_2');
 
     expect(
-      (bookingV2.findBestTrainCandidates as jest.Mock).mock.calls.length,
+      (bookingV2.findBestTrains as jest.Mock).mock.calls.length,
     ).toBeGreaterThan(0);
 
     expect(

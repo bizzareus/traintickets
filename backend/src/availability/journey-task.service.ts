@@ -800,7 +800,7 @@ export class JourneyTaskService {
                 await this.alternativeSearchTaskService.enqueueTask({
                   journeyTaskId: task.id,
                   trainNumber: task.trainNumber,
-                  trainName: task.trainName,
+                  trainName: task.trainName ?? undefined,
                   fromStationCode: task.fromStationCode,
                   toStationCode: task.toStationCode,
                   journeyDate: task.journeyDate,

@@ -105,11 +105,12 @@ export class AlternativeSearchTaskService {
 
     try {
       const dateYmd = task.journeyDate.toISOString().slice(0, 10);
-      const candidates = await this.bookingV2Service.findBestTrainCandidates({
+      const searchResult = await this.bookingV2Service.findBestTrains({
         from: task.fromStationCode,
         to: task.toStationCode,
         date: dateYmd,
       });
+      const candidates = searchResult.results;
 
       const matchingAlternatives = candidates.filter((c) => {
         if (c.train.trainNumber === task.trainNumber) return false;

@@ -13,7 +13,11 @@ describe('ChartCronService', () => {
   });
 
   it('runs due tasks when this process is the leader', async () => {
-    const journeyTask = { runDueTasks: jest.fn().mockResolvedValue(0) };
+    const mockRunResult = { claimedTaskIds: [], tasksRun: 0, results: [] };
+    const journeyTask = {
+      runDueTasks: jest.fn().mockResolvedValue(mockRunResult),
+      logCronRun: jest.fn().mockResolvedValue({ id: 'log-1' }),
+    };
     const leader = { isLeader: jest.fn().mockResolvedValue(true) };
     const service = new ChartCronService(journeyTask as never, leader as never);
 
@@ -24,18 +28,21 @@ describe('ChartCronService', () => {
   });
 
   it('does not overlap local cron runs in the same process', async () => {
-    let finishRun!: () => void;
-    const running = new Promise<void>((resolve) => {
+    let finishRun!: (value: any) => void;
+    const running = new Promise<any>((resolve) => {
       finishRun = resolve;
     });
-    const journeyTask = { runDueTasks: jest.fn().mockReturnValue(running) };
+    const journeyTask = {
+      runDueTasks: jest.fn().mockReturnValue(running),
+      logCronRun: jest.fn().mockResolvedValue({ id: 'log-1' }),
+    };
     const leader = { isLeader: jest.fn().mockResolvedValue(true) };
     const service = new ChartCronService(journeyTask as never, leader as never);
 
     const firstRun = service.handleChartCron();
     await Promise.resolve();
     await service.handleChartCron();
-    finishRun();
+    finishRun({ claimedTaskIds: [], tasksRun: 0, results: [] });
     await firstRun;
 
     expect(leader.isLeader).toHaveBeenCalledTimes(2);
