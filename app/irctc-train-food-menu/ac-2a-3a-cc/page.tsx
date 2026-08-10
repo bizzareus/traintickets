@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
-import { StandardMenuPage } from "@/components/foodmenu/StandardMenuPage";
-import { standardMenuMetadata } from "@/lib/standardMenu";
-
-const SLUG = "ac-2a-3a-cc";
-
-export function generateMetadata(): Metadata {
-  return standardMenuMetadata(SLUG);
-}
+import { permanentRedirect } from "next/navigation";
 
 export default function Page() {
-  return <StandardMenuPage slug={SLUG} />;
+  permanentRedirect("/irctc-train-food-menu/ac-coach-food-menu-prices");
 }

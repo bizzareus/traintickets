@@ -21,6 +21,11 @@ const nextConfig = {
         destination: "/chart-vacancy",
         statusCode: 301,
       },
+      {
+        source: "/irctc-train-food-menu/ac-2a-3a-cc",
+        destination: "/irctc-train-food-menu/ac-coach-food-menu-prices",
+        statusCode: 308,
+      },
     ];
   },
   async headers() {

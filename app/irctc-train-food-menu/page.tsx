@@ -89,20 +89,21 @@ export default function TrainFoodMenuIndexPage() {
         </p>
       </header>
 
-      <section className="mb-8" aria-label="Standard menus by class">
+      <section className="mb-8" aria-label="Standard menus by train category & zone">
         <h2 className="mb-1 text-base font-bold text-slate-900">
-          Not a Vande Bharat? Standard menus by class
+          Catering Menus by Train Category
         </h2>
         <p className="mb-3 text-sm text-slate-500">
-          Rajdhani, Shatabdi, Duronto and Mail/Express trains use IRCTC&apos;s
-          standard menu for their class and zone.
+          Official IRCTC food menus and per-meal pricing across major Indian Railways train types.
         </p>
-        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 mb-6">
           {[
-            { href: "/irctc-train-food-menu/rajdhani-1ac-executive", label: "Rajdhani 1AC & Executive Chair Car", sub: "First AC (1A) and Executive Chair Car (EC)" },
-            { href: "/irctc-train-food-menu/ac-2a-3a-cc", label: "AC 2A / 3A / Chair Car", sub: "Rajdhani, Shatabdi and AC Mail/Express" },
-            { href: "/irctc-train-food-menu/duronto-sleeper", label: "Duronto Sleeper Class", sub: "Duronto Express sleeper" },
-            { href: "/irctc-train-food-menu/mail-express-humsafar", label: "Mail / Express / Humsafar", sub: "Breakfast, meals, beverages, à la carte" },
+            { href: "/irctc-train-food-menu/ac-coach-food-menu-prices", label: "AC 2A / 3A / Chair Car Menu", sub: "Standard AC 2-Tier, 3-Tier and Chair Car meal charges" },
+            { href: "/irctc-train-food-menu/rajdhani-express-food-menu-prices", label: "Rajdhani Express Food Menu", sub: "1AC, 2A, 3A & Executive Chair Car catering prices" },
+            { href: "/irctc-train-food-menu/shatabdi-express-food-menu-prices", label: "Shatabdi Express Food Menu", sub: "Executive Chair Car (EC) & AC Chair Car (CC)" },
+            { href: "/irctc-train-food-menu/vande-bharat-express-food-menu-prices", label: "Vande Bharat Express Menu", sub: "Executive Class & Chair Car catering rates" },
+            { href: "/irctc-train-food-menu/duronto-express-food-menu-prices", label: "Duronto Express Food Menu", sub: "Sleeper Class, 3A, 2A & 1A catering charges" },
+            { href: "/irctc-train-food-menu/ac-express-trains-food-menu-prices", label: "AC Express & Garib Rath Menu", sub: "Humsafar, AC Express & Garib Rath catering rates" },
           ].map((c) => (
             <li key={c.href}>
               <Link
@@ -122,6 +123,26 @@ export default function TrainFoodMenuIndexPage() {
             </li>
           ))}
         </ul>
+
+        <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-slate-700">
+          Zonal AC Coach Menus (2A, 3A, CC)
+        </h3>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {[
+            { href: "/irctc-train-food-menu/north-zone-2ac-3ac-cc-food-menu", label: "North Zone AC Menu" },
+            { href: "/irctc-train-food-menu/south-zone-2ac-3ac-cc-food-menu", label: "South Zone AC Menu" },
+            { href: "/irctc-train-food-menu/east-zone-2ac-3ac-cc-food-menu", label: "East Zone AC Menu" },
+            { href: "/irctc-train-food-menu/west-zone-2ac-3ac-cc-food-menu", label: "West Zone AC Menu" },
+          ].map((z) => (
+            <Link
+              key={z.href}
+              href={z.href}
+              className="block rounded-lg border border-slate-200 bg-slate-50/70 p-3 text-center text-xs font-semibold text-slate-800 hover:bg-slate-100 hover:text-blue-700 transition-colors"
+            >
+              {z.label}
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section className="mb-8 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
