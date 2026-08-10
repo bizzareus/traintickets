@@ -31,27 +31,29 @@ export function StandardMenuView({ group }: { group: StandardMenuGroup }) {
   return (
     <div className="pb-16">
       {/* Zone selector */}
-      <div className="mb-4">
-        <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Zone / menu
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {group.zones.map((z) => (
-            <button
-              key={z.key}
-              type="button"
-              onClick={() => setZoneKey(z.key)}
-              className={`rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors ${
-                z.key === zoneKey
-                  ? "bg-amber-600 text-white"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
-            >
-              {z.zone}
-            </button>
-          ))}
+      {group.zones.length > 1 && (
+        <div className="mb-4">
+          <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Zone / menu
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {group.zones.map((z) => (
+              <button
+                key={z.key}
+                type="button"
+                onClick={() => setZoneKey(z.key)}
+                className={`rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors ${
+                  z.key === zoneKey
+                    ? "bg-amber-600 text-white"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                {z.zone}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Search */}
       <div className="relative mb-4">
