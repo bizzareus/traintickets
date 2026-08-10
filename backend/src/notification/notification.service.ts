@@ -1331,11 +1331,11 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
         'alternative_train_alert';
       const altParameters = [
         { name: 'name', value: 'Passenger' },
-        { name: 'original_train_number', value: originalTrainNumber },
-        { name: 'original_train_name', value: originalTrainName },
-        { name: 'from_code', value: fromStationCode },
-        { name: 'to_code', value: toStationCode },
-        { name: 'journey_date', value: journeyDateReadable },
+        { name: 'original_train_number', value: originalTrainNumber || '' },
+        { name: 'original_train_name', value: originalTrainName || '' },
+        { name: 'from_code', value: fromStationCode || '' },
+        { name: 'to_code', value: toStationCode || '' },
+        { name: 'journey_date', value: journeyDateReadable || '' },
       ];
 
       out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText, {

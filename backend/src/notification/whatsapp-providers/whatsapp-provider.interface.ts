@@ -1,6 +1,6 @@
 export type WhatsAppTemplateParameter = {
   name: string;
-  value: string;
+  value: string | number | null | undefined;
 };
 
 export type SendWhatsAppPayload = {
