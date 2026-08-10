@@ -304,10 +304,12 @@ export const getStandardMenuGroup = cache(
   },
 );
 
+const REDIRECT_SLUGS = new Set(["ac-2a-3a-cc", "duronto-sleeper"]);
+
 export function listStandardMenuSlugs(): string[] {
-  return STANDARD_MENU_PAGES.filter((p) => getStandardMenuGroup(p.slug)).map(
-    (p) => p.slug,
-  );
+  return STANDARD_MENU_PAGES.filter(
+    (p) => !REDIRECT_SLUGS.has(p.slug) && getStandardMenuGroup(p.slug),
+  ).map((p) => p.slug);
 }
 
 /** Metadata for a standard-menu page (title deduped: layout adds "| LastBerth"). */
