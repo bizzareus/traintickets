@@ -14,6 +14,7 @@ function makePrisma(
   return {
     stationCache: {
       findMany: jest.fn().mockResolvedValue(findManyResults),
+      createMany: jest.fn().mockResolvedValue({ count: findManyResults.length }),
       upsert: jest.fn().mockReturnValue({}),
     },
     $transaction: jest
@@ -24,21 +25,20 @@ function makePrisma(
 
 describe('StationCacheService', () => {
   describe('search', () => {
-    it('returns null when query is shorter than 2 characters', async () => {
+    it('returns empty array when query is shorter than 2 characters', async () => {
       const prisma = makePrisma();
       const svc = new StationCacheService(prisma);
-      expect(await svc.search('M')).toBeNull();
-      expect(await svc.search('')).toBeNull();
+      expect(await svc.search('M')).toEqual([]);
+      expect(await svc.search('')).toEqual([]);
     });
 
-    it('returns null when fewer than MIN_STATION_RESULTS rows come back', async () => {
-      const rows = [makeStation('AAA', 'Alpha'), makeStation('BBB', 'Beta')];
-      const prisma = makePrisma(rows);
+    it('returns empty array when no rows come back', async () => {
+      const prisma = makePrisma([]);
       const svc = new StationCacheService(prisma);
-      expect(await svc.search('alpha')).toBeNull();
+      expect(await svc.search('alpha')).toEqual([]);
     });
 
-    it('returns mapped rows when result count meets the threshold', async () => {
+    it('returns mapped rows when results come back', async () => {
       const rows = Array.from({ length: 6 }, (_, i) =>
         makeStation(`ST${i}`, `Station ${i}`),
       );
@@ -47,10 +47,8 @@ describe('StationCacheService', () => {
 
       const result = await svc.search('station');
 
-      expect(result).not.toBeNull();
       expect(result).toHaveLength(6);
-      // stationName is returned as stored in the mock (not re-normalized by search)
-      expect(result![0]).toMatchObject({
+      expect(result[0]).toMatchObject({
         stationCode: 'ST0',
         stationName: 'Station 0',
       });
@@ -78,17 +76,18 @@ describe('StationCacheService', () => {
   describe('upsertMany', () => {
     it('does nothing when given an empty list', async () => {
       const prisma = makePrisma();
-      const upsertMock = jest.spyOn(prisma.stationCache, 'upsert');
+      const createManyMock = jest.spyOn(prisma.stationCache, 'createMany');
       const svc = new StationCacheService(prisma);
 
       await svc.upsertMany([]);
-      expect(upsertMock).not.toHaveBeenCalled();
+      expect(createManyMock).not.toHaveBeenCalled();
     });
 
-    it('calls upsert for each station', async () => {
-      const upsertMock = jest.fn().mockReturnValue({});
+    it('calls createMany for new stations', async () => {
+      const findManyMock = jest.fn().mockResolvedValue([]);
+      const createManyMock = jest.fn().mockResolvedValue({ count: 2 });
       const prisma = {
-        stationCache: { upsert: upsertMock },
+        stationCache: { findMany: findManyMock, createMany: createManyMock },
       } as unknown as PrismaService;
       const svc = new StationCacheService(prisma);
 
@@ -97,25 +96,24 @@ describe('StationCacheService', () => {
         { stationCode: 'cstm', stationName: 'Mumbai CST' },
       ]);
 
-      expect(upsertMock).toHaveBeenCalledTimes(2);
+      expect(createManyMock).toHaveBeenCalledTimes(1);
     });
 
-    it('normalizes stationCode and stationName to uppercase in the upsert', async () => {
-      const upsertMock = jest.fn().mockReturnValue({});
+    it('normalizes stationCode and stationName to uppercase in createMany', async () => {
+      const findManyMock = jest.fn().mockResolvedValue([]);
+      const createManyMock = jest.fn().mockResolvedValue({ count: 1 });
       const prisma = {
-        stationCache: { upsert: upsertMock },
+        stationCache: { findMany: findManyMock, createMany: createManyMock },
       } as unknown as PrismaService;
       const svc = new StationCacheService(prisma);
 
       await svc.upsertMany([{ stationCode: 'ndls', stationName: 'New Delhi' }]);
 
-      const call = upsertMock.mock.calls[0][0] as {
-        where: { stationCode: string };
-        create: { stationCode: string; stationName: string };
+      const call = createManyMock.mock.calls[0][0] as {
+        data: Array<{ stationCode: string; stationName: string }>;
       };
-      expect(call.where.stationCode).toBe('NDLS');
-      expect(call.create.stationCode).toBe('NDLS');
-      expect(call.create.stationName).toBe('NEW DELHI');
+      expect(call.data[0].stationCode).toBe('NDLS');
+      expect(call.data[0].stationName).toBe('NEW DELHI');
     });
   });
 });

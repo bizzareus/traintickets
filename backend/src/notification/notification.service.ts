@@ -277,11 +277,14 @@ export class NotificationService {
     });
   }
 
-  private firstPlannedClassCode(result: Service2CheckResult): string | null {
+  private firstPlannedClassCode(
+    result?: Service2CheckResult,
+  ): string | undefined {
+    if (!result) return undefined;
     const filled = result.openAiBookingPlan?.find(isFilledOpenAiPlanItem);
     const instruction = filled?.instruction ?? '';
     const parts = instruction.split(' - ').map((p) => p.trim());
-    return parts[2] || null;
+    return parts[2] || undefined;
   }
 
   /** Build IRCTC URL for a segment from instruction "FROM - TO - CLASS". */
@@ -572,6 +575,8 @@ export class NotificationService {
     stationNameMap: Map<string, string>;
     stationScheduleList?: ScheduleStation[];
     result?: Service2CheckResult;
+    email?: string;
+    mobile?: string;
   }): Promise<string> {
     const {
       trainLabel,
@@ -882,6 +887,8 @@ export class NotificationService {
         lines.push('');
       }
     }
+
+    lines.push('Track live seat updates anytime on LastBerth! 🚄');
 
     return lines.join('\n').trim();
   }
@@ -1375,6 +1382,8 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
       }
       lines.push('');
     });
+
+    lines.push('Track live seat updates anytime on LastBerth! 🚄');
 
     return lines.join('\n').trim();
   }
