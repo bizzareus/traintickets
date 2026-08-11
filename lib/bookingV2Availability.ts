@@ -29,12 +29,31 @@ export function isIrctcDirectBookable(row: AvailabilityRowLike | null | undefine
   const ct = String(row.vendorPredictionStatus ?? "").trim();
   if (ct === "Confirm" || ct === "Probable") return true;
   const st = String(row.availablityStatus ?? "").trim().toUpperCase();
-  if (st.startsWith("AVAILABLE")) return true;
+  const stParts = st.split("/");
+  const currentSt = (stParts[stParts.length - 1] ?? "").trim();
+  if (
+    currentSt.startsWith("AVAILABLE") ||
+    currentSt.startsWith("AVL") ||
+    currentSt.startsWith("CURR_AVBL") ||
+    currentSt.startsWith("CURR_AVL") ||
+    currentSt.startsWith("CNF") ||
+    currentSt.startsWith("CURRENT AV")
+  ) {
+    return true;
+  }
   const line = String(row.availabilityDisplayName ?? row.railDataStatus ?? "")
     .trim()
     .toUpperCase();
+  const lineParts = line.split("/");
+  const currentLine = (lineParts[lineParts.length - 1] ?? "").trim();
   if (
-    line.startsWith("AVAILABLE") ||
+    currentLine.startsWith("AVAILABLE") ||
+    currentLine.startsWith("AVL") ||
+    currentLine.startsWith("CURR_AVBL") ||
+    currentLine.startsWith("CURR_AVL") ||
+    currentLine.startsWith("CAVAILABLE") ||
+    currentLine.startsWith("CNF") ||
+    currentLine.startsWith("CURRENT AV") ||
     line.includes("CURR_AVL") ||
     line.includes("CAVAILABLE")
   ) {

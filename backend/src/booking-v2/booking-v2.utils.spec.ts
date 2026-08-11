@@ -216,6 +216,23 @@ describe('isLegConfirmed', () => {
       }),
     ).toBe(true);
   });
+  it('accepts AVL*', () => {
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'AVL 8',
+      }),
+    ).toBe(true);
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'AVL 1',
+      }),
+    ).toBe(true);
+    expect(
+      isLegConfirmed({
+        availablityStatus: 'AVL',
+      }),
+    ).toBe(true);
+  });
   it('accepts CURR_AVBL*', () => {
     expect(
       isLegConfirmed({

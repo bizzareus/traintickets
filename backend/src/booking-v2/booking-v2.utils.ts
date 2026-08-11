@@ -98,7 +98,9 @@ export function isLegConfirmed(avl: AvlDayLike | null | undefined): boolean {
   const currentStatus = (parts[parts.length - 1] ?? '').trim();
   return (
     currentStatus.startsWith('AVAILABLE') ||
+    currentStatus.startsWith('AVL') ||
     currentStatus.startsWith('CURR_AVBL') ||
+    currentStatus.startsWith('CURR_AVL') ||
     currentStatus.startsWith('CNF') ||
     currentStatus.startsWith('CURRENT AV')
   );
