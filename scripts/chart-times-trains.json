@@ -24252,1086 +24252,1707 @@
   {
     "trainNumber": "26302",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26302-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26302"
   },
   {
     "trainNumber": "26401",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26401-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26401"
   },
   {
     "trainNumber": "26402",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26402-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26402"
   },
   {
     "trainNumber": "26403",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26403-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26403"
   },
   {
     "trainNumber": "26404",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26404-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26404"
   },
   {
     "trainNumber": "26405",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26405-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26405"
   },
   {
     "trainNumber": "26406",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26406-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26406"
   },
   {
     "trainNumber": "26461",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26461-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26461"
   },
   {
     "trainNumber": "26462",
     "trainName": "VANDE BHARAT EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26462-vande-bharat-ex-chart-times",
+    "canonicalNumber": "26462"
   },
   {
     "trainNumber": "26471",
     "trainName": "DEC VANDE BHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26471-dec-vande-bharat-chart-times",
+    "canonicalNumber": "26471"
   },
   {
     "trainNumber": "26472",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26472-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26472"
   },
   {
     "trainNumber": "26481",
     "trainName": "DEC VANDEBHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26481-dec-vandebharat-chart-times",
+    "canonicalNumber": "26481"
   },
   {
     "trainNumber": "26482",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26482-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26482"
   },
   {
     "trainNumber": "26501",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26501-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26501"
   },
   {
     "trainNumber": "26502",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26502-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26502"
   },
   {
     "trainNumber": "26503",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26503-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26503"
   },
   {
     "trainNumber": "26504",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26504-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26504"
   },
   {
     "trainNumber": "26505",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26505-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26505"
   },
   {
     "trainNumber": "26506",
     "trainName": "VANDE BHARAT EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26506-vande-bharat-exp-chart-times",
+    "canonicalNumber": "26506"
   },
   {
     "trainNumber": "26629",
     "trainName": "MALABAR EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "26651",
     "trainName": "ERS VANDEBHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26651-ers-vandebharat-chart-times",
+    "canonicalNumber": "26651"
   },
   {
     "trainNumber": "26652",
     "trainName": "SBC VANDE BHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26652-sbc-vande-bharat-chart-times",
+    "canonicalNumber": "26652"
   },
   {
     "trainNumber": "26751",
     "trainName": "SBC VANDE BHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26751-sbc-vande-bharat-chart-times",
+    "canonicalNumber": "26751"
   },
   {
     "trainNumber": "26752",
     "trainName": "BGM VANDE BHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26752-bgm-vande-bharat-chart-times",
+    "canonicalNumber": "26752"
   },
   {
     "trainNumber": "26901",
     "trainName": "VRL VANDEBHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26901-vrl-vandebharat-chart-times",
+    "canonicalNumber": "26901"
   },
   {
     "trainNumber": "26902",
     "trainName": "SBIB VANDEBHARAT",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26902-sbib-vandebharat-chart-times",
+    "canonicalNumber": "26902"
   },
   {
     "trainNumber": "26963",
     "trainName": "UDZ ASV VB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26963-udz-asv-vb-exp-chart-times",
+    "canonicalNumber": "26963"
   },
   {
     "trainNumber": "26964",
     "trainName": "ASV UDZ VB EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "26964-asv-udz-vb-exp-chart-times",
+    "canonicalNumber": "26964"
   },
   {
     "trainNumber": "27575",
     "trainName": "VANDE BHARAT SL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "27575-vande-bharat-sl-chart-times",
+    "canonicalNumber": "27575"
   },
   {
     "trainNumber": "27576",
     "trainName": "VANDE BHARAT SL",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "27576-vande-bharat-sl-chart-times",
+    "canonicalNumber": "27576"
   },
   {
     "trainNumber": "28181",
     "trainName": "TATA KIR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "28181-tata-kir-exp-chart-times",
+    "canonicalNumber": "28181"
   },
   {
     "trainNumber": "28182",
     "trainName": "KIR TATA EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "28182-kir-tata-exp-chart-times",
+    "canonicalNumber": "28182"
   },
   {
     "trainNumber": "29019",
     "trainName": "MDS KOTA MTC EX",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "29019-mds-kota-mtc-ex-chart-times",
+    "canonicalNumber": "29019"
   },
   {
     "trainNumber": "29020",
     "trainName": "DEHRADUN EXPRES",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "29020-dehradun-expres-chart-times",
+    "canonicalNumber": "29020"
   },
   {
     "trainNumber": "50104",
     "trainName": "RN DIVA PAS SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "50106",
     "trainName": "SWV DIVA PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "50106-swv-diva-pass-chart-times",
+    "canonicalNumber": "50106"
   },
   {
     "trainNumber": "50107",
     "trainName": "SWV MADGAON EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "50107-swv-madgaon-exp-chart-times",
+    "canonicalNumber": "50107"
   },
   {
     "trainNumber": "50108",
     "trainName": "MADGAON SWV EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "50108-madgaon-swv-exp-chart-times",
+    "canonicalNumber": "50108"
   },
   {
     "trainNumber": "51028",
     "trainName": "FAST PASSENGER",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51028-fast-passenger-chart-times",
+    "canonicalNumber": "51028"
   },
   {
     "trainNumber": "51034",
     "trainName": "CSMT FAST PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51034-csmt-fast-pass-chart-times",
+    "canonicalNumber": "51034"
   },
   {
     "trainNumber": "51196",
     "trainName": "BPQ WR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51196-bpq-wr-pass-chart-times",
+    "canonicalNumber": "51196"
   },
   {
     "trainNumber": "51422",
     "trainName": "NZB PUNE PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51422-nzb-pune-pass-chart-times",
+    "canonicalNumber": "51422"
   },
   {
     "trainNumber": "51433",
     "trainName": "NZB PVR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51433-nzb-pvr-pass-chart-times",
+    "canonicalNumber": "51433"
   },
   {
     "trainNumber": "51461",
     "trainName": "MRJ BGM PASSENGR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51461-belagavi-miraj-passenger-chart-times",
+    "canonicalNumber": "51461"
   },
   {
     "trainNumber": "51463",
     "trainName": "MRJ BGM PASSENGR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51463-belagavi-miraj-passenger-chart-times",
+    "canonicalNumber": "51463"
   },
   {
     "trainNumber": "51702",
     "trainName": "REWA JBP PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51702-rewa-jbp-pass-chart-times",
+    "canonicalNumber": "51702"
   },
   {
     "trainNumber": "51753",
     "trainName": "REWA CHRM F PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51753-rewa-chrm-f-pas-chart-times",
+    "canonicalNumber": "51753"
   },
   {
     "trainNumber": "51754",
     "trainName": "CHRM REWA F PGR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "51754-chrm-rewa-f-pgr-chart-times",
+    "canonicalNumber": "51754"
   },
   {
     "trainNumber": "52001",
     "trainName": "BIM WGI PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52001-bim-wgi-pass-chart-times",
+    "canonicalNumber": "52001"
   },
   {
     "trainNumber": "52002",
     "trainName": "WGI BIM PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52002-wgi-bim-pass-chart-times",
+    "canonicalNumber": "52002"
   },
   {
     "trainNumber": "52003",
     "trainName": "BIM WGI PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52003-bim-wgi-pass-chart-times",
+    "canonicalNumber": "52003"
   },
   {
     "trainNumber": "52004",
     "trainName": "WGI BIM PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52004-wgi-bim-pass-chart-times",
+    "canonicalNumber": "52004"
   },
   {
     "trainNumber": "52259",
     "trainName": "BIC MLN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52259-bic-mln-chart-times",
+    "canonicalNumber": "52259"
   },
   {
     "trainNumber": "52260",
     "trainName": "MLN BIC",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52260-mln-bic-chart-times",
+    "canonicalNumber": "52260"
   },
   {
     "trainNumber": "52443",
     "trainName": "SML HOLIDAY SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "52444",
     "trainName": "KLK HOLIDAY SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "52451",
     "trainName": "SHIVALK DLX EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52451-shivalk-dlx-exp-chart-times",
+    "canonicalNumber": "52451"
   },
   {
     "trainNumber": "52452",
     "trainName": "SHIVALK DLX EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52452-shivalk-dlx-exp-chart-times",
+    "canonicalNumber": "52452"
   },
   {
     "trainNumber": "52453",
     "trainName": "KLK SML EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52453-klk-sml-exp-chart-times",
+    "canonicalNumber": "52453"
   },
   {
     "trainNumber": "52454",
     "trainName": "SML KLK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52454-sml-klk-exp-chart-times",
+    "canonicalNumber": "52454"
   },
   {
     "trainNumber": "52455",
     "trainName": "HIMALYAN QUEEN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52455-himalyan-queen-chart-times",
+    "canonicalNumber": "52455"
   },
   {
     "trainNumber": "52456",
     "trainName": "HIMALYAN QUEEN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52456-himalyan-queen-chart-times",
+    "canonicalNumber": "52456"
   },
   {
     "trainNumber": "52457",
     "trainName": "KLK SML EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52457-klk-sml-exp-chart-times",
+    "canonicalNumber": "52457"
   },
   {
     "trainNumber": "52458",
     "trainName": "SML KLK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52458-sml-klk-exp-chart-times",
+    "canonicalNumber": "52458"
   },
   {
     "trainNumber": "52459",
     "trainName": "KLK SML EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52459-klk-sml-express-chart-times",
+    "canonicalNumber": "52459"
   },
   {
     "trainNumber": "52460",
     "trainName": "SML KLK EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52460-sml-klk-express-chart-times",
+    "canonicalNumber": "52460"
   },
   {
     "trainNumber": "52475",
     "trainName": "PTK BJPL EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52475-ptk-bjpl-express-chart-times",
+    "canonicalNumber": "52475"
   },
   {
     "trainNumber": "52476",
     "trainName": "BJPL PTK EXPRESS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52476-bjpl-ptk-express-chart-times",
+    "canonicalNumber": "52476"
   },
   {
     "trainNumber": "52538",
     "trainName": "DJ NJP AC PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52538-dj-njp-ac-pass-chart-times",
+    "canonicalNumber": "52538"
   },
   {
     "trainNumber": "52539",
     "trainName": "NJP DJ AC PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52539-njp-dj-ac-pass-chart-times",
+    "canonicalNumber": "52539"
   },
   {
     "trainNumber": "52540",
     "trainName": "DJ NJP PASSENGER",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52540-dj-njp-passenger-chart-times",
+    "canonicalNumber": "52540"
   },
   {
     "trainNumber": "52541",
     "trainName": "NJP DJ PASSENGER",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52541-njp-dj-passenger-chart-times",
+    "canonicalNumber": "52541"
   },
   {
     "trainNumber": "52544",
     "trainName": "STMJOYRIDEVISTA",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52544-stmjoyridevista-chart-times",
+    "canonicalNumber": "52544"
   },
   {
     "trainNumber": "52545",
     "trainName": "JUNGLE SAFARI",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52545-jungle-safari-chart-times",
+    "canonicalNumber": "52545"
   },
   {
     "trainNumber": "52546",
     "trainName": "JUNGLE SAFARI",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52546-jungle-safari-chart-times",
+    "canonicalNumber": "52546"
   },
   {
     "trainNumber": "52587",
     "trainName": "KGN DJ NG TRAIN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52587-kgn-dj-ng-train-chart-times",
+    "canonicalNumber": "52587"
   },
   {
     "trainNumber": "52588",
     "trainName": "DJ KGN NG TRAIN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52588-dj-kgn-ng-train-chart-times",
+    "canonicalNumber": "52588"
   },
   {
     "trainNumber": "52590",
     "trainName": "DIESEL JOYRIDE",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52590-diesel-joyride-chart-times",
+    "canonicalNumber": "52590"
   },
   {
     "trainNumber": "52591",
     "trainName": "DIESEL JOYRIDE",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52591-diesel-joyride-chart-times",
+    "canonicalNumber": "52591"
   },
   {
     "trainNumber": "52592",
     "trainName": "DIESEL JOYRIDE",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52592-diesel-joyride-chart-times",
+    "canonicalNumber": "52592"
   },
   {
     "trainNumber": "52593",
     "trainName": "JOYRIDE STEAM",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52593-joyride-steam-chart-times",
+    "canonicalNumber": "52593"
   },
   {
     "trainNumber": "52594",
     "trainName": "STEAM JOYRIDE",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52594-steam-joyride-chart-times",
+    "canonicalNumber": "52594"
   },
   {
     "trainNumber": "52595",
     "trainName": "JOYRIDE STEAM",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52595-joyride-steam-chart-times",
+    "canonicalNumber": "52595"
   },
   {
     "trainNumber": "52596",
     "trainName": "STEAM JOYRIDE",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52596-steam-joyride-chart-times",
+    "canonicalNumber": "52596"
   },
   {
     "trainNumber": "52597",
     "trainName": "DIESEL JOYRIDE",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52597-diesel-joyride-chart-times",
+    "canonicalNumber": "52597"
   },
   {
     "trainNumber": "52598",
     "trainName": "STMJOYRIDEVISTA",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52598-stmjoyridevista-chart-times",
+    "canonicalNumber": "52598"
   },
   {
     "trainNumber": "52599",
     "trainName": "DIESEL JOYRIDE",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52599-diesel-joyride-chart-times",
+    "canonicalNumber": "52599"
   },
   {
     "trainNumber": "52965",
     "trainName": "PTP KKD PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52965-ptp-kkd-pass-chart-times",
+    "canonicalNumber": "52965"
   },
   {
     "trainNumber": "52966",
     "trainName": "KKD PTP PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "52966-kkd-ptp-pass-chart-times",
+    "canonicalNumber": "52966"
   },
   {
     "trainNumber": "53047",
     "trainName": "VISWABHARTI PSG",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53047-viswabharti-psg-chart-times",
+    "canonicalNumber": "53047"
   },
   {
     "trainNumber": "53048",
     "trainName": "VISWABHARTI PSG",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53048-viswabharti-psg-chart-times",
+    "canonicalNumber": "53048"
   },
   {
     "trainNumber": "53049",
     "trainName": "HWH MKA PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53049-hwh-mka-pas-chart-times",
+    "canonicalNumber": "53049"
   },
   {
     "trainNumber": "53050",
     "trainName": "MKA HWH  PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53050-mka-hwh-pass-chart-times",
+    "canonicalNumber": "53050"
   },
   {
     "trainNumber": "53139",
     "trainName": "KOAA JSME PGS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53139-koaa-jsme-pgs-chart-times",
+    "canonicalNumber": "53139"
   },
   {
     "trainNumber": "53140",
     "trainName": "JSME KOAA PGS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53140-jsme-koaa-pgs-chart-times",
+    "canonicalNumber": "53140"
   },
   {
     "trainNumber": "53172",
     "trainName": "LGL SDAH PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53172-lgl-sdah-pass-chart-times",
+    "canonicalNumber": "53172"
   },
   {
     "trainNumber": "53175",
     "trainName": "SDAH LGL PGR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53175-sdah-lgl-pgr-chart-times",
+    "canonicalNumber": "53175"
   },
   {
     "trainNumber": "53178",
     "trainName": "LGL SDAH PSGN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53178-lgl-sdah-psgn-chart-times",
+    "canonicalNumber": "53178"
   },
   {
     "trainNumber": "53181",
     "trainName": "SDAH LGL PSGN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53181-sdah-lgl-psgn-chart-times",
+    "canonicalNumber": "53181"
   },
   {
     "trainNumber": "53520",
     "trainName": "GRD LINK PAS EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "53520-giridih-madhupur-passenger-chart-times",
+    "canonicalNumber": "53520"
   },
   {
     "trainNumber": "54075",
     "trainName": "SPC DELHI PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54075-bareilly-delhi-passenger-chart-times",
+    "canonicalNumber": "54075"
   },
   {
     "trainNumber": "54078",
     "trainName": "DLI BE PASSENGR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54078-dli-be-passengr-chart-times",
+    "canonicalNumber": "54078"
   },
   {
     "trainNumber": "54601",
     "trainName": "HSR ASR PSNGR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54601-hsr-asr-psngr-chart-times",
+    "canonicalNumber": "54601"
   },
   {
     "trainNumber": "54602",
     "trainName": "ASR HSR PASNGER",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54602-asr-hsr-pasnger-chart-times",
+    "canonicalNumber": "54602"
   },
   {
     "trainNumber": "54704",
     "trainName": "JU BTI PASENGER",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54704-jaipur-bathinda-passenger-chart-times",
+    "canonicalNumber": "54704"
   },
   {
     "trainNumber": "54767",
     "trainName": "SGNR TKJ PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54767-hanumangarh-sadulpur-passenger-chart-times",
+    "canonicalNumber": "54767"
   },
   {
     "trainNumber": "54768",
     "trainName": "TKJ SGNR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54768-sadulpur-hanumangarh-passenger-chart-times",
+    "canonicalNumber": "54768"
   },
   {
     "trainNumber": "54805",
     "trainName": "JAIPUR PASSENGER",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54805-jaipur-passenger-chart-times",
+    "canonicalNumber": "54805"
   },
   {
     "trainNumber": "54806",
     "trainName": "JP ADI PASSNGER",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54806-jp-adi-passnger-chart-times",
+    "canonicalNumber": "54806"
   },
   {
     "trainNumber": "54833",
     "trainName": "JP HSR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54833-jp-hsr-pass-chart-times",
+    "canonicalNumber": "54833"
   },
   {
     "trainNumber": "54834",
     "trainName": "HSR JP PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "54834-hsr-jp-pass-chart-times",
+    "canonicalNumber": "54834"
   },
   {
     "trainNumber": "55601",
     "trainName": "KYQ LMG PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55601-guwahati-lumding-passenger-chart-times",
+    "canonicalNumber": "55601"
   },
   {
     "trainNumber": "55602",
     "trainName": "LMG KYQ PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55602-lumding-guwahati-passenger-chart-times",
+    "canonicalNumber": "55602"
   },
   {
     "trainNumber": "55605",
     "trainName": "DBRG MZS PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55605-guwahati-shokhuvi-passenger-chart-times",
+    "canonicalNumber": "55605"
   },
   {
     "trainNumber": "55606",
     "trainName": "MZS DBRG PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55606-shokhuvi-guwahati-passenger-chart-times",
+    "canonicalNumber": "55606"
   },
   {
     "trainNumber": "55615",
     "trainName": "GHY SCL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55615-ghy-scl-pass-chart-times",
+    "canonicalNumber": "55615"
   },
   {
     "trainNumber": "55616",
     "trainName": "SCL GHY  PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55616-scl-ghy-pass-chart-times",
+    "canonicalNumber": "55616"
   },
   {
     "trainNumber": "55663",
     "trainName": "AGTL SCL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55663-agtl-scl-pass-chart-times",
+    "canonicalNumber": "55663"
   },
   {
     "trainNumber": "55664",
     "trainName": "SCL AGTL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55664-scl-agtl-pass-chart-times",
+    "canonicalNumber": "55664"
   },
   {
     "trainNumber": "55675",
     "trainName": "AGTL DMR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55675-agtl-dmr-pass-chart-times",
+    "canonicalNumber": "55675"
   },
   {
     "trainNumber": "55676",
     "trainName": "DMR AGTL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55676-dmr-agtl-pass-chart-times",
+    "canonicalNumber": "55676"
   },
   {
     "trainNumber": "55679",
     "trainName": "AGTL DMR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55679-agtl-dmr-pass-chart-times",
+    "canonicalNumber": "55679"
   },
   {
     "trainNumber": "55680",
     "trainName": "DMR AGTL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "55680-dmr-agtl-pass-chart-times",
+    "canonicalNumber": "55680"
   },
   {
     "trainNumber": "56136",
     "trainName": "MTP UAM PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56136-mtp-uam-pass-chart-times",
+    "canonicalNumber": "56136"
   },
   {
     "trainNumber": "56137",
     "trainName": "UAM MTP PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56137-uam-mtp-pass-chart-times",
+    "canonicalNumber": "56137"
   },
   {
     "trainNumber": "56138",
     "trainName": "ONR UAM PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56138-onr-uam-pass-chart-times",
+    "canonicalNumber": "56138"
   },
   {
     "trainNumber": "56139",
     "trainName": "UAM ONR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56139-uam-onr-pass-chart-times",
+    "canonicalNumber": "56139"
   },
   {
     "trainNumber": "56140",
     "trainName": "UAM ONR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56140-uam-onr-pass-chart-times",
+    "canonicalNumber": "56140"
   },
   {
     "trainNumber": "56141",
     "trainName": "ONR UAM PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56141-onr-uam-pass-chart-times",
+    "canonicalNumber": "56141"
   },
   {
     "trainNumber": "56142",
     "trainName": "UAM ONR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56142-uam-onr-pass-chart-times",
+    "canonicalNumber": "56142"
   },
   {
     "trainNumber": "56143",
     "trainName": "ONR UAM PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56143-onr-uam-pass-chart-times",
+    "canonicalNumber": "56143"
   },
   {
     "trainNumber": "56263",
     "trainName": "BANGALORE PASSR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56263-bangalore-passr-chart-times",
+    "canonicalNumber": "56263"
   },
   {
     "trainNumber": "56264",
     "trainName": "MYSORE PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56264-mysore-pass-chart-times",
+    "canonicalNumber": "56264"
   },
   {
     "trainNumber": "56501",
     "trainName": "HUBLI PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56501-hubli-pass-chart-times",
+    "canonicalNumber": "56501"
   },
   {
     "trainNumber": "56502",
     "trainName": "UBL BZA PASSR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56502-ubl-bza-passr-chart-times",
+    "canonicalNumber": "56502"
   },
   {
     "trainNumber": "56503",
     "trainName": "VIJAYAWADA PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56503-vijayawada-pass-chart-times",
+    "canonicalNumber": "56503"
   },
   {
     "trainNumber": "56519",
     "trainName": "SBC HPT PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56519-sbc-hpt-pas-chart-times",
+    "canonicalNumber": "56519"
   },
   {
     "trainNumber": "56520",
     "trainName": "HPT SBC PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56520-hpt-sbc-pas-chart-times",
+    "canonicalNumber": "56520"
   },
   {
     "trainNumber": "56615",
     "trainName": "MAO MAQ SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "56903",
     "trainName": "SUR DHARWAR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56903-sur-dharwar-pass-chart-times",
+    "canonicalNumber": "56903"
   },
   {
     "trainNumber": "56904",
     "trainName": "DWR SUR PASSENGE",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56904-dwr-sur-passenge-chart-times",
+    "canonicalNumber": "56904"
   },
   {
     "trainNumber": "56909",
     "trainName": "HOSPET PASSR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56909-hospet-passr-chart-times",
+    "canonicalNumber": "56909"
   },
   {
     "trainNumber": "56910",
     "trainName": "SBC FAST PSGN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56910-sbc-fast-psgn-chart-times",
+    "canonicalNumber": "56910"
   },
   {
     "trainNumber": "56911",
     "trainName": "HUBBALLI PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56911-hubballi-guntakal-memu-chart-times",
+    "canonicalNumber": "56911"
   },
   {
     "trainNumber": "56912",
     "trainName": "SBC FAST PSGN",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "56912-guntakal-hubballi-memu-chart-times",
+    "canonicalNumber": "56912"
   },
   {
     "trainNumber": "57230",
     "trainName": "VSKP MTM PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "57230-vskp-mtm-pass-chart-times",
+    "canonicalNumber": "57230"
   },
   {
     "trainNumber": "57265",
     "trainName": "VSKP NS PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "57265-vskp-ns-pass-chart-times",
+    "canonicalNumber": "57265"
   },
   {
     "trainNumber": "57273",
     "trainName": "UBL TIRUPATI PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "57273-ubl-tirupati-pas-chart-times",
+    "canonicalNumber": "57273"
   },
   {
     "trainNumber": "57401",
     "trainName": "TPTY UBL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "57401-tpty-ubl-pass-chart-times",
+    "canonicalNumber": "57401"
   },
   {
     "trainNumber": "57402",
     "trainName": "UBL TPTY PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "57402-ubl-tpty-pas-chart-times",
+    "canonicalNumber": "57402"
   },
   {
     "trainNumber": "57405",
     "trainName": "TPTY KRYP PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "57405-tpty-kryp-pass-chart-times",
+    "canonicalNumber": "57405"
   },
   {
     "trainNumber": "57406",
     "trainName": "KRYP TPTY PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "57406-kryp-tpty-pas-chart-times",
+    "canonicalNumber": "57406"
   },
   {
     "trainNumber": "57478",
     "trainName": "KRYP TPTY PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "57478-kryp-tpty-pass-chart-times",
+    "canonicalNumber": "57478"
   },
   {
     "trainNumber": "57602",
     "trainName": "KCG PASSENGER",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "57602-nzm-kcg-passenger-chart-times",
+    "canonicalNumber": "57602"
   },
   {
     "trainNumber": "58011",
     "trainName": "HWH CKP PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58011-hwh-ckp-pas-chart-times",
+    "canonicalNumber": "58011"
   },
   {
     "trainNumber": "58012",
     "trainName": "CKP HWH PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58012-ckp-hwh-pas-chart-times",
+    "canonicalNumber": "58012"
   },
   {
     "trainNumber": "58013",
     "trainName": "HWH BKSC PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58013-hwh-bksc-pass-chart-times",
+    "canonicalNumber": "58013"
   },
   {
     "trainNumber": "58014",
     "trainName": "BKSC HWH  PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58014-bksc-hwh-pas-chart-times",
+    "canonicalNumber": "58014"
   },
   {
     "trainNumber": "58025",
     "trainName": "SRC DGHA PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58025-src-dgha-pass-chart-times",
+    "canonicalNumber": "58025"
   },
   {
     "trainNumber": "58026",
     "trainName": "DGHA SRC PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58026-dgha-src-pass-chart-times",
+    "canonicalNumber": "58026"
   },
   {
     "trainNumber": "58029",
     "trainName": "SRC DGHA PSS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58029-src-dgha-pss-chart-times",
+    "canonicalNumber": "58029"
   },
   {
     "trainNumber": "58030",
     "trainName": "DGHA SRC PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58030-dgha-src-pass-chart-times",
+    "canonicalNumber": "58030"
   },
   {
     "trainNumber": "58113",
     "trainName": "TATA BSP PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58113-tata-bsp-pass-chart-times",
+    "canonicalNumber": "58113"
   },
   {
     "trainNumber": "58219",
     "trainName": "BSP CHRM PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58219-bsp-chrm-pass-chart-times",
+    "canonicalNumber": "58219"
   },
   {
     "trainNumber": "58220",
     "trainName": "CHRM BSP PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58220-chrm-bsp-pass-chart-times",
+    "canonicalNumber": "58220"
   },
   {
     "trainNumber": "58221",
     "trainName": "CHRM CHD PGR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58221-chirimiri-chandia-road-passenger-chart-times",
+    "canonicalNumber": "58221"
   },
   {
     "trainNumber": "58222",
     "trainName": "CHD CHRM PGR",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58222-chandia-road-chirimiri-passenger-chart-times",
+    "canonicalNumber": "58222"
   },
   {
     "trainNumber": "58501",
     "trainName": "VSKP KRDL PGRSP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58501-vskp-krdl-pgrsp-chart-times",
+    "canonicalNumber": "58501"
   },
   {
     "trainNumber": "58502",
     "trainName": "KRDL VSKP PGRSP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58502-krdl-vskp-pgrsp-chart-times",
+    "canonicalNumber": "58502"
   },
   {
     "trainNumber": "58505",
     "trainName": "GNPR VSKP PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58505-gnpr-vskp-pass-chart-times",
+    "canonicalNumber": "58505"
   },
   {
     "trainNumber": "58506",
     "trainName": "VSKP GNPR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58506-vskp-gnpr-pass-chart-times",
+    "canonicalNumber": "58506"
   },
   {
     "trainNumber": "58701",
     "trainName": "SDL ABKP PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58701-sdl-abkp-pass-chart-times",
+    "canonicalNumber": "58701"
   },
   {
     "trainNumber": "58702",
     "trainName": "ABKP SDL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "58702-abkp-sdl-pass-chart-times",
+    "canonicalNumber": "58702"
   },
   {
     "trainNumber": "59013",
     "trainName": "BHUSAVAL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59013-bhusaval-pass-chart-times",
+    "canonicalNumber": "59013"
   },
   {
     "trainNumber": "59075",
     "trainName": "BHUSAVAL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59075-nandurbar-bhusaval-passenger-chart-times",
+    "canonicalNumber": "59075"
   },
   {
     "trainNumber": "59076",
     "trainName": "NDB PASS SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "59077",
     "trainName": "BHUSAVAL PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59077-bhusaval-pass-chart-times",
+    "canonicalNumber": "59077"
   },
   {
     "trainNumber": "59207",
     "trainName": "BVC OKHA PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59207-bvc-okha-pass-chart-times",
+    "canonicalNumber": "59207"
   },
   {
     "trainNumber": "59208",
     "trainName": "BHAVNAGAR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59208-bhavnagar-pass-chart-times",
+    "canonicalNumber": "59208"
   },
   {
     "trainNumber": "59230",
     "trainName": "BVC ST LINK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59230-bhavnagar-terminus-botad-passenger-chart-times",
+    "canonicalNumber": "59230"
   },
   {
     "trainNumber": "59272",
     "trainName": "BVC DEE LINK EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59272-bhavnagar-terminus-surendranagar-passenger-chart-times",
+    "canonicalNumber": "59272"
   },
   {
     "trainNumber": "59307",
     "trainName": "INDB AII LINK E",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59307-indore-ujjain-passenger-chart-times",
+    "canonicalNumber": "59307"
   },
   {
     "trainNumber": "59320",
     "trainName": "BPL UJJAIN PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59320-bhopal-ujjain-passenger-chart-times",
+    "canonicalNumber": "59320"
   },
   {
     "trainNumber": "59385",
     "trainName": "PANCHVALLEY PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59385-panchvalley-pass-chart-times",
+    "canonicalNumber": "59385"
   },
   {
     "trainNumber": "59386",
     "trainName": "PANCHVALLEY  PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59386-panchvalley-pas-chart-times",
+    "canonicalNumber": "59386"
   },
   {
     "trainNumber": "59393",
     "trainName": "DHD HBJ FAST PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59393-dhd-hbj-fast-pas-chart-times",
+    "canonicalNumber": "59393"
   },
   {
     "trainNumber": "59394",
     "trainName": "HBJ DHD FAST PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59394-hbj-dhd-fast-pas-chart-times",
+    "canonicalNumber": "59394"
   },
   {
     "trainNumber": "59395",
     "trainName": "BZU CWA SPECIAL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "59439",
     "trainName": "AHMADABAD PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59439-ahmadabad-pass-chart-times",
+    "canonicalNumber": "59439"
   },
   {
     "trainNumber": "59440",
     "trainName": "AHMADABAD PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59440-ahmadabad-pass-chart-times",
+    "canonicalNumber": "59440"
   },
   {
     "trainNumber": "59441",
     "trainName": "AHMEDABAD PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59441-ahmedabad-pass-chart-times",
+    "canonicalNumber": "59441"
   },
   {
     "trainNumber": "59442",
     "trainName": "AHMEDABAD PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59442-ahmedabad-pass-chart-times",
+    "canonicalNumber": "59442"
   },
   {
     "trainNumber": "59547",
     "trainName": "OKHA PASSENGER",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59547-okha-passenger-chart-times",
+    "canonicalNumber": "59547"
   },
   {
     "trainNumber": "59548",
     "trainName": "OKHA ADI PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59548-okha-adi-pass-chart-times",
+    "canonicalNumber": "59548"
   },
   {
     "trainNumber": "59549",
     "trainName": "SANKALP FAST PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59549-sankalp-fast-passenger-chart-times",
+    "canonicalNumber": "59549"
   },
   {
     "trainNumber": "59550",
     "trainName": "SANKALP FAST PAS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59550-sankalp-fast-passenger-chart-times",
+    "canonicalNumber": "59550"
   },
   {
     "trainNumber": "59801",
     "trainName": "KOTA JAIPUR PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59801-kota-jaipur-pass-chart-times",
+    "canonicalNumber": "59801"
   },
   {
     "trainNumber": "59804",
     "trainName": "KOTA RTM PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59804-kota-rtm-pass-chart-times",
+    "canonicalNumber": "59804"
   },
   {
     "trainNumber": "59811",
     "trainName": "HALDIGHATI PASS",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "59811-haldighati-pass-chart-times",
+    "canonicalNumber": "59811"
   },
   {
     "trainNumber": "82356",
     "trainName": "CSMT PNBE SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "82356-csmt-pnbe-sf-exp-chart-times",
+    "canonicalNumber": "82356"
   },
   {
     "trainNumber": "82501",
     "trainName": "IRCTC TEJAS EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "82501-irctc-tejas-exp-chart-times",
+    "canonicalNumber": "82501"
   },
   {
     "trainNumber": "82502",
     "trainName": "IRCTC TEJAS EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "82502-irctc-tejas-exp-chart-times",
+    "canonicalNumber": "82502"
   },
   {
     "trainNumber": "82713",
     "trainName": "SC SUVIDHA SPL",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "82723",
     "trainName": "SC CCT SUVIDHA",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "82723-sc-cct-suvidha-chart-times",
+    "canonicalNumber": "82723"
   },
   {
     "trainNumber": "82901",
     "trainName": "IRCTC TEJAS EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "82901-irctc-tejas-exp-chart-times",
+    "canonicalNumber": "82901"
   },
   {
     "trainNumber": "82902",
     "trainName": "IRCTC TEJAS EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "82902-irctc-tejas-exp-chart-times",
+    "canonicalNumber": "82902"
   },
   {
     "trainNumber": "90993",
     "trainName": "JP UDZ SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "90993-churchgate-virarsemifast-local-chart-times",
+    "canonicalNumber": "90993"
   },
   {
     "trainNumber": "90994",
     "trainName": "UDZ JP SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "90994-udz-jp-sf-exp-chart-times",
+    "canonicalNumber": "90994"
   },
   {
     "trainNumber": "90999",
     "trainName": "CDG MDU SF EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "90999-churchgate-borivali-slow-local-chart-times",
+    "canonicalNumber": "90999"
   },
   {
     "trainNumber": "94749",
     "trainName": "CWA FZR EXP",
-    "completed": false
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "94749-cwa-fzr-exp-chart-times",
+    "canonicalNumber": "94749"
   },
   {
     "trainNumber": "94751",
     "trainName": "HTE PUNE EXP",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "94753",
     "trainName": "VSKP  KRDL  PASS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "94754",
     "trainName": "KRDL  VSKP  PASS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "94755",
     "trainName": "AGTL DMR PASS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "94756",
     "trainName": "DMR AGTL PASS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "94757",
     "trainName": "VISWAVARATI PASS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   },
   {
     "trainNumber": "94758",
     "trainName": "VISWABHARTI PASS",
-    "completed": false
+    "completed": false,
+    "httpStatus": 404
   }
 ]
