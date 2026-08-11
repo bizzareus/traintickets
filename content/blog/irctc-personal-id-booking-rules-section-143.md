@@ -2,7 +2,7 @@
 title: "Can I Book Train Tickets for Friends on Personal IRCTC ID? Rules"
 description: "Are you booking tickets for friends/family on your personal IRCTC account? Learn the rules of Section 143, passenger verification, and how to avoid penalties."
 date: "2026-07-04"
-updated: "2026-07-21"
+updated: "2026-08-11"
 tags:
   - train booking
   - irctc
@@ -70,7 +70,7 @@ For genuine travelers who find themselves stuck with waitlisted tickets, using i
 
 **Yes, you can legally book Tatkal tickets for your friends and family members from your personal IRCTC account, provided you charge no extra booking fee or commission. However, personal IDs can only book up to 2 Tatkal tickets per IP address between 10:00 AM and 12:00 PM to prevent automated scalping.**
 
-Tatkal ticket booking opens at 10:00 AM for AC classes (1A, 2A, 3A, 3E, CC) and 11:00 AM for non-AC classes (SL, FC, 2S). During peak Tatkal booking hours, demand is extremely high and seats get exhausted within seconds. To curb unauthorized bulk hoarding, IRCTC limits individual accounts to booking a maximum of 2 Tatkal tickets per user login or IP address session during these rush hours.
+Tatkal ticket booking opens at 10:00 AM for AC classes (2A, 3A, 3E, EC, CC) and 11:00 AM for non-AC classes (SL, FC, 2S). During peak Tatkal booking hours, demand is extremely high and seats get exhausted within seconds. To curb unauthorized bulk hoarding, IRCTC limits individual accounts to booking a maximum of 2 Tatkal tickets per user login or IP address session during these rush hours.
 
 When booking Tatkal tickets for friends, add their details to your IRCTC account's Master List in advance. Storing up to 20 pre-verified passenger profiles in your Master List allows instant passenger selection during booking, saving crucial seconds when completing checkout via UPI, debit card, or net banking. Keep in mind that confirmed Tatkal tickets carry a 100% cancellation charge with zero refund, so double-check passenger details carefully before payment.
 
