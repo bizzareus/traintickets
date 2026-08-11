@@ -40,18 +40,10 @@ export function isIrctcDirectBookable(row: AvailabilityRowLike | null | undefine
   const currentLine = (lineParts[lineParts.length - 1] ?? "").trim();
 
   return (
-    currentSt.startsWith("AVL") ||
     currentSt.startsWith("CURR_AVL") ||
     currentSt.startsWith("CURR_AVBL") ||
-    currentSt.startsWith("AVAILABLE") ||
-    currentSt.startsWith("CNF") ||
-    currentSt.startsWith("CURRENT AV") ||
     currentLine.startsWith("AVL") ||
     currentLine.startsWith("CURR_AVL") ||
-    currentLine.startsWith("CURR_AVBL") ||
-    currentLine.startsWith("AVAILABLE") ||
-    currentLine.startsWith("CNF") ||
-    currentLine.startsWith("CURRENT AV") ||
     line.includes("CURR_AVL")
   );
 }
