@@ -61,6 +61,7 @@ cd /workspace && \
 Operate as a principal engineer focused on clear, maintainable, minimal solutions.
 
 - **Continuous Optimization**: Whenever writing any new code or modifying existing code, actively simplify, refactor, and optimize it for minimal footprint and maximum clarity.
+- **Post-Edit Quality Audit**: Immediately after writing or modifying any code, invoke the `code-quality-review` skill to audit all changes against principal engineering standards before declaring the task complete.
 - **DRY**: avoid duplication; extract shared logic when repetition appears.
 - **KISS**: prefer the simplest implementation that satisfies requirements.
 - **SOLID**: keep responsibilities focused, dependencies clear, and behavior extensible without unnecessary complexity.
