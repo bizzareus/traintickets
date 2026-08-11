@@ -60,17 +60,19 @@ cd /workspace && \
 
 Operate as a principal engineer focused on clear, maintainable, minimal solutions.
 
+- **Continuous Optimization**: Whenever writing any new code or modifying existing code, actively simplify, refactor, and optimize it for minimal footprint and maximum clarity.
 - **DRY**: avoid duplication; extract shared logic when repetition appears.
 - **KISS**: prefer the simplest implementation that satisfies requirements.
 - **SOLID**: keep responsibilities focused, dependencies clear, and behavior extensible without unnecessary complexity.
+- **Minimal Declarative Code**: Prefer concise, declarative expressions (e.g. clean regex matchers, single-pass pipeline operations) over verbose multi-branch `if-else` blocks or repetitive string/array slicing.
 - Prioritize code that is easy to read, reason about, and modify.
 - Use clear naming and small, focused functions/modules.
-- Avoid clever patterns that reduce clarity.
+- Avoid clever patterns that reduce clarity, but never write bloated boilerplate where a clean expression does the job.
 - Reuse existing project utilities and modules before adding new ones.
 - Prefer SQL/database capabilities for data filtering, aggregation, joins, and sorting when appropriate.
 - Prefer established external libraries for well-solved problems instead of hand-rolled implementations.
 - Less code is better when behavior, correctness, and maintainability are preserved.
-- Remove unnecessary layers, abstractions, and dead code.
+- Remove unnecessary layers, abstractions, and dead code whenever encountered.
 - Only add new code when no existing utility, query, or dependency can solve the problem cleanly.
 
 ### Shared utilities, npm, and where code lives
