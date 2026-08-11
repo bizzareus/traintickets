@@ -20,30 +20,21 @@ export type AvailabilityRowLike = {
   railDataStatus?: string | null;
 };
 
+const BOOKABLE_STATUS_RE = /^AVL|^AVAIL|^CURR_AV|^CURRENT AV/i;
+
 /** `true` when user should be sent to IRCTC to book (availablityType 1 or equivalent). */
 export function isIrctcDirectBookable(row: AvailabilityRowLike | null | undefined): boolean {
   if (!row) return false;
-  const at = parseUpstreamAvailablityType(row.availablityType);
-  if (at === 3) return false;
-  if (at === 1) return true;
-  const ct = String(row.vendorPredictionStatus ?? "").trim();
-  if (ct === "Confirm" || ct === "Probable") return true;
 
-  const st = String(row.availablityStatus ?? "").trim().toUpperCase();
-  const stParts = st.split("/");
-  const currentSt = (stParts[stParts.length - 1] ?? "").trim();
+  const type = parseUpstreamAvailablityType(row.availablityType);
+  if (type === 3) return false;
+  if (type === 1) return true;
 
-  const line = String(row.availabilityDisplayName ?? row.railDataStatus ?? "")
-    .trim()
-    .toUpperCase();
-  const lineParts = line.split("/");
-  const currentLine = (lineParts[lineParts.length - 1] ?? "").trim();
+  const vendorStatus = String(row.vendorPredictionStatus ?? "").trim();
+  if (vendorStatus === "Confirm" || vendorStatus === "Probable") return true;
 
-  return (
-    currentSt.startsWith("CURR_AVL") ||
-    currentSt.startsWith("CURR_AVBL") ||
-    currentLine.startsWith("AVL") ||
-    currentLine.startsWith("CURR_AVL") ||
-    line.includes("CURR_AVL")
-  );
+  const statusText = row.availabilityDisplayName ?? row.railDataStatus ?? row.availablityStatus ?? "";
+  const currentStatus = statusText.split("/").pop()?.trim() ?? "";
+
+  return BOOKABLE_STATUS_RE.test(currentStatus);
 }

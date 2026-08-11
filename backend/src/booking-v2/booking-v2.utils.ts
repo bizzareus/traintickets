@@ -84,26 +84,20 @@ export function parseUpstreamAvailablityType(v: unknown): number | null {
   return null;
 }
 
+const CONFIRMED_LEG_STATUS_RE = /^AVL|^AVAIL|^CURR_AV|^CURRENT AV|^CNF/i;
+
 export function isLegConfirmed(avl: AvlDayLike | null | undefined): boolean {
   if (!avl) return false;
-  const at = parseUpstreamAvailablityType(avl.availablityType);
-  if (at === 3) return false;
-  if (at === 1) return true;
-  const ct = String(avl.vendorPredictionStatus ?? '').trim();
-  if (ct === 'Confirm' || ct === 'Probable') return true;
-  const st = String(avl.availablityStatus ?? '')
-    .trim()
-    .toUpperCase();
-  const parts = st.split('/');
-  const currentStatus = (parts[parts.length - 1] ?? '').trim();
-  return (
-    currentStatus.startsWith('AVAILABLE') ||
-    currentStatus.startsWith('AVL') ||
-    currentStatus.startsWith('CURR_AVBL') ||
-    currentStatus.startsWith('CURR_AVL') ||
-    currentStatus.startsWith('CNF') ||
-    currentStatus.startsWith('CURRENT AV')
-  );
+
+  const type = parseUpstreamAvailablityType(avl.availablityType);
+  if (type === 3) return false;
+  if (type === 1) return true;
+
+  const vendorStatus = String(avl.vendorPredictionStatus ?? '').trim();
+  if (vendorStatus === 'Confirm' || vendorStatus === 'Probable') return true;
+
+  const currentStatus = String(avl.availablityStatus ?? '').split('/').pop()?.trim() ?? '';
+  return CONFIRMED_LEG_STATUS_RE.test(currentStatus);
 }
 
 /**
