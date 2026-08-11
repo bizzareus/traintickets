@@ -446,16 +446,52 @@ export class JourneyTaskService {
       if (existing) {
         monitoringContactId = existing.id;
         if (email && existing.email !== email) {
-          await this.prisma.monitoringContact.update({
-            where: { id: existing.id },
-            data: { email },
-          });
+          try {
+            await this.prisma.monitoringContact.update({
+              where: { id: existing.id },
+              data: { email },
+            });
+          } catch (err: unknown) {
+            // Ignore unique constraint violation if another contact already has this email
+            const errObj =
+              err != null && typeof err === 'object'
+                ? (err as Record<string, unknown>)
+                : null;
+            const causeKind =
+              errObj?.cause != null &&
+              typeof errObj.cause === 'object' &&
+              'kind' in errObj.cause
+                ? (errObj.cause as Record<string, unknown>).kind
+                : undefined;
+            const isUniqueViolation =
+              errObj?.code === 'P2002' ||
+              causeKind === 'UniqueConstraintViolation';
+            if (!isUniqueViolation) throw err;
+          }
         }
         if (mobile && existing.mobile !== mobile) {
-          await this.prisma.monitoringContact.update({
-            where: { id: existing.id },
-            data: { mobile },
-          });
+          try {
+            await this.prisma.monitoringContact.update({
+              where: { id: existing.id },
+              data: { mobile },
+            });
+          } catch (err: unknown) {
+            // Ignore unique constraint violation if another contact already has this mobile
+            const errObj =
+              err != null && typeof err === 'object'
+                ? (err as Record<string, unknown>)
+                : null;
+            const causeKind =
+              errObj?.cause != null &&
+              typeof errObj.cause === 'object' &&
+              'kind' in errObj.cause
+                ? (errObj.cause as Record<string, unknown>).kind
+                : undefined;
+            const isUniqueViolation =
+              errObj?.code === 'P2002' ||
+              causeKind === 'UniqueConstraintViolation';
+            if (!isUniqueViolation) throw err;
+          }
         }
       } else {
         try {
@@ -525,7 +561,7 @@ export class JourneyTaskService {
     }
 
     if (taskSpecs.length === 0) {
-      throw new Error(
+      throw new BadRequestException(
         'No chart times found for stations in this route. Add chart times (e.g. train 29251, NDLS, 19:54) first.',
       );
     }

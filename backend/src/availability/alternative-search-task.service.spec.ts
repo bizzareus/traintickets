@@ -27,11 +27,7 @@ describe('AlternativeSearchTaskService', () => {
       notifyUserAlternativeTrains: jest.fn(),
     } as unknown as jest.Mocked<NotificationService>;
 
-    service = new AlternativeSearchTaskService(
-      prisma,
-      bookingV2,
-      notification,
-    );
+    service = new AlternativeSearchTaskService(prisma, bookingV2, notification);
   });
 
   it('should enqueue a task and trigger async processing', async () => {

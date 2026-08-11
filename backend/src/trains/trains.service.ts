@@ -59,10 +59,13 @@ export class TrainsService {
               originStation: schedule.stationFrom || '',
               destinationStation: schedule.stationTo || '',
               departureTime: schedule.stationList[0]?.departureTime || '00:00',
-              arrivalTime: schedule.stationList[schedule.stationList.length - 1]?.arrivalTime || '00:00',
+              arrivalTime:
+                schedule.stationList[schedule.stationList.length - 1]
+                  ?.arrivalTime || '00:00',
               chartRules: {
                 create: schedule.stationList.map((station, index) => {
-                  const chartTimeLocal = station.arrivalTime || station.departureTime || '18:00';
+                  const chartTimeLocal =
+                    station.arrivalTime || station.departureTime || '18:00';
                   return {
                     stationCode: station.stationCode,
                     chartTimeLocal,
@@ -108,7 +111,9 @@ export class TrainsService {
     // 3. Fetch schedule cache details for the train
     let schedule: any = null;
     try {
-      const scheduleResult = await this.irctcService.getTrainSchedule(train.trainNumber);
+      const scheduleResult = await this.irctcService.getTrainSchedule(
+        train.trainNumber,
+      );
       if (scheduleResult.ok) {
         schedule = scheduleResult.schedule;
       }
@@ -123,4 +128,3 @@ export class TrainsService {
     };
   }
 }
-

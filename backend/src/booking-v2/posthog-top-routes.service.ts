@@ -10,7 +10,12 @@ const RESULT_TTL_MS = 60 * 60 * 1000;
 /** Station codes are short alphanumerics; reject anything else from the query. */
 const CODE_RE = /^[A-Z0-9]{2,6}$/;
 
-function envInt(name: string, fallback: number, min: number, max: number): number {
+function envInt(
+  name: string,
+  fallback: number,
+  min: number,
+  max: number,
+): number {
   const n = Number.parseInt(process.env[name] ?? '', 10);
   return Number.isFinite(n) && n >= min && n <= max ? n : fallback;
 }
@@ -39,7 +44,7 @@ export class PostHogTopRoutesService {
   get enabled(): boolean {
     return Boolean(
       process.env.POSTHOG_PROJECT_ID?.trim() &&
-        process.env.POSTHOG_PERSONAL_API_KEY?.trim(),
+      process.env.POSTHOG_PERSONAL_API_KEY?.trim(),
     );
   }
 
@@ -60,7 +65,9 @@ export class PostHogTopRoutesService {
         this.logger.warn(
           `[posthog-top-routes] query failed: ${err instanceof Error ? err.message : String(err)}`,
         );
-        captureSentryException(err, { tags: { service: 'posthog-top-routes' } });
+        captureSentryException(err, {
+          tags: { service: 'posthog-top-routes' },
+        });
         // Serve last-known on a transient failure; otherwise empty.
         return this.cache?.routes ?? [];
       })
@@ -122,8 +129,12 @@ export class PostHogTopRoutesService {
     const routes: TopRoute[] = [];
     for (const row of rows) {
       if (!Array.isArray(row)) continue;
-      const from = String(row[0] ?? '').trim().toUpperCase();
-      const to = String(row[1] ?? '').trim().toUpperCase();
+      const from = String(row[0] ?? '')
+        .trim()
+        .toUpperCase();
+      const to = String(row[1] ?? '')
+        .trim()
+        .toUpperCase();
       const searches = Number(row[2] ?? 0);
       if (!CODE_RE.test(from) || !CODE_RE.test(to) || from === to) continue;
       routes.push({ from, to, searches });

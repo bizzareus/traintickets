@@ -1,4 +1,12 @@
-import { Controller, Delete, Get, Logger, Post, Req, Res } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Logger,
+  Post,
+  Req,
+  Res,
+} from '@nestjs/common';
 import type { Request, Response } from 'express';
 import type { IncomingMessage, ServerResponse } from 'http';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
@@ -105,7 +113,9 @@ export class McpController {
           query: z
             .string()
             .min(2)
-            .describe('Station name, city, or partial code, e.g. "Mumbai" or "NDLS"'),
+            .describe(
+              'Station name, city, or partial code, e.g. "Mumbai" or "NDLS"',
+            ),
         },
         annotations: { readOnlyHint: true, openWorldHint: true },
       },
@@ -131,11 +141,21 @@ export class McpController {
         description:
           'Given an origin, destination (station codes or names) and a journey date, returns the train with the best chance of a confirmed seat — including the booking path (direct, or split-ticket legs), fare, and the reason it ranks first. Returns an instant cached answer when available, otherwise runs a short live scan.',
         inputSchema: {
-          from: z.string().describe('Origin station code (e.g. NDLS) or name (e.g. New Delhi)'),
-          to: z.string().describe('Destination station code (e.g. MMCT) or name (e.g. Mumbai)'),
+          from: z
+            .string()
+            .describe(
+              'Origin station code (e.g. NDLS) or name (e.g. New Delhi)',
+            ),
+          to: z
+            .string()
+            .describe(
+              'Destination station code (e.g. MMCT) or name (e.g. Mumbai)',
+            ),
           date: z
             .string()
-            .describe('Journey date, YYYY-MM-DD or DD-MM-YYYY (e.g. 2026-07-15)'),
+            .describe(
+              'Journey date, YYYY-MM-DD or DD-MM-YYYY (e.g. 2026-07-15)',
+            ),
         },
         annotations: { readOnlyHint: true, openWorldHint: true },
       },
@@ -150,10 +170,18 @@ export class McpController {
           this.resolveStation(from),
           this.resolveStation(to),
         ]);
-        if (!origin) return this.errorText(`Could not resolve origin "${from}" to a station.`);
-        if (!dest) return this.errorText(`Could not resolve destination "${to}" to a station.`);
+        if (!origin)
+          return this.errorText(
+            `Could not resolve origin "${from}" to a station.`,
+          );
+        if (!dest)
+          return this.errorText(
+            `Could not resolve destination "${to}" to a station.`,
+          );
         if (origin.code === dest.code) {
-          return this.errorText('Origin and destination resolve to the same station.');
+          return this.errorText(
+            'Origin and destination resolve to the same station.',
+          );
         }
 
         // 1) Instant cached answer.
@@ -199,9 +227,15 @@ export class McpController {
             content: [
               {
                 type: 'text',
-                text: this.formatBestTrain(computed.payload, origin, dest, norm, {
-                  source: 'live',
-                }),
+                text: this.formatBestTrain(
+                  computed.payload,
+                  origin,
+                  dest,
+                  norm,
+                  {
+                    source: 'live',
+                  },
+                ),
               },
             ],
           };
@@ -275,9 +309,7 @@ export class McpController {
           leg.segmentKind === 'confirmed'
             ? `${leg.travelClass ?? 'confirmed'}${leg.availabilityDisplayName ? ` — ${leg.availabilityDisplayName}` : ''}${leg.fare != null ? ` (₹${leg.fare})` : ''}`
             : 'check availability live on IRCTC';
-        lines.push(
-          `  ${i + 1}. ${nm(leg.from)} → ${nm(leg.to)}: ${seg}`,
-        );
+        lines.push(`  ${i + 1}. ${nm(leg.from)} → ${nm(leg.to)}: ${seg}`);
       });
     }
     lines.push(
@@ -287,7 +319,10 @@ export class McpController {
   }
 
   private errorText(message: string) {
-    return { content: [{ type: 'text' as const, text: message }], isError: true };
+    return {
+      content: [{ type: 'text' as const, text: message }],
+      isError: true,
+    };
   }
 
   private withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {

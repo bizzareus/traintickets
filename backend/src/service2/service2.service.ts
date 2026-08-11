@@ -33,7 +33,11 @@ export type OpenAiBookingPlanItem =
 
 export function isFilledOpenAiPlanItem(
   item: OpenAiBookingPlanItem | undefined | null,
-): item is { instruction: string; approx_price: number; availability?: string } {
+): item is {
+  instruction: string;
+  approx_price: number;
+  availability?: string;
+} {
   if (item == null || typeof item !== 'object') return false;
   if (Object.keys(item).length === 0) return false;
   const instruction = toStr(
@@ -1336,9 +1340,12 @@ export class Service2Service {
               'Suggested multi-leg booking plan for your journey is below.';
           } else if (stringLooksLikeJsonObject(rawContent)) {
             openAiSummary = null;
-            captureSentryException(new Error('Failed to read AI journey plan'), {
-              extra: { rawContent, parsed, baseCtx },
-            });
+            captureSentryException(
+              new Error('Failed to read AI journey plan'),
+              {
+                extra: { rawContent, parsed, baseCtx },
+              },
+            );
           } else {
             openAiSummary = rawContent.trim() || null;
           }

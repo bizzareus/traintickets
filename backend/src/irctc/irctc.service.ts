@@ -126,7 +126,9 @@ const SCHEDULE_HEADERS: Record<string, string> = {
  * only recognises the 5-digit form, so normalize 1–4 digit numbers by left-
  * padding with zeros. 5+ digit or non-numeric values pass through unchanged.
  */
-export function to5DigitTrainNo(trainNo: string | number | null | undefined): string {
+export function to5DigitTrainNo(
+  trainNo: string | number | null | undefined,
+): string {
   const t = String(trainNo ?? '').trim();
   return /^\d{1,4}$/.test(t) ? t.padStart(5, '0') : t;
 }
@@ -250,6 +252,10 @@ export type TrainCompositionResponse = {
 @Injectable()
 export class IrctcService {
   private readonly logger = new Logger(IrctcService.name);
+  private readonly scheduleMemoryCache = new Map<
+    string,
+    { result: GetTrainScheduleResult; expiresAt: number }
+  >();
 
   constructor(
     private prisma: PrismaService,
@@ -262,6 +268,13 @@ export class IrctcService {
   ): Promise<GetTrainScheduleResult> {
     const num = String(trainNumber).trim();
     if (!num) return { ok: false, reason: 'unavailable' };
+
+    if (!opts?.forceRefresh) {
+      const cachedMem = this.scheduleMemoryCache.get(num);
+      if (cachedMem && cachedMem.expiresAt > Date.now()) {
+        return cachedMem.result;
+      }
+    }
 
     const cached = (await this.prisma.trainScheduleCache.findUnique({
       where: { trainNumber: num },
@@ -287,7 +300,12 @@ export class IrctcService {
         `[irctc/schedule] cache_hit train=${num} stations=${schedule.stationList.length}`,
       );
       schedule = await this.maybeFillScheduleTrainRunsOn(num, schedule, opts);
-      return { ok: true, schedule };
+      const res: GetTrainScheduleResult = { ok: true, schedule };
+      this.scheduleMemoryCache.set(num, {
+        result: res,
+        expiresAt: Date.now() + 5 * 60 * 1000,
+      });
+      return res;
     }
 
     this.logger.log(
@@ -296,7 +314,9 @@ export class IrctcService {
 
     // 1. Try fetching from ConfirmTkt first
     try {
-      this.logger.log(`[irctc/schedule] trying confirmtkt scraper for train=${num}`);
+      this.logger.log(
+        `[irctc/schedule] trying confirmtkt scraper for train=${num}`,
+      );
       const data = await this.fetchScheduleFromConfirmTkt(num);
       if (data && data.stationList?.length > 0) {
         const runsPayload =
@@ -324,16 +344,27 @@ export class IrctcService {
           } as Prisma.TrainScheduleCacheUpdateInput,
         });
 
-        const schedule = await this.maybeFillScheduleTrainRunsOn(num, data, opts);
+        const schedule = await this.maybeFillScheduleTrainRunsOn(
+          num,
+          data,
+          opts,
+        );
         this.logger.log(
           `[irctc/schedule] confirmtkt_success train=${num} stations=${schedule.stationList.length}`,
         );
-        return { ok: true, schedule };
+        const res: GetTrainScheduleResult = { ok: true, schedule };
+        this.scheduleMemoryCache.set(num, {
+          result: res,
+          expiresAt: Date.now() + 5 * 60 * 1000,
+        });
+        return res;
       }
     } catch (confirmTktErr) {
       this.logger.warn(
         `[irctc/schedule] confirmtkt scraper failed for train=${num}, falling back: ${
-          confirmTktErr instanceof Error ? confirmTktErr.message : String(confirmTktErr)
+          confirmTktErr instanceof Error
+            ? confirmTktErr.message
+            : String(confirmTktErr)
         }`,
       );
     }
@@ -377,7 +408,12 @@ export class IrctcService {
       this.logger.log(
         `[irctc/schedule] ok train=${num} stations=${schedule.stationList.length}`,
       );
-      return { ok: true, schedule };
+      const res: GetTrainScheduleResult = { ok: true, schedule };
+      this.scheduleMemoryCache.set(num, {
+        result: res,
+        expiresAt: Date.now() + 5 * 60 * 1000,
+      });
+      return res;
     } catch (err) {
       if (err instanceof IrctcScheduleMaintenanceError) {
         this.logger.warn(
@@ -569,7 +605,9 @@ export class IrctcService {
   ): Promise<TrainScheduleResponse> {
     const url = `https://www.confirmtkt.com/train-schedule/${encodeURIComponent(trainNumber)}`;
     const t0 = Date.now();
-    this.logger.log(`[irctc/schedule] confirmtkt_request_start train=${trainNumber}`);
+    this.logger.log(
+      `[irctc/schedule] confirmtkt_request_start train=${trainNumber}`,
+    );
 
     const res = await scheduleClient.get<string>(url, {
       responseType: 'text',
@@ -577,7 +615,8 @@ export class IrctcService {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        Accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9',
       },
     });
@@ -596,7 +635,9 @@ export class IrctcService {
     try {
       parsed = JSON.parse(match[1]);
     } catch (err) {
-      throw new Error(`Failed to parse ConfirmTkt JSON: ${err instanceof Error ? err.message : String(err)}`);
+      throw new Error(
+        `Failed to parse ConfirmTkt JSON: ${err instanceof Error ? err.message : String(err)}`,
+      );
     }
 
     if (!parsed || typeof parsed !== 'object') {
@@ -604,7 +645,9 @@ export class IrctcService {
     }
 
     const stationList = (parsed.Schedule || []).map((s: any) => ({
-      stationCode: String(s.StationCode || '').trim().toUpperCase(),
+      stationCode: String(s.StationCode || '')
+        .trim()
+        .toUpperCase(),
       stationName: String(s.StationName || '').trim(),
       arrivalTime: String(s.ArrivalTime || '').trim(),
       departureTime: String(s.DepartureTime || '').trim(),
@@ -637,8 +680,12 @@ export class IrctcService {
     return {
       trainNumber: String(parsed.TrainNo || trainNumber).trim(),
       trainName: String(parsed.TrainName || '').trim(),
-      stationFrom: String(parsed.SourceCode || '').trim().toUpperCase(),
-      stationTo: String(parsed.DestinationCode || '').trim().toUpperCase(),
+      stationFrom: String(parsed.SourceCode || '')
+        .trim()
+        .toUpperCase(),
+      stationTo: String(parsed.DestinationCode || '')
+        .trim()
+        .toUpperCase(),
       stationList,
       trainRunsOn,
     };
@@ -969,8 +1016,7 @@ export class IrctcService {
 
     const proxyEnabled =
       process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() ===
-        'true' ||
-      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
+        'true' || process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
     const proxyUrl = proxyEnabled
       ? process.env.BRIGHTDATA_PROXY_URL?.trim() ||
         process.env.HTTPS_PROXY?.trim() ||
@@ -1172,8 +1218,7 @@ export class IrctcService {
 
     const proxyEnabled =
       process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() ===
-        'true' ||
-      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
+        'true' || process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
     const proxyUrl = proxyEnabled
       ? process.env.BRIGHTDATA_PROXY_URL?.trim() ||
         process.env.HTTPS_PROXY?.trim() ||
@@ -1485,8 +1530,7 @@ export class IrctcService {
 
     const proxyEnabled =
       process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() ===
-        'true' ||
-      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
+        'true' || process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
     const proxyUrl = proxyEnabled
       ? process.env.BRIGHTDATA_PROXY_URL?.trim() ||
         process.env.HTTPS_PROXY?.trim() ||

@@ -36,7 +36,12 @@ const POPULAR_ROUTE_PAIRS: ReadonlyArray<{ from: string; to: string }> = [
 const DAYS_AHEAD = 5;
 const IST_UTC_OFFSET = '+05:30';
 
-function envInt(name: string, fallback: number, min: number, max: number): number {
+function envInt(
+  name: string,
+  fallback: number,
+  min: number,
+  max: number,
+): number {
   const n = Number.parseInt(process.env[name] ?? '', 10);
   return Number.isFinite(n) && n >= min && n <= max ? n : fallback;
 }
@@ -99,11 +104,13 @@ export class BestSeatsCronService {
     try {
       // One bulk sweep of expired cache_entry rows per run, replacing the old
       // per-read DELETE storm. Best-effort — never block the refresh.
-      await this.cache.deleteExpired().catch((e) =>
-        this.logger.warn(
-          `[best-seats-cron] cache sweep failed: ${e instanceof Error ? e.message : String(e)}`,
-        ),
-      );
+      await this.cache
+        .deleteExpired()
+        .catch((e) =>
+          this.logger.warn(
+            `[best-seats-cron] cache sweep failed: ${e instanceof Error ? e.message : String(e)}`,
+          ),
+        );
       await this.refreshDueEntries();
     } catch (err) {
       this.logger.error(
@@ -123,7 +130,8 @@ export class BestSeatsCronService {
    * are recomputed; set BEST_SEATS_REFRESH_MS low (e.g. 1) to force-refresh all.
    */
   async runNow(): Promise<{ ok: boolean; error?: string }> {
-    if (this.running) return { ok: false, error: 'a run is already in progress' };
+    if (this.running)
+      return { ok: false, error: 'a run is already in progress' };
     this.running = true;
     try {
       this.logger.log('[best-seats-cron] manual run triggered');
@@ -221,7 +229,9 @@ export class BestSeatsCronService {
     const due = comboKeys
       .map((x) => ({ ...x, cachedAt: records.get(x.key)?.cachedAt ?? null }))
       .filter((x) => !x.cachedAt || x.cachedAt <= cutoff)
-      .sort((a, b) => (a.cachedAt?.getTime() ?? 0) - (b.cachedAt?.getTime() ?? 0));
+      .sort(
+        (a, b) => (a.cachedAt?.getTime() ?? 0) - (b.cachedAt?.getTime() ?? 0),
+      );
 
     if (due.length === 0) return;
     const batch = due.slice(0, maxPerTick);

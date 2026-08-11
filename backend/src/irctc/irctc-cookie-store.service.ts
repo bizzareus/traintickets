@@ -72,10 +72,7 @@ export class IrctcCookieStoreService {
   }
 
   /** Persist a freshly harvested (or manually pasted) cookie bundle. */
-  async setCookie(
-    cookie: string,
-    meta?: { source?: string },
-  ): Promise<void> {
+  async setCookie(cookie: string, meta?: { source?: string }): Promise<void> {
     const trimmed = cookie.trim();
     const now = new Date();
     await this.prisma.irctcSession.upsert({

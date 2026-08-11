@@ -133,7 +133,9 @@ export class PrismaService
         );
       }
       if (state?.cronlease_updated_default != null) {
-        stmts.push('ALTER TABLE "CronLease" ALTER COLUMN "updated_at" DROP DEFAULT');
+        stmts.push(
+          'ALTER TABLE "CronLease" ALTER COLUMN "updated_at" DROP DEFAULT',
+        );
       }
       if (Number(state?.reddit_status_exists ?? 0) === 0) {
         stmts.push(
@@ -141,15 +143,21 @@ export class PrismaService
         );
       }
       if (state?.reddit_analyzed_nullable === 'NO') {
-        stmts.push('ALTER TABLE "reddit_analyzed_comments" ALTER COLUMN "analyzed_at" DROP NOT NULL');
+        stmts.push(
+          'ALTER TABLE "reddit_analyzed_comments" ALTER COLUMN "analyzed_at" DROP NOT NULL',
+        );
       }
       if (state?.reddit_analyzed_default != null) {
-        stmts.push('ALTER TABLE "reddit_analyzed_comments" ALTER COLUMN "analyzed_at" DROP DEFAULT');
+        stmts.push(
+          'ALTER TABLE "reddit_analyzed_comments" ALTER COLUMN "analyzed_at" DROP DEFAULT',
+        );
       }
 
       if (stmts.length === 0) return;
       for (const sql of stmts) await this.$executeRawUnsafe(sql);
-      console.log(`Self-healing database check: applied ${stmts.length} fix(es).`);
+      console.log(
+        `Self-healing database check: applied ${stmts.length} fix(es).`,
+      );
     } catch (e) {
       console.error('Error during self-healing database check:', e);
     }

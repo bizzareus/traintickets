@@ -790,7 +790,9 @@ export class BookingV2Service {
   }
 
   /** Trim a full best-train result to the small homepage cache payload. */
-  private buildBestTrainPayload(result: BestTrainSearchResult): CachedBestTrain {
+  private buildBestTrainPayload(
+    result: BestTrainSearchResult,
+  ): CachedBestTrain {
     const top = result.results[0];
     if (!top) return { found: false };
     // Keep only the station names actually referenced by the legs, so the row
@@ -1156,7 +1158,9 @@ export class BookingV2Service {
           if (event.type !== 'done') onProgress(event);
         }
       : undefined;
-    const finish = (result: FindAlternatePathsResult): FindAlternatePathsResult => {
+    const finish = (
+      result: FindAlternatePathsResult,
+    ): FindAlternatePathsResult => {
       onProgress?.({
         type: 'done',
         isComplete: result.isComplete,
@@ -1840,7 +1844,9 @@ export class BookingV2Service {
       const fare = this.extractFare(raw);
       const result = { day, fare };
       // Cache only successful probes (never errors) for a short window.
-      void cache.set(cacheKey, result, AVL_SEGMENT_TTL_MS).catch(() => undefined);
+      void cache
+        .set(cacheKey, result, AVL_SEGMENT_TTL_MS)
+        .catch(() => undefined);
       return result;
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);

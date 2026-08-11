@@ -14,7 +14,9 @@ function makePrisma(
   return {
     stationCache: {
       findMany: jest.fn().mockResolvedValue(findManyResults),
-      createMany: jest.fn().mockResolvedValue({ count: findManyResults.length }),
+      createMany: jest
+        .fn()
+        .mockResolvedValue({ count: findManyResults.length }),
       upsert: jest.fn().mockReturnValue({}),
     },
     $transaction: jest

@@ -90,8 +90,12 @@ export class IrctcController {
     },
   ) {
     const trainNo = String(body?.trainNo ?? '').trim();
-    const jDate = String(body?.jDate ?? '').trim().slice(0, 10);
-    const boardingStation = String(body?.boardingStation ?? '').trim().toUpperCase();
+    const jDate = String(body?.jDate ?? '')
+      .trim()
+      .slice(0, 10);
+    const boardingStation = String(body?.boardingStation ?? '')
+      .trim()
+      .toUpperCase();
 
     if (!trainNo || !jDate || !boardingStation) {
       throw new BadRequestException(
@@ -125,11 +129,23 @@ export class IrctcController {
     },
   ) {
     const trainNo = String(body?.trainNo ?? '').trim();
-    const boardingStation = String(body?.boardingStation ?? '').trim().toUpperCase();
-    const remoteStation = String(body?.remoteStation ?? '').trim().toUpperCase() || boardingStation;
-    const trainSourceStation = String(body?.trainSourceStation ?? '').trim().toUpperCase() || boardingStation;
-    const jDate = String(body?.jDate ?? '').trim().slice(0, 10);
-    const coach = String(body?.coach ?? '').trim().toUpperCase();
+    const boardingStation = String(body?.boardingStation ?? '')
+      .trim()
+      .toUpperCase();
+    const remoteStation =
+      String(body?.remoteStation ?? '')
+        .trim()
+        .toUpperCase() || boardingStation;
+    const trainSourceStation =
+      String(body?.trainSourceStation ?? '')
+        .trim()
+        .toUpperCase() || boardingStation;
+    const jDate = String(body?.jDate ?? '')
+      .trim()
+      .slice(0, 10);
+    const coach = String(body?.coach ?? '')
+      .trim()
+      .toUpperCase();
     const cls = String(body?.cls ?? '').trim();
 
     if (!trainNo || !boardingStation || !jDate || !coach || !cls) {

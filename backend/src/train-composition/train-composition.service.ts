@@ -209,8 +209,8 @@ export class TrainCompositionService {
     const row = await this.computeSourceStationChartMeta(params);
     const isComplete = Boolean(
       row.chartOneTime &&
-        row.chartOneDayOffset != null &&
-        row.chartRemoteStation,
+      row.chartOneDayOffset != null &&
+      row.chartRemoteStation,
     );
     await this.cache.set(
       cacheKey,

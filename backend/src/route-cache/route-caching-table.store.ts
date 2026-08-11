@@ -19,7 +19,11 @@ export abstract class RouteCachingTableStore<T> extends RouteCacheStore<T> {
       where: { cacheKey: key },
     });
     if (!row) return null;
-    return { value: row.value, cachedAt: row.cachedAt, expiresAt: row.expiresAt };
+    return {
+      value: row.value,
+      cachedAt: row.cachedAt,
+      expiresAt: row.expiresAt,
+    };
   }
 
   protected async upsert(key: string, value: T, expiresAt: Date) {

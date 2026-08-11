@@ -62,10 +62,19 @@ function describeError(err: unknown): string {
 
 function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
   return new Promise<T>((resolve, reject) => {
-    const t = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    const t = setTimeout(
+      () => reject(new Error(`${label} timed out after ${ms}ms`)),
+      ms,
+    );
     p.then(
-      (v) => { clearTimeout(t); resolve(v); },
-      (e) => { clearTimeout(t); reject(e); },
+      (v) => {
+        clearTimeout(t);
+        resolve(v);
+      },
+      (e) => {
+        clearTimeout(t);
+        reject(e);
+      },
     );
   });
 }
@@ -194,11 +203,16 @@ export class IrctcSessionKeeperService implements OnModuleInit {
           this.logger.log(
             `[irctc-keeper] skip trigger=${trigger} — another replica harvested within the window`,
           );
-          return { ok: false, error: 'skipped (recent harvest by another replica)' };
+          return {
+            ok: false,
+            error: 'skipped (recent harvest by another replica)',
+          };
         }
       }
 
-      this.logger.log(`[irctc-keeper] refresh trigger=${trigger} via=brightdata`);
+      this.logger.log(
+        `[irctc-keeper] refresh trigger=${trigger} via=brightdata`,
+      );
 
       const cookieString = await withTimeout(
         this.harvestViaBrightData(),
@@ -225,7 +239,9 @@ export class IrctcSessionKeeperService implements OnModuleInit {
     } catch (err) {
       const msg = describeError(err);
       this.lastError = msg;
-      this.logger.error(`[irctc-keeper] refresh failed trigger=${trigger}: ${msg}`);
+      this.logger.error(
+        `[irctc-keeper] refresh failed trigger=${trigger}: ${msg}`,
+      );
       captureSentryException(err, {
         tags: { service: 'irctc-keeper' },
         extra: { trigger },

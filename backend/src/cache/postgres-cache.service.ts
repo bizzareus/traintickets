@@ -52,7 +52,9 @@ export class PostgresCacheService extends CacheService {
       if (removed < BATCH) break;
     }
     if (total > 0) {
-      this.logger.log(`[cache] swept ${total} expired cache_entry rows (batched)`);
+      this.logger.log(
+        `[cache] swept ${total} expired cache_entry rows (batched)`,
+      );
     }
     return total;
   }

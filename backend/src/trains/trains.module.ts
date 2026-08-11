@@ -9,4 +9,3 @@ import { IrctcModule } from '../irctc/irctc.module';
   providers: [TrainsService],
 })
 export class TrainsModule {}
-

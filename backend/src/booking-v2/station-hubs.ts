@@ -16,7 +16,18 @@ const HUB_MEMBERS: Record<string, readonly string[]> = {
   // Delhi
   NDLS: ['NDLS', 'DLI', 'NZM', 'ANVT', 'DEE', 'DSA', 'SZM', 'DSB'],
   // Mumbai
-  MMCT: ['MMCT', 'BCT', 'CSMT', 'CSTM', 'LTT', 'BDTS', 'DDR', 'DR', 'BVI', 'ADH'],
+  MMCT: [
+    'MMCT',
+    'BCT',
+    'CSMT',
+    'CSTM',
+    'LTT',
+    'BDTS',
+    'DDR',
+    'DR',
+    'BVI',
+    'ADH',
+  ],
   // Bengaluru
   SBC: ['SBC', 'YPR', 'SMVB', 'SMVT', 'BNC', 'BNCE', 'KJM'],
   // Chennai

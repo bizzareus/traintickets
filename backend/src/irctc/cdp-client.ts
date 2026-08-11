@@ -25,9 +25,16 @@ type PendingCall = {
 type CdpEvent = { method: string; params: unknown; sessionId?: string };
 
 /** Reject with `label` if `promise` doesn't settle within `ms`. */
-function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+function withTimeout<T>(
+  promise: Promise<T>,
+  ms: number,
+  label: string,
+): Promise<T> {
   return new Promise<T>((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    const timer = setTimeout(
+      () => reject(new Error(`${label} timed out after ${ms}ms`)),
+      ms,
+    );
     promise.then(
       (v) => {
         clearTimeout(timer);
@@ -63,7 +70,9 @@ export class CdpClient {
     if (!versionResp.ok) {
       throw new Error(`/json/version ${versionResp.status}`);
     }
-    const info = (await versionResp.json()) as { webSocketDebuggerUrl?: string };
+    const info = (await versionResp.json()) as {
+      webSocketDebuggerUrl?: string;
+    };
     if (!info.webSocketDebuggerUrl) {
       throw new Error('no webSocketDebuggerUrl in /json/version response');
     }
@@ -82,7 +91,11 @@ export class CdpClient {
       };
       const onError = (ev: Event) => {
         ws.removeEventListener('open', onOpen);
-        reject(new Error(`CDP websocket error: ${String((ev as ErrorEvent).message ?? ev)}`));
+        reject(
+          new Error(
+            `CDP websocket error: ${String((ev as ErrorEvent).message ?? ev)}`,
+          ),
+        );
       };
       ws.addEventListener('open', onOpen, { once: true });
       ws.addEventListener('error', onError, { once: true });
@@ -92,7 +105,14 @@ export class CdpClient {
   }
 
   private onMessage(ev: MessageEvent): void {
-    let msg: { id?: number; result?: unknown; error?: { message: string }; method?: string; params?: unknown; sessionId?: string };
+    let msg: {
+      id?: number;
+      result?: unknown;
+      error?: { message: string };
+      method?: string;
+      params?: unknown;
+      sessionId?: string;
+    };
     try {
       msg = JSON.parse(String(ev.data));
     } catch {
@@ -108,10 +128,15 @@ export class CdpClient {
       return;
     }
     if (msg.method) {
-      const event: CdpEvent = { method: msg.method, params: msg.params, sessionId: msg.sessionId };
+      const event: CdpEvent = {
+        method: msg.method,
+        params: msg.params,
+        sessionId: msg.sessionId,
+      };
       this.eventListeners = this.eventListeners.filter((l) => {
         if (l.method !== event.method) return true;
-        if (l.sessionId !== undefined && l.sessionId !== event.sessionId) return true;
+        if (l.sessionId !== undefined && l.sessionId !== event.sessionId)
+          return true;
         l.resolve(event);
         return false;
       });
@@ -136,18 +161,30 @@ export class CdpClient {
     return new Promise<T>((resolve, reject) => {
       const timer = setTimeout(() => {
         this.pending.delete(id);
-        reject(new Error(`CDP command ${method} timed out after ${timeoutMs}ms`));
+        reject(
+          new Error(`CDP command ${method} timed out after ${timeoutMs}ms`),
+        );
       }, timeoutMs);
-      this.pending.set(id, { resolve: resolve as (v: unknown) => void, reject, timer });
+      this.pending.set(id, {
+        resolve: resolve as (v: unknown) => void,
+        reject,
+        timer,
+      });
       this.ws!.send(JSON.stringify(payload));
     });
   }
 
   /** Resolve when a matching event arrives, or reject after `timeoutMs`. */
-  waitForEvent(method: string, sessionId: string | undefined, timeoutMs: number): Promise<CdpEvent> {
+  waitForEvent(
+    method: string,
+    sessionId: string | undefined,
+    timeoutMs: number,
+  ): Promise<CdpEvent> {
     return new Promise((resolve, reject) => {
       const timer = setTimeout(() => {
-        this.eventListeners = this.eventListeners.filter((l) => l.resolve !== wrapped);
+        this.eventListeners = this.eventListeners.filter(
+          (l) => l.resolve !== wrapped,
+        );
         reject(new Error(`timeout waiting for ${method}`));
       }, timeoutMs);
       const wrapped = (e: CdpEvent) => {

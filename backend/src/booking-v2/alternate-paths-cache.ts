@@ -29,7 +29,11 @@ export function alternatePathsCacheKey(
   if (!f || !t || !tn || !normalizedDate) return null;
 
   const classes = (avlClasses ?? [])
-    .map((c) => String(c ?? '').trim().toUpperCase())
+    .map((c) =>
+      String(c ?? '')
+        .trim()
+        .toUpperCase(),
+    )
     .filter(Boolean);
   const classKey = classes.length
     ? Array.from(new Set(classes)).sort().join(',')

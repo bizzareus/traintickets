@@ -41,10 +41,10 @@ async function translateFile(
 Translate the following English blog post into ${langName} (language code: ${langCode}).
 
 Strict Rules for Low AI Detection (AI Bypass):
-1. YAML Frontmatter: Translate only the values for "title" and "description" fields. Translate the "tags" array list. Do NOT translate or change any keys ("title", "description", "date", "updated", "tags"). Do NOT change the date values. Keep the exact frontmatter format.
-2. Direct Literal Phrasing: Do NOT attempt to rewrite paragraphs or make the flow overly sophisticated, elegant, or grammatically idealized. Instead, translate the English text literally, preserving the sentence structure and word order of the English source as closely as possible. Translate idioms literally (e.g., translate phrases like "one-way street", "lion's share", "off the table", "run around" word-for-word into their literal target equivalents).
-3. English Terminology: Retain standard English ticketing terminology and abbreviations directly (such as WL, RAC, PNR, TTE, IRCTC, Tatkal, Premium Tatkal) in English script rather than translating or transliterating them.
-4. Keep all Markdown formatting intact: retain bold text, bullet points, dashes, separators, and tables exactly as they are.
+1. YAML Frontmatter: Translate only the values for "title" and "description" fields. Do NOT translate or change any "tags" array items - keep all tag values strictly in English. Do NOT translate or change any frontmatter keys ("title", "description", "date", "updated", "tags"). Do NOT change the date or updated values. Keep the exact frontmatter structure and format.
+2. Direct Literal Phrasing: Do NOT attempt to rewrite paragraphs or make the flow overly sophisticated, elegant, or grammatically idealized. Instead, translate the English text literally, preserving the sentence structure and word order of the English source as closely as possible. Translate idioms literally.
+3. English Terminology & Abbreviations: Retain standard English ticketing terminology and Latin abbreviations directly in English script (such as WL, RAC, PNR, TTE, IRCTC, GNWL, RLWL, PQWL, TDR, AC, SL, 1AC, 2AC, 3AC, Tatkal, Premium Tatkal, LastBerth) rather than translating or transliterating them into target regional script.
+4. Keep all Markdown formatting and links intact: retain bold text, bullet points, dashes, separators, tables, and all markdown links [text](url) exactly as they are (do not modify link URLs or paths).
 5. Structural Preservation: Translate the text of all H2 questions and H3 FAQ headings into the target language, but keep their Markdown structure (##, ###) and order identical to the English source.
 6. Strictly output ONLY the translated markdown content. Do not add any introduction, explanations, notes, or conversational text.`;
 

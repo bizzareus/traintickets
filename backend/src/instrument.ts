@@ -106,7 +106,6 @@ if (dsn) {
     sendDefaultPii: sendDefaultPii(),
     beforeSend: (event) =>
       isLocalhostEvent(event) || isBenignUpstreamEvent(event) ? null : event,
-    beforeSendTransaction: (event) =>
-      isLocalhostEvent(event) ? null : event,
+    beforeSendTransaction: (event) => (isLocalhostEvent(event) ? null : event),
   });
 }

@@ -55,7 +55,11 @@ export class StationCacheService {
     const unique = [
       ...new Set(
         codes
-          .map((c) => String(c ?? '').trim().toUpperCase())
+          .map((c) =>
+            String(c ?? '')
+              .trim()
+              .toUpperCase(),
+          )
           .filter(Boolean),
       ),
     ];
@@ -86,7 +90,10 @@ export class StationCacheService {
     if (stations.length === 0) return;
 
     // Normalize + dedupe input by station code.
-    const byCode = new Map<string, { stationCode: string; stationName: string; metadata: object }>();
+    const byCode = new Map<
+      string,
+      { stationCode: string; stationName: string; metadata: object }
+    >();
     for (const s of stations) {
       const code = s.stationCode.trim().toUpperCase();
       if (!code) continue;
@@ -106,7 +113,9 @@ export class StationCacheService {
       select: { stationCode: true },
     });
     const known = new Set(existing.map((r) => r.stationCode));
-    const toInsert = codes.filter((c) => !known.has(c)).map((c) => byCode.get(c)!);
+    const toInsert = codes
+      .filter((c) => !known.has(c))
+      .map((c) => byCode.get(c)!);
     if (toInsert.length === 0) return;
 
     // createMany is a single statement per chunk; skipDuplicates handles the
