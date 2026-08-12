@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import axios from 'axios';
 import moment from 'moment';
-import { IrctcService } from '../irctc/irctc.service';
+import { IrctcService, enrichScheduleStationDayCounts } from '../irctc/irctc.service';
 import { CacheService } from '../cache/cache.service';
 import { InMemoryCacheService } from '../cache/in-memory-cache.service';
 import { StationCacheService } from '../cache/station-cache.service';
@@ -1313,7 +1313,9 @@ export class BookingV2Service {
       stopCount: sched.schedule.stationList.length,
     });
 
-    const stationList = sched.schedule.stationList;
+    const stationList = enrichScheduleStationDayCounts(
+      sched.schedule.stationList,
+    );
 
     // Build a code→name lookup from the full schedule (upper-cased keys).
     for (const st of stationList) {
