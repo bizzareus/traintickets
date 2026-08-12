@@ -38,3 +38,23 @@ export function isIrctcDirectBookable(row: AvailabilityRowLike | null | undefine
 
   return BOOKABLE_STATUS_RE.test(currentStatus);
 }
+
+export type TrainAvailabilityLike = {
+  avlClasses?: string[];
+  availabilityCache?: Record<string, AvailabilityRowLike>;
+};
+
+/** Checks if any class on the train has directly bookable/available seats. */
+export function hasAnyAvailableSeat(
+  train: TrainAvailabilityLike,
+  acOnly = false,
+): boolean {
+  const displayedClasses = (train.avlClasses ?? []).filter(
+    (c) => !acOnly || !["SL", "2S", "GN", "FC"].includes(c.toUpperCase()),
+  );
+  return displayedClasses.some((cls) => {
+    const gn = train.availabilityCache?.[cls];
+    return gn ? isIrctcDirectBookable(gn) : false;
+  });
+}
+

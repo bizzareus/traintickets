@@ -12,13 +12,15 @@ import {
 import { useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
-import { isIrctcDirectBookable } from "@/lib/bookingV2Availability";
+import { isIrctcDirectBookable, hasAnyAvailableSeat } from "@/lib/bookingV2Availability";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
 import dynamic from "next/dynamic";
 import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
 import { cn } from "@/lib/utils";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
+import { useAutoSearchExperiment } from "@/lib/hooks/useAutoSearchExperiment";
+import { AutoSearchTrainCard } from "@/components/home/AutoSearchTrainCard";
 
 const SeatStatus = dynamic(
   () => import("@/components/booking-v2/SeatStatus").then((m) => m.SeatStatus),
@@ -538,7 +540,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setAltTrainName,
   } = alt;
 
+  const { isVariantA } = useAutoSearchExperiment();
+  const [failedAutoSearchTrains, setFailedAutoSearchTrains] = useState<Set<string>>(new Set());
+
+
   const [isAdminUser, setIsAdminUser] = useState(false);
+
   useEffect(() => {
     try {
       setIsAdminUser(window.localStorage.getItem("admin") === "true");
@@ -1509,7 +1516,43 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         )}
 
         <ul className="space-y-5" role="list" aria-label="Train results">
-          {trains.map((t) => {
+          {trains.map((t, trainIdx) => {
+            const hasAvailable = hasAnyAvailableSeat(t, acOnly);
+            const autoSearchFailed = failedAutoSearchTrains.has(t.trainNumber);
+
+            // Variant A experiment: Auto-run search ONLY for top 3 trains (and fallback to control if search failed)
+            if (isVariantA && trainIdx < 3 && !hasAvailable && !autoSearchFailed) {
+              return (
+                <AutoSearchTrainCard
+                  key={`variant-a-${t.trainNumber}-${t.departureTime}`}
+                  train={t}
+                  journeyDate={journeyDate}
+                  fromCode={fromSt?.stationCode}
+                  toCode={toSt?.stationCode}
+                  acOnly={acOnly}
+                  onFallbackToControl={() => {
+                    setFailedAutoSearchTrains((prev) => new Set(prev).add(t.trainNumber));
+                  }}
+                  onOpenSchedule={(trainNumber, from, to) => {
+                    setScheduleTrainNumber(trainNumber);
+                    setScheduleHighlightFrom(from ?? "");
+                    setScheduleHighlightTo(to ?? "");
+                    setScheduleModalOpen(true);
+                  }}
+                  onOpenFullResultModal={({ trainNumber, trainName, avlClasses, result }) => {
+                    alt.showResult({
+                      trainNumber,
+                      trainName,
+                      avlClasses,
+                      result,
+                    });
+                  }}
+                />
+              );
+            }
+
+
+            // Control UI (or trains with available seats):
             // Classes shown for this train (respecting the AC-only filter).
             const displayedClasses = (t.avlClasses ?? []).filter(
               (c) =>
@@ -1524,6 +1567,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 return gn ? isIrctcDirectBookable(gn) : false;
               });
             return (
+
             <li
               key={`${t.trainNumber}-${t.departureTime}`}
               className="rounded-xl border border-gray-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg"
