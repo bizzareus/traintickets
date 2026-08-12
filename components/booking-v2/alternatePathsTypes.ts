@@ -71,6 +71,10 @@ export type AlternateLeg = {
   departureTime?: string | null;
   arrivalTime?: string | null;
   durationMinutes?: number | null;
+  /** ISO date (YYYY-MM-DD) when the train departs this leg's boarding station. */
+  boardingDate?: string;
+  /** Day offset relative to train start date (0 = origin departure day, 1 = day 2...). */
+  dayOffset?: number;
 };
 
 /** Mirror of backend AlternatePathProgressEvent. */

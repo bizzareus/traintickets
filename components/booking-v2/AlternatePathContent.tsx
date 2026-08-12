@@ -1150,7 +1150,7 @@ export function AlternatePathContent({
                           <CompactLegChartCta
                             trainNumber={altResult.trainNumber}
                             trainName={altTrainName}
-                            journeyDate={journeyDate ?? ""}
+                            journeyDate={leg.boardingDate || journeyDate || ""}
                             legFrom={leg.from}
                             legTo={leg.to}
                             classCode={
@@ -1233,7 +1233,7 @@ export function AlternatePathContent({
                       <CompactLegChartCta
                         trainNumber={altResult.trainNumber}
                         trainName={altTrainName}
-                        journeyDate={journeyDate ?? ""}
+                        journeyDate={item.legs[0]?.boardingDate || journeyDate || ""}
                         legFrom={item.from}
                         legTo={item.to}
                         classCode={altAvlClasses?.[0] ?? "SL"}

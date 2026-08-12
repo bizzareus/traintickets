@@ -302,7 +302,18 @@ export class JourneyTaskService {
     );
     const dayCount = stationDayCount(boardingStn);
     let resolvedTrainStartDate = startYmd;
-    if (!resolvedTrainStartDate && jYmd) {
+    let resolvedBoardingDate = jYmd;
+
+    if (resolvedTrainStartDate && dayCount > 1) {
+      if (jYmd === resolvedTrainStartDate) {
+        const computedBoardingDate = DateTime.fromISO(resolvedTrainStartDate)
+          .plus({ days: dayCount - 1 })
+          .toISODate();
+        if (computedBoardingDate) {
+          resolvedBoardingDate = computedBoardingDate;
+        }
+      }
+    } else if (!resolvedTrainStartDate && jYmd) {
       if (dayCount > 1) {
         const boardDate = DateTime.fromISO(jYmd);
         resolvedTrainStartDate = boardDate
@@ -313,15 +324,15 @@ export class JourneyTaskService {
       }
     }
 
-    const validationDate = resolvedTrainStartDate || jYmd;
+    const validationDate = resolvedTrainStartDate || resolvedBoardingDate;
     const runDayErr = getTrainDoesNotRunOnDateError(
       validationDate,
       schedule.trainRunsOn,
     );
     if (runDayErr) {
       // If we inferred or used a trainStartDate that is different from boarding date
-      if (resolvedTrainStartDate && resolvedTrainStartDate !== jYmd) {
-        runDayErr.message = `This train does not start its journey on ${resolvedTrainStartDate} (the date it would have to start to reach your boarding station ${fromCode} on ${jYmd}).`;
+      if (resolvedTrainStartDate && resolvedTrainStartDate !== resolvedBoardingDate) {
+        runDayErr.message = `This train does not start its journey on ${resolvedTrainStartDate} (the date it would have to start to reach your boarding station ${fromCode} on ${resolvedBoardingDate}).`;
       }
       return { valid: false, errors: [runDayErr] };
     }
@@ -356,8 +367,8 @@ export class JourneyTaskService {
         toCode,
         trainNumber,
         stationsToProcess: [fromCode],
-        jYmd,
-        trainStartDate: resolvedTrainStartDate || jYmd,
+        jYmd: resolvedBoardingDate,
+        trainStartDate: resolvedTrainStartDate || resolvedBoardingDate,
       },
     };
   }

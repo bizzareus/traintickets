@@ -75,6 +75,10 @@ export type AlternatePathLeg = {
   arrivalTime: string | null;
   /** Travel time for this leg when both clocks resolved (and `dayCount` when present). */
   durationMinutes: number | null;
+  /** ISO date (YYYY-MM-DD) when the train departs this leg's boarding station. */
+  boardingDate?: string;
+  /** Day offset relative to train start date (0 = origin departure day, 1 = day 2...). */
+  dayOffset?: number;
 };
 
 // ---------------------------------------------------------------------------
@@ -1465,6 +1469,14 @@ export class BookingV2Service {
           fare: picked.fare,
           hopIndex: hop,
         });
+        const chosenFromStopLine = stationList[startIdx + currentIdx];
+        const chosenFromDayCount =
+          parseScheduleDayCount(chosenFromStopLine?.dayCount) ?? 1;
+        const chosenLegBoardingDate = trainStartMoment
+          .clone()
+          .add(chosenFromDayCount - 1, 'days')
+          .format('YYYY-MM-DD');
+
         legs.push({
           from: stations[currentIdx],
           to: stations[chosenDestIdx],
@@ -1484,6 +1496,8 @@ export class BookingV2Service {
             classes,
           ),
           ...legTim(stations[currentIdx], stations[chosenDestIdx]),
+          boardingDate: chosenLegBoardingDate,
+          dayOffset: chosenFromDayCount - 1,
         });
         currentIdx = chosenDestIdx;
         continue;
@@ -1498,6 +1512,10 @@ export class BookingV2Service {
       const fromStn = stations[currentIdx];
       const fromStopLine = stationList[startIdx + currentIdx];
       const fromDayCount = parseScheduleDayCount(fromStopLine?.dayCount) ?? 1;
+      const bridgeLegBoardingDate = trainStartMoment
+        .clone()
+        .add(fromDayCount - 1, 'days')
+        .format('YYYY-MM-DD');
       const bridgeDate = trainStartMoment
         .clone()
         .add(fromDayCount - 1, 'days')
@@ -1563,6 +1581,8 @@ export class BookingV2Service {
             classes,
           ),
           ...legTim(fromStn, toStn),
+          boardingDate: bridgeLegBoardingDate,
+          dayOffset: fromDayCount - 1,
         });
       } else {
         const disp = bridge.displayRow;
@@ -1584,6 +1604,8 @@ export class BookingV2Service {
           fare: null,
           confirmedClassOptions: [],
           ...legTim(fromStn, toStn),
+          boardingDate: bridgeLegBoardingDate,
+          dayOffset: fromDayCount - 1,
         });
       }
       currentIdx = nextIdx;

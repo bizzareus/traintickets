@@ -383,4 +383,37 @@ describe('JourneyTaskService', () => {
       );
     });
   });
+
+  describe('validateJourneyForMonitoring', () => {
+    it('should resolve correct boarding date when station comes on day 2 of train journey', async () => {
+      const mockIrctc = (service as any).irctc;
+      mockIrctc.getTrainSchedule.mockResolvedValue({
+        ok: true,
+        schedule: {
+          trainNumber: '20474',
+          trainName: 'CHETAK EXPRESS',
+          trainRunsOn: { sun: true, mon: true, tue: true, wed: true, thu: true, fri: true, sat: true },
+          stationList: [
+            { stationCode: 'AII', dayCount: 1, departureTime: '22:20' },
+            { stationCode: 'RGS', dayCount: 2, arrivalTime: '00:28', departureTime: '00:31' },
+            { stationCode: 'DEE', dayCount: 2, arrivalTime: '05:05' },
+          ],
+        },
+      });
+
+      const res = await service.validateJourneyForMonitoring({
+        trainNumber: '20474',
+        fromStationCode: 'RGS',
+        toStationCode: 'DEE',
+        journeyDate: '2026-08-12',
+        trainStartDate: '2026-08-12',
+      });
+
+      expect(res.valid).toBe(true);
+      if (res.valid) {
+        expect(res.context.jYmd).toBe('2026-08-13');
+        expect(res.context.trainStartDate).toBe('2026-08-12');
+      }
+    });
+  });
 });
