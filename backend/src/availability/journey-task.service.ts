@@ -2,6 +2,7 @@ import {
   BadRequestException,
   HttpStatus,
   Injectable,
+  Logger,
   Optional,
 } from '@nestjs/common';
 import type { Prisma, ChartTimeAvailabilityTask } from '@prisma/client';
@@ -9,6 +10,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import {
   IrctcService,
+  to5DigitTrainNo,
   type TrainScheduleResponse,
 } from '../irctc/irctc.service';
 import { TrainCompositionService } from '../train-composition/train-composition.service';
@@ -206,6 +208,8 @@ export type RunDueTasksResult = {
 
 @Injectable()
 export class JourneyTaskService {
+  private readonly logger = new Logger(JourneyTaskService.name);
+
   constructor(
     private prisma: PrismaService,
     private chartTime: ChartTimeService,
