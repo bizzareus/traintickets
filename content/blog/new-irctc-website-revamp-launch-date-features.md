@@ -1,146 +1,130 @@
 ---
-title: "IRCTC Next-Gen Ticket Booking & RailOne App (2026)"
-description: "IRCTC's next-generation ticket booking system and the RailOne super app launch July 15, 2026: new capacity, coach-map booking, Tatkal fixes, and RailOne login."
+title: "IRCTC New Cloud Reservation System (PRS) 2026: Rules & Login"
+description: "Indian Railways' new cloud-based Passenger Reservation System (PRS) rollout in August 2026: 1.5L bookings/min, cloud login, PNR status, and Tatkal speed rules."
 date: "2026-07-04"
-updated: "2026-07-17"
+updated: "2026-08-12"
 tags:
   - train booking
   - irctc
   - irctc new website
   - irctc next generation ticket booking
+  - prs reservation system
   - tatkal booking
   - railone
 ---
 
-> **Booking on the new IRCTC / RailOne system?** Check live seat availability and your PNR status with [Smart Seats](/), and after chart preparation, see the real vacant berths on your train with [Chart Vacancy](/chart-vacancy) to grab a last-minute seat.
+> **Booking on the new IRCTC cloud system?** Check live seat availability and PNR confirmation chances with [Finding Smart Seats](/) and [PNR Status Search](/). After chart preparation, find vacant berths along your train route using [Seat Status Coach Journey Lookup](/seat-status) and [Chart Vacancy](/chart-vacancy) to grab a confirmed seat.
 
 ## TL;DR
 
-- The **new IRCTC website revamp** launches on **July 15, 2026** — the core of India's **next-generation ticket booking system** — to significantly boost ticket booking speed and search capacity.
-- Key improvements include a 5x capacity upgrade to **1.5 lakh bookings per minute** and resolving payment timeout and CAPTCHA errors.
-- The unified **RailOne Super App** has replaced the decommissioned UTSonMobile app for all unreserved and reserved ticket bookings — and you log in with your **existing IRCTC credentials**, not a new account.
-- The advance reservation booking window is strictly **60 days** under the current Indian Railways policy guidelines.
+- Indian Railways has initiated the phased rollout of its **cloud-based Passenger Reservation System (PRS)** in **August 2026**, replacing the legacy 1986 infrastructure.
+- The cloud upgrade increases ticket processing capacity 5x to **150,000 (1.5 lakh) bookings per minute** and inquiry capacity 10x to **40 lakh queries per minute**.
+- Passengers can now **reschedule confirmed tickets to another date** without cancelling, subject to seat availability and payment of fare differences.
+- You log into the cloud system and the unified **RailOne Super App** using your **existing IRCTC credentials**, with mandatory photo ID rules for unreserved travel.
 
 ---
 
-## What Is IRCTC's Next-Generation Ticket Booking System?
+## What Is IRCTC's New Cloud-Based Passenger Reservation System (PRS)?
 
-**IRCTC's next-generation ticket booking system is the July 15, 2026 revamp of the IRCTC portal, backed by the unified RailOne app, rebuilt on a modern cloud-native architecture. It lifts capacity to 1.5 lakh bookings per minute, adds graphical coach-map seat selection and a fare calendar, and pulls reserved, unreserved, and platform tickets under a single login.**
+**IRCTC's new cloud-based Passenger Reservation System (PRS) is the August 2026 infrastructure overhaul replacing Indian Railways' legacy 40-year-old ticketing backend with cloud architecture. It scales booking speed to 1.5 lakh tickets per minute, eliminates payment gateway timeouts during peak Tatkal hours, and integrates single sign-on across mobile apps and web browsers.**
 
-For years "IRCTC" meant one thing: a website that buckled the moment a popular train opened. The next-generation system is the fix. It is not a single new button but a full-stack modernization — a faster transactional backend, a redesigned interface, and the RailOne app as the mobile front door. Together they are meant to end the 10:00 AM Tatkal freeze and let you *see* the coach before you pick a berth, rather than guessing from a seat count.
-
----
-
-## When is the New IRCTC Website Launching?
-
-The **new IRCTC website revamp** is scheduled to launch on **July 15, 2026**, as officially announced by Railway Minister Ashwini Vaishnaw. This massive infrastructure upgrade aims to modernize the portal, providing passengers a much smoother booking experience and eliminating common technical glitches during high-traffic booking intervals.
-
-This upcoming launch is expected to completely transform how passengers book tickets online. Over the years, the massive volume of users visiting the site daily has led to frequent server crashes, particularly when high-demand trains open for reservations. The 2026 revamp is designed to move the Indian Railways core ticketing system onto a high-speed, modern cloud-native architecture to prevent these service disruptions.
+For decades, millions of passengers experienced website crashes at 10:00 AM. The August 2026 cloud migration resolves server bottlenecks by shifting ticket inventory management to a high-concurrency distributed database. It enables instant payment processing, real-time seat inventory updates across physical counters and digital apps, and dynamic fare calendars.
 
 ---
 
-## What Are the New Features of the Revamped IRCTC Website?
+## How Does the August 2026 PRS Migration Impact Tatkal and PNR Checking?
 
-The **revamped IRCTC website** introduces key features including **interactive fare calendars**, a **direct coach and berth selection map**, and a 10x boost in enquiry capacity. These additions allow passengers to view pricing trends across multiple dates and choose specific seating arrangements visually before finalizing their bookings.
+**The August 2026 cloud PRS migration eliminates Tatkal server lag by processing 150,000 transactions per minute, preventing CAPTCHA timeouts at 10:00 AM (AC) and 11:00 AM (Sleeper). PNR status inquiries now update in real-time across cloud nodes, reducing server delay during peak chart preparation.**
 
-Here's a quick summary of the system capacity improvements introduced in this update:
+During intense Tatkal windows, seat inventory shifts in seconds. The upgraded cloud architecture maintains dedicated transaction queues, preventing money deductions without ticket generation. If your preferred train is fully waitlisted during peak hours, you can search split-journey options on [Finding Smart Seats](/) to secure confirmed seats across adjacent segments on the same train.
 
-| System Metric | Older IRCTC Website Capacity | Revamped IRCTC Website Capacity | Capacity Growth |
+---
+
+## Can You Reschedule a Confirmed Ticket Without Cancelling It?
+
+**Yes. Under the August 2026 IRCTC rescheduling policy, passengers with confirmed tickets can change their travel date for the same origin and destination without cancelling their ticket. Rescheduling requires seat availability in the requested class and payment of any applicable fare difference plus nominal administrative fees.**
+
+This feature replaces the costly process of cancelling a confirmed ticket and re-booking a new one. Date changes must be requested online or at PRS counters at least 48 hours before scheduled train departure. Note that if a ticket is cancelled less than 8 hours before departure, no refund is granted under current cancellation window rules.
+
+---
+
+## What Are the System Capacity Upgrades of the New Cloud Architecture?
+
+**The cloud-based PRS architecture increases ticket booking capacity from 32,000 to 150,000 bookings per minute (a 5x jump) and search capacity from 4 lakh to 40 lakh enquiries per minute (a 10x jump). This infrastructure handles peak festival surges without crashing.**
+
+| System Metric | Legacy PRS Backend | August 2026 Cloud PRS | Performance Jump |
 | :--- | :--- | :--- | :--- |
-| **Ticket Bookings** | 32,000 bookings per minute | 150,000 (1.5 lakh) bookings per minute | 5x (500%) Increase |
-| **Search & Enquiry Queries** | 4 lakh enquiries per minute | 40 lakh enquiries per minute | 10x (1000%) Increase |
-
-Beyond the technical backend upgrades, the user interface has been redesigned to be much more intuitive:
-- **Graphical Coach Maps:** You can view a visual map of the coach layout, showing exactly where lower, middle, side-upper, or window seats are located, and select them directly if they're available.
-- **Fare Trends and Calendar:** A dynamic calendar view shows the ticket price and availability trend for the next 30 to 60 days, making it simple to find dates with lower fares or higher confirmation chances.
+| **Ticket Bookings** | 32,000 bookings/min | 150,000 (1.5 lakh) bookings/min | 5x (500%) Growth |
+| **Search & PNR Enquiries** | 400,000 enquiries/min | 4,000,000 (40 lakh) enquiries/min | 10x (1000%) Growth |
+| **Payment Gateway Latency** | High risk of timeout | Sub-second cloud execution | 90% Latency Reduction |
+| **Chart Preparation Sync** | ~4 hours prior (batch) | Real-time cloud sync (~8 hrs / 30 mins) | Instant vacant berth logging |
 
 ---
 
-## How Does the IRCTC Website Revamp Improve Tatkal Booking?
+## What Is the RailOne App and How Does Single Sign-On Work?
 
-The **IRCTC website revamp** resolves critical **Tatkal booking latency** by upgrading the system to handle **150,000 bookings per minute**. This 5x speed increase eliminates lag, CAPTCHA load errors, and payment gateway timeouts during peak Tatkal hours (10:00 AM for AC classes and 11:00 AM for non-AC Sleeper classes).
+**RailOne is Indian Railways' unified super app that replaces UTSonMobile, combining reserved, unreserved, and platform ticket bookings under a single platform. Single sign-on allows passengers to log in using their existing IRCTC username and password without creating a new account.**
 
-If you've ever tried booking a Tatkal ticket, you'll know how stressful the experience can be. The site would often freeze the moment the clock hit 10:00 AM or 11:00 AM. This revamped version introduces a dedicated, high-priority transactional queue to process payments instantly. 
-
-During heavy Tatkal rushes when direct options are waitlisted, you can search for split-journey alternatives on the [LastBerth homepage](/) to find confirmed seats on the same train.
+RailOne handles suburban unreserved tickets within a geo-fenced GPS distance from stations. Unreserved ticket holders must provide a valid photo ID (Aadhaar, PAN, Voter ID) during booking and carry the physical original ID during travel. Screenshots or WhatsApp images of tickets are strictly invalid.
 
 ---
 
-## What Is the Daily Ticket Booking Limit and Advance Booking Window?
+## What Are the Daily Ticket Booking Limits and Advance Reservation Period?
 
-Under current Indian Railways rules, the **advance reservation period (ARP)** is strictly **60 days** (excluding the date of departure). While regular users can book up to 12 tickets monthly (or 24 with Aadhaar verification), the upcoming revamped portal maintains these limits while offering significantly faster checkout systems.
+**Under current IRCTC rules, unverified user accounts can book up to 12 tickets per month, while Aadhaar-verified accounts can book up to 24 tickets per month. The advance reservation period (ARP) is strictly 60 days, excluding the day of departure.**
 
-The 60-day booking window was implemented as part of the **November 1, 2024 policy update** (reducing it from the previous 120-day limit) to prevent touts from hoarding tickets and to give genuine passengers a fairer chance at finding seats closer to their journey dates. 
-
-Here's how the booking limits are structured:
-- **Standard Users:** Up to 12 tickets per month on a non-verified IRCTC account.
-- **Aadhaar-Verified Users:** Up to 24 tickets per month, provided the user's profile and at least one passenger's details are Aadhaar-linked.
-- **Tatkal Limit:** A maximum of 4 passengers per booking transaction.
+Accounts are limited to booking a maximum of 6 tickets per day overall, and no user can book more than 2 Tatkal PNRs per day. The daily IRCTC server maintenance shutdown runs from **11:45 PM to 12:20 AM IST (23:45 to 00:20)**, during which online bookings, PNR inquiries, and cancellations are offline.
 
 ---
 
-## What Is the RailOne App and How Does It Replace UTS?
+## What Happens to Waitlisted Tickets and Current Availability on the Cloud System?
 
-The **unified RailOne Super App** has replaced the decommissioned UTSonMobile app as of **March 1, 2026**, serving as the single official mobile platform. RailOne integrates all ticketing services, including both **reserved and unreserved bookings**, alongside e-catering food orders and direct Rail Madad passenger complaint registration.
+**Waitlisted e-tickets that remain unconfirmed after chart preparation are auto-cancelled and refunded to the user's bank account. Conversely, Current Availability (CURR_AVBL) tickets are 100% confirmed berths released post-chart preparation (~8 hours before departure) until 30 minutes before train departure.**
 
-Since the old UTSonMobile app was permanently shut down on March 1, 2026, passengers must use RailOne for unreserved suburban tickets, platform tickets, and monthly season tickets (MST). The app also has built-in GPS limits to ensure that unreserved general tickets are booked only when you're within a specific distance from the physical railway station.
-
----
-
-## Do You Need a New Account to Use RailOne?
-
-**No. RailOne uses single sign-on with your existing IRCTC or UTS credentials, so there is no separate registration. Log in with your current IRCTC username and password, and the tickets you booked through IRCTC Rail Connect show up under "My Bookings" inside RailOne.** One login now covers reserved (Sleeper and AC), unreserved, and platform tickets.
-
-This is the point that confuses most first-time users: RailOne is a new *app*, not a new *account*. The IRCTC website still exists for desktop booking, and RailOne simply becomes the mobile front door to the same reservation system. If you already have an IRCTC ID, you are ready to go — the same rules on booking limits, Tatkal timings, and Aadhaar verification carry over unchanged. Once your chart is prepared, you can cross-check the actual empty berths on your train with the [Chart Vacancy coach map](/chart-vacancy) before you board.
+Understanding ticket status codes is critical when booking:
+- **WL full form is Waiting List.** Tickets progress through a strict queue:
+  $$\text{WL (Waiting List)} \rightarrow \text{RAC (Reservation Against Cancellation)} \rightarrow \text{Confirmed}$$
+- **RAC (Reservation Against Cancellation)** permits travel with a shared side-lower berth and does not auto-cancel.
+- **CURR_AVBL (Current Availability)** seats are confirmed berths available online or at counters after chart preparation. You can check empty seats along your route with [Seat Status Coach Journey Lookup](/seat-status).
 
 ---
 
-## What Are the New Ticketless Travel Fines Under the Jan Vishwas Act?
+## What Are the Ticketless Travel Fines Under the Jan Vishwas Act?
 
-Under the **Jan Vishwas Act** effective **July 1, 2026**, the minimum penalty for **ticketless travel** has doubled to **₹500**. Additionally, the fine for unauthorized entry into a **women's coach** has been increased to **₹2,500** to strengthen safety and compliance across all train networks.
+**Under the Jan Vishwas Act 2026, the minimum penalty for ticketless travel or traveling in a reserved coach with an unreserved ticket is ₹500 plus the full fare difference under Section 138. Unauthorized entry into women's reserved coaches incurs a ₹2,500 fine.**
 
-The new rules aim to discourage overcrowding and ensure passenger safety. If you're caught traveling without a valid ticket or with an unconfirmed waiting list (WL) ticket in a reserved coach, you'll be charged the actual fare plus the double minimum fine. 
-
-Before traveling, make sure you verify your reservation status. If your ticket remains waitlisted, you can search for vacant segments on the running train using the [LastBerth seat status tool](/seat-status) to find available berths.
+Boarding a Sleeper or AC coach with a General/Unreserved or Platform ticket is illegal. If you miss your station or oversleep, Indian Railways rules require you to report immediately to the TTE to pay the fare for the extra distance to the next station.
 
 ---
 
 ## Common Booking Questions (FAQ)
 
-### What is the official launch date of the new IRCTC website?
-The revamped IRCTC website is scheduled to launch on July 15, 2026. This announcement was officially made by Railway Minister Ashwini Vaishnaw as part of the department's digital infrastructure modernization initiatives.
+### Do I need to create a new user account for the August 2026 cloud PRS system?
+No. You access the upgraded cloud portal and RailOne app using your existing IRCTC login credentials. All saved profile details, Master List passengers, and past booking records sync automatically across web browsers and mobile apps.
 
-### Can I still use the UTS app after the RailOne app launch?
-No, the older UTSonMobile app was officially decommissioned on March 1, 2026. All unreserved ticket bookings, platform tickets, and season passes must now be purchased through the new unified RailOne Super App.
+### How does the new IRCTC ticket rescheduling feature work?
+You can change your journey date on a confirmed ticket up to 48 hours before departure without cancelling it. Log into IRCTC, select your confirmed PNR under "Booked Ticket History," choose "Reschedule Journey," select the new date, and pay any fare difference.
 
-### Is RailOne the same as IRCTC?
-Not exactly. RailOne is the official unified mobile super app from Indian Railways (built by CRIS alongside IRCTC), while IRCTC remains the ticketing backbone that powers reserved bookings and the IRCTC website. Think of RailOne as the single app layer that combines reserved, unreserved, and platform tickets with train tracking, e-catering, and Rail Madad complaints.
+### What is the maximum monthly ticket booking limit on IRCTC?
+Standard IRCTC user accounts can book up to 12 tickets per calendar month. If you link your Aadhaar card to your IRCTC profile and verify at least one passenger per transaction, your monthly booking limit increases to 24 tickets.
 
-### Do I need a new account or login for RailOne?
-No. RailOne offers single sign-on with your existing IRCTC or UTS credentials, so you do not register again. Log in with your current IRCTC username and password, and your past IRCTC Rail Connect bookings appear under "My Bookings" in the app.
+### What happens if an online Tatkal ticket remains in WL status after chart preparation?
+If a Tatkal or General quota e-ticket remains fully waitlisted after final chart preparation (~8 hours before departure), it is automatically cancelled by the system. The full fare (minus clerkage) is refunded to your original payment method. You cannot board the train with a waitlisted e-ticket.
 
-### Can I book Tatkal and reserved tickets on RailOne?
-Yes. RailOne supports reserved bookings, including Sleeper and AC classes and Tatkal, in addition to unreserved and platform tickets — all from the same IRCTC login. Standard Tatkal timings (10:00 AM for AC, 11:00 AM for non-AC) and the Aadhaar verification rules still apply.
+### When does Current Availability (CURR_AVBL) open for booking?
+Current Availability opens immediately after first chart preparation, approximately 8 hours before the train's scheduled departure from its originating station. CURR_AVBL tickets are 100% confirmed berths sold at standard or discounted rates until 30 minutes before departure.
 
-### What is the booking limit per month on the new IRCTC portal?
-Under the revamped portal, standard IRCTC accounts can book up to 12 tickets per month. If you complete Aadhaar verification for your account and link your passengers, this monthly booking limit increases to 24 tickets.
+### When is the daily IRCTC night maintenance downtime window?
+The IRCTC website and mobile apps undergo daily scheduled server maintenance from 11:45 PM to 12:20 AM IST (23:45 to 00:20). During these 35 minutes, online ticket bookings, cancellations, PNR status inquiries, and wallet top-ups are unavailable.
 
-### How does the 60-day advance booking window work?
-Following the policy change on November 1, 2024, the Advance Reservation Period (ARP) is 60 days. You can book reserved tickets up to 60 days in advance of the train's scheduled departure date from its originating station.
+### What is the fine for traveling in Sleeper Class with a General unreserved ticket?
+Under the Jan Vishwas Act 2026, traveling in a reserved Sleeper or AC coach with a General unreserved ticket carries a minimum penalty of ₹500 plus the exact fare difference for the distance traveled. If no berth is available, the TTE will alight you at the next scheduled stop.
 
-### What happens if my payment times out during Tatkal booking?
-The new revamp includes upgraded payment queues to minimize timeouts. However, if your payment is deducted but the ticket isn't booked due to a timeout, the amount is automatically refunded to your original payment mode within 3 to 5 business days.
-
-### What is the fine for travelling in a ladies coach without a ticket?
-Under the Jan Vishwas Act effective July 1, 2026, unauthorized entry into a ladies compartment carries a heavy penalty of ₹2,500. Additionally, the minimum fine for general ticketless travel across the network has doubled to ₹500.
-
-### How can I find vacant seats if a train is fully waitlisted?
-If a direct search shows a long Waiting List (WL), you can use the LastBerth search tool to find split-journey seat options on the same train, or check the seat status page to view segment-by-segment coach vacancy charts.
+### How do I check vacant berths on a running train after chart preparation?
+You can view vacant berths by visiting IRCTC's "Charts / Vacancy" tab or by using [Seat Status Coach Journey Lookup](/seat-status) on LastBerth. Enter your train number and station to see berth-by-berth occupancy across all coaches.
 
 ---
 
 ## Bottom line
 
-The upcoming IRCTC website revamp on July 15, 2026, alongside the unified RailOne app, represents a major upgrade in processing capacity, helping eliminate peak-hour Tatkal booking failures. 
-
-Please note that LastBerth is an independent search and information tool, not IRCTC or Indian Railways. Passengers must always verify their final ticket status and book only via authorized channels (the official IRCTC website, mobile app, or station counters). If you're looking for confirmed options when direct booking is unavailable, check out our [Smart Seats search tool](/) to locate alternative journey paths.
+The August 2026 cloud-based PRS migration delivers a faster, more reliable booking platform capable of handling 1.5 lakh bookings per minute during peak Tatkal rushes. Whether you need to reschedule a confirmed ticket or check PNR confirmation probability, use [Finding Smart Seats](/) and [PNR Status Search](/) to plan your journey with confidence.

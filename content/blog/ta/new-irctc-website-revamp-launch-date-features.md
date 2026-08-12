@@ -1,146 +1,130 @@
 ---
-title: "IRCTC நெக்ஸ்ட்-ஜென் டிக்கெட் முன்பதிவு & RailOne செயலி (2026)"
-description: "IRCTC-யின் நெக்ஸ்ட்-ஜெனரேஷன் டிக்கெட் முன்பதிவு அமைப்பு மற்றும் RailOne சூப்பர் செயலி ஜூலை 15, 2026 அன்று தொடங்குகிறது: புதிய திறன், கோச்-மேப் முன்பதிவு, தற்காலிக சரிசெய்தல்கள் மற்றும் RailOne உள்நுழைவு."
+title: "IRCTC புதிய கிளவுட் ரிசர்வேஷன் சிஸ்டம் (PRS) 2026: விதிகள் & உள்நுழைவு"
+description: "இந்திய ரயில்வேக்களின் புதிய கிளவுட் அடிப்படையிலான பயணிகள் ரிசர்வேஷன் சிஸ்டம் (PRS) ஆகஸ்ட் 2026ல் வெளியீடு: 1.5 லட்சம் முன்பதிவுகள்/நிமிடம், கிளவுட் உள்நுழைவு, PNR நிலை, மற்றும் தற்காலிக வேகம் விதிகள்."
 date: "2026-07-04"
-updated: "2026-07-17"
+updated: "2026-08-12"
 tags:
   - train booking
   - irctc
   - irctc new website
   - irctc next generation ticket booking
+  - prs reservation system
   - tatkal booking
   - railone
 ---
 
-> **புதிய IRCTC / RailOne அமைப்பில் முன்பதிவு செய்கிறீர்களா?** [Smart Seats](/) மூலம் நேரடி இருக்கை கிடைப்பு மற்றும் உங்கள் PNR நிலையைச் சரிபார்க்கவும், மேலும் சார்ட் தயாரான பிறகு, கடைசி நேர இருக்கையைப் பெற [Chart Vacancy](/chart-vacancy) மூலம் உங்கள் ரயிலில் உள்ள உண்மையான காலி பெர்த்களைப் பார்க்கவும்.
+> **புதிய IRCTC கிளவுட் சிஸ்டமில் முன்பதிவு செய்யவா?** நேரலை இருக்கை கிடைக்கும் மற்றும் PNR உறுதிப்படுத்தும் வாய்ப்புகளை [Finding Smart Seats](/) மற்றும் [PNR Status Search](/) மூலம் சரிபார்க்கவும். அட்டவணை தயாரிப்பிற்குப் பிறகு, உங்கள் ரயில் பாதையில் காலியாக உள்ள இருக்கைகளை [Seat Status Coach Journey Lookup](/seat-status) மற்றும் [Chart Vacancy](/chart-vacancy) மூலம் கண்டறிந்து உறுதிப்படுத்தப்பட்ட இருக்கையைப் பிடிக்கவும்.
 
 ## TL;DR
 
-- The **new IRCTC website revamp** launches on **July 15, 2026** — the core of India's **next-generation ticket booking system** — to significantly boost ticket booking speed and search capacity.
-- Key improvements include a 5x capacity upgrade to **1.5 lakh bookings per minute** and resolving payment timeout and CAPTCHA errors.
-- The unified **RailOne Super App** has replaced the decommissioned UTSonMobile app for all unreserved and reserved ticket bookings — and you log in with your **existing IRCTC credentials**, not a new account.
-- The advance reservation booking window is strictly **60 days** under the current Indian Railways policy guidelines.
+- இந்திய ரயில்வே தனது **கிளவுட் அடிப்படையிலான பயணிகள் ரிசர்வேஷன் சிஸ்டம் (PRS)** ஐ **ஆகஸ்ட் 2026**ல் கட்டுப்படுத்தியதாக அறிவித்துள்ளது, 1986 இன் பழைய கட்டமைப்பை மாற்றுகிறது.
+- கிளவுட் மேம்பாடு டிக்கெட் செயலாக்க திறனை 5 மடங்கு அதிகரித்து **150,000 (1.5 லட்சம்) முன்பதிவுகள்/நிமிடம்** மற்றும் விசாரணை திறனை 10 மடங்கு அதிகரித்து **40 லட்சம் விசாரணைகள்/நிமிடம்** ஆகிறது.
+- பயணிகள் இப்போது **உறுதிப்படுத்தப்பட்ட டிக்கெட்டுகளை மற்றொரு தேதிக்கு மாற்றலாம்** என்றால், இருக்கை கிடைக்கும் போது மற்றும் கட்டண வேறுபாடுகளை செலுத்த வேண்டும்.
+- நீங்கள் உங்கள் **முந்தைய IRCTC அங்கீகாரங்களை** பயன்படுத்தி கிளவுட் சிஸ்டம் மற்றும் ஒருங்கிணைந்த **RailOne Super App** இல் உள்நுழைக, பதிவு செய்யாத பயணத்திற்கு கட்டாய புகைப்பட அடையாள விதிகள் உள்ளன.
 
 ---
 
-## IRCTC-யின் நெக்ஸ்ட்-ஜெனரேஷன் டிக்கெட் முன்பதிவு அமைப்பு என்ன?
+## IRCTC இன் புதிய கிளவுட் அடிப்படையிலான பயணிகள் ரிசர்வேஷன் சிஸ்டம் (PRS) என்ன?
 
-**IRCTC's next-generation ticket booking system is the July 15, 2026 revamp of the IRCTC portal, backed by the unified RailOne app, rebuilt on a modern cloud-native architecture. It lifts capacity to 1.5 lakh bookings per minute, adds graphical coach-map seat selection and a fare calendar, and pulls reserved, unreserved, and platform tickets under a single login.**
+**IRCTC இன் புதிய கிளவுட் அடிப்படையிலான பயணிகள் ரிசர்வேஷன் சிஸ்டம் ஆகஸ்ட் 2026 இல் இந்திய ரயில்வேக்களின் 40 ஆண்டுகள் பழமையான டிக்கெட் பின்னணி கட்டமைப்பை கிளவுட் கட்டமைப்புடன் மாற்றுகிறது. இது 1.5 லட்சம் டிக்கெட்டுகளை ஒரு நிமிடத்தில் முன்பதிவு செய்யும் வேகத்தை அதிகரிக்கிறது, தற்காலிக நேரங்களில் கட்டண வாயில்களின் நேரத்தை நீக்குகிறது, மற்றும் மொபைல் செயலிகள் மற்றும் வலை உலாவிகளில் ஒரே சைன்-ஆன் ஐ ஒருங்கிணைக்கிறது.**
 
-For years "IRCTC" meant one thing: a website that buckled the moment a popular train opened. The next-generation system is the fix. It is not a single new button but a full-stack modernization — a faster transactional backend, a redesigned interface, and the RailOne app as the mobile front door. Together they are meant to end the 10:00 AM Tatkal freeze and let you *see* the coach before you pick a berth, rather than guessing from a seat count.
-
----
-
-## புதிய IRCTC இணையதளம் எப்போது தொடங்குகிறது?
-
-The **new IRCTC website revamp** is scheduled to launch on **July 15, 2026**, as officially announced by Railway Minister Ashwini Vaishnaw. This massive infrastructure upgrade aims to modernize the portal, providing passengers a much smoother booking experience and eliminating common technical glitches during high-traffic booking intervals.
-
-This upcoming launch is expected to completely transform how passengers book tickets online. Over the years, the massive volume of users visiting the site daily has led to frequent server crashes, particularly when high-demand trains open for reservations. The 2026 revamp is designed to move the Indian Railways core ticketing system onto a high-speed, modern cloud-native architecture to prevent these service disruptions.
+பல ஆண்டுகளாக, மில்லியன் கணக்கான பயணிகள் 10:00 AM இல் இணையதளத்தைத் தடுக்க அனுபவித்தனர். ஆகஸ்ட் 2026 இல் கிளவுட் மைக்ரேஷன் சர்வர் தடைகளை தீர்க்கிறது, டிக்கெட் கையிருப்பை உயர்-ஒத்திசைவு பகிர்ந்த தரவுத்தொகுப்புக்கு மாற்றுகிறது. இது உடனடி கட்டண செயலாக்கத்தை, உடனடி இருக்கை கையிருப்பு புதுப்பிப்புகளை மற்றும் இயக்குநர் கட்டண காலண்டர்களை வழங்குகிறது.
 
 ---
 
-## புதுப்பிக்கப்பட்ட IRCTC இணையதளத்தின் புதிய அம்சங்கள் என்ன?
+## ஆகஸ்ட் 2026 PRS மைக்ரேஷன் தற்காலிக மற்றும் PNR சரிபார்ப்புகளை எவ்வாறு பாதிக்கிறது?
 
-The **revamped IRCTC website** introduces key features including **interactive fare calendars**, a **direct coach and berth selection map**, and a 10x boost in enquiry capacity. These additions allow passengers to view pricing trends across multiple dates and choose specific seating arrangements visually before finalizing their bookings.
+**ஆகஸ்ட் 2026 கிளவுட் PRS மைக்ரேஷன் 150,000 பரிவர்த்தனைகளை ஒரு நிமிடத்தில் செயலாக்குவதால் தற்காலிக சர்வர் தாமதத்தை நீக்குகிறது, 10:00 AM (AC) மற்றும் 11:00 AM (Sleeper) இல் CAPTCHA நேரத்தைத் தடுக்கும். PNR நிலை விசாரணைகள் இப்போது கிளவுட் நொடிகளில் உடனுக்குடன் புதுப்பிக்கப்படுகின்றன, உச்ச அட்டவணை தயாரிப்பு போது சர்வர் தாமதத்தை குறைக்கிறது.**
 
-Here's a quick summary of the system capacity improvements introduced in this update:
+தீவிர தற்காலிக ஜன்னல்களில், இருக்கை கையிருப்பு சில விநாடிகளில் மாறுகிறது. மேம்பட்ட கிளவுட் கட்டமைப்பு தனித்துவமான பரிவர்த்தனை வரிசைகளை பராமரிக்கிறது, டிக்கெட் உருவாக்காமல் பணம் கழிக்காமல் தடுக்கும். உங்கள் விருப்ப ரயில் உச்ச நேரங்களில் முழுமையாக காத்திருக்கும்போது, நீங்கள் [Finding Smart Seats](/) இல் பிளவுபடுத்தப்பட்ட பயண விருப்பங்களை தேடலாம், ஒரே ரயிலில் அருகிலுள்ள பகுதிகளில் உறுதிப்படுத்தப்பட்ட இருக்கைகளைப் பெறலாம்.
 
-| System Metric | Older IRCTC Website Capacity | Revamped IRCTC Website Capacity | Capacity Growth |
+---
+
+## உறுதிப்படுத்தப்பட்ட டிக்கெட்டுகளை ரத்து செய்யாமல் மாற்ற முடியுமா?
+
+**ஆம். ஆகஸ்ட் 2026 IRCTC மறுசீரமைப்பு கொள்கையின் கீழ், உறுதிப்படுத்தப்பட்ட டிக்கெட்டுகள் உள்ள பயணிகள், தங்கள் டிக்கெட்டை ரத்து செய்யாமல் ஒரே மூலத்திற்கும் இலக்கத்திற்கும் பயண தேதியை மாற்றலாம். மறுசீரமைப்புக்கு கேட்ட வகுப்பில் இருக்கை கிடைக்க வேண்டும் மற்றும் எந்தவொரு கட்டண வேறுபாடுகளையும் மற்றும் குறைந்த நிர்வாகக் கட்டணங்களையும் செலுத்த வேண்டும்.**
+
+இந்த அம்சம் உறுதிப்படுத்தப்பட்ட டிக்கெட்டை ரத்து செய்வதற்கான செலவான செயல்முறையை மாற்றுகிறது. தேதியில் மாற்றங்கள் திட்டமிடப்பட்ட ரயில் départureக்கு 48 மணி நேரத்திற்கு முன்பு ஆன்லைனில் அல்லது PRS கவுண்டர்களில் கோரப்பட வேண்டும். ஒரு டிக்கெட் départureக்கு 8 மணி நேரத்திற்குள் ரத்து செய்யப்படுமானால், தற்போதைய ரத்து ஜன்னல் விதிகள் கீழ் எந்தவொரு பணத்தை வழங்க முடியாது.
+
+---
+
+## புதிய கிளவுட் கட்டமைப்பின் சிஸ்டம் திறன் மேம்பாடுகள் என்ன?
+
+**கிளவுட் அடிப்படையிலான PRS கட்டமைப்பு, டிக்கெட் முன்பதிவு திறனை 32,000 இல் இருந்து 150,000 முன்பதிவுகள்/நிமிடம் (5 மடங்கு உயர்வு) மற்றும் தேடல் திறனை 4 லட்சம் இல் இருந்து 40 லட்சம் விசாரணைகள்/நிமிடம் (10 மடங்கு உயர்வு) ஆக அதிகரிக்கிறது. இந்த கட்டமைப்பு உச்ச விழாக்களின் அதிகரிப்புகளை கையாளும் போது தடுக்காது.**
+
+| System Metric | Legacy PRS Backend | August 2026 Cloud PRS | Performance Jump |
 | :--- | :--- | :--- | :--- |
-| **Ticket Bookings** | 32,000 bookings per minute | 150,000 (1.5 lakh) bookings per minute | 5x (500%) Increase |
-| **Search & Enquiry Queries** | 4 lakh enquiries per minute | 40 lakh enquiries per minute | 10x (1000%) Increase |
-
-Beyond the technical backend upgrades, the user interface has been redesigned to be much more intuitive:
-- **Graphical Coach Maps:** You can view a visual map of the coach layout, showing exactly where lower, middle, side-upper, or window seats are located, and select them directly if they're available.
-- **Fare Trends and Calendar:** A dynamic calendar view shows the ticket price and availability trend for the next 30 to 60 days, making it simple to find dates with lower fares or higher confirmation chances.
+| **Ticket Bookings** | 32,000 bookings/min | 150,000 (1.5 lakh) bookings/min | 5x (500%) Growth |
+| **Search & PNR Enquiries** | 400,000 enquiries/min | 4,000,000 (40 lakh) enquiries/min | 10x (1000%) Growth |
+| **Payment Gateway Latency** | High risk of timeout | Sub-second cloud execution | 90% Latency Reduction |
+| **Chart Preparation Sync** | ~4 hours prior (batch) | Real-time cloud sync (~8 hrs / 30 mins) | Instant vacant berth logging |
 
 ---
 
-## IRCTC இணையதளத்தின் புதுப்பிப்பு தற்காலிக முன்பதிவை எவ்வாறு மேம்படுத்துகிறது?
+## RailOne App என்ன மற்றும் ஒரே சைன்-ஆன் எவ்வாறு செயல்படுகிறது?
 
-The **IRCTC website revamp** resolves critical **Tatkal booking latency** by upgrading the system to handle **150,000 bookings per minute**. This 5x speed increase eliminates lag, CAPTCHA load errors, and payment gateway timeouts during peak Tatkal hours (10:00 AM for AC classes and 11:00 AM for non-AC Sleeper classes).
+**RailOne என்பது இந்திய ரயில்வேக்களின் ஒருங்கிணைந்த சூப்பர் ஆப் ஆகும், இது UTSonMobile ஐ மாற்றுகிறது, ஒரு ஒரே மேடையில் முன்பதிவு, பதிவு செய்யாத மற்றும் தள டிக்கெட் முன்பதிவுகளை இணைக்கிறது. ஒரே சைன்-ஆன் பயணிகளை புதிய கணக்கு உருவாக்காமல், அவர்களின் முந்தைய IRCTC பயனர் பெயர் மற்றும் கடவுச்சொல்லைப் பயன்படுத்தி உள்நுழைய அனுமதிக்கிறது.**
 
-If you've ever tried booking a Tatkal ticket, you'll know how stressful the experience can be. The site would often freeze the moment the clock hit 10:00 AM or 11:00 AM. This revamped version introduces a dedicated, high-priority transactional queue to process payments instantly. 
-
-During heavy Tatkal rushes when direct options are waitlisted, you can search for split-journey alternatives on the [LastBerth homepage](/) to find confirmed seats on the same train.
+RailOne, நிலையங்களுக்குப் அருகிலுள்ள ஜியோ-பாரம்பரிய GPS தூரத்தில் உள்ள நகர்ப்புற பதிவு செய்யாத டிக்கெட்டுகளை கையாள்கிறது. பதிவு செய்யாத டிக்கெட் வைத்திருப்பவர்கள், பதிவு செய்யும்போது செல்லுபடியாகும் புகைப்பட அடையாளத்தை (ஆதார், PAN, வாக்காளர் அடையாளம்) வழங்க வேண்டும் மற்றும் பயணத்தின் போது உடல் அசல் அடையாளத்தை எடுத்துச் செல்ல வேண்டும். டிக்கெட்டுகளின் ஸ்கிரீன்ஷாட்கள் அல்லது WhatsApp படங்கள் கடுமையாக செல்லுபடியாகாது.
 
 ---
 
-## தினசரி டிக்கெட் முன்பதிவு வரம்பு மற்றும் முன்னணி முன்பதிவு விண்டோ என்ன?
+## தினசரி டிக்கெட் முன்பதிவு வரம்புகள் மற்றும் முன்னணி ரிசர்வேஷன் காலம் என்ன?
 
-Under current Indian Railways rules, the **advance reservation period (ARP)** is strictly **60 days** (excluding the date of departure). While regular users can book up to 12 tickets monthly (or 24 with Aadhaar verification), the upcoming revamped portal maintains these limits while offering significantly faster checkout systems.
+**தற்போதைய IRCTC விதிகள் கீழ், உறுதிப்படுத்தப்படாத பயனர் கணக்குகள் மாதத்திற்கு 12 டிக்கெட்டுகளை முன்பதிவு செய்யலாம், ஆனால் ஆதார் உறுதிப்படுத்தப்பட்ட கணக்குகள் மாதத்திற்கு 24 டிக்கெட்டுகளை முன்பதிவு செய்யலாம். முன்னணி ரிசர்வேஷன் காலம் (ARP) கடுமையாக 60 நாட்கள், départure நாளை தவிர்த்து.**
 
-The 60-day booking window was implemented as part of the **November 1, 2024 policy update** (reducing it from the previous 120-day limit) to prevent touts from hoarding tickets and to give genuine passengers a fairer chance at finding seats closer to their journey dates. 
-
-Here's how the booking limits are structured:
-- **Standard Users:** Up to 12 tickets per month on a non-verified IRCTC account.
-- **Aadhaar-Verified Users:** Up to 24 tickets per month, provided the user's profile and at least one passenger's details are Aadhaar-linked.
-- **Tatkal Limit:** A maximum of 4 passengers per booking transaction.
+கணக்குகள் ஒரு நாளைக்கு மொத்தமாக 6 டிக்கெட்டுகளை முன்பதிவு செய்ய வரம்பு உள்ளது, மற்றும் ஒரு பயனர் ஒரு நாளைக்கு 2 தற்காலிக PNR களை முன்பதிவு செய்ய முடியாது. தினசரி IRCTC சர்வர் பராமரிப்பு நிறுத்தம் **11:45 PM முதல் 12:20 AM IST (23:45 முதல் 00:20)** வரை நடைபெறுகிறது, இதற்கிடையில் ஆன்லைன் முன்பதிவுகள், PNR விசாரணைகள் மற்றும் ரத்து செய்வது ஆஃப்லைனில் இருக்கும்.
 
 ---
 
-## RailOne செயலி என்ன மற்றும் இது UTSஐ எவ்வாறு மாற்றுகிறது?
+## காத்திருக்கும் டிக்கெட்டுகள் மற்றும் கிளவுட் சிஸ்டமில் தற்போதைய கிடைப்புக்கு என்ன ஆகிறது?
 
-The **unified RailOne Super App** has replaced the decommissioned UTSonMobile app as of **March 1, 2026**, serving as the single official mobile platform. RailOne integrates all ticketing services, including both **reserved and unreserved bookings**, alongside e-catering food orders and direct Rail Madad passenger complaint registration.
+**அட்டவணை தயாரிப்பிற்குப் பிறகு உறுதிப்படுத்தப்படாத e-டிக்கெட்டுகள் தானாகவே ரத்து செய்யப்படுகின்றன மற்றும் பயனர் வங்கி கணக்குக்கு திரும்பப் பெறப்படுகின்றன. மாறாக, தற்போதைய கிடைப்பு (CURR_AVBL) டிக்கெட்டுகள் 100% உறுதிப்படுத்தப்பட்ட இருக்கைகள் ஆகும், அட்டவணை தயாரிப்பிற்குப் பிறகு (~8 மணி நேரம் départureக்கு முன்பு) 30 நிமிடங்கள் வரை வெளியிடப்படுகின்றன.**
 
-Since the old UTSonMobile app was permanently shut down on March 1, 2026, passengers must use RailOne for unreserved suburban tickets, platform tickets, and monthly season tickets (MST). The app also has built-in GPS limits to ensure that unreserved general tickets are booked only when you're within a specific distance from the physical railway station.
-
----
-
-## RailOne-ஐப் பயன்படுத்த உங்களுக்கு ஒரு புதிய கணக்கு தேவையா?
-
-**No. RailOne uses single sign-on with your existing IRCTC or UTS credentials, so there is no separate registration. Log in with your current IRCTC username and password, and the tickets you booked through IRCTC Rail Connect show up under "My Bookings" inside RailOne.** One login now covers reserved (Sleeper and AC), unreserved, and platform tickets.
-
-This is the point that confuses most first-time users: RailOne is a new *app*, not a new *account*. The IRCTC website still exists for desktop booking, and RailOne simply becomes the mobile front door to the same reservation system. If you already have an IRCTC ID, you are ready to go — the same rules on booking limits, Tatkal timings, and Aadhaar verification carry over unchanged. Once your chart is prepared, you can cross-check the actual empty berths on your train with the [Chart Vacancy coach map](/chart-vacancy) before you board.
+டிக்கெட் நிலை குறியீடுகளைப் புரிந்துகொள்வது முன்பதிவு செய்யும்போது முக்கியம்:
+- **WL முழு வடிவம் காத்திருப்பு பட்டியல்.** டிக்கெட்டுகள் கடுமையான வரிசையில் முன்னேறுகின்றன:
+  $$\text{WL (Waiting List)} \rightarrow \text{RAC (Reservation Against Cancellation)} \rightarrow \text{Confirmed}$$
+- **RAC (Reservation Against Cancellation)** பகிர்ந்த பக்கம்-கீழ் இருக்கையுடன் பயணிக்க அனுமதிக்கிறது மற்றும் தானாகவே ரத்து செய்யப்படாது.
+- **CURR_AVBL (Current Availability)** இருக்கைகள் அட்டவணை தயாரிப்பிற்குப் பிறகு ஆன்லைனில் அல்லது கவுண்டர்களில் உறுதிப்படுத்தப்பட்ட இருக்கைகள் ஆகும். உங்கள் பாதையில் காலியாக உள்ள இருக்கைகளை [Seat Status Coach Journey Lookup](/seat-status) மூலம் சரிபார்க்கலாம்.
 
 ---
 
-## ஜன விஷ்வாச சட்டத்தின் கீழ் புதிய டிக்கெட் இல்லாத பயணம் அபராதங்கள் என்ன?
+## ஜன விச்வாச சட்டத்தின் கீழ் டிக்கெட் இல்லாத பயண அபராதங்கள் என்ன?
 
-Under the **Jan Vishwas Act** effective **July 1, 2026**, the minimum penalty for **ticketless travel** has doubled to **₹500**. Additionally, the fine for unauthorized entry into a **women's coach** has been increased to **₹2,500** to strengthen safety and compliance across all train networks.
+**ஜன விச்வாச சட்டம் 2026 இன் கீழ், டிக்கெட் இல்லாமல் பயணிக்கும் அல்லது பதிவு செய்யாத டிக்கெட்டுடன் ஒரு பதிவு செய்யப்பட்ட கோச்சில் பயணிக்கும் குறைந்தபட்ச அபராதம் ₹500 மற்றும் முழு கட்டண வேறுபாடு ஆகும், பிரிவு 138 இன் கீழ். பெண்களின் பதிவு செய்யப்பட்ட கோச்சுகளில் அனுமதியில்லாமல் நுழைவதற்கு ₹2,500 அபராதம் உள்ளது.**
 
-The new rules aim to discourage overcrowding and ensure passenger safety. If you're caught traveling without a valid ticket or with an unconfirmed waiting list (WL) ticket in a reserved coach, you'll be charged the actual fare plus the double minimum fine. 
-
-Before traveling, make sure you verify your reservation status. If your ticket remains waitlisted, you can search for vacant segments on the running train using the [LastBerth seat status tool](/seat-status) to find available berths.
+ஒரு பொதுவான/பதிவு செய்யாத அல்லது தள டிக்கெட்டுடன் ஒரு ஸ்லீப்பர் அல்லது AC கோச்சில் ஏறுவது சட்டவிரோதமாகும். நீங்கள் உங்கள் நிலையத்தை தவறவிட்டால் அல்லது அதிக நேரம் தூங்கினால், இந்திய ரயில்வே விதிகள், அடுத்த நிலையத்திற்கு கூடுதல் தூரத்திற்கான கட்டணத்தை செலுத்த TTEக்கு உடனடியாக தகவல் தர வேண்டும்.
 
 ---
 
 ## பொதுவான முன்பதிவு கேள்விகள் (FAQ)
 
-### புதிய IRCTC இணையதளத்தின் அதிகாரப்பூர்வ தொடங்கும் தேதி என்ன?
-The revamped IRCTC website is scheduled to launch on July 15, 2026. This announcement was officially made by Railway Minister Ashwini Vaishnaw as part of the department's digital infrastructure modernization initiatives.
+### ஆகஸ்ட் 2026 கிளவுட் PRS சிஸ்டமுக்காக புதிய பயனர் கணக்கு உருவாக்க வேண்டுமா?
+இல்லை. நீங்கள் உங்கள் முந்தைய IRCTC உள்நுழைவு அங்கீகாரங்களைப் பயன்படுத்தி மேம்படுத்தப்பட்ட கிளவுட் போர்டல் மற்றும் RailOne செயலியில் அணுகலாம். அனைத்து சேமிக்கப்பட்ட சுயவிவர விவரங்கள், மாஸ்டர் பட்டியல் பயணிகள் மற்றும் முந்தைய முன்பதிவு பதிவுகள் தானாகவே வலை உலாவிகள் மற்றும் மொபைல் செயலிகளில் ஒத்திசைக்கப்படும்.
 
-### RailOne செயலி தொடங்கிய பிறகு UTS செயலியை இன்னும் பயன்படுத்த முடியுமா?
-No, the older UTSonMobile app was officially decommissioned on March 1, 2026. All unreserved ticket bookings, platform tickets, and season passes must now be purchased through the new unified RailOne Super App.
+### புதிய IRCTC டிக்கெட் மறுசீரமைப்பு அம்சம் எவ்வாறு செயல்படுகிறது?
+உங்கள் உறுதிப்படுத்தப்பட்ட டிக்கெட்டின் பயண தேதியை départureக்கு 48 மணி நேரத்திற்கு முன்பு மாற்றலாம், அதை ரத்து செய்யாமல். IRCTC இல் உள்நுழைந்து, "Booked Ticket History" இல் உங்கள் உறுதிப்படுத்தப்பட்ட PNR ஐத் தேர்ந்தெடுத்து, "Reschedule Journey" ஐத் தேர்ந்தெடுத்து, புதிய தேதியைத் தேர்ந்தெடுத்து, எந்த கட்டண வேறுபாடுகளையும் செலுத்தவும்.
 
-### RailOne IRCTC-யைப் போலவே இருக்கிறதா?
-Not exactly. RailOne is the official unified mobile super app from Indian Railways (built by CRIS alongside IRCTC), while IRCTC remains the ticketing backbone that powers reserved bookings and the IRCTC website. Think of RailOne as the single app layer that combines reserved, unreserved, and platform tickets with train tracking, e-catering, and Rail Madad complaints.
+### IRCTC இல் அதிகபட்ச மாதாந்திர டிக்கெட் முன்பதிவு வரம்பு என்ன?
+சாதாரண IRCTC பயனர் கணக்குகள் மாதத்திற்கு 12 டிக்கெட்டுகளை முன்பதிவு செய்யலாம். உங்கள் IRCTC சுயவிவரத்திற்கு உங்கள் ஆதார் அட்டை இணைத்தால் மற்றும் ஒவ்வொரு பரிவர்த்தனையிலும் குறைந்தது ஒரு பயணியை உறுதிப்படுத்தினால், உங்கள் மாதாந்திர முன்பதிவு வரம்பு 24 டிக்கெட்டுகளுக்கு அதிகரிக்கிறது.
 
-### RailOne-க்கு எனக்கு ஒரு புதிய கணக்கு அல்லது உள்நுழைவு தேவையா?
-No. RailOne offers single sign-on with your existing IRCTC or UTS credentials, so you do not register again. Log in with your current IRCTC username and password, and your past IRCTC Rail Connect bookings appear under "My Bookings" in the app.
+### ஆன்லைன் தற்காலிக டிக்கெட் அட்டவணை தயாரிப்பிற்குப் பிறகு WL நிலைமையில் இருந்தால் என்ன ஆகிறது?
+ஒரு தற்காலிக அல்லது பொதுவான அளவீட்டில் e-டிக்கெட் முழுமையாக காத்திருப்பில் இருந்தால், அது தானாகவே சிஸ்டம் மூலம் ரத்து செய்யப்படுகிறது. முழு கட்டணம் (கிளர்கேஜ் கழித்த) உங்கள் முதன்மை கட்டண முறைக்கு திரும்பப் பெறப்படுகிறது. காத்திருப்பில் e-டிக்கெட் உடன் நீங்கள் ரயிலில் ஏற முடியாது.
 
-### RailOne-இல் தற்காலிக மற்றும் முன்பதிவு செய்யப்பட்ட டிக்கெட்டுகளை முன்பதிவு செய்ய முடியுமா?
-Yes. RailOne supports reserved bookings, including Sleeper and AC classes and Tatkal, in addition to unreserved and platform tickets — all from the same IRCTC login. Standard Tatkal timings (10:00 AM for AC, 11:00 AM for non-AC) and the Aadhaar verification rules still apply.
+### தற்போதைய கிடைப்பு (CURR_AVBL) முன்பதிவு செய்ய எப்போது திறக்கிறது?
+தற்போதைய கிடைப்பு, முதலில் அட்டவணை தயாரிப்பிற்குப் பிறகு உடனடியாக திறக்கிறது, ரயிலின் திட்டமிடப்பட்ட départureக்கு ~8 மணி நேரத்திற்கு முன்பு. CURR_AVBL டிக்கெட்டுகள் 100% உறுதிப்படுத்தப்பட்ட இருக்கைகள் ஆகும், 30 நிமிடங்கள் départureக்கு முன்பு வரை சாதாரண அல்லது தள்ளுபடி விலையில் விற்கப்படுகின்றன.
 
-### புதிய IRCTC போர்ட்டில் மாதத்திற்கு முன்பதிவு வரம்பு என்ன?
-Under the revamped portal, standard IRCTC accounts can book up to 12 tickets per month. If you complete Aadhaar verification for your account and link your passengers, this monthly booking limit increases to 24 tickets.
+### தினசரி IRCTC இரவு பராமரிப்பு நிறுத்த நேரம் எப்போது?
+IRCTC இணையதளம் மற்றும் மொபைல் செயலிகள் தினசரி திட்டமிடப்பட்ட சர்வர் பராமரிப்பில் **11:45 PM முதல் 12:20 AM IST (23:45 முதல் 00:20)** வரை நடைபெறுகிறது. இந்த 35 நிமிடங்களில், ஆன்லைன் டிக்கெட் முன்பதிவுகள், ரத்து செய்வது, PNR நிலை விசாரணைகள் மற்றும் வாலெட் மேலேற்றங்கள் கிடைக்காது.
 
-### 60-நாள் முன்னணி முன்பதிவு விண்டோ எவ்வாறு செயல்படுகிறது?
-Following the policy change on November 1, 2024, the Advance Reservation Period (ARP) is 60 days. You can book reserved tickets up to 60 days in advance of the train's scheduled departure date from its originating station.
+### பொதுவான பதிவு செய்யாத டிக்கெட்டுடன் ஸ்லீப்பர் வகுப்பில் பயணிக்கும் அபராதம் என்ன?
+ஜன விச்வாச சட்டம் 2026 இன் கீழ், பொதுவான பதிவு செய்யாத டிக்கெட்டுடன் ஒரு பதிவு செய்யப்பட்ட ஸ்லீப்பர் அல்லது AC கோச்சில் பயணிக்கும் குறைந்தபட்ச அபராதம் ₹500 மற்றும் பயணித்த தூரத்திற்கு சரியான கட்டண வேறுபாடு ஆகும். எந்தவொரு இருக்கையும் கிடைக்கவில்லை என்றால், TTE உங்களை அடுத்த திட்டமிடப்பட்ட நிறுத்தத்தில் இறக்கிவிடும்.
 
-### தற்காலிக முன்பதிவின் போது எனது கட்டணம் காலாவதியாகினால் என்ன ஆகும்?
-The new revamp includes upgraded payment queues to minimize timeouts. However, if your payment is deducted but the ticket isn't booked due to a timeout, the amount is automatically refunded to your original payment mode within 3 to 5 business days.
-
-### டிக்கெட் இல்லாமல் பெண்கள் காட்சியில் பயணம் செய்தால் அபராதம் என்ன?
-Under the Jan Vishwas Act effective July 1, 2026, unauthorized entry into a ladies compartment carries a heavy penalty of ₹2,500. Additionally, the minimum fine for general ticketless travel across the network has doubled to ₹500.
-
-### ஒரு ரயில் முழுமையாக காத்திருப்பில் இருந்தால், நான் எவ்வாறு காலியாக உள்ள இருக்கைகளை கண்டுபிடிக்கலாம்?
-If a direct search shows a long Waiting List (WL), you can use the LastBerth search tool to find split-journey seat options on the same train, or check the seat status page to view segment-by-segment coach vacancy charts.
+### அட்டவணை தயாரிப்பிற்குப் பிறகு ஓடும் ரயிலில் காலியாக உள்ள இருக்கைகளை எவ்வாறு சரிபார்க்கலாம்?
+IRCTC இன் "Charts / Vacancy" தாவலுக்கு சென்று அல்லது [Seat Status Coach Journey Lookup](/seat-status) ஐ LastBerth இல் பயன்படுத்தி காலியாக உள்ள இருக்கைகளைப் பார்க்கலாம். உங்கள் ரயில் எண்ணிக்கையும் நிலையமும் உள்ளீடு செய்யவும், அனைத்து கோச்சுகளில் இருக்கை-by-இருக்கை ஆக்குபவர்களைப் பார்க்கவும்.
 
 ---
 
 ## அடிக்கடி கேட்கப்படும் கேள்விகள்
 
-The upcoming IRCTC website revamp on July 15, 2026, alongside the unified RailOne app, represents a major upgrade in processing capacity, helping eliminate peak-hour Tatkal booking failures. 
-
-Please note that LastBerth is an independent search and information tool, not IRCTC or Indian Railways. Passengers must always verify their final ticket status and book only via authorized channels (the official IRCTC website, mobile app, or station counters). If you're looking for confirmed options when direct booking is unavailable, check out our [Smart Seats search tool](/) to locate alternative journey paths.
+ஆகஸ்ட் 2026 கிளவுட் அடிப்படையிலான PRS மைக்ரேஷன் 1.5 லட்சம் முன்பதிவுகளை ஒரு நிமிடத்தில் கையாளும் வேகமான, நம்பகமான முன்பதிவு தளத்தை வழங்குகிறது. நீங்கள் உறுதிப்படுத்தப்பட்ட டிக்கெட்டை மறுசீரமைக்க வேண்டுமா அல்லது PNR உறுதிப்படுத்தும் வாய்ப்புகளைச் சரிபார்க்க வேண்டுமா, உங்கள் பயணத்தை நம்பிக்கையுடன் திட்டமிட [Finding Smart Seats](/) மற்றும் [PNR Status Search](/) ஐப் பயன்படுத்தவும்.
