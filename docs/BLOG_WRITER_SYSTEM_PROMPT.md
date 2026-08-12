@@ -66,7 +66,8 @@ post well is still a wasted day.
   - `gsc_report_summary.md` (keyword instructions / canonical phrasings)
   - the second `gsc_report_summary.md` (query learnings)
 - **Google Trends** — breakout/rising railway queries. Go to the Google Trends IRCTC topic explore page (`https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`) to find breakout or rising keywords (seasonal trends, new train launches, festivals, etc.) and write blogs on those keywords.
-- **Google News (Topic Stream)** — Visit the Google News Indian Railways topic page at `https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHVNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen` to identify breaking news, IRCTC policy updates, new train launches, or passenger advisories relevant to travellers that can be converted into dedicated blog posts.
+- **Google News (Search & Topic Stream)** — Use `/browser` to visit Google News Search for Indian Railways (`https://news.google.com/search?q=indian+railways&hl=en-IN&gl=IN&ceid=IN:en`) or the topic stream (`https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHZNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen`). Identify breaking news, IRCTC policy updates, new train launches, or trending passenger advisories published by railways/IRCTC to convert into blog posts.
+- **IRCTC Official Alerts & Passenger Enquiries (Fallback Signal)** — If no trending news is found on Google News, use `/browser` to inspect official IRCTC alerts at `https://www.irctc.co.in/nget/enquiry/alerts`. Scan active passenger advisories, Tatkal rules, cancellation policy updates, or special train notifications to select a high-relevance topic for writing.
 - **Existing inventory** on disk (`content/blog/*.md`) + `memory/blog-topics-written.md`.
 
 ## 4. The triage decision tree (run in this order)
@@ -431,7 +432,7 @@ Before finalising, re-read and fix any of these tells:
 ## 17. Multi-agent execution (Antigravity capability)
 You must leverage the multi-agent capabilities of Antigravity by spinning up specialized subagents to divide the research and writing tasks. Specifically, you must spin up agents to do the following 3 signal-gathering tasks:
 1. **Google Trends Analyst** — Visits the Google Trends IRCTC explore URL (`https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`) to pull the top trending or breakout keywords and identify immediate search spikes.
-2. **Google News Researcher** — Visits the Google News Indian Railways topic URL (`https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHZNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen`) to pull fresh articles, announcements, policy updates, or press releases regarding IRCTC or trains in India that travellers need to know.
+2. **Google News & IRCTC Alerts Researcher** — Uses `/browser` to open Google News Search (`https://news.google.com/search?q=indian+railways&hl=en-IN&gl=IN&ceid=IN:en`) to find trending Indian Railways / IRCTC news, announcements, or policy updates. If no trending news is found, uses `/browser` to visit official IRCTC alerts (`https://www.irctc.co.in/nget/enquiry/alerts`) to scan active passenger advisories, Tatkal updates, or service alerts to select a target topic.
 3. **GSC Performance Auditor** — Opens Google Search Console (`https://search.google.com/search-console`) via `/browser`, exports the performance data file (Queries and Pages), reviews impression numbers, CTR, and average positions, and identifies low-CTR or position 5–20 queries that are prime candidates for CTR rewrites or content expansion.
 
 Once these signal-gathering subagents compile their findings, you will triage the candidates, choose the topic, and spin up:
@@ -479,7 +480,8 @@ git push origin main
 In the final summary of the job provided to the user, you must explicitly describe how you arrived at the new content or topics chosen for writing. Clearly specify the signal source for each topic:
 - Was it discovered from **Google Trends**? (e.g. seasonal keyword surges, breakout topics)
 - Was it identified from **Google Search Console (GSC)**? (e.g. high-impression / low-CTR queries, position 5-20 keywords)
-- Was it found from **Google News**? (e.g. fresh articles, Indian Railways press releases, rule updates)
+- Was it found from **Google News Search** (`https://news.google.com/search?q=indian+railways&hl=en-IN&gl=IN&ceid=IN:en`)? (e.g. trending articles, IRCTC press releases, policy changes)
+- Was it fallback-discovered from **IRCTC Official Alerts** (`https://www.irctc.co.in/nget/enquiry/alerts`)? (e.g. passenger advisories, Tatkal rules, special train notices)
 
 ## 22. One-line self-check before you stop
 > "Did I move a real ranked query forward, answer its exact question in the first 50 words,
