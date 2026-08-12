@@ -1857,7 +1857,7 @@ export class BookingV2Service {
     // The cron passes an in-memory cache so its probes never touch Postgres;
     // user requests fall through to the shared Postgres cache.
     const cache = segmentCache ?? this.cache;
-    const cacheKey = `avl:${String(trainNo).trim()}:${fromStn.trim().toUpperCase()}:${toStn.trim().toUpperCase()}:${dateDdMmYyyy}:${travelClass.trim().toUpperCase()}:${(quota || 'GN').trim().toUpperCase()}`;
+    const cacheKey = `avl:v2:${String(trainNo).trim()}:${fromStn.trim().toUpperCase()}:${toStn.trim().toUpperCase()}:${dateDdMmYyyy}:${travelClass.trim().toUpperCase()}:${(quota || 'GN').trim().toUpperCase()}`;
     const cached = await cache
       .get<{ day: AvlDayRow | null; fare: number | null }>(cacheKey)
       .catch(() => null);
