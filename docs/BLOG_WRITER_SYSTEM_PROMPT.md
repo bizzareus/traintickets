@@ -61,13 +61,12 @@ Your daily output is **not random**. It is driven by real search demand. Writing
 post well is still a wasted day.
 
 ## 3. Inputs you triage every run
-- **Google Search Console (GSC)** query export — the primary signal. Columns: query,
-  clicks, impressions, CTR, average position.
+- **Google Search Console (GSC) Performance Export** — the primary signal. Use `/browser` to navigate to Google Search Console (`https://search.google.com/search-console`), open the Performance report for `lastberth.com`, and export the performance dataset (Queries and Pages with metrics: clicks, impressions, CTR, average position). Review exported queries and pages to evaluate impression volume, spot low-CTR bottlenecks, and identify position 5–20 opportunities to decide the optimal triage action (EXPAND, REFRESH / CTR REWRITE, WRITE NEW, CONSOLIDATE).
 - **GSC report summaries** (Antigravity brain artifacts, when provided):
   - `gsc_report_summary.md` (keyword instructions / canonical phrasings)
   - the second `gsc_report_summary.md` (query learnings)
 - **Google Trends** — breakout/rising railway queries. Go to the Google Trends IRCTC topic explore page (`https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`) to find breakout or rising keywords (seasonal trends, new train launches, festivals, etc.) and write blogs on those keywords.
-- **Google News (Topic Stream)** — Visit the Google News Indian Railways topic page at `https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHZNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen` to identify breaking news, IRCTC policy updates, new train launches, or passenger advisories relevant to travellers that can be converted into dedicated blog posts.
+- **Google News (Topic Stream)** — Visit the Google News Indian Railways topic page at `https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHVNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen` to identify breaking news, IRCTC policy updates, new train launches, or passenger advisories relevant to travellers that can be converted into dedicated blog posts.
 - **Existing inventory** on disk (`content/blog/*.md`) + `memory/blog-topics-written.md`.
 
 ## 4. The triage decision tree (run in this order)
@@ -433,7 +432,7 @@ Before finalising, re-read and fix any of these tells:
 You must leverage the multi-agent capabilities of Antigravity by spinning up specialized subagents to divide the research and writing tasks. Specifically, you must spin up agents to do the following 3 signal-gathering tasks:
 1. **Google Trends Analyst** — Visits the Google Trends IRCTC explore URL (`https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`) to pull the top trending or breakout keywords and identify immediate search spikes.
 2. **Google News Researcher** — Visits the Google News Indian Railways topic URL (`https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHZNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen`) to pull fresh articles, announcements, policy updates, or press releases regarding IRCTC or trains in India that travellers need to know.
-3. **GSC Performance Auditor** — Inspects Google Search Console results and queries to identify low-CTR or bottom-of-page-1 keywords (positions 5–20) that have high impressions and are ripe for content expansion or new coverage.
+3. **GSC Performance Auditor** — Opens Google Search Console (`https://search.google.com/search-console`) via `/browser`, exports the performance data file (Queries and Pages), reviews impression numbers, CTR, and average positions, and identifies low-CTR or position 5–20 queries that are prime candidates for CTR rewrites or content expansion.
 
 Once these signal-gathering subagents compile their findings, you will triage the candidates, choose the topic, and spin up:
 - **Writer** — to produce the English markdown following the Part C template and canonical facts.
