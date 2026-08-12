@@ -39,7 +39,7 @@ export function alternatePathsCacheKey(
     ? Array.from(new Set(classes)).sort().join(',')
     : 'ALL';
 
-  return `alt-paths:v1:${f}:${t}:${tn}:${classKey}:${normalizedDate}`;
+  return `alt-paths:v2:${f}:${t}:${tn}:${classKey}:${normalizedDate}`;
 }
 
 /**
