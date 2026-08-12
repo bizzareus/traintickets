@@ -1107,8 +1107,18 @@ export class BookingV2Service {
     if (key) {
       const hit = await this.altPathsCache.get(key);
       if (hit) {
-        this.logger.log(`[alt-paths-cache] HIT key=${key}`);
-        return { result: hit, cached: true };
+        const hasStaleTrainDeparted = hit.legs?.some(
+          (l) =>
+            l.availablityStatus === 'TRAIN DEPARTED' ||
+            l.availabilityDisplayName === 'Train Departed',
+        );
+        if (!hasStaleTrainDeparted) {
+          this.logger.log(`[alt-paths-cache] HIT key=${key}`);
+          return { result: hit, cached: true };
+        }
+        this.logger.log(
+          `[alt-paths-cache] IGNORED STALE HIT (contains Train Departed) key=${key}`,
+        );
       }
       this.logger.log(`[alt-paths-cache] MISS key=${key}`);
     }
