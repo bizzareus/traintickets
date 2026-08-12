@@ -58,14 +58,8 @@ describe('ChartTimeService', () => {
       });
     });
 
-    it('should catch IRCTC composition error during auto-hydration without throwing', async () => {
-      // First findMany returns empty array, trigger hydration attempt
-      prismaMock.trainStationChartTime.findMany
-        .mockResolvedValueOnce([])
-        .mockResolvedValueOnce([]);
-      irctcMock.getTrainComposition.mockRejectedValue(
-        new Error('We are unable to contact rail systems. Please try again later.'),
-      );
+    it('should return empty map when no DB rows exist without blocking on synchronous IRCTC calls', async () => {
+      prismaMock.trainStationChartTime.findMany.mockResolvedValue([]);
 
       const result = await service.getChartTimesWithSecondChartForTrain(
         '20474',
@@ -73,14 +67,8 @@ describe('ChartTimeService', () => {
         new Date('2026-08-12T00:00:00.000Z'),
       );
 
-      expect(irctcMock.getTrainComposition).toHaveBeenCalledWith(
-        {
-          trainNo: '20474',
-          jDate: '2026-08-12',
-          boardingStation: 'RGS',
-        },
-        { allowChartNotPrepared: true },
-      );
+      expect(prismaMock.trainStationChartTime.findMany).toHaveBeenCalledTimes(1);
+      expect(irctcMock.getTrainComposition).not.toHaveBeenCalled();
       expect(result.size).toBe(0);
     });
   });

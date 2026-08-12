@@ -141,33 +141,7 @@ export class ChartTimeService {
         in: normalizedCodes,
       };
     }
-    let rows = await this.prisma.trainStationChartTime.findMany({ where });
-    // DB-first read; if missing for requested stations, hydrate once from composition API.
-    if (rows.length === 0 && normalizedCodes.length > 0) {
-      const hydrationDate =
-        jDate instanceof Date
-          ? jDate.toISOString().slice(0, 10)
-          : jDate
-            ? String(jDate).trim().slice(0, 10)
-            : new Date().toISOString().slice(0, 10);
-      for (const code of normalizedCodes) {
-        try {
-          await this.irctc.getTrainComposition(
-            {
-              trainNo: num,
-              jDate: hydrationDate,
-              boardingStation: code,
-            },
-            { allowChartNotPrepared: true },
-          );
-        } catch (err: unknown) {
-          this.logger.warn(
-            `[chart-time] Failed auto-hydration from composition API for train=${num} station=${code}: ${err instanceof Error ? err.message : String(err)}`,
-          );
-        }
-      }
-      rows = await this.prisma.trainStationChartTime.findMany({ where });
-    }
+    const rows = await this.prisma.trainStationChartTime.findMany({ where });
     const map = new Map<
       string,
       {

@@ -536,6 +536,8 @@ export class JourneyTaskService {
     const trainName = params.trainName ?? schedule.trainName;
 
     const entry = chartTimesWithSecond.get(fromCode);
+    const needsAsyncHydration = !entry;
+
     if (entry) {
       const stationCode = fromCode;
 
@@ -558,12 +560,35 @@ export class JourneyTaskService {
           ),
         });
       }
-    }
-
-    if (taskSpecs.length === 0) {
-      throw new BadRequestException(
-        'No chart times found for stations in this route. Add chart times (e.g. train 29251, NDLS, 19:54) first.',
+    } else {
+      // DB does not have chart time for fromCode yet.
+      // Compute estimated chartAt from departure/arrival time or default (4 hours before departure).
+      const boardingStn = schedule.stationList.find(
+        (s) => String(s.stationCode ?? '').trim().toUpperCase() === fromCode,
       );
+      const dayCount = stationDayCount(boardingStn);
+      const rawTime =
+        boardingStn?.departureTime ||
+        boardingStn?.arrivalTime ||
+        '08:00';
+      const timeMatch = String(rawTime).trim().match(/^(\d{1,2}):(\d{2})/);
+      const timeStr = timeMatch
+        ? `${timeMatch[1].padStart(2, '0')}:${timeMatch[2]}`
+        : '08:00';
+
+      const deptDateTime = buildChartAtWithDayOffset(
+        trainStartDate,
+        timeStr,
+        dayCount - 1,
+      );
+      const estimatedChartAt = new Date(
+        deptDateTime.getTime() - 4 * 3600 * 1000,
+      );
+
+      taskSpecs.push({
+        stationCode: fromCode,
+        chartAt: estimatedChartAt,
+      });
     }
 
     const { journeyRequestId, tasks } = await this.prisma.$transaction(
@@ -626,6 +651,17 @@ export class JourneyTaskService {
       { timeout: 30_000 },
     );
 
+    if (needsAsyncHydration) {
+      setImmediate(() => {
+        void this.asyncHydrateChartTimeAndUpdateTasks(
+          trainNumber,
+          fromCode,
+          trainStartDate,
+          journeyRequestId,
+        );
+      });
+    }
+
     // Eagerly run any already-due tasks in the BACKGROUND so POST /journey returns
     // as soon as the alert is persisted (the durable transaction above). This is
     // fire-and-forget: the scheduled runDueTasks() sweep is the safety net, so a
@@ -659,6 +695,105 @@ export class JourneyTaskService {
           err instanceof Error ? err.message : String(err),
         );
       }
+    }
+  }
+
+  private async asyncHydrateChartTimeAndUpdateTasks(
+    trainNumber: string,
+    stationCode: string,
+    trainStartDate: Date,
+    journeyRequestId: string,
+  ): Promise<void> {
+    const num = to5DigitTrainNo(trainNumber);
+    const code = stationCode.trim().toUpperCase();
+    const hydrationDateStr = trainStartDate.toISOString().slice(0, 10);
+
+    try {
+      this.logger.log(
+        `[journey/async-hydration] starting for train=${num} station=${code} jid=${journeyRequestId}`,
+      );
+      await this.irctc.getTrainComposition(
+        {
+          trainNo: num,
+          jDate: hydrationDateStr,
+          boardingStation: code,
+        },
+        { allowChartNotPrepared: true },
+      );
+
+      const chartMetaMap =
+        await this.chartTime.getChartTimesWithSecondChartForTrain(
+          num,
+          [code],
+          trainStartDate,
+        );
+      const entry = chartMetaMap.get(code);
+      if (!entry?.chartOne) {
+        this.logger.warn(
+          `[journey/async-hydration] no chart times found for train=${num} station=${code} after composition fetch`,
+        );
+        return;
+      }
+
+      const exactChartOneAt = buildChartAtWithDayOffset(
+        trainStartDate,
+        entry.chartOne.time,
+        entry.chartOne.dayOffset ?? 0,
+      );
+
+      const pendingTasks =
+        await this.prisma.chartTimeAvailabilityTask.findMany({
+          where: {
+            journeyRequestId,
+            stationCode: code,
+            status: 'pending',
+          },
+          orderBy: { createdAt: 'asc' },
+        });
+
+      if (pendingTasks.length > 0) {
+        await this.prisma.chartTimeAvailabilityTask.update({
+          where: { id: pendingTasks[0].id },
+          data: { chartAt: exactChartOneAt },
+        });
+
+        if (entry.chartTwo) {
+          const exactChartTwoAt = buildChartAtWithDayOffset(
+            trainStartDate,
+            entry.chartTwo.time,
+            entry.chartTwo.dayOffset ?? 0,
+          );
+          if (pendingTasks.length > 1) {
+            await this.prisma.chartTimeAvailabilityTask.update({
+              where: { id: pendingTasks[1].id },
+              data: { chartAt: exactChartTwoAt },
+            });
+          } else {
+            const firstTask = pendingTasks[0];
+            await this.prisma.chartTimeAvailabilityTask.create({
+              data: {
+                journeyRequestId: firstTask.journeyRequestId,
+                trainNumber: firstTask.trainNumber,
+                trainName: firstTask.trainName,
+                fromStationCode: firstTask.fromStationCode,
+                toStationCode: firstTask.toStationCode,
+                stationCode: firstTask.stationCode,
+                journeyDate: firstTask.journeyDate,
+                trainStartDate: firstTask.trainStartDate,
+                chartAt: exactChartTwoAt,
+                status: 'pending',
+              },
+            });
+          }
+        }
+        this.logger.log(
+          `[journey/async-hydration] updated tasks for jid=${journeyRequestId} with exact chartAt=${exactChartOneAt.toISOString()}`,
+        );
+      }
+    } catch (err: unknown) {
+      this.logger.warn(
+        `[journey/async-hydration] failed for train=${num} station=${code} jid=${journeyRequestId}: ${err instanceof Error ? err.message : String(err)}`,
+      );
     }
   }
 
