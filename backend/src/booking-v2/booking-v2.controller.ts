@@ -201,9 +201,11 @@ export class BookingV2Controller {
       res.write(JSON.stringify(obj) + '\n');
     };
 
+    const forceRefresh = Boolean((body as any)?.forceRefresh);
+
     try {
       const { result, cached } = await this.bookingV2.findAlternatePathsCached(
-        { trainNumber, from, to, date, avlClasses, quota },
+        { trainNumber, from, to, date, avlClasses, quota, forceRefresh },
         (event: AlternatePathProgressEvent) => {
           writeLine({ type: 'progress', event });
         },

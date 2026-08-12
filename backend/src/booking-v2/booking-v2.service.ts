@@ -1093,6 +1093,7 @@ export class BookingV2Service {
       date: string;
       avlClasses?: string[];
       quota?: string;
+      forceRefresh?: boolean;
     },
     onProgress?: (event: AlternatePathProgressEvent) => void,
   ): Promise<{ result: FindAlternatePathsResult; cached: boolean }> {
@@ -1104,7 +1105,7 @@ export class BookingV2Service {
       this.normalizeToRailApiDate(input.date),
     );
 
-    if (key) {
+    if (key && !input.forceRefresh) {
       const hit = await this.altPathsCache.get(key);
       if (hit) {
         const hasStaleTrainDeparted = hit.legs?.some(
