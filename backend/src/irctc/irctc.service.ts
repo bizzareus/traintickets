@@ -291,7 +291,7 @@ export class IrctcService {
         trainName: cached.trainName,
         stationFrom: cached.stationFrom,
         stationTo: cached.stationTo,
-        stationList: (cached.stationList as ScheduleStation[]) ?? [],
+        stationList: enrichScheduleStationDayCounts((cached.stationList as ScheduleStation[]) ?? []),
         ...(trainRunsOn && Object.keys(trainRunsOn).length > 0
           ? { trainRunsOn }
           : {}),
@@ -576,7 +576,9 @@ export class IrctcService {
           : typeof raw.stationTo === 'number' && Number.isFinite(raw.stationTo)
             ? String(raw.stationTo)
             : '',
-      stationList: raw.stationList as ScheduleStation[],
+      stationList: enrichScheduleStationDayCounts(
+        (raw.stationList as ScheduleStation[]) ?? [],
+      ),
       ...(trainRunsOn ? { trainRunsOn } : {}),
     };
     return schedule;
@@ -2018,4 +2020,52 @@ export class IrctcService {
       },
     });
   }
+}
+
+function parseHHMMToMinutes(timeStr: string): number | null {
+  const match = String(timeStr).trim().match(/^(\d{1,2}):(\d{2})/);
+  if (!match) return null;
+  const h = parseInt(match[1], 10);
+  const m = parseInt(match[2], 10);
+  return h >= 0 && h < 24 && m >= 0 && m < 60 ? h * 60 + m : null;
+}
+
+export function enrichScheduleStationDayCounts<
+  T extends { dayCount?: number | string; arrivalTime?: string | null; departureTime?: string | null }
+>(stationList: T[]): T[] {
+  if (!Array.isArray(stationList) || stationList.length === 0) return stationList;
+  let currentDay = 1;
+  let prevMinutes: number | null = null;
+
+  for (const stn of stationList) {
+    if (stn.dayCount != null) {
+      const parsed = typeof stn.dayCount === 'number'
+        ? stn.dayCount
+        : parseInt(String(stn.dayCount).trim(), 10);
+      if (Number.isFinite(parsed) && parsed >= 1) {
+        currentDay = parsed;
+        stn.dayCount = currentDay;
+        const timeStr = stn.departureTime || stn.arrivalTime;
+        if (timeStr) {
+          const mins = parseHHMMToMinutes(timeStr);
+          if (mins != null) prevMinutes = mins;
+        }
+        continue;
+      }
+    }
+
+    const timeStr = stn.departureTime || stn.arrivalTime;
+    if (timeStr) {
+      const mins = parseHHMMToMinutes(timeStr);
+      if (mins != null) {
+        if (prevMinutes != null && mins < prevMinutes - 120) {
+          currentDay += 1;
+        }
+        prevMinutes = mins;
+      }
+    }
+    stn.dayCount = currentDay;
+  }
+
+  return stationList;
 }
