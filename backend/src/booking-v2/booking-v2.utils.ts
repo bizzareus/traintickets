@@ -96,7 +96,11 @@ export function isLegConfirmed(avl: AvlDayLike | null | undefined): boolean {
   const vendorStatus = String(avl.vendorPredictionStatus ?? '').trim();
   if (vendorStatus === 'Confirm' || vendorStatus === 'Probable') return true;
 
-  const currentStatus = String(avl.availablityStatus ?? '').split('/').pop()?.trim() ?? '';
+  const currentStatus =
+    String(avl.availablityStatus ?? '')
+      .split('/')
+      .pop()
+      ?.trim() ?? '';
   return CONFIRMED_LEG_STATUS_RE.test(currentStatus);
 }
 
