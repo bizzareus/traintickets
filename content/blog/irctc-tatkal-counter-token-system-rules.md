@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Tatkal Counter Token System: New Rules & Timings (2026)"
-description: "New IRCTC Tatkal counter rules: Token system, Category A vs B queue priority, 8:30 AM AC & 9:00 AM Non-AC timings, Aadhaar rules, and how to get confirmed."
+title: "IRCTC Tatkal Token System Rules 2026: Counter Timings"
+description: "How does the physical Tatkal counter token system work in Indian Railways? Learn August 1 2026 rules, 8:30 AM AC & 9:00 AM Non-AC timings & queues."
 date: "2026-08-04"
-updated: "2026-08-04"
+updated: "2026-08-13"
 tags:
   - tatkal counter booking
   - irctc tatkal token system
@@ -12,11 +12,11 @@ tags:
   - category a category b tatkal
 ---
 
-> **Missed out on Tatkal tickets at the counter?** When direct Tatkal seats fill up in seconds, search route splits and intermediate station availability on [Smart Seats](/) to find confirmed seats on the exact same train, or inspect open berths on [Seat Status Coach Journey Lookup](/seat-status).
+> **Missed out on Tatkal tickets at the counter?** When direct Tatkal seats fill up in seconds, search route splits and intermediate station availability on [Smart Seats](/) to find confirmed seats on the exact same train, or inspect open berths on [Coach Journey Lookup](/seat-status).
 
 ## TL;DR
 
-- Indian Railways has introduced a **numbered token system** at Passenger Reservation System (PRS) counters for Tatkal booking to eliminate physical overcrowding.
+- Indian Railways introduced updated **numbered token system rules on August 1, 2026** at Passenger Reservation System (PRS) counters for Tatkal booking to eliminate physical overcrowding.
 - Tokens are issued in a staggered manner: **8:30 AM to 9:30 AM** for AC classes (10:00 AM opening) and **9:00 AM to 9:30 AM** for Non-AC Sleeper classes (11:00 AM opening).
 - Counter queues are split into **Category A** (passengers booking for self or family, given first priority) and **Category B** (agents or third parties, served only after Category A).
 - **Mandatory Photo ID:** Passengers in Category B must present a physical Aadhaar card or valid government photo ID to receive a token.
@@ -38,12 +38,12 @@ Under the updated system, PRS counters issue numbered tokens during fixed mornin
 
 **Staggered token timings require passengers booking AC Tatkal tickets to collect tokens between 8:30 AM and 9:30 AM, while Non-AC Sleeper class tokens are distributed between 9:00 AM and 9:30 AM. Token distribution stops at 9:30 AM to allow counter staff to register profiles and organize queues before booking windows open.**
 
-The table below outlines the exact schedule for collecting tokens and booking Tatkal tickets at PRS counters:
+The table below outlines the exact schedule for collecting tokens and booking Tatkal tickets at PRS counters under the August 1, 2026 rules:
 
 | Travel Class | Token Issuance Window | Tatkal Window Opens | Key Requirement |
 | :--- | :--- | :--- | :--- |
 | **AC Classes (1A, 2A, 3A, 3E, CC)** | **8:30 AM – 9:30 AM** | **10:00 AM** | Token collected before 9:30 AM; presence required at 10:00 AM |
-| **Non-AC Classes (SL, 2S)** | **9:00 AM – 9:30 AM** | **11:00 AM** | Token collected before 9:30 AM; presence required at 11:00 AM |
+| **Non-AC Classes (SL, 2S)** | **9:00 AM – 9:30 AM** | **11:00 AM** | Token collected before 9:30 AM; presence required at 9:30 AM cutoff |
 
 Arriving at the PRS counter after 9:30 AM means you will not be issued a numbered token for that day's Tatkal opening. In such cases, counter staff will only serve tokenless passengers after all token holders have been processed, by which time Tatkal quotas are typically exhausted.
 
@@ -113,25 +113,39 @@ When direct Tatkal availability shows `REGRET` or high `TQWL` (Tatkal Quota Wait
 ## Common Booking Questions (FAQ)
 
 ### What time are Tatkal tokens issued at railway counters?
+
 Tatkal tokens are issued between 8:30 AM and 9:30 AM for AC classes, and between 9:00 AM and 9:30 AM for Non-AC Sleeper classes. Token distribution closes strictly at 9:30 AM across all PRS counters.
 
 ### Can I get a Tatkal token after 9:30 AM at the counter?
+
 No, token distribution ends at 9:30 AM. Passengers arriving after 9:30 AM must wait in the non-token line and will only be served after all token holders have finished their bookings.
 
 ### What is the difference between Category A and Category B Tatkal tokens?
+
 Category A is for passengers booking for themselves or immediate family members and receives first priority. Category B is for agents or representatives and is served only after all Category A passengers finish.
 
 ### Is Aadhaar mandatory for counter Tatkal ticket booking?
+
 Aadhaar or valid government photo ID is mandatory for Category B bookers receiving tokens. For Category A travellers, keeping Aadhaar details handy ensures quick requisition verification.
 
 ### What happens if my Tatkal ticket remains waitlisted (TQWL)?
+
 If a Tatkal ticket booked online remains in TQWL status after final chart preparation, it is automatically cancelled and refunded. Counter TQWL tickets must be cancelled manually at the station window.
 
 ### Can I book Current Availability if Tatkal is full?
+
 Yes. Current Availability (`CURR_AVBL`) opens ~8 hours before train departure right after chart preparation. It offers 100% confirmed seats with no Tatkal premium charges.
+
+### What is the August 1 2026 rule for Tatkal counter token distribution?
+
+Under the August 1 2026 rules, PRS counters enforce a strict 9:30 AM cutoff for all Tatkal tokens, categorizing queues into Category A (self/family priority) and Category B (agents/representatives with mandatory physical Aadhaar).
+
+### Can travel agents book Tatkal tickets during peak morning counter hours?
+
+Travel agents are placed in Category B at PRS counters. They receive tokens only after Category A passenger lines are cleared, and face restrictions during the first 30 minutes of Tatkal window opening.
 
 ---
 
 ## Bottom line
 
-The new Tatkal counter token system brings needed order to physical railway bookings, but seats still sell out in minutes. If you miss a counter ticket or face online session timeouts, use [Smart Seats](/) to find split-route confirmed berths or check [Seat Status](/seat-status) for vacant berths after chart preparation.
+The Tatkal counter token system brings needed order to physical railway bookings, but seats still sell out in minutes. If you miss a counter ticket or face online session timeouts, use [Smart Seats](/) to find split-route confirmed berths or check [Coach Journey Lookup](/seat-status) for vacant berths after chart preparation.
