@@ -48,46 +48,64 @@ export class WatiProvider implements WhatsAppProvider {
     }
 
     const whatsappNumber = normalizeWatiNumber(payload.mobile);
-    const url = `${this.apiEndpoint}/api/v2/sendTemplateMessage?whatsappNumber=${encodeURIComponent(whatsappNumber)}`;
+    const v1Url = `${this.apiEndpoint}/api/v1/sendTemplateMessage?whatsappNumber=${encodeURIComponent(whatsappNumber)}`;
+    const v2Url = `${this.apiEndpoint}/api/v2/sendTemplateMessage?whatsappNumber=${encodeURIComponent(whatsappNumber)}`;
 
-    const body = {
+    const body: Record<string, unknown> = {
       template_name: templateName,
       broadcast_name: payload.broadcastName || 'lastberth_alert',
-      channel_number: this.channelNumber || '',
       parameters: (payload.parameters || []).map((p) => ({
         name: p.name,
         value: String(p.value ?? ''),
       })),
     };
-
-    try {
-      const response = await axios.post(url, body, {
-        headers: {
-          Authorization: `Bearer ${this.accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        timeout: 15_000,
-      });
-
-      const resData = response.data as {
-        result?: boolean;
-        validWhatsAppNumber?: boolean;
-      };
-      if (resData?.result === true) {
-        this.logger.log(
-          `WATI template '${templateName}' sent successfully to ${whatsappNumber}`,
-        );
-        return true;
-      }
-
-      this.logger.warn(`WATI response result indicated failure`, resData);
-      return false;
-    } catch (err) {
-      this.logger.error(
-        `WATI WhatsApp send failed for template '${templateName}'`,
-        err,
-      );
-      return false;
+    if (this.channelNumber) {
+      body.channel_number = this.channelNumber;
     }
+
+    const headers = {
+      Authorization: `Bearer ${this.accessToken}`,
+      'Content-Type': 'application/json',
+    };
+
+    for (const url of [v1Url, v2Url]) {
+      try {
+        const response = await axios.post(url, body, {
+          headers,
+          timeout: 15_000,
+        });
+
+        const resData = response.data as {
+          result?: boolean;
+          validWhatsAppNumber?: boolean;
+        };
+        if (resData?.result === true) {
+          this.logger.log(
+            `WATI template '${templateName}' sent successfully to ${whatsappNumber}`,
+          );
+          return true;
+        }
+
+        this.logger.warn(`WATI response result indicated failure`, resData);
+        return false;
+      } catch (err) {
+        if (
+          axios.isAxiosError(err) &&
+          err.response?.status === 404 &&
+          url === v1Url
+        ) {
+          this.logger.warn(
+            `WATI v1 endpoint returned 404, attempting fallback to v2 endpoint...`,
+          );
+          continue;
+        }
+        this.logger.error(
+          `WATI WhatsApp send failed for template '${templateName}'`,
+          err,
+        );
+        return false;
+      }
+    }
+    return false;
   }
 }

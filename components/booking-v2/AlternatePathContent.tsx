@@ -413,16 +413,29 @@ function CompactLegChartCta({
           if (c1Time) {
             const m1 = parseChartDateTimeIst(ymd, c1Time, c1Offset);
             if (m1) {
-              targetM = m1;
-              isPrep = chartMomentHasPassedIst(m1);
+              const isPrep1 = chartMomentHasPassedIst(m1);
+              let m2: moment.Moment | null = null;
+              let isPrep2 = false;
 
-              // If chart one is already prepared and there is a second chart, consider the second one
-              if (isPrep && c2Time) {
-                const m2 = parseChartDateTimeIst(ymd, c2Time, c2Offset);
+              if (c2Time) {
+                m2 = parseChartDateTimeIst(ymd, c2Time, c2Offset);
                 if (m2) {
-                  targetM = m2;
-                  isPrep = chartMomentHasPassedIst(m2);
+                  isPrep2 = chartMomentHasPassedIst(m2);
                 }
+              }
+
+              if (isPrep1 && m2 && isPrep2) {
+                targetM = m2;
+                isPrep = true;
+                setActiveChartSource("two");
+              } else if (isPrep1) {
+                targetM = m1;
+                isPrep = true;
+                setActiveChartSource("one");
+              } else {
+                targetM = m1;
+                isPrep = false;
+                setActiveChartSource("one");
               }
             }
           }
@@ -430,16 +443,6 @@ function CompactLegChartCta({
           if (targetM) {
             setChartTimeLabel(formatChartMomentIst(targetM));
             setChartIsPrepared(isPrep);
-
-            // Set source correctly
-            if (c1Time) {
-              const m1 = parseChartDateTimeIst(ymd, c1Time, c1Offset);
-              if (m1 && targetM.isSame(m1)) {
-                setActiveChartSource("one");
-              } else if (c2Time) {
-                setActiveChartSource("two");
-              }
-            }
           }
         }
       })
@@ -1143,10 +1146,9 @@ export function AlternatePathContent({
                       {!isConfirmed && (
                         <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
                           <span className="text-sm font-semibold text-slate-700">
-                            {leg.availabilityDisplayName
-                              ? `Waitlisted (${leg.availabilityDisplayName})`
-                              : "No tickets available"}
+                            Not Available - Buy Ticket from TTE in Train
                           </span>
+
                           <CompactLegChartCta
                             trainNumber={altResult.trainNumber}
                             trainName={altTrainName}
@@ -1226,10 +1228,9 @@ export function AlternatePathContent({
                     </div>
                     <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
                       <span className="text-sm font-semibold text-amber-800">
-                        {item.legs[0]?.availabilityDisplayName
-                          ? `Waitlisted (${item.legs[0].availabilityDisplayName})`
-                          : "No tickets available"}
+                        Not Available - Buy Ticket from TTE in Train
                       </span>
+
                       <CompactLegChartCta
                         trainNumber={altResult.trainNumber}
                         trainName={altTrainName}

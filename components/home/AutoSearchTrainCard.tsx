@@ -322,18 +322,12 @@ export function AutoSearchTrainCard({
 
       {/* Completed Results Display */}
       {!loading && !error && result && (
-        <div className="mt-4">
+        <div className="mt-4 pt-1">
           {result.legs && result.legs.length > 0 ? (
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-emerald-200 bg-emerald-50/60 p-4">
-              <div>
-                <p className="text-sm font-bold text-emerald-900">
-                  🎉 Found you {result.legCount} confirmed seat{result.legCount > 1 ? "s" : ""}!
-                </p>
-                <p className="mt-1 text-xs text-emerald-700">
-                  {result.legs.map((leg) => `${leg.from} → ${leg.to}${leg.travelClass ? ` (${leg.travelClass})` : ""}`).join(" · ")}
-                  {result.totalFare != null && ` · Total: ₹${result.totalFare}`}
-                </p>
-              </div>
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-sm font-bold text-slate-900">
+                🎉 Found you {result.legCount} confirmed seat{result.legCount > 1 ? "s" : ""}!
+              </p>
 
               <button
                 type="button"
@@ -350,6 +344,7 @@ export function AutoSearchTrainCard({
                 Ticket Details
               </button>
             </div>
+
           ) : (
             <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-center">
               <p className="text-sm font-semibold text-slate-700">

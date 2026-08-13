@@ -543,6 +543,21 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const { isVariantA } = useAutoSearchExperiment();
   const [failedAutoSearchTrains, setFailedAutoSearchTrains] = useState<Set<string>>(new Set());
 
+  const autoSearchEligibleTrainNumbers = useMemo(() => {
+    const set = new Set<string>();
+    let count = 0;
+    for (const t of trains) {
+      if (!hasAnyAvailableSeat(t, acOnly)) {
+        count++;
+        if (count <= 3) {
+          set.add(t.trainNumber);
+        }
+      }
+    }
+    return set;
+  }, [trains, acOnly]);
+
+
 
   const [isAdminUser, setIsAdminUser] = useState(false);
 
@@ -1516,40 +1531,42 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         )}
 
         <ul className="space-y-5" role="list" aria-label="Train results">
-          {trains.map((t, trainIdx) => {
-            const hasAvailable = hasAnyAvailableSeat(t, acOnly);
+          {trains.map((t) => {
+            const isEligibleForAutoSearch = autoSearchEligibleTrainNumbers.has(t.trainNumber);
             const autoSearchFailed = failedAutoSearchTrains.has(t.trainNumber);
 
-            // Variant A experiment: Auto-run search ONLY for top 3 trains (and fallback to control if search failed)
-            if (isVariantA && trainIdx < 3 && !hasAvailable && !autoSearchFailed) {
-              return (
-                <AutoSearchTrainCard
-                  key={`variant-a-${t.trainNumber}-${t.departureTime}`}
-                  train={t}
-                  journeyDate={journeyDate}
-                  fromCode={fromSt?.stationCode}
-                  toCode={toSt?.stationCode}
-                  acOnly={acOnly}
-                  onFallbackToControl={() => {
-                    setFailedAutoSearchTrains((prev) => new Set(prev).add(t.trainNumber));
-                  }}
-                  onOpenSchedule={(trainNumber, from, to) => {
-                    setScheduleTrainNumber(trainNumber);
-                    setScheduleHighlightFrom(from ?? "");
-                    setScheduleHighlightTo(to ?? "");
-                    setScheduleModalOpen(true);
-                  }}
-                  onOpenFullResultModal={({ trainNumber, trainName, avlClasses, result }) => {
-                    alt.showResult({
-                      trainNumber,
-                      trainName,
-                      avlClasses,
-                      result,
-                    });
-                  }}
-                />
-              );
-            }
+            // Variant A experiment: Auto-run search ONLY for the FIRST 3 unavailable trains
+            if (isVariantA && isEligibleForAutoSearch && !autoSearchFailed) {
+
+                return (
+                  <AutoSearchTrainCard
+                    key={`variant-a-${t.trainNumber}-${t.departureTime}`}
+                    train={t}
+                    journeyDate={journeyDate}
+                    fromCode={fromSt?.stationCode}
+                    toCode={toSt?.stationCode}
+                    acOnly={acOnly}
+                    onFallbackToControl={() => {
+                      setFailedAutoSearchTrains((prev) => new Set(prev).add(t.trainNumber));
+                    }}
+                    onOpenSchedule={(trainNumber, from, to) => {
+                      setScheduleTrainNumber(trainNumber);
+                      setScheduleHighlightFrom(from ?? "");
+                      setScheduleHighlightTo(to ?? "");
+                      setScheduleModalOpen(true);
+                    }}
+                    onOpenFullResultModal={({ trainNumber, trainName, avlClasses, result }) => {
+                      alt.showResult({
+                        trainNumber,
+                        trainName,
+                        avlClasses,
+                        result,
+                      });
+                    }}
+                  />
+                );
+              }
+
 
 
             // Control UI (or trains with available seats):
@@ -1692,9 +1709,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 </div>
               )}
             </li>
-            );
-          })}
+          );
+        })}
+
         </ul>
+
+
 
         {searchType === "route" &&
           (altResult || altError || (altLoading && altForTrain)) && (

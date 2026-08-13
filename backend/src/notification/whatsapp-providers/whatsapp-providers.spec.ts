@@ -78,7 +78,7 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       expect(result).toBe(true);
       expect(mockedAxios.post.mock.calls.length).toBe(1);
       expect(mockedAxios.post.mock.calls[0][0]).toBe(
-        'https://live-mt-server.wati.io/api/v2/sendTemplateMessage?whatsappNumber=919876543210',
+        'https://live-mt-server.wati.io/api/v1/sendTemplateMessage?whatsappNumber=919876543210',
       );
     });
 
