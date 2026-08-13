@@ -454,6 +454,25 @@ export class AvailabilityController {
     }
   }
 
+  @Post('admin/alerts/:id/resend-notification')
+  async resendNotification(@Param('id') id: string) {
+    try {
+      const res = await this.journeyTask.resendTaskNotification(id);
+      return {
+        success: res.sent,
+        message: res.sent
+          ? 'Notification resent successfully'
+          : `Failed to resend notification: ${res.reason ?? 'Unknown reason'}`,
+        status: res,
+      };
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      throw new ServiceUnavailableException(
+        `Failed to resend notification: ${message}`,
+      );
+    }
+  }
+
   @Get('admin/resend-failed-notifications')
   @Post('admin/resend-failed-notifications')
   async resendFailedNotifications(@Query('hours') hours?: string) {

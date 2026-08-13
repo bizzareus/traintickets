@@ -49,7 +49,9 @@ describe('ChartTimeService', () => {
         new Date('2026-08-12T00:00:00.000Z'),
       );
 
-      expect(prismaMock.trainStationChartTime.findMany).toHaveBeenCalledTimes(1);
+      expect(prismaMock.trainStationChartTime.findMany).toHaveBeenCalledTimes(
+        1,
+      );
       expect(irctcMock.getTrainComposition).not.toHaveBeenCalled();
       expect(result.get('RGS')).toEqual({
         chartOne: { time: '19:54', dayOffset: 0 },
@@ -67,7 +69,9 @@ describe('ChartTimeService', () => {
         new Date('2026-08-12T00:00:00.000Z'),
       );
 
-      expect(prismaMock.trainStationChartTime.findMany).toHaveBeenCalledTimes(1);
+      expect(prismaMock.trainStationChartTime.findMany).toHaveBeenCalledTimes(
+        1,
+      );
       expect(irctcMock.getTrainComposition).not.toHaveBeenCalled();
       expect(result.size).toBe(0);
     });

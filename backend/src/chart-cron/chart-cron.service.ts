@@ -56,6 +56,12 @@ export class ChartCronService {
           );
         }
       }
+
+      try {
+        await this.journeyTask.resendFailedWhatsAppNotifications(24);
+      } catch (resendErr) {
+        console.error('Failed to auto-resend unnotified tasks:', resendErr);
+      }
       const completedCount = run.results.filter(
         (r) => r.status === 'completed',
       ).length;

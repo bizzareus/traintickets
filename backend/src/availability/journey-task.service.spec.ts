@@ -392,10 +392,23 @@ describe('JourneyTaskService', () => {
         schedule: {
           trainNumber: '20474',
           trainName: 'CHETAK EXPRESS',
-          trainRunsOn: { sun: true, mon: true, tue: true, wed: true, thu: true, fri: true, sat: true },
+          trainRunsOn: {
+            sun: true,
+            mon: true,
+            tue: true,
+            wed: true,
+            thu: true,
+            fri: true,
+            sat: true,
+          },
           stationList: [
             { stationCode: 'AII', dayCount: 1, departureTime: '22:20' },
-            { stationCode: 'RGS', dayCount: 2, arrivalTime: '00:28', departureTime: '00:31' },
+            {
+              stationCode: 'RGS',
+              dayCount: 2,
+              arrivalTime: '00:28',
+              departureTime: '00:31',
+            },
             { stationCode: 'DEE', dayCount: 2, arrivalTime: '05:05' },
           ],
         },

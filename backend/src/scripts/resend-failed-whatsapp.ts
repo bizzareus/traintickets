@@ -22,7 +22,9 @@ async function main() {
     stationCacheService,
   );
 
-  console.log('Searching for completed tasks missing WhatsApp notifications...');
+  console.log(
+    'Searching for completed tasks missing WhatsApp notifications...',
+  );
 
   const tasks = await prisma.chartTimeAvailabilityTask.findMany({
     where: {

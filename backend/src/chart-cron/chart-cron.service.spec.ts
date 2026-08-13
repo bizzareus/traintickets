@@ -17,6 +17,9 @@ describe('ChartCronService', () => {
     const journeyTask = {
       runDueTasks: jest.fn().mockResolvedValue(mockRunResult),
       logCronRun: jest.fn().mockResolvedValue({ id: 'log-1' }),
+      resendFailedWhatsAppNotifications: jest
+        .fn()
+        .mockResolvedValue({ found: 0, resent: 0, failed: 0 }),
     };
     const leader = { isLeader: jest.fn().mockResolvedValue(true) };
     const service = new ChartCronService(journeyTask as never, leader as never);
@@ -35,6 +38,9 @@ describe('ChartCronService', () => {
     const journeyTask = {
       runDueTasks: jest.fn().mockReturnValue(running),
       logCronRun: jest.fn().mockResolvedValue({ id: 'log-1' }),
+      resendFailedWhatsAppNotifications: jest
+        .fn()
+        .mockResolvedValue({ found: 0, resent: 0, failed: 0 }),
     };
     const leader = { isLeader: jest.fn().mockResolvedValue(true) };
     const service = new ChartCronService(journeyTask as never, leader as never);

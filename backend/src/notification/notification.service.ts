@@ -141,6 +141,7 @@ export class NotificationService {
       templateName?: string;
       broadcastName?: string;
       parameters?: Array<{ name: string; value: string }>;
+      skipFailureReport?: boolean;
     },
   ): Promise<boolean> {
     console.info('whatsapp service was called');
@@ -160,12 +161,61 @@ export class NotificationService {
       parameters: options?.parameters,
     };
 
-    return provider.sendWhatsApp(payload);
+    let sent = false;
+    let failureError: unknown = null;
+    try {
+      sent = await provider.sendWhatsApp(payload);
+    } catch (err) {
+      failureError = err;
+      console.error('WhatsApp send thrown error:', err);
+    }
+
+    if (!sent && !options?.skipFailureReport) {
+      const errStr = failureError
+        ? failureError instanceof Error
+          ? failureError.stack || failureError.message
+          : typeof failureError === 'object' && failureError !== null
+            ? JSON.stringify(failureError)
+            : typeof failureError === 'string'
+              ? failureError
+              : 'Unknown error object'
+        : 'WhatsApp provider returned false (sending failed, rate limited, or unconfigured)';
+
+      void this.sendAlertFailureReport({
+        alertType: 'WhatsApp Alert',
+        recipientMobile: mobile,
+        failureReason: failureError
+          ? 'WhatsApp provider threw an exception'
+          : 'WhatsApp provider returned failure status',
+        logs: errStr,
+        payload,
+      });
+    }
+
+    return sent;
   }
 
-  async sendEmail(to: string, subject: string, html: string): Promise<boolean> {
+  async sendEmail(
+    to: string,
+    subject: string,
+    html: string,
+    options?: { skipFailureReport?: boolean },
+  ): Promise<boolean> {
     console.info('email service was called');
+    const isToAdmin =
+      to.trim().toLowerCase() === DEFAULT_MONITORING_ADMIN_EMAIL.toLowerCase();
+
     if (!this.resend) {
+      if (!isToAdmin && !options?.skipFailureReport) {
+        void this.sendAlertFailureReport({
+          alertType: 'Email Alert',
+          recipientEmail: to,
+          failureReason:
+            'Resend API key is not configured (RESEND_API_KEY missing)',
+          logs: `Attempted to send email to ${to} with subject "${subject}"`,
+          payload: { to, subject },
+        });
+      }
       return false;
     }
     try {
@@ -186,6 +236,163 @@ export class NotificationService {
       return true;
     } catch (err) {
       console.error('Resend email send failed', err);
+      if (!isToAdmin && !options?.skipFailureReport) {
+        const errMessage =
+          err instanceof Error ? err.stack || err.message : String(err);
+        void this.sendAlertFailureReport({
+          alertType: 'Email Alert',
+          recipientEmail: to,
+          failureReason: 'Resend emails.send threw an exception',
+          logs: errMessage,
+          payload: { to, subject },
+        });
+      }
+      return false;
+    }
+  }
+
+  async sendAlertFailureReport(params: {
+    alertType: string;
+    recipientMobile?: string | null;
+    recipientEmail?: string | null;
+    trainNumber?: string | null;
+    trainName?: string | null;
+    fromStationCode?: string | null;
+    toStationCode?: string | null;
+    journeyDate?: string | Date | null;
+    failureReason: string;
+    logs?: string | null;
+    payload?: any;
+  }): Promise<boolean> {
+    if (!this.resend) {
+      console.error(
+        '[ALERT FAILURE REPORT] Cannot send failure email: Resend API key is not configured',
+        params,
+      );
+      return false;
+    }
+
+    const adminEmail = DEFAULT_MONITORING_ADMIN_EMAIL;
+    const trainLabel = [params.trainNumber, params.trainName]
+      .filter(Boolean)
+      .join(' ');
+    const routeLabel = [params.fromStationCode, params.toStationCode]
+      .filter(Boolean)
+      .join(' → ');
+    const dateStr =
+      params.journeyDate instanceof Date
+        ? params.journeyDate.toISOString().slice(0, 10)
+        : String(params.journeyDate || '').slice(0, 10);
+
+    const subject = `[ALERT FAILURE] ${params.alertType} failed${
+      params.trainNumber ? ` for Train ${params.trainNumber}` : ''
+    }${routeLabel ? ` (${routeLabel})` : ''}`;
+
+    const formattedPayload = params.payload
+      ? escapeHtml(
+          typeof params.payload === 'string'
+            ? params.payload
+            : JSON.stringify(params.payload, null, 2),
+        )
+      : undefined;
+
+    const formattedLogs = params.logs
+      ? escapeHtml(params.logs)
+      : escapeHtml(params.failureReason);
+
+    const html = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body style="font-family:system-ui,-apple-system,sans-serif;line-height:1.5;color:#0f172a;background-color:#f8fafc;padding:20px;">
+  <div style="max-width:650px;margin:0 auto;background:#ffffff;border:1px solid #cbd5e1;border-radius:8px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+    <div style="background-color:#fef2f2;border-left:4px solid #ef4444;padding:12px 16px;margin-bottom:20px;border-radius:0 4px 4px 0;">
+      <h2 style="color:#991b1b;margin:0 0 4px 0;font-size:18px;">⚠️ Alert Delivery Failure Report</h2>
+      <p style="color:#7f1d1d;margin:0;font-size:14px;">An alert failed to deliver. Details and failure logs are attached below.</p>
+    </div>
+
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;font-size:14px;">
+      <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:8px;color:#64748b;font-weight:600;width:140px;">Alert Type</td>
+        <td style="padding:8px;font-weight:600;color:#0f172a;">${escapeHtml(params.alertType)}</td>
+      </tr>
+      ${
+        params.recipientMobile
+          ? `<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:8px;color:#64748b;font-weight:600;">Recipient Mobile</td><td style="padding:8px;color:#0f172a;">${escapeHtml(
+              params.recipientMobile,
+            )}</td></tr>`
+          : ''
+      }
+      ${
+        params.recipientEmail
+          ? `<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:8px;color:#64748b;font-weight:600;">Recipient Email</td><td style="padding:8px;color:#0f172a;">${escapeHtml(
+              params.recipientEmail,
+            )}</td></tr>`
+          : ''
+      }
+      ${
+        trainLabel
+          ? `<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:8px;color:#64748b;font-weight:600;">Train</td><td style="padding:8px;color:#0f172a;">${escapeHtml(
+              trainLabel,
+            )}</td></tr>`
+          : ''
+      }
+      ${
+        routeLabel
+          ? `<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:8px;color:#64748b;font-weight:600;">Route</td><td style="padding:8px;color:#0f172a;">${escapeHtml(
+              routeLabel,
+            )}</td></tr>`
+          : ''
+      }
+      ${
+        dateStr
+          ? `<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:8px;color:#64748b;font-weight:600;">Journey Date</td><td style="padding:8px;color:#0f172a;">${escapeHtml(
+              dateStr,
+            )}</td></tr>`
+          : ''
+      }
+      <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:8px;color:#64748b;font-weight:600;">Failure Reason</td>
+        <td style="padding:8px;color:#dc2626;font-weight:600;">${escapeHtml(params.failureReason)}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;color:#64748b;font-weight:600;">Timestamp</td>
+        <td style="padding:8px;color:#475569;">${new Date().toISOString()}</td>
+      </tr>
+    </table>
+
+    <h3 style="color:#334155;margin:20px 0 8px 0;font-size:15px;">Failure Logs & Trace</h3>
+    <pre style="background:#0f172a;color:#f8fafc;padding:12px;border-radius:6px;font-size:12px;overflow-x:auto;white-space:pre-wrap;font-family:monospace;">${formattedLogs}</pre>
+
+    ${
+      formattedPayload
+        ? `
+    <h3 style="color:#334155;margin:20px 0 8px 0;font-size:15px;">Alert Context & Payload</h3>
+    <pre style="background:#f1f5f9;color:#334155;padding:12px;border-radius:6px;font-size:12px;overflow-x:auto;white-space:pre-wrap;font-family:monospace;border:1px solid #e2e8f0;">${formattedPayload}</pre>
+    `
+        : ''
+    }
+  </div>
+</body>
+</html>
+`;
+
+    try {
+      await this.resend.emails.send({
+        from: RESEND_FROM,
+        to: [adminEmail],
+        subject,
+        html,
+      });
+      console.info(
+        `[ALERT FAILURE REPORT] Sent failure report email to ${adminEmail} for ${params.alertType}`,
+      );
+      return true;
+    } catch (err) {
+      console.error(
+        '[ALERT FAILURE REPORT] Exception while sending alert failure report email',
+        err,
+      );
       return false;
     }
   }
@@ -1119,189 +1326,288 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
     const { email, mobile, task, result, alternativeTrains } = params;
     const out = { emailSent: false, whatsappSent: false };
-    if (!email?.trim() && !mobile?.trim()) {
-      return out;
-    }
-    if (result.status !== 'success') {
-      return out;
-    }
-    const hasTickets = hasBookablePlanForNotification(result);
 
-    const trainLabel = [task.trainNumber, task.trainName]
-      .filter(Boolean)
-      .join(' ');
-    const chartPreparationText = result.chartPreparationDetails
-      ? `Chart preparation: ${result.chartPreparationDetails.firstChartCreationTime} at ${result.chartPreparationDetails.chartingStationCode}`
-      : undefined;
-    const stationScheduleList = result.trainSchedule?.stationList;
-    const stationNameMap = this.getStationNameMap(stationScheduleList);
-    const plan = result.openAiBookingPlan ?? [];
-    // This alert path often has no train schedule, leaving the name map empty so
-    const journeyDateStr =
-      task.journeyDate instanceof Date
-        ? task.journeyDate.toISOString().slice(0, 10)
-        : String(task.journeyDate).slice(0, 10);
+    try {
+      if (!email?.trim() && !mobile?.trim()) {
+        return out;
+      }
+      if (result.status !== 'success') {
+        return out;
+      }
+      const hasTickets = hasBookablePlanForNotification(result);
 
-    const coverage = this.extractJourneyLegCoverage({
-      fromStationCode: task.fromStationCode,
-      toStationCode: task.toStationCode,
-      plan,
-      stationScheduleList,
-    });
+      const trainLabel = [task.trainNumber, task.trainName]
+        .filter(Boolean)
+        .join(' ');
+      const chartPreparationText = result.chartPreparationDetails
+        ? `Chart preparation: ${result.chartPreparationDetails.firstChartCreationTime} at ${result.chartPreparationDetails.chartingStationCode}`
+        : undefined;
+      const stationScheduleList = result.trainSchedule?.stationList;
+      const stationNameMap = this.getStationNameMap(stationScheduleList);
+      const plan = result.openAiBookingPlan ?? [];
+      const journeyDateStr =
+        task.journeyDate instanceof Date
+          ? task.journeyDate.toISOString().slice(0, 10)
+          : String(task.journeyDate).slice(0, 10);
 
-    // This alert path often has no train schedule, leaving the name map empty so
-    // labels render as bare codes ("YA - YA"). Enrich it with full station names
-    // from the seeded station cache for the OD and every planned segment endpoint.
-    await this.enrichStationNames(stationNameMap, [
-      task.fromStationCode,
-      task.toStationCode,
-      ...coverage.flatMap((c) => [c.fromCode, c.toCode]),
-      ...plan.flatMap((p) =>
-        String(p?.instruction ?? '')
-          .split(' - ')
-          .slice(0, 2),
-      ),
-    ]);
-    const routeDisplay = `${task.fromStationCode} > ${task.toStationCode}`;
-    const emailRouteDisplay = this.formatJourneyRoute(
-      task.fromStationCode,
-      task.toStationCode,
-      stationNameMap,
-    );
-    const totalPrice = result.openAiTotalPrice ?? undefined;
+      const coverage = this.extractJourneyLegCoverage({
+        fromStationCode: task.fromStationCode,
+        toStationCode: task.toStationCode,
+        plan,
+        stationScheduleList,
+      });
 
-    const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
-    const journeyTimesLine = formatSegmentScheduleTimes(
-      stationScheduleList,
-      task.fromStationCode,
-      task.toStationCode,
-    );
+      await this.enrichStationNames(stationNameMap, [
+        task.fromStationCode,
+        task.toStationCode,
+        ...coverage.flatMap((c) => [c.fromCode, c.toCode]),
+        ...plan.flatMap((p) =>
+          String(p?.instruction ?? '')
+            .split(' - ')
+            .slice(0, 2),
+        ),
+      ]);
+      const routeDisplay = `${task.fromStationCode} > ${task.toStationCode}`;
+      const emailRouteDisplay = this.formatJourneyRoute(
+        task.fromStationCode,
+        task.toStationCode,
+        stationNameMap,
+      );
+      const totalPrice = result.openAiTotalPrice ?? undefined;
 
-    if (mobile?.trim()) {
-      const whatsAppText = hasTickets
-        ? await this.buildWhatsAppSeatsFoundText({
-            trainLabel,
-            routeDisplay,
-            journeyDateReadable,
-            journeyDateStr,
+      const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
+      const journeyTimesLine = formatSegmentScheduleTimes(
+        stationScheduleList,
+        task.fromStationCode,
+        task.toStationCode,
+      );
+
+      if (mobile?.trim()) {
+        const whatsAppText = hasTickets
+          ? await this.buildWhatsAppSeatsFoundText({
+              trainLabel,
+              routeDisplay,
+              journeyDateReadable,
+              journeyDateStr,
+              trainNumber: task.trainNumber,
+              fromStationCode: task.fromStationCode,
+              toStationCode: task.toStationCode,
+              journeyTimesLine: journeyTimesLine || undefined,
+              chartPreparationText,
+              plan,
+              stationNameMap,
+              stationScheduleList,
+              result,
+              email: email || undefined,
+              mobile: mobile || undefined,
+            })
+          : this.buildNoSeatsWhatsAppText({
+              trainLabel,
+              routeDisplay,
+              journeyDateReadable,
+              openAiSummary: result.openAiSummary,
+              alternativeTrains,
+              fromCode: task.fromStationCode,
+              toCode: task.toStationCode,
+              date: journeyDateStr,
+            });
+
+        const templateName = hasTickets
+          ? this.config.get<string>('WATI_TEMPLATE_CHART_ALERT') ||
+            'subscription_alert'
+          : this.config.get<string>('WATI_TEMPLATE_UNCOVERED_LEG') ||
+            'uncovered_leg__shortlink_alert';
+
+        const classCodeExtracted =
+          plan?.[0]?.instruction
+            ?.match?.(/\b([123]A|3E|SL|2S|CC|EC)\b/i)?.[1]
+            ?.toUpperCase() || 'SL';
+        const statusExtracted =
+          plan?.[0]?.instruction ||
+          (hasTickets ? 'Available' : 'Waitlisted (Not Available)');
+        const searchUrl = `https://lastberth.com/search?from=${task.fromStationCode}&to=${task.toStationCode}&date=${journeyDateStr}&trainNo=${task.trainNumber}`;
+
+        let parameters: Array<{ name: string; value: string }>;
+
+        if (templateName === 'subscription_alert') {
+          parameters = [
+            { name: 'name', value: 'Passenger' },
+            { name: 'train_number', value: task.trainNumber },
+            { name: 'train_name', value: task.trainName || 'Express' },
+            { name: 'from_code', value: task.fromStationCode },
+            { name: 'to_code', value: task.toStationCode },
+            { name: 'journey_date', value: journeyDateReadable },
+            {
+              name: 'journey_times',
+              value: journeyTimesLine?.trim() || 'Not Available',
+            },
+            { name: 'ticket_number', value: '1' },
+            { name: 'class_code', value: classCodeExtracted },
+            { name: 'availability_status', value: statusExtracted },
+            {
+              name: 'segment_route',
+              value: `${task.fromStationCode} → ${task.toStationCode}`,
+            },
+            {
+              name: 'approx_price',
+              value: totalPrice ? String(totalPrice) : '0',
+            },
+            {
+              name: 'irctc_booking_url',
+              value: 'https://www.irctc.co.in/nget/redirect',
+            },
+          ];
+        } else if (
+          templateName === 'uncovered_leg__shortlink_alert' ||
+          templateName === 'uncovered_leg_alert'
+        ) {
+          parameters = [
+            { name: 'name', value: 'Passenger' },
+            { name: 'train_number', value: task.trainNumber },
+            { name: 'train_name', value: task.trainName || 'Express' },
+            { name: 'from_code', value: task.fromStationCode },
+            { name: 'to_code', value: task.toStationCode },
+            { name: 'journey_date', value: journeyDateReadable },
+            {
+              name: 'uncovered_segment_route',
+              value: `${task.fromStationCode} → ${task.toStationCode}`,
+            },
+            {
+              name: 'chart_release_time_label',
+              value: chartPreparationText || 'Chart prepared',
+            },
+            { name: 'action_button_text', value: 'Check Seat Availability' },
+            { name: 'action_url', value: searchUrl },
+          ];
+        } else {
+          parameters = [
+            { name: 'name', value: 'Passenger' },
+            { name: 'train_number', value: task.trainNumber },
+            { name: 'train_name', value: task.trainName || 'Express' },
+            { name: 'from_code', value: task.fromStationCode },
+            { name: 'to_code', value: task.toStationCode },
+            { name: 'journey_date', value: journeyDateReadable },
+            {
+              name: 'journey_times',
+              value: journeyTimesLine?.trim() || 'Not Available',
+            },
+          ];
+        }
+
+        out.whatsappSent = await this.sendWhatsApp(
+          mobile.trim(),
+          whatsAppText,
+          {
+            templateName,
+            broadcastName: 'lastberth_alert',
+            parameters,
+            skipFailureReport: true,
+          },
+        );
+
+        if (!out.whatsappSent) {
+          void this.sendAlertFailureReport({
+            alertType: 'WhatsApp Seat Availability Alert',
+            recipientMobile: mobile.trim(),
+            recipientEmail: email?.trim() || undefined,
             trainNumber: task.trainNumber,
+            trainName: task.trainName,
             fromStationCode: task.fromStationCode,
             toStationCode: task.toStationCode,
-            journeyTimesLine: journeyTimesLine || undefined,
-            chartPreparationText,
-            plan,
-            stationNameMap,
-            stationScheduleList,
-            result,
-            email: email || undefined,
-            mobile: mobile || undefined,
-          })
-        : this.buildNoSeatsWhatsAppText({
-            trainLabel,
-            routeDisplay,
-            journeyDateReadable,
-            openAiSummary: result.openAiSummary,
-            alternativeTrains,
-            fromCode: task.fromStationCode,
-            toCode: task.toStationCode,
-            date: journeyDateStr,
+            journeyDate: task.journeyDate,
+            failureReason:
+              'WhatsApp alert sending failed or provider returned failure',
+            logs: `Template: ${templateName}\nRoute: ${task.fromStationCode} -> ${task.toStationCode}\nStatus: ${result.status}`,
+            payload: {
+              task,
+              openAiSummary: result.openAiSummary,
+              bookingPlan: plan,
+              alternativeTrains: alternativeTrains?.map(
+                (a) => a.train?.trainNumber,
+              ),
+              whatsAppText,
+            },
           });
-
-      const templateName = hasTickets
-        ? this.config.get<string>('WATI_TEMPLATE_CHART_ALERT') ||
-          'subscription_alert'
-        : this.config.get<string>('WATI_TEMPLATE_UNCOVERED_LEG') ||
-          'uncovered_leg__shortlink_alert';
-
-      const classCodeExtracted =
-        plan?.[0]?.instruction?.match?.(/\b([123]A|3E|SL|2S|CC|EC)\b/i)?.[1]?.toUpperCase() || 'SL';
-      const statusExtracted = plan?.[0]?.instruction || (hasTickets ? 'Available' : 'Waitlisted (Not Available)');
-      const searchUrl = `https://lastberth.com/search?from=${task.fromStationCode}&to=${task.toStationCode}&date=${journeyDateStr}&trainNo=${task.trainNumber}`;
-
-      let parameters: Array<{ name: string; value: string }>;
-
-      if (templateName === 'subscription_alert') {
-        parameters = [
-          { name: 'name', value: 'Passenger' },
-          { name: 'train_number', value: task.trainNumber },
-          { name: 'train_name', value: task.trainName || 'Express' },
-          { name: 'from_code', value: task.fromStationCode },
-          { name: 'to_code', value: task.toStationCode },
-          { name: 'journey_date', value: journeyDateReadable },
-          { name: 'journey_times', value: journeyTimesLine?.trim() || 'Not Available' },
-          { name: 'ticket_number', value: '1' },
-          { name: 'class_code', value: classCodeExtracted },
-          { name: 'availability_status', value: statusExtracted },
-          { name: 'segment_route', value: `${task.fromStationCode} → ${task.toStationCode}` },
-          { name: 'approx_price', value: totalPrice ? String(totalPrice) : '0' },
-          { name: 'irctc_booking_url', value: 'https://www.irctc.co.in/nget/redirect' },
-        ];
-      } else if (templateName === 'uncovered_leg__shortlink_alert' || templateName === 'uncovered_leg_alert') {
-        parameters = [
-          { name: 'name', value: 'Passenger' },
-          { name: 'train_number', value: task.trainNumber },
-          { name: 'train_name', value: task.trainName || 'Express' },
-          { name: 'from_code', value: task.fromStationCode },
-          { name: 'to_code', value: task.toStationCode },
-          { name: 'journey_date', value: journeyDateReadable },
-          { name: 'uncovered_segment_route', value: `${task.fromStationCode} → ${task.toStationCode}` },
-          { name: 'chart_release_time_label', value: chartPreparationText || 'Chart prepared' },
-          { name: 'action_button_text', value: 'Check Seat Availability' },
-          { name: 'action_url', value: searchUrl },
-        ];
-      } else {
-        parameters = [
-          { name: 'name', value: 'Passenger' },
-          { name: 'train_number', value: task.trainNumber },
-          { name: 'train_name', value: task.trainName || 'Express' },
-          { name: 'from_code', value: task.fromStationCode },
-          { name: 'to_code', value: task.toStationCode },
-          { name: 'journey_date', value: journeyDateReadable },
-          { name: 'journey_times', value: journeyTimesLine?.trim() || 'Not Available' },
-        ];
+        }
       }
 
-      out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText, {
-        templateName,
-        broadcastName: 'lastberth_alert',
-        parameters,
-      });
-    }
+      if (email?.trim()) {
+        const subject = hasTickets
+          ? `Seats Available - Train ${task.trainNumber} on ${journeyDateReadable}`
+          : `No Tickets Found - Train ${task.trainNumber} on ${journeyDateReadable}`;
+        const html = hasTickets
+          ? await this.buildSeatsFoundEmailHtml({
+              trainLabel,
+              routeDisplay: emailRouteDisplay,
+              journeyDateReadable,
+              journeyDateStr,
+              fromStationCode: task.fromStationCode,
+              toStationCode: task.toStationCode,
+              journeyTimesLine: journeyTimesLine || undefined,
+              chartPreparationText,
+              trainNumber: task.trainNumber,
+              plan,
+              totalPrice,
+              stationNameMap,
+              stationScheduleList,
+              result,
+            })
+          : this.buildNoSeatsEmailHtml({
+              trainLabel,
+              routeDisplay: emailRouteDisplay,
+              journeyDateReadable,
+              openAiSummary: result.openAiSummary,
+              alternativeTrains,
+              fromCode: task.fromStationCode,
+              toCode: task.toStationCode,
+              date: journeyDateStr,
+            });
 
-    if (email?.trim()) {
-      const subject = hasTickets
-        ? `Seats Available - Train ${task.trainNumber} on ${journeyDateReadable}`
-        : `No Tickets Found - Train ${task.trainNumber} on ${journeyDateReadable}`;
-      const html = hasTickets
-        ? await this.buildSeatsFoundEmailHtml({
-            trainLabel,
-            routeDisplay: emailRouteDisplay,
-            journeyDateReadable,
-            journeyDateStr,
+        out.emailSent = await this.sendEmail(email.trim(), subject, html, {
+          skipFailureReport: true,
+        });
+
+        if (!out.emailSent) {
+          void this.sendAlertFailureReport({
+            alertType: 'Email Seat Availability Alert',
+            recipientEmail: email.trim(),
+            recipientMobile: mobile?.trim() || undefined,
+            trainNumber: task.trainNumber,
+            trainName: task.trainName,
             fromStationCode: task.fromStationCode,
             toStationCode: task.toStationCode,
-            journeyTimesLine: journeyTimesLine || undefined,
-            chartPreparationText,
-            trainNumber: task.trainNumber,
-            plan,
-            totalPrice,
-            stationNameMap,
-            stationScheduleList,
-            result,
-          })
-        : this.buildNoSeatsEmailHtml({
-            trainLabel,
-            routeDisplay: emailRouteDisplay,
-            journeyDateReadable,
-            openAiSummary: result.openAiSummary,
-            alternativeTrains,
-            fromCode: task.fromStationCode,
-            toCode: task.toStationCode,
-            date: journeyDateStr,
+            journeyDate: task.journeyDate,
+            failureReason:
+              'Email alert sending failed (Resend API key missing or error)',
+            logs: `Subject: ${subject}\nRoute: ${task.fromStationCode} -> ${task.toStationCode}\nStatus: ${result.status}`,
+            payload: {
+              task,
+              subject,
+              openAiSummary: result.openAiSummary,
+              bookingPlan: plan,
+            },
           });
-      out.emailSent = await this.sendEmail(email.trim(), subject, html);
+        }
+      }
+      return out;
+    } catch (err) {
+      const errMessage =
+        err instanceof Error ? err.stack || err.message : String(err);
+      void this.sendAlertFailureReport({
+        alertType: 'notifyUser Processing Exception',
+        recipientMobile: mobile || undefined,
+        recipientEmail: email || undefined,
+        trainNumber: task.trainNumber,
+        trainName: task.trainName,
+        fromStationCode: task.fromStationCode,
+        toStationCode: task.toStationCode,
+        journeyDate: task.journeyDate,
+        failureReason: 'Unhandled exception inside notifyUser',
+        logs: errMessage,
+        payload: { task, result },
+      });
+      return out;
     }
-    return out;
   }
 
   async notifyUserAlternativeTrains(params: {
@@ -1326,79 +1632,157 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
     } = params;
     const out = { emailSent: false, whatsappSent: false };
 
-    if (!email?.trim() && !mobile?.trim()) return out;
-    if (!alternativeTrains || alternativeTrains.length === 0) return out;
+    try {
+      if (!email?.trim() && !mobile?.trim()) return out;
+      if (!alternativeTrains || alternativeTrains.length === 0) return out;
 
-    const journeyDateStr =
-      journeyDate instanceof Date
-        ? journeyDate.toISOString().slice(0, 10)
-        : String(journeyDate).slice(0, 10);
-    const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
+      const journeyDateStr =
+        journeyDate instanceof Date
+          ? journeyDate.toISOString().slice(0, 10)
+          : String(journeyDate).slice(0, 10);
+      const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
 
-    const stationNameMap = new Map<string, string>();
-    await this.enrichStationNames(stationNameMap, [
-      fromStationCode,
-      toStationCode,
-      ...alternativeTrains.flatMap((a) =>
-        a.alternatePath.legs.flatMap((l) => [l.from, l.to]),
-      ),
-    ]);
-
-    const fromName =
-      stationNameMap.get(fromStationCode.toUpperCase()) ?? fromStationCode;
-    const toName =
-      stationNameMap.get(toStationCode.toUpperCase()) ?? toStationCode;
-    const routeDisplay = `${fromStationCode} - ${fromName} → ${toStationCode} - ${toName}`;
-    const originalTrainLabel = [originalTrainNumber, originalTrainName]
-      .filter(Boolean)
-      .join(' ');
-
-    if (mobile?.trim()) {
-      const whatsAppText = this.buildAlternativeTrainsWhatsAppText({
-        originalTrainLabel,
-        routeDisplay,
-        journeyDateReadable,
-        journeyDateStr,
+      const stationNameMap = new Map<string, string>();
+      await this.enrichStationNames(stationNameMap, [
         fromStationCode,
         toStationCode,
-        alternativeTrains,
-        stationNameMap,
-      });
-      const altTemplateName =
-        this.config.get<string>('WATI_TEMPLATE_ALT_TRAIN') ||
-        'alternative_train_alert';
-      const altParameters = [
-        { name: 'name', value: 'Passenger' },
-        { name: 'original_train_number', value: originalTrainNumber || '' },
-        { name: 'original_train_name', value: originalTrainName || '' },
-        { name: 'from_code', value: fromStationCode || '' },
-        { name: 'to_code', value: toStationCode || '' },
-        { name: 'journey_date', value: journeyDateReadable || '' },
-      ];
+        ...alternativeTrains.flatMap((a) =>
+          a.alternatePath.legs.flatMap((l) => [l.from, l.to]),
+        ),
+      ]);
 
-      out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText, {
-        templateName: altTemplateName,
-        broadcastName: 'lastberth_alt_alert',
-        parameters: altParameters,
-      });
-    }
+      const fromName =
+        stationNameMap.get(fromStationCode.toUpperCase()) ?? fromStationCode;
+      const toName =
+        stationNameMap.get(toStationCode.toUpperCase()) ?? toStationCode;
+      const routeDisplay = `${fromStationCode} - ${fromName} → ${toStationCode} - ${toName}`;
+      const originalTrainLabel = [originalTrainNumber, originalTrainName]
+        .filter(Boolean)
+        .join(' ');
 
-    if (email?.trim()) {
-      const subject = `Alternative Trains Available - ${fromStationCode} to ${toStationCode} on ${journeyDateReadable}`;
-      const html = this.buildAlternativeTrainsEmailHtml({
-        originalTrainLabel,
-        routeDisplay,
-        journeyDateReadable,
-        journeyDateStr,
+      if (mobile?.trim()) {
+        const whatsAppText = this.buildAlternativeTrainsWhatsAppText({
+          originalTrainLabel,
+          routeDisplay,
+          journeyDateReadable,
+          journeyDateStr,
+          fromStationCode,
+          toStationCode,
+          alternativeTrains,
+          stationNameMap,
+        });
+        const altTemplateName =
+          this.config.get<string>('WATI_TEMPLATE_ALT_TRAIN') ||
+          'alternative_train_alert';
+        const altParameters = [
+          { name: 'name', value: 'Passenger' },
+          { name: 'original_train_number', value: originalTrainNumber || '' },
+          { name: 'original_train_name', value: originalTrainName || '' },
+          { name: 'from_code', value: fromStationCode || '' },
+          { name: 'to_code', value: toStationCode || '' },
+          { name: 'journey_date', value: journeyDateReadable || '' },
+        ];
+
+        out.whatsappSent = await this.sendWhatsApp(
+          mobile.trim(),
+          whatsAppText,
+          {
+            templateName: altTemplateName,
+            broadcastName: 'lastberth_alt_alert',
+            parameters: altParameters,
+            skipFailureReport: true,
+          },
+        );
+
+        if (!out.whatsappSent) {
+          void this.sendAlertFailureReport({
+            alertType: 'WhatsApp Alternative Trains Alert',
+            recipientMobile: mobile.trim(),
+            recipientEmail: email?.trim() || undefined,
+            trainNumber: originalTrainNumber,
+            trainName: originalTrainName,
+            fromStationCode,
+            toStationCode,
+            journeyDate,
+            failureReason:
+              'WhatsApp alternative trains alert failed to dispatch',
+            logs: `Template: ${altTemplateName}`,
+            payload: {
+              originalTrainNumber,
+              originalTrainName,
+              fromStationCode,
+              toStationCode,
+              journeyDate,
+              alternativeCount: alternativeTrains.length,
+              whatsAppText,
+            },
+          });
+        }
+      }
+
+      if (email?.trim()) {
+        const subject = `Alternative Trains Available - ${fromStationCode} to ${toStationCode} on ${journeyDateReadable}`;
+        const html = this.buildAlternativeTrainsEmailHtml({
+          originalTrainLabel,
+          routeDisplay,
+          journeyDateReadable,
+          journeyDateStr,
+          fromStationCode,
+          toStationCode,
+          alternativeTrains,
+          stationNameMap,
+        });
+        out.emailSent = await this.sendEmail(email.trim(), subject, html, {
+          skipFailureReport: true,
+        });
+
+        if (!out.emailSent) {
+          void this.sendAlertFailureReport({
+            alertType: 'Email Alternative Trains Alert',
+            recipientEmail: email.trim(),
+            recipientMobile: mobile?.trim() || undefined,
+            trainNumber: originalTrainNumber,
+            trainName: originalTrainName,
+            fromStationCode,
+            toStationCode,
+            journeyDate,
+            failureReason: 'Email alternative trains alert failed to send',
+            logs: `Subject: ${subject}`,
+            payload: {
+              originalTrainNumber,
+              fromStationCode,
+              toStationCode,
+              journeyDate,
+              subject,
+            },
+          });
+        }
+      }
+
+      return out;
+    } catch (err) {
+      const errMessage =
+        err instanceof Error ? err.stack || err.message : String(err);
+      void this.sendAlertFailureReport({
+        alertType: 'notifyUserAlternativeTrains Exception',
+        recipientMobile: mobile || undefined,
+        recipientEmail: email || undefined,
+        trainNumber: originalTrainNumber,
+        trainName: originalTrainName,
         fromStationCode,
         toStationCode,
-        alternativeTrains,
-        stationNameMap,
+        journeyDate,
+        failureReason: 'Unhandled exception inside notifyUserAlternativeTrains',
+        logs: errMessage,
+        payload: {
+          originalTrainNumber,
+          fromStationCode,
+          toStationCode,
+          journeyDate,
+        },
       });
-      out.emailSent = await this.sendEmail(email.trim(), subject, html);
+      return out;
     }
-
-    return out;
   }
 
   private buildAlternativeTrainsWhatsAppText(params: {

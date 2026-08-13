@@ -115,4 +115,15 @@ describe('createRetryingAxiosClient', () => {
       ),
     ).toBe(false);
   });
+
+  it('uses custom retryDelayMs when specified', () => {
+    createRetryingAxiosClient({ retryDelayMs: 5000 });
+    const delayFn = (
+      axiosRetryMock.mock.calls[axiosRetryMock.mock.calls.length - 1][1] as {
+        retryDelay: (count: number, err: AxiosError) => number;
+      }
+    ).retryDelay;
+
+    expect(delayFn(1, errorFor({ status: 500 }))).toBe(5000);
+  });
 });

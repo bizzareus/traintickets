@@ -96,7 +96,7 @@ function stationDayCount(station: unknown): number {
 }
 
 function isRetryableRailFailureText(text: string): boolean {
-  return /fetch failed|ETIMEDOUT|ECONNRESET|ECONNREFUSED|EAI_AGAIN|ENOTFOUND|network|temporarily unavailable|unable to contact rail systems|IRCTC schedule service unavailable/i.test(
+  return /fetch failed|ETIMEDOUT|ECONNRESET|ECONNREFUSED|EAI_AGAIN|ENOTFOUND|network|temporarily unavailable|unable to contact rail systems|IRCTC schedule service unavailable|Availability request fail/i.test(
     text,
   );
 }
@@ -120,20 +120,72 @@ function isRetryableChartTaskFailure(payload: unknown): boolean {
   return isRetryableRailFailureText(chartTaskFailureText(payload));
 }
 
+function isTaskChartTimePassed(task: ChartTimeAvailabilityTask): boolean {
+  const now = new Date();
+
+  if (task.chartAt && now.getTime() >= task.chartAt.getTime()) {
+    return true;
+  }
+
+  if (task.nextRunAt && now.getTime() >= task.nextRunAt.getTime()) {
+    return true;
+  }
+
+  const todayIstStr = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Kolkata',
+  }).format(now);
+  const journeyDateStr =
+    task.journeyDate instanceof Date
+      ? task.journeyDate.toISOString().slice(0, 10)
+      : String(task.journeyDate).slice(0, 10);
+
+  return journeyDateStr < todayIstStr;
+}
+
 /**
  * Map a Search-Route alternate-paths result onto the Service2CheckResult shape the
  * alert task and notification already consume, so the seat alert can run on the
  * same engine the homepage uses (ConfirmTkt availability + IRCTC schedule) instead
  * of an OpenAI call. Confirmed legs become the booking plan (one filled slot per
- * route leg, `{}` for a non-bookable hop). When no confirmed leg exists we report a
- * `not_prepared_yet` status so the task keeps polling on its existing schedule.
+ * route leg, `{}` for a non-bookable hop).
  */
 function alternatePathsToCheckResult(
   alt: FindAlternatePathsResult,
+  options?: {
+    isChartTimePassed?: boolean;
+  },
 ): Service2CheckResult {
   const confirmedLegs = alt.legs.filter((l) => l.segmentKind === 'confirmed');
 
   if (confirmedLegs.length === 0) {
+    const hasProbeFailures = alt.debugLog?.some((line) =>
+      /Availability request fail/i.test(line),
+    );
+
+    if (hasProbeFailures) {
+      return {
+        status: 'failed',
+        vacantBerth: { vbd: [], error: null },
+        chartStatus: {
+          kind: 'chart_error',
+          error: 'Availability API request failed for route probes',
+        },
+        debugLog: alt.debugLog,
+      };
+    }
+
+    if (options?.isChartTimePassed) {
+      return {
+        status: 'success',
+        vacantBerth: { vbd: [], error: null },
+        chartStatus: {
+          kind: 'chart_prepared_no_vacant_berths',
+          message: 'Chart is prepared, but no confirmed seats are available.',
+        },
+        debugLog: alt.debugLog,
+      };
+    }
+
     return {
       status: 'failed',
       vacantBerth: { vbd: [], error: null },
@@ -335,7 +387,10 @@ export class JourneyTaskService {
     );
     if (runDayErr) {
       // If we inferred or used a trainStartDate that is different from boarding date
-      if (resolvedTrainStartDate && resolvedTrainStartDate !== resolvedBoardingDate) {
+      if (
+        resolvedTrainStartDate &&
+        resolvedTrainStartDate !== resolvedBoardingDate
+      ) {
         runDayErr.message = `This train does not start its journey on ${resolvedTrainStartDate} (the date it would have to start to reach your boarding station ${fromCode} on ${resolvedBoardingDate}).`;
       }
       return { valid: false, errors: [runDayErr] };
@@ -579,14 +634,17 @@ export class JourneyTaskService {
       // DB does not have chart time for fromCode yet.
       // Compute estimated chartAt from departure/arrival time or default (4 hours before departure).
       const boardingStn = schedule.stationList.find(
-        (s) => String(s.stationCode ?? '').trim().toUpperCase() === fromCode,
+        (s) =>
+          String(s.stationCode ?? '')
+            .trim()
+            .toUpperCase() === fromCode,
       );
       const dayCount = stationDayCount(boardingStn);
       const rawTime =
-        boardingStn?.departureTime ||
-        boardingStn?.arrivalTime ||
-        '08:00';
-      const timeMatch = String(rawTime).trim().match(/^(\d{1,2}):(\d{2})/);
+        boardingStn?.departureTime || boardingStn?.arrivalTime || '08:00';
+      const timeMatch = String(rawTime)
+        .trim()
+        .match(/^(\d{1,2}):(\d{2})/);
       const timeStr = timeMatch
         ? `${timeMatch[1].padStart(2, '0')}:${timeMatch[2]}`
         : '08:00';
@@ -756,15 +814,16 @@ export class JourneyTaskService {
         entry.chartOne.dayOffset ?? 0,
       );
 
-      const pendingTasks =
-        await this.prisma.chartTimeAvailabilityTask.findMany({
+      const pendingTasks = await this.prisma.chartTimeAvailabilityTask.findMany(
+        {
           where: {
             journeyRequestId,
             stationCode: code,
             status: 'pending',
           },
           orderBy: { createdAt: 'asc' },
-        });
+        },
+      );
 
       if (pendingTasks.length > 0) {
         await this.prisma.chartTimeAvailabilityTask.update({
@@ -881,7 +940,8 @@ export class JourneyTaskService {
         avlClasses: subscribedClass ? [subscribedClass] : undefined,
         quota: 'GN',
       });
-      const result = alternatePathsToCheckResult(alt);
+      const isChartTimePassed = isTaskChartTimePassed(task);
+      const result = alternatePathsToCheckResult(alt, { isChartTimePassed });
 
       console.log('result', result);
 
@@ -1053,7 +1113,25 @@ export class JourneyTaskService {
                 });
               }
             })
-            .catch((e) => console.error('Notification failed', e));
+            .catch((e) => {
+              console.error('Notification failed', e);
+              const errLogs =
+                e instanceof Error ? e.stack || e.message : String(e);
+              void this.notificationService.sendAlertFailureReport({
+                alertType: 'Journey Task Notification Rejection',
+                recipientMobile: contact.mobile,
+                recipientEmail: contact.email,
+                trainNumber: task.trainNumber,
+                trainName: task.trainName,
+                fromStationCode: task.fromStationCode,
+                toStationCode: task.toStationCode,
+                journeyDate: task.journeyDate,
+                failureReason:
+                  'Unhandled rejection during journey task notification',
+                logs: errLogs,
+                payload: { taskId, journeyRequestId: task.journeyRequestId },
+              });
+            });
         }
       }
     } catch (err) {
@@ -1316,6 +1394,94 @@ export class JourneyTaskService {
     });
   }
 
+  async resendTaskNotification(taskId: string): Promise<{
+    sent: boolean;
+    emailSent: boolean;
+    whatsappSent: boolean;
+    reason?: string;
+  }> {
+    const task = await this.prisma.chartTimeAvailabilityTask.findUnique({
+      where: { id: taskId },
+      include: { contact: true },
+    });
+
+    if (!task) {
+      return {
+        sent: false,
+        emailSent: false,
+        whatsappSent: false,
+        reason: 'Task not found',
+      };
+    }
+
+    const contact =
+      task.contact ||
+      (await this.prisma.journeyMonitorContact.findUnique({
+        where: { journeyRequestId: task.journeyRequestId },
+      }));
+
+    if (!contact || (!contact.email && !contact.mobile)) {
+      return {
+        sent: false,
+        emailSent: false,
+        whatsappSent: false,
+        reason: 'No contact information (email or mobile) found for task',
+      };
+    }
+
+    let result = task.resultPayload as unknown as Service2CheckResult;
+    if (!result) {
+      await this.runTask(taskId, true);
+      const updated = await this.prisma.chartTimeAvailabilityTask.findUnique({
+        where: { id: taskId },
+      });
+      result = updated?.resultPayload as unknown as Service2CheckResult;
+    }
+
+    if (!result) {
+      return {
+        sent: false,
+        emailSent: false,
+        whatsappSent: false,
+        reason: 'No result payload available to send notification',
+      };
+    }
+
+    const status = await this.notificationService.notifyUser({
+      email: contact.email || undefined,
+      mobile: contact.mobile || undefined,
+      task: {
+        trainNumber: task.trainNumber,
+        trainName: task.trainName,
+        fromStationCode: task.fromStationCode,
+        toStationCode: task.toStationCode,
+        journeyDate: task.journeyDate,
+      },
+      result,
+    });
+
+    const data: { emailNotifiedAt?: Date; whatsappNotifiedAt?: Date } = {};
+    if (status.emailSent) data.emailNotifiedAt = new Date();
+    if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
+
+    if (Object.keys(data).length > 0) {
+      await this.prisma.chartTimeAvailabilityTask.update({
+        where: { id: taskId },
+        data,
+      });
+    }
+
+    const sent = status.emailSent || status.whatsappSent;
+    return {
+      sent,
+      emailSent: status.emailSent,
+      whatsappSent: status.whatsappSent,
+      reason: sent
+        ? undefined
+        : 'Notification provider returned failure (check WATI/Resend API status)',
+    };
+  }
+
   async resendFailedWhatsAppNotifications(hours = 24): Promise<{
     found: number;
     resent: number;
@@ -1325,28 +1491,33 @@ export class JourneyTaskService {
     const tasks = await this.prisma.chartTimeAvailabilityTask.findMany({
       where: {
         createdAt: { gte: sinceDate },
-        whatsappNotifiedAt: null,
-        contact: {
-          mobile: { not: null },
-        },
+        status: 'completed',
+        OR: [{ whatsappNotifiedAt: null }, { emailNotifiedAt: null }],
       },
       include: {
         contact: true,
       },
+      take: 50,
     });
 
     let resent = 0;
     let failed = 0;
 
     for (const task of tasks) {
-      if (!task.contact?.mobile) continue;
+      const contact =
+        task.contact ||
+        (await this.prisma.journeyMonitorContact.findUnique({
+          where: { journeyRequestId: task.journeyRequestId },
+        }));
 
-      if (task.status === 'completed' && task.resultPayload) {
+      if (!contact || (!contact.mobile && !contact.email)) continue;
+
+      if (task.resultPayload) {
         const result = task.resultPayload as unknown as Service2CheckResult;
         try {
           const status = await this.notificationService.notifyUser({
-            email: task.contact.email,
-            mobile: task.contact.mobile,
+            email: contact.email || undefined,
+            mobile: contact.mobile || undefined,
             task: {
               trainNumber: task.trainNumber,
               trainName: task.trainName,
@@ -1357,10 +1528,15 @@ export class JourneyTaskService {
             result,
           });
 
-          if (status.whatsappSent) {
+          const data: { emailNotifiedAt?: Date; whatsappNotifiedAt?: Date } =
+            {};
+          if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
+          if (status.emailSent) data.emailNotifiedAt = new Date();
+
+          if (Object.keys(data).length > 0) {
             await this.prisma.chartTimeAvailabilityTask.update({
               where: { id: task.id },
-              data: { whatsappNotifiedAt: new Date() },
+              data,
             });
             resent++;
           } else {
@@ -1368,17 +1544,9 @@ export class JourneyTaskService {
           }
         } catch (err) {
           this.logger.error(
-            `Failed to resend WhatsApp notification for task ${task.id}`,
+            `Failed to resend notification for task ${task.id}`,
             err,
           );
-          failed++;
-        }
-      } else {
-        try {
-          await this.runTask(task.id, true);
-          resent++;
-        } catch (err) {
-          this.logger.error(`Failed to re-run task ${task.id}`, err);
           failed++;
         }
       }

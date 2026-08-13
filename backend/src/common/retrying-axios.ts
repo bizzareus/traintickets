@@ -7,6 +7,7 @@ export type RetryingAxiosClientOptions = {
   retryPost?: boolean;
   retryTimeouts?: boolean;
   retryStatuses?: number[];
+  retryDelayMs?: number;
 };
 
 export function createRetryingAxiosClient(
@@ -21,7 +22,9 @@ export function createRetryingAxiosClient(
   axiosRetry(client, {
     retries,
     retryDelay: (retryCount, error) =>
-      axiosRetry.exponentialDelay(retryCount, error, 1_000),
+      typeof opts.retryDelayMs === 'number'
+        ? opts.retryDelayMs
+        : axiosRetry.exponentialDelay(retryCount, error, 1_000),
     shouldResetTimeout: true,
     retryCondition: (err: AxiosError) => {
       const method = err.config?.method?.toUpperCase();

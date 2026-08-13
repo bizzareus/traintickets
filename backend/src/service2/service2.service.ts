@@ -403,6 +403,7 @@ export type Service2CheckResult = {
   /** When chart is not yet prepared or composition returned "Chart not prepared". */
   chartStatus?:
     | { kind: 'not_prepared_yet'; message: string }
+    | { kind: 'chart_prepared_no_vacant_berths'; message: string }
     | { kind: 'chart_error'; error: string }
     | { kind: 'irctc_unavailable'; message: string; detail?: string };
   /**

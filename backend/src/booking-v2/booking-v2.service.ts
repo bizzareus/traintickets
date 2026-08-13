@@ -1,7 +1,10 @@
 import { Injectable, Logger } from '@nestjs/common';
 import axios from 'axios';
 import moment from 'moment';
-import { IrctcService, enrichScheduleStationDayCounts } from '../irctc/irctc.service';
+import {
+  IrctcService,
+  enrichScheduleStationDayCounts,
+} from '../irctc/irctc.service';
 import { CacheService } from '../cache/cache.service';
 import { InMemoryCacheService } from '../cache/in-memory-cache.service';
 import { StationCacheService } from '../cache/station-cache.service';
@@ -16,6 +19,15 @@ import {
 } from './alternate-paths-cache';
 import type { RouteCacheRecord } from '../route-cache/route-cache.store';
 import { fetchWithTimeout } from '../common/fetch-with-timeout';
+import { createRetryingAxiosClient } from '../common/retrying-axios';
+
+const availabilityClient = createRetryingAxiosClient({
+  retries: 3,
+  serviceName: 'confirmtkt-availability',
+  retryPost: true,
+  retryTimeouts: true,
+  retryDelayMs: 5_000,
+});
 import {
   BOOKING_V2_ALTERNATE_PATH_CLASSES,
   BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
@@ -1057,22 +1069,26 @@ export class BookingV2Service {
       showNewAltText: 'true',
     });
     const url = `${BOOKING_V2_RAIL_API_BASE.fetchAvailability}?${params}`;
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
-      body: '',
-    });
-    const text = await res.text();
-    if (!res.ok) {
-      this.logger.warn(
-        `[booking-v2/availability] upstream ${res.status} train=${trainNo} ${from}-${to} body=${text.slice(0, 200)}`,
-      );
-      throw new Error(`Availability request failed: ${res.status}`);
-    }
     try {
-      return JSON.parse(text) as unknown;
-    } catch {
-      throw new Error('Availability: invalid JSON');
+      const res = await availabilityClient.post<unknown>(url, '', {
+        headers: BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
+      });
+      return res.data;
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        const status = err.response?.status;
+        const bodyText =
+          typeof err.response?.data === 'string'
+            ? err.response.data
+            : JSON.stringify(err.response?.data ?? '');
+        this.logger.warn(
+          `[booking-v2/availability] upstream ${status ?? 'err'} train=${trainNo} ${from}-${to} body=${bodyText.slice(0, 200)}`,
+        );
+        throw new Error(
+          `Availability request failed: ${status ?? err.message}`,
+        );
+      }
+      throw err;
     }
   }
 
@@ -1210,9 +1226,6 @@ export class BookingV2Service {
       ];
 
       for (const combo of combos) {
-        this.logger.log(
-          `[alternate-paths ${input.trainNumber}] Retrying with offset combo: before=${combo.before}, after=${combo.after}`,
-        );
         const offsetResult = await this.findAlternatePathsInternal(
           {
             ...input,
@@ -1229,9 +1242,6 @@ export class BookingV2Service {
           offsetResult.legs.length > 0 &&
           offsetResult.legs.every((l) => l.segmentKind === 'confirmed')
         ) {
-          this.logger.log(
-            `[alternate-paths ${input.trainNumber}] Found fully confirmed path using offset: before=${combo.before}, after=${combo.after}`,
-          );
           return finish(offsetResult);
         }
       }
@@ -1267,7 +1277,6 @@ export class BookingV2Service {
     const debugLog: string[] = [];
     const logStep = (msg: string) => {
       debugLog.push(msg);
-      this.logger.log(`[alternate-paths ${trainNumber}] ${msg}`);
     };
 
     if (!trainNumber || !from || !to || !dateDdMmYyyy) {

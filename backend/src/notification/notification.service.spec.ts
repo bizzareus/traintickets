@@ -225,4 +225,28 @@ describe('NotificationService', () => {
     expect(text).toContain('/search?from=CCH&to=CSMT&date=2026-08-10');
     expect(text).not.toContain('Total approx. fare');
   });
+
+  it('triggers sendAlertFailureReport to me@kartikarora.in when WhatsApp or Email sending fails', async () => {
+    const svc = new NotificationService(mockConfig(), mockStationCache());
+    const failureReportSpy = jest
+      .spyOn(svc, 'sendAlertFailureReport')
+      .mockResolvedValue(true);
+    jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(false);
+    jest.spyOn(svc, 'sendEmail').mockResolvedValue(false);
+
+    const out = await svc.notifyUser({
+      email: 'user@example.com',
+      mobile: '919876543210',
+      task,
+      result: successWithTickets,
+    });
+
+    expect(out).toEqual({ emailSent: false, whatsappSent: false });
+    expect(failureReportSpy).toHaveBeenCalled();
+    const calls = failureReportSpy.mock.calls;
+    expect(calls.some(([arg]) => arg.alertType.includes('WhatsApp'))).toBe(
+      true,
+    );
+    expect(calls.some(([arg]) => arg.alertType.includes('Email'))).toBe(true);
+  });
 });
