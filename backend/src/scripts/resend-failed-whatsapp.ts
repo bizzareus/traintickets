@@ -1,27 +1,87 @@
 import 'dotenv/config';
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from '../app.module';
-import { JourneyTaskService } from '../availability/journey-task.service';
+import { PrismaClient } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { ConfigService } from '@nestjs/config';
+import { NotificationService } from '../notification/notification.service';
+import { StationCacheService } from '../cache/station-cache.service';
+import { Service2CheckResult } from '../irctc/irctc.service';
 
 async function main() {
-  console.log('Initializing NestJS application context...');
-  const app = await NestFactory.createApplicationContext(AppModule, {
-    logger: ['log', 'warn', 'error'],
+  const connectionString =
+    process.env.DATABASE_URL ??
+    'postgresql://postgres:postgres@localhost:5432/railchart';
+  const adapter = new PrismaPg({ connectionString });
+  const prisma = new PrismaClient({ adapter });
+
+  console.log('Connecting to PostgreSQL database...');
+
+  const configService = new ConfigService(process.env);
+  const stationCacheService = new StationCacheService(prisma as any);
+  const notificationService = new NotificationService(
+    configService,
+    stationCacheService,
+  );
+
+  console.log('Searching for completed tasks missing WhatsApp notifications...');
+
+  const tasks = await prisma.chartTimeAvailabilityTask.findMany({
+    where: {
+      status: 'completed',
+      whatsappNotifiedAt: null,
+      contact: {
+        mobile: { not: null },
+      },
+    },
+    include: {
+      contact: true,
+    },
   });
 
-  try {
-    const journeyTaskService = app.get(JourneyTaskService);
-    console.log('Running resendFailedWhatsAppNotifications...');
-    const result = await journeyTaskService.resendFailedWhatsAppNotifications();
-    console.log('Resend summary:', JSON.stringify(result, null, 2));
-  } catch (err) {
-    console.error('Failed to run resend script:', err);
-  } finally {
-    await app.close();
+  console.log(
+    `Found ${tasks.length} task(s) needing WhatsApp notification resend.`,
+  );
+
+  for (const task of tasks) {
+    if (!task.contact?.mobile) continue;
+
+    console.log(
+      `Resending WhatsApp notification for task ${task.id} (${task.trainNumber} - ${task.stationCode}) to ${task.contact.mobile}...`,
+    );
+
+    try {
+      const result = task.resultPayload as unknown as Service2CheckResult;
+      const status = await notificationService.notifyUser({
+        email: task.contact.email ?? undefined,
+        mobile: task.contact.mobile ?? undefined,
+        task: {
+          trainNumber: task.trainNumber,
+          trainName: task.trainName ?? undefined,
+          fromStationCode: task.fromStationCode,
+          toStationCode: task.toStationCode,
+          journeyDate: task.journeyDate,
+        },
+        result,
+      });
+
+      console.log('Notification status:', status);
+
+      if (status.whatsappSent) {
+        await prisma.chartTimeAvailabilityTask.update({
+          where: { id: task.id },
+          data: { whatsappNotifiedAt: new Date() },
+        });
+        console.log(`Updated whatsappNotifiedAt for task ${task.id}`);
+      }
+    } catch (err) {
+      console.error(`Error processing task ${task.id}:`, err);
+    }
   }
+
+  await prisma.$disconnect();
+  console.log('Done!');
 }
 
 main().catch((err) => {
-  console.error('Unhandled error in script:', err);
+  console.error('Unhandled error:', err);
   process.exit(1);
 });

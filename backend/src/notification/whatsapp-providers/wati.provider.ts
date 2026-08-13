@@ -56,7 +56,7 @@ export class WatiProvider implements WhatsAppProvider {
       broadcast_name: payload.broadcastName || 'lastberth_alert',
       parameters: (payload.parameters || []).map((p) => ({
         name: p.name,
-        value: String(p.value ?? ''),
+        value: String(p.value ?? '').trim() || 'N/A',
       })),
     };
     if (this.channelNumber) {

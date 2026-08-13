@@ -1209,19 +1209,57 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
 
       const templateName = hasTickets
         ? this.config.get<string>('WATI_TEMPLATE_CHART_ALERT') ||
-          'chart_preparation_alert'
+          'subscription_alert'
         : this.config.get<string>('WATI_TEMPLATE_UNCOVERED_LEG') ||
-          'uncovered_leg_alert';
+          'uncovered_leg__shortlink_alert';
 
-      const parameters = [
-        { name: 'name', value: 'Passenger' },
-        { name: 'train_number', value: task.trainNumber },
-        { name: 'train_name', value: task.trainName || '' },
-        { name: 'from_code', value: task.fromStationCode },
-        { name: 'to_code', value: task.toStationCode },
-        { name: 'journey_date', value: journeyDateReadable },
-        { name: 'journey_times', value: journeyTimesLine || '' },
-      ];
+      const classCodeExtracted =
+        plan?.[0]?.instruction?.match?.(/\b([123]A|3E|SL|2S|CC|EC)\b/i)?.[1]?.toUpperCase() || 'SL';
+      const statusExtracted = plan?.[0]?.instruction || (hasTickets ? 'Available' : 'Waitlisted (Not Available)');
+      const searchUrl = `https://lastberth.com/search?from=${task.fromStationCode}&to=${task.toStationCode}&date=${journeyDateStr}&trainNo=${task.trainNumber}`;
+
+      let parameters: Array<{ name: string; value: string }>;
+
+      if (templateName === 'subscription_alert') {
+        parameters = [
+          { name: 'name', value: 'Passenger' },
+          { name: 'train_number', value: task.trainNumber },
+          { name: 'train_name', value: task.trainName || 'Express' },
+          { name: 'from_code', value: task.fromStationCode },
+          { name: 'to_code', value: task.toStationCode },
+          { name: 'journey_date', value: journeyDateReadable },
+          { name: 'journey_times', value: journeyTimesLine?.trim() || 'Not Available' },
+          { name: 'ticket_number', value: '1' },
+          { name: 'class_code', value: classCodeExtracted },
+          { name: 'availability_status', value: statusExtracted },
+          { name: 'segment_route', value: `${task.fromStationCode} → ${task.toStationCode}` },
+          { name: 'approx_price', value: totalPrice ? String(totalPrice) : '0' },
+          { name: 'irctc_booking_url', value: 'https://www.irctc.co.in/nget/redirect' },
+        ];
+      } else if (templateName === 'uncovered_leg__shortlink_alert' || templateName === 'uncovered_leg_alert') {
+        parameters = [
+          { name: 'name', value: 'Passenger' },
+          { name: 'train_number', value: task.trainNumber },
+          { name: 'train_name', value: task.trainName || 'Express' },
+          { name: 'from_code', value: task.fromStationCode },
+          { name: 'to_code', value: task.toStationCode },
+          { name: 'journey_date', value: journeyDateReadable },
+          { name: 'uncovered_segment_route', value: `${task.fromStationCode} → ${task.toStationCode}` },
+          { name: 'chart_release_time_label', value: chartPreparationText || 'Chart prepared' },
+          { name: 'action_button_text', value: 'Check Seat Availability' },
+          { name: 'action_url', value: searchUrl },
+        ];
+      } else {
+        parameters = [
+          { name: 'name', value: 'Passenger' },
+          { name: 'train_number', value: task.trainNumber },
+          { name: 'train_name', value: task.trainName || 'Express' },
+          { name: 'from_code', value: task.fromStationCode },
+          { name: 'to_code', value: task.toStationCode },
+          { name: 'journey_date', value: journeyDateReadable },
+          { name: 'journey_times', value: journeyTimesLine?.trim() || 'Not Available' },
+        ];
+      }
 
       out.whatsappSent = await this.sendWhatsApp(mobile.trim(), whatsAppText, {
         templateName,
