@@ -1316,6 +1316,68 @@ export class JourneyTaskService {
     });
   }
 
+  async resendFailedWhatsAppNotifications(): Promise<{
+    found: number;
+    resent: number;
+    failed: number;
+  }> {
+    const tasks = await this.prisma.chartTimeAvailabilityTask.findMany({
+      where: {
+        status: 'completed',
+        whatsappNotifiedAt: null,
+        contact: {
+          mobile: { not: null },
+        },
+      },
+      include: {
+        contact: true,
+      },
+    });
+
+    let resent = 0;
+    let failed = 0;
+
+    for (const task of tasks) {
+      if (!task.contact?.mobile) continue;
+
+      const result = task.resultPayload as unknown as Service2CheckResult;
+      if (!result) continue;
+
+      try {
+        const status = await this.notificationService.notifyUser({
+          email: task.contact.email,
+          mobile: task.contact.mobile,
+          task: {
+            trainNumber: task.trainNumber,
+            trainName: task.trainName,
+            fromStationCode: task.fromStationCode,
+            toStationCode: task.toStationCode,
+            journeyDate: task.journeyDate,
+          },
+          result,
+        });
+
+        if (status.whatsappSent) {
+          await this.prisma.chartTimeAvailabilityTask.update({
+            where: { id: task.id },
+            data: { whatsappNotifiedAt: new Date() },
+          });
+          resent++;
+        } else {
+          failed++;
+        }
+      } catch (err) {
+        this.logger.error(
+          `Failed to resend WhatsApp notification for task ${task.id}`,
+          err,
+        );
+        failed++;
+      }
+    }
+
+    return { found: tasks.length, resent, failed };
+  }
+
   /**
    * Get stations between from and to that have chart times, for the journey/stations endpoint.
    * Returns stationCode, stationName, chart one time, and optionally chart two time + day offset.

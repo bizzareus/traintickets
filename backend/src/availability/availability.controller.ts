@@ -453,4 +453,9 @@ export class AvailabilityController {
       );
     }
   }
+
+  @Post('admin/resend-failed-notifications')
+  async resendFailedNotifications() {
+    return this.journeyTask.resendFailedWhatsAppNotifications();
+  }
 }
