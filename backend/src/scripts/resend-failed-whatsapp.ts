@@ -4,7 +4,7 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import { ConfigService } from '@nestjs/config';
 import { NotificationService } from '../notification/notification.service';
 import { StationCacheService } from '../cache/station-cache.service';
-import { Service2CheckResult } from '../irctc/irctc.service';
+import type { Service2CheckResult } from '../service2/service2.service';
 
 async function main() {
   const connectionString =
@@ -55,7 +55,7 @@ async function main() {
         mobile: task.contact.mobile ?? undefined,
         task: {
           trainNumber: task.trainNumber,
-          trainName: task.trainName ?? undefined,
+          trainName: task.trainName,
           fromStationCode: task.fromStationCode,
           toStationCode: task.toStationCode,
           journeyDate: task.journeyDate,
