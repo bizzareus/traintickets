@@ -2,7 +2,7 @@
 title: "Vande Bharat Food Rules 2026: मोफत जेवण, ऑप-आउट बचत आणि दर"
 description: "Is food free on Vande Bharat Express? Meals are included in ticket price, but optional. Learn ₹150–₹350 opt-out savings, ₹50 onboard ordering fee & delay rules."
 date: "2026-07-04"
-updated: "2026-07-31"
+updated: 2026-08-13
 tags:
   - ट्रेन बुकिंग
   - irctc

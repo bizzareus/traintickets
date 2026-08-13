@@ -2,7 +2,7 @@
 title: "CURR_AVBL / Curr Avl Meaning in IRCTC: Rules & Booking (2026)"
 description: "CURR_AVBL, Curr Avl, അല്ലെങ്കിൽ Curr Available എന്നത് IRCTC-യിൽ എന്താണ്? 100% സ്ഥിരീകരിച്ച നിയമങ്ങൾ, ചാർട്ട് സമയങ്ങൾ, 8-മണിക്കൂർ ബുക്കിംഗ് വിൻഡോ & സീറ്റ് ഒഴിവുകൾക്കായുള്ള ടിപ്പുകൾ പഠിക്കുക."
 date: "2026-06-11"
-updated: "2026-08-09"
+updated: 2026-08-13
 tags:
   - നിലവിലെ ലഭ്യത
   - curr avbl അർത്ഥം

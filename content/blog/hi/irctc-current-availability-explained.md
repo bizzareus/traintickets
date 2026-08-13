@@ -2,7 +2,7 @@
 title: "CURR_AVBL / Curr Avl का अर्थ IRCTC में: नियम और बुकिंग (2026)"
 description: "CURR_AVBL, Curr Avl, या Curr Available का IRCTC में क्या अर्थ है? 100% पुष्टि किए गए नियम, चार्ट समय, 8 घंटे की बुकिंग विंडो और सीट रिक्तता के टिप्स जानें।"
 date: "2026-06-11"
-updated: "2026-08-09"
+updated: 2026-08-13
 tags:
   - वर्तमान उपलब्धता
   - curr avbl का अर्थ

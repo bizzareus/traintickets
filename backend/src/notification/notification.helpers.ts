@@ -13,6 +13,13 @@ export function hasBookablePlanForNotification(
   return plan.some(isFilledOpenAiPlanItem);
 }
 
+/** Normalize mobile numbers to Indian E.164 format (e.g. 919999224767). */
+export function normalizeE164Mobile(phone: string): string {
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length === 10) return `91${digits}`;
+  return digits;
+}
+
 function ordinalEnglish(day: number): string {
   const j = day % 10;
   const k = day % 100;

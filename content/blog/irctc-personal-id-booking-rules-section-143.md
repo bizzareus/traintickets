@@ -2,7 +2,7 @@
 title: "Can I Book Train Tickets for Friends on Personal IRCTC ID? Rules"
 description: "Are you booking tickets for friends/family on your personal IRCTC account? Learn the rules of Section 143, passenger verification, and how to avoid penalties."
 date: "2026-07-04"
-updated: "2026-08-11"
+updated: 2026-08-13
 tags:
   - train booking
   - irctc
@@ -58,7 +58,7 @@ If the ticket is waitlisted, the standard queue progression applies: **WL (Waiti
 
 ## What is the Penalty for Selling Train Tickets Commercially?
 
-**Selling train tickets commercially from a personal IRCTC account is a non-bailable offense that carries a penalty of up to three years in prison, a fine of ₹10,000, or both. Additionally, all active tickets booked on that account are cancelled, and the user's personal details are blacklisted.**
+**Selling train tickets commercially from a personal IRCTC account is a cognizable offense (classified as bailable under CrPC by High Court rulings) that carries a penalty of up to three years in prison, a fine of ₹10,000, or both. Additionally, all active tickets booked on that account are cancelled, and the user's personal details are blacklisted.**
 
 To book tickets commercially and charge a service fee, you must register as an authorized IRCTC agent through an approved principal service provider. Authorized agents pay registration fees and must use dedicated commercial portals. Booking agents who try to use personal accounts to save fees are actively prosecuted by the RPF during special security drives.
 
@@ -146,7 +146,7 @@ If it is an online e-ticket, you cannot travel if it remains waitlisted (WL) aft
 
 ### What is a current available ticket on IRCTC?
 
-A current available ticket is a confirmed seat that goes on sale after chart preparation (usually 8 hours before departure) until 30 minutes before the train leaves. It is bookable online or at counters if seats remain vacant.
+A current available ticket is a confirmed seat that goes on sale after chart preparation (usually 8 hours before departure) until 15 minutes before the train leaves. It is bookable online or at counters if seats remain vacant.
 
 ### How do I check if a PNR booked for my friend is confirmed?
 

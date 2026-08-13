@@ -446,52 +446,25 @@ export class BookingV2Service {
 
   /** `YYYY-MM-DD`, `DD-MM-YYYY`, slashes, or other valid formats parsed to `DD-MM-YYYY`. */
   normalizeToRailApiDate(dateInput: string): string | null {
-    const t = String(dateInput).trim().replace(/\//g, '-');
-    if (/^\d{4}-\d{1,2}-\d{1,2}$/.test(t)) {
-      const m = t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
-      if (m) {
-        const [, y, mo, d] = m;
-        const parsed = `${d.padStart(2, '0')}-${mo.padStart(2, '0')}-${y}`;
-        if (moment(parsed, 'DD-MM-YYYY', true).isValid()) {
-          return parsed;
-        }
-      }
-    }
-    if (/^\d{1,2}-\d{1,2}-\d{4}$/.test(t)) {
-      const m = t.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
-      if (m) {
-        const d = m[1].padStart(2, '0');
-        const mo = m[2].padStart(2, '0');
-        const parsed = `${d}-${mo}-${m[3]}`;
-        if (moment(parsed, 'DD-MM-YYYY', true).isValid()) {
-          return parsed;
-        }
-      }
+    const raw = String(dateInput ?? '').trim().replace(/\//g, '-');
+    if (!raw) return null;
+
+    const isoMatch = raw.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+    if (isoMatch) {
+      const [, y, mo, d] = isoMatch;
+      const formatted = `${d.padStart(2, '0')}-${mo.padStart(2, '0')}-${y}`;
+      return moment(formatted, 'DD-MM-YYYY', true).isValid() ? formatted : null;
     }
 
-    // Fallback to strict moment parsing of other known formats to avoid deprecation warnings
-    const formats = [
-      'YYYY-MM-DD',
-      'YYYY-M-D',
-      'DD-MM-YYYY',
-      'D-M-YYYY',
-      'D MMM YYYY',
-      'DD MMM YYYY',
-      'D MMMM YYYY',
-      'DD MMMM YYYY',
-      'MMM D, YYYY',
-      'MMM DD, YYYY',
-      'MMMM D, YYYY',
-      'MMMM DD, YYYY',
-    ];
-    const parsedMoment = moment(t, formats, true);
-    if (parsedMoment.isValid()) {
-      const year = parsedMoment.year();
-      if (year >= 2000 && year <= 2100) {
-        return parsedMoment.format('DD-MM-YYYY');
-      }
+    const dmyMatch = raw.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+    if (dmyMatch) {
+      const [, d, mo, y] = dmyMatch;
+      const formatted = `${d.padStart(2, '0')}-${mo.padStart(2, '0')}-${y}`;
+      return moment(formatted, 'DD-MM-YYYY', true).isValid() ? formatted : null;
     }
-    return null;
+
+    const m = moment(raw, ['D MMM YYYY', 'DD MMM YYYY', 'MMM D, YYYY'], true);
+    return m.isValid() ? m.format('DD-MM-YYYY') : null;
   }
 
   private normalizeAvlDayRow(r: Record<string, unknown>): AvlDayRow {
@@ -1939,17 +1912,27 @@ export class BookingV2Service {
     return null;
   }
 
-  async getPnrStatus(pnr: string): Promise<any> {
+export interface PnrStatusResponse {
+  status?: boolean;
+  message?: string;
+  data?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
+  async getPnrStatus(pnr: string): Promise<PnrStatusResponse> {
     const key =
       process.env.RAPIDAPI_IRCTC_KEY ??
       process.env.IRCTC_RAPIDAPI_KEY ??
-      process.env.RAPIDAPI_KEY ??
-      '9e95d7e163msh2f68cfcffd3392ep1ee859jsnc3dc7e695e20';
+      process.env.RAPIDAPI_KEY;
+
+    if (!key) {
+      throw new Error('RapidAPI key for IRCTC PNR status is not configured');
+    }
 
     this.logger.log(`[pnr] Fetching PNR status for ${pnr}`);
 
     try {
-      const response = await axios.get(
+      const response = await axios.get<PnrStatusResponse>(
         'https://irctc1.p.rapidapi.com/api/v3/getPNRStatus',
         {
           params: { pnrNumber: pnr },
@@ -1958,6 +1941,7 @@ export class BookingV2Service {
             'x-rapidapi-host': 'irctc1.p.rapidapi.com',
             'Content-Type': 'application/json',
           },
+          timeout: 10_000,
         },
       );
       return response.data;

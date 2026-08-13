@@ -1,15 +1,14 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
+import { normalizeE164Mobile } from '../notification.helpers';
 import {
   WhatsAppProvider,
   SendWhatsAppPayload,
 } from './whatsapp-provider.interface';
 
 function normalizeWatiNumber(phone: string): string {
-  const digits = phone.replace(/\D/g, '');
-  if (digits.length === 10) return `91${digits}`;
-  return digits;
+  return normalizeE164Mobile(phone);
 }
 
 @Injectable()

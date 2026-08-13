@@ -2,7 +2,7 @@
 title: "RailOne App: UTS, Platform Tickets & the GPS Limit 2026"
 description: "RailOne replaces the UTS app for unreserved, platform & season tickets. See the GPS distance limits that block bookings, R-Wallet setup, and migration steps."
 date: "2026-06-23"
-updated: "2026-07-27"
+updated: 2026-08-13
 tags:
   - train booking
   - irctc
@@ -15,7 +15,7 @@ tags:
 
 ## TL;DR
 
-On March 1, 2026, Indian Railways decommissioned the standalone UTS app and migrated all unreserved ticketing to the new integrated RailOne "super app". Account details and wallet balances transferred automatically, and users enjoy a 3% discount on digital payments. The classic 15m–5km GPS distance limit still applies for paperless booking.
+On March 1, 2026, Indian Railways decommissioned the standalone UTS app and migrated all unreserved ticketing to the new integrated RailOne "super app". Account details and wallet balances transferred automatically, and users enjoy a 3% discount on digital payments. Paperless booking requires being outside station premises (the outer distance limit was abolished in April 2024, leaving only the inner station-boundary limit).
 
 ---
 
@@ -35,11 +35,11 @@ If you register with a different number, a new empty wallet will be created inst
 
 ---
 
-## What is the GPS Distance Limit for RailOne App Booking?
+## What is the Geofencing Location Rule for RailOne App Booking?
 
-To book paperless tickets on the RailOne app, your smartphone's GPS must show you are between **15 meters and 5 kilometers** away from the station. This **GPS distance limit** geofencing rule prevents passengers from booking tickets once inside the station or onboard the train to avoid ticketless travel fines.
+To book paperless tickets on the RailOne app, you must be located **outside the station premises**. Indian Railways **abolished the outer distance limit** (which previously restricted bookings to 5–20 km) in April 2024, allowing passengers to book paperless tickets from any distance. However, the **inner geofencing limit** remains strictly enforced to prevent booking once inside station premises or onboard the train.
 
-If you are closer than 15 meters, the app blocks the transaction to prevent fare evaders from booking a ticket when they see a ticket checker. If you are further than 5 kilometers, the app assumes you are too far to board immediately. For bookings outside this range, choose the paper ticket option, which must be printed at the station.
+The app's location system blocks transactions if you are inside station boundaries or on a platform, preventing fare evasion after entering restricted areas. For bookings outside this range, choose the paper ticket option, which must be printed at the station.
 
 ---
 
@@ -56,7 +56,7 @@ Here is a summary comparing the old UTS app and the new RailOne platform:
 | **Status** | Decommissioned (March 1, 2026) | Active & Official Super App |
 | **Services Offered** | Unreserved tickets only | UTS, PNR checks, live tracking, food orders |
 | **Digital Booking Incentive** | None / No standard discounts | **3% discount** on digital payments |
-| **GPS Distance Rule** | 15 meters to 5 kilometers | 15 meters to 5 kilometers |
+| **GPS Distance Rule** | Outside station premises (outer limit abolished April 2024) | Outside station premises (outer limit abolished April 2024) |
 | **Account Migration** | Manual registration needed | **Automatic** via mobile number login |
 
 ---
@@ -139,7 +139,7 @@ UTS stands for Unreserved Ticketing System. It remains the core framework used b
 No, general tickets booked on RailOne are strictly valid only for unreserved (general) coaches. Boarding a reserved Sleeper or AC coach with a general ticket will result in a penalty of ₹250 plus the fare difference.
 
 ### Why does the RailOne app say I am out of range?
-The app uses GPS geofencing to ensure you are between 15 meters and 5 kilometers from the station. If you are too close (on the platform/tracks) or too far (over 5 km away), the app blocks paperless bookings to prevent misuse.
+The app uses GPS geofencing to ensure you are outside station premises (inner boundary limit). If you are too close (on the platform/tracks) or too far (over 5 km away), the app blocks paperless bookings to prevent misuse.
 
 ### Do I need to print a paperless ticket booked on RailOne?
 No, paperless tickets do not need to be printed. You can show the ticket digitally to the TTE using the "Show Ticket" feature in the RailOne app, even when offline.

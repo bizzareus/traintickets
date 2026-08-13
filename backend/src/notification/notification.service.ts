@@ -22,6 +22,8 @@ import {
   formatSegmentScheduleTimes,
   hasBookablePlanForNotification,
 } from './notification.helpers';
+import { renderSeatsFoundEmailHtml } from './templates/notification-email.templates';
+import { buildWatiTemplateParameters } from './templates/notification-whatsapp.templates';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
@@ -912,59 +914,15 @@ export class NotificationService {
 
     const cardRows = (await Promise.all(cardRowPromises)).join('');
 
-    const totalRow =
-      totalPrice != null && totalPrice > 0
-        ? `
-    <tr><td style="padding:16px 20px 0 0; font-size:15px; font-weight:500; color:#1e293b; text-align:right;">Total approx. fare: ~ ₹${Number(totalPrice).toLocaleString('en-IN')}</td></tr>`
-        : '';
-
-    const chartPrepLine = chartPreparationText
-      ? `<p style="margin:4px 0 0 0; font-size:13px; color:#64748b; font-style:italic;">${chartPreparationText}</p>`
-      : '';
-
-    return `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seats Available - LastBerth</title>
-</head>
-<body style="margin:0; padding:0; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background:#f1f5f9; color:#334155;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;">
-    <tr>
-      <td style="padding:32px 16px;">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px; margin:0 auto; border-radius:16px; border:1px solid #e2e8f0; background:#ffffff; box-shadow:0 4px 6px -1px rgba(0,0,0,0.08); overflow:hidden;">
-          <tr>
-            <td style="padding:24px 24px 20px;">
-              <p style="margin:0; font-size:20px; font-weight:700; color:#0f172a;">${escapeHtml(trainLabel)}</p>
-              <p style="margin:8px 0 0 0; font-size:14px; color:#64748b;">${escapeHtml(routeDisplay)}</p>
-              <p style="margin:8px 0 0 0; font-size:14px; color:#334155;">${escapeHtml(journeyDateReadable)}</p>
-              ${journeyTimesLine ? `<p style="margin:6px 0 0 0; font-size:13px; color:#64748b;">${escapeHtml(journeyTimesLine)}</p>` : ''}
-              ${chartPrepLine}
-            </td>
-          </tr>
-          <tr>
-            <td style="padding:0 24px 24px;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                ${cardRows}
-              </table>
-              ${totalRow}
-              <p style="margin:16px 0 0 0; font-size:12px; color:#94a3b8; text-align:center;">Book quickly — seats can sell out fast.</p>
-              <div style="margin-top:20px; padding:12px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; text-align:center;">
-                <p style="margin:0; font-size:13px; color:#475569;">
-                  💡 <strong>Tip:</strong> Look for the realtime seat status on LastBerth to track vacant seats around you.
-                </p>
-              </div>
-            </td>
-          </tr>
-        </table>
-        <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.</p>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>`;
+    return renderSeatsFoundEmailHtml({
+      cardRowsHtml: cardRows,
+      totalPrice,
+      trainLabel,
+      routeDisplay,
+      journeyDateReadable,
+      journeyTimesLine,
+      chartPreparationText,
+    });
   }
 
   /** Build WhatsApp plain text to match booking UI: train, route with >, chart prep, ticket lines, total. */
@@ -1131,6 +1089,7 @@ export class NotificationService {
     let alternativesHtml = '';
     if (alternativeTrains && alternativeTrains.length > 0) {
       const trainCards = alternativeTrains
+        .slice(0, 3)
         .map((alt) => {
           const train = alt.train;
           const trainNameStr = [train.trainNumber, train.trainName]
@@ -1221,7 +1180,9 @@ export class NotificationService {
     let alternativesText = '';
     if (alternativeTrains && alternativeTrains.length > 0) {
       const trainLines = alternativeTrains
+        .slice(0, 3)
         .map((alt, i) => {
+
           const train = alt.train;
           const trainNameStr = [train.trainNumber, train.trainName]
             .filter(Boolean)
@@ -1324,8 +1285,10 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
     result: Service2CheckResult;
     alternativeTrains?: BestTrainCandidateResult[];
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
-    const { email, mobile, task, result, alternativeTrains } = params;
+    const { email, mobile, task, result } = params;
+    const alternativeTrains = params.alternativeTrains?.slice(0, 3);
     const out = { emailSent: false, whatsappSent: false };
+
 
     try {
       if (!email?.trim() && !mobile?.trim()) {
@@ -1628,9 +1591,10 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
       fromStationCode,
       toStationCode,
       journeyDate,
-      alternativeTrains,
     } = params;
+    const alternativeTrains = params.alternativeTrains?.slice(0, 3);
     const out = { emailSent: false, whatsappSent: false };
+
 
     try {
       if (!email?.trim() && !mobile?.trim()) return out;

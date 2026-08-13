@@ -96,19 +96,14 @@ export class AvailabilityService {
           };
 
     if (result.status === 'success' || result.status === 'failed') {
-      const check = await this.prisma.availabilityCheck.findFirst({
+      await this.prisma.availabilityCheck.updateMany({
         where: { jobId },
+        data: {
+          status: result.status === 'success' ? 'success' : 'failed',
+          resultPayload: payload as object,
+          completedAt: new Date(),
+        },
       });
-      if (check) {
-        await this.prisma.availabilityCheck.update({
-          where: { id: check.id },
-          data: {
-            status: result.status === 'success' ? 'success' : 'failed',
-            resultPayload: payload as object,
-            completedAt: new Date(),
-          },
-        });
-      }
     }
 
     return {

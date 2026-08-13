@@ -2,7 +2,7 @@
 title: "Vande Bharat Food Rules: Free Meals, Opt-Out & Prices (2026)"
 description: "Is food free on Vande Bharat Express? Meals are included in ticket price, but optional. Learn ₹150–₹350 opt-out savings, ₹50 onboard ordering fee & delay rules."
 date: "2026-07-04"
-updated: "2026-08-08"
+updated: 2026-08-13
 tags:
   - train booking
   - irctc
@@ -55,7 +55,7 @@ The ₹50 convenience charge is a penalty for last-minute ordering, designed to 
 
 ## What is the Vande Bharat Food Charges Refund and Cancellation Policy?
 
-**If you cancel your Vande Bharat ticket, the food charges are fully refunded along with the ticket fare, subject to standard IRCTC cancellation fees. If the train is delayed by more than three hours, passengers are entitled to free emergency meals.**
+**If you cancel your Vande Bharat ticket, the food charges are fully refunded along with the ticket fare, subject to standard IRCTC cancellation fees. If the train is delayed by two hours or more, passengers are entitled to free emergency meals under Railway Board catering policy (while a full ticket cancellation refund requires a 3+ hour delay).**
 
 To get a refund for food charges when cancelling a partially confirmed or waitlisted ticket, you must file a Ticket Deposit Receipt (TDR) online before chart preparation. If a waitlisted online e-ticket does not confirm, the system processes a full refund automatically, including the catering portion, within 3 to 5 working days.
 
@@ -73,12 +73,12 @@ Executive Class (EC) offers premium meal options including welcome drinks, high-
 
 ---
 
-## Is Food Free on Vande Bharat Trains if Delayed by More Than 3 Hours?
+## Is Food Free on Vande Bharat Trains if Delayed by 2 Hours or More?
 
-**Yes, Indian Railways rules mandate that if a premium train like Vande Bharat, Rajdhani, or Shatabdi is delayed by more than 3 hours, free meals, refreshments, and bottled water must be provided to ALL passengers on board, regardless of whether they opted out of catering during booking.**
+**Yes, Indian Railways rules mandate that if a premium train like Vande Bharat, Rajdhani, or Shatabdi is delayed by 2 hours or more, free meals, refreshments, and bottled water must be provided to ALL passengers on board, regardless of whether they opted out of catering during booking.**
 
 Key delay catering rules:
-- **Delay Threshold:** Must exceed 3 hours from originating station or key junctions.
+- **Delay Threshold:** Must exceed 2 hours from originating station or key junctions.
 - **Meal Type:** Served based on timing (Breakfast between 7–10 AM, Lunch 12–2 PM, Tea/Snacks 4–6 PM, Dinner 8–10 PM).
 - **No Opt-Out Penalty:** Even passengers who selected "No Food" receive emergency delay catering free of cost.
 
@@ -116,7 +116,7 @@ No. If you book a separate seat for a child (aged 5 to 11) and pay the applicabl
 
 ### What happens to catering charges if the train is delayed?
 
-If a Vande Bharat train is delayed by more than three hours, Indian Railways provides free breakfast, lunch, or dinner (depending on the time of day) to all passengers, regardless of whether they opted out of catering during booking.
+If a Vande Bharat train is delayed by two hours or more, Indian Railways provides free breakfast, lunch, or dinner (depending on the time of day) to all passengers, regardless of whether they opted out of catering during booking.
 
 ### How do I check if my Vande Bharat ticket is confirmed?
 

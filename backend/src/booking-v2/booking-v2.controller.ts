@@ -169,6 +169,7 @@ export class BookingV2Controller {
       date?: unknown;
       avlClasses?: unknown;
       quota?: unknown;
+      forceRefresh?: unknown;
     },
     @Res() res: Response,
   ) {
@@ -201,7 +202,7 @@ export class BookingV2Controller {
       res.write(JSON.stringify(obj) + '\n');
     };
 
-    const forceRefresh = Boolean((body as any)?.forceRefresh);
+    const forceRefresh = Boolean(body?.forceRefresh);
 
     try {
       const { result, cached } = await this.bookingV2.findAlternatePathsCached(
@@ -297,12 +298,10 @@ export class BookingV2Controller {
 
   @Get('trains/schedule/:trainNumber')
   async getTrainSchedule(
-    @Query('trainNumber') trainNumberParam: string | undefined,
-    @Res() res: Response,
+    @Param('trainNumber') paramNo: string | undefined,
+    @Query('trainNumber') queryNo: string | undefined,
   ) {
-    // Both param and query fallback
-    const num =
-      trimStr(trainNumberParam) || trimStr(res.req.params.trainNumber);
+    const num = trimStr(paramNo) || trimStr(queryNo);
     if (!num) {
       throw new BadRequestException('trainNumber is required');
     }

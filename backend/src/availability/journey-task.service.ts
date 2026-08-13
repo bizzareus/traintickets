@@ -25,7 +25,8 @@ import {
   toE164,
   type JourneyLegCoverage,
 } from '../notification/notification.service';
-import { AlternativeSearchTaskService } from './alternative-search-task.service';
+import { toIstYmd } from '../common/date.utils';
+import { isPrismaUniqueViolation } from '../common/prisma-errors';
 import {
   BookingV2Service,
   type FindAlternatePathsResult,
@@ -134,10 +135,7 @@ function isTaskChartTimePassed(task: ChartTimeAvailabilityTask): boolean {
   const todayIstStr = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Kolkata',
   }).format(now);
-  const journeyDateStr =
-    task.journeyDate instanceof Date
-      ? task.journeyDate.toISOString().slice(0, 10)
-      : String(task.journeyDate).slice(0, 10);
+  const journeyDateStr = toIstYmd(task.journeyDate);
 
   return journeyDateStr < todayIstStr;
 }
@@ -522,22 +520,9 @@ export class JourneyTaskService {
               data: { email },
             });
           } catch (err: unknown) {
-            // Ignore unique constraint violation if another contact already has this email
-            const errObj =
-              err != null && typeof err === 'object'
-                ? (err as Record<string, unknown>)
-                : null;
-            const causeKind =
-              errObj?.cause != null &&
-              typeof errObj.cause === 'object' &&
-              'kind' in errObj.cause
-                ? (errObj.cause as Record<string, unknown>).kind
-                : undefined;
-            const isUniqueViolation =
-              errObj?.code === 'P2002' ||
-              causeKind === 'UniqueConstraintViolation';
-            if (!isUniqueViolation) throw err;
+            if (!isPrismaUniqueViolation(err)) throw err;
           }
+
         }
         if (mobile && existing.mobile !== mobile) {
           try {
@@ -546,21 +531,7 @@ export class JourneyTaskService {
               data: { mobile },
             });
           } catch (err: unknown) {
-            // Ignore unique constraint violation if another contact already has this mobile
-            const errObj =
-              err != null && typeof err === 'object'
-                ? (err as Record<string, unknown>)
-                : null;
-            const causeKind =
-              errObj?.cause != null &&
-              typeof errObj.cause === 'object' &&
-              'kind' in errObj.cause
-                ? (errObj.cause as Record<string, unknown>).kind
-                : undefined;
-            const isUniqueViolation =
-              errObj?.code === 'P2002' ||
-              causeKind === 'UniqueConstraintViolation';
-            if (!isUniqueViolation) throw err;
+            if (!isPrismaUniqueViolation(err)) throw err;
           }
         }
       } else {
@@ -570,23 +541,7 @@ export class JourneyTaskService {
           });
           monitoringContactId = created.id;
         } catch (err: unknown) {
-          // Another row with the same email or mobile was inserted concurrently
-          // (or the client retried). Recover gracefully by finding the conflict.
-          const errObj =
-            err != null && typeof err === 'object'
-              ? (err as Record<string, unknown>)
-              : null;
-          const causeKind =
-            errObj?.cause != null &&
-            typeof errObj.cause === 'object' &&
-            errObj.cause !== null &&
-            'kind' in errObj.cause
-              ? (errObj.cause as Record<string, unknown>).kind
-              : undefined;
-          const isUniqueViolation =
-            errObj?.code === 'P2002' ||
-            causeKind === 'UniqueConstraintViolation';
-          if (!isUniqueViolation) throw err;
+          if (!isPrismaUniqueViolation(err)) throw err;
           const conflict = await this.prisma.monitoringContact.findFirst({
             where: {
               OR: [
@@ -1492,7 +1447,16 @@ export class JourneyTaskService {
       where: {
         createdAt: { gte: sinceDate },
         status: 'completed',
-        OR: [{ whatsappNotifiedAt: null }, { emailNotifiedAt: null }],
+        OR: [
+          {
+            contact: { mobile: { not: null } },
+            whatsappNotifiedAt: null,
+          },
+          {
+            contact: { email: { not: null } },
+            emailNotifiedAt: null,
+          },
+        ],
       },
       include: {
         contact: true,
@@ -1510,14 +1474,25 @@ export class JourneyTaskService {
           where: { journeyRequestId: task.journeyRequestId },
         }));
 
-      if (!contact || (!contact.mobile && !contact.email)) continue;
+      if (!contact) continue;
+
+      const needsWhatsApp = Boolean(
+        contact.mobile?.trim() && !task.whatsappNotifiedAt,
+      );
+      const needsEmail = Boolean(
+        contact.email?.trim() && !task.emailNotifiedAt,
+      );
+
+      if (!needsWhatsApp && !needsEmail) continue;
 
       if (task.resultPayload) {
         const result = task.resultPayload as unknown as Service2CheckResult;
         try {
           const status = await this.notificationService.notifyUser({
-            email: contact.email || undefined,
-            mobile: contact.mobile || undefined,
+            email: needsEmail ? contact.email?.trim() || undefined : undefined,
+            mobile: needsWhatsApp
+              ? contact.mobile?.trim() || undefined
+              : undefined,
             task: {
               trainNumber: task.trainNumber,
               trainName: task.trainName,
@@ -1530,8 +1505,9 @@ export class JourneyTaskService {
 
           const data: { emailNotifiedAt?: Date; whatsappNotifiedAt?: Date } =
             {};
-          if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
-          if (status.emailSent) data.emailNotifiedAt = new Date();
+          if (needsWhatsApp && status.whatsappSent)
+            data.whatsappNotifiedAt = new Date();
+          if (needsEmail && status.emailSent) data.emailNotifiedAt = new Date();
 
           if (Object.keys(data).length > 0) {
             await this.prisma.chartTimeAvailabilityTask.update({
@@ -1554,6 +1530,7 @@ export class JourneyTaskService {
 
     return { found: tasks.length, resent, failed };
   }
+
 
   /**
    * Get stations between from and to that have chart times, for the journey/stations endpoint.

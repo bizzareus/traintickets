@@ -2,7 +2,7 @@
 title: "Amrit Bharat Express: Non-AC Sleeper Fares, Routes & Rules"
 description: "Amrit Bharat is Indian Railways' new non-AC superfast: Sleeper & 2S only, no RAC, low fares. See routes, fares, booking rules and onboard amenities."
 date: "2026-07-02"
-updated: "2026-08-07"
+updated: 2026-08-13
 tags:
   - train booking
   - irctc
@@ -105,7 +105,7 @@ Because Amrit Bharat Express has no RAC quota, chart preparation directly promot
 
 If you miss the initial 60-day booking window, you can check for current booking seats, as there is no Tatkal or Premium Tatkal quota on this train. Once the first reservation chart is prepared (typically 8 hours before scheduled departure), any unsold tickets from emergency quotas or late cancellations are put up for sale. 
 
-The current availability window closes 30 minutes before the train leaves the station. These tickets are sold at the normal rate without Tatkal premium surcharges. However, because Amrit Bharat Express is heavily utilized, these last-minute confirmed seats clear out extremely quickly.
+The current availability window closes 15 minutes before the train leaves the station. These tickets are sold at the normal rate without Tatkal premium surcharges. However, because Amrit Bharat Express is heavily utilized, these last-minute confirmed seats clear out extremely quickly.
 
 ---
 

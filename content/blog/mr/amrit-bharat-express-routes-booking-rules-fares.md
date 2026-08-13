@@ -2,7 +2,7 @@
 title: "Amrit Bharat Express: Non-AC स्लीपर भाडे, मार्ग आणि नियम"
 description: "Amrit Bharat ही भारतीय रेल्वेची नवी Non-AC सुपरफास्ट: फक्त स्लीपर आणि 2S, RAC नाही, कमी भाडे. मार्ग, भाडे, बुकिंग नियम आणि ऑनबोर्ड सुविधा पाहा."
 date: "2026-07-02"
-updated: "2026-08-07"
+updated: 2026-08-13
 tags:
   - ट्रेन बुकिंग
   - irctc

@@ -20,10 +20,9 @@ export type AvailabilityRowLike = {
   railDataStatus?: string | null;
 };
 
-const BOOKABLE_STATUS_RE = /^AVL|^AVAIL|^CURR_AV|^CURRENT AV/i;
+export const CONFIRMED_STATUS_RE = /^AVL|^AVAIL|^CURR_AV|^CURRENT AV|^CNF/i;
 
-/** `true` when user should be sent to IRCTC to book (availablityType 1 or equivalent). */
-export function isIrctcDirectBookable(row: AvailabilityRowLike | null | undefined): boolean {
+export function isLegConfirmed(row: AvailabilityRowLike | null | undefined): boolean {
   if (!row) return false;
 
   const type = parseUpstreamAvailablityType(row.availablityType);
@@ -36,7 +35,12 @@ export function isIrctcDirectBookable(row: AvailabilityRowLike | null | undefine
   const statusText = row.availabilityDisplayName ?? row.railDataStatus ?? row.availablityStatus ?? "";
   const currentStatus = statusText.split("/").pop()?.trim() ?? "";
 
-  return BOOKABLE_STATUS_RE.test(currentStatus);
+  return CONFIRMED_STATUS_RE.test(currentStatus);
+}
+
+/** `true` when user should be sent to IRCTC to book (availablityType 1 or equivalent). */
+export function isIrctcDirectBookable(row: AvailabilityRowLike | null | undefined): boolean {
+  return isLegConfirmed(row);
 }
 
 export type TrainAvailabilityLike = {
