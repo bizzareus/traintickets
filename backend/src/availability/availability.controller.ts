@@ -456,7 +456,8 @@ export class AvailabilityController {
 
   @Get('admin/resend-failed-notifications')
   @Post('admin/resend-failed-notifications')
-  async resendFailedNotifications() {
-    return this.journeyTask.resendFailedWhatsAppNotifications();
+  async resendFailedNotifications(@Query('hours') hours?: string) {
+    const hoursNum = hours ? Number.parseInt(hours, 10) : 24;
+    return this.journeyTask.resendFailedWhatsAppNotifications(hoursNum);
   }
 }

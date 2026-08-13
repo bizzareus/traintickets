@@ -1316,14 +1316,15 @@ export class JourneyTaskService {
     });
   }
 
-  async resendFailedWhatsAppNotifications(): Promise<{
+  async resendFailedWhatsAppNotifications(hours = 24): Promise<{
     found: number;
     resent: number;
     failed: number;
   }> {
+    const sinceDate = new Date(Date.now() - hours * 60 * 60 * 1000);
     const tasks = await this.prisma.chartTimeAvailabilityTask.findMany({
       where: {
-        status: 'completed',
+        createdAt: { gte: sinceDate },
         whatsappNotifiedAt: null,
         contact: {
           mobile: { not: null },
@@ -1340,38 +1341,46 @@ export class JourneyTaskService {
     for (const task of tasks) {
       if (!task.contact?.mobile) continue;
 
-      const result = task.resultPayload as unknown as Service2CheckResult;
-      if (!result) continue;
-
-      try {
-        const status = await this.notificationService.notifyUser({
-          email: task.contact.email,
-          mobile: task.contact.mobile,
-          task: {
-            trainNumber: task.trainNumber,
-            trainName: task.trainName,
-            fromStationCode: task.fromStationCode,
-            toStationCode: task.toStationCode,
-            journeyDate: task.journeyDate,
-          },
-          result,
-        });
-
-        if (status.whatsappSent) {
-          await this.prisma.chartTimeAvailabilityTask.update({
-            where: { id: task.id },
-            data: { whatsappNotifiedAt: new Date() },
+      if (task.status === 'completed' && task.resultPayload) {
+        const result = task.resultPayload as unknown as Service2CheckResult;
+        try {
+          const status = await this.notificationService.notifyUser({
+            email: task.contact.email,
+            mobile: task.contact.mobile,
+            task: {
+              trainNumber: task.trainNumber,
+              trainName: task.trainName,
+              fromStationCode: task.fromStationCode,
+              toStationCode: task.toStationCode,
+              journeyDate: task.journeyDate,
+            },
+            result,
           });
-          resent++;
-        } else {
+
+          if (status.whatsappSent) {
+            await this.prisma.chartTimeAvailabilityTask.update({
+              where: { id: task.id },
+              data: { whatsappNotifiedAt: new Date() },
+            });
+            resent++;
+          } else {
+            failed++;
+          }
+        } catch (err) {
+          this.logger.error(
+            `Failed to resend WhatsApp notification for task ${task.id}`,
+            err,
+          );
           failed++;
         }
-      } catch (err) {
-        this.logger.error(
-          `Failed to resend WhatsApp notification for task ${task.id}`,
-          err,
-        );
-        failed++;
+      } else {
+        try {
+          await this.runTask(task.id, true);
+          resent++;
+        } catch (err) {
+          this.logger.error(`Failed to re-run task ${task.id}`, err);
+          failed++;
+        }
       }
     }
 

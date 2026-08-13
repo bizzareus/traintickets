@@ -103,6 +103,27 @@ export default function AdminAlertsPage() {
     }
   };
 
+  const [resending, setResending] = useState(false);
+  const [resendResult, setResendResult] = useState<string | null>(null);
+
+  async function resendFailedAlerts() {
+    if (!confirm("Are you sure you want to resend notifications for all alerts that failed or were unsent in the last 24 hours?")) return;
+    try {
+      setResending(true);
+      setResendResult(null);
+      const res = await apiClient.post<{ found: number; resent: number; failed: number }>(
+        "/api/availability/admin/resend-failed-notifications?hours=24"
+      );
+      setResendResult(`Batch resend finished: ${res.data.resent} sent successfully out of ${res.data.found} found (${res.data.failed} failed).`);
+      fetchAlerts();
+    } catch (err) {
+      console.error("Failed to resend alerts", err);
+      alert("Failed to execute resend for last 24 hours.");
+    } finally {
+      setResending(false);
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -117,13 +138,38 @@ export default function AdminAlertsPage() {
             </span>
           </div>
         </div>
-        <button
-          onClick={fetchAlerts}
-          className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm transition hover:bg-slate-50"
-        >
-          Refresh
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={resendFailedAlerts}
+            disabled={resending}
+            className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:opacity-50"
+          >
+            {resending ? (
+              <>
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                Resending...
+              </>
+            ) : (
+              <span>Resend Failed Alerts (Last 24h)</span>
+            )}
+          </button>
+          <button
+            onClick={fetchAlerts}
+            className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm transition hover:bg-slate-50"
+          >
+            Refresh
+          </button>
+        </div>
       </div>
+
+      {resendResult && (
+        <div className="flex items-center justify-between rounded-2xl border border-indigo-200 bg-indigo-50 p-4 text-sm font-medium text-indigo-900">
+          <span>{resendResult}</span>
+          <button onClick={() => setResendResult(null)} className="text-xs font-semibold text-indigo-600 hover:underline">
+            Dismiss
+          </button>
+        </div>
+      )}
 
       {loading ? (
         <div className="flex h-64 items-center justify-center rounded-3xl border border-dashed border-slate-200 bg-white">
