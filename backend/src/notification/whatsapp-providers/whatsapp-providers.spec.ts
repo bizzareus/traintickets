@@ -4,8 +4,26 @@ import { WatiProvider } from './wati.provider';
 import { WhatsAppProviderFactory } from './whatsapp.provider-factory';
 import axios from 'axios';
 
-jest.mock('axios');
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+jest.mock('axios', () => {
+  const instance = {
+    post: jest.fn(),
+    get: jest.fn(),
+    interceptors: {
+      request: { use: jest.fn() },
+      response: { use: jest.fn() },
+    },
+  };
+  return {
+    __esModule: true,
+    default: {
+      ...instance,
+      create: jest.fn(() => instance),
+    },
+    ...instance,
+    create: jest.fn(() => instance),
+  };
+});
+const mockedAxios = axios as unknown as jest.Mocked<typeof axios>;
 
 function mockConfig(env: Record<string, string | undefined>): ConfigService {
   return {

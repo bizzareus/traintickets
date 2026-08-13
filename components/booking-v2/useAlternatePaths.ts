@@ -172,7 +172,19 @@ export function useAlternatePaths(
                 message?: string;
               };
               if (msg.type === "progress" && msg.event) {
-                setAltProgress((prev) => [...prev, msg.event!]);
+                const ev = msg.event;
+                setAltProgress((prev) => {
+                  const last = prev[prev.length - 1];
+                  if (
+                    last &&
+                    last.type === ev.type &&
+                    (last as any).from === (ev as any).from &&
+                    (last as any).to === (ev as any).to
+                  ) {
+                    return prev;
+                  }
+                  return [...prev, ev];
+                });
               } else if (msg.type === "result" && msg.data) {
                 console.info(
                   `[alt-paths] ${msg.cached ? "cache HIT" : "computed"} ${t.trainNumber} ${fromCode}→${toCode} ${targetDate} classes=${avlClassesForRequest?.join(",") ?? "ALL"}`,

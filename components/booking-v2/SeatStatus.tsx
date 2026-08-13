@@ -646,15 +646,13 @@ export function SeatStatus() {
     onBlockedSearchAttempt,
   } = useIstRailMaintenance(mounted);
 
-  const stationMap = useMemo(() => {
-    const map: Record<string, string> = {};
-    if (trainStations) {
-      for (const s of trainStations) {
-        map[s.stationCode] = s.stationName;
-      }
-    }
-    return map;
-  }, [trainStations]);
+  const stationMap = useMemo(
+    () =>
+      Object.fromEntries(
+        trainStations?.map((s) => [s.stationCode, s.stationName]) ?? [],
+      ),
+    [trainStations],
+  );
 
   const dateInputId = useId();
 

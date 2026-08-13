@@ -428,6 +428,13 @@ function compareBestTrainResults(
   return aDep - bDep;
 }
 
+export interface PnrStatusResponse {
+  status?: boolean;
+  message?: string;
+  data?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 @Injectable()
 export class BookingV2Service {
   private readonly logger = new Logger(BookingV2Service.name);
@@ -463,7 +470,20 @@ export class BookingV2Service {
       return moment(formatted, 'DD-MM-YYYY', true).isValid() ? formatted : null;
     }
 
-    const m = moment(raw, ['D MMM YYYY', 'DD MMM YYYY', 'MMM D, YYYY'], true);
+    const m = moment(
+      raw,
+      [
+        'D MMM YYYY',
+        'DD MMM YYYY',
+        'D MMMM YYYY',
+        'DD MMMM YYYY',
+        'MMM D, YYYY',
+        'MMM DD, YYYY',
+        'MMMM D, YYYY',
+        'MMMM DD, YYYY',
+      ],
+      true,
+    );
     return m.isValid() ? m.format('DD-MM-YYYY') : null;
   }
 
@@ -1911,13 +1931,6 @@ export class BookingV2Service {
     }
     return null;
   }
-
-export interface PnrStatusResponse {
-  status?: boolean;
-  message?: string;
-  data?: Record<string, unknown>;
-  [key: string]: unknown;
-}
 
   async getPnrStatus(pnr: string): Promise<PnrStatusResponse> {
     const key =

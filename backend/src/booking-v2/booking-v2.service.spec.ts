@@ -454,6 +454,15 @@ describe('BookingV2Service', () => {
   });
 
   describe('getPnrStatus', () => {
+    const origKey = process.env.RAPIDAPI_IRCTC_KEY;
+    beforeEach(() => {
+      process.env.RAPIDAPI_IRCTC_KEY = 'test-rapidapi-key';
+    });
+    afterEach(() => {
+      if (origKey) process.env.RAPIDAPI_IRCTC_KEY = origKey;
+      else delete process.env.RAPIDAPI_IRCTC_KEY;
+    });
+
     it('calls getPNRStatus endpoint with correct options and returns data', async () => {
       const fakeData = { status: true, data: { Pnr: '1234567890' } };
       const getSpy = jest
@@ -467,10 +476,11 @@ describe('BookingV2Service', () => {
         {
           params: { pnrNumber: '1234567890' },
           headers: {
-            'x-rapidapi-key': expect.any(String),
+            'x-rapidapi-key': 'test-rapidapi-key',
             'x-rapidapi-host': 'irctc1.p.rapidapi.com',
             'Content-Type': 'application/json',
           },
+          timeout: 10_000,
         },
       );
       expect(result).toEqual(fakeData);

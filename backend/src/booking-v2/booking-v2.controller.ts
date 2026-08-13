@@ -300,6 +300,7 @@ export class BookingV2Controller {
   async getTrainSchedule(
     @Param('trainNumber') paramNo: string | undefined,
     @Query('trainNumber') queryNo: string | undefined,
+    @Res() res: Response,
   ) {
     const num = trimStr(paramNo) || trimStr(queryNo);
     if (!num) {

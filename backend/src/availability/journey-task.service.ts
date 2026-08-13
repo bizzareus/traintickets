@@ -27,6 +27,7 @@ import {
 } from '../notification/notification.service';
 import { toIstYmd } from '../common/date.utils';
 import { isPrismaUniqueViolation } from '../common/prisma-errors';
+import { AlternativeSearchTaskService } from './alternative-search-task.service';
 import {
   BookingV2Service,
   type FindAlternatePathsResult,
