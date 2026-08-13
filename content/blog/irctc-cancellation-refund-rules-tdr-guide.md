@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Cancellation & Refund Rules 2026: 8-Hour Rule & TDR"
-description: "Complete IRCTC cancellation charges and refund rules for 2026. Learn about the 8-hour zero refund rule, 60-day ARP, RAC/WL auto-refunds, and online TDR filing."
+title: "IRCTC Cancellation & Refund Rules 2026: 4-Hour Rule & TDR"
+description: "Complete IRCTC cancellation charges and refund rules for 2026. Learn about the 4-hour zero refund rule, 60-day ARP, RAC/WL auto-refunds, and online TDR filing."
 date: "2026-06-10"
-updated: "2026-08-10"
+updated: 2026-08-13
 tags:
   - irctc cancellation
   - refund rules
@@ -16,26 +16,26 @@ tags:
 
 ## TL;DR
 
-**IRCTC cancellation rules 2026** enforce an **8-hour zero refund deadline** for confirmed tickets alongside a **60-day ARP**. Cancelling 72+ hours prior incurs flat fees (₹60 to ₹240+GST), 72h-24h deducts **25%**, and 24h-8h deducts **50%**. Fully waitlisted e-tickets **auto-cancel with full refunds** after charting (9-18 hours prior), while **confirmed Tatkal tickets** remain **100% non-refundable**.
+**IRCTC cancellation rules 2026** enforce a **4-hour zero refund deadline** for confirmed tickets alongside a **60-day ARP**. Cancelling 48+ hours prior incurs flat fees (₹60 to ₹240+GST), 48h-12h deducts **25%**, and 12h-4h deducts **50%**. Fully waitlisted e-tickets **auto-cancel with full refunds** after charting (9-18 hours prior), while **confirmed Tatkal tickets** remain **100% non-refundable**.
 
 ---
 
 ## What Are the IRCTC Cancellation Charges and Refund Rules in 2026?
 
-**IRCTC cancellation charges** depend on timing, booking status, and class. Under the 2026 rules, confirmed tickets cancelled **72+ hours** before departure incur flat fees (₹60 to ₹240+GST). Between **72h-24h**, a **25% deduction** applies, while cancellations between **24h-8h** deduct **50%**. Within **8 hours** of departure, confirmed tickets receive **zero refund**.
+**IRCTC cancellation charges** depend on timing, booking status, and class. Under the 2026 rules, confirmed tickets cancelled **72+ hours** before departure incur flat fees (₹60 to ₹240+GST). Between **48h-12h**, a **25% deduction** applies, while cancellations between **12h-4h** deduct **50%**. Within **4 hours** of departure (or after chart preparation), confirmed tickets receive **zero refund**.
 
 Cancellation penalties for confirmed Indian Railways tickets scale based on departure proximity:
 
 | Departure Cancellation Window | Penalty Rate / Deduction | Refund Eligibility |
 | :--- | :--- | :--- |
-| **72+ Hours (3+ Days)** | Flat fee per passenger (Class-based) | Full fare minus flat clerkage fee |
-| **72 Hours to 24 Hours** | **25% deduction** of total fare | 75% fare refund |
-| **24 Hours to 8 Hours** | **50% deduction** of total fare | 50% fare refund |
-| **Less than 8 Hours** | **100% penalty** (Zero refund) | No refund allowed |
+| **48+ Hours (2+ Days)** | Flat fee per passenger (Class-based) | Full fare minus flat clerkage fee |
+| **48 Hours to 12 Hours** | **25% deduction** of total fare | 75% fare refund |
+| **12 Hours to 4 Hours** | **50% deduction** of total fare | 50% fare refund |
+| **Less than 4 Hours** | **100% penalty** (Zero refund) | No refund allowed |
 
-### Flat Cancellation Charges (72+ Hours Prior to Departure)
+### Flat Cancellation Charges (48+ Hours Prior to Departure)
 
-When cancelling a confirmed ticket more than 72 hours before the scheduled train departure, IRCTC deducts the following flat administrative fees per passenger:
+When cancelling a confirmed ticket more than 48 hours before the scheduled train departure, IRCTC deducts the following flat administrative fees per passenger:
 
 - **Executive Class / AC First Class (1A / EC):** ₹240 + GST
 - **AC 2 Tier / First Class (2A / FC):** ₹200 + GST
@@ -45,14 +45,14 @@ When cancelling a confirmed ticket more than 72 hours before the scheduled train
 
 ---
 
-## How Does the 8-Hour Cancellation Rule Work in IRCTC?
+## How Does the 4-Hour Cancellation Rule Work in IRCTC?
 
-The **8-hour cancellation rule** marks the point of no refund for confirmed IRCTC tickets. If you cancel a confirmed booking within **8 hours of departure**, IRCTC forfeits **100% of the fare**, yielding a zero refund. This strict window aligns with final **chart preparation timing** (9 to 18 hours before departure) to optimize vacant berth re-allocation.
+The **4-hour cancellation rule** marks the point of no refund for confirmed IRCTC tickets. If you cancel a confirmed booking within **4 hours of departure**, IRCTC forfeits **100% of the fare**, yielding a zero refund. This strict window aligns with final **chart preparation timing** (9 to 18 hours before departure) to optimize vacant berth re-allocation.
 
 Understanding chart timing and cancellation cutoffs is vital for managing travel changes:
 
 - **Chart Preparation Window:** Indian Railways prepares primary reservation charts between **9 and 18 hours** prior to train departure (typically evening preparation for morning trains, or morning preparation for evening trains).
-- **The 8-Hour Point of No Return:** Once the clock ticks within 8 hours of train departure, online cancellation of confirmed tickets yields **₹0 refund**.
+- **The 4-Hour Point of No Return:** Once the clock ticks within 4 hours of train departure (or after chart preparation), online cancellation of confirmed tickets yields **₹0 refund**.
 - **No Manual Cancellation Post-Charting:** Online e-ticket cancellation is disabled after final chart preparation. Passengers who fail to travel must file a Ticket Deposit Receipt (TDR) if eligible under official railway exceptions.
 
 ---
@@ -166,10 +166,10 @@ Smart ways to minimize train ticket cancellation losses include:
 
 ## Common IRCTC Cancellation Questions (FAQ)
 
-**IRCTC cancellation FAQs** clarify essential rules on the **8-hour zero refund policy**, **60-day ARP window**, **waitlisted e-ticket auto-refunds**, and **online TDR filing cutoffs**. Review these quick answers to understand Tatkal cancellation penalties, counter ticket refunds, and turnaround times for your refund credit.
+**IRCTC cancellation FAQs** clarify essential rules on the **4-hour zero refund policy**, **60-day ARP window**, **waitlisted e-ticket auto-refunds**, and **online TDR filing cutoffs**. Review these quick answers to understand Tatkal cancellation penalties, counter ticket refunds, and turnaround times for your refund credit.
 
-### What is the 8-hour cancellation rule in IRCTC?
-The 8-hour cancellation rule specifies that if a confirmed train ticket is cancelled within 8 hours of scheduled departure, IRCTC forfeits 100% of the ticket fare, resulting in zero refund.
+### What is the 4-hour cancellation rule in IRCTC?
+The 4-hour cancellation rule specifies that if a confirmed train ticket is cancelled within 4 hours of scheduled departure (or after chart preparation), IRCTC forfeits 100% of the ticket fare, resulting in zero refund.
 
 ### What is the full form of WL in Indian Railways?
 WL stands for Waiting List. It indicates an unconfirmed ticket that will progress through RAC (Reservation Against Cancellation) before reaching confirmed status if earlier bookings are cancelled.
@@ -196,4 +196,4 @@ TDR refunds take between 15 and 45 working days to be credited, as your claim mu
 
 ## Bottom Line
 
-Understanding IRCTC cancellation and refund rules protects your money when plans change unexpectedly. Always keep the **8-hour cancellation threshold**, the **60-day ARP window**, and **TDR filing deadlines** in mind when managing your Indian Railways bookings. Use real-time prediction tools like **[Finding Smart Seats](/)** and **[Seat Status Coach Journey Lookup](/seat-status)** on LastBerth to book with confidence.
+Understanding IRCTC cancellation and refund rules protects your money when plans change unexpectedly. Always keep the **4-hour cancellation threshold**, the **60-day ARP window**, and **TDR filing deadlines** in mind when managing your Indian Railways bookings. Use real-time prediction tools like **[Finding Smart Seats](/)** and **[Seat Status Coach Journey Lookup](/seat-status)** on LastBerth to book with confidence.
