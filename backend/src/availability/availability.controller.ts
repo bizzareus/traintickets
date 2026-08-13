@@ -454,6 +454,7 @@ export class AvailabilityController {
     }
   }
 
+  @Get('admin/resend-failed-notifications')
   @Post('admin/resend-failed-notifications')
   async resendFailedNotifications() {
     return this.journeyTask.resendFailedWhatsAppNotifications();
