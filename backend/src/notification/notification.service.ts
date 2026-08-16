@@ -26,8 +26,11 @@ import { renderSeatsFoundEmailHtml } from './templates/notification-email.templa
 import { buildWatiTemplateParameters } from './templates/notification-whatsapp.templates';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
+import { NotificationDeduplicationService } from './notification-deduplication.service';
+
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
 const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
+
 
 function escapeHtml(text: string): string {
   return text
@@ -127,6 +130,8 @@ export class NotificationService {
     @Optional() private readonly shortLinkService?: ShortLinkService,
     @Optional()
     private readonly whatsAppProviderFactory?: WhatsAppProviderFactory,
+    @Optional()
+    private readonly deduplicationService?: NotificationDeduplicationService,
   ) {
     this.wasenderKey = this.config.get<string>('WASENDER_API_KEY');
     this.resendKey = this.config.get<string>('RESEND_API_KEY');

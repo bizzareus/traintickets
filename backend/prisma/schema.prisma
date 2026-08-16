@@ -442,3 +442,18 @@ model AlternativeSearchTask {
   @@index([status, createdAt])
   @@map("alternative_search_task")
 }
+
+/// Tracks sent notifications to deduplicate and prevent redundant/spam notifications for the same train & date.
+model SentNotificationLog {
+  id               String   @id @default(cuid())
+  recipient        String   @map("recipient")
+  channel          String   @map("channel")
+  trainNumber      String   @map("train_number")
+  journeyDate      DateTime @map("journey_date") @db.Date
+  notificationType String   @map("notification_type")
+  sentAt           DateTime @default(now()) @map("sent_at")
+
+  @@index([recipient, trainNumber, journeyDate, notificationType, sentAt])
+  @@map("sent_notification_log")
+}
+
