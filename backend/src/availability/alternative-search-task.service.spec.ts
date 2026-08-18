@@ -16,6 +16,7 @@ describe('AlternativeSearchTaskService', () => {
         findUnique: jest.fn(),
         findMany: jest.fn(),
         update: jest.fn(),
+        updateMany: jest.fn().mockResolvedValue({ count: 1 }),
       },
     } as unknown as jest.Mocked<PrismaService>;
 

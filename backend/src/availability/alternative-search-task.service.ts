@@ -93,15 +93,16 @@ export class AlternativeSearchTaskService {
    * 4. Send follow-up WhatsApp & Email alerts if matching alternatives are found
    */
   async processTask(taskId: string): Promise<void> {
+    const claim = await this.prisma.alternativeSearchTask.updateMany({
+      where: { id: taskId, status: 'pending' },
+      data: { status: 'processing' },
+    });
+    if (claim.count === 0) return;
+
     const task = await this.prisma.alternativeSearchTask.findUnique({
       where: { id: taskId },
     });
-    if (!task || task.status !== 'pending') return;
-
-    await this.prisma.alternativeSearchTask.update({
-      where: { id: taskId },
-      data: { status: 'processing' },
-    });
+    if (!task) return;
 
     try {
       const dateYmd = task.journeyDate.toISOString().slice(0, 10);

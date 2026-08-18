@@ -1041,8 +1041,8 @@ export class JourneyTaskService {
             }
           }
 
-          void this.notificationService
-            .notifyUser({
+          try {
+            const status = await this.notificationService.notifyUser({
               email: contact.email,
               mobile: contact.mobile,
               task: {
@@ -1054,22 +1054,20 @@ export class JourneyTaskService {
               },
               result,
               alternativeTrains,
-            })
-            .then((status) => {
-              const data: {
-                emailNotifiedAt?: Date;
-                whatsappNotifiedAt?: Date;
-              } = {};
-              if (status.emailSent) data.emailNotifiedAt = new Date();
-              if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
-              if (Object.keys(data).length > 0) {
-                return this.prisma.chartTimeAvailabilityTask.update({
-                  where: { id: taskId },
-                  data,
-                });
-              }
-            })
-            .catch((e) => {
+            });
+            const data: {
+              emailNotifiedAt?: Date;
+              whatsappNotifiedAt?: Date;
+            } = {};
+            if (status.emailSent) data.emailNotifiedAt = new Date();
+            if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
+            if (Object.keys(data).length > 0) {
+              await this.prisma.chartTimeAvailabilityTask.update({
+                where: { id: taskId },
+                data,
+              });
+            }
+          } catch (e) {
               console.error('Notification failed', e);
               const errLogs =
                 e instanceof Error ? e.stack || e.message : String(e);
@@ -1087,7 +1085,7 @@ export class JourneyTaskService {
                 logs: errLogs,
                 payload: { taskId, journeyRequestId: task.journeyRequestId },
               });
-            });
+          }
         }
       }
     } catch (err) {
@@ -1444,10 +1442,12 @@ export class JourneyTaskService {
     failed: number;
   }> {
     const sinceDate = new Date(Date.now() - hours * 60 * 60 * 1000);
+    const cooldownBefore = new Date(Date.now() - 5 * 60 * 1000);
     const tasks = await this.prisma.chartTimeAvailabilityTask.findMany({
       where: {
         createdAt: { gte: sinceDate },
         status: 'completed',
+        completedAt: { lte: cooldownBefore },
         OR: [
           {
             contact: { mobile: { not: null } },

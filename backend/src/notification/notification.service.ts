@@ -1091,9 +1091,19 @@ export class NotificationService {
       date,
     } = params;
 
+    const hasAlternatives = Boolean(
+      alternativeTrains && alternativeTrains.length > 0,
+    );
+    const title = hasAlternatives
+      ? 'Alternate Trains Available 🚆'
+      : 'No Tickets Found 😔';
+    const mainNote = hasAlternatives
+      ? `We didn't find any tickets in <strong>${escapeHtml(trainLabel)}</strong> for <strong>${escapeHtml(routeDisplay)}</strong> on <strong>${escapeHtml(journeyDateReadable)}</strong>.`
+      : `We tried our best to find tickets for your journey:`;
+
     let alternativesHtml = '';
-    if (alternativeTrains && alternativeTrains.length > 0) {
-      const trainCards = alternativeTrains
+    if (hasAlternatives) {
+      const trainCards = (alternativeTrains ?? [])
         .slice(0, 3)
         .map((alt) => {
           const train = alt.train;
@@ -1101,7 +1111,6 @@ export class NotificationService {
             .filter(Boolean)
             .join(' - ');
 
-          // Find best segment from alternatePath
           const confirmedLegs = alt.alternatePath.legs.filter(
             (l) => l.segmentKind === 'confirmed',
           );
@@ -1118,9 +1127,26 @@ export class NotificationService {
             bestLegStr = `<p style="margin:4px 0 0 0;font-size:13px;font-weight:600;color:#059669;">${statusStr}${classStr}</p>`;
           }
 
+          let timingsStr = '';
+          if (train.departureTime || train.arrivalTime || train.duration) {
+            const depStr = train.departureTime
+              ? `Dep: ${train.departureTime}`
+              : '';
+            const arrStr = train.arrivalTime
+              ? `Arr: ${train.arrivalTime}`
+              : '';
+            const durMinutes = train.duration;
+            const durStr = durMinutes
+              ? `Duration: ${Math.floor(durMinutes / 60)}h ${durMinutes % 60}m`
+              : '';
+            const parts = [depStr, arrStr, durStr].filter(Boolean).join(' | ');
+            timingsStr = `<p style="margin:4px 0 0 0;font-size:13px;color:#475569;">${escapeHtml(parts)}</p>`;
+          }
+
           return `
         <div style="padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px;">
           <p style="margin:0;font-weight:600;font-size:15px;color:#1e293b;">${escapeHtml(trainNameStr)}</p>
+          ${timingsStr}
           ${bestLegStr}
         </div>`;
         })
@@ -1128,10 +1154,20 @@ export class NotificationService {
 
       alternativesHtml = `
       <div style="margin-top:24px;padding-top:16px;border-top:1px solid #e2e8f0;">
-        <h3 style="margin:0 0 12px 0;font-size:16px;color:#0f172a;">Alternative Trains Available:</h3>
+        <h3 style="margin:0 0 12px 0;font-size:16px;color:#059669;font-weight:700;">FOUND TICKETS IN ALTERNATE TRAINS - BOOK NOW</h3>
         ${trainCards}
       </div>`;
     }
+
+    const primaryDetailsBlock = hasAlternatives
+      ? ''
+      : `
+    <div style="background:#f8fafc;padding:12px;border-radius:8px;margin-bottom:16px;">
+      <p style="margin:0;font-weight:600;">${escapeHtml(trainLabel)}</p>
+      <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(routeDisplay)}</p>
+      <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(journeyDateReadable)}</p>
+    </div>
+    <p style="margin:0 0 16px 0;color:#b91c1c;">${escapeHtml(openAiSummary || "Unfortunately, we couldn't find any available tickets at this time.")}</p>`;
 
     return `
 <!DOCTYPE html>
@@ -1139,14 +1175,9 @@ export class NotificationService {
 <head><meta charset="utf-8" /></head>
 <body style="font-family:system-ui,sans-serif;line-height:1.5;color:#0f172a;background:#f1f5f9;margin:0;padding:32px 16px;">
   <div style="max-width:560px;margin:0 auto;background:#fff;border-radius:16px;padding:24px;border:1px solid #e2e8f0;box-shadow:0 4px 6px -1px rgba(0,0,0,0.08);">
-    <h2 style="margin:0 0 16px 0;font-size:20px;color:#0f172a;">No Tickets Found 😔</h2>
-    <p style="margin:0 0 12px 0;">We tried our best to find tickets for your journey:</p>
-    <div style="background:#f8fafc;padding:12px;border-radius:8px;margin-bottom:16px;">
-      <p style="margin:0;font-weight:600;">${escapeHtml(trainLabel)}</p>
-      <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(routeDisplay)}</p>
-      <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(journeyDateReadable)}</p>
-    </div>
-    <p style="margin:0 0 16px 0;color:#b91c1c;">${escapeHtml(openAiSummary || "Unfortunately, we couldn't find any available tickets at this time.")}</p>
+    <h2 style="margin:0 0 16px 0;font-size:20px;color:#0f172a;">${title}</h2>
+    <p style="margin:0 0 12px 0;">${mainNote}</p>
+    ${primaryDetailsBlock}
     ${alternativesHtml}
     <p style="margin:16px 0 16px 0;">You can try checking on LastBerth for other trains:</p>
     <a href="https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Search on LastBerth</a>
@@ -1182,12 +1213,14 @@ export class NotificationService {
       date,
     } = params;
 
+    const hasAlternatives = Boolean(
+      alternativeTrains && alternativeTrains.length > 0,
+    );
     let alternativesText = '';
-    if (alternativeTrains && alternativeTrains.length > 0) {
-      const trainLines = alternativeTrains
+    if (hasAlternatives) {
+      const trainLines = (alternativeTrains ?? [])
         .slice(0, 3)
         .map((alt, i) => {
-
           const train = alt.train;
           const trainNameStr = [train.trainNumber, train.trainName]
             .filter(Boolean)
@@ -1208,11 +1241,31 @@ export class NotificationService {
               'Available';
             bestLegStr = `\n  ↳ ${statusStr}${classStr}`;
           }
-          return `${i + 1}. ${trainNameStr}${bestLegStr}`;
+
+          const depStr = train.departureTime ? `Dep: ${train.departureTime}` : '';
+          const arrStr = train.arrivalTime ? `Arr: ${train.arrivalTime}` : '';
+          const durMinutes = train.duration;
+          const durStr = durMinutes
+            ? `Duration: ${Math.floor(durMinutes / 60)}h ${durMinutes % 60}m`
+            : '';
+          const timingLine = [depStr, arrStr, durStr]
+            .filter(Boolean)
+            .join(' | ');
+
+          return `${i + 1}. *${trainNameStr}*\n   ${timingLine}${bestLegStr}`;
         })
         .join('\n\n');
 
-      alternativesText = `\n\nAlternative Trains Available:\n${trainLines}`;
+      alternativesText = `\n\n*FOUND TICKETS IN ALTERNATE TRAINS - BOOK NOW* 🔥\n\n${trainLines}`;
+    }
+
+    if (hasAlternatives) {
+      return `*LastBerth Chart Alert* 🔔
+
+We didn't find any tickets in *${trainLabel}* for *${routeDisplay}* on *${journeyDateReadable}*.${alternativesText}
+
+You can try checking on LastBerth for other trains:
+https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`;
     }
 
     return `*LastBerth Chart Alert* 🔔
@@ -1224,7 +1277,7 @@ Train: ${trainLabel}
 Route: ${routeDisplay}
 Date: ${journeyDateReadable}
 
-${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}${alternativesText}
+${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}
 
 You can try checking on LastBerth for other trains:
 https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`;
@@ -1500,9 +1553,14 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
       }
 
       if (email?.trim()) {
+        const hasAltTrains = Boolean(
+          !hasTickets && alternativeTrains && alternativeTrains.length > 0,
+        );
         const subject = hasTickets
           ? `Seats Available - Train ${task.trainNumber} on ${journeyDateReadable}`
-          : `No Tickets Found - Train ${task.trainNumber} on ${journeyDateReadable}`;
+          : hasAltTrains
+            ? `Alternate Trains Available - Train ${task.trainNumber} (${task.fromStationCode} → ${task.toStationCode}) on ${journeyDateReadable}`
+            : `No Tickets Found - Train ${task.trainNumber} on ${journeyDateReadable}`;
         const html = hasTickets
           ? await this.buildSeatsFoundEmailHtml({
               trainLabel,
