@@ -996,6 +996,38 @@ export class JourneyTaskService {
           let alternativeTrains: BestTrainCandidateResult[] | undefined;
           const hasTickets = hasBookablePlanForNotification(result);
 
+          const journeyDateDate =
+            task.journeyDate instanceof Date
+              ? task.journeyDate
+              : new Date(String(task.journeyDate).slice(0, 10));
+
+          // Check if user has already received an alert for this train and journey date
+          const existingNotification =
+            await this.prisma.sentNotificationLog.findFirst({
+              where: {
+                trainNumber: task.trainNumber,
+                journeyDate: journeyDateDate,
+                recipient: {
+                  in: [
+                    ...(contact.email
+                      ? [contact.email.toLowerCase().trim()]
+                      : []),
+                    ...(contact.mobile ? [contact.mobile.trim()] : []),
+                  ],
+                },
+              },
+            });
+
+          const isFollowUpLeg = Boolean(existingNotification);
+
+          // If follow-up check and no tickets found, skip alternative search & notification dispatch
+          if (isFollowUpLeg && !hasTickets) {
+            console.log(
+              `[journey] Skipping follow-up notification for task=${taskId} (no tickets unlocked)`,
+            );
+            return;
+          }
+
           if (!hasTickets) {
             if (this.alternativeSearchTaskService) {
               try {
@@ -1054,6 +1086,7 @@ export class JourneyTaskService {
               },
               result,
               alternativeTrains,
+              isFollowUpLeg,
             });
             const data: {
               emailNotifiedAt?: Date;
@@ -1706,13 +1739,28 @@ export class JourneyTaskService {
         // fallback to bStation
       }
 
+      // Avoid self-recursion if task already covers this exact sub-segment
+      if (
+        task.fromStationCode.trim().toUpperCase() === targetStation &&
+        task.toStationCode.trim().toUpperCase() === eStation.trim().toUpperCase()
+      ) {
+        continue;
+      }
+
       const existingTask =
         await this.prisma.chartTimeAvailabilityTask.findFirst({
           where: {
             trainNumber: task.trainNumber,
             stationCode: targetStation,
+            fromStationCode: targetStation,
+            toStationCode: eStation,
             journeyDate: new Date(journeyDateStr),
-            journeyRequestId,
+            contact: {
+              OR: [
+                ...(email ? [{ email }] : []),
+                ...(mobile ? [{ mobile }] : []),
+              ],
+            },
           },
         });
 

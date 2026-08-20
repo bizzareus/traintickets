@@ -249,4 +249,100 @@ describe('NotificationService', () => {
     );
     expect(calls.some(([arg]) => arg.alertType.includes('Email'))).toBe(true);
   });
+
+  it('suppresses notification when isFollowUpLeg is true and no tickets are found', async () => {
+    const svc = new NotificationService(
+      mockConfig({ wasenderKey: 'ws_test' }),
+      mockStationCache(),
+    );
+    const sendWhatsApp = jest.spyOn(svc, 'sendWhatsApp');
+    const sendEmail = jest.spyOn(svc, 'sendEmail');
+
+    const noTicketsResult: Service2CheckResult = {
+      status: 'success',
+      vacantBerth: { vbd: [], error: null },
+      openAiBookingPlan: [],
+      trainSchedule: {
+        trainNumber: '22603',
+        trainName: 'Kgp Vm Sf Exp',
+        stationFrom: 'BLS',
+        stationTo: 'BBS',
+        stationList: [],
+      },
+    };
+
+    const out = await svc.notifyUser({
+      email: 'user@example.com',
+      mobile: '919876543210',
+      task: {
+        trainNumber: '22603',
+        trainName: 'Kgp Vm Sf Exp',
+        fromStationCode: 'BLS',
+        toStationCode: 'BBS',
+        journeyDate: new Date('2026-08-20T00:00:00.000Z'),
+      },
+      result: noTicketsResult,
+      isFollowUpLeg: true,
+    });
+
+    expect(out).toEqual({ emailSent: false, whatsappSent: false });
+    expect(sendWhatsApp).not.toHaveBeenCalled();
+    expect(sendEmail).not.toHaveBeenCalled();
+  });
+
+  it('formats notification as concise delta update when isFollowUpLeg is true and tickets are found', async () => {
+    const svc = new NotificationService(
+      mockConfig({ wasenderKey: 'ws_test' }),
+      mockStationCache(),
+    );
+    const sendWhatsApp = jest
+      .spyOn(svc, 'sendWhatsApp')
+      .mockResolvedValue(true);
+
+    const followUpResult: Service2CheckResult = {
+      status: 'success',
+      vacantBerth: { vbd: [], error: null },
+      openAiBookingPlan: [
+        {
+          instruction: 'BAM - VZM - SL',
+          approx_price: 205,
+          availability: 'CURR_AVL 12',
+        },
+      ],
+      trainSchedule: {
+        trainNumber: '22603',
+        trainName: 'Kgp Vm Sf Exp',
+        stationFrom: 'BAM',
+        stationTo: 'RJY',
+        stationList: [
+          { stationCode: 'BAM', stationName: 'Brahmapur' },
+          { stationCode: 'VZM', stationName: 'Vizianagram Jn' },
+          { stationCode: 'RJY', stationName: 'Rajahmundry' },
+        ],
+      },
+    };
+
+    await svc.notifyUser({
+      mobile: '919876543210',
+      task: {
+        trainNumber: '22603',
+        trainName: 'Kgp Vm Sf Exp',
+        fromStationCode: 'BAM',
+        toStationCode: 'RJY',
+        journeyDate: new Date('2026-08-20T00:00:00.000Z'),
+      },
+      result: followUpResult,
+      isFollowUpLeg: true,
+    });
+
+    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    const [, text] = sendWhatsApp.mock.calls[0];
+    expect(text).toContain('*LastBerth Leg Update* 🔔');
+    expect(text).toContain('New tickets found for your journey!');
+    expect(text).toContain('Leg: BAM > RJY');
+    expect(text).toContain('Ticket Found [SL] | CURR_AVL 12');
+    expect(text).toContain('BAM - Brahmapur → VZM - Vizianagram Jn');
+    expect(text).toContain('approx ₹205');
+  });
 });
+

@@ -25,6 +25,10 @@ describe('JourneyTaskService', () => {
     journeyMonitoringRequest: {
       findUnique: jest.fn(),
     },
+    sentNotificationLog: {
+      findFirst: jest.fn().mockResolvedValue(null),
+      create: jest.fn(),
+    },
   };
 
   const mockService2 = {
