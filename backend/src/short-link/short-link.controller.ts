@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { ShortLinkService } from './short-link.service';
 
-@Controller('short-link')
+@Controller('api/short-link')
 export class ShortLinkController {
   constructor(private readonly shortLinkService: ShortLinkService) {}
 
