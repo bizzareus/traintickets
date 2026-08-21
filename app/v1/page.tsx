@@ -9,7 +9,7 @@ import {
   Fragment,
 } from "react";
 import { apiClient, irctcScheduleClient } from "@/lib/api";
-import { trackAnalyticsEvent } from "@/lib/analytics";
+import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics";
 import { fetchService2CheckStream } from "@/lib/service2CheckStream";
 import {
   IstRailMaintenanceBanner,
@@ -1039,6 +1039,17 @@ export default function HomePage() {
       setMonitoringStartedPopupOpen(true);
       setChartPendingModalDismissed(true);
       setMonitoringLeg(null);
+      trackAlertRequested({
+        success: true,
+        source: "v1_page",
+        trainNumber: trainNumber.trim(),
+        fromCode: fromC,
+        toCode: toC,
+        journeyDate: journeyDate.trim(),
+        classCode: "3A",
+        hasEmail: Boolean(email),
+        hasMobile: Boolean(mobile),
+      });
       trackAnalyticsEvent({
         name: "monitor_journey_submitted",
         properties: { success: true, queued: true },
@@ -1060,6 +1071,18 @@ export default function HomePage() {
       const runDayPayload = extractJourneyTrainRunDayError(err);
       if (runDayPayload) {
         setJourneyRunDayApiError(runDayPayload);
+        trackAlertRequested({
+          success: false,
+          source: "v1_page",
+          trainNumber: trainNumber.trim(),
+          fromCode: fromC,
+          toCode: toC,
+          journeyDate: journeyDate.trim(),
+          classCode: "3A",
+          hasEmail: Boolean(email),
+          hasMobile: Boolean(mobile),
+          error: "train_does_not_run_on_date",
+        });
         trackAnalyticsEvent({
           name: "monitor_journey_submitted",
           properties: {
@@ -1082,6 +1105,18 @@ export default function HomePage() {
             : null) ??
           "Request failed.";
         setMonitorError(msg);
+        trackAlertRequested({
+          success: false,
+          source: "v1_page",
+          trainNumber: trainNumber.trim(),
+          fromCode: fromC,
+          toCode: toC,
+          journeyDate: journeyDate.trim(),
+          classCode: "3A",
+          hasEmail: Boolean(email),
+          hasMobile: Boolean(mobile),
+          error: msg,
+        });
         trackAnalyticsEvent({
           name: "monitor_journey_submitted",
           properties: {

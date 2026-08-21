@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle2, AlertCircle, Loader2, Train, Calendar, ArrowRight, Phone, Mail } from "lucide-react";
+import { trackAlertRequested } from "@/lib/analytics/track";
 
 export function SubscribeClient() {
   const searchParams = useSearchParams();
@@ -57,11 +58,37 @@ export function SubscribeClient() {
 
         if (isMounted) {
           setStatus("success");
+          trackAlertRequested({
+            success: true,
+            source: "shortlink_subscribe",
+            trainNumber: trainNo,
+            trainName: trainName || undefined,
+            fromCode,
+            toCode,
+            journeyDate: date,
+            classCode: travelClass,
+            hasEmail: Boolean(email),
+            hasMobile: Boolean(mobile),
+          });
         }
       } catch (err: unknown) {
+        const errStr = err instanceof Error ? err.message : "An error occurred while creating your alert.";
         if (isMounted) {
           setStatus("error");
-          setErrorMessage(err instanceof Error ? err.message : "An error occurred while creating your alert.");
+          setErrorMessage(errStr);
+          trackAlertRequested({
+            success: false,
+            source: "shortlink_subscribe",
+            trainNumber: trainNo,
+            trainName: trainName || undefined,
+            fromCode,
+            toCode,
+            journeyDate: date,
+            classCode: travelClass,
+            hasEmail: Boolean(email),
+            hasMobile: Boolean(mobile),
+            error: errStr,
+          });
         }
       }
     }

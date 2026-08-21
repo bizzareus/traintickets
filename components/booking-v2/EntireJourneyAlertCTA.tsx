@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { apiClient } from "@/lib/api";
+import { trackAlertRequested } from "@/lib/analytics/track";
 
 interface Props {
   trainNumber: string;
@@ -58,12 +59,38 @@ export function EntireJourneyAlertCTA({
         trainStartDate: trainStartDate,
       });
       setSuccess(true);
+      trackAlertRequested({
+        success: true,
+        source: "search_entire_journey",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromCode: defaultOrigin,
+        toCode: defaultDestination,
+        journeyDate: journeyDate.trim(),
+        classCode: classCode.trim().toUpperCase(),
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+      });
     } catch (err: any) {
       const msg =
         err?.response?.data?.errors?.[0]?.message ||
         err?.response?.data?.message ||
         "Failed to set up alert. Please check your inputs.";
-      setError(typeof msg === "string" ? msg : JSON.stringify(msg));
+      const errMsg = typeof msg === "string" ? msg : JSON.stringify(msg);
+      setError(errMsg);
+      trackAlertRequested({
+        success: false,
+        source: "search_entire_journey",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromCode: defaultOrigin,
+        toCode: defaultDestination,
+        journeyDate: journeyDate.trim(),
+        classCode: classCode.trim().toUpperCase(),
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+        error: errMsg,
+      });
     } finally {
       setLoading(false);
     }

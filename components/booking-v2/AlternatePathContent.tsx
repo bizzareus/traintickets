@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import moment from "moment";
 import { apiClient } from "@/lib/api";
-import { trackAnalyticsEvent } from "@/lib/analytics/track";
+import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics/track";
 import { cn } from "@/lib/utils";
 import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDisplay";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
@@ -382,6 +382,18 @@ function CompactLegChartCta({
       markLegAlertSet(trainNumber, legFrom, legTo, journeyDate);
       setDone(true);
       setAlreadySet(true);
+      trackAlertRequested({
+        success: true,
+        source: "gap_leg_modal",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromCode: legFrom.trim().toUpperCase(),
+        toCode: legTo.trim().toUpperCase(),
+        journeyDate: journeyDate.trim(),
+        classCode: classCode.trim().toUpperCase(),
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+      });
       try {
         window.localStorage.setItem(
           MONITOR_CONTACT_STORAGE_KEY,
@@ -394,6 +406,19 @@ function CompactLegChartCta({
       const msg =
         err?.response?.data?.message || err?.message || "Failed to set alert.";
       setError(msg);
+      trackAlertRequested({
+        success: false,
+        source: "gap_leg_modal",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromCode: legFrom.trim().toUpperCase(),
+        toCode: legTo.trim().toUpperCase(),
+        journeyDate: journeyDate.trim(),
+        classCode: classCode.trim().toUpperCase(),
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+        error: typeof msg === "string" ? msg : JSON.stringify(msg),
+      });
     } finally {
       setSubmitting(false);
     }

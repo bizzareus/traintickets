@@ -102,6 +102,30 @@ export type AnalyticsEvent =
       properties: { request_count: number };
     }
   | {
+      name: "alert_requested";
+      properties: {
+        success: boolean;
+        source:
+          | "shortlink_subscribe"
+          | "chart_times_cta"
+          | "chart_times_row"
+          | "gap_leg_modal"
+          | "search_entire_journey"
+          | "live_scraper_cockpit"
+          | "v1_page";
+        source_page?: string;
+        train_number: string;
+        train_name?: string;
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        class_code?: string;
+        has_email: boolean;
+        has_mobile: boolean;
+        error?: string;
+      };
+    }
+  | {
       name: "monitoring_alert_requested";
       properties: { success: boolean; train_id_present: boolean };
     }

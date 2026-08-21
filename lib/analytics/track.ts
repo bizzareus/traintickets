@@ -28,6 +28,51 @@ export function trackAnalyticsEvent(event: AnalyticsEvent): void {
   }
 }
 
+/**
+ * Convenience helper to track an alert requested event to PostHog asynchronously.
+ */
+export function trackAlertRequested(params: {
+  success: boolean;
+  source:
+    | "shortlink_subscribe"
+    | "chart_times_cta"
+    | "chart_times_row"
+    | "gap_leg_modal"
+    | "search_entire_journey"
+    | "live_scraper_cockpit"
+    | "v1_page";
+  trainNumber: string;
+  trainName?: string;
+  fromCode: string;
+  toCode: string;
+  journeyDate: string;
+  classCode?: string;
+  hasEmail: boolean;
+  hasMobile: boolean;
+  sourcePage?: string;
+  error?: string;
+}): void {
+  trackAnalyticsEvent({
+    name: "alert_requested",
+    properties: {
+      success: params.success,
+      source: params.source,
+      source_page:
+        params.sourcePage ||
+        (typeof window !== "undefined" ? window.location.pathname : undefined),
+      train_number: params.trainNumber,
+      train_name: params.trainName,
+      from_code: params.fromCode,
+      to_code: params.toCode,
+      journey_date: params.journeyDate,
+      class_code: params.classCode,
+      has_email: params.hasEmail,
+      has_mobile: params.hasMobile,
+      error: params.error,
+    },
+  });
+}
+
 /** Context attached to a captured backend/API error. */
 export type ApiExceptionContext = {
   method?: string;

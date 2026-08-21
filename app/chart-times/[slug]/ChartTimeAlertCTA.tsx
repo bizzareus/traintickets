@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { BellRing } from "lucide-react";
 import { apiClient } from "@/lib/api";
-import { trackAnalyticsEvent } from "@/lib/analytics/track";
+import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics/track";
 
 const CLASSES = ["SL", "3A", "2A", "1A", "CC", "EC", "2S"] as const;
 
@@ -90,6 +90,18 @@ export default function ChartTimeAlertCTA({
         mobile: mob || undefined,
       });
       setSuccess(true);
+      trackAlertRequested({
+        success: true,
+        source: "chart_times_cta",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromCode: stationCode,
+        toCode: destinationCode,
+        journeyDate: journeyDate.trim().slice(0, 10),
+        classCode: classCode.trim().toUpperCase(),
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+      });
       trackAnalyticsEvent({
         name: "chart_alert_submitted",
         properties: {
@@ -111,6 +123,19 @@ export default function ChartTimeAlertCTA({
         "Couldn't set up the alert. Please check your inputs and try again.";
       const errMsg = typeof msg === "string" ? msg : JSON.stringify(msg);
       setError(errMsg);
+      trackAlertRequested({
+        success: false,
+        source: "chart_times_cta",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromCode: stationCode,
+        toCode: destinationCode,
+        journeyDate: journeyDate.trim().slice(0, 10),
+        classCode: classCode.trim().toUpperCase(),
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+        error: errMsg,
+      });
       trackAnalyticsEvent({
         name: "chart_alert_submitted",
         properties: {

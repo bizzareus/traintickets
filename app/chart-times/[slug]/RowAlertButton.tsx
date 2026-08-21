@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { BellRing, X } from "lucide-react";
 import { apiClient } from "@/lib/api";
-import { trackAnalyticsEvent } from "@/lib/analytics/track";
+import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics/track";
 
 function ymdPlusDays(days: number): string {
   const d = new Date();
@@ -83,6 +83,18 @@ export default function RowAlertButton({
         mobile: mob || undefined,
       });
       setSuccess(true);
+      trackAlertRequested({
+        success: true,
+        source: "chart_times_row",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromCode: stationCode,
+        toCode: destinationCode,
+        journeyDate: journeyDate.trim().slice(0, 10),
+        classCode: "SL",
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+      });
       trackAnalyticsEvent({
         name: "chart_alert_submitted",
         properties: {
@@ -104,6 +116,19 @@ export default function RowAlertButton({
         "Couldn't set up the alert. Please try again.";
       const errMsg = typeof msg === "string" ? msg : JSON.stringify(msg);
       setError(errMsg);
+      trackAlertRequested({
+        success: false,
+        source: "chart_times_row",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromCode: stationCode,
+        toCode: destinationCode,
+        journeyDate: journeyDate.trim().slice(0, 10),
+        classCode: "SL",
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+        error: errMsg,
+      });
       trackAnalyticsEvent({
         name: "chart_alert_submitted",
         properties: {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { apiClient } from "@/lib/api";
+import { trackAlertRequested } from "@/lib/analytics/track";
 
 interface LiveScraperCockpitProps {
   trainNumber: string;
@@ -185,7 +186,19 @@ export function LiveScraperCockpit({
       });
 
       setSuccessMsg("Guardian Scraper Monitor successfully established! We will alert you immediately upon berth release.");
-      
+      trackAlertRequested({
+        success: true,
+        source: "live_scraper_cockpit",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName || undefined,
+        fromCode: fromStationCode.trim().toUpperCase(),
+        toCode: toStationCode.trim().toUpperCase(),
+        journeyDate: journeyDate.trim(),
+        classCode: selectedClass.trim().toUpperCase(),
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+      });
+
       // Store locally
       try {
         window.localStorage.setItem(
@@ -197,7 +210,21 @@ export function LiveScraperCockpit({
       }
     } catch (err: unknown) {
       const e = err as { response?: { data?: { message?: string } }; message?: string };
-      setErrorMsg(e.response?.data?.message || e.message || "Failed to set up monitor.");
+      const errMsg = e.response?.data?.message || e.message || "Failed to set up monitor.";
+      setErrorMsg(errMsg);
+      trackAlertRequested({
+        success: false,
+        source: "live_scraper_cockpit",
+        trainNumber: trainNumber.trim(),
+        trainName: trainName || undefined,
+        fromCode: fromStationCode.trim().toUpperCase(),
+        toCode: toStationCode.trim().toUpperCase(),
+        journeyDate: journeyDate.trim(),
+        classCode: selectedClass.trim().toUpperCase(),
+        hasEmail: Boolean(em),
+        hasMobile: Boolean(mob),
+        error: errMsg,
+      });
     } finally {
       setSubmitting(false);
     }
