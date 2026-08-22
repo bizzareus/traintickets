@@ -19,6 +19,7 @@ These candidates are queued for:
 ## 📋 Queued Candidates for Generator Review
 
 | Date Added | Target Keyword / Query | Impressions | Growth / Pos | Suggested Article Title | Status |
+| 2026-08-22 | `diwali train ticket booking 2026` | High (Seasonal Surge) | 60-Day ARP | *Diwali & Chhath 2026 Train Booking: Dates & 60-Day Rules* | ✅ Published |
 |---|---|---|---|---|---|
 | 2026-08-03 | `current reservation timing irctc` | 211 | Pos 9.6 (2.37% CTR) | *Current Reservation IRCTC: Booking Timings & Fares (2026)* | ✅ Published |
 | 2026-08-03 | `general quota meaning in irctc` | 240 | Pos 8.2 | *General Quota (GN) in IRCTC: Meaning, Rules & Seat Limits* | ✅ Published |
