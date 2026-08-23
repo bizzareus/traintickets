@@ -12,11 +12,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "AUB",
@@ -25,11 +25,11 @@
       "departureTime": "22:47",
       "day": 1,
       "distance": "84.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KNE",
@@ -38,11 +38,11 @@
       "departureTime": "23:12",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:57",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNE"
     },
     {
       "stationCode": "BOE",
@@ -344,7 +344,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Njp Mas Express (22612) from NJP to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 26 stations.",
-  "generatedAt": "2026-08-06T02:44:59.095Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Njp Mas Express (22612) is prepared at New Jalpaiguri (NJP) around 12:08 PM, with a second (vacancy) chart around 9:50 PM. 3 of 26 stations on the NJP to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:36:14.770Z",
+  "knownChartCount": 3
 }

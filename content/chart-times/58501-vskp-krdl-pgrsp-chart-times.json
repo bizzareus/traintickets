@@ -532,11 +532,11 @@
       "departureTime": "18:07",
       "day": 1,
       "distance": "388.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "KWGN",
@@ -545,11 +545,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "400.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "DBF",
@@ -558,11 +558,11 @@
       "departureTime": "18:38",
       "day": 1,
       "distance": "409.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "GIZ",
@@ -571,11 +571,11 @@
       "departureTime": "18:53",
       "day": 1,
       "distance": "420.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "DWZ",
@@ -584,11 +584,11 @@
       "departureTime": "19:04",
       "day": 1,
       "distance": "427.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "KMLR",
@@ -597,11 +597,11 @@
       "departureTime": "19:24",
       "day": 1,
       "distance": "440.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BHNS",
@@ -610,11 +610,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "452.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BCHL",
@@ -623,11 +623,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "462.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "KRDL",
@@ -636,14 +636,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "471.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:41",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "The first reservation chart for Vskp Krdl Pgrsp (58501) is prepared at Visakhapatnam (VSKP) around 7:41 PM, with a second (vacancy) chart around 4:15 PM. 40 of 49 stations on the VSKP to KRDL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T10:49:48.648Z",
-  "knownChartCount": 40
+  "summary": "The first reservation chart for Vskp Krdl Pgrsp (58501) is prepared at Visakhapatnam (VSKP) around 7:41 PM, with a second (vacancy) chart around 4:15 PM. 49 of 49 stations on the VSKP to KRDL route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:54:43.481Z",
+  "knownChartCount": 49
 }

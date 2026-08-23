@@ -12,11 +12,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SDAH"
     },
     {
       "stationCode": "DGR",
@@ -25,11 +25,11 @@
       "departureTime": "21:21",
       "day": 1,
       "distance": "165.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SDAH"
     },
     {
       "stationCode": "ASN",
@@ -38,11 +38,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SDAH"
     },
     {
       "stationCode": "MDP",
@@ -51,11 +51,11 @@
       "departureTime": "22:37",
       "day": 1,
       "distance": "288.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SDAH"
     },
     {
       "stationCode": "JSME",
@@ -64,11 +64,11 @@
       "departureTime": "22:58",
       "day": 1,
       "distance": "317.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SDAH"
     },
     {
       "stationCode": "PNBE",
@@ -110,7 +110,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Amrit Bharat Exp (22587) from SDAH to BNRS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-08-06T02:37:35.026Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Amrit Bharat Exp (22587) is prepared at Sealdah (SDAH) around 9:28 AM, with a second (vacancy) chart around 10:43 PM. 5 of 8 stations on the SDAH to BNRS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:35:48.216Z",
+  "knownChartCount": 5
 }

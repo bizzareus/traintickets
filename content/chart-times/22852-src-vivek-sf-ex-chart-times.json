@@ -12,11 +12,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "KGQ",
@@ -25,11 +25,11 @@
       "departureTime": "23:42",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "KZE",
@@ -526,7 +526,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Src Vivek Sf Ex (22852) from MAQ to SRC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 40 stations.",
-  "generatedAt": "2026-08-06T03:04:08.669Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Src Vivek Sf Ex (22852) is prepared at Mangaluru Cntl (MAQ) around 2:12 PM, with a second (vacancy) chart around 10:45 PM. 2 of 40 stations on the MAQ to SRC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:42:02.137Z",
+  "knownChartCount": 2
 }

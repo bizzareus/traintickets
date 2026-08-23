@@ -12,11 +12,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "ROU",
@@ -25,11 +25,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "GP",
@@ -38,11 +38,11 @@
       "departureTime": "20:42",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "JSG",
@@ -51,11 +51,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "SBP",
@@ -64,11 +64,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "317.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "BRGA",
@@ -370,7 +370,7 @@
       "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "The first reservation chart for Hte Smvb Exp (18637) is prepared at Jolarpettai (JTJ) around 6:51 PM, with a second (vacancy) chart around 8:40 AM. 3 of 28 stations on the HTE to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:55:54.676Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Hte Smvb Exp (18637) is prepared at Hatia (HTE) around 8:47 AM, with a second (vacancy) chart around 5:10 PM. 8 of 28 stations on the HTE to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:06:45.210Z",
+  "knownChartCount": 8
 }

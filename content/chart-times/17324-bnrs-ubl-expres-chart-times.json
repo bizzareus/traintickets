@@ -12,11 +12,11 @@
       "departureTime": "20:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ANG"
     },
     {
       "stationCode": "BSB",
@@ -331,7 +331,7 @@
       "chartRemoteStation": "ANG"
     }
   ],
-  "summary": "The first reservation chart for Bnrs Ubl Expres (17324) is prepared at Solapur Jn (SUR) around 12:20 PM, with a second (vacancy) chart around 8:05 PM. 7 of 25 stations on the BNRS to UBL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:22:48.242Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Bnrs Ubl Expres (17324) is prepared at BANARAS (BNRS) around 12:20 PM, with a second (vacancy) chart around 8:05 PM. 8 of 25 stations on the BNRS to UBL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:57:17.567Z",
+  "knownChartCount": 8
 }

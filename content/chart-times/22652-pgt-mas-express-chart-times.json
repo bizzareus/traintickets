@@ -25,10 +25,10 @@
       "departureTime": "16:04",
       "day": 1,
       "distance": "5.0",
-      "chartTimeLocal": "05:59",
+      "chartTimeLocal": "06:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PGT"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "16:26",
       "day": 1,
       "distance": "23.0",
-      "chartTimeLocal": "05:59",
+      "chartTimeLocal": "06:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PGT"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "58.0",
-      "chartTimeLocal": "05:59",
+      "chartTimeLocal": "06:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PGT"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "88.0",
-      "chartTimeLocal": "05:59",
+      "chartTimeLocal": "06:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PGT"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": "05:59",
+      "chartTimeLocal": "06:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PGT"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "147.0",
-      "chartTimeLocal": "05:59",
+      "chartTimeLocal": "06:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PGT"
     },
     {
@@ -103,11 +103,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DG"
     },
     {
       "stationCode": "KRR",
@@ -116,11 +116,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "254.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DG"
     },
     {
       "stationCode": "MONR",
@@ -129,11 +129,11 @@
       "departureTime": "20:47",
       "day": 1,
       "distance": "269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DG"
     },
     {
       "stationCode": "NMKL",
@@ -142,11 +142,11 @@
       "departureTime": "21:03",
       "day": 1,
       "distance": "287.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DG"
     },
     {
       "stationCode": "RASP",
@@ -155,11 +155,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "313.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DG"
     },
     {
       "stationCode": "SA",
@@ -168,11 +168,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "339.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DG"
     },
     {
       "stationCode": "MAP",
@@ -181,11 +181,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "405.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DG"
     },
     {
       "stationCode": "JTJ",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "DG"
     }
   ],
-  "summary": "The first reservation chart for Pgt Mas Express (22652) is prepared at Palakkad Jn (PGT) around 5:59 AM. 14 of 21 stations on the PGT to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:50:03.251Z",
-  "knownChartCount": 14
+  "summary": "The first reservation chart for Pgt Mas Express (22652) is prepared at Palakkad Jn (PGT) around 5:59 AM. 21 of 21 stations on the PGT to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:37:42.612Z",
+  "knownChartCount": 21
 }

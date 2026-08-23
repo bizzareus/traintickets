@@ -12,11 +12,11 @@
       "departureTime": "15:34",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KKD"
     },
     {
       "stationCode": "PTP",
@@ -25,14 +25,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KKD"
     }
   ],
-  "summary": "Reservation chart preparation times for Kkd Ptp Pass (52966) from KKD to PTP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
-  "generatedAt": "2026-08-06T08:22:40.154Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kkd Ptp Pass (52966) is prepared at KALKUND (KKD) around 6:16 AM, with a second (vacancy) chart around 3:19 PM. 2 of 2 stations on the KKD to PTP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:50:52.988Z",
+  "knownChartCount": 2
 }

@@ -64,11 +64,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "YPR",
@@ -77,11 +77,11 @@
       "departureTime": "22:32",
       "day": 1,
       "distance": "144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "TK",
@@ -90,11 +90,11 @@
       "departureTime": "23:19",
       "day": 1,
       "distance": "208.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "ASK",
@@ -175,7 +175,7 @@
       "chartRemoteStation": "SBC"
     }
   ],
-  "summary": "The first reservation chart for Sbc Ubl Sf Exp (20688) is prepared at Arsikere Jn (ASK) around 12:20 PM, with a second (vacancy) chart around 10:05 PM. 6 of 13 stations on the MYS to UBL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:42:43.163Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Sbc Ubl Sf Exp (20688) is prepared at KSR Bengaluru (SBC) around 12:21 PM, with a second (vacancy) chart around 10:05 PM. 9 of 13 stations on the MYS to UBL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:20:18.650Z",
+  "knownChartCount": 9
 }

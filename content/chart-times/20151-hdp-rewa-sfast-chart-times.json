@@ -103,11 +103,11 @@
       "departureTime": "00:50",
       "day": 2,
       "distance": "625.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMR"
     },
     {
       "stationCode": "BD",
@@ -116,11 +116,11 @@
       "departureTime": "02:03",
       "day": 2,
       "distance": "704.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMR"
     },
     {
       "stationCode": "WR",
@@ -129,11 +129,11 @@
       "departureTime": "03:21",
       "day": 2,
       "distance": "799.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MMR"
     },
     {
       "stationCode": "NGP",
@@ -142,11 +142,11 @@
       "departureTime": "05:05",
       "day": 2,
       "distance": "878.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "G",
@@ -155,11 +155,11 @@
       "departureTime": "07:15",
       "day": 2,
       "distance": "1008.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BTC",
@@ -168,11 +168,11 @@
       "departureTime": "08:00",
       "day": 2,
       "distance": "1049.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "NIR",
@@ -181,11 +181,11 @@
       "departureTime": "10:15",
       "day": 2,
       "distance": "1124.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "JBP",
@@ -194,11 +194,11 @@
       "departureTime": "13:15",
       "day": 2,
       "distance": "1246.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "KTE",
@@ -207,11 +207,11 @@
       "departureTime": "14:30",
       "day": 2,
       "distance": "1337.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "MYR",
@@ -220,11 +220,11 @@
       "departureTime": "15:15",
       "day": 2,
       "distance": "1400.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "STA",
@@ -233,11 +233,11 @@
       "departureTime": "15:55",
       "day": 2,
       "distance": "1435.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "REWA",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1485.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "04:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "Reservation chart preparation times for Hdp Rewa Sfast (20151) from HDP to REWA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-06T00:29:11.304Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hdp Rewa Sfast (20151) is prepared at Akola Jn (AK) around 10:31 AM, with a second (vacancy) chart around 8:05 PM. 12 of 19 stations on the HDP to REWA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:16:46.824Z",
+  "knownChartCount": 12
 }

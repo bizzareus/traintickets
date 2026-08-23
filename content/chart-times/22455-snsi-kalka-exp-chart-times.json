@@ -12,11 +12,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "MMR",
@@ -25,11 +25,11 @@
       "departureTime": "11:40",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "BSL",
@@ -38,11 +38,11 @@
       "departureTime": "14:15",
       "day": 1,
       "distance": "267.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "KNW",
@@ -51,11 +51,11 @@
       "departureTime": "16:15",
       "day": 1,
       "distance": "390.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "ET",
@@ -64,11 +64,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "574.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:01",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "BPL",
@@ -77,11 +77,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "672.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "VGLJ",
@@ -214,7 +214,7 @@
       "chartRemoteStation": "NDLS"
     }
   ],
-  "summary": "The first reservation chart for Snsi Kalka Exp (22455) is prepared at V Lakshmibai Jhansi Jhs (VGLJ) around 10:21 AM, with a second (vacancy) chart around 8:35 PM. 10 of 16 stations on the SNSI to KLK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:03:33.822Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Snsi Kalka Exp (22455) is prepared at Sainagar Shirdi (SNSI) around 8:13 PM, with a second (vacancy) chart around 9:45 AM. 16 of 16 stations on the SNSI to KLK route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:33:01.159Z",
+  "knownChartCount": 16
 }

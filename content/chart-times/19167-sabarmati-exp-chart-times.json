@@ -12,11 +12,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "MAN",
@@ -25,11 +25,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "4.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "MHD",
@@ -38,11 +38,11 @@
       "departureTime": "23:42",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ND",
@@ -51,11 +51,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ANND",
@@ -695,7 +695,7 @@
       "chartRemoteStation": "ABP"
     }
   ],
-  "summary": "The first reservation chart for Sabarmati Exp (19167) is prepared at Anand Jn (ANND) around 1:10 PM, with a second (vacancy) chart around 10:55 PM. 49 of 53 stations on the ADI to BCY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:05:56.720Z",
-  "knownChartCount": 49
+  "summary": "The first reservation chart for Sabarmati Exp (19167) is prepared at Ahmedabad Jn (ADI) around 1:12 PM, with a second (vacancy) chart around 10:55 PM. 53 of 53 stations on the ADI to BCY route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:09:08.251Z",
+  "knownChartCount": 53
 }

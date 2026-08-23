@@ -12,11 +12,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "JOP",
@@ -25,11 +25,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "58.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "SLN",
@@ -38,11 +38,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "MBLP",
@@ -51,11 +51,11 @@
       "departureTime": "21:58",
       "day": 1,
       "distance": "194.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "LKO",
@@ -64,11 +64,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "284.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "BE",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "LKO"
     }
   ],
-  "summary": "The first reservation chart for Mahamana Exp (22417) is prepared at Bareilly (BE) around 2:09 PM, with a second (vacancy) chart around 11:40 PM. 4 of 9 stations on the BSB to NDLS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:51:41.530Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Mahamana Exp (22417) is prepared at Varanasi Jn (BSB) around 9:03 AM, with a second (vacancy) chart around 6:40 PM. 9 of 9 stations on the BSB to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:32:22.065Z",
+  "knownChartCount": 9
 }

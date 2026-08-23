@@ -181,11 +181,11 @@
       "departureTime": "01:02",
       "day": 2,
       "distance": "1114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "MAO",
@@ -194,11 +194,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "1196.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "RN",
@@ -207,11 +207,11 @@
       "departureTime": "08:00",
       "day": 2,
       "distance": "1530.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "PNVL",
@@ -220,11 +220,11 @@
       "departureTime": "13:15",
       "day": 2,
       "distance": "1892.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "BSR",
@@ -233,11 +233,11 @@
       "departureTime": "15:05",
       "day": 2,
       "distance": "1960.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "ST",
@@ -246,11 +246,11 @@
       "departureTime": "18:09",
       "day": 2,
       "distance": "2175.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "BRC",
@@ -259,11 +259,11 @@
       "departureTime": "19:47",
       "day": 2,
       "distance": "2304.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "ADI",
@@ -272,11 +272,11 @@
       "departureTime": "21:45",
       "day": 2,
       "distance": "2403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "GIMB",
@@ -285,14 +285,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2703.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MAO"
     }
   ],
-  "summary": "The first reservation chart for Gimb Humsafar (20923) is prepared at Tirunelveli (TEN) around 8:13 PM, with a second (vacancy) chart around 4:55 AM. 9 of 22 stations on the TEN to GIMB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:53:53.780Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Gimb Humsafar (20923) is prepared at Tirunelveli (TEN) around 8:13 PM, with a second (vacancy) chart around 4:55 AM. 18 of 22 stations on the TEN to GIMB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:23:39.771Z",
+  "knownChartCount": 18
 }

@@ -12,11 +12,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "SC",
@@ -25,11 +25,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "KMC",
@@ -38,11 +38,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "NZB",
@@ -51,11 +51,11 @@
       "departureTime": "23:05",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:21",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "MUE",
@@ -344,7 +344,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Hyb Jp Exp (17079) from HYB to JP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 26 stations.",
-  "generatedAt": "2026-08-05T23:18:20.278Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hyb Jp Exp (17079) is prepared at Hyderabad Decan (HYB) around 11:50 AM, with a second (vacancy) chart around 7:21 PM. 4 of 26 stations on the HYB to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:53:56.305Z",
+  "knownChartCount": 4
 }

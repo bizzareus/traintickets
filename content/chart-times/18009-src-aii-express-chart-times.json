@@ -12,11 +12,11 @@
       "departureTime": "13:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "KGP",
@@ -25,11 +25,11 @@
       "departureTime": "14:30",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "TATA",
@@ -38,11 +38,11 @@
       "departureTime": "16:22",
       "day": 1,
       "distance": "242.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "MURI",
@@ -51,11 +51,11 @@
       "departureTime": "18:07",
       "day": 1,
       "distance": "347.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "BRKA",
@@ -64,11 +64,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "404.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "TORI",
@@ -77,11 +77,11 @@
       "departureTime": "21:37",
       "day": 1,
       "distance": "489.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "LTHR",
@@ -90,11 +90,11 @@
       "departureTime": "22:02",
       "day": 1,
       "distance": "522.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "BRWD",
@@ -103,11 +103,11 @@
       "departureTime": "22:29",
       "day": 1,
       "distance": "562.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "DTO",
@@ -116,11 +116,11 @@
       "departureTime": "22:53",
       "day": 1,
       "distance": "589.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "GHD",
@@ -129,11 +129,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "623.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "CPU",
@@ -318,7 +318,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Src Aii Express (18009) from SRC to AII are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 24 stations.",
-  "generatedAt": "2026-08-05T23:33:46.537Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Src Aii Express (18009) is prepared at Santragachi Jn (SRC) around 6:06 PM, with a second (vacancy) chart around 11:40 PM. 10 of 24 stations on the SRC to AII route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:00:39.283Z",
+  "knownChartCount": 10
 }

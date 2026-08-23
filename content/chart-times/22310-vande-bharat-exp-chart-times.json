@@ -12,11 +12,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:49",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "JMP"
+      "chartTimeLocal": "11:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BHP"
     },
     {
       "stationCode": "BGP",
@@ -25,10 +25,10 @@
       "departureTime": "16:07",
       "day": 1,
       "distance": "54.0",
-      "chartTimeLocal": "20:49",
+      "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JMP"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "16:43",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": "20:49",
+      "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JMP"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "16:59",
       "day": 1,
       "distance": "104.0",
-      "chartTimeLocal": "20:49",
+      "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JMP"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "17:22",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": "20:49",
+      "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JMP"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "17:37",
       "day": 1,
       "distance": "145.0",
-      "chartTimeLocal": "20:49",
+      "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JMP"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "18:17",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": "20:49",
+      "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JMP"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "19:09",
       "day": 1,
       "distance": "235.0",
-      "chartTimeLocal": "20:49",
+      "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JMP"
     },
     {
@@ -116,11 +116,11 @@
       "departureTime": "19:47",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BHP"
     },
     {
       "stationCode": "HWH",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:32",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BHP"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22310) is prepared at Jamalpur Jn (JMP) around 8:49 PM. 8 of 10 stations on the JMP to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:16:09.679Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Vande Bharat Exp (22310) is prepared at Jamalpur Jn (JMP) around 11:47 AM, with a second (vacancy) chart around 7:32 PM. 10 of 10 stations on the JMP to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:30:40.791Z",
+  "knownChartCount": 10
 }

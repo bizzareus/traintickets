@@ -12,11 +12,11 @@
       "departureTime": "14:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "SDLP",
@@ -25,11 +25,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "LHU",
@@ -38,11 +38,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "CRWA",
@@ -51,11 +51,11 @@
       "departureTime": "17:17",
       "day": 1,
       "distance": "150.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "JJN",
@@ -64,11 +64,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "NWH",
@@ -77,11 +77,11 @@
       "departureTime": "18:09",
       "day": 1,
       "distance": "216.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "SIKR",
@@ -90,11 +90,11 @@
       "departureTime": "18:41",
       "day": 1,
       "distance": "243.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "RGS",
@@ -103,11 +103,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "293.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "FL",
@@ -116,11 +116,11 @@
       "departureTime": "21:37",
       "day": 1,
       "distance": "360.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "KSG",
@@ -129,11 +129,11 @@
       "departureTime": "22:24",
       "day": 1,
       "distance": "414.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "AII",
@@ -142,11 +142,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "440.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "NSD",
@@ -155,11 +155,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "463.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "BJNR",
@@ -630,7 +630,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Hsr Cct Exp (17296) from HSR to CCT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 48 stations.",
-  "generatedAt": "2026-08-05T23:21:36.086Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hsr Cct Exp (17296) is prepared at Hisar (HSR) around 6:10 AM, with a second (vacancy) chart around 1:55 PM. 12 of 48 stations on the HSR to CCT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:56:30.664Z",
+  "knownChartCount": 12
 }

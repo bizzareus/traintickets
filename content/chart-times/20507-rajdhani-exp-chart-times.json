@@ -12,11 +12,11 @@
       "departureTime": "16:10",
       "day": null,
       "distance": "0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SANG"
     },
     {
       "stationCode": "BHRB",
@@ -25,11 +25,11 @@
       "departureTime": "16:56",
       "day": null,
       "distance": "51",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BHRB"
     },
     {
       "stationCode": "HKD",
@@ -38,11 +38,11 @@
       "departureTime": "18:10",
       "day": null,
       "distance": "115",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BHRB"
     },
     {
       "stationCode": "BPB",
@@ -51,11 +51,11 @@
       "departureTime": "19:25",
       "day": null,
       "distance": "144",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPB"
     },
     {
       "stationCode": "NHLG",
@@ -64,11 +64,11 @@
       "departureTime": "21:17",
       "day": null,
       "distance": "216",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPB"
     },
     {
       "stationCode": "HJI",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for RAJDHANI EXP (20507) from SANG to ANVT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-08-06T00:35:51.547Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for RAJDHANI EXP (20507) is prepared at SAIRANG (SANG) around 8:10 AM, with a second (vacancy) chart around 7:42 PM. 5 of 20 stations on the SANG to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:18:45.801Z",
+  "knownChartCount": 5
 }

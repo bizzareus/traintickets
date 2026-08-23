@@ -12,11 +12,11 @@
       "departureTime": "03:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "03:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "UMB",
@@ -25,11 +25,11 @@
       "departureTime": "04:25",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "03:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "PNP",
@@ -38,11 +38,11 @@
       "departureTime": "05:38",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "03:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "NDLS",
@@ -51,11 +51,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "266.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "NZM",
@@ -64,11 +64,11 @@
       "departureTime": "08:28",
       "day": 1,
       "distance": "274.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "VGLJ",
@@ -77,11 +77,11 @@
       "departureTime": "14:23",
       "day": 1,
       "distance": "676.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:10",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "BPL",
@@ -90,11 +90,11 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "967.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:11",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "18:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "BSL",
@@ -253,7 +253,7 @@
       "chartRemoteStation": "UBL"
     }
   ],
-  "summary": "The first reservation chart for Karntk S Kranti (22686) is prepared at Bhusaval Jn (BSL) around 10:10 PM, with a second (vacancy) chart around 6:15 PM. 12 of 19 stations on the CDG to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:54:17.806Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Karntk S Kranti (22686) is prepared at Chandigarh (CDG) around 5:38 PM, with a second (vacancy) chart around 3:20 AM. 19 of 19 stations on the CDG to YPR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:38:51.242Z",
+  "knownChartCount": 19
 }

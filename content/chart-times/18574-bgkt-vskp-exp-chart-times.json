@@ -12,11 +12,11 @@
       "departureTime": "20:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "JU",
@@ -25,11 +25,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "4.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "MTD",
@@ -38,11 +38,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "DNA",
@@ -51,11 +51,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "MKN",
@@ -64,11 +64,11 @@
       "departureTime": "23:28",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "FL",
@@ -487,7 +487,7 @@
       "chartRemoteStation": "USL"
     }
   ],
-  "summary": "The first reservation chart for Bgkt Vskp Exp (18574) is prepared at Mahasamund (MSMD) around 1:40 PM, with a second (vacancy) chart around 9:25 PM. 12 of 37 stations on the BGKT to VSKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:53:31.252Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Bgkt Vskp Exp (18574) is prepared at Bhagat Ki Kothi (BGKT) around 12:41 PM, with a second (vacancy) chart around 8:25 PM. 17 of 37 stations on the BGKT to VSKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:06:05.705Z",
+  "knownChartCount": 17
 }

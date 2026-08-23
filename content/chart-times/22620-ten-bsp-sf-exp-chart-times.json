@@ -12,11 +12,11 @@
       "departureTime": "01:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "NJT",
@@ -25,11 +25,11 @@
       "departureTime": "02:38",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "TVC",
@@ -38,11 +38,11 @@
       "departureTime": "04:20",
       "day": 1,
       "distance": "145.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "QLN",
@@ -51,11 +51,11 @@
       "departureTime": "05:25",
       "day": 1,
       "distance": "209.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "KYJ",
@@ -64,11 +64,11 @@
       "departureTime": "06:04",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "ALLP",
@@ -77,11 +77,11 @@
       "departureTime": "06:55",
       "day": 1,
       "distance": "294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "SRTL",
@@ -90,11 +90,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "317.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "ERS",
@@ -103,11 +103,11 @@
       "departureTime": "08:20",
       "day": 1,
       "distance": "350.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "AWY",
@@ -116,11 +116,11 @@
       "departureTime": "08:42",
       "day": 1,
       "distance": "370.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "TCR",
@@ -129,11 +129,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "424.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "PGT",
@@ -142,11 +142,11 @@
       "departureTime": "11:15",
       "day": 1,
       "distance": "501.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "CBE",
@@ -155,11 +155,11 @@
       "departureTime": "13:15",
       "day": 1,
       "distance": "556.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "TUP",
@@ -168,11 +168,11 @@
       "departureTime": "14:00",
       "day": 1,
       "distance": "606.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "ED",
@@ -181,11 +181,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "656.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "SA",
@@ -194,11 +194,11 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "719.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "JTJ",
@@ -207,11 +207,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "839.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "KPD",
@@ -220,11 +220,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "923.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "RU",
@@ -422,7 +422,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ten Bsp Sf Exp (22620) from TEN to BSP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 32 stations.",
-  "generatedAt": "2026-08-06T02:45:54.222Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ten Bsp Sf Exp (22620) is prepared at Tirunelveli (TEN) around 3:51 PM, with a second (vacancy) chart around 1:10 AM. 17 of 32 stations on the TEN to BSP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:36:31.930Z",
+  "knownChartCount": 17
 }

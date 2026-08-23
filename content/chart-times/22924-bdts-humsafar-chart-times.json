@@ -12,11 +12,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAM"
     },
     {
       "stationCode": "HAPA",
@@ -25,11 +25,11 @@
       "departureTime": "20:31",
       "day": 1,
       "distance": "9.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAM"
     },
     {
       "stationCode": "RJT",
@@ -38,11 +38,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAM"
     },
     {
       "stationCode": "WKR",
@@ -51,11 +51,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAM"
     },
     {
       "stationCode": "SUNR",
@@ -64,11 +64,11 @@
       "departureTime": "23:23",
       "day": 1,
       "distance": "201.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAM"
     },
     {
       "stationCode": "VG",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "VAPI"
     }
   ],
-  "summary": "The first reservation chart for Bdts Humsafar (22924) is prepared at Viramgam Jn (VG) around 9:47 AM, with a second (vacancy) chart around 8 PM. 9 of 14 stations on the JAM to BDTS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T03:52:39.908Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Bdts Humsafar (22924) is prepared at Jamnagar (JAM) around 10:13 AM, with a second (vacancy) chart around 8 PM. 14 of 14 stations on the JAM to BDTS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:44:31.879Z",
+  "knownChartCount": 14
 }

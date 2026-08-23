@@ -12,11 +12,11 @@
       "departureTime": "14:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "06:10",
+      "chartTimeLocal": "12:30",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "CSMT"
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "DR",
@@ -27,8 +27,8 @@
       "distance": "9.0",
       "chartTimeLocal": "06:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:53",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CSMT"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "54.0",
       "chartTimeLocal": "06:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:53",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CSMT"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "128.0",
       "chartTimeLocal": "06:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:53",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "CSMT"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "192.0",
-      "chartTimeLocal": "08:11",
+      "chartTimeLocal": "08:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:49",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PUNE"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "221.0",
-      "chartTimeLocal": "08:11",
+      "chartTimeLocal": "08:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:49",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PUNE"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "246.0",
-      "chartTimeLocal": "08:11",
+      "chartTimeLocal": "08:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:49",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PUNE"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "19:27",
       "day": 1,
       "distance": "268.0",
-      "chartTimeLocal": "08:11",
+      "chartTimeLocal": "08:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:49",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PUNE"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "342.0",
-      "chartTimeLocal": "08:11",
+      "chartTimeLocal": "08:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:49",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PUNE"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "358.0",
-      "chartTimeLocal": "08:11",
+      "chartTimeLocal": "08:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:49",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PUNE"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "377.0",
-      "chartTimeLocal": "08:11",
+      "chartTimeLocal": "08:13",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:49",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PUNE"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "455.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "DUD",
@@ -168,11 +168,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "519.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "KLBG",
@@ -181,11 +181,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "568.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "WADI",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "SUR"
     }
   ],
-  "summary": "The first reservation chart for Hyderabad Exp (22732) is prepared at C Shivaji Mah T (CSMT) around 6:10 AM. 19 of 22 stations on the CSMT to HYB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:57:13.140Z",
-  "knownChartCount": 19
+  "summary": "The first reservation chart for Hyderabad Exp (22732) is prepared at C Shivaji Mah T (CSMT) around 12:30 PM, with a second (vacancy) chart around 9:55 PM. 22 of 22 stations on the CSMT to HYB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:39:50.484Z",
+  "knownChartCount": 22
 }

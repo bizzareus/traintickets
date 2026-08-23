@@ -12,11 +12,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "SSB",
@@ -25,11 +25,11 @@
       "departureTime": "07:28",
       "day": 1,
       "distance": "12.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "BGZ",
@@ -38,11 +38,11 @@
       "departureTime": "07:46",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "ROK",
@@ -51,11 +51,11 @@
       "departureTime": "08:20",
       "day": 1,
       "distance": "72.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "JIND",
@@ -64,11 +64,11 @@
       "departureTime": "09:02",
       "day": 1,
       "distance": "129.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "NRW",
@@ -77,11 +77,11 @@
       "departureTime": "09:29",
       "day": 1,
       "distance": "163.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "TUN",
@@ -90,11 +90,11 @@
       "departureTime": "09:51",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "JHL",
@@ -103,11 +103,11 @@
       "departureTime": "10:18",
       "day": 1,
       "distance": "201.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "LHA",
@@ -116,11 +116,11 @@
       "departureTime": "10:34",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "SAG",
@@ -129,11 +129,11 @@
       "departureTime": "11:02",
       "day": 1,
       "distance": "251.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "DUI",
@@ -142,11 +142,11 @@
       "departureTime": "11:22",
       "day": 1,
       "distance": "267.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "LDH",
@@ -155,11 +155,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "329.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "JGN",
@@ -168,11 +168,11 @@
       "departureTime": "13:25",
       "day": 1,
       "distance": "369.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "MOGA",
@@ -181,11 +181,11 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "398.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "FZR",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "453.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     }
   ],
-  "summary": "Reservation chart preparation times for Fzr Intercity (22485) from NDLS to FZR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
-  "generatedAt": "2026-08-06T02:06:36.983Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Fzr Intercity (22485) is prepared at New Delhi (NDLS) around 9:39 PM, with a second (vacancy) chart around 12:35 PM. 15 of 15 stations on the NDLS to FZR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:33:49.111Z",
+  "knownChartCount": 15
 }

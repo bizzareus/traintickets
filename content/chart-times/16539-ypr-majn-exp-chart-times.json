@@ -12,11 +12,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "BAW",
@@ -25,11 +25,11 @@
       "departureTime": "07:11",
       "day": 1,
       "distance": "9.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "NMGA",
@@ -38,11 +38,11 @@
       "departureTime": "07:22",
       "day": 1,
       "distance": "22.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "KIGL",
@@ -51,11 +51,11 @@
       "departureTime": "07:56",
       "day": 1,
       "distance": "67.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "YY",
@@ -64,11 +64,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "84.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "BGNR",
@@ -77,11 +77,11 @@
       "departureTime": "08:29",
       "day": 1,
       "distance": "99.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "SBGA",
@@ -90,11 +90,11 @@
       "departureTime": "08:59",
       "day": 1,
       "distance": "133.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "CNPA",
@@ -103,11 +103,11 @@
       "departureTime": "09:09",
       "day": 1,
       "distance": "142.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:51",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "HAS",
@@ -116,11 +116,11 @@
       "departureTime": "10:15",
       "day": 1,
       "distance": "174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HAS"
     },
     {
       "stationCode": "SKLR",
@@ -129,11 +129,11 @@
       "departureTime": "11:20",
       "day": 1,
       "distance": "216.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HAS"
     },
     {
       "stationCode": "SBHR",
@@ -142,11 +142,11 @@
       "departureTime": "14:25",
       "day": 1,
       "distance": "327.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HAS"
     },
     {
       "stationCode": "KBPR",
@@ -155,11 +155,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "369.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HAS"
     },
     {
       "stationCode": "BNTL",
@@ -168,11 +168,11 @@
       "departureTime": "15:40",
       "day": 1,
       "distance": "394.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HAS"
     },
     {
       "stationCode": "MAJN",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "413.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HAS"
     }
   ],
-  "summary": "Reservation chart preparation times for Ypr Majn Exp (16539) from YPR to MAJN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-08-05T23:04:30.060Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ypr Majn Exp (16539) is prepared at Yesvantpur Jn (YPR) around 8:51 PM, with a second (vacancy) chart around 6:45 AM. 14 of 14 stations on the YPR to MAJN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:44:48.708Z",
+  "knownChartCount": 14
 }

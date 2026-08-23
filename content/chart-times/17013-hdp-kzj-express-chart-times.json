@@ -155,11 +155,11 @@
       "departureTime": "00:50",
       "day": 2,
       "distance": "570.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "LPI",
@@ -168,11 +168,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "619.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "BMT",
@@ -181,11 +181,11 @@
       "departureTime": "02:04",
       "day": 2,
       "distance": "637.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "SC",
@@ -194,11 +194,11 @@
       "departureTime": "02:25",
       "day": 2,
       "distance": "641.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "CHZ",
@@ -207,11 +207,11 @@
       "departureTime": "03:05",
       "day": 2,
       "distance": "654.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "BG",
@@ -220,11 +220,11 @@
       "departureTime": "03:20",
       "day": 2,
       "distance": "688.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "ZN",
@@ -233,11 +233,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "725.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LUR"
     },
     {
       "stationCode": "KZJ",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "773.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LUR"
     }
   ],
-  "summary": "The first reservation chart for Hdp Kzj Express (17013) is prepared at Hadapsar (HDP) around 7:09 AM, with a second (vacancy) chart around 11:05 PM. 1 of 19 stations on the HDP to KZJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T16:05:52.592Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Hdp Kzj Express (17013) is prepared at Hadapsar (HDP) around 7:09 AM, with a second (vacancy) chart around 11:05 PM. 9 of 19 stations on the HDP to KZJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:51:14.221Z",
+  "knownChartCount": 9
 }

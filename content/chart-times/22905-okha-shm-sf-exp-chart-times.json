@@ -12,11 +12,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "DWK",
@@ -25,11 +25,11 @@
       "departureTime": "09:13",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "KMBL",
@@ -38,11 +38,11 @@
       "departureTime": "10:15",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "JAM",
@@ -51,11 +51,11 @@
       "departureTime": "11:37",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "HAPA",
@@ -64,11 +64,11 @@
       "departureTime": "11:53",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "RJT",
@@ -77,11 +77,11 @@
       "departureTime": "13:25",
       "day": 1,
       "distance": "253.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "WKR",
@@ -90,11 +90,11 @@
       "departureTime": "14:02",
       "day": 1,
       "distance": "294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "SUNR",
@@ -103,11 +103,11 @@
       "departureTime": "15:04",
       "day": 1,
       "distance": "369.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "VG",
@@ -116,11 +116,11 @@
       "departureTime": "16:12",
       "day": 1,
       "distance": "434.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:07",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "ADI",
@@ -435,7 +435,7 @@
       "chartRemoteStation": "ROU"
     }
   ],
-  "summary": "The first reservation chart for Okha Shm Sf Exp (22905) is prepared at Kharagpur Jn (KGP) around 10:45 AM, with a second (vacancy) chart around 8:35 PM. 3 of 33 stations on the OKHA to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T03:17:54.354Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Okha Shm Sf Exp (22905) is prepared at Okha (OKHA) around 8:07 PM. 12 of 33 stations on the OKHA to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:43:42.911Z",
+  "knownChartCount": 12
 }

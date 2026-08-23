@@ -12,11 +12,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:19",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "BVI",
@@ -25,11 +25,11 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:19",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "PLG",
@@ -38,11 +38,11 @@
       "departureTime": "16:12",
       "day": 1,
       "distance": "81.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:19",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDR"
     },
     {
       "stationCode": "VAPI",
@@ -51,11 +51,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "164.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "ST",
@@ -64,11 +64,11 @@
       "departureTime": "19:03",
       "day": 1,
       "distance": "257.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BH",
@@ -77,11 +77,11 @@
       "departureTime": "19:49",
       "day": 1,
       "distance": "316.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BRC",
@@ -90,11 +90,11 @@
       "departureTime": "21:03",
       "day": 1,
       "distance": "386.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ADI",
@@ -103,11 +103,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "486.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "MSH",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "JOR"
     }
   ],
-  "summary": "The first reservation chart for Ddr Bgkt Sf Exp (20484) is prepared at Mahesana Jn (MSH) around 1:04 PM, with a second (vacancy) chart around 10:45 PM. 10 of 18 stations on the DDR to BGKT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:33:00.688Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Ddr Bgkt Sf Exp (20484) is prepared at Dadar (DDR) around 8:19 PM, with a second (vacancy) chart around 2:45 PM. 18 of 18 stations on the DDR to BGKT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:18:05.158Z",
+  "knownChartCount": 18
 }

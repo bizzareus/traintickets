@@ -25,10 +25,10 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "86.0",
-      "chartTimeLocal": "21:14",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ASV"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "16:46",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": "21:14",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ASV"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "17:27",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": "21:14",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ASV"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "18:37",
       "day": 1,
       "distance": "253.0",
-      "chartTimeLocal": "21:14",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ASV"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "296.0",
-      "chartTimeLocal": "21:14",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ASV"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "19:48",
       "day": 1,
       "distance": "300.0",
-      "chartTimeLocal": "21:14",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ASV"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "20:22",
       "day": 1,
       "distance": "339.0",
-      "chartTimeLocal": "21:14",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ASV"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "412.0",
-      "chartTimeLocal": "21:14",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ASV"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "470.0",
-      "chartTimeLocal": "21:14",
+      "chartTimeLocal": "21:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ASV"
     },
     {
@@ -142,11 +142,11 @@
       "departureTime": "00:25",
       "day": 2,
       "distance": "538.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASV"
     },
     {
       "stationCode": "KPTN",
@@ -155,11 +155,11 @@
       "departureTime": "01:15",
       "day": 2,
       "distance": "578.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASV"
     },
     {
       "stationCode": "SWM",
@@ -168,11 +168,11 @@
       "departureTime": "02:32",
       "day": 2,
       "distance": "673.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASV"
     },
     {
       "stationCode": "GGC",
@@ -181,11 +181,11 @@
       "departureTime": "03:25",
       "day": 2,
       "distance": "736.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASV"
     },
     {
       "stationCode": "AGC",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "897.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASV"
     }
   ],
-  "summary": "The first reservation chart for Asv Agc Sf Exp (20177) is prepared at Asarva Jn (ASV) around 9:14 PM. 10 of 15 stations on the ASV to AGC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:29:55.977Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Asv Agc Sf Exp (20177) is prepared at Asarva Jn (ASV) around 9:14 PM. 15 of 15 stations on the ASV to AGC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:16:55.131Z",
+  "knownChartCount": 15
 }

@@ -25,11 +25,11 @@
       "departureTime": "03:41",
       "day": 1,
       "distance": "21.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "TCR",
@@ -38,11 +38,11 @@
       "departureTime": "03:52",
       "day": 1,
       "distance": "23.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "IJK",
@@ -51,11 +51,11 @@
       "departureTime": "04:15",
       "day": 1,
       "distance": "47.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "CKI",
@@ -64,11 +64,11 @@
       "departureTime": "04:23",
       "day": 1,
       "distance": "53.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "AFK",
@@ -77,11 +77,11 @@
       "departureTime": "04:40",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "AWY",
@@ -90,11 +90,11 @@
       "departureTime": "04:53",
       "day": 1,
       "distance": "78.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "ERS",
@@ -103,11 +103,11 @@
       "departureTime": "05:20",
       "day": 1,
       "distance": "97.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "TUVR",
@@ -116,11 +116,11 @@
       "departureTime": "05:46",
       "day": 1,
       "distance": "120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "SRTL",
@@ -129,11 +129,11 @@
       "departureTime": "05:58",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "MAKM",
@@ -142,11 +142,11 @@
       "departureTime": "06:13",
       "day": 1,
       "distance": "141.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "ALLP",
@@ -155,11 +155,11 @@
       "departureTime": "06:30",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "AMPA",
@@ -168,11 +168,11 @@
       "departureTime": "06:41",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "HAD",
@@ -181,11 +181,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "184.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "KYJ",
@@ -194,11 +194,11 @@
       "departureTime": "07:17",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "KPY",
@@ -207,11 +207,11 @@
       "departureTime": "07:32",
       "day": 1,
       "distance": "211.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "MQO",
@@ -220,11 +220,11 @@
       "departureTime": "07:47",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "QLN",
@@ -233,11 +233,11 @@
       "departureTime": "08:08",
       "day": 1,
       "distance": "238.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "MYY",
@@ -246,11 +246,11 @@
       "departureTime": "08:18",
       "day": 1,
       "distance": "247.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "PVU",
@@ -259,11 +259,11 @@
       "departureTime": "08:24",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "VAK",
@@ -272,11 +272,11 @@
       "departureTime": "08:35",
       "day": 1,
       "distance": "262.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "TVP",
@@ -285,11 +285,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "300.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     },
     {
       "stationCode": "TVC",
@@ -298,14 +298,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "303.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:59",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUV"
     }
   ],
-  "summary": "The first reservation chart for Guv Tvc Exp (16341) is prepared at Guruvayur (GUV) around 7:25 PM, with a second (vacancy) chart around 7:53 AM. 1 of 23 stations on the GUV to TVC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T09:52:06.182Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Guv Tvc Exp (16341) is prepared at Guruvayur (GUV) around 7:25 PM, with a second (vacancy) chart around 7:53 AM. 23 of 23 stations on the GUV to TVC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:41:29.415Z",
+  "knownChartCount": 23
 }

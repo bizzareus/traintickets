@@ -12,11 +12,11 @@
       "departureTime": "06:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:54",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AK"
     },
     {
       "stationCode": "SRW",
@@ -487,7 +487,7 @@
       "chartRemoteStation": "AK"
     }
   ],
-  "summary": "The first reservation chart for Sgnr Kcg Exp (17602) is prepared at Nagda Jn (NAD) around 1:36 PM, with a second (vacancy) chart around 11:40 PM. 20 of 37 stations on the SGNR to KCG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:28:10.176Z",
-  "knownChartCount": 20
+  "summary": "The first reservation chart for Sgnr Kcg Exp (17602) is prepared at Shri Ganganagar (SGNR) around 7:54 AM, with a second (vacancy) chart around 5:25 PM. 21 of 37 stations on the SGNR to KCG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:59:16.042Z",
+  "knownChartCount": 21
 }

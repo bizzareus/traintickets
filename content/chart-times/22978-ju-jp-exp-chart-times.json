@@ -12,11 +12,11 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "RKB",
@@ -25,11 +25,11 @@
       "departureTime": "16:08",
       "day": 1,
       "distance": "3.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "GOTN",
@@ -38,11 +38,11 @@
       "departureTime": "17:03",
       "day": 1,
       "distance": "84.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "MTD",
@@ -51,11 +51,11 @@
       "departureTime": "17:28",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "REN",
@@ -64,11 +64,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "122.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "DNA",
@@ -77,11 +77,11 @@
       "departureTime": "18:08",
       "day": 1,
       "distance": "149.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "GCH",
@@ -90,11 +90,11 @@
       "departureTime": "18:22",
       "day": 1,
       "distance": "164.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "MKN",
@@ -103,11 +103,11 @@
       "departureTime": "18:45",
       "day": 1,
       "distance": "193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "KMNC",
@@ -116,11 +116,11 @@
       "departureTime": "19:01",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "NAC",
@@ -129,11 +129,11 @@
       "departureTime": "19:17",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "FL",
@@ -142,11 +142,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "258.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "KKU",
@@ -155,11 +155,11 @@
       "departureTime": "20:46",
       "day": 1,
       "distance": "304.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "JP",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "313.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     }
   ],
-  "summary": "Reservation chart preparation times for Ju Jp Exp (22978) from JU to JP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-08-06T04:37:28.939Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ju Jp Exp (22978) is prepared at Jodhpur Jn (JU) around 8 AM, with a second (vacancy) chart around 6:30 PM. 13 of 13 stations on the JU to JP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:47:18.616Z",
+  "knownChartCount": 13
 }

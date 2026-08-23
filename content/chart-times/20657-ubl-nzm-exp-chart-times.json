@@ -12,11 +12,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "GDG",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ubl Nzm Exp (20657) from UBL to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-06T00:39:52.253Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ubl Nzm Exp (20657) is prepared at Sss Hubballi Jn (UBL) around 1:55 PM, with a second (vacancy) chart around 11:35 PM. 1 of 19 stations on the UBL to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:19:37.505Z",
+  "knownChartCount": 1
 }

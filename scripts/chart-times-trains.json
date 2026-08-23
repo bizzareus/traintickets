@@ -19424,8 +19424,8 @@
   {
     "trainNumber": "22026",
     "trainName": "PUNE SHATABDI",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "22101",
@@ -23886,8 +23886,10 @@
   {
     "trainNumber": "22969",
     "trainName": "OKHA BSBS SF EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200,
+    "slug": "22969-okha-bsbs-sf-exp-chart-times",
+    "canonicalNumber": "22969"
   },
   {
     "trainNumber": "22970",
@@ -24404,8 +24406,8 @@
   {
     "trainNumber": "26629",
     "trainName": "MALABAR EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "26651",
@@ -25916,43 +25918,43 @@
   {
     "trainNumber": "94751",
     "trainName": "HTE PUNE EXP",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "94753",
     "trainName": "VSKP  KRDL  PASS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "94754",
     "trainName": "KRDL  VSKP  PASS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "94755",
     "trainName": "AGTL DMR PASS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "94756",
     "trainName": "DMR AGTL PASS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "94757",
     "trainName": "VISWAVARATI PASS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200
   },
   {
     "trainNumber": "94758",
     "trainName": "VISWABHARTI PASS",
-    "completed": false,
-    "httpStatus": 404
+    "completed": true,
+    "httpStatus": 200
   }
 ]

@@ -25,10 +25,10 @@
       "departureTime": "15:48",
       "day": 1,
       "distance": "88.0",
-      "chartTimeLocal": "21:27",
+      "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NJP"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "145.0",
-      "chartTimeLocal": "21:27",
+      "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NJP"
     },
     {
@@ -51,11 +51,11 @@
       "departureTime": "17:48",
       "day": 1,
       "distance": "233.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MLDT"
     },
     {
       "stationCode": "BHP",
@@ -64,11 +64,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "415.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MLDT"
     },
     {
       "stationCode": "HWH",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "561.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MLDT"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22302) is prepared at New Jalpaiguri (NJP) around 9:27 PM. 3 of 6 stations on the NJP to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:15:17.482Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Vande Bharat Exp (22302) is prepared at New Jalpaiguri (NJP) around 9:27 PM. 6 of 6 stations on the NJP to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:30:24.304Z",
+  "knownChartCount": 6
 }

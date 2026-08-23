@@ -12,11 +12,11 @@
       "departureTime": "09:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RMR"
     },
     {
       "stationCode": "PRM",
@@ -25,11 +25,11 @@
       "departureTime": "09:59",
       "day": 1,
       "distance": "9.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RMR"
     },
     {
       "stationCode": "KPV",
@@ -38,11 +38,11 @@
       "departureTime": "10:22",
       "day": 1,
       "distance": "28.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RMR"
     },
     {
       "stationCode": "MB",
@@ -51,11 +51,11 @@
       "departureTime": "12:25",
       "day": 1,
       "distance": "78.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RMR"
     },
     {
       "stationCode": "AMRO",
@@ -64,11 +64,11 @@
       "departureTime": "12:54",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RMR"
     },
     {
       "stationCode": "GZB",
@@ -77,11 +77,11 @@
       "departureTime": "14:41",
       "day": 1,
       "distance": "219.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RMR"
     },
     {
       "stationCode": "DLI",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "239.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:03",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RMR"
     }
   ],
-  "summary": "Reservation chart preparation times for Rmr Dli Link Ex (25036) from RMR to DLI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-08-06T05:37:11.540Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rmr Dli Link Ex (25036) is prepared at Ramnagar (RMR) around 9:03 PM, with a second (vacancy) chart around 9:35 AM. 7 of 7 stations on the RMR to DLI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:48:47.058Z",
+  "knownChartCount": 7
 }

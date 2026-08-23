@@ -12,11 +12,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "DSO",
@@ -25,11 +25,11 @@
       "departureTime": "18:36",
       "day": 1,
       "distance": "33.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "NOK",
@@ -38,11 +38,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "NGO",
@@ -51,11 +51,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "116.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "MTDB",
@@ -64,11 +64,11 @@
       "departureTime": "21:27",
       "day": 1,
       "distance": "172.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "DNA",
@@ -77,11 +77,11 @@
       "departureTime": "22:04",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "MKN",
@@ -90,11 +90,11 @@
       "departureTime": "22:39",
       "day": 1,
       "distance": "261.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "JP",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "JP"
     }
   ],
-  "summary": "The first reservation chart for Rjsthn S Kranti (22464) is prepared at Jaipur (JP) around 4:45 PM, with a second (vacancy) chart around 12:30 AM. 3 of 10 stations on the BKN to DEE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:04:29.581Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Rjsthn S Kranti (22464) is prepared at Bikaner Jn (BKN) around 10:10 AM, with a second (vacancy) chart around 5:55 PM. 10 of 10 stations on the BKN to DEE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:33:16.056Z",
+  "knownChartCount": 10
 }

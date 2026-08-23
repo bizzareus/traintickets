@@ -12,11 +12,11 @@
       "departureTime": "08:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:47",
+      "chartTimeLocal": "22:59",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "KIR"
+      "chartRemoteStation": "MFP"
     },
     {
       "stationCode": "NNA",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "GKP"
     }
   ],
-  "summary": "The first reservation chart for Champaran Humsfr (15705) is prepared at Katihar Jn (KIR) around 8:47 PM. 17 of 21 stations on the KIR to DLI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:19:14.056Z",
+  "summary": "The first reservation chart for Champaran Humsfr (15705) is prepared at Katihar Jn (KIR) around 10:59 PM. 17 of 21 stations on the KIR to DLI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:37:28.824Z",
   "knownChartCount": 17
 }

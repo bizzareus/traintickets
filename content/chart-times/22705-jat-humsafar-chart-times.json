@@ -12,11 +12,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": 1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "GTL",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "LDH"
     }
   ],
-  "summary": "The first reservation chart for Jat Humsafar (22705) is prepared at Guntakal Jn (GTL) around 11:13 AM, with a second (vacancy) chart around 8:55 PM. 13 of 14 stations on the TPTY to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:55:32.206Z",
-  "knownChartCount": 13
+  "summary": "The first reservation chart for Jat Humsafar (22705) is prepared at Tirupati (TPTY) around 11:05 PM. 14 of 14 stations on the TPTY to JAT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:39:12.305Z",
+  "knownChartCount": 14
 }

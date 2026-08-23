@@ -25,11 +25,11 @@
       "departureTime": "09:37",
       "day": 1,
       "distance": "88.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KIR",
@@ -38,11 +38,11 @@
       "departureTime": "11:45",
       "day": 1,
       "distance": "184.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "KGG",
@@ -51,11 +51,11 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "308.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "ROA",
@@ -64,11 +64,11 @@
       "departureTime": "14:38",
       "day": 1,
       "distance": "364.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "SPJ",
@@ -77,11 +77,11 @@
       "departureTime": "15:20",
       "day": 1,
       "distance": "393.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SPJ"
     },
     {
       "stationCode": "MFP",
@@ -90,11 +90,11 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "445.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SPJ"
     },
     {
       "stationCode": "HJP",
@@ -103,11 +103,11 @@
       "departureTime": "17:13",
       "day": 1,
       "distance": "499.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SPJ"
     },
     {
       "stationCode": "SEE",
@@ -116,11 +116,11 @@
       "departureTime": "17:23",
       "day": 1,
       "distance": "504.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SPJ"
     },
     {
       "stationCode": "CPR",
@@ -129,11 +129,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "558.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SPJ"
     },
     {
       "stationCode": "SV",
@@ -142,11 +142,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "619.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SPJ"
     },
     {
       "stationCode": "DEOS",
@@ -155,11 +155,11 @@
       "departureTime": "20:46",
       "day": 1,
       "distance": "688.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SPJ"
     },
     {
       "stationCode": "GKP",
@@ -168,11 +168,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "738.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:49",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "GD",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "GKP"
     }
   ],
-  "summary": "The first reservation chart for Njp Anvt Express (15725) is prepared at New Jalpaiguri (NJP) around 8:05 PM, with a second (vacancy) chart around 8:15 AM. 6 of 18 stations on the NJP to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:19:38.231Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Njp Anvt Express (15725) is prepared at New Jalpaiguri (NJP) around 8:05 PM, with a second (vacancy) chart around 8:15 AM. 18 of 18 stations on the NJP to ANVT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:37:59.181Z",
+  "knownChartCount": 18
 }

@@ -12,11 +12,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:11",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "WSJ",
@@ -25,11 +25,11 @@
       "departureTime": "20:08",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:11",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "BNVD",
@@ -38,11 +38,11 @@
       "departureTime": "20:28",
       "day": 1,
       "distance": "53.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:11",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "JAM",
@@ -51,11 +51,11 @@
       "departureTime": "22:02",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:11",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "HAPA",
@@ -64,11 +64,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "141.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:11",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "RJT",
@@ -77,11 +77,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:11",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "WKR",
@@ -370,7 +370,7 @@
       "chartRemoteStation": "AWR"
     }
   ],
-  "summary": "The first reservation chart for Pbr Dee Express (20937) is prepared at Wankaner Jn (WKR) around 9:30 AM, with a second (vacancy) chart around 7:11 PM. 22 of 28 stations on the PBR to DEE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:55:25.104Z",
-  "knownChartCount": 22
+  "summary": "The first reservation chart for Pbr Dee Express (20937) is prepared at Porbandar (PBR) around 9:31 AM, with a second (vacancy) chart around 7:11 PM. 28 of 28 stations on the PBR to DEE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:24:18.528Z",
+  "knownChartCount": 28
 }

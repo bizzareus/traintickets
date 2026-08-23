@@ -194,11 +194,11 @@
       "departureTime": "00:06",
       "day": 2,
       "distance": "1296.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPL",
@@ -207,11 +207,11 @@
       "departureTime": "01:40",
       "day": 2,
       "distance": "1387.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "DWX",
@@ -220,11 +220,11 @@
       "departureTime": "04:22",
       "day": 2,
       "distance": "1569.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "INDB",
@@ -233,14 +233,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1610.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "The first reservation chart for Humsafar Exp (20918) is prepared at Puri (PURI) around 2:22 PM, with a second (vacancy) chart around 12:17 AM. 12 of 18 stations on the PURI to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:53:18.346Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Humsafar Exp (20918) is prepared at Puri (PURI) around 2:22 PM, with a second (vacancy) chart around 12:17 AM. 16 of 18 stations on the PURI to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:23:27.035Z",
+  "knownChartCount": 16
 }

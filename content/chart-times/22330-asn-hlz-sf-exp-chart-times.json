@@ -25,11 +25,11 @@
       "departureTime": "05:52",
       "day": 1,
       "distance": "5.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "MDKD",
@@ -38,11 +38,11 @@
       "departureTime": "06:05",
       "day": 1,
       "distance": "14.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "MDF",
@@ -51,11 +51,11 @@
       "departureTime": "06:14",
       "day": 1,
       "distance": "22.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "ADRA",
@@ -64,11 +64,11 @@
       "departureTime": "06:45",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "CJN",
@@ -77,11 +77,11 @@
       "departureTime": "07:16",
       "day": 1,
       "distance": "81.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "BQA",
@@ -90,11 +90,11 @@
       "departureTime": "07:30",
       "day": 1,
       "distance": "95.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "ODM",
@@ -103,11 +103,11 @@
       "departureTime": "07:46",
       "day": 1,
       "distance": "111.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "VSU",
@@ -116,11 +116,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "125.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:53",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "GBA",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "ASN"
     }
   ],
-  "summary": "The first reservation chart for Asn Hlz Sf Exp (22330) is prepared at Asansol Jn (ASN) around 7:53 PM, with a second (vacancy) chart around 5:25 AM. 10 of 18 stations on the ASN to HLZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:32:55.215Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Asn Hlz Sf Exp (22330) is prepared at Asansol Jn (ASN) around 7:53 PM, with a second (vacancy) chart around 5:25 AM. 18 of 18 stations on the ASN to HLZ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:31:02.314Z",
+  "knownChartCount": 18
 }

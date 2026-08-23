@@ -25,10 +25,10 @@
       "departureTime": "15:08",
       "day": 1,
       "distance": "27.0",
-      "chartTimeLocal": "04:35",
+      "chartTimeLocal": "04:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AF"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "54.0",
-      "chartTimeLocal": "04:35",
+      "chartTimeLocal": "04:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AF"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": "04:35",
+      "chartTimeLocal": "04:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AF"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "16:12",
       "day": 1,
       "distance": "99.0",
-      "chartTimeLocal": "04:35",
+      "chartTimeLocal": "04:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AF"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": "04:35",
+      "chartTimeLocal": "04:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AF"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "17:24",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": "04:35",
+      "chartTimeLocal": "04:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AF"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "17:48",
       "day": 1,
       "distance": "180.0",
-      "chartTimeLocal": "04:35",
+      "chartTimeLocal": "04:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AF"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "18:32",
       "day": 1,
       "distance": "236.0",
-      "chartTimeLocal": "04:35",
+      "chartTimeLocal": "04:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AF"
     },
     {
@@ -129,11 +129,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "241.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "JOB",
@@ -142,11 +142,11 @@
       "departureTime": "19:26",
       "day": 1,
       "distance": "278.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "FL",
@@ -155,11 +155,11 @@
       "departureTime": "19:43",
       "day": 1,
       "distance": "296.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "NRI",
@@ -168,11 +168,11 @@
       "departureTime": "19:58",
       "day": 1,
       "distance": "306.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "KSG",
@@ -181,11 +181,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "351.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "AII",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "376.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     }
   ],
-  "summary": "The first reservation chart for Af Aii Sf Exp (22988) is prepared at Agra Fort (AF) around 4:35 AM. 9 of 15 stations on the AF to AII route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T05:03:57.470Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Af Aii Sf Exp (22988) is prepared at Agra Fort (AF) around 4:35 AM. 15 of 15 stations on the AF to AII route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:47:32.310Z",
+  "knownChartCount": 15
 }

@@ -12,11 +12,11 @@
       "departureTime": "08:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDN"
     },
     {
       "stationCode": "NDB",
@@ -25,11 +25,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "157.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDB"
     },
     {
       "stationCode": "JL",
@@ -38,11 +38,11 @@
       "departureTime": "13:05",
       "day": 1,
       "distance": "307.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDB"
     },
     {
       "stationCode": "BSL",
@@ -51,11 +51,11 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "332.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "KNW",
@@ -64,11 +64,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "455.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "ET",
@@ -77,11 +77,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "638.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ET"
     },
     {
       "stationCode": "PPI",
@@ -90,11 +90,11 @@
       "departureTime": "19:18",
       "day": 1,
       "distance": "706.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ET"
     },
     {
       "stationCode": "JBP",
@@ -103,11 +103,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "884.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "KTE",
@@ -116,11 +116,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "974.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KTE"
     },
     {
       "stationCode": "STA",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "KTE"
     }
   ],
-  "summary": "The first reservation chart for Udn Danapur Exp (20933) is prepared at Satna (STA) around 1:16 PM, with a second (vacancy) chart around 11:15 PM. 9 of 18 stations on the UDN to DNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:54:58.450Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Udn Danapur Exp (20933) is prepared at Udhna Jn (UDN) around 8:27 PM, with a second (vacancy) chart around 8:20 AM. 18 of 18 stations on the UDN to DNR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:24:10.068Z",
+  "knownChartCount": 18
 }

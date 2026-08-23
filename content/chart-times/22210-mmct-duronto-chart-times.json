@@ -12,11 +12,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "KOTA",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "BRC"
     }
   ],
-  "summary": "The first reservation chart for Mmct Duronto (22210) is prepared at Kota Jn (KOTA) around 5:21 PM, with a second (vacancy) chart around 3:35 AM. 5 of 6 stations on the NZM to MMCT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:13:52.499Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Mmct Duronto (22210) is prepared at H Nizamuddin (NZM) around 2:15 PM, with a second (vacancy) chart around 10 PM. 6 of 6 stations on the NZM to MMCT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:30:18.236Z",
+  "knownChartCount": 6
 }

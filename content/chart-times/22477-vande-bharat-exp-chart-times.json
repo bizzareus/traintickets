@@ -27,8 +27,8 @@
       "distance": "199.0",
       "chartTimeLocal": "07:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDLS"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "312.0",
       "chartTimeLocal": "07:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDLS"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "577.0",
       "chartTimeLocal": "07:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDLS"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "630.0",
       "chartTimeLocal": "07:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDLS"
     },
     {
@@ -92,12 +92,12 @@
       "distance": "655.0",
       "chartTimeLocal": "07:00",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDLS"
     }
   ],
   "summary": "The first reservation chart for Vande Bharat Exp (22477) is prepared at New Delhi (NDLS) around 7 AM. 6 of 7 stations on the NDLS to SVDK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:05:52.524Z",
+  "generatedAt": "2026-08-22T20:33:45.819Z",
   "knownChartCount": 6
 }

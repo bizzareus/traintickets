@@ -12,11 +12,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "GZB",
@@ -25,11 +25,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "MB",
@@ -38,11 +38,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MB"
     },
     {
       "stationCode": "BE",
@@ -51,11 +51,11 @@
       "departureTime": "23:07",
       "day": 1,
       "distance": "245.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     },
     {
       "stationCode": "LKO",
@@ -162,7 +162,7 @@
       "chartRemoteStation": "BE"
     }
   ],
-  "summary": "The first reservation chart for Suhaldev Exp (22420) is prepared at Lucknow Nr (LKO) around 1:15 PM, with a second (vacancy) chart around 10:52 PM. 8 of 12 stations on the ANVT to GCT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:51:57.466Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Suhaldev Exp (22420) is prepared at Anand Vihar TRM (ANVT) around 10:50 AM, with a second (vacancy) chart around 6:35 PM. 12 of 12 stations on the ANVT to GCT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:32:24.262Z",
+  "knownChartCount": 12
 }

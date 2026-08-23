@@ -38,11 +38,11 @@
       "departureTime": "00:05",
       "day": 2,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:01",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "APR",
@@ -51,11 +51,11 @@
       "departureTime": "00:42",
       "day": 2,
       "distance": "258.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:01",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "BSP",
@@ -64,11 +64,11 @@
       "departureTime": "03:55",
       "day": 2,
       "distance": "409.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "RIG",
@@ -77,11 +77,11 @@
       "departureTime": "05:30",
       "day": 2,
       "distance": "541.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "JSG",
@@ -90,11 +90,11 @@
       "departureTime": "07:37",
       "day": 2,
       "distance": "613.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "ROU",
@@ -103,11 +103,11 @@
       "departureTime": "09:00",
       "day": 2,
       "distance": "714.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "CKP",
@@ -116,11 +116,11 @@
       "departureTime": "10:32",
       "day": 2,
       "distance": "815.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "TATA",
@@ -129,11 +129,11 @@
       "departureTime": "11:27",
       "day": 2,
       "distance": "878.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "KGP",
@@ -142,11 +142,11 @@
       "departureTime": "13:40",
       "day": 2,
       "distance": "1012.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "SRC",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ROU"
     }
   ],
-  "summary": "Reservation chart preparation times for Jbp Src Humsafar (20827) from JBP to SRC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-08-06T00:47:25.917Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jbp Src Humsafar (20827) is prepared at Shahdol (SDL) around 10:06 AM, with a second (vacancy) chart around 8:01 PM. 10 of 12 stations on the JBP to SRC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:21:37.707Z",
+  "knownChartCount": 10
 }

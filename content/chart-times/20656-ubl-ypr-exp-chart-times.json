@@ -12,11 +12,11 @@
       "departureTime": "11:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "HVR",
@@ -25,11 +25,11 @@
       "departureTime": "12:40",
       "day": 1,
       "distance": "76.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "HRR",
@@ -38,11 +38,11 @@
       "departureTime": "13:15",
       "day": 1,
       "distance": "131.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "DVG",
@@ -51,11 +51,11 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "ASK",
@@ -64,11 +64,11 @@
       "departureTime": "15:40",
       "day": 1,
       "distance": "304.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "BSN",
@@ -77,11 +77,11 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "351.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "TK",
@@ -90,11 +90,11 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "400.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "YPR",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "464.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     }
   ],
-  "summary": "Reservation chart preparation times for Ubl Ypr Exp (20656) from UBL to YPR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-08-06T00:39:42.276Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ubl Ypr Exp (20656) is prepared at Sss Hubballi Jn (UBL) around 7:49 PM, with a second (vacancy) chart around 11:30 AM. 8 of 8 stations on the UBL to YPR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:19:33.580Z",
+  "knownChartCount": 8
 }

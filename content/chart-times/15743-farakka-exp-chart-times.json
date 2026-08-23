@@ -831,11 +831,11 @@
       "departureTime": "00:30",
       "day": 3,
       "distance": "1344.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:57",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "TDL",
@@ -844,11 +844,11 @@
       "departureTime": "01:00",
       "day": 3,
       "distance": "1360.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:57",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "HRS",
@@ -857,11 +857,11 @@
       "departureTime": "01:45",
       "day": 3,
       "distance": "1408.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:57",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "ALJN",
@@ -870,11 +870,11 @@
       "departureTime": "02:15",
       "day": 3,
       "distance": "1438.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:57",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "KRJ",
@@ -883,11 +883,11 @@
       "departureTime": "02:47",
       "day": 3,
       "distance": "1481.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:57",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "GZB",
@@ -896,11 +896,11 @@
       "departureTime": "04:57",
       "day": 3,
       "distance": "1544.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:57",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "SBB",
@@ -909,11 +909,11 @@
       "departureTime": "05:10",
       "day": 3,
       "distance": "1551.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:57",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "DSA",
@@ -922,11 +922,11 @@
       "departureTime": "05:23",
       "day": 3,
       "distance": "1558.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:57",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "DLI",
@@ -935,11 +935,11 @@
       "departureTime": "06:30",
       "day": 3,
       "distance": "1564.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "BGZ",
@@ -948,11 +948,11 @@
       "departureTime": "07:06",
       "day": 3,
       "distance": "1594.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "ROK",
@@ -961,11 +961,11 @@
       "departureTime": "07:38",
       "day": 3,
       "distance": "1634.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "JIND",
@@ -974,11 +974,11 @@
       "departureTime": "08:20",
       "day": 3,
       "distance": "1691.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "NRW",
@@ -987,11 +987,11 @@
       "departureTime": "08:48",
       "day": 3,
       "distance": "1725.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "TUN",
@@ -1000,11 +1000,11 @@
       "departureTime": "09:10",
       "day": 3,
       "distance": "1751.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "JHL",
@@ -1013,11 +1013,11 @@
       "departureTime": "09:24",
       "day": 3,
       "distance": "1763.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "BTI",
@@ -1026,14 +1026,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "1861.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:31",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:15",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DLI"
     }
   ],
-  "summary": "The first reservation chart for Farakka Exp (15743) is prepared at Balurghat (BLGT) around 10:02 PM, with a second (vacancy) chart around 4:45 PM. 63 of 79 stations on the BLGT to BTI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:19:44.994Z",
-  "knownChartCount": 63
+  "summary": "The first reservation chart for Farakka Exp (15743) is prepared at Balurghat (BLGT) around 10:02 PM, with a second (vacancy) chart around 4:45 PM. 79 of 79 stations on the BLGT to BTI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:38:07.333Z",
+  "knownChartCount": 79
 }

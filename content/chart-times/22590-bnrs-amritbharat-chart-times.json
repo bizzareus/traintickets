@@ -90,10 +90,10 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "485.0",
-      "chartTimeLocal": "20:17",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSL"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "609.0",
-      "chartTimeLocal": "20:17",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSL"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "19:38",
       "day": 1,
       "distance": "717.0",
-      "chartTimeLocal": "20:17",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSL"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "792.0",
-      "chartTimeLocal": "20:17",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSL"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "810.0",
-      "chartTimeLocal": "20:17",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSL"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "885.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "BINA",
@@ -266,7 +266,7 @@
       "chartRemoteStation": "RKMP"
     }
   ],
-  "summary": "The first reservation chart for Bnrs Amritbharat (22590) is prepared at Hadapsar (HDP) around 8:10 PM, with a second (vacancy) chart around 7:35 AM. 19 of 20 stations on the HDP to BNRS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:43:43.586Z",
-  "knownChartCount": 19
+  "summary": "The first reservation chart for Bnrs Amritbharat (22590) is prepared at Hadapsar (HDP) around 8:10 PM, with a second (vacancy) chart around 7:35 AM. 20 of 20 stations on the HDP to BNRS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:35:53.324Z",
+  "knownChartCount": 20
 }

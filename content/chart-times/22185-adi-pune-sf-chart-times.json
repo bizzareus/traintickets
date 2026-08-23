@@ -90,11 +90,11 @@
       "departureTime": "00:20",
       "day": 2,
       "distance": "259.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BL",
@@ -103,11 +103,11 @@
       "departureTime": "01:03",
       "day": 2,
       "distance": "298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "VAPI",
@@ -116,11 +116,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "322.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "DRD",
@@ -129,11 +129,11 @@
       "departureTime": "02:05",
       "day": 2,
       "distance": "372.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "BSR",
@@ -142,11 +142,11 @@
       "departureTime": "03:20",
       "day": 2,
       "distance": "444.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "BIRD",
@@ -155,11 +155,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "471.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "KYN",
@@ -168,11 +168,11 @@
       "departureTime": "04:25",
       "day": 2,
       "distance": "496.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:59",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "KJT",
@@ -181,11 +181,11 @@
       "departureTime": "05:30",
       "day": 2,
       "distance": "543.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:59",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "LNL",
@@ -194,11 +194,11 @@
       "departureTime": "06:10",
       "day": 2,
       "distance": "571.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:59",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "SVJR",
@@ -207,11 +207,11 @@
       "departureTime": "07:05",
       "day": 2,
       "distance": "632.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:59",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "PUNE",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "635.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:59",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KYN"
     }
   ],
-  "summary": "Reservation chart preparation times for Adi Pune Sf (22185) from ADI to PUNE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
-  "generatedAt": "2026-08-06T01:11:38.457Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Adi Pune Sf (22185) is prepared at Navsari (NVS) around 1:58 PM, with a second (vacancy) chart around 11:43 PM. 11 of 17 stations on the ADI to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:29:45.752Z",
+  "knownChartCount": 11
 }

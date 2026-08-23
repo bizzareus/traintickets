@@ -12,11 +12,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:59",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "RAIR",
@@ -25,11 +25,11 @@
       "departureTime": "20:27",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:59",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "ANGL",
@@ -38,11 +38,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "157.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:59",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "TLHD",
@@ -51,11 +51,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "169.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:59",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "DNKL",
@@ -64,11 +64,11 @@
       "departureTime": "23:14",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:59",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "JJKR",
@@ -149,7 +149,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Sbp Shm Sup Exp (22804) from SBP to SHM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-08-06T02:58:01.380Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sbp Shm Sup Exp (22804) is prepared at Sambalpur (SBP) around 9:15 AM, with a second (vacancy) chart around 10:59 PM. 5 of 11 stations on the SBP to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:40:09.257Z",
+  "knownChartCount": 5
 }

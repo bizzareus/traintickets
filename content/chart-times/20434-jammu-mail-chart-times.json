@@ -90,11 +90,11 @@
       "departureTime": "19:23",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "MEX",
@@ -103,11 +103,11 @@
       "departureTime": "19:58",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "DZA",
@@ -116,11 +116,11 @@
       "departureTime": "20:13",
       "day": 1,
       "distance": "233.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "TDO",
@@ -129,11 +129,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "248.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "JRC",
@@ -142,11 +142,11 @@
       "departureTime": "21:33",
       "day": 1,
       "distance": "291.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "PGW",
@@ -155,11 +155,11 @@
       "departureTime": "21:47",
       "day": 1,
       "distance": "307.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTKC"
     },
     {
       "stationCode": "LDH",
@@ -168,11 +168,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "343.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "UMB",
@@ -370,7 +370,7 @@
       "chartRemoteStation": "DLI"
     }
   ],
-  "summary": "The first reservation chart for Jammu Mail (20434) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 9:07 PM, with a second (vacancy) chart around 5:50 AM. 21 of 28 stations on the SVDK to SFG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:31:31.361Z",
-  "knownChartCount": 21
+  "summary": "The first reservation chart for Jammu Mail (20434) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 9:07 PM, with a second (vacancy) chart around 5:50 AM. 28 of 28 stations on the SVDK to SFG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:17:17.917Z",
+  "knownChartCount": 28
 }

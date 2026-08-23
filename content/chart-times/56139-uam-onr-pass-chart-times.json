@@ -38,11 +38,11 @@
       "departureTime": "09:39",
       "day": 1,
       "distance": "9.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UAM"
     },
     {
       "stationCode": "AVK",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "UAM"
     }
   ],
-  "summary": "The first reservation chart for Uam Onr Pass (56139) is prepared at Udagamandalam (UAM) around 6:55 PM, with a second (vacancy) chart around 9 AM. 5 of 6 stations on the UAM to ONR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T09:23:33.048Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Uam Onr Pass (56139) is prepared at Udagamandalam (UAM) around 6:55 PM, with a second (vacancy) chart around 9 AM. 6 of 6 stations on the UAM to ONR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:52:53.405Z",
+  "knownChartCount": 6
 }

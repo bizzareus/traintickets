@@ -12,11 +12,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGHA"
     },
     {
       "stationCode": "KATI",
@@ -25,11 +25,11 @@
       "departureTime": "13:43",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGHA"
     },
     {
       "stationCode": "TMZ",
@@ -38,11 +38,11 @@
       "departureTime": "14:40",
       "day": 1,
       "distance": "94.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGHA"
     },
     {
       "stationCode": "MCA",
@@ -51,11 +51,11 @@
       "departureTime": "15:26",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGHA"
     },
     {
       "stationCode": "BZN",
@@ -64,11 +64,11 @@
       "departureTime": "15:44",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGHA"
     },
     {
       "stationCode": "ULB",
@@ -77,11 +77,11 @@
       "departureTime": "16:02",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGHA"
     },
     {
       "stationCode": "SRC",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DGHA"
     }
   ],
-  "summary": "Reservation chart preparation times for Dgha Src Pass (58030) from DGHA to SRC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-08-06T10:31:08.902Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Dgha Src Pass (58030) is prepared at Digha (DGHA) around 8:06 PM. 7 of 7 stations on the DGHA to SRC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:54:24.830Z",
+  "knownChartCount": 7
 }

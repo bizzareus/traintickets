@@ -311,11 +311,11 @@
       "departureTime": "00:52",
       "day": 2,
       "distance": "1500.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "KHED",
@@ -324,11 +324,11 @@
       "departureTime": "01:42",
       "day": 2,
       "distance": "1546.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "PNVL",
@@ -337,11 +337,11 @@
       "departureTime": "06:00",
       "day": 2,
       "distance": "1756.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "TNA",
@@ -350,11 +350,11 @@
       "departureTime": "07:10",
       "day": 2,
       "distance": "1792.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "LTT",
@@ -363,14 +363,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1809.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     }
   ],
-  "summary": "The first reservation chart for Tvcn Ltt Sf Exp (22114) is prepared at TRIVANDRUMNORTH (TVCN) around 2:57 PM, with a second (vacancy) chart around 1:12 AM. 19 of 28 stations on the TVCN to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:04:26.815Z",
-  "knownChartCount": 19
+  "summary": "The first reservation chart for Tvcn Ltt Sf Exp (22114) is prepared at TRIVANDRUMNORTH (TVCN) around 2:57 PM, with a second (vacancy) chart around 1:12 AM. 24 of 28 stations on the TVCN to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:27:26.894Z",
+  "knownChartCount": 24
 }

@@ -25,11 +25,11 @@
       "departureTime": "05:10",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "CHZ",
@@ -38,11 +38,11 @@
       "departureTime": "05:30",
       "day": 1,
       "distance": "22.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "BG",
@@ -51,11 +51,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "56.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "ALER",
@@ -64,11 +64,11 @@
       "departureTime": "06:20",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "ZN",
@@ -77,11 +77,11 @@
       "departureTime": "06:35",
       "day": 1,
       "distance": "94.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "GNP",
@@ -90,11 +90,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "122.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "KZJ",
@@ -103,11 +103,11 @@
       "departureTime": "07:25",
       "day": 1,
       "distance": "142.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "OPL",
@@ -116,11 +116,11 @@
       "departureTime": "07:50",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "JMKT",
@@ -129,11 +129,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "PTKP",
@@ -142,11 +142,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "194.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "OEA",
@@ -155,11 +155,11 @@
       "departureTime": "08:25",
       "day": 1,
       "distance": "198.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "KOLR",
@@ -168,11 +168,11 @@
       "departureTime": "08:35",
       "day": 1,
       "distance": "203.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "PDPL",
@@ -181,11 +181,11 @@
       "departureTime": "08:55",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "RDM",
@@ -194,11 +194,11 @@
       "departureTime": "09:15",
       "day": 1,
       "distance": "234.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "MCI",
@@ -207,11 +207,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "248.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "RVKH",
@@ -220,11 +220,11 @@
       "departureTime": "09:38",
       "day": 1,
       "distance": "255.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "MMZ",
@@ -233,11 +233,11 @@
       "departureTime": "09:50",
       "day": 1,
       "distance": "258.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "BPA",
@@ -246,11 +246,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "RECH",
@@ -259,11 +259,11 @@
       "departureTime": "10:10",
       "day": 1,
       "distance": "278.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "ASAF",
@@ -272,11 +272,11 @@
       "departureTime": "10:25",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "SKZR",
@@ -285,14 +285,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "306.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     }
   ],
-  "summary": "The first reservation chart for Hyb Skzr Exp (17011) is prepared at Hyderabad Decan (HYB) around 7:04 PM, with a second (vacancy) chart around 9:15 AM. 1 of 22 stations on the HYB to SKZR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T16:02:31.117Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Hyb Skzr Exp (17011) is prepared at Hyderabad Decan (HYB) around 7:04 PM, with a second (vacancy) chart around 9:15 AM. 22 of 22 stations on the HYB to SKZR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:51:08.647Z",
+  "knownChartCount": 22
 }

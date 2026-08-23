@@ -25,11 +25,11 @@
       "departureTime": "13:21",
       "day": 1,
       "distance": "28.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "NLDM",
@@ -38,11 +38,11 @@
       "departureTime": "13:43",
       "day": 1,
       "distance": "44.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "ANSB",
@@ -51,11 +51,11 @@
       "departureTime": "14:10",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AADR"
     },
     {
       "stationCode": "CDG",
@@ -64,11 +64,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "171.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CDG"
     },
     {
       "stationCode": "UMB",
@@ -77,11 +77,11 @@
       "departureTime": "16:15",
       "day": 1,
       "distance": "239.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UMB"
     },
     {
       "stationCode": "NDLS",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "437.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UMB"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Ex (22448) is prepared at Amb  Andaura (AADR) around 8:54 PM. 1 of 7 stations on the AADR to NDLS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:02:50.402Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Vande Bharat Ex (22448) is prepared at Amb  Andaura (AADR) around 8:54 PM. 7 of 7 stations on the AADR to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:32:52.694Z",
+  "knownChartCount": 7
 }

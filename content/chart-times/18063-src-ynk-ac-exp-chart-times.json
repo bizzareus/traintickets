@@ -142,11 +142,11 @@
       "departureTime": "00:45",
       "day": 2,
       "distance": "814.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "KTV",
@@ -155,11 +155,11 @@
       "departureTime": "01:12",
       "day": 2,
       "distance": "849.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "PDT",
@@ -168,11 +168,11 @@
       "departureTime": "01:22",
       "day": 2,
       "distance": "857.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "DVD",
@@ -181,11 +181,11 @@
       "departureTime": "02:37",
       "day": 2,
       "distance": "878.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "RJY",
@@ -194,11 +194,11 @@
       "departureTime": "04:50",
       "day": 2,
       "distance": "1062.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "BZA",
@@ -207,11 +207,11 @@
       "departureTime": "07:45",
       "day": 2,
       "distance": "1211.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "GNT",
@@ -220,11 +220,11 @@
       "departureTime": "09:45",
       "day": 2,
       "distance": "1243.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "NRT",
@@ -233,11 +233,11 @@
       "departureTime": "10:30",
       "day": 2,
       "distance": "1288.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "MRK",
@@ -246,11 +246,11 @@
       "departureTime": "12:30",
       "day": 2,
       "distance": "1387.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "GID",
@@ -259,11 +259,11 @@
       "departureTime": "13:30",
       "day": 2,
       "distance": "1446.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "NDL",
@@ -272,11 +272,11 @@
       "departureTime": "15:20",
       "day": 2,
       "distance": "1500.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "DHNE",
@@ -285,11 +285,11 @@
       "departureTime": "16:35",
       "day": 2,
       "distance": "1576.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "GY",
@@ -298,11 +298,11 @@
       "departureTime": "17:45",
       "day": 2,
       "distance": "1631.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "ATP",
@@ -311,11 +311,11 @@
       "departureTime": "19:50",
       "day": 2,
       "distance": "1688.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "DMM",
@@ -324,11 +324,11 @@
       "departureTime": "20:35",
       "day": 2,
       "distance": "1722.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "HUP",
@@ -337,11 +337,11 @@
       "departureTime": "22:10",
       "day": 2,
       "distance": "1800.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "YNK",
@@ -350,14 +350,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "1884.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Src Ynk  Ac Exp (18063) is prepared at Santragachi Jn (SRC) around 5:59 PM. 5 of 27 stations on the SRC to YNK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:36:49.955Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Src Ynk  Ac Exp (18063) is prepared at Santragachi Jn (SRC) around 5:59 PM. 22 of 27 stations on the SRC to YNK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:01:29.648Z",
+  "knownChartCount": 22
 }

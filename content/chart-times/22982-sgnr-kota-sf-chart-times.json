@@ -142,11 +142,11 @@
       "departureTime": "00:12",
       "day": 2,
       "distance": "363.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "NGO",
@@ -155,11 +155,11 @@
       "departureTime": "00:48",
       "day": 2,
       "distance": "414.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "DNA",
@@ -168,11 +168,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "515.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "MKN",
@@ -181,11 +181,11 @@
       "departureTime": "02:34",
       "day": 2,
       "distance": "559.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "NAC",
@@ -194,11 +194,11 @@
       "departureTime": "03:12",
       "day": 2,
       "distance": "588.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "SBR",
@@ -207,11 +207,11 @@
       "departureTime": "03:52",
       "day": 2,
       "distance": "616.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "FL",
@@ -220,11 +220,11 @@
       "departureTime": "04:22",
       "day": 2,
       "distance": "624.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "JOB",
@@ -233,11 +233,11 @@
       "departureTime": "04:40",
       "day": 2,
       "distance": "642.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "JP",
@@ -246,11 +246,11 @@
       "departureTime": "05:15",
       "day": 2,
       "distance": "678.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DPA",
@@ -259,11 +259,11 @@
       "departureTime": "05:30",
       "day": 2,
       "distance": "686.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "BNLW",
@@ -272,11 +272,11 @@
       "departureTime": "06:14",
       "day": 2,
       "distance": "744.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "ISA",
@@ -285,11 +285,11 @@
       "departureTime": "06:37",
       "day": 2,
       "distance": "770.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "CKB",
@@ -298,11 +298,11 @@
       "departureTime": "07:02",
       "day": 2,
       "distance": "788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "SWM",
@@ -311,11 +311,11 @@
       "departureTime": "08:20",
       "day": 2,
       "distance": "810.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "IDG",
@@ -324,11 +324,11 @@
       "departureTime": "08:45",
       "day": 2,
       "distance": "846.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "LKE",
@@ -337,11 +337,11 @@
       "departureTime": "08:55",
       "day": 2,
       "distance": "857.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "KOTA",
@@ -350,14 +350,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "917.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     }
   ],
-  "summary": "The first reservation chart for Sgnr Kota Sf (22982) is prepared at Shri Ganganagar (SGNR) around 9:30 AM. 8 of 27 stations on the SGNR to KOTA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T04:53:40.794Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Sgnr Kota Sf (22982) is prepared at Shri Ganganagar (SGNR) around 9:30 AM. 25 of 27 stations on the SGNR to KOTA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:47:24.034Z",
+  "knownChartCount": 25
 }

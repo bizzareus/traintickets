@@ -12,11 +12,11 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "PAR",
@@ -181,11 +181,11 @@
       "departureTime": "00:10",
       "day": 2,
       "distance": "787.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "KOTA",
@@ -194,11 +194,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "859.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "BUDI",
@@ -207,11 +207,11 @@
       "departureTime": "02:05",
       "day": 2,
       "distance": "897.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "CNA",
@@ -220,11 +220,11 @@
       "departureTime": "05:15",
       "day": 2,
       "distance": "1023.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "BHL",
@@ -233,11 +233,11 @@
       "departureTime": "05:55",
       "day": 2,
       "distance": "1070.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "BJNR",
@@ -246,11 +246,11 @@
       "departureTime": "06:42",
       "day": 2,
       "distance": "1136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "NSD",
@@ -259,11 +259,11 @@
       "departureTime": "07:14",
       "day": 2,
       "distance": "1178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "AII",
@@ -272,11 +272,11 @@
       "departureTime": "08:15",
       "day": 2,
       "distance": "1201.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "KSG",
@@ -285,11 +285,11 @@
       "departureTime": "08:45",
       "day": 2,
       "distance": "1227.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "JOB",
@@ -298,11 +298,11 @@
       "departureTime": "09:39",
       "day": 2,
       "distance": "1299.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "JP",
@@ -311,14 +311,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1336.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UJN"
     }
   ],
-  "summary": "The first reservation chart for Ngp Jp Sup Exp (22175) is prepared at Nagpur (NGP) around 7:54 PM. 11 of 24 stations on the NGP to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:10:36.437Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Ngp Jp Sup Exp (22175) is prepared at Nagpur (NGP) around 10:13 AM, with a second (vacancy) chart around 8:50 PM. 22 of 24 stations on the NGP to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:29:24.629Z",
+  "knownChartCount": 22
 }

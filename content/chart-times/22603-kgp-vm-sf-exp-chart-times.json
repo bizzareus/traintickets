@@ -116,11 +116,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "706.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "VSKP",
@@ -129,11 +129,11 @@
       "departureTime": "01:45",
       "day": 2,
       "distance": "767.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "RJY",
@@ -142,11 +142,11 @@
       "departureTime": "04:35",
       "day": 2,
       "distance": "967.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "EE",
@@ -155,11 +155,11 @@
       "departureTime": "06:00",
       "day": 2,
       "distance": "1057.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "BZA",
@@ -168,11 +168,11 @@
       "departureTime": "07:10",
       "day": 2,
       "distance": "1116.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "GDR",
@@ -181,11 +181,11 @@
       "departureTime": "11:25",
       "day": 2,
       "distance": "1409.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "PER",
@@ -194,11 +194,11 @@
       "departureTime": "13:50",
       "day": 2,
       "distance": "1546.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "AJJ",
@@ -207,11 +207,11 @@
       "departureTime": "14:45",
       "day": 2,
       "distance": "1609.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "KPD",
@@ -220,11 +220,11 @@
       "departureTime": "16:00",
       "day": 2,
       "distance": "1670.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "VLR",
@@ -233,11 +233,11 @@
       "departureTime": "16:20",
       "day": 2,
       "distance": "1680.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "TNM",
@@ -246,11 +246,11 @@
       "departureTime": "17:28",
       "day": 2,
       "distance": "1763.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     },
     {
       "stationCode": "VM",
@@ -259,14 +259,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1830.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CTC"
     }
   ],
-  "summary": "Reservation chart preparation times for Kgp Vm Sf Exp (22603) from KGP to VM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-08-06T02:44:07.275Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kgp Vm Sf Exp (22603) is prepared at Vizianagram Jn (VZM) around 8:18 AM, with a second (vacancy) chart around 5:40 PM. 12 of 20 stations on the KGP to VM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:36:00.656Z",
+  "knownChartCount": 12
 }

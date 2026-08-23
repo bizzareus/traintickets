@@ -129,11 +129,11 @@
       "departureTime": "00:25",
       "day": 2,
       "distance": "560.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "ET",
@@ -142,11 +142,11 @@
       "departureTime": "05:10",
       "day": 2,
       "distance": "857.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "JBP",
@@ -155,11 +155,11 @@
       "departureTime": "08:35",
       "day": 2,
       "distance": "1102.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:08",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "KTE",
@@ -168,11 +168,11 @@
       "departureTime": "09:55",
       "day": 2,
       "distance": "1193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:08",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "STA",
@@ -181,11 +181,11 @@
       "departureTime": "11:40",
       "day": 2,
       "distance": "1291.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:08",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "PCOI",
@@ -194,11 +194,11 @@
       "departureTime": "15:45",
       "day": 2,
       "distance": "1461.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:08",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "DDU",
@@ -207,11 +207,11 @@
       "departureTime": "19:40",
       "day": 2,
       "distance": "1604.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:08",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "BXR",
@@ -220,11 +220,11 @@
       "departureTime": "20:51",
       "day": 2,
       "distance": "1698.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:08",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "ARA",
@@ -233,11 +233,11 @@
       "departureTime": "22:00",
       "day": 2,
       "distance": "1767.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:08",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "PNBE",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1816.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:08",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "Reservation chart preparation times for Pau Pnbe Exp (17610) from PAU to PNBE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-05T23:28:40.502Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Pau Pnbe Exp (17610) is prepared at Nagpur (NGP) around 2:34 PM, with a second (vacancy) chart around 11:35 PM. 10 of 19 stations on the PAU to PNBE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:59:22.859Z",
+  "knownChartCount": 10
 }

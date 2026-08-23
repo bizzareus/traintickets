@@ -25,10 +25,10 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": "20:22",
+      "chartTimeLocal": "21:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "GNC"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "15:27",
       "day": 1,
       "distance": "94.0",
-      "chartTimeLocal": "20:22",
+      "chartTimeLocal": "21:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "GNC"
     },
     {
@@ -51,11 +51,11 @@
       "departureTime": "15:51",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:36",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ST",
@@ -64,11 +64,11 @@
       "departureTime": "17:08",
       "day": 1,
       "distance": "259.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "NVS",
@@ -77,11 +77,11 @@
       "departureTime": "17:29",
       "day": 1,
       "distance": "288.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BL",
@@ -90,11 +90,11 @@
       "departureTime": "17:58",
       "day": 1,
       "distance": "327.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "VAPI",
@@ -103,11 +103,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "351.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "BVI",
@@ -116,11 +116,11 @@
       "departureTime": "19:39",
       "day": 1,
       "distance": "491.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "MMCT",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "521.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VAPI"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20902) is prepared at Gandhinagar Cap (GNC) around 8:22 PM. 3 of 10 stations on the GNC to MMCT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:51:38.457Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Vande Bharat Exp (20902) is prepared at Gandhinagar Cap (GNC) around 8:22 PM. 10 of 10 stations on the GNC to MMCT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:22:46.275Z",
+  "knownChartCount": 10
 }

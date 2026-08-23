@@ -103,11 +103,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "719.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "R",
@@ -116,11 +116,11 @@
       "departureTime": "03:00",
       "day": 2,
       "distance": "829.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "DURG",
@@ -129,11 +129,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "866.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "G",
@@ -142,11 +142,11 @@
       "departureTime": "05:50",
       "day": 2,
       "distance": "1001.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "NGP",
@@ -155,11 +155,11 @@
       "departureTime": "08:10",
       "day": 2,
       "distance": "1131.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "AK",
@@ -168,11 +168,11 @@
       "departureTime": "12:15",
       "day": 2,
       "distance": "1384.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BSL",
@@ -181,11 +181,11 @@
       "departureTime": "14:20",
       "day": 2,
       "distance": "1524.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "MMR",
@@ -194,11 +194,11 @@
       "departureTime": "17:05",
       "day": 2,
       "distance": "1708.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "KPG",
@@ -207,11 +207,11 @@
       "departureTime": "17:50",
       "day": 2,
       "distance": "1751.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "SNSI",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1792.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "The first reservation chart for Hwh Snsi Sf Exp (22894) is prepared at Howrah Jn (HWH) around 5:21 PM. 7 of 17 stations on the HWH to SNSI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T03:09:06.113Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Hwh Snsi Sf Exp (22894) is prepared at Howrah Jn (HWH) around 5:21 PM. 17 of 17 stations on the HWH to SNSI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:43:34.152Z",
+  "knownChartCount": 17
 }

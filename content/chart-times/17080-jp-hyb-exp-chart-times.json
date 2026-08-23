@@ -12,11 +12,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "11:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KNW"
     },
     {
       "stationCode": "FL",
@@ -344,7 +344,7 @@
       "chartRemoteStation": "KNW"
     }
   ],
-  "summary": "The first reservation chart for Jp Hyb Exp (17080) is prepared at Kamareddi (KMC) around 8:26 PM, with a second (vacancy) chart around 11:15 AM. 3 of 26 stations on the JP to HYB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:18:28.204Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Jp Hyb Exp (17080) is prepared at Jaipur (JP) around 8:26 PM, with a second (vacancy) chart around 11:15 AM. 4 of 26 stations on the JP to HYB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:53:59.091Z",
+  "knownChartCount": 4
 }

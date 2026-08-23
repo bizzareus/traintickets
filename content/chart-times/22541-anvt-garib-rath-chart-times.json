@@ -77,11 +77,11 @@
       "departureTime": "01:05",
       "day": 2,
       "distance": "303.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "BE",
@@ -90,11 +90,11 @@
       "departureTime": "04:37",
       "day": 2,
       "distance": "538.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "MB",
@@ -103,11 +103,11 @@
       "departureTime": "06:25",
       "day": 2,
       "distance": "628.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     },
     {
       "stationCode": "ANVT",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "782.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BNRS"
     }
   ],
-  "summary": "Reservation chart preparation times for Anvt Garib Rath (22541) from BNRS to ANVT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-08-06T02:21:33.133Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Anvt Garib Rath (22541) is prepared at Lucknow Nr (LKO) around 9:21 AM, with a second (vacancy) chart around 10:50 PM. 4 of 9 stations on the BNRS to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:35:00.681Z",
+  "knownChartCount": 4
 }

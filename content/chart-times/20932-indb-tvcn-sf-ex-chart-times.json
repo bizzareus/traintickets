@@ -12,11 +12,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:35",
+      "chartOneDayOffset": 1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TCR"
     },
     {
       "stationCode": "DWX",
@@ -422,7 +422,7 @@
       "chartRemoteStation": "TCR"
     }
   ],
-  "summary": "The first reservation chart for Indb Tvcn Sf Ex (20932) is prepared at Nagda Jn (NAD) around 11:32 AM, with a second (vacancy) chart around 9:12 PM. 29 of 32 stations on the INDB to TVCN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:54:52.618Z",
-  "knownChartCount": 29
+  "summary": "The first reservation chart for Indb Tvcn Sf Ex (20932) is prepared at Indore Jn Bg (INDB) around 10:35 PM. 30 of 32 stations on the INDB to TVCN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:24:07.791Z",
+  "knownChartCount": 30
 }

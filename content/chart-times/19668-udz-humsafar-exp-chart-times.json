@@ -90,11 +90,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "887.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "SLI",
@@ -103,11 +103,11 @@
       "departureTime": "02:55",
       "day": 2,
       "distance": "894.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "PUNE",
@@ -116,11 +116,11 @@
       "departureTime": "08:15",
       "day": 2,
       "distance": "1165.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:48",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "KYN",
@@ -129,11 +129,11 @@
       "departureTime": "10:38",
       "day": 2,
       "distance": "1304.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:48",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "BSR",
@@ -142,11 +142,11 @@
       "departureTime": "12:40",
       "day": 2,
       "distance": "1356.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:48",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "ST",
@@ -155,11 +155,11 @@
       "departureTime": "15:28",
       "day": 2,
       "distance": "1571.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:48",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "BRC",
@@ -168,11 +168,11 @@
       "departureTime": "17:12",
       "day": 2,
       "distance": "1700.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "RTM",
@@ -181,11 +181,11 @@
       "departureTime": "20:55",
       "day": 2,
       "distance": "1961.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "MDS",
@@ -194,11 +194,11 @@
       "departureTime": "22:00",
       "day": 2,
       "distance": "2045.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "NMH",
@@ -207,11 +207,11 @@
       "departureTime": "22:55",
       "day": 2,
       "distance": "2094.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "COR",
@@ -220,11 +220,11 @@
       "departureTime": "00:25",
       "day": 3,
       "distance": "2150.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "MVJ",
@@ -233,11 +233,11 @@
       "departureTime": "02:05",
       "day": 3,
       "distance": "2222.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "UDZ",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2264.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     }
   ],
-  "summary": "The first reservation chart for Udz Humsafar Exp (19668) is prepared at Mysuru Jn (MYS) around 8:02 PM. 4 of 19 stations on the MYS to UDZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:23:41.718Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Udz Humsafar Exp (19668) is prepared at Mysuru Jn (MYS) around 8:02 PM. 17 of 19 stations on the MYS to UDZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:15:11.751Z",
+  "knownChartCount": 17
 }

@@ -25,11 +25,11 @@
       "departureTime": "05:53",
       "day": 1,
       "distance": "11.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DMR"
     },
     {
       "stationCode": "PEC",
@@ -38,11 +38,11 @@
       "departureTime": "06:10",
       "day": 1,
       "distance": "22.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DMR"
     },
     {
       "stationCode": "KUGT",
@@ -51,11 +51,11 @@
       "departureTime": "06:32",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DMR"
     },
     {
       "stationCode": "NLKT",
@@ -64,11 +64,11 @@
       "departureTime": "06:50",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DMR"
     },
     {
       "stationCode": "MANU",
@@ -77,11 +77,11 @@
       "departureTime": "07:07",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DMR"
     },
     {
       "stationCode": "SKAP",
@@ -90,11 +90,11 @@
       "departureTime": "07:16",
       "day": 1,
       "distance": "56.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DMR"
     },
     {
       "stationCode": "JWNR",
@@ -103,11 +103,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "67.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DMR"
     },
     {
       "stationCode": "ABSA",
@@ -116,11 +116,11 @@
       "departureTime": "08:12",
       "day": 1,
       "distance": "72.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DMR"
     },
     {
       "stationCode": "MGKM",
@@ -129,11 +129,11 @@
       "departureTime": "08:36",
       "day": 1,
       "distance": "91.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DMR"
     },
     {
       "stationCode": "TLMR",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "DMR"
     }
   ],
-  "summary": "The first reservation chart for Dmr Agtl Pass (55676) is prepared at DHARMANAGAR (DMR) around 8:27 PM, with a second (vacancy) chart around 9:05 AM. 5 of 14 stations on the DMR to AGTL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T09:16:57.134Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Dmr Agtl Pass (55676) is prepared at DHARMANAGAR (DMR) around 8:27 PM, with a second (vacancy) chart around 9:05 AM. 14 of 14 stations on the DMR to AGTL route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:52:46.074Z",
+  "knownChartCount": 14
 }

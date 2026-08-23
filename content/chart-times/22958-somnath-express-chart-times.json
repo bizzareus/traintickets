@@ -12,11 +12,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "CVR",
@@ -25,11 +25,11 @@
       "departureTime": "22:07",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "MLHA",
@@ -38,11 +38,11 @@
       "departureTime": "22:22",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "KSD",
@@ -51,11 +51,11 @@
       "departureTime": "22:42",
       "day": 1,
       "distance": "47.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "JND",
@@ -64,11 +64,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "JLR",
@@ -77,11 +77,11 @@
       "departureTime": "23:39",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "NUD",
@@ -90,11 +90,11 @@
       "departureTime": "23:46",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "VRR",
@@ -103,11 +103,11 @@
       "departureTime": "00:01",
       "day": 2,
       "distance": "128.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "GDL",
@@ -116,11 +116,11 @@
       "departureTime": "00:18",
       "day": 2,
       "distance": "144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "BKNG",
@@ -129,11 +129,11 @@
       "departureTime": "00:56",
       "day": 2,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VRL"
     },
     {
       "stationCode": "RJT",
@@ -142,11 +142,11 @@
       "departureTime": "01:13",
       "day": 2,
       "distance": "185.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RJT"
     },
     {
       "stationCode": "WKR",
@@ -155,11 +155,11 @@
       "departureTime": "01:53",
       "day": 2,
       "distance": "227.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RJT"
     },
     {
       "stationCode": "THAN",
@@ -168,11 +168,11 @@
       "departureTime": "02:18",
       "day": 2,
       "distance": "254.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RJT"
     },
     {
       "stationCode": "SUNR",
@@ -181,11 +181,11 @@
       "departureTime": "03:02",
       "day": 2,
       "distance": "301.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RJT"
     },
     {
       "stationCode": "VG",
@@ -194,11 +194,11 @@
       "departureTime": "04:20",
       "day": 2,
       "distance": "367.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RJT"
     },
     {
       "stationCode": "CLDY",
@@ -207,11 +207,11 @@
       "departureTime": "05:05",
       "day": 2,
       "distance": "421.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RJT"
     },
     {
       "stationCode": "GNC",
@@ -220,14 +220,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "443.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:58",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RJT"
     }
   ],
-  "summary": "Reservation chart preparation times for Somnath Express (22958) from VRL to GNC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
-  "generatedAt": "2026-08-06T04:35:28.412Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Somnath Express (22958) is prepared at Veraval (VRL) around 11:45 AM, with a second (vacancy) chart around 9:35 PM. 17 of 17 stations on the VRL to GNC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:46:09.996Z",
+  "knownChartCount": 17
 }

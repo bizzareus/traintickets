@@ -12,11 +12,11 @@
       "departureTime": "06:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "BST",
@@ -25,11 +25,11 @@
       "departureTime": "06:54",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "AY",
@@ -38,11 +38,11 @@
       "departureTime": "08:17",
       "day": 1,
       "distance": "165.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "LKO",
@@ -51,11 +51,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "299.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "RBL",
@@ -64,11 +64,11 @@
       "departureTime": "11:36",
       "day": 1,
       "distance": "377.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "PRYJ",
@@ -77,14 +77,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "500.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GKP"
     }
   ],
-  "summary": "Reservation chart preparation times for Vande Bharat Exp (22549) from GKP to PRYJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 6 stations.",
-  "generatedAt": "2026-08-06T02:37:05.452Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Vande Bharat Exp (22549) is prepared at Gorakhpur Jn (GKP) around 8:13 PM. 6 of 6 stations on the GKP to PRYJ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:35:23.970Z",
+  "knownChartCount": 6
 }

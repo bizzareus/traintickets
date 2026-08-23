@@ -25,11 +25,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "40.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KAWR"
     },
     {
       "stationCode": "GOK",
@@ -38,11 +38,11 @@
       "departureTime": "18:36",
       "day": 1,
       "distance": "51.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KAWR"
     },
     {
       "stationCode": "KT",
@@ -51,11 +51,11 @@
       "departureTime": "18:52",
       "day": 1,
       "distance": "78.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KAWR"
     },
     {
       "stationCode": "HNA",
@@ -64,11 +64,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "97.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KAWR"
     },
     {
       "stationCode": "MRDW",
@@ -77,11 +77,11 @@
       "departureTime": "19:32",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KAWR"
     },
     {
       "stationCode": "BTJL",
@@ -90,11 +90,11 @@
       "departureTime": "19:46",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KAWR"
     },
     {
       "stationCode": "BYNR",
@@ -103,11 +103,11 @@
       "departureTime": "20:08",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KAWR"
     },
     {
       "stationCode": "KUDA",
@@ -116,11 +116,11 @@
       "departureTime": "20:36",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KAWR"
     },
     {
       "stationCode": "BKJ",
@@ -129,11 +129,11 @@
       "departureTime": "20:52",
       "day": 1,
       "distance": "245.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KAWR"
     },
     {
       "stationCode": "UD",
@@ -142,11 +142,11 @@
       "departureTime": "21:08",
       "day": 1,
       "distance": "268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "MULK",
@@ -155,11 +155,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "314.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "SL",
@@ -168,11 +168,11 @@
       "departureTime": "21:56",
       "day": 1,
       "distance": "326.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "BNTL",
@@ -181,11 +181,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "364.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "KBPR",
@@ -194,11 +194,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "389.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "SBHR",
@@ -207,11 +207,11 @@
       "departureTime": "00:15",
       "day": 2,
       "distance": "431.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "SKLR",
@@ -220,11 +220,11 @@
       "departureTime": "02:50",
       "day": 2,
       "distance": "541.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "HAS",
@@ -233,11 +233,11 @@
       "departureTime": "03:53",
       "day": 2,
       "distance": "583.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "CNPA",
@@ -246,11 +246,11 @@
       "departureTime": "04:20",
       "day": 2,
       "distance": "616.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "YPR",
@@ -259,11 +259,11 @@
       "departureTime": "06:45",
       "day": 2,
       "distance": "757.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     },
     {
       "stationCode": "SBC",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "763.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:53",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UD"
     }
   ],
-  "summary": "The first reservation chart for Panchaganga Exp (16596) is prepared at Karwar (KAWR) around 10 AM, with a second (vacancy) chart around 5:45 PM. 1 of 21 stations on the KAWR to SBC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T13:29:49.083Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Panchaganga Exp (16596) is prepared at Karwar (KAWR) around 10 AM, with a second (vacancy) chart around 5:45 PM. 21 of 21 stations on the KAWR to SBC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:47:19.386Z",
+  "knownChartCount": 21
 }

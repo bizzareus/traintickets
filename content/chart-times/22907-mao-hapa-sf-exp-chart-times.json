@@ -12,11 +12,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "THVM",
@@ -25,11 +25,11 @@
       "departureTime": "10:52",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "KUDL",
@@ -38,11 +38,11 @@
       "departureTime": "12:02",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "RN",
@@ -51,11 +51,11 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "335.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RN"
     },
     {
       "stationCode": "KHED",
@@ -64,11 +64,11 @@
       "departureTime": "16:42",
       "day": 1,
       "distance": "482.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RN"
     },
     {
       "stationCode": "PNVL",
@@ -77,11 +77,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "697.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "BSR",
@@ -90,11 +90,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "764.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "VAPI",
@@ -103,11 +103,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "887.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "ST",
@@ -240,7 +240,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Mao Hapa Sf Exp (22907) from MAO to HAPA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 18 stations.",
-  "generatedAt": "2026-08-06T03:18:19.892Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mao Hapa Sf Exp (22907) is prepared at Madgaon (MAO) around 8:12 PM, with a second (vacancy) chart around 9:45 AM. 8 of 18 stations on the MAO to HAPA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:43:49.149Z",
+  "knownChartCount": 8
 }

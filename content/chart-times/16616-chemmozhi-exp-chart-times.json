@@ -25,11 +25,11 @@
       "departureTime": "01:15",
       "day": 1,
       "distance": "51.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "ED",
@@ -38,11 +38,11 @@
       "departureTime": "02:05",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "KRR",
@@ -51,11 +51,11 @@
       "departureTime": "03:05",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "TPJ",
@@ -64,11 +64,11 @@
       "departureTime": "05:00",
       "day": 1,
       "distance": "242.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "BAL",
@@ -77,11 +77,11 @@
       "departureTime": "05:30",
       "day": 1,
       "distance": "275.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "TJ",
@@ -90,11 +90,11 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "NMJ",
@@ -103,11 +103,11 @@
       "departureTime": "06:40",
       "day": 1,
       "distance": "322.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "MQ",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "335.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CBE"
     }
   ],
-  "summary": "The first reservation chart for Chemmozhi Exp (16616) is prepared at Coimbatore Jn (CBE) around 2:36 PM, with a second (vacancy) chart around 4:45 AM. 1 of 9 stations on the CBE to MQ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T14:26:57.156Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Chemmozhi Exp (16616) is prepared at Coimbatore Jn (CBE) around 2:36 PM, with a second (vacancy) chart around 4:45 AM. 9 of 9 stations on the CBE to MQ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:48:06.605Z",
+  "knownChartCount": 9
 }

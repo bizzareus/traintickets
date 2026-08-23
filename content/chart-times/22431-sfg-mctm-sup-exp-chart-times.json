@@ -12,11 +12,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SFG"
     },
     {
       "stationCode": "FTP",
@@ -25,11 +25,11 @@
       "departureTime": "17:27",
       "day": 1,
       "distance": "113.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SFG"
     },
     {
       "stationCode": "CNB",
@@ -38,11 +38,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "192.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "ETW",
@@ -51,11 +51,11 @@
       "departureTime": "20:07",
       "day": 1,
       "distance": "331.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "TDL",
@@ -64,11 +64,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "423.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "ALJN",
@@ -77,11 +77,11 @@
       "departureTime": "22:07",
       "day": 1,
       "distance": "501.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ALJN"
     },
     {
       "stationCode": "KRJ",
@@ -90,11 +90,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "544.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ALJN"
     },
     {
       "stationCode": "BSC",
@@ -103,11 +103,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "567.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ALJN"
     },
     {
       "stationCode": "HPU",
@@ -116,11 +116,11 @@
       "departureTime": "23:58",
       "day": 1,
       "distance": "608.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:52",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ALJN"
     },
     {
       "stationCode": "MTC",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "MTC"
     }
   ],
-  "summary": "The first reservation chart for Sfg Mctm Sup Exp (22431) is prepared at Meerut City (MTC) around 5 PM, with a second (vacancy) chart around 12:45 AM. 9 of 18 stations on the SFG to MCTM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:52:43.119Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Sfg Mctm Sup Exp (22431) is prepared at Subedarganj (SFG) around 7:54 AM, with a second (vacancy) chart around 3:55 PM. 18 of 18 stations on the SFG to MCTM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:32:32.976Z",
+  "knownChartCount": 18
 }

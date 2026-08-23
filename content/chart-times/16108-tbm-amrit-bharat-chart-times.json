@@ -12,11 +12,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "KGP",
@@ -370,7 +370,7 @@
       "chartRemoteStation": "SRC"
     }
   ],
-  "summary": "The first reservation chart for Tbm Amrit Bharat (16108) is prepared at Vijayawada Jn (BZA) around 1:13 PM, with a second (vacancy) chart around 11:40 PM. 8 of 28 stations on the SRC to TBM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:22:54.795Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Tbm Amrit Bharat (16108) is prepared at Santragachi Jn (SRC) around 1:12 PM, with a second (vacancy) chart around 11:40 PM. 9 of 28 stations on the SRC to TBM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:39:16.239Z",
+  "knownChartCount": 9
 }

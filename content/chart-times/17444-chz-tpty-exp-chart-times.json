@@ -12,11 +12,11 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "NLDA",
@@ -25,11 +25,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "98.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "MRGA",
@@ -38,11 +38,11 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "NDKD",
@@ -51,11 +51,11 @@
       "departureTime": "19:32",
       "day": 1,
       "distance": "174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "PGRL",
@@ -64,11 +64,11 @@
       "departureTime": "20:07",
       "day": 1,
       "distance": "195.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "MRK",
@@ -77,11 +77,11 @@
       "departureTime": "21:22",
       "day": 1,
       "distance": "317.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "GID",
@@ -90,11 +90,11 @@
       "departureTime": "22:37",
       "day": 1,
       "distance": "377.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "DMT",
@@ -103,11 +103,11 @@
       "departureTime": "23:07",
       "day": 1,
       "distance": "388.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "NDL",
@@ -201,7 +201,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Chz Tpty Exp (17444) from CHZ to TPTY are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
-  "generatedAt": "2026-08-05T23:27:16.273Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Chz Tpty Exp (17444) is prepared at Charlapalli (CHZ) around 7:25 AM, with a second (vacancy) chart around 10:22 PM. 8 of 15 stations on the CHZ to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:59:02.762Z",
+  "knownChartCount": 8
 }

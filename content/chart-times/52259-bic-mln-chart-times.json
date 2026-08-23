@@ -12,11 +12,11 @@
       "departureTime": "11:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIC"
     },
     {
       "stationCode": "MJPB",
@@ -25,11 +25,11 @@
       "departureTime": "12:24",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIC"
     },
     {
       "stationCode": "KYBR",
@@ -38,11 +38,11 @@
       "departureTime": "12:44",
       "day": 1,
       "distance": "22.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIC"
     },
     {
       "stationCode": "TQN",
@@ -51,11 +51,11 @@
       "departureTime": "13:04",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIC"
     },
     {
       "stationCode": "BXM",
@@ -64,11 +64,11 @@
       "departureTime": "13:21",
       "day": 1,
       "distance": "35.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIC"
     },
     {
       "stationCode": "DDW",
@@ -77,11 +77,11 @@
       "departureTime": "14:32",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIC"
     },
     {
       "stationCode": "PLK",
@@ -90,11 +90,11 @@
       "departureTime": "14:56",
       "day": 1,
       "distance": "77.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIC"
     },
     {
       "stationCode": "BIK",
@@ -103,11 +103,11 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "91.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIC"
     },
     {
       "stationCode": "MLN",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "107.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:30",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIC"
     }
   ],
-  "summary": "Reservation chart preparation times for Bic Mln (52259) from BIC to MLN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-08-06T07:22:00.838Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bic Mln (52259) is prepared at Bichia (BIC) around 8:30 PM, with a second (vacancy) chart around 11:30 AM. 9 of 9 stations on the BIC to MLN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:50:02.947Z",
+  "knownChartCount": 9
 }

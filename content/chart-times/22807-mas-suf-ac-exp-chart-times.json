@@ -12,11 +12,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "KGP",
@@ -25,11 +25,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "BLS",
@@ -38,11 +38,11 @@
       "departureTime": "20:45",
       "day": 1,
       "distance": "227.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "BHC",
@@ -51,11 +51,11 @@
       "departureTime": "21:37",
       "day": 1,
       "distance": "289.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "CTC",
@@ -64,11 +64,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "404.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "BBS",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "The first reservation chart for Mas Suf Ac Exp (22807) is prepared at Bhubaneswar (BBS) around 7:21 AM, with a second (vacancy) chart around 5:40 PM. 13 of 18 stations on the SRC to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:58:25.957Z",
-  "knownChartCount": 13
+  "summary": "The first reservation chart for Mas Suf Ac Exp (22807) is prepared at Santragachi Jn (SRC) around 7:28 AM, with a second (vacancy) chart around 5:40 PM. 18 of 18 stations on the SRC to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:40:19.404Z",
+  "knownChartCount": 18
 }

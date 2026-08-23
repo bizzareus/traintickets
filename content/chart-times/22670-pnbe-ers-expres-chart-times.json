@@ -12,11 +12,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "07:02",
+      "chartOneDayOffset": 2,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "ARA",
@@ -487,7 +487,7 @@
       "chartRemoteStation": "CBE"
     }
   ],
-  "summary": "The first reservation chart for Pnbe Ers Expres (22670) is prepared at Prayagraj Jn. (PRYJ) around 2:44 PM, with a second (vacancy) chart around 12:21 AM. 31 of 37 stations on the PNBE to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:52:15.903Z",
-  "knownChartCount": 31
+  "summary": "The first reservation chart for Pnbe Ers Expres (22670) is prepared at Patna Jn (PNBE) around 7:02 AM. 32 of 37 stations on the PNBE to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:38:18.849Z",
+  "knownChartCount": 32
 }

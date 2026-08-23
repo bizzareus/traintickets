@@ -12,11 +12,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:14",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "MB",
@@ -25,11 +25,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:14",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "BE",
@@ -38,11 +38,11 @@
       "departureTime": "22:29",
       "day": 1,
       "distance": "245.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:14",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "LKO",
@@ -123,7 +123,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bnrs Garib Rath (22542) from ANVT to BNRS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-08-06T02:21:36.293Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bnrs Garib Rath (22542) is prepared at Anand Vihar TRM (ANVT) around 10:15 AM, with a second (vacancy) chart around 10:14 PM. 3 of 9 stations on the ANVT to BNRS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:35:03.573Z",
+  "knownChartCount": 3
 }

@@ -12,11 +12,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "AKV",
@@ -25,11 +25,11 @@
       "departureTime": "21:57",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BRC",
@@ -38,11 +38,11 @@
       "departureTime": "23:14",
       "day": 1,
       "distance": "129.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:36",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "ADI",
@@ -214,7 +214,7 @@
       "chartRemoteStation": "ST"
     }
   ],
-  "summary": "The first reservation chart for Surat Mahuva Ex (19255) is prepared at Ahmedabad Jn (ADI) around 11:31 AM, with a second (vacancy) chart around 10:48 PM. 13 of 16 stations on the ST to MHV route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:07:56.040Z",
-  "knownChartCount": 13
+  "summary": "The first reservation chart for Surat Mahuva Ex (19255) is prepared at Surat (ST) around 11:36 AM, with a second (vacancy) chart around 10:42 PM. 16 of 16 stations on the ST to MHV route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:09:44.368Z",
+  "knownChartCount": 16
 }

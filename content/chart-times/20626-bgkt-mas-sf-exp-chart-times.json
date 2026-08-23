@@ -287,8 +287,8 @@
       "distance": "1339.0",
       "chartTimeLocal": "21:28",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:07",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "WR"
     },
     {
@@ -300,8 +300,8 @@
       "distance": "1457.0",
       "chartTimeLocal": "21:28",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:07",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "WR"
     },
     {
@@ -313,8 +313,8 @@
       "distance": "1471.0",
       "chartTimeLocal": "21:28",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:07",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "WR"
     },
     {
@@ -326,8 +326,8 @@
       "distance": "1714.0",
       "chartTimeLocal": "22:52",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "WL"
     },
     {
@@ -339,8 +339,8 @@
       "distance": "1821.0",
       "chartTimeLocal": "22:52",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "WL"
     },
     {
@@ -350,10 +350,10 @@
       "departureTime": "15:55",
       "day": 2,
       "distance": "1921.0",
-      "chartTimeLocal": "05:48",
+      "chartTimeLocal": "05:44",
       "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BZA"
     },
     {
@@ -363,10 +363,10 @@
       "departureTime": "18:00",
       "day": 2,
       "distance": "2059.0",
-      "chartTimeLocal": "05:48",
+      "chartTimeLocal": "05:44",
       "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BZA"
     },
     {
@@ -376,10 +376,10 @@
       "departureTime": "19:35",
       "day": 2,
       "distance": "2175.0",
-      "chartTimeLocal": "05:48",
+      "chartTimeLocal": "05:44",
       "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BZA"
     },
     {
@@ -389,10 +389,10 @@
       "departureTime": "20:30",
       "day": 2,
       "distance": "2214.0",
-      "chartTimeLocal": "05:48",
+      "chartTimeLocal": "05:44",
       "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BZA"
     },
     {
@@ -402,10 +402,10 @@
       "departureTime": "21:10",
       "day": 2,
       "distance": "2268.0",
-      "chartTimeLocal": "05:48",
+      "chartTimeLocal": "05:44",
       "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BZA"
     },
     {
@@ -415,14 +415,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "2351.0",
-      "chartTimeLocal": "05:48",
+      "chartTimeLocal": "05:44",
       "chartOneDayOffset": 1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "BZA"
     }
   ],
   "summary": "The first reservation chart for Bgkt Mas Sf Exp (20626) is prepared at Bhagat Ki Kothi (BGKT) around 9:14 PM, with a second (vacancy) chart around 5:25 AM. 30 of 32 stations on the BGKT to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:37:32.866Z",
+  "generatedAt": "2026-08-22T20:19:12.625Z",
   "knownChartCount": 30
 }

@@ -25,11 +25,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "3.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGUT"
     },
     {
       "stationCode": "BORA",
@@ -38,11 +38,11 @@
       "departureTime": "19:31",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGUT"
     },
     {
       "stationCode": "TKG",
@@ -51,11 +51,11 @@
       "departureTime": "20:12",
       "day": 1,
       "distance": "59.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGUT"
     },
     {
       "stationCode": "AUB",
@@ -64,11 +64,11 @@
       "departureTime": "20:32",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGUT"
     },
     {
       "stationCode": "KNE",
@@ -77,11 +77,11 @@
       "departureTime": "20:57",
       "day": 1,
       "distance": "110.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNE"
     },
     {
       "stationCode": "DLK",
@@ -90,11 +90,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "138.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNE"
     },
     {
       "stationCode": "BOE",
@@ -103,11 +103,11 @@
       "departureTime": "21:47",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNE"
     },
     {
       "stationCode": "SRI",
@@ -116,11 +116,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNE"
     },
     {
       "stationCode": "KIR",
@@ -129,11 +129,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "PRNA",
@@ -142,11 +142,11 @@
       "departureTime": "23:42",
       "day": 1,
       "distance": "234.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "ARR",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "KIR"
     }
   ],
-  "summary": "The first reservation chart for Sgut Jbn Express (15724) is prepared at Siliguri Town (SGUT) around 11 AM, with a second (vacancy) chart around 6:45 PM. 4 of 14 stations on the SGUT to JBN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:19:36.904Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Sgut Jbn Express (15724) is prepared at Siliguri Town (SGUT) around 11 AM, with a second (vacancy) chart around 6:45 PM. 14 of 14 stations on the SGUT to JBN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:37:56.962Z",
+  "knownChartCount": 14
 }

@@ -12,11 +12,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:22",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "PURI"
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RGDA"
     },
     {
       "stationCode": "KUR",
@@ -25,10 +25,10 @@
       "departureTime": "08:10",
       "day": 1,
       "distance": "44.0",
-      "chartTimeLocal": "19:22",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PURI"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "08:35",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": "19:22",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PURI"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "08:57",
       "day": 1,
       "distance": "88.0",
-      "chartTimeLocal": "19:22",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PURI"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "09:57",
       "day": 1,
       "distance": "125.0",
-      "chartTimeLocal": "19:22",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PURI"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "10:37",
       "day": 1,
       "distance": "174.0",
-      "chartTimeLocal": "19:22",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PURI"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "10:52",
       "day": 1,
       "distance": "186.0",
-      "chartTimeLocal": "19:22",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PURI"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "11:37",
       "day": 1,
       "distance": "224.0",
-      "chartTimeLocal": "19:22",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PURI"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "12:17",
       "day": 1,
       "distance": "271.0",
-      "chartTimeLocal": "19:22",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PURI"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "13:30",
       "day": 1,
       "distance": "342.0",
-      "chartTimeLocal": "19:28",
+      "chartTimeLocal": "19:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "14:22",
       "day": 1,
       "distance": "384.0",
-      "chartTimeLocal": "19:28",
+      "chartTimeLocal": "19:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "15:22",
       "day": 1,
       "distance": "460.0",
-      "chartTimeLocal": "19:28",
+      "chartTimeLocal": "19:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "523.0",
-      "chartTimeLocal": "19:28",
+      "chartTimeLocal": "19:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -181,10 +181,10 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "536.0",
-      "chartTimeLocal": "19:28",
+      "chartTimeLocal": "19:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -194,10 +194,10 @@
       "departureTime": "18:22",
       "day": 1,
       "distance": "609.0",
-      "chartTimeLocal": "19:28",
+      "chartTimeLocal": "19:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -207,11 +207,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "663.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RGDA"
     },
     {
       "stationCode": "TKRI",
@@ -220,11 +220,11 @@
       "departureTime": "21:42",
       "day": 1,
       "distance": "753.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RGDA"
     },
     {
       "stationCode": "LKMR",
@@ -233,11 +233,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "775.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RGDA"
     },
     {
       "stationCode": "KKGM",
@@ -246,11 +246,11 @@
       "departureTime": "22:22",
       "day": 1,
       "distance": "790.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RGDA"
     },
     {
       "stationCode": "DMNJ",
@@ -259,11 +259,11 @@
       "departureTime": "22:47",
       "day": 1,
       "distance": "817.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RGDA"
     },
     {
       "stationCode": "KRPU",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "836.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RGDA"
     }
   ],
-  "summary": "The first reservation chart for Puri Koraput Exp (18407) is prepared at Puri (PURI) around 7:22 PM. 15 of 21 stations on the PURI to KRPU route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:46:38.923Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Puri Koraput Exp (18407) is prepared at Puri (PURI) around 12:15 PM, with a second (vacancy) chart around 8 PM. 21 of 21 stations on the PURI to KRPU route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:03:56.744Z",
+  "knownChartCount": 21
 }

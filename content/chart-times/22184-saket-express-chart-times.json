@@ -103,11 +103,11 @@
       "departureTime": "00:25",
       "day": 2,
       "distance": "524.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "NU",
@@ -116,11 +116,11 @@
       "departureTime": "01:30",
       "day": 2,
       "distance": "608.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "PPI",
@@ -129,11 +129,11 @@
       "departureTime": "02:30",
       "day": 2,
       "distance": "702.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "ET",
@@ -142,11 +142,11 @@
       "departureTime": "04:10",
       "day": 2,
       "distance": "769.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "KNW",
@@ -155,11 +155,11 @@
       "departureTime": "06:25",
       "day": 2,
       "distance": "953.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "BAU",
@@ -168,11 +168,11 @@
       "departureTime": "07:15",
       "day": 2,
       "distance": "1022.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "BSL",
@@ -181,11 +181,11 @@
       "departureTime": "08:20",
       "day": 2,
       "distance": "1076.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "MMR",
@@ -194,11 +194,11 @@
       "departureTime": "10:40",
       "day": 2,
       "distance": "1260.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MMR"
     },
     {
       "stationCode": "NK",
@@ -207,11 +207,11 @@
       "departureTime": "11:40",
       "day": 2,
       "distance": "1333.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MMR"
     },
     {
       "stationCode": "KYN",
@@ -220,11 +220,11 @@
       "departureTime": "14:45",
       "day": 2,
       "distance": "1467.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MMR"
     },
     {
       "stationCode": "TNA",
@@ -233,11 +233,11 @@
       "departureTime": "15:10",
       "day": 2,
       "distance": "1487.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MMR"
     },
     {
       "stationCode": "LTT",
@@ -246,14 +246,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1505.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MMR"
     }
   ],
-  "summary": "The first reservation chart for Saket Express (22184) is prepared at Ayodhaya Cant (AYC) around 9:42 PM. 3 of 19 stations on the AYC to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:11:30.426Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Saket Express (22184) is prepared at Ayodhaya Cant (AYC) around 9:42 PM. 15 of 19 stations on the AYC to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:29:42.133Z",
+  "knownChartCount": 15
 }

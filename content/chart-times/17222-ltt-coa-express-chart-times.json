@@ -103,11 +103,11 @@
       "departureTime": "00:10",
       "day": 2,
       "distance": "660.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "LPI",
@@ -116,11 +116,11 @@
       "departureTime": "01:35",
       "day": 2,
       "distance": "750.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "SC",
@@ -129,11 +129,11 @@
       "departureTime": "02:15",
       "day": 2,
       "distance": "773.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "MLY",
@@ -142,11 +142,11 @@
       "departureTime": "02:30",
       "day": 2,
       "distance": "779.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "NLDA",
@@ -155,11 +155,11 @@
       "departureTime": "05:07",
       "day": 2,
       "distance": "883.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "MRGA",
@@ -168,11 +168,11 @@
       "departureTime": "05:40",
       "day": 2,
       "distance": "920.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "NDKD",
@@ -181,11 +181,11 @@
       "departureTime": "06:25",
       "day": 2,
       "distance": "959.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "SAP",
@@ -194,11 +194,11 @@
       "departureTime": "07:31",
       "day": 2,
       "distance": "1012.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "GNT",
@@ -207,11 +207,11 @@
       "departureTime": "08:20",
       "day": 2,
       "distance": "1054.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "MAG",
@@ -220,11 +220,11 @@
       "departureTime": "08:51",
       "day": 2,
       "distance": "1074.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "BZA",
@@ -233,11 +233,11 @@
       "departureTime": "09:45",
       "day": 2,
       "distance": "1086.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "EE",
@@ -246,11 +246,11 @@
       "departureTime": "10:30",
       "day": 2,
       "distance": "1145.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "TDD",
@@ -259,11 +259,11 @@
       "departureTime": "11:10",
       "day": 2,
       "distance": "1193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "RJY",
@@ -272,11 +272,11 @@
       "departureTime": "12:15",
       "day": 2,
       "distance": "1235.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "SLO",
@@ -285,11 +285,11 @@
       "departureTime": "13:10",
       "day": 2,
       "distance": "1285.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "CCT",
@@ -298,11 +298,11 @@
       "departureTime": "13:30",
       "day": 2,
       "distance": "1298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "COA",
@@ -311,14 +311,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1299.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     }
   ],
-  "summary": "The first reservation chart for Ltt Coa Express (17222) is prepared at Lokmanyatilak T (LTT) around 8:21 PM. 3 of 24 stations on the LTT to COA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:19:31.344Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Ltt Coa Express (17222) is prepared at Lokmanyatilak T (LTT) around 8:21 PM. 20 of 24 stations on the LTT to COA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:54:47.855Z",
+  "knownChartCount": 20
 }

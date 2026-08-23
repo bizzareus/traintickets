@@ -103,11 +103,11 @@
       "departureTime": "02:10",
       "day": 2,
       "distance": "868.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "BZA",
@@ -116,11 +116,11 @@
       "departureTime": "03:30",
       "day": 2,
       "distance": "903.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "DVD",
@@ -129,11 +129,11 @@
       "departureTime": "09:12",
       "day": 2,
       "distance": "1236.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "VSKP",
@@ -142,11 +142,11 @@
       "departureTime": "10:00",
       "day": 2,
       "distance": "1254.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:41",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "VZM",
@@ -155,11 +155,11 @@
       "departureTime": "11:00",
       "day": 2,
       "distance": "1314.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:41",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BAM",
@@ -168,11 +168,11 @@
       "departureTime": "14:03",
       "day": 2,
       "distance": "1530.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:41",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "KUR",
@@ -181,11 +181,11 @@
       "departureTime": "16:15",
       "day": 2,
       "distance": "1677.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:41",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BBS",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1696.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "09:41",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "The first reservation chart for Pune Bbs Sf Exp (22881) is prepared at Pune Jn (PUNE) around 8:27 PM. 5 of 15 stations on the PUNE to BBS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T03:07:46.490Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Pune Bbs Sf Exp (22881) is prepared at Pune Jn (PUNE) around 8:27 PM. 13 of 15 stations on the PUNE to BBS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:43:07.149Z",
+  "knownChartCount": 13
 }

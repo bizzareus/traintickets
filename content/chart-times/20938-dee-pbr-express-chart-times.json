@@ -311,11 +311,11 @@
       "departureTime": "00:03",
       "day": 2,
       "distance": "976.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MSH"
     },
     {
       "stationCode": "SUNR",
@@ -324,11 +324,11 @@
       "departureTime": "01:13",
       "day": 2,
       "distance": "1040.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MSH"
     },
     {
       "stationCode": "WKR",
@@ -337,11 +337,11 @@
       "departureTime": "02:13",
       "day": 2,
       "distance": "1115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MSH"
     },
     {
       "stationCode": "RJT",
@@ -350,11 +350,11 @@
       "departureTime": "03:27",
       "day": 2,
       "distance": "1157.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MSH"
     },
     {
       "stationCode": "HAPA",
@@ -363,11 +363,11 @@
       "departureTime": "05:12",
       "day": 2,
       "distance": "1233.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MSH"
     },
     {
       "stationCode": "JAM",
@@ -376,11 +376,11 @@
       "departureTime": "05:30",
       "day": 2,
       "distance": "1241.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MSH"
     },
     {
       "stationCode": "BNVD",
@@ -389,11 +389,11 @@
       "departureTime": "06:56",
       "day": 2,
       "distance": "1321.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MSH"
     },
     {
       "stationCode": "PBR",
@@ -402,14 +402,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1373.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MSH"
     }
   ],
-  "summary": "The first reservation chart for Dee Pbr Express (20938) is prepared at Delhi S Rohilla (DEE) around 10:05 PM. 14 of 31 stations on the DEE to PBR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:55:31.715Z",
-  "knownChartCount": 14
+  "summary": "The first reservation chart for Dee Pbr Express (20938) is prepared at Delhi S Rohilla (DEE) around 10:05 PM. 22 of 31 stations on the DEE to PBR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:24:21.616Z",
+  "knownChartCount": 22
 }

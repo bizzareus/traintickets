@@ -12,11 +12,11 @@
       "departureTime": "01:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "DSO",
@@ -25,11 +25,11 @@
       "departureTime": "02:12",
       "day": 1,
       "distance": "33.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "NOK",
@@ -38,11 +38,11 @@
       "departureTime": "02:36",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "NGO",
@@ -51,11 +51,11 @@
       "departureTime": "03:19",
       "day": 1,
       "distance": "116.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "DNA",
@@ -64,11 +64,11 @@
       "departureTime": "04:49",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "MKN",
@@ -77,11 +77,11 @@
       "departureTime": "05:23",
       "day": 1,
       "distance": "261.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "KMNC",
@@ -90,11 +90,11 @@
       "departureTime": "05:38",
       "day": 1,
       "distance": "274.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:45",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "01:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKN"
     },
     {
       "stationCode": "JP",
@@ -103,11 +103,11 @@
       "departureTime": "07:20",
       "day": 1,
       "distance": "380.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:34",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DPA",
@@ -116,11 +116,11 @@
       "departureTime": "07:35",
       "day": 1,
       "distance": "387.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:34",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "BNLW",
@@ -129,11 +129,11 @@
       "departureTime": "08:36",
       "day": 1,
       "distance": "446.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:34",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "SWM",
@@ -142,11 +142,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "511.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:34",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "IDG",
@@ -155,11 +155,11 @@
       "departureTime": "10:57",
       "day": 1,
       "distance": "548.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:34",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "KOTA",
@@ -168,11 +168,11 @@
       "departureTime": "12:00",
       "day": 1,
       "distance": "619.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "BWM",
@@ -181,11 +181,11 @@
       "departureTime": "13:05",
       "day": 1,
       "distance": "719.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "SGZ",
@@ -194,11 +194,11 @@
       "departureTime": "13:30",
       "day": 1,
       "distance": "753.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "SVA",
@@ -207,11 +207,11 @@
       "departureTime": "13:45",
       "day": 1,
       "distance": "766.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "CMU",
@@ -220,11 +220,11 @@
       "departureTime": "14:00",
       "day": 1,
       "distance": "782.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "VMA",
@@ -233,11 +233,11 @@
       "departureTime": "14:20",
       "day": 1,
       "distance": "804.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "NAD",
@@ -246,11 +246,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "844.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "UJN",
@@ -259,11 +259,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "899.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:55",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "BCH",
@@ -272,11 +272,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "959.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:55",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "SJP",
@@ -285,11 +285,11 @@
       "departureTime": "18:02",
       "day": 1,
       "distance": "1002.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:55",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "SEH",
@@ -298,11 +298,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "1044.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:55",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "UJN"
     },
     {
       "stationCode": "BPL",
@@ -448,7 +448,7 @@
       "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "The first reservation chart for Bkn Bsp Sf Exp (20846) is prepared at Nagpur (NGP) around 5:11 PM, with a second (vacancy) chart around 2:35 AM. 8 of 34 stations on the BKN to BSP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:49:08.269Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Bkn Bsp Sf Exp (20846) is prepared at Bikaner Jn (BKN) around 5:45 PM, with a second (vacancy) chart around 1:30 AM. 31 of 34 stations on the BKN to BSP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:22:01.073Z",
+  "knownChartCount": 31
 }

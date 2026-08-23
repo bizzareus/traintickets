@@ -12,11 +12,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "YNK",
@@ -25,11 +25,11 @@
       "departureTime": "21:47",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "HUP",
@@ -38,11 +38,11 @@
       "departureTime": "23:03",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "DMM",
@@ -214,7 +214,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Smvb Bidr  Exp (16559) from SMVB to BIDR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-08-05T23:05:22.485Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Smvb Bidr  Exp (16559) is prepared at Smvt Bengaluru (SMVB) around 11:18 AM, with a second (vacancy) chart around 10:48 PM. 3 of 16 stations on the SMVB to BIDR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:45:39.073Z",
+  "knownChartCount": 3
 }

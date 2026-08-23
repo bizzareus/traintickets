@@ -220,11 +220,11 @@
       "departureTime": "00:05",
       "day": 3,
       "distance": "1427.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:15",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "BKSC",
@@ -233,11 +233,11 @@
       "departureTime": "01:40",
       "day": 3,
       "distance": "1480.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:15",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "DHN",
@@ -246,11 +246,11 @@
       "departureTime": "03:50",
       "day": 3,
       "distance": "1529.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:15",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "CRJ",
@@ -259,11 +259,11 @@
       "departureTime": "05:04",
       "day": 3,
       "distance": "1590.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:15",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "MDP",
@@ -272,11 +272,11 @@
       "departureTime": "06:03",
       "day": 3,
       "distance": "1647.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:15",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "JSME",
@@ -285,11 +285,11 @@
       "departureTime": "06:41",
       "day": 3,
       "distance": "1676.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:26",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "JAJ",
@@ -298,11 +298,11 @@
       "departureTime": "08:05",
       "day": 3,
       "distance": "1719.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:26",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "KIUL",
@@ -311,11 +311,11 @@
       "departureTime": "08:53",
       "day": 3,
       "distance": "1774.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:26",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "BJU",
@@ -324,11 +324,11 @@
       "departureTime": "10:50",
       "day": 3,
       "distance": "1813.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:26",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "SPJ",
@@ -337,11 +337,11 @@
       "departureTime": "12:20",
       "day": 3,
       "distance": "1864.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:26",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "DBG",
@@ -350,14 +350,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "1901.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:26",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "JSME"
     }
   ],
-  "summary": "The first reservation chart for Chz Dbg Express (17007) is prepared at Charlapalli (CHZ) around 2:21 PM, with a second (vacancy) chart around 10:35 PM. 1 of 27 stations on the CHZ to DBG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T15:57:47.184Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Chz Dbg Express (17007) is prepared at Charlapalli (CHZ) around 2:21 PM, with a second (vacancy) chart around 10:35 PM. 12 of 27 stations on the CHZ to DBG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:51:00.442Z",
+  "knownChartCount": 12
 }

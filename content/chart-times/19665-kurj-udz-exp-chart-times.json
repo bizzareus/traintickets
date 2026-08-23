@@ -116,10 +116,10 @@
       "departureTime": "13:48",
       "day": 1,
       "distance": "202.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:56",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:33",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "14:14",
       "day": 1,
       "distance": "226.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:56",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:33",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "14:38",
       "day": 1,
       "distance": "257.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:56",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:33",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "15:22",
       "day": 1,
       "distance": "299.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:56",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:33",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "15:48",
       "day": 1,
       "distance": "337.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:56",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:33",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -181,10 +181,10 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "365.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:56",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:33",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -194,11 +194,11 @@
       "departureTime": "17:20",
       "day": 1,
       "distance": "417.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "AH",
@@ -207,11 +207,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "443.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "BTE",
@@ -220,11 +220,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "470.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "NBI",
@@ -233,11 +233,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "499.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "KL",
@@ -246,11 +246,11 @@
       "departureTime": "19:07",
       "day": 1,
       "distance": "516.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "MURD",
@@ -259,11 +259,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "535.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "BKI",
@@ -272,11 +272,11 @@
       "departureTime": "20:45",
       "day": 1,
       "distance": "567.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "DO",
@@ -285,11 +285,11 @@
       "departureTime": "21:22",
       "day": 1,
       "distance": "596.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "GTJT",
@@ -298,11 +298,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "647.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "GADJ",
@@ -311,11 +311,11 @@
       "departureTime": "22:16",
       "day": 1,
       "distance": "652.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "JP",
@@ -324,11 +324,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "658.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "FL",
@@ -337,11 +337,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "712.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "KSG",
@@ -461,7 +461,7 @@
       "chartRemoteStation": "JP"
     }
   ],
-  "summary": "The first reservation chart for Kurj Udz Exp (19665) is prepared at KHAJURAHO (KURJ) around 9:03 PM, with a second (vacancy) chart around 4:05 AM. 23 of 35 stations on the KURJ to UDZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:23:22.113Z",
-  "knownChartCount": 23
+  "summary": "The first reservation chart for Kurj Udz Exp (19665) is prepared at KHAJURAHO (KURJ) around 9:03 PM, with a second (vacancy) chart around 4:05 AM. 35 of 35 stations on the KURJ to UDZ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:15:05.352Z",
+  "knownChartCount": 35
 }

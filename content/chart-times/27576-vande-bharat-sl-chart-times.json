@@ -25,10 +25,10 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": "08:39",
+      "chartTimeLocal": "08:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KYQ"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": "08:39",
+      "chartTimeLocal": "08:36",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KYQ"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "258.0",
-      "chartTimeLocal": "11:35",
+      "chartTimeLocal": "12:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NOQ"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "276.0",
-      "chartTimeLocal": "11:35",
+      "chartTimeLocal": "12:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NOQ"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "22:57",
       "day": 1,
       "distance": "369.0",
-      "chartTimeLocal": "11:35",
+      "chartTimeLocal": "12:01",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NOQ"
     },
     {
@@ -90,11 +90,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "402.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "AUB",
@@ -201,7 +201,7 @@
       "chartRemoteStation": "NJP"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Sl (27576) is prepared at Kamakhya (KYQ) around 8:39 AM. 14 of 15 stations on the KYQ to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T06:21:11.438Z",
-  "knownChartCount": 14
+  "summary": "The first reservation chart for Vande Bharat Sl (27576) is prepared at Kamakhya (KYQ) around 8:39 AM. 15 of 15 stations on the KYQ to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:48:57.551Z",
+  "knownChartCount": 15
 }

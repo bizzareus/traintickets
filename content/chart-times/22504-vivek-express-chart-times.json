@@ -220,10 +220,10 @@
       "departureTime": "12:05",
       "day": 2,
       "distance": "848.0",
-      "chartTimeLocal": "20:44",
+      "chartTimeLocal": "19:56",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:50",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NOQ"
     },
     {
@@ -233,10 +233,10 @@
       "departureTime": "12:35",
       "day": 2,
       "distance": "866.0",
-      "chartTimeLocal": "20:44",
+      "chartTimeLocal": "19:56",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:50",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NOQ"
     },
     {
@@ -246,10 +246,10 @@
       "departureTime": "13:00",
       "day": 2,
       "distance": "899.0",
-      "chartTimeLocal": "20:44",
+      "chartTimeLocal": "19:56",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:50",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NOQ"
     },
     {
@@ -259,10 +259,10 @@
       "departureTime": "14:05",
       "day": 2,
       "distance": "962.0",
-      "chartTimeLocal": "20:44",
+      "chartTimeLocal": "19:56",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:50",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NOQ"
     },
     {
@@ -272,10 +272,10 @@
       "departureTime": "15:45",
       "day": 2,
       "distance": "995.0",
-      "chartTimeLocal": "21:29",
+      "chartTimeLocal": "21:11",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NJP"
     },
     {
@@ -285,10 +285,10 @@
       "departureTime": "17:12",
       "day": 2,
       "distance": "1083.0",
-      "chartTimeLocal": "21:29",
+      "chartTimeLocal": "21:11",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NJP"
     },
     {
@@ -298,10 +298,10 @@
       "departureTime": "20:30",
       "day": 2,
       "distance": "1228.0",
-      "chartTimeLocal": "21:29",
+      "chartTimeLocal": "21:11",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NJP"
     },
     {
@@ -311,10 +311,10 @@
       "departureTime": "22:25",
       "day": 2,
       "distance": "1350.0",
-      "chartTimeLocal": "21:29",
+      "chartTimeLocal": "21:11",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NJP"
     },
     {
@@ -787,6 +787,6 @@
     }
   ],
   "summary": "The first reservation chart for Vivek Express (22504) is prepared at DIBRUGARH (DBRG) around 9:02 AM, with a second (vacancy) chart around 7 PM. 59 of 60 stations on the DBRG to CAPE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:08:14.937Z",
+  "generatedAt": "2026-08-22T20:34:13.802Z",
   "knownChartCount": 59
 }

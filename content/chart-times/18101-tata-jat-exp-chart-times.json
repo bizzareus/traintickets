@@ -311,10 +311,10 @@
       "departureTime": "09:50",
       "day": 2,
       "distance": "746.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -324,10 +324,10 @@
       "departureTime": "10:52",
       "day": 2,
       "distance": "828.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -337,10 +337,10 @@
       "departureTime": "11:20",
       "day": 2,
       "distance": "862.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -350,10 +350,10 @@
       "departureTime": "13:10",
       "day": 2,
       "distance": "941.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -363,10 +363,10 @@
       "departureTime": "13:55",
       "day": 2,
       "distance": "985.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -376,10 +376,10 @@
       "departureTime": "14:11",
       "day": 2,
       "distance": "1004.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -389,10 +389,10 @@
       "departureTime": "15:20",
       "day": 2,
       "distance": "1080.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -402,10 +402,10 @@
       "departureTime": "16:02",
       "day": 2,
       "distance": "1135.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -415,10 +415,10 @@
       "departureTime": "16:22",
       "day": 2,
       "distance": "1155.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -428,10 +428,10 @@
       "departureTime": "16:50",
       "day": 2,
       "distance": "1172.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -441,10 +441,10 @@
       "departureTime": "17:27",
       "day": 2,
       "distance": "1220.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -454,10 +454,10 @@
       "departureTime": "18:03",
       "day": 2,
       "distance": "1250.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -467,10 +467,10 @@
       "departureTime": "20:25",
       "day": 2,
       "distance": "1356.0",
-      "chartTimeLocal": "19:06",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:35",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "PRYJ"
     },
     {
@@ -480,11 +480,11 @@
       "departureTime": "21:25",
       "day": 2,
       "distance": "1375.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "SZM",
@@ -493,11 +493,11 @@
       "departureTime": "21:40",
       "day": 2,
       "distance": "1378.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "SNP",
@@ -506,11 +506,11 @@
       "departureTime": "22:12",
       "day": 2,
       "distance": "1419.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "PNP",
@@ -519,11 +519,11 @@
       "departureTime": "22:45",
       "day": 2,
       "distance": "1464.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "KUN",
@@ -532,11 +532,11 @@
       "departureTime": "23:13",
       "day": 2,
       "distance": "1498.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "KKDE",
@@ -545,11 +545,11 @@
       "departureTime": "23:40",
       "day": 2,
       "distance": "1531.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "SHDM",
@@ -786,7 +786,7 @@
       "chartRemoteStation": "DLI"
     }
   ],
-  "summary": "The first reservation chart for Tata Jat Exp (18101) is prepared at Tatanagar Jn (TATA) around 8:14 AM, with a second (vacancy) chart around 4:40 PM. 54 of 60 stations on the TATA to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:37:16.797Z",
-  "knownChartCount": 54
+  "summary": "The first reservation chart for Tata Jat Exp (18101) is prepared at Tatanagar Jn (TATA) around 8:14 AM, with a second (vacancy) chart around 4:40 PM. 60 of 60 stations on the TATA to JAT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:01:35.993Z",
+  "knownChartCount": 60
 }

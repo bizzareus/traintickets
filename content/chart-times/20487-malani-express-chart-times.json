@@ -64,11 +64,11 @@
       "departureTime": "00:23",
       "day": 2,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "LUNI",
@@ -77,11 +77,11 @@
       "departureTime": "01:15",
       "day": 2,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "JU",
@@ -90,11 +90,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "210.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "MTD",
@@ -103,11 +103,11 @@
       "departureTime": "03:40",
       "day": 2,
       "distance": "314.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "DNA",
@@ -116,11 +116,11 @@
       "departureTime": "04:17",
       "day": 2,
       "distance": "359.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "MKN",
@@ -129,11 +129,11 @@
       "departureTime": "04:52",
       "day": 2,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "FL",
@@ -142,11 +142,11 @@
       "departureTime": "06:02",
       "day": 2,
       "distance": "467.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "JP",
@@ -155,11 +155,11 @@
       "departureTime": "06:55",
       "day": 2,
       "distance": "522.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "GADJ",
@@ -168,11 +168,11 @@
       "departureTime": "07:09",
       "day": 2,
       "distance": "528.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "DO",
@@ -181,11 +181,11 @@
       "departureTime": "07:48",
       "day": 2,
       "distance": "583.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "RHG",
@@ -194,11 +194,11 @@
       "departureTime": "08:35",
       "day": 2,
       "distance": "637.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "AWR",
@@ -207,11 +207,11 @@
       "departureTime": "09:40",
       "day": 2,
       "distance": "673.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "KRH",
@@ -220,11 +220,11 @@
       "departureTime": "10:04",
       "day": 2,
       "distance": "700.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "RE",
@@ -233,11 +233,11 @@
       "departureTime": "10:57",
       "day": 2,
       "distance": "747.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "GGN",
@@ -246,11 +246,11 @@
       "departureTime": "11:35",
       "day": 2,
       "distance": "798.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "DEC",
@@ -259,11 +259,11 @@
       "departureTime": "11:59",
       "day": 2,
       "distance": "815.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "DEE",
@@ -272,14 +272,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "825.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     }
   ],
-  "summary": "Reservation chart preparation times for Malani Express (20487) from BME to DEE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 21 stations.",
-  "generatedAt": "2026-08-06T00:33:24.427Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Malani Express (20487) is prepared at Samdhari Jn (SMR) around 2:30 PM, with a second (vacancy) chart around 11:37 PM. 17 of 21 stations on the BME to DEE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:18:09.342Z",
+  "knownChartCount": 17
 }

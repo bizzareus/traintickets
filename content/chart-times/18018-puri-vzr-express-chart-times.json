@@ -12,11 +12,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "KUR",
@@ -162,7 +162,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Puri Vzr Express (18018) from PURI to VZR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-08-05T23:34:41.290Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Puri Vzr Express (18018) is prepared at Puri (PURI) around 1:52 PM, with a second (vacancy) chart around 11:35 PM. 1 of 12 stations on the PURI to VZR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:00:50.570Z",
+  "knownChartCount": 1
 }

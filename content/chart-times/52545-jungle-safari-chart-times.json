@@ -12,11 +12,11 @@
       "departureTime": "10:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGUJ"
     },
     {
       "stationCode": "SN",
@@ -25,11 +25,11 @@
       "departureTime": "10:40",
       "day": 1,
       "distance": "11.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGUJ"
     },
     {
       "stationCode": "RTG",
@@ -38,11 +38,11 @@
       "departureTime": "11:13",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGUJ"
     },
     {
       "stationCode": "TDH",
@@ -51,11 +51,11 @@
       "departureTime": "12:25",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGUJ"
     },
     {
       "stationCode": "GBE",
@@ -64,14 +64,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "37.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGUJ"
     }
   ],
-  "summary": "Reservation chart preparation times for Jungle Safari (52545) from SGUJ to GBE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
-  "generatedAt": "2026-08-06T07:55:53.149Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jungle Safari (52545) is prepared at Siliguri Jn (SGUJ) around 10:50 PM, with a second (vacancy) chart around 11:45 AM. 5 of 5 stations on the SGUJ to GBE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:50:30.802Z",
+  "knownChartCount": 5
 }

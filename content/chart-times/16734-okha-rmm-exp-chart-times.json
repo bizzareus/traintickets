@@ -415,11 +415,11 @@
       "departureTime": "01:40",
       "day": 3,
       "distance": "2286.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "HX",
@@ -428,11 +428,11 @@
       "departureTime": "02:15",
       "day": 3,
       "distance": "2325.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "RU",
@@ -441,11 +441,11 @@
       "departureTime": "04:20",
       "day": 3,
       "distance": "2450.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "TPTY",
@@ -454,11 +454,11 @@
       "departureTime": "05:00",
       "day": 3,
       "distance": "2460.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "KPD",
@@ -467,11 +467,11 @@
       "departureTime": "08:15",
       "day": 3,
       "distance": "2565.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "JTJ",
@@ -480,11 +480,11 @@
       "departureTime": "09:40",
       "day": 3,
       "distance": "2648.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "SA",
@@ -493,11 +493,11 @@
       "departureTime": "11:30",
       "day": 3,
       "distance": "2768.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "RASP",
@@ -506,11 +506,11 @@
       "departureTime": "12:00",
       "day": 3,
       "distance": "2794.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "NMKL",
@@ -519,11 +519,11 @@
       "departureTime": "12:30",
       "day": 3,
       "distance": "2820.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "KRR",
@@ -532,11 +532,11 @@
       "departureTime": "13:10",
       "day": 3,
       "distance": "2854.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "04:45",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "DG",
@@ -545,11 +545,11 @@
       "departureTime": "14:30",
       "day": 3,
       "distance": "2928.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "14:15",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "DG"
     },
     {
       "stationCode": "MDU",
@@ -558,11 +558,11 @@
       "departureTime": "15:25",
       "day": 3,
       "distance": "2993.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "MNM",
@@ -571,11 +571,11 @@
       "departureTime": "16:45",
       "day": 3,
       "distance": "3041.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "PMK",
@@ -584,11 +584,11 @@
       "departureTime": "17:10",
       "day": 3,
       "distance": "3065.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "RMD",
@@ -597,11 +597,11 @@
       "departureTime": "17:45",
       "day": 3,
       "distance": "3101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "MMM",
@@ -610,11 +610,11 @@
       "departureTime": "18:20",
       "day": 3,
       "distance": "3137.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MDU"
     },
     {
       "stationCode": "RMM",
@@ -623,14 +623,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "3154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:25",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MDU"
     }
   ],
-  "summary": "The first reservation chart for Okha Rmm Exp (16734) is prepared at Okha (OKHA) around 8:44 PM, with a second (vacancy) chart around 8:25 AM. 1 of 48 stations on the OKHA to RMM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T15:04:25.321Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Okha Rmm Exp (16734) is prepared at Okha (OKHA) around 8:44 PM, with a second (vacancy) chart around 8:25 AM. 18 of 48 stations on the OKHA to RMM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:49:13.441Z",
+  "knownChartCount": 18
 }

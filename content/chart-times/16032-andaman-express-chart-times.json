@@ -25,11 +25,11 @@
       "departureTime": "23:13",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "JAT",
@@ -968,7 +968,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Andaman Express (16032) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 1:12 PM, with a second (vacancy) chart around 10:15 PM. 62 of 74 stations on the SVDK to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:22:00.721Z",
-  "knownChartCount": 62
+  "summary": "The first reservation chart for Andaman Express (16032) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 1:12 PM, with a second (vacancy) chart around 10:15 PM. 63 of 74 stations on the SVDK to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:39:02.871Z",
+  "knownChartCount": 63
 }

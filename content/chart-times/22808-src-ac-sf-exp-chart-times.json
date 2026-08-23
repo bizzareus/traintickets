@@ -155,11 +155,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "1204.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BBS",
@@ -168,11 +168,11 @@
       "departureTime": "03:10",
       "day": 2,
       "distance": "1223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "CTC",
@@ -181,11 +181,11 @@
       "departureTime": "03:35",
       "day": 2,
       "distance": "1250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "BHC",
@@ -194,11 +194,11 @@
       "departureTime": "05:57",
       "day": 2,
       "distance": "1366.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "BLS",
@@ -207,11 +207,11 @@
       "departureTime": "06:37",
       "day": 2,
       "distance": "1428.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "KGP",
@@ -220,11 +220,11 @@
       "departureTime": "08:30",
       "day": 2,
       "distance": "1546.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "SRC",
@@ -233,14 +233,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1654.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:41",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BBS"
     }
   ],
-  "summary": "The first reservation chart for Src Ac Sf Exp (22808) is prepared at Mgr Chennai Ctl (MAS) around 8:17 PM, with a second (vacancy) chart around 8 AM. 9 of 18 stations on the MAS to SRC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:58:32.551Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Src Ac Sf Exp (22808) is prepared at Mgr Chennai Ctl (MAS) around 8:17 PM, with a second (vacancy) chart around 8 AM. 16 of 18 stations on the MAS to SRC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:40:21.979Z",
+  "knownChartCount": 16
 }

@@ -12,11 +12,11 @@
       "departureTime": "14:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "KPG",
@@ -25,11 +25,11 @@
       "departureTime": "14:47",
       "day": 1,
       "distance": "41.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "MMR",
@@ -38,11 +38,11 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "BSL",
@@ -51,11 +51,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "AK",
@@ -64,11 +64,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "408.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "NGP",
@@ -227,7 +227,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Snsi Howrah Exp (22893) from SNSI to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
-  "generatedAt": "2026-08-06T03:08:59.668Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Snsi Howrah Exp (22893) is prepared at Sainagar Shirdi (SNSI) around 6:10 AM, with a second (vacancy) chart around 1:55 PM. 5 of 17 stations on the SNSI to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:43:31.257Z",
+  "knownChartCount": 5
 }

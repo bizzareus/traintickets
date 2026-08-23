@@ -25,10 +25,10 @@
       "departureTime": "15:16",
       "day": 1,
       "distance": "7.0",
-      "chartTimeLocal": "20:18",
+      "chartTimeLocal": "20:47",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DGHR"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": "20:18",
+      "chartTimeLocal": "20:47",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DGHR"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "175.0",
-      "chartTimeLocal": "20:18",
+      "chartTimeLocal": "20:47",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DGHR"
     },
     {
@@ -64,11 +64,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "234.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "SSM",
@@ -77,11 +77,11 @@
       "departureTime": "20:16",
       "day": 1,
       "distance": "337.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DDU",
@@ -90,11 +90,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "437.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "BSB",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "454.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22499) is prepared at DEOGHAR (DGHR) around 8:18 PM. 4 of 8 stations on the DGHR to BSB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:07:35.661Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Vande Bharat Exp (22499) is prepared at DEOGHAR (DGHR) around 8:18 PM. 8 of 8 stations on the DGHR to BSB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:34:03.629Z",
+  "knownChartCount": 8
 }

@@ -12,11 +12,11 @@
       "departureTime": "05:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "SLO",
@@ -630,7 +630,7 @@
       "chartRemoteStation": "NED"
     }
   ],
-  "summary": "The first reservation chart for Cct Hsr  Express (17295) is prepared at Purna Jn (PAU) around 1:38 PM, with a second (vacancy) chart around 10:55 PM. 32 of 48 stations on the CCT to HSR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:21:24.622Z",
-  "knownChartCount": 32
+  "summary": "The first reservation chart for Cct Hsr  Express (17295) is prepared at Kakinada Town (CCT) around 1:38 PM, with a second (vacancy) chart around 10:55 PM. 33 of 48 stations on the CCT to HSR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:56:25.732Z",
+  "knownChartCount": 33
 }

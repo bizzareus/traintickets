@@ -103,11 +103,11 @@
       "departureTime": "01:15",
       "day": 2,
       "distance": "1147.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "NDB",
@@ -116,11 +116,11 @@
       "departureTime": "02:45",
       "day": 2,
       "distance": "1242.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "ST",
@@ -129,11 +129,11 @@
       "departureTime": "05:15",
       "day": 2,
       "distance": "1402.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BH",
@@ -142,11 +142,11 @@
       "departureTime": "06:04",
       "day": 2,
       "distance": "1461.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BRC",
@@ -155,11 +155,11 @@
       "departureTime": "07:20",
       "day": 2,
       "distance": "1531.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "EKNR",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1615.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     }
   ],
-  "summary": "The first reservation chart for Eknr Mahamana (20904) is prepared at Varanasi Jn (BSB) around 8:05 PM, with a second (vacancy) chart around 5:10 AM. 6 of 13 stations on the BSB to EKNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:51:49.154Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Eknr Mahamana (20904) is prepared at Varanasi Jn (BSB) around 8:05 PM, with a second (vacancy) chart around 5:10 AM. 12 of 13 stations on the BSB to EKNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:22:50.982Z",
+  "knownChartCount": 12
 }

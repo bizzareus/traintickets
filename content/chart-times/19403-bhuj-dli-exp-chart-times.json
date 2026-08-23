@@ -27,8 +27,8 @@
       "distance": "42.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BHUJ"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "58.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BHUJ"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "95.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BHUJ"
     },
     {
@@ -64,11 +64,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "314.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BLDI"
     },
     {
       "stationCode": "DQN",
@@ -77,11 +77,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "349.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DQN"
     },
     {
       "stationCode": "RNV",
@@ -90,11 +90,11 @@
       "departureTime": "18:14",
       "day": 1,
       "distance": "384.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DQN"
     },
     {
       "stationCode": "MBNL",
@@ -103,11 +103,11 @@
       "departureTime": "18:43",
       "day": 1,
       "distance": "416.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DQN"
     },
     {
       "stationCode": "MON",
@@ -116,11 +116,11 @@
       "departureTime": "19:07",
       "day": 1,
       "distance": "443.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DQN"
     },
     {
       "stationCode": "JOR",
@@ -129,11 +129,11 @@
       "departureTime": "19:37",
       "day": 1,
       "distance": "478.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DQN"
     },
     {
       "stationCode": "MKSR",
@@ -142,11 +142,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "511.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DQN"
     },
     {
       "stationCode": "SMR",
@@ -155,11 +155,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "537.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMR"
     },
     {
       "stationCode": "LUNI",
@@ -168,11 +168,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "586.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMR"
     },
     {
       "stationCode": "PMY",
@@ -181,11 +181,11 @@
       "departureTime": "22:48",
       "day": 1,
       "distance": "627.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMR"
     },
     {
       "stationCode": "MJ",
@@ -246,10 +246,10 @@
       "departureTime": "06:20",
       "day": 2,
       "distance": "932.0",
-      "chartTimeLocal": "21:28",
+      "chartTimeLocal": "20:39",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "JP"
     },
     {
@@ -259,10 +259,10 @@
       "departureTime": "06:34",
       "day": 2,
       "distance": "937.0",
-      "chartTimeLocal": "21:28",
+      "chartTimeLocal": "20:39",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "JP"
     },
     {
@@ -272,10 +272,10 @@
       "departureTime": "07:38",
       "day": 2,
       "distance": "1022.0",
-      "chartTimeLocal": "21:28",
+      "chartTimeLocal": "20:39",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "JP"
     },
     {
@@ -285,10 +285,10 @@
       "departureTime": "08:26",
       "day": 2,
       "distance": "1082.0",
-      "chartTimeLocal": "21:28",
+      "chartTimeLocal": "20:39",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "JP"
     },
     {
@@ -298,10 +298,10 @@
       "departureTime": "09:55",
       "day": 2,
       "distance": "1157.0",
-      "chartTimeLocal": "21:28",
+      "chartTimeLocal": "20:39",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "JP"
     },
     {
@@ -311,14 +311,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1239.0",
-      "chartTimeLocal": "21:28",
+      "chartTimeLocal": "20:39",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:05",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "JP"
     }
   ],
-  "summary": "The first reservation chart for Bhuj Dli Exp (19403) is prepared at Bhuj (BHUJ) around 10:42 PM. 14 of 24 stations on the BHUJ to DLI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:14:50.430Z",
-  "knownChartCount": 14
+  "summary": "The first reservation chart for Bhuj Dli Exp (19403) is prepared at Bhuj (BHUJ) around 10:42 PM. 24 of 24 stations on the BHUJ to DLI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:12:04.706Z",
+  "knownChartCount": 24
 }

@@ -12,11 +12,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "ULB",
@@ -25,11 +25,11 @@
       "departureTime": "09:35",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "BZN",
@@ -38,11 +38,11 @@
       "departureTime": "09:52",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "MCA",
@@ -51,11 +51,11 @@
       "departureTime": "10:08",
       "day": 1,
       "distance": "51.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "TMZ",
@@ -64,11 +64,11 @@
       "departureTime": "10:48",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "KATI",
@@ -77,11 +77,11 @@
       "departureTime": "11:46",
       "day": 1,
       "distance": "146.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "DGHA",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     }
   ],
-  "summary": "Reservation chart preparation times for Src Dgha Pass (58025) from SRC to DGHA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-08-06T10:14:11.819Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Src Dgha Pass (58025) is prepared at Santragachi Jn (SRC) around 6:06 PM, with a second (vacancy) chart around 10:33 AM. 7 of 7 stations on the SRC to DGHA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:54:16.526Z",
+  "knownChartCount": 7
 }

@@ -25,11 +25,11 @@
       "departureTime": "15:09",
       "day": 1,
       "distance": "21.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "MAHE",
@@ -38,11 +38,11 @@
       "departureTime": "15:18",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "BDJ",
@@ -51,11 +51,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "CLT",
@@ -64,11 +64,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "90.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "PGI",
@@ -77,11 +77,11 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "TA",
@@ -90,11 +90,11 @@
       "departureTime": "16:43",
       "day": 1,
       "distance": "123.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "TIR",
@@ -103,11 +103,11 @@
       "departureTime": "16:51",
       "day": 1,
       "distance": "131.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "KTU",
@@ -116,11 +116,11 @@
       "departureTime": "17:06",
       "day": 1,
       "distance": "146.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "PTB",
@@ -129,11 +129,11 @@
       "departureTime": "17:23",
       "day": 1,
       "distance": "164.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "SRR",
@@ -142,11 +142,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "TCR",
@@ -155,11 +155,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "208.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "IJK",
@@ -168,11 +168,11 @@
       "departureTime": "18:59",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "CKI",
@@ -181,11 +181,11 @@
       "departureTime": "19:07",
       "day": 1,
       "distance": "239.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "AFK",
@@ -194,11 +194,11 @@
       "departureTime": "19:23",
       "day": 1,
       "distance": "254.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "AWY",
@@ -207,11 +207,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "263.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "ERN",
@@ -220,11 +220,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "280.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     },
     {
       "stationCode": "ERS",
@@ -233,14 +233,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "283.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAN"
     }
   ],
-  "summary": "The first reservation chart for Can Ers Express (16306) is prepared at Kannur (CAN) around 6:32 AM, with a second (vacancy) chart around 6:20 PM. 1 of 18 stations on the CAN to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T06:50:55.551Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Can Ers Express (16306) is prepared at Kannur (CAN) around 6:32 AM, with a second (vacancy) chart around 6:20 PM. 18 of 18 stations on the CAN to ERS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:39:50.829Z",
+  "knownChartCount": 18
 }

@@ -12,11 +12,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BDTS"
     },
     {
       "stationCode": "BVI",
@@ -25,11 +25,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BDTS"
     },
     {
       "stationCode": "VAPI",
@@ -370,7 +370,7 @@
       "chartRemoteStation": "CNB"
     }
   ],
-  "summary": "The first reservation chart for Bdts Gct Sf Exp (20941) is prepared at Prayagraj Jn. (PRYJ) around 12:58 PM, with a second (vacancy) chart around 10:30 PM. 8 of 28 stations on the BDTS to GCT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:55:54.250Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Bdts Gct Sf Exp (20941) is prepared at Bandra Terminus (BDTS) around 1:26 PM, with a second (vacancy) chart around 11:10 PM. 10 of 28 stations on the BDTS to GCT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:24:30.494Z",
+  "knownChartCount": 10
 }

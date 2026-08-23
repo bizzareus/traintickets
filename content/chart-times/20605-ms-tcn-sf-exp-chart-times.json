@@ -12,11 +12,11 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "11:54",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "MS"
+      "chartTwoTimeLocal": "21:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KMU"
     },
     {
       "stationCode": "TBM",
@@ -25,10 +25,10 @@
       "departureTime": "16:27",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "56.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "17:20",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "122.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "159.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "19:34",
       "day": 1,
       "distance": "201.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "244.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "20:26",
       "day": 1,
       "distance": "261.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "21:12",
       "day": 1,
       "distance": "281.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "289.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "21:36",
       "day": 1,
       "distance": "301.0",
-      "chartTimeLocal": "06:02",
+      "chartTimeLocal": "06:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MS"
     },
     {
@@ -181,11 +181,11 @@
       "departureTime": "21:48",
       "day": 1,
       "distance": "312.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KMU"
     },
     {
       "stationCode": "PML",
@@ -194,11 +194,11 @@
       "departureTime": "21:58",
       "day": 1,
       "distance": "326.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KMU"
     },
     {
       "stationCode": "TJ",
@@ -207,11 +207,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "351.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KMU"
     },
     {
       "stationCode": "BAL",
@@ -220,11 +220,11 @@
       "departureTime": "22:51",
       "day": 1,
       "distance": "368.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KMU"
     },
     {
       "stationCode": "TPJ",
@@ -233,11 +233,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "401.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:33",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KMU"
     },
     {
       "stationCode": "DG",
@@ -396,7 +396,7 @@
       "chartRemoteStation": "KMU"
     }
   ],
-  "summary": "The first reservation chart for Ms Tcn Sf Exp (20605) is prepared at Chennai Egmore (MS) around 6:02 AM. 25 of 30 stations on the MS to TCN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:36:37.011Z",
-  "knownChartCount": 25
+  "summary": "The first reservation chart for Ms Tcn Sf Exp (20605) is prepared at Chennai Egmore (MS) around 11:54 AM, with a second (vacancy) chart around 9:33 PM. 30 of 30 stations on the MS to TCN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:18:59.022Z",
+  "knownChartCount": 30
 }

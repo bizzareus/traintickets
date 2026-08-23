@@ -116,11 +116,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "281.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "SBP",
@@ -129,11 +129,11 @@
       "departureTime": "01:55",
       "day": 2,
       "distance": "352.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "BRGA",
@@ -142,11 +142,11 @@
       "departureTime": "02:42",
       "day": 2,
       "distance": "395.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "BLGR",
@@ -155,11 +155,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "470.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "BHPI",
@@ -168,11 +168,11 @@
       "departureTime": "04:17",
       "day": 2,
       "distance": "486.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "JRTB",
@@ -181,11 +181,11 @@
       "departureTime": "04:30",
       "day": 2,
       "distance": "497.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "NSGR",
@@ -194,11 +194,11 @@
       "departureTime": "04:47",
       "day": 2,
       "distance": "508.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "SNPU",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "518.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:54",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     }
   ],
-  "summary": "Reservation chart preparation times for Puri Sonepur Exp (18421) from PURI to SNPU are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-08-05T23:47:43.785Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Puri Sonepur Exp (18421) is prepared at Rairakhol (RAIR) around 9:21 AM, with a second (vacancy) chart around 10:54 PM. 8 of 16 stations on the PURI to SNPU route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:04:07.743Z",
+  "knownChartCount": 8
 }

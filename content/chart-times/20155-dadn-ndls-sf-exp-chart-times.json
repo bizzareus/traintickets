@@ -12,11 +12,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "DADN"
+      "chartTimeLocal": "11:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "INDB",
@@ -27,8 +27,8 @@
       "distance": "22.0",
       "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DADN"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "60.0",
       "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DADN"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "101.0",
       "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DADN"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "156.0",
       "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DADN"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "247.0",
       "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DADN"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "280.0",
       "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DADN"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "308.0",
       "chartTimeLocal": "21:01",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DADN"
     },
     {
@@ -116,11 +116,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "381.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "SWM",
@@ -129,11 +129,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "488.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "GGC",
@@ -142,11 +142,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "552.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "BXN",
@@ -214,7 +214,7 @@
       "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "The first reservation chart for Dadn Ndls Sf Exp (20155) is prepared at Dr Ambedkar Ngr (DADN) around 9:01 PM. 13 of 16 stations on the DADN to NDLS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:29:20.132Z",
-  "knownChartCount": 13
+  "summary": "The first reservation chart for Dadn Ndls Sf Exp (20155) is prepared at Dr Ambedkar Ngr (DADN) around 11:29 AM, with a second (vacancy) chart around 9:25 PM. 16 of 16 stations on the DADN to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:16:49.174Z",
+  "knownChartCount": 16
 }

@@ -142,11 +142,11 @@
       "departureTime": "00:55",
       "day": 2,
       "distance": "810.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:23",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "ANVT",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1237.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:23",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PRYJ"
     }
   ],
-  "summary": "The first reservation chart for Baba B Dham Exp (22465) is prepared at Madhupur Jn (MDP) around 8:15 PM. 5 of 12 stations on the MDP to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:04:34.974Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Baba B Dham Exp (22465) is prepared at Madhupur Jn (MDP) around 8:15 PM. 7 of 12 stations on the MDP to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:33:18.429Z",
+  "knownChartCount": 7
 }

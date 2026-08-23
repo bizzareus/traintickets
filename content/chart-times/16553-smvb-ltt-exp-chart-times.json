@@ -12,11 +12,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "TK",
@@ -25,11 +25,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "77.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "DVG",
@@ -227,7 +227,7 @@
       "chartRemoteStation": "UBL"
     }
   ],
-  "summary": "The first reservation chart for Smvb Ltt  Exp (16553) is prepared at Davangere (DVG) around 10:38 AM, with a second (vacancy) chart around 8:20 PM. 15 of 17 stations on the SMVB to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:05:00.738Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Smvb Ltt  Exp (16553) is prepared at Smvt Bengaluru (SMVB) around 10:37 AM, with a second (vacancy) chart around 8:20 PM. 17 of 17 stations on the SMVB to LTT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:45:17.505Z",
+  "knownChartCount": 17
 }

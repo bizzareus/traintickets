@@ -27,8 +27,8 @@
       "distance": "58.0",
       "chartTimeLocal": "08:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BHUJ"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "111.0",
       "chartTimeLocal": "08:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BHUJ"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "197.0",
       "chartTimeLocal": "08:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BHUJ"
     },
     {
@@ -64,11 +64,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "358.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "BRC",
@@ -77,11 +77,11 @@
       "departureTime": "23:48",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:24",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ST",
@@ -90,11 +90,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "587.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BVI",
@@ -103,11 +103,11 @@
       "departureTime": "04:00",
       "day": 2,
       "distance": "820.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BDTS",
@@ -116,14 +116,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "838.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:10",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ST"
     }
   ],
-  "summary": "The first reservation chart for Bdts Sf Ac Exp (22904) is prepared at Bhuj (BHUJ) around 8:10 AM. 4 of 9 stations on the BHUJ to BDTS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T03:09:50.688Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Bdts Sf Ac Exp (22904) is prepared at Bhuj (BHUJ) around 8:10 AM. 9 of 9 stations on the BHUJ to BDTS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:43:38.699Z",
+  "knownChartCount": 9
 }

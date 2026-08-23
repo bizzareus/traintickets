@@ -25,10 +25,10 @@
       "departureTime": "15:39",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "15:49",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "16:27",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "16:39",
       "day": 1,
       "distance": "60.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "17:01",
       "day": 1,
       "distance": "77.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "17:12",
       "day": 1,
       "distance": "86.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "17:28",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "17:39",
       "day": 1,
       "distance": "107.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "18:13",
       "day": 1,
       "distance": "131.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "18:18",
       "day": 1,
       "distance": "133.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "18:37",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "19:22",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": "05:22",
+      "chartTimeLocal": "05:34",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ALLP"
     },
     {
@@ -181,11 +181,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "208.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PGT"
     },
     {
       "stationCode": "PTJ",
@@ -194,11 +194,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "257.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PGT"
     },
     {
       "stationCode": "CBE",
@@ -207,11 +207,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "263.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PGT"
     },
     {
       "stationCode": "TUP",
@@ -220,11 +220,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "313.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PGT"
     },
     {
       "stationCode": "ED",
@@ -233,11 +233,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "363.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PGT"
     },
     {
       "stationCode": "SA",
@@ -331,7 +331,7 @@
       "chartRemoteStation": "PGT"
     }
   ],
-  "summary": "The first reservation chart for Chennai Sf Exp (22640) is prepared at Alleppey (ALLP) around 5:22 AM. 20 of 25 stations on the ALLP to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:48:10.081Z",
-  "knownChartCount": 20
+  "summary": "The first reservation chart for Chennai Sf Exp (22640) is prepared at Alleppey (ALLP) around 5:22 AM. 25 of 25 stations on the ALLP to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:37:10.701Z",
+  "knownChartCount": 25
 }

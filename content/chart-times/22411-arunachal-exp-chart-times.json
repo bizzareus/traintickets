@@ -12,11 +12,11 @@
       "departureTime": "22:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "HMY",
@@ -25,11 +25,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "VNE",
@@ -38,11 +38,11 @@
       "departureTime": "23:18",
       "day": 1,
       "distance": "112.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NHLN"
     },
     {
       "stationCode": "RPAN",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "KIR"
     }
   ],
-  "summary": "The first reservation chart for Arunachal Exp (22411) is prepared at Rangapara North (RPAN) around 12:22 PM, with a second (vacancy) chart around 9:39 PM. 18 of 21 stations on the NHLN to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:51:07.821Z",
-  "knownChartCount": 18
+  "summary": "The first reservation chart for Arunachal Exp (22411) is prepared at Naharlagun (NHLN) around 12:51 PM, with a second (vacancy) chart around 9:41 PM. 21 of 21 stations on the NHLN to ANVT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:32:10.372Z",
+  "knownChartCount": 21
 }

@@ -467,14 +467,14 @@
       "departureTime": "",
       "day": 4,
       "distance": "2790.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:22",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:00",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "Reservation chart preparation times for Rmm Bnrs Sf Exp (22535) from RMM to BNRS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 36 stations.",
-  "generatedAt": "2026-08-06T02:21:06.727Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rmm Bnrs Sf Exp (22535) is prepared at BANARAS (BNRS) around 8:22 PM, with a second (vacancy) chart around 3 PM. 1 of 36 stations on the RMM to BNRS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:34:39.067Z",
+  "knownChartCount": 1
 }

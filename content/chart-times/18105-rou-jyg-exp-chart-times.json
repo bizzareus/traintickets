@@ -12,11 +12,11 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:16",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "HTE",
@@ -25,11 +25,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:16",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "RNC",
@@ -38,11 +38,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:16",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "MURI",
@@ -51,11 +51,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "236.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:16",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "BKSC",
@@ -64,11 +64,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "289.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:16",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "CRP",
@@ -77,11 +77,11 @@
       "departureTime": "23:28",
       "day": 1,
       "distance": "304.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:16",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "DHN",
@@ -214,7 +214,7 @@
       "chartRemoteStation": "DHN"
     }
   ],
-  "summary": "The first reservation chart for Rou Jyg Exp (18105) is prepared at Dhanbad Jn (DHN) around 2:48 PM, with a second (vacancy) chart around 12:30 AM. 10 of 16 stations on the ROU to JYG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:37:41.461Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Rou Jyg Exp (18105) is prepared at Rourkela (ROU) around 6:50 AM, with a second (vacancy) chart around 4:16 PM. 16 of 16 stations on the ROU to JYG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:01:38.291Z",
+  "knownChartCount": 16
 }

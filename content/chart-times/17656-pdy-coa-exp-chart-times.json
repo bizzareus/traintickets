@@ -25,10 +25,10 @@
       "departureTime": "14:15",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": "20:15",
+      "chartTimeLocal": "20:22",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PDY"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": "20:15",
+      "chartTimeLocal": "20:22",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PDY"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "141.0",
-      "chartTimeLocal": "20:15",
+      "chartTimeLocal": "20:22",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PDY"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "172.0",
-      "chartTimeLocal": "20:15",
+      "chartTimeLocal": "20:22",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PDY"
     },
     {
@@ -77,11 +77,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "GPD",
@@ -90,11 +90,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "248.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "SPE",
@@ -103,11 +103,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "283.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "NYP",
@@ -116,11 +116,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "311.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "GDR",
@@ -129,11 +129,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "338.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "NLR",
@@ -142,11 +142,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "377.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "BTTR",
@@ -155,11 +155,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "410.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "KVZ",
@@ -168,11 +168,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "427.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "SKM",
@@ -181,11 +181,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "465.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "OGL",
@@ -194,11 +194,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "493.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "VTM",
@@ -207,11 +207,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "534.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "CLX",
@@ -220,11 +220,11 @@
       "departureTime": "23:05",
       "day": 1,
       "distance": "542.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "BPP",
@@ -233,11 +233,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "557.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "NDO",
@@ -487,7 +487,7 @@
       "chartRemoteStation": "MS"
     }
   ],
-  "summary": "The first reservation chart for Pdy Coa Exp (17656) is prepared at Puducherry (PDY) around 8:15 PM. 24 of 37 stations on the PDY to COA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:32:13.823Z",
-  "knownChartCount": 24
+  "summary": "The first reservation chart for Pdy Coa Exp (17656) is prepared at Puducherry (PDY) around 8:15 PM. 37 of 37 stations on the PDY to COA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:00:22.698Z",
+  "knownChartCount": 37
 }

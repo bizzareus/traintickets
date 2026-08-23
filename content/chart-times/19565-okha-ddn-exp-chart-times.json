@@ -12,11 +12,11 @@
       "departureTime": "10:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "DWK",
@@ -25,11 +25,11 @@
       "departureTime": "10:51",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "BHTA",
@@ -38,11 +38,11 @@
       "departureTime": "11:25",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "KMBL",
@@ -51,11 +51,11 @@
       "departureTime": "11:57",
       "day": 1,
       "distance": "113.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "JAM",
@@ -64,11 +64,11 @@
       "departureTime": "13:02",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "HAPA",
@@ -77,11 +77,11 @@
       "departureTime": "13:29",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "RJT",
@@ -90,11 +90,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "252.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "WKR",
@@ -103,11 +103,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:32",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "SUNR",
@@ -116,11 +116,11 @@
       "departureTime": "16:54",
       "day": 1,
       "distance": "368.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUNR"
     },
     {
       "stationCode": "VG",
@@ -129,11 +129,11 @@
       "departureTime": "17:57",
       "day": 1,
       "distance": "433.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUNR"
     },
     {
       "stationCode": "MSH",
@@ -142,11 +142,11 @@
       "departureTime": "18:57",
       "day": 1,
       "distance": "498.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUNR"
     },
     {
       "stationCode": "UJA",
@@ -155,11 +155,11 @@
       "departureTime": "19:13",
       "day": 1,
       "distance": "518.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUNR"
     },
     {
       "stationCode": "SID",
@@ -168,11 +168,11 @@
       "departureTime": "19:32",
       "day": 1,
       "distance": "533.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUNR"
     },
     {
       "stationCode": "PNU",
@@ -181,11 +181,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "563.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:39",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SUNR"
     },
     {
       "stationCode": "ABR",
@@ -194,11 +194,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "615.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "FA",
@@ -207,11 +207,11 @@
       "departureTime": "22:42",
       "day": 1,
       "distance": "714.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "BER",
@@ -500,7 +500,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Okha Ddn Exp (19565) from OKHA to DDN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 38 stations.",
-  "generatedAt": "2026-08-06T00:18:50.707Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Okha Ddn Exp (19565) is prepared at Okha (OKHA) around 8:32 PM, with a second (vacancy) chart around 10:05 AM. 16 of 38 stations on the OKHA to DDN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:13:13.516Z",
+  "knownChartCount": 16
 }

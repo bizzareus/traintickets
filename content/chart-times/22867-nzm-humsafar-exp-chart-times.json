@@ -12,11 +12,11 @@
       "departureTime": "11:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DURG"
     },
     {
       "stationCode": "R",
@@ -25,11 +25,11 @@
       "departureTime": "11:40",
       "day": 1,
       "distance": "37.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DURG"
     },
     {
       "stationCode": "BYT",
@@ -38,11 +38,11 @@
       "departureTime": "12:30",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DURG"
     },
     {
       "stationCode": "USL",
@@ -51,11 +51,11 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "USL"
     },
     {
       "stationCode": "PND",
@@ -64,11 +64,11 @@
       "departureTime": "15:17",
       "day": 1,
       "distance": "248.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "USL"
     },
     {
       "stationCode": "APR",
@@ -77,11 +77,11 @@
       "departureTime": "16:02",
       "day": 1,
       "distance": "298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "USL"
     },
     {
       "stationCode": "SDL",
@@ -90,11 +90,11 @@
       "departureTime": "16:42",
       "day": 1,
       "distance": "339.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "USL"
     },
     {
       "stationCode": "UMR",
@@ -103,11 +103,11 @@
       "departureTime": "17:36",
       "day": 1,
       "distance": "406.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "USL"
     },
     {
       "stationCode": "KMZ",
@@ -116,11 +116,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "464.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KMZ"
     },
     {
       "stationCode": "DMO",
@@ -129,11 +129,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "574.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KMZ"
     },
     {
       "stationCode": "SGO",
@@ -142,11 +142,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "651.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KMZ"
     },
     {
       "stationCode": "VGLJ",
@@ -214,7 +214,7 @@
       "chartRemoteStation": "VGLJ"
     }
   ],
-  "summary": "The first reservation chart for Nzm Humsafar Exp (22867) is prepared at V Lakshmibai Jhansi Jhs (VGLJ) around 3:42 PM, with a second (vacancy) chart around 1:20 AM. 5 of 16 stations on the DURG to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T03:06:19.615Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Nzm Humsafar Exp (22867) is prepared at Durg (DURG) around 9:06 PM, with a second (vacancy) chart around 10:45 AM. 16 of 16 stations on the DURG to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:42:37.322Z",
+  "knownChartCount": 16
 }

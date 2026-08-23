@@ -12,11 +12,11 @@
       "departureTime": "20:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "JSME",
@@ -58,7 +58,7 @@
       "chartRemoteStation": "PNBE"
     }
   ],
-  "summary": "The first reservation chart for Duronto Exp (22214) is prepared at Jasidih Jn (JSME) around 12:45 PM, with a second (vacancy) chart around 8:30 PM. 3 of 4 stations on the PNBE to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:14:02.364Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Duronto Exp (22214) is prepared at Patna Jn (PNBE) around 12:45 PM, with a second (vacancy) chart around 8:30 PM. 4 of 4 stations on the PNBE to SHM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:30:19.989Z",
+  "knownChartCount": 4
 }

@@ -116,11 +116,11 @@
       "departureTime": "08:25",
       "day": 1,
       "distance": "116.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GNPR"
     },
     {
       "stationCode": "MMS",
@@ -142,11 +142,11 @@
       "departureTime": "08:57",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GNPR"
     },
     {
       "stationCode": "IPM",
@@ -487,7 +487,7 @@
       "chartRemoteStation": "GNPR"
     }
   ],
-  "summary": "The first reservation chart for Gnpr Puri Exp (18418) is prepared at GUNUPUR (GNPR) around 7:37 PM, with a second (vacancy) chart around 11:45 AM. 35 of 37 stations on the GNPR to PURI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:47:15.141Z",
-  "knownChartCount": 35
+  "summary": "The first reservation chart for Gnpr Puri Exp (18418) is prepared at GUNUPUR (GNPR) around 7:37 PM, with a second (vacancy) chart around 11:45 AM. 37 of 37 stations on the GNPR to PURI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:03:58.238Z",
+  "knownChartCount": 37
 }

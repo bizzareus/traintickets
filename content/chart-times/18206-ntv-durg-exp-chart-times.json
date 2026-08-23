@@ -12,11 +12,11 @@
       "departureTime": "09:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "LIR",
@@ -25,11 +25,11 @@
       "departureTime": "09:19",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "ANDN",
@@ -38,11 +38,11 @@
       "departureTime": "09:42",
       "day": 1,
       "distance": "40.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "GKP",
@@ -51,11 +51,11 @@
       "departureTime": "11:25",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "BST",
@@ -64,11 +64,11 @@
       "departureTime": "12:20",
       "day": 1,
       "distance": "146.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "MUR",
@@ -77,11 +77,11 @@
       "departureTime": "13:45",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "KEA",
@@ -90,11 +90,11 @@
       "departureTime": "14:21",
       "day": 1,
       "distance": "237.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "AY",
@@ -103,11 +103,11 @@
       "departureTime": "14:43",
       "day": 1,
       "distance": "246.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "AYC",
@@ -116,11 +116,11 @@
       "departureTime": "15:15",
       "day": 1,
       "distance": "253.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "SLN",
@@ -129,11 +129,11 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "311.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "MBDP",
@@ -142,11 +142,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "351.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NTV"
     },
     {
       "stationCode": "PRYJ",
@@ -155,11 +155,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "410.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "MKP",
@@ -168,11 +168,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "510.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "STA",
@@ -357,7 +357,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ntv Durg Exp (18206) from NTV to DURG are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 27 stations.",
-  "generatedAt": "2026-08-05T23:41:18.007Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ntv Durg Exp (18206) is prepared at NAUTANWA (NTV) around 8:13 PM, with a second (vacancy) chart around 8:45 AM. 13 of 27 stations on the NTV to DURG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:02:36.211Z",
+  "knownChartCount": 13
 }

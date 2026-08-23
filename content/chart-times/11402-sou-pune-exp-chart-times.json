@@ -350,11 +350,11 @@
       "departureTime": "17:52",
       "day": 2,
       "distance": "1473.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "BSL",
@@ -448,7 +448,7 @@
       "chartRemoteStation": "BSL"
     }
   ],
-  "summary": "The first reservation chart for Sou Pune Exp (11402) is prepared at Supaul (SOU) around 6:30 AM, with a second (vacancy) chart around 2:15 PM. 33 of 34 stations on the SOU to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:50:55.140Z",
-  "knownChartCount": 33
+  "summary": "The first reservation chart for Sou Pune Exp (11402) is prepared at Supaul (SOU) around 6:30 AM, with a second (vacancy) chart around 2:15 PM. 34 of 34 stations on the SOU to PUNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T19:35:43.409Z",
+  "knownChartCount": 34
 }

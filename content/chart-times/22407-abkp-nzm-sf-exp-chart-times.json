@@ -181,11 +181,11 @@
       "departureTime": "01:20",
       "day": 2,
       "distance": "966.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:56",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "MTJ",
@@ -194,11 +194,11 @@
       "departureTime": "02:15",
       "day": 2,
       "distance": "1020.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:56",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "NZM",
@@ -207,14 +207,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:56",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     }
   ],
-  "summary": "The first reservation chart for Abkp Nzm Sf Exp (22407) is prepared at Ambikapur (ABKP) around 8:10 PM, with a second (vacancy) chart around 7:15 AM. 12 of 16 stations on the ABKP to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:50:41.994Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Abkp Nzm Sf Exp (22407) is prepared at Ambikapur (ABKP) around 8:10 PM, with a second (vacancy) chart around 7:15 AM. 15 of 16 stations on the ABKP to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:31:55.533Z",
+  "knownChartCount": 15
 }

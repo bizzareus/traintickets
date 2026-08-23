@@ -12,11 +12,11 @@
       "departureTime": "20:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "MURI",
@@ -25,11 +25,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "62.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "BKSC",
@@ -38,11 +38,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "GMO",
@@ -162,7 +162,7 @@
       "chartRemoteStation": "RNC"
     }
   ],
-  "summary": "The first reservation chart for Rnc Ara Exp (18640) is prepared at Nsc Bose J Gomo (GMO) around 10:48 AM, with a second (vacancy) chart around 10:55 PM. 9 of 12 stations on the RNC to ARA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:56:11.944Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Rnc Ara Exp (18640) is prepared at Ranchi (RNC) around 10:47 AM, with a second (vacancy) chart around 10:55 PM. 12 of 12 stations on the RNC to ARA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:06:53.577Z",
+  "knownChartCount": 12
 }

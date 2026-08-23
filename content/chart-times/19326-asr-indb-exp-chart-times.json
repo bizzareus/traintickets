@@ -337,14 +337,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1337.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUNA"
     }
   ],
-  "summary": "The first reservation chart for Asr Indb Exp (19326) is prepared at Amritsar Jn (ASR) around 5:50 PM, with a second (vacancy) chart around 1:35 AM. 17 of 26 stations on the ASR to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:12:38.181Z",
-  "knownChartCount": 17
+  "summary": "The first reservation chart for Asr Indb Exp (19326) is prepared at Amritsar Jn (ASR) around 5:50 PM, with a second (vacancy) chart around 1:35 AM. 18 of 26 stations on the ASR to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:11:14.607Z",
+  "knownChartCount": 18
 }

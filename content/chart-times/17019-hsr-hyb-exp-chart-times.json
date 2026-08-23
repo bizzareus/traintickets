@@ -493,11 +493,11 @@
       "departureTime": "00:20",
       "day": 3,
       "distance": "2075.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PAU"
     },
     {
       "stationCode": "BSX",
@@ -506,11 +506,11 @@
       "departureTime": "02:20",
       "day": 3,
       "distance": "2156.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PAU"
     },
     {
       "stationCode": "NZB",
@@ -519,11 +519,11 @@
       "departureTime": "02:50",
       "day": 3,
       "distance": "2185.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PAU"
     },
     {
       "stationCode": "KMC",
@@ -532,11 +532,11 @@
       "departureTime": "03:45",
       "day": 3,
       "distance": "2237.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PAU"
     },
     {
       "stationCode": "MED",
@@ -545,11 +545,11 @@
       "departureTime": "05:00",
       "day": 3,
       "distance": "2318.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PAU"
     },
     {
       "stationCode": "MJF",
@@ -558,11 +558,11 @@
       "departureTime": "05:50",
       "day": 3,
       "distance": "2342.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PAU"
     },
     {
       "stationCode": "SC",
@@ -571,11 +571,11 @@
       "departureTime": "06:25",
       "day": 3,
       "distance": "2346.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PAU"
     },
     {
       "stationCode": "HYB",
@@ -584,14 +584,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2355.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PAU"
     }
   ],
-  "summary": "The first reservation chart for Hsr Hyb Exp (17019) is prepared at Hisar (HSR) around 9:45 PM, with a second (vacancy) chart around 7 AM. 1 of 45 stations on the HSR to HYB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T16:16:09.714Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Hsr Hyb Exp (17019) is prepared at Hisar (HSR) around 9:45 PM, with a second (vacancy) chart around 7 AM. 9 of 45 stations on the HSR to HYB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T19:51:32.342Z",
+  "knownChartCount": 9
 }

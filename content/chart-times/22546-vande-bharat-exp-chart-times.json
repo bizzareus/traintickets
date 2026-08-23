@@ -12,11 +12,11 @@
       "departureTime": "14:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDN"
     },
     {
       "stationCode": "HW",
@@ -25,11 +25,11 @@
       "departureTime": "15:36",
       "day": 1,
       "distance": "52.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDN"
     },
     {
       "stationCode": "NBD",
@@ -38,11 +38,11 @@
       "departureTime": "16:23",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDN"
     },
     {
       "stationCode": "MB",
@@ -51,11 +51,11 @@
       "departureTime": "17:43",
       "day": 1,
       "distance": "219.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDN"
     },
     {
       "stationCode": "BE",
@@ -64,11 +64,11 @@
       "departureTime": "18:59",
       "day": 1,
       "distance": "310.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDN"
     },
     {
       "stationCode": "SPN",
@@ -77,11 +77,11 @@
       "departureTime": "20:06",
       "day": 1,
       "distance": "380.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDN"
     },
     {
       "stationCode": "LJN",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "545.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:44",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDN"
     }
   ],
-  "summary": "Reservation chart preparation times for Vande Bharat Exp (22546) from DDN to LJN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-08-06T02:36:51.605Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Vande Bharat Exp (22546) is prepared at Dehradun (DDN) around 6:25 AM, with a second (vacancy) chart around 6:44 PM. 7 of 7 stations on the DDN to LJN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:35:15.043Z",
+  "knownChartCount": 7
 }

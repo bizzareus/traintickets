@@ -12,11 +12,11 @@
       "departureTime": "07:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "KPG",
@@ -25,11 +25,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "41.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "MMR",
@@ -38,11 +38,11 @@
       "departureTime": "08:50",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "NK",
@@ -51,11 +51,11 @@
       "departureTime": "09:42",
       "day": 1,
       "distance": "156.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "KYN",
@@ -64,11 +64,11 @@
       "departureTime": "12:25",
       "day": 1,
       "distance": "290.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "TNA",
@@ -77,11 +77,11 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "310.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "DR",
@@ -90,14 +90,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "334.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:57",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     }
   ],
-  "summary": "Reservation chart preparation times for Snsi Dr Sf Exp (22148) from SNSI to DR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-08-06T01:07:57.655Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Snsi Dr Sf Exp (22148) is prepared at Sainagar Shirdi (SNSI) around 7:57 PM, with a second (vacancy) chart around 9:27 AM. 7 of 7 stations on the SNSI to DR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:28:44.706Z",
+  "knownChartCount": 7
 }

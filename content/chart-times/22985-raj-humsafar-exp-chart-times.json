@@ -12,11 +12,11 @@
       "departureTime": "00:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "MVJ",
@@ -25,11 +25,11 @@
       "departureTime": "01:26",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "CNA",
@@ -38,11 +38,11 @@
       "departureTime": "02:42",
       "day": 1,
       "distance": "117.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "BHL",
@@ -51,11 +51,11 @@
       "departureTime": "03:25",
       "day": 1,
       "distance": "163.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "AII",
@@ -64,11 +64,11 @@
       "departureTime": "05:40",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "FL",
@@ -77,11 +77,11 @@
       "departureTime": "06:44",
       "day": 1,
       "distance": "375.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "RGS",
@@ -90,11 +90,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "442.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "NNL",
@@ -103,11 +103,11 @@
       "departureTime": "08:57",
       "day": 1,
       "distance": "538.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "RE",
@@ -116,11 +116,11 @@
       "departureTime": "10:05",
       "day": 1,
       "distance": "590.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     },
     {
       "stationCode": "DEE",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "668.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "00:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDZ"
     }
   ],
-  "summary": "Reservation chart preparation times for Raj Humsafar Exp (22985) from UDZ to DEE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-08-06T04:53:57.659Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Raj Humsafar Exp (22985) is prepared at Udaipur City (UDZ) around 4:50 PM, with a second (vacancy) chart around 12:35 AM. 10 of 10 stations on the UDZ to DEE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:47:26.777Z",
+  "knownChartCount": 10
 }

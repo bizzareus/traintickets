@@ -12,11 +12,11 @@
       "departureTime": "05:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "NBQ",
@@ -25,11 +25,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "202.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "KOJ",
@@ -38,11 +38,11 @@
       "departureTime": "08:30",
       "day": 1,
       "distance": "230.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "APDJ",
@@ -51,11 +51,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "311.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "HSA",
@@ -64,11 +64,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "346.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "BNV",
@@ -77,11 +77,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "380.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "NMZ",
@@ -90,11 +90,11 @@
       "departureTime": "12:02",
       "day": 1,
       "distance": "425.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:43",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "NJP",
@@ -103,11 +103,11 @@
       "departureTime": "14:00",
       "day": 1,
       "distance": "480.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KNE",
@@ -116,11 +116,11 @@
       "departureTime": "15:07",
       "day": 1,
       "distance": "567.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "BOE",
@@ -129,11 +129,11 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "624.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NJP"
     },
     {
       "stationCode": "KIR",
@@ -142,11 +142,11 @@
       "departureTime": "17:20",
       "day": 1,
       "distance": "663.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "NNA",
@@ -155,11 +155,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "720.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "MNE",
@@ -168,11 +168,11 @@
       "departureTime": "19:01",
       "day": 1,
       "distance": "778.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "KGG",
@@ -181,11 +181,11 @@
       "departureTime": "19:13",
       "day": 1,
       "distance": "787.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "BGS",
@@ -194,11 +194,11 @@
       "departureTime": "19:44",
       "day": 1,
       "distance": "827.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "BJU",
@@ -207,11 +207,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "842.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "HJP",
@@ -220,11 +220,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "930.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "SEE",
@@ -233,11 +233,11 @@
       "departureTime": "22:00",
       "day": 1,
       "distance": "935.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "CPR",
@@ -246,11 +246,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "989.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:51",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "BUI",
@@ -500,7 +500,7 @@
       "chartRemoteStation": "KIR"
     }
   ],
-  "summary": "The first reservation chart for Kyq Dadn Exp (19306) is prepared at Shujalpur (SJP) around 9:38 PM, with a second (vacancy) chart around 5:05 PM. 5 of 38 stations on the KYQ to DADN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:10:23.421Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Kyq Dadn Exp (19306) is prepared at Kamakhya (KYQ) around 7:43 PM. 24 of 38 stations on the KYQ to DADN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:10:33.552Z",
+  "knownChartCount": 24
 }

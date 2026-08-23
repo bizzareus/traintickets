@@ -12,11 +12,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTP"
     },
     {
       "stationCode": "KKD",
@@ -25,14 +25,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTP"
     }
   ],
-  "summary": "Reservation chart preparation times for Ptp Kkd Pass (52965) from PTP to KKD are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
-  "generatedAt": "2026-08-06T08:12:17.971Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ptp Kkd Pass (52965) is prepared at Patal Pani (PTP) around 6:16 AM, with a second (vacancy) chart around 10:50 AM. 2 of 2 stations on the PTP to KKD route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:50:50.834Z",
+  "knownChartCount": 2
 }

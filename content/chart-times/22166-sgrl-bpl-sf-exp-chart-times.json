@@ -12,11 +12,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "BRGW",
@@ -25,11 +25,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "SGAM",
@@ -38,11 +38,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "MWJ",
@@ -51,11 +51,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "103.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "BEHR",
@@ -64,11 +64,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "149.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "KHBJ",
@@ -77,11 +77,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "210.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SGRL"
     },
     {
       "stationCode": "KMZ",
@@ -175,7 +175,7 @@
       "chartRemoteStation": "BINA"
     }
   ],
-  "summary": "The first reservation chart for Sgrl Bpl Sf Exp (22166) is prepared at Katni Murwara (KMZ) around 2:12 PM, with a second (vacancy) chart around 11:35 PM. 7 of 13 stations on the SGRL to BPL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:09:40.343Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Sgrl Bpl Sf Exp (22166) is prepared at Singrauli (SGRL) around 10:05 AM, with a second (vacancy) chart around 6:45 PM. 13 of 13 stations on the SGRL to BPL route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:29:06.816Z",
+  "knownChartCount": 13
 }

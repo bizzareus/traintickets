@@ -77,11 +77,11 @@
       "departureTime": "00:03",
       "day": 2,
       "distance": "624.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "NZM",
@@ -90,11 +90,11 @@
       "departureTime": "01:00",
       "day": 2,
       "distance": "647.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "FDB",
@@ -103,11 +103,11 @@
       "departureTime": "01:19",
       "day": 2,
       "distance": "667.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "MTJ",
@@ -116,11 +116,11 @@
       "departureTime": "02:22",
       "day": 2,
       "distance": "780.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "AGC",
@@ -129,11 +129,11 @@
       "departureTime": "03:10",
       "day": 2,
       "distance": "834.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "MRA",
@@ -142,11 +142,11 @@
       "departureTime": "04:19",
       "day": 2,
       "distance": "914.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "GWL",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "952.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NZM"
     }
   ],
-  "summary": "The first reservation chart for Sushasan Sf Exp (22200) is prepared at Balrampur (BLP) around 10:52 PM. 2 of 12 stations on the BLP to GWL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:13:09.981Z",
-  "knownChartCount": 2
+  "summary": "The first reservation chart for Sushasan Sf Exp (22200) is prepared at Balrampur (BLP) around 10:52 PM. 9 of 12 stations on the BLP to GWL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:30:06.197Z",
+  "knownChartCount": 9
 }

@@ -142,11 +142,11 @@
       "departureTime": "00:15",
       "day": 2,
       "distance": "698.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "KLBG",
@@ -155,11 +155,11 @@
       "departureTime": "01:48",
       "day": 2,
       "distance": "773.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "SUR",
@@ -168,11 +168,11 @@
       "departureTime": "03:40",
       "day": 2,
       "distance": "886.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "PUNE",
@@ -181,11 +181,11 @@
       "departureTime": "07:55",
       "day": 2,
       "distance": "1149.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "KYN",
@@ -207,11 +207,11 @@
       "departureTime": "12:05",
       "day": 2,
       "distance": "1334.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "ST",
@@ -220,11 +220,11 @@
       "departureTime": "14:48",
       "day": 2,
       "distance": "1549.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "BRC",
@@ -233,11 +233,11 @@
       "departureTime": "16:30",
       "day": 2,
       "distance": "1678.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:11",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "RTM",
@@ -246,11 +246,11 @@
       "departureTime": "20:20",
       "day": 2,
       "distance": "1936.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:11",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "MDS",
@@ -259,11 +259,11 @@
       "departureTime": "21:27",
       "day": 2,
       "distance": "2020.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:11",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "NMH",
@@ -272,11 +272,11 @@
       "departureTime": "22:20",
       "day": 2,
       "distance": "2069.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:11",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "COR",
@@ -285,11 +285,11 @@
       "departureTime": "00:10",
       "day": 3,
       "distance": "2124.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "BHL",
@@ -298,11 +298,11 @@
       "departureTime": "01:00",
       "day": 3,
       "distance": "2178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "AII",
@@ -311,11 +311,11 @@
       "departureTime": "03:05",
       "day": 3,
       "distance": "2310.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "KSG",
@@ -324,11 +324,11 @@
       "departureTime": "03:34",
       "day": 3,
       "distance": "2335.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "JP",
@@ -337,11 +337,11 @@
       "departureTime": "05:20",
       "day": 3,
       "distance": "2445.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "GADJ",
@@ -350,11 +350,11 @@
       "departureTime": "05:31",
       "day": 3,
       "distance": "2450.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "KWP",
@@ -363,14 +363,14 @@
       "departureTime": "",
       "day": 3,
       "distance": "2461.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:12",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "COR"
     }
   ],
-  "summary": "The first reservation chart for Ypr Kwp Exp (20667) is prepared at Yesvantpur Jn (YPR) around 9:03 PM. 10 of 28 stations on the YPR to KWP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:40:37.161Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Ypr Kwp Exp (20667) is prepared at Yesvantpur Jn (YPR) around 9:03 PM. 27 of 28 stations on the YPR to KWP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:19:44.203Z",
+  "knownChartCount": 27
 }

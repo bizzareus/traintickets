@@ -25,11 +25,11 @@
       "departureTime": "20:26",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "DWK",
@@ -38,11 +38,11 @@
       "departureTime": "20:46",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "BHTA",
@@ -51,11 +51,11 @@
       "departureTime": "21:18",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "KMBL",
@@ -64,11 +64,11 @@
       "departureTime": "21:52",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "JAM",
@@ -77,11 +77,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "HAPA",
@@ -90,11 +90,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "RJT",
@@ -227,7 +227,7 @@
       "chartRemoteStation": "OKHA"
     }
   ],
-  "summary": "The first reservation chart for Okha Smnh Exp (19252) is prepared at Okha (OKHA) around 10:25 AM, with a second (vacancy) chart around 10:45 PM. 11 of 17 stations on the OKHA to VRL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:07:50.404Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Okha Smnh Exp (19252) is prepared at Okha (OKHA) around 10:25 AM, with a second (vacancy) chart around 10:45 PM. 17 of 17 stations on the OKHA to VRL route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:09:42.037Z",
+  "knownChartCount": 17
 }

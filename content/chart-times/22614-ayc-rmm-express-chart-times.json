@@ -311,11 +311,11 @@
       "departureTime": "00:20",
       "day": 4,
       "distance": "2808.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:33",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "13:30",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "RMD",
@@ -324,11 +324,11 @@
       "departureTime": "01:10",
       "day": 4,
       "distance": "2868.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:33",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "13:30",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "RMM",
@@ -337,14 +337,14 @@
       "departureTime": "",
       "day": 4,
       "distance": "2921.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:33",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "13:30",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "MS"
     }
   ],
-  "summary": "The first reservation chart for Ayc Rmm Express (22614) is prepared at Ayodhaya Cant (AYC) around 1:25 PM, with a second (vacancy) chart around 10:55 PM. 8 of 26 stations on the AYC to RMM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T02:45:19.235Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Ayc Rmm Express (22614) is prepared at Ayodhaya Cant (AYC) around 1:25 PM, with a second (vacancy) chart around 10:55 PM. 11 of 26 stations on the AYC to RMM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:36:21.871Z",
+  "knownChartCount": 11
 }

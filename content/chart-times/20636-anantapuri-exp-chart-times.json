@@ -25,10 +25,10 @@
       "departureTime": "15:08",
       "day": 1,
       "distance": "12.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "15:19",
       "day": 1,
       "distance": "23.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "16:28",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "16:41",
       "day": 1,
       "distance": "94.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "16:51",
       "day": 1,
       "distance": "102.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "17:06",
       "day": 1,
       "distance": "117.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "17:21",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "17:44",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "18:01",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "18:14",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": "04:55",
+      "chartTimeLocal": "05:02",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "QLN"
     },
     {
@@ -168,11 +168,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "209.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "CVP",
@@ -181,11 +181,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "274.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "SRT",
@@ -194,11 +194,11 @@
       "departureTime": "20:34",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "VPT",
@@ -207,11 +207,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "322.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "TMQ",
@@ -220,11 +220,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "348.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "MDU",
@@ -233,11 +233,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "365.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "DG",
@@ -246,11 +246,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "433.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "TPJ",
@@ -259,11 +259,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "526.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TEN"
     },
     {
       "stationCode": "VRI",
@@ -383,7 +383,7 @@
       "chartRemoteStation": "TEN"
     }
   ],
-  "summary": "The first reservation chart for Anantapuri Exp (20636) is prepared at Kollam Jn (QLN) around 4:55 AM. 21 of 29 stations on the QLN to MS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T00:38:31.012Z",
-  "knownChartCount": 21
+  "summary": "The first reservation chart for Anantapuri Exp (20636) is prepared at Kollam Jn (QLN) around 4:55 AM. 29 of 29 stations on the QLN to MS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:19:29.069Z",
+  "knownChartCount": 29
 }

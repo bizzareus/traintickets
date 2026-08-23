@@ -12,11 +12,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DD"
     },
     {
       "stationCode": "PUNE",
@@ -292,7 +292,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Dd Ajmer Sf Exp (20992) from DD to AII are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 22 stations.",
-  "generatedAt": "2026-08-06T01:00:37.028Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Dd Ajmer Sf Exp (20992) is prepared at Daund Jn (DD) around 1:25 PM, with a second (vacancy) chart around 10:55 PM. 1 of 22 stations on the DD to AII route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:26:06.455Z",
+  "knownChartCount": 1
 }

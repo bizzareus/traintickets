@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "750.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RN"
     }
   ],
-  "summary": "The first reservation chart for Krmi Ltt Ac Exp (22116) is prepared at Karmali (KRMI) around 11:05 PM. 3 of 8 stations on the KRMI to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-06T01:04:33.698Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Krmi Ltt Ac Exp (22116) is prepared at Karmali (KRMI) around 11:05 PM. 4 of 8 stations on the KRMI to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:27:29.157Z",
+  "knownChartCount": 4
 }

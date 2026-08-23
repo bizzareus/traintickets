@@ -12,11 +12,11 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHC"
     },
     {
       "stationCode": "SBV",
@@ -25,11 +25,11 @@
       "departureTime": "13:55",
       "day": 1,
       "distance": "17.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHC"
     },
     {
       "stationCode": "MNE",
@@ -38,11 +38,11 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "45.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHC"
     },
     {
       "stationCode": "KGG",
@@ -51,11 +51,11 @@
       "departureTime": "15:03",
       "day": 1,
       "distance": "54.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHC"
     },
     {
       "stationCode": "BGS",
@@ -64,11 +64,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "94.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHC"
     },
     {
       "stationCode": "BJU",
@@ -77,11 +77,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHC"
     },
     {
       "stationCode": "SPP",
@@ -90,11 +90,11 @@
       "departureTime": "17:13",
       "day": 1,
       "distance": "159.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHC"
     },
     {
       "stationCode": "HJP",
@@ -103,11 +103,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHC"
     },
     {
       "stationCode": "SEE",
@@ -116,11 +116,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "203.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:05",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHC"
     },
     {
       "stationCode": "PPTA",
@@ -129,11 +129,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "218.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PPTA"
     },
     {
       "stationCode": "DNR",
@@ -142,11 +142,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "224.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PPTA"
     },
     {
       "stationCode": "DDU",
@@ -155,11 +155,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "426.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PPTA"
     },
     {
       "stationCode": "MZP",
@@ -448,7 +448,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Shc Smvb Exp (22351) from SHC to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 34 stations.",
-  "generatedAt": "2026-08-06T01:33:31.312Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Shc Smvb Exp (22351) is prepared at Saharsa Jn (SHC) around 11:05 PM, with a second (vacancy) chart around 1:20 PM. 12 of 34 stations on the SHC to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:31:09.357Z",
+  "knownChartCount": 12
 }

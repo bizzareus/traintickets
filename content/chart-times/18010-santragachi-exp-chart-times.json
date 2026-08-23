@@ -12,11 +12,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:37",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BRKA"
     },
     {
       "stationCode": "BHL",
@@ -318,7 +318,7 @@
       "chartRemoteStation": "BRKA"
     }
   ],
-  "summary": "The first reservation chart for Santragachi Exp (18010) is prepared at Garwa Road (GHD) around 1:45 PM, with a second (vacancy) chart around 9:30 PM. 10 of 24 stations on the AII to SRC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:33:55.047Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Santragachi Exp (18010) is prepared at Ajmer Jn (AII) around 9:37 PM, with a second (vacancy) chart around 6:35 AM. 11 of 24 stations on the AII to SRC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-22T20:00:41.620Z",
+  "knownChartCount": 11
 }

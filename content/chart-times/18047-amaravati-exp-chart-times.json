@@ -12,11 +12,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "SRC",
@@ -25,11 +25,11 @@
       "departureTime": "23:27",
       "day": 1,
       "distance": "6.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "KGP",
@@ -565,7 +565,7 @@
       "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Amaravati Exp (18047) is prepared at Kharagpur Jn (KGP) around 12:41 PM, with a second (vacancy) chart around 10:43 PM. 41 of 43 stations on the SHM to VSG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T23:36:08.364Z",
-  "knownChartCount": 41
+  "summary": "The first reservation chart for Amaravati Exp (18047) is prepared at Shalimar (SHM) around 12:46 PM, with a second (vacancy) chart around 10:40 PM. 43 of 43 stations on the SHM to VSG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-22T20:01:11.238Z",
+  "knownChartCount": 43
 }
