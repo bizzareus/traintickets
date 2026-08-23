@@ -1381,7 +1381,18 @@ export class JourneyTaskService {
     });
   }
 
-  async getNotificationsAnalytics(startDate?: string, endDate?: string) {
+  async getNotificationsAnalytics(
+    groupBy: 'day' | 'week' | 'month' = 'day',
+    startDate?: string,
+    endDate?: string,
+  ) {
+    const periodSql =
+      groupBy === 'week'
+        ? Prisma.sql`DATE_TRUNC('week', created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
+        : groupBy === 'month'
+          ? Prisma.sql`DATE_TRUNC('month', created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
+          : Prisma.sql`DATE(created_at AT TIME ZONE 'Asia/Kolkata')::text`;
+
     const rawRows = await this.prisma.$queryRaw<
       Array<{
         date: string;
@@ -1391,7 +1402,7 @@ export class JourneyTaskService {
       }>
     >`
       SELECT 
-        DATE(created_at AT TIME ZONE 'Asia/Kolkata')::text AS date,
+        ${periodSql} AS date,
         COUNT(*)::int AS total_notifications_created,
         COUNT(DISTINCT monitoring_contact_id)::int AS unique_users,
         COUNT(DISTINCT train_number)::int AS unique_trains_monitored
@@ -1417,7 +1428,7 @@ export class JourneyTaskService {
       const count = Number(row.total_notifications_created);
       const prevCount =
         idx > 0 ? Number(rawRows[idx - 1].total_notifications_created) : null;
-      const dodChange = prevCount !== null ? count - prevCount : null;
+      const periodChange = prevCount !== null ? count - prevCount : null;
       const growthPct =
         prevCount && prevCount > 0
           ? Number((((count - prevCount) / prevCount) * 100).toFixed(2))
@@ -1434,22 +1445,29 @@ export class JourneyTaskService {
         totalNotificationsCreated: count,
         uniqueUsers: Number(row.unique_users),
         uniqueTrainsMonitored: Number(row.unique_trains_monitored),
-        dayOnDayChange: dodChange,
+        dayOnDayChange: periodChange,
+        periodChange,
         growthPercentageDoD: growthPct,
+        growthPercentage: growthPct,
       };
     });
 
-    const totalDays = formattedRows.length;
-    const avgPerDay =
-      totalDays > 0 ? Number((runningTotal / totalDays).toFixed(2)) : 0;
+    const totalPeriods = formattedRows.length;
+    const avgPerPeriod =
+      totalPeriods > 0 ? Number((runningTotal / totalPeriods).toFixed(2)) : 0;
 
     return {
+      groupBy,
       dailyStats: formattedRows,
+      stats: formattedRows,
       summary: {
         totalNotifications: runningTotal,
-        totalDays,
-        avgPerDay,
+        totalDays: totalPeriods,
+        totalPeriods,
+        avgPerDay: avgPerPeriod,
+        avgPerPeriod,
         peakDay: peakDate ? { date: peakDate, count: peakCount } : null,
+        peakPeriod: peakDate ? { date: peakDate, count: peakCount } : null,
       },
     };
   }

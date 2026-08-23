@@ -4,24 +4,33 @@ import { useEffect, useState, useMemo, useCallback } from "react";
 import { apiClient } from "@/lib/api";
 import moment from "moment";
 
+type GroupByMode = "day" | "week" | "month";
+
 type DailyStat = {
   date: string;
   totalNotificationsCreated: number;
   uniqueUsers: number;
   uniqueTrainsMonitored: number;
   dayOnDayChange: number | null;
+  periodChange?: number | null;
   growthPercentageDoD: number | null;
+  growthPercentage?: number | null;
 };
 
 type AnalyticsSummary = {
   totalNotifications: number;
   totalDays: number;
+  totalPeriods?: number;
   avgPerDay: number;
+  avgPerPeriod?: number;
   peakDay: { date: string; count: number } | null;
+  peakPeriod?: { date: string; count: number } | null;
 };
 
 type AnalyticsResponse = {
+  groupBy?: GroupByMode;
   dailyStats: DailyStat[];
+  stats?: DailyStat[];
   summary: AnalyticsSummary;
 };
 
@@ -31,7 +40,8 @@ export default function NotificationsAnalyticsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Date range controls
+  // Aggregation & Date range controls
+  const [groupBy, setGroupBy] = useState<GroupByMode>("day");
   const [preset, setPreset] = useState<"7d" | "14d" | "30d" | "90d" | "all" | "custom">("30d");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -67,6 +77,7 @@ export default function NotificationsAnalyticsPage() {
     try {
       setLoading(true);
       const params = new URLSearchParams();
+      params.append("groupBy", groupBy);
       if (startDate) params.append("startDate", startDate);
       if (endDate) params.append("endDate", endDate);
 
@@ -75,7 +86,8 @@ export default function NotificationsAnalyticsPage() {
         `/api/availability/admin/notifications-analytics${queryStr}`
       );
 
-      setData(res.data.dailyStats || []);
+      const items = res.data.stats || res.data.dailyStats || [];
+      setData(items);
       setSummary(res.data.summary || null);
       setError(null);
     } catch (err: unknown) {
@@ -90,7 +102,7 @@ export default function NotificationsAnalyticsPage() {
     } finally {
       setLoading(false);
     }
-  }, [startDate, endDate]);
+  }, [groupBy, startDate, endDate]);
 
   useEffect(() => {
     fetchAnalytics();
@@ -103,6 +115,28 @@ export default function NotificationsAnalyticsPage() {
     return max === 0 ? 10 : Math.ceil(max * 1.15);
   }, [data]);
 
+  // Date formatting helpers based on aggregation mode
+  const formatBarLabel = (dateStr: string) => {
+    if (groupBy === "month") return moment(dateStr).format("MMM YY");
+    if (groupBy === "week") return moment(dateStr).format("DD MMM");
+    return moment(dateStr).format("DD MMM");
+  };
+
+  const formatTooltipDate = (dateStr: string) => {
+    if (groupBy === "month") return moment(dateStr).format("MMMM YYYY");
+    if (groupBy === "week") return `Week of ${moment(dateStr).format("DD MMM YYYY")}`;
+    return moment(dateStr).format("ddd, DD MMM YYYY");
+  };
+
+  const formatTableDate = (dateStr: string) => {
+    if (groupBy === "month") return moment(dateStr).format("MMMM YYYY");
+    if (groupBy === "week") return `Week of ${moment(dateStr).format("DD MMM YYYY")}`;
+    return moment(dateStr).format("DD MMM YYYY");
+  };
+
+  const periodTitle = groupBy === "month" ? "Month-on-Month" : groupBy === "week" ? "Week-on-Week" : "Day-on-Day";
+  const periodShortLabel = groupBy === "month" ? "MoM" : groupBy === "week" ? "WoW" : "DoD";
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -110,11 +144,11 @@ export default function NotificationsAnalyticsPage() {
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Notifications Analytics</h1>
           <p className="mt-1 text-sm text-slate-500">
-            Day-on-day count of notifications & alerts created by users.
+            Track {periodTitle.toLowerCase()} count of notifications & alerts created by users.
           </p>
         </div>
 
-        {/* Date Range Controls */}
+        {/* Date Range & Preset Controls */}
         <div className="flex flex-wrap items-center gap-2">
           {(["7d", "14d", "30d", "90d", "all"] as const).map((p) => (
             <button
@@ -136,43 +170,72 @@ export default function NotificationsAnalyticsPage() {
         </div>
       </div>
 
-      {/* Custom Date Filters */}
-      <div className="flex flex-wrap items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 text-xs font-medium text-slate-600 shadow-sm">
-        <span className="font-semibold text-slate-900">Date Range:</span>
+      {/* Controls Bar: Group By & Date Filters */}
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-4 text-xs font-medium text-slate-600 shadow-sm">
+        {/* Aggregation Toggle */}
         <div className="flex items-center gap-2">
-          <label htmlFor="startDate">From:</label>
-          <input
-            id="startDate"
-            type="date"
-            value={startDate}
-            onChange={(e) => {
-              setPreset("custom");
-              setStartDate(e.target.value);
-            }}
-            className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs text-slate-800 focus:border-indigo-500 focus:outline-none"
-          />
+          <span className="font-semibold text-slate-900">Group By:</span>
+          <div className="inline-flex rounded-xl bg-slate-100 p-1">
+            {(
+              [
+                { key: "day", label: "Day on Day (DoD)" },
+                { key: "week", label: "Week on Week (WoW)" },
+                { key: "month", label: "Month on Month (MoM)" },
+              ] as const
+            ).map((item) => (
+              <button
+                key={item.key}
+                onClick={() => setGroupBy(item.key)}
+                className={`rounded-lg px-3 py-1 text-xs font-semibold transition ${
+                  groupBy === item.key
+                    ? "bg-white text-slate-900 shadow-sm"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <label htmlFor="endDate">To:</label>
-          <input
-            id="endDate"
-            type="date"
-            value={endDate}
-            onChange={(e) => {
-              setPreset("custom");
-              setEndDate(e.target.value);
-            }}
-            className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs text-slate-800 focus:border-indigo-500 focus:outline-none"
-          />
+
+        {/* Custom Date Filters */}
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="font-semibold text-slate-900">Date Range:</span>
+          <div className="flex items-center gap-2">
+            <label htmlFor="startDate">From:</label>
+            <input
+              id="startDate"
+              type="date"
+              value={startDate}
+              onChange={(e) => {
+                setPreset("custom");
+                setStartDate(e.target.value);
+              }}
+              className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs text-slate-800 focus:border-indigo-500 focus:outline-none"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <label htmlFor="endDate">To:</label>
+            <input
+              id="endDate"
+              type="date"
+              value={endDate}
+              onChange={(e) => {
+                setPreset("custom");
+                setEndDate(e.target.value);
+              }}
+              className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs text-slate-800 focus:border-indigo-500 focus:outline-none"
+            />
+          </div>
+          {(startDate || endDate) && (
+            <button
+              onClick={() => setPreset("all")}
+              className="text-xs font-medium text-indigo-600 hover:underline"
+            >
+              Reset
+            </button>
+          )}
         </div>
-        {(startDate || endDate) && (
-          <button
-            onClick={() => setPreset("all")}
-            className="text-xs font-medium text-indigo-600 hover:underline"
-          >
-            Reset Range
-          </button>
-        )}
       </div>
 
       {/* KPI Summary Cards */}
@@ -183,23 +246,33 @@ export default function NotificationsAnalyticsPage() {
             <p className="mt-1 text-2xl font-bold text-slate-900">{summary.totalNotifications}</p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <span className="text-xs font-medium text-slate-500">Daily Average</span>
-            <p className="mt-1 text-2xl font-bold text-indigo-600">{summary.avgPerDay}</p>
+            <span className="text-xs font-medium text-slate-500">
+              {groupBy === "month" ? "Monthly" : groupBy === "week" ? "Weekly" : "Daily"} Average
+            </span>
+            <p className="mt-1 text-2xl font-bold text-indigo-600">
+              {summary.avgPerPeriod ?? summary.avgPerDay}
+            </p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <span className="text-xs font-medium text-slate-500">Peak Single Day</span>
+            <span className="text-xs font-medium text-slate-500">
+              Peak {groupBy === "month" ? "Month" : groupBy === "week" ? "Week" : "Day"}
+            </span>
             <p className="mt-1 text-2xl font-bold text-emerald-600">
-              {summary.peakDay ? summary.peakDay.count : 0}
+              {(summary.peakPeriod || summary.peakDay)?.count ?? 0}
             </p>
-            {summary.peakDay && (
+            {(summary.peakPeriod || summary.peakDay) && (
               <span className="text-[10px] text-slate-400">
-                {moment(summary.peakDay.date).format("DD MMM YYYY")}
+                {formatTableDate((summary.peakPeriod || summary.peakDay)!.date)}
               </span>
             )}
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <span className="text-xs font-medium text-slate-500">Active Days</span>
-            <p className="mt-1 text-2xl font-bold text-slate-800">{summary.totalDays}</p>
+            <span className="text-xs font-medium text-slate-500">
+              Active {groupBy === "month" ? "Months" : groupBy === "week" ? "Weeks" : "Days"}
+            </span>
+            <p className="mt-1 text-2xl font-bold text-slate-800">
+              {summary.totalPeriods ?? summary.totalDays}
+            </p>
           </div>
         </div>
       )}
@@ -207,7 +280,9 @@ export default function NotificationsAnalyticsPage() {
       {/* Main Bar Chart Section */}
       <div className="relative rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-base font-bold text-slate-900">Day-on-Day Created Notifications</h2>
+          <h2 className="text-base font-bold text-slate-900">
+            {periodTitle} Created Notifications
+          </h2>
           <span className="text-xs text-slate-400">Hover over bars for details</span>
         </div>
 
@@ -227,13 +302,13 @@ export default function NotificationsAnalyticsPage() {
           </div>
         ) : data.length === 0 ? (
           <div className="flex h-72 items-center justify-center text-sm text-slate-400">
-            No notification data found for the selected date range.
+            No notification data found for the selected date range and grouping.
           </div>
         ) : (
           <div className="relative">
             {/* SVG Bar Chart */}
             <div className="relative h-72 w-full overflow-x-auto">
-              <div className="flex h-full min-w-full items-end gap-1.5 pt-8 pb-8">
+              <div className="flex h-full min-w-full items-end gap-2 pt-8 pb-8">
                 {data.map((item) => {
                   const heightPercent = Math.max(
                     4,
@@ -268,7 +343,7 @@ export default function NotificationsAnalyticsPage() {
                       <div className="w-full flex-1 flex items-end justify-center">
                         <div
                           style={{ height: `${heightPercent}%` }}
-                          className={`w-full max-w-[28px] rounded-t-md transition-all duration-200 ${
+                          className={`w-full max-w-[36px] rounded-t-md transition-all duration-200 ${
                             isHovered
                               ? "bg-indigo-600 shadow-md"
                               : "bg-indigo-500/85 hover:bg-indigo-600"
@@ -278,7 +353,7 @@ export default function NotificationsAnalyticsPage() {
 
                       {/* X Axis Label */}
                       <span className="mt-2 text-[10px] font-medium text-slate-400 group-hover:text-slate-700 whitespace-nowrap">
-                        {moment(item.date).format("DD MMM")}
+                        {formatBarLabel(item.date)}
                       </span>
                     </div>
                   );
@@ -293,7 +368,7 @@ export default function NotificationsAnalyticsPage() {
                 style={{ left: hoverPos.x, top: hoverPos.y }}
               >
                 <div className="font-bold text-slate-200">
-                  {moment(hoveredBar.date).format("ddd, DD MMM YYYY")}
+                  {formatTooltipDate(hoveredBar.date)}
                 </div>
                 <div className="mt-1.5 space-y-1">
                   <div className="flex items-center justify-between gap-4">
@@ -314,19 +389,25 @@ export default function NotificationsAnalyticsPage() {
                       {hoveredBar.uniqueTrainsMonitored}
                     </span>
                   </div>
-                  {hoveredBar.dayOnDayChange !== null && (
-                    <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
-                      <span className="text-slate-400">Day-on-Day Change:</span>
-                      <span
-                        className={`font-bold ${
-                          hoveredBar.dayOnDayChange >= 0 ? "text-emerald-400" : "text-rose-400"
-                        }`}
-                      >
-                        {hoveredBar.dayOnDayChange >= 0 ? `+${hoveredBar.dayOnDayChange}` : hoveredBar.dayOnDayChange}
-                        {hoveredBar.growthPercentageDoD !== null && ` (${hoveredBar.growthPercentageDoD}%)`}
-                      </span>
-                    </div>
-                  )}
+                  {(hoveredBar.periodChange ?? hoveredBar.dayOnDayChange) !== null &&
+                    (hoveredBar.periodChange ?? hoveredBar.dayOnDayChange) !== undefined && (
+                      <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
+                        <span className="text-slate-400">{periodShortLabel} Change:</span>
+                        <span
+                          className={`font-bold ${
+                            (hoveredBar.periodChange ?? hoveredBar.dayOnDayChange)! >= 0
+                              ? "text-emerald-400"
+                              : "text-rose-400"
+                          }`}
+                        >
+                          {(hoveredBar.periodChange ?? hoveredBar.dayOnDayChange)! >= 0
+                            ? `+${hoveredBar.periodChange ?? hoveredBar.dayOnDayChange}`
+                            : (hoveredBar.periodChange ?? hoveredBar.dayOnDayChange)}
+                          {(hoveredBar.growthPercentage ?? hoveredBar.growthPercentageDoD) !== null &&
+                            ` (${hoveredBar.growthPercentage ?? hoveredBar.growthPercentageDoD}%)`}
+                        </span>
+                      </div>
+                    )}
                 </div>
               </div>
             )}
@@ -336,52 +417,62 @@ export default function NotificationsAnalyticsPage() {
 
       {/* Tabular Data Drilldown */}
       <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-        <div className="border-b border-slate-100 bg-slate-50/50 px-6 py-4">
-          <h3 className="font-semibold text-slate-900">Daily Breakdown Table</h3>
+        <div className="border-b border-slate-100 bg-slate-50/50 px-6 py-4 flex items-center justify-between">
+          <h3 className="font-semibold text-slate-900">{periodTitle} Breakdown Table</h3>
+          <span className="text-xs font-medium text-slate-500">
+            Grouped by {groupBy === "month" ? "Month" : groupBy === "week" ? "Week" : "Day"}
+          </span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead className="border-b border-slate-100 bg-slate-50/50 text-xs font-semibold text-slate-700">
               <tr>
-                <th className="px-6 py-3">Date</th>
+                <th className="px-6 py-3">
+                  {groupBy === "month" ? "Month" : groupBy === "week" ? "Week Start" : "Date"}
+                </th>
                 <th className="px-6 py-3">Notifications Created</th>
                 <th className="px-6 py-3">Unique Users</th>
                 <th className="px-6 py-3">Monitored Trains</th>
-                <th className="px-6 py-3">DoD Change</th>
-                <th className="px-6 py-3">DoD Growth %</th>
+                <th className="px-6 py-3">{periodShortLabel} Change</th>
+                <th className="px-6 py-3">{periodShortLabel} Growth %</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {[...data].reverse().map((row) => (
-                <tr key={row.date} className="transition hover:bg-slate-50/50">
-                  <td className="whitespace-nowrap px-6 py-3.5 font-medium text-slate-900">
-                    {moment(row.date).format("DD MMM YYYY")}
-                  </td>
-                  <td className="px-6 py-3.5 font-bold text-indigo-600">
-                    {row.totalNotificationsCreated}
-                  </td>
-                  <td className="px-6 py-3.5 text-slate-700">{row.uniqueUsers}</td>
-                  <td className="px-6 py-3.5 text-slate-700">{row.uniqueTrainsMonitored}</td>
-                  <td className="px-6 py-3.5 font-medium">
-                    {row.dayOnDayChange !== null ? (
-                      <span className={row.dayOnDayChange >= 0 ? "text-emerald-600" : "text-rose-600"}>
-                        {row.dayOnDayChange >= 0 ? `+${row.dayOnDayChange}` : row.dayOnDayChange}
-                      </span>
-                    ) : (
-                      <span className="text-slate-300">—</span>
-                    )}
-                  </td>
-                  <td className="px-6 py-3.5 font-medium">
-                    {row.growthPercentageDoD !== null ? (
-                      <span className={row.growthPercentageDoD >= 0 ? "text-emerald-600" : "text-rose-600"}>
-                        {row.growthPercentageDoD >= 0 ? `+${row.growthPercentageDoD}%` : `${row.growthPercentageDoD}%`}
-                      </span>
-                    ) : (
-                      <span className="text-slate-300">—</span>
-                    )}
-                  </td>
-                </tr>
-              ))}
+              {[...data].reverse().map((row) => {
+                const change = row.periodChange ?? row.dayOnDayChange;
+                const growth = row.growthPercentage ?? row.growthPercentageDoD;
+
+                return (
+                  <tr key={row.date} className="transition hover:bg-slate-50/50">
+                    <td className="whitespace-nowrap px-6 py-3.5 font-medium text-slate-900">
+                      {formatTableDate(row.date)}
+                    </td>
+                    <td className="px-6 py-3.5 font-bold text-indigo-600">
+                      {row.totalNotificationsCreated}
+                    </td>
+                    <td className="px-6 py-3.5 text-slate-700">{row.uniqueUsers}</td>
+                    <td className="px-6 py-3.5 text-slate-700">{row.uniqueTrainsMonitored}</td>
+                    <td className="px-6 py-3.5 font-medium">
+                      {change !== null && change !== undefined ? (
+                        <span className={change >= 0 ? "text-emerald-600" : "text-rose-600"}>
+                          {change >= 0 ? `+${change}` : change}
+                        </span>
+                      ) : (
+                        <span className="text-slate-300">—</span>
+                      )}
+                    </td>
+                    <td className="px-6 py-3.5 font-medium">
+                      {growth !== null && growth !== undefined ? (
+                        <span className={growth >= 0 ? "text-emerald-600" : "text-rose-600"}>
+                          {growth >= 0 ? `+${growth}%` : `${growth}%`}
+                        </span>
+                      ) : (
+                        <span className="text-slate-300">—</span>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

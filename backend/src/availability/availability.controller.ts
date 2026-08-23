@@ -416,10 +416,17 @@ export class AvailabilityController {
 
   @Get('admin/notifications-analytics')
   async getNotificationsAnalytics(
+    @Query('groupBy') groupBy?: 'day' | 'week' | 'month',
     @Query('startDate') startDate?: string,
     @Query('endDate') endDate?: string,
   ) {
-    return this.journeyTask.getNotificationsAnalytics(startDate, endDate);
+    const validGroupBy =
+      groupBy === 'week' || groupBy === 'month' ? groupBy : 'day';
+    return this.journeyTask.getNotificationsAnalytics(
+      validGroupBy,
+      startDate,
+      endDate,
+    );
   }
 
 
