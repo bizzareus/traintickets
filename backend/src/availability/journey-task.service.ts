@@ -5,7 +5,7 @@ import {
   Logger,
   Optional,
 } from '@nestjs/common';
-import type { Prisma, ChartTimeAvailabilityTask } from '@prisma/client';
+import { Prisma, type ChartTimeAvailabilityTask } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import {
@@ -1380,6 +1380,80 @@ export class JourneyTaskService {
       take: 200, // Limit to recent 200 for now
     });
   }
+
+  async getNotificationsAnalytics(startDate?: string, endDate?: string) {
+    const rawRows = await this.prisma.$queryRaw<
+      Array<{
+        date: string;
+        total_notifications_created: number;
+        unique_users: number;
+        unique_trains_monitored: number;
+      }>
+    >`
+      SELECT 
+        DATE(created_at AT TIME ZONE 'Asia/Kolkata')::text AS date,
+        COUNT(*)::int AS total_notifications_created,
+        COUNT(DISTINCT monitoring_contact_id)::int AS unique_users,
+        COUNT(DISTINCT train_number)::int AS unique_trains_monitored
+      FROM "JourneyMonitoringRequest"
+      ${
+        startDate && endDate
+          ? Prisma.sql`WHERE created_at >= ${startDate}::timestamp AND created_at <= (${endDate} || ' 23:59:59')::timestamp`
+          : startDate
+            ? Prisma.sql`WHERE created_at >= ${startDate}::timestamp`
+            : endDate
+              ? Prisma.sql`WHERE created_at <= (${endDate} || ' 23:59:59')::timestamp`
+              : Prisma.empty
+      }
+      GROUP BY 1
+      ORDER BY date ASC
+    `;
+
+    let runningTotal = 0;
+    let peakCount = 0;
+    let peakDate = '';
+
+    const formattedRows = rawRows.map((row, idx) => {
+      const count = Number(row.total_notifications_created);
+      const prevCount =
+        idx > 0 ? Number(rawRows[idx - 1].total_notifications_created) : null;
+      const dodChange = prevCount !== null ? count - prevCount : null;
+      const growthPct =
+        prevCount && prevCount > 0
+          ? Number((((count - prevCount) / prevCount) * 100).toFixed(2))
+          : null;
+
+      runningTotal += count;
+      if (count > peakCount) {
+        peakCount = count;
+        peakDate = row.date;
+      }
+
+      return {
+        date: row.date,
+        totalNotificationsCreated: count,
+        uniqueUsers: Number(row.unique_users),
+        uniqueTrainsMonitored: Number(row.unique_trains_monitored),
+        dayOnDayChange: dodChange,
+        growthPercentageDoD: growthPct,
+      };
+    });
+
+    const totalDays = formattedRows.length;
+    const avgPerDay =
+      totalDays > 0 ? Number((runningTotal / totalDays).toFixed(2)) : 0;
+
+    return {
+      dailyStats: formattedRows,
+      summary: {
+        totalNotifications: runningTotal,
+        totalDays,
+        avgPerDay,
+        peakDay: peakDate ? { date: peakDate, count: peakCount } : null,
+      },
+    };
+  }
+
 
   async resendTaskNotification(taskId: string): Promise<{
     sent: boolean;

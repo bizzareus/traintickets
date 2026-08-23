@@ -414,6 +414,15 @@ export class AvailabilityController {
     };
   }
 
+  @Get('admin/notifications-analytics')
+  async getNotificationsAnalytics(
+    @Query('startDate') startDate?: string,
+    @Query('endDate') endDate?: string,
+  ) {
+    return this.journeyTask.getNotificationsAnalytics(startDate, endDate);
+  }
+
+
   /** Admin gate — same x-admin-password the other admin tools use. */
   private assertAdmin(pw?: string): void {
     const expected = String(
