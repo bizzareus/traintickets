@@ -1388,61 +1388,86 @@ export class JourneyTaskService {
   ) {
     const periodSql =
       groupBy === 'week'
-        ? Prisma.sql`DATE_TRUNC('week', created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
+        ? Prisma.sql`DATE_TRUNC('week', jmr.created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
         : groupBy === 'month'
-          ? Prisma.sql`DATE_TRUNC('month', created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
-          : Prisma.sql`DATE(created_at AT TIME ZONE 'Asia/Kolkata')::text`;
+          ? Prisma.sql`DATE_TRUNC('month', jmr.created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
+          : Prisma.sql`DATE(jmr.created_at AT TIME ZONE 'Asia/Kolkata')::text`;
 
     const rawRows = await this.prisma.$queryRaw<
       Array<{
         date: string;
         total_notifications_created: number;
+        total_delivered: number;
+        whatsapp_delivered: number;
+        email_delivered: number;
         unique_users: number;
         unique_trains_monitored: number;
       }>
     >`
       SELECT 
         ${periodSql} AS date,
-        COUNT(*)::int AS total_notifications_created,
-        COUNT(DISTINCT monitoring_contact_id)::int AS unique_users,
-        COUNT(DISTINCT train_number)::int AS unique_trains_monitored
-      FROM "JourneyMonitoringRequest"
+        COUNT(DISTINCT jmr.id)::int AS total_notifications_created,
+        COUNT(DISTINCT CASE WHEN ctat.email_notified_at IS NOT NULL OR ctat.whatsapp_notified_at IS NOT NULL THEN jmr.id END)::int AS total_delivered,
+        COUNT(DISTINCT CASE WHEN ctat.whatsapp_notified_at IS NOT NULL THEN jmr.id END)::int AS whatsapp_delivered,
+        COUNT(DISTINCT CASE WHEN ctat.email_notified_at IS NOT NULL THEN jmr.id END)::int AS email_delivered,
+        COUNT(DISTINCT jmr.monitoring_contact_id)::int AS unique_users,
+        COUNT(DISTINCT jmr.train_number)::int AS unique_trains_monitored
+      FROM "JourneyMonitoringRequest" jmr
+      LEFT JOIN "ChartTimeAvailabilityTask" ctat ON ctat.journey_request_id = jmr.id
       ${
         startDate && endDate
-          ? Prisma.sql`WHERE created_at >= ${startDate}::timestamp AND created_at <= (${endDate} || ' 23:59:59')::timestamp`
+          ? Prisma.sql`WHERE jmr.created_at >= ${startDate}::timestamp AND jmr.created_at <= (${endDate} || ' 23:59:59')::timestamp`
           : startDate
-            ? Prisma.sql`WHERE created_at >= ${startDate}::timestamp`
+            ? Prisma.sql`WHERE jmr.created_at >= ${startDate}::timestamp`
             : endDate
-              ? Prisma.sql`WHERE created_at <= (${endDate} || ' 23:59:59')::timestamp`
+              ? Prisma.sql`WHERE jmr.created_at <= (${endDate} || ' 23:59:59')::timestamp`
               : Prisma.empty
       }
       GROUP BY 1
       ORDER BY date ASC
     `;
 
-    let runningTotal = 0;
+    let runningCreated = 0;
+    let runningDelivered = 0;
+    let runningWhatsapp = 0;
+    let runningEmail = 0;
     let peakCount = 0;
     let peakDate = '';
 
     const formattedRows = rawRows.map((row, idx) => {
-      const count = Number(row.total_notifications_created);
-      const prevCount =
+      const created = Number(row.total_notifications_created);
+      const delivered = Number(row.total_delivered);
+      const whatsapp = Number(row.whatsapp_delivered);
+      const email = Number(row.email_delivered);
+
+      const deliveryRate =
+        created > 0 ? Number(((delivered / created) * 100).toFixed(2)) : 0;
+
+      const prevCreated =
         idx > 0 ? Number(rawRows[idx - 1].total_notifications_created) : null;
-      const periodChange = prevCount !== null ? count - prevCount : null;
+      const periodChange = prevCreated !== null ? created - prevCreated : null;
       const growthPct =
-        prevCount && prevCount > 0
-          ? Number((((count - prevCount) / prevCount) * 100).toFixed(2))
+        prevCreated && prevCreated > 0
+          ? Number((((created - prevCreated) / prevCreated) * 100).toFixed(2))
           : null;
 
-      runningTotal += count;
-      if (count > peakCount) {
-        peakCount = count;
+      runningCreated += created;
+      runningDelivered += delivered;
+      runningWhatsapp += whatsapp;
+      runningEmail += email;
+
+      if (created > peakCount) {
+        peakCount = created;
         peakDate = row.date;
       }
 
       return {
         date: row.date,
-        totalNotificationsCreated: count,
+        totalNotificationsCreated: created,
+        totalDelivered: delivered,
+        whatsappDelivered: whatsapp,
+        emailDelivered: email,
+        deliveryRatePct: deliveryRate,
         uniqueUsers: Number(row.unique_users),
         uniqueTrainsMonitored: Number(row.unique_trains_monitored),
         dayOnDayChange: periodChange,
@@ -1454,14 +1479,23 @@ export class JourneyTaskService {
 
     const totalPeriods = formattedRows.length;
     const avgPerPeriod =
-      totalPeriods > 0 ? Number((runningTotal / totalPeriods).toFixed(2)) : 0;
+      totalPeriods > 0 ? Number((runningCreated / totalPeriods).toFixed(2)) : 0;
+    const overallDeliveryRate =
+      runningCreated > 0
+        ? Number(((runningDelivered / runningCreated) * 100).toFixed(2))
+        : 0;
 
     return {
       groupBy,
       dailyStats: formattedRows,
       stats: formattedRows,
       summary: {
-        totalNotifications: runningTotal,
+        totalNotifications: runningCreated,
+        totalCreated: runningCreated,
+        totalDelivered: runningDelivered,
+        totalWhatsappDelivered: runningWhatsapp,
+        totalEmailDelivered: runningEmail,
+        overallDeliveryRate,
         totalDays: totalPeriods,
         totalPeriods,
         avgPerDay: avgPerPeriod,

@@ -9,6 +9,10 @@ type GroupByMode = "day" | "week" | "month";
 type DailyStat = {
   date: string;
   totalNotificationsCreated: number;
+  totalDelivered: number;
+  whatsappDelivered: number;
+  emailDelivered: number;
+  deliveryRatePct: number;
   uniqueUsers: number;
   uniqueTrainsMonitored: number;
   dayOnDayChange: number | null;
@@ -19,6 +23,11 @@ type DailyStat = {
 
 type AnalyticsSummary = {
   totalNotifications: number;
+  totalCreated: number;
+  totalDelivered: number;
+  totalWhatsappDelivered: number;
+  totalEmailDelivered: number;
+  overallDeliveryRate: number;
   totalDays: number;
   totalPeriods?: number;
   avgPerDay: number;
@@ -111,7 +120,9 @@ export default function NotificationsAnalyticsPage() {
   // Calculate chart max height & scale
   const maxVal = useMemo(() => {
     if (!data.length) return 10;
-    const max = Math.max(...data.map((d) => d.totalNotificationsCreated));
+    const max = Math.max(
+      ...data.map((d) => Math.max(d.totalNotificationsCreated, d.totalDelivered || 0))
+    );
     return max === 0 ? 10 : Math.ceil(max * 1.15);
   }, [data]);
 
@@ -134,8 +145,14 @@ export default function NotificationsAnalyticsPage() {
     return moment(dateStr).format("DD MMM YYYY");
   };
 
-  const periodTitle = groupBy === "month" ? "Month-on-Month" : groupBy === "week" ? "Week-on-Week" : "Day-on-Day";
-  const periodShortLabel = groupBy === "month" ? "MoM" : groupBy === "week" ? "WoW" : "DoD";
+  const periodTitle =
+    groupBy === "month"
+      ? "Month-on-Month"
+      : groupBy === "week"
+        ? "Week-on-Week"
+        : "Day-on-Day";
+  const periodShortLabel =
+    groupBy === "month" ? "MoM" : groupBy === "week" ? "WoW" : "DoD";
 
   return (
     <div className="space-y-6">
@@ -144,7 +161,7 @@ export default function NotificationsAnalyticsPage() {
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Notifications Analytics</h1>
           <p className="mt-1 text-sm text-slate-500">
-            Track {periodTitle.toLowerCase()} count of notifications & alerts created by users.
+            Track {periodTitle.toLowerCase()} count of notifications created vs. delivered to users.
           </p>
         </div>
 
@@ -242,9 +259,28 @@ export default function NotificationsAnalyticsPage() {
       {summary && (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <span className="text-xs font-medium text-slate-500">Total Notifications</span>
-            <p className="mt-1 text-2xl font-bold text-slate-900">{summary.totalNotifications}</p>
+            <span className="text-xs font-medium text-slate-500">Total Created</span>
+            <p className="mt-1 text-2xl font-bold text-slate-900">
+              {summary.totalCreated ?? summary.totalNotifications}
+            </p>
+            <span className="text-[10px] text-slate-400">
+              Across {summary.totalPeriods ?? summary.totalDays} {groupBy}s
+            </span>
           </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Total Delivered</span>
+              <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200">
+                {summary.overallDeliveryRate}% rate
+              </span>
+            </div>
+            <p className="mt-1 text-2xl font-bold text-emerald-600">{summary.totalDelivered}</p>
+            <span className="text-[10px] text-slate-400">
+              WA: {summary.totalWhatsappDelivered || 0} • Email: {summary.totalEmailDelivered || 0}
+            </span>
+          </div>
+
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
             <span className="text-xs font-medium text-slate-500">
               {groupBy === "month" ? "Monthly" : groupBy === "week" ? "Weekly" : "Daily"} Average
@@ -252,12 +288,14 @@ export default function NotificationsAnalyticsPage() {
             <p className="mt-1 text-2xl font-bold text-indigo-600">
               {summary.avgPerPeriod ?? summary.avgPerDay}
             </p>
+            <span className="text-[10px] text-slate-400">Created per {groupBy}</span>
           </div>
+
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
             <span className="text-xs font-medium text-slate-500">
               Peak {groupBy === "month" ? "Month" : groupBy === "week" ? "Week" : "Day"}
             </span>
-            <p className="mt-1 text-2xl font-bold text-emerald-600">
+            <p className="mt-1 text-2xl font-bold text-slate-900">
               {(summary.peakPeriod || summary.peakDay)?.count ?? 0}
             </p>
             {(summary.peakPeriod || summary.peakDay) && (
@@ -266,24 +304,30 @@ export default function NotificationsAnalyticsPage() {
               </span>
             )}
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <span className="text-xs font-medium text-slate-500">
-              Active {groupBy === "month" ? "Months" : groupBy === "week" ? "Weeks" : "Days"}
-            </span>
-            <p className="mt-1 text-2xl font-bold text-slate-800">
-              {summary.totalPeriods ?? summary.totalDays}
-            </p>
-          </div>
         </div>
       )}
 
       {/* Main Bar Chart Section */}
       <div className="relative rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-base font-bold text-slate-900">
-            {periodTitle} Created Notifications
-          </h2>
-          <span className="text-xs text-slate-400">Hover over bars for details</span>
+        <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <h2 className="text-base font-bold text-slate-900">
+              {periodTitle} Created vs. Delivered Notifications
+            </h2>
+            <span className="text-xs text-slate-400">Hover over bars for details</span>
+          </div>
+
+          {/* Chart Legend */}
+          <div className="flex items-center gap-4 text-xs font-semibold">
+            <div className="flex items-center gap-1.5">
+              <span className="h-3 w-3 rounded-sm bg-indigo-500" />
+              <span className="text-slate-700">Created</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="h-3 w-3 rounded-sm bg-emerald-500" />
+              <span className="text-slate-700">Delivered</span>
+            </div>
+          </div>
         </div>
 
         {loading ? (
@@ -306,13 +350,17 @@ export default function NotificationsAnalyticsPage() {
           </div>
         ) : (
           <div className="relative">
-            {/* SVG Bar Chart */}
+            {/* SVG Grouped Bar Chart */}
             <div className="relative h-72 w-full overflow-x-auto">
-              <div className="flex h-full min-w-full items-end gap-2 pt-8 pb-8">
+              <div className="flex h-full min-w-full items-end gap-3 pt-8 pb-8">
                 {data.map((item) => {
-                  const heightPercent = Math.max(
-                    4,
+                  const createdHeight = Math.max(
+                    item.totalNotificationsCreated > 0 ? 4 : 0,
                     Math.round((item.totalNotificationsCreated / maxVal) * 100)
+                  );
+                  const deliveredHeight = Math.max(
+                    item.totalDelivered > 0 ? 4 : 0,
+                    Math.round((item.totalDelivered / maxVal) * 100)
                   );
                   const isHovered = hoveredBar?.date === item.date;
 
@@ -339,14 +387,24 @@ export default function NotificationsAnalyticsPage() {
                         {item.totalNotificationsCreated}
                       </span>
 
-                      {/* Bar Container */}
-                      <div className="w-full flex-1 flex items-end justify-center">
+                      {/* Grouped Bars Container */}
+                      <div className="w-full flex-1 flex items-end justify-center gap-1">
+                        {/* Created Bar */}
                         <div
-                          style={{ height: `${heightPercent}%` }}
-                          className={`w-full max-w-[36px] rounded-t-md transition-all duration-200 ${
+                          style={{ height: `${createdHeight}%` }}
+                          className={`w-full max-w-[18px] rounded-t-md transition-all duration-200 ${
                             isHovered
                               ? "bg-indigo-600 shadow-md"
                               : "bg-indigo-500/85 hover:bg-indigo-600"
+                          }`}
+                        />
+                        {/* Delivered Bar */}
+                        <div
+                          style={{ height: `${deliveredHeight}%` }}
+                          className={`w-full max-w-[18px] rounded-t-md transition-all duration-200 ${
+                            isHovered
+                              ? "bg-emerald-600 shadow-md"
+                              : "bg-emerald-500/85 hover:bg-emerald-600"
                           }`}
                         />
                       </div>
@@ -364,22 +422,32 @@ export default function NotificationsAnalyticsPage() {
             {/* Hover Tooltip Popup */}
             {hoveredBar && hoverPos && (
               <div
-                className="fixed z-50 pointer-events-none -translate-x-1/2 -translate-y-full mb-2 rounded-xl border border-slate-800 bg-slate-900 p-3 text-xs text-white shadow-xl transition-all"
+                className="fixed z-50 pointer-events-none -translate-x-1/2 -translate-y-full mb-2 rounded-xl border border-slate-800 bg-slate-900 p-3 text-xs text-white shadow-xl transition-all min-w-[220px]"
                 style={{ left: hoverPos.x, top: hoverPos.y }}
               >
-                <div className="font-bold text-slate-200">
+                <div className="font-bold text-slate-200 border-b border-slate-800 pb-1.5">
                   {formatTooltipDate(hoveredBar.date)}
                 </div>
-                <div className="mt-1.5 space-y-1">
+                <div className="mt-2 space-y-1.5">
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-slate-400">Notifications Created:</span>
+                    <span className="text-slate-400">Created:</span>
                     <span className="font-bold text-indigo-400">
                       {hoveredBar.totalNotificationsCreated}
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-slate-400">Unique Active Users:</span>
+                    <span className="text-slate-400">Delivered:</span>
                     <span className="font-bold text-emerald-400">
+                      {hoveredBar.totalDelivered} ({hoveredBar.deliveryRatePct}%)
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 text-[10px] text-slate-400 pl-2">
+                    <span>• WhatsApp: {hoveredBar.whatsappDelivered || 0}</span>
+                    <span>• Email: {hoveredBar.emailDelivered || 0}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
+                    <span className="text-slate-400">Unique Users:</span>
+                    <span className="font-bold text-slate-200">
                       {hoveredBar.uniqueUsers}
                     </span>
                   </div>
@@ -392,7 +460,7 @@ export default function NotificationsAnalyticsPage() {
                   {(hoveredBar.periodChange ?? hoveredBar.dayOnDayChange) !== null &&
                     (hoveredBar.periodChange ?? hoveredBar.dayOnDayChange) !== undefined && (
                       <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
-                        <span className="text-slate-400">{periodShortLabel} Change:</span>
+                        <span className="text-slate-400">{periodShortLabel} Growth:</span>
                         <span
                           className={`font-bold ${
                             (hoveredBar.periodChange ?? hoveredBar.dayOnDayChange)! >= 0
@@ -402,7 +470,7 @@ export default function NotificationsAnalyticsPage() {
                         >
                           {(hoveredBar.periodChange ?? hoveredBar.dayOnDayChange)! >= 0
                             ? `+${hoveredBar.periodChange ?? hoveredBar.dayOnDayChange}`
-                            : (hoveredBar.periodChange ?? hoveredBar.dayOnDayChange)}
+                            : hoveredBar.periodChange ?? hoveredBar.dayOnDayChange}
                           {(hoveredBar.growthPercentage ?? hoveredBar.growthPercentageDoD) !== null &&
                             ` (${hoveredBar.growthPercentage ?? hoveredBar.growthPercentageDoD}%)`}
                         </span>
@@ -430,11 +498,14 @@ export default function NotificationsAnalyticsPage() {
                 <th className="px-6 py-3">
                   {groupBy === "month" ? "Month" : groupBy === "week" ? "Week Start" : "Date"}
                 </th>
-                <th className="px-6 py-3">Notifications Created</th>
+                <th className="px-6 py-3">Created</th>
+                <th className="px-6 py-3">Delivered</th>
+                <th className="px-6 py-3">Delivery Rate</th>
+                <th className="px-6 py-3">WhatsApp</th>
+                <th className="px-6 py-3">Email</th>
                 <th className="px-6 py-3">Unique Users</th>
                 <th className="px-6 py-3">Monitored Trains</th>
-                <th className="px-6 py-3">{periodShortLabel} Change</th>
-                <th className="px-6 py-3">{periodShortLabel} Growth %</th>
+                <th className="px-6 py-3">{periodShortLabel} Growth</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -450,21 +521,31 @@ export default function NotificationsAnalyticsPage() {
                     <td className="px-6 py-3.5 font-bold text-indigo-600">
                       {row.totalNotificationsCreated}
                     </td>
+                    <td className="px-6 py-3.5 font-bold text-emerald-600">
+                      {row.totalDelivered}
+                    </td>
+                    <td className="px-6 py-3.5">
+                      <span
+                        className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-bold ${
+                          row.deliveryRatePct >= 80
+                            ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                            : row.deliveryRatePct >= 50
+                              ? "bg-amber-50 text-amber-700 border border-amber-200"
+                              : "bg-slate-100 text-slate-600"
+                        }`}
+                      >
+                        {row.deliveryRatePct}%
+                      </span>
+                    </td>
+                    <td className="px-6 py-3.5 text-slate-700">{row.whatsappDelivered || 0}</td>
+                    <td className="px-6 py-3.5 text-slate-700">{row.emailDelivered || 0}</td>
                     <td className="px-6 py-3.5 text-slate-700">{row.uniqueUsers}</td>
                     <td className="px-6 py-3.5 text-slate-700">{row.uniqueTrainsMonitored}</td>
                     <td className="px-6 py-3.5 font-medium">
-                      {change !== null && change !== undefined ? (
-                        <span className={change >= 0 ? "text-emerald-600" : "text-rose-600"}>
-                          {change >= 0 ? `+${change}` : change}
-                        </span>
-                      ) : (
-                        <span className="text-slate-300">—</span>
-                      )}
-                    </td>
-                    <td className="px-6 py-3.5 font-medium">
                       {growth !== null && growth !== undefined ? (
                         <span className={growth >= 0 ? "text-emerald-600" : "text-rose-600"}>
-                          {growth >= 0 ? `+${growth}%` : `${growth}%`}
+                          {change !== null && change !== undefined && (change >= 0 ? `+${change} ` : `${change} `)}
+                          ({growth >= 0 ? `+${growth}%` : `${growth}%`})
                         </span>
                       ) : (
                         <span className="text-slate-300">—</span>
