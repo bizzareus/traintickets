@@ -7,6 +7,13 @@ export default function AdminPage() {
       <p className="mt-1 text-slate-600">Track user alerts and manage chart-time backfills.</p>
       <ul className="mt-8 grid gap-4 sm:grid-cols-2">
         <Link
+          href="/admin/analytics"
+          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
+        >
+          <h2 className="font-semibold text-slate-900">Analytics</h2>
+          <p className="mt-1 text-sm text-slate-600">View day-on-day notifications created by users with date filtering.</p>
+        </Link>
+        <Link
           href="/admin/alerts"
           className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
         >
