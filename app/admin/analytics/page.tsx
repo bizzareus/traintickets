@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { apiClient } from "@/lib/api";
 import moment from "moment";
 
@@ -63,11 +63,7 @@ export default function NotificationsAnalyticsPage() {
     setEndDate(start ? end : "");
   }, [preset]);
 
-  useEffect(() => {
-    fetchAnalytics();
-  }, [startDate, endDate]);
-
-  async function fetchAnalytics() {
+  const fetchAnalytics = useCallback(async () => {
     try {
       setLoading(true);
       const params = new URLSearchParams();
@@ -82,13 +78,23 @@ export default function NotificationsAnalyticsPage() {
       setData(res.data.dailyStats || []);
       setSummary(res.data.summary || null);
       setError(null);
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Failed to fetch notification analytics", err);
-      setError("Failed to load analytics data.");
+      const isNetworkErr =
+        err && typeof err === "object" && "code" in err && err.code === "ERR_NETWORK";
+      setError(
+        isNetworkErr
+          ? "Network Error: Unable to connect to backend server. Please ensure the API service is running."
+          : "Failed to load analytics data from server."
+      );
     } finally {
       setLoading(false);
     }
-  }
+  }, [startDate, endDate]);
+
+  useEffect(() => {
+    fetchAnalytics();
+  }, [fetchAnalytics]);
 
   // Calculate chart max height & scale
   const maxVal = useMemo(() => {
@@ -210,7 +216,15 @@ export default function NotificationsAnalyticsPage() {
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600" />
           </div>
         ) : error ? (
-          <div className="flex h-72 items-center justify-center text-sm text-rose-600">{error}</div>
+          <div className="flex h-72 flex-col items-center justify-center gap-3 text-center">
+            <p className="text-sm text-rose-600 font-medium">{error}</p>
+            <button
+              onClick={fetchAnalytics}
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
+            >
+              Retry Connection
+            </button>
+          </div>
         ) : data.length === 0 ? (
           <div className="flex h-72 items-center justify-center text-sm text-slate-400">
             No notification data found for the selected date range.
