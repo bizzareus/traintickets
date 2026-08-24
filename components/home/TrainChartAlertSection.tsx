@@ -246,19 +246,6 @@ export function TrainChartAlertSection({
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="mt-4 space-y-4">
-                <div className="rounded-lg border border-slate-100 bg-slate-50 p-3 text-xs text-slate-600">
-                  <div className="flex justify-between font-semibold text-slate-800">
-                    <span>Route:</span>
-                    <span>{fromCode} → {toCode}</span>
-                  </div>
-                  {journeyDate && (
-                    <div className="mt-1 flex justify-between">
-                      <span>Date:</span>
-                      <span className="font-medium text-slate-700">{journeyDate.slice(0, 10)}</span>
-                    </div>
-                  )}
-                </div>
-
                 <div>
                   <label
                     htmlFor="alertClassSelect"
