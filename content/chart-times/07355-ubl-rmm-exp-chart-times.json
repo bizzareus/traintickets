@@ -12,11 +12,11 @@
       "departureTime": "06:50",
       "day": null,
       "distance": "0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "HVR",
@@ -25,11 +25,11 @@
       "departureTime": "07:47",
       "day": null,
       "distance": "76",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "RNR",
@@ -38,11 +38,11 @@
       "departureTime": "08:17",
       "day": null,
       "distance": "108",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "HRR",
@@ -51,11 +51,11 @@
       "departureTime": "08:40",
       "day": null,
       "distance": "131",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "DVG",
@@ -64,11 +64,11 @@
       "departureTime": "08:57",
       "day": null,
       "distance": "144",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "JRU",
@@ -77,11 +77,11 @@
       "departureTime": "09:37",
       "day": null,
       "distance": "190",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "RRB",
@@ -90,11 +90,11 @@
       "departureTime": "10:25",
       "day": null,
       "distance": "259",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "ASK",
@@ -103,11 +103,11 @@
       "departureTime": "11:25",
       "day": null,
       "distance": "304",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "TTR",
@@ -116,11 +116,11 @@
       "departureTime": "11:45",
       "day": null,
       "distance": "330",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "TK",
@@ -129,11 +129,11 @@
       "departureTime": "12:25",
       "day": null,
       "distance": "400",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "BAND",
@@ -142,11 +142,11 @@
       "departureTime": "14:43",
       "day": null,
       "distance": "474",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BAND"
     },
     {
       "stationCode": "HSRA",
@@ -155,11 +155,11 @@
       "departureTime": "15:40",
       "day": null,
       "distance": "526",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BAND"
     },
     {
       "stationCode": "DPJ",
@@ -168,11 +168,11 @@
       "departureTime": "16:32",
       "day": null,
       "distance": "618",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BAND"
     },
     {
       "stationCode": "SA",
@@ -181,11 +181,11 @@
       "departureTime": "19:55",
       "day": null,
       "distance": "684",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BAND"
     },
     {
       "stationCode": "NMKL",
@@ -194,11 +194,11 @@
       "departureTime": "20:45",
       "day": null,
       "distance": "736",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BAND"
     },
     {
       "stationCode": "KRR",
@@ -207,11 +207,11 @@
       "departureTime": "22:00",
       "day": null,
       "distance": "769",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BAND"
     },
     {
       "stationCode": "TPJ",
@@ -305,7 +305,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for UBL RMM EXP (07355) from UBL to RMM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 23 stations.",
-  "generatedAt": "2026-08-05T22:43:36.287Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for UBL RMM EXP (07355) is prepared at SSS HUBBALLI JN (UBL) around 8:52 PM, with a second (vacancy) chart around 6:35 AM. 16 of 23 stations on the UBL to RMM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:18:50.098Z",
+  "knownChartCount": 16
 }

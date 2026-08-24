@@ -38,11 +38,11 @@
       "departureTime": "12:45",
       "day": null,
       "distance": "13",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PRNC"
     },
     {
       "stationCode": "DGBH",
@@ -201,7 +201,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for PNBE THE EXP (03215) from PNBE to THE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 15 stations.",
-  "generatedAt": "2026-08-05T22:42:52.849Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for PNBE THE EXP (03215) is prepared at PATLIPUTRA (PPTA) around 10:22 PM, with a second (vacancy) chart around 4:35 PM. 1 of 15 stations on the PNBE to THE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:18:43.976Z",
+  "knownChartCount": 1
 }

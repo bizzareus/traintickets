@@ -12,11 +12,11 @@
       "departureTime": "07:15",
       "day": null,
       "distance": "0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "KJM",
@@ -25,11 +25,11 @@
       "departureTime": "07:37",
       "day": null,
       "distance": "15",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "JTJ",
@@ -38,11 +38,11 @@
       "departureTime": "11:05",
       "day": null,
       "distance": "149",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "KPD",
@@ -51,11 +51,11 @@
       "departureTime": "12:40",
       "day": null,
       "distance": "232",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "AJJ",
@@ -64,11 +64,11 @@
       "departureTime": "13:30",
       "day": null,
       "distance": "293",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "PER",
@@ -77,11 +77,11 @@
       "departureTime": "14:15",
       "day": null,
       "distance": "356",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:38",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "BZA",
@@ -90,11 +90,11 @@
       "departureTime": "21:20",
       "day": null,
       "distance": "741",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "WL",
@@ -227,7 +227,7 @@
       "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "The first reservation chart for SBCDNR HUMSAFAR (06509) is prepared at PRAYAGRAJCHEOKI (PCOI) around 8:28 PM, with a second (vacancy) chart around 4:35 PM. 4 of 17 stations on the SBC to DNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:17:49.727Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for SBCDNR HUMSAFAR (06509) is prepared at KSR BENGALURU (SBC) around 8:38 PM, with a second (vacancy) chart around 7 AM. 11 of 17 stations on the SBC to DNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:18:46.547Z",
+  "knownChartCount": 11
 }

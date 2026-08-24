@@ -90,11 +90,11 @@
       "departureTime": "00:30",
       "day": 2,
       "distance": "469.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "MKP",
@@ -103,11 +103,11 @@
       "departureTime": "02:40",
       "day": 2,
       "distance": "570.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "STA",
@@ -116,11 +116,11 @@
       "departureTime": "03:50",
       "day": 2,
       "distance": "647.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "KTE",
@@ -129,11 +129,11 @@
       "departureTime": "05:05",
       "day": 2,
       "distance": "745.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "JBP",
@@ -142,11 +142,11 @@
       "departureTime": "07:05",
       "day": 2,
       "distance": "836.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "ET",
@@ -155,11 +155,11 @@
       "departureTime": "11:10",
       "day": 2,
       "distance": "1081.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "KNW",
@@ -168,11 +168,11 @@
       "departureTime": "14:00",
       "day": 2,
       "distance": "1265.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "BSL",
@@ -181,11 +181,11 @@
       "departureTime": "15:50",
       "day": 2,
       "distance": "1388.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "JL",
@@ -194,11 +194,11 @@
       "departureTime": "16:20",
       "day": 2,
       "distance": "1412.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "MMR",
@@ -207,11 +207,11 @@
       "departureTime": "18:35",
       "day": 2,
       "distance": "1572.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "KPG",
@@ -220,11 +220,11 @@
       "departureTime": "19:50",
       "day": 2,
       "distance": "1614.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "DDCC",
@@ -253,7 +253,7 @@
       "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "The first reservation chart for Gkp Pune Exp (11038) is prepared at Daund Chord Lin (DDCC) around 8:07 PM, with a second (vacancy) chart around 6:47 AM. 2 of 19 stations on the GKP to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:46:02.880Z",
-  "knownChartCount": 2
+  "summary": "The first reservation chart for Gkp Pune Exp (11038) is prepared at Prayagraj Jn. (PRYJ) around 11:08 AM, with a second (vacancy) chart around 8:50 PM. 13 of 19 stations on the GKP to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:19:37.224Z",
+  "knownChartCount": 13
 }

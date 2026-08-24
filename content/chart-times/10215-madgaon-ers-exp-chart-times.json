@@ -12,11 +12,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "KAWR",
@@ -25,11 +25,11 @@
       "departureTime": "22:00",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "BTJL",
@@ -38,11 +38,11 @@
       "departureTime": "23:58",
       "day": 1,
       "distance": "236.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAO"
     },
     {
       "stationCode": "BYNR",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "CLT"
     }
   ],
-  "summary": "The first reservation chart for Madgaon Ers Exp (10215) is prepared at Mookambika Road (BYNR) around 12:22 PM, with a second (vacancy) chart around 8:45 PM. 11 of 14 stations on the MAO to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:45:17.703Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Madgaon Ers Exp (10215) is prepared at Madgaon (MAO) around 11:06 AM, with a second (vacancy) chart around 8:45 PM. 14 of 14 stations on the MAO to ERS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:19:09.398Z",
+  "knownChartCount": 14
 }
