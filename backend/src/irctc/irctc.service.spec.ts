@@ -11,7 +11,7 @@ jest.mock('../common/retrying-axios', () => ({
   })),
 }));
 
-import { PrismaService } from '../prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
 import { IrctcService } from './irctc.service';
 

@@ -111,6 +111,7 @@ export type AnalyticsEvent =
           | "chart_times_row"
           | "gap_leg_modal"
           | "search_entire_journey"
+          | "search_train_card_right"
           | "live_scraper_cockpit"
           | "v1_page";
         source_page?: string;
@@ -261,9 +262,12 @@ export type AnalyticsEvent =
   | {
       name: "chart_alert_opened";
       properties: {
-        source: "page" | "row";
+        source: "page" | "row" | "search_train_card_right";
         train_number: string;
         station_code?: string;
+        from_code?: string;
+        to_code?: string;
+        journey_date?: string;
       };
     }
   // PNR feature (prefix: search_pnr_*)

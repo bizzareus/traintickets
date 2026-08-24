@@ -11,7 +11,6 @@ describe('Booking-V2 Refactored Utilities', () => {
       {} as any,
       {} as any,
       {} as any,
-      {} as any,
     );
   });
 

@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
 import { useAutoSearchExperiment } from "@/lib/hooks/useAutoSearchExperiment";
 import { AutoSearchTrainCard } from "@/components/home/AutoSearchTrainCard";
+import { TrainChartAlertSection } from "@/components/home/TrainChartAlertSection";
 
 const SeatStatus = dynamic(
   () => import("@/components/booking-v2/SeatStatus").then((m) => m.SeatStatus),
@@ -1587,28 +1588,30 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
             <li
               key={`${t.trainNumber}-${t.departureTime}`}
-              className="rounded-xl border border-gray-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg"
+              className="rounded-xl border border-gray-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg flex flex-col md:flex-row md:items-stretch justify-between gap-5"
             >
-              <div>
-                <h2 className="text-lg font-bold text-gray-900">
-                  {t.trainNumber} {t.trainName}
-                </h2>
-                <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
-                  <span className="font-semibold">
-                    {formatTimeAmPm(t.departureTime) ?? "—"} {t.fromStnCode}
-                  </span>
-                  <span className="text-gray-400">
-                    {formatDurationMinutes(t.duration)}
-                  </span>
-                  <span className="font-semibold">
-                    {formatTimeAmPm(t.arrivalTime) ?? "—"} {t.toStnCode}
-                  </span>
+              {/* Left Column: Train Info + Classes + Search All Action */}
+              <div className="flex-1 min-w-0 flex flex-col justify-between">
+                <div>
+                  <h2 className="text-lg font-bold text-gray-900">
+                    {t.trainNumber} {t.trainName}
+                  </h2>
+                  <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
+                    <span className="font-semibold">
+                      {formatTimeAmPm(t.departureTime) ?? "—"} {t.fromStnCode}
+                    </span>
+                    <span className="text-gray-400">
+                      {formatDurationMinutes(t.duration)}
+                    </span>
+                    <span className="font-semibold">
+                      {formatTimeAmPm(t.arrivalTime) ?? "—"} {t.toStnCode}
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              <div className="mt-3 -mx-1 overflow-x-auto pb-1">
-                <div className="flex min-w-min gap-2 px-1">
-                  {displayedClasses.map((cls) => {
+                <div className="mt-3 -mx-1 overflow-x-auto pb-1">
+                  <div className="flex min-w-min gap-2 px-1">
+                    {displayedClasses.map((cls) => {
                       const gn = t.availabilityCache?.[cls];
                       const line =
                         gn?.availabilityDisplayName ??
@@ -1686,28 +1689,41 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                         </div>
                       );
                     })}
+                  </div>
                 </div>
+
+                {!allBookable && (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() => findAlternatesForRoute(t)}
+                      disabled={altLoading && altForTrain === t.trainNumber}
+                      className={cn(
+                        "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25",
+                        altLoading &&
+                          altForTrain === t.trainNumber &&
+                          "cursor-wait opacity-60",
+                      )}
+                    >
+                      {altLoading && altForTrain === t.trainNumber
+                        ? "Searching…"
+                        : "Search all classes"}
+                    </button>
+                  </div>
+                )}
               </div>
 
-              {!allBookable && (
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    onClick={() => findAlternatesForRoute(t)}
-                    disabled={altLoading && altForTrain === t.trainNumber}
-                    className={cn(
-                      "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25",
-                      altLoading &&
-                        altForTrain === t.trainNumber &&
-                        "cursor-wait opacity-60",
-                    )}
-                  >
-                    {altLoading && altForTrain === t.trainNumber
-                      ? "Searching…"
-                      : "Search all classes"}
-                  </button>
-                </div>
-              )}
+              {/* Right Column: Vertical Subscribe to Chart Alert CTA */}
+              <div className="w-full md:w-64 lg:w-72 shrink-0 border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-5 flex flex-col justify-center">
+                <TrainChartAlertSection
+                  trainNumber={t.trainNumber}
+                  trainName={t.trainName}
+                  fromCode={t.fromStnCode || fromSt?.stationCode || ""}
+                  toCode={t.toStnCode || toSt?.stationCode || ""}
+                  journeyDate={journeyDate}
+                  avlClasses={t.avlClasses}
+                />
+              </div>
             </li>
           );
         })}

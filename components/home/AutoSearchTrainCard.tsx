@@ -10,6 +10,7 @@ import type {
   AlternatePathsResponse,
   TrainListItem,
 } from "@/components/booking-v2/alternatePathsTypes";
+import { TrainChartAlertSection } from "@/components/home/TrainChartAlertSection";
 
 
 
@@ -246,159 +247,172 @@ export function AutoSearchTrainCard({
   };
 
   return (
-    <li className="rounded-xl border border-blue-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg">
-      {/* Header Info */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+    <li className="rounded-xl border border-blue-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg flex flex-col md:flex-row md:items-stretch justify-between gap-5">
+      {/* Left Column: Header Info + Live Stream / Completed Results */}
+      <div className="flex-1 min-w-0 flex flex-col justify-between">
         <div>
-          <div className="flex items-center gap-2">
-            <h2 className="text-lg font-bold text-slate-900">
-              {train.trainNumber} {train.trainName}
-            </h2>
-            {isBrowserOnLocalhost() && (
-              <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-bold text-blue-700">
-                Variant A Auto-Scan
-              </span>
-            )}
-
-          </div>
-          <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-slate-600">
-            <span className="font-semibold text-slate-900">
-              {formatTimeAmPm(train.departureTime) ?? "—"} {train.fromStnCode}
-            </span>
-            <span className="text-slate-400">
-              {formatDurationMinutes(train.duration)}
-            </span>
-            <span className="font-semibold text-slate-900">
-              {formatTimeAmPm(train.arrivalTime) ?? "—"} {train.toStnCode}
-            </span>
-          </div>
-        </div>
-
-        {onOpenSchedule && (
-          <button
-            type="button"
-            onClick={() => onOpenSchedule(train.trainNumber, train.fromStnCode, train.toStnCode)}
-            className="text-xs font-semibold text-blue-600 hover:underline"
-          >
-            View Train Schedule
-          </button>
-        )}
-      </div>
-
-      {/* Loading state with real-time stream status & seat notifications */}
-      {loading && (
-        <div className="mt-4 pt-1 space-y-3">
-          <div className="flex items-start gap-3">
-            <div className="mt-0.5 h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
             <div>
-              <p className="text-sm font-medium text-slate-700 leading-relaxed">
-                {statusMessage}
-              </p>
-              {currentSearchRoute && (
-                <p className="mt-1 text-xs font-semibold text-blue-600 animate-pulse">
-                  🔍 {currentSearchRoute}
-                </p>
+              <div className="flex items-center gap-2">
+                <h2 className="text-lg font-bold text-slate-900">
+                  {train.trainNumber} {train.trainName}
+                </h2>
+                {isBrowserOnLocalhost() && (
+                  <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-bold text-blue-700">
+                    Variant A Auto-Scan
+                  </span>
+                )}
+              </div>
+              <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-slate-600">
+                <span className="font-semibold text-slate-900">
+                  {formatTimeAmPm(train.departureTime) ?? "—"} {train.fromStnCode}
+                </span>
+                <span className="text-slate-400">
+                  {formatDurationMinutes(train.duration)}
+                </span>
+                <span className="font-semibold text-slate-900">
+                  {formatTimeAmPm(train.arrivalTime) ?? "—"} {train.toStnCode}
+                </span>
+              </div>
+            </div>
+
+            {onOpenSchedule && (
+              <button
+                type="button"
+                onClick={() => onOpenSchedule(train.trainNumber, train.fromStnCode, train.toStnCode)}
+                className="text-xs font-semibold text-blue-600 hover:underline"
+              >
+                View Train Schedule
+              </button>
+            )}
+          </div>
+
+          {/* Loading state with real-time stream status & seat notifications */}
+          {loading && (
+            <div className="mt-4 space-y-3">
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+                <div>
+                  <p className="text-sm font-medium text-slate-700 leading-relaxed">
+                    {statusMessage}
+                  </p>
+                  {currentSearchRoute && (
+                    <p className="mt-1 text-xs font-semibold text-blue-600 animate-pulse">
+                      🔍 {currentSearchRoute}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Animated progress bar */}
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                <div className="h-full animate-pulse rounded-full bg-blue-600 transition-all duration-300 w-3/4" />
+              </div>
+
+              {/* Real-time found seats feed */}
+              {foundSeats.length > 0 && (
+                <div className="space-y-1.5 pt-2">
+                  <p className="text-xs font-bold text-emerald-800">
+                    Seats discovered so far ({foundSeats.length}):
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {foundSeats.map((seat) => (
+                      <span
+                        key={seat.id}
+                        className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200"
+                      >
+                        <span className="font-bold">✓ {seat.from} → {seat.to}</span> ({seat.travelClass}{seat.fare ? ` · ₹${seat.fare}` : ""})
+                      </span>
+                    ))}
+                  </div>
+                </div>
               )}
             </div>
-          </div>
+          )}
 
-          {/* Animated progress bar */}
-          <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-            <div className="h-full animate-pulse rounded-full bg-blue-600 transition-all duration-300 w-3/4" />
-          </div>
-
-          {/* Real-time found seats feed */}
-          {foundSeats.length > 0 && (
-            <div className="space-y-1.5 pt-2">
-              <p className="text-xs font-bold text-emerald-800">
-                Seats discovered so far ({foundSeats.length}):
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {foundSeats.map((seat) => (
-                  <span
-                    key={seat.id}
-                    className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200"
-                  >
-                    <span className="font-bold">✓ {seat.from} → {seat.to}</span> ({seat.travelClass}{seat.fare ? ` · ₹${seat.fare}` : ""})
-                  </span>
-                ))}
+          {/* Error state */}
+          {!loading && error && (
+            <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+              <div className="flex items-center justify-between">
+                <p className="font-medium">⚠️ {error}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    hasInitiatedRef.current = false;
+                    hasTrackedLoadedRef.current = false;
+                    setLoading(true);
+                    setError(null);
+                  }}
+                  className="text-xs font-bold text-amber-900 underline hover:text-amber-950"
+                >
+                  Retry Auto-Search
+                </button>
               </div>
             </div>
           )}
-        </div>
-      )}
 
-      {/* Error state */}
-      {!loading && error && (
-        <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-          <div className="flex items-center justify-between">
-            <p className="font-medium">⚠️ {error}</p>
-            <button
-              type="button"
-              onClick={() => {
-                hasInitiatedRef.current = false;
-                hasTrackedLoadedRef.current = false;
-                setLoading(true);
-                setError(null);
-              }}
-              className="text-xs font-bold text-amber-900 underline hover:text-amber-950"
-            >
-              Retry Auto-Search
-            </button>
-          </div>
-        </div>
-      )}
+          {/* Completed Results Display */}
+          {!loading && !error && result && (
+            <div className="mt-4">
+              {result.legs && result.legs.length > 0 ? (
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-sm font-bold text-slate-900">
+                    🎉 Found {result.legCount} confirmed ticket{result.legCount > 1 ? "s" : ""}!
+                  </p>
 
-      {/* Completed Results Display */}
-      {!loading && !error && result && (
-        <div className="mt-4 pt-1">
-          {result.legs && result.legs.length > 0 ? (
-            <div className="flex items-center justify-between gap-3">
-              <p className="text-sm font-bold text-slate-900">
-                🎉 Found {result.legCount} confirmed ticket{result.legCount > 1 ? "s" : ""}!
-              </p>
-
-              <button
-                type="button"
-                onClick={() => {
-                  trackAnalyticsEvent({
-                    name: "ticket_details_cta_clicked",
-                    properties: {
-                      train_number: train.trainNumber,
-                      train_name: train.trainName,
-                      from_code: fromCode,
-                      to_code: toCode,
-                      journey_date: journeyDate || "",
-                      ticket_count: result.legCount,
-                      is_complete: result.isComplete,
-                    },
-                  });
-                  onOpenFullResultModal?.({
-                    trainNumber: train.trainNumber,
-                    trainName: train.trainName,
-                    avlClasses: train.avlClasses,
-                    result,
-                  });
-                }}
-                className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25"
-              >
-                Ticket Details
-              </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      trackAnalyticsEvent({
+                        name: "ticket_details_cta_clicked",
+                        properties: {
+                          train_number: train.trainNumber,
+                          train_name: train.trainName,
+                          from_code: fromCode,
+                          to_code: toCode,
+                          journey_date: journeyDate || "",
+                          ticket_count: result.legCount,
+                          is_complete: result.isComplete,
+                        },
+                      });
+                      onOpenFullResultModal?.({
+                        trainNumber: train.trainNumber,
+                        trainName: train.trainName,
+                        avlClasses: train.avlClasses,
+                        result,
+                      });
+                    }}
+                    className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25"
+                  >
+                    Ticket Details
+                  </button>
+                </div>
+              ) : (
+                <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-center">
+                  <p className="text-sm font-semibold text-slate-700">
+                    No split seat options available for this train.
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    All classes and station combinations are currently fully booked or waitlisted.
+                  </p>
+                </div>
+              )}
             </div>
-
-          ) : (
-            <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-center">
-              <p className="text-sm font-semibold text-slate-700">
-                No split seat options available for this train.
-              </p>
-              <p className="mt-1 text-xs text-slate-500">
-                All classes and station combinations are currently fully booked or waitlisted.
-              </p>
-            </div>
-
           )}
         </div>
-      )}
+      </div>
+
+      {/* Right Column: Vertical Subscribe to Chart Alert CTA */}
+      <div className="w-full md:w-64 lg:w-72 shrink-0 border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-5 flex flex-col justify-center">
+        <TrainChartAlertSection
+          trainNumber={train.trainNumber}
+          trainName={train.trainName}
+          fromCode={fromCode}
+          toCode={toCode}
+          journeyDate={journeyDate}
+          avlClasses={train.avlClasses}
+        />
+      </div>
     </li>
   );
 }
