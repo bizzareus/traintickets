@@ -12,11 +12,11 @@
       "departureTime": "14:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "HSDA",
@@ -25,11 +25,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "MDLE",
@@ -38,11 +38,11 @@
       "departureTime": "15:36",
       "day": 1,
       "distance": "56.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "BHLE",
@@ -51,11 +51,11 @@
       "departureTime": "15:54",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "DWLE",
@@ -64,11 +64,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "BGP",
@@ -77,11 +77,11 @@
       "departureTime": "17:00",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "SGG",
@@ -90,11 +90,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "JMP",
@@ -103,11 +103,11 @@
       "departureTime": "18:07",
       "day": 1,
       "distance": "160.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "AHA",
@@ -116,11 +116,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "182.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "KIUL",
@@ -129,11 +129,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "205.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "NWD",
@@ -142,11 +142,11 @@
       "departureTime": "21:18",
       "day": 1,
       "distance": "275.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "GAYA",
@@ -155,11 +155,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "334.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GAYA"
     },
     {
       "stationCode": "DOS",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "PRYJ"
     }
   ],
-  "summary": "The first reservation chart for Goda Ndls Hmsfr (12349) is prepared at Dehri On Sone (DOS) around 3:20 PM, with a second (vacancy) chart around 9:42 PM. 6 of 18 stations on the GODA to NDLS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:31:24.537Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Goda Ndls Hmsfr (12349) is prepared at Godda (GODA) around 9:09 PM, with a second (vacancy) chart around 1:50 PM. 18 of 18 stations on the GODA to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:37:35.986Z",
+  "knownChartCount": 18
 }

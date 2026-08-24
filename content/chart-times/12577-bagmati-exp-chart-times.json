@@ -324,11 +324,11 @@
       "departureTime": "00:10",
       "day": 3,
       "distance": "1909.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:46",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BZA",
@@ -461,7 +461,7 @@
       "chartRemoteStation": "KPD"
     }
   ],
-  "summary": "The first reservation chart for Bagmati Exp (12577) is prepared at Darbhanga Jn (DBG) around 7:30 AM, with a second (vacancy) chart around 3:15 PM. 11 of 35 stations on the DBG to MYS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T17:02:39.560Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Bagmati Exp (12577) is prepared at Darbhanga Jn (DBG) around 7:30 AM, with a second (vacancy) chart around 3:15 PM. 12 of 35 stations on the DBG to MYS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:45:20.714Z",
+  "knownChartCount": 12
 }

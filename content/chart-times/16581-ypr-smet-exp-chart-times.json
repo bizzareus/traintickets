@@ -25,11 +25,11 @@
       "departureTime": "01:02",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "BSN",
@@ -38,11 +38,11 @@
       "departureTime": "01:33",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "TTR",
@@ -51,11 +51,11 @@
       "departureTime": "01:50",
       "day": 1,
       "distance": "135.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "ASK",
@@ -64,11 +64,11 @@
       "departureTime": "02:20",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "DRU",
@@ -77,11 +77,11 @@
       "departureTime": "02:55",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "RRB",
@@ -90,11 +90,11 @@
       "departureTime": "03:10",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "TKE",
@@ -103,11 +103,11 @@
       "departureTime": "04:00",
       "day": 1,
       "distance": "230.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "BDVT",
@@ -116,11 +116,11 @@
       "departureTime": "05:33",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "SME",
@@ -129,11 +129,11 @@
       "departureTime": "05:47",
       "day": 1,
       "distance": "267.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "SMET",
@@ -142,14 +142,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:36",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": -1,
+      "chartRemoteStation": "YPR"
     }
   ],
-  "summary": "The first reservation chart for Ypr Smet Exp (16581) is prepared at Yesvantpur Jn (YPR) around 2:25 PM, with a second (vacancy) chart around 11:35 PM. 1 of 11 stations on the YPR to SMET route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:46:27.075Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Ypr Smet Exp (16581) is prepared at Yesvantpur Jn (YPR) around 2:25 PM, with a second (vacancy) chart around 11:35 PM. 11 of 11 stations on the YPR to SMET route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:05:09.032Z",
+  "knownChartCount": 11
 }

@@ -25,9 +25,9 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "465.0",
-      "chartTimeLocal": "11:33",
+      "chartTimeLocal": "11:24",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": "21:12",
+      "chartTwoTimeLocal": "21:25",
       "chartTwoDayOffset": 0,
       "chartRemoteStation": "KOTA"
     },
@@ -111,6 +111,6 @@
     }
   ],
   "summary": "The first reservation chart for Mmct Tejas Raj (12952) is prepared at New Delhi (NDLS) around 8:55 AM, with a second (vacancy) chart around 4:40 PM. 8 of 8 stations on the NDLS to MMCT route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-07-10T13:31:32.648Z",
+  "generatedAt": "2026-08-24T21:21:58.665Z",
   "knownChartCount": 8
 }

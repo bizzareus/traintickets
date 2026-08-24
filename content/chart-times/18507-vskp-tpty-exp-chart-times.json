@@ -12,11 +12,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "DVD",
@@ -25,11 +25,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "AKP",
@@ -38,11 +38,11 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "YLM",
@@ -51,11 +51,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "ANV",
@@ -64,11 +64,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "SLO",
@@ -77,11 +77,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "RJY",
@@ -90,11 +90,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "201.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "NDD",
@@ -103,11 +103,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "TNKU",
@@ -116,11 +116,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "240.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BVRT",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "The first reservation chart for Vskp Tpty Exp (18507) is prepared at Bhimavaram Town (BVRT) around 9:09 AM, with a second (vacancy) chart around 2:35 AM. 13 of 22 stations on the VSKP to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:04:53.968Z",
-  "knownChartCount": 13
+  "summary": "The first reservation chart for Vskp Tpty Exp (18507) is prepared at Visakhapatnam (VSKP) around 8:58 AM, with a second (vacancy) chart around 1:45 AM. 22 of 22 stations on the VSKP to TPTY route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:25:24.412Z",
+  "knownChartCount": 22
 }

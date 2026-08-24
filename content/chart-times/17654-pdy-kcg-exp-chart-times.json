@@ -155,11 +155,11 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "343.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RU"
     },
     {
       "stationCode": "KOU",
@@ -168,11 +168,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "384.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RU"
     },
     {
       "stationCode": "RJP",
@@ -181,11 +181,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "417.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RU"
     },
     {
       "stationCode": "HX",
@@ -194,11 +194,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "468.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RU"
     },
     {
       "stationCode": "YA",
@@ -207,11 +207,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "507.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RU"
     },
     {
       "stationCode": "TU",
@@ -220,11 +220,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "577.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RU"
     },
     {
       "stationCode": "GY",
@@ -331,7 +331,7 @@
       "chartRemoteStation": "RU"
     }
   ],
-  "summary": "The first reservation chart for Pdy Kcg Exp (17654) is prepared at Puducherry (PDY) around 8:46 PM. 19 of 25 stations on the PDY to KCG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:00:19.975Z",
-  "knownChartCount": 19
+  "summary": "The first reservation chart for Pdy Kcg Exp (17654) is prepared at Puducherry (PDY) around 8:46 PM. 25 of 25 stations on the PDY to KCG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:18:31.504Z",
+  "knownChartCount": 25
 }

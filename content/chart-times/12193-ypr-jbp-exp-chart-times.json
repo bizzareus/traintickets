@@ -12,11 +12,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "HUP",
@@ -25,11 +25,11 @@
       "departureTime": "17:09",
       "day": 1,
       "distance": "96.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "DMM",
@@ -38,11 +38,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "175.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "ATP",
@@ -51,11 +51,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "209.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "DHNE",
@@ -64,11 +64,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "321.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "KRNT",
@@ -77,11 +77,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "374.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "GWD",
@@ -90,11 +90,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "430.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "MBNR",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ypr Jbp Exp (12193) from YPR to JBP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-05T22:28:08.813Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ypr Jbp Exp (12193) is prepared at Yesvantpur Jn (YPR) around 6:27 AM, with a second (vacancy) chart around 3:30 PM. 7 of 19 stations on the YPR to JBP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:33:50.858Z",
+  "knownChartCount": 7
 }

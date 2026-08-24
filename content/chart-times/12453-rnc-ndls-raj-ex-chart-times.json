@@ -12,11 +12,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "LAD",
@@ -25,11 +25,11 @@
       "departureTime": "18:02",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "LTHR",
@@ -38,11 +38,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "DTO",
@@ -51,11 +51,11 @@
       "departureTime": "20:24",
       "day": 1,
       "distance": "212.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "GHD",
@@ -64,11 +64,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "245.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHD"
     },
     {
       "stationCode": "NUQ",
@@ -77,11 +77,11 @@
       "departureTime": "21:47",
       "day": 1,
       "distance": "289.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHD"
     },
     {
       "stationCode": "RNQ",
@@ -90,11 +90,11 @@
       "departureTime": "22:38",
       "day": 1,
       "distance": "345.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHD"
     },
     {
       "stationCode": "CPU",
@@ -162,7 +162,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Rnc Ndls Raj Ex (12453) from RNC to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-08-01T09:28:35.649Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rnc Ndls Raj Ex (12453) is prepared at Ranchi (RNC) around 7:24 AM, with a second (vacancy) chart around 5 PM. 7 of 12 stations on the RNC to NDLS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:39:47.979Z",
+  "knownChartCount": 7
 }

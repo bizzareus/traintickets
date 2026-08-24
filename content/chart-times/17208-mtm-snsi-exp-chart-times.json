@@ -25,11 +25,11 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "11.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "GVL",
@@ -38,11 +38,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "GDV",
@@ -51,11 +51,11 @@
       "departureTime": "07:35",
       "day": 1,
       "distance": "37.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "BZA",
@@ -64,11 +64,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "81.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "MDR",
@@ -77,11 +77,11 @@
       "departureTime": "10:20",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "KMT",
@@ -90,11 +90,11 @@
       "departureTime": "11:10",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "DKJ",
@@ -103,11 +103,11 @@
       "departureTime": "11:35",
       "day": 1,
       "distance": "204.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "MABD",
@@ -116,11 +116,11 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "228.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "WL",
@@ -129,11 +129,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "288.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "KZJ",
@@ -142,11 +142,11 @@
       "departureTime": "13:15",
       "day": 1,
       "distance": "298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "CHZ",
@@ -155,11 +155,11 @@
       "departureTime": "15:05",
       "day": 1,
       "distance": "418.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:10",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MTM"
     },
     {
       "stationCode": "SC",
@@ -422,7 +422,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mtm Snsi Exp (17208) is prepared at Machilipatnam (MTM) around 8:12 PM, with a second (vacancy) chart around 6:35 AM. 1 of 32 stations on the MTM to SNSI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:54:19.124Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Mtm Snsi Exp (17208) is prepared at Machilipatnam (MTM) around 8:12 PM, with a second (vacancy) chart around 6:35 AM. 12 of 32 stations on the MTM to SNSI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:12:14.263Z",
+  "knownChartCount": 12
 }

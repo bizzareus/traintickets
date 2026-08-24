@@ -129,10 +129,10 @@
       "departureTime": "14:10",
       "day": 2,
       "distance": "1011.0",
-      "chartTimeLocal": "21:08",
+      "chartTimeLocal": "21:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CNB"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "17:25",
       "day": 2,
       "distance": "1242.0",
-      "chartTimeLocal": "21:08",
+      "chartTimeLocal": "21:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CNB"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "18:10",
       "day": 2,
       "distance": "1265.0",
-      "chartTimeLocal": "21:08",
+      "chartTimeLocal": "21:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CNB"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "19:00",
       "day": 2,
       "distance": "1291.0",
-      "chartTimeLocal": "21:08",
+      "chartTimeLocal": "21:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CNB"
     },
     {
@@ -181,10 +181,10 @@
       "departureTime": "19:25",
       "day": 2,
       "distance": "1318.0",
-      "chartTimeLocal": "21:08",
+      "chartTimeLocal": "21:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CNB"
     },
     {
@@ -194,10 +194,10 @@
       "departureTime": "21:42",
       "day": 2,
       "distance": "1415.0",
-      "chartTimeLocal": "21:08",
+      "chartTimeLocal": "21:10",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:55",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "CNB"
     },
     {
@@ -207,11 +207,11 @@
       "departureTime": "23:05",
       "day": 2,
       "distance": "1505.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:05",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:50",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "MKN",
@@ -279,7 +279,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Pratap Express (12496) is prepared at Kolkata Chitpur (KOAA) around 12:38 PM, with a second (vacancy) chart around 10:30 PM. 15 of 21 stations on the KOAA to BKN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:33:34.212Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Pratap Express (12496) is prepared at Kolkata Chitpur (KOAA) around 12:38 PM, with a second (vacancy) chart around 10:30 PM. 16 of 21 stations on the KOAA to BKN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:41:01.007Z",
+  "knownChartCount": 16
 }

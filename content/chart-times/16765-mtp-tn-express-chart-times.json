@@ -116,11 +116,11 @@
       "departureTime": "00:15",
       "day": 2,
       "distance": "203.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "MDU",
@@ -129,11 +129,11 @@
       "departureTime": "01:25",
       "day": 2,
       "distance": "269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "VPT",
@@ -142,11 +142,11 @@
       "departureTime": "02:05",
       "day": 2,
       "distance": "312.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "SRT",
@@ -155,11 +155,11 @@
       "departureTime": "02:25",
       "day": 2,
       "distance": "339.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "CVP",
@@ -168,11 +168,11 @@
       "departureTime": "02:45",
       "day": 2,
       "distance": "360.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "TME",
@@ -181,11 +181,11 @@
       "departureTime": "03:35",
       "day": 2,
       "distance": "427.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     },
     {
       "stationCode": "TN",
@@ -194,14 +194,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "428.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTP"
     }
   ],
-  "summary": "The first reservation chart for Mtp Tn Express (16765) is prepared at Metupalaiyam (MTP) around 9:45 AM, with a second (vacancy) chart around 10:25 PM. 8 of 15 stations on the MTP to TN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:49:22.283Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Mtp Tn Express (16765) is prepared at Metupalaiyam (MTP) around 9:45 AM, with a second (vacancy) chart around 10:25 PM. 15 of 15 stations on the MTP to TN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:06:56.000Z",
+  "knownChartCount": 15
 }

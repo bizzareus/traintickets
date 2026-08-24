@@ -12,11 +12,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "MBNR",
@@ -25,11 +25,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "GWD",
@@ -38,11 +38,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "KRNT",
@@ -51,11 +51,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "237.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "DHNE",
@@ -64,11 +64,11 @@
       "departureTime": "20:45",
       "day": 1,
       "distance": "290.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "GY",
@@ -77,11 +77,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "345.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "TU",
@@ -90,11 +90,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "393.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "YA",
@@ -103,11 +103,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "462.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "HX",
@@ -116,11 +116,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "501.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "RU",
@@ -383,7 +383,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Kcg Ncj Exp (16353) from KCG to NCJ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 29 stations.",
-  "generatedAt": "2026-08-22T19:42:12.759Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kcg Ncj Exp (16353) is prepared at Kacheguda (KCG) around 6:10 AM, with a second (vacancy) chart around 3:30 PM. 9 of 29 stations on the KCG to NCJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:02:14.262Z",
+  "knownChartCount": 9
 }

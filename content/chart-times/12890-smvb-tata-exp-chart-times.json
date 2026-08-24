@@ -12,11 +12,11 @@
       "departureTime": "08:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "JTJ",
@@ -25,11 +25,11 @@
       "departureTime": "11:15",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "KPD",
@@ -38,11 +38,11 @@
       "departureTime": "12:25",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:50",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "08:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "TPTY",
@@ -51,11 +51,11 @@
       "departureTime": "14:15",
       "day": 1,
       "distance": "328.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "RU",
@@ -64,11 +64,11 @@
       "departureTime": "14:40",
       "day": 1,
       "distance": "338.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "GDR",
@@ -77,11 +77,11 @@
       "departureTime": "16:12",
       "day": 1,
       "distance": "421.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "NLR",
@@ -90,11 +90,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "459.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "OGL",
@@ -103,11 +103,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "575.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "BZA",
@@ -116,11 +116,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "713.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "RJY",
@@ -129,11 +129,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "863.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "DVD",
@@ -318,7 +318,7 @@
       "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Smvb Tata Exp (12890) is prepared at Duvvada (DVD) around 10:37 AM, with a second (vacancy) chart around 8:15 PM. 14 of 24 stations on the SMVB to TATA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:38:58.258Z",
-  "knownChartCount": 14
+  "summary": "The first reservation chart for Smvb Tata Exp (12890) is prepared at Smvt Bengaluru (SMVB) around 8:50 PM, with a second (vacancy) chart around 8:35 AM. 24 of 24 stations on the SMVB to TATA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:49:27.060Z",
+  "knownChartCount": 24
 }

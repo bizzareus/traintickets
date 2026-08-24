@@ -25,10 +25,10 @@
       "departureTime": "14:43",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": "06:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PNBE"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "15:26",
       "day": 1,
       "distance": "118.0",
-      "chartTimeLocal": "06:05",
-      "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "PNBE"
     },
     {
@@ -51,11 +51,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "212.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "PCOI",
@@ -64,11 +64,11 @@
       "departureTime": "20:02",
       "day": 1,
       "distance": "356.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "STA",
@@ -77,11 +77,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "525.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "STA"
     },
     {
       "stationCode": "KTE",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "KYN"
     }
   ],
-  "summary": "The first reservation chart for Pnbe Vsg Exp (12742) is prepared at Patna Jn (PNBE) around 6:05 AM. 7 of 21 stations on the PNBE to VSG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:36:23.371Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Pnbe Vsg Exp (12742) is prepared at Patna Jn (PNBE) around 6:05 AM. 10 of 21 stations on the PNBE to VSG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:47:57.880Z",
+  "knownChartCount": 10
 }

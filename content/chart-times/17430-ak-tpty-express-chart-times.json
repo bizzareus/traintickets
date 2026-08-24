@@ -27,8 +27,8 @@
       "distance": "79.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "127.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "185.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "207.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "238.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "309.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "319.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "349.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "400.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "481.0",
       "chartTimeLocal": "19:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AK"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "514.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "MBNR",
@@ -168,11 +168,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "620.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "WPR",
@@ -181,11 +181,11 @@
       "departureTime": "20:06",
       "day": 1,
       "distance": "673.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "GWD",
@@ -194,11 +194,11 @@
       "departureTime": "20:27",
       "day": 1,
       "distance": "695.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "KRNT",
@@ -207,11 +207,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "750.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "DHNE",
@@ -220,11 +220,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "804.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "ATP",
@@ -331,7 +331,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ak Tpty Express (17430) is prepared at Akola Jn (AK) around 7:42 PM. 11 of 25 stations on the AK to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:58:32.704Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Ak Tpty Express (17430) is prepared at Akola Jn (AK) around 7:42 PM. 17 of 25 stations on the AK to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:16:44.479Z",
+  "knownChartCount": 17
 }

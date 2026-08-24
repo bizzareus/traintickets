@@ -12,11 +12,11 @@
       "departureTime": "07:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "23:07",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "MBDP"
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     },
     {
       "stationCode": "DNR",
@@ -168,11 +168,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "765.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     },
     {
       "stationCode": "MB",
@@ -181,11 +181,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "856.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BE"
     },
     {
       "stationCode": "SRE",
@@ -266,7 +266,7 @@
       "chartRemoteStation": "BE"
     }
   ],
-  "summary": "The first reservation chart for Archna Exp (12355) is prepared at Patna Jn (PNBE) around 11:07 PM. 18 of 20 stations on the PNBE to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:31:38.049Z",
-  "knownChartCount": 18
+  "summary": "The first reservation chart for Archna Exp (12355) is prepared at Patna Jn (PNBE) around 12:55 PM, with a second (vacancy) chart around 9 PM. 20 of 20 stations on the PNBE to JAT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:37:45.940Z",
+  "knownChartCount": 20
 }

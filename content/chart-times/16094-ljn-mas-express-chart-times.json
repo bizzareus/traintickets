@@ -12,11 +12,11 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "PHN",
@@ -38,11 +38,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "ORAI",
@@ -51,11 +51,11 @@
       "departureTime": "19:36",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "VGLJ",
@@ -64,11 +64,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "LAR",
@@ -77,11 +77,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "385.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "BINA",
@@ -604,7 +604,7 @@
       "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Ljn Mas Express (16094) is prepared at Bina Jn (BINA) around 11:37 AM, with a second (vacancy) chart around 9:10 PM. 40 of 46 stations on the LJN to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:39:08.523Z",
-  "knownChartCount": 40
+  "summary": "The first reservation chart for Ljn Mas Express (16094) is prepared at Lucknow Ne (LJN) around 8:11 AM, with a second (vacancy) chart around 4:05 PM. 46 of 46 stations on the LJN to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:58:50.712Z",
+  "knownChartCount": 46
 }

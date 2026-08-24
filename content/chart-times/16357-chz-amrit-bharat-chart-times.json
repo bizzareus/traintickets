@@ -12,11 +12,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "VLY",
@@ -422,7 +422,7 @@
       "chartRemoteStation": "MS"
     }
   ],
-  "summary": "The first reservation chart for Chz Amrit Bharat (16357) is prepared at Valliyur (VLY) around 1:56 PM, with a second (vacancy) chart around 11:30 PM. 31 of 32 stations on the NCJ to CHZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:42:29.648Z",
-  "knownChartCount": 31
+  "summary": "The first reservation chart for Chz Amrit Bharat (16357) is prepared at Nagercoil Jn (NCJ) around 8:27 PM, with a second (vacancy) chart around 1 PM. 32 of 32 stations on the NCJ to CHZ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:02:19.089Z",
+  "knownChartCount": 32
 }

@@ -12,11 +12,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "NRKR",
@@ -25,11 +25,11 @@
       "departureTime": "20:03",
       "day": 1,
       "distance": "86.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "PAR",
@@ -38,11 +38,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "104.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "MTY",
@@ -51,11 +51,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "145.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "AMLA",
@@ -64,11 +64,11 @@
       "departureTime": "21:16",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BZU",
@@ -77,11 +77,11 @@
       "departureTime": "21:34",
       "day": 1,
       "distance": "191.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:19",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "RKMP",
@@ -175,7 +175,7 @@
       "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "The first reservation chart for Ngp Indb Sup Exp (12914) is prepared at Rani Kamalapati (RKMP) around 9:13 AM, with a second (vacancy) chart around 9:19 PM. 7 of 13 stations on the NGP to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:39:23.956Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Ngp Indb Sup Exp (12914) is prepared at Nagpur (NGP) around 9:15 AM, with a second (vacancy) chart around 9:19 PM. 13 of 13 stations on the NGP to INDB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:49:49.686Z",
+  "knownChartCount": 13
 }

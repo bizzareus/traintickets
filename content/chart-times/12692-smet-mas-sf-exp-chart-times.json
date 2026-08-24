@@ -12,11 +12,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMET"
     },
     {
       "stationCode": "BDVT",
@@ -25,11 +25,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMET"
     },
     {
       "stationCode": "TKE",
@@ -38,11 +38,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "39.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMET"
     },
     {
       "stationCode": "RRB",
@@ -51,11 +51,11 @@
       "departureTime": "18:45",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMET"
     },
     {
       "stationCode": "DRU",
@@ -64,11 +64,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMET"
     },
     {
       "stationCode": "ASK",
@@ -77,11 +77,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMET"
     },
     {
       "stationCode": "TTR",
@@ -90,11 +90,11 @@
       "departureTime": "19:47",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMET"
     },
     {
       "stationCode": "TK",
@@ -103,11 +103,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "205.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMET"
     },
     {
       "stationCode": "SMVB",
@@ -116,11 +116,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "281.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "KJM",
@@ -129,11 +129,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "286.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "WFD",
@@ -142,11 +142,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "BWT",
@@ -155,11 +155,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "342.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "KPN",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Smet Mas Sf Exp (12692) from SMET to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-08-05T22:35:51.398Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Smet Mas Sf Exp (12692) is prepared at Shivamogga Town (SMET) around 8:49 AM, with a second (vacancy) chart around 5:25 PM. 12 of 20 stations on the SMET to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:47:35.992Z",
+  "knownChartCount": 12
 }

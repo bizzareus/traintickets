@@ -25,11 +25,11 @@
       "departureTime": "08:38",
       "day": 1,
       "distance": "98.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "MRGA",
@@ -38,11 +38,11 @@
       "departureTime": "09:07",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "SAP",
@@ -51,11 +51,11 @@
       "departureTime": "11:56",
       "day": 1,
       "distance": "227.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "GNT",
@@ -64,11 +64,11 @@
       "departureTime": "12:46",
       "day": 1,
       "distance": "269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GNT"
     },
     {
       "stationCode": "TEL",
@@ -77,11 +77,11 @@
       "departureTime": "13:45",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GNT"
     },
     {
       "stationCode": "BPP",
@@ -90,11 +90,11 @@
       "departureTime": "14:30",
       "day": 1,
       "distance": "337.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GNT"
     },
     {
       "stationCode": "OGL",
@@ -103,11 +103,11 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "401.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GNT"
     },
     {
       "stationCode": "NLR",
@@ -116,11 +116,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "518.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GNT"
     },
     {
       "stationCode": "RU",
@@ -409,7 +409,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Tvcn  Amritbhart (17041) is prepared at Charlapalli (CHZ) around 7:50 PM, with a second (vacancy) chart around 9:15 PM. 1 of 31 stations on the CHZ to TVCN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:52:24.838Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Tvcn  Amritbhart (17041) is prepared at Charlapalli (CHZ) around 7:50 PM, with a second (vacancy) chart around 9:15 PM. 9 of 31 stations on the CHZ to TVCN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:10:27.154Z",
+  "knownChartCount": 9
 }

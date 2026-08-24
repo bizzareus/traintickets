@@ -25,11 +25,11 @@
       "departureTime": "11:35",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "OGL",
@@ -38,11 +38,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:25",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "BZA",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "The first reservation chart for Mas Gaya Sf Exp (12390) is prepared at Mgr Chennai Ctl (MAS) around 8:14 PM, with a second (vacancy) chart around 9 AM. 15 of 21 stations on the MAS to GAYA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:32:54.035Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Mas Gaya Sf Exp (12390) is prepared at Mgr Chennai Ctl (MAS) around 8:14 PM, with a second (vacancy) chart around 9 AM. 17 of 21 stations on the MAS to GAYA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:38:57.555Z",
+  "knownChartCount": 17
 }

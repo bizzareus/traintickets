@@ -12,11 +12,11 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:05",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HAPA"
     },
     {
       "stationCode": "RJT",
@@ -25,11 +25,11 @@
       "departureTime": "10:05",
       "day": 1,
       "distance": "77.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HAPA"
     },
     {
       "stationCode": "WKR",
@@ -38,11 +38,11 @@
       "departureTime": "10:45",
       "day": 1,
       "distance": "118.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HAPA"
     },
     {
       "stationCode": "SUNR",
@@ -51,11 +51,11 @@
       "departureTime": "11:49",
       "day": 1,
       "distance": "193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HAPA"
     },
     {
       "stationCode": "VG",
@@ -64,11 +64,11 @@
       "departureTime": "12:57",
       "day": 1,
       "distance": "258.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HAPA"
     },
     {
       "stationCode": "ADI",
@@ -77,11 +77,11 @@
       "departureTime": "14:20",
       "day": 1,
       "distance": "323.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ND",
@@ -90,11 +90,11 @@
       "departureTime": "15:21",
       "day": 1,
       "distance": "369.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ANND",
@@ -103,11 +103,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "387.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "CYI",
@@ -116,11 +116,11 @@
       "departureTime": "16:27",
       "day": 1,
       "distance": "419.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "GDA",
@@ -129,11 +129,11 @@
       "departureTime": "17:14",
       "day": 1,
       "distance": "485.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "DHD",
@@ -142,11 +142,11 @@
       "departureTime": "18:02",
       "day": 1,
       "distance": "560.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "MGN",
@@ -155,11 +155,11 @@
       "departureTime": "18:28",
       "day": 1,
       "distance": "593.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "BMI",
@@ -168,11 +168,11 @@
       "departureTime": "19:02",
       "day": 1,
       "distance": "628.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:04",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "RTM",
@@ -448,7 +448,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Hapa Svdk Exp (12475) from HAPA to SVDK are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 34 stations.",
-  "generatedAt": "2026-08-01T12:30:46.058Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Hapa Svdk Exp (12475) is prepared at Hapa (HAPA) around 8:05 PM. 13 of 34 stations on the HAPA to SVDK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:40:20.374Z",
+  "knownChartCount": 13
 }

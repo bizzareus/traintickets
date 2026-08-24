@@ -12,11 +12,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "MCTM",
@@ -25,11 +25,11 @@
       "departureTime": "23:13",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "JAT",
@@ -916,7 +916,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Himsagar Exp (16318) is prepared at Jammu Tawi (JAT) around 12:34 PM, with a second (vacancy) chart around 10:15 PM. 43 of 70 stations on the SVDK to CAPE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:40:08.112Z",
-  "knownChartCount": 43
+  "summary": "The first reservation chart for Himsagar Exp (16318) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 12:45 PM, with a second (vacancy) chart around 10:15 PM. 45 of 70 stations on the SVDK to CAPE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:01:12.997Z",
+  "knownChartCount": 45
 }

@@ -12,11 +12,11 @@
       "departureTime": "14:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIDR"
     },
     {
       "stationCode": "HMBD",
@@ -25,11 +25,11 @@
       "departureTime": "15:21",
       "day": 1,
       "distance": "53.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIDR"
     },
     {
       "stationCode": "KMPU",
@@ -38,11 +38,11 @@
       "departureTime": "15:51",
       "day": 1,
       "distance": "84.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIDR"
     },
     {
       "stationCode": "KLBG",
@@ -51,11 +51,11 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "126.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIDR"
     },
     {
       "stationCode": "SDB",
@@ -64,11 +64,11 @@
       "departureTime": "17:22",
       "day": 1,
       "distance": "152.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIDR"
     },
     {
       "stationCode": "WADI",
@@ -77,11 +77,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "162.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIDR"
     },
     {
       "stationCode": "YG",
@@ -90,11 +90,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "201.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIDR"
     },
     {
       "stationCode": "RC",
@@ -103,11 +103,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "270.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BIDR"
     },
     {
       "stationCode": "MALM",
@@ -116,11 +116,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MALM"
     },
     {
       "stationCode": "GTL",
@@ -129,11 +129,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "391.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MALM"
     },
     {
       "stationCode": "ATP",
@@ -142,11 +142,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "459.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MALM"
     },
     {
       "stationCode": "DMM",
@@ -155,11 +155,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "492.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MALM"
     },
     {
       "stationCode": "HUP",
@@ -214,7 +214,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bidr Ypr Exp (16578) from BIDR to YPR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-08-22T19:46:19.190Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bidr Ypr Exp (16578) is prepared at Bidar (BIDR) around 6:40 AM, with a second (vacancy) chart around 2:25 PM. 12 of 16 stations on the BIDR to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:04:52.243Z",
+  "knownChartCount": 12
 }

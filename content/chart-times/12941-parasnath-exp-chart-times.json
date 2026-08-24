@@ -25,11 +25,11 @@
       "departureTime": "18:18",
       "day": 1,
       "distance": "28.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "DLJ",
@@ -38,11 +38,11 @@
       "departureTime": "18:36",
       "day": 1,
       "distance": "49.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "BTD",
@@ -51,11 +51,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "JVN",
@@ -64,11 +64,11 @@
       "departureTime": "20:07",
       "day": 1,
       "distance": "164.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "VG",
@@ -77,11 +77,11 @@
       "departureTime": "21:47",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BVC"
     },
     {
       "stationCode": "ADI",
@@ -435,7 +435,7 @@
       "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "The first reservation chart for Parasnath Exp (12941) is prepared at Bhavnagar Trmus (BVC) around 8:16 PM, with a second (vacancy) chart around 5:30 PM. 11 of 33 stations on the BVC to ASN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T18:19:28.938Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Parasnath Exp (12941) is prepared at Bhavnagar Trmus (BVC) around 8:16 PM, with a second (vacancy) chart around 5:30 PM. 16 of 33 stations on the BVC to ASN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:50:20.119Z",
+  "knownChartCount": 16
 }

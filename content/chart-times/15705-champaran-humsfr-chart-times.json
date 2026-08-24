@@ -12,11 +12,11 @@
       "departureTime": "08:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "22:59",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "MFP"
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "NNA",
@@ -25,10 +25,10 @@
       "departureTime": "08:55",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": "20:47",
+      "chartTimeLocal": "20:52",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "07:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "10:10",
       "day": 1,
       "distance": "124.0",
-      "chartTimeLocal": "20:47",
+      "chartTimeLocal": "20:52",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "07:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "11:45",
       "day": 1,
       "distance": "210.0",
-      "chartTimeLocal": "20:47",
+      "chartTimeLocal": "20:52",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "07:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "262.0",
       "chartTimeLocal": "22:59",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MFP"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "309.0",
       "chartTimeLocal": "22:59",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MFP"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "341.0",
       "chartTimeLocal": "22:59",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MFP"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "362.0",
       "chartTimeLocal": "22:59",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MFP"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "384.0",
       "chartTimeLocal": "22:59",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MFP"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "421.0",
       "chartTimeLocal": "22:59",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MFP"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "463.0",
       "chartTimeLocal": "22:59",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MFP"
     },
     {
@@ -157,8 +157,8 @@
       "distance": "506.0",
       "chartTimeLocal": "22:59",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MFP"
     },
     {
@@ -168,11 +168,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "571.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "SDDN",
@@ -181,11 +181,11 @@
       "departureTime": "22:09",
       "day": 1,
       "distance": "644.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "TLR",
@@ -194,11 +194,11 @@
       "departureTime": "23:09",
       "day": 1,
       "distance": "722.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "BLP",
@@ -207,11 +207,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "752.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "GD",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "GKP"
     }
   ],
-  "summary": "The first reservation chart for Champaran Humsfr (15705) is prepared at Katihar Jn (KIR) around 10:59 PM. 17 of 21 stations on the KIR to DLI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:37:28.824Z",
-  "knownChartCount": 17
+  "summary": "The first reservation chart for Champaran Humsfr (15705) is prepared at Katihar Jn (KIR) around 10:35 AM, with a second (vacancy) chart around 8:20 PM. 21 of 21 stations on the KIR to DLI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:55:05.753Z",
+  "knownChartCount": 21
 }

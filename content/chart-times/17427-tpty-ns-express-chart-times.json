@@ -12,11 +12,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "RU",
@@ -25,11 +25,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "NLR",
@@ -188,7 +188,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Tpty Ns Express (17427) from TPTY to NS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 14 stations.",
-  "generatedAt": "2026-08-22T19:58:21.964Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tpty Ns Express (17427) is prepared at Tirupati (TPTY) around 12:21 PM, with a second (vacancy) chart around 9:55 PM. 2 of 14 stations on the TPTY to NS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:16:33.962Z",
+  "knownChartCount": 2
 }

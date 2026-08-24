@@ -12,11 +12,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:06",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KYN",
@@ -25,11 +25,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:06",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "NK",
@@ -38,11 +38,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "172.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NK"
     },
     {
       "stationCode": "BSL",
@@ -318,7 +318,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ltt Puri Exp (12145) from LTT to PURI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 24 stations.",
-  "generatedAt": "2026-08-05T22:27:08.775Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ltt Puri Exp (12145) is prepared at Lokmanyatilak T (LTT) around 10:35 AM, with a second (vacancy) chart around 8:06 PM. 3 of 24 stations on the LTT to PURI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:32:30.646Z",
+  "knownChartCount": 3
 }

@@ -25,11 +25,11 @@
       "departureTime": "06:45",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "AGC",
@@ -38,11 +38,11 @@
       "departureTime": "07:25",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "GWL",
@@ -51,11 +51,11 @@
       "departureTime": "09:43",
       "day": 1,
       "distance": "306.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "VGLJ",
@@ -64,11 +64,11 @@
       "departureTime": "11:23",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "BINA",
@@ -77,11 +77,11 @@
       "departureTime": "13:40",
       "day": 1,
       "distance": "556.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "BPL",
@@ -90,11 +90,11 @@
       "departureTime": "15:20",
       "day": 1,
       "distance": "694.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:46",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "ET",
@@ -103,11 +103,11 @@
       "departureTime": "17:20",
       "day": 1,
       "distance": "786.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:46",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "BZU",
@@ -116,11 +116,11 @@
       "departureTime": "19:02",
       "day": 1,
       "distance": "893.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:46",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NGP",
@@ -357,7 +357,7 @@
       "chartRemoteStation": "SA"
     }
   ],
-  "summary": "The first reservation chart for Millenium Exp (12646) is prepared at H Nizamuddin (NZM) around 9:07 PM, with a second (vacancy) chart around 4:55 AM. 4 of 27 stations on the NZM to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T18:52:15.964Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Millenium Exp (12646) is prepared at H Nizamuddin (NZM) around 9:07 PM, with a second (vacancy) chart around 4:55 AM. 12 of 27 stations on the NZM to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:46:34.476Z",
+  "knownChartCount": 12
 }

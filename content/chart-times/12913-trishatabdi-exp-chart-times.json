@@ -12,11 +12,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "DWX",
@@ -25,11 +25,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "39.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "UJN",
@@ -38,11 +38,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "80.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "MKC",
@@ -51,11 +51,11 @@
       "departureTime": "22:52",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "BCH",
@@ -64,11 +64,11 @@
       "departureTime": "23:09",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "SJP",
@@ -77,11 +77,11 @@
       "departureTime": "23:46",
       "day": 1,
       "distance": "183.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:27",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "RKMP",
@@ -175,7 +175,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Trishatabdi Exp (12913) from INDB to NGP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-08-05T22:39:19.151Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Trishatabdi Exp (12913) is prepared at Indore Jn Bg (INDB) around 10:27 AM, with a second (vacancy) chart around 8:20 PM. 6 of 13 stations on the INDB to NGP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:49:47.736Z",
+  "knownChartCount": 6
 }

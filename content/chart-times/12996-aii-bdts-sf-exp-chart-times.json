@@ -25,11 +25,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "BJNR",
@@ -38,11 +38,11 @@
       "departureTime": "21:36",
       "day": 1,
       "distance": "66.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "BHL",
@@ -51,11 +51,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "COR",
@@ -64,11 +64,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "186.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "COR"
     },
     {
       "stationCode": "NBH",
@@ -253,7 +253,7 @@
       "chartRemoteStation": "BRC"
     }
   ],
-  "summary": "The first reservation chart for Aii Bdts Sf Exp (12996) is prepared at Ajmer Jn (AII) around 12:30 PM, with a second (vacancy) chart around 8:15 PM. 15 of 19 stations on the AII to BDTS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:42:07.672Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Aii Bdts Sf Exp (12996) is prepared at Ajmer Jn (AII) around 12:30 PM, with a second (vacancy) chart around 8:15 PM. 19 of 19 stations on the AII to BDTS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:51:32.768Z",
+  "knownChartCount": 19
 }

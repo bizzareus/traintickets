@@ -12,11 +12,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:17",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "BMT",
@@ -25,11 +25,11 @@
       "departureTime": "16:42",
       "day": 1,
       "distance": "6.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "LPI",
@@ -38,11 +38,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "VKB",
@@ -51,11 +51,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "TDU",
@@ -64,11 +64,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "YG",
@@ -77,11 +77,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "222.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "KSN",
@@ -90,11 +90,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "266.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "RC",
@@ -103,11 +103,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "291.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "MALM",
@@ -116,11 +116,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "319.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "AD",
@@ -129,11 +129,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "360.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HYB"
     },
     {
       "stationCode": "GTL",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "GTL"
     }
   ],
-  "summary": "The first reservation chart for Hyb Bgm Exp (17071) is prepared at Guntakal Jn (GTL) around 4:30 PM, with a second (vacancy) chart around 12:17 AM. 12 of 22 stations on the HYB to BGM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:53:33.452Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Hyb Bgm Exp (17071) is prepared at Hyderabad Decan (HYB) around 4:30 PM, with a second (vacancy) chart around 12:17 AM. 22 of 22 stations on the HYB to BGM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:11:21.268Z",
+  "knownChartCount": 22
 }

@@ -12,11 +12,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:00",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "MDP",
@@ -25,11 +25,11 @@
       "departureTime": "13:32",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:00",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "CRJ",
@@ -38,11 +38,11 @@
       "departureTime": "14:22",
       "day": 1,
       "distance": "86.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:00",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "BRR",
@@ -51,11 +51,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:00",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "DHN",
@@ -64,11 +64,11 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "147.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:00",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "KTH",
@@ -77,11 +77,11 @@
       "departureTime": "16:46",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:00",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "CRP",
@@ -90,11 +90,11 @@
       "departureTime": "17:23",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:00",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "BKSC",
@@ -103,11 +103,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:00",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "MURI",
@@ -116,11 +116,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "249.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:00",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "RNC",
@@ -129,11 +129,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "311.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "HTE",
@@ -142,11 +142,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "318.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "ROU",
@@ -500,7 +500,7 @@
       "chartRemoteStation": "SC"
     }
   ],
-  "summary": "The first reservation chart for Jsme Vsg Exp (17322) is prepared at Rourkela (ROU) around 10:38 AM, with a second (vacancy) chart around 8 PM. 27 of 38 stations on the JSME to VSG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:57:11.206Z",
-  "knownChartCount": 27
+  "summary": "The first reservation chart for Jsme Vsg Exp (17322) is prepared at Jasidih Jn (JSME) around 8 PM, with a second (vacancy) chart around 12:55 PM. 38 of 38 stations on the JSME to VSG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:14:57.678Z",
+  "knownChartCount": 38
 }

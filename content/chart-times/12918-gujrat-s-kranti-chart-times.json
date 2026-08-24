@@ -25,11 +25,11 @@
       "departureTime": "14:55",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "KOTA",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "RTM"
     }
   ],
-  "summary": "The first reservation chart for Gujrat S Kranti (12918) is prepared at H Nizamuddin (NZM) around 11:06 PM, with a second (vacancy) chart around 1:10 PM. 6 of 10 stations on the NZM to ADI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:39:30.574Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Gujrat S Kranti (12918) is prepared at H Nizamuddin (NZM) around 11:06 PM, with a second (vacancy) chart around 1:10 PM. 7 of 10 stations on the NZM to ADI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:49:54.159Z",
+  "knownChartCount": 7
 }

@@ -12,11 +12,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "KGQ",
@@ -25,11 +25,11 @@
       "departureTime": "20:40",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "KZE",
@@ -38,11 +38,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "PAY",
@@ -51,11 +51,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "98.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "CAN",
@@ -64,11 +64,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "TLY",
@@ -77,11 +77,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "BDJ",
@@ -90,11 +90,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "175.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "CLT",
@@ -103,11 +103,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "221.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "TIR",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Maq Ypr Express (16566) from MAQ to YPR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-08-22T19:46:03.429Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Maq Ypr Express (16566) is prepared at Mangaluru Cntl (MAQ) around 10:30 AM, with a second (vacancy) chart around 7:45 PM. 8 of 20 stations on the MAQ to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:04:35.969Z",
+  "knownChartCount": 8
 }

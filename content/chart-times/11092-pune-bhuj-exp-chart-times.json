@@ -12,11 +12,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "LNL",
@@ -25,11 +25,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "KJT",
@@ -38,11 +38,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "92.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "KYN",
@@ -51,11 +51,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "BIRD",
@@ -64,11 +64,11 @@
       "departureTime": "23:05",
       "day": 1,
       "distance": "164.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "BSR",
@@ -77,11 +77,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "191.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "VAPI",
@@ -331,7 +331,7 @@
       "chartRemoteStation": "ADI"
     }
   ],
-  "summary": "The first reservation chart for Pune Bhuj Exp (11092) is prepared at Vapi (VAPI) around 10:11 AM, with a second (vacancy) chart around 7:55 PM. 19 of 25 stations on the PUNE to BHUJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:47:42.004Z",
-  "knownChartCount": 19
+  "summary": "The first reservation chart for Pune Bhuj Exp (11092) is prepared at Pune Jn (PUNE) around 10:30 AM, with a second (vacancy) chart around 7:55 PM. 25 of 25 stations on the PUNE to BHUJ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:20:27.904Z",
+  "knownChartCount": 25
 }

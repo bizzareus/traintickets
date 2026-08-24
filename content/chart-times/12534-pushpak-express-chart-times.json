@@ -12,9 +12,9 @@
       "departureTime": "08:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:24",
+      "chartTimeLocal": "20:20",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": "05:18",
+      "chartTwoTimeLocal": "08:01",
       "chartTwoDayOffset": 0,
       "chartRemoteStation": "CSMT"
     },
@@ -129,11 +129,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "850.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "LAR",
@@ -142,11 +142,11 @@
       "departureTime": "23:48",
       "day": 1,
       "distance": "1051.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "VGLJ",
@@ -155,11 +155,11 @@
       "departureTime": "01:03",
       "day": 2,
       "distance": "1141.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "ORAI",
@@ -168,11 +168,11 @@
       "departureTime": "02:20",
       "day": 2,
       "distance": "1255.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "CNB",
@@ -181,11 +181,11 @@
       "departureTime": "05:05",
       "day": 2,
       "distance": "1362.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "ON",
@@ -194,11 +194,11 @@
       "departureTime": "05:33",
       "day": 2,
       "distance": "1379.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "ASH",
@@ -220,11 +220,11 @@
       "departureTime": "07:35",
       "day": 2,
       "distance": "1444.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RKMP"
     },
     {
       "stationCode": "GTNR",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "RKMP"
     }
   ],
-  "summary": "The first reservation chart for Pushpak Express (12534) is prepared at C Shivaji Mah T (CSMT) around 8:24 PM, with a second (vacancy) chart around 5:18 AM. 11 of 18 stations on the CSMT to GTNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T07:01:11.919Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Pushpak Express (12534) is prepared at C Shivaji Mah T (CSMT) around 8:20 PM, with a second (vacancy) chart around 8:01 AM. 18 of 18 stations on the CSMT to GTNR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:43:37.263Z",
+  "knownChartCount": 18
 }

@@ -12,11 +12,11 @@
       "departureTime": "15:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "BEAS",
@@ -25,11 +25,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "JUC",
@@ -38,11 +38,11 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "LDH",
@@ -51,11 +51,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "UMB",
@@ -64,11 +64,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "SRE",
@@ -77,11 +77,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "331.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "MB",
@@ -552,7 +552,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Asr Ntsk Exp (15934) from ASR to NTSK are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 42 stations.",
-  "generatedAt": "2026-08-05T22:20:33.479Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Asr Ntsk Exp (15934) is prepared at Amritsar Jn (ASR) around 7:40 AM, with a second (vacancy) chart around 3:25 PM. 6 of 42 stations on the ASR to NTSK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:56:32.123Z",
+  "knownChartCount": 6
 }

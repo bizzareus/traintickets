@@ -12,11 +12,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKU"
     },
     {
       "stationCode": "KHH",
@@ -25,11 +25,11 @@
       "departureTime": "19:23",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKU"
     },
     {
       "stationCode": "IZN",
@@ -38,11 +38,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "77.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKU"
     },
     {
       "stationCode": "BC",
@@ -51,11 +51,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "82.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKU"
     },
     {
       "stationCode": "BE",
@@ -64,11 +64,11 @@
       "departureTime": "21:32",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKU"
     },
     {
       "stationCode": "LKO",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Lku Hwh Sf Exp (12354) from LKU to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-05T22:31:35.332Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Lku Hwh Sf Exp (12354) is prepared at Lal Kuan (LKU) around 9:01 AM, with a second (vacancy) chart around 6:35 PM. 5 of 19 stations on the LKU to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:37:42.700Z",
+  "knownChartCount": 5
 }

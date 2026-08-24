@@ -38,10 +38,10 @@
       "departureTime": "11:33",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": "21:22",
+      "chartTimeLocal": "21:18",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:18",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "15:40",
       "day": 1,
       "distance": "694.0",
-      "chartTimeLocal": "21:30",
+      "chartTimeLocal": "21:28",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BPL"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "786.0",
-      "chartTimeLocal": "21:30",
+      "chartTimeLocal": "21:28",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BPL"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "893.0",
-      "chartTimeLocal": "21:30",
+      "chartTimeLocal": "21:28",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BPL"
     },
     {
@@ -90,11 +90,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "1083.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "BPQ",
@@ -305,7 +305,7 @@
       "chartRemoteStation": "MDU"
     }
   ],
-  "summary": "The first reservation chart for Nzm Cape Sf Exp (12642) is prepared at H Nizamuddin (NZM) around 9:08 PM, with a second (vacancy) chart around 5:05 AM. 22 of 23 stations on the NZM to CAPE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:34:48.509Z",
-  "knownChartCount": 22
+  "summary": "The first reservation chart for Nzm Cape Sf Exp (12642) is prepared at H Nizamuddin (NZM) around 9:08 PM, with a second (vacancy) chart around 5:05 AM. 23 of 23 stations on the NZM to CAPE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:46:18.382Z",
+  "knownChartCount": 23
 }

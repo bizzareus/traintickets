@@ -181,11 +181,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "489.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "MTJ",
@@ -383,7 +383,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sgnr Ned Exp (12486) is prepared at Shri Ganganagar (SGNR) around 6:30 AM. 13 of 29 stations on the SGNR to NED route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-01T01:15:15.469Z",
-  "knownChartCount": 13
+  "summary": "The first reservation chart for Sgnr Ned Exp (12486) is prepared at Shri Ganganagar (SGNR) around 6:30 AM. 14 of 29 stations on the SGNR to NED route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:40:42.501Z",
+  "knownChartCount": 14
 }

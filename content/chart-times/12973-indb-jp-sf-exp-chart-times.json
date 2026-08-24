@@ -12,11 +12,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "DWX",
@@ -25,11 +25,11 @@
       "departureTime": "22:58",
       "day": 1,
       "distance": "39.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "UJN",
@@ -38,11 +38,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "80.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "NAD",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "SWM"
     }
   ],
-  "summary": "The first reservation chart for Indb Jp Sf Exp (12973) is prepared at Nagda Jn (NAD) around 12:15 PM, with a second (vacancy) chart around 10:03 PM. 6 of 9 stations on the INDB to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:41:28.014Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Indb Jp Sf Exp (12973) is prepared at Indore Jn Bg (INDB) around 12:12 PM, with a second (vacancy) chart around 10:05 PM. 9 of 9 stations on the INDB to JP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:51:10.586Z",
+  "knownChartCount": 9
 }

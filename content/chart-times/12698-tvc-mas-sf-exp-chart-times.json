@@ -12,11 +12,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "KZK",
@@ -25,11 +25,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "14.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "QLN",
@@ -38,11 +38,11 @@
       "departureTime": "20:13",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "ALLP",
@@ -51,11 +51,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "149.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "ERS",
@@ -64,11 +64,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "TCR",
@@ -77,11 +77,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "280.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "PGT",
@@ -175,7 +175,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Tvc Mas Sf Exp (12698) from TVC to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-08-05T22:36:02.808Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tvc Mas Sf Exp (12698) is prepared at Trivandrum Cntl (TVC) around 9:20 AM, with a second (vacancy) chart around 7 PM. 6 of 13 stations on the TVC to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:47:41.937Z",
+  "knownChartCount": 6
 }

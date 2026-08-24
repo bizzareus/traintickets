@@ -12,11 +12,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "JAJ",
@@ -25,11 +25,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "44.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "KIUL",
@@ -38,11 +38,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "98.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "NWD",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "BSL"
     }
   ],
-  "summary": "The first reservation chart for Jsme Pune Exp (11428) is prepared at Nawadah (NWD) around 11:50 AM, with a second (vacancy) chart around 9:30 PM. 15 of 18 stations on the JSME to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:36:08.600Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Jsme Pune Exp (11428) is prepared at Jasidih Jn (JSME) around 11:47 AM, with a second (vacancy) chart around 9:30 PM. 18 of 18 stations on the JSME to PUNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:31:20.411Z",
+  "knownChartCount": 18
 }

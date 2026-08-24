@@ -12,11 +12,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ND",
@@ -25,11 +25,11 @@
       "departureTime": "20:58",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ANND",
@@ -38,11 +38,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "BRC",
@@ -51,11 +51,11 @@
       "departureTime": "22:02",
       "day": 1,
       "distance": "100.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "BH",
@@ -64,11 +64,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ST",
@@ -77,11 +77,11 @@
       "departureTime": "23:58",
       "day": 1,
       "distance": "229.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:43",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "NVS",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "The first reservation chart for Adi Kop  Exp (11049) is prepared at Navsari (NVS) around 1:53 PM, with a second (vacancy) chart around 11:43 PM. 12 of 18 stations on the ADI to KOP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:46:38.493Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Adi Kop  Exp (11049) is prepared at Ahmedabad Jn (ADI) around 10:17 AM, with a second (vacancy) chart around 8 PM. 18 of 18 stations on the ADI to KOP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:19:53.762Z",
+  "knownChartCount": 18
 }

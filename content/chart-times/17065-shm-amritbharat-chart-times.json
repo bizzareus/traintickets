@@ -12,11 +12,11 @@
       "departureTime": "06:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:46",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "KZJ",
@@ -25,11 +25,11 @@
       "departureTime": "09:00",
       "day": 1,
       "distance": "120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:46",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "WL",
@@ -38,11 +38,11 @@
       "departureTime": "09:20",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:46",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "MABD",
@@ -51,11 +51,11 @@
       "departureTime": "10:10",
       "day": 1,
       "distance": "190.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:46",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "KMT",
@@ -64,11 +64,11 @@
       "departureTime": "10:50",
       "day": 1,
       "distance": "237.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:46",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "RYP",
@@ -77,11 +77,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "326.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "EE",
@@ -90,11 +90,11 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "394.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "RJY",
@@ -103,11 +103,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "483.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "SLO",
@@ -116,11 +116,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "534.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "TUNI",
@@ -129,11 +129,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "587.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "DVD",
@@ -142,11 +142,11 @@
       "departureTime": "19:52",
       "day": 1,
       "distance": "667.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "VZM",
@@ -155,11 +155,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "731.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "CHE",
@@ -168,11 +168,11 @@
       "departureTime": "22:35",
       "day": 1,
       "distance": "801.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "PSA",
@@ -181,11 +181,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "874.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "BAM",
@@ -318,7 +318,7 @@
       "chartRemoteStation": "BBS"
     }
   ],
-  "summary": "The first reservation chart for Shm Amritbharat (17065) is prepared at Brahmapur (BAM) around 8:30 PM, with a second (vacancy) chart around 12:55 PM. 10 of 24 stations on the CHZ to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:53:16.780Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Shm Amritbharat (17065) is prepared at Charlapalli (CHZ) around 8:46 PM. 24 of 24 stations on the CHZ to SHM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:11:06.627Z",
+  "knownChartCount": 24
 }

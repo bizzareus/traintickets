@@ -118,8 +118,8 @@
       "distance": "475.0",
       "chartTimeLocal": "04:55",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MB"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "566.0",
       "chartTimeLocal": "04:55",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MB"
     },
     {
@@ -142,11 +142,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "801.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "BSB",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Gurumukhi Exp (12326) is prepared at Amb  Andaura (AADR) around 9:28 PM, with a second (vacancy) chart around 5:55 AM. 10 of 20 stations on the AADR to KOAA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:30:17.485Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Gurumukhi Exp (12326) is prepared at Amb  Andaura (AADR) around 9:28 PM, with a second (vacancy) chart around 5:55 AM. 11 of 20 stations on the AADR to KOAA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:35:57.391Z",
+  "knownChartCount": 11
 }

@@ -129,10 +129,10 @@
       "departureTime": "15:25",
       "day": 2,
       "distance": "1141.0",
-      "chartTimeLocal": "21:06",
+      "chartTimeLocal": "21:29",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NGP"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "19:10",
       "day": 2,
       "distance": "1353.0",
-      "chartTimeLocal": "21:06",
+      "chartTimeLocal": "21:29",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NGP"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "22:50",
       "day": 2,
       "distance": "1595.0",
-      "chartTimeLocal": "21:06",
+      "chartTimeLocal": "21:29",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:10",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NGP"
     },
     {
@@ -241,6 +241,6 @@
     }
   ],
   "summary": "The first reservation chart for Lko Ypr Exp (12540) is prepared at Lucknow Nr (LKO) around 10:36 AM, with a second (vacancy) chart around 8:10 PM. 12 of 18 stations on the LKO to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:34:09.246Z",
+  "generatedAt": "2026-08-24T21:43:52.624Z",
   "knownChartCount": 12
 }

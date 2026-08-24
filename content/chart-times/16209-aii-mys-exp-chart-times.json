@@ -27,8 +27,8 @@
       "distance": "53.0",
       "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AII"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "119.0",
       "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AII"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "140.0",
       "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AII"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "207.0",
       "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AII"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "262.0",
       "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AII"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "306.0",
       "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AII"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "358.0",
       "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AII"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "403.0",
       "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AII"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "423.0",
       "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "AII"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "492.0",
       "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -157,8 +157,8 @@
       "distance": "538.0",
       "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -170,8 +170,8 @@
       "distance": "556.0",
       "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -183,8 +183,8 @@
       "distance": "592.0",
       "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -196,8 +196,8 @@
       "distance": "662.0",
       "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -207,11 +207,11 @@
       "departureTime": "17:56",
       "day": 1,
       "distance": "721.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BL",
@@ -220,11 +220,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "790.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "VAPI",
@@ -233,11 +233,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "814.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "PLG",
@@ -246,11 +246,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "897.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BSR",
@@ -259,11 +259,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "936.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BIRD",
@@ -272,11 +272,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "963.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "KYN",
@@ -285,11 +285,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "988.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:41",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "PUNE",
@@ -591,7 +591,7 @@
       "chartRemoteStation": "UBL"
     }
   ],
-  "summary": "The first reservation chart for Aii Mys Exp (16209) is prepared at Ajmer Jn (AII) around 7:57 PM, with a second (vacancy) chart around 12:35 PM. 38 of 45 stations on the AII to MYS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:39:37.227Z",
-  "knownChartCount": 38
+  "summary": "The first reservation chart for Aii Mys Exp (16209) is prepared at Ajmer Jn (AII) around 7:57 PM, with a second (vacancy) chart around 12:35 PM. 45 of 45 stations on the AII to MYS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:59:52.614Z",
+  "knownChartCount": 45
 }

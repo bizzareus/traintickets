@@ -25,11 +25,11 @@
       "departureTime": "05:35",
       "day": 1,
       "distance": "142.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "RYP",
@@ -38,11 +38,11 @@
       "departureTime": "08:30",
       "day": 1,
       "distance": "339.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "RJY",
@@ -51,11 +51,11 @@
       "departureTime": "11:15",
       "day": 1,
       "distance": "496.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "SLO",
@@ -64,11 +64,11 @@
       "departureTime": "12:00",
       "day": 1,
       "distance": "546.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "RYP"
     },
     {
       "stationCode": "VSKP",
@@ -77,11 +77,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "696.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "VZM",
@@ -90,11 +90,11 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "757.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "CHE",
@@ -103,11 +103,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "827.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BAM",
@@ -116,11 +116,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "973.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "KUR",
@@ -129,11 +129,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "1120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BBS",
@@ -214,7 +214,7 @@
       "chartRemoteStation": "BBS"
     }
   ],
-  "summary": "The first reservation chart for Sc Shm Ac Sf Ex (12774) is prepared at Secunderabad Jn (SC) around 7:03 PM, with a second (vacancy) chart around 3:40 AM. 5 of 16 stations on the SC to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:36:49.826Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Sc Shm Ac Sf Ex (12774) is prepared at Secunderabad Jn (SC) around 7:03 PM, with a second (vacancy) chart around 3:40 AM. 14 of 16 stations on the SC to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:48:14.852Z",
+  "knownChartCount": 14
 }

@@ -25,11 +25,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "53.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "RN",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "MAJN"
     }
   ],
-  "summary": "The first reservation chart for Ltt Ers Duronto (12223) is prepared at Lokmanyatilak T (LTT) around 10:52 AM, with a second (vacancy) chart around 8:20 PM. 6 of 7 stations on the LTT to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:28:52.810Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Ltt Ers Duronto (12223) is prepared at Lokmanyatilak T (LTT) around 10:52 AM, with a second (vacancy) chart around 8:20 PM. 7 of 7 stations on the LTT to ERS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:34:16.499Z",
+  "knownChartCount": 7
 }

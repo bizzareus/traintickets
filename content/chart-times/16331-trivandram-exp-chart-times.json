@@ -12,11 +12,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "TNA",
@@ -25,11 +25,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KYN",
@@ -38,11 +38,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "KJT",
@@ -51,11 +51,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "84.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "LNL",
@@ -64,11 +64,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "112.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LTT"
     },
     {
       "stationCode": "PUNE",
@@ -539,7 +539,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Trivandram Exp (16331) from LTT to TVC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 41 stations.",
-  "generatedAt": "2026-08-22T19:40:47.398Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Trivandram Exp (16331) is prepared at Lokmanyatilak T (LTT) around 11:06 AM, with a second (vacancy) chart around 8:26 PM. 5 of 41 stations on the LTT to TVC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:01:28.292Z",
+  "knownChartCount": 5
 }

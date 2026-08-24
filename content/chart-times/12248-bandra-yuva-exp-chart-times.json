@@ -12,11 +12,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "MTJ",
@@ -25,11 +25,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "KOTA",
@@ -38,11 +38,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "RTM",
@@ -97,7 +97,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bandra Yuva Exp (12248) from NZM to BDTS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-08-05T22:29:08.738Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bandra Yuva Exp (12248) is prepared at H Nizamuddin (NZM) around 8:31 AM, with a second (vacancy) chart around 4:15 PM. 3 of 7 stations on the NZM to BDTS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:34:28.119Z",
+  "knownChartCount": 3
 }

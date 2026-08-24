@@ -12,11 +12,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "GNT",
@@ -162,7 +162,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Vskp Ac Sf Exp (12784) from SC to VSKP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-08-05T22:37:13.219Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Vskp Ac Sf Exp (12784) is prepared at Secunderabad Jn (SC) around 12:58 PM, with a second (vacancy) chart around 9:25 PM. 1 of 12 stations on the SC to VSKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:48:27.258Z",
+  "knownChartCount": 1
 }

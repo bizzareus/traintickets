@@ -12,11 +12,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "NGT",
@@ -25,11 +25,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "11.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "TVR",
@@ -38,11 +38,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "TJ",
@@ -51,11 +51,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "88.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "TPJ",
@@ -64,11 +64,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "138.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VLNK"
     },
     {
       "stationCode": "DG",
@@ -383,7 +383,7 @@
       "chartRemoteStation": "VLNK"
     }
   ],
-  "summary": "The first reservation chart for Vlnk Ers Express (16364) is prepared at Dindigul Jn (DG) around 9:53 AM, with a second (vacancy) chart around 11:15 PM. 24 of 29 stations on the VLNK to ERS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:42:58.960Z",
-  "knownChartCount": 24
+  "summary": "The first reservation chart for Vlnk Ers Express (16364) is prepared at VELLANKANNI (VLNK) around 9:53 AM, with a second (vacancy) chart around 11:15 PM. 29 of 29 stations on the VLNK to ERS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:02:44.983Z",
+  "knownChartCount": 29
 }

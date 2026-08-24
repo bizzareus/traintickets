@@ -12,11 +12,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "J",
@@ -71,7 +71,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Cpsn Ned Exp (17619) from CPSN to NED are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 5 stations.",
-  "generatedAt": "2026-08-22T19:59:31.843Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Cpsn Ned Exp (17619) is prepared at C SAMBHAJINAGAR (CPSN) around 3:30 PM, with a second (vacancy) chart around 11:15 PM. 1 of 5 stations on the CPSN to NED route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:17:45.873Z",
+  "knownChartCount": 1
 }

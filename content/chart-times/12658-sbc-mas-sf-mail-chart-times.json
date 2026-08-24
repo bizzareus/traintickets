@@ -25,11 +25,11 @@
       "departureTime": "22:51",
       "day": 1,
       "distance": "5.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "BWT",
@@ -38,11 +38,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "JTJ",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "SBC"
     }
   ],
-  "summary": "The first reservation chart for Sbc Mas Sf Mail (12658) is prepared at KSR Bengaluru (SBC) around 12:44 PM, with a second (vacancy) chart around 10:25 PM. 6 of 8 stations on the SBC to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-02T20:31:48.877Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Sbc Mas Sf Mail (12658) is prepared at KSR Bengaluru (SBC) around 12:44 PM, with a second (vacancy) chart around 10:25 PM. 8 of 8 stations on the SBC to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:46:45.631Z",
+  "knownChartCount": 8
 }

@@ -25,10 +25,10 @@
       "departureTime": "17:09",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": "20:32",
+      "chartTimeLocal": "20:22",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "16:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BDTS"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "20:28",
       "day": 1,
       "distance": "252.0",
-      "chartTimeLocal": "10:29",
+      "chartTimeLocal": "10:30",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:13",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -51,11 +51,11 @@
       "departureTime": "22:17",
       "day": 1,
       "distance": "381.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:02",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ANND",
@@ -64,11 +64,11 @@
       "departureTime": "22:57",
       "day": 1,
       "distance": "417.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:02",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ND",
@@ -77,11 +77,11 @@
       "departureTime": "23:14",
       "day": 1,
       "distance": "435.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:02",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ADI",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Bdts Bhuj Exp (12959) is prepared at Bandra Terminus (BDTS) around 8:32 PM. 3 of 19 stations on the BDTS to BHUJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:40:51.790Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Bdts Bhuj Exp (12959) is prepared at Bandra Terminus (BDTS) around 8:32 PM. 6 of 19 stations on the BDTS to BHUJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:50:47.673Z",
+  "knownChartCount": 6
 }

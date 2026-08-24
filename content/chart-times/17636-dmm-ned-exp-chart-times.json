@@ -27,8 +27,8 @@
       "distance": "68.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "145.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "228.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "270.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "280.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "401.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "517.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "567.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "582.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "624.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -157,8 +157,8 @@
       "distance": "655.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -170,8 +170,8 @@
       "distance": "755.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -183,8 +183,8 @@
       "distance": "802.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -196,8 +196,8 @@
       "distance": "863.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -209,8 +209,8 @@
       "distance": "907.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DMM"
     },
     {
@@ -332,6 +332,6 @@
     }
   ],
   "summary": "The first reservation chart for Dmm Ned Exp (17636) is prepared at Dharmavaram Jn (DMM) around 8:35 PM. 16 of 25 stations on the DMM to NED route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:00:02.003Z",
+  "generatedAt": "2026-08-24T22:18:14.820Z",
   "knownChartCount": 16
 }

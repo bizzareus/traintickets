@@ -12,11 +12,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "LAV",
@@ -25,11 +25,11 @@
       "departureTime": "23:03",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "KDPR",
@@ -38,11 +38,11 @@
       "departureTime": "23:12",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "HCR",
@@ -51,11 +51,11 @@
       "departureTime": "23:26",
       "day": 1,
       "distance": "36.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "SM",
@@ -64,11 +64,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "57.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KIR"
     },
     {
       "stationCode": "MLDT",
@@ -149,7 +149,7 @@
       "chartRemoteStation": "KIR"
     }
   ],
-  "summary": "The first reservation chart for Kir Hwh Express (15712) is prepared at Malda Town (MLDT) around 12:25 PM, with a second (vacancy) chart around 11:42 PM. 6 of 11 stations on the KIR to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:37:34.938Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Kir Hwh Express (15712) is prepared at Katihar Jn (KIR) around 12:43 PM, with a second (vacancy) chart around 11:42 PM. 11 of 11 stations on the KIR to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:55:12.467Z",
+  "knownChartCount": 11
 }

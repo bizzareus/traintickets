@@ -12,11 +12,11 @@
       "departureTime": "13:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "CNI",
@@ -25,11 +25,11 @@
       "departureTime": "15:02",
       "day": 1,
       "distance": "37.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "MURI",
@@ -38,11 +38,11 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "BKSC",
@@ -51,11 +51,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "157.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:04",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "DHN",
@@ -64,11 +64,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "KMME",
@@ -77,11 +77,11 @@
       "departureTime": "19:52",
       "day": 1,
       "distance": "245.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "CRJ",
@@ -90,11 +90,11 @@
       "departureTime": "20:24",
       "day": 1,
       "distance": "268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "VDS",
@@ -103,11 +103,11 @@
       "departureTime": "20:52",
       "day": 1,
       "distance": "300.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "MDP",
@@ -116,11 +116,11 @@
       "departureTime": "21:18",
       "day": 1,
       "distance": "324.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "JSME",
@@ -129,11 +129,11 @@
       "departureTime": "21:48",
       "day": 1,
       "distance": "353.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "JAJ",
@@ -142,11 +142,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "397.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "KIUL",
@@ -305,7 +305,7 @@
       "chartRemoteStation": "DHN"
     }
   ],
-  "summary": "The first reservation chart for Tata Godda Exp (18185) is prepared at Kiul Jn (KIUL) around 9:09 AM, with a second (vacancy) chart around 6:55 PM. 12 of 23 stations on the TATA to GODA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:02:09.533Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Tata Godda Exp (18185) is prepared at Tatanagar Jn (TATA) around 6:04 PM, with a second (vacancy) chart around 1:40 PM. 23 of 23 stations on the TATA to GODA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:21:01.797Z",
+  "knownChartCount": 23
 }

@@ -103,10 +103,10 @@
       "departureTime": "13:29",
       "day": 1,
       "distance": "526.0",
-      "chartTimeLocal": "20:04",
+      "chartTimeLocal": "21:28",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:14",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "14:25",
       "day": 1,
       "distance": "595.0",
-      "chartTimeLocal": "20:04",
+      "chartTimeLocal": "21:28",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:14",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "16:40",
       "day": 1,
       "distance": "741.0",
-      "chartTimeLocal": "07:26",
+      "chartTimeLocal": "07:22",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "16:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSR"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "794.0",
-      "chartTimeLocal": "07:54",
+      "chartTimeLocal": "07:53",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KYN"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "868.0",
-      "chartTimeLocal": "07:54",
+      "chartTimeLocal": "07:53",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KYN"
     },
     {
@@ -168,11 +168,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "932.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "DD",
@@ -181,11 +181,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "1008.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "SUR",
@@ -409,7 +409,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Bvc Coa Sf Exp (12756) is prepared at Bhavnagar Trmus (BVC) around 6:13 PM, with a second (vacancy) chart around 4:10 AM. 12 of 31 stations on the BVC to COA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:36:39.151Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Bvc Coa Sf Exp (12756) is prepared at Bhavnagar Trmus (BVC) around 6:13 PM, with a second (vacancy) chart around 4:10 AM. 14 of 31 stations on the BVC to COA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:48:09.288Z",
+  "knownChartCount": 14
 }

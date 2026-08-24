@@ -25,11 +25,11 @@
       "departureTime": "14:31",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SDAH"
     },
     {
       "stationCode": "DGR",
@@ -38,11 +38,11 @@
       "departureTime": "15:17",
       "day": 1,
       "distance": "165.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SDAH"
     },
     {
       "stationCode": "ASN",
@@ -51,11 +51,11 @@
       "departureTime": "15:57",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "DHN",
@@ -64,11 +64,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "266.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:24",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ASN"
     },
     {
       "stationCode": "GAYA",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "The first reservation chart for Sampark K Exp (12329) is prepared at Sealdah (SDAH) around 10:24 PM, with a second (vacancy) chart around 12:55 PM. 3 of 9 stations on the SDAH to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:30:34.375Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Sampark K Exp (12329) is prepared at Sealdah (SDAH) around 10:24 PM, with a second (vacancy) chart around 12:55 PM. 7 of 9 stations on the SDAH to ANVT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:36:13.796Z",
+  "knownChartCount": 7
 }

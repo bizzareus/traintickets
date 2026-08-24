@@ -12,11 +12,11 @@
       "departureTime": "14:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "PYHT",
@@ -25,11 +25,11 @@
       "departureTime": "14:15",
       "day": 1,
       "distance": "17.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "HSDA",
@@ -38,11 +38,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "MDLE",
@@ -51,11 +51,11 @@
       "departureTime": "15:36",
       "day": 1,
       "distance": "55.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "BHLE",
@@ -64,11 +64,11 @@
       "departureTime": "15:54",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "DWLE",
@@ -77,11 +77,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "BGP",
@@ -90,11 +90,11 @@
       "departureTime": "17:00",
       "day": 1,
       "distance": "104.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "SGG",
@@ -103,11 +103,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "BUP",
@@ -116,11 +116,11 @@
       "departureTime": "17:46",
       "day": 1,
       "distance": "146.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "JMP",
@@ -129,11 +129,11 @@
       "departureTime": "18:07",
       "day": 1,
       "distance": "157.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "AHA",
@@ -142,11 +142,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "KIUL",
@@ -155,11 +155,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "202.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "JAJ",
@@ -168,11 +168,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "256.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:58",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GODA"
     },
     {
       "stationCode": "JSME",
@@ -305,7 +305,7 @@
       "chartRemoteStation": "JSME"
     }
   ],
-  "summary": "The first reservation chart for Godda Tata  Exp (18186) is prepared at Kumardubi (KMME) around 11:50 AM, with a second (vacancy) chart around 9:32 PM. 6 of 23 stations on the GODA to TATA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:02:12.236Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Godda Tata  Exp (18186) is prepared at Godda (GODA) around 8:58 PM. 19 of 23 stations on the GODA to TATA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:21:05.800Z",
+  "knownChartCount": 19
 }

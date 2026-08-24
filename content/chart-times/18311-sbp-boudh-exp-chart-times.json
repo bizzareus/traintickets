@@ -12,11 +12,11 @@
       "departureTime": "19:25",
       "day": null,
       "distance": "0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "BRGA",
@@ -25,11 +25,11 @@
       "departureTime": "20:10",
       "day": null,
       "distance": "43",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "BRPL",
@@ -38,11 +38,11 @@
       "departureTime": "20:27",
       "day": null,
       "distance": "62",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "BLGR",
@@ -51,11 +51,11 @@
       "departureTime": "21:35",
       "day": null,
       "distance": "119",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "BHPI",
@@ -64,11 +64,11 @@
       "departureTime": "21:52",
       "day": null,
       "distance": "134",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "JRTB",
@@ -77,11 +77,11 @@
       "departureTime": "22:07",
       "day": null,
       "distance": "145",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "NSGR",
@@ -90,11 +90,11 @@
       "departureTime": "22:22",
       "day": null,
       "distance": "156",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "SNPU",
@@ -103,11 +103,11 @@
       "departureTime": "22:40",
       "day": null,
       "distance": "167",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "PNPI",
@@ -116,11 +116,11 @@
       "departureTime": "23:02",
       "day": null,
       "distance": "176",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "JRMA",
@@ -129,11 +129,11 @@
       "departureTime": "23:30",
       "day": null,
       "distance": "196",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "BOUH",
@@ -149,7 +149,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for SBP BOUDH EXP (18311) from SBP to BOUH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-08-22T20:03:35.552Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for SBP BOUDH EXP (18311) is prepared at SAMBALPUR (SBP) around 9 AM, with a second (vacancy) chart around 10:25 PM. 10 of 11 stations on the SBP to BOUH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:23:39.067Z",
+  "knownChartCount": 10
 }

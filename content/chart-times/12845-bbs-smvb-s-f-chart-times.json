@@ -12,11 +12,11 @@
       "departureTime": "07:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "KUR",
@@ -25,11 +25,11 @@
       "departureTime": "07:50",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "BALU",
@@ -38,11 +38,11 @@
       "departureTime": "08:41",
       "day": 1,
       "distance": "90.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "BAM",
@@ -51,11 +51,11 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "PSA",
@@ -64,11 +64,11 @@
       "departureTime": "10:57",
       "day": 1,
       "distance": "240.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "CHE",
@@ -77,11 +77,11 @@
       "departureTime": "11:50",
       "day": 1,
       "distance": "313.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "VZM",
@@ -90,11 +90,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "382.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "07:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBS"
     },
     {
       "stationCode": "VSKP",
@@ -103,11 +103,11 @@
       "departureTime": "14:40",
       "day": 1,
       "distance": "443.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "SLO",
@@ -116,11 +116,11 @@
       "departureTime": "16:25",
       "day": 1,
       "distance": "594.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "RJY",
@@ -129,11 +129,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "644.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "14:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BZA",
@@ -142,11 +142,11 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "793.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "NLR",
@@ -155,11 +155,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "1047.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "RU",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bbs Smvb S F (12845) from BBS to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-08-05T22:37:48.153Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bbs Smvb S F (12845) is prepared at Bhubaneswar (BBS) around 7:20 PM, with a second (vacancy) chart around 7:15 AM. 12 of 20 stations on the BBS to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:48:48.074Z",
+  "knownChartCount": 12
 }

@@ -25,10 +25,10 @@
       "departureTime": "14:05",
       "day": 1,
       "distance": "5.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "14:45",
       "day": 1,
       "distance": "62.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "15:14",
       "day": 1,
       "distance": "96.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "16:40",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "18:45",
       "day": 1,
       "distance": "284.0",
-      "chartTimeLocal": "21:07",
+      "chartTimeLocal": "20:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -103,11 +103,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "347.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PER"
     },
     {
       "stationCode": "SPE",
@@ -116,11 +116,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "429.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PER"
     },
     {
       "stationCode": "NYP",
@@ -129,11 +129,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "457.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PER"
     },
     {
       "stationCode": "NLR",
@@ -142,11 +142,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "522.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PER"
     },
     {
       "stationCode": "OGL",
@@ -656,7 +656,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Smvb Rdp Exp (16223) is prepared at Smvt Bengaluru (SMVB) around 9:07 PM. 7 of 50 stations on the SMVB to RDP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:25:04.907Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Smvb Rdp Exp (16223) is prepared at Smvt Bengaluru (SMVB) around 9:07 PM. 11 of 50 stations on the SMVB to RDP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:00:08.099Z",
+  "knownChartCount": 11
 }

@@ -207,10 +207,10 @@
       "departureTime": "13:40",
       "day": 2,
       "distance": "2120.0",
-      "chartTimeLocal": "21:43",
+      "chartTimeLocal": "20:21",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "RU"
     },
     {
@@ -220,10 +220,10 @@
       "departureTime": "14:15",
       "day": 2,
       "distance": "2129.0",
-      "chartTimeLocal": "21:43",
+      "chartTimeLocal": "20:21",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "RU"
     },
     {
@@ -233,10 +233,10 @@
       "departureTime": "15:30",
       "day": 2,
       "distance": "2201.0",
-      "chartTimeLocal": "21:43",
+      "chartTimeLocal": "20:21",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "RU"
     },
     {
@@ -246,10 +246,10 @@
       "departureTime": "16:40",
       "day": 2,
       "distance": "2234.0",
-      "chartTimeLocal": "21:43",
+      "chartTimeLocal": "20:21",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "RU"
     },
     {
@@ -259,10 +259,10 @@
       "departureTime": "19:20",
       "day": 2,
       "distance": "2437.0",
-      "chartTimeLocal": "21:43",
+      "chartTimeLocal": "20:21",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "RU"
     },
     {
@@ -272,10 +272,10 @@
       "departureTime": "20:25",
       "day": 2,
       "distance": "2500.0",
-      "chartTimeLocal": "21:43",
+      "chartTimeLocal": "20:21",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "RU"
     },
     {
@@ -285,10 +285,10 @@
       "departureTime": "21:10",
       "day": 2,
       "distance": "2550.0",
-      "chartTimeLocal": "21:43",
+      "chartTimeLocal": "20:21",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:25",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "RU"
     },
     {
@@ -298,11 +298,11 @@
       "departureTime": "22:15",
       "day": 2,
       "distance": "2600.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:16",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "PGT",
@@ -311,11 +311,11 @@
       "departureTime": "23:45",
       "day": 2,
       "distance": "2654.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:16",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "CBE"
     },
     {
       "stationCode": "TCR",
@@ -409,7 +409,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Swrn Jaynti Exp (12644) is prepared at H Nizamuddin (NZM) around 9:08 PM, with a second (vacancy) chart around 4:55 AM. 22 of 31 stations on the NZM to TVC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:34:56.288Z",
-  "knownChartCount": 22
+  "summary": "The first reservation chart for Swrn Jaynti Exp (12644) is prepared at H Nizamuddin (NZM) around 9:08 PM, with a second (vacancy) chart around 4:55 AM. 24 of 31 stations on the NZM to TVC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:46:24.363Z",
+  "knownChartCount": 24
 }

@@ -12,11 +12,11 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "KJM",
@@ -25,11 +25,11 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "5.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "BWT",
@@ -38,11 +38,11 @@
       "departureTime": "16:40",
       "day": 1,
       "distance": "62.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "KPN",
@@ -51,11 +51,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "96.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "JTJ",
@@ -64,11 +64,11 @@
       "departureTime": "18:45",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "KPD",
@@ -77,11 +77,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SMVB"
     },
     {
       "stationCode": "RU",
@@ -90,11 +90,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "338.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RU"
     },
     {
       "stationCode": "GDR",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "RU"
     }
   ],
-  "summary": "The first reservation chart for Smvb Vskp Exp (18510) is prepared at Gudur Jn (GDR) around 1:18 PM, with a second (vacancy) chart around 10:35 PM. 11 of 18 stations on the SMVB to VSKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:05:26.624Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Smvb Vskp Exp (18510) is prepared at Smvt Bengaluru (SMVB) around 5:51 AM, with a second (vacancy) chart around 3:35 PM. 18 of 18 stations on the SMVB to VSKP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:25:32.682Z",
+  "knownChartCount": 18
 }

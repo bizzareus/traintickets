@@ -90,11 +90,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "663.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "BSB",
@@ -103,11 +103,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "680.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:48",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "LKO",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "MB"
     }
   ],
-  "summary": "The first reservation chart for Durgiana Exp (12357) is prepared at Kolkata Chitpur (KOAA) around 8:32 PM. 16 of 18 stations on the KOAA to ASR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:31:40.440Z",
-  "knownChartCount": 16
+  "summary": "The first reservation chart for Durgiana Exp (12357) is prepared at Kolkata Chitpur (KOAA) around 8:32 PM. 18 of 18 stations on the KOAA to ASR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:37:48.766Z",
+  "knownChartCount": 18
 }

@@ -12,11 +12,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:58",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "CKP",
@@ -25,11 +25,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "62.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "ROU",
@@ -38,11 +38,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "163.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "JSG",
@@ -51,11 +51,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "265.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TATA"
     },
     {
       "stationCode": "SBP",
@@ -64,11 +64,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "314.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "BRGA",
@@ -539,7 +539,7 @@
       "chartRemoteStation": "SC"
     }
   ],
-  "summary": "The first reservation chart for Tata Ypr Exp (18111) is prepared at Bargarh Road (BRGA) around 1:20 PM, with a second (vacancy) chart around 11:20 PM. 36 of 41 stations on the TATA to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:01:44.935Z",
-  "knownChartCount": 36
+  "summary": "The first reservation chart for Tata Ypr Exp (18111) is prepared at Tatanagar Jn (TATA) around 12:58 PM, with a second (vacancy) chart around 8:55 PM. 41 of 41 stations on the TATA to YPR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:19:57.541Z",
+  "knownChartCount": 41
 }

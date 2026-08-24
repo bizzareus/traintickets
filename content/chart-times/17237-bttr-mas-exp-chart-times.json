@@ -25,11 +25,11 @@
       "departureTime": "04:40",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "NLR",
@@ -38,11 +38,11 @@
       "departureTime": "05:30",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "VDE",
@@ -51,11 +51,11 @@
       "departureTime": "05:40",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "VKT",
@@ -64,11 +64,11 @@
       "departureTime": "05:46",
       "day": 1,
       "distance": "51.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "GDR",
@@ -77,11 +77,11 @@
       "departureTime": "06:20",
       "day": 1,
       "distance": "73.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "NYP",
@@ -90,11 +90,11 @@
       "departureTime": "06:45",
       "day": 1,
       "distance": "100.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "SPE",
@@ -103,11 +103,11 @@
       "departureTime": "07:05",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "TADA",
@@ -116,11 +116,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "GPD",
@@ -129,11 +129,11 @@
       "departureTime": "07:40",
       "day": 1,
       "distance": "163.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "PON",
@@ -142,11 +142,11 @@
       "departureTime": "07:55",
       "day": 1,
       "distance": "175.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "WCN",
@@ -155,11 +155,11 @@
       "departureTime": "08:25",
       "day": 1,
       "distance": "198.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "BBQ",
@@ -168,11 +168,11 @@
       "departureTime": "08:40",
       "day": 1,
       "distance": "208.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     },
     {
       "stationCode": "MAS",
@@ -181,14 +181,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "210.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BTTR"
     }
   ],
-  "summary": "The first reservation chart for Bttr Mas Exp (17237) is prepared at Bitragunta (BTTR) around 7:42 PM, with a second (vacancy) chart around 6:05 AM. 1 of 14 stations on the BTTR to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:55:17.938Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Bttr Mas Exp (17237) is prepared at Bitragunta (BTTR) around 7:42 PM, with a second (vacancy) chart around 6:05 AM. 14 of 14 stations on the BTTR to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:12:49.255Z",
+  "knownChartCount": 14
 }

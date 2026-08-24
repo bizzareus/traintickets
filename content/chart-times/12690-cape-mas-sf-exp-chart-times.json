@@ -12,11 +12,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAPE"
     },
     {
       "stationCode": "NCJ",
@@ -25,11 +25,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "16.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAPE"
     },
     {
       "stationCode": "TEN",
@@ -38,11 +38,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "89.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAPE"
     },
     {
       "stationCode": "CVP",
@@ -51,11 +51,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "154.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAPE"
     },
     {
       "stationCode": "SRT",
@@ -64,11 +64,11 @@
       "departureTime": "23:34",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAPE"
     },
     {
       "stationCode": "VPT",
@@ -77,11 +77,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "203.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAPE"
     },
     {
       "stationCode": "MDU",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Cape Mas Sf Exp (12690) from CAPE to MAS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-08-05T22:35:45.088Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Cape Mas Sf Exp (12690) is prepared at Kanyakumari (CAPE) around 10:31 AM, with a second (vacancy) chart around 8:15 PM. 6 of 20 stations on the CAPE to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:47:33.541Z",
+  "knownChartCount": 6
 }

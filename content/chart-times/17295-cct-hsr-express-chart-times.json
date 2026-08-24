@@ -25,11 +25,11 @@
       "departureTime": "06:05",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CCT"
     },
     {
       "stationCode": "RJY",
@@ -38,11 +38,11 @@
       "departureTime": "06:35",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CCT"
     },
     {
       "stationCode": "TDD",
@@ -51,11 +51,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CCT"
     },
     {
       "stationCode": "EE",
@@ -64,11 +64,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CCT"
     },
     {
       "stationCode": "BZA",
@@ -77,11 +77,11 @@
       "departureTime": "09:50",
       "day": 1,
       "distance": "212.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CCT"
     },
     {
       "stationCode": "GNT",
@@ -90,11 +90,11 @@
       "departureTime": "10:40",
       "day": 1,
       "distance": "244.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CCT"
     },
     {
       "stationCode": "MRGA",
@@ -103,11 +103,11 @@
       "departureTime": "12:30",
       "day": 1,
       "distance": "378.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CCT"
     },
     {
       "stationCode": "NLDA",
@@ -116,11 +116,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "415.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:59",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CCT"
     },
     {
       "stationCode": "CHZ",
@@ -630,7 +630,7 @@
       "chartRemoteStation": "NED"
     }
   ],
-  "summary": "The first reservation chart for Cct Hsr  Express (17295) is prepared at Kakinada Town (CCT) around 1:38 PM, with a second (vacancy) chart around 10:55 PM. 33 of 48 stations on the CCT to HSR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:56:25.732Z",
-  "knownChartCount": 33
+  "summary": "The first reservation chart for Cct Hsr  Express (17295) is prepared at Kakinada Town (CCT) around 1:38 PM, with a second (vacancy) chart around 10:55 PM. 41 of 48 stations on the CCT to HSR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:13:38.965Z",
+  "knownChartCount": 41
 }

@@ -12,11 +12,11 @@
       "departureTime": "06:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:44",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "NGP"
+      "chartTimeLocal": "12:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KZJ"
     },
     {
       "stationCode": "MML",
@@ -25,10 +25,10 @@
       "departureTime": "07:00",
       "day": 1,
       "distance": "4.0",
-      "chartTimeLocal": "20:06",
+      "chartTimeLocal": "20:08",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JBP"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "07:50",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": "20:06",
+      "chartTimeLocal": "20:08",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JBP"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "08:45",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": "20:06",
+      "chartTimeLocal": "20:08",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "06:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JBP"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "10:25",
       "day": 1,
       "distance": "246.0",
-      "chartTimeLocal": "20:11",
+      "chartTimeLocal": "20:19",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ET"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "543.0",
-      "chartTimeLocal": "20:44",
+      "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NGP"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "754.0",
-      "chartTimeLocal": "20:44",
+      "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NGP"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "824.0",
-      "chartTimeLocal": "20:44",
+      "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NGP"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "20:40",
       "day": 1,
       "distance": "895.0",
-      "chartTimeLocal": "20:44",
+      "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NGP"
     },
     {
@@ -129,11 +129,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "988.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KZJ"
     },
     {
       "stationCode": "KCG",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Jbp Ypr Exp (12194) is prepared at Jabalpur (JBP) around 8:44 PM. 9 of 19 stations on the JBP to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:28:13.309Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Jbp Ypr Exp (12194) is prepared at Jabalpur (JBP) around 12:18 PM, with a second (vacancy) chart around 9:50 PM. 10 of 19 stations on the JBP to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:33:54.861Z",
+  "knownChartCount": 10
 }

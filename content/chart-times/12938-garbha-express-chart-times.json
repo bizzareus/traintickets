@@ -12,11 +12,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "ASN",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "The first reservation chart for Garbha Express (12938) is prepared at Asansol Jn (ASN) around 12:58 PM, with a second (vacancy) chart around 10:45 PM. 20 of 21 stations on the HWH to GIMB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:39:58.618Z",
-  "knownChartCount": 20
+  "summary": "The first reservation chart for Garbha Express (12938) is prepared at Howrah Jn (HWH) around 12:58 PM, with a second (vacancy) chart around 10:45 PM. 21 of 21 stations on the HWH to GIMB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:50:04.880Z",
+  "knownChartCount": 21
 }

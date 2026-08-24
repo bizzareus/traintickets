@@ -12,11 +12,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:37",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "15:22",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AY"
     },
     {
       "stationCode": "BPHB",
@@ -25,11 +25,11 @@
       "departureTime": "20:16",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DURG"
     },
     {
       "stationCode": "R",
@@ -38,11 +38,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "37.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DURG"
     },
     {
       "stationCode": "TLD",
@@ -51,11 +51,11 @@
       "departureTime": "21:23",
       "day": 1,
       "distance": "75.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DURG"
     },
     {
       "stationCode": "BYT",
@@ -64,11 +64,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DURG"
     },
     {
       "stationCode": "USL",
@@ -77,11 +77,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DURG"
     },
     {
       "stationCode": "PND",
@@ -357,7 +357,7 @@
       "chartRemoteStation": "AY"
     }
   ],
-  "summary": "The first reservation chart for Durg Ntv Exp (18205) is prepared at Pendra Road (PND) around 12:05 PM, with a second (vacancy) chart around 7:50 PM. 21 of 27 stations on the DURG to NTV route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:02:32.641Z",
-  "knownChartCount": 21
+  "summary": "The first reservation chart for Durg Ntv Exp (18205) is prepared at Durg (DURG) around 7:37 AM, with a second (vacancy) chart around 3:22 PM. 27 of 27 stations on the DURG to NTV route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:22:00.314Z",
+  "knownChartCount": 27
 }

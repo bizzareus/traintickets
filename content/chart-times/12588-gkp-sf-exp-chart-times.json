@@ -12,11 +12,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JAT"
     },
     {
       "stationCode": "KTHU",
@@ -240,7 +240,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Gkp Sf Exp (12588) from JAT to GKP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 18 stations.",
-  "generatedAt": "2026-08-05T22:34:36.707Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Gkp Sf Exp (12588) is prepared at Jammu Tawi (JAT) around 1:14 PM, with a second (vacancy) chart around 10:30 PM. 1 of 18 stations on the JAT to GKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:45:31.477Z",
+  "knownChartCount": 1
 }

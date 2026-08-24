@@ -194,11 +194,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "863.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "ET",
@@ -207,11 +207,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "955.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "GDYA",
@@ -220,11 +220,11 @@
       "departureTime": "23:51",
       "day": 1,
       "distance": "1025.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "BZU",
@@ -474,7 +474,7 @@
       "chartRemoteStation": "BPQ"
     }
   ],
-  "summary": "The first reservation chart for Gkp Ypr Express (12591) is prepared at Gorakhpur Jn (GKP) around 8:15 PM, with a second (vacancy) chart around 6:05 AM. 15 of 36 stations on the GKP to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:34:42.367Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Gkp Ypr Express (12591) is prepared at Gorakhpur Jn (GKP) around 8:15 PM, with a second (vacancy) chart around 6:05 AM. 18 of 36 stations on the GKP to YPR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:45:35.994Z",
+  "knownChartCount": 18
 }

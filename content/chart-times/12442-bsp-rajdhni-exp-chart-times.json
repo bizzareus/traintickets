@@ -25,11 +25,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "313.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "VGLJ",
@@ -38,11 +38,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "410.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "BPL",
@@ -51,11 +51,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "701.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NGP",
@@ -136,7 +136,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Bsp Rajdhni Exp (12442) is prepared at New Delhi (NDLS) around 7:25 AM, with a second (vacancy) chart around 3:10 PM. 1 of 10 stations on the NDLS to BSP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-01T06:51:26.021Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Bsp Rajdhni Exp (12442) is prepared at New Delhi (NDLS) around 7:25 AM, with a second (vacancy) chart around 3:10 PM. 4 of 10 stations on the NDLS to BSP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:39:39.692Z",
+  "knownChartCount": 4
 }

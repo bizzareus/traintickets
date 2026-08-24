@@ -12,11 +12,11 @@
       "departureTime": "14:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:40",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "KTH",
@@ -25,11 +25,11 @@
       "departureTime": "14:27",
       "day": 1,
       "distance": "14.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:40",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "CRP",
@@ -38,11 +38,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "35.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:40",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DHN"
     },
     {
       "stationCode": "BKSC",
@@ -51,11 +51,11 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "MURI",
@@ -64,11 +64,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "102.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "RNC",
@@ -77,11 +77,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "164.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "HTE",
@@ -90,11 +90,11 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "171.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "ROU",
@@ -103,11 +103,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "338.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "JSG",
@@ -116,11 +116,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "439.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "SBP",
@@ -474,7 +474,7 @@
       "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Amrit Bharat Exp (16620) is prepared at Sambalpur (SBP) around 11:58 AM, with a second (vacancy) chart around 8:55 PM. 27 of 36 stations on the DHN to PTJ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:48:15.577Z",
-  "knownChartCount": 27
+  "summary": "The first reservation chart for Amrit Bharat Exp (16620) is prepared at Dhanbad Jn (DHN) around 9:40 PM, with a second (vacancy) chart around 1:45 PM. 36 of 36 stations on the DHN to PTJ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:06:10.022Z",
+  "knownChartCount": 36
 }

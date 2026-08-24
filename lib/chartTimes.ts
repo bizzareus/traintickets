@@ -203,8 +203,10 @@ async function fetchTrainData(trainNumber: string): Promise<TrainApiResponse | n
   }
 }
 
-/** Journey-date offsets (in days) to try when a train's chart isn't prepared for today. */
-const DATE_FALLBACK_OFFSETS = [0, 1, -1];
+import {
+  getTrainRunsOnFlagForYmd,
+  type TrainRunsOnJson,
+} from "@/lib/trainRunsOn";
 
 /** YYYY-MM-DD for today + `days` (server-local). */
 function ymdOffset(days: number): string {
@@ -213,6 +215,74 @@ function ymdOffset(days: number): string {
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const day = String(d.getDate()).padStart(2, "0");
   return `${d.getFullYear()}-${m}-${day}`;
+}
+
+/**
+ * All calendar dates (YYYY-MM-DD) in a window around today on which the train
+ * actually runs, ordered from future to past.
+ */
+function getValidTrainStartDates(
+  runs: TrainRunsOnJson | null | undefined,
+  daysPast = 7,
+  daysFuture = 2,
+): string[] {
+  const dates: string[] = [];
+  for (let offset = daysFuture; offset >= -daysPast; offset--) {
+    const d = ymdOffset(offset);
+    const flag = getTrainRunsOnFlagForYmd(d, runs);
+    if (flag === "N") continue;
+    dates.push(d);
+  }
+  return dates.length > 0 ? dates : [ymdOffset(0), ymdOffset(1), ymdOffset(-1)];
+}
+
+/**
+ * Returns candidate train start dates for a station, sorted by likelihood of having
+ * an active/prepared chart on IRCTC right now.
+ */
+function getCandidateDatesForStation(
+  station: ScheduleStation,
+  validStartDates: string[],
+): string[] {
+  if (validStartDates.length <= 1) return validStartDates;
+
+  const dayOffset = Math.max(
+    0,
+    Number(station.day ?? (station as unknown as { dayCount?: unknown }).dayCount ?? 1) - 1,
+  );
+  const timeStr = (station.departureTime || station.arrivalTime || "12:00").trim();
+  const [hh, mm] = timeStr.split(":").map((v) => parseInt(v, 10) || 0);
+
+  const nowMs = Date.now();
+
+  const scored = validStartDates.map((startDate) => {
+    // Boarding date for this station for this train start date
+    const d = new Date(startDate + "T00:00:00+05:30");
+    d.setDate(d.getDate() + dayOffset);
+    d.setHours(hh, mm, 0, 0);
+    const boardingTimeMs = d.getTime();
+
+    // Chart is typically prepared ~4 hours before boarding (or ~14h before for morning origin)
+    const chartLeadMs = dayOffset === 0 && hh < 12 ? 14 * 3600 * 1000 : 4 * 3600 * 1000;
+    const chartPrepTimeMs = boardingTimeMs - chartLeadMs;
+
+    const isChartDue = nowMs >= chartPrepTimeMs;
+    const hoursSinceBoarding = (nowMs - boardingTimeMs) / (3600 * 1000);
+
+    let score = 0;
+    if (isChartDue && hoursSinceBoarding <= 36) {
+      score = 1000 - Math.abs(nowMs - chartPrepTimeMs) / (3600 * 1000);
+    } else if (!isChartDue) {
+      score = 500 - (chartPrepTimeMs - nowMs) / (3600 * 1000);
+    } else {
+      score = 100 - hoursSinceBoarding;
+    }
+
+    return { startDate, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  return scored.map((s) => s.startDate);
 }
 
 /** Max station-meta requests in flight while generating one page. */
@@ -300,48 +370,45 @@ async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | 
   if (!train || stationList.length === 0) return null;
 
   const trainName = train.trainName || train.schedule?.trainName || "";
-
-  const codes = stationList.map((s) =>
-    String(s.stationCode || "").trim().toUpperCase(),
-  );
   const trainNo = train.trainNumber || trainNumber;
-  const originCode = codes[0];
+  const trainRunsOn = (train.schedule as unknown as { trainRunsOn?: TrainRunsOnJson })?.trainRunsOn;
+  const validStartDates = getValidTrainStartDates(trainRunsOn);
 
-  // IRCTC returns "chart not prepared" when the train doesn't run on the queried
-  // date. Probe the origin across today, +1 and -1 day to find a date for which a
-  // chart exists, then fetch every station for that date. (Chart times are
-  // date-independent times-of-day, so any valid running date populates them.)
-  let chosenDate = ymdOffset(0);
-  for (const off of DATE_FALLBACK_OFFSETS) {
-    const d = ymdOffset(off);
-    const probe = await fetchStationChartMeta(trainNo, originCode, off !== 0, d);
-    if (probe?.chartTimeLocal) {
-      chosenDate = d;
-      break;
+  // Fetch chart meta per station with station-specific candidate dates.
+  // We probe candidate dates (checking DB cache first, then IRCTC if needed).
+  const metas = await mapWithConcurrency(stationList, FETCH_CONCURRENCY, async (stn) => {
+    const code = String(stn.stationCode || "").trim().toUpperCase();
+    const candidateDates = getCandidateDatesForStation(stn, validStartDates);
+
+    // 1. Fast check: see if DB already has the chart meta for this station
+    let meta = await fetchStationChartMeta(trainNo, code, false, candidateDates[0]);
+    if (meta?.chartTimeLocal) return meta;
+
+    // 2. Not in DB: probe candidate running dates in ranked order
+    for (const d of candidateDates) {
+      meta = await fetchStationChartMeta(trainNo, code, true, d);
+      if (meta?.chartTimeLocal) break;
     }
-  }
-
-  // Fetch chart meta per station for the chosen date (backend reads DB first,
-  // hits IRCTC only when missing, and persists). Bounded concurrency.
-  const metas = await mapWithConcurrency(codes, FETCH_CONCURRENCY, (code) =>
-    fetchStationChartMeta(trainNo, code, false, chosenDate),
-  );
+    return meta;
+  });
 
   // Second pass: for stations that got a first chart but no second chart, make a
-  // dedicated forced-refresh call to try to obtain the 2nd chart time. If IRCTC
-  // still has no second chart, the row stays null and renders as "NA".
-  const secondPassIdx = codes
+  // dedicated forced-refresh call using the best candidate date to try to obtain 2nd chart.
+  const secondPassIdx = stationList
     .map((_, i) => i)
     .filter((i) => metas[i]?.chartTimeLocal && !metas[i]?.chartTwoTimeLocal);
   if (secondPassIdx.length > 0) {
     await mapWithConcurrency(secondPassIdx, FETCH_CONCURRENCY, async (i) => {
-      const refreshed = await fetchStationChartMeta(trainNo, codes[i], true, chosenDate);
+      const stn = stationList[i];
+      const code = String(stn.stationCode || "").trim().toUpperCase();
+      const candidateDates = getCandidateDatesForStation(stn, validStartDates);
+      const refreshed = await fetchStationChartMeta(trainNo, code, true, candidateDates[0]);
       if (refreshed?.chartTwoTimeLocal) metas[i] = refreshed;
     });
   }
 
   const stations: ChartTimeStationRow[] = stationList.map((s, i) => {
-    const code = codes[i];
+    const code = String(s.stationCode || "").trim().toUpperCase();
     const meta = metas[i];
     return {
       stationCode: code,

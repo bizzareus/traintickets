@@ -25,11 +25,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "STA"
     },
     {
       "stationCode": "JBP",
@@ -38,11 +38,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "367.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "ET",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "BSL"
     }
   ],
-  "summary": "The first reservation chart for Ltt Duronto (12294) is prepared at Prayagraj Jn. (PRYJ) around 8:25 AM, with a second (vacancy) chart around 5:55 PM. 4 of 6 stations on the PRYJ to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:29:37.082Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Ltt Duronto (12294) is prepared at Prayagraj Jn. (PRYJ) around 8:25 AM, with a second (vacancy) chart around 5:55 PM. 6 of 6 stations on the PRYJ to LTT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:34:44.595Z",
+  "knownChartCount": 6
 }

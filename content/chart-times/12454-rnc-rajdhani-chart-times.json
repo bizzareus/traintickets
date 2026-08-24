@@ -12,11 +12,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "PRYJ",
@@ -38,11 +38,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "636.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:07",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PRYJ"
     },
     {
       "stationCode": "SBDR",
@@ -162,7 +162,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Rnc Rajdhani (12454) from NDLS to RNC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-08-01T09:54:57.993Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rnc Rajdhani (12454) is prepared at New Delhi (NDLS) around 8:11 AM, with a second (vacancy) chart around 3:55 PM. 3 of 12 stations on the NDLS to RNC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:39:51.279Z",
+  "knownChartCount": 3
 }

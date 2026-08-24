@@ -12,11 +12,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROK"
     },
     {
       "stationCode": "BGZ",
@@ -25,11 +25,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "41.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ROK"
     },
     {
       "stationCode": "DLI",
@@ -409,7 +409,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Amrit Bharat Exp (15672) from ROK to KYQ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 31 stations.",
-  "generatedAt": "2026-08-22T19:37:16.362Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Amrit Bharat Exp (15672) is prepared at Rohtak Jn (ROK) around 2:10 PM, with a second (vacancy) chart around 9:55 PM. 2 of 31 stations on the ROK to KYQ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:54:45.951Z",
+  "knownChartCount": 2
 }

@@ -12,11 +12,11 @@
       "departureTime": "15:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "KJM",
@@ -25,11 +25,11 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "SA",
@@ -38,11 +38,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "274.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "ED",
@@ -51,11 +51,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "337.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "TUP",
@@ -64,11 +64,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "387.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "CBE",
@@ -77,11 +77,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "436.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "PGT",
@@ -90,11 +90,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "491.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "TCR",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "YPR"
     }
   ],
-  "summary": "The first reservation chart for Ypr Tvcn Ac Exp (16561) is prepared at Thrisur (TCR) around 5:28 AM, with a second (vacancy) chart around 11:30 PM. 7 of 14 stations on the YPR to TVCN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:45:45.782Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Ypr Tvcn Ac Exp (16561) is prepared at Yesvantpur Jn (YPR) around 5:28 AM, with a second (vacancy) chart around 11:30 PM. 14 of 14 stations on the YPR to TVCN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:04:21.222Z",
+  "knownChartCount": 14
 }

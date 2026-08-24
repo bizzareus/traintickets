@@ -25,11 +25,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "NSL",
@@ -38,11 +38,11 @@
       "departureTime": "19:25",
       "day": 1,
       "distance": "107.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "RGO",
@@ -51,11 +51,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "135.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "LSR",
@@ -64,11 +64,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "163.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:34",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "CPSN",
@@ -77,11 +77,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "196.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "J",
@@ -90,11 +90,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "259.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "PTU",
@@ -103,11 +103,11 @@
       "departureTime": "22:21",
       "day": 1,
       "distance": "304.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "SELU",
@@ -116,11 +116,11 @@
       "departureTime": "22:41",
       "day": 1,
       "distance": "331.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "MVO",
@@ -129,11 +129,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "346.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CPSN"
     },
     {
       "stationCode": "PBN",
@@ -513,7 +513,7 @@
       "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Snsi Coa Express (17205) is prepared at Sainagar Shirdi (SNSI) around 7:49 AM, with a second (vacancy) chart around 4:32 PM. 30 of 39 stations on the SNSI to COA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:54:16.219Z",
-  "knownChartCount": 30
+  "summary": "The first reservation chart for Snsi Coa Express (17205) is prepared at Sainagar Shirdi (SNSI) around 7:49 AM, with a second (vacancy) chart around 4:32 PM. 39 of 39 stations on the SNSI to COA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:12:07.436Z",
+  "knownChartCount": 39
 }

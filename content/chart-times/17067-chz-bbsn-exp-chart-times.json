@@ -12,11 +12,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "NLDA",
@@ -25,11 +25,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "98.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "MRGA",
@@ -38,11 +38,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "GNT",
@@ -51,11 +51,11 @@
       "departureTime": "23:22",
       "day": 1,
       "distance": "269.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GNT"
     },
     {
       "stationCode": "BZA",
@@ -305,7 +305,7 @@
       "chartRemoteStation": "GNT"
     }
   ],
-  "summary": "The first reservation chart for Chz Bbsn Exp (17067) is prepared at Vijayawada Jn (BZA) around 1:19 PM, with a second (vacancy) chart around 11:07 PM. 19 of 23 stations on the CHZ to BBSN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:53:19.146Z",
-  "knownChartCount": 19
+  "summary": "The first reservation chart for Chz Bbsn Exp (17067) is prepared at Charlapalli (CHZ) around 9:19 AM, with a second (vacancy) chart around 5:55 PM. 23 of 23 stations on the CHZ to BBSN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:11:08.585Z",
+  "knownChartCount": 23
 }

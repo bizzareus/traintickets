@@ -12,11 +12,11 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGHR"
     },
     {
       "stationCode": "MHUR",
@@ -25,11 +25,11 @@
       "departureTime": "20:04",
       "day": 1,
       "distance": "11.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGHR"
     },
     {
       "stationCode": "HSDA",
@@ -38,11 +38,11 @@
       "departureTime": "20:47",
       "day": 1,
       "distance": "49.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGHR"
     },
     {
       "stationCode": "MDLE",
@@ -51,11 +51,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "72.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGHR"
     },
     {
       "stationCode": "BGP",
@@ -64,11 +64,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "122.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGHR"
     },
     {
       "stationCode": "SGG",
@@ -77,11 +77,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "146.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGHR"
     },
     {
       "stationCode": "BUP",
@@ -90,11 +90,11 @@
       "departureTime": "23:16",
       "day": 1,
       "distance": "165.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DGHR"
     },
     {
       "stationCode": "MGR",
@@ -422,7 +422,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Dghr Dbrg Exp (15925) from DGHR to DBRG are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 32 stations.",
-  "generatedAt": "2026-08-05T22:20:21.114Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Dghr Dbrg Exp (15925) is prepared at DEOGHAR (DGHR) around 10:16 AM, with a second (vacancy) chart around 7:40 PM. 7 of 32 stations on the DGHR to DBRG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:56:07.178Z",
+  "knownChartCount": 7
 }

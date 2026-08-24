@@ -12,11 +12,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "RU",
@@ -25,11 +25,11 @@
       "departureTime": "08:38",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "KOU",
@@ -38,11 +38,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "51.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "RJP",
@@ -51,11 +51,11 @@
       "departureTime": "09:35",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "HX",
@@ -64,11 +64,11 @@
       "departureTime": "10:20",
       "day": 1,
       "distance": "135.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "YA",
@@ -77,11 +77,11 @@
       "departureTime": "10:55",
       "day": 1,
       "distance": "174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "MOO",
@@ -90,11 +90,11 @@
       "departureTime": "11:10",
       "day": 1,
       "distance": "191.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "TU",
@@ -103,11 +103,11 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "244.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "GY",
@@ -116,11 +116,11 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "292.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:01",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "GTL",
@@ -129,11 +129,11 @@
       "departureTime": "13:30",
       "day": 1,
       "distance": "320.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "AD",
@@ -142,11 +142,11 @@
       "departureTime": "14:20",
       "day": 1,
       "distance": "372.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "MALM",
@@ -155,11 +155,11 @@
       "departureTime": "15:05",
       "day": 1,
       "distance": "413.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "RC",
@@ -168,11 +168,11 @@
       "departureTime": "15:42",
       "day": 1,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "YG",
@@ -181,11 +181,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "510.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "CT",
@@ -194,11 +194,11 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "562.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "TDU",
@@ -207,11 +207,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "617.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "VKB",
@@ -220,11 +220,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "658.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "LPI",
@@ -233,11 +233,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "708.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:29",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "SC",
@@ -474,7 +474,7 @@
       "chartRemoteStation": "CPSN"
     }
   ],
-  "summary": "The first reservation chart for Tpty Snsi Exp (17417) is prepared at Mudkhed (MUE) around 12:29 PM, with a second (vacancy) chart around 8:30 PM. 12 of 36 stations on the TPTY to SNSI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:57:53.138Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Tpty Snsi Exp (17417) is prepared at Tirupati (TPTY) around 8:01 PM. 30 of 36 stations on the TPTY to SNSI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:16:09.637Z",
+  "knownChartCount": 30
 }

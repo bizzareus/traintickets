@@ -12,11 +12,11 @@
       "departureTime": "13:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NSL"
     },
     {
       "stationCode": "CPSN",
@@ -25,11 +25,11 @@
       "departureTime": "14:50",
       "day": 1,
       "distance": "89.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NSL"
     },
     {
       "stationCode": "J",
@@ -38,11 +38,11 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "152.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NSL"
     },
     {
       "stationCode": "PBN",
@@ -51,11 +51,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "267.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NSL"
     },
     {
       "stationCode": "PAU",
@@ -64,11 +64,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NSL"
     },
     {
       "stationCode": "NED",
@@ -77,11 +77,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "326.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "MUE",
@@ -90,11 +90,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "348.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "BSX",
@@ -103,11 +103,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "407.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "NZB",
@@ -116,11 +116,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "436.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "KMC",
@@ -129,11 +129,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "488.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "MJF",
@@ -357,7 +357,7 @@
       "chartRemoteStation": "KCG"
     }
   ],
-  "summary": "The first reservation chart for Nsl Mas Wkly Exp (16004) is prepared at Malkajgiri (MJF) around 9:38 AM, with a second (vacancy) chart around 7:15 PM. 17 of 27 stations on the NSL to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:38:55.086Z",
-  "knownChartCount": 17
+  "summary": "The first reservation chart for Nsl Mas Wkly Exp (16004) is prepared at Nagarsol (NSL) around 8:27 PM, with a second (vacancy) chart around 1:15 PM. 27 of 27 stations on the NSL to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:58:40.007Z",
+  "knownChartCount": 27
 }

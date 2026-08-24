@@ -12,11 +12,11 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "RU",
@@ -25,11 +25,11 @@
       "departureTime": "17:22",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "GDR",
@@ -38,11 +38,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "NLR",
@@ -51,11 +51,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "OGL",
@@ -64,11 +64,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "248.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "CLX",
@@ -77,11 +77,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "297.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "BPP",
@@ -90,11 +90,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "312.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:28",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "TEL",
@@ -266,7 +266,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Che Humsafar Exp (17439) from TPTY to CHE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 20 stations.",
-  "generatedAt": "2026-08-22T19:58:50.959Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Che Humsafar Exp (17439) is prepared at Tirupati (TPTY) around 7:28 AM, with a second (vacancy) chart around 4:40 PM. 7 of 20 stations on the TPTY to CHE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:17:04.554Z",
+  "knownChartCount": 7
 }

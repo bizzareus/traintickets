@@ -12,11 +12,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "GTL",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "VGLJ"
     }
   ],
-  "summary": "The first reservation chart for Ypr Dee Duronto (12213) is prepared at V Lakshmibai Jhansi Jhs (VGLJ) around 3:52 PM, with a second (vacancy) chart around 1:20 AM. 2 of 8 stations on the YPR to DEE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:28:39.960Z",
-  "knownChartCount": 2
+  "summary": "The first reservation chart for Ypr Dee Duronto (12213) is prepared at Yesvantpur Jn (YPR) around 2:15 PM, with a second (vacancy) chart around 11:25 PM. 3 of 8 stations on the YPR to DEE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:34:08.477Z",
+  "knownChartCount": 3
 }

@@ -103,11 +103,11 @@
       "departureTime": "20:43",
       "day": 1,
       "distance": "252.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:28",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BRC",
@@ -116,11 +116,11 @@
       "departureTime": "22:38",
       "day": 1,
       "distance": "381.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:17",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "GDA",
@@ -129,11 +129,11 @@
       "departureTime": "23:38",
       "day": 1,
       "distance": "455.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:17",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "DHD",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "The first reservation chart for Bdts Jaipur Sf (12979) is prepared at Bandra Terminus (BDTS) around 8:30 PM, with a second (vacancy) chart around 4:50 PM. 15 of 18 stations on the BDTS to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:41:49.359Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Bdts Jaipur Sf (12979) is prepared at Bandra Terminus (BDTS) around 8:30 PM, with a second (vacancy) chart around 4:50 PM. 18 of 18 stations on the BDTS to JP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:51:22.852Z",
+  "knownChartCount": 18
 }

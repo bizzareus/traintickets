@@ -12,11 +12,11 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "KGQ",
@@ -25,11 +25,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "CAN",
@@ -38,11 +38,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "TLY",
@@ -51,11 +51,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "MAHE",
@@ -64,11 +64,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "162.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "CLT",
@@ -77,11 +77,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "221.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "TIR",
@@ -90,11 +90,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "262.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "SRR",
@@ -103,11 +103,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "307.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "PGT",
@@ -116,11 +116,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "351.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAQ"
     },
     {
       "stationCode": "CBE",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Maq Pdy Express (16858) from MAQ to PDY are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-22T19:50:21.795Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Maq Pdy Express (16858) is prepared at Mangaluru Cntl (MAQ) around 7:17 AM, with a second (vacancy) chart around 9:25 PM. 9 of 19 stations on the MAQ to PDY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:07:58.044Z",
+  "knownChartCount": 9
 }

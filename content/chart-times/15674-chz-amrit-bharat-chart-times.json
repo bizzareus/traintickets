@@ -12,11 +12,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "CGON",
@@ -25,11 +25,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "DDNI",
@@ -38,11 +38,11 @@
       "departureTime": "20:34",
       "day": 1,
       "distance": "102.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "GLPT",
@@ -51,11 +51,11 @@
       "departureTime": "20:54",
       "day": 1,
       "distance": "122.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "AYU",
@@ -64,11 +64,11 @@
       "departureTime": "21:24",
       "day": 1,
       "distance": "185.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "NBQ",
@@ -77,11 +77,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "202.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "KOJ",
@@ -90,11 +90,11 @@
       "departureTime": "22:32",
       "day": 1,
       "distance": "230.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "GOGH",
@@ -103,11 +103,11 @@
       "departureTime": "22:58",
       "day": 1,
       "distance": "263.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYQ"
     },
     {
       "stationCode": "NOQ",
@@ -116,11 +116,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "309.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "03:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "NOQ"
     },
     {
       "stationCode": "NCB",
@@ -565,7 +565,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Chz Amrit Bharat (15674) from KYQ to CHZ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 43 stations.",
-  "generatedAt": "2026-08-22T19:37:26.305Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Chz Amrit Bharat (15674) is prepared at Kamakhya (KYQ) around 9:18 AM, with a second (vacancy) chart around 11:35 PM. 9 of 43 stations on the KYQ to CHZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:55:02.724Z",
+  "knownChartCount": 9
 }

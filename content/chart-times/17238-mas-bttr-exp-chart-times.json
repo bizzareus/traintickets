@@ -25,11 +25,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "12.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "PON",
@@ -38,11 +38,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "35.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "GPD",
@@ -51,11 +51,11 @@
       "departureTime": "17:35",
       "day": 1,
       "distance": "48.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "TADA",
@@ -64,11 +64,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "70.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "SPE",
@@ -77,11 +77,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "NYP",
@@ -90,11 +90,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "110.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "GDR",
@@ -103,11 +103,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "138.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "VKT",
@@ -116,11 +116,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "160.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "VDE",
@@ -129,11 +129,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "169.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "NLR",
@@ -142,11 +142,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "PGU",
@@ -155,11 +155,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "BTTR",
@@ -168,14 +168,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "210.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     }
   ],
-  "summary": "The first reservation chart for Mas Bttr Exp (17238) is prepared at Mgr Chennai Ctl (MAS) around 6:31 AM, with a second (vacancy) chart around 6:55 PM. 1 of 13 stations on the MAS to BTTR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:55:19.915Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Mas Bttr Exp (17238) is prepared at Mgr Chennai Ctl (MAS) around 6:31 AM, with a second (vacancy) chart around 6:55 PM. 13 of 13 stations on the MAS to BTTR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:12:52.360Z",
+  "knownChartCount": 13
 }

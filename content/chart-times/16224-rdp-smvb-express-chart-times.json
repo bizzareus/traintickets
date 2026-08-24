@@ -12,11 +12,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RDP"
     },
     {
       "stationCode": "KAJ",
@@ -25,11 +25,11 @@
       "departureTime": "21:46",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RDP"
     },
     {
       "stationCode": "RGJ",
@@ -38,11 +38,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "33.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RDP"
     },
     {
       "stationCode": "BOE",
@@ -51,11 +51,11 @@
       "departureTime": "22:32",
       "day": 1,
       "distance": "54.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RDP"
     },
     {
       "stationCode": "HCR",
@@ -64,11 +64,11 @@
       "departureTime": "23:17",
       "day": 1,
       "distance": "87.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RDP"
     },
     {
       "stationCode": "MLDT",
@@ -656,7 +656,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Rdp Smvb Express (16224) from RDP to SMVB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 50 stations.",
-  "generatedAt": "2026-08-05T22:25:17.477Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rdp Smvb Express (16224) is prepared at Radhikapur (RDP) around 11:45 AM, with a second (vacancy) chart around 9:15 PM. 5 of 50 stations on the RDP to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:00:15.759Z",
+  "knownChartCount": 5
 }

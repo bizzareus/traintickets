@@ -12,11 +12,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:17",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "TK",
@@ -25,11 +25,11 @@
       "departureTime": "19:07",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:17",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "ASK",
@@ -38,11 +38,11 @@
       "departureTime": "20:18",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:17",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "RRB",
@@ -51,11 +51,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:17",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "DVG",
@@ -64,11 +64,11 @@
       "departureTime": "22:22",
       "day": 1,
       "distance": "320.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:17",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "HRR",
@@ -77,11 +77,11 @@
       "departureTime": "22:38",
       "day": 1,
       "distance": "334.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:17",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "HVR",
@@ -90,11 +90,11 @@
       "departureTime": "23:32",
       "day": 1,
       "distance": "389.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:17",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "YPR"
     },
     {
       "stationCode": "UBL",
@@ -201,7 +201,7 @@
       "chartRemoteStation": "YPR"
     }
   ],
-  "summary": "The first reservation chart for Ypr Pvr Exp (16541) is prepared at Sss Hubballi Jn (UBL) around 8:31 AM, with a second (vacancy) chart around 11:17 PM. 8 of 15 stations on the YPR to PVR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:44:55.768Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Ypr Pvr Exp (16541) is prepared at Yesvantpur Jn (YPR) around 8:31 AM, with a second (vacancy) chart around 11:17 PM. 15 of 15 stations on the YPR to PVR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:04:07.727Z",
+  "knownChartCount": 15
 }

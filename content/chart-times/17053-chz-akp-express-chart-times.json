@@ -12,11 +12,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHZ"
     },
     {
       "stationCode": "NLDA",
@@ -175,7 +175,7 @@
       "chartRemoteStation": "CHZ"
     }
   ],
-  "summary": "The first reservation chart for Chz Akp Express (17053) is prepared at Nalgonda (NLDA) around 1:48 PM, with a second (vacancy) chart around 9:55 PM. 12 of 13 stations on the CHZ to AKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:52:48.598Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Chz Akp Express (17053) is prepared at Charlapalli (CHZ) around 1:48 PM, with a second (vacancy) chart around 9:55 PM. 13 of 13 stations on the CHZ to AKP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:10:49.505Z",
+  "knownChartCount": 13
 }

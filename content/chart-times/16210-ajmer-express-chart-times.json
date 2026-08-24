@@ -25,11 +25,11 @@
       "departureTime": "21:06",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "RMGM",
@@ -38,11 +38,11 @@
       "departureTime": "21:44",
       "day": 1,
       "distance": "94.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MYS"
     },
     {
       "stationCode": "SBC",
@@ -51,11 +51,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:52",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "YPR",
@@ -578,7 +578,7 @@
       "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "The first reservation chart for Ajmer Express (16210) is prepared at Mysuru Jn (MYS) around 10:31 AM, with a second (vacancy) chart around 8:15 PM. 41 of 44 stations on the MYS to AII route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:39:40.208Z",
-  "knownChartCount": 41
+  "summary": "The first reservation chart for Ajmer Express (16210) is prepared at Mysuru Jn (MYS) around 10:31 AM, with a second (vacancy) chart around 8:15 PM. 44 of 44 stations on the MYS to AII route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:59:55.016Z",
+  "knownChartCount": 44
 }

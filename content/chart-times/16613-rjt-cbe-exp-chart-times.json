@@ -12,11 +12,11 @@
       "departureTime": "05:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": "RJT"
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "SUNR",
@@ -27,8 +27,8 @@
       "distance": "117.0",
       "chartTimeLocal": "20:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RJT"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "182.0",
       "chartTimeLocal": "20:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "05:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RJT"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "247.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "293.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "311.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "347.0",
       "chartTimeLocal": "20:30",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:16",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRC"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "426.0",
       "chartTimeLocal": "20:30",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:16",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BRC"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "476.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:14",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "544.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:14",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "691.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:14",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -157,8 +157,8 @@
       "distance": "718.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:14",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -168,11 +168,11 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "743.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KYN"
     },
     {
       "stationCode": "PUNE",
@@ -181,11 +181,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "882.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "DD",
@@ -194,11 +194,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "957.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PUNE"
     },
     {
       "stationCode": "SUR",
@@ -435,7 +435,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Rjt Cbe Exp (16613) is prepared at Rajkot Jn (RJT) around 8:02 PM. 12 of 33 stations on the RJT to CBE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:47:57.712Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Rjt Cbe Exp (16613) is prepared at Rajkot Jn (RJT) around 8:33 PM. 15 of 33 stations on the RJT to CBE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:05:39.992Z",
+  "knownChartCount": 15
 }

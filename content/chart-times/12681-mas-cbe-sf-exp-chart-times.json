@@ -12,11 +12,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "AJJ",
@@ -25,11 +25,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "KPD",
@@ -110,7 +110,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Mas Cbe Sf Exp (12681) from MAS to CBE are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 8 stations.",
-  "generatedAt": "2026-08-05T22:35:29.365Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mas Cbe Sf Exp (12681) is prepared at Mgr Chennai Ctl (MAS) around 12:33 PM, with a second (vacancy) chart around 10:15 PM. 2 of 8 stations on the MAS to CBE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:47:21.266Z",
+  "knownChartCount": 2
 }

@@ -155,11 +155,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "614.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "UD",
@@ -168,11 +168,11 @@
       "departureTime": "19:02",
       "day": 1,
       "distance": "696.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "MAO",
@@ -181,11 +181,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "1045.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "RN",
@@ -344,7 +344,7 @@
       "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "The first reservation chart for Sampark Kranthi (12217) is prepared at TRIVANDRUMNORTH (TVCN) around 6:58 PM, with a second (vacancy) chart around 4:35 AM. 23 of 26 stations on the TVCN to CDG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:28:46.442Z",
-  "knownChartCount": 23
+  "summary": "The first reservation chart for Sampark Kranthi (12217) is prepared at TRIVANDRUMNORTH (TVCN) around 6:58 PM, with a second (vacancy) chart around 4:35 AM. 26 of 26 stations on the TVCN to CDG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:34:12.274Z",
+  "knownChartCount": 26
 }

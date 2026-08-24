@@ -133,7 +133,7 @@ If you end up on the waitlist and it doesn't clear after charts are prepared:
 
 What if you missed the Tatkal window and got stuck with a waitlist? Don't panic.
 
-Instead of guessing if your CKWL will clear or looking up other trains manually, let [LastBerth](file:///) show you smarter options:
+Instead of guessing if your CKWL will clear or looking up other trains manually, let [LastBerth](/) show you smarter options:
 
 - **Segment Booking:** We check if you can book different sections of the same train (say, Delhi to Kanpur and Kanpur to Patna) to get a confirmed ride.
 - **Origin Quota Trick:** We look if booking from the train's starting station (even if you get in later) gives you a confirmed seat.

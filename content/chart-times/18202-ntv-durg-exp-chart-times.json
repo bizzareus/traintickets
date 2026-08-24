@@ -27,8 +27,8 @@
       "distance": "20.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "40.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "82.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "131.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "152.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "163.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "185.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "220.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "313.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "361.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -157,8 +157,8 @@
       "distance": "392.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -170,8 +170,8 @@
       "distance": "400.0",
       "chartTimeLocal": "20:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NTV"
     },
     {
@@ -181,11 +181,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "473.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PCOI"
     },
     {
       "stationCode": "MKP",
@@ -344,7 +344,7 @@
       "chartRemoteStation": "KTE"
     }
   ],
-  "summary": "The first reservation chart for Ntv Durg Exp (18202) is prepared at NAUTANWA (NTV) around 5:15 PM, with a second (vacancy) chart around 3:15 AM. 25 of 26 stations on the NTV to DURG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:02:25.722Z",
-  "knownChartCount": 25
+  "summary": "The first reservation chart for Ntv Durg Exp (18202) is prepared at NAUTANWA (NTV) around 5:15 PM, with a second (vacancy) chart around 3:15 AM. 26 of 26 stations on the NTV to DURG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:21:56.022Z",
+  "knownChartCount": 26
 }

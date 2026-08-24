@@ -25,11 +25,11 @@
       "departureTime": "05:27",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "MNTT",
@@ -38,11 +38,11 @@
       "departureTime": "05:38",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "PVRD",
@@ -51,11 +51,11 @@
       "departureTime": "05:51",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "KTYM",
@@ -64,11 +64,11 @@
       "departureTime": "06:23",
       "day": 1,
       "distance": "60.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "CGY",
@@ -77,11 +77,11 @@
       "departureTime": "06:42",
       "day": 1,
       "distance": "78.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "TRVL",
@@ -90,11 +90,11 @@
       "departureTime": "06:52",
       "day": 1,
       "distance": "86.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "CNGR",
@@ -103,11 +103,11 @@
       "departureTime": "07:03",
       "day": 1,
       "distance": "95.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "MVLK",
@@ -116,11 +116,11 @@
       "departureTime": "07:15",
       "day": 1,
       "distance": "107.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "KYJ",
@@ -129,11 +129,11 @@
       "departureTime": "07:25",
       "day": 1,
       "distance": "115.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "KPY",
@@ -142,11 +142,11 @@
       "departureTime": "07:41",
       "day": 1,
       "distance": "129.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "STKT",
@@ -155,11 +155,11 @@
       "departureTime": "07:51",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "QLN",
@@ -168,11 +168,11 @@
       "departureTime": "08:18",
       "day": 1,
       "distance": "156.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "PVU",
@@ -181,11 +181,11 @@
       "departureTime": "08:32",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "VAK",
@@ -194,11 +194,11 @@
       "departureTime": "08:46",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "KVU",
@@ -207,11 +207,11 @@
       "departureTime": "08:57",
       "day": 1,
       "distance": "189.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "CRY",
@@ -220,11 +220,11 @@
       "departureTime": "09:02",
       "day": 1,
       "distance": "192.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "KZK",
@@ -233,11 +233,11 @@
       "departureTime": "09:18",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "TVP",
@@ -246,11 +246,11 @@
       "departureTime": "09:31",
       "day": 1,
       "distance": "218.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "TVC",
@@ -259,14 +259,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "220.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ERS"
     }
   ],
-  "summary": "The first reservation chart for Vanchinad Exp (16303) is prepared at Ernakulam Jn (ERS) around 8:06 PM, with a second (vacancy) chart around 8:03 AM. 1 of 20 stations on the ERS to TVC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T05:48:37.641Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Vanchinad Exp (16303) is prepared at Ernakulam Jn (ERS) around 8:06 PM, with a second (vacancy) chart around 8:03 AM. 20 of 20 stations on the ERS to TVC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:00:32.277Z",
+  "knownChartCount": 20
 }

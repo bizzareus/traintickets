@@ -12,11 +12,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "KPD",
@@ -25,11 +25,11 @@
       "departureTime": "17:00",
       "day": 1,
       "distance": "130.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "JTJ",
@@ -38,11 +38,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "SA",
@@ -51,11 +51,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "334.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "ED",
@@ -64,11 +64,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "396.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "PTJ",
@@ -77,11 +77,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "490.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "PGT",
@@ -90,11 +90,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "538.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PTJ"
     },
     {
       "stationCode": "TCR",
@@ -175,7 +175,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Mas Tvc Sf Exp (12697) from MAS to TVC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 13 stations.",
-  "generatedAt": "2026-08-05T22:35:57.100Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Mas Tvc Sf Exp (12697) is prepared at Mgr Chennai Ctl (MAS) around 5:11 AM, with a second (vacancy) chart around 11:05 PM. 7 of 13 stations on the MAS to TVC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:47:38.818Z",
+  "knownChartCount": 7
 }

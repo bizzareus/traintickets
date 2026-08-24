@@ -12,11 +12,11 @@
       "departureTime": "17:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "YLM",
@@ -25,11 +25,11 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "TUNI",
@@ -38,11 +38,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "ANV",
@@ -51,11 +51,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "81.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "SLO",
@@ -64,11 +64,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "118.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "RJY",
@@ -77,11 +77,11 @@
       "departureTime": "20:45",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "NDD",
@@ -90,11 +90,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "190.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "TDD",
@@ -103,11 +103,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "210.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "EE",
@@ -116,11 +116,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "258.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "RYP",
@@ -129,11 +129,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "325.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AKP"
     },
     {
       "stationCode": "KMT",
@@ -214,7 +214,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Akp Chz Expres (17046) from AKP to CHZ are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-08-22T19:52:36.705Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Akp Chz Expres (17046) is prepared at Anakapalle (AKP) around 7:49 AM, with a second (vacancy) chart around 11:10 PM. 10 of 16 stations on the AKP to CHZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:10:46.290Z",
+  "knownChartCount": 10
 }

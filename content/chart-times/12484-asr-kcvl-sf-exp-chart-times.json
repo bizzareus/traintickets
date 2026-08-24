@@ -12,11 +12,11 @@
       "departureTime": "05:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:18",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "BEAS",
@@ -25,11 +25,11 @@
       "departureTime": "06:25",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:18",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "JUC",
@@ -38,11 +38,11 @@
       "departureTime": "07:07",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:18",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "LDH",
@@ -51,11 +51,11 @@
       "departureTime": "08:12",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:18",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "UMB",
@@ -64,11 +64,11 @@
       "departureTime": "10:20",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:18",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "05:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "NDLS",
@@ -77,11 +77,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "448.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "NZM",
@@ -90,11 +90,11 @@
       "departureTime": "13:23",
       "day": 1,
       "distance": "455.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:02",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "KOTA",
@@ -103,11 +103,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "913.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "01:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "RTM",
@@ -116,11 +116,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "1179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "01:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "BRC",
@@ -370,7 +370,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Asr Kcvl Sf Exp (12484) from ASR to TVCN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 28 stations.",
-  "generatedAt": "2026-08-01T14:42:19.554Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Asr Kcvl Sf Exp (12484) is prepared at Amritsar Jn (ASR) around 9:18 PM, with a second (vacancy) chart around 5:40 AM. 9 of 28 stations on the ASR to TVCN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:40:36.540Z",
+  "knownChartCount": 9
 }

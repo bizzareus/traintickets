@@ -12,11 +12,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "BUT",
@@ -25,11 +25,11 @@
       "departureTime": "23:29",
       "day": 1,
       "distance": "47.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "BLT",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "ST"
     }
   ],
-  "summary": "The first reservation chart for Bme Bdts (12998) is prepared at Balotra Jn (BLT) around 2:51 PM, with a second (vacancy) chart around 10:35 PM. 20 of 22 stations on the BME to BDTS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:42:18.173Z",
-  "knownChartCount": 20
+  "summary": "The first reservation chart for Bme Bdts (12998) is prepared at Barmer (BME) around 2:50 PM, with a second (vacancy) chart around 10:35 PM. 22 of 22 stations on the BME to BDTS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:51:40.225Z",
+  "knownChartCount": 22
 }

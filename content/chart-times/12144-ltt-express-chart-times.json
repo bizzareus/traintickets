@@ -25,11 +25,11 @@
       "departureTime": "04:30",
       "day": 1,
       "distance": "32.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SLN"
     },
     {
       "stationCode": "MBLP",
@@ -38,11 +38,11 @@
       "departureTime": "04:48",
       "day": 1,
       "distance": "51.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SLN"
     },
     {
       "stationCode": "LKO",
@@ -51,11 +51,11 @@
       "departureTime": "06:40",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:43",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "CNB",
@@ -64,11 +64,11 @@
       "departureTime": "08:20",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "ORAI",
@@ -77,11 +77,11 @@
       "departureTime": "09:59",
       "day": 1,
       "distance": "321.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "VGLJ",
@@ -90,11 +90,11 @@
       "departureTime": "12:33",
       "day": 1,
       "distance": "435.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "BINA",
@@ -103,11 +103,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "587.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "BPL",
@@ -116,11 +116,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "726.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "KNW",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "KNW"
     }
   ],
-  "summary": "The first reservation chart for Ltt Express (12144) is prepared at Sultanpur (SLN) around 7:11 PM, with a second (vacancy) chart around 3:50 AM. 5 of 14 stations on the SLN to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:27:01.163Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Ltt Express (12144) is prepared at Sultanpur (SLN) around 7:11 PM, with a second (vacancy) chart around 3:50 AM. 13 of 14 stations on the SLN to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:32:26.242Z",
+  "knownChartCount": 13
 }

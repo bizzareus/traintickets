@@ -12,11 +12,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "PAU",
@@ -25,11 +25,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "BMF",
@@ -38,11 +38,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "53.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "HNL",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "BSL"
     }
   ],
-  "summary": "The first reservation chart for Ned Ltt Express (17665) is prepared at Hingoli Deccan (HNL) around 12:14 PM, with a second (vacancy) chart around 9 PM. 11 of 14 stations on the NED to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:00:26.890Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Ned Ltt Express (17665) is prepared at H Sahib Nanded (NED) around 12:04 PM, with a second (vacancy) chart around 9 PM. 14 of 14 stations on the NED to LTT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:18:37.706Z",
+  "knownChartCount": 14
 }

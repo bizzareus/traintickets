@@ -25,11 +25,11 @@
       "departureTime": "10:07",
       "day": 1,
       "distance": "16.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NTSK"
     },
     {
       "stationCode": "SLGR",
@@ -38,11 +38,11 @@
       "departureTime": "11:15",
       "day": 1,
       "distance": "103.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NTSK"
     },
     {
       "stationCode": "MXN",
@@ -51,11 +51,11 @@
       "departureTime": "12:25",
       "day": 1,
       "distance": "157.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NTSK"
     },
     {
       "stationCode": "FKG",
@@ -64,11 +64,11 @@
       "departureTime": "13:30",
       "day": 1,
       "distance": "195.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "19:52",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NTSK"
     },
     {
       "stationCode": "DMV",
@@ -552,7 +552,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Ntsk Asr Express (15933) is prepared at New Tinsukia Jn (NTSK) around 8:14 PM, with a second (vacancy) chart around 9:30 AM. 17 of 42 stations on the NTSK to ASR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:20:30.495Z",
-  "knownChartCount": 17
+  "summary": "The first reservation chart for Ntsk Asr Express (15933) is prepared at New Tinsukia Jn (NTSK) around 8:14 PM, with a second (vacancy) chart around 9:30 AM. 21 of 42 stations on the NTSK to ASR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:56:25.582Z",
+  "knownChartCount": 21
 }

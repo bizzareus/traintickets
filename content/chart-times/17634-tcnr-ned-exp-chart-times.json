@@ -12,11 +12,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "RU",
@@ -25,11 +25,11 @@
       "departureTime": "19:58",
       "day": 1,
       "distance": "3.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "NLR",
@@ -38,11 +38,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "125.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "OGL",
@@ -51,11 +51,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "241.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "CLX",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Tcnr Ned Exp (17634) from TCNR to NED are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-22T19:59:53.896Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Tcnr Ned Exp (17634) is prepared at Tiruchanur (TCNR) around 10:37 AM, with a second (vacancy) chart around 9:35 PM. 4 of 19 stations on the TCNR to NED route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:18:07.024Z",
+  "knownChartCount": 4
 }

@@ -12,11 +12,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SA"
     },
     {
       "stationCode": "VM",
@@ -25,11 +25,11 @@
       "departureTime": "17:35",
       "day": 1,
       "distance": "38.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "VRI",
@@ -38,11 +38,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "CHSM",
@@ -51,11 +51,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "144.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "ATU",
@@ -64,11 +64,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "176.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PDY"
     },
     {
       "stationCode": "SA",
@@ -77,11 +77,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SA"
     },
     {
       "stationCode": "ED",
@@ -90,11 +90,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SA"
     },
     {
       "stationCode": "TUP",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "SA"
     }
   ],
-  "summary": "The first reservation chart for Pdy Maq Express (16855) is prepared at Tiruppur (TUP) around 12:21 PM, with a second (vacancy) chart around 10:05 PM. 15 of 22 stations on the PDY to MAQ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:50:11.158Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Pdy Maq Express (16855) is prepared at Puducherry (PDY) around 12:21 PM, with a second (vacancy) chart around 10:05 PM. 22 of 22 stations on the PDY to MAQ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:07:47.707Z",
+  "knownChartCount": 22
 }

@@ -12,11 +12,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "MRX",
@@ -25,11 +25,11 @@
       "departureTime": "15:20",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "DRSV",
@@ -38,11 +38,11 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "BTW",
@@ -51,11 +51,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "106.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "KWV",
@@ -64,11 +64,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "143.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "KEM",
@@ -77,11 +77,11 @@
       "departureTime": "17:42",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "JEUR",
@@ -90,11 +90,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "KEU",
@@ -103,11 +103,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "203.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "DD",
@@ -116,11 +116,11 @@
       "departureTime": "19:35",
       "day": 1,
       "distance": "252.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "KDG",
@@ -129,11 +129,11 @@
       "departureTime": "19:58",
       "day": 1,
       "distance": "273.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "URI",
@@ -142,11 +142,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "299.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     },
     {
       "stationCode": "HDP",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "321.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HGL"
     }
   ],
-  "summary": "Reservation chart preparation times for Harangul Hdp Exp (1488) from HGL to HDP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 12 stations.",
-  "generatedAt": "2026-07-02T17:19:17.443Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Harangul Hdp Exp (1488) is prepared at Harangul (HGL) around 5:02 AM, with a second (vacancy) chart around 7:20 PM. 12 of 12 stations on the HGL to HDP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:54:16.548Z",
+  "knownChartCount": 12
 }

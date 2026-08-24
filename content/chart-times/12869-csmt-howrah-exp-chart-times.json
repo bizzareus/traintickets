@@ -12,11 +12,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "DR",
@@ -25,11 +25,11 @@
       "departureTime": "11:20",
       "day": 1,
       "distance": "9.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "KYN",
@@ -38,11 +38,11 @@
       "departureTime": "12:00",
       "day": 1,
       "distance": "54.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "NK",
@@ -51,11 +51,11 @@
       "departureTime": "14:40",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:26",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CSMT"
     },
     {
       "stationCode": "BSL",
@@ -64,11 +64,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "445.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "AK",
@@ -77,11 +77,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "584.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "BD",
@@ -90,11 +90,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "663.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "NGP",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Csmt Howrah Exp (12869) from CSMT to HWH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-05T22:38:36.468Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Csmt Howrah Exp (12869) is prepared at C Shivaji Mah T (CSMT) around 8:26 PM, with a second (vacancy) chart around 10:37 AM. 7 of 19 stations on the CSMT to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:49:17.399Z",
+  "knownChartCount": 7
 }

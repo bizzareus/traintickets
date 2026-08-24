@@ -12,11 +12,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "PAK",
@@ -25,11 +25,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "CTO",
@@ -38,11 +38,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "72.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "KPD",
@@ -51,11 +51,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "JTJ",
@@ -266,7 +266,7 @@
       "chartRemoteStation": "TPTY"
     }
   ],
-  "summary": "The first reservation chart for Tpty Cmgr Exp (17423) is prepared at Jolarpettai (JTJ) around 11:02 AM, with a second (vacancy) chart around 9:55 PM. 16 of 20 stations on the TPTY to CMGR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:58:08.793Z",
-  "knownChartCount": 16
+  "summary": "The first reservation chart for Tpty Cmgr Exp (17423) is prepared at Tirupati (TPTY) around 11:02 AM, with a second (vacancy) chart around 9:55 PM. 20 of 20 stations on the TPTY to CMGR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:16:21.780Z",
+  "knownChartCount": 20
 }

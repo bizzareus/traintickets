@@ -12,11 +12,11 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "MUE",
@@ -25,11 +25,11 @@
       "departureTime": "16:01",
       "day": 1,
       "distance": "23.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "HEM",
@@ -38,11 +38,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "KNVT",
@@ -51,11 +51,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "198.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "ADB",
@@ -64,11 +64,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "266.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "PMKT",
@@ -77,11 +77,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "287.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "WANI",
@@ -90,11 +90,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "353.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "MJRI",
@@ -103,11 +103,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "366.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "NGP",
@@ -253,7 +253,7 @@
       "chartRemoteStation": "TATA"
     }
   ],
-  "summary": "The first reservation chart for Ned Src Sup Exp (12767) is prepared at Nagpur (NGP) around 4 PM, with a second (vacancy) chart around 1:25 AM. 11 of 19 stations on the NED to SRC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:36:47.036Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Ned Src Sup Exp (12767) is prepared at H Sahib Nanded (NED) around 6:39 AM, with a second (vacancy) chart around 3:25 PM. 19 of 19 stations on the NED to SRC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:48:11.350Z",
+  "knownChartCount": 19
 }

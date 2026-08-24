@@ -25,11 +25,11 @@
       "departureTime": "09:13",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "BHTA",
@@ -38,11 +38,11 @@
       "departureTime": "09:48",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "KMBL",
@@ -51,11 +51,11 @@
       "departureTime": "10:15",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "JAM",
@@ -64,11 +64,11 @@
       "departureTime": "11:37",
       "day": 1,
       "distance": "168.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "HAPA",
@@ -77,11 +77,11 @@
       "departureTime": "11:53",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "RJT",
@@ -90,11 +90,11 @@
       "departureTime": "13:25",
       "day": 1,
       "distance": "253.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "WKR",
@@ -103,11 +103,11 @@
       "departureTime": "14:02",
       "day": 1,
       "distance": "294.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "SUNR",
@@ -116,11 +116,11 @@
       "departureTime": "15:04",
       "day": 1,
       "distance": "369.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "VG",
@@ -129,11 +129,11 @@
       "departureTime": "16:12",
       "day": 1,
       "distance": "434.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:02",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "ADI",
@@ -630,7 +630,7 @@
       "chartRemoteStation": "MDU"
     }
   ],
-  "summary": "The first reservation chart for Okha Rmm Exp (16734) is prepared at Okha (OKHA) around 8:44 PM, with a second (vacancy) chart around 8:25 AM. 18 of 48 stations on the OKHA to RMM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:49:13.441Z",
-  "knownChartCount": 18
+  "summary": "The first reservation chart for Okha Rmm Exp (16734) is prepared at Okha (OKHA) around 8:44 PM, with a second (vacancy) chart around 8:25 AM. 27 of 48 stations on the OKHA to RMM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:06:53.496Z",
+  "knownChartCount": 27
 }

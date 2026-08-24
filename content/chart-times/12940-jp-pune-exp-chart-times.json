@@ -12,10 +12,10 @@
       "departureTime": "12:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:21",
+      "chartTimeLocal": "21:23",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JP"
     },
     {
@@ -129,11 +129,11 @@
       "departureTime": "23:29",
       "day": 1,
       "distance": "767.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:14",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ST",
@@ -188,7 +188,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Jp Pune Exp (12940) is prepared at Jaipur (JP) around 9:21 PM. 9 of 14 stations on the JP to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-03T17:18:43.000Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Jp Pune Exp (12940) is prepared at Jaipur (JP) around 9:23 PM, with a second (vacancy) chart around 12:10 PM. 10 of 14 stations on the JP to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:50:14.620Z",
+  "knownChartCount": 10
 }

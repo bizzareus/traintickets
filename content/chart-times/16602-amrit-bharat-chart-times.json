@@ -27,8 +27,8 @@
       "distance": "14.0",
       "chartTimeLocal": "21:51",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JBN"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "42.0",
       "chartTimeLocal": "21:51",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JBN"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "81.0",
       "chartTimeLocal": "21:51",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JBN"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "109.0",
       "chartTimeLocal": "21:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "165.0",
       "chartTimeLocal": "21:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "224.0",
       "chartTimeLocal": "21:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "232.0",
       "chartTimeLocal": "21:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "273.0",
       "chartTimeLocal": "21:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "288.0",
       "chartTimeLocal": "21:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "338.0",
       "chartTimeLocal": "21:53",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "KIR"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "23:22",
       "day": 1,
       "distance": "376.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HJP"
     },
     {
       "stationCode": "SEE",
@@ -168,11 +168,11 @@
       "departureTime": "23:32",
       "day": 1,
       "distance": "381.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:22",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:07",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HJP"
     },
     {
       "stationCode": "PPTA",
@@ -669,7 +669,7 @@
       "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Amrit Bharat (16602) is prepared at JOGBANI (JBN) around 4:51 AM, with a second (vacancy) chart around 2:35 PM. 29 of 51 stations on the JBN to ED route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:47:39.343Z",
-  "knownChartCount": 29
+  "summary": "The first reservation chart for Amrit Bharat (16602) is prepared at JOGBANI (JBN) around 4:51 AM, with a second (vacancy) chart around 2:35 PM. 31 of 51 stations on the JBN to ED route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:05:29.518Z",
+  "knownChartCount": 31
 }

@@ -12,11 +12,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOAA"
     },
     {
       "stationCode": "BDC",
@@ -25,11 +25,11 @@
       "departureTime": "22:56",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOAA"
     },
     {
       "stationCode": "NDAE",
@@ -38,11 +38,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOAA"
     },
     {
       "stationCode": "KWAE",
@@ -292,7 +292,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Agtl Garib Rath (12501) from KOAA to AGTL are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 22 stations.",
-  "generatedAt": "2026-08-01T16:47:53.821Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Agtl Garib Rath (12501) is prepared at Kolkata Chitpur (KOAA) around 11:40 AM, with a second (vacancy) chart around 9:30 PM. 3 of 22 stations on the KOAA to AGTL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:41:05.188Z",
+  "knownChartCount": 3
 }

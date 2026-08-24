@@ -12,11 +12,11 @@
       "departureTime": "22:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BMPR"
     },
     {
       "stationCode": "RRP",
@@ -25,11 +25,11 @@
       "departureTime": "22:26",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BMPR"
     },
     {
       "stationCode": "OND",
@@ -38,11 +38,11 @@
       "departureTime": "22:38",
       "day": 1,
       "distance": "35.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BMPR"
     },
     {
       "stationCode": "BDO",
@@ -51,11 +51,11 @@
       "departureTime": "22:53",
       "day": 1,
       "distance": "48.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BMPR"
     },
     {
       "stationCode": "TATA",
@@ -136,7 +136,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Bmpr Shm Exp (18050) from BMPR to SHM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 10 stations.",
-  "generatedAt": "2026-08-22T20:01:19.016Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Bmpr Shm Exp (18050) is prepared at Badampahar (BMPR) around 12:17 PM, with a second (vacancy) chart around 9:45 PM. 4 of 10 stations on the BMPR to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:19:50.114Z",
+  "knownChartCount": 4
 }

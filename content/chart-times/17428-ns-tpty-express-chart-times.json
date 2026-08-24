@@ -12,11 +12,11 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "PKO",
@@ -25,11 +25,11 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "9.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "BVRM",
@@ -38,11 +38,11 @@
       "departureTime": "16:25",
       "day": 1,
       "distance": "30.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "BVRT",
@@ -51,11 +51,11 @@
       "departureTime": "16:35",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "AKVD",
@@ -64,11 +64,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "49.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "KKLR",
@@ -77,11 +77,11 @@
       "departureTime": "17:00",
       "day": 1,
       "distance": "66.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "GDV",
@@ -90,11 +90,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "95.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "BZA",
@@ -103,11 +103,11 @@
       "departureTime": "19:00",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "TEL",
@@ -116,11 +116,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "CLX",
@@ -129,11 +129,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "228.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "OGL",
@@ -142,11 +142,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "277.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "NLR",
@@ -155,11 +155,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "393.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "04:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NS"
     },
     {
       "stationCode": "RU",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "NS"
     }
   ],
-  "summary": "The first reservation chart for Ns Tpty Express (17428) is prepared at Renigunta Jn (RU) around 5:48 AM, with a second (vacancy) chart around 9:25 PM. 2 of 14 stations on the NS to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:58:24.744Z",
-  "knownChartCount": 2
+  "summary": "The first reservation chart for Ns Tpty Express (17428) is prepared at Narasapur (NS) around 4:37 AM, with a second (vacancy) chart around 9:25 PM. 14 of 14 stations on the NS to TPTY route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:16:36.150Z",
+  "knownChartCount": 14
 }

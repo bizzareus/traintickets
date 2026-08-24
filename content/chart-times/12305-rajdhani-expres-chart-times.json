@@ -12,11 +12,11 @@
       "departureTime": "14:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "BWN",
@@ -25,11 +25,11 @@
       "departureTime": "14:59",
       "day": 1,
       "distance": "95.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HWH"
     },
     {
       "stationCode": "MDP",
@@ -38,11 +38,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "282.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:27",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "16:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MDP"
     },
     {
       "stationCode": "JSME",
@@ -51,11 +51,11 @@
       "departureTime": "17:33",
       "day": 1,
       "distance": "311.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:29",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "17:18",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JSME"
     },
     {
       "stationCode": "PNBE",
@@ -64,11 +64,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "532.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "DDU",
@@ -123,7 +123,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Rajdhani Expres (12305) from HWH to NDLS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 9 stations.",
-  "generatedAt": "2026-08-05T22:29:50.266Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Rajdhani Expres (12305) is prepared at Howrah Jn (HWH) around 8:48 PM, with a second (vacancy) chart around 1:50 PM. 5 of 9 stations on the HWH to NDLS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:34:47.294Z",
+  "knownChartCount": 5
 }

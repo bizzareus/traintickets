@@ -12,11 +12,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "BMT",
@@ -25,11 +25,11 @@
       "departureTime": "16:42",
       "day": 1,
       "distance": "5.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "LPI",
@@ -38,11 +38,11 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "23.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "VKB",
@@ -51,11 +51,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "72.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "TDU",
@@ -64,11 +64,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "113.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "YG",
@@ -77,11 +77,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "221.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "KSN",
@@ -90,11 +90,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "264.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "RC",
@@ -103,11 +103,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "289.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "MALM",
@@ -116,11 +116,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "318.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "AD",
@@ -129,11 +129,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "359.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "GTL",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "GTL"
     }
   ],
-  "summary": "The first reservation chart for Sc Bgm Expresss (17073) is prepared at Guntakal Jn (GTL) around 4:30 PM, with a second (vacancy) chart around 12:23 AM. 12 of 22 stations on the SC to BGM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:53:39.964Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Sc Bgm Expresss (17073) is prepared at Secunderabad Jn (SC) around 7:30 AM, with a second (vacancy) chart around 4:15 PM. 22 of 22 stations on the SC to BGM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:11:31.315Z",
+  "knownChartCount": 22
 }

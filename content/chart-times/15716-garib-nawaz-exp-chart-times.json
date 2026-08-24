@@ -25,11 +25,11 @@
       "departureTime": "12:29",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:20",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "FL",
@@ -38,11 +38,11 @@
       "departureTime": "13:05",
       "day": 1,
       "distance": "80.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:20",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "JP",
@@ -51,11 +51,11 @@
       "departureTime": "14:10",
       "day": 1,
       "distance": "135.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DO",
@@ -64,11 +64,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "196.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "BKI",
@@ -77,11 +77,11 @@
       "departureTime": "15:34",
       "day": 1,
       "distance": "225.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "AWR",
@@ -90,11 +90,11 @@
       "departureTime": "16:24",
       "day": 1,
       "distance": "286.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "KRH",
@@ -103,11 +103,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "313.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "RE",
@@ -116,11 +116,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "360.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "GGN",
@@ -129,11 +129,11 @@
       "departureTime": "18:37",
       "day": 1,
       "distance": "411.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DEC",
@@ -142,11 +142,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "428.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DEE",
@@ -155,11 +155,11 @@
       "departureTime": "19:17",
       "day": 1,
       "distance": "438.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:32",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "DLI",
@@ -168,11 +168,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "442.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "MB",
@@ -181,11 +181,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "603.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "BE",
@@ -461,7 +461,7 @@
       "chartRemoteStation": "HJP"
     }
   ],
-  "summary": "The first reservation chart for Garib Nawaz Exp (15716) is prepared at Ajmer Jn (AII) around 9:29 PM, with a second (vacancy) chart around 7:45 PM. 22 of 35 stations on the AII to KNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:37:40.907Z",
-  "knownChartCount": 22
+  "summary": "The first reservation chart for Garib Nawaz Exp (15716) is prepared at Ajmer Jn (AII) around 9:29 PM, with a second (vacancy) chart around 7:45 PM. 35 of 35 stations on the AII to KNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:55:19.690Z",
+  "knownChartCount": 35
 }

@@ -27,8 +27,8 @@
       "distance": "65.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "YPR"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "135.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "YPR"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "161.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "YPR"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "206.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "YPR"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "320.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "YPR"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "357.0",
       "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "YPR"
     },
     {
@@ -103,11 +103,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "464.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "GDG",
@@ -116,11 +116,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "522.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "BGK",
@@ -129,11 +129,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "616.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "LMT",
@@ -142,11 +142,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "651.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "BJP",
@@ -487,7 +487,7 @@
       "chartRemoteStation": "UBL"
     }
   ],
-  "summary": "The first reservation chart for Bikaner Exp (16587) is prepared at Yesvantpur Jn (YPR) around 10:02 AM, with a second (vacancy) chart around 7:35 PM. 33 of 37 stations on the YPR to BKN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:46:49.124Z",
-  "knownChartCount": 33
+  "summary": "The first reservation chart for Bikaner Exp (16587) is prepared at Yesvantpur Jn (YPR) around 10:02 AM, with a second (vacancy) chart around 7:35 PM. 37 of 37 stations on the YPR to BKN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:05:13.589Z",
+  "knownChartCount": 37
 }

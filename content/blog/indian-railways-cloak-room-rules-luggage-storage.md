@@ -64,7 +64,7 @@ What if you just arrived in a city, want to sightsee for a day, but do not have 
 
 Since this counts as a valid journey ticket, the cloakroom staff will happily accept it. You can show your current available ticket, deposit your heavy bags, and explore the city hands-free.
 
-If you ever need to check your seat confirmation chances or keep tabs on your waitlist, you can head over to [LastBerth](file:///) and do a quick [PNR Status](file:///) search. It gives you a clear idea of your confirmation probability and lists other options. If your ticket looks like it will not confirm, the **Finding Smart Seats** feature is a lifesaver—it helps you get a confirmed seat by splitting your journey across different coaches or stations. And if you are already on the train and want to see if there are any empty berths to sit on, the **Seat Status Coach Journey Lookup** tells you exactly which seats are vacant between any two stations on your route.
+If you ever need to check your seat confirmation chances or keep tabs on your waitlist, you can head over to [LastBerth](/) and do a quick [PNR Status](/) search. It gives you a clear idea of your confirmation probability and lists other options. If your ticket looks like it will not confirm, the **Finding Smart Seats** feature is a lifesaver—it helps you get a confirmed seat by splitting your journey across different coaches or stations. And if you are already on the train and want to see if there are any empty berths to sit on, the **Seat Status Coach Journey Lookup** tells you exactly which seats are vacant between any two stations on your route.
 
 ---
 

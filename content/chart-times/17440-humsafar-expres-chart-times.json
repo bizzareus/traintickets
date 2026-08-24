@@ -12,11 +12,11 @@
       "departureTime": "15:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "CPP",
@@ -25,11 +25,11 @@
       "departureTime": "15:27",
       "day": 1,
       "distance": "39.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "VZM",
@@ -38,11 +38,11 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "70.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "KTV",
@@ -51,11 +51,11 @@
       "departureTime": "16:32",
       "day": 1,
       "distance": "105.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "PDT",
@@ -64,11 +64,11 @@
       "departureTime": "16:42",
       "day": 1,
       "distance": "113.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "DVD",
@@ -77,11 +77,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "AKP",
@@ -90,11 +90,11 @@
       "departureTime": "18:20",
       "day": 1,
       "distance": "150.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "YLM",
@@ -103,11 +103,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "SLO",
@@ -116,11 +116,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "RJY",
@@ -129,11 +129,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "318.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "EE",
@@ -142,11 +142,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "408.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:22",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CHE"
     },
     {
       "stationCode": "BZA",
@@ -266,7 +266,7 @@
       "chartRemoteStation": "CHE"
     }
   ],
-  "summary": "The first reservation chart for Humsafar Expres (17440) is prepared at Vijayawada Jn (BZA) around 8:55 PM, with a second (vacancy) chart around 8:55 PM. 9 of 20 stations on the CHE to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:58:53.798Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Humsafar Expres (17440) is prepared at Srikakulam Road (CHE) around 10:22 PM, with a second (vacancy) chart around 8:55 PM. 20 of 20 stations on the CHE to TPTY route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:17:06.778Z",
+  "knownChartCount": 20
 }

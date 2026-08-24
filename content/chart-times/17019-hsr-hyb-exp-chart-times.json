@@ -25,11 +25,11 @@
       "departureTime": "07:41",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "SDLP",
@@ -38,11 +38,11 @@
       "departureTime": "09:05",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "LHU",
@@ -51,11 +51,11 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "CRWA",
@@ -64,11 +64,11 @@
       "departureTime": "11:07",
       "day": 1,
       "distance": "150.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "JJN",
@@ -77,11 +77,11 @@
       "departureTime": "11:30",
       "day": 1,
       "distance": "179.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "NWH",
@@ -90,11 +90,11 @@
       "departureTime": "12:02",
       "day": 1,
       "distance": "216.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "SIKR",
@@ -103,11 +103,11 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "243.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "RGS",
@@ -116,11 +116,11 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "293.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:45",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "HSR"
     },
     {
       "stationCode": "JP",
@@ -129,11 +129,11 @@
       "departureTime": "15:20",
       "day": 1,
       "distance": "354.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "FL",
@@ -142,11 +142,11 @@
       "departureTime": "16:02",
       "day": 1,
       "distance": "408.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "KSG",
@@ -155,11 +155,11 @@
       "departureTime": "16:56",
       "day": 1,
       "distance": "463.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:50",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "AII",
@@ -591,7 +591,7 @@
       "chartRemoteStation": "PAU"
     }
   ],
-  "summary": "The first reservation chart for Hsr Hyb Exp (17019) is prepared at Hisar (HSR) around 9:45 PM, with a second (vacancy) chart around 7 AM. 9 of 45 stations on the HSR to HYB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:51:32.342Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Hsr Hyb Exp (17019) is prepared at Hisar (HSR) around 9:45 PM, with a second (vacancy) chart around 7 AM. 20 of 45 stations on the HSR to HYB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:09:10.713Z",
+  "knownChartCount": 20
 }

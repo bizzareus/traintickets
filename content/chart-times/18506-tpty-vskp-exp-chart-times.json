@@ -12,11 +12,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "RU",
@@ -25,11 +25,11 @@
       "departureTime": "22:12",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "KHT",
@@ -38,11 +38,11 @@
       "departureTime": "22:36",
       "day": 1,
       "distance": "33.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "GDR",
@@ -51,11 +51,11 @@
       "departureTime": "23:15",
       "day": 1,
       "distance": "93.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "NLR",
@@ -64,11 +64,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TPTY"
     },
     {
       "stationCode": "OGL",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "TPTY"
     }
   ],
-  "summary": "The first reservation chart for Tpty Vskp Exp (18506) is prepared at Ongole (OGL) around 11:53 AM, with a second (vacancy) chart around 11 PM. 16 of 21 stations on the TPTY to VSKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:04:51.429Z",
-  "knownChartCount": 16
+  "summary": "The first reservation chart for Tpty Vskp Exp (18506) is prepared at Tirupati (TPTY) around 11:53 AM, with a second (vacancy) chart around 11 PM. 21 of 21 stations on the TPTY to VSKP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:25:22.330Z",
+  "knownChartCount": 21
 }

@@ -12,11 +12,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "KGP",
@@ -25,11 +25,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "108.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "MDN",
@@ -38,11 +38,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "121.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "VSU",
@@ -51,11 +51,11 @@
       "departureTime": "22:53",
       "day": 1,
       "distance": "193.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "BQA",
@@ -64,11 +64,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:11",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SRC"
     },
     {
       "stationCode": "ADRA",
@@ -487,7 +487,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Kaviguru Exp (12950) from SRC to PBR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 37 stations.",
-  "generatedAt": "2026-08-05T22:40:34.402Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kaviguru Exp (12950) is prepared at Santragachi Jn (SRC) around 9:11 AM, with a second (vacancy) chart around 10:15 PM. 5 of 37 stations on the SRC to PBR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:50:43.956Z",
+  "knownChartCount": 5
 }

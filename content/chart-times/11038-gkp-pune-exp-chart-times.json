@@ -12,11 +12,11 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "113.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "06:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "DEOS",
@@ -25,11 +25,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "163.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "SRU",
@@ -38,11 +38,11 @@
       "departureTime": "17:32",
       "day": 1,
       "distance": "194.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "BLTR",
@@ -51,11 +51,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "MAU",
@@ -64,11 +64,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "252.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GKP"
     },
     {
       "stationCode": "BSB",
@@ -77,11 +77,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "344.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "PRYJ",
@@ -253,7 +253,7 @@
       "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "The first reservation chart for Gkp Pune Exp (11038) is prepared at Prayagraj Jn. (PRYJ) around 11:08 AM, with a second (vacancy) chart around 8:50 PM. 13 of 19 stations on the GKP to PUNE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-24T21:19:37.224Z",
-  "knownChartCount": 13
+  "summary": "The first reservation chart for Gkp Pune Exp (11038) is prepared at Gorakhpur Jn (GKP) around 8:18 PM, with a second (vacancy) chart around 6:40 AM. 19 of 19 stations on the GKP to PUNE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:24:54.358Z",
+  "knownChartCount": 19
 }

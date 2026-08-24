@@ -27,8 +27,8 @@
       "distance": "26.0",
       "chartTimeLocal": "23:00",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BGM"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "51.0",
       "chartTimeLocal": "23:00",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BGM"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "122.0",
       "chartTimeLocal": "23:00",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BGM"
     },
     {
@@ -64,11 +64,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "142.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "GDG",
@@ -77,11 +77,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "KBL",
@@ -90,11 +90,11 @@
       "departureTime": "17:37",
       "day": 1,
       "distance": "257.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "HPT",
@@ -103,11 +103,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "285.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "TNGL",
@@ -116,11 +116,11 @@
       "departureTime": "18:52",
       "day": 1,
       "distance": "318.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "DAJ",
@@ -129,11 +129,11 @@
       "departureTime": "19:03",
       "day": 1,
       "distance": "324.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "BAY",
@@ -142,11 +142,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "350.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "GTL",
@@ -155,11 +155,11 @@
       "departureTime": "22:00",
       "day": 1,
       "distance": "401.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "AD",
@@ -168,11 +168,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "452.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "MALM",
@@ -181,11 +181,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "493.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTL"
     },
     {
       "stationCode": "RC",
@@ -305,7 +305,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Bgm Chz Exp (17076) is prepared at BELAGAVI (BGM) around 11 PM. 4 of 23 stations on the BGM to CHZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:53:49.631Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Bgm Chz Exp (17076) is prepared at BELAGAVI (BGM) around 11 PM. 14 of 23 stations on the BGM to CHZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:11:42.915Z",
+  "knownChartCount": 14
 }

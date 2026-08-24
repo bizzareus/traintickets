@@ -12,11 +12,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "13:00",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "NCJ",
@@ -25,11 +25,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "16.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAPE"
     },
     {
       "stationCode": "TEN",
@@ -38,11 +38,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "89.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAPE"
     },
     {
       "stationCode": "VPT",
@@ -51,11 +51,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "203.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:47",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CAPE"
     },
     {
       "stationCode": "MDU",
@@ -487,7 +487,7 @@
       "chartRemoteStation": "JBP"
     }
   ],
-  "summary": "The first reservation chart for Kashi Tamil Exp (16367) is prepared at Madurai Jn (MDU) around 10:47 AM, with a second (vacancy) chart around 8:15 PM. 33 of 37 stations on the CAPE to BNRS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:43:03.720Z",
-  "knownChartCount": 33
+  "summary": "The first reservation chart for Kashi Tamil Exp (16367) is prepared at Kanyakumari (CAPE) around 8:20 PM, with a second (vacancy) chart around 1 PM. 37 of 37 stations on the CAPE to BNRS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:02:46.749Z",
+  "knownChartCount": 37
 }

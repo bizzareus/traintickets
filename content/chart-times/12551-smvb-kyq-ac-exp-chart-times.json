@@ -12,10 +12,10 @@
       "departureTime": "09:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:25",
+      "chartTimeLocal": "21:00",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -25,10 +25,10 @@
       "departureTime": "11:50",
       "day": 1,
       "distance": "140.0",
-      "chartTimeLocal": "21:25",
+      "chartTimeLocal": "21:00",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": "21:25",
+      "chartTimeLocal": "21:00",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "484.0",
-      "chartTimeLocal": "21:25",
+      "chartTimeLocal": "21:00",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "777.0",
-      "chartTimeLocal": "21:25",
+      "chartTimeLocal": "21:00",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SMVB"
     },
     {
@@ -383,7 +383,7 @@
       "chartRemoteStation": "ASN"
     }
   ],
-  "summary": "The first reservation chart for Smvb Kyq Ac Exp (12551) is prepared at Smvt Bengaluru (SMVB) around 9:25 PM. 15 of 29 stations on the SMVB to KYQ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:34:14.716Z",
+  "summary": "The first reservation chart for Smvb Kyq Ac Exp (12551) is prepared at Smvt Bengaluru (SMVB) around 9 PM, with a second (vacancy) chart around 11 AM. 15 of 29 stations on the SMVB to KYQ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:44:33.944Z",
   "knownChartCount": 15
 }

@@ -12,11 +12,11 @@
       "departureTime": "13:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:00",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BGM"
     },
     {
       "stationCode": "KNP",
@@ -25,11 +25,11 @@
       "departureTime": "13:26",
       "day": 1,
       "distance": "26.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:00",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BGM"
     },
     {
       "stationCode": "LD",
@@ -38,11 +38,11 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "51.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:00",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BGM"
     },
     {
       "stationCode": "DWR",
@@ -51,11 +51,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "122.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "23:00",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BGM"
     },
     {
       "stationCode": "UBL",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "GTL"
     }
   ],
-  "summary": "The first reservation chart for Bgm  Sc Exp (17074) is prepared at Raichur (RC) around 12:40 PM, with a second (vacancy) chart around 9:45 PM. 8 of 22 stations on the BGM to SC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:53:42.744Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Bgm  Sc Exp (17074) is prepared at BELAGAVI (BGM) around 11 PM. 12 of 22 stations on the BGM to SC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:11:35.331Z",
+  "knownChartCount": 12
 }

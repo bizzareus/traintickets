@@ -12,11 +12,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PVR"
     },
     {
       "stationCode": "MLB",
@@ -25,11 +25,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PVR"
     },
     {
       "stationCode": "KWV",
@@ -38,11 +38,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "53.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PVR"
     },
     {
       "stationCode": "BTW",
@@ -51,11 +51,11 @@
       "departureTime": "21:27",
       "day": 1,
       "distance": "90.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PVR"
     },
     {
       "stationCode": "DRSV",
@@ -64,11 +64,11 @@
       "departureTime": "21:57",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PVR"
     },
     {
       "stationCode": "LUR",
@@ -77,11 +77,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PVR"
     },
     {
       "stationCode": "LTRR",
@@ -370,7 +370,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Pvr Tirupati Exp (17438) from PVR to TPTY are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 28 stations.",
-  "generatedAt": "2026-08-22T19:58:47.487Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Pvr Tirupati Exp (17438) is prepared at PANDHARPUR (PVR) around 12 PM, with a second (vacancy) chart around 7:45 PM. 6 of 28 stations on the PVR to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:17:00.583Z",
+  "knownChartCount": 6
 }

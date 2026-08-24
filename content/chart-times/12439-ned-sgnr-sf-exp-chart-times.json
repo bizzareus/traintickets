@@ -12,11 +12,11 @@
       "departureTime": "11:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "PAU",
@@ -25,11 +25,11 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "HNL",
@@ -38,11 +38,11 @@
       "departureTime": "13:00",
       "day": 1,
       "distance": "111.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "WHM",
@@ -51,11 +51,11 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "159.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:28",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NED"
     },
     {
       "stationCode": "AK",
@@ -64,11 +64,11 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "238.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AK"
     },
     {
       "stationCode": "MKU",
@@ -77,11 +77,11 @@
       "departureTime": "17:02",
       "day": 1,
       "distance": "327.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AK"
     },
     {
       "stationCode": "KNW",
@@ -90,11 +90,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "495.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AK"
     },
     {
       "stationCode": "ET",
@@ -103,11 +103,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "678.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:42",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AK"
     },
     {
       "stationCode": "BPL",
@@ -370,7 +370,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ned Sgnr Sf Exp (12439) from NED to SGNR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 28 stations.",
-  "generatedAt": "2026-08-01T06:26:24.991Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ned Sgnr Sf Exp (12439) is prepared at H Sahib Nanded (NED) around 8:28 PM, with a second (vacancy) chart around 10:50 AM. 8 of 28 stations on the NED to SGNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:39:34.910Z",
+  "knownChartCount": 8
 }

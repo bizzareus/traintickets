@@ -12,11 +12,11 @@
       "departureTime": "13:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "BEAS",
@@ -25,11 +25,11 @@
       "departureTime": "13:55",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "JUC",
@@ -38,11 +38,11 @@
       "departureTime": "14:35",
       "day": 1,
       "distance": "79.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:06",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "13:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "LDH",
@@ -51,11 +51,11 @@
       "departureTime": "15:38",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:23",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "UMB",
@@ -64,11 +64,11 @@
       "departureTime": "17:25",
       "day": 1,
       "distance": "250.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:38",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:23",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "DLI",
@@ -77,11 +77,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "447.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "GOY",
@@ -227,7 +227,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Jalianwala B Ex (12380) from ASR to SDAH are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 17 stations.",
-  "generatedAt": "2026-08-05T22:32:44.708Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Jalianwala B Ex (12380) is prepared at Amritsar Jn (ASR) around 11:06 PM, with a second (vacancy) chart around 1:10 PM. 6 of 17 stations on the ASR to SDAH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:38:51.604Z",
+  "knownChartCount": 6
 }

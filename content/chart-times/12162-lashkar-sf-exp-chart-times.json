@@ -12,11 +12,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "MRA",
@@ -25,11 +25,11 @@
       "departureTime": "20:49",
       "day": 1,
       "distance": "80.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "GWL",
@@ -38,11 +38,11 @@
       "departureTime": "21:17",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "DBA",
@@ -51,11 +51,11 @@
       "departureTime": "21:53",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "VGLJ",
@@ -64,11 +64,11 @@
       "departureTime": "22:53",
       "day": 1,
       "distance": "216.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:04",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:38",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "BINA",
@@ -253,7 +253,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Lashkar Sf Exp (12162) from AGC to LTT are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 19 stations.",
-  "generatedAt": "2026-08-05T22:27:46.860Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Lashkar Sf Exp (12162) is prepared at Agra Cantt (AGC) around 9:46 AM, with a second (vacancy) chart around 7:30 PM. 5 of 19 stations on the AGC to LTT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:33:34.916Z",
+  "knownChartCount": 5
 }

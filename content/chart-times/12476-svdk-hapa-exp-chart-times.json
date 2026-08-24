@@ -12,11 +12,11 @@
       "departureTime": "09:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "MCTM",
@@ -25,11 +25,11 @@
       "departureTime": "10:26",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "JAT",
@@ -38,11 +38,11 @@
       "departureTime": "11:35",
       "day": 1,
       "distance": "78.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "KTHU",
@@ -64,11 +64,11 @@
       "departureTime": "13:25",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "JRC",
@@ -77,11 +77,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "291.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:39",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "09:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SVDK"
     },
     {
       "stationCode": "LDH",
@@ -90,11 +90,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "343.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "UMB",
@@ -103,11 +103,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "456.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "PNP",
@@ -116,11 +116,11 @@
       "departureTime": "19:42",
       "day": 1,
       "distance": "565.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "SZM",
@@ -129,11 +129,11 @@
       "departureTime": "20:42",
       "day": 1,
       "distance": "651.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LDH"
     },
     {
       "stationCode": "NDLS",
@@ -142,11 +142,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "655.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "MTJ",
@@ -155,11 +155,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "795.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "BTE",
@@ -168,11 +168,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "829.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
     },
     {
       "stationCode": "SWM",
@@ -448,7 +448,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Svdk Hapa Exp (12476) from SVDK to HAPA are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 34 stations.",
-  "generatedAt": "2026-08-01T12:57:09.095Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Svdk Hapa Exp (12476) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 8:39 PM, with a second (vacancy) chart around 9:25 AM. 12 of 34 stations on the SVDK to HAPA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:40:26.852Z",
+  "knownChartCount": 12
 }

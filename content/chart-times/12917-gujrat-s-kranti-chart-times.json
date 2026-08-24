@@ -12,11 +12,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ND",
@@ -25,11 +25,11 @@
       "departureTime": "16:06",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "ANND",
@@ -38,11 +38,11 @@
       "departureTime": "16:21",
       "day": 1,
       "distance": "64.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "CYI",
@@ -51,11 +51,11 @@
       "departureTime": "17:05",
       "day": 1,
       "distance": "96.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "GDA",
@@ -64,11 +64,11 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "163.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "DHD",
@@ -77,11 +77,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "237.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:20",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "RTM",
@@ -90,11 +90,11 @@
       "departureTime": "20:40",
       "day": 1,
       "distance": "350.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "KOTA",
@@ -103,11 +103,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "617.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:33",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "MTJ",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "KOTA"
     }
   ],
-  "summary": "The first reservation chart for Gujrat S Kranti (12917) is prepared at Mathura Jn (MTJ) around 1:46 PM, with a second (vacancy) chart around 11:18 PM. 2 of 10 stations on the ADI to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:39:28.530Z",
-  "knownChartCount": 2
+  "summary": "The first reservation chart for Gujrat S Kranti (12917) is prepared at Ahmedabad Jn (ADI) around 9:20 PM, with a second (vacancy) chart around 3:15 PM. 10 of 10 stations on the ADI to NZM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:49:51.445Z",
+  "knownChartCount": 10
 }

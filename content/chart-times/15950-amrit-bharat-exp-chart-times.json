@@ -12,11 +12,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTNR"
     },
     {
       "stationCode": "BBK",
@@ -25,11 +25,11 @@
       "departureTime": "19:14",
       "day": 1,
       "distance": "21.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTNR"
     },
     {
       "stationCode": "AYC",
@@ -38,11 +38,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "120.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTNR"
     },
     {
       "stationCode": "AY",
@@ -51,11 +51,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "127.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTNR"
     },
     {
       "stationCode": "MUR",
@@ -64,11 +64,11 @@
       "departureTime": "22:58",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTNR"
     },
     {
       "stationCode": "BST",
@@ -77,11 +77,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "227.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GTNR"
     },
     {
       "stationCode": "KLD",
@@ -552,7 +552,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Amrit Bharat Exp (15950) from GTNR to DBRG are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 42 stations.",
-  "generatedAt": "2026-08-22T19:38:29.142Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Amrit Bharat Exp (15950) is prepared at Gomati Nagar (GTNR) around 9:05 AM, with a second (vacancy) chart around 6:25 PM. 6 of 42 stations on the GTNR to DBRG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:57:24.701Z",
+  "knownChartCount": 6
 }

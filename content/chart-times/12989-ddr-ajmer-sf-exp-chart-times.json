@@ -25,10 +25,10 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "24.0",
-      "chartTimeLocal": "20:20",
+      "chartTimeLocal": "20:14",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "DDR"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "17:35",
       "day": 1,
       "distance": "189.0",
-      "chartTimeLocal": "20:25",
+      "chartTimeLocal": "20:28",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BL"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "18:05",
       "day": 1,
       "distance": "228.0",
-      "chartTimeLocal": "20:25",
+      "chartTimeLocal": "20:28",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BL"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "19:03",
       "day": 1,
       "distance": "257.0",
-      "chartTimeLocal": "09:08",
+      "chartTimeLocal": "09:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:48",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ST"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "19:49",
       "day": 1,
       "distance": "316.0",
-      "chartTimeLocal": "09:40",
+      "chartTimeLocal": "11:08",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "19:34",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BH"
     },
     {
@@ -90,11 +90,11 @@
       "departureTime": "21:03",
       "day": 1,
       "distance": "386.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ANND",
@@ -103,11 +103,11 @@
       "departureTime": "21:48",
       "day": 1,
       "distance": "422.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ND",
@@ -116,11 +116,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "440.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:14",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ADI",
@@ -129,11 +129,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "486.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "MSH",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "ADI"
     }
   ],
-  "summary": "The first reservation chart for Ddr Ajmer Sf Exp (12989) is prepared at Dadar (DDR) around 8:20 PM. 18 of 22 stations on the DDR to AII route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:41:55.750Z",
-  "knownChartCount": 18
+  "summary": "The first reservation chart for Ddr Ajmer Sf Exp (12989) is prepared at Dadar (DDR) around 8:20 PM. 22 of 22 stations on the DDR to AII route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:51:25.171Z",
+  "knownChartCount": 22
 }

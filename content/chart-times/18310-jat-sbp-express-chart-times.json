@@ -116,11 +116,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "207.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "JNL",
@@ -129,11 +129,11 @@
       "departureTime": "20:51",
       "day": 1,
       "distance": "226.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "BEAS",
@@ -142,11 +142,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "249.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "JUC",
@@ -155,11 +155,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "286.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "JRC",
@@ -168,11 +168,11 @@
       "departureTime": "22:06",
       "day": 1,
       "distance": "290.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "PGW",
@@ -181,11 +181,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "307.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "PHR",
@@ -194,11 +194,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "329.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "LDH",
@@ -207,11 +207,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "342.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ASR"
     },
     {
       "stationCode": "CDG",
@@ -942,7 +942,7 @@
       "chartRemoteStation": "CPU"
     }
   ],
-  "summary": "The first reservation chart for Jat Sbp Express (18310) is prepared at Jammu Tawi (JAT) around 2:40 PM, with a second (vacancy) chart around 10:25 PM. 64 of 72 stations on the JAT to SBP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:03:32.567Z",
-  "knownChartCount": 64
+  "summary": "The first reservation chart for Jat Sbp Express (18310) is prepared at Jammu Tawi (JAT) around 2:40 PM, with a second (vacancy) chart around 10:25 PM. 72 of 72 stations on the JAT to SBP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:23:36.300Z",
+  "knownChartCount": 72
 }

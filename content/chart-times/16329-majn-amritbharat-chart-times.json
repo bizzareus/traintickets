@@ -25,11 +25,11 @@
       "departureTime": "13:15",
       "day": 1,
       "distance": "72.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "VAK",
@@ -38,11 +38,11 @@
       "departureTime": "13:45",
       "day": 1,
       "distance": "113.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "QLN",
@@ -51,11 +51,11 @@
       "departureTime": "14:18",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "STKT",
@@ -64,11 +64,11 @@
       "departureTime": "14:34",
       "day": 1,
       "distance": "156.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "KPY",
@@ -77,11 +77,11 @@
       "departureTime": "14:44",
       "day": 1,
       "distance": "163.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "KYJ",
@@ -90,11 +90,11 @@
       "departureTime": "15:04",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "MVLK",
@@ -103,11 +103,11 @@
       "departureTime": "15:14",
       "day": 1,
       "distance": "185.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "CNGR",
@@ -116,11 +116,11 @@
       "departureTime": "15:27",
       "day": 1,
       "distance": "197.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "TRVL",
@@ -129,11 +129,11 @@
       "departureTime": "15:37",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "CGY",
@@ -142,11 +142,11 @@
       "departureTime": "15:46",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "KTYM",
@@ -155,11 +155,11 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:08",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "ERN",
@@ -344,7 +344,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Majn Amritbharat (16329) is prepared at Nagercoil Jn (NCJ) around 8:08 PM, with a second (vacancy) chart around 10:25 PM. 1 of 26 stations on the NCJ to MAJN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:40:42.468Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Majn Amritbharat (16329) is prepared at Nagercoil Jn (NCJ) around 8:08 PM, with a second (vacancy) chart around 10:25 PM. 12 of 26 stations on the NCJ to MAJN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:01:21.625Z",
+  "knownChartCount": 12
 }

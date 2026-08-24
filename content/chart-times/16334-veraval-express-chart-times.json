@@ -12,11 +12,11 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "QLN",
@@ -25,11 +25,11 @@
       "departureTime": "16:45",
       "day": 1,
       "distance": "65.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "MVLK",
@@ -38,11 +38,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "CNGR",
@@ -51,11 +51,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "126.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "TRVL",
@@ -64,11 +64,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "135.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "KTYM",
@@ -77,11 +77,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "161.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "ERN",
@@ -90,11 +90,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "223.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "AWY",
@@ -103,11 +103,11 @@
       "departureTime": "20:47",
       "day": 1,
       "distance": "240.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "TCR",
@@ -116,11 +116,11 @@
       "departureTime": "21:48",
       "day": 1,
       "distance": "295.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "SRR",
@@ -129,11 +129,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "327.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "PTB",
@@ -142,11 +142,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "339.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "KTU",
@@ -155,11 +155,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "357.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "TIR",
@@ -168,11 +168,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "372.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "PGI",
@@ -181,11 +181,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "388.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "05:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TVC"
     },
     {
       "stationCode": "CLT",
@@ -747,7 +747,7 @@
       "chartRemoteStation": "BRC"
     }
   ],
-  "summary": "The first reservation chart for Veraval Express (16334) is prepared at Kozhikkode (CLT) around 5:47 AM, with a second (vacancy) chart around 3:30 PM. 43 of 57 stations on the TVC to VRL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:41:00.346Z",
-  "knownChartCount": 43
+  "summary": "The first reservation chart for Veraval Express (16334) is prepared at Trivandrum Cntl (TVC) around 5:50 AM, with a second (vacancy) chart around 3:30 PM. 57 of 57 stations on the TVC to VRL route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:01:37.432Z",
+  "knownChartCount": 57
 }

@@ -145,7 +145,7 @@ Since late 2018, Indian Railways has equipped TTEs with **Hand-Held Terminals (H
 
 ## How LastBerth Takes the Stress Out of Quota Planning
 
-Running out of quota seats or getting stuck on a waitlist is super annoying. [LastBerth](file:///) makes your life easier by giving you some neat tools:
+Running out of quota seats or getting stuck on a waitlist is super annoying. [LastBerth](/) makes your life easier by giving you some neat tools:
 
 1. **Spotting empty berths post-chart:** As soon as the final chart goes up (usually 8 hours before the train chugs off), LastBerth scans for any empty seats you can request from the TTE.
 2. **Finding split booking routes:** If direct berths are sold out, the tool checks if you can split your journey. You might book from station A to B, and B to C on the same train to snag a confirmed lower berth.

@@ -12,11 +12,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "AWY",
@@ -25,11 +25,11 @@
       "departureTime": "19:32",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "TCR",
@@ -38,11 +38,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "75.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "PGT",
@@ -51,11 +51,11 @@
       "departureTime": "21:40",
       "day": 1,
       "distance": "152.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "CBE",
@@ -64,11 +64,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "206.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "TUP",
@@ -77,11 +77,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "256.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ERS"
     },
     {
       "stationCode": "ED",
@@ -370,7 +370,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Millennium Exp (12645) from ERS to NZM are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 28 stations.",
-  "generatedAt": "2026-08-03T11:50:14.288Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Millennium Exp (12645) is prepared at Ernakulam Jn (ERS) around 9:20 AM, with a second (vacancy) chart around 6:55 PM. 6 of 28 stations on the ERS to NZM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:46:29.205Z",
+  "knownChartCount": 6
 }

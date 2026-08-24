@@ -12,11 +12,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "MLT",
@@ -25,11 +25,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "8.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "KUR",
@@ -149,7 +149,7 @@
       "chartRemoteStation": "PURI"
     }
   ],
-  "summary": "The first reservation chart for Puri Shm Express (18040) is prepared at Khurda Road JN (KUR) around 1:14 PM, with a second (vacancy) chart around 11:05 PM. 9 of 11 stations on the PURI to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:01:04.862Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Puri Shm Express (18040) is prepared at Puri (PURI) around 1:16 PM, with a second (vacancy) chart around 11:05 PM. 11 of 11 stations on the PURI to SHM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:19:36.069Z",
+  "knownChartCount": 11
 }

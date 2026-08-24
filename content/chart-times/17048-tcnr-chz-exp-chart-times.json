@@ -12,11 +12,11 @@
       "departureTime": "16:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "RU",
@@ -25,11 +25,11 @@
       "departureTime": "17:08",
       "day": 1,
       "distance": "3.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "KHT",
@@ -38,11 +38,11 @@
       "departureTime": "17:32",
       "day": 1,
       "distance": "27.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "GDR",
@@ -51,11 +51,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "87.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "NLR",
@@ -64,11 +64,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "125.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "OGL",
@@ -77,11 +77,11 @@
       "departureTime": "20:40",
       "day": 1,
       "distance": "241.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "CLX",
@@ -90,11 +90,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "290.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "TEL",
@@ -103,11 +103,11 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "348.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "BZA",
@@ -116,11 +116,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "379.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TCNR"
     },
     {
       "stationCode": "KMT",
@@ -201,7 +201,7 @@
       "chartRemoteStation": "TCNR"
     }
   ],
-  "summary": "The first reservation chart for Tcnr Chz Exp (17048) is prepared at Khammam (KMT) around 7:21 AM, with a second (vacancy) chart around 10:55 PM. 6 of 15 stations on the TCNR to CHZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:52:39.826Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Tcnr Chz Exp (17048) is prepared at Tiruchanur (TCNR) around 7:21 AM, with a second (vacancy) chart around 10:55 PM. 15 of 15 stations on the TCNR to CHZ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:10:48.124Z",
+  "knownChartCount": 15
 }

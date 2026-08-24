@@ -831,11 +831,11 @@
       "departureTime": "00:05",
       "day": 4,
       "distance": "2519.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "CLX",
@@ -844,11 +844,11 @@
       "departureTime": "00:25",
       "day": 4,
       "distance": "2534.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "OGL",
@@ -857,11 +857,11 @@
       "departureTime": "01:30",
       "day": 4,
       "distance": "2583.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "SKM",
@@ -870,11 +870,11 @@
       "departureTime": "01:55",
       "day": 4,
       "distance": "2611.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "KVZ",
@@ -883,11 +883,11 @@
       "departureTime": "02:30",
       "day": 4,
       "distance": "2649.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "BTTR",
@@ -896,11 +896,11 @@
       "departureTime": "02:45",
       "day": 4,
       "distance": "2665.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "NLR",
@@ -909,11 +909,11 @@
       "departureTime": "03:15",
       "day": 4,
       "distance": "2699.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "GDR",
@@ -922,11 +922,11 @@
       "departureTime": "04:05",
       "day": 4,
       "distance": "2738.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "NYP",
@@ -935,11 +935,11 @@
       "departureTime": "04:30",
       "day": 4,
       "distance": "2765.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "SPE",
@@ -948,11 +948,11 @@
       "departureTime": "04:50",
       "day": 4,
       "distance": "2792.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "MAS",
@@ -961,14 +961,14 @@
       "departureTime": "",
       "day": 4,
       "distance": "2875.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:08",
+      "chartOneDayOffset": 2,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Andaman Express (16032) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 1:12 PM, with a second (vacancy) chart around 10:15 PM. 63 of 74 stations on the SVDK to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:39:02.871Z",
-  "knownChartCount": 63
+  "summary": "The first reservation chart for Andaman Express (16032) is prepared at Shri Mata Vaishno Devi Katra (SVDK) around 1:12 PM, with a second (vacancy) chart around 10:15 PM. 74 of 74 stations on the SVDK to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:58:48.867Z",
+  "knownChartCount": 74
 }

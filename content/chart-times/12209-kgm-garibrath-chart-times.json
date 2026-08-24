@@ -25,11 +25,11 @@
       "departureTime": "08:00",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "SPN",
@@ -38,11 +38,11 @@
       "departureTime": "10:25",
       "day": 1,
       "distance": "239.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "BE",
@@ -51,11 +51,11 @@
       "departureTime": "11:27",
       "day": 1,
       "distance": "309.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "RMU",
@@ -64,11 +64,11 @@
       "departureTime": "13:10",
       "day": 1,
       "distance": "373.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "BLQR",
@@ -77,11 +77,11 @@
       "departureTime": "13:32",
       "day": 1,
       "distance": "399.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "RUPC",
@@ -90,11 +90,11 @@
       "departureTime": "13:48",
       "day": 1,
       "distance": "418.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "LKU",
@@ -103,11 +103,11 @@
       "departureTime": "14:35",
       "day": 1,
       "distance": "439.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "HDW",
@@ -116,11 +116,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "455.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "KGM",
@@ -129,14 +129,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "462.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:57",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "CNB"
     }
   ],
-  "summary": "The first reservation chart for Kgm Garibrath (12209) is prepared at Kanpur Central (CNB) around 8:13 PM, with a second (vacancy) chart around 11:12 AM. 1 of 10 stations on the CNB to KGM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:28:39.613Z",
-  "knownChartCount": 1
+  "summary": "The first reservation chart for Kgm Garibrath (12209) is prepared at Kanpur Central (CNB) around 8:13 PM, with a second (vacancy) chart around 11:12 AM. 10 of 10 stations on the CNB to KGM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:34:03.945Z",
+  "knownChartCount": 10
 }

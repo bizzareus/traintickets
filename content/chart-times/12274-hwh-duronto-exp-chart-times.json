@@ -25,11 +25,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "441.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "DDU",
@@ -38,11 +38,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "788.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "PNBE",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "JSME"
     }
   ],
-  "summary": "The first reservation chart for Hwh Duronto Exp (12274) is prepared at New Delhi (NDLS) around 10:55 PM. 5 of 7 stations on the NDLS to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:29:20.845Z",
-  "knownChartCount": 5
+  "summary": "The first reservation chart for Hwh Duronto Exp (12274) is prepared at New Delhi (NDLS) around 10:55 PM. 7 of 7 stations on the NDLS to HWH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:34:37.293Z",
+  "knownChartCount": 7
 }

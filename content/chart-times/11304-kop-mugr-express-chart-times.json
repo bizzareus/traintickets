@@ -12,11 +12,11 @@
       "departureTime": "12:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SUR"
     },
     {
       "stationCode": "SUR",
@@ -25,14 +25,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "419.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:17",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SUR"
     }
   ],
-  "summary": "Reservation chart preparation times for Kop Mugr Express (11304) from LTT to SUR are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 2 stations.",
-  "generatedAt": "2026-08-22T19:35:34.549Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Kop Mugr Express (11304) is prepared at Lokmanyatilak T (LTT) around 8:17 PM. 2 of 2 stations on the LTT to SUR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:29:47.480Z",
+  "knownChartCount": 2
 }

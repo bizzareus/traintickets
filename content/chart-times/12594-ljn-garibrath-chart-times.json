@@ -12,11 +12,11 @@
       "departureTime": "23:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "BHS",
@@ -97,7 +97,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ljn Garibrath (12594) from BPL to LJN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-08-03T07:43:47.192Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ljn Garibrath (12594) is prepared at Bhopal  Jn (BPL) around 1:32 PM, with a second (vacancy) chart around 11:35 PM. 1 of 7 stations on the BPL to LJN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:45:48.322Z",
+  "knownChartCount": 1
 }

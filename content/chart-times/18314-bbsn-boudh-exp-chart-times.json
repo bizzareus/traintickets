@@ -12,11 +12,11 @@
       "departureTime": "23:00",
       "day": null,
       "distance": "0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBSN"
     },
     {
       "stationCode": "NQR",
@@ -25,11 +25,11 @@
       "departureTime": "23:25",
       "day": null,
       "distance": "12",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BBSN"
     },
     {
       "stationCode": "DNKL",
@@ -253,7 +253,7 @@
       "chartRemoteStation": "BBSN"
     }
   ],
-  "summary": "The first reservation chart for BBSN BOUDH EXP (18314) is prepared at DHENKANAL (DNKL) around 12:56 PM, with a second (vacancy) chart around 10:45 PM. 17 of 19 stations on the BBSN to BOUH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:03:43.815Z",
-  "knownChartCount": 17
+  "summary": "The first reservation chart for BBSN BOUDH EXP (18314) is prepared at BHUBANESWAR NEW (BBSN) around 12:49 PM, with a second (vacancy) chart around 10:45 PM. 19 of 19 stations on the BBSN to BOUH route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:23:46.883Z",
+  "knownChartCount": 19
 }

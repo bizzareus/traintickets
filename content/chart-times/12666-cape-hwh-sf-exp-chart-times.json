@@ -90,10 +90,10 @@
       "departureTime": "10:50",
       "day": 1,
       "distance": "246.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MDU"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "13:30",
       "day": 1,
       "distance": "406.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MDU"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "418.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MDU"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "14:31",
       "day": 1,
       "distance": "476.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MDU"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "15:06",
       "day": 1,
       "distance": "529.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MDU"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "16:15",
       "day": 1,
       "distance": "584.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MDU"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "651.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MDU"
     },
     {
@@ -181,10 +181,10 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "687.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MDU"
     },
     {
@@ -194,10 +194,10 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "717.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "20:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MDU"
     },
     {
@@ -207,11 +207,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "742.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "NLR",
@@ -220,11 +220,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "922.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "OGL",
@@ -233,11 +233,11 @@
       "departureTime": "23:55",
       "day": 1,
       "distance": "1038.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "BZA",
@@ -396,7 +396,7 @@
       "chartRemoteStation": "BBS"
     }
   ],
-  "summary": "The first reservation chart for Cape Hwh Sf Exp (12666) is prepared at Kanyakumari (CAPE) around 8:09 PM, with a second (vacancy) chart around 5:35 AM. 16 of 30 stations on the CAPE to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:35:10.421Z",
-  "knownChartCount": 16
+  "summary": "The first reservation chart for Cape Hwh Sf Exp (12666) is prepared at Kanyakumari (CAPE) around 8:09 PM, with a second (vacancy) chart around 5:35 AM. 19 of 30 stations on the CAPE to HWH route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:47:01.645Z",
+  "knownChartCount": 19
 }

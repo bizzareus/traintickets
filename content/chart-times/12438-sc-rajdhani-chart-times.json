@@ -12,11 +12,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "VGLJ",
@@ -25,11 +25,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "BPL",
@@ -38,11 +38,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "694.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NGP",
@@ -97,7 +97,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Sc Rajdhani (12438) from NZM to SC are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-08-01T05:50:43.902Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sc Rajdhani (12438) is prepared at H Nizamuddin (NZM) around 7:35 AM, with a second (vacancy) chart around 3:20 PM. 3 of 7 stations on the NZM to SC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:39:30.087Z",
+  "knownChartCount": 3
 }

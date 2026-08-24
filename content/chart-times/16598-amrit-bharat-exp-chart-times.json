@@ -25,11 +25,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "35.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "APDJ"
     },
     {
       "stationCode": "DLO",
@@ -38,11 +38,11 @@
       "departureTime": "23:48",
       "day": 1,
       "distance": "60.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "APDJ"
     },
     {
       "stationCode": "BNV",
@@ -604,7 +604,7 @@
       "chartRemoteStation": "MLDT"
     }
   ],
-  "summary": "The first reservation chart for Amrit Bharat Exp (16598) is prepared at Alipur Duar Jn (APDJ) around 7:48 PM, with a second (vacancy) chart around 7:20 AM. 44 of 46 stations on the APDJ to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:47:25.484Z",
-  "knownChartCount": 44
+  "summary": "The first reservation chart for Amrit Bharat Exp (16598) is prepared at Alipur Duar Jn (APDJ) around 7:48 PM, with a second (vacancy) chart around 7:20 AM. 46 of 46 stations on the APDJ to SMVB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:05:24.513Z",
+  "knownChartCount": 46
 }

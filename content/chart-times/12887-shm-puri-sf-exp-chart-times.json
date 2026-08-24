@@ -12,11 +12,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "SRC",
@@ -25,11 +25,11 @@
       "departureTime": "20:52",
       "day": 1,
       "distance": "6.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "KGP",
@@ -38,11 +38,11 @@
       "departureTime": "22:27",
       "day": 1,
       "distance": "113.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "BLS",
@@ -51,11 +51,11 @@
       "departureTime": "23:57",
       "day": 1,
       "distance": "232.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:23",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SHM"
     },
     {
       "stationCode": "BHC",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "SHM"
     }
   ],
-  "summary": "The first reservation chart for Shm Puri Sf Exp (12887) is prepared at Bhadrak (BHC) around 10:06 AM, with a second (vacancy) chart around 11:42 PM. 6 of 10 stations on the SHM to PURI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:38:43.622Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Shm Puri Sf Exp (12887) is prepared at Shalimar (SHM) around 10:23 AM, with a second (vacancy) chart around 11:42 PM. 10 of 10 stations on the SHM to PURI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T21:49:19.248Z",
+  "knownChartCount": 10
 }

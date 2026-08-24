@@ -12,11 +12,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "CHZ",
@@ -25,11 +25,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "13.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "NLDA",
@@ -38,11 +38,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "110.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SC"
     },
     {
       "stationCode": "GNT",
@@ -214,7 +214,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Sc Akp Exp (17043) from SC to AKP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 16 stations.",
-  "generatedAt": "2026-08-22T19:52:28.141Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Sc Akp Exp (17043) is prepared at Secunderabad Jn (SC) around 12:54 PM, with a second (vacancy) chart around 10:40 PM. 3 of 16 stations on the SC to AKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:10:37.069Z",
+  "knownChartCount": 3
 }

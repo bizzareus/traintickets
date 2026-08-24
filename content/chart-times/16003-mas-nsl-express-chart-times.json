@@ -12,11 +12,11 @@
       "departureTime": "09:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:33",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "MAS"
+      "chartTimeLocal": "14:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "AJJ",
@@ -27,8 +27,8 @@
       "distance": "69.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "83.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "115.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "141.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "216.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "266.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "305.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "375.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "423.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "478.0",
       "chartTimeLocal": "20:33",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "531.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "GWD",
@@ -168,11 +168,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "587.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "MBNR",
@@ -181,11 +181,11 @@
       "departureTime": "20:48",
       "day": 1,
       "distance": "662.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KRNT"
     },
     {
       "stationCode": "KCG",
@@ -194,11 +194,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "767.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "MJF",
@@ -207,11 +207,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "776.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:16",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "KMC",
@@ -344,7 +344,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mas Nsl Express (16003) is prepared at Mgr Chennai Ctl (MAS) around 8:33 PM. 11 of 26 stations on the MAS to NSL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:38:52.296Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Mas Nsl Express (16003) is prepared at Mgr Chennai Ctl (MAS) around 2:16 PM, with a second (vacancy) chart around 10:45 PM. 16 of 26 stations on the MAS to NSL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:58:37.881Z",
+  "knownChartCount": 16
 }

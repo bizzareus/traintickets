@@ -69,7 +69,7 @@ Follow these steps if your refund is missing:
 
 A Ticket Deposit Receipt (TDR) is filed when you cannot travel due to railway issues, such as a train delay of over 3 hours. Unlike standard cancellations, TDR refunds are not automated. They require manual verification by the Chief Commercial Manager (Refunds) of the concerned railway zone to prevent fraud.
 
-While waiting for your TDR to clear, you can use [LastBerth](file:///) to check your next trip's [PNR Status](file:///) and seat confirmation probability. If your direct ticket is waitlisted, you can leverage LastBerth's **Finding Smart Seats** tool to break the seat bookings across multiple segments where a single seat is unavailable. Additionally, you can use the **Seat Status Coach Journey Lookup** to inspect open berths on running trains.
+While waiting for your TDR to clear, you can use [LastBerth](/) to check your next trip's [PNR Status](/) and seat confirmation probability. If your direct ticket is waitlisted, you can leverage LastBerth's **Finding Smart Seats** tool to break the seat bookings across multiple segments where a single seat is unavailable. Additionally, you can use the **Seat Status Coach Journey Lookup** to inspect open berths on running trains.
 
 ---
 

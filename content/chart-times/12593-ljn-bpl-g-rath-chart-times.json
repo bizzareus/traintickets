@@ -12,11 +12,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:13",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "CNB",
@@ -97,7 +97,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ljn Bpl G Rath (12593) from LJN to BPL are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 7 stations.",
-  "generatedAt": "2026-08-03T07:18:56.389Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ljn Bpl G Rath (12593) is prepared at Lucknow Ne (LJN) around 12:45 PM, with a second (vacancy) chart around 10:13 PM. 1 of 7 stations on the LJN to BPL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:45:46.010Z",
+  "knownChartCount": 1
 }

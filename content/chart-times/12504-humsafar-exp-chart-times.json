@@ -116,11 +116,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "561.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "KYQ",
@@ -129,11 +129,11 @@
       "departureTime": "19:02",
       "day": 1,
       "distance": "567.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GHY"
     },
     {
       "stationCode": "NBQ",
@@ -142,11 +142,11 @@
       "departureTime": "21:55",
       "day": 1,
       "distance": "718.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NBQ"
     },
     {
       "stationCode": "NJP",
@@ -422,7 +422,7 @@
       "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Humsafar Exp (12504) is prepared at AGARTALA (AGTL) around 8:13 PM, with a second (vacancy) chart around 5:01 AM. 15 of 32 stations on the AGTL to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-01T01:16:58.682Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Humsafar Exp (12504) is prepared at AGARTALA (AGTL) around 8:13 PM, with a second (vacancy) chart around 5:01 AM. 18 of 32 stations on the AGTL to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:41:11.464Z",
+  "knownChartCount": 18
 }

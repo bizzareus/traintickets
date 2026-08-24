@@ -25,10 +25,10 @@
       "departureTime": "10:19",
       "day": 1,
       "distance": "53.0",
-      "chartTimeLocal": "21:40",
+      "chartTimeLocal": "20:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "GIMB"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "11:47",
       "day": 1,
       "distance": "170.0",
-      "chartTimeLocal": "21:40",
+      "chartTimeLocal": "20:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "GIMB"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "12:57",
       "day": 1,
       "distance": "235.0",
-      "chartTimeLocal": "21:40",
+      "chartTimeLocal": "20:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "GIMB"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "14:20",
       "day": 1,
       "distance": "300.0",
-      "chartTimeLocal": "21:45",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "15:21",
       "day": 1,
       "distance": "346.0",
-      "chartTimeLocal": "21:45",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "364.0",
-      "chartTimeLocal": "21:45",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "16:27",
       "day": 1,
       "distance": "396.0",
-      "chartTimeLocal": "21:45",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "17:14",
       "day": 1,
       "distance": "462.0",
-      "chartTimeLocal": "21:45",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "18:02",
       "day": 1,
       "distance": "537.0",
-      "chartTimeLocal": "21:45",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "18:28",
       "day": 1,
       "distance": "570.0",
-      "chartTimeLocal": "21:45",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "19:02",
       "day": 1,
       "distance": "605.0",
-      "chartTimeLocal": "21:45",
+      "chartTimeLocal": "21:02",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ADI"
     },
     {
@@ -168,11 +168,11 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "650.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "NAD",
@@ -181,11 +181,11 @@
       "departureTime": "20:48",
       "day": 1,
       "distance": "692.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "VMA",
@@ -194,11 +194,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "731.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "SGZ",
@@ -207,11 +207,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "783.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "RMA",
@@ -220,11 +220,11 @@
       "departureTime": "22:25",
       "day": 1,
       "distance": "844.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "KOTA",
@@ -233,11 +233,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "917.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:18",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KOTA"
     },
     {
       "stationCode": "SWM",
@@ -409,7 +409,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Sarvodaya Exp (12473) is prepared at Gandhidham Bg (GIMB) around 9:45 PM. 12 of 31 stations on the GIMB to SVDK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-05T22:33:18.600Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Sarvodaya Exp (12473) is prepared at Gandhidham Bg (GIMB) around 9:45 PM. 18 of 31 stations on the GIMB to SVDK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T21:40:13.745Z",
+  "knownChartCount": 18
 }

@@ -25,11 +25,11 @@
       "departureTime": "17:15",
       "day": 1,
       "distance": "6.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "HUP",
@@ -38,11 +38,11 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "101.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "DMM",
@@ -51,11 +51,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "180.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "ATP",
@@ -64,11 +64,11 @@
       "departureTime": "21:00",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "GTL",
@@ -77,11 +77,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "282.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBC"
     },
     {
       "stationCode": "BAY",
@@ -435,7 +435,7 @@
       "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "The first reservation chart for Jodhpur Exp (16534) is prepared at KSR Bengaluru (SBC) around 8:55 AM, with a second (vacancy) chart around 6:30 PM. 14 of 33 stations on the SBC to JU route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T19:44:39.321Z",
-  "knownChartCount": 14
+  "summary": "The first reservation chart for Jodhpur Exp (16534) is prepared at KSR Bengaluru (SBC) around 8:55 AM, with a second (vacancy) chart around 6:30 PM. 19 of 33 stations on the SBC to JU route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:04:05.820Z",
+  "knownChartCount": 19
 }
