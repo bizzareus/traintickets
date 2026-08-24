@@ -1,8 +1,8 @@
 ---
-title: "General Quota (GN) in IRCTC: Meaning, Rules & Seat Limits"
-description: "What does General Quota (GN) mean in IRCTC train booking? Discover GN seat allocation rules across 1A, 2A, 3A, SL, and how GN confirmation compares to Tatkal."
+title: "General Quota (GN) in IRCTC: Meaning, Rules & Limits"
+description: "Discover General Quota (GN) rules in IRCTC train booking, seat limits across 1A, 2A, 3A, SL classes, GNWL confirmation chances, and Tatkal comparison."
 date: "2026-08-03"
-updated: "2026-08-04"
+updated: "2026-08-24"
 tags:
   - general quota
   - irctc
@@ -78,7 +78,7 @@ Here is how General Quota compares to other IRCTC booking quotas:
 
 ---
 
-## Frequently Asked Questions (FAQ)
+## Common Booking Questions (FAQ)
 
 ### Can I change my General Quota ticket to Tatkal or Senior Citizen quota after booking?
 No. Once a ticket is issued under General Quota (GN), the quota cannot be changed. You would need to cancel your GN ticket (subject to standard cancellation charges) and book a fresh ticket under the desired quota.
@@ -88,3 +88,24 @@ Concessions for Divyangjan (specially-abled) passengers, accredited journalists,
 
 ### What happens if my General Quota ticket remains GNWL after chart preparation?
 If booked online via IRCTC, a fully waitlisted GNWL ticket is automatically cancelled and the refund is credited back to your bank account within 3–5 working days. Counter-booked PRS tickets must be manually surrendered at a station ticket window for refund.
+
+### How many seats are reserved under General Quota per train?
+Approximately 70% to 80% of all reserved coach berths are allocated to General Quota (GN), making it the single largest seat allocation pool on Indian Railways.
+
+### Is General Quota cheaper than Tatkal or Premium Tatkal?
+Yes, General Quota tickets are charged at standard base distance fares with no Tatkal surcharges or dynamic pricing markups.
+
+### Can I book General Quota tickets at PRS station counters?
+Yes, General Quota tickets can be booked both online on IRCTC and in person at computerized PRS counter booking windows.
+
+### What is the Advance Reservation Period for General Quota?
+The Advance Reservation Period (ARP) for General Quota bookings is 60 days (excluding the date of journey), opening daily at 8:00 AM IST.
+
+### Can a waitlisted General Quota passenger get RAC before chart preparation?
+Yes, as confirmed general passengers cancel their tickets, GNWL passengers systematically advance to RAC status and then to full Confirmed berths.
+
+---
+
+## Bottom line
+
+General Quota remains the most accessible and reliable reservation category on Indian Railways. Secure your berths during the 60-day window, and track confirmation odds on **[Smart Seats](/)** or check coach layouts on **[Coach Journey Lookup](/seat-status)**.

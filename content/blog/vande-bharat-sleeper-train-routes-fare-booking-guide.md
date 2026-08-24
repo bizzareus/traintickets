@@ -1,8 +1,8 @@
 ---
-title: "Vande Bharat Sleeper Routes, Fares & Booking Guide (2026)"
+title: "Vande Bharat Sleeper Train: Routes, Fares & Booking"
 description: "Complete guide to Vande Bharat Sleeper trains: 1AC, 2AC, 3AC fares, 160 km/h routes like Bengaluru-Mumbai, food opt-out refund & zero-WL rules."
 date: "2026-07-31"
-updated: "2026-08-13"
+updated: "2026-08-24"
 tags:
   - train booking
   - irctc
@@ -14,6 +14,12 @@ tags:
 > **Planning an overnight Vande Bharat Sleeper journey?** Check live seat availability and PNR status on [Smart Seats](/), view 1AC/2AC/3AC coach layouts on [Coach Journey Lookup](/seat-status), and track vacant berths with [Chart Vacancy](/chart-vacancy).
 
 The Vande Bharat Sleeper is Indian Railways' flagship overnight high-speed train service. Designed to replace legacy Rajdhani Express rakes on key trunk routes, Vande Bharat Sleeper trains operate at speeds up to 160 km/h with premium aerodynamic design, automated plug doors, modular toilets, and superior passenger comfort.
+
+---
+
+## TL;DR
+
+Vande Bharat Sleeper trains offer 160 kmph semi-high-speed overnight luxury travel featuring 1AC, 2AC, and 3AC air-conditioned sleeper coaches. Built with crash-resistant stainless steel car bodies, sensor-based doors, and premium passenger amenities, tickets are bookable via IRCTC under the standard 60-day Advance Reservation Period.
 
 ---
 

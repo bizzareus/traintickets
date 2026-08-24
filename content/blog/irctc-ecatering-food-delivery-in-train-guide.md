@@ -1,8 +1,8 @@
 ---
-title: "IRCTC eCatering Food Delivery in Train: 1323 & Rules 2026"
-description: "Order fresh food on train via IRCTC eCatering Food on Track app. Check delivery cut-off timings, station halts, regional thali options, and hygiene complaint steps."
+title: "IRCTC eCatering Food Delivery in Train: 1323 & Rules"
+description: "Order food in train online via IRCTC eCatering Food on Track app or 1323. Learn seat delivery steps, partner restaurants, cash on delivery, and refund rules."
 date: "2026-06-20"
-updated: "2026-08-03"
+updated: "2026-08-24"
 tags:
   - train booking
   - irctc
@@ -126,6 +126,12 @@ IRCTC eCatering requires food orders to be placed at least 1 to 2 hours before t
 - **Order Deadline:** 1 to 2 hours prior to scheduled train station arrival.
 - **Station Halt Requirement:** Delivery is available at major stations with halts of 5 minutes or longer.
 - **Operating Hours:** Partner kitchens operate between 6:00 AM and 10:00 PM IST.
+
+---
+
+## TL;DR
+
+You can order hygienic restaurant meals delivered directly to your train seat using IRCTC eCatering (Food on Track app, ecatering.irctc.co.in, or dialing 1323). Enter your 10-digit PNR, choose from FSSAI-approved partner restaurants at upcoming stations, pay online or via Cash on Delivery, and receive hot food at your berth.
 
 ---
 

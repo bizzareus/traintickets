@@ -1,8 +1,8 @@
 ---
 title: "Which ID Proofs Are Valid for Train Travel? (2026 Rules)"
-description: "Is your Aadhaar or driving licence valid to board a train? See every accepted ID proof — and whether a digital ID on DigiLocker or mParivahan works with the TTE."
+description: "Discover all official photo ID proofs accepted by Indian Railways and TTEs for train travel. Learn rules for DigiLocker, m-Aadhaar, and student IDs."
 date: "2026-06-27"
-updated: "2026-08-03"
+updated: "2026-08-24"
 tags:
   - train travel
   - irctc rules
@@ -102,3 +102,20 @@ You will be treated as traveling without a ticket, meaning you must pay the actu
 
 ### Do all passengers on a group ticket need to show ID?
 No, only one passenger whose name appears on the ticket needs to produce a valid ID proof during verification.
+
+### Is m-Aadhaar accepted as valid ID proof by the TTE?
+Yes, digital m-Aadhaar displayed on the official UIDAI mobile app is fully recognized as valid identity proof by Indian Railways.
+
+### Can college student ID cards be used for general train travel?
+No, student ID cards are accepted only for student concession tickets. Standard travel requires government-issued photo identity proof like Aadhaar, PAN, Voter ID, or Passport.
+
+### What happens if only one passenger has ID in a family ticket?
+Under Indian Railways commercial rules, at least one passenger listed on a multi-passenger e-ticket must carry an original valid photo ID to validate travel for the entire group.
+
+---
+
+## Bottom line
+
+Always carry at least one physical government-issued photo ID or ensure your digital documents are accessible within official apps like DigiLocker or m-Aadhaar before boarding your train.
+
+To verify your coach layout and seat arrangements, check **[Coach Journey Lookup](/seat-status)** or monitor PNR status on **[Smart Seats](/)**.

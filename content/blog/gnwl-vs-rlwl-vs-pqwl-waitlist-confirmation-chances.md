@@ -2,7 +2,7 @@
 title: "GNWL vs RLWL vs PQWL: Which Waitlist Confirms Fastest?"
 description: "Compare GNWL, RLWL, PQWL & TQWL confirmation chances on IRCTC. Learn why waitlist pool type matters more than position and how to get confirmed berths."
 date: "2026-05-29"
-updated: "2026-08-11"
+updated: "2026-08-24"
 tags:
   - waiting list
   - gnwl
@@ -22,6 +22,12 @@ tags:
 When passengers receive a waitlisted ticket, most look only at the position number. However, `GNWL/7` behaves completely differently from `PQWL/7`.
 
 Each waitlist code identifies which quota pool your ticket belongs to. General quota pools at major originating stations process hundreds of daily cancellations and chart-time seat adjustments. Intermediate pooled quotas, by contrast, rely on rare cancellations within specific station pairs. Understanding these pool dynamics is essential for planning backup travel.
+
+---
+
+## TL;DR
+
+GNWL (General Waiting List) has the highest confirmation probability because it draws from the primary seat pool and receives all cancellations and unallocated quotas. RLWL (Remote Location) clears moderately for major intermediate towns, while PQWL (Pooled Quota) has the lowest confirmation odds due to small fixed quotas.
 
 ---
 
