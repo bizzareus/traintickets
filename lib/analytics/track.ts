@@ -40,6 +40,7 @@ export function trackAlertRequested(params: {
     | "gap_leg_modal"
     | "search_entire_journey"
     | "search_train_card_right"
+    | "search_panel"
     | "live_scraper_cockpit"
     | "v1_page";
   trainNumber: string;

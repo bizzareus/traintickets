@@ -112,6 +112,7 @@ export type AnalyticsEvent =
           | "gap_leg_modal"
           | "search_entire_journey"
           | "search_train_card_right"
+          | "search_panel"
           | "live_scraper_cockpit"
           | "v1_page";
         source_page?: string;
@@ -262,7 +263,7 @@ export type AnalyticsEvent =
   | {
       name: "chart_alert_opened";
       properties: {
-        source: "page" | "row" | "search_train_card_right";
+        source: "page" | "row" | "search_train_card_right" | "search_panel";
         train_number: string;
         station_code?: string;
         from_code?: string;

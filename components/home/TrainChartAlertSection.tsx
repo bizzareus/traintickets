@@ -61,7 +61,7 @@ export function TrainChartAlertSection({
     trackAnalyticsEvent({
       name: "chart_alert_opened",
       properties: {
-        source: "search_train_card_right",
+        source: "search_panel",
         train_number: trainNumber,
         from_code: fromCode,
         to_code: toCode,
@@ -105,7 +105,7 @@ export function TrainChartAlertSection({
       setSuccess(true);
       trackAlertRequested({
         success: true,
-        source: "search_train_card_right",
+        source: "search_panel",
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,
         fromCode: fromCode.trim().toUpperCase(),
@@ -127,7 +127,7 @@ export function TrainChartAlertSection({
       setError(errMsg);
       trackAlertRequested({
         success: false,
-        source: "search_train_card_right",
+        source: "search_panel",
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,
         fromCode: fromCode.trim().toUpperCase(),
