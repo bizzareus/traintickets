@@ -13,6 +13,8 @@ function toE164(phone: string): string {
   return normalizeE164Mobile(phone);
 }
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 @Injectable()
 export class WasenderProvider implements WhatsAppProvider {
   readonly providerName = 'wasender';
@@ -31,26 +33,55 @@ export class WasenderProvider implements WhatsAppProvider {
     }
 
     const to = toE164(payload.mobile);
-    try {
-      await axios.post(
-        `${WASENDER_BASE}/api/send-message`,
-        {
-          to: to.startsWith('+') ? to : `+${to}`,
-          text: payload.text,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${this.wasenderKey}`,
-            'Content-Type': 'application/json',
+    const maxAttempts = 3;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        await axios.post(
+          `${WASENDER_BASE}/api/send-message`,
+          {
+            to: to.startsWith('+') ? to : `+${to}`,
+            text: payload.text,
           },
-          timeout: 15_000,
-        },
-      );
-      this.logger.log(`WASender message sent successfully to ${to}`);
-      return true;
-    } catch (err) {
-      this.logger.error('WASender WhatsApp send failed', err);
-      return false;
+          {
+            headers: {
+              Authorization: `Bearer ${this.wasenderKey}`,
+              'Content-Type': 'application/json',
+            },
+            timeout: 15_000,
+          },
+        );
+        this.logger.log(`WASender message sent successfully to ${to}`);
+        return true;
+      } catch (err: unknown) {
+        const status = axios.isAxiosError(err)
+          ? err.response?.status
+          : undefined;
+        const errorMsg = axios.isAxiosError(err)
+          ? `${err.message}${err.response?.data ? ` - ${JSON.stringify(err.response.data)}` : ''}`
+          : err instanceof Error
+            ? err.message
+            : String(err);
+
+        const isRetryable =
+          status === 429 || (status !== undefined && status >= 500) || !status;
+
+        if (isRetryable && attempt < maxAttempts) {
+          const delayMs = attempt * 1500;
+          this.logger.warn(
+            `WASender WhatsApp send attempt ${attempt} failed for ${to} (${errorMsg}), retrying in ${delayMs}ms...`,
+          );
+          await sleep(delayMs);
+          continue;
+        }
+
+        this.logger.error(
+          `WASender WhatsApp send failed for ${to}: ${errorMsg}`,
+        );
+        return false;
+      }
     }
+
+    return false;
   }
 }
