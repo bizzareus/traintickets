@@ -36,6 +36,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
     null,
   );
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
+  const [pnrForCta, setPnrForCta] = useState<string>("");
   const [isLiveChartPrepared, setIsLiveChartPrepared] = useState(false);
   const [isAdminUser, setIsAdminUser] = useState(false);
   const [chartAlertOpen, setChartAlertOpen] = useState(false);
@@ -129,11 +130,13 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
     const trimmed = pnr.trim();
     if (!trimmed || trimmed.length !== 10 || !/^\d+$/.test(trimmed)) {
       setPnrError("PNR must be a 10-digit number.");
+      setPnrForCta("");
       return;
     }
     setPnrLoading(true);
     setPnrError(null);
     setPnrData(null);
+    setPnrForCta("");
     setChartAlertOpen(false);
 
     try {
@@ -142,11 +145,12 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
       );
       const res = response.data;
       if (!res.status || !res.data) {
-        const pnrErrMsg = res.message || "Failed to fetch PNR status.";
-        setPnrError(pnrErrMsg);
+        const customMsg = "There is an issue with railways server we are not able to figure out the status";
+        setPnrError(customMsg);
+        setPnrForCta(trimmed);
         trackAnalyticsEvent({
           name: "search_pnr_status_checked",
-          properties: { success: false, error: pnrErrMsg },
+          properties: { success: false, error: res.message || "No data" },
         });
         return;
       }
@@ -191,19 +195,21 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
         void alt.findAlternates(mockTrain, undefined, parsedDate);
       }
     } catch (err: unknown) {
-      let msg = "Failed to fetch PNR status.";
+      const customMsg = "There is an issue with railways server we are not able to figure out the status";
+      let origMsg = "Failed to fetch PNR status.";
       if (err && typeof err === "object" && "response" in err) {
         const ax = err as { response?: { data?: { message?: string } } };
         if (ax.response?.data?.message) {
-          msg = ax.response.data.message;
+          origMsg = ax.response.data.message;
         }
       } else if (err instanceof Error) {
-        msg = err.message;
+        origMsg = err.message;
       }
-      setPnrError(msg);
+      setPnrError(customMsg);
+      setPnrForCta(trimmed);
       trackAnalyticsEvent({
         name: "search_pnr_status_checked",
-        properties: { success: false, error: msg },
+        properties: { success: false, error: origMsg },
       });
     } finally {
       setPnrLoading(false);
@@ -284,19 +290,47 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
 
       {pnrError && (
         <div
-          className="mt-6 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800 shadow-sm animate-fade-in"
+          className="mt-6 flex flex-col gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800 shadow-sm animate-fade-in"
           role="alert"
         >
-          <svg
-            className="mt-0.5 h-5 w-5 shrink-0 text-red-600"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" />
-          </svg>
-          <span>{pnrError}</span>
+          <div className="flex items-start gap-3">
+            <svg
+              className="mt-0.5 h-5 w-5 shrink-0 text-red-600"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" />
+            </svg>
+            <span>{pnrError}</span>
+          </div>
+          {pnrForCta && (
+            <div className="pl-8">
+              <a
+                href={`https://www.confirmtkt.com/pnr-status/${pnrForCta}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25 transition-all duration-200"
+              >
+                Go to ConfirmTkt for PNR Analysis
+                <svg
+                  className="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+            </div>
+          )}
         </div>
       )}
 
