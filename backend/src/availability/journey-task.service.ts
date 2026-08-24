@@ -1001,21 +1001,28 @@ export class JourneyTaskService {
               : new Date(String(task.journeyDate).slice(0, 10));
 
           // Check if user has already received an alert for this train and journey date
-          const existingNotification =
-            await this.prisma.sentNotificationLog.findFirst({
-              where: {
-                trainNumber: task.trainNumber,
-                journeyDate: journeyDateDate,
-                recipient: {
-                  in: [
-                    ...(contact.email
-                      ? [contact.email.toLowerCase().trim()]
-                      : []),
-                    ...(contact.mobile ? [contact.mobile.trim()] : []),
-                  ],
+          let existingNotification = null;
+          try {
+            existingNotification =
+              await this.prisma.sentNotificationLog.findFirst({
+                where: {
+                  trainNumber: task.trainNumber,
+                  journeyDate: journeyDateDate,
+                  recipient: {
+                    in: [
+                      ...(contact.email
+                        ? [contact.email.toLowerCase().trim()]
+                        : []),
+                      ...(contact.mobile ? [contact.mobile.trim()] : []),
+                    ],
+                  },
                 },
-              },
-            });
+              });
+          } catch (logErr) {
+            this.logger.warn(
+              `[journey] Failed to query sent_notification_log for task=${taskId}: ${logErr}`,
+            );
+          }
 
           const isFollowUpLeg = Boolean(existingNotification);
 
