@@ -91,6 +91,7 @@ When implementing common, well-solved problems, use a maintained npm package ins
 - Dates / time zones / formatting / parsing: use something already in the project or add one lightweight option; avoid ad-hoc date string math.
 - Collections and object utilities (deep clone, group-by, debounce, pick/omit, etc.): prefer `lodash-es`, `es-toolkit`, or small focused packages rather than a one-off reimplementation.
 - IDs, validation, encoding, retry/backoff: prefer standard libraries where they reduce bugs.
+- **HTTP / Axios Retries**: ALWAYS use `axios-retry` (via `createRetryingAxiosClient` in `backend/src/common/retrying-axios.ts` or `lib/api.ts`). Never hand-roll custom `for`/`while` loops with `sleep` or manual retry logic.
 
 Before adding a dependency:
 

@@ -19,6 +19,7 @@ Use this skill immediately after writing or modifying any code in this codebase 
 ### 2. DRY (Don't Repeat Yourself) & Utility Reuse
 - **Zero Duplication**: Never copy-paste status checkers, string splitters, date parsers, or API formatters across files or services.
 - **Shared Modules**: Place frontend utilities under `lib/` and backend utilities in `backend/src/common/` or dedicated shared service modules.
+- **HTTP Retries**: Always use `axios-retry` (via `createRetryingAxiosClient` from `backend/src/common/retrying-axios.ts` or `lib/api.ts`). Never hand-roll custom `for`/`while` retry loops with `sleep`.
 - **Centralized Constants**: Move recurring regex patterns, status codes, and configuration keys to top-level module constants.
 
 ### 3. KISS (Keep It Simple, Stupid) & Early Returns
@@ -33,13 +34,14 @@ Use this skill immediately after writing or modifying any code in this codebase 
 
 ### 5. Long-Term Maintainability & Type Safety
 - **Strict TypeScript Types**: No `any` type leaks or loose `record<string, unknown>` when domain types or Prisma types exist.
+- **Database & Migrations**: Always pair `schema.prisma` model/field changes with a corresponding migration in `backend/prisma/migrations/` so tables are created automatically on production deployments.
 - **Self-Documenting Naming**: Name variables and functions by intent (e.g., `isIrctcDirectBookable`, `CONFIRMED_LEG_STATUS_RE`) so code explains itself without requiring verbose comments.
 - **Defensive Error Handling**: Catch specific exceptions (e.g. Prisma `P2002`, HTTP 403 proxy anti-bot blocks) and return clean HTTP/domain errors rather than letting unhandled crashes reach Sentry.
 
 ## Post-Edit Verification Checklist
 
 - [ ] **SOLID & KISS Audit**: Are responsibilities clearly separated, control flow flattened, and over-engineering avoided?
-- [ ] **DRY & Utility Audit**: Is any logic repeated? Are project utilities in `lib/` or `backend/src/` reused?
+- [ ] **DRY & Utility Audit**: Is any logic repeated? Are project utilities in `lib/` or `backend/src/` reused? Is `axios-retry` used for retrying HTTP requests?
 - [ ] **Footprint & Line Count Audit**: Is the implementation expressed in the minimal possible lines of code without sacrificing readability?
-- [ ] **Type Safety & Schema Audit**: Do types strictly align with TypeScript definitions and Prisma schema contracts?
+- [ ] **Type Safety & Schema Audit**: Do types strictly align with TypeScript definitions and Prisma schema contracts? If Prisma models were modified, was a migration added?
 - [ ] **Automated Testing & Linting**: Run `cd backend && npm test` and `npm run lint` to verify 100% test pass rate and clean lint output.
