@@ -138,6 +138,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
     setPnrData(null);
     setPnrForCta("");
     setChartAlertOpen(false);
+    alt.reset();
 
     try {
       const response = await apiClient.get<PnrStatusResponse>(
@@ -190,8 +191,17 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
           : undefined,
       };
 
-      // Call Alternate Seats finder
-      if (parsedDate) {
+      // Check if the PNR already has a confirmed ticket (bookingStatus as 'CNF')
+      const hasConfirmedTicket = Array.isArray(data.PassengerStatus) && data.PassengerStatus.some(
+        (p: any) =>
+          (p.BookingStatus && p.BookingStatus.toUpperCase().includes("CNF")) ||
+          (p.bookingStatus && p.bookingStatus.toUpperCase().includes("CNF")) ||
+          (p.CurrentStatus && p.CurrentStatus.toUpperCase().includes("CNF")) ||
+          (p.currentStatus && p.currentStatus.toUpperCase().includes("CNF"))
+      );
+
+      // Call Alternate Seats finder only if there is no confirmed ticket
+      if (parsedDate && !hasConfirmedTicket) {
         void alt.findAlternates(mockTrain, undefined, parsedDate);
       }
     } catch (err: unknown) {
