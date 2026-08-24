@@ -429,7 +429,6 @@ export class AvailabilityController {
     );
   }
 
-
   /** Admin gate — same x-admin-password the other admin tools use. */
   private assertAdmin(pw?: string): void {
     const expected = String(

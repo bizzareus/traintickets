@@ -523,7 +523,6 @@ export class JourneyTaskService {
           } catch (err: unknown) {
             if (!isPrismaUniqueViolation(err)) throw err;
           }
-
         }
         if (mobile && existing.mobile !== mobile) {
           try {
@@ -1101,23 +1100,23 @@ export class JourneyTaskService {
               });
             }
           } catch (e) {
-              console.error('Notification failed', e);
-              const errLogs =
-                e instanceof Error ? e.stack || e.message : String(e);
-              void this.notificationService.sendAlertFailureReport({
-                alertType: 'Journey Task Notification Rejection',
-                recipientMobile: contact.mobile,
-                recipientEmail: contact.email,
-                trainNumber: task.trainNumber,
-                trainName: task.trainName,
-                fromStationCode: task.fromStationCode,
-                toStationCode: task.toStationCode,
-                journeyDate: task.journeyDate,
-                failureReason:
-                  'Unhandled rejection during journey task notification',
-                logs: errLogs,
-                payload: { taskId, journeyRequestId: task.journeyRequestId },
-              });
+            console.error('Notification failed', e);
+            const errLogs =
+              e instanceof Error ? e.stack || e.message : String(e);
+            void this.notificationService.sendAlertFailureReport({
+              alertType: 'Journey Task Notification Rejection',
+              recipientMobile: contact.mobile,
+              recipientEmail: contact.email,
+              trainNumber: task.trainNumber,
+              trainName: task.trainName,
+              fromStationCode: task.fromStationCode,
+              toStationCode: task.toStationCode,
+              journeyDate: task.journeyDate,
+              failureReason:
+                'Unhandled rejection during journey task notification',
+              logs: errLogs,
+              payload: { taskId, journeyRequestId: task.journeyRequestId },
+            });
           }
         }
       }
@@ -1506,7 +1505,6 @@ export class JourneyTaskService {
     };
   }
 
-
   async resendTaskNotification(taskId: string): Promise<{
     sent: boolean;
     emailSent: boolean;
@@ -1691,7 +1689,6 @@ export class JourneyTaskService {
     return { found: tasks.length, resent, failed };
   }
 
-
   /**
    * Get stations between from and to that have chart times, for the journey/stations endpoint.
    * Returns stationCode, stationName, chart one time, and optionally chart two time + day offset.
@@ -1868,7 +1865,8 @@ export class JourneyTaskService {
       // Avoid self-recursion if task already covers this exact sub-segment
       if (
         task.fromStationCode.trim().toUpperCase() === targetStation &&
-        task.toStationCode.trim().toUpperCase() === eStation.trim().toUpperCase()
+        task.toStationCode.trim().toUpperCase() ===
+          eStation.trim().toUpperCase()
       ) {
         continue;
       }

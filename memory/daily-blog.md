@@ -146,7 +146,7 @@ Pull two things every run:
    - `search_pnr_feature_clicked` / `search_pnr_status_checked` — PNR status (**Smart Seats `/`**).
    - `seat_status_feature_clicked` / `seat_status_checked` — **Coach Journey Lookup `/seat-status`**.
    - `chart_times_search_submitted` / `chart_times_train_selected` — **`/chart-times`**.
-   - `chart_alert_opened` / `chart_alert_submitted`, `alternate_paths_*` — secondary actions.
+   - `chart_alert_opened` / `alert_requested`, `alternate_paths_*` — secondary actions.
 
    Build the funnel with **`query-funnel`**: step 1 = `$pageview` on a `/blog/*` path → step 2 =
    any tool/conversion event above, same session. Run it **per landing page** (or broken down by

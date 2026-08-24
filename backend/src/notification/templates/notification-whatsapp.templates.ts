@@ -37,14 +37,26 @@ export function buildWatiTemplateParameters(
       { name: 'journey_times', value: journeyTimes },
       { name: 'ticket_number', value: '1' },
       { name: 'class_code', value: ctx.classCode || 'SL' },
-      { name: 'availability_status', value: ctx.availabilityStatus || 'Available' },
+      {
+        name: 'availability_status',
+        value: ctx.availabilityStatus || 'Available',
+      },
       { name: 'segment_route', value: `${fromCode} → ${toCode}` },
-      { name: 'approx_price', value: ctx.approxPrice ? String(ctx.approxPrice) : '0' },
-      { name: 'irctc_booking_url', value: 'https://www.irctc.co.in/nget/redirect' },
+      {
+        name: 'approx_price',
+        value: ctx.approxPrice ? String(ctx.approxPrice) : '0',
+      },
+      {
+        name: 'irctc_booking_url',
+        value: 'https://www.irctc.co.in/nget/redirect',
+      },
     ];
   }
 
-  if (templateName === 'uncovered_leg__shortlink_alert' || templateName === 'uncovered_leg_alert') {
+  if (
+    templateName === 'uncovered_leg__shortlink_alert' ||
+    templateName === 'uncovered_leg_alert'
+  ) {
     return [
       { name: 'name', value: name },
       { name: 'train_number', value: trainNumber },
@@ -53,7 +65,10 @@ export function buildWatiTemplateParameters(
       { name: 'to_code', value: toCode },
       { name: 'journey_date', value: journeyDate },
       { name: 'uncovered_segment_route', value: `${fromCode} → ${toCode}` },
-      { name: 'chart_release_time_label', value: ctx.chartPreparationText || 'Chart prepared' },
+      {
+        name: 'chart_release_time_label',
+        value: ctx.chartPreparationText || 'Chart prepared',
+      },
       { name: 'action_button_text', value: 'Check Seat Availability' },
       { name: 'action_url', value: searchUrl },
     ];

@@ -30,7 +30,9 @@ const IRCTC_TRAIN_COMPOSITION_URL =
 const RAPIDAPI_TRAIN_SEARCH_URL =
   'https://irctc1.p.rapidapi.com/api/v1/getTrainSchedule';
 const RAPIDAPI_SEARCH_STATION_URL =
-  'https://irctc1.p.rapidapi.com/api/v1/searchStation';
+  'https://irctc-indian-railway-pnr-status.p.rapidapi.com/autocomplete/station';
+const RAPIDAPI_SEARCH_STATION_HOST =
+  'irctc-indian-railway-pnr-status.p.rapidapi.com';
 const RAPIDAPI_TRAIN_CLASSES_URL =
   'https://irctc1.p.rapidapi.com/api/v1/getTrainClasses';
 const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
@@ -696,7 +698,7 @@ export class IrctcService {
   }
 
   /**
-   * Station autocomplete fallback via RapidAPI (irctc1.p.rapidapi.com).
+   * Station autocomplete fallback via RapidAPI (irctc-indian-railway-pnr-status.p.rapidapi.com).
    * Used only when the local station_cache misses. Fast and reliable, unlike
    * the IRCTC rail-API station endpoint. Never throws — returns [] on any error
    * so the caller can degrade gracefully.
@@ -714,29 +716,48 @@ export class IrctcService {
       return [];
     }
     try {
-      const res = await rapidApiScheduleClient.get<unknown>(
-        RAPIDAPI_SEARCH_STATION_URL,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Rapidapi-Host': 'irctc1.p.rapidapi.com',
-            'X-Rapidapi-Key': key,
-          },
-          params: { query: q },
-          timeout: RAPIDAPI_SEARCH_STATION_TIMEOUT_MS,
+      const url = `${RAPIDAPI_SEARCH_STATION_URL}/${encodeURIComponent(q)}`;
+      const res = await rapidApiScheduleClient.get<unknown>(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-rapidapi-host': RAPIDAPI_SEARCH_STATION_HOST,
+          'x-rapidapi-key': key,
         },
-      );
+        params: { limit: '20' },
+        timeout: RAPIDAPI_SEARCH_STATION_TIMEOUT_MS,
+      });
       const root =
         res.data && typeof res.data === 'object' && !Array.isArray(res.data)
           ? (res.data as Record<string, unknown>)
           : {};
-      const list = Array.isArray(root.data) ? root.data : [];
+      const dataObj =
+        root.data && typeof root.data === 'object' && !Array.isArray(root.data)
+          ? (root.data as Record<string, unknown>)
+          : null;
+      const list = Array.isArray(dataObj?.results)
+        ? dataObj.results
+        : Array.isArray(root.data)
+          ? root.data
+          : Array.isArray(root.results)
+            ? root.results
+            : [];
       const out: Array<{ stationCode: string; stationName: string }> = [];
       for (const row of list) {
         if (!row || typeof row !== 'object') continue;
         const r = row as Record<string, unknown>;
-        const code = strFromUnknown(r.code).trim().toUpperCase();
-        const name = (strFromUnknown(r.eng_name) || strFromUnknown(r.name))
+        const code = (
+          strFromUnknown(r.station_code) ||
+          strFromUnknown(r.code) ||
+          strFromUnknown(r.stationCode)
+        )
+          .trim()
+          .toUpperCase();
+        const name = (
+          strFromUnknown(r.station_name) ||
+          strFromUnknown(r.eng_name) ||
+          strFromUnknown(r.name) ||
+          strFromUnknown(r.stationName)
+        )
           .trim()
           .toUpperCase();
         if (code && name) out.push({ stationCode: code, stationName: name });

@@ -345,4 +345,3 @@ describe('NotificationService', () => {
     expect(text).toContain('approx ₹205');
   });
 });
-

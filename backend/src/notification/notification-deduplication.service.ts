@@ -19,7 +19,8 @@ export class NotificationDeduplicationService {
     notificationType: 'no_seats' | 'seats_found' | 'alt_trains';
     windowHours?: number;
   }): Promise<boolean> {
-    const { recipient, channel, trainNumber, journeyDate, notificationType } = params;
+    const { recipient, channel, trainNumber, journeyDate, notificationType } =
+      params;
     if (!recipient?.trim()) return true;
 
     const normalizedRecipient = recipient.trim().toLowerCase();
@@ -68,7 +69,8 @@ export class NotificationDeduplicationService {
     journeyDate: Date | string;
     notificationType: 'no_seats' | 'seats_found' | 'alt_trains';
   }): Promise<void> {
-    const { recipient, channel, trainNumber, journeyDate, notificationType } = params;
+    const { recipient, channel, trainNumber, journeyDate, notificationType } =
+      params;
     if (!recipient?.trim()) return;
 
     const normalizedRecipient = recipient.trim().toLowerCase();

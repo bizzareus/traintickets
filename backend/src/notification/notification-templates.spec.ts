@@ -41,20 +41,27 @@ describe('Notification Templates & Helpers', () => {
       });
 
       expect(params).toHaveLength(13);
-      expect(params.find((p) => p.name === 'train_number')?.value).toBe('11408');
+      expect(params.find((p) => p.name === 'train_number')?.value).toBe(
+        '11408',
+      );
     });
 
     it('builds 10 parameters for uncovered_leg__shortlink_alert', () => {
-      const params = buildWatiTemplateParameters('uncovered_leg__shortlink_alert', {
-        trainNumber: '11408',
-        trainName: 'LJN PUNE EXP',
-        fromStationCode: 'CNB',
-        toStationCode: 'PUNE',
-        journeyDateReadable: 'Thu, 13th August',
-      });
+      const params = buildWatiTemplateParameters(
+        'uncovered_leg__shortlink_alert',
+        {
+          trainNumber: '11408',
+          trainName: 'LJN PUNE EXP',
+          fromStationCode: 'CNB',
+          toStationCode: 'PUNE',
+          journeyDateReadable: 'Thu, 13th August',
+        },
+      );
 
       expect(params).toHaveLength(10);
-      expect(params.find((p) => p.name === 'action_button_text')?.value).toBe('Check Seat Availability');
+      expect(params.find((p) => p.name === 'action_button_text')?.value).toBe(
+        'Check Seat Availability',
+      );
     });
   });
 });

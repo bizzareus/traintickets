@@ -102,17 +102,6 @@ export default function ChartTimeAlertCTA({
         hasEmail: Boolean(em),
         hasMobile: Boolean(mob),
       });
-      trackAnalyticsEvent({
-        name: "chart_alert_submitted",
-        properties: {
-          success: true,
-          source: "page",
-          train_number: trainNumber,
-          station_code: stationCode,
-          has_email: Boolean(em),
-          has_mobile: Boolean(mob),
-        },
-      });
     } catch (err: unknown) {
       const e = err as {
         response?: { data?: { message?: string; errors?: Array<{ message?: string }> } };
@@ -135,18 +124,6 @@ export default function ChartTimeAlertCTA({
         hasEmail: Boolean(em),
         hasMobile: Boolean(mob),
         error: errMsg,
-      });
-      trackAnalyticsEvent({
-        name: "chart_alert_submitted",
-        properties: {
-          success: false,
-          source: "page",
-          train_number: trainNumber,
-          station_code: stationCode,
-          has_email: Boolean(em),
-          has_mobile: Boolean(mob),
-          error: errMsg,
-        },
       });
     } finally {
       setLoading(false);

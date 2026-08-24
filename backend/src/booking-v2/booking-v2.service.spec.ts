@@ -463,27 +463,90 @@ describe('BookingV2Service', () => {
       else delete process.env.RAPIDAPI_IRCTC_KEY;
     });
 
-    it('calls getPNRStatus endpoint with correct options and returns data', async () => {
-      const fakeData = { status: true, data: { Pnr: '1234567890' } };
+    it('calls getPNRStatus endpoint with correct options and returns normalized data', async () => {
+      const rawApiData = {
+        success: true,
+        data: {
+          pnrNumber: '4441017627',
+          dateOfJourney: 'Aug 30, 2026 3:15:00 PM',
+          trainNumber: '17377',
+          trainName: 'BJP MAQ EXP',
+          sourceStation: 'BJP',
+          destinationStation: 'HAS',
+          reservationUpto: 'HAS',
+          boardingPoint: 'BJP',
+          journeyClass: 'SL',
+          numberOfpassenger: 1,
+          chartStatus: 'Chart Not Prepared',
+          quota: 'GN',
+          arrivalDate: 'Aug 31, 2026 2:35:00 AM',
+          passengerList: [
+            {
+              passengerSerialNumber: 1,
+              bookingStatus: 'CNF',
+              bookingCoachId: 'S3',
+              bookingBerthNo: 7,
+              bookingBerthCode: 'SL',
+              bookingStatusDetails: 'CNF/S3/7/SL',
+              currentStatus: 'CNF',
+              currentCoachId: 'S3',
+              currentBerthNo: 7,
+              currentBerthCode: 'SL',
+              currentStatusDetails: 'CNF/S3/7/SL',
+            },
+          ],
+        },
+      };
       const getSpy = jest
         .spyOn(axios, 'get')
-        .mockResolvedValueOnce({ data: fakeData });
+        .mockResolvedValueOnce({ data: rawApiData });
 
-      const result = await service.getPnrStatus('1234567890');
+      const result = await service.getPnrStatus('4441017627');
 
       expect(getSpy).toHaveBeenCalledWith(
-        'https://irctc1.p.rapidapi.com/api/v3/getPNRStatus',
+        'https://irctc-indian-railway-pnr-status.p.rapidapi.com/getPNRStatus/4441017627',
         {
-          params: { pnrNumber: '1234567890' },
           headers: {
             'x-rapidapi-key': 'test-rapidapi-key',
-            'x-rapidapi-host': 'irctc1.p.rapidapi.com',
+            'x-rapidapi-host':
+              'irctc-indian-railway-pnr-status.p.rapidapi.com',
             'Content-Type': 'application/json',
           },
           timeout: 10_000,
         },
       );
-      expect(result).toEqual(fakeData);
+      expect(result.status).toBe(true);
+      expect(result.data?.Pnr).toBe('4441017627');
+      expect(result.data?.TrainNo).toBe('17377');
+      expect(result.data?.TrainName).toBe('BJP MAQ EXP');
+      expect(result.data?.Doj).toBe('30-08-2026');
+      expect(result.data?.DepartureTime).toBe('15:15');
+      expect(result.data?.ArrivalTime).toBe('02:35');
+      expect(result.data?.From).toBe('BJP');
+      expect(result.data?.To).toBe('HAS');
+      expect(result.data?.Quota).toBe('GN');
+      expect(result.data?.Class).toBe('SL');
+      expect(result.data?.PassengerStatus).toEqual([
+        expect.objectContaining({
+          Number: 1,
+          CurrentStatus: 'CNF/S3/7/SL',
+          BookingStatus: 'CNF/S3/7/SL',
+        }),
+      ]);
+      getSpy.mockRestore();
+    });
+
+    it('handles flushed or not generated PNR response gracefully', async () => {
+      const getSpy = jest.spyOn(axios, 'get').mockResolvedValueOnce({
+        data: {
+          success: false,
+          message: 'Flushed Pnr Or Pnr Not Yet Generated',
+        },
+      });
+
+      const result = await service.getPnrStatus('1234567890');
+      expect(result.status).toBe(false);
+      expect(result.message).toBe('Flushed Pnr Or Pnr Not Yet Generated');
       getSpy.mockRestore();
     });
 

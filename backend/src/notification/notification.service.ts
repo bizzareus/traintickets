@@ -31,7 +31,6 @@ import { NotificationDeduplicationService } from './notification-deduplication.s
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
 const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
 
-
 function escapeHtml(text: string): string {
   return text
     .replace(/&/g, '&amp;')
@@ -978,8 +977,13 @@ export class NotificationService {
         item.approx_price != null && item.approx_price > 0
           ? `approx ₹${Number(item.approx_price).toLocaleString('en-IN')}`
           : '';
-      const segBookUrl = this.buildSegmentBookUrl(trainNumber, item.instruction);
-      const availabilityTag = item.availability ? ` | ${item.availability}` : '';
+      const segBookUrl = this.buildSegmentBookUrl(
+        trainNumber,
+        item.instruction,
+      );
+      const availabilityTag = item.availability
+        ? ` | ${item.availability}`
+        : '';
 
       lines.push(`Ticket Found [${classTag}]${availabilityTag}`);
       lines.push(segmentRoute);
@@ -1262,9 +1266,7 @@ export class NotificationService {
             const depStr = train.departureTime
               ? `Dep: ${train.departureTime}`
               : '';
-            const arrStr = train.arrivalTime
-              ? `Arr: ${train.arrivalTime}`
-              : '';
+            const arrStr = train.arrivalTime ? `Arr: ${train.arrivalTime}` : '';
             const durMinutes = train.duration;
             const durStr = durMinutes
               ? `Duration: ${Math.floor(durMinutes / 60)}h ${durMinutes % 60}m`
@@ -1372,7 +1374,9 @@ export class NotificationService {
             bestLegStr = `\n  ↳ ${statusStr}${classStr}`;
           }
 
-          const depStr = train.departureTime ? `Dep: ${train.departureTime}` : '';
+          const depStr = train.departureTime
+            ? `Dep: ${train.departureTime}`
+            : '';
           const arrStr = train.arrivalTime ? `Arr: ${train.arrivalTime}` : '';
           const durMinutes = train.duration;
           const durStr = durMinutes
@@ -1537,44 +1541,45 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
       );
 
       if (mobile?.trim()) {
-        const whatsAppText = isFollowUpLeg && hasTickets
-          ? this.buildFollowUpLegWhatsAppText({
-              trainLabel,
-              routeDisplay,
-              journeyDateReadable,
-              plan,
-              stationNameMap,
-              stationScheduleList,
-              trainNumber: task.trainNumber,
-            })
-          : hasTickets
-            ? await this.buildWhatsAppSeatsFoundText({
+        const whatsAppText =
+          isFollowUpLeg && hasTickets
+            ? this.buildFollowUpLegWhatsAppText({
                 trainLabel,
                 routeDisplay,
                 journeyDateReadable,
-                journeyDateStr,
-                trainNumber: task.trainNumber,
-                fromStationCode: task.fromStationCode,
-                toStationCode: task.toStationCode,
-                journeyTimesLine: journeyTimesLine || undefined,
-                chartPreparationText,
                 plan,
                 stationNameMap,
                 stationScheduleList,
-                result,
-                email: email || undefined,
-                mobile: mobile || undefined,
+                trainNumber: task.trainNumber,
               })
-            : this.buildNoSeatsWhatsAppText({
-                trainLabel,
-                routeDisplay,
-                journeyDateReadable,
-                openAiSummary: result.openAiSummary,
-                alternativeTrains,
-                fromCode: task.fromStationCode,
-                toCode: task.toStationCode,
-                date: journeyDateStr,
-              });
+            : hasTickets
+              ? await this.buildWhatsAppSeatsFoundText({
+                  trainLabel,
+                  routeDisplay,
+                  journeyDateReadable,
+                  journeyDateStr,
+                  trainNumber: task.trainNumber,
+                  fromStationCode: task.fromStationCode,
+                  toStationCode: task.toStationCode,
+                  journeyTimesLine: journeyTimesLine || undefined,
+                  chartPreparationText,
+                  plan,
+                  stationNameMap,
+                  stationScheduleList,
+                  result,
+                  email: email || undefined,
+                  mobile: mobile || undefined,
+                })
+              : this.buildNoSeatsWhatsAppText({
+                  trainLabel,
+                  routeDisplay,
+                  journeyDateReadable,
+                  openAiSummary: result.openAiSummary,
+                  alternativeTrains,
+                  fromCode: task.fromStationCode,
+                  toCode: task.toStationCode,
+                  date: journeyDateStr,
+                });
 
         const templateName = hasTickets
           ? this.config.get<string>('WATI_TEMPLATE_CHART_ALERT') ||
@@ -1699,50 +1704,52 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
         const hasAltTrains = Boolean(
           !hasTickets && alternativeTrains && alternativeTrains.length > 0,
         );
-        const subject = isFollowUpLeg && hasTickets
-          ? `Leg Update: Seats Available - ${task.trainNumber} (${task.fromStationCode} → ${task.toStationCode}) on ${journeyDateReadable}`
-          : hasTickets
-            ? `Seats Available - Train ${task.trainNumber} on ${journeyDateReadable}`
-            : hasAltTrains
-              ? `Alternate Trains Available - Train ${task.trainNumber} (${task.fromStationCode} → ${task.toStationCode}) on ${journeyDateReadable}`
-              : `No Tickets Found - Train ${task.trainNumber} on ${journeyDateReadable}`;
-        const html = isFollowUpLeg && hasTickets
-          ? this.buildFollowUpLegEmailHtml({
-              trainLabel,
-              routeDisplay: emailRouteDisplay,
-              journeyDateReadable,
-              plan,
-              stationNameMap,
-              stationScheduleList,
-              trainNumber: task.trainNumber,
-            })
-          : hasTickets
-            ? await this.buildSeatsFoundEmailHtml({
+        const subject =
+          isFollowUpLeg && hasTickets
+            ? `Leg Update: Seats Available - ${task.trainNumber} (${task.fromStationCode} → ${task.toStationCode}) on ${journeyDateReadable}`
+            : hasTickets
+              ? `Seats Available - Train ${task.trainNumber} on ${journeyDateReadable}`
+              : hasAltTrains
+                ? `Alternate Trains Available - Train ${task.trainNumber} (${task.fromStationCode} → ${task.toStationCode}) on ${journeyDateReadable}`
+                : `No Tickets Found - Train ${task.trainNumber} on ${journeyDateReadable}`;
+        const html =
+          isFollowUpLeg && hasTickets
+            ? this.buildFollowUpLegEmailHtml({
                 trainLabel,
                 routeDisplay: emailRouteDisplay,
                 journeyDateReadable,
-                journeyDateStr,
-                fromStationCode: task.fromStationCode,
-                toStationCode: task.toStationCode,
-                journeyTimesLine: journeyTimesLine || undefined,
-                chartPreparationText,
-                trainNumber: task.trainNumber,
                 plan,
-                totalPrice,
                 stationNameMap,
                 stationScheduleList,
-                result,
+                trainNumber: task.trainNumber,
               })
-            : this.buildNoSeatsEmailHtml({
-                trainLabel,
-                routeDisplay: emailRouteDisplay,
-                journeyDateReadable,
-                openAiSummary: result.openAiSummary,
-                alternativeTrains,
-                fromCode: task.fromStationCode,
-                toCode: task.toStationCode,
-                date: journeyDateStr,
-              });
+            : hasTickets
+              ? await this.buildSeatsFoundEmailHtml({
+                  trainLabel,
+                  routeDisplay: emailRouteDisplay,
+                  journeyDateReadable,
+                  journeyDateStr,
+                  fromStationCode: task.fromStationCode,
+                  toStationCode: task.toStationCode,
+                  journeyTimesLine: journeyTimesLine || undefined,
+                  chartPreparationText,
+                  trainNumber: task.trainNumber,
+                  plan,
+                  totalPrice,
+                  stationNameMap,
+                  stationScheduleList,
+                  result,
+                })
+              : this.buildNoSeatsEmailHtml({
+                  trainLabel,
+                  routeDisplay: emailRouteDisplay,
+                  journeyDateReadable,
+                  openAiSummary: result.openAiSummary,
+                  alternativeTrains,
+                  fromCode: task.fromStationCode,
+                  toCode: task.toStationCode,
+                  date: journeyDateStr,
+                });
 
         out.emailSent = await this.sendEmail(email.trim(), subject, html, {
           skipFailureReport: true,
@@ -1812,7 +1819,6 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
     } = params;
     const alternativeTrains = params.alternativeTrains?.slice(0, 3);
     const out = { emailSent: false, whatsappSent: false };
-
 
     try {
       if (!email?.trim() && !mobile?.trim()) return out;

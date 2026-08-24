@@ -95,17 +95,6 @@ export default function RowAlertButton({
         hasEmail: Boolean(em),
         hasMobile: Boolean(mob),
       });
-      trackAnalyticsEvent({
-        name: "chart_alert_submitted",
-        properties: {
-          success: true,
-          source: "row",
-          train_number: trainNumber,
-          station_code: stationCode,
-          has_email: Boolean(em),
-          has_mobile: Boolean(mob),
-        },
-      });
     } catch (err: unknown) {
       const e = err as {
         response?: { data?: { message?: string; errors?: Array<{ message?: string }> } };
@@ -128,18 +117,6 @@ export default function RowAlertButton({
         hasEmail: Boolean(em),
         hasMobile: Boolean(mob),
         error: errMsg,
-      });
-      trackAnalyticsEvent({
-        name: "chart_alert_submitted",
-        properties: {
-          success: false,
-          source: "row",
-          train_number: trainNumber,
-          station_code: stationCode,
-          has_email: Boolean(em),
-          has_mobile: Boolean(mob),
-          error: errMsg,
-        },
       });
     } finally {
       setLoading(false);

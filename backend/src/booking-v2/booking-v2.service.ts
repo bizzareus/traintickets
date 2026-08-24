@@ -453,7 +453,9 @@ export class BookingV2Service {
 
   /** `YYYY-MM-DD`, `DD-MM-YYYY`, slashes, or other valid formats parsed to `DD-MM-YYYY`. */
   normalizeToRailApiDate(dateInput: string): string | null {
-    const raw = String(dateInput ?? '').trim().replace(/\//g, '-');
+    const raw = String(dateInput ?? '')
+      .trim()
+      .replace(/\//g, '-');
     if (!raw) return null;
 
     const isoMatch = raw.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
@@ -1945,19 +1947,137 @@ export class BookingV2Service {
     this.logger.log(`[pnr] Fetching PNR status for ${pnr}`);
 
     try {
-      const response = await axios.get<PnrStatusResponse>(
-        'https://irctc1.p.rapidapi.com/api/v3/getPNRStatus',
+      const response = await axios.get<{
+        success?: boolean;
+        status?: boolean;
+        message?: string;
+        data?: {
+          pnrNumber?: string;
+          dateOfJourney?: string;
+          trainNumber?: string;
+          trainName?: string;
+          sourceStation?: string;
+          destinationStation?: string;
+          reservationUpto?: string;
+          boardingPoint?: string;
+          journeyClass?: string;
+          numberOfpassenger?: number;
+          chartStatus?: string;
+          quota?: string;
+          arrivalDate?: string;
+          passengerList?: Array<{
+            passengerSerialNumber?: number;
+            bookingStatus?: string;
+            bookingCoachId?: string;
+            bookingBerthNo?: number | string;
+            bookingBerthCode?: string;
+            bookingStatusDetails?: string;
+            currentStatus?: string;
+            currentCoachId?: string;
+            currentBerthNo?: number | string;
+            currentBerthCode?: string;
+            currentStatusDetails?: string;
+            [key: string]: unknown;
+          }>;
+          [key: string]: unknown;
+        };
+        [key: string]: unknown;
+      }>(
+        `https://irctc-indian-railway-pnr-status.p.rapidapi.com/getPNRStatus/${encodeURIComponent(pnr)}`,
         {
-          params: { pnrNumber: pnr },
           headers: {
             'x-rapidapi-key': key,
-            'x-rapidapi-host': 'irctc1.p.rapidapi.com',
+            'x-rapidapi-host':
+              'irctc-indian-railway-pnr-status.p.rapidapi.com',
             'Content-Type': 'application/json',
           },
           timeout: 10_000,
         },
       );
-      return response.data;
+
+      const res = response.data;
+      if (!res || res.success === false || res.status === false) {
+        return {
+          status: false,
+          message: res?.message || 'PNR not found or flushed',
+        };
+      }
+
+      if (!res.data) {
+        return {
+          status: false,
+          message: res.message || 'No data found for this PNR',
+        };
+      }
+
+      const d = res.data;
+      let formattedDoj = '';
+      let departureTime = '';
+      if (d.dateOfJourney) {
+        const m = moment(d.dateOfJourney, [
+          'MMM D, YYYY h:mm:ss A',
+          'MMM DD, YYYY h:mm:ss A',
+          'DD-MM-YYYY',
+          'YYYY-MM-DD',
+        ]);
+        if (m.isValid()) {
+          formattedDoj = m.format('DD-MM-YYYY');
+          departureTime = m.format('HH:mm');
+        } else {
+          formattedDoj = d.dateOfJourney;
+        }
+      }
+
+      let arrivalTime = '';
+      if (d.arrivalDate) {
+        const arrM = moment(d.arrivalDate, [
+          'MMM D, YYYY h:mm:ss A',
+          'MMM DD, YYYY h:mm:ss A',
+          'DD-MM-YYYY',
+          'YYYY-MM-DD',
+        ]);
+        if (arrM.isValid()) {
+          arrivalTime = arrM.format('HH:mm');
+        }
+      }
+
+      const passengerStatus = Array.isArray(d.passengerList)
+        ? d.passengerList.map((p, idx) => ({
+            Number: p.passengerSerialNumber ?? idx + 1,
+            CurrentStatus:
+              p.currentStatusDetails || p.currentStatus || 'Unknown',
+            BookingStatus:
+              p.bookingStatusDetails || p.bookingStatus || '',
+            ConfirmTktStatus:
+              p.currentStatus === 'CNF' ? 'Confirm' : p.currentStatus || '',
+            ...p,
+          }))
+        : [];
+
+      return {
+        status: true,
+        message: res.message || 'Success',
+        data: {
+          ...d,
+          Pnr: d.pnrNumber || pnr,
+          TrainNo: d.trainNumber || '',
+          TrainName: d.trainName || '',
+          Doj: formattedDoj,
+          Quota: d.quota || '',
+          Class: d.journeyClass || '',
+          From: d.sourceStation || d.boardingPoint || '',
+          To: d.destinationStation || d.reservationUpto || '',
+          BoardingStationName: d.boardingPoint || '',
+          SourceName: d.sourceStation || '',
+          DestinationName: d.destinationStation || '',
+          ReservationUptoName: d.reservationUpto || '',
+          DepartureTime: departureTime,
+          ArrivalTime: arrivalTime,
+          ChartPrepared: d.chartStatus === 'Chart Prepared',
+          ChartStatus: d.chartStatus || '',
+          PassengerStatus: passengerStatus,
+        },
+      };
     } catch (error) {
       const errMsg = error instanceof Error ? error.message : String(error);
       this.logger.error(

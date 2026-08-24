@@ -266,18 +266,6 @@ export type AnalyticsEvent =
         station_code?: string;
       };
     }
-  | {
-      name: "chart_alert_submitted";
-      properties: {
-        success: boolean;
-        source: "page" | "row";
-        train_number: string;
-        station_code: string;
-        has_email: boolean;
-        has_mobile: boolean;
-        error?: string;
-      };
-    }
   // PNR feature (prefix: search_pnr_*)
   | { name: "search_pnr_feature_clicked"; properties: Record<string, never> }
   | {
@@ -293,6 +281,31 @@ export type AnalyticsEvent =
         train_number?: string;
         coach?: string;
         error?: string;
+      };
+    }
+  // Auto-search / Experiment A events
+  | {
+      name: "experiment_a_tickets_loaded";
+      properties: {
+        train_number: string;
+        train_name?: string | null;
+        from_code?: string;
+        to_code?: string;
+        journey_date?: string;
+        ticket_count?: number;
+        is_complete?: boolean;
+      };
+    }
+  | {
+      name: "ticket_details_cta_clicked";
+      properties: {
+        train_number: string;
+        train_name?: string | null;
+        from_code?: string;
+        to_code?: string;
+        journey_date?: string;
+        ticket_count?: number;
+        is_complete?: boolean;
       };
     };
 

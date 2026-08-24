@@ -26,4 +26,3 @@ import { NotificationDeduplicationService } from './notification-deduplication.s
   ],
 })
 export class NotificationModule {}
-

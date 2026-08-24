@@ -19,7 +19,7 @@ metadata:
 - `search_pnr_feature_clicked` / `search_pnr_status_checked` — PNR status (**Smart Seats `/`**).
 - `seat_status_feature_clicked` / `seat_status_checked` — **Coach Journey Lookup `/seat-status`**.
 - `chart_times_search_submitted` / `chart_times_train_selected` — **`/chart-times`**.
-- `chart_alert_opened` / `chart_alert_submitted`, `alternate_paths_*` — secondary.
+- `chart_alert_opened` / `alert_requested`, `alternate_paths_*` — secondary.
 - Tool-error events = app bugs to flag, not content: `station_suggestion_failed`, `chart_time_load_failed_booking_popup`.
 
 **Blog→tool funnel:** `query-funnel` step1 = `$pageview` on `/blog/*` → step2 = any tool event above, same session; run **per landing `$pathname`** for a per-post conversion rate. `query-paths` from blog pages shows where readers go next. Record pre-change conversion in the experiment tracker so a later run verifies a CTA moved real events (not just that it exists). See [[lastberth-seo-weekly-routine]], [[seo-ctr-cta-experiment-2026-07]], [[lastberth-seo-ctr-vs-content]]. Routine updated 2026-07-15 (Step 0C).

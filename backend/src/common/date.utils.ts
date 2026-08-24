@@ -8,5 +8,7 @@ export function toIstYmd(date: Date | string | null | undefined): string {
   if (!date) return '';
   if (typeof date === 'string') return date.trim().slice(0, 10);
   const dt = DateTime.fromJSDate(date).setZone('Asia/Kolkata');
-  return dt.isValid ? dt.toFormat('yyyy-MM-dd') : date.toISOString().slice(0, 10);
+  return dt.isValid
+    ? dt.toFormat('yyyy-MM-dd')
+    : date.toISOString().slice(0, 10);
 }

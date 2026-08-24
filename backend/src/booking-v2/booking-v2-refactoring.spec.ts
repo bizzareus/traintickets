@@ -42,7 +42,9 @@ describe('Booking-V2 Refactored Utilities', () => {
 
     it('returns true for AVL / CURR_AV status strings', () => {
       expect(isLegConfirmed({ availablityStatus: 'AVAILABLE 12' })).toBe(true);
-      expect(isLegConfirmed({ availablityStatus: 'RLWL/CURR_AV 05' })).toBe(true);
+      expect(isLegConfirmed({ availablityStatus: 'RLWL/CURR_AV 05' })).toBe(
+        true,
+      );
     });
 
     it('returns false for pure waitlist status', () => {

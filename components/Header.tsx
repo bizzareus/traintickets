@@ -29,10 +29,13 @@ export function Header({
 } = {}) {
   const homeHref = lang && lang !== "en" ? `/${lang}` : "/";
 
-  // Chart Vacancy, PNR Status, Chart Times and Food Menu live in the footer now
-  // (Chart Times / Food Menu as train-link columns). The logo already links home,
-  // so the top nav is just the blog.
-  const links: NavLink[] = [{ href: "/blog", label: nav.blog }];
+  const links: NavLink[] = [
+    { href: "/chart-vacancy", label: nav.chartVacancy || "Chart Vacancy" },
+    { href: "/pnr-status", label: nav.pnrStatus || "PNR Status" },
+    { href: "/chart-times", label: nav.chartTimes || "Chart Times" },
+    { href: "/irctc-train-food-menu", label: nav.foodMenu || "Food Menu" },
+    { href: "/blog", label: nav.blog || "Blog" },
+  ];
 
   return (
     <div className="sticky top-0 z-20">
@@ -40,7 +43,7 @@ export function Header({
         className="relative border-b border-slate-100 bg-white/95 backdrop-blur-sm"
         role="banner"
       >
-        <div className="mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-1">
             <Link
               href={homeHref}

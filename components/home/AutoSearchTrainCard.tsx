@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { formatDurationMinutes, formatTimeAmPm } from "@/components/booking-v2/alternatePathHelpers";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import { isBrowserOnLocalhost } from "@/lib/observability";
+import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import type {
   AlternatePathProgressEvent,
   AlternatePathsResponse,
@@ -61,9 +62,36 @@ export function AutoSearchTrainCard({
 
 
   const hasInitiatedRef = useRef(false);
+  const hasTrackedLoadedRef = useRef(false);
 
   const fromCode = (train.fromStnCode ?? searchFrom ?? "").trim().toUpperCase();
   const toCode = (train.toStnCode ?? searchTo ?? "").trim().toUpperCase();
+
+  // Track when confirmed tickets result is loaded and displayed
+  useEffect(() => {
+    if (
+      !loading &&
+      !error &&
+      result &&
+      result.legs &&
+      result.legs.length > 0 &&
+      !hasTrackedLoadedRef.current
+    ) {
+      hasTrackedLoadedRef.current = true;
+      trackAnalyticsEvent({
+        name: "experiment_a_tickets_loaded",
+        properties: {
+          train_number: train.trainNumber,
+          train_name: train.trainName,
+          from_code: fromCode,
+          to_code: toCode,
+          journey_date: journeyDate || "",
+          ticket_count: result.legCount,
+          is_complete: result.isComplete,
+        },
+      });
+    }
+  }, [loading, error, result, train.trainNumber, train.trainName, fromCode, toCode, journeyDate]);
 
   // Auto-run search on mount for unavailable trains
   useEffect(() => {
@@ -309,6 +337,7 @@ export function AutoSearchTrainCard({
               type="button"
               onClick={() => {
                 hasInitiatedRef.current = false;
+                hasTrackedLoadedRef.current = false;
                 setLoading(true);
                 setError(null);
               }}
@@ -326,19 +355,31 @@ export function AutoSearchTrainCard({
           {result.legs && result.legs.length > 0 ? (
             <div className="flex items-center justify-between gap-3">
               <p className="text-sm font-bold text-slate-900">
-                🎉 Found you {result.legCount} confirmed seat{result.legCount > 1 ? "s" : ""}!
+                🎉 Found {result.legCount} confirmed ticket{result.legCount > 1 ? "s" : ""}!
               </p>
 
               <button
                 type="button"
-                onClick={() =>
+                onClick={() => {
+                  trackAnalyticsEvent({
+                    name: "ticket_details_cta_clicked",
+                    properties: {
+                      train_number: train.trainNumber,
+                      train_name: train.trainName,
+                      from_code: fromCode,
+                      to_code: toCode,
+                      journey_date: journeyDate || "",
+                      ticket_count: result.legCount,
+                      is_complete: result.isComplete,
+                    },
+                  });
                   onOpenFullResultModal?.({
                     trainNumber: train.trainNumber,
                     trainName: train.trainName,
                     avlClasses: train.avlClasses,
                     result,
-                  })
-                }
+                  });
+                }}
                 className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25"
               >
                 Ticket Details
