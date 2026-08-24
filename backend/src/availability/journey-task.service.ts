@@ -1001,7 +1001,7 @@ export class JourneyTaskService {
               : new Date(String(task.journeyDate).slice(0, 10));
 
           // Check if user has already received an alert for this train and journey date
-          let existingNotification = null;
+          let existingNotification: unknown = null;
           try {
             existingNotification =
               await this.prisma.sentNotificationLog.findFirst({
