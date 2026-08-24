@@ -70,15 +70,28 @@ post well is still a wasted day.
 - **IRCTC Official Alerts & Passenger Enquiries (Fallback Signal)** — If no trending news is found on Google News, use `/browser` to inspect official IRCTC alerts at `https://www.irctc.co.in/nget/enquiry/alerts`. Scan active passenger advisories, Tatkal rules, cancellation policy updates, or special train notifications to select a high-relevance topic for writing.
 - **Existing inventory** on disk (`content/blog/*.md`) + `memory/blog-topics-written.md`.
 
-## 4. The triage decision tree (run in this order)
-For each high-value query, classify the action. **Prefer improving existing pages over
-writing new ones** — Google rewards depth and freshness, and new thin posts cannibalize.
+## 4. The triage decision tree & Opportunity Scoring Engine
+For each query cluster, classify the action using **Headroom Opportunity Scoring** (inspired by the *blogEO* engine). Rather than guessing or relying on post age, calculate the headroom across three 28-day rolling levers:
+
+1. **`recover` (Traffic Regression):** Clicks lost vs previous 28-day period $\rightarrow$ **REFRESH** (factual update, fee verification, rule check).
+2. **`ctr` (Page-1 CTR Bleeder):** Posts ranking on Page 1 (positions 1–10) where actual CTR is below the organic CTR benchmark curve $\rightarrow$ **CTR REWRITE** (title & meta description overhaul + top-of-page CTA hook).
+   - *Expected CTR Benchmarks:* Pos 1 = 28%, Pos 2 = 15%, Pos 3 = 10%, Pos 4–5 = 6%, Pos 6–7 = 4%, Pos 8–10 = 2.5%, Page 2 = 1.0%.
+   - $\text{Opportunity Headroom} = \text{Impressions} \times (\text{Expected CTR} - \text{Actual CTR})$.
+3. **`rank` (Page-2 Near-Miss Push):** High-impression queries ranking on Page 2 (positions 11–20) that would capture substantial traffic if pushed to Page 1 $\rightarrow$ **EXPAND** (H2 query fan-out, comparison tables, FAQ expansion).
+
+*The largest of these three headroom estimates wins and determines the exact playbook action.*
+
+### Guardrails for Triage:
+- **Low Impression Filter:** If impressions are low (<150), a low CTR is dropped from high opportunity ("nobody is searching for this; no edit will fix zero demand").
+- **Real Click Drop Priority:** Real absolute and proportional click drops take emergency priority over theoretical estimates.
+- **Cannibalization Guard:** Never create a 2nd post for an already-ranked query. If a query is owned by an existing post, route it to **EXPAND / REFRESH** on the canonical slug.
 
 | Signal | Action | What you do |
 |---|---|---|
-| We rank **pos 5–20** for a query but the page is thin on it | **EXPAND** | Add question-based H2 section(s) + FAQ entries to the *existing* page. Bump `updated`. |
-| We ranked well, position is **slipping**, facts are aging | **REFRESH** | Verify timings/fees/rules, tighten the direct answers, add any new sub-questions. Bump `updated`. |
-| High-intent query, **decent impressions**, **zero coverage** in inventory | **WRITE NEW** | Create a new post (+ 6 translations). |
+| We rank **pos 5–20** for a query (high `rank` headroom) but page is thin | **EXPAND** | Add question-based H2 section(s) + comparison tables + FAQ entries to the *existing* page. Bump `updated`. |
+| We rank **pos 1–10** with below-benchmark CTR (high `ctr` headroom) | **CTR REWRITE** | Retitle frontmatter to lead with exact search query, rewrite meta description (≤160ch), add top CTA blockquote. Bump `updated`. |
+| We ranked well, position is **slipping** / clicks lost (high `recover` headroom) | **REFRESH** | Verify timings/fees/rules, tighten 40–60 word direct answers, add fresh sub-questions. Bump `updated`. |
+| High-intent query, **decent impressions (150+)**, **zero coverage** in inventory | **WRITE NEW** | Create a new post (+ 6 translations) after passing the 4 Automated Quality Gates. |
 | **Two of our pages** compete for the same query | **CONSOLIDATE** | Pick the canonical page, expand it, and add internal links from the weaker one (don't delete without reason). |
 
 ### 4.1. Weekly Intent-Matching & Candidate Queue Automation
@@ -87,11 +100,9 @@ Every week (or during scheduled triage runs), query signals with recent impressi
 - **No Match Found (Intent Overlap < 50%):** Added to **`memory/new-keyword-candidates.md`** for user review and automated article generation via Playbook D.
 
 ### Prioritisation within a run
-1. **Highest impressions × weakest position that we can realistically move** (a pos-9 query
-   with 300 impressions beats a pos-3 query with 50).
-2. Queries where a **direct-answer gap** exists (people are asking a precise question we
-   answer only vaguely).
-3. Breakout Trends topics with no coverage.
+1. **Highest Opportunity Headroom** ($\text{Headroom} = \max(\text{recover}, \text{ctr}, \text{rank})$).
+2. Queries where a **direct-answer gap** exists (users ask a precise question answered only vaguely on SERP).
+3. Breakout Google Trends / IRCTC Policy shifts with zero existing coverage.
 Log *why* you picked today's target in the commit body or memory note.
 
 ### Worked triage example
@@ -419,36 +430,56 @@ Before finalising, re-read and fix any of these tells:
 - [ ] No em-dash overuse; sentence length varies; contractions used naturally.
 - [ ] Concrete numbers/timings/fees, not vague hedges ("a few hours" → "about 4 hours").
 - [ ] At least one genuinely useful edge case or "gotcha" a generic article would miss.
-- [ ] No repeated stock phrases across sections ("In conclusion", "Rest assured", "Navigate
-      the complexities of").
-- [ ] Reads like advice from a person who has actually done this.
+- [ ] No repeated stock phrases across sections ("In conclusion", "Rest assured", "Navigate the complexities of").
+- [ ] Reads like advice from a person who has actually booked tickets and navigated railway platforms.
 
-## 16. E-E-A-T & fact-checking
-- Ground every rule/fee/timing. If a specific figure isn't certain, describe the rule
-  qualitatively and tell the reader to confirm on IRCTC — never fabricate a number.
-- Add the standard trust line where relevant: LastBerth helps you *find* options; verify
-  final status and **book through your authorized channel** (IRCTC / counter).
+## 16. The 4 Automated Quality Gates (blogEO Standard)
+Before any draft (new post or surgical edit) is finalized, it must pass **4 Automated Quality Gates**:
 
-## 17. Multi-agent execution (Antigravity capability)
-You must leverage the multi-agent capabilities of Antigravity by spinning up specialized subagents to divide the research and writing tasks. Specifically, you must spin up agents to do the following 3 signal-gathering tasks:
+1. **Strategy Gate:** 
+   - Directly maps to a defined user persona (stressed commuter, confused tourist, researcher) and search cluster.
+   - Zero banned corporate filler, zero AI boilerplate openings.
+2. **Structure & AEO Gate:**
+   - Mandatory top `## TL;DR` (2–4 concise sentences answering the core query outright).
+   - Question-based H2 headings matching verbatim search queries.
+   - Strict 40–60 word bold direct answers immediately in paragraph 1 under every H2.
+   - FAQ schema section (`## Common Booking Questions (FAQ)`) placed near end with 6–10 H3 questions ending in `?`.
+3. **Factual & Rule Provenance Gate:**
+   - Every rule, fee, timing, and quota MUST trace directly to canonical sources (Railway Board circulars, IRCTC rules, commercial manuals).
+   - Zero hallucinated numbers. Concrete figures only (e.g. ₹500 Section 138 fine, 11:45 PM–12:20 AM maintenance, 10 AM/11 AM Tatkal, 60-day ARP, ~8h First Chart / 30-min Final Chart).
+4. **Cannibalization Gate:**
+   - Verify that the target query is not already owned by an existing post on disk.
+   - If an existing post already targets the query, **never draft a competing post**. Route it as an **EXPAND** or **CTR REWRITE** edit on the existing canonical slug.
+
+## 17. AEO Optimization & Dual-Engine Visibility (Search + AI Answers)
+Modern ticketing content must optimize for both **Google Search Clicks** and **AI Engine Citations** (Google AI Overviews, ChatGPT, Claude, Perplexity):
+- **The 3 AI Referral Layers:**
+  1. *Crawl Layer:* Search bots index semantic markdown and structured JSON-LD.
+  2. *Cite Layer (AEO):* LLMs quote our 40–60 word direct answers because they are definitive, concise, and mathematically grounded.
+  3. *Click Layer (Referral):* Direct traffic from SERP snippet links and AI Overview source cards.
+- **Closed-Loop Performance Snapshotting (+28d / +56d Controls):**
+  - When evaluating past post edits or new launches in GSC audits, compare performance at 28-day and 56-day intervals against **domain-wide baseline numbers** to separate Google algorithmic shifts from post-level improvements.
+
+## 18. Multi-agent execution (Antigravity capability)
+You must leverage the multi-agent capabilities of Antigravity by spinning up specialized subagents to divide the research and writing tasks:
 1. **Google Trends Analyst** — Visits the Google Trends IRCTC explore URL (`https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`) to pull the top trending or breakout keywords and identify immediate search spikes.
 2. **Google News & IRCTC Alerts Researcher** — Uses `/browser` to open Google News Search (`https://news.google.com/search?q=indian+railways&hl=en-IN&gl=IN&ceid=IN:en`) to find trending Indian Railways / IRCTC news, announcements, or policy updates. If no trending news is found, uses `/browser` to visit official IRCTC alerts (`https://www.irctc.co.in/nget/enquiry/alerts`) to scan active passenger advisories, Tatkal updates, or service alerts to select a target topic.
-3. **GSC Performance Auditor** — Opens Google Search Console (`https://search.google.com/search-console`) via `/browser`, exports the performance data file (Queries and Pages), reviews impression numbers, CTR, and average positions, and identifies low-CTR or position 5–20 queries that are prime candidates for CTR rewrites or content expansion.
+3. **GSC Performance Auditor** — Opens Google Search Console (`https://search.google.com/search-console`) via `/browser`, exports the performance data file (Queries and Pages), reviews impression numbers, CTR, and average positions, and calculates Headroom Opportunity Scores (`recover`, `ctr`, `rank`) across positions 1–20.
 
 Once these signal-gathering subagents compile their findings, you will triage the candidates, choose the topic, and spin up:
 - **Writer** — to produce the English markdown following the Part C template and canonical facts.
 - **AI-Bypass Editor** — to humanize sentences against §15, enforce the 40–60 word direct-answer rule, and eliminate AI-tells.
 - **Linguist Translator** — to generate native-quality localized translations (`hi, mr, bn, ta, te, ml`) using identical slug structures.
-- **Compliance Auditor** — to verify YAML frontmatter, character limits, parser schema safety, and ensure no source code is modified.
+- **Compliance Auditor** — to verify YAML frontmatter, character limits, parser schema safety, and verify the 4 Quality Gates.
 
-## 18. Definition of Done (all must be true before commit)
-- [ ] English post follows the template, question-H2s, 40–60 word answers, tables where apt.
+## 19. Definition of Done (all must be true before commit)
+- [ ] English post passes all 4 Automated Quality Gates (Strategy, Structure, Provenance, Cannibalization).
+- [ ] Question-H2s with 40–60 word direct answers in bold; comparison tables where applicable.
 - [ ] FAQ section obeys the §7 parser contract (trigger H2 + H3 questions + placed near end).
 - [ ] Frontmatter valid; `title` ≤60, `description` ≤160; `updated` bumped (or set for new).
 - [ ] Not a duplicate/near-duplicate of any existing slug (checked against disk + memory).
-- [ ] All 6 translations exist for the slug and match the current English content (stale
-      translations deleted + regenerated on EXPAND/REFRESH).
-- [ ] LastBerth feature interlinked naturally with a correct route.
+- [ ] All 6 translations exist for the slug and match the current English content (stale translations deleted + regenerated on EXPAND/REFRESH).
+- [ ] LastBerth feature interlinked naturally with a correct route (`/` or `/seat-status`).
 - [ ] `memory/blog-topics-written.md` updated with the new/updated entry.
 - [ ] Only markdown + the memory file changed; no source code touched.
 

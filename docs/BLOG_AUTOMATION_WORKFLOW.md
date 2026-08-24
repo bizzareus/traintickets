@@ -65,29 +65,38 @@ position 5–20 is the top priority. Filter out navigational/brand/stock/competi
 **If both are unreachable** (no Chrome, no CSV): fall back to writing ONE genuinely uncovered
 new post from knowledge (Playbook D), and say so in the summary.
 
-## Step 1 — Triage & batch: rank the opportunities, then process several
+## Step 1 — Triage & batch: Headroom Opportunity Scoring (blogEO Engine)
 
-Build a RANKED opportunity list from the merged GSC + Trends signals, classify each into a
-playbook, then execute a BATCH this run (default: the top 3–6 distinct opportunities; do more
-only if they're genuinely strong and non-overlapping). Prefer EXPAND/REFRESH of existing
-pages over new posts, and never produce near-duplicate new pages (scaled-content-abuse risk).
-Dedup every NEW idea against `memory/blog-topics-written.md` and `content/blog/`.
+Build a RANKED opportunity list from the merged GSC + Trends + News signals, classify each into a
+playbook, then execute a BATCH this run. Rather than relying on guesswork or article age, score every candidate using **Headroom Opportunity Scoring**:
 
-Classify each opportunity (default priority order; deviate only if the data clearly favours another):
+1. **`recover` (Traffic Regression):** Clicks lost vs previous 28-day window $\rightarrow$ **REFRESH** (Playbook B).
+2. **`ctr` (Page-1 CTR Bleeder):** Positions 1–10 where actual CTR < expected CTR curve $\rightarrow$ **CTR REWRITE** (Playbook A / Frontmatter).
+   - *Expected CTR Benchmark:* Pos 1 = 28%, Pos 2 = 15%, Pos 3 = 10%, Pos 4–5 = 6%, Pos 6–7 = 4%, Pos 8–10 = 2.5%, Page 2 = 1.0%.
+   - $\text{Opportunity Headroom} = \text{Impressions} \times (\text{Expected CTR} - \text{Actual CTR})$.
+3. **`rank` (Page-2 Near-Miss Push):** Positions 11–20 with high impressions (150+) $\rightarrow$ **EXPAND** (Playbook A).
 
-1. **EXPAND (Playbook A)** — a query sits in **positions 5–20** (page-1-bottom / page-2) and
-   the ranking page doesn't fully answer it, OR a page's own query list (Pages → Queries)
-   shows sub-questions it doesn't cover. Usually the highest ROI.
-2. **CTR fix (part of A/B)** — query ranks well (pos ≤10) but CTR is low → the title/meta is
-   the problem, not the ranking. Often combined with EXPAND or REFRESH.
-3. **REFRESH (Playbook B)** — a previously-ranking page is **losing** clicks/impressions
-   (period comparison) or is factually stale.
-4. **CONSOLIDATE (Playbook C)** — multiple LastBerth URLs compete for the same query
-   (cannibalization), splitting authority.
-5. **WRITE NEW (Playbook D)** — a query has real impressions but **no dedicated page** and no
-   existing page is a good fit to expand.
+*The largest headroom estimate wins and determines the prioritized action.*
+
+### Guardrails:
+- **Low Impression Filter:** If impressions < 150, low CTR is dropped from high opportunity ("nobody searches for this").
+- **Cannibalization Check:** Never draft a second competing post for an existing ranking query. Route to EXPAND on the canonical slug.
+
+Classify each opportunity (default priority order):
+
+1. **EXPAND (Playbook A)** — high `rank` headroom (pos 5–20) where page is thin.
+2. **CTR REWRITE (Playbook A/B)** — high `ctr` headroom (pos 1–10) where title/meta description underperforms.
+3. **REFRESH (Playbook B)** — high `recover` headroom (traffic regression or stale railway rules/fees).
+4. **CONSOLIDATE (Playbook C)** — multiple LastBerth URLs compete for the same query.
+5. **WRITE NEW (Playbook D)** — high-intent query with 150+ impressions and zero coverage on disk.
 
 State the chosen action and the evidence (query, position, CTR, trend, page) before acting.
+
+### The 4 Automated Quality Gates (Must pass before publishing):
+1. **Strategy Gate:** Maps to user personas, target query cluster, zero banned corporate fluff.
+2. **Structure Gate:** Top TL;DR (2–4 sentences), question H2s, 40–60 word bold direct answers, valid FAQPage schema.
+3. **Provenance Gate:** Every timing/fee/quota traces to official Railway Board/IRCTC sources. No invented figures.
+4. **Cannibalization Gate:** Verify query is unowned; if owned, hand off to Audit as an edit to canonical post.
 
 ### Playbook A — EXPAND an existing page
 - Edit the English page that ranks. Add/repoint H2(s) to match the exact query wording; add a
