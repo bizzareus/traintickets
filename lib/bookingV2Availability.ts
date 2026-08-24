@@ -62,3 +62,16 @@ export function hasAnyAvailableSeat(
   });
 }
 
+/**
+ * Normalizes availability status string for clean display, converting CURR_AVL / CURR_AVBL / CURR_AV to AVL.
+ */
+export function formatAvailabilityStatus(status?: string | null): string {
+  if (!status) return "—";
+  return status
+    .replace(/\bCURR_AVBL\b/gi, "AVL")
+    .replace(/\bCURR_AVL\b/gi, "AVL")
+    .replace(/\bCURR_AV\b/gi, "AVL")
+    .replace(/CURR_AVL/gi, "AVL")
+    .replace(/CURR_AVBL/gi, "AVL");
+}
+

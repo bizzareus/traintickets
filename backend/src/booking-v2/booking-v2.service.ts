@@ -506,7 +506,7 @@ export class BookingV2Service {
           : null,
       availabilityDisplayName:
         typeof r.availabilityDisplayName === 'string'
-          ? r.availabilityDisplayName
+          ? r.availabilityDisplayName.replace(/CURR_AVBL|CURR_AVL|CURR_AV/gi, 'AVL')
           : null,
     };
   }

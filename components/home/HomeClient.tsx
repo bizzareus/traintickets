@@ -12,7 +12,7 @@ import {
 import { useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
-import { isIrctcDirectBookable, hasAnyAvailableSeat } from "@/lib/bookingV2Availability";
+import { isIrctcDirectBookable, hasAnyAvailableSeat, formatAvailabilityStatus } from "@/lib/bookingV2Availability";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
 import dynamic from "next/dynamic";
@@ -1613,10 +1613,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   <div className="flex min-w-min gap-2 px-1">
                     {displayedClasses.map((cls) => {
                       const gn = t.availabilityCache?.[cls];
-                      const line =
+                      const rawLine =
                         gn?.availabilityDisplayName ??
                         gn?.railDataStatus ??
                         "—";
+                      const line = formatAvailabilityStatus(rawLine);
                       const statusCls = gn
                         ? chipGeneralStatusClass(line)
                         : undefined;
