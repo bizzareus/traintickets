@@ -2,7 +2,7 @@
 title: "IRCTC vs Ixigo vs ConfirmTkt: Fees & Tatkal Speed (2026)"
 description: "Compare IRCTC direct vs Ixigo, ConfirmTkt & MakeMyTrip booking charges, agent convenience fees, Tatkal speed blackout rules, wallet refund traps & safety."
 date: "2026-08-23"
-updated: "2026-08-23"
+updated: "2026-08-24"
 tags:
   - irctc
   - train booking
@@ -69,7 +69,7 @@ To ensure safety and authenticity, always keep the following operational realiti
 If you are trying to secure a last-minute Tatkal ticket on high-demand routes where seats vanish within 60 to 120 seconds, using a third-party app will almost certainly result in failure.
 
 Here is why third-party apps struggle during Tatkal hours:
-1. **The 30-Minute Agent Blackout Rule:** Under Indian Railways commercial policies, all third-party B2C travel agents and partner APIs are locked out of the Tatkal booking window during the first 30 minutes of opening (10:00 AM to 10:30 AM for AC classes like 1A, 2A, 3A, 3E, and CC; 11:00 AM to 11:30 AM for Non-AC Sleeper class). By the time third-party apps are permitted to query Tatkal inventory at 10:30 AM or 11:30 AM, confirmed berths on popular trains are already completely booked.
+1. **The 30-Minute Agent Blackout Rule:** Under Indian Railways commercial policies, all third-party B2C travel agents and partner APIs are locked out of the Tatkal booking window during the first 30 minutes of opening (10:00 AM to 10:30 AM for AC classes like 2A, 3A, 3E, CC, and EC; 11:00 AM to 11:30 AM for Non-AC Sleeper class). By the time third-party apps are permitted to query Tatkal inventory at 10:30 AM or 11:30 AM, confirmed berths on popular trains are already completely booked.
 2. **Aadhaar OTP Authentication Bottlenecks:** Indian Railways mandates real-time passenger verification during peak Tatkal opening. Third-party apps introduce intermediary API redirects that increase latency, often triggering gateway timeouts or session expiration errors.
 3. **Daily Tatkal PNR Limits:** IRCTC strictly enforces a limit of **2 Tatkal PNRs per user per day**, regardless of whether you book on the official portal or through an authorized partner app.
 
@@ -104,7 +104,7 @@ The critical difference lies in where and how quickly your remaining refund bala
 - **Third-Party Wallet Traps:** Many third-party apps advertise "Instant Refunds within 2 Minutes." However, this instant payout is typically credited to an internal app wallet (such as Ixigo Money or MakeMyTrip Wallet). These wallet credits can only be used to purchase future bookings on the same platform and often cannot be transferred to your bank account.
 - **TDR (Ticket Deposit Receipt) Differences:** If your train is delayed by more than 3 hours, you can file an online TDR to claim a full refund. On IRCTC direct, your TDR is processed and tracked directly with railway audit officers. On third-party apps, your request must pass through third-party support queues, which can delay processing.
 
-Remember that in Indian Railways ticketing, **WL full form is Waiting List**, and ticket status progresses through the queue: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If your online e-ticket remains fully waitlisted after final chart preparation (~8 hours before departure), IRCTC automatically cancels the ticket and refunds the full base fare minus a ₹60 clerkage charge directly to your source account.
+Remember that in Indian Railways ticketing, **WL full form is Waiting List**, and ticket status progresses through the queue: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If your online e-ticket remains fully waitlisted after final chart preparation (~8 hours before departure), IRCTC automatically cancels the ticket and refunds the full booking fare (with no cancellation or clerkage fee deducted) directly to your source account.
 
 ---
 

@@ -52,14 +52,13 @@ Because prices rise with every booking, securing berths in the earliest slab off
 
 This 50% refund cap is unique to Suvidha trains. Regular express trains offer graded cancellation deductions based on time slabs, but Suvidha trains retain at least half of your fare regardless of how early you cancel.
 
-| Cancellation Timeframe | Suvidha Train Refund | Regular Express Train Refund (2026 Rules) |
+| Cancellation Timeframe | Suvidha Train Refund | Regular Express Train Refund (Official IRCTC Rules) |
 | :--- | :--- | :--- |
-| **More than 72 hours before departure** | **50% of Base Fare** | Flat clerkage deduction (₹120–₹240 by class) |
-| **24 to 72 hours before departure** | **50% of Base Fare** | 75% refund (25% cancellation charge + GST) |
-| **8 to 24 hours before departure** | **50% of Base Fare** | 50% refund (50% cancellation charge + GST) |
-| **6 to 8 hours before departure** | **50% of Base Fare** | 0% refund (No refund under 8-hour rule) |
-| **Less than 6 hours before departure** | **0% (Zero Refund)** | 0% refund |
-| **After Chart Preparation** | **0% (Zero Refund)** | 0% refund |
+| **More than 48 hours before departure** | **50% of Base Fare** | Flat cancellation charge (₹60–₹240 by class + GST on AC) |
+| **12 to 48 hours before departure** | **50% of Base Fare** | 75% refund (25% cancellation charge + GST) |
+| **6 to 12 hours before departure** | **50% of Base Fare** | 50% refund (50% cancellation charge + GST) |
+| **4 to 6 hours before departure** | **0% (Zero Refund)** | 50% refund (50% cancellation charge + GST) |
+| **Less than 4 hours before departure / Chart Prepared** | **0% (Zero Refund)** | 0% refund |
 | **Train Cancelled by Railways** | **100% Full Refund** | **100% Full Refund** |
 
 If Indian Railways cancels the Suvidha service due to operational reasons, bad weather, or accidents, IRCTC automatically processes a 100% full refund to the original payment source without requiring a manual TDR (Ticket Deposit Receipt).
