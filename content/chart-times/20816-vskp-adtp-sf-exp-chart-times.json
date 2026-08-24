@@ -27,8 +27,8 @@
       "distance": "8.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "61.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "131.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "203.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "235.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "253.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "277.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "299.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "353.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "424.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -157,8 +157,8 @@
       "distance": "443.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -170,8 +170,8 @@
       "distance": "471.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -183,8 +183,8 @@
       "distance": "535.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -196,8 +196,8 @@
       "distance": "542.0",
       "chartTimeLocal": "20:24",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -293,6 +293,6 @@
     }
   ],
   "summary": "The first reservation chart for Vskp Adtp Sf Exp (20816) is prepared at Visakhapatnam (VSKP) around 8:24 PM. 15 of 22 stations on the VSKP to ADTP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:21:00.495Z",
+  "generatedAt": "2026-08-24T22:48:15.552Z",
   "knownChartCount": 15
 }

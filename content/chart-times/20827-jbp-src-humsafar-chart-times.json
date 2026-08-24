@@ -12,11 +12,11 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:48",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "08:45",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ROU"
     },
     {
       "stationCode": "KTES",
@@ -25,11 +25,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "90.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:06",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:01",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "SDL",
@@ -162,7 +162,7 @@
       "chartRemoteStation": "ROU"
     }
   ],
-  "summary": "The first reservation chart for Jbp Src Humsafar (20827) is prepared at Shahdol (SDL) around 10:06 AM, with a second (vacancy) chart around 8:01 PM. 10 of 12 stations on the JBP to SRC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:21:37.707Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for Jbp Src Humsafar (20827) is prepared at Jabalpur (JBP) around 8:48 PM, with a second (vacancy) chart around 8:45 AM. 12 of 12 stations on the JBP to SRC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:48:49.217Z",
+  "knownChartCount": 12
 }

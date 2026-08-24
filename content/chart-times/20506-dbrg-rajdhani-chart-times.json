@@ -12,11 +12,11 @@
       "departureTime": "11:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "22:46",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "NDLS"
+      "chartTimeLocal": "09:15",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "17:15",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RNY"
     },
     {
       "stationCode": "MB",
@@ -25,10 +25,10 @@
       "departureTime": "14:11",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": "04:11",
+      "chartTimeLocal": "04:12",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:56",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MB"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "258.0",
-      "chartTimeLocal": "04:11",
+      "chartTimeLocal": "04:12",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:56",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MB"
     },
     {
@@ -51,11 +51,11 @@
       "departureTime": "18:50",
       "day": 1,
       "distance": "493.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:57",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "BSB",
@@ -64,11 +64,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "794.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSB"
     },
     {
       "stationCode": "BUI",
@@ -370,7 +370,7 @@
       "chartRemoteStation": "RNY"
     }
   ],
-  "summary": "The first reservation chart for Dbrg Rajdhani (20506) is prepared at New Delhi (NDLS) around 10:46 PM. 26 of 28 stations on the NDLS to DBRG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:18:41.870Z",
-  "knownChartCount": 26
+  "summary": "The first reservation chart for Dbrg Rajdhani (20506) is prepared at New Delhi (NDLS) around 9:15 AM, with a second (vacancy) chart around 5:15 PM. 28 of 28 stations on the NDLS to DBRG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:46:22.626Z",
+  "knownChartCount": 28
 }

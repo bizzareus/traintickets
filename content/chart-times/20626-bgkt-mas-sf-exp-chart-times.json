@@ -129,10 +129,10 @@
       "departureTime": "12:17",
       "day": 1,
       "distance": "392.0",
-      "chartTimeLocal": "21:29",
+      "chartTimeLocal": "21:27",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "07:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JOR"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "455.0",
-      "chartTimeLocal": "21:31",
+      "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBIB"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "16:57",
       "day": 1,
       "distance": "561.0",
-      "chartTimeLocal": "21:31",
+      "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBIB"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "17:49",
       "day": 1,
       "distance": "631.0",
-      "chartTimeLocal": "21:31",
+      "chartTimeLocal": "21:29",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBIB"
     },
     {
@@ -181,11 +181,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "694.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDN"
     },
     {
       "stationCode": "NDB",
@@ -194,11 +194,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "850.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:17",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UDN"
     },
     {
       "stationCode": "JL",
@@ -422,7 +422,7 @@
       "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Bgkt Mas Sf Exp (20626) is prepared at Bhagat Ki Kothi (BGKT) around 9:14 PM, with a second (vacancy) chart around 5:25 AM. 30 of 32 stations on the BGKT to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:19:12.625Z",
-  "knownChartCount": 30
+  "summary": "The first reservation chart for Bgkt Mas Sf Exp (20626) is prepared at Bhagat Ki Kothi (BGKT) around 9:14 PM, with a second (vacancy) chart around 5:25 AM. 32 of 32 stations on the BGKT to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:46:57.241Z",
+  "knownChartCount": 32
 }

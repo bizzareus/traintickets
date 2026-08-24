@@ -25,10 +25,10 @@
       "departureTime": "11:12",
       "day": 1,
       "distance": "25.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "11:35",
       "day": 1,
       "distance": "43.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "12:30",
       "day": 1,
       "distance": "119.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "182.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "13:57",
       "day": 1,
       "distance": "195.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "14:57",
       "day": 1,
       "distance": "268.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "322.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "17:12",
       "day": 1,
       "distance": "367.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "17:35",
       "day": 1,
       "distance": "392.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "18:02",
       "day": 1,
       "distance": "424.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "18:30",
       "day": 1,
       "distance": "446.0",
-      "chartTimeLocal": "19:54",
+      "chartTimeLocal": "19:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:35",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "SBP"
     },
     {
@@ -168,11 +168,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "506.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "RJY",
@@ -181,11 +181,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "707.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:56",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "EE",
@@ -305,7 +305,7 @@
       "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "The first reservation chart for Sbp Ned S F (20809) is prepared at Sambalpur (SBP) around 9:51 AM, with a second (vacancy) chart around 7:45 PM. 21 of 23 stations on the SBP to NED route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:20:42.610Z",
-  "knownChartCount": 21
+  "summary": "The first reservation chart for Sbp Ned S F (20809) is prepared at Sambalpur (SBP) around 9:51 AM, with a second (vacancy) chart around 7:45 PM. 23 of 23 stations on the SBP to NED route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:47:52.762Z",
+  "knownChartCount": 23
 }

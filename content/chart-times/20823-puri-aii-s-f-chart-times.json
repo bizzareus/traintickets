@@ -12,11 +12,11 @@
       "departureTime": "23:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "23:09",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "13:40",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "KUR",
@@ -25,11 +25,11 @@
       "departureTime": "23:58",
       "day": 1,
       "distance": "44.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PURI"
     },
     {
       "stationCode": "BBS",
@@ -591,7 +591,7 @@
       "chartRemoteStation": "ABR"
     }
   ],
-  "summary": "The first reservation chart for Puri Aii S F (20823) is prepared at Bhubaneswar (BBS) around 12:57 PM, with a second (vacancy) chart around 10:50 PM. 42 of 45 stations on the PURI to AII route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:21:31.613Z",
-  "knownChartCount": 42
+  "summary": "The first reservation chart for Puri Aii S F (20823) is prepared at Puri (PURI) around 11:09 PM, with a second (vacancy) chart around 1:40 PM. 44 of 45 stations on the PURI to AII route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:48:44.679Z",
+  "knownChartCount": 44
 }

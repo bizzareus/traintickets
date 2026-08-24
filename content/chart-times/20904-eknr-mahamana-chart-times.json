@@ -38,10 +38,10 @@
       "departureTime": "11:15",
       "day": 1,
       "distance": "326.0",
-      "chartTimeLocal": "20:24",
+      "chartTimeLocal": "20:30",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "STA"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "425.0",
-      "chartTimeLocal": "20:24",
+      "chartTimeLocal": "20:30",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "STA"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "14:30",
       "day": 1,
       "distance": "515.0",
-      "chartTimeLocal": "20:25",
+      "chartTimeLocal": "20:36",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:15",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "JBP"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "18:35",
       "day": 1,
       "distance": "760.0",
-      "chartTimeLocal": "21:50",
+      "chartTimeLocal": "20:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "18:20",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ET"
     },
     {
@@ -90,11 +90,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "1067.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "AN",
@@ -175,7 +175,7 @@
       "chartRemoteStation": "ST"
     }
   ],
-  "summary": "The first reservation chart for Eknr Mahamana (20904) is prepared at Varanasi Jn (BSB) around 8:05 PM, with a second (vacancy) chart around 5:10 AM. 12 of 13 stations on the BSB to EKNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:22:50.982Z",
-  "knownChartCount": 12
+  "summary": "The first reservation chart for Eknr Mahamana (20904) is prepared at Varanasi Jn (BSB) around 8:05 PM, with a second (vacancy) chart around 5:10 AM. 13 of 13 stations on the BSB to EKNR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:49:54.366Z",
+  "knownChartCount": 13
 }

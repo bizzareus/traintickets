@@ -12,11 +12,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NCJ"
     },
     {
       "stationCode": "TEN",
@@ -591,7 +591,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Njp Amrit Bharat (20604) is prepared at Rajahmundry (RJY) around 12:04 PM, with a second (vacancy) chart around 9:45 PM. 21 of 45 stations on the NCJ to NJP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:18:56.230Z",
-  "knownChartCount": 21
+  "summary": "The first reservation chart for Njp Amrit Bharat (20604) is prepared at Nagercoil Jn (NCJ) around 1:01 PM, with a second (vacancy) chart around 10:45 PM. 22 of 45 stations on the NCJ to NJP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:46:40.142Z",
+  "knownChartCount": 22
 }

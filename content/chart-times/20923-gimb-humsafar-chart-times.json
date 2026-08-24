@@ -90,10 +90,10 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "350.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "22:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ERS"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "13:35",
       "day": 1,
       "distance": "424.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "22:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ERS"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "457.0",
-      "chartTimeLocal": "20:16",
+      "chartTimeLocal": "22:35",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:40",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ERS"
     },
     {
@@ -129,11 +129,11 @@
       "departureTime": "16:30",
       "day": 1,
       "distance": "543.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "CAN",
@@ -142,11 +142,11 @@
       "departureTime": "17:55",
       "day": 1,
       "distance": "632.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "KGQ",
@@ -155,11 +155,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "718.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "MAJN",
@@ -168,11 +168,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "765.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CLT"
     },
     {
       "stationCode": "KAWR",
@@ -292,7 +292,7 @@
       "chartRemoteStation": "MAO"
     }
   ],
-  "summary": "The first reservation chart for Gimb Humsafar (20923) is prepared at Tirunelveli (TEN) around 8:13 PM, with a second (vacancy) chart around 4:55 AM. 18 of 22 stations on the TEN to GIMB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:23:39.771Z",
-  "knownChartCount": 18
+  "summary": "The first reservation chart for Gimb Humsafar (20923) is prepared at Tirunelveli (TEN) around 8:13 PM, with a second (vacancy) chart around 4:55 AM. 22 of 22 stations on the TEN to GIMB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:50:36.717Z",
+  "knownChartCount": 22
 }

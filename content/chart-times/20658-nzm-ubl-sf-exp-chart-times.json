@@ -12,11 +12,11 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "AGC",
@@ -25,11 +25,11 @@
       "departureTime": "17:47",
       "day": 1,
       "distance": "188.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "GWL",
@@ -38,11 +38,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "306.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:55",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "VGLJ",
@@ -51,11 +51,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "403.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:59",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VGLJ"
     },
     {
       "stationCode": "RKMP",
@@ -253,7 +253,7 @@
       "chartRemoteStation": "BJP"
     }
   ],
-  "summary": "The first reservation chart for Nzm Ubl Sf Exp (20658) is prepared at Gadag Jn (GDG) around 1:20 PM, with a second (vacancy) chart around 9:05 PM. 2 of 19 stations on the NZM to UBL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:19:40.861Z",
-  "knownChartCount": 2
+  "summary": "The first reservation chart for Nzm Ubl Sf Exp (20658) is prepared at H Nizamuddin (NZM) around 7:55 AM, with a second (vacancy) chart around 3:40 PM. 6 of 19 stations on the NZM to UBL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:47:05.785Z",
+  "knownChartCount": 6
 }

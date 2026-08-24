@@ -12,11 +12,11 @@
       "departureTime": "12:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:50",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "BBS"
+      "chartTimeLocal": "09:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "KUR",
@@ -25,10 +25,10 @@
       "departureTime": "12:30",
       "day": 1,
       "distance": "20.0",
-      "chartTimeLocal": "19:50",
+      "chartTimeLocal": "19:21",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BBS"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "13:15",
       "day": 1,
       "distance": "90.0",
-      "chartTimeLocal": "19:50",
+      "chartTimeLocal": "19:21",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BBS"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "14:02",
       "day": 1,
       "distance": "166.0",
-      "chartTimeLocal": "19:50",
+      "chartTimeLocal": "19:21",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BBS"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "15:50",
       "day": 1,
       "distance": "240.0",
-      "chartTimeLocal": "19:50",
+      "chartTimeLocal": "19:21",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BBS"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "16:40",
       "day": 1,
       "distance": "313.0",
-      "chartTimeLocal": "19:50",
+      "chartTimeLocal": "19:21",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BBS"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "382.0",
-      "chartTimeLocal": "19:50",
+      "chartTimeLocal": "19:21",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BBS"
     },
     {
@@ -103,11 +103,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "443.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "AKP",
@@ -116,11 +116,11 @@
       "departureTime": "19:55",
       "day": 1,
       "distance": "476.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "TUNI",
@@ -129,11 +129,11 @@
       "departureTime": "20:30",
       "day": 1,
       "distance": "540.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "RJY",
@@ -142,11 +142,11 @@
       "departureTime": "22:00",
       "day": 1,
       "distance": "644.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "TDD",
@@ -155,11 +155,11 @@
       "departureTime": "22:45",
       "day": 1,
       "distance": "686.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "EE",
@@ -168,11 +168,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "734.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VSKP"
     },
     {
       "stationCode": "BZA",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "The first reservation chart for Bbs Mas S F (20853) is prepared at Bhubaneswar (BBS) around 7:50 PM. 15 of 21 stations on the BBS to MAS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:22:18.920Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Bbs Mas S F (20853) is prepared at Bhubaneswar (BBS) around 9:02 AM, with a second (vacancy) chart around 6:55 PM. 21 of 21 stations on the BBS to MAS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:49:21.511Z",
+  "knownChartCount": 21
 }

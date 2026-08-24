@@ -12,11 +12,11 @@
       "departureTime": "15:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:13",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "RJT"
+      "chartTimeLocal": "21:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:57",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AWR"
     },
     {
       "stationCode": "WKR",
@@ -25,10 +25,10 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": "20:13",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RJT"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "16:10",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": "20:13",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RJT"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "16:54",
       "day": 1,
       "distance": "117.0",
-      "chartTimeLocal": "20:13",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RJT"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "17:57",
       "day": 1,
       "distance": "182.0",
-      "chartTimeLocal": "20:13",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RJT"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "18:57",
       "day": 1,
       "distance": "246.0",
-      "chartTimeLocal": "20:13",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RJT"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "20:20",
       "day": 1,
       "distance": "311.0",
-      "chartTimeLocal": "20:13",
+      "chartTimeLocal": "20:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RJT"
     },
     {
@@ -103,11 +103,11 @@
       "departureTime": "21:25",
       "day": 1,
       "distance": "364.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "PDWA",
@@ -116,11 +116,11 @@
       "departureTime": "22:00",
       "day": 1,
       "distance": "408.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "FA",
@@ -129,11 +129,11 @@
       "departureTime": "22:42",
       "day": 1,
       "distance": "463.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "MJ",
@@ -142,11 +142,11 @@
       "departureTime": "23:49",
       "day": 1,
       "distance": "529.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "BER",
@@ -318,7 +318,7 @@
       "chartRemoteStation": "AWR"
     }
   ],
-  "summary": "The first reservation chart for Rjt Dee Express (20913) is prepared at Rajkot Jn (RJT) around 8:13 PM. 20 of 24 stations on the RJT to DEE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:23:12.418Z",
-  "knownChartCount": 20
+  "summary": "The first reservation chart for Rjt Dee Express (20913) is prepared at Rajkot Jn (RJT) around 9:25 PM, with a second (vacancy) chart around 5:57 AM. 24 of 24 stations on the RJT to DEE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:50:09.722Z",
+  "knownChartCount": 24
 }

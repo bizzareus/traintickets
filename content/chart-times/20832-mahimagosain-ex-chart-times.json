@@ -12,11 +12,11 @@
       "departureTime": "19:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "RAIR",
@@ -25,11 +25,11 @@
       "departureTime": "20:14",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "BONA",
@@ -38,11 +38,11 @@
       "departureTime": "20:52",
       "day": 1,
       "distance": "118.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "ANGL",
@@ -51,11 +51,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "157.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "TLHR",
@@ -64,11 +64,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "175.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "DNKL",
@@ -77,11 +77,11 @@
       "departureTime": "23:23",
       "day": 1,
       "distance": "227.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:08",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SBP"
     },
     {
       "stationCode": "JJKR",
@@ -162,7 +162,7 @@
       "chartRemoteStation": "SBP"
     }
   ],
-  "summary": "The first reservation chart for Mahimagosain Ex (20832) is prepared at Jajpur K Road (JJKR) around 9:02 AM, with a second (vacancy) chart around 11:08 PM. 6 of 12 stations on the SBP to SHM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:21:40.757Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Mahimagosain Ex (20832) is prepared at Sambalpur (SBP) around 8:51 AM, with a second (vacancy) chart around 11:08 PM. 12 of 12 stations on the SBP to SHM route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:48:51.767Z",
+  "knownChartCount": 12
 }

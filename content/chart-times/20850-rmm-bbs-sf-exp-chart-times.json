@@ -12,11 +12,11 @@
       "departureTime": "09:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:25",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "RMM"
+      "chartTimeLocal": "12:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "RMD",
@@ -27,8 +27,8 @@
       "distance": "54.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "90.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "114.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "134.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "170.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "175.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "212.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "264.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "314.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "353.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -157,8 +157,8 @@
       "distance": "385.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -170,8 +170,8 @@
       "distance": "405.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -183,8 +183,8 @@
       "distance": "422.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -196,8 +196,8 @@
       "distance": "464.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -209,8 +209,8 @@
       "distance": "506.0",
       "chartTimeLocal": "20:25",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "RMM"
     },
     {
@@ -220,11 +220,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "665.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MS"
     },
     {
       "stationCode": "GDR",
@@ -357,7 +357,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Rmm Bbs Sf Exp (20850) is prepared at Rameswaram (RMM) around 8:25 PM. 16 of 27 stations on the RMM to BBS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:22:13.600Z",
-  "knownChartCount": 16
+  "summary": "The first reservation chart for Rmm Bbs Sf Exp (20850) is prepared at Rameswaram (RMM) around 12:19 PM, with a second (vacancy) chart around 10 PM. 17 of 27 stations on the RMM to BBS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:49:15.748Z",
+  "knownChartCount": 17
 }

@@ -12,11 +12,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "BYT",
@@ -25,11 +25,11 @@
       "departureTime": "19:05",
       "day": 1,
       "distance": "47.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSP"
     },
     {
       "stationCode": "R",
@@ -38,11 +38,11 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "111.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "BPHB",
@@ -51,11 +51,11 @@
       "departureTime": "20:38",
       "day": 1,
       "distance": "138.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "DURG",
@@ -64,11 +64,11 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "148.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "RJN",
@@ -77,11 +77,11 @@
       "departureTime": "21:33",
       "day": 1,
       "distance": "178.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "G",
@@ -90,11 +90,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "283.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "R"
     },
     {
       "stationCode": "NGP",
@@ -474,7 +474,7 @@
       "chartRemoteStation": "JP"
     }
   ],
-  "summary": "The first reservation chart for Bsp Bgkt Sf Exp (20843) is prepared at Nagpur (NGP) around 3:58 PM, with a second (vacancy) chart around 1:15 AM. 29 of 36 stations on the BSP to BGKT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:21:48.805Z",
-  "knownChartCount": 29
+  "summary": "The first reservation chart for Bsp Bgkt Sf Exp (20843) is prepared at Bilaspur Jn (BSP) around 10:25 AM, with a second (vacancy) chart around 6:10 PM. 36 of 36 stations on the BSP to BGKT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:48:57.660Z",
+  "knownChartCount": 36
 }

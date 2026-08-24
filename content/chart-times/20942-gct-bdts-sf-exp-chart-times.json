@@ -12,11 +12,11 @@
       "departureTime": "19:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GCT"
     },
     {
       "stationCode": "ARJ",
@@ -25,11 +25,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "41.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GCT"
     },
     {
       "stationCode": "DHE",
@@ -38,11 +38,11 @@
       "departureTime": "20:28",
       "day": 1,
       "distance": "62.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GCT"
     },
     {
       "stationCode": "KCT",
@@ -51,11 +51,11 @@
       "departureTime": "20:43",
       "day": 1,
       "distance": "71.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GCT"
     },
     {
       "stationCode": "JNU",
@@ -64,11 +64,11 @@
       "departureTime": "21:35",
       "day": 1,
       "distance": "99.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GCT"
     },
     {
       "stationCode": "MAY",
@@ -77,11 +77,11 @@
       "departureTime": "22:05",
       "day": 1,
       "distance": "123.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GCT"
     },
     {
       "stationCode": "JNH",
@@ -90,11 +90,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "153.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:32",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GCT"
     },
     {
       "stationCode": "PRYJ",
@@ -370,7 +370,7 @@
       "chartRemoteStation": "ST"
     }
   ],
-  "summary": "The first reservation chart for Gct Bdts Sf Exp (20942) is prepared at Prayagraj Jn. (PRYJ) around 9:42 AM, with a second (vacancy) chart around 7:15 PM. 21 of 28 stations on the GCT to BDTS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:24:33.152Z",
-  "knownChartCount": 21
+  "summary": "The first reservation chart for Gct Bdts Sf Exp (20942) is prepared at Ghazipur City (GCT) around 9:32 AM, with a second (vacancy) chart around 7:15 PM. 28 of 28 stations on the GCT to BDTS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:51:39.194Z",
+  "knownChartCount": 28
 }

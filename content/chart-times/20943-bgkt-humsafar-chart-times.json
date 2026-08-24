@@ -12,11 +12,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "19:49",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "05:05",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "ADI"
     },
     {
       "stationCode": "BVI",
@@ -25,11 +25,11 @@
       "departureTime": "22:13",
       "day": 1,
       "distance": "19.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:46",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BDTS"
     },
     {
       "stationCode": "VAPI",
@@ -38,11 +38,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "159.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "VAPI"
     },
     {
       "stationCode": "ST",
@@ -149,7 +149,7 @@
       "chartRemoteStation": "ADI"
     }
   ],
-  "summary": "The first reservation chart for Bgkt Humsafar (20943) is prepared at Surat (ST) around 3:27 PM, with a second (vacancy) chart around 1:16 AM. 8 of 11 stations on the BDTS to BGKT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:24:36.168Z",
-  "knownChartCount": 8
+  "summary": "The first reservation chart for Bgkt Humsafar (20943) is prepared at Bandra Terminus (BDTS) around 7:49 PM, with a second (vacancy) chart around 5:05 AM. 11 of 11 stations on the BDTS to BGKT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:51:41.010Z",
+  "knownChartCount": 11
 }

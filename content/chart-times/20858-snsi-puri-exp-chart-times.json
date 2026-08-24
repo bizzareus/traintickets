@@ -12,11 +12,11 @@
       "departureTime": "14:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "KPG",
@@ -25,11 +25,11 @@
       "departureTime": "14:47",
       "day": 1,
       "distance": "41.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "MMR",
@@ -38,11 +38,11 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "83.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "BSL",
@@ -51,11 +51,11 @@
       "departureTime": "18:15",
       "day": 1,
       "distance": "267.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "AK",
@@ -64,11 +64,11 @@
       "departureTime": "20:35",
       "day": 1,
       "distance": "407.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "BD",
@@ -77,11 +77,11 @@
       "departureTime": "22:15",
       "day": 1,
       "distance": "486.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "WR",
@@ -90,11 +90,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "581.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "13:42",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "SNSI"
     },
     {
       "stationCode": "NGP",
@@ -331,7 +331,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Snsi Puri Exp (20858) from SNSI to PURI are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 25 stations.",
-  "generatedAt": "2026-08-22T20:22:30.158Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Snsi Puri Exp (20858) is prepared at Sainagar Shirdi (SNSI) around 6:10 AM, with a second (vacancy) chart around 1:42 PM. 7 of 25 stations on the SNSI to PURI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:49:32.803Z",
+  "knownChartCount": 7
 }

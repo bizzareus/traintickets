@@ -12,11 +12,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "22:25",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "09:20",
+      "chartTwoDayOffset": 2,
+      "chartRemoteStation": "SRR"
     },
     {
       "stationCode": "WSJ",
@@ -25,11 +25,11 @@
       "departureTime": "19:21",
       "day": 1,
       "distance": "34.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "JAM",
@@ -38,11 +38,11 @@
       "departureTime": "21:07",
       "day": 1,
       "distance": "132.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "HAPA",
@@ -51,11 +51,11 @@
       "departureTime": "21:23",
       "day": 1,
       "distance": "141.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "RJT",
@@ -64,11 +64,11 @@
       "departureTime": "23:00",
       "day": 1,
       "distance": "217.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PBR"
     },
     {
       "stationCode": "SUNR",
@@ -422,7 +422,7 @@
       "chartRemoteStation": "SRR"
     }
   ],
-  "summary": "The first reservation chart for Pbr Tvcn Sf Exp (20910) is prepared at Surendranagar (SUNR) around 8:50 AM, with a second (vacancy) chart around 6:26 PM. 27 of 32 stations on the PBR to TVCN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:23:09.295Z",
-  "knownChartCount": 27
+  "summary": "The first reservation chart for Pbr Tvcn Sf Exp (20910) is prepared at Porbandar (PBR) around 10:25 PM, with a second (vacancy) chart around 9:20 AM. 32 of 32 stations on the PBR to TVCN route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:50:07.307Z",
+  "knownChartCount": 32
 }

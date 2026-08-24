@@ -12,11 +12,11 @@
       "departureTime": "09:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:17",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "TVCN"
+      "chartTimeLocal": "10:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "QLN",
@@ -27,8 +27,8 @@
       "distance": "59.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "100.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "143.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "200.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "274.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "307.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "352.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "392.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "482.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "567.0",
       "chartTimeLocal": "20:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:55",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TVCN"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "614.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "UD",
@@ -168,11 +168,11 @@
       "departureTime": "21:52",
       "day": 1,
       "distance": "696.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "KAWR",
@@ -422,7 +422,7 @@
       "chartRemoteStation": "ADI"
     }
   ],
-  "summary": "The first reservation chart for Tvcn Pbr Sf Exp (20909) is prepared at TRIVANDRUMNORTH (TVCN) around 8:17 PM. 17 of 32 stations on the TVCN to PBR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:23:05.151Z",
-  "knownChartCount": 17
+  "summary": "The first reservation chart for Tvcn Pbr Sf Exp (20909) is prepared at TRIVANDRUMNORTH (TVCN) around 10:26 AM, with a second (vacancy) chart around 7:45 PM. 19 of 32 stations on the TVCN to PBR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:50:05.309Z",
+  "knownChartCount": 19
 }

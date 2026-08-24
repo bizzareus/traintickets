@@ -12,11 +12,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "DWX",
@@ -25,11 +25,11 @@
       "departureTime": "23:58",
       "day": 1,
       "distance": "42.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:21",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "UJN",
@@ -149,7 +149,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Indb Gimb Sfast (20936) from INDB to GIMB are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 11 stations.",
-  "generatedAt": "2026-08-22T20:24:16.382Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Indb Gimb Sfast (20936) is prepared at Indore Jn Bg (INDB) around 1:21 PM, with a second (vacancy) chart around 11:15 PM. 2 of 11 stations on the INDB to GIMB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:51:22.916Z",
+  "knownChartCount": 2
 }

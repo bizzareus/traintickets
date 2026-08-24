@@ -144,8 +144,8 @@
       "distance": "761.0",
       "chartTimeLocal": "22:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NDLS"
     },
     {
@@ -157,8 +157,8 @@
       "distance": "833.0",
       "chartTimeLocal": "22:05",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "NDLS"
     },
     {
@@ -170,8 +170,8 @@
       "distance": "858.0",
       "chartTimeLocal": "22:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:08",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -183,8 +183,8 @@
       "distance": "948.0",
       "chartTimeLocal": "22:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:08",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -196,8 +196,8 @@
       "distance": "1011.0",
       "chartTimeLocal": "22:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:08",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -209,8 +209,8 @@
       "distance": "1029.0",
       "chartTimeLocal": "22:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:08",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -222,8 +222,8 @@
       "distance": "1081.0",
       "chartTimeLocal": "22:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:08",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -235,8 +235,8 @@
       "distance": "1159.0",
       "chartTimeLocal": "22:09",
       "chartOneDayOffset": 0,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "14:08",
+      "chartTwoDayOffset": 1,
       "chartRemoteStation": "VGLJ"
     },
     {
@@ -246,11 +246,11 @@
       "departureTime": "21:10",
       "day": 2,
       "distance": "1268.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:52",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KMZ"
     },
     {
       "stationCode": "UMR",
@@ -259,11 +259,11 @@
       "departureTime": "22:44",
       "day": 2,
       "distance": "1326.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:52",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KMZ"
     },
     {
       "stationCode": "SDL",
@@ -272,11 +272,11 @@
       "departureTime": "23:50",
       "day": 2,
       "distance": "1393.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:52",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "20:55",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "KMZ"
     },
     {
       "stationCode": "BUH",
@@ -630,7 +630,7 @@
       "chartRemoteStation": "BSP"
     }
   ],
-  "summary": "The first reservation chart for Hirakund Exp (20808) is prepared at Amritsar Jn (ASR) around 3:55 PM, with a second (vacancy) chart around 11:40 PM. 45 of 48 stations on the ASR to VSKP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:20:38.092Z",
-  "knownChartCount": 45
+  "summary": "The first reservation chart for Hirakund Exp (20808) is prepared at Amritsar Jn (ASR) around 3:55 PM, with a second (vacancy) chart around 11:40 PM. 48 of 48 stations on the ASR to VSKP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:47:49.725Z",
+  "knownChartCount": 48
 }

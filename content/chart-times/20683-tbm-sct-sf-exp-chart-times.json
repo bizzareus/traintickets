@@ -12,11 +12,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TBM"
     },
     {
       "stationCode": "CGL",
@@ -25,11 +25,11 @@
       "departureTime": "21:20",
       "day": 1,
       "distance": "31.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TBM"
     },
     {
       "stationCode": "VM",
@@ -38,11 +38,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "134.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TBM"
     },
     {
       "stationCode": "TDPR",
@@ -51,11 +51,11 @@
       "departureTime": "23:30",
       "day": 1,
       "distance": "177.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "10:53",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TBM"
     },
     {
       "stationCode": "CDM",
@@ -305,7 +305,7 @@
       "chartRemoteStation": "TBM"
     }
   ],
-  "summary": "The first reservation chart for Tbm Sct Sf Exp (20683) is prepared at CHIDAMBARAM (CDM) around 10:56 AM, with a second (vacancy) chart around 8:35 PM. 19 of 23 stations on the TBM to SCT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:20:09.545Z",
-  "knownChartCount": 19
+  "summary": "The first reservation chart for Tbm Sct Sf Exp (20683) is prepared at Tambaram (TBM) around 10:53 AM, with a second (vacancy) chart around 8:35 PM. 23 of 23 stations on the TBM to SCT route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:47:25.530Z",
+  "knownChartCount": 23
 }

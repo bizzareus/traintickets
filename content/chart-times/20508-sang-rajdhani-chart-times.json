@@ -12,11 +12,11 @@
       "departureTime": "19:50",
       "day": null,
       "distance": "0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ANVT"
     },
     {
       "stationCode": "CNB",
@@ -266,7 +266,7 @@
       "chartRemoteStation": "GHY"
     }
   ],
-  "summary": "The first reservation chart for SANG RAJDHANI (20508) is prepared at NEW BONGAIGAON (NBQ) around 9:57 AM, with a second (vacancy) chart around 7:30 PM. 10 of 20 stations on the ANVT to SANG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:18:49.322Z",
-  "knownChartCount": 10
+  "summary": "The first reservation chart for SANG RAJDHANI (20508) is prepared at ANAND VIHAR TRM (ANVT) around 11:51 AM, with a second (vacancy) chart around 11:15 PM. 11 of 20 stations on the ANVT to SANG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:46:29.415Z",
+  "knownChartCount": 11
 }

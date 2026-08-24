@@ -129,10 +129,10 @@
       "departureTime": "13:05",
       "day": 1,
       "distance": "697.0",
-      "chartTimeLocal": "21:04",
+      "chartTimeLocal": "20:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "R"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "14:05",
       "day": 1,
       "distance": "735.0",
-      "chartTimeLocal": "21:04",
+      "chartTimeLocal": "20:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "R"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "14:25",
       "day": 1,
       "distance": "766.0",
-      "chartTimeLocal": "21:04",
+      "chartTimeLocal": "20:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "R"
     },
     {
@@ -168,10 +168,10 @@
       "departureTime": "15:55",
       "day": 1,
       "distance": "870.0",
-      "chartTimeLocal": "21:04",
+      "chartTimeLocal": "20:44",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "R"
     },
     {
@@ -181,11 +181,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "1000.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:09",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NGP"
     },
     {
       "stationCode": "ET",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "The first reservation chart for Humsafar Exp (20918) is prepared at Puri (PURI) around 2:22 PM, with a second (vacancy) chart around 12:17 AM. 16 of 18 stations on the PURI to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:23:27.035Z",
-  "knownChartCount": 16
+  "summary": "The first reservation chart for Humsafar Exp (20918) is prepared at Puri (PURI) around 2:22 PM, with a second (vacancy) chart around 12:17 AM. 17 of 18 stations on the PURI to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:50:23.869Z",
+  "knownChartCount": 17
 }

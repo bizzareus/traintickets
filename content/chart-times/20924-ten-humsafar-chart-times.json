@@ -12,11 +12,11 @@
       "departureTime": "04:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:19",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GIMB"
     },
     {
       "stationCode": "ADI",
@@ -25,11 +25,11 @@
       "departureTime": "09:15",
       "day": 1,
       "distance": "300.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:19",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "04:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GIMB"
     },
     {
       "stationCode": "BRC",
@@ -38,11 +38,11 @@
       "departureTime": "10:45",
       "day": 1,
       "distance": "400.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:09",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "10:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "ST",
@@ -51,11 +51,11 @@
       "departureTime": "12:42",
       "day": 1,
       "distance": "529.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:13",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:27",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ST"
     },
     {
       "stationCode": "BSR",
@@ -64,11 +64,11 @@
       "departureTime": "15:30",
       "day": 1,
       "distance": "744.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BSR"
     },
     {
       "stationCode": "PNVL",
@@ -77,11 +77,11 @@
       "departureTime": "16:50",
       "day": 1,
       "distance": "811.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "RN",
@@ -90,11 +90,11 @@
       "departureTime": "22:10",
       "day": 1,
       "distance": "1173.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:54",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "MAO",
@@ -292,7 +292,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ten Humsafar (20924) from GIMB to TEN are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 22 stations.",
-  "generatedAt": "2026-08-22T20:23:43.167Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ten Humsafar (20924) is prepared at Gandhidham Bg (GIMB) around 5:19 PM, with a second (vacancy) chart around 4:35 AM. 7 of 22 stations on the GIMB to TEN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:50:41.335Z",
+  "knownChartCount": 7
 }

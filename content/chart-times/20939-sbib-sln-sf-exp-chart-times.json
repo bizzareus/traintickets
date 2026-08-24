@@ -12,11 +12,11 @@
       "departureTime": "08:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SBIB"
     },
     {
       "stationCode": "MSH",
@@ -25,11 +25,11 @@
       "departureTime": "09:37",
       "day": 1,
       "distance": "63.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SBIB"
     },
     {
       "stationCode": "PNU",
@@ -38,11 +38,11 @@
       "departureTime": "10:50",
       "day": 1,
       "distance": "128.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:56",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "SBIB"
     },
     {
       "stationCode": "ABR",
@@ -51,11 +51,11 @@
       "departureTime": "11:40",
       "day": 1,
       "distance": "181.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:47",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "FA",
@@ -64,11 +64,11 @@
       "departureTime": "12:58",
       "day": 1,
       "distance": "280.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:47",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "MJ",
@@ -77,11 +77,11 @@
       "departureTime": "14:05",
       "day": 1,
       "distance": "346.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:47",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "ABR"
     },
     {
       "stationCode": "AII",
@@ -253,7 +253,7 @@
       "chartRemoteStation": "DLI"
     }
   ],
-  "summary": "The first reservation chart for Sbib Sln Sf Exp (20939) is prepared at Moradabad (MB) around 3:25 PM, with a second (vacancy) chart around 11:10 PM. 6 of 19 stations on the SBIB to SLN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:24:24.382Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Sbib Sln Sf Exp (20939) is prepared at Sabarmati Bg (SBIB) around 8:56 PM. 12 of 19 stations on the SBIB to SLN route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:51:29.949Z",
+  "knownChartCount": 12
 }

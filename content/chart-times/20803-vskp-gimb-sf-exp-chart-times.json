@@ -12,11 +12,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:40",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "VSKP"
+      "chartTimeLocal": "12:43",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "22:27",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "DVD",
@@ -25,10 +25,10 @@
       "departureTime": "18:00",
       "day": 1,
       "distance": "18.0",
-      "chartTimeLocal": "21:40",
+      "chartTimeLocal": "21:51",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:08",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "20:10",
       "day": 1,
       "distance": "151.0",
-      "chartTimeLocal": "21:40",
+      "chartTimeLocal": "21:51",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:08",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "21:10",
       "day": 1,
       "distance": "201.0",
-      "chartTimeLocal": "21:40",
+      "chartTimeLocal": "21:51",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:08",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "22:20",
       "day": 1,
       "distance": "291.0",
-      "chartTimeLocal": "21:40",
+      "chartTimeLocal": "21:51",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "17:08",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "VSKP"
     },
     {
@@ -77,11 +77,11 @@
       "departureTime": "23:45",
       "day": 1,
       "distance": "350.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:35",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BZA"
     },
     {
       "stationCode": "KMT",
@@ -383,7 +383,7 @@
       "chartRemoteStation": "BRC"
     }
   ],
-  "summary": "The first reservation chart for Vskp Gimb Sf Exp (20803) is prepared at Visakhapatnam (VSKP) around 9:40 PM. 28 of 29 stations on the VSKP to GIMB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:20:27.968Z",
-  "knownChartCount": 28
+  "summary": "The first reservation chart for Vskp Gimb Sf Exp (20803) is prepared at Visakhapatnam (VSKP) around 12:43 PM, with a second (vacancy) chart around 10:27 PM. 29 of 29 stations on the VSKP to GIMB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:47:41.699Z",
+  "knownChartCount": 29
 }

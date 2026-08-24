@@ -311,11 +311,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "1083.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "RKMP",
@@ -324,11 +324,11 @@
       "departureTime": "20:05",
       "day": 1,
       "distance": "1089.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "ET",
@@ -337,11 +337,11 @@
       "departureTime": "21:50",
       "day": 1,
       "distance": "1174.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:37",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NGP",
@@ -448,7 +448,7 @@
       "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "The first reservation chart for Bkn Bsp Sf Exp (20846) is prepared at Bikaner Jn (BKN) around 5:45 PM, with a second (vacancy) chart around 1:30 AM. 31 of 34 stations on the BKN to BSP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:22:01.073Z",
-  "knownChartCount": 31
+  "summary": "The first reservation chart for Bkn Bsp Sf Exp (20846) is prepared at Bikaner Jn (BKN) around 5:45 PM, with a second (vacancy) chart around 1:30 AM. 34 of 34 stations on the BKN to BSP route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:49:04.301Z",
+  "knownChartCount": 34
 }

@@ -12,11 +12,11 @@
       "departureTime": "17:50",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "CNB",
@@ -25,11 +25,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "74.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "CPA",
@@ -38,11 +38,11 @@
       "departureTime": "19:37",
       "day": 1,
       "distance": "77.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "KJN",
@@ -51,11 +51,11 @@
       "departureTime": "20:51",
       "day": 1,
       "distance": "155.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "FBD",
@@ -64,11 +64,11 @@
       "departureTime": "22:07",
       "day": 1,
       "distance": "213.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:26",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LJN"
     },
     {
       "stationCode": "KSJ",
@@ -77,11 +77,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "321.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KSJ"
     },
     {
       "stationCode": "HTC",
@@ -292,7 +292,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Ljn Bdts Sf Exp (20922) from LJN to BDTS are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 22 stations.",
-  "generatedAt": "2026-08-22T20:23:37.052Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Ljn Bdts Sf Exp (20922) is prepared at Lucknow Ne (LJN) around 8:39 AM, with a second (vacancy) chart around 5:26 PM. 6 of 22 stations on the LJN to BDTS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:50:34.362Z",
+  "knownChartCount": 6
 }

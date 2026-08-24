@@ -12,11 +12,11 @@
       "departureTime": "15:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "DWX",
@@ -25,11 +25,11 @@
       "departureTime": "15:33",
       "day": 1,
       "distance": "39.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "INDB"
     },
     {
       "stationCode": "BPL",
@@ -38,11 +38,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "218.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "ET",
@@ -51,11 +51,11 @@
       "departureTime": "20:15",
       "day": 1,
       "distance": "310.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:06",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "BPL"
     },
     {
       "stationCode": "NGP",
@@ -227,7 +227,7 @@
       "chartRemoteStation": "SBPY"
     }
   ],
-  "summary": "The first reservation chart for Puri Humsafar (20917) is prepared at Nagpur (NGP) around 4:01 PM, with a second (vacancy) chart around 1:15 AM. 13 of 17 stations on the INDB to PURI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:23:24.664Z",
-  "knownChartCount": 13
+  "summary": "The first reservation chart for Puri Humsafar (20917) is prepared at Indore Jn Bg (INDB) around 8:37 PM. 17 of 17 stations on the INDB to PURI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:50:21.445Z",
+  "knownChartCount": 17
 }
