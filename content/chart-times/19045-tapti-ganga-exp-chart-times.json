@@ -12,11 +12,11 @@
       "departureTime": "10:10",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:47",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "ST"
+      "chartTimeLocal": "07:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNW"
     },
     {
       "stationCode": "UDN",
@@ -64,10 +64,10 @@
       "departureTime": "12:25",
       "day": 1,
       "distance": "160.0",
-      "chartTimeLocal": "20:53",
+      "chartTimeLocal": "21:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDB"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "13:00",
       "day": 1,
       "distance": "195.0",
-      "chartTimeLocal": "20:53",
+      "chartTimeLocal": "21:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDB"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "13:20",
       "day": 1,
       "distance": "214.0",
-      "chartTimeLocal": "20:53",
+      "chartTimeLocal": "21:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDB"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "14:00",
       "day": 1,
       "distance": "255.0",
-      "chartTimeLocal": "20:53",
+      "chartTimeLocal": "21:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDB"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "15:15",
       "day": 1,
       "distance": "311.0",
-      "chartTimeLocal": "20:53",
+      "chartTimeLocal": "21:17",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NDB"
     },
     {
@@ -129,10 +129,10 @@
       "departureTime": "15:45",
       "day": 1,
       "distance": "335.0",
-      "chartTimeLocal": "20:56",
+      "chartTimeLocal": "21:19",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSL"
     },
     {
@@ -142,10 +142,10 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "369.0",
-      "chartTimeLocal": "20:56",
+      "chartTimeLocal": "21:19",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSL"
     },
     {
@@ -155,10 +155,10 @@
       "departureTime": "16:37",
       "day": 1,
       "distance": "390.0",
-      "chartTimeLocal": "20:56",
+      "chartTimeLocal": "21:19",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "15:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSL"
     },
     {
@@ -168,11 +168,11 @@
       "departureTime": "17:45",
       "day": 1,
       "distance": "458.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNW"
     },
     {
       "stationCode": "HD",
@@ -181,11 +181,11 @@
       "departureTime": "18:52",
       "day": 1,
       "distance": "560.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "07:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:30",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KNW"
     },
     {
       "stationCode": "ET",
@@ -194,11 +194,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "636.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ET"
     },
     {
       "stationCode": "PPI",
@@ -207,11 +207,11 @@
       "departureTime": "21:15",
       "day": 1,
       "distance": "703.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "ET"
     },
     {
       "stationCode": "JBP",
@@ -220,11 +220,11 @@
       "departureTime": "23:59",
       "day": 1,
       "distance": "881.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:42",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JBP"
     },
     {
       "stationCode": "KTE",
@@ -526,7 +526,7 @@
       "chartRemoteStation": "BSB"
     }
   ],
-  "summary": "The first reservation chart for Tapti Ganga Exp (19045) is prepared at Surat (ST) around 8:47 PM. 35 of 40 stations on the ST to THE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:08:13.734Z",
-  "knownChartCount": 35
+  "summary": "The first reservation chart for Tapti Ganga Exp (19045) is prepared at Surat (ST) around 7:50 AM, with a second (vacancy) chart around 5:30 PM. 40 of 40 stations on the ST to THE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:32:27.601Z",
+  "knownChartCount": 40
 }

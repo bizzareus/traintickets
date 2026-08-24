@@ -12,11 +12,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "21:13",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "16:40",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "PNVL"
     },
     {
       "stationCode": "SL",
@@ -25,11 +25,11 @@
       "departureTime": "23:24",
       "day": 1,
       "distance": "23.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "MULK",
@@ -38,11 +38,11 @@
       "departureTime": "23:34",
       "day": 1,
       "distance": "36.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:39",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAJN"
     },
     {
       "stationCode": "UD",
@@ -500,7 +500,7 @@
       "chartRemoteStation": "PNVL"
     }
   ],
-  "summary": "The first reservation chart for Majn Surat Exp (19058) is prepared at Udupi (UD) around 12:48 PM, with a second (vacancy) chart around 10:15 PM. 35 of 38 stations on the MAJN to ST route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:08:35.138Z",
-  "knownChartCount": 35
+  "summary": "The first reservation chart for Majn Surat Exp (19058) is prepared at Mangaluru Jn (MAJN) around 9:13 PM, with a second (vacancy) chart around 4:40 PM. 38 of 38 stations on the MAJN to ST route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:32:46.584Z",
+  "knownChartCount": 38
 }

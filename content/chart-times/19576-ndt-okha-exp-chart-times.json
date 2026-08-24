@@ -12,11 +12,11 @@
       "departureTime": "20:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDT"
     },
     {
       "stationCode": "MVJ",
@@ -25,11 +25,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "16.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDT"
     },
     {
       "stationCode": "COR",
@@ -38,11 +38,11 @@
       "departureTime": "23:25",
       "day": 1,
       "distance": "87.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:25",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDT"
     },
     {
       "stationCode": "NMH",
@@ -266,7 +266,7 @@
       "chartRemoteStation": "NDT"
     }
   ],
-  "summary": "The first reservation chart for Ndt Okha Exp (19576) is prepared at Nimach (NMH) around 12:25 PM, with a second (vacancy) chart around 11:10 PM. 17 of 20 stations on the NDT to OKHA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:13:35.407Z",
-  "knownChartCount": 17
+  "summary": "The first reservation chart for Ndt Okha Exp (19576) is prepared at Nathdwara (NDT) around 12:25 PM, with a second (vacancy) chart around 11:10 PM. 20 of 20 stations on the NDT to OKHA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:39:20.199Z",
+  "knownChartCount": 20
 }

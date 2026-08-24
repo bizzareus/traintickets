@@ -12,11 +12,11 @@
       "departureTime": "19:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "ROU",
@@ -25,11 +25,11 @@
       "departureTime": "22:37",
       "day": 1,
       "distance": "167.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:58",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:22",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "HTE"
     },
     {
       "stationCode": "JSG",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "HTE"
     }
   ],
-  "summary": "The first reservation chart for Hte Durg Exp (18641) is prepared at Jharsuguda Jn (JSG) around 9:47 AM, with a second (vacancy) chart around 10:22 PM. 7 of 9 stations on the HTE to DURG route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:06:56.007Z",
-  "knownChartCount": 7
+  "summary": "The first reservation chart for Hte Durg Exp (18641) is prepared at Hatia (HTE) around 9:58 AM, with a second (vacancy) chart around 10:22 PM. 9 of 9 stations on the HTE to DURG route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:27:32.852Z",
+  "knownChartCount": 9
 }

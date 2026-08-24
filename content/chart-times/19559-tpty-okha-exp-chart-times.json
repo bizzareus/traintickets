@@ -12,11 +12,11 @@
       "departureTime": "08:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:02",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "TPTY"
+      "chartTimeLocal": "20:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BSL"
     },
     {
       "stationCode": "RU",
@@ -25,10 +25,10 @@
       "departureTime": "08:38",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPTY"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "09:35",
       "day": 1,
       "distance": "85.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPTY"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "10:20",
       "day": 1,
       "distance": "135.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPTY"
     },
     {
@@ -64,10 +64,10 @@
       "departureTime": "11:55",
       "day": 1,
       "distance": "244.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPTY"
     },
     {
@@ -77,10 +77,10 @@
       "departureTime": "15:25",
       "day": 1,
       "distance": "347.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPTY"
     },
     {
@@ -90,10 +90,10 @@
       "departureTime": "16:20",
       "day": 1,
       "distance": "400.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPTY"
     },
     {
@@ -103,10 +103,10 @@
       "departureTime": "17:10",
       "day": 1,
       "distance": "456.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPTY"
     },
     {
@@ -116,10 +116,10 @@
       "departureTime": "18:27",
       "day": 1,
       "distance": "531.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:09",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "08:00",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "TPTY"
     },
     {
@@ -129,11 +129,11 @@
       "departureTime": "20:55",
       "day": 1,
       "distance": "636.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "BMO",
@@ -142,11 +142,11 @@
       "departureTime": "21:42",
       "day": 1,
       "distance": "655.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "KMC",
@@ -155,11 +155,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "750.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "KCG"
     },
     {
       "stationCode": "NZB",
@@ -513,7 +513,7 @@
       "chartRemoteStation": "BSL"
     }
   ],
-  "summary": "The first reservation chart for Tpty Okha Exp (19559) is prepared at Tirupati (TPTY) around 8:02 PM. 36 of 39 stations on the TPTY to OKHA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:13:04.222Z",
-  "knownChartCount": 36
+  "summary": "The first reservation chart for Tpty Okha Exp (19559) is prepared at Tirupati (TPTY) around 8:15 PM, with a second (vacancy) chart around 3:25 PM. 39 of 39 stations on the TPTY to OKHA route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:38:33.090Z",
+  "knownChartCount": 39
 }

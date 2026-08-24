@@ -12,11 +12,11 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:06",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "SFG"
+      "chartTimeLocal": "12:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "DLI"
     },
     {
       "stationCode": "FTP",
@@ -383,7 +383,7 @@
       "chartRemoteStation": "LDH"
     }
   ],
-  "summary": "The first reservation chart for Jammu Mail (20433) is prepared at Subedarganj (SFG) around 8:06 PM. 28 of 29 stations on the SFG to SVDK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:17:15.948Z",
+  "summary": "The first reservation chart for Jammu Mail (20433) is prepared at Subedarganj (SFG) around 12:10 PM, with a second (vacancy) chart around 7:55 PM. 28 of 29 stations on the SFG to SVDK route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:45:13.407Z",
   "knownChartCount": 28
 }

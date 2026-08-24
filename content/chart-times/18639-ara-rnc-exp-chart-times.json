@@ -129,11 +129,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "402.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "MURI",
@@ -142,11 +142,11 @@
       "departureTime": "18:32",
       "day": 1,
       "distance": "455.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKSC"
     },
     {
       "stationCode": "RNC",
@@ -155,14 +155,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "517.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BKSC"
     }
   ],
-  "summary": "The first reservation chart for Ara Rnc Exp (18639) is prepared at Ara Jn (ARA) around 9:39 PM. 9 of 12 stations on the ARA to RNC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:06:51.417Z",
-  "knownChartCount": 9
+  "summary": "The first reservation chart for Ara Rnc Exp (18639) is prepared at Ara Jn (ARA) around 9:39 PM. 12 of 12 stations on the ARA to RNC route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:27:30.478Z",
+  "knownChartCount": 12
 }

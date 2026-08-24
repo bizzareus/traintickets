@@ -170,8 +170,8 @@
       "distance": "515.0",
       "chartTimeLocal": "22:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NZM"
     },
     {
@@ -183,8 +183,8 @@
       "distance": "535.0",
       "chartTimeLocal": "22:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NZM"
     },
     {
@@ -196,8 +196,8 @@
       "distance": "648.0",
       "chartTimeLocal": "22:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NZM"
     },
     {
@@ -209,8 +209,8 @@
       "distance": "698.0",
       "chartTimeLocal": "22:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NZM"
     },
     {
@@ -222,8 +222,8 @@
       "distance": "702.0",
       "chartTimeLocal": "22:46",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "11:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "NZM"
     },
     {
@@ -233,11 +233,11 @@
       "departureTime": "16:00",
       "day": 1,
       "distance": "820.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "SVPI",
@@ -246,11 +246,11 @@
       "departureTime": "17:40",
       "day": 1,
       "distance": "946.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "06:19",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "15:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "GUNA",
@@ -259,11 +259,11 @@
       "departureTime": "19:15",
       "day": 1,
       "distance": "1048.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUNA"
     },
     {
       "stationCode": "RTA",
@@ -272,11 +272,11 @@
       "departureTime": "19:40",
       "day": 1,
       "distance": "1068.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUNA"
     },
     {
       "stationCode": "BRRG",
@@ -285,11 +285,11 @@
       "departureTime": "20:33",
       "day": 1,
       "distance": "1145.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUNA"
     },
     {
       "stationCode": "SFY",
@@ -298,11 +298,11 @@
       "departureTime": "21:45",
       "day": 1,
       "distance": "1234.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUNA"
     },
     {
       "stationCode": "MKC",
@@ -311,11 +311,11 @@
       "departureTime": "23:17",
       "day": 1,
       "distance": "1262.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUNA"
     },
     {
       "stationCode": "DWX",
@@ -324,11 +324,11 @@
       "departureTime": "23:58",
       "day": 1,
       "distance": "1298.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:15",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:00",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GUNA"
     },
     {
       "stationCode": "INDB",
@@ -344,7 +344,7 @@
       "chartRemoteStation": "GUNA"
     }
   ],
-  "summary": "The first reservation chart for Asr Indb Exp (19326) is prepared at Amritsar Jn (ASR) around 5:50 PM, with a second (vacancy) chart around 1:35 AM. 18 of 26 stations on the ASR to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:11:14.607Z",
-  "knownChartCount": 18
+  "summary": "The first reservation chart for Asr Indb Exp (19326) is prepared at Amritsar Jn (ASR) around 5:50 PM, with a second (vacancy) chart around 1:35 AM. 26 of 26 stations on the ASR to INDB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:36:08.286Z",
+  "knownChartCount": 26
 }

@@ -27,8 +27,8 @@
       "distance": "74.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "138.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "181.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "224.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "243.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "271.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "321.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "353.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "388.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "442.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -157,8 +157,8 @@
       "distance": "468.0",
       "chartTimeLocal": "23:06",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "22:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BKN"
     },
     {
@@ -280,6 +280,6 @@
     }
   ],
   "summary": "The first reservation chart for Indb Mahmna Exp (19334) is prepared at Bikaner Jn (BKN) around 11:06 PM. 12 of 21 stations on the BKN to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:11:38.570Z",
+  "generatedAt": "2026-08-24T22:36:59.133Z",
   "knownChartCount": 12
 }

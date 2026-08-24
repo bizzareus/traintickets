@@ -12,11 +12,11 @@
       "departureTime": "10:15",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "DNR",
@@ -25,11 +25,11 @@
       "departureTime": "10:30",
       "day": 1,
       "distance": "10.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "ARA",
@@ -38,11 +38,11 @@
       "departureTime": "10:58",
       "day": 1,
       "distance": "50.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "BXR",
@@ -51,11 +51,11 @@
       "departureTime": "11:42",
       "day": 1,
       "distance": "118.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "DDU",
@@ -64,11 +64,11 @@
       "departureTime": "13:50",
       "day": 1,
       "distance": "212.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "KEI",
@@ -77,11 +77,11 @@
       "departureTime": "14:41",
       "day": 1,
       "distance": "224.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "BSB",
@@ -90,11 +90,11 @@
       "departureTime": "15:35",
       "day": 1,
       "distance": "229.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "GYN",
@@ -103,11 +103,11 @@
       "departureTime": "16:37",
       "day": 1,
       "distance": "289.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "PRRB",
@@ -116,11 +116,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "351.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "22:23",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "PNBE"
     },
     {
       "stationCode": "PRYJ",
@@ -383,7 +383,7 @@
       "chartRemoteStation": "UJN"
     }
   ],
-  "summary": "The first reservation chart for Pnbe Adi Exp (19422) is prepared at Damoh (DMO) around 8:51 AM, with a second (vacancy) chart around 6:30 PM. 16 of 29 stations on the PNBE to ADI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:12:43.971Z",
-  "knownChartCount": 16
+  "summary": "The first reservation chart for Pnbe Adi Exp (19422) is prepared at Patna Jn (PNBE) around 10:23 PM. 25 of 29 stations on the PNBE to ADI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:38:16.027Z",
+  "knownChartCount": 25
 }

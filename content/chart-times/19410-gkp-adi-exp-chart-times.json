@@ -285,11 +285,11 @@
       "departureTime": "00:16",
       "day": 2,
       "distance": "941.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "20:37",
+      "chartOneDayOffset": -1,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "CNB"
     },
     {
       "stationCode": "JP",
@@ -298,11 +298,11 @@
       "departureTime": "00:45",
       "day": 2,
       "distance": "946.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "KSG",
@@ -311,11 +311,11 @@
       "departureTime": "02:00",
       "day": 2,
       "distance": "1055.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "16:45",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "00:30",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "JP"
     },
     {
       "stationCode": "AII",
@@ -324,11 +324,11 @@
       "departureTime": "02:50",
       "day": 2,
       "distance": "1081.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "FA",
@@ -337,11 +337,11 @@
       "departureTime": "05:18",
       "day": 2,
       "distance": "1287.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "PDWA",
@@ -350,11 +350,11 @@
       "departureTime": "05:56",
       "day": 2,
       "distance": "1342.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "ABR",
@@ -363,11 +363,11 @@
       "departureTime": "06:45",
       "day": 2,
       "distance": "1386.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "PNU",
@@ -376,11 +376,11 @@
       "departureTime": "07:42",
       "day": 2,
       "distance": "1438.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "MSH",
@@ -389,11 +389,11 @@
       "departureTime": "08:32",
       "day": 2,
       "distance": "1503.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AII"
     },
     {
       "stationCode": "SBIB",
@@ -402,14 +402,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1566.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "18:50",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "02:35",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "AII"
     }
   ],
-  "summary": "The first reservation chart for Gkp Adi Exp (19410) is prepared at Gorakhpur Jn (GKP) around 6:58 PM, with a second (vacancy) chart around 4:40 AM. 21 of 31 stations on the GKP to SBIB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:12:11.825Z",
-  "knownChartCount": 21
+  "summary": "The first reservation chart for Gkp Adi Exp (19410) is prepared at Gorakhpur Jn (GKP) around 6:58 PM, with a second (vacancy) chart around 4:40 AM. 31 of 31 stations on the GKP to SBIB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:37:34.774Z",
+  "knownChartCount": 31
 }

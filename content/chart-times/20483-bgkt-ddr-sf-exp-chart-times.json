@@ -12,11 +12,11 @@
       "departureTime": "20:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "SMR",
@@ -25,11 +25,11 @@
       "departureTime": "21:05",
       "day": 1,
       "distance": "77.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "MKSR",
@@ -38,11 +38,11 @@
       "departureTime": "21:33",
       "day": 1,
       "distance": "103.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "JOR",
@@ -51,11 +51,11 @@
       "departureTime": "22:01",
       "day": 1,
       "distance": "136.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "MON",
@@ -64,11 +64,11 @@
       "departureTime": "22:31",
       "day": 1,
       "distance": "171.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "MBNL",
@@ -77,11 +77,11 @@
       "departureTime": "22:55",
       "day": 1,
       "distance": "199.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "RNV",
@@ -90,11 +90,11 @@
       "departureTime": "23:29",
       "day": 1,
       "distance": "230.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:01",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BGKT"
     },
     {
       "stationCode": "BLDI",
@@ -240,7 +240,7 @@
       "chartRemoteStation": "BGKT"
     }
   ],
-  "summary": "The first reservation chart for Bgkt Ddr Sf Exp (20483) is prepared at Bhildi (BLDI) around 12:01 PM, with a second (vacancy) chart around 10:40 PM. 11 of 18 stations on the BGKT to DDR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:18:02.426Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Bgkt Ddr Sf Exp (20483) is prepared at Bhagat Ki Kothi (BGKT) around 12:01 PM, with a second (vacancy) chart around 10:40 PM. 18 of 18 stations on the BGKT to DDR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:45:40.732Z",
+  "knownChartCount": 18
 }

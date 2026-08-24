@@ -27,8 +27,8 @@
       "distance": "125.0",
       "chartTimeLocal": "22:50",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSB"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "241.0",
       "chartTimeLocal": "22:50",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSB"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "321.0",
       "chartTimeLocal": "22:50",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSB"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "424.0",
       "chartTimeLocal": "22:50",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "20:30",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BSB"
     },
     {
@@ -137,6 +137,6 @@
     }
   ],
   "summary": "The first reservation chart for Mahakal Express (20415) is prepared at Varanasi Jn (BSB) around 10:50 PM. 5 of 10 stations on the BSB to INDB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:17:04.197Z",
+  "generatedAt": "2026-08-24T22:45:02.371Z",
   "knownChartCount": 5
 }

@@ -12,11 +12,11 @@
       "departureTime": "18:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "17:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:25",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "DDU"
     },
     {
       "stationCode": "LAD",
@@ -25,11 +25,11 @@
       "departureTime": "19:17",
       "day": 1,
       "distance": "68.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "DTO",
@@ -38,11 +38,11 @@
       "departureTime": "21:41",
       "day": 1,
       "distance": "212.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "GHD",
@@ -51,11 +51,11 @@
       "departureTime": "22:50",
       "day": 1,
       "distance": "245.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:29",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "RNC"
     },
     {
       "stationCode": "DDU",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "CNB"
     }
   ],
-  "summary": "The first reservation chart for Rnc Ndls Raj Ex (20407) is prepared at Dd Upadhyaya Jn (DDU) around 5:40 PM, with a second (vacancy) chart around 1:25 AM. 4 of 8 stations on the RNC to NDLS route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:17:00.989Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Rnc Ndls Raj Ex (20407) is prepared at Ranchi (RNC) around 5:40 PM, with a second (vacancy) chart around 1:25 AM. 8 of 8 stations on the RNC to NDLS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:44:59.391Z",
+  "knownChartCount": 8
 }

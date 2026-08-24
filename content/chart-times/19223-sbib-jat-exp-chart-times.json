@@ -12,11 +12,11 @@
       "departureTime": "10:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "19:54",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "SBIB"
+      "chartTimeLocal": "11:00",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:45",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "GNC",
@@ -682,7 +682,7 @@
       "chartRemoteStation": "BTI"
     }
   ],
-  "summary": "The first reservation chart for Sbib Jat Exp (19223) is prepared at Sabarmati Bg (SBIB) around 7:54 PM. 51 of 52 stations on the SBIB to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:09:33.708Z",
+  "summary": "The first reservation chart for Sbib Jat Exp (19223) is prepared at Sabarmati Bg (SBIB) around 11 AM, with a second (vacancy) chart around 6:45 PM. 51 of 52 stations on the SBIB to JAT route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:34:15.417Z",
   "knownChartCount": 51
 }

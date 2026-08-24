@@ -12,11 +12,11 @@
       "departureTime": "23:35",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:26",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:20",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "DWK",
@@ -513,7 +513,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Okha Tpty Exp (19560) from OKHA to TPTY are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 39 stations.",
-  "generatedAt": "2026-08-22T20:13:08.916Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Okha Tpty Exp (19560) is prepared at Okha (OKHA) around 1:26 PM, with a second (vacancy) chart around 11:20 PM. 1 of 39 stations on the OKHA to TPTY route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:38:41.873Z",
+  "knownChartCount": 1
 }

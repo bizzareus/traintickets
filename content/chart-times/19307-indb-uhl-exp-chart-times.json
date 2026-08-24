@@ -118,8 +118,8 @@
       "distance": "335.0",
       "chartTimeLocal": "22:55",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "GUNA"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "384.0",
       "chartTimeLocal": "22:55",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "GUNA"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "437.0",
       "chartTimeLocal": "22:55",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "12:05",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "GUNA"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "18:10",
       "day": 1,
       "distance": "562.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "MRA",
@@ -168,11 +168,11 @@
       "departureTime": "18:40",
       "day": 1,
       "distance": "601.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "08:10",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "GWL"
     },
     {
       "stationCode": "AGC",
@@ -181,11 +181,11 @@
       "departureTime": "19:50",
       "day": 1,
       "distance": "681.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:51",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AGC"
     },
     {
       "stationCode": "MTJ",
@@ -194,11 +194,11 @@
       "departureTime": "20:50",
       "day": 1,
       "distance": "734.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "FDB",
@@ -207,11 +207,11 @@
       "departureTime": "22:27",
       "day": 1,
       "distance": "847.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:34",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "20:35",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MTJ"
     },
     {
       "stationCode": "NZM",
@@ -220,11 +220,11 @@
       "departureTime": "23:20",
       "day": 1,
       "distance": "868.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:20",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NZM"
     },
     {
       "stationCode": "MTC",
@@ -370,7 +370,7 @@
       "chartRemoteStation": "NZM"
     }
   ],
-  "summary": "The first reservation chart for Indb Uhl Exp (19307) is prepared at Indore Jn Bg (INDB) around 7:23 PM, with a second (vacancy) chart around 5:15 AM. 22 of 28 stations on the INDB to UHL route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:10:36.317Z",
-  "knownChartCount": 22
+  "summary": "The first reservation chart for Indb Uhl Exp (19307) is prepared at Indore Jn Bg (INDB) around 7:23 PM, with a second (vacancy) chart around 5:15 AM. 28 of 28 stations on the INDB to UHL route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:35:28.362Z",
+  "knownChartCount": 28
 }

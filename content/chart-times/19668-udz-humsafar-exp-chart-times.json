@@ -12,11 +12,11 @@
       "departureTime": "10:05",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:02",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "MYS"
+      "chartTimeLocal": "07:20",
+      "chartOneDayOffset": 1,
+      "chartTwoTimeLocal": "16:53",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "BRC"
     },
     {
       "stationCode": "MYA",
@@ -25,10 +25,10 @@
       "departureTime": "10:42",
       "day": 1,
       "distance": "46.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:04",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MYS"
     },
     {
@@ -38,10 +38,10 @@
       "departureTime": "12:10",
       "day": 1,
       "distance": "139.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:04",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MYS"
     },
     {
@@ -51,10 +51,10 @@
       "departureTime": "16:46",
       "day": 1,
       "distance": "464.0",
-      "chartTimeLocal": "20:02",
+      "chartTimeLocal": "20:04",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "09:50",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MYS"
     },
     {
@@ -64,11 +64,11 @@
       "departureTime": "19:20",
       "day": 1,
       "distance": "608.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "BGM",
@@ -77,11 +77,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "749.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "19:05",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "UBL"
     },
     {
       "stationCode": "MRJ",
@@ -253,7 +253,7 @@
       "chartRemoteStation": "BRC"
     }
   ],
-  "summary": "The first reservation chart for Udz Humsafar Exp (19668) is prepared at Mysuru Jn (MYS) around 8:02 PM. 17 of 19 stations on the MYS to UDZ route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:15:11.751Z",
-  "knownChartCount": 17
+  "summary": "The first reservation chart for Udz Humsafar Exp (19668) is prepared at Mysuru Jn (MYS) around 7:20 AM, with a second (vacancy) chart around 4:53 PM. 19 of 19 stations on the MYS to UDZ route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:41:12.841Z",
+  "knownChartCount": 19
 }

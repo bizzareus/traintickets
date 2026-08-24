@@ -12,11 +12,11 @@
       "departureTime": "14:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "21:01",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "BCY"
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AYC"
     },
     {
       "stationCode": "BSB",
@@ -116,11 +116,11 @@
       "departureTime": "18:55",
       "day": 1,
       "distance": "200.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AYC"
     },
     {
       "stationCode": "SLW",
@@ -129,11 +129,11 @@
       "departureTime": "19:13",
       "day": 1,
       "distance": "215.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AYC"
     },
     {
       "stationCode": "RDL",
@@ -142,11 +142,11 @@
       "departureTime": "19:33",
       "day": 1,
       "distance": "238.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AYC"
     },
     {
       "stationCode": "DYD",
@@ -155,11 +155,11 @@
       "departureTime": "19:54",
       "day": 1,
       "distance": "261.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AYC"
     },
     {
       "stationCode": "BBK",
@@ -168,11 +168,11 @@
       "departureTime": "21:03",
       "day": 1,
       "distance": "299.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:03",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "18:40",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "AYC"
     },
     {
       "stationCode": "LKO",
@@ -181,11 +181,11 @@
       "departureTime": "23:10",
       "day": 1,
       "distance": "328.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "13:12",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:55",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LKO"
     },
     {
       "stationCode": "ON",
@@ -695,7 +695,7 @@
       "chartRemoteStation": "RTM"
     }
   ],
-  "summary": "The first reservation chart for Sabarmati Exp (19168) is prepared at Varanasi City (BCY) around 9:01 PM. 47 of 53 stations on the BCY to ADI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:09:10.230Z",
-  "knownChartCount": 47
+  "summary": "The first reservation chart for Sabarmati Exp (19168) is prepared at Varanasi City (BCY) around 9:03 AM, with a second (vacancy) chart around 6:40 PM. 53 of 53 stations on the BCY to ADI route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:33:52.495Z",
+  "knownChartCount": 53
 }

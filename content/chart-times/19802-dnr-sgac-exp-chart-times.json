@@ -12,11 +12,11 @@
       "departureTime": "12:45",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:41",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DNR"
     },
     {
       "stationCode": "ARA",
@@ -25,11 +25,11 @@
       "departureTime": "13:12",
       "day": 1,
       "distance": "40.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:41",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DNR"
     },
     {
       "stationCode": "BXR",
@@ -38,11 +38,11 @@
       "departureTime": "13:58",
       "day": 1,
       "distance": "109.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:41",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DNR"
     },
     {
       "stationCode": "DDU",
@@ -51,11 +51,11 @@
       "departureTime": "16:05",
       "day": 1,
       "distance": "203.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:41",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DNR"
     },
     {
       "stationCode": "BDL",
@@ -64,11 +64,11 @@
       "departureTime": "17:12",
       "day": 1,
       "distance": "273.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
+      "chartTimeLocal": "21:41",
+      "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartRemoteStation": "DNR"
     },
     {
       "stationCode": "PCOI",
@@ -214,7 +214,7 @@
       "chartRemoteStation": "PCOI"
     }
   ],
-  "summary": "The first reservation chart for Dnr Sgac Exp (19802) is prepared at Damoh (DMO) around 6:57 AM, with a second (vacancy) chart around 6:07 PM. 6 of 16 stations on the DNR to SGAC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:16:03.192Z",
-  "knownChartCount": 6
+  "summary": "The first reservation chart for Dnr Sgac Exp (19802) is prepared at Danapur (DNR) around 9:41 PM. 11 of 16 stations on the DNR to SGAC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:43:25.376Z",
+  "knownChartCount": 11
 }

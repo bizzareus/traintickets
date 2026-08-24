@@ -12,11 +12,11 @@
       "departureTime": "04:25",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:05",
-      "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": "BVC"
+      "chartTimeLocal": "09:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "SOJN",
@@ -27,8 +27,8 @@
       "distance": "19.0",
       "chartTimeLocal": "20:05",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -40,8 +40,8 @@
       "distance": "49.0",
       "chartTimeLocal": "20:05",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -53,8 +53,8 @@
       "distance": "92.0",
       "chartTimeLocal": "20:05",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -66,8 +66,8 @@
       "distance": "167.0",
       "chartTimeLocal": "20:05",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -79,8 +79,8 @@
       "distance": "234.0",
       "chartTimeLocal": "20:05",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -92,8 +92,8 @@
       "distance": "282.0",
       "chartTimeLocal": "20:05",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -105,8 +105,8 @@
       "distance": "310.0",
       "chartTimeLocal": "20:05",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "04:10",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "BVC"
     },
     {
@@ -118,8 +118,8 @@
       "distance": "372.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:48",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MSH"
     },
     {
@@ -131,8 +131,8 @@
       "distance": "438.0",
       "chartTimeLocal": "22:42",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "10:48",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MSH"
     },
     {
@@ -144,8 +144,8 @@
       "distance": "490.0",
       "chartTimeLocal": "23:07",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "13:25",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "ABR"
     },
     {
@@ -155,11 +155,11 @@
       "departureTime": "17:30",
       "day": 1,
       "distance": "758.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "PLCJ",
@@ -168,11 +168,11 @@
       "departureTime": "20:40",
       "day": 1,
       "distance": "895.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "KLYT",
@@ -181,11 +181,11 @@
       "departureTime": "21:52",
       "day": 1,
       "distance": "1007.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "09:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "17:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "JU"
     },
     {
       "stationCode": "LGH",
@@ -194,11 +194,11 @@
       "departureTime": "23:05",
       "day": 1,
       "distance": "1053.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:05",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:50",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "LGH"
     },
     {
       "stationCode": "MHJ",
@@ -383,7 +383,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Janmabhoomi Exp (19107) is prepared at Bhavnagar Trmus (BVC) around 8:05 PM. 11 of 29 stations on the BVC to MCTM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:08:52.500Z",
-  "knownChartCount": 11
+  "summary": "The first reservation chart for Janmabhoomi Exp (19107) is prepared at Bhavnagar Trmus (BVC) around 9:30 AM, with a second (vacancy) chart around 5:15 PM. 15 of 29 stations on the BVC to MCTM route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:33:11.350Z",
+  "knownChartCount": 15
 }

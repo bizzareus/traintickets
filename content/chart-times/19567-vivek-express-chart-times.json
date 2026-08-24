@@ -12,11 +12,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TN"
     },
     {
       "stationCode": "TME",
@@ -25,11 +25,11 @@
       "departureTime": "23:46",
       "day": 1,
       "distance": "2.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:02",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "TN"
     },
     {
       "stationCode": "CVP",
@@ -552,7 +552,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Vivek Express (19567) is prepared at Pune Jn (PUNE) around 7:09 PM, with a second (vacancy) chart around 4:42 AM. 15 of 42 stations on the TN to OKHA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:13:23.071Z",
-  "knownChartCount": 15
+  "summary": "The first reservation chart for Vivek Express (19567) is prepared at Tuticorin (TN) around 2:02 PM, with a second (vacancy) chart around 11:25 PM. 17 of 42 stations on the TN to OKHA route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:38:56.416Z",
+  "knownChartCount": 17
 }

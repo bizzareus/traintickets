@@ -12,11 +12,11 @@
       "departureTime": "22:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "UTL",
@@ -25,11 +25,11 @@
       "departureTime": "22:43",
       "day": 1,
       "distance": "11.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "BUT",
@@ -38,11 +38,11 @@
       "departureTime": "23:13",
       "day": 1,
       "distance": "47.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "BLT",
@@ -51,11 +51,11 @@
       "departureTime": "23:52",
       "day": 1,
       "distance": "97.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "14:31",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "23:37",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "BME"
     },
     {
       "stationCode": "SMR",
@@ -279,7 +279,7 @@
       "chartRemoteStation": "BME"
     }
   ],
-  "summary": "The first reservation chart for Malani Express (20487) is prepared at Samdhari Jn (SMR) around 2:30 PM, with a second (vacancy) chart around 11:37 PM. 17 of 21 stations on the BME to DEE route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:18:09.342Z",
-  "knownChartCount": 17
+  "summary": "The first reservation chart for Malani Express (20487) is prepared at Barmer (BME) around 2:30 PM, with a second (vacancy) chart around 11:37 PM. 21 of 21 stations on the BME to DEE route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:45:42.751Z",
+  "knownChartCount": 21
 }
