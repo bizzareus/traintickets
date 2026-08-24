@@ -174,7 +174,7 @@ export function TrainChartAlertSection({
             className="w-full inline-flex items-center justify-center gap-1.5 rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-bold text-blue-700 shadow-2xs hover:bg-blue-600 hover:border-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 active:scale-[0.98] transition-all"
           >
             <BellRing className="h-3.5 w-3.5" />
-            Subscribe to Chart Alert
+            Subscribe to Alert
           </button>
         </div>
       </div>
@@ -323,7 +323,7 @@ export function TrainChartAlertSection({
                     ) : (
                       <>
                         <BellRing className="h-4 w-4" />
-                        Get Free Chart Alert
+                        Subscribe to Alert
                       </>
                     )}
                   </button>

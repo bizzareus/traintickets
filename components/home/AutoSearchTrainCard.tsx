@@ -403,7 +403,7 @@ export function AutoSearchTrainCard({
       </div>
 
       {/* Right Column: Vertical Subscribe to Chart Alert CTA */}
-      <div className="w-full md:w-64 lg:w-72 shrink-0 border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-5 flex flex-col justify-center">
+      <div className="w-full md:w-52 lg:w-56 shrink-0 border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-4 flex flex-col justify-center">
         <TrainChartAlertSection
           trainNumber={train.trainNumber}
           trainName={train.trainName}
