@@ -4,6 +4,17 @@ import { WatiProvider } from './wati.provider';
 import { WhatsAppProviderFactory } from './whatsapp.provider-factory';
 import axios from 'axios';
 
+const sendEmailMock = jest
+  .fn()
+  .mockResolvedValue({ data: { id: 'email_123' } });
+jest.mock('resend', () => ({
+  Resend: jest.fn().mockImplementation(() => ({
+    emails: {
+      send: sendEmailMock,
+    },
+  })),
+}));
+
 jest.mock('axios', () => {
   const instance = {
     post: jest.fn(),
@@ -18,9 +29,11 @@ jest.mock('axios', () => {
     default: {
       ...instance,
       create: jest.fn(() => instance),
+      isAxiosError: jest.fn((err: any) => Boolean(err?.isAxiosError)),
     },
     ...instance,
     create: jest.fn(() => instance),
+    isAxiosError: jest.fn((err: any) => Boolean(err?.isAxiosError)),
   };
 });
 const mockedAxios = axios as unknown as jest.Mocked<typeof axios>;
@@ -38,7 +51,11 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
 
   describe('WasenderProvider', () => {
     it('sends freeform text message when WASENDER_API_KEY is present', async () => {
-      const config = mockConfig({ WASENDER_API_KEY: 'wasender_secret' });
+      const config = mockConfig({
+        WASENDER_API_KEY: 'wasender_secret',
+        RESEND_API_KEY: 'resend_secret',
+        MONITORING_ADMIN_EMAIL: 'admin@example.com',
+      });
       const provider = new WasenderProvider(config);
 
       mockedAxios.post.mockResolvedValueOnce({ data: { success: true } });
@@ -53,10 +70,72 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       expect(mockedAxios.post.mock.calls[0][0]).toBe(
         'https://www.wasenderapi.com/api/send-message',
       );
+      expect(mockedAxios.post.mock.calls[0][1]).toEqual({
+        to: '+919876543210',
+        text: 'Hello test',
+      });
+      expect(sendEmailMock).not.toHaveBeenCalled();
     });
 
-    it('returns false when WASENDER_API_KEY is missing', async () => {
-      const config = mockConfig({});
+    it('formats phone numbers starting with 0 properly with +91 prefix', async () => {
+      const config = mockConfig({
+        WASENDER_API_KEY: 'wasender_secret',
+        RESEND_API_KEY: 'resend_secret',
+        MONITORING_ADMIN_EMAIL: 'admin@example.com',
+      });
+      const provider = new WasenderProvider(config);
+
+      mockedAxios.post.mockResolvedValueOnce({ data: { success: true } });
+
+      const result = await provider.sendWhatsApp({
+        mobile: '09712640278',
+        text: 'Hello test with leading 0',
+      });
+
+      expect(result).toBe(true);
+      expect(mockedAxios.post.mock.calls.length).toBe(1);
+      expect(mockedAxios.post.mock.calls[0][1]).toEqual({
+        to: '+919712640278',
+        text: 'Hello test with leading 0',
+      });
+    });
+
+    it('formats complex phone formats with leading zeroes or spaces (+91 09712640278, 009712640278)', async () => {
+      const config = mockConfig({
+        WASENDER_API_KEY: 'wasender_secret',
+        RESEND_API_KEY: 'resend_secret',
+        MONITORING_ADMIN_EMAIL: 'admin@example.com',
+      });
+      const provider = new WasenderProvider(config);
+
+      mockedAxios.post.mockResolvedValue({ data: { success: true } });
+
+      await provider.sendWhatsApp({
+        mobile: '+91 09712640278',
+        text: 'Test +91 0...',
+      });
+
+      expect(mockedAxios.post.mock.calls[0][1]).toEqual({
+        to: '+919712640278',
+        text: 'Test +91 0...',
+      });
+
+      await provider.sendWhatsApp({
+        mobile: '009712640278',
+        text: 'Test 00...',
+      });
+
+      expect(mockedAxios.post.mock.calls[1][1]).toEqual({
+        to: '+919712640278',
+        text: 'Test 00...',
+      });
+    });
+
+    it('returns false and sends failure email to MONITORING_ADMIN_EMAIL when WASENDER_API_KEY is missing', async () => {
+      const config = mockConfig({
+        RESEND_API_KEY: 'resend_secret',
+        MONITORING_ADMIN_EMAIL: 'admin@example.com',
+      });
       const provider = new WasenderProvider(config);
 
       const result = await provider.sendWhatsApp({
@@ -66,6 +145,58 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
 
       expect(result).toBe(false);
       expect(mockedAxios.post.mock.calls.length).toBe(0);
+      expect(sendEmailMock).toHaveBeenCalledTimes(1);
+      const [emailPayload] = sendEmailMock.mock.calls[0] as [
+        { to: string[]; subject: string; html: string },
+      ];
+      expect(emailPayload.to).toEqual(['admin@example.com']);
+      expect(emailPayload.subject).toContain('[WASender Failure]');
+      expect(emailPayload.html).toContain('WASENDER_API_KEY is not set');
+    });
+
+    it('returns false and sends failure email with WASender API error response to MONITORING_ADMIN_EMAIL when API call fails with 422 JID error', async () => {
+      const config = mockConfig({
+        WASENDER_API_KEY: 'wasender_secret',
+        RESEND_API_KEY: 'resend_secret',
+        MONITORING_ADMIN_EMAIL: 'admin@example.com',
+      });
+      const provider = new WasenderProvider(config);
+
+      const axiosError = {
+        isAxiosError: true,
+        message: 'Request failed with status code 422',
+        response: {
+          status: 422,
+          data: {
+            message:
+              'The to must be a valid WhatsApp JID (User, Group, or Channel format).',
+            errors: {
+              to: [
+                'The to must be a valid WhatsApp JID (User, Group, or Channel format).',
+              ],
+            },
+          },
+        },
+      };
+      mockedAxios.post.mockRejectedValueOnce(axiosError);
+
+      const result = await provider.sendWhatsApp({
+        mobile: '09712640278',
+        text: 'Hello test alert',
+      });
+
+      expect(result).toBe(false);
+      expect(sendEmailMock).toHaveBeenCalledTimes(1);
+      const [emailPayload] = sendEmailMock.mock.calls[0] as [
+        { to: string[]; subject: string; html: string },
+      ];
+      expect(emailPayload.to).toEqual(['admin@example.com']);
+      expect(emailPayload.subject).toContain('[WASender Failure]');
+      expect(emailPayload.subject).toContain('919712640278');
+      expect(emailPayload.html).toContain(
+        'The to must be a valid WhatsApp JID',
+      );
+      expect(emailPayload.html).toContain('HTTP 422');
     });
   });
 

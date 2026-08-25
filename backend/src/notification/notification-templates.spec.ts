@@ -9,6 +9,13 @@ describe('Notification Templates & Helpers', () => {
       expect(normalizeE164Mobile('+91 9999224767')).toBe('919999224767');
     });
 
+    it('trims leading zeroes and attaches 91 prefix', () => {
+      expect(normalizeE164Mobile('09712640278')).toBe('919712640278');
+      expect(normalizeE164Mobile('009712640278')).toBe('919712640278');
+      expect(normalizeE164Mobile('+91 09712640278')).toBe('919712640278');
+      expect(normalizeE164Mobile('00919712640278')).toBe('919712640278');
+    });
+
     it('preserves country code if already present', () => {
       expect(normalizeE164Mobile('919999224767')).toBe('919999224767');
     });

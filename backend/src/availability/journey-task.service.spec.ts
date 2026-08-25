@@ -233,6 +233,78 @@ describe('JourneyTaskService', () => {
 
       expect(mockNotification.notifyUser).toHaveBeenCalled();
     });
+
+    it('attaches alternative trains directly to notifyUser when no tickets found and dispatches single notification', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
+        id: 'task-alt',
+        journeyRequestId: 'req-alt',
+        trainNumber: '12734',
+        trainName: 'Narayanadri Sf',
+        fromStationCode: 'GNT',
+        toStationCode: 'TPTY',
+        stationCode: 'GNT',
+        chartAt: new Date(Date.now() - 3600_000),
+        journeyDate: new Date('2026-08-25'),
+        trainStartDate: new Date('2026-08-25'),
+        status: 'running',
+        retryCount: 0,
+      });
+
+      mockBookingV2.findAlternatePaths.mockResolvedValueOnce({
+        legs: [
+          {
+            segmentKind: 'waitlist',
+            travelClass: 'SL',
+            from: 'GNT',
+            to: 'TPTY',
+            isAvailable: false,
+          },
+        ],
+        trainNumber: '12734',
+      });
+
+      mockPrisma.journeyMonitoringRequest.findUnique.mockResolvedValue({
+        id: 'req-alt',
+        classCode: 'SL',
+      });
+
+      const mockAltCandidate = {
+        train: { trainNumber: '17426', trainName: 'SNSI TPTY EXP' },
+        alternatePath: {
+          legs: [
+            { from: 'GNT', to: 'TPTY', travelClass: '2A', isAvailable: true },
+          ],
+        },
+      };
+
+      mockBookingV2.findBestTrains.mockResolvedValue({
+        results: [mockAltCandidate],
+      });
+
+      mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
+        email: 'connectkumar17@gmail.com',
+        mobile: '919885515973',
+      });
+
+      await service.runTask('task-alt', true);
+
+      expect(mockBookingV2.findBestTrains).toHaveBeenCalledWith(
+        expect.objectContaining({
+          from: 'GNT',
+          to: 'TPTY',
+          acOnly: false,
+        }),
+      );
+
+      expect(mockNotification.notifyUser).toHaveBeenCalledTimes(1);
+      expect(mockNotification.notifyUser).toHaveBeenCalledWith(
+        expect.objectContaining({
+          email: 'connectkumar17@gmail.com',
+          mobile: '919885515973',
+          alternativeTrains: [mockAltCandidate],
+        }),
+      );
+    });
   });
 
   describe('autoSubscribeForMissingLegs', () => {

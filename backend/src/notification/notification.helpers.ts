@@ -13,10 +13,31 @@ export function hasBookablePlanForNotification(
   return plan.some(isFilledOpenAiPlanItem);
 }
 
-/** Normalize mobile numbers to Indian E.164 format (e.g. 919999224767). */
+/**
+ * Normalize mobile numbers to Indian E.164 format (e.g. 919999224767).
+ * Handles:
+ * - 10 digits: "9712640278" -> "919712640278"
+ * - Leading zeroes: "09712640278" or "009712640278" -> "919712640278"
+ * - Country code with 0: "+91 09712640278" or "9109712640278" -> "919712640278"
+ * - Country code: "+91 9712640278" or "919712640278" -> "919712640278"
+ */
 export function normalizeE164Mobile(phone: string): string {
-  const digits = phone.replace(/\D/g, '');
-  if (digits.length === 10) return `91${digits}`;
+  if (!phone) return '';
+  let digits = phone.replace(/\D/g, '');
+  if (!digits) return '';
+
+  if (digits.startsWith('910') && digits.length === 13) {
+    digits = `91${digits.slice(3)}`;
+  }
+
+  digits = digits.replace(/^0+/, '');
+
+  if (digits.length === 10) {
+    return `91${digits}`;
+  }
+  if (digits.length === 12 && digits.startsWith('91')) {
+    return digits;
+  }
   return digits;
 }
 

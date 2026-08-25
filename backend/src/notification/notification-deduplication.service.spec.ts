@@ -63,6 +63,51 @@ describe('NotificationDeduplicationService', () => {
     expect(result).toBe(false);
   });
 
+  it('should return true if recipient is empty or null', async () => {
+    const res1 = await service.shouldSendNotification({
+      recipient: '',
+      channel: 'email',
+      trainNumber: '12815',
+      journeyDate: '2026-08-25',
+      notificationType: 'no_seats',
+    });
+    const res2 = await service.shouldSendNotification({
+      recipient: null,
+      channel: 'whatsapp',
+      trainNumber: '12815',
+      journeyDate: '2026-08-25',
+      notificationType: 'no_seats',
+    });
+
+    expect(res1).toBe(true);
+    expect(res2).toBe(true);
+    expect(prisma.sentNotificationLog.findFirst).not.toHaveBeenCalled();
+  });
+
+  it('should query with custom windowHours for alt_trains and no_seats', async () => {
+    (prisma.sentNotificationLog.findFirst as jest.Mock).mockResolvedValue(null);
+
+    await service.shouldSendNotification({
+      recipient: 'user@example.com',
+      channel: 'email',
+      trainNumber: '12734',
+      journeyDate: '2026-08-25',
+      notificationType: 'alt_trains',
+      windowHours: 4,
+    });
+
+    expect(prisma.sentNotificationLog.findFirst).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          recipient: 'user@example.com',
+          channel: 'email',
+          trainNumber: '12734',
+          notificationType: 'alt_trains',
+        }),
+      }),
+    );
+  });
+
   it('should record notification log upon dispatch', async () => {
     (prisma.sentNotificationLog.create as jest.Mock).mockResolvedValue({
       id: 'log2',

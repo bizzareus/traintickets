@@ -1,5 +1,6 @@
 import { ConfigService } from '@nestjs/config';
 import { NotificationService } from './notification.service';
+import { NotificationDeduplicationService } from './notification-deduplication.service';
 import type { StationCacheService } from '../cache/station-cache.service';
 import type { Service2CheckResult } from '../service2/service2.service';
 
@@ -343,5 +344,317 @@ describe('NotificationService', () => {
     expect(text).toContain('Ticket Found [SL] | CURR_AVL 12');
     expect(text).toContain('BAM - Brahmapur → VZM - Vizianagram Jn');
     expect(text).toContain('approx ₹205');
+  });
+
+  it('suppresses duplicate notifications when NotificationDeduplicationService returns false', async () => {
+    const shouldSendNotificationMock = jest.fn().mockResolvedValue(false);
+    const recordNotificationSentMock = jest.fn().mockResolvedValue(undefined);
+    const mockDedup = {
+      shouldSendNotification: shouldSendNotificationMock,
+      recordNotificationSent: recordNotificationSentMock,
+    } as unknown as NotificationDeduplicationService;
+
+    const svc = new NotificationService(
+      mockConfig({ wasenderKey: 'ws_test' }),
+      mockStationCache(),
+      undefined,
+      undefined,
+      undefined,
+      mockDedup,
+    );
+    const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+    const sendWhatsApp = jest
+      .spyOn(svc, 'sendWhatsApp')
+      .mockResolvedValue(true);
+
+    const out = await svc.notifyUser({
+      email: 'dup@example.com',
+      mobile: '919876543210',
+      task,
+      result: successEmptyPlan,
+    });
+
+    expect(shouldSendNotificationMock).toHaveBeenCalledTimes(2);
+    expect(sendEmail).not.toHaveBeenCalled();
+    expect(sendWhatsApp).not.toHaveBeenCalled();
+    expect(recordNotificationSentMock).not.toHaveBeenCalled();
+    expect(out).toEqual({ emailSent: false, whatsappSent: false });
+  });
+
+  it('records sent notification when NotificationDeduplicationService returns true and send succeeds', async () => {
+    const shouldSendNotificationMock = jest.fn().mockResolvedValue(true);
+    const recordNotificationSentMock = jest.fn().mockResolvedValue(undefined);
+    const mockDedup = {
+      shouldSendNotification: shouldSendNotificationMock,
+      recordNotificationSent: recordNotificationSentMock,
+    } as unknown as NotificationDeduplicationService;
+
+    const svc = new NotificationService(
+      mockConfig({ wasenderKey: 'ws_test' }),
+      mockStationCache(),
+      undefined,
+      undefined,
+      undefined,
+      mockDedup,
+    );
+    jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+    jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(true);
+
+    const out = await svc.notifyUser({
+      email: 'dup@example.com',
+      mobile: '919876543210',
+      task,
+      result: successEmptyPlan,
+    });
+
+    expect(out).toEqual({ emailSent: true, whatsappSent: true });
+    expect(recordNotificationSentMock).toHaveBeenCalledTimes(2);
+    expect(recordNotificationSentMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        recipient: 'dup@example.com',
+        channel: 'email',
+        notificationType: 'no_seats',
+      }),
+    );
+    expect(recordNotificationSentMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        recipient: '919876543210',
+        channel: 'whatsapp',
+        notificationType: 'no_seats',
+      }),
+    );
+  });
+
+  describe('End-to-End False-Case & Duplicate Prevention Tests', () => {
+    let inMemoryLogs: Array<{
+      recipient: string;
+      channel: string;
+      trainNumber: string;
+      journeyDate: Date;
+      notificationType: string;
+      sentAt: Date;
+    }>;
+    let dedupService: NotificationDeduplicationService;
+    let mockPrisma: any;
+
+    beforeEach(() => {
+      inMemoryLogs = [];
+      mockPrisma = {
+        sentNotificationLog: {
+          findFirst: jest.fn().mockImplementation(async ({ where }) => {
+            const cutoff = where.sentAt?.gte;
+            const targetDateStr =
+              where.journeyDate instanceof Date
+                ? where.journeyDate.toISOString().slice(0, 10)
+                : String(where.journeyDate || '').slice(0, 10);
+            return (
+              inMemoryLogs.find((log) => {
+                const logDateStr =
+                  log.journeyDate instanceof Date
+                    ? log.journeyDate.toISOString().slice(0, 10)
+                    : String(log.journeyDate || '').slice(0, 10);
+                return (
+                  log.recipient === where.recipient &&
+                  log.channel === where.channel &&
+                  log.trainNumber === where.trainNumber &&
+                  logDateStr === targetDateStr &&
+                  log.notificationType === where.notificationType &&
+                  (!cutoff || log.sentAt >= cutoff)
+                );
+              }) || null
+            );
+          }),
+          create: jest.fn().mockImplementation(async ({ data }) => {
+            const entry = { ...data, sentAt: new Date() };
+            inMemoryLogs.push(entry);
+            return entry;
+          }),
+        },
+      };
+      dedupService = new NotificationDeduplicationService(mockPrisma);
+    });
+
+    it('False Case 1: Prevents sending 4 duplicate emails when multiple tasks execute for the same user, train and date (jaip6433@gmail.com scenario)', async () => {
+      const svc = new NotificationService(
+        mockConfig({ wasenderKey: 'ws_test' }),
+        mockStationCache(),
+        undefined,
+        undefined,
+        undefined,
+        dedupService,
+      );
+
+      const sendEmailSpy = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+      const testTask = {
+        trainNumber: '12815',
+        trainName: 'Nandan Kanan Exp',
+        fromStationCode: 'MZP',
+        toStationCode: 'ANVT',
+        journeyDate: new Date('2026-08-25T00:00:00.000Z'),
+      };
+
+      // 1st task execution (e.g. 1st Chart task MZP -> ANVT)
+      const res1 = await svc.notifyUser({
+        email: 'jaip6433@gmail.com',
+        task: testTask,
+        result: successEmptyPlan,
+      });
+
+      // 2nd task execution (e.g. 2nd Chart task MZP -> ANVT)
+      const res2 = await svc.notifyUser({
+        email: 'jaip6433@gmail.com',
+        task: testTask,
+        result: successEmptyPlan,
+      });
+
+      // 3rd task execution (e.g. 1st Chart task PRYJ -> ANVT)
+      const res3 = await svc.notifyUser({
+        email: 'jaip6433@gmail.com',
+        task: { ...testTask, fromStationCode: 'PRYJ' },
+        result: successEmptyPlan,
+      });
+
+      // 4th task execution (e.g. 2nd Chart task PRYJ -> ANVT)
+      const res4 = await svc.notifyUser({
+        email: 'jaip6433@gmail.com',
+        task: { ...testTask, fromStationCode: 'PRYJ' },
+        result: successEmptyPlan,
+      });
+
+      // Assertions: 1st succeeded, 2nd, 3rd, and 4th were BLOCKED
+      expect(res1.emailSent).toBe(true);
+      expect(res2.emailSent).toBe(false);
+      expect(res3.emailSent).toBe(false);
+      expect(res4.emailSent).toBe(false);
+
+      // Crucial: sendEmail was only invoked 1 time total instead of 4 times
+      expect(sendEmailSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('False Case 2: Prevents sending 3 duplicate alternative train emails when multiple alerts fire for same train (connectkumar17@gmail.com scenario)', async () => {
+      const svc = new NotificationService(
+        mockConfig({ wasenderKey: 'ws_test' }),
+        mockStationCache(),
+        undefined,
+        undefined,
+        undefined,
+        dedupService,
+      );
+
+      const sendEmailSpy = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+      const altTrains = [
+        {
+          train: { trainNumber: '17426', trainName: 'SNSI TPTY EXP' },
+          alternatePath: {
+            legs: [{ from: 'GNT', to: 'TPTY', travelClass: '2A', isAvailable: true }],
+          },
+        },
+      ] as any;
+
+      // 1st alternative train alert (e.g. from GNT -> TPTY)
+      const res1 = await svc.notifyUser({
+        email: 'connectkumar17@gmail.com',
+        task: {
+          trainNumber: '12734',
+          trainName: 'Narayanadri Sf',
+          fromStationCode: 'GNT',
+          toStationCode: 'TPTY',
+          journeyDate: new Date('2026-08-25T00:00:00.000Z'),
+        },
+        result: successEmptyPlan,
+        alternativeTrains: altTrains,
+      });
+
+      // 2nd alternative train alert (e.g. from LPI -> TPTY for same train 12734)
+      const res2 = await svc.notifyUser({
+        email: 'connectkumar17@gmail.com',
+        task: {
+          trainNumber: '12734',
+          trainName: 'Narayanadri Sf',
+          fromStationCode: 'LPI',
+          toStationCode: 'TPTY',
+          journeyDate: new Date('2026-08-25T00:00:00.000Z'),
+        },
+        result: successEmptyPlan,
+        alternativeTrains: altTrains,
+      });
+
+      // 3rd alternative train alert via notifyUserAlternativeTrains
+      const res3 = await svc.notifyUserAlternativeTrains({
+        email: 'connectkumar17@gmail.com',
+        originalTrainNumber: '12734',
+        originalTrainName: 'Narayanadri Sf',
+        fromStationCode: 'GNT',
+        toStationCode: 'TPTY',
+        journeyDate: new Date('2026-08-25T00:00:00.000Z'),
+        alternativeTrains: altTrains,
+      });
+
+      // Assertions: 1st email sent, 2nd and 3rd emails suppressed
+      expect(res1.emailSent).toBe(true);
+      expect(res2.emailSent).toBe(false);
+      expect(res3.emailSent).toBe(false);
+
+      // Crucial: sendEmail was only invoked 1 time total instead of 3 times
+      expect(sendEmailSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('False Case 3: Does NOT falsely suppress emails for different train numbers or different dates', async () => {
+      const svc = new NotificationService(
+        mockConfig({ wasenderKey: 'ws_test' }),
+        mockStationCache(),
+        undefined,
+        undefined,
+        undefined,
+        dedupService,
+      );
+
+      const sendEmailSpy = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+
+      // Alert for Train 12815 on 2026-08-25
+      const res1 = await svc.notifyUser({
+        email: 'user@example.com',
+        task: {
+          trainNumber: '12815',
+          trainName: 'Nandan Kanan Exp',
+          fromStationCode: 'MZP',
+          toStationCode: 'ANVT',
+          journeyDate: new Date('2026-08-25T00:00:00.000Z'),
+        },
+        result: successEmptyPlan,
+      });
+
+      // Alert for Train 12734 on 2026-08-25 (different train number)
+      const res2 = await svc.notifyUser({
+        email: 'user@example.com',
+        task: {
+          trainNumber: '12734',
+          trainName: 'Narayanadri Sf',
+          fromStationCode: 'GNT',
+          toStationCode: 'TPTY',
+          journeyDate: new Date('2026-08-25T00:00:00.000Z'),
+        },
+        result: successEmptyPlan,
+      });
+
+      // Alert for Train 12815 on 2026-08-28 (different date)
+      const res3 = await svc.notifyUser({
+        email: 'user@example.com',
+        task: {
+          trainNumber: '12815',
+          trainName: 'Nandan Kanan Exp',
+          fromStationCode: 'MZP',
+          toStationCode: 'ANVT',
+          journeyDate: new Date('2026-08-28T00:00:00.000Z'),
+        },
+        result: successEmptyPlan,
+      });
+
+      // All distinct trains/dates must send successfully
+      expect(res1.emailSent).toBe(true);
+      expect(res2.emailSent).toBe(true);
+      expect(res3.emailSent).toBe(true);
+      expect(sendEmailSpy).toHaveBeenCalledTimes(3);
+    });
   });
 });

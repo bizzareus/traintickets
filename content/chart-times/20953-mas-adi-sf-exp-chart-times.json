@@ -12,11 +12,11 @@
       "departureTime": "22:40",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "AJJ",
@@ -25,11 +25,11 @@
       "departureTime": "23:40",
       "day": 1,
       "distance": "69.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "12:44",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "22:25",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "MAS"
     },
     {
       "stationCode": "RU",
@@ -357,7 +357,7 @@
       "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "The first reservation chart for Mas Adi Sf Exp (20953) is prepared at Vadodara Jn (BRC) around 7:20 AM, with a second (vacancy) chart around 4:25 PM. 4 of 27 stations on the MAS to ADI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:25:00.306Z",
-  "knownChartCount": 4
+  "summary": "The first reservation chart for Mas Adi Sf Exp (20953) is prepared at Mgr Chennai Ctl (MAS) around 12:44 PM, with a second (vacancy) chart around 10:25 PM. 6 of 27 stations on the MAS to ADI route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:52:07.386Z",
+  "knownChartCount": 6
 }

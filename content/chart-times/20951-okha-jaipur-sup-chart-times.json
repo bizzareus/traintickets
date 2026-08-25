@@ -12,11 +12,11 @@
       "departureTime": "21:30",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "DWK",
@@ -25,11 +25,11 @@
       "departureTime": "22:01",
       "day": 1,
       "distance": "29.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "KMBL",
@@ -38,11 +38,11 @@
       "departureTime": "22:57",
       "day": 1,
       "distance": "114.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "11:24",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:15",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "OKHA"
     },
     {
       "stationCode": "JAM",
@@ -279,7 +279,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "Reservation chart preparation times for Okha Jaipur Sup (20951) from OKHA to JP are not published yet — IRCTC prepares the vacancy chart closer to departure. Check back nearer the journey date to see the exact chart time for each of the 21 stations.",
-  "generatedAt": "2026-08-22T20:24:54.081Z",
-  "knownChartCount": 0
+  "summary": "The first reservation chart for Okha Jaipur Sup (20951) is prepared at Okha (OKHA) around 11:24 AM, with a second (vacancy) chart around 9:15 PM. 3 of 21 stations on the OKHA to JP route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "generatedAt": "2026-08-24T22:51:59.622Z",
+  "knownChartCount": 3
 }

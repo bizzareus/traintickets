@@ -1035,26 +1035,6 @@ export class JourneyTaskService {
           }
 
           if (!hasTickets) {
-            if (this.alternativeSearchTaskService) {
-              try {
-                await this.alternativeSearchTaskService.enqueueTask({
-                  journeyTaskId: task.id,
-                  trainNumber: task.trainNumber,
-                  trainName: task.trainName ?? undefined,
-                  fromStationCode: task.fromStationCode,
-                  toStationCode: task.toStationCode,
-                  journeyDate: task.journeyDate,
-                  email: contact.email || undefined,
-                  mobile: contact.mobile || undefined,
-                });
-              } catch (altErr) {
-                console.error(
-                  'Failed to enqueue alternative search task',
-                  altErr,
-                );
-              }
-            }
-
             try {
               const req = await this.prisma.journeyMonitoringRequest.findUnique(
                 {

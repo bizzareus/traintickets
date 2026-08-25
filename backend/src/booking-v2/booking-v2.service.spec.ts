@@ -508,8 +508,7 @@ describe('BookingV2Service', () => {
         {
           headers: {
             'x-rapidapi-key': 'test-rapidapi-key',
-            'x-rapidapi-host':
-              'irctc-indian-railway-pnr-status.p.rapidapi.com',
+            'x-rapidapi-host': 'irctc-indian-railway-pnr-status.p.rapidapi.com',
             'Content-Type': 'application/json',
           },
           timeout: 10_000,

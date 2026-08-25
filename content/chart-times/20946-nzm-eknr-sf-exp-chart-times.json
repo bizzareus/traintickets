@@ -51,11 +51,11 @@
       "departureTime": "01:35",
       "day": 2,
       "distance": "724.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "DHD",
@@ -64,11 +64,11 @@
       "departureTime": "03:04",
       "day": 2,
       "distance": "838.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "GDA",
@@ -77,11 +77,11 @@
       "departureTime": "04:27",
       "day": 2,
       "distance": "912.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "BRC",
@@ -90,11 +90,11 @@
       "departureTime": "05:25",
       "day": 2,
       "distance": "986.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     },
     {
       "stationCode": "EKNR",
@@ -103,14 +103,14 @@
       "departureTime": "",
       "day": 2,
       "distance": "1069.0",
-      "chartTimeLocal": null,
-      "chartOneDayOffset": null,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
-      "chartRemoteStation": null
+      "chartTimeLocal": "15:30",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "01:20",
+      "chartTwoDayOffset": 1,
+      "chartRemoteStation": "RTM"
     }
   ],
-  "summary": "The first reservation chart for Nzm Eknr Sf Exp (20946) is prepared at H Nizamuddin (NZM) around 7:45 AM, with a second (vacancy) chart around 3:30 PM. 3 of 8 stations on the NZM to EKNR route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
-  "generatedAt": "2026-08-22T20:24:45.402Z",
-  "knownChartCount": 3
+  "summary": "The first reservation chart for Nzm Eknr Sf Exp (20946) is prepared at H Nizamuddin (NZM) around 7:45 AM, with a second (vacancy) chart around 3:30 PM. 8 of 8 stations on the NZM to EKNR route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-24T22:51:45.647Z",
+  "knownChartCount": 8
 }

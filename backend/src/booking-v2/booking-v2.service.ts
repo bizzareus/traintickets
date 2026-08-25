@@ -506,7 +506,10 @@ export class BookingV2Service {
           : null,
       availabilityDisplayName:
         typeof r.availabilityDisplayName === 'string'
-          ? r.availabilityDisplayName.replace(/CURR_AVBL|CURR_AVL|CURR_AV/gi, 'AVL')
+          ? r.availabilityDisplayName.replace(
+              /CURR_AVBL|CURR_AVL|CURR_AV/gi,
+              'AVL',
+            )
           : null,
     };
   }
@@ -1987,8 +1990,7 @@ export class BookingV2Service {
         {
           headers: {
             'x-rapidapi-key': key,
-            'x-rapidapi-host':
-              'irctc-indian-railway-pnr-status.p.rapidapi.com',
+            'x-rapidapi-host': 'irctc-indian-railway-pnr-status.p.rapidapi.com',
             'Content-Type': 'application/json',
           },
           timeout: 10_000,
@@ -2046,8 +2048,7 @@ export class BookingV2Service {
             Number: p.passengerSerialNumber ?? idx + 1,
             CurrentStatus:
               p.currentStatusDetails || p.currentStatus || 'Unknown',
-            BookingStatus:
-              p.bookingStatusDetails || p.bookingStatus || '',
+            BookingStatus: p.bookingStatusDetails || p.bookingStatus || '',
             ConfirmTktStatus:
               p.currentStatus === 'CNF' ? 'Confirm' : p.currentStatus || '',
             ...p,
