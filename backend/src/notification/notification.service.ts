@@ -503,8 +503,11 @@ export class NotificationService {
   /** Build IRCTC URL for a segment from instruction "FROM - TO - CLASS". */
   private buildSegmentBookUrl(
     trainNumber: string,
-    instruction: string,
+    instruction: string | undefined | null,
   ): string {
+    if (!instruction?.trim()) {
+      return 'https://www.irctc.co.in/eticketing/login';
+    }
     const parts = instruction.split(' - ').map((p) => p.trim());
     const origin = parts[0] ?? '';
     const destination = parts[1] ?? '';
@@ -522,9 +525,12 @@ export class NotificationService {
 
   /** Format segment for display: "CODE - Name → CODE - Name" using station names when available. */
   private formatSegmentRoute(
-    instruction: string,
+    instruction: string | undefined | null,
     stationNameMap: Map<string, string>,
   ): string {
+    if (!instruction?.trim()) {
+      return '';
+    }
     const parts = instruction.split(' - ').map((p) => p.trim());
     const fromCode = parts[0] ?? '';
     const toCode = parts[1] ?? '';
@@ -952,20 +958,22 @@ export class NotificationService {
       '',
     ];
 
-    for (let idx = 0; idx < plan.length; idx++) {
-      const item = plan[idx];
+    const filledPlan = plan.filter(isFilledOpenAiPlanItem);
+
+    for (let idx = 0; idx < filledPlan.length; idx++) {
+      const item = filledPlan[idx];
       const segmentRoute = this.formatSegmentRoute(
         item.instruction,
         stationNameMap,
       );
-      const parts = item.instruction.split(' - ').map((p) => p.trim());
+      const parts = (item.instruction || '').split(' - ').map((p) => p.trim());
       const segFrom = parts[0] ?? '';
       const segTo = parts[1] ?? '';
       const segmentTimes =
         segFrom && segTo
           ? formatSegmentScheduleTimes(stationScheduleList, segFrom, segTo)
           : '';
-      const classTag = (item.instruction.split(' - ')[2] ?? '3A').trim();
+      const classTag = ((item.instruction || '').split(' - ')[2] ?? '3A').trim();
       const priceStr =
         item.approx_price != null && item.approx_price > 0
           ? `approx ₹${Number(item.approx_price).toLocaleString('en-IN')}`
@@ -1010,21 +1018,26 @@ export class NotificationService {
       trainNumber,
     } = params;
 
-    const cardsHtml = plan
+    const filledPlan = plan.filter(isFilledOpenAiPlanItem);
+    const cardsHtml = filledPlan
       .map((item, idx) => {
         const segUrl = this.buildSegmentBookUrl(trainNumber, item.instruction);
         const segmentRoute = this.formatSegmentRoute(
           item.instruction,
           stationNameMap,
         );
-        const parts = item.instruction.split(' - ').map((p) => p.trim());
+        const parts = (item.instruction || '')
+          .split(' - ')
+          .map((p) => p.trim());
         const segFrom = parts[0] ?? '';
         const segTo = parts[1] ?? '';
         const segmentTimes =
           segFrom && segTo
             ? formatSegmentScheduleTimes(stationScheduleList, segFrom, segTo)
             : '';
-        const classTag = (item.instruction.split(' - ')[2] ?? '3A').trim();
+        const classTag = (
+          (item.instruction || '').split(' - ')[2] ?? '3A'
+        ).trim();
         const priceStr =
           item.approx_price != null && item.approx_price > 0
             ? `₹${Number(item.approx_price).toLocaleString('en-IN')}`
@@ -1495,7 +1508,9 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
         : undefined;
       const stationScheduleList = result.trainSchedule?.stationList;
       const stationNameMap = this.getStationNameMap(stationScheduleList);
-      const plan = result.openAiBookingPlan ?? [];
+      const plan = (result.openAiBookingPlan ?? []).filter(
+        isFilledOpenAiPlanItem,
+      );
       const journeyDateStr =
         task.journeyDate instanceof Date
           ? task.journeyDate.toISOString().slice(0, 10)

@@ -346,6 +346,63 @@ describe('NotificationService', () => {
     expect(text).toContain('approx ₹205');
   });
 
+  it('safely handles empty objects in openAiBookingPlan without crashing (JBP -> BGP regression test)', async () => {
+    const svc = new NotificationService(
+      mockConfig({ wasenderKey: 'ws_test' }),
+      mockStationCache(),
+    );
+    const sendWhatsApp = jest
+      .spyOn(svc, 'sendWhatsApp')
+      .mockResolvedValue(true);
+    const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+
+    const sparsePlanResult: Service2CheckResult = {
+      status: 'success',
+      vacantBerth: { vbd: [], error: null },
+      openAiBookingPlan: [
+        {} as any,
+        {} as any,
+        { instruction: 'PNBE - BKP - SL', approx_price: 180 },
+        {} as any,
+        { instruction: 'KIUL - BGP - SL', approx_price: 180 },
+      ],
+      trainSchedule: {
+        trainNumber: '12336',
+        trainName: 'Ltt Bhagalpur Ex',
+        stationFrom: 'JBP',
+        stationTo: 'BGP',
+        stationList: [
+          { stationCode: 'JBP', stationName: 'Jabalpur' },
+          { stationCode: 'PNBE', stationName: 'Patna Jn' },
+          { stationCode: 'BKP', stationName: 'Bakhtiyarpur Jn' },
+          { stationCode: 'KIUL', stationName: 'Kiul Jn' },
+          { stationCode: 'BGP', stationName: 'Bhagalpur' },
+        ],
+      },
+    };
+
+    const out = await svc.notifyUser({
+      email: 'ps7718686@gmail.com',
+      mobile: '918603563700',
+      task: {
+        trainNumber: '12336',
+        trainName: 'Ltt Bhagalpur Ex',
+        fromStationCode: 'JBP',
+        toStationCode: 'BGP',
+        journeyDate: new Date('2026-08-25T00:00:00.000Z'),
+      },
+      result: sparsePlanResult,
+      isFollowUpLeg: true,
+    });
+
+    expect(out).toEqual({ emailSent: true, whatsappSent: true });
+    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    const [, whatsAppText] = sendWhatsApp.mock.calls[0];
+    expect(whatsAppText).toContain('PNBE - Patna Jn → BKP - Bakhtiyarpur Jn');
+    expect(whatsAppText).toContain('KIUL - Kiul Jn → BGP - Bhagalpur');
+  });
+
   it('suppresses duplicate notifications when NotificationDeduplicationService returns false', async () => {
     const shouldSendNotificationMock = jest.fn().mockResolvedValue(false);
     const recordNotificationSentMock = jest.fn().mockResolvedValue(undefined);
