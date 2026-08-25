@@ -21,6 +21,7 @@ import {
   formatJourneyDateReadable,
   formatSegmentScheduleTimes,
   hasBookablePlanForNotification,
+  normalizeE164Mobile,
 } from './notification.helpers';
 import { renderSeatsFoundEmailHtml } from './templates/notification-email.templates';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
