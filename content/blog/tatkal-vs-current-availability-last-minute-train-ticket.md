@@ -2,7 +2,7 @@
 title: "Tatkal vs Current Availability: Which Ticket Confirms Faster? (2026)"
 description: "Compare Tatkal vs Current Availability ticket booking. Learn opening timings, fare differences, cancellation refund rules, and which option gets confirmed seats faster."
 date: "2026-05-27"
-updated: "2026-07-29"
+updated: "2026-08-25"
 tags:
   - tatkal
   - current availability
@@ -138,7 +138,7 @@ Both options are extremely useful for last-minute travelers, but they operate un
 
 ## What is the Fare Difference Between Tatkal Charges and Current Availability Fares?
 
-Tatkal tickets incur an additional Tatkal surge charge ranging from ₹100 to ₹500 depending on travel class, making them more expensive than general tickets. Conversely, Current Availability tickets are sold at basic fare or discounted rates (often 10% below base fare) to fill unsold berths post-charting.
+Tatkal tickets incur an additional Tatkal surge charge ranging from ₹10 to ₹500 depending on travel class, making them more expensive than general tickets. Conversely, Current Availability tickets are sold at basic fare or discounted rates (often 10% below base fare) to fill unsold berths post-charting.
 
 - **Tatkal Fare:** Base Fare + Tatkal Distance Surge Surcharge (10% to 30% extra, max ₹500).
 - **Current Availability Fare:** Base Fare minus 10% discount (no surge charges).

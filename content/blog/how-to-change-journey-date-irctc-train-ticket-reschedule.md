@@ -2,7 +2,7 @@
 title: "Can You Change Train Ticket Date in IRCTC? (2026 Rules)"
 description: "Learn how to change your IRCTC train journey date, prepone or postpone confirmed counter tickets, manage online e-tickets, fee rules, and Tatkal restrictions."
 date: "2026-08-24"
-updated: "2026-08-24"
+updated: "2026-08-25"
 tags:
   - train booking
   - irctc
@@ -154,7 +154,7 @@ Yes, you can request a change of boarding point along with your journey date cha
 No, if you reschedule your journey to a train or class with a lower fare, Indian Railways retains the difference and does not issue a refund for the excess amount paid.
 
 ### What happens to a waitlisted e-ticket if I do not reschedule or cancel it?
-If you booked an online e-ticket and it remains fully waitlisted (all passengers on the PNR are in WL status) after the final chart is prepared, IRCTC automatically cancels the ticket and processes a full refund minus nominal clerkage directly to your bank account. You are not allowed to board reserved coaches with a fully waitlisted e-ticket.
+If you booked an online e-ticket and it remains fully waitlisted (all passengers on the PNR are in WL status) after the final chart is prepared, IRCTC automatically cancels the ticket and processes a full refund (with no cancellation or clerkage fee deducted) directly to your bank account. You are not permitted to board reserved coaches with a fully waitlisted e-ticket.
 
 ### Can I postpone a confirmed train ticket to a date beyond the 60-day Advance Reservation Period?
 No, you can only postpone your ticket to a date where reservations are actively open. Indian Railways operates a 60-day Advance Reservation Period (ARP), so your requested new journey date must fall within this open window at the time of your application.
