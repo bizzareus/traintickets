@@ -1,0 +1,21 @@
+#!/bin/bash
+# Pre-push hook to verify production build before pushing to remote
+
+if command -v node >/dev/null 2>&1; then
+  : # node is already in PATH
+elif [ -s "$HOME/.nvm/nvm.sh" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+fi
+
+echo "🔍 [pre-push] Running build checks (npm run build:prod) before pushing..."
+npm run build:prod
+
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+  echo "❌ [pre-push] Production build failed. Push aborted. Fix the issue or use --no-verify to skip."
+  exit 1
+fi
+
+echo "✅ [pre-push] Production build passed successfully. Proceeding with push..."
+exit 0

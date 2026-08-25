@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "prisma generate && nest build",
+    "build:prod": "prisma generate && nest build",
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",

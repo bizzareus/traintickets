@@ -1,0 +1,20 @@
+#!/bin/bash
+# Pre-commit hook to run happy flow and quick sanity checks
+
+if command -v node >/dev/null 2>&1; then
+  : # node is already in PATH
+elif [ -s "$HOME/.nvm/nvm.sh" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+fi
+
+echo "🔍 [pre-commit] Running API Build check..."
+npm run build:api
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+  echo "❌ [pre-commit] API build failed. Commit aborted. Fix the issue or use --no-verify to skip."
+  exit 1
+fi
+
+echo "✅ [pre-commit] Checks passed. Proceeding with commit..."
+exit 0
