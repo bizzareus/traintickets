@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   Logger,
   Post,
   Req,
@@ -8,15 +9,19 @@ import {
 } from '@nestjs/common';
 import type { Request } from 'express';
 import { WhatsappService } from './whatsapp.service';
+import { WasenderHealthcheckService } from './wasender-healthcheck.service';
 import * as crypto from 'crypto';
 
-@Controller('api/whatsapp/webhook')
+@Controller('api/whatsapp')
 export class WhatsappController {
   private readonly logger = new Logger(WhatsappController.name);
 
-  constructor(private readonly whatsappService: WhatsappService) {}
+  constructor(
+    private readonly whatsappService: WhatsappService,
+    private readonly wasenderHealthcheck: WasenderHealthcheckService,
+  ) {}
 
-  @Post()
+  @Post('webhook')
   handleIncoming(@Req() req: Request, @Body() body: Record<string, any>) {
     // Optional basic webhook validation
     const secret = process.env.WASENDER_WEBHOOK_SECRET;
@@ -46,9 +51,6 @@ export class WhatsappController {
         JSON.stringify(body).substring(0, 500),
       );
       // Parse payload - this is adapted for a generic 'wasenderapi' format
-      // Typical format might be { event: "message", data: { text: "...", from: "123", group_id: "xyz" } }
-      // Or Evolution API { data: { message: { conversation: "text" }, key: { remoteJid: "123@g.us", fromMe: false } } }
-
       let messageText = '';
       let sender = '';
       let groupId: string | undefined;
@@ -103,5 +105,25 @@ export class WhatsappController {
       this.logger.error('Error handling WA webhook', e);
       return { ok: false };
     }
+  }
+
+  @Get('wasender/health')
+  getWasenderHealth() {
+    return this.wasenderHealthcheck.getState();
+  }
+
+  @Post('wasender/healthcheck')
+  async triggerWasenderHealthcheck() {
+    return this.wasenderHealthcheck.checkHealth('manual_api');
+  }
+
+  @Post('wasender/connect')
+  async triggerWasenderConnect() {
+    const state = this.wasenderHealthcheck.getState();
+    return this.wasenderHealthcheck.reconnectAndSendQr(
+      state.sessionId,
+      state.lastStatus || 'MANUAL_TRIGGER',
+      'api_connect',
+    );
   }
 }
