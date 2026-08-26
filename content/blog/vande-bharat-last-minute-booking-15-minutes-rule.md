@@ -10,7 +10,7 @@ tags:
   - vande bharat train
 ---
 
-> **Planning a last-minute Vande Bharat trip?** Check live seat availability and PNR status with [Smart Seats](/), or find actual vacant berths after chart preparation with [Chart Vacancy](/chart-vacancy).
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 You can now book vacant seats on the Vande Bharat Express and other reserved trains up to 15 minutes before they depart, even after charts are prepared. These last-minute tickets are bookable online via the IRCTC website, mobile app, or at railway counters. If direct tickets are waitlisted, you can also use LastBerth to check for segment booking options.

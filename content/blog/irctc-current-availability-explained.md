@@ -14,7 +14,7 @@ tags:
   - chart preparation
 ---
 
-> **Find a confirmed last-minute seat:** After the chart prepares, search any train route on [Smart Seats](/) to find open berths, or use [Coach Journey Lookup](/seat-status) to inspect free seats coach by coach. Already booked? Check live status on [Smart Seats PNR status](/).
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

@@ -11,8 +11,7 @@ tags:
   - travel hacks
 ---
 
-> [!NOTE]  
-> **Disclaimer:** LastBerth is an independent informational portal dedicated to train travel insights. LastBerth is not affiliated with IRCTC or Indian Railways and does not sell train tickets.
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

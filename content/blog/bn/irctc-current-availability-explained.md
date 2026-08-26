@@ -14,7 +14,7 @@ tags:
   - chart preparation
 ---
 
-> **Find a confirmed last-minute seat:** After the chart prepares, search any train route on [Smart Seats](/) to find open berths, or use [Coach Journey Lookup](/seat-status) to inspect free seats coach by coach. Already booked? Check live status on [Smart Seats PNR status](/).
+> **🔔 জরুরি টিপস:** আপনি কি ওয়েটলিস্ট টিকিট কনফার্ম হওয়ার অপেক্ষা করছেন? [Chart Times](/chart-times) এ ট্রেনের সঠিক চার্টিং সময় দেখুন এবং ফ্রি অ্যালার্ট সেট করুন, [Chart Vacancy](/chart-vacancy) তে খালি সিট চেক করুন বা [Smart Seats](/) দিয়ে কনফার্ম সিট খুঁজুন।
 
 ## TL;DR
 

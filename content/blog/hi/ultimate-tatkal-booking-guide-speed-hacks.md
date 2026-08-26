@@ -11,7 +11,7 @@ tags:
   - confirmed tickets
 ---
 
-> **Tatkal रश के लिए तैयारी कर रहे हैं?** [Smart Seats](/) पर ट्रेन विकल्प खोजें या [Coach Journey Lookup](/seat-status) पर कोच सीटें खोजें।
+> **🔔 त्वरित टिप:** क्या आप वेटलिस्टेड टिकट के कन्फर्म होने का इंतज़ार कर रहे हैं? [Chart Times](/chart-times) पर अपनी ट्रेन का सटीक चार्टिंग समय देखें और फ्री अलर्ट सेट करें, [Chart Vacancy](/chart-vacancy) पर खाली सीटें देखें, या [Smart Seats](/) से कन्फर्म स्प्लिट टिकट खोजें।
 
 ## TL;DR
 

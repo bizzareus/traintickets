@@ -12,6 +12,8 @@ tags:
   - tatkal
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 
 You cannot travel in reserved Sleeper or AC coaches with a fully waitlisted ticket. Fully waitlisted online e-tickets are automatically cancelled and refunded after chart preparation, rendering them invalid for boarding any coach. Physical PRS counter waitlist tickets allow travel strictly in unreserved General (GS) coaches, while entering reserved coaches incurs a minimum ₹500 penalty plus class fare difference under Section 138 of the Railways Act.

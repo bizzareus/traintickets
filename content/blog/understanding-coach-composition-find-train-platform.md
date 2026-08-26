@@ -11,6 +11,8 @@ tags:
   - irctc travel hacks
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 
 Indian Railways arranges train coaches symmetrically with General Unreserved (GS) at both ends, Sleeper coaches flanking the outer sections, and AC coaches clustered in the center around the pantry car. You can identify your coach location before arrival using electronic platform coach guidance indicators, platform pillar numbers, or digital rake visualizers.

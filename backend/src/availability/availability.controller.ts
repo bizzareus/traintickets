@@ -12,9 +12,9 @@ import {
   ServiceUnavailableException,
   UnauthorizedException,
 } from '@nestjs/common';
+import { randomUUID } from 'node:crypto';
 import { AvailabilityService } from './availability.service';
 import { JourneyTaskService } from './journey-task.service';
-import { NotificationService } from '../notification/notification.service';
 
 type NormalizedJourneyCreate = {
   trainNumber: string;
@@ -69,7 +69,6 @@ export class AvailabilityController {
   constructor(
     private availability: AvailabilityService,
     private journeyTask: JourneyTaskService,
-    private notification: NotificationService,
   ) {}
 
   @Post('check')
@@ -260,12 +259,13 @@ export class AvailabilityController {
   }
 
   /**
-   * Accepts a validated journey and runs task creation (DB, composition, immediate checks) in the background.
-   * Returns 202 immediately; client should call POST journey/validate first or handle 400 errors.
+   * Accepts a journey monitoring request, validates basic fields synchronously, and executes
+   * external validation, DB task creation, hydration, and immediate checks asynchronously in the background.
+   * Returns HTTP 202 immediately.
    */
   @Post('journey')
   @HttpCode(HttpStatus.ACCEPTED)
-  async createJourney(
+  createJourney(
     @Body('trainNumber') trainNumber: string,
     @Body('trainName') trainName: string,
     @Body('fromStationCode') fromStationCode: string,
@@ -289,80 +289,90 @@ export class AvailabilityController {
       mobile,
       trainStartDate,
     );
+
+    const errors: Array<{ code: string; message: string }> = [];
+
+    if (!normalized.trainNumber) {
+      errors.push({
+        code: 'MISSING_FIELDS',
+        message: 'trainNumber is required',
+      });
+    }
+    if (!normalized.fromStationCode) {
+      errors.push({
+        code: 'MISSING_FIELDS',
+        message: 'fromStationCode is required',
+      });
+    }
+    if (!normalized.toStationCode) {
+      errors.push({
+        code: 'MISSING_FIELDS',
+        message: 'toStationCode is required',
+      });
+    }
     if (
-      !normalized.trainNumber ||
-      !normalized.fromStationCode ||
-      !normalized.toStationCode ||
-      !normalized.journeyDate
+      normalized.fromStationCode &&
+      normalized.toStationCode &&
+      normalized.fromStationCode === normalized.toStationCode
     ) {
-      throw new BadRequestException({
-        valid: false,
-        errors: [
-          {
-            code: 'MISSING_FIELDS',
-            message:
-              'trainNumber, fromStationCode, toStationCode and journeyDate are required',
-          },
-        ],
+      errors.push({
+        code: 'SAME_STATION',
+        message: 'fromStationCode and toStationCode must be different',
+      });
+    }
+    if (!normalized.journeyDate) {
+      errors.push({
+        code: 'MISSING_FIELDS',
+        message: 'journeyDate is required',
+      });
+    } else if (!/^\d{4}-\d{2}-\d{2}$/.test(normalized.journeyDate)) {
+      errors.push({
+        code: 'INVALID_JOURNEY_DATE',
+        message: 'journeyDate must be in YYYY-MM-DD format',
+      });
+    }
+    if (
+      normalized.email &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized.email)
+    ) {
+      errors.push({
+        code: 'INVALID_EMAIL',
+        message: 'email format is invalid',
+      });
+    }
+    if (
+      normalized.mobile &&
+      !/^\+?\d{7,15}$/.test(normalized.mobile.replace(/[\s-]/g, ''))
+    ) {
+      errors.push({
+        code: 'INVALID_MOBILE',
+        message: 'mobile phone number format is invalid',
       });
     }
 
-    const validation = await this.journeyTask.validateJourneyForMonitoring({
-      trainNumber: normalized.trainNumber,
-      fromStationCode: normalized.fromStationCode,
-      toStationCode: normalized.toStationCode,
-      journeyDate: normalized.journeyDate,
-      trainStartDate: normalized.trainStartDate,
-      stationCodesToMonitor: normalized.stationCodesToMonitor,
-    });
-    if (!validation.valid) {
-      const first = validation.errors[0];
-      if (first?.code === 'TRAIN_DOES_NOT_RUN_ON_DATE') {
-        throw new BadRequestException({
-          statusCode: HttpStatus.BAD_REQUEST,
-          error: first.code,
-          message: first.message,
-          runningDayNames: first.runningDayNames ?? [],
-          nextRunDate: first.nextRunDate ?? null,
-          nextRunDayAndDate: first.nextRunDayAndDate ?? null,
-          requestedJourneyDate: first.requestedJourneyDate,
-        });
-      }
+    if (errors.length > 0) {
       throw new BadRequestException({
         valid: false,
-        errors: validation.errors,
+        errors,
       });
     }
 
-    const result = await this.journeyTask.createJourneyTasks(normalized, {
-      validatedContext: validation.context,
-    });
+    const journeyRequestId = randomUUID();
 
-    void this.notification
-      .sendAdminMonitoringRequestEmail({
-        journeyRequestId: result.journeyRequestId,
-        taskCount: result.tasks.length,
-        trainNumber: normalized.trainNumber,
-        trainName: normalized.trainName,
-        fromStationCode: normalized.fromStationCode,
-        toStationCode: normalized.toStationCode,
-        journeyDate: normalized.journeyDate,
-        classCode: normalized.classCode,
-        stationCodesToMonitor: [validation.context.fromCode],
-        userEmail: normalized.email,
-        userMobile: normalized.mobile,
-      })
-      .catch((err) =>
-        console.error('Admin monitoring request notification failed', err),
+    // Kick off full external validation, task creation, and notifications asynchronously in the background
+    setImmediate(() => {
+      void this.journeyTask.queueJourneyMonitoring(
+        normalized,
+        journeyRequestId,
       );
+    });
 
     return {
       accepted: true,
       status: 'queued',
       message:
-        'Journey monitoring has been configured. You will be notified if seats are found.',
-      journeyRequestId: result.journeyRequestId,
-      tasks: result.tasks,
+        'Journey monitoring request has been received and is being processed in the background.',
+      journeyRequestId,
     };
   }
 

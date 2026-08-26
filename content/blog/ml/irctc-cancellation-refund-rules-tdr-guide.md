@@ -11,8 +11,7 @@ tags:
   - travel hacks
 ---
 
-> [!NOTE]  
-> **Disclaimer:** LastBerth is an independent informational portal dedicated to train travel insights. LastBerth is not affiliated with IRCTC or Indian Railways and does not sell train tickets.
+> **🔔 പ്രധാന ടിപ്പ്:** നിങ്ങളുടെ വെയ്‌റ്റ്‌ലിസ്റ്റ് ടിക്കറ്റ് കൺഫേം ആകാൻ കാത്തിരിക്കുകയാണോ? [Chart Times](/chart-times) വഴി ട്രെയിനിന്റെ കൃത്യമായ ചാർട്ടിംഗ് സമയം പരിശോധിച്ച് സൗജന്യ അലർട്ട് സെറ്റ് ചെയ്യുക, [Chart Vacancy](/chart-vacancy) വഴി ഒഴിവുള്ള സീറ്റുകൾ കാണുക, അല്ലെങ്കിൽ [Smart Seats](/) വഴി കൺഫേം ടിക്കറ്റുകൾ കണ്ടെത്തുക.
 
 ## TL;DR
 

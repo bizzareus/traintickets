@@ -13,17 +13,27 @@ describe('JourneyTaskService', () => {
 
   const mockPrisma = {
     $queryRaw: jest.fn(),
+    $transaction: jest.fn().mockResolvedValue([]),
     chartTimeAvailabilityTask: {
       findUnique: jest.fn(),
       findMany: jest.fn().mockResolvedValue([]),
       findFirst: jest.fn().mockResolvedValue(null),
+      create: jest.fn(),
+      createMany: jest.fn().mockResolvedValue({ count: 1 }),
+      update: jest.fn(),
+    },
+    monitoringContact: {
+      findFirst: jest.fn().mockResolvedValue(null),
+      create: jest.fn().mockResolvedValue({ id: 'mc-1' }),
       update: jest.fn(),
     },
     journeyMonitorContact: {
       findUnique: jest.fn(),
+      create: jest.fn(),
     },
     journeyMonitoringRequest: {
       findUnique: jest.fn(),
+      create: jest.fn(),
     },
     sentNotificationLog: {
       findFirst: jest.fn().mockResolvedValue(null),
@@ -40,11 +50,19 @@ describe('JourneyTaskService', () => {
       .fn()
       .mockResolvedValue({ emailSent: true, whatsappSent: true }),
     extractJourneyLegCoverage: jest.fn().mockReturnValue([]),
+    sendAdminMonitoringRequestEmail: jest.fn().mockResolvedValue(true),
   };
 
   const mockBookingV2 = {
     findBestTrains: jest.fn(),
     findAlternatePaths: jest.fn().mockResolvedValue({ legs: [] }),
+  };
+
+  const mockChartTime = {
+    getChartMetaForTrainStation: jest.fn(),
+    getChartTimesWithSecondChartForTrain: jest
+      .fn()
+      .mockResolvedValue(new Map()),
   };
 
   beforeEach(async () => {
@@ -56,10 +74,7 @@ describe('JourneyTaskService', () => {
         { provide: Service2Service, useValue: mockService2 },
         { provide: NotificationService, useValue: mockNotification },
         { provide: BookingV2Service, useValue: mockBookingV2 },
-        {
-          provide: ChartTimeService,
-          useValue: { getChartMetaForTrainStation: jest.fn() },
-        },
+        { provide: ChartTimeService, useValue: mockChartTime },
         {
           provide: IrctcService,
           useValue: {
@@ -503,6 +518,159 @@ describe('JourneyTaskService', () => {
         expect(res.context.jYmd).toBe('2026-08-13');
         expect(res.context.trainStartDate).toBe('2026-08-12');
       }
+    });
+  });
+
+  describe('queueJourneyMonitoring', () => {
+    it('should validate, create tasks and send admin email notification when valid', async () => {
+      const validateSpy = jest
+        .spyOn(service, 'validateJourneyForMonitoring')
+        .mockResolvedValue({
+          valid: true,
+          context: {
+            schedule: { trainName: 'PUNE INTERCITY' } as any,
+            fromCode: 'PUNE',
+            toCode: 'CSMT',
+            trainNumber: '12128',
+            stationsToProcess: ['PUNE'],
+            jYmd: '2026-09-01',
+            trainStartDate: '2026-09-01',
+          },
+        });
+
+      const createTasksSpy = jest
+        .spyOn(service, 'createJourneyTasks')
+        .mockResolvedValue({
+          journeyRequestId: 'jid-test-123',
+          tasks: [
+            {
+              id: 'task-1',
+              stationCode: 'PUNE',
+              chartAt: '2026-09-01T06:00:00.000Z',
+              status: 'pending',
+            },
+          ],
+        });
+
+      await service.queueJourneyMonitoring(
+        {
+          trainNumber: '12128',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+          journeyDate: '2026-09-01',
+          classCode: 'CC',
+          email: 'test@example.com',
+        },
+        'jid-test-123',
+      );
+
+      expect(validateSpy).toHaveBeenCalled();
+      expect(createTasksSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          trainNumber: '12128',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+        }),
+        expect.objectContaining({
+          journeyRequestId: 'jid-test-123',
+        }),
+      );
+      expect(
+        mockNotification.sendAdminMonitoringRequestEmail,
+      ).toHaveBeenCalledWith(
+        expect.objectContaining({
+          journeyRequestId: 'jid-test-123',
+          taskCount: 1,
+          trainNumber: '12128',
+        }),
+      );
+    });
+
+    it('should not create tasks or send notification if validation fails', async () => {
+      jest.spyOn(service, 'validateJourneyForMonitoring').mockResolvedValue({
+        valid: false,
+        errors: [{ code: 'ROUTE_INVALID', message: 'Route invalid' }],
+      });
+
+      const createTasksSpy = jest.spyOn(service, 'createJourneyTasks');
+
+      await service.queueJourneyMonitoring(
+        {
+          trainNumber: '12128',
+          fromStationCode: 'INVALID',
+          toStationCode: 'CSMT',
+          journeyDate: '2026-09-01',
+          classCode: 'CC',
+        },
+        'jid-invalid',
+      );
+
+      expect(createTasksSpy).not.toHaveBeenCalled();
+      expect(
+        mockNotification.sendAdminMonitoringRequestEmail,
+      ).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('createJourneyTasks', () => {
+    it('should parallelize pre-reads and batch inserts into a single array transaction with createMany', async () => {
+      const chartMap = new Map();
+      chartMap.set('PUNE', {
+        chartOne: { time: '06:00', dayOffset: 0 },
+        chartTwo: { time: '07:00', dayOffset: 0 },
+      });
+      mockChartTime.getChartTimesWithSecondChartForTrain.mockResolvedValue(
+        chartMap,
+      );
+
+      const result = await service.createJourneyTasks(
+        {
+          trainNumber: '12128',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+          journeyDate: '2026-09-01',
+          classCode: 'CC',
+          email: 'test@example.com',
+        },
+        {
+          journeyRequestId: 'jid-batch-123',
+          validatedContext: {
+            schedule: { trainName: 'PUNE INTERCITY' } as any,
+            fromCode: 'PUNE',
+            toCode: 'CSMT',
+            trainNumber: '12128',
+            stationsToProcess: ['PUNE'],
+            jYmd: '2026-09-01',
+            trainStartDate: '2026-09-01',
+          },
+        },
+      );
+
+      expect(
+        mockChartTime.getChartTimesWithSecondChartForTrain,
+      ).toHaveBeenCalledWith('12128', ['PUNE'], expect.any(Date));
+      expect(mockPrisma.$transaction).toHaveBeenCalledWith(
+        expect.arrayContaining([
+          expect.anything(),
+          expect.anything(),
+          expect.anything(),
+        ]),
+      );
+      expect(
+        mockPrisma.chartTimeAvailabilityTask.createMany,
+      ).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.arrayContaining([
+            expect.objectContaining({
+              journeyRequestId: 'jid-batch-123',
+              stationCode: 'PUNE',
+              status: 'pending',
+            }),
+          ]),
+        }),
+      );
+      expect(result.journeyRequestId).toBe('jid-batch-123');
+      expect(result.tasks).toHaveLength(2);
     });
   });
 });

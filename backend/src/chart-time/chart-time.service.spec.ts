@@ -12,6 +12,7 @@ describe('ChartTimeService', () => {
     prismaMock = {
       trainStationChartTime: {
         findMany: jest.fn(),
+        upsert: jest.fn(),
       },
     };
     irctcMock = {
@@ -58,6 +59,64 @@ describe('ChartTimeService', () => {
         chartRemoteStation: null,
         chartNextRemoteStation: null,
       });
+    });
+
+    it('should serve from in-memory cache on subsequent requests without querying DB again', async () => {
+      prismaMock.trainStationChartTime.findMany.mockResolvedValue([
+        {
+          stationCode: 'RGS',
+          chartTimeLocal: '19:54',
+          chartOneDayOffset: 0,
+          chartTwoTimeLocal: null,
+          chartTwoDayOffset: null,
+          chartRemoteStation: null,
+          chartNextRemoteStation: null,
+        },
+      ]);
+
+      await service.getChartTimesWithSecondChartForTrain('20474', ['RGS']);
+      expect(prismaMock.trainStationChartTime.findMany).toHaveBeenCalledTimes(
+        1,
+      );
+
+      // Second call for same train & station should hit in-memory cache
+      const cachedResult = await service.getChartTimesWithSecondChartForTrain(
+        '20474',
+        ['RGS'],
+      );
+      expect(prismaMock.trainStationChartTime.findMany).toHaveBeenCalledTimes(
+        1,
+      );
+      expect(cachedResult.get('RGS')?.chartOne.time).toBe('19:54');
+    });
+
+    it('should invalidate cache when setChartTime is called', async () => {
+      prismaMock.trainStationChartTime.findMany.mockResolvedValue([
+        {
+          stationCode: 'RGS',
+          chartTimeLocal: '19:54',
+          chartOneDayOffset: 0,
+          chartTwoTimeLocal: null,
+          chartTwoDayOffset: null,
+          chartRemoteStation: null,
+          chartNextRemoteStation: null,
+        },
+      ]);
+      prismaMock.trainStationChartTime.upsert.mockResolvedValue({ id: 'r1' });
+
+      await service.getChartTimesWithSecondChartForTrain('20474', ['RGS']);
+      expect(prismaMock.trainStationChartTime.findMany).toHaveBeenCalledTimes(
+        1,
+      );
+
+      // Update chart time
+      await service.setChartTime('20474', 'RGS', '20:00');
+
+      // Next lookup should hit DB again
+      await service.getChartTimesWithSecondChartForTrain('20474', ['RGS']);
+      expect(prismaMock.trainStationChartTime.findMany).toHaveBeenCalledTimes(
+        2,
+      );
     });
 
     it('should return empty map when no DB rows exist without blocking on synchronous IRCTC calls', async () => {

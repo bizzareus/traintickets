@@ -16,7 +16,7 @@
     "build:api": "cd backend && npm run build",
     "prepare": "git config core.hooksPath .githooks || true",
     "start": "concurrently -n api,web -c cyan,magenta \"npm run start:api\" \"npm run start:web\"",
-    "start:web": "next start -p 3010",
+    "start:web": "NODE_OPTIONS='--max-old-space-size=384' next start -p ${PORT:-3010}",
     "start:api": "cd backend && npm run start:prod",
     "lint": "eslint .",
     "db:migrate": "cd backend && npm run db:migrate",

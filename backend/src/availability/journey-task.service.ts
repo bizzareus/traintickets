@@ -5,6 +5,7 @@ import {
   Logger,
   Optional,
 } from '@nestjs/common';
+import { randomUUID } from 'node:crypto';
 import { Prisma, type ChartTimeAvailabilityTask } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
@@ -231,10 +232,6 @@ function alternatePathsToCheckResult(
     openAiTotalPrice: alt.totalFare ?? undefined,
     debugLog: alt.debugLog,
   };
-}
-
-function chartAtIsDue(chartAt: Date, now = new Date()): boolean {
-  return chartAt.getTime() <= now.getTime();
 }
 
 /** Per-task outcome captured after a cron run, for CronRunLog output. */
@@ -469,7 +466,10 @@ export class JourneyTaskService {
       mobile?: string;
     },
     /** When set (e.g. after POST journey/validate), skips a duplicate schedule fetch. */
-    opts?: { validatedContext?: JourneyValidContext },
+    opts?: {
+      validatedContext?: JourneyValidContext;
+      journeyRequestId?: string;
+    },
   ): Promise<{
     journeyRequestId: string;
     tasks: Array<{
@@ -487,7 +487,6 @@ export class JourneyTaskService {
 
     const journeyDate = new Date(params.journeyDate.trim());
     const classCode = (params.classCode || '3A').trim().toUpperCase();
-    const now = new Date();
     const email = params.email?.trim().toLowerCase() || undefined;
     // Normalize to E.164 (add 91 prefix for 10-digit Indian numbers) so the
     // DB always stores a consistent format regardless of what the client sent.
@@ -495,64 +494,65 @@ export class JourneyTaskService {
     const mobile = rawMobile ? toE164(rawMobile) : undefined;
     const trainStartDate = new Date(validation.context.trainStartDate);
 
-    const chartTimesWithSecond =
-      await this.chartTime.getChartTimesWithSecondChartForTrain(
+    const [chartTimesWithSecond, existingContact] = await Promise.all([
+      this.chartTime.getChartTimesWithSecondChartForTrain(
         trainNumber,
         [fromCode],
         trainStartDate,
-      );
-
-    let monitoringContactId: string | undefined;
-    if (email || mobile) {
-      const existing = await this.prisma.monitoringContact.findFirst({
-        where: {
-          OR: [
-            ...(email ? [{ email }] : []),
-            ...(mobile ? [{ mobile }] : []),
-          ].filter((o) => Object.keys(o).length > 0),
-        },
-      });
-      if (existing) {
-        monitoringContactId = existing.id;
-        if (email && existing.email !== email) {
-          try {
-            await this.prisma.monitoringContact.update({
-              where: { id: existing.id },
-              data: { email },
-            });
-          } catch (err: unknown) {
-            if (!isPrismaUniqueViolation(err)) throw err;
-          }
-        }
-        if (mobile && existing.mobile !== mobile) {
-          try {
-            await this.prisma.monitoringContact.update({
-              where: { id: existing.id },
-              data: { mobile },
-            });
-          } catch (err: unknown) {
-            if (!isPrismaUniqueViolation(err)) throw err;
-          }
-        }
-      } else {
-        try {
-          const created = await this.prisma.monitoringContact.create({
-            data: { email: email || null, mobile: mobile || null },
-          });
-          monitoringContactId = created.id;
-        } catch (err: unknown) {
-          if (!isPrismaUniqueViolation(err)) throw err;
-          const conflict = await this.prisma.monitoringContact.findFirst({
+      ),
+      email || mobile
+        ? this.prisma.monitoringContact.findFirst({
             where: {
               OR: [
                 ...(email ? [{ email }] : []),
                 ...(mobile ? [{ mobile }] : []),
               ].filter((o) => Object.keys(o).length > 0),
             },
+          })
+        : Promise.resolve(null),
+    ]);
+
+    let monitoringContactId: string | undefined;
+    if (existingContact) {
+      monitoringContactId = existingContact.id;
+      if (email && existingContact.email !== email) {
+        try {
+          await this.prisma.monitoringContact.update({
+            where: { id: existingContact.id },
+            data: { email },
           });
-          if (conflict) {
-            monitoringContactId = conflict.id;
-          }
+        } catch (err: unknown) {
+          if (!isPrismaUniqueViolation(err)) throw err;
+        }
+      }
+      if (mobile && existingContact.mobile !== mobile) {
+        try {
+          await this.prisma.monitoringContact.update({
+            where: { id: existingContact.id },
+            data: { mobile },
+          });
+        } catch (err: unknown) {
+          if (!isPrismaUniqueViolation(err)) throw err;
+        }
+      }
+    } else if (email || mobile) {
+      try {
+        const created = await this.prisma.monitoringContact.create({
+          data: { email: email || null, mobile: mobile || null },
+        });
+        monitoringContactId = created.id;
+      } catch (err: unknown) {
+        if (!isPrismaUniqueViolation(err)) throw err;
+        const conflict = await this.prisma.monitoringContact.findFirst({
+          where: {
+            OR: [
+              ...(email ? [{ email }] : []),
+              ...(mobile ? [{ mobile }] : []),
+            ].filter((o) => Object.keys(o).length > 0),
+          },
+        });
+        if (conflict) {
+          monitoringContactId = conflict.id;
         }
       }
     }
@@ -619,65 +619,56 @@ export class JourneyTaskService {
       });
     }
 
-    const { journeyRequestId, tasks } = await this.prisma.$transaction(
-      async (tx) => {
-        const jmr = await tx.journeyMonitoringRequest.create({
-          data: {
-            monitoringContactId: monitoringContactId ?? null,
-            trainNumber,
-            fromStationCode: fromCode,
-            toStationCode: toCode,
-            journeyDate,
-            classCode,
-          },
-        });
-        const jid = jmr.id;
+    const jid = opts?.journeyRequestId || randomUUID();
 
-        await tx.journeyMonitorContact.create({
-          data: {
-            journeyRequestId: jid,
-            email: email || null,
-            mobile: mobile || null,
-          },
-        });
+    const createdTasks = taskSpecs.map((spec) => ({
+      id: randomUUID(),
+      journeyRequestId: jid,
+      trainNumber,
+      trainName,
+      fromStationCode: fromCode,
+      toStationCode: toCode,
+      stationCode: spec.stationCode,
+      journeyDate,
+      trainStartDate: new Date(validation.context.trainStartDate),
+      chartAt: spec.chartAt,
+      status: 'pending',
+      retryCount: 0,
+      nextRunAt: null,
+      lockedAt: null,
+      lastError: null,
+    }));
 
-        const createdTasks: Array<{
-          id: string;
-          stationCode: string;
-          chartAt: string;
-          status: string;
-        }> = [];
-        for (const spec of taskSpecs) {
-          const task = await tx.chartTimeAvailabilityTask.create({
-            data: {
-              journeyRequestId: jid,
-              trainNumber,
-              trainName,
-              fromStationCode: fromCode,
-              toStationCode: toCode,
-              stationCode: spec.stationCode,
-              journeyDate,
-              trainStartDate: new Date(validation.context.trainStartDate),
-              chartAt: spec.chartAt,
-              status: 'pending',
-              retryCount: 0,
-              nextRunAt: null,
-              lockedAt: null,
-              lastError: null,
-            },
-          });
-          createdTasks.push({
-            id: task.id,
-            stationCode: task.stationCode,
-            chartAt: task.chartAt.toISOString(),
-            status: task.status,
-          });
-        }
+    await this.prisma.$transaction([
+      this.prisma.journeyMonitoringRequest.create({
+        data: {
+          id: jid,
+          monitoringContactId: monitoringContactId ?? null,
+          trainNumber,
+          fromStationCode: fromCode,
+          toStationCode: toCode,
+          journeyDate,
+          classCode,
+        },
+      }),
+      this.prisma.journeyMonitorContact.create({
+        data: {
+          journeyRequestId: jid,
+          email: email || null,
+          mobile: mobile || null,
+        },
+      }),
+      this.prisma.chartTimeAvailabilityTask.createMany({
+        data: createdTasks,
+      }),
+    ]);
 
-        return { journeyRequestId: jid, tasks: createdTasks };
-      },
-      { timeout: 30_000 },
-    );
+    const tasks = createdTasks.map((t) => ({
+      id: t.id,
+      stationCode: t.stationCode,
+      chartAt: t.chartAt.toISOString(),
+      status: t.status,
+    }));
 
     if (needsAsyncHydration) {
       setImmediate(() => {
@@ -685,44 +676,71 @@ export class JourneyTaskService {
           trainNumber,
           fromCode,
           trainStartDate,
-          journeyRequestId,
+          jid,
         );
       });
     }
 
-    // Eagerly run any already-due tasks in the BACKGROUND so POST /journey returns
-    // as soon as the alert is persisted (the durable transaction above). This is
-    // fire-and-forget: the scheduled runDueTasks() sweep is the safety net, so a
-    // failure here only delays the first check to the next tick — it never loses
-    // the alert or blocks the user. Returned tasks stay 'pending' (queued ack).
-    const dueTaskIds = tasks
-      .filter((t) => chartAtIsDue(new Date(t.chartAt), now))
-      .map((t) => t.id);
-    if (dueTaskIds.length > 0) {
-      void this.runTasksInBackground(dueTaskIds, journeyRequestId);
-    }
-
-    return { journeyRequestId, tasks };
+    return { journeyRequestId: jid, tasks };
   }
 
   /**
-   * Fire-and-forget runner for the initial check of already-due tasks, detached
-   * from the POST /journey response. Sequential; logs and swallows errors (never
-   * throws) — the scheduled runDueTasks() sweep still covers anything that fails.
+   * Asynchronously validates and creates journey monitoring tasks, sends admin notification,
+   * hydrations, and immediate checks in the background.
    */
-  private async runTasksInBackground(
-    taskIds: string[],
-    journeyRequestId: string,
+  async queueJourneyMonitoring(
+    params: {
+      trainNumber: string;
+      trainName?: string;
+      fromStationCode: string;
+      toStationCode: string;
+      journeyDate: string;
+      classCode: string;
+      stationCodesToMonitor?: string[];
+      email?: string;
+      mobile?: string;
+      trainStartDate?: string;
+    },
+    journeyRequestId?: string,
   ): Promise<void> {
-    for (const id of taskIds) {
-      try {
-        await this.runTask(id);
-      } catch (err) {
-        console.error(
-          `[journey] background task run failed journeyRequestId=${journeyRequestId} taskId=${id}:`,
-          err instanceof Error ? err.message : String(err),
+    try {
+      const validation = await this.validateJourneyForMonitoring(params);
+      if (!validation.valid) {
+        this.logger.warn(
+          `[journey/queue] Validation failed for train=${params.trainNumber} from=${params.fromStationCode} to=${params.toStationCode} jid=${journeyRequestId}: ${JSON.stringify(validation.errors)}`,
         );
+        return;
       }
+
+      const result = await this.createJourneyTasks(params, {
+        validatedContext: validation.context,
+        journeyRequestId,
+      });
+
+      void this.notificationService
+        .sendAdminMonitoringRequestEmail({
+          journeyRequestId: result.journeyRequestId,
+          taskCount: result.tasks.length,
+          trainNumber: params.trainNumber,
+          trainName: params.trainName,
+          fromStationCode: params.fromStationCode,
+          toStationCode: params.toStationCode,
+          journeyDate: params.journeyDate,
+          classCode: params.classCode,
+          stationCodesToMonitor: [validation.context.fromCode],
+          userEmail: params.email,
+          userMobile: params.mobile,
+        })
+        .catch((err) =>
+          this.logger.error(
+            'Admin monitoring request notification failed',
+            err instanceof Error ? err.stack || err.message : String(err),
+          ),
+        );
+    } catch (err) {
+      this.logger.error(
+        `[journey/queue] Failed to process background journey monitoring for train=${params.trainNumber} jid=${journeyRequestId}: ${err instanceof Error ? err.stack || err.message : String(err)}`,
+      );
     }
   }
 

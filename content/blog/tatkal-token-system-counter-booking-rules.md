@@ -12,7 +12,7 @@ tags:
   - waiting list
 ---
 
-> **Beat the Tatkal rush:** Whether booking at the counter or online, seat availability fills up in seconds. Search real-time alternative routes on [Smart Seats](/) or verify your confirmation odds on [Smart Seats PNR status](/).
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

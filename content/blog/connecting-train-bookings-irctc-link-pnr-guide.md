@@ -14,7 +14,8 @@ tags:
   - how to link pnr
   - connecting pnr
 ---
-> **Connecting train at risk of delay?** Track live seat status on [Coach Journey Lookup](/seat-status) and check post-charting vacant berths on [Chart Vacancy](/chart-vacancy) if you need a quick alternate train.
+
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 
 ## TL;DR

@@ -8,7 +8,8 @@ tags:
   - irctc
   - platform navigation
 ---
-> **Running late at the station?** Use [Coach Journey Lookup](/seat-status) to find vacant berths on running trains and [Smart Seats](/) to verify your PNR status before heading up the foot overbridge.
+
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 
 We've all been there. You're running late for your train in India. You reach the station with just five minutes left. You have heavy bags, and the place is packed. You look up, but you can't see your platform number anywhere. Trying to navigate a massive railway station when you're in a hurry is incredibly stressful. In this guide, we'll look at simple, practical tips to find your platform, locate your coach, and board your train safely before it pulls out.

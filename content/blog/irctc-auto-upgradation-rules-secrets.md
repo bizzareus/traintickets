@@ -12,7 +12,7 @@ tags:
   - coach upgrade
 ---
 
-> **Did your ticket get upgraded?** Search train routes on [Smart Seats](/) or check your live PNR status, and use [Coach Journey Lookup](/seat-status) to see the empty higher-class berths the system upgrades confirmed passengers into after chart preparation.
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

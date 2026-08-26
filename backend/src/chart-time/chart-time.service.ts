@@ -2,6 +2,16 @@ import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { IrctcService, to5DigitTrainNo } from '../irctc/irctc.service';
 
+const CHART_TIME_CACHE_TTL_MS = 2 * 60 * 60 * 1000; // 2 hours
+const MAX_CHART_TIME_CACHE_SIZE = 2000;
+
+export type ChartMetaEntry = {
+  chartOne: { time: string; dayOffset: number | null };
+  chartTwo?: { time: string; dayOffset: number | null };
+  chartRemoteStation?: string | null;
+  chartNextRemoteStation?: string | null;
+};
+
 /**
  * Chart preparation time per train/station (e.g. train 29251 from NDLS at 19:54).
  * Used to schedule availability checks at exact chart time.
@@ -9,6 +19,10 @@ import { IrctcService, to5DigitTrainNo } from '../irctc/irctc.service';
 @Injectable()
 export class ChartTimeService {
   private readonly logger = new Logger(ChartTimeService.name);
+  private readonly memoryCache = new Map<
+    string,
+    { data: Map<string, ChartMetaEntry>; expiresAt: number }
+  >();
 
   constructor(
     private prisma: PrismaService,
@@ -61,6 +75,7 @@ export class ChartTimeService {
       create: normalized,
       update: { chartTimeLocal: normalized.chartTimeLocal },
     });
+    this.memoryCache.delete(normalized.trainNumber);
     return { id: row.id };
   }
 
@@ -117,22 +132,29 @@ export class ChartTimeService {
   async getChartTimesWithSecondChartForTrain(
     trainNumber: string,
     stationCodes: string[],
-    jDate?: Date | string,
-  ): Promise<
-    Map<
-      string,
-      {
-        chartOne: { time: string; dayOffset: number | null };
-        chartTwo?: { time: string; dayOffset: number | null };
-        chartRemoteStation?: string | null;
-        chartNextRemoteStation?: string | null;
-      }
-    >
-  > {
+    _jDate?: Date | string,
+  ): Promise<Map<string, ChartMetaEntry>> {
     const num = to5DigitTrainNo(trainNumber);
     const normalizedCodes = stationCodes.map((c) =>
       String(c).trim().toUpperCase(),
     );
+
+    const cached = this.memoryCache.get(num);
+    if (cached && cached.expiresAt > Date.now()) {
+      if (normalizedCodes.length === 0) {
+        return new Map(cached.data);
+      }
+      const allPresent = normalizedCodes.every((c) => cached.data.has(c));
+      if (allPresent) {
+        const out = new Map<string, ChartMetaEntry>();
+        for (const code of normalizedCodes) {
+          const val = cached.data.get(code);
+          if (val) out.set(code, val);
+        }
+        return out;
+      }
+    }
+
     const where: { trainNumber: string; stationCode?: { in: string[] } } = {
       trainNumber: num,
     };
@@ -142,22 +164,9 @@ export class ChartTimeService {
       };
     }
     const rows = await this.prisma.trainStationChartTime.findMany({ where });
-    const map = new Map<
-      string,
-      {
-        chartOne: { time: string; dayOffset: number | null };
-        chartTwo?: { time: string; dayOffset: number | null };
-        chartRemoteStation?: string | null;
-        chartNextRemoteStation?: string | null;
-      }
-    >();
+    const map = new Map<string, ChartMetaEntry>();
     for (const r of rows) {
-      const entry: {
-        chartOne: { time: string; dayOffset: number | null };
-        chartTwo?: { time: string; dayOffset: number | null };
-        chartRemoteStation?: string | null;
-        chartNextRemoteStation?: string | null;
-      } = {
+      const entry: ChartMetaEntry = {
         chartOne: {
           time: r.chartTimeLocal,
           dayOffset: (r as any).chartOneDayOffset,
@@ -173,6 +182,23 @@ export class ChartTimeService {
       }
       map.set(r.stationCode, entry);
     }
+
+    // Merge into memory cache
+    const existingCache = this.memoryCache.get(num);
+    const mergedData =
+      existingCache && existingCache.expiresAt > Date.now()
+        ? new Map([...existingCache.data, ...map])
+        : new Map(map);
+
+    if (this.memoryCache.size >= MAX_CHART_TIME_CACHE_SIZE) {
+      const firstKey = this.memoryCache.keys().next().value;
+      if (firstKey) this.memoryCache.delete(firstKey);
+    }
+    this.memoryCache.set(num, {
+      data: mergedData,
+      expiresAt: Date.now() + CHART_TIME_CACHE_TTL_MS,
+    });
+
     return map;
   }
 }

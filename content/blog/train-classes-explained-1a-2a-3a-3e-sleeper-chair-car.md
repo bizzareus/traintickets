@@ -13,7 +13,7 @@ tags:
   - sleeper vs 3ac
 ---
 
-> **Picked your class? Now find a seat in it:** Search any route on [Smart Seats](/) to compare live availability across 1A, 2A, 3A, SL and Chair Car — and check [Coach Journey Lookup](/seat-status) to see which classes still have open berths after chart preparation.
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

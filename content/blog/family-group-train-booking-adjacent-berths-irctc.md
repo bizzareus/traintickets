@@ -11,6 +11,8 @@ tags:
   - seat allocation
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 
 - **Why you get split up:** IRCTC has to balance train weight. Physics, basically. It fills coaches from the middle outwards. If it can't find seats next to each other in one coach, it scatters your family without telling you.

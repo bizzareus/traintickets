@@ -973,7 +973,9 @@ export class NotificationService {
         segFrom && segTo
           ? formatSegmentScheduleTimes(stationScheduleList, segFrom, segTo)
           : '';
-      const classTag = ((item.instruction || '').split(' - ')[2] ?? '3A').trim();
+      const classTag = (
+        (item.instruction || '').split(' - ')[2] ?? '3A'
+      ).trim();
       const priceStr =
         item.approx_price != null && item.approx_price > 0
           ? `approx ₹${Number(item.approx_price).toLocaleString('en-IN')}`

@@ -10,6 +10,8 @@ tags:
   - train travel
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 
 In segment booking, the most important question is not "Can I find any confirmed leg?" It is:

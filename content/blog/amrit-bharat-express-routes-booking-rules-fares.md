@@ -10,7 +10,7 @@ tags:
   - amrit bharat routes
 ---
 
-> **Booked on the Amrit Bharat but stuck on the waitlist?** With no RAC quota it's confirmed-or-waitlisted — track your PNR with [Smart Seats](/) and, once the chart is out, see the real vacant berths on your train with [Chart Vacancy](/chart-vacancy) to grab any open seat.
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

@@ -11,7 +11,7 @@ tags:
   - 60 day arp rules
 ---
 
-> **Planning your festival trip home for Diwali or Chhath Puja 2026?** When direct trains show long waiting lists or Regret status, use [Finding Smart Seats](/) to find confirmed split berths on the same train, check your confirmation odds with [PNR Status Search & Direct Booking](/), and track vacant seats after chart prep using the [Seat Status Coach Journey Lookup](/seat-status).
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

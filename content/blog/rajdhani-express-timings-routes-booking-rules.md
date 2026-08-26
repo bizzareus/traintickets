@@ -10,6 +10,8 @@ tags:
   - travel guide
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 Want to zip across India without the usual railway delays? Look no further than the Rajdhani Express. This premium sleeper train connects major state capitals directly to New Delhi at speeds up to 130 km/h. It features three AC-only classes (1AC, 2AC, and 3AC), serves hot pantry meals (optional), and uses dynamic pricing. Be ready at 10:00 AM daily for Tatkal tickets, and watch waitlists carefully as chart time approaches.
 

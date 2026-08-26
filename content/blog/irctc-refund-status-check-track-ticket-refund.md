@@ -11,6 +11,8 @@ tags:
   - tdr refund
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 Tracking your IRCTC ticket refund is easy. You can check the status online via the IRCTC website or mobile app under the "Refund Status" tab in your transaction history. Refunds for cancelled tickets are typically processed within 3–7 business days depending on your payment method, while TDR refunds can take 15–45 days. If your refund is delayed, verifying the transaction ID with your bank or checking the refund status on official channels is the quickest way to resolve it.
 

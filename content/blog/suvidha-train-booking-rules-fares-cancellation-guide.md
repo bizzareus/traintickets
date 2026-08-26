@@ -11,7 +11,7 @@ tags:
   - dynamic fare
 ---
 
-> **Looking for confirmed train seats without dynamic surge pricing?** Search split-berth routes on [Finding Smart Seats](/) or verify your booking on [PNR Status Search & Direct Booking](/).
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 Suvidha trains are special premium services run by Indian Railways during peak travel seasons that operate on an aggressive dynamic pricing model. Fares start at Tatkal rates and surge up to three times the base fare as seats sell out. Crucially, confirmed ticket cancellations only yield a maximum 50% refund up to 6 hours before departure, with zero refund after that window.

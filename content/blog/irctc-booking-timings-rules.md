@@ -9,7 +9,7 @@ tags:
   - irctc timings
 ---
 
-> Facing night server downtime or Tatkal rush? Find confirmed split berths on [Smart Seats](/) or check real-time vacant seats on [Coach Journey Lookup](/seat-status).
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## What Is the IRCTC Night Maintenance Time & Server Downtime Window?
 

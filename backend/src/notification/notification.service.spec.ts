@@ -603,7 +603,9 @@ describe('NotificationService', () => {
         {
           train: { trainNumber: '17426', trainName: 'SNSI TPTY EXP' },
           alternatePath: {
-            legs: [{ from: 'GNT', to: 'TPTY', travelClass: '2A', isAvailable: true }],
+            legs: [
+              { from: 'GNT', to: 'TPTY', travelClass: '2A', isAvailable: true },
+            ],
           },
         },
       ] as any;

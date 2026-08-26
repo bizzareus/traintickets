@@ -11,7 +11,7 @@ tags:
   - railway news
 ---
 
-> **Planning an overnight Vande Bharat Sleeper journey?** Check live seat availability and PNR status on [Smart Seats](/), view 1AC/2AC/3AC coach layouts on [Coach Journey Lookup](/seat-status), and track vacant berths with [Chart Vacancy](/chart-vacancy).
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 The Vande Bharat Sleeper is Indian Railways' flagship overnight high-speed train service. Designed to replace legacy Rajdhani Express rakes on key trunk routes, Vande Bharat Sleeper trains operate at speeds up to 160 km/h with premium aerodynamic design, automated plug doors, modular toilets, and superior passenger comfort.
 

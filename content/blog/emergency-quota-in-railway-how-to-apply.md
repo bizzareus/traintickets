@@ -10,6 +10,8 @@ tags:
   - eq ticket confirmation
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 Before getting into the paperwork, let's see how this actually works. Indian Railways reserves a small pool of berths on every single train run. These are held for VIPs and people facing sudden, urgent crises. If you need one of these spots, you cannot book it online. The process is completely manual and offline. You must go to the local DRM office in person. Drop off a request letter, a printout of your ticket, and clear proof of your emergency. Try to submit your packet at least 24 hours before departure. Remember that approval is never a sure thing—the officers make the final call—so always have a backup plan ready.
 

@@ -16,7 +16,7 @@ tags:
   - berth wl no
 ---
 
-> **Will your waitlist confirm?** Track your ticket with [Smart Seats PNR status](/), and once the chart is out, see the actual free berths on your train with the [Chart Vacancy coach map](/chart-vacancy) — then grab any open seat.
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

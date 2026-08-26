@@ -12,6 +12,8 @@ tags:
   - tte rules
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 
 - **The Two-Stop Myth:** Historically, TTEs waited for two stations before reallocating seats. However, with Handheld Terminals (HHTs), your berth can be marked vacant and assigned to others immediately if you do not show up.

@@ -11,7 +11,7 @@ tags:
   - confirmed tickets
 ---
 
-> **Booking last-minute?** Use [Chart Vacancy](/chart-vacancy) to see which berths are actually free after chart preparation, and [Coach Journey Lookup](/seat-status) to catch seats opening up along the route — before you choose between Tatkal and Current Availability.
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

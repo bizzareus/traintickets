@@ -9,7 +9,7 @@ tags:
   - boarding point change
 ---
 
-> **Need to change your boarding station or check seat status?** Verify your 10-digit PNR instantly on [Smart Seats](/) or find vacant berths after chart prep on [Chart Vacancy](/chart-vacancy).
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 Need to change where you catch your train? Under official IRCTC rules, you can update your boarding station online up to 24 hours before scheduled train departure. This online facility makes travel plan adjustments simple and completely digital before chart preparation.

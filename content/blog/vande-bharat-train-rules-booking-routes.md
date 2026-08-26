@@ -11,6 +11,8 @@ tags:
   - travel guide
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 The Vande Bharat Express is India's premier semi-high-speed train, capable of running up to 160 km/h. It comes equipped with automatic sliding doors, bio-vacuum toilets, and onboard Wi-Fi. Ticket booking follows the standard IRCTC system, and meals can be added optionally or mandatorily depending on the route.
 

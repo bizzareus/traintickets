@@ -272,14 +272,16 @@ readers never reach. Add ONE high-visibility CTA blockquote **near the top** of 
 immediately before the first `## ` heading, within the first screenful — matched to the
 reader's intent:
 
-- Waitlist/RAC/confirmation posts → PNR status `[Smart Seats](/)` + `[Chart Vacancy](/chart-vacancy)`.
-- Current-availability/Tatkal/last-minute posts → `[Chart Vacancy](/chart-vacancy)` + `[Coach Journey Lookup](/seat-status)`.
+- Waitlist/RAC/confirmation posts → PNR status `[Smart Seats](/)`, `[Chart Vacancy](/chart-vacancy)`, and Chart preparation alerts `[Chart Times](/chart-times)`.
+- Current-availability/Tatkal/last-minute posts → `[Chart Times](/chart-times)` (for station chart alerts), `[Chart Vacancy](/chart-vacancy)`, and `[Coach Journey Lookup](/seat-status)`.
+- Train-specific route & timing guides → `[Chart Times](/chart-times)` (charting schedule lookup + free SMS/email alert) and `[Smart Seats](/)`.
   Keep it a single natural blockquote (not spammy), body-only edit, and propagate to all 6
   translations (translate prose; keep URL paths and the tool/brand names — LastBerth, Smart
-  Seats, Chart Vacancy, PNR — in Latin). Don't duplicate if a top CTA already exists.
+  Seats, Chart Vacancy, Chart Times, PNR — in Latin). Don't duplicate if a top CTA already exists.
   **Measure it:** record the page's pre-change blog→tool conversion rate (from `query-funnel`) in
   the experiment tracker so a later run can confirm the CTA moved `search_tickets_clicked` /
-  PNR / seat-status events for that landing page — not just that the CTA exists.
+  PNR / `chart_times_train_selected` / `alert_requested` events for that landing page — not just that the CTA exists.
+
 
 > **Batch loop:** Steps 2–6 apply to EVERY opportunity in the batch. Work through them one at
 > a time (each via its playbook), keeping each piece high-quality — never sacrifice quality to

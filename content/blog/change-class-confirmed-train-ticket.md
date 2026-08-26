@@ -11,6 +11,8 @@ tags:
   - last minute tickets
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 
 Changing class can be the simplest way to get a confirmed ticket, but it is not automatically the best move.

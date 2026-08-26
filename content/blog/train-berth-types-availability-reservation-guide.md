@@ -13,6 +13,8 @@ tags:
   - sleeper class
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 
 - A **train berth** is a foldable sleeping platform inside a reserved Indian Railways coach. Each berth type — Lower, Middle, Upper, Side Lower, Side Upper — offers a very different comfort level.

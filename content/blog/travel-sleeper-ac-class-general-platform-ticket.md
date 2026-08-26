@@ -12,7 +12,7 @@ tags:
   - sleeper class
 ---
 
-> **Skip the ₹500 fine and travel on a confirmed berth:** Search live train availability and book a proper reserved seat on [Smart Seats](/), or use [Coach Journey Lookup](/seat-status) to find berths that open up after chart preparation for last-minute journeys.
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 

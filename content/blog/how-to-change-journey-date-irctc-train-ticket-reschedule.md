@@ -13,6 +13,8 @@ tags:
   - counter ticket rules
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 
 You can prepone or postpone a confirmed, RAC, or waitlisted counter ticket at any computerized PRS railway station counter at least 48 hours before train departure without paying cancellation penalties. Online IRCTC e-tickets cannot be rescheduled directly through the website or app, meaning you must cancel and rebook or visit a counter with a physical printout. Tatkal tickets cannot be rescheduled under any circumstance.

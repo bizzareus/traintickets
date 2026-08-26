@@ -10,7 +10,7 @@ tags:
   - travel guide
 ---
 
-> **Planning a Garib Rath trip?** Check live availability and your PNR status with [Smart Seats](/), and view vacant berths on running coaches with [Coach Journey Lookup](/seat-status).
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 Want AC comfort but on a tight budget? Indian Railways' Garib Rath Express cuts ticket fares by 40-50% compared to standard trains. But there’s a catch: you won't get bedrolls automatically (it’s an extra ₹25), the 3AC coaches cram in an extra side-middle berth, and Tatkal bookings start sharp at 10:00 AM.

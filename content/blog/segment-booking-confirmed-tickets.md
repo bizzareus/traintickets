@@ -10,6 +10,8 @@ tags:
   - irctc
 ---
 
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+
 ## TL;DR
 
 Got a waitlist or "Regret" status on a long route? Don't panic. You can often stitch together a confirmed trip on the very same train by booking smaller, overlapping legs.
