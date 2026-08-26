@@ -3,10 +3,7 @@
 import { useEffect, useState } from "react";
 import { BellRing, CheckCircle2, ShieldCheck, Sparkles, X } from "lucide-react";
 import { apiClient } from "@/lib/api";
-import {
-  trackAlertRequested,
-  trackAnalyticsEvent,
-} from "@/lib/analytics/track";
+import { trackAlertRequested, trackAnalyticsEvent } from "@/lib/analytics/track";
 import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricingExperiment";
 
 const DEFAULT_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
@@ -111,9 +108,7 @@ export function TrainChartAlertSection({
       });
     } catch (err: unknown) {
       const e = err as {
-        response?: {
-          data?: { message?: string; errors?: Array<{ message?: string }> };
-        };
+        response?: { data?: { message?: string; errors?: Array<{ message?: string }> } };
       };
       const msg =
         e?.response?.data?.errors?.[0]?.message ||
@@ -145,9 +140,7 @@ export function TrainChartAlertSection({
     const mob = mobile.trim();
 
     if (!em && !mob) {
-      setError(
-        "Please enter your email or mobile number so we can notify you.",
-      );
+      setError("Please enter your email or mobile number so we can notify you.");
       return;
     }
 
@@ -218,8 +211,7 @@ export function TrainChartAlertSection({
             )}
           </div>
           <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-            Get notified on WhatsApp or Email when chart is prepared & vacant
-            seats open on this train.
+            Get notified on WhatsApp or Email when chart is prepared & vacant seats open on this train.
           </p>
         </div>
 
@@ -243,28 +235,27 @@ export function TrainChartAlertSection({
           onClick={() => setModalOpen(false)}
         >
           <div
-            className="w-full max-h-[92vh] overflow-y-auto rounded-t-3xl bg-white shadow-2xl sm:max-w-md sm:rounded-3xl"
+            className="w-full max-h-[90vh] overflow-y-auto rounded-t-2xl bg-white p-5 shadow-2xl sm:max-w-md sm:rounded-2xl sm:p-6"
             role="dialog"
             aria-modal="true"
             aria-labelledby="chartAlertModalTitle"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="bg-gradient-to-br from-blue-50 via-white to-white px-5 pb-4 pt-5 sm:px-6 sm:pt-6">
-              <div className="flex items-start justify-between gap-3">
-              <div className="flex items-start gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm shadow-blue-600/20">
+            <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                   <BellRing className="h-5 w-5" />
                 </span>
                 <div>
                   <h3
                     id="chartAlertModalTitle"
-                    className="text-lg font-extrabold tracking-tight text-slate-950"
+                    className="text-base font-bold text-slate-900"
                   >
                     Subscribe to Chart Alert
                   </h3>
-                  <p className="mt-0.5 text-xs font-medium text-slate-500">
-                    Get notified when seats become available
+                  <p className="text-xs font-medium text-slate-500">
+                    {trainNumber} {trainName ? `· ${trainName}` : ""}
                   </p>
                 </div>
               </div>
@@ -272,31 +263,15 @@ export function TrainChartAlertSection({
                 type="button"
                 onClick={() => setModalOpen(false)}
                 aria-label="Close modal"
-                className="-mr-1 -mt-1 rounded-xl p-2 text-slate-400 transition hover:bg-white hover:text-slate-700 focus:outline-none focus:ring-4 focus:ring-blue-500/15"
+                className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-              <div className="mt-4 flex items-center gap-3 rounded-2xl border border-blue-100 bg-white/80 px-3.5 py-3 shadow-sm shadow-blue-900/5">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-extrabold text-slate-900">
-                    {trainNumber} {trainName ? `· ${trainName}` : ""}
-                  </p>
-                  <p className="mt-1 text-xs font-semibold text-slate-500">
-                    {fromCode} <span className="px-1 text-blue-500">→</span> {toCode}
-                    {journeyDate ? ` · ${journeyDate}` : ""}
-                  </p>
-                </div>
-                <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  Smart alert
-                </span>
-              </div>
-            </div>
 
             {/* Modal Body */}
             {success ? (
-              <div className="px-5 py-8 text-center sm:px-6">
+              <div className="py-6 text-center">
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                   <CheckCircle2 className="h-7 w-7" />
                 </div>
@@ -304,12 +279,10 @@ export function TrainChartAlertSection({
                   Alert Subscribed Successfully!
                 </h4>
                 <p className="mt-2 text-xs leading-relaxed text-slate-600">
-                  We&apos;ll monitor{" "}
-                  <strong className="text-slate-800">{trainNumber}</strong> from{" "}
+                  We&apos;ll monitor <strong className="text-slate-800">{trainNumber}</strong> from{" "}
                   <strong className="text-slate-800">{fromCode}</strong> to{" "}
-                  <strong className="text-slate-800">{toCode}</strong> and
-                  immediately alert you via WhatsApp/Email when the chart is
-                  prepared.
+                  <strong className="text-slate-800">{toCode}</strong> and immediately alert you
+                  via WhatsApp/Email when the chart is prepared.
                 </p>
                 <button
                   type="button"
@@ -320,15 +293,11 @@ export function TrainChartAlertSection({
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="space-y-4 px-5 pb-5 pt-5 sm:px-6 sm:pb-6">
-                <div className="rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 text-xs leading-relaxed text-slate-600">
-                  Choose your class and at least one way to receive your alert.
-                  <span className="font-semibold text-slate-800"> No spam, only seat updates.</span>
-                </div>
+              <form onSubmit={handleSubscribe} className="mt-4 space-y-4">
                 <div>
                   <label
                     htmlFor="alertClassSelect"
-                    className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-700"
+                    className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1"
                   >
                     Travel Class
                   </label>
@@ -336,7 +305,7 @@ export function TrainChartAlertSection({
                     id="alertClassSelect"
                     value={selectedClass}
                     onChange={(e) => setSelectedClass(e.target.value)}
-                    className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   >
                     {availableClasses.map((c) => (
                       <option key={c} value={c}>
@@ -349,7 +318,7 @@ export function TrainChartAlertSection({
                 <div>
                   <label
                     htmlFor="alertEmailInput"
-                    className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-700"
+                    className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1"
                   >
                     Email Address
                   </label>
@@ -360,14 +329,14 @@ export function TrainChartAlertSection({
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
                     autoComplete="email"
-                    className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-sm placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="alertMobileInput"
-                    className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-700"
+                    className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1"
                   >
                     Mobile Number (WhatsApp Alert)
                   </label>
@@ -378,7 +347,7 @@ export function TrainChartAlertSection({
                     onChange={(e) => setMobile(e.target.value)}
                     placeholder="10-digit mobile number"
                     autoComplete="tel"
-                    className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-sm placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   />
                 </div>
 
@@ -397,32 +366,25 @@ export function TrainChartAlertSection({
                       <div className="space-y-1 flex-1">
                         <div className="flex items-center justify-between">
                           <p className="font-bold text-slate-900 text-xs tracking-tight">
-                            Activate this Alert for{" "}
-                            <span className="text-amber-950 font-extrabold text-sm">
-                              ₹5
-                            </span>
+                            Alert Activation: <span className="text-amber-950 font-extrabold text-sm">₹5</span>
                           </p>
                           <span className="inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
                             100% Refundable
                           </span>
                         </div>
                         <p className="text-xs leading-relaxed text-slate-700">
-                          <strong>Money-Back Guarantee:</strong> If confirmed
-                          tickets or vacant seats are not found when chart is
-                          prepared, your{" "}
-                          <strong>₹5 will be refunded back to you</strong>{" "}
-                          automatically.
+                          <strong>Money-Back Guarantee:</strong> If confirmed tickets or vacant seats are not found when chart is prepared, your <strong>₹5 will be refunded back to you</strong> automatically.
                         </p>
                       </div>
                     </div>
                   </div>
                 )}
 
-                <div className="border-t border-slate-100 pt-4">
+                <div className="pt-2">
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25 disabled:cursor-not-allowed disabled:opacity-60 transition"
                   >
                     {loading ? (
                       <>
