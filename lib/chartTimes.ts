@@ -30,7 +30,11 @@ export { buildChartTimesSlug, parseTrainNumberFromSlug, slugifyTrainName };
  * than triggering slow per-station IRCTC composition calls.
  */
 
-export const CHART_TIMES_DIR = path.join(process.cwd(), "content", "chart-times");
+export const CHART_TIMES_DIR = path.join(
+  /*turbopackIgnore: true*/ process.cwd(),
+  "content",
+  "chart-times",
+);
 
 /** Regenerate a fully/partially populated page if it is older than this. */
 const CACHE_MAX_AGE_MS = 1000 * 60 * 60 * 24; // 24h
@@ -143,7 +147,7 @@ function filePathForTrain(trainNumber: string): string | null {
           f.endsWith("-chart-times.json") &&
           (f.startsWith(prefix) || f === `${num}-chart-times.json`),
       );
-    return match ? path.join(CHART_TIMES_DIR, match) : null;
+    return match ? path.join(/*turbopackIgnore: true*/ CHART_TIMES_DIR, match) : null;
   } catch {
     return null;
   }
@@ -167,7 +171,7 @@ function writeCachedFile(data: ChartTimesPageData): void {
     if (!fs.existsSync(CHART_TIMES_DIR)) {
       fs.mkdirSync(CHART_TIMES_DIR, { recursive: true });
     }
-    const fp = path.join(CHART_TIMES_DIR, `${data.slug}.json`);
+    const fp = path.join(/*turbopackIgnore: true*/ CHART_TIMES_DIR, `${data.slug}.json`);
     fs.writeFileSync(fp, JSON.stringify(data, null, 2) + "\n", "utf8");
   } catch (err) {
     // Read-only filesystems (some hosts) just skip persistence; page still renders.
@@ -510,7 +514,7 @@ export function listChartTimesIndex(): {
   for (const f of files) {
     try {
       const data = JSON.parse(
-        fs.readFileSync(path.join(CHART_TIMES_DIR, f), "utf8"),
+        fs.readFileSync(path.join(/*turbopackIgnore: true*/ CHART_TIMES_DIR, f), "utf8"),
       ) as ChartTimesPageData;
       out.push({
         slug: data.slug || f.replace(/\.json$/, ""),

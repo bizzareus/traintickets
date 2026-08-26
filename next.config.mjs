@@ -1,12 +1,24 @@
 import { withSentryConfig } from "@sentry/nextjs";
 import { PHASE_PRODUCTION_BUILD } from "next/constants.js";
 
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /** @param {string} phase */
 export default function configFactory(phase) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
+  turbopack: {
+    root: __dirname,
+  },
+  outputFileTracingExcludes: {
+    "*": ["./next.config.mjs", "content/chart-times/**"],
+  },
   experimental: {
     optimizePackageImports: ["lucide-react", "flowbite", "clsx", "tailwind-merge"],
   },
@@ -35,15 +47,6 @@ const nextConfig = {
   },
   async headers() {
     return [
-      {
-        source: "/_next/static/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
       {
         source: "/(chart-times|blog|irctc-train-food-menu|glossary|pnr-status|chart-vacancy)/:path*",
         headers: [
