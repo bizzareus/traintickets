@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import { BellRing, CheckCircle2, ShieldCheck, Sparkles, X } from "lucide-react";
 import { apiClient } from "@/lib/api";
-import { trackAlertRequested, trackAnalyticsEvent } from "@/lib/analytics/track";
+import {
+  trackAlertRequested,
+  trackAnalyticsEvent,
+} from "@/lib/analytics/track";
 import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricingExperiment";
 
 const DEFAULT_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
@@ -108,7 +111,9 @@ export function TrainChartAlertSection({
       });
     } catch (err: unknown) {
       const e = err as {
-        response?: { data?: { message?: string; errors?: Array<{ message?: string }> } };
+        response?: {
+          data?: { message?: string; errors?: Array<{ message?: string }> };
+        };
       };
       const msg =
         e?.response?.data?.errors?.[0]?.message ||
@@ -140,7 +145,9 @@ export function TrainChartAlertSection({
     const mob = mobile.trim();
 
     if (!em && !mob) {
-      setError("Please enter your email or mobile number so we can notify you.");
+      setError(
+        "Please enter your email or mobile number so we can notify you.",
+      );
       return;
     }
 
@@ -211,7 +218,8 @@ export function TrainChartAlertSection({
             )}
           </div>
           <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-            Get notified on WhatsApp or Email when chart is prepared & vacant seats open on this train.
+            Get notified on WhatsApp or Email when chart is prepared & vacant
+            seats open on this train.
           </p>
         </div>
 
@@ -279,10 +287,12 @@ export function TrainChartAlertSection({
                   Alert Subscribed Successfully!
                 </h4>
                 <p className="mt-2 text-xs leading-relaxed text-slate-600">
-                  We&apos;ll monitor <strong className="text-slate-800">{trainNumber}</strong> from{" "}
+                  We&apos;ll monitor{" "}
+                  <strong className="text-slate-800">{trainNumber}</strong> from{" "}
                   <strong className="text-slate-800">{fromCode}</strong> to{" "}
-                  <strong className="text-slate-800">{toCode}</strong> and immediately alert you
-                  via WhatsApp/Email when the chart is prepared.
+                  <strong className="text-slate-800">{toCode}</strong> and
+                  immediately alert you via WhatsApp/Email when the chart is
+                  prepared.
                 </p>
                 <button
                   type="button"
@@ -366,14 +376,21 @@ export function TrainChartAlertSection({
                       <div className="space-y-1 flex-1">
                         <div className="flex items-center justify-between">
                           <p className="font-bold text-slate-900 text-xs tracking-tight">
-                            Alert Activation: <span className="text-amber-950 font-extrabold text-sm">₹5</span>
+                            Activate this Alert for:{" "}
+                            <span className="text-amber-950 font-extrabold text-sm">
+                              ₹5
+                            </span>
                           </p>
                           <span className="inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
                             100% Refundable
                           </span>
                         </div>
                         <p className="text-xs leading-relaxed text-slate-700">
-                          <strong>Money-Back Guarantee:</strong> If confirmed tickets or vacant seats are not found when chart is prepared, your <strong>₹5 will be refunded back to you</strong> automatically.
+                          <strong>Money-Back Guarantee:</strong> If confirmed
+                          tickets or vacant seats are not found when chart is
+                          prepared, your{" "}
+                          <strong>₹5 will be refunded back to you</strong>{" "}
+                          automatically.
                         </p>
                       </div>
                     </div>
