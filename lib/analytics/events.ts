@@ -269,6 +269,33 @@ export type AnalyticsEvent =
         from_code?: string;
         to_code?: string;
         journey_date?: string;
+        variant?: "control" | "paid";
+      };
+    }
+  | {
+      name: "chart_alert_paid_step_shown";
+      properties: {
+        train_number: string;
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        class_code: string;
+        price: number;
+        has_email: boolean;
+        has_mobile: boolean;
+      };
+    }
+  | {
+      name: "chart_alert_paid_cta_clicked";
+      properties: {
+        train_number: string;
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        class_code: string;
+        price: number;
+        has_email: boolean;
+        has_mobile: boolean;
       };
     }
   // PNR feature (prefix: search_pnr_*)

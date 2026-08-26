@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BellRing, CheckCircle2, Sparkles, X } from "lucide-react";
+import { BellRing, CheckCircle2, ShieldCheck, Sparkles, X } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import { trackAlertRequested, trackAnalyticsEvent } from "@/lib/analytics/track";
+import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricingExperiment";
 
 const DEFAULT_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -26,6 +27,7 @@ export function TrainChartAlertSection({
   avlClasses,
   className = "",
 }: TrainChartAlertSectionProps) {
+  const { isPaidVariant, variant } = useChartAlertPricingExperiment();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedClass, setSelectedClass] = useState<string>("3A");
   const [email, setEmail] = useState("");
@@ -33,6 +35,7 @@ export function TrainChartAlertSection({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [showPaidStep, setShowPaidStep] = useState(false);
 
   const availableClasses =
     avlClasses && avlClasses.length > 0 ? avlClasses : DEFAULT_CLASSES;
@@ -58,6 +61,7 @@ export function TrainChartAlertSection({
     setModalOpen(true);
     setError(null);
     setSuccess(false);
+    setShowPaidStep(false);
     trackAnalyticsEvent({
       name: "chart_alert_opened",
       properties: {
@@ -66,25 +70,12 @@ export function TrainChartAlertSection({
         from_code: fromCode,
         to_code: toCode,
         journey_date: journeyDate || "",
+        variant,
       },
     });
   };
 
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const em = email.trim();
-    const mob = mobile.trim();
-
-    if (!em && !mob) {
-      setError("Please enter your email or mobile number so we can notify you.");
-      return;
-    }
-
-    if (!journeyDate?.trim()) {
-      setError("Journey date is missing. Please select a valid date.");
-      return;
-    }
-
+  const executeSubscription = async (em: string, mob: string) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -95,7 +86,7 @@ export function TrainChartAlertSection({
         trainName: trainName?.trim() || undefined,
         fromStationCode: fromCode.trim().toUpperCase(),
         toStationCode: toCode.trim().toUpperCase(),
-        journeyDate: journeyDate.trim().slice(0, 10),
+        journeyDate: journeyDate?.trim().slice(0, 10),
         classCode: selectedClass.trim().toUpperCase(),
         stationCodesToMonitor: [fromCode.trim().toUpperCase()],
         email: em || undefined,
@@ -110,7 +101,7 @@ export function TrainChartAlertSection({
         trainName: trainName?.trim() || undefined,
         fromCode: fromCode.trim().toUpperCase(),
         toCode: toCode.trim().toUpperCase(),
-        journeyDate: journeyDate.trim().slice(0, 10),
+        journeyDate: journeyDate?.trim().slice(0, 10) || "",
         classCode: selectedClass.trim().toUpperCase(),
         hasEmail: Boolean(em),
         hasMobile: Boolean(mob),
@@ -143,6 +134,61 @@ export function TrainChartAlertSection({
     }
   };
 
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const em = email.trim();
+    const mob = mobile.trim();
+
+    if (!em && !mob) {
+      setError("Please enter your email or mobile number so we can notify you.");
+      return;
+    }
+
+    if (!journeyDate?.trim()) {
+      setError("Journey date is missing. Please select a valid date.");
+      return;
+    }
+
+    // In paid variant, the first click reveals the fake-door refund banner and ₹5 CTA
+    if (isPaidVariant && !showPaidStep) {
+      setError(null);
+      setShowPaidStep(true);
+      trackAnalyticsEvent({
+        name: "chart_alert_paid_step_shown",
+        properties: {
+          train_number: trainNumber.trim(),
+          from_code: fromCode.trim().toUpperCase(),
+          to_code: toCode.trim().toUpperCase(),
+          journey_date: journeyDate.trim().slice(0, 10),
+          class_code: selectedClass.trim().toUpperCase(),
+          price: 5,
+          has_email: Boolean(em),
+          has_mobile: Boolean(mob),
+        },
+      });
+      return;
+    }
+
+    // If in paid variant and user clicks "Pay ₹5 & Subscribe to Alert", track the conversion event
+    if (isPaidVariant && showPaidStep) {
+      trackAnalyticsEvent({
+        name: "chart_alert_paid_cta_clicked",
+        properties: {
+          train_number: trainNumber.trim(),
+          from_code: fromCode.trim().toUpperCase(),
+          to_code: toCode.trim().toUpperCase(),
+          journey_date: journeyDate.trim().slice(0, 10),
+          class_code: selectedClass.trim().toUpperCase(),
+          price: 5,
+          has_email: Boolean(em),
+          has_mobile: Boolean(mob),
+        },
+      });
+    }
+
+    await executeSubscription(em, mob);
+  };
+
   return (
     <>
       {/* Right Side Vertical Alert Box on Train Card */}
@@ -157,10 +203,12 @@ export function TrainChartAlertSection({
             <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
               Chart Alert
             </span>
-            <span className="inline-flex items-center gap-0.5 rounded-full bg-blue-100/70 px-1.5 py-0.2 text-[9px] font-bold text-blue-700">
-              <Sparkles className="h-2.5 w-2.5 text-blue-600" />
-              Free
-            </span>
+            {!isPaidVariant && (
+              <span className="inline-flex items-center gap-0.5 rounded-full bg-blue-100/70 px-1.5 py-0.2 text-[9px] font-bold text-blue-700">
+                <Sparkles className="h-2.5 w-2.5 text-blue-600" />
+                Free
+              </span>
+            )}
           </div>
           <p className="mt-2 text-xs text-slate-600 leading-relaxed">
             Get notified on WhatsApp or Email when chart is prepared & vacant seats open on this train.
@@ -309,6 +357,29 @@ export function TrainChartAlertSection({
                   </p>
                 )}
 
+                {showPaidStep && (
+                  <div className="rounded-xl border border-amber-200 bg-amber-50/90 p-3.5 shadow-2xs">
+                    <div className="flex items-start gap-2.5">
+                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500/20 text-amber-900 font-extrabold text-xs mt-0.5">
+                        ₹
+                      </div>
+                      <div className="space-y-1 flex-1">
+                        <div className="flex items-center justify-between">
+                          <p className="font-bold text-slate-900 text-xs tracking-tight">
+                            Alert Activation: <span className="text-amber-950 font-extrabold text-sm">₹5</span>
+                          </p>
+                          <span className="inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
+                            100% Refundable
+                          </span>
+                        </div>
+                        <p className="text-xs leading-relaxed text-slate-700">
+                          <strong>Money-Back Guarantee:</strong> If confirmed tickets or vacant seats are not found when chart is prepared, your <strong>₹5 will be refunded back to you</strong> automatically.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div className="pt-2">
                   <button
                     type="submit"
@@ -320,6 +391,11 @@ export function TrainChartAlertSection({
                         <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
                         Setting up alert…
                       </>
+                    ) : showPaidStep ? (
+                      <>
+                        <ShieldCheck className="h-4 w-4 text-emerald-300" />
+                        Pay ₹5 &amp; Subscribe to Alert
+                      </>
                     ) : (
                       <>
                         <BellRing className="h-4 w-4" />
@@ -327,6 +403,11 @@ export function TrainChartAlertSection({
                       </>
                     )}
                   </button>
+                  {showPaidStep && (
+                    <p className="mt-1.5 text-center text-[10px] font-medium text-slate-500">
+                      Instant setup · Zero-risk money back guarantee
+                    </p>
+                  )}
                 </div>
               </form>
             )}
