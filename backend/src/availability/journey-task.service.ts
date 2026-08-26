@@ -1471,10 +1471,80 @@ export class JourneyTaskService {
         ? Number(((runningDelivered / runningCreated) * 100).toFixed(2))
         : 0;
 
+    const monthlyRepeatUsersRaw = await this.prisma.$queryRaw<
+      Array<{
+        month: string;
+        total_users: number;
+        new_users: number;
+        returning_users: number;
+        repeat_users_in_month: number;
+        single_alert_users: number;
+        repeat_user_rate_pct: number | string;
+        notifications_by_repeat_users: number;
+        total_notifications: number;
+      }>
+    >`
+      WITH user_first_seen AS (
+        SELECT 
+          monitoring_contact_id,
+          DATE_TRUNC('month', MIN(created_at) AT TIME ZONE 'Asia/Kolkata')::date::text AS first_month
+        FROM "JourneyMonitoringRequest"
+        WHERE monitoring_contact_id IS NOT NULL
+        GROUP BY 1
+      ),
+      user_monthly_activity AS (
+        SELECT 
+          DATE_TRUNC('month', jmr.created_at AT TIME ZONE 'Asia/Kolkata')::date::text AS month,
+          jmr.monitoring_contact_id,
+          COUNT(*)::int AS notification_count,
+          ufs.first_month
+        FROM "JourneyMonitoringRequest" jmr
+        JOIN user_first_seen ufs ON jmr.monitoring_contact_id = ufs.monitoring_contact_id
+        GROUP BY 1, 2, 4
+      )
+      SELECT 
+        month,
+        COUNT(DISTINCT monitoring_contact_id)::int AS total_users,
+        COUNT(DISTINCT CASE WHEN first_month = month THEN monitoring_contact_id END)::int AS new_users,
+        COUNT(DISTINCT CASE WHEN first_month < month THEN monitoring_contact_id END)::int AS returning_users,
+        COUNT(DISTINCT CASE WHEN notification_count > 1 THEN monitoring_contact_id END)::int AS repeat_users_in_month,
+        COUNT(DISTINCT CASE WHEN notification_count = 1 THEN monitoring_contact_id END)::int AS single_alert_users,
+        ROUND((COUNT(DISTINCT CASE WHEN notification_count > 1 THEN monitoring_contact_id END)::numeric / NULLIF(COUNT(DISTINCT monitoring_contact_id), 0)) * 100, 2) AS repeat_user_rate_pct,
+        COALESCE(SUM(CASE WHEN notification_count > 1 THEN notification_count ELSE 0 END), 0)::int AS notifications_by_repeat_users,
+        COALESCE(SUM(notification_count), 0)::int AS total_notifications
+      FROM user_monthly_activity
+      GROUP BY 1
+      ORDER BY month DESC
+    `;
+
+    const monthlyRepeatUsers = monthlyRepeatUsersRaw.map((row) => {
+      const repeatUsers = Number(row.repeat_users_in_month);
+      const totalUsers = Number(row.total_users);
+      const notificationsByRepeat = Number(row.notifications_by_repeat_users);
+      const avgPerRepeatUser =
+        repeatUsers > 0
+          ? Number((notificationsByRepeat / repeatUsers).toFixed(1))
+          : 0;
+
+      return {
+        month: row.month,
+        totalUsers,
+        newUsers: Number(row.new_users),
+        returningUsers: Number(row.returning_users),
+        repeatUsersInMonth: repeatUsers,
+        singleAlertUsers: Number(row.single_alert_users),
+        repeatUserRatePct: Number(row.repeat_user_rate_pct || 0),
+        notificationsByRepeatUsers: notificationsByRepeat,
+        totalNotifications: Number(row.total_notifications),
+        avgNotificationsPerRepeatUser: avgPerRepeatUser,
+      };
+    });
+
     return {
       groupBy,
       dailyStats: formattedRows,
       stats: formattedRows,
+      monthlyRepeatUsers,
       summary: {
         totalNotifications: runningCreated,
         totalCreated: runningCreated,

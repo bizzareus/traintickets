@@ -21,6 +21,19 @@ type DailyStat = {
   growthPercentage?: number | null;
 };
 
+type MonthlyRepeatUser = {
+  month: string;
+  totalUsers: number;
+  newUsers: number;
+  returningUsers: number;
+  repeatUsersInMonth: number;
+  singleAlertUsers: number;
+  repeatUserRatePct: number;
+  notificationsByRepeatUsers: number;
+  totalNotifications: number;
+  avgNotificationsPerRepeatUser: number;
+};
+
 type AnalyticsSummary = {
   totalNotifications: number;
   totalCreated: number;
@@ -40,11 +53,13 @@ type AnalyticsResponse = {
   groupBy?: GroupByMode;
   dailyStats: DailyStat[];
   stats?: DailyStat[];
+  monthlyRepeatUsers?: MonthlyRepeatUser[];
   summary: AnalyticsSummary;
 };
 
 export default function NotificationsAnalyticsPage() {
   const [data, setData] = useState<DailyStat[]>([]);
+  const [monthlyRepeatUsers, setMonthlyRepeatUsers] = useState<MonthlyRepeatUser[]>([]);
   const [summary, setSummary] = useState<AnalyticsSummary | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -97,6 +112,7 @@ export default function NotificationsAnalyticsPage() {
 
       const items = res.data.stats || res.data.dailyStats || [];
       setData(items);
+      setMonthlyRepeatUsers(res.data.monthlyRepeatUsers || []);
       setSummary(res.data.summary || null);
       setError(null);
     } catch (err: unknown) {
@@ -155,7 +171,7 @@ export default function NotificationsAnalyticsPage() {
     groupBy === "month" ? "MoM" : groupBy === "week" ? "WoW" : "DoD";
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -483,10 +499,15 @@ export default function NotificationsAnalyticsPage() {
         )}
       </div>
 
-      {/* Tabular Data Drilldown */}
+      {/* Tabular Data Drilldown: Timeline Breakdown */}
       <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
         <div className="border-b border-slate-100 bg-slate-50/50 px-6 py-4 flex items-center justify-between">
-          <h3 className="font-semibold text-slate-900">{periodTitle} Breakdown Table</h3>
+          <div>
+            <h3 className="font-semibold text-slate-900">{periodTitle} Timeline Breakdown</h3>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Historical notification creation & delivery performance.
+            </p>
+          </div>
           <span className="text-xs font-medium text-slate-500">
             Grouped by {groupBy === "month" ? "Month" : groupBy === "week" ? "Week" : "Day"}
           </span>
@@ -558,6 +579,91 @@ export default function NotificationsAnalyticsPage() {
           </table>
         </div>
       </div>
+
+      {/* Monthly Repeat Users Table */}
+      {monthlyRepeatUsers.length > 0 && (
+        <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+          <div className="border-b border-slate-100 bg-slate-50/50 px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+            <div>
+              <h3 className="font-semibold text-slate-900">Monthly Repeat Users Analysis</h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Breakdown of users setting up multiple notifications (≥ 2 alerts) and returning users by month.
+              </p>
+            </div>
+            <span className="inline-flex items-center rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-700 border border-indigo-100">
+              {monthlyRepeatUsers.length} Months Tracked
+            </span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-slate-100 bg-slate-50/50 text-xs font-semibold text-slate-700">
+                <tr>
+                  <th className="px-6 py-3">Month</th>
+                  <th className="px-6 py-3">Total Active Users</th>
+                  <th className="px-6 py-3">Repeat Users (≥ 2 Alerts)</th>
+                  <th className="px-6 py-3">Single Alert Users (1)</th>
+                  <th className="px-6 py-3">Monthly Repeat Rate</th>
+                  <th className="px-6 py-3">New vs Returning</th>
+                  <th className="px-6 py-3">Alerts by Repeat Users</th>
+                  <th className="px-6 py-3">Avg Alerts / Repeat User</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {monthlyRepeatUsers.map((m) => (
+                  <tr key={m.month} className="transition hover:bg-slate-50/50">
+                    <td className="whitespace-nowrap px-6 py-3.5 font-bold text-slate-900">
+                      {moment(m.month).format("MMMM YYYY")}
+                    </td>
+                    <td className="px-6 py-3.5 font-semibold text-slate-800">
+                      {m.totalUsers}
+                    </td>
+                    <td className="px-6 py-3.5 font-bold text-indigo-600">
+                      {m.repeatUsersInMonth}
+                    </td>
+                    <td className="px-6 py-3.5 text-slate-600">
+                      {m.singleAlertUsers}
+                    </td>
+                    <td className="px-6 py-3.5">
+                      <span
+                        className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-bold ${
+                          m.repeatUserRatePct >= 50
+                            ? "bg-indigo-50 text-indigo-700 border border-indigo-200"
+                            : m.repeatUserRatePct >= 25
+                              ? "bg-blue-50 text-blue-700 border border-blue-200"
+                              : "bg-slate-100 text-slate-600"
+                        }`}
+                      >
+                        {m.repeatUserRatePct}%
+                      </span>
+                    </td>
+                    <td className="px-6 py-3.5 text-xs">
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-medium border border-emerald-100">
+                          {m.newUsers} New
+                        </span>
+                        {m.returningUsers > 0 && (
+                          <span className="text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded font-medium border border-purple-100">
+                            {m.returningUsers} Returning
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="px-6 py-3.5 font-medium text-slate-800">
+                      {m.notificationsByRepeatUsers}{" "}
+                      <span className="text-xs text-slate-400 font-normal">
+                        ({Math.round((m.notificationsByRepeatUsers / (m.totalNotifications || 1)) * 100)}% of total)
+                      </span>
+                    </td>
+                    <td className="px-6 py-3.5 font-semibold text-slate-900">
+                      {m.avgNotificationsPerRepeatUser}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
