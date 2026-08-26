@@ -2,7 +2,7 @@
 title: "IRCTC Maintenance Time & Ticket Booking Timings (2026)"
 description: "Guide to IRCTC ticket booking timings in 2026: night maintenance server downtime (11:45 PM-12:20 AM IST), Tatkal opening hours, ARP, and current availability."
 date: "2026-06-18"
-updated: "2026-08-11"
+updated: "2026-08-26"
 tags:
   - train booking
   - irctc
@@ -45,13 +45,13 @@ If an e-ticket remains fully waitlisted (**WL full form is Waiting List**) after
 
 ## What Time Does Tatkal Booking Open on IRCTC?
 
-**Tatkal ticket booking opens daily at 10:00 AM IST for AC classes (1A, 2A, 3A, 3E, CC) and 11:00 AM IST for Non-AC classes (Sleeper, 2S) one day prior to train departure from origin. Mandatory Aadhaar OTP authentication applies to verified IRCTC user accounts booking Tatkal seats.**
+**Tatkal ticket booking opens daily at 10:00 AM IST for AC classes (2A, 3A, 3E, CC, EC; 1A excluded) and 11:00 AM IST for Non-AC classes (Sleeper, 2S) one day prior to train departure from origin. Mandatory Aadhaar OTP authentication applies to verified IRCTC user accounts booking Tatkal seats.**
 
 Tatkal reservation provides last-minute travel access for passengers who need urgent travel bookings. Because seats sell out within seconds, knowing the exact opening schedule and preparation steps is crucial:
 
 | Quota / Class | Booking Opening Time (IST) | Advance Days | Refund Policy |
 | :--- | :--- | :--- | :--- |
-| **AC Tatkal (1A, 2A, 3A, 3E, CC)** | 10:00 AM IST | 1 Day Prior | No refund on confirmed tickets |
+| **AC Tatkal (2A, 3A, 3E, CC, EC)** | 10:00 AM IST | 1 Day Prior | No refund on confirmed tickets |
 | **Non-AC Tatkal (SL, 2S)** | 11:00 AM IST | 1 Day Prior | No refund on confirmed tickets |
 | **Premium Tatkal (AC & Non-AC)** | Same as Tatkal (10 AM / 11 AM) | 1 Day Prior | Dynamic pricing; no refund |
 
@@ -61,12 +61,12 @@ To prevent automated bot abuse and ticket hoarding, IRCTC mandates **Aadhaar OTP
 
 ## What Time Does Current Availability Booking Open?
 
-**Current availability ticket booking opens approximately 4 hours before scheduled train departure immediately following first reservation chart preparation. This discounted or normal fare booking window remains active on the IRCTC portal and PRS counters until roughly 30 minutes prior to departure time.**
+**Current availability ticket booking opens approximately 8 hours before scheduled train departure (or 9:00 PM the previous evening for pre-14:00 departures) immediately following first reservation chart preparation. This discounted or normal fare booking window remains active on the IRCTC portal and PRS counters until roughly 30 minutes prior to departure time.**
 
 When train seats remain unsold after the primary reservation charts are finalized, Indian Railways releases them as **Current Availability** tickets. Unlike waitlisted options, a current availability ticket guarantees a **fully confirmed berth** with designated coach and seat numbers.
 
 Features of Current Availability booking:
-- **Opening Time:** Opens right after 1st Chart Preparation (~4 hours before train departure from origin).
+- **Opening Time:** Opens right after 1st Chart Preparation (~8 hours before train departure from origin, or 9:00 PM previous day for pre-14:00 departures).
 - **Closing Time:** Closes 30 minutes before departure or when 2nd Chart Preparation occurs.
 - **Fare Discounts:** Indian Railways often applies up to a **10% discount** on basic fares for vacant berths sold under current availability to maximize coach occupancy.
 
@@ -75,7 +75,7 @@ Features of Current Availability booking:
 ## Common Booking Questions (FAQ)
 
 ### When is the first and second reservation chart prepared for Indian trains?
-The first reservation chart is prepared 4 hours before train departure from its originating station, while the second and final chart is prepared 30 minutes before departure.
+The first reservation chart is prepared approximately 8 hours before train departure from its originating station (or 9:00 PM the previous evening for morning departures before 14:00), while the second and final chart is prepared 30 minutes before departure.
 
 ### Are IRCTC ticket booking timings different on Sundays or national holidays?
 No, online IRCTC ticket booking hours are identical 365 days a year (12:20 AM to 11:45 PM IST), including Sundays, national holidays, and regional festivals.
