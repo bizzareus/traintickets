@@ -996,18 +996,20 @@ export class JourneyTaskService {
         });
         console.log('contact', contact);
         if (contact && (contact.email || contact.mobile)) {
-          try {
-            await this.autoSubscribeForMissingLegs({
-              journeyRequestId: task.journeyRequestId,
-              task,
-              result,
-              contact,
-            });
-          } catch (autoSubErr) {
-            console.error(
-              'Failed to auto-subscribe for missing legs',
-              autoSubErr,
-            );
+          if (process.env.ENABLE_AUTO_SUBSCRIBE_MISSING_LEGS === 'true') {
+            try {
+              await this.autoSubscribeForMissingLegs({
+                journeyRequestId: task.journeyRequestId,
+                task,
+                result,
+                contact,
+              });
+            } catch (autoSubErr) {
+              console.error(
+                'Failed to auto-subscribe for missing legs',
+                autoSubErr,
+              );
+            }
           }
 
           let alternativeTrains: BestTrainCandidateResult[] | undefined;
