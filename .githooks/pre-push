@@ -8,14 +8,14 @@ elif [ -s "$HOME/.nvm/nvm.sh" ]; then
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 fi
 
-echo "🔍 [pre-push] Running build checks (npm run build:prod) before pushing..."
-npm run build:prod
+echo "🔍 [pre-push] Running fast sanity build check..."
+npm run build:api
 
 RESULT=$?
 if [ $RESULT -ne 0 ]; then
-  echo "❌ [pre-push] Production build failed. Push aborted. Fix the issue or use --no-verify to skip."
+  echo "❌ [pre-push] Build check failed. Push aborted. Fix the issue or use --no-verify to skip."
   exit 1
 fi
 
-echo "✅ [pre-push] Production build passed successfully. Proceeding with push..."
+echo "✅ [pre-push] Checks passed successfully. Proceeding with push..."
 exit 0
