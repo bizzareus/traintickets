@@ -2,7 +2,7 @@
 title: "Can You Transfer a Confirmed Train Ticket? IRCTC Rules"
 description: "Yes — you can transfer a confirmed train ticket to a parent, child, or spouse. Here's the exact counter process, who's eligible, the documents needed, and the 24-hour deadline."
 date: "2026-06-13"
-updated: "2026-07-10"
+updated: "2026-08-27"
 tags:
   - ticket transfer
   - irctc rules
@@ -60,7 +60,7 @@ Since you cannot do this online, here is the exact offline process you need to f
 
 **No, you cannot transfer a confirmed train ticket to a friend under any circumstances. Indian Railways strictly bans transferring tickets to friends or unrelated people to stop travel agents and brokers from buying seats in bulk and reselling them at higher rates.**
 
-If your friend wants to travel, they must buy their own ticket. Do not let your friend travel under your name. The TTE checks photo IDs on the train. If they catch someone else traveling on your ticket, the TTE will treat them as a ticketless passenger. They will have to pay the full fare, a ₹250 fine, and could face legal action. The only legal route is to cancel your ticket and let your friend book a new one.
+If your friend wants to travel, they must buy their own ticket. Do not let your friend travel under your name. The TTE checks photo IDs on the train. If they catch someone else traveling on your ticket, the TTE will treat them as a ticketless passenger. They will have to pay the full fare, a ₹500 fine (under Section 138 of the Railways Act), and could face legal action. The only legal route is to cancel your ticket and let your friend book a new one.
 
 ---
 

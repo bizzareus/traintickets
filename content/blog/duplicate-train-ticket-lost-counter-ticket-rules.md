@@ -2,7 +2,7 @@
 title: "Duplicate Train Ticket: Rules for Lost or Damaged Tickets"
 description: "Lost or damaged your Indian Railways counter ticket? Learn how to get a duplicate train ticket, exact charges, refund rules, and travel guidelines."
 date: "2026-06-27"
-updated: 2026-07-27
+updated: 2026-08-27
 tags:
   - train booking
   - irctc
@@ -21,7 +21,7 @@ Losing a physical counter ticket doesn't mean you can't travel, but you must get
 
 Misplacing a physical counter ticket (often called a window ticket or I-ticket) can lead to a stressful station experience. Unlike online bookings, Indian Railways treats physical tickets as actual financial documents. This means you cannot simply travel using a photo of the ticket on your phone or a photocopy.
 
-If you board the train without the original paper ticket or an official duplicate, a Traveling Ticket Examiner (TTE) will treat you as a passenger traveling without a ticket. This oversight can cost you the entire ticket fare from the train's starting station, plus a flat ₹250 penalty.
+If you board the train without the original paper ticket or an official duplicate, a Traveling Ticket Examiner (TTE) will treat you as a passenger traveling without a ticket. This oversight can cost you the entire ticket fare from the train's starting station, plus a flat ₹500 penalty (under Section 138 of the Railways Act).
 
 To avoid these heavy fines, you must head to a reservation counter and get a duplicate issued. While it is much easier and cheaper to do this before the train's reservation chart is prepared, you can still get a duplicate for confirmed tickets after chart preparation for an extra fee.
 
