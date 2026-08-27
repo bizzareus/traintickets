@@ -6,6 +6,7 @@ export interface EmailCardRowParams {
   journeyDateReadable: string;
   journeyTimesLine?: string;
   chartPreparationText?: string;
+  partialJourneyNotice?: string;
 }
 
 export function escapeHtml(str: string): string {
@@ -26,6 +27,7 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
     journeyDateReadable,
     journeyTimesLine,
     chartPreparationText,
+    partialJourneyNotice,
   } = params;
 
   const totalRow =
@@ -35,6 +37,10 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
 
   const chartPrepLine = chartPreparationText
     ? `<p style="margin:4px 0 0 0; font-size:13px; color:#64748b; font-style:italic;">${escapeHtml(chartPreparationText)}</p>`
+    : '';
+
+  const partialNoticeLine = partialJourneyNotice
+    ? `<p style="margin:8px 0 0 0; font-size:13px; font-weight:500; color:#b45309; line-height:1.4;">${escapeHtml(partialJourneyNotice)}</p>`
     : '';
 
   return `<!DOCTYPE html>
@@ -54,6 +60,7 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
               <p style="margin:0; font-size:20px; font-weight:700; color:#0f172a;">${escapeHtml(trainLabel)}</p>
               <p style="margin:8px 0 0 0; font-size:14px; color:#64748b;">${escapeHtml(routeDisplay)}</p>
               <p style="margin:8px 0 0 0; font-size:14px; color:#334155;">${escapeHtml(journeyDateReadable)}</p>
+              ${partialNoticeLine}
               ${journeyTimesLine ? `<p style="margin:6px 0 0 0; font-size:13px; color:#64748b;">${escapeHtml(journeyTimesLine)}</p>` : ''}
               ${chartPrepLine}
             </td>

@@ -906,7 +906,7 @@ export class NotificationService {
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-radius:12px; border:1px solid #fde68a; background:#fffbeb; box-shadow:0 1px 3px rgba(0,0,0,0.06); overflow:hidden;">
         <tr>
           <td style="padding:16px 20px;">
-            <p style="margin:0 0 8px 0; font-size:14px; font-weight:600; color:#b45309;">No tickets available</p>
+            <p style="margin:0 0 8px 0; font-size:14px; font-weight:600; color:#b45309;">No tickets available | Buy ticket from TTE in train</p>
             <p style="margin:0 0 8px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segDisplay)}</p>
             <p style="margin:0 0 12px 0; font-size:13px; font-weight:600; color:#4338ca;">${escapeHtml(chartOpenInfo.label)}</p>
             ${actionButtonHtml}
@@ -919,6 +919,13 @@ export class NotificationService {
 
     const cardRows = (await Promise.all(cardRowPromises)).join('');
 
+    const isPartialJourney =
+      coverage.some((c) => c.type === 'ticket') &&
+      coverage.some((c) => c.type === 'no_ticket');
+    const partialJourneyNotice = isPartialJourney
+      ? 'You can purchase multiple tickets and for journey ticket not available you can buy it on board from TTE based on realtime availability in the train'
+      : undefined;
+
     return renderSeatsFoundEmailHtml({
       cardRowsHtml: cardRows,
       totalPrice,
@@ -927,6 +934,7 @@ export class NotificationService {
       journeyDateReadable,
       journeyTimesLine,
       chartPreparationText,
+      partialJourneyNotice,
     });
   }
 

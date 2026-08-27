@@ -36,6 +36,21 @@ describe('Notification Templates & Helpers', () => {
       expect(html).toContain('450');
       expect(html).not.toContain('Book quickly — seats can sell out fast.');
     });
+
+    it('renders partial journey notice when provided', () => {
+      const notice =
+        'You can purchase multiple tickets and for journey ticket not available you can buy it on board from TTE based on realtime availability in the train';
+      const html = renderSeatsFoundEmailHtml({
+        cardRowsHtml: '<tr><td>Ticket 1</td></tr>',
+        totalPrice: 450,
+        trainLabel: '11408 LJN PUNE EXP',
+        routeDisplay: 'CNB → PUNE',
+        journeyDateReadable: 'Thu, 13th August',
+        partialJourneyNotice: notice,
+      });
+
+      expect(html).toContain(notice);
+    });
   });
 
   describe('buildWatiTemplateParameters', () => {

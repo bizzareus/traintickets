@@ -418,6 +418,57 @@ describe('NotificationService', () => {
     expect(whatsAppText).toContain('KIUL - Kiul Jn → BGP - Bhagalpur');
   });
 
+  it('renders partial journey notice and TTE ticket message in email when journey is partially covered', async () => {
+    const svc = new NotificationService(mockConfig(), mockStationCache());
+    jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(true);
+    const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+
+    const partialPlanResult: Service2CheckResult = {
+      status: 'success',
+      vacantBerth: { vbd: [], error: null },
+      openAiBookingPlan: [
+        { instruction: 'PNBE - BKP - SL', approx_price: 180 },
+        { instruction: 'KIUL - BGP - SL', approx_price: 180 },
+      ],
+      trainSchedule: {
+        trainNumber: '12336',
+        trainName: 'Ltt Bhagalpur Ex',
+        stationFrom: 'JBP',
+        stationTo: 'BGP',
+        stationList: [
+          { stationCode: 'JBP', stationName: 'Jabalpur' },
+          { stationCode: 'PNBE', stationName: 'Patna Jn' },
+          { stationCode: 'BKP', stationName: 'Bakhtiyarpur Jn' },
+          { stationCode: 'KIUL', stationName: 'Kiul Jn' },
+          { stationCode: 'BGP', stationName: 'Bhagalpur' },
+        ],
+      },
+    };
+
+    const out = await svc.notifyUser({
+      email: 'ps7718686@gmail.com',
+      mobile: '918603563700',
+      task: {
+        trainNumber: '12336',
+        trainName: 'Ltt Bhagalpur Ex',
+        fromStationCode: 'JBP',
+        toStationCode: 'BGP',
+        journeyDate: new Date('2026-08-25T00:00:00.000Z'),
+      },
+      result: partialPlanResult,
+    });
+
+    expect(out).toEqual({ emailSent: true, whatsappSent: true });
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    const [, , html] = sendEmail.mock.calls[0];
+    expect(html).toContain(
+      'No tickets available | Buy ticket from TTE in train',
+    );
+    expect(html).toContain(
+      'You can purchase multiple tickets and for journey ticket not available you can buy it on board from TTE based on realtime availability in the train',
+    );
+  });
+
   it('suppresses duplicate notifications when NotificationDeduplicationService returns false', async () => {
     const shouldSendNotificationMock = jest.fn().mockResolvedValue(false);
     const recordNotificationSentMock = jest.fn().mockResolvedValue(undefined);
