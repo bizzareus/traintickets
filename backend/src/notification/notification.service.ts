@@ -842,6 +842,7 @@ export class NotificationService {
           item.approxPrice != null
             ? `₹${Number(item.approxPrice).toLocaleString('en-IN')}`
             : '';
+        const availStr = item.availability?.trim() || '';
         return `
     <tr><td style="padding:0 0 12px 0;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-radius:12px; border:1px solid #86efac; background:#e6ffe6; box-shadow:0 1px 3px rgba(0,0,0,0.06); overflow:hidden;">
@@ -852,7 +853,8 @@ export class NotificationService {
             </p>
             <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segmentRoute)}</p>
             ${segmentTimes ? `<p style="margin:0 0 10px 0; font-size:13px; color:#64748b;">${escapeHtml(segmentTimes)}</p>` : ''}
-            ${priceStr ? `<p style="margin:10px 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
+            ${availStr ? `<p style="margin:10px 0 0 0; font-size:13px; font-weight:600; color:#15803d;">${escapeHtml(availStr)}</p>` : ''}
+            ${priceStr ? `<p style="margin:${availStr ? '4px' : '10px'} 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
             <a href="${segUrl}" style="display:inline-block; margin-top:16px; padding:12px 24px; border-radius:12px; background:#22c55e; color:#fff; font-size:15px; font-weight:600; text-decoration:none;">Book</a>
           </td>
         </tr>
@@ -1044,6 +1046,7 @@ export class NotificationService {
           item.approx_price != null && item.approx_price > 0
             ? `₹${Number(item.approx_price).toLocaleString('en-IN')}`
             : '';
+        const availStr = item.availability?.trim() || '';
 
         return `
     <tr><td style="padding:0 0 12px 0;">
@@ -1055,7 +1058,8 @@ export class NotificationService {
             </p>
             <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segmentRoute)}</p>
             ${segmentTimes ? `<p style="margin:0 0 10px 0; font-size:13px; color:#64748b;">${escapeHtml(segmentTimes)}</p>` : ''}
-            ${priceStr ? `<p style="margin:10px 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
+            ${availStr ? `<p style="margin:10px 0 0 0; font-size:13px; font-weight:600; color:#15803d;">${escapeHtml(availStr)}</p>` : ''}
+            ${priceStr ? `<p style="margin:${availStr ? '4px' : '10px'} 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
             <a href="${segUrl}" style="display:inline-block; margin-top:16px; padding:12px 24px; border-radius:12px; background:#22c55e; color:#fff; font-size:15px; font-weight:600; text-decoration:none;">Book</a>
           </td>
         </tr>

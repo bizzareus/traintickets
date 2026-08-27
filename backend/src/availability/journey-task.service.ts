@@ -204,6 +204,11 @@ function alternatePathsToCheckResult(
       ? {
           instruction: `${l.from} - ${l.to} - ${l.travelClass ?? ''}`.trim(),
           approx_price: l.fare ?? 0,
+          availability:
+            l.availabilityDisplayName ||
+            l.railDataStatus ||
+            l.availablityStatus ||
+            undefined,
         }
       : ({} as OpenAiBookingPlanItem),
   );

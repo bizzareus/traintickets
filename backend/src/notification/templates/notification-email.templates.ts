@@ -64,7 +64,6 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
                 ${cardRowsHtml}
               </table>
               ${totalRow}
-              <p style="margin:16px 0 0 0; font-size:12px; color:#94a3b8; text-align:center;">Book quickly — seats can sell out fast.</p>
               <div style="margin-top:20px; padding:12px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; text-align:center;">
                 <p style="margin:0; font-size:13px; color:#475569;">
                   💡 <strong>Tip:</strong> Look for the realtime seat status on LastBerth to track vacant seats around you.

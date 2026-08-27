@@ -22,7 +22,7 @@ describe('Notification Templates & Helpers', () => {
   });
 
   describe('renderSeatsFoundEmailHtml', () => {
-    it('renders email HTML containing train label and fare', () => {
+    it('renders email HTML containing train label and fare without Book quickly line', () => {
       const html = renderSeatsFoundEmailHtml({
         cardRowsHtml: '<tr><td>Ticket 1</td></tr>',
         totalPrice: 450,
@@ -34,6 +34,7 @@ describe('Notification Templates & Helpers', () => {
       expect(html).toContain('11408 LJN PUNE EXP');
       expect(html).toContain('CNB → PUNE');
       expect(html).toContain('450');
+      expect(html).not.toContain('Book quickly — seats can sell out fast.');
     });
   });
 

@@ -95,7 +95,16 @@ function normalizeCompactBookingPlan(
       typeof rec.approx_price === 'number' && rec.approx_price >= 0
         ? rec.approx_price
         : 0;
-    if (instruction) out.push({ instruction, approx_price });
+    const availability =
+      typeof rec.availability === 'string' && rec.availability.trim()
+        ? rec.availability.trim()
+        : undefined;
+    if (instruction)
+      out.push({
+        instruction,
+        approx_price,
+        ...(availability ? { availability } : {}),
+      });
   }
   return out;
 }
@@ -231,11 +240,19 @@ function normalizeBookingPlanToRouteLegs(
       typeof rec.approx_price === 'number' && rec.approx_price >= 0
         ? rec.approx_price
         : 0;
+    const availability =
+      typeof rec.availability === 'string' && rec.availability.trim()
+        ? rec.availability.trim()
+        : undefined;
     if (!instruction) {
       out.push({});
       continue;
     }
-    out.push({ instruction, approx_price });
+    out.push({
+      instruction,
+      approx_price,
+      ...(availability ? { availability } : {}),
+    });
   }
   return out;
 }
@@ -298,7 +315,11 @@ function collapseConsecutiveDuplicateBookingInstructions(
       j++;
     }
     if (j > i + 1) {
-      out[i] = { instruction: out[i].instruction, approx_price: sum };
+      out[i] = {
+        instruction: out[i].instruction,
+        approx_price: sum,
+        ...(out[i].availability ? { availability: out[i].availability } : {}),
+      };
     }
     i = j;
   }

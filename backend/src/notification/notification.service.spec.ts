@@ -92,16 +92,27 @@ describe('NotificationService', () => {
     expect(whatsAppText).toContain('No Tickets Found');
   });
 
-  it('sends email with readable journey date and schedule times in HTML', async () => {
+  it('sends email with readable journey date, schedule times, and availability count in HTML', async () => {
     const svc = new NotificationService(mockConfig(), mockStationCache());
     const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
     jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(false);
+
+    const resultWithAvailability: Service2CheckResult = {
+      ...successWithTickets,
+      openAiBookingPlan: [
+        {
+          instruction: 'NDLS - BCT - 3A',
+          approx_price: 1200,
+          availability: 'AVAILABLE 24',
+        },
+      ],
+    };
 
     await svc.notifyUser({
       email: 'user@example.com',
       mobile: undefined,
       task,
-      result: successWithTickets,
+      result: resultWithAvailability,
     });
 
     expect(sendEmail).toHaveBeenCalledTimes(1);
@@ -110,7 +121,11 @@ describe('NotificationService', () => {
     expect(html).toContain('Fri, 3rd April');
     expect(html).toContain('Dep NDLS: 09:15');
     expect(html).toContain('Arr BCT: 20:15');
-    expect(html).toMatch(/Book[\s\S]*Book/s);
+    expect(html).toContain('AVAILABLE 24');
+    expect(html).toContain('approx');
+    expect(html).toContain('₹1,200');
+    expect(html).not.toContain('Book quickly — seats can sell out fast.');
+    expect(html).toContain('>Book</a>');
   });
 
   it('correctly extracts journey leg coverage for partial journeys', () => {
@@ -498,13 +513,13 @@ describe('NotificationService', () => {
       inMemoryLogs = [];
       mockPrisma = {
         sentNotificationLog: {
-          findFirst: jest.fn().mockImplementation(async ({ where }) => {
+          findFirst: jest.fn().mockImplementation(({ where }) => {
             const cutoff = where.sentAt?.gte;
             const targetDateStr =
               where.journeyDate instanceof Date
                 ? where.journeyDate.toISOString().slice(0, 10)
                 : String(where.journeyDate || '').slice(0, 10);
-            return (
+            return Promise.resolve(
               inMemoryLogs.find((log) => {
                 const logDateStr =
                   log.journeyDate instanceof Date
@@ -518,13 +533,13 @@ describe('NotificationService', () => {
                   log.notificationType === where.notificationType &&
                   (!cutoff || log.sentAt >= cutoff)
                 );
-              }) || null
+              }) || null,
             );
           }),
-          create: jest.fn().mockImplementation(async ({ data }) => {
+          create: jest.fn().mockImplementation(({ data }) => {
             const entry = { ...data, sentAt: new Date() };
             inMemoryLogs.push(entry);
-            return entry;
+            return Promise.resolve(entry);
           }),
         },
       };
