@@ -1014,6 +1014,7 @@ export class JourneyTaskService {
 
           let alternativeTrains: BestTrainCandidateResult[] | undefined;
           const hasTickets = hasBookablePlanForNotification(result);
+          let monitoredClassCode = '3A';
 
           const journeyDateDate =
             task.journeyDate instanceof Date
@@ -1063,6 +1064,7 @@ export class JourneyTaskService {
               );
               if (req) {
                 const classCode = req.classCode.toUpperCase();
+                monitoredClassCode = classCode;
                 const isAc = !['SL', '2S', 'GN', 'FC'].includes(classCode);
                 const bestResult = await this.bookingV2Service.findBestTrains({
                   from: task.fromStationCode,
@@ -1070,9 +1072,9 @@ export class JourneyTaskService {
                   date: task.journeyDate.toISOString().slice(0, 10),
                   quota: 'GN',
                   acOnly: isAc,
-                  maxTrains: 3,
+                  maxTrains: 5,
                 });
-                alternativeTrains = bestResult.results.slice(0, 3);
+                alternativeTrains = bestResult.results.slice(0, 5);
               }
             } catch (err) {
               console.error('Failed to find best alternative trains', err);
@@ -1124,6 +1126,30 @@ export class JourneyTaskService {
               logs: errLogs,
               payload: { taskId, journeyRequestId: task.journeyRequestId },
             });
+          }
+
+          if (!hasTickets && this.alternativeSearchTaskService) {
+            try {
+              await this.alternativeSearchTaskService.enqueueTask({
+                journeyTaskId: task.id,
+                trainNumber: task.trainNumber,
+                trainName: task.trainName || undefined,
+                fromStationCode: task.fromStationCode,
+                toStationCode: task.toStationCode,
+                journeyDate: task.journeyDate,
+                classCode: monitoredClassCode,
+                monitoringContactId: contact.id,
+                email: contact.email || undefined,
+                mobile: contact.mobile || undefined,
+              });
+              this.logger.log(
+                `[journey] Enqueued alternate train search for task=${taskId}`,
+              );
+            } catch (err) {
+              this.logger.warn(
+                `[journey] Failed to enqueue alternate train search for task=${taskId}: ${err instanceof Error ? err.message : String(err)}`,
+              );
+            }
           }
         }
       }

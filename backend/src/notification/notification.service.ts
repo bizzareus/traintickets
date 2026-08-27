@@ -1246,7 +1246,7 @@ export class NotificationService {
     let alternativesHtml = '';
     if (hasAlternatives) {
       const trainCards = (alternativeTrains ?? [])
-        .slice(0, 3)
+        .slice(0, 5)
         .map((alt) => {
           const train = alt.train;
           const trainNameStr = [train.trainNumber, train.trainName]
@@ -1359,7 +1359,7 @@ export class NotificationService {
     let alternativesText = '';
     if (hasAlternatives) {
       const trainLines = (alternativeTrains ?? [])
-        .slice(0, 3)
+        .slice(0, 5)
         .map((alt, i) => {
           const train = alt.train;
           const trainNameStr = [train.trainNumber, train.trainName]
@@ -1487,7 +1487,7 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
     isFollowUpLeg?: boolean;
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
     const { email, mobile, task, result, isFollowUpLeg } = params;
-    const alternativeTrains = params.alternativeTrains?.slice(0, 3);
+    const alternativeTrains = params.alternativeTrains?.slice(0, 5);
     const out = { emailSent: false, whatsappSent: false };
 
     try {
@@ -1884,7 +1884,7 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
       toStationCode,
       journeyDate,
     } = params;
-    const alternativeTrains = params.alternativeTrains?.slice(0, 3);
+    const alternativeTrains = params.alternativeTrains?.slice(0, 5);
     const out = { emailSent: false, whatsappSent: false };
 
     try {
@@ -2118,7 +2118,7 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
       '',
     ];
 
-    alternativeTrains.slice(0, 3).forEach((alt, idx) => {
+    alternativeTrains.slice(0, 5).forEach((alt, idx) => {
       const train = alt.train;
       const trainLabel = [train.trainNumber, train.trainName]
         .filter(Boolean)
@@ -2177,7 +2177,7 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
     } = params;
 
     const cardsHtml = alternativeTrains
-      .slice(0, 3)
+      .slice(0, 5)
       .map((alt, idx) => {
         const train = alt.train;
         const trainLabel = [train.trainNumber, train.trainName]
