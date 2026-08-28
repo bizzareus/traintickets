@@ -1,5 +1,5 @@
 import { isLegConfirmed } from './booking-v2.utils';
-import { BookingV2Service } from './booking-v2.service';
+import { BookingV2Service, confirmTktPnrClient } from './booking-v2.service';
 
 describe('Booking-V2 Refactored Utilities', () => {
   let service: BookingV2Service;
@@ -52,7 +52,11 @@ describe('Booking-V2 Refactored Utilities', () => {
   });
 
   describe('getPnrStatus', () => {
-    it('throws configuration error when RapidAPI key is missing', async () => {
+    it('throws configuration error when ConfirmTkt fails and RapidAPI key is missing', async () => {
+      const postSpy = jest
+        .spyOn(confirmTktPnrClient, 'post')
+        .mockRejectedValueOnce(new Error('ConfirmTkt unavailable'));
+
       const origKey = process.env.RAPIDAPI_IRCTC_KEY;
       delete process.env.RAPIDAPI_IRCTC_KEY;
       delete process.env.IRCTC_RAPIDAPI_KEY;
@@ -62,6 +66,7 @@ describe('Booking-V2 Refactored Utilities', () => {
         'RapidAPI key for IRCTC PNR status is not configured',
       );
 
+      postSpy.mockRestore();
       if (origKey) process.env.RAPIDAPI_IRCTC_KEY = origKey;
     });
   });

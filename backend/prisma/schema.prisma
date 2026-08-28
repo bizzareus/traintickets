@@ -409,14 +409,32 @@ model CronRunLog {
 
 /// Stores short link code and associated payload (e.g. for auto-subscribing alert parameters).
 model ShortLink {
-  id        String    @id @default(cuid())
-  code      String    @unique
-  url       String?   @db.Text
-  payload   Json?
-  createdAt DateTime  @default(now()) @map("created_at")
-  expiresAt DateTime? @map("expires_at")
+  id            String           @id @default(cuid())
+  code          String           @unique
+  url           String?          @db.Text
+  payload       Json?
+  clickCount    Int              @default(0) @map("click_count")
+  lastClickedAt DateTime?        @map("last_clicked_at")
+  createdAt     DateTime         @default(now()) @map("created_at")
+  expiresAt     DateTime?        @map("expires_at")
+  clicks        ShortLinkClick[]
 
   @@map("short_link")
+}
+
+/// Tracks individual click events on short links with timestamp, user agent, and network origin.
+model ShortLinkClick {
+  id          String    @id @default(cuid())
+  shortLinkId String    @map("short_link_id")
+  shortLink   ShortLink @relation(fields: [shortLinkId], references: [id], onDelete: Cascade)
+  clickedAt   DateTime  @default(now()) @map("clicked_at")
+  userAgent   String?   @map("user_agent")
+  ipAddress   String?   @map("ip_address")
+  referer     String?   @map("referer")
+  metadata    Json?
+
+  @@index([shortLinkId, clickedAt])
+  @@map("short_link_click")
 }
 
 /// Stores background alternative train search jobs triggered when a chart task notification finds no full-journey ticket.

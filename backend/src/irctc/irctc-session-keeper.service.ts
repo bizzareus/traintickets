@@ -3,6 +3,7 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import puppeteer from 'puppeteer';
 import { captureSentryException } from '../common/sentry-report';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
+import { resolveBrowserWsEndpoint } from './irctc-browserless.service';
 
 const ONLINE_CHARTS_URL = 'https://www.irctc.co.in/online-charts/';
 const HARVEST_HARD_TIMEOUT_MS = 150_000;
@@ -103,21 +104,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
 
   /** Resolves the CDP WebSocket endpoint for Browserless or custom remote browser. */
   private get browserWsEndpoint(): string | null {
-    if (process.env.IRCTC_BROWSER_WSS?.trim()) {
-      return process.env.IRCTC_BROWSER_WSS.trim();
-    }
-    if (process.env.BROWSERLESS_WSS?.trim()) {
-      return process.env.BROWSERLESS_WSS.trim();
-    }
-    if (process.env.BROWSERLESS_API_KEY?.trim()) {
-      const token = process.env.BROWSERLESS_API_KEY.trim();
-      const country = process.env.BROWSERLESS_PROXY_COUNTRY || 'in';
-      const proxyParam = process.env.BROWSERLESS_PROXY
-        ? `&proxy=${process.env.BROWSERLESS_PROXY}`
-        : `&proxy=residential&proxyCountry=${country}`;
-      return `wss://chrome.browserless.io/stealth?token=${token}${proxyParam}&--disable-http2`;
-    }
-    return null;
+    return resolveBrowserWsEndpoint();
   }
 
   private get providerName(): string {

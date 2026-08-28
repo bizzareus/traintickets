@@ -82,7 +82,7 @@ export class TrainsService {
             },
           });
         }
-      } catch (err) {
+      } catch {
         // Ignore or log
       }
     }
@@ -117,7 +117,7 @@ export class TrainsService {
       if (scheduleResult.ok) {
         schedule = scheduleResult.schedule;
       }
-    } catch (err) {
+    } catch {
       // Ignore
     }
 

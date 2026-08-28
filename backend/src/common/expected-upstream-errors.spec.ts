@@ -12,6 +12,10 @@ describe('expected-upstream-errors', () => {
       'Train Cancelled.',
       'Train cancelled',
       'Train Canceled', // US spelling
+      'Unexpected server response: 401',
+      'Unexpected server response: 403',
+      'Unexpected server response: 429',
+      'Error: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.irctc.co.in/online-charts/',
     ]) {
       expect(isBenignUpstreamErrorMessage(msg)).toBe(true);
     }

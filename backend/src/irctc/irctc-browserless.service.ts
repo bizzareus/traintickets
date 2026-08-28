@@ -6,6 +6,27 @@ const ONLINE_CHARTS_URL = 'https://www.irctc.co.in/online-charts/';
 const SENSOR_SETTLE_MS = 6_000;
 const BROWSER_TIMEOUT_MS = 60_000;
 
+/** Resolves the CDP WebSocket endpoint for Browserless with anti-detection routing. */
+export function resolveBrowserWsEndpoint(): string | null {
+  if (process.env.IRCTC_BROWSER_WSS?.trim()) {
+    return process.env.IRCTC_BROWSER_WSS.trim();
+  }
+  if (process.env.BROWSERLESS_WSS?.trim()) {
+    return process.env.BROWSERLESS_WSS.trim();
+  }
+  if (process.env.BROWSERLESS_API_KEY?.trim()) {
+    const token = encodeURIComponent(process.env.BROWSERLESS_API_KEY.trim());
+    const country = encodeURIComponent(
+      process.env.BROWSERLESS_PROXY_COUNTRY?.trim() || 'in',
+    );
+    const proxyParam = process.env.BROWSERLESS_PROXY?.trim()
+      ? `&proxy=${encodeURIComponent(process.env.BROWSERLESS_PROXY.trim())}`
+      : `&proxy=residential&proxyCountry=${country}`;
+    return `wss://chrome.browserless.io/stealth?token=${token}${proxyParam}&--disable-http2`;
+  }
+  return null;
+}
+
 @Injectable()
 export class IrctcBrowserlessService {
   private readonly logger = new Logger(IrctcBrowserlessService.name);
@@ -17,21 +38,7 @@ export class IrctcBrowserlessService {
 
   /** Resolves the CDP WebSocket endpoint for Browserless with anti-detection routing. */
   private get browserWsEndpoint(): string | null {
-    if (process.env.IRCTC_BROWSER_WSS?.trim()) {
-      return process.env.IRCTC_BROWSER_WSS.trim();
-    }
-    if (process.env.BROWSERLESS_WSS?.trim()) {
-      return process.env.BROWSERLESS_WSS.trim();
-    }
-    if (process.env.BROWSERLESS_API_KEY?.trim()) {
-      const token = process.env.BROWSERLESS_API_KEY.trim();
-      const country = process.env.BROWSERLESS_PROXY_COUNTRY || 'in';
-      const proxyParam = process.env.BROWSERLESS_PROXY
-        ? `&proxy=${process.env.BROWSERLESS_PROXY}`
-        : `&proxy=residential&proxyCountry=${country}`;
-      return `wss://chrome.browserless.io/stealth?token=${token}${proxyParam}&--disable-http2`;
-    }
-    return null;
+    return resolveBrowserWsEndpoint();
   }
 
   get isEnabled(): boolean {

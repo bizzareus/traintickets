@@ -13,8 +13,10 @@ export const BENIGN_UPSTREAM_ERROR_PATTERNS: RegExp[] = [
   // "Train Cancelled" — a normal upstream state (the run isn't operating), not a
   // fault. Return/log it as data; don't flag it as an error in Sentry.
   /train\s+cancell?ed/i,
-  // 403 forbidden / anti-bot challenge responses from proxies in background cron runners.
-  /unexpected\s+server\s+response:\s*403/i,
+  // HTTP handshake status responses (e.g. 401/402/403/429/502/503) from remote browser/proxy WebSocket handshakes.
+  /unexpected\s+server\s+response:\s*\d{3}/i,
+  // Proxy/tunnel connection errors from remote browser providers.
+  /net::ERR_(?:TUNNEL_CONNECTION_FAILED|PROXY_CONNECTION_FAILED|EMPTY_RESPONSE|CONNECTION_RESET|CONNECTION_CLOSED)/i,
 ];
 
 /** True when a message matches a known expected/benign upstream condition. */

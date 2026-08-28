@@ -28,6 +28,14 @@ const availabilityClient = createRetryingAxiosClient({
   retryTimeouts: true,
   retryDelayMs: 5_000,
 });
+
+export const confirmTktPnrClient = createRetryingAxiosClient({
+  retries: 2,
+  serviceName: 'confirmtkt-pnr',
+  retryPost: true,
+  retryTimeouts: true,
+  retryDelayMs: 1_500,
+});
 import {
   BOOKING_V2_ALTERNATE_PATH_CLASSES,
   BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
@@ -609,6 +617,10 @@ export class BookingV2Service {
     let evaluatedCount = 0;
     let skippedCount = 0;
     const results: BestTrainCandidateResult[] = [];
+
+    await this.irctc.preloadTrainSchedules?.(
+      candidates.map((c) => c.trainNumber),
+    );
 
     await this.mapWithConcurrency(
       candidates,
@@ -1937,7 +1949,170 @@ export class BookingV2Service {
     return null;
   }
 
-  async getPnrStatus(pnr: string): Promise<PnrStatusResponse> {
+  private async fetchPnrFromConfirmTkt(
+    pnr: string,
+  ): Promise<PnrStatusResponse> {
+    const url = `https://cttrainsapi.confirmtkt.com/api/v2/ctpro/mweb/${encodeURIComponent(pnr)}?querysource=ct-web&locale=en&getHighChanceText=false&livePnr=false`;
+    const response = await confirmTktPnrClient.post<{
+      data?: {
+        ctProResponse?: {
+          isProUnlocked?: boolean;
+          proTitle?: string;
+          proBenefits?: Array<{
+            title?: string;
+            benefitItems?: Array<{
+              type?: string;
+              text?: string;
+              unlockedText?: { text?: string; color?: string };
+              featureType?: string;
+            }>;
+          }>;
+        };
+        pnrResponse?: {
+          pnr?: string | null;
+          trainNo?: string | null;
+          trainName?: string | null;
+          doj?: string | null;
+          bookingDate?: string | null;
+          quota?: string | null;
+          from?: string | null;
+          to?: string | null;
+          reservationUpto?: string | null;
+          boardingPoint?: string | null;
+          class?: string | null;
+          chartPrepared?: boolean | null;
+          boardingStationName?: string | null;
+          reservationUptoName?: string | null;
+          sourceName?: string | null;
+          destinationName?: string | null;
+          departureTime?: string | null;
+          arrivalTime?: string | null;
+          duration?: string | null;
+          passengerCount?: number | null;
+          passengerStatus?: Array<{
+            number?: number;
+            bookingStatus?: string;
+            currentStatus?: string;
+            confirmTktStatus?: string;
+            coach?: string;
+            berth?: number | string;
+            bookingBerthNo?: string | number;
+            bookingCoachId?: string;
+            currentBerthNo?: string | number;
+            currentCoachId?: string;
+            prediction?: string;
+            predictionPercentage?: number | string;
+            [key: string]: unknown;
+          }> | null;
+          error?: string | null;
+          errorCode?: number | null;
+          [key: string]: unknown;
+        } | null;
+      };
+    }>(
+      url,
+      { proPlanName: 'CP1' },
+      {
+        headers: {
+          Accept: '*/*',
+          'Accept-Language': 'en-US,en;q=0.9',
+          ApiKey: 'ct-web!2',
+          ClientId: 'ct-web',
+          'Content-Type': 'application/json',
+          Origin: 'https://www.confirmtkt.com',
+          Referer: 'https://www.confirmtkt.com/',
+          'User-Agent':
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
+        },
+        timeout: 12_000,
+      },
+    );
+
+    const res = response.data;
+    const pnrRes = res?.data?.pnrResponse;
+
+    if (!pnrRes) {
+      return {
+        status: false,
+        message: 'No data returned from PNR service',
+      };
+    }
+
+    if (pnrRes.error || pnrRes.errorCode === 201 || !pnrRes.pnr) {
+      return {
+        status: false,
+        message: pnrRes.error || 'Flushed PNR or PNR not yet generated',
+      };
+    }
+
+    let formattedDoj = pnrRes.doj || '';
+    if (formattedDoj) {
+      const m = moment(formattedDoj, [
+        'DD-MM-YYYY',
+        'YYYY-MM-DD',
+        'MMM D, YYYY',
+      ]);
+      if (m.isValid()) {
+        formattedDoj = m.format('DD-MM-YYYY');
+      }
+    }
+
+    const proPrediction = res?.data?.ctProResponse?.proBenefits
+      ?.flatMap((b) => b.benefitItems ?? [])
+      .find(
+        (item) =>
+          item.type === 'prediction' || item.featureType === 'racPrediction',
+      );
+    const predictionText = proPrediction?.unlockedText?.text;
+
+    const passengerStatus = Array.isArray(pnrRes.passengerStatus)
+      ? pnrRes.passengerStatus.map((p, idx) => ({
+          Number: p.number ?? idx + 1,
+          CurrentStatus: p.currentStatus || 'Unknown',
+          BookingStatus: p.bookingStatus || '',
+          ConfirmTktStatus:
+            p.confirmTktStatus ||
+            (p.currentStatus?.toUpperCase().includes('CNF')
+              ? 'Confirm'
+              : p.currentStatus || ''),
+          Coach: p.coach || p.currentCoachId || '',
+          Berth: p.berth || p.currentBerthNo || '',
+          Prediction: p.prediction || predictionText || '',
+          PredictionPercentage: p.predictionPercentage ?? undefined,
+          ...p,
+        }))
+      : [];
+
+    return {
+      status: true,
+      message: 'Success',
+      data: {
+        ...pnrRes,
+        Pnr: pnrRes.pnr || pnr,
+        TrainNo: pnrRes.trainNo || '',
+        TrainName: pnrRes.trainName || '',
+        Doj: formattedDoj,
+        Quota: pnrRes.quota || '',
+        Class: pnrRes.class || '',
+        From: pnrRes.from || pnrRes.boardingPoint || '',
+        To: pnrRes.to || pnrRes.reservationUpto || '',
+        BoardingStationName: pnrRes.boardingStationName || '',
+        SourceName: pnrRes.sourceName || '',
+        DestinationName: pnrRes.destinationName || '',
+        ReservationUptoName: pnrRes.reservationUptoName || '',
+        DepartureTime: pnrRes.departureTime || '',
+        ArrivalTime: pnrRes.arrivalTime || '',
+        Duration: pnrRes.duration || '',
+        ChartPrepared: Boolean(pnrRes.chartPrepared),
+        ChartStatus: pnrRes.chartPrepared
+          ? 'Chart Prepared'
+          : 'Chart Not Prepared',
+        PassengerStatus: passengerStatus,
+      },
+    };
+  }
+
+  private async fetchPnrFromRapidApi(pnr: string): Promise<PnrStatusResponse> {
     const key =
       process.env.RAPIDAPI_IRCTC_KEY ??
       process.env.IRCTC_RAPIDAPI_KEY ??
@@ -1947,144 +2122,159 @@ export class BookingV2Service {
       throw new Error('RapidAPI key for IRCTC PNR status is not configured');
     }
 
+    const response = await axios.get<{
+      success?: boolean;
+      status?: boolean;
+      message?: string;
+      data?: {
+        pnrNumber?: string;
+        dateOfJourney?: string;
+        trainNumber?: string;
+        trainName?: string;
+        sourceStation?: string;
+        destinationStation?: string;
+        reservationUpto?: string;
+        boardingPoint?: string;
+        journeyClass?: string;
+        numberOfpassenger?: number;
+        chartStatus?: string;
+        quota?: string;
+        arrivalDate?: string;
+        passengerList?: Array<{
+          passengerSerialNumber?: number;
+          bookingStatus?: string;
+          bookingCoachId?: string;
+          bookingBerthNo?: number | string;
+          bookingBerthCode?: string;
+          bookingStatusDetails?: string;
+          currentStatus?: string;
+          currentCoachId?: string;
+          currentBerthNo?: number | string;
+          currentBerthCode?: string;
+          currentStatusDetails?: string;
+          [key: string]: unknown;
+        }>;
+        [key: string]: unknown;
+      };
+      [key: string]: unknown;
+    }>(
+      `https://irctc-indian-railway-pnr-status.p.rapidapi.com/getPNRStatus/${encodeURIComponent(pnr)}`,
+      {
+        headers: {
+          'x-rapidapi-key': key,
+          'x-rapidapi-host': 'irctc-indian-railway-pnr-status.p.rapidapi.com',
+          'Content-Type': 'application/json',
+        },
+        timeout: 10_000,
+      },
+    );
+
+    const res = response.data;
+    if (!res || res.success === false || res.status === false) {
+      return {
+        status: false,
+        message: res?.message || 'PNR not found or flushed',
+      };
+    }
+
+    if (!res.data) {
+      return {
+        status: false,
+        message: res.message || 'No data found for this PNR',
+      };
+    }
+
+    const d = res.data;
+    let formattedDoj = '';
+    let departureTime = '';
+    if (d.dateOfJourney) {
+      const m = moment(d.dateOfJourney, [
+        'MMM D, YYYY h:mm:ss A',
+        'MMM DD, YYYY h:mm:ss A',
+        'DD-MM-YYYY',
+        'YYYY-MM-DD',
+      ]);
+      if (m.isValid()) {
+        formattedDoj = m.format('DD-MM-YYYY');
+        departureTime = m.format('HH:mm');
+      } else {
+        formattedDoj = d.dateOfJourney;
+      }
+    }
+
+    let arrivalTime = '';
+    if (d.arrivalDate) {
+      const arrM = moment(d.arrivalDate, [
+        'MMM D, YYYY h:mm:ss A',
+        'MMM DD, YYYY h:mm:ss A',
+        'DD-MM-YYYY',
+        'YYYY-MM-DD',
+      ]);
+      if (arrM.isValid()) {
+        arrivalTime = arrM.format('HH:mm');
+      }
+    }
+
+    const passengerStatus = Array.isArray(d.passengerList)
+      ? d.passengerList.map((p, idx) => ({
+          Number: p.passengerSerialNumber ?? idx + 1,
+          CurrentStatus: p.currentStatusDetails || p.currentStatus || 'Unknown',
+          BookingStatus: p.bookingStatusDetails || p.bookingStatus || '',
+          ConfirmTktStatus:
+            p.currentStatus === 'CNF' ? 'Confirm' : p.currentStatus || '',
+          ...p,
+        }))
+      : [];
+
+    return {
+      status: true,
+      message: res.message || 'Success',
+      data: {
+        ...d,
+        Pnr: d.pnrNumber || pnr,
+        TrainNo: d.trainNumber || '',
+        TrainName: d.trainName || '',
+        Doj: formattedDoj,
+        Quota: d.quota || '',
+        Class: d.journeyClass || '',
+        From: d.sourceStation || d.boardingPoint || '',
+        To: d.destinationStation || d.reservationUpto || '',
+        BoardingStationName: d.boardingPoint || '',
+        SourceName: d.sourceStation || '',
+        DestinationName: d.destinationStation || '',
+        ReservationUptoName: d.reservationUpto || '',
+        DepartureTime: departureTime,
+        ArrivalTime: arrivalTime,
+        ChartPrepared: d.chartStatus === 'Chart Prepared',
+        ChartStatus: d.chartStatus || '',
+        PassengerStatus: passengerStatus,
+      },
+    };
+  }
+
+  async getPnrStatus(pnr: string): Promise<PnrStatusResponse> {
     this.logger.log(`[pnr] Fetching PNR status for ${pnr}`);
 
+    // 1. Primary provider: ConfirmTkt API
     try {
-      const response = await axios.get<{
-        success?: boolean;
-        status?: boolean;
-        message?: string;
-        data?: {
-          pnrNumber?: string;
-          dateOfJourney?: string;
-          trainNumber?: string;
-          trainName?: string;
-          sourceStation?: string;
-          destinationStation?: string;
-          reservationUpto?: string;
-          boardingPoint?: string;
-          journeyClass?: string;
-          numberOfpassenger?: number;
-          chartStatus?: string;
-          quota?: string;
-          arrivalDate?: string;
-          passengerList?: Array<{
-            passengerSerialNumber?: number;
-            bookingStatus?: string;
-            bookingCoachId?: string;
-            bookingBerthNo?: number | string;
-            bookingBerthCode?: string;
-            bookingStatusDetails?: string;
-            currentStatus?: string;
-            currentCoachId?: string;
-            currentBerthNo?: number | string;
-            currentBerthCode?: string;
-            currentStatusDetails?: string;
-            [key: string]: unknown;
-          }>;
-          [key: string]: unknown;
-        };
-        [key: string]: unknown;
-      }>(
-        `https://irctc-indian-railway-pnr-status.p.rapidapi.com/getPNRStatus/${encodeURIComponent(pnr)}`,
-        {
-          headers: {
-            'x-rapidapi-key': key,
-            'x-rapidapi-host': 'irctc-indian-railway-pnr-status.p.rapidapi.com',
-            'Content-Type': 'application/json',
-          },
-          timeout: 10_000,
-        },
+      return await this.fetchPnrFromConfirmTkt(pnr);
+    } catch (ctErr: unknown) {
+      const ctMsg = ctErr instanceof Error ? ctErr.message : String(ctErr);
+      this.logger.warn(
+        `[pnr] ConfirmTkt API failed for ${pnr} (${ctMsg}), attempting fallback...`,
       );
+    }
 
-      const res = response.data;
-      if (!res || res.success === false || res.status === false) {
-        return {
-          status: false,
-          message: res?.message || 'PNR not found or flushed',
-        };
-      }
-
-      if (!res.data) {
-        return {
-          status: false,
-          message: res.message || 'No data found for this PNR',
-        };
-      }
-
-      const d = res.data;
-      let formattedDoj = '';
-      let departureTime = '';
-      if (d.dateOfJourney) {
-        const m = moment(d.dateOfJourney, [
-          'MMM D, YYYY h:mm:ss A',
-          'MMM DD, YYYY h:mm:ss A',
-          'DD-MM-YYYY',
-          'YYYY-MM-DD',
-        ]);
-        if (m.isValid()) {
-          formattedDoj = m.format('DD-MM-YYYY');
-          departureTime = m.format('HH:mm');
-        } else {
-          formattedDoj = d.dateOfJourney;
-        }
-      }
-
-      let arrivalTime = '';
-      if (d.arrivalDate) {
-        const arrM = moment(d.arrivalDate, [
-          'MMM D, YYYY h:mm:ss A',
-          'MMM DD, YYYY h:mm:ss A',
-          'DD-MM-YYYY',
-          'YYYY-MM-DD',
-        ]);
-        if (arrM.isValid()) {
-          arrivalTime = arrM.format('HH:mm');
-        }
-      }
-
-      const passengerStatus = Array.isArray(d.passengerList)
-        ? d.passengerList.map((p, idx) => ({
-            Number: p.passengerSerialNumber ?? idx + 1,
-            CurrentStatus:
-              p.currentStatusDetails || p.currentStatus || 'Unknown',
-            BookingStatus: p.bookingStatusDetails || p.bookingStatus || '',
-            ConfirmTktStatus:
-              p.currentStatus === 'CNF' ? 'Confirm' : p.currentStatus || '',
-            ...p,
-          }))
-        : [];
-
-      return {
-        status: true,
-        message: res.message || 'Success',
-        data: {
-          ...d,
-          Pnr: d.pnrNumber || pnr,
-          TrainNo: d.trainNumber || '',
-          TrainName: d.trainName || '',
-          Doj: formattedDoj,
-          Quota: d.quota || '',
-          Class: d.journeyClass || '',
-          From: d.sourceStation || d.boardingPoint || '',
-          To: d.destinationStation || d.reservationUpto || '',
-          BoardingStationName: d.boardingPoint || '',
-          SourceName: d.sourceStation || '',
-          DestinationName: d.destinationStation || '',
-          ReservationUptoName: d.reservationUpto || '',
-          DepartureTime: departureTime,
-          ArrivalTime: arrivalTime,
-          ChartPrepared: d.chartStatus === 'Chart Prepared',
-          ChartStatus: d.chartStatus || '',
-          PassengerStatus: passengerStatus,
-        },
-      };
-    } catch (error) {
-      const errMsg = error instanceof Error ? error.message : String(error);
+    // 2. Fallback provider: RapidAPI
+    try {
+      return await this.fetchPnrFromRapidApi(pnr);
+    } catch (rapidErr: unknown) {
+      const rapidMsg =
+        rapidErr instanceof Error ? rapidErr.message : String(rapidErr);
       this.logger.error(
-        `[pnr] Failed to fetch PNR status for ${pnr}: ${errMsg}`,
+        `[pnr] All PNR providers failed for ${pnr}: ${rapidMsg}`,
       );
-      throw new Error(`Failed to fetch PNR status: ${errMsg}`);
+      throw new Error(`Failed to fetch PNR status: ${rapidMsg}`);
     }
   }
 }

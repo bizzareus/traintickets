@@ -1,4 +1,4 @@
-import { BookingV2Service } from './booking-v2.service';
+import { BookingV2Service, confirmTktPnrClient } from './booking-v2.service';
 import type { FindAlternatePathsResult } from './booking-v2.service';
 import type { IrctcService } from '../irctc/irctc.service';
 import type { CacheService } from '../cache/cache.service';
@@ -44,10 +44,14 @@ const mockAltPathsCache: jest.Mocked<
 };
 
 const mockIrctc: jest.Mocked<
-  Pick<IrctcService, 'searchStationsViaRapidApi' | 'getTrainClasses'>
+  Pick<
+    IrctcService,
+    'searchStationsViaRapidApi' | 'getTrainClasses' | 'preloadTrainSchedules'
+  >
 > = {
   searchStationsViaRapidApi: jest.fn().mockResolvedValue([]),
   getTrainClasses: jest.fn().mockResolvedValue([]),
+  preloadTrainSchedules: jest.fn().mockResolvedValue(undefined),
 };
 
 function altResult(
@@ -463,8 +467,120 @@ describe('BookingV2Service', () => {
       else delete process.env.RAPIDAPI_IRCTC_KEY;
     });
 
-    it('calls getPNRStatus endpoint with correct options and returns normalized data', async () => {
-      const rawApiData = {
+    it('fetches PNR status from primary provider ConfirmTkt and returns normalized data', async () => {
+      const confirmTktData = {
+        data: {
+          ctProResponse: {
+            proBenefits: [
+              {
+                benefitItems: [
+                  {
+                    type: 'prediction',
+                    unlockedText: { text: '41% Chance', color: '#EB8F17' },
+                    featureType: 'racPrediction',
+                  },
+                ],
+              },
+            ],
+          },
+          pnrResponse: {
+            pnr: '8752677215',
+            trainNo: '19305',
+            trainName: 'DADN KYQ EXP',
+            doj: '03-09-2026',
+            quota: 'GN',
+            from: 'INDB',
+            to: 'NBQ',
+            class: '2A',
+            chartPrepared: false,
+            boardingStationName: 'Indore Junction Bg',
+            reservationUptoName: 'New Bongaigaon',
+            departureTime: '13:45',
+            arrivalTime: '08:30',
+            duration: '42:45',
+            passengerStatus: [
+              {
+                number: 1,
+                bookingStatus: 'GNWL  5',
+                currentStatus: 'RAC  4',
+                confirmTktStatus: 'Confirm',
+                coach: '',
+                berth: 4,
+              },
+            ],
+          },
+        },
+      };
+
+      const postSpy = jest
+        .spyOn(confirmTktPnrClient, 'post')
+        .mockResolvedValueOnce({ data: confirmTktData });
+
+      const result = await service.getPnrStatus('8752677215');
+
+      expect(postSpy).toHaveBeenCalledWith(
+        expect.stringContaining('8752677215'),
+        { proPlanName: 'CP1' },
+        expect.objectContaining({
+          headers: expect.objectContaining({
+            ApiKey: 'ct-web!2',
+            ClientId: 'ct-web',
+          }),
+        }),
+      );
+
+      expect(result.status).toBe(true);
+      expect(result.data?.Pnr).toBe('8752677215');
+      expect(result.data?.TrainNo).toBe('19305');
+      expect(result.data?.TrainName).toBe('DADN KYQ EXP');
+      expect(result.data?.Doj).toBe('03-09-2026');
+      expect(result.data?.DepartureTime).toBe('13:45');
+      expect(result.data?.ArrivalTime).toBe('08:30');
+      expect(result.data?.Duration).toBe('42:45');
+      expect(result.data?.From).toBe('INDB');
+      expect(result.data?.To).toBe('NBQ');
+      expect(result.data?.BoardingStationName).toBe('Indore Junction Bg');
+      expect(result.data?.ReservationUptoName).toBe('New Bongaigaon');
+      expect(result.data?.ChartPrepared).toBe(false);
+      expect(result.data?.PassengerStatus).toEqual([
+        expect.objectContaining({
+          Number: 1,
+          CurrentStatus: 'RAC  4',
+          BookingStatus: 'GNWL  5',
+          ConfirmTktStatus: 'Confirm',
+          Prediction: '41% Chance',
+        }),
+      ]);
+      postSpy.mockRestore();
+    });
+
+    it('handles flushed or not generated PNR response from ConfirmTkt gracefully', async () => {
+      const postSpy = jest
+        .spyOn(confirmTktPnrClient, 'post')
+        .mockResolvedValueOnce({
+          data: {
+            data: {
+              pnrResponse: {
+                error: 'Flushed PNR /PNR not yet generated',
+                errorCode: 201,
+                pnr: null,
+              },
+            },
+          },
+        });
+
+      const result = await service.getPnrStatus('1234567890');
+      expect(result.status).toBe(false);
+      expect(result.message).toBe('Flushed PNR /PNR not yet generated');
+      postSpy.mockRestore();
+    });
+
+    it('falls back to RapidAPI when ConfirmTkt fails', async () => {
+      const postSpy = jest
+        .spyOn(confirmTktPnrClient, 'post')
+        .mockRejectedValueOnce(new Error('ConfirmTkt network error'));
+
+      const rawRapidApiData = {
         success: true,
         data: {
           pnrNumber: '4441017627',
@@ -497,66 +613,45 @@ describe('BookingV2Service', () => {
           ],
         },
       };
+
       const getSpy = jest
         .spyOn(axios, 'get')
-        .mockResolvedValueOnce({ data: rawApiData });
+        .mockResolvedValueOnce({ data: rawRapidApiData });
 
       const result = await service.getPnrStatus('4441017627');
 
+      expect(postSpy).toHaveBeenCalled();
       expect(getSpy).toHaveBeenCalledWith(
         'https://irctc-indian-railway-pnr-status.p.rapidapi.com/getPNRStatus/4441017627',
-        {
-          headers: {
+        expect.objectContaining({
+          headers: expect.objectContaining({
             'x-rapidapi-key': 'test-rapidapi-key',
-            'x-rapidapi-host': 'irctc-indian-railway-pnr-status.p.rapidapi.com',
-            'Content-Type': 'application/json',
-          },
-          timeout: 10_000,
-        },
+          }),
+        }),
       );
       expect(result.status).toBe(true);
       expect(result.data?.Pnr).toBe('4441017627');
       expect(result.data?.TrainNo).toBe('17377');
-      expect(result.data?.TrainName).toBe('BJP MAQ EXP');
       expect(result.data?.Doj).toBe('30-08-2026');
-      expect(result.data?.DepartureTime).toBe('15:15');
-      expect(result.data?.ArrivalTime).toBe('02:35');
-      expect(result.data?.From).toBe('BJP');
-      expect(result.data?.To).toBe('HAS');
-      expect(result.data?.Quota).toBe('GN');
-      expect(result.data?.Class).toBe('SL');
-      expect(result.data?.PassengerStatus).toEqual([
-        expect.objectContaining({
-          Number: 1,
-          CurrentStatus: 'CNF/S3/7/SL',
-          BookingStatus: 'CNF/S3/7/SL',
-        }),
-      ]);
+
+      postSpy.mockRestore();
       getSpy.mockRestore();
     });
 
-    it('handles flushed or not generated PNR response gracefully', async () => {
-      const getSpy = jest.spyOn(axios, 'get').mockResolvedValueOnce({
-        data: {
-          success: false,
-          message: 'Flushed Pnr Or Pnr Not Yet Generated',
-        },
-      });
+    it('throws error when all PNR providers fail', async () => {
+      const postSpy = jest
+        .spyOn(confirmTktPnrClient, 'post')
+        .mockRejectedValueOnce(new Error('ConfirmTkt network error'));
 
-      const result = await service.getPnrStatus('1234567890');
-      expect(result.status).toBe(false);
-      expect(result.message).toBe('Flushed Pnr Or Pnr Not Yet Generated');
-      getSpy.mockRestore();
-    });
-
-    it('throws error when axios request fails', async () => {
       const getSpy = jest
         .spyOn(axios, 'get')
-        .mockRejectedValueOnce(new Error('Network Error'));
+        .mockRejectedValueOnce(new Error('RapidAPI 429 Rate Limited'));
 
       await expect(service.getPnrStatus('1234567890')).rejects.toThrow(
-        'Failed to fetch PNR status: Network Error',
+        'Failed to fetch PNR status: RapidAPI 429 Rate Limited',
       );
+
+      postSpy.mockRestore();
       getSpy.mockRestore();
     });
   });

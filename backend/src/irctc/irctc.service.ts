@@ -280,6 +280,58 @@ export class IrctcService {
     );
   }
 
+  /** Pre-loads multiple train schedules into memory in a single database query to avoid N+1 queries. */
+  async preloadTrainSchedules(trainNumbers: string[]): Promise<void> {
+    const uniqueNumbers = Array.from(
+      new Set(
+        trainNumbers
+          .map((n) => to5DigitTrainNo(n).trim())
+          .filter((n) => n.length > 0),
+      ),
+    );
+    const unCached = uniqueNumbers.filter((n) => {
+      const mem = this.scheduleMemoryCache.get(n);
+      return !mem || mem.expiresAt <= Date.now();
+    });
+    if (unCached.length === 0) return;
+
+    try {
+      const rows = (await this.prisma.trainScheduleCache.findMany({
+        where: { trainNumber: { in: unCached } },
+      })) as TrainScheduleCacheScheduleRow[];
+
+      const now = Date.now();
+      for (const cached of rows) {
+        const trainRunsOn =
+          cached.trainRunsOn != null &&
+          typeof cached.trainRunsOn === 'object' &&
+          !Array.isArray(cached.trainRunsOn)
+            ? (cached.trainRunsOn as TrainRunsOnJson)
+            : undefined;
+        const schedule: TrainScheduleResponse = {
+          trainNumber: cached.trainNumber,
+          trainName: cached.trainName,
+          stationFrom: cached.stationFrom,
+          stationTo: cached.stationTo,
+          stationList: enrichScheduleStationDayCounts(
+            (cached.stationList as ScheduleStation[]) ?? [],
+          ),
+          ...(trainRunsOn && Object.keys(trainRunsOn).length > 0
+            ? { trainRunsOn }
+            : {}),
+        };
+        this.scheduleMemoryCache.set(cached.trainNumber, {
+          result: { ok: true, schedule },
+          expiresAt: now + 5 * 60 * 1000,
+        });
+      }
+    } catch (err) {
+      this.logger.warn(
+        `[irctc/schedule] preload failed: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+  }
+
   async getTrainSchedule(
     trainNumber: string,
     opts?: GetTrainScheduleOptions,

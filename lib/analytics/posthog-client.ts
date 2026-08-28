@@ -42,7 +42,14 @@ export function initPosthogBrowser(): void {
         api_host: posthogApiHost(),
         capture_pageview: false,
         capture_pageleave: true,
-        disable_session_recording: true,
+        disable_session_recording: false,
+        enable_recording_console_log: true,
+        session_recording: {
+          maskAllInputs: false,
+          maskInputOptions: {
+            password: true,
+          },
+        },
         disable_surveys: true,
         autocapture: false,
         persistence: "localStorage+cookie",

@@ -1233,6 +1233,7 @@ export class NotificationService {
     fromCode: string;
     toCode: string;
     date: string;
+    searchUrl?: string;
   }): string {
     const {
       trainLabel,
@@ -1321,6 +1322,10 @@ export class NotificationService {
     </div>
     <p style="margin:0 0 16px 0;color:#b91c1c;">${escapeHtml(openAiSummary || "Unfortunately, we couldn't find any available tickets at this time.")}</p>`;
 
+    const searchHref =
+      params.searchUrl ||
+      `https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`;
+
     return `
 <!DOCTYPE html>
 <html>
@@ -1332,7 +1337,7 @@ export class NotificationService {
     ${primaryDetailsBlock}
     ${alternativesHtml}
     <p style="margin:16px 0 16px 0;">You can try checking on LastBerth for other trains:</p>
-    <a href="https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Search on LastBerth</a>
+    <a href="${searchHref}" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Search on LastBerth</a>
     <div style="margin-top:20px; padding:12px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; text-align:center;">
       <p style="margin:0; font-size:13px; color:#475569;">
         💡 <strong>Tip:</strong> Look for the realtime seat status on LastBerth to track vacant seats around you.
@@ -1353,6 +1358,7 @@ export class NotificationService {
     fromCode: string;
     toCode: string;
     date: string;
+    searchUrl?: string;
   }): string {
     const {
       trainLabel,
@@ -1363,7 +1369,12 @@ export class NotificationService {
       fromCode,
       toCode,
       date,
+      searchUrl,
     } = params;
+
+    const targetSearchUrl =
+      searchUrl ||
+      `https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`;
 
     const hasAlternatives = Boolean(
       alternativeTrains && alternativeTrains.length > 0,
@@ -1419,7 +1430,7 @@ export class NotificationService {
 We didn't find any tickets in *${trainLabel}* for *${routeDisplay}* on *${journeyDateReadable}*.${alternativesText}
 
 You can try checking on LastBerth for other trains:
-https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`;
+${targetSearchUrl}`;
     }
 
     return `*LastBerth Chart Alert* 🔔
@@ -1434,7 +1445,7 @@ Date: ${journeyDateReadable}
 ${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}
 
 You can try checking on LastBerth for other trains:
-https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`;
+${targetSearchUrl}`;
   }
 
   /** Build station code -> name map from train schedule (for UI-style segment labels). */
@@ -1493,7 +1504,7 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
       | 'fromStationCode'
       | 'toStationCode'
       | 'journeyDate'
-    >;
+    > & { id?: string };
     result: Service2CheckResult;
     alternativeTrains?: BestTrainCandidateResult[];
     isFollowUpLeg?: boolean;
@@ -1587,6 +1598,28 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
         }
 
         if (shouldSendWhatsApp) {
+          let whatsappSearchUrl = `https://lastberth.com/search?from=${encodeURIComponent(task.fromStationCode)}&to=${encodeURIComponent(task.toStationCode)}&date=${encodeURIComponent(journeyDateStr)}&trainNo=${encodeURIComponent(task.trainNumber)}`;
+          if (this.shortLinkService && mobile?.trim()) {
+            try {
+              whatsappSearchUrl =
+                await this.shortLinkService.createSearchShortLink({
+                  from: task.fromStationCode,
+                  to: task.toStationCode,
+                  date: journeyDateStr,
+                  trainNo: task.trainNumber,
+                  channel: 'whatsapp',
+                  recipient: mobile.trim(),
+                  metadata: {
+                    journeyTaskId: task.id,
+                    trainNumber: task.trainNumber,
+                    notificationType,
+                  },
+                });
+            } catch {
+              // fallback
+            }
+          }
+
           const whatsAppText =
             isFollowUpLeg && hasTickets
               ? this.buildFollowUpLegWhatsAppText({
@@ -1625,6 +1658,7 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
                     fromCode: task.fromStationCode,
                     toCode: task.toStationCode,
                     date: journeyDateStr,
+                    searchUrl: whatsappSearchUrl,
                   });
 
           const templateName = hasTickets
@@ -1640,7 +1674,7 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
           const statusExtracted =
             plan?.[0]?.instruction ||
             (hasTickets ? 'Available' : 'Waitlisted (Not Available)');
-          const searchUrl = `https://lastberth.com/search?from=${task.fromStationCode}&to=${task.toStationCode}&date=${journeyDateStr}&trainNo=${task.trainNumber}`;
+          const searchUrl = whatsappSearchUrl;
 
           let parameters: Array<{ name: string; value: string }>;
 
@@ -1780,6 +1814,28 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
                 : hasAltTrains
                   ? `Alternate Trains Available - Train ${task.trainNumber} (${task.fromStationCode} → ${task.toStationCode}) on ${journeyDateReadable}`
                   : `No Tickets Found - Train ${task.trainNumber} on ${journeyDateReadable}`;
+          let emailSearchUrl = `https://lastberth.com/search?from=${encodeURIComponent(task.fromStationCode)}&to=${encodeURIComponent(task.toStationCode)}&date=${encodeURIComponent(journeyDateStr)}&trainNo=${encodeURIComponent(task.trainNumber)}`;
+          if (this.shortLinkService && email?.trim()) {
+            try {
+              emailSearchUrl =
+                await this.shortLinkService.createSearchShortLink({
+                  from: task.fromStationCode,
+                  to: task.toStationCode,
+                  date: journeyDateStr,
+                  trainNo: task.trainNumber,
+                  channel: 'email',
+                  recipient: email.trim(),
+                  metadata: {
+                    journeyTaskId: task.id,
+                    trainNumber: task.trainNumber,
+                    notificationType,
+                  },
+                });
+            } catch {
+              // fallback
+            }
+          }
+
           const html =
             isFollowUpLeg && hasTickets
               ? this.buildFollowUpLegEmailHtml({
@@ -1817,6 +1873,7 @@ https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURI
                     fromCode: task.fromStationCode,
                     toCode: task.toStationCode,
                     date: journeyDateStr,
+                    searchUrl: emailSearchUrl,
                   });
 
           out.emailSent = await this.sendEmail(email.trim(), subject, html, {
