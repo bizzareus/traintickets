@@ -166,21 +166,8 @@ cookie. ~1-2s added on cache misses (residential) vs ~3-8s (Web Unlocker);
 caching + latency-insensitive alert cron absorb most of it. User only has a
 Scraping Browser zone today — would need to add a residential zone.
 
-**UPDATE 2026-07-10 — keeper failing 100% on a WebSocket 403 (harvest can't even connect).**
-48h of Railway backend logs show the cron keeper failing on EVERY 30-min run
-(~96/96, plus boot). After the `describeError` fix (commit 241b5914) the log is
-now legible: `refresh failed trigger=cron: message=Unexpected server response: 403
-error=[object Error]`. "Unexpected server response: 403" is the `ws` library's
-error for a rejected WebSocket UPGRADE — i.e. the `puppeteer.connect` to the
-BrightData Scraping Browser (`BRIGHTDATA_BROWSER_WSS` = `wss://…@brd.superproxy.io:9222`)
-is being refused with HTTP 403 at the handshake. So this is NOT the old
-cookie-replay/IP-binding 403 — the harvest never establishes a browser session
-at all. Most likely: rotated/invalid BrightData creds in `BRIGHTDATA_BROWSER_WSS`,
-a disabled/renamed `scraping_browser1` zone, or a BrightData account/billing/quota
-block. Next step: verify the BRIGHTDATA_BROWSER_WSS value + zone status in the
-BrightData dashboard (presence-only check the Railway var, don't print it). The
-app still serves via the stored cookie, so this degrades cookie-freshness, not
-all IRCTC calls. (`error=[object Error]` — the nested ws error object still
-didn't fully serialize; the `message=` prefix is what made it diagnosable.)
-
-Related: [[railway-project]]
+**UPDATE 2026-08-28 — Replaced BrightData with Browserless.**
+The keeper was migrated to Browserless (`BROWSERLESS_API_KEY` or `BROWSERLESS_WSS` = `wss://chrome.browserless.io/stealth?token=...&proxy=residential&proxyCountry=in&--disable-http2`).
+- Fixed `net::ERR_HTTP2_PROTOCOL_ERROR` by routing to Browserless's managed `/stealth` endpoint with `--disable-http2` for clean HTTP/1.1 communication over Indian residential proxies.
+- Harvests 13 Akamai session cookies (`_abck`, `bm_sz`, `bm_s`, etc.) and stores them in PostgreSQL `irctc_session` table.
+- All backend IRCTC REST calls on Railway use the stored cookies directly. All BrightData legacy code and environment fallbacks were completely removed.

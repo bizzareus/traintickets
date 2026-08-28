@@ -25,6 +25,13 @@ const nextConfig = {
   env: {
     IS_BUILD_PHASE: phase === PHASE_PRODUCTION_BUILD ? "1" : "",
   },
+  webpack: (config) => {
+    config.module = {
+      ...config.module,
+      exprContextCritical: false,
+    };
+    return config;
+  },
   async redirects() {
     return [
       {

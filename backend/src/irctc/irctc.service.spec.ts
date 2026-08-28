@@ -13,6 +13,7 @@ jest.mock('../common/retrying-axios', () => ({
 
 import { PrismaService } from '../prisma/prisma.service';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
+import { IrctcBrowserlessService } from './irctc-browserless.service';
 import { IrctcService } from './irctc.service';
 
 describe('IrctcService', () => {
@@ -22,7 +23,8 @@ describe('IrctcService', () => {
     jest.clearAllMocks();
     const mockPrisma = {} as PrismaService;
     const mockCookieStore = {} as IrctcCookieStoreService;
-    service = new IrctcService(mockPrisma, mockCookieStore);
+    const mockBrowserless = { isEnabled: false } as IrctcBrowserlessService;
+    service = new IrctcService(mockPrisma, mockCookieStore, mockBrowserless);
   });
 
   describe('searchStationsViaRapidApi', () => {

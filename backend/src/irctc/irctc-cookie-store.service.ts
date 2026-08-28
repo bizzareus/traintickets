@@ -21,7 +21,7 @@ const CACHE_TTL_MS = 15_000;
  *
  * Also provides an atomic harvest lock (`tryClaimHarvest`) so that, across
  * replicas, only one instance harvests per cycle instead of every replica
- * spinning up its own BrightData session.
+ * spinning up its own remote browser session.
  */
 @Injectable()
 export class IrctcCookieStoreService {

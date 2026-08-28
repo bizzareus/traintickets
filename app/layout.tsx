@@ -142,7 +142,7 @@ export default function RootLayout({
   const chartTimesPages = listPopularChartTimes().slice(0, 6);
   const foodMenuPages = listTrainFoodMenuIndex().slice(0, 6);
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <Script
           id="gtm-script"
@@ -162,6 +162,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <noscript>
           <iframe

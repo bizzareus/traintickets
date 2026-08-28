@@ -10,7 +10,7 @@ const HARVEST_HARD_TIMEOUT_MS = 150_000;
 const COOKIE_SETTLE_MS = 6_000;
 /**
  * Across replicas, only harvest if the last claim is older than this. Keeps the
- * automatic (boot/cron) harvest to ~one BrightData session per window even with
+ * automatic (boot/cron) harvest to ~one remote browser session per window even with
  * multiple Railway replicas. Slightly under the 30-min cron so each cron tick
  * still refreshes.
  */
@@ -28,7 +28,7 @@ function safeJson(v: unknown): string {
 /**
  * Turn any thrown value into a diagnosable string. Node's fetch throws a generic
  * `TypeError: fetch failed` with the real reason on `.cause`, and some libraries
- * (puppeteer/CDP/BrightData) throw plain objects that `String()` renders as the
+ * (puppeteer/CDP) throw plain objects that `String()` renders as the
  * useless "[object Object]". Surface the message + cause, pull common fields off
  * non-Error objects, and JSON-fallback — so failures are diagnosable from logs
  * without redeploying to add detail.
@@ -80,22 +80,17 @@ function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
 }
 
 /**
- * Keeps the IRCTC (Akamai-protected) cookie bundle fresh by driving a BrightData
- * Scraping Browser (a remote Chromium on a residential IP), loading online-charts
- * so Akamai issues cookies, and writing the harvested cookie string to the
- * file-backed cookie store the rest of the backend reads.
+ * Keeps the IRCTC (Akamai-protected) cookie bundle fresh by driving a remote
+ * headless Chromium browser (Browserless / custom remote browser on a residential IP),
+ * loading online-charts so Akamai issues cookies, and writing the harvested cookie
+ * string to the database-backed cookie store the rest of the backend reads.
  *
  * Why a remote browser: Akamai resets/403s requests from Railway's datacenter IP,
- * so the cookies can't be harvested from Railway directly. BrightData loads the
- * page from a residential IP and Akamai issues the bundle there. This is a bare
- * harvest: load the page, let the sensor settle, read the cookies, store them.
+ * so the cookies can't be harvested from Railway directly. Browserless loads the
+ * page from an Indian residential IP and Akamai issues the bundle there. This is a
+ * bare harvest: load the page, let the sensor settle, read the cookies, store them.
  *
- * Gated by IRCTC_KEEPER_ENABLED=true and BRIGHTDATA_BROWSER_WSS. Tunables:
- *   IRCTC_KEEPER_CRON          cron expression (default every 30 min)
- *   BRIGHTDATA_BROWSER_WSS     wss://…@brd.superproxy.io:9222 CDP endpoint
- *   IRCTC_KEEPER_LOG_COOKIE    'true' → log the full harvested cookie value to
- *                              the app logs (secret! opt-in for debugging only,
- *                              turn it back off once you've grabbed it)
+ * Gated by IRCTC_KEEPER_ENABLED=true and BROWSERLESS_API_KEY / BROWSERLESS_WSS / IRCTC_BROWSER_WSS.
  */
 @Injectable()
 export class IrctcSessionKeeperService implements OnModuleInit {
@@ -106,7 +101,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
 
   constructor(private readonly cookieStore: IrctcCookieStoreService) {}
 
-  /** Resolves the CDP WebSocket endpoint for Browserless, BrightData, or custom remote browser. */
+  /** Resolves the CDP WebSocket endpoint for Browserless or custom remote browser. */
   private get browserWsEndpoint(): string | null {
     if (process.env.IRCTC_BROWSER_WSS?.trim()) {
       return process.env.IRCTC_BROWSER_WSS.trim();
@@ -122,18 +117,12 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         : `&proxy=residential&proxyCountry=${country}`;
       return `wss://chrome.browserless.io/stealth?token=${token}${proxyParam}&--disable-http2`;
     }
-    if (process.env.BRIGHTDATA_BROWSER_WSS?.trim()) {
-      return process.env.BRIGHTDATA_BROWSER_WSS.trim();
-    }
     return null;
   }
 
   private get providerName(): string {
     if (process.env.BROWSERLESS_API_KEY?.trim() || process.env.BROWSERLESS_WSS?.trim()) {
       return 'browserless';
-    }
-    if (process.env.BRIGHTDATA_BROWSER_WSS?.trim()) {
-      return 'brightdata';
     }
     return 'remote-browser';
   }
@@ -148,7 +137,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
   onModuleInit(): void {
     if (!this.enabled) {
       this.logger.log(
-        '[irctc-keeper] disabled (set IRCTC_KEEPER_ENABLED=true + BROWSERLESS_API_KEY / BROWSERLESS_WSS / BRIGHTDATA_BROWSER_WSS to enable)',
+        '[irctc-keeper] disabled (set IRCTC_KEEPER_ENABLED=true + BROWSERLESS_API_KEY / BROWSERLESS_WSS to enable)',
       );
       return;
     }
@@ -218,7 +207,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
     return { ok: true, length: trimmed.length };
   }
 
-  /** Harvest a fresh cookie bundle via BrightData and persist it. */
+  /** Harvest a fresh cookie bundle via remote browser (Browserless) and persist it. */
   async refresh(trigger: string): Promise<{ ok: boolean; error?: string }> {
     if (!this.enabled) return { ok: false, error: 'keeper disabled' };
     if (this.refreshing) return { ok: false, error: 'refresh already running' };
@@ -285,9 +274,9 @@ export class IrctcSessionKeeperService implements OnModuleInit {
   }
 
   /**
-   * Connect to the remote CDP browser (Browserless, BrightData, etc.), load
-   * online-charts so Akamai issues cookies, and return the harvested irctc.co.in
-   * cookie string. Bare harvest — no requests to any IRCTC API.
+   * Connect to the remote CDP browser (Browserless), load online-charts so Akamai
+   * issues cookies, and return the harvested irctc.co.in cookie string. Bare
+   * harvest — no requests to any IRCTC API.
    */
   private async harvestViaRemoteBrowser(): Promise<string> {
     const wss = this.browserWsEndpoint;

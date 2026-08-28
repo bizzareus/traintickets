@@ -1,15 +1,12 @@
-import Script from "next/script";
-
 /**
- * Loads Google AdSense script via Next.js Script component with `afterInteractive` strategy.
- * Ensures the script is present in the DOM for automated verification crawlers while loading asynchronously.
+ * Loads Google AdSense script via standard async script tag.
+ * Avoids Next.js next/script data-nscript attribute which triggers AdSense head tag warnings.
  */
 export function AdSenseScriptLoader() {
   return (
-    <Script
-      id="adsbygoogle-init"
+    <script
+      async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2619716052518481"
-      strategy="afterInteractive"
       crossOrigin="anonymous"
     />
   );

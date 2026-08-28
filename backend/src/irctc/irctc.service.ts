@@ -8,6 +8,7 @@ import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { fetchWithTimeout, retryTransient } from '../common/fetch-with-timeout';
 import { buildCurl, curlLogEnabled } from '../common/curl-log';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
+import { IrctcBrowserlessService } from './irctc-browserless.service';
 
 const scheduleClient = createRetryingAxiosClient({
   serviceName: 'irctc/schedule',
@@ -262,19 +263,17 @@ export class IrctcService {
   constructor(
     private prisma: PrismaService,
     private cookieStore: IrctcCookieStoreService,
+    private browserlessService: IrctcBrowserlessService,
   ) {}
 
   /** Resolves outgoing HTTP proxy URL for IRCTC API requests (if enabled). */
   private getOutgoingProxyUrl(): string | undefined {
     const enabled =
       process.env.IRCTC_PROXY_ENABLED?.trim().toLowerCase() === 'true' ||
-      process.env.IRCTC_PROXY_ENABLED?.trim() === '1' ||
-      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() === 'true' ||
-      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
+      process.env.IRCTC_PROXY_ENABLED?.trim() === '1';
     if (!enabled) return undefined;
     return (
       process.env.IRCTC_PROXY_URL?.trim() ||
-      process.env.BRIGHTDATA_PROXY_URL?.trim() ||
       process.env.HTTPS_PROXY?.trim() ||
       process.env.HTTP_PROXY?.trim() ||
       undefined
@@ -457,6 +456,28 @@ export class IrctcService {
     trainNumber: string,
     journeyDateYmd?: string,
   ): Promise<TrainScheduleResponse> {
+    if (this.browserlessService.isEnabled) {
+      try {
+        this.logger.log(`[irctc/schedule] via=browserless train=${trainNumber}`);
+        const result = await this.browserlessService.fetchSchedule(trainNumber);
+        if (result.status === 200 && result.data?.stationList?.length) {
+          const raw = result.data as TrainScheduleResponse;
+          return {
+            trainNumber: raw.trainNumber ?? trainNumber,
+            trainName: raw.trainName ?? '',
+            stationFrom: raw.stationFrom ?? '',
+            stationTo: raw.stationTo ?? '',
+            stationList: enrichScheduleStationDayCounts(raw.stationList ?? []),
+            ...(raw.trainRunsOn ? { trainRunsOn: raw.trainRunsOn } : {}),
+          };
+        }
+      } catch (err) {
+        this.logger.warn(
+          `[irctc/schedule] browserless failed train=${trainNumber}: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      }
+    }
+
     const url = `${IRCTC_SCHEDULE_URL}/${encodeURIComponent(trainNumber)}`;
     const headers = {
       ...SCHEDULE_HEADERS,
@@ -1036,6 +1057,26 @@ export class IrctcService {
       chartType: payload.chartType ?? 1,
     };
 
+    if (this.browserlessService.isEnabled) {
+      const t0 = Date.now();
+      this.logger.log(
+        `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} via=browserless`,
+      );
+      try {
+        const res = await this.browserlessService.fetchVacantBerth(body);
+        this.logger.log(
+          `[irctc/vacantBerth] response ms=${Date.now() - t0} status=${res.status} via=browserless`,
+        );
+        if (res.status === 200 && res.data) {
+          return res.data;
+        }
+      } catch (err) {
+        this.logger.warn(
+          `[irctc/vacantBerth] browserless failed trainNo=${payload.trainNo}: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      }
+    }
+
     const headers: Record<string, string> = {
       Accept: 'application/json',
       'Accept-Language': 'en-US,en;q=0.9',
@@ -1229,6 +1270,26 @@ export class IrctcService {
       coach: payload.coach,
       cls: payload.cls,
     };
+
+    if (this.browserlessService.isEnabled) {
+      const t0 = Date.now();
+      this.logger.log(
+        `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} via=browserless`,
+      );
+      try {
+        const res = await this.browserlessService.fetchCoachComposition(body);
+        this.logger.log(
+          `[irctc/coachComposition] response ms=${Date.now() - t0} status=${res.status} via=browserless`,
+        );
+        if (res.status === 200 && res.data) {
+          return res.data;
+        }
+      } catch (err) {
+        this.logger.warn(
+          `[irctc/coachComposition] browserless failed trainNo=${payload.trainNo} coach=${payload.coach}: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      }
+    }
 
     const headers: Record<string, string> = {
       Accept: 'application/json',
@@ -1532,6 +1593,26 @@ export class IrctcService {
       jDate: jDateStr,
       boardingStation: String(payload.boardingStation).trim().toUpperCase(),
     };
+
+    if (this.browserlessService.isEnabled) {
+      const t0 = Date.now();
+      this.logger.log(
+        `[irctc/trainComposition] request_start trainNo=${body.trainNo} via=browserless`,
+      );
+      try {
+        const res = await this.browserlessService.fetchTrainComposition(body);
+        this.logger.log(
+          `[irctc/trainComposition] response ms=${Date.now() - t0} status=${res.status} via=browserless`,
+        );
+        if (res.status === 200 && res.data) {
+          return res.data as Record<string, unknown>;
+        }
+      } catch (err) {
+        this.logger.warn(
+          `[irctc/trainComposition] browserless failed trainNo=${body.trainNo}: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      }
+    }
 
     const headers: Record<string, string> = {
       accept: 'application/json',
