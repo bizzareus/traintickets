@@ -493,6 +493,14 @@ export function listChartTimesSlugs(): string[] {
   }
 }
 
+let cachedChartTimesIndex: {
+  slug: string;
+  trainNumber: string;
+  trainName: string;
+  originStation: string;
+  destinationStation: string;
+}[] | null = null;
+
 /** Lightweight metadata for every committed chart-times page (for the index hub). */
 export function listChartTimesIndex(): {
   slug: string;
@@ -501,6 +509,7 @@ export function listChartTimesIndex(): {
   originStation: string;
   destinationStation: string;
 }[] {
+  if (cachedChartTimesIndex) return cachedChartTimesIndex;
   if (!fs.existsSync(CHART_TIMES_DIR)) return [];
   const out: ReturnType<typeof listChartTimesIndex> = [];
   let files: string[] = [];
@@ -527,7 +536,8 @@ export function listChartTimesIndex(): {
       // skip malformed file
     }
   }
-  return out.sort((a, b) => a.trainNumber.localeCompare(b.trainNumber));
+  cachedChartTimesIndex = out.sort((a, b) => a.trainNumber.localeCompare(b.trainNumber));
+  return cachedChartTimesIndex;
 }
 
 /**

@@ -106,17 +106,49 @@ export class IrctcSessionKeeperService implements OnModuleInit {
 
   constructor(private readonly cookieStore: IrctcCookieStoreService) {}
 
+  /** Resolves the CDP WebSocket endpoint for Browserless, BrightData, or custom remote browser. */
+  private get browserWsEndpoint(): string | null {
+    if (process.env.IRCTC_BROWSER_WSS?.trim()) {
+      return process.env.IRCTC_BROWSER_WSS.trim();
+    }
+    if (process.env.BROWSERLESS_WSS?.trim()) {
+      return process.env.BROWSERLESS_WSS.trim();
+    }
+    if (process.env.BROWSERLESS_API_KEY?.trim()) {
+      const token = process.env.BROWSERLESS_API_KEY.trim();
+      const country = process.env.BROWSERLESS_PROXY_COUNTRY || 'in';
+      const proxyParam = process.env.BROWSERLESS_PROXY
+        ? `&proxy=${process.env.BROWSERLESS_PROXY}`
+        : `&proxy=residential&proxyCountry=${country}`;
+      return `wss://chrome.browserless.io/stealth?token=${token}${proxyParam}&--disable-http2`;
+    }
+    if (process.env.BRIGHTDATA_BROWSER_WSS?.trim()) {
+      return process.env.BRIGHTDATA_BROWSER_WSS.trim();
+    }
+    return null;
+  }
+
+  private get providerName(): string {
+    if (process.env.BROWSERLESS_API_KEY?.trim() || process.env.BROWSERLESS_WSS?.trim()) {
+      return 'browserless';
+    }
+    if (process.env.BRIGHTDATA_BROWSER_WSS?.trim()) {
+      return 'brightdata';
+    }
+    return 'remote-browser';
+  }
+
   private get enabled(): boolean {
     return (
       process.env.IRCTC_KEEPER_ENABLED === 'true' &&
-      Boolean(process.env.BRIGHTDATA_BROWSER_WSS?.trim())
+      Boolean(this.browserWsEndpoint)
     );
   }
 
   onModuleInit(): void {
     if (!this.enabled) {
       this.logger.log(
-        '[irctc-keeper] disabled (set IRCTC_KEEPER_ENABLED=true + BRIGHTDATA_BROWSER_WSS to enable)',
+        '[irctc-keeper] disabled (set IRCTC_KEEPER_ENABLED=true + BROWSERLESS_API_KEY / BROWSERLESS_WSS / BRIGHTDATA_BROWSER_WSS to enable)',
       );
       return;
     }
@@ -211,13 +243,13 @@ export class IrctcSessionKeeperService implements OnModuleInit {
       }
 
       this.logger.log(
-        `[irctc-keeper] refresh trigger=${trigger} via=brightdata`,
+        `[irctc-keeper] refresh trigger=${trigger} via=${this.providerName}`,
       );
 
       const cookieString = await withTimeout(
-        this.harvestViaBrightData(),
+        this.harvestViaRemoteBrowser(),
         HARVEST_HARD_TIMEOUT_MS,
-        'brightdata harvest',
+        `${this.providerName} harvest`,
       );
       if (!cookieString) throw new Error('no cookies harvested');
 
@@ -229,21 +261,21 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         );
       }
 
-      await this.cookieStore.setCookie(cookieString, { source: 'brightdata' });
+      await this.cookieStore.setCookie(cookieString, { source: this.providerName });
       this.lastRefreshAt = new Date().toISOString();
       this.lastError = null;
       this.logger.log(
-        `[irctc-keeper] refresh ok trigger=${trigger} cookieChars=${cookieString.length}`,
+        `[irctc-keeper] refresh ok trigger=${trigger} provider=${this.providerName} cookieChars=${cookieString.length}`,
       );
       return { ok: true };
     } catch (err) {
       const msg = describeError(err);
       this.lastError = msg;
       this.logger.error(
-        `[irctc-keeper] refresh failed trigger=${trigger}: ${msg}`,
+        `[irctc-keeper] refresh failed trigger=${trigger} provider=${this.providerName}: ${msg}`,
       );
       captureSentryException(err, {
-        tags: { service: 'irctc-keeper' },
+        tags: { service: 'irctc-keeper', provider: this.providerName },
         extra: { trigger },
       });
       return { ok: false, error: msg };
@@ -253,16 +285,18 @@ export class IrctcSessionKeeperService implements OnModuleInit {
   }
 
   /**
-   * Connect to the BrightData Scraping Browser, load online-charts so Akamai
-   * issues cookies, and return the harvested irctc.co.in cookie string. Bare
-   * harvest — no requests to any IRCTC API.
+   * Connect to the remote CDP browser (Browserless, BrightData, etc.), load
+   * online-charts so Akamai issues cookies, and return the harvested irctc.co.in
+   * cookie string. Bare harvest — no requests to any IRCTC API.
    */
-  private async harvestViaBrightData(): Promise<string> {
-    const wss = process.env.BRIGHTDATA_BROWSER_WSS!.trim();
+  private async harvestViaRemoteBrowser(): Promise<string> {
+    const wss = this.browserWsEndpoint;
+    if (!wss) throw new Error('No remote browser WebSocket endpoint configured');
+
     const browser = await withTimeout(
       puppeteer.connect({ browserWSEndpoint: wss }),
       30_000,
-      'brightdata connect',
+      `${this.providerName} connect`,
     );
     try {
       const page = await browser.newPage();
@@ -283,7 +317,7 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         .map((c) => `${c.name}=${c.value}`)
         .join('; ');
     } finally {
-      // close() ends the BrightData session (stops billing); ignore errors.
+      // close() ends the session (stops billing); ignore errors.
       await browser.close().catch(() => {});
     }
   }

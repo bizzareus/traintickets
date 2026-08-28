@@ -264,6 +264,23 @@ export class IrctcService {
     private cookieStore: IrctcCookieStoreService,
   ) {}
 
+  /** Resolves outgoing HTTP proxy URL for IRCTC API requests (if enabled). */
+  private getOutgoingProxyUrl(): string | undefined {
+    const enabled =
+      process.env.IRCTC_PROXY_ENABLED?.trim().toLowerCase() === 'true' ||
+      process.env.IRCTC_PROXY_ENABLED?.trim() === '1' ||
+      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() === 'true' ||
+      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
+    if (!enabled) return undefined;
+    return (
+      process.env.IRCTC_PROXY_URL?.trim() ||
+      process.env.BRIGHTDATA_PROXY_URL?.trim() ||
+      process.env.HTTPS_PROXY?.trim() ||
+      process.env.HTTP_PROXY?.trim() ||
+      undefined
+    );
+  }
+
   async getTrainSchedule(
     trainNumber: string,
     opts?: GetTrainScheduleOptions,
@@ -1039,20 +1056,12 @@ export class IrctcService {
     const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
-    const proxyEnabled =
-      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() ===
-        'true' || process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
-    const proxyUrl = proxyEnabled
-      ? process.env.BRIGHTDATA_PROXY_URL?.trim() ||
-        process.env.HTTPS_PROXY?.trim() ||
-        process.env.HTTP_PROXY?.trim() ||
-        undefined
-      : undefined;
+    const proxyUrl = this.getOutgoingProxyUrl();
 
-    if (proxyEnabled && proxyUrl) {
+    if (proxyUrl) {
       const t0 = Date.now();
       this.logger.log(
-        `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} cookies=${Boolean(cookies?.trim())} via=brightdata_proxy`,
+        `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} cookies=${Boolean(cookies?.trim())} via=outgoing_proxy`,
       );
 
       let status = 0;
@@ -1241,20 +1250,12 @@ export class IrctcService {
     const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
-    const proxyEnabled =
-      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() ===
-        'true' || process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
-    const proxyUrl = proxyEnabled
-      ? process.env.BRIGHTDATA_PROXY_URL?.trim() ||
-        process.env.HTTPS_PROXY?.trim() ||
-        process.env.HTTP_PROXY?.trim() ||
-        undefined
-      : undefined;
+    const proxyUrl = this.getOutgoingProxyUrl();
 
-    if (proxyEnabled && proxyUrl) {
+    if (proxyUrl) {
       const t0 = Date.now();
       this.logger.log(
-        `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} cookies=${Boolean(cookies?.trim())} via=brightdata_proxy`,
+        `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} cookies=${Boolean(cookies?.trim())} via=outgoing_proxy`,
       );
 
       let status = 0;
@@ -1553,15 +1554,7 @@ export class IrctcService {
     const cookies = await this.cookieStore.getCookie();
     if (cookies?.trim()) headers['Cookie'] = cookies.trim();
 
-    const proxyEnabled =
-      process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim().toLowerCase() ===
-        'true' || process.env.IRCTC_BRIGHTDATA_PROXY_ENABLED?.trim() === '1';
-    const proxyUrl = proxyEnabled
-      ? process.env.BRIGHTDATA_PROXY_URL?.trim() ||
-        process.env.HTTPS_PROXY?.trim() ||
-        process.env.HTTP_PROXY?.trim() ||
-        undefined
-      : undefined;
+    const proxyUrl = this.getOutgoingProxyUrl();
 
     const t0 = Date.now();
     let status = 0;

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "concurrently -n api,web -c cyan,magenta \"npm run dev:api\" \"npm run dev:web\"",
-    "dev:web": "next dev -p 3010",
+    "dev:web": "next dev --webpack -p 3010",
     "dev:api": "cd backend && npm run start:dev",
     "build": "npm run build:api && next build",
     "build:prod": "npm run build:api && next build",
