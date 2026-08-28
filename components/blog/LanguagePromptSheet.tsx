@@ -2,40 +2,64 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { mapStateToLanguage, getLanguageName } from "@/lib/blog-translations";
 
 export function LanguagePromptSheet({
-  suggestedLang,
   currentSlug,
-  langName,
+  currentLang,
+  availableLangs,
 }: {
-  suggestedLang: string;
   currentSlug: string;
-  langName: string;
+  currentLang: string;
+  availableLangs: string[];
 }) {
   const router = useRouter();
-  const [show, setShow] = useState(false);
+  const [targetLang, setTargetLang] = useState<string | null>(null);
 
   useEffect(() => {
+    // Only offer language switch when viewing the English article and translations exist
+    if (currentLang !== "en" || availableLangs.length <= 1) return;
+
     // Only show if not dismissed before
     const dismissed = localStorage.getItem("blog_lang_prompt_dismissed");
-    if (!dismissed) {
-      // Small delay for better UX
-      const timer = setTimeout(() => setShow(true), 1000);
-      return () => clearTimeout(timer);
+    if (dismissed) return;
+
+    // Detect preference from URL parameter or navigator.languages
+    const searchParams = new URLSearchParams(window.location.search);
+    const regionParam = searchParams.get("region") || "";
+    const langFromRegion = regionParam ? mapStateToLanguage(regionParam) : null;
+
+    let matched: string | null = null;
+    if (langFromRegion && availableLangs.includes(langFromRegion)) {
+      matched = langFromRegion;
+    } else if (typeof navigator !== "undefined" && navigator.languages) {
+      for (const userLang of navigator.languages) {
+        const primary = userLang.toLowerCase().split("-")[0];
+        if (primary !== "en" && availableLangs.includes(primary)) {
+          matched = primary;
+          break;
+        }
+      }
     }
-  }, []);
+
+    if (matched) {
+      setTargetLang(matched);
+    }
+  }, [currentLang, availableLangs]);
 
   const handleDismiss = () => {
     localStorage.setItem("blog_lang_prompt_dismissed", "true");
-    setShow(false);
+    setTargetLang(null);
   };
 
   const handleSwitch = () => {
+    if (!targetLang) return;
     localStorage.setItem("blog_lang_prompt_dismissed", "true");
-    router.push(`/blog/${suggestedLang}/${currentSlug}`);
+    router.push(`/blog/${targetLang}/${currentSlug}`);
   };
 
-  if (!show) return null;
+  if (!targetLang) return null;
+  const langName = getLanguageName(targetLang);
 
   return (
     <>

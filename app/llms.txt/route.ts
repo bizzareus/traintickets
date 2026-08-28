@@ -17,9 +17,12 @@ export async function GET() {
 
 ## API & Data Endpoints
 
-- Search API: GET https://lastberth.com/api/booking-v2/alternate-paths
+- API Catalog (RFC 9727): GET https://lastberth.com/.well-known/api-catalog
+- OpenAPI 3.1 Spec: GET https://lastberth.com/openapi.json
+- Search API: POST https://lastberth.com/api/booking-v2/alternate-paths
 - PNR Status API: GET https://lastberth.com/api/booking-v2/pnr/{pnr}
 - Chart Times API: GET https://lastberth.com/api/chart-times-data/{trainNumber}
+- Health Check: GET https://lastberth.com/api/health
 `;
 
   return new NextResponse(content, {

@@ -9,6 +9,11 @@ const BROWSER_TIMEOUT_MS = 60_000;
 @Injectable()
 export class IrctcBrowserlessService {
   private readonly logger = new Logger(IrctcBrowserlessService.name);
+  private browser: any = null;
+  private page: Page | null = null;
+  private pageWarmedAt = 0;
+  private warmingPromise: Promise<Page> | null = null;
+  private readonly SESSION_MAX_AGE_MS = 15 * 60 * 1000; // 15 minutes
 
   /** Resolves the CDP WebSocket endpoint for Browserless with anti-detection routing. */
   private get browserWsEndpoint(): string | null {
@@ -34,50 +39,112 @@ export class IrctcBrowserlessService {
   }
 
   /**
-   * Executes a task inside a remote Browserless browser session with Indian residential IP.
+   * Returns an active warmed page connected to IRCTC online charts.
    */
-  async executeInBrowser<T>(
-    evaluator: (page: Page) => Promise<T>,
-    timeoutMs = BROWSER_TIMEOUT_MS,
-  ): Promise<T> {
-    const wss = this.browserWsEndpoint;
-    if (!wss) throw new Error('Browserless endpoint not configured');
+  private async getWarmPage(): Promise<Page> {
+    const now = Date.now();
+    if (
+      this.page &&
+      this.browser?.isConnected() &&
+      now - this.pageWarmedAt < this.SESSION_MAX_AGE_MS
+    ) {
+      return this.page;
+    }
 
-    const t0 = Date.now();
-    const browser = await puppeteer.connect({ browserWSEndpoint: wss });
-    try {
+    if (this.warmingPromise) {
+      return this.warmingPromise;
+    }
+
+    this.warmingPromise = (async () => {
+      await this.cleanup();
+
+      const wss = this.browserWsEndpoint;
+      if (!wss) throw new Error('Browserless endpoint not configured');
+
+      const t0 = Date.now();
+      this.logger.log('[browserless] initializing warm browser session...');
+      const browser = await puppeteer.connect({ browserWSEndpoint: wss });
+      this.browser = browser;
+
+      browser.on('disconnected', () => {
+        this.logger.warn(
+          '[browserless] browser disconnected, invalidating session',
+        );
+        this.page = null;
+        this.browser = null;
+        this.pageWarmedAt = 0;
+      });
+
       const page = await browser.newPage();
       await page.setExtraHTTPHeaders({
         'Accept-Language': 'en-US,en;q=0.9',
       });
       await page.goto(ONLINE_CHARTS_URL, {
         waitUntil: 'domcontentloaded',
-        timeout: timeoutMs,
+        timeout: BROWSER_TIMEOUT_MS,
       });
 
-      // Let Akamai sensor JS settle
+      // Let Akamai sensor JS execute and establish valid session cookies
       await new Promise((r) => setTimeout(r, SENSOR_SETTLE_MS));
 
+      this.page = page;
+      this.pageWarmedAt = Date.now();
+      this.logger.log(
+        `[browserless] warm session ready in ${Date.now() - t0}ms`,
+      );
+      return page;
+    })().finally(() => {
+      this.warmingPromise = null;
+    });
+
+    return this.warmingPromise;
+  }
+
+  async cleanup(): Promise<void> {
+    try {
+      if (this.page) {
+        await this.page.close().catch(() => {});
+      }
+      if (this.browser) {
+        await this.browser.close().catch(() => {});
+      }
+    } catch {
+      // ignore cleanup errors
+    } finally {
+      this.page = null;
+      this.browser = null;
+      this.pageWarmedAt = 0;
+    }
+  }
+
+  /**
+   * Executes a task inside a warmed Browserless browser session with Indian residential IP.
+   */
+  async executeInBrowser<T>(evaluator: (page: Page) => Promise<T>): Promise<T> {
+    const t0 = Date.now();
+    try {
+      const page = await this.getWarmPage();
       const result = await evaluator(page);
       this.logger.log(`[browserless] execution_success ms=${Date.now() - t0}`);
       return result;
     } catch (err) {
       const ms = Date.now() - t0;
       this.logger.error(
-        `[browserless] execution_failed ms=${ms}: ${err instanceof Error ? err.message : String(err)}`,
+        `[browserless] execution_failed ms=${ms}: ${err instanceof Error ? err.message : String(err)}, resetting session...`,
       );
+      await this.cleanup();
       captureSentryException(err, {
         tags: { service: 'browserless' },
         extra: { ms },
       });
       throw err;
-    } finally {
-      await browser.close().catch(() => {});
     }
   }
 
   /** Fetch official IRCTC schedule inquiry via Browserless */
-  async fetchSchedule(trainNumber: string): Promise<{ status: number; data: any }> {
+  async fetchSchedule(
+    trainNumber: string,
+  ): Promise<{ status: number; data: any }> {
     return this.executeInBrowser(async (page) => {
       return page.evaluate(async (trainNo) => {
         const res = await fetch(

@@ -110,3 +110,39 @@ export function getBlogTranslation(key: string, lang: string): string {
   const dict = TRANSLATIONS[lang] || TRANSLATIONS.en;
   return dict[key] || TRANSLATIONS.en[key] || key;
 }
+
+export function mapStateToLanguage(stateCode: string): string | null {
+  const code = stateCode.toUpperCase().trim();
+  switch (code) {
+    case "MH": return "mr"; // Marathi
+    case "UP":
+    case "BR":
+    case "MP":
+    case "DL":
+    case "RJ":
+    case "HR":
+    case "UK":
+    case "CG":
+    case "JH":
+    case "CH": return "hi"; // Hindi
+    case "WB": return "bn"; // Bengali
+    case "TN": return "ta"; // Tamil
+    case "TG":
+    case "AP": return "te"; // Telugu
+    case "KL": return "ml"; // Malayalam
+    default: return null;
+  }
+}
+
+export function getLanguageName(langCode: string): string {
+  switch (langCode) {
+    case "mr": return "Marathi";
+    case "hi": return "Hindi";
+    case "bn": return "Bengali";
+    case "ta": return "Tamil";
+    case "te": return "Telugu";
+    case "ml": return "Malayalam";
+    default: return "English";
+  }
+}
+

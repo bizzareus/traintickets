@@ -458,7 +458,9 @@ export class IrctcService {
   ): Promise<TrainScheduleResponse> {
     if (this.browserlessService.isEnabled) {
       try {
-        this.logger.log(`[irctc/schedule] via=browserless train=${trainNumber}`);
+        this.logger.log(
+          `[irctc/schedule] via=browserless train=${trainNumber}`,
+        );
         const result = await this.browserlessService.fetchSchedule(trainNumber);
         if (result.status === 200 && result.data?.stationList?.length) {
           const raw = result.data as TrainScheduleResponse;

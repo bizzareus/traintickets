@@ -121,7 +121,10 @@ export class IrctcSessionKeeperService implements OnModuleInit {
   }
 
   private get providerName(): string {
-    if (process.env.BROWSERLESS_API_KEY?.trim() || process.env.BROWSERLESS_WSS?.trim()) {
+    if (
+      process.env.BROWSERLESS_API_KEY?.trim() ||
+      process.env.BROWSERLESS_WSS?.trim()
+    ) {
       return 'browserless';
     }
     return 'remote-browser';
@@ -250,7 +253,9 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         );
       }
 
-      await this.cookieStore.setCookie(cookieString, { source: this.providerName });
+      await this.cookieStore.setCookie(cookieString, {
+        source: this.providerName,
+      });
       this.lastRefreshAt = new Date().toISOString();
       this.lastError = null;
       this.logger.log(
@@ -280,7 +285,8 @@ export class IrctcSessionKeeperService implements OnModuleInit {
    */
   private async harvestViaRemoteBrowser(): Promise<string> {
     const wss = this.browserWsEndpoint;
-    if (!wss) throw new Error('No remote browser WebSocket endpoint configured');
+    if (!wss)
+      throw new Error('No remote browser WebSocket endpoint configured');
 
     const browser = await withTimeout(
       puppeteer.connect({ browserWSEndpoint: wss }),

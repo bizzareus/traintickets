@@ -1,15 +1,7 @@
 import type { MetadataRoute } from "next";
+import { getBaseUrl } from "@/lib/site-url";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://lastberth.com");
-
-const baseUrl =
-  typeof siteUrl === "string" && siteUrl.startsWith("http")
-    ? siteUrl
-    : "https://lastberth.com";
+const baseUrl = getBaseUrl();
 
 // Non-page areas kept out of every crawler: the private user dashboard, the
 // admin console, the JSON API, and the auth screens (no SEO value).

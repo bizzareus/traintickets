@@ -949,12 +949,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     }
   };
 
-  useEffect(() => {
-    void import("flowbite").then((fb) => {
-      if (typeof fb.initFlowbite === "function") fb.initFlowbite();
-    });
-  }, []);
-
   /**
    * Route-tab alternate-paths trigger. Preserves the original behaviour of
    * falling back to the user's selected stations when a listed train omits its

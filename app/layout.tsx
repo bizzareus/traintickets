@@ -9,6 +9,7 @@ import { IstRailMaintenanceBanner } from "@/components/IstRailMaintenance";
 import { listPopularChartTimes } from "@/lib/chartTimes";
 import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
 import { AdSenseScriptLoader } from "@/components/AdSenseScriptLoader";
+import { getBaseUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -17,6 +18,17 @@ const geistSans = localFont({
   weight: "100 900",
   display: "swap",
   preload: true,
+  fallback: [
+    "system-ui",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Roboto",
+    "Helvetica Neue",
+    "Arial",
+    "sans-serif",
+  ],
+  adjustFontFallback: "Arial",
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -24,6 +36,15 @@ const geistMono = localFont({
   weight: "100 900",
   display: "swap",
   preload: true,
+  fallback: [
+    "ui-monospace",
+    "SFMono-Regular",
+    "Menlo",
+    "Monaco",
+    "Consolas",
+    "monospace",
+  ],
+  adjustFontFallback: false,
 });
 
 export const viewport: Viewport = {
@@ -33,18 +54,10 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://lastberth.com");
+const baseUrl = getBaseUrl();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    typeof siteUrl === "string" && siteUrl.startsWith("http")
-      ? siteUrl
-      : "https://lastberth.com",
-  ),
+  metadataBase: new URL(baseUrl),
   title: {
     default:
       "LastBerth – Find Confirmed Train Tickets & Best Seat Options | IRCTC",
@@ -112,11 +125,6 @@ export const metadata: Metadata = {
   classification: "Train ticket booking and seat availability",
 };
 
-const baseUrl =
-  typeof siteUrl === "string" && siteUrl.startsWith("http")
-    ? siteUrl
-    : "https://lastberth.com";
-
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -158,6 +166,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="preconnect" href="https://us.i.posthog.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
+        <link rel="service-desc" href="/openapi.json" type="application/json" />
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
+        <link rel="service-doc" href="/blog" type="text/html" />
         <AdSenseScriptLoader />
       </head>
       <body

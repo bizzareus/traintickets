@@ -21,6 +21,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+/* Stabilize dynamic ad slots against CLS */
+ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
 }
 
 @layer utilities {

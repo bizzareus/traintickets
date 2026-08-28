@@ -1,4 +1,5 @@
 import { SITEMAP_BUCKETS } from "@/lib/seo/sitemap-buckets";
+import { getBaseUrl } from "@/lib/site-url";
 
 // Sitemap index served at /sitemap.xml.
 //
@@ -12,16 +13,7 @@ import { SITEMAP_BUCKETS } from "@/lib/seo/sitemap-buckets";
 // giving the split (per-bucket GSC indexing visibility, content pages separated
 // from the ~1,900 programmatic trains/chart-times URLs) with no GSC migration.
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://lastberth.com");
-
-const baseUrl =
-  typeof siteUrl === "string" && siteUrl.startsWith("http")
-    ? siteUrl
-    : "https://lastberth.com";
+const baseUrl = getBaseUrl();
 
 export const dynamic = "force-dynamic";
 

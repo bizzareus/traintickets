@@ -3,12 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getBlogPost, listBlogPostSlugs, listBlogPosts, parseFaqFromMarkdown, hasBlogPostTranslation, mapStateToLanguage, getLanguageName, getAvailableTranslations } from "@/lib/blog";
+import { getBlogPost, listBlogPostSlugs, listBlogPosts, parseFaqFromMarkdown, getLanguageName, getAvailableTranslations } from "@/lib/blog";
 import { isLowQualityTranslation, indexableTranslations } from "@/lib/blog-quality";
 import { getBlogTranslation } from "@/lib/blog-translations";
 import { parseHowToFromMarkdown } from "@/lib/seo/schema-howto";
 import { autoLinkGlossaryTerms } from "@/lib/seo/auto-linker";
-import { headers } from "next/headers";
 import { LanguagePromptSheet } from "@/components/blog/LanguagePromptSheet";
 import { BlogLanguageSelector } from "@/components/blog/BlogLanguageSelector";
 import { AuthorBio } from "@/components/blog/AuthorBio";
@@ -43,7 +42,6 @@ export async function generateStaticParams() {
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string[] }>;
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata({
@@ -138,7 +136,7 @@ function formatYmd(ymd: string): string {
   });
 }
 
-export default async function BlogPostPage({ params, searchParams }: BlogPostPageProps) {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug: slugArray } = await params;
   
   // Case 1: Regional index page, e.g. /blog/hi
@@ -159,17 +157,6 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
 
   const post = getBlogPost(slug, lang);
   if (!post) notFound();
-
-  // Detect region for language prompt ONLY if it's the English version
-  let showPrompt = false;
-  let suggestedLang = "";
-  if (lang === "en") {
-    const headersList = await headers();
-    const searchProps = searchParams ? await searchParams : {};
-    const regionCode = (searchProps.region as string) || headersList.get("x-vercel-ip-country-region") || "";
-    suggestedLang = mapStateToLanguage(regionCode) || "";
-    showPrompt = suggestedLang ? hasBlogPostTranslation(slug, suggestedLang) : false;
-  }
 
   const siteUrl =
     process.env.NEXT_PUBLIC_APP_URL ||
@@ -358,13 +345,11 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
         />
       ) : null}
       
-      {showPrompt && suggestedLang && (
-        <LanguagePromptSheet 
-          suggestedLang={suggestedLang} 
-          currentSlug={slug} 
-          langName={getLanguageName(suggestedLang)}
-        />
-      )}
+      <LanguagePromptSheet 
+        currentSlug={post.slug} 
+        currentLang={lang}
+        availableLangs={availableLangs}
+      />
     </article>
   );
 }
