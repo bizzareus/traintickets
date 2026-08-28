@@ -12,10 +12,10 @@
       "departureTime": "06:00",
       "day": 1,
       "distance": "0.0",
-      "chartTimeLocal": "20:37",
+      "chartTimeLocal": "20:11",
       "chartOneDayOffset": -1,
-      "chartTwoTimeLocal": null,
-      "chartTwoDayOffset": null,
+      "chartTwoTimeLocal": "05:45",
+      "chartTwoDayOffset": 0,
       "chartRemoteStation": "MAS"
     },
     {
@@ -38,7 +38,7 @@
       "departureTime": "10:35",
       "day": 1,
       "distance": "362.0",
-      "chartTimeLocal": "20:59",
+      "chartTimeLocal": "20:30",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
@@ -51,14 +51,14 @@
       "departureTime": "",
       "day": 1,
       "distance": "500.0",
-      "chartTimeLocal": "20:59",
+      "chartTimeLocal": "20:30",
       "chartOneDayOffset": -1,
       "chartTwoTimeLocal": null,
       "chartTwoDayOffset": null,
       "chartRemoteStation": "SBC"
     }
   ],
-  "summary": "The first reservation chart for Mys Shatabdi (12007) is prepared at Mgr Chennai Ctl (MAS) around 8:37 PM. 4 of 4 stations on the MAS to MYS route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-07-07T01:18:01.990Z",
+  "summary": "The first reservation chart for Mys Shatabdi (12007) is prepared at Mgr Chennai Ctl (MAS) around 8:11 PM, with a second (vacancy) chart around 5:45 AM. 4 of 4 stations on the MAS to MYS route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-08-28T00:44:47.709Z",
   "knownChartCount": 4
 }
