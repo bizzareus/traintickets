@@ -557,7 +557,7 @@ export class NotificationService {
     stationName?: string;
     journeyDateStr: string;
     result?: Service2CheckResult;
-  }): Promise<{ label: string; isReleased: boolean }> {
+  }): Promise<{ label?: string; isReleased: boolean }> {
     const { trainNumber, stationCode, stationName, journeyDateStr, result } =
       params;
     const displayName = stationName || stationCode;
@@ -621,7 +621,6 @@ export class NotificationService {
     }
 
     return {
-      label: 'New tickets open around chart preparation time',
       isReleased: false,
     };
   }
@@ -908,7 +907,7 @@ export class NotificationService {
           <td style="padding:16px 20px;">
             <p style="margin:0 0 8px 0; font-size:14px; font-weight:600; color:#b45309;">No tickets available | Buy ticket from TTE in train</p>
             <p style="margin:0 0 8px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segDisplay)}</p>
-            <p style="margin:0 0 12px 0; font-size:13px; font-weight:600; color:#4338ca;">${escapeHtml(chartOpenInfo.label)}</p>
+            ${chartOpenInfo.label ? `<p style="margin:0 0 12px 0; font-size:13px; font-weight:600; color:#4338ca;">${escapeHtml(chartOpenInfo.label)}</p>` : ''}
             ${actionButtonHtml}
           </td>
         </tr>
@@ -1190,7 +1189,9 @@ export class NotificationService {
 
         lines.push(`No tickets available:`);
         lines.push(segDisplay);
-        lines.push(chartOpenInfo.label);
+        if (chartOpenInfo.label) {
+          lines.push(chartOpenInfo.label);
+        }
 
         if (chartOpenInfo.isReleased) {
           const alternateClassUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}&trainNo=${encodeURIComponent(trainNumber)}`;

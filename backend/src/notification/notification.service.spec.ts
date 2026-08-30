@@ -242,6 +242,75 @@ describe('NotificationService', () => {
     expect(text).not.toContain('Total approx. fare');
   });
 
+  it('omits chart open time label when no chart preparation info is available', async () => {
+    const svc = new NotificationService(mockConfig(), mockStationCache());
+    const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+    const sendWhatsApp = jest
+      .spyOn(svc, 'sendWhatsApp')
+      .mockResolvedValue(true);
+
+    const partialResultNoChartInfo = {
+      status: 'success' as const,
+      openAiBookingPlan: [
+        {
+          instruction: 'PUNE - CCH - CC',
+          availability: 'CURR_AVL 26',
+        },
+      ],
+      openAiStructuredSeats: [
+        {
+          from: 'PUNE',
+          to: 'CCH',
+          class: 'CC',
+          coach: 'C1',
+          berth: '12',
+          seat: '12',
+        },
+      ],
+      trainSchedule: {
+        trainNumber: '11010',
+        trainName: 'Sinhagad Exp',
+        stationList: [
+          { stationCode: 'PUNE', stationName: 'Pune Jn', arrivalTime: '0605' },
+          { stationCode: 'CCH', stationName: 'Chinchvad', arrivalTime: '0634' },
+          {
+            stationCode: 'CSMT',
+            stationName: 'C Shivaji Mah T',
+            arrivalTime: '0955',
+          },
+        ],
+      },
+    };
+
+    await svc.notifyUser({
+      email: 'user@example.com',
+      mobile: '919876543210',
+      task: {
+        trainNumber: '11010',
+        trainName: 'Sinhagad Exp',
+        fromStationCode: 'PUNE',
+        toStationCode: 'CSMT',
+        journeyDate: new Date('2026-08-10T00:00:00.000Z'),
+      },
+      result: partialResultNoChartInfo,
+    });
+
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    const [, , emailHtml] = sendEmail.mock.calls[0];
+    expect(emailHtml).not.toContain(
+      'New tickets open around chart preparation time',
+    );
+    expect(emailHtml).toContain(
+      'No tickets available | Buy ticket from TTE in train',
+    );
+
+    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    const [, whatsappText] = sendWhatsApp.mock.calls[0];
+    expect(whatsappText).not.toContain(
+      'New tickets open around chart preparation time',
+    );
+  });
+
   it('triggers sendAlertFailureReport to me@kartikarora.in when WhatsApp or Email sending fails', async () => {
     const svc = new NotificationService(mockConfig(), mockStationCache());
     const failureReportSpy = jest

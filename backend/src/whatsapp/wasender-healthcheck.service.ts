@@ -5,11 +5,30 @@ import axios, { type AxiosInstance } from 'axios';
 import QRCode from 'qrcode';
 import { Resend } from 'resend';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
+import { escapeHtml } from '../notification/templates/notification-email.templates';
 import { renderWasenderQrEmailHtml } from './templates/wasender-qr-email.template';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
 const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
+const ALERT_COOLDOWN_MS = 2 * 60 * 60 * 1000; // 2 hours
+
+const CONNECTED_STATUSES = new Set([
+  'connected',
+  'working',
+  'ready',
+  'online',
+  'paired',
+  'authenticated',
+  'active',
+  'open',
+]);
+
+const CONNECTING_STATUSES = new Set([
+  'connecting',
+  'starting',
+  'initializing',
+]);
 
 export interface WasenderHealthcheckResult {
   healthy: boolean;
@@ -23,6 +42,8 @@ export interface WasenderHealthcheckResult {
 
 export interface WasenderHealthState {
   enabled: boolean;
+  activeProvider: string;
+  isWasenderActive: boolean;
   lastCheckTime: string | null;
   lastStatus: string | null;
   lastError: string | null;
@@ -30,6 +51,35 @@ export interface WasenderHealthState {
   isChecking: boolean;
   sessionId: string;
   adminEmail: string;
+}
+
+/**
+ * Extracts and normalizes session status string from diverse Wasender response formats.
+ */
+export function extractWasenderStatus(data: unknown): string | null {
+  if (!data || typeof data !== 'object') return null;
+  const d = data as Record<string, any>;
+  const raw =
+    d.status ||
+    d.state ||
+    d.data?.status ||
+    d.data?.state ||
+    d.session?.status ||
+    d.response?.status;
+  if (typeof raw === 'string' && raw.trim().length > 0) {
+    return raw.toLowerCase().trim();
+  }
+  if (
+    d.connected === true ||
+    d.data?.connected === true ||
+    d.isConnected === true
+  ) {
+    return 'connected';
+  }
+  if (d.success === true && !d.error) {
+    return 'connected';
+  }
+  return null;
 }
 
 @Injectable()
@@ -43,6 +93,8 @@ export class WasenderHealthcheckService {
   private lastStatus: string | null = null;
   private lastError: string | null = null;
   private lastQrSentAt: string | null = null;
+  private lastAlertSentAt: number | null = null;
+  private lastAlertStatus: string | null = null;
   private isChecking = false;
 
   constructor(private readonly config: ConfigService) {
@@ -80,11 +132,49 @@ export class WasenderHealthcheckService {
     );
   }
 
+  private isWasenderActive(): boolean {
+    const explicitEnable = this.config
+      .get<string>('WASENDER_HEALTHCHECK_ENABLED')
+      ?.trim()
+      .toLowerCase();
+    if (explicitEnable === 'true') return true;
+    if (explicitEnable === 'false') return false;
+
+    const provider = this.config
+      .get<string>('WHATSAPP_PROVIDER')
+      ?.trim()
+      .toLowerCase();
+    return provider === 'wasender' || (!provider && Boolean(this.wasenderKey));
+  }
+
+  private shouldSendAlert(status: string, force = false): boolean {
+    if (force) return true;
+    if (!this.lastAlertSentAt || this.lastAlertStatus !== status) {
+      return true;
+    }
+    return Date.now() - this.lastAlertSentAt >= ALERT_COOLDOWN_MS;
+  }
+
+  private recordAlertSent(status: string): void {
+    this.lastAlertSentAt = Date.now();
+    this.lastAlertStatus = status;
+    this.lastQrSentAt = new Date().toISOString();
+  }
+
   /**
    * Cron job running every 30 minutes to check Wasender WhatsApp connection health.
    */
   @Cron(CronExpression.EVERY_30_MINUTES)
   async handleScheduledHealthcheck(): Promise<void> {
+    if (!this.isWasenderActive()) {
+      const provider =
+        this.config.get<string>('WHATSAPP_PROVIDER')?.trim() || 'none';
+      this.logger.debug(
+        `Wasender is not active (current provider: ${provider}); skipping scheduled healthcheck.`,
+      );
+      return;
+    }
+
     this.logger.log('Executing scheduled 30-minute WASender healthcheck...');
     try {
       await this.checkHealth('cron');
@@ -132,38 +222,66 @@ export class WasenderHealthcheckService {
         `Checking WASender session status (source=${source}, session=${this.sessionId})...`,
       );
 
-      let status = 'unknown';
+      let parsedStatus: string | null = null;
       try {
-        const response = await this.httpClient.get<{
-          status?: string;
-          success?: boolean;
-          message?: string;
-        }>(`${WASENDER_BASE}/api/status`, {
-          headers: {
-            Authorization: `Bearer ${this.wasenderKey}`,
-            Accept: 'application/json',
+        const response = await this.httpClient.get<unknown>(
+          `${WASENDER_BASE}/api/status`,
+          {
+            headers: {
+              Authorization: `Bearer ${this.wasenderKey}`,
+              Accept: 'application/json',
+            },
+            timeout: 15_000,
           },
-          timeout: 15_000,
-        });
+        );
 
-        status = (
-          response.data?.status ||
-          (response.data?.success ? 'connected' : 'unknown')
-        ).toLowerCase();
+        parsedStatus = extractWasenderStatus(response.data);
       } catch (err: unknown) {
         if (axios.isAxiosError(err)) {
-          const resData = err.response?.data as
-            | { status?: string; message?: string; success?: boolean }
-            | undefined;
-          if (resData?.status) {
-            status = resData.status.toLowerCase();
-          } else if (
-            err.response?.status === 401 ||
-            err.response?.status === 404
-          ) {
-            // Session not found or unauthenticated for API key -> requires reconnect/link
-            status = 'logged_out';
-          } else {
+          const statusCode = err.response?.status;
+          const resData = err.response?.data as Record<string, any> | undefined;
+          const resMsg =
+            resData?.message ||
+            (typeof resData === 'string' ? resData : err.message);
+
+          // 401/403 indicate an invalid/mismatched API key or unauthorized token - NOT a device disconnect!
+          if (statusCode === 401 || statusCode === 403) {
+            const errMsg = `WASENDER_API_KEY is invalid or not found on Wasender (${resMsg}).`;
+            this.logger.error(`WASender authentication failed: ${errMsg}`);
+            this.lastStatus = 'INVALID_API_KEY';
+            this.lastError = errMsg;
+
+            if (source !== 'cron' || this.shouldSendAlert('INVALID_API_KEY')) {
+              await this.sendAlertEmail(
+                `⚠️ [WASender Error] Invalid API Key - Authentication Failed`,
+                `<div style="font-family:system-ui,-apple-system,sans-serif;padding:16px;line-height:1.5;">
+                  <h2 style="color:#b91c1c;margin:0 0 12px 0;">WASender API Key Error</h2>
+                  <p>The configured <code>WASENDER_API_KEY</code> was rejected by Wasender (HTTP ${statusCode}).</p>
+                  <p style="background:#f1f5f9;padding:8px 12px;border-radius:6px;font-family:monospace;font-size:13px;color:#334155;">${escapeHtml(resMsg)}</p>
+                  <p style="margin-top:16px;"><strong>Action Required:</strong></p>
+                  <ol style="padding-left:20px;color:#334155;">
+                    <li>Log in to <a href="https://www.wasenderapi.com/dashboard" style="color:#0284c7;">Wasender Dashboard</a>.</li>
+                    <li>Go to your WhatsApp session and click the 🔑 <strong>API Key</strong> icon.</li>
+                    <li>Copy the active Session API Key and update <code>WASENDER_API_KEY</code> in your <code>backend/.env</code>.</li>
+                  </ol>
+                </div>`,
+              );
+              this.recordAlertSent('INVALID_API_KEY');
+            }
+
+            return {
+              healthy: false,
+              status: 'INVALID_API_KEY',
+              qrSent: false,
+              message: errMsg,
+              sessionId: this.sessionId,
+              timestamp,
+              error: errMsg,
+            };
+          }
+
+          parsedStatus = extractWasenderStatus(resData);
+          if (!parsedStatus) {
             throw err;
           }
         } else {
@@ -171,11 +289,12 @@ export class WasenderHealthcheckService {
         }
       }
 
+      const status = parsedStatus || 'unknown';
       this.lastStatus = status;
 
-      if (status === 'connected') {
+      if (CONNECTED_STATUSES.has(status)) {
         this.logger.log(
-          `WASender WhatsApp session #${this.sessionId} is connected and healthy.`,
+          `WASender WhatsApp session #${this.sessionId} is connected and healthy (status=${status}).`,
         );
         this.lastError = null;
         return {
@@ -183,6 +302,21 @@ export class WasenderHealthcheckService {
           status: 'connected',
           qrSent: false,
           message: 'WhatsApp session is active and connected.',
+          sessionId: this.sessionId,
+          timestamp,
+        };
+      }
+
+      if (CONNECTING_STATUSES.has(status)) {
+        this.logger.log(
+          `WASender WhatsApp session #${this.sessionId} is currently establishing connection (status=${status}).`,
+        );
+        this.lastError = null;
+        return {
+          healthy: true,
+          status: 'connecting',
+          qrSent: false,
+          message: 'WhatsApp session is establishing connection.',
           sessionId: this.sessionId,
           timestamp,
         };
@@ -284,7 +418,8 @@ export class WasenderHealthcheckService {
         if (connectRes.data?.data?.qrCode) {
           qrCodeString = connectRes.data.data.qrCode;
         } else if (
-          connectRes.data?.data?.status?.toLowerCase() === 'connected'
+          connectRes.data?.data?.status &&
+          CONNECTED_STATUSES.has(connectRes.data.data.status.toLowerCase())
         ) {
           this.lastStatus = 'connected';
           return {
@@ -300,7 +435,7 @@ export class WasenderHealthcheckService {
         );
       }
 
-      // 2. If QR code string was not directly returned, fallback to /qrcode endpoint
+      // 2. Fallback to /qrcode endpoint if not returned directly
       if (!qrCodeString) {
         try {
           const qrRes = await this.httpClient.get<{
@@ -327,14 +462,21 @@ export class WasenderHealthcheckService {
       if (!qrCodeString) {
         const errMsg = `Could not retrieve QR code string from WASender connect/qrcode endpoints for session #${sessionId}.`;
         this.logger.error(errMsg);
-        await this.sendAlertEmail(
-          `⚠️ [WASender Alert] WhatsApp Disconnected - Failed to generate QR`,
-          `<div style="font-family:sans-serif;padding:16px;">
-            <h2>WhatsApp Session Logged Out</h2>
-            <p>Session <strong>#${sessionId}</strong> status: <strong>${currentStatus}</strong> (Trigger: ${source}).</p>
-            <p style="color:#b91c1c;">Wasender did not return a valid QR code string. Please check Wasender dashboard directly: <a href="https://wasenderapi.com/dashboard">wasenderapi.com</a>.</p>
-          </div>`,
-        );
+
+        const shouldEmail =
+          source !== 'cron' || this.shouldSendAlert(currentStatus);
+        if (shouldEmail) {
+          await this.sendAlertEmail(
+            `⚠️ [WASender Alert] WhatsApp Disconnected - Failed to generate QR`,
+            `<div style="font-family:system-ui,-apple-system,sans-serif;padding:16px;line-height:1.5;">
+              <h2 style="color:#b91c1c;margin:0 0 12px 0;">WhatsApp Session Disconnected</h2>
+              <p>Session <strong>#${escapeHtml(sessionId)}</strong> status: <strong>${escapeHtml(currentStatus)}</strong> (Trigger: ${escapeHtml(source)}).</p>
+              <p style="color:#334155;">Wasender did not return a QR code directly. Please link your device or verify your Personal Access Token in the <a href="https://www.wasenderapi.com/dashboard" style="color:#0284c7;">Wasender Dashboard</a>.</p>
+            </div>`,
+          );
+          this.recordAlertSent(currentStatus);
+        }
+
         return { qrSent: false, message: errMsg, error: errMsg };
       }
 
@@ -365,9 +507,21 @@ export class WasenderHealthcheckService {
 
       const subject = `🚨 Action Required: WhatsApp Disconnected - Scan QR Code (Session #${sessionId})`;
 
+      const shouldEmail =
+        source !== 'cron' || this.shouldSendAlert(currentStatus);
+      if (!shouldEmail) {
+        this.logger.log(
+          `Skipping duplicate QR email dispatch due to alert cooldown (${currentStatus}).`,
+        );
+        return {
+          qrSent: false,
+          message: `QR code generated, but duplicate email was suppressed by cooldown.`,
+        };
+      }
+
       const sent = await this.sendQrEmail(subject, emailHtml, qrBuffer);
       if (sent) {
-        this.lastQrSentAt = new Date().toISOString();
+        this.recordAlertSent(currentStatus);
         this.logger.log(
           `Successfully generated and emailed WhatsApp reconnection QR code to ${this.adminEmail}`,
         );
@@ -452,8 +606,13 @@ export class WasenderHealthcheckService {
    * Returns current health state metadata for diagnostics and admin views.
    */
   getState(): WasenderHealthState {
+    const provider =
+      this.config.get<string>('WHATSAPP_PROVIDER')?.trim().toLowerCase() ||
+      'wasender';
     return {
       enabled: Boolean(this.wasenderKey),
+      activeProvider: provider,
+      isWasenderActive: this.isWasenderActive(),
       lastCheckTime: this.lastCheckTime,
       lastStatus: this.lastStatus,
       lastError: this.lastError,
