@@ -129,3 +129,97 @@ export function collapsedAlternatePathTimingSummary(legs: AlternateLeg[]): {
   if (!timePart && !durationLabel) return null;
   return { timePart, durationLabel };
 }
+
+export function formatPassengerStatusDisplay(passenger: Record<string, any>): {
+  bookingDisplay: string;
+  currentDisplay: string;
+  isConfirmed: boolean;
+} {
+  const rawCurrent = String(
+    passenger.currentStatusNew ??
+      passenger.CurrentStatusNew ??
+      passenger.CurrentStatus ??
+      passenger.currentStatus ??
+      passenger.ConfirmTktStatus ??
+      "",
+  ).trim();
+
+  const rawBooking = String(
+    passenger.BookingStatus ?? passenger.bookingStatus ?? "",
+  ).trim();
+
+  let coach = String(
+    passenger.Coach ??
+      passenger.currentCoachId ??
+      passenger.bookingCoachId ??
+      "",
+  ).trim();
+  let seat = String(
+    passenger.Berth ??
+      passenger.Seat ??
+      passenger.currentBerthNo ??
+      passenger.bookingBerthNo ??
+      "",
+  ).trim();
+
+  let mainCurrentStatus = rawCurrent;
+
+  // Extract from slash or comma separated formats (e.g. "CNF/B3/36" or "CNF,B3,36,MB")
+  if (rawCurrent.includes("/") || rawCurrent.includes(",")) {
+    const parts = rawCurrent
+      .split(/[/,]/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (parts.length >= 1) {
+      mainCurrentStatus = parts[0];
+      if (!coach && parts.length >= 2 && !/^\d+$/.test(parts[1])) {
+        coach = parts[1];
+      }
+      if (!seat && parts.length >= 3) {
+        seat = parts[2];
+      } else if (!seat && parts.length === 2 && /^\d+$/.test(parts[1])) {
+        seat = parts[1];
+      }
+    }
+  }
+
+  const upperCurrent = mainCurrentStatus.toUpperCase();
+  const isConfirmed =
+    upperCurrent === "CNF" ||
+    upperCurrent.startsWith("CNF") ||
+    upperCurrent.includes("CONFIRM");
+
+  const statusLabel = isConfirmed
+    ? "Confirm"
+    : mainCurrentStatus || "Waitlisted";
+
+  const currentParts: string[] = [statusLabel];
+  if (coach) {
+    // If coach already starts with 'Coach ', avoid duplicate
+    currentParts.push(
+      coach.toLowerCase().startsWith("coach") ? coach : `Coach ${coach}`,
+    );
+  }
+  if (seat) {
+    // If seat already starts with 'Seat ' or 'Berth ', avoid duplicate
+    currentParts.push(
+      seat.toLowerCase().startsWith("seat") ||
+        seat.toLowerCase().startsWith("berth")
+        ? seat
+        : `Seat ${seat}`,
+    );
+  }
+
+  const currentDisplay = `Current Status - ${currentParts.join(" / ")}`;
+  const bookingDisplay = rawBooking
+    ? rawBooking.toLowerCase().startsWith("booking")
+      ? rawBooking
+      : `Booking - ${rawBooking}`
+    : "";
+
+  return {
+    bookingDisplay,
+    currentDisplay,
+    isConfirmed,
+  };
+}

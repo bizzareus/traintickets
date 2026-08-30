@@ -7,6 +7,7 @@ import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
 import { StationChartingStatus } from "@/components/booking-v2/StationChartingStatus";
 import { AlternatePathContent } from "@/components/booking-v2/AlternatePathContent";
+import { formatPassengerStatusDisplay } from "@/components/booking-v2/alternatePathHelpers";
 import { PartyPopperConfetti } from "@/components/booking-v2/PartyPopperConfetti";
 import { TrainScheduleBottomSheet } from "@/components/booking-v2/TrainScheduleBottomSheet";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
@@ -482,35 +483,40 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                     Passenger Seat Status
                   </h4>
                   <div className="grid gap-2 sm:grid-cols-2">
-                    {pnrData.PassengerStatus.map(
-                      (passenger: PnrPassengerStatus) => (
+                    {pnrData.PassengerStatus.map((passenger: PnrPassengerStatus) => {
+                      const { bookingDisplay, currentDisplay, isConfirmed } =
+                        formatPassengerStatusDisplay(passenger);
+                      return (
                         <div
                           key={passenger.Number}
-                          className="flex items-center justify-between rounded-lg border border-slate-100 bg-slate-50/50 p-2.5 text-xs shadow-2xs"
+                          className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-xl border p-3 text-xs shadow-2xs transition-colors ${
+                            isConfirmed
+                              ? "border-emerald-200 bg-emerald-50/50"
+                              : "border-slate-200 bg-slate-50/60"
+                          }`}
                         >
-                          <span className="font-semibold text-slate-600">
+                          <span className="font-bold text-slate-700 shrink-0">
                             Passenger {passenger.Number}
                           </span>
-                          <div className="flex items-center gap-1.5">
-                            {passenger.BookingStatus && (
-                              <span className="rounded bg-slate-200/80 px-1.5 py-0.5 font-medium text-slate-700">
-                                Bkg: {passenger.BookingStatus}
+                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                            {bookingDisplay && (
+                              <span className="rounded-md bg-white px-2 py-1 font-medium text-slate-700 border border-slate-200 shadow-2xs">
+                                {bookingDisplay}
                               </span>
                             )}
                             <span
-                              className={`rounded px-1.5 py-0.5 font-bold ${
-                                passenger.CurrentStatus === "CNF" ||
-                                passenger.ConfirmTktStatus === "Confirm"
-                                  ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
-                                  : "bg-amber-100 text-amber-800 border border-amber-200"
+                              className={`rounded-md px-2.5 py-1 font-bold shadow-2xs ${
+                                isConfirmed
+                                  ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
+                                  : "bg-amber-100 text-amber-900 border border-amber-300"
                               }`}
                             >
-                              Cur: {passenger.CurrentStatus}
+                              {currentDisplay}
                             </span>
                           </div>
                         </div>
-                      ),
-                    )}
+                      );
+                    })}
                   </div>
                 </div>
               )}
