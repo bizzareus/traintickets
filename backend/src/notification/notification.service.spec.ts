@@ -322,6 +322,61 @@ describe('NotificationService', () => {
     );
   });
 
+  it('includes one-line chart preparation trigger message in email and whatsapp when chartPreparationDetails is present', async () => {
+    const svc = new NotificationService(mockConfig(), mockStationCache());
+    const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+    const sendWhatsApp = jest
+      .spyOn(svc, 'sendWhatsApp')
+      .mockResolvedValue(true);
+
+    const resultWithChartPrep: Service2CheckResult = {
+      ...successWithTickets,
+      chartPreparationDetails: {
+        chartingStationCode: 'SPN',
+        firstChartCreationTime: '03:43',
+        storedInDb: true,
+      },
+      trainSchedule: {
+        trainNumber: '12237',
+        trainName: 'Begumpura Exp',
+        stationFrom: 'SPN',
+        stationTo: 'JAT',
+        stationList: [
+          {
+            stationCode: 'SPN',
+            stationName: 'Shahjehanpur',
+            departureTime: '0343',
+          },
+          { stationCode: 'JAT', stationName: 'Jammu Tawi', arrivalTime: '1500' },
+        ],
+      },
+    };
+
+    await svc.notifyUser({
+      email: 'user@example.com',
+      mobile: '919876543210',
+      task: {
+        trainNumber: '12237',
+        trainName: 'Begumpura Exp',
+        fromStationCode: 'SPN',
+        toStationCode: 'JAT',
+        journeyDate: new Date('2026-08-30T00:00:00.000Z'),
+      },
+      result: resultWithChartPrep,
+      isFollowUpLeg: true,
+    });
+
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    const [, , emailHtml] = sendEmail.mock.calls[0];
+    expect(emailHtml).toContain('Chart was prepared for Shahjehanpur on');
+    expect(emailHtml).toContain('and we found some tickets.');
+
+    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    const [, whatsappText] = sendWhatsApp.mock.calls[0];
+    expect(whatsappText).toContain('Chart was prepared for Shahjehanpur on');
+    expect(whatsappText).toContain('and we found some tickets.');
+  });
+
   it('triggers sendAlertFailureReport to me@kartikarora.in when WhatsApp or Email sending fails', async () => {
     const svc = new NotificationService(mockConfig(), mockStationCache());
     const failureReportSpy = jest

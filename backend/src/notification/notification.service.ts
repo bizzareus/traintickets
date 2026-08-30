@@ -25,6 +25,7 @@ import {
   formatSegmentScheduleTimes,
   hasBookablePlanForNotification,
   normalizeE164Mobile,
+  normalizeIrctcTimeDisplay,
 } from './notification.helpers';
 import { renderSeatsFoundEmailHtml } from './templates/notification-email.templates';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
@@ -69,7 +70,8 @@ function formatChartTimeIst(
   dayOffset: number = 0,
 ): { label: string; formattedTime: string; isReleased: boolean } | null {
   const ymd = journeyDateYmd.slice(0, 10);
-  const match = timeStr.trim().match(/^(\d{1,2}):(\d{2})/);
+  const normalizedTime = normalizeIrctcTimeDisplay(timeStr);
+  const match = normalizedTime.trim().match(/^(\d{1,2}):(\d{2})/);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd) || !match) return null;
   const hh = match[1].padStart(2, '0');
   const mm = match[2].padStart(2, '0');
@@ -976,6 +978,7 @@ export class NotificationService {
     stationNameMap: Map<string, string>;
     stationScheduleList?: ScheduleStation[];
     trainNumber: string;
+    chartPreparationText?: string;
   }): string {
     const {
       trainLabel,
@@ -985,6 +988,7 @@ export class NotificationService {
       stationNameMap,
       stationScheduleList,
       trainNumber,
+      chartPreparationText,
     } = params;
 
     const lines: string[] = [
@@ -994,6 +998,7 @@ export class NotificationService {
       `Train: ${trainLabel}`,
       `Leg: ${routeDisplay}`,
       `Date: ${journeyDateReadable}`,
+      ...(chartPreparationText ? [chartPreparationText] : []),
       '',
     ];
 
@@ -1004,14 +1009,8 @@ export class NotificationService {
       const segmentRoute = this.formatSegmentRoute(
         item.instruction,
         stationNameMap,
+        stationScheduleList,
       );
-      const parts = (item.instruction || '').split(' - ').map((p) => p.trim());
-      const segFrom = parts[0] ?? '';
-      const segTo = parts[1] ?? '';
-      const segmentTimes =
-        segFrom && segTo
-          ? formatSegmentScheduleTimes(stationScheduleList, segFrom, segTo)
-          : '';
       const classTag = (
         (item.instruction || '').split(' - ')[2] ?? '3A'
       ).trim();
@@ -1029,7 +1028,6 @@ export class NotificationService {
 
       lines.push(`Ticket Found [${classTag}]${availabilityTag}`);
       lines.push(segmentRoute);
-      if (segmentTimes) lines.push(segmentTimes);
       if (priceStr) lines.push(priceStr);
       lines.push(`Book on IRCTC: ${segBookUrl}`);
       lines.push('');
@@ -1048,6 +1046,7 @@ export class NotificationService {
     stationNameMap: Map<string, string>;
     stationScheduleList?: ScheduleStation[];
     trainNumber: string;
+    chartPreparationText?: string;
   }): string {
     const {
       trainLabel,
@@ -1057,6 +1056,7 @@ export class NotificationService {
       stationNameMap,
       stationScheduleList,
       trainNumber,
+      chartPreparationText,
     } = params;
 
     const filledPlan = plan.filter(isFilledOpenAiPlanItem);
@@ -1101,6 +1101,7 @@ export class NotificationService {
       trainLabel,
       routeDisplay,
       journeyDateReadable,
+      chartPreparationText,
     });
   }
 
@@ -1548,9 +1549,6 @@ ${targetSearchUrl}`;
       const trainLabel = [task.trainNumber, task.trainName]
         .filter(Boolean)
         .join(' ');
-      const chartPreparationText = result.chartPreparationDetails
-        ? `Chart preparation: ${result.chartPreparationDetails.firstChartCreationTime} at ${result.chartPreparationDetails.chartingStationCode}`
-        : undefined;
       const stationScheduleList = result.trainSchedule?.stationList;
       const stationNameMap = this.getStationNameMap(stationScheduleList);
       const plan = (result.openAiBookingPlan ?? []).filter(
@@ -1571,6 +1569,9 @@ ${targetSearchUrl}`;
       await this.enrichStationNames(stationNameMap, [
         task.fromStationCode,
         task.toStationCode,
+        ...(result.chartPreparationDetails?.chartingStationCode
+          ? [result.chartPreparationDetails.chartingStationCode]
+          : []),
         ...coverage.flatMap((c) => [c.fromCode, c.toCode]),
         ...plan.flatMap((p) =>
           String(p?.instruction ?? '')
@@ -1578,6 +1579,18 @@ ${targetSearchUrl}`;
             .slice(0, 2),
         ),
       ]);
+
+      let chartPreparationText: string | undefined;
+      if (result.chartPreparationDetails) {
+        const chartingCode =
+          result.chartPreparationDetails.chartingStationCode;
+        const chartingName =
+          stationNameMap.get(chartingCode.toUpperCase()) ?? chartingCode;
+        const rawTime = result.chartPreparationDetails.firstChartCreationTime;
+        const formatted = formatChartTimeIst(journeyDateStr, rawTime, 0);
+        const timeDisplay = formatted ? formatted.formattedTime : rawTime;
+        chartPreparationText = `Chart was prepared for ${chartingName} on ${timeDisplay} and we found some tickets.`;
+      }
       const routeDisplay = `${task.fromStationCode} > ${task.toStationCode}`;
       const emailRouteDisplay = this.formatJourneyRoute(
         task.fromStationCode,
@@ -1651,6 +1664,7 @@ ${targetSearchUrl}`;
                   stationNameMap,
                   stationScheduleList,
                   trainNumber: task.trainNumber,
+                  chartPreparationText,
                 })
               : hasTickets
                 ? await this.buildWhatsAppSeatsFoundText({
@@ -1867,6 +1881,7 @@ ${targetSearchUrl}`;
                   stationNameMap,
                   stationScheduleList,
                   trainNumber: task.trainNumber,
+                  chartPreparationText,
                 })
               : hasTickets
                 ? await this.buildSeatsFoundEmailHtml({

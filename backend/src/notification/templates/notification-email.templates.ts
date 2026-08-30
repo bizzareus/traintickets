@@ -36,7 +36,7 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
       : '';
 
   const chartPrepLine = chartPreparationText
-    ? `<p style="margin:4px 0 0 0; font-size:13px; color:#64748b; font-style:italic;">${escapeHtml(chartPreparationText)}</p>`
+    ? `<p style="margin:6px 0 0 0; font-size:13px; color:#475569;">${escapeHtml(chartPreparationText)}</p>`
     : '';
 
   const partialNoticeLine = partialJourneyNotice
