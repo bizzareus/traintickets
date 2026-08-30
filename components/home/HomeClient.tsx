@@ -1672,13 +1672,15 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                                 <div className="text-[10px] uppercase text-gray-500">
                                   General
                                 </div>
-                                <div
-                                  className={cn(
-                                    statusCls ?? "font-medium text-gray-900",
-                                  )}
-                                >
-                                  {line}
-                                </div>
+                                {bookable && (
+                                  <div
+                                    className={cn(
+                                      statusCls ?? "font-medium text-gray-900",
+                                    )}
+                                  >
+                                    {line}
+                                  </div>
+                                )}
                                 {gn.fare != null && (
                                   <div className="font-semibold text-gray-900">
                                     ₹{gn.fare}
@@ -1713,7 +1715,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                                 }
                                 onClick={() => findAlternatesForRoute(t, cls)}
                               >
-                                Check Confirmed Tickets
+                                {gn ? "Tickets Available" : "Check Tickets"}
                               </button>
                             )}
                           </div>
