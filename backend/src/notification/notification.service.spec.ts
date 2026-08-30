@@ -87,9 +87,16 @@ describe('NotificationService', () => {
     const [, subject, html] = sendEmail.mock.calls[0];
     expect(subject).toContain('No Tickets Found');
     expect(html).toContain('No Tickets Found');
+    expect(html).toContain(
+      'Look for alternate trains available for your journey:',
+    );
+    expect(html).toContain('Find Alternate Trains');
 
     const [, whatsAppText] = sendWhatsApp.mock.calls[0];
     expect(whatsAppText).toContain('No Tickets Found');
+    expect(whatsAppText).toContain(
+      'Look for alternate trains available for your journey:',
+    );
   });
 
   it('sends email with readable journey date, schedule times, and availability count in HTML', async () => {

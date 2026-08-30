@@ -1361,8 +1361,8 @@ export class NotificationService {
     <p style="margin:0 0 12px 0;">${mainNote}</p>
     ${primaryDetailsBlock}
     ${alternativesHtml}
-    <p style="margin:16px 0 16px 0;">You can try checking on LastBerth for other trains:</p>
-    <a href="${searchHref}" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Search on LastBerth</a>
+    <p style="margin:16px 0 16px 0;">Look for alternate trains available for your journey:</p>
+    <a href="${searchHref}" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Find Alternate Trains</a>
   </div>
   <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.</p>
 </body>
@@ -1449,7 +1449,7 @@ export class NotificationService {
 
 We didn't find any tickets in *${trainLabel}* for *${routeDisplay}* on *${journeyDateReadable}*.${alternativesText}
 
-You can try checking on LastBerth for other trains:
+Look for alternate trains available for your journey:
 ${targetSearchUrl}`;
     }
 
@@ -1464,7 +1464,7 @@ Date: ${journeyDateReadable}
 
 ${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}
 
-You can try checking on LastBerth for other trains:
+Look for alternate trains available for your journey:
 ${targetSearchUrl}`;
   }
 
