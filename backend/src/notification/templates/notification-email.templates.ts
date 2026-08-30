@@ -71,11 +71,6 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
                 ${cardRowsHtml}
               </table>
               ${totalRow}
-              <div style="margin-top:20px; padding:12px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; text-align:center;">
-                <p style="margin:0; font-size:13px; color:#475569;">
-                  💡 <strong>Tip:</strong> Look for the realtime seat status on LastBerth to track vacant seats around you.
-                </p>
-              </div>
             </td>
           </tr>
         </table>

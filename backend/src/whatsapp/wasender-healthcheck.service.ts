@@ -24,11 +24,7 @@ const CONNECTED_STATUSES = new Set([
   'open',
 ]);
 
-const CONNECTING_STATUSES = new Set([
-  'connecting',
-  'starting',
-  'initializing',
-]);
+const CONNECTING_STATUSES = new Set(['connecting', 'starting', 'initializing']);
 
 export interface WasenderHealthcheckResult {
   healthy: boolean;
@@ -53,12 +49,35 @@ export interface WasenderHealthState {
   adminEmail: string;
 }
 
+interface WasenderStatusPayload {
+  status?: string;
+  state?: string;
+  connected?: boolean;
+  isConnected?: boolean;
+  success?: boolean;
+  error?: unknown;
+  message?: string;
+  data?: {
+    status?: string;
+    state?: string;
+    connected?: boolean;
+    qrCode?: string;
+    message?: string;
+  };
+  session?: {
+    status?: string;
+  };
+  response?: {
+    status?: string;
+  };
+}
+
 /**
  * Extracts and normalizes session status string from diverse Wasender response formats.
  */
 export function extractWasenderStatus(data: unknown): string | null {
   if (!data || typeof data !== 'object') return null;
-  const d = data as Record<string, any>;
+  const d = data as WasenderStatusPayload;
   const raw =
     d.status ||
     d.state ||
@@ -239,10 +258,16 @@ export class WasenderHealthcheckService {
       } catch (err: unknown) {
         if (axios.isAxiosError(err)) {
           const statusCode = err.response?.status;
-          const resData = err.response?.data as Record<string, any> | undefined;
-          const resMsg =
-            resData?.message ||
-            (typeof resData === 'string' ? resData : err.message);
+          const resData = err.response?.data as
+            | WasenderStatusPayload
+            | string
+            | undefined;
+          const resMsg: string =
+            typeof resData === 'object' && typeof resData?.message === 'string'
+              ? resData.message
+              : typeof resData === 'string'
+                ? resData
+                : err.message;
 
           // 401/403 indicate an invalid/mismatched API key or unauthorized token - NOT a device disconnect!
           if (statusCode === 401 || statusCode === 403) {
