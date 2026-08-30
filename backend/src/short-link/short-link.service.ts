@@ -1,7 +1,7 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import * as crypto from 'crypto';
-
 export type AlertShortLinkPayload = {
   type: 'chart_alert';
   trainNumber: string;
@@ -32,6 +32,79 @@ export type ShortLinkClickMeta = {
   metadata?: Record<string, unknown>;
 };
 
+export type ResolvedLinkUser = {
+  email: string | null;
+  mobile: string | null;
+  name: string | null;
+  channel: string | null;
+  recipient: string | null;
+};
+
+export type ResolvedLinkTrainContext = {
+  trainNumber: string | null;
+  trainName: string | null;
+  fromStation: string | null;
+  toStation: string | null;
+  journeyDate: string | null;
+  classCode: string | null;
+  notificationType: string | null;
+};
+
+export type ParsedUserAgent = {
+  browser: string;
+  os: string;
+  deviceType: 'mobile' | 'desktop' | 'tablet' | 'bot';
+};
+
+export function parseUserAgent(ua?: string | null): ParsedUserAgent {
+  if (!ua) {
+    return { browser: 'Unknown', os: 'Unknown', deviceType: 'desktop' };
+  }
+  const s = ua.toLowerCase();
+
+  // OS detection
+  let os = 'Unknown OS';
+  if (/iphone|ipad|ipod/.test(s)) os = 'iOS';
+  else if (/android/.test(s)) os = 'Android';
+  else if (/macintosh|mac os x/.test(s)) os = 'macOS';
+  else if (/windows nt/.test(s)) os = 'Windows';
+  else if (/linux/.test(s)) os = 'Linux';
+
+  // Device detection
+  let deviceType: 'mobile' | 'desktop' | 'tablet' | 'bot' = 'desktop';
+  if (/ipad|tablet|(android(?!.*mobile))/.test(s)) {
+    deviceType = 'tablet';
+  } else if (
+    /mobile|iphone|ipod|android|blackberry|iemobile|opera mini/.test(s)
+  ) {
+    deviceType = 'mobile';
+  }
+
+  // Browser detection
+  let browser = 'Unknown Browser';
+  if (/whatsapp/.test(s)) browser = 'WhatsApp In-App';
+  else if (/instagram/.test(s)) browser = 'Instagram In-App';
+  else if (/fban|fbav/.test(s)) browser = 'Facebook In-App';
+  else if (/edg\//.test(s)) browser = 'Microsoft Edge';
+  else if (/opr\/|opera/.test(s)) browser = 'Opera';
+  else if (/chrome|crios/.test(s) && !/edg\//.test(s))
+    browser = 'Google Chrome';
+  else if (/safari/.test(s) && !/chrome|crios/.test(s)) browser = 'Safari';
+  else if (/firefox|fxios/.test(s)) browser = 'Firefox';
+
+  if (
+    /(bot|crawler|spider|slurp|facebookexternalhit|preview|curl|wget)/.test(
+      s,
+    ) &&
+    !s.includes('mobile')
+  ) {
+    deviceType = 'bot';
+    browser = 'Bot / Preview Crawler';
+  }
+
+  return { browser, os, deviceType };
+}
+
 @Injectable()
 export class ShortLinkService {
   private readonly logger = new Logger(ShortLinkService.name);
@@ -40,6 +113,163 @@ export class ShortLinkService {
 
   private generateCode(): string {
     return crypto.randomBytes(4).toString('hex').slice(0, 7);
+  }
+
+  private resolveLinkAttributes(
+    payloadRaw: unknown,
+    userNameMap?: Map<string, string>,
+  ): { user: ResolvedLinkUser; trainContext: ResolvedLinkTrainContext } {
+    const payload =
+      typeof payloadRaw === 'object' && payloadRaw !== null
+        ? (payloadRaw as Record<string, unknown>)
+        : {};
+
+    const rawEmail =
+      typeof payload.email === 'string' && payload.email.trim()
+        ? payload.email.trim()
+        : typeof payload.recipient === 'string' &&
+            payload.recipient.includes('@')
+          ? payload.recipient.trim()
+          : null;
+
+    const rawMobile =
+      typeof payload.mobile === 'string' && payload.mobile.trim()
+        ? payload.mobile.trim()
+        : typeof payload.recipient === 'string' &&
+            !payload.recipient.includes('@') &&
+            /\d{7,}/.test(payload.recipient)
+          ? payload.recipient.trim()
+          : null;
+
+    const matchedName =
+      (rawEmail ? userNameMap?.get(rawEmail.toLowerCase()) : null) ||
+      (rawMobile ? userNameMap?.get(rawMobile.replace(/\D/g, '')) : null) ||
+      (typeof payload.name === 'string' && payload.name.trim()
+        ? payload.name.trim()
+        : null);
+
+    const channel =
+      typeof payload.channel === 'string' && payload.channel.trim()
+        ? payload.channel.trim().toLowerCase()
+        : rawMobile
+          ? 'whatsapp'
+          : rawEmail
+            ? 'email'
+            : null;
+
+    const user: ResolvedLinkUser = {
+      email: rawEmail,
+      mobile: rawMobile,
+      name: matchedName,
+      channel,
+      recipient:
+        typeof payload.recipient === 'string' ? payload.recipient : null,
+    };
+
+    const trainNumber =
+      typeof payload.trainNumber === 'string' && payload.trainNumber.trim()
+        ? payload.trainNumber.trim()
+        : typeof payload.trainNo === 'string' && payload.trainNo.trim()
+          ? payload.trainNo.trim()
+          : null;
+
+    const trainName =
+      typeof payload.trainName === 'string' && payload.trainName.trim()
+        ? payload.trainName.trim()
+        : null;
+
+    const fromStation =
+      typeof payload.fromStationCode === 'string' &&
+      payload.fromStationCode.trim()
+        ? payload.fromStationCode.trim().toUpperCase()
+        : typeof payload.from === 'string' && payload.from.trim()
+          ? payload.from.trim().toUpperCase()
+          : null;
+
+    const toStation =
+      typeof payload.toStationCode === 'string' && payload.toStationCode.trim()
+        ? payload.toStationCode.trim().toUpperCase()
+        : typeof payload.to === 'string' && payload.to.trim()
+          ? payload.to.trim().toUpperCase()
+          : null;
+
+    const journeyDate =
+      typeof payload.journeyDate === 'string' && payload.journeyDate.trim()
+        ? payload.journeyDate.trim().slice(0, 10)
+        : typeof payload.date === 'string' && payload.date.trim()
+          ? payload.date.trim().slice(0, 10)
+          : null;
+
+    const classCode =
+      typeof payload.classCode === 'string' && payload.classCode.trim()
+        ? payload.classCode.trim().toUpperCase()
+        : typeof payload.class === 'string' && payload.class.trim()
+          ? payload.class.trim().toUpperCase()
+          : null;
+
+    const notificationType =
+      typeof payload.notificationType === 'string' &&
+      payload.notificationType.trim()
+        ? payload.notificationType.trim()
+        : typeof payload.type === 'string' && payload.type === 'chart_alert'
+          ? 'chart_alert_subscription'
+          : null;
+
+    const trainContext: ResolvedLinkTrainContext = {
+      trainNumber,
+      trainName,
+      fromStation,
+      toStation,
+      journeyDate,
+      classCode,
+      notificationType,
+    };
+
+    return { user, trainContext };
+  }
+
+  private async buildUserNameMap(
+    emails: string[],
+    mobiles: string[],
+  ): Promise<Map<string, string>> {
+    const map = new Map<string, string>();
+    const cleanEmails = Array.from(
+      new Set(emails.filter(Boolean).map((e) => e.toLowerCase())),
+    );
+    const cleanMobiles = Array.from(
+      new Set(mobiles.filter(Boolean).map((m) => m.replace(/\D/g, ''))),
+    );
+
+    if (cleanEmails.length === 0 && cleanMobiles.length === 0) {
+      return map;
+    }
+
+    try {
+      const users = await this.prisma.user.findMany({
+        where: {
+          OR: [
+            ...(cleanEmails.length > 0 ? [{ email: { in: cleanEmails } }] : []),
+            ...(cleanMobiles.length > 0
+              ? [{ phone: { in: cleanMobiles } }]
+              : []),
+          ],
+        },
+        select: { name: true, email: true, phone: true },
+      });
+
+      for (const u of users) {
+        if (u.name) {
+          if (u.email) map.set(u.email.toLowerCase(), u.name);
+          if (u.phone) map.set(u.phone.replace(/\D/g, ''), u.name);
+        }
+      }
+    } catch (err) {
+      this.logger.warn(
+        `Failed to resolve user names: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+
+    return map;
   }
 
   /**
@@ -189,5 +419,548 @@ export class ShortLinkService {
       );
       return link;
     }
+  }
+
+  /**
+   * ADMIN: High-level KPI metrics and activity breakdown.
+   */
+  async getAdminOverview(params?: { startDate?: string; endDate?: string }) {
+    const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
+    const now = new Date();
+    const past24h = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+    const past7d = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+    const dateFilter =
+      params?.startDate || params?.endDate
+        ? {
+            createdAt: {
+              ...(params.startDate
+                ? { gte: new Date(`${params.startDate}T00:00:00.000Z`) }
+                : {}),
+              ...(params.endDate
+                ? { lte: new Date(`${params.endDate}T23:59:59.999Z`) }
+                : {}),
+            },
+          }
+        : {};
+
+    const [
+      totalLinks,
+      totalClicks,
+      clickedLinksCount,
+      recentClicks24h,
+      recentClicks7d,
+      allLinksWithPayload,
+      allClicksWithShortLink,
+    ] = await Promise.all([
+      this.prisma.shortLink.count({ where: dateFilter }),
+      this.prisma.shortLinkClick.count({
+        where:
+          params?.startDate || params?.endDate
+            ? {
+                clickedAt: {
+                  ...(params.startDate
+                    ? { gte: new Date(`${params.startDate}T00:00:00.000Z`) }
+                    : {}),
+                  ...(params.endDate
+                    ? { lte: new Date(`${params.endDate}T23:59:59.999Z`) }
+                    : {}),
+                },
+              }
+            : {},
+      }),
+      this.prisma.shortLink.count({
+        where: {
+          ...dateFilter,
+          clickCount: { gt: 0 },
+        },
+      }),
+      this.prisma.shortLinkClick.count({
+        where: { clickedAt: { gte: past24h } },
+      }),
+      this.prisma.shortLinkClick.count({
+        where: { clickedAt: { gte: past7d } },
+      }),
+      this.prisma.shortLink.findMany({
+        where: dateFilter,
+        select: { id: true, payload: true, clickCount: true, createdAt: true },
+      }),
+      this.prisma.shortLinkClick.findMany({
+        where: {
+          clickedAt: {
+            gte: new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000),
+          },
+        },
+        select: { clickedAt: true, shortLink: { select: { payload: true } } },
+        orderBy: { clickedAt: 'asc' },
+      }),
+    ]);
+
+    // Unique users / recipients
+    const uniqueUsersSet = new Set<string>();
+    const clicksByChannel = { whatsapp: 0, email: 0, direct: 0 };
+    const linksByType = { search_redirect: 0, chart_alert: 0, other: 0 };
+
+    for (const link of allLinksWithPayload) {
+      const { user } = this.resolveLinkAttributes(link.payload);
+      const userKey = user.email || user.mobile;
+      if (userKey) uniqueUsersSet.add(userKey);
+
+      const typeKey = (link.payload as Record<string, unknown>)?.type;
+      if (typeKey === 'search_redirect') linksByType.search_redirect++;
+      else if (typeKey === 'chart_alert') linksByType.chart_alert++;
+      else linksByType.other++;
+    }
+
+    // Daily trends for last 14 days
+    const dailyMap = new Map<
+      string,
+      { date: string; clicks: number; whatsapp: number; email: number }
+    >();
+    for (let i = 13; i >= 0; i--) {
+      const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+      const key = d.toISOString().slice(0, 10);
+      dailyMap.set(key, { date: key, clicks: 0, whatsapp: 0, email: 0 });
+    }
+
+    for (const c of allClicksWithShortLink) {
+      const dateKey = c.clickedAt.toISOString().slice(0, 10);
+      const entry = dailyMap.get(dateKey);
+      const { user } = this.resolveLinkAttributes(c.shortLink?.payload);
+      if (user.channel === 'whatsapp') clicksByChannel.whatsapp++;
+      else if (user.channel === 'email') clicksByChannel.email++;
+      else clicksByChannel.direct++;
+
+      if (entry) {
+        entry.clicks++;
+        if (user.channel === 'whatsapp') entry.whatsapp++;
+        else if (user.channel === 'email') entry.email++;
+      }
+    }
+
+    const clickThroughRate =
+      totalLinks > 0
+        ? Math.round((clickedLinksCount / totalLinks) * 1000) / 10
+        : 0;
+
+    return {
+      baseUrl,
+      summary: {
+        totalLinks,
+        totalClicks,
+        clickedLinksCount,
+        unclickedLinksCount: Math.max(0, totalLinks - clickedLinksCount),
+        clickThroughRate,
+        uniqueUsersCount: uniqueUsersSet.size,
+        recentClicks24h,
+        recentClicks7d,
+        clicksByChannel,
+        linksByType,
+      },
+      dailyTrends: Array.from(dailyMap.values()),
+    };
+  }
+
+  /**
+   * ADMIN: Paginated feed of click events with rich user and train context.
+   */
+  async getAdminClicks(params: {
+    page?: number;
+    limit?: number;
+    search?: string;
+    channel?: string;
+    code?: string;
+    startDate?: string;
+    endDate?: string;
+  }) {
+    const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
+    const page = Math.max(1, Number(params.page || 1));
+    const limit = Math.min(100, Math.max(1, Number(params.limit || 25)));
+    const skip = (page - 1) * limit;
+
+    const where: Prisma.ShortLinkClickWhereInput = {};
+    if (params.code?.trim()) {
+      where.shortLink = { code: params.code.trim() };
+    }
+    if (params.startDate || params.endDate) {
+      where.clickedAt = {
+        ...(params.startDate
+          ? { gte: new Date(`${params.startDate}T00:00:00.000Z`) }
+          : {}),
+        ...(params.endDate
+          ? { lte: new Date(`${params.endDate}T23:59:59.999Z`) }
+          : {}),
+      };
+    }
+
+    const [clicks, total] = await Promise.all([
+      this.prisma.shortLinkClick.findMany({
+        where,
+        include: {
+          shortLink: true,
+        },
+        orderBy: { clickedAt: 'desc' },
+        skip,
+        take: limit,
+      }),
+      this.prisma.shortLinkClick.count({ where }),
+    ]);
+
+    // Gather emails & mobiles to resolve names
+    const emails: string[] = [];
+    const mobiles: string[] = [];
+    for (const c of clicks) {
+      const payload = c.shortLink?.payload as Record<string, unknown> | null;
+      if (typeof payload?.email === 'string') emails.push(payload.email);
+      if (typeof payload?.mobile === 'string') mobiles.push(payload.mobile);
+      if (typeof payload?.recipient === 'string') {
+        if (payload.recipient.includes('@')) emails.push(payload.recipient);
+        else mobiles.push(payload.recipient);
+      }
+    }
+
+    const userNameMap = await this.buildUserNameMap(emails, mobiles);
+
+    const formattedClicks = clicks.map((c) => {
+      const link = c.shortLink;
+      const { user, trainContext } = this.resolveLinkAttributes(
+        link?.payload,
+        userNameMap,
+      );
+      const parsedDevice = parseUserAgent(c.userAgent);
+
+      return {
+        id: c.id,
+        clickedAt: c.clickedAt.toISOString(),
+        ipAddress: c.ipAddress || null,
+        userAgent: c.userAgent || null,
+        referer: c.referer || null,
+        device: parsedDevice,
+        shortLink: link
+          ? {
+              id: link.id,
+              code: link.code,
+              shortUrl: `${baseUrl}/s/${link.code}`,
+              targetUrl: link.url,
+              clickCount: link.clickCount,
+              createdAt: link.createdAt.toISOString(),
+            }
+          : null,
+        user,
+        trainContext,
+      };
+    });
+
+    // If search or channel filter applied client-side criteria that wasn't in SQL
+    let filtered = formattedClicks;
+    if (params.channel?.trim()) {
+      const targetChannel = params.channel.trim().toLowerCase();
+      filtered = filtered.filter((item) => item.user.channel === targetChannel);
+    }
+    if (params.search?.trim()) {
+      const q = params.search.trim().toLowerCase();
+      filtered = filtered.filter(
+        (item) =>
+          item.user.email?.toLowerCase().includes(q) ||
+          item.user.mobile?.includes(q) ||
+          item.user.name?.toLowerCase().includes(q) ||
+          item.trainContext.trainNumber?.toLowerCase().includes(q) ||
+          item.trainContext.trainName?.toLowerCase().includes(q) ||
+          item.shortLink?.code.toLowerCase().includes(q) ||
+          item.ipAddress?.includes(q),
+      );
+    }
+
+    return {
+      clicks: filtered,
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit) || 1,
+    };
+  }
+
+  /**
+   * ADMIN: Paginated directory of short links with click counts, recipient info, and recent clicks.
+   */
+  async getAdminLinks(params: {
+    page?: number;
+    limit?: number;
+    search?: string;
+    filter?: 'all' | 'clicked' | 'unclicked';
+    channel?: string;
+    type?: string;
+    startDate?: string;
+    endDate?: string;
+  }) {
+    const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
+    const page = Math.max(1, Number(params.page || 1));
+    const limit = Math.min(100, Math.max(1, Number(params.limit || 25)));
+    const skip = (page - 1) * limit;
+
+    const where: Prisma.ShortLinkWhereInput = {};
+    if (params.filter === 'clicked') {
+      where.clickCount = { gt: 0 };
+    } else if (params.filter === 'unclicked') {
+      where.clickCount = 0;
+    }
+    if (params.startDate || params.endDate) {
+      where.createdAt = {
+        ...(params.startDate
+          ? { gte: new Date(`${params.startDate}T00:00:00.000Z`) }
+          : {}),
+        ...(params.endDate
+          ? { lte: new Date(`${params.endDate}T23:59:59.999Z`) }
+          : {}),
+      };
+    }
+
+    const [links, total] = await Promise.all([
+      this.prisma.shortLink.findMany({
+        where,
+        include: {
+          clicks: {
+            take: 5,
+            orderBy: { clickedAt: 'desc' },
+          },
+        },
+        orderBy: { createdAt: 'desc' },
+        skip,
+        take: limit,
+      }),
+      this.prisma.shortLink.count({ where }),
+    ]);
+
+    const emails: string[] = [];
+    const mobiles: string[] = [];
+    for (const l of links) {
+      const payload = l.payload as Record<string, unknown> | null;
+      if (typeof payload?.email === 'string') emails.push(payload.email);
+      if (typeof payload?.mobile === 'string') mobiles.push(payload.mobile);
+      if (typeof payload?.recipient === 'string') {
+        if (payload.recipient.includes('@')) emails.push(payload.recipient);
+        else mobiles.push(payload.recipient);
+      }
+    }
+
+    const userNameMap = await this.buildUserNameMap(emails, mobiles);
+
+    const formattedLinks = links.map((link) => {
+      const { user, trainContext } = this.resolveLinkAttributes(
+        link.payload,
+        userNameMap,
+      );
+      const payloadType =
+        (link.payload as Record<string, unknown>)?.type || 'generic';
+
+      const recentClicks = link.clicks.map((c) => ({
+        id: c.id,
+        clickedAt: c.clickedAt.toISOString(),
+        ipAddress: c.ipAddress || null,
+        device: parseUserAgent(c.userAgent),
+        referer: c.referer || null,
+      }));
+
+      return {
+        id: link.id,
+        code: link.code,
+        shortUrl: `${baseUrl}/s/${link.code}`,
+        targetUrl: link.url,
+        type: payloadType,
+        clickCount: link.clickCount,
+        createdAt: link.createdAt.toISOString(),
+        lastClickedAt: link.lastClickedAt?.toISOString() || null,
+        expiresAt: link.expiresAt?.toISOString() || null,
+        user,
+        trainContext,
+        recentClicks,
+      };
+    });
+
+    let filtered = formattedLinks;
+    if (params.channel?.trim()) {
+      const targetChannel = params.channel.trim().toLowerCase();
+      filtered = filtered.filter((item) => item.user.channel === targetChannel);
+    }
+    if (params.type?.trim() && params.type !== 'all') {
+      filtered = filtered.filter((item) => item.type === params.type);
+    }
+    if (params.search?.trim()) {
+      const q = params.search.trim().toLowerCase();
+      filtered = filtered.filter(
+        (item) =>
+          item.code.toLowerCase().includes(q) ||
+          item.user.email?.toLowerCase().includes(q) ||
+          item.user.mobile?.includes(q) ||
+          item.user.name?.toLowerCase().includes(q) ||
+          item.trainContext.trainNumber?.toLowerCase().includes(q) ||
+          item.targetUrl?.toLowerCase().includes(q),
+      );
+    }
+
+    return {
+      links: filtered,
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit) || 1,
+    };
+  }
+
+  /**
+   * ADMIN: User attribution aggregated view showing who clicked what.
+   */
+  async getAdminUsers(params?: {
+    search?: string;
+    startDate?: string;
+    endDate?: string;
+  }) {
+    const where: Prisma.ShortLinkWhereInput = {};
+    if (params?.startDate || params?.endDate) {
+      where.createdAt = {
+        ...(params.startDate
+          ? { gte: new Date(`${params.startDate}T00:00:00.000Z`) }
+          : {}),
+        ...(params.endDate
+          ? { lte: new Date(`${params.endDate}T23:59:59.999Z`) }
+          : {}),
+      };
+    }
+
+    const links = await this.prisma.shortLink.findMany({
+      where,
+      include: {
+        clicks: {
+          orderBy: { clickedAt: 'desc' },
+          select: { clickedAt: true, userAgent: true },
+        },
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    const emails: string[] = [];
+    const mobiles: string[] = [];
+    for (const l of links) {
+      const payload = l.payload as Record<string, unknown> | null;
+      if (typeof payload?.email === 'string') emails.push(payload.email);
+      if (typeof payload?.mobile === 'string') mobiles.push(payload.mobile);
+      if (typeof payload?.recipient === 'string') {
+        if (payload.recipient.includes('@')) emails.push(payload.recipient);
+        else mobiles.push(payload.recipient);
+      }
+    }
+
+    const userNameMap = await this.buildUserNameMap(emails, mobiles);
+
+    type UserAggregate = {
+      key: string;
+      email: string | null;
+      mobile: string | null;
+      name: string | null;
+      channels: Set<string>;
+      totalLinks: number;
+      totalClicks: number;
+      clickedLinksCount: number;
+      firstSeenAt: string;
+      lastClickedAt: string | null;
+      trains: Set<string>;
+    };
+
+    const userMap = new Map<string, UserAggregate>();
+
+    for (const link of links) {
+      const { user, trainContext } = this.resolveLinkAttributes(
+        link.payload,
+        userNameMap,
+      );
+      const userKey = user.email || user.mobile || 'anonymous';
+      let record = userMap.get(userKey);
+      if (!record) {
+        record = {
+          key: userKey,
+          email: user.email,
+          mobile: user.mobile,
+          name: user.name,
+          channels: new Set<string>(),
+          totalLinks: 0,
+          totalClicks: 0,
+          clickedLinksCount: 0,
+          firstSeenAt: link.createdAt.toISOString(),
+          lastClickedAt: null,
+          trains: new Set<string>(),
+        };
+        userMap.set(userKey, record);
+      }
+
+      if (user.channel) record.channels.add(user.channel);
+      if (trainContext.trainNumber) {
+        const route =
+          trainContext.fromStation && trainContext.toStation
+            ? `${trainContext.trainNumber} (${trainContext.fromStation}→${trainContext.toStation})`
+            : trainContext.trainNumber;
+        record.trains.add(route);
+      }
+
+      record.totalLinks++;
+      record.totalClicks += link.clickCount;
+      if (link.clickCount > 0) record.clickedLinksCount++;
+
+      if (link.lastClickedAt) {
+        const linkLastClickedIso = link.lastClickedAt.toISOString();
+        if (
+          !record.lastClickedAt ||
+          new Date(linkLastClickedIso) > new Date(record.lastClickedAt)
+        ) {
+          record.lastClickedAt = linkLastClickedIso;
+        }
+      }
+    }
+
+    let userList = Array.from(userMap.values()).map((u) => ({
+      key: u.key,
+      email: u.email,
+      mobile: u.mobile,
+      name: u.name,
+      channels: Array.from(u.channels),
+      totalLinks: u.totalLinks,
+      totalClicks: u.totalClicks,
+      clickedLinksCount: u.clickedLinksCount,
+      clickRate:
+        u.totalLinks > 0
+          ? Math.round((u.clickedLinksCount / u.totalLinks) * 1000) / 10
+          : 0,
+      firstSeenAt: u.firstSeenAt,
+      lastClickedAt: u.lastClickedAt,
+      trains: Array.from(u.trains),
+    }));
+
+    if (params?.search?.trim()) {
+      const q = params.search.trim().toLowerCase();
+      userList = userList.filter(
+        (u) =>
+          u.email?.toLowerCase().includes(q) ||
+          u.mobile?.includes(q) ||
+          u.name?.toLowerCase().includes(q) ||
+          u.trains.some((t) => t.toLowerCase().includes(q)),
+      );
+    }
+
+    // Sort: most recent clicks first, then total clicks
+    userList.sort((a, b) => {
+      if (a.lastClickedAt && b.lastClickedAt) {
+        return (
+          new Date(b.lastClickedAt).getTime() -
+          new Date(a.lastClickedAt).getTime()
+        );
+      }
+      if (a.lastClickedAt) return -1;
+      if (b.lastClickedAt) return 1;
+      return b.totalClicks - a.totalClicks;
+    });
+
+    return {
+      users: userList,
+      totalUsers: userList.length,
+    };
   }
 }

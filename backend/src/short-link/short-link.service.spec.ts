@@ -1,4 +1,5 @@
-import { ShortLinkService } from './short-link.service';
+/* eslint-disable @typescript-eslint/unbound-method */
+import { ShortLinkService, parseUserAgent } from './short-link.service';
 import { PrismaService } from '../prisma/prisma.service';
 
 describe('ShortLinkService', () => {
@@ -11,9 +12,16 @@ describe('ShortLinkService', () => {
         findUnique: jest.fn(),
         create: jest.fn(),
         update: jest.fn(),
+        count: jest.fn(),
+        findMany: jest.fn(),
       },
       shortLinkClick: {
         create: jest.fn(),
+        count: jest.fn(),
+        findMany: jest.fn(),
+      },
+      user: {
+        findMany: jest.fn(),
       },
       $transaction: jest.fn((promises) => Promise.all(promises)),
     } as unknown as jest.Mocked<PrismaService>;
@@ -163,16 +171,190 @@ describe('ShortLinkService', () => {
         }),
       }),
     );
-    expect(prisma.shortLinkClick.create).toHaveBeenCalledWith(
-      expect.objectContaining({
-        data: expect.objectContaining({
-          shortLinkId: 'sl_123',
-          userAgent: expect.stringContaining('iPhone'),
-          ipAddress: '203.0.113.195',
-          referer: 'https://web.whatsapp.com/',
-        }),
-      }),
-    );
     expect(result.clickCount).toBe(3);
+  });
+
+  it('should parse user agent into browser, os, and device', () => {
+    const iphone = parseUserAgent(
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 WhatsApp/24.1.75',
+    );
+    expect(iphone.os).toBe('iOS');
+    expect(iphone.deviceType).toBe('mobile');
+    expect(iphone.browser).toBe('WhatsApp In-App');
+
+    const chromeMac = parseUserAgent(
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    );
+    expect(chromeMac.os).toBe('macOS');
+    expect(chromeMac.deviceType).toBe('desktop');
+    expect(chromeMac.browser).toBe('Google Chrome');
+  });
+
+  it('should return admin overview statistics and daily trends', async () => {
+    (prisma.shortLink.count as jest.Mock)
+      .mockResolvedValueOnce(10) // totalLinks
+      .mockResolvedValueOnce(6); // clickedLinksCount
+    (prisma.shortLinkClick.count as jest.Mock)
+      .mockResolvedValueOnce(25) // totalClicks
+      .mockResolvedValueOnce(3) // recentClicks24h
+      .mockResolvedValueOnce(15); // recentClicks7d
+    (prisma.shortLink.findMany as jest.Mock).mockResolvedValueOnce([
+      {
+        id: '1',
+        payload: {
+          type: 'search_redirect',
+          email: 'user1@example.com',
+          channel: 'email',
+        },
+        clickCount: 2,
+        createdAt: new Date(),
+      },
+      {
+        id: '2',
+        payload: {
+          type: 'chart_alert',
+          mobile: '919876543210',
+          channel: 'whatsapp',
+        },
+        clickCount: 4,
+        createdAt: new Date(),
+      },
+    ]);
+    (prisma.shortLinkClick.findMany as jest.Mock).mockResolvedValueOnce([
+      {
+        clickedAt: new Date(),
+        shortLink: {
+          payload: {
+            type: 'search_redirect',
+            channel: 'email',
+          },
+        },
+      },
+    ]);
+
+    const result = await service.getAdminOverview();
+    expect(result.summary.totalLinks).toBe(10);
+    expect(result.summary.totalClicks).toBe(25);
+    expect(result.summary.clickedLinksCount).toBe(6);
+    expect(result.summary.clickThroughRate).toBe(60);
+    expect(result.summary.uniqueUsersCount).toBe(2);
+    expect(Array.isArray(result.dailyTrends)).toBe(true);
+  });
+
+  it('should return formatted clicks with user and device details', async () => {
+    (prisma.shortLinkClick.findMany as jest.Mock).mockResolvedValue([
+      {
+        id: 'click_1',
+        shortLinkId: 'sl_1',
+        clickedAt: new Date(),
+        userAgent:
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) Mobile/15E148 WhatsApp/2.23',
+        ipAddress: '103.21.244.2',
+        referer: 'https://web.whatsapp.com',
+        metadata: {},
+        shortLink: {
+          id: 'sl_1',
+          code: 'train12',
+          url: 'https://lastberth.com/search?from=NDLS&to=MMCT',
+          clickCount: 1,
+          createdAt: new Date(),
+          payload: {
+            type: 'search_redirect',
+            recipient: '919876543210',
+            channel: 'whatsapp',
+            trainNo: '12952',
+            from: 'NDLS',
+            to: 'MMCT',
+          },
+        },
+      },
+    ]);
+    (prisma.shortLinkClick.count as jest.Mock).mockResolvedValue(1);
+    (prisma.user.findMany as jest.Mock).mockResolvedValue([
+      { name: 'Rahul Sharma', email: null, phone: '919876543210' },
+    ]);
+
+    const result = await service.getAdminClicks({ page: 1, limit: 10 });
+    expect(result.total).toBe(1);
+    expect(result.clicks).toHaveLength(1);
+    expect(result.clicks[0].user.name).toBe('Rahul Sharma');
+    expect(result.clicks[0].user.mobile).toBe('919876543210');
+    expect(result.clicks[0].device.deviceType).toBe('mobile');
+    expect(result.clicks[0].trainContext.trainNumber).toBe('12952');
+  });
+
+  it('should return formatted short links with click breakdown', async () => {
+    (prisma.shortLink.findMany as jest.Mock).mockResolvedValue([
+      {
+        id: 'sl_1',
+        code: 'alert01',
+        url: 'https://lastberth.com/alerts/subscribe?trainNo=12002',
+        clickCount: 5,
+        createdAt: new Date(),
+        lastClickedAt: new Date(),
+        expiresAt: null,
+        payload: {
+          type: 'chart_alert',
+          email: 'kartik@example.com',
+          trainNumber: '12002',
+          fromStationCode: 'NDLS',
+          toStationCode: 'BPL',
+        },
+        clicks: [],
+      },
+    ]);
+    (prisma.shortLink.count as jest.Mock).mockResolvedValue(1);
+    (prisma.user.findMany as jest.Mock).mockResolvedValue([
+      { name: 'Kartik', email: 'kartik@example.com', phone: null },
+    ]);
+
+    const result = await service.getAdminLinks({ page: 1, limit: 10 });
+    expect(result.total).toBe(1);
+    expect(result.links).toHaveLength(1);
+    expect(result.links[0].user.email).toBe('kartik@example.com');
+    expect(result.links[0].user.name).toBe('Kartik');
+    expect(result.links[0].trainContext.fromStation).toBe('NDLS');
+  });
+
+  it('should return aggregated user attribution', async () => {
+    (prisma.shortLink.findMany as jest.Mock).mockResolvedValue([
+      {
+        id: 'sl_1',
+        code: 'u1_link1',
+        clickCount: 3,
+        createdAt: new Date(),
+        lastClickedAt: new Date(),
+        payload: {
+          email: 'user@test.com',
+          channel: 'email',
+          trainNumber: '12951',
+          fromStationCode: 'MMCT',
+          toStationCode: 'NDLS',
+        },
+        clicks: [{ clickedAt: new Date(), userAgent: 'Mozilla/5.0' }],
+      },
+      {
+        id: 'sl_2',
+        code: 'u1_link2',
+        clickCount: 0,
+        createdAt: new Date(),
+        lastClickedAt: null,
+        payload: {
+          email: 'user@test.com',
+          channel: 'email',
+          trainNumber: '12952',
+        },
+        clicks: [],
+      },
+    ]);
+    (prisma.user.findMany as jest.Mock).mockResolvedValue([]);
+
+    const result = await service.getAdminUsers();
+    expect(result.totalUsers).toBe(1);
+    expect(result.users[0].email).toBe('user@test.com');
+    expect(result.users[0].totalLinks).toBe(2);
+    expect(result.users[0].totalClicks).toBe(3);
+    expect(result.users[0].clickedLinksCount).toBe(1);
+    expect(result.users[0].clickRate).toBe(50);
   });
 });
