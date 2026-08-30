@@ -68,13 +68,18 @@ export function EntireJourneyAlertCTA({
         toCode: defaultDestination,
         journeyDate: journeyDate.trim(),
         classCode: classCode.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const e = err as {
+        response?: { data?: { message?: string; errors?: Array<{ message?: string }> } };
+        message?: string;
+      };
       const msg =
-        err?.response?.data?.errors?.[0]?.message ||
-        err?.response?.data?.message ||
+        e?.response?.data?.errors?.[0]?.message ||
+        e?.response?.data?.message ||
+        e?.message ||
         "Failed to set up alert. Please check your inputs.";
       const errMsg = typeof msg === "string" ? msg : JSON.stringify(msg);
       setError(errMsg);
@@ -87,8 +92,8 @@ export function EntireJourneyAlertCTA({
         toCode: defaultDestination,
         journeyDate: journeyDate.trim(),
         classCode: classCode.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
         error: errMsg,
       });
     } finally {
@@ -100,7 +105,7 @@ export function EntireJourneyAlertCTA({
     return (
       <div className="mt-2 w-full rounded-md border border-emerald-200 bg-emerald-50 p-2.5">
         <p className="text-xs font-semibold text-emerald-900">
-          Success! We've set up an alert for the entire journey.
+          Success! We&apos;ve set up an alert for the entire journey.
         </p>
       </div>
     );
@@ -114,7 +119,7 @@ export function EntireJourneyAlertCTA({
             <div>
               <h3 className="text-base font-semibold text-gray-900">Entire Journey Chart Alert</h3>
               <div className="mt-1 max-w-xl text-sm text-gray-500">
-                <p>Waitlisted? We'll alert you at {originChartTime}</p>
+                <p>Waitlisted? We&apos;ll alert you at {originChartTime}</p>
               </div>
             </div>
             <div className="mt-4 sm:ml-6 sm:mt-0 sm:flex sm:shrink-0 sm:items-center">

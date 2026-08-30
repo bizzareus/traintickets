@@ -1047,8 +1047,8 @@ export default function HomePage() {
         toCode: toC,
         journeyDate: journeyDate.trim(),
         classCode: "3A",
-        hasEmail: Boolean(email),
-        hasMobile: Boolean(mobile),
+        email: email || undefined,
+        mobile: mobile || undefined,
       });
       trackAnalyticsEvent({
         name: "monitor_journey_submitted",
@@ -1079,8 +1079,8 @@ export default function HomePage() {
           toCode: toC,
           journeyDate: journeyDate.trim(),
           classCode: "3A",
-          hasEmail: Boolean(email),
-          hasMobile: Boolean(mobile),
+          email: email || undefined,
+          mobile: mobile || undefined,
           error: "train_does_not_run_on_date",
         });
         trackAnalyticsEvent({
@@ -1113,8 +1113,8 @@ export default function HomePage() {
           toCode: toC,
           journeyDate: journeyDate.trim(),
           classCode: "3A",
-          hasEmail: Boolean(email),
-          hasMobile: Boolean(mobile),
+          email: email || undefined,
+          mobile: mobile || undefined,
           error: msg,
         });
         trackAnalyticsEvent({

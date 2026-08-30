@@ -29,6 +29,59 @@ export function trackAnalyticsEvent(event: AnalyticsEvent): void {
 }
 
 /**
+ * Identify a user in PostHog when contact information is provided (e.g. on alert request).
+ * Sets person properties so all subsequent and previous session events are attributed to this user.
+ * Browser-only and admin-suppressed; never throws.
+ */
+export function identifyUser(
+  distinctId: string,
+  properties?: Record<string, unknown>,
+): void {
+  if (typeof window === "undefined" || !isAnalyticsEnabled()) return;
+
+  const isAdminPath = window.location.pathname.startsWith("/admin");
+  const isAdminUser = window.localStorage.getItem("admin") === "true";
+  if (isAdminPath || isAdminUser) return;
+
+  try {
+    const trimmedId = distinctId.trim();
+    if (!trimmedId) return;
+
+    posthog.identify(trimmedId, properties);
+  } catch {
+    /* ignore */
+  }
+}
+
+/**
+ * Convenience helper to identify user from email and/or mobile.
+ * Uses email (lowercase) if available, otherwise mobile as distinct_id.
+ */
+export function identifyFromContact(params: {
+  email?: string;
+  mobile?: string;
+  name?: string;
+}): void {
+  const email = params.email?.trim().toLowerCase();
+  const mobile = params.mobile?.trim();
+  const distinctId = email || mobile;
+
+  if (!distinctId) return;
+
+  const personProperties: Record<string, unknown> = {};
+  if (email) personProperties.email = email;
+  if (mobile) {
+    personProperties.phone = mobile;
+    personProperties.mobile = mobile;
+  }
+  if (params.name?.trim()) {
+    personProperties.name = params.name.trim();
+  }
+
+  identifyUser(distinctId, personProperties);
+}
+
+/**
  * Convenience helper to track an alert requested event to PostHog asynchronously.
  */
 export function trackAlertRequested(params: {
@@ -49,11 +102,20 @@ export function trackAlertRequested(params: {
   toCode: string;
   journeyDate: string;
   classCode?: string;
-  hasEmail: boolean;
-  hasMobile: boolean;
+  email?: string;
+  mobile?: string;
+  hasEmail?: boolean;
+  hasMobile?: boolean;
   sourcePage?: string;
   error?: string;
 }): void {
+  if (params.email || params.mobile) {
+    identifyFromContact({
+      email: params.email,
+      mobile: params.mobile,
+    });
+  }
+
   trackAnalyticsEvent({
     name: "alert_requested",
     properties: {
@@ -68,8 +130,8 @@ export function trackAlertRequested(params: {
       to_code: params.toCode,
       journey_date: params.journeyDate,
       class_code: params.classCode,
-      has_email: params.hasEmail,
-      has_mobile: params.hasMobile,
+      has_email: params.hasEmail ?? Boolean(params.email),
+      has_mobile: params.hasMobile ?? Boolean(params.mobile),
       error: params.error,
     },
   });

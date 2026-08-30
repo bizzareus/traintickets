@@ -67,8 +67,8 @@ export function SubscribeClient() {
             toCode,
             journeyDate: date,
             classCode: travelClass,
-            hasEmail: Boolean(email),
-            hasMobile: Boolean(mobile),
+            email: email || undefined,
+            mobile: mobile || undefined,
           });
         }
       } catch (err: unknown) {
@@ -85,8 +85,8 @@ export function SubscribeClient() {
             toCode,
             journeyDate: date,
             classCode: travelClass,
-            hasEmail: Boolean(email),
-            hasMobile: Boolean(mobile),
+            email: email || undefined,
+            mobile: mobile || undefined,
             error: errStr,
           });
         }

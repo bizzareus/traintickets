@@ -195,8 +195,8 @@ export function LiveScraperCockpit({
         toCode: toStationCode.trim().toUpperCase(),
         journeyDate: journeyDate.trim(),
         classCode: selectedClass.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
       });
 
       // Store locally
@@ -221,8 +221,8 @@ export function LiveScraperCockpit({
         toCode: toStationCode.trim().toUpperCase(),
         journeyDate: journeyDate.trim(),
         classCode: selectedClass.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
         error: errMsg,
       });
     } finally {

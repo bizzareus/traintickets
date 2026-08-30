@@ -106,8 +106,8 @@ export function TrainChartAlertSection({
         toCode: toCode.trim().toUpperCase(),
         journeyDate: journeyDate?.trim().slice(0, 10) || "",
         classCode: selectedClass.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
       });
     } catch (err: unknown) {
       const e = err as {
@@ -130,8 +130,8 @@ export function TrainChartAlertSection({
         toCode: toCode.trim().toUpperCase(),
         journeyDate: journeyDate?.trim().slice(0, 10) || "",
         classCode: selectedClass.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
         error: errMsg,
       });
     } finally {

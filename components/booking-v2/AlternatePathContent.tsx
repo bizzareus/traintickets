@@ -391,8 +391,8 @@ function CompactLegChartCta({
         toCode: legTo.trim().toUpperCase(),
         journeyDate: journeyDate.trim(),
         classCode: classCode.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
       });
       try {
         window.localStorage.setItem(
@@ -402,9 +402,13 @@ function CompactLegChartCta({
       } catch {
         /* ignore */
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const e = err as {
+        response?: { data?: { message?: string } };
+        message?: string;
+      };
       const msg =
-        err?.response?.data?.message || err?.message || "Failed to set alert.";
+        e?.response?.data?.message || e?.message || "Failed to set alert.";
       setError(msg);
       trackAlertRequested({
         success: false,
@@ -415,8 +419,8 @@ function CompactLegChartCta({
         toCode: legTo.trim().toUpperCase(),
         journeyDate: journeyDate.trim(),
         classCode: classCode.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
         error: typeof msg === "string" ? msg : JSON.stringify(msg),
       });
     } finally {

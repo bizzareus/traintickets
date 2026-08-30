@@ -99,8 +99,8 @@ export default function ChartTimeAlertCTA({
         toCode: destinationCode,
         journeyDate: journeyDate.trim().slice(0, 10),
         classCode: classCode.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
       });
     } catch (err: unknown) {
       const e = err as {
@@ -121,8 +121,8 @@ export default function ChartTimeAlertCTA({
         toCode: destinationCode,
         journeyDate: journeyDate.trim().slice(0, 10),
         classCode: classCode.trim().toUpperCase(),
-        hasEmail: Boolean(em),
-        hasMobile: Boolean(mob),
+        email: em || undefined,
+        mobile: mob || undefined,
         error: errMsg,
       });
     } finally {
