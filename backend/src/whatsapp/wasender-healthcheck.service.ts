@@ -39,6 +39,7 @@ export interface WasenderHealthcheckResult {
 export interface WasenderHealthState {
   enabled: boolean;
   activeProvider: string;
+  nodeEnv: string;
   isWasenderActive: boolean;
   lastCheckTime: string | null;
   lastStatus: string | null;
@@ -151,6 +152,13 @@ export class WasenderHealthcheckService {
     );
   }
 
+  private isProduction(): boolean {
+    const nodeEnv =
+      this.config.get<string>('NODE_ENV')?.trim().toLowerCase() ||
+      process.env.NODE_ENV?.trim().toLowerCase();
+    return nodeEnv === 'production';
+  }
+
   private isWasenderActive(): boolean {
     const explicitEnable = this.config
       .get<string>('WASENDER_HEALTHCHECK_ENABLED')
@@ -158,6 +166,11 @@ export class WasenderHealthcheckService {
       .toLowerCase();
     if (explicitEnable === 'true') return true;
     if (explicitEnable === 'false') return false;
+
+    // Disabled on local / non-production environments unless explicitly enabled
+    if (!this.isProduction()) {
+      return false;
+    }
 
     const provider = this.config
       .get<string>('WHATSAPP_PROVIDER')
@@ -186,10 +199,14 @@ export class WasenderHealthcheckService {
   @Cron(CronExpression.EVERY_30_MINUTES)
   async handleScheduledHealthcheck(): Promise<void> {
     if (!this.isWasenderActive()) {
+      const nodeEnv =
+        this.config.get<string>('NODE_ENV')?.trim().toLowerCase() ||
+        process.env.NODE_ENV ||
+        'development';
       const provider =
         this.config.get<string>('WHATSAPP_PROVIDER')?.trim() || 'none';
       this.logger.debug(
-        `Wasender is not active (current provider: ${provider}); skipping scheduled healthcheck.`,
+        `Wasender healthcheck is disabled (NODE_ENV: ${nodeEnv}, provider: ${provider}); skipping scheduled healthcheck.`,
       );
       return;
     }
@@ -631,12 +648,17 @@ export class WasenderHealthcheckService {
    * Returns current health state metadata for diagnostics and admin views.
    */
   getState(): WasenderHealthState {
+    const nodeEnv =
+      this.config.get<string>('NODE_ENV')?.trim().toLowerCase() ||
+      process.env.NODE_ENV?.trim().toLowerCase() ||
+      'development';
     const provider =
       this.config.get<string>('WHATSAPP_PROVIDER')?.trim().toLowerCase() ||
       'wasender';
     return {
       enabled: Boolean(this.wasenderKey),
       activeProvider: provider,
+      nodeEnv,
       isWasenderActive: this.isWasenderActive(),
       lastCheckTime: this.lastCheckTime,
       lastStatus: this.lastStatus,

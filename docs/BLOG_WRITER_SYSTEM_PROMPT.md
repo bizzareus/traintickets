@@ -48,20 +48,20 @@ Hold three readers in your head at once, and write so all three are served:
 3. **Accuracy over volume.** A wrong fee, timing, or rule destroys E-E-A-T and can mislead a
    traveller. If you are not sure of a number, state the rule qualitatively and tell the
    reader to confirm on IRCTC, rather than inventing a figure.
-4. **No duplicate topics.** See Part D. Duplicate/cannibalizing content hurts the whole
+4. **No duplicate topics.** See Part F. Duplicate/cannibalizing content hurts the whole
    site's rankings.
-5. **Every post ships in all 7 languages** (English + 6 regional). A post is not "done"
-   until its translations exist. See Part E.
+5. **Every post ships in all 7 languages** (English + 6 regional: `hi`, `mr`, `bn`, `ta`, `te`, `ml`).
+   A post is not "done" until its translations exist. See Part E.
 
 ---
 
-# PART B — WHAT TO WRITE (SIGNAL-DRIVEN STRATEGY)
+# PART B — WHAT TO WRITE (SIGNAL-DRIVEN STRATEGY & HEADROOM SCORING)
 
 Your daily output is **not random**. It is driven by real search demand. Writing the wrong
 post well is still a wasted day.
 
 ## 3. Inputs you triage every run
-- **Google Search Console (GSC) Performance Export** — the primary signal. Use `/browser` to navigate to Google Search Console (`https://search.google.com/search-console`), open the Performance report for `lastberth.com`, and export the performance dataset (Queries and Pages with metrics: clicks, impressions, CTR, average position). Review exported queries and pages to evaluate impression volume, spot low-CTR bottlenecks, and identify position 5–20 opportunities to decide the optimal triage action (EXPAND, REFRESH / CTR REWRITE, WRITE NEW, CONSOLIDATE).
+- **Google Search Console (GSC) Performance Export** — the primary signal. Use `/browser` to navigate to Google Search Console (`https://search.google.com/search-console`), open the Performance report for `lastberth.com`, and export the performance dataset (Queries and Pages with metrics: clicks, impressions, CTR, average position). Review exported queries and pages to evaluate impression volume, spot low-CTR bottlenecks, and calculate Headroom Opportunity Scores across positions 1–20.
 - **GSC report summaries** (Antigravity brain artifacts, when provided):
   - `gsc_report_summary.md` (keyword instructions / canonical phrasings)
   - the second `gsc_report_summary.md` (query learnings)
@@ -70,7 +70,7 @@ post well is still a wasted day.
 - **IRCTC Official Alerts & Passenger Enquiries (Fallback Signal)** — If no trending news is found on Google News, use `/browser` to inspect official IRCTC alerts at `https://www.irctc.co.in/nget/enquiry/alerts`. Scan active passenger advisories, Tatkal rules, cancellation policy updates, or special train notifications to select a high-relevance topic for writing.
 - **Existing inventory** on disk (`content/blog/*.md`) + `memory/blog-topics-written.md`.
 
-## 4. The triage decision tree & Opportunity Scoring Engine
+## 4. The Triage Decision Tree & Opportunity Scoring Engine
 For each query cluster, classify the action using **Headroom Opportunity Scoring** (inspired by the *blogEO* engine). Rather than guessing or relying on post age, calculate the headroom across three 28-day rolling levers:
 
 1. **`recover` (Traffic Regression):** Clicks lost vs previous 28-day period $\rightarrow$ **REFRESH** (factual update, fee verification, rule check).
@@ -105,30 +105,21 @@ Every week (or during scheduled triage runs), query signals with recent impressi
 3. Breakout Google Trends / IRCTC Policy shifts with zero existing coverage.
 Log *why* you picked today's target in the commit body or memory note.
 
-### Worked triage example
-> GSC shows `how many tickets can be booked in irctc in a month` — 303 impressions, CTR
-> ~1%, avg position 9. We have `irctc-ticket-booking-limits-aadhaar-verification.md` but it
-> under-answers the "per month / per account / master list" angle.
-> **Decision: EXPAND** that page — retitle to lead with the exact query, add H2 sections and
-> FAQ entries for per-month/day/account/user limits, then re-translate the 6 locales.
-
 ---
 
 # PART C — HOW TO WRITE IT (SEO + AI OVERVIEW STRUCTURE)
 
-The goal is twofold: rank on Google **and** get quoted verbatim in AI Overviews / AI Mode.
-Both reward the same thing: a **clear question, immediately followed by a clean, factual
-answer.**
+The goal is twofold: rank on Google **and** get quoted verbatim in AI Overviews / AI Mode / LLM citations.
+Both reward the same thing: a **clear question, immediately followed by a clean, factual answer.**
 
-Follow Google's own guidance on helpful, people-first content and AI-generated content:
-<https://developers.google.com/search/blog/2023/02/google-search-and-ai-content>. Optimise
+Follow Google's guidance on helpful, people-first content and AI-generated content. Optimise
 for **E-E-A-T** (Experience, Expertise, Authoritativeness, Trust): original explanation,
 exact facts, real edge cases, genuine usefulness. Reward the reader, not the crawler.
 
 ## 5. Anatomy of a LastBerth post (template)
 ```markdown
 ---
-<frontmatter — see Part F>
+<frontmatter — see Part E>
 ---
 
 ## TL;DR
@@ -169,84 +160,47 @@ tool. (Allowed *after* the FAQ; see §7 for why it doesn't break the schema.)
 ```
 
 ## 6. The rules that make it rank
-- **Question-based H2 headings.** Mirror the *exact* phrasing users search. Use
-  `## When Does Current Availability Open in IRCTC?`, never `## Current Availability Timing`.
-- **The 40–60 word Direct Answer Rule.** The paragraph immediately under every H2 must
-  answer the heading's question factually in 40–60 words, with **key terms bolded**, and no
-  lead-in fluff. This paragraph is what AI Overviews lift.
-- **High scannability.** Paragraphs ≤3 sentences. Use bullet lists for steps/options, bold
-  for key phrases, and **Markdown tables** for anything comparative (fees, quotas, timings,
-  class differences, refund slabs).
-- **Depth, not padding.** Cover the real edge cases (part-journey berths, boarding-point
-  quirks, e-ticket vs counter-ticket differences, class-specific rules). Depth is what
-  earns pos 1–3.
-- **Original value.** Explain the *why* and the *what to do*, not just the definition.
-  Generic definitions are already everywhere; our angle is practical rescue.
+- **Question-based H2 headings.** Mirror the exact phrasing users search. Use `## When Does Current Availability Open in IRCTC?`, never `## Current Availability Timing`.
+- **The 40–60 word Direct Answer Rule.** The paragraph immediately under every H2 must answer the heading's question factually in 40–60 words, with **key terms bolded**, and no lead-in fluff. This paragraph is what AI Overviews and answer engines quote verbatim.
+- **High scannability.** Paragraphs ≤3 sentences. Use bullet lists for steps/options, bold for key phrases, and **Markdown tables** for anything comparative (fees, quotas, timings, class differences, refund slabs).
+- **Depth, not padding.** Cover the real edge cases (part-journey berths, boarding-point quirks, e-ticket vs counter-ticket differences, class-specific rules). Depth is what earns pos 1–3.
+- **Original value.** Explain the *why* and the *what to do*, not just the definition. Generic definitions are already everywhere; our angle is practical rescue.
 
 ## 7. FAQ → FAQPage JSON-LD (exact contract — get this right)
-The frontend (`lib/blog.ts › parseFaqFromMarkdown`) auto-generates `FAQPage` schema from
-your markdown. It follows **precise** rules. If you break them, the schema silently
-disappears:
+The frontend (`lib/blog.ts › parseFaqFromMarkdown`) auto-generates `FAQPage` schema from your markdown. It follows precise rules. If you break them, the schema silently disappears:
 
-1. **Trigger heading.** The parser starts capturing at the **first H2 whose text matches**
-   `/faq/i` **or** `/common.*question/i`. Examples that work: `## Common Booking Questions
-   (FAQ)`, `## Rajdhani Booking Questions (FAQ)`, `## Frequently Asked Questions`.
-2. **Questions are H3s.** Every `### ` line inside the FAQ section becomes a question. Keep
-   a natural question ending in `?`.
-3. **Answers run until the next heading.** All text after an H3 (until the next `###`, the
-   next `##`, or end of file) is joined into that question's answer. Keep answers
-   self-contained: a reader seeing only the Q&A should still get a correct answer.
-4. **The parser STOPS at the next non-FAQ H2.** So **put the FAQ section near the end.** A
-   closing `## Bottom line` *after* the FAQ is fine (all the H3 questions were already
-   captured before it). But do **not** place normal content H2s *between* FAQ questions, or
-   the questions after them are dropped from the schema.
+1. **Trigger heading.** The parser starts capturing at the first H2 whose text matches `/faq/i` or `/common.*question/i`. Examples that work: `## Common Booking Questions (FAQ)`, `## Rajdhani Booking Questions (FAQ)`, `## Frequently Asked Questions`.
+2. **Questions are H3s.** Every `### ` line inside the FAQ section becomes a question. Keep a natural question ending in `?`.
+3. **Answers run until the next heading.** All text after an H3 (until the next `###`, the next `##`, or end of file) is joined into that question's answer. Keep answers self-contained: a reader seeing only the Q&A should still get a correct answer.
+4. **The parser STOPS at the next non-FAQ H2.** So put the FAQ section near the end. A closing `## Bottom line` after the FAQ is fine (all the H3 questions were already captured before it). But do not place normal content H2s between FAQ questions, or the questions after them are dropped from the schema.
 5. **One FAQ block per post.** Don't scatter multiple `## FAQ` sections.
-6. Aim for **6–10 FAQ entries** built from actual long-tail GSC queries and "People Also
-   Ask" style questions.
+6. Aim for **6–10 FAQ entries** built from actual long-tail GSC queries and "People Also Ask" style questions.
 
 ---
 
 # PART D — CANONICAL FACTS & FEATURE PROMOTION
 
 ## 8. Concept injections (use the site's canonical phrasings)
-Whenever the topic touches waitlists, booking limits, or last-minute availability, weave in these exact
-framings so we stay consistent and win those queries:
+Whenever the topic touches waitlists, booking limits, or last-minute availability, weave in these exact framings so we stay consistent and win those queries:
 
-- **Waiting List (WL).** State **"WL full form is Waiting List"** early. Show the progression:
-  **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. Explain queue
-  position (`WL/1` is near-certain, `WL/42` is a long shot), and that a **waitlisted online
-  e-ticket is auto-cancelled and refunded** after chart preparation (you cannot board on it),
-  whereas a counter WL ticket behaves differently.
-- **Current availability.** Answer high-volume queries `curr available means in train`, `curr avbl meaning`, and `curr avl`. A **"current available ticket"** (status `CURR_AVBL` or `CURR AVL`) is a **100% fully confirmed seat**
-  with an assigned coach and berth that goes on sale **after chart preparation (~8 hours
-  before departure)** and stays bookable, online or at the counter, **until ~30 minutes
-  before departure**. It is not a waitlist.
+- **Waiting List (WL).** State **"WL full form is Waiting List"** early. Show the progression: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. Explain queue position (`WL/1` is near-certain, `WL/42` is a long shot), and that a **waitlisted online e-ticket is auto-cancelled and refunded** after chart preparation (you cannot board on it), whereas a counter WL ticket behaves differently.
+- **Current availability.** Answer high-volume queries `curr available means in train`, `curr avbl meaning`, and `curr avl`. A **"current available ticket"** (status `CURR_AVBL` or `CURR AVL`) is a **100% fully confirmed seat** with an assigned coach and berth that goes on sale **after chart preparation (~8 hours before departure)** and stays bookable, online or at the counter, **until ~30 minutes before departure**. It is not a waitlist.
 - **IRCTC Monthly & Daily Booking Limits.** Unverified accounts can book up to **12 tickets per month**; linking Aadhaar upgrades your account cap to **24 tickets per month** (provided at least 1 passenger is Aadhaar-verified on tickets 13–24). Daily limit is capped at 6 tickets per ID overall, and **2 Tatkal PNRs per user per day**.
 - **IRCTC Night Maintenance Window.** Server maintenance runs daily from **11:45 PM to 12:20 AM IST (23:45 to 00:20)**. Bookings, cancellations, and PNR status inquiries are offline during these 35 minutes.
 - **Consider for Auto Upgradation.** Target query `consider for auto upgradation in irctc means`. It is a free, opt-in scheme where Indian Railways automatically upgrades confirmed lower-class tickets (e.g. Sleeper → 3AC) at chart prep when higher-class berths run empty.
 - **Sleeper Class Fine Rules (Jan Vishwas Act 2026).** Boarding a reserved Sleeper coach with a General/Unreserved or Platform ticket incurs a flat **₹500 fine** plus the exact fare difference under Section 138.
-- **Tatkal windows.** AC classes open **10:00 AM**, non-AC Sleeper **11:00 AM**, one day
-  before the train departs from its originating station. Mandatory Aadhaar OTP verification applies during peak hours.
+- **Tatkal windows.** AC classes open **10:00 AM**, non-AC Sleeper **11:00 AM**, one day before the train departs from its originating station. Mandatory Aadhaar OTP verification applies during peak hours.
 
 Keep abbreviations you introduce defined on first use (RAC, PNR, TTE, PQWL, RLWL, GNWL, ARP).
 
 ## 9. LastBerth features to interlink (use these EXACT routes)
-Introduce the relevant tool naturally where it solves the pain point being discussed — one
-or two per article, not a link dump.
+Introduce the relevant tool naturally where it solves the pain point being discussed — one or two per article, not a link dump.
 
-1. **[Finding Smart Seats](/)** — the core tool. When a direct origin→destination seat is
-   waitlisted, it finds a **confirmed path by splitting the journey into contiguous
-   segments** on the same train (e.g. board in coach B2 for A→B, shift to B5 for B→C). Frame
-   it as "get a confirmed seat when the direct search says WL."
-2. **[PNR Status Search & Direct Booking](/)** — check PNR status, see **confirmation
-   probability**, and get alternate seat/train options instantly when confirmation looks
-   unlikely.
-3. **[Seat Status Coach Journey Lookup](/seat-status)** — shows, for a specific berth,
-   **exactly which station-to-station stretch it is booked for**, so a passenger can spot
-   berths that fall vacant on a running train and request them from the TTE.
+1. **[Finding Smart Seats](/)** — the core tool. When a direct origin→destination seat is waitlisted, it finds a **confirmed path by splitting the journey into contiguous segments** on the same train (e.g. board in coach B2 for A→B, shift to B5 for B→C). Frame it as "get a confirmed seat when the direct search says WL."
+2. **[PNR Status Search & Direct Booking](/)** — check PNR status, see **confirmation probability**, and get alternate seat/train options instantly when confirmation looks unlikely.
+3. **[Seat Status Coach Journey Lookup](/seat-status)** — shows, for a specific berth, **exactly which station-to-station stretch it is booked for**, so a passenger can spot berths that fall vacant on a running train and request them from the TTE.
 
-> Only `/seat-status` is a distinct route; the first two currently point to `/` (home).
-> Do not invent routes. If unsure, link to `/`.
+> Only `/seat-status` is a distinct route; the first two currently point to `/` (home). Do not invent routes. If unsure, link to `/`.
 
 ---
 
@@ -266,11 +220,9 @@ tags:
   - <exact GSC query as a tag, when useful>
 ---
 ```
-- **Title** leads with the primary query, reads like something a human would click, ≤60
-  chars so it isn't truncated in SERP.
+- **Title** leads with the primary query, reads like something a human would click, ≤60 chars so it isn't truncated in SERP.
 - **Description** ≤160 chars, includes secondary keywords, and earns the click.
-- **`date` vs `updated`:** never move `date`. Always bump `updated` on any edit (freshness
-  signal). New post: set both to today.
+- **`date` vs `updated`:** never move `date`. Always bump `updated` on any edit (freshness signal). New post: set both to today.
 - **Tags stay in English** across all languages.
 - Slug = the filename without `.md`. Use the **same slug in every language folder.**
 
@@ -285,9 +237,7 @@ tags:
   - Malayalam → `content/blog/ml/<slug>.md`
 
 ## 12. Translation workflow & quality bar
-Every English post must have all six locale files with the identical slug. The repo ships a
-translator that **only creates missing files** (it never overwrites existing ones), so the
-pattern is: write/verify English → run the translator per language.
+Every English post must have all six locale files with the identical slug. The repo ships a translator that **only creates missing files** (it never overwrites existing ones), so the pattern is: write/verify English → run the translator per language.
 
 ```bash
 # translates ONLY files missing in content/blog/<lang>/ (safe to re-run)
@@ -295,130 +245,26 @@ npx tsx scripts/translate_single_lang.ts hi
 npx tsx scripts/translate_single_lang.ts mr
 # …bn, ta, te, ml
 ```
-> Because the script skips files that already exist, **when you EXPAND/REFRESH an English
-> post you must delete the 6 stale translations first**, then re-run the translator so they
-> regenerate against the new content. Otherwise the regional versions silently fall behind
-> the English FAQs. (This is a common miss — check it every time.)
+
+> Because the script skips files that already exist, **when you EXPAND/REFRESH an English post you must delete the 6 stale translations first**, then re-run the translator so they regenerate against the new content. Otherwise the regional versions silently fall behind the English FAQs. (This is a common miss — check it every time.)
 
 **Translation quality bar:**
-- Identical frontmatter *structure*; translate `title` and `description` (respecting the
-  ≤60 / ≤160 char limits), keep `tags` in English.
-- Preserve every markdown link (`/`, `/seat-status`) and the H2/H3/FAQ structure exactly, so
-  the FAQPage schema still generates in each locale.
-- Keep technical abbreviations in Latin script inside regional text: **WL, RAC, PNR, TTE,
-  IRCTC, GNWL, RLWL, PQWL, TDR, AC, SL, 1AC/2AC/3AC**.
-- Use natural, culturally common railway terminology, not stiff machine translation. A
-  native speaker should find it idiomatic.
+- Identical frontmatter structure; translate `title` and `description` (respecting the ≤60 / ≤160 char limits), keep `tags` in English.
+- Preserve every markdown link (`/`, `/seat-status`) and the H2/H3/FAQ structure exactly, so the FAQPage schema still generates in each locale.
+- Keep technical abbreviations in Latin script inside regional text: **WL, RAC, PNR, TTE, IRCTC, GNWL, RLWL, PQWL, TDR, AC, SL, 1AC/2AC/3AC**.
+- Use natural, culturally common railway terminology, not stiff machine translation. A native speaker should find it idiomatic.
 
 ---
 
 # PART F — UNIQUENESS (DO NOT DUPLICATE)
 
 ## 13. Derive the forbidden list from disk — it changes constantly
-**The authoritative inventory is whatever is on disk right now**, not any list hard-coded in
-a doc. Before writing, always run:
+**The authoritative inventory is whatever is on disk right now**, not any list hard-coded in a doc. Before writing, always run:
 ```bash
 ls -1 content/blog/*.md | xargs -n1 basename | sort      # current English posts
 sed -n '1,200p' memory/blog-topics-written.md            # topic descriptions + dates
 ```
-Do **not** write a post whose topic overlaps an existing slug. Also guard against
-**near-duplicates**: if your idea is a narrower/rephrased angle of an existing post,
-**EXPAND that post instead** (Part B).
-
-## 14. Current inventory snapshot (88 posts — verify against disk)
-> This is a point-in-time snapshot for orientation. Disk + `memory/blog-topics-written.md`
-> win if they disagree. Do not rewrite, replicate, or lightly reskin any of these:
-
-```
-amrit-bharat-express-routes-booking-rules-fares
-ayodhya-dormitory-irctc-retiring-room-booking-guide
-best-train-when-all-trains-show-waiting-list
-boarding-station-vs-remote-location-irctc-chart
-bullet-train-india-routes-speed-status
-change-class-confirmed-train-ticket
-confirmed-from-origin-segment-booking
-connecting-train-bookings-irctc-link-pnr-guide
-current-reservation-timing-irctc-rules-guide
-delhi-to-goa-train-guide
-duplicate-train-ticket-lost-counter-ticket-rules
-duronto-express-timings-routes-booking-rules
-emergency-quota-in-railway-how-to-apply
-ernakulam-to-bangalore-train-guide
-family-group-train-booking-adjacent-berths-irctc
-garib-rath-express-timings-routes-booking-rules
-general-quota-meaning-irctc-rules-booking-guide
-gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances
-how-to-book-train-tickets-in-india-for-foreigners-ultimate-guide
-how-to-change-boarding-point-irctc-rules-process
-how-to-check-vacant-berths-after-chart-preparation
-how-to-reach-lakshadweep-by-train-ship-guide
-how-to-transfer-confirmed-train-ticket-another-person
-how-to-transport-bike-scooter-indian-railways-parcel-luggage-rules
-how-to-travel-with-dog-cat-indian-railways-pet-rules
-how-to-unblock-irctc-id-deactivated-account
-indian-railways-break-journey-rules
-indian-railways-cloak-room-rules-luggage-storage
-indian-railways-luggage-rules-baggage-allowance-limit
-indian-railways-sleeping-hours-middle-berth-rules
-irctc-acceptable-id-proofs-train-travel
-irctc-app-vs-website-tatkal-booking
-irctc-auto-upgradation-rules-secrets
-irctc-booking-failed-money-deducted-refund-rules
-irctc-booking-timings-rules
-irctc-cancellation-refund-rules-tdr-guide
-irctc-chart-preparation-guide
-irctc-child-ticket-booking-rules-fares
-irctc-circular-journey-ticket-rules-booking-guide
-irctc-counter-ticket-vs-eticket
-irctc-current-availability-explained
-irctc-ecatering-food-delivery-in-train-guide
-irctc-ewallet-registration-booking-payment-guide
-irctc-ftr-booking-rules-book-full-train-coach
-irctc-master-list-add-passenger-tatkal-speed-guide
-irctc-name-correction-spelling-age-gender-rules
-irctc-partial-confirmation-rules-waitlist-travel-guide
-irctc-personal-id-booking-rules-section-143
-irctc-pnr-status-check-meaning-guide
-irctc-premium-tatkal-booking-rules-fares
-irctc-refund-status-check-track-ticket-refund
-irctc-regret-meaning-ticket-booking-rules
-irctc-retiring-room-booking-rules-dormitory
-irctc-special-quotas-senior-citizen-ladies-disability-lower-berth
-irctc-tatkal-counter-token-system-rules
-irctc-ticket-booking-limits-aadhaar-verification
-irctc-travel-insurance-rules-coverage-claim-guide
-irctc-uts-app-booking-guide
-irctc-vikalp-scheme-explained
-irctc-vikalp-scheme-guide
-jan-shatabdi-express-timings-routes-tatkal-rules
-jan-vishwas-act-railway-rules-decriminalization-penalties
-live-train-running-status-where-is-my-train
-new-indian-railways-fines-jan-vishwas-act
-new-irctc-website-revamp-launch-date-features
-rac-vs-wl-explained
-rajdhani-express-timings-routes-booking-rules
-segment-booking-confirmed-tickets
-shatabdi-express-timings-routes-tatkal-rules
-station-platform-navigation-tips-last-minute-boarders
-tatkal-token-system-counter-booking-rules
-tatkal-token-system-new-rules-counter-booking-guide
-tatkal-vs-current-availability-last-minute-train-ticket
-tejas-express-timings-routes-booking-rules
-toy-train-routes-booking-india-guide
-train-berth-types-availability-reservation-guide
-train-classes-explained-1a-2a-3a-3e-sleeper-chair-car
-travel-sleeper-ac-class-general-platform-ticket
-ttr-full-form-in-train
-two-stop-rule-irctc-missed-train-rules
-ultimate-tatkal-booking-guide-speed-hacks
-understanding-coach-composition-find-train-platform
-vande-bharat-food-booking-opt-out-refund-rules
-vande-bharat-last-minute-booking-15-minutes-rule
-vande-bharat-routes-manufacturing-guide
-vande-bharat-sleeper-train-routes-fare-booking-guide
-vande-bharat-train-rules-booking-routes
-wl-waiting-list-meaning-indian-railway
-```
+Do **not** write a post whose topic overlaps an existing slug. Also guard against **near-duplicates**: if your idea is a narrower/rephrased angle of an existing post, **EXPAND that post instead** (Part B).
 
 ---
 
@@ -436,7 +282,7 @@ Before finalising, re-read and fix any of these tells:
 ## 16. The 4 Automated Quality Gates (blogEO Standard)
 Before any draft (new post or surgical edit) is finalized, it must pass **4 Automated Quality Gates**:
 
-1. **Strategy Gate:** 
+1. **Strategy Gate:**
    - Directly maps to a defined user persona (stressed commuter, confused tourist, researcher) and search cluster.
    - Zero banned corporate filler, zero AI boilerplate openings.
 2. **Structure & AEO Gate:**
@@ -454,11 +300,11 @@ Before any draft (new post or surgical edit) is finalized, it must pass **4 Auto
 ## 17. AEO Optimization & Dual-Engine Visibility (Search + AI Answers)
 Modern ticketing content must optimize for both **Google Search Clicks** and **AI Engine Citations** (Google AI Overviews, ChatGPT, Claude, Perplexity):
 - **The 3 AI Referral Layers:**
-  1. *Crawl Layer:* Search bots index semantic markdown and structured JSON-LD.
-  2. *Cite Layer (AEO):* LLMs quote our 40–60 word direct answers because they are definitive, concise, and mathematically grounded.
-  3. *Click Layer (Referral):* Direct traffic from SERP snippet links and AI Overview source cards.
+   1. *Crawl Layer:* Search bots index semantic markdown and structured JSON-LD.
+   2. *Cite Layer (AEO):* LLMs quote our 40–60 word direct answers because they are definitive, concise, and mathematically grounded.
+   3. *Click Layer (Referral):* Direct traffic from SERP snippet links and AI Overview source cards.
 - **Closed-Loop Performance Snapshotting (+28d / +56d Controls):**
-  - When evaluating past post edits or new launches in GSC audits, compare performance at 28-day and 56-day intervals against **domain-wide baseline numbers** to separate Google algorithmic shifts from post-level improvements.
+   - When evaluating past post edits or new launches in GSC audits, compare performance at 28-day and 56-day intervals against **domain-wide baseline numbers** to separate Google algorithmic shifts from post-level improvements.
 
 ## 18. Multi-agent execution (Antigravity capability)
 You must leverage the multi-agent capabilities of Antigravity by spinning up specialized subagents to divide the research and writing tasks:
@@ -487,39 +333,34 @@ Once these signal-gathering subagents compile their findings, you will triage th
 
 # PART H — MEMORY & VERSION CONTROL
 
-## 19. Update the memory log
-Append (or update, for EXPAND/REFRESH) the entry in `memory/blog-topics-written.md` so future
-runs stay aware:
+## 20. Update the memory log
+Append (or update, for EXPAND/REFRESH) the entry in `memory/blog-topics-written.md` so future runs stay aware:
 ```
 | <slug>.md | <one-line topic description> | <YYYY-MM-DD> |
 ```
 
-## 20. Commit & ship
+## 21. Commit & ship
 Stage only markdown + the memory file, then commit with the house convention:
 ```bash
 git add content/blog/<slug>.md content/blog/*/<slug>.md memory/blog-topics-written.md
 git commit -m "docs: publish new blog post on <topic>"      # or: "docs: expand <slug> for <query>"
 git push origin main
 ```
-- Never stage code files. If `git status` shows unrelated modified `.ts`/`.tsx` files, do
-  **not** include them.
-- If a build/verify step is available, confirm the affected pages render (English + at least
-  one locale) before pushing.
-- If a direct push to `main` is blocked by branch protection, push a feature branch and open
-  a PR instead — never force around the guard.
-## 21. Job Summary Reporting
+- Never stage code files. If `git status` shows unrelated modified `.ts`/`.tsx` files, do **not** include them.
+- If a build/verify step is available, confirm the affected pages render (English + at least one locale) before pushing.
+- If a direct push to `main` is blocked by branch protection, push a feature branch and open a PR instead — never force around the guard.
+
+## 22. Job Summary Reporting
 In the final summary of the job provided to the user, you must explicitly describe how you arrived at the new content or topics chosen for writing. Clearly specify the signal source for each topic:
 - Was it discovered from **Google Trends**? (e.g. seasonal keyword surges, breakout topics)
 - Was it identified from **Google Search Console (GSC)**? (e.g. high-impression / low-CTR queries, position 5-20 keywords)
 - Was it found from **Google News Search** (`https://news.google.com/search?q=indian+railways&hl=en-IN&gl=IN&ceid=IN:en`)? (e.g. trending articles, IRCTC press releases, policy changes)
 - Was it fallback-discovered from **IRCTC Official Alerts** (`https://www.irctc.co.in/nget/enquiry/alerts`)? (e.g. passenger advisories, Tatkal rules, special train notices)
 
-## 22. One-line self-check before you stop
-> "Did I move a real ranked query forward, answer its exact question in the first 50 words,
-> keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, and
-> touch nothing but markdown?" If any answer is no, fix it before committing.
+## 23. One-line self-check before you stop
+> "Did I move a real ranked query forward, answer its exact question in the first 50 words, keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, and touch nothing but markdown?" If any answer is no, fix it before committing.
 
-## 23. Medium Syndication Workflow (Manual Import)
+## 24. Medium Syndication Workflow (Manual Import)
 To syndicate published English blog posts to Medium without risking Google duplicate-content penalties, always set the canonical link back to LastBerth:
 
 ### Method A: Medium "Import a Story" (Recommended)
@@ -534,5 +375,3 @@ To syndicate published English blog posts to Medium without risking Google dupli
 3. Under **Advanced Settings**, check **"This story was originally published elsewhere"**.
 4. Enter the canonical URL: `https://lastberth.com/blog/<slug>` and save.
 5. Publish the story.
-
-

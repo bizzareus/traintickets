@@ -37,6 +37,7 @@ describe('WasenderHealthcheckService', () => {
         {
           provide: ConfigService,
           useValue: mockConfig({
+            NODE_ENV: 'production',
             WASENDER_API_KEY: 'test_session_api_key',
             WASENDER_PERSONAL_ACCESS_TOKEN: 'test_pat_token',
             WASENDER_SESSION_ID: '42',
@@ -241,8 +242,43 @@ describe('WasenderHealthcheckService', () => {
     expect(mockSend).toHaveBeenCalledTimes(1);
   });
 
+  it('skips scheduled cron when NODE_ENV is development / non-production', async () => {
+    jest.spyOn(configService, 'get').mockImplementation((key: string) => {
+      if (key === 'NODE_ENV') return 'development';
+      if (key === 'WHATSAPP_PROVIDER') return 'wasender';
+      if (key === 'WASENDER_API_KEY') return 'test_session_api_key';
+      return undefined;
+    });
+
+    const checkSpy = jest.spyOn(service, 'checkHealth');
+    await service.handleScheduledHealthcheck();
+    expect(checkSpy).not.toHaveBeenCalled();
+  });
+
+  it('allows explicit WASENDER_HEALTHCHECK_ENABLED=true override in development', async () => {
+    jest.spyOn(configService, 'get').mockImplementation((key: string) => {
+      if (key === 'NODE_ENV') return 'development';
+      if (key === 'WASENDER_HEALTHCHECK_ENABLED') return 'true';
+      if (key === 'WHATSAPP_PROVIDER') return 'wasender';
+      if (key === 'WASENDER_API_KEY') return 'test_session_api_key';
+      return undefined;
+    });
+
+    const checkSpy = jest.spyOn(service, 'checkHealth').mockResolvedValue({
+      healthy: true,
+      status: 'connected',
+      qrSent: false,
+      message: 'Session is active',
+      timestamp: new Date().toISOString(),
+    });
+
+    await service.handleScheduledHealthcheck();
+    expect(checkSpy).toHaveBeenCalledWith('cron');
+  });
+
   it('skips scheduled cron when WHATSAPP_PROVIDER is not wasender', async () => {
     jest.spyOn(configService, 'get').mockImplementation((key: string) => {
+      if (key === 'NODE_ENV') return 'production';
       if (key === 'WHATSAPP_PROVIDER') return 'wati';
       if (key === 'WASENDER_API_KEY') return 'test_session_api_key';
       return undefined;
@@ -253,7 +289,7 @@ describe('WasenderHealthcheckService', () => {
     expect(checkSpy).not.toHaveBeenCalled();
   });
 
-  it('executes scheduled cron when WHATSAPP_PROVIDER is wasender', async () => {
+  it('executes scheduled cron when NODE_ENV is production and WHATSAPP_PROVIDER is wasender', async () => {
     const spy = jest.spyOn(service, 'checkHealth').mockResolvedValue({
       healthy: true,
       status: 'connected',
@@ -297,6 +333,7 @@ describe('WasenderHealthcheckService', () => {
     expect(state.sessionId).toBe('42');
     expect(state.adminEmail).toBe('admin@lastberth.com');
     expect(state.activeProvider).toBe('wasender');
+    expect(state.nodeEnv).toBe('production');
     expect(state.isWasenderActive).toBe(true);
   });
 });
