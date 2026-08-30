@@ -7,6 +7,7 @@ import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
 import { StationChartingStatus } from "@/components/booking-v2/StationChartingStatus";
 import { AlternatePathContent } from "@/components/booking-v2/AlternatePathContent";
+import { PartyPopperConfetti } from "@/components/booking-v2/PartyPopperConfetti";
 import { TrainScheduleBottomSheet } from "@/components/booking-v2/TrainScheduleBottomSheet";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
 import type {
@@ -40,6 +41,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
   const [isLiveChartPrepared, setIsLiveChartPrepared] = useState(false);
   const [isAdminUser, setIsAdminUser] = useState(false);
   const [chartAlertOpen, setChartAlertOpen] = useState(false);
+  const [showCelebration, setShowCelebration] = useState(false);
   const chartAlertShownForPnr = useRef<string | null>(null);
 
   // Schedule modal (opened from within AlternatePathContent leg cards)
@@ -138,6 +140,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
     setPnrData(null);
     setPnrForCta("");
     setChartAlertOpen(false);
+    setShowCelebration(false);
     alt.reset();
 
     try {
@@ -162,6 +165,35 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
         name: "search_pnr_status_checked",
         properties: { success: true },
       });
+
+      // Check if all passengers in PassengerStatus array have confirmed status ("CNF")
+      const isAllConfirmed =
+        Array.isArray(data.PassengerStatus) &&
+        data.PassengerStatus.length > 0 &&
+        data.PassengerStatus.every((p: any) => {
+          const statusStr = String(
+            p.currentStatusNew ??
+              p.CurrentStatusNew ??
+              p.currentStatus ??
+              p.CurrentStatus ??
+              p.confirmTktStatus ??
+              p.ConfirmTktStatus ??
+              p.bookingStatus ??
+              p.BookingStatus ??
+              "",
+          )
+            .trim()
+            .toUpperCase();
+          return (
+            statusStr === "CNF" ||
+            statusStr.startsWith("CNF") ||
+            statusStr.includes("CONFIRM")
+          );
+        });
+
+      if (isAllConfirmed) {
+        setShowCelebration(true);
+      }
 
       // Parse and sync journey date
       let parsedDate = journeyDate;
@@ -616,6 +648,13 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
         highlightFrom={scheduleHighlightFrom}
         highlightTo={scheduleHighlightTo}
       />
-      </form>
+
+      {showCelebration && (
+        <PartyPopperConfetti
+          durationMs={2000}
+          onComplete={() => setShowCelebration(false)}
+        />
+      )}
+    </form>
   );
 }
