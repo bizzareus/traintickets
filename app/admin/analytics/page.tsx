@@ -1,9 +1,34 @@
 "use client";
 
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
 import moment from "moment";
+import {
+  Bell,
+  Link2,
+  MousePointerClick,
+  Users,
+  ExternalLink,
+  Copy,
+  Check,
+  RefreshCw,
+  Smartphone,
+  Laptop,
+  Tablet,
+  Bot,
+  Mail,
+  MessageSquare,
+  Train,
+  ArrowRight,
+  Search,
+  Calendar,
+  X,
+} from "lucide-react";
 
+// ==========================================
+// 1. NOTIFICATIONS ANALYTICS TYPES
+// ==========================================
 type GroupByMode = "day" | "week" | "month";
 
 type DailyStat = {
@@ -57,7 +82,139 @@ type AnalyticsResponse = {
   summary: AnalyticsSummary;
 };
 
-export default function NotificationsAnalyticsPage() {
+// ==========================================
+// 2. SHORT LINKS & CLICKS TYPES
+// ==========================================
+type DeviceInfo = {
+  browser: string;
+  os: string;
+  deviceType: "mobile" | "desktop" | "tablet" | "bot";
+};
+
+type UserInfo = {
+  email: string | null;
+  mobile: string | null;
+  name: string | null;
+  channel: string | null;
+  recipient: string | null;
+};
+
+type TrainContextInfo = {
+  trainNumber: string | null;
+  trainName: string | null;
+  fromStation: string | null;
+  toStation: string | null;
+  journeyDate: string | null;
+  classCode: string | null;
+  notificationType: string | null;
+};
+
+type ClickItem = {
+  id: string;
+  clickedAt: string;
+  ipAddress: string | null;
+  userAgent: string | null;
+  referer: string | null;
+  device: DeviceInfo;
+  shortLink: {
+    id: string;
+    code: string;
+    shortUrl: string;
+    targetUrl: string;
+    clickCount: number;
+    createdAt: string;
+  } | null;
+  user: UserInfo;
+  trainContext: TrainContextInfo;
+};
+
+type ShortLinksOverviewSummary = {
+  totalLinks: number;
+  totalClicks: number;
+  clickedLinksCount: number;
+  unclickedLinksCount: number;
+  clickThroughRate: number;
+  uniqueUsersCount: number;
+  recentClicks24h: number;
+  recentClicks7d: number;
+  clicksByChannel: { whatsapp: number; email: number; direct: number };
+  linksByType: { search_redirect: number; chart_alert: number; other: number };
+};
+
+// ==========================================
+// MAIN ANALYTICS CONTAINER
+// ==========================================
+function AnalyticsDashboard() {
+  const searchParams = useSearchParams();
+  const initialTab = searchParams.get("tab") === "short-links" ? "short-links" : "notifications";
+  const [activeTab, setActiveTab] = useState<"notifications" | "short-links">(initialTab);
+
+  return (
+    <div className="space-y-8">
+      {/* Top Header & Navigation Tabs */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-slate-200 pb-5">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900">Analytics & Insights</h1>
+          <p className="mt-1 text-sm text-slate-500">
+            Track user notification volume, delivery performance, and real-time short link clicks.
+          </p>
+        </div>
+
+        {/* Tab Switcher */}
+        <div className="inline-flex rounded-xl bg-slate-200/70 p-1 shadow-inner">
+          <button
+            onClick={() => setActiveTab("notifications")}
+            className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold transition ${
+              activeTab === "notifications"
+                ? "bg-white text-indigo-600 shadow-sm"
+                : "text-slate-600 hover:text-slate-900"
+            }`}
+          >
+            <Bell className="h-4 w-4" />
+            Notifications
+          </button>
+          <button
+            onClick={() => setActiveTab("short-links")}
+            className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold transition ${
+              activeTab === "short-links"
+                ? "bg-white text-indigo-600 shadow-sm"
+                : "text-slate-600 hover:text-slate-900"
+            }`}
+          >
+            <Link2 className="h-4 w-4" />
+            Short Links & Clicks
+          </button>
+        </div>
+      </div>
+
+      {/* Tab Content */}
+      {activeTab === "notifications" ? (
+        <NotificationsAnalyticsSection />
+      ) : (
+        <ShortLinksClicksSection />
+      )}
+    </div>
+  );
+}
+
+export default function AnalyticsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex h-64 items-center justify-center">
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600" />
+        </div>
+      }
+    >
+      <AnalyticsDashboard />
+    </Suspense>
+  );
+}
+
+// ==========================================
+// TAB 1: NOTIFICATIONS ANALYTICS
+// ==========================================
+function NotificationsAnalyticsSection() {
   const [data, setData] = useState<DailyStat[]>([]);
   const [monthlyRepeatUsers, setMonthlyRepeatUsers] = useState<MonthlyRepeatUser[]>([]);
   const [summary, setSummary] = useState<AnalyticsSummary | null>(null);
@@ -70,28 +227,20 @@ export default function NotificationsAnalyticsPage() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  // Hovered bar state for chart tooltips
+  // Tooltip state
   const [hoveredBar, setHoveredBar] = useState<DailyStat | null>(null);
   const [hoverPos, setHoverPos] = useState<{ x: number; y: number } | null>(null);
 
-  // Compute date range parameters based on preset
+  // Preset Date range calculation
   useEffect(() => {
     if (preset === "custom") return;
-
     const end = moment().format("YYYY-MM-DD");
     let start = "";
-
-    if (preset === "7d") {
-      start = moment().subtract(6, "days").format("YYYY-MM-DD");
-    } else if (preset === "14d") {
-      start = moment().subtract(13, "days").format("YYYY-MM-DD");
-    } else if (preset === "30d") {
-      start = moment().subtract(29, "days").format("YYYY-MM-DD");
-    } else if (preset === "90d") {
-      start = moment().subtract(89, "days").format("YYYY-MM-DD");
-    } else if (preset === "all") {
-      start = "";
-    }
+    if (preset === "7d") start = moment().subtract(6, "days").format("YYYY-MM-DD");
+    else if (preset === "14d") start = moment().subtract(13, "days").format("YYYY-MM-DD");
+    else if (preset === "30d") start = moment().subtract(29, "days").format("YYYY-MM-DD");
+    else if (preset === "90d") start = moment().subtract(89, "days").format("YYYY-MM-DD");
+    else if (preset === "all") start = "";
 
     setStartDate(start);
     setEndDate(start ? end : "");
@@ -133,7 +282,6 @@ export default function NotificationsAnalyticsPage() {
     fetchAnalytics();
   }, [fetchAnalytics]);
 
-  // Calculate chart max height & scale
   const maxVal = useMemo(() => {
     if (!data.length) return 10;
     const max = Math.max(
@@ -142,7 +290,6 @@ export default function NotificationsAnalyticsPage() {
     return max === 0 ? 10 : Math.ceil(max * 1.15);
   }, [data]);
 
-  // Date formatting helpers based on aggregation mode
   const formatBarLabel = (dateStr: string) => {
     if (groupBy === "month") return moment(dateStr).format("MMM YY");
     if (groupBy === "week") return moment(dateStr).format("DD MMM");
@@ -171,36 +318,40 @@ export default function NotificationsAnalyticsPage() {
     groupBy === "month" ? "MoM" : groupBy === "week" ? "WoW" : "DoD";
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900">Notifications Analytics</h1>
-          <p className="mt-1 text-sm text-slate-500">
-            Track {periodTitle.toLowerCase()} count of notifications created vs. delivered to users.
-          </p>
+    <div className="space-y-6">
+      {/* Date Range & Preset Controls */}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-semibold text-slate-700">Preset Range:</span>
+          <div className="flex items-center gap-1.5">
+            {(["7d", "14d", "30d", "90d", "all"] as const).map((p) => (
+              <button
+                key={p}
+                onClick={() => setPreset(p)}
+                className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition ${
+                  preset === p
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
+                }`}
+              >
+                {p === "7d" && "7 Days"}
+                {p === "14d" && "14 Days"}
+                {p === "30d" && "30 Days"}
+                {p === "90d" && "90 Days"}
+                {p === "all" && "All Time"}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Date Range & Preset Controls */}
-        <div className="flex flex-wrap items-center gap-2">
-          {(["7d", "14d", "30d", "90d", "all"] as const).map((p) => (
-            <button
-              key={p}
-              onClick={() => setPreset(p)}
-              className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition ${
-                preset === p
-                  ? "bg-indigo-600 text-white shadow-sm"
-                  : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
-              }`}
-            >
-              {p === "7d" && "7 Days"}
-              {p === "14d" && "14 Days"}
-              {p === "30d" && "30 Days"}
-              {p === "90d" && "90 Days"}
-              {p === "all" && "All Time"}
-            </button>
-          ))}
-        </div>
+        <button
+          onClick={fetchAnalytics}
+          disabled={loading}
+          className="inline-flex items-center gap-1.5 rounded-xl bg-white border border-slate-200 px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 disabled:opacity-50"
+        >
+          <RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
+          Refresh
+        </button>
       </div>
 
       {/* Controls Bar: Group By & Date Filters */}
@@ -662,6 +813,508 @@ export default function NotificationsAnalyticsPage() {
               </tbody>
             </table>
           </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ==========================================
+// TAB 2: SHORT LINKS & CLICKS
+// ==========================================
+function ShortLinksClicksSection() {
+  const [overview, setOverview] = useState<ShortLinksOverviewSummary | null>(null);
+  const [clicks, setClicks] = useState<ClickItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [nowIst, setNowIst] = useState("");
+  const [copiedCode, setCopiedCode] = useState<string | null>(null);
+
+  // Filters
+  const [search, setSearch] = useState("");
+  const [channelFilter, setChannelFilter] = useState<string>("all");
+  const [preset, setPreset] = useState<"24h" | "7d" | "30d" | "all" | "custom">("30d");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
+  // Pagination
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+
+  // Live IST Clock
+  useEffect(() => {
+    const update = () => {
+      setNowIst(moment().utcOffset("+05:30").format("DD MMM, HH:mm:ss") + " IST");
+    };
+    update();
+    const timer = setInterval(update, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Preset Date range
+  useEffect(() => {
+    if (preset === "custom") return;
+    const end = moment().format("YYYY-MM-DD");
+    let start = "";
+    if (preset === "24h") {
+      start = moment().subtract(1, "days").format("YYYY-MM-DD");
+    } else if (preset === "7d") {
+      start = moment().subtract(6, "days").format("YYYY-MM-DD");
+    } else if (preset === "30d") {
+      start = moment().subtract(29, "days").format("YYYY-MM-DD");
+    } else if (preset === "all") {
+      start = "";
+    }
+    setStartDate(start);
+    setEndDate(start ? end : "");
+    setPage(1);
+  }, [preset]);
+
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const params = new URLSearchParams();
+      if (startDate) params.append("startDate", startDate);
+      if (endDate) params.append("endDate", endDate);
+      if (search.trim()) params.append("search", search.trim());
+      if (channelFilter !== "all") params.append("channel", channelFilter);
+      params.append("page", String(page));
+      params.append("limit", "25");
+
+      const queryStr = params.toString() ? `?${params.toString()}` : "";
+
+      const [ovRes, clickRes] = await Promise.all([
+        apiClient.get<{ summary: ShortLinksOverviewSummary }>(
+          `/api/short-link/admin/overview${queryStr}`
+        ),
+        apiClient.get<{ clicks: ClickItem[]; total: number; totalPages: number }>(
+          `/api/short-link/admin/clicks${queryStr}`
+        ),
+      ]);
+
+      setOverview(ovRes.data.summary);
+      setClicks(clickRes.data.clicks);
+      setTotalCount(clickRes.data.total);
+      setTotalPages(clickRes.data.totalPages);
+    } catch (err) {
+      console.error("Failed to load short link clicks data", err);
+      setError("Failed to load short link tracking data. Check if backend API is running.");
+    } finally {
+      setLoading(false);
+    }
+  }, [page, startDate, endDate, search, channelFilter]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const copyToClipboard = (text: string, code: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedCode(code);
+    setTimeout(() => setCopiedCode(null), 2000);
+  };
+
+  const getDeviceIcon = (deviceType: string) => {
+    switch (deviceType) {
+      case "mobile":
+        return <Smartphone className="h-3.5 w-3.5 text-blue-500" />;
+      case "tablet":
+        return <Tablet className="h-3.5 w-3.5 text-purple-500" />;
+      case "bot":
+        return <Bot className="h-3.5 w-3.5 text-amber-500" />;
+      default:
+        return <Laptop className="h-3.5 w-3.5 text-slate-500" />;
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Controls & Clock Header */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700 border border-slate-200">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            IST Time: {nowIst}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          {/* Preset Buttons */}
+          <div className="flex items-center gap-1.5">
+            {(["24h", "7d", "30d", "all"] as const).map((p) => (
+              <button
+                key={p}
+                onClick={() => setPreset(p)}
+                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
+                  preset === p
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
+                }`}
+              >
+                {p === "24h" && "24 Hours"}
+                {p === "7d" && "7 Days"}
+                {p === "30d" && "30 Days"}
+                {p === "all" && "All Time"}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={fetchData}
+            disabled={loading}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:opacity-50"
+          >
+            <RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
+            Refresh
+          </button>
+        </div>
+      </div>
+
+      {/* KPI Overview Cards */}
+      {overview && (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Total Short Links</span>
+              <Link2 className="h-4 w-4 text-indigo-500" />
+            </div>
+            <p className="mt-2 text-2xl font-bold text-slate-900">{overview.totalLinks}</p>
+            <span className="text-[11px] text-slate-400">
+              {overview.linksByType.search_redirect} Search • {overview.linksByType.chart_alert} Alerts
+            </span>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Total Click Events</span>
+              <MousePointerClick className="h-4 w-4 text-emerald-500" />
+            </div>
+            <p className="mt-2 text-2xl font-bold text-emerald-600">{overview.totalClicks}</p>
+            <span className="text-[11px] text-slate-400">
+              {overview.recentClicks24h} in 24h • {overview.recentClicks7d} in 7d
+            </span>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Click-Through Rate</span>
+              <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-bold text-indigo-700 border border-indigo-200">
+                {overview.clickThroughRate}% CTR
+              </span>
+            </div>
+            <p className="mt-2 text-2xl font-bold text-indigo-600">{overview.clickedLinksCount}</p>
+            <span className="text-[11px] text-slate-400">
+              links clicked of {overview.totalLinks} created
+            </span>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Identified Contacts</span>
+              <Users className="h-4 w-4 text-purple-500" />
+            </div>
+            <p className="mt-2 text-2xl font-bold text-purple-600">{overview.uniqueUsersCount}</p>
+            <span className="text-[11px] text-slate-400">
+              WA: {overview.clicksByChannel.whatsapp} • Email: {overview.clicksByChannel.email} clicks
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Filter & Search Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white p-3.5 text-xs shadow-sm">
+        <div className="flex flex-1 min-w-[220px] items-center gap-2 rounded-lg border border-slate-200 px-3 py-1.5 focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
+          <Search className="h-3.5 w-3.5 text-slate-400" />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
+            placeholder="Search by email, mobile, name, train number, or code..."
+            className="w-full bg-transparent text-slate-800 focus:outline-none placeholder:text-slate-400"
+          />
+          {search && (
+            <button onClick={() => setSearch("")} className="text-slate-400 hover:text-slate-600">
+              <X className="h-3.5 w-3.5" />
+            </button>
+          )}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-1.5">
+            <span className="font-semibold text-slate-600">Channel:</span>
+            <select
+              value={channelFilter}
+              onChange={(e) => {
+                setChannelFilter(e.target.value);
+                setPage(1);
+              }}
+              className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-slate-800 focus:border-indigo-500 focus:outline-none"
+            >
+              <option value="all">All Channels</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
+
+          <div className="flex items-center gap-1.5 border-l border-slate-200 pl-3">
+            <Calendar className="h-3.5 w-3.5 text-slate-400" />
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => {
+                setPreset("custom");
+                setStartDate(e.target.value);
+                setPage(1);
+              }}
+              className="rounded-lg border border-slate-200 px-2 py-1 text-[11px] text-slate-800 focus:border-indigo-500 focus:outline-none"
+            />
+            <span className="text-slate-400">to</span>
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => {
+                setPreset("custom");
+                setEndDate(e.target.value);
+                setPage(1);
+              }}
+              className="rounded-lg border border-slate-200 px-2 py-1 text-[11px] text-slate-800 focus:border-indigo-500 focus:outline-none"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Clicks Feed Table */}
+      {loading ? (
+        <div className="flex h-64 items-center justify-center rounded-3xl border border-dashed border-slate-200 bg-white">
+          <div className="flex flex-col items-center gap-2">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600" />
+            <p className="text-xs text-slate-500">Loading click events...</p>
+          </div>
+        </div>
+      ) : error ? (
+        <div className="rounded-3xl border border-rose-200 bg-rose-50 p-6 text-center text-rose-700">
+          <p className="text-sm font-medium">{error}</p>
+        </div>
+      ) : (
+        <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+          <div className="border-b border-slate-100 bg-slate-50/50 px-6 py-4 flex items-center justify-between">
+            <div>
+              <h3 className="font-semibold text-slate-900">Clicks Stream ({totalCount})</h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Detailed telemetry of users who clicked short links sent across notification channels.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-slate-500">
+              Page {page} of {totalPages}
+            </span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-slate-100 bg-slate-50/50 text-xs font-semibold text-slate-700">
+                <tr>
+                  <th className="px-6 py-3.5">Time (IST)</th>
+                  <th className="px-6 py-3.5">User / Recipient</th>
+                  <th className="px-6 py-3.5">Channel</th>
+                  <th className="px-6 py-3.5">Train & Route Context</th>
+                  <th className="px-6 py-3.5">Short Link & Destination</th>
+                  <th className="px-6 py-3.5">Device & Browser</th>
+                  <th className="px-6 py-3.5">IP & Referrer</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {clicks.length === 0 ? (
+                  <tr>
+                    <td colSpan={7} className="px-6 py-12 text-center text-slate-400">
+                      No short link clicks recorded for this criteria.
+                    </td>
+                  </tr>
+                ) : (
+                  clicks.map((c) => (
+                    <tr key={c.id} className="transition hover:bg-slate-50/50">
+                      {/* Time */}
+                      <td className="whitespace-nowrap px-6 py-4">
+                        <div className="flex flex-col">
+                          <span className="font-medium text-slate-900">
+                            {moment.utc(c.clickedAt).utcOffset("+05:30").format("DD MMM, HH:mm:ss")}
+                          </span>
+                          <span className="text-[10px] text-slate-400">
+                            {moment(c.clickedAt).fromNow()}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* User / Recipient */}
+                      <td className="px-6 py-4">
+                        <div className="flex flex-col gap-0.5">
+                          {c.user.name && (
+                            <span className="font-bold text-slate-900 text-xs">
+                              {c.user.name}
+                            </span>
+                          )}
+                          {c.user.email && (
+                            <span className="text-xs font-medium text-slate-800 flex items-center gap-1">
+                              <Mail className="h-3 w-3 text-slate-400" />
+                              {c.user.email}
+                            </span>
+                          )}
+                          {c.user.mobile && (
+                            <span className="text-xs text-slate-500 font-mono flex items-center gap-1">
+                              <MessageSquare className="h-3 w-3 text-slate-400" />
+                              {c.user.mobile}
+                            </span>
+                          )}
+                          {!c.user.email && !c.user.mobile && !c.user.name && (
+                            <span className="italic text-slate-400 text-xs">Anonymous Click</span>
+                          )}
+                        </div>
+                      </td>
+
+                      {/* Channel */}
+                      <td className="px-6 py-4">
+                        {c.user.channel === "whatsapp" ? (
+                          <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">
+                            <MessageSquare className="h-3 w-3" /> WhatsApp
+                          </span>
+                        ) : c.user.channel === "email" ? (
+                          <span className="inline-flex items-center gap-1 rounded-md bg-indigo-50 px-2 py-0.5 text-xs font-bold text-indigo-700 border border-indigo-200">
+                            <Mail className="h-3 w-3" /> Email
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+                            Direct / Web
+                          </span>
+                        )}
+                      </td>
+
+                      {/* Train & Route Context */}
+                      <td className="px-6 py-4">
+                        {c.trainContext.trainNumber ? (
+                          <div className="flex flex-col gap-0.5 text-xs">
+                            <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                              <Train className="h-3.5 w-3.5 text-indigo-600" />
+                              <span>{c.trainContext.trainNumber}</span>
+                              {c.trainContext.trainName && (
+                                <span className="font-normal text-slate-500 truncate max-w-[120px]">
+                                  ({c.trainContext.trainName})
+                                </span>
+                              )}
+                            </div>
+                            {c.trainContext.fromStation && c.trainContext.toStation && (
+                              <div className="text-slate-600 flex items-center gap-1 text-[11px]">
+                                <span>{c.trainContext.fromStation}</span>
+                                <ArrowRight className="h-3 w-3 text-slate-400" />
+                                <span>{c.trainContext.toStation}</span>
+                                {c.trainContext.journeyDate && (
+                                  <span className="text-slate-400 font-mono ml-1">
+                                    • {moment(c.trainContext.journeyDate).format("DD MMM")}
+                                  </span>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <span className="text-slate-400 text-xs">—</span>
+                        )}
+                      </td>
+
+                      {/* Short Link & Target */}
+                      <td className="px-6 py-4">
+                        {c.shortLink ? (
+                          <div className="flex flex-col gap-1 text-xs">
+                            <div className="flex items-center gap-1.5 font-mono">
+                              <span className="font-semibold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-100">
+                                /s/{c.shortLink.code}
+                              </span>
+                              <button
+                                onClick={() => copyToClipboard(c.shortLink!.shortUrl, c.shortLink!.code)}
+                                className="text-slate-400 hover:text-slate-600"
+                                title="Copy Short URL"
+                              >
+                                {copiedCode === c.shortLink.code ? (
+                                  <Check className="h-3.5 w-3.5 text-emerald-600" />
+                                ) : (
+                                  <Copy className="h-3.5 w-3.5" />
+                                )}
+                              </button>
+                            </div>
+                            <a
+                              href={c.shortLink.targetUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[11px] text-slate-500 hover:text-indigo-600 flex items-center gap-1 truncate max-w-[160px]"
+                              title={c.shortLink.targetUrl}
+                            >
+                              <ExternalLink className="h-3 w-3 shrink-0" />
+                              <span>{c.shortLink.targetUrl.replace(/^https?:\/\/[^/]+/, "")}</span>
+                            </a>
+                          </div>
+                        ) : (
+                          <span className="text-slate-400 text-xs">—</span>
+                        )}
+                      </td>
+
+                      {/* Device & Browser */}
+                      <td className="px-6 py-4">
+                        <div className="flex flex-col gap-1 text-xs">
+                          <div className="flex items-center gap-1.5">
+                            {getDeviceIcon(c.device.deviceType)}
+                            <span className="font-semibold text-slate-800">
+                              {c.device.os}
+                            </span>
+                          </div>
+                          <span className="text-[11px] text-slate-500 truncate max-w-[140px]" title={c.device.browser}>
+                            {c.device.browser}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* IP & Referer */}
+                      <td className="px-6 py-4">
+                        <div className="flex flex-col gap-0.5 text-[11px]">
+                          <span className="font-mono text-slate-700">{c.ipAddress || "—"}</span>
+                          <span className="text-slate-400 truncate max-w-[120px]" title={c.referer || ""}>
+                            {c.referer ? c.referer.replace(/^https?:\/\//, "") : "Direct"}
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="border-t border-slate-100 bg-slate-50/50 px-6 py-3 flex items-center justify-between text-xs">
+              <span className="text-slate-500">
+                Page {page} of {totalPages} ({totalCount} items)
+              </span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                  className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 disabled:opacity-50"
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                  className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 disabled:opacity-50"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

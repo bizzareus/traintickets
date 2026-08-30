@@ -10,8 +10,8 @@ export default function AdminPage() {
           href="/admin/analytics"
           className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
         >
-          <h2 className="font-semibold text-slate-900">Analytics</h2>
-          <p className="mt-1 text-sm text-slate-600">View day-on-day notifications created by users with date filtering.</p>
+          <h2 className="font-semibold text-slate-900">Analytics & Short Links</h2>
+          <p className="mt-1 text-sm text-slate-600">Track notifications created & delivered, growth trends, and short link clicks tracking.</p>
         </Link>
         <Link
           href="/admin/alerts"
@@ -19,13 +19,6 @@ export default function AdminPage() {
         >
           <h2 className="font-semibold text-slate-900">Alerts</h2>
           <p className="mt-1 text-sm text-slate-600">View all journey monitoring tasks and user alerts.</p>
-        </Link>
-        <Link
-          href="/admin/short-links"
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
-        >
-          <h2 className="font-semibold text-slate-900">Short links & Clicks</h2>
-          <p className="mt-1 text-sm text-slate-600">Track clicks, user attribution (email, phone, name), and device telemetry.</p>
         </Link>
         <Link
           href="/admin/chart-time-ingestion"
