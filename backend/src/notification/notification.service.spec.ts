@@ -119,8 +119,10 @@ describe('NotificationService', () => {
     const [, subject, html] = sendEmail.mock.calls[0];
     expect(subject).toContain('Fri, 3rd April');
     expect(html).toContain('Fri, 3rd April');
-    expect(html).toContain('Dep NDLS: 09:15');
-    expect(html).toContain('Arr BCT: 20:15');
+    expect(html).toContain('New Delhi (09:15) → Mumbai Central (20:15)');
+    expect(html).toContain(
+      'NDLS - New Delhi (09:15) → BCT - Mumbai Central (20:15)',
+    );
     expect(html).toContain('AVAILABLE 24');
     expect(html).toContain('approx');
     expect(html).toContain('₹1,200');
@@ -234,7 +236,9 @@ describe('NotificationService', () => {
       'Book on IRCTC: https://www.irctc.co.in/nget/redirect?from=PUNE&to=CCH&trainNo=11010&class=CC&page=train-chart',
     );
     expect(text).toContain('No tickets available:');
-    expect(text).toContain('CCH - Chinchvad → CSMT - C Shivaji Mah T');
+    expect(text).toContain(
+      'CCH - Chinchvad (06:34) → CSMT - C Shivaji Mah T (09:55)',
+    );
     expect(text).toMatch(
       /(New tickets open at|Chart for Chinchvad was released at)/,
     );

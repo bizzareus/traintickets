@@ -61,7 +61,6 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
               <p style="margin:8px 0 0 0; font-size:14px; color:#64748b;">${escapeHtml(routeDisplay)}</p>
               <p style="margin:8px 0 0 0; font-size:14px; color:#334155;">${escapeHtml(journeyDateReadable)}</p>
               ${partialNoticeLine}
-              ${journeyTimesLine ? `<p style="margin:6px 0 0 0; font-size:13px; color:#64748b;">${escapeHtml(journeyTimesLine)}</p>` : ''}
               ${chartPrepLine}
             </td>
           </tr>

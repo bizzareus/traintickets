@@ -68,7 +68,7 @@ export function normalizeIrctcTimeDisplay(t: unknown): string {
   return s;
 }
 
-function findScheduleRow(
+export function findScheduleRow(
   stationList: ScheduleStation[] | undefined,
   code: string,
 ): ScheduleStation | undefined {

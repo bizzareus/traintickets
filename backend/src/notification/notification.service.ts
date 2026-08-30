@@ -18,6 +18,9 @@ import { WatiProvider } from './whatsapp-providers/wati.provider';
 import { WhatsAppProviderFactory } from './whatsapp-providers/whatsapp.provider-factory';
 import type { SendWhatsAppPayload } from './whatsapp-providers/whatsapp-provider.interface';
 import {
+  arrivalTimeAtStation,
+  departureTimeAtStation,
+  findScheduleRow,
   formatJourneyDateReadable,
   formatSegmentScheduleTimes,
   hasBookablePlanForNotification,
@@ -523,10 +526,11 @@ export class NotificationService {
     });
   }
 
-  /** Format segment for display: "CODE - Name → CODE - Name" using station names when available. */
+  /** Format segment for display: "CODE - Name (hh:mm) → CODE - Name (hh:mm)" using station names and times when available. */
   private formatSegmentRoute(
     instruction: string | undefined | null,
     stationNameMap: Map<string, string>,
+    stationScheduleList?: ScheduleStation[],
   ): string {
     if (!instruction?.trim()) {
       return '';
@@ -536,19 +540,42 @@ export class NotificationService {
     const toCode = parts[1] ?? '';
     const fromName = stationNameMap.get(fromCode.toUpperCase()) ?? fromCode;
     const toName = stationNameMap.get(toCode.toUpperCase()) ?? toCode;
-    return `${fromCode} - ${fromName} → ${toCode} - ${toName}`;
+
+    const fromRow = findScheduleRow(stationScheduleList, fromCode);
+    const toRow = findScheduleRow(stationScheduleList, toCode);
+    const depTime = departureTimeAtStation(fromRow);
+    const arrTime = arrivalTimeAtStation(toRow);
+
+    const fromDisplay = depTime
+      ? `${fromCode} - ${fromName} (${depTime})`
+      : `${fromCode} - ${fromName}`;
+    const toDisplay = arrTime
+      ? `${toCode} - ${toName} (${arrTime})`
+      : `${toCode} - ${toName}`;
+
+    return `${fromDisplay} → ${toDisplay}`;
   }
 
-  /** Format top-level route for email header using full station names when available. */
+  /** Format top-level route for email header using full station names and schedule times in brackets when available. */
   private formatJourneyRoute(
     fromCode: string,
     toCode: string,
     stationNameMap: Map<string, string>,
+    stationScheduleList?: ScheduleStation[],
   ): string {
     const fromName =
       stationNameMap.get(fromCode.trim().toUpperCase()) ?? fromCode;
     const toName = stationNameMap.get(toCode.trim().toUpperCase()) ?? toCode;
-    return `${fromName} → ${toName}`;
+
+    const fromRow = findScheduleRow(stationScheduleList, fromCode);
+    const toRow = findScheduleRow(stationScheduleList, toCode);
+    const depTime = departureTimeAtStation(fromRow);
+    const arrTime = arrivalTimeAtStation(toRow);
+
+    const fromDisplay = depTime ? `${fromName} (${depTime})` : fromName;
+    const toDisplay = arrTime ? `${toName} (${arrTime})` : toName;
+
+    return `${fromDisplay} → ${toDisplay}`;
   }
 
   private async getStationChartOpenTimeLabel(params: {
@@ -828,14 +855,8 @@ export class NotificationService {
         const segmentRoute = this.formatSegmentRoute(
           item.instruction,
           stationNameMap,
+          stationScheduleList,
         );
-        const parts = item.instruction.split(' - ').map((p) => p.trim());
-        const segFrom = parts[0] ?? '';
-        const segTo = parts[1] ?? '';
-        const segmentTimes =
-          segFrom && segTo
-            ? formatSegmentScheduleTimes(stationScheduleList, segFrom, segTo)
-            : '';
         const classTag = (item.instruction.split(' - ')[2] ?? '3A').trim();
         const priceStr =
           item.approxPrice != null
@@ -851,7 +872,6 @@ export class NotificationService {
               <span style="display:inline-block; margin-left:8px; padding:3px 10px; border-radius:8px; background:#22c55e; color:#fff; font-size:12px; font-weight:600;">${classTag}</span>
             </p>
             <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segmentRoute)}</p>
-            ${segmentTimes ? `<p style="margin:0 0 10px 0; font-size:13px; color:#64748b;">${escapeHtml(segmentTimes)}</p>` : ''}
             ${availStr ? `<p style="margin:10px 0 0 0; font-size:13px; font-weight:600; color:#15803d;">${escapeHtml(availStr)}</p>` : ''}
             ${priceStr ? `<p style="margin:${availStr ? '4px' : '10px'} 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
             <a href="${segUrl}" style="display:inline-block; margin-top:16px; padding:12px 24px; border-radius:12px; background:#22c55e; color:#fff; font-size:15px; font-weight:600; text-decoration:none;">Book</a>
@@ -865,7 +885,17 @@ export class NotificationService {
           item.fromCode;
         const toName =
           stationNameMap.get(item.toCode.trim().toUpperCase()) ?? item.toCode;
-        const segDisplay = `${item.fromCode} - ${fromName} → ${item.toCode} - ${toName}`;
+        const fromRow = findScheduleRow(stationScheduleList, item.fromCode);
+        const toRow = findScheduleRow(stationScheduleList, item.toCode);
+        const depTime = departureTimeAtStation(fromRow);
+        const arrTime = arrivalTimeAtStation(toRow);
+        const fromDisplay = depTime
+          ? `${item.fromCode} - ${fromName} (${depTime})`
+          : `${item.fromCode} - ${fromName}`;
+        const toDisplay = arrTime
+          ? `${item.toCode} - ${toName} (${arrTime})`
+          : `${item.toCode} - ${toName}`;
+        const segDisplay = `${fromDisplay} → ${toDisplay}`;
 
         const chartOpenInfo = await this.getStationChartOpenTimeLabel({
           trainNumber,
@@ -1036,16 +1066,8 @@ export class NotificationService {
         const segmentRoute = this.formatSegmentRoute(
           item.instruction,
           stationNameMap,
+          stationScheduleList,
         );
-        const parts = (item.instruction || '')
-          .split(' - ')
-          .map((p) => p.trim());
-        const segFrom = parts[0] ?? '';
-        const segTo = parts[1] ?? '';
-        const segmentTimes =
-          segFrom && segTo
-            ? formatSegmentScheduleTimes(stationScheduleList, segFrom, segTo)
-            : '';
         const classTag = (
           (item.instruction || '').split(' - ')[2] ?? '3A'
         ).trim();
@@ -1064,7 +1086,6 @@ export class NotificationService {
               <span style="display:inline-block; margin-left:8px; padding:3px 10px; border-radius:8px; background:#22c55e; color:#fff; font-size:12px; font-weight:600;">${classTag}</span>
             </p>
             <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segmentRoute)}</p>
-            ${segmentTimes ? `<p style="margin:0 0 10px 0; font-size:13px; color:#64748b;">${escapeHtml(segmentTimes)}</p>` : ''}
             ${availStr ? `<p style="margin:10px 0 0 0; font-size:13px; font-weight:600; color:#15803d;">${escapeHtml(availStr)}</p>` : ''}
             ${priceStr ? `<p style="margin:${availStr ? '4px' : '10px'} 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
             <a href="${segUrl}" style="display:inline-block; margin-top:16px; padding:12px 24px; border-radius:12px; background:#22c55e; color:#fff; font-size:15px; font-weight:600; text-decoration:none;">Book</a>
@@ -1143,14 +1164,8 @@ export class NotificationService {
         const segmentRoute = this.formatSegmentRoute(
           item.instruction,
           stationNameMap,
+          stationScheduleList,
         );
-        const parts = item.instruction.split(' - ').map((p) => p.trim());
-        const segFrom = parts[0] ?? '';
-        const segTo = parts[1] ?? '';
-        const segmentTimes =
-          segFrom && segTo
-            ? formatSegmentScheduleTimes(stationScheduleList, segFrom, segTo)
-            : '';
         const classTag = (item.instruction.split(' - ')[2] ?? '3A').trim();
         const priceStr =
           item.approxPrice != null
@@ -1167,7 +1182,6 @@ export class NotificationService {
           `Ticket ${item.ticketIndex} [${classTag}]${availabilityTag}`,
         );
         lines.push(segmentRoute);
-        if (segmentTimes) lines.push(segmentTimes);
         if (priceStr) lines.push(priceStr);
         lines.push(`Book on IRCTC: ${segBookUrl}`);
         lines.push('');
@@ -1177,7 +1191,17 @@ export class NotificationService {
           item.fromCode;
         const toName =
           stationNameMap.get(item.toCode.trim().toUpperCase()) ?? item.toCode;
-        const segDisplay = `${item.fromCode} - ${fromName} → ${item.toCode} - ${toName}`;
+        const fromRow = findScheduleRow(stationScheduleList, item.fromCode);
+        const toRow = findScheduleRow(stationScheduleList, item.toCode);
+        const depTime = departureTimeAtStation(fromRow);
+        const arrTime = arrivalTimeAtStation(toRow);
+        const fromDisplay = depTime
+          ? `${item.fromCode} - ${fromName} (${depTime})`
+          : `${item.fromCode} - ${fromName}`;
+        const toDisplay = arrTime
+          ? `${item.toCode} - ${toName} (${arrTime})`
+          : `${item.toCode} - ${toName}`;
+        const segDisplay = `${fromDisplay} → ${toDisplay}`;
 
         const chartOpenInfo = await this.getStationChartOpenTimeLabel({
           trainNumber,
@@ -1559,6 +1583,7 @@ ${targetSearchUrl}`;
         task.fromStationCode,
         task.toStationCode,
         stationNameMap,
+        stationScheduleList,
       );
       const totalPrice = result.openAiTotalPrice ?? undefined;
 
