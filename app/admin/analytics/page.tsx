@@ -1083,14 +1083,18 @@ function ShortLinksDailyGraphSection() {
           </div>
 
           {/* Chart Legend */}
-          <div className="flex items-center gap-4 text-xs font-semibold">
+          <div className="flex flex-wrap items-center gap-4 text-xs font-semibold">
             <div className="flex items-center gap-1.5">
               <span className="h-3 w-3 rounded-sm bg-indigo-500" />
               <span className="text-slate-700">Links Generated</span>
             </div>
             <div className="flex items-center gap-1.5">
               <span className="h-3 w-3 rounded-sm bg-emerald-500" />
-              <span className="text-slate-700">Links Clicked</span>
+              <span className="text-slate-700">WhatsApp Clicks</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="h-3 w-3 rounded-sm bg-sky-500" />
+              <span className="text-slate-700">Email Clicks</span>
             </div>
           </div>
         </div>
@@ -1129,6 +1133,11 @@ function ShortLinksDailyGraphSection() {
                   );
                   const isHovered = hoveredBar?.date === item.date;
 
+                  const totalClicks = item.totalClicks || 0;
+                  const waClicks = item.whatsappClicks || 0;
+                  const emClicks = item.emailClicks || 0;
+                  const otherClicks = Math.max(0, totalClicks - waClicks - emClicks);
+
                   return (
                     <div
                       key={item.date}
@@ -1163,15 +1172,45 @@ function ShortLinksDailyGraphSection() {
                               : "bg-indigo-500/85 hover:bg-indigo-600"
                           }`}
                         />
-                        {/* Clicked Bar */}
+                        {/* Clicked Stacked Bar (WhatsApp + Email) */}
                         <div
                           style={{ height: `${clickedHeight}%` }}
-                          className={`w-full max-w-[18px] rounded-t-md transition-all duration-200 ${
-                            isHovered
-                              ? "bg-emerald-600 shadow-md"
-                              : "bg-emerald-500/85 hover:bg-emerald-600"
+                          className={`w-full max-w-[18px] rounded-t-md overflow-hidden flex flex-col justify-end transition-all duration-200 ${
+                            isHovered ? "shadow-md ring-1 ring-emerald-400" : ""
                           }`}
-                        />
+                        >
+                          {/* Other Clicks if any */}
+                          {otherClicks > 0 && totalClicks > 0 && (
+                            <div
+                              style={{
+                                height: `${(otherClicks / totalClicks) * 100}%`,
+                              }}
+                              className="w-full bg-slate-400"
+                            />
+                          )}
+                          {/* Email Segment (Sky Blue) */}
+                          {emClicks > 0 && totalClicks > 0 && (
+                            <div
+                              style={{
+                                height: `${(emClicks / totalClicks) * 100}%`,
+                              }}
+                              className={`w-full transition-colors ${
+                                isHovered ? "bg-sky-600" : "bg-sky-500/90 hover:bg-sky-600"
+                              }`}
+                            />
+                          )}
+                          {/* WhatsApp Segment (Emerald Green) */}
+                          {waClicks > 0 && totalClicks > 0 && (
+                            <div
+                              style={{
+                                height: `${(waClicks / totalClicks) * 100}%`,
+                              }}
+                              className={`w-full transition-colors ${
+                                isHovered ? "bg-emerald-600" : "bg-emerald-500/90 hover:bg-emerald-600"
+                              }`}
+                            />
+                          )}
+                        </div>
                       </div>
 
                       {/* X Axis Label */}
@@ -1187,7 +1226,7 @@ function ShortLinksDailyGraphSection() {
             {/* Hover Tooltip Popup */}
             {hoveredBar && hoverPos && (
               <div
-                className="fixed z-50 pointer-events-none -translate-x-1/2 -translate-y-full mb-2 rounded-xl border border-slate-800 bg-slate-900 px-3.5 py-2.5 text-xs text-white shadow-xl transition-all min-w-[170px]"
+                className="fixed z-50 pointer-events-none -translate-x-1/2 -translate-y-full mb-2 rounded-xl border border-slate-800 bg-slate-900 px-3.5 py-2.5 text-xs text-white shadow-xl transition-all min-w-[180px]"
                 style={{ left: hoverPos.x, top: hoverPos.y }}
               >
                 <div className="font-bold text-slate-200 border-b border-slate-800 pb-1.5">
@@ -1200,10 +1239,28 @@ function ShortLinksDailyGraphSection() {
                       {hoveredBar.totalLinksCreated}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center justify-between gap-4 border-t border-slate-800/80 pt-1">
                     <span className="text-slate-400">Clicks:</span>
-                    <span className="font-bold text-emerald-400">
+                    <span className="font-bold text-white">
                       {hoveredBar.totalClicks}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 pl-2 text-[11px]">
+                    <span className="flex items-center gap-1.5 text-slate-400">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                      WhatsApp:
+                    </span>
+                    <span className="font-semibold text-emerald-400">
+                      {hoveredBar.whatsappClicks}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 pl-2 text-[11px]">
+                    <span className="flex items-center gap-1.5 text-slate-400">
+                      <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
+                      Email:
+                    </span>
+                    <span className="font-semibold text-sky-400">
+                      {hoveredBar.emailClicks}
                     </span>
                   </div>
                 </div>
