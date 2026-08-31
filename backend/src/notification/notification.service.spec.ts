@@ -921,4 +921,30 @@ describe('NotificationService', () => {
       expect(sendEmailSpy).toHaveBeenCalledTimes(3);
     });
   });
+
+  describe('sendTatkalAlertConfirmation', () => {
+    it('sends Tatkal alert confirmation email with proper parameters', async () => {
+      const svc = new NotificationService(mockConfig(), mockStationCache());
+      const sendEmailSpy = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+
+      const result = await svc.sendTatkalAlertConfirmation({
+        email: 'passenger@example.com',
+        category: 'AC',
+        journeyDate: '2026-09-15',
+        tatkalDate: '2026-09-14',
+        tatkalTime: '10:00:00 AM IST',
+        trainNumber: '12951',
+        trainName: 'Mumbai Rajdhani',
+      });
+
+      expect(result.emailSent).toBe(true);
+      expect(sendEmailSpy).toHaveBeenCalledTimes(1);
+      expect(sendEmailSpy).toHaveBeenCalledWith(
+        'passenger@example.com',
+        expect.stringContaining('AC Classes Opens on 2026-09-14 at 10:00:00 AM IST'),
+        expect.stringContaining('Your AC Classes Tatkal Alert Is Active!'),
+      );
+    });
+  });
 });
+

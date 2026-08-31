@@ -6,6 +6,7 @@ import {
   Headers,
   HttpCode,
   HttpStatus,
+  Optional,
   Param,
   Post,
   Query,
@@ -15,6 +16,7 @@ import {
 import { randomUUID } from 'node:crypto';
 import { AvailabilityService } from './availability.service';
 import { JourneyTaskService } from './journey-task.service';
+import { NotificationService } from '../notification/notification.service';
 
 type NormalizedJourneyCreate = {
   trainNumber: string;
@@ -69,6 +71,7 @@ export class AvailabilityController {
   constructor(
     private availability: AvailabilityService,
     private journeyTask: JourneyTaskService,
+    @Optional() private notification?: NotificationService,
   ) {}
 
   @Post('check')
@@ -503,5 +506,81 @@ export class AvailabilityController {
   async resendFailedNotifications(@Query('hours') hours?: string) {
     const hoursNum = hours ? Number.parseInt(hours, 10) : 24;
     return this.journeyTask.resendFailedWhatsAppNotifications(hoursNum);
+  }
+
+  @Post('tatkal-alert')
+  @HttpCode(HttpStatus.OK)
+  async subscribeTatkalAlert(
+    @Body('email') email?: string,
+    @Body('mobile') mobile?: string,
+    @Body('category') category: 'AC' | 'NON_AC' = 'AC',
+    @Body('journeyDate') journeyDate?: string,
+    @Body('tatkalDate') tatkalDate?: string,
+    @Body('tatkalTime') tatkalTime?: string,
+    @Body('trainNumber') trainNumber?: string,
+    @Body('trainName') trainName?: string,
+    @Body('originOffsetDays') originOffsetDays?: number,
+  ) {
+    const em = email ? String(email).trim() : undefined;
+    const mob = mobile ? String(mobile).trim() : undefined;
+
+    if (!em && !mob) {
+      throw new BadRequestException({
+        code: 'MISSING_CONTACT',
+        message: 'Please provide either an email or mobile number to receive Tatkal alerts.',
+      });
+    }
+
+    if (!journeyDate || !/^\d{4}-\d{2}-\d{2}$/.test(journeyDate)) {
+      throw new BadRequestException({
+        code: 'INVALID_JOURNEY_DATE',
+        message: 'Valid journeyDate (YYYY-MM-DD) is required.',
+      });
+    }
+
+    const cleanCategory = category === 'NON_AC' ? 'NON_AC' : 'AC';
+    const cleanTatkalTime =
+      tatkalTime ||
+      (cleanCategory === 'AC' ? '10:00:00 AM IST' : '11:00:00 AM IST');
+
+    let displayTatkalDate = tatkalDate;
+    if (!displayTatkalDate) {
+      const [y, m, d] = journeyDate.split('-').map(Number);
+      const offset = Number(originOffsetDays) || 0;
+      const targetDate = new Date(Date.UTC(y, m - 1, d - offset - 1, 12, 0, 0));
+      displayTatkalDate = targetDate.toISOString().slice(0, 10);
+    }
+
+    let notificationResult = { emailSent: false, whatsappSent: false };
+    if (this.notification) {
+      notificationResult =
+        await this.notification.sendTatkalAlertConfirmation({
+          email: em,
+          mobile: mob,
+          category: cleanCategory,
+          journeyDate,
+          tatkalDate: displayTatkalDate,
+          tatkalTime: cleanTatkalTime,
+          trainNumber: trainNumber ? String(trainNumber).trim() : undefined,
+          trainName: trainName ? String(trainName).trim() : undefined,
+          originOffsetDays: Number(originOffsetDays) || 0,
+        });
+    }
+
+    return {
+      success: true,
+      message: `Tatkal alert confirmed for ${cleanCategory === 'AC' ? 'AC Classes' : 'Sleeper / 2S'} on ${displayTatkalDate} at ${cleanTatkalTime}.`,
+      alert: {
+        category: cleanCategory,
+        journeyDate,
+        tatkalDate: displayTatkalDate,
+        tatkalTime: cleanTatkalTime,
+        email: em,
+        mobile: mob,
+        trainNumber,
+        trainName,
+      },
+      ...notificationResult,
+    };
   }
 }

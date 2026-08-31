@@ -19,6 +19,7 @@ These candidates are queued for:
 ## 📋 Queued Candidates for Generator Review
 
 | Date Added | Target Keyword / Query | Impressions | Growth / Pos | Suggested Article Title | Status |
+| 2026-08-31 | `irctc otp not received` / `tatkal login otp` | High (~70K/mo search volume) | Peak Hour Congestion | *IRCTC OTP Not Received? 6 Fixes for Login & Tatkal* | ✅ Published |
 | 2026-08-26 | `irctc executive lounge access rules` | High (~45K/mo across stations) | Layover / Cards | *IRCTC Executive Lounge: Rates, Stations & Cards (2026)* | ✅ Published |
 | 2026-08-26 | `3e vs 3a difference in train` | High (~25K/mo search volume) | 83 vs 72 Berths | *3E vs 3A in Indian Railways: 83 vs 72 Berths, Fare Difference & Review* | ✅ Published |
 | 2026-08-26 | `train delayed 3 hours refund rules` | High (~30K/mo urgency search) | Free Meals / TDR | *Train Delayed 3+ Hours: 100% Refund & Free Food (2026)* | ✅ Published |

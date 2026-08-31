@@ -102,52 +102,8 @@ export function StandardMenuPage({ slug }: { slug: string }) {
 
       <StandardMenuView group={group} />
 
-      <footer className="mt-10 border-t border-slate-200 pt-8 space-y-6">
-        <div>
-          <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-700">
-            Zonal AC &amp; Sleeper Coach Menus
-          </h3>
-          <div className="flex flex-wrap gap-2 text-xs font-semibold">
-            {[
-              { href: "/irctc-train-food-menu/north-zone-2ac-3ac-cc-food-menu", label: "North Zone AC Menu" },
-              { href: "/irctc-train-food-menu/south-zone-2ac-3ac-cc-food-menu", label: "South Zone AC Menu" },
-              { href: "/irctc-train-food-menu/east-zone-2ac-3ac-cc-food-menu", label: "East Zone AC Menu" },
-              { href: "/irctc-train-food-menu/west-zone-2ac-3ac-cc-food-menu", label: "West Zone AC Menu" },
-            ].map((z) => (
-              <Link
-                key={z.href}
-                href={z.href}
-                className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-slate-700 hover:bg-slate-100 hover:text-blue-700 transition-colors"
-              >
-                {z.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-700">
-            Zonal Duronto Sleeper Menus
-          </h3>
-          <div className="flex flex-wrap gap-2 text-xs font-semibold">
-            {[
-              { href: "/irctc-train-food-menu/north-zone-duronto-sleeper-food-menu", label: "North Duronto Sleeper" },
-              { href: "/irctc-train-food-menu/south-zone-duronto-sleeper-food-menu", label: "South Duronto Sleeper" },
-              { href: "/irctc-train-food-menu/east-zone-duronto-sleeper-food-menu", label: "East Duronto Sleeper" },
-              { href: "/irctc-train-food-menu/west-zone-duronto-sleeper-food-menu", label: "West Duronto Sleeper" },
-            ].map((z) => (
-              <Link
-                key={z.href}
-                href={z.href}
-                className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-slate-700 hover:bg-slate-100 hover:text-blue-700 transition-colors"
-              >
-                {z.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <p className="pt-2 text-xs text-slate-500">
+      <footer className="mt-10 border-t border-slate-200 pt-8">
+        <p className="text-xs text-slate-500">
           See also{" "}
           <Link
             href="/irctc-train-food-menu/mail-express-humsafar"

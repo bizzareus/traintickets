@@ -28,6 +28,7 @@ import {
   normalizeIrctcTimeDisplay,
 } from './notification.helpers';
 import { renderSeatsFoundEmailHtml } from './templates/notification-email.templates';
+import { renderTatkalAlertEmailHtml } from './templates/tatkal-alert-email.template';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
 import { NotificationDeduplicationService } from './notification-deduplication.service';
@@ -253,6 +254,53 @@ export class NotificationService {
       }
       return false;
     }
+  }
+
+  async sendTatkalAlertConfirmation(params: {
+    email?: string;
+    mobile?: string;
+    category: 'AC' | 'NON_AC';
+    journeyDate: string;
+    tatkalDate: string;
+    tatkalTime: string;
+    trainNumber?: string;
+    trainName?: string;
+    originOffsetDays?: number;
+  }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
+    let emailSent = false;
+    let whatsappSent = false;
+
+    const isAc = params.category === 'AC';
+    const freezeWindow = isAc ? '09:50 AM – 10:10 AM IST' : '10:50 AM – 11:10 AM IST';
+    const loginTime = isAc ? '09:58 AM IST' : '10:58 AM IST';
+
+    if (params.email?.trim()) {
+      const email = params.email.trim();
+      const subject = `🔔 Tatkal Alert Confirmed: ${isAc ? 'AC Classes' : 'Sleeper / 2S'} Opens on ${params.tatkalDate} at ${params.tatkalTime}`;
+      const html = renderTatkalAlertEmailHtml({
+        category: params.category,
+        journeyDateReadable: params.journeyDate,
+        tatkalDateReadable: params.tatkalDate,
+        tatkalTimeFormatted: params.tatkalTime,
+        masterListFreezeWindow: freezeWindow,
+        recommendedLoginTime: loginTime,
+        trainNumber: params.trainNumber,
+        trainName: params.trainName,
+      });
+
+      emailSent = await this.sendEmail(email, subject, html);
+    }
+
+    if (params.mobile?.trim()) {
+      const trainText = params.trainNumber
+        ? ` for train ${params.trainName ? `${params.trainName} (${params.trainNumber})` : params.trainNumber}`
+        : '';
+      const message = `🔔 *LastBerth Tatkal Alert Confirmed*\n\nYour Tatkal booking alert${trainText} is set!\n\n📅 *Tatkal Booking Opens:* ${params.tatkalDate} at *${params.tatkalTime}*\n🧳 *Journey Date:* ${params.journeyDate}\n🔒 *Master List Freeze:* ${freezeWindow}\n\n⚡ *Pro Tip:* Save all passenger names in IRCTC Master List before ${freezeWindow.split('–')[0].trim()} and use UPI QR for fastest checkout.\n\n🔗 https://lastberth.com/tatkal-planner`;
+
+      whatsappSent = await this.sendWhatsApp(params.mobile.trim(), message);
+    }
+
+    return { emailSent, whatsappSent };
   }
 
   async sendAlertFailureReport(params: {

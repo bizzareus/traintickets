@@ -200,6 +200,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div>
                   <h3 className="font-bold text-slate-900 mb-4">Resources</h3>
                   <ul className="space-y-2">
+                    <li><Link href="/tatkal-planner" className="hover:text-blue-600">Tatkal Planner & Clock</Link></li>
                     <li><Link href="/chart-vacancy" className="hover:text-blue-600">Chart Vacancy & Coach Map</Link></li>
                     <li><Link href="/pnr-status" className="hover:text-blue-600">PNR Status</Link></li>
                     <li><Link href="/blog" className="hover:text-blue-600">Blog</Link></li>

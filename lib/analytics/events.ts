@@ -339,6 +339,39 @@ export type AnalyticsEvent =
         ticket_count?: number;
         is_complete?: boolean;
       };
+    }
+  // Tatkal Planner & Alert events
+  | {
+      name: "tatkal_planner_viewed";
+      properties: {
+        journey_date?: string;
+        class_category?: "AC" | "NON_AC";
+      };
+    }
+  | {
+      name: "tatkal_alert_requested";
+      properties: {
+        success: boolean;
+        category: "AC" | "NON_AC";
+        source:
+          | "tatkal_planner"
+          | "tatkal_planner_inline"
+          | "tatkal_planner_modal"
+          | "tatkal_banner";
+        journey_date: string;
+        tatkal_date: string;
+        tatkal_time: string;
+        train_number?: string;
+        train_name?: string;
+        has_email: boolean;
+        has_mobile: boolean;
+        origin_offset_days: number;
+        error?: string;
+      };
+    }
+  | {
+      name: "tatkal_alert_chime_toggled";
+      properties: { enabled: boolean };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];

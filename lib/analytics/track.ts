@@ -137,6 +137,53 @@ export function trackAlertRequested(params: {
   });
 }
 
+/**
+ * Convenience helper to track a Tatkal alert requested event to PostHog asynchronously.
+ */
+export function trackTatkalAlertRequested(params: {
+  success: boolean;
+  category: "AC" | "NON_AC";
+  source?:
+    | "tatkal_planner"
+    | "tatkal_planner_inline"
+    | "tatkal_planner_modal"
+    | "tatkal_banner";
+  journeyDate: string;
+  tatkalDate: string;
+  tatkalTime: string;
+  trainNumber?: string;
+  trainName?: string;
+  email?: string;
+  mobile?: string;
+  originOffsetDays?: number;
+  error?: string;
+}): void {
+  if (params.email || params.mobile) {
+    identifyFromContact({
+      email: params.email,
+      mobile: params.mobile,
+    });
+  }
+
+  trackAnalyticsEvent({
+    name: "tatkal_alert_requested",
+    properties: {
+      success: params.success,
+      category: params.category,
+      source: params.source || "tatkal_planner",
+      journey_date: params.journeyDate,
+      tatkal_date: params.tatkalDate,
+      tatkal_time: params.tatkalTime,
+      train_number: params.trainNumber,
+      train_name: params.trainName,
+      has_email: Boolean(params.email?.trim()),
+      has_mobile: Boolean(params.mobile?.trim()),
+      origin_offset_days: params.originOffsetDays ?? 0,
+      error: params.error,
+    },
+  });
+}
+
 /** Context attached to a captured backend/API error. */
 export type ApiExceptionContext = {
   method?: string;

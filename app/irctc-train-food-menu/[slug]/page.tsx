@@ -8,7 +8,7 @@ import {
 } from "@/lib/trainFoodMenu";
 import { FoodOrderingMenu } from "@/components/foodmenu/FoodOrderingMenu";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   return listTrainFoodMenuSlugs().map((slug) => ({ slug }));
@@ -36,11 +36,6 @@ function allPrices(menu: TrainFoodMenu): number[] {
 }
 
 function title(menu: TrainFoodMenu): string {
-  // These are all Vande Bharat trains, so the "What's Included?" hook applies
-  // universally. Train name leads (the query users type); the hook truncates
-  // gracefully on long names. Dropped the old "| IRCTC Catering" suffix — the
-  // root layout already appends "| LastBerth", so it was double-branded and
-  // ran well past the SERP length limit. The number pair stays in keywords/desc.
   return `${menu.trainName} Food Menu & Price: What's Included?`;
 }
 
@@ -57,7 +52,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   const prices = allPrices(menu);
   const min = prices.length ? Math.min(...prices) : null;
-  const description = `IRCTC food menu and prices for ${menu.trainName} (${menu.trainNumberPair}) on the ${menu.route} route. See every meal — morning tea, breakfast, lunch/dinner and snacks — by class (${menu.classes
+  const routePart = menu.route ? ` on the ${menu.route} route` : "";
+  const description = `Official IRCTC food menu and prices for ${menu.trainName} (${menu.trainNumberPair})${routePart}. See every meal — breakfast, lunch/dinner, snacks and tea — by class (${menu.classes
     .map((c) => c.classCode)
     .join(", ")})${min != null ? `, starting at ₹${min}` : ""}. Catering charges inclusive of taxes.`;
   return {
@@ -71,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `${menu.trainNumber} breakfast price`,
       `${menu.trainNumber} lunch price`,
       `irctc ${menu.trainNumber} catering`,
-      `vande bharat ${menu.trainNumber} food`,
+      `${menu.trainNumber} food price`,
     ],
     alternates: { canonical: `/irctc-train-food-menu/${menu.slug}` },
     openGraph: { title: title(menu), description, type: "article" },
@@ -147,8 +143,10 @@ export default async function TrainFoodMenuPage({ params }: Props) {
     /breakfast/i.test(s.service),
   );
   const lunch = menu.classes[0]?.services.find((s) =>
-    /lunch|dinner/i.test(s.service),
+    /lunch|dinner|meal/i.test(s.service),
   );
+  const isPrebooked = /vande|tejas|rajdhani|shatabdi/i.test(menu.trainName);
+
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -160,23 +158,25 @@ export default async function TrainFoodMenuPage({ params }: Props) {
           "@type": "Answer",
           text: `On ${menu.trainName} (${menu.trainNumberPair}), IRCTC catering charges${
             min != null && max != null
-              ? ` range from ₹${min} to ₹${max} per meal (inclusive of taxes)`
+              ? ` range from ₹${min} to ₹${max} per item/meal (inclusive of taxes)`
               : " are listed per meal (inclusive of taxes)"
           }${
             breakfast?.price != null
               ? `. Breakfast is ₹${breakfast.price}`
               : ""
           }${
-            lunch?.price != null ? ` and lunch/dinner is ₹${lunch.price}` : ""
+            lunch?.price != null ? ` and standard meals start from ₹${lunch.price}` : ""
           } in ${menu.classes[0]?.className} (${menu.classes[0]?.classCode}).`,
         },
       },
       {
         "@type": "Question",
-        name: `Is food included in the ${menu.trainName} (${menu.trainNumber}) ticket?`,
+        name: `Is food included in the ${menu.trainName} (${menu.trainNumber}) ticket fare?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `For most Vande Bharat services, catering is pre-booked with the ticket at the time of booking. The prices shown here are the IRCTC catering charges for each meal (morning tea, breakfast, lunch/dinner and snacks), inclusive of taxes.`,
+          text: isPrebooked
+            ? `For ${menu.trainName}, catering is typically pre-booked with the ticket at booking time. The rates shown here are the official IRCTC catering charges for each service (morning tea, breakfast, lunch/dinner, evening snacks), inclusive of GST.`
+            : `For Mail and Express trains like ${menu.trainName}, catering is available on board from the pantry car or authorized e-catering vendors. Meals, snacks, tea, and packaged drinking water can be purchased during the journey at fixed IRCTC rates.`,
         },
       },
       {
@@ -188,7 +188,7 @@ export default async function TrainFoodMenuPage({ params }: Props) {
             .join(", ")
             .toLowerCase()} across ${menu.classes
             .map((c) => `${c.className} (${c.classCode})`)
-            .join(" and ")}, with items such as ${(
+            .join(" and ")}, featuring items such as ${(
             menu.classes[0]?.services
               .flatMap((s) => s.items.map((i) => i.item))
               .slice(0, 6) || []
@@ -232,7 +232,7 @@ export default async function TrainFoodMenuPage({ params }: Props) {
       {menu.notes.length > 0 && (
         <section className="mb-8 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="mb-2 text-base font-bold text-slate-900">
-            Catering notes
+            Catering notes &amp; guidelines
           </h2>
           <ul className="list-disc space-y-1 pl-5 text-sm text-slate-600">
             {menu.notes.map((n, i) => (
@@ -250,9 +250,9 @@ export default async function TrainFoodMenuPage({ params }: Props) {
           rel="noopener noreferrer nofollow"
           className="font-medium text-blue-700 hover:underline"
         >
-          official IRCTC menu
+          official IRCTC catering tariff
         </a>
-        . Menus are served on a cyclic basis and may change. See also{" "}
+        . Menus are served on a cyclic basis and tariffs are set by Indian Railways. See also{" "}
         <Link
           href="/irctc-train-food-menu"
           className="font-medium text-blue-700 hover:underline"
