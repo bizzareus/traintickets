@@ -921,22 +921,18 @@ function ShortLinksSection() {
 // ==========================================
 function ShortLinksDailyGraphSection() {
   const [data, setData] = useState<ShortLinkDailyStat[]>([]);
-  const [summary, setSummary] = useState<ShortLinkDailySummary | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const [groupBy, setGroupBy] = useState<GroupByMode>("day");
-  const [preset, setPreset] = useState<"7d" | "14d" | "30d" | "90d" | "all" | "custom">("30d");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [preset, setPreset] = useState<"7d" | "14d" | "30d" | "90d" | "all">("30d");
 
   // Tooltip state
   const [hoveredBar, setHoveredBar] = useState<ShortLinkDailyStat | null>(null);
   const [hoverPos, setHoverPos] = useState<{ x: number; y: number } | null>(null);
 
   // Preset Date range calculation
-  useEffect(() => {
-    if (preset === "custom") return;
+  const { startDate, endDate } = useMemo(() => {
     const end = moment().format("YYYY-MM-DD");
     let start = "";
     if (preset === "7d") start = moment().subtract(6, "days").format("YYYY-MM-DD");
@@ -945,8 +941,7 @@ function ShortLinksDailyGraphSection() {
     else if (preset === "90d") start = moment().subtract(89, "days").format("YYYY-MM-DD");
     else if (preset === "all") start = "";
 
-    setStartDate(start);
-    setEndDate(start ? end : "");
+    return { startDate: start, endDate: start ? end : "" };
   }, [preset]);
 
   const fetchDailyStats = useCallback(async () => {
@@ -965,7 +960,6 @@ function ShortLinksDailyGraphSection() {
 
       const items = res.data.stats || res.data.dailyStats || [];
       setData(items);
-      setSummary(res.data.summary || null);
     } catch (err: unknown) {
       console.error("Failed to fetch short link daily stats", err);
       const isNetworkErr =
@@ -1004,12 +998,6 @@ function ShortLinksDailyGraphSection() {
     return moment(dateStr).format("ddd, DD MMM YYYY");
   };
 
-  const formatTableDate = (dateStr: string) => {
-    if (groupBy === "month") return moment(dateStr).format("MMMM YYYY");
-    if (groupBy === "week") return `Week of ${moment(dateStr).format("DD MMM YYYY")}`;
-    return moment(dateStr).format("DD MMM YYYY");
-  };
-
   const periodTitle =
     groupBy === "month"
       ? "Month-on-Month"
@@ -1020,11 +1008,11 @@ function ShortLinksDailyGraphSection() {
     groupBy === "month" ? "MoM" : groupBy === "week" ? "WoW" : "DoD";
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Date Range & Grouping Controls */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-slate-700">Preset Range:</span>
+          <span className="text-xs font-semibold text-slate-700">Range:</span>
           <div className="flex items-center gap-1.5">
             {(["7d", "14d", "30d", "90d", "all"] as const).map((p) => (
               <button
@@ -1076,120 +1064,6 @@ function ShortLinksDailyGraphSection() {
         </div>
       </div>
 
-      {/* Custom Date Filters */}
-      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3.5 text-xs shadow-sm">
-        <div className="flex items-center gap-2">
-          <span className="font-semibold text-slate-700">Custom Date Range:</span>
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => {
-              setPreset("custom");
-              setStartDate(e.target.value);
-            }}
-            className="rounded-lg border border-slate-200 px-2.5 py-1 text-slate-800 focus:border-indigo-500 focus:outline-none"
-          />
-          <span className="text-slate-400">to</span>
-          <input
-            type="date"
-            value={endDate}
-            onChange={(e) => {
-              setPreset("custom");
-              setEndDate(e.target.value);
-            }}
-            className="rounded-lg border border-slate-200 px-2.5 py-1 text-slate-800 focus:border-indigo-500 focus:outline-none"
-          />
-        </div>
-        {(startDate || endDate) && preset === "custom" && (
-          <button
-            onClick={() => setPreset("30d")}
-            className="text-indigo-600 font-semibold hover:underline"
-          >
-            Reset to 30 Days
-          </button>
-        )}
-        <div className="ml-auto text-[11px] text-slate-400">
-          Showing {data.length} {groupBy === "month" ? "months" : groupBy === "week" ? "weeks" : "days"} of data
-        </div>
-      </div>
-
-      {/* KPI Cards */}
-      {summary && (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-500">Links Generated</span>
-              <Link2 className="h-4 w-4 text-indigo-500" />
-            </div>
-            <p className="mt-2 text-2xl font-bold text-indigo-600">{summary.totalLinksCreated}</p>
-            <div className="mt-1 flex items-center justify-between text-[11px] text-slate-400">
-              <span>Avg {summary.avgLinksCreatedPerPeriod}/{groupBy}</span>
-              {summary.peakCreationDay && (
-                <span className="font-semibold text-slate-700">
-                  Peak: {summary.peakCreationDay.count} ({formatBarLabel(summary.peakCreationDay.date)})
-                </span>
-              )}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-500">Total Clicks</span>
-              <MousePointerClick className="h-4 w-4 text-emerald-500" />
-            </div>
-            <p className="mt-2 text-2xl font-bold text-emerald-600">{summary.totalClicks}</p>
-            <div className="mt-1 flex items-center justify-between text-[11px] text-slate-400">
-              <span>Avg {summary.avgClicksPerPeriod}/{groupBy}</span>
-              {summary.peakClickDay && (
-                <span className="font-semibold text-slate-700">
-                  Peak: {summary.peakClickDay.count} ({formatBarLabel(summary.peakClickDay.date)})
-                </span>
-              )}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-500">Click-Through Rate</span>
-              <span
-                className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
-                  summary.overallCtrPct >= 50
-                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                    : "bg-indigo-50 text-indigo-700 border border-indigo-200"
-                }`}
-              >
-                {summary.overallCtrPct}%
-              </span>
-            </div>
-            <p className="mt-2 text-2xl font-bold text-slate-900">{summary.overallCtrPct}%</p>
-            <span className="text-[11px] text-slate-400">
-              {summary.totalClicks} clicks across {summary.totalLinksCreated} generated
-            </span>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-500">Channel Clicks</span>
-              <Users className="h-4 w-4 text-purple-500" />
-            </div>
-            <div className="mt-2 flex items-baseline gap-2">
-              <span className="text-xl font-bold text-emerald-600">
-                {summary.totalWhatsappClicks}
-              </span>
-              <span className="text-xs text-slate-400">WA</span>
-              <span className="text-slate-300">/</span>
-              <span className="text-xl font-bold text-indigo-600">
-                {summary.totalEmailClicks}
-              </span>
-              <span className="text-xs text-slate-400">Email</span>
-            </div>
-            <span className="text-[11px] text-slate-400">
-              Total {summary.totalWhatsappClicks + summary.totalEmailClicks} attributed channel clicks
-            </span>
-          </div>
-        </div>
-      )}
-
       {/* Main Day-on-Day Bar Chart */}
       <div className="relative rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
         <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -1197,7 +1071,7 @@ function ShortLinksDailyGraphSection() {
             <h2 className="text-base font-bold text-slate-900">
               {periodTitle} Links Generated vs. Clicks
             </h2>
-            <span className="text-xs text-slate-400">Hover over bars for detailed statistics</span>
+            <span className="text-xs text-slate-400">Hover over bars for details</span>
           </div>
 
           {/* Chart Legend */}
@@ -1379,96 +1253,6 @@ function ShortLinksDailyGraphSection() {
             )}
           </div>
         )}
-      </div>
-
-      {/* Tabular Drilldown Breakdown */}
-      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-        <div className="border-b border-slate-100 bg-slate-50/50 px-6 py-4 flex items-center justify-between">
-          <div>
-            <h3 className="font-semibold text-slate-900">{periodTitle} Short Links Breakdown</h3>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Historical performance of links generated and click events recorded.
-            </p>
-          </div>
-          <span className="text-xs font-medium text-slate-500">
-            Grouped by {groupBy === "month" ? "Month" : groupBy === "week" ? "Week" : "Day"}
-          </span>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
-            <thead className="border-b border-slate-100 bg-slate-50/50 text-xs font-semibold text-slate-700">
-              <tr>
-                <th className="px-6 py-3">
-                  {groupBy === "month" ? "Month" : groupBy === "week" ? "Week Start" : "Date"}
-                </th>
-                <th className="px-6 py-3">Generated</th>
-                <th className="px-6 py-3">Clicked</th>
-                <th className="px-6 py-3">CTR %</th>
-                <th className="px-6 py-3">WhatsApp</th>
-                <th className="px-6 py-3">Email</th>
-                <th className="px-6 py-3">Unique Links</th>
-                <th className="px-6 py-3">{periodShortLabel} Gen Growth</th>
-                <th className="px-6 py-3">{periodShortLabel} Click Growth</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {[...data].reverse().map((row) => {
-                const genGrowth = row.createdGrowthPct;
-                const clickGrowth = row.clicksGrowthPct;
-
-                return (
-                  <tr key={row.date} className="transition hover:bg-slate-50/50">
-                    <td className="whitespace-nowrap px-6 py-3.5 font-medium text-slate-900">
-                      {formatTableDate(row.date)}
-                    </td>
-                    <td className="px-6 py-3.5 font-bold text-indigo-600">
-                      {row.totalLinksCreated}
-                    </td>
-                    <td className="px-6 py-3.5 font-bold text-emerald-600">
-                      {row.totalClicks}
-                    </td>
-                    <td className="px-6 py-3.5">
-                      <span
-                        className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-bold ${
-                          row.ctrPct >= 80
-                            ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                            : row.ctrPct >= 30
-                              ? "bg-indigo-50 text-indigo-700 border border-indigo-200"
-                              : "bg-slate-100 text-slate-600"
-                        }`}
-                      >
-                        {row.ctrPct}%
-                      </span>
-                    </td>
-                    <td className="px-6 py-3.5 text-slate-700">{row.whatsappClicks}</td>
-                    <td className="px-6 py-3.5 text-slate-700">{row.emailClicks}</td>
-                    <td className="px-6 py-3.5 text-slate-700">{row.uniqueLinksClicked}</td>
-                    <td className="px-6 py-3.5 font-medium">
-                      {genGrowth !== null && genGrowth !== undefined ? (
-                        <span className={genGrowth >= 0 ? "text-emerald-600" : "text-rose-600"}>
-                          {row.createdChange !== null && (row.createdChange >= 0 ? `+${row.createdChange} ` : `${row.createdChange} `)}
-                          ({genGrowth >= 0 ? `+${genGrowth}%` : `${genGrowth}%`})
-                        </span>
-                      ) : (
-                        <span className="text-slate-300">—</span>
-                      )}
-                    </td>
-                    <td className="px-6 py-3.5 font-medium">
-                      {clickGrowth !== null && clickGrowth !== undefined ? (
-                        <span className={clickGrowth >= 0 ? "text-emerald-600" : "text-rose-600"}>
-                          {row.clicksChange !== null && (row.clicksChange >= 0 ? `+${row.clicksChange} ` : `${row.clicksChange} `)}
-                          ({clickGrowth >= 0 ? `+${clickGrowth}%` : `${clickGrowth}%`})
-                        </span>
-                      ) : (
-                        <span className="text-slate-300">—</span>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   );
