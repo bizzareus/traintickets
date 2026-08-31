@@ -1004,8 +1004,6 @@ function ShortLinksDailyGraphSection() {
       : groupBy === "week"
         ? "Week-on-Week"
         : "Day-on-Day";
-  const periodShortLabel =
-    groupBy === "month" ? "MoM" : groupBy === "week" ? "WoW" : "DoD";
 
   return (
     <div className="space-y-4">
@@ -1179,7 +1177,7 @@ function ShortLinksDailyGraphSection() {
             {/* Hover Tooltip Popup */}
             {hoveredBar && hoverPos && (
               <div
-                className="fixed z-50 pointer-events-none -translate-x-1/2 -translate-y-full mb-2 rounded-xl border border-slate-800 bg-slate-900 p-3 text-xs text-white shadow-xl transition-all min-w-[230px]"
+                className="fixed z-50 pointer-events-none -translate-x-1/2 -translate-y-full mb-2 rounded-xl border border-slate-800 bg-slate-900 px-3.5 py-2.5 text-xs text-white shadow-xl transition-all min-w-[170px]"
                 style={{ left: hoverPos.x, top: hoverPos.y }}
               >
                 <div className="font-bold text-slate-200 border-b border-slate-800 pb-1.5">
@@ -1192,62 +1190,12 @@ function ShortLinksDailyGraphSection() {
                       {hoveredBar.totalLinksCreated}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between gap-4 text-[10px] text-slate-400 pl-2">
-                    <span>• Search: {hoveredBar.searchLinksCreated}</span>
-                    <span>• Alerts: {hoveredBar.alertLinksCreated}</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
+                  <div className="flex items-center justify-between gap-4">
                     <span className="text-slate-400">Clicks:</span>
                     <span className="font-bold text-emerald-400">
-                      {hoveredBar.totalClicks} ({hoveredBar.ctrPct}% CTR)
+                      {hoveredBar.totalClicks}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between gap-4 text-[10px] text-slate-400 pl-2">
-                    <span>• WhatsApp: {hoveredBar.whatsappClicks}</span>
-                    <span>• Email: {hoveredBar.emailClicks}</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
-                    <span className="text-slate-400">Unique Clicks:</span>
-                    <span className="font-bold text-slate-200">
-                      {hoveredBar.uniqueLinksClicked} links ({hoveredBar.uniqueClickIps} IPs)
-                    </span>
-                  </div>
-                  {hoveredBar.createdChange !== null && (
-                    <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
-                      <span className="text-slate-400">{periodShortLabel} Generation:</span>
-                      <span
-                        className={`font-bold ${
-                          hoveredBar.createdChange >= 0
-                            ? "text-emerald-400"
-                            : "text-rose-400"
-                        }`}
-                      >
-                        {hoveredBar.createdChange >= 0
-                          ? `+${hoveredBar.createdChange}`
-                          : hoveredBar.createdChange}
-                        {hoveredBar.createdGrowthPct !== null &&
-                          ` (${hoveredBar.createdGrowthPct >= 0 ? `+${hoveredBar.createdGrowthPct}%` : `${hoveredBar.createdGrowthPct}%`})`}
-                      </span>
-                    </div>
-                  )}
-                  {hoveredBar.clicksChange !== null && (
-                    <div className="flex items-center justify-between gap-4">
-                      <span className="text-slate-400">{periodShortLabel} Clicks:</span>
-                      <span
-                        className={`font-bold ${
-                          hoveredBar.clicksChange >= 0
-                            ? "text-emerald-400"
-                            : "text-rose-400"
-                        }`}
-                      >
-                        {hoveredBar.clicksChange >= 0
-                          ? `+${hoveredBar.clicksChange}`
-                          : hoveredBar.clicksChange}
-                        {hoveredBar.clicksGrowthPct !== null &&
-                          ` (${hoveredBar.clicksGrowthPct >= 0 ? `+${hoveredBar.clicksGrowthPct}%` : `${hoveredBar.clicksGrowthPct}%`})`}
-                      </span>
-                    </div>
-                  )}
                 </div>
               </div>
             )}
