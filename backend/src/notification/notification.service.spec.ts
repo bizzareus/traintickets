@@ -347,7 +347,11 @@ describe('NotificationService', () => {
             stationName: 'Shahjehanpur',
             departureTime: '0343',
           },
-          { stationCode: 'JAT', stationName: 'Jammu Tawi', arrivalTime: '1500' },
+          {
+            stationCode: 'JAT',
+            stationName: 'Jammu Tawi',
+            arrivalTime: '1500',
+          },
         ],
       },
     };

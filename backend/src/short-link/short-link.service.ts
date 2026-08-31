@@ -562,6 +562,207 @@ export class ShortLinkService {
   }
 
   /**
+   * ADMIN: Day-on-day link generation & click performance analytics.
+   */
+  async getAdminDailyStats(params?: {
+    groupBy?: 'day' | 'week' | 'month';
+    startDate?: string;
+    endDate?: string;
+  }) {
+    const groupBy = params?.groupBy || 'day';
+    const startDate = params?.startDate;
+    const endDate = params?.endDate;
+
+    const periodSqlCreated =
+      groupBy === 'week'
+        ? Prisma.sql`DATE_TRUNC('week', sl.created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
+        : groupBy === 'month'
+          ? Prisma.sql`DATE_TRUNC('month', sl.created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
+          : Prisma.sql`DATE(sl.created_at AT TIME ZONE 'Asia/Kolkata')::text`;
+
+    const periodSqlClicked =
+      groupBy === 'week'
+        ? Prisma.sql`DATE_TRUNC('week', slc.clicked_at AT TIME ZONE 'Asia/Kolkata')::date::text`
+        : groupBy === 'month'
+          ? Prisma.sql`DATE_TRUNC('month', slc.clicked_at AT TIME ZONE 'Asia/Kolkata')::date::text`
+          : Prisma.sql`DATE(slc.clicked_at AT TIME ZONE 'Asia/Kolkata')::text`;
+
+    const createdWhere =
+      startDate && endDate
+        ? Prisma.sql`WHERE sl.created_at >= ${startDate}::timestamp AND sl.created_at <= (${endDate} || ' 23:59:59')::timestamp`
+        : startDate
+          ? Prisma.sql`WHERE sl.created_at >= ${startDate}::timestamp`
+          : endDate
+            ? Prisma.sql`WHERE sl.created_at <= (${endDate} || ' 23:59:59')::timestamp`
+            : Prisma.empty;
+
+    const clickedWhere =
+      startDate && endDate
+        ? Prisma.sql`WHERE slc.clicked_at >= ${startDate}::timestamp AND slc.clicked_at <= (${endDate} || ' 23:59:59')::timestamp`
+        : startDate
+          ? Prisma.sql`WHERE slc.clicked_at >= ${startDate}::timestamp`
+          : endDate
+            ? Prisma.sql`WHERE slc.clicked_at <= (${endDate} || ' 23:59:59')::timestamp`
+            : Prisma.empty;
+
+    const rawRows = await this.prisma.$queryRaw<
+      Array<{
+        date: string;
+        total_links_created: number;
+        links_with_clicks: number;
+        search_links_created: number;
+        alert_links_created: number;
+        total_clicks: number;
+        unique_links_clicked: number;
+        unique_click_ips: number;
+        whatsapp_clicks: number;
+        email_clicks: number;
+      }>
+    >`
+      WITH created_stats AS (
+        SELECT 
+          ${periodSqlCreated} AS date,
+          COUNT(sl.id)::int AS total_links_created,
+          COUNT(CASE WHEN sl.click_count > 0 THEN sl.id END)::int AS links_with_clicks,
+          COUNT(CASE WHEN (sl.payload->>'type') = 'search_redirect' THEN sl.id END)::int AS search_links_created,
+          COUNT(CASE WHEN (sl.payload->>'type') = 'chart_alert' THEN sl.id END)::int AS alert_links_created
+        FROM "short_link" sl
+        ${createdWhere}
+        GROUP BY 1
+      ),
+      clicked_stats AS (
+        SELECT 
+          ${periodSqlClicked} AS date,
+          COUNT(slc.id)::int AS total_clicks,
+          COUNT(DISTINCT slc.short_link_id)::int AS unique_links_clicked,
+          COUNT(DISTINCT COALESCE(slc.ip_address, slc.id))::int AS unique_click_ips,
+          COUNT(CASE WHEN (sl.payload->>'channel') = 'whatsapp' OR (sl.payload->>'mobile') IS NOT NULL THEN slc.id END)::int AS whatsapp_clicks,
+          COUNT(CASE WHEN (sl.payload->>'channel') = 'email' OR ((sl.payload->>'channel') != 'whatsapp' AND (sl.payload->>'email') IS NOT NULL) THEN slc.id END)::int AS email_clicks
+        FROM "short_link_click" slc
+        JOIN "short_link" sl ON slc.short_link_id = sl.id
+        ${clickedWhere}
+        GROUP BY 1
+      )
+      SELECT 
+        COALESCE(c.date, k.date) AS date,
+        COALESCE(c.total_links_created, 0)::int AS total_links_created,
+        COALESCE(c.links_with_clicks, 0)::int AS links_with_clicks,
+        COALESCE(c.search_links_created, 0)::int AS search_links_created,
+        COALESCE(c.alert_links_created, 0)::int AS alert_links_created,
+        COALESCE(k.total_clicks, 0)::int AS total_clicks,
+        COALESCE(k.unique_links_clicked, 0)::int AS unique_links_clicked,
+        COALESCE(k.unique_click_ips, 0)::int AS unique_click_ips,
+        COALESCE(k.whatsapp_clicks, 0)::int AS whatsapp_clicks,
+        COALESCE(k.email_clicks, 0)::int AS email_clicks
+      FROM created_stats c
+      FULL OUTER JOIN clicked_stats k ON c.date = k.date
+      ORDER BY date ASC
+    `;
+
+    let runningCreated = 0;
+    let runningClicks = 0;
+    let runningWhatsappClicks = 0;
+    let runningEmailClicks = 0;
+    let peakCreatedCount = 0;
+    let peakCreatedDate = '';
+    let peakClickCount = 0;
+    let peakClickDate = '';
+
+    const formattedRows = rawRows.map((row, idx) => {
+      const created = Number(row.total_links_created);
+      const clicks = Number(row.total_clicks);
+      const uniqueLinksClicked = Number(row.unique_links_clicked);
+      const whatsappClicks = Number(row.whatsapp_clicks);
+      const emailClicks = Number(row.email_clicks);
+      const ctrPct =
+        created > 0 ? Number(((clicks / created) * 100).toFixed(2)) : 0;
+
+      const prevCreated =
+        idx > 0 ? Number(rawRows[idx - 1].total_links_created) : null;
+      const createdChange = prevCreated !== null ? created - prevCreated : null;
+      const createdGrowthPct =
+        prevCreated && prevCreated > 0
+          ? Number((((created - prevCreated) / prevCreated) * 100).toFixed(2))
+          : null;
+
+      const prevClicks = idx > 0 ? Number(rawRows[idx - 1].total_clicks) : null;
+      const clicksChange = prevClicks !== null ? clicks - prevClicks : null;
+      const clicksGrowthPct =
+        prevClicks && prevClicks > 0
+          ? Number((((clicks - prevClicks) / prevClicks) * 100).toFixed(2))
+          : null;
+
+      runningCreated += created;
+      runningClicks += clicks;
+      runningWhatsappClicks += whatsappClicks;
+      runningEmailClicks += emailClicks;
+
+      if (created > peakCreatedCount) {
+        peakCreatedCount = created;
+        peakCreatedDate = row.date;
+      }
+      if (clicks > peakClickCount) {
+        peakClickCount = clicks;
+        peakClickDate = row.date;
+      }
+
+      return {
+        date: row.date,
+        totalLinksCreated: created,
+        totalClicks: clicks,
+        uniqueLinksClicked,
+        uniqueClickIps: Number(row.unique_click_ips),
+        searchLinksCreated: Number(row.search_links_created),
+        alertLinksCreated: Number(row.alert_links_created),
+        whatsappClicks,
+        emailClicks,
+        ctrPct,
+        createdChange,
+        createdGrowthPct,
+        clicksChange,
+        clicksGrowthPct,
+        periodChange: createdChange,
+        growthPercentage: createdGrowthPct,
+      };
+    });
+
+    const totalPeriods = formattedRows.length;
+    const overallCtr =
+      runningCreated > 0
+        ? Number(((runningClicks / runningCreated) * 100).toFixed(2))
+        : 0;
+
+    return {
+      groupBy,
+      dailyStats: formattedRows,
+      stats: formattedRows,
+      summary: {
+        totalLinksCreated: runningCreated,
+        totalClicks: runningClicks,
+        totalWhatsappClicks: runningWhatsappClicks,
+        totalEmailClicks: runningEmailClicks,
+        overallCtrPct: overallCtr,
+        totalDays: totalPeriods,
+        totalPeriods,
+        avgLinksCreatedPerPeriod:
+          totalPeriods > 0
+            ? Number((runningCreated / totalPeriods).toFixed(2))
+            : 0,
+        avgClicksPerPeriod:
+          totalPeriods > 0
+            ? Number((runningClicks / totalPeriods).toFixed(2))
+            : 0,
+        peakCreationDay: peakCreatedDate
+          ? { date: peakCreatedDate, count: peakCreatedCount }
+          : null,
+        peakClickDay: peakClickDate
+          ? { date: peakClickDate, count: peakClickCount }
+          : null,
+      },
+    };
+  }
+
+  /**
    * ADMIN: Paginated feed of click events with rich user and train context.
    */
   async getAdminClicks(params: {

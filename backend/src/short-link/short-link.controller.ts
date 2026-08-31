@@ -22,6 +22,19 @@ export class ShortLinkController {
     return this.shortLinkService.getAdminOverview({ startDate, endDate });
   }
 
+  @Get('admin/stats')
+  getAdminDailyStats(
+    @Query('groupBy') groupBy?: 'day' | 'week' | 'month',
+    @Query('startDate') startDate?: string,
+    @Query('endDate') endDate?: string,
+  ) {
+    return this.shortLinkService.getAdminDailyStats({
+      groupBy,
+      startDate,
+      endDate,
+    });
+  }
+
   @Get('admin/clicks')
   getAdminClicks(
     @Query('page') page?: string,

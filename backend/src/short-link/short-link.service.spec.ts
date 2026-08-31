@@ -24,6 +24,7 @@ describe('ShortLinkService', () => {
         findMany: jest.fn(),
       },
       $transaction: jest.fn((promises) => Promise.all(promises)),
+      $queryRaw: jest.fn(),
     } as unknown as jest.Mocked<PrismaService>;
 
     service = new ShortLinkService(prisma);
@@ -356,5 +357,67 @@ describe('ShortLinkService', () => {
     expect(result.users[0].totalClicks).toBe(3);
     expect(result.users[0].clickedLinksCount).toBe(1);
     expect(result.users[0].clickRate).toBe(50);
+  });
+
+  it('should return aggregated day-on-day stats with created and clicked metrics', async () => {
+    (prisma.$queryRaw as jest.Mock).mockResolvedValue([
+      {
+        date: '2026-08-28',
+        total_links_created: 10,
+        links_with_clicks: 4,
+        search_links_created: 6,
+        alert_links_created: 4,
+        total_clicks: 15,
+        unique_links_clicked: 4,
+        unique_click_ips: 12,
+        whatsapp_clicks: 10,
+        email_clicks: 5,
+      },
+      {
+        date: '2026-08-29',
+        total_links_created: 20,
+        links_with_clicks: 8,
+        search_links_created: 12,
+        alert_links_created: 8,
+        total_clicks: 25,
+        unique_links_clicked: 7,
+        unique_click_ips: 18,
+        whatsapp_clicks: 15,
+        email_clicks: 10,
+      },
+    ]);
+
+    const result = await service.getAdminDailyStats({
+      groupBy: 'day',
+      startDate: '2026-08-28',
+      endDate: '2026-08-29',
+    });
+
+    expect(result.groupBy).toBe('day');
+    expect(result.dailyStats).toHaveLength(2);
+    expect(result.dailyStats[0].totalLinksCreated).toBe(10);
+    expect(result.dailyStats[0].totalClicks).toBe(15);
+    expect(result.dailyStats[0].createdChange).toBeNull();
+    expect(result.dailyStats[1].totalLinksCreated).toBe(20);
+    expect(result.dailyStats[1].createdChange).toBe(10);
+    expect(result.dailyStats[1].createdGrowthPct).toBe(100);
+    expect(result.dailyStats[1].clicksChange).toBe(10);
+    expect(result.dailyStats[1].clicksGrowthPct).toBe(66.67);
+
+    expect(result.summary.totalLinksCreated).toBe(30);
+    expect(result.summary.totalClicks).toBe(40);
+    expect(result.summary.totalWhatsappClicks).toBe(25);
+    expect(result.summary.totalEmailClicks).toBe(15);
+    expect(result.summary.overallCtrPct).toBe(133.33);
+    expect(result.summary.avgLinksCreatedPerPeriod).toBe(15);
+    expect(result.summary.avgClicksPerPeriod).toBe(20);
+    expect(result.summary.peakCreationDay).toEqual({
+      date: '2026-08-29',
+      count: 20,
+    });
+    expect(result.summary.peakClickDay).toEqual({
+      date: '2026-08-29',
+      count: 25,
+    });
   });
 });

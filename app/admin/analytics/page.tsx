@@ -24,6 +24,7 @@ import {
   Search,
   Calendar,
   X,
+  TrendingUp,
 } from "lucide-react";
 
 // ==========================================
@@ -141,6 +142,46 @@ type ShortLinksOverviewSummary = {
   linksByType: { search_redirect: number; chart_alert: number; other: number };
 };
 
+type ShortLinkDailyStat = {
+  date: string;
+  totalLinksCreated: number;
+  totalClicks: number;
+  uniqueLinksClicked: number;
+  uniqueClickIps: number;
+  searchLinksCreated: number;
+  alertLinksCreated: number;
+  whatsappClicks: number;
+  emailClicks: number;
+  ctrPct: number;
+  createdChange: number | null;
+  createdGrowthPct: number | null;
+  clicksChange: number | null;
+  clicksGrowthPct: number | null;
+  periodChange?: number | null;
+  growthPercentage?: number | null;
+};
+
+type ShortLinkDailySummary = {
+  totalLinksCreated: number;
+  totalClicks: number;
+  totalWhatsappClicks: number;
+  totalEmailClicks: number;
+  overallCtrPct: number;
+  totalDays: number;
+  totalPeriods: number;
+  avgLinksCreatedPerPeriod: number;
+  avgClicksPerPeriod: number;
+  peakCreationDay: { date: string; count: number } | null;
+  peakClickDay: { date: string; count: number } | null;
+};
+
+type ShortLinkDailyStatsResponse = {
+  groupBy: GroupByMode;
+  dailyStats: ShortLinkDailyStat[];
+  stats?: ShortLinkDailyStat[];
+  summary: ShortLinkDailySummary;
+};
+
 // ==========================================
 // MAIN ANALYTICS CONTAINER
 // ==========================================
@@ -182,7 +223,7 @@ function AnalyticsDashboard() {
             }`}
           >
             <Link2 className="h-4 w-4" />
-            Short Links & Clicks
+            Short Links
           </button>
         </div>
       </div>
@@ -191,7 +232,7 @@ function AnalyticsDashboard() {
       {activeTab === "notifications" ? (
         <NotificationsAnalyticsSection />
       ) : (
-        <ShortLinksClicksSection />
+        <ShortLinksSection />
       )}
     </div>
   );
@@ -820,7 +861,621 @@ function NotificationsAnalyticsSection() {
 }
 
 // ==========================================
-// TAB 2: SHORT LINKS & CLICKS
+// TAB 2: SHORT LINKS (CONTAINER WITH SUB-TABS)
+// ==========================================
+function ShortLinksSection() {
+  const searchParams = useSearchParams();
+  const initialView =
+    searchParams.get("view") === "clickstream" ? "clickstream" : "graph";
+  const [subTab, setSubTab] = useState<"graph" | "clickstream">(initialView);
+
+  return (
+    <div className="space-y-6">
+      {/* Sub-tab Navigation */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-200 pb-3">
+        <div className="flex items-center gap-2">
+          <div className="inline-flex rounded-xl bg-slate-200/70 p-1 shadow-inner">
+            <button
+              onClick={() => setSubTab("graph")}
+              className={`inline-flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition ${
+                subTab === "graph"
+                  ? "bg-white text-indigo-600 shadow-sm"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              <TrendingUp className="h-3.5 w-3.5" />
+              Day-on-Day Graph
+            </button>
+            <button
+              onClick={() => setSubTab("clickstream")}
+              className={`inline-flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition ${
+                subTab === "clickstream"
+                  ? "bg-white text-indigo-600 shadow-sm"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              <MousePointerClick className="h-3.5 w-3.5" />
+              Clickstream Feed
+            </button>
+          </div>
+        </div>
+
+        <span className="text-xs text-slate-500">
+          {subTab === "graph"
+            ? "Aggregated link creation vs. real click engagement trends over time."
+            : "Live telemetry and telemetry stream of recent short link click events."}
+        </span>
+      </div>
+
+      {subTab === "graph" ? (
+        <ShortLinksDailyGraphSection />
+      ) : (
+        <ShortLinksClicksSection />
+      )}
+    </div>
+  );
+}
+
+// ==========================================
+// TAB 2A: SHORT LINKS DAY-ON-DAY GRAPH
+// ==========================================
+function ShortLinksDailyGraphSection() {
+  const [data, setData] = useState<ShortLinkDailyStat[]>([]);
+  const [summary, setSummary] = useState<ShortLinkDailySummary | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const [groupBy, setGroupBy] = useState<GroupByMode>("day");
+  const [preset, setPreset] = useState<"7d" | "14d" | "30d" | "90d" | "all" | "custom">("30d");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
+  // Tooltip state
+  const [hoveredBar, setHoveredBar] = useState<ShortLinkDailyStat | null>(null);
+  const [hoverPos, setHoverPos] = useState<{ x: number; y: number } | null>(null);
+
+  // Preset Date range calculation
+  useEffect(() => {
+    if (preset === "custom") return;
+    const end = moment().format("YYYY-MM-DD");
+    let start = "";
+    if (preset === "7d") start = moment().subtract(6, "days").format("YYYY-MM-DD");
+    else if (preset === "14d") start = moment().subtract(13, "days").format("YYYY-MM-DD");
+    else if (preset === "30d") start = moment().subtract(29, "days").format("YYYY-MM-DD");
+    else if (preset === "90d") start = moment().subtract(89, "days").format("YYYY-MM-DD");
+    else if (preset === "all") start = "";
+
+    setStartDate(start);
+    setEndDate(start ? end : "");
+  }, [preset]);
+
+  const fetchDailyStats = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const params = new URLSearchParams();
+      params.append("groupBy", groupBy);
+      if (startDate) params.append("startDate", startDate);
+      if (endDate) params.append("endDate", endDate);
+
+      const queryStr = params.toString() ? `?${params.toString()}` : "";
+      const res = await apiClient.get<ShortLinkDailyStatsResponse>(
+        `/api/short-link/admin/stats${queryStr}`
+      );
+
+      const items = res.data.stats || res.data.dailyStats || [];
+      setData(items);
+      setSummary(res.data.summary || null);
+    } catch (err: unknown) {
+      console.error("Failed to fetch short link daily stats", err);
+      const isNetworkErr =
+        err && typeof err === "object" && "code" in err && (err as { code: string }).code === "ERR_NETWORK";
+      setError(
+        isNetworkErr
+          ? "Network Error: Unable to connect to backend server. Please ensure the API service is running."
+          : "Failed to load daily short link statistics from server."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, [groupBy, startDate, endDate]);
+
+  useEffect(() => {
+    fetchDailyStats();
+  }, [fetchDailyStats]);
+
+  const maxVal = useMemo(() => {
+    if (!data.length) return 10;
+    const max = Math.max(
+      ...data.map((d) => Math.max(d.totalLinksCreated, d.totalClicks || 0))
+    );
+    return max === 0 ? 10 : Math.ceil(max * 1.15);
+  }, [data]);
+
+  const formatBarLabel = (dateStr: string) => {
+    if (groupBy === "month") return moment(dateStr).format("MMM YY");
+    if (groupBy === "week") return moment(dateStr).format("DD MMM");
+    return moment(dateStr).format("DD MMM");
+  };
+
+  const formatTooltipDate = (dateStr: string) => {
+    if (groupBy === "month") return moment(dateStr).format("MMMM YYYY");
+    if (groupBy === "week") return `Week of ${moment(dateStr).format("DD MMM YYYY")}`;
+    return moment(dateStr).format("ddd, DD MMM YYYY");
+  };
+
+  const formatTableDate = (dateStr: string) => {
+    if (groupBy === "month") return moment(dateStr).format("MMMM YYYY");
+    if (groupBy === "week") return `Week of ${moment(dateStr).format("DD MMM YYYY")}`;
+    return moment(dateStr).format("DD MMM YYYY");
+  };
+
+  const periodTitle =
+    groupBy === "month"
+      ? "Month-on-Month"
+      : groupBy === "week"
+        ? "Week-on-Week"
+        : "Day-on-Day";
+  const periodShortLabel =
+    groupBy === "month" ? "MoM" : groupBy === "week" ? "WoW" : "DoD";
+
+  return (
+    <div className="space-y-6">
+      {/* Date Range & Grouping Controls */}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-semibold text-slate-700">Preset Range:</span>
+          <div className="flex items-center gap-1.5">
+            {(["7d", "14d", "30d", "90d", "all"] as const).map((p) => (
+              <button
+                key={p}
+                onClick={() => setPreset(p)}
+                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
+                  preset === p
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
+                }`}
+              >
+                {p === "7d" && "7 Days"}
+                {p === "14d" && "14 Days"}
+                {p === "30d" && "30 Days"}
+                {p === "90d" && "90 Days"}
+                {p === "all" && "All Time"}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Group By Filter */}
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-semibold text-slate-700">Group By:</span>
+          <div className="inline-flex rounded-xl bg-slate-200/70 p-1 shadow-inner">
+            {(["day", "week", "month"] as const).map((mode) => (
+              <button
+                key={mode}
+                onClick={() => setGroupBy(mode)}
+                className={`rounded-lg px-3 py-1 text-xs font-semibold capitalize transition ${
+                  groupBy === mode
+                    ? "bg-white text-indigo-600 shadow-sm"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                {mode}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={fetchDailyStats}
+            disabled={loading}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:opacity-50"
+          >
+            <RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
+            Refresh
+          </button>
+        </div>
+      </div>
+
+      {/* Custom Date Filters */}
+      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3.5 text-xs shadow-sm">
+        <div className="flex items-center gap-2">
+          <span className="font-semibold text-slate-700">Custom Date Range:</span>
+          <input
+            type="date"
+            value={startDate}
+            onChange={(e) => {
+              setPreset("custom");
+              setStartDate(e.target.value);
+            }}
+            className="rounded-lg border border-slate-200 px-2.5 py-1 text-slate-800 focus:border-indigo-500 focus:outline-none"
+          />
+          <span className="text-slate-400">to</span>
+          <input
+            type="date"
+            value={endDate}
+            onChange={(e) => {
+              setPreset("custom");
+              setEndDate(e.target.value);
+            }}
+            className="rounded-lg border border-slate-200 px-2.5 py-1 text-slate-800 focus:border-indigo-500 focus:outline-none"
+          />
+        </div>
+        {(startDate || endDate) && preset === "custom" && (
+          <button
+            onClick={() => setPreset("30d")}
+            className="text-indigo-600 font-semibold hover:underline"
+          >
+            Reset to 30 Days
+          </button>
+        )}
+        <div className="ml-auto text-[11px] text-slate-400">
+          Showing {data.length} {groupBy === "month" ? "months" : groupBy === "week" ? "weeks" : "days"} of data
+        </div>
+      </div>
+
+      {/* KPI Cards */}
+      {summary && (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Links Generated</span>
+              <Link2 className="h-4 w-4 text-indigo-500" />
+            </div>
+            <p className="mt-2 text-2xl font-bold text-indigo-600">{summary.totalLinksCreated}</p>
+            <div className="mt-1 flex items-center justify-between text-[11px] text-slate-400">
+              <span>Avg {summary.avgLinksCreatedPerPeriod}/{groupBy}</span>
+              {summary.peakCreationDay && (
+                <span className="font-semibold text-slate-700">
+                  Peak: {summary.peakCreationDay.count} ({formatBarLabel(summary.peakCreationDay.date)})
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Total Clicks</span>
+              <MousePointerClick className="h-4 w-4 text-emerald-500" />
+            </div>
+            <p className="mt-2 text-2xl font-bold text-emerald-600">{summary.totalClicks}</p>
+            <div className="mt-1 flex items-center justify-between text-[11px] text-slate-400">
+              <span>Avg {summary.avgClicksPerPeriod}/{groupBy}</span>
+              {summary.peakClickDay && (
+                <span className="font-semibold text-slate-700">
+                  Peak: {summary.peakClickDay.count} ({formatBarLabel(summary.peakClickDay.date)})
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Click-Through Rate</span>
+              <span
+                className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                  summary.overallCtrPct >= 50
+                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                    : "bg-indigo-50 text-indigo-700 border border-indigo-200"
+                }`}
+              >
+                {summary.overallCtrPct}%
+              </span>
+            </div>
+            <p className="mt-2 text-2xl font-bold text-slate-900">{summary.overallCtrPct}%</p>
+            <span className="text-[11px] text-slate-400">
+              {summary.totalClicks} clicks across {summary.totalLinksCreated} generated
+            </span>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Channel Clicks</span>
+              <Users className="h-4 w-4 text-purple-500" />
+            </div>
+            <div className="mt-2 flex items-baseline gap-2">
+              <span className="text-xl font-bold text-emerald-600">
+                {summary.totalWhatsappClicks}
+              </span>
+              <span className="text-xs text-slate-400">WA</span>
+              <span className="text-slate-300">/</span>
+              <span className="text-xl font-bold text-indigo-600">
+                {summary.totalEmailClicks}
+              </span>
+              <span className="text-xs text-slate-400">Email</span>
+            </div>
+            <span className="text-[11px] text-slate-400">
+              Total {summary.totalWhatsappClicks + summary.totalEmailClicks} attributed channel clicks
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Main Day-on-Day Bar Chart */}
+      <div className="relative rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <h2 className="text-base font-bold text-slate-900">
+              {periodTitle} Links Generated vs. Clicks
+            </h2>
+            <span className="text-xs text-slate-400">Hover over bars for detailed statistics</span>
+          </div>
+
+          {/* Chart Legend */}
+          <div className="flex items-center gap-4 text-xs font-semibold">
+            <div className="flex items-center gap-1.5">
+              <span className="h-3 w-3 rounded-sm bg-indigo-500" />
+              <span className="text-slate-700">Links Generated</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="h-3 w-3 rounded-sm bg-emerald-500" />
+              <span className="text-slate-700">Links Clicked</span>
+            </div>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="flex h-72 items-center justify-center">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600" />
+          </div>
+        ) : error ? (
+          <div className="flex h-72 flex-col items-center justify-center gap-3 text-center">
+            <p className="text-sm text-rose-600 font-medium">{error}</p>
+            <button
+              onClick={fetchDailyStats}
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
+            >
+              Retry Connection
+            </button>
+          </div>
+        ) : data.length === 0 ? (
+          <div className="flex h-72 items-center justify-center text-sm text-slate-400">
+            No short link activity recorded for the selected date range and grouping.
+          </div>
+        ) : (
+          <div className="relative">
+            {/* SVG Grouped Bar Chart */}
+            <div className="relative h-72 w-full overflow-x-auto">
+              <div className="flex h-full min-w-full items-end gap-3 pt-8 pb-8">
+                {data.map((item) => {
+                  const createdHeight = Math.max(
+                    item.totalLinksCreated > 0 ? 4 : 0,
+                    Math.round((item.totalLinksCreated / maxVal) * 100)
+                  );
+                  const clickedHeight = Math.max(
+                    item.totalClicks > 0 ? 4 : 0,
+                    Math.round((item.totalClicks / maxVal) * 100)
+                  );
+                  const isHovered = hoveredBar?.date === item.date;
+
+                  return (
+                    <div
+                      key={item.date}
+                      className="group relative flex flex-1 flex-col items-center h-full justify-end"
+                      onMouseEnter={(e) => {
+                        setHoveredBar(item);
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        setHoverPos({ x: rect.left + rect.width / 2, y: rect.top });
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredBar(null);
+                        setHoverPos(null);
+                      }}
+                    >
+                      {/* Bar Value Top Label */}
+                      <span
+                        className={`mb-1 text-[10px] font-bold transition ${
+                          isHovered ? "text-indigo-600 scale-110" : "text-slate-500"
+                        }`}
+                      >
+                        {item.totalLinksCreated}
+                      </span>
+
+                      {/* Grouped Bars Container */}
+                      <div className="w-full flex-1 flex items-end justify-center gap-1">
+                        {/* Created Bar */}
+                        <div
+                          style={{ height: `${createdHeight}%` }}
+                          className={`w-full max-w-[18px] rounded-t-md transition-all duration-200 ${
+                            isHovered
+                              ? "bg-indigo-600 shadow-md"
+                              : "bg-indigo-500/85 hover:bg-indigo-600"
+                          }`}
+                        />
+                        {/* Clicked Bar */}
+                        <div
+                          style={{ height: `${clickedHeight}%` }}
+                          className={`w-full max-w-[18px] rounded-t-md transition-all duration-200 ${
+                            isHovered
+                              ? "bg-emerald-600 shadow-md"
+                              : "bg-emerald-500/85 hover:bg-emerald-600"
+                          }`}
+                        />
+                      </div>
+
+                      {/* X Axis Label */}
+                      <span className="mt-2 text-[10px] font-medium text-slate-400 group-hover:text-slate-700 whitespace-nowrap">
+                        {formatBarLabel(item.date)}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Hover Tooltip Popup */}
+            {hoveredBar && hoverPos && (
+              <div
+                className="fixed z-50 pointer-events-none -translate-x-1/2 -translate-y-full mb-2 rounded-xl border border-slate-800 bg-slate-900 p-3 text-xs text-white shadow-xl transition-all min-w-[230px]"
+                style={{ left: hoverPos.x, top: hoverPos.y }}
+              >
+                <div className="font-bold text-slate-200 border-b border-slate-800 pb-1.5">
+                  {formatTooltipDate(hoveredBar.date)}
+                </div>
+                <div className="mt-2 space-y-1.5">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-slate-400">Generated:</span>
+                    <span className="font-bold text-indigo-400">
+                      {hoveredBar.totalLinksCreated}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 text-[10px] text-slate-400 pl-2">
+                    <span>• Search: {hoveredBar.searchLinksCreated}</span>
+                    <span>• Alerts: {hoveredBar.alertLinksCreated}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
+                    <span className="text-slate-400">Clicks:</span>
+                    <span className="font-bold text-emerald-400">
+                      {hoveredBar.totalClicks} ({hoveredBar.ctrPct}% CTR)
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 text-[10px] text-slate-400 pl-2">
+                    <span>• WhatsApp: {hoveredBar.whatsappClicks}</span>
+                    <span>• Email: {hoveredBar.emailClicks}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
+                    <span className="text-slate-400">Unique Clicks:</span>
+                    <span className="font-bold text-slate-200">
+                      {hoveredBar.uniqueLinksClicked} links ({hoveredBar.uniqueClickIps} IPs)
+                    </span>
+                  </div>
+                  {hoveredBar.createdChange !== null && (
+                    <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
+                      <span className="text-slate-400">{periodShortLabel} Generation:</span>
+                      <span
+                        className={`font-bold ${
+                          hoveredBar.createdChange >= 0
+                            ? "text-emerald-400"
+                            : "text-rose-400"
+                        }`}
+                      >
+                        {hoveredBar.createdChange >= 0
+                          ? `+${hoveredBar.createdChange}`
+                          : hoveredBar.createdChange}
+                        {hoveredBar.createdGrowthPct !== null &&
+                          ` (${hoveredBar.createdGrowthPct >= 0 ? `+${hoveredBar.createdGrowthPct}%` : `${hoveredBar.createdGrowthPct}%`})`}
+                      </span>
+                    </div>
+                  )}
+                  {hoveredBar.clicksChange !== null && (
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-slate-400">{periodShortLabel} Clicks:</span>
+                      <span
+                        className={`font-bold ${
+                          hoveredBar.clicksChange >= 0
+                            ? "text-emerald-400"
+                            : "text-rose-400"
+                        }`}
+                      >
+                        {hoveredBar.clicksChange >= 0
+                          ? `+${hoveredBar.clicksChange}`
+                          : hoveredBar.clicksChange}
+                        {hoveredBar.clicksGrowthPct !== null &&
+                          ` (${hoveredBar.clicksGrowthPct >= 0 ? `+${hoveredBar.clicksGrowthPct}%` : `${hoveredBar.clicksGrowthPct}%`})`}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Tabular Drilldown Breakdown */}
+      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+        <div className="border-b border-slate-100 bg-slate-50/50 px-6 py-4 flex items-center justify-between">
+          <div>
+            <h3 className="font-semibold text-slate-900">{periodTitle} Short Links Breakdown</h3>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Historical performance of links generated and click events recorded.
+            </p>
+          </div>
+          <span className="text-xs font-medium text-slate-500">
+            Grouped by {groupBy === "month" ? "Month" : groupBy === "week" ? "Week" : "Day"}
+          </span>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead className="border-b border-slate-100 bg-slate-50/50 text-xs font-semibold text-slate-700">
+              <tr>
+                <th className="px-6 py-3">
+                  {groupBy === "month" ? "Month" : groupBy === "week" ? "Week Start" : "Date"}
+                </th>
+                <th className="px-6 py-3">Generated</th>
+                <th className="px-6 py-3">Clicked</th>
+                <th className="px-6 py-3">CTR %</th>
+                <th className="px-6 py-3">WhatsApp</th>
+                <th className="px-6 py-3">Email</th>
+                <th className="px-6 py-3">Unique Links</th>
+                <th className="px-6 py-3">{periodShortLabel} Gen Growth</th>
+                <th className="px-6 py-3">{periodShortLabel} Click Growth</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {[...data].reverse().map((row) => {
+                const genGrowth = row.createdGrowthPct;
+                const clickGrowth = row.clicksGrowthPct;
+
+                return (
+                  <tr key={row.date} className="transition hover:bg-slate-50/50">
+                    <td className="whitespace-nowrap px-6 py-3.5 font-medium text-slate-900">
+                      {formatTableDate(row.date)}
+                    </td>
+                    <td className="px-6 py-3.5 font-bold text-indigo-600">
+                      {row.totalLinksCreated}
+                    </td>
+                    <td className="px-6 py-3.5 font-bold text-emerald-600">
+                      {row.totalClicks}
+                    </td>
+                    <td className="px-6 py-3.5">
+                      <span
+                        className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-bold ${
+                          row.ctrPct >= 80
+                            ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                            : row.ctrPct >= 30
+                              ? "bg-indigo-50 text-indigo-700 border border-indigo-200"
+                              : "bg-slate-100 text-slate-600"
+                        }`}
+                      >
+                        {row.ctrPct}%
+                      </span>
+                    </td>
+                    <td className="px-6 py-3.5 text-slate-700">{row.whatsappClicks}</td>
+                    <td className="px-6 py-3.5 text-slate-700">{row.emailClicks}</td>
+                    <td className="px-6 py-3.5 text-slate-700">{row.uniqueLinksClicked}</td>
+                    <td className="px-6 py-3.5 font-medium">
+                      {genGrowth !== null && genGrowth !== undefined ? (
+                        <span className={genGrowth >= 0 ? "text-emerald-600" : "text-rose-600"}>
+                          {row.createdChange !== null && (row.createdChange >= 0 ? `+${row.createdChange} ` : `${row.createdChange} `)}
+                          ({genGrowth >= 0 ? `+${genGrowth}%` : `${genGrowth}%`})
+                        </span>
+                      ) : (
+                        <span className="text-slate-300">—</span>
+                      )}
+                    </td>
+                    <td className="px-6 py-3.5 font-medium">
+                      {clickGrowth !== null && clickGrowth !== undefined ? (
+                        <span className={clickGrowth >= 0 ? "text-emerald-600" : "text-rose-600"}>
+                          {row.clicksChange !== null && (row.clicksChange >= 0 ? `+${row.clicksChange} ` : `${row.clicksChange} `)}
+                          ({clickGrowth >= 0 ? `+${clickGrowth}%` : `${clickGrowth}%`})
+                        </span>
+                      ) : (
+                        <span className="text-slate-300">—</span>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ==========================================
+// TAB 2B: SHORT LINKS CLICKS (CLICKSTREAM)
 // ==========================================
 function ShortLinksClicksSection() {
   const [overview, setOverview] = useState<ShortLinksOverviewSummary | null>(null);

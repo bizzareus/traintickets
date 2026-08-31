@@ -39,6 +39,10 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
     ? `<p style="margin:6px 0 0 0; font-size:13px; color:#475569;">${escapeHtml(chartPreparationText)}</p>`
     : '';
 
+  const timesLine = journeyTimesLine
+    ? `<p style="margin:4px 0 0 0; font-size:13px; color:#64748b;">${escapeHtml(journeyTimesLine)}</p>`
+    : '';
+
   const partialNoticeLine = partialJourneyNotice
     ? `<p style="margin:8px 0 0 0; font-size:13px; font-weight:500; color:#b45309; line-height:1.4;">${escapeHtml(partialJourneyNotice)}</p>`
     : '';
@@ -59,6 +63,7 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
             <td style="padding:24px 24px 20px;">
               <p style="margin:0; font-size:20px; font-weight:700; color:#0f172a;">${escapeHtml(trainLabel)}</p>
               <p style="margin:8px 0 0 0; font-size:14px; color:#64748b;">${escapeHtml(routeDisplay)}</p>
+              ${timesLine}
               <p style="margin:8px 0 0 0; font-size:14px; color:#334155;">${escapeHtml(journeyDateReadable)}</p>
               ${partialNoticeLine}
               ${chartPrepLine}

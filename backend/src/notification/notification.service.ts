@@ -1582,8 +1582,7 @@ ${targetSearchUrl}`;
 
       let chartPreparationText: string | undefined;
       if (result.chartPreparationDetails) {
-        const chartingCode =
-          result.chartPreparationDetails.chartingStationCode;
+        const chartingCode = result.chartPreparationDetails.chartingStationCode;
         const chartingName =
           stationNameMap.get(chartingCode.toUpperCase()) ?? chartingCode;
         const rawTime = result.chartPreparationDetails.firstChartCreationTime;
