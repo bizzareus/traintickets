@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useMemo, useCallback, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { apiClient } from "@/lib/api";
 import moment from "moment";
 import {
@@ -187,8 +187,18 @@ type ShortLinkDailyStatsResponse = {
 // ==========================================
 function AnalyticsDashboard() {
   const searchParams = useSearchParams();
-  const initialTab = searchParams.get("tab") === "short-links" ? "short-links" : "notifications";
-  const [activeTab, setActiveTab] = useState<"notifications" | "short-links">(initialTab);
+  const router = useRouter();
+  const tabFromUrl = searchParams.get("tab") === "short-links" ? "short-links" : "notifications";
+  const [activeTab, setActiveTab] = useState<"notifications" | "short-links">(tabFromUrl);
+
+  useEffect(() => {
+    setActiveTab(tabFromUrl);
+  }, [tabFromUrl]);
+
+  const handleTabChange = (tab: "notifications" | "short-links") => {
+    setActiveTab(tab);
+    router.replace(`/admin/analytics?tab=${tab}`);
+  };
 
   return (
     <div className="space-y-8">
@@ -204,7 +214,7 @@ function AnalyticsDashboard() {
         {/* Tab Switcher */}
         <div className="inline-flex rounded-xl bg-slate-200/70 p-1 shadow-inner">
           <button
-            onClick={() => setActiveTab("notifications")}
+            onClick={() => handleTabChange("notifications")}
             className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold transition ${
               activeTab === "notifications"
                 ? "bg-white text-indigo-600 shadow-sm"
@@ -215,7 +225,7 @@ function AnalyticsDashboard() {
             Notifications
           </button>
           <button
-            onClick={() => setActiveTab("short-links")}
+            onClick={() => handleTabChange("short-links")}
             className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold transition ${
               activeTab === "short-links"
                 ? "bg-white text-indigo-600 shadow-sm"

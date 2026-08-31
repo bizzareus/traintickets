@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AdminPasswordGate from "./AdminPasswordGate";
-import AdminLockButton from "./AdminLockButton";
+import AdminNav from "./AdminNav";
 
 export default function AdminLayout({
   children,
@@ -13,14 +13,7 @@ export default function AdminLayout({
         <header className="border-b border-slate-200 bg-white">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4">
             <Link href="/" className="text-xl font-semibold text-primary">LastBerth</Link>
-            <nav className="flex flex-wrap items-center gap-4">
-              <Link href="/admin/analytics" className="text-sm font-medium text-slate-600 hover:text-slate-900">Analytics</Link>
-              <Link href="/admin/alerts" className="text-sm font-medium text-slate-600 hover:text-slate-900">Alerts</Link>
-              <Link href="/admin/chart-time-ingestion" className="text-sm font-medium text-slate-600 hover:text-slate-900">Chart-time ingestion</Link>
-              <Link href="/admin/reddit-gtm" className="text-sm font-medium text-slate-600 hover:text-slate-900">Reddit GTM</Link>
-              <Link href="/admin/best-seats-cron" className="text-sm font-medium text-slate-600 hover:text-slate-900">Best-seats cron</Link>
-              <AdminLockButton />
-            </nav>
+            <AdminNav />
           </div>
         </header>
         <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
