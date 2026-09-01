@@ -45,3 +45,9 @@ variable "enable_cloudfront" {
   type        = bool
   default     = false
 }
+
+variable "ssh_allowed_cidrs" {
+  description = "List of allowed IPv4 CIDR blocks for SSH access (default: user public IP)"
+  type        = list(string)
+  default     = ["143.58.187.80/32"]
+}
