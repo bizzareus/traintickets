@@ -11,7 +11,7 @@ Two-service monorepo: Next.js frontend (root `/`, port 3010) + NestJS backend (`
 | Service | Instance IP | Domain / Ports | Topology |
 |---|---|---|---|
 | **Frontend** | `13.202.107.176` (`t3.micro`) | `v2.lastberth.com` (80/443) | Caddy 2 (Let's Encrypt TLS) ➔ Next.js 16 SSR container (`frontend:3010`) |
-| **Backend** | `13.207.130.42` (`t3.micro`) | `api-v2.lastberth.com` (80/443) | Caddy 2 (Let's Encrypt TLS) ➔ NestJS container (`backend:3009`) ➔ PostgreSQL 16 container (`db:5432`) |
+| **Backend** | `13.207.130.42` (`t3.micro`) | `api-v2.lastberth.com` (80/443) | Caddy 2 (Let's Encrypt TLS) ➔ NestJS container (`backend:3009`) ➔ Supabase Cloud DB |
 | **Old Prod** | `69.46.46.30` | `lastberth.com` (Apex) | Existing legacy production instance |
 | **SSH Whitelist** | Authorized IP | Port 22 | Restricted to `143.58.187.80/32` |
 | **CORS Policy** | Backend API | `https://*.lastberth.com` | Handled dynamically in `backend/src/main.ts` (`isAllowedOrigin`) |

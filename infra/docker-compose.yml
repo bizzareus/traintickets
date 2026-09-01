@@ -1,21 +1,4 @@
 services:
-  db:
-    image: postgres:16-alpine
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: railchart
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-    ports:
-      - "127.0.0.1:5432:5432"
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "20m"
-        max-file: "10"
-
   backend:
     build:
       context: ../backend
@@ -23,9 +6,6 @@ services:
     restart: unless-stopped
     env_file:
       - ../backend/.env
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/railchart
-      - DATABASE_SSL=false
     ports:
       - "3009:3009"
     logging:
@@ -33,8 +13,6 @@ services:
       options:
         max-size: "20m"
         max-file: "10"
-    depends_on:
-      - db
 
   caddy:
     image: caddy:2-alpine
@@ -56,7 +34,6 @@ services:
       - backend
 
 volumes:
-  pg_data:
   caddy_data:
   caddy_config:
   caddy_logs:

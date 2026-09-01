@@ -66,10 +66,13 @@ flowchart TD
         direction TB
         Caddy_BE["Caddy 2 Proxy\nPorts: 80 / 443\n(Auto Let's Encrypt TLS)"]
         NestJS["NestJS API Container\n(backend:3009)\nNode 22-Alpine"]
-        Postgres["PostgreSQL 16 Container\n(db:5432)\nVolume: pg_data"]
         
         Caddy_BE -->|"Proxy pass http://backend:3009"| NestJS
-        NestJS -->|"Prisma ORM (db:5432)"| Postgres
+    end
+
+    subgraph Database["🗄️ Managed PostgreSQL Database"]
+        Supabase["Supabase PostgreSQL Cloud\n(aws-1-ap-northeast-1.pooler.supabase.com:5432)\nConnection Pooling & TLS"]
+        NestJS -->|"Prisma ORM"| Supabase
     end
 
     subgraph External["🔌 External APIs & Services"]
@@ -108,12 +111,12 @@ flowchart TD
     classDef aws fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#fff;
     classDef cf fill:#F38020,stroke:#FAAD3F,stroke-width:2px,color:#fff;
     classDef container fill:#2496ED,stroke:#1D63ED,stroke-width:2px,color:#fff;
-    classDef db fill:#336791,stroke:#244D6E,stroke-width:2px,color:#fff;
+    classDef db fill:#3ECF8E,stroke:#249A6E,stroke-width:2px,color:#fff;
 
     class AWS_FE,AWS_BE aws;
     class CF_FE,CF_BE,CF_PROD cf;
     class NextJS,NestJS,Caddy_FE,Caddy_BE container;
-    class Postgres db;
+    class Supabase db;
 ```
 
 ### 📋 Infrastructure Memory & Topology Reference
@@ -121,10 +124,10 @@ flowchart TD
 | Component | Target Host / IP | Subdomain / Port | Description |
 |---|---|---|---|
 | **Frontend EC2** | `13.202.107.176` (`t3.micro`, `ap-south-1`) | `v2.lastberth.com` (80/443) | Runs Caddy 2 reverse proxy + Next.js 16 SSR container (`frontend:3010`). Localized JSON content & SSR pages. |
-| **Backend EC2** | `13.207.130.42` (`t3.micro`, `ap-south-1`) | `api-v2.lastberth.com` (80/443) | Runs Caddy 2 reverse proxy + NestJS API (`backend:3009`) + PostgreSQL 16 (`db:5432`). |
+| **Backend EC2** | `13.207.130.42` (`t3.micro`, `ap-south-1`) | `api-v2.lastberth.com` (80/443) | Runs Caddy 2 reverse proxy + NestJS API (`backend:3009`). |
+| **Database** | Supabase Cloud PostgreSQL | `aws-1-ap-northeast-1.pooler.supabase.com:5432` | Managed PostgreSQL with connection pooling, SSL/TLS, and Prisma ORM. |
 | **Old Production** | `69.46.46.30` | `lastberth.com` (Apex) | Current live production instance (preserved during parallel verification). |
 | **Security Groups** | Both AWS EC2s | Port 22 (SSH), 80 (HTTP), 443 (HTTPS) | SSH restricted to authorized IP `143.58.187.80/32`. Ports 80 and 443 open to Cloudflare proxy. |
-| **Database** | Backend EC2 Docker | `postgresql://postgres:postgres@db:5432/railchart` | PostgreSQL 16 container with persistent volume `pg_data`. 36 Prisma migrations applied and seeded. |
 | **CORS Policy** | NestJS (`backend/src/main.ts`) | `https://*.lastberth.com`, `localhost` | Dynamic origin validator with credentials support (`access-control-allow-credentials: true`). |
 | **CI/CD** | GitHub Actions | Push to `main` branch | Workflow `.github/workflows/deploy-aws.yml` syncs code and rebuilds containers automatically. |
 

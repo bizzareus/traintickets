@@ -40,11 +40,6 @@ variable "ssh_public_key" {
   default     = ""
 }
 
-variable "enable_cloudfront" {
-  description = "Set to true once CloudFront verification is approved by AWS Support"
-  type        = bool
-  default     = false
-}
 
 variable "ssh_allowed_cidrs" {
   description = "List of allowed IPv4 CIDR blocks for SSH access (default: user public IP)"
