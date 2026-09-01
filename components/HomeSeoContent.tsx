@@ -21,7 +21,7 @@ export function HomeSeoContent({ t }: { t: HomeStrings["seo"] }) {
   };
 
   return (
-    <section className="mx-auto max-w-3xl px-4 pb-16 sm:px-6 lg:max-w-4xl [content-visibility:auto] [contain-intrinsic-size:auto_800px]">
+    <section className="mx-auto max-w-3xl px-4 pb-16 sm:px-6 lg:max-w-4xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

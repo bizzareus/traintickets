@@ -1,11 +1,14 @@
+import Script from "next/script";
+
 /**
- * Loads Google AdSense script via standard async script tag.
- * Avoids Next.js next/script data-nscript attribute which triggers AdSense head tag warnings.
+ * Loads Google AdSense script lazily during browser idle time to prevent
+ * blocking LCP elements and critical rendering path resources.
  */
 export function AdSenseScriptLoader() {
   return (
-    <script
-      async
+    <Script
+      id="adsense-script"
+      strategy="lazyOnload"
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2619716052518481"
       crossOrigin="anonymous"
     />

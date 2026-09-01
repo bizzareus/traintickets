@@ -134,7 +134,7 @@ export default function RowAlertButton({
             properties: { source: "row", train_number: trainNumber, station_code: stationCode },
           });
         }}
-        className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 whitespace-nowrap"
+        className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 whitespace-nowrap touch-manipulation"
       >
         <BellRing className="h-3.5 w-3.5" />
         Get Alert

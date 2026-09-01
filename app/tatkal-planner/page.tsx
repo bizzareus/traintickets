@@ -95,7 +95,7 @@ export default function TatkalPlannerPage() {
 
       {/* Header & Introduction */}
       <header className="mb-7">
-        <p className="text-sm font-semibold text-teal-700">Tatkal booking planner</p>
+        <p className="text-sm font-semibold text-blue-700">Tatkal booking planner</p>
         <h1 className="mt-1 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
           Find your Tatkal booking time
         </h1>

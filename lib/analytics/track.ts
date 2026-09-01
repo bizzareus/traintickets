@@ -2,10 +2,18 @@ import { isAnalyticsEnabled } from "./config";
 import type { AnalyticsEvent } from "./events";
 import { posthog } from "./posthog-client";
 
+function scheduleNonBlocking(fn: () => void): void {
+  if (typeof requestIdleCallback !== "undefined") {
+    requestIdleCallback(fn, { timeout: 300 });
+  } else {
+    setTimeout(fn, 0);
+  }
+}
+
 /**
  * Send a typed product event to PostHog. Uses the shared client; events queue
  * until `initPosthogBrowser` runs. Never throws — uncaught errors here would
- * break the page.
+ * break the page. Dispatched asynchronously to preserve fast INP.
  */
 export function trackAnalyticsEvent(event: AnalyticsEvent): void {
   if (typeof window === "undefined" || !isAnalyticsEnabled()) return;
@@ -13,25 +21,28 @@ export function trackAnalyticsEvent(event: AnalyticsEvent): void {
   const isAdminPath = window.location.pathname.startsWith("/admin");
   const isAdminUser = window.localStorage.getItem("admin") === "true";
   if (isAdminPath || isAdminUser) return;
-  try {
-    posthog.capture(
-      event.name,
-      event.properties as Record<string, unknown>,
-    );
-    // Also track to Google Analytics if gtag is defined
-    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
-    if (typeof gtag === "function") {
-      gtag("event", event.name, event.properties);
+
+  scheduleNonBlocking(() => {
+    try {
+      posthog.capture(
+        event.name,
+        event.properties as Record<string, unknown>,
+      );
+      // Also track to Google Analytics if gtag is defined
+      const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+      if (typeof gtag === "function") {
+        gtag("event", event.name, event.properties);
+      }
+    } catch {
+      /* ignore */
     }
-  } catch {
-    /* ignore */
-  }
+  });
 }
 
 /**
  * Identify a user in PostHog when contact information is provided (e.g. on alert request).
  * Sets person properties so all subsequent and previous session events are attributed to this user.
- * Browser-only and admin-suppressed; never throws.
+ * Browser-only and admin-suppressed; never throws. Dispatched asynchronously to preserve fast INP.
  */
 export function identifyUser(
   distinctId: string,
@@ -43,14 +54,16 @@ export function identifyUser(
   const isAdminUser = window.localStorage.getItem("admin") === "true";
   if (isAdminPath || isAdminUser) return;
 
-  try {
-    const trimmedId = distinctId.trim();
-    if (!trimmedId) return;
+  const trimmedId = distinctId.trim();
+  if (!trimmedId) return;
 
-    posthog.identify(trimmedId, properties);
-  } catch {
-    /* ignore */
-  }
+  scheduleNonBlocking(() => {
+    try {
+      posthog.identify(trimmedId, properties);
+    } catch {
+      /* ignore */
+    }
+  });
 }
 
 /**

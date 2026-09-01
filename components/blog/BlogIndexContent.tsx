@@ -37,7 +37,7 @@ export function BlogIndexContent({ lang = "en" }: { lang?: string }) {
       </header>
 
       {lang !== "en" && !isFallback && (
-        <div className="mb-6 rounded-xl border border-blue-100 bg-blue-50/50 p-4 text-sm text-blue-900 flex items-center justify-between gap-4 animate-in fade-in slide-in-from-top duration-300">
+        <div className="mb-6 rounded-xl border border-blue-100 bg-blue-50/50 p-4 text-sm text-blue-900 flex items-center justify-between gap-4">
           <span>
             {getBlogTranslation("showingTranslated", lang)} <strong>{getLanguageName(lang)}</strong>.
           </span>
@@ -48,7 +48,7 @@ export function BlogIndexContent({ lang = "en" }: { lang?: string }) {
       )}
 
       {lang !== "en" && isFallback && (
-        <div className="mb-6 rounded-xl border border-amber-100 bg-amber-50/50 p-4 text-sm text-amber-900 flex items-center justify-between gap-4 animate-in fade-in slide-in-from-top duration-300">
+        <div className="mb-6 rounded-xl border border-amber-100 bg-amber-50/50 p-4 text-sm text-amber-900 flex items-center justify-between gap-4">
           <span>
             {getBlogTranslation("noTranslationsYet", lang)} <strong>{getLanguageName(lang)}</strong>{getBlogTranslation("noTranslationsYetSuffix", lang)}
           </span>

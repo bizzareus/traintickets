@@ -938,31 +938,38 @@ export function SeatStatus() {
               Coach
             </label>
             {coachesLoading ? (
-              <div className="flex items-center gap-2 py-2 text-sm text-gray-500">
+              <div className="flex h-[42px] w-full items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-500">
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600" />
-                Loading coaches…
+                <span>Loading coaches…</span>
               </div>
             ) : coachesError ? (
               coachesErrorKind === "connection" ? (
-                <div className="py-2 text-xs text-amber-700">
-                  <p className="font-medium">Trouble connecting to IRCTC.</p>
+                <div className="flex min-h-[42px] w-full items-center justify-between gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs text-amber-800">
+                  <span className="truncate font-medium">IRCTC connection issue</span>
                   <button
                     type="button"
                     onClick={() => setCoachReloadKey((k) => k + 1)}
-                    className="mt-1 font-semibold text-amber-800 underline underline-offset-2 hover:text-amber-900"
+                    className="shrink-0 font-bold text-amber-900 underline hover:text-amber-950"
                   >
-                    Try again
+                    Retry
                   </button>
                 </div>
               ) : (
-                <p className="py-2 text-xs text-amber-700">{coachesError}</p>
+                <div className="flex min-h-[42px] w-full items-center rounded-lg border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs text-amber-800">
+                  {coachesError}
+                </div>
               )
             ) : coaches.length === 0 ? (
-              <p className="py-2 text-xs text-gray-400">
-                {selectedTrain && journeyDate && station
-                  ? "No coaches found."
-                  : "Select train, date & station first."}
-              </p>
+              <select
+                disabled
+                className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-medium text-gray-400 cursor-not-allowed"
+              >
+                <option>
+                  {selectedTrain && journeyDate && station
+                    ? "No coaches found"
+                    : "Select train, date & station first"}
+                </option>
+              </select>
             ) : (
               <select
                 value={selectedCoach?.coachName ?? ""}
@@ -1010,7 +1017,7 @@ export function SeatStatus() {
             id="seatStatusCheckBtn"
             onClick={() => void handleCheck()}
             disabled={!canSubmit}
-            className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+            className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto touch-manipulation"
           >
             {loading ? (
               <span className="inline-flex items-center gap-2">
