@@ -7,47 +7,50 @@ on:
 
 jobs:
   deploy-frontend-aws:
-    name: Deploy Frontend (S3 + CloudFront)
+    name: Deploy Frontend (AWS EC2 - Next.js)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Build Next.js Production App
+      - name: Setup SSH Keys
         env:
-          NEXT_PUBLIC_API_URL: ${{ secrets.AWS_API_URL || 'https://api-v2.lastberth.com' }}
-        run: npm run build:web
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
-
-      - name: Sync Static Assets to S3
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          TARGET_HOST: ${{ secrets.FRONTEND_EC2_HOST || '13.202.107.176' }}
         run: |
-          aws s3 sync .next/static s3://lastberth-frontend-static/_next/static --delete --cache-control "public, max-age=31536000, immutable"
-          aws s3 sync public s3://lastberth-frontend-static/ --delete
+          mkdir -p ~/.ssh
+          if [ -n "$SSH_PRIVATE_KEY" ]; then
+            echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            ssh-keyscan -H "$TARGET_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+          fi
 
-      - name: Invalidate CloudFront Cache (if configured)
-        if: env.CLOUDFRONT_DIST_ID != ''
+      - name: Sync Frontend Code & Deploy Docker Containers
+        if: env.SSH_PRIVATE_KEY != ''
         env:
-          CLOUDFRONT_DIST_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+          TARGET_HOST: ${{ secrets.FRONTEND_EC2_HOST || '13.202.107.176' }}
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
         run: |
-          aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DIST_ID" --paths "/*"
+          ssh ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra"
+          scp infra/docker-compose.frontend.yml ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/docker-compose.yml
+          scp infra/Caddyfile.frontend ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/Caddyfile.frontend
+          scp Dockerfile.frontend ubuntu@$TARGET_HOST:/home/ubuntu/app/Dockerfile.frontend
+          
+          rsync -avz --delete \
+            --exclude 'node_modules' \
+            --exclude '.next' \
+            --exclude 'backend' \
+            --exclude '.git' \
+            --exclude '.claude' \
+            --exclude '.agents' \
+            --exclude '.gemini' \
+            --exclude 'tmp' \
+            ./ ubuntu@$TARGET_HOST:/home/ubuntu/app/
+
+          ssh ubuntu@$TARGET_HOST "cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d --build"
 
   deploy-backend-aws:
-    name: Deploy Backend (AWS EC2)
+    name: Deploy Backend (AWS EC2 - NestJS)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -59,20 +62,24 @@ jobs:
           TARGET_HOST: ${{ secrets.EC2_HOST || '13.207.130.42' }}
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H "$TARGET_HOST" >> ~/.ssh/known_hosts
+          if [ -n "$SSH_PRIVATE_KEY" ]; then
+            echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            ssh-keyscan -H "$TARGET_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+          fi
 
-      - name: Sync Backend Files to EC2
+      - name: Sync Backend Code & Deploy Docker Containers
+        if: env.SSH_PRIVATE_KEY != ''
         env:
           TARGET_HOST: ${{ secrets.EC2_HOST || '13.207.130.42' }}
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
         run: |
-          ssh -i ~/.ssh/id_ed25519 ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend"
-          scp -i ~/.ssh/id_ed25519 infra/docker-compose.yml infra/Caddyfile ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/
-          rsync -avz -e "ssh -i ~/.ssh/id_ed25519" --exclude 'node_modules' --exclude 'dist' backend/ ubuntu@$TARGET_HOST:/home/ubuntu/app/backend/
+          ssh ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend"
+          scp infra/docker-compose.yml infra/Caddyfile ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/
+          
+          rsync -avz --delete \
+            --exclude 'node_modules' \
+            --exclude 'dist' \
+            ./backend/ ubuntu@$TARGET_HOST:/home/ubuntu/app/backend/
 
-      - name: Build and Start Containers
-        env:
-          TARGET_HOST: ${{ secrets.EC2_HOST || '13.207.130.42' }}
-        run: |
-          ssh -i ~/.ssh/id_ed25519 ubuntu@$TARGET_HOST "cd /home/ubuntu/app/infra && docker compose up -d --build"
+          ssh ubuntu@$TARGET_HOST "cd /home/ubuntu/app/infra && docker compose up -d --build"

@@ -41,35 +41,41 @@ cmd_frontend() {
   check_cloud
   local c_name
   c_name="$(cloud_upper)"
-  color_info "Building Next.js frontend static export..."
-  cd "${ROOT_DIR}"
-  
-  API_URL="https://api-v2.lastberth.com"
-  NEXT_PUBLIC_API_URL="${API_URL}" npm run build:web
+  color_info "Deploying Frontend container to ${c_name} VM..."
+  cd "${SCRIPT_DIR}/terraform/${CLOUD}"
+  FRONTEND_IP="$(terraform output -raw frontend_public_ip 2>/dev/null || echo "")"
 
-  if [[ "$CLOUD" == "aws" ]]; then
-    color_info "Syncing static assets to AWS S3 & invalidating CloudFront..."
-    cd "${SCRIPT_DIR}/terraform/aws"
-    BUCKET_NAME="$(terraform output -raw s3_bucket_name 2>/dev/null || echo "lastberth-frontend-static")"
-    DIST_ID="$(terraform output -raw cloudfront_distribution_id 2>/dev/null || echo "")"
-
-    PROFILE="${AWS_PROFILE:-lastberth}"
-    aws --profile "$PROFILE" s3 sync "${ROOT_DIR}/.next/static" "s3://${BUCKET_NAME}/_next/static" --delete --cache-control "public, max-age=31536000, immutable"
-    aws --profile "$PROFILE" s3 sync "${ROOT_DIR}/public" "s3://${BUCKET_NAME}/" --delete
-
-    if [[ -n "$DIST_ID" ]]; then
-      color_info "Invalidating CloudFront distribution ${DIST_ID}..."
-      aws --profile "$PROFILE" cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "/*"
-    fi
-  elif [[ "$CLOUD" == "gcp" ]]; then
-    color_info "Syncing static assets to Google Cloud Storage..."
-    cd "${SCRIPT_DIR}/terraform/gcp"
-    BUCKET_NAME="$(terraform output -raw gcs_bucket_name 2>/dev/null || echo "lastberth-frontend-static")"
-    gcloud storage rsync "${ROOT_DIR}/.next/static" "gs://${BUCKET_NAME}/_next/static" --recursive --delete-unmatched-destination-objects
-    gcloud storage rsync "${ROOT_DIR}/public" "gs://${BUCKET_NAME}" --recursive --delete-unmatched-destination-objects
+  if [[ -z "$FRONTEND_IP" ]]; then
+    color_err "Could not find frontend_public_ip from Terraform outputs. Please run './infra/deploy.sh setup ${CLOUD}' first."
+    exit 1
   fi
 
-  color_success "Frontend deployed successfully to ${c_name}."
+  color_info "Target Frontend VM IP: ${FRONTEND_IP}"
+  color_info "Copying docker-compose & Caddyfile to ${FRONTEND_IP}..."
+  
+  # Sync frontend source code
+  color_info "Syncing frontend source code to ${FRONTEND_IP}..."
+  rsync -avz \
+    --exclude 'node_modules' \
+    --exclude '.next' \
+    --exclude 'backend' \
+    --exclude '.git' \
+    --exclude '.claude' \
+    --exclude '.agents' \
+    --exclude '.gemini' \
+    --exclude 'tmp' \
+    "${ROOT_DIR}/" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/"
+
+  color_info "Configuring Docker & Caddy on ${FRONTEND_IP}..."
+  ssh -o StrictHostKeyChecking=no "ubuntu@${FRONTEND_IP}" "mkdir -p /home/ubuntu/app/infra"
+  scp -o StrictHostKeyChecking=no "${SCRIPT_DIR}/docker-compose.frontend.yml" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/infra/docker-compose.yml"
+  scp -o StrictHostKeyChecking=no "${SCRIPT_DIR}/Caddyfile.frontend" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/infra/Caddyfile.frontend"
+  scp -o StrictHostKeyChecking=no "${ROOT_DIR}/Dockerfile.frontend" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/Dockerfile.frontend"
+
+  # Build & run on remote instance
+  color_info "Building & starting Frontend Next.js container on ${FRONTEND_IP}..."
+  ssh -o StrictHostKeyChecking=no "ubuntu@${FRONTEND_IP}" "cd /home/ubuntu/app/infra && docker compose up -d --build"
+  color_success "Frontend deployed and running on ${c_name} (IP: ${FRONTEND_IP})."
 }
 
 cmd_backend() {

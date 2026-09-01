@@ -1,0 +1,40 @@
+{
+    # Global options
+    email me@kartikarora.in
+}
+
+# 1. Direct IP HTTP Access (port 80) for testing before DNS
+:80 {
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 20mb
+            roll_keep 10
+            roll_keep_for 240h # 10 days
+        }
+    }
+
+    reverse_proxy frontend:3010 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+}
+
+# 2. Domain Access with Automatic HTTPS (Let's Encrypt SSL)
+v2.lastberth.com, lastberth.com {
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 20mb
+            roll_keep 10
+            roll_keep_for 240h # 10 days
+        }
+    }
+
+    reverse_proxy frontend:3010 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+}

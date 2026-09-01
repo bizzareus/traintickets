@@ -1,0 +1,40 @@
+services:
+  frontend:
+    build:
+      context: ..
+      dockerfile: Dockerfile.frontend
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=https://api-v2.lastberth.com
+    ports:
+      - "3010:3010"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "10"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile.frontend:/etc/caddy/Caddyfile:ro
+      - caddy_frontend_data:/data
+      - caddy_frontend_config:/config
+      - caddy_frontend_logs:/var/log/caddy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "10"
+    depends_on:
+      - frontend
+
+volumes:
+  caddy_frontend_data:
+  caddy_frontend_config:
+  caddy_frontend_logs:
