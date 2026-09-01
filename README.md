@@ -39,6 +39,97 @@ LastBerth brings transparency to Indian Railways train journeys by transforming 
 
 ---
 
+## 🏗️ Infrastructure & Deployment Architecture
+
+LastBerth runs on a high-efficiency, containerized dual-instance architecture deployed on AWS EC2 (`t3.micro` instances in `ap-south-1` Mumbai) fronted by Cloudflare Proxy and Caddy HTTPS reverse proxies.
+
+```mermaid
+flowchart TD
+    subgraph Client["🌐 Clients & Browsers"]
+        User["User / Mobile Browser"]
+    end
+
+    subgraph Cloudflare["🛡️ Cloudflare Edge (DNS & SSL Proxy)"]
+        CF_FE["v2.lastberth.com\n(Proxy: 104.21.51.190)"]
+        CF_BE["api-v2.lastberth.com\n(Proxy: 172.67.184.39)"]
+        CF_PROD["lastberth.com\n(Current Live: 69.46.46.30)"]
+    end
+
+    subgraph AWS_FE["🖥️ AWS Frontend Instance (13.202.107.176 - t3.micro)"]
+        direction TB
+        Caddy_FE["Caddy 2 Proxy\nPorts: 80 / 443\n(Auto Let's Encrypt TLS)"]
+        NextJS["Next.js 16 SSR Container\n(frontend:3010)\nNode 22-Alpine"]
+        Caddy_FE -->|"Proxy pass http://frontend:3010"| NextJS
+    end
+
+    subgraph AWS_BE["🖥️ AWS Backend Instance (13.207.130.42 - t3.micro)"]
+        direction TB
+        Caddy_BE["Caddy 2 Proxy\nPorts: 80 / 443\n(Auto Let's Encrypt TLS)"]
+        NestJS["NestJS API Container\n(backend:3009)\nNode 22-Alpine"]
+        Postgres["PostgreSQL 16 Container\n(db:5432)\nVolume: pg_data"]
+        
+        Caddy_BE -->|"Proxy pass http://backend:3009"| NestJS
+        NestJS -->|"Prisma ORM (db:5432)"| Postgres
+    end
+
+    subgraph External["🔌 External APIs & Services"]
+        IRCTC["IRCTC & Browser-Use API"]
+        WATI["WhatsApp API (WATI)"]
+        Resend["Resend (Transactional Email)"]
+        OpenAI["OpenAI (GPT-4o/5)"]
+    end
+
+    subgraph CICD["🚀 GitHub Actions CI/CD"]
+        GHA[".github/workflows/deploy-aws.yml\nPush to main"]
+    end
+
+    %% Client Traffic
+    User -->|"HTTPS GET /"| CF_FE
+    User -->|"HTTPS API /api/*"| CF_BE
+    User -.->|"Legacy Production"| CF_PROD
+
+    %% Edge to Origin
+    CF_FE -->|"HTTPS :443"| Caddy_FE
+    CF_BE -->|"HTTPS :443"| Caddy_BE
+
+    %% Frontend to Backend Cross-Origin
+    NextJS -.->|"CORS Allowed Origin"| CF_BE
+
+    %% Backend to External
+    NestJS --> IRCTC
+    NestJS --> WATI
+    NestJS --> Resend
+    NestJS --> OpenAI
+
+    %% CI/CD Deployment
+    GHA -->|"SSH Deploy / Docker Build"| AWS_FE
+    GHA -->|"SSH Deploy / Docker Build"| AWS_BE
+
+    classDef aws fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#fff;
+    classDef cf fill:#F38020,stroke:#FAAD3F,stroke-width:2px,color:#fff;
+    classDef container fill:#2496ED,stroke:#1D63ED,stroke-width:2px,color:#fff;
+    classDef db fill:#336791,stroke:#244D6E,stroke-width:2px,color:#fff;
+
+    class AWS_FE,AWS_BE aws;
+    class CF_FE,CF_BE,CF_PROD cf;
+    class NextJS,NestJS,Caddy_FE,Caddy_BE container;
+    class Postgres db;
+```
+
+### 📋 Infrastructure Memory & Topology Reference
+
+| Component | Target Host / IP | Subdomain / Port | Description |
+|---|---|---|---|
+| **Frontend EC2** | `13.202.107.176` (`t3.micro`, `ap-south-1`) | `v2.lastberth.com` (80/443) | Runs Caddy 2 reverse proxy + Next.js 16 SSR container (`frontend:3010`). Localized JSON content & SSR pages. |
+| **Backend EC2** | `13.207.130.42` (`t3.micro`, `ap-south-1`) | `api-v2.lastberth.com` (80/443) | Runs Caddy 2 reverse proxy + NestJS API (`backend:3009`) + PostgreSQL 16 (`db:5432`). |
+| **Old Production** | `69.46.46.30` | `lastberth.com` (Apex) | Current live production instance (preserved during parallel verification). |
+| **Security Groups** | Both AWS EC2s | Port 22 (SSH), 80 (HTTP), 443 (HTTPS) | SSH restricted to authorized IP `143.58.187.80/32`. Ports 80 and 443 open to Cloudflare proxy. |
+| **Database** | Backend EC2 Docker | `postgresql://postgres:postgres@db:5432/railchart` | PostgreSQL 16 container with persistent volume `pg_data`. 36 Prisma migrations applied and seeded. |
+| **CORS Policy** | NestJS (`backend/src/main.ts`) | `https://*.lastberth.com`, `localhost` | Dynamic origin validator with credentials support (`access-control-allow-credentials: true`). |
+| **CI/CD** | GitHub Actions | Push to `main` branch | Workflow `.github/workflows/deploy-aws.yml` syncs code and rebuilds containers automatically. |
+
+---
+
 ## 🛠️ Tech Stack & Monorepo Architecture
 
 This monorepo consists of a Next.js frontend and a NestJS backend powered by PostgreSQL & Prisma ORM:
@@ -54,7 +145,13 @@ traintickets/
 ├── backend/              # NestJS backend API & background workers (Port 3009)
 │   ├── prisma/           # PostgreSQL schema & database migrations
 │   └── src/              # Ingestion engines, monitoring crons & webhooks
-└── public/               # Static assets & GitHub Pages micro-utilities
+├── infra/                # AWS EC2 Docker Compose, Caddyfiles & Terraform
+│   ├── Caddyfile         # Backend Caddy reverse proxy config
+│   ├── Caddyfile.frontend# Frontend Caddy reverse proxy config
+│   ├── docker-compose.yml# Backend + Postgres + Caddy Docker Compose
+│   ├── docker-compose.frontend.yml # Frontend + Caddy Docker Compose
+│   └── deploy.sh         # Automated zero-downtime deployment script
+└── public/               # Static assets & icons
 ```
 
 ---

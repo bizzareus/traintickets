@@ -6,6 +6,16 @@
 
 Two-service monorepo: Next.js frontend (root `/`, port 3010) + NestJS backend (`backend/`, port 3009). Both use **npm**. Database is PostgreSQL via Prisma ORM (`backend/prisma/schema.prisma`).
 
+### AWS Dual-Instance Infrastructure Reference
+
+| Service | Instance IP | Domain / Ports | Topology |
+|---|---|---|---|
+| **Frontend** | `13.202.107.176` (`t3.micro`) | `v2.lastberth.com` (80/443) | Caddy 2 (Let's Encrypt TLS) ➔ Next.js 16 SSR container (`frontend:3010`) |
+| **Backend** | `13.207.130.42` (`t3.micro`) | `api-v2.lastberth.com` (80/443) | Caddy 2 (Let's Encrypt TLS) ➔ NestJS container (`backend:3009`) ➔ PostgreSQL 16 container (`db:5432`) |
+| **Old Prod** | `69.46.46.30` | `lastberth.com` (Apex) | Existing legacy production instance |
+| **SSH Whitelist** | Authorized IP | Port 22 | Restricted to `143.58.187.80/32` |
+| **CORS Policy** | Backend API | `https://*.lastberth.com` | Handled dynamically in `backend/src/main.ts` (`isAllowedOrigin`) |
+
 ### Local PostgreSQL requirement
 
 A local PostgreSQL instance is required. The cloud VM has PostgreSQL 16 installed. Start it with `sudo pg_ctlcluster 16 main start`. The database name is `railchart` with user `postgres` / password `postgres`.
