@@ -1661,33 +1661,39 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                               })
                             : "https://www.irctc.co.in/eticketing/login";
                         const chipShell = cn(
-                          "min-w-[100px] shrink-0 rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-2 text-xs",
+                          "flex min-w-[100px] shrink-0 flex-col justify-between rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-2 text-xs",
                         );
 
                         const chipBody = (
                           <>
                             <div className="font-bold text-gray-900">{cls}</div>
-                            {gn && (
-                              <div className="mt-1 text-gray-700">
-                                <div className="text-[10px] uppercase text-gray-500">
-                                  General
-                                </div>
-                                {bookable && (
-                                  <div
+                            <div className="mt-1 flex flex-col text-gray-700">
+                              <div className="text-[10px] uppercase text-gray-500">
+                                {gn ? "General" : "—"}
+                              </div>
+                              <div className="min-h-[16px] leading-tight">
+                                {bookable && gn ? (
+                                  <span
                                     className={cn(
                                       statusCls ?? "font-medium text-gray-900",
                                     )}
                                   >
                                     {line}
-                                  </div>
-                                )}
-                                {gn.fare != null && (
-                                  <div className="font-semibold text-gray-900">
-                                    ₹{gn.fare}
-                                  </div>
+                                  </span>
+                                ) : (
+                                  <span className="invisible select-none">—</span>
                                 )}
                               </div>
-                            )}
+                              {gn?.fare != null ? (
+                                <div className="font-semibold text-gray-900">
+                                  ₹{gn.fare}
+                                </div>
+                              ) : (
+                                <div className="invisible select-none font-semibold text-gray-900">
+                                  —
+                                </div>
+                              )}
+                            </div>
                           </>
                         );
 
@@ -1715,7 +1721,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                                 }
                                 onClick={() => findAlternatesForRoute(t, cls)}
                               >
-                                {gn ? "Tickets Available" : "Check Tickets"}
+                                Find Tickets
                               </button>
                             )}
                           </div>
