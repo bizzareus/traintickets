@@ -85,6 +85,10 @@ DOCKER_CFG
               systemctl enable docker
               systemctl restart docker
               usermod -aG docker ubuntu
+
+              # Setup application directories
+              mkdir -p /home/ubuntu/app/infra
+              chown -R ubuntu:ubuntu /home/ubuntu/app
               EOF
 
   tags = {

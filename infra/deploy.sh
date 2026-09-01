@@ -51,9 +51,13 @@ cmd_frontend() {
   fi
 
   color_info "Target Frontend VM IP: ${FRONTEND_IP}"
-  color_info "Copying docker-compose & Caddyfile to ${FRONTEND_IP}..."
-  
-  # Sync frontend source code
+  color_info "Configuring Docker & Caddy on ${FRONTEND_IP}..."
+  ssh -o StrictHostKeyChecking=no "ubuntu@${FRONTEND_IP}" "mkdir -p /home/ubuntu/app/infra"
+  scp -o StrictHostKeyChecking=no "${SCRIPT_DIR}/docker-compose.frontend.yml" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/infra/docker-compose.yml"
+  scp -o StrictHostKeyChecking=no "${SCRIPT_DIR}/Caddyfile.frontend" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/infra/Caddyfile.frontend"
+  scp -o StrictHostKeyChecking=no "${ROOT_DIR}/Dockerfile.frontend" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/Dockerfile.frontend"
+
+  # Sync frontend source code (excluding local .env files)
   color_info "Syncing frontend source code to ${FRONTEND_IP}..."
   rsync -avz \
     --exclude 'node_modules' \
@@ -64,13 +68,8 @@ cmd_frontend() {
     --exclude '.agents' \
     --exclude '.gemini' \
     --exclude 'tmp' \
+    --exclude '.env*' \
     "${ROOT_DIR}/" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/"
-
-  color_info "Configuring Docker & Caddy on ${FRONTEND_IP}..."
-  ssh -o StrictHostKeyChecking=no "ubuntu@${FRONTEND_IP}" "mkdir -p /home/ubuntu/app/infra"
-  scp -o StrictHostKeyChecking=no "${SCRIPT_DIR}/docker-compose.frontend.yml" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/infra/docker-compose.yml"
-  scp -o StrictHostKeyChecking=no "${SCRIPT_DIR}/Caddyfile.frontend" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/infra/Caddyfile.frontend"
-  scp -o StrictHostKeyChecking=no "${ROOT_DIR}/Dockerfile.frontend" "ubuntu@${FRONTEND_IP}:/home/ubuntu/app/Dockerfile.frontend"
 
   # Build & run on remote instance
   color_info "Building & starting Frontend Next.js container on ${FRONTEND_IP}..."
@@ -94,12 +93,15 @@ cmd_backend() {
   color_info "Target VM IP: ${BACKEND_IP}"
   color_info "Copying docker-compose & Caddyfile to ${BACKEND_IP}..."
   
-  ssh -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend"
+  ssh -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend && touch /home/ubuntu/app/backend/.env"
   scp -o StrictHostKeyChecking=no "${SCRIPT_DIR}/docker-compose.yml" "${SCRIPT_DIR}/Caddyfile" "ubuntu@${BACKEND_IP}:/home/ubuntu/app/infra/"
-  scp -o StrictHostKeyChecking=no "${ROOT_DIR}/backend/.env" "ubuntu@${BACKEND_IP}:/home/ubuntu/app/backend/.env"
   
-  # Sync backend source
-  rsync -avz --exclude 'node_modules' --exclude 'dist' "${ROOT_DIR}/backend/" "ubuntu@${BACKEND_IP}:/home/ubuntu/app/backend/"
+  # Sync backend source (excluding local .env files)
+  rsync -avz \
+    --exclude 'node_modules' \
+    --exclude 'dist' \
+    --exclude '.env*' \
+    "${ROOT_DIR}/backend/" "ubuntu@${BACKEND_IP}:/home/ubuntu/app/backend/"
 
   # Build & run
   ssh -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "cd /home/ubuntu/app/infra && docker compose up -d --build"
@@ -110,7 +112,7 @@ cmd_env() {
   check_cloud
   local c_name
   c_name="$(cloud_upper)"
-  color_info "Updating .env on ${c_name} VM..."
+  color_info "Connecting to edit remote .env on ${c_name} VM..."
   cd "${SCRIPT_DIR}/terraform/${CLOUD}"
   BACKEND_IP="$(terraform output -raw backend_public_ip 2>/dev/null || echo "")"
 
@@ -119,9 +121,9 @@ cmd_env() {
     exit 1
   fi
 
-  scp -o StrictHostKeyChecking=no "${ROOT_DIR}/backend/.env" "ubuntu@${BACKEND_IP}:/home/ubuntu/app/backend/.env"
-  ssh -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "cd /home/ubuntu/app/infra && docker compose restart backend"
-  color_success ".env updated and backend restarted on ${c_name} (IP: ${BACKEND_IP})."
+  color_info "Opening /home/ubuntu/app/backend/.env on ${BACKEND_IP}..."
+  ssh -t -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "nano /home/ubuntu/app/backend/.env && cd /home/ubuntu/app/infra && docker compose restart backend"
+  color_success "Remote .env updated and backend restarted on ${c_name} (IP: ${BACKEND_IP})."
 }
 
 cmd_all() {
@@ -151,9 +153,9 @@ case "$ACTION" in
     echo ""
     echo "Commands:"
     echo "  setup    [aws|gcp] : Provision cloud infrastructure via Terraform"
-    echo "  frontend [aws|gcp] : Build Next.js & upload to S3/GCS + CDN invalidate"
-    echo "  backend  [aws|gcp] : Build & run backend container on the cloud VM"
-    echo "  env      [aws|gcp] : Push local backend/.env to VM & restart container (instant)"
+    echo "  frontend [aws|gcp] : Build & run frontend container on the cloud VM (preserves remote env)"
+    echo "  backend  [aws|gcp] : Build & run backend container on the cloud VM (preserves remote env)"
+    echo "  env      [aws|gcp] : Edit remote /home/ubuntu/app/backend/.env via SSH & restart backend"
     echo "  all      [aws|gcp] : Provision and deploy everything"
     exit 1
     ;;

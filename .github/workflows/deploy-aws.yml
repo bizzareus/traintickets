@@ -45,6 +45,7 @@ jobs:
             --exclude '.agents' \
             --exclude '.gemini' \
             --exclude 'tmp' \
+            --exclude '.env*' \
             ./ ubuntu@$TARGET_HOST:/home/ubuntu/app/
 
           ssh ubuntu@$TARGET_HOST "cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d --build"
@@ -74,12 +75,13 @@ jobs:
           TARGET_HOST: ${{ secrets.EC2_HOST || '13.207.130.42' }}
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
         run: |
-          ssh ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend"
+          ssh ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend && touch /home/ubuntu/app/backend/.env"
           scp infra/docker-compose.yml infra/Caddyfile ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/
           
           rsync -avz --delete \
             --exclude 'node_modules' \
             --exclude 'dist' \
+            --exclude '.env*' \
             ./backend/ ubuntu@$TARGET_HOST:/home/ubuntu/app/backend/
 
           ssh ubuntu@$TARGET_HOST "cd /home/ubuntu/app/infra && docker compose up -d --build"

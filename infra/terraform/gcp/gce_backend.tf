@@ -54,5 +54,11 @@ resource "google_compute_instance" "backend" {
     apt-get install -y ca-certificates curl gnupg git docker.io docker-compose-v2
     systemctl enable docker
     systemctl start docker
+    usermod -aG docker ubuntu
+
+    # Setup application directories and placeholder .env
+    mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend
+    touch /home/ubuntu/app/backend/.env
+    chown -R ubuntu:ubuntu /home/ubuntu/app
   EOF
 }

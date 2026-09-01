@@ -108,6 +108,11 @@ DOCKER_CFG
               systemctl enable docker
               systemctl restart docker
               usermod -aG docker ubuntu
+
+              # Setup application directories and placeholder .env
+              mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend
+              touch /home/ubuntu/app/backend/.env
+              chown -R ubuntu:ubuntu /home/ubuntu/app
               EOF
 
   tags = {
