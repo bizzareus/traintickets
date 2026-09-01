@@ -44,27 +44,29 @@ cmd_frontend() {
   color_info "Building Next.js frontend static export..."
   cd "${ROOT_DIR}"
   
-  API_URL="https://api.lastberth.com"
-  NEXT_EXPORT=true NEXT_PUBLIC_API_URL="${API_URL}" npm run build:web
+  API_URL="https://api-v2.lastberth.com"
+  NEXT_PUBLIC_API_URL="${API_URL}" npm run build:web
 
   if [[ "$CLOUD" == "aws" ]]; then
-    color_info "Syncing static files to AWS S3 & invalidating CloudFront..."
+    color_info "Syncing static assets to AWS S3 & invalidating CloudFront..."
     cd "${SCRIPT_DIR}/terraform/aws"
     BUCKET_NAME="$(terraform output -raw s3_bucket_name 2>/dev/null || echo "lastberth-frontend-static")"
     DIST_ID="$(terraform output -raw cloudfront_distribution_id 2>/dev/null || echo "")"
 
     PROFILE="${AWS_PROFILE:-lastberth}"
-    aws --profile "$PROFILE" s3 sync "${ROOT_DIR}/out" "s3://${BUCKET_NAME}" --delete
+    aws --profile "$PROFILE" s3 sync "${ROOT_DIR}/.next/static" "s3://${BUCKET_NAME}/_next/static" --delete --cache-control "public, max-age=31536000, immutable"
+    aws --profile "$PROFILE" s3 sync "${ROOT_DIR}/public" "s3://${BUCKET_NAME}/" --delete
 
     if [[ -n "$DIST_ID" ]]; then
       color_info "Invalidating CloudFront distribution ${DIST_ID}..."
       aws --profile "$PROFILE" cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "/*"
     fi
   elif [[ "$CLOUD" == "gcp" ]]; then
-    color_info "Syncing static files to Google Cloud Storage..."
+    color_info "Syncing static assets to Google Cloud Storage..."
     cd "${SCRIPT_DIR}/terraform/gcp"
     BUCKET_NAME="$(terraform output -raw gcs_bucket_name 2>/dev/null || echo "lastberth-frontend-static")"
-    gcloud storage rsync "${ROOT_DIR}/out" "gs://${BUCKET_NAME}" --recursive --delete-unmatched-destination-objects
+    gcloud storage rsync "${ROOT_DIR}/.next/static" "gs://${BUCKET_NAME}/_next/static" --recursive --delete-unmatched-destination-objects
+    gcloud storage rsync "${ROOT_DIR}/public" "gs://${BUCKET_NAME}" --recursive --delete-unmatched-destination-objects
   fi
 
   color_success "Frontend deployed successfully to ${c_name}."
