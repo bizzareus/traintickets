@@ -12,6 +12,8 @@ export default function configFactory(phase) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: process.env.NEXT_EXPORT === "true" ? "export" : undefined,
+  images: process.env.NEXT_EXPORT === "true" ? { unoptimized: true } : undefined,
   compress: true,
   turbopack: {
     root: __dirname,

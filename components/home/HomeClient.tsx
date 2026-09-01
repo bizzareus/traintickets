@@ -340,7 +340,7 @@ function StationFieldSimple(props: {
           }
           aria-label={label}
           type="text"
-          className="block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4"
+          className="block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4 touch-manipulation"
           placeholder={placeholder}
           value={displayText}
           autoComplete="off"
@@ -398,7 +398,7 @@ function StationFieldSimple(props: {
             <li key={`${s.stationCode}-${s.stationName}`} role="option">
               <button
                 type="button"
-                className="block w-full px-4 py-2.5 text-left text-sm text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                className="block w-full px-4 py-2.5 text-left text-sm text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none touch-manipulation"
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => {
                   onSelect(s);
@@ -1025,7 +1025,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               type="button"
               id="tabSearchRoute"
               onClick={() => handleTabSwitch("route")}
-              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 ${
+              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
                 searchType === "route"
                   ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
                   : "text-slate-600 hover:text-slate-900"
@@ -1037,7 +1037,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               type="button"
               id="tabSearchPnr"
               onClick={() => handleTabSwitch("pnr")}
-              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 ${
+              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
                 searchType === "pnr"
                   ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
                   : "text-slate-600 hover:text-slate-900"
@@ -1049,7 +1049,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               type="button"
               id="tabSeatStatus"
               onClick={() => handleTabSwitch("seat")}
-              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 ${
+              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
                 searchType === "seat"
                   ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
                   : "text-slate-600 hover:text-slate-900"
@@ -1169,7 +1169,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                     id="acTicketsOnly"
                     checked={acOnly}
                     onChange={(e) => setAcOnly(e.target.checked)}
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
+                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600 touch-manipulation"
                   />
                   <label
                     htmlFor="acTicketsOnly"
@@ -1183,7 +1183,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 <button
                   type="submit"
                   disabled={searchLoading}
-                  className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base"
+                  className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base touch-manipulation"
                 >
                   {searchLoading ? (
                     <span className="inline-flex items-center gap-2">
@@ -1709,7 +1709,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                             ) : (
                               <button
                                 type="button"
-                                className="rounded-md bg-blue-600 px-2 py-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                                className="rounded-md bg-blue-600 px-2 py-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 touch-manipulation"
                                 disabled={
                                   altLoading && altForTrain === t.trainNumber
                                 }
@@ -1731,7 +1731,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                         onClick={() => findAlternatesForRoute(t)}
                         disabled={altLoading && altForTrain === t.trainNumber}
                         className={cn(
-                          "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25",
+                          "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25 touch-manipulation",
                           altLoading &&
                             altForTrain === t.trainNumber &&
                             "cursor-wait opacity-60",

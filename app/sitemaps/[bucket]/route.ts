@@ -10,7 +10,7 @@ import { buildSitemapBucket, serializeUrlset } from "@/lib/seo/sitemap-data";
 // a custom /sitemap/[bucket] route collides with it. Serving the whole sitemap
 // from custom handlers (index + children) sidesteps that entirely.
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export function generateStaticParams(): { bucket: string }[] {
   return SITEMAP_BUCKETS.map((id) => ({ bucket: `${id}.xml` }));

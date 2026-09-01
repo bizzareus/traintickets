@@ -15,7 +15,7 @@ import { getBaseUrl } from "@/lib/site-url";
 
 const baseUrl = getBaseUrl();
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export async function GET(): Promise<Response> {
   const lastmod = new Date().toISOString();

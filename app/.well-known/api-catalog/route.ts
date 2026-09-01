@@ -1,11 +1,11 @@
 import { buildApiCatalog, RFC9727_MEDIA_TYPE } from "@/lib/api-catalog";
 import { getBaseUrl } from "@/lib/site-url";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
-function getOrigin(request: Request): string {
-  const host = request.headers.get("x-forwarded-host") || request.headers.get("host");
-  const proto = request.headers.get("x-forwarded-proto") || "https";
+function getOrigin(request?: Request): string {
+  const host = request?.headers?.get("x-forwarded-host") || request?.headers?.get("host");
+  const proto = request?.headers?.get("x-forwarded-proto") || "https";
   if (host) {
     return `${proto}://${host}`;
   }

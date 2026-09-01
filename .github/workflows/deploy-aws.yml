@@ -1,0 +1,78 @@
+name: Deploy to AWS (Parallel Staging)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-frontend-aws:
+    name: Deploy Frontend (S3 + CloudFront)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Next.js Static Export
+        env:
+          NEXT_EXPORT: "true"
+          NEXT_PUBLIC_API_URL: ${{ secrets.AWS_API_URL || 'https://api.lastberth.com' }}
+        run: npm run build:web
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - name: Sync Static Files to S3
+        run: |
+          aws s3 sync out/ s3://lastberth-frontend-static --delete
+
+      - name: Invalidate CloudFront Cache (if configured)
+        if: env.CLOUDFRONT_DIST_ID != ''
+        env:
+          CLOUDFRONT_DIST_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+        run: |
+          aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DIST_ID" --paths "/*"
+
+  deploy-backend-aws:
+    name: Deploy Backend (AWS EC2)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH Keys
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          TARGET_HOST: ${{ secrets.EC2_HOST || '13.207.130.42' }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$TARGET_HOST" >> ~/.ssh/known_hosts
+
+      - name: Sync Backend Files to EC2
+        env:
+          TARGET_HOST: ${{ secrets.EC2_HOST || '13.207.130.42' }}
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend"
+          scp -i ~/.ssh/id_ed25519 infra/docker-compose.yml infra/Caddyfile ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/
+          rsync -avz -e "ssh -i ~/.ssh/id_ed25519" --exclude 'node_modules' --exclude 'dist' backend/ ubuntu@$TARGET_HOST:/home/ubuntu/app/backend/
+
+      - name: Build and Start Containers
+        env:
+          TARGET_HOST: ${{ secrets.EC2_HOST || '13.207.130.42' }}
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ubuntu@$TARGET_HOST "cd /home/ubuntu/app/infra && docker compose up -d --build"

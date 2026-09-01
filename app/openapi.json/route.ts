@@ -1,18 +1,18 @@
 import { buildOpenApiSpec } from "@/lib/openapi-spec";
 import { getBaseUrl } from "@/lib/site-url";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
-function getOrigin(request: Request): string {
-  const host = request.headers.get("x-forwarded-host") || request.headers.get("host");
-  const proto = request.headers.get("x-forwarded-proto") || "https";
+function getOrigin(request?: Request): string {
+  const host = request?.headers?.get("x-forwarded-host") || request?.headers?.get("host");
+  const proto = request?.headers?.get("x-forwarded-proto") || "https";
   if (host) {
     return `${proto}://${host}`;
   }
   return getBaseUrl();
 }
 
-export async function GET(request: Request) {
+export async function GET(request?: Request) {
   const origin = getOrigin(request);
   const spec = buildOpenApiSpec(origin);
 

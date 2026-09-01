@@ -1,5 +1,6 @@
 import { listBlogPosts } from "@/lib/blog";
 
+export const dynamic = "force-static";
 const siteUrl =
   process.env.NEXT_PUBLIC_APP_URL ||
   (process.env.VERCEL_URL

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getBaseUrl } from "@/lib/site-url";
 
+export const dynamic = "force-static";
 const baseUrl = getBaseUrl();
 
 // Non-page areas kept out of every crawler: the private user dashboard, the

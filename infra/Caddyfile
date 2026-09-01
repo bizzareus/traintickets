@@ -1,0 +1,21 @@
+{
+    # Global options
+    email me@kartikarora.in
+}
+
+{$API_DOMAIN:api.lastberth.com} {
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 20mb
+            roll_keep 10
+            roll_keep_for 240h # 10 days
+        }
+    }
+
+    reverse_proxy backend:3009 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+}
