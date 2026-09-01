@@ -60,7 +60,7 @@ export class PrismaService
     // Remote Postgres (Supabase/prod) requires SSL; a plain local dev Postgres
     // doesn't speak it and errors with "server does not support SSL connections".
     // Enable SSL for everything except localhost (override with DATABASE_SSL).
-    const isLocalDb = /@(localhost|127\.0\.0\.1|\[::1\])[:/]/.test(
+    const isLocalDb = /@(localhost|127\.0\.0\.1|\[::1\]|db|postgres)[:/]/.test(
       connectionString,
     );
     const useSsl =

@@ -22,6 +22,7 @@ RUN apk add --no-cache openssl libc6-compat
 
 COPY package*.json ./
 COPY prisma ./prisma/
+COPY prisma.config.ts ./
 RUN npm ci --omit=dev && npx prisma generate
 
 COPY --from=builder /app/dist ./dist

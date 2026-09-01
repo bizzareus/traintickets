@@ -21,7 +21,7 @@
     }
 }
 
-# 2. Domain Access with Automatic HTTPS (Let's Encrypt SSL) + Origin Restriction
+# 2. Domain Access with Automatic HTTPS (Let's Encrypt SSL)
 api-v2.lastberth.com {
     log {
         output file /var/log/caddy/access.log {
@@ -30,16 +30,6 @@ api-v2.lastberth.com {
             roll_keep_for 240h # 10 days
         }
     }
-
-    # Block external cross-origin requests that do not come from lastberth.com or localhost
-    @blockedOrigin {
-        header Origin *
-        not header Origin `https://lastberth.com`
-        not header Origin `https://*.lastberth.com`
-        not header Origin `http://localhost*`
-        not header Origin `http://127.0.0.1*`
-    }
-    respond @blockedOrigin "403 Forbidden: Origin not allowed" 403
 
     reverse_proxy backend:3009 {
         header_up Host {host}
