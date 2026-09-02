@@ -1,11 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BellRing } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics/track";
+import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 
-const CLASSES = ["SL", "3A", "2A", "1A", "CC", "EC", "2S"] as const;
+const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
+
+const CLASS_LABELS: Record<string, string> = {
+  ANY: "ANY (Any Available Class)",
+  "1A": "1A (AC First Class)",
+  "2A": "2A (AC 2 Tier)",
+  "3A": "3A (AC 3 Tier)",
+  "3E": "3E (AC 3 Economy)",
+  SL: "SL (Sleeper)",
+  CC: "CC (AC Chair Car)",
+  EC: "EC (Exec Chair Car)",
+  EA: "EA (Exec Anubhuti)",
+  "2S": "2S (Second Sitting)",
+  FC: "FC (First Class)",
+};
 
 type StationOption = { stationCode: string; stationName: string };
 
@@ -30,16 +45,18 @@ function todayYmd(): string {
 export default function ChartTimeAlertCTA({
   trainNumber,
   trainName,
-  destinationCode,
+  destinationCode: initialDestinationCode,
   stations,
+  availableClasses: initialAvailableClasses,
   initialJourneyDate,
   initialStationCode,
 }: {
   trainNumber: string;
   trainName: string;
-  destinationCode: string;
-  /** Boarding stations the user can be alerted for (destination excluded). */
+  destinationCode?: string;
+  /** All scheduled stations in order on the train route. */
   stations: StationOption[];
+  availableClasses?: string[];
   initialJourneyDate?: string | null;
   initialStationCode?: string;
 }) {
@@ -47,7 +64,87 @@ export default function ChartTimeAlertCTA({
   const [stationCode, setStationCode] = useState(
     initialStationCode || stations[0]?.stationCode || "",
   );
-  const [classCode, setClassCode] = useState<string>("SL");
+
+  // Downstream destination options based on the chosen boarding station
+  const boardingIndex = useMemo(() => {
+    const idx = stations.findIndex((s) => s.stationCode === stationCode);
+    return idx >= 0 ? idx : 0;
+  }, [stations, stationCode]);
+
+  const destinationOptions = useMemo(() => {
+    const nextStns = stations.slice(boardingIndex + 1);
+    return nextStns.length > 0 ? nextStns : stations.slice(1);
+  }, [stations, boardingIndex]);
+
+  const [toStationCode, setToStationCode] = useState(
+    initialDestinationCode ||
+      stations[stations.length - 1]?.stationCode ||
+      destinationOptions[destinationOptions.length - 1]?.stationCode ||
+      "",
+  );
+
+  // Ensure destination is always valid downstream
+  useEffect(() => {
+    const isValid = destinationOptions.some((s) => s.stationCode === toStationCode);
+    if (!isValid && destinationOptions.length > 0) {
+      setToStationCode(
+        destinationOptions[destinationOptions.length - 1]?.stationCode ||
+          destinationOptions[0]?.stationCode ||
+          "",
+      );
+    }
+  }, [destinationOptions, toStationCode]);
+
+  const [classesList, setClassesList] = useState<string[]>(
+    initialAvailableClasses && initialAvailableClasses.length > 0
+      ? initialAvailableClasses
+      : [],
+  );
+
+  // Fetch train-specific classes if not provided at build time
+  useEffect(() => {
+    if (classesList.length > 0) return;
+    let active = true;
+    apiClient
+      .get<{ availableClasses?: string[] } | string[]>(
+        `/api/trains/${encodeURIComponent(trainNumber)}/classes`,
+      )
+      .then((res) => {
+        if (!active) return;
+        const raw = Array.isArray(res.data)
+          ? res.data
+          : Array.isArray(res.data?.availableClasses)
+            ? res.data.availableClasses
+            : [];
+        const normalized = [
+          ...new Set(raw.map((c) => String(c).trim().toUpperCase()).filter(Boolean)),
+        ];
+        if (normalized.length > 0) {
+          setClassesList(normalized);
+        }
+      })
+      .catch(() => {
+        // Degrades gracefully to fallback classes
+      });
+    return () => {
+      active = false;
+    };
+  }, [trainNumber, classesList.length]);
+
+  const activeClasses = useMemo(() => {
+    const list = classesList.length > 0 ? classesList : FALLBACK_CLASSES;
+    const withoutAny = list.filter((c) => c !== "ANY");
+    return ["ANY", ...withoutAny];
+  }, [classesList]);
+
+  const [classCode, setClassCode] = useState<string>("ANY");
+
+  useEffect(() => {
+    if (activeClasses.length > 0 && !activeClasses.includes(classCode)) {
+      setClassCode("ANY");
+    }
+  }, [activeClasses, classCode]);
+
   const [journeyDate, setJourneyDate] = useState(initialJourneyDate || "");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
@@ -55,13 +152,16 @@ export default function ChartTimeAlertCTA({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  // Default the journey date to the next day (tomorrow) unless the page already
-  // supplied one. Done after mount to avoid an SSR/client "today" mismatch.
+  // Default journey date to next day (tomorrow) unless provided
   useEffect(() => {
     if (!initialJourneyDate) {
       setJourneyDate(ymdPlusDays(1));
     }
   }, [initialJourneyDate]);
+
+  const boardingOptions = useMemo(() => {
+    return stations.length > 1 ? stations.slice(0, -1) : stations;
+  }, [stations]);
 
   const subscribe = async () => {
     const em = email.trim();
@@ -70,8 +170,26 @@ export default function ChartTimeAlertCTA({
       setError("Please enter an email or mobile number so we can reach you.");
       return;
     }
+    if (em && !isValidEmail(em)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    if (mob && !isValidIndianMobile(mob)) {
+      setError(
+        "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).",
+      );
+      return;
+    }
     if (!journeyDate.trim()) {
       setError("Please pick a journey date.");
+      return;
+    }
+    if (!stationCode) {
+      setError("Please select a boarding station.");
+      return;
+    }
+    if (!toStationCode) {
+      setError("Please select a destination station.");
       return;
     }
     setLoading(true);
@@ -81,11 +199,11 @@ export default function ChartTimeAlertCTA({
       await apiClient.post("/api/availability/journey", {
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,
-        fromStationCode: stationCode,
-        toStationCode: destinationCode,
+        fromStationCode: stationCode.trim().toUpperCase(),
+        toStationCode: toStationCode.trim().toUpperCase(),
         journeyDate: journeyDate.trim().slice(0, 10),
         classCode: classCode.trim().toUpperCase(),
-        stationCodesToMonitor: [stationCode],
+        stationCodesToMonitor: [stationCode.trim().toUpperCase()],
         email: em || undefined,
         mobile: mob || undefined,
       });
@@ -95,8 +213,8 @@ export default function ChartTimeAlertCTA({
         source: "chart_times_cta",
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,
-        fromCode: stationCode,
-        toCode: destinationCode,
+        fromCode: stationCode.trim().toUpperCase(),
+        toCode: toStationCode.trim().toUpperCase(),
         journeyDate: journeyDate.trim().slice(0, 10),
         classCode: classCode.trim().toUpperCase(),
         email: em || undefined,
@@ -117,8 +235,8 @@ export default function ChartTimeAlertCTA({
         source: "chart_times_cta",
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,
-        fromCode: stationCode,
-        toCode: destinationCode,
+        fromCode: stationCode.trim().toUpperCase(),
+        toCode: toStationCode.trim().toUpperCase(),
         journeyDate: journeyDate.trim().slice(0, 10),
         classCode: classCode.trim().toUpperCase(),
         email: em || undefined,
@@ -135,8 +253,9 @@ export default function ChartTimeAlertCTA({
       <div className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
         <p className="font-semibold text-emerald-900">
           Alert set! We&apos;ll notify you the moment the chart for {trainName} (
-          {trainNumber}) is prepared at {stationCode} on{" "}
-          {journeyDate.slice(0, 10)} — so you can check live tickets.
+          {trainNumber}) is prepared at {stationCode} for travel to {toStationCode}{" "}
+          {classCode === "ANY" ? "in any available class" : `in ${classCode}`} on{" "}
+          {journeyDate.slice(0, 10)} and send you available tickets.
         </p>
       </div>
     );
@@ -152,7 +271,7 @@ export default function ChartTimeAlertCTA({
           </h2>
           <p className="mt-1 text-sm text-slate-600">
             We&apos;ll text or email you the moment IRCTC prepares the chart for
-            this train, so you can grab live current-availability tickets.
+            this train, and send you available tickets between your stations.
           </p>
         </div>
         <button
@@ -161,7 +280,12 @@ export default function ChartTimeAlertCTA({
             setExpanded(true);
             trackAnalyticsEvent({
               name: "chart_alert_opened",
-              properties: { source: "page", train_number: trainNumber, station_code: stationCode },
+              properties: {
+                source: "page",
+                train_number: trainNumber,
+                station_code: stationCode,
+                to_code: toStationCode,
+              },
             });
           }}
           className="shrink-0 rounded-md bg-blue-600 px-4 py-2.5 font-medium text-white transition hover:bg-blue-700"
@@ -180,10 +304,10 @@ export default function ChartTimeAlertCTA({
       </h2>
       <p className="mt-1 text-sm text-slate-600">
         We&apos;ll notify you on the contact below when the chart is prepared at
-        your boarding station, so you can check live tickets.
+        your boarding station, and send you available tickets between the stations.
       </p>
 
-      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <label className="text-sm">
           <span className="mb-1 block font-medium text-slate-700">Boarding station</span>
           <select
@@ -191,13 +315,29 @@ export default function ChartTimeAlertCTA({
             onChange={(e) => setStationCode(e.target.value)}
             className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
           >
-            {stations.map((s) => (
+            {boardingOptions.map((s) => (
               <option key={s.stationCode} value={s.stationCode}>
                 {s.stationName} ({s.stationCode})
               </option>
             ))}
           </select>
         </label>
+
+        <label className="text-sm">
+          <span className="mb-1 block font-medium text-slate-700">Destination station</span>
+          <select
+            value={toStationCode}
+            onChange={(e) => setToStationCode(e.target.value)}
+            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
+          >
+            {destinationOptions.map((s) => (
+              <option key={s.stationCode} value={s.stationCode}>
+                {s.stationName} ({s.stationCode})
+              </option>
+            ))}
+          </select>
+        </label>
+
         <label className="text-sm">
           <span className="mb-1 block font-medium text-slate-700">Class</span>
           <select
@@ -205,13 +345,14 @@ export default function ChartTimeAlertCTA({
             onChange={(e) => setClassCode(e.target.value)}
             className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
           >
-            {CLASSES.map((c) => (
+            {activeClasses.map((c) => (
               <option key={c} value={c}>
-                {c}
+                {CLASS_LABELS[c] || `${c} Class`}
               </option>
             ))}
           </select>
         </label>
+
         <label className="text-sm">
           <span className="mb-1 block font-medium text-slate-700">Journey date</span>
           <input

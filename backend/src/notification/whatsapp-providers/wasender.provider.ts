@@ -83,8 +83,23 @@ export class WasenderProvider implements WhatsAppProvider {
           ? err.stack || err.message
           : String(err);
 
-      this.logger.error(`WASender WhatsApp send failed for ${to}: ${errorMsg}`);
-      await this.sendErrorEmail(to, errorMsg, payload);
+      const isUnregisteredJid =
+        axios.isAxiosError(err) &&
+        typeof err.response?.data === 'object' &&
+        JSON.stringify(err.response?.data).includes(
+          'does not exist on WhatsApp',
+        );
+
+      if (isUnregisteredJid) {
+        this.logger.warn(
+          `WASender WhatsApp recipient ${to} does not exist on WhatsApp: ${errorMsg}`,
+        );
+      } else {
+        this.logger.error(
+          `WASender WhatsApp send failed for ${to}: ${errorMsg}`,
+        );
+        await this.sendErrorEmail(to, errorMsg, payload);
+      }
       return false;
     }
   }

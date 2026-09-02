@@ -33,6 +33,11 @@ export class NotificationDeduplicationService {
         : String(journeyDate).slice(0, 10);
     const journeyDateObj = new Date(`${journeyDateStr}T00:00:00.000Z`);
 
+    const notificationTypesToCheck =
+      notificationType === 'seats_found'
+        ? ['seats_found']
+        : ['no_seats', 'alt_trains', 'seats_found'];
+
     try {
       const existing = await this.prisma.sentNotificationLog.findFirst({
         where: {
@@ -40,14 +45,14 @@ export class NotificationDeduplicationService {
           channel,
           trainNumber: trainNumber.trim(),
           journeyDate: journeyDateObj,
-          notificationType,
+          notificationType: { in: notificationTypesToCheck },
           sentAt: { gte: sinceDate },
         },
       });
 
       if (existing) {
         this.logger.warn(
-          `[Deduplication] Suppressing ${channel} ${notificationType} notification to ${normalizedRecipient} for train ${trainNumber} on ${journeyDateStr} (already sent at ${existing.sentAt.toISOString()})`,
+          `[Deduplication] Suppressing ${channel} ${notificationType} notification to ${normalizedRecipient} for train ${trainNumber} on ${journeyDateStr} (already sent ${existing.notificationType} at ${existing.sentAt.toISOString()})`,
         );
         return false;
       }

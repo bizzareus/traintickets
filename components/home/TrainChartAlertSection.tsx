@@ -8,6 +8,7 @@ import {
   trackAnalyticsEvent,
 } from "@/lib/analytics/track";
 import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricingExperiment";
+import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 
 const DEFAULT_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -147,6 +148,18 @@ export function TrainChartAlertSection({
     if (!em && !mob) {
       setError(
         "Please enter your email or mobile number so we can notify you.",
+      );
+      return;
+    }
+
+    if (em && !isValidEmail(em)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (mob && !isValidIndianMobile(mob)) {
+      setError(
+        "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).",
       );
       return;
     }

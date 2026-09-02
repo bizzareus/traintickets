@@ -61,21 +61,28 @@ export default function ChartTimesTable({
   trainNumber,
   trainName,
   destinationCode,
+  availableClasses,
 }: {
   stations: ChartTimeStationRow[];
   journeyDate?: string | null;
   trainNumber: string;
   trainName: string;
   destinationCode: string;
+  availableClasses?: string[];
 }) {
-  const alertFor = (s: ChartTimeStationRow) =>
-    s.stationCode !== destinationCode ? (
+  const alertFor = (s: ChartTimeStationRow, idx: number) =>
+    s.stationCode !== destinationCode && idx < stations.length - 1 ? (
       <RowAlertButton
         trainNumber={trainNumber}
         trainName={trainName}
         stationCode={s.stationCode}
         stationName={s.stationName}
         destinationCode={destinationCode}
+        destinationStations={stations.slice(idx + 1).map((stn) => ({
+          stationCode: stn.stationCode,
+          stationName: stn.stationName,
+        }))}
+        availableClasses={availableClasses}
         initialJourneyDate={journeyDate}
       />
     ) : null;
@@ -144,9 +151,9 @@ export default function ChartTimesTable({
             </div>
 
             {/* Get Alert CTA */}
-            {alertFor(s) && (
+            {alertFor(s, i) && (
               <div className="mt-3 border-t border-slate-100 pt-3">
-                {alertFor(s)}
+                {alertFor(s, i)}
               </div>
             )}
           </div>
@@ -183,7 +190,7 @@ export default function ChartTimesTable({
                 <td className="whitespace-nowrap px-4 py-3 text-slate-600">{formatDay(s.day)}</td>
                 <td className="px-4 py-3">
                   <FirstChart s={s} journeyDate={journeyDate} />
-                  {alertFor(s) && <div className="mt-2">{alertFor(s)}</div>}
+                  {alertFor(s, i) && <div className="mt-2">{alertFor(s, i)}</div>}
                 </td>
                 <td className="px-4 py-3"><SecondChart s={s} journeyDate={journeyDate} /></td>
               </tr>

@@ -237,9 +237,11 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           destinationCode={
             data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
           }
-          stations={data.stations
-            .slice(0, -1)
-            .map((s) => ({ stationCode: s.stationCode, stationName: s.stationName }))}
+          stations={data.stations.map((s) => ({
+            stationCode: s.stationCode,
+            stationName: s.stationName,
+          }))}
+          availableClasses={data.availableClasses}
           initialJourneyDate={journeyDate}
         />
       </div>
@@ -256,6 +258,7 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           destinationCode={
             data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
           }
+          availableClasses={data.availableClasses}
         />
       </section>
 

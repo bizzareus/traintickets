@@ -10,6 +10,11 @@ export class TrainsController {
     return this.trains.findAll();
   }
 
+  @Get(':id/classes')
+  getClasses(@Param('id') id: string) {
+    return this.trains.getClasses(id);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.trains.findOne(id);

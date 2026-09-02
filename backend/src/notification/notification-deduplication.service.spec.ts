@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method, @typescript-eslint/no-unsafe-assignment */
 import { Test, TestingModule } from '@nestjs/testing';
 import { NotificationDeduplicationService } from './notification-deduplication.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -102,7 +103,76 @@ describe('NotificationDeduplicationService', () => {
           recipient: 'user@example.com',
           channel: 'email',
           trainNumber: '12734',
-          notificationType: 'alt_trains',
+          notificationType: {
+            in: ['no_seats', 'alt_trains', 'seats_found'],
+          },
+        }),
+      }),
+    );
+  });
+
+  it('should suppress no_seats notification if alt_trains was already sent', async () => {
+    (prisma.sentNotificationLog.findFirst as jest.Mock).mockResolvedValue({
+      id: 'log-alt',
+      recipient: '919876543210',
+      channel: 'whatsapp',
+      trainNumber: '22454',
+      journeyDate: new Date('2026-09-02'),
+      notificationType: 'alt_trains',
+      sentAt: new Date(),
+    });
+
+    const result = await service.shouldSendNotification({
+      recipient: '919876543210',
+      channel: 'whatsapp',
+      trainNumber: '22454',
+      journeyDate: '2026-09-02',
+      notificationType: 'no_seats',
+    });
+
+    expect(result).toBe(false);
+  });
+
+  it('should suppress alt_trains notification if no_seats was already sent', async () => {
+    (prisma.sentNotificationLog.findFirst as jest.Mock).mockResolvedValue({
+      id: 'log-no-seats',
+      recipient: '919876543210',
+      channel: 'whatsapp',
+      trainNumber: '22454',
+      journeyDate: new Date('2026-09-02'),
+      notificationType: 'no_seats',
+      sentAt: new Date(),
+    });
+
+    const result = await service.shouldSendNotification({
+      recipient: '919876543210',
+      channel: 'whatsapp',
+      trainNumber: '22454',
+      journeyDate: '2026-09-02',
+      notificationType: 'alt_trains',
+    });
+
+    expect(result).toBe(false);
+  });
+
+  it('should query only seats_found when checking seats_found', async () => {
+    (prisma.sentNotificationLog.findFirst as jest.Mock).mockResolvedValue(null);
+
+    const result = await service.shouldSendNotification({
+      recipient: '919876543210',
+      channel: 'whatsapp',
+      trainNumber: '22454',
+      journeyDate: '2026-09-02',
+      notificationType: 'seats_found',
+    });
+
+    expect(result).toBe(true);
+    expect(prisma.sentNotificationLog.findFirst).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          notificationType: {
+            in: ['seats_found'],
+          },
         }),
       }),
     );

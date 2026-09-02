@@ -4,6 +4,12 @@
   "originStation": "NDLS",
   "destinationStation": "MMCT",
   "slug": "12952-mmct-tejas-raj-chart-times",
+  "availableClasses": [
+    "3A",
+    "2A",
+    "1A",
+    "3E"
+  ],
   "stations": [
     {
       "stationCode": "NDLS",

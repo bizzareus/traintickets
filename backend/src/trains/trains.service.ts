@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { IrctcService } from '../irctc/irctc.service';
+import { IrctcService, TrainScheduleResponse } from '../irctc/irctc.service';
 
 @Injectable()
 export class TrainsService {
@@ -109,7 +109,8 @@ export class TrainsService {
     });
 
     // 3. Fetch schedule cache details for the train
-    let schedule: any = null;
+    let schedule: (TrainScheduleResponse & { availableClasses?: string[] }) | null =
+      null;
     try {
       const scheduleResult = await this.irctcService.getTrainSchedule(
         train.trainNumber,
@@ -121,10 +122,31 @@ export class TrainsService {
       // Ignore
     }
 
+    let availableClasses: string[] = [];
+    try {
+      availableClasses = await this.irctcService.getTrainClasses(
+        train.trainNumber,
+      );
+    } catch {
+      // Ignore
+    }
+
     return {
       ...train,
+      availableClasses,
       chartRules: mappedChartRules,
-      schedule,
+      schedule: schedule
+        ? { ...schedule, availableClasses }
+        : schedule,
     };
+  }
+
+  async getClasses(id: string): Promise<string[]> {
+    const train = await this.prisma.train.findFirst({
+      where: { OR: [{ id }, { trainNumber: id }] },
+      select: { trainNumber: true },
+    });
+    const trainNumber = train?.trainNumber || id;
+    return this.irctcService.getTrainClasses(trainNumber);
   }
 }

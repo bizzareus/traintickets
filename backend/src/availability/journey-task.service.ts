@@ -909,13 +909,17 @@ export class JourneyTaskService {
       // Check for vacant berths with the same engine the Search Route uses
       // (alternate paths over ConfirmTkt availability + IRCTC schedule). It
       // already retries across ±station offsets internally, so there's no
-      // manual offset loop here, and no OpenAI call.
+      // manual offset loop here, and no OpenAI call. If the user selected 'ANY',
+      // passing undefined avlClasses triggers the multi-class best seats algorithm.
       const alt = await this.bookingV2Service.findAlternatePaths({
         trainNumber: task.trainNumber,
         from: task.fromStationCode,
         to: task.toStationCode,
         date: journeyDateStr,
-        avlClasses: subscribedClass ? [subscribedClass] : undefined,
+        avlClasses:
+          subscribedClass && subscribedClass !== 'ANY'
+            ? [subscribedClass]
+            : undefined,
         quota: 'GN',
       });
       const isChartTimePassed = isTaskChartTimePassed(task);
@@ -1070,7 +1074,10 @@ export class JourneyTaskService {
               if (req) {
                 const classCode = req.classCode.toUpperCase();
                 monitoredClassCode = classCode;
-                const isAc = !['SL', '2S', 'GN', 'FC'].includes(classCode);
+                const isAc =
+                  classCode === 'ANY'
+                    ? false
+                    : !['SL', '2S', 'GN', 'FC'].includes(classCode);
                 const bestResult = await this.bookingV2Service.findBestTrains({
                   from: task.fromStationCode,
                   to: task.toStationCode,
@@ -1142,7 +1149,8 @@ export class JourneyTaskService {
                 fromStationCode: task.fromStationCode,
                 toStationCode: task.toStationCode,
                 journeyDate: task.journeyDate,
-                classCode: monitoredClassCode,
+                classCode:
+                  monitoredClassCode === 'ANY' ? '3A' : monitoredClassCode,
                 monitoringContactId: contact.id,
                 email: contact.email || undefined,
                 mobile: contact.mobile || undefined,

@@ -17,6 +17,10 @@ import { randomUUID } from 'node:crypto';
 import { AvailabilityService } from './availability.service';
 import { JourneyTaskService } from './journey-task.service';
 import { NotificationService } from '../notification/notification.service';
+import {
+  isValidIndianMobile,
+  isValidEmail,
+} from '../common/validation.utils';
 
 type NormalizedJourneyCreate = {
   trainNumber: string;
@@ -334,22 +338,17 @@ export class AvailabilityController {
         message: 'journeyDate must be in YYYY-MM-DD format',
       });
     }
-    if (
-      normalized.email &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized.email)
-    ) {
+    if (normalized.email && !isValidEmail(normalized.email)) {
       errors.push({
         code: 'INVALID_EMAIL',
         message: 'email format is invalid',
       });
     }
-    if (
-      normalized.mobile &&
-      !/^\+?\d{7,15}$/.test(normalized.mobile.replace(/[\s-]/g, ''))
-    ) {
+    if (normalized.mobile && !isValidIndianMobile(normalized.mobile)) {
       errors.push({
         code: 'INVALID_MOBILE',
-        message: 'mobile phone number format is invalid',
+        message:
+          'Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9',
       });
     }
 
@@ -528,6 +527,20 @@ export class AvailabilityController {
       throw new BadRequestException({
         code: 'MISSING_CONTACT',
         message: 'Please provide either an email or mobile number to receive Tatkal alerts.',
+      });
+    }
+
+    if (em && !isValidEmail(em)) {
+      throw new BadRequestException({
+        code: 'INVALID_EMAIL',
+        message: 'email format is invalid',
+      });
+    }
+
+    if (mob && !isValidIndianMobile(mob)) {
+      throw new BadRequestException({
+        code: 'INVALID_MOBILE',
+        message: 'mobile must be a valid 10-digit Indian number',
       });
     }
 

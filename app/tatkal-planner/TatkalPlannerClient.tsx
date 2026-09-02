@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import { trackTatkalAlertRequested } from "@/lib/analytics/track";
+import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import {
   calculateTatkalWindow,
   formatReadableDateIST,
@@ -68,6 +69,16 @@ export default function TatkalPlannerClient() {
     const mobile = mobileInput.trim();
     if (!email && !mobile) {
       setSubscribeError("Enter an email address or WhatsApp number.");
+      return;
+    }
+    if (email && !isValidEmail(email)) {
+      setSubscribeError("Please enter a valid email address.");
+      return;
+    }
+    if (mobile && !isValidIndianMobile(mobile)) {
+      setSubscribeError(
+        "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).",
+      );
       return;
     }
     setSubscribing(true);

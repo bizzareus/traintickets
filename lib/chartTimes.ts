@@ -66,6 +66,8 @@ export type ChartTimesPageData = {
   destinationStation: string;
   slug: string;
   stations: ChartTimeStationRow[];
+  /** Travel classes the train offers (e.g. ["1A", "2A", "3A"]). */
+  availableClasses?: string[];
   /** Data-driven summary of the chart times in the table (persisted in the static page). */
   summary: string;
   /** ISO timestamp the JSON cache was generated. */
@@ -119,11 +121,13 @@ type TrainApiResponse = {
   trainName?: string;
   originStation?: string;
   destinationStation?: string;
+  availableClasses?: string[];
   schedule?: {
     trainName?: string;
     stationFrom?: string;
     stationTo?: string;
     stationList?: ScheduleStation[];
+    availableClasses?: string[];
   } | null;
 };
 
@@ -432,6 +436,16 @@ async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | 
   const originStation = train.originStation || train.schedule?.stationFrom || "";
   const destinationStation =
     train.destinationStation || train.schedule?.stationTo || "";
+  const rawClasses =
+    (Array.isArray(train.availableClasses) && train.availableClasses.length > 0
+      ? train.availableClasses
+      : Array.isArray(train.schedule?.availableClasses) &&
+          train.schedule.availableClasses.length > 0
+        ? train.schedule.availableClasses
+        : []);
+  const availableClasses = [
+    ...new Set(rawClasses.map((c) => String(c).trim().toUpperCase()).filter(Boolean)),
+  ];
 
   return {
     trainNumber: String(train.trainNumber || trainNumber).trim(),
@@ -440,6 +454,7 @@ async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | 
     destinationStation,
     slug: buildChartTimesSlug(train.trainNumber || trainNumber, trainName),
     stations,
+    availableClasses: availableClasses.length > 0 ? availableClasses : undefined,
     summary: buildChartTimesSummary({
       trainName,
       trainNumber: String(train.trainNumber || trainNumber).trim(),

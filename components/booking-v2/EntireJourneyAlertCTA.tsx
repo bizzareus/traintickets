@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { apiClient } from "@/lib/api";
 import { trackAlertRequested } from "@/lib/analytics/track";
+import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 
 interface Props {
   trainNumber: string;
@@ -38,6 +39,18 @@ export function EntireJourneyAlertCTA({
 
     if (!em && !mob) {
       setError("Please enter an email or mobile number.");
+      return;
+    }
+
+    if (em && !isValidEmail(em)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (mob && !isValidIndianMobile(mob)) {
+      setError(
+        "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).",
+      );
       return;
     }
 

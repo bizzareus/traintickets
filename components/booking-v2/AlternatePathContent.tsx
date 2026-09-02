@@ -9,6 +9,7 @@ import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDis
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
+import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { NextReleaseBottomSheet } from "./NextReleaseBottomSheet";
 import type {
   AlternateClassOption,
@@ -363,6 +364,14 @@ function CompactLegChartCta({
     const mob = mobile.trim() || undefined;
     if (!em && !mob) {
       setError("Enter an email or mobile number.");
+      return;
+    }
+    if (em && !isValidEmail(em)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    if (mob && !isValidIndianMobile(mob)) {
+      setError("Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).");
       return;
     }
     setSubmitting(true);

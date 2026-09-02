@@ -715,12 +715,15 @@ describe('NotificationService', () => {
                   log.journeyDate instanceof Date
                     ? log.journeyDate.toISOString().slice(0, 10)
                     : String(log.journeyDate || '').slice(0, 10);
+                const matchType = where.notificationType?.in
+                  ? where.notificationType.in.includes(log.notificationType)
+                  : log.notificationType === where.notificationType;
                 return (
                   log.recipient === where.recipient &&
                   log.channel === where.channel &&
                   log.trainNumber === where.trainNumber &&
                   logDateStr === targetDateStr &&
-                  log.notificationType === where.notificationType &&
+                  matchType &&
                   (!cutoff || log.sentAt >= cutoff)
                 );
               }) || null,
