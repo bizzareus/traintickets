@@ -46,7 +46,6 @@ export default function RowAlertButton({
   trainName,
   stationCode,
   stationName,
-  destinationCode: initialDestinationCode,
   destinationStations,
   availableClasses: initialAvailableClasses,
   initialJourneyDate,
@@ -55,7 +54,6 @@ export default function RowAlertButton({
   trainName: string;
   stationCode: string;
   stationName: string;
-  destinationCode?: string;
   destinationStations?: StationOption[];
   availableClasses?: string[];
   initialJourneyDate?: string | null;
@@ -65,12 +63,10 @@ export default function RowAlertButton({
     () => destinationStations || [],
     [destinationStations],
   );
-  const [toStationCode, setToStationCode] = useState(
-    // Default to no specific destination — the user opts in to a station
-    // only if they care. Empty = "chart prepared — go check on our
-    // platform" notification; non-empty = the full availability check flow.
-    initialDestinationCode ?? "",
-  );
+  // Default to no specific destination — the user opts in to a station
+  // only if they care. Empty = "chart prepared — go check on our
+  // platform" notification; non-empty = the full availability check flow.
+  const [toStationCode, setToStationCode] = useState("");
 
   // Ensure destination is valid (skip when empty, which is a valid choice).
   useEffect(() => {

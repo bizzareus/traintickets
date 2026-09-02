@@ -353,7 +353,7 @@ export default function ChartTimeAlertCTA({
             onChange={(e) => setToStationCode(e.target.value)}
             className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
           >
-            <option value="">No Destination</option>
+            <option value="">Select Destination</option>
             {destinationOptions.map((s) => (
               <option key={s.stationCode} value={s.stationCode}>
                 {s.stationName} ({s.stationCode})
@@ -404,7 +404,7 @@ export default function ChartTimeAlertCTA({
           type="tel"
           value={mobile}
           onChange={(e) => setMobile(e.target.value)}
-          placeholder="Mobile (for WhatsApp/SMS)"
+          placeholder="Mobile (for WhatsApp)"
           autoComplete="tel"
           className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
         />

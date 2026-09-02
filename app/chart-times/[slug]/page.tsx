@@ -234,9 +234,6 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
         <ChartTimeAlertCTA
           trainNumber={data.trainNumber}
           trainName={data.trainName}
-          destinationCode={
-            data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
-          }
           stations={data.stations.map((s) => ({
             stationCode: s.stationCode,
             stationName: s.stationName,

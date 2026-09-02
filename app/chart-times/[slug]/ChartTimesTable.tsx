@@ -77,7 +77,6 @@ export default function ChartTimesTable({
         trainName={trainName}
         stationCode={s.stationCode}
         stationName={s.stationName}
-        destinationCode={destinationCode}
         destinationStations={stations.slice(idx + 1).map((stn) => ({
           stationCode: stn.stationCode,
           stationName: stn.stationName,
