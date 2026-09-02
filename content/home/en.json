@@ -8,7 +8,7 @@
   "tabs": {
     "route": "Search Route",
     "pnr": "Search PNR",
-    "seat": "Live Seat Tracker"
+    "seat": "Chart Times"
   },
   "form": {
     "from": "From",

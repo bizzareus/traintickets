@@ -30,10 +30,10 @@ export function Header({
   const homeHref = lang && lang !== "en" ? `/${lang}` : "/";
 
   const links: NavLink[] = [
-    { href: "/chart-vacancy", label: nav.chartVacancy || "Chart Vacancy" },
-    { href: "/pnr-status", label: nav.pnrStatus || "PNR Status" },
     { href: "/chart-times", label: nav.chartTimes || "Chart Times" },
     { href: "/irctc-train-food-menu", label: nav.foodMenu || "Food Menu" },
+    { href: "/pnr-status", label: nav.pnrStatus || "PNR Status" },
+    { href: "/chart-vacancy", label: nav.chartVacancy || "Chart Vacancy" },
     { href: "/blog", label: nav.blog || "Blog" },
   ];
 
