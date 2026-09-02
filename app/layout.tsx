@@ -153,6 +153,18 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <Script
+          id="aclib"
+          src="//acscdn.com/script/aclib.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="aclib-autotag"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `aclib.runAutoTag({ zoneId: 'jixgscmkxs' });`,
+          }}
+        />
+        <Script
           id="gtm-script"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
