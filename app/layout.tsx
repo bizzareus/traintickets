@@ -152,11 +152,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Adcash ads temporarily disabled
         <Script
           id="aclib"
           src="//acscdn.com/script/aclib.js"
           strategy="beforeInteractive"
         />
+        */}
         <Script
           id="gtm-script"
           strategy="lazyOnload"
