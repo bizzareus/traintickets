@@ -27,7 +27,11 @@ import {
   normalizeE164Mobile,
   normalizeIrctcTimeDisplay,
 } from './notification.helpers';
-import { renderSeatsFoundEmailHtml } from './templates/notification-email.templates';
+import {
+  renderSeatsFoundEmailHtml,
+  renderChartPreparedNoDestinationEmailHtml,
+} from './templates/notification-email.templates';
+import { buildChartPreparedNoDestinationWhatsAppText } from './templates/notification-whatsapp.templates';
 import { renderTatkalAlertEmailHtml } from './templates/tatkal-alert-email.template';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
@@ -882,6 +886,204 @@ export class NotificationService {
       });
     } catch {
       return undefined;
+    }
+  }
+
+  /**
+   * Build a tracked short-link to the search page pre-filled with the train
+   * + journey date. Used by the "no destination" chart-prepared alert.
+   */
+  private async createCheckTicketsShortLink(params: {
+    trainNumber: string;
+    journeyDateStr: string;
+    channel: 'email' | 'whatsapp';
+  }): Promise<string | undefined> {
+    if (!this.shortLinkService) return undefined;
+    try {
+      const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
+      const query = new URLSearchParams({ trainNo: params.trainNumber });
+      if (params.journeyDateStr) query.set('date', params.journeyDateStr);
+      const url = `${baseUrl}/search?${query.toString()}`;
+      return await this.shortLinkService.createShortLink({
+        url,
+        payload: {
+          type: 'chart_prepared_check_tickets',
+          trainNumber: params.trainNumber,
+          journeyDate: params.journeyDateStr,
+          channel: params.channel,
+        },
+      });
+    } catch {
+      return undefined;
+    }
+  }
+
+  /**
+   * Send a lightweight "chart prepared — go check tickets on our platform"
+   * email + WhatsApp. No availability check is run for this path; the
+   * notification is informational only and points the user at a short-link
+   * that opens the search page pre-filled with the train + journey date.
+   *
+   * Same unsubscribe guard as `notifyUser` / `notifyUserAlternativeTrains`.
+   */
+  async notifyChartPrepared(params: {
+    email?: string | null;
+    mobile?: string | null;
+    trainNumber: string;
+    trainName?: string | null;
+    journeyDate: Date | string;
+    chartPreparationText: string;
+  }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
+    const { email, mobile, trainNumber, trainName, journeyDate } = params;
+    const out = { emailSent: false, whatsappSent: false };
+
+    try {
+      if (!email?.trim() && !mobile?.trim()) return out;
+      if (this.unsubscribeService) {
+        if (email && (await this.unsubscribeService.isUnsubscribed(email))) {
+          return out;
+        }
+        if (mobile && (await this.unsubscribeService.isUnsubscribed(mobile))) {
+          return out;
+        }
+      }
+
+      const journeyDateStr =
+        journeyDate instanceof Date
+          ? journeyDate.toISOString().slice(0, 10)
+          : String(journeyDate).slice(0, 10);
+      const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
+      const trainLabel = [trainNumber, trainName].filter(Boolean).join(' ');
+
+      const [emailCheckUrl, whatsappCheckUrl, emailUnsubUrl, whatsappUnsubUrl] =
+        await Promise.all([
+          email?.trim()
+            ? this.createCheckTicketsShortLink({
+                trainNumber: trainNumber.trim(),
+                journeyDateStr,
+                channel: 'email',
+              })
+            : Promise.resolve(undefined),
+          mobile?.trim()
+            ? this.createCheckTicketsShortLink({
+                trainNumber: trainNumber.trim(),
+                journeyDateStr,
+                channel: 'whatsapp',
+              })
+            : Promise.resolve(undefined),
+          email?.trim()
+            ? this.createUnsubscribeShortLink(email.trim(), 'email')
+            : Promise.resolve(undefined),
+          mobile?.trim()
+            ? this.createUnsubscribeShortLink(
+                normalizeE164Mobile(mobile.trim()),
+                'whatsapp',
+              )
+            : Promise.resolve(undefined),
+        ]);
+      const checkTicketsUrl = emailCheckUrl || whatsappCheckUrl;
+      if (!checkTicketsUrl) {
+        console.warn('notifyChartPrepared: no ShortLinkService; skipping send');
+        return out;
+      }
+
+      const subject = `Chart prepared for ${trainLabel} on ${journeyDateReadable} — check tickets now`;
+
+      if (email?.trim()) {
+        const html = renderChartPreparedNoDestinationEmailHtml({
+          trainLabel,
+          journeyDateReadable,
+          chartPreparationText: params.chartPreparationText,
+          checkTicketsUrl,
+          unsubscribeUrl: emailUnsubUrl,
+        });
+        out.emailSent = await this.sendEmail(email.trim(), subject, html, {
+          skipFailureReport: true,
+        });
+        if (out.emailSent && this.deduplicationService) {
+          void this.deduplicationService.recordNotificationSent({
+            recipient: email.trim(),
+            channel: 'email',
+            trainNumber: trainNumber.trim(),
+            journeyDate: journeyDateStr,
+            notificationType: 'chart_prepared_only',
+          });
+        }
+        if (!out.emailSent) {
+          void this.sendAlertFailureReport({
+            alertType: 'Chart Prepared Email',
+            recipientEmail: email,
+            trainNumber,
+            trainName: trainName ?? undefined,
+            fromStationCode: undefined,
+            toStationCode: undefined,
+            journeyDate,
+            failureReason:
+              'Chart prepared email send returned false (provider failure or missing key)',
+            payload: { type: 'chart_prepared_only' },
+          });
+        }
+      }
+
+      if (mobile?.trim()) {
+        const text = buildChartPreparedNoDestinationWhatsAppText({
+          trainLabel,
+          journeyDateReadable,
+          chartPreparationText: params.chartPreparationText,
+          checkTicketsUrl: whatsappCheckUrl || checkTicketsUrl,
+          unsubscribeUrl: whatsappUnsubUrl,
+        });
+        out.whatsappSent = await this.sendWhatsApp(mobile.trim(), text, {
+          templateName:
+            this.config.get<string>('WATI_TEMPLATE_CHART_ALERT') ||
+            'subscription_alert',
+          broadcastName: 'lastberth_chart_prepared_only',
+          skipFailureReport: true,
+        });
+        if (out.whatsappSent && this.deduplicationService) {
+          void this.deduplicationService.recordNotificationSent({
+            recipient: mobile.trim(),
+            channel: 'whatsapp',
+            trainNumber: trainNumber.trim(),
+            journeyDate: journeyDateStr,
+            notificationType: 'chart_prepared_only',
+          });
+        }
+        if (!out.whatsappSent) {
+          void this.sendAlertFailureReport({
+            alertType: 'Chart Prepared WhatsApp',
+            recipientMobile: mobile,
+            trainNumber,
+            trainName: trainName ?? undefined,
+            fromStationCode: undefined,
+            toStationCode: undefined,
+            journeyDate,
+            failureReason:
+              'Chart prepared WhatsApp send returned false (provider failure or missing key)',
+            payload: { type: 'chart_prepared_only' },
+          });
+        }
+      }
+
+      return out;
+    } catch (err) {
+      console.error('notifyChartPrepared failed', err);
+      const errMessage =
+        err instanceof Error ? err.stack || err.message : String(err);
+      void this.sendAlertFailureReport({
+        alertType: 'notifyChartPrepared Processing Exception',
+        recipientEmail: email ?? undefined,
+        recipientMobile: mobile ?? undefined,
+        trainNumber,
+        trainName: trainName ?? undefined,
+        fromStationCode: undefined,
+        toStationCode: undefined,
+        journeyDate,
+        failureReason: 'Unhandled exception inside notifyChartPrepared',
+        logs: errMessage,
+        payload: { type: 'chart_prepared_only' },
+      });
+      return out;
     }
   }
 

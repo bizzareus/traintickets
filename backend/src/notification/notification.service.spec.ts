@@ -951,4 +951,110 @@ describe('NotificationService', () => {
       );
     });
   });
+
+  describe('notifyChartPrepared', () => {
+    const chartPreparedParams = {
+      email: 'a@example.com',
+      mobile: '919999999999',
+      trainNumber: '12310',
+      trainName: 'RJPB TEJAS RAJ',
+      journeyDate: new Date('2026-09-05T00:00:00.000Z'),
+      chartPreparationText: 'Chart for 12310 was prepared at 16:30 IST.',
+    };
+
+    it('sends the chart-prepared email and WhatsApp with a check-tickets shortlink', async () => {
+      const svc = new NotificationService(
+        mockConfig(),
+        mockStationCache(),
+        undefined,
+        {
+          createShortLink: jest.fn().mockImplementation(({ url, payload }) => {
+            expect(url).toContain('/search?');
+            expect(url).toContain('trainNo=12310');
+            expect(url).toContain('date=2026-09-05');
+            expect(payload).toMatchObject({
+              type: 'chart_prepared_check_tickets',
+              trainNumber: '12310',
+            });
+            return Promise.resolve('https://lastberth.com/s/abc123');
+          }),
+        } as never,
+      );
+      const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+      const sendWhatsApp = jest
+        .spyOn(svc, 'sendWhatsApp')
+        .mockResolvedValue(true);
+
+      const out = await svc.notifyChartPrepared(chartPreparedParams);
+
+      expect(out).toEqual({ emailSent: true, whatsappSent: true });
+      expect(sendEmail).toHaveBeenCalledTimes(1);
+      expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+
+      const [, subject, html] = sendEmail.mock.calls[0];
+      expect(subject).toContain('Chart prepared for 12310 RJPB TEJAS RAJ');
+      expect(html).toContain('12310 RJPB TEJAS RAJ');
+      expect(html).toContain('https://lastberth.com/s/abc123');
+      expect(html).toContain('Check live tickets on LastBerth');
+
+      const [, whatsAppText] = sendWhatsApp.mock.calls[0];
+      expect(whatsAppText).toContain('LastBerth Chart Alert');
+      expect(whatsAppText).toContain('12310 RJPB TEJAS RAJ');
+      expect(whatsAppText).toContain('https://lastberth.com/s/abc123');
+    });
+
+    it('returns both flags false when no contact is provided', async () => {
+      const svc = new NotificationService(mockConfig(), mockStationCache());
+      const out = await svc.notifyChartPrepared({
+        ...chartPreparedParams,
+        email: undefined,
+        mobile: undefined,
+      });
+      expect(out).toEqual({ emailSent: false, whatsappSent: false });
+    });
+
+    it('returns both flags false when the recipient has unsubscribed', async () => {
+      const svc = new NotificationService(
+        mockConfig(),
+        mockStationCache(),
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        {
+          isUnsubscribed: jest.fn().mockResolvedValue(true),
+        } as never,
+      );
+      const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+      const out = await svc.notifyChartPrepared(chartPreparedParams);
+      expect(out).toEqual({ emailSent: false, whatsappSent: false });
+      expect(sendEmail).not.toHaveBeenCalled();
+    });
+
+    it('sends only WhatsApp when no email is provided', async () => {
+      const svc = new NotificationService(
+        mockConfig(),
+        mockStationCache(),
+        undefined,
+        {
+          createShortLink: jest
+            .fn()
+            .mockResolvedValue('https://lastberth.com/s/abc'),
+        } as never,
+      );
+      const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+      const sendWhatsApp = jest
+        .spyOn(svc, 'sendWhatsApp')
+        .mockResolvedValue(true);
+
+      const out = await svc.notifyChartPrepared({
+        ...chartPreparedParams,
+        email: undefined,
+      });
+
+      expect(out).toEqual({ emailSent: false, whatsappSent: true });
+      expect(sendEmail).not.toHaveBeenCalled();
+      expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    });
+  });
 });

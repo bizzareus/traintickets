@@ -3,7 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { BellRing } from "lucide-react";
 import { apiClient } from "@/lib/api";
-import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics/track";
+import {
+  trackAnalyticsEvent,
+  trackAlertRequested,
+} from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
@@ -77,15 +80,19 @@ export default function ChartTimeAlertCTA({
   }, [stations, boardingIndex]);
 
   const [toStationCode, setToStationCode] = useState(
-    initialDestinationCode ||
-      stations[stations.length - 1]?.stationCode ||
-      destinationOptions[destinationOptions.length - 1]?.stationCode ||
-      "",
+    // Default to no specific destination — the user opts in to a specific
+    // station only if they care. Empty = "chart prepared — go check on our
+    // platform" notification; non-empty = the full availability check flow.
+    initialDestinationCode ?? "",
   );
 
-  // Ensure destination is always valid downstream
+  // Ensure destination is always valid downstream (skip when empty, which
+  // is a valid "no specific destination" choice).
   useEffect(() => {
-    const isValid = destinationOptions.some((s) => s.stationCode === toStationCode);
+    if (!toStationCode) return;
+    const isValid = destinationOptions.some(
+      (s) => s.stationCode === toStationCode,
+    );
     if (!isValid && destinationOptions.length > 0) {
       setToStationCode(
         destinationOptions[destinationOptions.length - 1]?.stationCode ||
@@ -117,7 +124,9 @@ export default function ChartTimeAlertCTA({
             ? res.data.availableClasses
             : [];
         const normalized = [
-          ...new Set(raw.map((c) => String(c).trim().toUpperCase()).filter(Boolean)),
+          ...new Set(
+            raw.map((c) => String(c).trim().toUpperCase()).filter(Boolean),
+          ),
         ];
         if (normalized.length > 0) {
           setClassesList(normalized);
@@ -188,10 +197,8 @@ export default function ChartTimeAlertCTA({
       setError("Please select a boarding station.");
       return;
     }
-    if (!toStationCode) {
-      setError("Please select a destination station.");
-      return;
-    }
+    // toStationCode is optional — empty means the user just wants a
+    // "chart prepared" ping with a shortlink to the search page.
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -222,7 +229,9 @@ export default function ChartTimeAlertCTA({
       });
     } catch (err: unknown) {
       const e = err as {
-        response?: { data?: { message?: string; errors?: Array<{ message?: string }> } };
+        response?: {
+          data?: { message?: string; errors?: Array<{ message?: string }> };
+        };
       };
       const msg =
         e?.response?.data?.errors?.[0]?.message ||
@@ -252,10 +261,16 @@ export default function ChartTimeAlertCTA({
     return (
       <div className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
         <p className="font-semibold text-emerald-900">
-          Alert set! We&apos;ll notify you the moment the chart for {trainName} (
-          {trainNumber}) is prepared at {stationCode} for travel to {toStationCode}{" "}
-          {classCode === "ANY" ? "in any available class" : `in ${classCode}`} on{" "}
-          {journeyDate.slice(0, 10)} and send you available tickets.
+          Alert set! We&apos;ll notify you the moment the chart for {trainName}{" "}
+          ({trainNumber}) is prepared at {stationCode} on{" "}
+          {journeyDate.slice(0, 10)}{" "}
+          {toStationCode
+            ? `for travel to ${toStationCode} ${
+                classCode === "ANY"
+                  ? "in any available class"
+                  : `in ${classCode}`
+              } and send you available tickets.`
+            : "and text you a link to check available tickets on LastBerth."}
         </p>
       </div>
     );
@@ -271,7 +286,9 @@ export default function ChartTimeAlertCTA({
           </h2>
           <p className="mt-1 text-sm text-slate-600">
             We&apos;ll text or email you the moment IRCTC prepares the chart for
-            this train, and send you available tickets between your stations.
+            this train. Leave the destination empty to get a short-link to check
+            tickets on our platform, or pick a destination to receive available
+            tickets between your stations.
           </p>
         </div>
         <button
@@ -304,12 +321,16 @@ export default function ChartTimeAlertCTA({
       </h2>
       <p className="mt-1 text-sm text-slate-600">
         We&apos;ll notify you on the contact below when the chart is prepared at
-        your boarding station, and send you available tickets between the stations.
+        your boarding station. Leave the destination empty to just get a
+        short-link to check tickets on our platform, or pick a destination to
+        also receive available tickets between the stations.
       </p>
 
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <label className="text-sm">
-          <span className="mb-1 block font-medium text-slate-700">Boarding station</span>
+          <span className="mb-1 block font-medium text-slate-700">
+            Boarding station
+          </span>
           <select
             value={stationCode}
             onChange={(e) => setStationCode(e.target.value)}
@@ -324,12 +345,15 @@ export default function ChartTimeAlertCTA({
         </label>
 
         <label className="text-sm">
-          <span className="mb-1 block font-medium text-slate-700">Destination station</span>
+          <span className="mb-1 block font-medium text-slate-700">
+            Destination station
+          </span>
           <select
             value={toStationCode}
             onChange={(e) => setToStationCode(e.target.value)}
             className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
           >
+            <option value="">No Destination</option>
             {destinationOptions.map((s) => (
               <option key={s.stationCode} value={s.stationCode}>
                 {s.stationName} ({s.stationCode})
@@ -354,7 +378,9 @@ export default function ChartTimeAlertCTA({
         </label>
 
         <label className="text-sm">
-          <span className="mb-1 block font-medium text-slate-700">Journey date</span>
+          <span className="mb-1 block font-medium text-slate-700">
+            Journey date
+          </span>
           <input
             type="date"
             value={journeyDate.slice(0, 10)}
@@ -402,7 +428,9 @@ export default function ChartTimeAlertCTA({
         </button>
       </div>
 
-      {error && <p className="mt-3 text-sm font-medium text-red-700">{error}</p>}
+      {error && (
+        <p className="mt-3 text-sm font-medium text-red-700">{error}</p>
+      )}
     </div>
   );
 }

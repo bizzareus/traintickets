@@ -310,15 +310,12 @@ export class AvailabilityController {
         message: 'fromStationCode is required',
       });
     }
-    if (!normalized.toStationCode) {
-      errors.push({
-        code: 'MISSING_FIELDS',
-        message: 'toStationCode is required',
-      });
-    }
+    // toStationCode is optional — an empty string means the user wants the
+    // "no specific destination" chart-prepared alert (no IRCTC availability
+    // check, just a short-link to the search page).
     if (
-      normalized.fromStationCode &&
       normalized.toStationCode &&
+      normalized.fromStationCode &&
       normalized.fromStationCode === normalized.toStationCode
     ) {
       errors.push({
@@ -360,12 +357,21 @@ export class AvailabilityController {
 
     const journeyRequestId = randomUUID();
 
-    // Kick off full external validation, task creation, and notifications asynchronously in the background
+    // Empty toStationCode = the "no specific destination" flow: skip the
+    // route/IRCTC check and queue a lightweight chart-prepared alert task.
+    const isChartPreparedOnly = !normalized.toStationCode;
     setImmediate(() => {
-      void this.journeyTask.queueJourneyMonitoring(
-        normalized,
-        journeyRequestId,
-      );
+      if (isChartPreparedOnly) {
+        void this.journeyTask.queueChartPreparedMonitoring(
+          normalized,
+          journeyRequestId,
+        );
+      } else {
+        void this.journeyTask.queueJourneyMonitoring(
+          normalized,
+          journeyRequestId,
+        );
+      }
     });
 
     return {

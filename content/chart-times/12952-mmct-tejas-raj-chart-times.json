@@ -4,12 +4,6 @@
   "originStation": "NDLS",
   "destinationStation": "MMCT",
   "slug": "12952-mmct-tejas-raj-chart-times",
-  "availableClasses": [
-    "3A",
-    "2A",
-    "1A",
-    "3E"
-  ],
   "stations": [
     {
       "stationCode": "NDLS",
@@ -117,6 +111,6 @@
     }
   ],
   "summary": "The first reservation chart for Mmct Tejas Raj (12952) is prepared at New Delhi (NDLS) around 8:55 AM, with a second (vacancy) chart around 4:40 PM. 8 of 8 stations on the NDLS to MMCT route have published chart preparation times, listed station-by-station below.",
-  "generatedAt": "2026-08-28T00:44:38.693Z",
+  "generatedAt": "2026-09-02T22:14:30.369Z",
   "knownChartCount": 8
 }

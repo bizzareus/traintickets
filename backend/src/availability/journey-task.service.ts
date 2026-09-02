@@ -749,6 +749,270 @@ export class JourneyTaskService {
     }
   }
 
+  /**
+   * Queue a "chart prepared — no specific destination" alert task. Skips the
+   * route/IRCTC validation (we only need the boarding station's chart time)
+   * and writes the row with `toStationCode = ''` plus a `resultPayload` flag
+   * so `runTask` knows to route to `notificationService.notifyChartPrepared`
+   * instead of running the full availability check.
+   */
+  async queueChartPreparedMonitoring(
+    params: {
+      trainNumber: string;
+      trainName?: string;
+      fromStationCode: string;
+      toStationCode: string; // expected to be '' (the no-destination sentinel)
+      journeyDate: string;
+      classCode: string;
+      stationCodesToMonitor?: string[];
+      email?: string;
+      mobile?: string;
+      trainStartDate?: string;
+    },
+    journeyRequestId?: string,
+  ): Promise<void> {
+    if (params.toStationCode) {
+      this.logger.warn(
+        `[journey/queue-chart-prepared] called with non-empty toStationCode=${params.toStationCode}; falling through to queueJourneyMonitoring`,
+      );
+      return this.queueJourneyMonitoring(params, journeyRequestId);
+    }
+
+    const fromCode = params.fromStationCode.trim().toUpperCase();
+    const trainNumber = params.trainNumber.trim();
+    const jYmd = parseJourneyYmdForValidation(params.journeyDate);
+    if (!jYmd) {
+      this.logger.warn(
+        `[journey/queue-chart-prepared] invalid journeyDate=${params.journeyDate}; skipping`,
+      );
+      return;
+    }
+
+    // Resolve just the schedule + boarding-station chart time. We bypass
+    // validateJourneyForMonitoring because that requires a destination on
+    // the route; here the destination is empty by design.
+    const scheduleResult = await this.irctc.getTrainSchedule(trainNumber, {
+      fillRunsOnFromComposition: {
+        jDate: jYmd,
+        boardingStation: fromCode,
+      },
+    });
+    if (!scheduleResult.ok || !scheduleResult.schedule.stationList?.length) {
+      this.logger.warn(
+        `[journey/queue-chart-prepared] schedule unavailable for train=${trainNumber} station=${fromCode}: ${scheduleResult.ok ? 'empty stationList' : scheduleResult.reason}`,
+      );
+      return;
+    }
+    const schedule = scheduleResult.schedule;
+    const boardingStn = schedule.stationList.find(
+      (s) =>
+        String(s.stationCode ?? '')
+          .trim()
+          .toUpperCase() === fromCode,
+    );
+    if (!boardingStn) {
+      this.logger.warn(
+        `[journey/queue-chart-prepared] boarding station ${fromCode} not found on train=${trainNumber} route`,
+      );
+      return;
+    }
+    const dayCount = stationDayCount(boardingStn);
+    const startYmd = params.trainStartDate
+      ? parseJourneyYmdForValidation(params.trainStartDate)
+      : null;
+    let resolvedTrainStartDate = startYmd;
+    let resolvedBoardingDate = jYmd;
+    if (resolvedTrainStartDate && dayCount > 1) {
+      if (jYmd === resolvedTrainStartDate) {
+        const computedBoardingDate = DateTime.fromISO(resolvedTrainStartDate)
+          .plus({ days: dayCount - 1 })
+          .toISODate();
+        if (computedBoardingDate) resolvedBoardingDate = computedBoardingDate;
+      }
+    } else if (!resolvedTrainStartDate) {
+      resolvedTrainStartDate =
+        dayCount > 1
+          ? (DateTime.fromISO(jYmd)
+              .minus({ days: dayCount - 1 })
+              .toISODate() ?? jYmd)
+          : jYmd;
+    }
+
+    const trainStartDateObj = new Date(resolvedTrainStartDate);
+    const email = params.email?.trim().toLowerCase() || undefined;
+    const rawMobile = params.mobile?.trim() || undefined;
+    const mobile = rawMobile ? toE164(rawMobile) : undefined;
+    const classCode = (params.classCode || '3A').trim().toUpperCase();
+
+    // Lookup / create contact.
+    let monitoringContactId: string | undefined;
+    const existingContact =
+      email || mobile
+        ? await this.prisma.monitoringContact.findFirst({
+            where: {
+              OR: [
+                ...(email ? [{ email }] : []),
+                ...(mobile ? [{ mobile }] : []),
+              ].filter((o) => Object.keys(o).length > 0),
+            },
+          })
+        : null;
+    if (existingContact) {
+      monitoringContactId = existingContact.id;
+    } else if (email || mobile) {
+      try {
+        const created = await this.prisma.monitoringContact.create({
+          data: { email: email || null, mobile: mobile || null },
+        });
+        monitoringContactId = created.id;
+      } catch (err: unknown) {
+        if (!isPrismaUniqueViolation(err)) throw err;
+        const conflict = await this.prisma.monitoringContact.findFirst({
+          where: {
+            OR: [
+              ...(email ? [{ email }] : []),
+              ...(mobile ? [{ mobile }] : []),
+            ].filter((o) => Object.keys(o).length > 0),
+          },
+        });
+        if (conflict) monitoringContactId = conflict.id;
+      }
+    }
+
+    // Resolve chartAt for the boarding station (uses cached chart times
+    // when available; falls back to the 4h-before-departure estimate when not).
+    const chartTimesWithSecond =
+      await this.chartTime.getChartTimesWithSecondChartForTrain(
+        trainNumber,
+        [fromCode],
+        trainStartDateObj,
+      );
+    const entry = chartTimesWithSecond.get(fromCode);
+    const needsAsyncHydration = !entry;
+
+    const taskSpecs: Array<{ stationCode: string; chartAt: Date }> = [];
+    if (entry) {
+      taskSpecs.push({
+        stationCode: fromCode,
+        chartAt: buildChartAtWithDayOffset(
+          trainStartDateObj,
+          entry.chartOne.time,
+          entry.chartOne.dayOffset ?? 0,
+        ),
+      });
+      if (entry.chartTwo) {
+        taskSpecs.push({
+          stationCode: fromCode,
+          chartAt: buildChartAtWithDayOffset(
+            trainStartDateObj,
+            entry.chartTwo.time,
+            entry.chartTwo.dayOffset ?? 0,
+          ),
+        });
+      }
+    } else {
+      const rawTime =
+        boardingStn?.departureTime || boardingStn?.arrivalTime || '08:00';
+      const timeMatch = String(rawTime)
+        .trim()
+        .match(/^(\d{1,2}):(\d{2})/);
+      const timeStr = timeMatch
+        ? `${timeMatch[1].padStart(2, '0')}:${timeMatch[2]}`
+        : '08:00';
+      const deptDateTime = buildChartAtWithDayOffset(
+        trainStartDateObj,
+        timeStr,
+        dayCount - 1,
+      );
+      taskSpecs.push({
+        stationCode: fromCode,
+        chartAt: new Date(deptDateTime.getTime() - 4 * 3600 * 1000),
+      });
+    }
+
+    const jid = journeyRequestId || randomUUID();
+    const trainName = params.trainName ?? schedule.trainName;
+    const journeyDateObj = new Date(resolvedBoardingDate);
+    const resultPayload = {
+      mode: 'chart_prepared_only',
+    } as const;
+
+    const createdTasks = taskSpecs.map((spec) => ({
+      id: randomUUID(),
+      journeyRequestId: jid,
+      trainNumber,
+      trainName,
+      fromStationCode: fromCode,
+      toStationCode: '', // sentinel for the no-destination flow
+      stationCode: spec.stationCode,
+      journeyDate: journeyDateObj,
+      trainStartDate: trainStartDateObj,
+      chartAt: spec.chartAt,
+      status: 'pending',
+      retryCount: 0,
+      nextRunAt: null,
+      lockedAt: null,
+      lastError: null,
+      resultPayload: { ...resultPayload },
+    }));
+
+    await this.prisma.$transaction([
+      this.prisma.journeyMonitoringRequest.create({
+        data: {
+          id: jid,
+          monitoringContactId: monitoringContactId ?? null,
+          trainNumber,
+          fromStationCode: fromCode,
+          toStationCode: '',
+          journeyDate: journeyDateObj,
+          classCode,
+        },
+      }),
+      this.prisma.journeyMonitorContact.create({
+        data: {
+          journeyRequestId: jid,
+          email: email || null,
+          mobile: mobile || null,
+        },
+      }),
+      this.prisma.chartTimeAvailabilityTask.createMany({
+        data: createdTasks,
+      }),
+    ]);
+
+    if (needsAsyncHydration) {
+      setImmediate(() => {
+        void this.asyncHydrateChartTimeAndUpdateTasks(
+          trainNumber,
+          fromCode,
+          trainStartDateObj,
+          jid,
+        );
+      });
+    }
+
+    void this.notificationService
+      .sendAdminMonitoringRequestEmail({
+        journeyRequestId: jid,
+        taskCount: createdTasks.length,
+        trainNumber,
+        trainName,
+        fromStationCode: fromCode,
+        toStationCode: '',
+        journeyDate: resolvedBoardingDate,
+        classCode,
+        stationCodesToMonitor: [fromCode],
+        userEmail: email,
+        userMobile: mobile,
+      })
+      .catch((err) =>
+        this.logger.error(
+          'Admin chart-prepared monitoring request notification failed',
+          err instanceof Error ? err.stack || err.message : String(err),
+        ),
+      );
+  }
+
   private async asyncHydrateChartTimeAndUpdateTasks(
     trainNumber: string,
     stationCode: string,
@@ -853,11 +1117,113 @@ export class JourneyTaskService {
    * Run a single ChartTimeAvailabilityTask by calling the Service2 check API
    * internally to find available seats at chart time.
    */
+  /**
+   * No-destination variant of `runTask`. Skips the IRCTC availability check
+   * and just dispatches a `chart_prepared_only` notification with a
+   * short-link to the search page. Used when the user set up an alert
+   * without picking a destination station.
+   */
+  private async runChartPreparedTask(
+    taskId: string,
+    force: boolean,
+    task: ChartTimeAvailabilityTask,
+  ): Promise<void> {
+    const now = new Date();
+    const firstRunAt = task.firstRunAt ?? now;
+    await this.prisma.chartTimeAvailabilityTask.update({
+      where: { id: taskId },
+      data: {
+        status: 'running',
+        retryCount: { increment: task.status === 'pending' ? 1 : 0 },
+        lockedAt: now,
+        completedAt: null,
+        lastError: null,
+        firstRunAt,
+      },
+    });
+
+    const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
+    const chartPreparationText = `Chart for ${task.trainNumber} was prepared at ${task.chartAt.toISOString()}.`;
+
+    try {
+      const contact = await this.prisma.journeyMonitorContact.findUnique({
+        where: { journeyRequestId: task.journeyRequestId },
+      });
+      if (!contact || (!contact.email && !contact.mobile)) {
+        await this.prisma.chartTimeAvailabilityTask.update({
+          where: { id: taskId },
+          data: {
+            status: 'completed',
+            completedAt: new Date(),
+            lockedAt: null,
+            nextRunAt: null,
+            lastError: 'no contact for chart_prepared task',
+          },
+        });
+        return;
+      }
+
+      const status = await this.notificationService.notifyChartPrepared({
+        email: contact.email,
+        mobile: contact.mobile,
+        trainNumber: task.trainNumber,
+        trainName: task.trainName,
+        journeyDate: task.journeyDate,
+        chartPreparationText,
+      });
+      const data: {
+        emailNotifiedAt?: Date;
+        whatsappNotifiedAt?: Date;
+      } = {};
+      if (status.emailSent) data.emailNotifiedAt = new Date();
+      if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
+      await this.prisma.chartTimeAvailabilityTask.update({
+        where: { id: taskId },
+        data: {
+          status: 'completed',
+          completedAt: new Date(),
+          lockedAt: null,
+          nextRunAt: null,
+          lastError: null,
+          firstRunAt,
+          ...data,
+        },
+      });
+      void journeyDateStr; // referenced for clarity
+    } catch (e) {
+      this.logger.error(
+        `runChartPreparedTask failed for task=${taskId}`,
+        e instanceof Error ? e.stack || e.message : String(e),
+      );
+      await this.prisma.chartTimeAvailabilityTask.update({
+        where: { id: taskId },
+        data: {
+          status: 'failed',
+          lastError: (e instanceof Error ? e.message : String(e)).slice(
+            0,
+            1000,
+          ),
+          completedAt: new Date(),
+          lockedAt: null,
+          nextRunAt: null,
+        },
+      });
+    }
+    void force; // signature parity with runTask
+  }
+
   async runTask(taskId: string, force = false): Promise<void> {
     const task = await this.prisma.chartTimeAvailabilityTask.findUnique({
       where: { id: taskId },
     });
     if (!task || (!force && task.status !== 'pending')) return;
+
+    // No-destination flow: skip the IRCTC availability check entirely and
+    // just send a "chart prepared — check tickets on our platform" notification.
+    if (task.toStationCode === '') {
+      await this.runChartPreparedTask(taskId, force, task);
+      return;
+    }
 
     const attemptNumber =
       (task.retryCount ?? 0) + (task.status === 'pending' ? 1 : 0);

@@ -16,7 +16,11 @@ export class NotificationDeduplicationService {
     channel: 'whatsapp' | 'email';
     trainNumber: string;
     journeyDate: Date | string;
-    notificationType: 'no_seats' | 'seats_found' | 'alt_trains';
+    notificationType:
+      | 'no_seats'
+      | 'seats_found'
+      | 'alt_trains'
+      | 'chart_prepared_only';
     windowHours?: number;
   }): Promise<boolean> {
     const { recipient, channel, trainNumber, journeyDate, notificationType } =
@@ -72,7 +76,11 @@ export class NotificationDeduplicationService {
     channel: 'whatsapp' | 'email';
     trainNumber: string;
     journeyDate: Date | string;
-    notificationType: 'no_seats' | 'seats_found' | 'alt_trains';
+    notificationType:
+      | 'no_seats'
+      | 'seats_found'
+      | 'alt_trains'
+      | 'chart_prepared_only';
   }): Promise<void> {
     const { recipient, channel, trainNumber, journeyDate, notificationType } =
       params;

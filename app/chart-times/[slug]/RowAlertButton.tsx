@@ -3,7 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { BellRing, X } from "lucide-react";
 import { apiClient } from "@/lib/api";
-import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics/track";
+import {
+  trackAnalyticsEvent,
+  trackAlertRequested,
+} from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
@@ -63,15 +66,19 @@ export default function RowAlertButton({
     [destinationStations],
   );
   const [toStationCode, setToStationCode] = useState(
-    initialDestinationCode ||
-      destinationOptions[destinationOptions.length - 1]?.stationCode ||
-      "",
+    // Default to no specific destination — the user opts in to a station
+    // only if they care. Empty = "chart prepared — go check on our
+    // platform" notification; non-empty = the full availability check flow.
+    initialDestinationCode ?? "",
   );
 
-  // Ensure destination is valid
+  // Ensure destination is valid (skip when empty, which is a valid choice).
   useEffect(() => {
+    if (!toStationCode) return;
     if (destinationOptions.length > 0) {
-      const isValid = destinationOptions.some((s) => s.stationCode === toStationCode);
+      const isValid = destinationOptions.some(
+        (s) => s.stationCode === toStationCode,
+      );
       if (!isValid) {
         setToStationCode(
           destinationOptions[destinationOptions.length - 1]?.stationCode ||
@@ -104,7 +111,9 @@ export default function RowAlertButton({
             ? res.data.availableClasses
             : [];
         const normalized = [
-          ...new Set(raw.map((c) => String(c).trim().toUpperCase()).filter(Boolean)),
+          ...new Set(
+            raw.map((c) => String(c).trim().toUpperCase()).filter(Boolean),
+          ),
         ];
         if (normalized.length > 0) {
           setClassesList(normalized);
@@ -175,10 +184,8 @@ export default function RowAlertButton({
       setError("Please pick a journey date.");
       return;
     }
-    if (!toStationCode) {
-      setError("Please select a destination station.");
-      return;
-    }
+    // toStationCode is optional — empty means the user just wants a
+    // "chart prepared" ping with a shortlink to the search page.
     setLoading(true);
     setError(null);
     try {
@@ -208,7 +215,9 @@ export default function RowAlertButton({
       });
     } catch (err: unknown) {
       const e = err as {
-        response?: { data?: { message?: string; errors?: Array<{ message?: string }> } };
+        response?: {
+          data?: { message?: string; errors?: Array<{ message?: string }> };
+        };
       };
       const msg =
         e?.response?.data?.errors?.[0]?.message ||
@@ -295,13 +304,16 @@ export default function RowAlertButton({
 
             {success ? (
               <p className="my-3 rounded-lg bg-emerald-50 p-4 text-sm font-medium text-emerald-900">
-                Alert set! We&apos;ll notify you when the chart for {trainName} (
-                {trainNumber}) is prepared at {stationName} ({stationCode}) for
-                travel to {toStationCode}{" "}
-                {classCode === "ANY"
-                  ? "in any available class"
-                  : `in ${classCode}`}{" "}
-                on {journeyDate.slice(0, 10)} and send you available tickets.
+                Alert set! We&apos;ll notify you when the chart for {trainName}{" "}
+                ({trainNumber}) is prepared at {stationName} ({stationCode}) on{" "}
+                {journeyDate.slice(0, 10)}{" "}
+                {toStationCode
+                  ? `for travel to ${toStationCode} ${
+                      classCode === "ANY"
+                        ? "in any available class"
+                        : `in ${classCode}`
+                    } and send you available tickets.`
+                  : "and text you a link to check available tickets on LastBerth."}
               </p>
             ) : (
               <>
@@ -311,7 +323,9 @@ export default function RowAlertButton({
                   <span className="font-semibold text-slate-800">
                     {stationName}
                   </span>
-                  , and send you available tickets between the stations.
+                  . Leave the destination empty to just get a short-link to
+                  check tickets on our platform, or pick a destination to also
+                  receive available tickets between the stations.
                 </p>
                 <form
                   onSubmit={(e) => {
@@ -328,6 +342,7 @@ export default function RowAlertButton({
                         onChange={(e) => setToStationCode(e.target.value)}
                         className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
                       >
+                        <option value="">No Destination</option>
                         {destinationOptions.map((s) => (
                           <option key={s.stationCode} value={s.stationCode}>
                             {s.stationName} ({s.stationCode})
@@ -378,7 +393,9 @@ export default function RowAlertButton({
                   </label>
 
                   <label className="text-xs font-semibold text-slate-700">
-                    <span className="mb-1 block">Mobile number (WhatsApp / SMS)</span>
+                    <span className="mb-1 block">
+                      Mobile number (WhatsApp / SMS)
+                    </span>
                     <input
                       type="tel"
                       value={mobile}
@@ -390,7 +407,9 @@ export default function RowAlertButton({
                   </label>
 
                   {error && (
-                    <p className="rounded-md bg-red-50 p-2 text-xs font-medium text-red-700">{error}</p>
+                    <p className="rounded-md bg-red-50 p-2 text-xs font-medium text-red-700">
+                      {error}
+                    </p>
                   )}
 
                   <button

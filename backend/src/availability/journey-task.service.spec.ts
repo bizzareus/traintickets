@@ -49,6 +49,9 @@ describe('JourneyTaskService', () => {
     notifyUser: jest
       .fn()
       .mockResolvedValue({ emailSent: true, whatsappSent: true }),
+    notifyChartPrepared: jest
+      .fn()
+      .mockResolvedValue({ emailSent: true, whatsappSent: true }),
     extractJourneyLegCoverage: jest.fn().mockReturnValue([]),
     sendAdminMonitoringRequestEmail: jest.fn().mockResolvedValue(true),
   };
@@ -341,6 +344,55 @@ describe('JourneyTaskService', () => {
           alternativeTrains: [mockAltCandidate],
         }),
       );
+    });
+
+    it('routes to notifyChartPrepared when toStationCode is empty (no destination flow)', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
+        id: 'task-cp',
+        journeyRequestId: 'jid-cp',
+        trainNumber: '12310',
+        trainName: 'RJPB Tejas Raj',
+        fromStationCode: 'RJPB',
+        toStationCode: '',
+        stationCode: 'RJPB',
+        journeyDate: new Date('2026-09-05'),
+        trainStartDate: new Date('2026-09-05'),
+        chartAt: new Date('2026-09-04T16:30:00Z'),
+        status: 'pending',
+        retryCount: 0,
+        firstRunAt: null,
+      });
+      mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
+        email: 'a@example.com',
+        mobile: '919999999999',
+      });
+
+      await service.runTask('task-cp', true);
+
+      // No IRCTC availability check should run for the no-destination path.
+      expect(mockBookingV2.findAlternatePaths).not.toHaveBeenCalled();
+      expect(mockNotification.notifyUser).not.toHaveBeenCalled();
+
+      expect(mockNotification.notifyChartPrepared).toHaveBeenCalledTimes(1);
+      expect(mockNotification.notifyChartPrepared).toHaveBeenCalledWith(
+        expect.objectContaining({
+          email: 'a@example.com',
+          mobile: '919999999999',
+          trainNumber: '12310',
+          trainName: 'RJPB Tejas Raj',
+        }),
+      );
+
+      // Task is marked completed and the email/whatsapp notified timestamps
+      // are recorded (since both sends succeeded in the mock).
+      const updateCalls =
+        mockPrisma.chartTimeAvailabilityTask.update.mock.calls;
+      const lastUpdate = updateCalls[updateCalls.length - 1][0];
+      expect(lastUpdate.data).toMatchObject({
+        status: 'completed',
+        emailNotifiedAt: expect.any(Date),
+        whatsappNotifiedAt: expect.any(Date),
+      });
     });
   });
 
