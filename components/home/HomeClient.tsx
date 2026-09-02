@@ -26,6 +26,7 @@ import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
 import { useAutoSearchExperiment } from "@/lib/hooks/useAutoSearchExperiment";
 import { AutoSearchTrainCard } from "@/components/home/AutoSearchTrainCard";
 import { TrainChartAlertSection } from "@/components/home/TrainChartAlertSection";
+import { HomeBannerAd, HomeSideAd } from "@/components/home/HomeSideAd";
 
 const SeatStatus = dynamic(
   () => import("@/components/booking-v2/SeatStatus").then((m) => m.SeatStatus),
@@ -261,6 +262,7 @@ function StationFieldSimple(props: {
   onOpenChange: (o: boolean) => void;
   suggestError: string | null;
   className?: string;
+  compact?: boolean;
 }) {
   const {
     label,
@@ -276,6 +278,7 @@ function StationFieldSimple(props: {
     onOpenChange,
     suggestError,
     className,
+    compact = false,
   } = props;
   const wrapRef = useRef<HTMLDivElement>(null);
   const inputId = useId();
@@ -297,14 +300,19 @@ function StationFieldSimple(props: {
     <div
       ref={wrapRef}
       className={cn(
-        "relative min-w-0 flex-1 border-b border-gray-200 px-3 py-2.5 sm:border-b-0 sm:border-r sm:py-2",
+        compact
+          ? "relative flex h-full min-w-0 flex-1 flex-col justify-center px-1 py-0"
+          : "relative min-w-0 flex-1 border-b border-gray-200 px-3 py-2.5 sm:border-b-0 sm:border-r sm:py-2",
         showList && "z-[55]",
         className,
       )}
     >
       <label
         htmlFor={inputId}
-        className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500"
+        className={cn(
+          "mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500",
+            compact && "mb-0 text-[9px] leading-3",
+        )}
       >
         <svg
           className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
@@ -340,7 +348,10 @@ function StationFieldSimple(props: {
           }
           aria-label={label}
           type="text"
-          className="block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4 touch-manipulation"
+          className={cn(
+            "block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4 touch-manipulation",
+            compact && "h-6 border-0 bg-transparent py-0 pl-0 pr-4 text-sm focus:border-0 focus:ring-0 sm:py-0 sm:pl-0",
+          )}
           placeholder={placeholder}
           value={displayText}
           autoComplete="off"
@@ -510,6 +521,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   }, []);
   const [trains, setTrains] = useState<TrainListItem[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
+  const [expandSearch, setExpandSearch] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [bestTrainLoading, setBestTrainLoading] = useState(false);
@@ -738,10 +750,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       setSearchError("Pick a journey date.");
       return;
     }
+    setExpandSearch(false);
     setHasSearched(true);
     setSearchError(null);
     setSearchLoading(true);
-    setTrains([]);
+    if (!hasSearched) setTrains([]);
     setBestTrainResult(null);
     setBestTrainError(null);
     setBestTrainProgress([]);
@@ -808,8 +821,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       setSearchError(msg);
     } finally {
       setSearchLoading(false);
+      setExpandSearch(false);
     }
-  }, [fromSt, toSt, journeyDate, acOnly]);
+  }, [fromSt, toSt, journeyDate, acOnly, hasSearched]);
 
   useEffect(() => {
     if (
@@ -960,6 +974,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
   const handleTabSwitch = (type: "route" | "pnr" | "seat") => {
     setSearchType(type);
+    setExpandSearch(false);
     alt.reset();
     if (type === "pnr") {
       trackAnalyticsEvent({
@@ -1000,26 +1015,168 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         ? t.tabs.pnr
         : t.tabs.seat;
 
+  /** Compact mode: collapse hero + form into a sticky summary bar after search */
+  const isCompact =
+    hasSearched &&
+    searchType === "route" &&
+    !expandSearch;
+
+  useEffect(() => {
+    if (process.env.NODE_ENV !== "development") return;
+
+    console.info("[compact-search]", {
+      hasSearched,
+      searchLoading,
+      expandSearch,
+      isCompact,
+      searchType,
+      from: fromSt
+        ? `${fromSt.stationCode} - ${fromSt.stationName}`
+        : null,
+      to: toSt ? `${toSt.stationCode} - ${toSt.stationName}` : null,
+      fromQ,
+      toQ,
+      journeyDate,
+      trainCount: trains.length,
+    });
+  }, [
+    hasSearched,
+    searchLoading,
+    expandSearch,
+    isCompact,
+    searchType,
+    fromSt,
+    toSt,
+    fromQ,
+    toQ,
+    journeyDate,
+    trains.length,
+  ]);
+
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
       <Suspense fallback={null}>
         <UrlSearchParamsSync onParams={handleUrlParams} />
       </Suspense>
       <Header lang={lang} nav={t.nav} showLanguage />
-      <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
-        <header className="mb-8">
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
-            {t.hero.titleLead}
-            <span className="text-blue-600">{t.hero.titleHighlight}</span>
-            {t.hero.titleTail}
-          </h1>
-          <p className="mt-2 max-w-2xl text-base text-slate-600">
-            {t.hero.subtitle}
-          </p>
-        </header>
 
-        <div className="mb-8 min-h-[148px]">
-          {/* Tab Switcher */}
+      {/* ── Compact search bar (shown after search) ── */}
+      {isCompact && (
+        <div className="sticky top-[49px] z-[19] border-b border-gray-200 bg-white/95 backdrop-blur-sm transition-all">
+          <div className="mx-auto flex max-w-3xl items-center gap-2 px-4 py-2 sm:gap-3 sm:px-6 lg:max-w-4xl">
+            <div className="flex h-14 min-w-0 flex-1 items-stretch rounded-lg border border-gray-200 bg-gray-50 px-2 sm:px-3">
+              <StationFieldSimple
+                compact
+                label="From"
+                placeholder={t.form.stationPlaceholder}
+                query={fromQ}
+                onUserType={(q) => {
+                  setFromQ(q);
+                  setFromSt(null);
+                }}
+                value={fromSt}
+                onSelect={(s) => {
+                  setFromSt(s);
+                  setFromQ(s.stationName);
+                }}
+                suggestions={fromSuggest}
+                loading={fromLoad}
+                pendingDebounce={fromQ !== fromDeb && fromQ.length >= 2}
+                open={fromOpen}
+                onOpenChange={openFrom}
+                suggestError={fromSuggestError}
+                className="border-0"
+              />
+              <svg className="h-3.5 w-3.5 shrink-0 self-center text-gray-400" aria-hidden="true" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+              <StationFieldSimple
+                compact
+                label="To"
+                placeholder={t.form.stationPlaceholder}
+                query={toQ}
+                onUserType={(q) => {
+                  setToQ(q);
+                  setToSt(null);
+                }}
+                value={toSt}
+                onSelect={(s) => {
+                  setToSt(s);
+                  setToQ(s.stationName);
+                }}
+                suggestions={toSuggest}
+                loading={toLoad}
+                pendingDebounce={toQ !== toDeb && toQ.length >= 2}
+                open={toOpen}
+                onOpenChange={openTo}
+                suggestError={toSuggestError}
+                className="border-0"
+              />
+            </div>
+            <div className="flex h-14 min-w-0 shrink-0 flex-col justify-center rounded-lg border border-gray-200 bg-gray-50 px-2 sm:px-3">
+              <label htmlFor={`compact-${journeyDateInputId}`} className="block text-[9px] font-bold uppercase tracking-wide text-gray-500">Date</label>
+              <JourneyDatePicker
+                id={`compact-${journeyDateInputId}`}
+                value={journeyDate}
+                onChange={(ymd) => {
+                  setJourneyDate(ymd);
+                  trackAnalyticsEvent({
+                    name: "search_date_selected",
+                    properties: { journey_date: ymd },
+                  });
+                }}
+                inputClassName="h-6 w-[92px] cursor-pointer border-0 bg-transparent p-0 text-xs font-semibold text-slate-700 focus:ring-0 sm:w-[120px] sm:text-sm"
+              />
+            </div>
+            <label className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-gray-600" title={t.form.acOnly}>
+              <input
+                type="checkbox"
+                checked={acOnly}
+                onChange={(event) => setAcOnly(event.target.checked)}
+                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600 touch-manipulation"
+                aria-label={t.form.acOnly}
+              />
+              <span className="hidden sm:inline">AC only</span>
+            </label>
+            <button
+              type="button"
+              onClick={() => {
+                if (!searchLoading) void runSearch();
+              }}
+              disabled={searchLoading}
+              className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500/35 disabled:opacity-60 touch-manipulation sm:px-5 sm:text-sm"
+            >
+              {searchLoading ? (
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+              ) : (
+                t.form.search
+              )}
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className={cn(
+        "mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-4xl",
+        isCompact ? "py-4" : "py-8",
+      )}>
+        {/* ── Hero headline (hidden in compact mode) ── */}
+        {!isCompact && (
+          <header className="mb-8">
+            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
+              {t.hero.titleLead}
+              <span className="text-blue-600">{t.hero.titleHighlight}</span>
+              {t.hero.titleTail}
+            </h1>
+            <p className="mt-2 max-w-2xl text-base text-slate-600">
+              {t.hero.subtitle}
+            </p>
+          </header>
+        )}
+
+        <div className={cn("mb-8", !isCompact && "min-h-[148px]")}>
+          {/* Tab Switcher (hidden in compact mode) */}
+          {!isCompact && (
           <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[360px] sm:max-w-[440px] backdrop-blur-md border border-white/40 shadow-xs">
             <button
               type="button"
@@ -1058,12 +1215,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               {t.tabs.seat}
             </button>
           </div>
+          )}
 
           <h2 className="sr-only">{tabLabel}</h2>
           {searchType === "seat" ? (
             <SeatStatus />
           ) : searchType === "route" ? (
-            <form
+            !isCompact && <form
               {...({
                 toolname: "search_train_tickets",
                 tooldescription:
@@ -1813,7 +1971,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             </div>
           )}
       </div>
+      <HomeSideAd />
       <HomeSeoContent t={t.seo} />
+      <div className="mx-auto my-8 flex min-h-[250px] max-w-3xl items-center justify-center px-4 sm:px-6 lg:max-w-4xl">
+        <HomeBannerAd zoneId="12090034" />
+      </div>
       <TrainScheduleBottomSheet
         open={scheduleModalOpen}
         onClose={() => setScheduleModalOpen(false)}

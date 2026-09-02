@@ -158,13 +158,6 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
         <Script
-          id="aclib-autotag"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `aclib.runAutoTag({ zoneId: 'jixgscmkxs' });`,
-          }}
-        />
-        <Script
           id="gtm-script"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
