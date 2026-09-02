@@ -69,7 +69,10 @@ export default function AdminUnsubscribesPage() {
       setNewReason("");
       trackAnalyticsEvent({
         name: "admin_unsubscribe_added",
-        properties: { channel: isEmail(newRecipient) ? "email" : "whatsapp" },
+        properties: {
+          channel: isEmail(newRecipient) ? "email" : "whatsapp",
+          recipient: newRecipient.trim(),
+        },
       });
       await load();
     } catch (err) {
@@ -83,7 +86,10 @@ export default function AdminUnsubscribesPage() {
     if (!confirm(`Remove unsubscribe for ${recipient}?`)) return;
     try {
       await apiClient.delete(`/api/notifications/admin/unsubscribes/${id}`);
-      trackAnalyticsEvent({ name: "admin_unsubscribe_removed" });
+      trackAnalyticsEvent({
+        name: "admin_unsubscribe_removed",
+        properties: { channel: isEmail(recipient) ? "email" : "whatsapp", recipient },
+      });
       await load();
     } catch (err) {
       alert(extractError(err, "Failed to remove unsubscribe."));

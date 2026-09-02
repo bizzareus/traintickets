@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
@@ -8,7 +8,7 @@ import { trackAnalyticsEvent } from "@/lib/analytics";
 
 type Status = "loading" | "unsubscribed" | "subscribed" | "error";
 
-export default function UnsubscribePage() {
+function UnsubscribePageContent() {
   const searchParams = useSearchParams();
   const initialRecipient = searchParams.get("r")?.trim() ?? "";
 
@@ -194,7 +194,14 @@ export default function UnsubscribePage() {
     </div>
   );
 }
-
 function detectChannel(recipient: string): "email" | "whatsapp" {
   return /^\d+$|^\+/.test(recipient.trim()) ? "whatsapp" : "email";
+}
+
+export default function UnsubscribePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50 flex items-center justify-center">Loading…</div>}>
+      <UnsubscribePageContent />
+    </Suspense>
+  );
 }

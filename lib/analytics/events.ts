@@ -372,6 +372,30 @@ export type AnalyticsEvent =
   | {
       name: "tatkal_alert_chime_toggled";
       properties: { enabled: boolean };
+    }
+  // Admin unsubscribe events
+  | {
+      name: "admin_unsubscribe_added";
+      properties: {
+        channel: "email" | "whatsapp";
+        recipient: string;
+      };
+    }
+  | {
+      name: "admin_unsubscribe_removed";
+      properties: {
+        channel: "email" | "whatsapp";
+        recipient: string;
+      };
+    }
+  // Public unsubscribe page events
+  | {
+      name: "notification_unsubscribe_completed";
+      properties: { channel: "email" | "whatsapp" };
+    }
+  | {
+      name: "notification_resubscribe_completed";
+      properties: { channel: "email" | "whatsapp" };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];
