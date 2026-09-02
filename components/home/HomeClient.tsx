@@ -28,17 +28,6 @@ import { AutoSearchTrainCard } from "@/components/home/AutoSearchTrainCard";
 import { TrainChartAlertSection } from "@/components/home/TrainChartAlertSection";
 import { HomeBannerAd, HomeSideAd } from "@/components/home/HomeSideAd";
 
-const SeatStatus = dynamic(
-  () => import("@/components/booking-v2/SeatStatus").then((m) => m.SeatStatus),
-  {
-    loading: () => (
-      <div className="flex h-36 items-center justify-center rounded-xl bg-white p-6 shadow-xs border border-gray-200">
-        <span className="h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600" />
-      </div>
-    ),
-  },
-);
-
 const SearchPnrPanel = dynamic(
   () =>
     import("@/components/booking-v2/SearchPnrPanel").then(
@@ -75,6 +64,7 @@ import {
 
 import { Header } from "@/components/Header";
 import { HomeSeoContent } from "@/components/HomeSeoContent";
+import ChartTimesFinder from "@/app/chart-times/ChartTimesFinder";
 import type { HomeStrings } from "@/lib/home/home-langs";
 
 type StationRow = {
@@ -1219,7 +1209,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
           <h2 className="sr-only">{tabLabel}</h2>
           {searchType === "seat" ? (
-            <SeatStatus />
+            <ChartTimesFinder />
           ) : searchType === "route" ? (
             !isCompact && <form
               {...({
