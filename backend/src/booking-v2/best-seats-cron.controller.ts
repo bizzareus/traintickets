@@ -3,10 +3,13 @@ import {
   Get,
   Headers,
   Post,
+  Req,
   UnauthorizedException,
 } from '@nestjs/common';
+import type { Request } from 'express';
 import { PrismaService } from '../prisma/prisma.service';
 import { BestSeatsCronService } from './best-seats-cron.service';
+import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 
 /**
  * Admin dashboard data for the best-seats cache cron: recent runs (when it ran,
@@ -37,19 +40,6 @@ export class BestSeatsCronController {
     return this.cron.runNow();
   }
 
-  private assertPassword(pw?: string): void {
-    const expected = String(
-      process.env.CHART_TIME_INGESTION_PASSWORD ?? '',
-    ).trim();
-    if (!expected) {
-      throw new UnauthorizedException('Admin password is not configured.');
-    }
-    if (String(pw ?? '') !== expected) {
-      throw new UnauthorizedException('Invalid admin password.');
-    }
-  }
-
-  /** Machine auth for the run trigger: a dedicated API key (x-api-key header). */
   private assertApiKey(key?: string): void {
     const expected = String(process.env.BEST_SEATS_CRON_API_KEY ?? '').trim();
     if (!expected) {
@@ -63,8 +53,11 @@ export class BestSeatsCronController {
   }
 
   @Get()
-  async status(@Headers('x-admin-password') pw?: string) {
-    this.assertPassword(pw);
+  async status(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
 
     const runs = await this.prisma.bestSeatsCronRun.findMany({
       orderBy: { startedAt: 'desc' },

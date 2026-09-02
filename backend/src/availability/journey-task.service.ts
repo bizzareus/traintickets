@@ -1323,23 +1323,30 @@ export class JourneyTaskService {
               retry_count = retry_count + 1,
               last_error = NULL
           WHERE id IN (
-            SELECT id FROM "ChartTimeAvailabilityTask"
-            WHERE completed_at IS NULL
+            SELECT t.id FROM "ChartTimeAvailabilityTask" t
+            WHERE t.completed_at IS NULL
               AND (
                 (
-                  status = 'pending'
-                  AND chart_at <= (NOW() AT TIME ZONE 'utc')
-                  AND (next_run_at IS NULL OR next_run_at <= (NOW() AT TIME ZONE 'utc'))
+                  t.status = 'pending'
+                  AND t.chart_at <= (NOW() AT TIME ZONE 'utc')
+                  AND (t.next_run_at IS NULL OR t.next_run_at <= (NOW() AT TIME ZONE 'utc'))
                 )
                 OR (
-                  status = 'running'
+                  t.status = 'running'
                   AND (
-                    locked_at IS NULL
-                    OR locked_at <= (NOW() AT TIME ZONE 'utc') - INTERVAL '10 minutes'
+                    t.locked_at IS NULL
+                    OR t.locked_at <= (NOW() AT TIME ZONE 'utc') - INTERVAL '10 minutes'
                   )
                 )
               )
-            ORDER BY COALESCE(next_run_at, chart_at) ASC
+              AND NOT EXISTS (
+                SELECT 1 FROM "notification_unsubscribe" nu
+                JOIN "JourneyMonitorContact" jmc
+                  ON jmc.journey_request_id = t.journey_request_id
+                WHERE nu.recipient = LOWER(TRIM(COALESCE(jmc.email, '')))
+                   OR nu.recipient = TRIM(COALESCE(jmc.mobile, ''))
+              )
+            ORDER BY COALESCE(t.next_run_at, t.chart_at) ASC
             LIMIT 20
             FOR UPDATE SKIP LOCKED
           )

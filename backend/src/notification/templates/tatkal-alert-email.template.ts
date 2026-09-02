@@ -1,5 +1,5 @@
 export interface TatkalAlertEmailParams {
-  category: "AC" | "NON_AC";
+  category: 'AC' | 'NON_AC';
   journeyDateReadable: string;
   tatkalDateReadable: string;
   tatkalTimeFormatted: string;
@@ -20,7 +20,9 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
-export function renderTatkalAlertEmailHtml(params: TatkalAlertEmailParams): string {
+export function renderTatkalAlertEmailHtml(
+  params: TatkalAlertEmailParams,
+): string {
   const {
     category,
     journeyDateReadable,
@@ -32,7 +34,7 @@ export function renderTatkalAlertEmailHtml(params: TatkalAlertEmailParams): stri
     trainName,
   } = params;
 
-  const isAc = category === "AC";
+  const isAc = category === 'AC';
   const trainLine = trainNumber
     ? `<p style="margin:6px 0 0 0; font-size:14px; font-weight:600; color:#1e293b;">Train: ${escapeHtml(trainName ? `${trainName} (${trainNumber})` : trainNumber)}</p>`
     : '';

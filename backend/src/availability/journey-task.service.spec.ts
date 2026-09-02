@@ -108,6 +108,28 @@ describe('JourneyTaskService', () => {
       expect(runTaskSpy).toHaveBeenCalledTimes(2);
       expect(result.tasksRun).toBe(2);
     });
+
+    it('excludes unsubscribed contacts via SQL filter (NOT EXISTS JOIN)', async () => {
+      mockPrisma.$queryRaw.mockResolvedValue([]);
+      const runTaskSpy = jest
+        .spyOn(service, 'runTask')
+        .mockResolvedValue(undefined);
+
+      await service.runDueTasks();
+
+      const sql = mockPrisma.$queryRaw.mock.calls[0][0];
+      // Prisma.sql returns an object whose `strings` and `values` arrays
+      // contain the raw template. Concatenate to verify the NOT EXISTS
+      // JOIN against notification_unsubscribe + JourneyMonitorContact is in
+      // the query.
+      const flat = Array.isArray(sql?.strings)
+        ? sql.strings.join('?')
+        : String(sql);
+      expect(flat).toContain('notification_unsubscribe');
+      expect(flat).toContain('JourneyMonitorContact');
+      expect(flat).toContain('NOT EXISTS');
+      expect(runTaskSpy).not.toHaveBeenCalled();
+    });
   });
 
   describe('runTask', () => {

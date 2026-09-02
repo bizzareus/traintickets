@@ -32,6 +32,7 @@ import { renderTatkalAlertEmailHtml } from './templates/tatkal-alert-email.templ
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
 import { NotificationDeduplicationService } from './notification-deduplication.service';
+import { NotificationUnsubscribeService } from './notification-unsubscribe.service';
 
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
 const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
@@ -130,6 +131,8 @@ export class NotificationService {
     private readonly whatsAppProviderFactory?: WhatsAppProviderFactory,
     @Optional()
     private readonly deduplicationService?: NotificationDeduplicationService,
+    @Optional()
+    private readonly unsubscribeService?: NotificationUnsubscribeService,
   ) {
     this.wasenderKey = this.config.get<string>('WASENDER_API_KEY');
     this.resendKey = this.config.get<string>('RESEND_API_KEY');
@@ -271,7 +274,9 @@ export class NotificationService {
     let whatsappSent = false;
 
     const isAc = params.category === 'AC';
-    const freezeWindow = isAc ? '09:50 AM – 10:10 AM IST' : '10:50 AM – 11:10 AM IST';
+    const freezeWindow = isAc
+      ? '09:50 AM – 10:10 AM IST'
+      : '10:50 AM – 11:10 AM IST';
     const loginTime = isAc ? '09:58 AM IST' : '10:58 AM IST';
 
     if (params.email?.trim()) {
@@ -854,6 +859,32 @@ export class NotificationService {
     return result;
   }
 
+  /**
+   * Build a tracked short link to /unsubscribe?r=<recipient>. Best-effort —
+   * returns undefined if short-link service is unavailable or recipient is empty.
+   */
+  private async createUnsubscribeShortLink(
+    recipient: string,
+    channel: 'email' | 'whatsapp',
+  ): Promise<string | undefined> {
+    if (!this.shortLinkService) return undefined;
+    const trimmed = recipient?.trim();
+    if (!trimmed) return undefined;
+    try {
+      const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
+      return await this.shortLinkService.createShortLink({
+        url: `${baseUrl}/unsubscribe?r=${encodeURIComponent(trimmed)}`,
+        payload: {
+          type: 'unsubscribe_link',
+          recipient: trimmed,
+          channel,
+        },
+      });
+    } catch {
+      return undefined;
+    }
+  }
+
   /** Build HTML email body matching booking UI: train header, route with >, chart prep, ticket cards, total right-aligned. */
   private async buildSeatsFoundEmailHtml(params: {
     trainLabel: string;
@@ -872,6 +903,7 @@ export class NotificationService {
     result?: Service2CheckResult;
     email?: string;
     mobile?: string;
+    unsubscribeUrl?: string;
   }): Promise<string> {
     const {
       trainLabel,
@@ -888,6 +920,7 @@ export class NotificationService {
       stationNameMap,
       stationScheduleList,
       result,
+      unsubscribeUrl,
     } = params;
 
     const coverage = this.extractJourneyLegCoverage({
@@ -1014,6 +1047,7 @@ export class NotificationService {
       journeyTimesLine,
       chartPreparationText,
       partialJourneyNotice,
+      unsubscribeUrl,
     });
   }
 
@@ -1027,6 +1061,7 @@ export class NotificationService {
     stationScheduleList?: ScheduleStation[];
     trainNumber: string;
     chartPreparationText?: string;
+    unsubscribeUrl?: string;
   }): string {
     const {
       trainLabel,
@@ -1082,6 +1117,9 @@ export class NotificationService {
     }
 
     lines.push('Track live seat updates anytime on LastBerth! 🚄');
+    if (params.unsubscribeUrl) {
+      lines.push(`Unsubscribe: ${params.unsubscribeUrl}`);
+    }
     return lines.join('\n').trim();
   }
 
@@ -1095,6 +1133,7 @@ export class NotificationService {
     stationScheduleList?: ScheduleStation[];
     trainNumber: string;
     chartPreparationText?: string;
+    unsubscribeUrl?: string;
   }): string {
     const {
       trainLabel,
@@ -1150,6 +1189,7 @@ export class NotificationService {
       routeDisplay,
       journeyDateReadable,
       chartPreparationText,
+      unsubscribeUrl: params.unsubscribeUrl,
     });
   }
 
@@ -1171,6 +1211,7 @@ export class NotificationService {
     result?: Service2CheckResult;
     email?: string;
     mobile?: string;
+    unsubscribeUrl?: string;
   }): Promise<string> {
     const {
       trainLabel,
@@ -1294,6 +1335,10 @@ export class NotificationService {
     }
 
     lines.push('Track live seat updates anytime on LastBerth! 🚄');
+    if (params.unsubscribeUrl) {
+      lines.push('');
+      lines.push(`Unsubscribe: ${params.unsubscribeUrl}`);
+    }
 
     return lines.join('\n').trim();
   }
@@ -1308,6 +1353,7 @@ export class NotificationService {
     toCode: string;
     date: string;
     searchUrl?: string;
+    unsubscribeUrl?: string;
   }): string {
     const {
       trainLabel,
@@ -1413,7 +1459,11 @@ export class NotificationService {
     <p style="margin:16px 0 16px 0;">Look for alternate trains available for your journey:</p>
     <a href="${searchHref}" style="display:inline-block;padding:10px 20px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:8px;font-weight:500;">Find Alternate Trains</a>
   </div>
-  <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.</p>
+  <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.${
+    params.unsubscribeUrl
+      ? ` <a href="${escapeHtml(params.unsubscribeUrl)}" style="color:#94a3b8; text-decoration:underline;">Unsubscribe</a>`
+      : ''
+  }</p>
 </body>
 </html>`;
   }
@@ -1428,6 +1478,7 @@ export class NotificationService {
     toCode: string;
     date: string;
     searchUrl?: string;
+    unsubscribeUrl?: string;
   }): string {
     const {
       trainLabel,
@@ -1493,13 +1544,17 @@ export class NotificationService {
       alternativesText = `\n\n*FOUND TICKETS IN ALTERNATE TRAINS - BOOK NOW* 🔥\n\n${trainLines}`;
     }
 
+    const unsubscribeLine = params.unsubscribeUrl
+      ? `\n\nUnsubscribe: ${params.unsubscribeUrl}`
+      : '';
+
     if (hasAlternatives) {
       return `*LastBerth Chart Alert* 🔔
 
 We didn't find any tickets in *${trainLabel}* for *${routeDisplay}* on *${journeyDateReadable}*.${alternativesText}
 
 Look for alternate trains available for your journey:
-${targetSearchUrl}`;
+${targetSearchUrl}${unsubscribeLine}`;
     }
 
     return `*LastBerth Chart Alert* 🔔
@@ -1514,7 +1569,7 @@ Date: ${journeyDateReadable}
 ${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}
 
 Look for alternate trains available for your journey:
-${targetSearchUrl}`;
+${targetSearchUrl}${unsubscribeLine}`;
   }
 
   /** Build station code -> name map from train schedule (for UI-style segment labels). */
@@ -1586,6 +1641,15 @@ ${targetSearchUrl}`;
       if (!email?.trim() && !mobile?.trim()) {
         return out;
       }
+      // Defence-in-depth: skip if recipient has unsubscribed
+      if (this.unsubscribeService) {
+        if (email && (await this.unsubscribeService.isUnsubscribed(email))) {
+          return out;
+        }
+        if (mobile && (await this.unsubscribeService.isUnsubscribed(mobile))) {
+          return out;
+        }
+      }
       if (result.status !== 'success') {
         return out;
       }
@@ -1593,6 +1657,24 @@ ${targetSearchUrl}`;
       if (isFollowUpLeg && !hasTickets) {
         return out;
       }
+
+      // Build a tracked unsubscribe short-link for the recipient we will
+      // notify (best-effort; falls back to no link if ShortLinkService is
+      // unavailable).
+      const [emailUnsubscribeUrl, whatsappUnsubscribeUrl] = await Promise.all([
+        email?.trim()
+          ? this.createUnsubscribeShortLink(email.trim(), 'email')
+          : Promise.resolve(undefined),
+        mobile?.trim()
+          ? this.createUnsubscribeShortLink(
+              normalizeE164Mobile(mobile.trim()),
+              'whatsapp',
+            )
+          : Promise.resolve(undefined),
+      ]);
+      const emailFooterUrl = emailUnsubscribeUrl;
+      const whatsappFooterUrl =
+        whatsappUnsubscribeUrl || (email ? emailUnsubscribeUrl : undefined);
 
       const trainLabel = [task.trainNumber, task.trainName]
         .filter(Boolean)
@@ -1712,6 +1794,7 @@ ${targetSearchUrl}`;
                   stationScheduleList,
                   trainNumber: task.trainNumber,
                   chartPreparationText,
+                  unsubscribeUrl: whatsappFooterUrl,
                 })
               : hasTickets
                 ? await this.buildWhatsAppSeatsFoundText({
@@ -1730,6 +1813,7 @@ ${targetSearchUrl}`;
                     result,
                     email: email || undefined,
                     mobile: mobile || undefined,
+                    unsubscribeUrl: whatsappFooterUrl,
                   })
                 : this.buildNoSeatsWhatsAppText({
                     trainLabel,
@@ -1741,6 +1825,7 @@ ${targetSearchUrl}`;
                     toCode: task.toStationCode,
                     date: journeyDateStr,
                     searchUrl: whatsappSearchUrl,
+                    unsubscribeUrl: whatsappFooterUrl,
                   });
 
           const templateName = hasTickets
@@ -1929,6 +2014,7 @@ ${targetSearchUrl}`;
                   stationScheduleList,
                   trainNumber: task.trainNumber,
                   chartPreparationText,
+                  unsubscribeUrl: emailFooterUrl,
                 })
               : hasTickets
                 ? await this.buildSeatsFoundEmailHtml({
@@ -1946,6 +2032,7 @@ ${targetSearchUrl}`;
                     stationNameMap,
                     stationScheduleList,
                     result,
+                    unsubscribeUrl: emailFooterUrl,
                   })
                 : this.buildNoSeatsEmailHtml({
                     trainLabel,
@@ -1957,6 +2044,7 @@ ${targetSearchUrl}`;
                     toCode: task.toStationCode,
                     date: journeyDateStr,
                     searchUrl: emailSearchUrl,
+                    unsubscribeUrl: emailFooterUrl,
                   });
 
           out.emailSent = await this.sendEmail(email.trim(), subject, html, {
@@ -2042,6 +2130,31 @@ ${targetSearchUrl}`;
     try {
       if (!email?.trim() && !mobile?.trim()) return out;
       if (!alternativeTrains || alternativeTrains.length === 0) return out;
+      // Defence-in-depth: skip if recipient has unsubscribed
+      if (this.unsubscribeService) {
+        if (email && (await this.unsubscribeService.isUnsubscribed(email))) {
+          return out;
+        }
+        if (mobile && (await this.unsubscribeService.isUnsubscribed(mobile))) {
+          return out;
+        }
+      }
+
+      // Build a tracked unsubscribe short-link for the recipient.
+      const [emailUnsubscribeUrl, whatsappUnsubscribeUrl] = await Promise.all([
+        email?.trim()
+          ? this.createUnsubscribeShortLink(email.trim(), 'email')
+          : Promise.resolve(undefined),
+        mobile?.trim()
+          ? this.createUnsubscribeShortLink(
+              normalizeE164Mobile(mobile.trim()),
+              'whatsapp',
+            )
+          : Promise.resolve(undefined),
+      ]);
+      const emailFooterUrl = emailUnsubscribeUrl;
+      const whatsappFooterUrl =
+        whatsappUnsubscribeUrl || (email ? emailUnsubscribeUrl : undefined);
 
       const journeyDateStr =
         journeyDate instanceof Date
@@ -2091,6 +2204,7 @@ ${targetSearchUrl}`;
             toStationCode,
             alternativeTrains,
             stationNameMap,
+            unsubscribeUrl: whatsappFooterUrl,
           });
           const altTemplateName =
             this.config.get<string>('WATI_TEMPLATE_ALT_TRAIN') ||
@@ -2177,6 +2291,7 @@ ${targetSearchUrl}`;
             toStationCode,
             alternativeTrains,
             stationNameMap,
+            unsubscribeUrl: emailFooterUrl,
           });
           out.emailSent = await this.sendEmail(email.trim(), subject, html, {
             skipFailureReport: true,
@@ -2251,6 +2366,7 @@ ${targetSearchUrl}`;
     toStationCode: string;
     alternativeTrains: BestTrainCandidateResult[];
     stationNameMap: Map<string, string>;
+    unsubscribeUrl?: string;
   }): string {
     const {
       originalTrainLabel,
@@ -2306,6 +2422,10 @@ ${targetSearchUrl}`;
     });
 
     lines.push('Track live seat updates anytime on LastBerth! 🚄');
+    if (params.unsubscribeUrl) {
+      lines.push('');
+      lines.push(`Unsubscribe: ${params.unsubscribeUrl}`);
+    }
 
     return lines.join('\n').trim();
   }
@@ -2319,6 +2439,7 @@ ${targetSearchUrl}`;
     toStationCode: string;
     alternativeTrains: BestTrainCandidateResult[];
     stationNameMap: Map<string, string>;
+    unsubscribeUrl?: string;
   }): string {
     const {
       originalTrainLabel,
@@ -2387,6 +2508,11 @@ ${targetSearchUrl}`;
     </div>
     ${cardsHtml}
   </div>
+  <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.${
+    params.unsubscribeUrl
+      ? ` <a href="${escapeHtml(params.unsubscribeUrl)}" style="color:#94a3b8; text-decoration:underline;">Unsubscribe</a>`
+      : ''
+  }</p>
 </body>
 </html>`;
   }

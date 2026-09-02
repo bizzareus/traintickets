@@ -2,6 +2,7 @@ import 'dotenv/config';
 import './instrument';
 
 import { NestFactory } from '@nestjs/core';
+import cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -13,6 +14,10 @@ async function bootstrap() {
       /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
     );
   };
+
+  // Required so the @Cookies() decorator on admin endpoints can read
+  // the httpOnly `admin_session` cookie set by /api/chart-time-ingestion/verify.
+  app.use(cookieParser());
 
   app.enableCors({
     origin: (origin, callback) => {

@@ -5,23 +5,37 @@ import {
   Get,
   Post,
   Query,
+  Res,
 } from '@nestjs/common';
+import type { Response } from 'express';
 import {
   CHART_TIME_INGESTION_MAX_TRAINS_PER_BATCH,
   ChartTimeIngestionService,
 } from './chart-time-ingestion.service';
+import {
+  buildAdminSessionCookieValue,
+  buildAdminSessionSetCookie,
+} from '../common/admin-auth';
 
 @Controller('api/chart-time-ingestion')
 export class ChartTimeIngestionController {
   constructor(private readonly ingestion: ChartTimeIngestionService) {}
 
   @Post('verify')
-  verify(@Body() body: { adminPassword: string }) {
+  verify(
+    @Body() body: { adminPassword: string },
+    @Res({ passthrough: true }) res: Response,
+  ) {
     const adminPassword = String(body.adminPassword ?? '');
     if (!adminPassword) {
       throw new BadRequestException('adminPassword is required.');
     }
-    return this.ingestion.verifyAdminPassword(adminPassword);
+    const result = this.ingestion.verifyAdminPassword(adminPassword);
+    const cookieValue = buildAdminSessionCookieValue();
+    if (cookieValue) {
+      res.setHeader('Set-Cookie', buildAdminSessionSetCookie(cookieValue));
+    }
+    return result;
   }
 
   @Post('run')

@@ -475,3 +475,17 @@ model SentNotificationLog {
   @@map("sent_notification_log")
 }
 
+/// Tracks users who opted out of notifications. Keyed by normalized recipient
+/// (lowercase email or E.164 mobile). The cron task-pickup query JOINs against
+/// this table to skip unsubscribed contacts entirely; NotificationService also
+/// checks it as a defence-in-depth guard before sending.
+model NotificationUnsubscribe {
+  id        String   @id @default(cuid())
+  recipient String   @unique               // normalized email or E.164 mobile
+  channel   String   @default("all")       // "all" | "email" | "whatsapp"
+  reason    String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([recipient])
+  @@map("notification_unsubscribe")
+}

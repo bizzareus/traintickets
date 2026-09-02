@@ -117,6 +117,14 @@ function AdminNavContent() {
       >
         Best-seats cron
       </Link>
+      <Link
+        href="/admin/unsubscribes"
+        className={`text-sm font-medium transition ${
+          pathname === "/admin/unsubscribes" ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"
+        }`}
+      >
+        Unsubscribes
+      </Link>
       <AdminLockButton />
     </nav>
   );

@@ -7,6 +7,7 @@ export interface EmailCardRowParams {
   journeyTimesLine?: string;
   chartPreparationText?: string;
   partialJourneyNotice?: string;
+  unsubscribeUrl?: string;
 }
 
 export function escapeHtml(str: string): string {
@@ -28,6 +29,7 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
     journeyTimesLine,
     chartPreparationText,
     partialJourneyNotice,
+    unsubscribeUrl,
   } = params;
 
   const totalRow =
@@ -78,7 +80,11 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
             </td>
           </tr>
         </table>
-        <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.</p>
+        <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor seat availability.${
+          unsubscribeUrl
+            ? ` <a href="${escapeHtml(unsubscribeUrl)}" style="color:#94a3b8; text-decoration:underline;">Unsubscribe</a>`
+            : ''
+        }</p>
       </td>
     </tr>
   </table>

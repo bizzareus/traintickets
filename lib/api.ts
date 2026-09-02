@@ -47,6 +47,11 @@ export function getAuthHeaders(): Record<string, string> {
 export const apiClient = axios.create({
   baseURL: API_URL,
   headers: { "Content-Type": "application/json" },
+  // Send the httpOnly `admin_session` cookie on same-origin and cross-origin
+  // requests so the backend can authenticate admin pages without a JS-readable
+  // password. The backend's CORS already allows lastberth.com + localhost
+  // with credentials.
+  withCredentials: true,
   // Default per-request timeout so a hung request aborts (and can be retried)
   // instead of hanging until the user gives up. Calls that legitimately need
   // longer (e.g. live scans) pass their own `timeout`, which overrides this.

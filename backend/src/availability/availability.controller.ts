@@ -10,17 +10,16 @@ import {
   Param,
   Post,
   Query,
+  Req,
   ServiceUnavailableException,
-  UnauthorizedException,
 } from '@nestjs/common';
+import type { Request } from 'express';
 import { randomUUID } from 'node:crypto';
 import { AvailabilityService } from './availability.service';
 import { JourneyTaskService } from './journey-task.service';
 import { NotificationService } from '../notification/notification.service';
-import {
-  isValidIndianMobile,
-  isValidEmail,
-} from '../common/validation.utils';
+import { isValidIndianMobile, isValidEmail } from '../common/validation.utils';
+import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 
 type NormalizedJourneyCreate = {
   trainNumber: string;
@@ -441,25 +440,15 @@ export class AvailabilityController {
     );
   }
 
-  /** Admin gate — same x-admin-password the other admin tools use. */
-  private assertAdmin(pw?: string): void {
-    const expected = String(
-      process.env.CHART_TIME_INGESTION_PASSWORD ?? '',
-    ).trim();
-    if (!expected) throw new UnauthorizedException('Admin password not set.');
-    if (String(pw ?? '') !== expected) {
-      throw new UnauthorizedException('Invalid admin password.');
-    }
-  }
-
   /** Recent chart-notification cron runs (per-tick log) for the admin viewer. */
   @Get('admin/cron-runs')
   async cronRuns(
-    @Headers('x-admin-password') pw: string | undefined,
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Query('limit') limit?: string,
     @Query('status') status?: string,
   ) {
-    this.assertAdmin(pw);
+    assertAdminAuth({ headerPw: pw, req });
     const runs = await this.journeyTask.getRecentCronRuns({
       cronName: 'chart-notification',
       limit: limit ? Number.parseInt(limit, 10) : 120,
@@ -526,7 +515,8 @@ export class AvailabilityController {
     if (!em && !mob) {
       throw new BadRequestException({
         code: 'MISSING_CONTACT',
-        message: 'Please provide either an email or mobile number to receive Tatkal alerts.',
+        message:
+          'Please provide either an email or mobile number to receive Tatkal alerts.',
       });
     }
 
@@ -566,18 +556,17 @@ export class AvailabilityController {
 
     let notificationResult = { emailSent: false, whatsappSent: false };
     if (this.notification) {
-      notificationResult =
-        await this.notification.sendTatkalAlertConfirmation({
-          email: em,
-          mobile: mob,
-          category: cleanCategory,
-          journeyDate,
-          tatkalDate: displayTatkalDate,
-          tatkalTime: cleanTatkalTime,
-          trainNumber: trainNumber ? String(trainNumber).trim() : undefined,
-          trainName: trainName ? String(trainName).trim() : undefined,
-          originOffsetDays: Number(originOffsetDays) || 0,
-        });
+      notificationResult = await this.notification.sendTatkalAlertConfirmation({
+        email: em,
+        mobile: mob,
+        category: cleanCategory,
+        journeyDate,
+        tatkalDate: displayTatkalDate,
+        tatkalTime: cleanTatkalTime,
+        trainNumber: trainNumber ? String(trainNumber).trim() : undefined,
+        trainName: trainName ? String(trainName).trim() : undefined,
+        originOffsetDays: Number(originOffsetDays) || 0,
+      });
     }
 
     return {

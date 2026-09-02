@@ -7,14 +7,18 @@ import { WatiProvider } from './whatsapp-providers/wati.provider';
 import { WhatsAppProviderFactory } from './whatsapp-providers/whatsapp.provider-factory';
 
 import { NotificationDeduplicationService } from './notification-deduplication.service';
+import { NotificationUnsubscribeService } from './notification-unsubscribe.service';
+import { NotificationUnsubscribeController } from './notification-unsubscribe.controller';
 
 @Module({
   imports: [ChartTimeModule, ShortLinkModule],
+  controllers: [NotificationUnsubscribeController],
   providers: [
     WasenderProvider,
     WatiProvider,
     WhatsAppProviderFactory,
     NotificationDeduplicationService,
+    NotificationUnsubscribeService,
     NotificationService,
   ],
   exports: [
@@ -22,6 +26,7 @@ import { NotificationDeduplicationService } from './notification-deduplication.s
     WatiProvider,
     WhatsAppProviderFactory,
     NotificationDeduplicationService,
+    NotificationUnsubscribeService,
     NotificationService,
   ],
 })

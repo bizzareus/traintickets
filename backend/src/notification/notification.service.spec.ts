@@ -944,10 +944,11 @@ describe('NotificationService', () => {
       expect(sendEmailSpy).toHaveBeenCalledTimes(1);
       expect(sendEmailSpy).toHaveBeenCalledWith(
         'passenger@example.com',
-        expect.stringContaining('AC Classes Opens on 2026-09-14 at 10:00:00 AM IST'),
+        expect.stringContaining(
+          'AC Classes Opens on 2026-09-14 at 10:00:00 AM IST',
+        ),
         expect.stringContaining('Your AC Classes Tatkal Alert Is Active!'),
       );
     });
   });
 });
-
