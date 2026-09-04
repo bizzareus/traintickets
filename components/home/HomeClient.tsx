@@ -2204,6 +2204,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   captureRef={altAlternatePathCaptureRef}
                   directFares={directFares}
                   hideSearchAllTrainsBanner={isTrainSearchV2}
+                  source={
+                    isTrainSearchV2 ? "skyscanner_search_experiment" : undefined
+                  }
                   onClose={alt.reset}
                   onOpenSchedule={(trainNumber, from, to) => {
                     setScheduleTrainNumber(trainNumber);

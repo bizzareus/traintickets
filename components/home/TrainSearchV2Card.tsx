@@ -599,7 +599,19 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                   href={directBookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    trackAnalyticsEvent({
+                      name: "alternate_paths_irctc_clicked",
+                      properties: {
+                        train_number: train.trainNumber,
+                        from_code: fromCode,
+                        to_code: toCode,
+                        class_code: directBookingClass,
+                        source: "skyscanner_search_experiment",
+                      },
+                    });
+                  }}
                   className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-emerald-700 transition-colors"
                 >
                   Book IRCTC ↗

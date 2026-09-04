@@ -624,6 +624,9 @@ export interface AlternatePathContentProps {
 
   /** When true, disables the "There are no full seats available in this journey" banner (e.g. for Train Search V2). */
   hideSearchAllTrainsBanner?: boolean;
+
+  /** Optional analytics source tag (e.g. "skyscanner_search_experiment"). */
+  source?: string;
 }
 
 /**
@@ -656,6 +659,7 @@ export function AlternatePathContent({
   onOpenSchedule,
   directFares = [],
   hideSearchAllTrainsBanner = false,
+  source,
 }: AlternatePathContentProps) {
   /** Flat list of display items: each is a single leg card or a collapsed "no tickets" span. */
   const alternatePathDisplayItems = useMemo(
@@ -1068,6 +1072,9 @@ export function AlternatePathContent({
                                         from_code: leg.from,
                                         to_code: leg.to,
                                         class_code: opt.travelClass,
+                                        trainStartDate:
+                                          altResult.trainStartDate ?? undefined,
+                                        ...(source ? { source } : {}),
                                       },
                                     })
                                   }

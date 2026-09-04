@@ -238,6 +238,7 @@ export type AnalyticsEvent =
         to_code: string;
         class_code: string;
         trainStartDate?: string;
+        source?: string;
       };
     }
   | {
