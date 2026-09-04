@@ -100,26 +100,29 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
  * pre-filled with the train + journey date.
  */
 export function renderChartPreparedNoDestinationEmailHtml(params: {
-  trainLabel: string;
-  journeyDateReadable: string;
-  chartPreparationText: string;
+  trainNumber: string;
+  trainName?: string | null;
+  formattedDateTime: string;
   checkTicketsUrl: string;
   unsubscribeUrl?: string;
 }): string {
   const {
-    trainLabel,
-    journeyDateReadable,
-    chartPreparationText,
+    trainNumber,
+    trainName,
+    formattedDateTime,
     checkTicketsUrl,
     unsubscribeUrl,
   } = params;
   const safeUrl = escapeHtml(checkTicketsUrl);
+  const tName = trainName?.trim() ? ` ${trainName.trim()}` : '';
+  const mainText = `The chart has been prepared for train ${trainNumber}${tName} for ${formattedDateTime}`;
+
   return `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chart prepared - ${escapeHtml(trainLabel)} - LastBerth</title>
+  <title>Chart prepared - ${escapeHtml(trainNumber)}${escapeHtml(tName)} - LastBerth</title>
 </head>
 <body style="margin:0; padding:0; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background:#f1f5f9; color:#334155;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;">
@@ -129,23 +132,13 @@ export function renderChartPreparedNoDestinationEmailHtml(params: {
           <tr>
             <td style="padding:24px 24px 20px;">
               <p style="margin:0; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#2563eb;">LastBerth Chart Alert</p>
-              <p style="margin:8px 0 0 0; font-size:20px; font-weight:700; color:#0f172a;">${escapeHtml(trainLabel)}</p>
-              <p style="margin:8px 0 0 0; font-size:14px; color:#334155;">${escapeHtml(journeyDateReadable)}</p>
+              <p style="margin:12px 0 0 0; font-size:16px; font-weight:600; color:#0f172a; line-height:1.5;">${escapeHtml(mainText)}</p>
             </td>
           </tr>
           <tr>
-            <td style="padding:0 24px 8px;">
-              <p style="margin:0; font-size:15px; color:#0f172a; line-height:1.5;">
-                The reservation chart for your train has been prepared.
-              </p>
-              <p style="margin:8px 0 0 0; font-size:14px; color:#475569; line-height:1.5;">
-                ${escapeHtml(chartPreparationText)}
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding:8px 24px 24px;">
-              <a href="${safeUrl}" style="display:inline-block; padding:12px 24px; border-radius:12px; background:#2563eb; color:#ffffff; font-size:15px; font-weight:600; text-decoration:none;">Check live tickets on LastBerth</a>
+            <td style="padding:0 24px 24px;">
+              <p style="margin:0 0 12px 0; font-size:14px; color:#334155;">Check for available tickets on <a href="${safeUrl}" style="color:#2563eb; text-decoration:underline;">${safeUrl}</a></p>
+              <a href="${safeUrl}" style="display:inline-block; padding:12px 24px; border-radius:12px; background:#2563eb; color:#ffffff; font-size:15px; font-weight:600; text-decoration:none;">Check for available tickets</a>
             </td>
           </tr>
         </table>

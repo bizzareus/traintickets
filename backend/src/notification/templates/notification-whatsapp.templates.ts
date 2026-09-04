@@ -87,29 +87,21 @@ export function buildWatiTemplateParameters(
 
 /**
  * Plain-text WhatsApp body for the "chart prepared — no destination" alert.
- * Mirrors `renderChartPreparedNoDestinationEmailHtml`: tells the user the
- * chart is ready and points them at a short-link that opens the search page
- * pre-filled with the train + journey date.
  */
 export function buildChartPreparedNoDestinationWhatsAppText(params: {
-  trainLabel: string;
-  journeyDateReadable: string;
-  chartPreparationText: string;
+  trainNumber: string;
+  trainName?: string | null;
+  formattedDateTime: string;
   checkTicketsUrl: string;
   unsubscribeUrl?: string;
 }): string {
-  const lines: string[] = [
-    '*LastBerth Chart Alert* 🔔',
-    `${params.trainLabel}`,
-    `${params.journeyDateReadable}`,
-    '',
-    'The reservation chart for your train has been prepared.',
-    params.chartPreparationText,
-    '',
-    `Check live tickets on LastBerth: ${params.checkTicketsUrl}`,
-  ];
+  const tName = params.trainName?.trim() ? ` ${params.trainName.trim()}` : '';
+  const line1 = `The chart has been prepared for train ${params.trainNumber}${tName} for ${params.formattedDateTime}`;
+  const line2 = `Check for available tickets on ${params.checkTicketsUrl}`;
+
+  const lines = [line1, '', line2];
   if (params.unsubscribeUrl) {
-    lines.push(`Unsubscribe: ${params.unsubscribeUrl}`);
+    lines.push('', `Unsubscribe: ${params.unsubscribeUrl}`);
   }
-  return lines.join('\n');
+  return lines.join("\n");
 }

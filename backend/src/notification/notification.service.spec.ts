@@ -993,14 +993,13 @@ describe('NotificationService', () => {
 
       const [, subject, html] = sendEmail.mock.calls[0];
       expect(subject).toContain('Chart prepared for 12310 RJPB TEJAS RAJ');
-      expect(html).toContain('12310 RJPB TEJAS RAJ');
+      expect(html).toContain('The chart has been prepared for train 12310 RJPB TEJAS RAJ for Chart for 12310 was prepared at 16:30 IST.');
+      expect(html).toContain('Check for available tickets on');
       expect(html).toContain('https://lastberth.com/s/abc123');
-      expect(html).toContain('Check live tickets on LastBerth');
 
       const [, whatsAppText] = sendWhatsApp.mock.calls[0];
-      expect(whatsAppText).toContain('LastBerth Chart Alert');
-      expect(whatsAppText).toContain('12310 RJPB TEJAS RAJ');
-      expect(whatsAppText).toContain('https://lastberth.com/s/abc123');
+      expect(whatsAppText).toContain('The chart has been prepared for train 12310 RJPB TEJAS RAJ for Chart for 12310 was prepared at 16:30 IST.');
+      expect(whatsAppText).toContain('Check for available tickets on https://lastberth.com/s/abc123');
     });
 
     it('returns both flags false when no contact is provided', async () => {
