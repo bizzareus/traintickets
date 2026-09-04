@@ -1859,7 +1859,7 @@ ${targetSearchUrl}${unsubscribeLine}`;
         return out;
       }
       if (isFollowUpLeg) {
-        this.logger.log(
+        console.log(
           `[notification] Leg update notifications disabled; skipping for train ${task.trainNumber}`,
         );
         return out;
