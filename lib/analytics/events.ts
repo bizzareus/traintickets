@@ -340,6 +340,19 @@ export type AnalyticsEvent =
         is_complete?: boolean;
       };
     }
+  | {
+      name: "find_ticket_cta_clicked";
+      properties: {
+        train_number: string;
+        train_name?: string | null;
+        class?: string;
+        class_code?: string;
+        date?: string;
+        journey_date?: string;
+        from_code?: string;
+        to_code?: string;
+      };
+    }
   // Tatkal Planner & Alert events
   | {
       name: "tatkal_planner_viewed";

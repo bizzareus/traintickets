@@ -1867,7 +1867,23 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                                 disabled={
                                   altLoading && altForTrain === t.trainNumber
                                 }
-                                onClick={() => findAlternatesForRoute(t, cls)}
+                                onClick={() => {
+                                  trackAnalyticsEvent({
+                                    name: "find_ticket_cta_clicked",
+                                    properties: {
+                                      class: cls,
+                                      class_code: cls,
+                                      train_number: t.trainNumber,
+                                      train_name: t.trainName,
+                                      date: journeyDate ?? undefined,
+                                      journey_date: journeyDate ?? undefined,
+                                      from_code:
+                                        t.fromStnCode || fromSt?.stationCode,
+                                      to_code: t.toStnCode || toSt?.stationCode,
+                                    },
+                                  });
+                                  findAlternatesForRoute(t, cls);
+                                }}
                               >
                                 Find Tickets
                               </button>
