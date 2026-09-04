@@ -1143,7 +1143,11 @@ export class JourneyTaskService {
     });
 
     const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
-    const chartPreparationText = `Chart for ${task.trainNumber} was prepared at ${task.chartAt.toISOString()}.`;
+    const chartDateObj = task.chartAt instanceof Date ? task.chartAt : new Date(task.chartAt);
+    const chartPreparationText = DateTime.fromJSDate(chartDateObj)
+      .setZone('Asia/Kolkata')
+      .toFormat('dd-MM hh:mm a')
+      .toLowerCase();
 
     try {
       const contact = await this.prisma.journeyMonitorContact.findUnique({

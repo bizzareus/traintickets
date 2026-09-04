@@ -97,24 +97,22 @@ describe('Notification Templates & Helpers', () => {
   describe('renderChartPreparedNoDestinationEmailHtml', () => {
     it('renders the train label, date, chart preparation text and a check-tickets CTA', () => {
       const html = renderChartPreparedNoDestinationEmailHtml({
-        trainLabel: '12310 RJPB TEJAS RAJ',
-        journeyDateReadable: 'Fri, 5th September',
-        chartPreparationText: 'Chart for 12310 was prepared at 16:30 IST.',
+        trainNumber: '12310',
+        trainName: 'RJPB TEJAS RAJ',
+        formattedDateTime: '05-09 04:30 pm',
         checkTicketsUrl: 'https://lastberth.com/s/abc123',
       });
-      expect(html).toContain('12310 RJPB TEJAS RAJ');
-      expect(html).toContain('Fri, 5th September');
-      expect(html).toContain('Chart for 12310 was prepared at 16:30 IST.');
+      expect(html).toContain('The chart has been prepared for train 12310 RJPB TEJAS RAJ for 05-09 04:30 pm');
+      expect(html).toContain('Check for available tickets on');
       expect(html).toContain('https://lastberth.com/s/abc123');
-      expect(html).toContain('Check live tickets on LastBerth');
       expect(html).not.toContain('Unsubscribe');
     });
 
     it('renders the unsubscribe link when provided', () => {
       const html = renderChartPreparedNoDestinationEmailHtml({
-        trainLabel: '12310',
-        journeyDateReadable: 'Fri, 5th September',
-        chartPreparationText: 'Chart prepared.',
+        trainNumber: '12310',
+        trainName: null,
+        formattedDateTime: '05-09 04:30 pm',
         checkTicketsUrl: 'https://lastberth.com/s/abc',
         unsubscribeUrl: 'https://lastberth.com/s/unsub',
       });
@@ -124,9 +122,9 @@ describe('Notification Templates & Helpers', () => {
 
     it('escapes the check-tickets URL to prevent HTML injection', () => {
       const html = renderChartPreparedNoDestinationEmailHtml({
-        trainLabel: '12310',
-        journeyDateReadable: 'Fri, 5th September',
-        chartPreparationText: 'Chart prepared.',
+        trainNumber: '12310',
+        trainName: null,
+        formattedDateTime: '05-09 04:30 pm',
         checkTicketsUrl: 'https://lastberth.com/s/" onerror="alert(1)',
       });
       expect(html).toContain('&quot;');
@@ -135,25 +133,23 @@ describe('Notification Templates & Helpers', () => {
   });
 
   describe('buildChartPreparedNoDestinationWhatsAppText', () => {
-    it('renders the train, date, chart preparation text and check-tickets link', () => {
+    it('renders the train, date, chart preparation text and check-tickets link in exact format', () => {
       const text = buildChartPreparedNoDestinationWhatsAppText({
-        trainLabel: '12310 RJPB TEJAS RAJ',
-        journeyDateReadable: 'Fri, 5th September',
-        chartPreparationText: 'Chart for 12310 was prepared at 16:30 IST.',
+        trainNumber: '12310',
+        trainName: 'RJPB TEJAS RAJ',
+        formattedDateTime: '05-09 04:30 pm',
         checkTicketsUrl: 'https://lastberth.com/s/abc',
       });
-      expect(text).toContain('LastBerth Chart Alert');
-      expect(text).toContain('12310 RJPB TEJAS RAJ');
-      expect(text).toContain('Fri, 5th September');
-      expect(text).toContain('Chart for 12310 was prepared at 16:30 IST.');
-      expect(text).toContain('https://lastberth.com/s/abc');
+      expect(text).toBe(
+        'The chart has been prepared for train 12310 RJPB TEJAS RAJ for 05-09 04:30 pm\n\nCheck for available tickets on https://lastberth.com/s/abc',
+      );
     });
 
     it('appends the unsubscribe line when provided', () => {
       const text = buildChartPreparedNoDestinationWhatsAppText({
-        trainLabel: '12310',
-        journeyDateReadable: 'Fri, 5th September',
-        chartPreparationText: 'Chart prepared.',
+        trainNumber: '12310',
+        trainName: null,
+        formattedDateTime: '05-09 04:30 pm',
         checkTicketsUrl: 'https://lastberth.com/s/abc',
         unsubscribeUrl: 'https://lastberth.com/s/unsub',
       });

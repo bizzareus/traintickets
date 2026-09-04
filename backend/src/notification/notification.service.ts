@@ -991,9 +991,9 @@ export class NotificationService {
 
       if (email?.trim()) {
         const html = renderChartPreparedNoDestinationEmailHtml({
-          trainLabel,
-          journeyDateReadable,
-          chartPreparationText: params.chartPreparationText,
+          trainNumber,
+          trainName,
+          formattedDateTime: params.chartPreparationText,
           checkTicketsUrl,
           unsubscribeUrl: emailUnsubUrl,
         });
@@ -1027,9 +1027,9 @@ export class NotificationService {
 
       if (mobile?.trim()) {
         const text = buildChartPreparedNoDestinationWhatsAppText({
-          trainLabel,
-          journeyDateReadable,
-          chartPreparationText: params.chartPreparationText,
+          trainNumber,
+          trainName,
+          formattedDateTime: params.chartPreparationText,
           checkTicketsUrl: whatsappCheckUrl || checkTicketsUrl,
           unsubscribeUrl: whatsappUnsubUrl,
         });
