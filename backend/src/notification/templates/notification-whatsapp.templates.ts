@@ -96,7 +96,7 @@ export function buildChartPreparedNoDestinationWhatsAppText(params: {
   unsubscribeUrl?: string;
 }): string {
   const tName = params.trainName?.trim() ? ` ${params.trainName.trim()}` : '';
-  const line1 = `The chart has been prepared for train ${params.trainNumber}${tName} for ${params.formattedDateTime}`;
+  const line1 = `The chart has been prepared for train ${params.trainNumber}${tName} at ${params.formattedDateTime}`;
   const line2 = `Check for available tickets on ${params.checkTicketsUrl}`;
 
   const lines = [line1, '', line2];

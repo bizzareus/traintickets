@@ -38,7 +38,10 @@ import {
   getTrainDoesNotRunOnDateError,
   parseJourneyYmdForValidation,
 } from '../common/train-run-day.validation';
-import { hasBookablePlanForNotification } from '../notification/notification.helpers';
+import {
+  hasBookablePlanForNotification,
+  ordinalEnglish,
+} from '../notification/notification.helpers';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
 const MAX_CHART_TASK_ATTEMPTS = 3;
@@ -1217,10 +1220,8 @@ export class JourneyTaskService {
     const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
     const chartDateObj =
       task.chartAt instanceof Date ? task.chartAt : new Date(task.chartAt);
-    const chartPreparationText = DateTime.fromJSDate(chartDateObj)
-      .setZone('Asia/Kolkata')
-      .toFormat('dd-MM hh:mm a')
-      .toLowerCase();
+    const chartDt = DateTime.fromJSDate(chartDateObj).setZone('Asia/Kolkata');
+    const chartPreparationText = `${ordinalEnglish(chartDt.day)} ${chartDt.toFormat('MMM, hh:mm a')}`;
 
     try {
       const contact = await this.prisma.journeyMonitorContact.findUnique({

@@ -115,7 +115,7 @@ export function renderChartPreparedNoDestinationEmailHtml(params: {
   } = params;
   const safeUrl = escapeHtml(checkTicketsUrl);
   const tName = trainName?.trim() ? ` ${trainName.trim()}` : '';
-  const mainText = `The chart has been prepared for train ${trainNumber}${tName} for ${formattedDateTime}`;
+  const mainText = `The chart has been prepared for train ${trainNumber}${tName} at ${formattedDateTime}`;
 
   return `<!DOCTYPE html>
 <html>

@@ -99,11 +99,11 @@ describe('Notification Templates & Helpers', () => {
       const html = renderChartPreparedNoDestinationEmailHtml({
         trainNumber: '12310',
         trainName: 'RJPB TEJAS RAJ',
-        formattedDateTime: '05-09 04:30 pm',
+        formattedDateTime: '5th Sep, 04:30 PM',
         checkTicketsUrl: 'https://lastberth.com/s/abc123',
       });
       expect(html).toContain(
-        'The chart has been prepared for train 12310 RJPB TEJAS RAJ for 05-09 04:30 pm',
+        'The chart has been prepared for train 12310 RJPB TEJAS RAJ at 5th Sep, 04:30 PM',
       );
       expect(html).toContain('Check for available tickets on');
       expect(html).toContain('https://lastberth.com/s/abc123');
@@ -114,7 +114,7 @@ describe('Notification Templates & Helpers', () => {
       const html = renderChartPreparedNoDestinationEmailHtml({
         trainNumber: '12310',
         trainName: null,
-        formattedDateTime: '05-09 04:30 pm',
+        formattedDateTime: '5th Sep, 04:30 PM',
         checkTicketsUrl: 'https://lastberth.com/s/abc',
         unsubscribeUrl: 'https://lastberth.com/s/unsub',
       });
@@ -126,7 +126,7 @@ describe('Notification Templates & Helpers', () => {
       const html = renderChartPreparedNoDestinationEmailHtml({
         trainNumber: '12310',
         trainName: null,
-        formattedDateTime: '05-09 04:30 pm',
+        formattedDateTime: '5th Sep, 04:30 PM',
         checkTicketsUrl: 'https://lastberth.com/s/" onerror="alert(1)',
       });
       expect(html).toContain('&quot;');
@@ -139,11 +139,11 @@ describe('Notification Templates & Helpers', () => {
       const text = buildChartPreparedNoDestinationWhatsAppText({
         trainNumber: '12310',
         trainName: 'RJPB TEJAS RAJ',
-        formattedDateTime: '05-09 04:30 pm',
+        formattedDateTime: '5th Sep, 04:30 PM',
         checkTicketsUrl: 'https://lastberth.com/s/abc',
       });
       expect(text).toBe(
-        'The chart has been prepared for train 12310 RJPB TEJAS RAJ for 05-09 04:30 pm\n\nCheck for available tickets on https://lastberth.com/s/abc',
+        'The chart has been prepared for train 12310 RJPB TEJAS RAJ at 5th Sep, 04:30 PM\n\nCheck for available tickets on https://lastberth.com/s/abc',
       );
     });
 
@@ -151,7 +151,7 @@ describe('Notification Templates & Helpers', () => {
       const text = buildChartPreparedNoDestinationWhatsAppText({
         trainNumber: '12310',
         trainName: null,
-        formattedDateTime: '05-09 04:30 pm',
+        formattedDateTime: '5th Sep, 04:30 PM',
         checkTicketsUrl: 'https://lastberth.com/s/abc',
         unsubscribeUrl: 'https://lastberth.com/s/unsub',
       });
