@@ -103,5 +103,5 @@ export function buildChartPreparedNoDestinationWhatsAppText(params: {
   if (params.unsubscribeUrl) {
     lines.push('', `Unsubscribe: ${params.unsubscribeUrl}`);
   }
-  return lines.join("\n");
+  return lines.join('\n');
 }

@@ -864,8 +864,11 @@ export class NotificationService {
   }
 
   /**
-   * Build a tracked short link to /unsubscribe?r=<recipient>. Best-effort —
-   * returns undefined if short-link service is unavailable or recipient is empty.
+   * Build a tracked short link to /unsubscribe?r=<recipient>. Reuses the
+   * same shortlink across all notifications to the same recipient (so we
+   * don't mint a new code per email/WhatsApp) and only mints a new one
+   * for unseen recipients. Best-effort — returns undefined if the
+   * short-link service is unavailable or recipient is empty.
    */
   private async createUnsubscribeShortLink(
     recipient: string,
@@ -876,7 +879,7 @@ export class NotificationService {
     if (!trimmed) return undefined;
     try {
       const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
-      return await this.shortLinkService.createShortLink({
+      return await this.shortLinkService.findOrCreateShortLink({
         url: `${baseUrl}/unsubscribe?r=${encodeURIComponent(trimmed)}`,
         payload: {
           type: 'unsubscribe_link',

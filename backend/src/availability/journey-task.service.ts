@@ -727,10 +727,7 @@ export class JourneyTaskService {
         toStationCode: toCode,
         journeyDate: new Date(journeyDateStr),
         monitoringContact: {
-          OR: [
-            ...(email ? [{ email }] : []),
-            ...(mobile ? [{ mobile }] : []),
-          ],
+          OR: [...(email ? [{ email }] : []), ...(mobile ? [{ mobile }] : [])],
         },
       },
     });
@@ -1218,7 +1215,8 @@ export class JourneyTaskService {
     });
 
     const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
-    const chartDateObj = task.chartAt instanceof Date ? task.chartAt : new Date(task.chartAt);
+    const chartDateObj =
+      task.chartAt instanceof Date ? task.chartAt : new Date(task.chartAt);
     const chartPreparationText = DateTime.fromJSDate(chartDateObj)
       .setZone('Asia/Kolkata')
       .toFormat('dd-MM hh:mm a')

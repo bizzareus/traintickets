@@ -102,7 +102,9 @@ describe('Notification Templates & Helpers', () => {
         formattedDateTime: '05-09 04:30 pm',
         checkTicketsUrl: 'https://lastberth.com/s/abc123',
       });
-      expect(html).toContain('The chart has been prepared for train 12310 RJPB TEJAS RAJ for 05-09 04:30 pm');
+      expect(html).toContain(
+        'The chart has been prepared for train 12310 RJPB TEJAS RAJ for 05-09 04:30 pm',
+      );
       expect(html).toContain('Check for available tickets on');
       expect(html).toContain('https://lastberth.com/s/abc123');
       expect(html).not.toContain('Unsubscribe');

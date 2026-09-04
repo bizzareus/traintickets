@@ -661,7 +661,6 @@ describe('JourneyTaskService', () => {
       );
     });
 
-
     it('skips queueing journey monitoring when duplicate alert exists', async () => {
       mockPrisma.journeyMonitoringRequest.findFirst.mockResolvedValue({
         id: 'jid-existing',
@@ -694,7 +693,9 @@ describe('JourneyTaskService', () => {
         'jid-new',
       );
 
-      expect(mockPrisma.journeyMonitoringRequest.findFirst).toHaveBeenCalledWith(
+      expect(
+        mockPrisma.journeyMonitoringRequest.findFirst,
+      ).toHaveBeenCalledWith(
         expect.objectContaining({
           where: expect.objectContaining({
             trainNumber: '12128',

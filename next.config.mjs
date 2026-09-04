@@ -23,6 +23,7 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ["lucide-react", "flowbite", "clsx", "tailwind-merge"],
+    cacheMaxMemorySize: 25 * 1024 * 1024,
   },
   env: {
     IS_BUILD_PHASE: phase === PHASE_PRODUCTION_BUILD ? "1" : "",

@@ -305,6 +305,42 @@ export class ShortLinkService {
   }
 
   /**
+   * Find an existing shortlink for the same URL + payload `type` and return it;
+   * if none exists, create one. Use for cases (e.g. per-recipient unsubscribe
+   * links) where every call would otherwise mint a fresh code, inflating
+   * click-tracking noise and cluttering the table.
+   */
+  async findOrCreateShortLink(params: {
+    url: string;
+    payload?: Record<string, unknown>;
+    expiresAt?: Date;
+  }): Promise<string> {
+    const { url, payload, expiresAt } = params;
+    const payloadType =
+      typeof payload?.['type'] === 'string' ? payload['type'] : null;
+
+    if (payloadType) {
+      // Look for any non-expired short-link with the same destination URL and
+      // payload.type. JSON equality on `payload->>'type'` lets Postgres skip
+      // rows whose payload doesn't match without us round-tripping every row.
+      const existing = await this.prisma.shortLink.findFirst({
+        where: {
+          url,
+          expiresAt: expiresAt ?? null,
+          payload: { path: ['type'], equals: payloadType },
+        },
+        orderBy: { createdAt: 'asc' },
+      });
+      if (existing) {
+        const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
+        return `${baseUrl}/s/${existing.code}`;
+      }
+    }
+
+    return this.createShortLink(params);
+  }
+
+  /**
    * Creates a tracked short link for LastBerth train search pages.
    */
   async createSearchShortLink(params: {

@@ -10,6 +10,7 @@ describe('ShortLinkService', () => {
     prisma = {
       shortLink: {
         findUnique: jest.fn(),
+        findFirst: jest.fn(),
         create: jest.fn(),
         update: jest.fn(),
         count: jest.fn(),
@@ -419,5 +420,110 @@ describe('ShortLinkService', () => {
       date: '2026-08-29',
       count: 25,
     });
+  });
+});
+
+describe('ShortLinkService.findOrCreateShortLink', () => {
+  let service: ShortLinkService;
+  let prisma: jest.Mocked<PrismaService>;
+
+  beforeEach(() => {
+    prisma = {
+      shortLink: {
+        findUnique: jest.fn(),
+        findFirst: jest.fn(),
+        create: jest.fn(),
+        update: jest.fn(),
+        count: jest.fn(),
+        findMany: jest.fn(),
+      },
+      shortLinkClick: {
+        create: jest.fn(),
+        count: jest.fn(),
+        findMany: jest.fn(),
+      },
+      user: { findMany: jest.fn() },
+      $transaction: jest.fn((promises) => Promise.all(promises)),
+      $queryRaw: jest.fn(),
+    } as unknown as jest.Mocked<PrismaService>;
+    service = new ShortLinkService(prisma);
+  });
+
+  const unsubscribeUrl =
+    'https://lastberth.com/unsubscribe?r=user%40example.com';
+  const unsubscribePayload = {
+    type: 'unsubscribe_link',
+    recipient: 'user@example.com',
+    channel: 'email',
+  };
+
+  it('returns the existing shortlink when one already exists for the same URL + payload.type', async () => {
+    (prisma.shortLink.findFirst as jest.Mock).mockResolvedValue({
+      id: 'sl_existing',
+      code: 'reused1',
+      url: unsubscribeUrl,
+      payload: unsubscribePayload,
+      clickCount: 0,
+      lastClickedAt: null,
+      createdAt: new Date(),
+      expiresAt: null,
+    });
+
+    const result = await service.findOrCreateShortLink({
+      url: unsubscribeUrl,
+      payload: unsubscribePayload,
+    });
+
+    expect(result).toBe(
+      `${process.env.FRONTEND_URL || 'https://lastberth.com'}/s/reused1`,
+    );
+    expect(prisma.shortLink.findFirst).toHaveBeenCalledTimes(1);
+    expect(prisma.shortLink.create).not.toHaveBeenCalled();
+  });
+
+  it('mints a new shortlink when no existing match is found', async () => {
+    (prisma.shortLink.findFirst as jest.Mock).mockResolvedValue(null);
+    (prisma.shortLink.findUnique as jest.Mock).mockResolvedValue(null);
+    (prisma.shortLink.create as jest.Mock).mockResolvedValue({
+      id: 'sl_new',
+      code: 'newcode',
+      url: unsubscribeUrl,
+      payload: unsubscribePayload,
+      clickCount: 0,
+      lastClickedAt: null,
+      createdAt: new Date(),
+      expiresAt: null,
+    });
+
+    const result = await service.findOrCreateShortLink({
+      url: unsubscribeUrl,
+      payload: unsubscribePayload,
+    });
+
+    expect(result).toMatch(/\/s\/[a-z0-9]{7}/);
+    expect(prisma.shortLink.create).toHaveBeenCalledTimes(1);
+  });
+
+  it('falls back to createShortLink when payload has no type', async () => {
+    (prisma.shortLink.findUnique as jest.Mock).mockResolvedValue(null);
+    (prisma.shortLink.create as jest.Mock).mockResolvedValue({
+      id: 'sl_legacy',
+      code: 'legacy1',
+      url: unsubscribeUrl,
+      payload: {},
+      clickCount: 0,
+      lastClickedAt: null,
+      createdAt: new Date(),
+      expiresAt: null,
+    });
+
+    const result = await service.findOrCreateShortLink({
+      url: unsubscribeUrl,
+      payload: {},
+    });
+
+    expect(result).toMatch(/\/s\/[a-z0-9]{7}/);
+    expect(prisma.shortLink.findFirst).not.toHaveBeenCalled();
+    expect(prisma.shortLink.create).toHaveBeenCalledTimes(1);
   });
 });
