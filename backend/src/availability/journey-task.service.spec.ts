@@ -33,6 +33,7 @@ describe('JourneyTaskService', () => {
     },
     journeyMonitoringRequest: {
       findUnique: jest.fn(),
+      findFirst: jest.fn().mockResolvedValue(null),
       create: jest.fn(),
     },
     sentNotificationLog: {
@@ -658,6 +659,53 @@ describe('JourneyTaskService', () => {
           trainNumber: '12128',
         }),
       );
+    });
+
+
+    it('skips queueing journey monitoring when duplicate alert exists', async () => {
+      mockPrisma.journeyMonitoringRequest.findFirst.mockResolvedValue({
+        id: 'jid-existing',
+      });
+
+      const validateSpy = jest
+        .spyOn(service, 'validateJourneyForMonitoring')
+        .mockResolvedValue({
+          valid: true,
+          context: {
+            schedule: { trainName: 'Shatabdi', stationList: [] } as any,
+            fromCode: 'PUNE',
+            toCode: 'CSMT',
+            trainNumber: '12128',
+            stationsToProcess: ['PUNE'],
+            jYmd: '2026-09-01',
+            trainStartDate: '2026-09-01',
+          },
+        });
+
+      await service.queueJourneyMonitoring(
+        {
+          trainNumber: '12128',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+          journeyDate: '2026-09-01',
+          classCode: 'CC',
+          email: 'test@example.com',
+        },
+        'jid-new',
+      );
+
+      expect(mockPrisma.journeyMonitoringRequest.findFirst).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            trainNumber: '12128',
+            fromStationCode: 'PUNE',
+            toStationCode: 'CSMT',
+          }),
+        }),
+      );
+      expect(
+        mockNotification.sendAdminMonitoringRequestEmail,
+      ).not.toHaveBeenCalled();
     });
 
     it('should not create tasks or send notification if validation fails', async () => {
