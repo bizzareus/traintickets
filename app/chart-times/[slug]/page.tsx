@@ -11,7 +11,9 @@ import { buildTrainSlug } from "@/lib/trainSlug";
 import ChartTimesTable from "./ChartTimesTable";
 import ChartTimeAlertCTA from "./ChartTimeAlertCTA";
 
-function normalizeJourneyDate(raw: string | string[] | undefined): string | null {
+function normalizeJourneyDate(
+  raw: string | string[] | undefined,
+): string | null {
   const v = (Array.isArray(raw) ? raw[0] : raw)?.trim().slice(0, 10);
   return v && /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : null;
 }
@@ -103,7 +105,9 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
   const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
   const canonicalUrl = `${siteUrl}/chart-times/${data.slug}`;
   const firstStation = data.stations[0];
-  const originChart = data.stations.find((s) => s.chartTimeLocal)?.chartTimeLocal;
+  const originChart = data.stations.find(
+    (s) => s.chartTimeLocal,
+  )?.chartTimeLocal;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -207,7 +211,7 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
 
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-          {data.trainName} ({data.trainNumber}) — IRCTC Vacancy Chart
+          {data.trainName} ({data.trainNumber}) | IRCTC Vacancy Chart
           Preparation Times
         </h1>
         <p className="mt-2 text-slate-600">
@@ -225,7 +229,7 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
 
       <section className="mb-6 rounded-xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700 shadow-sm">
         <h2 className="mb-2 text-base font-semibold text-slate-900">
-          Chart Preparation Summary — {data.trainName} ({data.trainNumber})
+          Chart Preparation Summary | {data.trainName} ({data.trainNumber})
         </h2>
         <p>{data.summary}</p>
       </section>
@@ -253,7 +257,8 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           trainNumber={data.trainNumber}
           trainName={data.trainName}
           destinationCode={
-            data.stations[data.stations.length - 1]?.stationCode || data.destinationStation
+            data.stations[data.stations.length - 1]?.stationCode ||
+            data.destinationStation
           }
           availableClasses={data.availableClasses}
         />
@@ -261,13 +266,19 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
 
       <section className="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="mb-4 text-xl font-bold text-slate-900">
-          Frequently Asked Questions — {data.trainName} ({data.trainNumber}) Chart Times
+          Frequently Asked Questions — {data.trainName} ({data.trainNumber})
+          Chart Times
         </h2>
         <div className="space-y-4">
           {faqItems.map((item, idx) => (
-            <div key={idx} className="rounded-lg border border-slate-100 bg-slate-50/60 p-4">
+            <div
+              key={idx}
+              className="rounded-lg border border-slate-100 bg-slate-50/60 p-4"
+            >
               <h3 className="font-semibold text-slate-900">{item.question}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-slate-700">{item.answer}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-slate-700">
+                {item.answer}
+              </p>
             </div>
           ))}
         </div>
