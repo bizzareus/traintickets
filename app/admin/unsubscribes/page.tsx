@@ -21,10 +21,17 @@ function isEmail(recipient: string): boolean {
   return /@/.test(recipient);
 }
 
+// Same shared key + header the other admin pages (cron-runs, best-seats-cron,
+// irctc-cookies) use. The httpOnly `admin_session` cookie (sent automatically
+// via withCredentials) remains as backup; the header covers the cases where
+// the cookie was never set (old backend build) or the browser withheld it.
+const PW_STORAGE_KEY = "irctc_keeper_admin_password";
+
 export default function AdminUnsubscribesPage() {
   const [entries, setEntries] = useState<UnsubscribeEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [password, setPassword] = useState("");
   const [filter, setFilter] = useState<"all" | "email" | "whatsapp">("all");
   const [search, setSearch] = useState("");
 
@@ -34,14 +41,26 @@ export default function AdminUnsubscribesPage() {
   const [adding, setAdding] = useState(false);
   const [addError, setAddError] = useState("");
 
-  // The browser auto-sends the httpOnly `admin_session` cookie set by
-  // AdminPasswordGate, so we don't need to pass the password as a header.
+  useEffect(() => {
+    setPassword(window.localStorage.getItem(PW_STORAGE_KEY) ?? "");
+  }, []);
+
+  const authHeaders = useCallback(
+    () => (password ? { "x-admin-password": password } : {}),
+    [password],
+  );
+
   const load = useCallback(async () => {
+    if (!password) {
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setError("");
     try {
       const { data } = await apiClient.get<{ entries: UnsubscribeEntry[] }>(
         "/api/notifications/admin/unsubscribes",
+        { headers: authHeaders() },
       );
       setEntries(data.entries ?? []);
     } catch (err) {
@@ -49,11 +68,17 @@ export default function AdminUnsubscribesPage() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [password, authHeaders]);
 
   useEffect(() => {
     void load();
   }, [load]);
+
+  const savePassword = () => {
+    window.localStorage.setItem(PW_STORAGE_KEY, password);
+    setLoading(true);
+    void load();
+  };
 
   async function handleAdd(e: React.FormEvent) {
     e.preventDefault();
@@ -61,10 +86,14 @@ export default function AdminUnsubscribesPage() {
     setAdding(true);
     setAddError("");
     try {
-      await apiClient.post("/api/notifications/admin/unsubscribes", {
-        recipient: newRecipient.trim(),
-        reason: newReason.trim() || undefined,
-      });
+      await apiClient.post(
+        "/api/notifications/admin/unsubscribes",
+        {
+          recipient: newRecipient.trim(),
+          reason: newReason.trim() || undefined,
+        },
+        { headers: authHeaders() },
+      );
       setNewRecipient("");
       setNewReason("");
       trackAnalyticsEvent({
@@ -85,7 +114,9 @@ export default function AdminUnsubscribesPage() {
   async function handleRemove(id: string, recipient: string) {
     if (!confirm(`Remove unsubscribe for ${recipient}?`)) return;
     try {
-      await apiClient.delete(`/api/notifications/admin/unsubscribes/${id}`);
+      await apiClient.delete(`/api/notifications/admin/unsubscribes/${id}`, {
+        headers: authHeaders(),
+      });
       trackAnalyticsEvent({
         name: "admin_unsubscribe_removed",
         properties: { channel: isEmail(recipient) ? "email" : "whatsapp", recipient },
@@ -126,6 +157,28 @@ export default function AdminUnsubscribesPage() {
         >
           Refresh
         </button>
+      </div>
+
+      {/* Password (same shared key as the other admin pages) */}
+      <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Admin password"
+          autoComplete="current-password"
+          className="w-64 rounded-lg border border-slate-300 px-3 py-1.5 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+        />
+        <button
+          onClick={savePassword}
+          disabled={!password}
+          className="rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:bg-slate-300"
+        >
+          Save & load
+        </button>
+        <span className="text-xs text-slate-500">
+          Saved once in this browser and reused by all admin pages.
+        </span>
       </div>
 
       <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -221,7 +274,9 @@ export default function AdminUnsubscribesPage() {
         <div className="rounded-2xl border border-rose-200 bg-rose-50 p-6 text-rose-700">
           <p className="text-sm">{error}</p>
           <p className="mt-2 text-xs">
-            Re-unlock the admin gate from the lock button in the header, then refresh.
+            Save the admin password above and click Refresh. If it still fails,
+            re-unlock the admin gate from the lock button in the header, then
+            refresh.
           </p>
         </div>
       )}
