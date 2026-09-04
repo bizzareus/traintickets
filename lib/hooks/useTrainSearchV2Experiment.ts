@@ -3,12 +3,12 @@
 import { useFeatureFlagVariantKey } from "@posthog/react";
 import { useState } from "react";
 
-const EXPERIMENT_FLAG_KEY = "train-search-v2";
+const EXPERIMENT_FLAG_KEY = "skyscanner-search";
 
 /**
  * Hook to evaluate PostHog experiment for the new Skyscanner-style Train Search V2 UI.
  *
- * Supports URL param override (`?exp=train-search-v2`, `?exp=variant-a`, or `?exp=control`) and
+ * Supports URL param override (`?exp=skyscanner-search`, `?exp=variant-a`, or `?exp=control`) and
  * `localStorage.getItem("exp_train_search_v2")` for local development & testing.
  */
 export function useTrainSearchV2Experiment() {
@@ -23,8 +23,7 @@ export function useTrainSearchV2Experiment() {
 
   const activeVariant = overrideVariant ?? posthogVariant;
   const isTrainSearchV2 =
-    activeVariant === "train-search-v2" ||
-    activeVariant === "train_search_v2" ||
+    activeVariant === "skyscanner-search" ||
     activeVariant === "v2" ||
     activeVariant === "test" ||
     activeVariant === "true" ||
