@@ -275,6 +275,40 @@ describe('JourneyTaskService', () => {
       expect(mockNotification.notifyUser).toHaveBeenCalled();
     });
 
+    it('skips sending leg update notification when existingNotification is found (isFollowUpLeg is true)', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
+        ...mockTaskData,
+        fromStationCode: 'NZM',
+        toStationCode: 'BPL',
+        stationCode: 'NZM',
+      });
+
+      mockBookingV2.findAlternatePaths.mockResolvedValueOnce({
+        legs: [
+          {
+            segmentKind: 'confirmed',
+            travelClass: '3A',
+            from: 'NZM',
+            to: 'BPL',
+          },
+        ],
+        trainNumber: '12121',
+      });
+
+      mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
+        email: 'test@example.com',
+        mobile: '9999999999',
+      });
+
+      mockPrisma.sentNotificationLog.findFirst.mockResolvedValueOnce({
+        id: 'existing-log-1',
+      });
+
+      await service.runTask('task-1', true);
+
+      expect(mockNotification.notifyUser).not.toHaveBeenCalled();
+    });
+
     it('attaches alternative trains directly to notifyUser when no tickets found and dispatches single notification', async () => {
       mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
         id: 'task-alt',

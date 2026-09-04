@@ -1858,10 +1858,13 @@ ${targetSearchUrl}${unsubscribeLine}`;
       if (result.status !== 'success') {
         return out;
       }
-      const hasTickets = hasBookablePlanForNotification(result);
-      if (isFollowUpLeg && !hasTickets) {
+      if (isFollowUpLeg) {
+        this.logger.log(
+          `[notification] Leg update notifications disabled; skipping for train ${task.trainNumber}`,
+        );
         return out;
       }
+      const hasTickets = hasBookablePlanForNotification(result);
 
       // Build a tracked unsubscribe short-link for the recipient we will
       // notify (best-effort; falls back to no link if ShortLinkService is

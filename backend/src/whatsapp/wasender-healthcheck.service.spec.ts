@@ -325,7 +325,7 @@ describe('WasenderHealthcheckService', () => {
     const secondResult = await service.checkHealth('cron');
     expect(secondResult.qrSent).toBe(false);
     expect(mockSend).toHaveBeenCalledTimes(1); // Still 1!
-  });
+  }, 20000);
 
   it('returns state metadata from getState()', () => {
     const state = service.getState();

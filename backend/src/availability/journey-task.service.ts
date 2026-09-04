@@ -1500,10 +1500,10 @@ export class JourneyTaskService {
 
           const isFollowUpLeg = Boolean(existingNotification);
 
-          // If follow-up check and no tickets found, skip alternative search & notification dispatch
-          if (isFollowUpLeg && !hasTickets) {
+          // Leg update notifications to all users are disabled.
+          if (isFollowUpLeg) {
             console.log(
-              `[journey] Skipping follow-up notification for task=${taskId} (no tickets unlocked)`,
+              `[journey] Skipping leg update notification for task=${taskId} (already notified)`,
             );
             return;
           }
