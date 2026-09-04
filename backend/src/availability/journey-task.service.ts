@@ -693,6 +693,51 @@ export class JourneyTaskService {
    * Asynchronously validates and creates journey monitoring tasks, sends admin notification,
    * hydrations, and immediate checks in the background.
    */
+
+  /**
+   * Check if an active/existing monitoring request already exists for the same user
+   * (matching email or mobile), train number, origin station, destination station, and journey date.
+   */
+  async hasDuplicateAlert(params: {
+    trainNumber: string;
+    fromStationCode: string;
+    toStationCode: string;
+    journeyDate: string | Date;
+    email?: string;
+    mobile?: string;
+  }): Promise<boolean> {
+    const email = params.email?.trim().toLowerCase() || undefined;
+    const rawMobile = params.mobile?.trim() || undefined;
+    const mobile = rawMobile ? toE164(rawMobile) : undefined;
+
+    if (!email && !mobile) return false;
+
+    const trainNumber = params.trainNumber.trim();
+    const fromCode = params.fromStationCode.trim().toUpperCase();
+    const toCode = (params.toStationCode || '').trim().toUpperCase();
+    const journeyDateStr =
+      params.journeyDate instanceof Date
+        ? params.journeyDate.toISOString().slice(0, 10)
+        : String(params.journeyDate).trim().slice(0, 10);
+
+    const existing = await this.prisma.journeyMonitoringRequest.findFirst({
+      where: {
+        trainNumber,
+        fromStationCode: fromCode,
+        toStationCode: toCode,
+        journeyDate: new Date(journeyDateStr),
+        monitoringContact: {
+          OR: [
+            ...(email ? [{ email }] : []),
+            ...(mobile ? [{ mobile }] : []),
+          ],
+        },
+      },
+    });
+
+    return Boolean(existing);
+  }
+
   async queueJourneyMonitoring(
     params: {
       trainNumber: string;
@@ -713,6 +758,21 @@ export class JourneyTaskService {
       if (!validation.valid) {
         this.logger.warn(
           `[journey/queue] Validation failed for train=${params.trainNumber} from=${params.fromStationCode} to=${params.toStationCode} jid=${journeyRequestId}: ${JSON.stringify(validation.errors)}`,
+        );
+        return;
+      }
+
+      const isDuplicate = await this.hasDuplicateAlert({
+        trainNumber: params.trainNumber,
+        fromStationCode: params.fromStationCode,
+        toStationCode: params.toStationCode,
+        journeyDate: params.journeyDate,
+        email: params.email,
+        mobile: params.mobile,
+      });
+      if (isDuplicate) {
+        this.logger.log(
+          `[journey/queue] Duplicate alert request detected for train=${params.trainNumber} from=${params.fromStationCode} to=${params.toStationCode} date=${params.journeyDate}; skipping creation`,
         );
         return;
       }
@@ -784,6 +844,21 @@ export class JourneyTaskService {
     if (!jYmd) {
       this.logger.warn(
         `[journey/queue-chart-prepared] invalid journeyDate=${params.journeyDate}; skipping`,
+      );
+      return;
+    }
+
+    const isDuplicate = await this.hasDuplicateAlert({
+      trainNumber,
+      fromStationCode: fromCode,
+      toStationCode: '',
+      journeyDate: jYmd,
+      email: params.email,
+      mobile: params.mobile,
+    });
+    if (isDuplicate) {
+      this.logger.log(
+        `[journey/queue-chart-prepared] Duplicate alert request detected for train=${trainNumber} from=${fromCode} date=${jYmd}; skipping creation`,
       );
       return;
     }
