@@ -621,6 +621,9 @@ export interface AlternatePathContentProps {
 
   /** Direct waitlist fares to compare against, sorted highest-first. */
   directFares?: { cls: string; fare: number }[];
+
+  /** When true, disables the "There are no full seats available in this journey" banner (e.g. for Train Search V2). */
+  hideSearchAllTrainsBanner?: boolean;
 }
 
 /**
@@ -652,6 +655,7 @@ export function AlternatePathContent({
   onClose,
   onOpenSchedule,
   directFares = [],
+  hideSearchAllTrainsBanner = false,
 }: AlternatePathContentProps) {
   /** Flat list of display items: each is a single leg card or a collapsed "no tickets" span. */
   const alternatePathDisplayItems = useMemo(
@@ -676,6 +680,7 @@ export function AlternatePathContent({
         }`
       : null;
   const showSearchAllTrains =
+    !hideSearchAllTrainsBanner &&
     !altLoading &&
     Boolean(searchAllTrainsHref) &&
     (Boolean(altError) || (Boolean(altResult) && !altResult?.isComplete));

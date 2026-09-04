@@ -24,9 +24,17 @@ import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
 import { cn } from "@/lib/utils";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
 import { useAutoSearchExperiment } from "@/lib/hooks/useAutoSearchExperiment";
+import { useTrainSearchV2Experiment } from "@/lib/hooks/useTrainSearchV2Experiment";
 import { AutoSearchTrainCard } from "@/components/home/AutoSearchTrainCard";
+import { TrainSearchV2ProgressBar } from "@/components/home/TrainSearchV2ProgressBar";
+import { TrainSearchV2Card } from "@/components/home/TrainSearchV2Card";
+import {
+  sortTrainSearchV2,
+  type TrainScanMeta,
+} from "@/lib/trainSearchV2Sort";
 import { TrainChartAlertSection } from "@/components/home/TrainChartAlertSection";
 import { HomeBannerAd, HomeSideAd } from "@/components/home/HomeSideAd";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const SearchPnrPanel = dynamic(
   () =>
@@ -557,9 +565,202 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   } = alt;
 
   const { isVariantA } = useAutoSearchExperiment();
+  const { isTrainSearchV2 } = useTrainSearchV2Experiment();
   const [failedAutoSearchTrains, setFailedAutoSearchTrains] = useState<
     Set<string>
   >(new Set());
+  const [v2DiscoveredEndToEndTrains, setV2DiscoveredEndToEndTrains] = useState<
+    Set<string>
+  >(new Set());
+  const [v2DiscoveredPartialTrains, setV2DiscoveredPartialTrains] = useState<
+    Set<string>
+  >(new Set());
+  const [v2CompletedScans, setV2CompletedScans] = useState<Set<string>>(
+    new Set(),
+  );
+  const [v2ScanMetaMap, setV2ScanMetaMap] = useState<
+    Map<string, TrainScanMeta>
+  >(new Map());
+  const v2TrackedViewKeyRef = useRef<string>("");
+
+  // Smooth layout FLIP animation for train search cards when dynamically re-sorted
+  const [v2TrainListAnimateRef] = useAutoAnimate<HTMLUListElement>({
+    duration: 400,
+    easing: "cubic-bezier(0.25, 1, 0.5, 1)",
+  });
+
+  // Reset V2 scan state when search parameters change
+  useEffect(() => {
+    setV2DiscoveredEndToEndTrains(new Set());
+    setV2DiscoveredPartialTrains(new Set());
+    setV2CompletedScans(new Set());
+    setV2ScanMetaMap(new Map());
+  }, [fromSt?.stationCode, toSt?.stationCode, journeyDate, acOnly]);
+
+  // For Train Search V2 experiment:
+  // Prioritized multi-tier sorting:
+  // 1. Direct IRCTC availability (chronological)
+  // 2. End-to-end full split journeys (chronological)
+  // 3. Partial split journeys (longest confirmed duration/hours first, then chronological)
+  // 4. Waitlisted only / in-flight scan (chronological)
+  const displayTrains = useMemo(() => {
+    if (!isTrainSearchV2) return trains;
+    return sortTrainSearchV2(trains, {
+      acOnly,
+      scanMetaMap: v2ScanMetaMap,
+      endToEndTrains: v2DiscoveredEndToEndTrains,
+      partialTrains: v2DiscoveredPartialTrains,
+    });
+  }, [
+    trains,
+    isTrainSearchV2,
+    acOnly,
+    v2ScanMetaMap,
+    v2DiscoveredEndToEndTrains,
+    v2DiscoveredPartialTrains,
+  ]);
+
+  const v2AutoScanTrainNumbers = useMemo(() => {
+    if (!isTrainSearchV2) return new Set<string>();
+    const set = new Set<string>();
+    for (const t of trains) {
+      if (!hasAnyAvailableSeat(t, acOnly)) {
+        set.add(t.trainNumber);
+      }
+    }
+    return set;
+  }, [trains, isTrainSearchV2, acOnly]);
+
+  const v2Stats = useMemo(() => {
+    let directAvailableCount = 0;
+    let waitlistedCount = 0;
+    for (const t of trains) {
+      if (hasAnyAvailableSeat(t, acOnly)) {
+        directAvailableCount++;
+      } else {
+        waitlistedCount++;
+      }
+    }
+    return {
+      directAvailableCount,
+      waitlistedCount,
+      totalToScan: waitlistedCount,
+    };
+  }, [trains, acOnly]);
+
+  const v2TotalDiscoveredCount = useMemo(() => {
+    return new Set([
+      ...v2DiscoveredEndToEndTrains,
+      ...v2DiscoveredPartialTrains,
+    ]).size;
+  }, [v2DiscoveredEndToEndTrains, v2DiscoveredPartialTrains]);
+
+  const handleV2SeatsDiscovered = useCallback(
+    (
+      trainNumber: string,
+      isComplete?: boolean,
+      confirmedDurationMinutes?: number,
+    ) => {
+      setV2ScanMetaMap((prev) => {
+        const next = new Map(prev);
+        const prevMeta = next.get(trainNumber);
+        next.set(trainNumber, {
+          isComplete: Boolean(isComplete || prevMeta?.isComplete),
+          confirmedDurationMinutes: Math.max(
+            prevMeta?.confirmedDurationMinutes ?? 0,
+            confirmedDurationMinutes ?? 0,
+          ),
+        });
+        return next;
+      });
+
+      if (isComplete) {
+        setV2DiscoveredEndToEndTrains((prev) =>
+          prev.has(trainNumber) ? prev : new Set(prev).add(trainNumber),
+        );
+        setV2DiscoveredPartialTrains((prev) => {
+          if (!prev.has(trainNumber)) return prev;
+          const next = new Set(prev);
+          next.delete(trainNumber);
+          return next;
+        });
+      } else {
+        setV2DiscoveredPartialTrains((prev) =>
+          prev.has(trainNumber) ? prev : new Set(prev).add(trainNumber),
+        );
+      }
+    },
+    [],
+  );
+
+  const handleV2ScanComplete = useCallback(
+    (
+      trainNumber: string,
+      hasTickets: boolean,
+      isComplete?: boolean,
+      confirmedDurationMinutes?: number,
+    ) => {
+      setV2CompletedScans((prev) => new Set(prev).add(trainNumber));
+      if (hasTickets) {
+        setV2ScanMetaMap((prev) => {
+          const next = new Map(prev);
+          const prevMeta = next.get(trainNumber);
+          next.set(trainNumber, {
+            isComplete: Boolean(isComplete || prevMeta?.isComplete),
+            confirmedDurationMinutes: Math.max(
+              prevMeta?.confirmedDurationMinutes ?? 0,
+              confirmedDurationMinutes ?? 0,
+            ),
+          });
+          return next;
+        });
+
+        if (isComplete) {
+          setV2DiscoveredEndToEndTrains((prev) => new Set(prev).add(trainNumber));
+          setV2DiscoveredPartialTrains((prev) => {
+            if (!prev.has(trainNumber)) return prev;
+            const next = new Set(prev);
+            next.delete(trainNumber);
+            return next;
+          });
+        } else {
+          setV2DiscoveredPartialTrains((prev) => new Set(prev).add(trainNumber));
+        }
+      }
+    },
+    [],
+  );
+
+  const v2IsLoading = useMemo(() => {
+    if (!isTrainSearchV2 || v2Stats.totalToScan === 0) return false;
+    return v2CompletedScans.size < v2Stats.totalToScan;
+  }, [isTrainSearchV2, v2CompletedScans.size, v2Stats.totalToScan]);
+
+  useEffect(() => {
+    if (
+      isTrainSearchV2 &&
+      trains.length > 0 &&
+      fromSt?.stationCode &&
+      toSt?.stationCode &&
+      journeyDate
+    ) {
+      const searchKey = `${fromSt.stationCode}-${toSt.stationCode}-${journeyDate}-${acOnly}`;
+      if (v2TrackedViewKeyRef.current === searchKey) return;
+      v2TrackedViewKeyRef.current = searchKey;
+
+      trackAnalyticsEvent({
+        name: "train_search_v2_viewed",
+        properties: {
+          from_code: fromSt.stationCode,
+          to_code: toSt.stationCode,
+          journey_date: journeyDate,
+          total_trains: trains.length,
+          direct_available_count: v2Stats.directAvailableCount,
+          waitlisted_count: v2Stats.waitlistedCount,
+        },
+      });
+    }
+  }, [isTrainSearchV2, trains.length, fromSt?.stationCode, toSt?.stationCode, journeyDate, acOnly, v2Stats]);
 
   const autoSearchEligibleTrainNumbers = useMemo(() => {
     const set = new Set<string>();
@@ -1378,11 +1579,15 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             </div>
           )}
 
-        {hasSearched && !searchLoading && !searchError && trains.length > 0 && (
-          <section
-            className="mb-5 rounded-xl border border-blue-100 bg-white p-4 shadow-sm"
-            aria-labelledby="best-train-finder-heading"
-          >
+        {hasSearched &&
+          !searchLoading &&
+          !searchError &&
+          trains.length > 0 &&
+          !isTrainSearchV2 && (
+            <section
+              className="mb-5 rounded-xl border border-blue-100 bg-white p-4 shadow-sm"
+              aria-labelledby="best-train-finder-heading"
+            >
             {cachedBest &&
             !bestTrainResult &&
             !bestTrainLoading &&
@@ -1703,28 +1908,41 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
           </section>
         )}
 
-        <ul className="space-y-5" role="list" aria-label="Train results">
-          {trains.map((t) => {
-            const isEligibleForAutoSearch = autoSearchEligibleTrainNumbers.has(
-              t.trainNumber,
-            );
-            const autoSearchFailed = failedAutoSearchTrains.has(t.trainNumber);
+        {/* Train Search V2 (Skyscanner Experience) Top Progress Bar */}
+        {isTrainSearchV2 &&
+          hasSearched &&
+          !searchLoading &&
+          !searchError &&
+          displayTrains.length > 0 && (
+            <TrainSearchV2ProgressBar
+              totalTrains={displayTrains.length}
+              scannedCount={v2CompletedScans.size}
+              totalToScan={v2Stats.totalToScan}
+              directAvailableCount={v2Stats.directAvailableCount}
+              splitSeatsFoundCount={v2TotalDiscoveredCount}
+              isLoading={v2IsLoading}
+            />
+          )}
 
-            // Variant A experiment: Auto-run search ONLY for the FIRST 3 unavailable trains
-            if (isVariantA && isEligibleForAutoSearch && !autoSearchFailed) {
-              return (
-                <AutoSearchTrainCard
-                  key={`variant-a-${t.trainNumber}-${t.departureTime}`}
+        <ul
+          ref={isTrainSearchV2 ? v2TrainListAnimateRef : undefined}
+          className="space-y-5"
+          role="list"
+          aria-label="Train results"
+        >
+          {isTrainSearchV2
+            ? displayTrains.map((t, idx) => (
+                <TrainSearchV2Card
+                  key={`v2-${t.trainNumber}`}
                   train={t}
                   journeyDate={journeyDate}
                   fromCode={fromSt?.stationCode}
+                  fromName={fromSt?.stationName}
                   toCode={toSt?.stationCode}
+                  toName={toSt?.stationName}
                   acOnly={acOnly}
-                  onFallbackToControl={() => {
-                    setFailedAutoSearchTrains((prev) =>
-                      new Set(prev).add(t.trainNumber),
-                    );
-                  }}
+                  autoScanEnabled={v2AutoScanTrainNumbers.has(t.trainNumber)}
+                  scanIndex={idx}
                   onOpenSchedule={(trainNumber, from, to) => {
                     setScheduleTrainNumber(trainNumber);
                     setScheduleHighlightFrom(from ?? "");
@@ -1744,191 +1962,211 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                       result,
                     });
                   }}
+                  onSeatsDiscovered={handleV2SeatsDiscovered}
+                  onScanComplete={handleV2ScanComplete}
                 />
-              );
-            }
+              ))
+            : trains.map((t) => {
+                const isEligibleForAutoSearch =
+                  autoSearchEligibleTrainNumbers.has(t.trainNumber);
+                const autoSearchFailed = failedAutoSearchTrains.has(
+                  t.trainNumber,
+                );
 
-            // Control UI (or trains with available seats):
-            // Classes shown for this train (respecting the AC-only filter).
-            const displayedClasses = (t.avlClasses ?? []).filter(
-              (c) =>
-                !acOnly || !["SL", "2S", "GN", "FC"].includes(c.toUpperCase()),
-            );
-            // When every shown class is directly bookable on IRCTC there's no
-            // reason to offer the "Search all classes" fallback scan.
-            const allBookable =
-              displayedClasses.length > 0 &&
-              displayedClasses.every((cls) => {
-                const gn = t.availabilityCache?.[cls];
-                return gn ? isIrctcDirectBookable(gn) : false;
-              });
-            return (
-              <li
-                key={`${t.trainNumber}-${t.departureTime}`}
-                className="rounded-xl border border-gray-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg flex flex-col md:flex-row md:items-stretch justify-between gap-5"
-              >
-                {/* Left Column: Train Info + Classes + Search All Action */}
-                <div className="flex-1 min-w-0 flex flex-col justify-between">
-                  <div>
-                    <h2 className="text-lg font-bold text-gray-900">
-                      {t.trainNumber} {t.trainName}
-                    </h2>
-                    <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
-                      <span className="font-semibold">
-                        {formatTimeAmPm(t.departureTime) ?? "—"} {t.fromStnCode}
-                      </span>
-                      <span className="text-gray-400">
-                        {formatDurationMinutes(t.duration)}
-                      </span>
-                      <span className="font-semibold">
-                        {formatTimeAmPm(t.arrivalTime) ?? "—"} {t.toStnCode}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="mt-3 -mx-1 overflow-x-auto pb-1">
-                    <div className="flex min-w-min gap-2 px-1">
-                      {displayedClasses.map((cls) => {
-                        const gn = t.availabilityCache?.[cls];
-                        const rawLine =
-                          gn?.availabilityDisplayName ??
-                          gn?.railDataStatus ??
-                          "—";
-                        const line = formatAvailabilityStatus(rawLine);
-                        const statusCls = gn
-                          ? chipGeneralStatusClass(line)
-                          : undefined;
-                        const bookable = gn ? isIrctcDirectBookable(gn) : false;
-                        const irctcHref =
-                          fromSt && toSt
-                            ? irctcBookingRedirect({
-                                from: fromSt.stationCode,
-                                to: toSt.stationCode,
-                                trainNo: t.trainNumber,
-                                classCode: cls,
-                              })
-                            : "https://www.irctc.co.in/eticketing/login";
-                        const chipShell = cn(
-                          "flex min-w-[100px] shrink-0 flex-col justify-between rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-2 text-xs",
+                // Variant A experiment: Auto-run search ONLY for the FIRST 3 unavailable trains
+                if (isVariantA && isEligibleForAutoSearch && !autoSearchFailed) {
+                  return (
+                    <AutoSearchTrainCard
+                      key={`variant-a-${t.trainNumber}-${t.departureTime}`}
+                      train={t}
+                      journeyDate={journeyDate}
+                      fromCode={fromSt?.stationCode}
+                      toCode={toSt?.stationCode}
+                      acOnly={acOnly}
+                      onFallbackToControl={() => {
+                        setFailedAutoSearchTrains((prev) =>
+                          new Set(prev).add(t.trainNumber),
                         );
+                      }}
+                      onOpenSchedule={(trainNumber, from, to) => {
+                        setScheduleTrainNumber(trainNumber);
+                        setScheduleHighlightFrom(from ?? "");
+                        setScheduleHighlightTo(to ?? "");
+                        setScheduleModalOpen(true);
+                      }}
+                      onOpenFullResultModal={({
+                        trainNumber,
+                        trainName,
+                        avlClasses,
+                        result,
+                      }) => {
+                        alt.showResult({
+                          trainNumber,
+                          trainName,
+                          avlClasses,
+                          result,
+                        });
+                      }}
+                    />
+                  );
+                }
 
-                        const chipBody = (
-                          <>
-                            <div className="font-bold text-gray-900">{cls}</div>
-                            <div className="mt-1 flex flex-col text-gray-700">
-                              <div className="text-[10px] uppercase text-gray-500">
-                                {gn ? "General" : "—"}
-                              </div>
-                              <div className="min-h-[16px] leading-tight">
-                                {bookable && gn ? (
-                                  <span
-                                    className={cn(
-                                      statusCls ?? "font-medium text-gray-900",
-                                    )}
-                                  >
-                                    {line}
+                // Control UI (or trains with available seats):
+                // Classes shown for this train (respecting the AC-only filter).
+                const displayedClasses = (t.avlClasses ?? []).filter(
+                  (c) =>
+                    !acOnly ||
+                    !["SL", "2S", "GN", "FC"].includes(c.toUpperCase()),
+                );
+                // When every shown class is directly bookable on IRCTC there's no
+                // reason to offer the "Search all classes" fallback scan.
+                const allBookable =
+                  displayedClasses.length > 0 &&
+                  displayedClasses.every((cls) => {
+                    const gn = t.availabilityCache?.[cls];
+                    return gn ? isIrctcDirectBookable(gn) : false;
+                  });
+                return (
+                  <li
+                    key={`${t.trainNumber}-${t.departureTime}`}
+                    className="rounded-xl border border-gray-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg flex flex-col md:flex-row md:items-stretch justify-between gap-5"
+                  >
+                    {/* Left Column: Train Info + Classes + Search All Action */}
+                    <div className="flex-1 min-w-0 flex flex-col justify-between">
+                      <div>
+                        <h2 className="text-lg font-bold text-gray-900">
+                          {t.trainNumber} {t.trainName}
+                        </h2>
+                        <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-700">
+                          <span className="font-semibold">
+                            {formatTimeAmPm(t.departureTime) ?? "—"}{" "}
+                            {t.fromStnCode}
+                          </span>
+                          <span className="text-gray-400">
+                            {formatDurationMinutes(t.duration)}
+                          </span>
+                          <span className="font-semibold">
+                            {formatTimeAmPm(t.arrivalTime) ?? "—"} {t.toStnCode}
+                          </span>
+                        </div>
+
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {displayedClasses.map((cls) => {
+                            const gn = t.availabilityCache?.[cls];
+                            const rawLine =
+                              gn?.availabilityDisplayName ??
+                              gn?.railDataStatus ??
+                              gn?.availablityStatus;
+                            const line = formatAvailabilityStatus(rawLine);
+                            const confirmed = isIrctcDirectBookable(gn);
+                            const bookUrl = irctcBookingRedirect({
+                              from: t.fromStnCode || fromSt?.stationCode || "",
+                              to: t.toStnCode || toSt?.stationCode || "",
+                              trainNo: t.trainNumber,
+                              classCode: cls,
+                            });
+                            return (
+                              <div
+                                key={cls}
+                                className="flex flex-col rounded-lg border border-gray-200 bg-gray-50/80 p-2 text-xs min-w-[80px]"
+                              >
+                                <span className="font-bold text-gray-800">
+                                  {cls}
+                                </span>
+                                <span
+                                  className={cn(
+                                    "font-semibold",
+                                    confirmed
+                                      ? "text-green-700"
+                                      : "text-amber-800",
+                                  )}
+                                >
+                                  {line}
+                                </span>
+                                {gn?.fare && (
+                                  <span className="text-gray-500">
+                                    ₹{gn.fare}
                                   </span>
+                                )}
+                                {confirmed ? (
+                                  <a
+                                    href={bookUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="mt-1 font-bold text-green-800 underline hover:text-green-950"
+                                  >
+                                    Book
+                                  </a>
                                 ) : (
-                                  <span className="invisible select-none">—</span>
+                                  <button
+                                    type="button"
+                                    className="mt-1 font-semibold text-blue-600 underline hover:text-blue-800 text-left"
+                                    onClick={() => {
+                                      trackAnalyticsEvent({
+                                        name: "find_ticket_cta_clicked",
+                                        properties: {
+                                          train_number: t.trainNumber,
+                                          train_name: t.trainName,
+                                          class: cls,
+                                          class_code: cls,
+                                          date: journeyDate ?? undefined,
+                                          journey_date: journeyDate ?? undefined,
+                                          from_code:
+                                            t.fromStnCode ||
+                                            fromSt?.stationCode,
+                                          to_code:
+                                            t.toStnCode || toSt?.stationCode,
+                                        },
+                                      });
+                                      findAlternatesForRoute(t, cls);
+                                    }}
+                                  >
+                                    Find Tickets
+                                  </button>
                                 )}
                               </div>
-                              {gn?.fare != null ? (
-                                <div className="font-semibold text-gray-900">
-                                  ₹{gn.fare}
-                                </div>
-                              ) : (
-                                <div className="invisible select-none font-semibold text-gray-900">
-                                  —
-                                </div>
-                              )}
-                            </div>
-                          </>
-                        );
+                            );
+                          })}
+                        </div>
+                      </div>
 
-                        return (
-                          <div
-                            key={cls}
-                            className="flex min-w-[100px] shrink-0 flex-col items-stretch gap-1.5"
-                          >
-                            <div className={chipShell}>{chipBody}</div>
-                            {bookable && gn ? (
-                              <a
-                                href={irctcHref}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="rounded-md bg-emerald-600 px-2 py-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-white no-underline hover:bg-emerald-700 focus-visible:outline focus-visible:ring-2 focus-visible:ring-emerald-500/40"
-                              >
-                                Book
-                              </a>
-                            ) : (
-                              <button
-                                type="button"
-                                className="rounded-md bg-blue-600 px-2 py-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 touch-manipulation"
-                                disabled={
-                                  altLoading && altForTrain === t.trainNumber
-                                }
-                                onClick={() => {
-                                  trackAnalyticsEvent({
-                                    name: "find_ticket_cta_clicked",
-                                    properties: {
-                                      class: cls,
-                                      class_code: cls,
-                                      train_number: t.trainNumber,
-                                      train_name: t.trainName,
-                                      date: journeyDate ?? undefined,
-                                      journey_date: journeyDate ?? undefined,
-                                      from_code:
-                                        t.fromStnCode || fromSt?.stationCode,
-                                      to_code: t.toStnCode || toSt?.stationCode,
-                                    },
-                                  });
-                                  findAlternatesForRoute(t, cls);
-                                }}
-                              >
-                                Find Tickets
-                              </button>
+                      {!allBookable && (
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          <button
+                            type="button"
+                            onClick={() => findAlternatesForRoute(t)}
+                            disabled={
+                              altLoading && altForTrain === t.trainNumber
+                            }
+                            className={cn(
+                              "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25 touch-manipulation",
+                              altLoading &&
+                                altForTrain === t.trainNumber &&
+                                "cursor-wait opacity-60",
                             )}
-                          </div>
-                        );
-                      })}
+                          >
+                            {altLoading && altForTrain === t.trainNumber
+                              ? "Searching…"
+                              : "Search all classes"}
+                          </button>
+                        </div>
+                      )}
                     </div>
-                  </div>
 
-                  {!allBookable && (
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      <button
-                        type="button"
-                        onClick={() => findAlternatesForRoute(t)}
-                        disabled={altLoading && altForTrain === t.trainNumber}
-                        className={cn(
-                          "inline-flex items-center rounded-lg border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/25 touch-manipulation",
-                          altLoading &&
-                            altForTrain === t.trainNumber &&
-                            "cursor-wait opacity-60",
-                        )}
-                      >
-                        {altLoading && altForTrain === t.trainNumber
-                          ? "Searching…"
-                          : "Search all classes"}
-                      </button>
+                    {/* Right Column: Vertical Subscribe to Chart Alert CTA */}
+                    <div className="w-full md:w-52 lg:w-56 shrink-0 border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-4 flex flex-col justify-center">
+                      <TrainChartAlertSection
+                        trainNumber={t.trainNumber}
+                        trainName={t.trainName}
+                        fromCode={t.fromStnCode || fromSt?.stationCode || ""}
+                        toCode={t.toStnCode || toSt?.stationCode || ""}
+                        journeyDate={journeyDate}
+                        avlClasses={t.avlClasses}
+                      />
                     </div>
-                  )}
-                </div>
-
-                {/* Right Column: Vertical Subscribe to Chart Alert CTA */}
-                <div className="w-full md:w-52 lg:w-56 shrink-0 border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-4 flex flex-col justify-center">
-                  <TrainChartAlertSection
-                    trainNumber={t.trainNumber}
-                    trainName={t.trainName}
-                    fromCode={t.fromStnCode || fromSt?.stationCode || ""}
-                    toCode={t.toStnCode || toSt?.stationCode || ""}
-                    journeyDate={journeyDate}
-                    avlClasses={t.avlClasses}
-                  />
-                </div>
-              </li>
-            );
-          })}
+                  </li>
+                );
+              })}
         </ul>
 
         {searchType === "route" &&
@@ -1965,6 +2203,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   onShare={() => void shareAlternatePathScreenshot()}
                   captureRef={altAlternatePathCaptureRef}
                   directFares={directFares}
+                  hideSearchAllTrainsBanner={isTrainSearchV2}
                   onClose={alt.reset}
                   onOpenSchedule={(trainNumber, from, to) => {
                     setScheduleTrainNumber(trainNumber);

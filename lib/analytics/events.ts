@@ -353,6 +353,55 @@ export type AnalyticsEvent =
         to_code?: string;
       };
     }
+  // Train Search V2 (Skyscanner Experience) events
+  | {
+      name: "train_search_v2_viewed";
+      properties: {
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        total_trains: number;
+        direct_available_count: number;
+        waitlisted_count: number;
+      };
+    }
+  | {
+      name: "train_search_v2_auto_scan_started";
+      properties: {
+        train_number: string;
+        train_name?: string | null;
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        scan_index: number;
+      };
+    }
+  | {
+      name: "train_search_v2_tickets_found";
+      properties: {
+        train_number: string;
+        train_name?: string | null;
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        ticket_count: number;
+        is_complete: boolean;
+        lowest_fare?: number | null;
+      };
+    }
+  | {
+      name: "train_search_v2_card_clicked";
+      properties: {
+        train_number: string;
+        train_name?: string | null;
+        from_code: string;
+        to_code: string;
+        journey_date: string;
+        is_direct_available: boolean;
+        ticket_count?: number;
+        has_alternate_result: boolean;
+      };
+    }
   // Tatkal Planner & Alert events
   | {
       name: "tatkal_planner_viewed";
