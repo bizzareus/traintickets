@@ -444,6 +444,18 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     });
 
     if (result) {
+      trackAnalyticsEvent({
+        name: "alternate_paths_popup_viewed",
+        properties: {
+          train_number: train.trainNumber,
+          from_code: fromCode,
+          to_code: toCode,
+          journey_date: journeyDate || "",
+          trainStartDate: result.trainStartDate ?? undefined,
+          source: "skyscanner_search_experiment",
+        },
+      });
+
       onOpenFullResultModal?.({
         trainNumber: train.trainNumber,
         trainName: train.trainName,

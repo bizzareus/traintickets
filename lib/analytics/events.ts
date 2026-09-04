@@ -204,6 +204,7 @@ export type AnalyticsEvent =
         to_code: string;
         journey_date: string;
         trainStartDate?: string;
+        source?: string;
       };
     }
   | {
