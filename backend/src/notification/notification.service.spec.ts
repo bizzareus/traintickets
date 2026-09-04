@@ -367,7 +367,6 @@ describe('NotificationService', () => {
         journeyDate: new Date('2026-08-30T00:00:00.000Z'),
       },
       result: resultWithChartPrep,
-      isFollowUpLeg: true,
     });
 
     expect(sendEmail).toHaveBeenCalledTimes(1);
@@ -445,7 +444,7 @@ describe('NotificationService', () => {
     expect(sendEmail).not.toHaveBeenCalled();
   });
 
-  it('formats notification as concise delta update when isFollowUpLeg is true and tickets are found', async () => {
+  it('suppresses notification when isFollowUpLeg is true even when tickets are found', async () => {
     const svc = new NotificationService(
       mockConfig({ wasenderKey: 'ws_test' }),
       mockStationCache(),
@@ -477,7 +476,7 @@ describe('NotificationService', () => {
       },
     };
 
-    await svc.notifyUser({
+    const out = await svc.notifyUser({
       mobile: '919876543210',
       task: {
         trainNumber: '22603',
@@ -490,14 +489,8 @@ describe('NotificationService', () => {
       isFollowUpLeg: true,
     });
 
-    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
-    const [, text] = sendWhatsApp.mock.calls[0];
-    expect(text).toContain('*LastBerth Leg Update* 🔔');
-    expect(text).toContain('New tickets found for your journey!');
-    expect(text).toContain('Leg: BAM > RJY');
-    expect(text).toContain('Ticket Found [SL] | CURR_AVL 12');
-    expect(text).toContain('BAM - Brahmapur → VZM - Vizianagram Jn');
-    expect(text).toContain('approx ₹205');
+    expect(out).toEqual({ emailSent: false, whatsappSent: false });
+    expect(sendWhatsApp).not.toHaveBeenCalled();
   });
 
   it('safely handles empty objects in openAiBookingPlan without crashing (JBP -> BGP regression test)', async () => {
@@ -546,7 +539,6 @@ describe('NotificationService', () => {
         journeyDate: new Date('2026-08-25T00:00:00.000Z'),
       },
       result: sparsePlanResult,
-      isFollowUpLeg: true,
     });
 
     expect(out).toEqual({ emailSent: true, whatsappSent: true });
