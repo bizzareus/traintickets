@@ -1,4 +1,4 @@
-import { Injectable, Optional } from '@nestjs/common';
+import { Injectable, Optional, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Resend } from 'resend';
 import {
@@ -120,6 +120,7 @@ function formatChartTimeIst(
 
 @Injectable()
 export class NotificationService {
+  private readonly logger = new Logger(NotificationService.name);
   private readonly wasenderKey: string | undefined;
   private readonly resendKey: string | undefined;
   private readonly resend: Resend | null;
