@@ -25,13 +25,9 @@ let initCalled = false;
 export function initPosthogBrowser(): void {
   if (typeof window === "undefined" || !POSTHOG_KEY) return;
 
-  // Don't capture anything from localhost — keeps local dev out of PostHog.
-  if (isBrowserOnLocalhost()) return;
-
-  // Suppression logic moved here to avoid hydration mismatches
   const isAdminPath = window.location.pathname.startsWith("/admin");
   const isAdminUser = window.localStorage.getItem("admin") === "true";
-  if (isAdminPath || isAdminUser) return;
+  const shouldOptOut = isBrowserOnLocalhost() || isAdminPath || isAdminUser;
 
   if (initCalled) return;
   initCalled = true;
@@ -42,8 +38,8 @@ export function initPosthogBrowser(): void {
         api_host: posthogApiHost(),
         capture_pageview: false,
         capture_pageleave: true,
-        disable_session_recording: false,
-        enable_recording_console_log: true,
+        disable_session_recording: shouldOptOut,
+        enable_recording_console_log: !shouldOptOut,
         session_recording: {
           maskAllInputs: false,
           maskInputOptions: {
@@ -54,6 +50,10 @@ export function initPosthogBrowser(): void {
         autocapture: false,
         persistence: "localStorage+cookie",
       });
+
+      if (shouldOptOut) {
+        posthog.opt_out_capturing();
+      }
     }
     window.posthog = posthog;
   } catch (err) {
