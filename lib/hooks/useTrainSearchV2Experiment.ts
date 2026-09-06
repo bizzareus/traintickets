@@ -5,23 +5,23 @@ import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { posthog } from "@/lib/analytics/posthog-client";
 
-const EXPERIMENT_FLAG_KEY = "skyscanner-led-ui-search";
+const EXPERIMENT_FLAG_KEY = "skyscanner-search";
 
 /**
  * Hook to evaluate PostHog experiment for the new Skyscanner-style Train Search V2 UI.
  *
  * PostHog Evaluation:
- * if (posthog.getFeatureFlag('skyscanner-led-ui-search') === 'skyscanner-search') {
- *   // Enable Skyscanner-style train search
- * } else {
- *   // Default to safe control variant
- * }
+ * posthog.onFeatureFlags(function() {
+ *   if (posthog.getFeatureFlag('skyscanner-search') == 'new-search') {
+ *     // do something
+ *   }
+ * });
  *
  * Scoping: Only active on the homepage ('/').
  * Supports overrides for testing:
- * - URL query: ?exp=skyscanner-search or ?skyscanner-led-ui-search=skyscanner-search
- * - localStorage: localStorage.setItem("exp_train_search_v2", "skyscanner-search")
- * - Console: posthog.featureFlags.override({'skyscanner-led-ui-search': 'skyscanner-search'})
+ * - URL query: ?exp=new-search or ?skyscanner-search=new-search
+ * - localStorage: localStorage.setItem("exp_train_search_v2", "new-search")
+ * - Console: posthog.featureFlags.override({'skyscanner-search': 'new-search'})
  */
 export function useTrainSearchV2Experiment() {
   const pathname = usePathname();
@@ -43,13 +43,13 @@ export function useTrainSearchV2Experiment() {
     const urlParams = new URLSearchParams(window.location.search);
     const expParam =
       urlParams.get("exp") ||
-      urlParams.get("skyscanner-led-ui-search") ||
+      urlParams.get("skyscanner-search") ||
       urlParams.get("variant");
     if (expParam) return expParam;
 
     return (
       window.localStorage.getItem("exp_train_search_v2") ||
-      window.localStorage.getItem("skyscanner-led-ui-search")
+      window.localStorage.getItem("skyscanner-search")
     );
   });
 
@@ -97,17 +97,18 @@ export function useTrainSearchV2Experiment() {
       overrideVariant ?? directVariant ?? reactPosthogVariant;
 
     const isTrainSearchV2 =
-      activeVariant === "skyscanner-search" ||
-      activeVariant === "skyscanner-led-ui-search" ||
-      activeVariant === "v2" ||
-      activeVariant === "test" ||
+      activeVariant === "new-search" ||
       activeVariant === "true" ||
       activeVariant === true;
 
     return {
       isTrainSearchV2,
       variant:
-        typeof activeVariant === "string" ? activeVariant : activeVariant ? "skyscanner-search" : "control",
+        typeof activeVariant === "string"
+          ? activeVariant
+          : activeVariant
+            ? "new-search"
+            : "control",
     };
   }, [pathname, overrideVariant, directVariant, reactPosthogVariant]);
 }
