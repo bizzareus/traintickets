@@ -830,4 +830,84 @@ describe('JourneyTaskService', () => {
       expect(result.tasks).toHaveLength(2);
     });
   });
+
+  describe('resendFailedWhatsAppNotifications', () => {
+    it('should increment whatsappRetryCount and mark as unsend when retries reach 3', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        {
+          id: 'task-retry-test',
+          journeyRequestId: 'jid-1',
+          trainNumber: '12128',
+          trainName: 'INTERCITY',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+          journeyDate: new Date('2026-09-06'),
+          status: 'completed',
+          whatsappNotifiedAt: null,
+          whatsappRetryCount: 2,
+          whatsappStatus: 'pending_retry',
+          resultPayload: { status: 'success' },
+          contact: { mobile: '919340004898', email: null },
+        },
+      ]);
+
+      mockNotification.notifyUser.mockResolvedValueOnce({
+        emailSent: false,
+        whatsappSent: false,
+      });
+
+      const res = await service.resendFailedWhatsAppNotifications(24);
+
+      expect(res.found).toBe(1);
+      expect(res.failed).toBe(1);
+      expect(res.resent).toBe(0);
+
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith({
+        where: { id: 'task-retry-test' },
+        data: expect.objectContaining({
+          whatsappRetryCount: { increment: 1 },
+          whatsappStatus: 'unsend',
+        }),
+      });
+    });
+
+    it('should mark whatsappStatus as sent and update whatsappNotifiedAt when notification succeeds', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        {
+          id: 'task-success-test',
+          journeyRequestId: 'jid-2',
+          trainNumber: '12128',
+          trainName: 'INTERCITY',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+          journeyDate: new Date('2026-09-06'),
+          status: 'completed',
+          whatsappNotifiedAt: null,
+          whatsappRetryCount: 1,
+          whatsappStatus: 'pending_retry',
+          resultPayload: { status: 'success' },
+          contact: { mobile: '919340004898', email: null },
+        },
+      ]);
+
+      mockNotification.notifyUser.mockResolvedValueOnce({
+        emailSent: false,
+        whatsappSent: true,
+      });
+
+      const res = await service.resendFailedWhatsAppNotifications(24);
+
+      expect(res.found).toBe(1);
+      expect(res.resent).toBe(1);
+      expect(res.failed).toBe(0);
+
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith({
+        where: { id: 'task-success-test' },
+        data: expect.objectContaining({
+          whatsappNotifiedAt: expect.any(Date),
+          whatsappStatus: 'sent',
+        }),
+      });
+    });
+  });
 });

@@ -30,6 +30,8 @@ async function main() {
     where: {
       status: 'completed',
       whatsappNotifiedAt: null,
+      whatsappRetryCount: { lt: 3 },
+      whatsappStatus: { not: 'unsend' },
       contact: {
         mobile: { not: null },
       },
@@ -70,12 +72,37 @@ async function main() {
       if (status.whatsappSent) {
         await prisma.chartTimeAvailabilityTask.update({
           where: { id: task.id },
-          data: { whatsappNotifiedAt: new Date() },
+          data: {
+            whatsappNotifiedAt: new Date(),
+            whatsappStatus: 'sent',
+          },
         });
         console.log(`Updated whatsappNotifiedAt for task ${task.id}`);
+      } else {
+        const currentRetries = task.whatsappRetryCount ?? 0;
+        const nextRetryCount = currentRetries + 1;
+        await prisma.chartTimeAvailabilityTask.update({
+          where: { id: task.id },
+          data: {
+            whatsappRetryCount: { increment: 1 },
+            ...(nextRetryCount >= 3 ? { whatsappStatus: 'unsend' } : {}),
+          },
+        });
+        console.log(
+          `Incremented retry count for task ${task.id} (${nextRetryCount}/3)${nextRetryCount >= 3 ? ' - marked as unsend' : ''}`,
+        );
       }
     } catch (err) {
       console.error(`Error processing task ${task.id}:`, err);
+      const currentRetries = task.whatsappRetryCount ?? 0;
+      const nextRetryCount = currentRetries + 1;
+      await prisma.chartTimeAvailabilityTask.update({
+        where: { id: task.id },
+        data: {
+          whatsappRetryCount: { increment: 1 },
+          ...(nextRetryCount >= 3 ? { whatsappStatus: 'unsend' } : {}),
+        },
+      }).catch(console.error);
     }
   }
 

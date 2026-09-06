@@ -197,6 +197,8 @@ model ChartTimeAvailabilityTask {
   completedAt        DateTime? @map("completed_at")
   emailNotifiedAt    DateTime? @map("email_notified_at")
   whatsappNotifiedAt DateTime? @map("whatsapp_notified_at")
+  whatsappRetryCount Int       @default(0) @map("whatsapp_retry_count")
+  whatsappStatus     String?   @map("whatsapp_status")
 
   contact JourneyMonitorContact? @relation(fields: [journeyRequestId], references: [journeyRequestId])
 

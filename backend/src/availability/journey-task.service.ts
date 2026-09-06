@@ -1252,9 +1252,17 @@ export class JourneyTaskService {
       const data: {
         emailNotifiedAt?: Date;
         whatsappNotifiedAt?: Date;
+        whatsappStatus?: string;
+        whatsappRetryCount?: { increment: number };
       } = {};
       if (status.emailSent) data.emailNotifiedAt = new Date();
-      if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
+      if (status.whatsappSent) {
+        data.whatsappNotifiedAt = new Date();
+        data.whatsappStatus = 'sent';
+      } else if (contact.mobile?.trim()) {
+        data.whatsappRetryCount = { increment: 1 };
+        data.whatsappStatus = 'pending_retry';
+      }
       await this.prisma.chartTimeAvailabilityTask.update({
         where: { id: taskId },
         data: {
@@ -1555,9 +1563,17 @@ export class JourneyTaskService {
             const data: {
               emailNotifiedAt?: Date;
               whatsappNotifiedAt?: Date;
+              whatsappStatus?: string;
+              whatsappRetryCount?: { increment: number };
             } = {};
             if (status.emailSent) data.emailNotifiedAt = new Date();
-            if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
+            if (status.whatsappSent) {
+              data.whatsappNotifiedAt = new Date();
+              data.whatsappStatus = 'sent';
+            } else if (contact.mobile?.trim()) {
+              data.whatsappRetryCount = { increment: 1 };
+              data.whatsappStatus = 'pending_retry';
+            }
             if (Object.keys(data).length > 0) {
               await this.prisma.chartTimeAvailabilityTask.update({
                 where: { id: taskId },
@@ -2176,6 +2192,8 @@ export class JourneyTaskService {
           {
             contact: { mobile: { not: null } },
             whatsappNotifiedAt: null,
+            whatsappRetryCount: { lt: 3 },
+            whatsappStatus: { not: 'unsend' },
           },
           {
             contact: { email: { not: null } },
@@ -2202,7 +2220,10 @@ export class JourneyTaskService {
       if (!contact) continue;
 
       const needsWhatsApp = Boolean(
-        contact.mobile?.trim() && !task.whatsappNotifiedAt,
+        contact.mobile?.trim() &&
+          !task.whatsappNotifiedAt &&
+          (task.whatsappRetryCount ?? 0) < 3 &&
+          task.whatsappStatus !== 'unsend',
       );
       const needsEmail = Boolean(
         contact.email?.trim() && !task.emailNotifiedAt,
@@ -2228,18 +2249,44 @@ export class JourneyTaskService {
             result,
           });
 
-          const data: { emailNotifiedAt?: Date; whatsappNotifiedAt?: Date } =
-            {};
-          if (needsWhatsApp && status.whatsappSent)
-            data.whatsappNotifiedAt = new Date();
-          if (needsEmail && status.emailSent) data.emailNotifiedAt = new Date();
+          const data: {
+            emailNotifiedAt?: Date;
+            whatsappNotifiedAt?: Date;
+            whatsappRetryCount?: { increment: number };
+            whatsappStatus?: string;
+          } = {};
+
+          if (needsWhatsApp) {
+            if (status.whatsappSent) {
+              data.whatsappNotifiedAt = new Date();
+              data.whatsappStatus = 'sent';
+            } else {
+              const currentRetries = task.whatsappRetryCount ?? 0;
+              const nextRetryCount = currentRetries + 1;
+              data.whatsappRetryCount = { increment: 1 };
+              if (nextRetryCount >= 3) {
+                data.whatsappStatus = 'unsend';
+                this.logger.warn(
+                  `WhatsApp notification retry limit reached (3) for task ${task.id}; marked as unsend`,
+                );
+              }
+            }
+          }
+
+          if (needsEmail && status.emailSent) {
+            data.emailNotifiedAt = new Date();
+          }
 
           if (Object.keys(data).length > 0) {
             await this.prisma.chartTimeAvailabilityTask.update({
               where: { id: task.id },
               data,
             });
-            resent++;
+            if (status.whatsappSent || status.emailSent) {
+              resent++;
+            } else {
+              failed++;
+            }
           } else {
             failed++;
           }
@@ -2248,6 +2295,24 @@ export class JourneyTaskService {
             `Failed to resend notification for task ${task.id}`,
             err,
           );
+          if (needsWhatsApp) {
+            const currentRetries = task.whatsappRetryCount ?? 0;
+            const nextRetryCount = currentRetries + 1;
+            await this.prisma.chartTimeAvailabilityTask
+              .update({
+                where: { id: task.id },
+                data: {
+                  whatsappRetryCount: { increment: 1 },
+                  ...(nextRetryCount >= 3 ? { whatsappStatus: 'unsend' } : {}),
+                },
+              })
+              .catch((updateErr) =>
+                this.logger.error(
+                  `Failed to update retry count for task ${task.id}`,
+                  updateErr,
+                ),
+              );
+          }
           failed++;
         }
       }
