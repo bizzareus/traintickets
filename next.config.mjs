@@ -21,9 +21,9 @@ const nextConfig = {
   outputFileTracingExcludes: {
     "*": ["./next.config.mjs", "content/chart-times/**"],
   },
+  cacheMaxMemorySize: 25 * 1024 * 1024,
   experimental: {
     optimizePackageImports: ["lucide-react", "flowbite", "clsx", "tailwind-merge"],
-    cacheMaxMemorySize: 25 * 1024 * 1024,
   },
   env: {
     IS_BUILD_PHASE: phase === PHASE_PRODUCTION_BUILD ? "1" : "",
@@ -93,6 +93,51 @@ const nextConfig = {
             key: "Link",
             value:
               '</.well-known/api-catalog>; rel="api-catalog", </openapi.json>; rel="service-desc"; type="application/json", </blog>; rel="service-doc"; type="text/html", </llms.txt>; rel="describedby"; type="text/plain"',
+          },
+        ],
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "query",
+            key: "from",
+          },
+        ],
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow",
+          },
+        ],
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "query",
+            key: "to",
+          },
+        ],
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow",
+          },
+        ],
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "query",
+            key: "train",
+          },
+        ],
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow",
           },
         ],
       },

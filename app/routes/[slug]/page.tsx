@@ -125,6 +125,7 @@ export default async function RoutePage({ params }: Props) {
           </div>
           <Link
             href={`/?from=${data.origin.code}&to=${data.destination.code}&fromName=${encodeURIComponent(data.origin.name)}&toName=${encodeURIComponent(data.destination.name)}`}
+            rel="nofollow"
             className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-6 py-2.5 rounded-lg shadow-sm hover:shadow transition duration-200"
           >
             Find Alternate Routes

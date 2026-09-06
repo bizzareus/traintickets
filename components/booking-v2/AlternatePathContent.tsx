@@ -735,6 +735,7 @@ export function AlternatePathContent({
           </span>
           <a
             href={searchAllTrainsHref}
+            rel="nofollow"
             className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-slate-900 px-3.5 py-2 text-sm font-bold text-white transition hover:bg-slate-700"
           >
             Find in other trains

@@ -132,14 +132,6 @@ const websiteJsonLd = {
   description:
     "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC.",
   url: baseUrl,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${baseUrl}/?train={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
 };
 
 export default function RootLayout({

@@ -11,7 +11,28 @@ const baseUrl = getBaseUrl();
 // show a favicon in search results — blocking them would hurt indexing, not help
 // it. Those asset URLs are never indexed as pages; "Crawled - currently not
 // indexed" is the normal, correct state for them.
-const DISALLOW = ["/admin", "/dashboard", "/api", "/login", "/register"];
+const DISALLOW = [
+  "/admin",
+  "/dashboard",
+  "/api",
+  "/login",
+  "/register",
+  // Dynamic search results and internal query strings (Google/Bing crawl budget protection)
+  "/*?*from=*",
+  "/*?*to=*",
+  "/*?*train=*",
+  "/*?*fromName=*",
+  "/*?*toName=*",
+  "/*?*date=*",
+  "/*?*search_term_string*",
+  "/?*",
+  "/hi?*",
+  "/mr?*",
+  "/bn?*",
+  "/ta?*",
+  "/te?*",
+  "/ml?*",
+];
 
 // AI search / assistant crawlers we explicitly welcome (so content can surface in
 // ChatGPT, Perplexity, Gemini/AI Overviews, etc.). All are allowed site-wide
