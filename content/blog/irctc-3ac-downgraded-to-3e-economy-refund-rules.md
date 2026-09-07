@@ -2,7 +2,7 @@
 title: "3AC Downgraded to 3E: IRCTC Refund & TDR Rules (2026)"
 description: "Booked 3AC but allotted 3E? Learn IRCTC automatic fare difference refund rules, 100% refund on cancellation before 2nd chart, and TDR filing deadlines."
 date: "2026-09-06"
-updated: "2026-09-06"
+updated: "2026-09-07"
 tags:
   - irctc
   - train booking
@@ -77,7 +77,7 @@ Here is an overview of standard fare differentials across typical route distance
 **Yes, Indian Railways commercial rules explicitly grant passengers the right to a 100% full refund with zero cancellation fee or clerkage deduction if their booked class is downgraded and they decline to travel. You must cancel your ticket before the second chart is prepared.**
 
 Many travellers choose not to travel in 3E because of restricted headroom, cramped bay width, or assignment to a claustrophobic Side Middle (SM) bunk. Under the official IRCTC alert and Railway Board directives:
-- Normal cancellation penalty slabs (such as 25% or 50% deductions within 48 to 12 hours) do **not** apply to involuntary downgrades.
+- Normal cancellation penalty slabs (such as 25% or 50% deductions within 48 to 4 hours) do **not** apply to involuntary downgrades.
 - Flat clerkage charges (normally ₹60 + GST per passenger on cancelled waitlists or RAC tickets) are completely waived.
 - Full fare, including base fare, reservation fee, superfast charge, and GST, is refunded in full. Only the non-refundable IRCTC booking convenience fee (₹15 to ₹30) is retained.
 

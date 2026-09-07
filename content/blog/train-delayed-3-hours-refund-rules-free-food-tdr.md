@@ -2,7 +2,7 @@
 title: "Train Delayed 3+ Hours: 100% Refund & Free Food (2026)"
 description: "Is your train delayed by 3+ hours? Learn how to get a 100% full refund with zero clerkage fee via TDR, free IRCTC meals, and counter ticket rules in 2026."
 date: "2026-08-28"
-updated: "2026-08-28"
+updated: "2026-09-07"
 tags:
   - train booking
   - irctc
@@ -28,7 +28,7 @@ tags:
 
 **Yes, Indian Railways rules grant a 100% full refund of your entire ticket fare with zero clerkage or cancellation fee deduction if your train is delayed by more than three hours at your journey boarding station and you choose not to travel.**
 
-Under standard railway cancellation rules, cancelling a confirmed ticket within 8 to 12 hours of departure results in a 50% penalty, while cancelling after chart preparation gives zero refund. However, when the railway itself causes the delay by over 3 hours (180 minutes), this penalty structure is completely waived. 
+Under standard railway cancellation rules, cancelling a confirmed ticket between 12 and 4 hours before departure results in a 50% penalty, while cancelling within 4 hours of departure or after chart preparation gives zero refund. However, when the railway itself causes the delay by over 3 hours (180 minutes), this penalty structure is completely waived. 
 
 Indian Railways treats the journey as cancelled due to operational failure. You receive your base fare, reservation fee, superfast surcharge, and GST back into your original payment method. 
 
