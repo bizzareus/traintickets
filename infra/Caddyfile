@@ -3,10 +3,7 @@
     email me@kartikarora.in
 }
 
-# Domain Access with HTTPS for Cloudflare Full SSL
-api.lastberth.com, api-v2.lastberth.com {
-    tls internal
-
+api.lastberth.com {
     log {
         output file /var/log/caddy/access.log {
             roll_size 20mb
