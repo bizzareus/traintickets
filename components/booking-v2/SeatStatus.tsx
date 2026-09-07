@@ -16,16 +16,17 @@ import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
 import { IstRailMaintenanceModal } from "@/components/IstRailMaintenance";
 import { useIstRailMaintenance } from "@/hooks/useIstRailMaintenance";
 
+import {
+  type StationRow,
+  fetchStationSuggestions,
+  getCachedStationSuggestions,
+} from "@/lib/stationCacheClient";
+
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
 type TrainOption = { number: string; label: string };
-
-type StationRow = {
-  stationCode: string;
-  stationName: string;
-};
 
 type CoachOption = {
   coachName: string;
@@ -313,16 +314,19 @@ function StationField({
       return;
     }
 
+    const cached = getCachedStationSuggestions(q);
+    if (cached) {
+      setSuggestions(cached);
+      setLoading(false);
+      return;
+    }
+
     let cancelled = false;
     setLoading(true);
     setError(null);
-    apiClient
-      .get<{ data?: { stationList?: StationRow[] } }>(
-        "/api/booking-v2/stations/suggest",
-        { params: { q, searchString: q } },
-      )
-      .then((r) => {
-        if (!cancelled) setSuggestions(r.data?.data?.stationList ?? []);
+    fetchStationSuggestions(q)
+      .then((list) => {
+        if (!cancelled) setSuggestions(list);
       })
       .catch(() => {
         if (!cancelled) {

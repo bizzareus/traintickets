@@ -96,13 +96,15 @@ async function main() {
       console.error(`Error processing task ${task.id}:`, err);
       const currentRetries = task.whatsappRetryCount ?? 0;
       const nextRetryCount = currentRetries + 1;
-      await prisma.chartTimeAvailabilityTask.update({
-        where: { id: task.id },
-        data: {
-          whatsappRetryCount: { increment: 1 },
-          ...(nextRetryCount >= 3 ? { whatsappStatus: 'unsend' } : {}),
-        },
-      }).catch(console.error);
+      await prisma.chartTimeAvailabilityTask
+        .update({
+          where: { id: task.id },
+          data: {
+            whatsappRetryCount: { increment: 1 },
+            ...(nextRetryCount >= 3 ? { whatsappStatus: 'unsend' } : {}),
+          },
+        })
+        .catch(console.error);
     }
   }
 

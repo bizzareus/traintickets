@@ -2221,9 +2221,9 @@ export class JourneyTaskService {
 
       const needsWhatsApp = Boolean(
         contact.mobile?.trim() &&
-          !task.whatsappNotifiedAt &&
-          (task.whatsappRetryCount ?? 0) < 3 &&
-          task.whatsappStatus !== 'unsend',
+        !task.whatsappNotifiedAt &&
+        (task.whatsappRetryCount ?? 0) < 3 &&
+        task.whatsappStatus !== 'unsend',
       );
       const needsEmail = Boolean(
         contact.email?.trim() && !task.emailNotifiedAt,

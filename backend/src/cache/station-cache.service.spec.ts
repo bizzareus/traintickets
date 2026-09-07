@@ -40,7 +40,7 @@ describe('StationCacheService', () => {
       expect(await svc.search('alpha')).toEqual([]);
     });
 
-    it('returns mapped rows when results come back', async () => {
+    it('returns mapped rows when results come back from in-memory cache', async () => {
       const rows = Array.from({ length: 6 }, (_, i) =>
         makeStation(`ST${i}`, `Station ${i}`),
       );
@@ -56,11 +56,32 @@ describe('StationCacheService', () => {
       });
     });
 
-    it('normalizes query to uppercase before DB lookup', async () => {
-      const rows = Array.from({ length: 5 }, (_, i) =>
-        makeStation(`M${i}`, `Mumbai ${i}`),
-      );
-      const findManyMock = jest.fn().mockResolvedValue(rows);
+    it('prioritizes exact code match, then code prefix, then name match', async () => {
+      const rows = [
+        makeStation('PND', 'Pendra Road'),
+        makeStation('PNVL', 'Panvel'),
+        makeStation('NDLS', 'New Delhi'),
+        makeStation('DLI', 'Old Delhi'),
+      ];
+      const prisma = makePrisma(rows);
+      const svc = new StationCacheService(prisma);
+
+      // Search 'PNVL' should have exact match 'PNVL' first
+      const pnvlResult = await svc.search('pnvl');
+      expect(pnvlResult[0].stationCode).toBe('PNVL');
+
+      // Search 'DEL' should match 'New Delhi' / 'Old Delhi'
+      const delResult = await svc.search('del');
+      const codes = delResult.map((r) => r.stationCode);
+      expect(codes).toContain('NDLS');
+      expect(codes).toContain('DLI');
+    });
+
+    it('normalizes query to uppercase before DB lookup on fallback', async () => {
+      const findManyMock = jest
+        .fn()
+        .mockResolvedValueOnce([]) // warmCache returns empty
+        .mockResolvedValueOnce([makeStation('M0', 'Mumbai 0')]); // fallback DB query
       const prisma = {
         stationCache: { findMany: findManyMock },
       } as unknown as PrismaService;
@@ -68,10 +89,37 @@ describe('StationCacheService', () => {
 
       await svc.search('mum');
 
-      const whereArg = findManyMock.mock.calls[0][0].where as {
+      expect(findManyMock).toHaveBeenCalledTimes(2);
+      const whereArg = findManyMock.mock.calls[1][0].where as {
         OR: Array<{ stationCode?: { startsWith: string } }>;
       };
       expect(whereArg.OR[0].stationCode!.startsWith).toBe('MUM');
+    });
+  });
+
+  describe('namesForCodes', () => {
+    it('resolves station names from memory without additional DB queries', async () => {
+      const rows = [
+        makeStation('NDLS', 'New Delhi'),
+        makeStation('PNVL', 'Panvel'),
+      ];
+      const prisma = makePrisma(rows);
+      const svc = new StationCacheService(prisma);
+
+      const findManySpy = jest.spyOn(prisma.stationCache, 'findMany');
+      const map = await svc.namesForCodes(['ndls', 'PNVL']);
+      expect(map.get('NDLS')).toBe('New Delhi');
+      expect(map.get('PNVL')).toBe('Panvel');
+
+      // Warmed once on load, zero additional findMany calls for where: { in: ... }
+      expect(findManySpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('returns empty map when given empty array', async () => {
+      const prisma = makePrisma();
+      const svc = new StationCacheService(prisma);
+      const map = await svc.namesForCodes([]);
+      expect(map.size).toBe(0);
     });
   });
 
@@ -85,7 +133,7 @@ describe('StationCacheService', () => {
       expect(createManyMock).not.toHaveBeenCalled();
     });
 
-    it('calls createMany for new stations', async () => {
+    it('calls createMany for new stations and updates in-memory cache', async () => {
       const findManyMock = jest.fn().mockResolvedValue([]);
       const createManyMock = jest.fn().mockResolvedValue({ count: 2 });
       const prisma = {
@@ -99,6 +147,10 @@ describe('StationCacheService', () => {
       ]);
 
       expect(createManyMock).toHaveBeenCalledTimes(1);
+
+      // Now searching 'cstm' should be served immediately from in-memory cache
+      const searchRes = await svc.search('cstm');
+      expect(searchRes[0].stationCode).toBe('CSTM');
     });
 
     it('normalizes stationCode and stationName to uppercase in createMany', async () => {

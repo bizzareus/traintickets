@@ -64,12 +64,11 @@ import { HomeSeoContent } from "@/components/HomeSeoContent";
 import ChartTimesFinder from "@/app/chart-times/ChartTimesFinder";
 import type { HomeStrings } from "@/lib/home/home-langs";
 
-type StationRow = {
-  stationCode: string;
-  stationName: string;
-  city?: string;
-  state?: string;
-};
+import {
+  type StationRow,
+  fetchStationSuggestions,
+  getCachedStationSuggestions,
+} from "@/lib/stationCacheClient";
 
 type BestTrainScore = {
   originConfirmed: boolean;
@@ -803,19 +802,20 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       setFromSuggestError(null);
       return;
     }
+    const cached = getCachedStationSuggestions(fromDeb);
+    if (cached) {
+      setFromSuggest(cached);
+      setFromSuggestError(null);
+      setFromLoad(false);
+      return;
+    }
     let c = false;
     setFromLoad(true);
     setFromSuggestError(null);
-    apiClient
-      .get<{ data?: { stationList?: StationRow[] } }>(
-        "/api/booking-v2/stations/suggest",
-        {
-          params: { q: fromDeb, searchString: fromDeb },
-        },
-      )
-      .then((r) => {
+    fetchStationSuggestions(fromDeb)
+      .then((list) => {
         if (!c) {
-          setFromSuggest(r.data?.data?.stationList ?? []);
+          setFromSuggest(list);
           setFromSuggestError(null);
         }
       })
@@ -844,19 +844,20 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       setToSuggestError(null);
       return;
     }
+    const cached = getCachedStationSuggestions(toDeb);
+    if (cached) {
+      setToSuggest(cached);
+      setToSuggestError(null);
+      setToLoad(false);
+      return;
+    }
     let c = false;
     setToLoad(true);
     setToSuggestError(null);
-    apiClient
-      .get<{ data?: { stationList?: StationRow[] } }>(
-        "/api/booking-v2/stations/suggest",
-        {
-          params: { q: toDeb, searchString: toDeb },
-        },
-      )
-      .then((r) => {
+    fetchStationSuggestions(toDeb)
+      .then((list) => {
         if (!c) {
-          setToSuggest(r.data?.data?.stationList ?? []);
+          setToSuggest(list);
           setToSuggestError(null);
         }
       })
