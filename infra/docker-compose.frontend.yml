@@ -11,6 +11,8 @@ services:
       - NEXT_PUBLIC_API_URL=https://api.lastberth.com
     ports:
       - "3010:3010"
+    volumes:
+      - ../.next:/app/.next:ro
     logging:
       driver: "json-file"
       options:
