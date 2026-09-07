@@ -890,6 +890,14 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       setSearchError("Pick a journey date.");
       return;
     }
+    trackAnalyticsEvent({
+      name: "search_tickets_clicked",
+      properties: {
+        from_code: fromSt.stationCode,
+        to_code: toSt.stationCode,
+        journey_date: journeyDate,
+      },
+    });
     setExpandSearch(false);
     setHasSearched(true);
     setSearchError(null);

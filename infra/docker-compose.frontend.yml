@@ -16,7 +16,12 @@ services:
     ports:
       - "3010:3010"
     volumes:
-      - ../.next:/app/.next
+      # NOTE: do NOT bind-mount ../.next here. The image already contains a
+      # fresh production build (COPY --from=builder /app/.next), and a host
+      # bind mount shadows it with the stale build from the first deploy —
+      # which is why green CI runs never changed the live UI.
+      # content/ and public/ stay mounted because the workflow rsyncs them
+      # fresh on every deploy.
       - ../content:/app/content:ro
       - ../public:/app/public:ro
     logging:
