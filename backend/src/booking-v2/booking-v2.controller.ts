@@ -75,6 +75,9 @@ export class BookingV2Controller {
     if (!this.bookingV2.normalizeToRailApiDate(d)) {
       throw new BadRequestException('date must be YYYY-MM-DD or DD-MM-YYYY');
     }
+    if (this.bookingV2.isPastDate(d)) {
+      throw new BadRequestException('Journey date cannot be in the past');
+    }
     return this.bookingV2.searchTrains(f, t, d);
   }
 
@@ -100,6 +103,9 @@ export class BookingV2Controller {
     }
     if (!this.bookingV2.normalizeToRailApiDate(d)) {
       throw new BadRequestException('date must be YYYY-MM-DD or DD-MM-YYYY');
+    }
+    if (this.bookingV2.isPastDate(d)) {
+      throw new BadRequestException('Journey date cannot be in the past');
     }
     const record = await this.bookingV2.getCachedBestTrain(f, t, d);
     if (!record || record.value.found !== true) {
@@ -138,6 +144,9 @@ export class BookingV2Controller {
     }
     if (!this.bookingV2.normalizeToRailApiDate(date)) {
       throw new BadRequestException('date must be YYYY-MM-DD or DD-MM-YYYY');
+    }
+    if (this.bookingV2.isPastDate(date)) {
+      throw new BadRequestException('Journey date cannot be in the past');
     }
     const { result } = await this.bookingV2.findAlternatePathsCached({
       trainNumber,
@@ -190,6 +199,10 @@ export class BookingV2Controller {
       res
         .status(400)
         .json({ message: 'date must be YYYY-MM-DD or DD-MM-YYYY' });
+      return;
+    }
+    if (this.bookingV2.isPastDate(date)) {
+      res.status(400).json({ message: 'Journey date cannot be in the past' });
       return;
     }
 
@@ -252,6 +265,10 @@ export class BookingV2Controller {
       res
         .status(400)
         .json({ message: 'date must be YYYY-MM-DD or DD-MM-YYYY' });
+      return;
+    }
+    if (this.bookingV2.isPastDate(date)) {
+      res.status(400).json({ message: 'Journey date cannot be in the past' });
       return;
     }
 

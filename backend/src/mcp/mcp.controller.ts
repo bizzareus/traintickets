@@ -166,6 +166,9 @@ export class McpController {
             `"${date}" is not a valid date. Use YYYY-MM-DD or DD-MM-YYYY.`,
           );
         }
+        if (this.bookingV2.isPastDate(norm)) {
+          return this.errorText('Journey date cannot be in the past.');
+        }
         const [origin, dest] = await Promise.all([
           this.resolveStation(from),
           this.resolveStation(to),

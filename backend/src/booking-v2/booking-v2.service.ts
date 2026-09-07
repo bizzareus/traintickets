@@ -48,6 +48,7 @@ import {
   collapsibleRealtimeRemainderEndpoints,
   filterDepartedTrainsFromSearchResponse,
   isLegConfirmed,
+  isPastRailDate,
   legScheduleTiming,
   normalizeAndDedupeClassCodes,
   orderedDestinationIndices,
@@ -497,6 +498,11 @@ export class BookingV2Service {
     return m.isValid() ? m.format('DD-MM-YYYY') : null;
   }
 
+  /** Checks if a journey date is in the past in Asia/Kolkata (IST). */
+  isPastDate(dateInput: string | null | undefined): boolean {
+    return isPastRailDate(dateInput);
+  }
+
   private normalizeAvlDayRow(r: Record<string, unknown>): AvlDayRow {
     const rawVendor = r[UPSTREAM_VENDOR_STATUS_KEY];
     const vendor =
@@ -566,6 +572,9 @@ export class BookingV2Service {
   ): Promise<unknown> {
     const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
     if (!dateDdMmYyyy) throw new Error('Invalid journey date');
+    if (this.isPastDate(dateDdMmYyyy)) {
+      throw new Error('Journey date cannot be in the past');
+    }
 
     const cacheKey = `trains:${from.trim().toUpperCase()}:${to.trim().toUpperCase()}:${dateDdMmYyyy}`;
     return this.cache.getOrSet(
@@ -596,6 +605,9 @@ export class BookingV2Service {
     const dateDdMmYyyy = this.normalizeToRailApiDate(date);
     if (!from || !to || !dateDdMmYyyy) {
       throw new Error('from, to, and valid date are required');
+    }
+    if (this.isPastDate(dateDdMmYyyy)) {
+      throw new Error('Journey date cannot be in the past');
     }
 
     const acOnly = input.acOnly === true;
@@ -992,6 +1004,9 @@ export class BookingV2Service {
     to: string,
     dateDdMmYyyy: string,
   ): Promise<unknown> {
+    if (this.isPastDate(dateDdMmYyyy)) {
+      throw new Error('Journey date cannot be in the past');
+    }
     const params = new URLSearchParams({
       sourceStationCode: from.trim().toUpperCase(),
       destinationStationCode: to.trim().toUpperCase(),
@@ -1062,6 +1077,9 @@ export class BookingV2Service {
   ): Promise<unknown> {
     const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
     if (!dateDdMmYyyy) throw new Error('Invalid journey date');
+    if (this.isPastDate(dateDdMmYyyy)) {
+      throw new Error('Journey date cannot be in the past');
+    }
     const params = new URLSearchParams({
       trainNo: String(trainNo).trim(),
       sourceStationCode: from.trim().toUpperCase(),
@@ -1291,6 +1309,9 @@ export class BookingV2Service {
 
     if (!trainNumber || !from || !to || !dateDdMmYyyy) {
       throw new Error('trainNumber, from, to, and valid date are required');
+    }
+    if (this.isPastDate(dateDdMmYyyy)) {
+      throw new Error('Journey date cannot be in the past');
     }
 
     const fromTrain = normalizeAndDedupeClassCodes(input.avlClasses ?? []);
@@ -1876,6 +1897,14 @@ export class BookingV2Service {
     fare: number | null;
     fetchError?: string;
   }> {
+    if (this.isPastDate(dateDdMmYyyy)) {
+      return {
+        day: null,
+        fare: null,
+        fetchError: 'Journey date cannot be in the past',
+      };
+    }
+
     // The cron passes an in-memory cache so its probes never touch Postgres;
     // user requests fall through to the shared Postgres cache.
     const cache = segmentCache ?? this.cache;

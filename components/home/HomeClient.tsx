@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
 import { TrainSearchV2ProgressBar } from "@/components/home/TrainSearchV2ProgressBar";
 import { TrainSearchV2Card } from "@/components/home/TrainSearchV2Card";
+import { TrainSearchSkeleton } from "@/components/home/TrainSearchSkeleton";
 import {
   sortTrainSearchV2,
   type TrainScanMeta,
@@ -1498,6 +1499,15 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             <span>{searchError}</span>
           </div>
         )}
+        {searchLoading && (
+          <TrainSearchSkeleton
+            fromCode={fromSt?.stationCode}
+            fromName={fromSt?.stationName}
+            toCode={toSt?.stationCode}
+            toName={toSt?.stationName}
+          />
+        )}
+
         {hasSearched &&
           !searchLoading &&
           !searchError &&
@@ -1509,8 +1519,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               No trains found for this route on the selected date.
             </div>
           )}
-
-
 
         {/* Train Search V2 (Skyscanner Experience) Top Progress Bar */}
         {hasSearched &&
@@ -1527,48 +1535,50 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             />
           )}
 
-        <ul
-          ref={v2TrainListAnimateRef}
-          className="space-y-5"
-          role="list"
-          aria-label="Train results"
-        >
-          {displayTrains.map((t, idx) => (
-            <TrainSearchV2Card
-              key={`v2-${t.trainNumber}`}
-              train={t}
-              journeyDate={journeyDate}
-              fromCode={fromSt?.stationCode}
-              fromName={fromSt?.stationName}
-              toCode={toSt?.stationCode}
-              toName={toSt?.stationName}
-              acOnly={acOnly}
-              autoScanEnabled={v2AutoScanTrainNumbers.has(t.trainNumber)}
-              scanIndex={idx}
-              onOpenSchedule={(trainNumber, from, to) => {
-                setScheduleTrainNumber(trainNumber);
-                setScheduleHighlightFrom(from ?? "");
-                setScheduleHighlightTo(to ?? "");
-                setScheduleModalOpen(true);
-              }}
-              onOpenFullResultModal={({
-                trainNumber,
-                trainName,
-                avlClasses,
-                result,
-              }) => {
-                alt.showResult({
+        {!searchLoading && displayTrains.length > 0 && (
+          <ul
+            ref={v2TrainListAnimateRef}
+            className="space-y-5"
+            role="list"
+            aria-label="Train results"
+          >
+            {displayTrains.map((t, idx) => (
+              <TrainSearchV2Card
+                key={`v2-${t.trainNumber}`}
+                train={t}
+                journeyDate={journeyDate}
+                fromCode={fromSt?.stationCode}
+                fromName={fromSt?.stationName}
+                toCode={toSt?.stationCode}
+                toName={toSt?.stationName}
+                acOnly={acOnly}
+                autoScanEnabled={v2AutoScanTrainNumbers.has(t.trainNumber)}
+                scanIndex={idx}
+                onOpenSchedule={(trainNumber, from, to) => {
+                  setScheduleTrainNumber(trainNumber);
+                  setScheduleHighlightFrom(from ?? "");
+                  setScheduleHighlightTo(to ?? "");
+                  setScheduleModalOpen(true);
+                }}
+                onOpenFullResultModal={({
                   trainNumber,
                   trainName,
                   avlClasses,
                   result,
-                });
-              }}
-              onSeatsDiscovered={handleV2SeatsDiscovered}
-              onScanComplete={handleV2ScanComplete}
-            />
-          ))}
-        </ul>
+                }) => {
+                  alt.showResult({
+                    trainNumber,
+                    trainName,
+                    avlClasses,
+                    result,
+                  });
+                }}
+                onSeatsDiscovered={handleV2SeatsDiscovered}
+                onScanComplete={handleV2ScanComplete}
+              />
+            ))}
+          </ul>
+        )}
 
         {searchType === "route" &&
           (altResult || altError || (altLoading && altForTrain)) && (

@@ -1,4 +1,60 @@
+import { DateTime } from 'luxon';
+import moment from 'moment';
+
 export type ScheduleStopLike = { stationCode?: string | null };
+
+/** Current calendar date (YYYY-MM-DD) in Asia/Kolkata (IST). */
+export function getTodayIstYmd(): string {
+  return DateTime.now().setZone('Asia/Kolkata').toFormat('yyyy-MM-dd');
+}
+
+/**
+ * Checks if a journey date (YYYY-MM-DD, DD-MM-YYYY, etc.) is in the past
+ * relative to the current calendar date in Asia/Kolkata (IST).
+ */
+export function isPastRailDate(
+  dateInput: string | null | undefined,
+  todayYmd: string = getTodayIstYmd(),
+): boolean {
+  if (!dateInput) return false;
+  const raw = String(dateInput).trim().replace(/\//g, '-');
+  if (!raw) return false;
+
+  let ymd: string | null = null;
+
+  const isoMatch = raw.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+  if (isoMatch) {
+    const [, y, mo, d] = isoMatch;
+    ymd = `${y}-${mo.padStart(2, '0')}-${d.padStart(2, '0')}`;
+  } else {
+    const dmyMatch = raw.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+    if (dmyMatch) {
+      const [, d, mo, y] = dmyMatch;
+      ymd = `${y}-${mo.padStart(2, '0')}-${d.padStart(2, '0')}`;
+    } else {
+      const m = moment(
+        raw,
+        [
+          'D MMM YYYY',
+          'DD MMM YYYY',
+          'D MMMM YYYY',
+          'DD MMMM YYYY',
+          'MMM D, YYYY',
+          'MMM DD, YYYY',
+          'MMMM D, YYYY',
+          'MMMM DD, YYYY',
+        ],
+        true,
+      );
+      if (m.isValid()) {
+        ymd = m.format('YYYY-MM-DD');
+      }
+    }
+  }
+
+  if (!ymd) return false;
+  return ymd < todayYmd;
+}
 
 /** Uppercase, trim, dedupe while preserving first-seen order (e.g. train `avlClasses`). */
 export function normalizeAndDedupeClassCodes(

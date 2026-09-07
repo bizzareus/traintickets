@@ -214,10 +214,10 @@ describe('BookingV2Service', () => {
       const fakeResult = { data: { trainList: [] } };
       mockCache.getOrSet.mockResolvedValueOnce(fakeResult);
 
-      const result = await service.searchTrains('NDLS', 'CSTM', '2026-04-05');
+      const result = await service.searchTrains('NDLS', 'CSTM', '2029-04-05');
 
       expect(mockCache.getOrSet).toHaveBeenCalledWith(
-        'trains:NDLS:CSTM:05-04-2026',
+        'trains:NDLS:CSTM:05-04-2029',
         expect.any(Function),
         24 * 60 * 60 * 1000,
       );
@@ -228,6 +228,13 @@ describe('BookingV2Service', () => {
       await expect(
         service.searchTrains('NDLS', 'CSTM', 'bad-date'),
       ).rejects.toThrow('Invalid journey date');
+      expect(mockCache.getOrSet).not.toHaveBeenCalled();
+    });
+
+    it('throws for a past date', async () => {
+      await expect(
+        service.searchTrains('NDLS', 'CSTM', '2000-01-01'),
+      ).rejects.toThrow('Journey date cannot be in the past');
       expect(mockCache.getOrSet).not.toHaveBeenCalled();
     });
   });
@@ -242,7 +249,7 @@ describe('BookingV2Service', () => {
       const result = await service.findBestTrains({
         from: 'A',
         to: 'D',
-        date: '2026-05-09',
+        date: '2029-05-09',
         trains: [
           {
             trainNumber: '1',
@@ -265,6 +272,16 @@ describe('BookingV2Service', () => {
       );
       expect(result.results).toHaveLength(1);
       expect(result.results[0].train.trainNumber).toBe('1');
+    });
+
+    it('throws for a past date', async () => {
+      await expect(
+        service.findBestTrains({
+          from: 'A',
+          to: 'D',
+          date: '2000-01-01',
+        }),
+      ).rejects.toThrow('Journey date cannot be in the past');
     });
 
     it('keeps only trains with confirmed tickets from origin and ranks by confirmed hours before station hops', async () => {
@@ -293,7 +310,7 @@ describe('BookingV2Service', () => {
       const result = await service.findBestTrains({
         from: 'A',
         to: 'D',
-        date: '2026-05-09',
+        date: '2029-05-09',
         trains: [
           {
             trainNumber: '101',
@@ -367,7 +384,7 @@ describe('BookingV2Service', () => {
       const result = await service.findBestTrains({
         from: 'A',
         to: 'D',
-        date: '2026-05-09',
+        date: '2029-05-09',
         trains: [
           {
             trainNumber: '201',
@@ -428,7 +445,7 @@ describe('BookingV2Service', () => {
       await service.findBestTrains({
         from: 'A',
         to: 'D',
-        date: '2026-05-09',
+        date: '2029-05-09',
         acOnly: true,
         trains: [
           {
@@ -661,7 +678,7 @@ describe('BookingV2Service', () => {
       trainNumber: '12951',
       from: 'NZM', // Boarding NZM
       to: 'BPL', // Destination BPL
-      date: '2026-06-02',
+      date: '2029-06-02',
     };
 
     beforeEach(() => {
@@ -678,6 +695,17 @@ describe('BookingV2Service', () => {
           ],
         },
       });
+    });
+
+    it('rejects a past journey date for findAlternatePaths', async () => {
+      await expect(
+        service.findAlternatePaths({
+          trainNumber: '12951',
+          from: 'NZM',
+          to: 'BPL',
+          date: '2000-01-01',
+        }),
+      ).rejects.toThrow('Journey date cannot be in the past');
     });
 
     it('returns direct route immediately if it is fully confirmed', async () => {
@@ -770,7 +798,7 @@ describe('BookingV2Service', () => {
 
       const result = await service.findAlternatePaths({
         ...input,
-        date: '02-06-2026',
+        date: '02-06-2029',
       });
 
       expect(result.legs).toHaveLength(1);
@@ -781,7 +809,7 @@ describe('BookingV2Service', () => {
         expect.any(String),
         'NZM',
         expect.any(String),
-        '02-06-2026',
+        '02-06-2029',
         expect.any(Array),
         expect.any(String),
         undefined,
@@ -807,16 +835,16 @@ describe('BookingV2Service', () => {
       const probeSpy = jest
         .spyOn(service as any, 'probeSegmentAllClasses')
         .mockImplementation((trainNumber, fromStn, toStn, date) => {
-          // Direct NZM -> BPL on 02-06-2026 is waitlisted
-          if (fromStn === 'NZM' && toStn === 'BPL' && date === '02-06-2026') {
+          // Direct NZM -> BPL on 02-06-2029 is waitlisted
+          if (fromStn === 'NZM' && toStn === 'BPL' && date === '02-06-2029') {
             return Promise.resolve({
               bestConfirmedClassIndex: null,
               perClass: [],
               displayRow: { availablityStatus: 'RLWL 1' },
             });
           }
-          // Offset NDLS -> BPL on 01-06-2026 is confirmed
-          if (fromStn === 'NDLS' && toStn === 'BPL' && date === '01-06-2026') {
+          // Offset NDLS -> BPL on 01-06-2029 is confirmed
+          if (fromStn === 'NDLS' && toStn === 'BPL' && date === '01-06-2029') {
             return Promise.resolve({
               bestConfirmedClassIndex: 0,
               perClass: [
@@ -840,39 +868,39 @@ describe('BookingV2Service', () => {
         trainNumber: '12951',
         from: 'NZM',
         to: 'BPL',
-        date: '02-06-2026',
+        date: '02-06-2029',
       });
 
-      // Assert that it found the offset route starting at NDLS on the correct day (01-06-2026)
+      // Assert that it found the offset route starting at NDLS on the correct day (01-06-2029)
       expect(result.legs).toHaveLength(1);
       expect(result.legs[0].from).toBe('NDLS');
       expect(result.legs[0].to).toBe('BPL');
       expect(result.legs[0].segmentKind).toBe('confirmed');
 
       // Verify that the probe dates were called correctly:
-      // NZM -> BPL direct should be queried on 02-06-2026
+      // NZM -> BPL direct should be queried on 02-06-2029
       expect(probeSpy).toHaveBeenCalledWith(
         expect.any(String),
         'NZM',
         'BPL',
-        '02-06-2026',
+        '02-06-2029',
         expect.any(Array),
         expect.any(String),
         undefined,
       );
 
-      // NDLS -> BPL offset should be queried on 01-06-2026 (Day 1 departure for Day 2 NZM boarding)
+      // NDLS -> BPL offset should be queried on 01-06-2029 (Day 1 departure for Day 2 NZM boarding)
       expect(probeSpy).toHaveBeenCalledWith(
         expect.any(String),
         'NDLS',
         'BPL',
-        '01-06-2026',
+        '01-06-2029',
         expect.any(Array),
         expect.any(String),
         undefined,
       );
 
-      expect(result.trainStartDate).toBe('2026-06-01');
+      expect(result.trainStartDate).toBe('2029-06-01');
 
       probeSpy.mockRestore();
     });
@@ -911,7 +939,7 @@ describe('BookingV2Service', () => {
         trainNumber: '12345',
         from: 'AGC',
         to: 'NZM',
-        date: '02-06-2026',
+        date: '02-06-2029',
       });
 
       expect(result.legs).toHaveLength(1);
@@ -923,7 +951,7 @@ describe('BookingV2Service', () => {
         '12345',
         'AGC',
         'NZM',
-        '02-06-2026',
+        '02-06-2029',
         expect.any(Array),
         expect.any(String),
         undefined,
@@ -975,21 +1003,67 @@ describe('BookingV2Service', () => {
         trainNumber: '99999',
         from: 'NDLS',
         to: 'BPL',
-        date: '03-06-2026',
+        date: '03-06-2029',
       });
 
-      expect(result.trainStartDate).toBe('2026-06-03');
+      expect(result.trainStartDate).toBe('2029-06-03');
       expect(probeSpy).toHaveBeenCalledWith(
         '99999',
         'NZM',
         'BPL',
-        '05-06-2026',
+        '05-06-2029',
         expect.any(Array),
         expect.any(String),
         undefined,
       );
 
       probeSpy.mockRestore();
+    });
+  });
+
+  describe('checkAvailability', () => {
+    it('throws immediately for past dates without calling upstream', async () => {
+      await expect(
+        service.checkAvailability(
+          '14088',
+          'PLCJ',
+          'OSN',
+          '2000-01-01',
+          'SL',
+          'GN',
+        ),
+      ).rejects.toThrow('Journey date cannot be in the past');
+    });
+
+    it('throws for invalid dates', async () => {
+      await expect(
+        service.checkAvailability(
+          '14088',
+          'PLCJ',
+          'OSN',
+          'invalid-date',
+          'SL',
+          'GN',
+        ),
+      ).rejects.toThrow('Invalid journey date');
+    });
+  });
+
+  describe('fetchSegmentAvailability for past dates', () => {
+    it('returns null day and fare with fetchError without throwing or calling upstream', async () => {
+      const res = await (service as any).fetchSegmentAvailability(
+        '14088',
+        'PLCJ',
+        'OSN',
+        '01-01-2000',
+        'SL',
+        'GN',
+      );
+      expect(res).toEqual({
+        day: null,
+        fare: null,
+        fetchError: 'Journey date cannot be in the past',
+      });
     });
   });
 });

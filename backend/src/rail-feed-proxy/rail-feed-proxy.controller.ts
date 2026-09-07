@@ -11,6 +11,7 @@ import {
   RAIL_FEED_STATIC_HEADERS,
   RAIL_FEED_UPSTREAM_BASE,
 } from './rail-feed-proxy.constants';
+import { isPastRailDate } from '../booking-v2/booking-v2.utils';
 
 /**
  * GET proxy: forwards query params to upstream availability POST (empty body).
@@ -28,6 +29,17 @@ export class RailFeedProxyController {
       if (value === undefined) continue;
       qs.set(key, Array.isArray(value) ? value[0] : value);
     }
+
+    const dateOfJourney = qs.get('dateOfJourney');
+    if (dateOfJourney && isPastRailDate(dateOfJourney)) {
+      throw new HttpException(
+        {
+          error: { code: 4002, message: 'Journey date cannot be in the past' },
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
     const url = `${RAIL_FEED_UPSTREAM_BASE}?${qs.toString()}`;
 
     try {

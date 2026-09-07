@@ -2,7 +2,9 @@ import {
   avlDayMatchesJourneyDate,
   collapsibleRealtimeRemainderEndpoints,
   filterDepartedTrainsFromSearchResponse,
+  getTodayIstYmd,
   isLegConfirmed,
+  isPastRailDate,
   legScheduleTiming,
   normalizeAndDedupeClassCodes,
   orderedDestinationIndices,
@@ -12,6 +14,57 @@ import {
   trainSearchRowIndicatesDeparted,
   ymdToRailApiDdMmYyyy,
 } from './booking-v2.utils';
+
+describe('isPastRailDate', () => {
+  const referenceToday = '2026-09-07';
+
+  it('identifies past dates in YYYY-MM-DD format', () => {
+    expect(isPastRailDate('2026-09-06', referenceToday)).toBe(true);
+    expect(isPastRailDate('2026-08-15', referenceToday)).toBe(true);
+    expect(isPastRailDate('2025-12-31', referenceToday)).toBe(true);
+  });
+
+  it('identifies past dates in DD-MM-YYYY and slash formats', () => {
+    expect(isPastRailDate('06-09-2026', referenceToday)).toBe(true);
+    expect(isPastRailDate('6-9-2026', referenceToday)).toBe(true);
+    expect(isPastRailDate('06/09/2026', referenceToday)).toBe(true);
+    expect(isPastRailDate('2026/09/06', referenceToday)).toBe(true);
+  });
+
+  it('identifies past dates in descriptive formats', () => {
+    expect(isPastRailDate('6 Sep 2026', referenceToday)).toBe(true);
+    expect(isPastRailDate('September 6, 2026', referenceToday)).toBe(true);
+  });
+
+  it('returns false for today', () => {
+    expect(isPastRailDate('2026-09-07', referenceToday)).toBe(false);
+    expect(isPastRailDate('07-09-2026', referenceToday)).toBe(false);
+    expect(isPastRailDate('7-9-2026', referenceToday)).toBe(false);
+    expect(isPastRailDate('7 Sep 2026', referenceToday)).toBe(false);
+  });
+
+  it('returns false for future dates', () => {
+    expect(isPastRailDate('2026-09-08', referenceToday)).toBe(false);
+    expect(isPastRailDate('08-09-2026', referenceToday)).toBe(false);
+    expect(isPastRailDate('2026-12-25', referenceToday)).toBe(false);
+    expect(isPastRailDate('15-10-2026', referenceToday)).toBe(false);
+    expect(isPastRailDate('8 Sep 2026', referenceToday)).toBe(false);
+  });
+
+  it('returns false for empty, null, undefined, or invalid inputs', () => {
+    expect(isPastRailDate(null, referenceToday)).toBe(false);
+    expect(isPastRailDate(undefined, referenceToday)).toBe(false);
+    expect(isPastRailDate('', referenceToday)).toBe(false);
+    expect(isPastRailDate('not-a-date', referenceToday)).toBe(false);
+  });
+
+  it('defaults to current IST date when todayYmd is not passed', () => {
+    const today = getTodayIstYmd();
+    expect(today).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(isPastRailDate('2000-01-01')).toBe(true);
+    expect(isPastRailDate('2099-01-01')).toBe(false);
+  });
+});
 
 describe('collapsibleRealtimeRemainderEndpoints', () => {
   it('returns merged OD for chained realtime suffix to dest', () => {
