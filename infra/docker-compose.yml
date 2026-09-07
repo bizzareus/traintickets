@@ -1,5 +1,6 @@
 services:
   backend:
+    image: ghcr.io/bizzareus/traintickets-backend:latest
     build:
       context: ../backend
       dockerfile: Dockerfile
