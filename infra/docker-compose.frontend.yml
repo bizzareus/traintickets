@@ -9,6 +9,9 @@ services:
     environment:
       - NODE_ENV=production
       - NEXT_PUBLIC_API_URL=https://api.lastberth.com
+      - API_URL=https://api.lastberth.com
+    extra_hosts:
+      - "api.lastberth.com:13.207.130.42"
     ports:
       - "3010:3010"
     volumes:

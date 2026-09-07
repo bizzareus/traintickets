@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy-frontend-aws:
@@ -11,7 +12,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        if: env.AWS_ACCESS_KEY_ID != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+
+      - name: Get Runner IP
+        id: ip
+        run: |
+          RUNNER_IP=$(curl -s https://checkip.amazonaws.com)
+          echo "ipv4=$RUNNER_IP" >> $GITHUB_OUTPUT
+
+      - name: Authorize Security Group Ingress
+        if: env.AWS_ACCESS_KEY_ID != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          SG_ID: ${{ secrets.FRONTEND_SG_ID || 'sg-060d95f99ed1571f9' }}
+          RUNNER_IP: ${{ steps.ip.outputs.ipv4 }}
+          AWS_REGION: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+        run: |
+          aws ec2 authorize-security-group-ingress \
+            --region "$AWS_REGION" \
+            --group-id "$SG_ID" \
+            --protocol tcp \
+            --port 22 \
+            --cidr "$RUNNER_IP/32" || true
 
       - name: Setup SSH Keys
         env:
@@ -23,6 +55,14 @@ jobs:
             echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
             chmod 600 ~/.ssh/id_rsa
             ssh-keyscan -H "$TARGET_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+            cat << 'EOF' > ~/.ssh/config
+          Host *
+            StrictHostKeyChecking no
+            ServerAliveInterval 15
+            ServerAliveCountMax 60
+            ConnectTimeout 30
+          EOF
+            chmod 600 ~/.ssh/config
           fi
 
       - name: Sync Frontend Code & Deploy Docker Containers
@@ -50,12 +90,58 @@ jobs:
 
           ssh ubuntu@$TARGET_HOST "cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d --build"
 
+      - name: Revoke Security Group Ingress
+        if: always() && env.AWS_ACCESS_KEY_ID != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          SG_ID: ${{ secrets.FRONTEND_SG_ID || 'sg-060d95f99ed1571f9' }}
+          RUNNER_IP: ${{ steps.ip.outputs.ipv4 }}
+          AWS_REGION: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+        run: |
+          aws ec2 revoke-security-group-ingress \
+            --region "$AWS_REGION" \
+            --group-id "$SG_ID" \
+            --protocol tcp \
+            --port 22 \
+            --cidr "$RUNNER_IP/32" || true
+
   deploy-backend-aws:
     name: Deploy Backend (AWS EC2 - NestJS)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        if: env.AWS_ACCESS_KEY_ID != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+
+      - name: Get Runner IP
+        id: ip
+        run: |
+          RUNNER_IP=$(curl -s https://checkip.amazonaws.com)
+          echo "ipv4=$RUNNER_IP" >> $GITHUB_OUTPUT
+
+      - name: Authorize Security Group Ingress
+        if: env.AWS_ACCESS_KEY_ID != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          SG_ID: ${{ secrets.BACKEND_SG_ID || 'sg-0369f396ce893653a' }}
+          RUNNER_IP: ${{ steps.ip.outputs.ipv4 }}
+          AWS_REGION: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+        run: |
+          aws ec2 authorize-security-group-ingress \
+            --region "$AWS_REGION" \
+            --group-id "$SG_ID" \
+            --protocol tcp \
+            --port 22 \
+            --cidr "$RUNNER_IP/32" || true
 
       - name: Setup SSH Keys
         env:
@@ -67,6 +153,14 @@ jobs:
             echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
             chmod 600 ~/.ssh/id_rsa
             ssh-keyscan -H "$TARGET_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+            cat << 'EOF' > ~/.ssh/config
+          Host *
+            StrictHostKeyChecking no
+            ServerAliveInterval 15
+            ServerAliveCountMax 60
+            ConnectTimeout 30
+          EOF
+            chmod 600 ~/.ssh/config
           fi
 
       - name: Sync Backend Code & Deploy Docker Containers
@@ -85,3 +179,18 @@ jobs:
             ./backend/ ubuntu@$TARGET_HOST:/home/ubuntu/app/backend/
 
           ssh ubuntu@$TARGET_HOST "cd /home/ubuntu/app/infra && docker compose up -d --build"
+
+      - name: Revoke Security Group Ingress
+        if: always() && env.AWS_ACCESS_KEY_ID != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          SG_ID: ${{ secrets.BACKEND_SG_ID || 'sg-0369f396ce893653a' }}
+          RUNNER_IP: ${{ steps.ip.outputs.ipv4 }}
+          AWS_REGION: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+        run: |
+          aws ec2 revoke-security-group-ingress \
+            --region "$AWS_REGION" \
+            --group-id "$SG_ID" \
+            --protocol tcp \
+            --port 22 \
+            --cidr "$RUNNER_IP/32" || true
