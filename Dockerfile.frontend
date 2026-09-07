@@ -8,7 +8,8 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-ENV NEXT_PUBLIC_API_URL=https://api-v2.lastberth.com
+ARG NEXT_PUBLIC_API_URL=https://api.lastberth.com
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 RUN npm run build:web
 
 # Stage 2: Production runner

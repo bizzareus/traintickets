@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_API_URL=https://api-v2.lastberth.com
+      - NEXT_PUBLIC_API_URL=https://api.lastberth.com
     ports:
       - "3010:3010"
     logging:
