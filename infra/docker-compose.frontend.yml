@@ -12,7 +12,9 @@ services:
     ports:
       - "3010:3010"
     volumes:
-      - ../.next:/app/.next:ro
+      - ../.next:/app/.next
+      - ../content:/app/content:ro
+      - ../public:/app/public:ro
     logging:
       driver: "json-file"
       options:
