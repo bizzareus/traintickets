@@ -5,10 +5,9 @@ import { PrismaService } from '../prisma/prisma.service';
 import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
-import { fetchWithTimeout, retryTransient } from '../common/fetch-with-timeout';
-import { buildCurl, curlLogEnabled } from '../common/curl-log';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
 import { IrctcBrowserlessService } from './irctc-browserless.service';
+import { IrctcHttpService, type IrctcHttpResponse } from './irctc-http.service';
 
 const scheduleClient = createRetryingAxiosClient({
   serviceName: 'irctc/schedule',
@@ -18,16 +17,24 @@ const rapidApiScheduleClient = createRetryingAxiosClient({
   retries: 2,
   retryTimeouts: true,
 });
-// trainCompositionClient is replaced by gotScraping
 
-const IRCTC_SCHEDULE_URL =
-  'https://www.irctc.co.in/eticketing/protected/mapps1/trnscheduleenquiry';
-const IRCTC_VACANT_BERTH_URL =
-  'https://www.irctc.co.in/online-charts/api/vacantBerth';
-const IRCTC_COACH_COMPOSITION_URL =
-  'https://www.irctc.co.in/online-charts/api/coachComposition';
-const IRCTC_TRAIN_COMPOSITION_URL =
-  'https://www.irctc.co.in/online-charts/api/trainComposition';
+const CONFIRMTKT_SCHEDULE_URL =
+  'https://api.confirmtkt.com/api/trains/schedulewithintermediatestn';
+const CONFIRMTKT_SCHEDULE_TIMEOUT_MS = 10_000;
+const CONFIRMTKT_SCHEDULE_HEADERS: Record<string, string> = {
+  'sec-ch-ua-platform': '"macOS"',
+  Referer: 'https://www.confirmtkt.com/',
+  'sec-ch-ua':
+    '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
+  'sec-ch-ua-mobile': '?0',
+  'User-Agent':
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
+  TempToken: '4C4D0A7339DA9229EDE6D49A797AD842F8064312CA350EAAD93FD2CB1B31E155',
+  Channel: 'mwebd',
+  'Content-Type': 'application/json',
+  UserKey: '38ACB240BF42F6DFC10BC962DC42746779A86F3C62F9D3820F11BC8AF705EB49',
+  DNT: '1',
+};
 const RAPIDAPI_TRAIN_SEARCH_URL =
   'https://irctc1.p.rapidapi.com/api/v1/getTrainSchedule';
 const RAPIDAPI_SEARCH_STATION_URL =
@@ -40,23 +47,6 @@ const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
 const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
 const RAPIDAPI_SEARCH_STATION_TIMEOUT_MS = 8_000;
 const RAPIDAPI_TRAIN_CLASSES_TIMEOUT_MS = 8_000;
-/**
- * IRCTC online-charts (vacantBerth/coachComposition/trainComposition) are hit
- * behind Akamai, which intermittently resets HTTP/2 connections. Use a short
- * per-attempt timeout and retry a few times on a fresh connection — a healthy
- * response comes back in <1s, so 5s is generous; a hung/poisoned connection is
- * abandoned fast and retried. Both are env-tunable so they can be dialed on
- * Railway without a redeploy. Defaults: 5s per attempt, 4 attempts (1 + 3
- * retries). Timeout clamped to [1s, 30s], attempts to [1, 6].
- */
-const IRCTC_CHART_ATTEMPT_TIMEOUT_MS = (() => {
-  const n = Number.parseInt(process.env.IRCTC_CHART_TIMEOUT_MS ?? '', 10);
-  return Number.isFinite(n) && n >= 1_000 && n <= 30_000 ? n : 5_000;
-})();
-const IRCTC_CHART_MAX_ATTEMPTS = (() => {
-  const n = Number.parseInt(process.env.IRCTC_CHART_MAX_ATTEMPTS ?? '', 10);
-  return Number.isFinite(n) && n >= 1 && n <= 6 ? n : 4;
-})();
 /**
  * How long a cached trainComposition JSON stays "fresh". Within this window the
  * coach-list endpoint serves the cached copy without hitting IRCTC; past it (or
@@ -103,25 +93,6 @@ function parseChartDateTime(
   const time = `${m[2].padStart(2, '0')}:${m[3].padStart(2, '0')}`;
   return { date: m[1], time };
 }
-
-// Headers matching working curl for schedule API (same order/values as browser)
-const SCHEDULE_HEADERS: Record<string, string> = {
-  accept: 'application/json, text/plain, */*',
-  'accept-language': 'en-US,en;q=0.9',
-  bmirak: 'webbm',
-  dnt: '1',
-  priority: 'u=1, i',
-  referer: 'https://www.irctc.co.in/online-charts/',
-  'sec-ch-ua':
-    '"Not:A-Brand";v="99", "Google Chrome";v="145", "Chromium";v="145"',
-  'sec-ch-ua-mobile': '?0',
-  'sec-ch-ua-platform': '"macOS"',
-  'sec-fetch-dest': 'empty',
-  'sec-fetch-mode': 'cors',
-  'sec-fetch-site': 'same-origin',
-  'user-agent':
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36',
-};
 
 /**
  * Indian Railways train numbers are 5 digits, so a leading-zero number like
@@ -197,6 +168,27 @@ export type TrainScheduleResponse = {
   trainRunsOn?: TrainRunsOnJson;
 };
 
+interface ConfirmTktScheduleStation {
+  StationCode?: string;
+  StationName?: string;
+  ArrivalTime?: string;
+  DepartureTime?: string;
+  HaltMinutes?: string;
+  Distance?: string;
+  Day?: number | string;
+  ExpectedPlatformNo?: string;
+}
+
+interface ConfirmTktScheduleApiResponse {
+  TrainNo?: string | number;
+  TrainName?: string;
+  SourceCode?: string;
+  DestinationCode?: string;
+  DaysOfRun?: Record<string, boolean | string>;
+  Schedule?: ConfirmTktScheduleStation[];
+  ErrorMsg?: string | null;
+}
+
 /** IRCTC schedule API returned `errorMessage` (maintenance / downtime). */
 export class IrctcScheduleMaintenanceError extends Error {
   readonly code = 'IRCTC_MAINTENANCE' as const;
@@ -264,21 +256,8 @@ export class IrctcService {
     private prisma: PrismaService,
     private cookieStore: IrctcCookieStoreService,
     private browserlessService: IrctcBrowserlessService,
+    private irctcHttpService: IrctcHttpService,
   ) {}
-
-  /** Resolves outgoing HTTP proxy URL for IRCTC API requests (if enabled). */
-  private getOutgoingProxyUrl(): string | undefined {
-    const enabled =
-      process.env.IRCTC_PROXY_ENABLED?.trim().toLowerCase() === 'true' ||
-      process.env.IRCTC_PROXY_ENABLED?.trim() === '1';
-    if (!enabled) return undefined;
-    return (
-      process.env.IRCTC_PROXY_URL?.trim() ||
-      process.env.HTTPS_PROXY?.trim() ||
-      process.env.HTTP_PROXY?.trim() ||
-      undefined
-    );
-  }
 
   /** Pre-loads multiple train schedules into memory in a single database query to avoid N+1 queries. */
   async preloadTrainSchedules(trainNumbers: string[]): Promise<void> {
@@ -387,9 +366,12 @@ export class IrctcService {
     // 1. Try fetching from ConfirmTkt first
     try {
       this.logger.log(
-        `[irctc/schedule] trying confirmtkt scraper for train=${num}`,
+        `[irctc/schedule] trying confirmtkt api for train=${num}`,
       );
-      const data = await this.fetchScheduleFromConfirmTkt(num);
+      const data = await this.fetchScheduleFromConfirmTkt(
+        num,
+        opts?.fillRunsOnFromComposition?.jDate,
+      );
       if (data && data.stationList?.length > 0) {
         const runsPayload =
           data.trainRunsOn && Object.keys(data.trainRunsOn).length > 0
@@ -432,8 +414,8 @@ export class IrctcService {
         return res;
       }
     } catch (confirmTktErr) {
-      this.logger.warn(
-        `[irctc/schedule] confirmtkt scraper failed for train=${num}, falling back: ${
+      this.logger.error(
+        `[irctc/schedule] confirmtkt api failed for train=${num}, falling back: ${
           confirmTktErr instanceof Error
             ? confirmTktErr.message
             : String(confirmTktErr)
@@ -532,33 +514,20 @@ export class IrctcService {
       }
     }
 
-    const url = `${IRCTC_SCHEDULE_URL}/${encodeURIComponent(trainNumber)}`;
-    const headers = {
-      ...SCHEDULE_HEADERS,
-      greq: String(Date.now()),
-    };
+    const path = `/eticketing/protected/mapps1/trnscheduleenquiry/${encodeURIComponent(trainNumber)}`;
     const cookies = await this.cookieStore.getCookie();
-    if (cookies?.trim()) {
-      headers['Cookie'] = cookies.trim();
-    }
-
     const hasCookies = Boolean(cookies?.trim());
     const t0 = Date.now();
     this.logger.log(
       `[irctc/schedule] irctc_request_start train=${trainNumber} cookies=${hasCookies}`,
     );
 
-    let res: { status: number; data: string };
+    let res: IrctcHttpResponse;
     try {
-      if (curlLogEnabled()) {
-        this.logger.log(
-          `[irctc/schedule] curl: ${buildCurl({ method: 'GET', url, headers })}`,
-        );
-      }
-      res = await scheduleClient.get<string>(url, {
-        headers,
-        responseType: 'text',
-        timeout: IRCTC_SCHEDULE_TIMEOUT_MS,
+      res = await this.irctcHttpService.getEticketing(path, {
+        cookies: cookies || undefined,
+        timeoutMs: IRCTC_SCHEDULE_TIMEOUT_MS,
+        logContext: '[irctc/schedule]',
       });
     } catch (err) {
       const ms = Date.now() - t0;
@@ -609,10 +578,10 @@ export class IrctcService {
     }
 
     const msHttp = Date.now() - t0;
-    const text = res.data;
+    const text = res.body;
     const bytes = typeof text === 'string' ? text.length : 0;
     this.logger.log(
-      `[irctc/schedule] irctc_http_ok train=${trainNumber} ms=${msHttp} status=${res.status} bytes=${bytes}`,
+      `[irctc/schedule] irctc_http_ok train=${trainNumber} ms=${msHttp} status=${res.statusCode} bytes=${bytes}`,
     );
 
     if (!text?.trim()) {
@@ -700,60 +669,60 @@ export class IrctcService {
 
   private async fetchScheduleFromConfirmTkt(
     trainNumber: string,
+    journeyDate?: string,
   ): Promise<TrainScheduleResponse> {
-    const url = `https://www.confirmtkt.com/train-schedule/${encodeURIComponent(trainNumber)}`;
+    const formattedDate =
+      journeyDate &&
+      moment(journeyDate, [
+        'YYYY-MM-DD',
+        'DD-MM-YYYY',
+        'YYYYMMDD',
+        'YYYY/MM/DD',
+      ]).isValid()
+        ? moment(journeyDate, [
+            'YYYY-MM-DD',
+            'DD-MM-YYYY',
+            'YYYYMMDD',
+            'YYYY/MM/DD',
+          ]).format('DD-MM-YYYY')
+        : moment().format('DD-MM-YYYY');
+
+    const url = `${CONFIRMTKT_SCHEDULE_URL}?date=${encodeURIComponent(
+      formattedDate,
+    )}&trainNo=${encodeURIComponent(trainNumber)}&locale=en`;
     const t0 = Date.now();
     this.logger.log(
-      `[irctc/schedule] confirmtkt_request_start train=${trainNumber}`,
+      `[irctc/schedule] confirmtkt_request_start train=${trainNumber} date=${formattedDate}`,
     );
 
-    const res = await scheduleClient.get<string>(url, {
-      responseType: 'text',
-      timeout: 10000,
-      headers: {
-        'User-Agent':
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        Accept:
-          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.9',
-      },
+    const res = await scheduleClient.get<ConfirmTktScheduleApiResponse>(url, {
+      timeout: CONFIRMTKT_SCHEDULE_TIMEOUT_MS,
+      headers: CONFIRMTKT_SCHEDULE_HEADERS,
     });
 
-    const html = res.data;
-    if (!html?.trim()) {
-      throw new Error('ConfirmTkt returned empty response');
-    }
-
-    const match = html.match(/var data\s*=\s*'([^']*)'/);
-    if (!match) {
-      throw new Error('Could not find train schedule data on ConfirmTkt page');
-    }
-
-    let parsed: any;
-    try {
-      parsed = JSON.parse(match[1]);
-    } catch (err) {
-      throw new Error(
-        `Failed to parse ConfirmTkt JSON: ${err instanceof Error ? err.message : String(err)}`,
-      );
-    }
-
+    const parsed = res.data;
     if (!parsed || typeof parsed !== 'object') {
       throw new Error('ConfirmTkt schedule is empty or malformed');
     }
 
-    const stationList = (parsed.Schedule || []).map((s: any) => ({
-      stationCode: String(s.StationCode || '')
-        .trim()
-        .toUpperCase(),
-      stationName: String(s.StationName || '').trim(),
-      arrivalTime: String(s.ArrivalTime || '').trim(),
-      departureTime: String(s.DepartureTime || '').trim(),
-      haltMinutes: String(s.HaltMinutes || '').trim(),
-      distance: String(s.Distance || '0.0').trim(),
-      day: Number(s.Day) || 1,
-      expectedPlatformNo: String(s.ExpectedPlatformNo || '').trim(),
-    }));
+    if (parsed.ErrorMsg) {
+      throw new Error(`ConfirmTkt returned error: ${parsed.ErrorMsg}`);
+    }
+
+    const stationList = (parsed.Schedule || []).map(
+      (s: ConfirmTktScheduleStation) => ({
+        stationCode: String(s.StationCode || '')
+          .trim()
+          .toUpperCase(),
+        stationName: String(s.StationName || '').trim(),
+        arrivalTime: String(s.ArrivalTime || '').trim(),
+        departureTime: String(s.DepartureTime || '').trim(),
+        haltMinutes: String(s.HaltMinutes || '').trim(),
+        distance: String(s.Distance || '0.0').trim(),
+        day: Number(s.Day) || 1,
+        expectedPlatformNo: String(s.ExpectedPlatformNo || '').trim(),
+      }),
+    );
 
     if (stationList.length === 0) {
       throw new Error('ConfirmTkt schedule stationList is empty');
@@ -761,13 +730,20 @@ export class IrctcService {
 
     const daysOfRun = parsed.DaysOfRun || {};
     const trainRunsOn: TrainRunsOnJson = {
-      trainRunsOnMon: daysOfRun.Mon === true ? 'Y' : 'N',
-      trainRunsOnTue: daysOfRun.Tue === true ? 'Y' : 'N',
-      trainRunsOnWed: daysOfRun.Wed === true ? 'Y' : 'N',
-      trainRunsOnThu: daysOfRun.Thu === true ? 'Y' : 'N',
-      trainRunsOnFri: daysOfRun.Fri === true ? 'Y' : 'N',
-      trainRunsOnSat: daysOfRun.Sat === true ? 'Y' : 'N',
-      trainRunsOnSun: daysOfRun.Sun === true ? 'Y' : 'N',
+      trainRunsOnMon:
+        daysOfRun.Mon === true || daysOfRun.Mon === 'Y' ? 'Y' : 'N',
+      trainRunsOnTue:
+        daysOfRun.Tue === true || daysOfRun.Tue === 'Y' ? 'Y' : 'N',
+      trainRunsOnWed:
+        daysOfRun.Wed === true || daysOfRun.Wed === 'Y' ? 'Y' : 'N',
+      trainRunsOnThu:
+        daysOfRun.Thu === true || daysOfRun.Thu === 'Y' ? 'Y' : 'N',
+      trainRunsOnFri:
+        daysOfRun.Fri === true || daysOfRun.Fri === 'Y' ? 'Y' : 'N',
+      trainRunsOnSat:
+        daysOfRun.Sat === true || daysOfRun.Sat === 'Y' ? 'Y' : 'N',
+      trainRunsOnSun:
+        daysOfRun.Sun === true || daysOfRun.Sun === 'Y' ? 'Y' : 'N',
     };
 
     const ms = Date.now() - t0;
@@ -1131,150 +1107,26 @@ export class IrctcService {
       }
     }
 
-    const headers: Record<string, string> = {
-      Accept: 'application/json',
-      'Accept-Language': 'en-US,en;q=0.9',
-      'Content-Type': 'application/json',
-      DNT: '1',
-      Origin: 'https://www.irctc.co.in',
-      Referer: 'https://www.irctc.co.in/online-charts/traincomposition',
-      'Sec-Fetch-Dest': 'empty',
-      'Sec-Fetch-Mode': 'cors',
-      'Sec-Fetch-Site': 'same-origin',
-      'User-Agent':
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36',
-      'sec-ch-ua':
-        '"Not:A-Brand";v="99", "Google Chrome";v="145", "Chromium";v="145"',
-      'sec-ch-ua-mobile': '?0',
-      'sec-ch-ua-platform': '"macOS"',
-    };
     const cookies = await this.cookieStore.getCookie();
-    if (cookies?.trim()) headers['Cookie'] = cookies.trim();
-
-    const proxyUrl = this.getOutgoingProxyUrl();
-
-    if (proxyUrl) {
-      const t0 = Date.now();
-      this.logger.log(
-        `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} cookies=${Boolean(cookies?.trim())} via=outgoing_proxy`,
-      );
-
-      let status = 0;
-      let text = '';
-      try {
-        if (curlLogEnabled()) {
-          this.logger.log(
-            `[irctc/vacantBerth] curl: ${buildCurl({ method: 'POST', url: IRCTC_VACANT_BERTH_URL, headers, body: JSON.stringify(body) })}`,
-          );
-        }
-        const { gotScraping } = await import('got-scraping');
-        const res = await retryTransient(
-          () =>
-            gotScraping.post(IRCTC_VACANT_BERTH_URL, {
-              headers,
-              json: body,
-              proxyUrl,
-              timeout: { request: IRCTC_CHART_ATTEMPT_TIMEOUT_MS },
-              retry: { limit: 0 },
-            }),
-          {
-            attempts: IRCTC_CHART_MAX_ATTEMPTS,
-            onRetry: (attempt, err) =>
-              this.logger.warn(
-                `[irctc/vacantBerth] transient retry attempt=${attempt} trainNo=${payload.trainNo} ${err instanceof Error ? err.message : String(err)}`,
-              ),
-          },
-        );
-        status = res.statusCode;
-        text =
-          typeof res.body === 'string' ? res.body : JSON.stringify(res.body);
-      } catch (err: any) {
-        if (err.response) {
-          status = err.response.statusCode;
-          text =
-            typeof err.response.body === 'string'
-              ? err.response.body
-              : JSON.stringify(err.response.body);
-        } else {
-          const ms = Date.now() - t0;
-          const cause = err instanceof Error ? err.message : String(err);
-          this.logger.warn(
-            `[irctc/vacantBerth] network_error ms=${ms} trainNo=${payload.trainNo} ${cause}`,
-          );
-          captureSentryException(err, {
-            tags: { service: 'irctc', endpoint: 'vacantBerth' },
-            extra: { ms, trainNo: payload.trainNo, cause },
-          });
-          throw new Error(
-            `IRCTC request failed (network/connection): ${cause}`,
-          );
-        }
-      }
-
-      const ms = Date.now() - t0;
-      this.logger.log(
-        `[irctc/vacantBerth] response ms=${ms} status=${status} bytes=${text.length}`,
-      );
-      if (status < 200 || status >= 300) {
-        this.logger.warn(
-          `[irctc/vacantBerth] http_error status=${status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
-        );
-        throw new Error(`IRCTC vacantBerth failed: ${status} ${text}`);
-      }
-      try {
-        return JSON.parse(text) as unknown;
-      } catch {
-        this.logger.warn('[irctc/vacantBerth] json_parse_error');
-        throw new Error(
-          `IRCTC vacantBerth returned non-JSON: ${text.slice(0, 200)}`,
-        );
-      }
-    }
-
-    // Original direct execution path when feature flag is disabled
     const t0 = Date.now();
     this.logger.log(
-      `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} cookies=${Boolean(cookies?.trim())} via=direct`,
+      `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} cookies=${Boolean(cookies?.trim())}`,
     );
 
-    let res: Response;
+    let res: IrctcHttpResponse;
     try {
-      if (curlLogEnabled()) {
-        this.logger.log(
-          `[irctc/vacantBerth] curl: ${buildCurl({ method: 'POST', url: IRCTC_VACANT_BERTH_URL, headers, body: JSON.stringify(body) })}`,
-        );
-      }
-      res = await retryTransient(
-        () =>
-          fetchWithTimeout(
-            IRCTC_VACANT_BERTH_URL,
-            {
-              method: 'POST',
-              headers,
-              body: JSON.stringify(body),
-            },
-            IRCTC_CHART_ATTEMPT_TIMEOUT_MS,
-          ),
+      res = await this.irctcHttpService.postOnlineCharts(
+        '/online-charts/api/vacantBerth',
+        body,
         {
-          attempts: IRCTC_CHART_MAX_ATTEMPTS,
-          onRetry: (attempt, err) =>
-            this.logger.warn(
-              `[irctc/vacantBerth] transient retry attempt=${attempt} trainNo=${payload.trainNo} ${err instanceof Error ? err.message : String(err)}`,
-            ),
+          cookies: cookies || undefined,
+          logContext: '[irctc/vacantBerth]',
+          referer: 'https://www.irctc.co.in/online-charts/traincomposition',
         },
       );
-    } catch (err) {
+    } catch (err: any) {
       const ms = Date.now() - t0;
-      const cause: string =
-        err instanceof Error
-          ? err.cause != null
-            ? err.cause instanceof Error
-              ? err.cause.message
-              : typeof err.cause === 'string'
-                ? err.cause
-                : 'Unknown error'
-            : err.message
-          : String(err);
+      const cause = err instanceof Error ? err.message : String(err);
       this.logger.warn(
         `[irctc/vacantBerth] network_error ms=${ms} trainNo=${payload.trainNo} ${cause}`,
       );
@@ -1285,17 +1137,19 @@ export class IrctcService {
       throw new Error(`IRCTC request failed (network/connection): ${cause}`);
     }
 
-    const text = await res.text();
     const ms = Date.now() - t0;
+    const { statusCode, body: text } = res;
     this.logger.log(
-      `[irctc/vacantBerth] response ms=${ms} status=${res.status} bytes=${text.length}`,
+      `[irctc/vacantBerth] response ms=${ms} status=${statusCode} bytes=${text.length}`,
     );
-    if (!res.ok) {
+
+    if (statusCode < 200 || statusCode >= 300) {
       this.logger.warn(
-        `[irctc/vacantBerth] http_error status=${res.status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
+        `[irctc/vacantBerth] http_error status=${statusCode} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
       );
-      throw new Error(`IRCTC vacantBerth failed: ${res.status} ${text}`);
+      throw new Error(`IRCTC vacantBerth failed: ${statusCode} ${text}`);
     }
+
     try {
       return JSON.parse(text) as unknown;
     } catch {
@@ -1345,182 +1199,56 @@ export class IrctcService {
       }
     }
 
-    const headers: Record<string, string> = {
-      Accept: 'application/json',
-      'Accept-Language': 'en-US,en;q=0.9',
-      'Content-Type': 'application/json',
-      DNT: '1',
-      Origin: 'https://www.irctc.co.in',
-      Referer: 'https://www.irctc.co.in/online-charts/traincomposition',
-      'Sec-Fetch-Dest': 'empty',
-      'Sec-Fetch-Mode': 'cors',
-      'Sec-Fetch-Site': 'same-origin',
-      'User-Agent':
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
-      'sec-ch-ua':
-        '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
-      'sec-ch-ua-mobile': '?0',
-      'sec-ch-ua-platform': '"macOS"',
-    };
     const cookies = await this.cookieStore.getCookie();
-    if (cookies?.trim()) headers['Cookie'] = cookies.trim();
-
-    const proxyUrl = this.getOutgoingProxyUrl();
-
-    if (proxyUrl) {
-      const t0 = Date.now();
-      this.logger.log(
-        `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} cookies=${Boolean(cookies?.trim())} via=outgoing_proxy`,
-      );
-
-      let status = 0;
-      let text = '';
-      try {
-        if (curlLogEnabled()) {
-          this.logger.log(
-            `[irctc/coachComposition] curl: ${buildCurl({ method: 'POST', url: IRCTC_COACH_COMPOSITION_URL, headers, body: JSON.stringify(body) })}`,
-          );
-        }
-        const { gotScraping } = await import('got-scraping');
-        const res = await retryTransient(
-          () =>
-            gotScraping.post(IRCTC_COACH_COMPOSITION_URL, {
-              headers,
-              json: body,
-              proxyUrl,
-              timeout: { request: IRCTC_CHART_ATTEMPT_TIMEOUT_MS },
-              retry: { limit: 0 },
-            }),
-          {
-            attempts: IRCTC_CHART_MAX_ATTEMPTS,
-            onRetry: (attempt, err) =>
-              this.logger.warn(
-                `[irctc/coachComposition] transient retry attempt=${attempt} trainNo=${payload.trainNo} coach=${payload.coach} ${err instanceof Error ? err.message : String(err)}`,
-              ),
-          },
-        );
-        status = res.statusCode;
-        text =
-          typeof res.body === 'string' ? res.body : JSON.stringify(res.body);
-      } catch (err: any) {
-        if (err.response) {
-          status = err.response.statusCode;
-          text =
-            typeof err.response.body === 'string'
-              ? err.response.body
-              : JSON.stringify(err.response.body);
-        } else {
-          const ms = Date.now() - t0;
-          const cause = err instanceof Error ? err.message : String(err);
-          this.logger.warn(
-            `[irctc/coachComposition] network_error ms=${ms} trainNo=${payload.trainNo} coach=${payload.coach} ${cause}`,
-          );
-          captureSentryException(err, {
-            tags: { service: 'irctc', endpoint: 'coachComposition' },
-            extra: {
-              ms,
-              trainNo: payload.trainNo,
-              coach: payload.coach,
-              cause,
-            },
-          });
-          throw new Error(
-            `IRCTC request failed (network/connection): ${cause}`,
-          );
-        }
-      }
-
-      const ms = Date.now() - t0;
-      this.logger.log(
-        `[irctc/coachComposition] response ms=${ms} status=${status} bytes=${text.length}`,
-      );
-      if (status < 200 || status >= 300) {
-        this.logger.warn(
-          `[irctc/coachComposition] http_error status=${status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
-        );
-        throw new Error(
-          `IRCTC coachComposition failed: ${status} ${text.slice(0, 200)}`,
-        );
-      }
-      try {
-        return JSON.parse(text) as unknown;
-      } catch {
-        this.logger.warn(
-          `[irctc/coachComposition] json_parse_error body_preview=${text.slice(0, 200)}`,
-        );
-        throw new Error(
-          `IRCTC coachComposition returned non-JSON: ${text.slice(0, 200)}`,
-        );
-      }
-    }
-
-    // Original direct execution path when feature flag is disabled
     const t0 = Date.now();
     this.logger.log(
-      `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} cookies=${Boolean(cookies?.trim())} via=direct`,
+      `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} cookies=${Boolean(cookies?.trim())}`,
     );
 
-    let res: Response;
+    let res: IrctcHttpResponse;
     try {
-      if (curlLogEnabled()) {
-        this.logger.log(
-          `[irctc/coachComposition] curl: ${buildCurl({ method: 'POST', url: IRCTC_COACH_COMPOSITION_URL, headers, body: JSON.stringify(body) })}`,
-        );
-      }
-      res = await retryTransient(
-        () =>
-          fetchWithTimeout(
-            IRCTC_COACH_COMPOSITION_URL,
-            {
-              method: 'POST',
-              headers,
-              body: JSON.stringify(body),
-            },
-            IRCTC_CHART_ATTEMPT_TIMEOUT_MS,
-          ),
+      res = await this.irctcHttpService.postOnlineCharts(
+        '/online-charts/api/coachComposition',
+        body,
         {
-          attempts: IRCTC_CHART_MAX_ATTEMPTS,
-          onRetry: (attempt, err) =>
-            this.logger.warn(
-              `[irctc/coachComposition] transient retry attempt=${attempt} trainNo=${payload.trainNo} coach=${payload.coach} ${err instanceof Error ? err.message : String(err)}`,
-            ),
+          cookies: cookies || undefined,
+          logContext: '[irctc/coachComposition]',
+          referer: 'https://www.irctc.co.in/online-charts/traincomposition',
         },
       );
-    } catch (err) {
+    } catch (err: any) {
       const ms = Date.now() - t0;
-      const cause: string =
-        err instanceof Error
-          ? err.cause != null
-            ? err.cause instanceof Error
-              ? err.cause.message
-              : typeof err.cause === 'string'
-                ? err.cause
-                : 'Unknown error'
-            : err.message
-          : String(err);
+      const cause = err instanceof Error ? err.message : String(err);
       this.logger.warn(
         `[irctc/coachComposition] network_error ms=${ms} trainNo=${payload.trainNo} coach=${payload.coach} ${cause}`,
       );
       captureSentryException(err, {
         tags: { service: 'irctc', endpoint: 'coachComposition' },
-        extra: { ms, trainNo: payload.trainNo, coach: payload.coach, cause },
+        extra: {
+          ms,
+          trainNo: payload.trainNo,
+          coach: payload.coach,
+          cause,
+        },
       });
       throw new Error(`IRCTC request failed (network/connection): ${cause}`);
     }
 
-    const text = await res.text();
     const ms = Date.now() - t0;
+    const { statusCode, body: text } = res;
     this.logger.log(
-      `[irctc/coachComposition] response ms=${ms} status=${res.status} bytes=${text.length}`,
+      `[irctc/coachComposition] response ms=${ms} status=${statusCode} bytes=${text.length}`,
     );
-    if (!res.ok) {
+
+    if (statusCode < 200 || statusCode >= 300) {
       this.logger.warn(
-        `[irctc/coachComposition] http_error status=${res.status} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
+        `[irctc/coachComposition] http_error status=${statusCode} body_preview=${text.slice(0, 200).replace(/\s+/g, ' ')}`,
       );
       throw new Error(
-        `IRCTC coachComposition failed: ${res.status} ${text.slice(0, 200)}`,
+        `IRCTC coachComposition failed: ${statusCode} ${text.slice(0, 200)}`,
       );
     }
+
     try {
       return JSON.parse(text) as unknown;
     } catch {
@@ -1668,86 +1396,45 @@ export class IrctcService {
       }
     }
 
-    const headers: Record<string, string> = {
-      accept: 'application/json',
-      'accept-language': 'en-US,en;q=0.9',
-      'content-type': 'application/json',
-      dnt: '1',
-      origin: 'https://www.irctc.co.in',
-      priority: 'u=1, i',
-      referer: 'https://www.irctc.co.in/online-charts/',
-      'sec-ch-ua':
-        '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
-      'sec-ch-ua-mobile': '?0',
-      'sec-ch-ua-platform': '"macOS"',
-      'sec-fetch-dest': 'empty',
-      'sec-fetch-mode': 'cors',
-      'sec-fetch-site': 'same-origin',
-      'user-agent':
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
-    };
     const cookies = await this.cookieStore.getCookie();
-    if (cookies?.trim()) headers['Cookie'] = cookies.trim();
-
-    const proxyUrl = this.getOutgoingProxyUrl();
-
     const t0 = Date.now();
-    let status = 0;
-    let text = '';
+    this.logger.log(
+      `[irctc/trainComposition] request_start trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} cookies=${Boolean(cookies?.trim())}`,
+    );
+
+    let res: IrctcHttpResponse;
     try {
-      if (curlLogEnabled()) {
-        this.logger.log(
-          `[irctc/trainComposition] curl: ${buildCurl({ method: 'POST', url: IRCTC_TRAIN_COMPOSITION_URL, headers, body: JSON.stringify(body) })}`,
-        );
-      }
-      const { gotScraping } = await import('got-scraping');
-      const res = await retryTransient(
-        () =>
-          gotScraping.post(IRCTC_TRAIN_COMPOSITION_URL, {
-            headers,
-            json: body,
-            proxyUrl,
-            timeout: { request: IRCTC_CHART_ATTEMPT_TIMEOUT_MS },
-            retry: { limit: 0 },
-          }),
+      res = await this.irctcHttpService.postOnlineCharts(
+        '/online-charts/api/trainComposition',
+        body,
         {
-          attempts: IRCTC_CHART_MAX_ATTEMPTS,
-          onRetry: (attempt, e) =>
-            this.logger.warn(
-              `[irctc/trainComposition] transient retry attempt=${attempt} trainNo=${body.trainNo} ${e instanceof Error ? e.message : String(e)}`,
-            ),
+          cookies: cookies || undefined,
+          logContext: '[irctc/trainComposition]',
+          referer: 'https://www.irctc.co.in/online-charts/',
         },
       );
-      status = res.statusCode;
-      text = typeof res.body === 'string' ? res.body : JSON.stringify(res.body);
     } catch (err: any) {
-      if (err.response) {
-        status = err.response.statusCode;
-        text =
-          typeof err.response.body === 'string'
-            ? err.response.body
-            : JSON.stringify(err.response.body);
-      } else {
-        const ms = Date.now() - t0;
-        const cause = err instanceof Error ? err.message : String(err);
-        this.logger.warn(
-          `[irctc/trainComposition] network_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} ${cause}`,
-        );
-        captureSentryException(err, {
-          tags: { service: 'irctc', endpoint: 'trainComposition' },
-          extra: {
-            ms,
-            trainNo: body.trainNo,
-            boardingStation: body.boardingStation,
-            jDate: body.jDate,
-            cause,
-          },
-        });
-        throw new Error(
-          'We are unable to contact rail systems. Please try again later.',
-        );
-      }
+      const ms = Date.now() - t0;
+      const cause = err instanceof Error ? err.message : String(err);
+      this.logger.warn(
+        `[irctc/trainComposition] network_error ms=${ms} trainNo=${body.trainNo} boarding=${body.boardingStation} date=${body.jDate} ${cause}`,
+      );
+      captureSentryException(err, {
+        tags: { service: 'irctc', endpoint: 'trainComposition' },
+        extra: {
+          ms,
+          trainNo: body.trainNo,
+          boardingStation: body.boardingStation,
+          jDate: body.jDate,
+          cause,
+        },
+      });
+      throw new Error(
+        'We are unable to contact rail systems. Please try again later.',
+      );
     }
+
+    const { statusCode: status, body: text } = res;
     if (status < 200 || status >= 300) {
       const ms = Date.now() - t0;
       this.logger.warn(

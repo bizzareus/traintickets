@@ -25,7 +25,8 @@
     "test:unit": "npx tsx --test lib/**/*.test.ts",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:e2e:install": "playwright install chromium"
+    "test:e2e:install": "playwright install chromium",
+    "proxy:local": "cd backend && npm run proxy:local"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.10.0",

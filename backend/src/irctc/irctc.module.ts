@@ -7,6 +7,7 @@ import { IrctcBrowserUseService } from './irctc-browser-use.service';
 import { IrctcBrowserlessService } from './irctc-browserless.service';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
 import { IrctcSessionKeeperService } from './irctc-session-keeper.service';
+import { IrctcHttpService } from './irctc-http.service';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
@@ -19,6 +20,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     IrctcBrowserlessService,
     IrctcCookieStoreService,
     IrctcSessionKeeperService,
+    IrctcHttpService,
   ],
   exports: [
     IrctcService,
@@ -27,6 +29,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     IrctcBrowserlessService,
     IrctcCookieStoreService,
     IrctcSessionKeeperService,
+    IrctcHttpService,
   ],
 })
 export class IrctcModule {}

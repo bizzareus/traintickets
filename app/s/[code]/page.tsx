@@ -9,7 +9,12 @@ export default async function ShortLinkPage({
   params: Promise<{ code: string }>;
 }) {
   const { code } = await params;
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009";
+  const apiUrl =
+    process.env.API_URL ||
+    process.env.NEXT_PUBLIC_API_URL ||
+    "http://localhost:3009";
+
+  let destinationUrl: string | null = null;
 
   try {
     const reqHeaders = await headers();
@@ -25,17 +30,21 @@ export default async function ShortLinkPage({
         ...(referer ? { referer } : {}),
       },
     });
-    if (!res.ok) {
-      notFound();
-    }
-    const data = await res.json();
-    if (data?.url) {
-      redirect(data.url);
+
+    if (res.ok) {
+      const data = await res.json();
+      destinationUrl = data?.url ?? null;
+    } else if (res.status !== 404) {
+      console.error(
+        `[ShortLink] Backend API error resolving "${code}": ${res.status} ${res.statusText}`,
+      );
     }
   } catch (err) {
-    if ((err as Error)?.message === "NEXT_REDIRECT") {
-      throw err;
-    }
+    console.error(`[ShortLink] Network error resolving "${code}":`, err);
+  }
+
+  if (destinationUrl) {
+    redirect(destinationUrl);
   }
 
   notFound();
