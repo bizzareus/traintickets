@@ -13,7 +13,6 @@ jest.mock('../common/retrying-axios', () => ({
 
 import { PrismaService } from '../prisma/prisma.service';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
-import { IrctcBrowserlessService } from './irctc-browserless.service';
 import { IrctcHttpService } from './irctc-http.service';
 import { IrctcService } from './irctc.service';
 
@@ -25,7 +24,6 @@ describe('IrctcService', () => {
     jest.clearAllMocks();
     const mockPrisma = {} as PrismaService;
     const mockCookieStore = {} as IrctcCookieStoreService;
-    const mockBrowserless = { isEnabled: false } as IrctcBrowserlessService;
     mockHttpService = {
       postOnlineCharts: jest.fn(),
       getEticketing: jest.fn(),
@@ -34,12 +32,7 @@ describe('IrctcService', () => {
         .mockReturnValue('https://www.irctc.co.in'),
       isProxied: jest.fn().mockReturnValue(false),
     } as unknown as IrctcHttpService;
-    service = new IrctcService(
-      mockPrisma,
-      mockCookieStore,
-      mockBrowserless,
-      mockHttpService,
-    );
+    service = new IrctcService(mockPrisma, mockCookieStore, mockHttpService);
   });
 
   describe('searchStationsViaRapidApi', () => {
@@ -143,7 +136,6 @@ describe('IrctcService', () => {
         },
       };
       const mockCookieStore = {} as IrctcCookieStoreService;
-      const mockBrowserless = { isEnabled: false } as IrctcBrowserlessService;
       mockHttpService = {
         postOnlineCharts: jest.fn(),
         getEticketing: jest.fn(),
@@ -152,12 +144,7 @@ describe('IrctcService', () => {
           .mockReturnValue('https://www.irctc.co.in'),
         isProxied: jest.fn().mockReturnValue(false),
       } as unknown as IrctcHttpService;
-      service = new IrctcService(
-        mockPrisma,
-        mockCookieStore,
-        mockBrowserless,
-        mockHttpService,
-      );
+      service = new IrctcService(mockPrisma, mockCookieStore, mockHttpService);
     });
 
     it('fetches schedule from ConfirmTkt API successfully and returns normalized schedule', async () => {

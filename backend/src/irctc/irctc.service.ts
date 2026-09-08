@@ -6,7 +6,6 @@ import { captureSentryException } from '../common/sentry-report';
 import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
-import { IrctcBrowserlessService } from './irctc-browserless.service';
 import { IrctcHttpService, type IrctcHttpResponse } from './irctc-http.service';
 
 const scheduleClient = createRetryingAxiosClient({
@@ -255,7 +254,6 @@ export class IrctcService {
   constructor(
     private prisma: PrismaService,
     private cookieStore: IrctcCookieStoreService,
-    private browserlessService: IrctcBrowserlessService,
     private irctcHttpService: IrctcHttpService,
   ) {}
 
@@ -490,30 +488,6 @@ export class IrctcService {
     trainNumber: string,
     journeyDateYmd?: string,
   ): Promise<TrainScheduleResponse> {
-    if (this.browserlessService.isEnabled) {
-      try {
-        this.logger.log(
-          `[irctc/schedule] via=browserless train=${trainNumber}`,
-        );
-        const result = await this.browserlessService.fetchSchedule(trainNumber);
-        if (result.status === 200 && result.data?.stationList?.length) {
-          const raw = result.data as TrainScheduleResponse;
-          return {
-            trainNumber: raw.trainNumber ?? trainNumber,
-            trainName: raw.trainName ?? '',
-            stationFrom: raw.stationFrom ?? '',
-            stationTo: raw.stationTo ?? '',
-            stationList: enrichScheduleStationDayCounts(raw.stationList ?? []),
-            ...(raw.trainRunsOn ? { trainRunsOn: raw.trainRunsOn } : {}),
-          };
-        }
-      } catch (err) {
-        this.logger.warn(
-          `[irctc/schedule] browserless failed train=${trainNumber}: ${err instanceof Error ? err.message : String(err)}`,
-        );
-      }
-    }
-
     const path = `/eticketing/protected/mapps1/trnscheduleenquiry/${encodeURIComponent(trainNumber)}`;
     const cookies = await this.cookieStore.getCookie();
     const hasCookies = Boolean(cookies?.trim());
@@ -1087,26 +1061,6 @@ export class IrctcService {
       chartType: payload.chartType ?? 1,
     };
 
-    if (this.browserlessService.isEnabled) {
-      const t0 = Date.now();
-      this.logger.log(
-        `[irctc/vacantBerth] request_start trainNo=${payload.trainNo} via=browserless`,
-      );
-      try {
-        const res = await this.browserlessService.fetchVacantBerth(body);
-        this.logger.log(
-          `[irctc/vacantBerth] response ms=${Date.now() - t0} status=${res.status} via=browserless`,
-        );
-        if (res.status === 200 && res.data) {
-          return res.data;
-        }
-      } catch (err) {
-        this.logger.warn(
-          `[irctc/vacantBerth] browserless failed trainNo=${payload.trainNo}: ${err instanceof Error ? err.message : String(err)}`,
-        );
-      }
-    }
-
     const cookies = await this.cookieStore.getCookie();
     const t0 = Date.now();
     this.logger.log(
@@ -1178,26 +1132,6 @@ export class IrctcService {
       coach: payload.coach,
       cls: payload.cls,
     };
-
-    if (this.browserlessService.isEnabled) {
-      const t0 = Date.now();
-      this.logger.log(
-        `[irctc/coachComposition] request_start trainNo=${payload.trainNo} coach=${payload.coach} via=browserless`,
-      );
-      try {
-        const res = await this.browserlessService.fetchCoachComposition(body);
-        this.logger.log(
-          `[irctc/coachComposition] response ms=${Date.now() - t0} status=${res.status} via=browserless`,
-        );
-        if (res.status === 200 && res.data) {
-          return res.data;
-        }
-      } catch (err) {
-        this.logger.warn(
-          `[irctc/coachComposition] browserless failed trainNo=${payload.trainNo} coach=${payload.coach}: ${err instanceof Error ? err.message : String(err)}`,
-        );
-      }
-    }
 
     const cookies = await this.cookieStore.getCookie();
     const t0 = Date.now();
@@ -1375,26 +1309,6 @@ export class IrctcService {
       jDate: jDateStr,
       boardingStation: String(payload.boardingStation).trim().toUpperCase(),
     };
-
-    if (this.browserlessService.isEnabled) {
-      const t0 = Date.now();
-      this.logger.log(
-        `[irctc/trainComposition] request_start trainNo=${body.trainNo} via=browserless`,
-      );
-      try {
-        const res = await this.browserlessService.fetchTrainComposition(body);
-        this.logger.log(
-          `[irctc/trainComposition] response ms=${Date.now() - t0} status=${res.status} via=browserless`,
-        );
-        if (res.status === 200 && res.data) {
-          return res.data as Record<string, unknown>;
-        }
-      } catch (err) {
-        this.logger.warn(
-          `[irctc/trainComposition] browserless failed trainNo=${body.trainNo}: ${err instanceof Error ? err.message : String(err)}`,
-        );
-      }
-    }
 
     const cookies = await this.cookieStore.getCookie();
     const t0 = Date.now();

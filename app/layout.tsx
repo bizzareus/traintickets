@@ -4,8 +4,6 @@ import Script from "next/script";
 import Link from "next/link";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AnalyticsProvider } from "./providers/AnalyticsProvider";
-import { isIstIndianRailwaysNightlyMaintenanceWindow } from "@/lib/istRailMaintenance";
-import { IstRailMaintenanceBanner } from "@/components/IstRailMaintenance";
 import { listPopularChartTimes } from "@/lib/chartTimes";
 import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
 import { AdSenseScriptLoader } from "@/components/AdSenseScriptLoader";
@@ -183,9 +181,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <IstRailMaintenanceBanner
-          show={isIstIndianRailwaysNightlyMaintenanceWindow()}
-        />
         {/* Analytics first so PostHog client chunk + eager init run before other interactive scripts */}
         <AnalyticsProvider>
           <div className="flex min-h-screen flex-col">

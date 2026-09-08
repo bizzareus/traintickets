@@ -11,11 +11,6 @@ import type {
 interface UseAlternatePathsOptions {
   /** When true, AC-only classes are requested. Defaults to false. */
   acOnly?: boolean;
-  /**
-   * Optional guard fired before any search. When it returns true the search is
-   * blocked (e.g. during scheduled rail maintenance). Defaults to never block.
-   */
-  onBlockedSearchAttempt?: () => boolean;
 }
 
 export interface UseAlternatePathsResult {
@@ -58,8 +53,6 @@ export function useAlternatePaths(
   options: UseAlternatePathsOptions = {},
 ): UseAlternatePathsResult {
   const acOnly = options.acOnly ?? false;
-  const onBlockedSearchAttempt =
-    options.onBlockedSearchAttempt ?? (() => false);
 
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
   const [altTrainName, setAltTrainName] = useState<string | null>(null);
@@ -79,7 +72,6 @@ export function useAlternatePaths(
       focusTravelClass?: string,
       overrideDate?: string,
     ) => {
-      if (onBlockedSearchAttempt()) return;
       const targetDate = overrideDate;
       if (!targetDate) return;
       /** Alternate-path probes use this train’s run endpoints (e.g. NDLS → CSMT), not only the user’s search pair. */
@@ -241,7 +233,7 @@ export function useAlternatePaths(
         setAltLoading(false);
       }
     },
-    [acOnly, onBlockedSearchAttempt],
+    [acOnly],
   );
 
   const reset = useCallback(() => {

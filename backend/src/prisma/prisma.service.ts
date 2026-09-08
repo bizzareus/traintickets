@@ -84,7 +84,10 @@ export class PrismaService
       },
       {
         onPoolError: (err) => {
-          console.warn('[PrismaService] pg pool idle client notice:', err.message);
+          console.warn(
+            '[PrismaService] pg pool idle client notice:',
+            err.message,
+          );
         },
       },
     );

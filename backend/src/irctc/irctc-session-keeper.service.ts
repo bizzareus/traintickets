@@ -3,7 +3,27 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import puppeteer from 'puppeteer';
 import { captureSentryException } from '../common/sentry-report';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
-import { resolveBrowserWsEndpoint } from './irctc-browserless.service';
+
+/** Resolves the CDP WebSocket endpoint for the remote browser (residential IP). */
+function resolveBrowserWsEndpoint(): string | null {
+  if (process.env.IRCTC_BROWSER_WSS?.trim()) {
+    return process.env.IRCTC_BROWSER_WSS.trim();
+  }
+  if (process.env.BROWSERLESS_WSS?.trim()) {
+    return process.env.BROWSERLESS_WSS.trim();
+  }
+  if (process.env.BROWSERLESS_API_KEY?.trim()) {
+    const token = encodeURIComponent(process.env.BROWSERLESS_API_KEY.trim());
+    const country = encodeURIComponent(
+      process.env.BROWSERLESS_PROXY_COUNTRY?.trim() || 'in',
+    );
+    const proxyParam = process.env.BROWSERLESS_PROXY?.trim()
+      ? `&proxy=${encodeURIComponent(process.env.BROWSERLESS_PROXY.trim())}`
+      : `&proxy=residential&proxyCountry=${country}`;
+    return `wss://chrome.browserless.io/stealth?token=${token}${proxyParam}&--disable-http2`;
+  }
+  return null;
+}
 
 const ONLINE_CHARTS_URL = 'https://www.irctc.co.in/online-charts/';
 const HARVEST_HARD_TIMEOUT_MS = 150_000;

@@ -12,11 +12,6 @@ import { apiClient, irctcScheduleClient } from "@/lib/api";
 import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics";
 import { fetchService2CheckStream } from "@/lib/service2CheckStream";
 import {
-  IstRailMaintenanceBanner,
-  IstRailMaintenanceModal,
-} from "@/components/IstRailMaintenance";
-import { useIstRailMaintenance } from "@/hooks/useIstRailMaintenance";
-import {
   extractJourneyTrainRunDayError,
   extractTrainRunDayFromValidateBody,
   firstJourneyValidationMessage,
@@ -620,8 +615,6 @@ export default function HomePage() {
     }
   }, []);
 
-  const railMaint = useIstRailMaintenance(mounted);
-
   function scrollHowItWorksCarousel(dir: -1 | 1) {
     const el = howItWorksCarouselRef.current;
     if (!el) return;
@@ -830,7 +823,6 @@ export default function HomePage() {
 
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
-    if (railMaint.onBlockedSearchAttempt()) return;
     if (scheduleError) return;
     if (trainDoesNotRunOnSelectedDate) {
       setError(trainRunDayMessage ?? "This train doesn't run on that day.");
@@ -1648,7 +1640,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen min-h-[100dvh] bg-slate-50/50">
       <div className="sticky top-0 z-20">
-        <IstRailMaintenanceBanner show={railMaint.showBanner} />
         <header
           className="border-b border-slate-100 bg-white/95 backdrop-blur-sm"
           role="banner"
@@ -3361,12 +3352,6 @@ export default function HomePage() {
             </div>
           </div>
         )}
-
-        <IstRailMaintenanceModal
-          open={railMaint.maintenanceModalOpen}
-          onClose={railMaint.dismissMaintenanceModal}
-          minutesDisplay={railMaint.displayMinutes}
-        />
 
         {journeyRunDayApiError && (
           <div
