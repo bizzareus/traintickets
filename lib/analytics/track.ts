@@ -1,4 +1,4 @@
-import { isAnalyticsEnabled } from "./config";
+import { debugLogAnalytics, isAnalyticsEnabled } from "./config";
 import type { AnalyticsEvent } from "./events";
 import { posthog } from "./posthog-client";
 
@@ -16,12 +16,27 @@ function scheduleNonBlocking(fn: () => void): void {
  * break the page. Dispatched asynchronously to preserve fast INP.
  */
 export function trackAnalyticsEvent(event: AnalyticsEvent): void {
-  if (typeof window === "undefined" || !isAnalyticsEnabled()) return;
+  if (typeof window === "undefined") return;
+  if (!isAnalyticsEnabled()) {
+    debugLogAnalytics(
+      "dropped (PostHog key missing from build):",
+      event.name,
+      event.properties,
+    );
+    return;
+  }
 
   const isAdminPath = window.location.pathname.startsWith("/admin");
   const isAdminUser = window.localStorage.getItem("admin") === "true";
-  if (isAdminPath || isAdminUser) return;
+  if (isAdminPath || isAdminUser) {
+    debugLogAnalytics("dropped (admin suppressed):", event.name, {
+      isAdminPath,
+      isAdminUser,
+    });
+    return;
+  }
 
+  debugLogAnalytics("capture:", event.name, event.properties);
   scheduleNonBlocking(() => {
     try {
       posthog.capture(
@@ -33,8 +48,8 @@ export function trackAnalyticsEvent(event: AnalyticsEvent): void {
       if (typeof gtag === "function") {
         gtag("event", event.name, event.properties);
       }
-    } catch {
-      /* ignore */
+    } catch (err) {
+      debugLogAnalytics("capture threw:", event.name, err);
     }
   });
 }

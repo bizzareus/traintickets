@@ -1,5 +1,5 @@
 import posthog from "posthog-js";
-import { posthogApiHost } from "./config";
+import { debugLogAnalytics, posthogApiHost } from "./config";
 import { isBrowserOnLocalhost } from "@/lib/observability";
 
 /**
@@ -23,7 +23,13 @@ declare global {
 let initCalled = false;
 
 export function initPosthogBrowser(): void {
-  if (typeof window === "undefined" || !POSTHOG_KEY) return;
+  if (typeof window === "undefined") return;
+  if (!POSTHOG_KEY) {
+    debugLogAnalytics(
+      "init skipped: NEXT_PUBLIC_POSTHOG_KEY missing from build",
+    );
+    return;
+  }
 
   const isAdminPath = window.location.pathname.startsWith("/admin");
   const isAdminUser = window.localStorage.getItem("admin") === "true";
@@ -54,6 +60,10 @@ export function initPosthogBrowser(): void {
       if (shouldOptOut) {
         posthog.opt_out_capturing();
       }
+      debugLogAnalytics("PostHog init", {
+        host: posthogApiHost(),
+        optedOut: shouldOptOut,
+      });
     }
     window.posthog = posthog;
   } catch (err) {
