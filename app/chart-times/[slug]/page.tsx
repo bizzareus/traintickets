@@ -10,6 +10,7 @@ import { formatJourneyDateUtcLabel } from "@/lib/stationChartMetaSummary";
 import { buildTrainSlug } from "@/lib/trainSlug";
 import ChartTimesTable from "./ChartTimesTable";
 import ChartTimeAlertCTA from "./ChartTimeAlertCTA";
+import FindTicketsBar from "./FindTicketsBar";
 
 function normalizeJourneyDate(
   raw: string | string[] | undefined,
@@ -246,6 +247,21 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           initialJourneyDate={journeyDate}
         />
       </div>
+      <FindTicketsBar
+        trainNumber={data.trainNumber}
+        trainName={data.trainName}
+        journeyDate={journeyDate}
+        fromCode={data.stations[0]?.stationCode ?? data.originStation}
+        fromName={data.stations[0]?.stationName ?? data.originStation}
+        toCode={
+          data.stations[data.stations.length - 1]?.stationCode ??
+          data.destinationStation
+        }
+        toName={
+          data.stations[data.stations.length - 1]?.stationName ??
+          data.destinationStation
+        }
+      />
 
       <section className="mb-8">
         <h2 className="mb-3 text-lg font-bold text-slate-900">

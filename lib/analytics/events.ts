@@ -345,6 +345,7 @@ export type AnalyticsEvent =
   | {
       name: "find_ticket_cta_clicked";
       properties: {
+        source: string;
         train_number: string;
         train_name?: string | null;
         class?: string;
