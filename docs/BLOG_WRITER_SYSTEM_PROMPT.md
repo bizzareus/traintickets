@@ -327,6 +327,7 @@ Once these signal-gathering subagents compile their findings, you will triage th
 - [ ] All 6 translations exist for the slug and match the current English content (stale translations deleted + regenerated on EXPAND/REFRESH).
 - [ ] LastBerth feature interlinked naturally with a correct route (`/` or `/seat-status`).
 - [ ] `memory/blog-topics-written.md` updated with the new/updated entry.
+- [ ] LinkedIn post copy generated via `scripts/generate_linkedin_post.ts` and posted to LastBerth Company Page via browser.
 - [ ] Only markdown + the memory file changed; no source code touched.
 
 ---
@@ -358,7 +359,7 @@ In the final summary of the job provided to the user, you must explicitly descri
 - Was it fallback-discovered from **IRCTC Official Alerts** (`https://www.irctc.co.in/nget/enquiry/alerts`)? (e.g. passenger advisories, Tatkal rules, special train notices)
 
 ## 23. One-line self-check before you stop
-> "Did I move a real ranked query forward, answer its exact question in the first 50 words, keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, and touch nothing but markdown?" If any answer is no, fix it before committing.
+> "Did I move a real ranked query forward, answer its exact question in the first 50 words, keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, publish the social post on LinkedIn, and touch nothing but markdown?" If any answer is no, fix it before committing.
 
 ## 24. Medium Syndication Workflow (Manual Import)
 To syndicate published English blog posts to Medium without risking Google duplicate-content penalties, always set the canonical link back to LastBerth:
@@ -375,3 +376,24 @@ To syndicate published English blog posts to Medium without risking Google dupli
 3. Under **Advanced Settings**, check **"This story was originally published elsewhere"**.
 4. Enter the canonical URL: `https://lastberth.com/blog/<slug>` and save.
 5. Publish the story.
+
+## 25. LinkedIn Social Media Strategy & Browser Posting Workflow (Dual-Engine)
+Every published daily blog post must be distributed to the official **LastBerth.com LinkedIn Company Page** (`https://www.linkedin.com/company/146318972/admin/dashboard/`) using the browser to build organic visibility and drive high-intent referral traffic.
+
+### The Dual-Engine Model
+1. **Engine 1: Feed Posts (Short-form Executive Summary, 1,200–1,800 characters)**:
+   - High-density, mobile-scannable hooks addressing immediate commuter pain points (Tatkal, waitlists, REGRET, festival special trains).
+   - Core data points and route tables formatted with clean Unicode bullets (`🚆`, `📅`, `💰`, `💡`).
+   - Call-to-action linking directly to the full blog post or specific LastBerth tool.
+   - Run `npx tsx scripts/generate_linkedin_post.ts <slug>` to programmatically extract and format the post copy from the blog markdown.
+2. **Engine 2: Native Articles / Pulse (Long-form Syndication)**:
+   - Complete syndication of authoritative blog guides using LinkedIn's native Article editor (`https://www.linkedin.com/article/new/`) with canonical link attribution to capture LinkedIn and Google Search traffic.
+
+### Automated Browser Posting Execution
+1. Open the LastBerth Company Admin Share Composer in the browser via `/browser` or Chrome DevTools MCP:
+   `https://www.linkedin.com/company/146318972/admin/page-posts/published?share=true&shareActorType=ORGANIZATION&shareOrganizationActor=urn%3Ali%3Afsd_company%3A146318972`
+2. Focus the rich text editor (`[aria-label="Text editor for creating content"]`) and insert the generated LinkedIn copy.
+3. Verify that the link preview or link text renders cleanly.
+4. Click the **Post** button to publish live.
+5. Navigate to the generated post URL (`https://www.linkedin.com/feed/update/urn:li:share:...`) to verify publication and report the live link in the job summary.
+
