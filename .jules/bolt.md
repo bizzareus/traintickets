@@ -1,0 +1,3 @@
+## 2026-09-08 - Single-Pass Tokenization for Auto-Linker Performance & Correctness
+**Learning:** Sequential string replacement loops ($N$ passes for $N$ terms) over Markdown text cause both $O(N)$ performance overhead and link corruption bugs when terms match target URLs or overlapping terms from earlier passes. Using a single combined regex that matches code blocks and existing markdown links first allows single-pass replacement while safely skipping syntax boundaries.
+**Action:** Always combine multi-term text replacement into a single-pass regex pattern that accounts for structural delimiters (like code blocks and links) as match groups to eliminate quadratic string scans and avoid nested mutation bugs.
