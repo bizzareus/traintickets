@@ -154,8 +154,10 @@ jobs:
             --exclude '.git' \
             ./content/ ubuntu@$TARGET_HOST:/home/ubuntu/app/content/
 
-          # Log in to GHCR on EC2, pull image, and restart container fast
+          # Log in to GHCR on EC2, free disk from superseded images (deploys
+          # fail with "no space left on device" otherwise), pull, restart fast
           ssh ubuntu@$TARGET_HOST "echo '$REGISTRY_TOKEN' | docker login ghcr.io -u '$REGISTRY_USER' --password-stdin && \
+            docker image prune -af && \
             docker pull '$FRONTEND_IMAGE' && \
             cd /home/ubuntu/app/infra && \
             docker compose -f docker-compose.yml up -d"
@@ -245,8 +247,10 @@ jobs:
           ssh ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra"
           scp infra/docker-compose.yml infra/Caddyfile ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/
 
-          # Log in to GHCR on EC2, pull image, and restart container fast
+          # Log in to GHCR on EC2, free disk from superseded images (deploys
+          # fail with "no space left on device" otherwise), pull, restart fast
           ssh ubuntu@$TARGET_HOST "echo '$REGISTRY_TOKEN' | docker login ghcr.io -u '$REGISTRY_USER' --password-stdin && \
+            docker image prune -af && \
             docker pull '$BACKEND_IMAGE' && \
             cd /home/ubuntu/app/infra && \
             docker compose -f docker-compose.yml up -d"
