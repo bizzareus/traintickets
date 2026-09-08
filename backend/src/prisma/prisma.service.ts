@@ -40,21 +40,18 @@ export class PrismaService
     // sslmode= from the URL so it can't fight the explicit ssl option below.
     const connectionString = stripSslmode(rawConnectionString);
     const poolMax = parsePositiveInt(process.env.DATABASE_POOL_MAX, 10, 1, 30);
-    // Keep pooled connections warm. The previous 10s idle timeout closed
-    // connections between traffic bursts; reopening them re-runs pgbouncer
-    // get_auth + DISCARD ALL on every reconnect, which was ~37% of all DB time.
-    // A long idle timeout lets a small, stable set of connections be reused.
+    // Keep pooled connections warm while avoiding dead sockets dropped by remote firewalls.
     const idleTimeoutMillis = parsePositiveInt(
       process.env.DATABASE_POOL_IDLE_TIMEOUT_MS,
-      120_000,
+      30_000,
       1_000,
       600_000,
     );
     const connectionTimeoutMillis = parsePositiveInt(
       process.env.DATABASE_POOL_CONNECTION_TIMEOUT_MS,
-      10_000,
+      20_000,
       1_000,
-      30_000,
+      60_000,
     );
 
     // Remote Postgres (Supabase/prod) requires SSL; a plain local dev Postgres
@@ -71,16 +68,26 @@ export class PrismaService
     console.log(
       'PRISMA CONNECTING TO:',
       connectionString.split('@')[1] || connectionString,
-      `poolMax=${poolMax} idleTimeoutMs=${idleTimeoutMillis} ssl=${useSsl}`,
+      `poolMax=${poolMax} idleTimeoutMs=${idleTimeoutMillis} connTimeoutMs=${connectionTimeoutMillis} ssl=${useSsl}`,
     );
 
-    const adapter = new PrismaPg({
-      connectionString,
-      max: poolMax,
-      idleTimeoutMillis,
-      connectionTimeoutMillis,
-      ...(useSsl ? { ssl: { rejectUnauthorized: false } } : {}),
-    });
+    const adapter = new PrismaPg(
+      {
+        connectionString,
+        max: poolMax,
+        idleTimeoutMillis,
+        connectionTimeoutMillis,
+        keepAlive: true,
+        keepAliveInitialDelayMillis: 10_000,
+        maxLifetimeSeconds: 1_800,
+        ...(useSsl ? { ssl: { rejectUnauthorized: false } } : {}),
+      },
+      {
+        onPoolError: (err) => {
+          console.warn('[PrismaService] pg pool idle client notice:', err.message);
+        },
+      },
+    );
     super({
       adapter,
       log:

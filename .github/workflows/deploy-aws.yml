@@ -135,7 +135,6 @@ jobs:
           fi
 
       - name: Pull & Deploy Frontend on EC2
-        if: env.SSH_PRIVATE_KEY != ''
         env:
           TARGET_HOST: ${{ secrets.FRONTEND_EC2_HOST || '13.202.107.176' }}
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
@@ -236,7 +235,6 @@ jobs:
           fi
 
       - name: Pull & Deploy Backend on EC2
-        if: env.SSH_PRIVATE_KEY != ''
         env:
           TARGET_HOST: ${{ secrets.EC2_HOST || '13.207.130.42' }}
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
