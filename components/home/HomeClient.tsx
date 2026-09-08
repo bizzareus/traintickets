@@ -62,6 +62,14 @@ import type {
 
 import { Header } from "@/components/Header";
 import { HomeSeoContent } from "@/components/HomeSeoContent";
+import {
+  StationFieldSimple,
+  todayYmd,
+} from "@/components/home/StationFieldSimple";
+import {
+  MobileModifySearchSheet,
+  formatShortDate,
+} from "@/components/home/MobileModifySearchSheet";
 import ChartTimesFinder from "@/app/chart-times/ChartTimesFinder";
 import type { HomeStrings } from "@/lib/home/home-langs";
 
@@ -167,15 +175,6 @@ const BEST_TRAIN_SCAN_LIMIT = 10;
 
 
 
-function todayYmd(): string {
-  const d = new Date(
-    new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
-  );
-  const y = d.getFullYear();
-  const mo = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${mo}-${day}`;
-}
 
 function useDebounced<T>(value: T, ms: number): T {
   const [v, setV] = useState(value);
@@ -217,186 +216,6 @@ function extractAxiosMessage(e: unknown): string {
   return "Could not load stations. Check that the API is running (NEXT_PUBLIC_API_URL).";
 }
 
-function StationFieldSimple(props: {
-  label: string;
-  placeholder: string;
-  query: string;
-  onUserType: (q: string) => void;
-  value: StationRow | null;
-  onSelect: (s: StationRow) => void;
-  suggestions: StationRow[];
-  loading: boolean;
-  pendingDebounce: boolean;
-  open: boolean;
-  onOpenChange: (o: boolean) => void;
-  suggestError: string | null;
-  className?: string;
-  compact?: boolean;
-}) {
-  const {
-    label,
-    placeholder,
-    query,
-    onUserType,
-    value,
-    onSelect,
-    suggestions,
-    loading,
-    pendingDebounce,
-    open,
-    onOpenChange,
-    suggestError,
-    className,
-    compact = false,
-  } = props;
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const inputId = useId();
-
-  useEffect(() => {
-    const onDoc = (e: MouseEvent) => {
-      if (!wrapRef.current?.contains(e.target as Node)) onOpenChange(false);
-    };
-    document.addEventListener("mousedown", onDoc);
-    return () => document.removeEventListener("mousedown", onDoc);
-  }, [onOpenChange]);
-
-  const showList = open && query.length >= 2;
-  const displayText =
-    value && !open ? `${value.stationCode} - ${value.stationName}` : query;
-  const showLoading = loading || pendingDebounce;
-
-  return (
-    <div
-      ref={wrapRef}
-      className={cn(
-        compact
-          ? "relative flex h-full min-w-0 flex-1 flex-col justify-center px-1 py-0"
-          : "relative min-w-0 flex-1 border-b border-gray-200 px-3 py-2.5 sm:border-b-0 sm:border-r sm:py-2",
-        showList && "z-[55]",
-        className,
-      )}
-    >
-      <label
-        htmlFor={inputId}
-        className={cn(
-          "mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500",
-            compact && "mb-0 text-[9px] leading-3",
-        )}
-      >
-        <svg
-          className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M8 3.1V7a4 4 0 0 0 8 0V3.1"
-          />
-          <path strokeLinecap="round" strokeLinejoin="round" d="m9 15-1-1" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="m15 15 1-1" />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"
-          />
-          <path strokeLinecap="round" strokeLinejoin="round" d="m8 19-2 3" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="m16 19 2 3" />
-        </svg>
-        {label}
-      </label>
-      <div className="relative">
-        <input
-          id={inputId}
-          name={
-            label.toLowerCase().includes("from") ? "fromStation" : "toStation"
-          }
-          aria-label={label}
-          type="text"
-          className={cn(
-            "block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4 touch-manipulation",
-            compact && "h-6 border-0 bg-transparent py-0 pl-0 pr-4 text-sm focus:border-0 focus:ring-0 sm:py-0 sm:pl-0",
-          )}
-          placeholder={placeholder}
-          value={displayText}
-          autoComplete="off"
-          role="combobox"
-          aria-expanded={showList}
-          aria-autocomplete="list"
-          aria-controls={showList ? `${inputId}-listbox` : undefined}
-          onChange={(e) => {
-            onUserType(e.target.value);
-            onOpenChange(true);
-          }}
-          onFocus={() => onOpenChange(true)}
-        />
-        <span
-          className="pointer-events-none absolute inset-y-0 right-0 flex w-8 items-center justify-center text-gray-400"
-          aria-hidden
-        >
-          <svg
-            className="h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </span>
-      </div>
-      {showList && (
-        <ul
-          id={`${inputId}-listbox`}
-          className="absolute inset-x-0 top-full z-[60] mt-1 max-h-56 divide-y divide-gray-100 overflow-auto rounded-lg border border-gray-200 bg-white shadow-lg sm:min-w-[min(100%,18rem)]"
-          role="listbox"
-        >
-          {showLoading && (
-            <li className="px-4 py-3 text-sm text-gray-500">
-              <span className="inline-flex items-center gap-2">
-                <span className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600" />
-                Loading stations…
-              </span>
-            </li>
-          )}
-          {!showLoading && suggestError && (
-            <li className="px-4 py-3 text-sm text-red-700">{suggestError}</li>
-          )}
-          {!showLoading && !suggestError && suggestions.length === 0 && (
-            <li className="px-4 py-3 text-sm text-gray-500">
-              No stations match. Try another spelling.
-            </li>
-          )}
-          {suggestions.map((s) => (
-            <li key={`${s.stationCode}-${s.stationName}`} role="option">
-              <button
-                type="button"
-                className="block w-full px-4 py-2.5 text-left text-sm text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none touch-manipulation"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={() => {
-                  onSelect(s);
-                  onOpenChange(false);
-                }}
-              >
-                <span className="font-semibold text-gray-900">
-                  {s.stationCode}
-                </span>
-                <span className="text-gray-600"> — {s.stationName}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
 
 function UrlSearchParamsSync({
   onParams,
@@ -448,6 +267,22 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setToOpen(open);
   }, []);
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
+  const [mobileSheetOpen, setMobileSheetOpen] = useState(false);
+
+  const handleJourneyDateChange = useCallback((ymd: string) => {
+    setJourneyDate(ymd);
+    trackAnalyticsEvent({
+      name: "search_date_selected",
+      properties: { journey_date: ymd },
+    });
+  }, []);
+
+  const swapStations = useCallback(() => {
+    setFromSt(toSt);
+    setToSt(fromSt);
+    setFromQ(toQ);
+    setToQ(fromQ);
+  }, [fromSt, toSt, fromQ, toQ]);
 
   const handleUrlParams = useCallback(
     (
@@ -1191,9 +1026,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       </Suspense>
       <Header lang={lang} nav={t.nav} showLanguage />
 
-      {/* ── Compact search bar (shown after search) ── */}
+      {/* ── Compact search bar (desktop only after search; mobile uses the summary pill + sheet) ── */}
       {isCompact && (
-        <div className="sticky top-[49px] z-[19] border-b border-gray-200 bg-white/95 backdrop-blur-sm transition-all">
+        <div className="hidden sm:block sticky top-[49px] z-[19] border-b border-gray-200 bg-white/95 backdrop-blur-sm transition-all">
           <div className="mx-auto flex max-w-3xl items-center gap-2 px-4 py-2 sm:gap-3 sm:px-6 lg:max-w-4xl">
             <div className="flex h-14 min-w-0 flex-1 items-stretch rounded-lg border border-gray-200 bg-gray-50 px-2 sm:px-3">
               <StationFieldSimple
@@ -1249,13 +1084,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               <JourneyDatePicker
                 id={`compact-${journeyDateInputId}`}
                 value={journeyDate}
-                onChange={(ymd) => {
-                  setJourneyDate(ymd);
-                  trackAnalyticsEvent({
-                    name: "search_date_selected",
-                    properties: { journey_date: ymd },
-                  });
-                }}
+                onChange={handleJourneyDateChange}
                 inputClassName="h-6 w-[92px] cursor-pointer border-0 bg-transparent p-0 text-xs font-semibold text-slate-700 focus:ring-0 sm:w-[120px] sm:text-sm"
               />
             </div>
@@ -1282,6 +1111,29 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               ) : (
                 t.form.search
               )}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── Mobile summary pill (opens the modify-search sheet) ── */}
+      {isCompact && (
+        <div className="sticky top-[49px] z-[19] border-b border-gray-200 bg-white/95 backdrop-blur-sm sm:hidden">
+          <div className="mx-auto max-w-3xl px-4 py-2">
+            <button
+              type="button"
+              onClick={() => setMobileSheetOpen(true)}
+              aria-label="Modify your search"
+              className="w-full rounded-full bg-slate-100 px-4 py-2 text-center transition hover:bg-slate-200 touch-manipulation"
+            >
+              <span className="block truncate text-sm font-bold text-slate-900">
+                {fromSt?.stationCode ?? "—"} - {fromSt?.stationName ?? "—"}
+                {" → "}
+                {toSt?.stationCode ?? "—"} - {toSt?.stationName ?? "—"}
+              </span>
+              <span className="mt-0.5 block text-xs font-medium text-slate-500">
+                {formatShortDate(journeyDate)}
+              </span>
             </button>
           </div>
         </div>
@@ -1444,13 +1296,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 <JourneyDatePicker
                   id={journeyDateInputId}
                   value={journeyDate}
-                  onChange={(ymd) => {
-                    setJourneyDate(ymd);
-                    trackAnalyticsEvent({
-                      name: "search_date_selected",
-                      properties: { journey_date: ymd },
-                    });
-                  }}
+                  onChange={handleJourneyDateChange}
                 />
                 <div className="mt-2 flex items-center gap-2">
                   <input
@@ -1648,6 +1494,58 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         highlightFrom={scheduleHighlightFrom}
         highlightTo={scheduleHighlightTo}
       />
+      {mobileSheetOpen && (
+        <MobileModifySearchSheet
+          onClose={() => setMobileSheetOpen(false)}
+          from={{
+            query: fromQ,
+            onUserType: (q) => {
+              setFromQ(q);
+              setFromSt(null);
+            },
+            value: fromSt,
+            onSelect: (s) => {
+              setFromSt(s);
+              setFromQ(s.stationName);
+            },
+            suggestions: fromSuggest,
+            loading: fromLoad,
+            pending: fromQ !== fromDeb && fromQ.length >= 2,
+            open: fromOpen,
+            onOpenChange: openFrom,
+            suggestError: fromSuggestError,
+          }}
+          to={{
+            query: toQ,
+            onUserType: (q) => {
+              setToQ(q);
+              setToSt(null);
+            },
+            value: toSt,
+            onSelect: (s) => {
+              setToSt(s);
+              setToQ(s.stationName);
+            },
+            suggestions: toSuggest,
+            loading: toLoad,
+            pending: toQ !== toDeb && toQ.length >= 2,
+            open: toOpen,
+            onOpenChange: openTo,
+            suggestError: toSuggestError,
+          }}
+          onSwap={swapStations}
+          journeyDate={journeyDate}
+          onDateChange={handleJourneyDateChange}
+          acOnly={acOnly}
+          onAcOnlyChange={setAcOnly}
+          searchLoading={searchLoading}
+          onSearch={() => {
+            setMobileSheetOpen(false);
+            if (!searchLoading) void runSearch();
+          }}
+          form={t.form}
+        />
+      )}
     </div>
   );
 }
