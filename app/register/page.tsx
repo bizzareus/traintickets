@@ -5,11 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics";
+import { getStoredContact, saveStoredContact } from "@/lib/contact";
 
 export default function RegisterPage() {
   const router = useRouter();
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(() => getStoredContact().email);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -19,6 +20,7 @@ export default function RegisterPage() {
     try {
       const { data } = await apiClient.post<{ accessToken?: string; message?: string; error?: string }>("/api/auth/register", { name, email, password });
       if (data.accessToken) localStorage.setItem("accessToken", data.accessToken);
+      saveStoredContact({ email });
       trackAnalyticsEvent({ name: "auth_register_submitted", properties: { success: true } });
       router.push("/dashboard");
       router.refresh();

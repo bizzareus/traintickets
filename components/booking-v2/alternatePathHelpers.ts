@@ -8,7 +8,7 @@
 import moment from "moment";
 import type { AlternateLeg } from "./alternatePathsTypes";
 
-export const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
+export { MONITOR_CONTACT_STORAGE_KEY } from "@/lib/contact";
 export const LEG_ALERT_STORAGE_PREFIX = "lastBerth_leg_alert_";
 export const IST_UTC_OFFSET_MINUTES = 330;
 

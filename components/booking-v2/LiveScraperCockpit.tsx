@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { apiClient } from "@/lib/api";
 import { trackAlertRequested } from "@/lib/analytics/track";
+import { useContactFields } from "@/lib/contact";
 
 interface LiveScraperCockpitProps {
   trainNumber: string;
@@ -40,8 +41,8 @@ export function LiveScraperCockpit({
   const [hoveredSeat, setHoveredSeat] = useState<Seat | null>(null);
 
   // Monitor registration Form state
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const { email, setEmail, mobile, setMobile, persistContact } =
+    useContactFields();
   const [selectedClass, setSelectedClass] = useState(classCode);
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -199,15 +200,7 @@ export function LiveScraperCockpit({
         mobile: mob || undefined,
       });
 
-      // Store locally
-      try {
-        window.localStorage.setItem(
-          "lastBerth_monitor_contact",
-          JSON.stringify({ email: em ?? "", mobile: mob ?? "" }),
-        );
-      } catch {
-        /* ignore */
-      }
+      persistContact();
     } catch (err: unknown) {
       const e = err as { response?: { data?: { message?: string } }; message?: string };
       const errMsg = e.response?.data?.message || e.message || "Failed to set up monitor.";
@@ -228,7 +221,7 @@ export function LiveScraperCockpit({
     } finally {
       setSubmitting(false);
     }
-  }, [email, mobile, selectedClass, trainNumber, trainName, fromStationCode, toStationCode, journeyDate, trainStartDate]);
+  }, [email, mobile, persistContact, selectedClass, trainNumber, trainName, fromStationCode, toStationCode, journeyDate, trainStartDate]);
 
   return (
     <div className={`mt-8 overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 p-6 text-white shadow-2xl transition-all duration-300 relative ${inlineMode ? "" : "max-w-2xl mx-auto"}`}>

@@ -5,12 +5,16 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics";
+import { getStoredContact, saveStoredContact } from "@/lib/contact";
 
 type Status = "loading" | "unsubscribed" | "subscribed" | "error";
 
 function UnsubscribePageContent() {
   const searchParams = useSearchParams();
-  const initialRecipient = searchParams.get("r")?.trim() ?? "";
+  const paramRecipient = searchParams.get("r")?.trim() ?? "";
+  const stored = getStoredContact();
+  const initialRecipient =
+    paramRecipient || stored.email || stored.mobile || "";
 
   const [recipient, setRecipient] = useState(initialRecipient);
   const [status, setStatus] = useState<Status>(initialRecipient ? "loading" : "subscribed");
@@ -48,6 +52,11 @@ function UnsubscribePageContent() {
       await apiClient.post(`/api/notifications/unsubscribe`, {
         recipient: recipient.trim(),
       });
+      saveStoredContact(
+        detectChannel(recipient) === "email"
+          ? { email: recipient }
+          : { mobile: recipient },
+      );
       setStatus("unsubscribed");
       trackAnalyticsEvent({
         name: "notification_unsubscribe_completed",
@@ -68,6 +77,11 @@ function UnsubscribePageContent() {
       await apiClient.post(`/api/notifications/resubscribe`, {
         recipient: recipient.trim(),
       });
+      saveStoredContact(
+        detectChannel(recipient) === "email"
+          ? { email: recipient }
+          : { mobile: recipient },
+      );
       setStatus("subscribed");
       trackAnalyticsEvent({
         name: "notification_resubscribe_completed",

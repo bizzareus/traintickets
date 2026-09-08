@@ -14,6 +14,7 @@ import {
 import { apiClient } from "@/lib/api";
 import { trackTatkalAlertRequested } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
+import { getStoredContact, saveStoredContact } from "@/lib/contact";
 import {
   calculateTatkalWindow,
   formatReadableDateIST,
@@ -30,8 +31,12 @@ export default function TatkalPlannerClient() {
   const [classCategory, setClassCategory] = useState<ClassCategory>("AC");
   const [originOffsetDays, setOriginOffsetDays] = useState(0);
   const [showAlertForm, setShowAlertForm] = useState(false);
-  const [emailInput, setEmailInput] = useState("");
-  const [mobileInput, setMobileInput] = useState("");
+  const [emailInput, setEmailInput] = useState(
+    () => getStoredContact().email,
+  );
+  const [mobileInput, setMobileInput] = useState(
+    () => getStoredContact().mobile,
+  );
   const [subscribing, setSubscribing] = useState(false);
   const [subscribeSuccess, setSubscribeSuccess] = useState(false);
   const [subscribeError, setSubscribeError] = useState<string | null>(null);
@@ -94,6 +99,7 @@ export default function TatkalPlannerClient() {
         originOffsetDays,
       });
       setSubscribeSuccess(true);
+      saveStoredContact({ email, mobile });
       trackTatkalAlertRequested({ success: true, category: classCategory, source: "tatkal_planner_inline", journeyDate, tatkalDate: windowResult.tatkalBookingDateStr, tatkalTime: windowResult.tatkalOpeningTimeFormatted, email: email || undefined, mobile: mobile || undefined, originOffsetDays });
     } catch (error: unknown) {
       const response = error as { response?: { data?: { message?: string } } };

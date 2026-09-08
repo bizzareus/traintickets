@@ -24,8 +24,7 @@ import {
 } from "@/lib/trainRunsOn";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
-
-const MONITOR_CONTACT_STORAGE_KEY = "lastBerth_monitor_contact";
+import { getStoredContact, saveStoredContact } from "@/lib/contact";
 
 type Station = { code: string; name: string };
 type TrainOption = { number: string; label: string };
@@ -756,22 +755,9 @@ export default function HomePage() {
     setMonitorSuccess(null);
     setMonitorError(null);
     setMonitorJourneyResponse(null);
-    try {
-      const raw =
-        typeof window !== "undefined" &&
-        window.localStorage.getItem(MONITOR_CONTACT_STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as { email?: string; mobile?: string };
-        setMonitorEmail(parsed.email != null ? String(parsed.email) : "");
-        setMonitorMobile(parsed.mobile != null ? String(parsed.mobile) : "");
-      } else {
-        setMonitorEmail("");
-        setMonitorMobile("");
-      }
-    } catch {
-      setMonitorEmail("");
-      setMonitorMobile("");
-    }
+    const stored = getStoredContact();
+    setMonitorEmail(stored.email);
+    setMonitorMobile(stored.mobile);
   }, [monitoringLeg]);
 
   // Re-init Flowbite after mount and when dropdowns exist in the DOM (avoids hydration mismatch from Popper.js).
@@ -1046,19 +1032,7 @@ export default function HomePage() {
         name: "monitor_journey_submitted",
         properties: { success: true, queued: true },
       });
-      if (typeof window !== "undefined" && window.localStorage) {
-        try {
-          window.localStorage.setItem(
-            MONITOR_CONTACT_STORAGE_KEY,
-            JSON.stringify({
-              email: email ?? "",
-              mobile: mobile ?? "",
-            }),
-          );
-        } catch {
-          // ignore storage errors
-        }
-      }
+      saveStoredContact({ email: email ?? "", mobile: mobile ?? "" });
     } catch (err: unknown) {
       const runDayPayload = extractJourneyTrainRunDayError(err);
       if (runDayPayload) {

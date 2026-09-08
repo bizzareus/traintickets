@@ -9,6 +9,7 @@ import {
 } from "@/lib/analytics/track";
 import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricingExperiment";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
+import { useContactFields } from "@/lib/contact";
 
 const DEFAULT_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -34,8 +35,8 @@ export function TrainChartAlertSection({
   const { isPaidVariant, variant } = useChartAlertPricingExperiment();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedClass, setSelectedClass] = useState<string>("3A");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const { email, setEmail, mobile, setMobile, persistContact } =
+    useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -98,6 +99,7 @@ export function TrainChartAlertSection({
       });
 
       setSuccess(true);
+      persistContact();
       trackAlertRequested({
         success: true,
         source: "search_panel",

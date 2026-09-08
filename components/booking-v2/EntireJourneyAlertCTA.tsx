@@ -4,6 +4,7 @@ import { useState } from "react";
 import { apiClient } from "@/lib/api";
 import { trackAlertRequested } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
+import { useContactFields } from "@/lib/contact";
 
 interface Props {
   trainNumber: string;
@@ -27,8 +28,8 @@ export function EntireJourneyAlertCTA({
   originChartTime,
 }: Props) {
   const [expanded, setExpanded] = useState(false);
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const { email, setEmail, mobile, setMobile, persistContact } =
+    useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -72,6 +73,7 @@ export function EntireJourneyAlertCTA({
         trainStartDate: trainStartDate,
       });
       setSuccess(true);
+      persistContact();
       trackAlertRequested({
         success: true,
         source: "search_entire_journey",

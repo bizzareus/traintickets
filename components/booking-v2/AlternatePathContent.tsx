@@ -17,7 +17,10 @@ import type {
   AlternatePathsResponse,
 } from "./alternatePathsTypes";
 import {
-  MONITOR_CONTACT_STORAGE_KEY,
+  getStoredContact,
+  saveStoredContact,
+} from "@/lib/contact";
+import {
   chartMomentHasPassedIst,
   collapsedAlternatePathTimingSummary,
   formatChartMomentIst,
@@ -255,19 +258,9 @@ function CompactLegChartCta({
       setAlreadySet(true);
       setDone(true);
     }
-    try {
-      const raw =
-        typeof window !== "undefined"
-          ? window.localStorage.getItem(MONITOR_CONTACT_STORAGE_KEY)
-          : null;
-      if (raw) {
-        const o = JSON.parse(raw) as { email?: string; mobile?: string };
-        if (o.email) setEmail(o.email);
-        if (o.mobile) setMobile(o.mobile);
-      }
-    } catch {
-      /* ignore */
-    }
+    const stored = getStoredContact();
+    if (stored.email) setEmail(stored.email);
+    if (stored.mobile) setMobile(stored.mobile);
   }, [trainNumber, legFrom, legTo, journeyDate]);
 
   // Fetch chart preparation time
@@ -403,14 +396,7 @@ function CompactLegChartCta({
         email: em || undefined,
         mobile: mob || undefined,
       });
-      try {
-        window.localStorage.setItem(
-          MONITOR_CONTACT_STORAGE_KEY,
-          JSON.stringify({ email: em ?? "", mobile: mob ?? "" }),
-        );
-      } catch {
-        /* ignore */
-      }
+      saveStoredContact({ email: em ?? "", mobile: mob ?? "" });
     } catch (err: unknown) {
       const e = err as {
         response?: { data?: { message?: string } };

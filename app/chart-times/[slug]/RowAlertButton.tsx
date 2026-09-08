@@ -9,6 +9,7 @@ import {
 } from "@/lib/analytics/track";
 import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricingExperiment";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
+import { useContactFields } from "@/lib/contact";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -139,8 +140,8 @@ export default function RowAlertButton({
   }, [activeClasses, classCode]);
 
   const [journeyDate, setJourneyDate] = useState(initialJourneyDate || "");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const { email, setEmail, mobile, setMobile, persistContact } =
+    useContactFields();
   const { isPaidVariant, variant } = useChartAlertPricingExperiment();
   const [showPaidStep, setShowPaidStep] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -236,6 +237,7 @@ export default function RowAlertButton({
         mobile: mob || undefined,
       });
       setSuccess(true);
+      persistContact();
       trackAlertRequested({
         success: true,
         source: "chart_times_row",
