@@ -53,6 +53,25 @@ export interface IrctcHttpResponse {
 export class IrctcHttpService {
   private readonly logger = new Logger(IrctcHttpService.name);
 
+  /**
+   * Logs an upstream response body (truncated). Never logs headers, so the
+   * IRCTC cookie bundle can't leak — only URL, status, and a body preview.
+   * Same knob as request (curl) logging: `IRCTC_CURL_LOG=false` mutes.
+   */
+  private logResponse(
+    logCtx: string,
+    url: string,
+    statusCode: number,
+    body: string,
+  ): void {
+    if (!curlLogEnabled()) return;
+    const preview = body.slice(0, 2000).replace(/\s+/g, ' ');
+    const truncated = body.length > 2000 ? '…(truncated)' : '';
+    this.logger.log(
+      `${logCtx} response url=${url} status=${statusCode} bytes=${body.length} body=${preview}${truncated}`,
+    );
+  }
+
   private readonly axiosClient = createRetryingAxiosClient({
     serviceName: 'irctc/http-gateway',
     retries: 2,
@@ -163,6 +182,17 @@ export class IrctcHttpService {
         `${logCtx} routing via ngrok proxy: ${proxyUrl} cookies=${Boolean(options.cookies)}`,
       );
 
+      if (curlLogEnabled()) {
+        this.logger.log(
+          `${logCtx} curl: ${buildCurl({
+            method: 'POST',
+            url: proxyUrl,
+            headers,
+            body: JSON.stringify(body),
+          })}`,
+        );
+      }
+
       try {
         const res = await this.axiosClient.post(proxyUrl, body, {
           headers,
@@ -171,6 +201,7 @@ export class IrctcHttpService {
         const status = res.status;
         const text =
           typeof res.data === 'string' ? res.data : JSON.stringify(res.data);
+        this.logResponse(logCtx, proxyUrl, status, text);
         return { statusCode: status, body: text };
       } catch (proxyErr: any) {
         const ms = Date.now() - t0;
@@ -226,6 +257,7 @@ export class IrctcHttpService {
         const status = res.status;
         const text =
           typeof res.data === 'string' ? res.data : JSON.stringify(res.data);
+        this.logResponse(logCtx, proxyUrl, status, text);
         return { statusCode: status, body: text };
       } catch (proxyErr: any) {
         const ms = Date.now() - t0;
@@ -242,10 +274,10 @@ export class IrctcHttpService {
       headers,
       timeout: timeoutMs,
     });
-    return {
-      statusCode: res.status,
-      body: typeof res.data === 'string' ? res.data : JSON.stringify(res.data),
-    };
+    const text =
+      typeof res.data === 'string' ? res.data : JSON.stringify(res.data);
+    this.logResponse(logCtx, directUrl, res.status, text);
+    return { statusCode: res.status, body: text };
   }
 
   /**
@@ -292,9 +324,9 @@ export class IrctcHttpService {
       },
     );
 
-    return {
-      statusCode: res.statusCode,
-      body: typeof res.body === 'string' ? res.body : JSON.stringify(res.body),
-    };
+    const text =
+      typeof res.body === 'string' ? res.body : JSON.stringify(res.body);
+    this.logResponse(logCtx, url, res.statusCode, text);
+    return { statusCode: res.statusCode, body: text };
   }
 }
