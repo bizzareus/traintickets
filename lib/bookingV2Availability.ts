@@ -48,15 +48,22 @@ export type TrainAvailabilityLike = {
   availabilityCache?: Record<string, AvailabilityRowLike>;
 };
 
-/** Checks if any class on the train has directly bookable/available seats. */
+const NON_AC_CLASSES = new Set(["SL", "2S", "GN", "FC"]);
+
+/** Checks if any class on the train has directly bookable/available seats.
+ * Performance Optimization: Avoids intermediate array allocation (.filter) on every train item.
+ */
 export function hasAnyAvailableSeat(
   train: TrainAvailabilityLike,
   acOnly = false,
 ): boolean {
-  const displayedClasses = (train.avlClasses ?? []).filter(
-    (c) => !acOnly || !["SL", "2S", "GN", "FC"].includes(c.toUpperCase()),
-  );
-  return displayedClasses.some((cls) => {
+  const avlClasses = train?.avlClasses;
+  if (!avlClasses || avlClasses.length === 0) return false;
+
+  return avlClasses.some((cls) => {
+    if (acOnly && NON_AC_CLASSES.has(cls.toUpperCase())) {
+      return false;
+    }
     const gn = train.availabilityCache?.[cls];
     return gn ? isIrctcDirectBookable(gn) : false;
   });
