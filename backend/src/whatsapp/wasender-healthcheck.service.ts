@@ -5,7 +5,7 @@ import axios, { type AxiosInstance } from 'axios';
 import QRCode from 'qrcode';
 import { Resend } from 'resend';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
-import { escapeHtml } from '../notification/templates/notification-email.templates';
+import { escapeHtml } from '../notification/notification.helpers';
 import { renderWasenderQrEmailHtml } from './templates/wasender-qr-email.template';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';

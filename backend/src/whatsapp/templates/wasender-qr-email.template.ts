@@ -1,4 +1,4 @@
-import { escapeHtml } from '../../notification/templates/notification-email.templates';
+import { escapeHtml } from '../../notification/notification.helpers';
 
 export interface WasenderQrEmailParams {
   sessionId: string;

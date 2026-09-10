@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import axios, { type AxiosInstance } from 'axios';
 import { Resend } from 'resend';
 import { normalizeE164Mobile } from '../notification.helpers';
-import { escapeHtml } from '../templates/notification-email.templates';
+import { escapeHtml } from '../notification.helpers';
 import {
   WhatsAppProvider,
   SendWhatsAppPayload,

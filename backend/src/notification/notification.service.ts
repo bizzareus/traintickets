@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { Resend } from 'resend';
 import {
   isFilledOpenAiPlanItem,
+  type OpenAiBookingPlanItem,
   type Service2CheckResult,
 } from '../service2/service2.service';
 import type { ChartTimeAvailabilityTask } from '@prisma/client';
@@ -24,6 +25,11 @@ import {
   normalizeE164Mobile,
   formatJourneyDateReadable,
   formatSegmentScheduleTimes,
+  buildSegmentBookUrl,
+  formatSegmentRoute,
+  findScheduleRow,
+  departureTimeAtStation,
+  arrivalTimeAtStation,
   type JourneyLegCoverage,
 } from './notification.helpers';
 import {
@@ -415,10 +421,10 @@ export class NotificationService {
   public extractJourneyLegCoverage(params: {
     fromStationCode: string;
     toStationCode: string;
-    plan: Array<{ instruction: string; approx_price?: number; availability?: string }>;
+    plan: OpenAiBookingPlanItem[];
     stationScheduleList?: any[];
   }): JourneyLegCoverage[] {
-    return extractJourneyLegCoverage(params as any);
+    return extractJourneyLegCoverage(params);
   }
 
   /**
@@ -1121,10 +1127,7 @@ export class NotificationService {
                   stationScheduleList,
                   item.fromCode,
                 );
-                const toRow = findScheduleRow(
-                  stationScheduleList,
-                  item.toCode,
-                );
+                const toRow = findScheduleRow(stationScheduleList, item.toCode);
                 const depTime = departureTimeAtStation(fromRow);
                 const arrTime = arrivalTimeAtStation(toRow);
                 const fromDisplay = depTime
@@ -1151,16 +1154,17 @@ export class NotificationService {
                   let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}`;
                   if (this.shortLinkService) {
                     try {
-                      alertUrl = await this.shortLinkService.createAlertShortLink({
-                        trainNumber: task.trainNumber,
-                        trainName: result?.trainSchedule?.trainName,
-                        fromStationCode: item.fromCode,
-                        toStationCode: item.toCode,
-                        journeyDate: journeyDateStr,
-                        classCode: firstPlannedClassCode(result),
-                        email: email || undefined,
-                        mobile: mobile || undefined,
-                      });
+                      alertUrl =
+                        await this.shortLinkService.createAlertShortLink({
+                          trainNumber: task.trainNumber,
+                          trainName: result?.trainSchedule?.trainName,
+                          fromStationCode: item.fromCode,
+                          toStationCode: item.toCode,
+                          journeyDate: journeyDateStr,
+                          classCode: firstPlannedClassCode(result),
+                          email: email || undefined,
+                          mobile: mobile || undefined,
+                        });
                     } catch {
                       // fallback
                     }
