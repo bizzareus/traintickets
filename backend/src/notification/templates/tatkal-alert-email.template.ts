@@ -1,3 +1,5 @@
+import { escapeHtml } from '../notification.helpers';
+
 export interface TatkalAlertEmailParams {
   category: 'AC' | 'NON_AC';
   journeyDateReadable: string;
@@ -9,15 +11,6 @@ export interface TatkalAlertEmailParams {
   trainName?: string;
   fromStationCode?: string;
   toStationCode?: string;
-}
-
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
 }
 
 export function renderTatkalAlertEmailHtml(
@@ -143,4 +136,18 @@ export function renderTatkalAlertEmailHtml(
   </table>
 </body>
 </html>`;
+}
+
+export function buildTatkalAlertWhatsAppText(params: {
+  trainNumber?: string;
+  trainName?: string;
+  tatkalDate: string;
+  tatkalTime: string;
+  journeyDate: string;
+  freezeWindow: string;
+}): string {
+  const trainText = params.trainNumber
+    ? ` for train ${params.trainName ? `${params.trainName} (${params.trainNumber})` : params.trainNumber}`
+    : '';
+  return `🔔 *LastBerth Tatkal Alert Confirmed*\n\nYour Tatkal booking alert${trainText} is set!\n\n📅 *Tatkal Booking Opens:* ${params.tatkalDate} at *${params.tatkalTime}*\n🧳 *Journey Date:* ${params.journeyDate}\n🔒 *Master List Freeze:* ${params.freezeWindow}\n\n⚡ *Pro Tip:* Save all passenger names in IRCTC Master List before ${params.freezeWindow.split('–')[0].trim()} and use UPI QR for fastest checkout.\n\n🔗 https://lastberth.com/tatkal-planner`;
 }
