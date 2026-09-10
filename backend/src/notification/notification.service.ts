@@ -34,19 +34,14 @@ import {
   renderChartPreparedNoDestinationEmailHtml,
   renderAlertFailureEmailHtml,
   renderAdminMonitoringEmailHtml,
-} from './templates/notification-email.templates';
-import {
-  buildWatiTemplateParameters,
+  renderTatkalAlertEmailHtml,
+  buildTatkalAlertWhatsAppText,
   buildChartPreparedNoDestinationWhatsAppText,
   buildWhatsAppSeatsFoundText,
   buildFollowUpLegWhatsAppText,
   buildNoSeatsWhatsAppText,
   buildAlternativeTrainsWhatsAppText,
-} from './templates/notification-whatsapp.templates';
-import {
-  renderTatkalAlertEmailHtml,
-  buildTatkalAlertWhatsAppText,
-} from './templates/tatkal-alert-email.template';
+} from './templates';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
 import { NotificationDeduplicationService } from './notification-deduplication.service';

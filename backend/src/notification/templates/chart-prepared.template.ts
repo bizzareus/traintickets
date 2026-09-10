@@ -1,0 +1,74 @@
+import { escapeHtml } from '../notification.helpers';
+
+export function renderChartPreparedNoDestinationEmailHtml(params: {
+  trainNumber: string;
+  trainName?: string | null;
+  formattedDateTime: string;
+  checkTicketsUrl: string;
+  unsubscribeUrl?: string;
+}): string {
+  const {
+    trainNumber,
+    trainName,
+    formattedDateTime,
+    checkTicketsUrl,
+    unsubscribeUrl,
+  } = params;
+  const safeUrl = escapeHtml(checkTicketsUrl);
+  const tName = trainName?.trim() ? ` ${trainName.trim()}` : '';
+  const mainText = `The chart has been prepared for train ${trainNumber}${tName} at ${formattedDateTime}`;
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chart prepared - ${escapeHtml(trainNumber)}${escapeHtml(tName)} - LastBerth</title>
+</head>
+<body style="margin:0; padding:0; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background:#f1f5f9; color:#334155;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;">
+    <tr>
+      <td style="padding:32px 16px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px; margin:0 auto; border-radius:16px; border:1px solid #e2e8f0; background:#ffffff; box-shadow:0 4px 6px -1px rgba(0,0,0,0.08); overflow:hidden;">
+          <tr>
+            <td style="padding:24px 24px 20px;">
+              <p style="margin:0; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#2563eb;">LastBerth Chart Alert</p>
+              <p style="margin:12px 0 0 0; font-size:16px; font-weight:600; color:#0f172a; line-height:1.5;">${escapeHtml(mainText)}</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 24px 24px;">
+              <p style="margin:0 0 12px 0; font-size:14px; color:#334155;">Check for available tickets on <a href="${safeUrl}" style="color:#2563eb; text-decoration:underline;">${safeUrl}</a></p>
+              <a href="${safeUrl}" style="display:inline-block; padding:12px 24px; border-radius:12px; background:#2563eb; color:#ffffff; font-size:15px; font-weight:600; text-decoration:none;">Check for available tickets</a>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to alert you when the chart is prepared.${
+          unsubscribeUrl
+            ? ` <a href="${escapeHtml(unsubscribeUrl)}" style="color:#94a3b8; text-decoration:underline;">Unsubscribe</a>`
+            : ''
+        }</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+export function buildChartPreparedNoDestinationWhatsAppText(params: {
+  trainNumber: string;
+  trainName?: string | null;
+  formattedDateTime: string;
+  checkTicketsUrl: string;
+  unsubscribeUrl?: string;
+}): string {
+  const tName = params.trainName?.trim() ? ` ${params.trainName.trim()}` : '';
+  const line1 = `The chart has been prepared for train ${params.trainNumber}${tName} at ${params.formattedDateTime}`;
+  const line2 = `Check for available tickets on ${params.checkTicketsUrl}`;
+
+  const lines = [line1, '', line2];
+  if (params.unsubscribeUrl) {
+    lines.push('', `Unsubscribe: ${params.unsubscribeUrl}`);
+  }
+  return lines.join('\n');
+}
