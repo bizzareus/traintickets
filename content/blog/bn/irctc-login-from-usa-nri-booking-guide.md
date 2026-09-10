@@ -1,8 +1,8 @@
 ---
-title: "IRCTC লগইন USA থেকে: 403 Forbidden সমস্যা সমাধান ও NRI নিয়মাবলী (2026)"
-description: "USA থেকে IRCTC-তে লগইন করতে পারছেন না? 403 Forbidden ত্রুটি সমাধান, +1 US নম্বর যাচাই, US ক্রেডিট কার্ড দিয়ে পেমেন্ট করা ও EST/PST Tatkal সময়সূচী সম্পর্কে জানুন।"
+title: "IRCTC Login from USA: 403 এরর ও Access Denied ঠিক করুন"
+description: "USA থেকে IRCTC লগইন হচ্ছে না? 403 Forbidden এরর সমাধান করুন। +1 US নম্বর ভেরিফিকেশন, ক্রেডিট কার্ড পেমেন্ট ও তৎকাল বুকিংয়ের নিয়ম জানুন।"
 date: "2026-08-13"
-updated: "2026-08-14"
+updated: "2026-09-10"
 tags:
   - irctc login usa
   - nri ticket booking
