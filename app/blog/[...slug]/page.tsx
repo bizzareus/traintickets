@@ -237,7 +237,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       if (b.sharedTags !== a.sharedTags) {
         return b.sharedTags - a.sharedTags;
       }
-      return b.post.date.localeCompare(a.post.date);
+      const da = a.post.date || "";
+      const db = b.post.date || "";
+      return db < da ? -1 : db > da ? 1 : 0;
     })
     .slice(0, 3)
     .map((x) => x.post);
