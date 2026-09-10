@@ -112,7 +112,7 @@ function formatChartTimeIst(
   return {
     label: isReleased
       ? `Chart for station was released at ${formattedTime}`
-      : `New tickets open at ${formattedTime}`,
+      : `Chart prepares at ${formattedTime}`,
     formattedTime,
     isReleased,
   };
@@ -665,7 +665,7 @@ export class NotificationService {
             return {
               label: formatted.isReleased
                 ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
-                : `New tickets open at ${formatted.formattedTime}`,
+                : `Chart prepares at ${formatted.formattedTime}`,
               isReleased: formatted.isReleased,
             };
           }
@@ -685,7 +685,7 @@ export class NotificationService {
         return {
           label: formatted.isReleased
             ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
-            : `New tickets open at ${formatted.formattedTime}`,
+            : `Chart prepares at ${formatted.formattedTime}`,
           isReleased: formatted.isReleased,
         };
       }
@@ -701,7 +701,7 @@ export class NotificationService {
         return {
           label: formatted.isReleased
             ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
-            : `New tickets open at ${formatted.formattedTime}`,
+            : `Chart prepares at ${formatted.formattedTime}`,
           isReleased: formatted.isReleased,
         };
       }
