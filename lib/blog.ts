@@ -205,7 +205,12 @@ export const listBlogPosts = cache((lang?: string): BlogPostMeta[] => {
       parseMetaFromMatter(slug, data as Record<string, unknown>, content),
     );
   }
-  metas.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+  // Performance Optimization: Direct string comparison operator (< / >) avoids Intl localeCompare collation overhead for YYYY-MM-DD dates
+  metas.sort((a, b) => {
+    const da = a.date || "";
+    const db = b.date || "";
+    return db < da ? -1 : db > da ? 1 : 0;
+  });
   return metas;
 });
 
