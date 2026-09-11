@@ -1828,8 +1828,11 @@ export class BookingV2Service {
         fareN,
       });
     }
+    // Performance Optimization: Direct string comparison operator (< / >) is ~2x-5x faster than localeCompare in V8
     options.sort(
-      (a, b) => a.fareN - b.fareN || a.travelClass.localeCompare(b.travelClass),
+      (a, b) =>
+        a.fareN - b.fareN ||
+        (a.travelClass < b.travelClass ? -1 : a.travelClass > b.travelClass ? 1 : 0),
     );
     return options.map(({ fareN: _fareN, ...rest }) => rest);
   }
