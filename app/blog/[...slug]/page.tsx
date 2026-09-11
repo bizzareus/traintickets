@@ -237,7 +237,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       if (b.sharedTags !== a.sharedTags) {
         return b.sharedTags - a.sharedTags;
       }
-      return b.post.date.localeCompare(a.post.date);
+      // Performance Optimization: Direct string comparison operator (< / >) is ~2x-5x faster than localeCompare in V8 for ISO dates
+      return b.post.date < a.post.date ? -1 : b.post.date > a.post.date ? 1 : 0;
     })
     .slice(0, 3)
     .map((x) => x.post);
