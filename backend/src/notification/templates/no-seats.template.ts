@@ -380,7 +380,7 @@ export function buildAlternativeTrainsWhatsAppText(params: {
   lines.push('Track live seat updates anytime on LastBerth! 🚄');
   if (params.unsubscribeUrl) {
     lines.push('');
-    lines.push(`Unsubscribe: ${params.unsubscribeUrl}`);
+    lines.push(`Unsubscribe: ${params.unsubscribeUrl} on this link`);
   }
 
   return lines.join('\n').trim();
