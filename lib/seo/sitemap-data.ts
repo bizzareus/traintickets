@@ -38,6 +38,11 @@ async function pagesBucket(now: Date): Promise<MetadataRoute.Sitemap> {
     { url: url("/chart-vacancy"), lastModified: now },
     { url: url("/pnr-status"), lastModified: now },
     { url: url("/tatkal-planner"), lastModified: now },
+    { url: url("/about"), lastModified: now },
+    { url: url("/contact"), lastModified: now },
+    { url: url("/terms"), lastModified: now },
+    { url: url("/privacy"), lastModified: now },
+    { url: url("/disclaimer"), lastModified: now },
   ];
 
   // Localized homepage (/ for English, /<lang> for the rest) with hreflang.
