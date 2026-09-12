@@ -379,10 +379,10 @@ export async function buildWhatsAppSeatsFoundText(params: {
   }
 
   lines.push('Track live seat updates anytime on LastBerth! 🚄');
-  if (params.unsubscribeUrl) {
-    lines.push('');
-    lines.push(`Unsubscribe: ${params.unsubscribeUrl}`);
-  }
+  // if (params.unsubscribeUrl) {
+  //   lines.push('');
+  //   lines.push(`Unsubscribe: ${params.unsubscribeUrl}`);
+  // }
 
   return lines.join('\n').trim();
 }
