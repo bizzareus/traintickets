@@ -226,9 +226,18 @@ const ZONE_ORDER = [
   "Continental Menu",
 ];
 
+// Performance Optimization: Map lookup is O(1) compared to Array.indexOf which is O(N) per comparison pass.
+const ZONE_ORDER_MAP = new Map(
+  ZONE_ORDER.map((zone, idx) => [zone, idx + 1]),
+);
+
 type RawMenu = StandardZoneMenu & { classGroup: string; classGroupName: string };
 
+// Performance Optimization: Cache parsed raw menus in-memory to eliminate repeated synchronous disk I/O and JSON parsing on every call.
+let cachedRawMenus: RawMenu[] | null = null;
+
 function readAll(): RawMenu[] {
+  if (cachedRawMenus) return cachedRawMenus;
   if (!fs.existsSync(DIR)) return [];
   const out: RawMenu[] = [];
   for (const f of fs.readdirSync(DIR)) {
@@ -239,7 +248,8 @@ function readAll(): RawMenu[] {
       /* skip bad file */
     }
   }
-  return out;
+  cachedRawMenus = out;
+  return cachedRawMenus;
 }
 
 function resolveSlugAlias(slug: string): string {
@@ -270,8 +280,8 @@ export const getStandardMenuGroup = cache(
       }))
       .sort(
         (a, b) =>
-          (ZONE_ORDER.indexOf(a.zone) + 1 || 99) -
-          (ZONE_ORDER.indexOf(b.zone) + 1 || 99),
+          (ZONE_ORDER_MAP.get(a.zone) ?? 99) -
+          (ZONE_ORDER_MAP.get(b.zone) ?? 99),
       );
 
     if (zones.length === 0) {
