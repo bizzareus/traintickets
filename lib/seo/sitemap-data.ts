@@ -145,6 +145,16 @@ async function trainsBucket(now: Date): Promise<MetadataRoute.Sitemap> {
   }));
 }
 
+// The "confirmed-tickets" bucket: the top-500 slugged train confirmed tickets pages
+// (/train/confirmed_tickets/12015-ajmer-shatabdi).
+async function confirmedTicketsBucket(now: Date): Promise<MetadataRoute.Sitemap> {
+  const { getTopTrainSlugs } = await import("@/lib/trainSlug");
+  return getTopTrainSlugs(500).map((slug) => ({
+    url: url(`/train/confirmed_tickets/${slug}`),
+    lastModified: now,
+  }));
+}
+
 // The "chart-times" bucket: every committed content/chart-times/*.json page.
 function chartTimesBucket(now: Date): MetadataRoute.Sitemap {
   return listChartTimesIndex().map((t) => ({
@@ -179,6 +189,8 @@ export async function buildSitemapBucket(
       return pagesBucket(now);
     case "trains":
       return trainsBucket(now);
+    case "confirmed-tickets":
+      return confirmedTicketsBucket(now);
     case "chart-times":
       return chartTimesBucket(now);
     case "food-menu":
