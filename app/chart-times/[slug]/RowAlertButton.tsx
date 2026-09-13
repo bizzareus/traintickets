@@ -10,6 +10,8 @@ import {
 import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricingExperiment";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
+import { RazorpayQrModal } from "@/components/payment/RazorpayQrModal";
+import type { CreateQrPaymentInput } from "@/types";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -144,6 +146,7 @@ export default function RowAlertButton({
     useContactFields();
   const { isPaidVariant, variant } = useChartAlertPricingExperiment();
   const [showPaidStep, setShowPaidStep] = useState(false);
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -204,6 +207,7 @@ export default function RowAlertButton({
       return;
     }
 
+    // If in paid variant and user clicks "Pay ₹5 & Subscribe to Alert", open payment modal
     if (isPaidVariant && showPaidStep) {
       trackAnalyticsEvent({
         name: "chart_alert_paid_cta_clicked",
@@ -218,6 +222,8 @@ export default function RowAlertButton({
           has_mobile: Boolean(mob),
         },
       });
+      setPaymentModalOpen(true);
+      return;
     }
 
     // toStationCode is optional — empty means the user just wants a
@@ -509,5 +515,31 @@ export default function RowAlertButton({
         </div>
       )}
     </>
+
+    <RazorpayQrModal
+      isOpen={paymentModalOpen}
+      onClose={() => {
+        setPaymentModalOpen(false);
+        setShowPaidStep(false);
+      }}
+      onSuccess={async () => {
+        setPaymentModalOpen(false);
+        setShowPaidStep(false);
+        const em = email.trim();
+        const mob = mobile.trim();
+        await submit();
+      }}
+      journeyData={{
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromStationCode: stationCode.trim().toUpperCase(),
+        toStationCode: toStationCode.trim().toUpperCase(),
+        journeyDate: journeyDate.trim().slice(0, 10),
+        classCode: classCode.trim().toUpperCase(),
+        stationCodesToMonitor: [stationCode.trim().toUpperCase()],
+        email: email.trim() || undefined,
+        mobile: mobile.trim() || undefined,
+      }}
+    />
   );
 }
