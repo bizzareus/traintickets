@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import type { Request } from 'express';
 import { RazorpayService } from './razorpay.service';
-import { CreateQrPaymentInput } from './razorpay.service';
+import type { CreateQrPaymentInput } from './razorpay.service';
 
 @Controller('api/razorpay')
 export class RazorpayController {
