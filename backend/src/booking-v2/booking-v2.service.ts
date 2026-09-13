@@ -1832,7 +1832,11 @@ export class BookingV2Service {
     options.sort(
       (a, b) =>
         a.fareN - b.fareN ||
-        (a.travelClass < b.travelClass ? -1 : a.travelClass > b.travelClass ? 1 : 0),
+        (a.travelClass < b.travelClass
+          ? -1
+          : a.travelClass > b.travelClass
+            ? 1
+            : 0),
     );
     return options.map(({ fareN: _fareN, ...rest }) => rest);
   }

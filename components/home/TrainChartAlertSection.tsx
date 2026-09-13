@@ -10,6 +10,8 @@ import {
 import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricingExperiment";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
+import { RazorpayQrModal } from "@/components/payment/RazorpayQrModal";
+import type { CreateQrPaymentInput } from "@/types";
 
 const DEFAULT_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -41,6 +43,7 @@ export function TrainChartAlertSection({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [showPaidStep, setShowPaidStep] = useState(false);
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
 
   const availableClasses =
     avlClasses && avlClasses.length > 0 ? avlClasses : DEFAULT_CLASSES;
@@ -191,7 +194,7 @@ export function TrainChartAlertSection({
       return;
     }
 
-    // If in paid variant and user clicks "Pay ₹5 & Subscribe to Alert", track the conversion event
+    // If in paid variant and user clicks "Pay ₹5 & Subscribe to Alert", open payment modal
     if (isPaidVariant && showPaidStep) {
       trackAnalyticsEvent({
         name: "chart_alert_paid_cta_clicked",
@@ -206,6 +209,21 @@ export function TrainChartAlertSection({
           has_mobile: Boolean(mob),
         },
       });
+
+      const journeyData: CreateQrPaymentInput = {
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromStationCode: fromCode.trim().toUpperCase(),
+        toStationCode: toCode.trim().toUpperCase(),
+        journeyDate: journeyDate?.trim().slice(0, 10) || "",
+        classCode: selectedClass.trim().toUpperCase(),
+        stationCodesToMonitor: [fromCode.trim().toUpperCase()],
+        email: em || undefined,
+        mobile: mob || undefined,
+      };
+
+      setPaymentModalOpen(true);
+      return;
     }
 
     await executeSubscription(em, mob);
@@ -447,5 +465,30 @@ export function TrainChartAlertSection({
         </div>
       )}
     </>
+
+    <RazorpayQrModal
+      isOpen={paymentModalOpen}
+      onClose={() => {
+        setPaymentModalOpen(false);
+        setShowPaidStep(false);
+      }}
+      onSuccess={() => {
+        setPaymentModalOpen(false);
+        setShowPaidStep(false);
+        setSuccess(true);
+        persistContact();
+      }}
+      journeyData={{
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromStationCode: fromCode.trim().toUpperCase(),
+        toStationCode: toCode.trim().toUpperCase(),
+        journeyDate: journeyDate?.trim().slice(0, 10) || "",
+        classCode: selectedClass.trim().toUpperCase(),
+        stationCodesToMonitor: [fromCode.trim().toUpperCase()],
+        email: email.trim() || undefined,
+        mobile: mobile.trim() || undefined,
+      }}
+    />
   );
 }
