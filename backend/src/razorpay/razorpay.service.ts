@@ -175,7 +175,7 @@ export class RazorpayService {
   }
 
   async checkPaymentStatus(qrCodeId: string): Promise<PaymentStatusResult> {
-    this.credentials;
+    const { keyId, keySecret } = this.credentials;
 
     const res = await this.client.get(`payments/qr_codes/${qrCodeId}`, {
       headers: this.authHeaders(),
@@ -270,7 +270,7 @@ export class RazorpayService {
       return { received: false };
     }
 
-    const { keySecret } = this.credentials;
+    const { keyId, keySecret } = this.credentials;
 
     const eventObj = event as {
       event?: string;
