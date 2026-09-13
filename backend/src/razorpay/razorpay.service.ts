@@ -163,8 +163,7 @@ export class RazorpayService {
       });
       const buffer = Buffer.from(res.data);
       const mimeType =
-        (res.headers['content-type'] as string | undefined) ||
-        'image/png';
+        (res.headers['content-type'] as string | undefined) || 'image/png';
       return `data:${mimeType};base64,${buffer.toString('base64')}`;
     } catch (err) {
       this.logger.warn(
@@ -214,7 +213,9 @@ export class RazorpayService {
     }
 
     const status: 'pending' | 'failed' | 'refunded' =
-      tx.status === 'PENDING' ? 'pending' : (tx.status.toLowerCase() as 'pending' | 'failed' | 'refunded');
+      tx.status === 'PENDING'
+        ? 'pending'
+        : (tx.status.toLowerCase() as 'pending' | 'failed' | 'refunded');
 
     return {
       status,
@@ -264,7 +265,10 @@ export class RazorpayService {
     });
   }
 
-  async handleWebhook(signature: string | undefined, event: unknown): Promise<{ received: boolean }> {
+  async handleWebhook(
+    signature: string | undefined,
+    event: unknown,
+  ): Promise<{ received: boolean }> {
     if (!signature) {
       this.logger.warn('Razorpay webhook received without signature header');
       return { received: false };

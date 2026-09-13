@@ -159,8 +159,7 @@ export function renderAlternativeTrainsEmailHtml(params: {
         .map((leg) => {
           const segFrom = leg.from;
           const segTo = leg.to;
-          const fromName =
-            stationNameMap.get(segFrom.toUpperCase()) ?? segFrom;
+          const fromName = stationNameMap.get(segFrom.toUpperCase()) ?? segFrom;
           const toName = stationNameMap.get(segTo.toUpperCase()) ?? segTo;
           const legRoute = `${segFrom} - ${fromName} → ${leg.to} - ${toName}`;
           const classTag = leg.travelClass ?? '3A';
@@ -268,9 +267,7 @@ export function buildNoSeatsWhatsAppText(params: {
           bestLegStr = `\n  ↳ ${statusStr}${classStr}`;
         }
 
-        const depStr = train.departureTime
-          ? `Dep: ${train.departureTime}`
-          : '';
+        const depStr = train.departureTime ? `Dep: ${train.departureTime}` : '';
         const arrStr = train.arrivalTime ? `Arr: ${train.arrivalTime}` : '';
         const durMinutes = train.duration;
         const durStr = durMinutes

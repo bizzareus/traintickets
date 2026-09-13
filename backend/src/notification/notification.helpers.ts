@@ -318,8 +318,7 @@ export function extractJourneyLegCoverage(params: {
   plan: OpenAiBookingPlanItem[];
   stationScheduleList?: ScheduleStation[];
 }): JourneyLegCoverage[] {
-  const { fromStationCode, toStationCode, plan, stationScheduleList } =
-    params;
+  const { fromStationCode, toStationCode, plan, stationScheduleList } = params;
   const fromU = fromStationCode.trim().toUpperCase();
   const toU = toStationCode.trim().toUpperCase();
   const filledPlan = plan.filter(isFilledOpenAiPlanItem);

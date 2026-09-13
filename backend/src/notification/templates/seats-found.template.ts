@@ -1,4 +1,7 @@
-import type { OpenAiBookingPlanItem, Service2CheckResult } from '../../service2/service2.service';
+import type {
+  OpenAiBookingPlanItem,
+  Service2CheckResult,
+} from '../../service2/service2.service';
 import type { ScheduleStation } from '../../irctc/irctc.service';
 import {
   escapeHtml,
@@ -100,7 +103,11 @@ export function renderFollowUpLegEmailHtml(params: {
   trainLabel: string;
   routeDisplay: string;
   journeyDateReadable: string;
-  plan: Array<{ instruction: string; approx_price?: number; availability?: string }>;
+  plan: Array<{
+    instruction: string;
+    approx_price?: number;
+    availability?: string;
+  }>;
   stationNameMap: Map<string, string>;
   stationScheduleList?: ScheduleStation[];
   trainNumber: string;
@@ -211,9 +218,7 @@ export function buildFollowUpLegWhatsAppText(params: {
         ? `approx ₹${Number(item.approx_price).toLocaleString('en-IN')}`
         : '';
     const segBookUrl = buildSegmentBookUrl(trainNumber, item.instruction);
-    const availabilityTag = item.availability
-      ? ` | ${item.availability}`
-      : '';
+    const availabilityTag = item.availability ? ` | ${item.availability}` : '';
 
     lines.push(`Ticket Found [${classTag}]${availabilityTag}`);
     lines.push(segmentRoute);
@@ -324,8 +329,7 @@ export async function buildWhatsAppSeatsFoundText(params: {
       lines.push('');
     } else {
       const fromName =
-        stationNameMap.get(item.fromCode.trim().toUpperCase()) ??
-        item.fromCode;
+        stationNameMap.get(item.fromCode.trim().toUpperCase()) ?? item.fromCode;
       const toName =
         stationNameMap.get(item.toCode.trim().toUpperCase()) ?? item.toCode;
       const fromRow = findScheduleRow(stationScheduleList, item.fromCode);
