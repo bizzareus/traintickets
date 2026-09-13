@@ -522,12 +522,11 @@ export default function RowAlertButton({
         setPaymentModalOpen(false);
         setShowPaidStep(false);
       }}
-      onSuccess={async () => {
+      onSuccess={() => {
         setPaymentModalOpen(false);
         setShowPaidStep(false);
-        const em = email.trim();
-        const mob = mobile.trim();
-        await submit();
+        setSuccess(true);
+        persistContact();
       }}
       journeyData={{
         trainNumber: trainNumber.trim(),

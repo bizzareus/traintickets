@@ -472,12 +472,11 @@ export function TrainChartAlertSection({
         setPaymentModalOpen(false);
         setShowPaidStep(false);
       }}
-      onSuccess={async () => {
+      onSuccess={() => {
         setPaymentModalOpen(false);
         setShowPaidStep(false);
-        const em = email.trim();
-        const mob = mobile.trim();
-        await executeSubscription(em, mob);
+        setSuccess(true);
+        persistContact();
       }}
       journeyData={{
         trainNumber: trainNumber.trim(),
