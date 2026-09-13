@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useState, useCallback, useRef, useEffect } from 'react';
 import type { CreateQrPaymentInput, QrPaymentResult, PaymentStatusResult } from '@/types';
 
@@ -13,7 +13,6 @@ interface UseChartAlertPaymentReturn {
 }
 
 export function useChartAlertPayment(): UseChartAlertPaymentReturn {
-  const queryClient = useQueryClient();
   const [qrCodeId, setQrCodeId] = useState<string | null>(null);
   const [qrImage, setQrImage] = useState<string | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'pending' | 'paid' | 'failed' | 'expired'>('idle');
