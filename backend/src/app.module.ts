@@ -26,6 +26,7 @@ import { WhatsappModule } from './whatsapp/whatsapp.module';
 import { RedditAutomationModule } from './reddit-automation/reddit-automation.module';
 import { McpModule } from './mcp/mcp.module';
 import { ShortLinkModule } from './short-link/short-link.module';
+import { ChartAlertPaymentsModule } from './chart-alert-payments/chart-alert-payments.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { ShortLinkModule } from './short-link/short-link.module';
     RedditAutomationModule,
     McpModule,
     ShortLinkModule,
+    ChartAlertPaymentsModule,
   ],
   controllers: [AppController],
   providers: [

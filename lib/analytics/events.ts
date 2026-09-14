@@ -275,8 +275,9 @@ export type AnalyticsEvent =
       };
     }
   | {
-      name: "chart_alert_paid_step_shown";
+      name: "chart_alert_payment_started";
       properties: {
+        source: "page" | "row" | "search_panel";
         train_number: string;
         from_code: string;
         to_code: string;
@@ -287,19 +288,7 @@ export type AnalyticsEvent =
         has_mobile: boolean;
       };
     }
-  | {
-      name: "chart_alert_paid_cta_clicked";
-      properties: {
-        train_number: string;
-        from_code: string;
-        to_code: string;
-        journey_date: string;
-        class_code: string;
-        price: number;
-        has_email: boolean;
-        has_mobile: boolean;
-      };
-    }
+  | { name: "chart_alert_payment_complete"; properties: Record<string, never> }
   // PNR feature (prefix: search_pnr_*)
   | { name: "search_pnr_feature_clicked"; properties: Record<string, never> }
   | {

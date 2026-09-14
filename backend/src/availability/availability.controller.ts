@@ -8,6 +8,7 @@ import {
   HttpStatus,
   Optional,
   Param,
+  PaymentRequiredException,
   Post,
   Query,
   Req,
@@ -15,9 +16,11 @@ import {
 } from '@nestjs/common';
 import type { Request } from 'express';
 import { randomUUID } from 'node:crypto';
+import { ConfigService } from '@nestjs/config';
 import { AvailabilityService } from './availability.service';
 import { JourneyTaskService } from './journey-task.service';
 import { NotificationService } from '../notification/notification.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { isValidIndianMobile, isValidEmail } from '../common/validation.utils';
 import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 
@@ -74,8 +77,63 @@ export class AvailabilityController {
   constructor(
     private availability: AvailabilityService,
     private journeyTask: JourneyTaskService,
+    private prisma: PrismaService,
+    private config: ConfigService,
     @Optional() private notification?: NotificationService,
   ) {}
+
+  /**
+   * Guards the paid chart-alert rollout: when REQUIRE_JOURNEY_PAYMENT=true,
+   * direct alert creation requires a PAID chart_alert_payment ref whose
+   * journey matches this request. Off by default so existing free surfaces
+   * (PNR rescue, home panel, shortlinks) keep working until migrated.
+   * A supplied paymentRef is always verified, even when the flag is off.
+   */
+  private async assertJourneyPayment(
+    normalized: NormalizedJourneyCreate,
+    paymentRef?: string,
+  ): Promise<void> {
+    const ref = String(paymentRef ?? '').trim();
+    const required =
+      String(this.config.get<string>('REQUIRE_JOURNEY_PAYMENT') ?? '')
+        .trim()
+        .toLowerCase() === 'true';
+    if (!ref) {
+      if (required) {
+        throw new PaymentRequiredException(
+          'This alert requires payment. Please complete payment first.',
+        );
+      }
+      return;
+    }
+    const record = await this.prisma.chartAlertPayment.findUnique({
+      where: { id: ref },
+    });
+    const payload = (record?.journeyPayload ?? null) as {
+      trainNumber?: string;
+      fromStationCode?: string;
+      toStationCode?: string;
+      journeyDate?: string;
+      classCode?: string;
+    } | null;
+    const matches =
+      record?.status === 'PAID' &&
+      !!payload &&
+      String(payload.trainNumber ?? '').trim() === normalized.trainNumber &&
+      String(payload.fromStationCode ?? '').trim().toUpperCase() ===
+        normalized.fromStationCode &&
+      String(payload.toStationCode ?? '').trim().toUpperCase() ===
+        normalized.toStationCode &&
+      String(payload.journeyDate ?? '').trim().slice(0, 10) ===
+        normalized.journeyDate.slice(0, 10) &&
+      String(payload.classCode ?? '').trim().toUpperCase() ===
+        normalized.classCode;
+    if (!matches) {
+      throw new PaymentRequiredException(
+        'Payment verification failed for this alert. Please complete payment first.',
+      );
+    }
+  }
 
   @Post('check')
   async startCheck(
@@ -282,6 +340,7 @@ export class AvailabilityController {
     @Body('email') email?: string,
     @Body('mobile') mobile?: string,
     @Body('trainStartDate') trainStartDate?: string,
+    @Body('paymentRef') paymentRef?: string,
   ) {
     const normalized = normalizeJourneyCreateParams(
       trainNumber,
@@ -354,6 +413,8 @@ export class AvailabilityController {
         errors,
       });
     }
+
+    await this.assertJourneyPayment(normalized, paymentRef);
 
     const journeyRequestId = randomUUID();
 
