@@ -509,8 +509,8 @@ export default function RowAlertButton({
                     </p>
                   )}
                 </form>
-              </>
-            )}
+              </>)}
+            </div>
           </div>
         </div>
       )}
