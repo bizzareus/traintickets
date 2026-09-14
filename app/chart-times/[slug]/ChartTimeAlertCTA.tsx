@@ -524,31 +524,31 @@ export default function ChartTimeAlertCTA({
       {error && (
         <p className="mt-3 text-sm font-medium text-red-700">{error}</p>
       )}
-    </div>
 
-    <RazorpayQrModal
-      isOpen={paymentModalOpen}
-      onClose={() => {
-        setPaymentModalOpen(false);
-        setShowPaidStep(false);
-      }}
-      onSuccess={() => {
-        setPaymentModalOpen(false);
-        setShowPaidStep(false);
-        setSuccess(true);
-        persistContact();
-      }}
-      journeyData={{
-        trainNumber: trainNumber.trim(),
-        trainName: trainName?.trim() || undefined,
-        fromStationCode: stationCode.trim().toUpperCase(),
-        toStationCode: toStationCode.trim().toUpperCase(),
-        journeyDate: journeyDate.trim().slice(0, 10),
-        classCode: classCode.trim().toUpperCase(),
-        stationCodesToMonitor: [stationCode.trim().toUpperCase()],
-        email: email.trim() || undefined,
-        mobile: mobile.trim() || undefined,
-      }}
-    />
+      <RazorpayQrModal
+        isOpen={paymentModalOpen}
+        onClose={() => {
+          setPaymentModalOpen(false);
+          setShowPaidStep(false);
+        }}
+        onSuccess={() => {
+          setPaymentModalOpen(false);
+          setShowPaidStep(false);
+          setSuccess(true);
+          persistContact();
+        }}
+        journeyData={{
+          trainNumber: trainNumber.trim(),
+          trainName: trainName?.trim() || undefined,
+          fromStationCode: stationCode.trim().toUpperCase(),
+          toStationCode: toStationCode.trim().toUpperCase(),
+          journeyDate: journeyDate.trim().slice(0, 10),
+          classCode: classCode.trim().toUpperCase(),
+          stationCodesToMonitor: [stationCode.trim().toUpperCase()],
+          email: email.trim() || undefined,
+          mobile: mobile.trim() || undefined,
+        }}
+      />
+    </div>
   );
 }
