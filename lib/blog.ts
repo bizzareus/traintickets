@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { cache as reactCache } from "react";
-const cache = reactCache || (<T extends Function>(fn: T): T => fn);
+const cache = reactCache || (<T extends (...args: unknown[]) => unknown>(fn: T): T => fn);
 
 export type BlogPostMeta = {
   slug: string;
@@ -232,6 +232,24 @@ export const getBlogPost = cache((slug: string, lang?: string): BlogPost | null 
   return { ...meta, content };
 });
 
+// Performance Optimization: Cache directory file lists per language to eliminate repeated synchronous fs.existsSync calls on every blog post check.
+const langSlugsCache = new Map<string, Set<string>>();
+
+function getLangSlugs(lang: string): Set<string> {
+  const cached = langSlugsCache.get(lang);
+  if (cached) return cached;
+  const dir = path.join(BLOG_DIR, lang);
+  const files = safeReadDir(dir);
+  const set = new Set<string>();
+  for (const f of files) {
+    if (f.toLowerCase().endsWith(".md")) {
+      set.add(f.slice(0, -3).toLowerCase());
+    }
+  }
+  langSlugsCache.set(lang, set);
+  return set;
+}
+
 export function hasBlogPostTranslation(slug: string, lang: string): boolean {
   if (!lang || lang === "en") return true;
   const s = String(slug ?? "")
@@ -239,8 +257,7 @@ export function hasBlogPostTranslation(slug: string, lang: string): boolean {
     .toLowerCase()
     .replace(/[^a-z0-9-]/g, "");
   if (!s) return false;
-  const p = postPathForSlug(s, lang);
-  return fs.existsSync(p);
+  return getLangSlugs(lang).has(s);
 }
 
 export function getAvailableTranslations(slug: string): string[] {
