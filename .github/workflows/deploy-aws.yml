@@ -208,16 +208,20 @@ jobs:
       # NOT on EC2: the EC2 host cannot route to Supabase direct endpoints
       # (:5432), and migrate deploy stalls through the pooler (:6543).
       # Requires the PROD_DIRECT_DATABASE_URL repo secret (port-5432 URL).
-      - name: Apply Prisma migrations
-        working-directory: backend
-        env:
-          DATABASE_URL: ${{ secrets.PROD_DIRECT_DATABASE_URL }}
-        run: |
-          if [ -z "$DATABASE_URL" ]; then echo 'PROD_DIRECT_DATABASE_URL secret is not set; cannot migrate'; exit 1; fi
-          # prisma.config.ts imports dotenv, so the CLI needs project deps —
-          # bare npx prisma cannot load the config. Install once, skip scripts.
-          npm ci --ignore-scripts
-          ./node_modules/.bin/prisma migrate deploy
+      # NOTE: runner migrations intentionally disabled for now — prod DB is
+      # fully migrated (verified 2026-09-14) and EC2 cannot reach Supabase
+      # direct endpoints. Re-enable with PROD_DIRECT_DATABASE_URL if new
+      # migrations ever need auto-apply on deploy.
+      # - name: Apply Prisma migrations
+      #   working-directory: backend
+      #   env:
+      #     DATABASE_URL: ${{ secrets.PROD_DIRECT_DATABASE_URL }}
+      #   run: |
+      #     if [ -z "$DATABASE_URL" ]; then echo 'PROD_DIRECT_DATABASE_URL secret is not set; cannot migrate'; exit 1; fi
+      #     # prisma.config.ts imports dotenv, so the CLI needs project deps —
+      #     # bare npx prisma cannot load the config. Install once, skip scripts.
+      #     npm ci --ignore-scripts
+      #     ./node_modules/.bin/prisma migrate deploy
 
       - name: Configure AWS Credentials
         if: env.AWS_ACCESS_KEY_ID != ''
