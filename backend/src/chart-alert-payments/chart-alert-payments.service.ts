@@ -13,7 +13,8 @@ import { createRetryingAxiosClient } from '../common/retrying-axios';
 import type { AxiosInstance } from 'axios';
 
 const DEFAULT_PRICE_RUPEES = 5;
-const DEFAULT_MUZOBOX_API_URL = 'https://muzobox.com/api';
+const DEFAULT_MUZOBOX_API_URL =
+  'https://ai-jukebox-backend-production.up.railway.app/api';
 const DEFAULT_PUBLIC_API_URL = 'https://api.lastberth.com';
 const DEFAULT_FRONTEND_URL = 'https://lastberth.com';
 
