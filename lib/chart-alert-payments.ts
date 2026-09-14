@@ -67,15 +67,16 @@ export function redirectToPayment(payUrl: string): void {
 
 /**
  * Shared paid-subscription flow for chart-alert surfaces: creates the Muzobox
- * payment link, records analytics, and redirects the browser to pay.
+ * payment link and records analytics. Returns the link — callers open it in
+ * the {@link ChartAlertPaymentModal} iframe (fallback: redirectToPayment).
  * Persist contact details before calling; handle thrown errors with
  * {@link getChartAlertErrorMessage}.
  */
 export async function startChartAlertPayment(
   input: ChartAlertPaymentCreateInput,
   source: "page" | "row" | "search_panel",
-): Promise<void> {
-  const { payUrl } = await createChartAlertPaymentLink(input);
+): Promise<ChartAlertPaymentLink> {
+  const link = await createChartAlertPaymentLink(input);
   trackAnalyticsEvent({
     name: "chart_alert_payment_started",
     properties: {
@@ -90,7 +91,7 @@ export async function startChartAlertPayment(
       has_mobile: Boolean(input.mobile?.trim()),
     },
   });
-  redirectToPayment(payUrl);
+  return link;
 }
 
 /** Normalize backend `{ error }`, axios, and generic errors to a message. */

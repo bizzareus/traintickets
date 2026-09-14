@@ -14,6 +14,10 @@ import {
   getChartAlertErrorMessage,
   startChartAlertPayment,
 } from "@/lib/chart-alert-payments";
+import {
+  ChartAlertPaymentModal,
+  type ChartAlertPaymentModalJourney,
+} from "@/components/payments/ChartAlertPaymentModal";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -165,6 +169,11 @@ export default function ChartTimeAlertCTA({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [payment, setPayment] = useState<{
+    payUrl: string;
+    ref: string;
+    journey: ChartAlertPaymentModalJourney;
+  } | null>(null);
 
   // Default journey date to next day (tomorrow) unless provided
   useEffect(() => {
@@ -205,24 +214,29 @@ export default function ChartTimeAlertCTA({
 
     // toStationCode is optional — empty means the user just wants a
     // "chart prepared" ping with a shortlink to the search page.
+    // Payment opens in an in-page iframe modal (no redirect away).
     setLoading(true);
     setError(null);
     try {
       persistContact();
-      await startChartAlertPayment(
+      const journey: ChartAlertPaymentModalJourney = {
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromStationCode: stationCode.trim().toUpperCase(),
+        toStationCode: toStationCode.trim().toUpperCase(),
+        journeyDate: journeyDate.trim().slice(0, 10),
+        classCode: classCode.trim().toUpperCase(),
+      };
+      const link = await startChartAlertPayment(
         {
-          trainNumber: trainNumber.trim(),
-          trainName: trainName?.trim() || undefined,
-          fromStationCode: stationCode.trim().toUpperCase(),
-          toStationCode: toStationCode.trim().toUpperCase(),
-          journeyDate: journeyDate.trim().slice(0, 10),
-          classCode: classCode.trim().toUpperCase(),
+          ...journey,
           stationCodesToMonitor: [stationCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,
         },
         "page",
       );
+      setPayment({ payUrl: link.payUrl, ref: link.ref, journey });
     } catch (err: unknown) {
       const errMsg = getChartAlertErrorMessage(
         err,
@@ -391,7 +405,7 @@ export default function ChartTimeAlertCTA({
             className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading
-              ? "Redirecting to payment…"
+              ? "Opening payment…"
               : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & set alert`}
           </button>
           <button
@@ -404,13 +418,22 @@ export default function ChartTimeAlertCTA({
         </div>
         <p className="text-xs text-slate-500">
           One-time ₹{CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay securely
-          on Muzobox and return here — the alert activates once payment is
+          without leaving this page — the alert activates once payment is
           verified.
         </p>
       </div>
 
       {error && (
         <p className="mt-3 text-sm font-medium text-red-700">{error}</p>
+      )}
+      {payment && (
+        <ChartAlertPaymentModal
+          open
+          onClose={() => setPayment(null)}
+          payUrl={payment.payUrl}
+          paymentRef={payment.ref}
+          journey={payment.journey}
+        />
       )}
       </div>
   );

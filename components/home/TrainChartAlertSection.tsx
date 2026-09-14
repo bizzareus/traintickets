@@ -13,6 +13,10 @@ import {
   getChartAlertErrorMessage,
   startChartAlertPayment,
 } from "@/lib/chart-alert-payments";
+import {
+  ChartAlertPaymentModal,
+  type ChartAlertPaymentModalJourney,
+} from "@/components/payments/ChartAlertPaymentModal";
 
 const DEFAULT_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -41,6 +45,11 @@ export function TrainChartAlertSection({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [payment, setPayment] = useState<{
+    payUrl: string;
+    ref: string;
+    journey: ChartAlertPaymentModalJourney;
+  } | null>(null);
 
   const availableClasses =
     avlClasses && avlClasses.length > 0 ? avlClasses : DEFAULT_CLASSES;
@@ -83,20 +92,25 @@ export function TrainChartAlertSection({
 
     try {
       persistContact();
-      await startChartAlertPayment(
+      const journey: ChartAlertPaymentModalJourney = {
+        trainNumber: trainNumber.trim(),
+        trainName: trainName?.trim() || undefined,
+        fromStationCode: fromCode.trim().toUpperCase(),
+        toStationCode: toCode.trim().toUpperCase(),
+        journeyDate: journeyDate?.trim().slice(0, 10) || "",
+        classCode: selectedClass.trim().toUpperCase(),
+      };
+      const link = await startChartAlertPayment(
         {
-          trainNumber: trainNumber.trim(),
-          trainName: trainName?.trim() || undefined,
-          fromStationCode: fromCode.trim().toUpperCase(),
-          toStationCode: toCode.trim().toUpperCase(),
-          journeyDate: journeyDate?.trim().slice(0, 10) || "",
-          classCode: selectedClass.trim().toUpperCase(),
+          ...journey,
           stationCodesToMonitor: [fromCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,
         },
         "search_panel",
       );
+      setModalOpen(false);
+      setPayment({ payUrl: link.payUrl, ref: link.ref, journey });
     } catch (err: unknown) {
       const errMsg = getChartAlertErrorMessage(
         err,
@@ -306,7 +320,7 @@ export function TrainChartAlertSection({
                     {loading ? (
                       <>
                         <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                        Redirecting to payment…
+                        Opening payment…
                       </>
                     ) : (
                       <>
@@ -317,13 +331,22 @@ export function TrainChartAlertSection({
                   </button>
                   <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
                     One-time ₹{CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay
-                    securely on Muzobox and return here — the alert activates
+                    securely without leaving this page — the alert activates
                     once payment is verified.
                   </p>
                 </div>
               </form>
           </div>
         </div>
+      )}
+      {payment && (
+        <ChartAlertPaymentModal
+          open
+          onClose={() => setPayment(null)}
+          payUrl={payment.payUrl}
+          paymentRef={payment.ref}
+          journey={payment.journey}
+        />
       )}
     </>
   );
