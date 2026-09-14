@@ -10,7 +10,10 @@ RUN npm ci
 COPY . .
 ARG NEXT_PUBLIC_API_URL=https://api.lastberth.com
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
-ENV NEXT_PUBLIC_APP_URL=https://lastberth.com
+ARG NEXT_PUBLIC_APP_URL=https://lastberth.com
+ENV NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
+ARG NEXT_PUBLIC_CHART_ALERT_PRICE_RUPEES=5
+ENV NEXT_PUBLIC_CHART_ALERT_PRICE_RUPEES=${NEXT_PUBLIC_CHART_ALERT_PRICE_RUPEES}
 ENV NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 # NOTE: no quotes — Dockerfile ENV keeps quotes literally, and a quoted key
 # makes PostHog reject every event (silent 0-events dashboard).

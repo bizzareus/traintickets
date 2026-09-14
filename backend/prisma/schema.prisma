@@ -491,3 +491,35 @@ model NotificationUnsubscribe {
   @@index([recipient])
   @@map("notification_unsubscribe")
 }
+
+enum ChartAlertPaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+/// Tracks a chart-alert subscription payment made via the Muzobox payment
+/// proxy. The customer pays on Muzobox (`payUrl`) and is redirected back to
+/// lastberth.com/chart-alert/payment-complete?ref=…. The journeyPayload JSON
+/// mirrors the params accepted by POST /api/availability/journey so the
+/// backend can queue monitoring once Muzobox confirms the payment.
+model ChartAlertPayment {
+  id               String                  @id @default(cuid())
+  muzoboxPaymentId String?                 @unique @map("muzobox_payment_id")
+  amount           Int                     @map("amount") // in rupees (e.g. 5 = ₹5)
+  currency         String                  @default("INR")
+  status           ChartAlertPaymentStatus @default(PENDING)
+  razorpayPaymentId String?                @map("razorpay_payment_id")
+  razorpayOrderId   String?                @map("razorpay_order_id")
+  contactEmail     String?                 @map("contact_email")
+  contactMobile    String?                 @map("contact_mobile")
+  journeyPayload   Json                    @map("journey_payload")
+  journeyRequestId String?                 @map("journey_request_id")
+  payUrl           String?                 @map("pay_url")
+  createdAt        DateTime                @default(now()) @map("created_at")
+  updatedAt        DateTime                @updatedAt @map("updated_at")
+  paidAt           DateTime?               @map("paid_at")
+
+  @@index([status])
+  @@map("chart_alert_payment")
+}

@@ -123,6 +123,7 @@ export function trackAlertRequested(params: {
     | "search_train_card_right"
     | "search_panel"
     | "live_scraper_cockpit"
+    | "chart_alert_payment"
     | "v1_page";
   trainNumber: string;
   trainName?: string;

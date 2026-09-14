@@ -9,6 +9,11 @@ import {
 } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
+import {
+  CHART_ALERT_PRICE_RUPEES,
+  getChartAlertErrorMessage,
+  startChartAlertPayment,
+} from "@/lib/chart-alert-payments";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -143,7 +148,6 @@ export default function RowAlertButton({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
 
   // Default the journey date to the next day unless the page supplied one.
   useEffect(() => {
@@ -184,45 +188,32 @@ export default function RowAlertButton({
 
     // toStationCode is optional — empty means the user just wants a
     // "chart prepared" ping with a shortlink to the search page.
+    // Subscribing is paid: create a Muzobox payment link and redirect there.
+    // Muzobox sends the customer back to lastberth.com afterwards, where the
+    // alert is activated once payment is verified.
     setLoading(true);
     setError(null);
     try {
-      await apiClient.post("/api/availability/journey", {
-        trainNumber: trainNumber.trim(),
-        trainName: trainName?.trim() || undefined,
-        fromStationCode: stationCode.trim().toUpperCase(),
-        toStationCode: toStationCode.trim().toUpperCase(),
-        journeyDate: journeyDate.trim().slice(0, 10),
-        classCode: classCode.trim().toUpperCase(),
-        stationCodesToMonitor: [stationCode.trim().toUpperCase()],
-        email: em || undefined,
-        mobile: mob || undefined,
-      });
-      setSuccess(true);
       persistContact();
-      trackAlertRequested({
-        success: true,
-        source: "chart_times_row",
-        trainNumber: trainNumber.trim(),
-        trainName: trainName?.trim() || undefined,
-        fromCode: stationCode.trim().toUpperCase(),
-        toCode: toStationCode.trim().toUpperCase(),
-        journeyDate: journeyDate.trim().slice(0, 10),
-        classCode: classCode.trim().toUpperCase(),
-        email: em || undefined,
-        mobile: mob || undefined,
-      });
+      await startChartAlertPayment(
+        {
+          trainNumber: trainNumber.trim(),
+          trainName: trainName?.trim() || undefined,
+          fromStationCode: stationCode.trim().toUpperCase(),
+          toStationCode: toStationCode.trim().toUpperCase(),
+          journeyDate: journeyDate.trim().slice(0, 10),
+          classCode: classCode.trim().toUpperCase(),
+          stationCodesToMonitor: [stationCode.trim().toUpperCase()],
+          email: em || undefined,
+          mobile: mob || undefined,
+        },
+        "row",
+      );
     } catch (err: unknown) {
-      const e = err as {
-        response?: {
-          data?: { message?: string; errors?: Array<{ message?: string }> };
-        };
-      };
-      const msg =
-        e?.response?.data?.errors?.[0]?.message ||
-        e?.response?.data?.message ||
-        "Couldn't set up the alert. Please try again.";
-      const errMsg = typeof msg === "string" ? msg : JSON.stringify(msg);
+      const errMsg = getChartAlertErrorMessage(
+        err,
+        "Couldn't set up the alert. Please try again.",
+      );
       setError(errMsg);
       trackAlertRequested({
         success: false,
@@ -249,7 +240,6 @@ export default function RowAlertButton({
           onClick={() => {
             setOpen(true);
             setError(null);
-            setSuccess(false);
             trackAnalyticsEvent({
               name: "chart_alert_opened",
               properties: {
@@ -301,126 +291,116 @@ export default function RowAlertButton({
               </button>
             </div>
 
-            {success ? (
-              <p className="my-3 rounded-lg bg-emerald-50 p-4 text-sm font-medium text-emerald-900">
-                Alert set! We&apos;ll notify you when the chart for {trainName}{" "}
-                ({trainNumber}) is prepared at {stationName} ({stationCode}) on{" "}
-                {journeyDate.slice(0, 10)}{" "}
-                {toStationCode
-                  ? `for travel to ${toStationCode} ${
-                      classCode === "ANY"
-                        ? "in any available class"
-                        : `in ${classCode}`
-                    } and send you available tickets.`
-                  : "and text you a link to check available tickets on LastBerth."}
-              </p>
-            ) : (
-              <>
-                <p className="mb-3 text-xs text-slate-600">
-                  We&apos;ll notify you on the contact below when the chart is
-                  prepared at{" "}
-                  <span className="font-semibold text-slate-800">
-                    {stationName}
-                  </span>
-                  . Leave the destination empty to just get a short-link to
-                  check tickets on our platform, or pick a destination to also
-                  receive available tickets between the stations.
-                </p>
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    void submit();
-                  }}
-                  className="flex flex-col gap-3"
-                >
-                  {destinationOptions.length > 0 && (
-                    <label className="text-xs font-semibold text-slate-700">
-                      <span className="mb-1 block">Destination station</span>
-                      <select
-                        value={toStationCode}
-                        onChange={(e) => setToStationCode(e.target.value)}
-                        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
-                      >
-                        <option value="">No Destination</option>
-                        {destinationOptions.map((s) => (
-                          <option key={s.stationCode} value={s.stationCode}>
-                            {s.stationName} ({s.stationCode})
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                  )}
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <label className="text-xs font-semibold text-slate-700">
-                      <span className="mb-1 block">Class</span>
-                      <select
-                        value={classCode}
-                        onChange={(e) => setClassCode(e.target.value)}
-                        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
-                      >
-                        {activeClasses.map((c) => (
-                          <option key={c} value={c}>
-                            {CLASS_LABELS[c] || `${c} Class`}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-
-                    <label className="text-xs font-semibold text-slate-700">
-                      <span className="mb-1 block">Journey date</span>
-                      <input
-                        type="date"
-                        value={journeyDate.slice(0, 10)}
-                        min={ymdPlusDays(0)}
-                        onChange={(e) => setJourneyDate(e.target.value)}
-                        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
-                      />
-                    </label>
-                  </div>
-
-                  <label className="text-xs font-semibold text-slate-700">
-                    <span className="mb-1 block">Email address</span>
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email"
-                      autoComplete="email"
-                      className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
-                    />
-                  </label>
-
-                  <label className="text-xs font-semibold text-slate-700">
-                    <span className="mb-1 block">
-                      Mobile number (WhatsApp / SMS)
-                    </span>
-                    <input
-                      type="tel"
-                      value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
-                      placeholder="Mobile"
-                      autoComplete="tel"
-                      className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
-                    />
-                  </label>
-
-                  {error && (
-                    <p className="rounded-md bg-red-50 p-2 text-xs font-medium text-red-700">
-                      {error}
-                    </p>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="mt-1 inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+            <p className="mb-3 text-xs text-slate-600">
+              We&apos;ll notify you on the contact below when the chart is
+              prepared at{" "}
+              <span className="font-semibold text-slate-800">
+                {stationName}
+              </span>
+              . Leave the destination empty to just get a short-link to check
+              tickets on our platform, or pick a destination to also receive
+              available tickets between the stations.
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                void submit();
+              }}
+              className="flex flex-col gap-3"
+            >
+              {destinationOptions.length > 0 && (
+                <label className="text-xs font-semibold text-slate-700">
+                  <span className="mb-1 block">Destination station</span>
+                  <select
+                    value={toStationCode}
+                    onChange={(e) => setToStationCode(e.target.value)}
+                    className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
                   >
-                    {loading ? "Setting up…" : "Set alert"}
-                  </button>
-                </form>
-              </>
-            )}
+                    <option value="">No Destination</option>
+                    {destinationOptions.map((s) => (
+                      <option key={s.stationCode} value={s.stationCode}>
+                        {s.stationName} ({s.stationCode})
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
+
+              <div className="grid grid-cols-2 gap-3">
+                <label className="text-xs font-semibold text-slate-700">
+                  <span className="mb-1 block">Class</span>
+                  <select
+                    value={classCode}
+                    onChange={(e) => setClassCode(e.target.value)}
+                    className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
+                  >
+                    {activeClasses.map((c) => (
+                      <option key={c} value={c}>
+                        {CLASS_LABELS[c] || `${c} Class`}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="text-xs font-semibold text-slate-700">
+                  <span className="mb-1 block">Journey date</span>
+                  <input
+                    type="date"
+                    value={journeyDate.slice(0, 10)}
+                    min={ymdPlusDays(0)}
+                    onChange={(e) => setJourneyDate(e.target.value)}
+                    className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
+                  />
+                </label>
+              </div>
+
+              <label className="text-xs font-semibold text-slate-700">
+                <span className="mb-1 block">Email address</span>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  autoComplete="email"
+                  className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
+                />
+              </label>
+
+              <label className="text-xs font-semibold text-slate-700">
+                <span className="mb-1 block">
+                  Mobile number (WhatsApp / SMS)
+                </span>
+                <input
+                  type="tel"
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  placeholder="Mobile"
+                  autoComplete="tel"
+                  className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
+                />
+              </label>
+
+              {error && (
+                <p className="rounded-md bg-red-50 p-2 text-xs font-medium text-red-700">
+                  {error}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="mt-1 inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {loading
+                  ? "Redirecting to payment…"
+                  : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & set alert`}
+              </button>
+              <p className="text-[11px] leading-relaxed text-slate-500">
+                One-time ₹{CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay
+                securely on Muzobox and return here — the alert activates once
+                payment is verified.
+              </p>
+            </form>
           </div>
         </div>
       )}

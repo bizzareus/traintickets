@@ -9,6 +9,11 @@ import {
 } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
+import {
+  CHART_ALERT_PRICE_RUPEES,
+  getChartAlertErrorMessage,
+  startChartAlertPayment,
+} from "@/lib/chart-alert-payments";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -41,10 +46,10 @@ function todayYmd(): string {
 }
 
 /**
- * Subscribe to a chart-preparation alert for this train. Reuses the journey
- * monitoring engine (`POST /api/availability/journey`), which schedules a task
- * at the station's chart-preparation time and notifies the user on the email /
- * mobile they provide so they can check live (current-availability) tickets.
+ * Subscribe to a chart-preparation alert for this train. Subscribing is paid:
+ * this creates a Muzobox payment link and redirects there; after payment
+ * Muzobox sends the customer back to /chart-alert/payment-complete, where the
+ * backend verifies payment server-to-server and queues the journey monitoring.
  */
 export default function ChartTimeAlertCTA({
   trainNumber,
@@ -160,7 +165,6 @@ export default function ChartTimeAlertCTA({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
 
   // Default journey date to next day (tomorrow) unless provided
   useEffect(() => {
@@ -203,44 +207,27 @@ export default function ChartTimeAlertCTA({
     // "chart prepared" ping with a shortlink to the search page.
     setLoading(true);
     setError(null);
-    setSuccess(false);
     try {
-      await apiClient.post("/api/availability/journey", {
-        trainNumber: trainNumber.trim(),
-        trainName: trainName?.trim() || undefined,
-        fromStationCode: stationCode.trim().toUpperCase(),
-        toStationCode: toStationCode.trim().toUpperCase(),
-        journeyDate: journeyDate.trim().slice(0, 10),
-        classCode: classCode.trim().toUpperCase(),
-        stationCodesToMonitor: [stationCode.trim().toUpperCase()],
-        email: em || undefined,
-        mobile: mob || undefined,
-      });
-      setSuccess(true);
       persistContact();
-      trackAlertRequested({
-        success: true,
-        source: "chart_times_cta",
-        trainNumber: trainNumber.trim(),
-        trainName: trainName?.trim() || undefined,
-        fromCode: stationCode.trim().toUpperCase(),
-        toCode: toStationCode.trim().toUpperCase(),
-        journeyDate: journeyDate.trim().slice(0, 10),
-        classCode: classCode.trim().toUpperCase(),
-        email: em || undefined,
-        mobile: mob || undefined,
-      });
+      await startChartAlertPayment(
+        {
+          trainNumber: trainNumber.trim(),
+          trainName: trainName?.trim() || undefined,
+          fromStationCode: stationCode.trim().toUpperCase(),
+          toStationCode: toStationCode.trim().toUpperCase(),
+          journeyDate: journeyDate.trim().slice(0, 10),
+          classCode: classCode.trim().toUpperCase(),
+          stationCodesToMonitor: [stationCode.trim().toUpperCase()],
+          email: em || undefined,
+          mobile: mob || undefined,
+        },
+        "page",
+      );
     } catch (err: unknown) {
-      const e = err as {
-        response?: {
-          data?: { message?: string; errors?: Array<{ message?: string }> };
-        };
-      };
-      const msg =
-        e?.response?.data?.errors?.[0]?.message ||
-        e?.response?.data?.message ||
-        "Couldn't set up the alert. Please check your inputs and try again.";
-      const errMsg = typeof msg === "string" ? msg : JSON.stringify(msg);
+      const errMsg = getChartAlertErrorMessage(
+        err,
+        "Couldn't set up the alert. Please check your inputs and try again.",
+      );
       setError(errMsg);
       trackAlertRequested({
         success: false,
@@ -260,25 +247,6 @@ export default function ChartTimeAlertCTA({
     }
   };
 
-  if (success) {
-    return (
-      <div className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
-        <p className="font-semibold text-emerald-900">
-          Alert set! We&apos;ll notify you the moment the chart for {trainName}{" "}
-          ({trainNumber}) is prepared at {stationCode} on{" "}
-          {journeyDate.slice(0, 10)}{" "}
-          {toStationCode
-            ? `for travel to ${toStationCode} ${
-                classCode === "ANY"
-                  ? "in any available class"
-                  : `in ${classCode}`
-              } and send you available tickets.`
-            : "and text you a link to check available tickets on LastBerth."}
-        </p>
-      </div>
-    );
-  }
-
   if (!expanded) {
     return (
       <div className="mb-6 flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between">
@@ -289,9 +257,10 @@ export default function ChartTimeAlertCTA({
           </h2>
           <p className="mt-1 text-sm text-slate-600">
             We&apos;ll text or email you the moment IRCTC prepares the chart for
-            this train. Leave the destination empty to get a short-link to check
-            tickets on our platform, or pick a destination to receive available
-            tickets between your stations.
+            this train. One-time charge of ₹{CHART_ALERT_PRICE_RUPEES} — leave
+            the destination empty to get a short-link to check tickets on our
+            platform, or pick a destination to receive available tickets
+            between your stations.
           </p>
         </div>
         <button
@@ -421,7 +390,9 @@ export default function ChartTimeAlertCTA({
             onClick={subscribe}
             className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {loading ? "Setting up…" : "Set alert"}
+            {loading
+              ? "Redirecting to payment…"
+              : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & set alert`}
           </button>
           <button
             type="button"
@@ -431,6 +402,11 @@ export default function ChartTimeAlertCTA({
             Cancel
           </button>
         </div>
+        <p className="text-xs text-slate-500">
+          One-time ₹{CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay securely
+          on Muzobox and return here — the alert activates once payment is
+          verified.
+        </p>
       </div>
 
       {error && (
