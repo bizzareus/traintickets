@@ -114,6 +114,7 @@ export type AnalyticsEvent =
           | "search_train_card_right"
           | "search_panel"
           | "live_scraper_cockpit"
+          | "chart_alert_payment"
           | "v1_page";
         source_page?: string;
         train_number: string;
