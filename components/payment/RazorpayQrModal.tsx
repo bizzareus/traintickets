@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import type { CreateQrPaymentInput } from '@/types';
+import type { CreateQrPaymentInput } from '@/lib/types';
 import { useChartAlertPayment } from '@/lib/hooks/useChartAlertPayment';
 
 interface RazorpayQrModalProps {
