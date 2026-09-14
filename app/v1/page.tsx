@@ -966,7 +966,7 @@ export default function HomePage() {
   async function submitJourneyMonitor(fromC: string, toC: string) {
     const email = monitorEmail.trim() || undefined;
     const mobile = monitorMobile.trim() || undefined;
-    if (!email && !mobile) return;
+    if (!email) return;
     setMonitorSubmitting(true);
     setMonitorError(null);
     setMonitorSuccess(null);

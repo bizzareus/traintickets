@@ -175,7 +175,7 @@ export function SubscribeClient() {
                 <span className="text-slate-700">{formattedDate}</span>
               </div>
 
-              {(email || mobile) && (
+              {email && (
                 <div className="border-t border-slate-200/80 pt-3 space-y-2">
                   {mobile && (
                     <div className="flex items-center gap-3 text-slate-700">

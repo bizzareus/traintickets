@@ -147,10 +147,8 @@ export function TrainChartAlertSection({
     const em = email.trim();
     const mob = mobile.trim();
 
-    if (!em && !mob) {
-      setError(
-        "Please enter your email or mobile number so we can notify you.",
-      );
+    if (!em) {
+      setError("Please enter your email address so we can notify you.");
       return;
     }
 
@@ -358,6 +356,8 @@ export function TrainChartAlertSection({
                   />
                 </div>
 
+                {/* Mobile number input commented out - taking email only */}
+                {/*
                 <div>
                   <label
                     htmlFor="alertMobileInput"
@@ -375,6 +375,7 @@ export function TrainChartAlertSection({
                     className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   />
                 </div>
+                */}
 
                 {error && (
                   <p className="rounded-lg border border-red-200 bg-red-50 p-2.5 text-xs font-medium text-red-700">
