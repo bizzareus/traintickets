@@ -22,6 +22,13 @@ export type AvailabilityRowLike = {
 
 export const CONFIRMED_STATUS_RE = /^AVL|^AVAIL|^CURR_AV|^CURRENT AV|^CNF/i;
 
+// Performance Optimization: Direct lastIndexOf + slice avoids array allocations (.split("/")) on every status check.
+function getLastStatusSegment(statusText: string): string {
+  const idx = statusText.lastIndexOf("/");
+  const seg = idx === -1 ? statusText : statusText.slice(idx + 1);
+  return seg.trim();
+}
+
 export function isLegConfirmed(row: AvailabilityRowLike | null | undefined): boolean {
   if (!row) return false;
 
@@ -33,7 +40,7 @@ export function isLegConfirmed(row: AvailabilityRowLike | null | undefined): boo
   if (vendorStatus === "Confirm" || vendorStatus === "Probable") return true;
 
   const statusText = row.availabilityDisplayName ?? row.railDataStatus ?? row.availablityStatus ?? "";
-  const currentStatus = statusText.split("/").pop()?.trim() ?? "";
+  const currentStatus = getLastStatusSegment(statusText);
 
   return CONFIRMED_STATUS_RE.test(currentStatus);
 }
@@ -69,16 +76,14 @@ export function hasAnyAvailableSeat(
   });
 }
 
+// Performance Optimization: Single combined regex reduces 5 sequential regex string replacement passes down to 1 pass.
+const CURR_AVL_RE = /\bCURR_(?:AVBL|AVL|AV)\b|CURR_AV(?:BL|L)/gi;
+
 /**
  * Normalizes availability status string for clean display, converting CURR_AVL / CURR_AVBL / CURR_AV to AVL.
  */
 export function formatAvailabilityStatus(status?: string | null): string {
   if (!status) return "—";
-  return status
-    .replace(/\bCURR_AVBL\b/gi, "AVL")
-    .replace(/\bCURR_AVL\b/gi, "AVL")
-    .replace(/\bCURR_AV\b/gi, "AVL")
-    .replace(/CURR_AVL/gi, "AVL")
-    .replace(/CURR_AVBL/gi, "AVL");
+  return status.replace(CURR_AVL_RE, "AVL");
 }
 
