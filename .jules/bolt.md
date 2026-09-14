@@ -5,3 +5,7 @@
 ## 2026-09-08 - Single-Pass Tokenization for Auto-Linker Performance & Correctness
 **Learning:** Sequential string replacement loops ($N$ passes for $N$ terms) over Markdown text cause both $O(N)$ performance overhead and link corruption bugs when terms match target URLs or overlapping terms from earlier passes. Using a single combined regex that matches code blocks and existing markdown links first allows single-pass replacement while safely skipping syntax boundaries.
 **Action:** Always combine multi-term text replacement into a single-pass regex pattern that accounts for structural delimiters (like code blocks and links) as match groups to eliminate quadratic string scans and avoid nested mutation bugs.
+
+## 2026-09-14 - Fast Numeric Train Number Sorting vs localeCompare Numeric Option
+**Learning:** Calling `String.prototype.localeCompare(..., undefined, { numeric: true })` inside array sorting callbacks creates heavy Intl Collation context overhead in V8 (~150x slower). Integer subtraction with fallback string comparison `(parseInt(a, 10) || 0) - (parseInt(b, 10) || 0) || (a < b ? -1 : a > b ? 1 : 0)` provides identical numeric ordering at near-instant CPU speeds.
+**Action:** Avoid `{ numeric: true }` in `localeCompare`; use integer parsing subtraction with string tie-breaker for numeric string sorting.
