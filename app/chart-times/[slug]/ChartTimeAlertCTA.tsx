@@ -417,9 +417,7 @@ export default function ChartTimeAlertCTA({
           </button>
         </div>
         <p className="text-xs text-slate-500">
-          One-time ₹{CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay securely
-          without leaving this page — the alert activates once payment is
-          verified.
+          100% gauranteed automated refund if there is no confirmed end to end ticket available.
         </p>
       </div>
 
