@@ -465,7 +465,6 @@ export function TrainChartAlertSection({
           </div>
         </div>
       )}
-    </>
 
     <RazorpayQrModal
       isOpen={paymentModalOpen}
@@ -491,5 +490,6 @@ export function TrainChartAlertSection({
         mobile: mobile.trim() || undefined,
       }}
     />
+    </>
   );
 }
