@@ -236,22 +236,6 @@ jobs:
             chmod 600 ~/.ssh/config
           fi
 
-      - name: Update Backend Environment Secrets
-        env:
-          RAZORPAY_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
-          RAZORPAY_KEY_SECRET: ${{ secrets.RAZORPAY_KEY_SECRET }}
-        run: |
-          set -euo pipefail
-          ssh ubuntu@$TARGET_HOST "
-            if [ -f /home/ubuntu/app/backend/.env ]; then
-              grep -vE '^RAZORPAY_KEY_(ID|SECRET)=' /home/ubuntu/app/backend/.env > /home/ubuntu/app/backend/.env.tmp || true
-              mv /home/ubuntu/app/backend/.env.tmp /home/ubuntu/app/backend/.env
-            else
-              touch /home/ubuntu/app/backend/.env
-            fi
-            printf 'RAZORPAY_KEY_ID=%s\nRAZORPAY_KEY_SECRET=%s\n' '$RAZORPAY_KEY_ID' '$RAZORPAY_KEY_SECRET' >> /home/ubuntu/app/backend/.env
-          "
-
       - name: Pull & Deploy Backend on EC2
         env:
           TARGET_HOST: ${{ secrets.EC2_HOST || '13.207.130.42' }}

@@ -1,17 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { BellRing, ShieldCheck, X } from "lucide-react";
+import { BellRing, X } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import {
   trackAnalyticsEvent,
   trackAlertRequested,
 } from "@/lib/analytics/track";
-import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricingExperiment";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
-import { RazorpayQrModal } from "@/components/payment/RazorpayQrModal";
-import type { CreateQrPaymentInput } from "@/lib/types";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -144,9 +141,6 @@ export default function RowAlertButton({
   const [journeyDate, setJourneyDate] = useState(initialJourneyDate || "");
   const { email, setEmail, mobile, setMobile, persistContact } =
     useContactFields();
-  const { isPaidVariant, variant } = useChartAlertPricingExperiment();
-  const [showPaidStep, setShowPaidStep] = useState(false);
-  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -185,44 +179,6 @@ export default function RowAlertButton({
     }
     if (!journeyDate.trim()) {
       setError("Please pick a journey date.");
-      return;
-    }
-
-    if (isPaidVariant && !showPaidStep) {
-      setError(null);
-      setShowPaidStep(true);
-      trackAnalyticsEvent({
-        name: "chart_alert_paid_step_shown",
-        properties: {
-          train_number: trainNumber.trim(),
-          from_code: stationCode.trim().toUpperCase(),
-          to_code: toStationCode.trim().toUpperCase(),
-          journey_date: journeyDate.trim().slice(0, 10),
-          class_code: classCode.trim().toUpperCase(),
-          price: 5,
-          has_email: Boolean(em),
-          has_mobile: Boolean(mob),
-        },
-      });
-      return;
-    }
-
-    // If in paid variant and user clicks "Pay ₹5 & Subscribe to Alert", open payment modal
-    if (isPaidVariant && showPaidStep) {
-      trackAnalyticsEvent({
-        name: "chart_alert_paid_cta_clicked",
-        properties: {
-          train_number: trainNumber.trim(),
-          from_code: stationCode.trim().toUpperCase(),
-          to_code: toStationCode.trim().toUpperCase(),
-          journey_date: journeyDate.trim().slice(0, 10),
-          class_code: classCode.trim().toUpperCase(),
-          price: 5,
-          has_email: Boolean(em),
-          has_mobile: Boolean(mob),
-        },
-      });
-      setPaymentModalOpen(true);
       return;
     }
 
@@ -290,22 +246,20 @@ export default function RowAlertButton({
     <>
       <button
         type="button"
-        onClick={() => {
-          setOpen(true);
-          setError(null);
-          setSuccess(false);
-          setShowPaidStep(false);
-          trackAnalyticsEvent({
-            name: "chart_alert_opened",
-            properties: {
-              source: "row",
-              train_number: trainNumber,
-              station_code: stationCode,
-              to_code: toStationCode,
-              variant,
-            },
-          });
-        }}
+          onClick={() => {
+            setOpen(true);
+            setError(null);
+            setSuccess(false);
+            trackAnalyticsEvent({
+              name: "chart_alert_opened",
+              properties: {
+                source: "row",
+                train_number: trainNumber,
+                station_code: stationCode,
+                to_code: toStationCode,
+              },
+            });
+          }}
         className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 whitespace-nowrap touch-manipulation"
       >
         <BellRing className="h-3.5 w-3.5" />
@@ -457,88 +411,19 @@ export default function RowAlertButton({
                     </p>
                   )}
 
-                  {showPaidStep && (
-                    <div className="rounded-xl border border-amber-200 bg-amber-50/90 p-3.5 shadow-2xs">
-                      <div className="flex items-start gap-2.5">
-                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500/20 text-amber-900 font-extrabold text-xs mt-0.5">
-                          ₹
-                        </div>
-                        <div className="space-y-1 flex-1">
-                          <div className="flex items-center justify-between">
-                            <p className="font-bold text-slate-900 text-xs tracking-tight">
-                              Activate this Alert for:{" "}
-                              <span className="text-amber-950 font-extrabold text-sm">
-                                ₹5
-                              </span>
-                            </p>
-                            <span className="inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
-                              100% Refundable
-                            </span>
-                          </div>
-                          <p className="text-xs leading-relaxed text-slate-700">
-                            <strong>Money-Back Guarantee:</strong> If confirmed
-                            tickets or vacant seats are not found when chart is
-                            prepared, your{" "}
-                            <strong>₹5 will be refunded back to you</strong>{" "}
-                            automatically.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
                   <button
                     type="submit"
                     disabled={loading}
                     className="mt-1 inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    {loading ? (
-                      "Setting up…"
-                    ) : showPaidStep ? (
-                      <>
-                        <ShieldCheck className="h-4 w-4 text-emerald-300" />
-                        Pay ₹5 &amp; Subscribe to Alert
-                      </>
-                    ) : (
-                      "Set alert"
-                    )}
+                    {loading ? "Setting up…" : "Set alert"}
                   </button>
-                  {showPaidStep && (
-                    <p className="mt-1 text-center text-[10px] font-medium text-slate-500">
-                      Instant setup · Zero-risk money back guarantee
-                    </p>
-                  )}
                 </form>
               </>
             )}
           </div>
         </div>
       )}
-
-      <RazorpayQrModal
-        isOpen={paymentModalOpen}
-        onClose={() => {
-          setPaymentModalOpen(false);
-          setShowPaidStep(false);
-        }}
-        onSuccess={() => {
-          setPaymentModalOpen(false);
-          setShowPaidStep(false);
-          setSuccess(true);
-          persistContact();
-        }}
-        journeyData={{
-          trainNumber: trainNumber.trim(),
-          trainName: trainName?.trim() || undefined,
-          fromStationCode: stationCode.trim().toUpperCase(),
-          toStationCode: toStationCode.trim().toUpperCase(),
-          journeyDate: journeyDate.trim().slice(0, 10),
-          classCode: classCode.trim().toUpperCase(),
-          stationCodesToMonitor: [stationCode.trim().toUpperCase()],
-          email: email.trim() || undefined,
-          mobile: mobile.trim() || undefined,
-        }}
-      />
     </>
   );
 }

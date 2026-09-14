@@ -491,35 +491,3 @@ model NotificationUnsubscribe {
   @@index([recipient])
   @@map("notification_unsubscribe")
 }
-
-enum PaymentStatus {
-  PENDING
-  PAID
-  FAILED
-  REFUNDED
-}
-
-/// Tracks a Razorpay UPI QR-code payment for a chart-alert subscription.
-/// The journeyPayload JSON mirrors the normalized params accepted by
-/// POST /api/availability/journey so the backend can trigger monitoring
-/// once the payment is verified.
-model PaymentTransaction {
-  id                String        @id @default(cuid())
-  qrCodeId          String?       @unique @map("qr_code_id")
-  orderId           String?       @unique @map("order_id")
-  amount            Int           @map("amount") // in paise (e.g. 500 = ₹5)
-  currency          String        @default("INR")
-  status            PaymentStatus @default(PENDING)
-  razorpayPaymentId String?       @map("razorpay_payment_id")
-  contactEmail      String?       @map("contact_email")
-  contactMobile     String?       @map("contact_mobile")
-  journeyPayload    Json?         @map("journey_payload")
-  journeyRequestId  String?       @map("journey_request_id")
-  createdAt         DateTime      @default(now()) @map("created_at")
-  updatedAt         DateTime      @updatedAt @map("updated_at")
-  paidAt            DateTime?     @map("paid_at")
-
-  @@index([status])
-  @@index([orderId])
-  @@map("payment_transaction")
-}
