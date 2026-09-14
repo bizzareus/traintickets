@@ -294,11 +294,16 @@ jobs:
             # repo .env.example quotes the URL), which makes Prisma reject it
             # with P1013 — so parse just this var shell-style (xargs strips
             # the quotes, like dotenv does) and pass it explicitly with -e.
+            export \$(grep -E '^DIRECT_DATABASE_URL=' /home/ubuntu/app/backend/.env | tail -n 1 | xargs)
             export \$(grep -E '^DATABASE_URL=' /home/ubuntu/app/backend/.env | tail -n 1 | xargs)
-            if [ -z "\$DATABASE_URL" ]; then echo 'DATABASE_URL is empty in /home/ubuntu/app/backend/.env; cannot migrate'; exit 1; fi
+            # Migrations must NOT run through the Supabase pooler (:6543 /
+            # pgbouncer=true) — Prisma stalls acquiring its advisory lock
+            # there. Prefer a DIRECT_DATABASE_URL (port 5432, non-pooler).
+            MIGRATE_URL="\${DIRECT_DATABASE_URL:-\$DATABASE_URL}"
+            if [ -z "\$MIGRATE_URL" ]; then echo 'Neither DIRECT_DATABASE_URL nor DATABASE_URL is set in /home/ubuntu/app/backend/.env; cannot migrate'; exit 1; fi
             # Bound the wait: if the DB is unreachable Prisma can otherwise
             # hang until the runner itself times out.
-            timeout 300 docker run --rm -e DATABASE_URL '$BACKEND_IMAGE' npx prisma migrate deploy
+            timeout 300 docker run --rm -e DATABASE_URL="\$MIGRATE_URL" '$BACKEND_IMAGE' npx prisma migrate deploy
             cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d
             docker image prune -af || true
             docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
