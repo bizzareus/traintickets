@@ -218,12 +218,43 @@ export class ChartAlertPaymentsService {
       });
       if (err instanceof ServiceUnavailableException) throw err;
       this.logger.error(
-        `Muzobox create-link failed for ref=${record.id}: ${err instanceof Error ? err.message : String(err)}`,
+        `Muzobox create-link failed for ref=${record.id} amount=${amount} ` +
+          `target=${this.describeMuzoboxErrorTarget(err)} ` +
+          `body=${this.describeMuzoboxErrorBody(err)}`,
       );
       throw new ServiceUnavailableException(
         'Payment system is not available. Please try again later.',
       );
     }
+  }
+
+  /**
+   * Full request URL for a failed Muzobox call (method + base + path), so a
+   * 404/401 can be traced to a misconfigured MUZOBOX_API_URL. Never includes
+   * contact PII — only routing info.
+   */
+  private describeMuzoboxErrorTarget(err: unknown): string {
+    const e = err as {
+      config?: { baseURL?: string; url?: string; method?: string };
+    };
+    const method = e?.config?.method?.toUpperCase() ?? 'POST';
+    const base = e?.config?.baseURL ?? this.muzoboxApiUrl;
+    const path = e?.config?.url ?? 'proxy-payments/create-link';
+    return `${method} ${base}/${String(path).replace(/^\/+/, '')}`;
+  }
+
+  /** Truncated proxy response body (or fallback message) for error logs. */
+  private describeMuzoboxErrorBody(err: unknown): string {
+    const e = err as {
+      response?: { status?: number; data?: unknown };
+      message?: string;
+    };
+    const status = e?.response?.status;
+    const body =
+      e?.response?.data ?? (typeof e?.message === 'string' ? e.message : null);
+    const raw =
+      typeof body === 'string' ? body : JSON.stringify(body ?? String(err));
+    return `status=${status ?? 'n/a'} ${raw.slice(0, 500)}`;
   }
 
   /**
@@ -327,7 +358,9 @@ export class ChartAlertPaymentsService {
     } catch (err) {
       if (err instanceof ServiceUnavailableException) throw err;
       this.logger.warn(
-        `Muzobox status check failed for ref=${record.id}: ${err instanceof Error ? err.message : String(err)}`,
+        `Muzobox status check failed for ref=${record.id} ` +
+          `target=${this.describeMuzoboxErrorTarget(err)} ` +
+          `body=${this.describeMuzoboxErrorBody(err)}`,
       );
       return record;
     }
