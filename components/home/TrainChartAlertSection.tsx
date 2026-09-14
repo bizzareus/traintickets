@@ -465,31 +465,30 @@ export function TrainChartAlertSection({
           </div>
         </div>
       )}
+      <RazorpayQrModal
+        isOpen={paymentModalOpen}
+        onClose={() => {
+          setPaymentModalOpen(false);
+          setShowPaidStep(false);
+        }}
+        onSuccess={() => {
+          setPaymentModalOpen(false);
+          setShowPaidStep(false);
+          setSuccess(true);
+          persistContact();
+        }}
+        journeyData={{
+          trainNumber: trainNumber.trim(),
+          trainName: trainName?.trim() || undefined,
+          fromStationCode: fromCode.trim().toUpperCase(),
+          toStationCode: toCode.trim().toUpperCase(),
+          journeyDate: journeyDate?.trim().slice(0, 10) || "",
+          classCode: selectedClass.trim().toUpperCase(),
+          stationCodesToMonitor: [fromCode.trim().toUpperCase()],
+          email: email.trim() || undefined,
+          mobile: mobile.trim() || undefined,
+        }}
+      />
     </>
-
-    <RazorpayQrModal
-      isOpen={paymentModalOpen}
-      onClose={() => {
-        setPaymentModalOpen(false);
-        setShowPaidStep(false);
-      }}
-      onSuccess={() => {
-        setPaymentModalOpen(false);
-        setShowPaidStep(false);
-        setSuccess(true);
-        persistContact();
-      }}
-      journeyData={{
-        trainNumber: trainNumber.trim(),
-        trainName: trainName?.trim() || undefined,
-        fromStationCode: fromCode.trim().toUpperCase(),
-        toStationCode: toCode.trim().toUpperCase(),
-        journeyDate: journeyDate?.trim().slice(0, 10) || "",
-        classCode: selectedClass.trim().toUpperCase(),
-        stationCodesToMonitor: [fromCode.trim().toUpperCase()],
-        email: email.trim() || undefined,
-        mobile: mobile.trim() || undefined,
-      }}
-    />
   );
 }
