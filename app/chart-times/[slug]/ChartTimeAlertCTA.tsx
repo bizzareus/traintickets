@@ -363,7 +363,8 @@ export default function ChartTimeAlertCTA({
   }
 
   return (
-    <div className="mb-6 rounded-xl border border-blue-200 bg-blue-50/60 p-5 shadow-sm">
+    <>
+      <div className="mb-6 rounded-xl border border-blue-200 bg-blue-50/60 p-5 shadow-sm">
       <h2 className="flex items-center gap-2 text-base font-semibold text-slate-900">
         <BellRing className="h-4 w-4 text-blue-700" />
         Chart preparation alert for {trainName} ({trainNumber})
@@ -524,9 +525,9 @@ export default function ChartTimeAlertCTA({
       {error && (
         <p className="mt-3 text-sm font-medium text-red-700">{error}</p>
       )}
-    </div>
+      </div>
 
-    <RazorpayQrModal
+      <RazorpayQrModal
       isOpen={paymentModalOpen}
       onClose={() => {
         setPaymentModalOpen(false);
@@ -549,6 +550,7 @@ export default function ChartTimeAlertCTA({
         email: email.trim() || undefined,
         mobile: mobile.trim() || undefined,
       }}
-    />
+      />
+    </>
   );
 }
