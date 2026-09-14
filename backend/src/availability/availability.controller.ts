@@ -5,10 +5,10 @@ import {
   Get,
   Headers,
   HttpCode,
+  HttpException,
   HttpStatus,
   Optional,
   Param,
-  PaymentRequiredException,
   Post,
   Query,
   Req,
@@ -100,8 +100,9 @@ export class AvailabilityController {
         .toLowerCase() === 'true';
     if (!ref) {
       if (required) {
-        throw new PaymentRequiredException(
+        throw new HttpException(
           'This alert requires payment. Please complete payment first.',
+          HttpStatus.PAYMENT_REQUIRED,
         );
       }
       return;
@@ -133,8 +134,9 @@ export class AvailabilityController {
         .trim()
         .toUpperCase() === normalized.classCode;
     if (!matches) {
-      throw new PaymentRequiredException(
+      throw new HttpException(
         'Payment verification failed for this alert. Please complete payment first.',
+        HttpStatus.PAYMENT_REQUIRED,
       );
     }
   }
@@ -333,7 +335,7 @@ export class AvailabilityController {
    */
   @Post('journey')
   @HttpCode(HttpStatus.ACCEPTED)
-  createJourney(
+  async createJourney(
     @Body('trainNumber') trainNumber: string,
     @Body('trainName') trainName: string,
     @Body('fromStationCode') fromStationCode: string,
