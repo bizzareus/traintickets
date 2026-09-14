@@ -198,12 +198,23 @@ jobs:
     name: Deploy Backend (AWS EC2 - NestJS)
     needs: build-and-push
     runs-on: ubuntu-latest
-    # Never hang the runner for hours if an SSH/DB step stalls (e.g. Prisma
-    # waiting on an unreachable database) — fail fast instead.
+    # Never hang the runner for hours if an SSH step stalls — fail fast instead.
     timeout-minutes: 30
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      # Migrations run here on the runner (full internet route to Supabase),
+      # NOT on EC2: the EC2 host cannot route to Supabase direct endpoints
+      # (:5432), and migrate deploy stalls through the pooler (:6543).
+      # Requires the PROD_DIRECT_DATABASE_URL repo secret (port-5432 URL).
+      - name: Apply Prisma migrations
+        working-directory: backend
+        env:
+          DATABASE_URL: ${{ secrets.PROD_DIRECT_DATABASE_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then echo 'PROD_DIRECT_DATABASE_URL secret is not set; cannot migrate'; exit 1; fi
+          npx -y prisma@7.5.0 migrate deploy
 
       - name: Configure AWS Credentials
         if: env.AWS_ACCESS_KEY_ID != ''
@@ -288,22 +299,6 @@ jobs:
               echo \"docker pull attempt \$i failed, retrying in \$((\$i*10))s...\"
               sleep \$((\$i*10))
             done
-            # Apply pending Prisma migrations before starting the new code.
-            # DATABASE_URL is read from the server .env. Note: docker
-            # --env-file passes surrounding quotes through literally (and the
-            # repo .env.example quotes the URL), which makes Prisma reject it
-            # with P1013 — so parse just this var shell-style (xargs strips
-            # the quotes, like dotenv does) and pass it explicitly with -e.
-            export \$(grep -E '^DIRECT_DATABASE_URL=' /home/ubuntu/app/backend/.env | tail -n 1 | xargs)
-            export \$(grep -E '^DATABASE_URL=' /home/ubuntu/app/backend/.env | tail -n 1 | xargs)
-            # Migrations must NOT run through the Supabase pooler (:6543 /
-            # pgbouncer=true) — Prisma stalls acquiring its advisory lock
-            # there. Prefer a DIRECT_DATABASE_URL (port 5432, non-pooler).
-            MIGRATE_URL="\${DIRECT_DATABASE_URL:-\$DATABASE_URL}"
-            if [ -z "\$MIGRATE_URL" ]; then echo 'Neither DIRECT_DATABASE_URL nor DATABASE_URL is set in /home/ubuntu/app/backend/.env; cannot migrate'; exit 1; fi
-            # Bound the wait: if the DB is unreachable Prisma can otherwise
-            # hang until the runner itself times out.
-            timeout 300 docker run --rm -e DATABASE_URL="\$MIGRATE_URL" '$BACKEND_IMAGE' npx prisma migrate deploy
             cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d
             docker image prune -af || true
             docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
