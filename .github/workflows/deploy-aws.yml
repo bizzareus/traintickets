@@ -198,6 +198,9 @@ jobs:
     name: Deploy Backend (AWS EC2 - NestJS)
     needs: build-and-push
     runs-on: ubuntu-latest
+    # Never hang the runner for hours if an SSH/DB step stalls (e.g. Prisma
+    # waiting on an unreachable database) — fail fast instead.
+    timeout-minutes: 30
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -293,7 +296,9 @@ jobs:
             # the quotes, like dotenv does) and pass it explicitly with -e.
             export \$(grep -E '^DATABASE_URL=' /home/ubuntu/app/backend/.env | tail -n 1 | xargs)
             if [ -z "\$DATABASE_URL" ]; then echo 'DATABASE_URL is empty in /home/ubuntu/app/backend/.env; cannot migrate'; exit 1; fi
-            docker run --rm -e DATABASE_URL '$BACKEND_IMAGE' npx prisma migrate deploy
+            # Bound the wait: if the DB is unreachable Prisma can otherwise
+            # hang until the runner itself times out.
+            timeout 300 docker run --rm -e DATABASE_URL '$BACKEND_IMAGE' npx prisma migrate deploy
             cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d
             docker image prune -af || true
             docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
