@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import type { CreateQrPaymentInput, QrPaymentResult, PaymentStatusResult } from '@/types';
+import type { CreateQrPaymentInput, QrPaymentResult, PaymentStatusResult } from '@/lib/types';
 
 interface UseChartAlertPaymentReturn {
   qrCodeId: string | null;

@@ -11,7 +11,7 @@ import { useChartAlertPricingExperiment } from "@/lib/hooks/useChartAlertPricing
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 import { RazorpayQrModal } from "@/components/payment/RazorpayQrModal";
-import type { CreateQrPaymentInput } from "@/types";
+import type { CreateQrPaymentInput } from "@/lib/types";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
