@@ -289,17 +289,11 @@ describe('WasenderHealthcheckService', () => {
     expect(checkSpy).not.toHaveBeenCalled();
   });
 
-  it('executes scheduled cron when NODE_ENV is production and WHATSAPP_PROVIDER is wasender', async () => {
-    const spy = jest.spyOn(service, 'checkHealth').mockResolvedValue({
-      healthy: true,
-      status: 'connected',
-      qrSent: false,
-      message: 'Session is active',
-      timestamp: new Date().toISOString(),
-    });
+  it('stays off by default even when NODE_ENV is production and provider is wasender', async () => {
+    const spy = jest.spyOn(service, 'checkHealth');
 
     await service.handleScheduledHealthcheck();
-    expect(spy).toHaveBeenCalledWith('cron');
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('throttles repeated cron alert emails within cooldown window', async () => {
@@ -334,6 +328,6 @@ describe('WasenderHealthcheckService', () => {
     expect(state.adminEmail).toBe('admin@lastberth.com');
     expect(state.activeProvider).toBe('wasender');
     expect(state.nodeEnv).toBe('production');
-    expect(state.isWasenderActive).toBe(true);
+    expect(state.isWasenderActive).toBe(false);
   });
 });

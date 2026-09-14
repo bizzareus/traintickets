@@ -152,31 +152,15 @@ export class WasenderHealthcheckService {
     );
   }
 
-  private isProduction(): boolean {
-    const nodeEnv =
-      this.config.get<string>('NODE_ENV')?.trim().toLowerCase() ||
-      process.env.NODE_ENV?.trim().toLowerCase();
-    return nodeEnv === 'production';
-  }
-
   private isWasenderActive(): boolean {
-    const explicitEnable = this.config
-      .get<string>('WASENDER_HEALTHCHECK_ENABLED')
-      ?.trim()
-      .toLowerCase();
-    if (explicitEnable === 'true') return true;
-    if (explicitEnable === 'false') return false;
-
-    // Disabled on local / non-production environments unless explicitly enabled
-    if (!this.isProduction()) {
-      return false;
-    }
-
-    const provider = this.config
-      .get<string>('WHATSAPP_PROVIDER')
-      ?.trim()
-      .toLowerCase();
-    return provider === 'wasender' || (!provider && Boolean(this.wasenderKey));
+    // Master switch — default OFF. The scheduled healthcheck only runs when
+    // explicitly enabled via WASENDER_HEALTHCHECK_ENABLED=true.
+    return (
+      this.config
+        .get<string>('WASENDER_HEALTHCHECK_ENABLED')
+        ?.trim()
+        .toLowerCase() === 'true'
+    );
   }
 
   private shouldSendAlert(status: string, force = false): boolean {
