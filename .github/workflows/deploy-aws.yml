@@ -154,13 +154,28 @@ jobs:
             --exclude '.git' \
             ./content/ ubuntu@$TARGET_HOST:/home/ubuntu/app/content/
 
-          # Log in to GHCR on EC2, free disk from superseded images (deploys
-          # fail with "no space left on device" otherwise), pull, restart fast
-          ssh ubuntu@$TARGET_HOST "echo '$REGISTRY_TOKEN' | docker login ghcr.io -u '$REGISTRY_USER' --password-stdin && \
-            docker image prune -af && \
-            docker pull '$FRONTEND_IMAGE' && \
-            cd /home/ubuntu/app/infra && \
-            docker compose -f docker-compose.yml up -d"
+          # GHCR from EC2 intermittently times out awaiting headers
+          # (Client.Timeout). Retry login/pull with backoff instead of failing
+          # the deploy. Prune AFTER a successful rollout so a failed pull never
+          # leaves the host without a runnable image.
+          ssh ubuntu@$TARGET_HOST "set -e
+            export DOCKER_CLIENT_TIMEOUT=300 COMPOSE_HTTP_TIMEOUT=300
+            for i in 1 2 3 4 5; do
+              if printf '%s' '$REGISTRY_TOKEN' | docker login ghcr.io -u '$REGISTRY_USER' --password-stdin; then break; fi
+              if [ \$i -eq 5 ]; then echo 'GHCR login failed after 5 attempts'; exit 1; fi
+              echo \"GHCR login attempt \$i failed, retrying in \$((\$i*10))s...\"
+              sleep \$((\$i*10))
+            done
+            docker image prune -f || true
+            for i in 1 2 3 4 5; do
+              if docker pull '$FRONTEND_IMAGE'; then break; fi
+              if [ \$i -eq 5 ]; then echo 'docker pull failed after 5 attempts'; exit 1; fi
+              echo \"docker pull attempt \$i failed, retrying in \$((\$i*10))s...\"
+              sleep \$((\$i*10))
+            done
+            cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d
+            docker image prune -af || true
+            docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
 
       - name: Revoke Security Group Ingress
         if: always() && env.AWS_ACCESS_KEY_ID != ''
@@ -244,16 +259,33 @@ jobs:
           REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BACKEND_IMAGE: ghcr.io/${{ github.repository }}-backend:latest
         run: |
-          ssh ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra"
+          ssh ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra /home/ubuntu/app/backend"
           scp infra/docker-compose.yml infra/Caddyfile ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/
+          # Ensure the env_file target exists so `docker compose up` never fails on a missing file
+          ssh ubuntu@$TARGET_HOST "touch /home/ubuntu/app/backend/.env"
 
-          # Log in to GHCR on EC2, free disk from superseded images (deploys
-          # fail with "no space left on device" otherwise), pull, restart fast
-          ssh ubuntu@$TARGET_HOST "echo '$REGISTRY_TOKEN' | docker login ghcr.io -u '$REGISTRY_USER' --password-stdin && \
-            docker image prune -af && \
-            docker pull '$BACKEND_IMAGE' && \
-            cd /home/ubuntu/app/infra && \
-            docker compose -f docker-compose.yml up -d"
+          # GHCR from EC2 intermittently times out awaiting headers
+          # (Client.Timeout). Retry login/pull with backoff instead of failing
+          # the deploy. Prune AFTER a successful rollout so a failed pull never
+          # leaves the host without a runnable image.
+          ssh ubuntu@$TARGET_HOST "set -e
+            export DOCKER_CLIENT_TIMEOUT=300 COMPOSE_HTTP_TIMEOUT=300
+            for i in 1 2 3 4 5; do
+              if printf '%s' '$REGISTRY_TOKEN' | docker login ghcr.io -u '$REGISTRY_USER' --password-stdin; then break; fi
+              if [ \$i -eq 5 ]; then echo 'GHCR login failed after 5 attempts'; exit 1; fi
+              echo \"GHCR login attempt \$i failed, retrying in \$((\$i*10))s...\"
+              sleep \$((\$i*10))
+            done
+            docker image prune -f || true
+            for i in 1 2 3 4 5; do
+              if docker pull '$BACKEND_IMAGE'; then break; fi
+              if [ \$i -eq 5 ]; then echo 'docker pull failed after 5 attempts'; exit 1; fi
+              echo \"docker pull attempt \$i failed, retrying in \$((\$i*10))s...\"
+              sleep \$((\$i*10))
+            done
+            cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d
+            docker image prune -af || true
+            docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
 
       - name: Revoke Security Group Ingress
         if: always() && env.AWS_ACCESS_KEY_ID != ''
