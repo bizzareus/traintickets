@@ -192,7 +192,7 @@ export function ChartAlertPaymentModal({
                 title="Secure payment"
                 className="absolute inset-0 h-full w-full border-0"
                 allow="payment; clipboard-write"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation allow-top-navigation-to-custom-protocols"
               />
             </div>
             <div className="flex items-center justify-between gap-3 border-t border-slate-100 px-5 py-3">
