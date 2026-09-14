@@ -285,6 +285,12 @@ jobs:
               echo \"docker pull attempt \$i failed, retrying in \$((\$i*10))s...\"
               sleep \$((\$i*10))
             done
+            # Apply pending Prisma migrations before starting the new code.
+            # Uses the same env_file as the backend service, so DATABASE_URL
+            # comes from /home/ubuntu/app/backend/.env (no extra secret needed).
+            # The backend image ships prisma/ + prisma.config.ts with the
+            # Prisma CLI in dependencies, so a one-off container can migrate.
+            docker run --rm --env-file /home/ubuntu/app/backend/.env '$BACKEND_IMAGE' npx prisma migrate deploy
             cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d
             docker image prune -af || true
             docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
