@@ -286,11 +286,14 @@ jobs:
               sleep \$((\$i*10))
             done
             # Apply pending Prisma migrations before starting the new code.
-            # Uses the same env_file as the backend service, so DATABASE_URL
-            # comes from /home/ubuntu/app/backend/.env (no extra secret needed).
-            # The backend image ships prisma/ + prisma.config.ts with the
-            # Prisma CLI in dependencies, so a one-off container can migrate.
-            docker run --rm --env-file /home/ubuntu/app/backend/.env '$BACKEND_IMAGE' npx prisma migrate deploy
+            # DATABASE_URL is read from the server .env. Note: docker
+            # --env-file passes surrounding quotes through literally (and the
+            # repo .env.example quotes the URL), which makes Prisma reject it
+            # with P1013 — so parse just this var shell-style (xargs strips
+            # the quotes, like dotenv does) and pass it explicitly with -e.
+            export \$(grep -E '^DATABASE_URL=' /home/ubuntu/app/backend/.env | tail -n 1 | xargs)
+            if [ -z "\$DATABASE_URL" ]; then echo 'DATABASE_URL is empty in /home/ubuntu/app/backend/.env; cannot migrate'; exit 1; fi
+            docker run --rm -e DATABASE_URL '$BACKEND_IMAGE' npx prisma migrate deploy
             cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d
             docker image prune -af || true
             docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
