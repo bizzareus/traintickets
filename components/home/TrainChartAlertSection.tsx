@@ -1,14 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BellRing, CheckCircle2, Sparkles, X } from "lucide-react";
-import { apiClient } from "@/lib/api";
+import { BellRing, Sparkles, X } from "lucide-react";
 import {
   trackAlertRequested,
   trackAnalyticsEvent,
 } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
+import {
+  CHART_ALERT_PRICE_RUPEES,
+  getChartAlertErrorMessage,
+  startChartAlertPayment,
+} from "@/lib/chart-alert-payments";
 
 const DEFAULT_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -37,7 +41,6 @@ export function TrainChartAlertSection({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
 
   const availableClasses =
     avlClasses && avlClasses.length > 0 ? avlClasses : DEFAULT_CLASSES;
@@ -62,7 +65,6 @@ export function TrainChartAlertSection({
   const handleOpenModal = () => {
     setModalOpen(true);
     setError(null);
-    setSuccess(false);
     trackAnalyticsEvent({
       name: "chart_alert_opened",
       properties: {
@@ -78,46 +80,28 @@ export function TrainChartAlertSection({
   const executeSubscription = async (em: string, mob: string) => {
     setLoading(true);
     setError(null);
-    setSuccess(false);
 
     try {
-      await apiClient.post("/api/availability/journey", {
-        trainNumber: trainNumber.trim(),
-        trainName: trainName?.trim() || undefined,
-        fromStationCode: fromCode.trim().toUpperCase(),
-        toStationCode: toCode.trim().toUpperCase(),
-        journeyDate: journeyDate?.trim().slice(0, 10),
-        classCode: selectedClass.trim().toUpperCase(),
-        stationCodesToMonitor: [fromCode.trim().toUpperCase()],
-        email: em || undefined,
-        mobile: mob || undefined,
-      });
-
-      setSuccess(true);
       persistContact();
-      trackAlertRequested({
-        success: true,
-        source: "search_panel",
-        trainNumber: trainNumber.trim(),
-        trainName: trainName?.trim() || undefined,
-        fromCode: fromCode.trim().toUpperCase(),
-        toCode: toCode.trim().toUpperCase(),
-        journeyDate: journeyDate?.trim().slice(0, 10) || "",
-        classCode: selectedClass.trim().toUpperCase(),
-        email: em || undefined,
-        mobile: mob || undefined,
-      });
+      await startChartAlertPayment(
+        {
+          trainNumber: trainNumber.trim(),
+          trainName: trainName?.trim() || undefined,
+          fromStationCode: fromCode.trim().toUpperCase(),
+          toStationCode: toCode.trim().toUpperCase(),
+          journeyDate: journeyDate?.trim().slice(0, 10) || "",
+          classCode: selectedClass.trim().toUpperCase(),
+          stationCodesToMonitor: [fromCode.trim().toUpperCase()],
+          email: em || undefined,
+          mobile: mob || undefined,
+        },
+        "search_panel",
+      );
     } catch (err: unknown) {
-      const e = err as {
-        response?: {
-          data?: { message?: string; errors?: Array<{ message?: string }> };
-        };
-      };
-      const msg =
-        e?.response?.data?.errors?.[0]?.message ||
-        e?.response?.data?.message ||
-        "Could not set up chart alert. Please check your inputs and try again.";
-      const errMsg = typeof msg === "string" ? msg : JSON.stringify(msg);
+      const errMsg = getChartAlertErrorMessage(
+        err,
+        "Could not set up chart alert. Please check your inputs and try again.",
+      );
       setError(errMsg);
       trackAlertRequested({
         success: false,
@@ -182,8 +166,7 @@ export function TrainChartAlertSection({
               Chart Alert
             </span>
             <span className="inline-flex items-center gap-0.5 rounded-full bg-blue-100/70 px-1.5 py-0.2 text-[9px] font-bold text-blue-700">
-              <Sparkles className="h-2.5 w-2.5 text-blue-600" />
-              Free
+              <Sparkles className="h-2.5 w-2.5 text-blue-600" />₹{CHART_ALERT_PRICE_RUPEES}
             </span>
           </div>
           <p className="mt-2 text-xs text-slate-600 leading-relaxed">
@@ -246,33 +229,8 @@ export function TrainChartAlertSection({
               </button>
             </div>
 
-            {/* Modal Body */}
-            {success ? (
-              <div className="py-6 text-center">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                  <CheckCircle2 className="h-7 w-7" />
-                </div>
-                <h4 className="mt-3 text-base font-bold text-slate-900">
-                  Alert Subscribed Successfully!
-                </h4>
-                <p className="mt-2 text-xs leading-relaxed text-slate-600">
-                  We&apos;ll monitor{" "}
-                  <strong className="text-slate-800">{trainNumber}</strong> from{" "}
-                  <strong className="text-slate-800">{fromCode}</strong> to{" "}
-                  <strong className="text-slate-800">{toCode}</strong> and
-                  immediately alert you via WhatsApp/Email when the chart is
-                  prepared.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setModalOpen(false)}
-                  className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25"
-                >
-                  Done
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="mt-4 space-y-4">
+            {/* Modal Body — paid flow redirects to Muzobox, so no success state */}
+            <form onSubmit={handleSubscribe} className="mt-4 space-y-4">
                 <div>
                   <label
                     htmlFor="alertClassSelect"
@@ -348,18 +306,22 @@ export function TrainChartAlertSection({
                     {loading ? (
                       <>
                         <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                        Setting up alert…
+                        Redirecting to payment…
                       </>
                     ) : (
                       <>
                         <BellRing className="h-4 w-4" />
-                        Subscribe to Alert
+                        Pay ₹{CHART_ALERT_PRICE_RUPEES} & subscribe
                       </>
                     )}
                   </button>
+                  <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+                    One-time ₹{CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay
+                    securely on Muzobox and return here — the alert activates
+                    once payment is verified.
+                  </p>
                 </div>
               </form>
-            )}
           </div>
         </div>
       )}

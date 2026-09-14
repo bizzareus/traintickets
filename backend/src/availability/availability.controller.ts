@@ -120,14 +120,18 @@ export class AvailabilityController {
       record?.status === 'PAID' &&
       !!payload &&
       String(payload.trainNumber ?? '').trim() === normalized.trainNumber &&
-      String(payload.fromStationCode ?? '').trim().toUpperCase() ===
-        normalized.fromStationCode &&
-      String(payload.toStationCode ?? '').trim().toUpperCase() ===
-        normalized.toStationCode &&
-      String(payload.journeyDate ?? '').trim().slice(0, 10) ===
-        normalized.journeyDate.slice(0, 10) &&
-      String(payload.classCode ?? '').trim().toUpperCase() ===
-        normalized.classCode;
+      String(payload.fromStationCode ?? '')
+        .trim()
+        .toUpperCase() === normalized.fromStationCode &&
+      String(payload.toStationCode ?? '')
+        .trim()
+        .toUpperCase() === normalized.toStationCode &&
+      String(payload.journeyDate ?? '')
+        .trim()
+        .slice(0, 10) === normalized.journeyDate.slice(0, 10) &&
+      String(payload.classCode ?? '')
+        .trim()
+        .toUpperCase() === normalized.classCode;
     if (!matches) {
       throw new PaymentRequiredException(
         'Payment verification failed for this alert. Please complete payment first.',

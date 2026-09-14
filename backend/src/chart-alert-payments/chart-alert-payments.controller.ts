@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+  ServiceUnavailableException,
+} from '@nestjs/common';
 import { ChartAlertPaymentsService } from './chart-alert-payments.service';
 import type { ChartAlertJourneyInput } from './chart-alert-payments.service';
 
@@ -9,17 +18,23 @@ export class ChartAlertPaymentsController {
   /**
    * Create a Muzobox hosted payment link for a chart-alert subscription.
    * Returns `{ ref, payUrl, amount }` — the frontend redirects to `payUrl`.
+   * Throws 400 for invalid input, 503 when the payment proxy is unavailable.
    */
   @Post('create')
   async create(@Body() body: ChartAlertJourneyInput) {
     if (!body?.trainNumber?.trim() || !body?.fromStationCode?.trim()) {
-      return { error: 'trainNumber and fromStationCode are required' };
+      throw new BadRequestException(
+        'trainNumber and fromStationCode are required',
+      );
     }
     if (!body?.journeyDate?.trim() || !body?.classCode?.trim()) {
-      return { error: 'journeyDate and classCode are required' };
+      throw new BadRequestException('journeyDate and classCode are required');
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(body.journeyDate.trim().slice(0, 10))) {
+      throw new BadRequestException('journeyDate must be in YYYY-MM-DD format');
     }
     if (!body?.email?.trim() && !body?.mobile?.trim()) {
-      return { error: 'An email or mobile number is required' };
+      throw new BadRequestException('An email or mobile number is required');
     }
     try {
       return await this.payments.createPaymentLink({
@@ -35,9 +50,16 @@ export class ChartAlertPaymentsController {
         trainStartDate: body.trainStartDate,
       });
     } catch (err) {
-      const message =
-        err instanceof Error ? err.message : 'Could not start payment';
-      return { error: message };
+      if (
+        err instanceof BadRequestException ||
+        err instanceof NotFoundException ||
+        err instanceof ServiceUnavailableException
+      ) {
+        throw err;
+      }
+      throw new ServiceUnavailableException(
+        err instanceof Error ? err.message : 'Could not start payment',
+      );
     }
   }
 
@@ -47,29 +69,27 @@ export class ChartAlertPaymentsController {
    */
   @Get('status/:ref')
   async getStatus(@Param('ref') ref: string) {
-    try {
-      return await this.payments.getStatus(ref);
-    } catch (err) {
-      const message =
-        err instanceof Error ? err.message : 'Could not fetch payment status';
-      return { error: message };
+    if (!String(ref ?? '').trim()) {
+      throw new BadRequestException('Payment reference is required');
     }
+    return this.payments.getStatus(String(ref).trim());
   }
 
   /** Server-to-server callback from the Muzobox payment proxy. */
   @Post('callback')
   async handleCallback(@Body() body: Record<string, unknown>) {
-    try {
-      return await this.payments.handleCallback(
+    // Always ack so the proxy does not retry a poison payload.
+    await this.payments
+      .handleCallback(
         (body ?? {}) as {
           paymentId?: string;
+          payment_id?: string;
           status?: string;
           referenceId?: string;
+          reference_id?: string;
         },
-      );
-    } catch {
-      // Always ack so the proxy does not retry a poison payload.
-      return { received: true };
-    }
+      )
+      .catch(() => undefined);
+    return { received: true };
   }
 }

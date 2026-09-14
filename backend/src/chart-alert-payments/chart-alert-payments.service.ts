@@ -15,6 +15,7 @@ import type { AxiosInstance } from 'axios';
 const DEFAULT_PRICE_RUPEES = 5;
 const DEFAULT_MUZOBOX_API_URL = 'https://muzobox.com/api';
 const DEFAULT_PUBLIC_API_URL = 'https://api.lastberth.com';
+const DEFAULT_FRONTEND_URL = 'https://lastberth.com';
 
 export type ChartAlertJourneyInput = {
   trainNumber: string;
@@ -50,17 +51,24 @@ export type PaymentConfirmResult = {
 };
 
 type MuzoboxCreateLinkResponse = {
-  id: string;
-  amount: number;
-  payUrl: string;
+  id?: string;
+  paymentId?: string;
+  payment_id?: string;
+  amount?: number;
+  payUrl?: string;
+  pay_url?: string;
+  payLink?: string;
 };
 
 type MuzoboxStatusResponse = {
-  status: 'created' | 'paid' | 'failed';
-  amount: number;
-  referenceId: string | null;
-  razorpayPaymentId: string | null;
-  razorpayOrderId: string | null;
+  status?: string;
+  amount?: number;
+  referenceId?: string | null;
+  reference_id?: string | null;
+  razorpayPaymentId?: string | null;
+  razorpay_payment_id?: string | null;
+  razorpayOrderId?: string | null;
+  razorpay_order_id?: string | null;
   redirectUrl?: string;
 };
 
@@ -85,15 +93,33 @@ export class ChartAlertPaymentsService {
 
   private get muzoboxApiUrl(): string {
     return (
-      this.configService.get<string>('MUZOBOX_API_URL')?.trim().replace(/\/$/, '') ||
-      DEFAULT_MUZOBOX_API_URL
+      this.configService
+        .get<string>('MUZOBOX_API_URL')
+        ?.trim()
+        .replace(/\/$/, '') || DEFAULT_MUZOBOX_API_URL
     );
   }
 
   private get publicApiUrl(): string {
     return (
-      this.configService.get<string>('PUBLIC_API_URL')?.trim().replace(/\/$/, '') ||
-      DEFAULT_PUBLIC_API_URL
+      this.configService
+        .get<string>('PUBLIC_API_URL')
+        ?.trim()
+        .replace(/\/$/, '') || DEFAULT_PUBLIC_API_URL
+    );
+  }
+
+  private get frontendUrl(): string {
+    return (
+      this.configService
+        .get<string>('FRONTEND_URL')
+        ?.trim()
+        .replace(/\/$/, '') ||
+      this.configService
+        .get<string>('NEXT_PUBLIC_APP_URL')
+        ?.trim()
+        .replace(/\/$/, '') ||
+      DEFAULT_FRONTEND_URL
     );
   }
 
@@ -102,11 +128,15 @@ export class ChartAlertPaymentsService {
       this.configService.get<string>('CHART_ALERT_PRICE_RUPEES') ??
         DEFAULT_PRICE_RUPEES,
     );
-    return Number.isFinite(raw) && raw >= 1 ? Math.floor(raw) : DEFAULT_PRICE_RUPEES;
+    return Number.isFinite(raw) && raw >= 1
+      ? Math.floor(raw)
+      : DEFAULT_PRICE_RUPEES;
   }
 
   private authHeaders(): Record<string, string> {
-    const apiKey = this.configService.get<string>('MUZOBOX_PROXY_API_KEY')?.trim();
+    const apiKey = this.configService
+      .get<string>('MUZOBOX_PROXY_API_KEY')
+      ?.trim();
     if (!apiKey) {
       throw new ServiceUnavailableException(
         'Payment system is not configured. Please try again later.',
@@ -118,9 +148,11 @@ export class ChartAlertPaymentsService {
   /**
    * Create a pending payment record and a Muzobox hosted payment link.
    * The frontend redirects the customer to `payUrl`; after payment Muzobox
-   * sends them back to lastberth.com/chart-alert/payment-complete?ref=…
+   * sends them back to {frontend}/chart-alert/payment-complete?ref=…
    */
-  async createPaymentLink(input: ChartAlertJourneyInput): Promise<PaymentLinkResult> {
+  async createPaymentLink(
+    input: ChartAlertJourneyInput,
+  ): Promise<PaymentLinkResult> {
     const amount = this.priceRupees;
     // Fail fast when the proxy key is missing so we don't leave junk FAILED rows.
     const headers = this.authHeaders();
@@ -150,7 +182,7 @@ export class ChartAlertPaymentsService {
         'proxy-payments/create-link',
         {
           amount,
-          redirectUri: `chart-alert/payment-complete?ref=${record.id}`,
+          redirectUri: `${this.frontendUrl}/chart-alert/payment-complete?ref=${record.id}`,
           referenceId: record.id,
           callbackUrl: `${this.publicApiUrl}/api/chart-alert-payments/callback`,
           description: `Chart alert ${input.trainNumber} ${input.fromStationCode}->${input.toStationCode || 'ANY'} ${input.journeyDate}`,
@@ -160,18 +192,22 @@ export class ChartAlertPaymentsService {
         { headers },
       );
 
-      const payUrl = res.data?.payUrl;
-      if (!res.data?.id || !payUrl) {
+      // Muzobox field names vary across versions — accept camelCase/snake_case.
+      const body = res.data ?? {};
+      const muzoboxId =
+        body.id ?? body.paymentId ?? body.payment_id ?? undefined;
+      const payUrl = body.payUrl ?? body.pay_url ?? body.payLink ?? undefined;
+      if (!muzoboxId || !payUrl) {
         throw new Error('Invalid response from payment proxy');
       }
 
       await this.prisma.chartAlertPayment.update({
         where: { id: record.id },
-        data: { muzoboxPaymentId: res.data.id, payUrl },
+        data: { muzoboxPaymentId: muzoboxId, payUrl },
       });
 
       this.logger.log(
-        `Created chart-alert payment ref=${record.id} muzobox=${res.data.id} for ${input.trainNumber}`,
+        `Created chart-alert payment ref=${record.id} muzobox=${muzoboxId} for ${input.trainNumber}`,
       );
       return { ref: record.id, payUrl, amount };
     } catch (err) {
@@ -205,13 +241,15 @@ export class ChartAlertPaymentsService {
    */
   async handleCallback(body: {
     paymentId?: string;
+    payment_id?: string;
     status?: string;
     referenceId?: string;
+    reference_id?: string;
     razorpay_payment_id?: string;
     razorpay_order_id?: string;
   }): Promise<{ received: boolean }> {
-    const ref = body?.referenceId;
-    const muzoboxId = body?.paymentId;
+    const ref = body?.referenceId ?? body?.reference_id;
+    const muzoboxId = body?.paymentId ?? body?.payment_id;
     const record = ref
       ? await this.prisma.chartAlertPayment.findUnique({ where: { id: ref } })
       : muzoboxId
@@ -230,83 +268,170 @@ export class ChartAlertPaymentsService {
   }
 
   private async findOrThrow(ref: string): Promise<ChartAlertPayment> {
+    const id = String(ref ?? '').trim();
+    if (!id) throw new NotFoundException('Payment not found');
     const record = await this.prisma.chartAlertPayment.findUnique({
-      where: { id: ref },
+      where: { id },
     });
     if (!record) throw new NotFoundException('Payment not found');
     return record;
   }
 
+  private static normalizeRemoteStatus(
+    status: unknown,
+  ): 'paid' | 'failed' | 'pending' {
+    const s = String(status ?? '')
+      .trim()
+      .toLowerCase();
+    if (['paid', 'success', 'succeeded', 'completed', 'captured'].includes(s))
+      return 'paid';
+    if (['failed', 'failure', 'cancelled', 'canceled', 'expired'].includes(s))
+      return 'failed';
+    return 'pending';
+  }
+
+  private amountsMatch(expectedRupees: number, remoteAmount: unknown): boolean {
+    const n = Number(remoteAmount);
+    if (!Number.isFinite(n)) return false;
+    // Accept exact rupees, or paise (₹5 → 500) if the proxy reports subunits.
+    return n === expectedRupees || n === expectedRupees * 100;
+  }
+
   /**
    * Idempotent fulfilment: if Muzobox reports PAID, mark our record PAID and
    * queue the journey monitoring exactly once.
+   *
+   * Concurrency: `journeyRequestId` is the idempotency key claimed with an
+   * atomic `updateMany(where: { journeyRequestId: null })` — only the winner
+   * queues. `PAID` without a `journeyRequestId` means queueing previously
+   * failed, so the next status check retries instead of reporting false success.
    */
-  private async confirmIfPaid(record: ChartAlertPayment): Promise<ChartAlertPayment> {
-    if (record.status === 'PAID') return record;
+  private async confirmIfPaid(
+    record: ChartAlertPayment,
+  ): Promise<ChartAlertPayment> {
+    // Fully fulfilled already — fast path.
+    if (record.status === 'PAID' && record.journeyRequestId) return record;
+    if (record.status === 'FAILED' && !record.muzoboxPaymentId) return record;
     if (!record.muzoboxPaymentId) return record;
 
     let remote: MuzoboxStatusResponse;
     try {
+      // The status API requires the proxy key — without it every check 401s
+      // and payments stay pending forever.
       const res = await this.client.get<MuzoboxStatusResponse>(
         `proxy-payments/${record.muzoboxPaymentId}/status`,
+        { headers: this.authHeaders() },
       );
-      remote = res.data;
+      remote = res.data ?? {};
     } catch (err) {
+      if (err instanceof ServiceUnavailableException) throw err;
       this.logger.warn(
         `Muzobox status check failed for ref=${record.id}: ${err instanceof Error ? err.message : String(err)}`,
       );
       return record;
     }
 
-    if (remote?.status === 'failed') {
+    const normalized = ChartAlertPaymentsService.normalizeRemoteStatus(
+      remote?.status,
+    );
+    if (normalized === 'failed') {
+      if (record.status === 'FAILED') return record;
       return this.prisma.chartAlertPayment.update({
         where: { id: record.id },
         data: { status: 'FAILED' },
       });
     }
-    if (remote?.status !== 'paid') return record;
-    if (remote.amount !== record.amount) {
+    if (normalized !== 'paid') return record;
+    if (!this.amountsMatch(record.amount, remote.amount)) {
       this.logger.warn(
-        `Amount mismatch for ref=${record.id}: expected ₹${record.amount}, proxy reports ₹${remote.amount}`,
+        `Amount mismatch for ref=${record.id}: expected ₹${record.amount}, proxy reports ₹${String(remote.amount)}`,
       );
     }
 
-    const journeyRequestId = randomUUID();
-    const payload = record.journeyPayload as ChartAlertJourneyInput | null;
-    if (payload) {
-      try {
-        // Empty toStationCode = chart-prepared-only alert: skip route/IRCTC
-        // validation (which requires a destination) like the journey endpoint does.
-        if (!payload.toStationCode) {
-          await this.journeyTask.queueChartPreparedMonitoring(payload, journeyRequestId);
-        } else {
-          await this.journeyTask.queueJourneyMonitoring(payload, journeyRequestId);
-        }
-        this.logger.log(
-          `Journey monitoring queued for paid ref=${record.id} jid=${journeyRequestId}`,
-        );
-      } catch (err) {
-        // Payment succeeded; journey creation is best-effort and retried via status page.
-        this.logger.error(
-          `Failed to queue journey monitoring for paid ref=${record.id}: ${err instanceof Error ? err.message : String(err)}`,
-        );
+    const razorpayPaymentId =
+      remote.razorpayPaymentId ?? remote.razorpay_payment_id ?? undefined;
+    const razorpayOrderId =
+      remote.razorpayOrderId ?? remote.razorpay_order_id ?? undefined;
+
+    // Claim the fulfilment: only one worker wins the null → jid transition.
+    const journeyRequestId = record.journeyRequestId ?? randomUUID();
+    if (!record.journeyRequestId) {
+      const claimed = await this.prisma.chartAlertPayment.updateMany({
+        where: { id: record.id, journeyRequestId: null },
+        data: {
+          status: 'PAID',
+          razorpayPaymentId,
+          razorpayOrderId,
+          journeyRequestId,
+          paidAt: new Date(),
+        },
+      });
+      if (claimed.count === 0) {
+        // Lost the race — re-read the winner's row instead of queueing twice.
+        const winner = await this.prisma.chartAlertPayment.findUnique({
+          where: { id: record.id },
+        });
+        return winner ?? record;
       }
     } else {
+      await this.prisma.chartAlertPayment.update({
+        where: { id: record.id },
+        data: {
+          status: 'PAID',
+          razorpayPaymentId,
+          razorpayOrderId,
+          paidAt: record.paidAt ?? new Date(),
+        },
+      });
+    }
+
+    const payload = record.journeyPayload as ChartAlertJourneyInput | null;
+    if (!payload) {
       this.logger.warn(
         `Payment confirmed for ref=${record.id} but journeyPayload is missing`,
       );
+      // Release the claim so a repaired payload can be retried; the row stays
+      // PAID so money is never double-counted.
+      await this.prisma.chartAlertPayment.update({
+        where: { id: record.id },
+        data: { journeyRequestId: null },
+      });
+      const reread = await this.prisma.chartAlertPayment.findUnique({
+        where: { id: record.id },
+      });
+      return reread ?? record;
     }
 
-    return this.prisma.chartAlertPayment.update({
+    // Empty toStationCode = chart-prepared-only alert: skip route/IRCTC
+    // validation (which requires a destination) like the journey endpoint does.
+    const queued = !payload.toStationCode
+      ? await this.journeyTask.queueChartPreparedMonitoring(
+          payload,
+          journeyRequestId,
+        )
+      : await this.journeyTask.queueJourneyMonitoring(
+          payload,
+          journeyRequestId,
+        );
+
+    if (!queued) {
+      this.logger.error(
+        `Journey queueing failed for paid ref=${record.id} jid=${journeyRequestId}; releasing claim for retry`,
+      );
+      await this.prisma.chartAlertPayment.update({
+        where: { id: record.id },
+        data: { journeyRequestId: null },
+      });
+    } else {
+      this.logger.log(
+        `Journey monitoring queued for paid ref=${record.id} jid=${journeyRequestId}`,
+      );
+    }
+
+    const final = await this.prisma.chartAlertPayment.findUnique({
       where: { id: record.id },
-      data: {
-        status: 'PAID',
-        razorpayPaymentId: remote.razorpayPaymentId ?? undefined,
-        razorpayOrderId: remote.razorpayOrderId ?? undefined,
-        journeyRequestId,
-        paidAt: new Date(),
-      },
     });
+    return final ?? record;
   }
 
   private toConfirmResult(record: ChartAlertPayment): PaymentConfirmResult {
@@ -319,7 +444,8 @@ export class ChartAlertPaymentsService {
             ? 'failed'
             : 'pending',
       ref: record.id,
-      journeyCreated: record.status === 'PAID' && Boolean(record.journeyRequestId),
+      journeyCreated:
+        record.status === 'PAID' && Boolean(record.journeyRequestId),
       journey: payload
         ? {
             trainNumber: payload.trainNumber,

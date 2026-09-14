@@ -38,6 +38,16 @@ export function PaymentCompleteClient() {
     try {
       const res = await fetchChartAlertPaymentStatus(ref);
       setJourney(res.journey);
+      // journeyCreated=false means payment landed but alert queueing failed —
+      // each status check retries the queue, so keep the user on refresh
+      // instead of reporting false success.
+      if (res.status === "paid" && !res.journeyCreated) {
+        setStatus("pending");
+        setError(
+          "Payment received — activating your alert. Tap refresh to check again.",
+        );
+        return;
+      }
       if (res.status === "paid") {
         setStatus("paid");
         if (!trackedRef.current) {
@@ -134,8 +144,8 @@ export function PaymentCompleteClient() {
               Payment not confirmed yet
             </h1>
             <p className="mt-2 text-sm text-slate-600">
-              If you just paid, confirmation can take a few seconds. Tap
-              refresh to check again.
+              {error ??
+                "If you just paid, confirmation can take a few seconds. Tap refresh to check again."}
             </p>
             <button
               type="button"

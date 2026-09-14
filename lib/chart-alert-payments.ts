@@ -2,9 +2,11 @@ import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 
 /** Amount charged per chart-alert subscription (display only; backend enforces). */
-export const CHART_ALERT_PRICE_RUPEES = Number(
-  process.env.NEXT_PUBLIC_CHART_ALERT_PRICE_RUPEES ?? 5,
-);
+const parsedPrice = Number(process.env.NEXT_PUBLIC_CHART_ALERT_PRICE_RUPEES);
+export const CHART_ALERT_PRICE_RUPEES =
+  Number.isFinite(parsedPrice) && parsedPrice >= 1
+    ? Math.floor(parsedPrice)
+    : 5;
 
 export interface ChartAlertPaymentCreateInput {
   trainNumber: string;
@@ -98,30 +100,36 @@ export function getChartAlertErrorMessage(
 ): string {
   const e = err as {
     response?: {
-      data?: { message?: string; errors?: Array<{ message?: string }> };
+      data?: {
+        message?: string | string[];
+        error?: string;
+        errors?: Array<{ message?: string }>;
+      };
     };
     message?: string;
   };
-  const msg =
-    e?.response?.data?.errors?.[0]?.message ||
-    e?.response?.data?.message ||
-    (typeof e?.message === "string" && e.message) ||
+  const raw =
+    e?.response?.data?.errors?.[0]?.message ??
+    (Array.isArray(e?.response?.data?.message)
+      ? e.response.data.message[0]
+      : e?.response?.data?.message) ??
+    e?.response?.data?.error ??
+    (typeof e?.message === "string" && e.message) ??
     fallback;
-  return typeof msg === "string" ? msg : JSON.stringify(msg);
+  return typeof raw === "string" ? raw : JSON.stringify(raw);
 }
 
 export async function fetchChartAlertPaymentStatus(
   ref: string,
 ): Promise<ChartAlertPaymentStatus> {
-  const res = await apiClient.get<
-    ChartAlertPaymentStatus | { error?: string; status?: string }
-  >(`/api/chart-alert-payments/status/${encodeURIComponent(ref)}`);
-  const data = res.data as ChartAlertPaymentStatus & { error?: string };
-  if (!data || (typeof data.status !== "string" && !data.error)) {
+  // Backend throws proper HTTP errors (400/404/503) — axios rejects and the
+  // caller's catch maps it via getChartAlertErrorMessage. Only validate shape here.
+  const res = await apiClient.get<ChartAlertPaymentStatus>(
+    `/api/chart-alert-payments/status/${encodeURIComponent(ref)}`,
+  );
+  const data = res.data as ChartAlertPaymentStatus;
+  if (!data || typeof data.status !== "string") {
     throw new Error("Could not check payment status. Please try again.");
   }
-  if (data.error && data.status !== "paid" && data.status !== "pending" && data.status !== "failed") {
-    throw new Error(data.error);
-  }
-  return data as ChartAlertPaymentStatus;
+  return data;
 }

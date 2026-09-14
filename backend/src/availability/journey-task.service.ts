@@ -752,14 +752,14 @@ export class JourneyTaskService {
       trainStartDate?: string;
     },
     journeyRequestId?: string,
-  ): Promise<void> {
+  ): Promise<boolean> {
     try {
       const validation = await this.validateJourneyForMonitoring(params);
       if (!validation.valid) {
         this.logger.warn(
           `[journey/queue] Validation failed for train=${params.trainNumber} from=${params.fromStationCode} to=${params.toStationCode} jid=${journeyRequestId}: ${JSON.stringify(validation.errors)}`,
         );
-        return;
+        return false;
       }
 
       const isDuplicate = await this.hasDuplicateAlert({
@@ -774,7 +774,9 @@ export class JourneyTaskService {
         this.logger.log(
           `[journey/queue] Duplicate alert request detected for train=${params.trainNumber} from=${params.fromStationCode} to=${params.toStationCode} date=${params.journeyDate}; skipping creation`,
         );
-        return;
+        // Duplicate means the alert already exists — treat as fulfilled so
+        // paid flows don't report failure for an already-monitored journey.
+        return true;
       }
 
       const result = await this.createJourneyTasks(params, {
@@ -802,10 +804,12 @@ export class JourneyTaskService {
             err instanceof Error ? err.stack || err.message : String(err),
           ),
         );
+      return true;
     } catch (err) {
       this.logger.error(
         `[journey/queue] Failed to process background journey monitoring for train=${params.trainNumber} jid=${journeyRequestId}: ${err instanceof Error ? err.stack || err.message : String(err)}`,
       );
+      return false;
     }
   }
 
@@ -830,7 +834,7 @@ export class JourneyTaskService {
       trainStartDate?: string;
     },
     journeyRequestId?: string,
-  ): Promise<void> {
+  ): Promise<boolean> {
     if (params.toStationCode) {
       this.logger.warn(
         `[journey/queue-chart-prepared] called with non-empty toStationCode=${params.toStationCode}; falling through to queueJourneyMonitoring`,
@@ -845,7 +849,7 @@ export class JourneyTaskService {
       this.logger.warn(
         `[journey/queue-chart-prepared] invalid journeyDate=${params.journeyDate}; skipping`,
       );
-      return;
+      return false;
     }
 
     const isDuplicate = await this.hasDuplicateAlert({
@@ -860,7 +864,7 @@ export class JourneyTaskService {
       this.logger.log(
         `[journey/queue-chart-prepared] Duplicate alert request detected for train=${trainNumber} from=${fromCode} date=${jYmd}; skipping creation`,
       );
-      return;
+      return true;
     }
 
     // Resolve just the schedule + boarding-station chart time. We bypass
@@ -876,7 +880,7 @@ export class JourneyTaskService {
       this.logger.warn(
         `[journey/queue-chart-prepared] schedule unavailable for train=${trainNumber} station=${fromCode}: ${scheduleResult.ok ? 'empty stationList' : scheduleResult.reason}`,
       );
-      return;
+      return false;
     }
     const schedule = scheduleResult.schedule;
     const boardingStn = schedule.stationList.find(
@@ -889,7 +893,7 @@ export class JourneyTaskService {
       this.logger.warn(
         `[journey/queue-chart-prepared] boarding station ${fromCode} not found on train=${trainNumber} route`,
       );
-      return;
+      return false;
     }
     const dayCount = stationDayCount(boardingStn);
     const startYmd = params.trainStartDate
@@ -1086,6 +1090,7 @@ export class JourneyTaskService {
           err instanceof Error ? err.stack || err.message : String(err),
         ),
       );
+    return true;
   }
 
   private async asyncHydrateChartTimeAndUpdateTasks(
