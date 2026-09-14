@@ -1,4 +1,3 @@
-import { useMutation } from '@tanstack/react-query';
 import { useState, useCallback, useRef, useEffect } from 'react';
 import type { CreateQrPaymentInput, QrPaymentResult, PaymentStatusResult } from '@/types';
 
@@ -21,33 +20,6 @@ export function useChartAlertPayment(): UseChartAlertPaymentReturn {
   const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const isPollingRef = useRef(false);
   const currentQrCodeIdRef = useRef<string | null>(null);
-
-  const createPaymentMutation = useMutation<QrPaymentResult, Error, CreateQrPaymentInput>({
-    mutationFn: async (input) => {
-      const res = await fetch('/api/razorpay/qr-code', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(input),
-      });
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || 'Failed to create payment');
-      }
-      return res.json();
-    },
-    onSuccess: (data) => {
-      setQrCodeId(data.qr_code_id);
-      setQrImage(data.qr_image);
-      currentQrCodeIdRef.current = data.qr_code_id;
-      setStatus('pending');
-      setError(null);
-    },
-    onError: (err) => {
-      setError(err.message);
-      setStatus('failed');
-      setIsLoading(false);
-    },
-  });
 
   const checkPaymentStatus = useCallback(async (id: string): Promise<PaymentStatusResult> => {
     const res = await fetch(`/api/razorpay/payment-status/${id}`);
@@ -108,11 +80,32 @@ export function useChartAlertPayment(): UseChartAlertPaymentReturn {
     }
   }, [status, stopPolling]);
 
-  const initiatePayment = useCallback((input: CreateQrPaymentInput) => {
+  const initiatePayment = useCallback(async (input: CreateQrPaymentInput) => {
     setIsLoading(true);
     setError(null);
-    createPaymentMutation.mutate(input);
-  }, [createPaymentMutation]);
+    try {
+      const res = await fetch('/api/razorpay/qr-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(input),
+      });
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || 'Failed to create payment');
+      }
+      const data: QrPaymentResult = await res.json();
+      setQrCodeId(data.qr_code_id);
+      setQrImage(data.qr_image);
+      currentQrCodeIdRef.current = data.qr_code_id;
+      setStatus('pending');
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to create payment');
+      setStatus('failed');
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   const reset = useCallback(() => {
     stopPolling();
@@ -135,7 +128,7 @@ export function useChartAlertPayment(): UseChartAlertPaymentReturn {
     qrCodeId,
     qrImage,
     status,
-    isLoading: isLoading || createPaymentMutation.isPending,
+    isLoading,
     error,
     initiatePayment,
     reset,
