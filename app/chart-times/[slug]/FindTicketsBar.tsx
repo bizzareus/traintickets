@@ -79,6 +79,7 @@ export default function FindTicketsBar({
     [journeyDate],
   );
 
+  // Performance Optimization: Direct link to "/" instead of "/search" eliminates unnecessary 308 redirect roundtrip.
   const href = useMemo(() => {
     const qs = new URLSearchParams({
       from: fromCode,
@@ -87,7 +88,7 @@ export default function FindTicketsBar({
       toName,
       date: resolvedDate,
     });
-    return `/search?${qs.toString()}`;
+    return `/?${qs.toString()}`;
   }, [fromCode, toCode, fromName, toName, resolvedDate]);
 
   if (!visible) return null;

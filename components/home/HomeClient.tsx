@@ -808,6 +808,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     }
   }, [fromSt, toSt, journeyDate, acOnly, hasSearched]);
 
+  // Performance & UX Optimization: Reset scroll position to top on auto-search trigger when arriving from scrolled pages (e.g. chart-times promo popup) to eliminate footer landing and layout flicker.
   useEffect(() => {
     if (
       fromSt &&
@@ -817,6 +818,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       !autoSearchTriggered.current
     ) {
       autoSearchTriggered.current = true;
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      }
       void runSearch();
     }
   }, [fromSt, toSt, journeyDate, hasUrlParams, runSearch]);
