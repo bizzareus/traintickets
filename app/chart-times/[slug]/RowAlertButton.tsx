@@ -494,11 +494,11 @@ export default function RowAlertButton({
                     ? "Set alert free (admin)"
                     : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & set alert`}
               </button>
-              <p className="text-[11px] leading-relaxed text-slate-500">
-                {adminFree
-                  ? "Admin mode — no charge, the alert is created directly."
-                  : `One-time ₹${CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay securely without leaving this page — the alert activates once payment is verified.`}
-              </p>
+              {adminFree && (
+                <p className="text-[11px] leading-relaxed text-slate-500">
+                  Admin mode — no charge, the alert is created directly.
+                </p>
+              )}
               <ChartAlertTrustFooter />
             </form>
             )}

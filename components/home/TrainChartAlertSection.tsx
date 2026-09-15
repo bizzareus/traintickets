@@ -388,11 +388,11 @@ export function TrainChartAlertSection({
                       </>
                     )}
                   </button>
-                  <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
-                    {adminFree
-                      ? "Admin mode — no charge, the alert is created directly."
-                      : `One-time ₹${CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay securely without leaving this page — the alert activates once payment is verified.`}
-                  </p>
+                  {adminFree && (
+                    <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+                      Admin mode — no charge, the alert is created directly.
+                    </p>
+                  )}
                 </div>
               </form>
             )}
