@@ -278,7 +278,7 @@ export default function ChartTimeAlertCTA({
             Get a chart preparation alert
           </h2>
           <p className="mt-1 text-sm text-slate-600">
-            We&apos;ll provide you with {stationCode} <>{" "}
+            We&apos;ll provide you with {stationCode} &lt;&gt;{" "}
             {toStationCode || "your destination"} new tickets that come up when
             the chart is prepared — with a 100% automated refund guarantee if
             no full ticket is available. One-time charge of ₹
@@ -314,7 +314,7 @@ export default function ChartTimeAlertCTA({
         Chart preparation alert for {trainName} ({trainNumber})
       </h2>
       <p className="mt-1 text-sm text-slate-600">
-        We&apos;ll provide you with new {stationCode} <>{" "}
+        We&apos;ll provide you with new {stationCode} &lt;&gt;{" "}
         {toStationCode || "any destination"} tickets that come up when the
         chart is prepared at your boarding station — with a 100% automated
         refund guarantee if no full ticket is available.

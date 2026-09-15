@@ -313,7 +313,7 @@ export default function RowAlertButton({
             </div>
 
             <p className="mb-3 text-xs text-slate-600">
-              We&apos;ll provide you with new {stationCode} <>{" "}
+              We&apos;ll provide you with new {stationCode} &lt;&gt;{" "}
               {toStationCode || "any destination"} tickets that come up when
               the chart is prepared at{" "}
               <span className="font-semibold text-slate-800">
