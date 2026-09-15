@@ -30,8 +30,18 @@ type Alert = {
     amount: number;
     status: string;
     paidAt: string | null;
+    refund?: {
+      status: string;
+      amount: number | null;
+      razorpayRefundId: string | null;
+      initiatedAt: string | null;
+      refundedAt: string | null;
+      error: string | null;
+    } | null;
   } | null;
 };
+
+const PW_STORAGE_KEY = "irctc_keeper_admin_password";
 
 export default function AdminAlertsPage() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
@@ -77,6 +87,55 @@ export default function AdminAlertsPage() {
       console.error("Failed to trigger alert", err);
       alert("Failed to trigger alert");
     }
+  }
+
+  const [refundingId, setRefundingId] = useState<string | null>(null);
+
+  function adminAuthHeaders(): Record<string, string> {
+    if (typeof window === "undefined") return {};
+    const pw = window.localStorage.getItem(PW_STORAGE_KEY) ?? "";
+    return pw ? { "x-admin-password": pw } : {};
+  }
+
+  async function refundAlert(item: Alert) {
+    const refundStatus = item.payment?.refund?.status?.toUpperCase() ?? "NONE";
+    if (refundStatus === "SUCCEEDED" || refundStatus === "INITIATED") return;
+    if (
+      !confirm(
+        `Initiate refund of ₹${item.payment?.amount} for ${item.trainNumber} (${item.payment?.ref})?`
+      )
+    )
+      return;
+    try {
+      setRefundingId(item.id);
+      const res = await apiClient.post<{ success: boolean; message?: string }>(
+        `/api/availability/admin/alerts/${item.id}/refund`,
+        {},
+        { headers: adminAuthHeaders() }
+      );
+      if (!res.data.success) {
+        window.alert(res.data.message ?? "Refund attempt failed");
+      }
+      fetchAlerts();
+    } catch (err) {
+      console.error("Failed to initiate refund", err);
+      const ax = err as {
+        response?: { data?: { message?: string; error?: string } };
+      };
+      window.alert(
+        ax.response?.data?.message ??
+          ax.response?.data?.error ??
+          "Failed to initiate refund. Save the admin password (same as Refunds page) or re-unlock the admin gate, then retry."
+      );
+    } finally {
+      setRefundingId(null);
+    }
+  }
+
+  function canRefund(item: Alert): boolean {
+    if (item.payment?.status?.toUpperCase() !== "PAID") return false;
+    const s = item.payment?.refund?.status?.toUpperCase() ?? "NONE";
+    return s !== "SUCCEEDED" && s !== "INITIATED";
   }
 
   const sortedAlerts = [...alerts].sort((a, b) => {
@@ -272,6 +331,26 @@ export default function AdminAlertsPage() {
                                 {moment.utc(alert.payment.paidAt).utcOffset("+05:30").format("DD MMM, HH:mm")}
                               </span>
                             )}
+                            {alert.payment.refund && alert.payment.refund.status !== "NONE" && (
+                              <span
+                                className={`inline-flex w-fit items-center rounded-lg border px-2 py-0.5 text-[10px] font-semibold ${getStatusColor(
+                                  alert.payment.refund.status === "SUCCEEDED"
+                                    ? "completed"
+                                    : alert.payment.refund.status === "FAILED"
+                                      ? "failed"
+                                      : alert.payment.refund.status === "INITIATED"
+                                        ? "running"
+                                        : "pending"
+                                )}`}
+                                title={
+                                  alert.payment.refund.error ??
+                                  alert.payment.refund.razorpayRefundId ??
+                                  undefined
+                                }
+                              >
+                                Refund · {alert.payment.refund.status}
+                              </span>
+                            )}
                           </div>
                         ) : (
                           <span className="inline-flex items-center rounded-lg border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-500">
@@ -379,15 +458,26 @@ export default function AdminAlertsPage() {
                         )}
                       </td>
                       <td className="px-6 py-4">
-                        {(alert.status === "failed" ||
-                          (alert.status === "pending" && moment().isAfter(moment(alert.chartAt)))) && (
-                          <button
-                            onClick={() => triggerAlert(alert.id)}
-                            className="rounded bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-600 hover:bg-indigo-100"
-                          >
-                            Trigger
-                          </button>
-                        )}
+                        <div className="flex flex-col items-start gap-1">
+                          {(alert.status === "failed" ||
+                            (alert.status === "pending" && moment().isAfter(moment(alert.chartAt)))) && (
+                            <button
+                              onClick={() => triggerAlert(alert.id)}
+                              className="rounded bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-600 hover:bg-indigo-100"
+                            >
+                              Trigger
+                            </button>
+                          )}
+                          {canRefund(alert) && (
+                            <button
+                              onClick={() => refundAlert(alert)}
+                              disabled={refundingId === alert.id}
+                              className="rounded bg-amber-50 px-2 py-1 text-xs font-medium text-amber-700 hover:bg-amber-100 disabled:opacity-50"
+                            >
+                              {refundingId === alert.id ? "Refunding..." : "Refund"}
+                            </button>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))

@@ -7,6 +7,7 @@ import {
   HttpCode,
   HttpException,
   HttpStatus,
+  NotFoundException,
   Optional,
   Param,
   Post,
@@ -23,6 +24,7 @@ import { NotificationService } from '../notification/notification.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { isValidIndianMobile, isValidEmail } from '../common/validation.utils';
 import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
+import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-refunds.service';
 
 type NormalizedJourneyCreate = {
   trainNumber: string;
@@ -115,6 +117,7 @@ export class AvailabilityController {
     private prisma: PrismaService,
     private config: ConfigService,
     @Optional() private notification?: NotificationService,
+    @Optional() private refunds?: ChartAlertRefundsService,
   ) {}
 
   /**
@@ -554,6 +557,12 @@ export class AvailabilityController {
             status: true,
             paidAt: true,
             journeyRequestId: true,
+            refundStatus: true,
+            refundAmount: true,
+            razorpayRefundId: true,
+            refundInitiatedAt: true,
+            refundedAt: true,
+            refundError: true,
           },
         })
       : [];
@@ -591,6 +600,15 @@ export class AvailabilityController {
                 amount: payment.amount,
                 status: payment.status,
                 paidAt: payment.paidAt?.toISOString?.() ?? null,
+                refund: {
+                  status: payment.refundStatus ?? 'NONE',
+                  amount: payment.refundAmount ?? null,
+                  razorpayRefundId: payment.razorpayRefundId ?? null,
+                  initiatedAt:
+                    payment.refundInitiatedAt?.toISOString?.() ?? null,
+                  refundedAt: payment.refundedAt?.toISOString?.() ?? null,
+                  error: payment.refundError ?? null,
+                },
               }
             : null,
         };
@@ -641,6 +659,55 @@ export class AvailabilityController {
         `Failed to trigger alert: ${message}`,
       );
     }
+  }
+
+  /**
+   * Manual refund for a PAID chart-alert payment behind an admin alert row.
+   * Force-bypasses the auto-refund guardrails (ENABLE_AUTO_REFUND flag and
+   * chart-prepared-only exclusion) — an admin explicitly asked for it.
+   * Idempotent: replays return the current refund state without double-charge.
+   */
+  @Post('admin/alerts/:id/refund')
+  async refundAlert(
+    @Param('id') id: string,
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Body() body?: { reason?: string },
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
+    if (!this.refunds) {
+      throw new ServiceUnavailableException('Refund service is not available');
+    }
+    const taskId = String(id ?? '').trim();
+    if (!taskId) throw new BadRequestException('Alert id is required');
+    const task = await this.prisma.chartTimeAvailabilityTask.findUnique({
+      where: { id: taskId },
+      select: { id: true, journeyRequestId: true },
+    });
+    if (!task) throw new NotFoundException('Alert not found');
+    const reason =
+      String(body?.reason ?? '').trim().slice(0, 500) ||
+      `admin_manual_refund_${taskId}`;
+    const refund = await this.refunds.initiateRefundForJourney(
+      task.journeyRequestId,
+      reason,
+      { force: true },
+    );
+    if (!refund.attempted) {
+      throw new BadRequestException(
+        'No refundable PAID payment found for this alert.',
+      );
+    }
+    return {
+      success: refund.outcome === 'succeeded' || refund.outcome === 'pending',
+      message:
+        refund.outcome === 'succeeded'
+          ? 'Refund initiated successfully'
+          : refund.outcome === 'pending'
+            ? 'Refund is already in progress'
+            : 'Refund attempt failed — see payment refund status',
+      refund,
+    };
   }
 
   @Post('admin/alerts/:id/resend-notification')

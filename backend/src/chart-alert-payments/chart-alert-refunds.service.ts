@@ -89,14 +89,20 @@ export class ChartAlertRefundsService {
    * Attempt a refund for the PAID payment behind a journey. Idempotent via an
    * atomic NONE/FAILED → INITIATED claim; only the winner calls Muzobox.
    * Never throws — returns a RefundInfo suitable for notification templates.
+   *
+   * When `opts.force` is true (manual admin refund), the ENABLE_AUTO_REFUND
+   * flag and the chart-prepared-only exclusion are bypassed so any PAID
+   * payment can be refunded on demand.
    */
   async initiateRefundForJourney(
     journeyRequestId: string,
     reason: string,
+    opts?: { force?: boolean },
   ): Promise<RefundInfo> {
     const jid = String(journeyRequestId ?? '').trim();
     if (!jid) return { attempted: false, outcome: 'skipped' };
-    if (!this.autoRefundEnabled)
+    const forced = opts?.force === true;
+    if (!forced && !this.autoRefundEnabled)
       return { attempted: false, outcome: 'skipped' };
 
     const record = await this.prisma.chartAlertPayment.findFirst({
@@ -105,7 +111,8 @@ export class ChartAlertRefundsService {
     if (!record) return { attempted: false, outcome: 'skipped' };
     // No-destination ("chart prepared only") alerts carry no end-to-end
     // availability promise, so they are excluded from auto-refunds.
-    if (await this.isChartPreparedOnlyAlert(jid, record)) {
+    // A forced (admin) refund bypasses this exclusion.
+    if (!forced && (await this.isChartPreparedOnlyAlert(jid, record))) {
       this.logger.log(
         `Refund skipped for jid=${jid}: no destination selected (chart-prepared-only alert)`,
       );
