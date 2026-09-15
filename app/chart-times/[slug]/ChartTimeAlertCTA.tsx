@@ -406,11 +406,10 @@ export default function ChartTimeAlertCTA({
         Chart preparation alert for {trainName} ({trainNumber})
       </h2>
       <p className="mt-1 text-sm text-slate-600">
-        Select your destination — when the chart is prepared at your boarding
-        station, we scan your full {stationCode} &lt;&gt;{" "}
-        {toStationCode || "…"} route for any ticket that opens up and notify
-        you instantly. If no ticket is available, you get a 100% automated
-        refund.
+        Get an alert when the chart is prepared at your boarding station, we
+        will alert you the time it was prepared and find you confirmed
+        tickets across the journey. If no ticket is available, you get a 100%
+        automated refund.
       </p>
 
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
