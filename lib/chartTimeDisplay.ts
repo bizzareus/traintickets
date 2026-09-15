@@ -57,10 +57,7 @@ function relativeDayLabel(offset: number): string {
  * Format a chart preparation time for display, returning "NA" when no time is set.
  * `journeyDateYmd` (the train's start/journey date) makes the output an absolute date.
  */
-export function formatChartPrep(  time: string | null | undefined,
-  dayOffset: number | null | undefined,
-  journeyDateYmd?: string | null,
-): string {
+export function formatChartPrep(
   time: string | null | undefined,
   dayOffset: number | null | undefined,
   journeyDateYmd?: string | null,
