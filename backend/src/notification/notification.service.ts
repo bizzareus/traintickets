@@ -12,6 +12,7 @@ import { ShortLinkService } from '../short-link/short-link.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import { WasenderProvider } from './whatsapp-providers/wasender.provider';
 import { WatiProvider } from './whatsapp-providers/wati.provider';
+import { Msg91Provider } from './whatsapp-providers/msg91.provider';
 import { WhatsAppProviderFactory } from './whatsapp-providers/whatsapp.provider-factory';
 import type { SendWhatsAppPayload } from './whatsapp-providers/whatsapp-provider.interface';
 import {
@@ -111,6 +112,7 @@ export class NotificationService {
         this.config,
         new WasenderProvider(this.config),
         new WatiProvider(this.config),
+        new Msg91Provider(this.config),
       );
 
     const payload: SendWhatsAppPayload = {
@@ -620,6 +622,15 @@ export class NotificationService {
             this.config.get<string>('WATI_TEMPLATE_CHART_ALERT') ||
             'subscription_alert',
           broadcastName: 'lastberth_chart_prepared_only',
+          parameters: [
+            { name: 'train_number', value: trainNumber },
+            { name: 'train_name', value: trainName || 'Express' },
+            { name: 'journey_date', value: journeyDateStr },
+            {
+              name: 'check_url',
+              value: whatsappCheckUrl || checkTicketsUrl,
+            },
+          ],
           skipFailureReport: true,
         });
         if (out.whatsappSent && this.deduplicationService) {

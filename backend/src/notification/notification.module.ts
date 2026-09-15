@@ -4,6 +4,7 @@ import { ChartTimeModule } from '../chart-time/chart-time.module';
 import { ShortLinkModule } from '../short-link/short-link.module';
 import { WasenderProvider } from './whatsapp-providers/wasender.provider';
 import { WatiProvider } from './whatsapp-providers/wati.provider';
+import { Msg91Provider } from './whatsapp-providers/msg91.provider';
 import { WhatsAppProviderFactory } from './whatsapp-providers/whatsapp.provider-factory';
 
 import { NotificationDeduplicationService } from './notification-deduplication.service';
@@ -16,6 +17,7 @@ import { NotificationUnsubscribeController } from './notification-unsubscribe.co
   providers: [
     WasenderProvider,
     WatiProvider,
+    Msg91Provider,
     WhatsAppProviderFactory,
     NotificationDeduplicationService,
     NotificationUnsubscribeService,
@@ -24,6 +26,7 @@ import { NotificationUnsubscribeController } from './notification-unsubscribe.co
   exports: [
     WasenderProvider,
     WatiProvider,
+    Msg91Provider,
     WhatsAppProviderFactory,
     NotificationDeduplicationService,
     NotificationUnsubscribeService,
