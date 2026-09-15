@@ -469,6 +469,12 @@ export type AnalyticsEvent =
         recipient: string;
       };
     }
+  | {
+      name: "admin_refund_status_changed";
+      properties: {
+        status: "RESOLVED" | "REJECTED";
+      };
+    }
   // Public unsubscribe page events
   | {
       name: "notification_unsubscribe_completed";

@@ -17,6 +17,7 @@ import {
   ChartAlertPaymentModal,
   type ChartAlertPaymentModalJourney,
 } from "@/components/payments/ChartAlertPaymentModal";
+import { ChartAlertSuccessBox } from "@/components/payments/ChartAlertSuccessBox";
 
 const DEFAULT_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -45,6 +46,8 @@ export function TrainChartAlertSection({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [subscribedJourney, setSubscribedJourney] =
+    useState<ChartAlertPaymentModalJourney | null>(null);
   const [payment, setPayment] = useState<{
     payUrl: string;
     ref: string;
@@ -175,40 +178,49 @@ export function TrainChartAlertSection({
 
   return (
     <>
-      {/* Right Side Vertical Alert Box on Train Card */}
-      <div
-        className={`flex h-full flex-col justify-between rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50/70 via-slate-50/50 to-white p-3.5 shadow-2xs transition-all hover:border-blue-200 hover:shadow-sm ${className}`}
-      >
-        <div>
-          <div className="flex items-center gap-1.5">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600/10 text-blue-600">
-              <BellRing className="h-3.5 w-3.5" />
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
-              Chart Alert
-            </span>
-            <span className="inline-flex items-center gap-0.5 rounded-full bg-blue-100/70 px-1.5 py-0.2 text-[9px] font-bold text-blue-700">
-              <Sparkles className="h-2.5 w-2.5 text-blue-600" />₹{CHART_ALERT_PRICE_RUPEES}
-            </span>
+      {/* Success replaces the fields box once the alert is set up */}
+      {subscribedJourney ? (
+        <ChartAlertSuccessBox
+          journey={subscribedJourney}
+          compact
+          className={`h-full ${className}`}
+        />
+      ) : (
+        <div
+          className={`flex h-full flex-col justify-between rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50/70 via-slate-50/50 to-white p-3.5 shadow-2xs transition-all hover:border-blue-200 hover:shadow-sm ${className}`}
+        >
+          <div>
+            <div className="flex items-center gap-1.5">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600/10 text-blue-600">
+                <BellRing className="h-3.5 w-3.5" />
+              </span>
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                Chart Alert
+              </span>
+              <span className="inline-flex items-center gap-0.5 rounded-full bg-blue-100/70 px-1.5 py-0.2 text-[9px] font-bold text-blue-700">
+                <Sparkles className="h-2.5 w-2.5 text-blue-600" />₹
+                {CHART_ALERT_PRICE_RUPEES}
+              </span>
+            </div>
+            <p className="mt-2 text-xs text-slate-600 leading-relaxed">
+              We&apos;ll provide you with {fromCode} &lt;&gt; {toCode} new
+              tickets that come up when the chart is prepared — with a 100%
+              automated refund guarantee if no full ticket is available.
+            </p>
           </div>
-          <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-            We&apos;ll provide you with {fromCode} &lt;&gt; {toCode} new
-            tickets that come up when the chart is prepared — with a 100%
-            automated refund guarantee if no full ticket is available.
-          </p>
-        </div>
 
-        <div className="mt-3.5">
-          <button
-            type="button"
-            onClick={handleOpenModal}
-            className="w-full inline-flex items-center justify-center gap-1.5 rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-bold text-blue-700 shadow-2xs hover:bg-blue-600 hover:border-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 active:scale-[0.98] transition-all touch-manipulation"
-          >
-            <BellRing className="h-3.5 w-3.5" />
-            Subscribe to Alert
-          </button>
+          <div className="mt-3.5">
+            <button
+              type="button"
+              onClick={handleOpenModal}
+              className="w-full inline-flex items-center justify-center gap-1.5 rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-bold text-blue-700 shadow-2xs hover:bg-blue-600 hover:border-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 active:scale-[0.98] transition-all touch-manipulation"
+            >
+              <BellRing className="h-3.5 w-3.5" />
+              Subscribe to Alert
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Subscription Modal */}
       {modalOpen && (
@@ -252,8 +264,13 @@ export function TrainChartAlertSection({
               </button>
             </div>
 
-            {/* Modal Body — paid flow redirects to Muzobox, so no success state */}
-            <form onSubmit={handleSubscribe} className="mt-4 space-y-4">
+            {/* Modal Body — success replaces fields once alert is set up */}
+            {subscribedJourney ? (
+              <div className="mt-4">
+                <ChartAlertSuccessBox journey={subscribedJourney} compact />
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="mt-4 space-y-4">
                 <div>
                   <label
                     htmlFor="alertClassSelect"
@@ -345,6 +362,7 @@ export function TrainChartAlertSection({
                   </p>
                 </div>
               </form>
+            )}
           </div>
         </div>
       )}
@@ -356,6 +374,10 @@ export function TrainChartAlertSection({
           paymentRef={payment.ref}
           journey={payment.journey}
           source="search_panel"
+          onPaid={(j) => {
+            setSubscribedJourney(j);
+            setModalOpen(false);
+          }}
         />
       )}
     </>

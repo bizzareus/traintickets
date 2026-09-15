@@ -18,6 +18,7 @@ import {
   ChartAlertPaymentModal,
   type ChartAlertPaymentModalJourney,
 } from "@/components/payments/ChartAlertPaymentModal";
+import { ChartAlertSuccessBox } from "@/components/payments/ChartAlertSuccessBox";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -203,6 +204,8 @@ export default function ChartTimeAlertCTA({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [subscribedJourney, setSubscribedJourney] =
+    useState<ChartAlertPaymentModalJourney | null>(null);
   const [payment, setPayment] = useState<{
     payUrl: string;
     ref: string;
@@ -305,6 +308,25 @@ export default function ChartTimeAlertCTA({
       setLoading(false);
     }
   };
+
+  if (subscribedJourney) {
+    return (
+      <>
+        <ChartAlertSuccessBox journey={subscribedJourney} />
+        {payment && (
+          <ChartAlertPaymentModal
+            open
+            onClose={() => setPayment(null)}
+            payUrl={payment.payUrl}
+            paymentRef={payment.ref}
+            journey={payment.journey}
+            source="page"
+            onPaid={(j) => setSubscribedJourney(j)}
+          />
+        )}
+      </>
+    );
+  }
 
   if (!expanded) {
     return (
@@ -477,6 +499,7 @@ export default function ChartTimeAlertCTA({
           paymentRef={payment.ref}
           journey={payment.journey}
           source="page"
+          onPaid={(j) => setSubscribedJourney(j)}
         />
       )}
       </div>

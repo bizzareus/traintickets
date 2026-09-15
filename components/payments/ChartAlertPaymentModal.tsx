@@ -27,6 +27,7 @@ interface ChartAlertPaymentModalProps {
   paymentRef: string;
   journey: ChartAlertPaymentModalJourney;
   source: "page" | "row" | "search_panel";
+  onPaid?: (journey: ChartAlertPaymentModalJourney) => void;
 }
 
 type ModalStatus = "paying" | "paid" | "failed";
@@ -47,6 +48,7 @@ export function ChartAlertPaymentModal({
   paymentRef,
   journey,
   source,
+  onPaid,
 }: ChartAlertPaymentModalProps) {
   const [status, setStatus] = useState<ModalStatus>("paying");
   const trackedRef = useRef(false);
@@ -60,6 +62,7 @@ export function ChartAlertPaymentModal({
         setStatus("paid");
         if (!trackedRef.current) {
           trackedRef.current = true;
+          onPaid?.(journey);
           trackAlertRequested({
             success: true,
             source: "chart_alert_payment",
@@ -90,7 +93,7 @@ export function ChartAlertPaymentModal({
     } catch {
       // Transient — keep polling; the user can close or retry via new tab.
     }
-  }, [paymentRef, journey]);
+  }, [paymentRef, journey, onPaid]);
 
   useEffect(() => {
     if (!open) return;
