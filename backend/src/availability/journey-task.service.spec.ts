@@ -429,6 +429,113 @@ describe('JourneyTaskService', () => {
         whatsappNotifiedAt: expect.any(Date),
       });
     });
+
+    it('attempts auto-refund when no end-to-end ticket is found with a destination', async () => {
+      const mockRefunds = {
+        initiateRefundForJourney: jest.fn().mockResolvedValue({
+          attempted: true,
+          outcome: 'succeeded',
+          amount: 5,
+        }),
+      };
+      (service as any).refundsService = mockRefunds;
+
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
+        id: 'task-refund',
+        journeyRequestId: 'req-refund',
+        trainNumber: '12734',
+        trainName: 'Narayanadri Sf',
+        fromStationCode: 'GNT',
+        toStationCode: 'TPTY',
+        stationCode: 'GNT',
+        chartAt: new Date(Date.now() - 3600_000),
+        journeyDate: new Date('2026-08-25'),
+        trainStartDate: new Date('2026-08-25'),
+        status: 'running',
+        retryCount: 0,
+      });
+      mockBookingV2.findAlternatePaths.mockResolvedValueOnce({
+        legs: [
+          {
+            segmentKind: 'waitlist',
+            travelClass: 'SL',
+            from: 'GNT',
+            to: 'TPTY',
+            isAvailable: false,
+          },
+        ],
+        trainNumber: '12734',
+      });
+      mockPrisma.journeyMonitoringRequest.findUnique.mockResolvedValue({
+        id: 'req-refund',
+        classCode: 'SL',
+      });
+      mockBookingV2.findBestTrains.mockResolvedValue({ results: [] });
+      mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
+        email: 'refund@example.com',
+        mobile: '919999999999',
+      });
+
+      await service.runTask('task-refund', true);
+
+      expect(mockRefunds.initiateRefundForJourney).toHaveBeenCalledTimes(1);
+      expect(mockRefunds.initiateRefundForJourney).toHaveBeenCalledWith(
+        'req-refund',
+        expect.stringContaining('12734'),
+      );
+      expect(mockNotification.notifyUser).toHaveBeenCalledTimes(1);
+    });
+
+    it('never attempts auto-refund when the destination is blank, even with no tickets', async () => {
+      const mockRefunds = {
+        initiateRefundForJourney: jest.fn(),
+      };
+      (service as any).refundsService = mockRefunds;
+
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
+        id: 'task-blank-dest',
+        journeyRequestId: 'req-blank-dest',
+        trainNumber: '12734',
+        trainName: 'Narayanadri Sf',
+        fromStationCode: 'GNT',
+        toStationCode: ' ',
+        stationCode: 'GNT',
+        chartAt: new Date(Date.now() - 3600_000),
+        journeyDate: new Date('2026-08-25'),
+        trainStartDate: new Date('2026-08-25'),
+        status: 'running',
+        retryCount: 0,
+      });
+      mockBookingV2.findAlternatePaths.mockResolvedValueOnce({
+        legs: [
+          {
+            segmentKind: 'waitlist',
+            travelClass: 'SL',
+            from: 'GNT',
+            to: 'TPTY',
+            isAvailable: false,
+          },
+        ],
+        trainNumber: '12734',
+      });
+      mockPrisma.journeyMonitoringRequest.findUnique.mockResolvedValue({
+        id: 'req-blank-dest',
+        classCode: 'SL',
+      });
+      mockBookingV2.findBestTrains.mockResolvedValue({ results: [] });
+      mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
+        email: 'refund@example.com',
+        mobile: '919999999999',
+      });
+
+      await service.runTask('task-blank-dest', true);
+
+      expect(mockRefunds.initiateRefundForJourney).not.toHaveBeenCalled();
+      expect(mockNotification.notifyUser).toHaveBeenCalledTimes(1);
+      expect(mockNotification.notifyUser).toHaveBeenCalledWith(
+        expect.objectContaining({ refundInfo: null }),
+      );
+    });
   });
 
   describe('autoSubscribeForMissingLegs', () => {
