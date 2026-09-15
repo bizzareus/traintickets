@@ -499,7 +499,7 @@ export default function ChartTimeAlertCTA({
         />
       </div>
 
-      <div className="mt-4 flex flex-col items-start gap-1">
+      <div className="mt-4 flex flex-col items-start gap-3">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -523,9 +523,6 @@ export default function ChartTimeAlertCTA({
             Cancel
           </button>
         </div>
-        <p className="text-xs text-slate-500">
-          100% guaranteed automated refund if there is no confirmed end to end ticket available.
-        </p>
         <ChartAlertTrustFooter />
       </div>
 

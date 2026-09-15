@@ -1,25 +1,33 @@
 "use client";
 
 import Link from "next/link";
+import { ShieldCheck } from "lucide-react";
 
 /**
- * Shared trust footer for chart-alert forms: a yellow social-proof strip
- * plus a link to the manual refund request form. Tailwind only.
+ * Shared trust footer for chart-alert forms: a single refund-assurance line
+ * (with a link to the manual refund form) above the social-proof strip,
+ * separated from the form by a divider. Tailwind only.
  */
 export function ChartAlertTrustFooter() {
   return (
-    <div className="flex flex-col gap-1.5">
-      <p className="rounded-md border border-amber-200 bg-amber-50 px-2.5 py-1.5 text-center text-[11px] font-semibold text-amber-800">
-        60% times found tickets · Trusted by 10K+ travelers
+    <div className="w-full space-y-2 border-t border-blue-100 pt-3">
+      <p className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 text-center text-xs text-slate-600">
+        <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
+        <span>
+          100% automated refund if no confirmed end-to-end ticket is found.
+        </span>
+        <span>
+          Facing any other issue?{" "}
+          <Link
+            href="/refund"
+            className="font-semibold text-blue-600 hover:underline"
+          >
+            Request a refund
+          </Link>
+        </span>
       </p>
-      <p className="text-center text-[11px] leading-relaxed text-slate-500">
-        No ticket found? Your refund is automatic. Facing any other issue?{" "}
-        <Link
-          href="/refund"
-          className="font-semibold text-blue-600 hover:underline"
-        >
-          Request a refund
-        </Link>
+      <p className="w-full rounded-md border border-amber-200 bg-amber-50 px-2.5 py-1.5 text-center text-[11px] font-semibold text-amber-800">
+        60% times found tickets · Trusted by 10K+ travelers
       </p>
     </div>
   );
