@@ -63,21 +63,23 @@ These holiday services link the country's primary employment centers to towns ac
 
 The table below lists the primary 0-series Diwali special train corridors, standard train numbers, operating frequencies, and primary intermediate stops:
 
-| Origin Station | Destination Station | Train Number (0-Series) | Frequency | Key En-Route Stoppages |
-|---|---|---|---|---|
-| **Anand Vihar Terminal (ANVT)** | **Patna Junction (PNBE)** | 04078 / 04077 | Daily / 4 Days a Week | Kanpur Central, Prayagraj Jn, Pt. DD Upadhyaya, Buxar, Ara |
-| **New Delhi (NDLS)** | **Darbhanga Junction (DBG)** | 04068 / 04067 | Bi-weekly / Tri-weekly | Moradabad, Bareilly, Lucknow, Gorakhpur, Narkatiaganj, Raxaul, Sitamarhi |
-| **Anand Vihar Terminal (ANVT)** | **Saharsa Junction (SHC)** | 04010 / 04009 | Tri-weekly | Moradabad, Bareilly, Sitapur, Gorakhpur, Chhapra, Muzaffarpur, Samastipur |
-| **Anand Vihar Terminal (ANVT)** | **Muzaffarpur Junction (MFP)** | 04044 / 04043 | Bi-weekly | Moradabad, Chandausi, Bareilly, Lucknow, Gorakhpur, Chhapra, Hajipur |
-| **New Delhi (NDLS)** | **Gorakhpur Junction (GKP)** | 04494 / 04493 | Daily | Ghaziabad, Moradabad, Bareilly, Sitapur, Gonda, Basti |
-| **Mumbai CSMT (CSMT)** | **Danapur (DNR)** | 01061 / 01062 | Daily / 4 Days a Week | Kalyan, Bhusaval, Itarsi, Jabalpur, Satna, Pt. DD Upadhyaya, Buxar |
-| **Lokmanya Tilak Terminal (LTT)** | **Gorakhpur Junction (GKP)** | 01079 / 01080 | Tri-weekly | Thane, Kalyan, Nashik Road, Bhusaval, Bhopal, Jhansi, Kanpur, Lucknow, Gonda |
-| **Lokmanya Tilak Terminal (LTT)** | **Samastipur Junction (SPJ)** | 01043 / 01044 | Weekly / Bi-weekly | Kalyan, Nashik Road, Bhusaval, Itarsi, Jabalpur, Prayagraj Chheoki, Danapur |
-| **Pune Junction (PUNE)** | **Danapur (DNR)** | 01481 / 01482 | Tri-weekly | Daund Chord Line, Ahmednagar, Manmad, Bhusaval, Itarsi, Jabalpur, Satna |
-| **Surat / Udhna Junction (UDN)** | **Chhapra Junction (CPR)** | 09031 / 09032 | Bi-weekly | Nandurbar, Bhusaval, Khandwa, Itarsi, Katni, Satna, Prayagraj Chheoki, Varanasi, Ballia |
-| **Ahmedabad Junction (ADI)** | **Patna / Danapur (DNR)** | 09417 / 09418 | Weekly | Vadodara, Ratlam, Kota, Gangapur City, Agra Fort, Kanpur, Pt. DD Upadhyaya |
-| **SMVT Bengaluru (SMVB)** | **Danapur (DNR)** | 06261 / 06262 | Weekly / Bi-weekly | Jolarpettai, Katpadi, Perambur, Vijayawada, Warangal, Balharshah, Nagpur, Itarsi, Jabalpur |
-| **SMVT Bengaluru (SMVB)** | **Howrah Junction (HWH)** | 06585 / 06586 | Weekly | Bangarapet, Jolarpettai, Katpadi, Renigunta, Vijayawada, Visakhapatnam, Bhubaneswar, Kharagpur |
+| Origin Station | Destination Station | Train Number (0-Series) | Frequency | Key En-Route Stoppages | Check Seats |
+|---|---|---|---|---|---|
+| **Anand Vihar Terminal (ANVT)** | **Patna Junction (PNBE)** | 04078 / 04077 | Daily / 4 Days a Week | Kanpur Central, Prayagraj Jn, Pt. DD Upadhyaya, Buxar, Ara | [Check seats →](/?from=ANVT&to=PNBE&fromName=Anand%20Vihar%20Terminal&toName=Patna%20Junction) |
+| **New Delhi (NDLS)** | **Darbhanga Junction (DBG)** | 04068 / 04067 | Bi-weekly / Tri-weekly | Moradabad, Bareilly, Lucknow, Gorakhpur, Narkatiaganj, Raxaul, Sitamarhi | [Check seats →](/?from=NDLS&to=DBG&fromName=New%20Delhi&toName=Darbhanga%20Junction) |
+| **Anand Vihar Terminal (ANVT)** | **Saharsa Junction (SHC)** | 04010 / 04009 | Tri-weekly | Moradabad, Bareilly, Sitapur, Gorakhpur, Chhapra, Muzaffarpur, Samastipur | [Check seats →](/?from=ANVT&to=SHC&fromName=Anand%20Vihar%20Terminal&toName=Saharsa%20Junction) |
+| **Anand Vihar Terminal (ANVT)** | **Muzaffarpur Junction (MFP)** | 04044 / 04043 | Bi-weekly | Moradabad, Chandausi, Bareilly, Lucknow, Gorakhpur, Chhapra, Hajipur | [Check seats →](/?from=ANVT&to=MFP&fromName=Anand%20Vihar%20Terminal&toName=Muzaffarpur%20Junction) |
+| **New Delhi (NDLS)** | **Gorakhpur Junction (GKP)** | 04494 / 04493 | Daily | Ghaziabad, Moradabad, Bareilly, Sitapur, Gonda, Basti | [Check seats →](/?from=NDLS&to=GKP&fromName=New%20Delhi&toName=Gorakhpur%20Junction) |
+| **Mumbai CSMT (CSMT)** | **Danapur (DNR)** | 01061 / 01062 | Daily / 4 Days a Week | Kalyan, Bhusaval, Itarsi, Jabalpur, Satna, Pt. DD Upadhyaya, Buxar | [Check seats →](/?from=CSMT&to=DNR&fromName=Mumbai%20CSMT&toName=Danapur) |
+| **Lokmanya Tilak Terminal (LTT)** | **Gorakhpur Junction (GKP)** | 01079 / 01080 | Tri-weekly | Thane, Kalyan, Nashik Road, Bhusaval, Bhopal, Jhansi, Kanpur, Lucknow, Gonda | [Check seats →](/?from=LTT&to=GKP&fromName=Lokmanya%20Tilak%20Terminal&toName=Gorakhpur%20Junction) |
+| **Lokmanya Tilak Terminal (LTT)** | **Samastipur Junction (SPJ)** | 01043 / 01044 | Weekly / Bi-weekly | Kalyan, Nashik Road, Bhusaval, Itarsi, Jabalpur, Prayagraj Chheoki, Danapur | [Check seats →](/?from=LTT&to=SPJ&fromName=Lokmanya%20Tilak%20Terminal&toName=Samastipur%20Junction) |
+| **Pune Junction (PUNE)** | **Danapur (DNR)** | 01481 / 01482 | Tri-weekly | Daund Chord Line, Ahmednagar, Manmad, Bhusaval, Itarsi, Jabalpur, Satna | [Check seats →](/?from=PUNE&to=DNR&fromName=Pune%20Junction&toName=Danapur) |
+| **Surat / Udhna Junction (UDN)** | **Chhapra Junction (CPR)** | 09031 / 09032 | Bi-weekly | Nandurbar, Bhusaval, Khandwa, Itarsi, Katni, Satna, Prayagraj Chheoki, Varanasi, Ballia | [Check seats →](/?from=UDN&to=CPR&fromName=Udhna%20Junction&toName=Chhapra%20Junction) |
+| **Ahmedabad Junction (ADI)** | **Patna / Danapur (DNR)** | 09417 / 09418 | Weekly | Vadodara, Ratlam, Kota, Gangapur City, Agra Fort, Kanpur, Pt. DD Upadhyaya | [Check seats →](/?from=ADI&to=DNR&fromName=Ahmedabad%20Junction&toName=Danapur) |
+| **SMVT Bengaluru (SMVB)** | **Danapur (DNR)** | 06261 / 06262 | Weekly / Bi-weekly | Jolarpettai, Katpadi, Perambur, Vijayawada, Warangal, Balharshah, Nagpur, Itarsi, Jabalpur | [Check seats →](/?from=SMVB&to=DNR&fromName=SMVT%20Bengaluru&toName=Danapur) |
+| **SMVT Bengaluru (SMVB)** | **Howrah Junction (HWH)** | 06585 / 06586 | Weekly | Bangarapet, Jolarpettai, Katpadi, Renigunta, Vijayawada, Visakhapatnam, Bhubaneswar, Kharagpur | [Check seats →](/?from=SMVB&to=HWH&fromName=SMVT%20Bengaluru&toName=Howrah%20Junction) |
+
+> Tap **Check seats →** in any row to open live Smart Seats search for that corridor (origin–destination prefilled — just pick your Diwali date and hit search).
 
 Because festival specials frequently assemble spare rakes from multiple railway depots, coach positions can change before departure. Check your train carriage layout on [Coach Journey Lookup](/seat-status) before arriving at the platform to confirm your boarding position.
 
