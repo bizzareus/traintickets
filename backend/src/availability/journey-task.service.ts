@@ -17,6 +17,7 @@ import {
 import { TrainCompositionService } from '../train-composition/train-composition.service';
 import {
   Service2Service,
+  isFilledOpenAiPlanItem,
   type Service2CheckResult,
   type OpenAiBookingPlanItem,
   type OpenAIStructuredSeat,
@@ -40,9 +41,12 @@ import {
 } from '../common/train-run-day.validation';
 import {
   hasBookablePlanForNotification,
+  isEndToEndJourneyConfirmed,
   ordinalEnglish,
+  type RefundInfo,
 } from '../notification/notification.helpers';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
+import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-refunds.service';
 
 const MAX_CHART_TASK_ATTEMPTS = 3;
 
@@ -320,6 +324,8 @@ export class JourneyTaskService {
     private bookingV2Service: BookingV2Service,
     @Optional()
     private alternativeSearchTaskService?: AlternativeSearchTaskService,
+    @Optional()
+    private refundsService?: ChartAlertRefundsService,
   ) {}
 
   /**
@@ -1688,6 +1694,29 @@ export class JourneyTaskService {
           }
 
           try {
+            const plan = (result.openAiBookingPlan ?? []).filter(
+              isFilledOpenAiPlanItem,
+            );
+            const isEndToEnd = isEndToEndJourneyConfirmed({
+              fromStationCode: task.fromStationCode,
+              toStationCode: task.toStationCode,
+              plan,
+              stationScheduleList: result.trainSchedule?.stationList,
+            });
+            let refundInfo: RefundInfo | null = null;
+            if (!isEndToEnd && this.refundsService) {
+              try {
+                refundInfo = await this.refundsService.initiateRefundForJourney(
+                  task.journeyRequestId,
+                  `chart_no_full_journey_${task.trainNumber}_${journeyDateStr}`,
+                );
+              } catch (refundErr) {
+                this.logger.warn(
+                  `[journey] Refund attempt failed for task=${taskId}: ${refundErr instanceof Error ? refundErr.message : String(refundErr)}`,
+                );
+                refundInfo = { attempted: true, outcome: 'failed' };
+              }
+            }
             const status = await this.notificationService.notifyUser({
               email: contact.email,
               mobile: contact.mobile,
@@ -1701,6 +1730,7 @@ export class JourneyTaskService {
               result,
               alternativeTrains,
               isFollowUpLeg,
+              refundInfo,
             });
             const data: {
               emailNotifiedAt?: Date;

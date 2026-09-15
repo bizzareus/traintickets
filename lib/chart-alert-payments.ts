@@ -44,6 +44,14 @@ export interface ChartAlertPaymentStatus {
     journeyDate: string;
     classCode: string;
   } | null;
+  refund?: {
+    status: string;
+    amount: number | null;
+    razorpayRefundId: string | null;
+    initiatedAt: string | null;
+    refundedAt: string | null;
+    error: string | null;
+  } | null;
 }
 
 /**

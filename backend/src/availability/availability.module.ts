@@ -10,6 +10,7 @@ import { TrainCompositionModule } from '../train-composition/train-composition.m
 import { NotificationModule } from '../notification/notification.module';
 import { BookingV2Module } from '../booking-v2/booking-v2.module';
 import { AlternativeSearchTaskModule } from './alternative-search-task.module';
+import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-refunds.service';
 
 @Module({
   imports: [
@@ -23,10 +24,11 @@ import { AlternativeSearchTaskModule } from './alternative-search-task.module';
     AlternativeSearchTaskModule,
   ],
   controllers: [AvailabilityController],
-  providers: [AvailabilityService, JourneyTaskService],
+  providers: [AvailabilityService, JourneyTaskService, ChartAlertRefundsService],
   exports: [
     AvailabilityService,
     JourneyTaskService,
+    ChartAlertRefundsService,
     AlternativeSearchTaskModule,
   ],
 })

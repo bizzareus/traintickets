@@ -31,6 +31,7 @@ import {
   departureTimeAtStation,
   arrivalTimeAtStation,
   type JourneyLegCoverage,
+  type RefundInfo,
 } from './notification.helpers';
 import {
   renderSeatsFoundEmailHtml,
@@ -684,8 +685,10 @@ export class NotificationService {
     result: Service2CheckResult;
     alternativeTrains?: BestTrainCandidateResult[];
     isFollowUpLeg?: boolean;
+    refundInfo?: RefundInfo | null;
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
     const { email, mobile, task, result, isFollowUpLeg } = params;
+    const refundInfo = params.refundInfo ?? null;
     const alternativeTrains = params.alternativeTrains?.slice(0, 5);
     const out = { emailSent: false, whatsappSent: false };
 
@@ -865,6 +868,7 @@ export class NotificationService {
                     email: email || undefined,
                     mobile: mobile || undefined,
                     unsubscribeUrl: whatsappFooterUrl,
+                    refundInfo,
                     getChartOpenInfoFn: (item) =>
                       this.getStationChartOpenTimeLabel({
                         trainNumber: task.trainNumber,
@@ -889,6 +893,7 @@ export class NotificationService {
                     date: journeyDateStr,
                     searchUrl: whatsappSearchUrl,
                     unsubscribeUrl: whatsappFooterUrl,
+                    refundInfo,
                   });
 
           const templateName = hasTickets
@@ -1206,6 +1211,7 @@ export class NotificationService {
               chartPreparationText,
               partialJourneyNotice,
               unsubscribeUrl: emailFooterUrl,
+              refundInfo,
             });
           } else {
             html = renderNoSeatsEmailHtml({
@@ -1219,6 +1225,7 @@ export class NotificationService {
               date: journeyDateStr,
               searchUrl: emailSearchUrl,
               unsubscribeUrl: emailFooterUrl,
+              refundInfo,
             });
           }
 

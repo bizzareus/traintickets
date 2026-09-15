@@ -41,6 +41,60 @@ export function hasBookablePlanForNotification(
   return plan.some(isFilledOpenAiPlanItem);
 }
 
+export type RefundInfo = {
+  attempted: boolean;
+  outcome: 'succeeded' | 'pending' | 'failed' | 'skipped';
+  amount?: number;
+  refundId?: string;
+};
+
+/** True only when every leg from→to is covered by a ticket (no gaps). */
+export function isEndToEndJourneyConfirmed(params: {
+  fromStationCode: string;
+  toStationCode: string;
+  plan: OpenAiBookingPlanItem[];
+  stationScheduleList?: ScheduleStation[];
+}): boolean {
+  const coverage = extractJourneyLegCoverage(params);
+  return (
+    coverage.length > 0 && coverage.every((c) => c.type === 'ticket')
+  );
+}
+
+/** Shared refund banner HTML for email templates (empty when no refund). */
+export function renderRefundBannerHtml(refund?: RefundInfo | null): string {
+  if (!refund?.attempted || refund.outcome === 'skipped') return '';
+  const amount = refund.amount != null ? `₹${refund.amount}` : '₹5';
+  if (refund.outcome === 'succeeded') {
+    return `<div style="background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;padding:12px;margin-bottom:16px;">
+      <p style="margin:0;font-weight:700;font-size:14px;color:#065f46;">✅ Refund issued: ${escapeHtml(amount)}</p>
+      <p style="margin:4px 0 0 0;font-size:13px;color:#047857;">To your original payment method.${refund.refundId ? ` Refund ID: ${escapeHtml(refund.refundId)}.` : ''} It typically reflects in 5–7 business days.</p>
+      <p style="margin:4px 0 0 0;font-size:12px;color:#065f46;">Reason: no confirmed end-to-end ticket found.</p>
+    </div>`;
+  }
+  if (refund.outcome === 'pending') {
+    return `<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:12px;margin-bottom:16px;">
+      <p style="margin:0;font-weight:700;font-size:14px;color:#92400e;">Refund initiated: ${escapeHtml(amount)}</p>
+      <p style="margin:4px 0 0 0;font-size:13px;color:#92400e;">We’re processing it to your original payment method — confirmation shortly.</p>
+    </div>`;
+  }
+  return `<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px;margin-bottom:16px;">
+    <p style="margin:0;font-weight:700;font-size:14px;color:#991b1b;">Refund attempted but failed</p>
+    <p style="margin:4px 0 0 0;font-size:13px;color:#991b1b;">Our team will retry automatically — no action needed.</p>
+  </div>`;
+}
+
+/** Shared refund line for WhatsApp text (empty when no refund). */
+export function buildRefundWhatsappLine(refund?: RefundInfo | null): string {
+  if (!refund?.attempted || refund.outcome === 'skipped') return '';
+  const amount = refund.amount != null ? `₹${refund.amount}` : '₹5';
+  if (refund.outcome === 'succeeded')
+    return `✅ Refund issued: ${amount}${refund.refundId ? ` (ID ${refund.refundId})` : ''}. Reflects in 5-7 business days.`;
+  if (refund.outcome === 'pending')
+    return `Refund initiated: ${amount} — confirmation shortly.`;
+  return `Refund attempted but failed — we’ll retry automatically.`;
+}
+
 /**
  * Normalize mobile numbers to Indian E.164 format (e.g. 919999224767).
  * Handles:

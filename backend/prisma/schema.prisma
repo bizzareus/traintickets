@@ -498,6 +498,14 @@ enum ChartAlertPaymentStatus {
   FAILED
 }
 
+enum ChartAlertRefundStatus {
+  NONE
+  INITIATED
+  SUCCEEDED
+  FAILED
+  SKIPPED
+}
+
 /// Tracks a chart-alert subscription payment made via the Muzobox payment
 /// proxy. The customer pays on Muzobox (`payUrl`) and is redirected back to
 /// lastberth.com/chart-alert/payment-complete?ref=…. The journeyPayload JSON
@@ -519,7 +527,18 @@ model ChartAlertPayment {
   createdAt        DateTime                @default(now()) @map("created_at")
   updatedAt        DateTime                @updatedAt @map("updated_at")
   paidAt           DateTime?               @map("paid_at")
+  refundStatus     ChartAlertRefundStatus  @default(NONE) @map("refund_status")
+  razorpayRefundId String?                 @map("razorpay_refund_id")
+  refundAmount     Int?                    @map("refund_amount")
+  refundReason     String?                 @map("refund_reason")
+  refundAttempts   Int                     @default(0) @map("refund_attempts")
+  refundInitiatedAt DateTime?              @map("refund_initiated_at")
+  refundedAt       DateTime?               @map("refunded_at")
+  refundError      String?                 @map("refund_error")
+  refundResponse   Json?                   @map("refund_response")
 
   @@index([status])
+  @@index([journeyRequestId])
+  @@index([refundStatus])
   @@map("chart_alert_payment")
 }

@@ -25,6 +25,11 @@ export function PaymentCompleteClient() {
     journeyDate: string;
     classCode: string;
   } | null>(null);
+  const [refund, setRefund] = useState<{
+    status: string;
+    amount: number | null;
+    razorpayRefundId: string | null;
+  } | null>(null);
   const trackedRef = useRef(false);
 
   const check = useCallback(async () => {
@@ -38,6 +43,7 @@ export function PaymentCompleteClient() {
     try {
       const res = await fetchChartAlertPaymentStatus(ref);
       setJourney(res.journey);
+      setRefund(res.refund ?? null);
       // journeyCreated=false means payment landed but alert queueing failed —
       // each status check retries the queue, so keep the user on refresh
       // instead of reporting false success.
@@ -141,6 +147,21 @@ export function PaymentCompleteClient() {
             >
               Back to home
             </Link>
+            {refund && refund.status === "SUCCEEDED" && (
+              <p className="mt-3 rounded-lg bg-emerald-50 p-3 text-sm text-emerald-800">
+                ✅ Refund issued
+                {refund.amount != null ? ` ₹${refund.amount}` : ""}
+                {refund.razorpayRefundId
+                  ? ` (ID ${refund.razorpayRefundId})`
+                  : ""}
+                . Reflects in 5–7 business days.
+              </p>
+            )}
+            {refund && refund.status === "INITIATED" && (
+              <p className="mt-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
+                Refund initiated — confirmation shortly.
+              </p>
+            )}
           </>
         )}
 

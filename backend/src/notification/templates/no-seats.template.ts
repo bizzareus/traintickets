@@ -1,5 +1,11 @@
 import type { BestTrainCandidateResult } from '../../booking-v2/booking-v2.service';
-import { escapeHtml, buildIrctcUrl } from '../notification.helpers';
+import {
+  buildRefundWhatsappLine,
+  escapeHtml,
+  buildIrctcUrl,
+  renderRefundBannerHtml,
+  type RefundInfo,
+} from '../notification.helpers';
 
 export function renderNoSeatsEmailHtml(params: {
   trainLabel: string;
@@ -12,6 +18,7 @@ export function renderNoSeatsEmailHtml(params: {
   date: string;
   searchUrl?: string;
   unsubscribeUrl?: string;
+  refundInfo?: RefundInfo | null;
 }): string {
   const {
     trainLabel,
@@ -110,6 +117,7 @@ export function renderNoSeatsEmailHtml(params: {
 <body style="font-family:system-ui,sans-serif;line-height:1.5;color:#0f172a;background:#f1f5f9;margin:0;padding:32px 16px;">
   <div style="max-width:560px;margin:0 auto;background:#fff;border-radius:16px;padding:24px;border:1px solid #e2e8f0;box-shadow:0 4px 6px -1px rgba(0,0,0,0.08);">
     <h2 style="margin:0 0 16px 0;font-size:20px;color:#0f172a;">${title}</h2>
+    ${renderRefundBannerHtml(params.refundInfo)}
     <p style="margin:0 0 12px 0;">${mainNote}</p>
     ${primaryDetailsBlock}
     ${alternativesHtml}
@@ -221,6 +229,7 @@ export function buildNoSeatsWhatsAppText(params: {
   date: string;
   searchUrl?: string;
   unsubscribeUrl?: string;
+  refundInfo?: RefundInfo | null;
 }): string {
   const {
     trainLabel,
@@ -285,11 +294,13 @@ export function buildNoSeatsWhatsAppText(params: {
   const unsubscribeLine = params.unsubscribeUrl
     ? `\n\nUnsubscribe: ${params.unsubscribeUrl}`
     : '';
+  const refundLine = buildRefundWhatsappLine(params.refundInfo);
+  const refundBlock = refundLine ? `\n${refundLine}\n` : '';
 
   if (hasAlternatives) {
     return `*LastBerth Chart Alert* 🔔
 
-We didn't find any tickets in *${trainLabel}* for *${routeDisplay}* on *${journeyDateReadable}*.${alternativesText}
+We didn't find any tickets in *${trainLabel}* for *${routeDisplay}* on *${journeyDateReadable}*.${refundBlock}${alternativesText}
 
 Look for alternate trains available for your journey:
 ${targetSearchUrl}${unsubscribeLine}`;
@@ -303,7 +314,7 @@ No Tickets Found 😔
 Train: ${trainLabel}
 Route: ${routeDisplay}
 Date: ${journeyDateReadable}
-
+${refundBlock}
 ${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}
 
 Look for alternate trains available for your journey:

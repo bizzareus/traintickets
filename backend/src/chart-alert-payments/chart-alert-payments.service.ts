@@ -54,6 +54,14 @@ export type PaymentConfirmResult = {
     journeyDate: string;
     classCode: string;
   } | null;
+  refund: {
+    status: string;
+    amount: number | null;
+    razorpayRefundId: string | null;
+    initiatedAt: string | null;
+    refundedAt: string | null;
+    error: string | null;
+  };
 };
 
 type MuzoboxCreateLinkResponse = {
@@ -499,6 +507,14 @@ export class ChartAlertPaymentsService {
             classCode: payload.classCode,
           }
         : null,
+      refund: {
+        status: record.refundStatus ?? 'NONE',
+        amount: record.refundAmount ?? null,
+        razorpayRefundId: record.razorpayRefundId ?? null,
+        initiatedAt: record.refundInitiatedAt?.toISOString?.() ?? null,
+        refundedAt: record.refundedAt?.toISOString?.() ?? null,
+        error: record.refundError ?? null,
+      },
     };
   }
 }

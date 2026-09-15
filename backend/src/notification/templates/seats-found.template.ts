@@ -4,6 +4,7 @@ import type {
 } from '../../service2/service2.service';
 import type { ScheduleStation } from '../../irctc/irctc.service';
 import {
+  buildRefundWhatsappLine,
   escapeHtml,
   buildSegmentBookUrl,
   departureTimeAtStation,
@@ -12,6 +13,8 @@ import {
   formatSegmentRoute,
   extractJourneyLegCoverage,
   firstPlannedClassCode,
+  renderRefundBannerHtml,
+  type RefundInfo,
 } from '../notification.helpers';
 
 export interface EmailCardRowParams {
@@ -24,6 +27,7 @@ export interface EmailCardRowParams {
   chartPreparationText?: string;
   partialJourneyNotice?: string;
   unsubscribeUrl?: string;
+  refundInfo?: RefundInfo | null;
 }
 
 export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
@@ -37,6 +41,7 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
     chartPreparationText,
     partialJourneyNotice,
     unsubscribeUrl,
+    refundInfo,
   } = params;
 
   const totalRow =
@@ -76,6 +81,7 @@ export function renderSeatsFoundEmailHtml(params: EmailCardRowParams): string {
               <p style="margin:8px 0 0 0; font-size:14px; color:#334155;">${escapeHtml(journeyDateReadable)}</p>
               ${partialNoticeLine}
               ${chartPrepLine}
+              ${renderRefundBannerHtml(refundInfo)}
             </td>
           </tr>
           <tr>
@@ -252,6 +258,7 @@ export async function buildWhatsAppSeatsFoundText(params: {
   email?: string;
   mobile?: string;
   unsubscribeUrl?: string;
+  refundInfo?: RefundInfo | null;
   getChartOpenInfoFn: (item: {
     fromCode: string;
     fromName: string;
@@ -285,6 +292,7 @@ export async function buildWhatsAppSeatsFoundText(params: {
     createAlertShortLinkFn,
   } = params;
 
+  const refundLine = buildRefundWhatsappLine(params.refundInfo);
   const lines: string[] = [
     '*LastBerth Chart Alert* 🔔',
     'You subscribed to an alert when chart is prepared:',
@@ -294,6 +302,7 @@ export async function buildWhatsAppSeatsFoundText(params: {
     journeyDateReadable,
     ...(journeyTimesLine ? [journeyTimesLine] : []),
     ...(chartPreparationText ? [chartPreparationText] : []),
+    ...(refundLine ? [refundLine] : []),
     '',
   ];
 
