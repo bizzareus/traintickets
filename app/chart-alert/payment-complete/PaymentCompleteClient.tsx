@@ -69,6 +69,13 @@ export function PaymentCompleteClient() {
         }
       } else if (res.status === "failed") {
         setStatus("failed");
+        trackAnalyticsEvent({
+          name: "chart_alert_payment_failed",
+          properties: {
+            place: "page",
+            train_number: res.journey?.trainNumber,
+          },
+        });
       } else {
         setStatus("pending");
       }

@@ -243,6 +243,14 @@ export default function ChartTimeAlertCTA({
         "Couldn't set up the alert. Please check your inputs and try again.",
       );
       setError(errMsg);
+      trackAnalyticsEvent({
+        name: "chart_alert_payment_link_failed",
+        properties: {
+          source: "page",
+          train_number: trainNumber.trim(),
+          error: errMsg.slice(0, 200),
+        },
+      });
       trackAlertRequested({
         success: false,
         source: "chart_times_cta",
@@ -270,11 +278,11 @@ export default function ChartTimeAlertCTA({
             Get a chart preparation alert
           </h2>
           <p className="mt-1 text-sm text-slate-600">
-            We&apos;ll text or email you the moment IRCTC prepares the chart for
-            this train. One-time charge of ₹{CHART_ALERT_PRICE_RUPEES} — leave
-            the destination empty to get a short-link to check tickets on our
-            platform, or pick a destination to receive available tickets
-            between your stations.
+            We&apos;ll provide you with {stationCode} <>{" "}
+            {toStationCode || "your destination"} new tickets that come up when
+            the chart is prepared — with a 100% automated refund guarantee if
+            no full ticket is available. One-time charge of ₹
+            {CHART_ALERT_PRICE_RUPEES}.
           </p>
         </div>
         <button
@@ -306,10 +314,10 @@ export default function ChartTimeAlertCTA({
         Chart preparation alert for {trainName} ({trainNumber})
       </h2>
       <p className="mt-1 text-sm text-slate-600">
-        We&apos;ll notify you on the contact below when the chart is prepared at
-        your boarding station. Leave the destination empty to just get a
-        short-link to check tickets on our platform, or pick a destination to
-        also receive available tickets between the stations.
+        We&apos;ll provide you with new {stationCode} <>{" "}
+        {toStationCode || "any destination"} tickets that come up when the
+        chart is prepared at your boarding station — with a 100% automated
+        refund guarantee if no full ticket is available.
       </p>
 
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -431,6 +439,7 @@ export default function ChartTimeAlertCTA({
           payUrl={payment.payUrl}
           paymentRef={payment.ref}
           journey={payment.journey}
+          source="page"
         />
       )}
       </div>

@@ -228,6 +228,14 @@ export default function RowAlertButton({
         "Couldn't set up the alert. Please try again.",
       );
       setError(errMsg);
+      trackAnalyticsEvent({
+        name: "chart_alert_payment_link_failed",
+        properties: {
+          source: "row",
+          train_number: trainNumber.trim(),
+          error: errMsg.slice(0, 200),
+        },
+      });
       trackAlertRequested({
         success: false,
         source: "chart_times_row",
@@ -305,14 +313,14 @@ export default function RowAlertButton({
             </div>
 
             <p className="mb-3 text-xs text-slate-600">
-              We&apos;ll notify you on the contact below when the chart is
-              prepared at{" "}
+              We&apos;ll provide you with new {stationCode} <>{" "}
+              {toStationCode || "any destination"} tickets that come up when
+              the chart is prepared at{" "}
               <span className="font-semibold text-slate-800">
                 {stationName}
-              </span>
-              . Leave the destination empty to just get a short-link to check
-              tickets on our platform, or pick a destination to also receive
-              available tickets between the stations.
+              </span>{" "}
+              — with a 100% automated refund guarantee if no full ticket is
+              available.
             </p>
             <form
               onSubmit={(e) => {
@@ -424,6 +432,7 @@ export default function RowAlertButton({
           payUrl={payment.payUrl}
           paymentRef={payment.ref}
           journey={payment.journey}
+          source="row"
         />
       )}
     </>

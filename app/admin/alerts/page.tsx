@@ -25,6 +25,12 @@ type Alert = {
     email: string | null;
     mobile: string | null;
   } | null;
+  payment: {
+    ref: string;
+    amount: number;
+    status: string;
+    paidAt: string | null;
+  } | null;
 };
 
 export default function AdminAlertsPage() {
@@ -200,6 +206,7 @@ export default function AdminAlertsPage() {
                     </div>
                   </th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Contact</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">Payment</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Train</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Journey</th>
                   <th className="px-6 py-4 font-semibold text-slate-900">Monitor Station</th>
@@ -224,7 +231,7 @@ export default function AdminAlertsPage() {
               <tbody className="divide-y divide-slate-100">
                 {sortedAlerts.length === 0 ? (
                   <tr>
-                    <td colSpan={11} className="px-6 py-12 text-center text-slate-500">
+                      <td colSpan={12} className="px-6 py-12 text-center text-slate-500">
                       No alerts have been setup yet.
                     </td>
                   </tr>
@@ -246,6 +253,31 @@ export default function AdminAlertsPage() {
                             <span className="italic text-slate-400">Anonymous</span>
                           )}
                         </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        {alert.payment ? (
+                          <div className="flex flex-col gap-0.5">
+                            <span
+                              className={`inline-flex w-fit items-center rounded-lg border px-2 py-0.5 text-xs font-semibold ${getStatusColor(
+                                alert.payment.status
+                              )}`}
+                            >
+                              ₹{alert.payment.amount} · {alert.payment.status.toUpperCase()}
+                            </span>
+                            <span className="max-w-[140px] truncate text-[10px] text-slate-500" title={alert.payment.ref}>
+                              {alert.payment.ref}
+                            </span>
+                            {alert.payment.paidAt && (
+                              <span className="text-[10px] text-slate-500">
+                                {moment.utc(alert.payment.paidAt).utcOffset("+05:30").format("DD MMM, HH:mm")}
+                              </span>
+                            )}
+                          </div>
+                        ) : (
+                          <span className="inline-flex items-center rounded-lg border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-500">
+                            Free
+                          </span>
+                        )}
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex flex-col gap-0.5">

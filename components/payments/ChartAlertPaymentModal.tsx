@@ -26,6 +26,7 @@ interface ChartAlertPaymentModalProps {
   payUrl: string;
   paymentRef: string;
   journey: ChartAlertPaymentModalJourney;
+  source: "page" | "row" | "search_panel";
 }
 
 type ModalStatus = "paying" | "paid" | "failed";
@@ -45,9 +46,11 @@ export function ChartAlertPaymentModal({
   payUrl,
   paymentRef,
   journey,
+  source,
 }: ChartAlertPaymentModalProps) {
   const [status, setStatus] = useState<ModalStatus>("paying");
   const trackedRef = useRef(false);
+  const failedTrackedRef = useRef(false);
 
   const check = useCallback(async () => {
     if (!paymentRef) return;
@@ -74,6 +77,13 @@ export function ChartAlertPaymentModal({
         }
       } else if (res.status === "failed") {
         setStatus("failed");
+        if (!failedTrackedRef.current) {
+          failedTrackedRef.current = true;
+          trackAnalyticsEvent({
+            name: "chart_alert_payment_failed",
+            properties: { place: "modal", train_number: journey.trainNumber },
+          });
+        }
       }
       // paid-but-not-queued and pending both keep polling; the next check
       // retries fulfilment server-side.
@@ -86,9 +96,14 @@ export function ChartAlertPaymentModal({
     if (!open) return;
     setStatus("paying");
     trackedRef.current = false;
+    failedTrackedRef.current = false;
+    trackAnalyticsEvent({
+      name: "chart_alert_payment_modal_opened",
+      properties: { source, train_number: journey.trainNumber },
+    });
     const t = setInterval(() => void check(), POLL_INTERVAL_MS);
     return () => clearInterval(t);
-  }, [open, paymentRef, check]);
+  }, [open, paymentRef, check, source, journey.trainNumber]);
 
   useEffect(() => {
     if (!open) return;
@@ -202,7 +217,13 @@ export function ChartAlertPaymentModal({
               </p>
               <button
                 type="button"
-                onClick={() => redirectToPayment(payUrl)}
+                onClick={() => {
+                  trackAnalyticsEvent({
+                    name: "chart_alert_payment_newtab_opened",
+                    properties: { place: "modal" },
+                  });
+                  redirectToPayment(payUrl);
+                }}
                 className="shrink-0 text-xs font-semibold text-blue-700 hover:underline"
               >
                 Open in new tab

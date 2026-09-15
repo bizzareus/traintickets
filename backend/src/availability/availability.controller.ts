@@ -471,30 +471,57 @@ export class AvailabilityController {
   @Get('admin/alerts')
   async getAllAlerts() {
     const alerts = await this.journeyTask.getAllAlerts();
+    const journeyRequestIds = [...new Set(alerts.map((a) => a.journeyRequestId))];
+    const payments = journeyRequestIds.length
+      ? await this.prisma.chartAlertPayment.findMany({
+          where: { journeyRequestId: { in: journeyRequestIds } },
+          select: {
+            id: true,
+            amount: true,
+            status: true,
+            paidAt: true,
+            journeyRequestId: true,
+          },
+        })
+      : [];
+    const paymentByJourney = new Map(
+      payments.map((p) => [p.journeyRequestId as string, p]),
+    );
     return {
-      alerts: alerts.map((a) => ({
-        id: a.id,
-        journeyRequestId: a.journeyRequestId,
-        trainNumber: a.trainNumber,
-        trainName: a.trainName,
-        fromStationCode: a.fromStationCode,
-        toStationCode: a.toStationCode,
-        stationCode: a.stationCode,
-        journeyDate: a.journeyDate.toISOString().slice(0, 10),
-        chartAt: a.chartAt.toISOString(),
-        status: a.status,
-        createdAt: a.createdAt.toISOString(),
-        completedAt: a.completedAt?.toISOString?.() ?? null,
-        firstRunAt: a.firstRunAt?.toISOString?.() ?? null,
-        emailNotifiedAt: a.emailNotifiedAt?.toISOString?.() ?? null,
-        whatsappNotifiedAt: a.whatsappNotifiedAt?.toISOString?.() ?? null,
-        contact: a.contact
-          ? {
-              email: a.contact.email,
-              mobile: a.contact.mobile,
-            }
-          : null,
-      })),
+      alerts: alerts.map((a) => {
+        const payment = paymentByJourney.get(a.journeyRequestId) ?? null;
+        return {
+          id: a.id,
+          journeyRequestId: a.journeyRequestId,
+          trainNumber: a.trainNumber,
+          trainName: a.trainName,
+          fromStationCode: a.fromStationCode,
+          toStationCode: a.toStationCode,
+          stationCode: a.stationCode,
+          journeyDate: a.journeyDate.toISOString().slice(0, 10),
+          chartAt: a.chartAt.toISOString(),
+          status: a.status,
+          createdAt: a.createdAt.toISOString(),
+          completedAt: a.completedAt?.toISOString?.() ?? null,
+          firstRunAt: a.firstRunAt?.toISOString?.() ?? null,
+          emailNotifiedAt: a.emailNotifiedAt?.toISOString?.() ?? null,
+          whatsappNotifiedAt: a.whatsappNotifiedAt?.toISOString?.() ?? null,
+          contact: a.contact
+            ? {
+                email: a.contact.email,
+                mobile: a.contact.mobile,
+              }
+            : null,
+          payment: payment
+            ? {
+                ref: payment.id,
+                amount: payment.amount,
+                status: payment.status,
+                paidAt: payment.paidAt?.toISOString?.() ?? null,
+              }
+            : null,
+        };
+      }),
     };
   }
 

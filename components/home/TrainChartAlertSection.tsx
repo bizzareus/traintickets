@@ -117,6 +117,14 @@ export function TrainChartAlertSection({
         "Could not set up chart alert. Please check your inputs and try again.",
       );
       setError(errMsg);
+      trackAnalyticsEvent({
+        name: "chart_alert_payment_link_failed",
+        properties: {
+          source: "search_panel",
+          train_number: trainNumber.trim(),
+          error: errMsg.slice(0, 200),
+        },
+      });
       trackAlertRequested({
         success: false,
         source: "search_panel",
@@ -184,8 +192,9 @@ export function TrainChartAlertSection({
             </span>
           </div>
           <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-            Get notified on WhatsApp or Email when chart is prepared & vacant
-            seats open on this train.
+            We&apos;ll provide you with {fromCode} &lt;&gt; {toCode} new
+            tickets that come up when the chart is prepared — with a 100%
+            automated refund guarantee if no full ticket is available.
           </p>
         </div>
 
@@ -346,6 +355,7 @@ export function TrainChartAlertSection({
           payUrl={payment.payUrl}
           paymentRef={payment.ref}
           journey={payment.journey}
+          source="search_panel"
         />
       )}
     </>

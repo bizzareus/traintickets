@@ -290,6 +290,32 @@ export type AnalyticsEvent =
       };
     }
   | { name: "chart_alert_payment_complete"; properties: Record<string, never> }
+  | {
+      name: "chart_alert_payment_modal_opened";
+      properties: {
+        source: "page" | "row" | "search_panel";
+        train_number: string;
+      };
+    }
+  | {
+      name: "chart_alert_payment_link_failed";
+      properties: {
+        source: "page" | "row" | "search_panel";
+        train_number: string;
+        error: string;
+      };
+    }
+  | {
+      name: "chart_alert_payment_failed";
+      properties: {
+        place: "modal" | "page";
+        train_number?: string;
+      };
+    }
+  | {
+      name: "chart_alert_payment_newtab_opened";
+      properties: { place: "modal" };
+    }
   // PNR feature (prefix: search_pnr_*)
   | { name: "search_pnr_feature_clicked"; properties: Record<string, never> }
   | {
