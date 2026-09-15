@@ -472,7 +472,7 @@ export class AvailabilityController {
     for (const [raw, name] of [
       [chartOneDayOffset, 'chartOneDayOffset'],
       [chartTwoDayOffset, 'chartTwoDayOffset'],
-    ] as const) {
+    ] as Array<[unknown, string]>) {
       if (
         raw !== undefined &&
         raw !== null &&

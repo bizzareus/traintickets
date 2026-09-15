@@ -139,9 +139,9 @@ export function readPinnedChartTime(params: PinnedChartTime): {
     ...(two
       ? {
           chartTwoTimeLocal: `${two[1].padStart(2, '0')}:${two[2]}`,
-          chartTwoDayOffset: toOffset(params.chartTwoDayOffset),
         }
       : {}),
+    chartTwoDayOffset: toOffset(params.chartTwoDayOffset),
   };
 }
 
