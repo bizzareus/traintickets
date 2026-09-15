@@ -144,6 +144,17 @@ export default function AdminAlertsPage() {
     return sortOrder === "asc" ? valA - valB : valB - valA;
   });
 
+  const [statusFilter, setStatusFilter] = useState<
+    "all" | "pending" | "running" | "completed" | "failed"
+  >("pending");
+
+  const filteredAlerts =
+    statusFilter === "all"
+      ? sortedAlerts
+      : sortedAlerts.filter(
+          (a) => a.status.toLowerCase() === statusFilter
+        );
+
   const toggleSort = (field: "createdAt" | "chartAt") => {
     if (sortField === field) {
       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -236,6 +247,34 @@ export default function AdminAlertsPage() {
         </div>
       )}
 
+      <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <span className="text-xs font-semibold text-slate-600">Status:</span>
+        {(["all", "pending", "running", "completed", "failed"] as const).map(
+          (f) => {
+            const count =
+              f === "all"
+                ? alerts.length
+                : alerts.filter((a) => a.status.toLowerCase() === f).length;
+            return (
+              <button
+                key={f}
+                onClick={() => setStatusFilter(f)}
+                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
+                  statusFilter === f
+                    ? "bg-slate-900 text-white"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                {f === "all" ? "all" : f} ({count})
+              </button>
+            );
+          }
+        )}
+        <div className="basis-full text-xs text-slate-500">
+          {filteredAlerts.length} of {alerts.length} shown
+        </div>
+      </div>
+
       {loading ? (
         <div className="flex h-64 items-center justify-center rounded-3xl border border-dashed border-slate-200 bg-white">
           <div className="flex flex-col items-center gap-2">
@@ -288,14 +327,16 @@ export default function AdminAlertsPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {sortedAlerts.length === 0 ? (
+                {filteredAlerts.length === 0 ? (
                   <tr>
                       <td colSpan={12} className="px-6 py-12 text-center text-slate-500">
-                      No alerts have been setup yet.
+                      {alerts.length === 0
+                        ? "No alerts have been setup yet."
+                        : `No ${statusFilter} alerts.`}
                     </td>
                   </tr>
                 ) : (
-                  sortedAlerts.map((alert) => (
+                  filteredAlerts.map((alert) => (
                     <tr key={alert.id} className="transition hover:bg-slate-50/50">
                       <td className="whitespace-nowrap px-6 py-4 text-slate-600">
                         {moment.utc(alert.createdAt).utcOffset("+01:00").format("DD MMM, HH:mm")}
