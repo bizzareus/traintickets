@@ -21,6 +21,7 @@ import {
   type ChartAlertPaymentModalJourney,
 } from "@/components/payments/ChartAlertPaymentModal";
 import { ChartAlertSuccessBox } from "@/components/payments/ChartAlertSuccessBox";
+import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -85,25 +86,22 @@ export default function RowAlertButton({
     () => destinationStations || [],
     [destinationStations],
   );
-  // Default to no specific destination — the user opts in to a station
-  // only if they care. Empty = "chart prepared — go check on our
-  // platform" notification; non-empty = the full availability check flow.
+  // Destination is mandatory — default to the last station on the route
+  // (the full end-to-end journey) until the user picks one.
   const [toStationCode, setToStationCode] = useState("");
 
-  // Ensure destination is valid (skip when empty, which is a valid choice).
+  // Default empty to the last downstream station; correct stale values.
   useEffect(() => {
-    if (!toStationCode) return;
-    if (destinationOptions.length > 0) {
-      const isValid = destinationOptions.some(
-        (s) => s.stationCode === toStationCode,
+    if (destinationOptions.length === 0) return;
+    const isValid =
+      toStationCode &&
+      destinationOptions.some((s) => s.stationCode === toStationCode);
+    if (!isValid) {
+      setToStationCode(
+        destinationOptions[destinationOptions.length - 1]?.stationCode ||
+          destinationOptions[0]?.stationCode ||
+          "",
       );
-      if (!isValid) {
-        setToStationCode(
-          destinationOptions[destinationOptions.length - 1]?.stationCode ||
-            destinationOptions[0]?.stationCode ||
-            "",
-        );
-      }
     }
   }, [destinationOptions, toStationCode]);
 
@@ -212,9 +210,11 @@ export default function RowAlertButton({
       setError("Please pick a journey date.");
       return;
     }
+    if (!toStationCode) {
+      setError("Please select a destination station.");
+      return;
+    }
 
-    // toStationCode is optional — empty means the user just wants a
-    // "chart prepared" ping with a shortlink to the search page.
     // Admins (localStorage admin flag) skip the payment popup and create
     // the alert directly; everyone else pays via the in-page iframe modal.
     setLoading(true);
@@ -381,14 +381,14 @@ export default function RowAlertButton({
             </div>
 
             <p className="mb-3 text-xs text-slate-600">
-              We&apos;ll provide you with new {stationCode} &lt;&gt;{" "}
-              {toStationCode || "any destination"} tickets that come up when
-              the chart is prepared at{" "}
+              Select your destination — when the chart is prepared at{" "}
               <span className="font-semibold text-slate-800">
                 {stationName}
-              </span>{" "}
-              — with a 100% automated refund guarantee if no full ticket is
-              available.
+              </span>
+              , we scan your full {stationCode} &lt;&gt;{" "}
+              {toStationCode || "…"} route for any ticket that opens up and
+              notify you instantly. If no ticket is available, you get a 100%
+              automated refund.
             </p>
             {subscribedJourney ? (
               <ChartAlertSuccessBox journey={subscribedJourney} compact />
@@ -402,13 +402,16 @@ export default function RowAlertButton({
               >
               {destinationOptions.length > 0 && (
                 <label className="text-xs font-semibold text-slate-700">
-                  <span className="mb-1 block">Destination station</span>
+                  <span className="mb-1 block">Destination station *</span>
                   <select
                     value={toStationCode}
                     onChange={(e) => setToStationCode(e.target.value)}
+                    required
                     className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25 font-normal"
                   >
-                    <option value="">No Destination</option>
+                    <option value="" disabled>
+                      Select destination
+                    </option>
                     {destinationOptions.map((s) => (
                       <option key={s.stationCode} value={s.stationCode}>
                         {s.stationName} ({s.stationCode})
@@ -496,6 +499,7 @@ export default function RowAlertButton({
                   ? "Admin mode — no charge, the alert is created directly."
                   : `One-time ₹${CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay securely without leaving this page — the alert activates once payment is verified.`}
               </p>
+              <ChartAlertTrustFooter />
             </form>
             )}
           </div>

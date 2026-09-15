@@ -21,6 +21,7 @@ import {
   type ChartAlertPaymentModalJourney,
 } from "@/components/payments/ChartAlertPaymentModal";
 import { ChartAlertSuccessBox } from "@/components/payments/ChartAlertSuccessBox";
+import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -126,21 +127,19 @@ export default function ChartTimeAlertCTA({
     return nextStns.length > 0 ? nextStns : stations.slice(1);
   }, [stations, boardingIndex]);
 
+  // Destination is mandatory — default to the last station on the route
+  // (the full end-to-end journey) until the user picks one.
   const [toStationCode, setToStationCode] = useState(
-    // Default to no specific destination — the user opts in to a specific
-    // station only if they care. Empty = "chart prepared — go check on our
-    // platform" notification; non-empty = the full availability check flow.
     initialDestinationCode ?? "",
   );
 
-  // Ensure destination is always valid downstream (skip when empty, which
-  // is a valid "no specific destination" choice).
+  // Default empty to the last downstream station; correct stale values.
   useEffect(() => {
-    if (!toStationCode) return;
-    const isValid = destinationOptions.some(
-      (s) => s.stationCode === toStationCode,
-    );
-    if (!isValid && destinationOptions.length > 0) {
+    if (destinationOptions.length === 0) return;
+    const isValid =
+      toStationCode &&
+      destinationOptions.some((s) => s.stationCode === toStationCode);
+    if (!isValid) {
       setToStationCode(
         destinationOptions[destinationOptions.length - 1]?.stationCode ||
           destinationOptions[0]?.stationCode ||
@@ -254,9 +253,11 @@ export default function ChartTimeAlertCTA({
       setError("Please select a boarding station.");
       return;
     }
+    if (!toStationCode.trim()) {
+      setError("Please select a destination station.");
+      return;
+    }
 
-    // toStationCode is optional — empty means the user just wants a
-    // "chart prepared" ping with a shortlink to the search page.
     // Admins (localStorage admin flag) skip the payment popup and create
     // the alert directly; everyone else pays via the in-page iframe modal.
     setLoading(true);
@@ -369,10 +370,10 @@ export default function ChartTimeAlertCTA({
             Get a chart preparation alert
           </h2>
           <p className="mt-1 text-sm text-slate-600">
-            We&apos;ll provide you with {stationCode} &lt;&gt;{" "}
-            {toStationCode || "your destination"} new tickets that come up when
-            the chart is prepared — with a 100% automated refund guarantee if
-            no full ticket is available. One-time charge of ₹
+            Select your destination — when the chart is prepared, we scan
+            your {stationCode} &lt;&gt; {toStationCode || "…"} route for any
+            ticket that opens up and notify you instantly. No ticket? 100%
+            automated refund. One-time charge of ₹
             {CHART_ALERT_PRICE_RUPEES}.
           </p>
         </div>
@@ -405,10 +406,11 @@ export default function ChartTimeAlertCTA({
         Chart preparation alert for {trainName} ({trainNumber})
       </h2>
       <p className="mt-1 text-sm text-slate-600">
-        We&apos;ll provide you with new {stationCode} &lt;&gt;{" "}
-        {toStationCode || "any destination"} tickets that come up when the
-        chart is prepared at your boarding station — with a 100% automated
-        refund guarantee if no full ticket is available.
+        Select your destination — when the chart is prepared at your boarding
+        station, we scan your full {stationCode} &lt;&gt;{" "}
+        {toStationCode || "…"} route for any ticket that opens up and notify
+        you instantly. If no ticket is available, you get a 100% automated
+        refund.
       </p>
 
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -431,14 +433,17 @@ export default function ChartTimeAlertCTA({
 
         <label className="text-sm">
           <span className="mb-1 block font-medium text-slate-700">
-            Destination station
+            Destination station *
           </span>
           <select
             value={toStationCode}
             onChange={(e) => setToStationCode(e.target.value)}
+            required
             className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
           >
-            <option value="">Select Destination</option>
+            <option value="" disabled>
+              Select destination
+            </option>
             {destinationOptions.map((s) => (
               <option key={s.stationCode} value={s.stationCode}>
                 {s.stationName} ({s.stationCode})
@@ -522,6 +527,7 @@ export default function ChartTimeAlertCTA({
         <p className="text-xs text-slate-500">
           100% guaranteed automated refund if there is no confirmed end to end ticket available.
         </p>
+        <ChartAlertTrustFooter />
       </div>
 
       {error && (
