@@ -126,11 +126,13 @@ export class AvailabilityController {
    * journey matches this request. Off by default so existing free surfaces
    * (PNR rescue, home panel, shortlinks) keep working until migrated.
    * A supplied paymentRef is always verified, even when the flag is off.
+   * Returns the verified ref (or undefined) so callers can attach payment
+   * context to downstream notifications.
    */
   private async assertJourneyPayment(
     normalized: NormalizedJourneyCreate,
     paymentRef?: string,
-  ): Promise<void> {
+  ): Promise<string | undefined> {
     const ref = String(paymentRef ?? '').trim();
     const required =
       String(this.config.get<string>('REQUIRE_JOURNEY_PAYMENT') ?? '')
@@ -143,7 +145,7 @@ export class AvailabilityController {
           HttpStatus.PAYMENT_REQUIRED,
         );
       }
-      return;
+      return undefined;
     }
     const record = await this.prisma.chartAlertPayment.findUnique({
       where: { id: ref },
@@ -177,6 +179,7 @@ export class AvailabilityController {
         HttpStatus.PAYMENT_REQUIRED,
       );
     }
+    return ref;
   }
 
   @Post('check')
@@ -496,7 +499,10 @@ export class AvailabilityController {
       });
     }
 
-    await this.assertJourneyPayment(normalized, paymentRef);
+    const verifiedPaymentRef = await this.assertJourneyPayment(
+      normalized,
+      paymentRef,
+    );
 
     const journeyRequestId = randomUUID();
 
@@ -506,12 +512,12 @@ export class AvailabilityController {
     setImmediate(() => {
       if (isChartPreparedOnly) {
         void this.journeyTask.queueChartPreparedMonitoring(
-          normalized,
+          { ...normalized, paymentRef: verifiedPaymentRef },
           journeyRequestId,
         );
       } else {
         void this.journeyTask.queueJourneyMonitoring(
-          normalized,
+          { ...normalized, paymentRef: verifiedPaymentRef },
           journeyRequestId,
         );
       }

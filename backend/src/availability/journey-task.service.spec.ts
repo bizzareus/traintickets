@@ -36,6 +36,9 @@ describe('JourneyTaskService', () => {
       findFirst: jest.fn().mockResolvedValue(null),
       create: jest.fn(),
     },
+    chartAlertPayment: {
+      findFirst: jest.fn().mockResolvedValue(null),
+    },
     sentNotificationLog: {
       findFirst: jest.fn().mockResolvedValue(null),
       create: jest.fn(),
@@ -798,6 +801,141 @@ describe('JourneyTaskService', () => {
           journeyRequestId: 'jid-test-123',
           taskCount: 1,
           trainNumber: '12128',
+          payment: null,
+        }),
+      );
+    });
+
+    it('includes payment details in the admin email when the journey was paid', async () => {
+      jest.spyOn(service, 'validateJourneyForMonitoring').mockResolvedValue({
+        valid: true,
+        context: {
+          schedule: { trainName: 'PUNE INTERCITY' } as any,
+          fromCode: 'PUNE',
+          toCode: 'CSMT',
+          trainNumber: '12128',
+          stationsToProcess: ['PUNE'],
+          jYmd: '2026-09-01',
+          trainStartDate: '2026-09-01',
+        },
+      });
+      jest.spyOn(service, 'createJourneyTasks').mockResolvedValue({
+        journeyRequestId: 'jid-paid-1',
+        tasks: [
+          {
+            id: 'task-1',
+            stationCode: 'PUNE',
+            chartAt: '2026-09-01T06:00:00.000Z',
+            status: 'pending',
+          },
+        ],
+      });
+      mockPrisma.chartAlertPayment.findFirst.mockResolvedValue({
+        id: 'pay-ref-1',
+        status: 'PAID',
+        amount: 5,
+        currency: 'INR',
+        razorpayPaymentId: 'pay_RZP123',
+        razorpayOrderId: 'order_RZP123',
+        paidAt: new Date('2026-09-15T10:00:00.000Z'),
+      });
+
+      await service.queueJourneyMonitoring(
+        {
+          trainNumber: '12128',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+          journeyDate: '2026-09-01',
+          classCode: 'CC',
+          email: 'test@example.com',
+        },
+        'jid-paid-1',
+      );
+
+      expect(mockPrisma.chartAlertPayment.findFirst).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            OR: expect.arrayContaining([{ journeyRequestId: 'jid-paid-1' }]),
+          }),
+        }),
+      );
+      expect(
+        mockNotification.sendAdminMonitoringRequestEmail,
+      ).toHaveBeenCalledWith(
+        expect.objectContaining({
+          journeyRequestId: 'jid-paid-1',
+          payment: expect.objectContaining({
+            ref: 'pay-ref-1',
+            status: 'PAID',
+            amount: 5,
+            currency: 'INR',
+            razorpayPaymentId: 'pay_RZP123',
+          }),
+        }),
+      );
+    });
+
+    it('looks up payment by explicit paymentRef when supplied', async () => {
+      jest.spyOn(service, 'validateJourneyForMonitoring').mockResolvedValue({
+        valid: true,
+        context: {
+          schedule: { trainName: 'PUNE INTERCITY' } as any,
+          fromCode: 'PUNE',
+          toCode: 'CSMT',
+          trainNumber: '12128',
+          stationsToProcess: ['PUNE'],
+          jYmd: '2026-09-01',
+          trainStartDate: '2026-09-01',
+        },
+      });
+      jest.spyOn(service, 'createJourneyTasks').mockResolvedValue({
+        journeyRequestId: 'jid-fresh',
+        tasks: [
+          {
+            id: 'task-1',
+            stationCode: 'PUNE',
+            chartAt: '2026-09-01T06:00:00.000Z',
+            status: 'pending',
+          },
+        ],
+      });
+      mockPrisma.chartAlertPayment.findFirst.mockResolvedValue({
+        id: 'pay-ref-2',
+        status: 'PAID',
+        amount: 5,
+        currency: 'INR',
+        razorpayPaymentId: null,
+        razorpayOrderId: null,
+        paidAt: new Date('2026-09-15T10:00:00.000Z'),
+      });
+
+      await service.queueJourneyMonitoring(
+        {
+          trainNumber: '12128',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+          journeyDate: '2026-09-01',
+          classCode: 'CC',
+          paymentRef: 'pay-ref-2',
+        },
+        'jid-fresh',
+      );
+
+      expect(mockPrisma.chartAlertPayment.findFirst).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            OR: expect.arrayContaining([
+              { id: 'pay-ref-2' },
+              { journeyRequestId: 'jid-fresh' },
+            ]),
+          }),
+        }),
+      );
+      expect(
+        mockNotification.sendAdminMonitoringRequestEmail,
+      ).toHaveBeenCalledWith(
+        expect.objectContaining({
+          payment: expect.objectContaining({ ref: 'pay-ref-2' }),
         }),
       );
     });
@@ -807,20 +945,18 @@ describe('JourneyTaskService', () => {
         id: 'jid-existing',
       });
 
-      const validateSpy = jest
-        .spyOn(service, 'validateJourneyForMonitoring')
-        .mockResolvedValue({
-          valid: true,
-          context: {
-            schedule: { trainName: 'Shatabdi', stationList: [] } as any,
-            fromCode: 'PUNE',
-            toCode: 'CSMT',
-            trainNumber: '12128',
-            stationsToProcess: ['PUNE'],
-            jYmd: '2026-09-01',
-            trainStartDate: '2026-09-01',
-          },
-        });
+      jest.spyOn(service, 'validateJourneyForMonitoring').mockResolvedValue({
+        valid: true,
+        context: {
+          schedule: { trainName: 'Shatabdi', stationList: [] } as any,
+          fromCode: 'PUNE',
+          toCode: 'CSMT',
+          trainNumber: '12128',
+          stationsToProcess: ['PUNE'],
+          jYmd: '2026-09-01',
+          trainStartDate: '2026-09-01',
+        },
+      });
 
       await service.queueJourneyMonitoring(
         {

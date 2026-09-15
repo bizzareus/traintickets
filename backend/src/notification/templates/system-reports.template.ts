@@ -112,6 +112,16 @@ export function renderAlertFailureEmailHtml(params: {
 </html>`;
 }
 
+export type AdminMonitoringPaymentDetails = {
+  ref: string;
+  status: string;
+  amount: number;
+  currency: string;
+  razorpayPaymentId?: string | null;
+  razorpayOrderId?: string | null;
+  paidAt?: string | null;
+};
+
 export function renderAdminMonitoringEmailHtml(params: {
   journeyRequestId: string;
   taskCount: number;
@@ -124,6 +134,7 @@ export function renderAdminMonitoringEmailHtml(params: {
   stationCodesToMonitor?: string[];
   userEmail?: string;
   userMobile?: string;
+  payment?: AdminMonitoringPaymentDetails | null;
 }): string {
   const trainLabel = [params.trainNumber, params.trainName]
     .filter(Boolean)
@@ -144,6 +155,30 @@ export function renderAdminMonitoringEmailHtml(params: {
     contactLines.length > 0
       ? `<p style="margin:12px 0 0 0;"><strong>Contact</strong><br/>${contactLines.join('<br/>')}</p>`
       : '<p style="margin:12px 0 0 0;color:#64748b;">No email or mobile on the request.</p>';
+  const payment = params.payment;
+  const paymentBlock = payment
+    ? `<div style="margin-top:12px;background-color:#f0fdf4;border-left:4px solid #22c55e;padding:12px 16px;border-radius:0 4px 4px 0;">
+      <p style="margin:0 0 8px 0;"><strong>💰 Paid — ${escapeHtml(String(payment.amount))} ${escapeHtml(payment.currency)} (${escapeHtml(payment.status)})</strong></p>
+      <table style="border-collapse:collapse;font-size:14px;">
+        <tr><td style="padding:4px 12px 4px 0;color:#64748b;">Payment ref</td><td><code>${escapeHtml(payment.ref)}</code></td></tr>
+        ${
+          payment.razorpayPaymentId
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#64748b;">Razorpay payment ID</td><td><code>${escapeHtml(payment.razorpayPaymentId)}</code></td></tr>`
+            : ''
+        }
+        ${
+          payment.razorpayOrderId
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#64748b;">Razorpay order ID</td><td><code>${escapeHtml(payment.razorpayOrderId)}</code></td></tr>`
+            : ''
+        }
+        ${
+          payment.paidAt
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#64748b;">Paid at</td><td>${escapeHtml(payment.paidAt)}</td></tr>`
+            : ''
+        }
+      </table>
+    </div>`
+    : '<p style="margin:12px 0 0 0;color:#64748b;">No payment linked — free request.</p>';
 
   return `<!DOCTYPE html>
 <html>
@@ -160,6 +195,7 @@ export function renderAdminMonitoringEmailHtml(params: {
     <tr><td style="padding:4px 12px 4px 0;vertical-align:top;color:#64748b;">Stations</td><td>${stationsLine}</td></tr>
   </table>
   ${contactBlock}
+  ${paymentBlock}
 </body>
 </html>`;
 }

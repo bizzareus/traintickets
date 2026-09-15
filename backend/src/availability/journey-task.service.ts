@@ -47,6 +47,7 @@ import {
 } from '../notification/notification.helpers';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-refunds.service';
+import type { AdminMonitoringPaymentDetails } from '../notification/templates';
 
 const MAX_CHART_TASK_ATTEMPTS = 3;
 
@@ -856,6 +857,55 @@ export class JourneyTaskService {
     }
   }
 
+  /**
+   * Best-effort lookup of the chart-alert payment backing a monitoring
+   * request, so the admin "Monitoring requested" email can show payment
+   * details for paid alerts. Never throws — email context is optional and
+   * must not break queueing.
+   */
+  private async findAdminPaymentDetails(
+    paymentRef?: string,
+    journeyRequestId?: string,
+  ): Promise<AdminMonitoringPaymentDetails | null> {
+    const ref = paymentRef?.trim() || undefined;
+    const jid = journeyRequestId?.trim() || undefined;
+    if (!ref && !jid) return null;
+    try {
+      const row = await this.prisma.chartAlertPayment.findFirst({
+        where: {
+          OR: [
+            ...(ref ? [{ id: ref }] : []),
+            ...(jid ? [{ journeyRequestId: jid }] : []),
+          ],
+        },
+        select: {
+          id: true,
+          status: true,
+          amount: true,
+          currency: true,
+          razorpayPaymentId: true,
+          razorpayOrderId: true,
+          paidAt: true,
+        },
+      });
+      if (!row) return null;
+      return {
+        ref: row.id,
+        status: row.status,
+        amount: row.amount,
+        currency: row.currency,
+        razorpayPaymentId: row.razorpayPaymentId,
+        razorpayOrderId: row.razorpayOrderId,
+        paidAt: row.paidAt?.toISOString?.() ?? null,
+      };
+    } catch (err) {
+      this.logger.warn(
+        `[journey/queue] admin payment lookup failed: ${err instanceof Error ? err.message : String(err)}`,
+      );
+      return null;
+    }
+  }
+
   async queueJourneyMonitoring(
     params: {
       trainNumber: string;
@@ -868,6 +918,8 @@ export class JourneyTaskService {
       email?: string;
       mobile?: string;
       trainStartDate?: string;
+      /** Verified PAID chart_alert_payment ref (POST /journey paymentRef). */
+      paymentRef?: string;
     } & PinnedChartTime,
     journeyRequestId?: string,
   ): Promise<boolean> {
@@ -902,6 +954,11 @@ export class JourneyTaskService {
         journeyRequestId,
       });
 
+      const payment = await this.findAdminPaymentDetails(
+        params.paymentRef,
+        result.journeyRequestId,
+      );
+
       void this.notificationService
         .sendAdminMonitoringRequestEmail({
           journeyRequestId: result.journeyRequestId,
@@ -915,6 +972,7 @@ export class JourneyTaskService {
           stationCodesToMonitor: [validation.context.fromCode],
           userEmail: params.email,
           userMobile: params.mobile,
+          payment,
         })
         .catch((err) =>
           this.logger.error(
@@ -950,6 +1008,8 @@ export class JourneyTaskService {
       email?: string;
       mobile?: string;
       trainStartDate?: string;
+      /** Verified PAID chart_alert_payment ref (POST /journey paymentRef). */
+      paymentRef?: string;
     } & PinnedChartTime,
     journeyRequestId?: string,
   ): Promise<boolean> {
@@ -1226,6 +1286,7 @@ export class JourneyTaskService {
         stationCodesToMonitor: [fromCode],
         userEmail: email,
         userMobile: mobile,
+        payment: await this.findAdminPaymentDetails(params.paymentRef, jid),
       })
       .catch((err) =>
         this.logger.error(

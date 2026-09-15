@@ -3,6 +3,7 @@ import {
   renderSeatsFoundEmailHtml,
   renderChartPreparedNoDestinationEmailHtml,
 } from './templates/notification-email.templates';
+import { renderAdminMonitoringEmailHtml } from './templates';
 import {
   buildWatiTemplateParameters,
   buildChartPreparedNoDestinationWhatsAppText,
@@ -156,6 +157,47 @@ describe('Notification Templates & Helpers', () => {
         unsubscribeUrl: 'https://lastberth.com/s/unsub',
       });
       expect(text).toContain('Unsubscribe: https://lastberth.com/s/unsub');
+    });
+  });
+
+  describe('renderAdminMonitoringEmailHtml', () => {
+    const baseParams = {
+      journeyRequestId: 'jid-1',
+      taskCount: 2,
+      trainNumber: '20111',
+      trainName: 'VANDE BHARAT EXP',
+      fromStationCode: 'NDLS',
+      toStationCode: 'BSB',
+      journeyDate: '2026-09-16',
+      classCode: 'CC',
+    };
+
+    it('shows payment details when the request was paid', () => {
+      const html = renderAdminMonitoringEmailHtml({
+        ...baseParams,
+        payment: {
+          ref: 'pay-ref-1',
+          status: 'PAID',
+          amount: 5,
+          currency: 'INR',
+          razorpayPaymentId: 'pay_RZP123',
+          razorpayOrderId: 'order_RZP123',
+          paidAt: '2026-09-15T10:00:00.000Z',
+        },
+      });
+      expect(html).toContain('Paid');
+      expect(html).toContain('pay-ref-1');
+      expect(html).toContain('pay_RZP123');
+      expect(html).toContain('order_RZP123');
+    });
+
+    it('marks the request as free when no payment is linked', () => {
+      const html = renderAdminMonitoringEmailHtml({
+        ...baseParams,
+        payment: null,
+      });
+      expect(html).toContain('free request');
+      expect(html).not.toContain('Razorpay payment ID');
     });
   });
 });

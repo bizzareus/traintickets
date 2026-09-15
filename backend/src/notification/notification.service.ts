@@ -50,6 +50,7 @@ import {
   buildFollowUpLegWhatsAppText,
   buildNoSeatsWhatsAppText,
   buildAlternativeTrainsWhatsAppText,
+  type AdminMonitoringPaymentDetails,
 } from './templates';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 
@@ -334,6 +335,7 @@ export class NotificationService {
     stationCodesToMonitor?: string[];
     userEmail?: string;
     userMobile?: string;
+    payment?: AdminMonitoringPaymentDetails | null;
   }): Promise<boolean> {
     if (!this.resend) {
       return false;
