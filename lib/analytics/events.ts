@@ -475,6 +475,15 @@ export type AnalyticsEvent =
         status: "RESOLVED" | "REJECTED";
       };
     }
+  | {
+      name: "refund_request_submitted";
+      properties: {
+        train_number: string;
+        journey_date: string;
+        has_txn_id: boolean;
+        duplicate: boolean;
+      };
+    }
   // Public unsubscribe page events
   | {
       name: "notification_unsubscribe_completed";
