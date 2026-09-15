@@ -1,5 +1,5 @@
 import type { ChartTimeStationRow } from "@/lib/chartTimes";
-import { formatChartPrep } from "@/lib/chartTimeDisplay";
+import { formatStationChartPrep } from "@/lib/chartTimeDisplay";
 import RowAlertButton from "./RowAlertButton";
 
 function formatDay(day?: number | null): string {
@@ -21,7 +21,7 @@ function FirstChart({
   return (
     <div className="flex flex-col gap-1">
       <span className="inline-flex w-fit items-center rounded-md bg-blue-50 px-2 py-1 font-semibold text-blue-700">
-        {formatChartPrep(s.chartTimeLocal, s.chartOneDayOffset, journeyDate)}
+        {formatStationChartPrep(s.chartTimeLocal, s.chartOneDayOffset, journeyDate, s.day)}
       </span>
       {s.chartRemoteStation && s.chartRemoteStation !== s.stationCode ? (
         <span className="text-xs text-slate-500">
@@ -45,7 +45,7 @@ function SecondChart({
   }
   return (
     <span className="inline-flex w-fit items-center rounded-md bg-slate-100 px-2 py-1 font-medium text-slate-700">
-      {formatChartPrep(s.chartTwoTimeLocal, s.chartTwoDayOffset, journeyDate)}
+      {formatStationChartPrep(s.chartTwoTimeLocal, s.chartTwoDayOffset, journeyDate, s.day)}
     </span>
   );
 }

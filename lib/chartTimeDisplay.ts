@@ -57,7 +57,10 @@ function relativeDayLabel(offset: number): string {
  * Format a chart preparation time for display, returning "NA" when no time is set.
  * `journeyDateYmd` (the train's start/journey date) makes the output an absolute date.
  */
-export function formatChartPrep(
+export function formatChartPrep(  time: string | null | undefined,
+  dayOffset: number | null | undefined,
+  journeyDateYmd?: string | null,
+): string {
   time: string | null | undefined,
   dayOffset: number | null | undefined,
   journeyDateYmd?: string | null,
@@ -74,4 +77,36 @@ export function formatChartPrep(
     return `${ordinal(dt.getUTCDate())} ${MONTHS[dt.getUTCMonth()]} ${dt.getUTCFullYear()} at ${clock}`;
   }
   return `${relativeDayLabel(offset)} at ${clock}`;
+}
+
+/**
+ * Station-aware variant of {@link formatChartPrep} for the chart-times table.
+ *
+ * Contract mismatch it repairs: `dayOffset` is anchored at the TRAIN-START
+ * date (IRCTC chart date minus trainStartDate, see
+ * `chartTimesFromCompositionResponse`), but `journeyDateYmd` (`?date=`) is the
+ * BOARDING date at the station — the backend alert flow treats journeyDate as
+ * the boarding date and derives trainStartDate backwards from the station day
+ * count, and IRCTC itself resolves (jDate=boarding date + station) to the
+ * earlier trainStartDate. For a day-N station the train started (N-1) days
+ * before boarding, so the anchor is shifted back before adding the offset.
+ * Day-1 stations are unaffected.
+ */
+export function formatStationChartPrep(
+  time: string | null | undefined,
+  dayOffset: number | null | undefined,
+  journeyDateYmd?: string | null,
+  stationDay?: number | null,
+): string {
+  const ymd = (journeyDateYmd ?? "").trim().slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd)) {
+    return formatChartPrep(time, dayOffset, journeyDateYmd);
+  }
+  const day = Math.max(1, Math.trunc(Number(stationDay) || 1));
+  const [y, mo, d] = ymd.split("-").map(Number);
+  const base = new Date(Date.UTC(y, mo - 1, d - (day - 1)));
+  const anchored =
+    `${base.getUTCFullYear()}-${String(base.getUTCMonth() + 1).padStart(2, "0")}-` +
+    String(base.getUTCDate()).padStart(2, "0");
+  return formatChartPrep(time, dayOffset, anchored);
 }
