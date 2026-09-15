@@ -425,7 +425,7 @@ export default function ChartTimeAlertCTA({
           </button>
         </div>
         <p className="text-xs text-slate-500">
-          100% gauranteed automated refund if there is no confirmed end to end ticket available.
+          100% guaranteed automated refund if there is no confirmed end to end ticket available.
         </p>
       </div>
 
