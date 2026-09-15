@@ -103,6 +103,7 @@ export type AlternatePathsResponse = {
   trainNumber: string;
   legs: AlternateLeg[];
   totalFare: number | null;
+  /** Number of confirmed (bookable) legs — excludes check_realtime filler hops. */
   legCount: number;
   isComplete: boolean;
   stationCodesOnRoute: string[];

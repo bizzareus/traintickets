@@ -11,7 +11,7 @@ import {
   isLegConfirmed,
   formatAvailabilityStatus,
 } from "@/lib/bookingV2Availability";
-import { calculateConfirmedDurationMinutes } from "@/lib/trainSearchV2Sort";
+import { calculateConfirmedDurationMinutes, countConfirmedAlternateLegs } from "@/lib/trainSearchV2Sort";
 import type {
   AlternatePathProgressEvent,
   AlternatePathsResponse,
@@ -409,7 +409,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
           from_code: fromCode,
           to_code: toCode,
           journey_date: journeyDate || "",
-          ticket_count: result.legCount,
+          ticket_count: countConfirmedAlternateLegs(result.legs, result.legCount),
           is_complete: result.isComplete,
           lowest_fare: lowestDiscoveredFare,
         },
@@ -438,7 +438,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
         to_code: toCode,
         journey_date: journeyDate || "",
         is_direct_available: isDirectAvailable,
-        ticket_count: result?.legCount ?? foundSeats.length,
+        ticket_count: result ? countConfirmedAlternateLegs(result.legs, result.legCount) : foundSeats.length,
         has_alternate_result: Boolean(result),
       },
     });
@@ -477,7 +477,9 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     classCode: directBookingClass,
   });
 
-  const discoveredCount = result?.legCount ?? foundSeats.length;
+  const discoveredCount = result
+    ? countConfirmedAlternateLegs(result.legs, result.legCount)
+    : foundSeats.length;
 
   return (
     <li

@@ -6,6 +6,7 @@ import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics/track";
 import { cn } from "@/lib/utils";
 import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDisplay";
+import { countConfirmedAlternateLegs } from "@/lib/trainSearchV2Sort";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
@@ -656,6 +657,12 @@ export function AlternatePathContent({
     [altResult],
   );
 
+  /** Bookable legs only — realtime filler hops are not tickets. */
+  const confirmedLegCount = useMemo(
+    () => countConfirmedAlternateLegs(altResult?.legs, altResult?.legCount),
+    [altResult],
+  );
+
   // One-click "search all other trains" for the same route/date — shown once the
   // search is done and this train can't fully confirm the journey (no complete
   // path, or an error). Navigates to the homepage route search (which auto-runs
@@ -796,8 +803,8 @@ export function AlternatePathContent({
                   )}
                 </div>
                 <p className="mt-1 text-xs text-slate-600">
-                  Full journey covered in {altResult.legCount} confirmed ticket
-                  {altResult.legCount === 1 ? "" : "s"}
+                  Full journey covered in {confirmedLegCount} confirmed ticket
+                  {confirmedLegCount === 1 ? "" : "s"}
                 </p>
               </div>
             )}

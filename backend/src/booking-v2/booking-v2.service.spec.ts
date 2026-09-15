@@ -67,7 +67,7 @@ function altResult(
         if (sum == null || l.fare == null) return null;
         return sum + l.fare;
       }, 0),
-    legCount: legs.length,
+    legCount: legs.filter((l) => l.segmentKind === 'confirmed').length,
     isComplete:
       legs.length > 0 &&
       legs.every((l) => l.segmentKind === 'confirmed') &&

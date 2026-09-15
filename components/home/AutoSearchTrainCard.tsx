@@ -10,6 +10,7 @@ import type {
   AlternatePathsResponse,
   TrainListItem,
 } from "@/components/booking-v2/alternatePathsTypes";
+import { countConfirmedAlternateLegs } from "@/lib/trainSearchV2Sort";
 import { TrainChartAlertSection } from "@/components/home/TrainChartAlertSection";
 
 
@@ -87,7 +88,7 @@ export function AutoSearchTrainCard({
           from_code: fromCode,
           to_code: toCode,
           journey_date: journeyDate || "",
-          ticket_count: result.legCount,
+          ticket_count: countConfirmedAlternateLegs(result.legs, result.legCount),
           is_complete: result.isComplete,
         },
       });
@@ -246,6 +247,11 @@ export function AutoSearchTrainCard({
     });
   };
 
+  // Bookable legs only — realtime filler hops are not tickets.
+  const confirmedCount = result
+    ? countConfirmedAlternateLegs(result.legs, result.legCount)
+    : 0;
+
   return (
     <li className="rounded-xl border border-blue-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg flex flex-col md:flex-row md:items-stretch justify-between gap-5">
       {/* Left Column: Header Info + Live Stream / Completed Results */}
@@ -357,7 +363,7 @@ export function AutoSearchTrainCard({
               {result.legs && result.legs.length > 0 ? (
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm font-bold text-slate-900">
-                    🎉 Found {result.legCount} confirmed ticket{result.legCount > 1 ? "s" : ""}!
+                    🎉 Found {confirmedCount} confirmed ticket{confirmedCount > 1 ? "s" : ""}!
                   </p>
 
                   <button
@@ -371,7 +377,7 @@ export function AutoSearchTrainCard({
                           from_code: fromCode,
                           to_code: toCode,
                           journey_date: journeyDate || "",
-                          ticket_count: result.legCount,
+                          ticket_count: countConfirmedAlternateLegs(result.legs, result.legCount),
                           is_complete: result.isComplete,
                         },
                       });

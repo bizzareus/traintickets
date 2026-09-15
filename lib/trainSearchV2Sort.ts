@@ -59,6 +59,25 @@ export function calculateConfirmedDurationMinutes(legs: AlternateLeg[] = []): nu
 }
 
 /**
+ * Counts bookable legs in an alternate-paths result. `segmentKind` is the
+ * source of truth; `legCount` is only a fallback for stale cached payloads
+ * written before legCount excluded check_realtime filler hops.
+ */
+export function countConfirmedAlternateLegs(
+  legs: AlternateLeg[] | undefined | null,
+  fallback?: number,
+): number {
+  if (legs && legs.length > 0) {
+    let n = 0;
+    for (const leg of legs) {
+      if (leg.segmentKind === "confirmed") n++;
+    }
+    return n;
+  }
+  return fallback ?? 0;
+}
+
+/**
  * Helper to extract ScanMeta from AlternatePathsResponse.
  */
 export function extractScanMetaFromResult(result: AlternatePathsResponse): TrainScanMeta {
@@ -66,7 +85,7 @@ export function extractScanMetaFromResult(result: AlternatePathsResponse): Train
   return {
     isComplete: Boolean(result.isComplete && result.legs && result.legs.length > 0),
     confirmedDurationMinutes,
-    legCount: result.legCount ?? result.legs?.length ?? 0,
+    legCount: countConfirmedAlternateLegs(result.legs, result.legCount),
   };
 }
 

@@ -128,7 +128,7 @@ export function alternatePathMiddleChainUnavailable(trainNumber: string): MockAl
     trainNumber,
     legs,
     totalFare: 300,
-    legCount: legs.length,
+    legCount: 2,
     isComplete: false,
     stationCodesOnRoute: ["ORIG", "A", "B", "C", "D", "MID", "DEST"],
     remainderMergedSchedule: null,
@@ -224,7 +224,7 @@ export function alternatePathWithCollapsedRemainder(trainNumber: string): MockAl
     trainNumber,
     legs,
     totalFare: 200,
-    legCount: 3,
+    legCount: 1,
     isComplete: false,
     stationCodesOnRoute: ["ORIG", "MID", "PEN", "DEST"],
     remainderMergedSchedule: {
@@ -259,7 +259,7 @@ export function alternatePathLongRealtimeChain(
     trainNumber,
     legs,
     totalFare: null,
-    legCount: legs.length,
+    legCount: 0,
     isComplete: false,
     stationCodesOnRoute: codes,
     remainderMergedSchedule: {

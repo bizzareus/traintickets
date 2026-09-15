@@ -140,6 +140,7 @@ export type FindAlternatePathsResult = {
   trainNumber: string;
   legs: AlternatePathLeg[];
   totalFare: number | null;
+  /** Number of confirmed (bookable) legs — excludes check_realtime filler hops. */
   legCount: number;
   isComplete: boolean;
   stationCodesOnRoute: string[];
@@ -154,6 +155,22 @@ export type FindAlternatePathsResult = {
   debugLog: string[];
   trainStartDate?: string;
 };
+
+/**
+ * Bookable legs only — `check_realtime` filler hops pad partial journeys
+ * station-by-station and are not tickets. Backs the "Found N confirmed
+ * tickets" copy via `legCount` / the `done` progress event.
+ */
+function countConfirmedLegs(
+  legs: Pick<AlternatePathLeg, 'segmentKind'>[] | undefined | null,
+): number {
+  if (!legs) return 0;
+  let n = 0;
+  for (const l of legs) {
+    if (l.segmentKind === 'confirmed') n++;
+  }
+  return n;
+}
 
 export type BookingV2TrainSearchRow = {
   trainNumber: string;
@@ -1159,7 +1176,14 @@ export class BookingV2Service {
         );
         if (!hasStaleTrainDeparted) {
           this.logger.log(`[alt-paths-cache] HIT key=${key}`);
-          return { result: hit, cached: true };
+          // Normalize legacy entries stored before legCount excluded
+          // check_realtime filler hops.
+          const confirmedCount = countConfirmedLegs(hit.legs);
+          const result =
+            hit.legCount !== confirmedCount
+              ? { ...hit, legCount: confirmedCount }
+              : hit;
+          return { result, cached: true };
         }
         this.logger.log(
           `[alt-paths-cache] IGNORED STALE HIT (contains Train Departed) key=${key}`,
@@ -1220,13 +1244,18 @@ export class BookingV2Service {
     const finish = (
       result: FindAlternatePathsResult,
     ): FindAlternatePathsResult => {
+      // legCount is surfaced in the UI as "confirmed tickets", so it must
+      // count only confirmed legs — not the check_realtime filler hops that
+      // pad partial journeys station-by-station (those collapse into a single
+      // "Not Available" card in the modal).
+      const confirmedCount = countConfirmedLegs(result.legs);
       onProgress?.({
         type: 'done',
         isComplete: result.isComplete,
-        legCount: result.legs.length,
+        legCount: confirmedCount,
         totalFare: result.totalFare,
       });
-      return result;
+      return { ...result, legCount: confirmedCount };
     };
 
     // 1. Try standard/direct route first (no offsets)
@@ -1684,9 +1713,16 @@ export class BookingV2Service {
     }
 
     logStep(
-      `Done: isComplete=${isComplete} legs=${legs.length}${totalFare != null ? ` totalFare=₹${totalFare}` : ''}`,
+      `Done: isComplete=${isComplete} legs=${legs.length} confirmed=${confirmedLegs.length}${totalFare != null ? ` totalFare=₹${totalFare}` : ''}`,
     );
-    emit({ type: 'done', isComplete, legCount: legs.length, totalFare });
+    // legCount backs the "Found N confirmed tickets" copy, so it counts only
+    // confirmed legs — realtime filler hops are not bookable tickets.
+    emit({
+      type: 'done',
+      isComplete,
+      legCount: confirmedLegs.length,
+      totalFare,
+    });
 
     const journeyDest = stations[targetIdx] ?? to;
     const remainderEp = collapsibleRealtimeRemainderEndpoints(
@@ -1706,7 +1742,7 @@ export class BookingV2Service {
       trainNumber,
       legs,
       totalFare,
-      legCount: legs.length,
+      legCount: confirmedLegs.length,
       isComplete,
       stationCodesOnRoute: stations,
       stationNameMap,

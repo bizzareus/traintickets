@@ -201,7 +201,7 @@ describe("Train Search V2 - Prioritized Multi-Tier Sorting Logic", () => {
       trainNumber: "12001",
       legs,
       totalFare: 1600,
-      legCount: 3,
+      legCount: 2,
       isComplete: false,
       stationCodesOnRoute: ["NDLS", "GWL", "BPL", "ET"],
     };
@@ -209,6 +209,50 @@ describe("Train Search V2 - Prioritized Multi-Tier Sorting Logic", () => {
     const meta = extractScanMetaFromResult(response);
     assert.equal(meta.isComplete, false);
     assert.equal(meta.confirmedDurationMinutes, 480);
-    assert.equal(meta.legCount, 3);
+    assert.equal(meta.legCount, 2);
+  });
+
+  // REGRESSION: stale payloads with legCount counting realtime filler hops
+  // must still report only confirmed legs (e.g. 1 confirmed + 22 realtime
+  // bridges collapsing to one "Not Available" card must report 1, not 23).
+  test("Test Case 6: Ignores stale inflated legCount, counts confirmed legs only", () => {
+    const legs: AlternateLeg[] = [
+      {
+        from: "GKP",
+        to: "ET",
+        segmentKind: "confirmed",
+        travelClass: "1A",
+        railDataStatus: "AVL",
+        availablityStatus: "AVAILABLE 1",
+        predictionPercentage: null,
+        availabilityDisplayName: "AVL 1",
+        fare: 3165,
+        durationMinutes: 1265,
+      },
+      {
+        from: "ET",
+        to: "LTT",
+        segmentKind: "check_realtime",
+        travelClass: null,
+        railDataStatus: null,
+        availablityStatus: null,
+        predictionPercentage: null,
+        availabilityDisplayName: null,
+        fare: null,
+        durationMinutes: 819,
+      },
+    ];
+
+    const response: AlternatePathsResponse = {
+      trainNumber: "15018",
+      legs,
+      totalFare: null,
+      legCount: 23,
+      isComplete: false,
+      stationCodesOnRoute: ["GKP", "ET", "LTT"],
+    };
+
+    const meta = extractScanMetaFromResult(response);
+    assert.equal(meta.legCount, 1);
   });
 });
