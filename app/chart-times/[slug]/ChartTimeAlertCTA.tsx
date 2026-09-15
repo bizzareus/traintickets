@@ -9,8 +9,10 @@ import {
 } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
+import { isAdminUser } from "@/lib/admin";
 import {
   CHART_ALERT_PRICE_RUPEES,
+  createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
 } from "@/lib/chart-alert-payments";
@@ -204,6 +206,10 @@ export default function ChartTimeAlertCTA({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [adminFree, setAdminFree] = useState(false);
+  useEffect(() => {
+    setAdminFree(isAdminUser());
+  }, []);
   const [subscribedJourney, setSubscribedJourney] =
     useState<ChartAlertPaymentModalJourney | null>(null);
   const [payment, setPayment] = useState<{
@@ -251,7 +257,8 @@ export default function ChartTimeAlertCTA({
 
     // toStationCode is optional — empty means the user just wants a
     // "chart prepared" ping with a shortlink to the search page.
-    // Payment opens in an in-page iframe modal (no redirect away).
+    // Admins (localStorage admin flag) skip the payment popup and create
+    // the alert directly; everyone else pays via the in-page iframe modal.
     setLoading(true);
     setError(null);
     try {
@@ -264,6 +271,31 @@ export default function ChartTimeAlertCTA({
         journeyDate: journeyDate.trim().slice(0, 10),
         classCode: classCode.trim().toUpperCase(),
       };
+      if (adminFree) {
+        await createFreeChartAlert({
+          ...journey,
+          stationCodesToMonitor: [stationCode.trim().toUpperCase()],
+          email: em || undefined,
+          mobile: mob || undefined,
+          ...pinnedChartArgs(
+            stations.find((s) => s.stationCode === stationCode),
+          ),
+        });
+        setSubscribedJourney(journey);
+        trackAlertRequested({
+          success: true,
+          source: "chart_times_cta",
+          trainNumber: journey.trainNumber,
+          trainName: journey.trainName,
+          fromCode: journey.fromStationCode,
+          toCode: journey.toStationCode,
+          journeyDate: journey.journeyDate,
+          classCode: journey.classCode,
+          email: em || undefined,
+          mobile: mob || undefined,
+        });
+        return;
+      }
       const link = await startChartAlertPayment(
         {
           ...journey,
@@ -472,8 +504,12 @@ export default function ChartTimeAlertCTA({
             className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading
-              ? "Opening payment…"
-              : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & set alert`}
+              ? adminFree
+                ? "Setting up…"
+                : "Opening payment…"
+              : adminFree
+                ? "Set alert free (admin)"
+                : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & set alert`}
           </button>
           <button
             type="button"

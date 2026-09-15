@@ -107,7 +107,19 @@ export async function startChartAlertPayment(
   return link;
 }
 
-/** Normalize backend `{ error }`, axios, and generic errors to a message. */
+/**
+ * Free alert creation for admins (localStorage admin flag). POSTs directly
+ * to the journey monitoring engine — no payment link, no popup. Works while
+ * `REQUIRE_JOURNEY_PAYMENT` is off; throws otherwise.
+ */
+export async function createFreeChartAlert(
+  input: ChartAlertPaymentCreateInput,
+): Promise<void> {
+  await apiClient.post("/api/availability/journey", input);
+}
+
+/** Normalize backend `{ error }`, axios, and generic errors to a message.
+ */
 export function getChartAlertErrorMessage(
   err: unknown,
   fallback: string,

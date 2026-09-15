@@ -8,8 +8,10 @@ import {
 } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
+import { isAdminUser } from "@/lib/admin";
 import {
   CHART_ALERT_PRICE_RUPEES,
+  createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
 } from "@/lib/chart-alert-payments";
@@ -46,6 +48,10 @@ export function TrainChartAlertSection({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [adminFree, setAdminFree] = useState(false);
+  useEffect(() => {
+    setAdminFree(isAdminUser());
+  }, []);
   const [subscribedJourney, setSubscribedJourney] =
     useState<ChartAlertPaymentModalJourney | null>(null);
   const [payment, setPayment] = useState<{
@@ -103,6 +109,31 @@ export function TrainChartAlertSection({
         journeyDate: journeyDate?.trim().slice(0, 10) || "",
         classCode: selectedClass.trim().toUpperCase(),
       };
+      // Admins (localStorage admin flag) skip the payment popup and create
+      // the alert directly; everyone else pays via the in-page iframe modal.
+      if (adminFree) {
+        await createFreeChartAlert({
+          ...journey,
+          stationCodesToMonitor: [fromCode.trim().toUpperCase()],
+          email: em || undefined,
+          mobile: mob || undefined,
+        });
+        setModalOpen(false);
+        setSubscribedJourney(journey);
+        trackAlertRequested({
+          success: true,
+          source: "search_panel",
+          trainNumber: journey.trainNumber,
+          trainName: journey.trainName,
+          fromCode: journey.fromStationCode,
+          toCode: journey.toStationCode,
+          journeyDate: journey.journeyDate,
+          classCode: journey.classCode,
+          email: em || undefined,
+          mobile: mob || undefined,
+        });
+        return;
+      }
       const link = await startChartAlertPayment(
         {
           ...journey,
@@ -346,19 +377,21 @@ export function TrainChartAlertSection({
                     {loading ? (
                       <>
                         <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                        Opening payment…
+                        {adminFree ? "Setting up…" : "Opening payment…"}
                       </>
                     ) : (
                       <>
                         <BellRing className="h-4 w-4" />
-                        Pay ₹{CHART_ALERT_PRICE_RUPEES} & subscribe
+                        {adminFree
+                          ? "Set alert free (admin)"
+                          : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & subscribe`}
                       </>
                     )}
                   </button>
                   <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
-                    One-time ₹{CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay
-                    securely without leaving this page — the alert activates
-                    once payment is verified.
+                    {adminFree
+                      ? "Admin mode — no charge, the alert is created directly."
+                      : `One-time ₹${CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay securely without leaving this page — the alert activates once payment is verified.`}
                   </p>
                 </div>
               </form>

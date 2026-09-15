@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { BellRing, X } from "lucide-react";
+import { BellRing, CheckCircle2, X } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import {
   trackAnalyticsEvent,
@@ -9,8 +9,10 @@ import {
 } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
+import { isAdminUser } from "@/lib/admin";
 import {
   CHART_ALERT_PRICE_RUPEES,
+  createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
 } from "@/lib/chart-alert-payments";
@@ -18,6 +20,7 @@ import {
   ChartAlertPaymentModal,
   type ChartAlertPaymentModalJourney,
 } from "@/components/payments/ChartAlertPaymentModal";
+import { ChartAlertSuccessBox } from "@/components/payments/ChartAlertSuccessBox";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -161,6 +164,12 @@ export default function RowAlertButton({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [subscribedJourney, setSubscribedJourney] =
+    useState<ChartAlertPaymentModalJourney | null>(null);
+  const [adminFree, setAdminFree] = useState(false);
+  useEffect(() => {
+    setAdminFree(isAdminUser());
+  }, []);
   const [payment, setPayment] = useState<{
     payUrl: string;
     ref: string;
@@ -206,8 +215,8 @@ export default function RowAlertButton({
 
     // toStationCode is optional — empty means the user just wants a
     // "chart prepared" ping with a shortlink to the search page.
-    // Subscribing is paid: create a Muzobox payment link and open it in an
-    // in-page iframe modal (no redirect away).
+    // Admins (localStorage admin flag) skip the payment popup and create
+    // the alert directly; everyone else pays via the in-page iframe modal.
     setLoading(true);
     setError(null);
     try {
@@ -220,6 +229,39 @@ export default function RowAlertButton({
         journeyDate: journeyDate.trim().slice(0, 10),
         classCode: classCode.trim().toUpperCase(),
       };
+      if (adminFree) {
+        await createFreeChartAlert({
+          ...journey,
+          stationCodesToMonitor: [stationCode.trim().toUpperCase()],
+          email: em || undefined,
+          mobile: mob || undefined,
+          chartTimeLocal: chartTimeLocal?.trim() || undefined,
+          chartOneDayOffset:
+            chartOneDayOffset === null || chartOneDayOffset === undefined
+              ? undefined
+              : chartOneDayOffset,
+          chartTwoTimeLocal: chartTwoTimeLocal?.trim() || undefined,
+          chartTwoDayOffset:
+            chartTwoDayOffset === null || chartTwoDayOffset === undefined
+              ? undefined
+              : chartTwoDayOffset,
+        });
+        setOpen(false);
+        setSubscribedJourney(journey);
+        trackAlertRequested({
+          success: true,
+          source: "chart_times_row",
+          trainNumber: journey.trainNumber,
+          trainName: journey.trainName,
+          fromCode: journey.fromStationCode,
+          toCode: journey.toStationCode,
+          journeyDate: journey.journeyDate,
+          classCode: journey.classCode,
+          email: em || undefined,
+          mobile: mob || undefined,
+        });
+        return;
+      }
       const link = await startChartAlertPayment(
         {
           ...journey,
@@ -275,8 +317,14 @@ export default function RowAlertButton({
 
   return (
     <>
-      <button
-        type="button"
+      {subscribedJourney ? (
+        <span className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 whitespace-nowrap">
+          <CheckCircle2 className="h-3.5 w-3.5" />
+          Alert set
+        </span>
+      ) : (
+        <button
+          type="button"
           onClick={() => {
             setOpen(true);
             setError(null);
@@ -290,11 +338,12 @@ export default function RowAlertButton({
               },
             });
           }}
-        className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 whitespace-nowrap touch-manipulation"
-      >
-        <BellRing className="h-3.5 w-3.5" />
-        Get Alert
-      </button>
+          className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 whitespace-nowrap touch-manipulation"
+        >
+          <BellRing className="h-3.5 w-3.5" />
+          Get Alert
+        </button>
+      )}
 
       {open && (
         <div
@@ -341,13 +390,16 @@ export default function RowAlertButton({
               — with a 100% automated refund guarantee if no full ticket is
               available.
             </p>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                void submit();
-              }}
-              className="flex flex-col gap-3"
-            >
+            {subscribedJourney ? (
+              <ChartAlertSuccessBox journey={subscribedJourney} compact />
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  void submit();
+                }}
+                className="flex flex-col gap-3"
+              >
               {destinationOptions.length > 0 && (
                 <label className="text-xs font-semibold text-slate-700">
                   <span className="mb-1 block">Destination station</span>
@@ -432,15 +484,20 @@ export default function RowAlertButton({
                 className="mt-1 inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {loading
-                  ? "Opening payment…"
-                  : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & set alert`}
+                  ? adminFree
+                    ? "Setting up…"
+                    : "Opening payment…"
+                  : adminFree
+                    ? "Set alert free (admin)"
+                    : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & set alert`}
               </button>
               <p className="text-[11px] leading-relaxed text-slate-500">
-                One-time ₹{CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay
-                securely without leaving this page — the alert activates once
-                payment is verified.
+                {adminFree
+                  ? "Admin mode — no charge, the alert is created directly."
+                  : `One-time ₹${CHART_ALERT_PRICE_RUPEES} charge. You&apos;ll pay securely without leaving this page — the alert activates once payment is verified.`}
               </p>
             </form>
+            )}
           </div>
         </div>
       )}
@@ -452,6 +509,10 @@ export default function RowAlertButton({
           paymentRef={payment.ref}
           journey={payment.journey}
           source="row"
+          onPaid={(j) => {
+            setSubscribedJourney(j);
+            setOpen(false);
+          }}
         />
       )}
     </>
