@@ -48,6 +48,10 @@ export class ChartAlertPaymentsController {
         email: body.email?.trim() || undefined,
         mobile: body.mobile?.trim() || undefined,
         trainStartDate: body.trainStartDate,
+        chartTimeLocal: body.chartTimeLocal?.trim() || undefined,
+        chartOneDayOffset: body.chartOneDayOffset,
+        chartTwoTimeLocal: body.chartTwoTimeLocal?.trim() || undefined,
+        chartTwoDayOffset: body.chartTwoDayOffset,
       });
     } catch (err) {
       if (

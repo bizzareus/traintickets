@@ -101,6 +101,50 @@ function stationDayCount(station: unknown): number {
   return 1;
 }
 
+/**
+ * Chart time pinned by the caller (e.g. the chart-times page row the user
+ * subscribed from). Anchored at the train-start date, like cached offsets.
+ */
+export type PinnedChartTime = {
+  chartTimeLocal?: string;
+  chartOneDayOffset?: number | null;
+  chartTwoTimeLocal?: string;
+  chartTwoDayOffset?: number | null;
+};
+
+const CHART_CLOCK_RE = /^(\d{1,2}):(\d{2})$/;
+
+/** Validated pinned time, or null when absent/invalid (callers fall back). */
+export function readPinnedChartTime(params: PinnedChartTime): {
+  chartTimeLocal: string;
+  chartOneDayOffset: number;
+  chartTwoTimeLocal?: string;
+  chartTwoDayOffset: number;
+} | null {
+  const m = String(params.chartTimeLocal ?? '').trim().match(CHART_CLOCK_RE);
+  if (!m) return null;
+  const h = Number(m[1]);
+  const min = Number(m[2]);
+  if (h < 0 || h > 23 || min < 0 || min > 59) return null;
+  const toOffset = (v: unknown): number => {
+    const n = Number(v);
+    return v !== undefined && v !== null && v !== '' && Number.isInteger(n)
+      ? n
+      : 0;
+  };
+  const two = String(params.chartTwoTimeLocal ?? '').trim().match(CHART_CLOCK_RE);
+  return {
+    chartTimeLocal: `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`,
+    chartOneDayOffset: toOffset(params.chartOneDayOffset),
+    ...(two
+      ? {
+          chartTwoTimeLocal: `${two[1].padStart(2, '0')}:${two[2]}`,
+          chartTwoDayOffset: toOffset(params.chartTwoDayOffset),
+        }
+      : {}),
+  };
+}
+
 function isRetryableRailFailureText(text: string): boolean {
   return /fetch failed|ETIMEDOUT|ECONNRESET|ECONNREFUSED|EAI_AGAIN|ENOTFOUND|network|temporarily unavailable|unable to contact rail systems|IRCTC schedule service unavailable|Availability request fail/i.test(
     text,
@@ -472,7 +516,7 @@ export class JourneyTaskService {
       stationCodesToMonitor?: string[];
       email?: string;
       mobile?: string;
-    },
+    } & PinnedChartTime,
     /** When set (e.g. after POST journey/validate), skips a duplicate schedule fetch. */
     opts?: {
       validatedContext?: JourneyValidContext;
@@ -568,10 +612,33 @@ export class JourneyTaskService {
     const taskSpecs: Array<{ stationCode: string; chartAt: Date }> = [];
     const trainName = params.trainName ?? schedule.trainName;
 
+    // Caller-pinned time (chart-times page row) wins over cache/estimate, and
+    // hydration is skipped so a later probe cannot overwrite the pinned time.
+    const pinned = readPinnedChartTime(params);
     const entry = chartTimesWithSecond.get(fromCode);
-    const needsAsyncHydration = !entry;
+    const needsAsyncHydration = !entry && !pinned;
 
-    if (entry) {
+    if (pinned) {
+      taskSpecs.push({
+        stationCode: fromCode,
+        chartAt: buildChartAtWithDayOffset(
+          trainStartDate,
+          pinned.chartTimeLocal,
+          pinned.chartOneDayOffset,
+        ),
+      });
+      if (pinned.chartTwoTimeLocal) {
+        taskSpecs.push({
+          stationCode: fromCode,
+          chartAt: buildChartAtWithDayOffset(
+            trainStartDate,
+            pinned.chartTwoTimeLocal,
+            pinned.chartTwoDayOffset,
+          ),
+        });
+      }
+      await this.upsertPinnedChartTime(trainNumber, fromCode, pinned);
+    } else if (entry) {
       const stationCode = fromCode;
 
       taskSpecs.push({
@@ -738,6 +805,51 @@ export class JourneyTaskService {
     return Boolean(existing);
   }
 
+  /**
+   * Writes a caller-pinned chart time back to the chart-time cache so the DB
+   * reflects the page the user subscribed from. Best-effort: never fails alert
+   * creation. Only time fields are touched; remote-station data is preserved.
+   */
+  private async upsertPinnedChartTime(
+    trainNumber: string,
+    stationCode: string,
+    pinned: NonNullable<ReturnType<typeof readPinnedChartTime>>,
+  ): Promise<void> {
+    try {
+      const num = to5DigitTrainNo(trainNumber);
+      const code = stationCode.trim().toUpperCase();
+      if (!num || !code) return;
+      await this.prisma.trainStationChartTime.upsert({
+        where: { trainNumber_stationCode: { trainNumber: num, stationCode: code } },
+        create: {
+          trainNumber: num,
+          stationCode: code,
+          chartTimeLocal: pinned.chartTimeLocal,
+          chartOneDayOffset: pinned.chartOneDayOffset,
+          chartTwoTimeLocal: pinned.chartTwoTimeLocal ?? null,
+          chartTwoDayOffset: pinned.chartTwoTimeLocal
+            ? pinned.chartTwoDayOffset
+            : null,
+        },
+        update: {
+          chartTimeLocal: pinned.chartTimeLocal,
+          chartOneDayOffset: pinned.chartOneDayOffset,
+          chartTwoTimeLocal: pinned.chartTwoTimeLocal ?? null,
+          chartTwoDayOffset: pinned.chartTwoTimeLocal
+            ? pinned.chartTwoDayOffset
+            : null,
+        },
+      });
+      this.logger.log(
+        `[journey/pinned-chart] cache updated for train=${num} station=${code} chart=${pinned.chartTimeLocal} off=${pinned.chartOneDayOffset}`,
+      );
+    } catch (err) {
+      this.logger.warn(
+        `[journey/pinned-chart] cache update failed: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+  }
+
   async queueJourneyMonitoring(
     params: {
       trainNumber: string;
@@ -750,7 +862,7 @@ export class JourneyTaskService {
       email?: string;
       mobile?: string;
       trainStartDate?: string;
-    },
+    } & PinnedChartTime,
     journeyRequestId?: string,
   ): Promise<boolean> {
     try {
@@ -832,7 +944,7 @@ export class JourneyTaskService {
       email?: string;
       mobile?: string;
       trainStartDate?: string;
-    },
+    } & PinnedChartTime,
     journeyRequestId?: string,
   ): Promise<boolean> {
     if (params.toStationCode) {
@@ -960,17 +1072,42 @@ export class JourneyTaskService {
 
     // Resolve chartAt for the boarding station (uses cached chart times
     // when available; falls back to the 4h-before-departure estimate when not).
-    const chartTimesWithSecond =
-      await this.chartTime.getChartTimesWithSecondChartForTrain(
-        trainNumber,
-        [fromCode],
-        trainStartDateObj,
-      );
+    // A caller-pinned time (chart-times page row) wins over both, is written
+    // back to the cache, and skips async hydration so a later probe cannot
+    // overwrite the pinned time.
+    const pinned = readPinnedChartTime(params);
+    const chartTimesWithSecond = pinned
+      ? new Map()
+      : await this.chartTime.getChartTimesWithSecondChartForTrain(
+          trainNumber,
+          [fromCode],
+          trainStartDateObj,
+        );
     const entry = chartTimesWithSecond.get(fromCode);
-    const needsAsyncHydration = !entry;
+    const needsAsyncHydration = !entry && !pinned;
 
     const taskSpecs: Array<{ stationCode: string; chartAt: Date }> = [];
-    if (entry) {
+    if (pinned) {
+      taskSpecs.push({
+        stationCode: fromCode,
+        chartAt: buildChartAtWithDayOffset(
+          trainStartDateObj,
+          pinned.chartTimeLocal,
+          pinned.chartOneDayOffset,
+        ),
+      });
+      if (pinned.chartTwoTimeLocal) {
+        taskSpecs.push({
+          stationCode: fromCode,
+          chartAt: buildChartAtWithDayOffset(
+            trainStartDateObj,
+            pinned.chartTwoTimeLocal,
+            pinned.chartTwoDayOffset,
+          ),
+        });
+      }
+      await this.upsertPinnedChartTime(trainNumber, fromCode, pinned);
+    } else if (entry) {
       taskSpecs.push({
         stationCode: fromCode,
         chartAt: buildChartAtWithDayOffset(

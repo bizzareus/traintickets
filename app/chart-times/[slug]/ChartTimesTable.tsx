@@ -83,6 +83,10 @@ export default function ChartTimesTable({
         }))}
         availableClasses={availableClasses}
         initialJourneyDate={journeyDate}
+        chartTimeLocal={s.chartTimeLocal}
+        chartOneDayOffset={s.chartOneDayOffset}
+        chartTwoTimeLocal={s.chartTwoTimeLocal}
+        chartTwoDayOffset={s.chartTwoDayOffset}
       />
     ) : null;
 

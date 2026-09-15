@@ -59,6 +59,10 @@ export default function RowAlertButton({
   destinationStations,
   availableClasses: initialAvailableClasses,
   initialJourneyDate,
+  chartTimeLocal,
+  chartOneDayOffset,
+  chartTwoTimeLocal,
+  chartTwoDayOffset,
 }: {
   trainNumber: string;
   trainName: string;
@@ -67,6 +71,11 @@ export default function RowAlertButton({
   destinationStations?: StationOption[];
   availableClasses?: string[];
   initialJourneyDate?: string | null;
+  /** Pinned chart times from the table row — scheduled + written to DB. */
+  chartTimeLocal?: string | null;
+  chartOneDayOffset?: number | null;
+  chartTwoTimeLocal?: string | null;
+  chartTwoDayOffset?: number | null;
 }) {
   const [open, setOpen] = useState(false);
   const destinationOptions = useMemo(
@@ -217,6 +226,16 @@ export default function RowAlertButton({
           stationCodesToMonitor: [stationCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,
+          chartTimeLocal: chartTimeLocal?.trim() || undefined,
+          chartOneDayOffset:
+            chartOneDayOffset === null || chartOneDayOffset === undefined
+              ? undefined
+              : chartOneDayOffset,
+          chartTwoTimeLocal: chartTwoTimeLocal?.trim() || undefined,
+          chartTwoDayOffset:
+            chartTwoDayOffset === null || chartTwoDayOffset === undefined
+              ? undefined
+              : chartTwoDayOffset,
         },
         "row",
       );

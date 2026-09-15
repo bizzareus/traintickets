@@ -19,6 +19,11 @@ export interface ChartAlertPaymentCreateInput {
   email?: string;
   mobile?: string;
   trainStartDate?: string;
+  /** Pinned chart times from the chart-times page row (optional). */
+  chartTimeLocal?: string;
+  chartOneDayOffset?: number;
+  chartTwoTimeLocal?: string;
+  chartTwoDayOffset?: number;
 }
 
 export interface ChartAlertPaymentLink {

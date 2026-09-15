@@ -29,6 +29,11 @@ export type ChartAlertJourneyInput = {
   email?: string;
   mobile?: string;
   trainStartDate?: string;
+  /** Caller-pinned chart times (chart-times page row) — see journey queue. */
+  chartTimeLocal?: string;
+  chartOneDayOffset?: number;
+  chartTwoTimeLocal?: string;
+  chartTwoDayOffset?: number;
 };
 
 export type PaymentLinkResult = {
@@ -174,6 +179,10 @@ export class ChartAlertPaymentsService {
           email: input.email,
           mobile: input.mobile,
           trainStartDate: input.trainStartDate,
+          chartTimeLocal: input.chartTimeLocal,
+          chartOneDayOffset: input.chartOneDayOffset,
+          chartTwoTimeLocal: input.chartTwoTimeLocal,
+          chartTwoDayOffset: input.chartTwoDayOffset,
         },
       },
     });

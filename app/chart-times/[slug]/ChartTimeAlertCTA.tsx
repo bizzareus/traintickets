@@ -35,7 +35,15 @@ const CLASS_LABELS: Record<string, string> = {
   FC: "FC (First Class)",
 };
 
-type StationOption = { stationCode: string; stationName: string };
+type StationOption = {
+  stationCode: string;
+  stationName: string;
+  /** Pinned chart times from the page row — scheduled + written to DB. */
+  chartTimeLocal?: string | null;
+  chartOneDayOffset?: number | null;
+  chartTwoTimeLocal?: string | null;
+  chartTwoDayOffset?: number | null;
+};
 
 function ymdPlusDays(days: number): string {
   const d = new Date();
@@ -47,6 +55,32 @@ function ymdPlusDays(days: number): string {
 
 function todayYmd(): string {
   return ymdPlusDays(0);
+}
+
+/** Pinned chart-time args for the subscription, omitting absent values. */
+function pinnedChartArgs(s: StationOption | undefined): {
+  chartTimeLocal?: string;
+  chartOneDayOffset?: number;
+  chartTwoTimeLocal?: string;
+  chartTwoDayOffset?: number;
+} {
+  if (!s?.chartTimeLocal?.trim()) return {};
+  const out: {
+    chartTimeLocal?: string;
+    chartOneDayOffset?: number;
+    chartTwoTimeLocal?: string;
+    chartTwoDayOffset?: number;
+  } = { chartTimeLocal: s.chartTimeLocal.trim() };
+  if (s.chartOneDayOffset !== null && s.chartOneDayOffset !== undefined) {
+    out.chartOneDayOffset = s.chartOneDayOffset;
+  }
+  if (s.chartTwoTimeLocal?.trim()) {
+    out.chartTwoTimeLocal = s.chartTwoTimeLocal.trim();
+  }
+  if (s.chartTwoDayOffset !== null && s.chartTwoDayOffset !== undefined) {
+    out.chartTwoDayOffset = s.chartTwoDayOffset;
+  }
+  return out;
 }
 
 /**
@@ -233,6 +267,9 @@ export default function ChartTimeAlertCTA({
           stationCodesToMonitor: [stationCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,
+          ...pinnedChartArgs(
+            stations.find((s) => s.stationCode === stationCode),
+          ),
         },
         "page",
       );

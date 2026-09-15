@@ -35,7 +35,34 @@ type NormalizedJourneyCreate = {
   email?: string;
   mobile?: string;
   trainStartDate?: string;
+  /**
+   * Caller-pinned chart times (e.g. from the chart-times page). When present
+   * and valid, task scheduling uses these instead of re-probing, and they
+   * are written back to the chart-time cache.
+   */
+  chartTimeLocal?: string;
+  chartOneDayOffset?: number;
+  chartTwoTimeLocal?: string;
+  chartTwoDayOffset?: number;
 };
+
+/** HH:MM (24h) or undefined when absent/invalid. */
+function normalizeChartClock(value: unknown): string | undefined {
+  const m = String(value ?? '')
+    .trim()
+    .match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return undefined;
+  const h = Number(m[1]);
+  const min = Number(m[2]);
+  if (h < 0 || h > 23 || min < 0 || min > 59) return undefined;
+  return `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`;
+}
+
+function normalizeDayOffset(value: unknown): number | undefined {
+  if (value === undefined || value === null || value === '') return undefined;
+  const n = Number(value);
+  return Number.isInteger(n) ? n : undefined;
+}
 
 function normalizeJourneyCreateParams(
   trainNumber: string,
@@ -48,6 +75,10 @@ function normalizeJourneyCreateParams(
   email?: string,
   mobile?: string,
   trainStartDate?: string,
+  chartTimeLocal?: string,
+  chartOneDayOffset?: number,
+  chartTwoTimeLocal?: string,
+  chartTwoDayOffset?: number,
 ): NormalizedJourneyCreate {
   return {
     trainNumber: String(trainNumber ?? '').trim(),
@@ -69,6 +100,10 @@ function normalizeJourneyCreateParams(
     email: email ? String(email).trim() : undefined,
     mobile: mobile ? String(mobile).trim() : undefined,
     trainStartDate: trainStartDate ? String(trainStartDate).trim() : undefined,
+    chartTimeLocal: normalizeChartClock(chartTimeLocal),
+    chartOneDayOffset: normalizeDayOffset(chartOneDayOffset),
+    chartTwoTimeLocal: normalizeChartClock(chartTwoTimeLocal),
+    chartTwoDayOffset: normalizeDayOffset(chartTwoDayOffset),
   };
 }
 
@@ -347,6 +382,10 @@ export class AvailabilityController {
     @Body('mobile') mobile?: string,
     @Body('trainStartDate') trainStartDate?: string,
     @Body('paymentRef') paymentRef?: string,
+    @Body('chartTimeLocal') chartTimeLocal?: string,
+    @Body('chartOneDayOffset') chartOneDayOffset?: number,
+    @Body('chartTwoTimeLocal') chartTwoTimeLocal?: string,
+    @Body('chartTwoDayOffset') chartTwoDayOffset?: number,
   ) {
     const normalized = normalizeJourneyCreateParams(
       trainNumber,
@@ -359,6 +398,10 @@ export class AvailabilityController {
       email,
       mobile,
       trainStartDate,
+      chartTimeLocal,
+      chartOneDayOffset,
+      chartTwoTimeLocal,
+      chartTwoDayOffset,
     );
 
     const errors: Array<{ code: string; message: string }> = [];
@@ -411,6 +454,36 @@ export class AvailabilityController {
         message:
           'Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9',
       });
+    }
+    // Pinned chart times are optional, but when supplied they must be valid —
+    // a malformed time would silently schedule the alert at the wrong moment.
+    if (chartTimeLocal?.trim() && !normalized.chartTimeLocal) {
+      errors.push({
+        code: 'INVALID_CHART_TIME',
+        message: 'chartTimeLocal must be in HH:MM 24-hour format',
+      });
+    }
+    if (chartTwoTimeLocal?.trim() && !normalized.chartTwoTimeLocal) {
+      errors.push({
+        code: 'INVALID_CHART_TIME',
+        message: 'chartTwoTimeLocal must be in HH:MM 24-hour format',
+      });
+    }
+    for (const [raw, name] of [
+      [chartOneDayOffset, 'chartOneDayOffset'],
+      [chartTwoDayOffset, 'chartTwoDayOffset'],
+    ] as const) {
+      if (
+        raw !== undefined &&
+        raw !== null &&
+        raw !== '' &&
+        !Number.isInteger(Number(raw))
+      ) {
+        errors.push({
+          code: 'INVALID_CHART_TIME',
+          message: `${name} must be an integer day offset`,
+        });
+      }
     }
 
     if (errors.length > 0) {

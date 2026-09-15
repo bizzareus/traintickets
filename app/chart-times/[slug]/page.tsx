@@ -242,6 +242,10 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           stations={data.stations.map((s) => ({
             stationCode: s.stationCode,
             stationName: s.stationName,
+            chartTimeLocal: s.chartTimeLocal,
+            chartOneDayOffset: s.chartOneDayOffset,
+            chartTwoTimeLocal: s.chartTwoTimeLocal,
+            chartTwoDayOffset: s.chartTwoDayOffset,
           }))}
           availableClasses={data.availableClasses}
           initialJourneyDate={journeyDate}
