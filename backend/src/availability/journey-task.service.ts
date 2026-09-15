@@ -1704,7 +1704,14 @@ export class JourneyTaskService {
               stationScheduleList: result.trainSchedule?.stationList,
             });
             let refundInfo: RefundInfo | null = null;
-            if (!isEndToEnd && this.refundsService) {
+            // No-destination chart-prepare alerts carry no end-to-end
+            // availability promise, so they are never auto-refunded
+            // (the refunds service enforces the same rule for all callers).
+            if (
+              !isEndToEnd &&
+              Boolean(task.toStationCode?.trim()) &&
+              this.refundsService
+            ) {
               try {
                 refundInfo = await this.refundsService.initiateRefundForJourney(
                   task.journeyRequestId,

@@ -66,6 +66,26 @@ export class ChartAlertRefundsService {
   }
 
   /**
+   * True when the journey behind a payment was set up without a destination
+   * (plain chart-time ping). Reads the monitoring request first, falling back
+   * to the paid journey payload when the request row is missing.
+   */
+  private async isChartPreparedOnlyAlert(
+    journeyRequestId: string,
+    record: { journeyPayload: unknown },
+  ): Promise<boolean> {
+    const request = await this.prisma.journeyMonitoringRequest.findUnique({
+      where: { id: journeyRequestId },
+      select: { toStationCode: true },
+    });
+    if (request) return !request.toStationCode?.trim();
+    const payload = (record.journeyPayload ?? null) as {
+      toStationCode?: string;
+    } | null;
+    return !String(payload?.toStationCode ?? '').trim();
+  }
+
+  /**
    * Attempt a refund for the PAID payment behind a journey. Idempotent via an
    * atomic NONE/FAILED → INITIATED claim; only the winner calls Muzobox.
    * Never throws — returns a RefundInfo suitable for notification templates.
@@ -76,12 +96,21 @@ export class ChartAlertRefundsService {
   ): Promise<RefundInfo> {
     const jid = String(journeyRequestId ?? '').trim();
     if (!jid) return { attempted: false, outcome: 'skipped' };
-    if (!this.autoRefundEnabled) return { attempted: false, outcome: 'skipped' };
+    if (!this.autoRefundEnabled)
+      return { attempted: false, outcome: 'skipped' };
 
     const record = await this.prisma.chartAlertPayment.findFirst({
       where: { journeyRequestId: jid, status: 'PAID' },
     });
     if (!record) return { attempted: false, outcome: 'skipped' };
+    // No-destination ("chart prepared only") alerts carry no end-to-end
+    // availability promise, so they are excluded from auto-refunds.
+    if (await this.isChartPreparedOnlyAlert(jid, record)) {
+      this.logger.log(
+        `Refund skipped for jid=${jid}: no destination selected (chart-prepared-only alert)`,
+      );
+      return { attempted: false, outcome: 'skipped' };
+    }
     if (record.refundStatus === 'SUCCEEDED') {
       return {
         attempted: true,
@@ -97,7 +126,8 @@ export class ChartAlertRefundsService {
         amount: record.amount,
       };
     }
-    if (!record.muzoboxPaymentId) return { attempted: false, outcome: 'skipped' };
+    if (!record.muzoboxPaymentId)
+      return { attempted: false, outcome: 'skipped' };
 
     const headers = this.authHeaders();
     if (!headers) {
