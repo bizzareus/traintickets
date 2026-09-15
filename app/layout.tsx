@@ -118,6 +118,7 @@ export const metadata: Metadata = {
   },
   other: {
     "msvalidate.01": "A5FB463C1706FB1DE5F75D9D754846D4",
+    monetag: "5a9a8ab068e461593fd356122d0a5f7a",
   },
   category: "travel",
   classification: "Train ticket booking and seat availability",
