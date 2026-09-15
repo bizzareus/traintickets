@@ -41,6 +41,7 @@ import {
   renderChartPreparedNoDestinationEmailHtml,
   renderAlertFailureEmailHtml,
   renderAdminMonitoringEmailHtml,
+  renderRefundRequestAdminEmailHtml,
   renderTatkalAlertEmailHtml,
   buildTatkalAlertWhatsAppText,
   buildChartPreparedNoDestinationWhatsAppText,
@@ -342,6 +343,32 @@ export class NotificationService {
 
     const subject = `[LastBerth] Monitoring requested — ${params.trainNumber} (${params.journeyDate})`;
     const html = renderAdminMonitoringEmailHtml(params);
+    return this.sendEmail(to, subject, html);
+  }
+
+  /**
+   * Notify the product owner that someone submitted the /refund form.
+   * Fire-and-forget from the refund-request service.
+   */
+  async sendRefundRequestAdminEmail(params: {
+    id: string;
+    mobile: string;
+    trainNumber: string;
+    journeyDate: string;
+    txnId?: string | null;
+    createdAt: string;
+    duplicate: boolean;
+  }): Promise<boolean> {
+    if (!this.resend) {
+      return false;
+    }
+    const to = this.monitoringAdminEmail;
+    if (!to) {
+      return false;
+    }
+
+    const subject = `[LastBerth] Refund requested — ${params.trainNumber} (${params.journeyDate})`;
+    const html = renderRefundRequestAdminEmailHtml(params);
     return this.sendEmail(to, subject, html);
   }
 

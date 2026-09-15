@@ -125,6 +125,14 @@ function AdminNavContent() {
       >
         Unsubscribes
       </Link>
+      <Link
+        href="/admin/refunds"
+        className={`text-sm font-medium transition ${
+          pathname === "/admin/refunds" ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"
+        }`}
+      >
+        Refunds
+      </Link>
       <AdminLockButton />
     </nav>
   );

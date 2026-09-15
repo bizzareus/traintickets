@@ -254,6 +254,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <nav className="flex flex-wrap items-center gap-4 text-xs sm:text-sm">
                   <Link href="/about" className="hover:text-blue-600">About Us</Link>
                   <Link href="/contact" className="hover:text-blue-600">Contact Us</Link>
+                  <Link href="/refund" className="hover:text-blue-600">Request Refund</Link>
                   <Link href="/privacy" className="hover:text-blue-600">Privacy Policy</Link>
                   <Link href="/terms" className="hover:text-blue-600">Terms of Service</Link>
                   <Link href="/disclaimer" className="hover:text-blue-600">Disclaimer</Link>

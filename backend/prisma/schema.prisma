@@ -542,3 +542,27 @@ model ChartAlertPayment {
   @@index([refundStatus])
   @@map("chart_alert_payment")
 }
+
+enum RefundRequestStatus {
+  PENDING
+  RESOLVED
+  REJECTED
+}
+
+/// Manual refund requests submitted via the /refund form (mobile + train +
+/// journey date + optional txn id). An email goes to the monitoring admin on
+/// every submission; fulfilment is manual via the admin dashboard.
+model RefundRequest {
+  id          String              @id @default(cuid())
+  mobile      String              @map("mobile")
+  trainNumber String              @map("train_number")
+  journeyDate DateTime            @map("journey_date") @db.Date
+  txnId       String?             @map("txn_id")
+  status      RefundRequestStatus @default(PENDING)
+  createdAt   DateTime            @default(now()) @map("created_at")
+  updatedAt   DateTime            @updatedAt @map("updated_at")
+
+  @@index([status, createdAt])
+  @@index([mobile])
+  @@map("refund_request")
+}

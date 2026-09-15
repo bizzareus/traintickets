@@ -27,6 +27,7 @@ import { RedditAutomationModule } from './reddit-automation/reddit-automation.mo
 import { McpModule } from './mcp/mcp.module';
 import { ShortLinkModule } from './short-link/short-link.module';
 import { ChartAlertPaymentsModule } from './chart-alert-payments/chart-alert-payments.module';
+import { RefundRequestModule } from './refund-request/refund-request.module';
 
 @Module({
   imports: [
@@ -54,6 +55,7 @@ import { ChartAlertPaymentsModule } from './chart-alert-payments/chart-alert-pay
     McpModule,
     ShortLinkModule,
     ChartAlertPaymentsModule,
+    RefundRequestModule,
   ],
   controllers: [AppController],
   providers: [
