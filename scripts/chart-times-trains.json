@@ -2272,22 +2272,6 @@
     "canonicalNumber": "12034"
   },
   {
-    "trainNumber": "12035",
-    "trainName": "PURNAGIRI JANST",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12035-purnagiri-janst-chart-times",
-    "canonicalNumber": "12035"
-  },
-  {
-    "trainNumber": "12036",
-    "trainName": "PURANGIRI JANST",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12036-purangiri-janst-chart-times",
-    "canonicalNumber": "12036"
-  },
-  {
     "trainNumber": "12037",
     "trainName": "SIDDHABALI J SH",
     "completed": true,
@@ -2480,22 +2464,6 @@
     "canonicalNumber": "12062"
   },
   {
-    "trainNumber": "12063",
-    "trainName": "HW UHL LINK JSHT",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12063-hw-uhl-link-jsht-chart-times",
-    "canonicalNumber": "12063"
-  },
-  {
-    "trainNumber": "12064",
-    "trainName": "UHL HW LINK JSHT",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12064-uhl-hw-link-jsht-chart-times",
-    "canonicalNumber": "12064"
-  },
-  {
     "trainNumber": "12065",
     "trainName": "DEE JAN SHATBDI",
     "completed": true,
@@ -2550,14 +2518,6 @@
     "httpStatus": 200,
     "slug": "12071-janshatabdti-exp-chart-times",
     "canonicalNumber": "12071"
-  },
-  {
-    "trainNumber": "12072",
-    "trainName": "JAN SHATABDI",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12072-jan-shatabdi-chart-times",
-    "canonicalNumber": "12072"
   },
   {
     "trainNumber": "12073",
@@ -2656,22 +2616,6 @@
     "canonicalNumber": "12084"
   },
   {
-    "trainNumber": "12085",
-    "trainName": "SHATABDI EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12085-shatabdi-exp-chart-times",
-    "canonicalNumber": "12085"
-  },
-  {
-    "trainNumber": "12086",
-    "trainName": "SHATABDI EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12086-shatabdi-exp-chart-times",
-    "canonicalNumber": "12086"
-  },
-  {
     "trainNumber": "12087",
     "trainName": "NHLN GHY VISTAD",
     "completed": true,
@@ -2720,22 +2664,6 @@
     "canonicalNumber": "12092"
   },
   {
-    "trainNumber": "12097",
-    "trainName": "AGTL KGBP JANSH",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12097-agtl-kgbp-jansh-chart-times",
-    "canonicalNumber": "12097"
-  },
-  {
-    "trainNumber": "12098",
-    "trainName": "KGBP AGTL JANSH",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12098-kgbp-agtl-jansh-chart-times",
-    "canonicalNumber": "12098"
-  },
-  {
     "trainNumber": "12101",
     "trainName": "JNANESHWARI EXP",
     "completed": true,
@@ -2750,14 +2678,6 @@
     "httpStatus": 200,
     "slug": "12102-jananeswari-exp-chart-times",
     "canonicalNumber": "12102"
-  },
-  {
-    "trainNumber": "12103",
-    "trainName": "PUNE LJN EXPRESS",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12103-pune-ljn-express-chart-times",
-    "canonicalNumber": "12103"
   },
   {
     "trainNumber": "12104",
@@ -3054,14 +2974,6 @@
     "httpStatus": 200,
     "slug": "12142-ppta-ltt-exp-chart-times",
     "canonicalNumber": "12142"
-  },
-  {
-    "trainNumber": "12143",
-    "trainName": "LTT SLN SF EXP",
-    "completed": true,
-    "httpStatus": 200,
-    "slug": "12143-ltt-sln-sf-exp-chart-times",
-    "canonicalNumber": "12143"
   },
   {
     "trainNumber": "12144",
@@ -16392,12 +16304,6 @@
     "canonicalNumber": "19624"
   },
   {
-    "trainNumber": "19625",
-    "trainName": "AII BDTS SF SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
     "trainNumber": "19626",
     "trainName": "BDTS AII SF",
     "completed": true,
@@ -16838,18 +16744,6 @@
     "canonicalNumber": "20152"
   },
   {
-    "trainNumber": "20153",
-    "trainName": "CSMT REWA SF SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
-    "trainNumber": "20154",
-    "trainName": "REWA CSMT SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
     "trainNumber": "20155",
     "trainName": "DADN NDLS SF EXP",
     "completed": true,
@@ -16866,30 +16760,12 @@
     "canonicalNumber": "20156"
   },
   {
-    "trainNumber": "20161",
-    "trainName": "PUNE JBP SF SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
-    "trainNumber": "20162",
-    "trainName": "JBP PUNE SPECIAL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
     "trainNumber": "20163",
     "trainName": "BDTS JBP SF EXP",
     "completed": true,
     "httpStatus": 200,
     "slug": "20163-bdts-jbp-sf-exp-chart-times",
     "canonicalNumber": "20163"
-  },
-  {
-    "trainNumber": "20164",
-    "trainName": "JBP BDTS SF SPL",
-    "completed": false,
-    "httpStatus": 403
   },
   {
     "trainNumber": "20171",
@@ -19236,30 +19112,12 @@
     "canonicalNumber": "20990"
   },
   {
-    "trainNumber": "20991",
-    "trainName": "AII DD SF SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
     "trainNumber": "20992",
     "trainName": "DD AJMER SF",
     "completed": true,
     "httpStatus": 200,
     "slug": "20992-dd-ajmer-sf-exp-chart-times",
     "canonicalNumber": "20992"
-  },
-  {
-    "trainNumber": "20993",
-    "trainName": "JP UDZ SF SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
-    "trainNumber": "20994",
-    "trainName": "UDZ JP SF SPL",
-    "completed": false,
-    "httpStatus": 403
   },
   {
     "trainNumber": "20995",
@@ -24522,12 +24380,6 @@
     "canonicalNumber": "29020"
   },
   {
-    "trainNumber": "50104",
-    "trainName": "RN DIVA PAS SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
     "trainNumber": "50106",
     "trainName": "SWV DIVA PASS",
     "completed": true,
@@ -24678,18 +24530,6 @@
     "httpStatus": 200,
     "slug": "52260-mln-bic-chart-times",
     "canonicalNumber": "52260"
-  },
-  {
-    "trainNumber": "52443",
-    "trainName": "SML HOLIDAY SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
-    "trainNumber": "52444",
-    "trainName": "KLK HOLIDAY SPL",
-    "completed": false,
-    "httpStatus": 403
   },
   {
     "trainNumber": "52451",
@@ -25348,12 +25188,6 @@
     "canonicalNumber": "56520"
   },
   {
-    "trainNumber": "56615",
-    "trainName": "MAO MAQ SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
     "trainNumber": "56903",
     "trainName": "SUR DHARWAR PASS",
     "completed": true,
@@ -25642,12 +25476,6 @@
     "canonicalNumber": "59075"
   },
   {
-    "trainNumber": "59076",
-    "trainName": "NDB PASS SPL",
-    "completed": false,
-    "httpStatus": 403
-  },
-  {
     "trainNumber": "59077",
     "trainName": "BHUSAVAL PASS",
     "completed": true,
@@ -25734,12 +25562,6 @@
     "httpStatus": 200,
     "slug": "59394-hbj-dhd-fast-pas-chart-times",
     "canonicalNumber": "59394"
-  },
-  {
-    "trainNumber": "59395",
-    "trainName": "BZU CWA SPECIAL",
-    "completed": false,
-    "httpStatus": 403
   },
   {
     "trainNumber": "59439",
@@ -25852,12 +25674,6 @@
     "httpStatus": 200,
     "slug": "82502-irctc-tejas-exp-chart-times",
     "canonicalNumber": "82502"
-  },
-  {
-    "trainNumber": "82713",
-    "trainName": "SC SUVIDHA SPL",
-    "completed": false,
-    "httpStatus": 403
   },
   {
     "trainNumber": "82723",

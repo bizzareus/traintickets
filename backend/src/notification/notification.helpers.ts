@@ -56,9 +56,7 @@ export function isEndToEndJourneyConfirmed(params: {
   stationScheduleList?: ScheduleStation[];
 }): boolean {
   const coverage = extractJourneyLegCoverage(params);
-  return (
-    coverage.length > 0 && coverage.every((c) => c.type === 'ticket')
-  );
+  return coverage.length > 0 && coverage.every((c) => c.type === 'ticket');
 }
 
 /** Shared refund banner HTML for email templates (empty when no refund). */

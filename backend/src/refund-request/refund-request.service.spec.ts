@@ -62,9 +62,7 @@ describe('RefundRequestService', () => {
       },
     });
     await Promise.resolve();
-    expect(
-      notifications.sendRefundRequestAdminEmail,
-    ).toHaveBeenCalledWith(
+    expect(notifications.sendRefundRequestAdminEmail).toHaveBeenCalledWith(
       expect.objectContaining({ id: 'rr-1', duplicate: false }),
     );
   });

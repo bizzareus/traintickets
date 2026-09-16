@@ -21,6 +21,33 @@ export class TrainsService {
     });
   }
 
+  async search(query: string) {
+    const q = query.trim();
+    if (q.length < 2) return [];
+
+    const rows = await this.prisma.trainList.findMany({
+      where: {
+        OR: [
+          { trainNumber: { contains: q, mode: 'insensitive' } },
+          { label: { contains: q, mode: 'insensitive' } },
+        ],
+      },
+      take: 25,
+      orderBy: { label: 'asc' },
+    });
+
+    return rows.map((row) => {
+      const dashIndex = row.label.indexOf('-');
+      const trainName =
+        dashIndex >= 0 ? row.label.slice(dashIndex + 1).trim() : row.label;
+      return {
+        trainNumber: row.trainNumber,
+        trainName: trainName || row.label,
+        label: row.label,
+      };
+    });
+  }
+
   async findOne(id: string) {
     let train = await this.prisma.train.findUnique({
       where: { id },

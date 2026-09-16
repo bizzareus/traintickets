@@ -320,7 +320,7 @@ export type AnalyticsEvent =
   | { name: "search_pnr_feature_clicked"; properties: Record<string, never> }
   | {
       name: "search_pnr_status_checked";
-      properties: { success: boolean; error?: string };
+      properties: { success: boolean; error?: string; pnr_number?: string };
     }
   // Seat status / coach map feature (prefix: seat_status_*)
   | { name: "seat_status_feature_clicked"; properties: Record<string, never> }

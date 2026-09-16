@@ -34,7 +34,12 @@ export default function ChartTimesIndexPage() {
       </header>
 
       <div className="mb-8">
-        <ChartTimesFinder />
+        <ChartTimesFinder
+          initialPopularTrains={trains.map((t) => ({
+            trainNumber: t.trainNumber,
+            trainName: t.trainName || t.trainNumber,
+          }))}
+        />
       </div>
 
       {trains.length > 0 && (

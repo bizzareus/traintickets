@@ -107,11 +107,9 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
   const hasWaitlisted = useMemo(() => {
     const passengers = pnrData?.PassengerStatus;
     if (!passengers?.length) return false;
-    return passengers.some((p) => {
-      const cur = (p.CurrentStatus ?? "").toUpperCase();
-      const confirmed = cur.includes("CNF") || p.ConfirmTktStatus === "Confirm";
-      return !confirmed;
-    });
+    return passengers.some(
+      (p) => !formatPassengerStatusDisplay(p).isConfirmed,
+    );
   }, [pnrData]);
 
   // Proactively prompt waitlisted users (once per PNR) to subscribe to chart
@@ -155,7 +153,11 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
         setPnrForCta(trimmed);
         trackAnalyticsEvent({
           name: "search_pnr_status_checked",
-          properties: { success: false, error: res.message || "No data" },
+          properties: {
+            success: false,
+            error: res.message || "No data",
+            pnr_number: trimmed,
+          },
         });
         return;
       }
@@ -164,33 +166,16 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
       setPnrData(data);
       trackAnalyticsEvent({
         name: "search_pnr_status_checked",
-        properties: { success: true },
+        properties: { success: true, pnr_number: trimmed },
       });
 
       // Check if all passengers in PassengerStatus array have confirmed status ("CNF")
       const isAllConfirmed =
         Array.isArray(data.PassengerStatus) &&
         data.PassengerStatus.length > 0 &&
-        data.PassengerStatus.every((p: any) => {
-          const statusStr = String(
-            p.currentStatusNew ??
-              p.CurrentStatusNew ??
-              p.currentStatus ??
-              p.CurrentStatus ??
-              p.confirmTktStatus ??
-              p.ConfirmTktStatus ??
-              p.bookingStatus ??
-              p.BookingStatus ??
-              "",
-          )
-            .trim()
-            .toUpperCase();
-          return (
-            statusStr === "CNF" ||
-            statusStr.startsWith("CNF") ||
-            statusStr.includes("CONFIRM")
-          );
-        });
+        data.PassengerStatus.every(
+          (p) => formatPassengerStatusDisplay(p).isConfirmed,
+        );
 
       if (isAllConfirmed) {
         setShowCelebration(true);
@@ -224,14 +209,12 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
           : undefined,
       };
 
-      // Check if the PNR already has a confirmed ticket (bookingStatus as 'CNF')
-      const hasConfirmedTicket = Array.isArray(data.PassengerStatus) && data.PassengerStatus.some(
-        (p: any) =>
-          (p.BookingStatus && p.BookingStatus.toUpperCase().includes("CNF")) ||
-          (p.bookingStatus && p.bookingStatus.toUpperCase().includes("CNF")) ||
-          (p.CurrentStatus && p.CurrentStatus.toUpperCase().includes("CNF")) ||
-          (p.currentStatus && p.currentStatus.toUpperCase().includes("CNF"))
-      );
+      // Check if the PNR already has a confirmed ticket
+      const hasConfirmedTicket =
+        Array.isArray(data.PassengerStatus) &&
+        data.PassengerStatus.some(
+          (p) => formatPassengerStatusDisplay(p).isConfirmed,
+        );
 
       // Call Alternate Seats finder only if there is no confirmed ticket
       if (parsedDate && !hasConfirmedTicket) {
@@ -252,7 +235,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
       setPnrForCta(trimmed);
       trackAnalyticsEvent({
         name: "search_pnr_status_checked",
-        properties: { success: false, error: origMsg },
+        properties: { success: false, error: origMsg, pnr_number: trimmed },
       });
     } finally {
       setPnrLoading(false);
@@ -431,12 +414,15 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                   <span className="font-semibold text-slate-700">
                     {pnrData.Doj}
                   </span>
-                  <StationChartingStatus
-                    trainNumber={pnrData.TrainNo}
-                    journeyDate={pnrData.Doj}
-                    stationCode={pnrData.From}
-                    onStatusFetched={setIsLiveChartPrepared}
-                  />
+                  {hasWaitlisted && (
+                    <StationChartingStatus
+                      trainNumber={pnrData.TrainNo}
+                      journeyDate={pnrData.Doj}
+                      stationCode={pnrData.From}
+                      enabled={hasWaitlisted}
+                      onStatusFetched={setIsLiveChartPrepared}
+                    />
+                  )}
                 </p>
               </div>
               <div className="flex items-center gap-3 text-sm font-medium">

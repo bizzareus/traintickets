@@ -27,14 +27,21 @@ interface Props {
   trainNumber: string;
   journeyDate: string; // YYYY-MM-DD
   stationCode: string;
+  enabled?: boolean;
   onStatusFetched?: (isLive: boolean) => void;
 }
 
-export function StationChartingStatus({ trainNumber, journeyDate, stationCode, onStatusFetched }: Props) {
+export function StationChartingStatus({
+  trainNumber,
+  journeyDate,
+  stationCode,
+  enabled = true,
+  onStatusFetched,
+}: Props) {
   const [meta, setMeta] = useState<StationChartMetaItem | null>(null);
 
   useEffect(() => {
-    if (!trainNumber || !journeyDate || !stationCode) return;
+    if (!enabled || !trainNumber || !journeyDate || !stationCode) return;
 
     const parsedDate = moment(journeyDate, ["YYYY-MM-DD", "DD-MMM-YYYY", "DD-MM-YYYY"]);
     const formattedDate = parsedDate.isValid() ? parsedDate.format("YYYY-MM-DD") : journeyDate;
@@ -57,10 +64,10 @@ export function StationChartingStatus({ trainNumber, journeyDate, stationCode, o
         }
       })
       .catch(() => {});
-  }, [trainNumber, journeyDate, stationCode, onStatusFetched]);
+  }, [enabled, trainNumber, journeyDate, stationCode, onStatusFetched]);
 
-  // If no meta or no definitive live status, we don't render anything as requested
-  if (!meta || meta.isLive === undefined || meta.isLive === null) return null;
+  // If disabled, no meta or no definitive live status, we don't render anything as requested
+  if (!enabled || !meta || meta.isLive === undefined || meta.isLive === null) return null;
 
   let statusContent = (
     <span className="text-amber-600 font-semibold">Not Prepared</span>

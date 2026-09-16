@@ -24,7 +24,11 @@ import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-re
     AlternativeSearchTaskModule,
   ],
   controllers: [AvailabilityController],
-  providers: [AvailabilityService, JourneyTaskService, ChartAlertRefundsService],
+  providers: [
+    AvailabilityService,
+    JourneyTaskService,
+    ChartAlertRefundsService,
+  ],
   exports: [
     AvailabilityService,
     JourneyTaskService,

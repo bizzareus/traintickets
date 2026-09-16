@@ -126,7 +126,9 @@ export function readPinnedChartTime(params: PinnedChartTime): {
   chartTwoTimeLocal?: string;
   chartTwoDayOffset: number;
 } | null {
-  const m = String(params.chartTimeLocal ?? '').trim().match(CHART_CLOCK_RE);
+  const m = String(params.chartTimeLocal ?? '')
+    .trim()
+    .match(CHART_CLOCK_RE);
   if (!m) return null;
   const h = Number(m[1]);
   const min = Number(m[2]);
@@ -137,7 +139,9 @@ export function readPinnedChartTime(params: PinnedChartTime): {
       ? n
       : 0;
   };
-  const two = String(params.chartTwoTimeLocal ?? '').trim().match(CHART_CLOCK_RE);
+  const two = String(params.chartTwoTimeLocal ?? '')
+    .trim()
+    .match(CHART_CLOCK_RE);
   return {
     chartTimeLocal: `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`,
     chartOneDayOffset: toOffset(params.chartOneDayOffset),
@@ -827,7 +831,9 @@ export class JourneyTaskService {
       const code = stationCode.trim().toUpperCase();
       if (!num || !code) return;
       await this.prisma.trainStationChartTime.upsert({
-        where: { trainNumber_stationCode: { trainNumber: num, stationCode: code } },
+        where: {
+          trainNumber_stationCode: { trainNumber: num, stationCode: code },
+        },
         create: {
           trainNumber: num,
           stationCode: code,

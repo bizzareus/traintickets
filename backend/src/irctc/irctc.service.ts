@@ -1036,10 +1036,17 @@ export class IrctcService {
       orderBy: { label: 'asc' },
     });
 
-    return rows.map((row) => ({
-      number: row.trainNumber,
-      label: row.label,
-    }));
+    return rows.map((row) => {
+      const dashIndex = row.label.indexOf('-');
+      const trainName =
+        dashIndex >= 0 ? row.label.slice(dashIndex + 1).trim() : row.label;
+      return {
+        number: row.trainNumber,
+        trainNumber: row.trainNumber,
+        trainName: trainName || row.label,
+        label: row.label,
+      };
+    });
   }
 
   async getVacantBerth(payload: {

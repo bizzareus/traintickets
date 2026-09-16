@@ -553,7 +553,9 @@ export class AvailabilityController {
   @Get('admin/alerts')
   async getAllAlerts() {
     const alerts = await this.journeyTask.getAllAlerts();
-    const journeyRequestIds = [...new Set(alerts.map((a) => a.journeyRequestId))];
+    const journeyRequestIds = [
+      ...new Set(alerts.map((a) => a.journeyRequestId)),
+    ];
     const payments = journeyRequestIds.length
       ? await this.prisma.chartAlertPayment.findMany({
           where: { journeyRequestId: { in: journeyRequestIds } },
@@ -692,8 +694,9 @@ export class AvailabilityController {
     });
     if (!task) throw new NotFoundException('Alert not found');
     const reason =
-      String(body?.reason ?? '').trim().slice(0, 500) ||
-      `admin_manual_refund_${taskId}`;
+      String(body?.reason ?? '')
+        .trim()
+        .slice(0, 500) || `admin_manual_refund_${taskId}`;
     const refund = await this.refunds.initiateRefundForJourney(
       task.journeyRequestId,
       reason,

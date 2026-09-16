@@ -65,7 +65,10 @@ export class RefundRequestService {
       });
     }
 
-    const txnId = String(input.txnId ?? '').trim().slice(0, 255) || null;
+    const txnId =
+      String(input.txnId ?? '')
+        .trim()
+        .slice(0, 255) || null;
     const journeyDateObj = new Date(journeyDate);
 
     const existing = await this.prisma.refundRequest.findFirst({
@@ -78,11 +81,10 @@ export class RefundRequestService {
       },
     });
     if (existing) {
-      void this.sendAdminEmail({ ...existing, duplicate: true }).catch(
-        (err) =>
-          this.logger.error(
-            `Refund admin email failed (duplicate ${existing.id}): ${err instanceof Error ? err.message : String(err)}`,
-          ),
+      void this.sendAdminEmail({ ...existing, duplicate: true }).catch((err) =>
+        this.logger.error(
+          `Refund admin email failed (duplicate ${existing.id}): ${err instanceof Error ? err.message : String(err)}`,
+        ),
       );
       return { id: existing.id, duplicate: true };
     }
@@ -107,7 +109,9 @@ export class RefundRequestService {
   }
 
   async setStatus(id: string, status: string) {
-    const normalized = String(status ?? '').trim().toUpperCase();
+    const normalized = String(status ?? '')
+      .trim()
+      .toUpperCase();
     if (!['RESOLVED', 'REJECTED'].includes(normalized)) {
       throw new BadRequestException({
         code: 'INVALID_STATUS',
