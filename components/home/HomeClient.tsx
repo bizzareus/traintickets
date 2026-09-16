@@ -1396,7 +1396,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         {!searchLoading && displayTrains.length > 0 && (
           <ul
             ref={v2TrainListAnimateRef}
-            className="space-y-5"
+            className="space-y-3.5 sm:space-y-5"
             role="list"
             aria-label="Train results"
           >

@@ -32,12 +32,12 @@ export function TrainSearchV2ProgressBar({
   return (
     <div className="mb-4 overflow-hidden rounded-xl border border-slate-200 bg-white">
       {/* Top Status Header - Clean White Background */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-white border-b border-slate-100">
-        <div className="flex items-center gap-2.5">
+      <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 px-3.5 sm:px-4 py-2.5 sm:py-3 bg-white border-b border-slate-100">
+        <div className="flex items-start sm:items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
           {isLoading && (
-            <div className="h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+            <div className="mt-0.5 sm:mt-0 h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
           )}
-          <p className="text-sm font-semibold text-slate-800">
+          <p className="text-xs sm:text-sm font-semibold text-slate-800">
             {isLoading
               ? `Scanning all seat combinations across ${totalTrains} trains...`
               : `Found ${totalSeatsDiscovered} train${totalSeatsDiscovered === 1 ? "" : "s"} with confirmed options`}
@@ -45,9 +45,9 @@ export function TrainSearchV2ProgressBar({
         </div>
 
         {/* Badges / Metrics */}
-        <div className="flex items-center gap-2 text-xs">
+        <div className="flex items-center gap-2 text-xs shrink-0">
           {directAvailableCount > 0 && (
-            <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2.5 py-1 font-semibold text-emerald-700 border border-emerald-200">
+            <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[11px] sm:text-xs font-semibold text-emerald-700 border border-emerald-200 whitespace-nowrap">
               <span>✓</span> {directAvailableCount} Direct Available
             </span>
           )}
