@@ -248,7 +248,55 @@ resource "aws_lambda_permission" "allow_eventbridge_to_invoke_producer" {
   source_arn    = aws_cloudwatch_event_rule.daily_seat_sync.arn
 }
 
-# 9. Outputs
+# 9. Frontend EC2 Read Access for DynamoDB
+resource "aws_iam_role" "frontend_ec2_role" {
+  name = "${var.project_name}-frontend-ec2-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+resource "aws_iam_policy" "frontend_dynamo_read_policy" {
+  name        = "${var.project_name}-frontend-dynamo-read-policy"
+  description = "Allows Frontend Next.js EC2 to read from DynamoDB seat cache"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "dynamodb:GetItem",
+          "dynamodb:Query",
+          "dynamodb:BatchGetItem"
+        ]
+        Resource = aws_dynamodb_table.train_seat_cache.arn
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "frontend_dynamo_attach" {
+  role       = aws_iam_role.frontend_ec2_role.name
+  policy_arn = aws_iam_policy.frontend_dynamo_read_policy.arn
+}
+
+resource "aws_iam_instance_profile" "frontend_instance_profile" {
+  name = "${var.project_name}-frontend-instance-profile"
+  role = aws_iam_role.frontend_ec2_role.name
+}
+
+# 10. Outputs
 output "seat_cache_dynamodb_table_name" {
   description = "DynamoDB table name for train seat cache"
   value       = aws_dynamodb_table.train_seat_cache.name
