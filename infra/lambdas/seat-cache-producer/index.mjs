@@ -8,33 +8,44 @@ const QUEUE_URL = process.env.QUEUE_URL;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Load top 500 trains from bundled JSON, with fallback
+// Load top 500 trains map from bundled JSON
+const TRAIN_MAP = new Map();
 let DEFAULT_TRAINS = [];
+
 try {
   const jsonPath = path.join(__dirname, "top-500-trains.json");
   const raw = fs.readFileSync(jsonPath, "utf8");
   const parsed = JSON.parse(raw);
-  DEFAULT_TRAINS = parsed.map((t) => t.trainNumber).filter(Boolean);
-} catch {
+  for (const t of parsed) {
+    if (t.trainNumber) {
+      const num = String(t.trainNumber).trim();
+      TRAIN_MAP.set(num, {
+        trainNumber: num,
+        from: t.originStation || "",
+        to: t.destinationStation || "",
+      });
+      DEFAULT_TRAINS.push(num);
+    }
+  }
+} catch (err) {
+  console.warn("[Producer] Could not load top-500-trains.json, using fallback list:", err);
   DEFAULT_TRAINS = [
-    "12951", "12952", "12301", "12302", "12309", "12310",
-    "12425", "12445", "12001", "12002", "12004", "12015",
-    "20818", "20817", "22439", "22440", "12261", "12262",
-    "12009", "12010", "12011", "12012", "12013", "12014",
-    "12017", "12018", "12019", "12020", "12025", "12026",
+    "20818", "20817", "12951", "12952", "12301", "12302",
+    "12309", "12310", "12425", "12445", "12001", "12002",
+    "12004", "12015", "22439", "22440", "12261", "12262",
     "11301", "11302", "11013", "11014", "12615", "12616",
-    "12847", "12848", "12931", "12932", "12954", "12958",
   ];
 }
 
-function getUpcomingDates(daysCount = 3) {
+function getUpcomingDates(daysCount = 4) {
   const dates = [];
   const now = new Date();
   // IST offset +5:30
   const istOffset = 5.5 * 60 * 60 * 1000;
   const istTime = new Date(now.getTime() + istOffset);
 
-  for (let i = 0; i < daysCount; i++) {
+  // Next 4 upcoming journey dates
+  for (let i = 1; i <= daysCount; i++) {
     const d = new Date(istTime.getTime() + i * 24 * 60 * 60 * 1000);
     const yyyy = d.getUTCFullYear();
     const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
@@ -49,16 +60,26 @@ export async function handler(event) {
     throw new Error("QUEUE_URL environment variable is missing.");
   }
 
-  const trainList = event?.trains || DEFAULT_TRAINS;
+  // Support event passing array of train numbers or train objects
+  const inputTrains = event?.trains || DEFAULT_TRAINS;
   const dates = event?.dates || getUpcomingDates(3);
 
-  console.log(`[Producer] Preparing queue tasks for ${trainList.length} trains across ${dates.length} dates.`);
+  console.log(`[Producer] Preparing queue tasks for ${inputTrains.length} trains across ${dates.length} dates.`);
 
   const tasks = [];
-  for (const trainNumber of trainList) {
+  for (const item of inputTrains) {
+    const trainNum = typeof item === "object" ? String(item.trainNumber || "").trim() : String(item).trim();
+    if (!trainNum) continue;
+
+    const mapped = TRAIN_MAP.get(trainNum) || {};
+    const from = (typeof item === "object" && item.from) ? item.from : mapped.from || "";
+    const to = (typeof item === "object" && item.to) ? item.to : mapped.to || "";
+
     for (const journeyDate of dates) {
       tasks.push({
-        trainNumber: String(trainNumber).trim(),
+        trainNumber: trainNum,
+        from,
+        to,
         journeyDate,
       });
     }

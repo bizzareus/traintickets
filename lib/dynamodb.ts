@@ -5,6 +5,7 @@ export type CachedSeatItem = {
   date: string;
   travelClass: string;
   status: string;
+  fare?: number;
   updatedAt?: string;
 };
 
@@ -61,7 +62,7 @@ export async function getTrainCachedSeats(
           ":tn": cleanNumber,
         },
         ConsistentRead: false, // 0.5 RCU per 4KB read (2x throughput for $0)
-        ProjectionExpression: "#d, travelClass, #st, updatedAt",
+        ProjectionExpression: "#d, travelClass, #st, fare, updatedAt",
         ExpressionAttributeNames: {
           "#d": "date",
           "#st": "status",
@@ -77,6 +78,7 @@ export async function getTrainCachedSeats(
       date: String(item.date || ""),
       travelClass: String(item.travelClass || ""),
       status: String(item.status || "AVAILABLE"),
+      fare: typeof item.fare === "number" ? item.fare : undefined,
       updatedAt: item.updatedAt ? String(item.updatedAt) : undefined,
     }));
   } catch (err) {

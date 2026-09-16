@@ -21,6 +21,7 @@ export type CachedSeat = {
   date: string;
   travelClass: string;
   status: string; // e.g., "AVAILABLE-0042", "WL 12", "REGRET"
+  fare?: number | null;
   updatedAt?: string;
 };
 
@@ -400,6 +401,9 @@ export default function TrainConfirmedTicketsClient({
                         </div>
                         <span className="text-[11px] text-slate-500">
                           {details.label}
+                          {seat.fare != null && seat.fare > 0
+                            ? ` • ₹${seat.fare.toLocaleString("en-IN")}`
+                            : ""}
                         </span>
                       </div>
 
