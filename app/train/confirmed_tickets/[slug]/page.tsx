@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { Metadata } from "next";
-import { permanentRedirect, notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import TrainConfirmedTicketsClient, { TrainInfo, CachedSeat } from "./TrainConfirmedTicketsClient";
 import {
   buildTrainSlug,
@@ -19,7 +19,7 @@ async function fetchTrainData(trainNumber: string): Promise<TrainInfo | null> {
     });
     if (!res.ok) return null;
     return await res.json();
-  } catch (err) {
+  } catch {
     return null;
   }
 }
@@ -33,7 +33,7 @@ async function fetchCachedSeats(trainNumber: string): Promise<CachedSeat[]> {
     if (!res.ok) return [];
     const data = await res.json();
     return Array.isArray(data) ? data : data.seats || [];
-  } catch (err) {
+  } catch {
     return [];
   }
 }
@@ -138,6 +138,9 @@ export default async function TrainConfirmedTicketsPage({ params }: Props) {
     trainName: displayName,
     originStation: origin,
     destinationStation: dest,
+    availableClasses: train?.availableClasses || [],
+    departureTime: train?.departureTime,
+    arrivalTime: train?.arrivalTime,
     schedule: train?.schedule,
   };
 
@@ -153,12 +156,12 @@ export default async function TrainConfirmedTicketsPage({ params }: Props) {
       />
       <Suspense
         fallback={
-          <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm animate-pulse">
+          <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs animate-pulse">
             <div className="h-6 bg-slate-200 rounded w-1/3 mb-4"></div>
             <div className="h-10 bg-slate-100 rounded w-2/3 mb-8"></div>
             <div className="grid gap-4 sm:grid-cols-3">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-28 bg-slate-50 border rounded-xl p-4"></div>
+                <div key={i} className="h-28 bg-slate-50 border border-slate-200/60 rounded-xl p-4"></div>
               ))}
             </div>
           </div>
@@ -169,6 +172,7 @@ export default async function TrainConfirmedTicketsPage({ params }: Props) {
           slug={canonicalSlug}
           cachedSeats={cachedSeats}
           chartTimesSlug={local?.chartTimesSlug ?? null}
+          faqEntries={faqEntries}
         />
       </Suspense>
     </>
