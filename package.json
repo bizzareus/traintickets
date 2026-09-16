@@ -29,6 +29,8 @@
     "proxy:local": "cd backend && npm run proxy:local"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1134.0",
+    "@aws-sdk/lib-dynamodb": "^3.1134.0",
     "@formkit/auto-animate": "^0.10.0",
     "@posthog/react": "^1.8.2",
     "@sentry/nextjs": "^10.47.0",

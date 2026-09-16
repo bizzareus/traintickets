@@ -1,0 +1,4002 @@
+[
+  {
+    "trainNumber": "1080",
+    "trainName": "Gkp Csmt Spl",
+    "slug": "1080-gkp-csmt-spl",
+    "originStation": "GKP",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "1080-gkp-csmt-spl-chart-times"
+  },
+  {
+    "trainNumber": "11013",
+    "trainName": "Ltt Cbe Express",
+    "slug": "11013-ltt-cbe-express",
+    "originStation": "LTT",
+    "destinationStation": "CBE",
+    "chartTimesSlug": "11013-ltt-cbe-express-chart-times"
+  },
+  {
+    "trainNumber": "11301",
+    "trainName": "Udyan Express",
+    "slug": "11301-udyan-express",
+    "originStation": "CSMT",
+    "destinationStation": "SBC",
+    "chartTimesSlug": "11301-udyan-express-chart-times"
+  },
+  {
+    "trainNumber": "1144",
+    "trainName": "Dnr Ltt Spl",
+    "slug": "1144-dnr-ltt-spl",
+    "originStation": "DNR",
+    "destinationStation": "LTT",
+    "chartTimesSlug": "1144-dnr-ltt-spl-chart-times"
+  },
+  {
+    "trainNumber": "12001",
+    "trainName": "Ndls Shatabdi",
+    "slug": "12001-ndls-shatabdi",
+    "originStation": "RKMP",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12001-ndls-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12002",
+    "trainName": "Shatabdi Expres",
+    "slug": "12002-shatabdi-expres",
+    "originStation": "NDLS",
+    "destinationStation": "RKMP",
+    "chartTimesSlug": "12002-shatabdi-expres-chart-times"
+  },
+  {
+    "trainNumber": "12003",
+    "trainName": "Swaran Shatabdi",
+    "slug": "12003-swaran-shatabdi",
+    "originStation": "LJN",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12003-swaran-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12004",
+    "trainName": "Shatabdi Express",
+    "slug": "12004-shatabdi-express",
+    "originStation": "NDLS",
+    "destinationStation": "LJN",
+    "chartTimesSlug": "12004-shatabdi-express-chart-times"
+  },
+  {
+    "trainNumber": "12005",
+    "trainName": "Kalka Shtbdi Ex",
+    "slug": "12005-kalka-shtbdi-ex",
+    "originStation": "NDLS",
+    "destinationStation": "KLK",
+    "chartTimesSlug": "12005-kalka-shtbdi-ex-chart-times"
+  },
+  {
+    "trainNumber": "12006",
+    "trainName": "Kalka Shtabdi Ex",
+    "slug": "12006-kalka-shtabdi-ex",
+    "originStation": "KLK",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12006-kalka-shtabdi-ex-chart-times"
+  },
+  {
+    "trainNumber": "12007",
+    "trainName": "Mys Shatabdi",
+    "slug": "12007-mys-shatabdi",
+    "originStation": "MAS",
+    "destinationStation": "MYS",
+    "chartTimesSlug": "12007-mys-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12008",
+    "trainName": "Shatabdi Exp",
+    "slug": "12008-shatabdi-exp",
+    "originStation": "MYS",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "12008-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12009",
+    "trainName": "Adi Shatabdi Exp",
+    "slug": "12009-adi-shatabdi-exp",
+    "originStation": "MMCT",
+    "destinationStation": "ADI",
+    "chartTimesSlug": "12009-adi-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12010",
+    "trainName": "Mmct Shatabdi Ex",
+    "slug": "12010-mmct-shatabdi-ex",
+    "originStation": "ADI",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "12010-mmct-shatabdi-ex-chart-times"
+  },
+  {
+    "trainNumber": "12011",
+    "trainName": "Klk Shatabadi",
+    "slug": "12011-klk-shatabadi",
+    "originStation": "NDLS",
+    "destinationStation": "KLK",
+    "chartTimesSlug": "12011-klk-shatabadi-chart-times"
+  },
+  {
+    "trainNumber": "12012",
+    "trainName": "Klk Shatabadi",
+    "slug": "12012-klk-shatabadi",
+    "originStation": "KLK",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12012-klk-shatabadi-chart-times"
+  },
+  {
+    "trainNumber": "12013",
+    "trainName": "Amritsar Shtabdi",
+    "slug": "12013-amritsar-shtabdi",
+    "originStation": "NDLS",
+    "destinationStation": "ASR",
+    "chartTimesSlug": "12013-amritsar-shtabdi-chart-times"
+  },
+  {
+    "trainNumber": "12014",
+    "trainName": "Amritsar Shtabdi",
+    "slug": "12014-amritsar-shtabdi",
+    "originStation": "ASR",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12014-amritsar-shtabdi-chart-times"
+  },
+  {
+    "trainNumber": "12015",
+    "trainName": "Ajmer Shatabdi",
+    "slug": "12015-ajmer-shatabdi",
+    "originStation": "NDLS",
+    "destinationStation": "DOZ",
+    "chartTimesSlug": "12015-ajmer-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12016",
+    "trainName": "Aii Ndls Shatbi",
+    "slug": "12016-aii-ndls-shatbi",
+    "originStation": "DOZ",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12016-aii-ndls-shatbi-chart-times"
+  },
+  {
+    "trainNumber": "12017",
+    "trainName": "Ddn Shtbdi Exp",
+    "slug": "12017-ddn-shtbdi-exp",
+    "originStation": "NDLS",
+    "destinationStation": "DDN",
+    "chartTimesSlug": "12017-ddn-shtbdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12018",
+    "trainName": "Ddn Shtabadi Exp",
+    "slug": "12018-ddn-shtabadi-exp",
+    "originStation": "DDN",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12018-ddn-shtabadi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12019",
+    "trainName": "Shatabdi Exp",
+    "slug": "12019-shatabdi-exp",
+    "originStation": "HWH",
+    "destinationStation": "RNC",
+    "chartTimesSlug": "12019-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12020",
+    "trainName": "Shatabdi Exp",
+    "slug": "12020-shatabdi-exp",
+    "originStation": "RNC",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12020-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12025",
+    "trainName": "Shatabdi Exp",
+    "slug": "12025-shatabdi-exp",
+    "originStation": "PUNE",
+    "destinationStation": "HYB",
+    "chartTimesSlug": "12025-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12026",
+    "trainName": "Pune Shatabdi",
+    "slug": "12026-pune-shatabdi",
+    "originStation": "HYB",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "12026-pune-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12027",
+    "trainName": "Mas Sbc Shatabdi",
+    "slug": "12027-mas-sbc-shatabdi",
+    "originStation": "MAS",
+    "destinationStation": "SBC",
+    "chartTimesSlug": "12027-mas-sbc-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12028",
+    "trainName": "Shatabdi Exp",
+    "slug": "12028-shatabdi-exp",
+    "originStation": "SBC",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "12028-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12029",
+    "trainName": "Swarn Shatabdi",
+    "slug": "12029-swarn-shatabdi",
+    "originStation": "NDLS",
+    "destinationStation": "ASR",
+    "chartTimesSlug": "12029-swarn-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12030",
+    "trainName": "Swarn Shatabdi",
+    "slug": "12030-swarn-shatabdi",
+    "originStation": "ASR",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12030-swarn-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12031",
+    "trainName": "Amritsar Shtabdi",
+    "slug": "12031-amritsar-shtabdi",
+    "originStation": "NDLS",
+    "destinationStation": "ASR",
+    "chartTimesSlug": "12031-amritsar-shtabdi-chart-times"
+  },
+  {
+    "trainNumber": "12032",
+    "trainName": "Amritsar Shtabdi",
+    "slug": "12032-amritsar-shtabdi",
+    "originStation": "ASR",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12032-amritsar-shtabdi-chart-times"
+  },
+  {
+    "trainNumber": "12033",
+    "trainName": "Shatabdi Exp",
+    "slug": "12033-shatabdi-exp",
+    "originStation": "CNB",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12033-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12034",
+    "trainName": "Ndls Cnb Sht",
+    "slug": "12034-ndls-cnb-sht",
+    "originStation": "NDLS",
+    "destinationStation": "CNB",
+    "chartTimesSlug": "12034-ndls-cnb-sht-chart-times"
+  },
+  {
+    "trainNumber": "12035",
+    "trainName": "Purnagiri Janst",
+    "slug": "12035-purnagiri-janst",
+    "originStation": "TPU",
+    "destinationStation": "DLI",
+    "chartTimesSlug": "12035-purnagiri-janst-chart-times"
+  },
+  {
+    "trainNumber": "12036",
+    "trainName": "Purangiri Janst",
+    "slug": "12036-purangiri-janst",
+    "originStation": "DLI",
+    "destinationStation": "TPU",
+    "chartTimesSlug": "12036-purangiri-janst-chart-times"
+  },
+  {
+    "trainNumber": "12037",
+    "trainName": "Siddhabali J Sh",
+    "slug": "12037-siddhabali-j-sh",
+    "originStation": "KTW",
+    "destinationStation": "DLI",
+    "chartTimesSlug": "12037-siddhabali-j-sh-chart-times"
+  },
+  {
+    "trainNumber": "12038",
+    "trainName": "Siddhabali J Sh",
+    "slug": "12038-siddhabali-j-sh",
+    "originStation": "DLI",
+    "destinationStation": "KTW",
+    "chartTimesSlug": "12038-siddhabali-j-sh-chart-times"
+  },
+  {
+    "trainNumber": "12039",
+    "trainName": "Ndls Shatabadi",
+    "slug": "12039-ndls-shatabadi",
+    "originStation": "KGM",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12039-ndls-shatabadi-chart-times"
+  },
+  {
+    "trainNumber": "12040",
+    "trainName": "Kathgodam Shtbdi",
+    "slug": "12040-kathgodam-shtbdi",
+    "originStation": "NDLS",
+    "destinationStation": "KGM",
+    "chartTimesSlug": "12040-kathgodam-shtbdi-chart-times"
+  },
+  {
+    "trainNumber": "12041",
+    "trainName": "Shatabdi Exp",
+    "slug": "12041-shatabdi-exp",
+    "originStation": "HWH",
+    "destinationStation": "NJP",
+    "chartTimesSlug": "12041-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12042",
+    "trainName": "Shatabdi Exp",
+    "slug": "12042-shatabdi-exp",
+    "originStation": "NJP",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12042-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12043",
+    "trainName": "Ndls Moga Sht",
+    "slug": "12043-ndls-moga-sht",
+    "originStation": "NDLS",
+    "destinationStation": "MOGA",
+    "chartTimesSlug": "12043-ndls-moga-sht-chart-times"
+  },
+  {
+    "trainNumber": "12044",
+    "trainName": "Ndls Shatabdi",
+    "slug": "12044-ndls-shatabdi",
+    "originStation": "MOGA",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12044-ndls-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12045",
+    "trainName": "Cdg Shatabdi",
+    "slug": "12045-cdg-shatabdi",
+    "originStation": "NDLS",
+    "destinationStation": "CDG",
+    "chartTimesSlug": "12045-cdg-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12046",
+    "trainName": "Ndls Shatabdi",
+    "slug": "12046-ndls-shatabdi",
+    "originStation": "CDG",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12046-ndls-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12047",
+    "trainName": "Nlp Janshatabdi",
+    "slug": "12047-nlp-janshatabdi",
+    "originStation": "GHY",
+    "destinationStation": "NLP",
+    "chartTimesSlug": "12047-nlp-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12048",
+    "trainName": "Ghy Janshatabdi",
+    "slug": "12048-ghy-janshatabdi",
+    "originStation": "NLP",
+    "destinationStation": "GHY",
+    "chartTimesSlug": "12048-ghy-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12049",
+    "trainName": "Gatimaan Exp",
+    "slug": "12049-gatimaan-exp",
+    "originStation": "VGLJ",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12049-gatimaan-exp-chart-times"
+  },
+  {
+    "trainNumber": "12050",
+    "trainName": "Gatimaan Exp",
+    "slug": "12050-gatimaan-exp",
+    "originStation": "NZM",
+    "destinationStation": "VGLJ",
+    "chartTimesSlug": "12050-gatimaan-exp-chart-times"
+  },
+  {
+    "trainNumber": "12085",
+    "trainName": "Shatabdi Exp",
+    "slug": "12085-shatabdi-exp",
+    "originStation": "GHY",
+    "destinationStation": "DBRG",
+    "chartTimesSlug": "12085-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12086",
+    "trainName": "Shatabdi Exp",
+    "slug": "12086-shatabdi-exp",
+    "originStation": "DBRG",
+    "destinationStation": "GHY",
+    "chartTimesSlug": "12086-shatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12087",
+    "trainName": "Nhln Ghy Vistad",
+    "slug": "12087-nhln-ghy-vistad",
+    "originStation": "NHLN",
+    "destinationStation": "GHY",
+    "chartTimesSlug": "12087-nhln-ghy-vistad-chart-times"
+  },
+  {
+    "trainNumber": "12088",
+    "trainName": "Ghy Nhln Vistad",
+    "slug": "12088-ghy-nhln-vistad",
+    "originStation": "GHY",
+    "destinationStation": "NHLN",
+    "chartTimesSlug": "12088-ghy-nhln-vistad-chart-times"
+  },
+  {
+    "trainNumber": "12243",
+    "trainName": "Mas Cbe Shatabdi",
+    "slug": "12243-mas-cbe-shatabdi",
+    "originStation": "MAS",
+    "destinationStation": "CBE",
+    "chartTimesSlug": "12243-mas-cbe-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12244",
+    "trainName": "Cbe Mas Shatabdi",
+    "slug": "12244-cbe-mas-shatabdi",
+    "originStation": "CBE",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "12244-cbe-mas-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12262",
+    "trainName": "Csmt Duronto Ex",
+    "slug": "12262-csmt-duronto-ex",
+    "originStation": "HWH",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "12262-csmt-duronto-ex-chart-times"
+  },
+  {
+    "trainNumber": "12277",
+    "trainName": "Satabdi Express",
+    "slug": "12277-satabdi-express",
+    "originStation": "HWH",
+    "destinationStation": "PURI",
+    "chartTimesSlug": "12277-satabdi-express-chart-times"
+  },
+  {
+    "trainNumber": "12278",
+    "trainName": "Satabdi Express",
+    "slug": "12278-satabdi-express",
+    "originStation": "PURI",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12278-satabdi-express-chart-times"
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Rajdhani Expres",
+    "slug": "12301-rajdhani-expres",
+    "originStation": "HWH",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12301-rajdhani-expres-chart-times"
+  },
+  {
+    "trainNumber": "12302",
+    "trainName": "Hwh Rajdhani",
+    "slug": "12302-hwh-rajdhani",
+    "originStation": "NDLS",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12302-hwh-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12310",
+    "trainName": "Rjpb Tejas Raj",
+    "slug": "12310-rjpb-tejas-raj",
+    "originStation": "NDLS",
+    "destinationStation": "RJPB",
+    "chartTimesSlug": "12310-rjpb-tejas-raj-chart-times"
+  },
+  {
+    "trainNumber": "12314",
+    "trainName": "Sealdah Rajdhni",
+    "slug": "12314-sealdah-rajdhni",
+    "originStation": "NDLS",
+    "destinationStation": "SDAH",
+    "chartTimesSlug": "12314-sealdah-rajdhni-chart-times"
+  },
+  {
+    "trainNumber": "12381",
+    "trainName": "Poorva Express",
+    "slug": "12381-poorva-express",
+    "originStation": "HWH",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12381-poorva-express-chart-times"
+  },
+  {
+    "trainNumber": "12394",
+    "trainName": "Sampooran K Exp",
+    "slug": "12394-sampooran-k-exp",
+    "originStation": "NDLS",
+    "destinationStation": "RJPB",
+    "chartTimesSlug": "12394-sampooran-k-exp-chart-times"
+  },
+  {
+    "trainNumber": "12425",
+    "trainName": "Jammu Rajdhani",
+    "slug": "12425-jammu-rajdhani",
+    "originStation": "NDLS",
+    "destinationStation": "JAT",
+    "chartTimesSlug": "12425-jammu-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12445",
+    "trainName": "Uttar S Kranti",
+    "slug": "12445-uttar-s-kranti",
+    "originStation": "NDLS",
+    "destinationStation": "SVDK",
+    "chartTimesSlug": "12445-uttar-s-kranti-chart-times"
+  },
+  {
+    "trainNumber": "12607",
+    "trainName": "Lalbagh Sf Exp",
+    "slug": "12607-lalbagh-sf-exp",
+    "originStation": "KPD",
+    "destinationStation": "SBC",
+    "chartTimesSlug": "12607-lalbagh-sf-exp-chart-times"
+  },
+  {
+    "trainNumber": "12608",
+    "trainName": "Lalbagh Sf Exp",
+    "slug": "12608-lalbagh-sf-exp",
+    "originStation": "SBC",
+    "destinationStation": "KPD",
+    "chartTimesSlug": "12608-lalbagh-sf-exp-chart-times"
+  },
+  {
+    "trainNumber": "12616",
+    "trainName": "Grand Trunk Exp",
+    "slug": "12616-grand-trunk-exp",
+    "originStation": "NDLS",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "12616-grand-trunk-exp-chart-times"
+  },
+  {
+    "trainNumber": "12847",
+    "trainName": "Dgha Sup Ac Exp",
+    "slug": "12847-dgha-sup-ac-exp",
+    "originStation": "HWH",
+    "destinationStation": "DGHA",
+    "chartTimesSlug": "12847-dgha-sup-ac-exp-chart-times"
+  },
+  {
+    "trainNumber": "12848",
+    "trainName": "Hwh Sup Ac Exp",
+    "slug": "12848-hwh-sup-ac-exp",
+    "originStation": "DGHA",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12848-hwh-sup-ac-exp-chart-times"
+  },
+  {
+    "trainNumber": "12931",
+    "trainName": "Adi Double Deckr",
+    "slug": "12931-adi-double-deckr",
+    "originStation": "MMCT",
+    "destinationStation": "ADI",
+    "chartTimesSlug": "12931-adi-double-deckr-chart-times"
+  },
+  {
+    "trainNumber": "12952",
+    "trainName": "Mmct Tejas Raj",
+    "slug": "12952-mmct-tejas-raj",
+    "originStation": "NDLS",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "12952-mmct-tejas-raj-chart-times"
+  },
+  {
+    "trainNumber": "12954",
+    "trainName": "Ak Tejas Raj Ex",
+    "slug": "12954-ak-tejas-raj-ex",
+    "originStation": "NZM",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "12954-ak-tejas-raj-ex-chart-times"
+  },
+  {
+    "trainNumber": "12958",
+    "trainName": "Swran J Rajdhani",
+    "slug": "12958-swran-j-rajdhani",
+    "originStation": "NDLS",
+    "destinationStation": "SBIB",
+    "chartTimesSlug": "12958-swran-j-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "13107",
+    "trainName": "Maitree Express",
+    "slug": "13107-maitree-express",
+    "originStation": "DAKA",
+    "destinationStation": "KOAA",
+    "chartTimesSlug": "13107-maitree-express-chart-times"
+  },
+  {
+    "trainNumber": "13108",
+    "trainName": "Maitree Express",
+    "slug": "13108-maitree-express",
+    "originStation": "KOAA",
+    "destinationStation": "DAKA",
+    "chartTimesSlug": "13108-maitree-express-chart-times"
+  },
+  {
+    "trainNumber": "13109",
+    "trainName": "Maitree Express",
+    "slug": "13109-maitree-express",
+    "originStation": "KOAA",
+    "destinationStation": "DAKA",
+    "chartTimesSlug": "13109-maitree-express-chart-times"
+  },
+  {
+    "trainNumber": "13110",
+    "trainName": "Maitree Express",
+    "slug": "13110-maitree-express",
+    "originStation": "DAKA",
+    "destinationStation": "KOAA",
+    "chartTimesSlug": "13110-maitree-express-chart-times"
+  },
+  {
+    "trainNumber": "13129",
+    "trainName": "BANDHAN EXPRESS",
+    "slug": "13129-bandhan-express",
+    "originStation": "KOAA",
+    "destinationStation": "KLNB",
+    "chartTimesSlug": "13129-bandhan-express-chart-times"
+  },
+  {
+    "trainNumber": "13130",
+    "trainName": "BANDHAN EXPRESS",
+    "slug": "13130-bandhan-express",
+    "originStation": "KLNB",
+    "destinationStation": "KOAA",
+    "chartTimesSlug": "13130-bandhan-express-chart-times"
+  },
+  {
+    "trainNumber": "19020",
+    "trainName": "Hw Bdts Exp",
+    "slug": "19020-hw-bdts-exp",
+    "originStation": "HW",
+    "destinationStation": "BDTS",
+    "chartTimesSlug": "19020-hw-bdts-exp-chart-times"
+  },
+  {
+    "trainNumber": "20977",
+    "trainName": "Cdg Vandebharat",
+    "slug": "20977-cdg-vandebharat",
+    "originStation": "AII",
+    "destinationStation": "CDG",
+    "chartTimesSlug": "20977-cdg-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20978",
+    "trainName": "Vandebharat Exp",
+    "slug": "20978-vandebharat-exp",
+    "originStation": "CDG",
+    "destinationStation": "AII",
+    "chartTimesSlug": "20978-vandebharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22119",
+    "trainName": "Mao Tejas Exp",
+    "slug": "22119-mao-tejas-exp",
+    "originStation": "CSMT",
+    "destinationStation": "MAO",
+    "chartTimesSlug": "22119-mao-tejas-exp-chart-times"
+  },
+  {
+    "trainNumber": "22120",
+    "trainName": "Csmt Tejas Exp",
+    "slug": "22120-csmt-tejas-exp",
+    "originStation": "MAO",
+    "destinationStation": "DR",
+    "chartTimesSlug": "22120-csmt-tejas-exp-chart-times"
+  },
+  {
+    "trainNumber": "22439",
+    "trainName": "Vande Bharat Ex",
+    "slug": "22439-vande-bharat-ex",
+    "originStation": "NDLS",
+    "destinationStation": "SVDK",
+    "chartTimesSlug": "22439-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "22637",
+    "trainName": "West Coast Sfexp",
+    "slug": "22637-west-coast-sfexp",
+    "originStation": "MAS",
+    "destinationStation": "MAQ",
+    "chartTimesSlug": "22637-west-coast-sfexp-chart-times"
+  },
+  {
+    "trainNumber": "12461",
+    "trainName": "Vande Bharat Exp",
+    "slug": "12461-vande-bharat-exp",
+    "originStation": "JU",
+    "destinationStation": "SBIB",
+    "chartTimesSlug": "12461-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "12462",
+    "trainName": "Ju Vande Bharat",
+    "slug": "12462-ju-vande-bharat",
+    "originStation": "SBIB",
+    "destinationStation": "JU",
+    "chartTimesSlug": "12462-ju-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "22225",
+    "trainName": "Sur Vande Bharat",
+    "slug": "22225-sur-vande-bharat",
+    "originStation": "CSMT",
+    "destinationStation": "SUR",
+    "chartTimesSlug": "22225-sur-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "22227",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22227-vande-bharat-exp",
+    "originStation": "NJP",
+    "destinationStation": "GHY",
+    "chartTimesSlug": "22227-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22228",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22228-vande-bharat-exp",
+    "originStation": "GHY",
+    "destinationStation": "NJP",
+    "chartTimesSlug": "22228-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22229",
+    "trainName": "Mao Vande Bharat",
+    "slug": "22229-mao-vande-bharat",
+    "originStation": "CSMT",
+    "destinationStation": "MAO",
+    "chartTimesSlug": "22229-mao-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "22233",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22233-vande-bharat-exp",
+    "originStation": "NJP",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "22233-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22234",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22234-vande-bharat-exp",
+    "originStation": "PNBE",
+    "destinationStation": "NJP",
+    "chartTimesSlug": "22234-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22301",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22301-vande-bharat-exp",
+    "originStation": "HWH",
+    "destinationStation": "NJP",
+    "chartTimesSlug": "22301-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22302",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22302-vande-bharat-exp",
+    "originStation": "NJP",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "22302-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22303",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22303-vande-bharat-exp",
+    "originStation": "HWH",
+    "destinationStation": "GAYA",
+    "chartTimesSlug": "22303-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22304",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22304-vande-bharat-exp",
+    "originStation": "GAYA",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "22304-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22309",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22309-vande-bharat-exp",
+    "originStation": "HWH",
+    "destinationStation": "JMP",
+    "chartTimesSlug": "22309-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22310",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22310-vande-bharat-exp",
+    "originStation": "JMP",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "22310-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22345",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22345-vande-bharat-exp",
+    "originStation": "PNBE",
+    "destinationStation": "GTNR",
+    "chartTimesSlug": "22345-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22346",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22346-vande-bharat-exp",
+    "originStation": "GTNR",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "22346-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22347",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22347-vande-bharat-exp",
+    "originStation": "HWH",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "22347-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22348",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22348-vande-bharat-exp",
+    "originStation": "PNBE",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "22348-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22349",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22349-vande-bharat-exp",
+    "originStation": "PNBE",
+    "destinationStation": "RNC",
+    "chartTimesSlug": "22349-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22350",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22350-vande-bharat-exp",
+    "originStation": "RNC",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "22350-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22415",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22415-vande-bharat-exp",
+    "originStation": "BSB",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "22415-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22416",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22416-vande-bharat-exp",
+    "originStation": "NDLS",
+    "destinationStation": "BSB",
+    "chartTimesSlug": "22416-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22425",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22425-vande-bharat-exp",
+    "originStation": "AYC",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "22425-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22426",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22426-vande-bharat-exp",
+    "originStation": "ANVT",
+    "destinationStation": "AYC",
+    "chartTimesSlug": "22426-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22435",
+    "trainName": "Vande Bharat Ex",
+    "slug": "22435-vande-bharat-ex",
+    "originStation": "BSB",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "22435-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "Vande Bharat Ex",
+    "slug": "22436-vande-bharat-ex",
+    "originStation": "NDLS",
+    "destinationStation": "BSB",
+    "chartTimesSlug": "22436-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "22440",
+    "trainName": "Vande Bharat Ex",
+    "slug": "22440-vande-bharat-ex",
+    "originStation": "SVDK",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "22440-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "22447",
+    "trainName": "Vande Bharat Ex",
+    "slug": "22447-vande-bharat-ex",
+    "originStation": "NDLS",
+    "destinationStation": "AADR",
+    "chartTimesSlug": "22447-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "22448",
+    "trainName": "Vande Bharat Ex",
+    "slug": "22448-vande-bharat-ex",
+    "originStation": "AADR",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "22448-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "22457",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22457-vande-bharat-exp",
+    "originStation": "ANVT",
+    "destinationStation": "DDN",
+    "chartTimesSlug": "22457-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22458",
+    "trainName": "Vande Bharat Ex",
+    "slug": "22458-vande-bharat-ex",
+    "originStation": "DDN",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "22458-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "22469",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22469-vande-bharat-exp",
+    "originStation": "KURJ",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "22469-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22470",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22470-vande-bharat-exp",
+    "originStation": "NZM",
+    "destinationStation": "KURJ",
+    "chartTimesSlug": "22470-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22477",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22477-vande-bharat-exp",
+    "originStation": "NDLS",
+    "destinationStation": "SVDK",
+    "chartTimesSlug": "22477-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22478",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22478-vande-bharat-exp",
+    "originStation": "SVDK",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "22478-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22487",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22487-vande-bharat-exp",
+    "originStation": "DLI",
+    "destinationStation": "ASR",
+    "chartTimesSlug": "22487-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22488",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22488-vande-bharat-exp",
+    "originStation": "ASR",
+    "destinationStation": "DLI",
+    "chartTimesSlug": "22488-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22489",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22489-vande-bharat-exp",
+    "originStation": "BSB",
+    "destinationStation": "MTC",
+    "chartTimesSlug": "22489-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22490",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22490-vande-bharat-exp",
+    "originStation": "MTC",
+    "destinationStation": "BSB",
+    "chartTimesSlug": "22490-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22499",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22499-vande-bharat-exp",
+    "originStation": "DGHR",
+    "destinationStation": "BSB",
+    "chartTimesSlug": "22499-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22500",
+    "trainName": "Vande Bharat Ex",
+    "slug": "22500-vande-bharat-ex",
+    "originStation": "BSB",
+    "destinationStation": "DGHR",
+    "chartTimesSlug": "22500-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "22545",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22545-vande-bharat-exp",
+    "originStation": "LJN",
+    "destinationStation": "DDN",
+    "chartTimesSlug": "22545-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22546",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22546-vande-bharat-exp",
+    "originStation": "DDN",
+    "destinationStation": "LJN",
+    "chartTimesSlug": "22546-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22549",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22549-vande-bharat-exp",
+    "originStation": "GKP",
+    "destinationStation": "PRYJ",
+    "chartTimesSlug": "22549-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22550",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22550-vande-bharat-exp",
+    "originStation": "PRYJ",
+    "destinationStation": "GKP",
+    "chartTimesSlug": "22550-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22895",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22895-vande-bharat-exp",
+    "originStation": "HWH",
+    "destinationStation": "PURI",
+    "chartTimesSlug": "22895-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22896",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22896-vande-bharat-exp",
+    "originStation": "PURI",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "22896-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22926",
+    "trainName": "Sbt Vande Bharat",
+    "slug": "22926-sbt-vande-bharat",
+    "originStation": "OKHA",
+    "destinationStation": "ADI",
+    "chartTimesSlug": "22926-sbt-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "22961",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22961-vande-bharat-exp",
+    "originStation": "MMCT",
+    "destinationStation": "ADI",
+    "chartTimesSlug": "22961-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22962",
+    "trainName": "Vande Bharat Exp",
+    "slug": "22962-vande-bharat-exp",
+    "originStation": "ADI",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "22962-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20101",
+    "trainName": "Sc Vande Bharat",
+    "slug": "20101-sc-vande-bharat",
+    "originStation": "NGP",
+    "destinationStation": "SC",
+    "chartTimesSlug": "20101-sc-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20102",
+    "trainName": "Ngp Vande Bharat",
+    "slug": "20102-ngp-vande-bharat",
+    "originStation": "SC",
+    "destinationStation": "NGP",
+    "chartTimesSlug": "20102-ngp-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20171",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20171-vande-bharat-exp",
+    "originStation": "RKMP",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "20171-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20172",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20172-vande-bharat-exp",
+    "originStation": "NZM",
+    "destinationStation": "RKMP",
+    "chartTimesSlug": "20172-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20173",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20173-vande-bharat-exp",
+    "originStation": "RKMP",
+    "destinationStation": "REWA",
+    "chartTimesSlug": "20173-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20174",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20174-vande-bharat-exp",
+    "originStation": "REWA",
+    "destinationStation": "RKMP",
+    "chartTimesSlug": "20174-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20175",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20175-vande-bharat-exp",
+    "originStation": "BNRS",
+    "destinationStation": "AGC",
+    "chartTimesSlug": "20175-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20176",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20176-vande-bharat-exp",
+    "originStation": "AGC",
+    "destinationStation": "BNRS",
+    "chartTimesSlug": "20176-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20641",
+    "trainName": "Cbe Vande Bharat",
+    "slug": "20641-cbe-vande-bharat",
+    "originStation": "BNC",
+    "destinationStation": "CBE",
+    "chartTimesSlug": "20641-cbe-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20661",
+    "trainName": "Dwr Vande Bharat",
+    "slug": "20661-dwr-vande-bharat",
+    "originStation": "SBC",
+    "destinationStation": "DWR",
+    "chartTimesSlug": "20661-dwr-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20662",
+    "trainName": "Sbc Vande Bharat",
+    "slug": "20662-sbc-vande-bharat",
+    "originStation": "DWR",
+    "destinationStation": "SBC",
+    "chartTimesSlug": "20662-sbc-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20663",
+    "trainName": "Mas Vande Bharat",
+    "slug": "20663-mas-vande-bharat",
+    "originStation": "MYS",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "20663-mas-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20666",
+    "trainName": "Ms Vande Bharat",
+    "slug": "20666-ms-vande-bharat",
+    "originStation": "TEN",
+    "destinationStation": "MS",
+    "chartTimesSlug": "20666-ms-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20672",
+    "trainName": "Mdu Vande Bharat",
+    "slug": "20672-mdu-vande-bharat",
+    "originStation": "BNC",
+    "destinationStation": "MDU",
+    "chartTimesSlug": "20672-mdu-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20677",
+    "trainName": "Ns Vande Bharat",
+    "slug": "20677-ns-vande-bharat",
+    "originStation": "MAS",
+    "destinationStation": "NS",
+    "chartTimesSlug": "20677-ns-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20702",
+    "trainName": "Sc Vande Bharat",
+    "slug": "20702-sc-vande-bharat",
+    "originStation": "TPTY",
+    "destinationStation": "SC",
+    "chartTimesSlug": "20702-sc-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20704",
+    "trainName": "Kcg Vande Bharat",
+    "slug": "20704-kcg-vande-bharat",
+    "originStation": "YPR",
+    "destinationStation": "KCG",
+    "chartTimesSlug": "20704-kcg-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20708",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20708-vande-bharat-exp",
+    "originStation": "VSKP",
+    "destinationStation": "SC",
+    "chartTimesSlug": "20708-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20825",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20825-vande-bharat-exp",
+    "originStation": "BSP",
+    "destinationStation": "NGP",
+    "chartTimesSlug": "20825-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20826",
+    "trainName": "Bsp Vande Bharat",
+    "slug": "20826-bsp-vande-bharat",
+    "originStation": "NGP",
+    "destinationStation": "BSP",
+    "chartTimesSlug": "20826-bsp-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20829",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20829-vande-bharat-exp",
+    "originStation": "DURG",
+    "destinationStation": "VSKP",
+    "chartTimesSlug": "20829-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20830",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20830-vande-bharat-exp",
+    "originStation": "VSKP",
+    "destinationStation": "DURG",
+    "chartTimesSlug": "20830-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20833",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20833-vande-bharat-exp",
+    "originStation": "VSKP",
+    "destinationStation": "SC",
+    "chartTimesSlug": "20833-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20834",
+    "trainName": "Vande Bharat Ex",
+    "slug": "20834-vande-bharat-ex",
+    "originStation": "SC",
+    "destinationStation": "VSKP",
+    "chartTimesSlug": "20834-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "20835",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20835-vande-bharat-exp",
+    "originStation": "ROU",
+    "destinationStation": "PURI",
+    "chartTimesSlug": "20835-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20836",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20836-vande-bharat-exp",
+    "originStation": "PURI",
+    "destinationStation": "ROU",
+    "chartTimesSlug": "20836-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20841",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20841-vande-bharat-exp",
+    "originStation": "BBS",
+    "destinationStation": "VSKP",
+    "chartTimesSlug": "20841-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20842",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20842-vande-bharat-exp",
+    "originStation": "VSKP",
+    "destinationStation": "BBS",
+    "chartTimesSlug": "20842-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20871",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20871-vande-bharat-exp",
+    "originStation": "HWH",
+    "destinationStation": "ROU",
+    "chartTimesSlug": "20871-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20872",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20872-vande-bharat-exp",
+    "originStation": "ROU",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "20872-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20887",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20887-vande-bharat-exp",
+    "originStation": "RNC",
+    "destinationStation": "BSB",
+    "chartTimesSlug": "20887-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20888",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20888-vande-bharat-exp",
+    "originStation": "BSB",
+    "destinationStation": "RNC",
+    "chartTimesSlug": "20888-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20891",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20891-vande-bharat-exp",
+    "originStation": "TATA",
+    "destinationStation": "BAM",
+    "chartTimesSlug": "20891-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20892",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20892-vande-bharat-exp",
+    "originStation": "BAM",
+    "destinationStation": "TATA",
+    "chartTimesSlug": "20892-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20893",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20893-vande-bharat-exp",
+    "originStation": "TATA",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "20893-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20894",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20894-vande-bharat-exp",
+    "originStation": "PNBE",
+    "destinationStation": "TATA",
+    "chartTimesSlug": "20894-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20897",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20897-vande-bharat-exp",
+    "originStation": "HWH",
+    "destinationStation": "RNC",
+    "chartTimesSlug": "20897-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20898",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20898-vande-bharat-exp",
+    "originStation": "RNC",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "20898-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20901",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20901-vande-bharat-exp",
+    "originStation": "MMCT",
+    "destinationStation": "GNC",
+    "chartTimesSlug": "20901-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20902",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20902-vande-bharat-exp",
+    "originStation": "GNC",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "20902-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20979",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20979-vande-bharat-exp",
+    "originStation": "UDZ",
+    "destinationStation": "JP",
+    "chartTimesSlug": "20979-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20980",
+    "trainName": "Vande Bharat Exp",
+    "slug": "20980-vande-bharat-exp",
+    "originStation": "JP",
+    "destinationStation": "UDZ",
+    "chartTimesSlug": "20980-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "20981",
+    "trainName": "Agc Vande Bharat",
+    "slug": "20981-agc-vande-bharat",
+    "originStation": "UDZ",
+    "destinationStation": "AGC",
+    "chartTimesSlug": "20981-agc-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "20982",
+    "trainName": "Udz Vande Bharat",
+    "slug": "20982-udz-vande-bharat",
+    "originStation": "AGC",
+    "destinationStation": "UDZ",
+    "chartTimesSlug": "20982-udz-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "21893",
+    "trainName": "Vande Bharat Exp",
+    "slug": "21893-vande-bharat-exp",
+    "originStation": "TATA",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "21893-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "21894",
+    "trainName": "Vande Bharat Exp",
+    "slug": "21894-vande-bharat-exp",
+    "originStation": "PNBE",
+    "destinationStation": "TATA",
+    "chartTimesSlug": "21894-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "21895",
+    "trainName": "Vande Bharat Exp",
+    "slug": "21895-vande-bharat-exp",
+    "originStation": "TATA",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "21895-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "21896",
+    "trainName": "Vande Bharat Exp",
+    "slug": "21896-vande-bharat-exp",
+    "originStation": "PNBE",
+    "destinationStation": "TATA",
+    "chartTimesSlug": "21896-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26301",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26301-vande-bharat-exp",
+    "originStation": "JBN",
+    "destinationStation": "DNR",
+    "chartTimesSlug": "26301-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26302",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26302-vande-bharat-exp",
+    "originStation": "DNR",
+    "destinationStation": "JBN",
+    "chartTimesSlug": "26302-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26401",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26401-vande-bharat-exp",
+    "originStation": "JAT",
+    "destinationStation": "SINA",
+    "chartTimesSlug": "26401-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26402",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26402-vande-bharat-exp",
+    "originStation": "SINA",
+    "destinationStation": "JAT",
+    "chartTimesSlug": "26402-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26403",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26403-vande-bharat-exp",
+    "originStation": "JAT",
+    "destinationStation": "SINA",
+    "chartTimesSlug": "26403-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26404",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26404-vande-bharat-exp",
+    "originStation": "SINA",
+    "destinationStation": "JAT",
+    "chartTimesSlug": "26404-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26405",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26405-vande-bharat-exp",
+    "originStation": "ASR",
+    "destinationStation": "SVDK",
+    "chartTimesSlug": "26405-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26406",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26406-vande-bharat-exp",
+    "originStation": "SVDK",
+    "destinationStation": "ASR",
+    "chartTimesSlug": "26406-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26461",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26461-vande-bharat-exp",
+    "originStation": "DLI",
+    "destinationStation": "FZR",
+    "chartTimesSlug": "26461-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26462",
+    "trainName": "Vande Bharat Ex",
+    "slug": "26462-vande-bharat-ex",
+    "originStation": "FZR",
+    "destinationStation": "DLI",
+    "chartTimesSlug": "26462-vande-bharat-ex-chart-times"
+  },
+  {
+    "trainNumber": "26471",
+    "trainName": "Dec Vande Bharat",
+    "slug": "26471-dec-vande-bharat",
+    "originStation": "BKN",
+    "destinationStation": "DEC",
+    "chartTimesSlug": "26471-dec-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "26472",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26472-vande-bharat-exp",
+    "originStation": "DEC",
+    "destinationStation": "BKN",
+    "chartTimesSlug": "26472-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26482",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26482-vande-bharat-exp",
+    "originStation": "DEC",
+    "destinationStation": "JU",
+    "chartTimesSlug": "26482-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26501",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26501-vande-bharat-exp",
+    "originStation": "PPTA",
+    "destinationStation": "GKP",
+    "chartTimesSlug": "26501-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26502",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26502-vande-bharat-exp",
+    "originStation": "GKP",
+    "destinationStation": "PPTA",
+    "chartTimesSlug": "26502-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26503",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26503-vande-bharat-exp",
+    "originStation": "SRE",
+    "destinationStation": "GTNR",
+    "chartTimesSlug": "26503-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26504",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26504-vande-bharat-exp",
+    "originStation": "GTNR",
+    "destinationStation": "SRE",
+    "chartTimesSlug": "26504-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26505",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26505-vande-bharat-exp",
+    "originStation": "KURJ",
+    "destinationStation": "BNRS",
+    "chartTimesSlug": "26505-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26506",
+    "trainName": "Vande Bharat Exp",
+    "slug": "26506-vande-bharat-exp",
+    "originStation": "BNRS",
+    "destinationStation": "KURJ",
+    "chartTimesSlug": "26506-vande-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "26652",
+    "trainName": "Sbc Vande Bharat",
+    "slug": "26652-sbc-vande-bharat",
+    "originStation": "ERS",
+    "destinationStation": "SBC",
+    "chartTimesSlug": "26652-sbc-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "26751",
+    "trainName": "Sbc Vande Bharat",
+    "slug": "26751-sbc-vande-bharat",
+    "originStation": "BGM",
+    "destinationStation": "SBC",
+    "chartTimesSlug": "26751-sbc-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "26752",
+    "trainName": "Bgm Vande Bharat",
+    "slug": "26752-bgm-vande-bharat",
+    "originStation": "SBC",
+    "destinationStation": "BGM",
+    "chartTimesSlug": "26752-bgm-vande-bharat-chart-times"
+  },
+  {
+    "trainNumber": "27575",
+    "trainName": "Vande Bharat Sl",
+    "slug": "27575-vande-bharat-sl",
+    "originStation": "HWH",
+    "destinationStation": "KYQ",
+    "chartTimesSlug": "27575-vande-bharat-sl-chart-times"
+  },
+  {
+    "trainNumber": "27576",
+    "trainName": "Vande Bharat Sl",
+    "slug": "27576-vande-bharat-sl",
+    "originStation": "KYQ",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "27576-vande-bharat-sl-chart-times"
+  },
+  {
+    "trainNumber": "12305",
+    "trainName": "Rajdhani Expres",
+    "slug": "12305-rajdhani-expres",
+    "originStation": "HWH",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12305-rajdhani-expres-chart-times"
+  },
+  {
+    "trainNumber": "12313",
+    "trainName": "Rajdhani Expres",
+    "slug": "12313-rajdhani-expres",
+    "originStation": "SDAH",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12313-rajdhani-expres-chart-times"
+  },
+  {
+    "trainNumber": "12423",
+    "trainName": "Rajdhani Exp",
+    "slug": "12423-rajdhani-exp",
+    "originStation": "DBRG",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12423-rajdhani-exp-chart-times"
+  },
+  {
+    "trainNumber": "12424",
+    "trainName": "Dbrt Rajdhani",
+    "slug": "12424-dbrt-rajdhani",
+    "originStation": "NDLS",
+    "destinationStation": "DBRG",
+    "chartTimesSlug": "12424-dbrt-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12426",
+    "trainName": "Jammu Rajdhani",
+    "slug": "12426-jammu-rajdhani",
+    "originStation": "JAT",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12426-jammu-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12431",
+    "trainName": "Rajdhani Exp",
+    "slug": "12431-rajdhani-exp",
+    "originStation": "TVC",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12431-rajdhani-exp-chart-times"
+  },
+  {
+    "trainNumber": "12432",
+    "trainName": "Tvc Rajdhani",
+    "slug": "12432-tvc-rajdhani",
+    "originStation": "NZM",
+    "destinationStation": "TVC",
+    "chartTimesSlug": "12432-tvc-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12433",
+    "trainName": "Mas Nzm Rajdhani",
+    "slug": "12433-mas-nzm-rajdhani",
+    "originStation": "MAS",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12433-mas-nzm-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12434",
+    "trainName": "Nzm Mas Rajdhani",
+    "slug": "12434-nzm-mas-rajdhani",
+    "originStation": "NZM",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "12434-nzm-mas-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12437",
+    "trainName": "Sc Nzm Rajdhani",
+    "slug": "12437-sc-nzm-rajdhani",
+    "originStation": "SC",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12437-sc-nzm-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12438",
+    "trainName": "Sc Rajdhani",
+    "slug": "12438-sc-rajdhani",
+    "originStation": "NZM",
+    "destinationStation": "SC",
+    "chartTimesSlug": "12438-sc-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12454",
+    "trainName": "Rnc Rajdhani",
+    "slug": "12454-rnc-rajdhani",
+    "originStation": "NDLS",
+    "destinationStation": "RNC",
+    "chartTimesSlug": "12454-rnc-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "22221",
+    "trainName": "Nzm Rajdhani",
+    "slug": "22221-nzm-rajdhani",
+    "originStation": "CSMT",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "22221-nzm-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "22222",
+    "trainName": "Csmt Rajdhani",
+    "slug": "22222-csmt-rajdhani",
+    "originStation": "NZM",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "22222-csmt-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "22413",
+    "trainName": "Mao Nzm Rajdhani",
+    "slug": "22413-mao-nzm-rajdhani",
+    "originStation": "MAO",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "22413-mao-nzm-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "22691",
+    "trainName": "Rajdhani Exp",
+    "slug": "22691-rajdhani-exp",
+    "originStation": "SBC",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "22691-rajdhani-exp-chart-times"
+  },
+  {
+    "trainNumber": "22692",
+    "trainName": "Sbc Rajdhani",
+    "slug": "22692-sbc-rajdhani",
+    "originStation": "NZM",
+    "destinationStation": "SBC",
+    "chartTimesSlug": "22692-sbc-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "20408",
+    "trainName": "Rnc Rajdhani",
+    "slug": "20408-rnc-rajdhani",
+    "originStation": "NDLS",
+    "destinationStation": "RNC",
+    "chartTimesSlug": "20408-rnc-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "20503",
+    "trainName": "Rajdhani Exp",
+    "slug": "20503-rajdhani-exp",
+    "originStation": "DBRG",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "20503-rajdhani-exp-chart-times"
+  },
+  {
+    "trainNumber": "20504",
+    "trainName": "Dbrg Rajdhani",
+    "slug": "20504-dbrg-rajdhani",
+    "originStation": "NDLS",
+    "destinationStation": "DBRG",
+    "chartTimesSlug": "20504-dbrg-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "20505",
+    "trainName": "Rajdhani Exp",
+    "slug": "20505-rajdhani-exp",
+    "originStation": "DBRG",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "20505-rajdhani-exp-chart-times"
+  },
+  {
+    "trainNumber": "20506",
+    "trainName": "Dbrg Rajdhani",
+    "slug": "20506-dbrg-rajdhani",
+    "originStation": "NDLS",
+    "destinationStation": "DBRG",
+    "chartTimesSlug": "20506-dbrg-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "20507",
+    "trainName": "RAJDHANI EXP",
+    "slug": "20507-rajdhani-exp",
+    "originStation": "SANG",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "20507-rajdhani-exp-chart-times"
+  },
+  {
+    "trainNumber": "20508",
+    "trainName": "SANG RAJDHANI",
+    "slug": "20508-sang-rajdhani",
+    "originStation": "ANVT",
+    "destinationStation": "SANG",
+    "chartTimesSlug": "20508-sang-rajdhani-chart-times"
+  },
+  {
+    "trainNumber": "12021",
+    "trainName": "Bbn Janshatabdi",
+    "slug": "12021-bbn-janshatabdi",
+    "originStation": "HWH",
+    "destinationStation": "BBN",
+    "chartTimesSlug": "12021-bbn-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12022",
+    "trainName": "Hwh Janshatabdi",
+    "slug": "12022-hwh-janshatabdi",
+    "originStation": "BBN",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12022-hwh-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12023",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12023-janshatabdi-exp",
+    "originStation": "HWH",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "12023-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12024",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12024-janshatabdi-exp",
+    "originStation": "PNBE",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12024-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12051",
+    "trainName": "Mao Janshatabdi",
+    "slug": "12051-mao-janshatabdi",
+    "originStation": "CSMT",
+    "destinationStation": "MAO",
+    "chartTimesSlug": "12051-mao-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12053",
+    "trainName": "Asr Janshatabdi",
+    "slug": "12053-asr-janshatabdi",
+    "originStation": "HW",
+    "destinationStation": "ASR",
+    "chartTimesSlug": "12053-asr-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12054",
+    "trainName": "Hw Janshatabdi",
+    "slug": "12054-hw-janshatabdi",
+    "originStation": "ASR",
+    "destinationStation": "HW",
+    "chartTimesSlug": "12054-hw-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12056",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12056-janshatabdi-exp",
+    "originStation": "DDN",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12056-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12057",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12057-janshatabdi-exp",
+    "originStation": "NDLS",
+    "destinationStation": "DLPC",
+    "chartTimesSlug": "12057-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12058",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12058-janshatabdi-exp",
+    "originStation": "DLPC",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12058-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12060",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12060-janshatabdi-exp",
+    "originStation": "NZM",
+    "destinationStation": "KOTA",
+    "chartTimesSlug": "12060-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12061",
+    "trainName": "Jbp Janshatabdi",
+    "slug": "12061-jbp-janshatabdi",
+    "originStation": "RKMP",
+    "destinationStation": "MML",
+    "chartTimesSlug": "12061-jbp-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12066",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12066-janshatabdi-exp",
+    "originStation": "DEE",
+    "destinationStation": "AII",
+    "chartTimesSlug": "12066-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12069",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12069-janshatabdi-exp",
+    "originStation": "RIG",
+    "destinationStation": "G",
+    "chartTimesSlug": "12069-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12070",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12070-janshatabdi-exp",
+    "originStation": "G",
+    "destinationStation": "RIG",
+    "chartTimesSlug": "12070-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12073",
+    "trainName": "Bbs Janshatabdi",
+    "slug": "12073-bbs-janshatabdi",
+    "originStation": "HWH",
+    "destinationStation": "BBS",
+    "chartTimesSlug": "12073-bbs-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12075",
+    "trainName": "Tvc Janshatabdi",
+    "slug": "12075-tvc-janshatabdi",
+    "originStation": "CLT",
+    "destinationStation": "TVC",
+    "chartTimesSlug": "12075-tvc-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12076",
+    "trainName": "Clt Janshatabdi",
+    "slug": "12076-clt-janshatabdi",
+    "originStation": "TVC",
+    "destinationStation": "CLT",
+    "chartTimesSlug": "12076-clt-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12077",
+    "trainName": "Bza Janshatabdi",
+    "slug": "12077-bza-janshatabdi",
+    "originStation": "MAS",
+    "destinationStation": "BZA",
+    "chartTimesSlug": "12077-bza-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12079",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12079-janshatabdi-exp",
+    "originStation": "SBC",
+    "destinationStation": "UBL",
+    "chartTimesSlug": "12079-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12080",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12080-janshatabdi-exp",
+    "originStation": "UBL",
+    "destinationStation": "SBC",
+    "chartTimesSlug": "12080-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12081",
+    "trainName": "Tvc Janshatabdi",
+    "slug": "12081-tvc-janshatabdi",
+    "originStation": "CAN",
+    "destinationStation": "TVC",
+    "chartTimesSlug": "12081-tvc-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12082",
+    "trainName": "Can Janshatabdi",
+    "slug": "12082-can-janshatabdi",
+    "originStation": "TVC",
+    "destinationStation": "CAN",
+    "chartTimesSlug": "12082-can-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12083",
+    "trainName": "Cbe Janshatabdi",
+    "slug": "12083-cbe-janshatabdi",
+    "originStation": "MV",
+    "destinationStation": "CBE",
+    "chartTimesSlug": "12083-cbe-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12089",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12089-janshatabdi-exp",
+    "originStation": "SBC",
+    "destinationStation": "SMET",
+    "chartTimesSlug": "12089-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12090",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12090-janshatabdi-exp",
+    "originStation": "SMET",
+    "destinationStation": "SBC",
+    "chartTimesSlug": "12090-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12091",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12091-janshatabdi-exp",
+    "originStation": "DDN",
+    "destinationStation": "KGM",
+    "chartTimesSlug": "12091-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12092",
+    "trainName": "Janshatabdi Exp",
+    "slug": "12092-janshatabdi-exp",
+    "originStation": "KGM",
+    "destinationStation": "DDN",
+    "chartTimesSlug": "12092-janshatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12365",
+    "trainName": "Rnc Janshatabdi",
+    "slug": "12365-rnc-janshatabdi",
+    "originStation": "PNBE",
+    "destinationStation": "RNC",
+    "chartTimesSlug": "12365-rnc-janshatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12913",
+    "trainName": "Trishatabdi Exp",
+    "slug": "12913-trishatabdi-exp",
+    "originStation": "INDB",
+    "destinationStation": "NGP",
+    "chartTimesSlug": "12913-trishatabdi-exp-chart-times"
+  },
+  {
+    "trainNumber": "12923",
+    "trainName": "Dadn Trishatabdi",
+    "slug": "12923-dadn-trishatabdi",
+    "originStation": "DADN",
+    "destinationStation": "NGP",
+    "chartTimesSlug": "12923-dadn-trishatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12213",
+    "trainName": "Ypr Dee Duronto",
+    "slug": "12213-ypr-dee-duronto",
+    "originStation": "YPR",
+    "destinationStation": "DEE",
+    "chartTimesSlug": "12213-ypr-dee-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12214",
+    "trainName": "Dee Ypr Duronto",
+    "slug": "12214-dee-ypr-duronto",
+    "originStation": "DEE",
+    "destinationStation": "YPR",
+    "chartTimesSlug": "12214-dee-ypr-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12219",
+    "trainName": "Sc Duronto Exp",
+    "slug": "12219-sc-duronto-exp",
+    "originStation": "LTT",
+    "destinationStation": "SC",
+    "chartTimesSlug": "12219-sc-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12220",
+    "trainName": "Ltt Duronto",
+    "slug": "12220-ltt-duronto",
+    "originStation": "SC",
+    "destinationStation": "LTT",
+    "chartTimesSlug": "12220-ltt-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12221",
+    "trainName": "Howrah Duronto",
+    "slug": "12221-howrah-duronto",
+    "originStation": "PUNE",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12221-howrah-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12222",
+    "trainName": "Pune Duronto Ex",
+    "slug": "12222-pune-duronto-ex",
+    "originStation": "HWH",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "12222-pune-duronto-ex-chart-times"
+  },
+  {
+    "trainNumber": "12223",
+    "trainName": "Ltt Ers Duronto",
+    "slug": "12223-ltt-ers-duronto",
+    "originStation": "LTT",
+    "destinationStation": "ERS",
+    "chartTimesSlug": "12223-ltt-ers-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12224",
+    "trainName": "Ers Ltt Duronto",
+    "slug": "12224-ers-ltt-duronto",
+    "originStation": "ERS",
+    "destinationStation": "LTT",
+    "chartTimesSlug": "12224-ers-ltt-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12227",
+    "trainName": "Indb Duronto",
+    "slug": "12227-indb-duronto",
+    "originStation": "MMCT",
+    "destinationStation": "INDB",
+    "chartTimesSlug": "12227-indb-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12228",
+    "trainName": "Mmct Duronto",
+    "slug": "12228-mmct-duronto",
+    "originStation": "INDB",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "12228-mmct-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12239",
+    "trainName": "Hisar Duronto",
+    "slug": "12239-hisar-duronto",
+    "originStation": "MMCT",
+    "destinationStation": "HSR",
+    "chartTimesSlug": "12239-hisar-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12240",
+    "trainName": "Mmct Duronto Exp",
+    "slug": "12240-mmct-duronto-exp",
+    "originStation": "HSR",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "12240-mmct-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12245",
+    "trainName": "Smvb Duronto Exp",
+    "slug": "12245-smvb-duronto-exp",
+    "originStation": "HWH",
+    "destinationStation": "SMVB",
+    "chartTimesSlug": "12245-smvb-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12246",
+    "trainName": "Duronto Express",
+    "slug": "12246-duronto-express",
+    "originStation": "SMVB",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12246-duronto-express-chart-times"
+  },
+  {
+    "trainNumber": "12259",
+    "trainName": "Bkn Duronto Exp",
+    "slug": "12259-bkn-duronto-exp",
+    "originStation": "SDAH",
+    "destinationStation": "BKN",
+    "chartTimesSlug": "12259-bkn-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12260",
+    "trainName": "Sdah Duronto",
+    "slug": "12260-sdah-duronto",
+    "originStation": "BKN",
+    "destinationStation": "SDAH",
+    "chartTimesSlug": "12260-sdah-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12261",
+    "trainName": "Howrah Duronto",
+    "slug": "12261-howrah-duronto",
+    "originStation": "CSMT",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12261-howrah-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12263",
+    "trainName": "Nzm Duronto",
+    "slug": "12263-nzm-duronto",
+    "originStation": "PUNE",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12263-nzm-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12265",
+    "trainName": "Jat Duronto Exp",
+    "slug": "12265-jat-duronto-exp",
+    "originStation": "DEE",
+    "destinationStation": "JAT",
+    "chartTimesSlug": "12265-jat-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12266",
+    "trainName": "Dee Duronto Exp",
+    "slug": "12266-dee-duronto-exp",
+    "originStation": "JAT",
+    "destinationStation": "DEE",
+    "chartTimesSlug": "12266-dee-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12267",
+    "trainName": "Hapa  Duronto Ex",
+    "slug": "12267-hapa-duronto-ex",
+    "originStation": "MMCT",
+    "destinationStation": "HAPA",
+    "chartTimesSlug": "12267-hapa-duronto-ex-chart-times"
+  },
+  {
+    "trainNumber": "12268",
+    "trainName": "Mmct Duronto Exp",
+    "slug": "12268-mmct-duronto-exp",
+    "originStation": "HAPA",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "12268-mmct-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12269",
+    "trainName": "Mas Nzm Duronto",
+    "slug": "12269-mas-nzm-duronto",
+    "originStation": "MAS",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12269-mas-nzm-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12270",
+    "trainName": "Mas Duronto Exp",
+    "slug": "12270-mas-duronto-exp",
+    "originStation": "NZM",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "12270-mas-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12273",
+    "trainName": "Ndls Duronto Ex",
+    "slug": "12273-ndls-duronto-ex",
+    "originStation": "HWH",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12273-ndls-duronto-ex-chart-times"
+  },
+  {
+    "trainNumber": "12274",
+    "trainName": "Hwh Duronto Exp",
+    "slug": "12274-hwh-duronto-exp",
+    "originStation": "NDLS",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "12274-hwh-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12281",
+    "trainName": "Duronto Express",
+    "slug": "12281-duronto-express",
+    "originStation": "BBS",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12281-duronto-express-chart-times"
+  },
+  {
+    "trainNumber": "12282",
+    "trainName": "Bbs Duronto Exp",
+    "slug": "12282-bbs-duronto-exp",
+    "originStation": "NDLS",
+    "destinationStation": "BBS",
+    "chartTimesSlug": "12282-bbs-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12283",
+    "trainName": "Ers Nzm Duronto",
+    "slug": "12283-ers-nzm-duronto",
+    "originStation": "ERS",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12283-ers-nzm-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12284",
+    "trainName": "Nzm Ers Duronto",
+    "slug": "12284-nzm-ers-duronto",
+    "originStation": "NZM",
+    "destinationStation": "ERS",
+    "chartTimesSlug": "12284-nzm-ers-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12285",
+    "trainName": "Nzm Duronto",
+    "slug": "12285-nzm-duronto",
+    "originStation": "SC",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12285-nzm-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12286",
+    "trainName": "Sc Duronto Exp",
+    "slug": "12286-sc-duronto-exp",
+    "originStation": "NZM",
+    "destinationStation": "SC",
+    "chartTimesSlug": "12286-sc-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12289",
+    "trainName": "Ngp Duronto Exp",
+    "slug": "12289-ngp-duronto-exp",
+    "originStation": "CSMT",
+    "destinationStation": "NGP",
+    "chartTimesSlug": "12289-ngp-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12290",
+    "trainName": "Csmt Duronto Exp",
+    "slug": "12290-csmt-duronto-exp",
+    "originStation": "NGP",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "12290-csmt-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "12293",
+    "trainName": "Pryj Duronto",
+    "slug": "12293-pryj-duronto",
+    "originStation": "LTT",
+    "destinationStation": "PRYJ",
+    "chartTimesSlug": "12293-pryj-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12294",
+    "trainName": "Ltt Duronto",
+    "slug": "12294-ltt-duronto",
+    "originStation": "PRYJ",
+    "destinationStation": "LTT",
+    "chartTimesSlug": "12294-ltt-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12297",
+    "trainName": "Pune Duronto",
+    "slug": "12297-pune-duronto",
+    "originStation": "ADI",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "12297-pune-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12298",
+    "trainName": "Adi Duronto",
+    "slug": "12298-adi-duronto",
+    "originStation": "PUNE",
+    "destinationStation": "ADI",
+    "chartTimesSlug": "12298-adi-duronto-chart-times"
+  },
+  {
+    "trainNumber": "12309",
+    "trainName": "Rjpb Tejas Raj",
+    "slug": "12309-rjpb-tejas-raj",
+    "originStation": "RJPB",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12309-rjpb-tejas-raj-chart-times"
+  },
+  {
+    "trainNumber": "12951",
+    "trainName": "Ndls Tejas Raj",
+    "slug": "12951-ndls-tejas-raj",
+    "originStation": "MMCT",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12951-ndls-tejas-raj-chart-times"
+  },
+  {
+    "trainNumber": "12953",
+    "trainName": "Ak Tejas Raj Ex",
+    "slug": "12953-ak-tejas-raj-ex",
+    "originStation": "MMCT",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12953-ak-tejas-raj-ex-chart-times"
+  },
+  {
+    "trainNumber": "22201",
+    "trainName": "Duronto Express",
+    "slug": "22201-duronto-express",
+    "originStation": "SDAH",
+    "destinationStation": "PURI",
+    "chartTimesSlug": "22201-duronto-express-chart-times"
+  },
+  {
+    "trainNumber": "22202",
+    "trainName": "Duronto Express",
+    "slug": "22202-duronto-express",
+    "originStation": "PURI",
+    "destinationStation": "SDAH",
+    "chartTimesSlug": "22202-duronto-express-chart-times"
+  },
+  {
+    "trainNumber": "22203",
+    "trainName": "Duronto Express",
+    "slug": "22203-duronto-express",
+    "originStation": "VSKP",
+    "destinationStation": "SC",
+    "chartTimesSlug": "22203-duronto-express-chart-times"
+  },
+  {
+    "trainNumber": "22204",
+    "trainName": "Vskp Duronto",
+    "slug": "22204-vskp-duronto",
+    "originStation": "SC",
+    "destinationStation": "VSKP",
+    "chartTimesSlug": "22204-vskp-duronto-chart-times"
+  },
+  {
+    "trainNumber": "22209",
+    "trainName": "Nzm Duronto",
+    "slug": "22209-nzm-duronto",
+    "originStation": "MMCT",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "22209-nzm-duronto-chart-times"
+  },
+  {
+    "trainNumber": "22210",
+    "trainName": "Mmct Duronto",
+    "slug": "22210-mmct-duronto",
+    "originStation": "NZM",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "22210-mmct-duronto-chart-times"
+  },
+  {
+    "trainNumber": "22213",
+    "trainName": "Pnbe Duronto Ex",
+    "slug": "22213-pnbe-duronto-ex",
+    "originStation": "SHM",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "22213-pnbe-duronto-ex-chart-times"
+  },
+  {
+    "trainNumber": "22214",
+    "trainName": "Duronto Exp",
+    "slug": "22214-duronto-exp",
+    "originStation": "PNBE",
+    "destinationStation": "SHM",
+    "chartTimesSlug": "22214-duronto-exp-chart-times"
+  },
+  {
+    "trainNumber": "22671",
+    "trainName": "Tejas Express",
+    "slug": "22671-tejas-express",
+    "originStation": "MS",
+    "destinationStation": "MDU",
+    "chartTimesSlug": "22671-tejas-express-chart-times"
+  },
+  {
+    "trainNumber": "22672",
+    "trainName": "Tejas Express",
+    "slug": "22672-tejas-express",
+    "originStation": "MDU",
+    "destinationStation": "MS",
+    "chartTimesSlug": "22672-tejas-express-chart-times"
+  },
+  {
+    "trainNumber": "22811",
+    "trainName": "Tejas Raj Exp",
+    "slug": "22811-tejas-raj-exp",
+    "originStation": "BBS",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "22811-tejas-raj-exp-chart-times"
+  },
+  {
+    "trainNumber": "22812",
+    "trainName": "Bbs Tejas Raj",
+    "slug": "22812-bbs-tejas-raj",
+    "originStation": "NDLS",
+    "destinationStation": "BBS",
+    "chartTimesSlug": "22812-bbs-tejas-raj-chart-times"
+  },
+  {
+    "trainNumber": "22823",
+    "trainName": "Tejas Raj Exp",
+    "slug": "22823-tejas-raj-exp",
+    "originStation": "BBS",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "22823-tejas-raj-exp-chart-times"
+  },
+  {
+    "trainNumber": "22824",
+    "trainName": "Bbs Tejas Raj",
+    "slug": "22824-bbs-tejas-raj",
+    "originStation": "NDLS",
+    "destinationStation": "BBS",
+    "chartTimesSlug": "22824-bbs-tejas-raj-chart-times"
+  },
+  {
+    "trainNumber": "9028",
+    "trainName": "Adi Mmct Tejas S",
+    "slug": "9028-adi-mmct-tejas-s",
+    "originStation": "AII",
+    "destinationStation": "BDTS",
+    "chartTimesSlug": "9028-adi-mmct-tejas-s-chart-times"
+  },
+  {
+    "trainNumber": "20501",
+    "trainName": "Tejas Express",
+    "slug": "20501-tejas-express",
+    "originStation": "AGTL",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "20501-tejas-express-chart-times"
+  },
+  {
+    "trainNumber": "20502",
+    "trainName": "Agtl Tejas Raj",
+    "slug": "20502-agtl-tejas-raj",
+    "originStation": "ANVT",
+    "destinationStation": "AGTL",
+    "chartTimesSlug": "20502-agtl-tejas-raj-chart-times"
+  },
+  {
+    "trainNumber": "20817",
+    "trainName": "Tejas Raj Exp",
+    "slug": "20817-tejas-raj-exp",
+    "originStation": "BBS",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "20817-tejas-raj-exp-chart-times"
+  },
+  {
+    "trainNumber": "20818",
+    "trainName": "Bbs Tejas Raj",
+    "slug": "20818-bbs-tejas-raj",
+    "originStation": "NDLS",
+    "destinationStation": "BBS",
+    "chartTimesSlug": "20818-bbs-tejas-raj-chart-times"
+  },
+  {
+    "trainNumber": "82501",
+    "trainName": "Irctc Tejas Exp",
+    "slug": "82501-irctc-tejas-exp",
+    "originStation": "LJN",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "82501-irctc-tejas-exp-chart-times"
+  },
+  {
+    "trainNumber": "82502",
+    "trainName": "Irctc Tejas Exp",
+    "slug": "82502-irctc-tejas-exp",
+    "originStation": "NDLS",
+    "destinationStation": "LJN",
+    "chartTimesSlug": "82502-irctc-tejas-exp-chart-times"
+  },
+  {
+    "trainNumber": "82901",
+    "trainName": "Irctc Tejas Exp",
+    "slug": "82901-irctc-tejas-exp",
+    "originStation": "MMCT",
+    "destinationStation": "ADI",
+    "chartTimesSlug": "82901-irctc-tejas-exp-chart-times"
+  },
+  {
+    "trainNumber": "82902",
+    "trainName": "Irctc Tejas Exp",
+    "slug": "82902-irctc-tejas-exp",
+    "originStation": "ADI",
+    "destinationStation": "MMCT",
+    "chartTimesSlug": "82902-irctc-tejas-exp-chart-times"
+  },
+  {
+    "trainNumber": "12059",
+    "trainName": "Nzm Jan Shatabdi",
+    "slug": "12059-nzm-jan-shatabdi",
+    "originStation": "KOTA",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12059-nzm-jan-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12072",
+    "trainName": "Jan Shatabdi",
+    "slug": "12072-jan-shatabdi",
+    "originStation": "HNL",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "12072-jan-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12078",
+    "trainName": "Jan Shatabdi",
+    "slug": "12078-jan-shatabdi",
+    "originStation": "BZA",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "12078-jan-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "12084",
+    "trainName": "Mv Jan Shatabdi",
+    "slug": "12084-mv-jan-shatabdi",
+    "originStation": "CBE",
+    "destinationStation": "MV",
+    "chartTimesSlug": "12084-mv-jan-shatabdi-chart-times"
+  },
+  {
+    "trainNumber": "20947",
+    "trainName": "Jan Shatabdi Ex",
+    "slug": "20947-jan-shatabdi-ex",
+    "originStation": "ADI",
+    "destinationStation": "EKNR",
+    "chartTimesSlug": "20947-jan-shatabdi-ex-chart-times"
+  },
+  {
+    "trainNumber": "20948",
+    "trainName": "Jan Shatabdi Ex",
+    "slug": "20948-jan-shatabdi-ex",
+    "originStation": "EKNR",
+    "destinationStation": "ADI",
+    "chartTimesSlug": "20948-jan-shatabdi-ex-chart-times"
+  },
+  {
+    "trainNumber": "20949",
+    "trainName": "Jan Shatabdi Ex",
+    "slug": "20949-jan-shatabdi-ex",
+    "originStation": "ADI",
+    "destinationStation": "EKNR",
+    "chartTimesSlug": "20949-jan-shatabdi-ex-chart-times"
+  },
+  {
+    "trainNumber": "20950",
+    "trainName": "Jan Shatabdi Ex",
+    "slug": "20950-jan-shatabdi-ex",
+    "originStation": "EKNR",
+    "destinationStation": "ADI",
+    "chartTimesSlug": "20950-jan-shatabdi-ex-chart-times"
+  },
+  {
+    "trainNumber": "12113",
+    "trainName": "Ngp Garibrath",
+    "slug": "12113-ngp-garibrath",
+    "originStation": "PUNE",
+    "destinationStation": "NGP",
+    "chartTimesSlug": "12113-ngp-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12114",
+    "trainName": "Pune Garibrath",
+    "slug": "12114-pune-garibrath",
+    "originStation": "NGP",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "12114-pune-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12187",
+    "trainName": "Garibrath Exp",
+    "slug": "12187-garibrath-exp",
+    "originStation": "JBP",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "12187-garibrath-exp-chart-times"
+  },
+  {
+    "trainNumber": "12188",
+    "trainName": "Jbp Garib Rath",
+    "slug": "12188-jbp-garib-rath",
+    "originStation": "CSMT",
+    "destinationStation": "JBP",
+    "chartTimesSlug": "12188-jbp-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12201",
+    "trainName": "Tvcn Garibrath",
+    "slug": "12201-tvcn-garibrath",
+    "originStation": "LTT",
+    "destinationStation": "TVCN",
+    "chartTimesSlug": "12201-tvcn-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12202",
+    "trainName": "Ltt Garib Rath",
+    "slug": "12202-ltt-garib-rath",
+    "originStation": "TVCN",
+    "destinationStation": "LTT",
+    "chartTimesSlug": "12202-ltt-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12203",
+    "trainName": "Garib Rath Exp",
+    "slug": "12203-garib-rath-exp",
+    "originStation": "SHC",
+    "destinationStation": "ASR",
+    "chartTimesSlug": "12203-garib-rath-exp-chart-times"
+  },
+  {
+    "trainNumber": "12204",
+    "trainName": "Shc Garib Rath",
+    "slug": "12204-shc-garib-rath",
+    "originStation": "ASR",
+    "destinationStation": "SHC",
+    "chartTimesSlug": "12204-shc-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12207",
+    "trainName": "Jammu Garibrath",
+    "slug": "12207-jammu-garibrath",
+    "originStation": "KGM",
+    "destinationStation": "JAT",
+    "chartTimesSlug": "12207-jammu-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12208",
+    "trainName": "Kgm Garib Rath",
+    "slug": "12208-kgm-garib-rath",
+    "originStation": "JAT",
+    "destinationStation": "KGM",
+    "chartTimesSlug": "12208-kgm-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12209",
+    "trainName": "Kgm Garibrath",
+    "slug": "12209-kgm-garibrath",
+    "originStation": "CNB",
+    "destinationStation": "KGM",
+    "chartTimesSlug": "12209-kgm-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12210",
+    "trainName": "Cnb Garibrath",
+    "slug": "12210-cnb-garibrath",
+    "originStation": "KGM",
+    "destinationStation": "CNB",
+    "chartTimesSlug": "12210-cnb-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12211",
+    "trainName": "Anvt Garib Rath",
+    "slug": "12211-anvt-garib-rath",
+    "originStation": "MFP",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "12211-anvt-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12212",
+    "trainName": "Mfp Garib Rath",
+    "slug": "12212-mfp-garib-rath",
+    "originStation": "ANVT",
+    "destinationStation": "MFP",
+    "chartTimesSlug": "12212-mfp-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12215",
+    "trainName": "Bdts Garib Rath",
+    "slug": "12215-bdts-garib-rath",
+    "originStation": "DEE",
+    "destinationStation": "BDTS",
+    "chartTimesSlug": "12215-bdts-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12216",
+    "trainName": "Dee Garibrath",
+    "slug": "12216-dee-garibrath",
+    "originStation": "BDTS",
+    "destinationStation": "DEE",
+    "chartTimesSlug": "12216-dee-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12359",
+    "trainName": "Pnbe Garib Rath",
+    "slug": "12359-pnbe-garib-rath",
+    "originStation": "KOAA",
+    "destinationStation": "ARA",
+    "chartTimesSlug": "12359-pnbe-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12360",
+    "trainName": "Kol Garib Rath",
+    "slug": "12360-kol-garib-rath",
+    "originStation": "ARA",
+    "destinationStation": "KOAA",
+    "chartTimesSlug": "12360-kol-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12435",
+    "trainName": "Garib Rath Exp",
+    "slug": "12435-garib-rath-exp",
+    "originStation": "JYG",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "12435-garib-rath-exp-chart-times"
+  },
+  {
+    "trainNumber": "12436",
+    "trainName": "Jyg Garib Rath",
+    "slug": "12436-jyg-garib-rath",
+    "originStation": "ANVT",
+    "destinationStation": "JYG",
+    "chartTimesSlug": "12436-jyg-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12501",
+    "trainName": "Agtl Garib Rath",
+    "slug": "12501-agtl-garib-rath",
+    "originStation": "KOAA",
+    "destinationStation": "AGTL",
+    "chartTimesSlug": "12501-agtl-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12502",
+    "trainName": "Koaa Garib Rath",
+    "slug": "12502-koaa-garib-rath",
+    "originStation": "AGTL",
+    "destinationStation": "KOAA",
+    "chartTimesSlug": "12502-koaa-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12517",
+    "trainName": "Ghy Garib Rath",
+    "slug": "12517-ghy-garib-rath",
+    "originStation": "KOAA",
+    "destinationStation": "GHY",
+    "chartTimesSlug": "12517-ghy-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12518",
+    "trainName": "Koaa Garib Rath",
+    "slug": "12518-koaa-garib-rath",
+    "originStation": "GHY",
+    "destinationStation": "KOAA",
+    "chartTimesSlug": "12518-koaa-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12535",
+    "trainName": "Ljn R Garibrath",
+    "slug": "12535-ljn-r-garibrath",
+    "originStation": "LJN",
+    "destinationStation": "R",
+    "chartTimesSlug": "12535-ljn-r-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12536",
+    "trainName": "Ljn Garibrath",
+    "slug": "12536-ljn-garibrath",
+    "originStation": "R",
+    "destinationStation": "LJN",
+    "chartTimesSlug": "12536-ljn-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12594",
+    "trainName": "Ljn Garibrath",
+    "slug": "12594-ljn-garibrath",
+    "originStation": "BPL",
+    "destinationStation": "LJN",
+    "chartTimesSlug": "12594-ljn-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12611",
+    "trainName": "Nzm Garibrath",
+    "slug": "12611-nzm-garibrath",
+    "originStation": "MAS",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12611-nzm-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "12612",
+    "trainName": "Mas Garib Rath",
+    "slug": "12612-mas-garib-rath",
+    "originStation": "NZM",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "12612-mas-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12735",
+    "trainName": "Garibrath Exp",
+    "slug": "12735-garibrath-exp",
+    "originStation": "CHZ",
+    "destinationStation": "YPR",
+    "chartTimesSlug": "12735-garibrath-exp-chart-times"
+  },
+  {
+    "trainNumber": "12736",
+    "trainName": "Sc Garib Rath",
+    "slug": "12736-sc-garib-rath",
+    "originStation": "YPR",
+    "destinationStation": "CHZ",
+    "chartTimesSlug": "12736-sc-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12739",
+    "trainName": "Garib Rath",
+    "slug": "12739-garib-rath",
+    "originStation": "VSKP",
+    "destinationStation": "SC",
+    "chartTimesSlug": "12739-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12740",
+    "trainName": "Garibrath Exp",
+    "slug": "12740-garibrath-exp",
+    "originStation": "SC",
+    "destinationStation": "VSKP",
+    "chartTimesSlug": "12740-garibrath-exp-chart-times"
+  },
+  {
+    "trainNumber": "12831",
+    "trainName": "Bbs  Garib Rath",
+    "slug": "12831-bbs-garib-rath",
+    "originStation": "DHN",
+    "destinationStation": "BBS",
+    "chartTimesSlug": "12831-bbs-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12832",
+    "trainName": "Bksc Garib Rath",
+    "slug": "12832-bksc-garib-rath",
+    "originStation": "BBS",
+    "destinationStation": "DHN",
+    "chartTimesSlug": "12832-bksc-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12877",
+    "trainName": "Ndls Garib Rath",
+    "slug": "12877-ndls-garib-rath",
+    "originStation": "RNC",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12877-ndls-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12878",
+    "trainName": "Rnc Garib Rath",
+    "slug": "12878-rnc-garib-rath",
+    "originStation": "NDLS",
+    "destinationStation": "RNC",
+    "chartTimesSlug": "12878-rnc-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12881",
+    "trainName": "Puri Garib Rath",
+    "slug": "12881-puri-garib-rath",
+    "originStation": "SHM",
+    "destinationStation": "PURI",
+    "chartTimesSlug": "12881-puri-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12882",
+    "trainName": "Garib Rath",
+    "slug": "12882-garib-rath",
+    "originStation": "PURI",
+    "destinationStation": "SHM",
+    "chartTimesSlug": "12882-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12909",
+    "trainName": "Nzm Garib Rath",
+    "slug": "12909-nzm-garib-rath",
+    "originStation": "BDTS",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "12909-nzm-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "12910",
+    "trainName": "Bdts Garibrath",
+    "slug": "12910-bdts-garibrath",
+    "originStation": "NZM",
+    "destinationStation": "BDTS",
+    "chartTimesSlug": "12910-bdts-garibrath-chart-times"
+  },
+  {
+    "trainNumber": "22405",
+    "trainName": "Anvt Garib Rath",
+    "slug": "22405-anvt-garib-rath",
+    "originStation": "BGP",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "22405-anvt-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "22406",
+    "trainName": "Bgp Garib Rath",
+    "slug": "22406-bgp-garib-rath",
+    "originStation": "ANVT",
+    "destinationStation": "BGP",
+    "chartTimesSlug": "22406-bgp-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "22409",
+    "trainName": "Anvt Garib Rath",
+    "slug": "22409-anvt-garib-rath",
+    "originStation": "GAYA",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "22409-anvt-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "22410",
+    "trainName": "Gaya Garib Rath",
+    "slug": "22410-gaya-garib-rath",
+    "originStation": "ANVT",
+    "destinationStation": "GAYA",
+    "chartTimesSlug": "22410-gaya-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "22541",
+    "trainName": "Anvt Garib Rath",
+    "slug": "22541-anvt-garib-rath",
+    "originStation": "BNRS",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "22541-anvt-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "22542",
+    "trainName": "Bnrs Garib Rath",
+    "slug": "22542-bnrs-garib-rath",
+    "originStation": "ANVT",
+    "destinationStation": "BNRS",
+    "chartTimesSlug": "22542-bnrs-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "22883",
+    "trainName": "Ypr Garib Rath",
+    "slug": "22883-ypr-garib-rath",
+    "originStation": "PURI",
+    "destinationStation": "YPR",
+    "chartTimesSlug": "22883-ypr-garib-rath-chart-times"
+  },
+  {
+    "trainNumber": "22884",
+    "trainName": "Garibrath Exp",
+    "slug": "22884-garibrath-exp",
+    "originStation": "YPR",
+    "destinationStation": "PURI",
+    "chartTimesSlug": "22884-garibrath-exp-chart-times"
+  },
+  {
+    "trainNumber": "15715",
+    "trainName": "Garib Nawaz Exp",
+    "slug": "15715-garib-nawaz-exp",
+    "originStation": "KNE",
+    "destinationStation": "AII",
+    "chartTimesSlug": "15715-garib-nawaz-exp-chart-times"
+  },
+  {
+    "trainNumber": "15716",
+    "trainName": "Garib Nawaz Exp",
+    "slug": "15716-garib-nawaz-exp",
+    "originStation": "AII",
+    "destinationStation": "KNE",
+    "chartTimesSlug": "15716-garib-nawaz-exp-chart-times"
+  },
+  {
+    "trainNumber": "16532",
+    "trainName": "Garib Nawaz Exp",
+    "slug": "16532-garib-nawaz-exp",
+    "originStation": "SBC",
+    "destinationStation": "AII",
+    "chartTimesSlug": "16532-garib-nawaz-exp-chart-times"
+  },
+  {
+    "trainNumber": "12275",
+    "trainName": "Ndls Humsafar",
+    "slug": "12275-ndls-humsafar",
+    "originStation": "PRYJ",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "12275-ndls-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "12276",
+    "trainName": "Humsafar Expres",
+    "slug": "12276-humsafar-expres",
+    "originStation": "NDLS",
+    "destinationStation": "PRYJ",
+    "chartTimesSlug": "12276-humsafar-expres-chart-times"
+  },
+  {
+    "trainNumber": "12350",
+    "trainName": "Goda Humsafar",
+    "slug": "12350-goda-humsafar",
+    "originStation": "NDLS",
+    "destinationStation": "GODA",
+    "chartTimesSlug": "12350-goda-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "12408",
+    "trainName": "Amritsar - New Jalpaiguri Karmabhoomi Express",
+    "slug": "12408-amritsar-new-jalpaiguri-karmabhoomi-express",
+    "originStation": "ASR",
+    "destinationStation": "NJP",
+    "chartTimesSlug": "12408-amritsar-new-jalpaiguri-karmabhoomi-express-chart-times"
+  },
+  {
+    "trainNumber": "12503",
+    "trainName": "Agtl Humsafar",
+    "slug": "12503-agtl-humsafar",
+    "originStation": "SMVB",
+    "destinationStation": "AGTL",
+    "chartTimesSlug": "12503-agtl-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "12504",
+    "trainName": "Humsafar Exp",
+    "slug": "12504-humsafar-exp",
+    "originStation": "AGTL",
+    "destinationStation": "SMVB",
+    "chartTimesSlug": "12504-humsafar-exp-chart-times"
+  },
+  {
+    "trainNumber": "12571",
+    "trainName": "Anvt Humsafar",
+    "slug": "12571-anvt-humsafar",
+    "originStation": "GKP",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "12571-anvt-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "12572",
+    "trainName": "Gkp Humsafar Ex",
+    "slug": "12572-gkp-humsafar-ex",
+    "originStation": "ANVT",
+    "destinationStation": "GKP",
+    "chartTimesSlug": "12572-gkp-humsafar-ex-chart-times"
+  },
+  {
+    "trainNumber": "12595",
+    "trainName": "Anvt Humsafar",
+    "slug": "12595-anvt-humsafar",
+    "originStation": "GKP",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "12595-anvt-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "12596",
+    "trainName": "Gkp Humsafar Ex",
+    "slug": "12596-gkp-humsafar-ex",
+    "originStation": "ANVT",
+    "destinationStation": "GKP",
+    "chartTimesSlug": "12596-gkp-humsafar-ex-chart-times"
+  },
+  {
+    "trainNumber": "12751",
+    "trainName": "Jat Humsafar",
+    "slug": "12751-jat-humsafar",
+    "originStation": "NED",
+    "destinationStation": "JAT",
+    "chartTimesSlug": "12751-jat-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "12752",
+    "trainName": "Ned Humsafar",
+    "slug": "12752-ned-humsafar",
+    "originStation": "JAT",
+    "destinationStation": "NED",
+    "chartTimesSlug": "12752-ned-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "12997",
+    "trainName": "Barmer Humsafar",
+    "slug": "12997-barmer-humsafar",
+    "originStation": "BDTS",
+    "destinationStation": "BME",
+    "chartTimesSlug": "12997-barmer-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22111",
+    "trainName": "Ayc Amrit Bharat",
+    "slug": "22111-ayc-amrit-bharat",
+    "originStation": "LTT",
+    "destinationStation": "AYC",
+    "chartTimesSlug": "22111-ayc-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "22112",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "22112-amrit-bharat-exp",
+    "originStation": "AYC",
+    "destinationStation": "LTT",
+    "chartTimesSlug": "22112-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22139",
+    "trainName": "Ajni Humsafar",
+    "slug": "22139-ajni-humsafar",
+    "originStation": "PUNE",
+    "destinationStation": "AJNI",
+    "chartTimesSlug": "22139-ajni-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22140",
+    "trainName": "Pune Humsafar",
+    "slug": "22140-pune-humsafar",
+    "originStation": "AJNI",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "22140-pune-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22141",
+    "trainName": "Ngp Humsafar",
+    "slug": "22141-ngp-humsafar",
+    "originStation": "PUNE",
+    "destinationStation": "NGP",
+    "chartTimesSlug": "22141-ngp-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22142",
+    "trainName": "Pune Humsafar",
+    "slug": "22142-pune-humsafar",
+    "originStation": "NGP",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "22142-pune-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22169",
+    "trainName": "Src Humsafar",
+    "slug": "22169-src-humsafar",
+    "originStation": "RKMP",
+    "destinationStation": "SRC",
+    "chartTimesSlug": "22169-src-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22170",
+    "trainName": "Rkmp Humsafar",
+    "slug": "22170-rkmp-humsafar",
+    "originStation": "SRC",
+    "destinationStation": "RKMP",
+    "chartTimesSlug": "22170-rkmp-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22171",
+    "trainName": "Rkmp Humsafar",
+    "slug": "22171-rkmp-humsafar",
+    "originStation": "PUNE",
+    "destinationStation": "RKMP",
+    "chartTimesSlug": "22171-rkmp-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22172",
+    "trainName": "Pune Humsafar",
+    "slug": "22172-pune-humsafar",
+    "originStation": "RKMP",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "22172-pune-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22317",
+    "trainName": "Humsafar Exp",
+    "slug": "22317-humsafar-exp",
+    "originStation": "SDAH",
+    "destinationStation": "JAT",
+    "chartTimesSlug": "22317-humsafar-exp-chart-times"
+  },
+  {
+    "trainNumber": "22318",
+    "trainName": "Sdah Humsafar",
+    "slug": "22318-sdah-humsafar",
+    "originStation": "JAT",
+    "destinationStation": "SDAH",
+    "chartTimesSlug": "22318-sdah-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22353",
+    "trainName": "Humsafar Exp",
+    "slug": "22353-humsafar-exp",
+    "originStation": "PNBE",
+    "destinationStation": "SMVB",
+    "chartTimesSlug": "22353-humsafar-exp-chart-times"
+  },
+  {
+    "trainNumber": "22354",
+    "trainName": "Humsafar Exp",
+    "slug": "22354-humsafar-exp",
+    "originStation": "SMVB",
+    "destinationStation": "PNBE",
+    "chartTimesSlug": "22354-humsafar-exp-chart-times"
+  },
+  {
+    "trainNumber": "22361",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "22361-amrit-bharat-exp",
+    "originStation": "RJPB",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "22361-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22362",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "22362-amrit-bharat-exp",
+    "originStation": "NDLS",
+    "destinationStation": "RJPB",
+    "chartTimesSlug": "22362-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22437",
+    "trainName": "Anvt Humsafar",
+    "slug": "22437-anvt-humsafar",
+    "originStation": "PRYJ",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "22437-anvt-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22438",
+    "trainName": "Pryj Humsafar",
+    "slug": "22438-pryj-humsafar",
+    "originStation": "ANVT",
+    "destinationStation": "PRYJ",
+    "chartTimesSlug": "22438-pryj-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22459",
+    "trainName": "Anvt Humsafar",
+    "slug": "22459-anvt-humsafar",
+    "originStation": "MDP",
+    "destinationStation": "ANVT",
+    "chartTimesSlug": "22459-anvt-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22498",
+    "trainName": "Sgnr Humsafar",
+    "slug": "22498-sgnr-humsafar",
+    "originStation": "TPJ",
+    "destinationStation": "SGNR",
+    "chartTimesSlug": "22498-sgnr-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22587",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "22587-amrit-bharat-exp",
+    "originStation": "SDAH",
+    "destinationStation": "BNRS",
+    "chartTimesSlug": "22587-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22588",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "22588-amrit-bharat-exp",
+    "originStation": "BNRS",
+    "destinationStation": "SDAH",
+    "chartTimesSlug": "22588-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22589",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "22589-amrit-bharat-exp",
+    "originStation": "BNRS",
+    "destinationStation": "HDP",
+    "chartTimesSlug": "22589-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "22590",
+    "trainName": "Bnrs Amritbharat",
+    "slug": "22590-bnrs-amritbharat",
+    "originStation": "HDP",
+    "destinationStation": "BNRS",
+    "chartTimesSlug": "22590-bnrs-amritbharat-chart-times"
+  },
+  {
+    "trainNumber": "22705",
+    "trainName": "Jat Humsafar",
+    "slug": "22705-jat-humsafar",
+    "originStation": "TPTY",
+    "destinationStation": "JAT",
+    "chartTimesSlug": "22705-jat-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22833",
+    "trainName": "Humsafar Expres",
+    "slug": "22833-humsafar-expres",
+    "originStation": "BBS",
+    "destinationStation": "SMVB",
+    "chartTimesSlug": "22833-humsafar-expres-chart-times"
+  },
+  {
+    "trainNumber": "22834",
+    "trainName": "Bbs Humsafar",
+    "slug": "22834-bbs-humsafar",
+    "originStation": "SMVB",
+    "destinationStation": "BBS",
+    "chartTimesSlug": "22834-bbs-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22867",
+    "trainName": "Nzm Humsafar Exp",
+    "slug": "22867-nzm-humsafar-exp",
+    "originStation": "DURG",
+    "destinationStation": "NZM",
+    "chartTimesSlug": "22867-nzm-humsafar-exp-chart-times"
+  },
+  {
+    "trainNumber": "22887",
+    "trainName": "Smvb Humsafar",
+    "slug": "22887-smvb-humsafar",
+    "originStation": "HWH",
+    "destinationStation": "SMVB",
+    "chartTimesSlug": "22887-smvb-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22888",
+    "trainName": "Hwh Humsafar",
+    "slug": "22888-hwh-humsafar",
+    "originStation": "SMVB",
+    "destinationStation": "HWH",
+    "chartTimesSlug": "22888-hwh-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22914",
+    "trainName": "Bdts Humsafar Ex",
+    "slug": "22914-bdts-humsafar-ex",
+    "originStation": "SHC",
+    "destinationStation": "BDTS",
+    "chartTimesSlug": "22914-bdts-humsafar-ex-chart-times"
+  },
+  {
+    "trainNumber": "22919",
+    "trainName": "Adi Humsafar",
+    "slug": "22919-adi-humsafar",
+    "originStation": "MAS",
+    "destinationStation": "ADI",
+    "chartTimesSlug": "22919-adi-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22920",
+    "trainName": "Adi Mas Humsafar",
+    "slug": "22920-adi-mas-humsafar",
+    "originStation": "ADI",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "22920-adi-mas-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22923",
+    "trainName": "Jam Humsafar",
+    "slug": "22923-jam-humsafar",
+    "originStation": "BDTS",
+    "destinationStation": "JAM",
+    "chartTimesSlug": "22923-jam-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22924",
+    "trainName": "Bdts Humsafar",
+    "slug": "22924-bdts-humsafar",
+    "originStation": "JAM",
+    "destinationStation": "BDTS",
+    "chartTimesSlug": "22924-bdts-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "22985",
+    "trainName": "Raj Humsafar Exp",
+    "slug": "22985-raj-humsafar-exp",
+    "originStation": "UDZ",
+    "destinationStation": "DEE",
+    "chartTimesSlug": "22985-raj-humsafar-exp-chart-times"
+  },
+  {
+    "trainNumber": "1331",
+    "trainName": "Hdp Amrit Bharat",
+    "slug": "1331-hdp-amrit-bharat",
+    "originStation": "WADI",
+    "destinationStation": "BPL",
+    "chartTimesSlug": "1331-hdp-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "5595",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "5595-amrit-bharat-exp",
+    "originStation": "SHC",
+    "destinationStation": "LTT",
+    "chartTimesSlug": "5595-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "06509",
+    "trainName": "SBCDNR HUMSAFAR",
+    "slug": "06509-sbcdnr-humsafar",
+    "originStation": "SBC",
+    "destinationStation": "DNR",
+    "chartTimesSlug": "06509-sbcdnr-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "6509",
+    "trainName": "Sbcdnr Humsafar",
+    "slug": "6509-sbcdnr-humsafar",
+    "originStation": "SBC",
+    "destinationStation": "DNR",
+    "chartTimesSlug": "6509-sbcdnr-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "11015",
+    "trainName": "Shc Amrit Bharat",
+    "slug": "11015-shc-amrit-bharat",
+    "originStation": "LTT",
+    "destinationStation": "SHC",
+    "chartTimesSlug": "11015-shc-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "11016",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "11016-amrit-bharat-exp",
+    "originStation": "SHC",
+    "destinationStation": "LTT",
+    "chartTimesSlug": "11016-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "11031",
+    "trainName": "Apdj Amritbharat",
+    "slug": "11031-apdj-amritbharat",
+    "originStation": "PNVL",
+    "destinationStation": "APDJ",
+    "chartTimesSlug": "11031-apdj-amritbharat-chart-times"
+  },
+  {
+    "trainNumber": "11032",
+    "trainName": "Pnvl Amritbharat",
+    "slug": "11032-pnvl-amritbharat",
+    "originStation": "APDJ",
+    "destinationStation": "PNVL",
+    "chartTimesSlug": "11032-pnvl-amritbharat-chart-times"
+  },
+  {
+    "trainNumber": "11417",
+    "trainName": "Nagpur Humsafar",
+    "slug": "11417-nagpur-humsafar",
+    "originStation": "PUNE",
+    "destinationStation": "SUR",
+    "chartTimesSlug": "11417-nagpur-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "11418",
+    "trainName": "Pune Humsafar",
+    "slug": "11418-pune-humsafar",
+    "originStation": "SUR",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "11418-pune-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "11431",
+    "trainName": "Dnr Amrit Bharat",
+    "slug": "11431-dnr-amrit-bharat",
+    "originStation": "PUNE",
+    "destinationStation": "DNR",
+    "chartTimesSlug": "11431-dnr-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "11432",
+    "trainName": "Danapur - Pune Amrit Bharat Express",
+    "slug": "11432-danapur-pune-amrit-bharat-express",
+    "originStation": "DNR",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "11432-danapur-pune-amrit-bharat-express-chart-times"
+  },
+  {
+    "trainNumber": "15671",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "15671-amrit-bharat-exp",
+    "originStation": "KYQ",
+    "destinationStation": "ROK",
+    "chartTimesSlug": "15671-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "15672",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "15672-amrit-bharat-exp",
+    "originStation": "ROK",
+    "destinationStation": "KYQ",
+    "chartTimesSlug": "15672-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "15673",
+    "trainName": "Kyq Amritbharat",
+    "slug": "15673-kyq-amritbharat",
+    "originStation": "CHZ",
+    "destinationStation": "KYQ",
+    "chartTimesSlug": "15673-kyq-amritbharat-chart-times"
+  },
+  {
+    "trainNumber": "15674",
+    "trainName": "Chz Amrit Bharat",
+    "slug": "15674-chz-amrit-bharat",
+    "originStation": "KYQ",
+    "destinationStation": "CHZ",
+    "chartTimesSlug": "15674-chz-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "15949",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "15949-amrit-bharat-exp",
+    "originStation": "DBRG",
+    "destinationStation": "GTNR",
+    "chartTimesSlug": "15949-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "15950",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "15950-amrit-bharat-exp",
+    "originStation": "GTNR",
+    "destinationStation": "DBRG",
+    "chartTimesSlug": "15950-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "16107",
+    "trainName": "Src Amrit Bharat",
+    "slug": "16107-src-amrit-bharat",
+    "originStation": "TBM",
+    "destinationStation": "SRC",
+    "chartTimesSlug": "16107-src-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "16108",
+    "trainName": "Tbm Amrit Bharat",
+    "slug": "16108-tbm-amrit-bharat",
+    "originStation": "SRC",
+    "destinationStation": "TBM",
+    "chartTimesSlug": "16108-tbm-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "16121",
+    "trainName": "Tvc Amrit Bharat",
+    "slug": "16121-tvc-amrit-bharat",
+    "originStation": "TBM",
+    "destinationStation": "TVC",
+    "chartTimesSlug": "16121-tvc-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "16122",
+    "trainName": "Tbm Amrit Bharat",
+    "slug": "16122-tbm-amrit-bharat",
+    "originStation": "TVC",
+    "destinationStation": "TBM",
+    "chartTimesSlug": "16122-tbm-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "16319",
+    "trainName": "Smvb Humsafar",
+    "slug": "16319-smvb-humsafar",
+    "originStation": "TVCN",
+    "destinationStation": "SMVB",
+    "chartTimesSlug": "16319-smvb-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "16320",
+    "trainName": "Tvcn Humsafar",
+    "slug": "16320-tvcn-humsafar",
+    "originStation": "SMVB",
+    "destinationStation": "TVCN",
+    "chartTimesSlug": "16320-tvcn-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "16329",
+    "trainName": "Majn Amritbharat",
+    "slug": "16329-majn-amritbharat",
+    "originStation": "NCJ",
+    "destinationStation": "MAJN",
+    "chartTimesSlug": "16329-majn-amritbharat-chart-times"
+  },
+  {
+    "trainNumber": "16330",
+    "trainName": "Ncj Amrit Bharat",
+    "slug": "16330-ncj-amrit-bharat",
+    "originStation": "MAJN",
+    "destinationStation": "NCJ",
+    "chartTimesSlug": "16330-ncj-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "16343",
+    "trainName": "Amritha Exp",
+    "slug": "16343-amritha-exp",
+    "originStation": "TVC",
+    "destinationStation": "RMM",
+    "chartTimesSlug": "16343-amritha-exp-chart-times"
+  },
+  {
+    "trainNumber": "16344",
+    "trainName": "Amritha Express",
+    "slug": "16344-amritha-express",
+    "originStation": "RMM",
+    "destinationStation": "TVC",
+    "chartTimesSlug": "16344-amritha-express-chart-times"
+  },
+  {
+    "trainNumber": "16357",
+    "trainName": "Chz Amrit Bharat",
+    "slug": "16357-chz-amrit-bharat",
+    "originStation": "NCJ",
+    "destinationStation": "CHZ",
+    "chartTimesSlug": "16357-chz-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "16358",
+    "trainName": "Ncj Amritbharat",
+    "slug": "16358-ncj-amritbharat",
+    "originStation": "CHZ",
+    "destinationStation": "NCJ",
+    "chartTimesSlug": "16358-ncj-amritbharat-chart-times"
+  },
+  {
+    "trainNumber": "16597",
+    "trainName": "Apdj Amritbharat",
+    "slug": "16597-apdj-amritbharat",
+    "originStation": "SMVB",
+    "destinationStation": "APDJ",
+    "chartTimesSlug": "16597-apdj-amritbharat-chart-times"
+  },
+  {
+    "trainNumber": "16598",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "16598-amrit-bharat-exp",
+    "originStation": "APDJ",
+    "destinationStation": "SMVB",
+    "chartTimesSlug": "16598-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "16601",
+    "trainName": "Jbn Amrit Bharat",
+    "slug": "16601-jbn-amrit-bharat",
+    "originStation": "ED",
+    "destinationStation": "JBN",
+    "chartTimesSlug": "16601-jbn-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "16602",
+    "trainName": "Amrit Bharat",
+    "slug": "16602-amrit-bharat",
+    "originStation": "JBN",
+    "destinationStation": "ED",
+    "chartTimesSlug": "16602-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "16619",
+    "trainName": "Dhn Amrit Bharat",
+    "slug": "16619-dhn-amrit-bharat",
+    "originStation": "PTJ",
+    "destinationStation": "DHN",
+    "chartTimesSlug": "16619-dhn-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "16620",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "16620-amrit-bharat-exp",
+    "originStation": "DHN",
+    "destinationStation": "PTJ",
+    "chartTimesSlug": "16620-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "17041",
+    "trainName": "Tvcn  Amritbhart",
+    "slug": "17041-tvcn-amritbhart",
+    "originStation": "CHZ",
+    "destinationStation": "TVCN",
+    "chartTimesSlug": "17041-tvcn-amritbhart-chart-times"
+  },
+  {
+    "trainNumber": "17042",
+    "trainName": "Chz Amrit Bharat",
+    "slug": "17042-chz-amrit-bharat",
+    "originStation": "TVCN",
+    "destinationStation": "CHZ",
+    "chartTimesSlug": "17042-chz-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "17065",
+    "trainName": "Shm Amritbharat",
+    "slug": "17065-shm-amritbharat",
+    "originStation": "CHZ",
+    "destinationStation": "SHM",
+    "chartTimesSlug": "17065-shm-amritbharat-chart-times"
+  },
+  {
+    "trainNumber": "17066",
+    "trainName": "Chz Amrit Bharat",
+    "slug": "17066-chz-amrit-bharat",
+    "originStation": "SHM",
+    "destinationStation": "CHZ",
+    "chartTimesSlug": "17066-chz-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "17439",
+    "trainName": "Che Humsafar Exp",
+    "slug": "17439-che-humsafar-exp",
+    "originStation": "TPTY",
+    "destinationStation": "CHE",
+    "chartTimesSlug": "17439-che-humsafar-exp-chart-times"
+  },
+  {
+    "trainNumber": "17440",
+    "trainName": "Humsafar Expres",
+    "slug": "17440-humsafar-expres",
+    "originStation": "CHE",
+    "destinationStation": "TPTY",
+    "chartTimesSlug": "17440-humsafar-expres-chart-times"
+  },
+  {
+    "trainNumber": "19021",
+    "trainName": "Bam Amrit Bharat",
+    "slug": "19021-bam-amrit-bharat",
+    "originStation": "UDN",
+    "destinationStation": "BAM",
+    "chartTimesSlug": "19021-bam-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "19022",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "19022-amrit-bharat-exp",
+    "originStation": "BAM",
+    "destinationStation": "UDN",
+    "chartTimesSlug": "19022-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "19043",
+    "trainName": "Bgkt Humsafar",
+    "slug": "19043-bgkt-humsafar",
+    "originStation": "BDTS",
+    "destinationStation": "BGKT",
+    "chartTimesSlug": "19043-bgkt-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "19044",
+    "trainName": "Bdts Humsafar",
+    "slug": "19044-bdts-humsafar",
+    "originStation": "BGKT",
+    "destinationStation": "BDTS",
+    "chartTimesSlug": "19044-bdts-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "19091",
+    "trainName": "Gkp Humsafar Ex",
+    "slug": "19091-gkp-humsafar-ex",
+    "originStation": "BDTS",
+    "destinationStation": "GKP",
+    "chartTimesSlug": "19091-gkp-humsafar-ex-chart-times"
+  },
+  {
+    "trainNumber": "19092",
+    "trainName": "Bdts Humsafar",
+    "slug": "19092-bdts-humsafar",
+    "originStation": "GKP",
+    "destinationStation": "BDTS",
+    "chartTimesSlug": "19092-bdts-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "19317",
+    "trainName": "Puri Humsafar",
+    "slug": "19317-puri-humsafar",
+    "originStation": "INDB",
+    "destinationStation": "PURI",
+    "chartTimesSlug": "19317-puri-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "19318",
+    "trainName": "Indb Humsafar Ex",
+    "slug": "19318-indb-humsafar-ex",
+    "originStation": "PURI",
+    "destinationStation": "INDB",
+    "chartTimesSlug": "19318-indb-humsafar-ex-chart-times"
+  },
+  {
+    "trainNumber": "19325",
+    "trainName": "Indb Amritsar Ex",
+    "slug": "19325-indb-amritsar-ex",
+    "originStation": "INDB",
+    "destinationStation": "ASR",
+    "chartTimesSlug": "19325-indb-amritsar-ex-chart-times"
+  },
+  {
+    "trainNumber": "19423",
+    "trainName": "Gimb Humsafar",
+    "slug": "19423-gimb-humsafar",
+    "originStation": "TEN",
+    "destinationStation": "GIMB",
+    "chartTimesSlug": "19423-gimb-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "19424",
+    "trainName": "Ten Humsafar",
+    "slug": "19424-ten-humsafar",
+    "originStation": "GIMB",
+    "destinationStation": "TEN",
+    "chartTimesSlug": "19424-ten-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "19623",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "19623-amrit-bharat-exp",
+    "originStation": "MDJN",
+    "destinationStation": "DBG",
+    "chartTimesSlug": "19623-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "19624",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "19624-amrit-bharat-exp",
+    "originStation": "DBG",
+    "destinationStation": "MDJN",
+    "chartTimesSlug": "19624-amrit-bharat-exp-chart-times"
+  },
+  {
+    "trainNumber": "19667",
+    "trainName": "Mys Humsafar Exp",
+    "slug": "19667-mys-humsafar-exp",
+    "originStation": "UDZ",
+    "destinationStation": "MYS",
+    "chartTimesSlug": "19667-mys-humsafar-exp-chart-times"
+  },
+  {
+    "trainNumber": "19668",
+    "trainName": "Udz Humsafar Exp",
+    "slug": "19668-udz-humsafar-exp",
+    "originStation": "MYS",
+    "destinationStation": "UDZ",
+    "chartTimesSlug": "19668-udz-humsafar-exp-chart-times"
+  },
+  {
+    "trainNumber": "19669",
+    "trainName": "Ppta Humsafar",
+    "slug": "19669-ppta-humsafar",
+    "originStation": "UDZ",
+    "destinationStation": "PPTA",
+    "chartTimesSlug": "19669-ppta-humsafar-chart-times"
+  },
+  {
+    "trainNumber": "19670",
+    "trainName": "Humsafar Express",
+    "slug": "19670-humsafar-express",
+    "originStation": "PPTA",
+    "destinationStation": "UDZ",
+    "chartTimesSlug": "19670-humsafar-express-chart-times"
+  },
+  {
+    "trainNumber": "19725",
+    "trainName": "Dbg Amrit Bharat",
+    "slug": "19725-dbg-amrit-bharat",
+    "originStation": "KWP",
+    "destinationStation": "DBG",
+    "chartTimesSlug": "19725-dbg-amrit-bharat-chart-times"
+  },
+  {
+    "trainNumber": "19726",
+    "trainName": "Amrit Bharat Exp",
+    "slug": "19726-amrit-bharat-exp",
+    "originStation": "DBG",
+    "destinationStation": "KWP",
+    "chartTimesSlug": "19726-amrit-bharat-exp-chart-times"
+  }
+]

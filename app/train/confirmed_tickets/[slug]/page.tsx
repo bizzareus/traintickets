@@ -9,6 +9,8 @@ import {
   parseTrainNumberFromParam,
 } from "@/lib/trainSlug";
 
+import { getTrainCachedSeats } from "@/lib/dynamodb";
+
 export const dynamicParams = true;
 
 async function fetchTrainData(trainNumber: string): Promise<TrainInfo | null> {
@@ -25,6 +27,17 @@ async function fetchTrainData(trainNumber: string): Promise<TrainInfo | null> {
 }
 
 async function fetchCachedSeats(trainNumber: string): Promise<CachedSeat[]> {
+  // 1. Try reading directly from fast DynamoDB serverless cache
+  try {
+    const ddbSeats = await getTrainCachedSeats(trainNumber);
+    if (ddbSeats.length > 0) {
+      return ddbSeats;
+    }
+  } catch {
+    // Ignore and fallback
+  }
+
+  // 2. Fallback to backend API
   const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009";
   try {
     const res = await fetch(`${apiUrl}/api/trains/${trainNumber}/cached-seats`, {
