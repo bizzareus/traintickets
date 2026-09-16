@@ -2,7 +2,7 @@
 title: "Diwali Special Train 2026: List, Booking Dates & Routes"
 description: "Check Diwali special train 2026 list, IRCTC booking dates, routes, TOSF fares & confirmed seat tricks. Find Bihar, UP & Bengal festival trains."
 date: "2026-09-10"
-updated: "2026-09-10"
+updated: "2026-09-16"
 tags:
   - train booking
   - irctc
@@ -103,7 +103,7 @@ The table below compares estimated one-way ticket fares on a typical Delhi to Pa
 
 | Travel Class | Regular Express Base Fare | 0-Series Special Fare (TOSF) | Suvidha Dynamic Fare Range | Surcharge Percentage & Caps |
 |---|---|---|---|---|
-| **Second Sitting (2S)** | ~₹245 | ~₹270 – ₹280 | Not Operated | +10% on base (cap ₹15–₹30) |
+| **Second Sitting (2S)** | ~₹245 | ~₹255 – ₹260 | Not Operated | +10% on base (cap ₹10–₹15) |
 | **Sleeper Class (SL)** | ~₹475 | ~₹620 – ₹650 | ~₹850 – ₹1,450 | +30% on base (cap ₹100–₹200) |
 | **AC 3-Tier Economy (3E)** | ~₹1,180 | ~₹1,480 – ₹1,550 | ~₹1,850 – ₹3,200 | +30% on base (cap ₹300–₹400) |
 | **AC 3-Tier (3A)** | ~₹1,265 | ~₹1,600 – ₹1,680 | ~₹2,100 – ₹3,600 | +30% on base (cap ₹300–₹400) |

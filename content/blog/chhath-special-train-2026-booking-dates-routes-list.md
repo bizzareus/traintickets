@@ -2,7 +2,7 @@
 title: "Chhath Special Train 2026: List, Dates & IRCTC Booking"
 description: "Complete Chhath Puja special train guide 2026: Delhi, Mumbai & Pune to Bihar routes, booking dates, 0-series fares, Tatkal rules & confirmed seat tips."
 date: "2026-09-08"
-updated: "2026-09-08"
+updated: "2026-09-16"
 tags:
   - train booking
   - irctc
@@ -97,7 +97,7 @@ The table below shows an estimated fare comparison for a typical Delhi to Patna 
 
 | Travel Class | Standard Express Fare | 0-Series Special Fare (TOSF) | Applicable Surcharge | Surcharge Cap Range |
 |---|---|---|---|---|
-| **Second Sitting (2S)** | ~₹245 | ~₹270 – ₹280 | +10% on base fare | ₹15 – ₹30 |
+| **Second Sitting (2S)** | ~₹245 | ~₹255 – ₹260 | +10% on base fare | ₹10 – ₹15 |
 | **Sleeper Class (SL)** | ~₹475 | ~₹620 – ₹650 | +30% on base fare | ₹100 – ₹200 |
 | **AC 3-Tier Economy (3E)** | ~₹1,180 | ~₹1,480 – ₹1,550 | +30% on base fare | ₹300 – ₹400 |
 | **AC 3-Tier (3A)** | ~₹1,265 | ~₹1,600 – ₹1,680 | +30% on base fare | ₹300 – ₹400 |
@@ -161,7 +161,7 @@ Instead of sitting on an unconfirmed waitlist, use [Smart Seats](/) on LastBerth
 ### 2. Book from Origin Station and Update Boarding Point
 Intermediate stations draw from smaller quota pools like Remote Location Waiting List (RLWL) or Pooled Quota (PQWL), which hit `REGRET` very quickly. Originating stations use General Waiting List (GNWL), which commands the largest berth allocation.
 
-Search availability starting from the train's originating station (for instance, booking from Anand Vihar instead of Aligarh or Kanpur). If confirmed seats or low waitlists are available from the origin, book that ticket. Under Indian Railways guidelines, you can change your boarding point online via IRCTC up to 30 minutes before chart preparation.
+Search availability starting from the train's originating station (for instance, booking from Anand Vihar instead of Aligarh or Kanpur). If confirmed seats or low waitlists are available from the origin, book that ticket. Under Indian Railways guidelines, you can change your boarding point online via IRCTC up to the preparation of the second reservation chart (approximately 30 minutes before train departure).
 
 ### 3. Check Real-Time Vacancy on Chart Vacancy
 Reservation charts are finalized roughly 4 to 8 hours before train departure. Berths reserved for VIP quotas, emergency allotments, and unutilized intermediate quotas get released into Current Reservation (`CURR_AVBL`). 
