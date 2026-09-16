@@ -1,10 +1,29 @@
 import type { ChartTimeStationRow } from "@/lib/chartTimes";
-import { formatStationChartPrep } from "@/lib/chartTimeDisplay";
+import { formatBoardingShort, formatStationChartPrep } from "@/lib/chartTimeDisplay";
 import RowAlertButton from "./RowAlertButton";
 
 function formatDay(day?: number | null): string {
   if (day === null || day === undefined) return "—";
   return `Day ${day}`;
+}
+
+/** Day count + calendar boarding date for one run, computed once per row. */
+function DayCell({ day, trainStartYmd, compact }: { day?: number | null; trainStartYmd?: string | null; compact?: boolean }) {
+  const boarding = formatBoardingShort(day, trainStartYmd);
+  if (compact) {
+    return (
+      <span className="inline-flex shrink-0 flex-col items-end rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+        <span>{formatDay(day)}</span>
+        {boarding ? <span className="font-normal text-slate-500">{boarding}</span> : null}
+      </span>
+    );
+  }
+  return (
+    <>
+      <span className="block">{formatDay(day)}</span>
+      {boarding ? <span className="block text-xs text-slate-500">{boarding}</span> : null}
+    </>
+  );
 }
 
 /** First-chart badge + remote charting note, or "awaiting chart data". */
@@ -83,6 +102,8 @@ export default function ChartTimesTable({
         }))}
         availableClasses={availableClasses}
         initialJourneyDate={journeyDate}
+        trainStartDate={journeyDate}
+        stationDay={s.day}
         chartTimeLocal={s.chartTimeLocal}
         chartOneDayOffset={s.chartOneDayOffset}
         chartTwoTimeLocal={s.chartTwoTimeLocal}
@@ -114,9 +135,7 @@ export default function ChartTimesTable({
                   </span>
                 </div>
               </div>
-              <span className="inline-flex shrink-0 items-center rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
-                {formatDay(s.day)}
-              </span>
+              <DayCell day={s.day} trainStartYmd={journeyDate} compact />
             </div>
 
             {/* Timing Grid: Arrival & Departure */}
@@ -190,7 +209,9 @@ export default function ChartTimesTable({
                 </th>
                 <td className="whitespace-nowrap px-4 py-3 text-slate-700">{s.arrivalTime || "—"}</td>
                 <td className="whitespace-nowrap px-4 py-3 text-slate-700">{s.departureTime || "—"}</td>
-                <td className="whitespace-nowrap px-4 py-3 text-slate-600">{formatDay(s.day)}</td>
+                <td className="whitespace-nowrap px-4 py-3 text-slate-600">
+                  <DayCell day={s.day} trainStartYmd={journeyDate} />
+                </td>
                 <td className="px-4 py-3">
                   <FirstChart s={s} journeyDate={journeyDate} />
                   {alertFor(s, i) && <div className="mt-2">{alertFor(s, i)}</div>}

@@ -10,6 +10,7 @@ import {
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 import { isAdminUser } from "@/lib/admin";
+import { addYmdDays, boardingYmdForStation } from "@/lib/chartTimeDisplay";
 import {
   CHART_ALERT_PRICE_RUPEES,
   createFreeChartAlert,
@@ -63,6 +64,8 @@ export default function RowAlertButton({
   destinationStations,
   availableClasses: initialAvailableClasses,
   initialJourneyDate,
+  stationDay,
+  trainStartDate,
   chartTimeLocal,
   chartOneDayOffset,
   chartTwoTimeLocal,
@@ -74,7 +77,12 @@ export default function RowAlertButton({
   stationName: string;
   destinationStations?: StationOption[];
   availableClasses?: string[];
+  /** Train-start date (`?date=`, Day-1 origin departure) for this table run. */
   initialJourneyDate?: string | null;
+  /** Day count of this boarding station (1 = origin) — boarding = start + day - 1. */
+  stationDay?: number | null;
+  /** Explicit train-start date; defaults to `initialJourneyDate`. */
+  trainStartDate?: string | null;
   /** Pinned chart times from the table row — scheduled + written to DB. */
   chartTimeLocal?: string | null;
   chartOneDayOffset?: number | null;
@@ -157,7 +165,17 @@ export default function RowAlertButton({
     }
   }, [activeClasses, classCode]);
 
-  const [journeyDate, setJourneyDate] = useState(initialJourneyDate || "");
+  const trainStartYmd = useMemo(() => {
+    const v = (trainStartDate ?? initialJourneyDate ?? "").trim().slice(0, 10);
+    return /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : "";
+  }, [trainStartDate, initialJourneyDate]);
+
+  const initialBoardingYmd = useMemo(() => {
+    if (!trainStartYmd) return "";
+    return boardingYmdForStation(trainStartYmd, stationDay) ?? trainStartYmd;
+  }, [trainStartYmd, stationDay]);
+
+  const [journeyDate, setJourneyDate] = useState(initialBoardingYmd || "");
   const { email, setEmail, mobile, setMobile, persistContact } =
     useContactFields();
   const [loading, setLoading] = useState(false);
@@ -174,10 +192,12 @@ export default function RowAlertButton({
     journey: ChartAlertPaymentModalJourney;
   } | null>(null);
 
-  // Default the journey date to the next day unless the page supplied one.
+  // Default the boarding date: same run's boarding day when the page supplied
+  // a train-start date, else tomorrow. `journeyDate` is the boarding date.
   useEffect(() => {
-    if (!initialJourneyDate) setJourneyDate(ymdPlusDays(1));
-  }, [initialJourneyDate]);
+    if (initialBoardingYmd) setJourneyDate(initialBoardingYmd);
+    else if (!trainStartYmd) setJourneyDate(ymdPlusDays(1));
+  }, [initialBoardingYmd, trainStartYmd]);
 
   // Close on Escape while the dialog is open.
   useEffect(() => {
@@ -217,21 +237,27 @@ export default function RowAlertButton({
 
     // Admins (localStorage admin flag) skip the payment popup and create
     // the alert directly; everyone else pays via the in-page iframe modal.
+    // `journeyDate` state is the boarding date; `trainStartDate` pins the run.
     setLoading(true);
     setError(null);
     try {
       persistContact();
+      const boardingYmd = journeyDate.trim().slice(0, 10);
+      const day = Math.max(1, Math.trunc(Number(stationDay) || 1));
+      const resolvedTrainStart =
+        trainStartYmd || addYmdDays(boardingYmd, -(day - 1)) || undefined;
       const journey: ChartAlertPaymentModalJourney = {
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,
         fromStationCode: stationCode.trim().toUpperCase(),
         toStationCode: toStationCode.trim().toUpperCase(),
-        journeyDate: journeyDate.trim().slice(0, 10),
+        journeyDate: boardingYmd,
         classCode: classCode.trim().toUpperCase(),
       };
       if (adminFree) {
         await createFreeChartAlert({
           ...journey,
+          trainStartDate: resolvedTrainStart,
           stationCodesToMonitor: [stationCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,
@@ -265,6 +291,7 @@ export default function RowAlertButton({
       const link = await startChartAlertPayment(
         {
           ...journey,
+          trainStartDate: resolvedTrainStart,
           stationCodesToMonitor: [stationCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,

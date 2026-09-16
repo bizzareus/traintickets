@@ -3,7 +3,8 @@
  *
  * Chart times are stored as a local `HH:MM` plus a day offset from the train's
  * start date (0 = same day, 1 = next day…). How we render them depends on
- * whether the visitor picked a journey date:
+ * whether the visitor picked a train-start date (`?date=`, the Day-1 origin
+ * departure):
  *   - date picked  -> absolute calendar date, e.g. "2nd July 2026 at 10 PM"
  *   - no date       -> relative,            e.g. "Same day at 10 PM" / "Next day at 10 PM"
  *   - no chart time -> "NA"
@@ -22,6 +23,21 @@ const MONTHS = [
   "October",
   "November",
   "December",
+] as const;
+
+const MONTHS_SHORT = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ] as const;
 
 function ordinal(n: number): string {
@@ -55,7 +71,8 @@ function relativeDayLabel(offset: number): string {
 
 /**
  * Format a chart preparation time for display, returning "NA" when no time is set.
- * `journeyDateYmd` (the train's start/journey date) makes the output an absolute date.
+ * `journeyDateYmd` is the train-start date (Day-1 origin departure) and makes
+ * the output an absolute date.
  */
 export function formatChartPrep(
   time: string | null | undefined,
@@ -79,31 +96,54 @@ export function formatChartPrep(
 /**
  * Station-aware variant of {@link formatChartPrep} for the chart-times table.
  *
- * Contract mismatch it repairs: `dayOffset` is anchored at the TRAIN-START
- * date (IRCTC chart date minus trainStartDate, see
- * `chartTimesFromCompositionResponse`), but `journeyDateYmd` (`?date=`) is the
- * BOARDING date at the station — the backend alert flow treats journeyDate as
- * the boarding date and derives trainStartDate backwards from the station day
- * count, and IRCTC itself resolves (jDate=boarding date + station) to the
- * earlier trainStartDate. For a day-N station the train started (N-1) days
- * before boarding, so the anchor is shifted back before adding the offset.
- * Day-1 stations are unaffected.
+ * `dayOffset` is anchored at the TRAIN-START date (IRCTC chart date minus
+ * trainStartDate, see `chartTimesFromCompositionResponse`), and `journeyDateYmd`
+ * (`?date=`) is that same train-start date — the day the train leaves its
+ * origin (Day 1). Every row in the table belongs to one physical run, so the
+ * anchor is shared: chart date = train-start date + offset, regardless of the
+ * station's own day count. A Day-2 station boards on train-start + 1, but its
+ * chart (often prepared at the origin) is still dated from train-start.
  */
 export function formatStationChartPrep(
   time: string | null | undefined,
   dayOffset: number | null | undefined,
   journeyDateYmd?: string | null,
-  stationDay?: number | null,
+  _stationDay?: number | null,
 ): string {
-  const ymd = (journeyDateYmd ?? "").trim().slice(0, 10);
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd)) {
-    return formatChartPrep(time, dayOffset, journeyDateYmd);
-  }
+  return formatChartPrep(time, dayOffset, journeyDateYmd);
+}
+
+/** Shift a YYYY-MM-DD by `days` (UTC, so DST/midnight boundaries can't skew it). */
+export function addYmdDays(ymd: string, days: number): string | null {
+  const v = (ymd ?? "").trim().slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return null;
+  const [y, mo, d] = v.split("-").map(Number);
+  const dt = new Date(Date.UTC(y, mo - 1, d + Math.trunc(days)));
+  return (
+    `${dt.getUTCFullYear()}-${String(dt.getUTCMonth() + 1).padStart(2, "0")}-` +
+    String(dt.getUTCDate()).padStart(2, "0")
+  );
+}
+
+/** Boarding calendar date at a Day-N station for a run starting `trainStartYmd`. */
+export function boardingYmdForStation(
+  trainStartYmd: string | null | undefined,
+  stationDay?: number | null,
+): string | null {
+  const v = (trainStartYmd ?? "").trim().slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return null;
   const day = Math.max(1, Math.trunc(Number(stationDay) || 1));
-  const [y, mo, d] = ymd.split("-").map(Number);
-  const base = new Date(Date.UTC(y, mo - 1, d - (day - 1)));
-  const anchored =
-    `${base.getUTCFullYear()}-${String(base.getUTCMonth() + 1).padStart(2, "0")}-` +
-    String(base.getUTCDate()).padStart(2, "0");
-  return formatChartPrep(time, dayOffset, anchored);
+  return addYmdDays(v, day - 1);
+}
+
+/** Short boarding label (`2026-09-17` -> `17 Sep`) for the Day column. */
+export function formatBoardingShort(
+  stationDay: number | null | undefined,
+  trainStartYmd?: string | null,
+): string | null {
+  const b = boardingYmdForStation(trainStartYmd, stationDay);
+  if (!b) return null;
+  const [y, mo, d] = b.split("-").map(Number);
+  const dt = new Date(Date.UTC(y, mo - 1, d));
+  return `${dt.getUTCDate()} ${MONTHS_SHORT[dt.getUTCMonth()]}`;
 }

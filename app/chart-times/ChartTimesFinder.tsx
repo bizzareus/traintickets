@@ -184,13 +184,13 @@ export default function ChartTimesFinder() {
           )}
         </div>
 
-        {/* Journey date */}
+        {/* Train-start date (Day 1 origin departure for this run) */}
         <div className="sm:w-48">
           <label
             htmlFor="chart-times-date"
             className="mb-1.5 block text-sm font-medium text-slate-700"
           >
-            Journey date
+            Train start date
           </label>
           <div className="relative">
             <CalendarDays className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />

@@ -223,7 +223,10 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
         </p>
         {journeyDateLabel && (
           <p className="mt-3 inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-1.5 text-sm font-medium text-blue-800">
-            Journey date: {journeyDateLabel}
+            Train starts from {data.stations[0]?.stationCode ?? data.originStation} on {journeyDateLabel}
+            {data.stations.some((s) => (s.day ?? 1) > 1)
+              ? " — Day 2+ stations board on later calendar dates, same run"
+              : ""}
           </p>
         )}
       </header>
@@ -242,6 +245,7 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           stations={data.stations.map((s) => ({
             stationCode: s.stationCode,
             stationName: s.stationName,
+            day: s.day,
             chartTimeLocal: s.chartTimeLocal,
             chartOneDayOffset: s.chartOneDayOffset,
             chartTwoTimeLocal: s.chartTwoTimeLocal,

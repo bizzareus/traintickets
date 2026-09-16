@@ -10,6 +10,7 @@ import {
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 import { isAdminUser } from "@/lib/admin";
+import { addYmdDays, boardingYmdForStation } from "@/lib/chartTimeDisplay";
 import {
   CHART_ALERT_PRICE_RUPEES,
   createFreeChartAlert,
@@ -42,6 +43,8 @@ const CLASS_LABELS: Record<string, string> = {
 type StationOption = {
   stationCode: string;
   stationName: string;
+  /** Day count of this station (1 = origin) — boarding = train-start + day - 1. */
+  day?: number | null;
   /** Pinned chart times from the page row — scheduled + written to DB. */
   chartTimeLocal?: string | null;
   chartOneDayOffset?: number | null;
@@ -108,6 +111,7 @@ export default function ChartTimeAlertCTA({
   /** All scheduled stations in order on the train route. */
   stations: StationOption[];
   availableClasses?: string[];
+  /** Train-start date (`?date=`, Day-1 origin departure) for this table run. */
   initialJourneyDate?: string | null;
   initialStationCode?: string;
 }) {
@@ -115,6 +119,28 @@ export default function ChartTimeAlertCTA({
   const [stationCode, setStationCode] = useState(
     initialStationCode || stations[0]?.stationCode || "",
   );
+
+  const trainStartFromUrl = useMemo(() => {
+    const v = (initialJourneyDate ?? "").trim().slice(0, 10);
+    return /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : "";
+  }, [initialJourneyDate]);
+
+  const boardingDay = useMemo(() => {
+    const s = stations.find((x) => x.stationCode === stationCode);
+    return Math.max(1, Math.trunc(Number(s?.day) || 1));
+  }, [stations, stationCode]);
+
+  // Boarding date for the run in the URL at the *initial* station — used once
+  // to seed the input. Later station changes go through `handleStationChange`
+  // (which preserves the currently selected run, including manual date edits).
+  const initialBoardingYmd = useMemo(() => {
+    if (!trainStartFromUrl) return "";
+    const initCode = initialStationCode || stations[0]?.stationCode || "";
+    const initStation = stations.find((x) => x.stationCode === initCode);
+    const initDay = Math.max(1, Math.trunc(Number(initStation?.day) || 1));
+    return boardingYmdForStation(trainStartFromUrl, initDay) ?? "";
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trainStartFromUrl]);
 
   // Downstream destination options based on the chosen boarding station
   const boardingIndex = useMemo(() => {
@@ -200,7 +226,9 @@ export default function ChartTimeAlertCTA({
     }
   }, [activeClasses, classCode]);
 
-  const [journeyDate, setJourneyDate] = useState(initialJourneyDate || "");
+  // `journeyDate` state is the BOARDING date at the selected station (the day
+  // the traveller boards), while `?date=` is the train-start date for the run.
+  const [journeyDate, setJourneyDate] = useState(initialBoardingYmd || "");
   const { email, setEmail, mobile, setMobile, persistContact } =
     useContactFields();
   const [loading, setLoading] = useState(false);
@@ -217,12 +245,31 @@ export default function ChartTimeAlertCTA({
     journey: ChartAlertPaymentModalJourney;
   } | null>(null);
 
-  // Default journey date to next day (tomorrow) unless provided
+  // Default boarding date to tomorrow unless the page supplied a train-start
+  // date (converted to boarding for the initial station above). Runs only on
+  // URL changes — station switches preserve the run via `handleStationChange`.
   useEffect(() => {
-    if (!initialJourneyDate) {
+    if (!trainStartFromUrl) {
       setJourneyDate(ymdPlusDays(1));
+    } else if (initialBoardingYmd) {
+      setJourneyDate(initialBoardingYmd);
     }
-  }, [initialJourneyDate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trainStartFromUrl]);
+
+  /** Keep the same physical run when the boarding station changes. */
+  const handleStationChange = (nextCode: string) => {
+    const prev = stations.find((x) => x.stationCode === stationCode);
+    const next = stations.find((x) => x.stationCode === nextCode);
+    const prevDay = Math.max(1, Math.trunc(Number(prev?.day) || 1));
+    const nextDay = Math.max(1, Math.trunc(Number(next?.day) || 1));
+    setStationCode(nextCode);
+    const cur = journeyDate.trim().slice(0, 10);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(cur) && nextDay !== prevDay) {
+      const shifted = addYmdDays(cur, nextDay - prevDay);
+      if (shifted) setJourneyDate(shifted);
+    }
+  };
 
   const boardingOptions = useMemo(() => {
     return stations.length > 1 ? stations.slice(0, -1) : stations;
@@ -260,21 +307,26 @@ export default function ChartTimeAlertCTA({
 
     // Admins (localStorage admin flag) skip the payment popup and create
     // the alert directly; everyone else pays via the in-page iframe modal.
+    // `journeyDate` state is the boarding date; derive the run's train-start.
     setLoading(true);
     setError(null);
     try {
       persistContact();
+      const boardingYmd = journeyDate.trim().slice(0, 10);
+      const resolvedTrainStart =
+        addYmdDays(boardingYmd, -(boardingDay - 1)) || undefined;
       const journey: ChartAlertPaymentModalJourney = {
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,
         fromStationCode: stationCode.trim().toUpperCase(),
         toStationCode: toStationCode.trim().toUpperCase(),
-        journeyDate: journeyDate.trim().slice(0, 10),
+        journeyDate: boardingYmd,
         classCode: classCode.trim().toUpperCase(),
       };
       if (adminFree) {
         await createFreeChartAlert({
           ...journey,
+          trainStartDate: resolvedTrainStart,
           stationCodesToMonitor: [stationCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,
@@ -300,6 +352,7 @@ export default function ChartTimeAlertCTA({
       const link = await startChartAlertPayment(
         {
           ...journey,
+          trainStartDate: resolvedTrainStart,
           stationCodesToMonitor: [stationCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,
@@ -419,7 +472,7 @@ export default function ChartTimeAlertCTA({
           </span>
           <select
             value={stationCode}
-            onChange={(e) => setStationCode(e.target.value)}
+            onChange={(e) => handleStationChange(e.target.value)}
             className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
           >
             {boardingOptions.map((s) => (

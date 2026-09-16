@@ -143,14 +143,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Monetag multitag (zone 281194) — registers /sw.js for push monetization */}
-        <Script
-          id="monetag-multitag"
-          strategy="beforeInteractive"
-          src="https://quge5.com/88/tag.min.js"
-          data-zone="281194"
-          data-cfasync="false"
-        />
+        <script>(function(s){s.dataset.zone='11812983',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
         {/* Adcash ads temporarily disabled
         <Script
           id="aclib"
