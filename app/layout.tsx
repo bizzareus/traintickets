@@ -118,7 +118,6 @@ export const metadata: Metadata = {
   },
   other: {
     "msvalidate.01": "A5FB463C1706FB1DE5F75D9D754846D4",
-    monetag: "5a9a8ab068e461593fd356122d0a5f7a",
   },
   category: "travel",
   classification: "Train ticket booking and seat availability",
@@ -143,13 +142,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          id="nap5k-multitag"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(s){s.dataset.zone='11812983',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
-          }}
-        />
         {/* Adcash ads temporarily disabled
         <Script
           id="aclib"
