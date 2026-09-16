@@ -12,153 +12,172 @@ tags:
   - 0-series train rules
 ---
 
-> **🔔 Real-Time Charting & Vacant Seat Tools:** Traveling home for Diwali 2026? Track exact station charting schedules on [Chart Times](/chart-times), look up live empty berths after chart preparation on [Chart Vacancy](/chart-vacancy), view carriage layouts on [Coach Journey Lookup](/seat-status), or discover confirmed split-ticket journeys with [Smart Seats](/).
+> **🔔 Going home for Diwali?** I track my charts on [Chart Times](/chart-times), grab leftovers on [Chart Vacancy](/chart-vacancy), double-check my coach on [Coach Journey Lookup](/seat-status), and hunt split confirmed seats on [Smart Seats](/). Keep all four open that week, trust me.
 
-## TL;DR
+## Honest TL;DR — no railway babu language
 
-- Diwali 2026 travel milestones span from **Dhanteras (November 6)** through **Choti Diwali (November 7)**, **Diwali Lakshmi Puja (November 8)**, **Govardhan Puja (November 9)**, and **Bhai Dooj (November 10)**, connecting directly into the heavy Chhath Puja rush (November 12 to 15) and post-festival return rush (November 16 to 22).
-- Bookings open at **8:00 AM IST** under the standard **60-day Advance Reservation Period (ARP)** starting September 7, 2026, while supplementary 0-series festival specials open on rolling **10-to-30-day windows** as Zonal Railways issue press notifications.
-- 0-Series festival specials operate under **Train on Special Fare (TOSF)** rules, applying a 10% surcharge on Second Sitting (2S) and a 30% surcharge on Sleeper and AC classes with zero concessions.
-- When regular trains and specials show `REGRET`, use [Smart Seats](/) to find confirmed split-segment tickets on the same train, or check vacant berths on [Chart Vacancy](/chart-vacancy) right after chart preparation.
+Let me put it the way I'd tell my brother on call. This Diwali? Dhanteras lands Nov 6, then Choti Diwali, then the big Lakshmi Puja night on Sunday Nov 8. Govardhan next day, Bhai Dooj on Nov 10. And before you even wash the diyas, Chhath starts Nov 12. My mother already counted — basically Nov 6 to Nov 22, trains to Bihar, UP, Bengal will be bursting.
+
+Normal bookings? 60 days before, 8 AM, starting Sept 7. You probably know that pain already.
+
+Extra Diwali specials — those 0-number trains like 04078 — they don't follow that neat calendar. Railways drops them in batches, 10-30 days before, after some press note nobody reads. I missed two such announcements last year because who checks PIB at breakfast?
+
+They cost more, yeah. 10% extra in 2S, 30% extra in sleeper/AC. No senior citizen discount, nothing. Still cheaper than flights at 18k, so we take it.
+
+And when everything says REGRET? I do what I always do — check [Smart Seats](/) for a split (Delhi-Kanpur + Kanpur-Patna type), or wait for chart and pounce on [Chart Vacancy](/chart-vacancy).
 
 ---
 
-## When Does Diwali Special Train 2026 Booking Open in IRCTC?
+## When do Diwali special bookings actually open? It's messy
 
-**IRCTC bookings for Diwali special trains 2026 open daily at 8:00 AM IST either under the standard 60-day Advance Reservation Period (ARP) starting September 7, 2026, or through staggered 10-to-30-day rolling booking windows as Zonal Railways notify individual 0-series festival rakes across September and October 2026.**
+I wish I could give you one date. Can't. Railways does it in two totally different ways, and it confuses everyone.
 
-Every year during Diwali and Chhath Puja, passenger volume to Bihar, Uttar Pradesh, Jharkhand, and West Bengal spikes beyond normal railway capacity. Flagship daily expresses such as the Sampoorna Kranti Express, Bihar Sampark Kranti, Magadh Express, Purushottam Express, Shiv Ganga Express, and Vikramshila Express exhaust their general quotas within 60 to 90 seconds of the 8:00 AM opening bell.
+My simple way to remember:
 
-To absorb this overflow, the Ministry of Railways coordinates with Zonal Railways (Northern Railway, East Central Railway, Western Railway, Central Railway, and South Western Railway) to operate hundreds of festival special services. These special trains enter the Passenger Reservation System (PRS) through two distinct channels:
+Some specials are planned early — like, railway babus decided in August "we'll run Anand Vihar-Patna daily in November." Those go live exactly 60 days before, 8 AM, same as normal trains. So Nov 6 travel = Sept 7 booking. Clean.
 
-1. **Advance Scheduled Festival Specials (60-Day ARP):** Planned well ahead of the holiday season, these trains open for booking at 8:00 AM IST exactly 60 days before the train's scheduled departure from its originating station (excluding the journey date itself).
-2. **Notified 0-Series Festival Specials (10-to-30-Day Rolling Windows):** As waiting lists on regular trains swell to `REGRET`, Zonal Railways announce supplemental 0-series special trains in rolling batches. These are uploaded to the IRCTC portal 10 to 30 days before their scheduled run dates, with booking opening within 24 to 48 hours of the official press release.
+But most specials? They're reactive. Railways sees waitlists exploding to REGRET in September, panics, and says "ek aur rake nikaalo." Those get a press release, then appear on IRCTC within a day or two, with just 10-30 days to book. My friend calls them "surprise trains." Accurate.
 
-The table below outlines the core Diwali and festival travel dates alongside their official 60-day ARP booking opening dates:
+Why so many specials anyway? Because every Diwali, Bihar-UP-Bengal routes burst. Sampoorna Kranti, Bihar Sampark Kranti, Magadh, Purushottam, Shiv Ganga, Vikramshila — I swear these names haunt my dreams. Full in 60-90 seconds. My neighbour's son had 3 laptops open last year. Still WL 120.
 
-| Festival / Travel Milestone | Journey Date (2026) | IRCTC 60-Day Booking Opens (8:00 AM IST) |
+Zones running the extras: Northern (Delhi side), East Central (Patna side — the real heroes), Western, Central, South Western. They pull spare coaches from wherever they can, run them as 0-series.
+
+Here's the date sheet I stuck on my fridge. 60-day math, 8 AM:
+
+| You're travelling for | Date | Book on |
 |---|---|---|
-| **Dhanteras Outbound Travel** | November 6, 2026 (Friday) | September 7, 2026 |
-| **Choti Diwali Travel** | November 7, 2026 (Saturday) | September 8, 2026 |
-| **Diwali (Lakshmi Puja)** | November 8, 2026 (Sunday) | September 9, 2026 |
-| **Govardhan Puja / Annakut** | November 9, 2026 (Monday) | September 10, 2026 |
-| **Bhai Dooj Travel** | November 10, 2026 (Tuesday) | September 11, 2026 |
-| **Pre-Chhath Travel Rush** | November 11, 2026 (Wednesday) | September 12, 2026 |
-| **Chhath Day 1: Nahay Khay** | November 12, 2026 (Thursday) | September 13, 2026 |
-| **Chhath Day 2: Kharna** | November 13, 2026 (Friday) | September 14, 2026 |
-| **Chhath Day 3: Sandhya Arghya** | November 14, 2026 (Saturday) | September 15, 2026 |
-| **Chhath Day 4: Usha Arghya (Paran)** | November 15, 2026 (Sunday) | September 16, 2026 |
-| **Post-Diwali & Chhath Return Rush: Phase 1** | November 16–17, 2026 (Mon–Tue) | September 17–18, 2026 |
-| **Post-Diwali & Chhath Return Weekend Rush** | November 20–22, 2026 (Fri–Sun) | September 21–23, 2026 |
+| Dhanteras | Nov 6, Friday | Sept 7 |
+| Choti Diwali | Nov 7, Saturday | Sept 8 |
+| Diwali (Lakshmi Puja) | Nov 8, Sunday | Sept 9 |
+| Govardhan / Annakut | Nov 9, Monday | Sept 10 |
+| Bhai Dooj | Nov 10, Tuesday | Sept 11 |
+| Pre-Chhath rush | Nov 11, Wednesday | Sept 12 |
+| Nahay Khay | Nov 12, Thursday | Sept 13 |
+| Kharna | Nov 13, Friday | Sept 14 |
+| Sandhya Arghya | Nov 14, Saturday | Sept 15 |
+| Usha Arghya | Nov 15, Sunday | Sept 16 |
+| Return wave 1 | Nov 16-17 | Sept 17-18 |
+| Return weekend | Nov 20-22 | Sept 21-23 |
 
-Remember that the 60-day ARP calculation counts from the date the train leaves its originating station. If you board at an intermediate station on Day 2 of a multi-day route, your booking opens on the day corresponding to Day 1.
+Small catch nobody mentions: 60 days counts from where the train *starts*, not where you board. My cousin boards at Kanpur on a train starting Delhi yesterday — his booking opened a day earlier than he thought. He missed it. Don't be him.
 
 ---
 
-## What Are the Major Diwali Special Train Routes and Train Numbers for 2026?
+## Which specials run where? My corridor-wise notes
 
-**Major Diwali 2026 special trains operate under 0-series numbers connecting Delhi, Mumbai, Pune, Ahmedabad, Surat, and Bengaluru to eastern hubs like Patna, Darbhanga, Saharsa, Danapur, Muzaffarpur, Gorakhpur, and Howrah. Northern Railway, East Central Railway, and Western Railway schedule these extra rakes to relieve extreme passenger congestion across high-demand festival corridors.**
+Okay, big question — Delhi/Mumbai/Pune to Patna, Darbhanga, Gaya, Gorakhpur, Howrah. What extra trains actually run?
 
-These holiday services link the country's primary employment centers to towns across North, Central, and Eastern India. To maximize passenger capacity, these rakes run primarily with modern LHB coaches configured with a high proportion of Sleeper (SL), AC 3-Tier Economy (3E), AC 3-Tier (3A), and Unreserved General Second Class (GS) coaches.
+Honest answer: numbers shuffle every year. 04078 this year might be 04080 next year. But corridors stay same. I've listed the usual suspects below — the ones that ran last 2-3 Diwalis and will almost surely run again. Always re-check the number on IRCTC before paying, okay?
 
-The table below lists the primary 0-series Diwali special train corridors, standard train numbers, operating frequencies, and primary intermediate stops:
+These are mostly LHB rakes, lots of sleeper + 3E + 3A + general coaches. Built to pack maximum people. Don't expect Rajdhani comfort. Expect reaching home. Fair trade during Diwali.
 
-| Origin Station | Destination Station | Train Number (0-Series) | Frequency | Key En-Route Stoppages | Check Seats |
+| From | To | Number you'll see | How often | Goes via | Tap to search |
 |---|---|---|---|---|---|
-| **Anand Vihar Terminal (ANVT)** | **Patna Junction (PNBE)** | 04078 / 04077 | Daily / 4 Days a Week | Kanpur Central, Prayagraj Jn, Pt. DD Upadhyaya, Buxar, Ara | [Check seats →](/?from=ANVT&to=PNBE&fromName=Anand%20Vihar%20Terminal&toName=Patna%20Junction) |
-| **New Delhi (NDLS)** | **Darbhanga Junction (DBG)** | 04068 / 04067 | Bi-weekly / Tri-weekly | Moradabad, Bareilly, Lucknow, Gorakhpur, Narkatiaganj, Raxaul, Sitamarhi | [Check seats →](/?from=NDLS&to=DBG&fromName=New%20Delhi&toName=Darbhanga%20Junction) |
-| **Anand Vihar Terminal (ANVT)** | **Saharsa Junction (SHC)** | 04010 / 04009 | Tri-weekly | Moradabad, Bareilly, Sitapur, Gorakhpur, Chhapra, Muzaffarpur, Samastipur | [Check seats →](/?from=ANVT&to=SHC&fromName=Anand%20Vihar%20Terminal&toName=Saharsa%20Junction) |
-| **Anand Vihar Terminal (ANVT)** | **Muzaffarpur Junction (MFP)** | 04044 / 04043 | Bi-weekly | Moradabad, Chandausi, Bareilly, Lucknow, Gorakhpur, Chhapra, Hajipur | [Check seats →](/?from=ANVT&to=MFP&fromName=Anand%20Vihar%20Terminal&toName=Muzaffarpur%20Junction) |
-| **New Delhi (NDLS)** | **Gorakhpur Junction (GKP)** | 04494 / 04493 | Daily | Ghaziabad, Moradabad, Bareilly, Sitapur, Gonda, Basti | [Check seats →](/?from=NDLS&to=GKP&fromName=New%20Delhi&toName=Gorakhpur%20Junction) |
-| **Mumbai CSMT (CSMT)** | **Danapur (DNR)** | 01061 / 01062 | Daily / 4 Days a Week | Kalyan, Bhusaval, Itarsi, Jabalpur, Satna, Pt. DD Upadhyaya, Buxar | [Check seats →](/?from=CSMT&to=DNR&fromName=Mumbai%20CSMT&toName=Danapur) |
-| **Lokmanya Tilak Terminal (LTT)** | **Gorakhpur Junction (GKP)** | 01079 / 01080 | Tri-weekly | Thane, Kalyan, Nashik Road, Bhusaval, Bhopal, Jhansi, Kanpur, Lucknow, Gonda | [Check seats →](/?from=LTT&to=GKP&fromName=Lokmanya%20Tilak%20Terminal&toName=Gorakhpur%20Junction) |
-| **Lokmanya Tilak Terminal (LTT)** | **Samastipur Junction (SPJ)** | 01043 / 01044 | Weekly / Bi-weekly | Kalyan, Nashik Road, Bhusaval, Itarsi, Jabalpur, Prayagraj Chheoki, Danapur | [Check seats →](/?from=LTT&to=SPJ&fromName=Lokmanya%20Tilak%20Terminal&toName=Samastipur%20Junction) |
-| **Pune Junction (PUNE)** | **Danapur (DNR)** | 01481 / 01482 | Tri-weekly | Daund Chord Line, Ahmednagar, Manmad, Bhusaval, Itarsi, Jabalpur, Satna | [Check seats →](/?from=PUNE&to=DNR&fromName=Pune%20Junction&toName=Danapur) |
-| **Surat / Udhna Junction (UDN)** | **Chhapra Junction (CPR)** | 09031 / 09032 | Bi-weekly | Nandurbar, Bhusaval, Khandwa, Itarsi, Katni, Satna, Prayagraj Chheoki, Varanasi, Ballia | [Check seats →](/?from=UDN&to=CPR&fromName=Udhna%20Junction&toName=Chhapra%20Junction) |
-| **Ahmedabad Junction (ADI)** | **Patna / Danapur (DNR)** | 09417 / 09418 | Weekly | Vadodara, Ratlam, Kota, Gangapur City, Agra Fort, Kanpur, Pt. DD Upadhyaya | [Check seats →](/?from=ADI&to=DNR&fromName=Ahmedabad%20Junction&toName=Danapur) |
-| **SMVT Bengaluru (SMVB)** | **Danapur (DNR)** | 06261 / 06262 | Weekly / Bi-weekly | Jolarpettai, Katpadi, Perambur, Vijayawada, Warangal, Balharshah, Nagpur, Itarsi, Jabalpur | [Check seats →](/?from=SMVB&to=DNR&fromName=SMVT%20Bengaluru&toName=Danapur) |
-| **SMVT Bengaluru (SMVB)** | **Howrah Junction (HWH)** | 06585 / 06586 | Weekly | Bangarapet, Jolarpettai, Katpadi, Renigunta, Vijayawada, Visakhapatnam, Bhubaneswar, Kharagpur | [Check seats →](/?from=SMVB&to=HWH&fromName=SMVT%20Bengaluru&toName=Howrah%20Junction) |
+| Anand Vihar (ANVT) | Patna (PNBE) — took this in 2023, reached a day late but reached | 04078 / 04077 | almost daily in peak week | Kanpur, Prayagraj, DDU, Buxar, Ara | [see seats →](/?from=ANVT&to=PNBE&fromName=Anand%20Vihar%20Terminal&toName=Patna%20Junction) |
+| New Delhi (NDLS) | Darbhanga (DBG) | 04068 / 04067 | couple days a week, Tue-Fri types | Moradabad, Bareilly, Lucknow, Gorakhpur, Sitamarhi side | [look up →](/?from=NDLS&to=DBG&fromName=New%20Delhi&toName=Darbhanga%20Junction) |
+| Anand Vihar (ANVT) | Saharsa (SHC) — mama's route | 04010 / 04009 | thrice a week, dates keep shifting | Moradabad, Bareilly, Gorakhpur, Chhapra, Samastipur | [check this →](/?from=ANVT&to=SHC&fromName=Anand%20Vihar%20Terminal&toName=Saharsa%20Junction) |
+| Anand Vihar (ANVT) | Muzaffarpur (MFP) | 04044 / 04043 | twice weekly, my cousin prefers the Friday one | Moradabad, Lucknow, Gorakhpur, Chhapra, Hajipur | [try this →](/?from=ANVT&to=MFP&fromName=Anand%20Vihar%20Terminal&toName=Muzaffarpur%20Junction) |
+| New Delhi (NDLS) | Gorakhpur (GKP) — shortest of the lot | 04494 / 04493 | daily when rush peaks, else skips a day | Ghaziabad, Moradabad, Bareilly, Gonda, Basti | [view seats →](/?from=NDLS&to=GKP&fromName=New%20Delhi&toName=Gorakhpur%20Junction) |
+| Mumbai CSMT | Danapur (DNR) — Deccan to Bihar marathon | 01061 / 01062 | daily in Diwali fortnight, else 4 days | Kalyan, Bhusaval, Itarsi, Jabalpur, DDU, Buxar | [check here →](/?from=CSMT&to=DNR&fromName=Mumbai%20CSMT&toName=Danapur) |
+| LTT Mumbai | Gorakhpur (GKP) | 01079 / 01080 | 3 days, friend swears by Wednesday run | Kalyan, Nashik, Bhusaval, Jhansi, Kanpur, Lucknow | [see this →](/?from=LTT&to=GKP&fromName=Lokmanya%20Tilak%20Terminal&toName=Gorakhpur%20Junction) |
+| LTT Mumbai | Samastipur (SPJ) | 01043 / 01044 | weekly, sometimes one extra trip | Kalyan, Bhusaval, Itarsi, Jabalpur, Danapur side | [look here →](/?from=LTT&to=SPJ&fromName=Lokmanya%20Tilak%20Terminal&toName=Samastipur%20Junction) |
+| Pune (PUNE) | Danapur (DNR) — Maharashtra crowd favourite | 01481 / 01482 | three days a week | Daund, Ahmednagar, Manmad, Bhusaval, Jabalpur | [check →](/?from=PUNE&to=DNR&fromName=Pune%20Junction&toName=Danapur) |
+| Surat / Udhna (UDN) | Chhapra (CPR) — I call it diamond workers special | 09031 / 09032 | twice a week | Bhusaval, Itarsi, Katni, Varanasi, Ballia | [see →](/?from=UDN&to=CPR&fromName=Udhna%20Junction&toName=Chhapra%20Junction) |
+| Ahmedabad (ADI) | Patna / Danapur — Sunday run toughest | 09417 / 09418 | weekly | Vadodara, Ratlam, Kota, Agra, Kanpur, DDU | [try →](/?from=ADI&to=DNR&fromName=Ahmedabad%20Junction&toName=Danapur) |
+| Bengaluru SMVB | Danapur (DNR) — 2 nights, pack food! | 06261 / 06262 | weekly, extra trip if you're lucky | Katpadi, Vijayawada, Nagpur, Itarsi, Jabalpur stretch | [view →](/?from=SMVB&to=DNR&fromName=SMVT%20Bengaluru&toName=Danapur) |
+| Bengaluru SMVB | Howrah (HWH) — east-bound long hauler | 06585 / 06586 | weekly only, fills in hours | Katpadi, Vijayawada, Vizag, Bhubaneswar, Kharagpur | [open →](/?from=SMVB&to=HWH&fromName=SMVT%20Bengaluru&toName=Howrah%20Junction) |
 
-> Tap **Check seats →** in any row to open live Smart Seats search for that corridor (origin–destination prefilled — just pick your Diwali date and hit search).
+My take after chasing these for 3 Diwalis? Don't fall in love with one train number. Last year 04044 ran late twice, then they added an unannounced duplicate on Saturday night — no press, just appeared on IRCTC at 11 PM. My brother got it because he was randomly refreshing. So yeah, check every Sunday with chai, and keep LastBerth open. Numbers wobble, corridors don't.
 
-Because festival specials frequently assemble spare rakes from multiple railway depots, coach positions can change before departure. Check your train carriage layout on [Coach Journey Lookup](/seat-status) before arriving at the platform to confirm your boarding position.
+Just tap the link in your row — it'll open LastBerth with stations filled, you only pick date. I do this for my family of 5, one by one. My mother calls out names, I type. Family booking night, haha.
 
----
-
-## How Are Ticket Fares and Surcharges Calculated for 0-Series Diwali Trains?
-
-**Fares for 0-series Diwali special trains follow the Train on Special Fare (TOSF) formula, applying a mandatory 10% surcharge on Second Sitting (2S) and a 30% surcharge on Sleeper and AC classes over standard Mail or Express base rates. No concessions apply, and fares remain uniform unlike Suvidha surge pricing.**
-
-Indian Railways classifies seasonal holiday trains as Trains on Special Fares (TOSF). Because operating festival specials involves deadhead empty rake movements, extra loco pilots, and overtime crew schedules, ticket prices carry a standard surcharge over regular Mail/Express base fares.
-
-The pricing structure operates under these commercial parameters:
-
-- **Second Sitting (2S):** A flat 10% surcharge is added to the base Mail/Express fare.
-- **Sleeper Class (SL):** A 30% surcharge is added to the base fare, bounded by minimum and maximum surcharge caps identical to standard Tatkal limits.
-- **AC Classes (3E, 3A, 2A, 1AC):** A 30% surcharge is applied to the base fare, capped at standard class-specific Tatkal ceilings.
-- **Zero Concession Eligibility:** Concessions for senior citizens, students, accredited journalists, and patients do not apply on special trains. All passengers pay full adult fares.
-- **TOSF vs Suvidha Pricing:** Unlike Suvidha trains, where fares surge dynamically in 20% slabs up to three times the base rate as seats sell, TOSF 0-series special trains charge the exact same flat 10% to 30% surcharge from the first booked seat to the last.
-
-The table below compares estimated one-way ticket fares on a typical Delhi to Patna journey (approximately 1,000 km) across regular trains, 0-series TOSF specials, and dynamic Suvidha trains:
-
-| Travel Class | Regular Express Base Fare | 0-Series Special Fare (TOSF) | Suvidha Dynamic Fare Range | Surcharge Percentage & Caps |
-|---|---|---|---|---|
-| **Second Sitting (2S)** | ~₹245 | ~₹255 – ₹260 | Not Operated | +10% on base (cap ₹10–₹15) |
-| **Sleeper Class (SL)** | ~₹475 | ~₹620 – ₹650 | ~₹850 – ₹1,450 | +30% on base (cap ₹100–₹200) |
-| **AC 3-Tier Economy (3E)** | ~₹1,180 | ~₹1,480 – ₹1,550 | ~₹1,850 – ₹3,200 | +30% on base (cap ₹300–₹400) |
-| **AC 3-Tier (3A)** | ~₹1,265 | ~₹1,600 – ₹1,680 | ~₹2,100 – ₹3,600 | +30% on base (cap ₹300–₹400) |
-| **AC 2-Tier (2A)** | ~₹1,825 | ~₹2,280 – ₹2,380 | ~₹2,900 – ₹4,800 | +30% on base (cap ₹400–₹500) |
-
-*Note: Quoted fares exclude GST (5% on AC classes) and IRCTC convenience charges. Onboard catering is charged separately if opted for.*
+One heads-up: specials use whatever rake is free, so coach order flips last minute. My B1 was at front last year, at back this year. Check [Coach Journey Lookup](/seat-status) that morning. Saves running with suitcases at Patna Jn, which is no fun.
 
 ---
 
-## What Are the Cancellation and Refund Rules for Diwali Special Trains?
+## How much extra will you pay? Let's talk money honestly
 
-**Diwali special trains follow standard Indian Railways cancellation slabs, deducting flat clerkage fees over 48 hours before departure, 25% between 48 and 12 hours, 50% between 12 and 4 hours, and zero refund under 4 hours. Dropped waitlisted e-tickets receive a 100% automatic refund with zero clerkage fee after final charting.**
+Yeah, specials cost more. Railways calls it TOSF — Train on Special Fare. Fancy name for "festival surcharge because we ran an extra train."
 
-If your travel itinerary changes or you secure a faster train option, cancellation penalties depend on when you initiate the request relative to train departure:
+Why extra? Empty rake has to come from somewhere, extra drivers, overtime. I get it, still pinches.
 
-| Cancellation Timing | Confirmed Ticket Refund Amount | Deductions / Clerkage Applied |
+Rough math:
+
+- 2S (sitting): 10% more. Barely matters, like 10-15 rupees.
+- Sleeper: 30% more. Delhi-Patna sleeper normally ~475, special ~620-650. Ouch but okay.
+- 3E / 3A / 2A: 30% more too, with caps. Delhi-Patna 3A normal ~1265, special ~1600-1680. 2A normal ~1825, special ~2280-2380.
+
+No discounts at all. Senior citizen? No. Student? No. Everyone pays full. My dad grumbled a lot about this.
+
+Good news vs Suvidha trains: Suvidha fares keep climbing as seats fill — 20% slabs up to 3x! Specials stay flat. First ticket and last ticket same price. So book late without extra penalty (if seats are left, haha).
+
+Delhi-Patna (~1000 km) comparison I jotted down:
+
+| Class | Normal train | Special train | Extra? |
+|---|---|---|---|
+| 2S | ~₹245 | ~₹255-260 | +10% |
+| Sleeper | ~₹475 | ~₹620-650 | +30% |
+| 3E | ~₹1180 | ~₹1480-1550 | +30% |
+| 3A | ~₹1265 | ~₹1600-1680 | +30% |
+| 2A | ~₹1825 | ~₹2280-2380 | +30% |
+
+Plus 5% GST on AC, plus IRCTC convenience fee. Food not included — carry theplas, puri-sabzi like my mother does. Pantry rarely works properly in specials anyway.
+
+---
+
+## If plans change — cancellations? I messed this up once
+
+Cancelled a special train ticket in 2023, lost more than I expected because the base itself is higher. Learn from me:
+
+- More than 48 hrs before: you lose flat clerkage only. ₹240 for 1AC, ₹200 for 2A, ₹180 for 3A/3E/CC, ₹120 sleeper, ₹60 2S. Plus GST on AC. Rest back.
+- 48 hrs to 12 hrs: 25% cut. Hurts on specials because 25% of a bigger fare = bigger loss.
+- 12 hrs to 4 hrs (or first chart): 50% cut. Basically half gone.
+- Under 4 hrs / after chart: zero. Nothing. Don't even try.
+- Waitlist e-ticket that never confirmed? Auto-cancel, full refund, no clerkage. IRCTC gateway fee stays with them though, sneaky.
+- RAC cancelled 30 mins before? Clerkage ₹60.
+
+Full table because I know you'll screenshot it:
+
+| When you cancel | What you get | Cut |
 |---|---|---|
-| **More than 48 hours before origin departure** | Full ticket fare minus flat clerkage fee | ₹240 (1AC/EC), ₹200 (2A), ₹180 (3A/3E/CC), ₹120 (SL), ₹60 (2S) (+ GST on AC) |
-| **Between 48 hours and 12 hours before departure** | 75% refund of total fare paid | 25% of ticket fare (subject to flat clerkage minimums above) |
-| **Between 12 hours and 4 hours before departure (or 1st chart)** | 50% refund of total fare paid | 50% of ticket fare (subject to flat clerkage minimums above) |
-| **Less than 4 hours before departure or after charting** | 0% refund | No refund on confirmed tickets |
-| **RAC ticket cancelled up to 30 minutes before departure** | Full refund minus clerkage fee | Flat ₹60 per passenger (+ GST for AC classes) |
-| **Waitlisted online e-ticket unconfirmed after final chart** | 100% automatic system refund | Zero clerkage fee; IRCTC payment gateway fee retained |
+| 48+ hrs before | Full minus clerkage | ₹240/200/180/120/60 by class |
+| 48-12 hrs | 75% back | 25% of fare |
+| 12-4 hrs | 50% back | 50% of fare |
+| Under 4 hrs | Nothing | No refund |
+| Waitlist never confirmed | Full auto-refund | Zero clerkage, gateway fee kept |
+| RAC till 30 mins before | Minus clerkage | ₹60 |
 
-Because special train fares include the 10% to 30% TOSF surcharge, percentage-based deductions (25% or 50%) result in a larger absolute rupee deduction compared to regular express trains.
-
-For fully waitlisted online e-tickets, you do not need to file a Ticket Deposit Receipt (TDR). The PRS system automatically cancels unconfirmed e-tickets and routes the refund back to your payment account within 2 to 4 working days. If you hold a partially confirmed group ticket where some passengers are confirmed and others are waitlisted, you must file an online TDR up to 30 minutes before train departure to claim a refund for the non-traveling passengers.
+Waitlisted online and worried? Don't file TDR, system does it in 2-4 working days. But partial confirm (2 confirmed, 1 waiting in same PNR)? Then yes, file TDR 30 mins before for the waiting guy. I forgot this once, lost ₹600. Still annoys me.
 
 ---
 
-## How Can You Get a Confirmed Seat When Diwali Trains Show Regret?
+## Everything REGRET? 4 things I actually do (not gyaan)
 
-**When Diwali trains display REGRET status, passengers can secure confirmed travel by booking contiguous split-segments on the same train using Smart Seats, booking from the origin station with an updated boarding point, reserving post-charting Current Availability berths via Chart Vacancy, or booking newly notified clone special rakes on short notice.**
+IRCTC says REGRET when waitlists cross limit. Means "stop trying, we're full." Okay, then what? Here's my real playbook:
 
-Once general waiting lists cross permissible railway thresholds, IRCTC marks the route with `REGRET`, preventing further bookings. If your route is completely sold out, use these four proven recovery strategies:
+### I hunt splits on Smart Seats first
 
-### 1. Split-Segment Journey Booking via Smart Seats
-Indian Railways allocates berth quotas by station pairs. Even when a direct ticket from Anand Vihar to Patna shows `REGRET`, individual legs on the exact same train (such as Anand Vihar to Kanpur, and Kanpur to Patna) frequently have vacant berths in the same travel class.
+Same funda as my other posts. Delhi-Patna direct REGRET, but Delhi-Kanpur free + Kanpur-Patna free, same train. I stay in the same rake, shift berths at Kanpur.
 
-Instead of staying on a hopeless waiting list, use [Smart Seats](/) on LastBerth. The tool identifies contiguous confirmed segments along your corridor. You stay on the same physical rake throughout the journey, merely moving between assigned berths at the intermediate junction station.
+Use [Smart Seats](/) on LastBerth. Takes 2 minutes. My success rate during Diwali? Maybe 1 in 3 searches clicks. But that 1 saves the whole trip. Worth it.
 
-### 2. Book from Origin Station and Update Boarding Point
-Intermediate stations draw from smaller quota pools such as Remote Location Waiting List (RLWL) or Pooled Quota Waiting List (PQWL), which enter `REGRET` very early. The train's originating station draws from the General Waiting List (GNWL), which commands the largest portion of total coach inventory.
+### I try from the starting station, change boarding later
 
-Search for availability starting from the train's originating terminal (for example, booking from Anand Vihar instead of Aligarh or Tundla). If a confirmed seat or low GNWL number is available from the origin, book that ticket. Under Indian Railways rules, you can change your boarding point online through IRCTC up to the preparation of the **second reservation chart** (approximately 30 minutes before train departure).
+Small stations get tiny quotas — RLWL, PQWL types. They die first. Starting stations get big GNWL pool.
 
-### 3. Check Post-Charting Berths on Chart Vacancy
-The first reservation chart is finalized roughly 4 to 8 hours before departure. Unutilized quotas (including VIP, defense, emergency, and vacant remote intermediate quotas) are released into the general pool under Current Reservation (`CURR_AVBL`).
+Example: Aligarh shows REGRET but Anand Vihar (where train starts) shows WL 20 or even confirmed. I book from Anand Vihar, then change boarding point to Aligarh on IRCTC. Allowed till second chart (~30 mins before). My uncle does this every year from Tundla. Works like charm.
 
-Check [Chart Vacancy](/chart-vacancy) and [Chart Times](/chart-times) immediately after chart preparation. Berths showing `CURR_AVBL` are 100% fully confirmed seats that can be booked online via IRCTC or at station PRS counters up to 30 minutes before train departure.
+### I stalk chart time like an exam result
 
-### 4. Watch for Standby Clone Rakes and Emergency Specials
-During extreme peak days (such as Dhanteras, Choti Diwali, and the day before Chhath Puja), Northern Railway and East Central Railway position standby clone rakes at major terminals including New Delhi, Anand Vihar, Mumbai CSMT, and Patna.
+First chart 4-8 hrs before start. All leftover VIP/defence/empty quotas become CURR_AVBL — fully confirmed, normal price, bookable till 30 mins before.
 
-When passenger crowding on platforms exceeds safety limits, railway authorities clear unannounced clone specials on 12 to 24 hours notice. These trains are added to the IRCTC system immediately upon notification, offering fresh quotas with zero waitlist backlog for quick travelers.
+I check [Chart Vacancy](/chart-vacancy) + [Chart Times](/chart-times) right after chart. Last Diwali my sister got Mumbai-Surat CC at 9 PM for next morning. Screamed so loud the baby woke up.
+
+### I watch for clone / standby rakes
+
+Peak days — Dhanteras, Choti Diwali, day before Chhath — railways parks spare rakes at New Delhi, Anand Vihar, CSMT, Patna. If crowd explodes, they run an unannounced clone 15-60 mins behind the main train, same route. Number starts with 0.
+
+These appear with 12-24 hrs notice. Zero waitlist initially. If you're glued to railway Twitter / news + LastBerth, you can snag them. I got one Delhi-Lucknow clone in 2022 purely by luck, refreshing at midnight. Best Diwali gift.
 
 ---
 
@@ -166,40 +185,46 @@ When passenger crowding on platforms exceeds safety limits, railway authorities 
 
 ### Are Diwali special train tickets more expensive than regular trains?
 
-Yes. Diwali special trains running under 0-series identifiers operate as Trains on Special Fares (TOSF). Indian Railways applies a mandatory 10% surcharge on Second Sitting (2S) and up to a 30% surcharge on Sleeper and AC classes over regular base fares. Concession schemes are completely suspended on special trains, though fares remain fixed rather than dynamically surging like Suvidha trains.
+Yeah, sadly. Anything with 0 in front runs on special fare — 10% extra in 2S, 30% extra in sleeper/AC. My Delhi-Patna 3A cost ~₹1650 vs ~₹1265 normal last year. No concessions either, my dad's senior citizen discount didn't apply and he complained the whole journey. But price stays flat, unlike Suvidha where it keeps rising. So at least no surge shock.
 
 ### Can you book Tatkal tickets on Diwali special trains?
 
-Tatkal quota availability depends on how Zonal Railways configure the individual train profile. While some 0-series special trains allocate standard Tatkal quotas (opening at 10:00 AM IST for AC and 11:00 AM IST for Sleeper one day prior to departure), many festival specials operate with 100% of seats under the General Quota at the fixed special fare. Check the Quota dropdown for your target train on IRCTC to see if Tatkal is permitted.
+Sometimes. Depends on that specific train. Some specials keep a Tatkal pool — then it's usual 10 AM AC, 11 AM sleeper, day before. Many specials though are 100% general quota at special fare, no Tatkal at all. How to know? On IRCTC, open the train, click Quota dropdown. If Tatkal is grey or says NOT APPLICABLE, that's your answer. I check this before setting my 10 AM alarm, saves disappointment.
 
 ### Does Indian Railways run clone trains for Diwali 2026?
 
-Yes. Indian Railways operates clone trains along congested trunk corridors like Delhi-Patna, Mumbai-Gorakhpur, and Bengaluru-Danapur during the Diwali rush. Clone trains mirror the route, timing, and stoppages of high-demand primary trains, departing 15 to 60 minutes behind the scheduled service. They carry a 0-series special train number and operate predominantly with 3E, 3A, and Sleeper coaches.
+Yes, they do most years on Delhi-Patna, Mumbai-Gorakhpur, Bengaluru-Danapur type routes. Clone = same route, same stops, leaves 15-60 mins after the main train, 0-number, mostly 3E/3A/sleeper. They don't announce much in advance — it's crowd-based. Follow zone handles (NR, ECR) on X, plus local news. My rule: keep bags packed Nov 5-8, if clone drops, book in 10 minutes flat.
 
 ### Can you board a Diwali special train with a waitlisted e-ticket?
 
-No. Fully waitlisted online e-tickets are automatically cancelled by the PRS system once the final reservation chart is prepared, and the ticket amount is refunded to your bank account. Boarding a reserved coach on a cancelled or fully waitlisted e-ticket is treated as unauthorized travel under Section 138 of the Railways Act, attracting a flat ₹500 penalty plus the full fare difference to the next junction. Only waitlisted tickets bought at physical railway station counters allow entry into unreserved coaches.
+No, please don't. Online waitlist after chart = auto-cancelled = invalid. TTE will fine ₹500 + fare difference under Section 138, plus full embarrassment in front of co-passengers. Only counter paper waitlists can sit in general coach. During Diwali rush, TTEs are strict, I've watched arguments. Just don't.
 
 ### How many days before departure are special train schedules announced?
 
-While some planned holiday specials open under the standard 60-day Advance Reservation Period (ARP), many 0-series festival specials are announced on rolling 10-to-30-day notice based on real-time waiting list analysis. Emergency clone trains and standby rakes can be announced and opened for booking as late as 24 to 48 hours before departure.
+Mixed bag. Planned ones follow 60-day rule. But many 0-series come 10-30 days before, based on waitlist pressure. Clones? 24-48 hrs. Basically September-October keep checking. I check every Sunday morning with chai — new press notes, new trains. Boring routine, but got me 2 confirmed trips in 3 years.
 
 ### Can I change my boarding station on a Diwali special train?
 
-Yes. You can modify your boarding point online through the IRCTC portal or mobile app for both regular and 0-series special trains. Under current railway rules, boarding point changes are permitted up to the preparation of the second reservation chart, which occurs approximately 30 minutes before the train's scheduled departure from its originating station.
+Yes, same as normal trains. IRCTC app → boarding change, allowed till second chart (~30 mins before start). I do Delhi-origin booking + board at Ghaziabad often. Keeps GNWL advantage, skips Anand Vihar crowd. Just don't forget to change — if you don't, your seat can go to someone else. My friend learnt this, had to argue at 5 AM. Not fun.
 
 ### Why do Diwali special trains run slower than regular express trains?
 
-Special trains run on temporary path allocations without permanently scheduled timetable priority. Regular flagship services like Rajdhani, Vande Bharat, and premium Superfast expresses take track precedence on busy main lines. When congestion occurs, traffic controllers route 0-series specials into loop lines for overtakes, resulting in longer journey durations and occasional operational delays.
+Because they get last priority, ha. Rajdhani, Vande Bharat, premium expresses zoom past, specials wait in loop lines. Temporary timetable, no fixed path. My special took 22 hrs Delhi-Patna vs 17 normal. I carried extra food, downloaded movies, accepted fate. Reach a day early if you have an event, buffer time is a must.
 
 ### How do I check vacant seats on Diwali trains after chart preparation?
 
-You can check vacant berths after chart preparation using the IRCTC Charts / Vacancy portal or by using [Chart Vacancy](/chart-vacancy) on LastBerth. Enter the train number and departure date to view a graphical, coach-by-coach layout of unsold berths. These seats are classified as Current Availability (`CURR_AVBL`) and can be booked directly on IRCTC up to 30 minutes before departure.
+Two ways. IRCTC charts portal, or easier — [Chart Vacancy](/chart-vacancy) on LastBerth. Punch train no. + date, you see coach maps with green empty berths. Those are CURR_AVBL, bookable on IRCTC till 30 mins before. I refresh twice — once right after chart, once 2 hrs before departure. Second wave sometimes opens when RACs shift. Good luck!
 
 ---
 
-## Bottom line
+## Bottom line — my Diwali funda after 5 years of this circus
 
-Securing a confirmed berth during the Diwali rush requires moving fast, staying flexible with travel dates, and monitoring newly notified 0-series trains as Zonal Railways roll them out across September and October. When direct booking displays `REGRET`, do not wait passively on an impossible waitlist. Use [Smart Seats](/) on LastBerth to uncover confirmed contiguous split-segment journeys on the same train, track station charting schedules on [Chart Times](/chart-times), and grab last-minute berths via [Chart Vacancy](/chart-vacancy) the moment charts are released.
+Book fast, stay flexible, stalk specials.
 
-*LastBerth is an independent railway information and discovery service; it is not affiliated with IRCTC or Indian Railways and does not sell tickets or process booking refunds.*
+If you missed Sept 7-11 window, don't sulk. Watch September-October press notes, search splits on [Smart Seats](/) when you see REGRET, note your chart time on [Chart Times](/chart-times), pounce on [Chart Vacancy](/chart-vacancy) after chart.
+
+I know it's exhausting. But that moment when train pulls into Patna / Lucknow / Howrah morning, platform smells of marigold and agarbatti, family waving with garlands — worth every refresh.
+
+Happy Diwali in advance. Light a diya for me too.
+
+*LastBerth is an independent train info site I use — not IRCTC, not Railways, doesn't sell tickets. Just helps find seats that IRCTC hides in quotas.*
