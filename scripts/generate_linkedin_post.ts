@@ -6,7 +6,14 @@ import matter from "gray-matter";
  * Programmatically distills an Indian Railways blog post into a high-engagement LinkedIn post
  * adhering to the LastBerth Social Media Strategy.
  */
-export function generateLinkedInPost(slug: string): string {
+export interface GenerateLinkedInPostOptions {
+  popularTrainCallout?: string;
+}
+
+export function generateLinkedInPost(
+  slug: string,
+  options?: GenerateLinkedInPostOptions
+): string {
   const filePath = path.join(process.cwd(), "content", "blog", `${slug}.md`);
   if (!fs.existsSync(filePath)) {
     throw new Error(`Blog file not found: ${filePath}`);
@@ -42,9 +49,14 @@ export function generateLinkedInPost(slug: string): string {
     })
     .join("\n\n");
 
+  const routeCallout =
+    options?.popularTrainCallout ??
+    `🎯 Real seat discovery: Travelling this week to Delhi from Mumbai? Even when direct searches show heavy waitlists or REGRET, I have found you seats in Tejas Express in 3AC, and you can use LastBerth to find that out on your route too!`;
+
   const postText = `${title}\n\n` +
     `Facing high waitlists or REGRET on Indian Railways? Here is what you need to know:\n\n` +
     `${bullets}\n\n` +
+    `${routeCallout}\n\n` +
     `Explore confirmed contiguous seats along your route using Smart Seats on LastBerth:\n` +
     `👉 ${canonicalUrl}\n\n` +
     `#IndianRailways #IRCTC #TrainTickets #TravelHacks #LastBerth #SmartSeats`;

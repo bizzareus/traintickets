@@ -383,8 +383,11 @@ Every published daily blog post must be distributed to the official **LastBerth.
 ### The Dual-Engine Model
 1. **Engine 1: Feed Posts (Short-form Executive Summary, 1,200–1,800 characters)**:
    - High-density, mobile-scannable hooks addressing immediate commuter pain points (Tatkal, waitlists, REGRET, festival special trains).
-   - Core data points and route tables formatted with clean Unicode bullets (`🚆`, `📅`, `💰`, `💡`).
-   - Call-to-action linking directly to the full blog post or specific LastBerth tool.
+   - **Popular Train & Route Seat Discovery Mentions**: Anchor advice in real, high-demand journeys. Mention popular trains and high-volume corridors where LastBerth uncovers confirmed berths when standard searches are waitlisted or unavailable. For example:
+     > *"Travelling this week to Delhi from Mumbai? Even when direct tickets show WL or REGRET, I have found you confirmed seats in Tejas Express in 3AC, and you can use LastBerth to find that out on your route too."*
+     Weave in concrete examples of popular trains (Tejas Express, Rajdhani, Vande Bharat, Duronto) across high-traffic corridors (Mumbai–Delhi, Delhi–Patna, Bengaluru–Chennai, Howrah–Delhi) to illustrate how LastBerth's Smart Seats and vacancy algorithms unlock real travel options.
+   - Core data points and route tables formatted with clean Unicode bullets (`🚆`, `📅`, `💰`, `💡`, `🎯`).
+   - Call-to-action linking directly to the full blog post or specific LastBerth tool (`https://lastberth.com` or `/blog/<slug>`).
    - Run `npx tsx scripts/generate_linkedin_post.ts <slug>` to programmatically extract and format the post copy from the blog markdown.
 2. **Engine 2: Native Articles / Pulse (Long-form Syndication)**:
    - Complete syndication of authoritative blog guides using LinkedIn's native Article editor (`https://www.linkedin.com/article/new/`) with canonical link attribution to capture LinkedIn and Google Search traffic.
