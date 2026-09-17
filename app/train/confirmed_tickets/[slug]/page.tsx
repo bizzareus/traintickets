@@ -9,6 +9,7 @@ import {
   parseTrainNumberFromParam,
 } from "@/lib/trainSlug";
 
+import { getChartTimesPageData } from "@/lib/chartTimes";
 import { getTrainCachedSeats } from "@/lib/dynamodb";
 
 export const dynamicParams = true;
@@ -146,6 +147,26 @@ export default async function TrainConfirmedTicketsPage({ params }: Props) {
     })),
   };
 
+  let schedule = train?.schedule;
+  if (!schedule?.stationList || schedule.stationList.length === 0) {
+    try {
+      const ctData = await getChartTimesPageData(trainNumber);
+      if (ctData?.stations && ctData.stations.length > 0) {
+        schedule = {
+          stationList: ctData.stations.map((st) => ({
+            stationCode: st.stationCode,
+            stationName: st.stationName,
+            arrivalTime: st.arrivalTime || "",
+            departureTime: st.departureTime || "",
+            distanceKm: st.distance != null ? Number(st.distance) : undefined,
+          })),
+        };
+      }
+    } catch {
+      // Fallback silently if chart times data is unavailable
+    }
+  }
+
   const trainInfo: TrainInfo = {
     trainNumber,
     trainName: displayName,
@@ -154,7 +175,7 @@ export default async function TrainConfirmedTicketsPage({ params }: Props) {
     availableClasses: train?.availableClasses || [],
     departureTime: train?.departureTime,
     arrivalTime: train?.arrivalTime,
-    schedule: train?.schedule,
+    schedule,
   };
 
   return (

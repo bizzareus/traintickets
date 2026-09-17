@@ -13,7 +13,6 @@ import {
   Clock,
   ChevronRight,
   ChevronDown,
-  Sparkles,
   MapPin,
 } from "lucide-react";
 
@@ -53,27 +52,46 @@ type Props = {
   faqEntries?: Array<{ q: string; a: string }>;
 };
 
-function formatSeatDate(rawDate: string): string {
+function formatSeatDateLabel(rawDate: string): string {
   if (!rawDate) return "";
-  const ymdMatch = rawDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (ymdMatch) {
-    const [, y, m, d] = ymdMatch.map(Number);
-    return new Intl.DateTimeFormat("en-IN", {
-      weekday: "short",
-      day: "numeric",
-      month: "short",
-    }).format(new Date(y, m - 1, d, 12));
+  const parts = rawDate.split("-").map(Number);
+  if (parts.length !== 3) return rawDate;
+  const [y, m, d] = parts;
+  const target = new Date(y, m - 1, d, 12);
+
+  const now = new Date();
+  const istOffset = 5.5 * 60 * 60 * 1000;
+  const istNow = new Date(now.getTime() + istOffset);
+  const todayStr = `${istNow.getUTCFullYear()}-${String(istNow.getUTCMonth() + 1).padStart(2, "0")}-${String(istNow.getUTCDate()).padStart(2, "0")}`;
+
+  const tomorrow = new Date(istNow.getTime() + 24 * 60 * 60 * 1000);
+  const tomorrowStr = `${tomorrow.getUTCFullYear()}-${String(tomorrow.getUTCMonth() + 1).padStart(2, "0")}-${String(tomorrow.getUTCDate()).padStart(2, "0")}`;
+
+  const dateFmt = new Intl.DateTimeFormat("en-IN", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  }).format(target);
+
+  if (rawDate === todayStr) return `Today • ${dateFmt}`;
+  if (rawDate === tomorrowStr) return `Tomorrow • ${dateFmt}`;
+  return dateFmt;
+}
+
+function getUpcomingDates(count = 7): string[] {
+  const dates: string[] = [];
+  const now = new Date();
+  const istOffset = 5.5 * 60 * 60 * 1000;
+  const istNow = new Date(now.getTime() + istOffset);
+
+  for (let i = 0; i < count; i++) {
+    const d = new Date(istNow.getTime() + i * 24 * 60 * 60 * 1000);
+    const yyyy = d.getUTCFullYear();
+    const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
+    const dd = String(d.getUTCDate()).padStart(2, "0");
+    dates.push(`${yyyy}-${mm}-${dd}`);
   }
-  const dmyMatch = rawDate.match(/^(\d{2})-(\d{2})-(\d{4})$/);
-  if (dmyMatch) {
-    const [, d, m, y] = dmyMatch.map(Number);
-    return new Intl.DateTimeFormat("en-IN", {
-      weekday: "short",
-      day: "numeric",
-      month: "short",
-    }).format(new Date(y, m - 1, d, 12));
-  }
-  return rawDate;
+  return dates;
 }
 
 function getStatusDetails(status: string) {
@@ -118,10 +136,10 @@ function getStatusDetails(status: string) {
   }
   return {
     type: "neutral" as const,
-    label: "Status",
-    badgeClass: "bg-slate-100 text-slate-700 border-slate-200",
-    cardBorder: "border-slate-200 hover:border-slate-300 bg-white",
-    statusColor: "text-slate-800",
+    label: "Check Availability",
+    badgeClass: "bg-blue-50 text-blue-700 border-blue-200",
+    cardBorder: "border-slate-200 hover:border-blue-300 bg-white",
+    statusColor: "text-blue-700",
     isConfirmed: false,
   };
 }
@@ -140,13 +158,22 @@ export default function TrainConfirmedTicketsClient({
   const origin = trainInfo.originStation || "Origin";
   const dest = trainInfo.destinationStation || "Destination";
 
-  const stations = trainInfo.schedule?.stationList || [];
-  const firstStation = stations[0];
-  const lastStation = stations[stations.length - 1];
-  const totalHalts = stations.length;
-  const totalDistance = lastStation?.distanceKm;
-  const departureTime = trainInfo.departureTime || firstStation?.departureTime;
-  const arrivalTime = trainInfo.arrivalTime || lastStation?.arrivalTime;
+  const stations = useMemo(
+    () => trainInfo.schedule?.stationList || [],
+    [trainInfo.schedule?.stationList],
+  );
+
+  const [fromStation, setFromStation] = useState<string>(origin);
+  const [toStation, setToStation] = useState<string>(dest);
+
+  const handleFromChange = (code: string) => {
+    setFromStation(code);
+    const fromIdx = stations.findIndex((s) => s.stationCode === code);
+    const toIdx = stations.findIndex((s) => s.stationCode === toStation);
+    if (fromIdx >= 0 && toIdx <= fromIdx && fromIdx < stations.length - 1) {
+      setToStation(dest !== code ? dest : stations[fromIdx + 1].stationCode);
+    }
+  };
 
   const classesAvailable = useMemo(() => {
     const fromSeats = cachedSeats.map((s) => s.travelClass);
@@ -154,16 +181,49 @@ export default function TrainConfirmedTicketsClient({
     const merged = Array.from(new Set([...fromSeats, ...fromTrain])).filter(
       Boolean,
     );
-    return merged.sort();
+    return merged.length > 0 ? merged.sort() : ["3A", "2A", "1A"];
   }, [cachedSeats, trainInfo.availableClasses]);
 
-  const filteredSeats = useMemo(() => {
-    return cachedSeats.filter((s) =>
-      selectedClass === "ALL" ? true : s.travelClass === selectedClass,
-    );
-  }, [cachedSeats, selectedClass]);
+  const upcomingDates = useMemo(() => {
+    const defaultDates = getUpcomingDates(7);
+    const seatDates = cachedSeats.map((s) => s.date).filter(Boolean);
+    return Array.from(new Set([...defaultDates, ...seatDates])).sort();
+  }, [cachedSeats]);
 
-  const searchUrl = `/?from=${encodeURIComponent(origin)}&to=${encodeURIComponent(dest)}`;
+  const seatItems = useMemo(() => {
+    const cachedMap = new Map<string, CachedSeat>();
+    for (const s of cachedSeats) {
+      cachedMap.set(`${s.date}#${s.travelClass}`, s);
+    }
+
+    const targetClasses =
+      selectedClass === "ALL" ? classesAvailable : [selectedClass];
+
+    const items: Array<CachedSeat & { isLiveCheck?: boolean }> = [];
+    for (const date of upcomingDates) {
+      for (const cls of targetClasses) {
+        const key = `${date}#${cls}`;
+        const cached = cachedMap.get(key);
+        if (cached) {
+          items.push(cached);
+        } else {
+          items.push({
+            date,
+            travelClass: cls,
+            status: "Check Live Seats",
+            isLiveCheck: true,
+          });
+        }
+      }
+    }
+    return items;
+  }, [cachedSeats, upcomingDates, classesAvailable, selectedClass]);
+
+  const searchUrl = `/?from=${encodeURIComponent(fromStation)}&to=${encodeURIComponent(toStation)}`;
+
+  const dateSearchUrl = (date: string) => {
+    return `/?from=${encodeURIComponent(fromStation)}&to=${encodeURIComponent(toStation)}&date=${encodeURIComponent(date)}`;
+  };
 
   return (
     <div className="space-y-6 sm:space-y-8">
@@ -183,91 +243,191 @@ export default function TrainConfirmedTicketsClient({
         </span>
       </nav>
 
-      {/* ── Main Hero Card ── */}
-      <header className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs">
-        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700 border border-blue-100 uppercase tracking-wider">
-            <Zap className="h-3.5 w-3.5 text-blue-600" />
-            Confirmed Ticket Finder
+      {/* ── Main Hero Card & Seat Availability Matrix ── */}
+      <header className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs space-y-6">
+        <div>
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700 border border-blue-100 uppercase tracking-wider">
+              <Zap className="h-3.5 w-3.5 text-blue-600" />
+              Confirmed Ticket Finder
+            </div>
+            {chartTimesSlug && (
+              <Link
+                href={`/chart-times/${chartTimesSlug}`}
+                className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline"
+              >
+                <Clock className="h-3.5 w-3.5" />
+                Chart Preparation Times →
+              </Link>
+            )}
           </div>
-          {chartTimesSlug && (
-            <Link
-              href={`/chart-times/${chartTimesSlug}`}
-              className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline"
-            >
-              <Clock className="h-3.5 w-3.5" />
-              Chart Preparation Times →
-            </Link>
+
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
+            Confirmed Tickets for {trainName}{" "}
+            <span className="text-blue-600 font-bold">({trainNumber})</span>
+          </h1>
+          <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
+            Live seat availability, post-charting vacant berths, and Smart Seats
+            split-booking options for travel from{" "}
+            <span className="font-semibold text-slate-800">{fromStation}</span> to{" "}
+            <span className="font-semibold text-slate-800">{toStation}</span>.
+          </p>
+        </div>
+
+        {/* ── Route Station Selector ("Between the routes") ── */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              Route:
+            </span>
+            {stations.length > 1 ? (
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <select
+                  value={fromStation}
+                  onChange={(e) => handleFromChange(e.target.value)}
+                  className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-800 shadow-2xs focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  aria-label="Select origin station"
+                >
+                  {stations.slice(0, -1).map((st) => (
+                    <option key={st.stationCode} value={st.stationCode}>
+                      {st.stationName} ({st.stationCode})
+                    </option>
+                  ))}
+                </select>
+                <ArrowRight className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+                <select
+                  value={toStation}
+                  onChange={(e) => setToStation(e.target.value)}
+                  className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-800 shadow-2xs focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  aria-label="Select destination station"
+                >
+                  {stations.slice(1).map((st) => (
+                    <option key={st.stationCode} value={st.stationCode}>
+                      {st.stationName} ({st.stationCode})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : (
+              <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
+                <span className="rounded bg-white px-2 py-0.5 border border-slate-200">
+                  {origin}
+                </span>
+                <ArrowRight className="h-3.5 w-3.5 text-slate-400" />
+                <span className="rounded bg-white px-2 py-0.5 border border-slate-200">
+                  {dest}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Class Filter Pills */}
+          {classesAvailable.length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => setSelectedClass("ALL")}
+                className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                  selectedClass === "ALL"
+                    ? "bg-blue-600 text-white shadow-xs"
+                    : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
+                }`}
+              >
+                All Classes
+              </button>
+              {classesAvailable.map((cls) => (
+                <button
+                  type="button"
+                  key={cls}
+                  onClick={() => setSelectedClass(cls)}
+                  className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                    selectedClass === cls
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
+                  }`}
+                >
+                  {cls}
+                </button>
+              ))}
+            </div>
           )}
         </div>
 
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
-          Confirmed Tickets for {trainName}{" "}
-          <span className="text-blue-600 font-bold">({trainNumber})</span>
-        </h1>
-        <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
-          Live seat availability, post-charting vacant berths, and Smart Seats
-          split-booking options for travel from{" "}
-          <span className="font-semibold text-slate-800">{origin}</span> to{" "}
-          <span className="font-semibold text-slate-800">{dest}</span>.
-        </p>
+        {/* ── Direct Seat Availability Matrix for Dates ── */}
+        <div>
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-blue-600" />
+              Seat Availability across Dates
+            </h2>
+            <span className="text-xs text-slate-500 font-medium">
+              {fromStation} → {toStation}
+            </span>
+          </div>
 
-        {/* Train & Route Summary Metrics */}
-        <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="rounded-lg bg-slate-50 p-3 border border-slate-100">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-              Origin
-            </span>
-            <div className="mt-0.5 font-bold text-slate-900 text-sm sm:text-base truncate">
-              {origin}
-            </div>
-            {departureTime && (
-              <span className="text-xs text-slate-500">
-                Departs {departureTime}
-              </span>
-            )}
-          </div>
-          <div className="rounded-lg bg-slate-50 p-3 border border-slate-100">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-              Destination
-            </span>
-            <div className="mt-0.5 font-bold text-slate-900 text-sm sm:text-base truncate">
-              {dest}
-            </div>
-            {arrivalTime && (
-              <span className="text-xs text-slate-500">
-                Arrives {arrivalTime}
-              </span>
-            )}
-          </div>
-          <div className="rounded-lg bg-slate-50 p-3 border border-slate-100">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-              Total Halts
-            </span>
-            <div className="mt-0.5 font-bold text-slate-900 text-sm sm:text-base">
-              {totalHalts > 0 ? `${totalHalts} stations` : "Direct route"}
-            </div>
-            <span className="text-xs text-slate-500">All scheduled stops</span>
-          </div>
-          <div className="rounded-lg bg-slate-50 p-3 border border-slate-100">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-              Distance
-            </span>
-            <div className="mt-0.5 font-bold text-slate-900 text-sm sm:text-base">
-              {totalDistance ? `${totalDistance} km` : "Full run"}
-            </div>
-            <span className="text-xs text-slate-500">Track distance</span>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {seatItems.map((seat, idx) => {
+              const details = getStatusDetails(seat.status);
+              const cardUrl = dateSearchUrl(seat.date);
+
+              return (
+                <div
+                  key={`${seat.date}-${seat.travelClass}-${idx}`}
+                  className={`rounded-xl border p-4 transition-all duration-150 ${details.cardBorder} shadow-2xs flex flex-col justify-between gap-3`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold text-slate-700">
+                      {formatSeatDateLabel(seat.date)}
+                    </span>
+                    <span className="rounded-md bg-slate-100 border border-slate-200 px-2 py-0.5 text-xs font-bold text-slate-800">
+                      Class {seat.travelClass}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-2 pt-1 border-t border-slate-100">
+                    <div>
+                      <div
+                        className={`text-sm sm:text-base font-extrabold ${details.statusColor}`}
+                      >
+                        {seat.status}
+                      </div>
+                      <span className="text-[11px] text-slate-500">
+                        {details.label}
+                        {seat.fare != null && seat.fare > 0
+                          ? ` • ₹${seat.fare.toLocaleString("en-IN")}`
+                          : ""}
+                      </span>
+                    </div>
+
+                    {details.isConfirmed ? (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
+                        <CheckCircle2 className="h-3.5 w-3.5" />
+                        Confirmed
+                      </span>
+                    ) : (
+                      <Link
+                        href={cardUrl}
+                        className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 transition active:scale-[0.99]"
+                      >
+                        Smart Seat
+                        <ArrowRight className="h-3 w-3" />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Direct Action Buttons */}
-        <div className="mt-6 flex flex-wrap items-center gap-3 pt-5 border-t border-slate-100">
+        {/* ── Direct Action Buttons ── */}
+        <div className="flex flex-wrap items-center gap-3 pt-5 border-t border-slate-100">
           <Link
             href={searchUrl}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-700 transition active:scale-[0.99]"
           >
             <Search className="h-4 w-4" />
-            Search Smart Seats on LastBerth
+            Search Smart Seats ({fromStation} → {toStation})
           </Link>
           <Link
             href="/chart-vacancy"
@@ -287,148 +447,6 @@ export default function TrainConfirmedTicketsClient({
           )}
         </div>
       </header>
-
-      {/* ── Seat Availability Section ── */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
-          <div>
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Calendar className="h-5 w-5 text-blue-600" />
-              Seat Availability Matrix
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-              Live and cached availability for {trainName} ({trainNumber})
-              between {origin} and {dest}.
-            </p>
-          </div>
-
-          {/* Class filter pills */}
-          {classesAvailable.length > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5">
-              <button
-                type="button"
-                onClick={() => setSelectedClass("ALL")}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-                  selectedClass === "ALL"
-                    ? "bg-blue-600 text-white shadow-xs"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                }`}
-              >
-                All Classes
-              </button>
-              {classesAvailable.map((cls) => (
-                <button
-                  type="button"
-                  key={cls}
-                  onClick={() => setSelectedClass(cls)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-                    selectedClass === cls
-                      ? "bg-blue-600 text-white shadow-xs"
-                      : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                  }`}
-                >
-                  {cls}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Availability Cards or Empty State */}
-        <div className="mt-5">
-          {filteredSeats.length === 0 ? (
-            <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-6 sm:p-8 text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600 mb-3">
-                <Sparkles className="h-6 w-6" />
-              </div>
-              <h3 className="text-base sm:text-lg font-bold text-slate-900">
-                Direct Seats Often Enter Waitlist or Regret
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 mt-1.5 max-w-lg mx-auto leading-relaxed">
-                Direct tickets on {trainName} frequently sell out fast.
-                LastBerth searches contiguous intermediate segments on this
-                exact train to find confirmed seats with no coach changes.
-              </p>
-              {classesAvailable.length > 0 && (
-                <div className="mt-3 flex flex-wrap justify-center gap-2 text-xs text-slate-600">
-                  <span className="font-semibold text-slate-700">
-                    Classes on this train:
-                  </span>
-                  {classesAvailable.map((c) => (
-                    <span
-                      key={c}
-                      className="rounded bg-white border border-slate-200 px-2 py-0.5 font-bold text-slate-800"
-                    >
-                      {c}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <div className="mt-5">
-                <Link
-                  href={searchUrl}
-                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-blue-700 transition active:scale-[0.99]"
-                >
-                  <Search className="h-4 w-4" />
-                  Search Smart Seats for {origin} → {dest}
-                </Link>
-              </div>
-            </div>
-          ) : (
-            <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredSeats.map((seat, idx) => {
-                const details = getStatusDetails(seat.status);
-                return (
-                  <div
-                    key={idx}
-                    className={`rounded-xl border p-4 transition-all duration-150 ${details.cardBorder} shadow-2xs`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-slate-500">
-                        {formatSeatDate(seat.date)}
-                      </span>
-                      <span className="rounded-md bg-slate-100 border border-slate-200 px-2 py-0.5 text-xs font-bold text-slate-800">
-                        Class {seat.travelClass}
-                      </span>
-                    </div>
-
-                    <div className="mt-3 flex items-center justify-between gap-2">
-                      <div>
-                        <div
-                          className={`text-base font-extrabold ${details.statusColor}`}
-                        >
-                          {seat.status}
-                        </div>
-                        <span className="text-[11px] text-slate-500">
-                          {details.label}
-                          {seat.fare != null && seat.fare > 0
-                            ? ` • ₹${seat.fare.toLocaleString("en-IN")}`
-                            : ""}
-                        </span>
-                      </div>
-
-                      {details.isConfirmed ? (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
-                          <CheckCircle2 className="h-3.5 w-3.5" />
-                          Confirmed
-                        </span>
-                      ) : (
-                        <Link
-                          href={searchUrl}
-                          className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 transition"
-                        >
-                          Smart Seat
-                          <ArrowRight className="h-3 w-3" />
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* ── Guaranteed Confirmation Guide Card ── */}
       <section className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs space-y-5">
@@ -546,13 +564,17 @@ export default function TrainConfirmedTicketsClient({
                       </td>
                       <td className="p-3 text-right">
                         {!isDestination && (
-                          <Link
-                            href={`/?from=${encodeURIComponent(st.stationCode)}&to=${encodeURIComponent(dest)}`}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              handleFromChange(st.stationCode);
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }}
                             className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline"
                           >
-                            Search from here
+                            Check seats from here
                             <ArrowRight className="h-3 w-3" />
-                          </Link>
+                          </button>
                         )}
                       </td>
                     </tr>
