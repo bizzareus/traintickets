@@ -859,6 +859,10 @@ export class IrctcService {
       if (from) params.from = from;
       if (to) params.to = to;
       if (date) params.date = date;
+      const t0 = Date.now();
+      this.logger.log(
+        `[irctc/getTrainClasses] railcore_request_start train=${num} from=${from ?? '-'} to=${to ?? '-'} date=${date ?? '-'}`,
+      );
       const res = await railcoreClassesClient.get<unknown>(
         RAILCORE_CLASSES_URL,
         {
@@ -895,10 +899,17 @@ export class IrctcService {
           })
           .catch(() => undefined);
       }
+      this.logger.log(
+        `[irctc/getTrainClasses] railcore_ok train=${num} ms=${Date.now() - t0} status=${res.status} classes=${classes.join(',') || '-'}`,
+      );
       return classes;
     } catch (err) {
+      const status =
+        isAxiosError(err) && err.response?.status
+          ? ` status=${err.response.status}`
+          : '';
       this.logger.warn(
-        `[irctc/getTrainClasses] Railcore failed for ${num}: ${err instanceof Error ? err.message : String(err)}`,
+        `[irctc/getTrainClasses] Railcore failed for ${num}${status}: ${err instanceof Error ? err.message : String(err)}`,
       );
       return [];
     }

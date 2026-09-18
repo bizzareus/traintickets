@@ -464,6 +464,11 @@ export interface PnrStatusResponse {
 @Injectable()
 export class BookingV2Service {
   private readonly logger = new Logger(BookingV2Service.name);
+  /** In-flight alternate-paths computations by cache key (single-flight). */
+  private readonly altPathsInflight = new Map<
+    string,
+    Promise<FindAlternatePathsResult>
+  >();
 
   constructor(
     private readonly irctc: IrctcService,
@@ -1192,7 +1197,26 @@ export class BookingV2Service {
       this.logger.log(`[alt-paths-cache] MISS key=${key}`);
     }
 
-    const result = await this.findAlternatePaths(input, onProgress);
+    // Single-flight: concurrent requests for the same uncached key share one
+    // computation instead of each running the full probe fan-out. Without
+    // this, a burst of identical misses (cron + user traffic on the same
+    // trains) multiplies DB queries and can saturate a small shared pool.
+    if (key && !input.forceRefresh) {
+      const inflight = this.altPathsInflight.get(key);
+      if (inflight) {
+        this.logger.log(`[alt-paths-cache] JOIN key=${key}`);
+        return { result: await inflight, cached: false };
+      }
+    }
+
+    const computation = this.findAlternatePaths(input, onProgress);
+    if (key && !input.forceRefresh) this.altPathsInflight.set(key, computation);
+    let result: FindAlternatePathsResult;
+    try {
+      result = await computation;
+    } finally {
+      if (key && !input.forceRefresh) this.altPathsInflight.delete(key);
+    }
 
     if (key) {
       // Trim the (potentially large) debug trace before persisting.
@@ -1913,9 +1937,20 @@ export class BookingV2Service {
     quota: string,
     segmentCache?: CacheService,
   ): Promise<MultiClassProbeResult> {
-    const perClass = await Promise.all(
-      classCodes.map((c) =>
-        this.fetchSegmentAvailability(
+    // Bounded like the OD fan-out above: each class fetch is a Postgres
+    // cache read + upstream HTTP + Postgres upsert, so an unbounded
+    // Promise.all here fans out to ~9 classes × 2 DB queries per probe,
+    // ~54 concurrent DB queries per hop-wave per request — enough to
+    // saturate a small shared pool (Supabase pooler) under load.
+    const perClass: SegmentProbeRow[] = classCodes.map(() => ({
+      day: null,
+      fare: null,
+    }));
+    await this.mapWithConcurrency(
+      [...classCodes],
+      ALT_PATH_PROBE_CONCURRENCY,
+      async (c, i) => {
+        perClass[i] = await this.fetchSegmentAvailability(
           trainNo,
           fromStn,
           toStn,
@@ -1923,8 +1958,8 @@ export class BookingV2Service {
           c,
           quota,
           segmentCache,
-        ),
-      ),
+        );
+      },
     );
     const bestConfirmedClassIndex = this.pickBestConfirmedClassIndex(perClass);
     const displayRow = perClass.find((p) => p.day)?.day ?? null;
