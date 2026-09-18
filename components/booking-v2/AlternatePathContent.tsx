@@ -12,9 +12,8 @@ import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
-import { isAdminUser } from "@/lib/admin";
+import { isAdminUser as checkIsAdminUser } from "@/lib/admin";
 import {
-  chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
@@ -123,14 +122,9 @@ function AlternatePathProgressFeed({
   from: string;
   to: string;
 }) {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
+  const progress = useMemo(() => {
     const hasDone = events.some((e) => e.type === "done");
-    if (hasDone) {
-      setProgress(100);
-      return;
-    }
+    if (hasDone) return 100;
 
     let p = 0;
     for (const ev of events) {
@@ -141,7 +135,7 @@ function AlternatePathProgressFeed({
       }
     }
     // Cap at 99% until done
-    setProgress(Math.min(99, Math.floor(p)));
+    return Math.min(99, Math.floor(p));
   }, [events]);
   const displayEvents = useMemo(() => {
     // Show only a single, high-level status line while loading. The +/-3-station
@@ -278,7 +272,7 @@ function CompactLegChartCta({
   }, [trainNumber, legFrom, legTo, journeyDate]);
 
   useEffect(() => {
-    setAdminFree(isAdminUser());
+    setAdminFree(checkIsAdminUser());
   }, []);
 
   // Fetch chart preparation time

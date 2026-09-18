@@ -4,6 +4,7 @@
  * Usage:
  *   npx tsx scripts/tripmgt-booking-cli.ts [--headless=false] [--url=...] [--username=...] [--password=...]
  */
+import 'dotenv/config';
 import { chromium } from 'playwright';
 import * as path from 'node:path';
 import * as fs from 'node:fs';
@@ -46,17 +47,35 @@ async function main() {
   });
 
   if (customCookies) {
-    const cookieObjects = customCookies.split(';').map((c) => {
-      const [name, ...val] = c.trim().split('=');
-      return {
+    const rawPairs = customCookies
+      .split(';')
+      .map((c) => c.trim())
+      .filter(Boolean);
+    const cookieObjects: Array<{
+      name: string;
+      value: string;
+      domain: string;
+      path: string;
+    }> = [];
+    for (const pair of rawPairs) {
+      const eqIdx = pair.indexOf('=');
+      if (eqIdx === -1) continue;
+      const name = pair.substring(0, eqIdx).trim();
+      const value = pair.substring(eqIdx + 1).trim();
+      if (!name) continue;
+      cookieObjects.push({
         name,
-        value: val.join('='),
-        domain: 'tripmgt.in',
+        value,
+        domain: '.tripmgt.in',
         path: '/',
-      };
-    });
-    await context.addCookies(cookieObjects);
-    console.log(`[TripMgt CLI] Injected session cookies.`);
+      });
+    }
+    if (cookieObjects.length > 0) {
+      await context.addCookies(cookieObjects);
+      console.log(
+        `[TripMgt CLI] Injected ${cookieObjects.length} session cookies.`,
+      );
+    }
   }
 
   const outDir = path.resolve(process.cwd(), 'storage', 'cli-debug');
@@ -136,62 +155,94 @@ async function main() {
       }
     }
 
-    // Step 2: Check for Ticket Reservation Form (Image 2)
-    console.log(
-      '[TripMgt CLI] Step 2: Inspecting Ticket Reservation form fields...',
-    );
+    // Check for "I Accept" rules checkbox
+    const acceptCheckbox = page.locator('#chkIAgree, input[type="checkbox"]').first();
+    if ((await acceptCheckbox.count()) > 0) {
+      console.log('[TripMgt CLI] Found Rules & Regulations acceptance checkbox. Checking it...');
+      await acceptCheckbox.check();
+      await page.waitForTimeout(1000);
+      const afterAcceptSs = path.join(outDir, '02_after_accept.png');
+      await page.screenshot({ path: afterAcceptSs, fullPage: true });
+      console.log(`[TripMgt CLI] Captured after-accept snapshot: ${afterAcceptSs}`);
+    }
 
-    // Passenger input fields
-    const nameInputs = page.locator(
-      'input[id*="txtPassName"], input[name*="txtPassName"], table tr input[type="text"]',
-    );
-    const count = await nameInputs.count();
-    console.log(
-      `[TripMgt CLI] Detected ${count} passenger input candidates on page.`,
-    );
+    // Step 2: Open Book Tab
+    console.log('[TripMgt CLI] Step 2: Navigating to Book tab...');
+    const bookTab = page.locator('#menu1, #menu2, a:has-text("Book")').first();
+    if ((await bookTab.count()) > 0) {
+      await bookTab.click();
+      await page.waitForTimeout(1500);
+    } else {
+      await page.evaluate(() => (window as any).trainBook?.UpdateUI(1));
+      await page.waitForTimeout(1500);
+    }
 
-    if (count > 0) {
-      console.log(
-        '[TripMgt CLI] Filling sample passenger: Rahul Sharma, Age 32, Male, Lower Berth...',
-      );
-      await nameInputs.first().fill('Rahul Sharma');
+    const bookTabSs = path.join(outDir, '03_book_tab.png');
+    await page.screenshot({ path: bookTabSs, fullPage: true });
+    console.log(`[TripMgt CLI] Captured Book tab snapshot: ${bookTabSs}`);
 
-      const ageInput = page
-        .locator('input[id*="txtAge"], input[name*="txtAge"]')
-        .first();
-      if ((await ageInput.count()) > 0) {
-        await ageInput.fill('32');
-      }
+    // Step 3: Fill Passenger Details Form
+    console.log('[TripMgt CLI] Step 3: Filling Reservation Form fields...');
 
-      const sexSelect = page
-        .locator('select[id*="ddlSex"], select[name*="ddlSex"]')
-        .first();
-      if ((await sexSelect.count()) > 0) {
-        await sexSelect.selectOption({ label: 'Male' }).catch(() => undefined);
-      }
+    // Mobile & Name
+    const mobileInput = page.locator('#txtCustomerMobile');
+    if ((await mobileInput.count()) > 0) {
+      await mobileInput.fill('9876543210');
+    }
+    const nameInput = page.locator('#txtCustomerName');
+    if ((await nameInput.count()) > 0) {
+      await nameInput.fill('Rahul Sharma');
+    }
 
-      const berthSelect = page
-        .locator('select[id*="ddlBerth"], select[name*="ddlBerth"]')
-        .first();
-      if ((await berthSelect.count()) > 0) {
-        await berthSelect
-          .selectOption({ label: 'Lower' })
-          .catch(() => undefined);
-      }
+    // Passenger 1
+    const pName0 = page.locator('#pName0, input[id*="txtPassName_1"]');
+    if ((await pName0.count()) > 0) {
+      await pName0.fill('Rahul Sharma');
+      console.log('[TripMgt CLI] Filled Passenger Name: Rahul Sharma');
+    }
 
-      const autoUpgrad = page
-        .locator(
-          'input[type="checkbox"][id*="AutoUpgrad"], input[name*="AutoUpgrad"]',
-        )
-        .first();
-      if ((await autoUpgrad.count()) > 0) {
-        await autoUpgrad.check().catch(() => undefined);
-        console.log('[TripMgt CLI] Checked "Consider for Auto Upgradation".');
-      }
+    const pAge0 = page.locator('#pAge0, input[id*="txtAge_1"]');
+    if ((await pAge0.count()) > 0) {
+      await pAge0.fill('32');
+      console.log('[TripMgt CLI] Filled Passenger Age: 32');
+    }
 
-      const filledSsPath = path.join(outDir, '02_reservation_form_filled.png');
-      await page.screenshot({ path: filledSsPath, fullPage: true });
-      console.log(`[TripMgt CLI] Saved filled form snapshot: ${filledSsPath}`);
+    const pGender0 = page.locator('#pGender0, select[id*="ddlSex_1"]');
+    if ((await pGender0.count()) > 0) {
+      await pGender0.selectOption({ value: 'M' }).catch(() => pGender0.selectOption({ index: 0 }));
+      console.log('[TripMgt CLI] Selected Gender: Male');
+    }
+
+    const pBerth0 = page.locator('#pBerth0, select[id*="ddlBerth_1"]');
+    if ((await pBerth0.count()) > 0) {
+      await pBerth0.selectOption({ index: 1 }).catch(() => undefined);
+      console.log('[TripMgt CLI] Selected Berth: Lower');
+    }
+
+    // Auto Upgradation & Insurance
+    const autoUp = page.locator('#chkConsiderAutoUpgrade');
+    if ((await autoUp.count()) > 0) {
+      await autoUp.check().catch(() => undefined);
+    }
+
+    const insNo = page.locator('#insurance0');
+    if ((await insNo.count()) > 0) {
+      await insNo.check().catch(() => undefined);
+    }
+
+    const filledSs = path.join(outDir, '04_filled_reservation.png');
+    await page.screenshot({ path: filledSs, fullPage: true });
+    console.log(`[TripMgt CLI] Captured filled reservation snapshot: ${filledSs}`);
+
+    // Step 4: Click Next
+    console.log('[TripMgt CLI] Step 4: Clicking Next button...');
+    const nextBtn = page.locator('input[value="Next"], input.btn:has-text("Next")').first();
+    if ((await nextBtn.count()) > 0) {
+      await nextBtn.click();
+      await page.waitForTimeout(3000);
+      const afterNextSs = path.join(outDir, '05_after_next.png');
+      await page.screenshot({ path: afterNextSs, fullPage: true });
+      console.log(`[TripMgt CLI] Captured after-next snapshot: ${afterNextSs}`);
     }
 
     console.log('[TripMgt CLI] Automation test run completed successfully.');

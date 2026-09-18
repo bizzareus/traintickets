@@ -121,17 +121,36 @@ export class TripmgtBookingService {
       // Inject custom session cookies if provided
       const rawCookies = this.config.get<string>('TRIPMGT_COOKIES')?.trim();
       if (rawCookies) {
-        const cookieObjects = rawCookies.split(';').map((c) => {
-          const [name, ...val] = c.trim().split('=');
-          return {
+        const rawPairs = rawCookies
+          .split(';')
+          .map((c) => c.trim())
+          .filter(Boolean);
+        const cookieObjects: Array<{
+          name: string;
+          value: string;
+          domain: string;
+          path: string;
+        }> = [];
+        for (const pair of rawPairs) {
+          const eqIdx = pair.indexOf('=');
+          if (eqIdx === -1) continue;
+          const name = pair.substring(0, eqIdx).trim();
+          const value = pair.substring(eqIdx + 1).trim();
+          if (!name) continue;
+          cookieObjects.push({
             name,
-            value: val.join('='),
-            domain: 'tripmgt.in',
+            value,
+            domain: '.tripmgt.in',
             path: '/',
-          };
-        });
-        await context.addCookies(cookieObjects);
-        await addLog('COOKIES', 'Injected configured TripMgt session cookies');
+          });
+        }
+        if (cookieObjects.length > 0) {
+          await context.addCookies(cookieObjects);
+          await addLog(
+            'COOKIES',
+            `Injected ${cookieObjects.length} TripMgt session cookies`,
+          );
+        }
       }
 
       const page = await context.newPage();
@@ -151,23 +170,39 @@ export class TripmgtBookingService {
         `Loaded URL: ${currentUrl} (Status: ${response?.status() ?? 'unknown'})`,
       );
 
-      // Check if redirected to login page (session expired or unauthenticated)
-      if (
+      // Check if redirected to homepage or login page (session expired or unauthenticated)
+      const isUnauthenticated =
+        currentUrl === 'https://tripmgt.in/' ||
+        currentUrl === 'https://tripmgt.in' ||
         currentUrl.includes('/login.aspx') ||
-        (await page.locator('text=Sign in to continue').count()) > 0
-      ) {
+        (await page.locator('a[href*="login.aspx"]').count()) > 0 ||
+        (await page.locator('text=Sign in to continue').count()) > 0;
+
+      if (isUnauthenticated) {
         await addLog(
           'AUTH_CHECK',
-          'Portal redirected to login page. Checking credentials...',
+          'Portal redirected to unauthenticated landing page. Checking credentials...',
         );
         const user = this.config.get<string>('TRIPMGT_USERNAME')?.trim();
         const pass = this.config.get<string>('TRIPMGT_PASSWORD')?.trim();
 
         if (user && pass) {
           await addLog('AUTH_LOGIN', `Attempting login as user: ${user}`);
+          if (!page.url().includes('/login.aspx')) {
+            const loginLink = page.locator('a[href*="login.aspx"]').first();
+            if ((await loginLink.count()) > 0) {
+              await loginLink.click();
+              await page.waitForLoadState('domcontentloaded');
+            } else {
+              await page.goto('https://tripmgt.in/login.aspx', {
+                waitUntil: 'domcontentloaded',
+              });
+            }
+          }
+
           const userInput = page
             .locator(
-              'input[type="text"], input[name*="user"], input[id*="user"]',
+              'input[type="text"], input[name*="user" i], input[id*="user" i]',
             )
             .first();
           const passInput = page.locator('input[type="password"]').first();
@@ -188,7 +223,7 @@ export class TripmgtBookingService {
           screenshotPaths.push(ssPath);
           await addLog(
             'AUTH_REQUIRED',
-            'TripMgt requires active agent login session. URL session expired. Ready for agent credentials / cookies.',
+            'TripMgt requires active agent login session. Set TRIPMGT_USERNAME and TRIPMGT_PASSWORD in backend/.env.',
           );
         }
       }

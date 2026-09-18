@@ -67,3 +67,6 @@ next-env.d.ts
 *.tfvars
 !*.example.tfvars
 infra/terraform/aws/build/
+.gstack/
+storage/
+backend/storage/
