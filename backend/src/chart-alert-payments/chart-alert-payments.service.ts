@@ -249,10 +249,6 @@ export class ChartAlertPaymentsService {
           referenceId: record.id,
           redirectUri: `chart-alert/payment-complete?ref=${record.id}`,
           description: `Chart alert ${input.trainNumber} ${input.fromStationCode}->${input.toStationCode || 'ANY'} ${input.journeyDate}`,
-          customer: {
-            email: input.email?.trim() || undefined,
-            contact: input.mobile?.trim() || undefined,
-          },
         },
         { headers: this.authHeaders() },
       );
@@ -302,9 +298,16 @@ export class ChartAlertPaymentsService {
         where: { id: record.id },
         data: { status: 'FAILED' },
       });
-      const msg = err instanceof Error ? err.message : String(err);
+      const axiosErr = err as {
+        response?: { status?: number; data?: unknown };
+        message?: string;
+      };
+      const responseData = axiosErr.response?.data
+        ? JSON.stringify(axiosErr.response.data)
+        : '';
+      const msg = axiosErr.message || String(err);
       this.logger.error(
-        `Muzobox create-link failed for ref=${record.id} amount=${amount}: ${msg}`,
+        `Muzobox create-link failed for ref=${record.id} amount=${amount} status=${axiosErr.response?.status ?? 'n/a'}: ${msg} ${responseData}`,
       );
       throw new ServiceUnavailableException(
         'Payment system is currently unavailable. Please try again later.',

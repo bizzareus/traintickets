@@ -136,9 +136,12 @@ describe('ChartAlertPaymentsService', () => {
       expect(out.upiIntent).toBeUndefined();
     });
 
-    it('throws 503 without leaving a usable link when Razorpay is down', async () => {
+    it('throws 503 without leaving a usable link when payment systems fail', async () => {
       prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-3' });
       razorpay.createOrder.mockRejectedValue(new Error('razorpay down'));
+      (service as any).muzoboxClient.post = jest
+        .fn()
+        .mockRejectedValue(new Error('muzobox down'));
 
       await expect(service.createPaymentLink({ ...baseInput })).rejects.toThrow(
         ServiceUnavailableException,
@@ -312,10 +315,7 @@ describe('ChartAlertPaymentsService', () => {
       prisma.chartAlertPayment.update.mockResolvedValue({});
       journeyTask.queueJourneyMonitoring.mockResolvedValue(true);
 
-      const out = await service.handleCallback(
-        Buffer.from(raw),
-        sign(raw),
-      );
+      const out = await service.handleCallback(Buffer.from(raw), sign(raw));
 
       expect(out).toEqual({ received: true });
       expect(journeyTask.queueJourneyMonitoring).toHaveBeenCalledTimes(1);
@@ -334,10 +334,7 @@ describe('ChartAlertPaymentsService', () => {
       const raw = JSON.stringify(authorizedEvent);
       prisma.chartAlertPayment.findUnique.mockResolvedValue(null);
 
-      const out = await service.handleCallback(
-        Buffer.from(raw),
-        sign(raw),
-      );
+      const out = await service.handleCallback(Buffer.from(raw), sign(raw));
 
       expect(out).toEqual({ received: true });
       expect(journeyTask.queueJourneyMonitoring).not.toHaveBeenCalled();
@@ -355,9 +352,9 @@ describe('ChartAlertPaymentsService', () => {
     it.each(['ANY', 'SL', '3E', '2S', 'CC', 'EC', 'FC', '', undefined, null])(
       'charges the standard tier (₹10) for %s',
       (classCode) => {
-        expect(
-          chartAlertPriceForClass(classCode as string | undefined),
-        ).toBe(10);
+        expect(chartAlertPriceForClass(classCode as string | undefined)).toBe(
+          10,
+        );
       },
     );
 

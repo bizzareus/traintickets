@@ -593,9 +593,6 @@ function CompactLegChartCta({
             `Get notified when new seats open on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
           )}
         </p>
-        <p className="mb-1.5 text-[11px] text-blue-800">
-          Get 100% refund if you didn&apos;t find full journey tickets. One-time charge of ₹{alertPrice}.
-        </p>
         <div className="flex flex-col gap-1.5 sm:flex-row">
           <input
             type="email"

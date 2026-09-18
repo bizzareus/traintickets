@@ -103,7 +103,9 @@ export class ChartAlertRefundsService {
       return { attempted: false, outcome: 'skipped' };
     }
     if (!this.razorpay.isConfigured) {
-      this.logger.warn(`Refund skipped for jid=${jid}: Razorpay not configured`);
+      this.logger.warn(
+        `Refund skipped for jid=${jid}: Razorpay not configured`,
+      );
       return { attempted: false, outcome: 'skipped' };
     }
 
