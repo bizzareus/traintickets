@@ -35,9 +35,27 @@ async function main() {
   console.log(`[TripMgt CLI] Target URL    : ${targetUrl}`);
   if (customUser) console.log(`[TripMgt CLI] Agent User   : ${customUser}`);
 
+  const detectedExecutablePath =
+    process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ||
+    (fs.existsSync('/usr/bin/chromium-browser')
+      ? '/usr/bin/chromium-browser'
+      : undefined) ||
+    (fs.existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined) ||
+    (fs.existsSync('/usr/bin/google-chrome')
+      ? '/usr/bin/google-chrome'
+      : undefined);
+
   const browser = await chromium.launch({
     headless: isHeadless,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    ...(detectedExecutablePath
+      ? { executablePath: detectedExecutablePath }
+      : {}),
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+    ],
   });
 
   const context = await browser.newContext({

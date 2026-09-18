@@ -103,12 +103,29 @@ export class TripmgtBookingService {
         `Initiating automated booking on TripMgt for train ${params.trainNumber}`,
       );
 
+      const configuredExecutablePath = this.config.get<string>(
+        'PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH',
+      );
+      const detectedExecutablePath =
+        configuredExecutablePath ||
+        (fs.existsSync('/usr/bin/chromium-browser')
+          ? '/usr/bin/chromium-browser'
+          : undefined) ||
+        (fs.existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined) ||
+        (fs.existsSync('/usr/bin/google-chrome')
+          ? '/usr/bin/google-chrome'
+          : undefined);
+
       browser = await chromium.launch({
         headless: this.isHeadless,
+        ...(detectedExecutablePath
+          ? { executablePath: detectedExecutablePath }
+          : {}),
         args: [
           '--no-sandbox',
           '--disable-setuid-sandbox',
           '--disable-dev-shm-usage',
+          '--disable-gpu',
         ],
       });
 
