@@ -16,6 +16,11 @@ const rapidApiScheduleClient = createRetryingAxiosClient({
   retries: 2,
   retryTimeouts: true,
 });
+const railcoreClassesClient = createRetryingAxiosClient({
+  serviceName: 'railcore/classes',
+  retries: 2,
+  retryTimeouts: true,
+});
 
 const CONFIRMTKT_SCHEDULE_URL =
   'https://api.confirmtkt.com/api/trains/schedulewithintermediatestn';
@@ -40,12 +45,11 @@ const RAPIDAPI_SEARCH_STATION_URL =
   'https://irctc-indian-railway-pnr-status.p.rapidapi.com/autocomplete/station';
 const RAPIDAPI_SEARCH_STATION_HOST =
   'irctc-indian-railway-pnr-status.p.rapidapi.com';
-const RAPIDAPI_TRAIN_CLASSES_URL =
-  'https://irctc1.p.rapidapi.com/api/v1/getTrainClasses';
+const RAILCORE_CLASSES_URL = 'https://ir.railcore.tech/v1/availability/classes';
 const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
 const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
 const RAPIDAPI_SEARCH_STATION_TIMEOUT_MS = 8_000;
-const RAPIDAPI_TRAIN_CLASSES_TIMEOUT_MS = 8_000;
+const RAILCORE_CLASSES_TIMEOUT_MS = 8_000;
 /**
  * How long a cached trainComposition JSON stays "fresh". Within this window the
  * coach-list endpoint serves the cached copy without hitting IRCTC; past it (or
@@ -813,14 +817,22 @@ export class IrctcService {
     }
   }
 
+  private railcoreKey(): string | null {
+    const key = process.env.RAILCORE_API_KEY?.trim();
+    return key ? key : null;
+  }
+
   /**
    * Travel classes a train offers (e.g. ["SL","3A","2A","1A"]). DB-first
-   * (TrainScheduleCache.availableClasses); on a miss, falls back to RapidAPI
-   * getTrainClasses and persists the result. Used to probe only real classes in
-   * alternate-paths instead of every possible class. Never throws — returns []
-   * when unknown so the caller falls back to the full class list.
+   * (TrainScheduleCache.availableClasses); on a miss, falls back to Railcore
+   * availability/classes and persists the result. Used to probe only real
+   * classes in alternate-paths instead of every possible class. Never throws —
+   * returns [] when unknown so the caller falls back to the full class list.
    */
-  async getTrainClasses(trainNo: string): Promise<string[]> {
+  async getTrainClasses(
+    trainNo: string,
+    opts?: { from?: string; to?: string; date?: string },
+  ): Promise<string[]> {
     const num = String(trainNo).trim();
     if (!num) return [];
 
@@ -834,32 +846,42 @@ export class IrctcService {
         return row.availableClasses;
       }
     } catch {
-      // Column may not exist yet (pre-migration) — fall through to RapidAPI.
+      // Column may not exist yet (pre-migration) — fall through to Railcore.
     }
 
-    const key = this.rapidApiKey();
+    const key = this.railcoreKey();
     if (!key) return [];
     try {
-      const res = await rapidApiScheduleClient.get<unknown>(
-        RAPIDAPI_TRAIN_CLASSES_URL,
+      const params: Record<string, string> = { train_number: num };
+      const from = opts?.from?.trim().toUpperCase();
+      const to = opts?.to?.trim().toUpperCase();
+      const date = this.toRailcoreDate(opts?.date);
+      if (from) params.from = from;
+      if (to) params.to = to;
+      if (date) params.date = date;
+      const res = await railcoreClassesClient.get<unknown>(
+        RAILCORE_CLASSES_URL,
         {
           headers: {
-            'Content-Type': 'application/json',
-            'X-Rapidapi-Host': 'irctc1.p.rapidapi.com',
-            'X-Rapidapi-Key': key,
+            Accept: 'application/json',
+            'x-railcore-key': key,
           },
-          params: { trainNo: num },
-          timeout: RAPIDAPI_TRAIN_CLASSES_TIMEOUT_MS,
+          params,
+          timeout: RAILCORE_CLASSES_TIMEOUT_MS,
         },
       );
       const root =
         res.data && typeof res.data === 'object' && !Array.isArray(res.data)
           ? (res.data as Record<string, unknown>)
           : {};
-      const data = Array.isArray(root.data) ? root.data : [];
+      const data =
+        root.data && typeof root.data === 'object' && !Array.isArray(root.data)
+          ? (root.data as Record<string, unknown>)
+          : {};
+      const rawClasses = Array.isArray(data.classes) ? data.classes : [];
       const classes = [
         ...new Set(
-          data
+          rawClasses
             .map((c) => strFromUnknown(c).trim().toUpperCase())
             .filter(Boolean),
         ),
@@ -876,10 +898,18 @@ export class IrctcService {
       return classes;
     } catch (err) {
       this.logger.warn(
-        `[irctc/getTrainClasses] RapidAPI failed for ${num}: ${err instanceof Error ? err.message : String(err)}`,
+        `[irctc/getTrainClasses] Railcore failed for ${num}: ${err instanceof Error ? err.message : String(err)}`,
       );
       return [];
     }
+  }
+
+  /** Normalize caller dates (DD-MM-YYYY or YYYY-MM-DD) to Railcore YYYY-MM-DD. */
+  private toRailcoreDate(dateInput?: string): string | null {
+    const raw = dateInput?.trim();
+    if (!raw) return null;
+    const m = moment(raw, ['YYYY-MM-DD', 'DD-MM-YYYY', 'YYYYMMDD'], true);
+    return m.isValid() ? m.format('YYYY-MM-DD') : null;
   }
 
   private async fetchScheduleFromRapidApi(

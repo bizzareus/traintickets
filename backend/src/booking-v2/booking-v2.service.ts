@@ -1220,11 +1220,15 @@ export class BookingV2Service {
     const sharedProbeCache = new Map<string, MultiClassProbeResult>();
 
     // Probe only the classes the train actually offers. When the caller didn't
-    // supply avlClasses, resolve them once (DB-first, RapidAPI fallback) so we
+    // supply avlClasses, resolve them once (DB-first, Railcore fallback) so we
     // don't fan out across every possible class — cuts the per-request probe
     // count ~2-4x. Falls back to the full class list only if classes are unknown.
     if (!input.avlClasses || input.avlClasses.length === 0) {
-      const trainClasses = await this.irctc.getTrainClasses(input.trainNumber);
+      const trainClasses = await this.irctc.getTrainClasses(input.trainNumber, {
+        from: input.from,
+        to: input.to,
+        date: input.date,
+      });
       if (trainClasses.length > 0) {
         input = { ...input, avlClasses: trainClasses };
       }
