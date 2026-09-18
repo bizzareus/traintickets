@@ -10,7 +10,7 @@ import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 import { isAdminUser } from "@/lib/admin";
 import {
-  CHART_ALERT_PRICE_RUPEES,
+  chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
@@ -44,6 +44,7 @@ export function TrainChartAlertSection({
 }: TrainChartAlertSectionProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedClass, setSelectedClass] = useState<string>("3A");
+  const alertPrice = chartAlertPriceForClass(selectedClass);
   const { email, setEmail, mobile, setMobile, persistContact } =
     useContactFields();
   const [loading, setLoading] = useState(false);
@@ -230,7 +231,7 @@ export function TrainChartAlertSection({
               </span>
               <span className="inline-flex items-center gap-0.5 rounded-full bg-blue-100/70 px-1.5 py-0.2 text-[9px] font-bold text-blue-700">
                 <Sparkles className="h-2.5 w-2.5 text-blue-600" />₹
-                {CHART_ALERT_PRICE_RUPEES}
+                {alertPrice}
               </span>
             </div>
             <p className="mt-2 text-xs text-slate-600 leading-relaxed">
@@ -384,7 +385,7 @@ export function TrainChartAlertSection({
                         <BellRing className="h-4 w-4" />
                         {adminFree
                           ? "Set alert free (admin)"
-                          : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & subscribe`}
+                          : `Pay ₹${alertPrice} & subscribe`}
                       </>
                     )}
                   </button>

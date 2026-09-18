@@ -12,7 +12,22 @@ import { JourneyTaskService } from '../availability/journey-task.service';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import type { AxiosInstance } from 'axios';
 
-const DEFAULT_PRICE_RUPEES = 5;
+/** AC classes charged at the premium tier. Everything else (incl. ANY) is standard. */
+const PREMIUM_ALERT_CLASSES = new Set(['1A', '2A', '3A']);
+const PREMIUM_ALERT_PRICE_RUPEES = 25;
+const STANDARD_ALERT_PRICE_RUPEES = 10;
+
+/**
+ * Class-based alert price in rupees: 1A/2A/3A pay the premium tier,
+ * every other class (including ANY) pays standard. This is the enforced
+ * amount — the frontend only displays it.
+ */
+export function chartAlertPriceForClass(classCode?: string | null): number {
+  const normalized = (classCode ?? '').trim().toUpperCase();
+  return PREMIUM_ALERT_CLASSES.has(normalized)
+    ? PREMIUM_ALERT_PRICE_RUPEES
+    : STANDARD_ALERT_PRICE_RUPEES;
+}
 const DEFAULT_MUZOBOX_API_URL =
   'https://ai-jukebox-backend-production.up.railway.app/api';
 const DEFAULT_PUBLIC_API_URL = 'https://api.lastberth.com';
@@ -137,14 +152,8 @@ export class ChartAlertPaymentsService {
     );
   }
 
-  private get priceRupees(): number {
-    const raw = Number(
-      this.configService.get<string>('CHART_ALERT_PRICE_RUPEES') ??
-        DEFAULT_PRICE_RUPEES,
-    );
-    return Number.isFinite(raw) && raw >= 1
-      ? Math.floor(raw)
-      : DEFAULT_PRICE_RUPEES;
+  private priceForClass(classCode?: string | null): number {
+    return chartAlertPriceForClass(classCode);
   }
 
   private authHeaders(): Record<string, string> {
@@ -167,7 +176,7 @@ export class ChartAlertPaymentsService {
   async createPaymentLink(
     input: ChartAlertJourneyInput,
   ): Promise<PaymentLinkResult> {
-    const amount = this.priceRupees;
+    const amount = this.priceForClass(input.classCode);
     // Fail fast when the proxy key is missing so we don't leave junk FAILED rows.
     const headers = this.authHeaders();
     const record = await this.prisma.chartAlertPayment.create({
@@ -342,7 +351,7 @@ export class ChartAlertPaymentsService {
   private amountsMatch(expectedRupees: number, remoteAmount: unknown): boolean {
     const n = Number(remoteAmount);
     if (!Number.isFinite(n)) return false;
-    // Accept exact rupees, or paise (₹5 → 500) if the proxy reports subunits.
+    // Accept exact rupees, or paise (₹25 → 2500) if the proxy reports subunits.
     return n === expectedRupees || n === expectedRupees * 100;
   }
 

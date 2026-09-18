@@ -1,7 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
 import { ServiceUnavailableException } from '@nestjs/common';
-import { ChartAlertPaymentsService } from './chart-alert-payments.service';
+import {
+  ChartAlertPaymentsService,
+  chartAlertPriceForClass,
+} from './chart-alert-payments.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { JourneyTaskService } from '../availability/journey-task.service';
 
@@ -39,7 +42,6 @@ describe('ChartAlertPaymentsService', () => {
         if (key === 'MUZOBOX_API_URL') return 'https://muzobox.test/api';
         if (key === 'PUBLIC_API_URL') return 'https://api.test';
         if (key === 'FRONTEND_URL') return 'https://app.test';
-        if (key === 'CHART_ALERT_PRICE_RUPEES') return '5';
         return undefined;
       }),
     };
@@ -62,7 +64,7 @@ describe('ChartAlertPaymentsService', () => {
     it('sends an absolute redirectUri, callbackUrl and auth headers', async () => {
       prisma.chartAlertPayment.create.mockResolvedValue({
         id: 'ref-1',
-        amount: 5,
+        amount: 25,
       });
       client.post.mockResolvedValue({
         data: { id: 'mz-1', payUrl: 'https://pay.test/mz-1' },
@@ -74,8 +76,13 @@ describe('ChartAlertPaymentsService', () => {
       expect(out).toEqual({
         ref: 'ref-1',
         payUrl: 'https://pay.test/mz-1',
-        amount: 5,
+        amount: 25,
       });
+      expect(prisma.chartAlertPayment.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({ amount: 25 }),
+        }),
+      );
       const [, body, opts] = client.post.mock.calls[0];
       expect(body.redirectUri).toBe(
         'https://app.test/chart-alert/payment-complete?ref=ref-1',
@@ -89,7 +96,7 @@ describe('ChartAlertPaymentsService', () => {
     it('accepts snake_case proxy fields', async () => {
       prisma.chartAlertPayment.create.mockResolvedValue({
         id: 'ref-2',
-        amount: 5,
+        amount: 25,
       });
       client.post.mockResolvedValue({
         data: { payment_id: 'mz-2', pay_url: 'https://pay.test/mz-2' },
@@ -108,7 +115,7 @@ describe('ChartAlertPaymentsService', () => {
     it('throws 503 without leaving a usable link when the proxy is down', async () => {
       prisma.chartAlertPayment.create.mockResolvedValue({
         id: 'ref-3',
-        amount: 5,
+        amount: 25,
       });
       client.post.mockRejectedValue(new Error('proxy down'));
 
@@ -126,7 +133,7 @@ describe('ChartAlertPaymentsService', () => {
     const pendingRecord = (overrides: Record<string, any> = {}) => ({
       id: 'ref-1',
       status: 'PENDING',
-      amount: 5,
+      amount: 25,
       muzoboxPaymentId: 'mz-1',
       journeyRequestId: null,
       journeyPayload: { ...baseInput },
@@ -143,7 +150,7 @@ describe('ChartAlertPaymentsService', () => {
           journeyRequestId: 'jid-1',
         });
       client.get.mockResolvedValue({
-        data: { status: 'paid', amount: 5 },
+        data: { status: 'paid', amount: 25 },
       });
       prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
       prisma.chartAlertPayment.update.mockResolvedValue({});
@@ -164,7 +171,7 @@ describe('ChartAlertPaymentsService', () => {
         pendingRecord({ status: 'PAID', journeyRequestId: 'jid-winner' }),
       );
       client.get.mockResolvedValue({
-        data: { status: 'PAID', amount: 5 },
+        data: { status: 'PAID', amount: 25 },
       });
       prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 0 });
 
@@ -183,7 +190,7 @@ describe('ChartAlertPaymentsService', () => {
           journeyRequestId: null,
         });
       client.get.mockResolvedValue({
-        data: { status: 'success', amount: 500 },
+        data: { status: 'success', amount: 2500 },
       });
       prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
       prisma.chartAlertPayment.update.mockResolvedValue({});
@@ -221,6 +228,47 @@ describe('ChartAlertPaymentsService', () => {
 
       expect(out.status).toBe('pending');
       expect(journeyTask.queueJourneyMonitoring).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('chartAlertPriceForClass', () => {
+    it.each(['1A', '2A', '3A', ' 3a ', '2a'])(
+      'charges the premium tier (₹25) for %s',
+      (classCode) => {
+        expect(chartAlertPriceForClass(classCode)).toBe(25);
+      },
+    );
+
+    it.each(['ANY', 'SL', '3E', '2S', 'CC', 'EC', 'FC', '', undefined, null])(
+      'charges the standard tier (₹10) for %s',
+      (classCode) => {
+        expect(
+          chartAlertPriceForClass(classCode as string | undefined),
+        ).toBe(10);
+      },
+    );
+
+    it('stores the class-based amount on the payment record', async () => {
+      prisma.chartAlertPayment.create.mockResolvedValue({
+        id: 'ref-price',
+        amount: 10,
+      });
+      client.post.mockResolvedValue({
+        data: { id: 'mz-price', payUrl: 'https://pay.test/mz-price' },
+      });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+
+      const out = await service.createPaymentLink({
+        ...baseInput,
+        classCode: 'SL',
+      });
+
+      expect(out.amount).toBe(10);
+      expect(prisma.chartAlertPayment.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({ amount: 10 }),
+        }),
+      );
     });
   });
 });

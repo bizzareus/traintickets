@@ -1,12 +1,21 @@
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 
-/** Amount charged per chart-alert subscription (display only; backend enforces). */
-const parsedPrice = Number(process.env.NEXT_PUBLIC_CHART_ALERT_PRICE_RUPEES);
-export const CHART_ALERT_PRICE_RUPEES =
-  Number.isFinite(parsedPrice) && parsedPrice >= 1
-    ? Math.floor(parsedPrice)
-    : 5;
+/**
+ * Class-based chart-alert pricing (display only; backend enforces).
+ * 1A/2A/3A pay the premium tier; every other class (including ANY)
+ * pays standard. Keep in sync with the backend pricing rule.
+ */
+const PREMIUM_ALERT_CLASSES = new Set(["1A", "2A", "3A"]);
+export const CHART_ALERT_PREMIUM_PRICE_RUPEES = 25;
+export const CHART_ALERT_STANDARD_PRICE_RUPEES = 10;
+
+export function chartAlertPriceForClass(classCode?: string | null): number {
+  const normalized = (classCode ?? "").trim().toUpperCase();
+  return PREMIUM_ALERT_CLASSES.has(normalized)
+    ? CHART_ALERT_PREMIUM_PRICE_RUPEES
+    : CHART_ALERT_STANDARD_PRICE_RUPEES;
+}
 
 export interface ChartAlertPaymentCreateInput {
   trainNumber: string;
@@ -99,7 +108,7 @@ export async function startChartAlertPayment(
       to_code: (input.toStationCode ?? "").trim().toUpperCase(),
       journey_date: input.journeyDate.trim().slice(0, 10),
       class_code: input.classCode.trim().toUpperCase(),
-      price: CHART_ALERT_PRICE_RUPEES,
+      price: chartAlertPriceForClass(input.classCode),
       has_email: Boolean(input.email?.trim()),
       has_mobile: Boolean(input.mobile?.trim()),
     },

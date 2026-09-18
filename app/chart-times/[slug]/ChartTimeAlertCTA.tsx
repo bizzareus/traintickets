@@ -12,7 +12,7 @@ import { useContactFields } from "@/lib/contact";
 import { isAdminUser } from "@/lib/admin";
 import { addYmdDays, boardingYmdForStation } from "@/lib/chartTimeDisplay";
 import {
-  CHART_ALERT_PRICE_RUPEES,
+  chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
@@ -219,6 +219,7 @@ export default function ChartTimeAlertCTA({
   }, [classesList]);
 
   const [classCode, setClassCode] = useState<string>("ANY");
+  const alertPrice = chartAlertPriceForClass(classCode);
 
   useEffect(() => {
     if (activeClasses.length > 0 && !activeClasses.includes(classCode)) {
@@ -427,7 +428,7 @@ export default function ChartTimeAlertCTA({
             your {stationCode} &lt;&gt; {toStationCode || "…"} route for any
             ticket that opens up and notify you instantly. No ticket? 100%
             automated refund. One-time charge of ₹
-            {CHART_ALERT_PRICE_RUPEES}.
+            {alertPrice}.
           </p>
         </div>
         <button
@@ -566,7 +567,7 @@ export default function ChartTimeAlertCTA({
                 : "Opening payment…"
               : adminFree
                 ? "Set alert free (admin)"
-                : `Pay ₹${CHART_ALERT_PRICE_RUPEES} & set alert`}
+                : `Pay ₹${alertPrice} & set alert`}
           </button>
           <button
             type="button"
