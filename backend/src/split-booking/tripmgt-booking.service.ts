@@ -111,7 +111,9 @@ export class TripmgtBookingService {
         (fs.existsSync('/usr/bin/chromium-browser')
           ? '/usr/bin/chromium-browser'
           : undefined) ||
-        (fs.existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined) ||
+        (fs.existsSync('/usr/bin/chromium')
+          ? '/usr/bin/chromium'
+          : undefined) ||
         (fs.existsSync('/usr/bin/google-chrome')
           ? '/usr/bin/google-chrome'
           : undefined);
@@ -293,7 +295,10 @@ export class TripmgtBookingService {
         .first();
       if ((await mobileInput.count()) > 0) {
         await mobileInput.fill(params.contactMobile);
-        await addLog('CONTACT_SET', `Set contact mobile: ${params.contactMobile}`);
+        await addLog(
+          'CONTACT_SET',
+          `Set contact mobile: ${params.contactMobile}`,
+        );
       }
 
       const custNameInput = page
@@ -307,7 +312,9 @@ export class TripmgtBookingService {
       for (let i = 0; i < params.passengers.length && i < 6; i++) {
         const p = params.passengers[i];
 
-        const nameInput = page.locator(`#pName${i}, #txtPassName_${i + 1}`).first();
+        const nameInput = page
+          .locator(`#pName${i}, #txtPassName_${i + 1}`)
+          .first();
         if ((await nameInput.count()) > 0) {
           await nameInput.fill(p.name);
         }
@@ -418,7 +425,10 @@ export class TripmgtBookingService {
         .locator('input[value="Next"].btn, input[type="submit"].btn')
         .first();
       if ((await nextBtn.count()) > 0) {
-        await addLog('SUBMITTING', 'Submitting reservation form to proceed to payment...');
+        await addLog(
+          'SUBMITTING',
+          'Submitting reservation form to proceed to payment...',
+        );
         await nextBtn.click();
         await page.waitForLoadState('domcontentloaded');
         await page.waitForTimeout(3000);
