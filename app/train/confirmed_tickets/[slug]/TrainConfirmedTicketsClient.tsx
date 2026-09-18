@@ -247,10 +247,6 @@ export default function TrainConfirmedTicketsClient({
       <header className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs space-y-6">
         <div>
           <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700 border border-blue-100 uppercase tracking-wider">
-              <Zap className="h-3.5 w-3.5 text-blue-600" />
-              Confirmed Ticket Finder
-            </div>
             {chartTimesSlug && (
               <Link
                 href={`/chart-times/${chartTimesSlug}`}
@@ -269,8 +265,9 @@ export default function TrainConfirmedTicketsClient({
           <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
             Live seat availability, post-charting vacant berths, and Smart Seats
             split-booking options for travel from{" "}
-            <span className="font-semibold text-slate-800">{fromStation}</span> to{" "}
-            <span className="font-semibold text-slate-800">{toStation}</span>.
+            <span className="font-semibold text-slate-800">{fromStation}</span>{" "}
+            to <span className="font-semibold text-slate-800">{toStation}</span>
+            .
           </p>
         </div>
 
@@ -540,8 +537,13 @@ export default function TrainConfirmedTicketsClient({
                   const isOrigin = i === 0;
                   const isDestination = i === stations.length - 1;
                   return (
-                    <tr key={i} className="hover:bg-slate-50/80 transition-colors">
-                      <td className="p-3 text-slate-400 font-medium">{i + 1}</td>
+                    <tr
+                      key={i}
+                      className="hover:bg-slate-50/80 transition-colors"
+                    >
+                      <td className="p-3 text-slate-400 font-medium">
+                        {i + 1}
+                      </td>
                       <td className="p-3 font-semibold text-slate-900">
                         <div className="flex items-center gap-1.5">
                           <span>{st.stationName}</span>

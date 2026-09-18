@@ -34,6 +34,7 @@ import {
   type JourneyLegCoverage,
   type RefundInfo,
 } from './notification.helpers';
+import { DateTime } from 'luxon';
 import {
   renderSeatsFoundEmailHtml,
   renderFollowUpLegEmailHtml,
@@ -382,7 +383,13 @@ export class NotificationService {
     stationName?: string;
     journeyDateStr: string;
     result?: Service2CheckResult;
-  }): Promise<{ label?: string; isReleased: boolean }> {
+  }): Promise<{
+    label?: string;
+    isReleased: boolean;
+    hasFutureChart: boolean;
+    isSecondChart: boolean;
+    formattedChartTime?: string;
+  }> {
     const { trainNumber, stationCode, stationName, journeyDateStr, result } =
       params;
     const displayName = stationName || stationCode;
@@ -393,18 +400,49 @@ export class NotificationService {
           trainNumber,
           stationCode,
         );
-        if (meta?.chartOne?.time) {
-          const formatted = formatChartTimeIst(
-            journeyDateStr,
-            meta.chartOne.time,
-            meta.chartOne.dayOffset ?? 0,
-          );
-          if (formatted) {
+        if (meta) {
+          const chartOneFormatted = meta.chartOne?.time
+            ? formatChartTimeIst(
+                journeyDateStr,
+                meta.chartOne.time,
+                meta.chartOne.dayOffset ?? 0,
+              )
+            : null;
+
+          const chartTwoFormatted = meta.chartTwo?.time
+            ? formatChartTimeIst(
+                journeyDateStr,
+                meta.chartTwo.time,
+                meta.chartTwo.dayOffset ?? 0,
+              )
+            : null;
+
+          if (chartOneFormatted?.isReleased) {
+            if (chartTwoFormatted && !chartTwoFormatted.isReleased) {
+              return {
+                label: `New Chart prepares: ${chartTwoFormatted.formattedTime}`,
+                isReleased: true,
+                hasFutureChart: true,
+                isSecondChart: true,
+                formattedChartTime: chartTwoFormatted.formattedTime,
+              };
+            }
             return {
-              label: formatted.isReleased
-                ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
-                : `Chart prepares at ${formatted.formattedTime}`,
-              isReleased: formatted.isReleased,
+              label: `Chart for ${displayName} was released at ${chartOneFormatted.formattedTime}`,
+              isReleased: true,
+              hasFutureChart: false,
+              isSecondChart: false,
+              formattedChartTime: chartOneFormatted.formattedTime,
+            };
+          }
+
+          if (chartOneFormatted && !chartOneFormatted.isReleased) {
+            return {
+              label: `Chart prepares at ${chartOneFormatted.formattedTime}`,
+              isReleased: false,
+              hasFutureChart: true,
+              isSecondChart: false,
+              formattedChartTime: chartOneFormatted.formattedTime,
             };
           }
         }
@@ -425,6 +463,9 @@ export class NotificationService {
             ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
             : `Chart prepares at ${formatted.formattedTime}`,
           isReleased: formatted.isReleased,
+          hasFutureChart: !formatted.isReleased,
+          isSecondChart: false,
+          formattedChartTime: formatted.formattedTime,
         };
       }
     }
@@ -441,12 +482,17 @@ export class NotificationService {
             ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
             : `Chart prepares at ${formatted.formattedTime}`,
           isReleased: formatted.isReleased,
+          hasFutureChart: !formatted.isReleased,
+          isSecondChart: false,
+          formattedChartTime: formatted.formattedTime,
         };
       }
     }
 
     return {
       isReleased: false,
+      hasFutureChart: false,
+      isSecondChart: false,
     };
   }
 
@@ -721,7 +767,7 @@ export class NotificationService {
       | 'fromStationCode'
       | 'toStationCode'
       | 'journeyDate'
-    > & { id?: string };
+    > & { id?: string; chartAt?: Date; trainStartDate?: Date | null };
     result: Service2CheckResult;
     alternativeTrains?: BestTrainCandidateResult[];
     isFollowUpLeg?: boolean;
@@ -877,6 +923,46 @@ export class NotificationService {
             }
           }
 
+          let chartNumber: '1st' | '2nd' = '1st';
+          let chartTimeRaw: string | undefined =
+            result.chartPreparationDetails?.firstChartCreationTime;
+
+          if (this.chartTimeService) {
+            try {
+              const meta =
+                await this.chartTimeService.getChartMetaForTrainStation(
+                  task.trainNumber,
+                  task.fromStationCode,
+                );
+              if (meta?.chartTwo?.time) {
+                const chartTwoFormatted = formatChartTimeIst(
+                  journeyDateStr,
+                  meta.chartTwo.time,
+                  meta.chartTwo.dayOffset ?? 0,
+                );
+                if (chartTwoFormatted?.isReleased) {
+                  chartNumber = '2nd';
+                  chartTimeRaw = meta.chartTwo.time;
+                }
+              }
+              if (
+                chartNumber === '1st' &&
+                !chartTimeRaw &&
+                meta?.chartOne?.time
+              ) {
+                chartTimeRaw = meta.chartOne.time;
+              }
+            } catch {
+              // fallback
+            }
+          }
+
+          if (!chartTimeRaw && task.chartAt) {
+            chartTimeRaw = DateTime.fromJSDate(new Date(task.chartAt))
+              .setZone('Asia/Kolkata')
+              .toFormat('h:mm a');
+          }
+
           const whatsAppText =
             isFollowUpLeg && hasTickets
               ? buildFollowUpLegWhatsAppText({
@@ -909,6 +995,8 @@ export class NotificationService {
                     mobile: mobile || undefined,
                     unsubscribeUrl: whatsappFooterUrl,
                     refundInfo,
+                    chartNumber,
+                    chartTime: chartTimeRaw,
                     getChartOpenInfoFn: (item) =>
                       this.getStationChartOpenTimeLabel({
                         trainNumber: task.trainNumber,
@@ -920,7 +1008,9 @@ export class NotificationService {
                     createAlertShortLinkFn: (p) =>
                       this.shortLinkService
                         ? this.shortLinkService.createAlertShortLink(p)
-                        : Promise.reject(),
+                        : Promise.reject(
+                            new Error('ShortLinkService unavailable'),
+                          ),
                   })
                 : buildNoSeatsWhatsAppText({
                     trainLabel,
@@ -934,6 +1024,7 @@ export class NotificationService {
                     searchUrl: whatsappSearchUrl,
                     unsubscribeUrl: whatsappFooterUrl,
                     refundInfo,
+                    chartTime: chartTimeRaw,
                   });
 
           const templateName = hasTickets

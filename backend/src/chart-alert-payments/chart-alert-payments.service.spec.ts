@@ -242,9 +242,9 @@ describe('ChartAlertPaymentsService', () => {
     it.each(['ANY', 'SL', '3E', '2S', 'CC', 'EC', 'FC', '', undefined, null])(
       'charges the standard tier (₹10) for %s',
       (classCode) => {
-        expect(
-          chartAlertPriceForClass(classCode as string | undefined),
-        ).toBe(10);
+        expect(chartAlertPriceForClass(classCode as string | undefined)).toBe(
+          10,
+        );
       },
     );
 

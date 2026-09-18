@@ -7,13 +7,13 @@ import {
   buildRefundWhatsappLine,
   escapeHtml,
   buildSegmentBookUrl,
-  departureTimeAtStation,
-  arrivalTimeAtStation,
-  findScheduleRow,
   formatSegmentRoute,
   extractJourneyLegCoverage,
   firstPlannedClassCode,
   renderRefundBannerHtml,
+  formatJourneyDateShort,
+  to12HourTime,
+  formatAvailabilitySeats,
   type RefundInfo,
 } from '../notification.helpers';
 
@@ -242,8 +242,8 @@ export function buildFollowUpLegWhatsAppText(params: {
 
 export async function buildWhatsAppSeatsFoundText(params: {
   trainLabel: string;
-  routeDisplay: string;
-  journeyDateReadable: string;
+  routeDisplay?: string;
+  journeyDateReadable?: string;
   journeyDateStr: string;
   trainNumber: string;
   fromStationCode: string;
@@ -259,10 +259,18 @@ export async function buildWhatsAppSeatsFoundText(params: {
   mobile?: string;
   unsubscribeUrl?: string;
   refundInfo?: RefundInfo | null;
+  chartNumber?: '1st' | '2nd';
+  chartTime?: string;
   getChartOpenInfoFn: (item: {
     fromCode: string;
     fromName: string;
-  }) => Promise<{ label?: string; isReleased: boolean }>;
+  }) => Promise<{
+    label?: string;
+    isReleased: boolean;
+    hasFutureChart?: boolean;
+    isSecondChart?: boolean;
+    formattedChartTime?: string;
+  }>;
   createAlertShortLinkFn?: (params: {
     trainNumber: string;
     trainName?: string;
@@ -276,14 +284,10 @@ export async function buildWhatsAppSeatsFoundText(params: {
 }): Promise<string> {
   const {
     trainLabel,
-    routeDisplay,
-    journeyDateReadable,
     journeyDateStr,
     trainNumber,
     fromStationCode,
     toStationCode,
-    journeyTimesLine,
-    chartPreparationText,
     plan,
     stationNameMap,
     stationScheduleList,
@@ -293,18 +297,20 @@ export async function buildWhatsAppSeatsFoundText(params: {
   } = params;
 
   const refundLine = buildRefundWhatsappLine(params.refundInfo);
+  const chartNumber = params.chartNumber ?? '1st';
+  const chartTime = to12HourTime(params.chartTime) || '7:30 PM';
+  const dateStr = formatJourneyDateShort(journeyDateStr);
+
   const lines: string[] = [
-    '*LastBerth Chart Alert* 🔔',
-    'You subscribed to an alert when chart is prepared:',
-    '',
-    trainLabel,
-    routeDisplay,
-    journeyDateReadable,
-    ...(journeyTimesLine ? [journeyTimesLine] : []),
-    ...(chartPreparationText ? [chartPreparationText] : []),
-    ...(refundLine ? [refundLine] : []),
-    '',
+    `🔔 ${chartNumber} Chart Alert: ${trainLabel} prepared at ${chartTime}`,
+    `Route: ${fromStationCode} → ${toStationCode} | Date: ${dateStr}`,
   ];
+
+  if (refundLine) {
+    lines.push(refundLine);
+  }
+
+  lines.push('');
 
   const coverage = extractJourneyLegCoverage({
     fromStationCode,
@@ -315,87 +321,77 @@ export async function buildWhatsAppSeatsFoundText(params: {
 
   const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
 
-  for (const item of coverage) {
+  for (let idx = 0; idx < coverage.length; idx++) {
+    const item = coverage[idx];
+    const legNum = idx + 1;
+
     if (item.type === 'ticket') {
-      const segmentRoute = formatSegmentRoute(
-        item.instruction,
-        stationNameMap,
-        stationScheduleList,
-      );
       const classTag = (item.instruction.split(' - ')[2] ?? '3A').trim();
+      const seatsText = formatAvailabilitySeats(item.availability);
+      const availTag = seatsText
+        ? `(${seatsText} in ${classTag})`
+        : `(${classTag})`;
       const priceStr =
-        item.approxPrice != null
-          ? `approx ₹${Number(item.approxPrice).toLocaleString('en-IN')}`
+        item.approxPrice != null && item.approxPrice > 0
+          ? ` Price: ~₹${Number(item.approxPrice).toLocaleString('en-IN')}`
           : '';
       const segBookUrl = buildSegmentBookUrl(trainNumber, item.instruction);
-      const availabilityTag = item.availability
-        ? ` | ${item.availability}`
-        : '';
-      lines.push(`Ticket ${item.ticketIndex} [${classTag}]${availabilityTag}`);
-      lines.push(segmentRoute);
-      if (priceStr) lines.push(priceStr);
-      lines.push(`Book on IRCTC: ${segBookUrl}`);
-      lines.push('');
+      lines.push(
+        `🟢 Leg ${legNum}: ${item.fromCode} → ${item.toCode} ${availTag}${priceStr} 🔗 Book Now: ${segBookUrl}`,
+      );
     } else {
       const fromName =
         stationNameMap.get(item.fromCode.trim().toUpperCase()) ?? item.fromCode;
-      const toName =
-        stationNameMap.get(item.toCode.trim().toUpperCase()) ?? item.toCode;
-      const fromRow = findScheduleRow(stationScheduleList, item.fromCode);
-      const toRow = findScheduleRow(stationScheduleList, item.toCode);
-      const depTime = departureTimeAtStation(fromRow);
-      const arrTime = arrivalTimeAtStation(toRow);
-      const fromDisplay = depTime
-        ? `${item.fromCode} - ${fromName} (${depTime})`
-        : `${item.fromCode} - ${fromName}`;
-      const toDisplay = arrTime
-        ? `${item.toCode} - ${toName} (${arrTime})`
-        : `${item.toCode} - ${toName}`;
-      const segDisplay = `${fromDisplay} → ${toDisplay}`;
-
       const chartOpenInfo = await getChartOpenInfoFn({
         fromCode: item.fromCode,
         fromName,
       });
 
-      lines.push(`No tickets available:`);
-      lines.push(segDisplay);
-      if (chartOpenInfo.label) {
-        lines.push(chartOpenInfo.label);
+      let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}`;
+      if (createAlertShortLinkFn) {
+        try {
+          alertUrl = await createAlertShortLinkFn({
+            trainNumber,
+            trainName: result?.trainSchedule?.trainName,
+            fromStationCode: item.fromCode,
+            toStationCode: item.toCode,
+            journeyDate: journeyDateStr,
+            classCode: firstPlannedClassCode(result),
+            email: params.email,
+            mobile: params.mobile,
+          });
+        } catch {
+          // fallback
+        }
       }
 
-      if (chartOpenInfo.isReleased) {
-        const alternateClassUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}&trainNo=${encodeURIComponent(trainNumber)}`;
-        lines.push(`Check Alternate Class Tickets: ${alternateClassUrl}`);
+      if (
+        chartOpenInfo.isSecondChart &&
+        chartOpenInfo.hasFutureChart &&
+        chartOpenInfo.formattedChartTime
+      ) {
+        lines.push(
+          `🔴 Leg ${legNum}: ${item.fromCode} → ${item.toCode} (No Seats)`,
+        );
+        lines.push(
+          `New Chart prepares: ${chartOpenInfo.formattedChartTime} 🔗 Get alert: ${alertUrl}`,
+        );
+      } else if (
+        chartOpenInfo.hasFutureChart &&
+        chartOpenInfo.formattedChartTime
+      ) {
+        lines.push(
+          `🔴 Leg ${legNum}: ${item.fromCode} → ${item.toCode} (No Seats) Chart prepares: ${chartOpenInfo.formattedChartTime} 🔗 Get alert: ${alertUrl}`,
+        );
       } else {
-        let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}`;
-        if (createAlertShortLinkFn) {
-          try {
-            alertUrl = await createAlertShortLinkFn({
-              trainNumber,
-              trainName: result?.trainSchedule?.trainName,
-              fromStationCode: item.fromCode,
-              toStationCode: item.toCode,
-              journeyDate: journeyDateStr,
-              classCode: firstPlannedClassCode(result),
-              email: params.email,
-              mobile: params.mobile,
-            });
-          } catch {
-            // fallback
-          }
-        }
-        lines.push(`Get alert for this leg: ${alertUrl}`);
+        lines.push(
+          `🔴 Leg ${legNum}: ${item.fromCode} → ${item.toCode} (No Seats)`,
+        );
       }
-      lines.push('');
     }
   }
 
-  lines.push('Track live seat updates anytime on LastBerth! 🚄');
-  // if (params.unsubscribeUrl) {
-  //   lines.push('');
-  //   lines.push(`Unsubscribe: ${params.unsubscribeUrl}`);
-  // }
+  lines.push('🚄 Track live seat updates anytime on LastBerth.com!');
 
   return lines.join('\n').trim();
 }

@@ -8,6 +8,7 @@ import {
   buildWatiTemplateParameters,
   buildChartPreparedNoDestinationWhatsAppText,
 } from './templates/notification-whatsapp.templates';
+import { buildNoSeatsWhatsAppText } from './templates/no-seats.template';
 
 describe('Notification Templates & Helpers', () => {
   describe('normalizeE164Mobile', () => {
@@ -198,6 +199,52 @@ describe('Notification Templates & Helpers', () => {
       });
       expect(html).toContain('free request');
       expect(html).not.toContain('Razorpay payment ID');
+    });
+  });
+
+  describe('buildNoSeatsWhatsAppText', () => {
+    it('matches the requested WhatsApp format with chart time, route, date, and search link', () => {
+      const text = buildNoSeatsWhatsAppText({
+        trainLabel: '12435 Garib Rath Exp',
+        fromCode: 'DDU',
+        toCode: 'ANVT',
+        date: '2026-09-18',
+        chartTime: '7:30 PM',
+        searchUrl: 'https://lastberth.com/s/3d6fc70',
+        unsubscribeUrl: 'https://lastberth.com/unsubscribe',
+      });
+
+      expect(text).toBe(
+        '*12435 Garib Rath Exp Chart Alert : 7:30 PM* 🔔\n\n' +
+          'No Tickets Found from DDU > ANVT\n' +
+          'Date: Fri, 18th September\n\n' +
+          'Look for other trains which have confirmed tickets - \n' +
+          'https://lastberth.com/s/3d6fc70',
+      );
+      expect(text).not.toContain('unsubscribe');
+    });
+
+    it('handles refund line when refundInfo is provided', () => {
+      const text = buildNoSeatsWhatsAppText({
+        trainLabel: '12435 Garib Rath Exp',
+        fromCode: 'DDU',
+        toCode: 'ANVT',
+        date: '2026-09-18',
+        chartTime: '19:30',
+        searchUrl: 'https://lastberth.com/s/3d6fc70',
+        refundInfo: {
+          attempted: true,
+          outcome: 'succeeded',
+          amount: 10,
+        },
+      });
+
+      expect(text).toContain('*12435 Garib Rath Exp Chart Alert : 7:30 PM* 🔔');
+      expect(text).toContain('No Tickets Found from DDU > ANVT');
+      expect(text).toContain('✅ Refund issued: ₹10');
+      expect(text).toContain(
+        'Look for other trains which have confirmed tickets - \nhttps://lastberth.com/s/3d6fc70',
+      );
     });
   });
 });

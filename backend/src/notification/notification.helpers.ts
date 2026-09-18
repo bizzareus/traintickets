@@ -140,6 +140,56 @@ export function formatJourneyDateReadable(ymd: string): string {
   return `${weekday}, ${ordinalEnglish(dt.day)} ${month}`;
 }
 
+/** e.g. Sat, 19 Sep (calendar date in Asia/Kolkata). */
+export function formatJourneyDateShort(ymd: string): string {
+  const raw = ymd.trim().slice(0, 10);
+  const dt = DateTime.fromISO(raw, { zone: 'Asia/Kolkata' });
+  if (!dt.isValid) return raw;
+  return dt.toFormat('ccc, d LLL');
+}
+
+/**
+ * Convert HH:MM, HH:MM:SS, ISO timestamp, or existing 12h string to 12-hour format e.g. 7:30 PM.
+ */
+export function to12HourTime(input?: string | null): string {
+  if (!input) return '';
+  const trimmed = input.trim();
+  if (/^\d{1,2}:\d{2}\s*(AM|PM)$/i.test(trimmed)) {
+    return trimmed.toUpperCase();
+  }
+  if (trimmed.includes('T') || trimmed.includes('Z')) {
+    const dt = DateTime.fromISO(trimmed, { zone: 'Asia/Kolkata' });
+    if (dt.isValid) {
+      return dt.toFormat('h:mm a');
+    }
+  }
+  const timeMatch = trimmed.match(/(?:^|\s|T)(\d{1,2}):(\d{2})/);
+  if (!timeMatch) return trimmed;
+  const h = Number(timeMatch[1]);
+  const min = Number(timeMatch[2]);
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  let hr = h % 12;
+  if (hr === 0) hr = 12;
+  return `${hr}:${String(min).padStart(2, '0')} ${ampm}`;
+}
+
+/**
+ * Clean up availability text (e.g. CURR_AVL 26, AVAILABLE-0004) to user-friendly seat count like "4 Seats" or "26 Seats".
+ */
+export function formatAvailabilitySeats(raw?: string): string {
+  if (!raw) return '';
+  const trimmed = raw.trim();
+  const match =
+    trimmed.match(/(?:AVAILABLE|CURR_AVBL|CURR_AVL|AVBL)[-\s]*0*(\d+)/i) ||
+    trimmed.match(/^(\d+)\s*seats?/i) ||
+    trimmed.match(/^(\d+)$/);
+  if (match) {
+    const count = Number(match[1]);
+    return `${count} ${count === 1 ? 'Seat' : 'Seats'}`;
+  }
+  return trimmed;
+}
+
 export function normalizeIrctcTimeDisplay(t: unknown): string {
   if (t == null) return '';
   const s = typeof t === 'string' ? t.trim() : String(t as any).trim();
@@ -237,7 +287,7 @@ export function formatChartTimeIst(
 
   const dateParts = formatterDate.format(new Date(targetMs));
   const timeParts = formatterTime.format(new Date(targetMs));
-  const formattedTime = `${dateParts} at ${timeParts}`;
+  const formattedTime = `${dateParts}, ${timeParts}`;
 
   return {
     label: isReleased
@@ -371,8 +421,8 @@ export function extractJourneyLegCoverage(params: {
   stationScheduleList?: ScheduleStation[];
 }): JourneyLegCoverage[] {
   const { fromStationCode, toStationCode, plan, stationScheduleList } = params;
-  const fromU = fromStationCode.trim().toUpperCase();
-  const toU = toStationCode.trim().toUpperCase();
+  const fromU = (fromStationCode ?? '').trim().toUpperCase();
+  const toU = (toStationCode ?? '').trim().toUpperCase();
   const filledPlan = plan.filter(isFilledOpenAiPlanItem);
 
   if (filledPlan.length === 0) {

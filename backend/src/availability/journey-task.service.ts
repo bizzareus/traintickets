@@ -1580,7 +1580,7 @@ export class JourneyTaskService {
       // passing undefined avlClasses triggers the multi-class best seats algorithm.
       const alt = await this.bookingV2Service.findAlternatePaths({
         trainNumber: task.trainNumber,
-        from: task.fromStationCode,
+        from: task.fromStationCode || task.stationCode,
         to: task.toStationCode,
         date: journeyDateStr,
         avlClasses:
@@ -1765,7 +1765,7 @@ export class JourneyTaskService {
               isFilledOpenAiPlanItem,
             );
             const isEndToEnd = isEndToEndJourneyConfirmed({
-              fromStationCode: task.fromStationCode,
+              fromStationCode: task.fromStationCode || task.stationCode,
               toStationCode: task.toStationCode,
               plan,
               stationScheduleList: result.trainSchedule?.stationList,
@@ -1797,9 +1797,11 @@ export class JourneyTaskService {
               task: {
                 trainNumber: task.trainNumber,
                 trainName: task.trainName,
-                fromStationCode: task.fromStationCode,
+                fromStationCode: task.fromStationCode || task.stationCode,
                 toStationCode: task.toStationCode,
                 journeyDate: task.journeyDate,
+                chartAt: task.chartAt,
+                trainStartDate: task.trainStartDate,
               },
               result,
               alternativeTrains,

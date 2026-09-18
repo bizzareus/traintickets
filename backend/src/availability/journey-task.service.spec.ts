@@ -144,6 +144,7 @@ describe('JourneyTaskService', () => {
       id: 'task-1',
       journeyRequestId: 'jid-1',
       trainNumber: '12121',
+      fromStationCode: 'NDLS',
       stationCode: 'NDLS',
       journeyDate: new Date('2026-10-10'),
       trainStartDate: new Date('2026-10-10'),

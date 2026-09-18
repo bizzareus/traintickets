@@ -93,10 +93,11 @@ describe('NotificationService', () => {
     expect(html).toContain('Find Alternate Trains');
 
     const [, whatsAppText] = sendWhatsApp.mock.calls[0];
-    expect(whatsAppText).toContain('No Tickets Found');
+    expect(whatsAppText).toContain('No Tickets Found from');
     expect(whatsAppText).toContain(
-      'Look for alternate trains available for your journey:',
+      'Look for other trains which have confirmed tickets -',
     );
+    expect(whatsAppText).not.toContain('Unsubscribe:');
   });
 
   it('sends email with readable journey date, schedule times, and availability count in HTML', async () => {
@@ -232,24 +233,20 @@ describe('NotificationService', () => {
     expect(sendWhatsApp).toHaveBeenCalledTimes(1);
     const [, text] = sendWhatsApp.mock.calls[0];
 
-    expect(text).toContain('*LastBerth Chart Alert* 🔔');
     expect(text).toContain(
-      'You subscribed to an alert when chart is prepared:',
+      '🔔 1st Chart Alert: 11010 Sinhagad Exp prepared at 5:50 AM',
     );
-    expect(text).toContain('11010 Sinhagad Exp');
-    expect(text).toContain('PUNE > CSMT');
-    expect(text).toContain('Ticket 1 [CC] | CURR_AVL 26');
+    expect(text).toContain('Route: PUNE → CSMT | Date: Mon, 10 Aug');
     expect(text).toContain(
-      'Book on IRCTC: https://www.irctc.co.in/nget/redirect?from=PUNE&to=CCH&trainNo=11010&class=CC&page=train-chart',
+      '🟢 Leg 1: PUNE → CCH (26 Seats in CC) Price: ~₹270 🔗 Book Now:',
     );
-    expect(text).toContain('No tickets available:');
     expect(text).toContain(
-      'CCH - Chinchvad (06:34) → CSMT - C Shivaji Mah T (09:55)',
+      'https://www.irctc.co.in/nget/redirect?from=PUNE&to=CCH&trainNo=11010&class=CC&page=train-chart',
     );
-    expect(text).toMatch(
-      /(New tickets open at|Chart for Chinchvad was released at)/,
+    expect(text).toContain('🔴 Leg 2: CCH → CSMT (No Seats)');
+    expect(text).toContain(
+      '🚄 Track live seat updates anytime on LastBerth.com!',
     );
-    expect(text).toContain('/search?from=CCH&to=CSMT&date=2026-08-10');
     expect(text).not.toContain('Total approx. fare');
   });
 
@@ -376,8 +373,10 @@ describe('NotificationService', () => {
 
     expect(sendWhatsApp).toHaveBeenCalledTimes(1);
     const [, whatsappText] = sendWhatsApp.mock.calls[0];
-    expect(whatsappText).toContain('Chart was prepared for Shahjehanpur on');
-    expect(whatsappText).toContain('and we found some tickets.');
+    expect(whatsappText).toContain(
+      '🔔 1st Chart Alert: 12237 Begumpura Exp prepared at 3:43 AM',
+    );
+    expect(whatsappText).toContain('Route: SPN → JAT | Date: Sun, 30 Aug');
   });
 
   it('triggers sendAlertFailureReport to me@kartikarora.in when WhatsApp or Email sending fails', async () => {
@@ -545,8 +544,8 @@ describe('NotificationService', () => {
     expect(sendWhatsApp).toHaveBeenCalledTimes(1);
     expect(sendEmail).toHaveBeenCalledTimes(1);
     const [, whatsAppText] = sendWhatsApp.mock.calls[0];
-    expect(whatsAppText).toContain('PNBE - Patna Jn → BKP - Bakhtiyarpur Jn');
-    expect(whatsAppText).toContain('KIUL - Kiul Jn → BGP - Bhagalpur');
+    expect(whatsAppText).toContain('🟢 Leg 2: PNBE → BKP');
+    expect(whatsAppText).toContain('🟢 Leg 4: KIUL → BGP');
   });
 
   it('renders partial journey notice and TTE ticket message in email when journey is partially covered', async () => {

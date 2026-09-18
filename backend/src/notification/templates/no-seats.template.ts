@@ -4,6 +4,8 @@ import {
   escapeHtml,
   buildIrctcUrl,
   renderRefundBannerHtml,
+  formatJourneyDateReadable,
+  to12HourTime,
   type RefundInfo,
 } from '../notification.helpers';
 
@@ -220,8 +222,8 @@ export function renderAlternativeTrainsEmailHtml(params: {
 
 export function buildNoSeatsWhatsAppText(params: {
   trainLabel: string;
-  routeDisplay: string;
-  journeyDateReadable: string;
+  routeDisplay?: string;
+  journeyDateReadable?: string;
   openAiSummary?: string | null;
   alternativeTrains?: BestTrainCandidateResult[];
   fromCode: string;
@@ -230,95 +232,51 @@ export function buildNoSeatsWhatsAppText(params: {
   searchUrl?: string;
   unsubscribeUrl?: string;
   refundInfo?: RefundInfo | null;
+  chartTime?: string;
 }): string {
   const {
     trainLabel,
-    routeDisplay,
     journeyDateReadable,
-    openAiSummary,
-    alternativeTrains,
     fromCode,
     toCode,
     date,
     searchUrl,
+    refundInfo,
+    chartTime,
   } = params;
 
   const targetSearchUrl =
     searchUrl ||
     `https://lastberth.com/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`;
 
-  const hasAlternatives = Boolean(
-    alternativeTrains && alternativeTrains.length > 0,
-  );
-  let alternativesText = '';
-  if (hasAlternatives) {
-    const trainLines = (alternativeTrains ?? [])
-      .slice(0, 5)
-      .map((alt, i) => {
-        const train = alt.train;
-        const trainNameStr = [train.trainNumber, train.trainName]
-          .filter(Boolean)
-          .join(' - ');
+  const formattedChartTime = to12HourTime(chartTime);
+  const headerLine = formattedChartTime
+    ? `*${trainLabel} Chart Alert : ${formattedChartTime}* 🔔`
+    : `*${trainLabel} Chart Alert* 🔔`;
 
-        const confirmedLegs = alt.alternatePath.legs.filter(
-          (l) => l.segmentKind === 'confirmed',
-        );
-        let bestLegStr = '';
-        if (confirmedLegs.length > 0) {
-          const firstLeg = confirmedLegs[0];
-          const classStr = firstLeg.travelClass
-            ? ` [Class ${firstLeg.travelClass}]`
-            : '';
-          const statusStr =
-            firstLeg.availabilityDisplayName ||
-            firstLeg.railDataStatus ||
-            'Available';
-          bestLegStr = `\n  ↳ ${statusStr}${classStr}`;
-        }
+  const fromStation = (fromCode ?? '').trim().toUpperCase();
+  const toStation = (toCode ?? '').trim().toUpperCase();
+  const journeyDateText =
+    journeyDateReadable || (date ? formatJourneyDateReadable(date) : '');
 
-        const depStr = train.departureTime ? `Dep: ${train.departureTime}` : '';
-        const arrStr = train.arrivalTime ? `Arr: ${train.arrivalTime}` : '';
-        const durMinutes = train.duration;
-        const durStr = durMinutes
-          ? `Duration: ${Math.floor(durMinutes / 60)}h ${durMinutes % 60}m`
-          : '';
-        const timingLine = [depStr, arrStr, durStr].filter(Boolean).join(' | ');
+  const refundLine = buildRefundWhatsappLine(refundInfo);
 
-        return `${i + 1}. *${trainNameStr}*\n   ${timingLine}${bestLegStr}`;
-      })
-      .join('\n\n');
+  const lines: string[] = [
+    headerLine,
+    '',
+    `No Tickets Found from ${fromStation} > ${toStation}`,
+    `Date: ${journeyDateText}`,
+  ];
 
-    alternativesText = `\n\n*FOUND TICKETS IN ALTERNATE TRAINS - BOOK NOW* 🔥\n\n${trainLines}`;
+  if (refundLine) {
+    lines.push(refundLine);
   }
 
-  const unsubscribeLine = params.unsubscribeUrl
-    ? `\n\nUnsubscribe: ${params.unsubscribeUrl}`
-    : '';
-  const refundLine = buildRefundWhatsappLine(params.refundInfo);
-  const refundBlock = refundLine ? `\n${refundLine}\n` : '';
+  lines.push('');
+  lines.push('Look for other trains which have confirmed tickets - ');
+  lines.push(targetSearchUrl);
 
-  if (hasAlternatives) {
-    return `*LastBerth Chart Alert* 🔔
-
-We didn't find any tickets in *${trainLabel}* for *${routeDisplay}* on *${journeyDateReadable}*.${refundBlock}${alternativesText}
-
-Look for alternate trains available for your journey:
-${targetSearchUrl}${unsubscribeLine}`;
-  }
-
-  return `*LastBerth Chart Alert* 🔔
-You subscribed to an alert when chart is prepared:
-
-No Tickets Found 😔
-
-Train: ${trainLabel}
-Route: ${routeDisplay}
-Date: ${journeyDateReadable}
-${refundBlock}
-${openAiSummary || "We tried our best but couldn't find any available tickets at this time."}
-
-Look for alternate trains available for your journey:
-${targetSearchUrl}${unsubscribeLine}`;
+  return lines.join('\n').trim();
 }
 
 export function buildAlternativeTrainsWhatsAppText(params: {
