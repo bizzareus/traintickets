@@ -1,6 +1,5 @@
 import { ConfigService } from '@nestjs/config';
 import { WasenderProvider } from './wasender.provider';
-import { WatiProvider } from './wati.provider';
 import { Msg91Provider } from './msg91.provider';
 import { WhatsAppProviderFactory } from './whatsapp.provider-factory';
 import axios from 'axios';
@@ -201,51 +200,6 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
     });
   });
 
-  describe('WatiProvider', () => {
-    it('sends template message to WATI API v2 endpoint', async () => {
-      const config = mockConfig({
-        WATI_API_ENDPOINT: 'https://live-mt-server.wati.io',
-        WATI_ACCESS_TOKEN: 'wati_token_123',
-        WATI_CHANNEL_NUMBER: '919999000000',
-      });
-      const provider = new WatiProvider(config);
-
-      mockedAxios.post.mockResolvedValueOnce({
-        data: { result: true, validWhatsAppNumber: true },
-      });
-
-      const result = await provider.sendWhatsApp({
-        mobile: '9876543210',
-        text: 'Fallback text',
-        templateName: 'chart_preparation_alert',
-        broadcastName: 'lastberth_test',
-        parameters: [
-          { name: 'name', value: 'Kartik' },
-          { name: 'train_number', value: '11039' },
-        ],
-      });
-
-      expect(result).toBe(true);
-      expect(mockedAxios.post.mock.calls.length).toBe(1);
-      expect(mockedAxios.post.mock.calls[0][0]).toBe(
-        'https://live-mt-server.wati.io/api/v1/sendTemplateMessage?whatsappNumber=919876543210',
-      );
-    });
-
-    it('returns false if WATI config or templateName is missing', async () => {
-      const config = mockConfig({});
-      const provider = new WatiProvider(config);
-
-      const result = await provider.sendWhatsApp({
-        mobile: '9876543210',
-        text: 'Fallback text',
-      });
-
-      expect(result).toBe(false);
-      expect(mockedAxios.post.mock.calls.length).toBe(0);
-    });
-  });
-
   describe('Msg91Provider', () => {
     it('sends chart_alert_tickets_found template with first 4 parameters as bodies', async () => {
       const config = mockConfig({
@@ -414,23 +368,16 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
     it('selects Msg91Provider strategy by default (WHATSAPP_PROVIDER unset)', async () => {
       const config = mockConfig({});
       const wasender = new WasenderProvider(config);
-      const wati = new WatiProvider(config);
       const msg91 = new Msg91Provider(config);
 
       const wasenderSpy = jest
         .spyOn(wasender, 'sendWhatsApp')
         .mockResolvedValue(true);
-      const watiSpy = jest.spyOn(wati, 'sendWhatsApp').mockResolvedValue(true);
       const msg91Spy = jest
         .spyOn(msg91, 'sendWhatsApp')
         .mockResolvedValue(true);
 
-      const factory = new WhatsAppProviderFactory(
-        config,
-        wasender,
-        wati,
-        msg91,
-      );
+      const factory = new WhatsAppProviderFactory(config, wasender, msg91);
 
       expect(factory.providerName).toBe('msg91');
 
@@ -440,30 +387,22 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       });
 
       expect(msg91Spy).toHaveBeenCalledTimes(1);
-      expect(watiSpy).not.toHaveBeenCalled();
       expect(wasenderSpy).not.toHaveBeenCalled();
     });
 
     it('selects WasenderProvider strategy when WHATSAPP_PROVIDER=wasender', async () => {
       const config = mockConfig({ WHATSAPP_PROVIDER: 'wasender' });
       const wasender = new WasenderProvider(config);
-      const wati = new WatiProvider(config);
       const msg91 = new Msg91Provider(config);
 
       const wasenderSpy = jest
         .spyOn(wasender, 'sendWhatsApp')
         .mockResolvedValue(true);
-      const watiSpy = jest.spyOn(wati, 'sendWhatsApp').mockResolvedValue(true);
       const msg91Spy = jest
         .spyOn(msg91, 'sendWhatsApp')
         .mockResolvedValue(true);
 
-      const factory = new WhatsAppProviderFactory(
-        config,
-        wasender,
-        wati,
-        msg91,
-      );
+      const factory = new WhatsAppProviderFactory(config, wasender, msg91);
 
       expect(factory.providerName).toBe('wasender');
 
@@ -473,63 +412,22 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       });
 
       expect(wasenderSpy).toHaveBeenCalledTimes(1);
-      expect(watiSpy).not.toHaveBeenCalled();
-      expect(msg91Spy).not.toHaveBeenCalled();
-    });
-    it('selects WatiProvider strategy when WHATSAPP_PROVIDER=wati', async () => {
-      const config = mockConfig({ WHATSAPP_PROVIDER: 'wati' });
-      const wasender = new WasenderProvider(config);
-      const wati = new WatiProvider(config);
-      const msg91 = new Msg91Provider(config);
-
-      const wasenderSpy = jest
-        .spyOn(wasender, 'sendWhatsApp')
-        .mockResolvedValue(true);
-      const watiSpy = jest.spyOn(wati, 'sendWhatsApp').mockResolvedValue(true);
-      const msg91Spy = jest
-        .spyOn(msg91, 'sendWhatsApp')
-        .mockResolvedValue(true);
-
-      const factory = new WhatsAppProviderFactory(
-        config,
-        wasender,
-        wati,
-        msg91,
-      );
-
-      expect(factory.providerName).toBe('wati');
-
-      await factory.sendWhatsApp({
-        mobile: '9876543210',
-        text: 'Test',
-        templateName: 'chart_preparation_alert',
-      });
-
-      expect(watiSpy).toHaveBeenCalledTimes(1);
-      expect(wasenderSpy).not.toHaveBeenCalled();
       expect(msg91Spy).not.toHaveBeenCalled();
     });
 
     it('defaults to Msg91Provider strategy when WHATSAPP_PROVIDER is empty', async () => {
       const config = mockConfig({});
       const wasender = new WasenderProvider(config);
-      const wati = new WatiProvider(config);
       const msg91 = new Msg91Provider(config);
 
       const wasenderSpy = jest
         .spyOn(wasender, 'sendWhatsApp')
         .mockResolvedValue(true);
-      const watiSpy = jest.spyOn(wati, 'sendWhatsApp').mockResolvedValue(true);
       const msg91Spy = jest
         .spyOn(msg91, 'sendWhatsApp')
         .mockResolvedValue(true);
 
-      const factory = new WhatsAppProviderFactory(
-        config,
-        wasender,
-        wati,
-        msg91,
-      );
+      const factory = new WhatsAppProviderFactory(config, wasender, msg91);
 
       expect(factory.providerName).toBe('msg91');
 
@@ -540,7 +438,6 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
 
       expect(msg91Spy).toHaveBeenCalledTimes(1);
       expect(wasenderSpy).not.toHaveBeenCalled();
-      expect(watiSpy).not.toHaveBeenCalled();
     });
   });
 });

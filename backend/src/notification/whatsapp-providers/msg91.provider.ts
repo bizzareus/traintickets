@@ -31,7 +31,7 @@ const MSG91_TEMPLATES: Record<string, { name: string; slots: number }> = {
 };
 
 /**
- * Legacy (WATI-era) template names used by NotificationService mapped to
+ * Legacy template names used by NotificationService mapped to
  * their MSG91 equivalent. `subscription_alert` / `chart_preparation_alert`
  * are shared by the seats-found flow (many parameters) and the
  * chart-prepared-only flow (few parameters) — disambiguated by count.

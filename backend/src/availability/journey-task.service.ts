@@ -2420,7 +2420,7 @@ export class JourneyTaskService {
       whatsappSent: status.whatsappSent,
       reason: sent
         ? undefined
-        : 'Notification provider returned failure (check WATI/Resend API status)',
+        : 'Notification provider returned failure (check WhatsApp/Resend API status)',
     };
   }
 

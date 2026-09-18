@@ -279,7 +279,7 @@ describe('WasenderHealthcheckService', () => {
   it('skips scheduled cron when WHATSAPP_PROVIDER is not wasender', async () => {
     jest.spyOn(configService, 'get').mockImplementation((key: string) => {
       if (key === 'NODE_ENV') return 'production';
-      if (key === 'WHATSAPP_PROVIDER') return 'wati';
+      if (key === 'WHATSAPP_PROVIDER') return 'msg91';
       if (key === 'WASENDER_API_KEY') return 'test_session_api_key';
       return undefined;
     });

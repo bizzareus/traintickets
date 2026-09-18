@@ -11,7 +11,6 @@ import { StationCacheService } from '../cache/station-cache.service';
 import { ShortLinkService } from '../short-link/short-link.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import { WasenderProvider } from './whatsapp-providers/wasender.provider';
-import { WatiProvider } from './whatsapp-providers/wati.provider';
 import { Msg91Provider } from './whatsapp-providers/msg91.provider';
 import { WhatsAppProviderFactory } from './whatsapp-providers/whatsapp.provider-factory';
 import type { SendWhatsAppPayload } from './whatsapp-providers/whatsapp-provider.interface';
@@ -113,7 +112,6 @@ export class NotificationService {
       new WhatsAppProviderFactory(
         this.config,
         new WasenderProvider(this.config),
-        new WatiProvider(this.config),
         new Msg91Provider(this.config),
       );
 
@@ -666,9 +664,7 @@ export class NotificationService {
           unsubscribeUrl: whatsappUnsubUrl,
         });
         out.whatsappSent = await this.sendWhatsApp(mobile.trim(), text, {
-          templateName:
-            this.config.get<string>('WATI_TEMPLATE_CHART_ALERT') ||
-            'subscription_alert',
+          templateName: 'subscription_alert',
           broadcastName: 'lastberth_chart_prepared_only',
           parameters: [
             { name: 'train_number', value: trainNumber },
@@ -1028,10 +1024,8 @@ export class NotificationService {
                   });
 
           const templateName = hasTickets
-            ? this.config.get<string>('WATI_TEMPLATE_CHART_ALERT') ||
-              'subscription_alert'
-            : this.config.get<string>('WATI_TEMPLATE_UNCOVERED_LEG') ||
-              'uncovered_leg__shortlink_alert';
+            ? 'subscription_alert'
+            : 'uncovered_leg__shortlink_alert';
 
           const classCodeExtracted =
             plan?.[0]?.instruction
@@ -1517,9 +1511,7 @@ export class NotificationService {
             stationNameMap,
             unsubscribeUrl: whatsappFooterUrl,
           });
-          const altTemplateName =
-            this.config.get<string>('WATI_TEMPLATE_ALT_TRAIN') ||
-            'alternative_train_alert';
+          const altTemplateName = 'alternative_train_alert';
           const altParameters = [
             { name: 'name', value: 'Passenger' },
             { name: 'original_train_number', value: originalTrainNumber || '' },

@@ -77,7 +77,7 @@ flowchart TD
 
     subgraph External["🔌 External APIs & Services"]
         IRCTC["IRCTC & Browser-Use API"]
-        WATI["WhatsApp API (WATI)"]
+        MSG91["WhatsApp API (MSG91)"]
         Resend["Resend (Transactional Email)"]
         OpenAI["OpenAI (GPT-4o/5)"]
     end
@@ -100,7 +100,7 @@ flowchart TD
 
     %% Backend to External
     NestJS --> IRCTC
-    NestJS --> WATI
+    NestJS --> MSG91
     NestJS --> Resend
     NestJS --> OpenAI
 
