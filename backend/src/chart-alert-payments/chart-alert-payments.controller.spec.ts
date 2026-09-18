@@ -35,13 +35,15 @@ describe('ChartAlertPaymentsController', () => {
   it('creates a payment link for valid input', async () => {
     payments.createPaymentLink.mockResolvedValue({
       ref: 'ref-1',
-      payUrl: 'https://pay.test/x',
-      amount: 5,
+      amount: 25,
+      orderId: 'order-1',
+      qrImageUrl: 'https://rzp.test/qr-1.png',
     });
     await expect(controller.create({ ...validBody })).resolves.toEqual({
       ref: 'ref-1',
-      payUrl: 'https://pay.test/x',
-      amount: 5,
+      amount: 25,
+      orderId: 'order-1',
+      qrImageUrl: 'https://rzp.test/qr-1.png',
     });
   });
 
@@ -75,8 +77,14 @@ describe('ChartAlertPaymentsController', () => {
 
   it('always acks callbacks even when handling fails', async () => {
     payments.handleCallback.mockRejectedValue(new Error('poison'));
-    await expect(controller.handleCallback({})).resolves.toEqual({
+    await expect(
+      controller.handleCallback({ rawBody: Buffer.alloc(0) } as never, 'sig'),
+    ).resolves.toEqual({
       received: true,
     });
+    expect(payments.handleCallback).toHaveBeenCalledWith(
+      Buffer.alloc(0),
+      'sig',
+    );
   });
 });

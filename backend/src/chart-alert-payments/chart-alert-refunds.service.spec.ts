@@ -1,29 +1,30 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
 import { ChartAlertRefundsService } from './chart-alert-refunds.service';
+import { RazorpayClient } from './razorpay.client';
 import { PrismaService } from '../prisma/prisma.service';
 
 /**
  * Safety net against unnecessary refunds: every path that must NOT move
- * money asserts `client.post` was never called (no Muzobox call = no
- * Razorpay refund). Only the happy path and the recorded-failure path may
- * reach the HTTP client.
+ * money asserts `razorpay.createRefund` was never called (no Razorpay call
+ * = no money moved). Only the happy path and the recorded-failure path may
+ * reach the Razorpay client.
  */
 describe('ChartAlertRefundsService', () => {
   let service: ChartAlertRefundsService;
   let prisma: Record<string, any>;
   let configGet: jest.Mock;
-  let client: { post: jest.Mock; get: jest.Mock };
+  let razorpay: Record<string, any>;
 
   const paidRecord = {
     id: 'pay_123',
     journeyRequestId: 'jid_123',
     status: 'PAID',
-    amount: 5,
+    amount: 25,
     refundStatus: 'NONE',
     refundAmount: null,
     razorpayRefundId: null,
-    muzoboxPaymentId: 'mzb_123',
+    razorpayPaymentId: 'pay_rzp_123',
     journeyPayload: {
       trainNumber: '12639',
       fromStationCode: 'MAS',
@@ -46,22 +47,23 @@ describe('ChartAlertRefundsService', () => {
       },
     };
     configGet = jest.fn((key: string) => {
-      if (key === 'MUZOBOX_PROXY_API_KEY') return 'test-key';
-      if (key === 'MUZOBOX_API_URL') return 'https://muzobox.test/api';
       return undefined;
     });
+    razorpay = {
+      isConfigured: true,
+      createRefund: jest.fn(),
+    };
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ChartAlertRefundsService,
         { provide: PrismaService, useValue: prisma },
         { provide: ConfigService, useValue: { get: configGet } },
+        { provide: RazorpayClient, useValue: razorpay },
       ],
     }).compile();
 
     service = module.get(ChartAlertRefundsService);
-    client = { post: jest.fn(), get: jest.fn() };
-    (service as any).client = client;
 
     prisma.chartAlertPayment.findFirst.mockResolvedValue(paidRecord);
     prisma.journeyMonitoringRequest.findUnique.mockResolvedValue({
@@ -79,7 +81,7 @@ describe('ChartAlertRefundsService', () => {
         expect(result).toEqual({ attempted: false, outcome: 'skipped' });
       }
       expect(prisma.chartAlertPayment.findFirst).not.toHaveBeenCalled();
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
     it('skips everything when ENABLE_AUTO_REFUND=false', async () => {
@@ -95,7 +97,7 @@ describe('ChartAlertRefundsService', () => {
 
       expect(result).toEqual({ attempted: false, outcome: 'skipped' });
       expect(prisma.chartAlertPayment.findFirst).not.toHaveBeenCalled();
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
     it('skips when no PAID payment exists for the journey', async () => {
@@ -107,14 +109,14 @@ describe('ChartAlertRefundsService', () => {
       );
 
       expect(result).toEqual({ attempted: false, outcome: 'skipped' });
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
     it('does not double-refund an already SUCCEEDED payment', async () => {
       prisma.chartAlertPayment.findFirst.mockResolvedValue({
         ...paidRecord,
         refundStatus: 'SUCCEEDED',
-        refundAmount: 5,
+        refundAmount: 25,
         razorpayRefundId: 'rfnd_123',
       });
 
@@ -126,11 +128,11 @@ describe('ChartAlertRefundsService', () => {
       expect(result).toEqual({
         attempted: true,
         outcome: 'succeeded',
-        amount: 5,
+        amount: 25,
         refundId: 'rfnd_123',
       });
       expect(prisma.chartAlertPayment.updateMany).not.toHaveBeenCalled();
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
     it('does not re-attempt while a refund is already INITIATED', async () => {
@@ -147,16 +149,16 @@ describe('ChartAlertRefundsService', () => {
       expect(result).toEqual({
         attempted: true,
         outcome: 'pending',
-        amount: 5,
+        amount: 25,
       });
       expect(prisma.chartAlertPayment.updateMany).not.toHaveBeenCalled();
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
-    it('skips when the payment has no Muzobox payment id', async () => {
+    it('skips when the payment has no captured Razorpay payment id', async () => {
       prisma.chartAlertPayment.findFirst.mockResolvedValue({
         ...paidRecord,
-        muzoboxPaymentId: null,
+        razorpayPaymentId: null,
       });
 
       const result = await service.initiateRefundForJourney(
@@ -165,11 +167,11 @@ describe('ChartAlertRefundsService', () => {
       );
 
       expect(result).toEqual({ attempted: false, outcome: 'skipped' });
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
-    it('skips when the proxy API key is missing', async () => {
-      configGet.mockImplementation(() => undefined);
+    it('skips when Razorpay is not configured', async () => {
+      razorpay.isConfigured = false;
 
       const result = await service.initiateRefundForJourney(
         'jid_123',
@@ -177,7 +179,7 @@ describe('ChartAlertRefundsService', () => {
       );
 
       expect(result).toEqual({ attempted: false, outcome: 'skipped' });
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
   });
 
@@ -194,7 +196,7 @@ describe('ChartAlertRefundsService', () => {
 
       expect(result).toEqual({ attempted: false, outcome: 'skipped' });
       expect(prisma.chartAlertPayment.updateMany).not.toHaveBeenCalled();
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
     it('skips when the journey request destination is whitespace-only', async () => {
@@ -208,7 +210,7 @@ describe('ChartAlertRefundsService', () => {
       );
 
       expect(result).toEqual({ attempted: false, outcome: 'skipped' });
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
     it('falls back to the paid journey payload when the request row is missing', async () => {
@@ -224,7 +226,7 @@ describe('ChartAlertRefundsService', () => {
       );
 
       expect(result).toEqual({ attempted: false, outcome: 'skipped' });
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
     it('skips when neither the request row nor a payload destination exists', async () => {
@@ -240,7 +242,7 @@ describe('ChartAlertRefundsService', () => {
       );
 
       expect(result).toEqual({ attempted: false, outcome: 'skipped' });
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
   });
 
@@ -250,7 +252,7 @@ describe('ChartAlertRefundsService', () => {
       prisma.chartAlertPayment.findUnique.mockResolvedValue({
         ...paidRecord,
         refundStatus: 'SUCCEEDED',
-        refundAmount: 5,
+        refundAmount: 25,
         razorpayRefundId: 'rfnd_winner',
       });
 
@@ -262,10 +264,10 @@ describe('ChartAlertRefundsService', () => {
       expect(result).toEqual({
         attempted: true,
         outcome: 'succeeded',
-        amount: 5,
+        amount: 25,
         refundId: 'rfnd_winner',
       });
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
 
     it('returns pending when the claim is lost and no refund succeeded', async () => {
@@ -283,18 +285,16 @@ describe('ChartAlertRefundsService', () => {
       expect(result).toEqual({
         attempted: true,
         outcome: 'pending',
-        amount: 5,
+        amount: 25,
       });
-      expect(client.post).not.toHaveBeenCalled();
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
     });
   });
 
   describe('genuine no-ticket cases still refund', () => {
-    it('claims, calls Muzobox once, and records SUCCEEDED', async () => {
+    it('claims, calls Razorpay once, and records SUCCEEDED', async () => {
       prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
-      client.post.mockResolvedValue({
-        data: { status: 'success', razorpay_refund_id: 'rfnd_123' },
-      });
+      razorpay.createRefund.mockResolvedValue({ id: 'rfnd_123' });
       prisma.chartAlertPayment.update.mockResolvedValue({});
 
       const result = await service.initiateRefundForJourney(
@@ -305,14 +305,16 @@ describe('ChartAlertRefundsService', () => {
       expect(result).toEqual({
         attempted: true,
         outcome: 'succeeded',
-        amount: 5,
+        amount: 25,
         refundId: 'rfnd_123',
       });
       expect(prisma.chartAlertPayment.updateMany).toHaveBeenCalledTimes(1);
-      expect(client.post).toHaveBeenCalledTimes(1);
-      expect(client.post.mock.calls[0][0]).toBe(
-        'proxy-payments/mzb_123/refund',
-      );
+      expect(razorpay.createRefund).toHaveBeenCalledTimes(1);
+      expect(razorpay.createRefund).toHaveBeenCalledWith({
+        paymentId: 'pay_rzp_123',
+        amountPaise: 2500,
+        notes: expect.objectContaining({ chart_alert_ref: 'pay_123' }),
+      });
       expect(prisma.chartAlertPayment.update).toHaveBeenCalledWith(
         expect.objectContaining({
           where: { id: 'pay_123' },
@@ -321,9 +323,9 @@ describe('ChartAlertRefundsService', () => {
       );
     });
 
-    it('records FAILED (no retry loop, no second charge) when Muzobox errors', async () => {
+    it('records FAILED (no retry loop, no second charge) when Razorpay errors', async () => {
       prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
-      client.post.mockRejectedValueOnce(new Error('proxy down'));
+      razorpay.createRefund.mockRejectedValueOnce(new Error('rzp down'));
       prisma.chartAlertPayment.update.mockResolvedValue({});
 
       const result = await service.initiateRefundForJourney(
@@ -334,9 +336,9 @@ describe('ChartAlertRefundsService', () => {
       expect(result).toEqual({
         attempted: true,
         outcome: 'failed',
-        amount: 5,
+        amount: 25,
       });
-      expect(client.post).toHaveBeenCalledTimes(1);
+      expect(razorpay.createRefund).toHaveBeenCalledTimes(1);
       expect(prisma.chartAlertPayment.update).toHaveBeenCalledWith(
         expect.objectContaining({
           data: expect.objectContaining({ refundStatus: 'FAILED' }),

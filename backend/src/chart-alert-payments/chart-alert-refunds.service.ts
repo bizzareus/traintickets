@@ -1,54 +1,24 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Prisma } from '@prisma/client';
-import type { AxiosInstance } from 'axios';
 import { PrismaService } from '../prisma/prisma.service';
-import { createRetryingAxiosClient } from '../common/retrying-axios';
+import { RazorpayClient } from './razorpay.client';
 import type { RefundInfo } from '../notification/notification.helpers';
 
-const DEFAULT_MUZOBOX_API_URL =
-  'https://ai-jukebox-backend-production.up.railway.app/api';
-const REFUND_TIMEOUT_MS = 7000;
-
-type MuzoboxRefundResponse = {
-  status?: string;
-  razorpayRefundId?: string;
-  razorpay_refund_id?: string;
-  id?: string;
-  amount?: number;
-};
-
 /**
- * Standalone refund client (Prisma + Config only, no JourneyTask dep so
- * JourneyTaskService can inject it without a circular dependency).
- * Calls Muzobox `POST proxy-payments/:id/refund`, which fans out to Razorpay.
+ * Standalone refund client (no JourneyTask dep so JourneyTaskService can
+ * inject it without a circular dependency). Refunds directly via the
+ * Razorpay Refunds API against the captured payment stored on the row.
  */
 @Injectable()
 export class ChartAlertRefundsService {
   private readonly logger = new Logger(ChartAlertRefundsService.name);
-  private readonly client: AxiosInstance;
 
   constructor(
     private prisma: PrismaService,
     private configService: ConfigService,
-  ) {
-    this.client = createRetryingAxiosClient({
-      serviceName: 'muzobox-refund',
-      retries: 1,
-      retryPost: false,
-    });
-    this.client.defaults.baseURL = this.muzoboxApiUrl;
-    this.client.defaults.timeout = REFUND_TIMEOUT_MS;
-  }
-
-  private get muzoboxApiUrl(): string {
-    return (
-      this.configService
-        .get<string>('MUZOBOX_API_URL')
-        ?.trim()
-        .replace(/\/$/, '') || DEFAULT_MUZOBOX_API_URL
-    );
-  }
+    private razorpay: RazorpayClient,
+  ) {}
 
   private get autoRefundEnabled(): boolean {
     const raw = this.configService
@@ -56,13 +26,6 @@ export class ChartAlertRefundsService {
       ?.trim()
       .toLowerCase();
     return raw !== 'false';
-  }
-
-  private authHeaders(): Record<string, string> | null {
-    const apiKey = this.configService
-      .get<string>('MUZOBOX_PROXY_API_KEY')
-      ?.trim();
-    return apiKey ? { 'x-api-key': apiKey } : null;
   }
 
   /**
@@ -133,12 +96,14 @@ export class ChartAlertRefundsService {
         amount: record.amount,
       };
     }
-    if (!record.muzoboxPaymentId)
+    if (!record.razorpayPaymentId) {
+      this.logger.warn(
+        `Refund skipped for jid=${jid}: no captured Razorpay payment on record`,
+      );
       return { attempted: false, outcome: 'skipped' };
-
-    const headers = this.authHeaders();
-    if (!headers) {
-      this.logger.warn(`Refund skipped for jid=${jid}: proxy key missing`);
+    }
+    if (!this.razorpay.isConfigured) {
+      this.logger.warn(`Refund skipped for jid=${jid}: Razorpay not configured`);
       return { attempted: false, outcome: 'skipped' };
     }
 
@@ -170,21 +135,12 @@ export class ChartAlertRefundsService {
     }
 
     try {
-      const res = await this.client.post<MuzoboxRefundResponse>(
-        `proxy-payments/${record.muzoboxPaymentId}/refund`,
-        {
-          amount: record.amount,
-          reason,
-          referenceId: record.id,
-        },
-        { headers },
-      );
-      const body = res.data ?? {};
-      const refundId =
-        body.razorpayRefundId ??
-        body.razorpay_refund_id ??
-        body.id ??
-        undefined;
+      const refund = await this.razorpay.createRefund({
+        paymentId: record.razorpayPaymentId,
+        amountPaise: record.amount * 100,
+        notes: { chart_alert_ref: record.id, reason: reason.slice(0, 200) },
+      });
+      const refundId = refund.id;
       await this.prisma.chartAlertPayment.update({
         where: { id: record.id },
         data: {
@@ -192,7 +148,7 @@ export class ChartAlertRefundsService {
           razorpayRefundId: refundId,
           refundAmount: record.amount,
           refundedAt: new Date(),
-          refundResponse: body as unknown as Prisma.InputJsonValue,
+          refundResponse: { id: refundId } as unknown as Prisma.InputJsonValue,
         },
       });
       this.logger.log(

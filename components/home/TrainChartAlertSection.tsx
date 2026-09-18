@@ -14,6 +14,7 @@ import {
   createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
+  type ChartAlertPaymentLink,
 } from "@/lib/chart-alert-payments";
 import {
   ChartAlertPaymentModal,
@@ -56,7 +57,7 @@ export function TrainChartAlertSection({
   const [subscribedJourney, setSubscribedJourney] =
     useState<ChartAlertPaymentModalJourney | null>(null);
   const [payment, setPayment] = useState<{
-    payUrl: string;
+    link: ChartAlertPaymentLink;
     ref: string;
     journey: ChartAlertPaymentModalJourney;
   } | null>(null);
@@ -145,7 +146,7 @@ export function TrainChartAlertSection({
         "search_panel",
       );
       setModalOpen(false);
-      setPayment({ payUrl: link.payUrl, ref: link.ref, journey });
+      setPayment({ link, ref: link.ref, journey });
     } catch (err: unknown) {
       const errMsg = getChartAlertErrorMessage(
         err,
@@ -404,7 +405,7 @@ export function TrainChartAlertSection({
         <ChartAlertPaymentModal
           open
           onClose={() => setPayment(null)}
-          payUrl={payment.payUrl}
+          payment={payment.link}
           paymentRef={payment.ref}
           journey={payment.journey}
           source="search_panel"

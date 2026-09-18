@@ -4,13 +4,15 @@ import {
   NotFoundException,
   ServiceUnavailableException,
 } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { randomUUID } from 'node:crypto';
 import type { ChartAlertPayment } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { JourneyTaskService } from '../availability/journey-task.service';
-import { createRetryingAxiosClient } from '../common/retrying-axios';
-import type { AxiosInstance } from 'axios';
+import {
+  RazorpayClient,
+  verifyRazorpayWebhookSignature,
+  type RazorpayPaymentItem,
+} from './razorpay.client';
 
 /** AC classes charged at the premium tier. Everything else (incl. ANY) is standard. */
 const PREMIUM_ALERT_CLASSES = new Set(['1A', '2A', '3A']);
@@ -28,10 +30,6 @@ export function chartAlertPriceForClass(classCode?: string | null): number {
     ? PREMIUM_ALERT_PRICE_RUPEES
     : STANDARD_ALERT_PRICE_RUPEES;
 }
-const DEFAULT_MUZOBOX_API_URL =
-  'https://ai-jukebox-backend-production.up.railway.app/api';
-const DEFAULT_PUBLIC_API_URL = 'https://api.lastberth.com';
-const DEFAULT_FRONTEND_URL = 'https://lastberth.com';
 
 export type ChartAlertJourneyInput = {
   trainNumber: string;
@@ -53,8 +51,12 @@ export type ChartAlertJourneyInput = {
 
 export type PaymentLinkResult = {
   ref: string;
-  payUrl: string;
   amount: number;
+  orderId: string;
+  qrImageUrl: string;
+  upiIntent?: string;
+  gpayIntent?: string;
+  phonepeIntent?: string;
 };
 
 export type PaymentConfirmResult = {
@@ -79,106 +81,46 @@ export type PaymentConfirmResult = {
   };
 };
 
-type MuzoboxCreateLinkResponse = {
-  id?: string;
-  paymentId?: string;
-  payment_id?: string;
-  amount?: number;
-  payUrl?: string;
-  pay_url?: string;
-  payLink?: string;
-};
-
-type MuzoboxStatusResponse = {
-  status?: string;
-  amount?: number;
-  referenceId?: string | null;
-  reference_id?: string | null;
-  razorpayPaymentId?: string | null;
-  razorpay_payment_id?: string | null;
-  razorpayOrderId?: string | null;
-  razorpay_order_id?: string | null;
-  redirectUrl?: string;
+type RazorpayWebhookEvent = {
+  event?: string;
+  payload?: {
+    payment?: {
+      entity?: RazorpayPaymentItem & { notes?: Record<string, unknown> };
+    };
+    order?: {
+      entity?: {
+        id?: string;
+        receipt?: string;
+        notes?: Record<string, unknown>;
+      };
+    };
+  };
 };
 
 @Injectable()
 export class ChartAlertPaymentsService {
   private readonly logger = new Logger(ChartAlertPaymentsService.name);
-  private readonly client: AxiosInstance;
 
   constructor(
     private prisma: PrismaService,
-    private configService: ConfigService,
     private journeyTask: JourneyTaskService,
-  ) {
-    this.client = createRetryingAxiosClient({
-      serviceName: 'muzobox',
-      retries: 2,
-      retryPost: false,
-    });
-    this.client.defaults.baseURL = this.muzoboxApiUrl;
-    this.client.defaults.timeout = 15_000;
-  }
-
-  private get muzoboxApiUrl(): string {
-    return (
-      this.configService
-        .get<string>('MUZOBOX_API_URL')
-        ?.trim()
-        .replace(/\/$/, '') || DEFAULT_MUZOBOX_API_URL
-    );
-  }
-
-  private get publicApiUrl(): string {
-    return (
-      this.configService
-        .get<string>('PUBLIC_API_URL')
-        ?.trim()
-        .replace(/\/$/, '') || DEFAULT_PUBLIC_API_URL
-    );
-  }
-
-  private get frontendUrl(): string {
-    return (
-      this.configService
-        .get<string>('FRONTEND_URL')
-        ?.trim()
-        .replace(/\/$/, '') ||
-      this.configService
-        .get<string>('NEXT_PUBLIC_APP_URL')
-        ?.trim()
-        .replace(/\/$/, '') ||
-      DEFAULT_FRONTEND_URL
-    );
-  }
-
-  private priceForClass(classCode?: string | null): number {
-    return chartAlertPriceForClass(classCode);
-  }
-
-  private authHeaders(): Record<string, string> {
-    const apiKey = this.configService
-      .get<string>('MUZOBOX_PROXY_API_KEY')
-      ?.trim();
-    if (!apiKey) {
-      throw new ServiceUnavailableException(
-        'Payment system is not configured. Please try again later.',
-      );
-    }
-    return { 'x-api-key': apiKey };
-  }
+    private razorpay: RazorpayClient,
+  ) {}
 
   /**
-   * Create a pending payment record and a Muzobox hosted payment link.
-   * The frontend redirects the customer to `payUrl`; after payment Muzobox
-   * sends them back to {frontend}/chart-alert/payment-complete?ref=…
+   * Create a pending payment record, a Razorpay order, and a single-use UPI
+   * QR. Returns everything the frontend needs to render its own checkout:
+   * QR image plus per-app intent links (GPay / PhonePe / generic UPI).
    */
   async createPaymentLink(
     input: ChartAlertJourneyInput,
   ): Promise<PaymentLinkResult> {
-    const amount = this.priceForClass(input.classCode);
-    // Fail fast when the proxy key is missing so we don't leave junk FAILED rows.
-    const headers = this.authHeaders();
+    if (!this.razorpay.isConfigured) {
+      throw new ServiceUnavailableException(
+        'Payment system is not configured. Please try again later.',
+      );
+    }
+    const amount = chartAlertPriceForClass(input.classCode);
     const record = await this.prisma.chartAlertPayment.create({
       data: {
         amount,
@@ -205,48 +147,54 @@ export class ChartAlertPaymentsService {
     });
 
     try {
-      const res = await this.client.post<MuzoboxCreateLinkResponse>(
-        'proxy-payments/create-link',
-        {
-          amount,
-          redirectUri: `${this.frontendUrl}/chart-alert/payment-complete?ref=${record.id}`,
-          referenceId: record.id,
-          callbackUrl: `${this.publicApiUrl}/api/chart-alert-payments/callback`,
-          description: `Chart alert ${input.trainNumber} ${input.fromStationCode}->${input.toStationCode || 'ANY'} ${input.journeyDate}`,
-          customerEmail: input.email?.trim() || undefined,
-          customerMobile: input.mobile?.trim() || undefined,
-        },
-        { headers },
+      const amountPaise = amount * 100;
+      const notes = { chart_alert_ref: record.id };
+      const order = await this.razorpay.createOrder({
+        amountPaise,
+        receipt: record.id,
+        notes,
+      });
+      const qr = await this.razorpay.createUpiQr({
+        amountPaise,
+        name: `Chart alert ${input.trainNumber}`,
+        description: `Chart alert ${input.trainNumber} ${input.fromStationCode}->${input.toStationCode || 'ANY'} ${input.journeyDate}`,
+        notes,
+      });
+      const { intent, apps } = await this.razorpay.resolveQrIntents(
+        qr.imageUrl,
       );
-
-      // Muzobox field names vary across versions — accept camelCase/snake_case.
-      const body = res.data ?? {};
-      const muzoboxId =
-        body.id ?? body.paymentId ?? body.payment_id ?? undefined;
-      const payUrl = body.payUrl ?? body.pay_url ?? body.payLink ?? undefined;
-      if (!muzoboxId || !payUrl) {
-        throw new Error('Invalid response from payment proxy');
+      if (!apps) {
+        this.logger.warn(
+          `QR intent decode failed for ref=${record.id}; serving QR image only`,
+        );
       }
 
       await this.prisma.chartAlertPayment.update({
         where: { id: record.id },
-        data: { muzoboxPaymentId: muzoboxId, payUrl },
+        data: { razorpayOrderId: order.id },
       });
 
       this.logger.log(
-        `Created chart-alert payment ref=${record.id} muzobox=${muzoboxId} for ${input.trainNumber}`,
+        `Created chart-alert payment ref=${record.id} order=${order.id} qr=${qr.id} for ${input.trainNumber}`,
       );
-      return { ref: record.id, payUrl, amount };
+      return {
+        ref: record.id,
+        amount,
+        orderId: order.id,
+        qrImageUrl: qr.imageUrl,
+        upiIntent: apps?.upiIntent,
+        gpayIntent: apps?.gpayIntent,
+        phonepeIntent: apps?.phonepeIntent,
+      };
     } catch (err) {
       await this.prisma.chartAlertPayment.update({
         where: { id: record.id },
         data: { status: 'FAILED' },
       });
       if (err instanceof ServiceUnavailableException) throw err;
+      const msg = err instanceof Error ? err.message : String(err);
       this.logger.error(
-        `Muzobox create-link failed for ref=${record.id} amount=${amount} ` +
-          `target=${this.describeMuzoboxErrorTarget(err)} ` +
-          `body=${this.describeMuzoboxErrorBody(err)}`,
+        `Razorpay create failed for ref=${record.id} amount=${amount}: ${msg}`,
       );
       throw new ServiceUnavailableException(
         'Payment system is not available. Please try again later.',
@@ -255,37 +203,8 @@ export class ChartAlertPaymentsService {
   }
 
   /**
-   * Full request URL for a failed Muzobox call (method + base + path), so a
-   * 404/401 can be traced to a misconfigured MUZOBOX_API_URL. Never includes
-   * contact PII — only routing info.
-   */
-  private describeMuzoboxErrorTarget(err: unknown): string {
-    const e = err as {
-      config?: { baseURL?: string; url?: string; method?: string };
-    };
-    const method = e?.config?.method?.toUpperCase() ?? 'POST';
-    const base = e?.config?.baseURL ?? this.muzoboxApiUrl;
-    const path = e?.config?.url ?? 'proxy-payments/create-link';
-    return `${method} ${base}/${String(path).replace(/^\/+/, '')}`;
-  }
-
-  /** Truncated proxy response body (or fallback message) for error logs. */
-  private describeMuzoboxErrorBody(err: unknown): string {
-    const e = err as {
-      response?: { status?: number; data?: unknown };
-      message?: string;
-    };
-    const status = e?.response?.status;
-    const body =
-      e?.response?.data ?? (typeof e?.message === 'string' ? e.message : null);
-    const raw =
-      typeof body === 'string' ? body : JSON.stringify(body ?? String(err));
-    return `status=${status ?? 'n/a'} ${raw.slice(0, 500)}`;
-  }
-
-  /**
-   * Status for the return page. Re-verifies server-to-server with Muzobox
-   * (never trusts the redirect query params) and fulfils the subscription.
+   * Status for the payment page. Re-verifies server-to-server with Razorpay
+   * (order payments) and fulfils the subscription on first paid sighting.
    */
   async getStatus(ref: string): Promise<PaymentConfirmResult> {
     const record = await this.findOrThrow(ref);
@@ -294,35 +213,74 @@ export class ChartAlertPaymentsService {
   }
 
   /**
-   * Server-to-server callback from Muzobox (payment proxy). The payload is
-   * untrusted, so we always re-verify via the Muzobox status API.
+   * Server-to-server Razorpay webhook. Verifies the HMAC signature against
+   * the raw body, extracts our ref from payment/order notes, and fulfils.
+   * Always resolves (never throws) so verified senders don't retry poison.
    */
-  async handleCallback(body: {
-    paymentId?: string;
-    payment_id?: string;
-    status?: string;
-    referenceId?: string;
-    reference_id?: string;
-    razorpay_payment_id?: string;
-    razorpay_order_id?: string;
-  }): Promise<{ received: boolean }> {
-    const ref = body?.referenceId ?? body?.reference_id;
-    const muzoboxId = body?.paymentId ?? body?.payment_id;
-    const record = ref
-      ? await this.prisma.chartAlertPayment.findUnique({ where: { id: ref } })
-      : muzoboxId
-        ? await this.prisma.chartAlertPayment.findUnique({
-            where: { muzoboxPaymentId: muzoboxId },
-          })
-        : null;
-    if (!record) {
+  async handleCallback(
+    rawBody: Buffer | string,
+    signature: string | undefined,
+  ): Promise<{ received: boolean }> {
+    if (
+      !verifyRazorpayWebhookSignature(
+        rawBody,
+        signature,
+        this.razorpay.webhookSecret,
+      )
+    ) {
+      this.logger.warn('Razorpay webhook with invalid signature; ignoring');
+      return { received: true };
+    }
+    let event: RazorpayWebhookEvent;
+    try {
+      event =
+        typeof rawBody === 'string'
+          ? (JSON.parse(rawBody) as RazorpayWebhookEvent)
+          : (JSON.parse(rawBody.toString('utf8')) as RazorpayWebhookEvent);
+    } catch {
+      this.logger.warn('Razorpay webhook with unparseable body; ignoring');
+      return { received: true };
+    }
+
+    const ref = this.extractRef(event);
+    if (!ref) {
       this.logger.warn(
-        `Payment callback for unknown ref=${ref ?? 'n/a'} payment=${muzoboxId ?? 'n/a'}`,
+        `Razorpay webhook ${event.event ?? 'unknown'} without chart_alert_ref; ignoring`,
       );
       return { received: true };
     }
-    await this.confirmIfPaid(record);
+    const record = await this.prisma.chartAlertPayment.findUnique({
+      where: { id: ref },
+    });
+    if (!record) {
+      this.logger.warn(`Razorpay webhook for unknown ref=${ref}`);
+      return { received: true };
+    }
+    const paymentEntity = event.payload?.payment?.entity;
+    if (paymentEntity?.id && !record.razorpayPaymentId) {
+      await this.prisma.chartAlertPayment.update({
+        where: { id: record.id },
+        data: { razorpayPaymentId: paymentEntity.id },
+      });
+      record.razorpayPaymentId = paymentEntity.id;
+    }
+    await this.confirmIfPaid(record).catch(() => undefined);
     return { received: true };
+  }
+
+  private extractRef(event: RazorpayWebhookEvent): string | null {
+    const fromNotes = (notes: Record<string, unknown> | undefined) => {
+      const v = notes?.['chart_alert_ref'];
+      return typeof v === 'string' && v.trim() ? v.trim() : null;
+    };
+    return (
+      fromNotes(event.payload?.payment?.entity?.notes) ??
+      fromNotes(event.payload?.order?.entity?.notes) ??
+      (typeof event.payload?.order?.entity?.receipt === 'string' &&
+      event.payload.order.entity.receipt.trim()
+        ? event.payload.order.entity.receipt.trim()
+        : null)
+    );
   }
 
   private async findOrThrow(ref: string): Promise<ChartAlertPayment> {
@@ -341,7 +299,18 @@ export class ChartAlertPaymentsService {
     const s = String(status ?? '')
       .trim()
       .toLowerCase();
-    if (['paid', 'success', 'succeeded', 'completed', 'captured'].includes(s))
+    // UPI auto-captures, so `authorized` is terminal for our amounts.
+    if (
+      [
+        'paid',
+        'success',
+        'succeeded',
+        'completed',
+        'captured',
+        'authorized',
+        'credited',
+      ].includes(s)
+    )
       return 'paid';
     if (['failed', 'failure', 'cancelled', 'canceled', 'expired'].includes(s))
       return 'failed';
@@ -355,8 +324,15 @@ export class ChartAlertPaymentsService {
     return n === expectedRupees || n === expectedRupees * 100;
   }
 
+  /** A Razorpay payment item counts as paid when captured (or authorized). */
+  private isRemotePaid(item: RazorpayPaymentItem): boolean {
+    return (
+      ChartAlertPaymentsService.normalizeRemoteStatus(item.status) === 'paid'
+    );
+  }
+
   /**
-   * Idempotent fulfilment: if Muzobox reports PAID, mark our record PAID and
+   * Idempotent fulfilment: if Razorpay reports PAID, mark our record PAID and
    * queue the journey monitoring exactly once.
    *
    * Concurrency: `journeyRequestId` is the idempotency key claimed with an
@@ -369,49 +345,36 @@ export class ChartAlertPaymentsService {
   ): Promise<ChartAlertPayment> {
     // Fully fulfilled already — fast path.
     if (record.status === 'PAID' && record.journeyRequestId) return record;
-    if (record.status === 'FAILED' && !record.muzoboxPaymentId) return record;
-    if (!record.muzoboxPaymentId) return record;
+    if (record.status === 'FAILED' && !record.razorpayOrderId) return record;
+    if (!record.razorpayOrderId) return record;
 
-    let remote: MuzoboxStatusResponse;
+    let remotePaid = false;
     try {
-      // The status API requires the proxy key — without it every check 401s
-      // and payments stay pending forever.
-      const res = await this.client.get<MuzoboxStatusResponse>(
-        `proxy-payments/${record.muzoboxPaymentId}/status`,
-        { headers: this.authHeaders() },
+      const payments = await this.razorpay.orderPayments(
+        record.razorpayOrderId,
       );
-      remote = res.data ?? {};
+      const match = payments.find(
+        (p) => this.isRemotePaid(p) && this.amountsMatch(record.amount, p.amount),
+      );
+      if (match) {
+        remotePaid = true;
+        if (match.id && !record.razorpayPaymentId) {
+          await this.prisma.chartAlertPayment.update({
+            where: { id: record.id },
+            data: { razorpayPaymentId: match.id },
+          });
+          record.razorpayPaymentId = match.id;
+        }
+      }
     } catch (err) {
-      if (err instanceof ServiceUnavailableException) throw err;
       this.logger.warn(
-        `Muzobox status check failed for ref=${record.id} ` +
-          `target=${this.describeMuzoboxErrorTarget(err)} ` +
-          `body=${this.describeMuzoboxErrorBody(err)}`,
+        `Razorpay status check failed for ref=${record.id}: ${
+          err instanceof Error ? err.message : String(err)
+        }`,
       );
       return record;
     }
-
-    const normalized = ChartAlertPaymentsService.normalizeRemoteStatus(
-      remote?.status,
-    );
-    if (normalized === 'failed') {
-      if (record.status === 'FAILED') return record;
-      return this.prisma.chartAlertPayment.update({
-        where: { id: record.id },
-        data: { status: 'FAILED' },
-      });
-    }
-    if (normalized !== 'paid') return record;
-    if (!this.amountsMatch(record.amount, remote.amount)) {
-      this.logger.warn(
-        `Amount mismatch for ref=${record.id}: expected ₹${record.amount}, proxy reports ₹${String(remote.amount)}`,
-      );
-    }
-
-    const razorpayPaymentId =
-      remote.razorpayPaymentId ?? remote.razorpay_payment_id ?? undefined;
-    const razorpayOrderId =
-      remote.razorpayOrderId ?? remote.razorpay_order_id ?? undefined;
+    if (!remotePaid) return record;
 
     // Claim the fulfilment: only one worker wins the null → jid transition.
     const journeyRequestId = record.journeyRequestId ?? randomUUID();
@@ -420,8 +383,6 @@ export class ChartAlertPaymentsService {
         where: { id: record.id, journeyRequestId: null },
         data: {
           status: 'PAID',
-          razorpayPaymentId,
-          razorpayOrderId,
           journeyRequestId,
           paidAt: new Date(),
         },
@@ -438,8 +399,6 @@ export class ChartAlertPaymentsService {
         where: { id: record.id },
         data: {
           status: 'PAID',
-          razorpayPaymentId,
-          razorpayOrderId,
           paidAt: record.paidAt ?? new Date(),
         },
       });

@@ -6,7 +6,8 @@ import cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  // rawBody is required by the Razorpay webhook signature check.
+  const app = await NestFactory.create(AppModule, { rawBody: true });
   const isAllowedOrigin = (origin: string | undefined): boolean => {
     if (!origin) return true; // Direct non-browser requests / healthchecks
     return (

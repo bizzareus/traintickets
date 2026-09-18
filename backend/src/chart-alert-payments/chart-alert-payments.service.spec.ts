@@ -1,10 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ConfigService } from '@nestjs/config';
+import { createHmac } from 'node:crypto';
 import { ServiceUnavailableException } from '@nestjs/common';
 import {
   ChartAlertPaymentsService,
   chartAlertPriceForClass,
 } from './chart-alert-payments.service';
+import { RazorpayClient } from './razorpay.client';
 import { PrismaService } from '../prisma/prisma.service';
 import { JourneyTaskService } from '../availability/journey-task.service';
 
@@ -12,7 +13,7 @@ describe('ChartAlertPaymentsService', () => {
   let service: ChartAlertPaymentsService;
   let prisma: Record<string, any>;
   let journeyTask: Record<string, any>;
-  let client: { post: jest.Mock; get: jest.Mock };
+  let razorpay: Record<string, jest.Mock>;
 
   const baseInput = {
     trainNumber: '12639',
@@ -22,6 +23,12 @@ describe('ChartAlertPaymentsService', () => {
     classCode: '3A',
     email: 'a@example.com',
   };
+
+  const appsFor = (ref: string) => ({
+    upiIntent: `upi://pay?pa=merchant@upi&am=25&cu=INR&tn=${ref}&tr=${ref}`,
+    gpayIntent: `tez://upi/pay?pa=merchant@upi&am=25&cu=INR&tn=${ref}&tr=${ref}`,
+    phonepeIntent: `phonepe://pay?pa=merchant@upi&am=25&cu=INR&tn=${ref}&tr=${ref}`,
+  });
 
   beforeEach(async () => {
     prisma = {
@@ -36,88 +43,91 @@ describe('ChartAlertPaymentsService', () => {
       queueJourneyMonitoring: jest.fn(),
       queueChartPreparedMonitoring: jest.fn(),
     };
-    const config = {
-      get: jest.fn((key: string) => {
-        if (key === 'MUZOBOX_PROXY_API_KEY') return 'test-key';
-        if (key === 'MUZOBOX_API_URL') return 'https://muzobox.test/api';
-        if (key === 'PUBLIC_API_URL') return 'https://api.test';
-        if (key === 'FRONTEND_URL') return 'https://app.test';
-        return undefined;
-      }),
+    razorpay = {
+      isConfigured: true,
+      webhookSecret: 'whsec-test',
+      createOrder: jest.fn(),
+      createUpiQr: jest.fn(),
+      resolveQrIntents: jest.fn(),
+      orderPayments: jest.fn(),
+      fetchPayment: jest.fn(),
+      createRefund: jest.fn(),
     };
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ChartAlertPaymentsService,
         { provide: PrismaService, useValue: prisma },
-        { provide: ConfigService, useValue: config },
         { provide: JourneyTaskService, useValue: journeyTask },
+        { provide: RazorpayClient, useValue: razorpay },
       ],
     }).compile();
 
     service = module.get(ChartAlertPaymentsService);
-    client = { post: jest.fn(), get: jest.fn() };
-    (service as any).client = client;
   });
 
   describe('createPaymentLink', () => {
-    it('sends an absolute redirectUri, callbackUrl and auth headers', async () => {
-      prisma.chartAlertPayment.create.mockResolvedValue({
-        id: 'ref-1',
-        amount: 25,
+    it('creates a Razorpay order + QR and returns own-checkout data', async () => {
+      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-1' });
+      razorpay.createOrder.mockResolvedValue({ id: 'order-1', amount: 2500 });
+      razorpay.createUpiQr.mockResolvedValue({
+        id: 'qr-1',
+        imageUrl: 'https://rzp.test/qr-1.png',
       });
-      client.post.mockResolvedValue({
-        data: { id: 'mz-1', payUrl: 'https://pay.test/mz-1' },
+      razorpay.resolveQrIntents.mockResolvedValue({
+        intent: appsFor('ref-1').upiIntent,
+        apps: appsFor('ref-1'),
       });
       prisma.chartAlertPayment.update.mockResolvedValue({});
 
       const out = await service.createPaymentLink({ ...baseInput });
 
-      expect(out).toEqual({
-        ref: 'ref-1',
-        payUrl: 'https://pay.test/mz-1',
-        amount: 25,
+      expect(razorpay.createOrder).toHaveBeenCalledWith({
+        amountPaise: 2500,
+        receipt: 'ref-1',
+        notes: { chart_alert_ref: 'ref-1' },
       });
-      expect(prisma.chartAlertPayment.create).toHaveBeenCalledWith(
+      expect(razorpay.createUpiQr).toHaveBeenCalledWith(
         expect.objectContaining({
-          data: expect.objectContaining({ amount: 25 }),
+          amountPaise: 2500,
+          notes: { chart_alert_ref: 'ref-1' },
         }),
       );
-      const [, body, opts] = client.post.mock.calls[0];
-      expect(body.redirectUri).toBe(
-        'https://app.test/chart-alert/payment-complete?ref=ref-1',
-      );
-      expect(body.callbackUrl).toBe(
-        'https://api.test/api/chart-alert-payments/callback',
-      );
-      expect(opts.headers).toEqual({ 'x-api-key': 'test-key' });
+      expect(out).toEqual({
+        ref: 'ref-1',
+        amount: 25,
+        orderId: 'order-1',
+        qrImageUrl: 'https://rzp.test/qr-1.png',
+        ...appsFor('ref-1'),
+      });
+      expect(prisma.chartAlertPayment.update).toHaveBeenCalledWith({
+        where: { id: 'ref-1' },
+        data: { razorpayOrderId: 'order-1' },
+      });
     });
 
-    it('accepts snake_case proxy fields', async () => {
-      prisma.chartAlertPayment.create.mockResolvedValue({
-        id: 'ref-2',
-        amount: 25,
+    it('degrades to QR-image-only when intent decode fails', async () => {
+      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-2' });
+      razorpay.createOrder.mockResolvedValue({ id: 'order-2', amount: 2500 });
+      razorpay.createUpiQr.mockResolvedValue({
+        id: 'qr-2',
+        imageUrl: 'https://rzp.test/qr-2.png',
       });
-      client.post.mockResolvedValue({
-        data: { payment_id: 'mz-2', pay_url: 'https://pay.test/mz-2' },
+      razorpay.resolveQrIntents.mockResolvedValue({
+        intent: null,
+        apps: null,
       });
       prisma.chartAlertPayment.update.mockResolvedValue({});
 
       const out = await service.createPaymentLink({ ...baseInput });
 
-      expect(out.payUrl).toBe('https://pay.test/mz-2');
-      expect(prisma.chartAlertPayment.update).toHaveBeenCalledWith({
-        where: { id: 'ref-2' },
-        data: { muzoboxPaymentId: 'mz-2', payUrl: 'https://pay.test/mz-2' },
-      });
+      expect(out.qrImageUrl).toBe('https://rzp.test/qr-2.png');
+      expect(out.upiIntent).toBeUndefined();
     });
 
-    it('throws 503 without leaving a usable link when the proxy is down', async () => {
-      prisma.chartAlertPayment.create.mockResolvedValue({
-        id: 'ref-3',
-        amount: 25,
-      });
-      client.post.mockRejectedValue(new Error('proxy down'));
+    it('throws 503 without leaving a usable link when Razorpay is down', async () => {
+      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-3' });
+      razorpay.createOrder.mockRejectedValue(new Error('razorpay down'));
 
       await expect(service.createPaymentLink({ ...baseInput })).rejects.toThrow(
         ServiceUnavailableException,
@@ -127,6 +137,15 @@ describe('ChartAlertPaymentsService', () => {
         data: { status: 'FAILED' },
       });
     });
+
+    it('throws 503 when Razorpay is not configured', async () => {
+      razorpay.isConfigured = false;
+
+      await expect(service.createPaymentLink({ ...baseInput })).rejects.toThrow(
+        ServiceUnavailableException,
+      );
+      expect(prisma.chartAlertPayment.create).not.toHaveBeenCalled();
+    });
   });
 
   describe('getStatus / confirmIfPaid', () => {
@@ -134,14 +153,15 @@ describe('ChartAlertPaymentsService', () => {
       id: 'ref-1',
       status: 'PENDING',
       amount: 25,
-      muzoboxPaymentId: 'mz-1',
+      razorpayOrderId: 'order-1',
+      razorpayPaymentId: null,
       journeyRequestId: null,
       journeyPayload: { ...baseInput },
       paidAt: null,
       ...overrides,
     });
 
-    it('sends auth headers on the status check and queues exactly once', async () => {
+    it('queues exactly once when an order payment is captured', async () => {
       prisma.chartAlertPayment.findUnique
         .mockResolvedValueOnce(pendingRecord())
         .mockResolvedValueOnce({
@@ -149,18 +169,16 @@ describe('ChartAlertPaymentsService', () => {
           status: 'PAID',
           journeyRequestId: 'jid-1',
         });
-      client.get.mockResolvedValue({
-        data: { status: 'paid', amount: 25 },
-      });
+      razorpay.orderPayments.mockResolvedValue([
+        { id: 'pay-1', status: 'captured', amount: 2500 },
+      ]);
       prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
       prisma.chartAlertPayment.update.mockResolvedValue({});
       journeyTask.queueJourneyMonitoring.mockResolvedValue(true);
 
       const out = await service.getStatus('ref-1');
 
-      expect(client.get.mock.calls[0][1]).toEqual({
-        headers: { 'x-api-key': 'test-key' },
-      });
+      expect(razorpay.orderPayments).toHaveBeenCalledWith('order-1');
       expect(journeyTask.queueJourneyMonitoring).toHaveBeenCalledTimes(1);
       expect(out.status).toBe('paid');
       expect(out.journeyCreated).toBe(true);
@@ -170,13 +188,10 @@ describe('ChartAlertPaymentsService', () => {
       prisma.chartAlertPayment.findUnique.mockResolvedValue(
         pendingRecord({ status: 'PAID', journeyRequestId: 'jid-winner' }),
       );
-      client.get.mockResolvedValue({
-        data: { status: 'PAID', amount: 25 },
-      });
-      prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 0 });
 
       const out = await service.getStatus('ref-1');
 
+      expect(razorpay.orderPayments).not.toHaveBeenCalled();
       expect(journeyTask.queueJourneyMonitoring).not.toHaveBeenCalled();
       expect(out.journeyCreated).toBe(true);
     });
@@ -189,9 +204,9 @@ describe('ChartAlertPaymentsService', () => {
           status: 'PAID',
           journeyRequestId: null,
         });
-      client.get.mockResolvedValue({
-        data: { status: 'success', amount: 2500 },
-      });
+      razorpay.orderPayments.mockResolvedValue([
+        { id: 'pay-1', status: 'captured', amount: 2500 },
+      ]);
       prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
       prisma.chartAlertPayment.update.mockResolvedValue({});
       journeyTask.queueJourneyMonitoring.mockResolvedValue(false);
@@ -206,27 +221,95 @@ describe('ChartAlertPaymentsService', () => {
       expect(out.journeyCreated).toBe(false);
     });
 
-    it('marks FAILED when the proxy reports failure', async () => {
+    it('leaves records pending when no order payment matches', async () => {
       prisma.chartAlertPayment.findUnique.mockResolvedValue(pendingRecord());
-      client.get.mockResolvedValue({ data: { status: 'failed' } });
-      prisma.chartAlertPayment.update.mockResolvedValue({
-        ...pendingRecord(),
-        status: 'FAILED',
-      });
-
-      const out = await service.getStatus('ref-1');
-
-      expect(out.status).toBe('failed');
-      expect(journeyTask.queueJourneyMonitoring).not.toHaveBeenCalled();
-    });
-
-    it('leaves pending records untouched while the proxy is pending', async () => {
-      prisma.chartAlertPayment.findUnique.mockResolvedValue(pendingRecord());
-      client.get.mockResolvedValue({ data: { status: 'created' } });
+      razorpay.orderPayments.mockResolvedValue([
+        { id: 'pay-9', status: 'failed', amount: 2500 },
+      ]);
 
       const out = await service.getStatus('ref-1');
 
       expect(out.status).toBe('pending');
+      expect(journeyTask.queueJourneyMonitoring).not.toHaveBeenCalled();
+    });
+
+    it('leaves legacy rows without a Razorpay order untouched', async () => {
+      prisma.chartAlertPayment.findUnique.mockResolvedValue(
+        pendingRecord({ razorpayOrderId: null }),
+      );
+
+      const out = await service.getStatus('ref-1');
+
+      expect(razorpay.orderPayments).not.toHaveBeenCalled();
+      expect(out.status).toBe('pending');
+    });
+  });
+
+  describe('handleCallback', () => {
+    const sign = (body: string) =>
+      createHmac('sha256', 'whsec-test').update(body).digest('hex');
+
+    const authorizedEvent = {
+      event: 'payment.authorized',
+      payload: {
+        payment: {
+          entity: {
+            id: 'pay-1',
+            status: 'captured',
+            amount: 2500,
+            notes: { chart_alert_ref: 'ref-1' },
+          },
+        },
+      },
+    };
+
+    it('confirms on a valid payment.authorized webhook', async () => {
+      const raw = JSON.stringify(authorizedEvent);
+      prisma.chartAlertPayment.findUnique.mockResolvedValue({
+        id: 'ref-1',
+        status: 'PENDING',
+        amount: 25,
+        razorpayOrderId: 'order-1',
+        razorpayPaymentId: null,
+        journeyRequestId: null,
+        journeyPayload: { ...baseInput },
+        paidAt: null,
+      });
+      razorpay.orderPayments.mockResolvedValue([
+        { id: 'pay-1', status: 'captured', amount: 2500 },
+      ]);
+      prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+      journeyTask.queueJourneyMonitoring.mockResolvedValue(true);
+
+      const out = await service.handleCallback(
+        Buffer.from(raw),
+        sign(raw),
+      );
+
+      expect(out).toEqual({ received: true });
+      expect(journeyTask.queueJourneyMonitoring).toHaveBeenCalledTimes(1);
+    });
+
+    it('acks but ignores webhooks with a bad signature', async () => {
+      const raw = JSON.stringify(authorizedEvent);
+
+      const out = await service.handleCallback(Buffer.from(raw), 'bad-sig');
+
+      expect(out).toEqual({ received: true });
+      expect(prisma.chartAlertPayment.findUnique).not.toHaveBeenCalled();
+    });
+
+    it('acks unknown refs without crashing', async () => {
+      const raw = JSON.stringify(authorizedEvent);
+      prisma.chartAlertPayment.findUnique.mockResolvedValue(null);
+
+      const out = await service.handleCallback(
+        Buffer.from(raw),
+        sign(raw),
+      );
+
+      expect(out).toEqual({ received: true });
       expect(journeyTask.queueJourneyMonitoring).not.toHaveBeenCalled();
     });
   });
@@ -242,19 +325,22 @@ describe('ChartAlertPaymentsService', () => {
     it.each(['ANY', 'SL', '3E', '2S', 'CC', 'EC', 'FC', '', undefined, null])(
       'charges the standard tier (₹10) for %s',
       (classCode) => {
-        expect(chartAlertPriceForClass(classCode as string | undefined)).toBe(
-          10,
-        );
+        expect(
+          chartAlertPriceForClass(classCode as string | undefined),
+        ).toBe(10);
       },
     );
 
     it('stores the class-based amount on the payment record', async () => {
-      prisma.chartAlertPayment.create.mockResolvedValue({
-        id: 'ref-price',
-        amount: 10,
+      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-price' });
+      razorpay.createOrder.mockResolvedValue({ id: 'order-p', amount: 1000 });
+      razorpay.createUpiQr.mockResolvedValue({
+        id: 'qr-p',
+        imageUrl: 'https://rzp.test/qr-p.png',
       });
-      client.post.mockResolvedValue({
-        data: { id: 'mz-price', payUrl: 'https://pay.test/mz-price' },
+      razorpay.resolveQrIntents.mockResolvedValue({
+        intent: null,
+        apps: null,
       });
       prisma.chartAlertPayment.update.mockResolvedValue({});
 
@@ -264,6 +350,9 @@ describe('ChartAlertPaymentsService', () => {
       });
 
       expect(out.amount).toBe(10);
+      expect(razorpay.createOrder).toHaveBeenCalledWith(
+        expect.objectContaining({ amountPaise: 1000 }),
+      );
       expect(prisma.chartAlertPayment.create).toHaveBeenCalledWith(
         expect.objectContaining({
           data: expect.objectContaining({ amount: 10 }),

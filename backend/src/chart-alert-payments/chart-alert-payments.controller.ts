@@ -3,11 +3,15 @@ import {
   Body,
   Controller,
   Get,
+  Headers,
   NotFoundException,
   Param,
   Post,
+  Req,
   ServiceUnavailableException,
 } from '@nestjs/common';
+import type { RawBodyRequest } from '@nestjs/common';
+import type { Request } from 'express';
 import { ChartAlertPaymentsService } from './chart-alert-payments.service';
 import type { ChartAlertJourneyInput } from './chart-alert-payments.service';
 
@@ -16,9 +20,10 @@ export class ChartAlertPaymentsController {
   constructor(private readonly payments: ChartAlertPaymentsService) {}
 
   /**
-   * Create a Muzobox hosted payment link for a chart-alert subscription.
-   * Returns `{ ref, payUrl, amount }` — the frontend redirects to `payUrl`.
-   * Throws 400 for invalid input, 503 when the payment proxy is unavailable.
+   * Create a Razorpay order + single-use UPI QR for a chart-alert
+   * subscription. Returns `{ ref, amount, orderId, qrImageUrl, upiIntent,
+   * gpayIntent, phonepeIntent }` — the frontend renders its own checkout.
+   * Throws 400 for invalid input, 503 when Razorpay is unavailable.
    */
   @Post('create')
   async create(@Body() body: ChartAlertJourneyInput) {
@@ -79,20 +84,18 @@ export class ChartAlertPaymentsController {
     return this.payments.getStatus(String(ref).trim());
   }
 
-  /** Server-to-server callback from the Muzobox payment proxy. */
+  /**
+   * Server-to-server Razorpay webhook. The HMAC signature is verified
+   * against the raw body — this requires `rawBody: true` in main.ts.
+   * Always acks so Razorpay does not retry a poison payload.
+   */
   @Post('callback')
-  async handleCallback(@Body() body: Record<string, unknown>) {
-    // Always ack so the proxy does not retry a poison payload.
+  async handleCallback(
+    @Req() req: RawBodyRequest<Request>,
+    @Headers('x-razorpay-signature') signature: string | undefined,
+  ) {
     await this.payments
-      .handleCallback(
-        (body ?? {}) as {
-          paymentId?: string;
-          payment_id?: string;
-          status?: string;
-          referenceId?: string;
-          reference_id?: string;
-        },
-      )
+      .handleCallback(req.rawBody ?? Buffer.alloc(0), signature)
       .catch(() => undefined);
     return { received: true };
   }

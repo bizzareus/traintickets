@@ -11,6 +11,7 @@ import { NotificationModule } from '../notification/notification.module';
 import { BookingV2Module } from '../booking-v2/booking-v2.module';
 import { AlternativeSearchTaskModule } from './alternative-search-task.module';
 import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-refunds.service';
+import { RazorpayModule } from '../chart-alert-payments/razorpay.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-re
     NotificationModule,
     BookingV2Module,
     AlternativeSearchTaskModule,
+    RazorpayModule,
   ],
   controllers: [AvailabilityController],
   providers: [

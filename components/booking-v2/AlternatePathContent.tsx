@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import moment from "moment";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics/track";
@@ -11,16 +11,26 @@ import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
+import { useContactFields } from "@/lib/contact";
+import { isAdminUser } from "@/lib/admin";
+import {
+  chartAlertPriceForClass,
+  createFreeChartAlert,
+  getChartAlertErrorMessage,
+  startChartAlertPayment,
+  type ChartAlertPaymentLink,
+} from "@/lib/chart-alert-payments";
+import {
+  ChartAlertPaymentModal,
+  type ChartAlertPaymentModalJourney,
+} from "@/components/payments/ChartAlertPaymentModal";
+import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
 import { NextReleaseBottomSheet } from "./NextReleaseBottomSheet";
 import type {
   AlternateClassOption,
   AlternatePathProgressEvent,
   AlternatePathsResponse,
 } from "./alternatePathsTypes";
-import {
-  getStoredContact,
-  saveStoredContact,
-} from "@/lib/contact";
 import {
   chartMomentHasPassedIst,
   collapsedAlternatePathTimingSummary,
@@ -236,12 +246,18 @@ function CompactLegChartCta({
   trainStartDate?: string | null;
 }) {
   const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const { email, setEmail, mobile, setMobile, persistContact } =
+    useContactFields();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const [alreadySet, setAlreadySet] = useState(false);
+  const [adminFree, setAdminFree] = useState(false);
+  const [payment, setPayment] = useState<{
+    link: ChartAlertPaymentLink;
+    ref: string;
+    journey: ChartAlertPaymentModalJourney;
+  } | null>(null);
   const [chartTimeLabel, setChartTimeLabel] = useState<string | null>(null);
   const [chartTimeLoading, setChartTimeLoading] = useState(false);
   const [chartIsPrepared, setChartIsPrepared] = useState<boolean | null>(null);
@@ -250,19 +266,18 @@ function CompactLegChartCta({
   >(null);
   const [meta, setMeta] = useState<StationChartMetaItem | null>(null);
   const [showNextReleaseSheet, setShowNextReleaseSheet] = useState(false);
-
-  // Prevents duplicate calls for the same station on remounts or rapid state transitions
-  const lastFetchedRef = useRef<string | null>(null);
+  const alertPrice = chartAlertPriceForClass(classCode);
 
   useEffect(() => {
     if (isLegAlertSet(trainNumber, legFrom, legTo, journeyDate)) {
       setAlreadySet(true);
       setDone(true);
     }
-    const stored = getStoredContact();
-    if (stored.email) setEmail(stored.email);
-    if (stored.mobile) setMobile(stored.mobile);
   }, [trainNumber, legFrom, legTo, journeyDate]);
+
+  useEffect(() => {
+    setAdminFree(isAdminUser());
+  }, []);
 
   // Fetch chart preparation time
   useEffect(() => {
@@ -353,6 +368,22 @@ function CompactLegChartCta({
     };
   }, [trainNumber, journeyDate, legFrom, trainStartDate]);
 
+  const handlePaid = useCallback(
+    (journeyPaid: ChartAlertPaymentModalJourney) => {
+      markLegAlertSet(
+        journeyPaid.trainNumber,
+        journeyPaid.fromStationCode,
+        journeyPaid.toStationCode,
+        journeyPaid.journeyDate,
+      );
+      setDone(true);
+      setAlreadySet(true);
+      setOpen(false);
+      setPayment(null);
+    },
+    [],
+  );
+
   const subscribe = useCallback(async () => {
     const em = email.trim() || undefined;
     const mob = mobile.trim() || undefined;
@@ -371,40 +402,69 @@ function CompactLegChartCta({
     setSubmitting(true);
     setError(null);
     try {
-      await apiClient.post("/api/availability/journey", {
+      persistContact();
+      const journey: ChartAlertPaymentModalJourney = {
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,
         fromStationCode: legFrom.trim().toUpperCase(),
         toStationCode: legTo.trim().toUpperCase(),
-        journeyDate: journeyDate.trim(),
+        journeyDate: journeyDate.trim().slice(0, 10),
         classCode: classCode.trim().toUpperCase(),
-        email: em,
-        mobile: mob,
-        trainStartDate: trainStartDate,
-      });
-      markLegAlertSet(trainNumber, legFrom, legTo, journeyDate);
-      setDone(true);
-      setAlreadySet(true);
-      trackAlertRequested({
-        success: true,
-        source: "gap_leg_modal",
-        trainNumber: trainNumber.trim(),
-        trainName: trainName?.trim() || undefined,
-        fromCode: legFrom.trim().toUpperCase(),
-        toCode: legTo.trim().toUpperCase(),
-        journeyDate: journeyDate.trim(),
-        classCode: classCode.trim().toUpperCase(),
-        email: em || undefined,
-        mobile: mob || undefined,
-      });
-      saveStoredContact({ email: em ?? "", mobile: mob ?? "" });
-    } catch (err: unknown) {
-      const e = err as {
-        response?: { data?: { message?: string } };
-        message?: string;
       };
-      const msg =
-        e?.response?.data?.message || e?.message || "Failed to set alert.";
+      const pinnedChartArgs = meta?.chartOneTime?.trim()
+        ? {
+            chartTimeLocal: meta.chartOneTime.trim(),
+            ...(meta.chartOneDayOffset !== null &&
+            meta.chartOneDayOffset !== undefined
+              ? { chartOneDayOffset: meta.chartOneDayOffset }
+              : {}),
+            ...(meta.chartTwoTime?.trim()
+              ? { chartTwoTimeLocal: meta.chartTwoTime.trim() }
+              : {}),
+            ...(meta.chartTwoDayOffset !== null &&
+            meta.chartTwoDayOffset !== undefined
+              ? { chartTwoDayOffset: meta.chartTwoDayOffset }
+              : {}),
+          }
+        : {};
+      if (adminFree) {
+        await createFreeChartAlert({
+          ...journey,
+          trainStartDate: trainStartDate ?? undefined,
+          stationCodesToMonitor: [legFrom.trim().toUpperCase()],
+          email: em,
+          mobile: mob,
+          ...pinnedChartArgs,
+        });
+        handlePaid(journey);
+        trackAlertRequested({
+          success: true,
+          source: "gap_leg_modal",
+          trainNumber: journey.trainNumber,
+          trainName: journey.trainName,
+          fromCode: journey.fromStationCode,
+          toCode: journey.toStationCode,
+          journeyDate: journey.journeyDate,
+          classCode: journey.classCode,
+          email: em,
+          mobile: mob,
+        });
+        return;
+      }
+      const link = await startChartAlertPayment(
+        {
+          ...journey,
+          trainStartDate: trainStartDate ?? undefined,
+          stationCodesToMonitor: [legFrom.trim().toUpperCase()],
+          email: em,
+          mobile: mob,
+          ...pinnedChartArgs,
+        },
+        "search_panel",
+      );
+      setPayment({ link, ref: link.ref, journey });
+    } catch (err: unknown) {
+      const msg = getChartAlertErrorMessage(err, "Failed to set alert.");
       setError(msg);
       trackAlertRequested({
         success: false,
@@ -415,9 +475,9 @@ function CompactLegChartCta({
         toCode: legTo.trim().toUpperCase(),
         journeyDate: journeyDate.trim(),
         classCode: classCode.trim().toUpperCase(),
-        email: em || undefined,
-        mobile: mob || undefined,
-        error: typeof msg === "string" ? msg : JSON.stringify(msg),
+        email: em,
+        mobile: mob,
+        error: msg,
       });
     } finally {
       setSubmitting(false);
@@ -432,6 +492,10 @@ function CompactLegChartCta({
     journeyDate,
     classCode,
     trainStartDate,
+    meta,
+    adminFree,
+    persistContact,
+    handlePaid,
   ]);
 
   if (done || alreadySet) {
@@ -496,7 +560,18 @@ function CompactLegChartCta({
         {!chartIsPrepared && (
           <button
             type="button"
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setOpen(true);
+              setError(null);
+              trackAnalyticsEvent({
+                name: "chart_alert_opened",
+                properties: {
+                  source: "search_panel",
+                  train_number: trainNumber.trim(),
+                  station_code: legFrom.trim().toUpperCase(),
+                },
+              });
+            }}
             className="shrink-0 rounded-md border border-amber-400 bg-amber-50 px-2.5 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 transition-colors"
           >
             Get Ticket Alert
@@ -507,65 +582,90 @@ function CompactLegChartCta({
   }
 
   return (
-    <div className="mt-2 w-full rounded-md border border-blue-200 bg-blue-50 p-2.5">
-      <p className="mb-1.5 text-xs font-semibold text-blue-900">
-        {chartTimeLoading ? (
-          <span className="inline-flex items-center gap-1.5 italic text-blue-600/80">
-            <span className="h-2 w-2 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
-            Loading chart time...
-          </span>
-        ) : chartTimeLabel ? (
-          `Get notified when new seats open at ${chartTimeLabel} on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
-        ) : (
-          `Get notified when new seats open on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
-        )}
-      </p>
-      <div className="flex flex-col gap-1.5 sm:flex-row">
-        <input
-          type="email"
-          className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="email"
-        />
-        <input
-          type="tel"
-          className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
-          placeholder="Mobile (optional)"
-          value={mobile}
-          onChange={(e) => setMobile(e.target.value)}
-          autoComplete="tel"
-        />
-      </div>
-      <div className="mt-2 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            disabled={submitting}
-            onClick={() => void subscribe()}
-            className="rounded bg-blue-600 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 disabled:opacity-60"
-          >
-            {submitting ? "Setting up…" : "Set alert"}
-          </button>
-          <button
-            type="button"
-            onClick={() => setOpen(false)}
-            className="text-xs font-medium text-gray-500 hover:text-gray-700"
-          >
-            Cancel
-          </button>
+    <>
+      <div className="mt-2 w-full rounded-md border border-blue-200 bg-blue-50 p-2.5">
+        <p className="mb-1.5 text-xs font-semibold text-blue-900">
+          {chartTimeLoading ? (
+            <span className="inline-flex items-center gap-1.5 italic text-blue-600/80">
+              <span className="h-2 w-2 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+              Loading chart time...
+            </span>
+          ) : chartTimeLabel ? (
+            `Get notified when new seats open at ${chartTimeLabel} on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
+          ) : (
+            `Get notified when new seats open on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
+          )}
+        </p>
+        <p className="mb-1.5 text-[11px] text-blue-800">
+          No ticket? 100% automated refund. One-time charge of ₹{alertPrice}.
+        </p>
+        <div className="flex flex-col gap-1.5 sm:flex-row">
+          <input
+            type="email"
+            className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+          />
+          <input
+            type="tel"
+            className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
+            placeholder="Mobile (optional)"
+            value={mobile}
+            onChange={(e) => setMobile(e.target.value)}
+            autoComplete="tel"
+          />
         </div>
-        {chartTimeLabel && (
-          <span className="text-[10px] italic text-blue-700/80">
-            Triggers at {chartTimeLabel}
-          </span>
+        <div className="mt-2 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              disabled={submitting}
+              onClick={() => void subscribe()}
+              className="rounded bg-blue-600 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 disabled:opacity-60"
+            >
+              {submitting
+                ? adminFree
+                  ? "Setting up…"
+                  : "Opening payment…"
+                : adminFree
+                  ? "Set alert free (admin)"
+                  : `Pay ₹${alertPrice} & set alert`}
+            </button>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="text-xs font-medium text-gray-500 hover:text-gray-700"
+            >
+              Cancel
+            </button>
+          </div>
+          {chartTimeLabel && (
+            <span className="text-[10px] italic text-blue-700/80">
+              Triggers at {chartTimeLabel}
+            </span>
+          )}
+        </div>
+        {error && (
+          <p className="mt-2 text-xs font-medium text-red-700">{error}</p>
         )}
+        <div className="mt-2">
+          <ChartAlertTrustFooter />
+        </div>
       </div>
-      {error && (
-        <p className="mt-2 text-xs font-medium text-red-700">{error}</p>
+      {payment && (
+        <ChartAlertPaymentModal
+          open
+          onClose={() => setPayment(null)}
+          payment={payment.link}
+          paymentRef={payment.ref}
+          journey={payment.journey}
+          source="search_panel"
+          onPaid={handlePaid}
+        />
       )}
-    </div>
+    </>
   );
 }
 

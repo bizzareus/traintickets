@@ -37,8 +37,16 @@ export interface ChartAlertPaymentCreateInput {
 
 export interface ChartAlertPaymentLink {
   ref: string;
-  payUrl: string;
   amount: number;
+  orderId: string;
+  /** Razorpay-hosted QR PNG for the single-use UPI QR. */
+  qrImageUrl: string;
+  /** `upi://pay?...` — works in any UPI app (mobile only). */
+  upiIntent?: string;
+  /** Google Pay deep link (`tez://`). */
+  gpayIntent?: string;
+  /** PhonePe deep link (`phonepe://`). */
+  phonepeIntent?: string;
 }
 
 export interface ChartAlertPaymentStatus {
@@ -64,17 +72,18 @@ export interface ChartAlertPaymentStatus {
 }
 
 /**
- * Start a paid chart-alert subscription via the Muzobox payment proxy.
- * Resolves with the hosted `payUrl` — redirect the browser there.
+ * Start a paid chart-alert subscription via Razorpay (order + single-use
+ * UPI QR). Resolves with the QR image and per-app intent links — the
+ * modal renders its own checkout, no redirect.
  */
 export async function createChartAlertPaymentLink(
   input: ChartAlertPaymentCreateInput,
 ): Promise<ChartAlertPaymentLink> {
   const res = await apiClient.post<
-    ChartAlertPaymentLink | { error?: string; payUrl?: string }
+    ChartAlertPaymentLink | { error?: string }
   >("/api/chart-alert-payments/create", input);
   const data = res.data as ChartAlertPaymentLink & { error?: string };
-  if (!data?.payUrl || typeof data.payUrl !== "string") {
+  if (!data?.qrImageUrl || typeof data.qrImageUrl !== "string") {
     throw new Error(
       (typeof data?.error === "string" && data.error) ||
         "Could not start payment. Please try again.",
@@ -83,16 +92,12 @@ export async function createChartAlertPaymentLink(
   return data;
 }
 
-export function redirectToPayment(payUrl: string): void {
-  window.location.assign(payUrl);
-}
-
 /**
- * Shared paid-subscription flow for chart-alert surfaces: creates the Muzobox
- * payment link and records analytics. Returns the link — callers open it in
- * the {@link ChartAlertPaymentModal} iframe (fallback: redirectToPayment).
- * Persist contact details before calling; handle thrown errors with
- * {@link getChartAlertErrorMessage}.
+ * Shared paid-subscription flow for chart-alert surfaces: creates the
+ * Razorpay order + UPI QR and records analytics. Returns the payment —
+ * callers render it in the {@link ChartAlertPaymentModal} (QR + app
+ * buttons). Persist contact details before calling; handle thrown errors
+ * with {@link getChartAlertErrorMessage}.
  */
 export async function startChartAlertPayment(
   input: ChartAlertPaymentCreateInput,
