@@ -55,8 +55,8 @@ export class TripmgtBookingService {
   }
 
   /**
-   * Main automation entrypoint: navigates to TripMgt, fills train reservation,
-   * enters passenger information matching Image 2, and handles submission.
+   * Main automation entrypoint: navigates to TripMgt, verifies authenticated
+   * agent session, fills train reservation, submits, and extracts verified PNRs.
    */
   async executeBooking(
     params: TripmgtBookingParams,
@@ -187,8 +187,8 @@ export class TripmgtBookingService {
         `Loaded URL: ${currentUrl} (Status: ${response?.status() ?? 'unknown'})`,
       );
 
-      // Check if redirected to homepage or login page (session expired or unauthenticated)
-      const isUnauthenticated =
+      // Check if redirected to unauthenticated landing page or login page
+      let isUnauthenticated =
         currentUrl === 'https://tripmgt.in/' ||
         currentUrl === 'https://tripmgt.in' ||
         currentUrl.includes('/login.aspx') ||
@@ -233,16 +233,35 @@ export class TripmgtBookingService {
             await submitBtn.click();
             await page.waitForLoadState('domcontentloaded');
             await addLog('AUTH_SUCCESS', 'Submitted login form');
+
+            // Re-check authentication status after login
+            const postLoginUrl = page.url();
+            isUnauthenticated =
+              postLoginUrl.includes('/login.aspx') ||
+              (await page.locator('a[href*="login.aspx"]').count()) > 0;
           }
-        } else {
+        }
+
+        if (isUnauthenticated) {
           const ssPath = path.join(storageDir, 'session_expired.png');
           await page.screenshot({ path: ssPath, fullPage: true });
           screenshotPaths.push(ssPath);
           await addLog(
             'AUTH_REQUIRED',
-            'TripMgt requires active agent login session. Set TRIPMGT_USERNAME and TRIPMGT_PASSWORD in backend/.env.',
+            'TripMgt requires active agent login session. Set TRIPMGT_COOKIES in backend/.env with active session.',
+          );
+          throw new Error(
+            'TripMgt agent session is expired or unauthenticated. Please update TRIPMGT_COOKIES in backend/.env.',
           );
         }
+      }
+
+      // Step: Check Rules & Regulations Acceptance Checkbox (#chkIAgree)
+      const acceptCheckbox = page.locator('#chkIAgree').first();
+      if ((await acceptCheckbox.count()) > 0) {
+        await acceptCheckbox.check().catch(() => undefined);
+        await page.waitForTimeout(1000);
+        await addLog('RULES_ACCEPTED', 'Checked rules agreement (#chkIAgree)');
       }
 
       // Step: Ticket Reservation Form Automation (as per Image 2)
@@ -251,169 +270,209 @@ export class TripmgtBookingService {
         'Looking for Ticket Reservation form fields...',
       );
 
-      // Look for passenger inputs
-      // On TripMgt / IRCTC ASP.NET forms:
-      // Name inputs often named txtPassName_1, txtPassName_2 or are text inputs in table rows
-      const nameInputs = page.locator(
-        'input[id*="txtPassName"], input[name*="txtPassName"], table tr input[type="text"]',
-      );
-      const nameInputCount = await nameInputs.count();
+      // Look for passenger count and fields
+      const adultDropdown = page.locator('#selectPassengersAdult').first();
+      if ((await adultDropdown.count()) > 0) {
+        const adultCount = Math.min(params.passengers.length, 6);
+        await adultDropdown.selectOption(String(adultCount));
+        await addLog('ADULT_COUNT_SET', `Selected ${adultCount} adult(s)`);
+      }
 
-      if (nameInputCount > 0) {
-        await addLog(
-          'FORM_DETECTED',
-          `Found ${nameInputCount} potential passenger input fields on page`,
-        );
+      const childDropdown = page.locator('#selectPassengersChild').first();
+      if ((await childDropdown.count()) > 0) {
+        const childCount = Math.min(params.childPassengers?.length ?? 0, 2);
+        await childDropdown.selectOption(String(childCount));
+        await addLog('CHILD_COUNT_SET', `Selected ${childCount} child(ren)`);
+      }
 
-        // Fill adult passengers
-        for (let i = 0; i < params.passengers.length && i < 6; i++) {
-          const p = params.passengers[i];
-          const rowIdx = i + 1;
+      // Fill Contact Mobile & Name
+      const mobileInput = page
+        .locator(
+          '#txtCustomerMobile, input[id*="CustomerMobile"], input[id*="txtMobile"]',
+        )
+        .first();
+      if ((await mobileInput.count()) > 0) {
+        await mobileInput.fill(params.contactMobile);
+        await addLog('CONTACT_SET', `Set contact mobile: ${params.contactMobile}`);
+      }
 
-          // Name
-          const nameSelector = page
-            .locator(
-              `input[id*="txtPassName_${rowIdx}"], input[name*="txtPassName_${rowIdx}"], tr:nth-child(${rowIdx + 1}) td:nth-child(2) input[type="text"]`,
-            )
-            .first();
-          if ((await nameSelector.count()) > 0) {
-            await nameSelector.fill(p.name);
-          }
+      const custNameInput = page
+        .locator('#txtCustomerName, input[id*="CustomerName"]')
+        .first();
+      if ((await custNameInput.count()) > 0 && params.passengers[0]?.name) {
+        await custNameInput.fill(params.passengers[0].name);
+      }
 
-          // Age
-          const ageSelector = page
-            .locator(
-              `input[id*="txtAge_${rowIdx}"], input[name*="txtAge_${rowIdx}"], tr:nth-child(${rowIdx + 1}) td:nth-child(3) input[type="text"]`,
-            )
-            .first();
-          if ((await ageSelector.count()) > 0) {
-            await ageSelector.fill(String(p.age));
-          }
+      // Fill Passenger Rows (#pName0, #pAge0, #pGender0, #pBerth0)
+      for (let i = 0; i < params.passengers.length && i < 6; i++) {
+        const p = params.passengers[i];
 
-          // Gender / Sex dropdown
-          const sexSelector = page
-            .locator(
-              `select[id*="ddlSex_${rowIdx}"], select[name*="ddlSex_${rowIdx}"], tr:nth-child(${rowIdx + 1}) td:nth-child(4) select`,
-            )
-            .first();
-          if ((await sexSelector.count()) > 0) {
-            const sexVal = p.gender.startsWith('M')
-              ? 'Male'
-              : p.gender.startsWith('F')
-                ? 'Female'
-                : 'Transgender';
-            await sexSelector
-              .selectOption({ label: sexVal })
-              .catch(() => sexSelector.selectOption({ value: sexVal }));
-          }
-
-          // Berth Preference dropdown
-          if (p.berthPreference && p.berthPreference !== 'No Preference') {
-            const berthSelector = page
-              .locator(
-                `select[id*="ddlBerth_${rowIdx}"], select[name*="ddlBerth_${rowIdx}"], tr:nth-child(${rowIdx + 1}) td:nth-child(5) select`,
-              )
-              .first();
-            if ((await berthSelector.count()) > 0) {
-              await berthSelector
-                .selectOption({ label: p.berthPreference })
-                .catch(() => berthSelector.selectOption({ index: 1 }));
-            }
-          }
-
-          // Senior Citizen checkbox
-          if (p.seniorCitizen) {
-            const srSelector = page
-              .locator(
-                `input[id*="chkSrCitizen_${rowIdx}"], input[name*="chkSrCitizen_${rowIdx}"], tr:nth-child(${rowIdx + 1}) td:nth-child(6) input[type="checkbox"]`,
-              )
-              .first();
-            if ((await srSelector.count()) > 0) {
-              await srSelector.check().catch(() => undefined);
-            }
-          }
-
-          await addLog(
-            'PASSENGER_ADDED',
-            `Filled passenger ${rowIdx}: ${p.name}, Age ${p.age}, ${p.gender}`,
-          );
+        const nameInput = page.locator(`#pName${i}, #txtPassName_${i + 1}`).first();
+        if ((await nameInput.count()) > 0) {
+          await nameInput.fill(p.name);
         }
 
-        // Child passengers (below 5 years)
-        if (params.childPassengers && params.childPassengers.length > 0) {
-          for (let i = 0; i < params.childPassengers.length && i < 2; i++) {
-            const cp = params.childPassengers[i];
-            const childRow = i + 1;
-            const childName = page
-              .locator(
-                `input[id*="txtChildName_${childRow}"], input[name*="txtChildName_${childRow}"]`,
-              )
-              .first();
-            if ((await childName.count()) > 0) {
-              await childName.fill(cp.name);
-            }
-            await addLog(
-              'CHILD_ADDED',
-              `Filled child passenger ${childRow}: ${cp.name}, Age ${cp.age}`,
-            );
+        const ageInput = page.locator(`#pAge${i}, #txtAge_${i + 1}`).first();
+        if ((await ageInput.count()) > 0) {
+          await ageInput.fill(String(p.age));
+        }
+
+        const genderSelect = page
+          .locator(`#pGender${i}, #ddlSex_${i + 1}`)
+          .first();
+        if ((await genderSelect.count()) > 0) {
+          const gVal = p.gender.startsWith('M')
+            ? 'M'
+            : p.gender.startsWith('F')
+              ? 'F'
+              : 'T';
+          await genderSelect
+            .selectOption(gVal)
+            .catch(() => genderSelect.selectOption({ label: p.gender }));
+        }
+
+        const berthSelect = page
+          .locator(`#pBerth${i}, #ddlBerth_${i + 1}`)
+          .first();
+        if (
+          (await berthSelect.count()) > 0 &&
+          p.berthPreference &&
+          p.berthPreference !== 'No Preference'
+        ) {
+          const bCode = p.berthPreference.includes('Lower')
+            ? 'LB'
+            : p.berthPreference.includes('Middle')
+              ? 'MB'
+              : p.berthPreference.includes('Upper')
+                ? 'UB'
+                : p.berthPreference.includes('Side Lower')
+                  ? 'SL'
+                  : p.berthPreference.includes('Side Upper')
+                    ? 'SU'
+                    : '';
+          if (bCode) {
+            await berthSelect
+              .selectOption(bCode)
+              .catch(() => berthSelect.selectOption({ index: 1 }));
           }
         }
 
-        // Consider for Auto Upgradation checkbox
-        if (params.autoUpgrade !== false) {
-          const autoUpgradCheckbox = page
-            .locator(
-              'input[type="checkbox"]:has-text("Auto Upgradation"), input[id*="AutoUpgrad"], input[name*="AutoUpgrad"]',
-            )
-            .first();
-          if ((await autoUpgradCheckbox.count()) > 0) {
-            await autoUpgradCheckbox.check().catch(() => undefined);
-            await addLog(
-              'AUTO_UPGRADE',
-              'Checked "Consider for Auto Upgradation"',
-            );
-          }
-        }
-
-        // Capture filled form screenshot for audit
-        const formFilledPath = path.join(
-          storageDir,
-          'reservation_form_filled.png',
-        );
-        await page.screenshot({ path: formFilledPath, fullPage: true });
-        screenshotPaths.push(formFilledPath);
         await addLog(
-          'SCREENSHOT',
-          `Saved reservation form screenshot: ${formFilledPath}`,
-        );
-      } else {
-        // Form not directly loaded (e.g. portal requires train search first)
-        const currentSnapPath = path.join(storageDir, 'portal_view.png');
-        await page.screenshot({ path: currentSnapPath, fullPage: true });
-        screenshotPaths.push(currentSnapPath);
-        await addLog(
-          'INFO',
-          `Captured portal snapshot. Ready for search step (From: ${params.fromStationCode} To: ${params.toStationCode} Train: ${params.trainNumber})`,
+          'PASSENGER_ADDED',
+          `Filled passenger ${i + 1}: ${p.name}, Age ${p.age}, ${p.gender}`,
         );
       }
 
-      // Finalize automation step
-      const simulatedPnr1 = `PNR${Math.floor(1000000000 + Math.random() * 9000000000)}`;
-      const simulatedPnr2 =
-        params.legs.length > 1
-          ? `PNR${Math.floor(1000000000 + Math.random() * 9000000000)}`
-          : undefined;
+      // Child Passengers
+      if (params.childPassengers && params.childPassengers.length > 0) {
+        for (let i = 0; i < params.childPassengers.length && i < 2; i++) {
+          const cp = params.childPassengers[i];
+          const cNameInput = page.locator(`#pNameChild${i}`).first();
+          if ((await cNameInput.count()) > 0) {
+            await cNameInput.fill(cp.name);
+          }
+          const cAgeSelect = page.locator(`#pAgeChild${i}`).first();
+          if ((await cAgeSelect.count()) > 0) {
+            await cAgeSelect.selectOption(String(cp.age));
+          }
+          const cGenderSelect = page.locator(`#pGenderChild${i}`).first();
+          if ((await cGenderSelect.count()) > 0) {
+            const gVal = cp.gender.startsWith('M') ? 'M' : 'F';
+            await cGenderSelect.selectOption(gVal);
+          }
+          await addLog(
+            'CHILD_ADDED',
+            `Filled infant ${i + 1}: ${cp.name}, Age ${cp.age}`,
+          );
+        }
+      }
 
+      // Auto Upgradation Checkbox
+      if (params.autoUpgrade !== false) {
+        const autoUpgradeCheck = page
+          .locator('#chkConsiderAutoUpgrade, #chkAutoUpgrade')
+          .first();
+        if ((await autoUpgradeCheck.count()) > 0) {
+          await autoUpgradeCheck.check().catch(() => undefined);
+          await addLog(
+            'AUTO_UPGRADE',
+            'Checked "Consider for Auto Upgradation"',
+          );
+        }
+      }
+
+      // Capture filled form screenshot for audit
+      const formFilledPath = path.join(
+        storageDir,
+        'reservation_form_filled.png',
+      );
+      await page.screenshot({ path: formFilledPath, fullPage: true });
+      screenshotPaths.push(formFilledPath);
       await addLog(
-        'SUCCESS',
-        `Automated booking completed successfully for ${params.bookingRef}`,
+        'SCREENSHOT',
+        `Saved reservation form screenshot: ${formFilledPath}`,
       );
 
+      // Submit Form Button
+      const nextBtn = page
+        .locator('input[value="Next"].btn, input[type="submit"].btn')
+        .first();
+      if ((await nextBtn.count()) > 0) {
+        await addLog('SUBMITTING', 'Submitting reservation form to proceed to payment...');
+        await nextBtn.click();
+        await page.waitForLoadState('domcontentloaded');
+        await page.waitForTimeout(3000);
+      }
+
+      // Extract Confirmation & PNRs from Result Page
+      const postSubmitUrl = page.url();
+      const pageText = (await page.textContent('body')) || '';
+
+      // Look for 10-digit PNR numbers in page text
+      const pnrMatches = Array.from(
+        new Set(pageText.match(/\b[2-9]\d{9}\b/g) || []),
+      );
+
+      const confirmSnapPath = path.join(storageDir, 'confirmation_page.png');
+      await page.screenshot({ path: confirmSnapPath, fullPage: true });
+      screenshotPaths.push(confirmSnapPath);
+
+      if (pnrMatches.length > 0) {
+        const pnr1 = pnrMatches[0];
+        const pnr2 = pnrMatches.length > 1 ? pnrMatches[1] : undefined;
+
+        await addLog(
+          'SUCCESS',
+          `Automated booking confirmed on TripMgt! PNR 1: ${pnr1}${pnr2 ? `, PNR 2: ${pnr2}` : ''}`,
+        );
+
+        return {
+          success: true,
+          bookingRef: params.bookingRef,
+          pnrLeg1: pnr1,
+          pnrLeg2: pnr2,
+          logs,
+          screenshotPaths,
+        };
+      }
+
+      // Check if page contains specific error messages
+      const isErrorPage =
+        pageText.toLowerCase().includes('booking failed') ||
+        pageText.toLowerCase().includes('insufficient wallet balance') ||
+        pageText.toLowerCase().includes('session expired') ||
+        pageText.toLowerCase().includes('ticket not available');
+
+      const failureReason = isErrorPage
+        ? 'Portal returned error or insufficient wallet balance during reservation.'
+        : `Could not extract confirmed PNR from portal response (URL: ${postSubmitUrl}).`;
+
+      await addLog('ERROR', failureReason);
+
       return {
-        success: true,
+        success: false,
         bookingRef: params.bookingRef,
-        pnrLeg1: simulatedPnr1,
-        pnrLeg2: simulatedPnr2,
+        error: failureReason,
         logs,
         screenshotPaths,
       };
