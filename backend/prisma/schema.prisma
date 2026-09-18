@@ -566,3 +566,59 @@ model RefundRequest {
   @@index([mobile])
   @@map("refund_request")
 }
+
+enum SplitBookingPaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+enum SplitBookingFulfillmentStatus {
+  IDLE
+  QUEUED
+  IN_PROGRESS
+  CONFIRMED
+  FAILED
+}
+
+/// Split-ticket booking requests fulfilled via TripMgt / IRCTC PSP automation.
+model SplitTicketBooking {
+  id                String                        @id @default(cuid())
+  bookingRef        String                        @unique @map("booking_ref")
+  trainNumber       String                        @map("train_number")
+  trainName         String?                       @map("train_name")
+  fromStationCode   String                        @map("from_station_code")
+  toStationCode     String                        @map("to_station_code")
+  journeyDate       DateTime                      @map("journey_date") @db.Date
+  travelClass       String                        @map("travel_class")
+  quota             String                        @default("GN")
+
+  totalFare         Int                           @map("total_fare") // in rupees
+  legsPayload       Json                          @map("legs_payload")
+  passengers        Json                          @map("passengers")
+  contactMobile     String                        @map("contact_mobile")
+  contactEmail      String                        @map("contact_email")
+  autoUpgrade       Boolean                       @default(true) @map("auto_upgrade")
+
+  // Payment
+  paymentStatus     SplitBookingPaymentStatus     @default(PENDING) @map("payment_status")
+  razorpayOrderId   String?                       @map("razorpay_order_id")
+  razorpayPaymentId String?                       @map("razorpay_payment_id")
+  paidAt            DateTime?                     @map("paid_at")
+
+  // Automation Fulfillment
+  bookingStatus     SplitBookingFulfillmentStatus @default(IDLE) @map("booking_status")
+  automationLogs    Json?                         @map("automation_logs")
+  pnrLeg1           String?                       @map("pnr_leg1")
+  pnrLeg2           String?                       @map("pnr_leg2")
+  bookingError      String?                       @map("booking_error")
+  completedAt       DateTime?                     @map("completed_at")
+
+  createdAt         DateTime                      @default(now()) @map("created_at")
+  updatedAt         DateTime                      @updatedAt @map("updated_at")
+
+  @@index([bookingRef])
+  @@index([paymentStatus, bookingStatus])
+  @@map("split_ticket_booking")
+}
+

@@ -26,6 +26,8 @@ import {
 } from "@/components/payments/ChartAlertPaymentModal";
 import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
 import { NextReleaseBottomSheet } from "./NextReleaseBottomSheet";
+import { useSplitBookingFeatureFlag } from "@/lib/hooks/useSplitBookingFeatureFlag";
+import { SplitTicketBookingModal } from "./SplitTicketBookingModal";
 import type {
   AlternateClassOption,
   AlternatePathProgressEvent,
@@ -748,6 +750,9 @@ export function AlternatePathContent({
   hideSearchAllTrainsBanner = false,
   source,
 }: AlternatePathContentProps) {
+  const isSplitBookingEnabled = useSplitBookingFeatureFlag();
+  const [splitBookingModalOpen, setSplitBookingModalOpen] = useState(false);
+
   /** Flat list of display items: each is a single leg card or a collapsed "no tickets" span. */
   const alternatePathDisplayItems = useMemo(
     () =>
@@ -906,6 +911,17 @@ export function AlternatePathContent({
                   Full journey covered in {confirmedLegCount} confirmed ticket
                   {confirmedLegCount === 1 ? "" : "s"}
                 </p>
+                {isSplitBookingEnabled && (
+                  <button
+                    type="button"
+                    onClick={() => setSplitBookingModalOpen(true)}
+                    className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer"
+                  >
+                    <span>Book Now</span>
+                    <span>•</span>
+                    <span>₹{altResult.totalFare.toFixed(0)}</span>
+                  </button>
+                )}
               </div>
             )}
 
@@ -1154,28 +1170,34 @@ export function AlternatePathContent({
                                     </span>
                                   )}
                                 </div>
-                                <a
-                                  href={optHref}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  onClick={() =>
-                                    trackAnalyticsEvent({
-                                      name: "alternate_paths_irctc_clicked",
-                                      properties: {
-                                        train_number: altResult.trainNumber,
-                                        from_code: leg.from,
-                                        to_code: leg.to,
-                                        class_code: opt.travelClass,
-                                        trainStartDate:
-                                          altResult.trainStartDate ?? undefined,
-                                        ...(source ? { source } : {}),
-                                      },
-                                    })
-                                  }
-                                  className="shrink-0 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
-                                >
-                                  Book Now
-                                </a>
+                                {isSplitBookingEnabled ? (
+                                  <span className="shrink-0 rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">
+                                    Leg {stepIndex} Confirmed
+                                  </span>
+                                ) : (
+                                  <a
+                                    href={optHref}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() =>
+                                      trackAnalyticsEvent({
+                                        name: "alternate_paths_irctc_clicked",
+                                        properties: {
+                                          train_number: altResult.trainNumber,
+                                          from_code: leg.from,
+                                          to_code: leg.to,
+                                          class_code: opt.travelClass,
+                                          trainStartDate:
+                                            altResult.trainStartDate ?? undefined,
+                                          ...(source ? { source } : {}),
+                                        },
+                                      })
+                                    }
+                                    className="shrink-0 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                                  >
+                                    Book Now
+                                  </a>
+                                )}
                               </div>
                             );
                           })}
@@ -1287,6 +1309,42 @@ export function AlternatePathContent({
             })}
           </ol>
         </div>
+      )}
+
+      {isSplitBookingEnabled && altResult && (
+        <SplitTicketBookingModal
+          open={splitBookingModalOpen}
+          onClose={() => setSplitBookingModalOpen(false)}
+          trainNumber={altResult.trainNumber}
+          trainName={altTrainName || undefined}
+          journeyDate={journeyDate || ""}
+          fromStationCode={fromCode || altResult.stationCodesOnRoute?.[0] || ""}
+          toStationCode={
+            toCode ||
+            altResult.stationCodesOnRoute?.[
+              altResult.stationCodesOnRoute.length - 1
+            ] ||
+            ""
+          }
+          travelClass={
+            altResult.legs.find((l) => l.segmentKind === "confirmed")
+              ?.travelClass ||
+            altAvlClasses?.[0] ||
+            "3A"
+          }
+          totalFare={altResult.totalFare || 0}
+          legs={altResult.legs
+            .filter((l) => l.segmentKind === "confirmed")
+            .map((l) => ({
+              from: l.from,
+              to: l.to,
+              travelClass: l.travelClass || "3A",
+              fare: l.fare || 0,
+              departureTime: l.departureTime,
+              arrivalTime: l.arrivalTime,
+              durationMinutes: l.durationMinutes,
+            }))}
+        />
       )}
     </div>
   );

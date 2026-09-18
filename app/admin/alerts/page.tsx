@@ -30,6 +30,7 @@ type Alert = {
     amount: number;
     status: string;
     paidAt: string | null;
+    razorpayPaymentId: string | null;
     refund?: {
       status: string;
       amount: number | null;
@@ -367,6 +368,17 @@ export default function AdminAlertsPage() {
                             <span className="max-w-[140px] truncate text-[10px] text-slate-500" title={alert.payment.ref}>
                               {alert.payment.ref}
                             </span>
+                            {alert.payment.razorpayPaymentId && (
+                              <a
+                                href={`https://dashboard.razorpay.com/app/payments/${alert.payment.razorpayPaymentId}?init_page=Payments`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="max-w-[140px] truncate text-[10px] font-medium text-blue-600 hover:underline"
+                                title={`Open ${alert.payment.razorpayPaymentId} in Razorpay dashboard`}
+                              >
+                                {alert.payment.razorpayPaymentId}
+                              </a>
+                            )}
                             {alert.payment.paidAt && (
                               <span className="text-[10px] text-slate-500">
                                 {moment.utc(alert.payment.paidAt).utcOffset("+05:30").format("DD MMM, HH:mm")}

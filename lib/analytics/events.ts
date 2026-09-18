@@ -492,6 +492,22 @@ export type AnalyticsEvent =
   | {
       name: "notification_resubscribe_completed";
       properties: { channel: "email" | "whatsapp" };
+    }
+  // Split ticket assisted booking events
+  | {
+      name: "split_booking_details_submitted";
+      properties: {
+        train_number: string;
+        passenger_count: number;
+        total_fare: number;
+      };
+    }
+  | {
+      name: "split_booking_payment_confirmed";
+      properties: {
+        bookingRef: string;
+        amount: number;
+      };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];

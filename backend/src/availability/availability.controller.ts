@@ -564,6 +564,7 @@ export class AvailabilityController {
             amount: true,
             status: true,
             paidAt: true,
+            razorpayPaymentId: true,
             journeyRequestId: true,
             refundStatus: true,
             refundAmount: true,
@@ -608,6 +609,7 @@ export class AvailabilityController {
                 amount: payment.amount,
                 status: payment.status,
                 paidAt: payment.paidAt?.toISOString?.() ?? null,
+                razorpayPaymentId: payment.razorpayPaymentId ?? null,
                 refund: {
                   status: payment.refundStatus ?? 'NONE',
                   amount: payment.refundAmount ?? null,

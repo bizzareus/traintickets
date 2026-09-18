@@ -28,6 +28,7 @@ import { McpModule } from './mcp/mcp.module';
 import { ShortLinkModule } from './short-link/short-link.module';
 import { ChartAlertPaymentsModule } from './chart-alert-payments/chart-alert-payments.module';
 import { RefundRequestModule } from './refund-request/refund-request.module';
+import { SplitBookingModule } from './split-booking/split-booking.module';
 
 @Module({
   imports: [
@@ -56,6 +57,7 @@ import { RefundRequestModule } from './refund-request/refund-request.module';
     ShortLinkModule,
     ChartAlertPaymentsModule,
     RefundRequestModule,
+    SplitBookingModule,
   ],
   controllers: [AppController],
   providers: [
