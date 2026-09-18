@@ -12,7 +12,7 @@ tags:
   - 0-series train rules
 ---
 
-> **🔔 Going home for Diwali?** Facts you need: dates table + special-train list below. Stuck at REGRET? Try splits on [Smart Seats](/), leftovers on [Chart Vacancy](/chart-vacancy), timing on [Chart Times](/chart-times), coach position on [Coach Journey Lookup](/seat-status).
+> **🔔 Going home for Diwali?** Try searching for confirmed train tickets on [our platform](/).
 
 ## TL;DR — the 5 facts that matter
 

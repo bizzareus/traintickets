@@ -11,7 +11,7 @@ tags:
   - 0 series train
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Traveling by special train?** Try searching for confirmed train tickets on [our platform](/).
 
 ## TL;DR
 Special trains in Indian Railways carry 5-digit numbers starting with **0** and run during festive rushes to handle peak passenger demand. They charge **special fares** roughly 10% to 30% higher than regular base fares and offer no standard concessions. Confirmed tickets follow regular IRCTC cancellation slabs, while unconfirmed waitlisted e-tickets are auto-refunded in full.

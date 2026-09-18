@@ -12,7 +12,7 @@ tags:
   - 0-series train rules
 ---
 
-> **🔔 Going home for Chhath?** Facts you need: dates table + train list below. REGRET? Stitch splits on [Smart Seats](/), time charts on [Chart Times](/chart-times), grab leftovers on [Chart Vacancy](/chart-vacancy), confirm coach on [Coach Journey Lookup](/seat-status).
+> **🔔 Going home for Chhath?** Try searching for confirmed train tickets on [our platform](/).
 
 ## TL;DR — the 5 facts that matter
 
