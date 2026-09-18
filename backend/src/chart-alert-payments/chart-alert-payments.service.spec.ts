@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { createHmac } from 'node:crypto';
 import { ServiceUnavailableException } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import {
   ChartAlertPaymentsService,
   chartAlertPriceForClass,
@@ -57,6 +58,16 @@ describe('ChartAlertPaymentsService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ChartAlertPaymentsService,
+        {
+          provide: ConfigService,
+          useValue: {
+            get: jest.fn((k: string) => {
+              if (k === 'MUZOBOX_API_URL')
+                return 'https://ai-jukebox-backend-production.up.railway.app/api';
+              return null;
+            }),
+          },
+        },
         { provide: PrismaService, useValue: prisma },
         { provide: JourneyTaskService, useValue: journeyTask },
         { provide: RazorpayClient, useValue: razorpay },
@@ -138,13 +149,32 @@ describe('ChartAlertPaymentsService', () => {
       });
     });
 
-    it('throws 503 when Razorpay is not configured', async () => {
+    it('uses Muzobox proxy when direct Razorpay is not configured', async () => {
       razorpay.isConfigured = false;
+      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-mb-1' });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+      (service as any).muzoboxClient.post = jest.fn().mockResolvedValue({
+        data: {
+          id: 'mb_123',
+          amount: 25,
+          payUrl: 'https://muzobox.com/pay/mb_123',
+          razorpayOrderId: 'order_mb_123',
+        },
+      });
 
-      await expect(service.createPaymentLink({ ...baseInput })).rejects.toThrow(
-        ServiceUnavailableException,
+      const out = await service.createPaymentLink({ ...baseInput });
+
+      expect((service as any).muzoboxClient.post).toHaveBeenCalledWith(
+        'proxy-payments/create-link',
+        expect.objectContaining({
+          amount: 25,
+          referenceId: 'ref-mb-1',
+        }),
+        expect.any(Object),
       );
-      expect(prisma.chartAlertPayment.create).not.toHaveBeenCalled();
+      expect(out.ref).toBe('ref-mb-1');
+      expect(out.payUrl).toBe('https://muzobox.com/pay/mb_123');
+      expect(out.qrImageUrl).toContain('https://api.qrserver.com');
     });
   });
 

@@ -85,6 +85,7 @@ describe('ChartAlertPaymentsController', () => {
     expect(payments.handleCallback).toHaveBeenCalledWith(
       Buffer.alloc(0),
       'sig',
+      undefined,
     );
   });
 });

@@ -95,7 +95,11 @@ export class ChartAlertPaymentsController {
     @Headers('x-razorpay-signature') signature: string | undefined,
   ) {
     await this.payments
-      .handleCallback(req.rawBody ?? Buffer.alloc(0), signature)
+      .handleCallback(
+        req.rawBody ?? Buffer.alloc(0),
+        signature,
+        req.body as Record<string, unknown>,
+      )
       .catch(() => undefined);
     return { received: true };
   }
