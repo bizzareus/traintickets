@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import {
@@ -242,6 +242,8 @@ function UrlSearchParamsSync({
 }
 
 function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
+  const router = useRouter();
+  const pathname = usePathname();
   const autoSearchTriggered = useRef(false);
   const [hasUrlParams, setHasUrlParams] = useState(false);
   const [fromQ, setFromQ] = useState("");
@@ -733,6 +735,15 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         journey_date: journeyDate,
       },
     });
+    // Reflect the search in the URL so it is shareable and survives reloads.
+    const qs = new URLSearchParams({
+      from: fromSt.stationCode,
+      to: toSt.stationCode,
+      fromName: fromSt.stationName,
+      toName: toSt.stationName,
+      date: journeyDate,
+    });
+    router.replace(`${pathname}?${qs.toString()}`, { scroll: false });
     setExpandSearch(false);
     setHasSearched(true);
     setSearchError(null);
@@ -806,7 +817,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       setSearchLoading(false);
       setExpandSearch(false);
     }
-  }, [fromSt, toSt, journeyDate, acOnly, hasSearched]);
+  }, [fromSt, toSt, journeyDate, acOnly, hasSearched, router, pathname]);
 
   // Performance & UX Optimization: Reset scroll position to top on auto-search trigger when arriving from scrolled pages (e.g. chart-times promo popup) to eliminate footer landing and layout flicker.
   useEffect(() => {

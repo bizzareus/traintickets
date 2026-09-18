@@ -597,7 +597,7 @@ function CompactLegChartCta({
           )}
         </p>
         <p className="mb-1.5 text-[11px] text-blue-800">
-          No ticket? 100% automated refund. One-time charge of ₹{alertPrice}.
+          Get 100% refund if you didn&apos;t find full journey tickets. One-time charge of ₹{alertPrice}.
         </p>
         <div className="flex flex-col gap-1.5 sm:flex-row">
           <input

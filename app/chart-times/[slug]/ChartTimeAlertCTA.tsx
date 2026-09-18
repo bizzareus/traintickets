@@ -427,8 +427,8 @@ export default function ChartTimeAlertCTA({
           <p className="mt-1 text-sm text-slate-600">
             Select your destination — when the chart is prepared, we scan
             your {stationCode} &lt;&gt; {toStationCode || "…"} route for any
-            ticket that opens up and notify you instantly. No ticket? 100%
-            automated refund. One-time charge of ₹
+            ticket that opens up and notify you instantly. Get 100% refund
+            if you didn&apos;t find full journey tickets. One-time charge of ₹
             {alertPrice}.
           </p>
         </div>
@@ -463,8 +463,8 @@ export default function ChartTimeAlertCTA({
       <p className="mt-1 text-sm text-slate-600">
         Get an alert when the chart is prepared at your boarding station, we
         will alert you the time it was prepared and find you confirmed
-        tickets across the journey. If no ticket is available, you get a 100%
-        automated refund.
+        tickets across the journey. Get 100% refund if you didn&apos;t
+        find full journey tickets.
       </p>
 
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">

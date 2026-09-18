@@ -416,8 +416,8 @@ export default function RowAlertButton({
               </span>
               , we scan your full {stationCode} &lt;&gt;{" "}
               {toStationCode || "…"} route for any ticket that opens up and
-              notify you instantly. If no ticket is available, you get a 100%
-              automated refund.
+              notify you instantly. Get 100% refund if you didn&apos;t
+              find full journey tickets.
             </p>
             {subscribedJourney ? (
               <ChartAlertSuccessBox journey={subscribedJourney} compact />
