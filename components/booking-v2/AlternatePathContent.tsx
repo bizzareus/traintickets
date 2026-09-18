@@ -14,6 +14,7 @@ import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 import { isAdminUser as checkIsAdminUser } from "@/lib/admin";
 import {
+  chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
